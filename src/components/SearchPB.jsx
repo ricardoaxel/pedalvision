@@ -2,6 +2,9 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import {db} from '../firebase';
+//For redux states
+import {useDispatch,useSelector} from 'react-redux'
+import {setPBAction} from '../redux/pbDucks'
 
 
 function SearchPB() {
@@ -9,26 +12,21 @@ function SearchPB() {
 
 //THIS SECTION IS FOR CONSULTING THE DB
   //Seting the state for the actual pedalboards
+  const dispatch = useDispatch()
   const [pbs,setPbs] = React.useState([]);
 
   React.useEffect(() => {
     const obtenerDatos = async () => {
       try {
         const data = await db.collection('pedalboards').get()
-        console.log("asdsad")
         const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        console.log(arrayData)
         setPbs(arrayData)
       } catch (error) {
         console.log(error)
       }
     }
-
-    obtenerDatos()
-    
+    obtenerDatos() 
   },[])
-
-
 
 
 
@@ -37,6 +35,7 @@ function SearchPB() {
   //Here we set the actual state value of the selected pedalboard
   const handleChange = (event) => {
     setPedalBoard(event.target.value);
+    dispatch(setPBAction(event.target.value)); 
   };
 
   return (

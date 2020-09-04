@@ -6,10 +6,9 @@ import SearchPB from './components/SearchPB';
 import SearchPedal from './components/SearchPedal';
 import RegisterPB from './components/RegisterPB';
 import Pedalboard from './components/Pedalboard';
-
+//For Redux
 import {Provider} from 'react-redux'
 import generateStore from './redux/store'
-import PruebaRedux from './components/PruebaRedux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,8 +32,11 @@ export default function FullWidthGrid() {
       <Grid container spacing={1}>
         <Grid item xs={10}>
           <Paper className={classes.paper}>
-            <Pedalboard/>
-            <PruebaRedux/>
+            <h2>Aquí va la pedalboard:</h2>
+          </Paper>
+          <br/>
+          <Paper className={classes.paper} >
+          <Pedalboard/>
           </Paper>
         </Grid>
         <Grid item xs={2}>
