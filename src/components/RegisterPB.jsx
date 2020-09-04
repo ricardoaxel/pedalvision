@@ -8,8 +8,15 @@ function RegisterPB() {
 
   
   const addPB = async (vals) => {
-    await db.collection('pedalboards').doc().set(vals)
-    console.log("Nueva PB agregada");
+
+    try{
+      await db.collection('pedalboards').add(vals)
+      console.log("Nueva PB agregada");
+    }
+    catch(error){
+      console.log("error")
+    }
+ 
   }
 
   const initialStateValues = {
