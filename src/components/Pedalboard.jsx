@@ -1,9 +1,6 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
 //useDispatch is for doing the actions and useSelector to read the state
-import {useDispatch,useSelector} from 'react-redux'
-
-
+import {useSelector} from 'react-redux'
 
 
 function SearchPedal() {
@@ -13,9 +10,9 @@ function SearchPedal() {
 
   const styles = {
     pbContainer: {
-        width: "auto",
-        height: "200px",
-        backgroundSize: "cover",
+        width: "100%",
+        height: "1000px",
+        backgroundSize: "100%",
         backgroundImage: `url(${actPedalboard})`,
         backgroundRepeat:"no-repeat"
     }

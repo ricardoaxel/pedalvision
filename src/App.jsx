@@ -32,7 +32,7 @@ export default function FullWidthGrid() {
       <Grid container spacing={1}>
         <Grid item xs={10}>
           <Paper className={classes.paper}>
-            <h2>Aquí va la pedalboard:</h2>
+            <h2>Pedalboard Planner</h2>
           </Paper>
           <br/>
           <Paper className={classes.paper} >
