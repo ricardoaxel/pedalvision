@@ -1,21 +1,24 @@
+//This file is for managing the current pedal selected by the user
 import {db} from '../firebase';
 
 //CONSTANTS
 const initialData = {
     id:"",
-    PBName:"",
-    PBBrand:"",
-    PBImage:"",
-    PBHeight:"",
-    PBWidth:""
+    Name:"",
+    Brand:"",
+    Type:"",
+    Image:"",
+    Video:"",
+    Height:"",
+    Width:""
 }
 
-const SET_PB = 'SET_PB'
+const SET_PEDAL = 'SET_PEDAL'
 
 //REDUCER
-export default function pbReducer(state = initialData, action){
+export default function pedalReducer(state = initialData, action){
     switch(action.type){
-        case SET_PB:
+        case SET_PEDAL:
             //These '...' are to get al the elements of the state and the payload at the same time
             return {...state,...action.payload}
         default:    
@@ -25,17 +28,17 @@ export default function pbReducer(state = initialData, action){
 
 
 //ACTIONS
-export const setPBAction = (pb) => async(dispatch, getState) => {
+export const setPedalAction = (pedal) => async(dispatch, getState) => {
 
     try{
 
-        const data = await db.collection('pedalboards').where('__name__',"==",pb).get()
-        console.log("Reading actual PedalBoard")
+        const data = await db.collection('pedals').where('__name__',"==",pedal).get()
+        console.log("Reading actual Pedal")
         const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        //console.log(arrayData[0].PBName)
+        console.log(arrayData[0].Name)
         
         dispatch({
-            type: SET_PB,
+            type: SET_PEDAL,
             //With this we send all of the data of the PB Collection selected
             payload: arrayData[0]
             

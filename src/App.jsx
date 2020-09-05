@@ -1,3 +1,7 @@
+//For Redux
+import {Provider} from 'react-redux'
+import generateStore from './redux/store'
+//Others
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -6,9 +10,9 @@ import SearchPB from './components/SearchPB';
 import SearchPedal from './components/SearchPedal';
 import RegisterPB from './components/RegisterPB';
 import Pedalboard from './components/Pedalboard';
-//For Redux
-import {Provider} from 'react-redux'
-import generateStore from './redux/store'
+import ActualPedal from './components/ActualPedal';
+
+import RegisterPedal from './components/RegisterPedal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +36,7 @@ export default function FullWidthGrid() {
       <Grid container spacing={1}>
         <Grid item xs={10}>
           <Paper className={classes.paper}>
-            <h2>Pedalboard Planner</h2>
+            <h3 style={{textAlign: "left"}}>Pedalboard Planner</h3>
           </Paper>
           <br/>
           <Paper className={classes.paper} >
@@ -45,7 +49,9 @@ export default function FullWidthGrid() {
           <br/>
           <SearchPedal/> 
           <br/>
-          <RegisterPB/>
+          <ActualPedal/>
+          <br/>
+          <RegisterPedal/>
           </Paper> 
         </Grid>    
       </Grid>

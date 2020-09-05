@@ -11,7 +11,7 @@ function RegisterPB() {
 
     try{
       await db.collection('pedalboards').add(vals)
-      console.log("Nueva PB agregada");
+      console.log("New PB registered");
     }
     catch(error){
       console.log("error")

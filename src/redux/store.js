@@ -2,9 +2,11 @@ import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 
 import pbReducer from './pbDucks'
+import pedalReducer from './pedalDucks';
 
 const rootReducer = combineReducers({
-    pedalboard: pbReducer
+    pedalboard: pbReducer,
+    actualPedal: pedalReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
