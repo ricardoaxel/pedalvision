@@ -8,7 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ReactPlayer from "react-player";
-
+import {useDispatch} from 'react-redux'
+import {setAddPedalToPBAction} from '../redux/userPBDucks'
 
 
 const useStyles = makeStyles({
@@ -38,6 +39,9 @@ const ActualPedal = () => {
     //For Material UI Styles
     const classes = useStyles();
 
+    //For Redux
+    const dispatch = useDispatch()
+
     const styles = {
         pedalImg: {
             width: "100%"
@@ -45,6 +49,10 @@ const ActualPedal = () => {
         video:{
             width: "100%"
         }
+    }
+
+    const addPedalToPB = () => {
+      dispatch(setAddPedalToPBAction(actPedal.id,actPedal.Image))
     }
 
     return (
@@ -69,10 +77,10 @@ const ActualPedal = () => {
                     </Typography>
                 </CardContent>
                 <CardActions style={{justifyContent: 'center'}}>
-                    <Button size="large" color="primary" variant="outlined">ADD</Button>
+                    <Button onClick={() => addPedalToPB()} size="large" color="primary" variant="outlined">ADD</Button>
                 </CardActions>
                 <br/>
-                <ReactPlayer url={actPedal.Video} width="100%" height="100%" playing="true" controls="true"/>
+                <ReactPlayer url={actPedal.Video} width="100%" height="100%" controls="true"/>
             </Card>
             :
             "No pedal selected yet"

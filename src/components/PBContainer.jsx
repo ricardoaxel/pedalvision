@@ -3,13 +3,21 @@ import { useDrop } from 'react-dnd'
 import { ItemTypes } from './ItemTypes'
 import { PedalContainer } from './PedalContainer'
 import update from 'immutability-helper'
+import {useSelector} from 'react-redux'
+
+
 const styles = {
-  width: 300,
-  height: 300,
+  width: "100%",
+  height: 500,
   border: '1px solid black',
   position: 'relative',
 }
 export const PBContainer = () => {
+
+  const userPB = useSelector(store => store.userPB)
+
+  console.log(userPB)
+
   const [boxes, setBoxes] = useState({
     a: { top: 20, left: 80, title: 'Drag me around', image:"https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen-800x419.jpg" },
     b: { top: 180, left: 20, title: 'Drag me too', image:"https://scontent.fmex10-1.fna.fbcdn.net/v/t1.15752-0/p280x280/118779644_305367300554341_7688996235444697364_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_eui2=AeEDrYM0OUKt9u9vE5D-MKVRqlv6BFADXFSqW_oEUANcVD7112kCtDYb4pBZry4ksycciYh3DaZcGgp5mj72_aDo&_nc_ohc=5czP0AS_SE8AX8UjLsd&_nc_ht=scontent.fmex10-1.fna&tp=6&oh=845f271e223bf38b631831d8f2d30df7&oe=5F7C6550" },
@@ -24,7 +32,7 @@ export const PBContainer = () => {
       return undefined
     },
   })
-  const moveBox = (id, left, top) => {
+  const moveBox = (id, left, top) => {  
     setBoxes(
       update(boxes, {
         [id]: {
@@ -44,6 +52,7 @@ export const PBContainer = () => {
             left={left}
             top={top}
             image= {image}
+            hideSourceOnDrag="true"
           >
             {title}
           </PedalContainer>

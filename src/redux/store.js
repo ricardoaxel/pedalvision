@@ -3,10 +3,12 @@ import thunk from 'redux-thunk'
 
 import pbReducer from './pbDucks'
 import pedalReducer from './pedalDucks';
+import userPBReducer from './userPBDucks';
 
 const rootReducer = combineReducers({
     pedalboard: pbReducer,
-    actualPedal: pedalReducer
+    actualPedal: pedalReducer,
+    userPB: userPBReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

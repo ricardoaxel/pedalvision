@@ -7,6 +7,7 @@ const style = {
   backgroundColor: 'white',
   padding: '0.5rem 1rem',
   cursor: 'move',
+  
 }
 export const PedalContainer = ({ id, left, top, hideSourceOnDrag, children, image }) => {
   const [{ isDragging }, drag] = useDrag({
