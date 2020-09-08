@@ -33,9 +33,7 @@ export const setPedalAction = (pedal) => async(dispatch, getState) => {
     try{
 
         const data = await db.collection('pedals').where('__name__',"==",pedal).get()
-        console.log("Reading actual Pedal")
         const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        console.log(arrayData[0].Name)
         
         dispatch({
             type: SET_PEDAL,

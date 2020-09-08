@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ReactPlayer from "react-player";
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
 import {setAddPedalToPBAction} from '../redux/userPBDucks'
 
 
@@ -52,7 +52,7 @@ const ActualPedal = () => {
     }
 
     const addPedalToPB = () => {
-      dispatch(setAddPedalToPBAction(actPedal.id,actPedal.Image))
+      dispatch(setAddPedalToPBAction(actPedal.Image, actPedal.Width, actPedal.Height))
     }
 
     return (

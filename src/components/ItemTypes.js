@@ -1,4 +1,4 @@
 export const ItemTypes = {
-    BOX: 'box',
+    BOX: 'userPB',
   }
   

@@ -1,12 +1,14 @@
 import {db} from '../firebase';
+import update from 'immutability-helper';
 
 //CONSTANTS
 const initialData = {
-    userPedals:[]
+    userPedals:{}
 }
 
 
 const SET_USERPB = 'SET_USERPB'
+const SET_MOVEPEDAL = 'MOVE_PEDAL'
 
 
 
@@ -15,45 +17,56 @@ export default function userPBReducer(state = initialData, action){
     switch(action.type){
         case SET_USERPB:
             //These '...' are to get al the elements of the state and the payload at the same time
-            return {...state,...action.payload}
+            console.log(state)
+            return {
+                ...state,
+            userPedals: {...state.userPedals,
+                [Math.random().toString(36).substr(2, 9)]: {
+                    ...action.payload.newPedal
+                }
+            }
+            }
+
+
+        case SET_MOVEPEDAL:
+            console.log(state)
+            const key = action.payload.id;
+            return {
+                ...state,
+                userPedals: {
+                    ...state.userPedals,
+                    [key]:{
+                        ...state.userPedals[key],
+                        left: action.payload.left,
+                        top: action.payload.top
+                    }
+                }
+            }
+             
         default:    
             return state
     }
 }
 
 //ACTIONS
-export const setAddPedalToPBAction = (id,image) => async(dispatch, getState) => {
+
+
+//This function is actioned when a pedal is added to the PB
+export const setAddPedalToPBAction = (image,width,height) => async(dispatch, getState) => {
 
     try{
-
-        //const data = await db.collection('pedalboards').where('__name__',"==",pb).get()
-        //console.log("Reading actual PedalBoard")
-        //const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        //console.log(arrayData[0].PBName)
         const newPedal = {
-            pedalID: id,
-            pedalImg: image,
+            image,
+            width,
+            height,
             left: 0,
             top: 0
         }
 
-        const allPedals = getState().userPB.userPedals;
-
-        console.log("estateactual",allPedals);
-        console.log(newPedal);
-        
         dispatch({
             type: SET_USERPB,
             //With this we send all of the data of the PB Collection selected
-            payload: {
-                userPedals: [...allPedals,{
-                        pedalID: id,
-                        pedalImg: image,
-                        left: 0,
-                        top: 0
-                    }
-                ]
-            }
+            payload: {newPedal}
         })
     }
     catch(err){
@@ -62,8 +75,20 @@ export const setAddPedalToPBAction = (id,image) => async(dispatch, getState) => 
     
 }
 
+//THis fucntion is for a pedal is moved
+export const setMovePedalAction = (id,left,top) => async(dispatch, getState) => {
 
-/*
-Pid:"",
-    left:"",
-    top:"",*/
+    try{
+        dispatch({
+            type: SET_MOVEPEDAL,
+            //With this we send all of the data of the PB Collection selected
+            payload: {id,left,top}
+            
+        })
+        
+    }
+    catch(err){
+        console.log(err)
+    }
+    
+}
