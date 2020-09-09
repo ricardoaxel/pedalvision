@@ -1,32 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from './ItemTypes'
 import { PedalContainer } from './PedalContainer'
-import update from 'immutability-helper'
 import {useSelector} from 'react-redux'
 import {setMovePedalAction} from '../redux/userPBDucks'
 import {useDispatch} from 'react-redux'
 
-const styles = {
-  width: "100%",
-  height: 500,
-  border: '1px solid black',
-  position: 'relative',
-}
+
+
+
 export const PBContainer = () => {
 
+  //Getting the actual PB from the store
+  const actPedalboard = useSelector(store => store.pedalboard.PBImage)
+
+    const styles = {
+      pbContainer: {
+          width: "100%",
+          height: "1000px",
+          backgroundSize: "100%",
+          backgroundImage: `url(${actPedalboard})`,
+          backgroundRepeat:"no-repeat"
+      }
+    };
+
+  //Getting the user's actual PB
   const userPB = useSelector(store => store.userPB.userPedals)
 
-   //For Redux
+  //For Redux
   const dispatch = useDispatch()
-
-/*
-  const [boxes, setBoxes] = useState({
-    a: { top: 20, left: 80, title: 'Drag me around', image:"https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen-800x419.jpg" },
-    b: { top: 180, left: 20, title: 'Drag me too', image:"https://scontent.fmex10-1.fna.fbcdn.net/v/t1.15752-0/p280x280/118779644_305367300554341_7688996235444697364_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_eui2=AeEDrYM0OUKt9u9vE5D-MKVRqlv6BFADXFSqW_oEUANcVD7112kCtDYb4pBZry4ksycciYh3DaZcGgp5mj72_aDo&_nc_ohc=5czP0AS_SE8AX8UjLsd&_nc_ht=scontent.fmex10-1.fna&tp=6&oh=845f271e223bf38b631831d8f2d30df7&oe=5F7C6550" },
-  })
-
-  */
 
   //Pedals movement
   const [, drop] = useDrop({
@@ -41,35 +43,26 @@ export const PBContainer = () => {
   })
 
 //State changes
-
-/*
-  const moveBox = (id, left, top) => {  
-    setBoxes(
-      update(boxes, {
-        [id]: {
-          $merge: { left, top },
-        },
-      }),
-    )
-  }
-  */
-  
-
   const moveBox = (id, left, top) => {  
     dispatch(setMovePedalAction(id,left,top))
   }
 
 
   return (
-    <div ref={drop} style={styles}>
+    
+    <div ref={drop} style={styles.pbContainer}>
+      
       {Object.keys(userPB).map((key) => {
-        const { left, top, image } = userPB[key]
+        const { left, top, image, pedalID } = userPB[key]
+        
         return (
+          
           <PedalContainer
             key={key}
             id={key}
             left={left}
             top={top}
+            pedalID={pedalID}
             image= {image}
             hideSourceOnDrag="true"
           >

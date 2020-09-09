@@ -1,5 +1,5 @@
-import {db} from '../firebase';
-import update from 'immutability-helper';
+//This libraries are for simplifly the process of updating and deleting objects in the state
+import { omit } from 'lodash'
 
 //CONSTANTS
 const initialData = {
@@ -8,7 +8,8 @@ const initialData = {
 
 
 const SET_USERPB = 'SET_USERPB'
-const SET_MOVEPEDAL = 'MOVE_PEDAL'
+const SET_MOVEPEDAL = 'SET_MOVEPEDAL'
+const SET_DELETEPEDAL = 'SET_DELETEPEDAL'
 
 
 
@@ -17,7 +18,6 @@ export default function userPBReducer(state = initialData, action){
     switch(action.type){
         case SET_USERPB:
             //These '...' are to get al the elements of the state and the payload at the same time
-            console.log(state)
             return {
                 ...state,
             userPedals: {...state.userPedals,
@@ -29,7 +29,6 @@ export default function userPBReducer(state = initialData, action){
 
 
         case SET_MOVEPEDAL:
-            console.log(state)
             const key = action.payload.id;
             return {
                 ...state,
@@ -42,6 +41,13 @@ export default function userPBReducer(state = initialData, action){
                     }
                 }
             }
+        
+        case SET_DELETEPEDAL:
+            const key2 = action.payload;
+            return {
+                ...state,
+                userPedals: omit(state.userPedals,key2)
+            }
              
         default:    
             return state
@@ -52,7 +58,7 @@ export default function userPBReducer(state = initialData, action){
 
 
 //This function is actioned when a pedal is added to the PB
-export const setAddPedalToPBAction = (image,width,height) => async(dispatch, getState) => {
+export const setAddPedalToPBAction = (image,width,height,pedalID) => async(dispatch, getState) => {
 
     try{
         const newPedal = {
@@ -60,7 +66,8 @@ export const setAddPedalToPBAction = (image,width,height) => async(dispatch, get
             width,
             height,
             left: 0,
-            top: 0
+            top: 0,
+            pedalID
         }
 
         dispatch({
@@ -75,7 +82,7 @@ export const setAddPedalToPBAction = (image,width,height) => async(dispatch, get
     
 }
 
-//THis fucntion is for a pedal is moved
+//This function is for update the coordenates of pedal that was moved
 export const setMovePedalAction = (id,left,top) => async(dispatch, getState) => {
 
     try{
@@ -83,6 +90,24 @@ export const setMovePedalAction = (id,left,top) => async(dispatch, getState) => 
             type: SET_MOVEPEDAL,
             //With this we send all of the data of the PB Collection selected
             payload: {id,left,top}
+            
+        })
+        
+    }
+    catch(err){
+        console.log(err)
+    }
+    
+}
+
+//This function is for remove the pedal for the users PB
+export const setDeletePedalAction = (id) => async(dispatch, getState) => {
+
+    try{
+        dispatch({
+            type: SET_DELETEPEDAL,
+            //With this we send all of the data of the PB Collection selected
+            payload: id
             
         })
         

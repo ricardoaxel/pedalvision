@@ -52,7 +52,7 @@ const ActualPedal = () => {
     }
 
     const addPedalToPB = () => {
-      dispatch(setAddPedalToPBAction(actPedal.Image, actPedal.Width, actPedal.Height))
+      dispatch(setAddPedalToPBAction(actPedal.Image, actPedal.Width, actPedal.Height, actPedal.id))
     }
 
     return (

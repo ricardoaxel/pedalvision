@@ -12,12 +12,9 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import SearchPB from './components/SearchPB';
 import SearchPedal from './components/SearchPedal';
-import RegisterPB from './components/RegisterPB';
-import Pedalboard from './components/Pedalboard';
 import ActualPedal from './components/ActualPedal';
 import PBContainer from './components/PBContainer';
 
-import RegisterPedal from './components/RegisterPedal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +36,7 @@ export default function FullWidthGrid() {
     <Provider store ={store}>
       <div className={classes.root}>
       <Grid container spacing={1}>
-        <Grid item xs={10}>
+        <Grid item xs={9}>
           <Paper className={classes.paper}>
             <h3 style={{textAlign: "left"}}>Pedalboard Planner</h3>
           </Paper>
@@ -50,15 +47,13 @@ export default function FullWidthGrid() {
           </DndProvider>
           </Paper>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={3}>
           <Paper className={classes.paper}>
           <SearchPB/>
-          <br/>
           <SearchPedal/> 
           <br/>
           <ActualPedal/>
           <br/>
-          <RegisterPedal/>
           </Paper> 
         </Grid>    
       </Grid>
