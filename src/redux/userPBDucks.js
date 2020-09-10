@@ -1,5 +1,6 @@
 //This libraries are for simplifly the process of updating and deleting objects in the state
 import { omit } from 'lodash'
+import { act } from 'react-dom/test-utils'
 
 //CONSTANTS
 const initialData = {
@@ -10,6 +11,7 @@ const initialData = {
 const SET_USERPB = 'SET_USERPB'
 const SET_MOVEPEDAL = 'SET_MOVEPEDAL'
 const SET_DELETEPEDAL = 'SET_DELETEPEDAL'
+const SET_LOADPB = 'SET_LOADPB'
 
 
 
@@ -48,6 +50,13 @@ export default function userPBReducer(state = initialData, action){
                 ...state,
                 userPedals: omit(state.userPedals,key2)
             }
+
+        case SET_LOADPB:
+            return {
+                ...state,
+                userPedals: action.payload
+            }
+             
              
         default:    
             return state
@@ -108,6 +117,24 @@ export const setDeletePedalAction = (id) => async(dispatch, getState) => {
             type: SET_DELETEPEDAL,
             //With this we send all of the data of the PB Collection selected
             payload: id
+            
+        })
+        
+    }
+    catch(err){
+        console.log(err)
+    }
+    
+}
+
+//This function is for changing the state of user's PB to the loaded one
+export const setLoadPBAction = (loadedPB) => async(dispatch, getState) => {
+
+    try{
+        dispatch({
+            type: SET_LOADPB,
+            //With this we send all of the data of the PB Collection selected
+            payload: loadedPB
             
         })
         

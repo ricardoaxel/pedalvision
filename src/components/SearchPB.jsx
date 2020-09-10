@@ -4,9 +4,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {db} from '../firebase';
 //For redux states
 import {useDispatch,useSelector} from 'react-redux'
-import {setPBAction} from '../redux/pbDucks'
+import {setPBAction} from '../redux/pbDucks';
+import {setLoadPBAction} from '../redux/userPBDucks'
 //Material UI styles
 import Button from '@material-ui/core/Button';
+
 
 
 function SearchPB() {
@@ -22,6 +24,7 @@ function SearchPB() {
   //Seting the state for the saved PBs finded
   const [savedPBs,setSavedPBs] = React.useState([]);
 
+  
   React.useEffect(() => {
     //Obtaining the types of PB's that are registered
     const obtenerDatos = async () => {
@@ -42,6 +45,7 @@ function SearchPB() {
         const data2 = await db.collection('userPBs').get()
         const arrayData2 = data2.docs.map(doc => ({id:doc.id, ...doc.data()}))
         setSavedPBs(arrayData2)
+        console.log(arrayData2)
       } catch (error) {
         console.log(error)
       }
@@ -60,17 +64,18 @@ function SearchPB() {
   //Here we set the actual state value of the selected pedalboard
   const handleChange = (event) => {
     setPedalBoard(event.target.value);
-    dispatch(setPBAction(event.target.value)); 
+    dispatch(setPBAction(event.target.value));
+    console.log("Pedalboard cargada:");
+    console.log(event.target.value) 
   };
 
   //Here we manage the saved PB selected
   const [loadedPB, setLoadedPB] = React.useState([]);
   //Here we set the actual state value of the selected pedalboard
   const handleChangeSPB = (event) => {
-    setLoadedPB(event.target.value)
-    console.log(loadedPB)
-
-    //dispatch(setPBAction(event.target.value)); 
+    setLoadedPB(event.target.value);
+    dispatch(setPBAction(event.target.value.Pedalboard)); 
+    dispatch(setLoadPBAction(event.target.value.Pedals));
   };
 
 
@@ -110,14 +115,13 @@ function SearchPB() {
           onChange={handleChangeSPB} 
         >
           
-          {savedPBs.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
-              {option.Name}
+          {savedPBs.map((sPB) => (
+            <MenuItem key={sPB.id} value={sPB}>
+              {sPB.Name}
             </MenuItem>
           ))}
         </TextField>
         <br/>
-
       {/*Save actual PB*/ }
         <Button onClick={() => savePB()} size="large" color="primary" variant="outlined">SAVE PB</Button>
       

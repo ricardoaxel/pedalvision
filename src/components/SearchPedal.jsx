@@ -16,16 +16,29 @@ function SearchPedal() {
   const [pedals,setPedals] = React.useState([]);
 
   React.useEffect(() => {
-    const obtenerDatos = async () => {
-      try {
-        const data = await db.collection('pedals').get()
-        const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        setPedals(arrayData)
-      } catch (error) {
-        console.log(error)
-      }
+    
+  //If the page was previously consulted
+    if(localStorage.getItem("avPedals")){
+      console.log("Valores en el LocalStorage")
+      setPedals(JSON.parse(localStorage.getItem("avPedals")))
     }
-    obtenerDatos() 
+    else{
+      const obtenerDatos = async () => {
+        try {
+          const data = await db.collection('pedals').get()
+          const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
+          console.log(arrayData)
+          setPedals(arrayData)
+          //Saving in localStorage for avoiding future extra consults
+          localStorage.setItem("avPedals",JSON.stringify(arrayData))
+  
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      obtenerDatos()
+    }
+     
   },[])
 
 
