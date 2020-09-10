@@ -49,7 +49,7 @@ export default function FullWidthGrid() {
         </Grid>
         <Grid item xs={3}>
           <Paper className={classes.paper}>
-          {/*<SearchPB/>*/}
+          <SearchPB/>
           <SearchPedal/> 
           <br/>
           <ActualPedal/>

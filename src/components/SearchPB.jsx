@@ -26,38 +26,29 @@ function SearchPB() {
 
   
   React.useEffect(() => {
-    //Obtaining the types of PB's that are registered
-    const obtenerDatos = async () => {
-      try {
-        const data = await db.collection('pedalboards').get()
-        const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        setPbs(arrayData)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    obtenerDatos() 
 
-
-    //Setting the state for consulting saved PB's
-    const obtainSavedPBs = async () => {
-      try {
-        const data2 = await db.collection('userPBs').get()
-        const arrayData2 = data2.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        setSavedPBs(arrayData2)
-        console.log(arrayData2)
-      } catch (error) {
-        console.log(error)
-      }
+    //If the page was previously consulted
+    if(localStorage.getItem("avPBs")){
+      setPbs(JSON.parse(localStorage.getItem("avPBs")))
     }
-    obtainSavedPBs() 
+    else{
+      //Obtaining the types of PB's that are registered
+      const obtenerDatos = async () => {
+        try {
+          const data = await db.collection('pedalboards').get()
+          const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
+          setPbs(arrayData)
+          //Saving in localStorage for avoiding future extra consults
+          localStorage.setItem("avPBs",JSON.stringify(arrayData))
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      obtenerDatos() 
+    }
 
   },[])
-
-
-
-   
-
+ 
 
   //IN THIS SECTION WE MANAGE THE SELECT OF THE PB
   const [pedalboard, setPedalBoard] = React.useState([]);
@@ -65,8 +56,6 @@ function SearchPB() {
   const handleChange = (event) => {
     setPedalBoard(event.target.value);
     dispatch(setPBAction(event.target.value));
-    console.log("Pedalboard cargada:");
-    console.log(event.target.value) 
   };
 
   //Here we manage the saved PB selected
@@ -79,8 +68,22 @@ function SearchPB() {
   };
 
 
+  //For consulting previously saved PB's
+  const [visibleSavedPBs, setVisibleSavedPBs] = React.useState(false)
+  const obtainSavedPBs = async () => {
+    try {
+      const data2 = await db.collection('userPBs').get()
+      const arrayData2 = data2.docs.map(doc => ({id:doc.id, ...doc.data()}))
+      setSavedPBs(arrayData2)
+      setVisibleSavedPBs(true)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  //For saving the users pedalboard
+  //If the user saved the PB
+
+  //For consulting the pedals
   const userPB = useSelector(store => store.userPB.userPedals)
 
   const savePB = async () => {
@@ -99,34 +102,37 @@ function SearchPB() {
 
 
 
-
   return (
     
-  
     <form noValidate autoComplete="off">
       <div>
-
-      {/*Access to previously saved PB's*/ }
-        <TextField
-          select
-          id = "savedPB"
-          label="Saved PB's"
-          value={loadedPB}
-          onChange={handleChangeSPB} 
-        >
-          
-          {savedPBs.map((sPB) => (
-            <MenuItem key={sPB.id} value={sPB}>
-              {sPB.Name}
-            </MenuItem>
-          ))}
-        </TextField>
-        <br/>
-      {/*Save actual PB*/ }
-        <Button onClick={() => savePB()} size="large" color="primary" variant="outlined">SAVE PB</Button>
+        {/*Save actual PB*/ }
+        
+        {visibleSavedPBs ?
+          /*Access to previously saved PB's*/ 
+            
+            <TextField
+              select
+              id = "savedPB"
+              label="Saved PB's"
+              value={loadedPB}
+              onChange={handleChangeSPB} 
+            >
+              
+              {savedPBs.map((sPB) => (
+                <MenuItem key={sPB.id} value={sPB}>
+                  {sPB.Name}
+                </MenuItem>
+              ))}
+            </TextField> 
+            : <Button onClick={() => obtainSavedPBs()} size="large" color="primary" variant="outlined">Load PB</Button>
+        }<br/><br/>
+        
+        {/*Save actual PB*/ }
+          <Button onClick={() => savePB()} size="large" color="primary" variant="outlined">SAVE PB</Button>
       
 
-      {/*Select a kind of PB*/ }
+        {/*Select a kind of PB*/ }
         <TextField
           select
           id = "pbselect"

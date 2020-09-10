@@ -29,15 +29,26 @@ export const setPBAction = (pb) => async(dispatch, getState) => {
 
     try{
 
-        const data = await db.collection('pedalboards').where('__name__',"==",pb).get()
-        console.log("Reading actual PedalBoard")
-        const arrayData = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
-        //console.log(arrayData[0].PBName)
+        let arrayData = {}
+        let arrayDataAux = []
+        //IF the values of the pbs are in the local storage we will get them from there
+        if(localStorage.getItem("avPBs")){
+            arrayDataAux = JSON.parse(localStorage.getItem("avPBs"))
+        }
+        //If the values of pbs arent in LS there are getting from the DB
+        else{
+            const data = await db.collection('pedalboards').get()
+            arrayDataAux = data.docs.map(doc => ({id:doc.id, ...doc.data()}))
+            //Saving in localStorage for future consults
+            localStorage.setItem("avPBs",JSON.stringify(arrayDataAux))
+        }
+        //Searching for the selected PB data
+        arrayData = arrayDataAux.find(sPB => sPB.id === pb)
         
         dispatch({
             type: SET_PB,
             //With this we send all of the data of the PB Collection selected
-            payload: arrayData[0]
+            payload: arrayData
             
         })
     }

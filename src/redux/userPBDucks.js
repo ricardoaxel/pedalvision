@@ -1,6 +1,5 @@
-//This libraries are for simplifly the process of updating and deleting objects in the state
+//This library are for simplifly the process of updating and deleting objects in the state
 import { omit } from 'lodash'
-import { act } from 'react-dom/test-utils'
 
 //CONSTANTS
 const initialData = {
