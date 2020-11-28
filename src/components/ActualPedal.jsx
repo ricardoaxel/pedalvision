@@ -63,7 +63,7 @@ const ActualPedal = () => {
             <Card className={classes.root}>
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Selected Pedal
+                    Selectedi Pedal
                     </Typography>
                     <Typography variant="h5" component="h4">
                     {actPedal.Name}
