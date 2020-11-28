@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2114a7e7359a72004e1f1b544506977f",
+    "revision": "25aa74af78a124c895f9483cf6bf4fa7",
     "url": "/pedalvision/index.html"
   },
   {
-    "revision": "a891c4a3f7ff99894fa0",
+    "revision": "5c3a89623b899e9b7a01",
     "url": "/pedalvision/static/css/main.69eda509.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pedalvision/static/js/2.02f0a939.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a891c4a3f7ff99894fa0",
-    "url": "/pedalvision/static/js/main.6e6e9a0b.chunk.js"
+    "revision": "5c3a89623b899e9b7a01",
+    "url": "/pedalvision/static/js/main.9023cee1.chunk.js"
   },
   {
     "revision": "c98e6af03482dd75b0e4",
