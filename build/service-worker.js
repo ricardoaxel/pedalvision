@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pedalvision/precache-manifest.13a5bb3e3b5f6499476792c960b80dcd.js"
+  "/pedalvision/precache-manifest.3025882d70fed88c12564bf6476be81a.js"
 );
 
 self.addEventListener('message', (event) => {
