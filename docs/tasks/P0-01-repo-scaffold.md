@@ -1,6 +1,6 @@
 # P0-01: Repo scaffold
 
-**Phase:** P0 · **Status:** todo · **Model:** build-cheap
+**Phase:** P0 · **Status:** done · **Model:** build-cheap
 
 ## Goal
 A Vite + React 19 + TypeScript project exists with the folder structure from design.md, pnpm as package manager, base scripts wired, and a minimal dark-themed App rendering "Pedalvision" — ready for P0-02..05.

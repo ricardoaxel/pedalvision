@@ -5,7 +5,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 ## P0 — Foundation
 | Task | Title | Status |
 |---|---|---|
-| P0-01 | Repo scaffold (Vite + React + TS + Konva + Zustand) | todo |
+| P0-01 | Repo scaffold (Vite + React + TS + Konva + Zustand) | done |
 | P0-02 | CI/CD pipeline (GitHub Actions → Cloudflare) | todo |
 | P0-03 | Design tokens (CSS vars + JS theme map, dark default) | todo |
 | P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | todo |

@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+dev-assets
+dev-seed.json
+
+# Notion web export (raw export cruft: tracking scripts, session files)
+docs/Pedalvision 2026 _ Notion.html
+docs/Pedalvision 2026 _ Notion_files/
 
 # Editor directories and files
 .vscode/*
