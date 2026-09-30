@@ -11,6 +11,12 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# Playwright artifacts
+test-results
+playwright-report
+blob-report
+.playwright/
 .env
 dev-assets
 dev-seed.json
