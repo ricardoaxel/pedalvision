@@ -4,6 +4,8 @@
 **Next task:** ⛔ P0-02 → `docs/tasks/P0-02-ci-cd-pipeline.md` is **OWNER-BLOCKED** (GitHub repo + Actions secrets). Per owner instruction (2026-09-29), the flow **STOPS here** — do NOT start P0-03 or any other task until the owner completes the required setup.
 **Last updated:** 2026-09-29 (P0-01 done; owner-blocked stop at P0-02)
 
+> See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
+
 ## Done
 - [x] Plan v1: requirements, design, roadmap, ADRs, task system created
 - [x] Plan passed 6 external review rounds — all valid findings folded in (R1–R6); docs now internally consistent, plan **frozen for implementation**

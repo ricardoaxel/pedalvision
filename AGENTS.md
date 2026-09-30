@@ -27,6 +27,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - `docs/requirements.md` — product spec (features, non-goals, acceptance criteria)
 - `docs/design.md` — architecture & data model
 - `docs/roadmap.md` — phases / epics / task index
+- `docs/phase-guide.md` — what each phase does + which ones need owner action (and why)
 - `docs/progress.md` — current status (**read first, update last**)
 - `docs/decisions/` — ADRs (why things are the way they are)
 - `docs/tasks/` — one self-contained file per task
