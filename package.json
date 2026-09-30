@@ -9,7 +9,7 @@
 		"test": "vitest run",
 		"typecheck": "tsc --noEmit",
 		"lint": "biome ci",
-		"e2e": "echo \"todo\"",
+		"e2e": "playwright test",
 		"preview": "vite preview"
 	},
 	"dependencies": {
@@ -22,6 +22,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.14",
+		"@playwright/test": "^1.63.0",
 		"@rolldown/binding-darwin-arm64": "^1.2.11",
 		"@types/node": "^24.13.3",
 		"@types/react": "^19.2.18",
