@@ -28,4 +28,4 @@ GitHub Actions runs lint → typecheck → unit tests → build → Playwright s
 - Failed lint/type/test blocks the deploy (verified by a deliberately broken commit that is then reverted)
 
 ## Notes
-Owner must add the two Cloudflare secrets before the deploy step can pass — document in `docs/progress.md` blockers until done.
+Owner must add the two Cloudflare secrets before the deploy step can pass — document the full step-by-step owner instructions in `docs/progress.md` → Blockers (owner instruction 2026-09-29: blockers always ship with complete, concise, actionable instructions). This task stays **owner-blocked** until then — do NOT start P0-03 to "fill the gap".

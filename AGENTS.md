@@ -40,7 +40,8 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 3. Do the task. Verify its acceptance criteria by running them.
 4. Update `docs/progress.md` (done / next / blockers) — this is the handoff memory for the next session.
 5. One task per session. Commit per task (conventional commits).
-6. **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29).** If the next task — or any step of the current task — requires an owner action (GitHub repo, Cloudflare account/secrets, R2 bucket, dataset, permissions, etc. — see `docs/progress.md` → Blockers), **STOP and report to the owner exactly what they must do**. Do NOT skip ahead to an unblocked task to "fill the gap". Wait for the owner to complete the required action before continuing.
+6. **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29).** If the next task — or any step of the current task — requires an owner action (GitHub repo, Cloudflare account/secrets, R2 bucket, dataset, permissions, etc. — see `docs/progress.md` → Blockers), **STOP and report to the owner**. Do NOT skip ahead to an unblocked task to "fill the gap". Wait for the owner to complete the required action before continuing.
+7. **Blockers always ship with full, concise owner instructions (owner instruction, 2026-09-29).** For every owner-blocker you report, write the complete step-by-step instructions for the owner — exactly what to click/create/enter, in order, in plain language — but keep them as short as possible. Every step must be actionable and unambiguous (e.g. "create a repo named `pedalvision` (public), then run `git remote add origin <url>` and `git push -u origin main`"). Record them in `docs/progress.md` → Blockers so any future session can re-surface them. When the owner unblocks a task, remove that blocker from `progress.md`.
 
 ## Phase gate (MANDATORY)
 

@@ -27,4 +27,5 @@ Optional.
 - Model tiers: `build-cheap` (Kimi K2.7 Code / DeepSeek V4 Flash) · `build-strong` (Kimi K3) · `plan` (Kimi K3+).
 - When done: update the task Status, update `docs/progress.md`, commit (conventional commits).
 - **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29):** if the next task needs an owner action (GitHub/Cloudflare accounts, secrets, dataset, permissions), STOP and report what's needed — do NOT skip to another task to "fill the gap".
+- **Owner instructions must be full + concise (owner instruction, 2026-09-29):** when reporting a blocker, write the complete step-by-step instructions for the owner — exactly what to click/create/enter, in order, plain language, as short as possible, every step actionable and unambiguous. Record them in `docs/progress.md` → Blockers.
 - **NEVER run scaffolding/build tools with `--overwrite`/force flags in the repo root** — `docs/`, `AGENTS.md`, and the PDF are precious. Merge scaffold files manually.

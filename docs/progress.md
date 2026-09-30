@@ -16,7 +16,18 @@
 ## Blockers / external
 - Catalog uses a dev placeholder dataset (see `docs/decisions/003-catalog-data.md`) — **must be swapped before any public launch**
 - Permission request to the dataset maintainer: not yet sent (owner action; draft can be prepared by an agent on request)
-- GitHub repo + Actions secrets: needed for P0-02 (owner action). **Owner must:** (1) create a GitHub repo and push this repo to it, (2) add `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` as Actions secrets. Flow stops here until done.
+- ⛔ **P0-02 — GitHub repo + Actions secrets** (owner action; flow stops here). **Owner must do exactly this:**
+  1. Go to https://github.com/new → name it `pedalvision` (Public) → **Create repository** (don't add README/gitignore/license — this repo already has files).
+  2. In the local terminal, from `/Users/ashel/Documents/Programming/Pedalvision`, run:
+     ```
+     git remote add origin https://github.com/<your-username>/pedalvision.git
+     git push -u origin main
+     ```
+  3. Create a Cloudflare account at https://dash.cloudflare.com/sign-up (if you don't have one).
+  4. Open https://dash.cloudflare.com/profile/api-tokens → **Create Token** → use the **"Edit Cloudflare Workers"** template (or "Read all resources" template) → set your account/zone as applicable → **Create** → copy the token value.
+  5. Find your Cloudflare **Account ID**: https://dash.cloudflare.com → left sidebar shows it (or check the URL: `dash.cloudflare.com/<ACCOUNT_ID>`).
+  6. On GitHub: open the `pedalvision` repo → **Settings → Secrets and variables → Actions → New repository secret** → add `CLOUDFLARE_API_TOKEN` = the token from step 4, then `CLOUDFLARE_ACCOUNT_ID` = the ID from step 5.
+  7. Tell the agent P0-02 is unblocked. When unblocked, remove this blocker from `progress.md`.
 - P0-05 transformer input (the external catalog dataset): exists only on owner machine — needed when running the transformer; synthetic seed (committed) covers fresh clones/CI
 - **Sequencing note (S7):** P0-02 waits on the owner. **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks.
 
