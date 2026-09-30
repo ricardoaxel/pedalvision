@@ -40,6 +40,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 3. Do the task. Verify its acceptance criteria by running them.
 4. Update `docs/progress.md` (done / next / blockers) — this is the handoff memory for the next session.
 5. One task per session. Commit per task (conventional commits).
+6. **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29).** If the next task — or any step of the current task — requires an owner action (GitHub repo, Cloudflare account/secrets, R2 bucket, dataset, permissions, etc. — see `docs/progress.md` → Blockers), **STOP and report to the owner exactly what they must do**. Do NOT skip ahead to an unblocked task to "fill the gap". Wait for the owner to complete the required action before continuing.
 
 ## Phase gate (MANDATORY)
 

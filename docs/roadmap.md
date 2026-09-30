@@ -11,7 +11,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | todo |
 | P0-05 | Catalog schema + import transformer + synthetic seed | todo |
 
-> **Sequencing (S7):** P0-02 needs owner actions (GitHub repo + Actions secrets). P0-04/P0-05 no longer depend on the owner (Pages-shipped assets, committed synthetic seed). **P1-01 has zero dependencies** — after P0-01 lands, run P1-01 (pure geometry) to fill any gap while owner-blocked tasks wait.
+> **Sequencing (S7):** P0-02 needs owner actions (GitHub repo + Actions secrets). P0-04/P0-05 no longer depend on the owner (Pages-shipped assets, committed synthetic seed). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead to unblocked tasks to fill the gap (see AGENTS.md §Session protocol rule 6).
 
 ## P1 — Canvas core
 | Task | Title | Status |
