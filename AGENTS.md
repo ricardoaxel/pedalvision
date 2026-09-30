@@ -67,3 +67,13 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - Biome for lint/format — run `pnpm lint` before committing.
 - Tests: Vitest for logic (geometry, scale, serialization), Playwright (chromium only) for canvas smoke flows.
 - Keep PRs small: one task = one PR.
+
+## PR quality standard (MANDATORY — owner instruction, 2026-09-30)
+
+Every PR description MUST include all four sections:
+1. **Summary** — what changed and why (tie back to the task + roadmap item).
+2. **Changes** — files/folders touched and the key decisions taken (incl. any deviations from the task file, and why).
+3. **Testing steps** — exactly what was run to verify (commands + their results), plus any manual checks performed. Must map to the task's acceptance criteria.
+4. **Screenshots** — attach Playwright screenshots whenever there is a visible UI change (canvas, panels, modals, theming). For P1+ canvas work this is expected on every PR. Use Playwright's screenshot API on the smoke flow and attach the images to the PR.
+
+A PR that meets the full standard (all four sections + CI green) is **auto-approved**: the session may merge it without waiting for the owner. If the standard is incomplete (missing sections, no screenshots where UI changed, CI red), the session must NOT merge — fix the gap first or surface it to the owner.
