@@ -27,6 +27,10 @@ concurrency:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
@@ -75,9 +79,26 @@ jobs:
         run: pnpm e2e
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=pedalvision
-          comment: true
+          # Self-bootstrap: create the Pages project on first deploy; skip if it
+          # already exists (the `|| true` swallows the "already exists" error).
+          preCommands: |
+            wrangler pages project create pedalvision --production-branch main || true
+          command: pages deploy dist --project-name=pedalvision --commit-dirty=true
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Preview deployed: ${{ steps.deploy.outputs.deployment-url }}`,
+            });
