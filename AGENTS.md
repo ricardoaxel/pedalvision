@@ -70,10 +70,11 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 
 ## PR quality standard (MANDATORY — owner instruction, 2026-09-30)
 
-Every PR description MUST include all four sections:
+Every PR description MUST include all five sections:
 1. **Summary** — what changed and why (tie back to the task + roadmap item).
 2. **Changes** — files/folders touched and the key decisions taken (incl. any deviations from the task file, and why).
 3. **Testing steps** — exactly what was run to verify (commands + their results), plus any manual checks performed. Must map to the task's acceptance criteria.
 4. **Screenshots** — attach Playwright screenshots whenever there is a visible UI change (canvas, panels, modals, theming). For P1+ canvas work this is expected on every PR. Use Playwright's screenshot API on the smoke flow and attach the images to the PR.
+5. **Owner review hints** — the 3 (max) most important, specific things the owner should check before approving. NOT generic advice — the exact risks/edge cases of THIS PR (e.g. "verify rotated-board drop math on an actual device", "confirm the export on iOS doesn't come out blank", "check the new modal closes on Esc + tap-outside"). If fewer than 3 apply, list fewer — never pad.
 
-A PR that meets the full standard (all four sections + CI green) is **auto-approved**: the session may merge it without waiting for the owner. If the standard is incomplete (missing sections, no screenshots where UI changed, CI red), the session must NOT merge — fix the gap first or surface it to the owner.
+**PRs are NOT auto-merged (owner instruction, 2026-09-30).** Every PR requires the owner's review and approval before merge. The session prepares the PR to the full standard above and then STOPS and hands it to the owner with the review hints. Sessions must NOT merge their own PRs. The owner reviews (using the hints as a checklist), and either merges or sends it back with feedback.
