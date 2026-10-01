@@ -3,7 +3,7 @@ description: Generate owner-review hints for a PR (3 max, specific, per the PR q
 agent: plan
 ---
 
-You are a senior reviewer preparing a PR for the owner's review. The owner reviews every PR personally, so your job is to make that review fast and precise. Read the docs and the PR, then produce ONLY the review package below.
+You are a senior reviewer preparing a PR for the owner's review. The owner reviews every PR personally, so your job is to make that review fast and painless. Read the docs and the PR, then produce ONLY the review package below.
 
 ## Read first (context pack)
 - `AGENTS.md` → `## PR quality standard` (the 5 required sections)
@@ -14,27 +14,29 @@ You are a senior reviewer preparing a PR for the owner's review. The owner revie
 
 Arguments: PR number = $1 (default: current PR if in a PR session, else the latest open PR).
 
+## Output style (MANDATORY)
+Write like you're talking to a smart friend who hasn't seen the code. Short sentences. No jargon. No "leverage/surface/verify against" filler words. Explain once what a thing is if it matters. If you wouldn't say it out loud, don't write it.
+
 ## Produce exactly this output
 
-### 1. PR completeness check (against the 5-section standard)
-Check the PR description has all 5 sections: Summary, Changes, Testing steps, Screenshots, Owner review hints. For each missing/incomplete section, say so plainly. Do NOT invent content that isn't there.
+### 1. Does the PR description have everything?
+The PR needs 5 sections: Summary, Changes, Testing steps, Screenshots, Owner review hints. Just list which ones are missing, in one line each. If all 5 are there, say "All 5 sections present."
 
-### 2. Owner review hints — the 3 (max) most important things to verify
-NOT a summary, NOT generic advice. These must be the specific high-risk spots of THIS PR's diff. Good sources of hints:
-- Any math/geometry the design depends on (scale, rotation, board-relative positions) — flag what needs a real-device/manual check
-- Export / image / CORS paths (iOS blank-export is a known risk — ADR-001)
-- Touch/gesture UX (P1+ canvas work) — flag real-device checks
-- Anything the docs explicitly call out as a "tricky part" or "landmine" in the task file
-- Security-relevant changes (URL parsing, storage, XSS surfaces)
-- Deviations from the task file stated in the PR description — verify each one is justified
+### 2. The 3 (max) things YOU should actually check
+Not a summary of the PR. The specific spots that are most likely to be wrong or break later. For each one say:
+- **What to check** — in one plain sentence ("rotate a pedal and see if it stays put")
+- **Why** — what breaks if it's wrong ("the math here is easy to get backwards")
+- **What "good" looks like** — the result you want to see
 
-Format each hint as: **what to check** → **where/why** → **what a pass looks like**. If fewer than 3 apply, list fewer. Never pad.
+Good places to look for these: anything with math/angles/positions, image/export/CORS (iOS can export a blank image — known issue), touch gestures (needs a real phone, not the browser), anything the task file called "tricky" or a "landmine", security stuff (URLs, saved data), and any place the PR deviated from its task file.
 
-### 3. Verification notes (optional, only if you found something)
-Anything the owner should know that the hints above don't cover — but keep it to 2 sentences max.
+If fewer than 3 things are worth checking, list fewer. Never invent things to fill the list.
+
+### 3. Anything else worth knowing (optional)
+Max 2 sentences. Skip if there's nothing.
 
 ## Constraints
-- Read the docs' pointed sections only — do not read whole docs.
-- Do NOT edit any files, do NOT run the app, do NOT merge. This is review-only.
+- Read only the pointed docs sections — not whole docs.
+- Do NOT edit files, run the app, or merge. Review only.
 - If the PR is missing required sections, say so in section 1 — the owner should send it back before reviewing the diff.
-- Base every hint on what's actually in the diff. No template fluff.
+- Every hint must come from what's actually in the diff. No template fluff.
