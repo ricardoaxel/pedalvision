@@ -43,6 +43,14 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 5. One task per session. Commit per task (conventional commits).
 6. **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29).** If the next task — or any step of the current task — requires an owner action (GitHub repo, Cloudflare account/secrets, R2 bucket, dataset, permissions, etc. — see `docs/progress.md` → Blockers), **STOP and report to the owner**. Do NOT skip ahead to an unblocked task to "fill the gap". Wait for the owner to complete the required action before continuing.
 7. **Blockers always ship with full, concise owner instructions (owner instruction, 2026-09-29).** For every owner-blocker you report, write the complete step-by-step instructions for the owner — exactly what to click/create/enter, in order, in plain language — but keep them as short as possible. Every step must be actionable and unambiguous (e.g. "create a repo named `pedalvision` (public), then run `git remote add origin <url>` and `git push -u origin main`"). Record them in `docs/progress.md` → Blockers so any future session can re-surface them. When the owner unblocks a task, remove that blocker from `progress.md`.
+8. **Design-affecting tasks are gated (owner instruction, 2026-10-12).** If the current task touches design (tokens, theming, colors, typography, spacing, layout, components, or anything visibly rendered in the UI), follow the **Design gate** below. Never hand-tune a palette or restyle on owner feedback without running the designer agent first.
+
+## Design gate (MANDATORY — owner instruction, 2026-10-12)
+
+- **The `designer` agent is the design authority** — a staff-level UX/UI expert (`.opencode/agent/designer.md`). Every design-affecting task — tokens, theming, layout, components, canvas visuals, responsive chrome — must be **reviewed by the designer agent before commit**, and its findings folded in. Run it with `/design-review` (optionally `/design-review <PR|propose>`). Rationale: docs/decisions/005-design-governance.md.
+- **If the owner does a design task manually** (e.g. "this looks bad, restyle it"), ALWAYS propose to run the designer agent first — never immediately hand-edit colors/tokens. Present the designer's proposal and get the owner's approval before implementing (owner chooses direction; agents do not).
+- **New/changed visual directions are owner-approved.** The designer produces the proposal; the owner approves it; only then is it implemented. Record the approval + the direction name in `docs/progress.md`.
+- Design PRs must state in the PR description which designer review ran and its verdict, and (for P1+ canvas/UI work) the owner's approval of the direction.
 
 ## Phase gate (MANDATORY)
 
@@ -56,6 +64,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - **cm is the source of truth** for all geometry. Pixels exist only at render time: `px = cm × PX_PER_CM × zoom`.
 - Apply zoom/pan to the **stage transform only**. Never scale pedal/board objects.
 - Images must be same-origin (or CORS-enabled CDN) — cross-origin images break canvas export.
+- **Minimal dependencies (owner instruction, 2026-10-12).** The project must stay easy to update and maintain, without constant dependency churn. Prefer **zero new dependencies**; every new dependency (runtime or dev) must earn its place and be justified with a note in the task file or a new ADR. When a dep is unavoidable, prefer ones that are stable/evergreen (small surface, few transitive deps, old code moves slowly) over hot churn. Re-evaluate existing deps for removal when they stop paying for themselves.
 - No new runtime dependencies without a note in the task file or a new ADR.
 - Do not read whole docs unless the task says so — read the pointed sections only.
 - Code, comments, and UI text in English.
