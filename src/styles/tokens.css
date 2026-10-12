@@ -1,0 +1,78 @@
+/*
+ * Pedalvision design tokens — the single source of truth for visual values.
+ * Dark is the default (:root); light is a variables-only override.
+ * Konva cannot read CSS variables — keep src/styles/theme.ts in sync (tested).
+ */
+
+:root {
+	color-scheme: dark;
+
+	/* Canvas */
+	--color-canvas-bg: #14161a;
+	--color-grid-dot: #2f343d;
+
+	/* Surfaces & ink */
+	--color-surface: #1b1e24;
+	--color-surface-raised: #23272f;
+	--color-border: #2c313a;
+	--color-ink: #eceef2;
+	--color-ink-muted: #9aa1ad;
+
+	/* Accent & status */
+	--color-accent: #f0a020;
+	--color-accent-strong: #ffb63d;
+	--color-on-accent: #1b1200;
+	--color-warning: #e6a23c;
+	--color-danger: #e05a5a;
+	--color-cable: #c8ccd4;
+
+	/* Spacing scale (4px base) */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+
+	/* Radii */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-pill: 999px;
+
+	/* Typography */
+	--font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-md: 1rem;
+	--font-size-lg: 1.25rem;
+	--font-size-xl: 1.75rem;
+
+	/* Dot grid */
+	--grid-dot-size: 24px;
+	--grid-dot-radius: 1px;
+}
+
+[data-theme="light"] {
+	color-scheme: light;
+
+	/* Canvas */
+	--color-canvas-bg: #f5f6f8;
+	--color-grid-dot: #c8ccd4;
+
+	/* Surfaces & ink */
+	--color-surface: #ffffff;
+	--color-surface-raised: #f0f1f4;
+	--color-border: #d7dae0;
+	--color-ink: #1b1e24;
+	--color-ink-muted: #5b6270;
+
+	/* Accent & status */
+	--color-accent: #b26b00;
+	--color-accent-strong: #8a5300;
+	--color-on-accent: #ffffff;
+	--color-warning: #b7791f;
+	--color-danger: #c53030;
+	--color-cable: #4a4f59;
+}

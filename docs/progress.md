@@ -1,12 +1,13 @@
 # Progress
 
 **Current phase:** P0 — Foundation
-**Next task:** P0-03 → `docs/tasks/P0-03-design-tokens.md` (**UNBLOCKED**)
-**Last updated:** 2026-09-30 (P0-02 done)
+**Next task:** P0-04 → `docs/tasks/P0-04-asset-cdn-skeleton.md` (**UNBLOCKED**)
+**Last updated:** 2026-10-12 (P0-03 done)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
 ## Done
+- [x] P0-03 — Design tokens: all visual values in `src/styles/tokens.css` (dark default, light = variables-only `[data-theme="light"]` override); `src/styles/theme.ts` mirrors canvas tokens (grid dot, canvas bg, selection/accent, cable) with a Vitest test asserting both theme scopes stay in sync with tokens.css; global reset + token-driven dot-grid class; temporary in-App toggle proving variables-only switch. Also added `node` to tsconfig types (test must read tokens.css to compare values), adjusted a review-rule grep scope (no hex in components). Acceptance green: lint/build/test/e2e pass, computed-style check + screenshots confirm the flip recolors all chrome with zero component edits, and `grep '#…' src/components src/App.tsx` is clean.
 - [x] P0-02 — CI/CD pipeline: GitHub Actions runs lint → typecheck → unit tests → build → Playwright smoke (chromium, `vite preview`, port 4174) on every PR/push to main; deploys to Cloudflare Pages (PR = preview URL, main = production). Pipeline is self-bootstrapping (creates the `pedalvision` Pages project on first deploy) and posts the preview URL as a PR comment.
 - [x] Plan v1: requirements, design, roadmap, ADRs, task system created
 - [x] Plan passed 6 external review rounds — all valid findings folded in (R1–R6); docs now internally consistent, plan **frozen for implementation**
@@ -23,6 +24,7 @@
 - **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset, P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03/P0-04 are NOT owner-blocked.
 
 ## Session log
+- 2026-10-12 — **P0-03 done.** Design tokens (tokens.css dark+light scopes, theme.ts canvas map + sync test, reset, dot-grid class, App demo chrome + temporary toggle). Two implementation wrinkles solved: Vitest's `?raw` CSS import returns empty in this stack → test reads tokens.css via `node:fs`; and Biome has no hex-in-components rule, so hardcoded color prohibition stays a PR review rule (noted in PR #2 description). Added `node` to `tsconfig.app.json` types for the fs read. Computed-style check + Playwright screenshots (dark + light) confirm the `data-theme` flip recolors all chrome with zero component edits; grep for hex in `src/components` + `src/App.tsx` is clean. Acceptance green: `pnpm lint`/`pnpm test`(3)/`pnpm build`/`pnpm e2e` all pass. Next: P0-04 (asset serving).
 - 2026-09-22 — Planning session: created AGENTS.md + full docs/ (requirements, design, roadmap, 4 ADRs, task system, P0–P1 tasks)
 - 2026-09-22 — Review rounds 1–6 applied; plan frozen. **Next: P0-01 (repo scaffold).** Stop doc-only reviews; switch to post-phase code reviews.
 - 2026-09-29 — P0-01 attempt wiped docs via `--overwrite`; docs restored; git init'd; P0-01 revised to forbid `--overwrite`.
