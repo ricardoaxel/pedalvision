@@ -1,8 +1,8 @@
 # Progress
 
 **Current phase:** P0 — Foundation
-**Next task:** P0-04 → `docs/tasks/P0-04-asset-cdn-skeleton.md` (**UNBLOCKED**)
-**Last updated:** 2026-10-12 (P0-03 done — Studio Clay)
+**Next task:** P0-03 (direction decision PENDING) → owner picks one of 4 options in **PR #3** (`design-options`); then P0-03 tokens are redone to the chosen direction. P0-04 follows.
+**Last updated:** 2026-10-12 (design decision pending — PR #3)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
@@ -16,6 +16,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
+- [ ] **Design direction decision (2026-10-12):** owner rejected "Studio Clay" (PR #2) as still too orange. Designer agent produced **4 cold-only directions** (Ashen Editorial, Verdigris, Indigo Dusk, Blueprint) — different palettes + fonts, all AA. Rendered dark+light for each and presented in **PR #3** (`design-options`, docs-only). **Waiting on owner to pick.** Designer recommends Blueprint (runner-up Ashen Editorial). On pick: implement chosen tokens on P0-03, refresh PR #2, close/keep PR #3 as the record.
 - [x] **2026-09-29 INCIDENT:** `pnpm create vite . --overwrite` deleted `docs/`, `AGENTS.md`, and the Notion PDF (repo wasn't a git repo → no recovery from git). Docs fully restored from planning-session context; **git repo initialized** (root commit `fe22a1c`). PDF must be re-exported from Notion.
 
 ## Blockers / external
@@ -25,6 +26,7 @@
 - **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset, P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03/P0-04 are NOT owner-blocked.
 
 ## Session log
+- 2026-10-12 — **Design direction decision opened.** Owner rejected Studio Clay as still too orange and asked for multiple options (new palettes + fonts). Designer agent researched 2025/2026 trends and produced **4 distinct cold-only directions**: Ashen Editorial (cobalt + serif), Verdigris (blue-green patina), Indigo Dusk (violet/indigo calm-tech), Blueprint (navy + cyan, mono-forward drafting). All AA-verified, token names + dark-default mechanism unchanged, system-font stacks rendered (zero new deps). Rendered each dark+light (spot-verified computed canvas colors) → **PR #3** (`design-options`, docs-only, base `main`). Designer recommends **Blueprint**; runner-up Ashen Editorial. **Owner to pick a direction**, then P0-03 tokens are redone and PR #2 updated.
 - 2026-10-12 — **P0-03 redesign done ("Studio Clay").** Owner rejected the v1 dark-slate+amber palette as "like other pedal planners" and instructed: design work is now gated behind a **designer agent** (staff-level UX/UI expert). Plan updated: AGENTS.md **Design gate** (mandatory designer review for all design tasks; if the owner does design manually, always propose the designer first; new directions need owner approval), new `.opencode/agent/designer.md` + `/design-review` command, **ADR-005** (design governance), `design.md` + P0-03 task notes, and a **minimal-dependencies** owner principle in AGENTS.md hard constraints (prefer zero new deps, evergreen choices only, justify per task/ADR). Designer agent researched 2026 trends (Linear/Geist/Raycast systems + trend roundups) and proposed **"Studio Clay"** (warm graphite + desaturated clay accent, luminance ladder, cream light). **Owner approved as-is with system fonts.** Implemented: tokens.css values swapped, theme.ts mirrored (sync test green), type discipline tokens, demo chrome untouched (colors only → proves variables-only theming). Re-verified: `pnpm lint`/`test`(3)/`build`/`e2e` pass, computed-style flip check (canvas `#171614`↔`#f4f1ed`, ink `#f3f0ed`↔`#1f1c19`, panel `#201e1b`↔`#fbfaf8`, identical classes), grep for hex in components clean, screenshots regenerated. Note: Vitest `?raw` CSS import returns empty in this stack → theme sync test reads tokens.css via `node:fs` (tsconfig `types` includes `node`).
 - 2026-10-12 — **P0-03 v1 submitted.** Design tokens first pass (mechanism + dark-slate+amber palette). Owner rejected palette; direction went through the designer agent; v1 superseded by Studio Clay. PR #2 updated and handed back to the owner for review.
 - 2026-09-22 — Planning session: created AGENTS.md + full docs/ (requirements, design, roadmap, 4 ADRs, task system, P0–P1 tasks)
