@@ -16,6 +16,7 @@ body {
 	margin: 0;
 	font-family: var(--font-sans);
 	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-normal);
 	color: var(--color-ink);
 	background-color: var(--color-canvas-bg);
 	font-synthesis: none;
@@ -63,12 +64,15 @@ p {
 
 .panel__title {
 	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--tracking-tight);
 	line-height: 1.2;
 	color: var(--color-ink);
 }
 
 .panel__text {
 	color: var(--color-ink-muted);
+	line-height: 1.5;
 }
 
 .badges {
@@ -81,7 +85,8 @@ p {
 	padding: var(--space-1) var(--space-3);
 	border-radius: var(--radius-pill);
 	font-size: var(--font-size-xs);
-	font-weight: 600;
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-wide);
 	color: var(--color-on-accent);
 }
 
@@ -100,7 +105,7 @@ p {
 .button {
 	padding: var(--space-2) var(--space-4);
 	font: inherit;
-	font-weight: 600;
+	font-weight: var(--font-weight-semibold);
 	color: var(--color-on-accent);
 	background-color: var(--color-accent-strong);
 	border: 1px solid transparent;
