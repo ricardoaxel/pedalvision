@@ -63,18 +63,24 @@ p {
 	box-shadow: var(--shadow-raised);
 }
 
-/* Titles + labels: Baseline mono (drafting voice). */
-.panel__title {
+/* Mono is "instrumentation" — eyebrow labels, not prose. */
+.panel__eyebrow {
 	font-family: var(--font-mono);
-	font-size: var(--font-size-xl);
+	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-medium);
-	letter-spacing: var(--tracking-title);
-	line-height: 1.2;
+	letter-spacing: var(--tracking-wide);
 	text-transform: uppercase;
+	color: var(--color-ink-eyebrow);
+}
+
+.panel__title {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--tracking-tight);
+	line-height: 1.2;
 	color: var(--color-ink);
 }
 
-/* Description: Draft-2 humanist sans. */
 .panel__text {
 	color: var(--color-ink-muted);
 	line-height: 1.5;
@@ -87,30 +93,36 @@ p {
 }
 
 .badge {
+	display: inline-flex;
+	align-items: center;
 	padding: var(--space-1) var(--space-3);
-	border-radius: var(--radius-pill);
-	font-family: var(--font-mono);
+	border: 1px solid transparent;
+	border-radius: var(--radius-md);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-medium);
 	letter-spacing: var(--tracking-wide);
-	text-transform: uppercase;
-	color: var(--color-on-accent);
 }
 
 .badge--accent {
 	background-color: var(--color-accent);
+	color: var(--color-on-accent);
 }
 
+/* Status pills are quiet: colored ink on a tinted surface, not loud fills. */
 .badge--warning {
-	background-color: var(--color-warning);
+	background-color: var(--color-warning-surface);
+	border-color: var(--color-warning-border);
+	color: var(--color-warning);
 }
 
 .badge--danger {
-	background-color: var(--color-danger);
+	background-color: var(--color-danger-surface);
+	border-color: var(--color-danger-border);
+	color: var(--color-danger);
 }
 
-/* Button: Draft-2 humanist sans. */
 .button {
+	justify-self: stretch;
 	padding: var(--space-2) var(--space-4);
 	font: inherit;
 	font-weight: var(--font-weight-semibold);
