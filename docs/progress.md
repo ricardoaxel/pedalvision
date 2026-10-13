@@ -1,8 +1,8 @@
 # Progress
 
 **Current phase:** P0 — Foundation
-**Next task:** P0-05 → `docs/tasks/P0-05-catalog-schema-and-seed.md` (Catalog schema + import transformer + synthetic seed; **unblocked**, build-strong)
-**Last updated:** 2026-10-13 (P0-04 merged — PR #4)
+**Next task:** P0-05 (in review — PR #5, pending merge) → `docs/tasks/P0-05-catalog-schema-and-seed.md` (Catalog schema + import transformer + synthetic seed; **unblocked**, build-strong)
+**Last updated:** 2026-10-13 (P0-05 in review — PR #5)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
@@ -16,7 +16,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- (nothing — P0-04 merged; ready for P0-05)
+- [ ] **P0-05 — Catalog schema + import transformer + synthetic seed (in review — PR #5, pending merge).** Zod `CatalogPedal`/`CatalogBoard` (+ `category`, `jacks.pos`, `power`, `variantOf`, `source` enum), `src/catalog/load.ts` (fail-fast validation, duplicate-id guard), committed synthetic seed (`src/catalog/data/{pedals,boards}.json` + 124 procedural 800/350 PNGs in `public/pedal-assets/`), generic `tools/catalog-transform` CLI (inches→cm, slugs, variant→`variantOf`, `--seed`), invented fixture, tests. Deviations (documented): `source` is a zod enum (design.md reconciled); labels drawn as bitmap shapes not SVG `<text>` (cross-platform determinism). New dev-only dep `sharp@0.35.5` (exact, justified in the task file). Code review loop: R1 changes-required → fixed → **R2 approve** (`ed0ab6f`, `04968f9`). Not design-affecting. Acceptance green (test 43 / typecheck / lint / build / e2e / dev serves asset / grep clean).
 
 ## Follow-ups
 - (none — P0-03 review nits resolved; see session log)
@@ -29,9 +29,10 @@
 - Catalog uses a dev placeholder dataset (see `docs/decisions/003-catalog-data.md`) — **must be swapped before any public launch**
 - Permission request to the dataset maintainer: not yet sent (owner action; draft can be prepared by an agent on request)
 - P0-05 transformer input (the external catalog dataset): exists only on owner machine — needed when running the transformer; synthetic seed (committed) covers fresh clones/CI
-- **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset (only for the real import — the committed synthetic seed covers dev/CI), P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03 and P0-04 are **done** (2026-10-13). **Next = P0-05** (unblocked, build-strong). Neither P0-04 nor P0-05 is owner-blocked.
+- **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset (only for the real import — the committed synthetic seed covers dev/CI), P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03 and P0-04 are **done** (2026-10-13). **P0-05 is in review (PR #5, pending merge)** — Next stays P0-05 until merged (AGENTS rule 9). Neither P0-04 nor P0-05 is owner-blocked.
 
 ## Session log
+- 2026-10-13 — **P0-05 implemented; PR #5 open (awaiting owner review/merge).** Added the catalog schema (`src/catalog/schema.ts`), loader (`load.ts`), committed synthetic seed + 124 procedural PNGs, and the `tools/catalog-transform` CLI (convert + `--seed`). Code review loop ran: **R1 changes-required** (colorway footprints not matching their base, no committed-artifact freshness guard, converter could emit invalid/dangling data, doc nits) → fixed (`ed0ab6f`); **R2 approve** (nits folded in, `04968f9`). Acceptance green: `test` 43, `typecheck`, `lint`, `build` (seed PNGs in `dist/`, no placeholder), `e2e`, `pnpm dev` serves a seed asset (200), provenance `grep` clean. Deviations documented: `source` zod enum (design.md reconciled); bitmap-shape labels (not SVG `<text>`) for cross-platform PNG determinism; `sharp@0.35.5` exact dev-only dep. Not design-affecting. Owner-review hints in PR #5 (cross-platform PNG determinism on Ubuntu CI, provenance, enum/sharp deviations). Also (separate, owner-requested process change): reviewer agents now run `bash` without prompting (`4b8a2f8`).
 - 2026-10-13 — **P0-04 MERGED (PR #4, `6848e75`); Next = P0-05.** Bookkeeping reconciled: `progress.md` header + Done, `roadmap.md`, and the P0-04 task status now all show P0-04 done; Next advanced to P0-05.
 - 2026-10-13 — **P0-04 code review loop run (backfill — the loop was skipped when PR #4 was opened).** Merged `main` (code-reviewer agent + loop) into `p0-04-asset-serving` (`b4b27bb`), then ran the `code-reviewer` on the branch vs `main`. **Round 1 verdict: approve** — no blockers/should-fixes; acceptance reproduced (`test` 3 files·5 tests, `typecheck`, `lint` clean, build copies assets, `grep` empty). Nits: (1) README cited the wrong field for the filename-charset guarantee → fixed (names the `image` field + P0-05 schema); (2) roadmap used `in review (PR #4)` instead of the `in review — PR #4` format → fixed; (3) README ships to `dist/` (per-spec, accepted); (4) placeholders still ship until P0-05 (already a tracked follow-up). One round used; no re-review needed. Outcome recorded in PR #4.
 - 2026-10-13 — **Code review governance added (owner instruction).** New external `code-reviewer` agent (`.opencode/agent/code-reviewer.md`, staff-level, read-only) + `/code-review` (single pass) and `/code-review-loop` (≤2 rounds review→fix) commands. AGENTS.md gained a **Code review loop** section + protocol step 3; `docs/tasks/README.md` gained the rule; **ADR-006** documents the why. Flow is now: implement → verify acceptance → **code review loop (≤2 rounds)** → open PR (5-section standard) → owner reviews/merges. After round 2, if issues remain, the builder stops and proposes more rounds to the owner. (Direct to main — process/meta change, owner-requested.)

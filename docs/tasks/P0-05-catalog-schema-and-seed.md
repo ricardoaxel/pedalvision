@@ -1,6 +1,6 @@
 # P0-05: Catalog schema + import transformer + synthetic seed
 
-**Phase:** P0 · **Status:** todo · **Model:** build-strong
+**Phase:** P0 · **Status:** in review — PR #5 · **Model:** build-strong
 
 ## Goal
 Our own catalog schema (zod) with types + loaders exists per design.md, plus a generic one-off transformer that converts an external catalog JSON into our schema, plus a synthetic seed (~50 pedals incl. a few supplies, ~10 boards) with procedural PNGs, usable in fresh clones and CI.
