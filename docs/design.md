@@ -58,7 +58,7 @@ type CatalogPedal = {
   source: SourceTag     // provenance tag — zod enum: licensed | brand-assets | community | own | placeholder | synthetic (ADR-003; never a name/URL)
   links?: { label: string, url: string }[] // v2 affiliate (locale-aware)
 }
-type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, source: string } // tiers/risers DEFERRED to v2 (S4)
+type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, source: SourceTag } // tiers/risers DEFERRED to v2 (S4)
 
 // scene (user data)
 type PlacedItem = { uid: string, refId: string, kind: 'pedal'|'supply', x: number, y: number, rotationDeg: number, z: number } // x,y = cm relative to parent board (or world if boardUid null); refId resolves to a catalog item (its `category` must match `kind`) OR an entry in Scene.customPedals

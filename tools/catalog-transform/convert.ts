@@ -138,14 +138,16 @@ export function convertExternalCatalog(
 		});
 	}
 
-	// Referential check: a variant whose base was skipped would dangle.
-	for (const pedal of pedals) {
+	// Drop variants whose base was skipped — never ship a dangling reference.
+	const validPedals = pedals.filter((pedal) => {
 		if (pedal.variantOf && !seen.has(pedal.variantOf)) {
 			warn(
-				`"${pedal.id}" references missing variant base "${pedal.variantOf}"`,
+				`dropped "${pedal.id}": variant base "${pedal.variantOf}" is missing`,
 			);
+			return false;
 		}
-	}
+		return true;
+	});
 
-	return { pedals, warnings };
+	return { pedals: validPedals, warnings };
 }

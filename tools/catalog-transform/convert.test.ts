@@ -41,6 +41,11 @@ describe("convertExternalCatalog", () => {
 		expect(result.warnings.some((w) => w.includes("duplicate"))).toBe(true);
 	});
 
+	it("drops variants whose base is missing", () => {
+		expect(result.pedals.some((p) => p.id === "acme-orphan-blue")).toBe(false);
+		expect(result.warnings.some((w) => w.includes("acme-orphan"))).toBe(true);
+	});
+
 	it("converts inches to cm and slugifies ids", () => {
 		const fuzz = result.pedals.find((p) => p.id === "acme-big-fuzz");
 		expect(fuzz).toBeDefined();
