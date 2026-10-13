@@ -57,6 +57,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - **The `design-reviewer` agent (`.opencode/agent/design-reviewer.md`) reviews the actual rendered pixels** — it opens the screenshots with a vision model (default `opencode-go/deepseek-v4-flash-vision-exp`), not the code. Run it with `/visual-review <paths|PR n>`.
 - **Heavy design tasks run a designer⇄reviewer loop of up to 3 iterations, only after the owner approves running it.** **Every iteration = reviewer feedback (on the rendered pixels) → designer revision → the change implemented in code → re-render (dark + light).** A round that only produces comments is NOT a round — implementation is mandatory each time. Stop early only on a reviewer "approve". Orchestrate with `/design-loop` (or step through manually).
 - **The loop is gated on owner approval before it starts**, and the final result still goes to the owner for approval. Record iteration count, reviewer verdict, and approval in `docs/progress.md`.
+- **Commit per round (owner instruction, 2026-10-13).** Each loop iteration is its own commit (round 1, round 2, …), so the owner can revert to any round ("go back to round X") with a simple `git revert`/checkout. Never squash multiple rounds into one commit.
 - The reviewer is authoritative only for *what is on screen*; the designer remains the design authority. If they conflict, present both to the owner.
 
 ## Phase gate (MANDATORY)
