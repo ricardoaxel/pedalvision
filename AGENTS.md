@@ -52,6 +52,13 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - **New/changed visual directions are owner-approved.** The designer produces the proposal; the owner approves it; only then is it implemented. Record the approval + the direction name in `docs/progress.md`.
 - Design PRs must state in the PR description which designer review ran and its verdict, and (for P1+ canvas/UI work) the owner's approval of the direction.
 
+### Heavy design tasks → designer⇄reviewer loop (owner instruction, 2026-10-12)
+- **A "heavy design task"** is any task that establishes or changes a visual direction: a new/redone palette or theme, a new component system, canvas visuals, or a page/chrome overhaul. Small token tweaks / bug-fixes inside an already-approved direction are NOT heavy — the designer review alone (above) is enough.
+- **The `design-reviewer` agent (`.opencode/agent/design-reviewer.md`) reviews the actual rendered pixels** — it opens the screenshots with a vision model (default `opencode-go/deepseek-v4-flash-vision-exp`), not the code. Run it with `/visual-review <paths|PR n>`.
+- **Heavy design tasks run a designer⇄reviewer loop of up to 3 iterations, only after the owner approves running it.** Each iteration: designer proposes/revises → implementing agent applies it to code → render screenshots (dark + light) → reviewer sees the screenshots and critiques → feed findings back. Stop early on an "approve". Orchestrate with `/design-loop` (or step through manually).
+- **The loop is gated on owner approval before it starts**, and the final result still goes to the owner for approval. Record iteration count, reviewer verdict, and approval in `docs/progress.md`.
+- The reviewer is authoritative only for *what is on screen*; the designer remains the design authority. If they conflict, present both to the owner.
+
 ## Phase gate (MANDATORY)
 
 - When **all tasks of a phase** (per `docs/roadmap.md`) are committed, do NOT start the next phase directly.

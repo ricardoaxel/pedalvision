@@ -1,6 +1,6 @@
 ---
 description: Staff-level UX/UI design expert. Proposes and reviews all visual design (tokens, theming, layout, components, canvas visuals) against current design trends and best practices. Use for every design task and design PR review.
-mode: subagent
+mode: all
 temperature: 0.8
 permission:
   edit: deny
