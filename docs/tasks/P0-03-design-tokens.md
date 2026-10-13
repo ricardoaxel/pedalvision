@@ -1,6 +1,6 @@
 # P0-03: Design tokens
 
-**Phase:** P0 · **Status:** todo · **Model:** build-cheap
+**Phase:** P0 · **Status:** done (Blueprint, merged 2026-10-13 in PR #2) · **Model:** build-cheap
 
 ## Revision (2026-10-12 — owner feedback, plan update)
 The first delivered palette (dark slate + amber) was rejected by the owner as too close to generic pedal-planner sites. Plan updated per owner instruction: **visual direction is now gated** — the `designer` agent (`/design-review`, `.opencode/agent/designer.md`, ADR-005) researches current design trends, produces the proposal, and the owner approves it before any palette is coded. This task is re-run under that gate. Additional step added:
@@ -33,3 +33,9 @@ All visual values live in CSS custom properties (`src/styles/tokens.css`): color
 
 ## Notes
 Palette direction is decided by the **designer agent** per the Design gate (AGENTS.md + ADR-005) and **approved by the owner before implementation**. The original "dark slate + amber (guitar-amp)" hint was rejected by the owner (2026-10-12) as clichéd — do not default to it.
+
+## Delivered
+Direction: **"Blueprint"** (neutral canvas, cool chrome, one cyan accent, mono for measurement labels, quiet tinted status pills; dark default + light override). Owner-approved after a designer⇄reviewer loop (R1–R7). `src/styles/tokens.css` + mirrored `src/styles/theme.ts` (sync-tested via `theme.test.ts`), demo chrome in `src/index.css` token-only. Merged in PR #2 (`5680567`).
+
+## Follow-up (non-blocking, before P1)
+- **`tsconfig.app.json` node-types leak:** `"node"` was added to the app's `types` so `theme.test.ts` can `import { readFileSync } from "node:fs"`. This lets browser code typecheck against Node globals. Clean up by scoping node types to the test (separate tsconfig) or reading `tokens.css` via a Vitest/Vite-friendly import. See `docs/progress.md` → Follow-ups.

@@ -6,12 +6,12 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | Task | Title | Status |
 |---|---|---|
 | P0-01 | Repo scaffold (Vite + React + TS + Konva + Zustand) | done |
-| P0-02 | CI/CD pipeline (GitHub Actions → Cloudflare) | todo |
-| P0-03 | Design tokens (CSS vars + JS theme map, dark default) | todo |
+| P0-02 | CI/CD pipeline (GitHub Actions → Cloudflare) | done |
+| P0-03 | Design tokens (CSS vars + JS theme map, dark default) | done |
 | P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | todo |
 | P0-05 | Catalog schema + import transformer + synthetic seed | todo |
 
-> **Sequencing (S7):** P0-02 needs owner actions (GitHub repo + Actions secrets). P0-04/P0-05 no longer depend on the owner (Pages-shipped assets, committed synthetic seed). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead to unblocked tasks to fill the gap (see AGENTS.md §Session protocol rule 6).
+> **Sequencing:** P0-01/02/03 **done**. Next = **P0-04** (unblocked, build-cheap). P0-05's transformer needs the owner's dataset only for the real import (the committed synthetic seed covers dev/CI). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead (see AGENTS.md §Session protocol rule 6).
 
 ## P1 — Canvas core
 | Task | Title | Status |

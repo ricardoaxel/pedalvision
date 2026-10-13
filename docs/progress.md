@@ -1,14 +1,13 @@
 # Progress
 
 **Current phase:** P0 — Foundation
-**Next task:** P0-03 (Blueprint implemented via loop — **owner approval PENDING**; PR #2 updated, PR #3 is the options record). P0-04 follows after approval.
-**Last updated:** 2026-10-12 (Blueprint design loop complete — 3 rounds)
+**Next task:** P0-04 → `docs/tasks/P0-04-asset-cdn-skeleton.md` (Asset serving — Pages-shipped images; **unblocked**, build-cheap)
+**Last updated:** 2026-10-13 (P0-03 merged)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
 ## Done
-- [x] P0-03 — Design tokens **final ("Studio Clay")**. Owner-approved direction (2026-10-12): warm graphite canvas + one desaturated clay accent (only accent hue), luminance-ladder surfaces + hairline borders (no shadows/glow), cream light theme, system fonts (zero new deps). Values in `src/styles/tokens.css` (dark default + `[data-theme="light"]` override), mirrored in `src/styles/theme.ts` (sync-tested), typography discipline via `--font-weight-*`/`--tracking-*` tokens. All visual values ≤AA contrast. Acceptance re-verified green (lint/test/build/e2e + computed-style flip check + grep). Supersedes v1 palette below.
-- [x] P0-03 (v1) — first pass (dark slate + amber). **Superseded 2026-10-12 by owner decision** on direction; mechanism kept.
+- [x] **P0-03 — Design tokens (merged 2026-10-13, PR #2).** Final direction: **"Blueprint"** — neutral canvas (no hue cast on pedal photos), cool-tinted chrome, one cyan accent for action+selection, mono only for measurement labels, quiet tinted status pills; dark default + light override. Owner-approved after a designer⇄reviewer loop (R1–R7). Values in `src/styles/tokens.css`, mirrored in `src/styles/theme.ts` (sync-tested by `theme.test.ts`), plus spacing/radius/typography tokens. Demo chrome in `src/index.css` uses tokens only (no hardcoded colors); acceptance green (lint/test/build/e2e + computed-style flip + hex grep clean). Earlier passes (v1 dark-slate+amber, "Studio Clay") were **rejected** by the owner and superseded.
 - [x] P0-02 — CI/CD pipeline: GitHub Actions runs lint → typecheck → unit tests → build → Playwright smoke (chromium, `vite preview`, port 4174) on every PR/push to main; deploys to Cloudflare Pages (PR = preview URL, main = production). Pipeline is self-bootstrapping (creates the `pedalvision` Pages project on first deploy) and posts the preview URL as a PR comment.
 - [x] Plan v1: requirements, design, roadmap, ADRs, task system created
 - [x] Plan passed 6 external review rounds — all valid findings folded in (R1–R6); docs now internally consistent, plan **frozen for implementation**
@@ -16,7 +15,12 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- [ ] **P0-03 = Blueprint "Round 7" (owner approval PENDING).** Last design round: fixed the label colors — the **Accent label** (ugly heavy dark-teal block in light mode) now uses the **tinted-chip** treatment like Warning/Danger (new `--color-accent-surface/-ink/-border`); button stays solid accent + full width. Commit `f4c3c57`. Reviewer verdict: **approve** ("three labels now read as one coherent family in both themes"); optional polish left (faint dark chip fills, accent hairline hue, light warning contrast). PR #2 updated. Rounds revertable: `a83b824` r3, `17ccf62` r4, `7434313` r5, `bfa0750` r6, `f4c3c57` r7. **Owner must approve** before merge.
+- (nothing — P0-03 merged; ready for P0-04)
+
+## Follow-ups (non-blocking, do before P1)
+- **`tsconfig.app.json` node-types leak:** it adds `"node"` to the browser app's `types` so `theme.test.ts` can use `node:fs`. This lets browser code typecheck against Node globals (`process`, `Buffer`). Fix when convenient: give tests their own tsconfig scope, or read `tokens.css` via a Vitest/Vite-friendly mechanism. See `docs/tasks/P0-03-design-tokens.md` notes + the PR #2 code review.
+
+## Notes / history
 - [x] **Design governance extended (2026-10-12):** added the `design-reviewer` agent (vision-based, sees rendered screenshots) + `/visual-review` and `/design-loop` commands; AGENTS.md Design gate defines "heavy design tasks" and the **designer⇄reviewer loop (max 3 iterations, every round = reviewer feedback + designer revision + code implementation + re-render, owner-approved before start)**; ADR-005 amended.
 - [x] **2026-09-29 INCIDENT:** `pnpm create vite . --overwrite` deleted `docs/`, `AGENTS.md`, and the Notion PDF (repo wasn't a git repo → no recovery from git). Docs fully restored from planning-session context; **git repo initialized** (root commit `fe22a1c`). PDF must be re-exported from Notion.
 
@@ -27,6 +31,7 @@
 - **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset, P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03/P0-04 are NOT owner-blocked.
 
 ## Session log
+- 2026-10-13 — **P0-03 MERGED (PR #2, squash `5680567`).** Owner approved the "Blueprint" direction and merged after the designer⇄reviewer loop (R1–R7). PR #3 (design-options record) closed. Bookkeeping reconciled: progress.md header + Done + roadmap + task-file status now show P0-03 done; next = P0-04. Note: PR was **squash-merged**, so per-round commits (the "revert to any round" rule) live only on the `p0-03-design-tokens` branch, not on `main`.
 - 2026-10-13 — **Blueprint "Round 7" — label colors fixed (owner-directed).** Owner found the Accent label ugly in light mode (heavy solid dark-teal block, inconsistent with the soft tinted Warning/Danger chips). Designer proposed giving the Accent label the same tinted-chip construction (new `--color-accent-surface/-ink/-border`), keeping solid accent for the button. Implemented + rendered + reviewed → reviewer verdict **approve** ("three labels now read as one coherent family in both themes"). Commit `f4c3c57`; PR #2 updated. Also: owner switched their session model to the vision-capable one (agent can now see screenshots directly).
 - 2026-10-13 — **Reverted to Round 5 → "Round 6" (owner-directed).** Owner reverted the Baseline+font experiment, returned to the **Round 5** code, and asked for two changes: brighter/vivid Warning + Danger labels and a full-width primary button. Applied (designer-supplied vivid status values, AA-checked) + `justify-self: stretch`; rendered dark+light; reviewer verdict "changes" (full-width button good; wants status chips more vivid + dot grid more visible). Committed `bfa0750`; PR #2 updated. Also **disabled the PostHog MCP** in the global opencode config (`~/.config/opencode/opencode.jsonc`, `enabled: false`) — restart opencode for it to take effect.
 - 2026-10-13 — **Blueprint → "Baseline + body/button font" (owner-directed).** Owner disliked some round improvements and asked to go back to the **Baseline** option with a single change: description + button font = the Round-1 Draft-2 humanist sans (Avenir Next); titles/labels stay Baseline mono; colors unchanged. Implemented (`d24aad7`); eyebrow removed to match Baseline; canvas mirror reverted to Baseline (sync test green). Rendered dark+light and ran the reviewer (verdict: changes / approved in spirit — split reads intentional; remaining findings are Baseline colors the owner chose to keep). PR #2 showed **Baseline · Baseline+font · Round 1**; earlier rounds stay revertable. (Superseded same day by Round 6.)
