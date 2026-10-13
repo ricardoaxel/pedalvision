@@ -22,6 +22,9 @@ convention:
 ```
 
 Build URLs with `assetUrl()` from `src/lib/cdn.ts` — never hardcode paths.
+`assetUrl()` does **not** URL-encode the filename: catalog slugs are guaranteed
+lowercase/hyphenated/ASCII (ADR-003), so this is safe today. If user-supplied
+filenames ever reach it, encode them first.
 
 ## Rules
 
@@ -31,7 +34,7 @@ Build URLs with `assetUrl()` from `src/lib/cdn.ts` — never hardcode paths.
   do not hand-edit.
 - **Same-origin only.** Cross-origin images break canvas export.
 - `placeholder.png` is the P0-04 test fixture proving the URL helper + dev
-  server serve the correct path. P0-05 adds the synthetic seed catalog images
-  alongside it.
+  server serve the correct path. **It must be deleted when P0-05's synthetic
+  seed images land** — it is a test artifact and must not ship in the catalog.
 - When the catalog outgrows the Pages ceiling (~2k items), these move to R2 —
   see ADR-002 and the future `P2-07` task.
