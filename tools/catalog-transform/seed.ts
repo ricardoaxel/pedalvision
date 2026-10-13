@@ -165,18 +165,21 @@ function buildPedal(
 	const category = input.category ?? "pedal";
 	const id = overrides?.id ?? toSlug(`${input.brand} ${input.name}`);
 	const name = overrides?.name ?? input.name;
-	const { widthCm, heightCm } = pedalDims(id, category);
+	// A colorway is the same physical pedal, so it shares the base's footprint
+	// and power (design.md: variantOf = "model id for colorways").
+	const specId = overrides?.variantOf ?? id;
+	const { widthCm, heightCm } = pedalDims(specId, category);
 	const power =
 		category === "supply"
 			? {
 					voltage: 9,
 					acDc: "DC" as const,
-					currentMa: 1000 + (hashString(id) % 3000),
+					currentMa: 1000 + (hashString(specId) % 3000),
 				}
 			: {
 					voltage: 9,
 					acDc: "DC" as const,
-					currentMa: 8 + (hashString(id) % 120),
+					currentMa: 8 + (hashString(specId) % 120),
 				};
 
 	return {

@@ -1488,8 +1488,8 @@
     "id": "glasshouse-labs-wooly-fuzz-black",
     "brand": "Glasshouse Labs",
     "name": "Wooly Fuzz (Black)",
-    "widthCm": 6.1,
-    "heightCm": 12.3,
+    "widthCm": 7.3,
+    "heightCm": 11.7,
     "image": "glasshouse-labs-wooly-fuzz-black.png",
     "effectTypes": [
       "fuzz"
@@ -1510,7 +1510,7 @@
     "power": {
       "voltage": 9,
       "acDc": "DC",
-      "currentMa": 127
+      "currentMa": 57
     },
     "variantOf": "glasshouse-labs-wooly-fuzz",
     "source": "synthetic"
@@ -1519,8 +1519,8 @@
     "id": "mobius-sound-bloom-aqua",
     "brand": "Mobius Sound",
     "name": "Bloom (Aqua)",
-    "widthCm": 6.2,
-    "heightCm": 11.5,
+    "widthCm": 6,
+    "heightCm": 11.6,
     "image": "mobius-sound-bloom-aqua.png",
     "effectTypes": [
       "overdrive"
@@ -1541,7 +1541,7 @@
     "power": {
       "voltage": 9,
       "acDc": "DC",
-      "currentMa": 23
+      "currentMa": 56
     },
     "variantOf": "mobius-sound-bloom",
     "source": "synthetic"

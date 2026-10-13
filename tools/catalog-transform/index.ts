@@ -1,6 +1,10 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
-import { SOURCE_TAGS, type SourceTag } from "../../src/catalog/schema.ts";
+import {
+	CatalogPedalSchema,
+	SOURCE_TAGS,
+	type SourceTag,
+} from "../../src/catalog/schema.ts";
 import { convertExternalCatalog, type ExternalCatalog } from "./convert.ts";
 import { writeSeed } from "./seed.ts";
 
@@ -120,6 +124,14 @@ async function runConvert(args: Args): Promise<void> {
 		source: args.source,
 		warn: (message) => console.warn(`warn: ${message}`),
 	});
+
+	// Fail loudly rather than writing data the app cannot load.
+	const validation = CatalogPedalSchema.array().safeParse(pedals);
+	if (!validation.success) {
+		throw new Error(
+			`converter produced invalid data: ${validation.error.issues[0]?.message}`,
+		);
+	}
 
 	await mkdir(dirname(outputPath), { recursive: true });
 	await writeFile(outputPath, `${JSON.stringify(pedals, null, 2)}\n`);

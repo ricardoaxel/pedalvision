@@ -106,7 +106,14 @@ export function convertExternalCatalog(
 		const variantMatch = displayName.match(VARIANT_SUFFIX);
 		const baseName = variantMatch ? variantMatch[1].trim() : displayName.trim();
 		const baseId = toSlug(`${brand} ${baseName}`);
-		const id = variantMatch ? `${baseId}-${toSlug(variantMatch[2])}` : baseId;
+		const variantSlug = variantMatch ? toSlug(variantMatch[2]) : "";
+		const id = variantMatch ? `${baseId}-${variantSlug}` : baseId;
+
+		// A slug that does not fit the schema would be written as invalid data.
+		if (!baseId || (variantMatch && !variantSlug)) {
+			warn(`skipped "${displayName}": name/brand does not yield a valid slug`);
+			continue;
+		}
 
 		if (seen.has(id)) {
 			warn(`skipped duplicate slug "${id}" (from "${displayName}")`);
@@ -129,6 +136,15 @@ export function convertExternalCatalog(
 			variantOf: variantMatch ? baseId : undefined,
 			source: options.source,
 		});
+	}
+
+	// Referential check: a variant whose base was skipped would dangle.
+	for (const pedal of pedals) {
+		if (pedal.variantOf && !seen.has(pedal.variantOf)) {
+			warn(
+				`"${pedal.id}" references missing variant base "${pedal.variantOf}"`,
+			);
+		}
 	}
 
 	return { pedals, warnings };

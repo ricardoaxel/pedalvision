@@ -1,6 +1,7 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { CatalogPedalSchema } from "../../src/catalog/schema.ts";
-import { renditionPixels } from "./image.ts";
+import { renderPng, renditionPixels } from "./image.ts";
 import { generateSeed, labelFor, renderSeedImages } from "./seed.ts";
 
 const PNG_SIGNATURE = Buffer.from([
@@ -38,6 +39,63 @@ describe("renderSeedImages", () => {
 			expect(image.buffer.equals(second[index].buffer)).toBe(true);
 		});
 	}, 60_000);
+});
+
+describe("committed seed freshness", () => {
+	// Guard against drift: if image.ts/font.ts/seed.ts change but the committed
+	// artifacts are not regenerated, tests must fail. The full JSON is compared
+	// plus one pedal + one board rendition (bytes).
+	const repoRoot = new URL("../../", import.meta.url);
+	const committedPedals = readFileSync(
+		new URL("src/catalog/data/pedals.json", repoRoot),
+		"utf8",
+	);
+	const committedBoards = readFileSync(
+		new URL("src/catalog/data/boards.json", repoRoot),
+		"utf8",
+	);
+
+	it("JSON matches the committed files byte-for-byte", () => {
+		const seed = generateSeed();
+		expect(`${JSON.stringify(seed.pedals, null, 2)}\n`).toBe(committedPedals);
+		expect(`${JSON.stringify(seed.boards, null, 2)}\n`).toBe(committedBoards);
+	});
+
+	it("procedural PNGs match the committed files byte-for-byte", async () => {
+		const seed = generateSeed();
+		const pedal = seed.pedals[0];
+		const board = seed.boards[0];
+
+		const pedalPng = await renderPng({
+			id: pedal.id,
+			label: labelFor(pedal.name),
+			widthCm: pedal.widthCm,
+			heightCm: pedal.heightCm,
+			size: 800,
+		});
+		expect(
+			pedalPng.equals(
+				readFileSync(
+					new URL(`public/pedal-assets/pedals/800/${pedal.image}`, repoRoot),
+				),
+			),
+		).toBe(true);
+
+		const boardPng = await renderPng({
+			id: board.id,
+			label: labelFor(board.name),
+			widthCm: board.widthCm,
+			heightCm: board.heightCm,
+			size: 350,
+		});
+		expect(
+			boardPng.equals(
+				readFileSync(
+					new URL(`public/pedal-assets/boards/350/${board.image}`, repoRoot),
+				),
+			),
+		).toBe(true);
+	});
 });
 
 describe("renditionPixels", () => {

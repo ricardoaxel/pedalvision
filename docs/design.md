@@ -55,7 +55,7 @@ type CatalogPedal = {
   jacks?: { kind: 'in'|'out'|'exp'|'power', edge: 'top'|'right'|'bottom'|'left', pos: number }[] // pos = 0..1 position ALONG the edge (e.g. 0.5 = centered) — required so cable attach points + length calc have a concrete coordinate (S3)
   power?: { voltage: 9|12|18|number, acDc: 'DC'|'AC', currentMa: number }
   variantOf?: string    // model id for colorways (avoid catalog bloat)
-  source: string        // provenance tag — see decisions/003 (never a name/URL)
+  source: SourceTag     // provenance tag — zod enum: licensed | brand-assets | community | own | placeholder | synthetic (ADR-003; never a name/URL)
   links?: { label: string, url: string }[] // v2 affiliate (locale-aware)
 }
 type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, source: string } // tiers/risers DEFERRED to v2 (S4)
