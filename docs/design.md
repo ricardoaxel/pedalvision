@@ -84,7 +84,7 @@ External catalog formats are **transformed into this schema** by `tools/catalog-
 ## Assets & catalog
 - Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import, zod-validated at build).
 - **v1 (ADR-002):** images live in the repo under `public/pedal-assets/` and ship with the Pages deployment (same-origin, no CORS). Two renditions per item — `800/` (master) and `350/` (thumb), pre-resized by the asset pipeline; **no runtime image service**.
-- URL convention (dev + v1 prod): `/pedal-assets/pedals/350/{image}`. R2 with `{CDN_BASE}` is the deferred path (ADR-002) — revisit before ~2k items.
+- URL convention (dev + v1 prod): `/pedal-assets/pedals/350/{image}`, built via `assetUrl()` in `src/lib/cdn.ts`. R2 with `{CDN_BASE}` is the deferred path (ADR-002) — revisit before ~2k items. `pnpm assets:sync` (scripts/) is the deferred **R2-era sync tool, unused in v1**.
 - Lazy loading: load image only when pedal enters viewport (Konva `Image` + intersection check on stage transform).
 
 ## CI/CD (ADR-002)
