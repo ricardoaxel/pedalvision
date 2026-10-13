@@ -12,6 +12,10 @@ const tokensCss = readFileSync(
 	"utf8",
 );
 
+// Minimal regex parse of tokens.css — sufficient because the file is a flat
+// list of custom properties. A real CSS parser would be a new dependency (against
+// the minimal-deps rule), so this is the deliberate tradeoff. Boundary: if the
+// scopes ever contain nested at-rules (@media/@supports), this must be revisited.
 function extractVars(css: string, selector: string): Record<string, string> {
 	const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 	const block = css.match(new RegExp(`${escaped}\\s*\\{([^}]*)\\}`));
