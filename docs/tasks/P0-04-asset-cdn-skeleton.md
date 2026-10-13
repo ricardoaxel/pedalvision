@@ -1,6 +1,6 @@
 # P0-04: Asset serving — Pages-shipped images
 
-**Phase:** P0 · **Status:** in review — PR #4 · **Model:** build-cheap
+**Phase:** P0 · **Status:** done (merged 2026-10-13, PR #4) · **Model:** build-cheap
 
 ## Goal
 The v1 asset convention is defined: pedal/board images live in `public/pedal-assets/` (two renditions: `800/` and `350/`) and ship with the Cloudflare Pages deployment — **same-origin, no CORS setup** (ADR-002). A `src/lib/cdn.ts` helper centralizes asset URLs. R2 is deferred (not in this task).

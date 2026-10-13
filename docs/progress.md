@@ -1,12 +1,13 @@
 # Progress
 
 **Current phase:** P0 — Foundation
-**Next task:** P0-04 → `docs/tasks/P0-04-asset-cdn-skeleton.md` (**in review — PR #4**, pending owner merge; do not start P0-05 until merged)
-**Last updated:** 2026-10-13 (P0-04 in review — PR #4)
+**Next task:** P0-05 → `docs/tasks/P0-05-catalog-schema-and-seed.md` (Catalog schema + import transformer + synthetic seed; **unblocked**, build-strong)
+**Last updated:** 2026-10-13 (P0-04 merged — PR #4)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
 ## Done
+- [x] **P0-04 — Asset serving, Pages-shipped (merged 2026-10-13, PR #4).** v1 asset convention: `public/pedal-assets/{pedals,boards}/{800,350}/` (committed, same-origin, ships with Pages; no R2/CORS/env). `src/lib/cdn.ts` `assetUrl(kind, size, file)` is the single URL source of truth (+ `cdn.test.ts`). `.gitignore` excludes raw `/assets/`; `public/pedal-assets/` committed. Placeholder PNGs (800 + 350) as the serving fixture + README. Code review loop ran (round 1 → fix `2ffd19c`). Acceptance green (lint / tsc -b / test 5 / build copies assets to `dist/` / e2e / grep clean). Not design-affecting.
 - [x] **P0-03 — Design tokens (merged 2026-10-13, PR #2).** Final direction: **"Blueprint"** — neutral canvas (no hue cast on pedal photos), cool-tinted chrome, one cyan accent for action+selection, mono only for measurement labels, quiet tinted status pills; dark default + light override. Owner-approved after a designer⇄reviewer loop (R1–R7). Values in `src/styles/tokens.css`, mirrored in `src/styles/theme.ts` (sync-tested by `theme.test.ts`), plus spacing/radius/typography tokens. Demo chrome in `src/index.css` uses tokens only (no hardcoded colors); acceptance green (lint/test/build/e2e + computed-style flip + hex grep clean). Earlier passes (v1 dark-slate+amber, "Studio Clay") were **rejected** by the owner and superseded.
 - [x] P0-02 — CI/CD pipeline: GitHub Actions runs lint → typecheck → unit tests → build → Playwright smoke (chromium, `vite preview`, port 4174) on every PR/push to main; deploys to Cloudflare Pages (PR = preview URL, main = production). Pipeline is self-bootstrapping (creates the `pedalvision` Pages project on first deploy) and posts the preview URL as a PR comment.
 - [x] Plan v1: requirements, design, roadmap, ADRs, task system created
@@ -14,11 +15,8 @@
 - [x] R6 closes: custom pedals travel inline (A5), boot reconcile, supply category, first-run empty-state, a11y scope, share-cap interplay
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
-## In review
-- **P0-04 — Asset serving (Pages-shipped).** **PR #4 open — awaiting owner review/merge. Per AGENTS.md §Session protocol rule 9 this is NOT "done", and Next stays P0-04 until the PR merges.** v1 asset convention defined: `public/pedal-assets/{pedals,boards}/{800,350}/` (committed, same-origin, ships with Pages; no R2/CORS/env). `src/lib/cdn.ts` `assetUrl(kind, size, file)` is the single URL source of truth (+ `cdn.test.ts`, 2 cases). `.gitignore` excludes raw `/assets/`; `public/pedal-assets/` stays committed. Placeholder PNGs (800 + 350) committed as the serving fixture; README documents the convention + cleanup note. Acceptance green: lint `biome ci` / typecheck `tsc -b` / test 3 files·5 tests / build (assets copied to `dist/pedal-assets/`) / e2e 1 passed / `grep -ri "CDN_BASE\|access-control\|R2" src` empty / dev server + Pages preview return `200 image/png` at the correct URLs. Not design-affecting (no UI) → design gate not triggered.
-
 ## In progress
-- (nothing — P0-04 awaits owner merge; P0-05 not started until this PR merges)
+- (nothing — P0-04 merged; ready for P0-05)
 
 ## Follow-ups
 - (none — P0-03 review nits resolved; see session log)
@@ -31,9 +29,10 @@
 - Catalog uses a dev placeholder dataset (see `docs/decisions/003-catalog-data.md`) — **must be swapped before any public launch**
 - Permission request to the dataset maintainer: not yet sent (owner action; draft can be prepared by an agent on request)
 - P0-05 transformer input (the external catalog dataset): exists only on owner machine — needed when running the transformer; synthetic seed (committed) covers fresh clones/CI
-- **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset (only for the real import — the committed synthetic seed covers dev/CI), P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03 is done (2026-10-13). P0-04 is **in review (PR #4)** and therefore **not done**; **next = P0-04 (pending merge)** — do **not** start P0-05 until it merges. Neither P0-04 nor P0-05 is owner-blocked.
+- **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset (only for the real import — the committed synthetic seed covers dev/CI), P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03 and P0-04 are **done** (2026-10-13). **Next = P0-05** (unblocked, build-strong). Neither P0-04 nor P0-05 is owner-blocked.
 
 ## Session log
+- 2026-10-13 — **P0-04 MERGED (PR #4, `6848e75`); Next = P0-05.** Bookkeeping reconciled: `progress.md` header + Done, `roadmap.md`, and the P0-04 task status now all show P0-04 done; Next advanced to P0-05.
 - 2026-10-13 — **P0-04 code review loop run (backfill — the loop was skipped when PR #4 was opened).** Merged `main` (code-reviewer agent + loop) into `p0-04-asset-serving` (`b4b27bb`), then ran the `code-reviewer` on the branch vs `main`. **Round 1 verdict: approve** — no blockers/should-fixes; acceptance reproduced (`test` 3 files·5 tests, `typecheck`, `lint` clean, build copies assets, `grep` empty). Nits: (1) README cited the wrong field for the filename-charset guarantee → fixed (names the `image` field + P0-05 schema); (2) roadmap used `in review (PR #4)` instead of the `in review — PR #4` format → fixed; (3) README ships to `dist/` (per-spec, accepted); (4) placeholders still ship until P0-05 (already a tracked follow-up). One round used; no re-review needed. Outcome recorded in PR #4.
 - 2026-10-13 — **Code review governance added (owner instruction).** New external `code-reviewer` agent (`.opencode/agent/code-reviewer.md`, staff-level, read-only) + `/code-review` (single pass) and `/code-review-loop` (≤2 rounds review→fix) commands. AGENTS.md gained a **Code review loop** section + protocol step 3; `docs/tasks/README.md` gained the rule; **ADR-006** documents the why. Flow is now: implement → verify acceptance → **code review loop (≤2 rounds)** → open PR (5-section standard) → owner reviews/merges. After round 2, if issues remain, the builder stops and proposes more rounds to the owner. (Direct to main — process/meta change, owner-requested.)
 - 2026-10-13 — **P0-04 review fix: premature "done" corrected + convention codified (owner review on PR #4).** Owner + Copilot review flagged a sequencing conflict: this file listed P0-04 under **Done** with next = P0-05 while `roadmap.md` and the task file still said `todo` / "Next = P0-04" — and marking a task done while its own PR is open violates the review-before-merge rule. Fix: added **AGENTS.md §Session protocol rule 9** (a task is not "done" until its PR is merged; while open, mark it `in review — PR #N` in all three files and keep Next on it; the merge finalizes). Reconciled all three files to `in review — PR #4`, **Next = P0-04 (pending merge)**, removed P0-04 from Done. Also added README notes (assetUrl does not URL-encode filenames — catalog slugs are safe per ADR-003; `placeholder.png` must be deleted when the P0-05 seed lands). No code change.
