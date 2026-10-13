@@ -37,5 +37,5 @@ Palette direction is decided by the **designer agent** per the Design gate (AGEN
 ## Delivered
 Direction: **"Blueprint"** (neutral canvas, cool chrome, one cyan accent, mono for measurement labels, quiet tinted status pills; dark default + light override). Owner-approved after a designer⇄reviewer loop (R1–R7). `src/styles/tokens.css` + mirrored `src/styles/theme.ts` (sync-tested via `theme.test.ts`), demo chrome in `src/index.css` token-only. Merged in PR #2 (`5680567`).
 
-## Follow-up (non-blocking, before P1)
-- **`tsconfig.app.json` node-types leak:** `"node"` was added to the app's `types` so `theme.test.ts` can `import { readFileSync } from "node:fs"`. This lets browser code typecheck against Node globals. Clean up by scoping node types to the test (separate tsconfig) or reading `tokens.css` via a Vitest/Vite-friendly import. See `docs/progress.md` → Follow-ups.
+## Follow-up (resolved)
+- **`tsconfig.app.json` node-types leak → fixed before merge** (`9d1344b`): node types isolated to `tsconfig.test.json`; `tsconfig.app.json` back to `types: ["vite/client"]` and excludes tests. Related `pnpm typecheck` no-op bug fixed 2026-10-13 (`typecheck` → `tsc -b`).

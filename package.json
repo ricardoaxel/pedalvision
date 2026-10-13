@@ -7,7 +7,7 @@
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"test": "vitest run",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "tsc -b",
 		"lint": "biome ci",
 		"e2e": "playwright test",
 		"preview": "vite preview"
