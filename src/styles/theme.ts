@@ -26,7 +26,7 @@ export const canvasTheme: CanvasTheme = {
 	gridDot: "#43484f",
 	canvasBackground: "#191a1c",
 	selection: "#66c9de",
-	selectionStrong: "#83d1e2",
+	selectionStrong: "#66c9de",
 	cable: "#b9c2cc",
 };
 
@@ -34,7 +34,7 @@ export const canvasTheme: CanvasTheme = {
 export const lightCanvasTheme: CanvasTheme = {
 	gridDot: "#a2abb5",
 	canvasBackground: "#e4e7ea",
-	selection: "#087f99",
-	selectionStrong: "#08677a",
+	selection: "#006b82",
+	selectionStrong: "#006b82",
 	cable: "#4d565f",
 };

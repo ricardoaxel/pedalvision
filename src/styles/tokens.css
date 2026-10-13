@@ -1,6 +1,6 @@
 /*
  * Pedalvision design tokens — the single source of truth for visual values.
- * Direction: "Blueprint" (designer⇄reviewer loop, 4 rounds, 2026-10-12; owner
+ * Direction: "Blueprint" (designer⇄reviewer loop, 3 rounds, 2026-10-12; owner
  * approval pending — supersedes "Studio Clay"). True-scale drafting language:
  * NEUTRAL canvas (no cast on pedal photos), cool-tinted chrome, one cyan
  * accent reserved for primary actions/selection, mono only for measurement
@@ -22,26 +22,26 @@
 	--color-border: #3a4048;
 	--color-ink: #eef1f4;
 	--color-ink-muted: #a8b0b8;
-	--color-ink-eyebrow: #c0c6cd;
+	--color-ink-eyebrow: #d0d6dc;
 
 	/* Accent — exactly one accent hue (cyan), one value for action + selection */
 	--color-accent: #66c9de;
-	--color-accent-strong: #83d1e2;
+	--color-accent-strong: #66c9de;
 	--color-on-accent: #0e1418;
 	--color-cable: #b9c2cc;
 
 	/* Status — quiet: colored ink on a tinted surface with a hairline border */
-	--color-warning: #d8b77b;
-	--color-warning-surface: #302b20;
-	--color-warning-border: #5b4d31;
-	--color-danger: #d9938c;
-	--color-danger-surface: #302422;
-	--color-danger-border: #5e3c39;
+	--color-warning: #f0c875;
+	--color-warning-surface: #4a3e29;
+	--color-warning-border: #685537;
+	--color-danger: #f0a39b;
+	--color-danger-surface: #493231;
+	--color-danger-border: #684644;
 
 	/* Elevation — dark rides the luminance ladder + a restrained lift */
 	--shadow-raised:
 		0 2px 6px rgb(0 0 0 / 0.34), 0 14px 36px rgb(0 0 0 / 0.38),
-		inset 0 1px 0 rgb(255 255 255 / 0.09);
+		inset 0 1px 0 rgb(255 255 255 / 0.14);
 
 	/* Spacing scale (4px base) */
 	--space-1: 4px;
@@ -97,8 +97,8 @@
 	--color-ink-eyebrow: #565d66;
 
 	/* Accent — same hue as dark (~191°), one value for action + selection */
-	--color-accent: #087f99;
-	--color-accent-strong: #08677a;
+	--color-accent: #006b82;
+	--color-accent-strong: #006b82;
 	--color-on-accent: #ffffff;
 	--color-cable: #4d565f;
 
