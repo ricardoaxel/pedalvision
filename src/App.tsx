@@ -16,7 +16,6 @@ function App() {
 	return (
 		<main className="app dot-grid">
 			<section className="panel">
-				<p className="panel__eyebrow">True-scale planner</p>
 				<h1 className="panel__title">Pedalvision</h1>
 				<p className="panel__text">2D true-scale guitar pedalboard planner.</p>
 				<div className="badges">

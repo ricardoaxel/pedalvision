@@ -6,7 +6,7 @@
  * key to the token name in src/styles/tokens.css; theme.test.ts asserts the
  * literals stay in sync with both the :root (dark) and light scopes.
  *
- * Values track the "Blueprint" direction (Draft 2, designer⇄reviewer loop).
+ * Values track the "Blueprint — Baseline + body/button face" version.
  */
 
 export const CANVAS_THEME_VARS = {
@@ -23,18 +23,18 @@ export type CanvasTheme = Record<CanvasThemeKey, string>;
 
 /** Default theme (matches :root in tokens.css). */
 export const canvasTheme: CanvasTheme = {
-	gridDot: "#43484f",
-	canvasBackground: "#191a1c",
+	gridDot: "#16202e",
+	canvasBackground: "#070b12",
 	selection: "#66c9de",
-	selectionStrong: "#66c9de",
-	cable: "#b9c2cc",
+	selectionStrong: "#3aa9c2",
+	cable: "#b9cbd8",
 };
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
 export const lightCanvasTheme: CanvasTheme = {
-	gridDot: "#a2abb5",
-	canvasBackground: "#e4e7ea",
-	selection: "#006b82",
-	selectionStrong: "#006b82",
-	cable: "#4d565f",
+	gridDot: "#d8e2ea",
+	canvasBackground: "#f2f6f9",
+	selection: "#167089",
+	selectionStrong: "#14677e",
+	cable: "#2f4250",
 };

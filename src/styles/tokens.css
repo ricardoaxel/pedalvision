@@ -1,10 +1,9 @@
 /*
  * Pedalvision design tokens — the single source of truth for visual values.
- * Direction: "Blueprint" (designer⇄reviewer loop, 3 rounds, 2026-10-12; owner
- * approval pending — supersedes "Studio Clay"). True-scale drafting language:
- * NEUTRAL canvas (no cast on pedal photos), cool-tinted chrome, one cyan
- * accent reserved for primary actions/selection, mono only for measurement
- * labels, and quiet semantic status pills (tinted surface + colored ink).
+ * Direction: "Blueprint — Baseline + body/button face" (owner-directed,
+ * 2026-10-13). This is the original Baseline option, with ONE change: the
+ * description text and buttons use the Round-1 Draft-2 humanist sans
+ * (Avenir Next stack); titles and labels stay in the Baseline mono.
  * Dark default; light is a variables-only override. Konva cannot read CSS
  * variables — keep src/styles/theme.ts in sync.
  */
@@ -12,36 +11,27 @@
 :root {
 	color-scheme: dark;
 
-	/* Canvas — strictly neutral (no hue cast on content) */
-	--color-canvas-bg: #191a1c;
-	--color-grid-dot: #43484f;
+	/* Canvas */
+	--color-canvas-bg: #070b12;
+	--color-grid-dot: #16202e;
 
-	/* Surfaces & ink — cool tint lives here, never on the canvas */
-	--color-surface: #2b3036;
-	--color-surface-raised: #383e45;
-	--color-border: #3a4048;
-	--color-ink: #eef1f4;
-	--color-ink-muted: #a8b0b8;
-	--color-ink-eyebrow: #d0d6dc;
+	/* Surfaces & ink */
+	--color-surface: #0d1420;
+	--color-surface-raised: #141d2b;
+	--color-border: #21303f;
+	--color-ink: #eaf1f7;
+	--color-ink-muted: #93a6b6;
 
-	/* Accent — exactly one accent hue (cyan), one value for action + selection */
+	/* Accent & status — one accent hue (cyan) */
 	--color-accent: #66c9de;
-	--color-accent-strong: #66c9de;
-	--color-on-accent: #0e1418;
-	--color-cable: #b9c2cc;
+	--color-accent-strong: #3aa9c2;
+	--color-on-accent: #04121a;
+	--color-warning: #d8b74a;
+	--color-danger: #e2685f;
+	--color-cable: #b9cbd8;
 
-	/* Status — quiet: colored ink on a tinted surface with a hairline border */
-	--color-warning: #f0c875;
-	--color-warning-surface: #4a3e29;
-	--color-warning-border: #685537;
-	--color-danger: #f0a39b;
-	--color-danger-surface: #493231;
-	--color-danger-border: #684644;
-
-	/* Elevation — dark rides the luminance ladder + a restrained lift */
-	--shadow-raised:
-		0 2px 6px rgb(0 0 0 / 0.34), 0 14px 36px rgb(0 0 0 / 0.38),
-		inset 0 1px 0 rgb(255 255 255 / 0.14);
+	/* Elevation — flat baseline */
+	--shadow-raised: none;
 
 	/* Spacing scale (4px base) */
 	--space-1: 4px;
@@ -51,13 +41,13 @@
 	--space-5: 24px;
 	--space-6: 32px;
 
-	/* Radii — deliberate 2-step scale (controls 8 / cards 12) */
-	--radius-sm: 8px;
-	--radius-md: 8px;
-	--radius-lg: 12px;
+	/* Radii — Baseline (sharp drafting) */
+	--radius-sm: 2px;
+	--radius-md: 4px;
+	--radius-lg: 6px;
 	--radius-pill: 999px;
 
-	/* Typography — humanist sans carries the voice; mono is instrumentation only */
+	/* Typography — mono titles/labels (Baseline); humanist sans body/buttons (Draft 2) */
 	--font-sans:
 		"Avenir Next", "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
 		sans-serif;
@@ -74,9 +64,10 @@
 	--font-weight-semibold: 600;
 	--tracking-tight: -0.01em;
 	--tracking-normal: 0;
-	--tracking-wide: 0.04em;
+	--tracking-title: 0.02em;
+	--tracking-wide: 0.08em;
 
-	/* Dot grid — clearly visible, still the calmest layer (~1.8:1 vs canvas) */
+	/* Dot grid */
 	--grid-dot-size: 24px;
 	--grid-dot-radius: 1px;
 }
@@ -84,33 +75,22 @@
 [data-theme="light"] {
 	color-scheme: light;
 
-	/* Canvas — neutral */
-	--color-canvas-bg: #e4e7ea;
-	--color-grid-dot: #a2abb5;
+	/* Canvas */
+	--color-canvas-bg: #f2f6f9;
+	--color-grid-dot: #d8e2ea;
 
 	/* Surfaces & ink */
 	--color-surface: #ffffff;
-	--color-surface-raised: #ffffff;
-	--color-border: #d5dae0;
-	--color-ink: #16191d;
-	--color-ink-muted: #565d66;
-	--color-ink-eyebrow: #565d66;
+	--color-surface-raised: #ecf2f6;
+	--color-border: #d6e0e8;
+	--color-ink: #0f1a24;
+	--color-ink-muted: #4f6270;
 
-	/* Accent — same hue as dark (~191°), one value for action + selection */
-	--color-accent: #006b82;
-	--color-accent-strong: #006b82;
+	/* Accent & status */
+	--color-accent: #167089;
+	--color-accent-strong: #14677e;
 	--color-on-accent: #ffffff;
-	--color-cable: #4d565f;
-
-	/* Status — quiet tinted pills */
-	--color-warning: #7a5818;
-	--color-warning-surface: #fbf4e6;
-	--color-warning-border: #c8ad78;
-	--color-danger: #8d3430;
-	--color-danger-surface: #fbefed;
-	--color-danger-border: #cf918a;
-
-	/* Elevation — white cards get a cool-tinted soft shadow */
-	--shadow-raised:
-		0 1px 2px rgb(15 23 42 / 0.07), 0 6px 20px rgb(15 23 42 / 0.1);
+	--color-warning: #7d6508;
+	--color-danger: #b3372f;
+	--color-cable: #2f4250;
 }
