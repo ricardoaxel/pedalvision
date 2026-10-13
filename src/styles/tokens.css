@@ -1,6 +1,6 @@
 /*
  * Pedalvision design tokens — the single source of truth for visual values.
- * Direction: "Blueprint" (designer⇄reviewer loop, 3 rounds, 2026-10-12; owner
+ * Direction: "Blueprint" (designer⇄reviewer loop, 4 rounds, 2026-10-12; owner
  * approval pending — supersedes "Studio Clay"). True-scale drafting language:
  * NEUTRAL canvas (no cast on pedal photos), cool-tinted chrome, one cyan
  * accent reserved for primary actions/selection, mono only for measurement
@@ -14,16 +14,17 @@
 
 	/* Canvas — strictly neutral (no hue cast on content) */
 	--color-canvas-bg: #191a1c;
-	--color-grid-dot: #3f444b;
+	--color-grid-dot: #43484f;
 
 	/* Surfaces & ink — cool tint lives here, never on the canvas */
-	--color-surface: #22262b;
+	--color-surface: #2b3036;
 	--color-surface-raised: #383e45;
 	--color-border: #3a4048;
 	--color-ink: #eef1f4;
 	--color-ink-muted: #a8b0b8;
+	--color-ink-eyebrow: #c0c6cd;
 
-	/* Accent — exactly one accent hue (cyan) */
+	/* Accent — exactly one accent hue (cyan), one value for action + selection */
 	--color-accent: #66c9de;
 	--color-accent-strong: #83d1e2;
 	--color-on-accent: #0e1418;
@@ -39,8 +40,8 @@
 
 	/* Elevation — dark rides the luminance ladder + a restrained lift */
 	--shadow-raised:
-		0 2px 4px rgb(0 0 0 / 0.28), 0 12px 32px rgb(0 0 0 / 0.3),
-		inset 0 1px 0 rgb(255 255 255 / 0.065);
+		0 2px 6px rgb(0 0 0 / 0.34), 0 14px 36px rgb(0 0 0 / 0.38),
+		inset 0 1px 0 rgb(255 255 255 / 0.09);
 
 	/* Spacing scale (4px base) */
 	--space-1: 4px;
@@ -85,7 +86,7 @@
 
 	/* Canvas — neutral */
 	--color-canvas-bg: #e4e7ea;
-	--color-grid-dot: #a5aeb8;
+	--color-grid-dot: #a2abb5;
 
 	/* Surfaces & ink */
 	--color-surface: #ffffff;
@@ -93,8 +94,9 @@
 	--color-border: #d5dae0;
 	--color-ink: #16191d;
 	--color-ink-muted: #565d66;
+	--color-ink-eyebrow: #565d66;
 
-	/* Accent — same hue as dark (~191°), lightness only */
+	/* Accent — same hue as dark (~191°), one value for action + selection */
 	--color-accent: #087f99;
 	--color-accent-strong: #08677a;
 	--color-on-accent: #ffffff;

@@ -23,7 +23,7 @@ export type CanvasTheme = Record<CanvasThemeKey, string>;
 
 /** Default theme (matches :root in tokens.css). */
 export const canvasTheme: CanvasTheme = {
-	gridDot: "#3f444b",
+	gridDot: "#43484f",
 	canvasBackground: "#191a1c",
 	selection: "#66c9de",
 	selectionStrong: "#83d1e2",
@@ -32,7 +32,7 @@ export const canvasTheme: CanvasTheme = {
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
 export const lightCanvasTheme: CanvasTheme = {
-	gridDot: "#a5aeb8",
+	gridDot: "#a2abb5",
 	canvasBackground: "#e4e7ea",
 	selection: "#087f99",
 	selectionStrong: "#08677a",
