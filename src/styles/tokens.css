@@ -28,6 +28,10 @@
 	--color-accent: #66c9de;
 	--color-accent-strong: #66c9de;
 	--color-on-accent: #0e1418;
+	/* Accent label (tinted chip, like the status labels) */
+	--color-accent-surface: #20363b;
+	--color-accent-ink: #9ce4ef;
+	--color-accent-border: #4b8791;
 	--color-cable: #b9c2cc;
 
 	/* Status — vivid semantic labels on a tinted surface */
@@ -100,6 +104,10 @@
 	--color-accent: #006b82;
 	--color-accent-strong: #006b82;
 	--color-on-accent: #ffffff;
+	/* Accent label (tinted chip, like the status labels) */
+	--color-accent-surface: #e1f4f7;
+	--color-accent-ink: #006b82;
+	--color-accent-border: #4b8996;
 	--color-cable: #4d565f;
 
 	/* Status — vivid semantic labels on a tinted surface */
