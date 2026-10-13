@@ -6,7 +6,7 @@
  * key to the token name in src/styles/tokens.css; theme.test.ts asserts the
  * literals stay in sync with both the :root (dark) and light scopes.
  *
- * Values track the "Studio Clay" direction (ADR-005, owner-approved).
+ * Values track the "Blueprint" direction (Draft 2, designer⇄reviewer loop).
  */
 
 export const CANVAS_THEME_VARS = {
@@ -23,18 +23,18 @@ export type CanvasTheme = Record<CanvasThemeKey, string>;
 
 /** Default theme (matches :root in tokens.css). */
 export const canvasTheme: CanvasTheme = {
-	gridDot: "#2e2a26",
-	canvasBackground: "#171614",
-	selection: "#c77b5a",
-	selectionStrong: "#d9895f",
-	cable: "#d8d2cb",
+	gridDot: "#3f444b",
+	canvasBackground: "#191a1c",
+	selection: "#66c9de",
+	selectionStrong: "#83d1e2",
+	cable: "#b9c2cc",
 };
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
 export const lightCanvasTheme: CanvasTheme = {
-	gridDot: "#d9d3ca",
-	canvasBackground: "#f4f1ed",
-	selection: "#9e5230",
-	selectionStrong: "#834327",
-	cable: "#4a443d",
+	gridDot: "#a5aeb8",
+	canvasBackground: "#e4e7ea",
+	selection: "#087f99",
+	selectionStrong: "#08677a",
+	cable: "#4d565f",
 };
