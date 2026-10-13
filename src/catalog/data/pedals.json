@@ -1,0 +1,1549 @@
+[
+  {
+    "id": "voltstead-warmdrive",
+    "brand": "Voltstead",
+    "name": "Warmdrive",
+    "widthCm": 5.9,
+    "heightCm": 11.5,
+    "image": "voltstead-warmdrive.png",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 63
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "ironbark-audio-flatline-od",
+    "brand": "Ironbark Audio",
+    "name": "Flatline OD",
+    "widthCm": 7.4,
+    "heightCm": 12,
+    "image": "ironbark-audio-flatline-od.png",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 76
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "cinder-steelhorse",
+    "brand": "Cinder",
+    "name": "Steelhorse",
+    "widthCm": 5.9,
+    "heightCm": 11.9,
+    "image": "cinder-steelhorse.png",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 83
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "northgate-fx-ironclad-dist",
+    "brand": "Northgate FX",
+    "name": "Ironclad Dist",
+    "widthCm": 6.3,
+    "heightCm": 11.8,
+    "image": "northgate-fx-ironclad-dist.png",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 58
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "tidewater-electronics-redsmith",
+    "brand": "Tidewater Electronics",
+    "name": "Redsmith",
+    "widthCm": 6.6,
+    "heightCm": 11.9,
+    "image": "tidewater-electronics-redsmith.png",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 67
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "rustline-highwire",
+    "brand": "Rustline",
+    "name": "Highwire",
+    "widthCm": 7,
+    "heightCm": 11.7,
+    "image": "rustline-highwire.png",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 17
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "glasshouse-labs-wooly-fuzz",
+    "brand": "Glasshouse Labs",
+    "name": "Wooly Fuzz",
+    "widthCm": 7.3,
+    "heightCm": 11.7,
+    "image": "glasshouse-labs-wooly-fuzz.png",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 57
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "aurelia-audio-nebula-fuzz",
+    "brand": "Aurelia Audio",
+    "name": "Nebula Fuzz",
+    "widthCm": 7,
+    "heightCm": 10.9,
+    "image": "aurelia-audio-nebula-fuzz.png",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "mobius-sound-beehive",
+    "brand": "Mobius Sound",
+    "name": "Beehive",
+    "widthCm": 7,
+    "heightCm": 11.3,
+    "image": "mobius-sound-beehive.png",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "copperfield-tapewell",
+    "brand": "Copperfield",
+    "name": "Tapewell",
+    "widthCm": 5.9,
+    "heightCm": 11.5,
+    "image": "copperfield-tapewell.png",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 127
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "voltstead-echo-garden",
+    "brand": "Voltstead",
+    "name": "Echo Garden",
+    "widthCm": 7.2,
+    "heightCm": 12.1,
+    "image": "voltstead-echo-garden.png",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 125
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "ironbark-audio-longway",
+    "brand": "Ironbark Audio",
+    "name": "Longway",
+    "widthCm": 6.1,
+    "heightCm": 11.8,
+    "image": "ironbark-audio-longway.png",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 74
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "cinder-cathedral",
+    "brand": "Cinder",
+    "name": "Cathedral",
+    "widthCm": 6.2,
+    "heightCm": 11.3,
+    "image": "cinder-cathedral.png",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 77
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "northgate-fx-shimmerwell",
+    "brand": "Northgate FX",
+    "name": "Shimmerwell",
+    "widthCm": 7.1,
+    "heightCm": 11.8,
+    "image": "northgate-fx-shimmerwell.png",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 42
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "tidewater-electronics-deep-space",
+    "brand": "Tidewater Electronics",
+    "name": "Deep Space",
+    "widthCm": 6.4,
+    "heightCm": 11.2,
+    "image": "tidewater-electronics-deep-space.png",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "rustline-seafoam-chorus",
+    "brand": "Rustline",
+    "name": "Seafoam Chorus",
+    "widthCm": 7.2,
+    "heightCm": 12.3,
+    "image": "rustline-seafoam-chorus.png",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 71
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "glasshouse-labs-vintage-tide",
+    "brand": "Glasshouse Labs",
+    "name": "Vintage Tide",
+    "widthCm": 6.8,
+    "heightCm": 11.4,
+    "image": "glasshouse-labs-vintage-tide.png",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 46
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "aurelia-audio-pulsar",
+    "brand": "Aurelia Audio",
+    "name": "Pulsar",
+    "widthCm": 7.2,
+    "heightCm": 12.3,
+    "image": "aurelia-audio-pulsar.png",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "mobius-sound-wobblebox",
+    "brand": "Mobius Sound",
+    "name": "Wobblebox",
+    "widthCm": 6.8,
+    "heightCm": 12.1,
+    "image": "mobius-sound-wobblebox.png",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 117
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "copperfield-jetstream",
+    "brand": "Copperfield",
+    "name": "Jetstream",
+    "widthCm": 7.1,
+    "heightCm": 12.2,
+    "image": "copperfield-jetstream.png",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 78
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "voltstead-stone-phase",
+    "brand": "Voltstead",
+    "name": "Stone Phase",
+    "widthCm": 6.7,
+    "heightCm": 12.3,
+    "image": "voltstead-stone-phase.png",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 119
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "ironbark-audio-aircurtain",
+    "brand": "Ironbark Audio",
+    "name": "Aircurtain",
+    "widthCm": 7,
+    "heightCm": 11.9,
+    "image": "ironbark-audio-aircurtain.png",
+    "effectTypes": [
+      "flanger"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 19
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "cinder-squeeze",
+    "brand": "Cinder",
+    "name": "Squeeze",
+    "widthCm": 6.5,
+    "heightCm": 11.3,
+    "image": "cinder-squeeze.png",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 101
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "northgate-fx-levelbest",
+    "brand": "Northgate FX",
+    "name": "Levelbest",
+    "widthCm": 7,
+    "heightCm": 12.1,
+    "image": "northgate-fx-levelbest.png",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "tidewater-electronics-tone-stack",
+    "brand": "Tidewater Electronics",
+    "name": "Tone Stack",
+    "widthCm": 6.6,
+    "heightCm": 11.6,
+    "image": "tidewater-electronics-tone-stack.png",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 56
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "rustline-sculptor",
+    "brand": "Rustline",
+    "name": "Sculptor",
+    "widthCm": 7.3,
+    "heightCm": 11.8,
+    "image": "rustline-sculptor.png",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "glasshouse-labs-pure-boost",
+    "brand": "Glasshouse Labs",
+    "name": "Pure Boost",
+    "widthCm": 7.1,
+    "heightCm": 11.9,
+    "image": "glasshouse-labs-pure-boost.png",
+    "effectTypes": [
+      "boost"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "aurelia-audio-liftoff",
+    "brand": "Aurelia Audio",
+    "name": "Liftoff",
+    "widthCm": 7.4,
+    "heightCm": 10.8,
+    "image": "aurelia-audio-liftoff.png",
+    "effectTypes": [
+      "boost"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 112
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "mobius-sound-pitchlock",
+    "brand": "Mobius Sound",
+    "name": "Pitchlock",
+    "widthCm": 6.6,
+    "heightCm": 11,
+    "image": "mobius-sound-pitchlock.png",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "copperfield-accutune",
+    "brand": "Copperfield",
+    "name": "Accutune",
+    "widthCm": 6.4,
+    "heightCm": 10.9,
+    "image": "copperfield-accutune.png",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 81
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "voltstead-crywave",
+    "brand": "Voltstead",
+    "name": "Crywave",
+    "widthCm": 6.5,
+    "heightCm": 11.7,
+    "image": "voltstead-crywave.png",
+    "effectTypes": [
+      "wah"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 97
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "ironbark-audio-sweepmaster",
+    "brand": "Ironbark Audio",
+    "name": "Sweepmaster",
+    "widthCm": 5.8,
+    "heightCm": 10.9,
+    "image": "ironbark-audio-sweepmaster.png",
+    "effectTypes": [
+      "wah"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 105
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "cinder-loopwell",
+    "brand": "Cinder",
+    "name": "Loopwell",
+    "widthCm": 6.5,
+    "heightCm": 11.7,
+    "image": "cinder-loopwell.png",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 81
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "northgate-fx-echoloop",
+    "brand": "Northgate FX",
+    "name": "Echoloop",
+    "widthCm": 6.9,
+    "heightCm": 10.8,
+    "image": "northgate-fx-echoloop.png",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 56
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "tidewater-electronics-submerge",
+    "brand": "Tidewater Electronics",
+    "name": "Submerge",
+    "widthCm": 7.3,
+    "heightCm": 11.9,
+    "image": "tidewater-electronics-submerge.png",
+    "effectTypes": [
+      "octave"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "rustline-octafuzz",
+    "brand": "Rustline",
+    "name": "Octafuzz",
+    "widthCm": 7,
+    "heightCm": 11.2,
+    "image": "rustline-octafuzz.png",
+    "effectTypes": [
+      "octave"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 44
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "glasshouse-labs-shiftwell",
+    "brand": "Glasshouse Labs",
+    "name": "Shiftwell",
+    "widthCm": 5.8,
+    "heightCm": 12.1,
+    "image": "glasshouse-labs-shiftwell.png",
+    "effectTypes": [
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 93
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "aurelia-audio-silence-gate",
+    "brand": "Aurelia Audio",
+    "name": "Silence Gate",
+    "widthCm": 6.3,
+    "heightCm": 11.5,
+    "image": "aurelia-audio-silence-gate.png",
+    "effectTypes": [
+      "gate"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 71
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "mobius-sound-bloom",
+    "brand": "Mobius Sound",
+    "name": "Bloom",
+    "widthCm": 6,
+    "heightCm": 11.6,
+    "image": "mobius-sound-bloom.png",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 56
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "copperfield-ember",
+    "brand": "Copperfield",
+    "name": "Ember",
+    "widthCm": 7.2,
+    "heightCm": 11.8,
+    "image": "copperfield-ember.png",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 42
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "voltstead-quarry",
+    "brand": "Voltstead",
+    "name": "Quarry",
+    "widthCm": 6.3,
+    "heightCm": 10.8,
+    "image": "voltstead-quarry.png",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "ironbark-audio-cascade",
+    "brand": "Ironbark Audio",
+    "name": "Cascade",
+    "widthCm": 6.7,
+    "heightCm": 11.3,
+    "image": "ironbark-audio-cascade.png",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 125
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "cinder-halcyon",
+    "brand": "Cinder",
+    "name": "Halcyon",
+    "widthCm": 6.2,
+    "heightCm": 11.7,
+    "image": "cinder-halcyon.png",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 81
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "northgate-fx-drift",
+    "brand": "Northgate FX",
+    "name": "Drift",
+    "widthCm": 7.1,
+    "heightCm": 12.2,
+    "image": "northgate-fx-drift.png",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 54
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "tidewater-electronics-nomad",
+    "brand": "Tidewater Electronics",
+    "name": "Nomad",
+    "widthCm": 5.8,
+    "heightCm": 12,
+    "image": "tidewater-electronics-nomad.png",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 36
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "rustline-anvil",
+    "brand": "Rustline",
+    "name": "Anvil",
+    "widthCm": 6.9,
+    "heightCm": 12.2,
+    "image": "rustline-anvil.png",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "glasshouse-labs-beacon",
+    "brand": "Glasshouse Labs",
+    "name": "Beacon",
+    "widthCm": 5.8,
+    "heightCm": 12.3,
+    "image": "glasshouse-labs-beacon.png",
+    "effectTypes": [
+      "boost"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 23
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "aurelia-audio-powerbrick-9",
+    "brand": "Aurelia Audio",
+    "name": "Powerbrick 9",
+    "widthCm": 9.3,
+    "heightCm": 6.3,
+    "image": "aurelia-audio-powerbrick-9.png",
+    "effectTypes": [
+      "power"
+    ],
+    "category": "supply",
+    "jacks": [
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 3918
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "mobius-sound-isolated-12",
+    "brand": "Mobius Sound",
+    "name": "Isolated 12",
+    "widthCm": 11.1,
+    "heightCm": 5.1,
+    "image": "mobius-sound-isolated-12.png",
+    "effectTypes": [
+      "power"
+    ],
+    "category": "supply",
+    "jacks": [
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2886
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "copperfield-volt-station",
+    "brand": "Copperfield",
+    "name": "Volt Station",
+    "widthCm": 9.6,
+    "heightCm": 4.6,
+    "image": "copperfield-volt-station.png",
+    "effectTypes": [
+      "power"
+    ],
+    "category": "supply",
+    "jacks": [
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1281
+    },
+    "source": "synthetic"
+  },
+  {
+    "id": "glasshouse-labs-wooly-fuzz-black",
+    "brand": "Glasshouse Labs",
+    "name": "Wooly Fuzz (Black)",
+    "widthCm": 6.1,
+    "heightCm": 12.3,
+    "image": "glasshouse-labs-wooly-fuzz-black.png",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 127
+    },
+    "variantOf": "glasshouse-labs-wooly-fuzz",
+    "source": "synthetic"
+  },
+  {
+    "id": "mobius-sound-bloom-aqua",
+    "brand": "Mobius Sound",
+    "name": "Bloom (Aqua)",
+    "widthCm": 6.2,
+    "heightCm": 11.5,
+    "image": "mobius-sound-bloom-aqua.png",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.3
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.7
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 23
+    },
+    "variantOf": "mobius-sound-bloom",
+    "source": "synthetic"
+  }
+]

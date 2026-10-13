@@ -1,0 +1,81 @@
+import { describe, expect, it } from "vitest";
+import {
+	CatalogBoardSchema,
+	type CatalogPedal,
+	CatalogPedalSchema,
+} from "./schema";
+
+const validPedal: CatalogPedal = {
+	id: "acme-big-fuzz",
+	brand: "Acme",
+	name: "Big Fuzz",
+	widthCm: 6.35,
+	heightCm: 11.94,
+	image: "acme-big-fuzz.png",
+	effectTypes: ["fuzz"],
+	category: "pedal",
+	source: "synthetic",
+};
+
+describe("CatalogPedalSchema", () => {
+	it("accepts a valid pedal", () => {
+		expect(CatalogPedalSchema.safeParse(validPedal).success).toBe(true);
+	});
+
+	it("accepts optional jacks and power", () => {
+		const result = CatalogPedalSchema.safeParse({
+			...validPedal,
+			jacks: [{ kind: "in", edge: "top", pos: 0.5 }],
+			power: { voltage: 9, acDc: "DC", currentMa: 100 },
+		});
+		expect(result.success).toBe(true);
+	});
+
+	it.each([
+		["negative width", { ...validPedal, widthCm: -1 }],
+		["missing width", { ...validPedal, widthCm: undefined }],
+		["unsafe image", { ...validPedal, image: "Big Fuzz.png" }],
+		["image without .png", { ...validPedal, image: "big-fuzz" }],
+		["bad id", { ...validPedal, id: "Acme Big Fuzz" }],
+		["unknown source", { ...validPedal, source: "mystery" }],
+		["unknown category", { ...validPedal, category: "board" }],
+		[
+			"jack pos out of range",
+			{ ...validPedal, jacks: [{ kind: "in", edge: "top", pos: 2 }] },
+		],
+		[
+			"unknown jack kind",
+			{ ...validPedal, jacks: [{ kind: "midi", edge: "top", pos: 0.5 }] },
+		],
+	])("rejects %s", (_label, pedal) => {
+		expect(CatalogPedalSchema.safeParse(pedal).success).toBe(false);
+	});
+});
+
+describe("CatalogBoardSchema", () => {
+	it("accepts a valid board", () => {
+		expect(
+			CatalogBoardSchema.safeParse({
+				id: "acme-terra-24",
+				brand: "Acme",
+				name: "Terra 24",
+				widthCm: 60,
+				heightCm: 30,
+				image: "acme-terra-24.png",
+				source: "synthetic",
+			}).success,
+		).toBe(true);
+	});
+
+	it("rejects a board without dimensions", () => {
+		expect(
+			CatalogBoardSchema.safeParse({
+				id: "acme-terra-24",
+				brand: "Acme",
+				name: "Terra 24",
+				image: "acme-terra-24.png",
+				source: "synthetic",
+			}).success,
+		).toBe(false);
+	});
+});

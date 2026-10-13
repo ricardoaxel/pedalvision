@@ -1,0 +1,33 @@
+{
+	"Big Fuzz": {
+		"brand": "Acme",
+		"widthIn": 2.5,
+		"heightIn": 4.7,
+		"effects": ["fuzz"]
+	},
+	"Big Fuzz (Green)": {
+		"brand": "Acme",
+		"widthIn": 2.5,
+		"heightIn": 4.7
+	},
+	"Big-Fuzz": {
+		"brand": "Acme",
+		"widthIn": 2.5,
+		"heightIn": 4.7
+	},
+	"Chorus Deluxe": {
+		"brand": "Acme",
+		"widthIn": 3,
+		"heightIn": 4.5,
+		"effects": ["chorus"]
+	},
+	"No Size": {
+		"brand": "Acme"
+	},
+	"Swirl Phaser": {
+		"brand": "Beta",
+		"widthIn": 4,
+		"heightIn": 5.1,
+		"image": "Swirl Phaser.png"
+	}
+}
