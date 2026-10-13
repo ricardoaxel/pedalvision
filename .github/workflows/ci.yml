@@ -88,17 +88,40 @@ jobs:
           # already exists (the `|| true` swallows the "already exists" error).
           preCommands: |
             wrangler pages project create pedalvision --production-branch main || true
-          command: pages deploy dist --project-name=pedalvision --commit-dirty=true
+          # Pass --branch explicitly: on PRs the checkout is a detached HEAD, so
+          # wrangler can't infer the branch and the stable alias wouldn't be set.
+          # head_ref = PR source branch; ref_name = branch on push (main).
+          command: pages deploy dist --project-name=pedalvision --branch=${{ github.head_ref || github.ref_name }} --commit-dirty=true
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Comment preview URL on PR
+      - name: Update preview link on PR (sticky, stable URL)
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
+        env:
+          # Prefer the stable branch alias (always points to the latest deploy for
+          # this branch, so a link in the PR description never changes); fall back
+          # to the immutable per-deploy URL if the alias isn't available yet.
+          PREVIEW_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url || steps.deploy.outputs.deployment-url }}
         with:
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview deployed: ${{ steps.deploy.outputs.deployment-url }}`,
-            });
+            const marker = '<!-- pedalvision-preview -->';
+            const url = process.env.PREVIEW_URL;
+            const body = [
+              marker,
+              '### Preview (latest commit)',
+              '',
+              `**${url}**`,
+              '',
+              '_Stable link for this branch — it updates automatically on every push, so no need to edit it._',
+              '',
+              'Production: https://pedalvision.pages.dev',
+            ].join('\n');
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const { data: comments } = await github.rest.issues.listComments({ owner, repo, issue_number });
+            const existing = comments.find((c) => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }

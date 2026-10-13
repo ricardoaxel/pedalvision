@@ -2,6 +2,11 @@
 
 **Phase:** P0 · **Status:** todo · **Model:** build-cheap
 
+## Revision (2026-10-12 — owner feedback, plan update)
+The first delivered palette (dark slate + amber) was rejected by the owner as too close to generic pedal-planner sites. Plan updated per owner instruction: **visual direction is now gated** — the `designer` agent (`/design-review`, `.opencode/agent/designer.md`, ADR-005) researches current design trends, produces the proposal, and the owner approves it before any palette is coded. This task is re-run under that gate. Additional step added:
+- Run the designer agent, get the owner-approved direction, then implement tokens/theme with those values.
+- PR must state the designer review + verdict and the owner's approval.
+
 ## Goal
 All visual values live in CSS custom properties (`src/styles/tokens.css`): colors (surface/ink/accent/warning/danger), spacing scale, radii, dot-grid color, typography sizes. Dark theme is the default; a light theme exists as a variables-only override. App chrome uses tokens exclusively.
 
@@ -27,4 +32,4 @@ All visual values live in CSS custom properties (`src/styles/tokens.css`): color
 - `grep -r "#[0-9a-fA-F]\{6\}" src/components src/App.tsx` returns nothing
 
 ## Notes
-Palette direction: dark slate surfaces, warm amber accent (guitar-amp vibe). Final values are owner's call — propose a set in the PR.
+Palette direction is decided by the **designer agent** per the Design gate (AGENTS.md + ADR-005) and **approved by the owner before implementation**. The original "dark slate + amber (guitar-amp)" hint was rejected by the owner (2026-10-12) as clichéd — do not default to it.

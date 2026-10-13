@@ -1,0 +1,123 @@
+/*
+ * Pedalvision design tokens — the single source of truth for visual values.
+ * Direction: "Blueprint" (designer⇄reviewer loop, 3 rounds, 2026-10-12; owner
+ * approval pending — supersedes "Studio Clay"). True-scale drafting language:
+ * NEUTRAL canvas (no cast on pedal photos), cool-tinted chrome, one cyan
+ * accent reserved for primary actions/selection, mono only for measurement
+ * labels, and quiet semantic status pills (tinted surface + colored ink).
+ * Dark default; light is a variables-only override. Konva cannot read CSS
+ * variables — keep src/styles/theme.ts in sync.
+ */
+
+:root {
+	color-scheme: dark;
+
+	/* Canvas — strictly neutral (no hue cast on content) */
+	--color-canvas-bg: #191a1c;
+	--color-grid-dot: #43484f;
+
+	/* Surfaces & ink — cool tint lives here, never on the canvas */
+	--color-surface: #2b3036;
+	--color-surface-raised: #383e45;
+	--color-border: #3a4048;
+	--color-ink: #eef1f4;
+	--color-ink-muted: #a8b0b8;
+	--color-ink-eyebrow: #d0d6dc;
+
+	/* Accent — exactly one accent hue (cyan), one value for action + selection */
+	--color-accent: #66c9de;
+	--color-accent-strong: #66c9de;
+	--color-on-accent: #0e1418;
+	/* Accent label (tinted chip, like the status labels) */
+	--color-accent-surface: #20363b;
+	--color-accent-ink: #9ce4ef;
+	--color-accent-border: #4b8791;
+	--color-cable: #b9c2cc;
+
+	/* Status — vivid semantic labels on a tinted surface */
+	--color-warning: #ffd166;
+	--color-warning-surface: #493715;
+	--color-warning-border: #a48035;
+	--color-danger: #ff938a;
+	--color-danger-surface: #482523;
+	--color-danger-border: #ab6a62;
+
+	/* Elevation — dark rides the luminance ladder + a restrained lift */
+	--shadow-raised:
+		0 2px 6px rgb(0 0 0 / 0.34), 0 14px 36px rgb(0 0 0 / 0.38),
+		inset 0 1px 0 rgb(255 255 255 / 0.14);
+
+	/* Spacing scale (4px base) */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+
+	/* Radii — deliberate 2-step scale: controls 8 / cards 12 */
+	--radius-control: 8px;
+	--radius-card: 12px;
+	--radius-pill: 999px;
+
+	/* Typography — humanist sans carries the voice; mono is instrumentation only */
+	--font-sans:
+		"Avenir Next", "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
+		sans-serif;
+	--font-mono:
+		ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", Menlo, Consolas,
+		monospace;
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-md: 1rem;
+	--font-size-lg: 1.25rem;
+	--font-size-xl: 1.75rem;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--tracking-tight: -0.01em;
+	--tracking-normal: 0;
+	--tracking-wide: 0.04em;
+
+	/* Dot grid — clearly visible, still the calmest layer (~1.8:1 vs canvas) */
+	--grid-dot-size: 24px;
+	--grid-dot-radius: 1px;
+}
+
+[data-theme="light"] {
+	color-scheme: light;
+
+	/* Canvas — neutral */
+	--color-canvas-bg: #e4e7ea;
+	--color-grid-dot: #a2abb5;
+
+	/* Surfaces & ink */
+	--color-surface: #ffffff;
+	--color-surface-raised: #ffffff;
+	--color-border: #d5dae0;
+	--color-ink: #16191d;
+	--color-ink-muted: #565d66;
+	--color-ink-eyebrow: #565d66;
+
+	/* Accent — same hue as dark (~191°), one value for action + selection */
+	--color-accent: #006b82;
+	--color-accent-strong: #006b82;
+	--color-on-accent: #ffffff;
+	/* Accent label (tinted chip, like the status labels) */
+	--color-accent-surface: #e1f4f7;
+	--color-accent-ink: #006b82;
+	--color-accent-border: #4b8996;
+	--color-cable: #4d565f;
+
+	/* Status — vivid semantic labels on a tinted surface */
+	--color-warning: #9a5b00;
+	--color-warning-surface: #fff0b8;
+	--color-warning-border: #b17b1a;
+	--color-danger: #b42318;
+	--color-danger-surface: #fee4e2;
+	--color-danger-border: #c94f4f;
+
+	/* Elevation — white cards get a cool-tinted soft shadow */
+	--shadow-raised:
+		0 1px 2px rgb(15 23 42 / 0.07), 0 6px 20px rgb(15 23 42 / 0.1);
+}
