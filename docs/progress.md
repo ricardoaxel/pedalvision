@@ -1,12 +1,13 @@
 # Progress
 
 **Current phase:** P0 — Foundation
-**Next task:** P0-04 → `docs/tasks/P0-04-asset-cdn-skeleton.md` (Asset serving — Pages-shipped images; **unblocked**, build-cheap)
-**Last updated:** 2026-10-13 (P0-03 merged)
+**Next task:** P0-05 → `docs/tasks/P0-05-catalog-schema-and-seed.md` (Catalog schema + transformer + synthetic seed)
+**Last updated:** 2026-10-13 (P0-04 in PR #4, awaiting owner review)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
 ## Done
+- [x] **P0-04 — Asset serving (Pages-shipped).** **PR #4 open, awaiting owner review/merge.** v1 asset convention defined: `public/pedal-assets/{pedals,boards}/{800,350}/` (committed, same-origin, ships with Pages; no R2/CORS/env). `src/lib/cdn.ts` `assetUrl(kind, size, file)` is the single URL source of truth (+ `cdn.test.ts`, 2 cases). `.gitignore` excludes raw `/assets/`; `public/pedal-assets/` stays committed. Placeholder PNGs (800 + 350) committed as the serving fixture; README documents the convention. Acceptance green: lint `biome ci` / typecheck `tsc -b` / test 3 files·5 tests / build (assets copied to `dist/pedal-assets/`) / e2e 1 passed / `grep -ri "CDN_BASE\|access-control\|R2" src` empty / dev server returns `200 image/png` at the correct URLs. Not design-affecting (no UI) → design gate not triggered.
 - [x] **P0-03 — Design tokens (merged 2026-10-13, PR #2).** Final direction: **"Blueprint"** — neutral canvas (no hue cast on pedal photos), cool-tinted chrome, one cyan accent for action+selection, mono only for measurement labels, quiet tinted status pills; dark default + light override. Owner-approved after a designer⇄reviewer loop (R1–R7). Values in `src/styles/tokens.css`, mirrored in `src/styles/theme.ts` (sync-tested by `theme.test.ts`), plus spacing/radius/typography tokens. Demo chrome in `src/index.css` uses tokens only (no hardcoded colors); acceptance green (lint/test/build/e2e + computed-style flip + hex grep clean). Earlier passes (v1 dark-slate+amber, "Studio Clay") were **rejected** by the owner and superseded.
 - [x] P0-02 — CI/CD pipeline: GitHub Actions runs lint → typecheck → unit tests → build → Playwright smoke (chromium, `vite preview`, port 4174) on every PR/push to main; deploys to Cloudflare Pages (PR = preview URL, main = production). Pipeline is self-bootstrapping (creates the `pedalvision` Pages project on first deploy) and posts the preview URL as a PR comment.
 - [x] Plan v1: requirements, design, roadmap, ADRs, task system created
@@ -15,7 +16,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- (nothing — P0-03 merged; ready for P0-04)
+- (nothing — P0-04 in PR #4, awaiting owner review/merge)
 
 ## Follow-ups
 - (none — P0-03 review nits resolved; see session log)
@@ -28,9 +29,10 @@
 - Catalog uses a dev placeholder dataset (see `docs/decisions/003-catalog-data.md`) — **must be swapped before any public launch**
 - Permission request to the dataset maintainer: not yet sent (owner action; draft can be prepared by an agent on request)
 - P0-05 transformer input (the external catalog dataset): exists only on owner machine — needed when running the transformer; synthetic seed (committed) covers fresh clones/CI
-- **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset, P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03/P0-04 are NOT owner-blocked.
+- **Sequencing note (S7):** P0-02 is done (2026-09-30). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait for the owner — they do NOT skip ahead to unblocked tasks. Remaining owner actions: P0-05 dataset (only for the real import — the committed synthetic seed covers dev/CI), P2-06 outreach, launch gate (see `docs/phase-guide.md`). P0-03/P0-04 are done and NOT owner-blocked. P0-04 is in PR #4 (awaiting owner merge); **next task = P0-05**, which is not owner-blocked (build with the synthetic seed).
 
 ## Session log
+- 2026-10-13 — **P0-04 implemented; PR #4 open (awaiting owner review/merge).** Created `public/pedal-assets/{pedals,boards}/{800,350}/` + README + committed placeholder PNGs (generated, correct 800/350 dims); added `src/lib/cdn.ts` (`assetUrl()` — single URL source of truth) + `cdn.test.ts`; `.gitignore` now excludes root-anchored `/assets/` while keeping `public/pedal-assets/` committed (verified via `git check-ignore`); noted the deferred R2-era `pnpm assets:sync` in `design.md`. Not design-affecting → no designer review. Acceptance all green (see Done entry). Task's `{kind}` shorthand was singular but docs/folders are plural (`pedals/`/`boards/`) — matched the docs and passed that decision to the owner as a review hint.
 - 2026-10-13 — **P0-03 review nits: verified/fixed; `typecheck` no-op bug fixed.** The node-types isolation, radii collapse, and CSS-parser note from the PR #2 code review were **already fixed before merge** (commit `9d1344b`, inside PR #2) — verified: `tsc -b` errors on `process` in a non-test file (TS2591), so the leak is closed. **New bug found while verifying:** `pnpm typecheck` (`tsc --noEmit` on the solution tsconfig with `files: []` + references) checked **zero files** — a silent no-op; real checking only happened via `tsc -b` in `build`. Fixed: `typecheck` script → `tsc -b`. Verified: `pnpm typecheck` now fails on a `process` probe and passes clean; lint/test(3)/build all green. (package.json change, direct to main on owner request.)
 - 2026-10-13 — **P0-03 MERGED (PR #2, squash `5680567`).** Owner approved the "Blueprint" direction and merged after the designer⇄reviewer loop (R1–R7). PR #3 (design-options record) closed. Bookkeeping reconciled: progress.md header + Done + roadmap + task-file status now show P0-03 done; next = P0-04. Note: PR was **squash-merged**, so per-round commits (the "revert to any round" rule) live only on the `p0-03-design-tokens` branch, not on `main`.
 - 2026-10-13 — **Blueprint "Round 7" — label colors fixed (owner-directed).** Owner found the Accent label ugly in light mode (heavy solid dark-teal block, inconsistent with the soft tinted Warning/Danger chips). Designer proposed giving the Accent label the same tinted-chip construction (new `--color-accent-surface/-ink/-border`), keeping solid accent for the button. Implemented + rendered + reviewed → reviewer verdict **approve** ("three labels now read as one coherent family in both themes"). Commit `f4c3c57`; PR #2 updated. Also: owner switched their session model to the vision-capable one (agent can now see screenshots directly).
