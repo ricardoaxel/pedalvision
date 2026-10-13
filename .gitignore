@@ -21,6 +21,10 @@ blob-report
 dev-assets
 dev-seed.json
 
+# Raw asset-pipeline input stays local; processed renditions are committed
+# under public/pedal-assets/ (same-origin, ships with Pages — ADR-002).
+/assets/
+
 # Notion web export (raw export cruft: tracking scripts, session files)
 docs/Pedalvision 2026 _ Notion.html
 docs/Pedalvision 2026 _ Notion_files/
