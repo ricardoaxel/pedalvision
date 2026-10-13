@@ -8,7 +8,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P0-01 | Repo scaffold (Vite + React + TS + Konva + Zustand) | done |
 | P0-02 | CI/CD pipeline (GitHub Actions → Cloudflare) | done |
 | P0-03 | Design tokens (CSS vars + JS theme map, dark default) | done |
-| P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | in review (PR #4) |
+| P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | in review — PR #4 |
 | P0-05 | Catalog schema + import transformer + synthetic seed | todo |
 
 > **Sequencing:** P0-01/02/03 **done**; **P0-04 in review (PR #4)**. Next = **P0-04 (pending merge)** — do NOT start P0-05 until it merges (AGENTS.md §Session protocol rule 9). P0-05's transformer needs the owner's dataset only for the real import (the committed synthetic seed covers dev/CI). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead (see AGENTS.md §Session protocol rule 6).

@@ -22,9 +22,10 @@ convention:
 ```
 
 Build URLs with `assetUrl()` from `src/lib/cdn.ts` — never hardcode paths.
-`assetUrl()` does **not** URL-encode the filename: catalog slugs are guaranteed
-lowercase/hyphenated/ASCII (ADR-003), so this is safe today. If user-supplied
-filenames ever reach it, encode them first.
+`assetUrl()` does **not** URL-encode its `file` argument: the contract is that
+the catalog `image` field is lowercase/hyphenated/ASCII (enforced by P0-05's
+catalog schema — see ADR-003). Today nothing untrusted reaches it. If a
+user-supplied filename ever reaches it, encode it first.
 
 ## Rules
 
