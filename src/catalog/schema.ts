@@ -39,9 +39,12 @@ export const IMAGE_PATTERN = /^[a-z0-9][a-z0-9-]*\.png$/;
  */
 export const IMAGE_SOURCES = ["mock", "static", "url"] as const;
 
+/** http(s) URLs only — rejects `javascript:`, `data:`, `ftp:`, `mailto:`, … */
+export const HTTP_URL = z.url({ protocol: /^https?$/ });
+
 function validImage(imageSource: ImageSource, image: string): boolean {
 	return imageSource === "url"
-		? z.url().safeParse(image).success
+		? HTTP_URL.safeParse(image).success
 		: IMAGE_PATTERN.test(image);
 }
 
@@ -62,13 +65,15 @@ function checkImage(
 }
 
 /**
- * Per-item provenance — an official source link a fact/image was verified
- * against (owner decision, 2026-10-14; ADR-003 §Per-item sources). `kind` says
- * what the link backs: `info` (specs/effect type/date) or `image`. The external
- * aggregate is still never referenced.
+ * Per-item provenance — a source link a fact/image was verified against
+ * (owner decision, 2026-10-14; ADR-003 §Per-item sources). Manufacturer/
+ * authorized sources are preferred; reputable retailer/community corroboration
+ * is permitted (ADR-003 source hierarchy). `kind` = what the link backs:
+ * `info` (specs/effect type/date) or `image`. The external aggregate is never
+ * referenced.
  */
 export const SourceRefSchema = z.object({
-	url: z.url(),
+	url: HTTP_URL,
 	kind: z.enum(["info", "image"]),
 });
 
@@ -161,7 +166,7 @@ export const CatalogPedalSchema = z
 		variantOf: z.string().regex(ID_PATTERN).optional(),
 		source: z.enum(SOURCE_TAGS),
 		sources: z.array(SourceRefSchema).optional(),
-		links: z.array(z.object({ label: z.string(), url: z.url() })).optional(),
+		links: z.array(z.object({ label: z.string(), url: HTTP_URL })).optional(),
 	})
 	.superRefine((pedal, ctx) => checkImage(pedal.imageSource, pedal.image, ctx));
 

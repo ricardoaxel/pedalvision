@@ -43,8 +43,9 @@ An array of rows; dimensions in **inches**:
 Our stored shape (`id, brand, name, widthCm, heightCm, image, imageSource,
 effectTypes, category`; optional `jacks?`, `power?`, `variantOf?`, `sources?`;
 `source`) is deliberately different from the external one — see ADR-003 §Schema
-originality. `sources` are official per-item provenance links (ADR-003
-§Per-item sources), added by curation — the importer leaves them off.
+originality. `sources` are per-item provenance links (manufacturer/authorized
+preferred; ADR-003 §Per-item sources), added by curation — the importer leaves
+them off.
 `imageSource` (`mock` | `static` | `url`) says *how* the image is provided
 (the import always emits `mock`); `source` is the separate rights tag.
 

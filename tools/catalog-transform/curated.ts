@@ -3,7 +3,7 @@ import { classifyEffects } from "./effects.ts";
 import { baseSlug } from "./slug.ts";
 
 /**
- * Official-source effect-type overrides (ADR-003 §Effect taxonomy).
+ * Verified effect-type overrides (ADR-003 §Effect taxonomy).
  *
  * The external catalog carries no effect taxonomy and the name-keyword
  * classifier is intentionally conservative — creatively-named pedals (e.g.

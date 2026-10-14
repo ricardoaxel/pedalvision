@@ -24,9 +24,10 @@ governed by ADR-003 (sourcing, rights, provenance).
 
 **207 pedals · 13 brands · 10 boards**; `source: 'placeholder'`; mocked images;
 `effectTypes` present for **200/207** (the 7 blanks are all power supplies).
-**Source links:** 85 items (the verified base models) carry official
-`sources: [{url, kind}]` — 221 links total (ADR-003 §Per-item sources); the rest
-have none (their facts come only from the aggregate, which is never cited).
+**Source links:** 85 items (the verified base models) carry per-item
+`sources: [{url, kind}]` — 206 links total (manufacturer/authorized preferred;
+ADR-003 §Per-item sources). A colorway variant resolves to its base's sources.
+The rest have none (their facts come only from the aggregate, never cited).
 
 | Brand | Total | V | C | — | Images (cleared/total) | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -156,7 +157,7 @@ committed-image **byte-determinism** test.
 
 ## Appendix — per-pedal image status & sources (snapshot)
 
-Snapshot generated from `src/catalog/data/pedals.json` (that JSON is the source of truth — regenerate this table if the seed changes). Image is `mocked` for every item today; the Sources column counts the official source links (see ADR-003 §Per-item sources).
+Snapshot generated from `src/catalog/data/pedals.json` (that JSON is the source of truth — regenerate this table if the seed changes). Image is `mocked` for every item today; the Sources column counts per-item source links (see ADR-003 §Per-item sources).
 
 | Brand | Model | Image | Sources |
 | --- | --- | --- | --- |

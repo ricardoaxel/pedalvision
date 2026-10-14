@@ -1,6 +1,6 @@
 # ADR-003: Catalog data & asset strategy
 
-**Status:** Accepted (2026-09-22) · amended 2026-10-14 (committed seed = real facts + mocked images; schema-originality + taxonomy + ingestion model) — ⚠️ MUST BE REVISITED BEFORE ANY PUBLIC LAUNCH
+**Status:** Accepted (2026-09-22) · amended 2026-10-14 (committed seed = real facts + mocked images; schema-originality + taxonomy + ingestion model; per-item source links) — ⚠️ MUST BE REVISITED BEFORE ANY PUBLIC LAUNCH
 
 ## Context
 The app needs pedals/boards with real footprint dimensions + top-down transparent PNGs. Research (Sep 2026) found no dataset with a clean image licence. A comprehensive community catalog exists (~8.5k pedals, ~250 boards, inches + 350/800px PNGs), but its repo has **no LICENSE file** (default copyright) and its maintainer has objected to unpermissioned reuse before.
@@ -9,7 +9,7 @@ Two different things are in play:
 - **Facts** — brand names, product names, footprint dimensions. These are public information (manufacturer/brand pages, retailers) and are not the aggregate's creative work.
 - **Images** — the transparent top-down PNGs are the part that is genuinely theirs and cannot be reused.
 
-**The external aggregate is never referenced** — its name/URL must not appear in code, commits, filenames, comments, or shipped assets (owner instruction, 2026-09-22). **Amended (owner decision, 2026-10-14):** official **per-item source links** ARE now recorded in the catalog data (`sources: [{ url, kind }]`, see §Per-item sources) so every verified fact is traceable to its manufacturer/authorized source. The aggregate itself is still never cited.
+**The external aggregate is never referenced** — its name/URL must not appear in code, commits, filenames, comments, or shipped assets (owner instruction, 2026-09-22). **Amended (owner decision, 2026-10-14):** **per-item source links** ARE now recorded in the catalog data (`sources: [{ url, kind }]`, see §Per-item sources) so every verified fact is traceable to the source(s) it was checked against (manufacturer/authorized preferred). The aggregate itself is still never cited.
 
 ## Decision
 1. **Committed dev seed = real catalog facts + procedurally mocked images** (owner decision, 2026-10-14).
@@ -29,22 +29,28 @@ Two different things are in play:
 
 ## Per-item sources (owner decision, 2026-10-14)
 
-Every verified fact/image is traceable to the **official** source it was checked
-against. The catalog carries an optional `sources` array per item:
+Every verified fact is traceable to the source(s) it was checked against,
+recorded in an optional `sources` array per item:
 
 ```jsonc
-"sources": [ { "url": "https://<manufacturer>/...", "kind": "info" } ]
+"sources": [ { "url": "https://<source>/...", "kind": "info" } ]
 ```
 
+- **Authoritative-first, not official-only.** Manufacturer/authorized sources
+  are preferred; a reputable retailer/magazine or community/vintage archive may
+  appear as *corroboration* (this mirrors the source hierarchy below). URLs must
+  be `http(s)`.
 - `kind: "info"` = backs specs / effect type / release date; `kind: "image"` =
   an image asset (none yet — all images are still mocked).
-- Populated for the **verified** models (the `curated.ts` base models, 85 today,
-  221 links); colorway variants inherit their base. Unverified items have none
-  (they carry facts only from the aggregate, which is never cited).
+- Populated for the **verified** models (the `curated.ts` base models — 85 today,
+  206 links). Sources live on the **base** model; a colorway variant
+  (`variantOf`) is resolved to its base's sources (not duplicated). Unverified
+  items have none — their facts come only from the aggregate, which is never
+  cited.
 - This **amends** the earlier blanket "no URLs in catalog data" rule: the
-  *aggregate* stays uncited; *official* per-item links are allowed and wanted.
+  *aggregate* stays uncited; *per-item* source links are allowed and wanted.
 - No attribution strings beyond the URL itself; the agent returns the link, the
-  converter/curation stores it.
+  curation stores it.
 
 ## Schema originality (our own model)
 
@@ -115,4 +121,4 @@ change the decisions above, it makes the workflow explicit.
 - Aggregate licence status: repo root has no LICENSE; GitHub API `license: null` (verified Sep 2026)
 - Claim "some brands refused Pedaltrain": Reddit-sourced, unverified — do not cite
 - Product-strategy reference (data sourcing / rights / ingestion ideas): `docs/reference/pedal-atlas-product-plan.html` (non-authoritative; what we adopted/rejected is in `docs/reference/README.md`)
-- Verified-fact research workflow: `.opencode/agent/pedal-expert.md` (+ `/pedal-expert`); its source URLs are not stored in the repo (provenance rule above)
+- Verified-fact research workflow: `.opencode/agent/pedal-expert.md` (+ `/pedal-expert`); the source(s) it verifies against are stored per item in `sources` (§Per-item sources)

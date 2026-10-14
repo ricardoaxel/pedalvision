@@ -54,6 +54,12 @@ describe("CatalogPedalSchema", () => {
 				sources: [{ url: "https://example.com", kind: "photo" }],
 			}).success,
 		).toBe(false);
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				sources: [{ url: "javascript:alert(1)", kind: "info" }],
+			}).success,
+		).toBe(false);
 	});
 
 	it("accepts a URL image when imageSource is 'url'", () => {
@@ -76,6 +82,10 @@ describe("CatalogPedalSchema", () => {
 		["unknown category", { ...validPedal, category: "board" }],
 		["unknown imageSource", { ...validPedal, imageSource: "cloud" }],
 		["url imageSource with a filename", { ...validPedal, imageSource: "url" }],
+		[
+			"url imageSource with a non-http scheme",
+			{ ...validPedal, image: "javascript:alert(1)", imageSource: "url" },
+		],
 		[
 			"static imageSource with a URL",
 			{
