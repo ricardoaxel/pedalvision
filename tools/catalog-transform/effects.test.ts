@@ -154,6 +154,19 @@ describe("committed seed effectTypes", () => {
 		}
 	});
 
+	it("keeps every colorway footprint equal to its base (true-scale)", () => {
+		const byId = new Map(pedals.map((p) => [p.id, p]));
+		for (const pedal of pedals) {
+			if (!pedal.variantOf) continue;
+			const base = byId.get(pedal.variantOf);
+			expect(base, pedal.id).toBeDefined();
+			expect([pedal.widthCm, pedal.heightCm], pedal.id).toEqual([
+				base?.widthCm,
+				base?.heightCm,
+			]);
+		}
+	});
+
 	it("classifies a meaningful share of the seed", () => {
 		const classified = pedals.filter((p) => p.effectTypes.length > 0).length;
 		expect(classified).toBeGreaterThan(pedals.length * 0.9);

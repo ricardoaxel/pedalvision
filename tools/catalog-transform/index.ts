@@ -12,6 +12,7 @@ import {
 	convertBoards,
 	convertPedals,
 	type ExternalRow,
+	normalizeVariantFootprints,
 	preserveCuration,
 } from "./convert.ts";
 import { deriveCategory, deriveEffectTypes } from "./curated.ts";
@@ -203,6 +204,9 @@ async function runImport(args: Args): Promise<void> {
 		selectedPedals,
 		await readExisting<CatalogPedal>(`${outDir}/pedals.json`),
 	);
+	// Re-normalize AFTER the merge: a curated base footprint must propagate to a
+	// newly-added colorway (otherwise variant/base dims can silently diverge).
+	normalizeVariantFootprints(mergedPedals);
 
 	// Boards are only touched when explicitly imported — a pedals-only import
 	// must never blank `boards.json`.

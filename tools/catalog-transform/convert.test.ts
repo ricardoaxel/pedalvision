@@ -1,11 +1,15 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { CatalogPedalSchema } from "../../src/catalog/schema.ts";
+import {
+	type CatalogPedal,
+	CatalogPedalSchema,
+} from "../../src/catalog/schema.ts";
 import {
 	convertBoards,
 	convertPedals,
 	type ExternalRow,
 	inchesToCm,
+	normalizeVariantFootprints,
 	preserveCuration,
 } from "./convert.ts";
 import { toSlug } from "./slug.ts";
@@ -117,6 +121,17 @@ describe("convertPedals", () => {
 		for (const pedal of result.items) {
 			expect(CatalogPedalSchema.safeParse(pedal).success).toBe(true);
 		}
+	});
+});
+
+describe("normalizeVariantFootprints", () => {
+	it("sets a variant to its base dims (idempotent)", () => {
+		const items = [
+			{ id: "b", widthCm: 6.35, heightCm: 11.94 },
+			{ id: "v", variantOf: "b", widthCm: 9, heightCm: 9 },
+		] as unknown as CatalogPedal[];
+		normalizeVariantFootprints(items);
+		expect(items[1]).toMatchObject({ widthCm: 6.35, heightCm: 11.94 });
 	});
 });
 

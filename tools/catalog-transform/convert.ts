@@ -62,6 +62,26 @@ function makeWarn(options: ConvertOptions, warnings: string[]) {
 }
 
 /**
+ * A colorway shares its base model's footprint — a variant must not change the
+ * planned occupied size (true-scale). Normalizes every variant to its base's
+ * `widthCm`/`heightCm` **in place**. Idempotent, so it is safe to re-run after a
+ * curation merge (a curated base footprint must propagate to its variants).
+ */
+export function normalizeVariantFootprints(items: CatalogPedal[]): void {
+	const dimsById = new Map(
+		items.map((p) => [p.id, { widthCm: p.widthCm, heightCm: p.heightCm }]),
+	);
+	for (const item of items) {
+		if (!item.variantOf) continue;
+		const base = dimsById.get(item.variantOf);
+		if (base) {
+			item.widthCm = base.widthCm;
+			item.heightCm = base.heightCm;
+		}
+	}
+}
+
+/**
  * Convert external pedal rows into our schema. Deterministic (input order only,
  * no randomness): entries missing brand/dimensions are skipped with a warning;
  * duplicate slugs are skipped with a warning (first occurrence wins); variants
@@ -147,19 +167,7 @@ export function convertPedals(
 		return true;
 	});
 
-	// A colorway shares its base model's footprint — a variant row must not change
-	// the planned occupied size (true-scale). Normalize to the base dimensions.
-	const dimsById = new Map(
-		items.map((p) => [p.id, { widthCm: p.widthCm, heightCm: p.heightCm }]),
-	);
-	for (const item of items) {
-		if (!item.variantOf) continue;
-		const base = dimsById.get(item.variantOf);
-		if (base) {
-			item.widthCm = base.widthCm;
-			item.heightCm = base.heightCm;
-		}
-	}
+	normalizeVariantFootprints(items);
 
 	return { items, warnings };
 }
