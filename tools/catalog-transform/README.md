@@ -36,6 +36,11 @@ An array of rows; dimensions in **inches**:
   slugs are skipped (first wins); variants whose base is absent are dropped.
 - **Any external image name is ignored.** We always emit our own mocked name
   (`<id>.png`) — no third-party asset is referenced.
+- **`effectTypes` and `category` are name-derived** (the external data has no
+  taxonomy). `effects.ts` maps effect keywords in the product name to effect
+  types (`overdrive`, `delay`, `fuzz`, …) and `convert.ts` flags power supplies
+  by name. Both are conservative best-effort heuristics: creatively-named pedals
+  stay unclassified rather than guessed wrong. A real taxonomy is a later data task.
 
 Our stored shape (`id, brand, name, widthCm, heightCm, image, effectTypes,
 category`; optional `jacks?`, `power?`, `variantOf?`; `source`) is deliberately

@@ -28,7 +28,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ad-2-acoustic-preamp.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "boost"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -39,7 +41,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-aw-3-dynamic-wah.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "wah"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -50,7 +54,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bb-1x-bass-driver.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -61,7 +67,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bc-1x-bass-compressor.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -72,7 +80,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bc-2-combo-drive.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -83,7 +93,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bd-2-blues-driver.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -94,7 +106,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bf-2-flanger.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "flanger"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -105,7 +119,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bf-2b-bass-flanger.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "flanger"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -116,7 +132,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bf-3-flanger.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "flanger"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -127,7 +145,9 @@
     "widthCm": 25.91,
     "heightCm": 17.53,
     "image": "boss-ce-1-chorus-ensemble.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -138,7 +158,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-2-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -149,7 +171,9 @@
     "widthCm": 17.3,
     "heightCm": 15.49,
     "image": "boss-ce-20-chorus-ensemble.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -160,7 +184,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-2b-bass-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -171,7 +197,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-3-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -182,7 +210,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-5-chorus-ensemble.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -193,7 +223,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ceb-3-bass-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -204,7 +236,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ch-1-super-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -215,7 +249,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-cp-1x-compressor.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -226,7 +262,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-cs-2-compression-sustainer.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -237,7 +275,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-cs-3-compression-sustainer.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -248,7 +288,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-da-2-adaptive-distortion.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -281,7 +323,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-2-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -292,7 +336,9 @@
     "widthCm": 17.3,
     "heightCm": 15.49,
     "image": "boss-dd-20-giga-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -303,7 +349,9 @@
     "widthCm": 10.16,
     "heightCm": 13.82,
     "image": "boss-dd-200-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -314,7 +362,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-3-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -325,7 +375,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-3t-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -336,7 +388,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-5-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -347,7 +401,9 @@
     "widthCm": 17.15,
     "heightCm": 13.72,
     "image": "boss-dd-500-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -358,7 +414,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-6-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -369,7 +427,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-7-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -380,7 +440,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-8-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -391,7 +453,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-df-2-super-feedbacker-distortion.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -402,7 +466,9 @@
     "widthCm": 19.2,
     "heightCm": 13.28,
     "image": "boss-dm-101-delay-machine.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -413,7 +479,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dm-2-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -424,7 +492,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dm-3-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -435,7 +505,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dn-2-dyna-drive.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -446,7 +518,9 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-1-echo.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -457,7 +531,9 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-1440-stereo-looper.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "looper"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -479,7 +555,9 @@
     "widthCm": 4.62,
     "heightCm": 9.53,
     "image": "electro-harmonix-2020-tuner.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "tuner"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -490,7 +568,9 @@
     "widthCm": 4.62,
     "heightCm": 9.68,
     "image": "electro-harmonix-2020-tuner-v2.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "tuner"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -501,7 +581,9 @@
     "widthCm": 15.42,
     "heightCm": 12.8,
     "image": "electro-harmonix-22500-dual-stereo-looper.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "looper"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -545,7 +627,9 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-720-stereo-looper.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "looper"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -622,7 +706,9 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-bass-big-muff-pi.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -633,7 +719,9 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-bass-big-muff-pi-2.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -952,7 +1040,9 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-bassist-compressor.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1246,7 +1336,9 @@
     "widthCm": 4.52,
     "heightCm": 9.4,
     "image": "earthquaker-barrows-fuzz.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1268,7 +1360,9 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-boost.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "boost"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1279,7 +1373,9 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-fuzz.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1301,7 +1397,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-bit-crusher.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "bitcrusher"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1312,7 +1410,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1323,7 +1423,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-compressor.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1334,7 +1436,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1345,7 +1449,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-distortion.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1356,7 +1462,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-flanger.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "flanger"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1367,7 +1475,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-fuzz.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1378,7 +1488,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-glitch-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1389,7 +1501,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-hall-reverb.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1400,7 +1514,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-harmonic-trem.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "tremolo"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1411,7 +1527,10 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-octave-reverb.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "octave",
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1422,7 +1541,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-oil-can-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1433,7 +1554,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-oil-can-delay-black.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "variantOf": "jhs-3-series-oil-can-delay",
     "source": "placeholder"
@@ -1445,7 +1568,9 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-overdrive.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1456,7 +1581,9 @@
     "widthCm": 22.35,
     "heightCm": 13.72,
     "image": "tc-electronic-2290-p-dynamic-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1467,7 +1594,9 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-3rd-dimension-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1478,7 +1607,9 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-afterglow-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1489,7 +1620,9 @@
     "widthCm": 7.26,
     "heightCm": 12.19,
     "image": "tc-electronic-alter-ego-v2-vintage-echo.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1500,7 +1633,9 @@
     "widthCm": 23.62,
     "heightCm": 14.35,
     "image": "tc-electronic-alter-ego-x4-vintage-echo.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1577,7 +1712,9 @@
     "widthCm": 7.26,
     "heightCm": 12.19,
     "image": "tc-electronic-arena-reverb.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1588,7 +1725,9 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-blood-moon-phaser.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "phaser"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1621,7 +1760,9 @@
     "widthCm": 7.26,
     "heightCm": 12.19,
     "image": "tc-electronic-brainwaves-pitch-shifter.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "pitch"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1632,7 +1773,9 @@
     "widthCm": 6.1,
     "heightCm": 10.03,
     "image": "tc-electronic-bucket-brigade-analog-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1643,7 +1786,9 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-choka-tremolo.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "tremolo"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1863,7 +2008,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-analog-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1874,7 +2021,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-chorus-deluxe.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1885,7 +2034,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-compressor.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1907,7 +2058,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-distortion.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1918,7 +2071,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-envelope-filter.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "wah"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1929,7 +2084,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-fuzz-deluxe.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1940,7 +2097,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-octave-deluxe.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "octave"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1951,7 +2110,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-overdrive.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1962,7 +2123,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-preamp.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "boost"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1973,7 +2136,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-synth.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "synth"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1984,7 +2149,9 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-blue-box-fuzz.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1995,7 +2162,9 @@
     "widthCm": 4.42,
     "heightCm": 9.4,
     "image": "mxr-booster-mini.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "boost"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2006,7 +2175,10 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-cae-boost-line-driver.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive",
+      "boost"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2017,7 +2189,10 @@
     "widthCm": 12.57,
     "heightCm": 8.99,
     "image": "mxr-cae-boost-overdrive.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive",
+      "boost"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2061,7 +2236,9 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-01-vintage-overdrive.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2072,7 +2249,9 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-02-ultimate-drive.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2083,7 +2262,9 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-03-crunch-distortion.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2094,7 +2275,9 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-04-high-gain-distortion.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2105,7 +2288,9 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-05-classic-chorus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2127,7 +2312,9 @@
     "widthCm": 9.07,
     "heightCm": 11.79,
     "image": "joyo-jf-07-classic-flanger.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "flanger"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2138,7 +2325,9 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-08-digital-delay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2149,7 +2338,9 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-09-tremolo.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "tremolo"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2160,7 +2351,9 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-10-dynamic-compressor.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2171,7 +2364,9 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-11-6-band-eq.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "eq"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2182,7 +2377,9 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-12-voodoo-octave.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "octave"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2237,7 +2434,9 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-17-extreme-metal.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },

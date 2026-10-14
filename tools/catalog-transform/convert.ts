@@ -3,6 +3,7 @@ import type {
 	CatalogPedal,
 	SourceTag,
 } from "../../src/catalog/schema.ts";
+import { classifyEffects } from "./effects.ts";
 
 /**
  * Generic converter: an external catalog JSON → our catalog schema
@@ -127,7 +128,7 @@ export function convertPedals(
 			widthCm: inchesToCm(row.Width),
 			heightCm: inchesToCm(row.Height),
 			image: `${id}.png`,
-			effectTypes: [],
+			effectTypes: classifyEffects(displayName),
 			category: SUPPLY_HINT.test(displayName) ? "supply" : "pedal",
 			variantOf: variantMatch ? baseId : undefined,
 			source: options.source,

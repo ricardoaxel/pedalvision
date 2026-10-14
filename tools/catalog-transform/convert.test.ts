@@ -56,7 +56,7 @@ describe("convertPedals", () => {
 			image: "acme-big-fuzz.png",
 			category: "pedal",
 			source: "placeholder",
-			effectTypes: [],
+			effectTypes: ["fuzz"],
 		});
 		expect(fuzz?.jacks).toBeUndefined();
 	});
