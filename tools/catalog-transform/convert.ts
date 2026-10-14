@@ -3,7 +3,8 @@ import type {
 	CatalogPedal,
 	SourceTag,
 } from "../../src/catalog/schema.ts";
-import { classifyEffects } from "./effects.ts";
+import { deriveCategory, deriveEffectTypes } from "./curated.ts";
+import { toSlug, VARIANT_SUFFIX } from "./slug.ts";
 
 /**
  * Generic converter: an external catalog JSON → our catalog schema
@@ -35,23 +36,6 @@ export type ConvertResult<T> = {
 	items: T[];
 	warnings: string[];
 };
-
-const VARIANT_SUFFIX = /^(.*?)\s*\(([^)]+)\)\s*$/;
-
-/** Names that denote a power supply rather than an effect pedal. */
-const SUPPLY_HINT =
-	/\bpower\s*(supply|box|bank|system)\b|\bpsu\b|powerplay|isolated power/i;
-
-/** Slugify a display string: lowercase ASCII words joined by single hyphens. */
-export function toSlug(value: string): string {
-	return value
-		.normalize("NFD")
-		.replace(/[\u0300-\u036f]/g, "")
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, "-")
-		.replace(/^-+|-+$/g, "")
-		.replace(/-{2,}/g, "-");
-}
 
 function round2(value: number): number {
 	return Math.round((value + Number.EPSILON) * 100) / 100;
@@ -128,8 +112,16 @@ export function convertPedals(
 			widthCm: inchesToCm(row.Width),
 			heightCm: inchesToCm(row.Height),
 			image: `${id}.png`,
-			effectTypes: classifyEffects(displayName),
-			category: SUPPLY_HINT.test(displayName) ? "supply" : "pedal",
+			effectTypes: deriveEffectTypes({
+				brand,
+				name: displayName,
+				variantOf: variantMatch ? baseId : undefined,
+			}),
+			category: deriveCategory({
+				brand,
+				name: displayName,
+				variantOf: variantMatch ? baseId : undefined,
+			}),
 			variantOf: variantMatch ? baseId : undefined,
 			source: options.source,
 		});

@@ -6,7 +6,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ac-2-acoustic-simulator.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "acoustic-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -17,7 +19,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ac-3-acoustic-simulator.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "acoustic-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -29,7 +33,8 @@
     "heightCm": 13.02,
     "image": "boss-ad-2-acoustic-preamp.png",
     "effectTypes": [
-      "boost"
+      "acoustic-sim",
+      "preamp"
     ],
     "category": "pedal",
     "source": "placeholder"
@@ -301,7 +306,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dc-2-dimension-c.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -312,7 +319,9 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dc-3-digital-dimension.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -544,7 +553,10 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-15watt-howitzer.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "power-amp"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -594,7 +606,9 @@
     "widthCm": 11.43,
     "heightCm": 6.99,
     "image": "electro-harmonix-22500-foot-controller.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "controller"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -605,7 +619,9 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-44-magnum-power-amp.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "power-amp"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -616,7 +632,9 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-5mm-power-amp.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "power-amp"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -640,7 +658,10 @@
     "widthCm": 15.42,
     "heightCm": 12.07,
     "image": "electro-harmonix-8-step-program.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "sequencer",
+      "controller"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -651,7 +672,9 @@
     "widthCm": 32.39,
     "heightCm": 14.99,
     "image": "electro-harmonix-95000-performance-loop-laboratory.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "looper"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -662,7 +685,9 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-analogizer.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "boost"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -673,7 +698,10 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-attack-decay.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "envelope",
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -684,7 +712,9 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-b9-organ-machine.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "organ-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -695,7 +725,9 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-bad-stone.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "phaser"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -732,7 +764,9 @@
     "widthCm": 7.32,
     "heightCm": 12.29,
     "image": "walrus-audio-385.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -743,7 +777,9 @@
     "widthCm": 7.32,
     "heightCm": 12.29,
     "image": "walrus-audio-385-nat-parks.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-385",
     "source": "placeholder"
@@ -755,7 +791,9 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-385-mkii.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -766,7 +804,9 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-385-mkii-black.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-385-mkii",
     "source": "placeholder"
@@ -778,7 +818,9 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -789,7 +831,9 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-kamakura.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-arp-87",
     "source": "placeholder"
@@ -801,7 +845,9 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-nat-parks.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-arp-87",
     "source": "placeholder"
@@ -813,7 +859,9 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-nautical.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-arp-87",
     "source": "placeholder"
@@ -825,7 +873,9 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-obsidian.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-arp-87",
     "source": "placeholder"
@@ -837,7 +887,9 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-platinum.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-arp-87",
     "source": "placeholder"
@@ -850,7 +902,7 @@
     "heightCm": 9.4,
     "image": "walrus-audio-aetos.png",
     "effectTypes": [],
-    "category": "pedal",
+    "category": "supply",
     "source": "placeholder"
   },
   {
@@ -860,7 +912,9 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-ages.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -871,7 +925,9 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-ages-kamakura.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-ages",
     "source": "placeholder"
@@ -883,7 +939,9 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-ages-nat-parks.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "variantOf": "walrus-audio-ages",
     "source": "placeholder"
@@ -895,7 +953,13 @@
     "widthCm": 12.34,
     "heightCm": 9.7,
     "image": "walrus-audio-badwater.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "di",
+      "compressor",
+      "overdrive",
+      "eq"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -906,7 +970,10 @@
     "widthCm": 14.45,
     "heightCm": 12.07,
     "image": "walrus-audio-bellwether.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay",
+      "chorus"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -917,7 +984,10 @@
     "widthCm": 7.16,
     "heightCm": 12.19,
     "image": "walrus-audio-canvas-clock.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -928,7 +998,10 @@
     "widthCm": 4.75,
     "heightCm": 9.4,
     "image": "walrus-audio-canvas-line-isolator.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "di",
+      "utility"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -939,7 +1012,9 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-1962.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -950,7 +1025,9 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-1962x.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -961,7 +1038,11 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-30ms-double-tracker.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay",
+      "chorus",
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -972,7 +1053,9 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-abbey-chamber-verb.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -983,7 +1066,10 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-angry-orange.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -994,7 +1080,10 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-angry-orange-signalis.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
     "category": "pedal",
     "variantOf": "keeley-angry-orange",
     "source": "placeholder"
@@ -1006,7 +1095,10 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-angry-orange-white.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
     "category": "pedal",
     "variantOf": "keeley-angry-orange",
     "source": "placeholder"
@@ -1018,7 +1110,10 @@
     "widthCm": 9.4,
     "heightCm": 12.45,
     "image": "keeley-aria.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "compressor",
+      "overdrive"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1029,7 +1124,9 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-aurora.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1053,7 +1150,9 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-black-glass.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1064,7 +1163,9 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-blacktop.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1075,7 +1176,10 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-blues-disorder.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1086,7 +1190,10 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-blues-disorder-signalis.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
     "category": "pedal",
     "variantOf": "keeley-blues-disorder",
     "source": "placeholder"
@@ -1098,7 +1205,10 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-blues-disorder-white.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
     "category": "pedal",
     "variantOf": "keeley-blues-disorder",
     "source": "placeholder"
@@ -1110,7 +1220,12 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-bubble-tron.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "flanger",
+      "phaser",
+      "envelope",
+      "filter"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1121,7 +1236,12 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-bubble-tron-ler.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "flanger",
+      "phaser",
+      "envelope",
+      "filter"
+    ],
     "category": "pedal",
     "variantOf": "keeley-bubble-tron",
     "source": "placeholder"
@@ -1133,7 +1253,11 @@
     "widthCm": 10.16,
     "heightCm": 12.8,
     "image": "keeley-california-girls.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "octave",
+      "chorus",
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1144,7 +1268,9 @@
     "widthCm": 4.52,
     "heightCm": 9.4,
     "image": "earthquaker-a-b-box.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "ab-box"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1155,7 +1281,9 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-acapulco-gold.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1166,7 +1294,9 @@
     "widthCm": 6.6,
     "heightCm": 12.75,
     "image": "earthquaker-afterneath.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1177,7 +1307,9 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-afterneath-v3.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1188,7 +1320,9 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-afterneath-v3-pastel-purple.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "variantOf": "earthquaker-afterneath-v3",
     "source": "placeholder"
@@ -1200,7 +1334,9 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-afterneath-v3-raw.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb"
+    ],
     "category": "pedal",
     "variantOf": "earthquaker-afterneath-v3",
     "source": "placeholder"
@@ -1212,7 +1348,9 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-aqueduct.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "vibrato"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1223,7 +1361,9 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-arpanoid.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "pitch"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1234,7 +1374,10 @@
     "widthCm": 7.21,
     "heightCm": 11.43,
     "image": "earthquaker-arrows.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1245,7 +1388,10 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-arrows-v2.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1256,7 +1402,10 @@
     "widthCm": 9.68,
     "heightCm": 12.22,
     "image": "earthquaker-astral-destiny.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "reverb",
+      "octave"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1267,7 +1416,11 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-aurelius.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "chorus",
+      "vibrato",
+      "rotary"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1278,7 +1431,10 @@
     "widthCm": 9.68,
     "heightCm": 12.22,
     "image": "earthquaker-avalanche-run.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1289,7 +1445,10 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1300,7 +1459,10 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2-black.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
     "category": "pedal",
     "variantOf": "earthquaker-avalanche-run-v2",
     "source": "placeholder"
@@ -1312,7 +1474,10 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2-mint.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
     "category": "pedal",
     "variantOf": "earthquaker-avalanche-run-v2",
     "source": "placeholder"
@@ -1324,7 +1489,10 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2-purple-sparkle.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
     "category": "pedal",
     "variantOf": "earthquaker-avalanche-run-v2",
     "source": "placeholder"
@@ -1349,7 +1517,9 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-bender.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1386,7 +1556,9 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-italy.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "fuzz"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1646,7 +1818,11 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-550.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1657,7 +1833,12 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-combo-deluxe-65.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim",
+      "reverb"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1668,7 +1849,11 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-dc30.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1679,7 +1864,11 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-dual-wreck.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1690,7 +1879,11 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-jims-45.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1701,7 +1894,11 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-jims-800.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1738,7 +1935,10 @@
     "widthCm": 5.08,
     "heightCm": 9.53,
     "image": "tc-electronic-bodyrez-acoustic-pickup-enhancer.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "eq",
+      "compressor"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1749,7 +1949,9 @@
     "widthCm": 5.08,
     "heightCm": 9.53,
     "image": "tc-electronic-bonafide-buffer.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "buffer"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1799,7 +2001,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-001-gas-station.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1810,7 +2015,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-002-uk-gold-900.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1821,7 +2029,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-003-power-zone.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1832,7 +2043,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-004-day-tripper.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1843,7 +2057,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-005-brown-sound-3.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1854,7 +2071,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-006-us-classic-deluxe.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1865,7 +2085,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-007-regal-tone.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1876,7 +2099,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-008-cali-mk3.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1887,7 +2113,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-009-black-knight.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1898,7 +2127,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-010-two-stones.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1909,7 +2141,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-011-cali-dual.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1920,7 +2155,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-012-us-gold-100.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1931,7 +2169,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-013-matchbox.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1942,7 +2183,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-014-taxidea-taxus.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1953,7 +2197,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-015-brown-sound.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1964,7 +2211,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-016-phoenix-digital.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1975,7 +2225,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-017-cali-mkiv.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1986,7 +2239,10 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-018-custom-100.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -1997,7 +2253,9 @@
     "widthCm": 12.07,
     "heightCm": 9.27,
     "image": "mxr-a-b-box.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "ab-box"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2047,7 +2305,11 @@
     "widthCm": 12.57,
     "heightCm": 8.99,
     "image": "mxr-bass-di.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "preamp",
+      "di",
+      "distortion"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2072,7 +2334,8 @@
     "heightCm": 11.43,
     "image": "mxr-bass-envelope-filter.png",
     "effectTypes": [
-      "wah"
+      "envelope",
+      "filter"
     ],
     "category": "pedal",
     "source": "placeholder"
@@ -2124,7 +2387,7 @@
     "heightCm": 11.43,
     "image": "mxr-bass-preamp.png",
     "effectTypes": [
-      "boost"
+      "preamp"
     ],
     "category": "pedal",
     "source": "placeholder"
@@ -2203,7 +2466,9 @@
     "widthCm": 6.96,
     "heightCm": 7.29,
     "image": "mxr-cae-buffer.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "buffer"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2225,7 +2490,9 @@
     "widthCm": 9.96,
     "heightCm": 10.49,
     "image": "joyo-d-seed.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "delay"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2301,7 +2568,9 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-06-vintage-phase.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "phaser"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2390,7 +2659,10 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-13-ac-tone.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2401,7 +2673,10 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-14-american-sound.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2412,7 +2687,10 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-15-california-sound.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },
@@ -2423,7 +2701,10 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-16-british-sound.png",
-    "effectTypes": [],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
     "category": "pedal",
     "source": "placeholder"
   },

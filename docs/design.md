@@ -50,7 +50,7 @@ type CatalogPedal = {
   widthCm: number       // footprint incl. jacks
   heightCm: number
   image: string         // filename under /pedal-assets/{kind}/{size}/
-  effectTypes: string[] // ["tremolo"]
+  effectTypes: EffectType[] // OUR taxonomy enum (EFFECT_TYPES): sound effects + non-effect roles ("delay", "preamp", "buffer", …); see ADR-003 §Effect taxonomy
   category: 'pedal' | 'supply'  // R6/N1 — lets the picker + custom creator distinguish pedals from power supplies
   jacks?: { kind: 'in'|'out'|'exp'|'power', edge: 'top'|'right'|'bottom'|'left', pos: number }[] // pos = 0..1 position ALONG the edge (e.g. 0.5 = centered) — required so cable attach points + length calc have a concrete coordinate (S3)
   power?: { voltage: 9|12|18|number, acDc: 'DC'|'AC', currentMa: number }
@@ -70,7 +70,7 @@ type CustomPedal = { refId: string, brand: string, name: string, widthCm: number
 type Scene = { id: string, version: 1, name: string, boards: PlacedBoard[], items: PlacedItem[], customPedals: CustomPedal[], endpoints: Endpoint[], cables: Cable[], updatedAt: string }
 type Settings = { units: 'cm' | 'in' }  // display only — storage is always cm
 ```
-External catalog formats are **transformed into this schema** by `tools/catalog-transform` (one-off dev tool). We do not inherit external conventions (inches, name-keyed entries, per-colorway duplicates).
+External catalog formats are **transformed into this schema** by `tools/catalog-transform` (one-off dev tool). This schema is our **own model**, not a rename of any external one — see ADR-003 §Schema originality for the field mapping (cm-native geometry, slug ids, referential variants, provenance enum, our effect taxonomy). We do not inherit external conventions, field names, or images (inches, name-keyed entries, per-colorway duplicates, source image files).
 
 ## Persistence (v1, no backend)
 - `localStorage`: settings + scene index (id → name, updatedAt)

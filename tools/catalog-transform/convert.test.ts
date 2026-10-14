@@ -6,8 +6,8 @@ import {
 	convertPedals,
 	type ExternalRow,
 	inchesToCm,
-	toSlug,
 } from "./convert.ts";
+import { toSlug } from "./slug.ts";
 
 const fixture = JSON.parse(
 	readFileSync(

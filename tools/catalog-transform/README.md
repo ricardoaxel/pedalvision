@@ -9,6 +9,9 @@ pnpm catalog:import --input pedals.json --boards pedalboards.json
 
 # (Re)generate the mocked PNGs from the committed catalog JSON
 pnpm catalog:seed
+
+# Recompute effectTypes + category of the committed JSON in place (curated + classifier)
+pnpm catalog:reclassify
 ```
 
 ## Provenance rule (binding)
@@ -36,15 +39,30 @@ An array of rows; dimensions in **inches**:
   slugs are skipped (first wins); variants whose base is absent are dropped.
 - **Any external image name is ignored.** We always emit our own mocked name
   (`<id>.png`) — no third-party asset is referenced.
-- **`effectTypes` and `category` are name-derived** (the external data has no
-  taxonomy). `effects.ts` maps effect keywords in the product name to effect
-  types (`overdrive`, `delay`, `fuzz`, …) and `convert.ts` flags power supplies
-  by name. Both are conservative best-effort heuristics: creatively-named pedals
-  stay unclassified rather than guessed wrong. A real taxonomy is a later data task.
 
 Our stored shape (`id, brand, name, widthCm, heightCm, image, effectTypes,
 category`; optional `jacks?`, `power?`, `variantOf?`; `source`) is deliberately
-different from the external one.
+different from the external one — see ADR-003 §Schema originality.
+
+## Effect taxonomy & category
+
+The external data has **no** taxonomy, so `effectTypes` and `category` are OURS
+(ADR-003 §Effect taxonomy):
+
+- **`effectTypes`** — our vocabulary enum (`EFFECT_TYPES` in
+  `src/catalog/schema.ts`: sound effects + non-effect roles like `preamp`,
+  `buffer`, `di`, `ab-box`, `amp-modeler`). Resolved by `deriveEffectTypes()`
+  (`curated.ts`): a **verified override** for the base model wins (colorway
+  variants inherit their base), otherwise a conservative name-keyword classifier
+  (`effects.ts`) is used — creatively-named pedals stay unclassified rather than
+  guessed wrong.
+- **`category`** — `pedal` | `supply`, via `deriveCategory()` (`curated.ts`):
+  a verified-supply override (`CURATED_SUPPLIES`) or a name hint. Supplies keep
+  `effectTypes: []`.
+- **`pnpm catalog:reclassify`** re-applies both to the committed JSON in place,
+  so taxonomy/curated changes need no external input file. A no-drift test
+  asserts the committed seed equals a fresh derivation for every pedal, and a
+  second test asserts every curated key maps to a real seed entry (no dead rows).
 
 ## Selection
 

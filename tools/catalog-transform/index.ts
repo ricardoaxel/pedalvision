@@ -7,6 +7,7 @@ import {
 	type SourceTag,
 } from "../../src/catalog/schema.ts";
 import { convertBoards, convertPedals, type ExternalRow } from "./convert.ts";
+import { deriveCategory, deriveEffectTypes } from "./curated.ts";
 import { writeSeedImages } from "./seed.ts";
 import {
 	DEFAULT_SELECT,
@@ -46,6 +47,7 @@ Usage:
          [--brand-limit <n>] [--top-brand-cap <n>] [--per-brand-cap <n>]
          [--supply-limit <n>] [--board-limit <n>]
   seed   [--catalog-dir <dir>] [--assets-dir <dir>]
+  reclassify [--catalog-dir <dir>]
   --help
 
 Source tags: ${SOURCE_TAGS.join(" | ")}`;
@@ -216,6 +218,43 @@ async function runSeed(args: Args): Promise<void> {
 	console.log(`  pngs  → ${assetsDir}`);
 }
 
+/**
+ * Recompute `effectTypes` for the committed catalog in place (curated override
+ * + classifier), so taxonomy/curated changes can be applied without the
+ * external input file. Deterministic; touches nothing else.
+ */
+async function runReclassify(args: Args): Promise<void> {
+	const catalogDir = resolve(process.cwd(), args.catalogDir);
+	const path = `${catalogDir}/pedals.json`;
+	const parsed = CatalogPedalSchema.array().safeParse(
+		JSON.parse(await readFile(path, "utf8")),
+	);
+	if (!parsed.success) {
+		throw new Error(`pedals.json: ${parsed.error.issues[0]?.message}`);
+	}
+	let changed = 0;
+	const next = parsed.data.map((pedal) => {
+		const input = {
+			brand: pedal.brand,
+			name: pedal.name,
+			variantOf: pedal.variantOf,
+		};
+		const effectTypes = deriveEffectTypes(input);
+		const category = deriveCategory(input);
+		if (
+			JSON.stringify(effectTypes) !== JSON.stringify(pedal.effectTypes) ||
+			category !== pedal.category
+		) {
+			changed++;
+		}
+		return { ...pedal, effectTypes, category };
+	});
+	await writeFile(path, `${JSON.stringify(next, null, 2)}\n`);
+	console.log(
+		`reclassify: ${next.length} pedals, ${changed} updated → ${path}`,
+	);
+}
+
 async function main(): Promise<void> {
 	const args = parseArgs(process.argv.slice(2));
 	if (args.help || !args.command) {
@@ -229,6 +268,9 @@ async function main(): Promise<void> {
 			return;
 		case "seed":
 			await runSeed(args);
+			return;
+		case "reclassify":
+			await runReclassify(args);
 			return;
 		default:
 			throw new Error(`unknown command "${args.command}"`);

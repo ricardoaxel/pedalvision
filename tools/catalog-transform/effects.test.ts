@@ -1,7 +1,19 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import type { CatalogPedal } from "../../src/catalog/schema.ts";
+import { type CatalogPedal, EFFECT_TYPES } from "../../src/catalog/schema.ts";
+import {
+	CURATED_EFFECTS,
+	deriveCategory,
+	deriveEffectTypes,
+} from "./curated.ts";
 import { classifyEffects } from "./effects.ts";
+
+const committedPedals = JSON.parse(
+	readFileSync(
+		new URL("../../src/catalog/data/pedals.json", import.meta.url),
+		"utf8",
+	),
+) as CatalogPedal[];
 
 describe("classifyEffects", () => {
 	it("maps common effect keywords to our effect types", () => {
@@ -18,6 +30,14 @@ describe("classifyEffects", () => {
 		expect(classifyEffects("Delay & Reverb")).toEqual(["delay", "reverb"]);
 	});
 
+	it("maps non-effect roles from the name", () => {
+		expect(classifyEffects("A/B Box")).toEqual(["ab-box"]);
+		expect(classifyEffects("Bass DI+")).toEqual(["di"]);
+		expect(classifyEffects("CAE Buffer")).toEqual(["buffer"]);
+		expect(classifyEffects("B9 Organ Machine")).toEqual(["organ-sim"]);
+		expect(classifyEffects("8 Step Program")).toEqual(["sequencer"]);
+	});
+
 	it("leaves creatively-named pedals unclassified (no guessing)", () => {
 		expect(classifyEffects("Julia")).toEqual([]);
 		expect(classifyEffects("Morning Glory")).toEqual([]);
@@ -28,22 +48,49 @@ describe("classifyEffects", () => {
 	});
 });
 
-describe("committed seed effectTypes", () => {
-	const pedals = JSON.parse(
-		readFileSync(
-			new URL("../../src/catalog/data/pedals.json", import.meta.url),
-			"utf8",
-		),
-	) as CatalogPedal[];
+describe("curated overrides", () => {
+	it("only uses our taxonomy", () => {
+		const known = new Set<string>(EFFECT_TYPES);
+		for (const [key, types] of Object.entries(CURATED_EFFECTS)) {
+			for (const type of types)
+				expect(known.has(type), `${key}:${type}`).toBe(true);
+		}
+	});
 
-	it("matches a fresh classification of every name (no drift)", () => {
+	it("has no dead entries (every key is a committed base model)", () => {
+		const ids = new Set(committedPedals.map((p) => p.id));
+		for (const key of Object.keys(CURATED_EFFECTS)) {
+			expect(ids.has(key), key).toBe(true);
+		}
+	});
+
+	it("marks a verified supply as a supply (Aetos)", () => {
+		expect(deriveCategory({ brand: "Walrus Audio", name: "Aetos" })).toBe(
+			"supply",
+		);
+	});
+});
+
+describe("committed seed effectTypes", () => {
+	const pedals = committedPedals;
+
+	it("matches a fresh derivation for every pedal (curated + classifier, no drift)", () => {
 		for (const pedal of pedals) {
-			expect(pedal.effectTypes, pedal.id).toEqual(classifyEffects(pedal.name));
+			expect(
+				pedal.effectTypes,
+				`${pedal.id} (${pedal.brand} ${pedal.name})`,
+			).toEqual(
+				deriveEffectTypes({
+					brand: pedal.brand,
+					name: pedal.name,
+					variantOf: pedal.variantOf,
+				}),
+			);
 		}
 	});
 
 	it("classifies a meaningful share of the seed", () => {
 		const classified = pedals.filter((p) => p.effectTypes.length > 0).length;
-		expect(classified).toBeGreaterThan(pedals.length * 0.4);
+		expect(classified).toBeGreaterThan(pedals.length * 0.9);
 	});
 });
