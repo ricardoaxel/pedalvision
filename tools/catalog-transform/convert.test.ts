@@ -9,6 +9,7 @@ import {
 	convertPedals,
 	type ExternalRow,
 	inchesToCm,
+	mergeExisting,
 	normalizeVariantFootprints,
 	preserveCuration,
 } from "./convert.ts";
@@ -121,6 +122,18 @@ describe("convertPedals", () => {
 		for (const pedal of result.items) {
 			expect(CatalogPedalSchema.safeParse(pedal).success).toBe(true);
 		}
+	});
+});
+
+describe("mergeExisting", () => {
+	it("rejects an invalid existing catalog (missing id) rather than losing curation", () => {
+		expect(() =>
+			mergeExisting(
+				[],
+				[{ brand: "Acme", name: "X", widthCm: 1, heightCm: 1, image: "x.png" }],
+				CatalogPedalSchema.array(),
+			),
+		).toThrow(/invalid/);
 	});
 });
 

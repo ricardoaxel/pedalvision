@@ -1,3 +1,4 @@
+import type { z } from "zod";
 import type {
 	CatalogBoard,
 	CatalogPedal,
@@ -204,6 +205,28 @@ function pickCuration<T>(prev: T): Partial<T> {
  * Merge curation from an existing catalog into freshly converted items, matched
  * by stable id. New items keep converter defaults; removed ids simply drop out.
  */
+/**
+ * Validate a raw existing catalog and merge its curation onto freshly converted
+ * items. The existing file is schema-validated first: a row missing/miscased
+ * `id` (or otherwise invalid) would silently fail to match and lose its
+ * curation, so it must fail loudly instead.
+ */
+export function mergeExisting<T extends { id: string }>(
+	next: T[],
+	existingRaw: unknown,
+	schema: z.ZodType<T[]>,
+): T[] {
+	const parsed = schema.safeParse(existingRaw);
+	if (!parsed.success) {
+		throw new Error(
+			`existing catalog is invalid — ${
+				parsed.error.issues[0]?.message ?? "bad data"
+			}`,
+		);
+	}
+	return preserveCuration(next, parsed.data);
+}
+
 export function preserveCuration<T extends { id: string }>(
 	next: T[],
 	existing: T[],

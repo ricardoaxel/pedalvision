@@ -3,7 +3,6 @@ import { resolve } from "node:path";
 import {
 	type CatalogBoard,
 	CatalogBoardSchema,
-	type CatalogPedal,
 	CatalogPedalSchema,
 	SOURCE_TAGS,
 	type SourceTag,
@@ -12,8 +11,8 @@ import {
 	convertBoards,
 	convertPedals,
 	type ExternalRow,
+	mergeExisting,
 	normalizeVariantFootprints,
-	preserveCuration,
 } from "./convert.ts";
 import { deriveCategory, deriveEffectTypes } from "./curated.ts";
 import { writeSeedImages } from "./seed.ts";
@@ -169,8 +168,12 @@ async function readRows(path: string): Promise<ExternalRow[]> {
 	return parsed as ExternalRow[];
 }
 
-/** Read an existing catalog file (for curation merge); `[]` if absent. */
-async function readExisting<T>(path: string): Promise<T[]> {
+/**
+ * Read an existing catalog file for the curation merge; `[]` if absent. Returns
+ * the raw parsed JSON — `mergeExisting` schema-validates it (malformed JSON or
+ * shape fails loudly rather than silently dropping curation).
+ */
+async function readExisting(path: string): Promise<unknown> {
 	let raw: string;
 	try {
 		raw = await readFile(path, "utf8");
@@ -179,11 +182,7 @@ async function readExisting<T>(path: string): Promise<T[]> {
 		if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
 		throw error;
 	}
-	const parsed = JSON.parse(raw); // malformed JSON must fail loudly, not wipe
-	if (!Array.isArray(parsed)) {
-		throw new Error(`${path}: expected a JSON array of catalog items`);
-	}
-	return parsed as T[];
+	return JSON.parse(raw);
 }
 
 async function runImport(args: Args): Promise<void> {
@@ -200,9 +199,10 @@ async function runImport(args: Args): Promise<void> {
 	// Preserve curation (sources, rights tag, specs, cleared image state) for
 	// surviving ids — a re-import must never wipe provenance/assets added by
 	// hand or research.
-	const mergedPedals = preserveCuration(
+	const mergedPedals = mergeExisting(
 		selectedPedals,
-		await readExisting<CatalogPedal>(`${outDir}/pedals.json`),
+		await readExisting(`${outDir}/pedals.json`),
+		CatalogPedalSchema.array(),
 	);
 	// Re-normalize AFTER the merge: a curated base footprint must propagate to a
 	// newly-added colorway (otherwise variant/base dims can silently diverge).
@@ -216,9 +216,10 @@ async function runImport(args: Args): Promise<void> {
 			source: args.source,
 			warn,
 		});
-		mergedBoards = preserveCuration(
+		mergedBoards = mergeExisting(
 			selectBoards(boards.items, args.boardLimit),
-			await readExisting<CatalogBoard>(`${outDir}/boards.json`),
+			await readExisting(`${outDir}/boards.json`),
+			CatalogBoardSchema.array(),
 		);
 	}
 
