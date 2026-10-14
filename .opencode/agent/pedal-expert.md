@@ -69,7 +69,7 @@ When asked to help source the image for a pedal, do **not** fetch or download fi
 - **Record per asset:**
   `{ pedal, original_source_url, rights_holder, license_type, commercial_use_allowed, modifications_allowed, attribution_required, permission_evidence, status }`
   where `status ∈ pending | approved | restricted | rejected`.
-- If rights are unclear, say so and leave it `pending` — the catalog keeps the item's image **mocked** until an asset is `approved` (ADR-003).
+- If rights are unclear, say so and leave it `pending` — the catalog keeps the item's image **mocked** (`imageSource: "mock"`) until an asset is `approved` and switched to `imageSource: "static"` (or `"url"`, the deferred CDN path). The rights `source` tag is set separately (ADR-003).
 
 ## Method
 

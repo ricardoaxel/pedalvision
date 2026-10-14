@@ -76,7 +76,9 @@ change the decisions above, it makes the workflow explicit.
   brand assets (terms checked), community submissions, or own/licensed photos
   (`docs/reference/` §data notes). Per-asset license metadata and the
   `mocked`/`cleared` status mapping are defined in `docs/catalog-backfill.md`;
-  the per-item status is the `source` tag.
+  the per-item rights status is the `source` tag, while the separate
+  `imageSource` field (`mock` | `static` | `url`) records **how** the image is
+  provided (filename vs external URL, per ADR-002).
 - **Independent site:** Pedalvision is an independent planner; brand/model names
   are used factually with no implied endorsement. Any future affiliate links
   carry disclosure and are locale-aware (non-goal N5 today).

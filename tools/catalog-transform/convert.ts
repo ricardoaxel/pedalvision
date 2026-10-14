@@ -112,6 +112,7 @@ export function convertPedals(
 			widthCm: inchesToCm(row.Width),
 			heightCm: inchesToCm(row.Height),
 			image: `${id}.png`,
+			imageSource: "mock",
 			effectTypes: deriveEffectTypes({
 				brand,
 				name: displayName,
@@ -186,6 +187,7 @@ export function convertBoards(
 			widthCm: inchesToCm(row.Width),
 			heightCm: inchesToCm(row.Height),
 			image: `${id}.png`,
+			imageSource: "mock",
 			source: options.source,
 		});
 	}

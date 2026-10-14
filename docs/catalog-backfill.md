@@ -49,9 +49,18 @@ Bakery) are power supplies with `effectTypes: []` by design.
 ## Image status & acquisition (rights-first)
 
 **Status (today):** every one of the 207 seed items is **`mocked`**; **0 `cleared`**.
-Status is recorded per item in the `source` field (`placeholder` = mocked;
-`licensed`/`brand-assets`/`community`/`own` = cleared) and mirrored per-pedal in
-the appendix below.
+
+Two orthogonal fields record an item's image (schema: `src/catalog/schema.ts`):
+
+- **`imageSource`** — *how* the image is provided: `mock` (procedural
+  placeholder; the seed today), `static` (a committed file under
+  `public/pedal-assets/`), or `url` (deferred same-origin/CDN path, ADR-002).
+  All 207 are `mock`.
+- **`source`** — *rights* provenance: `placeholder` = not cleared; `licensed` /
+  `brand-assets` / `community` / `own` = cleared. So `mocked` ⇔ `source:
+  placeholder`, and `cleared` ⇔ `imageSource: static|url` + a cleared `source`.
+
+Both are mirrored per-pedal in the appendix below.
 
 **How real images are acquired — never by scraping.** Per ADR-003, an image is
 added only once its use is cleared, via (in priority order):

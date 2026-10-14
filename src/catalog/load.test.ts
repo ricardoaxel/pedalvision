@@ -9,6 +9,7 @@ const validPedal: CatalogPedal = {
 	widthCm: 6.35,
 	heightCm: 11.94,
 	image: "acme-big-fuzz.png",
+	imageSource: "mock",
 	effectTypes: [],
 	category: "pedal",
 	source: "placeholder",

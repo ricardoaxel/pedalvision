@@ -6,6 +6,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ac-2-acoustic-simulator.png",
+    "imageSource": "mock",
     "effectTypes": [
       "acoustic-sim"
     ],
@@ -19,6 +20,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ac-3-acoustic-simulator.png",
+    "imageSource": "mock",
     "effectTypes": [
       "acoustic-sim"
     ],
@@ -32,6 +34,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ad-2-acoustic-preamp.png",
+    "imageSource": "mock",
     "effectTypes": [
       "acoustic-sim",
       "preamp"
@@ -46,6 +49,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-aw-3-dynamic-wah.png",
+    "imageSource": "mock",
     "effectTypes": [
       "wah"
     ],
@@ -59,6 +63,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bb-1x-bass-driver.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -72,6 +77,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bc-1x-bass-compressor.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -85,6 +91,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bc-2-combo-drive.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -98,6 +105,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bd-2-blues-driver.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -111,6 +119,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bf-2-flanger.png",
+    "imageSource": "mock",
     "effectTypes": [
       "flanger"
     ],
@@ -124,6 +133,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bf-2b-bass-flanger.png",
+    "imageSource": "mock",
     "effectTypes": [
       "flanger"
     ],
@@ -137,6 +147,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-bf-3-flanger.png",
+    "imageSource": "mock",
     "effectTypes": [
       "flanger"
     ],
@@ -150,6 +161,7 @@
     "widthCm": 25.91,
     "heightCm": 17.53,
     "image": "boss-ce-1-chorus-ensemble.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -163,6 +175,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-2-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -176,6 +189,7 @@
     "widthCm": 17.3,
     "heightCm": 15.49,
     "image": "boss-ce-20-chorus-ensemble.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -189,6 +203,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-2b-bass-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -202,6 +217,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-3-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -215,6 +231,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ce-5-chorus-ensemble.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -228,6 +245,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ceb-3-bass-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -241,6 +259,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-ch-1-super-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -254,6 +273,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-cp-1x-compressor.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -267,6 +287,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-cs-2-compression-sustainer.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -280,6 +301,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-cs-3-compression-sustainer.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -293,6 +315,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-da-2-adaptive-distortion.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -306,6 +329,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dc-2-dimension-c.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -319,6 +343,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dc-3-digital-dimension.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -332,6 +357,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-2-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -345,6 +371,7 @@
     "widthCm": 17.3,
     "heightCm": 15.49,
     "image": "boss-dd-20-giga-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -358,6 +385,7 @@
     "widthCm": 10.16,
     "heightCm": 13.82,
     "image": "boss-dd-200-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -371,6 +399,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-3-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -384,6 +413,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-3t-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -397,6 +427,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-5-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -410,6 +441,7 @@
     "widthCm": 17.15,
     "heightCm": 13.72,
     "image": "boss-dd-500-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -423,6 +455,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-6-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -436,6 +469,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-7-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -449,6 +483,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dd-8-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -462,6 +497,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-df-2-super-feedbacker-distortion.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -475,6 +511,7 @@
     "widthCm": 19.2,
     "heightCm": 13.28,
     "image": "boss-dm-101-delay-machine.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -488,6 +525,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dm-2-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -501,6 +539,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dm-3-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -514,6 +553,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-dn-2-dyna-drive.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -527,6 +567,7 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-1-echo.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -540,6 +581,7 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-1440-stereo-looper.png",
+    "imageSource": "mock",
     "effectTypes": [
       "looper"
     ],
@@ -553,6 +595,7 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-15watt-howitzer.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "power-amp"
@@ -567,6 +610,7 @@
     "widthCm": 4.62,
     "heightCm": 9.53,
     "image": "electro-harmonix-2020-tuner.png",
+    "imageSource": "mock",
     "effectTypes": [
       "tuner"
     ],
@@ -580,6 +624,7 @@
     "widthCm": 4.62,
     "heightCm": 9.68,
     "image": "electro-harmonix-2020-tuner-v2.png",
+    "imageSource": "mock",
     "effectTypes": [
       "tuner"
     ],
@@ -593,6 +638,7 @@
     "widthCm": 15.42,
     "heightCm": 12.8,
     "image": "electro-harmonix-22500-dual-stereo-looper.png",
+    "imageSource": "mock",
     "effectTypes": [
       "looper"
     ],
@@ -606,6 +652,7 @@
     "widthCm": 11.43,
     "heightCm": 6.99,
     "image": "electro-harmonix-22500-foot-controller.png",
+    "imageSource": "mock",
     "effectTypes": [
       "controller"
     ],
@@ -619,6 +666,7 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-44-magnum-power-amp.png",
+    "imageSource": "mock",
     "effectTypes": [
       "power-amp"
     ],
@@ -632,6 +680,7 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-5mm-power-amp.png",
+    "imageSource": "mock",
     "effectTypes": [
       "power-amp"
     ],
@@ -645,6 +694,7 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-720-stereo-looper.png",
+    "imageSource": "mock",
     "effectTypes": [
       "looper"
     ],
@@ -658,6 +708,7 @@
     "widthCm": 15.42,
     "heightCm": 12.07,
     "image": "electro-harmonix-8-step-program.png",
+    "imageSource": "mock",
     "effectTypes": [
       "sequencer",
       "controller"
@@ -672,6 +723,7 @@
     "widthCm": 32.39,
     "heightCm": 14.99,
     "image": "electro-harmonix-95000-performance-loop-laboratory.png",
+    "imageSource": "mock",
     "effectTypes": [
       "looper"
     ],
@@ -685,6 +737,7 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-analogizer.png",
+    "imageSource": "mock",
     "effectTypes": [
       "boost"
     ],
@@ -698,6 +751,7 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-attack-decay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "envelope",
       "fuzz"
@@ -712,6 +766,7 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-b9-organ-machine.png",
+    "imageSource": "mock",
     "effectTypes": [
       "organ-sim"
     ],
@@ -725,6 +780,7 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-bad-stone.png",
+    "imageSource": "mock",
     "effectTypes": [
       "phaser"
     ],
@@ -738,6 +794,7 @@
     "widthCm": 10.64,
     "heightCm": 12.07,
     "image": "electro-harmonix-bass-big-muff-pi.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -751,6 +808,7 @@
     "widthCm": 7.16,
     "heightCm": 11.43,
     "image": "electro-harmonix-bass-big-muff-pi-2.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -764,6 +822,7 @@
     "widthCm": 7.32,
     "heightCm": 12.29,
     "image": "walrus-audio-385.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -777,6 +836,7 @@
     "widthCm": 7.32,
     "heightCm": 12.29,
     "image": "walrus-audio-385-nat-parks.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -791,6 +851,7 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-385-mkii.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -804,6 +865,7 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-385-mkii-black.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -818,6 +880,7 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -831,6 +894,7 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-kamakura.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -845,6 +909,7 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-nat-parks.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -859,6 +924,7 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-nautical.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -873,6 +939,7 @@
     "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-obsidian.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -887,6 +954,7 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-platinum.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -901,6 +969,7 @@
     "widthCm": 11.94,
     "heightCm": 9.4,
     "image": "walrus-audio-aetos.png",
+    "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder"
@@ -912,6 +981,7 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-ages.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -925,6 +995,7 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-ages-kamakura.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -939,6 +1010,7 @@
     "widthCm": 6.6,
     "heightCm": 12.57,
     "image": "walrus-audio-ages-nat-parks.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -953,6 +1025,7 @@
     "widthCm": 12.34,
     "heightCm": 9.7,
     "image": "walrus-audio-badwater.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "di",
@@ -970,6 +1043,7 @@
     "widthCm": 14.45,
     "heightCm": 12.07,
     "image": "walrus-audio-bellwether.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay",
       "chorus"
@@ -984,6 +1058,7 @@
     "widthCm": 7.16,
     "heightCm": 12.19,
     "image": "walrus-audio-canvas-clock.png",
+    "imageSource": "mock",
     "effectTypes": [
       "controller",
       "utility"
@@ -998,6 +1073,7 @@
     "widthCm": 4.75,
     "heightCm": 9.4,
     "image": "walrus-audio-canvas-line-isolator.png",
+    "imageSource": "mock",
     "effectTypes": [
       "di",
       "utility"
@@ -1012,6 +1088,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-1962.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -1025,6 +1102,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-1962x.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -1038,6 +1116,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-30ms-double-tracker.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay",
       "chorus",
@@ -1053,6 +1132,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-abbey-chamber-verb.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1066,6 +1146,7 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-angry-orange.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion",
       "fuzz"
@@ -1080,6 +1161,7 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-angry-orange-signalis.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion",
       "fuzz"
@@ -1095,6 +1177,7 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-angry-orange-white.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion",
       "fuzz"
@@ -1110,6 +1193,7 @@
     "widthCm": 9.4,
     "heightCm": 12.45,
     "image": "keeley-aria.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor",
       "overdrive"
@@ -1124,6 +1208,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-aurora.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1137,6 +1222,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-bassist-compressor.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -1150,6 +1236,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-black-glass.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -1163,6 +1250,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-blacktop.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -1176,6 +1264,7 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-blues-disorder.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive",
       "distortion"
@@ -1190,6 +1279,7 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-blues-disorder-signalis.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive",
       "distortion"
@@ -1205,6 +1295,7 @@
     "widthCm": 6.6,
     "heightCm": 12.09,
     "image": "keeley-blues-disorder-white.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive",
       "distortion"
@@ -1220,6 +1311,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-bubble-tron.png",
+    "imageSource": "mock",
     "effectTypes": [
       "flanger",
       "phaser",
@@ -1236,6 +1328,7 @@
     "widthCm": 6.93,
     "heightCm": 11.43,
     "image": "keeley-bubble-tron-ler.png",
+    "imageSource": "mock",
     "effectTypes": [
       "flanger",
       "phaser",
@@ -1253,6 +1346,7 @@
     "widthCm": 10.16,
     "heightCm": 12.8,
     "image": "keeley-california-girls.png",
+    "imageSource": "mock",
     "effectTypes": [
       "octave",
       "chorus",
@@ -1268,6 +1362,7 @@
     "widthCm": 4.52,
     "heightCm": 9.4,
     "image": "earthquaker-a-b-box.png",
+    "imageSource": "mock",
     "effectTypes": [
       "ab-box"
     ],
@@ -1281,6 +1376,7 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-acapulco-gold.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -1294,6 +1390,7 @@
     "widthCm": 6.6,
     "heightCm": 12.75,
     "image": "earthquaker-afterneath.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1307,6 +1404,7 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-afterneath-v3.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1320,6 +1418,7 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-afterneath-v3-pastel-purple.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1334,6 +1433,7 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-afterneath-v3-raw.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1348,6 +1448,7 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-aqueduct.png",
+    "imageSource": "mock",
     "effectTypes": [
       "vibrato"
     ],
@@ -1361,6 +1462,7 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-arpanoid.png",
+    "imageSource": "mock",
     "effectTypes": [
       "pitch"
     ],
@@ -1374,6 +1476,7 @@
     "widthCm": 7.21,
     "heightCm": 11.43,
     "image": "earthquaker-arrows.png",
+    "imageSource": "mock",
     "effectTypes": [
       "boost",
       "preamp"
@@ -1388,6 +1491,7 @@
     "widthCm": 6.6,
     "heightCm": 12.55,
     "image": "earthquaker-arrows-v2.png",
+    "imageSource": "mock",
     "effectTypes": [
       "boost",
       "preamp"
@@ -1402,6 +1506,7 @@
     "widthCm": 9.68,
     "heightCm": 12.22,
     "image": "earthquaker-astral-destiny.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb",
       "octave"
@@ -1416,6 +1521,7 @@
     "widthCm": 6.86,
     "heightCm": 12.55,
     "image": "earthquaker-aurelius.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus",
       "vibrato",
@@ -1431,6 +1537,7 @@
     "widthCm": 9.68,
     "heightCm": 12.22,
     "image": "earthquaker-avalanche-run.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay",
       "reverb"
@@ -1445,6 +1552,7 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay",
       "reverb"
@@ -1459,6 +1567,7 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2-black.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay",
       "reverb"
@@ -1474,6 +1583,7 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2-mint.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay",
       "reverb"
@@ -1489,6 +1599,7 @@
     "widthCm": 11.02,
     "heightCm": 12.37,
     "image": "earthquaker-avalanche-run-v2-purple-sparkle.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay",
       "reverb"
@@ -1504,6 +1615,7 @@
     "widthCm": 4.52,
     "heightCm": 9.4,
     "image": "earthquaker-barrows-fuzz.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -1517,6 +1629,7 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-bender.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -1530,6 +1643,7 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-boost.png",
+    "imageSource": "mock",
     "effectTypes": [
       "boost"
     ],
@@ -1543,6 +1657,7 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-fuzz.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -1556,6 +1671,7 @@
     "widthCm": 7.59,
     "heightCm": 12.65,
     "image": "jhs-1966-series-italy.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -1569,6 +1685,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-bit-crusher.png",
+    "imageSource": "mock",
     "effectTypes": [
       "bitcrusher"
     ],
@@ -1582,6 +1699,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -1595,6 +1713,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-compressor.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -1608,6 +1727,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1621,6 +1741,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-distortion.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -1634,6 +1755,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-flanger.png",
+    "imageSource": "mock",
     "effectTypes": [
       "flanger"
     ],
@@ -1647,6 +1769,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-fuzz.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -1660,6 +1783,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-glitch-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1673,6 +1797,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-hall-reverb.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1686,6 +1811,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-harmonic-trem.png",
+    "imageSource": "mock",
     "effectTypes": [
       "tremolo"
     ],
@@ -1699,6 +1825,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-octave-reverb.png",
+    "imageSource": "mock",
     "effectTypes": [
       "octave",
       "reverb"
@@ -1713,6 +1840,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-oil-can-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1726,6 +1854,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-oil-can-delay-black.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1740,6 +1869,7 @@
     "widthCm": 6.81,
     "heightCm": 11.23,
     "image": "jhs-3-series-overdrive.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -1753,6 +1883,7 @@
     "widthCm": 22.35,
     "heightCm": 13.72,
     "image": "tc-electronic-2290-p-dynamic-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1766,6 +1897,7 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-3rd-dimension-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -1779,6 +1911,7 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-afterglow-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -1792,6 +1925,7 @@
     "widthCm": 7.26,
     "heightCm": 12.19,
     "image": "tc-electronic-alter-ego-v2-vintage-echo.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1805,6 +1939,7 @@
     "widthCm": 23.62,
     "heightCm": 14.35,
     "image": "tc-electronic-alter-ego-x4-vintage-echo.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1818,6 +1953,7 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-550.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -1833,6 +1969,7 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-combo-deluxe-65.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -1849,6 +1986,7 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-dc30.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -1864,6 +2002,7 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-dual-wreck.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -1879,6 +2018,7 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-jims-45.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -1894,6 +2034,7 @@
     "widthCm": 10.67,
     "heightCm": 12.78,
     "image": "tc-electronic-ampworx-jims-800.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -1909,6 +2050,7 @@
     "widthCm": 7.26,
     "heightCm": 12.19,
     "image": "tc-electronic-arena-reverb.png",
+    "imageSource": "mock",
     "effectTypes": [
       "reverb"
     ],
@@ -1922,6 +2064,7 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-blood-moon-phaser.png",
+    "imageSource": "mock",
     "effectTypes": [
       "phaser"
     ],
@@ -1935,6 +2078,7 @@
     "widthCm": 5.08,
     "heightCm": 9.53,
     "image": "tc-electronic-bodyrez-acoustic-pickup-enhancer.png",
+    "imageSource": "mock",
     "effectTypes": [
       "eq",
       "compressor"
@@ -1949,6 +2093,7 @@
     "widthCm": 5.08,
     "heightCm": 9.53,
     "image": "tc-electronic-bonafide-buffer.png",
+    "imageSource": "mock",
     "effectTypes": [
       "buffer"
     ],
@@ -1962,6 +2107,7 @@
     "widthCm": 7.26,
     "heightCm": 12.19,
     "image": "tc-electronic-brainwaves-pitch-shifter.png",
+    "imageSource": "mock",
     "effectTypes": [
       "pitch"
     ],
@@ -1975,6 +2121,7 @@
     "widthCm": 6.1,
     "heightCm": 10.03,
     "image": "tc-electronic-bucket-brigade-analog-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -1988,6 +2135,7 @@
     "widthCm": 7.37,
     "heightCm": 13.08,
     "image": "tc-electronic-choka-tremolo.png",
+    "imageSource": "mock",
     "effectTypes": [
       "tremolo"
     ],
@@ -2001,6 +2149,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-001-gas-station.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2015,6 +2164,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-002-uk-gold-900.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2029,6 +2179,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-003-power-zone.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2043,6 +2194,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-004-day-tripper.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2057,6 +2209,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-005-brown-sound-3.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2071,6 +2224,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-006-us-classic-deluxe.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2085,6 +2239,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-007-regal-tone.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2099,6 +2254,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-008-cali-mk3.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2113,6 +2269,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-009-black-knight.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2127,6 +2284,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-010-two-stones.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2141,6 +2299,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-011-cali-dual.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2155,6 +2314,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-012-us-gold-100.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2169,6 +2329,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-013-matchbox.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2183,6 +2344,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-014-taxidea-taxus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2197,6 +2359,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-015-brown-sound.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2211,6 +2374,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-016-phoenix-digital.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2225,6 +2389,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-017-cali-mkiv.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2239,6 +2404,7 @@
     "widthCm": 4.24,
     "heightCm": 9.53,
     "image": "mooer-018-custom-100.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -2253,6 +2419,7 @@
     "widthCm": 12.07,
     "heightCm": 9.27,
     "image": "mxr-a-b-box.png",
+    "imageSource": "mock",
     "effectTypes": [
       "ab-box"
     ],
@@ -2266,6 +2433,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-analog-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -2279,6 +2447,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-chorus-deluxe.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -2292,6 +2461,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-compressor.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -2305,6 +2475,7 @@
     "widthCm": 12.57,
     "heightCm": 8.99,
     "image": "mxr-bass-di.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp",
       "di",
@@ -2320,6 +2491,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-distortion.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -2333,6 +2505,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-envelope-filter.png",
+    "imageSource": "mock",
     "effectTypes": [
       "envelope",
       "filter"
@@ -2347,6 +2520,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-fuzz-deluxe.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -2360,6 +2534,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-octave-deluxe.png",
+    "imageSource": "mock",
     "effectTypes": [
       "octave"
     ],
@@ -2373,6 +2548,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-overdrive.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -2386,6 +2562,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-preamp.png",
+    "imageSource": "mock",
     "effectTypes": [
       "preamp"
     ],
@@ -2399,6 +2576,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-bass-synth.png",
+    "imageSource": "mock",
     "effectTypes": [
       "synth"
     ],
@@ -2412,6 +2590,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-blue-box-fuzz.png",
+    "imageSource": "mock",
     "effectTypes": [
       "fuzz"
     ],
@@ -2425,6 +2604,7 @@
     "widthCm": 4.42,
     "heightCm": 9.4,
     "image": "mxr-booster-mini.png",
+    "imageSource": "mock",
     "effectTypes": [
       "boost"
     ],
@@ -2438,6 +2618,7 @@
     "widthCm": 6.78,
     "heightCm": 11.43,
     "image": "mxr-cae-boost-line-driver.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive",
       "boost"
@@ -2452,6 +2633,7 @@
     "widthCm": 12.57,
     "heightCm": 8.99,
     "image": "mxr-cae-boost-overdrive.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive",
       "boost"
@@ -2466,6 +2648,7 @@
     "widthCm": 6.96,
     "heightCm": 7.29,
     "image": "mxr-cae-buffer.png",
+    "imageSource": "mock",
     "effectTypes": [
       "buffer"
     ],
@@ -2479,6 +2662,7 @@
     "widthCm": 34.29,
     "heightCm": 10.16,
     "image": "mxr-cae-power-system.png",
+    "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder"
@@ -2490,6 +2674,7 @@
     "widthCm": 9.96,
     "heightCm": 10.49,
     "image": "joyo-d-seed.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -2503,6 +2688,7 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-01-vintage-overdrive.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -2516,6 +2702,7 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-02-ultimate-drive.png",
+    "imageSource": "mock",
     "effectTypes": [
       "overdrive"
     ],
@@ -2529,6 +2716,7 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-03-crunch-distortion.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -2542,6 +2730,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-04-high-gain-distortion.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -2555,6 +2744,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-05-classic-chorus.png",
+    "imageSource": "mock",
     "effectTypes": [
       "chorus"
     ],
@@ -2568,6 +2758,7 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-06-vintage-phase.png",
+    "imageSource": "mock",
     "effectTypes": [
       "phaser"
     ],
@@ -2581,6 +2772,7 @@
     "widthCm": 9.07,
     "heightCm": 11.79,
     "image": "joyo-jf-07-classic-flanger.png",
+    "imageSource": "mock",
     "effectTypes": [
       "flanger"
     ],
@@ -2594,6 +2786,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-08-digital-delay.png",
+    "imageSource": "mock",
     "effectTypes": [
       "delay"
     ],
@@ -2607,6 +2800,7 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-09-tremolo.png",
+    "imageSource": "mock",
     "effectTypes": [
       "tremolo"
     ],
@@ -2620,6 +2814,7 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-10-dynamic-compressor.png",
+    "imageSource": "mock",
     "effectTypes": [
       "compressor"
     ],
@@ -2633,6 +2828,7 @@
     "widthCm": 7.04,
     "heightCm": 11.81,
     "image": "joyo-jf-11-6-band-eq.png",
+    "imageSource": "mock",
     "effectTypes": [
       "eq"
     ],
@@ -2646,6 +2842,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-12-voodoo-octave.png",
+    "imageSource": "mock",
     "effectTypes": [
       "octave"
     ],
@@ -2659,6 +2856,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-13-ac-tone.png",
+    "imageSource": "mock",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -2673,6 +2871,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-14-american-sound.png",
+    "imageSource": "mock",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -2687,6 +2886,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-15-california-sound.png",
+    "imageSource": "mock",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -2701,6 +2901,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-16-british-sound.png",
+    "imageSource": "mock",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -2715,6 +2916,7 @@
     "widthCm": 9.55,
     "heightCm": 11.94,
     "image": "joyo-jf-17-extreme-metal.png",
+    "imageSource": "mock",
     "effectTypes": [
       "distortion"
     ],
@@ -2728,6 +2930,7 @@
     "widthCm": 7.3,
     "heightCm": 13.02,
     "image": "boss-psm-5-power-supply-master-switch.png",
+    "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder"
@@ -2739,6 +2942,7 @@
     "widthCm": 8.38,
     "heightCm": 12.4,
     "image": "behringer-powerplay-p1.png",
+    "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder"
@@ -2750,6 +2954,7 @@
     "widthCm": 4.17,
     "heightCm": 8.53,
     "image": "big-joe-pb-109-power-box-li2.png",
+    "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder"
@@ -2761,6 +2966,7 @@
     "widthCm": 4.17,
     "heightCm": 8.53,
     "image": "big-joe-power-box-iso4.png",
+    "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder"
@@ -2772,6 +2978,7 @@
     "widthCm": 9.4,
     "heightCm": 3.86,
     "image": "effects-bakery-power-supply-hoden-sentai-donuts.png",
+    "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder"

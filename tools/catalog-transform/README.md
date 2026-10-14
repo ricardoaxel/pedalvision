@@ -40,9 +40,11 @@ An array of rows; dimensions in **inches**:
 - **Any external image name is ignored.** We always emit our own mocked name
   (`<id>.png`) — no third-party asset is referenced.
 
-Our stored shape (`id, brand, name, widthCm, heightCm, image, effectTypes,
-category`; optional `jacks?`, `power?`, `variantOf?`; `source`) is deliberately
-different from the external one — see ADR-003 §Schema originality.
+Our stored shape (`id, brand, name, widthCm, heightCm, image, imageSource,
+effectTypes, category`; optional `jacks?`, `power?`, `variantOf?`; `source`) is
+deliberately different from the external one — see ADR-003 §Schema originality.
+`imageSource` (`mock` | `static` | `url`) says *how* the image is provided
+(the import always emits `mock`); `source` is the separate rights tag.
 
 ## Effect taxonomy & category
 

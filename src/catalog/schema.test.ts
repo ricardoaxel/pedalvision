@@ -12,6 +12,7 @@ const validPedal: CatalogPedal = {
 	widthCm: 6.35,
 	heightCm: 11.94,
 	image: "acme-big-fuzz.png",
+	imageSource: "mock",
 	effectTypes: ["fuzz"],
 	category: "pedal",
 	source: "synthetic",
@@ -31,6 +32,16 @@ describe("CatalogPedalSchema", () => {
 		expect(result.success).toBe(true);
 	});
 
+	it("accepts a URL image when imageSource is 'url'", () => {
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				image: "https://cdn.example.com/pedals/acme-big-fuzz.png",
+				imageSource: "url",
+			}).success,
+		).toBe(true);
+	});
+
 	it.each([
 		["negative width", { ...validPedal, widthCm: -1 }],
 		["missing width", { ...validPedal, widthCm: undefined }],
@@ -39,6 +50,16 @@ describe("CatalogPedalSchema", () => {
 		["bad id", { ...validPedal, id: "Acme Big Fuzz" }],
 		["unknown source", { ...validPedal, source: "mystery" }],
 		["unknown category", { ...validPedal, category: "board" }],
+		["unknown imageSource", { ...validPedal, imageSource: "cloud" }],
+		["url imageSource with a filename", { ...validPedal, imageSource: "url" }],
+		[
+			"static imageSource with a URL",
+			{
+				...validPedal,
+				image: "https://cdn.example.com/acme-big-fuzz.png",
+				imageSource: "static",
+			},
+		],
 		[
 			"jack pos out of range",
 			{ ...validPedal, jacks: [{ kind: "in", edge: "top", pos: 2 }] },
@@ -62,6 +83,7 @@ describe("CatalogBoardSchema", () => {
 				widthCm: 60,
 				heightCm: 30,
 				image: "acme-terra-24.png",
+				imageSource: "mock",
 				source: "synthetic",
 			}).success,
 		).toBe(true);
@@ -74,6 +96,7 @@ describe("CatalogBoardSchema", () => {
 				brand: "Acme",
 				name: "Terra 24",
 				image: "acme-terra-24.png",
+				imageSource: "mock",
 				source: "synthetic",
 			}).success,
 		).toBe(false);

@@ -54,6 +54,7 @@ describe("convertPedals", () => {
 			widthCm: 6.35,
 			heightCm: 11.94,
 			image: "acme-big-fuzz.png",
+			imageSource: "mock",
 			category: "pedal",
 			source: "placeholder",
 			effectTypes: ["fuzz"],
@@ -106,6 +107,7 @@ describe("convertBoards", () => {
 				widthCm: 60.96,
 				heightCm: 30.48,
 				image: "acme-terra-24.png",
+				imageSource: "mock",
 				source: "placeholder",
 			},
 		]);

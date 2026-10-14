@@ -49,7 +49,8 @@ type CatalogPedal = {
   name: string
   widthCm: number       // footprint incl. jacks
   heightCm: number
-  image: string         // filename under /pedal-assets/{kind}/{size}/
+  image: string         // filename (mock/static) or URL (url) — see imageSource
+  imageSource: 'mock' | 'static' | 'url' // HOW the image is provided: mock=procedural placeholder; static=committed file under /pedal-assets/{kind}/{size}/; url=deferred same-origin/CDN (ADR-002). Orthogonal to `source` (rights).
   effectTypes: EffectType[] // OUR taxonomy enum (EFFECT_TYPES): sound effects + non-effect roles ("delay", "preamp", "buffer", …); see ADR-003 §Effect taxonomy
   category: 'pedal' | 'supply'  // R6/N1 — lets the picker + custom creator distinguish pedals from power supplies
   jacks?: { kind: 'in'|'out'|'exp'|'power', edge: 'top'|'right'|'bottom'|'left', pos: number }[] // pos = 0..1 position ALONG the edge (e.g. 0.5 = centered) — required so cable attach points + length calc have a concrete coordinate (S3)
@@ -58,7 +59,7 @@ type CatalogPedal = {
   source: SourceTag     // provenance tag — zod enum: licensed | brand-assets | community | own | placeholder | synthetic (ADR-003; never a name/URL)
   links?: { label: string, url: string }[] // v2 affiliate (locale-aware)
 }
-type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, source: SourceTag } // tiers/risers DEFERRED to v2 (S4)
+type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, imageSource: 'mock'|'static'|'url', source: SourceTag } // tiers/risers DEFERRED to v2 (S4)
 
 // scene (user data)
 type PlacedItem = { uid: string, refId: string, kind: 'pedal'|'supply', x: number, y: number, rotationDeg: number, z: number } // x,y = cm relative to parent board (or world if boardUid null); refId resolves to a catalog item (its `category` must match `kind`) OR an entry in Scene.customPedals

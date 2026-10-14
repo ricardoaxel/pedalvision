@@ -11,6 +11,7 @@ function pedal(brand: string, name: string): CatalogPedal {
 		widthCm: 1,
 		heightCm: 1,
 		image: `${id}.png`,
+		imageSource: "mock",
 		effectTypes: [],
 		category: "pedal",
 		source: "placeholder",
@@ -26,6 +27,7 @@ function board(brand: string, name: string): CatalogBoard {
 		widthCm: 1,
 		heightCm: 1,
 		image: `${id}.png`,
+		imageSource: "mock",
 		source: "placeholder",
 	};
 }
