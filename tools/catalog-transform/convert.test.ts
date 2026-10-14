@@ -87,6 +87,32 @@ describe("convertPedals", () => {
 		expect(items[0]?.category).toBe("supply");
 	});
 
+	it("skips null/non-object rows and keeps the valid ones", () => {
+		const { items, warnings } = convertPedals(
+			[
+				null,
+				{ Brand: "Acme", Name: "Big Fuzz", Width: 2.5, Height: 4.7 },
+			] as unknown as ExternalRow[],
+			{ source: "placeholder" },
+		);
+		expect(items.map((i) => i.id)).toContain("acme-big-fuzz");
+		expect(warnings.some((w) => w.includes("null"))).toBe(true);
+	});
+
+	it("normalizes a colorway's dimensions to its base footprint", () => {
+		const { items } = convertPedals(
+			[
+				{ Brand: "Acme", Name: "Big Fuzz", Width: 2.5, Height: 4.7 },
+				{ Brand: "Acme", Name: "Big Fuzz (Green)", Width: 9, Height: 9 },
+			],
+			{ source: "placeholder" },
+		);
+		expect(items.find((i) => i.id === "acme-big-fuzz-green")).toMatchObject({
+			widthCm: 6.35,
+			heightCm: 11.94,
+		});
+	});
+
 	it("produces output that validates against the catalog schema", () => {
 		for (const pedal of result.items) {
 			expect(CatalogPedalSchema.safeParse(pedal).success).toBe(true);
@@ -99,15 +125,24 @@ describe("preserveCuration", () => {
 		id: string;
 		image: string;
 		imageSource: "mock" | "static";
+		widthCm?: number;
+		heightCm?: number;
 		source?: "placeholder" | "brand-assets";
 		sources?: { url: string; kind: ("info" | "image")[] }[];
 		power?: { voltage: number; acDc: "DC" | "AC"; currentMa: number };
 		links?: { label: string; url: string }[];
 	};
 
-	it("carries curation fields from existing items, matched by id", () => {
+	it("carries curation fields (incl. corrected dimensions) from existing items, matched by id", () => {
 		const next: TestItem[] = [
-			{ id: "a", image: "a.png", imageSource: "mock", source: "placeholder" },
+			{
+				id: "a",
+				image: "a.png",
+				imageSource: "mock",
+				widthCm: 9,
+				heightCm: 9,
+				source: "placeholder",
+			},
 			{ id: "b", image: "b.png", imageSource: "mock", source: "placeholder" },
 		];
 		const existing: TestItem[] = [
@@ -115,6 +150,8 @@ describe("preserveCuration", () => {
 				id: "a",
 				image: "a.png",
 				imageSource: "static",
+				widthCm: 6.35,
+				heightCm: 11.94,
 				source: "brand-assets",
 				sources: [{ url: "https://x.example/a", kind: ["info"] }],
 				power: { voltage: 9, acDc: "DC", currentMa: 12 },
@@ -123,6 +160,8 @@ describe("preserveCuration", () => {
 		];
 		const merged = preserveCuration(next, existing);
 		expect(merged[0]).toMatchObject({
+			widthCm: 6.35,
+			heightCm: 11.94,
 			imageSource: "static",
 			source: "brand-assets",
 			sources: [{ url: "https://x.example/a", kind: ["info"] }],
@@ -139,6 +178,17 @@ describe("preserveCuration", () => {
 });
 
 describe("convertBoards", () => {
+	it("skips null rows and keeps valid boards", () => {
+		const { items } = convertBoards(
+			[
+				null,
+				{ Brand: "Acme", Name: "Terra 24", Width: 24, Height: 12 },
+			] as unknown as ExternalRow[],
+			{ source: "placeholder" },
+		);
+		expect(items.map((b) => b.id)).toEqual(["acme-terra-24"]);
+	});
+
 	it("maps external rows to our board schema", () => {
 		const { items } = convertBoards(
 			[{ Brand: "Acme", Name: "Terra 24", Width: 24, Height: 12 }],

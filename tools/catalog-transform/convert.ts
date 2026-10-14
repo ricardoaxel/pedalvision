@@ -78,6 +78,10 @@ export function convertPedals(
 	const seen = new Set<string>();
 
 	for (const row of rows) {
+		if (!row || typeof row !== "object") {
+			warn("skipped a null/non-object row");
+			continue;
+		}
 		const brand = asTrimmedString(row.Brand);
 		const displayName = asTrimmedString(row.Name);
 		if (!brand || !displayName) {
@@ -143,6 +147,20 @@ export function convertPedals(
 		return true;
 	});
 
+	// A colorway shares its base model's footprint — a variant row must not change
+	// the planned occupied size (true-scale). Normalize to the base dimensions.
+	const dimsById = new Map(
+		items.map((p) => [p.id, { widthCm: p.widthCm, heightCm: p.heightCm }]),
+	);
+	for (const item of items) {
+		if (!item.variantOf) continue;
+		const base = dimsById.get(item.variantOf);
+		if (base) {
+			item.widthCm = base.widthCm;
+			item.heightCm = base.heightCm;
+		}
+	}
+
 	return { items, warnings };
 }
 
@@ -154,6 +172,8 @@ export function convertPedals(
  * otherwise wipe them.
  */
 const CURATION_KEYS = [
+	"widthCm", // corrected footprints must survive a re-import (true-scale)
+	"heightCm",
 	"sources",
 	"source", // rights tag — keep a cleared item cleared
 	"power",
@@ -199,6 +219,10 @@ export function convertBoards(
 	const seen = new Set<string>();
 
 	for (const row of rows) {
+		if (!row || typeof row !== "object") {
+			warn("skipped a null/non-object row");
+			continue;
+		}
 		const brand = asTrimmedString(row.Brand);
 		const name = asTrimmedString(row.Name);
 		if (!brand || !name) {

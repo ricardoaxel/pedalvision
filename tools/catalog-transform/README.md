@@ -34,7 +34,9 @@ An array of rows; dimensions in **inches**:
 - Dimensions are **inches**; the converter multiplies by 2.54 and rounds to 2
   decimals (cm is the storage unit — design.md).
 - Ids are stable slugs built from `brand + name`; a trailing `(...)` becomes a
-  colorway linked via `variantOf`.
+  colorway linked via `variantOf`. A colorway inherits its **base model's
+  footprint** — variant rows with conflicting dimensions are normalized to the
+  base (a finish must not change the planned occupied size).
 - Rows missing brand/name or width/height are skipped with a warning; duplicate
   slugs are skipped (first wins); variants whose base is absent are dropped.
 - **Any external image name is ignored.** We always emit our own mocked name
@@ -71,9 +73,10 @@ The external data has **no** taxonomy, so `effectTypes` and `category` are OURS
 
 ## Re-import preserves curation
 
-`import` merges onto the existing catalog by **stable id**: `sources`, `source`
-(rights tag), `power`, `jacks`, `image`/`imageSource`, and `links` are carried
-over for surviving ids (new ids get the converter defaults). So `--source` tags
+`import` merges onto the existing catalog by **stable id**: `widthCm`/`heightCm`
+(corrected footprints), `sources`, `source` (rights tag), `power`, `jacks`,
+`image`/`imageSource`, and `links` are carried over for surviving ids (new ids
+get the converter defaults). So `--source` tags
 **newly imported items only** — an existing id keeps its curated provenance tag.
 Boards are only read/written when `--boards` is passed (a pedals-only import
 never blanks `boards.json`). A malformed existing catalog fails loudly rather

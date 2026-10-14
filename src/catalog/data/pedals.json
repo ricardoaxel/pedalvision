@@ -95,7 +95,6 @@
     "image": "boss-ad-2-acoustic-preamp.png",
     "imageSource": "mock",
     "effectTypes": [
-      "acoustic-sim",
       "preamp"
     ],
     "category": "pedal",
@@ -2112,7 +2111,7 @@
     "id": "walrus-audio-arp-87-platinum",
     "brand": "Walrus Audio",
     "name": "ARP-87 (Platinum)",
-    "widthCm": 6.6,
+    "widthCm": 6.91,
     "heightCm": 12.57,
     "image": "walrus-audio-arp-87-platinum.png",
     "imageSource": "mock",
@@ -5552,7 +5551,6 @@
     "image": "mxr-cae-boost-line-driver.png",
     "imageSource": "mock",
     "effectTypes": [
-      "overdrive",
       "boost"
     ],
     "category": "pedal",

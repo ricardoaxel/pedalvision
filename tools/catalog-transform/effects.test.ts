@@ -39,6 +39,18 @@ describe("classifyEffects", () => {
 		expect(classifyEffects("8 Step Program")).toEqual(["sequencer"]);
 	});
 
+	it("does not call a clean line driver an overdrive", () => {
+		expect(classifyEffects("CAE Boost/Line Driver")).toEqual(["boost"]);
+		expect(classifyEffects("Blues Driver")).toEqual(["overdrive"]);
+	});
+
+	it("does not tag an acoustic preamp as an acoustic simulator", () => {
+		expect(classifyEffects("AC-2 Acoustic Simulator")).toEqual([
+			"acoustic-sim",
+		]);
+		expect(classifyEffects("AD-2 Acoustic Preamp")).toEqual(["preamp"]);
+	});
+
 	it("classifies a variant by its base name (no colorway-suffix leak)", () => {
 		expect(
 			deriveEffectTypes({ brand: "Acme", name: "Big Fuzz (Metal)" }),

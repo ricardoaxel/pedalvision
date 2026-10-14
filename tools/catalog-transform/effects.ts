@@ -27,8 +27,9 @@ export const EFFECT_RULES: { type: EffectType; pattern: RegExp }[] = [
 	},
 	{
 		type: "overdrive",
+		// "driver" is an overdrive ("Blues Driver") except a clean "line driver".
 		pattern:
-			/\boverdrive\b|\bdrive\b|\bdriver\b|\bscreamer\b|\bod-?\d|\bbd-?\d/i,
+			/\boverdrive\b|\bdrive\b|(?<!line\s)\bdriver\b|\bscreamer\b|\bod-?\d|\bbd-?\d/i,
 	},
 	{ type: "boost", pattern: /\bboost(er)?\b/i },
 	{
@@ -53,7 +54,8 @@ export const EFFECT_RULES: { type: EffectType; pattern: RegExp }[] = [
 	// Non-effect roles / utilities.
 	{ type: "envelope", pattern: /\benvelope\b/i },
 	{ type: "filter", pattern: /\bfilter\b/i },
-	{ type: "acoustic-sim", pattern: /\bacoustic\b/i },
+	// "acoustic SIMULATOR" only — an acoustic preamp/D.I. is not a sim.
+	{ type: "acoustic-sim", pattern: /\bacoustic\s+(sim|simulator)\b/i },
 	{ type: "organ-sim", pattern: /\borgan\b/i },
 	{ type: "amp-modeler", pattern: /\bamp ?worx\b|\bamp\s+model/i },
 	{ type: "power-amp", pattern: /\bpower\s+amp\b/i },
