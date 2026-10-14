@@ -33,20 +33,22 @@ Every verified fact is traceable to the source(s) it was checked against,
 recorded in an optional `sources` array per item:
 
 ```jsonc
-"sources": [ { "url": "https://<source>/...", "kind": "info" } ]
+"sources": [ { "url": "https://<source>/...", "kind": ["info", "image"] } ]
 ```
 
 - **Authoritative-first, not official-only.** Manufacturer/authorized sources
   are preferred; a reputable retailer/magazine or community/vintage archive may
   appear as *corroboration* (this mirrors the source hierarchy below). URLs must
   be `http(s)`.
-- `kind: "info"` = backs specs / effect type / release date; `kind: "image"` =
-  an image asset (none yet — all images are still mocked).
-- Populated for the **verified** models (the `curated.ts` base models — 85 today,
-  206 links). Sources live on the **base** model; a colorway variant
-  (`variantOf`) is resolved to its base's sources (not duplicated). Unverified
-  items have none — their facts come only from the aggregate, which is never
-  cited.
+- `kind` is a non-empty array: `"info"` = backs specs / effect type / release
+  date; `"image"` = an official source for the product image. A single URL may
+  be both (e.g. a manufacturer product page). **Only links are stored — no image
+  is downloaded; every image is still `mock`.**
+- Populated for the **verified** models (the `curated.ts` base models). The seed
+  today carries **494 source refs, 349 of them `image` links across 171 models**.
+  Sources live on the **base** model; a colorway variant (`variantOf`) resolves
+  to its base's sources (not duplicated). Unverified items have none — their
+  facts come only from the aggregate, which is never cited.
 - This **amends** the earlier blanket "no URLs in catalog data" rule: the
   *aggregate* stays uncited; *per-item* source links are allowed and wanted.
 - No attribution strings beyond the URL itself; the agent returns the link, the

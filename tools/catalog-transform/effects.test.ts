@@ -108,6 +108,18 @@ describe("committed seed effectTypes", () => {
 		}
 	});
 
+	it("carries official image-source links for verified models", () => {
+		const withImage = pedals.filter((p) =>
+			(p.sources ?? []).some((s) => s.kind.includes("image")),
+		);
+		expect(withImage.length).toBeGreaterThan(100);
+		for (const pedal of withImage) {
+			for (const source of pedal.sources ?? []) {
+				expect(source.url.startsWith("https://"), source.url).toBe(true);
+			}
+		}
+	});
+
 	it("classifies a meaningful share of the seed", () => {
 		const classified = pedals.filter((p) => p.effectTypes.length > 0).length;
 		expect(classified).toBeGreaterThan(pedals.length * 0.9);

@@ -74,7 +74,8 @@ function checkImage(
  */
 export const SourceRefSchema = z.object({
 	url: HTTP_URL,
-	kind: z.enum(["info", "image"]),
+	/** What the link backs: `info` (specs/effect type/date) and/or `image`. */
+	kind: z.array(z.enum(["info", "image"])).min(1),
 });
 
 /** Provenance tags — ADR-003. Kept as an enum so the launch gate is machine-checkable. */

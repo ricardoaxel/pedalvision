@@ -57,7 +57,7 @@ type CatalogPedal = {
   power?: { voltage: 9|12|18|number, acDc: 'DC'|'AC', currentMa: number }
   variantOf?: string    // model id for colorways (avoid catalog bloat)
   source: SourceTag     // provenance tag — zod enum: licensed | brand-assets | community | own | placeholder | synthetic (ADR-003; never a name/URL)
-  sources?: { url: string, kind: 'info' | 'image' }[] // per-item source links a fact/image was verified against (manufacturer preferred; ADR-003 §Per-item sources)
+  sources?: { url: string, kind: ('info' | 'image')[] }[] // per-item source links a fact/image was verified against (manufacturer preferred; a link may be both; ADR-003 §Per-item sources)
   links?: { label: string, url: string }[] // v2 affiliate (locale-aware)
 }
 type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, imageSource: 'mock'|'static'|'url', source: SourceTag } // tiers/risers DEFERRED to v2 (S4)

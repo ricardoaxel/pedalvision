@@ -36,7 +36,7 @@ describe("CatalogPedalSchema", () => {
 		expect(
 			CatalogPedalSchema.safeParse({
 				...validPedal,
-				sources: [{ url: "https://example.com/model", kind: "info" }],
+				sources: [{ url: "https://example.com/model", kind: ["info"] }],
 			}).success,
 		).toBe(true);
 	});
@@ -45,19 +45,19 @@ describe("CatalogPedalSchema", () => {
 		expect(
 			CatalogPedalSchema.safeParse({
 				...validPedal,
-				sources: [{ url: "not-a-url", kind: "info" }],
+				sources: [{ url: "not-a-url", kind: ["info"] }],
 			}).success,
 		).toBe(false);
 		expect(
 			CatalogPedalSchema.safeParse({
 				...validPedal,
-				sources: [{ url: "https://example.com", kind: "photo" }],
+				sources: [{ url: "https://example.com", kind: ["photo"] }],
 			}).success,
 		).toBe(false);
 		expect(
 			CatalogPedalSchema.safeParse({
 				...validPedal,
-				sources: [{ url: "javascript:alert(1)", kind: "info" }],
+				sources: [{ url: "javascript:alert(1)", kind: ["info"] }],
 			}).success,
 		).toBe(false);
 	});
