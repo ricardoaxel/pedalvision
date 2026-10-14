@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101b2a">
+<title>Guitar Pedal Database — Project Plan</title>
+<style>
+:root{
+  --bg:#f4f6f8;--paper:#fff;--ink:#18283d;--muted:#647386;--line:#e2e8ef;
+  --navy:#101b2a;--blue:#477da0;--teal:#54a69a;--mint:#dff4ef;--pale:#eaf1f7;
+  --gold:#e7b85b;--shadow:0 12px 34px rgba(20,37,56,.08);--radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:#28678d;text-decoration:none}
+a:hover{text-decoration:underline}
+button,input{font:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(16,27,42,.96);backdrop-filter:blur(14px);color:white;border-bottom:1px solid rgba(255,255,255,.09)}
+.topbar-inner{max-width:1200px;margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:-.02em}
+.brand-mark{height:34px;width:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--teal),#6d9ed0);color:#0d1b29;font-weight:900}
+.top-actions{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink);font-weight:650;cursor:pointer}
+.btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px #0000000d;text-decoration:none}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:#082821}
+.btn.dark{background:transparent;border-color:#455264;color:#fff}
+.hero{background:radial-gradient(ellipse at 80% 0%,#2a5369 0,transparent 40%),linear-gradient(135deg,#101b2a,#172d41 65%,#173b47);color:white;overflow:hidden}
+.hero-inner{max-width:1200px;margin:auto;padding:76px 24px 66px;display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800;color:#9ad9cc}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px #e7b85b22}
+h1{font-size:clamp(38px,5vw,66px);line-height:1.02;letter-spacing:-.055em;margin:18px 0 22px;max-width:760px}
+.hero p{font-size:17px;color:#d3dee8;max-width:680px;margin:0 0 25px}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.hero .btn{padding:12px 17px}
+.hero-card{border:1px solid #ffffff26;background:#ffffff0b;border-radius:24px;padding:24px;box-shadow:0 24px 70px #00000022}
+.hero-card h3{margin:0 0 15px;font-size:15px;color:#d9e8ef}
+.hero-stat{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #ffffff18;gap:16px}
+.hero-stat:last-child{border-bottom:0}
+.hero-stat strong{font-size:20px;color:white;white-space:nowrap}
+.hero-stat span{font-size:13px;color:#bacbd6}
+.layout{max-width:1200px;margin:0 auto;padding:34px 24px 80px;display:grid;grid-template-columns:235px minmax(0,1fr);gap:28px;align-items:start}
+.sidebar{position:sticky;top:82px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:0 5px 18px #152c4207}
+.side-label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;font-weight:800;color:#92a0ae;padding:7px 10px 10px}
+.sidebar a{display:flex;gap:10px;align-items:center;color:#5a6878;font-size:13px;padding:9px 10px;border-radius:9px}
+.sidebar a:hover,.sidebar a.active{background:#edf5f6;color:#1d655f;text-decoration:none;font-weight:700}
+.side-icon{width:22px;text-align:center;font-size:15px}
+.content{min-width:0}
+.section{margin-bottom:30px;scroll-margin-top:90px}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:0 0 16px}
+.kicker{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+h2{font-size:clamp(24px,3vw,34px);line-height:1.15;letter-spacing:-.035em;margin:0}
+h3{font-size:17px;line-height:1.3;margin:0 0 9px;letter-spacing:-.02em}
+p{margin:0 0 12px}
+.lead{font-size:16px;color:#526274;max-width:820px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:23px;box-shadow:var(--shadow)}
+.card + .card{margin-top:14px}
+.grid{display:grid;gap:14px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.feature{padding:20px;border-radius:16px;border:1px solid var(--line);background:white}
+.feature .icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;font-size:21px;background:var(--pale);margin-bottom:14px}
+.feature p,.muted{color:var(--muted);font-size:13px}
+.pill{display:inline-flex;padding:4px 9px;border-radius:99px;background:var(--mint);color:#206a60;font-size:11px;font-weight:800;letter-spacing:.02em}
+.callout{border-radius:15px;padding:18px 20px;background:linear-gradient(110deg,#e5f4f1,#edf3f9);border:1px solid #d4e8e5;margin-top:15px}
+.callout strong{display:block;margin-bottom:4px}
+.flow{display:grid;gap:10px;max-width:740px;margin:0 auto}
+.flow-box{padding:16px 19px;background:#fff;border:1px solid var(--line);border-radius:14px;display:flex;gap:14px;align-items:flex-start}
+.flow-box .num{flex:0 0 31px;height:31px;border-radius:10px;display:grid;place-items:center;background:var(--navy);color:white;font-size:12px;font-weight:800}
+.flow-box p{font-size:13px;color:var(--muted);margin:3px 0 0}
+.flow-arrow{text-align:center;color:var(--teal);font-size:20px;line-height:1}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;overflow:hidden;border:1px solid var(--line);border-radius:13px;background:white}
+th{text-align:left;background:var(--navy);color:white;padding:12px 14px;font-size:11px;letter-spacing:.04em}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top;color:#48596b}
+tr:nth-child(even) td{background:#f8fafb}
+td strong{color:var(--ink)}
+.table-wrap{overflow-x:auto;border-radius:13px}
+.taglist{display:flex;flex-wrap:wrap;gap:8px}
+.tag{border:1px solid #dce5eb;background:#fff;border-radius:9px;padding:7px 10px;font-size:12px;color:#526273}
+.phase{display:grid;grid-template-columns:74px minmax(0,1fr);gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.phase:last-child{border-bottom:0;padding-bottom:0}
+.phase-num{width:58px;height:58px;display:grid;place-items:center;border-radius:17px;background:var(--navy);color:#fff;font-weight:850;font-size:21px}
+.phase h3{margin:0 0 7px}
+.phase p{font-size:13px;color:var(--muted)}
+ul.clean{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+ul.clean li{position:relative;padding-left:24px;color:#536273;font-size:13px}
+ul.clean li:before{content:"✓";position:absolute;left:0;top:0;color:var(--teal);font-weight:900}
+.checkgroup{padding:17px 0;border-bottom:1px solid var(--line)}
+.checkgroup:last-child{border-bottom:0}
+.checkgroup h3{font-size:15px}
+.checkrow{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:13px;color:#526274;cursor:pointer}
+.checkrow input{accent-color:#348e83;margin-top:4px;width:16px;height:16px;flex:0 0 auto}
+.checkrow.done span{text-decoration:line-through;color:#8c9aa7}
+.progress{height:7px;border-radius:99px;background:#e8edf1;overflow:hidden;margin:12px 0 17px}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--teal),#80c6ba);transition:width .2s}
+.progress-meta{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--muted)}
+.source-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.source{padding:15px;border:1px solid var(--line);border-radius:13px;background:#fff}
+.source a{font-weight:750;font-size:13px}
+.source p{font-size:12px;color:var(--muted);margin:5px 0 0}
+.small-note{font-size:12px;color:var(--muted)}
+.footer{background:var(--navy);color:#c5d2dd;padding:28px 24px}
+.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px}
+.mobile-nav{display:none}
+@media(max-width:900px){
+ .hero-inner{grid-template-columns:1fr;gap:28px;padding-top:55px}
+ .hero-card{max-width:560px}
+ .layout{grid-template-columns:1fr}
+ .sidebar{display:none}
+ .mobile-nav{display:flex;gap:7px;overflow:auto;padding:0 0 12px}
+ .mobile-nav a{white-space:nowrap;background:white;border:1px solid var(--line);border-radius:99px;padding:7px 11px;font-size:12px;color:#536273}
+ .grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ .topbar-inner{padding:12px 16px}
+ .brand span:last-child{font-size:13px}
+ .top-actions .hide-mobile{display:none}
+ .hero-inner{padding:45px 18px 42px}
+ .hero p{font-size:15px}
+ .layout{padding:23px 15px 55px}
+ .grid.two,.grid.three,.grid.four{grid-template-columns:1fr}
+ .card{padding:18px}
+ .section-head{display:block}
+ .phase{grid-template-columns:48px minmax(0,1fr);gap:12px}
+ .phase-num{width:45px;height:45px;border-radius:13px;font-size:17px}
+ .source-list{grid-template-columns:1fr}
+ th,td{padding:10px;font-size:12px}
+}
+@media print{
+ .topbar,.sidebar,.mobile-nav,.hero-ctas,.top-actions,.check-tools{display:none!important}
+ body{background:#fff}
+ .hero{background:#101b2a!important;print-color-adjust:exact}
+ .hero-inner{padding:36px 0;display:block}
+ .hero-card{display:none}
+ .layout{display:block;padding:20px 0}
+ .card,.feature{box-shadow:none;break-inside:avoid}
+ .section{break-inside:avoid}
+ a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><div class="brand-mark">P</div><span>Pedal Atlas <span style="color:#8ea4b7;font-weight:500">/ Project plan</span></span></div>
+    <div class="top-actions">
+      <button class="btn dark hide-mobile" onclick="window.print()">↳ Print / Save PDF</button>
+      <a class="btn primary" href="#roadmap">Explore roadmap ↓</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> Product strategy · October 2026</div>
+      <h1>A better way to discover guitar pedals.</h1>
+      <p>A practical blueprint for building a comprehensive pedal directory—with trustworthy product data, properly licensed imagery, AI-assisted ingestion, and room to grow into a real business.</p>
+      <div class="hero-ctas">
+        <a class="btn primary" href="#vision">View the plan <span>↘</span></a>
+        <a class="btn dark" href="#checklist">Launch checklist</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>The strategy at a glance</h3>
+      <div class="hero-stat"><span>Start with</span><strong>50–100 pedals</strong></div>
+      <div class="hero-stat"><span>Core approach</span><strong>Own the schema</strong></div>
+      <div class="hero-stat"><span>AI’s role</span><strong>Assist, verify</strong></div>
+      <div class="hero-stat"><span>Image policy</span><strong>Rights first</strong></div>
+      <div class="hero-stat"><span>First revenue test</span><strong>Affiliate links</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-label">In this plan</div>
+    <a href="#vision" class="active"><span class="side-icon">✦</span>Product vision</a>
+    <a href="#data"><span class="side-icon">▦</span>Data sources</a>
+    <a href="#images"><span class="side-icon">▧</span>Image rights</a>
+    <a href="#database"><span class="side-icon">◫</span>Database design</a>
+    <a href="#pipeline"><span class="side-icon">⌘</span>AI pipeline</a>
+    <a href="#experience"><span class="side-icon">◎</span>Discovery UX</a>
+    <a href="#risks"><span class="side-icon">◇</span>Risks & safeguards</a>
+    <a href="#monetization"><span class="side-icon">↗</span>Monetization</a>
+    <a href="#roadmap"><span class="side-icon">◷</span>Roadmap</a>
+    <a href="#checklist"><span class="side-icon">☑</span>Launch checklist</a>
+    <a href="#sources"><span class="side-icon">↗</span>Research links</a>
+  </aside>
+
+  <main class="content">
+    <nav class="mobile-nav">
+      <a href="#vision">Vision</a><a href="#data">Data</a><a href="#images">Images</a><a href="#database">Database</a><a href="#pipeline">AI pipeline</a><a href="#risks">Risks</a><a href="#roadmap">Roadmap</a><a href="#checklist">Checklist</a>
+    </nav>
+
+    <section id="vision" class="section">
+      <div class="section-head"><div><div class="kicker">01 / The opportunity</div><h2>Product vision</h2></div><span class="pill">North star</span></div>
+      <p class="lead">Build an independent pedal encyclopedia and discovery engine—not just another list of product pages. Make it easier for musicians to find the right sound, compare options, and explore the long tail of boutique, vintage, discontinued, and experimental effects.</p>
+      <div class="grid three" style="margin-top:20px">
+        <article class="feature"><div class="icon">▤</div><h3>Comprehensive catalog</h3><p>Search by brand, model, effect type, features, release year, and product status.</p></article>
+        <article class="feature"><div class="icon">⌕</div><h3>Sound-first discovery</h3><p>Explore pedals by sound, functionality, musical style, or similarity—not only by manufacturer.</p></article>
+        <article class="feature"><div class="icon">⇄</div><h3>Useful comparisons</h3><p>Compare specifications, discover alternatives, and understand how related models differ.</p></article>
+      </div>
+      <div class="callout"><strong>Product principle</strong>The differentiator should be trustworthy information and useful discovery—not merely the largest number of entries.</div>
+    </section>
+
+    <section id="data" class="section">
+      <div class="section-head"><div><div class="kicker">02 / Acquisition</div><h2>Build from multiple sources</h2></div></div>
+      <p class="lead">Use existing catalogs to discover products, official sources to verify facts, and specialist communities to fill the gaps.</p>
+      <div class="grid two" style="margin-top:18px">
+        <article class="card"><div class="icon" style="font-size:21px;margin-bottom:12px">⌕</div><h3>Existing pedal catalogs</h3><p class="muted">Discover model names, brands, variants, candidate categories, and leads for further research.</p><div class="taglist"><span class="tag">Tonebox</span><span class="tag">Equipboard</span><span class="tag">Stompbx</span><span class="tag">Effects Database</span></div></article>
+        <article class="card"><div class="icon" style="font-size:21px;margin-bottom:12px">✓</div><h3>Official manufacturer sources</h3><p class="muted">Verify specifications, controls, manuals, revisions, release details, and official product URLs.</p><div class="taglist"><span class="tag">Product pages</span><span class="tag">Manuals</span><span class="tag">Media kits</span><span class="tag">Authorized feeds</span></div></article>
+        <article class="card"><div class="icon" style="font-size:21px;margin-bottom:12px">⌁</div><h3>Specialist archives</h3><p class="muted">Find vintage, discontinued, boutique, DIY, international, and experimental models.</p><div class="taglist"><span class="tag">Forums</span><span class="tag">Builder archives</span><span class="tag">Historical references</span></div></article>
+        <article class="card"><div class="icon" style="font-size:21px;margin-bottom:12px">＋</div><h3>Licensed data & community</h3><p class="muted">Use authorized data feeds where possible and let users propose missing models or corrections.</p><div class="taglist"><span class="tag">Licensed exports</span><span class="tag">Submissions</span><span class="tag">Moderation</span></div></article>
+      </div>
+      <div class="callout"><strong>Data rule</strong>AI can help extract and normalize facts, but it doesn't grant reuse rights or guarantee accuracy. Review source terms before scraping or bulk importing; retain source URLs and verification dates.</div>
+    </section>
+
+    <section id="images" class="section">
+      <div class="section-head"><div><div class="kicker">03 / Rights management</div><h2>Images need their own workflow</h2></div><span class="pill">High priority</span></div>
+      <p class="lead">A public image URL or downloadable press kit is not automatically permission to republish it on a monetized directory.</p>
+      <div class="flow" style="margin-top:20px">
+        <div class="flow-box"><div class="num">1</div><div><h3>Official brand asset + permission</h3><p>Ask whether use is permitted on an independent directory that may earn revenue, including thumbnails, resizing, cropping, and future products.</p></div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box"><div class="num">2</div><div><h3>Appropriately licensed image</h3><p>Verify commercial-use, attribution, and modification conditions for the specific image.</p></div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box"><div class="num">3</div><div><h3>Ask the builder or use a placeholder</h3><p>If rights are unclear, request permission and keep the listing image-free until approved.</p></div></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Track every asset</h3>
+        <div class="table-wrap"><table><thead><tr><th>Field</th><th>Purpose</th></tr></thead><tbody>
+          <tr><td><strong>original_source_url</strong></td><td>Where the image came from.</td></tr>
+          <tr><td><strong>rights_holder</strong></td><td>Manufacturer, photographer, or other owner.</td></tr>
+          <tr><td><strong>license_type</strong></td><td>License or permission basis.</td></tr>
+          <tr><td><strong>commercial_use_allowed</strong></td><td>Whether the intended use is covered.</td></tr>
+          <tr><td><strong>modifications_allowed</strong></td><td>Whether cropping or resizing is permitted.</td></tr>
+          <tr><td><strong>attribution_required</strong></td><td>Required credit and placement.</td></tr>
+          <tr><td><strong>permission_evidence</strong></td><td>License URL, written approval, or agreement.</td></tr>
+          <tr><td><strong>status</strong></td><td>Pending, approved, restricted, or rejected.</td></tr>
+        </tbody></table></div>
+      </div>
+      <div class="callout"><strong>Publish only approved assets</strong>Don't hotlink or copy images from other catalogs without permission. Keep a process for replacing assets if a license changes or a complaint arrives.</div>
+    </section>
+
+    <section id="database" class="section">
+      <div class="section-head"><div><div class="kicker">04 / Foundation</div><h2>Design your own database</h2></div></div>
+      <p class="lead">Create a canonical schema tailored to your product. You don't need to invent new field names or relationship patterns; the important part is not copying protected database content or a substantial compilation.</p>
+      <div class="card">
+        <div class="flow">
+          <div class="flow-box"><div class="num">01</div><div><h3>Brand</h3><p><code>id · name · website · country · official_url</code></p></div></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-box"><div class="num">02</div><div><h3>Pedal</h3><p><code>id · brand_id · model_name · description · release_year · status</code></p></div></div>
+          <div class="grid two">
+            <div class="flow-box"><div class="num">03</div><div><h3>Specifications</h3><p>Controls, I/O, MIDI, bypass, power, presets.</p></div></div>
+            <div class="flow-box"><div class="num">04</div><div><h3>Effect categories</h3><p>Many-to-many categories for multi-effect pedals.</p></div></div>
+            <div class="flow-box"><div class="num">05</div><div><h3>Image assets</h3><p>Source, license, permission evidence, status.</p></div></div>
+            <div class="flow-box"><div class="num">06</div><div><h3>Source records</h3><p>URLs, evidence, dates checked, confidence.</p></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="feature"><h3>Variants & relationships</h3><p>Preserve revisions, special editions, successors, alternatives, and documented circuit similarities.</p></div>
+        <div class="feature"><h3>Price & availability</h3><p>If added later, store price, currency, region, retailer, source, and date checked.</p></div>
+      </div>
+    </section>
+
+    <section id="stack" class="section">
+      <div class="section-head"><div><div class="kicker">05 / Implementation</div><h2>Pragmatic tech stack</h2></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Layer</th><th>Suggested starting point</th><th>Why</th></tr></thead><tbody>
+        <tr><td><strong>Frontend</strong></td><td>Next.js + TypeScript</td><td>Search-friendly pages and familiar full-stack development.</td></tr>
+        <tr><td><strong>Database</strong></td><td>PostgreSQL / managed Supabase</td><td>Relational data, joins, filtering, constraints.</td></tr>
+        <tr><td><strong>Search</strong></td><td>Postgres full-text + trigram matching</td><td>Enough for the first catalog; upgrade when needed.</td></tr>
+        <tr><td><strong>Image storage</strong></td><td>Object storage + CDN</td><td>Control approved assets and delivery.</td></tr>
+        <tr><td><strong>Ingestion</strong></td><td>Script or background worker</td><td>Repeatable extraction, normalization, validation, deduplication.</td></tr>
+        <tr><td><strong>AI</strong></td><td>Structured extraction + schema validation</td><td>Accelerates data work while retaining provenance and review.</td></tr>
+      </tbody></table></div>
+      <div class="callout"><strong>Don't over-engineer the MVP</strong>You don't need microservices or a sophisticated AI pipeline before you have a useful catalog and evidence of demand.</div>
+    </section>
+
+    <section id="pipeline" class="section">
+      <div class="section-head"><div><div class="kicker">06 / Automation</div><h2>AI-assisted ingestion pipeline</h2></div></div>
+      <div class="grid two">
+        <div class="card">
+          <h3>Automated steps</h3>
+          <ul class="clean">
+            <li>Discover products from permitted sources.</li><li>Extract permitted factual fields.</li><li>Normalize names, aliases, units, and categories.</li><li>Find likely duplicates while preserving variants.</li><li>Draft original summaries from verified facts.</li><li>Monitor stale links and missing data.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Human review gates</h3>
+          <ul class="clean">
+            <li>Check conflicting specifications and dates.</li><li>Review low-confidence or incomplete records.</li><li>Verify against manuals or official pages.</li><li>Approve image permissions separately.</li><li>Do not let AI invent missing facts.</li><li>Publish only when required checks pass.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="small-note" style="margin-top:12px">For each field, retain the source, last verification date, and review/confidence status. AI confidence is not proof that a claim is true.</p>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="section-head"><div><div class="kicker">07 / User experience</div><h2>Make discovery genuinely useful</h2></div></div>
+      <div class="card">
+        <h3>Filter by effect type</h3>
+        <div class="taglist"><span class="tag">Overdrive</span><span class="tag">Distortion</span><span class="tag">Fuzz</span><span class="tag">Boost</span><span class="tag">Compression</span><span class="tag">EQ</span><span class="tag">Chorus</span><span class="tag">Phaser</span><span class="tag">Flanger</span><span class="tag">Tremolo</span><span class="tag">Delay</span><span class="tag">Reverb</span><span class="tag">Pitch</span><span class="tag">Filter</span><span class="tag">Synth</span><span class="tag">Looper</span><span class="tag">Utility</span><span class="tag">Experimental</span></div>
+      </div>
+      <div class="card">
+        <h3>Filter by features</h3>
+        <div class="taglist"><span class="tag">Mono / stereo</span><span class="tag">MIDI</span><span class="tag">Expression input</span><span class="tag">Tap tempo</span><span class="tag">Presets</span><span class="tag">Analog / digital</span><span class="tag">Bypass type</span><span class="tag">Power requirements</span></div>
+      </div>
+      <div class="card">
+        <h3>Explore by sound and use case</h3>
+        <div class="taglist"><span class="tag">Ambient</span><span class="tag">Shoegaze</span><span class="tag">Post-rock</span><span class="tag">Glitch</span><span class="tag">Lo-fi</span><span class="tag">Aggressive fuzz</span><span class="tag">Experimental sound design</span></div>
+        <p class="small-note" style="margin-top:12px">Treat musical styles as editorial tags, not objective technical specifications. Allow multiple tags and explain why a pedal fits a use case.</p>
+      </div>
+      <div class="callout"><strong>Prioritize these MVP features</strong>Fuzzy search, effect filters, side-by-side comparisons, alternative models, official product links, source transparency, responsive pages, and basic SEO.</div>
+    </section>
+
+    <section id="risks" class="section">
+      <div class="section-head"><div><div class="kicker">08 / Risk management</div><h2>Other concerns to plan for</h2></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Concern</th><th>Practical safeguard</th></tr></thead><tbody>
+        <tr><td><strong>Copyright</strong></td><td>Use approved images and original prose; retain permission evidence.</td></tr>
+        <tr><td><strong>Scraping / site terms</strong></td><td>Check terms and prefer APIs, licensed exports, or permission. Distributed or slower scraping does not automatically make it allowed.</td></tr>
+        <tr><td><strong>Database rights</strong></td><td>Avoid bulk or systematic extraction without a clear legal basis; assess jurisdiction-specific rules.</td></tr>
+        <tr><td><strong>Trademarks</strong></td><td>Use names accurately, identify the directory as independent, and avoid implying endorsement.</td></tr>
+        <tr><td><strong>SEO / scaled AI pages</strong></td><td>Avoid thin, near-duplicate pages; offer original comparisons and meaningful features.</td></tr>
+        <tr><td><strong>Affiliate disclosures</strong></td><td>Clearly disclose commissions and sponsorships; distinguish paid placement from independent rankings.</td></tr>
+        <tr><td><strong>User uploads</strong></td><td>Define submission rights and provide reporting, moderation, and removal workflows.</td></tr>
+        <tr><td><strong>Privacy</strong></td><td>Review obligations if adding accounts, analytics, newsletters, or saved pedalboards.</td></tr>
+        <tr><td><strong>Stale data</strong></td><td>Track verification dates, discontinued status, and broken links.</td></tr>
+      </tbody></table></div>
+      <p class="small-note" style="margin-top:12px">This is practical product guidance, not legal advice. Rules vary by jurisdiction. Before a large commercial import, seek legal advice if a third-party database is central to the product.</p>
+    </section>
+
+    <section id="monetization" class="section">
+      <div class="section-head"><div><div class="kicker">09 / Business model</div><h2>Monetize in stages</h2></div></div>
+      <div class="grid three">
+        <article class="feature"><div class="icon">↗</div><span class="pill">Phase A</span><h3 style="margin-top:10px">Affiliate links</h3><p>Link to relevant retailers or manufacturers. Follow program rules and disclose commissions.</p></article>
+        <article class="feature"><div class="icon">◉</div><span class="pill">Phase B</span><h3 style="margin-top:10px">Ads & sponsorships</h3><p>Test advertising when traffic supports it. Clearly label paid placement.</p></article>
+        <article class="feature"><div class="icon">♧</div><span class="pill">Phase C</span><h3 style="margin-top:10px">Community & premium</h3><p>Explore saved boards, advanced comparisons, or premium tools after validating demand.</p></article>
+      </div>
+      <div class="callout"><strong>Separate the permissions</strong>An affiliate relationship does not automatically grant image rights. Check affiliate terms and image permissions independently.</div>
+    </section>
+
+    <section id="roadmap" class="section">
+      <div class="section-head"><div><div class="kicker">10 / Execution</div><h2>Development roadmap</h2></div></div>
+      <div class="card">
+        <div class="phase"><div class="phase-num">01</div><div><h3>Foundation</h3><p>Choose initial sources; review terms; define the schema and taxonomy; contact manufacturers; curate 50–100 verified pedals.</p><span class="pill">Deliverable: working prototype</span></div></div>
+        <div class="phase"><div class="phase-num">02</div><div><h3>Minimum viable product</h3><p>Build product and brand pages, search, filters, approved images, original descriptions, provenance, duplicate detection, admin tools, responsive design, and basic SEO.</p><span class="pill">Deliverable: public beta</span></div></div>
+        <div class="phase"><div class="phase-num">03</div><div><h3>Scale catalog coverage</h3><p>Automate permitted ingestion; add vintage, discontinued, boutique, international, and DIY brands; improve comparisons and review queues.</p><span class="pill">Deliverable: scalable catalog</span></div></div>
+        <div class="phase"><div class="phase-num">04</div><div><h3>Growth & revenue experiments</h3><p>Test affiliate programs, measure search and outbound clicks, and explore user submissions, pedalboards, and advanced recommendations.</p><span class="pill">Deliverable: validated experiments</span></div></div>
+      </div>
+    </section>
+
+    <section id="checklist" class="section">
+      <div class="section-head"><div><div class="kicker">11 / Launch readiness</div><h2>Interactive checklist</h2></div><button class="btn check-tools" onclick="resetChecks()">Reset checklist</button></div>
+      <div class="card">
+        <div class="progress-meta"><span id="progress-label">0 of 16 complete</span><span id="progress-pct">0%</span></div>
+        <div class="progress"><div id="progress-bar" class="progress-bar"></div></div>
+        <div class="checkgroup"><h3>Data rights</h3>
+          <label class="checkrow"><input type="checkbox"><span>Review source terms before bulk extraction.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Record source URLs and verification dates.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Avoid copying protected descriptions or substantial database content.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Keep permission evidence for licensed datasets.</span></label>
+        </div>
+        <div class="checkgroup"><h3>Images</h3>
+          <label class="checkrow"><input type="checkbox"><span>Confirm commercial-use rights for every published asset.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Store license and attribution requirements.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Use placeholders for unapproved images.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Maintain a process for removals and permission changes.</span></label>
+        </div>
+        <div class="checkgroup"><h3>Product quality</h3>
+          <label class="checkrow"><input type="checkbox"><span>Deduplicate models and preserve variants.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Verify specifications against reliable sources.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Mark uncertain or missing data explicitly.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Generate original descriptions and useful comparisons.</span></label>
+        </div>
+        <div class="checkgroup"><h3>Business & operations</h3>
+          <label class="checkrow"><input type="checkbox"><span>Use a clear independent-site disclaimer.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Prepare affiliate and sponsorship disclosures.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Review applicable privacy and user-submission requirements.</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Back up the database and monitor broken links.</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="section">
+      <div class="section-head"><div><div class="kicker">12 / Further research</div><h2>Source directory</h2></div></div>
+      <p class="lead">These links are starting points for product discovery and permissions research—not blanket licenses to reuse their content.</p>
+      <div class="source-list">
+        <article class="source"><a href="https://www.tonebox.com/" target="_blank" rel="noopener">Tonebox ↗</a><p>Pedal catalog and category discovery.</p></article>
+        <article class="source"><a href="https://equipboard.com/c/guitar-pedals-effects" target="_blank" rel="noopener">Equipboard ↗</a><p>Pedals and artist gear references.</p></article>
+        <article class="source"><a href="https://www.stompbx.com/" target="_blank" rel="noopener">Stompbx ↗</a><p>Community-oriented pedal catalog; verify current terms and availability.</p></article>
+        <article class="source"><a href="https://www.effectsdatabase.com/" target="_blank" rel="noopener">Effects Database ↗</a><p>Historical and specialist effects reference.</p></article>
+        <article class="source"><a href="https://modulargrid.net/" target="_blank" rel="noopener">ModularGrid ↗</a><p>Pedalboard planning and gear organization.</p></article>
+        <article class="source"><a href="https://www.strymon.net/press/" target="_blank" rel="noopener">Strymon press assets ↗</a><p>Example manufacturer press resources; verify usage terms.</p></article>
+        <article class="source"><a href="https://empresseffects.com/pages/press" target="_blank" rel="noopener">Empress Effects press ↗</a><p>Example manufacturer media resources; verify usage terms.</p></article>
+        <article class="source"><a href="https://gamechangeraudio.com/press-materials/" target="_blank" rel="noopener">Gamechanger Audio ↗</a><p>Example press materials; verify usage terms.</p></article>
+        <article class="source"><a href="https://mas-effects.com/media/" target="_blank" rel="noopener">MAS Effects media ↗</a><p>Example boutique builder media resources; verify usage terms.</p></article>
+        <article class="source"><a href="https://www.roland.com/us/company/press_dealer_resources/" target="_blank" rel="noopener">Roland / BOSS resources ↗</a><p>Manufacturer resources; some materials may be restricted.</p></article>
+        <article class="source"><a href="https://search.creativecommons.org/" target="_blank" rel="noopener">Creative Commons Search ↗</a><p>Discover potentially licensed images; verify each asset's specific license.</p></article>
+        <article class="source"><a href="https://developers.google.com/search/docs/fundamentals/using-gen-ai-content" target="_blank" rel="noopener">Google Search Central ↗</a><p>Guidance on AI-generated content and search quality.</p></article>
+        <article class="source"><a href="https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews" target="_blank" rel="noopener">U.S. FTC endorsement guidance ↗</a><p>U.S. guidance on endorsements and disclosures; other jurisdictions may differ.</p></article>
+      </div>
+      <div class="callout"><strong>Final recommendation</strong>Launch with a small, trustworthy catalog and build ingestion around provenance and rights from day one. Expand coverage as the workflow improves. A useful, original discovery experience is a stronger foundation for a sustainable business than a large, unverified copy of existing catalogs.</div>
+      <p class="small-note" style="margin-top:12px">Research note: source pages and policies can change. Re-check current terms and legal requirements before launch or large-scale importing. This plan is practical product guidance, not legal advice.</p>
+    </section>
+  </main>
+</div>
+<footer class="footer"><div class="footer-inner"><span>Pedal Atlas · Project plan</span><span>Independent directory concept · October 2026</span><span>Use “Print / Save PDF” to export this page.</span></div></footer>
+<script>
+const allChecks = [...document.querySelectorAll('.checkrow input')];
+function updateProgress(){
+  const done=allChecks.filter(c=>c.checked).length, total=allChecks.length;
+  document.getElementById('progress-label').textContent=`${done} of ${total} complete`;
+  document.getElementById('progress-pct').textContent=`${Math.round(done/total*100)}%`;
+  document.getElementById('progress-bar').style.width=`${done/total*100}%`;
+  allChecks.forEach(c=>c.closest('.checkrow').classList.toggle('done',c.checked));
+}
+allChecks.forEach(c=>c.addEventListener('change',updateProgress));
+function resetChecks(){allChecks.forEach(c=>c.checked=false);updateProgress()}
+const sectionLinks=[...document.querySelectorAll('.sidebar a')];
+const observed=[...document.querySelectorAll('main section[id]')];
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){sectionLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}})
+ },{rootMargin:'-20% 0px -70% 0px'});
+ observed.forEach(s=>io.observe(s));
+}
+updateProgress();
+</script>
+</body>
+</html>

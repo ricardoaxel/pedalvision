@@ -45,6 +45,12 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints
 - P4-03 Auto length calculation + cable list summary
 
+## Catalog data track (data — see `docs/catalog-backfill.md`)
+- **Now:** committed seed = **207 pedals / 13 brands / 10 boards**, `source: 'placeholder'`, **mocked** images, `effectTypes` filled for the 10 pilot brands (verified overrides + conservative classifier).
+- **Backfill (later):** grow the seed to the full catalog + all brands; fill `effectTypes` for the rest; add **verified specs** (dimensions/power/jacks) and **per-item provenance** (source, verification date, confidence).
+- **Clearance (launch gate):** replace mocked images with cleared assets per ADR-003 exit criteria.
+- Owner-assisted procurement (outreach + permission) stays P2-06.
+
 ## v2 backlog (not scheduled)
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
 
