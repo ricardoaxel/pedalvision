@@ -123,13 +123,18 @@ export async function writeSeedImages(
 		await writeFile(image.path, image.buffer);
 	}
 
+	// Prune stale generator-owned PNGs, but never from an empty manifest (an empty
+	// catalog must not wipe every committed asset). Rendition dirs are
+	// generator-managed — do not hand-place files there.
 	const owned = new Set(images.map((image) => resolve(image.path)));
-	for (const dir of [
-		join(assetsDir, "pedals", "800"),
-		join(assetsDir, "pedals", "350"),
-		join(assetsDir, "boards", "800"),
-		join(assetsDir, "boards", "350"),
-	]) {
+	for (const dir of images.length === 0
+		? []
+		: [
+				join(assetsDir, "pedals", "800"),
+				join(assetsDir, "pedals", "350"),
+				join(assetsDir, "boards", "800"),
+				join(assetsDir, "boards", "350"),
+			]) {
 		let entries: string[];
 		try {
 			entries = await readdir(dir);

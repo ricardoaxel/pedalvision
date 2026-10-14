@@ -14,7 +14,11 @@ import {
 	mergeExisting,
 	normalizeVariantFootprints,
 } from "./convert.ts";
-import { deriveCategory, deriveEffectTypes } from "./curated.ts";
+import {
+	CURATED_EFFECTS,
+	deriveCategory,
+	deriveEffectTypes,
+} from "./curated.ts";
 import { writeSeedImages } from "./seed.ts";
 import {
 	DEFAULT_SELECT,
@@ -52,7 +56,7 @@ Usage:
   import --input <pedals.json> [--boards <boards.json>]
          [--out-dir <dir>] [--source <tag>]
          [--brand-limit <n>] [--top-brand-cap <n>] [--per-brand-cap <n>]
-         [--supply-limit <n>] [--board-limit <n>]
+         [--supply-limit <n>] [--board-limit <n>] [--allow-removals]
   seed   [--catalog-dir <dir>] [--assets-dir <dir>]
   reclassify [--catalog-dir <dir>]
   --help
@@ -71,6 +75,7 @@ type Args = {
 	source: SourceTag;
 	boardLimit: number;
 	select: SelectOptions;
+	allowRemovals: boolean;
 	help: boolean;
 };
 
@@ -92,6 +97,7 @@ function parseArgs(argv: string[]): Args {
 		source: DEFAULTS.source,
 		boardLimit: DEFAULTS.boardLimit,
 		select: { ...DEFAULTS.select },
+		allowRemovals: false,
 		help: false,
 	};
 	if (args.command === "--help" || args.command === "-h") {
@@ -147,6 +153,9 @@ function parseArgs(argv: string[]): Args {
 				args.boardLimit = readNumber(argv, i, arg);
 				i++;
 				break;
+			case "--allow-removals":
+				args.allowRemovals = true;
+				break;
 			case "--help":
 			case "-h":
 				args.help = true;
@@ -185,6 +194,28 @@ async function readExisting(path: string): Promise<unknown> {
 	return JSON.parse(raw);
 }
 
+/**
+ * A re-import that no longer selects an existing id writes it out (with its
+ * curation). Require an explicit `--allow-removals` opt-in instead of dropping
+ * silently; the default throws.
+ */
+function guardRemovals<T extends { id: string }>(
+	args: Args,
+	kind: string,
+	dropped: T[],
+	warn: (message: string) => void,
+): void {
+	if (dropped.length === 0) return;
+	const ids = dropped.map((item) => item.id);
+	const sample = ids.slice(0, 10).join(", ");
+	const more = ids.length > 10 ? ` … (+${ids.length - 10} more)` : "";
+	const message = `import would drop ${ids.length} existing ${kind} id(s): ${sample}${more}`;
+	if (!args.allowRemovals) {
+		throw new Error(`${message}. Re-run with --allow-removals to confirm.`);
+	}
+	warn(message);
+}
+
 async function runImport(args: Args): Promise<void> {
 	if (!args.input) throw new Error("import requires --input <pedals.json>");
 	const outDir = resolve(process.cwd(), args.outDir);
@@ -194,16 +225,23 @@ async function runImport(args: Args): Promise<void> {
 		source: args.source,
 		warn,
 	});
-	const selectedPedals = selectPedals(pedals.items, args.select);
+	// Always keep the verified override set so the seed stays reproducible and
+	// every curated key remains a real entry (no-dead-keys invariant).
+	const selectedPedals = selectPedals(pedals.items, {
+		...args.select,
+		keepIds: Object.keys(CURATED_EFFECTS),
+	});
 
 	// Preserve curation (sources, rights tag, specs, cleared image state) for
 	// surviving ids — a re-import must never wipe provenance/assets added by
 	// hand or research.
-	const mergedPedals = mergeExisting(
+	const pedalsMerge = mergeExisting(
 		selectedPedals,
 		await readExisting(`${outDir}/pedals.json`),
 		CatalogPedalSchema.array(),
 	);
+	guardRemovals(args, "pedal", pedalsMerge.dropped, warn);
+	const mergedPedals = pedalsMerge.items;
 	// Re-normalize AFTER the merge: a curated base footprint must propagate to a
 	// newly-added colorway (otherwise variant/base dims can silently diverge).
 	normalizeVariantFootprints(mergedPedals);
@@ -216,11 +254,13 @@ async function runImport(args: Args): Promise<void> {
 			source: args.source,
 			warn,
 		});
-		mergedBoards = mergeExisting(
+		const boardsMerge = mergeExisting(
 			selectBoards(boards.items, args.boardLimit),
 			await readExisting(`${outDir}/boards.json`),
 			CatalogBoardSchema.array(),
 		);
+		guardRemovals(args, "board", boardsMerge.dropped, warn);
+		mergedBoards = boardsMerge.items;
 	}
 
 	// Fail loudly rather than writing data the app cannot load.
@@ -303,6 +343,13 @@ async function runReclassify(args: Args): Promise<void> {
 		}
 		return { ...pedal, effectTypes, category };
 	});
+	// Validate the output before writing (consistency with the import path).
+	const check = CatalogPedalSchema.array().safeParse(next);
+	if (!check.success) {
+		throw new Error(
+			`reclassify output invalid: ${check.error.issues[0]?.message}`,
+		);
+	}
 	if (changed > 0) {
 		await writeFile(path, `${JSON.stringify(next, null, 2)}\n`);
 	}

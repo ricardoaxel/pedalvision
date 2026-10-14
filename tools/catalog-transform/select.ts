@@ -20,6 +20,8 @@ export type SelectOptions = {
 	topBrandCap: number;
 	perBrandCap: number;
 	supplyLimit: number;
+	/** Ids always kept regardless of the caps (e.g. the verified override set). */
+	keepIds?: string[];
 };
 
 export const DEFAULT_SELECT: SelectOptions = {
@@ -73,7 +75,15 @@ export function selectPedals(
 		.sort((a, b) => compare(a.brand, b.brand) || byName(a, b))
 		.slice(0, opts.supplyLimit);
 
-	return dropDangling([...chosen, ...supplies]);
+	// Always keep the verified override set (and any other pinned ids) so the
+	// seed reproduces the curated models even when they fall outside the caps.
+	const pinned = new Set(opts.keepIds ?? []);
+	const keptIds = new Set([...chosen, ...supplies].map((pedal) => pedal.id));
+	const extras = pedals.filter(
+		(pedal) => pinned.has(pedal.id) && !keptIds.has(pedal.id),
+	);
+
+	return dropDangling([...chosen, ...supplies, ...extras]);
 }
 
 /**

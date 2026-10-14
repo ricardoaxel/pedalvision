@@ -8,6 +8,7 @@ import {
 	deriveEffectTypes,
 } from "./curated.ts";
 import { classifyEffects } from "./effects.ts";
+import { selectPedals } from "./select.ts";
 
 const committedPedals = JSON.parse(
 	readFileSync(
@@ -152,6 +153,11 @@ describe("committed seed effectTypes", () => {
 				}
 			}
 		}
+	});
+
+	it("default selection reproduces the committed seed (curated extras kept)", () => {
+		const out = selectPedals(pedals, { keepIds: Object.keys(CURATED_EFFECTS) });
+		expect(out.map((p) => p.id).sort()).toEqual(pedals.map((p) => p.id).sort());
 	});
 
 	it("keeps every colorway footprint equal to its base (true-scale)", () => {

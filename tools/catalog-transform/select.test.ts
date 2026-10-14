@@ -56,6 +56,20 @@ describe("selectPedals", () => {
 		expect(selectPedals(pedals, opts)).toEqual(selectPedals(pedals, opts));
 	});
 
+	it("always keeps pinned ids even outside the brand caps", () => {
+		const withPinned = [
+			...["a1", "a2", "a3", "a4", "a5"].map((n) => pedal("AAA", n)),
+			pedal("CCC", "pinned"),
+		];
+		const out = selectPedals(withPinned, {
+			brandLimit: 1,
+			topBrandCap: 2,
+			perBrandCap: 1,
+			keepIds: ["ccc-pinned"],
+		});
+		expect(out.some((p) => p.id === "ccc-pinned")).toBe(true);
+	});
+
 	it("does not top up a supply whose variant base is absent", () => {
 		const withOrphanSupply: CatalogPedal[] = [
 			...["a1", "a2", "a3", "a4", "a5"].map((n) => pedal("AAA", n)),

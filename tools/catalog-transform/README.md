@@ -87,7 +87,9 @@ than being silently overwritten.
 `import` converts the full catalog, then keeps a deterministic **subset** so the
 repo/CI stay lean: the top `--brand-limit` brands by pedal count (the largest
 brand contributes the biggest group), plus a few power supplies so the picker
-has data. Tune with `--brand-limit/--top-brand-cap/--per-brand-cap/--supply-limit/--board-limit`.
+has data. The **verified override set** (`curated.ts`) is always kept regardless
+of the caps, so the seed reproduces the curated models and every curated key
+stays a real entry. Tune with `--brand-limit/--top-brand-cap/--per-brand-cap/--supply-limit/--board-limit`.
 
 **Follow-up — backfill:** this seed is a slice. To grow it, re-run `pnpm
 catalog:import` with higher limits (or a different brand set) and `pnpm

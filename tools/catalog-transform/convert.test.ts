@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { z } from "zod";
 import {
 	type CatalogPedal,
 	CatalogPedalSchema,
@@ -126,14 +127,22 @@ describe("convertPedals", () => {
 });
 
 describe("mergeExisting", () => {
+	const schema = z.array(z.object({ id: z.string() }));
+
 	it("rejects an invalid existing catalog (missing id) rather than losing curation", () => {
-		expect(() =>
-			mergeExisting(
-				[],
-				[{ brand: "Acme", name: "X", widthCm: 1, heightCm: 1, image: "x.png" }],
-				CatalogPedalSchema.array(),
-			),
-		).toThrow(/invalid/);
+		expect(() => mergeExisting([], [{ nope: true }], schema)).toThrow(
+			/invalid/,
+		);
+	});
+
+	it("reports existing ids that leave the selection (not dropped silently)", () => {
+		const { items, dropped } = mergeExisting(
+			[{ id: "keep" }],
+			[{ id: "keep" }, { id: "gone" }],
+			schema,
+		);
+		expect(items.map((i) => i.id)).toEqual(["keep"]);
+		expect(dropped.map((i) => i.id)).toEqual(["gone"]);
 	});
 });
 

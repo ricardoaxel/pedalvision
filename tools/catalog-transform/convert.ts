@@ -215,7 +215,7 @@ export function mergeExisting<T extends { id: string }>(
 	next: T[],
 	existingRaw: unknown,
 	schema: z.ZodType<T[]>,
-): T[] {
+): { items: T[]; dropped: T[] } {
 	const parsed = schema.safeParse(existingRaw);
 	if (!parsed.success) {
 		throw new Error(
@@ -224,7 +224,12 @@ export function mergeExisting<T extends { id: string }>(
 			}`,
 		);
 	}
-	return preserveCuration(next, parsed.data);
+	const nextIds = new Set(next.map((item) => item.id));
+	// Existing ids absent from the new selection would be written out entirely
+	// (with their curation) — surface them so the caller can require an explicit
+	// opt-in rather than dropping silently.
+	const dropped = parsed.data.filter((item) => !nextIds.has(item.id));
+	return { items: preserveCuration(next, parsed.data), dropped };
 }
 
 export function preserveCuration<T extends { id: string }>(
