@@ -69,6 +69,16 @@ The external data has **no** taxonomy, so `effectTypes` and `category` are OURS
   asserts the committed seed equals a fresh derivation for every pedal, and a
   second test asserts every curated key maps to a real seed entry (no dead rows).
 
+## Re-import preserves curation
+
+`import` merges onto the existing catalog by **stable id**: `sources`, `source`
+(rights tag), `power`, `jacks`, `image`/`imageSource`, and `links` are carried
+over for surviving ids (new ids get the converter defaults). So `--source` tags
+**newly imported items only** — an existing id keeps its curated provenance tag.
+Boards are only read/written when `--boards` is passed (a pedals-only import
+never blanks `boards.json`). A malformed existing catalog fails loudly rather
+than being silently overwritten.
+
 ## Selection
 
 `import` converts the full catalog, then keeps a deterministic **subset** so the

@@ -57,7 +57,9 @@ Usage:
   reclassify [--catalog-dir <dir>]
   --help
 
-Source tags: ${SOURCE_TAGS.join(" | ")}`;
+Source tags: ${SOURCE_TAGS.join(" | ")}
+Note: --source tags NEWLY imported items only; existing ids keep their curated
+provenance tag (a re-import preserves curation by stable id).`;
 
 type Args = {
 	command: string;
@@ -177,7 +179,10 @@ async function readExisting<T>(path: string): Promise<T[]> {
 		throw error;
 	}
 	const parsed = JSON.parse(raw); // malformed JSON must fail loudly, not wipe
-	return Array.isArray(parsed) ? (parsed as T[]) : [];
+	if (!Array.isArray(parsed)) {
+		throw new Error(`${path}: expected a JSON array of catalog items`);
+	}
+	return parsed as T[];
 }
 
 async function runImport(args: Args): Promise<void> {
