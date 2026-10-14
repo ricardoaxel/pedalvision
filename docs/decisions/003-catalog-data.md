@@ -84,7 +84,7 @@ with a warning.
 
 ## Sourcing, rights & ingestion operating model
 
-Folded in from our product-strategy reference (`docs/reference/`); it does not
+Folded in from our catalog-strategy notes (`docs/catalog-strategy-notes.md`); it does not
 change the decisions above, it makes the workflow explicit.
 
 - **Source hierarchy:** official manufacturer (product page / manual / press
@@ -102,7 +102,7 @@ change the decisions above, it makes the workflow explicit.
   seed ships **mocked** images precisely so no uncleared image is ever published.
   Images are **never obtained by scraping** — the paths are permission, official
   brand assets (terms checked), community submissions, or own/licensed photos
-  (`docs/reference/` §data notes). Per-asset license metadata and the
+  (`docs/catalog-strategy-notes.md`). Per-asset license metadata and the
   `mocked`/`cleared` status mapping are defined in `docs/catalog-backfill.md`;
   the per-item rights status is the `source` tag, while the separate
   `imageSource` field (`mock` | `static` | `url`) records **how** the image is
@@ -123,5 +123,5 @@ change the decisions above, it makes the workflow explicit.
 - Brand-onboarding model: Guitar Pedal X interview with Pedaltrain's Jim Colella, 2023-09-06 + pedalboardplanner.com/request (verified)
 - Aggregate licence status: repo root has no LICENSE; GitHub API `license: null` (verified Sep 2026)
 - Claim "some brands refused Pedaltrain": Reddit-sourced, unverified — do not cite
-- Product-strategy reference (data sourcing / rights / ingestion ideas): `docs/reference/pedal-atlas-product-plan.html` (non-authoritative; what we adopted/rejected is in `docs/reference/README.md`)
+- Catalog strategy notes (data sourcing / rights / ingestion ideas we adopted vs rejected, in our own words): `docs/catalog-strategy-notes.md`
 - Verified-fact research workflow: `.opencode/agent/pedal-expert.md` (+ `/pedal-expert`); the source(s) it verifies against are stored per item in `sources` (§Per-item sources)

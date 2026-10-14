@@ -146,6 +146,21 @@ Hooks that keep this honest: a committed-data **no-drift** test (seed == fresh
 `deriveEffectTypes`/`deriveCategory`), a **no-dead-curated-keys** test, and a
 committed-image **byte-determinism** test.
 
+## Review follow-ups (architecture review, 2026-10-14)
+
+- **Source-link quality/tiers.** Most `sources` are manufacturer/CDN; a few are
+  low-authority corroboration. Before P5-02, do a quality pass (or add a link
+  tier) so image-rights clearance effort isn't spent on weak links.
+- **Runtime payload.** `pedals.json` is statically imported, so the 485 refs ship
+  in the client bundle. Fine now; at full-catalog scale (P5-01, ~8.5k) move the
+  rich provenance to a separate, non-runtime data file (keep only what the UI
+  needs in the bundle).
+- **`curated.ts` rot.** The 85 hand-maintained base slugs will drift as the
+  catalog grows; P5-01 must re-verify/regenerate them, and the no-dead-keys test
+  should catch drift in both directions.
+- **`catalogVersion`.** Add a format version field when the catalog schema
+  stabilizes (mirrors `Scene.version`) — not needed for the single v1 seed.
+
 ## Repercussions addressed
 
 - **Dedup / variants:** flat colorways are collapsed to `variantOf` links; a
