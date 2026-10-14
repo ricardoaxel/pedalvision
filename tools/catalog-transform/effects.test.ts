@@ -112,9 +112,12 @@ describe("committed seed effectTypes", () => {
 		const withImage = pedals.filter((p) =>
 			(p.sources ?? []).some((s) => s.kind.includes("image")),
 		);
-		expect(withImage.length).toBeGreaterThan(100);
-		for (const pedal of withImage) {
+		expect(withImage).toHaveLength(170);
+		for (const pedal of pedals) {
 			for (const source of pedal.sources ?? []) {
+				expect(source.kind.length, `${pedal.id} ${source.url}`).toBeGreaterThan(
+					0,
+				);
 				expect(source.url.startsWith("https://"), source.url).toBe(true);
 			}
 		}

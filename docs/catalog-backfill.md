@@ -25,7 +25,7 @@ governed by ADR-003 (sourcing, rights, provenance).
 **207 pedals · 13 brands · 10 boards**; `source: 'placeholder'`; mocked images;
 `effectTypes` present for **200/207** (the 7 blanks are all power supplies).
 **Source links:** the verified base models carry per-item `sources: [{url,
-kind}]` — **494 refs, 349 marked `image` across 171 models** (manufacturer/
+kind}]` — **485 refs, 340 marked `image` across 170 models** (manufacturer/
 authorized preferred; ADR-003 §Per-item sources). A colorway variant resolves to
 its base's sources. **Image links are recorded but no image is downloaded** —
 every image is still `mock`. Unverified items have no links (their facts come
@@ -164,13 +164,13 @@ Snapshot from `src/catalog/data/pedals.json` (source of truth). `Image` = rights
 | Brand | Model | Image | Sources | Img links |
 | --- | --- | --- | --- | --- |
 | BOSS | AC-2 Acoustic Simulator | mocked | 3 | 2 |
-| BOSS | AC-3 Acoustic Simulator | mocked | 7 | 4 |
-| BOSS | AD-2 Acoustic Preamp | mocked | 4 | 4 |
-| BOSS | AW-3 Dynamic Wah | mocked | 4 | 4 |
-| BOSS | BB-1X Bass Driver | mocked | 5 | 5 |
-| BOSS | BC-1x Bass Compressor | mocked | 5 | 5 |
-| BOSS | BC-2 Combo Drive | mocked | 4 | 4 |
-| BOSS | BD-2 Blues Driver | mocked | 5 | 5 |
+| BOSS | AC-3 Acoustic Simulator | mocked | 6 | 3 |
+| BOSS | AD-2 Acoustic Preamp | mocked | 3 | 3 |
+| BOSS | AW-3 Dynamic Wah | mocked | 3 | 3 |
+| BOSS | BB-1X Bass Driver | mocked | 4 | 4 |
+| BOSS | BC-1x Bass Compressor | mocked | 4 | 4 |
+| BOSS | BC-2 Combo Drive | mocked | 3 | 3 |
+| BOSS | BD-2 Blues Driver | mocked | 4 | 4 |
 | BOSS | BF-2 Flanger | mocked | 2 | 2 |
 | BOSS | BF-2B Bass Flanger | mocked | — | — |
 | BOSS | BF-3 Flanger | mocked | 2 | 2 |
@@ -179,10 +179,10 @@ Snapshot from `src/catalog/data/pedals.json` (source of truth). `Image` = rights
 | BOSS | CE-20 Chorus Ensemble | mocked | 2 | 2 |
 | BOSS | CE-2B Bass Chorus | mocked | — | — |
 | BOSS | CE-3 Chorus | mocked | — | — |
-| BOSS | CE-5 Chorus Ensemble | mocked | 5 | 5 |
+| BOSS | CE-5 Chorus Ensemble | mocked | 4 | 4 |
 | BOSS | CEB-3 Bass Chorus | mocked | 2 | 2 |
 | BOSS | CH-1 Super Chorus | mocked | 3 | 3 |
-| BOSS | CP-1X Compressor | mocked | 5 | 5 |
+| BOSS | CP-1X Compressor | mocked | 4 | 4 |
 | BOSS | CS-2 Compression Sustainer | mocked | — | — |
 | BOSS | CS-3 Compression Sustainer | mocked | 2 | 2 |
 | BOSS | DA-2 Adaptive Distortion | mocked | 2 | 2 |
