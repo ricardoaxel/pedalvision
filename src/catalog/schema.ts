@@ -67,9 +67,7 @@ export const EFFECT_TYPES = [
 	"bitcrusher",
 	"envelope",
 	"filter",
-	"harmonizer",
 	"rotary",
-	"univibe",
 	// non-effect roles / utilities
 	"preamp",
 	"amp-modeler",

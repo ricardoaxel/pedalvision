@@ -249,7 +249,9 @@ async function runReclassify(args: Args): Promise<void> {
 		}
 		return { ...pedal, effectTypes, category };
 	});
-	await writeFile(path, `${JSON.stringify(next, null, 2)}\n`);
+	if (changed > 0) {
+		await writeFile(path, `${JSON.stringify(next, null, 2)}\n`);
+	}
 	console.log(
 		`reclassify: ${next.length} pedals, ${changed} updated → ${path}`,
 	);

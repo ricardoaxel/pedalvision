@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { type CatalogPedal, EFFECT_TYPES } from "../../src/catalog/schema.ts";
 import {
 	CURATED_EFFECTS,
+	CURATED_SUPPLIES,
 	deriveCategory,
 	deriveEffectTypes,
 } from "./curated.ts";
@@ -46,6 +47,13 @@ describe("classifyEffects", () => {
 	it("does not misfire on power-box model numbers (PB-109)", () => {
 		expect(classifyEffects("PB-109 Power Box Li2")).toEqual([]);
 	});
+
+	it("does not over-match short role tokens (word boundaries)", () => {
+		// "di" must not fire inside "Digital"/"Dimension".
+		expect(classifyEffects("Digital Dimension")).toEqual([]);
+		expect(classifyEffects("Medium")).toEqual([]);
+		expect(classifyEffects("Phat Cat")).toEqual([]);
+	});
 });
 
 describe("curated overrides", () => {
@@ -62,6 +70,9 @@ describe("curated overrides", () => {
 		for (const key of Object.keys(CURATED_EFFECTS)) {
 			expect(ids.has(key), key).toBe(true);
 		}
+		for (const key of CURATED_SUPPLIES) {
+			expect(ids.has(key), key).toBe(true);
+		}
 	});
 
 	it("marks a verified supply as a supply (Aetos)", () => {
@@ -76,15 +87,16 @@ describe("committed seed effectTypes", () => {
 
 	it("matches a fresh derivation for every pedal (curated + classifier, no drift)", () => {
 		for (const pedal of pedals) {
-			expect(
-				pedal.effectTypes,
-				`${pedal.id} (${pedal.brand} ${pedal.name})`,
-			).toEqual(
-				deriveEffectTypes({
-					brand: pedal.brand,
-					name: pedal.name,
-					variantOf: pedal.variantOf,
-				}),
+			const input = {
+				brand: pedal.brand,
+				name: pedal.name,
+				variantOf: pedal.variantOf,
+			};
+			expect(pedal.effectTypes, `${pedal.id} effectTypes`).toEqual(
+				deriveEffectTypes(input),
+			);
+			expect(pedal.category, `${pedal.id} category`).toBe(
+				deriveCategory(input),
 			);
 		}
 	});

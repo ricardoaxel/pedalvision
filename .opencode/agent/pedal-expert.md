@@ -35,7 +35,7 @@ For each pedal you research, return a record matching our schema (units in **cm*
 
 ## Effect taxonomy (normalize into these exact types)
 
-Effects: `tuner, looper, octave, pitch, synth, fuzz, distortion, overdrive, boost, compressor, eq, wah, tremolo, vibrato, chorus, flanger, phaser, delay, reverb, gate, ring-mod, bitcrusher, envelope, filter, harmonizer, rotary, univibe`
+Effects: `tuner, looper, octave, pitch, synth, fuzz, distortion, overdrive, boost, compressor, eq, wah, tremolo, vibrato, chorus, flanger, phaser, delay, reverb, gate, ring-mod, bitcrusher, envelope, filter, rotary`
 
 Non-effect / utility categories (still `category: "pedal"` unless it is power): `preamp, amp-modeler, cab-sim, acoustic-sim, organ-sim, power-amp, buffer, di, ab-box, mixer, controller, sequencer, attenuator, utility`
 

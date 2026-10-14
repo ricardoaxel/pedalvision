@@ -26,22 +26,22 @@ governed by ADR-003 (sourcing, rights, provenance).
 | --- | --- | --- | --- | --- | --- |
 | BOSS | 41 | 4 | 36 | 1 | PSM-5 is a supply |
 | Electro-Harmonix | 18 | 10 | 8 | 0 | |
-| Walrus Audio | 18 | 18 | 0 | 0 | Aetos is a supply (corrected) |
+| Walrus Audio | 18 | 17 | 0 | 1 | Aetos is a supply (corrected) |
 | Keeley | 18 | 17 | 1 | 0 | |
 | EarthQuaker | 18 | 17 | 1 | 0 | |
 | JHS | 18 | 2 | 16 | 0 | |
 | TC Electronic | 18 | 8 | 10 | 0 | |
 | Mooer | 18 | 18 | 0 | 0 | amp-in-a-box preamps |
-| MXR | 18 | 4 | 14 | 1 | CAE Power System is a supply |
+| MXR | 18 | 3 | 14 | 1 | CAE Power System is a supply |
 | Joyo | 18 | 6 | 12 | 0 | |
 | Big Joe | 2 | 0 | 0 | 2 | supplies |
 | Behringer | 1 | 0 | 0 | 1 | supply |
 | Effects Bakery | 1 | 0 | 0 | 1 | supply |
-| **Total** | **207** | **104** | **98** | **7** | |
+| **Total** | **207** | **102** | **98** | **7** | |
 
 The 10 pilot brands (BOSS … Joyo) had their creatively-named pedals verified
-against official sources; the 4 remaining brands are power supplies with
-`effectTypes: []` by design.
+against official sources; the 3 remaining brands (Big Joe, Behringer, Effects
+Bakery) are power supplies with `effectTypes: []` by design.
 
 ## Missing (future backfill)
 
