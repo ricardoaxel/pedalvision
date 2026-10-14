@@ -72,6 +72,11 @@ change the decisions above, it makes the workflow explicit.
 - **Images are rights-first:** an asset is published only when its use is
   cleared; each carries license/permission evidence; a removal path exists. The
   seed ships **mocked** images precisely so no uncleared image is ever published.
+  Images are **never obtained by scraping** — the paths are permission, official
+  brand assets (terms checked), community submissions, or own/licensed photos
+  (`docs/reference/` §data notes). Per-asset license metadata and the
+  `mocked`/`cleared` status mapping are defined in `docs/catalog-backfill.md`;
+  the per-item status is the `source` tag.
 - **Independent site:** Pedalvision is an independent planner; brand/model names
   are used factually with no implied endorsement. Any future affiliate links
   carry disclosure and are locale-aware (non-goal N5 today).

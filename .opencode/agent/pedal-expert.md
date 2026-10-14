@@ -52,9 +52,24 @@ State `confidence` per record: `confirmed` (official source or ≥2 independent 
 ## Legal & provenance rules (binding — ADR-003)
 
 - **Never copy** another site's descriptions, images, or bulk data. Write your own short factual summaries. Product facts (names, dimensions, effect type, power) are fine to state; creative text and photographs are not.
-- **Images:** only official manufacturer assets, and only with permitted use. Do not return image URLs from third-party catalog/database sites as reusable assets. When asked about images, point to the manufacturer's media/press page and flag that permission/usage terms must be checked.
+- **Images (rights-first):** only official manufacturer assets, and only with permitted use. Do **not** return image URLs from third-party catalog/database sites as reusable assets. Never download or commit an image — you are research-only; point to where the asset lives and flag the terms.
 - **No attribution strings, no source names or URLs in shipped catalog data.** Sources you cite are for the record in your *research output* (e.g. a review note), not for the committed catalog. The provenance record lives only in `docs/decisions/003-catalog-data.md`.
 - English only. Be concise.
+
+## Images — where to look & what to record
+
+When asked to help source the image for a pedal, do **not** fetch or download files. Return the best **official** candidate source(s) and the rights metadata to record:
+
+- **Where to look (in priority):**
+  1. The manufacturer's product page and its product gallery.
+  2. The manufacturer's **media / press / dealer** pages (common patterns: `/press`, `/media`, `/press-materials`, `/newsroom`, brand resource portals).
+  3. Official distributor / authorized feeds, if any.
+  Do **not** use third-party catalog/database images or marketplace/retailer photos as reusable assets.
+- **Check before any use:** commercial use allowed? modifications (crop/resize) allowed? attribution required? permission evidence (license URL / written approval)?
+- **Record per asset:**
+  `{ pedal, original_source_url, rights_holder, license_type, commercial_use_allowed, modifications_allowed, attribution_required, permission_evidence, status }`
+  where `status ∈ pending | approved | restricted | rejected`.
+- If rights are unclear, say so and leave it `pending` — the catalog keeps the item's image **mocked** until an asset is `approved` (ADR-003).
 
 ## Method
 
