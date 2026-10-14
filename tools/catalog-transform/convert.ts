@@ -155,10 +155,12 @@ export function convertPedals(
  */
 const CURATION_KEYS = [
 	"sources",
+	"source", // rights tag — keep a cleared item cleared
 	"power",
 	"jacks",
 	"image",
 	"imageSource",
+	"links", // v2 affiliate links (N5)
 ] as const;
 
 function pickCuration<T>(prev: T): Partial<T> {

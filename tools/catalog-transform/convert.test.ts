@@ -99,32 +99,41 @@ describe("preserveCuration", () => {
 		id: string;
 		image: string;
 		imageSource: "mock" | "static";
+		source?: "placeholder" | "brand-assets";
 		sources?: { url: string; kind: ("info" | "image")[] }[];
 		power?: { voltage: number; acDc: "DC" | "AC"; currentMa: number };
+		links?: { label: string; url: string }[];
 	};
 
 	it("carries curation fields from existing items, matched by id", () => {
 		const next: TestItem[] = [
-			{ id: "a", image: "a.png", imageSource: "mock" },
-			{ id: "b", image: "b.png", imageSource: "mock" },
+			{ id: "a", image: "a.png", imageSource: "mock", source: "placeholder" },
+			{ id: "b", image: "b.png", imageSource: "mock", source: "placeholder" },
 		];
 		const existing: TestItem[] = [
 			{
 				id: "a",
 				image: "a.png",
 				imageSource: "static",
+				source: "brand-assets",
 				sources: [{ url: "https://x.example/a", kind: ["info"] }],
 				power: { voltage: 9, acDc: "DC", currentMa: 12 },
+				links: [{ label: "Buy", url: "https://shop.example/a" }],
 			},
 		];
 		const merged = preserveCuration(next, existing);
 		expect(merged[0]).toMatchObject({
 			imageSource: "static",
+			source: "brand-assets",
 			sources: [{ url: "https://x.example/a", kind: ["info"] }],
 			power: { voltage: 9, acDc: "DC", currentMa: 12 },
+			links: [{ label: "Buy", url: "https://shop.example/a" }],
 		});
 		// a brand-new id keeps the converter defaults
-		expect(merged[1]).toMatchObject({ imageSource: "mock" });
+		expect(merged[1]).toMatchObject({
+			imageSource: "mock",
+			source: "placeholder",
+		});
 		expect(merged[1]).not.toHaveProperty("sources");
 	});
 });

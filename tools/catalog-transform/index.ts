@@ -168,12 +168,16 @@ async function readRows(path: string): Promise<ExternalRow[]> {
 
 /** Read an existing catalog file (for curation merge); `[]` if absent. */
 async function readExisting<T>(path: string): Promise<T[]> {
+	let raw: string;
 	try {
-		const parsed = JSON.parse(await readFile(path, "utf8"));
-		return Array.isArray(parsed) ? (parsed as T[]) : [];
-	} catch {
-		return [];
+		raw = await readFile(path, "utf8");
+	} catch (error) {
+		// A missing file is fine (fresh import); anything else is a real error.
+		if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+		throw error;
 	}
+	const parsed = JSON.parse(raw); // malformed JSON must fail loudly, not wipe
+	return Array.isArray(parsed) ? (parsed as T[]) : [];
 }
 
 async function runImport(args: Args): Promise<void> {
@@ -187,34 +191,42 @@ async function runImport(args: Args): Promise<void> {
 	});
 	const selectedPedals = selectPedals(pedals.items, args.select);
 
-	const boards = args.boards
-		? convertBoards(await readRows(args.boards), { source: args.source, warn })
-		: { items: [] };
-	const selectedBoards = selectBoards(boards.items, args.boardLimit);
-
-	// Preserve curation (sources, specs, cleared image state) for surviving ids —
-	// a re-import must never wipe provenance/assets added by hand or research.
+	// Preserve curation (sources, rights tag, specs, cleared image state) for
+	// surviving ids — a re-import must never wipe provenance/assets added by
+	// hand or research.
 	const mergedPedals = preserveCuration(
 		selectedPedals,
 		await readExisting<CatalogPedal>(`${outDir}/pedals.json`),
 	);
-	const mergedBoards = preserveCuration(
-		selectedBoards,
-		await readExisting<CatalogBoard>(`${outDir}/boards.json`),
-	);
+
+	// Boards are only touched when explicitly imported — a pedals-only import
+	// must never blank `boards.json`.
+	let mergedBoards: CatalogBoard[] | null = null;
+	if (args.boards) {
+		const boards = convertBoards(await readRows(args.boards), {
+			source: args.source,
+			warn,
+		});
+		mergedBoards = preserveCuration(
+			selectBoards(boards.items, args.boardLimit),
+			await readExisting<CatalogBoard>(`${outDir}/boards.json`),
+		);
+	}
 
 	// Fail loudly rather than writing data the app cannot load.
 	const pedalCheck = CatalogPedalSchema.array().safeParse(mergedPedals);
-	const boardCheck = CatalogBoardSchema.array().safeParse(mergedBoards);
 	if (!pedalCheck.success) {
 		throw new Error(
 			`invalid pedal output: ${pedalCheck.error.issues[0]?.message}`,
 		);
 	}
-	if (!boardCheck.success) {
-		throw new Error(
-			`invalid board output: ${boardCheck.error.issues[0]?.message}`,
-		);
+	if (mergedBoards) {
+		const boardCheck = CatalogBoardSchema.array().safeParse(mergedBoards);
+		if (!boardCheck.success) {
+			throw new Error(
+				`invalid board output: ${boardCheck.error.issues[0]?.message}`,
+			);
+		}
 	}
 
 	await mkdir(outDir, { recursive: true });
@@ -222,13 +234,17 @@ async function runImport(args: Args): Promise<void> {
 		`${outDir}/pedals.json`,
 		`${JSON.stringify(mergedPedals, null, 2)}\n`,
 	);
-	await writeFile(
-		`${outDir}/boards.json`,
-		`${JSON.stringify(mergedBoards, null, 2)}\n`,
-	);
+	if (mergedBoards) {
+		await writeFile(
+			`${outDir}/boards.json`,
+			`${JSON.stringify(mergedBoards, null, 2)}\n`,
+		);
+	}
 
 	console.log(
-		`imported ${mergedPedals.length} pedals / ${mergedBoards.length} boards → ${outDir}`,
+		`imported ${mergedPedals.length} pedals${
+			mergedBoards ? ` / ${mergedBoards.length} boards` : " (boards untouched)"
+		} → ${outDir}`,
 	);
 	console.log(
 		`  (kept ${new Set(mergedPedals.map((p) => p.brand)).size} brands; run \`seed\` to render images)`,
