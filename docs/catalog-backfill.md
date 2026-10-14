@@ -1,7 +1,8 @@
 # Catalog backfill plan
 
 Strategy + inventory for growing the committed catalog seed to the full,
-cleared catalog. Referenced from `docs/roadmap.md` (Catalog data track) and
+cleared catalog. Referenced from `docs/roadmap.md` (**P5 — Catalog completion,
+pre-launch**) and
 governed by ADR-003 (sourcing, rights, provenance).
 
 ## Legend

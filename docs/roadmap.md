@@ -45,11 +45,13 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints
 - P4-03 Auto length calculation + cable list summary
 
-## Catalog data track (data — see `docs/catalog-backfill.md`)
-- **Now:** committed seed = **207 pedals / 13 brands / 10 boards**, `source: 'placeholder'`, **mocked** images, `effectTypes` filled for the 10 pilot brands (verified overrides + conservative classifier).
-- **Backfill (later):** grow the seed to the full catalog + all brands; fill `effectTypes` for the rest; add **verified specs** (dimensions/power/jacks) and **per-item provenance** (source, verification date, confidence).
-- **Clearance (launch gate):** replace mocked images with cleared assets per ADR-003 exit criteria.
-- Owner-assisted procurement (outreach + permission) stays P2-06.
+## P5 — Catalog completion (pre-launch) (expand when scheduled)
+> Runs **after P1–P4, before any public launch** — this is the "backfill all the rest of the pedals of all brands + clear everything" phase. The full data plan (steps, master inventory, image-rights workflow) lives in **`docs/catalog-backfill.md`**; the launch bar is ADR-003's exit criteria.
+> **Now (P0-05 seed):** 207 pedals / 13 brands / 10 boards; `source: 'placeholder'`; **mocked** images; `effectTypes` for 200/207; 485 source refs (340 image links) — a representative slice, not the full catalog.
+- **P5-01 Full-catalog backfill** — run `pnpm catalog:import` at full scale (all brands/models, no caps) + `catalog:seed`/`catalog:reclassify`; fill `effectTypes` (verified overrides) and specs (`power` + `jacks` after widening the jack-kind vocabulary) for every item; keep per-item `sources`.
+- **P5-02 Image clearance (rights-first)** — acquire + clear real images (permission / official brand assets / community / own) and replace every mocked PNG, flipping `source`. Depends on **P2-06** outreach. **No scraping** (ADR-003).
+- **P5-03 Provenance & verification sweep** — per-item verification date + confidence; dimension spot-check (≥10) against manufacturer spec sheets.
+- **P5-04 Launch-gate sign-off** — minimum bar (≥200 pedals / ≥10 brands, cleared assets only), A1–A5 green, `pnpm audit`, iOS export.
 
 ## v2 backlog (not scheduled)
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
