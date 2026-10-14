@@ -102,6 +102,17 @@ export async function writeSeedImages(
 		);
 	}
 
+	// Only mock items are ours to (re)draw. Never render over a cleared static
+	// image or treat a URL as a filename, and never prune an asset we don't own.
+	const nonMock = [...pedalsResult.data, ...boardsResult.data].find(
+		(item) => item.imageSource !== "mock",
+	);
+	if (nonMock) {
+		throw new Error(
+			`seed only renders mock images; "${nonMock.id}" uses "${nonMock.imageSource}"`,
+		);
+	}
+
 	const images = await renderCatalogImages(
 		pedalsResult.data,
 		boardsResult.data,

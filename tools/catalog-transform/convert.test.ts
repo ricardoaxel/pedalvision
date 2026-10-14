@@ -6,6 +6,7 @@ import {
 	convertPedals,
 	type ExternalRow,
 	inchesToCm,
+	preserveCuration,
 } from "./convert.ts";
 import { toSlug } from "./slug.ts";
 
@@ -90,6 +91,41 @@ describe("convertPedals", () => {
 		for (const pedal of result.items) {
 			expect(CatalogPedalSchema.safeParse(pedal).success).toBe(true);
 		}
+	});
+});
+
+describe("preserveCuration", () => {
+	type TestItem = {
+		id: string;
+		image: string;
+		imageSource: "mock" | "static";
+		sources?: { url: string; kind: ("info" | "image")[] }[];
+		power?: { voltage: number; acDc: "DC" | "AC"; currentMa: number };
+	};
+
+	it("carries curation fields from existing items, matched by id", () => {
+		const next: TestItem[] = [
+			{ id: "a", image: "a.png", imageSource: "mock" },
+			{ id: "b", image: "b.png", imageSource: "mock" },
+		];
+		const existing: TestItem[] = [
+			{
+				id: "a",
+				image: "a.png",
+				imageSource: "static",
+				sources: [{ url: "https://x.example/a", kind: ["info"] }],
+				power: { voltage: 9, acDc: "DC", currentMa: 12 },
+			},
+		];
+		const merged = preserveCuration(next, existing);
+		expect(merged[0]).toMatchObject({
+			imageSource: "static",
+			sources: [{ url: "https://x.example/a", kind: ["info"] }],
+			power: { voltage: 9, acDc: "DC", currentMa: 12 },
+		});
+		// a brand-new id keeps the converter defaults
+		expect(merged[1]).toMatchObject({ imageSource: "mock" });
+		expect(merged[1]).not.toHaveProperty("sources");
 	});
 });
 

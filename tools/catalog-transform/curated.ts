@@ -120,6 +120,9 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"mxr-cae-buffer": ["buffer"],
 	"mxr-cae-power-system": [],
 
+	// Behringer (personal in-ear-monitor amp — a pedal/utility, NOT a supply)
+	"behringer-powerplay-p1": ["utility"],
+
 	// Joyo
 	"joyo-d-seed": ["delay"],
 	"joyo-jf-06-vintage-phase": ["phaser"],
@@ -138,7 +141,7 @@ export const CURATED_SUPPLIES = new Set<string>(["walrus-audio-aetos"]);
 
 /** Names that denote a power supply rather than an effect pedal. */
 const SUPPLY_HINT =
-	/\bpower\s*(supply|box|bank|system)\b|\bpsu\b|powerplay|isolated power/i;
+	/\bpower\s*(supply|box|bank|system)\b|\bpsu\b|isolated power/i;
 
 type DeviceInput = { brand: string; name: string; variantOf?: string };
 
@@ -152,7 +155,10 @@ const baseKey = (input: DeviceInput): string =>
 export function deriveEffectTypes(input: DeviceInput): EffectType[] {
 	const curated = CURATED_EFFECTS[baseKey(input)];
 	if (curated) return curated;
-	return classifyEffects(input.name);
+	// Classify the BASE model name: a colorway/edition suffix like "(Metal)" must
+	// not give a variant different effect types than its base.
+	const baseName = input.name.replace(/\s*\([^)]+\)\s*$/, "").trim();
+	return classifyEffects(baseName || input.name);
 }
 
 /** Resolve a device's category (`pedal` vs `supply`) by verified override or name. */

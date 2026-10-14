@@ -146,6 +146,45 @@ export function convertPedals(
 	return { items, warnings };
 }
 
+/**
+ * Curation fields that a re-import must NOT discard. `effectTypes`/`category`
+ * are derived in-code (curated.ts), but these live only in the committed JSON
+ * (sources = provenance links; power/jacks = verified specs; image/imageSource =
+ * cleared asset state), so re-running `import` over an existing catalog would
+ * otherwise wipe them.
+ */
+const CURATION_KEYS = [
+	"sources",
+	"power",
+	"jacks",
+	"image",
+	"imageSource",
+] as const;
+
+function pickCuration<T>(prev: T): Partial<T> {
+	const out: Partial<T> = {};
+	for (const key of CURATION_KEYS) {
+		const value = (prev as Record<string, unknown>)[key];
+		if (value !== undefined) (out as Record<string, unknown>)[key] = value;
+	}
+	return out;
+}
+
+/**
+ * Merge curation from an existing catalog into freshly converted items, matched
+ * by stable id. New items keep converter defaults; removed ids simply drop out.
+ */
+export function preserveCuration<T extends { id: string }>(
+	next: T[],
+	existing: T[],
+): T[] {
+	const byId = new Map(existing.map((item) => [item.id, item]));
+	return next.map((item) => {
+		const prev = byId.get(item.id);
+		return prev ? { ...item, ...pickCuration(prev) } : item;
+	});
+}
+
 /** Convert external board rows into our schema. Deterministic. */
 export function convertBoards(
 	rows: ExternalRow[],

@@ -6198,8 +6198,10 @@
     "heightCm": 12.4,
     "image": "behringer-powerplay-p1.png",
     "imageSource": "mock",
-    "effectTypes": [],
-    "category": "supply",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
     "source": "placeholder",
     "sources": [
       {

@@ -39,6 +39,12 @@ describe("classifyEffects", () => {
 		expect(classifyEffects("8 Step Program")).toEqual(["sequencer"]);
 	});
 
+	it("classifies a variant by its base name (no colorway-suffix leak)", () => {
+		expect(
+			deriveEffectTypes({ brand: "Acme", name: "Big Fuzz (Metal)" }),
+		).toEqual(["fuzz"]);
+	});
+
 	it("leaves creatively-named pedals unclassified (no guessing)", () => {
 		expect(classifyEffects("Julia")).toEqual([]);
 		expect(classifyEffects("Morning Glory")).toEqual([]);
@@ -86,6 +92,15 @@ describe("curated overrides", () => {
 		expect(deriveCategory({ brand: "Walrus Audio", name: "Aetos" })).toBe(
 			"supply",
 		);
+	});
+
+	it("does not treat an IEM amp as a power supply (Powerplay P1)", () => {
+		expect(deriveCategory({ brand: "Behringer", name: "Powerplay P1" })).toBe(
+			"pedal",
+		);
+		expect(
+			deriveEffectTypes({ brand: "Behringer", name: "Powerplay P1" }),
+		).toEqual(["utility"]);
 	});
 });
 

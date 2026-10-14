@@ -24,7 +24,7 @@ governed by ADR-003 (sourcing, rights, provenance).
 ## Current state (committed seed)
 
 **207 pedals · 13 brands · 10 boards**; `source: 'placeholder'`; mocked images;
-`effectTypes` present for **200/207** (the 7 blanks are all power supplies).
+`effectTypes` present for **201/207** (the 6 blanks are all power supplies).
 **Source links:** the verified base models carry per-item `sources: [{url,
 kind}]` — **485 refs, 340 marked `image` across 170 models** (manufacturer/
 authorized preferred; ADR-003 §Per-item sources). A colorway variant resolves to
@@ -45,13 +45,14 @@ only from the aggregate, never cited).
 | MXR | 18 | 3 | 14 | 1 | 0 / 18 | CAE Power System is a supply |
 | Joyo | 18 | 6 | 12 | 0 | 0 / 18 | |
 | Big Joe | 2 | 0 | 0 | 2 | 0 / 2 | supplies |
-| Behringer | 1 | 0 | 0 | 1 | 0 / 1 | supply |
+| Behringer | 1 | 1 | 0 | 0 | 0 / 1 | P1 is an IEM amp, not a supply |
 | Effects Bakery | 1 | 0 | 0 | 1 | 0 / 1 | supply |
-| **Total** | **207** | **102** | **98** | **7** | **0 / 207** | all `mocked` |
+| **Total** | **207** | **103** | **98** | **6** | **0 / 207** | all `mocked` |
 
 The 10 pilot brands (BOSS … Joyo) had their creatively-named pedals verified
-against official sources; the 3 remaining brands (Big Joe, Behringer, Effects
-Bakery) are power supplies with `effectTypes: []` by design.
+against official sources; the remaining supply brands (Big Joe, Effects Bakery)
+are power supplies with `effectTypes: []` by design. Behringer's **Powerplay P1**
+is a personal in-ear-monitor amp, so it is a **pedal** (`utility`), not a supply.
 
 ## Image status & acquisition (rights-first)
 

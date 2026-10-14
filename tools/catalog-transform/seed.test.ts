@@ -122,6 +122,24 @@ describe("writeSeedImages", () => {
 		}
 	}, 60_000);
 
+	it("refuses to render when any item is not mock (protects cleared assets)", async () => {
+		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-nonmock-"));
+		try {
+			const dataDir = join(dir, "data");
+			await mkdir(dataDir, { recursive: true });
+			await writeFile(
+				join(dataDir, "pedals.json"),
+				JSON.stringify([{ ...committedPedals[0], imageSource: "static" }]),
+			);
+			await writeFile(join(dataDir, "boards.json"), JSON.stringify([]));
+			await expect(
+				writeSeedImages(dataDir, join(dir, "assets")),
+			).rejects.toThrow(/mock/);
+		} finally {
+			await rm(dir, { recursive: true, force: true });
+		}
+	});
+
 	it("rejects an invalid catalog file before writing", async () => {
 		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-bad-"));
 		try {

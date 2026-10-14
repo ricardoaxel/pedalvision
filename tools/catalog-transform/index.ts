@@ -1,12 +1,19 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import {
+	type CatalogBoard,
 	CatalogBoardSchema,
+	type CatalogPedal,
 	CatalogPedalSchema,
 	SOURCE_TAGS,
 	type SourceTag,
 } from "../../src/catalog/schema.ts";
-import { convertBoards, convertPedals, type ExternalRow } from "./convert.ts";
+import {
+	convertBoards,
+	convertPedals,
+	type ExternalRow,
+	preserveCuration,
+} from "./convert.ts";
 import { deriveCategory, deriveEffectTypes } from "./curated.ts";
 import { writeSeedImages } from "./seed.ts";
 import {
@@ -159,6 +166,16 @@ async function readRows(path: string): Promise<ExternalRow[]> {
 	return parsed as ExternalRow[];
 }
 
+/** Read an existing catalog file (for curation merge); `[]` if absent. */
+async function readExisting<T>(path: string): Promise<T[]> {
+	try {
+		const parsed = JSON.parse(await readFile(path, "utf8"));
+		return Array.isArray(parsed) ? (parsed as T[]) : [];
+	} catch {
+		return [];
+	}
+}
+
 async function runImport(args: Args): Promise<void> {
 	if (!args.input) throw new Error("import requires --input <pedals.json>");
 	const outDir = resolve(process.cwd(), args.outDir);
@@ -175,9 +192,20 @@ async function runImport(args: Args): Promise<void> {
 		: { items: [] };
 	const selectedBoards = selectBoards(boards.items, args.boardLimit);
 
+	// Preserve curation (sources, specs, cleared image state) for surviving ids —
+	// a re-import must never wipe provenance/assets added by hand or research.
+	const mergedPedals = preserveCuration(
+		selectedPedals,
+		await readExisting<CatalogPedal>(`${outDir}/pedals.json`),
+	);
+	const mergedBoards = preserveCuration(
+		selectedBoards,
+		await readExisting<CatalogBoard>(`${outDir}/boards.json`),
+	);
+
 	// Fail loudly rather than writing data the app cannot load.
-	const pedalCheck = CatalogPedalSchema.array().safeParse(selectedPedals);
-	const boardCheck = CatalogBoardSchema.array().safeParse(selectedBoards);
+	const pedalCheck = CatalogPedalSchema.array().safeParse(mergedPedals);
+	const boardCheck = CatalogBoardSchema.array().safeParse(mergedBoards);
 	if (!pedalCheck.success) {
 		throw new Error(
 			`invalid pedal output: ${pedalCheck.error.issues[0]?.message}`,
@@ -192,18 +220,18 @@ async function runImport(args: Args): Promise<void> {
 	await mkdir(outDir, { recursive: true });
 	await writeFile(
 		`${outDir}/pedals.json`,
-		`${JSON.stringify(selectedPedals, null, 2)}\n`,
+		`${JSON.stringify(mergedPedals, null, 2)}\n`,
 	);
 	await writeFile(
 		`${outDir}/boards.json`,
-		`${JSON.stringify(selectedBoards, null, 2)}\n`,
+		`${JSON.stringify(mergedBoards, null, 2)}\n`,
 	);
 
 	console.log(
-		`imported ${selectedPedals.length} pedals / ${selectedBoards.length} boards → ${outDir}`,
+		`imported ${mergedPedals.length} pedals / ${mergedBoards.length} boards → ${outDir}`,
 	);
 	console.log(
-		`  (kept ${new Set(selectedPedals.map((p) => p.brand)).size} brands; run \`seed\` to render images)`,
+		`  (kept ${new Set(mergedPedals.map((p) => p.brand)).size} brands; run \`seed\` to render images)`,
 	);
 }
 
