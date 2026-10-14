@@ -1,6 +1,11 @@
 import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
-import type { CatalogBoard, CatalogPedal } from "../../src/catalog/schema.ts";
+import {
+	type CatalogBoard,
+	CatalogBoardSchema,
+	type CatalogPedal,
+	CatalogPedalSchema,
+} from "../../src/catalog/schema.ts";
 import { type RenditionSize, renderPng } from "./image.ts";
 
 /**
@@ -75,14 +80,30 @@ export async function writeSeedImages(
 	catalogDir: string,
 	assetsDir: string,
 ): Promise<{ pedals: number; boards: number; images: number }> {
-	const pedals = JSON.parse(
-		await readFile(join(catalogDir, "pedals.json"), "utf8"),
-	) as CatalogPedal[];
-	const boards = JSON.parse(
-		await readFile(join(catalogDir, "boards.json"), "utf8"),
-	) as CatalogBoard[];
+	// Validate before touching the filesystem — never build paths from
+	// unvalidated `image` fields.
+	const pedalsResult = CatalogPedalSchema.array().safeParse(
+		JSON.parse(await readFile(join(catalogDir, "pedals.json"), "utf8")),
+	);
+	if (!pedalsResult.success) {
+		throw new Error(
+			`pedals.json: ${pedalsResult.error.issues[0]?.message ?? "invalid"}`,
+		);
+	}
+	const boardsResult = CatalogBoardSchema.array().safeParse(
+		JSON.parse(await readFile(join(catalogDir, "boards.json"), "utf8")),
+	);
+	if (!boardsResult.success) {
+		throw new Error(
+			`boards.json: ${boardsResult.error.issues[0]?.message ?? "invalid"}`,
+		);
+	}
 
-	const images = await renderCatalogImages(pedals, boards, assetsDir);
+	const images = await renderCatalogImages(
+		pedalsResult.data,
+		boardsResult.data,
+		assetsDir,
+	);
 	for (const image of images) {
 		await mkdir(dirname(image.path), { recursive: true });
 		await writeFile(image.path, image.buffer);
@@ -109,8 +130,8 @@ export async function writeSeedImages(
 	}
 
 	return {
-		pedals: pedals.length,
-		boards: boards.length,
+		pedals: pedalsResult.data.length,
+		boards: boardsResult.data.length,
 		images: images.length,
 	};
 }

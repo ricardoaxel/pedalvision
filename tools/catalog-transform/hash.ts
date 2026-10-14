@@ -1,6 +1,6 @@
 /**
  * Tiny deterministic string hash (FNV-1a, 32-bit). Used to derive stable
- * per-item variation (dimensions, palette) for the synthetic seed. Pure integer
+ * per-item variation (palette) for the mock seed images. Pure integer
  * math, so it is identical on every platform — no `Math.random` anywhere.
  */
 export function hashString(value: string): number {

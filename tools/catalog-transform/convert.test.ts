@@ -57,8 +57,8 @@ describe("convertPedals", () => {
 			category: "pedal",
 			source: "placeholder",
 			effectTypes: [],
-			jacks: [],
 		});
+		expect(fuzz?.jacks).toBeUndefined();
 	});
 
 	it("ignores any external image name and uses the slug", () => {

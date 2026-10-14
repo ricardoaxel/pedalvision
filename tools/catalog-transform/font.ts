@@ -1,5 +1,5 @@
 /**
- * Minimal 5x7 bitmap font used to draw labels on the synthetic seed images.
+ * Minimal 5x7 bitmap font used to draw labels on the mock catalog images.
  *
  * Why not SVG `<text>`: sharp rasterizes text through librsvg + fontconfig,
  * whose fallback font differs between macOS (the commit machine) and Ubuntu

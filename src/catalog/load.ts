@@ -12,7 +12,7 @@ import {
 /**
  * Catalog loader. The JSON ships in the app bundle (static import) and is
  * zod-validated here, so bad catalog data fails fast instead of rendering
- * garbage. The committed synthetic seed (P0-05) is what a fresh clone — and CI —
+ * garbage. The committed catalog seed (P0-05) is what a fresh clone — and CI —
  * runs against; the dataset-derived placeholder is only ever a local overlay.
  */
 

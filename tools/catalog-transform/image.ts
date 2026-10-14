@@ -3,8 +3,8 @@ import { GLYPH_ROWS, labelPathData, labelWidthUnits } from "./font.ts";
 import { hashString } from "./hash.ts";
 
 /**
- * Procedural placeholder art for the synthetic seed: a rounded rectangle with a
- * short label, rasterized from an inline SVG with sharp (ADR-002, R5/S3).
+ * Procedural ("mocked") placeholder art for the catalog seed: a rounded
+ * rectangle with a short label, rasterized from an inline SVG with sharp.
  * Shapes only — no `<text>` — so the output is byte-reproducible on any machine.
  *
  * This is intentionally a dev-only stopgap; it must not grow into a second

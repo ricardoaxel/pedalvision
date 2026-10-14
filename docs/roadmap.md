@@ -9,9 +9,9 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P0-02 | CI/CD pipeline (GitHub Actions → Cloudflare) | done |
 | P0-03 | Design tokens (CSS vars + JS theme map, dark default) | done |
 | P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | done |
-| P0-05 | Catalog schema + import transformer + synthetic seed | in review — PR #5 |
+| P0-05 | Catalog schema + import transformer + seed | in review — PR #5 |
 
-> **Sequencing:** P0-01/02/03/04 **done**. **P0-05 is in review — PR #5** (unblocked, build-strong); Next stays P0-05 until merged (AGENTS rule 9). P0-05's transformer needs the owner's dataset only for the real import (the committed synthetic seed covers dev/CI). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead (see AGENTS.md §Session protocol rule 6).
+> **Sequencing:** P0-01/02/03/04 **done**. **P0-05 is in review — PR #5** (unblocked, build-strong); Next stays P0-05 until merged (AGENTS rule 9). P0-05's transformer needs the external catalog file only to run `import`/backfill (the committed seed covers dev/CI). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead (see AGENTS.md §Session protocol rule 6).
 
 ## P1 — Canvas core
 | Task | Title | Status |
@@ -49,7 +49,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
 
 ## Launch gate (v1 public) — ALL must pass
-- [ ] Catalog contains cleared assets only — synthetic seed + placeholder fully swapped (decisions/003 exit criteria: `source ∈ {licensed, brand-assets, community, own}` + min 200 pedals/10 brands + dimension spot-check + note purged)
+- [ ] Catalog contains cleared assets only — mocked seed images + `placeholder`-sourced items fully swapped (decisions/003 exit criteria: `source ∈ {licensed, brand-assets, community, own}` + min 200 pedals/10 brands + dimension spot-check + note purged)
 - [ ] A1–A5 acceptance criteria green on production
 - [ ] `pnpm audit` clean; all dependencies < 6 months old
 - [ ] iOS Safari export verified on a real device

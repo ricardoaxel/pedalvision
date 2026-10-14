@@ -121,6 +121,24 @@ describe("writeSeedImages", () => {
 			await rm(dir, { recursive: true, force: true });
 		}
 	}, 60_000);
+
+	it("rejects an invalid catalog file before writing", async () => {
+		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-bad-"));
+		try {
+			const dataDir = join(dir, "data");
+			await mkdir(dataDir, { recursive: true });
+			await writeFile(
+				join(dataDir, "pedals.json"),
+				JSON.stringify([{ id: "x" }]),
+			);
+			await writeFile(join(dataDir, "boards.json"), JSON.stringify([]));
+			await expect(
+				writeSeedImages(dataDir, join(dir, "assets")),
+			).rejects.toThrow(/pedals\.json/);
+		} finally {
+			await rm(dir, { recursive: true, force: true });
+		}
+	});
 });
 
 describe("renditionPixels", () => {

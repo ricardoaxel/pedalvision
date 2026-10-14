@@ -9,6 +9,15 @@
     "source": "placeholder"
   },
   {
+    "id": "boss-bcb-1000",
+    "brand": "BOSS",
+    "name": "BCB-1000",
+    "widthCm": 55.88,
+    "heightCm": 35.23,
+    "image": "boss-bcb-1000.png",
+    "source": "placeholder"
+  },
+  {
     "id": "blackbird-tolex-1224",
     "brand": "Blackbird",
     "name": "Tolex 1224",
@@ -24,15 +33,6 @@
     "widthCm": 41.91,
     "heightCm": 17.78,
     "image": "boardmods-b.png",
-    "source": "placeholder"
-  },
-  {
-    "id": "boss-bcb-1000",
-    "brand": "BOSS",
-    "name": "BCB-1000",
-    "widthCm": 55.88,
-    "heightCm": 35.23,
-    "image": "boss-bcb-1000.png",
     "source": "placeholder"
   },
   {
@@ -54,21 +54,21 @@
     "source": "placeholder"
   },
   {
-    "id": "d-addario-xpnd-1",
-    "brand": "D’Addario",
-    "name": "XPND 1",
-    "widthCm": 35.56,
-    "heightCm": 15.32,
-    "image": "d-addario-xpnd-1.png",
-    "source": "placeholder"
-  },
-  {
     "id": "donner-db-3",
     "brand": "Donner",
     "name": "DB-3",
     "widthCm": 50.8,
     "heightCm": 28.96,
     "image": "donner-db-3.png",
+    "source": "placeholder"
+  },
+  {
+    "id": "d-addario-xpnd-1",
+    "brand": "D’Addario",
+    "name": "XPND 1",
+    "widthCm": 35.56,
+    "heightCm": 15.32,
+    "image": "d-addario-xpnd-1.png",
     "source": "placeholder"
   },
   {

@@ -10,6 +10,9 @@ import type { CatalogBoard, CatalogPedal } from "../../src/catalog/schema.ts";
  * is visibly the biggest group), every other kept brand up to `perBrandCap`.
  * Within a brand, items are sorted by name so the slice is stable. A few power
  * supplies are topped up (any brand) so the picker/loose-item paths have data.
+ *
+ * Ordering uses codepoint comparison (not `localeCompare`) so the result does
+ * not depend on the runtime locale — the slice must be identical everywhere.
  */
 
 export type SelectOptions = {
@@ -26,8 +29,18 @@ export const DEFAULT_SELECT: SelectOptions = {
 	supplyLimit: 5,
 };
 
+function compare(a: string, b: string): number {
+	return a < b ? -1 : a > b ? 1 : 0;
+}
+
 function byName<T extends { name: string; id: string }>(a: T, b: T): number {
-	return a.name.localeCompare(b.name) || a.id.localeCompare(b.id);
+	return compare(a.name, b.name) || compare(a.id, b.id);
+}
+
+/** Keep a variant only if its base is also present (never ship a dangling link). */
+function dropDangling(pedals: CatalogPedal[]): CatalogPedal[] {
+	const ids = new Set(pedals.map((pedal) => pedal.id));
+	return pedals.filter((pedal) => !pedal.variantOf || ids.has(pedal.variantOf));
 }
 
 export function selectPedals(
@@ -44,7 +57,7 @@ export function selectPedals(
 	}
 
 	const brands = [...byBrand.entries()]
-		.sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
+		.sort((a, b) => b[1].length - a[1].length || compare(a[0], b[0]))
 		.slice(0, opts.brandLimit);
 
 	const chosen: CatalogPedal[] = [];
@@ -53,21 +66,14 @@ export function selectPedals(
 		chosen.push(...[...items].sort(byName).slice(0, cap));
 	});
 
-	// Never ship a dangling colorway: a variant is kept only if its base made
-	// the slice (the cap can otherwise split a base from its variant).
-	const selectedIds = new Set(chosen.map((pedal) => pedal.id));
-	const kept = chosen.filter(
-		(pedal) => !pedal.variantOf || selectedIds.has(pedal.variantOf),
-	);
-
 	// Top up power supplies so the picker/loose-item paths are exercised.
-	const keptIds = new Set(kept.map((pedal) => pedal.id));
+	const chosenIds = new Set(chosen.map((pedal) => pedal.id));
 	const supplies = pedals
-		.filter((pedal) => pedal.category === "supply" && !keptIds.has(pedal.id))
-		.sort((a, b) => a.brand.localeCompare(b.brand) || byName(a, b))
+		.filter((pedal) => pedal.category === "supply" && !chosenIds.has(pedal.id))
+		.sort((a, b) => compare(a.brand, b.brand) || byName(a, b))
 		.slice(0, opts.supplyLimit);
 
-	return [...kept, ...supplies];
+	return dropDangling([...chosen, ...supplies]);
 }
 
 /**
@@ -86,7 +92,7 @@ export function selectBoards(
 	}
 
 	const groups = [...byBrand.entries()]
-		.sort((a, b) => a[0].localeCompare(b[0]))
+		.sort((a, b) => compare(a[0], b[0]))
 		.map(([, items]) => [...items].sort(byName));
 
 	const chosen: CatalogBoard[] = [];

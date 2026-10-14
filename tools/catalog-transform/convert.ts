@@ -39,7 +39,7 @@ const VARIANT_SUFFIX = /^(.*?)\s*\(([^)]+)\)\s*$/;
 
 /** Names that denote a power supply rather than an effect pedal. */
 const SUPPLY_HINT =
-	/\bpower\s*(supply|box|bank)\b|\bpsu\b|powerplay|isolated power/i;
+	/\bpower\s*(supply|box|bank|system)\b|\bpsu\b|powerplay|isolated power/i;
 
 /** Slugify a display string: lowercase ASCII words joined by single hyphens. */
 export function toSlug(value: string): string {
@@ -129,7 +129,6 @@ export function convertPedals(
 			image: `${id}.png`,
 			effectTypes: [],
 			category: SUPPLY_HINT.test(displayName) ? "supply" : "pedal",
-			jacks: [],
 			variantOf: variantMatch ? baseId : undefined,
 			source: options.source,
 		});
