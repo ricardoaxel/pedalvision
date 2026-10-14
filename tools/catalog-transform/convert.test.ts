@@ -2,8 +2,9 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { CatalogPedalSchema } from "../../src/catalog/schema.ts";
 import {
-	convertExternalCatalog,
-	type ExternalCatalog,
+	convertBoards,
+	convertPedals,
+	type ExternalRow,
 	inchesToCm,
 	toSlug,
 } from "./convert.ts";
@@ -13,7 +14,7 @@ const fixture = JSON.parse(
 		new URL("./fixtures/external-catalog.json", import.meta.url),
 		"utf8",
 	),
-) as ExternalCatalog;
+) as ExternalRow[];
 
 describe("inchesToCm", () => {
 	it("uses the 2.54 factor and rounds to 2 decimals", () => {
@@ -27,64 +28,78 @@ describe("inchesToCm", () => {
 describe("toSlug", () => {
 	it("lowercases, strips diacritics, and hyphenates", () => {
 		expect(toSlug("Boss TR-2")).toBe("boss-tr-2");
-		expect(toSlug("Café Crème")).toBe("cafe-creme");
+		expect(toSlug("Nuñez Amps")).toBe("nunez-amps");
 		expect(toSlug("  Spaces   &  symbols!! ")).toBe("spaces-symbols");
 	});
 });
 
-describe("convertExternalCatalog", () => {
-	const result = convertExternalCatalog(fixture, { source: "placeholder" });
+describe("convertPedals", () => {
+	const result = convertPedals(fixture, { source: "placeholder" });
 
-	it("skips entries missing width/height and duplicates, with warnings", () => {
-		expect(result.pedals).toHaveLength(4);
-		expect(result.warnings.some((w) => w.includes("No Size"))).toBe(true);
-		expect(result.warnings.some((w) => w.includes("duplicate"))).toBe(true);
-	});
-
-	it("skips entries with no brand", () => {
-		expect(result.pedals.some((p) => p.name === "No Brand")).toBe(false);
-		expect(result.warnings.some((w) => w.includes("No Brand"))).toBe(true);
-	});
-
-	it("drops variants whose base is missing", () => {
-		expect(result.pedals.some((p) => p.id === "acme-orphan-blue")).toBe(false);
-		expect(result.warnings.some((w) => w.includes("acme-orphan"))).toBe(true);
-	});
-
-	it("does not treat a dropped variant as a valid base for nested variants", () => {
-		expect(result.pedals.some((p) => p.id === "gamma-nested-red")).toBe(false);
-		expect(result.pedals.some((p) => p.id === "gamma-nested-red-blue")).toBe(
+	it("skips malformed/duplicate rows and drops dangling variants", () => {
+		expect(result.items).toHaveLength(5);
+		for (const needle of ["No Size", "No Brand", "duplicate"]) {
+			expect(result.warnings.some((w) => w.includes(needle))).toBe(true);
+		}
+		expect(result.items.some((p) => p.id === "gamma-nested-red-blue")).toBe(
 			false,
 		);
 	});
 
-	it("converts inches to cm and slugifies ids", () => {
-		const fuzz = result.pedals.find((p) => p.id === "acme-big-fuzz");
-		expect(fuzz).toBeDefined();
-		expect(fuzz?.widthCm).toBe(6.35);
-		expect(fuzz?.heightCm).toBe(11.94);
-		expect(fuzz?.image).toBe("acme-big-fuzz.png");
-		expect(fuzz?.effectTypes).toEqual(["fuzz"]);
-		expect(fuzz?.category).toBe("pedal");
-		expect(fuzz?.source).toBe("placeholder");
-		expect(fuzz?.jacks).toEqual([]);
+	it("maps external fields to our schema (inches→cm, slug, our image name)", () => {
+		const fuzz = result.items.find((p) => p.id === "acme-big-fuzz");
+		expect(fuzz).toMatchObject({
+			brand: "Acme",
+			name: "Big Fuzz",
+			widthCm: 6.35,
+			heightCm: 11.94,
+			image: "acme-big-fuzz.png",
+			category: "pedal",
+			source: "placeholder",
+			effectTypes: [],
+			jacks: [],
+		});
+	});
+
+	it("ignores any external image name and uses the slug", () => {
+		const phaser = result.items.find((p) => p.id === "beta-swirl-phaser");
+		expect(phaser?.image).toBe("beta-swirl-phaser.png");
 	});
 
 	it("links colorway variants via variantOf", () => {
-		const variant = result.pedals.find((p) => p.id === "acme-big-fuzz-green");
-		expect(variant).toBeDefined();
+		const variant = result.items.find((p) => p.id === "acme-big-fuzz-green");
 		expect(variant?.variantOf).toBe("acme-big-fuzz");
 		expect(variant?.name).toBe("Big Fuzz (Green)");
 	});
 
-	it("sanitizes unsafe external filenames", () => {
-		const phaser = result.pedals.find((p) => p.id === "beta-swirl-phaser");
-		expect(phaser?.image).toBe("swirl-phaser.png");
+	it("tags likely power supplies", () => {
+		const supply = result.items.find((p) => p.id === "acme-powerbox-iso");
+		expect(supply?.category).toBe("supply");
 	});
 
 	it("produces output that validates against the catalog schema", () => {
-		for (const pedal of result.pedals) {
+		for (const pedal of result.items) {
 			expect(CatalogPedalSchema.safeParse(pedal).success).toBe(true);
 		}
+	});
+});
+
+describe("convertBoards", () => {
+	it("maps external rows to our board schema", () => {
+		const { items } = convertBoards(
+			[{ Brand: "Acme", Name: "Terra 24", Width: 24, Height: 12 }],
+			{ source: "placeholder" },
+		);
+		expect(items).toEqual([
+			{
+				id: "acme-terra-24",
+				brand: "Acme",
+				name: "Terra 24",
+				widthCm: 60.96,
+				heightCm: 30.48,
+				image: "acme-terra-24.png",
+				source: "placeholder",
+			},
+		]);
 	});
 });

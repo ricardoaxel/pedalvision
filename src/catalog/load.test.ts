@@ -9,21 +9,26 @@ const validPedal: CatalogPedal = {
 	widthCm: 6.35,
 	heightCm: 11.94,
 	image: "acme-big-fuzz.png",
-	effectTypes: ["fuzz"],
+	effectTypes: [],
 	category: "pedal",
-	source: "synthetic",
+	source: "placeholder",
 };
 
-describe("committed synthetic seed", () => {
+describe("committed catalog seed", () => {
 	it("validates and meets the seed size", () => {
-		expect(catalog.pedals.length).toBeGreaterThanOrEqual(50);
+		expect(catalog.pedals.length).toBeGreaterThanOrEqual(200);
 		expect(catalog.boards).toHaveLength(10);
 	});
 
-	it("is license-clean (synthetic provenance) and includes supplies", () => {
-		expect(catalog.pedals.every((p) => p.source === "synthetic")).toBe(true);
-		expect(catalog.boards.every((b) => b.source === "synthetic")).toBe(true);
-		expect(catalog.pedals.some((p) => p.category === "supply")).toBe(true);
+	it("covers at least 10 brands and includes the largest one", () => {
+		const brands = new Set(catalog.pedals.map((p) => p.brand));
+		expect(brands.size).toBeGreaterThanOrEqual(10);
+		expect(catalog.pedals.some((p) => p.brand === "BOSS")).toBe(true);
+	});
+
+	it("is placeholder-sourced (mock images) and license-state explicit", () => {
+		expect(catalog.pedals.every((p) => p.source === "placeholder")).toBe(true);
+		expect(catalog.boards.every((b) => b.source === "placeholder")).toBe(true);
 	});
 
 	it("has unique ids", () => {

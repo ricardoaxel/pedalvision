@@ -1,67 +1,107 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import {
+	CatalogBoardSchema,
 	CatalogPedalSchema,
 	SOURCE_TAGS,
 	type SourceTag,
 } from "../../src/catalog/schema.ts";
-import { convertExternalCatalog, type ExternalCatalog } from "./convert.ts";
-import { writeSeed } from "./seed.ts";
+import { convertBoards, convertPedals, type ExternalRow } from "./convert.ts";
+import { writeSeedImages } from "./seed.ts";
+import {
+	DEFAULT_SELECT,
+	type SelectOptions,
+	selectBoards,
+	selectPedals,
+} from "./select.ts";
 
 /**
  * `tools/catalog-transform` — a one-off dev CLI (ADR-003).
  *
- *   # Convert an external catalog JSON into our schema
- *   node --experimental-strip-types tools/catalog-transform/index.ts \
- *     --input external.json --output src/catalog/data/pedals.json \
- *     --source placeholder
+ *   # Import an external catalog into the committed seed (real data, mocked images)
+ *   node --experimental-strip-types tools/catalog-transform/index.ts import \
+ *     --input pedals.json --boards pedalboards.json
  *
- *   # Generate the committed synthetic seed JSON + procedural PNGs
- *   node --experimental-strip-types tools/catalog-transform/index.ts --seed
+ *   # (Re)generate the mocked PNGs from the committed catalog JSON
+ *   node --experimental-strip-types tools/catalog-transform/index.ts seed
  *
- * Provenance rule (binding): never name or link a third-party dataset here or in
- * any output. Input/output paths are always explicit CLI args.
+ * Provenance: never name or link the source here or in any output. Input/output
+ * paths are always explicit CLI args.
  */
 
 const DEFAULTS = {
 	outDir: "src/catalog/data",
+	catalogDir: "src/catalog/data",
 	assetsDir: "public/pedal-assets",
 	source: "placeholder" as SourceTag,
+	boardLimit: 10,
+	select: DEFAULT_SELECT,
 };
 
+const USAGE = `catalog-transform — external catalog → our schema, plus mocked seed images
+
+Usage:
+  import --input <pedals.json> [--boards <boards.json>]
+         [--out-dir <dir>] [--source <tag>]
+         [--brand-limit <n>] [--top-brand-cap <n>] [--per-brand-cap <n>]
+         [--supply-limit <n>] [--board-limit <n>]
+  seed   [--catalog-dir <dir>] [--assets-dir <dir>]
+  --help
+
+Source tags: ${SOURCE_TAGS.join(" | ")}`;
+
 type Args = {
-	seed: boolean;
+	command: string;
 	input?: string;
-	output?: string;
+	boards?: string;
 	outDir: string;
+	catalogDir: string;
 	assetsDir: string;
 	source: SourceTag;
+	boardLimit: number;
+	select: SelectOptions;
 	help: boolean;
 };
 
+function readNumber(argv: string[], index: number, flag: string): number {
+	const raw = argv[index + 1];
+	const value = Number(raw);
+	if (!Number.isInteger(value) || value <= 0) {
+		throw new Error(`${flag} must be a positive integer (got "${raw}")`);
+	}
+	return value;
+}
+
 function parseArgs(argv: string[]): Args {
 	const args: Args = {
-		seed: false,
+		command: argv[0] ?? "",
 		outDir: DEFAULTS.outDir,
+		catalogDir: DEFAULTS.catalogDir,
 		assetsDir: DEFAULTS.assetsDir,
 		source: DEFAULTS.source,
+		boardLimit: DEFAULTS.boardLimit,
+		select: { ...DEFAULTS.select },
 		help: false,
 	};
+	if (args.command === "--help" || args.command === "-h") {
+		args.help = true;
+		return args;
+	}
 
-	for (let i = 0; i < argv.length; i++) {
+	for (let i = 1; i < argv.length; i++) {
 		const arg = argv[i];
 		switch (arg) {
-			case "--seed":
-				args.seed = true;
-				break;
 			case "--input":
 				args.input = argv[++i];
 				break;
-			case "--output":
-				args.output = argv[++i];
+			case "--boards":
+				args.boards = argv[++i];
 				break;
 			case "--out-dir":
 				args.outDir = argv[++i];
+				break;
+			case "--catalog-dir":
+				args.catalogDir = argv[++i];
 				break;
 			case "--assets-dir":
 				args.assetsDir = argv[++i];
@@ -76,6 +116,26 @@ function parseArgs(argv: string[]): Args {
 				args.source = value as SourceTag;
 				break;
 			}
+			case "--brand-limit":
+				args.select.brandLimit = readNumber(argv, i, arg);
+				i++;
+				break;
+			case "--top-brand-cap":
+				args.select.topBrandCap = readNumber(argv, i, arg);
+				i++;
+				break;
+			case "--per-brand-cap":
+				args.select.perBrandCap = readNumber(argv, i, arg);
+				i++;
+				break;
+			case "--supply-limit":
+				args.select.supplyLimit = readNumber(argv, i, arg);
+				i++;
+				break;
+			case "--board-limit":
+				args.boardLimit = readNumber(argv, i, arg);
+				i++;
+				break;
 			case "--help":
 			case "-h":
 				args.help = true;
@@ -84,77 +144,95 @@ function parseArgs(argv: string[]): Args {
 				throw new Error(`unknown argument "${arg}"`);
 		}
 	}
-
 	return args;
 }
 
-const USAGE = `catalog-transform — external catalog → our schema, plus the synthetic seed
-
-Usage:
-  --seed                       Generate the synthetic seed JSON + procedural PNGs
-  --input <file>               External catalog JSON (required unless --seed)
-  --output <file>              Output JSON path (required with --input)
-  --source <tag>               Provenance tag: ${SOURCE_TAGS.join(" | ")}
-  --out-dir <dir>              Seed JSON dir (default: ${DEFAULTS.outDir})
-  --assets-dir <dir>           PNG dir (default: ${DEFAULTS.assetsDir})
-  --help                       Show this help`;
-
-async function runSeed(args: Args): Promise<void> {
-	const outDir = resolve(process.cwd(), args.outDir);
-	const assetsDir = resolve(process.cwd(), args.assetsDir);
-	const summary = await writeSeed(outDir, assetsDir);
-	console.log(
-		`seed: wrote ${summary.pedals} pedals, ${summary.boards} boards, ${summary.images} PNGs`,
+async function readRows(path: string): Promise<ExternalRow[]> {
+	const parsed = JSON.parse(
+		await readFile(resolve(process.cwd(), path), "utf8"),
 	);
-	console.log(`  json → ${outDir}`);
-	console.log(`  pngs → ${assetsDir}`);
+	if (!Array.isArray(parsed)) {
+		throw new Error(`${path}: expected a JSON array of catalog rows`);
+	}
+	return parsed as ExternalRow[];
 }
 
-async function runConvert(args: Args): Promise<void> {
-	if (!args.input || !args.output) {
-		throw new Error("--input and --output are required (or use --seed)");
-	}
+async function runImport(args: Args): Promise<void> {
+	if (!args.input) throw new Error("import requires --input <pedals.json>");
+	const outDir = resolve(process.cwd(), args.outDir);
+	const warn = (message: string) => console.warn(`warn: ${message}`);
 
-	const inputPath = resolve(process.cwd(), args.input);
-	const outputPath = resolve(process.cwd(), args.output);
-	const raw = await readFile(inputPath, "utf8");
-	const external = JSON.parse(raw) as ExternalCatalog;
-
-	const { pedals, warnings } = convertExternalCatalog(external, {
+	const pedals = convertPedals(await readRows(args.input), {
 		source: args.source,
-		warn: (message) => console.warn(`warn: ${message}`),
+		warn,
 	});
+	const selectedPedals = selectPedals(pedals.items, args.select);
+
+	const boards = args.boards
+		? convertBoards(await readRows(args.boards), { source: args.source, warn })
+		: { items: [] };
+	const selectedBoards = selectBoards(boards.items, args.boardLimit);
 
 	// Fail loudly rather than writing data the app cannot load.
-	const validation = CatalogPedalSchema.array().safeParse(pedals);
-	if (!validation.success) {
+	const pedalCheck = CatalogPedalSchema.array().safeParse(selectedPedals);
+	const boardCheck = CatalogBoardSchema.array().safeParse(selectedBoards);
+	if (!pedalCheck.success) {
 		throw new Error(
-			`converter produced invalid data: ${validation.error.issues[0]?.message}`,
+			`invalid pedal output: ${pedalCheck.error.issues[0]?.message}`,
+		);
+	}
+	if (!boardCheck.success) {
+		throw new Error(
+			`invalid board output: ${boardCheck.error.issues[0]?.message}`,
 		);
 	}
 
-	await mkdir(dirname(outputPath), { recursive: true });
-	await writeFile(outputPath, `${JSON.stringify(pedals, null, 2)}\n`);
-	console.log(`converted ${pedals.length} pedals → ${outputPath}`);
-	if (warnings.length > 0) console.log(`  ${warnings.length} warning(s)`);
+	await mkdir(outDir, { recursive: true });
+	await writeFile(
+		`${outDir}/pedals.json`,
+		`${JSON.stringify(selectedPedals, null, 2)}\n`,
+	);
+	await writeFile(
+		`${outDir}/boards.json`,
+		`${JSON.stringify(selectedBoards, null, 2)}\n`,
+	);
+
+	console.log(
+		`imported ${selectedPedals.length} pedals / ${selectedBoards.length} boards → ${outDir}`,
+	);
+	console.log(
+		`  (kept ${new Set(selectedPedals.map((p) => p.brand)).size} brands; run \`seed\` to render images)`,
+	);
+}
+
+async function runSeed(args: Args): Promise<void> {
+	const catalogDir = resolve(process.cwd(), args.catalogDir);
+	const assetsDir = resolve(process.cwd(), args.assetsDir);
+	const summary = await writeSeedImages(catalogDir, assetsDir);
+	console.log(
+		`seed: ${summary.pedals} pedals, ${summary.boards} boards, ${summary.images} PNGs`,
+	);
+	console.log(`  json  → ${catalogDir}`);
+	console.log(`  pngs  → ${assetsDir}`);
 }
 
 async function main(): Promise<void> {
 	const args = parseArgs(process.argv.slice(2));
-	if (args.help) {
+	if (args.help || !args.command) {
 		console.log(USAGE);
+		if (!args.command) process.exitCode = 1;
 		return;
 	}
-	if (args.seed) {
-		await runSeed(args);
-		return;
+	switch (args.command) {
+		case "import":
+			await runImport(args);
+			return;
+		case "seed":
+			await runSeed(args);
+			return;
+		default:
+			throw new Error(`unknown command "${args.command}"`);
 	}
-	if (args.input) {
-		await runConvert(args);
-		return;
-	}
-	console.log(USAGE);
-	process.exitCode = 1;
 }
 
 main().catch((error: unknown) => {

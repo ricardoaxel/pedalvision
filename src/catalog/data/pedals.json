@@ -1,1549 +1,2506 @@
 [
   {
-    "id": "voltstead-warmdrive",
-    "brand": "Voltstead",
-    "name": "Warmdrive",
-    "widthCm": 5.9,
-    "heightCm": 11.5,
-    "image": "voltstead-warmdrive.png",
-    "effectTypes": [
-      "overdrive"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 63
-    },
-    "source": "synthetic"
-  },
-  {
-    "id": "ironbark-audio-flatline-od",
-    "brand": "Ironbark Audio",
-    "name": "Flatline OD",
-    "widthCm": 7.4,
-    "heightCm": 12,
-    "image": "ironbark-audio-flatline-od.png",
-    "effectTypes": [
-      "overdrive"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 76
-    },
-    "source": "synthetic"
-  },
-  {
-    "id": "cinder-steelhorse",
-    "brand": "Cinder",
-    "name": "Steelhorse",
-    "widthCm": 5.9,
-    "heightCm": 11.9,
-    "image": "cinder-steelhorse.png",
-    "effectTypes": [
-      "overdrive"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 83
-    },
-    "source": "synthetic"
-  },
-  {
-    "id": "northgate-fx-ironclad-dist",
-    "brand": "Northgate FX",
-    "name": "Ironclad Dist",
-    "widthCm": 6.3,
-    "heightCm": 11.8,
-    "image": "northgate-fx-ironclad-dist.png",
-    "effectTypes": [
-      "distortion"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 58
-    },
-    "source": "synthetic"
-  },
-  {
-    "id": "tidewater-electronics-redsmith",
-    "brand": "Tidewater Electronics",
-    "name": "Redsmith",
-    "widthCm": 6.6,
-    "heightCm": 11.9,
-    "image": "tidewater-electronics-redsmith.png",
-    "effectTypes": [
-      "distortion"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 67
-    },
-    "source": "synthetic"
-  },
-  {
-    "id": "rustline-highwire",
-    "brand": "Rustline",
-    "name": "Highwire",
-    "widthCm": 7,
-    "heightCm": 11.7,
-    "image": "rustline-highwire.png",
-    "effectTypes": [
-      "distortion"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 17
-    },
-    "source": "synthetic"
-  },
-  {
-    "id": "glasshouse-labs-wooly-fuzz",
-    "brand": "Glasshouse Labs",
-    "name": "Wooly Fuzz",
+    "id": "boss-ac-2-acoustic-simulator",
+    "brand": "BOSS",
+    "name": "AC-2 Acoustic Simulator",
     "widthCm": 7.3,
-    "heightCm": 11.7,
-    "image": "glasshouse-labs-wooly-fuzz.png",
-    "effectTypes": [
-      "fuzz"
-    ],
+    "heightCm": 13.02,
+    "image": "boss-ac-2-acoustic-simulator.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 57
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "aurelia-audio-nebula-fuzz",
-    "brand": "Aurelia Audio",
-    "name": "Nebula Fuzz",
-    "widthCm": 7,
-    "heightCm": 10.9,
-    "image": "aurelia-audio-nebula-fuzz.png",
-    "effectTypes": [
-      "fuzz"
-    ],
+    "id": "boss-ac-3-acoustic-simulator",
+    "brand": "BOSS",
+    "name": "AC-3 Acoustic Simulator",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ac-3-acoustic-simulator.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 65
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "mobius-sound-beehive",
-    "brand": "Mobius Sound",
-    "name": "Beehive",
-    "widthCm": 7,
-    "heightCm": 11.3,
-    "image": "mobius-sound-beehive.png",
-    "effectTypes": [
-      "fuzz"
-    ],
+    "id": "boss-ad-2-acoustic-preamp",
+    "brand": "BOSS",
+    "name": "AD-2 Acoustic Preamp",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ad-2-acoustic-preamp.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 29
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "copperfield-tapewell",
-    "brand": "Copperfield",
-    "name": "Tapewell",
-    "widthCm": 5.9,
-    "heightCm": 11.5,
-    "image": "copperfield-tapewell.png",
-    "effectTypes": [
-      "delay"
-    ],
+    "id": "boss-aw-3-dynamic-wah",
+    "brand": "BOSS",
+    "name": "AW-3 Dynamic Wah",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-aw-3-dynamic-wah.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 127
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "voltstead-echo-garden",
-    "brand": "Voltstead",
-    "name": "Echo Garden",
-    "widthCm": 7.2,
-    "heightCm": 12.1,
-    "image": "voltstead-echo-garden.png",
-    "effectTypes": [
-      "delay"
-    ],
+    "id": "boss-bb-1x-bass-driver",
+    "brand": "BOSS",
+    "name": "BB-1X Bass Driver",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bb-1x-bass-driver.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 125
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "ironbark-audio-longway",
-    "brand": "Ironbark Audio",
-    "name": "Longway",
+    "id": "boss-bc-1x-bass-compressor",
+    "brand": "BOSS",
+    "name": "BC-1x Bass Compressor",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bc-1x-bass-compressor.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-bc-2-combo-drive",
+    "brand": "BOSS",
+    "name": "BC-2 Combo Drive",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bc-2-combo-drive.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-bd-2-blues-driver",
+    "brand": "BOSS",
+    "name": "BD-2 Blues Driver",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bd-2-blues-driver.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-bf-2-flanger",
+    "brand": "BOSS",
+    "name": "BF-2 Flanger",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bf-2-flanger.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-bf-2b-bass-flanger",
+    "brand": "BOSS",
+    "name": "BF-2B Bass Flanger",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bf-2b-bass-flanger.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-bf-3-flanger",
+    "brand": "BOSS",
+    "name": "BF-3 Flanger",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bf-3-flanger.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ce-1-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-1 Chorus Ensemble",
+    "widthCm": 25.91,
+    "heightCm": 17.53,
+    "image": "boss-ce-1-chorus-ensemble.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ce-2-chorus",
+    "brand": "BOSS",
+    "name": "CE-2 Chorus",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ce-2-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ce-20-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-20 Chorus Ensemble",
+    "widthCm": 17.3,
+    "heightCm": 15.49,
+    "image": "boss-ce-20-chorus-ensemble.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ce-2b-bass-chorus",
+    "brand": "BOSS",
+    "name": "CE-2B Bass Chorus",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ce-2b-bass-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ce-3-chorus",
+    "brand": "BOSS",
+    "name": "CE-3 Chorus",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ce-3-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ce-5-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-5 Chorus Ensemble",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ce-5-chorus-ensemble.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ceb-3-bass-chorus",
+    "brand": "BOSS",
+    "name": "CEB-3 Bass Chorus",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ceb-3-bass-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-ch-1-super-chorus",
+    "brand": "BOSS",
+    "name": "CH-1 Super Chorus",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ch-1-super-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-cp-1x-compressor",
+    "brand": "BOSS",
+    "name": "CP-1X Compressor",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-cp-1x-compressor.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-cs-2-compression-sustainer",
+    "brand": "BOSS",
+    "name": "CS-2 Compression Sustainer",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-cs-2-compression-sustainer.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-cs-3-compression-sustainer",
+    "brand": "BOSS",
+    "name": "CS-3 Compression Sustainer",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-cs-3-compression-sustainer.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-da-2-adaptive-distortion",
+    "brand": "BOSS",
+    "name": "DA-2 Adaptive Distortion",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-da-2-adaptive-distortion.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dc-2-dimension-c",
+    "brand": "BOSS",
+    "name": "DC-2 Dimension C",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dc-2-dimension-c.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dc-3-digital-dimension",
+    "brand": "BOSS",
+    "name": "DC-3 Digital Dimension",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dc-3-digital-dimension.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-2-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-2 Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dd-2-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-20-giga-delay",
+    "brand": "BOSS",
+    "name": "DD-20 Giga Delay",
+    "widthCm": 17.3,
+    "heightCm": 15.49,
+    "image": "boss-dd-20-giga-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-200-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-200 Digital Delay",
+    "widthCm": 10.16,
+    "heightCm": 13.82,
+    "image": "boss-dd-200-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-3-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-3 Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dd-3-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-3t-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-3T Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dd-3t-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-5-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-5 Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dd-5-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-500-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-500 Digital Delay",
+    "widthCm": 17.15,
+    "heightCm": 13.72,
+    "image": "boss-dd-500-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-6-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-6 Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dd-6-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-7-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-7 Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dd-7-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dd-8-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-8 Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dd-8-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-df-2-super-feedbacker-distortion",
+    "brand": "BOSS",
+    "name": "DF-2 Super Feedbacker & Distortion",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-df-2-super-feedbacker-distortion.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dm-101-delay-machine",
+    "brand": "BOSS",
+    "name": "DM-101 Delay Machine",
+    "widthCm": 19.2,
+    "heightCm": 13.28,
+    "image": "boss-dm-101-delay-machine.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dm-2-delay",
+    "brand": "BOSS",
+    "name": "DM-2 Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dm-2-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dm-3-delay",
+    "brand": "BOSS",
+    "name": "DM-3 Delay",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dm-3-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "boss-dn-2-dyna-drive",
+    "brand": "BOSS",
+    "name": "DN-2 Dyna Drive",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-dn-2-dyna-drive.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-1-echo",
+    "brand": "Electro-Harmonix",
+    "name": "#1 Echo",
+    "widthCm": 10.64,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-1-echo.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-1440-stereo-looper",
+    "brand": "Electro-Harmonix",
+    "name": "1440 Stereo Looper",
+    "widthCm": 10.64,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-1440-stereo-looper.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-15watt-howitzer",
+    "brand": "Electro-Harmonix",
+    "name": "15Watt Howitzer",
+    "widthCm": 10.64,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-15watt-howitzer.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-2020-tuner",
+    "brand": "Electro-Harmonix",
+    "name": "2020 Tuner",
+    "widthCm": 4.62,
+    "heightCm": 9.53,
+    "image": "electro-harmonix-2020-tuner.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-2020-tuner-v2",
+    "brand": "Electro-Harmonix",
+    "name": "2020 Tuner v2",
+    "widthCm": 4.62,
+    "heightCm": 9.68,
+    "image": "electro-harmonix-2020-tuner-v2.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-22500-dual-stereo-looper",
+    "brand": "Electro-Harmonix",
+    "name": "22500 Dual Stereo Looper",
+    "widthCm": 15.42,
+    "heightCm": 12.8,
+    "image": "electro-harmonix-22500-dual-stereo-looper.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-22500-foot-controller",
+    "brand": "Electro-Harmonix",
+    "name": "22500 Foot Controller",
+    "widthCm": 11.43,
+    "heightCm": 6.99,
+    "image": "electro-harmonix-22500-foot-controller.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-44-magnum-power-amp",
+    "brand": "Electro-Harmonix",
+    "name": "44 Magnum Power Amp",
+    "widthCm": 7.16,
+    "heightCm": 11.43,
+    "image": "electro-harmonix-44-magnum-power-amp.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-5mm-power-amp",
+    "brand": "Electro-Harmonix",
+    "name": "5mm Power Amp",
+    "widthCm": 7.16,
+    "heightCm": 11.43,
+    "image": "electro-harmonix-5mm-power-amp.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-720-stereo-looper",
+    "brand": "Electro-Harmonix",
+    "name": "720 Stereo Looper",
+    "widthCm": 10.64,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-720-stereo-looper.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-8-step-program",
+    "brand": "Electro-Harmonix",
+    "name": "8 Step Program",
+    "widthCm": 15.42,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-8-step-program.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-95000-performance-loop-laboratory",
+    "brand": "Electro-Harmonix",
+    "name": "95000 Performance Loop Laboratory",
+    "widthCm": 32.39,
+    "heightCm": 14.99,
+    "image": "electro-harmonix-95000-performance-loop-laboratory.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-analogizer",
+    "brand": "Electro-Harmonix",
+    "name": "Analogizer",
+    "widthCm": 7.16,
+    "heightCm": 11.43,
+    "image": "electro-harmonix-analogizer.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-attack-decay",
+    "brand": "Electro-Harmonix",
+    "name": "Attack Decay",
+    "widthCm": 10.64,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-attack-decay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-b9-organ-machine",
+    "brand": "Electro-Harmonix",
+    "name": "B9 Organ Machine",
+    "widthCm": 10.64,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-b9-organ-machine.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-bad-stone",
+    "brand": "Electro-Harmonix",
+    "name": "Bad Stone",
+    "widthCm": 7.16,
+    "heightCm": 11.43,
+    "image": "electro-harmonix-bad-stone.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-bass-big-muff-pi",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Big Muff Pi",
+    "widthCm": 10.64,
+    "heightCm": 12.07,
+    "image": "electro-harmonix-bass-big-muff-pi.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "electro-harmonix-bass-big-muff-pi-2",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Big Muff Pi 2",
+    "widthCm": 7.16,
+    "heightCm": 11.43,
+    "image": "electro-harmonix-bass-big-muff-pi-2.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-385",
+    "brand": "Walrus Audio",
+    "name": "385",
+    "widthCm": 7.32,
+    "heightCm": 12.29,
+    "image": "walrus-audio-385.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-385-nat-parks",
+    "brand": "Walrus Audio",
+    "name": "385 (Nat. Parks)",
+    "widthCm": 7.32,
+    "heightCm": 12.29,
+    "image": "walrus-audio-385-nat-parks.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-385",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-385-mkii",
+    "brand": "Walrus Audio",
+    "name": "385 MKII",
+    "widthCm": 6.6,
+    "heightCm": 12.57,
+    "image": "walrus-audio-385-mkii.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-385-mkii-black",
+    "brand": "Walrus Audio",
+    "name": "385 MKII (Black)",
+    "widthCm": 6.6,
+    "heightCm": 12.57,
+    "image": "walrus-audio-385-mkii-black.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-385-mkii",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-aetos",
+    "brand": "Walrus Audio",
+    "name": "Aetos",
+    "widthCm": 11.94,
+    "heightCm": 9.4,
+    "image": "walrus-audio-aetos.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-ages",
+    "brand": "Walrus Audio",
+    "name": "Ages",
+    "widthCm": 6.6,
+    "heightCm": 12.57,
+    "image": "walrus-audio-ages.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-ages-kamakura",
+    "brand": "Walrus Audio",
+    "name": "Ages (Kamakura)",
+    "widthCm": 6.6,
+    "heightCm": 12.57,
+    "image": "walrus-audio-ages-kamakura.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-ages",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-ages-nat-parks",
+    "brand": "Walrus Audio",
+    "name": "Ages (Nat. Parks)",
+    "widthCm": 6.6,
+    "heightCm": 12.57,
+    "image": "walrus-audio-ages-nat-parks.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-ages",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-arp-87",
+    "brand": "Walrus Audio",
+    "name": "ARP-87",
+    "widthCm": 6.91,
+    "heightCm": 12.57,
+    "image": "walrus-audio-arp-87.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-arp-87-kamakura",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Kamakura)",
+    "widthCm": 6.91,
+    "heightCm": 12.57,
+    "image": "walrus-audio-arp-87-kamakura.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-arp-87",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-arp-87-nat-parks",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Nat. Parks)",
+    "widthCm": 6.91,
+    "heightCm": 12.57,
+    "image": "walrus-audio-arp-87-nat-parks.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-arp-87",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-arp-87-nautical",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Nautical)",
+    "widthCm": 6.91,
+    "heightCm": 12.57,
+    "image": "walrus-audio-arp-87-nautical.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-arp-87",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-arp-87-obsidian",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Obsidian)",
+    "widthCm": 6.91,
+    "heightCm": 12.57,
+    "image": "walrus-audio-arp-87-obsidian.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-arp-87",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-arp-87-platinum",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Platinum)",
+    "widthCm": 6.6,
+    "heightCm": 12.57,
+    "image": "walrus-audio-arp-87-platinum.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "walrus-audio-arp-87",
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-badwater",
+    "brand": "Walrus Audio",
+    "name": "Badwater",
+    "widthCm": 12.34,
+    "heightCm": 9.7,
+    "image": "walrus-audio-badwater.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-bellwether",
+    "brand": "Walrus Audio",
+    "name": "Bellwether",
+    "widthCm": 14.45,
+    "heightCm": 12.07,
+    "image": "walrus-audio-bellwether.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-canvas-clock",
+    "brand": "Walrus Audio",
+    "name": "Canvas Clock",
+    "widthCm": 7.16,
+    "heightCm": 12.19,
+    "image": "walrus-audio-canvas-clock.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "walrus-audio-canvas-line-isolator",
+    "brand": "Walrus Audio",
+    "name": "Canvas Line Isolator",
+    "widthCm": 4.75,
+    "heightCm": 9.4,
+    "image": "walrus-audio-canvas-line-isolator.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-1962",
+    "brand": "Keeley",
+    "name": "1962",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-1962.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-1962x",
+    "brand": "Keeley",
+    "name": "1962x",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-1962x.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-30ms-double-tracker",
+    "brand": "Keeley",
+    "name": "30ms Double Tracker",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-30ms-double-tracker.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-abbey-chamber-verb",
+    "brand": "Keeley",
+    "name": "Abbey Chamber Verb",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-abbey-chamber-verb.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-angry-orange",
+    "brand": "Keeley",
+    "name": "Angry Orange",
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "image": "keeley-angry-orange.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-angry-orange-signalis",
+    "brand": "Keeley",
+    "name": "Angry Orange (Signalis)",
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "image": "keeley-angry-orange-signalis.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "keeley-angry-orange",
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-angry-orange-white",
+    "brand": "Keeley",
+    "name": "Angry Orange (White)",
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "image": "keeley-angry-orange-white.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "keeley-angry-orange",
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-aria",
+    "brand": "Keeley",
+    "name": "Aria",
+    "widthCm": 9.4,
+    "heightCm": 12.45,
+    "image": "keeley-aria.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-aurora",
+    "brand": "Keeley",
+    "name": "Aurora",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-aurora.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-bassist-compressor",
+    "brand": "Keeley",
+    "name": "Bassist Compressor",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-bassist-compressor.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-black-glass",
+    "brand": "Keeley",
+    "name": "Black Glass",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-black-glass.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-blacktop",
+    "brand": "Keeley",
+    "name": "Blacktop",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-blacktop.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-blues-disorder",
+    "brand": "Keeley",
+    "name": "Blues Disorder",
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "image": "keeley-blues-disorder.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-blues-disorder-signalis",
+    "brand": "Keeley",
+    "name": "Blues Disorder (Signalis)",
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "image": "keeley-blues-disorder-signalis.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "keeley-blues-disorder",
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-blues-disorder-white",
+    "brand": "Keeley",
+    "name": "Blues Disorder (White)",
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "image": "keeley-blues-disorder-white.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "keeley-blues-disorder",
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-bubble-tron",
+    "brand": "Keeley",
+    "name": "Bubble Tron",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-bubble-tron.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-bubble-tron-ler",
+    "brand": "Keeley",
+    "name": "Bubble Tron (Ler)",
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "image": "keeley-bubble-tron-ler.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "keeley-bubble-tron",
+    "source": "placeholder"
+  },
+  {
+    "id": "keeley-california-girls",
+    "brand": "Keeley",
+    "name": "California Girls",
+    "widthCm": 10.16,
+    "heightCm": 12.8,
+    "image": "keeley-california-girls.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-a-b-box",
+    "brand": "EarthQuaker",
+    "name": "A/B Box",
+    "widthCm": 4.52,
+    "heightCm": 9.4,
+    "image": "earthquaker-a-b-box.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-acapulco-gold",
+    "brand": "EarthQuaker",
+    "name": "Acapulco Gold",
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "image": "earthquaker-acapulco-gold.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-afterneath",
+    "brand": "EarthQuaker",
+    "name": "Afterneath",
+    "widthCm": 6.6,
+    "heightCm": 12.75,
+    "image": "earthquaker-afterneath.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-afterneath-v3",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3",
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "image": "earthquaker-afterneath-v3.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-afterneath-v3-pastel-purple",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3 (Pastel Purple)",
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "image": "earthquaker-afterneath-v3-pastel-purple.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "earthquaker-afterneath-v3",
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-afterneath-v3-raw",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3 (Raw)",
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "image": "earthquaker-afterneath-v3-raw.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "earthquaker-afterneath-v3",
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-aqueduct",
+    "brand": "EarthQuaker",
+    "name": "Aqueduct",
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "image": "earthquaker-aqueduct.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-arpanoid",
+    "brand": "EarthQuaker",
+    "name": "Arpanoid",
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "image": "earthquaker-arpanoid.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-arrows",
+    "brand": "EarthQuaker",
+    "name": "Arrows",
+    "widthCm": 7.21,
+    "heightCm": 11.43,
+    "image": "earthquaker-arrows.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-arrows-v2",
+    "brand": "EarthQuaker",
+    "name": "Arrows V2",
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "image": "earthquaker-arrows-v2.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-astral-destiny",
+    "brand": "EarthQuaker",
+    "name": "Astral Destiny",
+    "widthCm": 9.68,
+    "heightCm": 12.22,
+    "image": "earthquaker-astral-destiny.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-aurelius",
+    "brand": "EarthQuaker",
+    "name": "Aurelius",
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "image": "earthquaker-aurelius.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-avalanche-run",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run",
+    "widthCm": 9.68,
+    "heightCm": 12.22,
+    "image": "earthquaker-avalanche-run.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2",
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "image": "earthquaker-avalanche-run-v2.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-black",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Black)",
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "image": "earthquaker-avalanche-run-v2-black.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-mint",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Mint)",
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "image": "earthquaker-avalanche-run-v2-mint.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-purple-sparkle",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Purple Sparkle)",
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "image": "earthquaker-avalanche-run-v2-purple-sparkle.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "source": "placeholder"
+  },
+  {
+    "id": "earthquaker-barrows-fuzz",
+    "brand": "EarthQuaker",
+    "name": "Barrows Fuzz",
+    "widthCm": 4.52,
+    "heightCm": 9.4,
+    "image": "earthquaker-barrows-fuzz.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-1966-series-bender",
+    "brand": "JHS",
+    "name": "1966 Series Bender",
+    "widthCm": 7.59,
+    "heightCm": 12.65,
+    "image": "jhs-1966-series-bender.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-1966-series-boost",
+    "brand": "JHS",
+    "name": "1966 Series Boost",
+    "widthCm": 7.59,
+    "heightCm": 12.65,
+    "image": "jhs-1966-series-boost.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-1966-series-fuzz",
+    "brand": "JHS",
+    "name": "1966 Series Fuzz",
+    "widthCm": 7.59,
+    "heightCm": 12.65,
+    "image": "jhs-1966-series-fuzz.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-1966-series-italy",
+    "brand": "JHS",
+    "name": "1966 Series Italy",
+    "widthCm": 7.59,
+    "heightCm": 12.65,
+    "image": "jhs-1966-series-italy.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-bit-crusher",
+    "brand": "JHS",
+    "name": "3 Series Bit Crusher",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-bit-crusher.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-chorus",
+    "brand": "JHS",
+    "name": "3 Series Chorus",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-compressor",
+    "brand": "JHS",
+    "name": "3 Series Compressor",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-compressor.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-delay",
+    "brand": "JHS",
+    "name": "3 Series Delay",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-distortion",
+    "brand": "JHS",
+    "name": "3 Series Distortion",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-distortion.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-flanger",
+    "brand": "JHS",
+    "name": "3 Series Flanger",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-flanger.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-fuzz",
+    "brand": "JHS",
+    "name": "3 Series Fuzz",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-fuzz.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-glitch-delay",
+    "brand": "JHS",
+    "name": "3 Series Glitch Delay",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-glitch-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-hall-reverb",
+    "brand": "JHS",
+    "name": "3 Series Hall Reverb",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-hall-reverb.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-harmonic-trem",
+    "brand": "JHS",
+    "name": "3 Series Harmonic Trem",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-harmonic-trem.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-octave-reverb",
+    "brand": "JHS",
+    "name": "3 Series Octave Reverb",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-octave-reverb.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-oil-can-delay",
+    "brand": "JHS",
+    "name": "3 Series Oil Can Delay",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-oil-can-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-oil-can-delay-black",
+    "brand": "JHS",
+    "name": "3 Series Oil Can Delay (Black)",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-oil-can-delay-black.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "variantOf": "jhs-3-series-oil-can-delay",
+    "source": "placeholder"
+  },
+  {
+    "id": "jhs-3-series-overdrive",
+    "brand": "JHS",
+    "name": "3 Series Overdrive",
+    "widthCm": 6.81,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-overdrive.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-2290-p-dynamic-digital-delay",
+    "brand": "TC Electronic",
+    "name": "2290 P Dynamic Digital Delay",
+    "widthCm": 22.35,
+    "heightCm": 13.72,
+    "image": "tc-electronic-2290-p-dynamic-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-3rd-dimension-chorus",
+    "brand": "TC Electronic",
+    "name": "3rd Dimension Chorus",
+    "widthCm": 7.37,
+    "heightCm": 13.08,
+    "image": "tc-electronic-3rd-dimension-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-afterglow-chorus",
+    "brand": "TC Electronic",
+    "name": "Afterglow Chorus",
+    "widthCm": 7.37,
+    "heightCm": 13.08,
+    "image": "tc-electronic-afterglow-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-alter-ego-v2-vintage-echo",
+    "brand": "TC Electronic",
+    "name": "Alter Ego v2 Vintage Echo",
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "image": "tc-electronic-alter-ego-v2-vintage-echo.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-alter-ego-x4-vintage-echo",
+    "brand": "TC Electronic",
+    "name": "Alter Ego x4 Vintage Echo",
+    "widthCm": 23.62,
+    "heightCm": 14.35,
+    "image": "tc-electronic-alter-ego-x4-vintage-echo.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-ampworx-550",
+    "brand": "TC Electronic",
+    "name": "Ampworx 550",
+    "widthCm": 10.67,
+    "heightCm": 12.78,
+    "image": "tc-electronic-ampworx-550.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-ampworx-combo-deluxe-65",
+    "brand": "TC Electronic",
+    "name": "Ampworx Combo Deluxe 65'",
+    "widthCm": 10.67,
+    "heightCm": 12.78,
+    "image": "tc-electronic-ampworx-combo-deluxe-65.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-ampworx-dc30",
+    "brand": "TC Electronic",
+    "name": "Ampworx DC30",
+    "widthCm": 10.67,
+    "heightCm": 12.78,
+    "image": "tc-electronic-ampworx-dc30.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-ampworx-dual-wreck",
+    "brand": "TC Electronic",
+    "name": "Ampworx Dual Wreck",
+    "widthCm": 10.67,
+    "heightCm": 12.78,
+    "image": "tc-electronic-ampworx-dual-wreck.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-ampworx-jims-45",
+    "brand": "TC Electronic",
+    "name": "Ampworx Jims 45",
+    "widthCm": 10.67,
+    "heightCm": 12.78,
+    "image": "tc-electronic-ampworx-jims-45.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-ampworx-jims-800",
+    "brand": "TC Electronic",
+    "name": "Ampworx Jims 800",
+    "widthCm": 10.67,
+    "heightCm": 12.78,
+    "image": "tc-electronic-ampworx-jims-800.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-arena-reverb",
+    "brand": "TC Electronic",
+    "name": "Arena Reverb",
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "image": "tc-electronic-arena-reverb.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-blood-moon-phaser",
+    "brand": "TC Electronic",
+    "name": "Blood Moon Phaser",
+    "widthCm": 7.37,
+    "heightCm": 13.08,
+    "image": "tc-electronic-blood-moon-phaser.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-bodyrez-acoustic-pickup-enhancer",
+    "brand": "TC Electronic",
+    "name": "BodyRez Acoustic Pickup Enhancer",
+    "widthCm": 5.08,
+    "heightCm": 9.53,
+    "image": "tc-electronic-bodyrez-acoustic-pickup-enhancer.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-bonafide-buffer",
+    "brand": "TC Electronic",
+    "name": "Bonafide Buffer",
+    "widthCm": 5.08,
+    "heightCm": 9.53,
+    "image": "tc-electronic-bonafide-buffer.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-brainwaves-pitch-shifter",
+    "brand": "TC Electronic",
+    "name": "Brainwaves Pitch Shifter",
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "image": "tc-electronic-brainwaves-pitch-shifter.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "tc-electronic-bucket-brigade-analog-delay",
+    "brand": "TC Electronic",
+    "name": "Bucket Brigade Analog Delay",
     "widthCm": 6.1,
-    "heightCm": 11.8,
-    "image": "ironbark-audio-longway.png",
-    "effectTypes": [
-      "delay"
-    ],
+    "heightCm": 10.03,
+    "image": "tc-electronic-bucket-brigade-analog-delay.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 74
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "cinder-cathedral",
-    "brand": "Cinder",
-    "name": "Cathedral",
-    "widthCm": 6.2,
-    "heightCm": 11.3,
-    "image": "cinder-cathedral.png",
-    "effectTypes": [
-      "reverb"
-    ],
+    "id": "tc-electronic-choka-tremolo",
+    "brand": "TC Electronic",
+    "name": "Choka Tremolo",
+    "widthCm": 7.37,
+    "heightCm": 13.08,
+    "image": "tc-electronic-choka-tremolo.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 77
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "northgate-fx-shimmerwell",
-    "brand": "Northgate FX",
-    "name": "Shimmerwell",
-    "widthCm": 7.1,
-    "heightCm": 11.8,
-    "image": "northgate-fx-shimmerwell.png",
-    "effectTypes": [
-      "reverb"
-    ],
+    "id": "mooer-wah",
+    "brand": "Mooer",
+    "name": "@Wah",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-wah.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 42
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "tidewater-electronics-deep-space",
-    "brand": "Tidewater Electronics",
-    "name": "Deep Space",
-    "widthCm": 6.4,
-    "heightCm": 11.2,
-    "image": "tidewater-electronics-deep-space.png",
-    "effectTypes": [
-      "reverb"
-    ],
+    "id": "mooer-001-gas-station",
+    "brand": "Mooer",
+    "name": "001 Gas Station",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-001-gas-station.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 12
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "rustline-seafoam-chorus",
-    "brand": "Rustline",
-    "name": "Seafoam Chorus",
-    "widthCm": 7.2,
-    "heightCm": 12.3,
-    "image": "rustline-seafoam-chorus.png",
-    "effectTypes": [
-      "chorus"
-    ],
+    "id": "mooer-002-uk-gold-900",
+    "brand": "Mooer",
+    "name": "002 UK Gold 900",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-002-uk-gold-900.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 71
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "glasshouse-labs-vintage-tide",
-    "brand": "Glasshouse Labs",
-    "name": "Vintage Tide",
-    "widthCm": 6.8,
-    "heightCm": 11.4,
-    "image": "glasshouse-labs-vintage-tide.png",
-    "effectTypes": [
-      "chorus"
-    ],
+    "id": "mooer-003-power-zone",
+    "brand": "Mooer",
+    "name": "003 Power Zone",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-003-power-zone.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 46
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "aurelia-audio-pulsar",
-    "brand": "Aurelia Audio",
-    "name": "Pulsar",
-    "widthCm": 7.2,
-    "heightCm": 12.3,
-    "image": "aurelia-audio-pulsar.png",
-    "effectTypes": [
-      "tremolo"
-    ],
+    "id": "mooer-004-day-tripper",
+    "brand": "Mooer",
+    "name": "004 Day Tripper",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-004-day-tripper.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 15
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "mobius-sound-wobblebox",
-    "brand": "Mobius Sound",
-    "name": "Wobblebox",
-    "widthCm": 6.8,
-    "heightCm": 12.1,
-    "image": "mobius-sound-wobblebox.png",
-    "effectTypes": [
-      "tremolo"
-    ],
+    "id": "mooer-005-brown-sound-3",
+    "brand": "Mooer",
+    "name": "005 Brown Sound 3",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-005-brown-sound-3.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 117
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "copperfield-jetstream",
-    "brand": "Copperfield",
-    "name": "Jetstream",
-    "widthCm": 7.1,
-    "heightCm": 12.2,
-    "image": "copperfield-jetstream.png",
-    "effectTypes": [
-      "phaser"
-    ],
+    "id": "mooer-006-us-classic-deluxe",
+    "brand": "Mooer",
+    "name": "006 US Classic Deluxe",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-006-us-classic-deluxe.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 78
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "voltstead-stone-phase",
-    "brand": "Voltstead",
-    "name": "Stone Phase",
-    "widthCm": 6.7,
-    "heightCm": 12.3,
-    "image": "voltstead-stone-phase.png",
-    "effectTypes": [
-      "phaser"
-    ],
+    "id": "mooer-007-regal-tone",
+    "brand": "Mooer",
+    "name": "007 Regal Tone",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-007-regal-tone.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 119
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "ironbark-audio-aircurtain",
-    "brand": "Ironbark Audio",
-    "name": "Aircurtain",
-    "widthCm": 7,
-    "heightCm": 11.9,
-    "image": "ironbark-audio-aircurtain.png",
-    "effectTypes": [
-      "flanger"
-    ],
+    "id": "mooer-008-cali-mk3",
+    "brand": "Mooer",
+    "name": "008 Cali-MK3",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-008-cali-mk3.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 19
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "cinder-squeeze",
-    "brand": "Cinder",
-    "name": "Squeeze",
-    "widthCm": 6.5,
-    "heightCm": 11.3,
-    "image": "cinder-squeeze.png",
-    "effectTypes": [
-      "compressor"
-    ],
+    "id": "mooer-009-black-knight",
+    "brand": "Mooer",
+    "name": "009 Black Knight",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-009-black-knight.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 101
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "northgate-fx-levelbest",
-    "brand": "Northgate FX",
-    "name": "Levelbest",
-    "widthCm": 7,
-    "heightCm": 12.1,
-    "image": "northgate-fx-levelbest.png",
-    "effectTypes": [
-      "compressor"
-    ],
+    "id": "mooer-010-two-stones",
+    "brand": "Mooer",
+    "name": "010 Two Stones",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-010-two-stones.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 45
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "tidewater-electronics-tone-stack",
-    "brand": "Tidewater Electronics",
-    "name": "Tone Stack",
-    "widthCm": 6.6,
-    "heightCm": 11.6,
-    "image": "tidewater-electronics-tone-stack.png",
-    "effectTypes": [
-      "eq"
-    ],
+    "id": "mooer-011-cali-dual",
+    "brand": "Mooer",
+    "name": "011 Cali-Dual",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-011-cali-dual.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 56
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "rustline-sculptor",
-    "brand": "Rustline",
-    "name": "Sculptor",
-    "widthCm": 7.3,
-    "heightCm": 11.8,
-    "image": "rustline-sculptor.png",
-    "effectTypes": [
-      "eq"
-    ],
+    "id": "mooer-012-us-gold-100",
+    "brand": "Mooer",
+    "name": "012 US Gold 100",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-012-us-gold-100.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 26
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "glasshouse-labs-pure-boost",
-    "brand": "Glasshouse Labs",
-    "name": "Pure Boost",
-    "widthCm": 7.1,
-    "heightCm": 11.9,
-    "image": "glasshouse-labs-pure-boost.png",
-    "effectTypes": [
-      "boost"
-    ],
+    "id": "mooer-013-matchbox",
+    "brand": "Mooer",
+    "name": "013 Matchbox",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-013-matchbox.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 35
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "aurelia-audio-liftoff",
-    "brand": "Aurelia Audio",
-    "name": "Liftoff",
-    "widthCm": 7.4,
-    "heightCm": 10.8,
-    "image": "aurelia-audio-liftoff.png",
-    "effectTypes": [
-      "boost"
-    ],
+    "id": "mooer-014-taxidea-taxus",
+    "brand": "Mooer",
+    "name": "014 Taxidea Taxus",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-014-taxidea-taxus.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 112
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "mobius-sound-pitchlock",
-    "brand": "Mobius Sound",
-    "name": "Pitchlock",
-    "widthCm": 6.6,
-    "heightCm": 11,
-    "image": "mobius-sound-pitchlock.png",
-    "effectTypes": [
-      "tuner"
-    ],
+    "id": "mooer-015-brown-sound",
+    "brand": "Mooer",
+    "name": "015 Brown Sound",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-015-brown-sound.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 10
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "copperfield-accutune",
-    "brand": "Copperfield",
-    "name": "Accutune",
-    "widthCm": 6.4,
-    "heightCm": 10.9,
-    "image": "copperfield-accutune.png",
-    "effectTypes": [
-      "tuner"
-    ],
+    "id": "mooer-016-phoenix-digital",
+    "brand": "Mooer",
+    "name": "016 Phoenix Digital",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-016-phoenix-digital.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 81
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "voltstead-crywave",
-    "brand": "Voltstead",
-    "name": "Crywave",
-    "widthCm": 6.5,
-    "heightCm": 11.7,
-    "image": "voltstead-crywave.png",
-    "effectTypes": [
-      "wah"
-    ],
+    "id": "mooer-017-cali-mkiv",
+    "brand": "Mooer",
+    "name": "017 Cali MKIV",
+    "widthCm": 4.24,
+    "heightCm": 9.53,
+    "image": "mooer-017-cali-mkiv.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 97
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "ironbark-audio-sweepmaster",
-    "brand": "Ironbark Audio",
-    "name": "Sweepmaster",
-    "widthCm": 5.8,
-    "heightCm": 10.9,
-    "image": "ironbark-audio-sweepmaster.png",
-    "effectTypes": [
-      "wah"
-    ],
+    "id": "mxr-a-b-box",
+    "brand": "MXR",
+    "name": "A/B Box",
+    "widthCm": 12.07,
+    "heightCm": 9.27,
+    "image": "mxr-a-b-box.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 105
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "cinder-loopwell",
-    "brand": "Cinder",
-    "name": "Loopwell",
-    "widthCm": 6.5,
-    "heightCm": 11.7,
-    "image": "cinder-loopwell.png",
-    "effectTypes": [
-      "looper"
-    ],
+    "id": "mxr-analog-chorus",
+    "brand": "MXR",
+    "name": "Analog Chorus",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-analog-chorus.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 81
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "northgate-fx-echoloop",
-    "brand": "Northgate FX",
-    "name": "Echoloop",
-    "widthCm": 6.9,
-    "heightCm": 10.8,
-    "image": "northgate-fx-echoloop.png",
-    "effectTypes": [
-      "looper"
-    ],
+    "id": "mxr-bass-chorus-deluxe",
+    "brand": "MXR",
+    "name": "Bass Chorus Deluxe",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-chorus-deluxe.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 56
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "tidewater-electronics-submerge",
-    "brand": "Tidewater Electronics",
-    "name": "Submerge",
-    "widthCm": 7.3,
-    "heightCm": 11.9,
-    "image": "tidewater-electronics-submerge.png",
-    "effectTypes": [
-      "octave"
-    ],
+    "id": "mxr-bass-compressor",
+    "brand": "MXR",
+    "name": "Bass Compressor",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-compressor.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 75
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "rustline-octafuzz",
-    "brand": "Rustline",
-    "name": "Octafuzz",
-    "widthCm": 7,
-    "heightCm": 11.2,
-    "image": "rustline-octafuzz.png",
-    "effectTypes": [
-      "octave"
-    ],
+    "id": "mxr-bass-di",
+    "brand": "MXR",
+    "name": "Bass DI+",
+    "widthCm": 12.57,
+    "heightCm": 8.99,
+    "image": "mxr-bass-di.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 44
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "glasshouse-labs-shiftwell",
-    "brand": "Glasshouse Labs",
-    "name": "Shiftwell",
-    "widthCm": 5.8,
-    "heightCm": 12.1,
-    "image": "glasshouse-labs-shiftwell.png",
-    "effectTypes": [
-      "pitch"
-    ],
+    "id": "mxr-bass-distortion",
+    "brand": "MXR",
+    "name": "Bass Distortion",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-distortion.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 93
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "aurelia-audio-silence-gate",
-    "brand": "Aurelia Audio",
-    "name": "Silence Gate",
-    "widthCm": 6.3,
-    "heightCm": 11.5,
-    "image": "aurelia-audio-silence-gate.png",
-    "effectTypes": [
-      "gate"
-    ],
+    "id": "mxr-bass-envelope-filter",
+    "brand": "MXR",
+    "name": "Bass Envelope Filter",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-envelope-filter.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 71
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "mobius-sound-bloom",
-    "brand": "Mobius Sound",
-    "name": "Bloom",
-    "widthCm": 6,
-    "heightCm": 11.6,
-    "image": "mobius-sound-bloom.png",
-    "effectTypes": [
-      "overdrive"
-    ],
+    "id": "mxr-bass-fuzz-deluxe",
+    "brand": "MXR",
+    "name": "Bass Fuzz Deluxe",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-fuzz-deluxe.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 56
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "copperfield-ember",
-    "brand": "Copperfield",
-    "name": "Ember",
-    "widthCm": 7.2,
-    "heightCm": 11.8,
-    "image": "copperfield-ember.png",
-    "effectTypes": [
-      "distortion"
-    ],
+    "id": "mxr-bass-octave-deluxe",
+    "brand": "MXR",
+    "name": "Bass Octave Deluxe",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-octave-deluxe.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 42
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "voltstead-quarry",
-    "brand": "Voltstead",
-    "name": "Quarry",
-    "widthCm": 6.3,
-    "heightCm": 10.8,
-    "image": "voltstead-quarry.png",
-    "effectTypes": [
-      "fuzz"
-    ],
+    "id": "mxr-bass-overdrive",
+    "brand": "MXR",
+    "name": "Bass Overdrive",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-overdrive.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 8
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "ironbark-audio-cascade",
-    "brand": "Ironbark Audio",
-    "name": "Cascade",
-    "widthCm": 6.7,
-    "heightCm": 11.3,
-    "image": "ironbark-audio-cascade.png",
-    "effectTypes": [
-      "delay"
-    ],
+    "id": "mxr-bass-preamp",
+    "brand": "MXR",
+    "name": "Bass Preamp",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-preamp.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 125
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "cinder-halcyon",
-    "brand": "Cinder",
-    "name": "Halcyon",
-    "widthCm": 6.2,
-    "heightCm": 11.7,
-    "image": "cinder-halcyon.png",
-    "effectTypes": [
-      "reverb"
-    ],
+    "id": "mxr-bass-synth",
+    "brand": "MXR",
+    "name": "Bass Synth",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-bass-synth.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 81
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "northgate-fx-drift",
-    "brand": "Northgate FX",
-    "name": "Drift",
-    "widthCm": 7.1,
-    "heightCm": 12.2,
-    "image": "northgate-fx-drift.png",
-    "effectTypes": [
-      "chorus"
-    ],
+    "id": "mxr-blue-box-fuzz",
+    "brand": "MXR",
+    "name": "Blue Box Fuzz",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-blue-box-fuzz.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 54
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "tidewater-electronics-nomad",
-    "brand": "Tidewater Electronics",
-    "name": "Nomad",
-    "widthCm": 5.8,
-    "heightCm": 12,
-    "image": "tidewater-electronics-nomad.png",
-    "effectTypes": [
-      "phaser"
-    ],
+    "id": "mxr-booster-mini",
+    "brand": "MXR",
+    "name": "Booster Mini",
+    "widthCm": 4.42,
+    "heightCm": 9.4,
+    "image": "mxr-booster-mini.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 36
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "rustline-anvil",
-    "brand": "Rustline",
-    "name": "Anvil",
-    "widthCm": 6.9,
-    "heightCm": 12.2,
-    "image": "rustline-anvil.png",
-    "effectTypes": [
-      "compressor"
-    ],
+    "id": "mxr-cae-boost-line-driver",
+    "brand": "MXR",
+    "name": "CAE Boost/Line Driver",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-cae-boost-line-driver.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 22
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "glasshouse-labs-beacon",
-    "brand": "Glasshouse Labs",
-    "name": "Beacon",
-    "widthCm": 5.8,
-    "heightCm": 12.3,
-    "image": "glasshouse-labs-beacon.png",
-    "effectTypes": [
-      "boost"
-    ],
+    "id": "mxr-cae-boost-overdrive",
+    "brand": "MXR",
+    "name": "CAE Boost/Overdrive",
+    "widthCm": 12.57,
+    "heightCm": 8.99,
+    "image": "mxr-cae-boost-overdrive.png",
+    "effectTypes": [],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 23
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "aurelia-audio-powerbrick-9",
-    "brand": "Aurelia Audio",
-    "name": "Powerbrick 9",
-    "widthCm": 9.3,
-    "heightCm": 6.3,
-    "image": "aurelia-audio-powerbrick-9.png",
-    "effectTypes": [
-      "power"
-    ],
+    "id": "mxr-cae-buffer",
+    "brand": "MXR",
+    "name": "CAE Buffer",
+    "widthCm": 6.96,
+    "heightCm": 7.29,
+    "image": "mxr-cae-buffer.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "mxr-cae-power-system",
+    "brand": "MXR",
+    "name": "CAE Power System",
+    "widthCm": 34.29,
+    "heightCm": 10.16,
+    "image": "mxr-cae-power-system.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-d-seed",
+    "brand": "Joyo",
+    "name": "D-Seed",
+    "widthCm": 9.96,
+    "heightCm": 10.49,
+    "image": "joyo-d-seed.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-01-vintage-overdrive",
+    "brand": "Joyo",
+    "name": "JF-01 Vintage Overdrive",
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "image": "joyo-jf-01-vintage-overdrive.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-02-ultimate-drive",
+    "brand": "Joyo",
+    "name": "JF-02 Ultimate Drive",
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "image": "joyo-jf-02-ultimate-drive.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-03-crunch-distortion",
+    "brand": "Joyo",
+    "name": "JF-03 Crunch Distortion",
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "image": "joyo-jf-03-crunch-distortion.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-04-high-gain-distortion",
+    "brand": "Joyo",
+    "name": "JF-04 High Gain Distortion",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-04-high-gain-distortion.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-05-classic-chorus",
+    "brand": "Joyo",
+    "name": "JF-05 Classic Chorus",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-05-classic-chorus.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-06-vintage-phase",
+    "brand": "Joyo",
+    "name": "JF-06 Vintage Phase",
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "image": "joyo-jf-06-vintage-phase.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-07-classic-flanger",
+    "brand": "Joyo",
+    "name": "JF-07 Classic Flanger",
+    "widthCm": 9.07,
+    "heightCm": 11.79,
+    "image": "joyo-jf-07-classic-flanger.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-08-digital-delay",
+    "brand": "Joyo",
+    "name": "JF-08 Digital Delay",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-08-digital-delay.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-09-tremolo",
+    "brand": "Joyo",
+    "name": "JF-09 Tremolo",
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "image": "joyo-jf-09-tremolo.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-10-dynamic-compressor",
+    "brand": "Joyo",
+    "name": "JF-10 Dynamic Compressor",
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "image": "joyo-jf-10-dynamic-compressor.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-11-6-band-eq",
+    "brand": "Joyo",
+    "name": "JF-11 6 Band EQ",
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "image": "joyo-jf-11-6-band-eq.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-12-voodoo-octave",
+    "brand": "Joyo",
+    "name": "JF-12 Voodoo Octave",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-12-voodoo-octave.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-13-ac-tone",
+    "brand": "Joyo",
+    "name": "JF-13 AC Tone",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-13-ac-tone.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-14-american-sound",
+    "brand": "Joyo",
+    "name": "JF-14 American Sound",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-14-american-sound.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-15-california-sound",
+    "brand": "Joyo",
+    "name": "JF-15 California Sound",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-15-california-sound.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-16-british-sound",
+    "brand": "Joyo",
+    "name": "JF-16 British Sound",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-16-british-sound.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "joyo-jf-17-extreme-metal",
+    "brand": "Joyo",
+    "name": "JF-17 Extreme Metal",
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "image": "joyo-jf-17-extreme-metal.png",
+    "effectTypes": [],
+    "category": "pedal",
+    "jacks": [],
+    "source": "placeholder"
+  },
+  {
+    "id": "behringer-powerplay-p1",
+    "brand": "Behringer",
+    "name": "Powerplay P1",
+    "widthCm": 8.38,
+    "heightCm": 12.4,
+    "image": "behringer-powerplay-p1.png",
+    "effectTypes": [],
     "category": "supply",
-    "jacks": [
-      {
-        "kind": "power",
-        "edge": "top",
-        "pos": 0.5
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 3918
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "mobius-sound-isolated-12",
-    "brand": "Mobius Sound",
-    "name": "Isolated 12",
-    "widthCm": 11.1,
-    "heightCm": 5.1,
-    "image": "mobius-sound-isolated-12.png",
-    "effectTypes": [
-      "power"
-    ],
+    "id": "big-joe-pb-109-power-box-li2",
+    "brand": "Big Joe",
+    "name": "PB-109 Power Box Li2",
+    "widthCm": 4.17,
+    "heightCm": 8.53,
+    "image": "big-joe-pb-109-power-box-li2.png",
+    "effectTypes": [],
     "category": "supply",
-    "jacks": [
-      {
-        "kind": "power",
-        "edge": "top",
-        "pos": 0.5
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 2886
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "copperfield-volt-station",
-    "brand": "Copperfield",
-    "name": "Volt Station",
-    "widthCm": 9.6,
-    "heightCm": 4.6,
-    "image": "copperfield-volt-station.png",
-    "effectTypes": [
-      "power"
-    ],
+    "id": "big-joe-power-box-iso4",
+    "brand": "Big Joe",
+    "name": "Power Box ISO4",
+    "widthCm": 4.17,
+    "heightCm": 8.53,
+    "image": "big-joe-power-box-iso4.png",
+    "effectTypes": [],
     "category": "supply",
-    "jacks": [
-      {
-        "kind": "power",
-        "edge": "top",
-        "pos": 0.5
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 1281
-    },
-    "source": "synthetic"
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "glasshouse-labs-wooly-fuzz-black",
-    "brand": "Glasshouse Labs",
-    "name": "Wooly Fuzz (Black)",
+    "id": "boss-psm-5-power-supply-master-switch",
+    "brand": "BOSS",
+    "name": "PSM-5 Power Supply & Master Switch",
     "widthCm": 7.3,
-    "heightCm": 11.7,
-    "image": "glasshouse-labs-wooly-fuzz-black.png",
-    "effectTypes": [
-      "fuzz"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 57
-    },
-    "variantOf": "glasshouse-labs-wooly-fuzz",
-    "source": "synthetic"
+    "heightCm": 13.02,
+    "image": "boss-psm-5-power-supply-master-switch.png",
+    "effectTypes": [],
+    "category": "supply",
+    "jacks": [],
+    "source": "placeholder"
   },
   {
-    "id": "mobius-sound-bloom-aqua",
-    "brand": "Mobius Sound",
-    "name": "Bloom (Aqua)",
-    "widthCm": 6,
-    "heightCm": 11.6,
-    "image": "mobius-sound-bloom-aqua.png",
-    "effectTypes": [
-      "overdrive"
-    ],
-    "category": "pedal",
-    "jacks": [
-      {
-        "kind": "in",
-        "edge": "top",
-        "pos": 0.3
-      },
-      {
-        "kind": "out",
-        "edge": "top",
-        "pos": 0.7
-      }
-    ],
-    "power": {
-      "voltage": 9,
-      "acDc": "DC",
-      "currentMa": 56
-    },
-    "variantOf": "mobius-sound-bloom",
-    "source": "synthetic"
+    "id": "effects-bakery-power-supply-hoden-sentai-donuts",
+    "brand": "Effects Bakery",
+    "name": "Power Supply Hoden Sentai Donuts",
+    "widthCm": 9.4,
+    "heightCm": 3.86,
+    "image": "effects-bakery-power-supply-hoden-sentai-donuts.png",
+    "effectTypes": [],
+    "category": "supply",
+    "jacks": [],
+    "source": "placeholder"
   }
 ]

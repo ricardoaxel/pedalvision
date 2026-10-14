@@ -1,81 +1,58 @@
 import { readdirSync, readFileSync } from "node:fs";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { CatalogPedalSchema } from "../../src/catalog/schema.ts";
+import type { CatalogBoard, CatalogPedal } from "../../src/catalog/schema.ts";
 import { renditionPixels } from "./image.ts";
-import { generateSeed, labelFor, renderSeedImages, writeSeed } from "./seed.ts";
+import { labelFor, renderCatalogImages, writeSeedImages } from "./seed.ts";
+
+const repoRoot = new URL("../../", import.meta.url);
+const readJson = <T>(relative: string): T =>
+	JSON.parse(readFileSync(new URL(relative, repoRoot), "utf8")) as T;
+
+const committedPedals = readJson<CatalogPedal[]>(
+	"src/catalog/data/pedals.json",
+);
+const committedBoards = readJson<CatalogBoard[]>(
+	"src/catalog/data/boards.json",
+);
 
 const PNG_SIGNATURE = Buffer.from([
 	0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
 ]);
 
-describe("generateSeed", () => {
-	it("is deterministic (two runs → identical JSON)", () => {
-		expect(JSON.stringify(generateSeed())).toBe(JSON.stringify(generateSeed()));
-	});
-
-	it("produces schema-valid items with synthetic provenance", () => {
-		const seed = generateSeed();
-		expect(seed.pedals.length).toBeGreaterThanOrEqual(50);
-		expect(seed.boards).toHaveLength(10);
-		for (const pedal of seed.pedals) {
-			expect(CatalogPedalSchema.safeParse(pedal).success).toBe(true);
-			expect(pedal.source).toBe("synthetic");
+describe("committed mock images", () => {
+	it("match a fresh generation byte-for-byte", async () => {
+		const images = await renderCatalogImages(
+			committedPedals,
+			committedBoards,
+			"assets",
+		);
+		expect(images).toHaveLength(
+			(committedPedals.length + committedBoards.length) * 2,
+		);
+		for (const image of images) {
+			const committedPath = image.path.replace(
+				/^assets[\\/]/,
+				"public/pedal-assets/",
+			);
+			expect(
+				image.buffer.equals(readFileSync(new URL(committedPath, repoRoot))),
+				committedPath,
+			).toBe(true);
 		}
-		expect(seed.pedals.some((p) => p.category === "supply")).toBe(true);
-	});
-});
-
-describe("renderSeedImages", () => {
-	it("is deterministic (two runs → identical PNG bytes) and all are valid PNGs", async () => {
-		const first = await renderSeedImages(generateSeed(), "assets");
-		const second = await renderSeedImages(generateSeed(), "assets");
-
-		expect(first).toHaveLength(second.length);
-		expect(first.length).toBeGreaterThan(100);
-
-		first.forEach((image, index) => {
-			expect(image.path).toBe(second[index].path);
-			expect(image.buffer.subarray(0, 8)).toEqual(PNG_SIGNATURE);
-			expect(image.buffer.equals(second[index].buffer)).toBe(true);
-		});
 	}, 60_000);
-});
 
-describe("committed seed freshness", () => {
-	// Guard against drift: if image.ts/font.ts/seed.ts change but the committed
-	// artifacts are not regenerated, tests must fail. Every JSON byte and every
-	// one of the committed PNGs is compared against a fresh generation.
-	const repoRoot = new URL("../../", import.meta.url);
-	const committedPedals = readFileSync(
-		new URL("src/catalog/data/pedals.json", repoRoot),
-		"utf8",
-	);
-	const committedBoards = readFileSync(
-		new URL("src/catalog/data/boards.json", repoRoot),
-		"utf8",
-	);
-
-	it("JSON matches the committed files byte-for-byte", () => {
-		const seed = generateSeed();
-		expect(`${JSON.stringify(seed.pedals, null, 2)}\n`).toBe(committedPedals);
-		expect(`${JSON.stringify(seed.boards, null, 2)}\n`).toBe(committedBoards);
-	});
-
-	it("committed asset dirs contain exactly the generated manifest (no stale PNGs)", () => {
-		const seed = generateSeed();
+	it("are the only files in the asset dirs (no stale PNGs)", () => {
 		const expected = new Set<string>();
-		for (const pedal of seed.pedals) {
-			for (const size of [800, 350]) {
+		for (const pedal of committedPedals) {
+			for (const size of [800, 350])
 				expected.add(`pedals/${size}/${pedal.image}`);
-			}
 		}
-		for (const board of seed.boards) {
-			for (const size of [800, 350]) {
+		for (const board of committedBoards) {
+			for (const size of [800, 350])
 				expected.add(`boards/${size}/${board.image}`);
-			}
 		}
 
 		const actual = new Set<string>();
@@ -91,48 +68,53 @@ describe("committed seed freshness", () => {
 				if (entry.endsWith(".png")) actual.add(`${dir}/${entry}`);
 			}
 		}
-
 		expect(actual).toEqual(expected);
 	});
-
-	it("every procedural PNG matches the committed file byte-for-byte", async () => {
-		const seed = generateSeed();
-		const images = await renderSeedImages(seed, "assets");
-		expect(images).toHaveLength((seed.pedals.length + seed.boards.length) * 2);
-
-		for (const image of images) {
-			const committedPath = image.path.replace(
-				/^assets[\\/]/,
-				"public/pedal-assets/",
-			);
-			expect(
-				image.buffer.equals(readFileSync(new URL(committedPath, repoRoot))),
-				committedPath,
-			).toBe(true);
-		}
-	}, 60_000);
 });
 
-describe("writeSeed", () => {
-	it("writes the seed JSON and PNGs to disk", async () => {
+describe("renderCatalogImages", () => {
+	it("is deterministic for the same input", async () => {
+		const pedals = [committedPedals[0]];
+		const boards = [committedBoards[0]];
+		const first = await renderCatalogImages(pedals, boards, "x");
+		const second = await renderCatalogImages(pedals, boards, "x");
+
+		expect(first.map((image) => image.path)).toEqual(
+			second.map((image) => image.path),
+		);
+		first.forEach((image, index) => {
+			expect(image.buffer.subarray(0, 8)).toEqual(PNG_SIGNATURE);
+			expect(image.buffer.equals(second[index].buffer)).toBe(true);
+		});
+	});
+});
+
+describe("writeSeedImages", () => {
+	it("writes images from a catalog dir and prunes stale PNGs", async () => {
 		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-"));
 		try {
-			const seed = generateSeed();
-			const summary = await writeSeed(join(dir, "data"), join(dir, "assets"));
-
-			expect(summary).toEqual({
-				pedals: seed.pedals.length,
-				boards: seed.boards.length,
-				images: (seed.pedals.length + seed.boards.length) * 2,
-			});
-
-			const written = JSON.parse(
-				await readFile(join(dir, "data", "pedals.json"), "utf8"),
+			const dataDir = join(dir, "data");
+			const assetsDir = join(dir, "assets");
+			await mkdir(dataDir, { recursive: true });
+			await writeFile(
+				join(dataDir, "pedals.json"),
+				JSON.stringify([committedPedals[0]]),
 			);
-			expect(written).toEqual(seed.pedals);
+			await writeFile(
+				join(dataDir, "boards.json"),
+				JSON.stringify([committedBoards[0]]),
+			);
+			await mkdir(join(assetsDir, "pedals", "800"), { recursive: true });
+			await writeFile(join(assetsDir, "pedals", "800", "stale.png"), "x");
 
+			const summary = await writeSeedImages(dataDir, assetsDir);
+			expect(summary).toEqual({ pedals: 1, boards: 1, images: 4 });
+
+			await expect(
+				readFile(join(assetsDir, "pedals", "800", "stale.png")),
+			).rejects.toThrow();
 			const png = await readFile(
-				join(dir, "assets", "pedals", "800", seed.pedals[0].image),
+				join(assetsDir, "pedals", "800", committedPedals[0].image),
 			);
 			expect(png.subarray(0, 8)).toEqual(PNG_SIGNATURE);
 		} finally {
@@ -151,7 +133,7 @@ describe("renditionPixels", () => {
 
 describe("labelFor", () => {
 	it("returns a short uppercase code", () => {
-		expect(labelFor("Wooly Fuzz (Black)")).toBe("WOOLYFUZ");
+		expect(labelFor("Tremolo (Black)")).toBe("TREMOLO");
 		expect(labelFor("Terra 24")).toBe("TERRA24");
 		expect(labelFor("(Blue)")).toBe("PEDAL");
 	});

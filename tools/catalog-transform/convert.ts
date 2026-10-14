@@ -1,27 +1,27 @@
-import type { CatalogPedal, SourceTag } from "../../src/catalog/schema.ts";
+import type {
+	CatalogBoard,
+	CatalogPedal,
+	SourceTag,
+} from "../../src/catalog/schema.ts";
 
 /**
  * Generic converter: an external catalog JSON → our catalog schema
- * (design.md §Data model). We do NOT inherit external conventions — inches
- * become cm, name-keys become stable slugs, and flat colorway duplicates become
- * `variantOf` links.
+ * (design.md §Data model). We do NOT inherit external conventions or field
+ * names — inches become cm, brand+name become stable slugs, and flat colorway
+ * duplicates become `variantOf` links. Images are always mocked names
+ * (`<id>.png`); no third-party image asset is ever referenced (ADR-003).
  *
- * The external format is intentionally simple and invented (this repo ships no
- * third-party data): an object keyed by display name, whose values carry the
- * footprint in inches plus optional brand/image/effects. See the fixture in
- * `fixtures/external-catalog.json` and `catalog-transform/README.md`.
+ * External format (documented generically; see the fixture and README): an
+ * array of rows `{ Brand, Name, Width, Height }`, dimensions in **inches**.
  */
 
-export type ExternalEntry = {
-	brand?: unknown;
-	widthIn?: unknown;
-	heightIn?: unknown;
-	image?: unknown;
-	effects?: unknown;
-	category?: unknown;
+export type ExternalRow = {
+	Brand?: unknown;
+	Name?: unknown;
+	Width?: unknown;
+	Height?: unknown;
+	Image?: unknown;
 };
-
-export type ExternalCatalog = Record<string, ExternalEntry>;
 
 export type ConvertOptions = {
 	/** Provenance tag written to every converted item (ADR-003). */
@@ -30,12 +30,16 @@ export type ConvertOptions = {
 	warn?: (message: string) => void;
 };
 
-export type ConvertResult = {
-	pedals: CatalogPedal[];
+export type ConvertResult<T> = {
+	items: T[];
 	warnings: string[];
 };
 
 const VARIANT_SUFFIX = /^(.*?)\s*\(([^)]+)\)\s*$/;
+
+/** Names that denote a power supply rather than an effect pedal. */
+const SUPPLY_HINT =
+	/\bpower\s*(supply|box|bank)\b|\bpsu\b|powerplay|isolated power/i;
 
 /** Slugify a display string: lowercase ASCII words joined by single hyphens. */
 export function toSlug(value: string): string {
@@ -61,82 +65,70 @@ function isPositiveNumber(value: unknown): value is number {
 	return typeof value === "number" && Number.isFinite(value) && value > 0;
 }
 
-function toEffectTypes(value: unknown): string[] {
-	if (!Array.isArray(value)) return [];
-	return value.filter((item): item is string => typeof item === "string");
+function asTrimmedString(value: unknown): string {
+	return typeof value === "string" ? value.trim() : "";
 }
 
-/**
- * Normalize to a safe `.png` filename (lowercase/hyphenated/ASCII) — the
- * catalog ships `image` straight into `assetUrl()`, which does not encode.
- */
-function toImageFilename(value: unknown, fallbackId: string): string {
-	const raw =
-		typeof value === "string" && value.length > 0 ? value : `${fallbackId}.png`;
-	const base = toSlug(raw.replace(/\.png$/i, ""));
-	return `${base || fallbackId}.png`;
-}
-
-/**
- * Convert an external catalog into our schema. Deterministic: iterates keys in
- * insertion order and never uses randomness. Entries missing a positive
- * width/height are skipped with a warning; duplicate slugs are skipped with a
- * warning (first occurrence wins).
- */
-export function convertExternalCatalog(
-	input: ExternalCatalog,
-	options: ConvertOptions,
-): ConvertResult {
-	const warnings: string[] = [];
-	const warn = (message: string) => {
+function makeWarn(options: ConvertOptions, warnings: string[]) {
+	return (message: string) => {
 		warnings.push(message);
 		options.warn?.(message);
 	};
+}
+
+/**
+ * Convert external pedal rows into our schema. Deterministic (input order only,
+ * no randomness): entries missing brand/dimensions are skipped with a warning;
+ * duplicate slugs are skipped with a warning (first occurrence wins); variants
+ * whose base is absent are dropped.
+ */
+export function convertPedals(
+	rows: ExternalRow[],
+	options: ConvertOptions,
+): ConvertResult<CatalogPedal> {
+	const warnings: string[] = [];
+	const warn = makeWarn(options, warnings);
 
 	const pedals: CatalogPedal[] = [];
 	const seen = new Set<string>();
 
-	for (const [displayName, entry] of Object.entries(input)) {
-		if (!isPositiveNumber(entry.widthIn) || !isPositiveNumber(entry.heightIn)) {
-			warn(`skipped "${displayName}": missing width/height`);
+	for (const row of rows) {
+		const brand = asTrimmedString(row.Brand);
+		const displayName = asTrimmedString(row.Name);
+		if (!brand || !displayName) {
+			warn(`skipped "${displayName || "<unnamed>"}": missing brand/name`);
 			continue;
 		}
-
-		const brand = typeof entry.brand === "string" ? entry.brand.trim() : "";
-		if (!brand) {
-			warn(`skipped "${displayName}": missing brand`);
+		if (!isPositiveNumber(row.Width) || !isPositiveNumber(row.Height)) {
+			warn(`skipped "${brand} ${displayName}": missing width/height`);
 			continue;
 		}
 
 		const variantMatch = displayName.match(VARIANT_SUFFIX);
-		const baseName = variantMatch ? variantMatch[1].trim() : displayName.trim();
+		const baseName = variantMatch ? variantMatch[1].trim() : displayName;
 		const baseId = toSlug(`${brand} ${baseName}`);
 		const variantSlug = variantMatch ? toSlug(variantMatch[2]) : "";
 		const id = variantMatch ? `${baseId}-${variantSlug}` : baseId;
 
-		// A slug that does not fit the schema would be written as invalid data.
 		if (!baseId || (variantMatch && !variantSlug)) {
-			warn(`skipped "${displayName}": name/brand does not yield a valid slug`);
+			warn(`skipped "${brand} ${displayName}": does not yield a valid slug`);
 			continue;
 		}
-
 		if (seen.has(id)) {
-			warn(`skipped duplicate slug "${id}" (from "${displayName}")`);
+			warn(`skipped duplicate slug "${id}" (from "${brand} ${displayName}")`);
 			continue;
 		}
 		seen.add(id);
 
-		const image = toImageFilename(entry.image, id);
-
 		pedals.push({
 			id,
 			brand,
-			name: displayName.trim(),
-			widthCm: inchesToCm(entry.widthIn),
-			heightCm: inchesToCm(entry.heightIn),
-			image,
-			effectTypes: toEffectTypes(entry.effects),
-			category: entry.category === "supply" ? "supply" : "pedal",
+			name: displayName,
+			widthCm: inchesToCm(row.Width),
+			heightCm: inchesToCm(row.Height),
+			image: `${id}.png`,
+			effectTypes: [],
+			category: SUPPLY_HINT.test(displayName) ? "supply" : "pedal",
 			jacks: [],
 			variantOf: variantMatch ? baseId : undefined,
 			source: options.source,
@@ -144,12 +136,11 @@ export function convertExternalCatalog(
 	}
 
 	// Drop variants whose base was skipped — never ship a dangling reference.
-	// Only non-variant entries can be a model base (a variant's own id is not a
-	// valid base, even though it is in `seen`).
+	// Only non-variant entries can be a model base.
 	const baseIds = new Set(
 		pedals.filter((pedal) => !pedal.variantOf).map((pedal) => pedal.id),
 	);
-	const validPedals = pedals.filter((pedal) => {
+	const items = pedals.filter((pedal) => {
 		if (pedal.variantOf && !baseIds.has(pedal.variantOf)) {
 			warn(
 				`dropped "${pedal.id}": variant base "${pedal.variantOf}" is missing`,
@@ -159,5 +150,53 @@ export function convertExternalCatalog(
 		return true;
 	});
 
-	return { pedals: validPedals, warnings };
+	return { items, warnings };
+}
+
+/** Convert external board rows into our schema. Deterministic. */
+export function convertBoards(
+	rows: ExternalRow[],
+	options: ConvertOptions,
+): ConvertResult<CatalogBoard> {
+	const warnings: string[] = [];
+	const warn = makeWarn(options, warnings);
+
+	const boards: CatalogBoard[] = [];
+	const seen = new Set<string>();
+
+	for (const row of rows) {
+		const brand = asTrimmedString(row.Brand);
+		const name = asTrimmedString(row.Name);
+		if (!brand || !name) {
+			warn(`skipped "${name || "<unnamed>"}": missing brand/name`);
+			continue;
+		}
+		if (!isPositiveNumber(row.Width) || !isPositiveNumber(row.Height)) {
+			warn(`skipped "${brand} ${name}": missing width/height`);
+			continue;
+		}
+
+		const id = toSlug(`${brand} ${name}`);
+		if (!id) {
+			warn(`skipped "${brand} ${name}": does not yield a valid slug`);
+			continue;
+		}
+		if (seen.has(id)) {
+			warn(`skipped duplicate slug "${id}" (from "${brand} ${name}")`);
+			continue;
+		}
+		seen.add(id);
+
+		boards.push({
+			id,
+			brand,
+			name,
+			widthCm: inchesToCm(row.Width),
+			heightCm: inchesToCm(row.Height),
+			image: `${id}.png`,
+			source: options.source,
+		});
+	}
+
+	return { items: boards, warnings };
 }

@@ -1,52 +1,18 @@
-{
-	"Big Fuzz": {
-		"brand": "Acme",
-		"widthIn": 2.5,
-		"heightIn": 4.7,
-		"effects": ["fuzz"]
+[
+	{ "Brand": "Acme", "Name": "Big Fuzz", "Width": 2.5, "Height": 4.7 },
+	{ "Brand": "Acme", "Name": "Big Fuzz (Green)", "Width": 2.5, "Height": 4.7 },
+	{ "Brand": "Acme", "Name": "Big-Fuzz", "Width": 2.5, "Height": 4.7 },
+	{ "Brand": "Acme", "Name": "Chorus Deluxe", "Width": 3, "Height": 4.5 },
+	{ "Brand": "Acme", "Name": "No Size" },
+	{
+		"Brand": "Beta",
+		"Name": "Swirl Phaser",
+		"Width": 4,
+		"Height": 5.1,
+		"Image": "Swirl Phaser.png"
 	},
-	"Big Fuzz (Green)": {
-		"brand": "Acme",
-		"widthIn": 2.5,
-		"heightIn": 4.7
-	},
-	"Big-Fuzz": {
-		"brand": "Acme",
-		"widthIn": 2.5,
-		"heightIn": 4.7
-	},
-	"Chorus Deluxe": {
-		"brand": "Acme",
-		"widthIn": 3,
-		"heightIn": 4.5,
-		"effects": ["chorus"]
-	},
-	"No Size": {
-		"brand": "Acme"
-	},
-	"Swirl Phaser": {
-		"brand": "Beta",
-		"widthIn": 4,
-		"heightIn": 5.1,
-		"image": "Swirl Phaser.png"
-	},
-	"Orphan (Blue)": {
-		"brand": "Acme",
-		"widthIn": 1,
-		"heightIn": 2
-	},
-	"No Brand": {
-		"widthIn": 2,
-		"heightIn": 3
-	},
-	"Nested (Red)": {
-		"brand": "Gamma",
-		"widthIn": 2,
-		"heightIn": 3
-	},
-	"Nested (Red) (Blue)": {
-		"brand": "Gamma",
-		"widthIn": 2,
-		"heightIn": 3
-	}
-}
+	{ "Name": "No Brand", "Width": 2, "Height": 3 },
+	{ "Brand": "Gamma", "Name": "Nested (Red)", "Width": 2, "Height": 3 },
+	{ "Brand": "Gamma", "Name": "Nested (Red) (Blue)", "Width": 2, "Height": 3 },
+	{ "Brand": "Acme", "Name": "Powerbox ISO", "Width": 5, "Height": 3 }
+]

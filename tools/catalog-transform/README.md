@@ -1,47 +1,60 @@
 # catalog-transform
 
-One-off dev CLI (ADR-003) that converts an external catalog JSON into our
-catalog schema (`src/catalog/schema.ts`) and generates the committed synthetic
-seed.
+One-off dev CLI (ADR-003) that imports an external catalog into our schema
+(`src/catalog/schema.ts`) and renders the committed mocked images.
 
 ```sh
-# external catalog → our schema
-pnpm catalog:transform --input external.json --output src/catalog/data/pedals.json --source placeholder
+# Import an external catalog → the committed seed (real facts, mocked images)
+pnpm catalog:import --input pedals.json --boards pedalboards.json
 
-# synthetic seed JSON + procedural PNGs (committed)
+# (Re)generate the mocked PNGs from the committed catalog JSON
 pnpm catalog:seed
 ```
 
 ## Provenance rule (binding)
 
-Never name or link a third-party dataset in code, commits, filenames, comments,
-or shipped assets. Input/output paths are always explicit CLI args; provenance
-lives only in `docs/decisions/003-catalog-data.md`.
+Never name or link the source anywhere — code, commits, filenames, comments, or
+shipped assets. Input/output paths are always explicit CLI args; provenance
+lives only in `docs/decisions/003-catalog-data.md`. **No attribution.**
 
-## External format (invented — this repo ships no third-party data)
+## External format (the CLI's input shape; no third-party data ships in this repo)
 
-An object keyed by display name:
+An array of rows; dimensions in **inches**:
 
 ```json
-{
-  "Big Fuzz": { "brand": "Acme", "widthIn": 2.5, "heightIn": 4.7, "effects": ["fuzz"] },
-  "Big Fuzz (Green)": { "brand": "Acme", "widthIn": 2.5, "heightIn": 4.7 }
-}
+[
+  { "Brand": "Acme", "Name": "Big Fuzz", "Width": 2.5, "Height": 4.7 },
+  { "Brand": "Acme", "Name": "Big Fuzz (Green)", "Width": 2.5, "Height": 4.7 }
+]
 ```
 
 - Dimensions are **inches**; the converter multiplies by 2.54 and rounds to 2
   decimals (cm is the storage unit — design.md).
 - Ids are stable slugs built from `brand + name`; a trailing `(...)` becomes a
   colorway linked via `variantOf`.
-- Entries missing width/height are skipped; duplicate slugs are skipped with a
-  warning (first occurrence wins).
-- `image` is normalized to a safe lowercase-hyphenated `.png` filename.
+- Rows missing brand/name or width/height are skipped with a warning; duplicate
+  slugs are skipped (first wins); variants whose base is absent are dropped.
+- **Any external image name is ignored.** We always emit our own mocked name
+  (`<id>.png`) — no third-party asset is referenced.
 
-## Synthetic seed
+Our stored shape (`id, brand, name, widthCm, heightCm, image, effectTypes,
+category, jacks, power, variantOf, source`) is deliberately different from the
+external one.
 
-`pnpm catalog:seed` writes `src/catalog/data/{pedals,boards}.json` and the
-procedural `public/pedal-assets/{pedals,boards}/{800,350}/*.png`. It is
-deterministic: fixed literals plus a pure FNV-1a hash (no `Math.random`). Images
-are drawn as SVG shapes (no `<text>` — no fontconfig dependency) and rasterized
-with a pinned `sharp`, so the bytes are reproducible. Stopgap only — P2-04 owns
-real asset processing; this generator must not grow into a second pipeline.
+## Selection
+
+`import` converts the full catalog, then keeps a deterministic **subset** so the
+repo/CI stay lean: the top `--brand-limit` brands by pedal count (the largest
+brand contributes the biggest group), plus a few power supplies so the picker
+has data. Tune with `--brand-limit/--top-brand-cap/--per-brand-cap/--supply-limit/--board-limit`.
+
+**Follow-up — backfill:** this seed is a slice. To grow it, re-run `pnpm
+catalog:import` with higher limits (or a different brand set) and `pnpm
+catalog:seed`. The full catalog is imported the same way; nothing else changes.
+
+## Mocked images
+
+`seed` draws each item as an SVG (rounded rectangle + bitmap label — no `<text>`,
+so no font dependency) and rasterizes with a pinned `sharp`, giving
+byte-reproducible PNGs. Real images are the one piece gated on clearance
+(ADR-003); the generator is a dev-only stopgap, superseded by P2-04.
