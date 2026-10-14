@@ -75,6 +75,13 @@ describe("curated overrides", () => {
 		}
 	});
 
+	it("every curated base model carries verified source links", () => {
+		const byId = new Map(committedPedals.map((p) => [p.id, p]));
+		for (const key of Object.keys(CURATED_EFFECTS)) {
+			expect(byId.get(key)?.sources?.length ?? 0, key).toBeGreaterThan(0);
+		}
+	});
+
 	it("marks a verified supply as a supply (Aetos)", () => {
 		expect(deriveCategory({ brand: "Walrus Audio", name: "Aetos" })).toBe(
 			"supply",

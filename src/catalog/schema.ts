@@ -61,6 +61,17 @@ function checkImage(
 	});
 }
 
+/**
+ * Per-item provenance — an official source link a fact/image was verified
+ * against (owner decision, 2026-10-14; ADR-003 §Per-item sources). `kind` says
+ * what the link backs: `info` (specs/effect type/date) or `image`. The external
+ * aggregate is still never referenced.
+ */
+export const SourceRefSchema = z.object({
+	url: z.url(),
+	kind: z.enum(["info", "image"]),
+});
+
 /** Provenance tags — ADR-003. Kept as an enum so the launch gate is machine-checkable. */
 export const SOURCE_TAGS = [
 	"licensed",
@@ -149,6 +160,7 @@ export const CatalogPedalSchema = z
 		power: PowerSchema.optional(),
 		variantOf: z.string().regex(ID_PATTERN).optional(),
 		source: z.enum(SOURCE_TAGS),
+		sources: z.array(SourceRefSchema).optional(),
 		links: z.array(z.object({ label: z.string(), url: z.url() })).optional(),
 	})
 	.superRefine((pedal, ctx) => checkImage(pedal.imageSource, pedal.image, ctx));
@@ -163,6 +175,7 @@ export const CatalogBoardSchema = z
 		image: z.string().min(1, "image is required"),
 		imageSource: z.enum(IMAGE_SOURCES),
 		source: z.enum(SOURCE_TAGS),
+		sources: z.array(SourceRefSchema).optional(),
 	})
 	.superRefine((board, ctx) => checkImage(board.imageSource, board.image, ctx));
 
@@ -171,6 +184,7 @@ export const CatalogSchema = z.object({
 	boards: z.array(CatalogBoardSchema),
 });
 
+export type SourceRef = z.infer<typeof SourceRefSchema>;
 export type Jack = z.infer<typeof JackSchema>;
 export type Power = z.infer<typeof PowerSchema>;
 export type CatalogPedal = z.infer<typeof CatalogPedalSchema>;

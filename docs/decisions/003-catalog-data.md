@@ -9,7 +9,7 @@ Two different things are in play:
 - **Facts** — brand names, product names, footprint dimensions. These are public information (manufacturer/brand pages, retailers) and are not the aggregate's creative work.
 - **Images** — the transparent top-down PNGs are the part that is genuinely theirs and cannot be reused.
 
-**Provenance is documented ONLY in this file** (owner instruction, 2026-09-22). Never reference a source name/URL in code, commits, filenames, comments, or shipped assets.
+**The external aggregate is never referenced** — its name/URL must not appear in code, commits, filenames, comments, or shipped assets (owner instruction, 2026-09-22). **Amended (owner decision, 2026-10-14):** official **per-item source links** ARE now recorded in the catalog data (`sources: [{ url, kind }]`, see §Per-item sources) so every verified fact is traceable to its manufacturer/authorized source. The aggregate itself is still never cited.
 
 ## Decision
 1. **Committed dev seed = real catalog facts + procedurally mocked images** (owner decision, 2026-10-14).
@@ -26,6 +26,25 @@ Two different things are in play:
    d. Own photos (pedals we own)
 4. Every catalog item carries a `source` tag (`licensed` | `brand-assets` | `community` | `own` | `placeholder` | `synthetic`) so the launch gate is machine-checkable. The committed dev seed uses **`placeholder`**.
 5. **Procurement ownership (S4):** brand outreach + permission ask is owner-side work — tracked as a roadmap task (P2-06), not agent-implementable. The launch gate below sets a **minimum-content bar** so "launch" can't mean "launch with 2 pedals".
+
+## Per-item sources (owner decision, 2026-10-14)
+
+Every verified fact/image is traceable to the **official** source it was checked
+against. The catalog carries an optional `sources` array per item:
+
+```jsonc
+"sources": [ { "url": "https://<manufacturer>/...", "kind": "info" } ]
+```
+
+- `kind: "info"` = backs specs / effect type / release date; `kind: "image"` =
+  an image asset (none yet — all images are still mocked).
+- Populated for the **verified** models (the `curated.ts` base models, 85 today,
+  221 links); colorway variants inherit their base. Unverified items have none
+  (they carry facts only from the aggregate, which is never cited).
+- This **amends** the earlier blanket "no URLs in catalog data" rule: the
+  *aggregate* stays uncited; *official* per-item links are allowed and wanted.
+- No attribution strings beyond the URL itself; the agent returns the link, the
+  converter/curation stores it.
 
 ## Schema originality (our own model)
 

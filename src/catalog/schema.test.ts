@@ -32,6 +32,30 @@ describe("CatalogPedalSchema", () => {
 		expect(result.success).toBe(true);
 	});
 
+	it("accepts optional per-item sources", () => {
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				sources: [{ url: "https://example.com/model", kind: "info" }],
+			}).success,
+		).toBe(true);
+	});
+
+	it("rejects a malformed source url or kind", () => {
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				sources: [{ url: "not-a-url", kind: "info" }],
+			}).success,
+		).toBe(false);
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				sources: [{ url: "https://example.com", kind: "photo" }],
+			}).success,
+		).toBe(false);
+	});
+
 	it("accepts a URL image when imageSource is 'url'", () => {
 		expect(
 			CatalogPedalSchema.safeParse({

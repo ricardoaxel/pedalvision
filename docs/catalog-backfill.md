@@ -24,6 +24,9 @@ governed by ADR-003 (sourcing, rights, provenance).
 
 **207 pedals · 13 brands · 10 boards**; `source: 'placeholder'`; mocked images;
 `effectTypes` present for **200/207** (the 7 blanks are all power supplies).
+**Source links:** 85 items (the verified base models) carry official
+`sources: [{url, kind}]` — 221 links total (ADR-003 §Per-item sources); the rest
+have none (their facts come only from the aggregate, which is never cited).
 
 | Brand | Total | V | C | — | Images (cleared/total) | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -151,216 +154,216 @@ committed-image **byte-determinism** test.
 - **Launch gate:** the seed stays `placeholder` until images are cleared, so an
   uncleared catalog can never ship by accident.
 
-## Appendix — per-pedal image status (snapshot)
+## Appendix — per-pedal image status & sources (snapshot)
 
-Snapshot generated from `src/catalog/data/pedals.json` (that JSON is the source of truth — regenerate this table if the seed changes). Status is `mocked` for every item today; flip to `cleared` as real, rights-checked assets land.
+Snapshot generated from `src/catalog/data/pedals.json` (that JSON is the source of truth — regenerate this table if the seed changes). Image is `mocked` for every item today; the Sources column counts the official source links (see ADR-003 §Per-item sources).
 
-| Brand | Model | Image |
-| --- | --- | --- |
-| BOSS | AC-2 Acoustic Simulator | mocked |
-| BOSS | AC-3 Acoustic Simulator | mocked |
-| BOSS | AD-2 Acoustic Preamp | mocked |
-| BOSS | AW-3 Dynamic Wah | mocked |
-| BOSS | BB-1X Bass Driver | mocked |
-| BOSS | BC-1x Bass Compressor | mocked |
-| BOSS | BC-2 Combo Drive | mocked |
-| BOSS | BD-2 Blues Driver | mocked |
-| BOSS | BF-2 Flanger | mocked |
-| BOSS | BF-2B Bass Flanger | mocked |
-| BOSS | BF-3 Flanger | mocked |
-| BOSS | CE-1 Chorus Ensemble | mocked |
-| BOSS | CE-2 Chorus | mocked |
-| BOSS | CE-20 Chorus Ensemble | mocked |
-| BOSS | CE-2B Bass Chorus | mocked |
-| BOSS | CE-3 Chorus | mocked |
-| BOSS | CE-5 Chorus Ensemble | mocked |
-| BOSS | CEB-3 Bass Chorus | mocked |
-| BOSS | CH-1 Super Chorus | mocked |
-| BOSS | CP-1X Compressor | mocked |
-| BOSS | CS-2 Compression Sustainer | mocked |
-| BOSS | CS-3 Compression Sustainer | mocked |
-| BOSS | DA-2 Adaptive Distortion | mocked |
-| BOSS | DC-2 Dimension C | mocked |
-| BOSS | DC-3 Digital Dimension | mocked |
-| BOSS | DD-2 Digital Delay | mocked |
-| BOSS | DD-20 Giga Delay | mocked |
-| BOSS | DD-200 Digital Delay | mocked |
-| BOSS | DD-3 Digital Delay | mocked |
-| BOSS | DD-3T Digital Delay | mocked |
-| BOSS | DD-5 Digital Delay | mocked |
-| BOSS | DD-500 Digital Delay | mocked |
-| BOSS | DD-6 Digital Delay | mocked |
-| BOSS | DD-7 Digital Delay | mocked |
-| BOSS | DD-8 Digital Delay | mocked |
-| BOSS | DF-2 Super Feedbacker & Distortion | mocked |
-| BOSS | DM-101 Delay Machine | mocked |
-| BOSS | DM-2 Delay | mocked |
-| BOSS | DM-3 Delay | mocked |
-| BOSS | DN-2 Dyna Drive | mocked |
-| BOSS | PSM-5 Power Supply & Master Switch | mocked |
-| Electro-Harmonix | #1 Echo | mocked |
-| Electro-Harmonix | 1440 Stereo Looper | mocked |
-| Electro-Harmonix | 15Watt Howitzer | mocked |
-| Electro-Harmonix | 2020 Tuner | mocked |
-| Electro-Harmonix | 2020 Tuner v2 | mocked |
-| Electro-Harmonix | 22500 Dual Stereo Looper | mocked |
-| Electro-Harmonix | 22500 Foot Controller | mocked |
-| Electro-Harmonix | 44 Magnum Power Amp | mocked |
-| Electro-Harmonix | 5mm Power Amp | mocked |
-| Electro-Harmonix | 720 Stereo Looper | mocked |
-| Electro-Harmonix | 8 Step Program | mocked |
-| Electro-Harmonix | 95000 Performance Loop Laboratory | mocked |
-| Electro-Harmonix | Analogizer | mocked |
-| Electro-Harmonix | Attack Decay | mocked |
-| Electro-Harmonix | B9 Organ Machine | mocked |
-| Electro-Harmonix | Bad Stone | mocked |
-| Electro-Harmonix | Bass Big Muff Pi | mocked |
-| Electro-Harmonix | Bass Big Muff Pi 2 | mocked |
-| Walrus Audio | 385 | mocked |
-| Walrus Audio | 385 (Nat. Parks) | mocked |
-| Walrus Audio | 385 MKII | mocked |
-| Walrus Audio | 385 MKII (Black) | mocked |
-| Walrus Audio | ARP-87 | mocked |
-| Walrus Audio | ARP-87 (Kamakura) | mocked |
-| Walrus Audio | ARP-87 (Nat. Parks) | mocked |
-| Walrus Audio | ARP-87 (Nautical) | mocked |
-| Walrus Audio | ARP-87 (Obsidian) | mocked |
-| Walrus Audio | ARP-87 (Platinum) | mocked |
-| Walrus Audio | Aetos | mocked |
-| Walrus Audio | Ages | mocked |
-| Walrus Audio | Ages (Kamakura) | mocked |
-| Walrus Audio | Ages (Nat. Parks) | mocked |
-| Walrus Audio | Badwater | mocked |
-| Walrus Audio | Bellwether | mocked |
-| Walrus Audio | Canvas Clock | mocked |
-| Walrus Audio | Canvas Line Isolator | mocked |
-| Keeley | 1962 | mocked |
-| Keeley | 1962x | mocked |
-| Keeley | 30ms Double Tracker | mocked |
-| Keeley | Abbey Chamber Verb | mocked |
-| Keeley | Angry Orange | mocked |
-| Keeley | Angry Orange (Signalis) | mocked |
-| Keeley | Angry Orange (White) | mocked |
-| Keeley | Aria | mocked |
-| Keeley | Aurora | mocked |
-| Keeley | Bassist Compressor | mocked |
-| Keeley | Black Glass | mocked |
-| Keeley | Blacktop | mocked |
-| Keeley | Blues Disorder | mocked |
-| Keeley | Blues Disorder (Signalis) | mocked |
-| Keeley | Blues Disorder (White) | mocked |
-| Keeley | Bubble Tron | mocked |
-| Keeley | Bubble Tron (Ler) | mocked |
-| Keeley | California Girls | mocked |
-| EarthQuaker | A/B Box | mocked |
-| EarthQuaker | Acapulco Gold | mocked |
-| EarthQuaker | Afterneath | mocked |
-| EarthQuaker | Afterneath V3 | mocked |
-| EarthQuaker | Afterneath V3 (Pastel Purple) | mocked |
-| EarthQuaker | Afterneath V3 (Raw) | mocked |
-| EarthQuaker | Aqueduct | mocked |
-| EarthQuaker | Arpanoid | mocked |
-| EarthQuaker | Arrows | mocked |
-| EarthQuaker | Arrows V2 | mocked |
-| EarthQuaker | Astral Destiny | mocked |
-| EarthQuaker | Aurelius | mocked |
-| EarthQuaker | Avalanche Run | mocked |
-| EarthQuaker | Avalanche Run V2 | mocked |
-| EarthQuaker | Avalanche Run V2 (Black) | mocked |
-| EarthQuaker | Avalanche Run V2 (Mint) | mocked |
-| EarthQuaker | Avalanche Run V2 (Purple Sparkle) | mocked |
-| EarthQuaker | Barrows Fuzz | mocked |
-| JHS | 1966 Series Bender | mocked |
-| JHS | 1966 Series Boost | mocked |
-| JHS | 1966 Series Fuzz | mocked |
-| JHS | 1966 Series Italy | mocked |
-| JHS | 3 Series Bit Crusher | mocked |
-| JHS | 3 Series Chorus | mocked |
-| JHS | 3 Series Compressor | mocked |
-| JHS | 3 Series Delay | mocked |
-| JHS | 3 Series Distortion | mocked |
-| JHS | 3 Series Flanger | mocked |
-| JHS | 3 Series Fuzz | mocked |
-| JHS | 3 Series Glitch Delay | mocked |
-| JHS | 3 Series Hall Reverb | mocked |
-| JHS | 3 Series Harmonic Trem | mocked |
-| JHS | 3 Series Octave Reverb | mocked |
-| JHS | 3 Series Oil Can Delay | mocked |
-| JHS | 3 Series Oil Can Delay (Black) | mocked |
-| JHS | 3 Series Overdrive | mocked |
-| TC Electronic | 2290 P Dynamic Digital Delay | mocked |
-| TC Electronic | 3rd Dimension Chorus | mocked |
-| TC Electronic | Afterglow Chorus | mocked |
-| TC Electronic | Alter Ego v2 Vintage Echo | mocked |
-| TC Electronic | Alter Ego x4 Vintage Echo | mocked |
-| TC Electronic | Ampworx 550 | mocked |
-| TC Electronic | Ampworx Combo Deluxe 65' | mocked |
-| TC Electronic | Ampworx DC30 | mocked |
-| TC Electronic | Ampworx Dual Wreck | mocked |
-| TC Electronic | Ampworx Jims 45 | mocked |
-| TC Electronic | Ampworx Jims 800 | mocked |
-| TC Electronic | Arena Reverb | mocked |
-| TC Electronic | Blood Moon Phaser | mocked |
-| TC Electronic | BodyRez Acoustic Pickup Enhancer | mocked |
-| TC Electronic | Bonafide Buffer | mocked |
-| TC Electronic | Brainwaves Pitch Shifter | mocked |
-| TC Electronic | Bucket Brigade Analog Delay | mocked |
-| TC Electronic | Choka Tremolo | mocked |
-| Mooer | 001 Gas Station | mocked |
-| Mooer | 002 UK Gold 900 | mocked |
-| Mooer | 003 Power Zone | mocked |
-| Mooer | 004 Day Tripper | mocked |
-| Mooer | 005 Brown Sound 3 | mocked |
-| Mooer | 006 US Classic Deluxe | mocked |
-| Mooer | 007 Regal Tone | mocked |
-| Mooer | 008 Cali-MK3 | mocked |
-| Mooer | 009 Black Knight | mocked |
-| Mooer | 010 Two Stones | mocked |
-| Mooer | 011 Cali-Dual | mocked |
-| Mooer | 012 US Gold 100 | mocked |
-| Mooer | 013 Matchbox | mocked |
-| Mooer | 014 Taxidea Taxus | mocked |
-| Mooer | 015 Brown Sound | mocked |
-| Mooer | 016 Phoenix Digital | mocked |
-| Mooer | 017 Cali MKIV | mocked |
-| Mooer | 018 Custom 100 | mocked |
-| MXR | A/B Box | mocked |
-| MXR | Analog Chorus | mocked |
-| MXR | Bass Chorus Deluxe | mocked |
-| MXR | Bass Compressor | mocked |
-| MXR | Bass DI+ | mocked |
-| MXR | Bass Distortion | mocked |
-| MXR | Bass Envelope Filter | mocked |
-| MXR | Bass Fuzz Deluxe | mocked |
-| MXR | Bass Octave Deluxe | mocked |
-| MXR | Bass Overdrive | mocked |
-| MXR | Bass Preamp | mocked |
-| MXR | Bass Synth | mocked |
-| MXR | Blue Box Fuzz | mocked |
-| MXR | Booster Mini | mocked |
-| MXR | CAE Boost/Line Driver | mocked |
-| MXR | CAE Boost/Overdrive | mocked |
-| MXR | CAE Buffer | mocked |
-| MXR | CAE Power System | mocked |
-| Joyo | D-Seed | mocked |
-| Joyo | JF-01 Vintage Overdrive | mocked |
-| Joyo | JF-02 Ultimate Drive | mocked |
-| Joyo | JF-03 Crunch Distortion | mocked |
-| Joyo | JF-04 High Gain Distortion | mocked |
-| Joyo | JF-05 Classic Chorus | mocked |
-| Joyo | JF-06 Vintage Phase | mocked |
-| Joyo | JF-07 Classic Flanger | mocked |
-| Joyo | JF-08 Digital Delay | mocked |
-| Joyo | JF-09 Tremolo | mocked |
-| Joyo | JF-10 Dynamic Compressor | mocked |
-| Joyo | JF-11 6 Band EQ | mocked |
-| Joyo | JF-12 Voodoo Octave | mocked |
-| Joyo | JF-13 AC Tone | mocked |
-| Joyo | JF-14 American Sound | mocked |
-| Joyo | JF-15 California Sound | mocked |
-| Joyo | JF-16 British Sound | mocked |
-| Joyo | JF-17 Extreme Metal | mocked |
-| Big Joe | PB-109 Power Box Li2 | mocked |
-| Big Joe | Power Box ISO4 | mocked |
-| Behringer | Powerplay P1 | mocked |
-| Effects Bakery | Power Supply Hoden Sentai Donuts | mocked |
+| Brand | Model | Image | Sources |
+| --- | --- | --- | --- |
+| BOSS | AC-2 Acoustic Simulator | mocked | 3 |
+| BOSS | AC-3 Acoustic Simulator | mocked | 3 |
+| BOSS | AD-2 Acoustic Preamp | mocked | — |
+| BOSS | AW-3 Dynamic Wah | mocked | — |
+| BOSS | BB-1X Bass Driver | mocked | — |
+| BOSS | BC-1x Bass Compressor | mocked | — |
+| BOSS | BC-2 Combo Drive | mocked | — |
+| BOSS | BD-2 Blues Driver | mocked | — |
+| BOSS | BF-2 Flanger | mocked | — |
+| BOSS | BF-2B Bass Flanger | mocked | — |
+| BOSS | BF-3 Flanger | mocked | — |
+| BOSS | CE-1 Chorus Ensemble | mocked | — |
+| BOSS | CE-2 Chorus | mocked | — |
+| BOSS | CE-20 Chorus Ensemble | mocked | — |
+| BOSS | CE-2B Bass Chorus | mocked | — |
+| BOSS | CE-3 Chorus | mocked | — |
+| BOSS | CE-5 Chorus Ensemble | mocked | — |
+| BOSS | CEB-3 Bass Chorus | mocked | — |
+| BOSS | CH-1 Super Chorus | mocked | — |
+| BOSS | CP-1X Compressor | mocked | — |
+| BOSS | CS-2 Compression Sustainer | mocked | — |
+| BOSS | CS-3 Compression Sustainer | mocked | — |
+| BOSS | DA-2 Adaptive Distortion | mocked | — |
+| BOSS | DC-2 Dimension C | mocked | 4 |
+| BOSS | DC-3 Digital Dimension | mocked | 4 |
+| BOSS | DD-2 Digital Delay | mocked | — |
+| BOSS | DD-20 Giga Delay | mocked | — |
+| BOSS | DD-200 Digital Delay | mocked | — |
+| BOSS | DD-3 Digital Delay | mocked | — |
+| BOSS | DD-3T Digital Delay | mocked | — |
+| BOSS | DD-5 Digital Delay | mocked | — |
+| BOSS | DD-500 Digital Delay | mocked | — |
+| BOSS | DD-6 Digital Delay | mocked | — |
+| BOSS | DD-7 Digital Delay | mocked | — |
+| BOSS | DD-8 Digital Delay | mocked | — |
+| BOSS | DF-2 Super Feedbacker & Distortion | mocked | — |
+| BOSS | DM-101 Delay Machine | mocked | — |
+| BOSS | DM-2 Delay | mocked | — |
+| BOSS | DM-3 Delay | mocked | — |
+| BOSS | DN-2 Dyna Drive | mocked | — |
+| BOSS | PSM-5 Power Supply & Master Switch | mocked | — |
+| Electro-Harmonix | #1 Echo | mocked | — |
+| Electro-Harmonix | 1440 Stereo Looper | mocked | — |
+| Electro-Harmonix | 15Watt Howitzer | mocked | 3 |
+| Electro-Harmonix | 2020 Tuner | mocked | — |
+| Electro-Harmonix | 2020 Tuner v2 | mocked | — |
+| Electro-Harmonix | 22500 Dual Stereo Looper | mocked | — |
+| Electro-Harmonix | 22500 Foot Controller | mocked | 2 |
+| Electro-Harmonix | 44 Magnum Power Amp | mocked | 3 |
+| Electro-Harmonix | 5mm Power Amp | mocked | 3 |
+| Electro-Harmonix | 720 Stereo Looper | mocked | — |
+| Electro-Harmonix | 8 Step Program | mocked | 4 |
+| Electro-Harmonix | 95000 Performance Loop Laboratory | mocked | 3 |
+| Electro-Harmonix | Analogizer | mocked | 2 |
+| Electro-Harmonix | Attack Decay | mocked | 2 |
+| Electro-Harmonix | B9 Organ Machine | mocked | 3 |
+| Electro-Harmonix | Bad Stone | mocked | 2 |
+| Electro-Harmonix | Bass Big Muff Pi | mocked | — |
+| Electro-Harmonix | Bass Big Muff Pi 2 | mocked | — |
+| Walrus Audio | 385 | mocked | 3 |
+| Walrus Audio | 385 (Nat. Parks) | mocked | — |
+| Walrus Audio | 385 MKII | mocked | 3 |
+| Walrus Audio | 385 MKII (Black) | mocked | — |
+| Walrus Audio | ARP-87 | mocked | 3 |
+| Walrus Audio | ARP-87 (Kamakura) | mocked | — |
+| Walrus Audio | ARP-87 (Nat. Parks) | mocked | — |
+| Walrus Audio | ARP-87 (Nautical) | mocked | — |
+| Walrus Audio | ARP-87 (Obsidian) | mocked | — |
+| Walrus Audio | ARP-87 (Platinum) | mocked | — |
+| Walrus Audio | Aetos | mocked | 3 |
+| Walrus Audio | Ages | mocked | 3 |
+| Walrus Audio | Ages (Kamakura) | mocked | — |
+| Walrus Audio | Ages (Nat. Parks) | mocked | — |
+| Walrus Audio | Badwater | mocked | 3 |
+| Walrus Audio | Bellwether | mocked | 3 |
+| Walrus Audio | Canvas Clock | mocked | 3 |
+| Walrus Audio | Canvas Line Isolator | mocked | 2 |
+| Keeley | 1962 | mocked | 3 |
+| Keeley | 1962x | mocked | 3 |
+| Keeley | 30ms Double Tracker | mocked | 3 |
+| Keeley | Abbey Chamber Verb | mocked | 3 |
+| Keeley | Angry Orange | mocked | 3 |
+| Keeley | Angry Orange (Signalis) | mocked | — |
+| Keeley | Angry Orange (White) | mocked | — |
+| Keeley | Aria | mocked | 3 |
+| Keeley | Aurora | mocked | 3 |
+| Keeley | Bassist Compressor | mocked | — |
+| Keeley | Black Glass | mocked | 3 |
+| Keeley | Blacktop | mocked | 3 |
+| Keeley | Blues Disorder | mocked | 3 |
+| Keeley | Blues Disorder (Signalis) | mocked | — |
+| Keeley | Blues Disorder (White) | mocked | — |
+| Keeley | Bubble Tron | mocked | 3 |
+| Keeley | Bubble Tron (Ler) | mocked | — |
+| Keeley | California Girls | mocked | 4 |
+| EarthQuaker | A/B Box | mocked | 2 |
+| EarthQuaker | Acapulco Gold | mocked | 2 |
+| EarthQuaker | Afterneath | mocked | 2 |
+| EarthQuaker | Afterneath V3 | mocked | 2 |
+| EarthQuaker | Afterneath V3 (Pastel Purple) | mocked | — |
+| EarthQuaker | Afterneath V3 (Raw) | mocked | — |
+| EarthQuaker | Aqueduct | mocked | 2 |
+| EarthQuaker | Arpanoid | mocked | 2 |
+| EarthQuaker | Arrows | mocked | 2 |
+| EarthQuaker | Arrows V2 | mocked | 2 |
+| EarthQuaker | Astral Destiny | mocked | 2 |
+| EarthQuaker | Aurelius | mocked | 2 |
+| EarthQuaker | Avalanche Run | mocked | 2 |
+| EarthQuaker | Avalanche Run V2 | mocked | 2 |
+| EarthQuaker | Avalanche Run V2 (Black) | mocked | — |
+| EarthQuaker | Avalanche Run V2 (Mint) | mocked | — |
+| EarthQuaker | Avalanche Run V2 (Purple Sparkle) | mocked | — |
+| EarthQuaker | Barrows Fuzz | mocked | — |
+| JHS | 1966 Series Bender | mocked | 2 |
+| JHS | 1966 Series Boost | mocked | — |
+| JHS | 1966 Series Fuzz | mocked | — |
+| JHS | 1966 Series Italy | mocked | 2 |
+| JHS | 3 Series Bit Crusher | mocked | — |
+| JHS | 3 Series Chorus | mocked | — |
+| JHS | 3 Series Compressor | mocked | — |
+| JHS | 3 Series Delay | mocked | — |
+| JHS | 3 Series Distortion | mocked | — |
+| JHS | 3 Series Flanger | mocked | — |
+| JHS | 3 Series Fuzz | mocked | — |
+| JHS | 3 Series Glitch Delay | mocked | — |
+| JHS | 3 Series Hall Reverb | mocked | — |
+| JHS | 3 Series Harmonic Trem | mocked | — |
+| JHS | 3 Series Octave Reverb | mocked | — |
+| JHS | 3 Series Oil Can Delay | mocked | — |
+| JHS | 3 Series Oil Can Delay (Black) | mocked | — |
+| JHS | 3 Series Overdrive | mocked | — |
+| TC Electronic | 2290 P Dynamic Digital Delay | mocked | — |
+| TC Electronic | 3rd Dimension Chorus | mocked | — |
+| TC Electronic | Afterglow Chorus | mocked | — |
+| TC Electronic | Alter Ego v2 Vintage Echo | mocked | — |
+| TC Electronic | Alter Ego x4 Vintage Echo | mocked | — |
+| TC Electronic | Ampworx 550 | mocked | 4 |
+| TC Electronic | Ampworx Combo Deluxe 65' | mocked | 3 |
+| TC Electronic | Ampworx DC30 | mocked | 3 |
+| TC Electronic | Ampworx Dual Wreck | mocked | 3 |
+| TC Electronic | Ampworx Jims 45 | mocked | 3 |
+| TC Electronic | Ampworx Jims 800 | mocked | 3 |
+| TC Electronic | Arena Reverb | mocked | — |
+| TC Electronic | Blood Moon Phaser | mocked | — |
+| TC Electronic | BodyRez Acoustic Pickup Enhancer | mocked | 3 |
+| TC Electronic | Bonafide Buffer | mocked | 3 |
+| TC Electronic | Brainwaves Pitch Shifter | mocked | — |
+| TC Electronic | Bucket Brigade Analog Delay | mocked | — |
+| TC Electronic | Choka Tremolo | mocked | — |
+| Mooer | 001 Gas Station | mocked | 2 |
+| Mooer | 002 UK Gold 900 | mocked | 2 |
+| Mooer | 003 Power Zone | mocked | 2 |
+| Mooer | 004 Day Tripper | mocked | 2 |
+| Mooer | 005 Brown Sound 3 | mocked | 2 |
+| Mooer | 006 US Classic Deluxe | mocked | 2 |
+| Mooer | 007 Regal Tone | mocked | 2 |
+| Mooer | 008 Cali-MK3 | mocked | 2 |
+| Mooer | 009 Black Knight | mocked | 2 |
+| Mooer | 010 Two Stones | mocked | 2 |
+| Mooer | 011 Cali-Dual | mocked | 2 |
+| Mooer | 012 US Gold 100 | mocked | 2 |
+| Mooer | 013 Matchbox | mocked | 2 |
+| Mooer | 014 Taxidea Taxus | mocked | 2 |
+| Mooer | 015 Brown Sound | mocked | 2 |
+| Mooer | 016 Phoenix Digital | mocked | 2 |
+| Mooer | 017 Cali MKIV | mocked | 2 |
+| Mooer | 018 Custom 100 | mocked | 2 |
+| MXR | A/B Box | mocked | 4 |
+| MXR | Analog Chorus | mocked | — |
+| MXR | Bass Chorus Deluxe | mocked | — |
+| MXR | Bass Compressor | mocked | — |
+| MXR | Bass DI+ | mocked | 4 |
+| MXR | Bass Distortion | mocked | — |
+| MXR | Bass Envelope Filter | mocked | — |
+| MXR | Bass Fuzz Deluxe | mocked | — |
+| MXR | Bass Octave Deluxe | mocked | — |
+| MXR | Bass Overdrive | mocked | — |
+| MXR | Bass Preamp | mocked | — |
+| MXR | Bass Synth | mocked | — |
+| MXR | Blue Box Fuzz | mocked | — |
+| MXR | Booster Mini | mocked | — |
+| MXR | CAE Boost/Line Driver | mocked | — |
+| MXR | CAE Boost/Overdrive | mocked | — |
+| MXR | CAE Buffer | mocked | 4 |
+| MXR | CAE Power System | mocked | 4 |
+| Joyo | D-Seed | mocked | 2 |
+| Joyo | JF-01 Vintage Overdrive | mocked | — |
+| Joyo | JF-02 Ultimate Drive | mocked | — |
+| Joyo | JF-03 Crunch Distortion | mocked | — |
+| Joyo | JF-04 High Gain Distortion | mocked | — |
+| Joyo | JF-05 Classic Chorus | mocked | — |
+| Joyo | JF-06 Vintage Phase | mocked | 2 |
+| Joyo | JF-07 Classic Flanger | mocked | — |
+| Joyo | JF-08 Digital Delay | mocked | — |
+| Joyo | JF-09 Tremolo | mocked | — |
+| Joyo | JF-10 Dynamic Compressor | mocked | — |
+| Joyo | JF-11 6 Band EQ | mocked | — |
+| Joyo | JF-12 Voodoo Octave | mocked | — |
+| Joyo | JF-13 AC Tone | mocked | 2 |
+| Joyo | JF-14 American Sound | mocked | 2 |
+| Joyo | JF-15 California Sound | mocked | 2 |
+| Joyo | JF-16 British Sound | mocked | 2 |
+| Joyo | JF-17 Extreme Metal | mocked | — |
+| Big Joe | PB-109 Power Box Li2 | mocked | — |
+| Big Joe | Power Box ISO4 | mocked | — |
+| Behringer | Powerplay P1 | mocked | — |
+| Effects Bakery | Power Supply Hoden Sentai Donuts | mocked | — |

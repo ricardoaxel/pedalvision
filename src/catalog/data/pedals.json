@@ -11,7 +11,21 @@
       "acoustic-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ac-2/",
+        "kind": "info"
+      },
+      {
+        "url": "http://www.bossareaforum.com/Forum/viewtopic.php?t=463",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.manualslib.com/manual/4346138/Boss-Ac-2.html",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "boss-ac-3-acoustic-simulator",
@@ -25,7 +39,21 @@
       "acoustic-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.boss.info/au/products/ac-3/specifications/",
+        "kind": "info"
+      },
+      {
+        "url": "https://sonicstate.com/news/2006/01/18/namm06-new-boss-acoustic-simulator-stompbox/",
+        "kind": "info"
+      },
+      {
+        "url": "https://effector-hakase.com/preamp/1912/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "boss-ad-2-acoustic-preamp",
@@ -334,7 +362,25 @@
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dc-2w/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.tonehome.de/boss/dc-2-dimension-c/",
+        "kind": "info"
+      },
+      {
+        "url": "https://usermanualandspecification.blogspot.com/2011/09/boss-dc-2-dimension-c-instructions.html",
+        "kind": "info"
+      },
+      {
+        "url": "http://www.bossareaforum.com/Forum/viewtopic.php?t=463",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "boss-dc-3-digital-dimension",
@@ -348,7 +394,25 @@
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "http://www.rolandmuseum.de/gitbs/html/DC3/Boss_DC3_ro.php?l=en",
+        "kind": "info"
+      },
+      {
+        "url": "https://professornigels.com/products/near-mint-boss-dc-3-digital-dimension-w-box-blue-label-vintage-mij",
+        "kind": "info"
+      },
+      {
+        "url": "https://sugareelicks.com/pedal/boss-dc-3-digital-dimension/",
+        "kind": "info"
+      },
+      {
+        "url": "http://www.bossareaforum.com/Forum/viewtopic.php?t=463",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "boss-dd-2-digital-delay",
@@ -601,7 +665,21 @@
       "power-amp"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/15watt-howitzer/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/03/15watt-howitzer.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://guitar.com/reviews/amplifier/electro-harmonix-15watt-howitzer-power-amp-review/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-2020-tuner",
@@ -657,7 +735,17 @@
       "controller"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/22500-foot-controller/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/22500-foot-controller-manual.pdf",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-44-magnum-power-amp",
@@ -671,7 +759,21 @@
       "power-amp"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/44-magnum/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/44-magnum-manual.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://shop.ehx.com/item/44mag/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-5mm-power-amp",
@@ -685,7 +787,21 @@
       "power-amp"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/5mm/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/5mm-manual.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://guitar.com/news/gear-news/ehx-5mm-power-amp/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-720-stereo-looper",
@@ -714,7 +830,25 @@
       "controller"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/8-step-program/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/11/8-step-program.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://shop.ehx.com/item/8step/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/topic/8-step-program-dimensions/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-95000-performance-loop-laboratory",
@@ -728,7 +862,21 @@
       "looper"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/95000/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/95000-manual.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.soundonsound.com/reviews/electro-harmonix-95000",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-analogizer",
@@ -742,7 +890,17 @@
       "boost"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/analogizer/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpusher.com/products/electro-harmonix-the-analogizer-tone-shaper-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-attack-decay",
@@ -757,7 +915,17 @@
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/attack-decay/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/attack-decay-manual.pdf",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-b9-organ-machine",
@@ -771,7 +939,21 @@
       "organ-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/b9/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/b9-manual.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://shop.ehx.com/item/b9/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-bad-stone",
@@ -785,7 +967,17 @@
       "phaser"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bad-stone/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.theguitarshop.com.au/products/ehx-bad-stone-phase-shifter",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "electro-harmonix-bass-big-muff-pi",
@@ -827,7 +1019,21 @@
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.effectsdatabase.com/model/walrus/385",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.walrusaudio.com/products/385-overdrive-mkii",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/news/walrus-audio-385-mkii",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-385-nat-parks",
@@ -856,7 +1062,21 @@
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.effectsdatabase.com/model/walrus/385",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.walrusaudio.com/products/385-overdrive-mkii",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/news/walrus-audio-385-mkii",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-385-mkii-black",
@@ -885,7 +1105,21 @@
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-1",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomann.co.uk/walrus_audio_arp_87.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/walrus-audio-introduces-the-arp-87-multi-function-delay",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-arp-87-kamakura",
@@ -972,7 +1206,21 @@
     "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/blogs/videos/84410883-walrus-audio-aetos-clean-power-supply-walkthrough",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/walrus-audio-announces-the-aetos-power-supply",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.manualslib.com/manual/1984671/Walrus-Audio-Aetos.html",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-ages",
@@ -986,7 +1234,21 @@
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/ages-five-state-overdrive",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/walrus-audio-introduces-the-ages-five-state-overdrive",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/walrus_audio_ages_overdrive.htm",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-ages-kamakura",
@@ -1034,7 +1296,21 @@
       "eq"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/badwater-bass-pre-amp-with-d-i",
+        "kind": "info"
+      },
+      {
+        "url": "https://xlrmag.com/story/introducing-the-badwater-bass-pre-amp-and-d-i-bc961a/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/Badwater--walrus-audio-badwater-bass-preamp-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-bellwether",
@@ -1049,7 +1325,21 @@
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/bellwether-analog-delay",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.walrusaudio.com/blogs/videos/84381123-walrus-audio-bellwether-analog-delay-tech-demo",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.effectsdatabase.com/model/walrus/bellwether",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-canvas-clock",
@@ -1064,7 +1354,21 @@
       "utility"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-clock",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.manualslib.com/manual/3731154/Walrus-Audio-Canvas-Clock.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://reverb.com/uk/p/walrus-audio-canvas-clock",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "walrus-audio-canvas-line-isolator",
@@ -1079,7 +1383,17 @@
       "utility"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-line-isolator-d-i",
+        "kind": "info"
+      },
+      {
+        "url": "https://imagescdn.juno.co.uk/manual/887108-01U.pdf",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-1962",
@@ -1093,7 +1407,21 @@
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/keeley-1962/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.effectsdatabase.com/model/keeley/1962",
+        "kind": "info"
+      },
+      {
+        "url": "https://pedalfilter.com/keeley/1962",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-1962x",
@@ -1107,7 +1435,21 @@
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/1962x-ltd-british-overdrive/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.effectsdatabase.com/model/keeley/1962/x",
+        "kind": "info"
+      },
+      {
+        "url": "https://pedaltown.nl/en/product/keeley-1962x-2-mode-limited-british",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-30ms-double-tracker",
@@ -1123,7 +1465,21 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/30ms-automatic-double-tracker/",
+        "kind": "info"
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/erp_article/Product-Pictures/Keeley/30ms%20DOUBLE%20TRACKER/30MSDoubleTracker_EN.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://guitar.com/reviews/keeley-electronics-30ms-double-tracker-abbey-chamber-verb-memphis-sun-reverb/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-abbey-chamber-verb",
@@ -1137,7 +1493,21 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.effectsdatabase.com/model/keeley/abbeychamber",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.musicstorelive.com/keeley-abbey-chamber-verb-vintage-reverb-guitar-effects-pedal.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.gear4music.com/G4M/Keeley-Abbey-Chamber-Verb/6O0S",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-angry-orange",
@@ -1152,7 +1522,21 @@
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": "info"
+      },
+      {
+        "url": "https://gcrockboard.com/keeley-electronics-angry-orange-distortion-and-fuzz",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/news/keeley-angry-orange-blues-disorder-super-rodent",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-angry-orange-signalis",
@@ -1199,7 +1583,21 @@
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/aria-compressor-overdrive/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/keeley-electronics-unveils-the-aria-compressor-overdrive",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/keeley_aria.htm",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-aurora",
@@ -1213,7 +1611,21 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/aurora-digital-reverb-shirt-namm-special/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.scan.co.uk/products/keeley-aurora-digital-reverb-pedal",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.musiciansfriend.com/amplifiers-effects/keeley-aurora-digital-reverb-guitar-effects-pedal/j21560000000000",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-bassist-compressor",
@@ -1241,7 +1653,21 @@
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/black-glass-british-fuzz/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/keeley-electronics-announces-black-glass-british-fuzz",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.effectsdatabase.com/model/keeley/blackglass",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-blacktop",
@@ -1255,7 +1681,21 @@
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/cole-test/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.effectsdatabase.com/model/keeley/blacktop",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.amazon.com/Keeley-Electronics-Blacktop-Vintage-Silicon/dp/B016H05JCA",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-blues-disorder",
@@ -1270,7 +1710,21 @@
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/keeley_blues_disorder_overdrive_dist.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.musicradar.com/news/keeley-electronics-4-in-1-series-angry-orange-blues-disorder-super-rodent",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-blues-disorder-signalis",
@@ -1319,7 +1773,21 @@
       "filter"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/bubble-tron-dynamic-flanger-phaser/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomann.co.uk/keeley_bubble_tron.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.musicradar.com/news/guitars/keeley-electronics-bubble-tron-pedal-assembles-the-vintage-effect-classics-that-never-were-640529",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "keeley-bubble-tron-ler",
@@ -1353,7 +1821,25 @@
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/beach-boys-california-girls-12-string-simulator/",
+        "kind": "info"
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-The-Beach-Boys-California-Girls-Twelve-String-Simulator-Instructions.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/CaliGirls--keeley-california-girls-twelve-string-simulator-pedal-sweetwater-exclusive",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/news/keeley-beach-boys-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-a-b-box",
@@ -1367,7 +1853,17 @@
       "ab-box"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/ab-box",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.long-mcquade.com/406797/Guitars/Pedals-Effects/EarthQuaker-Devices/A-B-Box.htm",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-acapulco-gold",
@@ -1381,7 +1877,17 @@
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/acapulco-gold",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarworld.com/gear/review-earthquaker-devices-acapulco-gold-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-afterneath",
@@ -1395,7 +1901,17 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/blog-posts/afterneath-for-noodlers",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/3963",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-afterneath-v3",
@@ -1409,7 +1925,17 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.gearnews.com/earthquaker-devices-afterneath-v3-features-9-new-modes",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-afterneath-v3-pastel-purple",
@@ -1453,7 +1979,17 @@
       "vibrato"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/aqueduct",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/gear/earthquaker-devices-aqueduct-review",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-arpanoid",
@@ -1467,7 +2003,17 @@
       "pitch"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/arpanoid",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.effectsdatabase.com/model/earthquaker/arpanoid",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-arrows",
@@ -1482,7 +2028,17 @@
       "preamp"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/arrows",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.woodsysmusic.com/products/earthquaker-devices-arrows-preamp-booster",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-arrows-v2",
@@ -1497,7 +2053,17 @@
       "preamp"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.audiodistributiongroup.com/earthquaker-devices-launch-5-additional-v2-pedals",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/ArrowsV2--earthquaker-devices-arrows-v2-preamp-booster-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-astral-destiny",
@@ -1512,7 +2078,17 @@
       "octave"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/astral-destiny",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarworld.com/news/earthquaker-devices-takes-shimmer-reverb-to-the-next-level-with-the-astral-destiny",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-aurelius",
@@ -1528,7 +2104,17 @@
       "rotary"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/aurelius",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/news/earthquaker-devices-aurelius",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-avalanche-run",
@@ -1543,7 +2129,17 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/3963",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-avalanche-run-v2",
@@ -1558,7 +2154,17 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/earthquaker_devices_avalanche_run_v2.htm",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "earthquaker-avalanche-run-v2-black",
@@ -1634,7 +2240,17 @@
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.gearnews.com/jhs-pedals-1966-series-josh-scott-clones-four-classic-effect-pedals",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/1966Bender--jhs-1966-bender-tone-bender-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "jhs-1966-series-boost",
@@ -1676,7 +2292,17 @@
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarworld.com/news/jhs-recreates-4-iconic-pedals-for-highly-limited-1966-series",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "jhs-3-series-bit-crusher",
@@ -1960,7 +2586,25 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.soundonsound.com/news/ampworx-high-gain-pedals-tc-electronic",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/V550--tc-electronic-ampworx-v550-preamp-pedal",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.andertons.co.uk/tc-electronic-ampworx-high-gain-v550-preamp-pedal/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-ampworx-combo-deluxe-65",
@@ -1977,7 +2621,21 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/tc_electronic_combo_deluxe_65_preamp.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-Combo-Deluxe-65-Preamp-Pedal-Black-1500000421071.gc",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-ampworx-dc30",
@@ -1993,7 +2651,21 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/tc_electronic_combo_deluxe_65_preamp.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-DC30-Preamp-Pedal-Blue-1500000421063.gc",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-ampworx-dual-wreck",
@@ -2009,7 +2681,21 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.soundonsound.com/news/ampworx-high-gain-pedals-tc-electronic",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/tc_electronic_dual_wreck_preamp.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-Dual-Wreck-Preamp-Pedal-Black-1500000421067.gc",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-ampworx-jims-45",
@@ -2025,7 +2711,21 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.musicradar.com/reviews/tc-electronic-ampworx-vintage-series-combo-deluxe-65-dc30-and-jims-45-preamp-pedals-review",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-JIMS-45-Preamp-Pedal-Black-1500000421070.gc",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.musicstore.com/en_US/USD/TC-Electronic-Ampworx-Jims-45-Preamp/art-GIT0060752-000",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-ampworx-jims-800",
@@ -2041,7 +2741,21 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.thomannmusic.com/tc_electronic_jims_800_preamp.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/JIMS800--tc-electronic-ampworx-jims-800-preamp-pedal",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-JIMS-800-Preamp-Pedal-Black-1500000421068.gc",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-arena-reverb",
@@ -2084,7 +2798,21 @@
       "compressor"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://cf3.zzounds.com/media/tc-electronic-bodyrez-manual-english-433fa54fa60d51a2088eb137d0d13170.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/tc-electronic-unveils-the-bodyrez-acoustic-pickup-enhancer",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomann.co.uk/tc_electronic_bodyrez_b_stock.htm",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-bonafide-buffer",
@@ -2098,7 +2826,21 @@
       "buffer"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.omikron.gr/wp-content/uploads/productfiles/EngineeringFiles/E008354.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomann.co.uk/tc_electronic_bonafide_buffer.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/1171",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "tc-electronic-brainwaves-pitch-shifter",
@@ -2155,7 +2897,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/mooer-releases-the-taxidea-taxus-and-the-brown-sound-preamps",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-002-uk-gold-900",
@@ -2170,7 +2922,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://pedal.ly/product/mooer-uk-gold-900-jcm900-amp-sim-pedal",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-003-power-zone",
@@ -2185,7 +2947,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/003---Power-Zone--63.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://nodetone.com/gear/mooer-m003",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-004-day-tripper",
@@ -2200,7 +2972,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomannmusic.com/mooer_micro_preamp_004_day_tripper.htm",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-005-brown-sound-3",
@@ -2215,7 +2997,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/005---Brown-Sound-3--62.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-006-us-classic-deluxe",
@@ -2230,7 +3022,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/006---US-Classic-Deluxe--61.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://lazermusic.com.ph/products/mooer-006-us-classic-delux-micro-preamp-effects-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-007-regal-tone",
@@ -2245,7 +3047,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/products/19.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://nodetone.com/gear/mooer-m007",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-008-cali-mk3",
@@ -2260,7 +3072,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/products/18.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-009-black-knight",
@@ -2275,7 +3097,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/009---Black-Night--58.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-010-two-stones",
@@ -2290,7 +3122,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/010---Two-Stone--57.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-011-cali-dual",
@@ -2305,7 +3147,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/011---Cali-Dual--46.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://lazermusic.com.ph/products/mooer-011-cali-dual-micro-preamp-effects-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-012-us-gold-100",
@@ -2320,7 +3172,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      },
+      {
+        "url": "https://reverb.com/p/mooer-012-fried-mien-micro-preamp",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-013-matchbox",
@@ -2335,7 +3197,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/013---Matchbox--44.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-014-taxidea-taxus",
@@ -2350,7 +3222,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/014---Taxidea-Taxus--43.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/mooer-releases-the-taxidea-taxus-and-the-brown-sound-preamps",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-015-brown-sound",
@@ -2365,7 +3247,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/-015---Brown-Sound-42.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.premierguitar.com/mooer-releases-the-taxidea-taxus-and-the-brown-sound-preamps",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-016-phoenix-digital",
@@ -2380,7 +3272,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/016---PHOENIX-214.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-017-cali-mkiv",
@@ -2395,7 +3297,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/PREAMP-LIVE-220.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.gearnews.com/mooer-adds-three-new-preamp-pedals-phoenix-cali-mkiv-custom-100",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mooer-018-custom-100",
@@ -2410,7 +3322,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/018---CUSTOM-100-216.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mxr-a-b-box",
@@ -2424,7 +3346,25 @@
       "ab-box"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-a-b-box/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M196.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/M196--mxr-m196-a-b-box",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.midlothianmusic.com/products/dunlop-mxr-m196-a-b-box-switcher-pedal",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mxr-analog-chorus",
@@ -2482,7 +3422,25 @@
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M80.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-di/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.thomann.co.uk/mxr_m80_bass_di_plus.htm",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.andertons.co.uk/mxr-m80-bass-d-i-distortion/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mxr-bass-distortion",
@@ -2653,7 +3611,25 @@
       "buffer"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-cae-buffer/",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/MC406.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://global.ikebe-gakki.com/products/241057",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.andertons.co.uk/mxr-mc406-cae-buffer/",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "mxr-cae-power-system",
@@ -2665,7 +3641,25 @@
     "imageSource": "mock",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/MC403.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "http://www.customaudioelectronics.com/resources/manuals/MC403-Info.pdf",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.soundonsound.com/reviews/mxr-custom-audio-electronics-mc403",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.long-mcquade.com/24961/Guitars/Cables-Power-Supplies/Dunlop/MC403-C-A-E-Power-Supply-System.htm",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "joyo-d-seed",
@@ -2679,7 +3673,17 @@
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/79.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://www.effectsdatabase.com/model/joyo/dseed",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "joyo-jf-01-vintage-overdrive",
@@ -2763,7 +3767,17 @@
       "phaser"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/55.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "joyo-jf-07-classic-flanger",
@@ -2862,7 +3876,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/62.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "joyo-jf-14-american-sound",
@@ -2877,7 +3901,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/63.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "joyo-jf-15-california-sound",
@@ -2892,7 +3926,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/64.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "joyo-jf-16-british-sound",
@@ -2907,7 +3951,17 @@
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/65.html",
+        "kind": "info"
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": "info"
+      }
+    ]
   },
   {
     "id": "joyo-jf-17-extreme-metal",

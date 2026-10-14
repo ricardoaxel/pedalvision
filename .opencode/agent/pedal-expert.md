@@ -53,7 +53,7 @@ State `confidence` per record: `confirmed` (official source or ≥2 independent 
 
 - **Never copy** another site's descriptions, images, or bulk data. Write your own short factual summaries. Product facts (names, dimensions, effect type, power) are fine to state; creative text and photographs are not.
 - **Images (rights-first):** only official manufacturer assets, and only with permitted use. Do **not** return image URLs from third-party catalog/database sites as reusable assets. Never download or commit an image — you are research-only; point to where the asset lives and flag the terms.
-- **No attribution strings, no source names or URLs in shipped catalog data.** Sources you cite are for the record in your *research output* (e.g. a review note), not for the committed catalog. The provenance record lives only in `docs/decisions/003-catalog-data.md`.
+- **The external aggregate is never referenced** — never name or link it anywhere (code, commits, filenames, assets). **Official per-item source links ARE recorded** in the catalog as `sources: [{ url, kind }]` (`kind` = `info` for facts, `image` for an asset) — see ADR-003 §Per-item sources. So always return, per record, the official URL(s) you actually verified against (manufacturer first), not just a list of places you looked. No other attribution strings.
 - English only. Be concise.
 
 ## Images — where to look & what to record
