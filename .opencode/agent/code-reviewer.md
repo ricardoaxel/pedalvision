@@ -4,7 +4,7 @@ mode: all
 temperature: 0.3
 permission:
   edit: deny
-  bash: allow
+  bash: ask
   webfetch: allow
 ---
 
