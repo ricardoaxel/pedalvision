@@ -39,6 +39,20 @@ export function parsePedals(input: unknown): CatalogPedal[] {
 		"pedals.json",
 		result.data.map((p) => p.id),
 	);
+
+	// variantOf must resolve to an existing pedal (and not itself), or the
+	// catalog would ship a dangling colorway reference.
+	const ids = new Set(result.data.map((p) => p.id));
+	for (const pedal of result.data) {
+		if (pedal.variantOf === pedal.id) {
+			throw new Error(`pedals.json: "${pedal.id}" cannot be its own variantOf`);
+		}
+		if (pedal.variantOf && !ids.has(pedal.variantOf)) {
+			throw new Error(
+				`pedals.json: "${pedal.id}" references missing variantOf "${pedal.variantOf}"`,
+			);
+		}
+	}
 	return result.data;
 }
 

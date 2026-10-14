@@ -23,7 +23,7 @@ export type RenderInput = {
 
 /** Muted palette so placeholders never compete with the Blueprint chrome. */
 const PALETTE = [
-	{ fill: "#3b4250", stroke: "#5a6474" },
+	{ fill: "#3b4250", stroke: "#616b7c" },
 	{ fill: "#46505e", stroke: "#6b7688" },
 	{ fill: "#3f4a45", stroke: "#5f7068" },
 	{ fill: "#4a4440", stroke: "#6f665f" },

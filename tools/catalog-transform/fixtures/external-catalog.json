@@ -34,5 +34,19 @@
 		"brand": "Acme",
 		"widthIn": 1,
 		"heightIn": 2
+	},
+	"No Brand": {
+		"widthIn": 2,
+		"heightIn": 3
+	},
+	"Nested (Red)": {
+		"brand": "Gamma",
+		"widthIn": 2,
+		"heightIn": 3
+	},
+	"Nested (Red) (Blue)": {
+		"brand": "Gamma",
+		"widthIn": 2,
+		"heightIn": 3
 	}
 }

@@ -1,5 +1,5 @@
-import { mkdir, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { mkdir, readdir, rm, writeFile } from "node:fs/promises";
+import { dirname, join, resolve } from "node:path";
 import type {
 	CatalogBoard,
 	CatalogPedal,
@@ -232,11 +232,12 @@ export function generateSeed(): SeedResult {
 
 /** Short, human-distinguishable label for the placeholder art. */
 export function labelFor(name: string): string {
-	return name
+	const code = name
 		.replace(/\(.*?\)/g, "")
 		.replace(/\s+/g, "")
 		.toUpperCase()
 		.slice(0, 8);
+	return code || "PEDAL";
 }
 
 export type SeedImage = { path: string; buffer: Buffer };
@@ -305,6 +306,28 @@ export async function writeSeed(
 	for (const image of images) {
 		await mkdir(dirname(image.path), { recursive: true });
 		await writeFile(image.path, image.buffer);
+	}
+
+	// Generator-owned dirs: drop PNGs that no longer map to a seed item, so a
+	// renamed/deleted item never leaves a stale asset shipping in public/.
+	const owned = new Set(images.map((image) => resolve(image.path)));
+	for (const dir of [
+		join(assetsDir, "pedals", "800"),
+		join(assetsDir, "pedals", "350"),
+		join(assetsDir, "boards", "800"),
+		join(assetsDir, "boards", "350"),
+	]) {
+		let entries: string[];
+		try {
+			entries = await readdir(dir);
+		} catch {
+			continue;
+		}
+		for (const entry of entries) {
+			if (!entry.endsWith(".png")) continue;
+			const full = resolve(join(dir, entry));
+			if (!owned.has(full)) await rm(full, { force: true });
+		}
 	}
 
 	return {

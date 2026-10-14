@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -64,6 +64,37 @@ describe("committed seed freshness", () => {
 		expect(`${JSON.stringify(seed.boards, null, 2)}\n`).toBe(committedBoards);
 	});
 
+	it("committed asset dirs contain exactly the generated manifest (no stale PNGs)", () => {
+		const seed = generateSeed();
+		const expected = new Set<string>();
+		for (const pedal of seed.pedals) {
+			for (const size of [800, 350]) {
+				expected.add(`pedals/${size}/${pedal.image}`);
+			}
+		}
+		for (const board of seed.boards) {
+			for (const size of [800, 350]) {
+				expected.add(`boards/${size}/${board.image}`);
+			}
+		}
+
+		const actual = new Set<string>();
+		for (const dir of [
+			"pedals/800",
+			"pedals/350",
+			"boards/800",
+			"boards/350",
+		]) {
+			for (const entry of readdirSync(
+				new URL(`public/pedal-assets/${dir}`, repoRoot),
+			)) {
+				if (entry.endsWith(".png")) actual.add(`${dir}/${entry}`);
+			}
+		}
+
+		expect(actual).toEqual(expected);
+	});
+
 	it("every procedural PNG matches the committed file byte-for-byte", async () => {
 		const seed = generateSeed();
 		const images = await renderSeedImages(seed, "assets");
@@ -122,5 +153,6 @@ describe("labelFor", () => {
 	it("returns a short uppercase code", () => {
 		expect(labelFor("Wooly Fuzz (Black)")).toBe("WOOLYFUZ");
 		expect(labelFor("Terra 24")).toBe("TERRA24");
+		expect(labelFor("(Blue)")).toBe("PEDAL");
 	});
 });

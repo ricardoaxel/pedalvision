@@ -50,6 +50,27 @@ describe("parsePedals", () => {
 	it("throws on duplicate ids", () => {
 		expect(() => parsePedals([validPedal, validPedal])).toThrow(/duplicate/);
 	});
+
+	it("throws when variantOf references a missing pedal", () => {
+		expect(() =>
+			parsePedals([{ ...validPedal, variantOf: "missing-model" }]),
+		).toThrow(/variantOf/);
+	});
+
+	it("throws when a pedal is its own variantOf", () => {
+		expect(() =>
+			parsePedals([{ ...validPedal, variantOf: validPedal.id }]),
+		).toThrow(/its own variantOf/);
+	});
+
+	it("accepts a variant whose base is present", () => {
+		const variant = {
+			...validPedal,
+			id: "acme-big-fuzz-green",
+			variantOf: "acme-big-fuzz",
+		};
+		expect(parsePedals([validPedal, variant])).toHaveLength(2);
+	});
 });
 
 describe("parseCatalog", () => {

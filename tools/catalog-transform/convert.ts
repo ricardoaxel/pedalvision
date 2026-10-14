@@ -102,7 +102,12 @@ export function convertExternalCatalog(
 			continue;
 		}
 
-		const brand = typeof entry.brand === "string" ? entry.brand : "";
+		const brand = typeof entry.brand === "string" ? entry.brand.trim() : "";
+		if (!brand) {
+			warn(`skipped "${displayName}": missing brand`);
+			continue;
+		}
+
 		const variantMatch = displayName.match(VARIANT_SUFFIX);
 		const baseName = variantMatch ? variantMatch[1].trim() : displayName.trim();
 		const baseId = toSlug(`${brand} ${baseName}`);
@@ -139,8 +144,13 @@ export function convertExternalCatalog(
 	}
 
 	// Drop variants whose base was skipped — never ship a dangling reference.
+	// Only non-variant entries can be a model base (a variant's own id is not a
+	// valid base, even though it is in `seen`).
+	const baseIds = new Set(
+		pedals.filter((pedal) => !pedal.variantOf).map((pedal) => pedal.id),
+	);
 	const validPedals = pedals.filter((pedal) => {
-		if (pedal.variantOf && !seen.has(pedal.variantOf)) {
+		if (pedal.variantOf && !baseIds.has(pedal.variantOf)) {
 			warn(
 				`dropped "${pedal.id}": variant base "${pedal.variantOf}" is missing`,
 			);

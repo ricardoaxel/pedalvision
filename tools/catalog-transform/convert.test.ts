@@ -41,9 +41,21 @@ describe("convertExternalCatalog", () => {
 		expect(result.warnings.some((w) => w.includes("duplicate"))).toBe(true);
 	});
 
+	it("skips entries with no brand", () => {
+		expect(result.pedals.some((p) => p.name === "No Brand")).toBe(false);
+		expect(result.warnings.some((w) => w.includes("No Brand"))).toBe(true);
+	});
+
 	it("drops variants whose base is missing", () => {
 		expect(result.pedals.some((p) => p.id === "acme-orphan-blue")).toBe(false);
 		expect(result.warnings.some((w) => w.includes("acme-orphan"))).toBe(true);
+	});
+
+	it("does not treat a dropped variant as a valid base for nested variants", () => {
+		expect(result.pedals.some((p) => p.id === "gamma-nested-red")).toBe(false);
+		expect(result.pedals.some((p) => p.id === "gamma-nested-red-blue")).toBe(
+			false,
+		);
 	});
 
 	it("converts inches to cm and slugifies ids", () => {
