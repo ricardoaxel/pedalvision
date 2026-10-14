@@ -119,6 +119,10 @@ describe("committed seed effectTypes", () => {
 					0,
 				);
 				expect(source.url.startsWith("https://"), source.url).toBe(true);
+				// an archive/bundle is never an image source
+				if (/\.(zip|rar|7z|tar|gz)(\?|$)/i.test(source.url)) {
+					expect(source.kind, source.url).not.toContain("image");
+				}
 			}
 		}
 	});

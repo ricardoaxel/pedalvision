@@ -28,7 +28,7 @@ For each pedal you research, return a record matching our schema (units in **cm*
   "year": 1995,
   "status": "current",                  // "current" | "discontinued" | "unknown"
   "confidence": "confirmed",            // "confirmed" | "likely" | "unsure"
-  "sources": ["https://..."],           // where each fact came from (stored as { url, kind: ["info"] })
+  "sources": [ { "url": "https://...", "kind": ["info"] } ],  // stored shape; kind may also be ["image"] or both
   "notes": "short, ORIGINAL one-line factual summary"
 }
 ```
