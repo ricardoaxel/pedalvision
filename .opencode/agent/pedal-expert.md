@@ -35,9 +35,11 @@ For each pedal you research, return a record matching our schema (units in **cm*
 
 ## Effect taxonomy (normalize into these exact types)
 
-`tuner, looper, octave, pitch, synth, fuzz, distortion, overdrive, boost, compressor, eq, wah, tremolo, vibrato, chorus, flanger, phaser, delay, reverb, gate, ring-mod, bitcrusher`
+Effects: `tuner, looper, octave, pitch, synth, fuzz, distortion, overdrive, boost, compressor, eq, wah, tremolo, vibrato, chorus, flanger, phaser, delay, reverb, gate, ring-mod, bitcrusher, envelope, filter, harmonizer, rotary, univibe`
 
-A pedal can have several (e.g. "delay + reverb"). If you cannot confirm a type, return `[]` — **never guess** to fill the field. Supplies (`category: "supply"`) get `effectTypes: []`.
+Non-effect / utility categories (still `category: "pedal"` unless it is power): `preamp, amp-modeler, cab-sim, acoustic-sim, organ-sim, power-amp, buffer, di, ab-box, mixer, controller, sequencer, attenuator, utility`
+
+A pedal can have several (e.g. "delay + reverb", "compressor + overdrive"). If you cannot confirm a type, return `[]` — **never guess** to fill the field. Pure power supplies (`category: "supply"`) get `effectTypes: []`; a pedal-style power amp / preamp is a pedal, not a supply.
 
 ## Source priority (cross-check contested facts)
 
