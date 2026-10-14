@@ -190,6 +190,19 @@ describe("preserveCuration", () => {
 		});
 		expect(merged[1]).not.toHaveProperty("sources");
 	});
+
+	it("rejects a duplicate id in the existing catalog (would drop curation)", () => {
+		const existing: TestItem[] = [
+			{
+				id: "a",
+				image: "a.png",
+				imageSource: "static",
+				sources: [{ url: "https://x.example/a", kind: ["info"] }],
+			},
+			{ id: "a", image: "a.png", imageSource: "mock" },
+		];
+		expect(() => preserveCuration([], existing)).toThrow(/duplicate id "a"/);
+	});
 });
 
 describe("convertBoards", () => {

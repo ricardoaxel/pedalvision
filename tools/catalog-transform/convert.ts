@@ -208,7 +208,15 @@ export function preserveCuration<T extends { id: string }>(
 	next: T[],
 	existing: T[],
 ): T[] {
-	const byId = new Map(existing.map((item) => [item.id, item]));
+	// A duplicate id in the existing file would silently keep only the last row
+	// (dropping the earlier one's curation), so reject it before merging.
+	const byId = new Map<string, T>();
+	for (const item of existing) {
+		if (byId.has(item.id)) {
+			throw new Error(`existing catalog: duplicate id "${item.id}"`);
+		}
+		byId.set(item.id, item);
+	}
 	return next.map((item) => {
 		const prev = byId.get(item.id);
 		return prev ? { ...item, ...pickCuration(prev) } : item;
