@@ -77,6 +77,14 @@ describe("convertPedals", () => {
 		expect(supply?.category).toBe("supply");
 	});
 
+	it("tags a 'Power System' as a supply", () => {
+		const { items } = convertPedals(
+			[{ Brand: "Acme", Name: "CAE Power System", Width: 5, Height: 3 }],
+			{ source: "placeholder" },
+		);
+		expect(items[0]?.category).toBe("supply");
+	});
+
 	it("produces output that validates against the catalog schema", () => {
 		for (const pedal of result.items) {
 			expect(CatalogPedalSchema.safeParse(pedal).success).toBe(true);

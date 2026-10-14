@@ -38,8 +38,8 @@ An array of rows; dimensions in **inches**:
   (`<id>.png`) — no third-party asset is referenced.
 
 Our stored shape (`id, brand, name, widthCm, heightCm, image, effectTypes,
-category, jacks, power, variantOf, source`) is deliberately different from the
-external one.
+category`; optional `jacks?`, `power?`, `variantOf?`; `source`) is deliberately
+different from the external one.
 
 ## Selection
 

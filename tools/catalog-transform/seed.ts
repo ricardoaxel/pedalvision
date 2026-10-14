@@ -72,9 +72,12 @@ export async function renderCatalogImages(
 }
 
 /**
- * Regenerate the committed mocked PNGs from the committed catalog JSON. Writes
- * to `assetsDir` and prunes generator-owned PNGs that no longer map to an item,
- * so a renamed/removed item never leaves a stale image shipping.
+ * Regenerate the committed mocked PNGs from the committed catalog JSON.
+ *
+ * The rendition dirs (`pedals|boards/{800,350}`) are **generator-managed**: this
+ * removes every `.png` in them that is not in the current manifest, so a
+ * renamed/removed item never leaves a stale image shipping. Do not hand-place
+ * files there — real images belong to P2-04's pipeline, not these dirs.
  */
 export async function writeSeedImages(
 	catalogDir: string,

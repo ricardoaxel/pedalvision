@@ -28,4 +28,4 @@ User can pick a pedalboard from a temporary HTML list, it appears centered in th
 - Playwright smoke: add board → node exists on stage
 
 ## Notes
-Board images come from the synthetic seed (P0-05); fall back to a drawn rectangle with dimensions label if image missing.
+Board images come from the committed seed (P0-05, mocked images); fall back to a drawn rectangle with dimensions label if image missing.
