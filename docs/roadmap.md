@@ -18,6 +18,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 |---|---|---|
 | P1-01 | True-scale engine (cm↔px geometry lib + tests) | done |
 | P1-02 | Stage: dot grid, pan, zoom-to-pointer, resize-proof | in review — PR #9 |
+| P1-02b | Touch/gesture E2E (Playwright + CDP multi-touch) | todo |
 | P1-03 | Boards: place / move / rotate | todo |
 | P1-04 | Pedals: place / drag / duplicate / delete | todo |
 | P1-05 | Free rotation + selection UX (hover, touch anchors) | todo |
@@ -52,6 +53,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - **P5-02 Image clearance (rights-first)** — acquire + clear real images (permission / official brand assets / community / own) and replace every mocked PNG, flipping `source`. Depends on **P2-06** outreach. **No scraping** (ADR-003).
 - **P5-03 Provenance & verification sweep** — per-item verification date + confidence; dimension spot-check (≥10) against manufacturer spec sheets.
 - **P5-04 Launch-gate sign-off** — minimum bar (≥200 pedals / ≥10 brands, cleared assets only), A1–A5 green, `pnpm audit`, iOS export.
+- **P5-05 Full-integration device E2E (Appium, local) — PROPOSED (not scheduled).** At the very final integration stage, a small Appium smoke against the local iOS Simulator / real Android to validate real-engine touch end-to-end. Free if Xcode/Android SDK present; deferred to avoid heavy setup now. See `docs/decisions/007-mobile-touch-testing.md` + `docs/tasks/P5-05-appium-local-device-e2e.md`.
 
 ## v2 backlog (not scheduled)
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
@@ -61,3 +63,4 @@ Accounts (Google OAuth) · cloud saves · community gear submissions + moderatio
 - [ ] A1–A5 acceptance criteria green on production
 - [ ] `pnpm audit` clean; all dependencies < 6 months old
 - [ ] iOS Safari export verified on a real device
+- [ ] **Real-device touch/interaction pass** — pinch/pan on a physical phone (automated coverage is Chromium-only; see **P5-05** proposal for local Appium E2E)

@@ -1,6 +1,6 @@
 # Pedalvision — Design
 
-Decisions are recorded in `docs/decisions/` (001 canvas, 002 hosting/assets, 003 catalog data, 004 agent context, 005 design governance, 006 code review governance). This file describes the target architecture.
+Decisions are recorded in `docs/decisions/` (001 canvas, 002 hosting/assets, 003 catalog data, 004 agent context, 005 design governance, 006 code review governance, 007 mobile/touch testing). This file describes the target architecture.
 
 ## Stack
 React 19 · TypeScript · Vite · react-konva (Konva 10) · Zustand · zod · pnpm · Biome · Vitest · Playwright · Cloudflare Pages (v1; R2 deferred — ADR-002)
