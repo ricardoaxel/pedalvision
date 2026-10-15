@@ -155,7 +155,7 @@ describe("committed seed effectTypes", () => {
 		}
 	});
 
-	it("default selection reproduces the committed seed (curated extras kept)", () => {
+	it("selection is idempotent on the committed seed (curated extras kept)", () => {
 		const out = selectPedals(pedals, { keepIds: Object.keys(CURATED_EFFECTS) });
 		expect(out.map((p) => p.id).sort()).toEqual(pedals.map((p) => p.id).sort());
 	});

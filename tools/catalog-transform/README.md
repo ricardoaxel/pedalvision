@@ -79,8 +79,9 @@ The external data has **no** taxonomy, so `effectTypes` and `category` are OURS
 get the converter defaults). So `--source` tags
 **newly imported items only** — an existing id keeps its curated provenance tag.
 Boards are only read/written when `--boards` is passed (a pedals-only import
-never blanks `boards.json`). A malformed existing catalog fails loudly rather
-than being silently overwritten.
+never blanks `boards.json`). An id that leaves the selection is **not** dropped
+silently — `import` throws unless `--allow-removals` is passed. A malformed
+existing catalog fails loudly rather than being silently overwritten.
 
 ## Selection
 
