@@ -82,6 +82,9 @@ export function useViewportGestures(
 			dispatch({ type: "up", pointerId: event.pointerId });
 		};
 
+		// The browser took over the gesture (e.g. scroll/zoom): abandon it.
+		const onPointerCancel = () => dispatch({ type: "cancel" });
+
 		// A window blur can swallow a pointerup; drop all gestures.
 		const onWindowBlur = () => dispatch({ type: "cancel" });
 
@@ -102,7 +105,7 @@ export function useViewportGestures(
 		element.addEventListener("pointerdown", onPointerDown);
 		window.addEventListener("pointermove", onPointerMove);
 		window.addEventListener("pointerup", onPointerUp);
-		window.addEventListener("pointercancel", onPointerUp);
+		window.addEventListener("pointercancel", onPointerCancel);
 		window.addEventListener("blur", onWindowBlur);
 		element.addEventListener("wheel", onWheel, { passive: false });
 
@@ -110,7 +113,7 @@ export function useViewportGestures(
 			element.removeEventListener("pointerdown", onPointerDown);
 			window.removeEventListener("pointermove", onPointerMove);
 			window.removeEventListener("pointerup", onPointerUp);
-			window.removeEventListener("pointercancel", onPointerUp);
+			window.removeEventListener("pointercancel", onPointerCancel);
 			window.removeEventListener("blur", onWindowBlur);
 			element.removeEventListener("wheel", onWheel);
 		};

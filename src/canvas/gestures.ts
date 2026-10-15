@@ -88,12 +88,17 @@ function onDown(
 	event: Extract<GestureEvent, { type: "down" }>,
 	viewport: Viewport,
 ): GestureResult {
+	// A third+ pointer is ignored entirely: N4 only defines one- and two-pointer
+	// gestures, and tracking extras would invalidate the pinch baseline when a
+	// finger of the active pair lifts.
+	if (machine.pointers.size >= 2) return { machine };
+
 	const next = clone(machine);
 	next.pointers.set(event.pointerId, event.point);
 
 	if (next.pointers.size === 1) {
-		// Two-pointer gestures always win; a single pointer only pans on empty
-		// canvas. A hit object will consume the gesture instead (P1-03/P1-04).
+		// A single pointer only pans on empty canvas; a hit object will consume
+		// the gesture instead (P1-03/P1-04).
 		next.gesture =
 			event.target === "empty"
 				? {
@@ -104,7 +109,8 @@ function onDown(
 						active: false,
 					}
 				: { type: "idle" };
-	} else if (next.pointers.size === 2) {
+	} else {
+		// Two pointers always win, regardless of target.
 		next.gesture = {
 			type: "pinch",
 			start: {
@@ -114,7 +120,6 @@ function onDown(
 			},
 		};
 	}
-	// A third+ pointer is tracked but doesn't change the gesture.
 
 	return { machine: next };
 }

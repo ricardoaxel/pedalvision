@@ -147,10 +147,28 @@ describe("reduceGesture — pinch (two pointers)", () => {
 			point: { x: 50, y: 50 },
 			target: "empty",
 		});
+		expect(h.machine.pointers.size).toBe(2);
 		expect(h.machine.gesture.type).toBe("pinch");
+
 		// The pinch pair is still 1 & 2 → moving them to 200px apart doubles.
 		h = dispatch(h, mouseMove(2, 200, 0));
 		expect(h.viewport.scale).toBe(2);
+
+		// Lifting the ignored third pointer changes nothing.
+		h = dispatch(h, { type: "up", pointerId: 3 });
+		expect(h.machine.pointers.size).toBe(2);
+		expect(h.machine.gesture.type).toBe("pinch");
+
+		// Lifting a real finger resumes a pan from the current viewport — no jump.
+		h = dispatch(h, { type: "up", pointerId: 1 });
+		expect(h.machine.gesture.type).toBe("pan");
+		const before = h.viewport;
+		h = dispatch(h, mouseMove(2, 210, 10));
+		expect(h.viewport).toEqual({
+			scale: before.scale,
+			x: before.x + 10,
+			y: before.y + 10,
+		});
 	});
 });
 

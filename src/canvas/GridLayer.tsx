@@ -1,7 +1,10 @@
 import { Layer, Shape } from "react-konva";
 import { GRID_DOT_RADIUS, GRID_PITCH } from "../styles/theme";
 
-/** On-screen dot spacing is kept at or above this (LOD coarsens below it). */
+/**
+ * The dominant (coarser) grid level is always at or above this on-screen pitch;
+ * mid-crossfade the fading finer level dips to half this before it disappears.
+ */
 const MIN_GRID_SCREEN_PITCH = 16;
 
 interface GridDotsProps {
