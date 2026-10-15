@@ -1,6 +1,17 @@
-import { expect, test } from "@playwright/test";
+import { expect, type Page, test } from "@playwright/test";
 
 type TouchType = "touchStart" | "touchEnd" | "touchMove" | "touchCancel";
+
+interface Point {
+	x: number;
+	y: number;
+}
+
+interface Transform {
+	scale: number;
+	x: number;
+	y: number;
+}
 
 /**
  * Touch-gesture coverage for the canvas viewport (P1-02).
@@ -14,32 +25,44 @@ type TouchType = "touchStart" | "touchEnd" | "touchMove" | "touchCancel";
  * `hasTouch` is on). CDP is built into Playwright — no new dependency.
  *
  * Assertions read the stage's `data-scale` / `data-x` / `data-y` debug
- * attributes (the same hooks the desktop smoke tests use).
+ * attributes, which only the gesture↔store path mutates.
  */
+
+/** Open the app, pick a touch-enabled stage, and return the CDP + read helpers. */
+async function openStage(page: Page) {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = Math.round(box.x + box.width / 2);
+	const cy = Math.round(box.y + box.height / 2);
+
+	const cdp = await page.context().newCDPSession(page);
+	const dispatch = (type: TouchType, points: Point[]) =>
+		cdp.send("Input.dispatchTouchEvent", {
+			type,
+			touchPoints: points.map((point, id) => ({
+				id,
+				x: point.x,
+				y: point.y,
+			})),
+		});
+
+	const transform = async (): Promise<Transform> => ({
+		scale: Number(await stage.getAttribute("data-scale")),
+		x: Number(await stage.getAttribute("data-x")),
+		y: Number(await stage.getAttribute("data-y")),
+	});
+
+	return { cx, cy, dispatch, transform };
+}
 
 test.describe("touch gestures (CDP-injected, Chromium)", () => {
 	test("two-finger pinch zooms the stage", async ({ page }) => {
-		await page.goto("/");
-		const stage = page.getByTestId("stage");
-		await expect(stage).toBeVisible();
-
-		const box = await stage.boundingBox();
-		if (!box) throw new Error("stage has no bounding box");
-		const cx = Math.round(box.x + box.width / 2);
-		const cy = Math.round(box.y + box.height / 2);
-
-		const cdp = await page.context().newCDPSession(page);
-		const dispatch = (type: TouchType, points: { x: number; y: number }[]) =>
-			cdp.send("Input.dispatchTouchEvent", {
-				type,
-				touchPoints: points.map((point, id) => ({
-					id,
-					x: point.x,
-					y: point.y,
-				})),
-			});
-
-		const scaleBefore = Number(await stage.getAttribute("data-scale"));
+		const { cx, cy, dispatch, transform } = await openStage(page);
+		const before = await transform();
 
 		await dispatch("touchStart", [
 			{ x: cx - 30, y: cy },
@@ -55,34 +78,13 @@ test.describe("touch gestures (CDP-injected, Chromium)", () => {
 		await dispatch("touchEnd", []);
 
 		await expect
-			.poll(async () => Number(await stage.getAttribute("data-scale")))
-			.toBeGreaterThan(scaleBefore);
+			.poll(async () => (await transform()).scale)
+			.toBeGreaterThan(before.scale);
 	});
 
 	test("two-finger drag pans the stage without zooming", async ({ page }) => {
-		await page.goto("/");
-		const stage = page.getByTestId("stage");
-		await expect(stage).toBeVisible();
-
-		const box = await stage.boundingBox();
-		if (!box) throw new Error("stage has no bounding box");
-		const cx = Math.round(box.x + box.width / 2);
-		const cy = Math.round(box.y + box.height / 2);
-
-		const cdp = await page.context().newCDPSession(page);
-		const dispatch = (type: TouchType, points: { x: number; y: number }[]) =>
-			cdp.send("Input.dispatchTouchEvent", {
-				type,
-				touchPoints: points.map((point, id) => ({
-					id,
-					x: point.x,
-					y: point.y,
-				})),
-			});
-
-		const scaleBefore = Number(await stage.getAttribute("data-scale"));
-		const xBefore = Number(await stage.getAttribute("data-x"));
-		const yBefore = Number(await stage.getAttribute("data-y"));
+		const { cx, cy, dispatch, transform } = await openStage(page);
+		const before = await transform();
 
 		const dx = 140;
 		const dy = 90;
@@ -100,15 +102,13 @@ test.describe("touch gestures (CDP-injected, Chromium)", () => {
 		}
 		await dispatch("touchEnd", []);
 
+		// Wait until the gesture has settled at its final translation before
+		// reading the rest (intermediate moves would otherwise be observed).
 		await expect
-			.poll(async () => Number(await stage.getAttribute("data-x")) - xBefore)
-			.toBeGreaterThan(100);
-
-		const [yAfter, scaleAfter] = await Promise.all([
-			stage.getAttribute("data-y").then(Number),
-			stage.getAttribute("data-scale").then(Number),
-		]);
-		expect(yAfter - yBefore).toBeGreaterThan(70);
-		expect(scaleAfter).toBeCloseTo(scaleBefore, 5);
+			.poll(async () => (await transform()).x - before.x)
+			.toBeGreaterThan(dx - 1);
+		const after = await transform();
+		expect(after.y - before.y).toBeGreaterThan(dy - 1);
+		expect(after.scale).toBeCloseTo(before.scale, 5);
 	});
 });
