@@ -217,6 +217,43 @@ describe("writeSeedImages", () => {
 		}
 	});
 
+	it("rejects a mock/static filename collision before writing", async () => {
+		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-collide-"));
+		try {
+			const dataDir = join(dir, "data");
+			const assetsDir = join(dir, "assets");
+			await mkdir(join(assetsDir, "pedals", "800"), { recursive: true });
+			await writeFile(
+				join(assetsDir, "pedals", "800", mockPedal.image),
+				"static-keep",
+			);
+			await mkdir(dataDir, { recursive: true });
+			const staticPedal: CatalogPedal = {
+				...mockPedal,
+				id: "test-static",
+				imageSource: "static",
+			};
+			await writeFile(
+				join(dataDir, "pedals.json"),
+				JSON.stringify([mockPedal, staticPedal]),
+			);
+			await writeFile(join(dataDir, "boards.json"), JSON.stringify([]));
+
+			await expect(writeSeedImages(dataDir, assetsDir)).rejects.toThrow(
+				/static image/,
+			);
+			// The committed static file was not overwritten.
+			expect(
+				await readFile(
+					join(assetsDir, "pedals", "800", mockPedal.image),
+					"utf8",
+				),
+			).toBe("static-keep");
+		} finally {
+			await rm(dir, { recursive: true, force: true });
+		}
+	});
+
 	it("rejects an invalid catalog file before writing", async () => {
 		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-bad-"));
 		try {

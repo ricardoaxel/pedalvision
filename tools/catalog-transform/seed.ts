@@ -45,6 +45,17 @@ export async function renderCatalogImages(
 		// Only mock items are ours to draw. A `url` item is a remote image; a
 		// `static` item is a committed file we must not overwrite.
 		if (item.imageSource !== "mock") return;
+		// Refuse a filename collision with a committed static file *before* any
+		// write — otherwise the mock render would overwrite a real (possibly
+		// cleared) asset in the same kind dir.
+		const siblings = kindDir === "pedals" ? pedals : boards;
+		if (
+			siblings.some(
+				(other) => other.imageSource === "static" && other.image === item.image,
+			)
+		) {
+			throw new Error(`seed would overwrite static image "${item.image}"`);
+		}
 		for (const size of SIZES) {
 			images.push({
 				path: join(assetsDir, kindDir, String(size), item.image),
