@@ -1,4 +1,5 @@
 import { Transformer } from "react-konva";
+import type { Point } from "../lib/geometry";
 import { itemFootprint, type PlacedItem } from "../state/scene";
 import type { CanvasTheme } from "../styles/theme";
 import { PedalNode } from "./PedalNode";
@@ -13,7 +14,7 @@ interface ItemNodesProps {
 	 * When set, every item renders at this world-cm origin instead of its stored
 	 * position — used by the DragLayer for the single lifted item.
 	 */
-	worldPosition?: { x: number; y: number };
+	worldPosition?: Point;
 	/** Lift shadow + unskewed rendering cue (DragLayer only). */
 	lifted?: boolean;
 }

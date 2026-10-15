@@ -163,16 +163,11 @@ interface SceneStore {
 	duplicateItem: (uid: string) => string | null;
 	removeItem: (uid: string) => void;
 	/**
-	 * Move an item into `boardUid` (or loose), storing `posCm` in that
-	 * container's unrotated frame — the low-level write used by {@link dropItem}
-	 * for both within-board moves and cross-board re-parents.
-	 */
-	reparentItem: (uid: string, boardUid: string | null, posCm: Point) => void;
-	/**
-	 * Finish a drag: hit-test the item's world centre against the boards and
-	 * re-parent it (to the topmost containing board, or loose). `worldOriginCm`
-	 * is the item's origin in world cm at drop time. All the re-parenting math
-	 * lives here so it is unit-testable (the rotated-board case).
+	 * Finish a drag: hit-test the item's world centre against the boards and move
+	 * it to the topmost containing board (storing board-relative cm) or leave it
+	 * loose (world cm). `worldOriginCm` is the item's origin in world cm at drop
+	 * time. All the move + re-parenting math lives here so it is unit-testable
+	 * (the rotated-board case).
 	 */
 	dropItem: (uid: string, worldOriginCm: Point) => void;
 	/**
@@ -193,7 +188,7 @@ interface SceneStore {
  * Selection is deliberately *not* here — it is transient UI state
  * (`state/selection.ts`) and is not part of the scene document.
  */
-export const useScene = create<SceneStore>((set, get) => ({
+export const useScene = create<SceneStore>((set) => ({
 	boards: [],
 	items: [],
 	addItem: (refId, kind, boardUid, posCm) => {
@@ -240,30 +235,27 @@ export const useScene = create<SceneStore>((set, get) => ({
 		set((state) => ({
 			items: state.items.filter((item) => item.uid !== uid),
 		})),
-	reparentItem: (uid, boardUid, posCm) =>
-		set((state) => ({
-			items: state.items.map((item) =>
-				item.uid === uid ? { ...item, boardUid, x: posCm.x, y: posCm.y } : item,
-			),
-		})),
-	dropItem: (uid, worldOriginCm) => {
-		const { items, boards, reparentItem } = get();
-		const item = items.find((candidate) => candidate.uid === uid);
-		if (!item) return;
-		const footprint = itemFootprint(item);
-		// Hit-test the item's centre (its origin + half-footprint, no pedal
-		// rotation until P1-05), so the drop reads by where the pedal sits.
-		const centre = {
-			x: worldOriginCm.x + footprint.widthCm / 2,
-			y: worldOriginCm.y + footprint.heightCm / 2,
-		};
-		const board = findBoardAt(boards, centre);
-		if (board) {
-			reparentItem(uid, board.uid, worldToBoard(worldOriginCm, board));
-		} else {
-			reparentItem(uid, null, worldOriginCm);
-		}
-	},
+	dropItem: (uid, worldOriginCm) =>
+		set((state) => {
+			const item = state.items.find((candidate) => candidate.uid === uid);
+			if (!item) return state;
+			const footprint = itemFootprint(item);
+			// Hit-test the item's centre (its origin + half-footprint, no pedal
+			// rotation until P1-05), so the drop reads by where the pedal sits.
+			const centre = {
+				x: worldOriginCm.x + footprint.widthCm / 2,
+				y: worldOriginCm.y + footprint.heightCm / 2,
+			};
+			const board = findBoardAt(state.boards, centre);
+			const next = board
+				? { boardUid: board.uid, ...worldToBoard(worldOriginCm, board) }
+				: { boardUid: null, x: worldOriginCm.x, y: worldOriginCm.y };
+			return {
+				items: state.items.map((candidate) =>
+					candidate.uid === uid ? { ...candidate, ...next } : candidate,
+				),
+			};
+		}),
 	addBoard: (boardRefId, centerCm) => {
 		const uid = crypto.randomUUID();
 		const definition = BOARD_BY_ID.get(boardRefId);
