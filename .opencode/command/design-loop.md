@@ -13,7 +13,7 @@ Each round does ALL of:
 2. **Designer revision (authority):** give the designer the reviewer's findings; get the revised direction/values.
    `opencode run --agent designer "<current direction + reviewer findings → revised tokens/type/layout>"`
 3. **Implement:** apply the revision to code yourself (all visual values in `src/styles/tokens.css` + `src/styles/theme.ts`; components use tokens only).
-4. **Re-render:** build and capture fresh screenshots (dark + light) with Playwright into `docs/screenshots/<task>/`.
+4. **Re-render:** build and capture fresh screenshots (**dark + light, desktop + mobile**) with Playwright into `docs/screenshots/<task>/`.
 5. **Commit this round** as its own commit (`feat: <task> round N — <what changed>`), so any round can be reverted individually later.
 6. If the reviewer's last verdict was **approve** → stop; otherwise next round.
 
