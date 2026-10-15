@@ -9,9 +9,9 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P0-02 | CI/CD pipeline (GitHub Actions → Cloudflare) | done |
 | P0-03 | Design tokens (CSS vars + JS theme map, dark default) | done |
 | P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | done |
-| P0-05 | Catalog schema + import transformer + seed | in review — PR #5 |
+| P0-05 | Catalog schema + import transformer + seed | done |
 
-> **Sequencing:** P0-01/02/03/04 **done**. **P0-05 is in review — PR #5** (unblocked, build-strong); Next stays P0-05 until merged (AGENTS rule 9). P0-05's transformer needs the external catalog file only to run `import`/backfill (the committed seed covers dev/CI). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead (see AGENTS.md §Session protocol rule 6).
+> **P0 COMPLETE** (all 5 merged, 2026-10-14). ⛔ **Do NOT start P1 directly** — the **Phase gate** applies: run a post-phase code review (AGENTS.md §Phase gate; NEW session, strong model) of the P0 merged PRs against the docs, fold valid findings in, THEN start **P1-01**. P0-05's transformer needs the external catalog file only to run `import`/backfill (the committed seed covers dev/CI).
 
 ## P1 — Canvas core
 | Task | Title | Status |

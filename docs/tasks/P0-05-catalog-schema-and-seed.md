@@ -1,6 +1,6 @@
 # P0-05: Catalog schema + import transformer + seed
 
-**Phase:** P0 · **Status:** in review — PR #5 · **Model:** build-strong
+**Phase:** P0 · **Status:** done (merged 2026-10-14, PR #5) · **Model:** build-strong
 
 ## Goal
 Our own catalog schema (zod) with types + loaders exists per design.md, plus a generic one-off transformer that converts an external catalog JSON into our schema, plus a committed **seed of real catalog facts** (~200 pedals across 10+ brands incl. a few supplies, 10 boards) with **procedurally mocked** 800/350 PNGs, usable in fresh clones and CI. Real (cleared) images remain the single outstanding blocker.
