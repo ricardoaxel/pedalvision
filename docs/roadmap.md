@@ -16,7 +16,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 ## P1 — Canvas core
 | Task | Title | Status |
 |---|---|---|
-| P1-01 | True-scale engine (cm↔px geometry lib + tests) | in review — PR #8 |
+| P1-01 | True-scale engine (cm↔px geometry lib + tests) | done |
 | P1-02 | Stage: dot grid, pan, zoom-to-pointer, resize-proof | todo |
 | P1-03 | Boards: place / move / rotate | todo |
 | P1-04 | Pedals: place / drag / duplicate / delete | todo |
