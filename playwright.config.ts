@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
 	testDir: "./e2e",
@@ -9,6 +9,14 @@ export default defineConfig({
 		{
 			name: "chromium",
 			use: { browserName: "chromium" },
+			// Touch gestures need CDP + a touch-enabled context (see touch.spec.ts).
+			testIgnore: /touch\.spec\.ts/,
+		},
+		{
+			// Chromium with a touch-enabled mobile context for the gesture specs.
+			name: "mobile-chromium",
+			use: { ...devices["Pixel 7"] },
+			testMatch: /touch\.spec\.ts/,
 		},
 	],
 	webServer: {

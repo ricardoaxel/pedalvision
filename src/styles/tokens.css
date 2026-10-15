@@ -80,8 +80,8 @@
 	--tracking-normal: 0;
 	--tracking-wide: 0.04em;
 
-	/* Dot grid — clearly visible, still the calmest layer (~1.8:1 vs canvas) */
-	--grid-dot-size: 24px;
+	/* Dot grid — clearly visible, still the calmest layer (~1.9:1 vs canvas) */
+	--grid-pitch: 24px;
 	--grid-dot-radius: 1px;
 }
 

@@ -4,6 +4,8 @@ import {
 	CANVAS_THEME_VARS,
 	type CanvasTheme,
 	canvasTheme,
+	GRID_DOT_RADIUS,
+	GRID_PITCH,
 	lightCanvasTheme,
 } from "./theme";
 
@@ -61,5 +63,10 @@ describe("canvas theme map", () => {
 
 	it("light theme values match [data-theme='light'] tokens", () => {
 		expectInSync(lightCanvasTheme, lightVars);
+	});
+
+	it("grid metrics mirror the dot-grid tokens", () => {
+		expect(`${GRID_PITCH}px`).toBe(darkVars["--grid-pitch"]);
+		expect(`${GRID_DOT_RADIUS}px`).toBe(darkVars["--grid-dot-radius"]);
 	});
 });

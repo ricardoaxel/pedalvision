@@ -1,6 +1,6 @@
 # P1-02: Stage — grid, pan, zoom, resize-proof
 
-**Phase:** P1 · **Status:** todo · **Model:** build-strong
+**Phase:** P1 · **Status:** in review — PR #9 · **Model:** build-strong
 
 ## Goal
 A Konva Stage fills its container, shows a dot grid, pans via drag (mouse) and two-finger touch, zooms to the pointer via wheel and pinch, and survives window resize with all world positions unchanged.
