@@ -18,6 +18,13 @@ const committedBoards = readJson<CatalogBoard[]>(
 	"src/catalog/data/boards.json",
 );
 
+// Only `mock` items are generator-drawn; `url` items render a remote brand
+// image and have no committed PNG.
+const mockPedals = committedPedals.filter((p) => p.imageSource === "mock");
+const mockBoards = committedBoards.filter((b) => b.imageSource === "mock");
+const mockPedal = mockPedals[0];
+const mockBoard = mockBoards[0];
+
 const PNG_SIGNATURE = Buffer.from([
 	0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
 ]);
@@ -29,9 +36,7 @@ describe("committed mock images", () => {
 			committedBoards,
 			"assets",
 		);
-		expect(images).toHaveLength(
-			(committedPedals.length + committedBoards.length) * 2,
-		);
+		expect(images).toHaveLength((mockPedals.length + mockBoards.length) * 2);
 		for (const image of images) {
 			const committedPath = image.path.replace(
 				/^assets[\\/]/,
@@ -46,11 +51,11 @@ describe("committed mock images", () => {
 
 	it("are the only files in the asset dirs (no stale PNGs)", () => {
 		const expected = new Set<string>();
-		for (const pedal of committedPedals) {
+		for (const pedal of mockPedals) {
 			for (const size of [800, 350])
 				expected.add(`pedals/${size}/${pedal.image}`);
 		}
-		for (const board of committedBoards) {
+		for (const board of mockBoards) {
 			for (const size of [800, 350])
 				expected.add(`boards/${size}/${board.image}`);
 		}
@@ -74,10 +79,8 @@ describe("committed mock images", () => {
 
 describe("renderCatalogImages", () => {
 	it("is deterministic for the same input", async () => {
-		const pedals = [committedPedals[0]];
-		const boards = [committedBoards[0]];
-		const first = await renderCatalogImages(pedals, boards, "x");
-		const second = await renderCatalogImages(pedals, boards, "x");
+		const first = await renderCatalogImages([mockPedal], [mockBoard], "x");
+		const second = await renderCatalogImages([mockPedal], [mockBoard], "x");
 
 		expect(first.map((image) => image.path)).toEqual(
 			second.map((image) => image.path),
@@ -86,6 +89,16 @@ describe("renderCatalogImages", () => {
 			expect(image.buffer.subarray(0, 8)).toEqual(PNG_SIGNATURE);
 			expect(image.buffer.equals(second[index].buffer)).toBe(true);
 		});
+	});
+
+	it("skips non-mock items (no PNG for a url image)", async () => {
+		const remote = {
+			...mockPedal,
+			imageSource: "url" as const,
+			image: "https://example.com/original.png",
+		};
+		const images = await renderCatalogImages([remote], [], "x");
+		expect(images).toHaveLength(0);
 	});
 });
 
@@ -98,11 +111,11 @@ describe("writeSeedImages", () => {
 			await mkdir(dataDir, { recursive: true });
 			await writeFile(
 				join(dataDir, "pedals.json"),
-				JSON.stringify([committedPedals[0]]),
+				JSON.stringify([mockPedal]),
 			);
 			await writeFile(
 				join(dataDir, "boards.json"),
-				JSON.stringify([committedBoards[0]]),
+				JSON.stringify([mockBoard]),
 			);
 			await mkdir(join(assetsDir, "pedals", "800"), { recursive: true });
 			await writeFile(join(assetsDir, "pedals", "800", "stale.png"), "x");
@@ -114,7 +127,7 @@ describe("writeSeedImages", () => {
 				readFile(join(assetsDir, "pedals", "800", "stale.png")),
 			).rejects.toThrow();
 			const png = await readFile(
-				join(assetsDir, "pedals", "800", committedPedals[0].image),
+				join(assetsDir, "pedals", "800", mockPedal.image),
 			);
 			expect(png.subarray(0, 8)).toEqual(PNG_SIGNATURE);
 		} finally {
@@ -122,19 +135,27 @@ describe("writeSeedImages", () => {
 		}
 	}, 60_000);
 
-	it("refuses to render when any item is not mock (protects cleared assets)", async () => {
-		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-nonmock-"));
+	it("keeps committed static files (never pruned/overwritten)", async () => {
+		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-static-"));
 		try {
 			const dataDir = join(dir, "data");
+			const assetsDir = join(dir, "assets");
+			const staticImage = "custom-pedal.png";
+			await mkdir(join(assetsDir, "pedals", "800"), { recursive: true });
+			await writeFile(join(assetsDir, "pedals", "800", staticImage), "keep");
 			await mkdir(dataDir, { recursive: true });
 			await writeFile(
 				join(dataDir, "pedals.json"),
-				JSON.stringify([{ ...committedPedals[0], imageSource: "static" }]),
+				JSON.stringify([
+					{ ...mockPedal, imageSource: "static", image: staticImage },
+				]),
 			);
 			await writeFile(join(dataDir, "boards.json"), JSON.stringify([]));
-			await expect(
-				writeSeedImages(dataDir, join(dir, "assets")),
-			).rejects.toThrow(/mock/);
+
+			await writeSeedImages(dataDir, assetsDir);
+			expect(
+				await readFile(join(assetsDir, "pedals", "800", staticImage), "utf8"),
+			).toBe("keep");
 		} finally {
 			await rm(dir, { recursive: true, force: true });
 		}

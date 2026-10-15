@@ -5,8 +5,8 @@
     "name": "AC-2 Acoustic Simulator",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-ac-2-acoustic-simulator.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/ac_2_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "acoustic-sim"
     ],
@@ -40,8 +40,8 @@
     "name": "AC-3 Acoustic Simulator",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-ac-3-acoustic-simulator.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/ac_3_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "acoustic-sim"
     ],
@@ -92,8 +92,8 @@
     "name": "AD-2 Acoustic Preamp",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-ad-2-acoustic-preamp.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/ad-2_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp"
     ],
@@ -126,8 +126,8 @@
     "name": "AW-3 Dynamic Wah",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-aw-3-dynamic-wah.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/aw-3_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "wah"
     ],
@@ -160,8 +160,8 @@
     "name": "BB-1X Bass Driver",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-bb-1x-bass-driver.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/bb-1x_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -200,8 +200,8 @@
     "name": "BC-1x Bass Compressor",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-bc-1x-bass-compressor.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/bc_1x_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "compressor"
     ],
@@ -240,8 +240,8 @@
     "name": "BC-2 Combo Drive",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-bc-2-combo-drive.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/bc-2_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -274,8 +274,8 @@
     "name": "BD-2 Blues Driver",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-bd-2-blues-driver.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/bd-2_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -314,8 +314,8 @@
     "name": "BF-2 Flanger",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-bf-2-flanger.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/bf_2_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "flanger"
     ],
@@ -356,8 +356,8 @@
     "name": "BF-3 Flanger",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-bf-3-flanger.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/bf_3_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "flanger"
     ],
@@ -412,8 +412,8 @@
     "name": "CE-20 Chorus Ensemble",
     "widthCm": 17.3,
     "heightCm": 15.49,
-    "image": "boss-ce-20-chorus-ensemble.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/ce_20_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -468,8 +468,8 @@
     "name": "CE-5 Chorus Ensemble",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-ce-5-chorus-ensemble.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/ce_5_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -508,8 +508,8 @@
     "name": "CEB-3 Bass Chorus",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-ceb-3-bass-chorus.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/ceb_3_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -536,8 +536,8 @@
     "name": "CH-1 Super Chorus",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-ch-1-super-chorus.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/ch_1_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -570,8 +570,8 @@
     "name": "CP-1X Compressor",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-cp-1x-compressor.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/cp-1x_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "compressor"
     ],
@@ -624,8 +624,8 @@
     "name": "CS-3 Compression Sustainer",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-cs-3-compression-sustainer.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/cs_3_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "compressor"
     ],
@@ -652,8 +652,8 @@
     "name": "DA-2 Adaptive Distortion",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-da-2-adaptive-distortion.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/da-2_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "distortion"
     ],
@@ -680,8 +680,8 @@
     "name": "DC-2 Dimension C",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dc-2-dimension-c.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product02.png",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -726,8 +726,8 @@
     "name": "DC-3 Digital Dimension",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dc-3-digital-dimension.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product03.png",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -766,8 +766,8 @@
     "name": "DD-2 Digital Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dd-2-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product02.png",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -794,8 +794,8 @@
     "name": "DD-20 Giga Delay",
     "widthCm": 17.3,
     "heightCm": 15.49,
-    "image": "boss-dd-20-giga-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd20_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -822,8 +822,8 @@
     "name": "DD-200 Digital Delay",
     "widthCm": 10.16,
     "heightCm": 13.82,
-    "image": "boss-dd-200-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd-200_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -850,8 +850,8 @@
     "name": "DD-3 Digital Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dd-3-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd3_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -878,8 +878,8 @@
     "name": "DD-3T Digital Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dd-3t-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd-3t_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -906,8 +906,8 @@
     "name": "DD-5 Digital Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dd-5-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd5_2_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -934,8 +934,8 @@
     "name": "DD-500 Digital Delay",
     "widthCm": 17.15,
     "heightCm": 13.72,
-    "image": "boss-dd-500-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd_500_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -962,8 +962,8 @@
     "name": "DD-6 Digital Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dd-6-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd6_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -990,8 +990,8 @@
     "name": "DD-7 Digital Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dd-7-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd_7_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -1018,8 +1018,8 @@
     "name": "DD-8 Digital Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dd-8-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dd-8_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -1046,8 +1046,8 @@
     "name": "DF-2 Super Feedbacker & Distortion",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-df-2-super-feedbacker-distortion.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/df_product02.png",
+    "imageSource": "url",
     "effectTypes": [
       "distortion"
     ],
@@ -1074,8 +1074,8 @@
     "name": "DM-101 Delay Machine",
     "widthCm": 19.2,
     "heightCm": 13.28,
-    "image": "boss-dm-101-delay-machine.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dm-101_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -1102,8 +1102,8 @@
     "name": "DM-2 Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dm-2-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product02.png",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -1130,8 +1130,8 @@
     "name": "DM-3 Delay",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dm-3-delay.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product03.png",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -1158,8 +1158,8 @@
     "name": "DN-2 Dyna Drive",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-dn-2-dyna-drive.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/assets/images/products/main/dn_2_top_main.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -1186,8 +1186,8 @@
     "name": "#1 Echo",
     "widthCm": 10.64,
     "heightCm": 12.07,
-    "image": "electro-harmonix-1-echo.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/echo1-v.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -1220,8 +1220,8 @@
     "name": "1440 Stereo Looper",
     "widthCm": 10.64,
     "heightCm": 12.07,
-    "image": "electro-harmonix-1440-stereo-looper.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "looper"
     ],
@@ -1260,8 +1260,8 @@
     "name": "15Watt Howitzer",
     "widthCm": 10.64,
     "heightCm": 12.07,
-    "image": "electro-harmonix-15watt-howitzer.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2021/03/15w-howitzer-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "power-amp"
@@ -1308,8 +1308,8 @@
     "name": "2020 Tuner",
     "widthCm": 4.62,
     "heightCm": 9.53,
-    "image": "electro-harmonix-2020-tuner.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "tuner"
     ],
@@ -1342,8 +1342,8 @@
     "name": "2020 Tuner v2",
     "widthCm": 4.62,
     "heightCm": 9.68,
-    "image": "electro-harmonix-2020-tuner-v2.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2024/12/20202.jpeg",
+    "imageSource": "url",
     "effectTypes": [
       "tuner"
     ],
@@ -1376,8 +1376,8 @@
     "name": "22500 Dual Stereo Looper",
     "widthCm": 15.42,
     "heightCm": 12.8,
-    "image": "electro-harmonix-22500-dual-stereo-looper.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "looper"
     ],
@@ -1410,8 +1410,8 @@
     "name": "22500 Foot Controller",
     "widthCm": 11.43,
     "heightCm": 6.99,
-    "image": "electro-harmonix-22500-foot-controller.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "controller"
     ],
@@ -1451,8 +1451,8 @@
     "name": "44 Magnum Power Amp",
     "widthCm": 7.16,
     "heightCm": 11.43,
-    "image": "electro-harmonix-44-magnum-power-amp.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "power-amp"
     ],
@@ -1498,8 +1498,8 @@
     "name": "5mm Power Amp",
     "widthCm": 7.16,
     "heightCm": 11.43,
-    "image": "electro-harmonix-5mm-power-amp.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "power-amp"
     ],
@@ -1545,8 +1545,8 @@
     "name": "720 Stereo Looper",
     "widthCm": 10.64,
     "heightCm": 12.07,
-    "image": "electro-harmonix-720-stereo-looper.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "looper"
     ],
@@ -1579,8 +1579,8 @@
     "name": "8 Step Program",
     "widthCm": 15.42,
     "heightCm": 12.07,
-    "image": "electro-harmonix-8-step-program.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "sequencer",
       "controller"
@@ -1633,8 +1633,8 @@
     "name": "95000 Performance Loop Laboratory",
     "widthCm": 32.39,
     "heightCm": 14.99,
-    "image": "electro-harmonix-95000-performance-loop-laboratory.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/95000-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "looper"
     ],
@@ -1680,8 +1680,8 @@
     "name": "Analogizer",
     "widthCm": 7.16,
     "heightCm": 11.43,
-    "image": "electro-harmonix-analogizer.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "boost"
     ],
@@ -1721,8 +1721,8 @@
     "name": "Attack Decay",
     "widthCm": 10.64,
     "heightCm": 12.07,
-    "image": "electro-harmonix-attack-decay.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "envelope",
       "fuzz"
@@ -1763,8 +1763,8 @@
     "name": "B9 Organ Machine",
     "widthCm": 10.64,
     "heightCm": 12.07,
-    "image": "electro-harmonix-b9-organ-machine.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "organ-sim"
     ],
@@ -1810,8 +1810,8 @@
     "name": "Bad Stone",
     "widthCm": 7.16,
     "heightCm": 11.43,
-    "image": "electro-harmonix-bad-stone.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "phaser"
     ],
@@ -1851,8 +1851,8 @@
     "name": "Bass Big Muff Pi",
     "widthCm": 10.64,
     "heightCm": 12.07,
-    "image": "electro-harmonix-bass-big-muff-pi.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/bassbm-v-1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "fuzz"
     ],
@@ -1885,8 +1885,8 @@
     "name": "Bass Big Muff Pi 2",
     "widthCm": 7.16,
     "heightCm": 11.43,
-    "image": "electro-harmonix-bass-big-muff-pi-2.png",
-    "imageSource": "mock",
+    "image": "https://www.ehx.com/wp-content/uploads/2026/02/bbm2-0-2.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "fuzz"
     ],
@@ -1962,8 +1962,8 @@
     "name": "385 MKII",
     "widthCm": 6.6,
     "heightCm": 12.57,
-    "image": "walrus-audio-385-mkii.png",
-    "imageSource": "mock",
+    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/front_7c1776bd-7969-47b7-81e1-c0c13a6ea7b0.jpg?v=1748875993",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -2012,8 +2012,8 @@
     "name": "ARP-87",
     "widthCm": 6.91,
     "heightCm": 12.57,
-    "image": "walrus-audio-arp-87.png",
-    "imageSource": "mock",
+    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Arp87_500x5002_c1dea1bc-8f92-4683-8b00-4d5ac08b5dc9.jpg?v=1757697333",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -2160,8 +2160,8 @@
     "name": "Ages",
     "widthCm": 6.6,
     "heightCm": 12.57,
-    "image": "walrus-audio-ages.png",
-    "imageSource": "mock",
+    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-front_600.jpg?v=1755865561",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -2231,8 +2231,8 @@
     "name": "Badwater",
     "widthCm": 12.34,
     "heightCm": 9.7,
-    "image": "walrus-audio-badwater.png",
-    "imageSource": "mock",
+    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Badwater-front.jpg?v=1748977127",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "di",
@@ -2276,8 +2276,8 @@
     "name": "Bellwether",
     "widthCm": 14.45,
     "heightCm": 12.07,
-    "image": "walrus-audio-bellwether.png",
-    "imageSource": "mock",
+    "image": "https://cdn.shopify.com/s/files/1/0906/8480/products/Bellwether_Front.jpg?v=1748874975",
+    "imageSource": "url",
     "effectTypes": [
       "delay",
       "chorus"
@@ -2312,8 +2312,8 @@
     "name": "Canvas Clock",
     "widthCm": 7.16,
     "heightCm": 12.19,
-    "image": "walrus-audio-canvas-clock.png",
-    "imageSource": "mock",
+    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Clock-Front_c5a01252-50c3-45d5-ae14-1e50e79f7dfb.jpg?v=1749761660",
+    "imageSource": "url",
     "effectTypes": [
       "controller",
       "utility"
@@ -2354,8 +2354,8 @@
     "name": "Canvas Line Isolator",
     "widthCm": 4.75,
     "heightCm": 9.4,
-    "image": "walrus-audio-canvas-line-isolator.png",
-    "imageSource": "mock",
+    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Mono-front-left-updated_8d2f43bf-e0be-46cd-bc98-ad5bc96ad3a9.jpg?v=1748956498",
+    "imageSource": "url",
     "effectTypes": [
       "di",
       "utility"
@@ -3441,8 +3441,8 @@
     "name": "3 Series Bit Crusher",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-bit-crusher.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-BitCrusher-Front.png?v=1779893287",
+    "imageSource": "url",
     "effectTypes": [
       "bitcrusher"
     ],
@@ -3469,8 +3469,8 @@
     "name": "3 Series Chorus",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-chorus.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Chorus-front.png?v=1698427083",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -3497,8 +3497,8 @@
     "name": "3 Series Compressor",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-compressor.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Compressor-front.png?v=1698427156",
+    "imageSource": "url",
     "effectTypes": [
       "compressor"
     ],
@@ -3525,8 +3525,8 @@
     "name": "3 Series Delay",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-delay.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Delay-front.png?v=1698427313",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -3553,8 +3553,8 @@
     "name": "3 Series Distortion",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-distortion.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Distortion-front.png?v=1698427388",
+    "imageSource": "url",
     "effectTypes": [
       "distortion"
     ],
@@ -3581,8 +3581,8 @@
     "name": "3 Series Flanger",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-flanger.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Serires-Flanger-Front.png?v=1698426709",
+    "imageSource": "url",
     "effectTypes": [
       "flanger"
     ],
@@ -3609,8 +3609,8 @@
     "name": "3 Series Fuzz",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-fuzz.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Fuzz-front.png?v=1698427447",
+    "imageSource": "url",
     "effectTypes": [
       "fuzz"
     ],
@@ -3637,8 +3637,8 @@
     "name": "3 Series Glitch Delay",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-glitch-delay.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-GlitchDelay-Front.png?v=1779893315",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -3665,8 +3665,8 @@
     "name": "3 Series Hall Reverb",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-hall-reverb.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Serires-HallReverb-Front.png?v=1698426814",
+    "imageSource": "url",
     "effectTypes": [
       "reverb"
     ],
@@ -3693,8 +3693,8 @@
     "name": "3 Series Harmonic Trem",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-harmonic-trem.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3Series-Harmonic-Trem-Front.png?v=1698426927",
+    "imageSource": "url",
     "effectTypes": [
       "tremolo"
     ],
@@ -3721,8 +3721,8 @@
     "name": "3 Series Octave Reverb",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-octave-reverb.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3Series-Octave-Reverb-Front.png?v=1698427649",
+    "imageSource": "url",
     "effectTypes": [
       "octave",
       "reverb"
@@ -3750,8 +3750,8 @@
     "name": "3 Series Oil Can Delay",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-oil-can-delay.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -3793,8 +3793,8 @@
     "name": "3 Series Overdrive",
     "widthCm": 6.81,
     "heightCm": 11.23,
-    "image": "jhs-3-series-overdrive.png",
-    "imageSource": "mock",
+    "image": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Overdrive-front.png?v=1698427542",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -3821,8 +3821,8 @@
     "name": "2290 P Dynamic Digital Delay",
     "widthCm": 22.35,
     "heightCm": 13.72,
-    "image": "tc-electronic-2290-p-dynamic-digital-delay.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/107b2da708d14304a35dfe02361e8dc3/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Mailchimp_2023-10-20_Rev.0.png",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -3849,8 +3849,8 @@
     "name": "3rd Dimension Chorus",
     "widthCm": 7.37,
     "heightCm": 13.08,
-    "image": "tc-electronic-3rd-dimension-chorus.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/2b92db787a0a4ccc81317060876e3622/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -3877,8 +3877,8 @@
     "name": "Afterglow Chorus",
     "widthCm": 7.37,
     "heightCm": 13.08,
-    "image": "tc-electronic-afterglow-chorus.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/b77c59931cff470c9bac4cfd11732047/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -3933,8 +3933,8 @@
     "name": "Ampworx 550",
     "widthCm": 10.67,
     "heightCm": 12.78,
-    "image": "tc-electronic-ampworx-550.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/53481ac78b9b4dd9ba5455449121a80b/Image_TE_0709-AJX_V550-PREAMP_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -3987,8 +3987,8 @@
     "name": "Ampworx Combo Deluxe 65'",
     "widthCm": 10.67,
     "heightCm": 12.78,
-    "image": "tc-electronic-ampworx-combo-deluxe-65.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/930cad4f3eda4d67a69894c125b98c44/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Catalog_B.png",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -4036,8 +4036,8 @@
     "name": "Ampworx DC30",
     "widthCm": 10.67,
     "heightCm": 12.78,
-    "image": "tc-electronic-ampworx-dc30.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/605cb69ebae6447894f633b54c9796b7/Image_TE_0709-AJR_DC30-PREAMP_Catalog_B.png",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -4084,8 +4084,8 @@
     "name": "Ampworx Dual Wreck",
     "widthCm": 10.67,
     "heightCm": 12.78,
-    "image": "tc-electronic-ampworx-dual-wreck.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/e6103ee8e62548ec8420f3a73d3236d6/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Catalog_B.png",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -4132,8 +4132,8 @@
     "name": "Ampworx Jims 45",
     "widthCm": 10.67,
     "heightCm": 12.78,
-    "image": "tc-electronic-ampworx-jims-45.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/7fb3bdfd0af542e1ba80baa36f012e4f/Image_TE_0709-AJM_JIMS-45-PREAMP_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -4180,8 +4180,8 @@
     "name": "Ampworx Jims 800",
     "widthCm": 10.67,
     "heightCm": 12.78,
-    "image": "tc-electronic-ampworx-jims-800.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/b71b271dc6b4472fb069cae0777c7c0c/Image_TE_0709-AJV_JIMS-800-PREAMP_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -4242,8 +4242,8 @@
     "name": "Blood Moon Phaser",
     "widthCm": 7.37,
     "heightCm": 13.08,
-    "image": "tc-electronic-blood-moon-phaser.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/33ff48a85ebf4aa5b7e1c19572ea2c8f/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "phaser"
     ],
@@ -4270,8 +4270,8 @@
     "name": "BodyRez Acoustic Pickup Enhancer",
     "widthCm": 5.08,
     "heightCm": 9.53,
-    "image": "tc-electronic-bodyrez-acoustic-pickup-enhancer.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/7fed2fbde7e8427681e564c49b7c618e/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "eq",
       "compressor"
@@ -4317,8 +4317,8 @@
     "name": "Bonafide Buffer",
     "widthCm": 5.08,
     "heightCm": 9.53,
-    "image": "tc-electronic-bonafide-buffer.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/6bf34328b06747de8e10277649dbc5ca/Image_TE_0709-AHC_BONAFIDE-BUFFER_Catalog%20B.png",
+    "imageSource": "url",
     "effectTypes": [
       "buffer"
     ],
@@ -4363,8 +4363,8 @@
     "name": "Brainwaves Pitch Shifter",
     "widthCm": 7.26,
     "heightCm": 12.19,
-    "image": "tc-electronic-brainwaves-pitch-shifter.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/9cb5114af4cf4089a3b7db746d30877a/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Left_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "pitch"
     ],
@@ -4391,8 +4391,8 @@
     "name": "Bucket Brigade Analog Delay",
     "widthCm": 6.1,
     "heightCm": 10.03,
-    "image": "tc-electronic-bucket-brigade-analog-delay.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/4cd6620e9f484a6292ed992f88255452/Image_TE_0709-AKE_BUCKET-BRIGADE-ANALOG-DELAY_Left_B.png",
+    "imageSource": "url",
     "effectTypes": [
       "delay"
     ],
@@ -4419,8 +4419,8 @@
     "name": "Choka Tremolo",
     "widthCm": 7.37,
     "heightCm": 13.08,
-    "image": "tc-electronic-choka-tremolo.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/23814aaf126a4cb1b7720dc257332bb9/Image_TE_0709-AHZ_CHOKA-TREMOLO_Left_DThumb.png",
+    "imageSource": "url",
     "effectTypes": [
       "tremolo"
     ],
@@ -4447,8 +4447,8 @@
     "name": "001 Gas Station",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-001-gas-station.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4483,8 +4483,8 @@
     "name": "002 UK Gold 900",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-002-uk-gold-900.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4524,8 +4524,8 @@
     "name": "003 Power Zone",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-003-power-zone.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4560,8 +4560,8 @@
     "name": "004 Day Tripper",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-004-day-tripper.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4601,8 +4601,8 @@
     "name": "005 Brown Sound 3",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-005-brown-sound-3.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4637,8 +4637,8 @@
     "name": "006 US Classic Deluxe",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-006-us-classic-deluxe.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4673,8 +4673,8 @@
     "name": "007 Regal Tone",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-007-regal-tone.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4709,8 +4709,8 @@
     "name": "008 Cali-MK3",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-008-cali-mk3.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4745,8 +4745,8 @@
     "name": "009 Black Knight",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-009-black-knight.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4781,8 +4781,8 @@
     "name": "010 Two Stones",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-010-two-stones.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4817,8 +4817,8 @@
     "name": "011 Cali-Dual",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-011-cali-dual.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4853,8 +4853,8 @@
     "name": "012 US Gold 100",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-012-us-gold-100.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4894,8 +4894,8 @@
     "name": "013 Matchbox",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-013-matchbox.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4930,8 +4930,8 @@
     "name": "014 Taxidea Taxus",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-014-taxidea-taxus.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -4966,8 +4966,8 @@
     "name": "015 Brown Sound",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-015-brown-sound.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -5002,8 +5002,8 @@
     "name": "016 Phoenix Digital",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-016-phoenix-digital.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -5038,8 +5038,8 @@
     "name": "017 Cali MKIV",
     "widthCm": 4.24,
     "heightCm": 9.53,
-    "image": "mooer-017-cali-mkiv.png",
-    "imageSource": "mock",
+    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "cab-sim"
@@ -5109,8 +5109,8 @@
     "name": "A/B Box",
     "widthCm": 12.07,
     "heightCm": 9.27,
-    "image": "mxr-a-b-box.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/680/images/6691/13196000001.MAIN__61231.1663874799.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "ab-box"
     ],
@@ -5162,8 +5162,8 @@
     "name": "Analog Chorus",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-analog-chorus.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/629/images/6423/11234000001.MAIN__89220.1663874795.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -5190,8 +5190,8 @@
     "name": "Bass Chorus Deluxe",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-chorus-deluxe.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/572/images/6097/11083000001.MAIN__53416.1663874792.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "chorus"
     ],
@@ -5218,8 +5218,8 @@
     "name": "Bass Compressor",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-compressor.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/575/images/10108/M87.MAIN__61433.1676394506.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "compressor"
     ],
@@ -5246,8 +5246,8 @@
     "name": "Bass DI+",
     "widthCm": 12.57,
     "heightCm": 8.99,
-    "image": "mxr-bass-di.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/610/images/6317/11180000001.MAIN__98491.1663874794.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "preamp",
       "di",
@@ -5295,8 +5295,8 @@
     "name": "Bass Distortion",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-distortion.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/574/images/6109/11085000001.MAIN__35105.1663874792.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "distortion"
     ],
@@ -5323,8 +5323,8 @@
     "name": "Bass Envelope Filter",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-envelope-filter.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/571/images/10098/M82.MAIN__91817.1676394282.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "envelope",
       "filter"
@@ -5352,8 +5352,8 @@
     "name": "Bass Fuzz Deluxe",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-fuzz-deluxe.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/573/images/6103/11084000001.MAIN__93896.1663874792.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "fuzz"
     ],
@@ -5380,8 +5380,8 @@
     "name": "Bass Octave Deluxe",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-octave-deluxe.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/642/images/6499/11288000001.MAIN__08504.1663874796.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "octave"
     ],
@@ -5408,8 +5408,8 @@
     "name": "Bass Overdrive",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-overdrive.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/576/images/6121/11089000001.MAIN__87674.1663874792.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive"
     ],
@@ -5436,8 +5436,8 @@
     "name": "Bass Preamp",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-preamp.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/570/images/6085/11081000001.MAIN__33843.1663874792.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "preamp"
     ],
@@ -5464,8 +5464,8 @@
     "name": "Bass Synth",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-bass-synth.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2325/images/11620/M301.MAIN__82591.1746129775.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "synth"
     ],
@@ -5492,8 +5492,8 @@
     "name": "Blue Box Fuzz",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-blue-box-fuzz.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/592/images/6211/11103000001.MAIN__02046.1663874793.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "fuzz"
     ],
@@ -5520,8 +5520,8 @@
     "name": "Booster Mini",
     "widthCm": 4.42,
     "heightCm": 9.4,
-    "image": "mxr-booster-mini.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/646/images/6521/11293000001.MAIN__23166.1663874797.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "boost"
     ],
@@ -5548,8 +5548,8 @@
     "name": "CAE Boost/Line Driver",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "mxr-cae-boost-line-driver.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/651/images/6550/11401000001.MAIN__73157.1663874797.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "boost"
     ],
@@ -5576,8 +5576,8 @@
     "name": "CAE Boost/Overdrive",
     "widthCm": 12.57,
     "heightCm": 8.99,
-    "image": "mxr-cae-boost-overdrive.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/652/images/6556/11402000001.MAIN__49202.1663874797.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "overdrive",
       "boost"
@@ -5605,8 +5605,8 @@
     "name": "CAE Buffer",
     "widthCm": 6.96,
     "heightCm": 7.29,
-    "image": "mxr-cae-buffer.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/655/images/6574/11406000001.MAIN__77746.1663874797.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [
       "buffer"
     ],
@@ -5652,8 +5652,8 @@
     "name": "CAE Power System",
     "widthCm": 34.29,
     "heightCm": 10.16,
-    "image": "mxr-cae-power-system.png",
-    "imageSource": "mock",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2112/images/10778/MC403.MAIN__04016.1702502300.386.513.jpg?c=2",
+    "imageSource": "url",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder",
@@ -5996,8 +5996,8 @@
     "name": "JF-13 AC Tone",
     "widthCm": 9.55,
     "heightCm": 11.94,
-    "image": "joyo-jf-13-ac-tone.png",
-    "imageSource": "mock",
+    "image": "https://img201.yun300.cn/repository/image/u-H6X1dpRhK2rZrkNuxqow.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -6032,8 +6032,8 @@
     "name": "JF-14 American Sound",
     "widthCm": 9.55,
     "heightCm": 11.94,
-    "image": "joyo-jf-14-american-sound.png",
-    "imageSource": "mock",
+    "image": "https://img201.yun300.cn/repository/image/X1MU4TU3QLeJjEQLZoJpBg.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -6068,8 +6068,8 @@
     "name": "JF-15 California Sound",
     "widthCm": 9.55,
     "heightCm": 11.94,
-    "image": "joyo-jf-15-california-sound.png",
-    "imageSource": "mock",
+    "image": "https://img201.yun300.cn/repository/image/uxeWh1TiRoSZKPRpjFbUiQ.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -6104,8 +6104,8 @@
     "name": "JF-16 British Sound",
     "widthCm": 9.55,
     "heightCm": 11.94,
-    "image": "joyo-jf-16-british-sound.png",
-    "imageSource": "mock",
+    "image": "https://img201.yun300.cn/repository/image/UG_TqZDpSrOFutgI_UKb7A.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
@@ -6140,8 +6140,8 @@
     "name": "JF-17 Extreme Metal",
     "widthCm": 9.55,
     "heightCm": 11.94,
-    "image": "joyo-jf-17-extreme-metal.png",
-    "imageSource": "mock",
+    "image": "https://img201.yun300.cn/repository/image/yn_dN5mKT4GKFIGhcm-JGw.jpg",
+    "imageSource": "url",
     "effectTypes": [
       "distortion"
     ],
@@ -6168,8 +6168,8 @@
     "name": "PSM-5 Power Supply & Master Switch",
     "widthCm": 7.3,
     "heightCm": 13.02,
-    "image": "boss-psm-5-power-supply-master-switch.png",
-    "imageSource": "mock",
+    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/psm_product05.png",
+    "imageSource": "url",
     "effectTypes": [],
     "category": "supply",
     "source": "placeholder",
@@ -6194,8 +6194,8 @@
     "name": "Powerplay P1",
     "widthCm": 8.38,
     "heightCm": 12.4,
-    "image": "behringer-powerplay-p1.png",
-    "imageSource": "mock",
+    "image": "https://cdn-media.empowertribe.com/de5db7f7796c447e841aa1c6b0b2ea59/Image_BE_0609-AAE_P1_Front_XL.png",
+    "imageSource": "url",
     "effectTypes": [
       "utility"
     ],

@@ -5,9 +5,23 @@
     "name": "Smart Track L2 (Free)",
     "widthCm": 83.06,
     "heightCm": 29.97,
-    "image": "aclam-smart-track-l2-free.png",
-    "imageSource": "mock",
-    "source": "placeholder"
+    "image": "https://www.aclamguitars.com/store/3735-thickbox_default/smart-track-free-pedalboard.jpg",
+    "imageSource": "url",
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.aclamguitars.com/store/3735-thickbox_default/smart-track-free-pedalboard.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.aclamguitars.com/store/smart-track-free-pedalboard.html",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   },
   {
     "id": "boss-bcb-1000",
@@ -15,9 +29,23 @@
     "name": "BCB-1000",
     "widthCm": 55.88,
     "heightCm": 35.23,
-    "image": "boss-bcb-1000.png",
-    "imageSource": "mock",
-    "source": "placeholder"
+    "image": "https://static.roland.com/assets/images/products/main/bcb-1000_main.jpg",
+    "imageSource": "url",
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/main/bcb-1000_main.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/global/products/bcb-1000/",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   },
   {
     "id": "blackbird-tolex-1224",
@@ -25,9 +53,23 @@
     "name": "Tolex 1224",
     "widthCm": 60.96,
     "heightCm": 30.48,
-    "image": "blackbird-tolex-1224.png",
-    "imageSource": "mock",
-    "source": "placeholder"
+    "image": "https://blackbirdpedalboards.com/cdn/shop/files/Blackbird1224SCPedalboardandGigBag.jpg",
+    "imageSource": "url",
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://blackbirdpedalboards.com/cdn/shop/files/Blackbird1224SCPedalboardandGigBag.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://blackbirdpedalboards.com/products/1224sc-pedalboard-and-gig-bag",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   },
   {
     "id": "boardmods-b",
@@ -47,7 +89,15 @@
     "heightCm": 32,
     "image": "caseman-gentleman-medium.png",
     "imageSource": "mock",
-    "source": "placeholder"
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "http://www.pedalboardsbycaseman.com.au/gentleman.html",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   },
   {
     "id": "creation-music-co-aero-17x12-5",
@@ -65,9 +115,23 @@
     "name": "DB-3",
     "widthCm": 50.8,
     "heightCm": 28.96,
-    "image": "donner-db-3.png",
-    "imageSource": "mock",
-    "source": "placeholder"
+    "image": "https://us.donnermusic.com/cdn/shop/products/EC916.jpg",
+    "imageSource": "url",
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://us.donnermusic.com/cdn/shop/products/EC916.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://us.donnermusic.com/products/donner-guitar-pedal-board-case-db-3-aluminium-pedalboard-20-x-11-4-x-4-with-bag",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   },
   {
     "id": "d-addario-xpnd-1",
@@ -75,9 +139,23 @@
     "name": "XPND 1",
     "widthCm": 35.56,
     "heightCm": 15.32,
-    "image": "d-addario-xpnd-1.png",
-    "imageSource": "mock",
-    "source": "placeholder"
+    "image": "https://www.daddario.com/cdn/shop/files/da_PW-XPNDPB-01_main_transparent_web.png",
+    "imageSource": "url",
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://www.daddario.com/cdn/shop/files/da_PW-XPNDPB-01_main_transparent_web.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.daddario.com/products/xpnd-expanding-pedalboards",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   },
   {
     "id": "emerson-custom-18x12",
@@ -95,8 +173,22 @@
     "name": "Spaceboard 40",
     "widthCm": 45,
     "heightCm": 30.5,
-    "image": "fame-spaceboard-40.png",
-    "imageSource": "mock",
-    "source": "placeholder"
+    "image": "https://images.musicstore.de/images/1280/fame-spaceboard-40_1_GIT0040326-000.jpg",
+    "imageSource": "url",
+    "source": "placeholder",
+    "sources": [
+      {
+        "url": "https://images.musicstore.de/images/1280/fame-spaceboard-40_1_GIT0040326-000.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.musicstore.com/en_FI/EUR/Fame-Spaceboard-40/art-GIT0040326-000",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   }
 ]

@@ -12,6 +12,9 @@ pnpm catalog:seed
 
 # Recompute effectTypes + category of the committed JSON in place (curated + classifier)
 pnpm catalog:reclassify
+
+# Promote recorded direct brand image URLs to the rendered image (mock = fallback)
+pnpm catalog:resolve-images
 ```
 
 ## Provenance rule (binding)
@@ -50,6 +53,16 @@ preferred; ADR-003 §Per-item sources), added by curation — the importer leave
 them off.
 `imageSource` (`mock` | `static` | `url`) says *how* the image is provided
 (the import always emits `mock`); `source` is the separate rights tag.
+
+## Brand image URLs (`resolve-images`)
+
+Where an item has a **direct-file** official image URL in its `sources`
+(`kind: ["image"]`, URL ending in `.jpg/.jpeg/.png/.webp/.gif/.avif` — not an
+HTML product page), `pnpm catalog:resolve-images` promotes it to the rendered
+image (`imageSource: "url"`, `image` = the URL). Items without one keep the mock.
+Deterministic and idempotent; run it **before** `seed`, which then only draws the
+remaining mocks and prunes the stale PNGs of resolved items. Nothing is
+downloaded — only the recorded URL is reused (ADR-003 §Brand image URLs).
 
 ## Effect taxonomy & category
 

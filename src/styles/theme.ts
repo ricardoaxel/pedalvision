@@ -16,9 +16,8 @@ export const CANVAS_THEME_VARS = {
 	selectionStrong: "--color-accent-strong",
 	cable: "--color-cable",
 	// Board fallback (image missing/failed) + dimension labels — P1-03.
-	boardFill: "--color-surface",
 	boardStroke: "--color-board-outline",
-	boardInk: "--color-ink",
+	boardDraftFill: "--color-board-draft-fill",
 	boardLabel: "--color-ink-muted",
 } as const;
 
@@ -52,9 +51,8 @@ export const canvasTheme: CanvasTheme = {
 	selection: "#66c9de",
 	selectionStrong: "#66c9de",
 	cable: "#b9c2cc",
-	boardFill: "#2b3036",
 	boardStroke: "#5f6a76",
-	boardInk: "#eef1f4",
+	boardDraftFill: "#202327",
 	boardLabel: "#a8b0b8",
 };
 
@@ -65,8 +63,7 @@ export const lightCanvasTheme: CanvasTheme = {
 	selection: "#006b82",
 	selectionStrong: "#006b82",
 	cable: "#4d565f",
-	boardFill: "#ffffff",
 	boardStroke: "#6b7580",
-	boardInk: "#16191d",
+	boardDraftFill: "#eceff1",
 	boardLabel: "#565d66",
 };

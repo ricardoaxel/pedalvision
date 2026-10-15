@@ -27,9 +27,15 @@ describe("committed catalog seed", () => {
 		expect(catalog.pedals.some((p) => p.brand === "BOSS")).toBe(true);
 	});
 
-	it("is placeholder-sourced (mock images) and license-state explicit", () => {
+	it("is placeholder-sourced (rights not cleared) with mock or brand-url images", () => {
 		expect(catalog.pedals.every((p) => p.source === "placeholder")).toBe(true);
 		expect(catalog.boards.every((b) => b.source === "placeholder")).toBe(true);
+		// Provisional: mocks + direct brand URLs only — no cleared `static` assets yet.
+		expect(
+			[...catalog.pedals, ...catalog.boards].every(
+				(item) => item.imageSource === "mock" || item.imageSource === "url",
+			),
+		).toBe(true);
 	});
 
 	it("has unique ids", () => {

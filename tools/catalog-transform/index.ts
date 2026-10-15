@@ -19,6 +19,7 @@ import {
 	deriveCategory,
 	deriveEffectTypes,
 } from "./curated.ts";
+import { resolveImages } from "./images.ts";
 import { writeSeedImages } from "./seed.ts";
 import {
 	DEFAULT_SELECT,
@@ -59,6 +60,7 @@ Usage:
          [--supply-limit <n>] [--board-limit <n>] [--allow-removals]
   seed   [--catalog-dir <dir>] [--assets-dir <dir>]
   reclassify [--catalog-dir <dir>]
+  resolve-images [--catalog-dir <dir>]
   --help
 
 Source tags: ${SOURCE_TAGS.join(" | ")}
@@ -358,6 +360,54 @@ async function runReclassify(args: Args): Promise<void> {
 	);
 }
 
+/**
+ * Resolve `image`/`imageSource` from each item's recorded `sources` in place:
+ * a direct official image URL becomes the rendered image (`url`); everything
+ * else keeps its mock. Deterministic; touches nothing else. Run before `seed`
+ * (which then only draws the remaining mocks).
+ */
+async function runResolveImages(args: Args): Promise<void> {
+	const catalogDir = resolve(process.cwd(), args.catalogDir);
+	const pedalPath = `${catalogDir}/pedals.json`;
+	const boardPath = `${catalogDir}/boards.json`;
+
+	const pedals = CatalogPedalSchema.array().safeParse(
+		JSON.parse(await readFile(pedalPath, "utf8")),
+	);
+	if (!pedals.success) {
+		throw new Error(`pedals.json: ${pedals.error.issues[0]?.message}`);
+	}
+	const boards = CatalogBoardSchema.array().safeParse(
+		JSON.parse(await readFile(boardPath, "utf8")),
+	);
+	if (!boards.success) {
+		throw new Error(`boards.json: ${boards.error.issues[0]?.message}`);
+	}
+
+	const pedalChanged = resolveImages(pedals.data);
+	const boardChanged = resolveImages(boards.data);
+
+	// Validate the output before writing (consistency with the other commands).
+	const pedalCheck = CatalogPedalSchema.array().safeParse(pedals.data);
+	if (!pedalCheck.success) {
+		throw new Error(
+			`resolve-images pedal output invalid: ${pedalCheck.error.issues[0]?.message}`,
+		);
+	}
+	const boardCheck = CatalogBoardSchema.array().safeParse(boards.data);
+	if (!boardCheck.success) {
+		throw new Error(
+			`resolve-images board output invalid: ${boardCheck.error.issues[0]?.message}`,
+		);
+	}
+
+	await writeFile(pedalPath, `${JSON.stringify(pedals.data, null, 2)}\n`);
+	await writeFile(boardPath, `${JSON.stringify(boards.data, null, 2)}\n`);
+	console.log(
+		`resolve-images: ${pedalChanged}/${pedals.data.length} pedals, ${boardChanged}/${boards.data.length} boards → ${catalogDir}`,
+	);
+}
+
 async function main(): Promise<void> {
 	const args = parseArgs(process.argv.slice(2));
 	if (args.help || !args.command) {
@@ -374,6 +424,9 @@ async function main(): Promise<void> {
 			return;
 		case "reclassify":
 			await runReclassify(args);
+			return;
+		case "resolve-images":
+			await runResolveImages(args);
 			return;
 		default:
 			throw new Error(`unknown command "${args.command}"`);
