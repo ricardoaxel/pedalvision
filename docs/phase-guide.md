@@ -12,7 +12,7 @@ Short explanations so both the owner and any agent session know why each phase e
 | P0-02 CI/CD pipeline | GitHub Actions: lint→typecheck→test→build→e2e→deploy to Pages | Automated checks + deploys, catch errors before shipping | **Yes** — Cloudflare account + API token + account ID (for deploys; the repo itself is already created). Reason: deploy targets are a Cloudflare account in the owner's name; agents cannot create accounts. |
 | P0-03 Design tokens | CSS vars + JS theme map | Consistent UI, theming base (avoid "ugly UI" like pedalplayground) | No |
 | P0-04 Asset serving (Pages-shipped) | `public/pedal-assets/` + URL helper | Same-origin images → canvas export works, no CORS, free | No |
-| P0-05 Catalog schema + transformer + seed | zod schema, import transformer, committed synthetic seed + PNGs | Schema is the foundation of everything; seed lets dev/CI work with no external data | **Yes (optional/later)** — the external dataset lives on owner machine for the real import. Reason: dataset is unlicensed → stays owner-side by design. Synthetic seed covers dev/CI without it. |
+| P0-05 Catalog schema + transformer + seed | zod schema, import transformer, committed seed (real facts + mocked PNGs) | Schema is the foundation of everything; seed lets dev/CI work with no external data | **Yes (optional/later)** — the external catalog file lives on the owner machine to run `import`/backfill. Reason: dataset is unlicensed → the input file stays owner-side; only transformed facts + mocked images are committed. The committed seed covers dev/CI without it. |
 
 ## P1 — Canvas core (no owner action)
 | Task | What it does | Why |
@@ -49,6 +49,6 @@ Accounts · cloud saves · community submissions · power planner · explore · 
 
 ## The only owner actions in the whole v1 plan
 1. **P0-02 (current blocker):** Cloudflare account + API token + account ID → for deploys.
-2. **P0-05:** external dataset on owner machine → for the real catalog import (optional; synthetic seed works without it).
+2. **P0-05:** external catalog file on owner machine → to run `import`/backfill (optional; the committed seed works without it).
 3. **P2-06:** brand outreach + permission requests → for the real catalog.
 4. **Launch gate:** approve public launch.

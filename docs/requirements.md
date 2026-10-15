@@ -58,6 +58,7 @@ Guitarists/bassists planning a physical pedalboard; comparing board options; sha
 | N8 | Toast-only error/UX patterns |
 | N9 | **Launching with the dev placeholder catalog** (see decisions/003) |
 | N10 | Tiered/riser boards (deferred from v1 — needs tier offsets; see decisions/003 + S4) |
+| N11 | **A catalog-directory / SEO-content / affiliate business** — we are a true-scale board planner; the directory idea (see `docs/catalog-strategy-notes.md`) is not our product (its *data-sourcing & rights* ideas ARE adopted — ADR-003) |
 
 ## Global acceptance criteria
 | ID | Check |

@@ -1,0 +1,18 @@
+[
+	{ "Brand": "Acme", "Name": "Big Fuzz", "Width": 2.5, "Height": 4.7 },
+	{ "Brand": "Acme", "Name": "Big Fuzz (Green)", "Width": 2.5, "Height": 4.7 },
+	{ "Brand": "Acme", "Name": "Big-Fuzz", "Width": 2.5, "Height": 4.7 },
+	{ "Brand": "Acme", "Name": "Chorus Deluxe", "Width": 3, "Height": 4.5 },
+	{ "Brand": "Acme", "Name": "No Size" },
+	{
+		"Brand": "Beta",
+		"Name": "Swirl Phaser",
+		"Width": 4,
+		"Height": 5.1,
+		"Image": "Swirl Phaser.png"
+	},
+	{ "Name": "No Brand", "Width": 2, "Height": 3 },
+	{ "Brand": "Gamma", "Name": "Nested (Red)", "Width": 2, "Height": 3 },
+	{ "Brand": "Gamma", "Name": "Nested (Red) (Blue)", "Width": 2, "Height": 3 },
+	{ "Brand": "Acme", "Name": "Powerbox ISO", "Width": 5, "Height": 3 }
+]

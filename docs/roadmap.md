@@ -9,9 +9,9 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P0-02 | CI/CD pipeline (GitHub Actions → Cloudflare) | done |
 | P0-03 | Design tokens (CSS vars + JS theme map, dark default) | done |
 | P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | done |
-| P0-05 | Catalog schema + import transformer + synthetic seed | todo |
+| P0-05 | Catalog schema + import transformer + seed | in review — PR #5 |
 
-> **Sequencing:** P0-01/02/03/04 **done**. Next = **P0-05** (unblocked, build-strong). P0-05's transformer needs the owner's dataset only for the real import (the committed synthetic seed covers dev/CI). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead (see AGENTS.md §Session protocol rule 6).
+> **Sequencing:** P0-01/02/03/04 **done**. **P0-05 is in review — PR #5** (unblocked, build-strong); Next stays P0-05 until merged (AGENTS rule 9). P0-05's transformer needs the external catalog file only to run `import`/backfill (the committed seed covers dev/CI). **Owner-blocked rule (owner instruction, 2026-09-29):** when the next task is owner-blocked, agents STOP and wait — they do NOT skip ahead (see AGENTS.md §Session protocol rule 6).
 
 ## P1 — Canvas core
 | Task | Title | Status |
@@ -45,11 +45,19 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints
 - P4-03 Auto length calculation + cable list summary
 
+## P5 — Catalog completion (pre-launch) (expand when scheduled)
+> Runs **after P1–P4, before any public launch** — this is the "backfill all the rest of the pedals of all brands + clear everything" phase. The full data plan (steps, master inventory, image-rights workflow) lives in **`docs/catalog-backfill.md`**; the launch bar is ADR-003's exit criteria.
+> **Now (P0-05 seed):** 207 pedals / 13 brands / 10 boards; `source: 'placeholder'`; **mocked** images; `effectTypes` for 201/207; 485 source refs (340 image links) — a representative slice, not the full catalog.
+- **P5-01 Full-catalog backfill** — run `pnpm catalog:import` at full scale (all brands/models, no caps) + `catalog:seed`/`catalog:reclassify`; fill `effectTypes` (verified overrides) and specs (`power` + `jacks` after widening the jack-kind vocabulary) for every item; keep per-item `sources`.
+- **P5-02 Image clearance (rights-first)** — acquire + clear real images (permission / official brand assets / community / own) and replace every mocked PNG, flipping `source`. Depends on **P2-06** outreach. **No scraping** (ADR-003).
+- **P5-03 Provenance & verification sweep** — per-item verification date + confidence; dimension spot-check (≥10) against manufacturer spec sheets.
+- **P5-04 Launch-gate sign-off** — minimum bar (≥200 pedals / ≥10 brands, cleared assets only), A1–A5 green, `pnpm audit`, iOS export.
+
 ## v2 backlog (not scheduled)
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
 
 ## Launch gate (v1 public) — ALL must pass
-- [ ] Catalog contains cleared assets only — synthetic seed + placeholder fully swapped (decisions/003 exit criteria: `source ∈ {licensed, brand-assets, community, own}` + min 200 pedals/10 brands + dimension spot-check + note purged)
+- [ ] Catalog contains cleared assets only — mocked seed images + `placeholder`-sourced items fully swapped (decisions/003 exit criteria: `source ∈ {licensed, brand-assets, community, own}` + min 200 pedals/10 brands + dimension spot-check + note purged)
 - [ ] A1–A5 acceptance criteria green on production
 - [ ] `pnpm audit` clean; all dependencies < 6 months old
 - [ ] iOS Safari export verified on a real device

@@ -10,7 +10,10 @@
 		"typecheck": "tsc -b",
 		"lint": "biome ci",
 		"e2e": "playwright test",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"catalog:import": "node --experimental-strip-types tools/catalog-transform/index.ts import",
+		"catalog:seed": "node --experimental-strip-types tools/catalog-transform/index.ts seed",
+		"catalog:reclassify": "node --experimental-strip-types tools/catalog-transform/index.ts reclassify"
 	},
 	"dependencies": {
 		"konva": "^10.7.0",
@@ -28,6 +31,7 @@
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.2.7",
 		"@vitejs/plugin-react": "^6.1.1",
+		"sharp": "0.35.5",
 		"typescript": "~6.0.2",
 		"vite": "^8.3.0",
 		"vitest": "^5.0.2"

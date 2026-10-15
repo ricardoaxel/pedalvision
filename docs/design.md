@@ -49,16 +49,18 @@ type CatalogPedal = {
   name: string
   widthCm: number       // footprint incl. jacks
   heightCm: number
-  image: string         // filename under /pedal-assets/{kind}/{size}/
-  effectTypes: string[] // ["tremolo"]
+  image: string         // filename (mock/static) or URL (url) — see imageSource
+  imageSource: 'mock' | 'static' | 'url' // HOW the image is provided: mock=procedural placeholder; static=committed file under /pedal-assets/{kind}/{size}/; url=deferred same-origin/CDN (ADR-002). Orthogonal to `source` (rights).
+  effectTypes: EffectType[] // OUR taxonomy enum (EFFECT_TYPES): sound effects + non-effect roles ("delay", "preamp", "buffer", …); see ADR-003 §Effect taxonomy
   category: 'pedal' | 'supply'  // R6/N1 — lets the picker + custom creator distinguish pedals from power supplies
   jacks?: { kind: 'in'|'out'|'exp'|'power', edge: 'top'|'right'|'bottom'|'left', pos: number }[] // pos = 0..1 position ALONG the edge (e.g. 0.5 = centered) — required so cable attach points + length calc have a concrete coordinate (S3)
   power?: { voltage: 9|12|18|number, acDc: 'DC'|'AC', currentMa: number }
   variantOf?: string    // model id for colorways (avoid catalog bloat)
-  source: string        // provenance tag — see decisions/003 (never a name/URL)
+  source: SourceTag     // provenance tag — zod enum: licensed | brand-assets | community | own | placeholder | synthetic (ADR-003; never a name/URL)
+  sources?: { url: string, kind: ('info' | 'image')[] }[] // per-item source links a fact/image was verified against (manufacturer preferred; a link may be both; ADR-003 §Per-item sources)
   links?: { label: string, url: string }[] // v2 affiliate (locale-aware)
 }
-type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, source: string } // tiers/risers DEFERRED to v2 (S4)
+type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, imageSource: 'mock'|'static'|'url', source: SourceTag } // tiers/risers DEFERRED to v2 (S4)
 
 // scene (user data)
 type PlacedItem = { uid: string, refId: string, kind: 'pedal'|'supply', x: number, y: number, rotationDeg: number, z: number } // x,y = cm relative to parent board (or world if boardUid null); refId resolves to a catalog item (its `category` must match `kind`) OR an entry in Scene.customPedals
@@ -70,7 +72,7 @@ type CustomPedal = { refId: string, brand: string, name: string, widthCm: number
 type Scene = { id: string, version: 1, name: string, boards: PlacedBoard[], items: PlacedItem[], customPedals: CustomPedal[], endpoints: Endpoint[], cables: Cable[], updatedAt: string }
 type Settings = { units: 'cm' | 'in' }  // display only — storage is always cm
 ```
-External catalog formats are **transformed into this schema** by `tools/catalog-transform` (one-off dev tool). We do not inherit external conventions (inches, name-keyed entries, per-colorway duplicates).
+External catalog formats are **transformed into this schema** by `tools/catalog-transform` (one-off dev tool). This schema is our **own model**, not a rename of any external one — see ADR-003 §Schema originality for the field mapping (cm-native geometry, slug ids, referential variants, provenance enum, our effect taxonomy). We do not inherit external conventions, field names, or images (inches, name-keyed entries, per-colorway duplicates, source image files).
 
 ## Persistence (v1, no backend)
 - `localStorage`: settings + scene index (id → name, updatedAt)

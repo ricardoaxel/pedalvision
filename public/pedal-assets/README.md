@@ -31,11 +31,13 @@ user-supplied filename ever reaches it, encode it first.
 
 - **Committed.** These renditions ship with the app. Raw pipeline input lives in
   `assets/` at the repo root and is gitignored.
-- **Generated.** Sizes/production are produced by the asset pipeline (P2) —
-  do not hand-edit.
+- **Generated.** The committed images are **mock placeholders** (P0-05), drawn as
+  procedural shapes by `tools/catalog-transform` (`pnpm catalog:seed`) — do not
+  hand-edit. Real images will be produced by the asset pipeline (P2-04).
 - **Same-origin only.** Cross-origin images break canvas export.
-- `placeholder.png` is the P0-04 test fixture proving the URL helper + dev
-  server serve the correct path. **It must be deleted when P0-05's synthetic
-  seed images land** — it is a test artifact and must not ship in the catalog.
+- The seed carries real catalog facts (brand/name/dimensions) with mocked images
+  and is what fresh clones + CI run against. **Cleared images are the only
+  outstanding blocker** — the catalog must be swapped before public launch
+  (ADR-003).
 - When the catalog outgrows the Pages ceiling (~2k items), these move to R2 —
   see ADR-002 and the future `P2-07` task.
