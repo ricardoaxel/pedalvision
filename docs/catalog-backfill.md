@@ -16,21 +16,26 @@ governed by ADR-003 (sourcing, rights, provenance).
 | **mocked** | image is a procedural placeholder (`source: 'placeholder'`) |
 | **cleared** | image is a real, rights-checked asset (`source ∈ {licensed, brand-assets, community, own}`) |
 
-> **Every item below is `mocked` today** (procedural PNGs, `source: 'placeholder'`).
-> Real images are the single launch blocker and are never committed until cleared
-> (ADR-003). Per-pedal image status is in the appendix; the machine-readable
-> source of truth is the `source` field in `src/catalog/data/pedals.json`.
+> **Interim (2026-10-15):** images are now **129 brand `url` + 78 `mock`** (of 207
+> pedals); boards **6 `url` + 4 `mock`** — a recorded direct brand image URL is
+> rendered, mock is the fallback (ADR-003 §Brand image URLs). There are still
+> **0 `cleared`**: `source` stays `placeholder`, so the launch blocker is
+> unchanged. Real, rights-checked assets are never committed until cleared
+> (ADR-003). Per-pedal status is in the appendix; the machine-readable source of
+> truth is the `source` field in `src/catalog/data/pedals.json`.
 
 ## Current state (committed seed)
 
-**207 pedals · 13 brands · 10 boards**; `source: 'placeholder'`; mocked images;
+**207 pedals · 13 brands · 10 boards**; `source: 'placeholder'`; images **129
+`url` + 78 `mock`** (pedals) / **6 `url` + 4 `mock`** (boards);
 `effectTypes` present for **201/207** (the 6 blanks are all power supplies).
 **Source links:** the verified base models carry per-item `sources: [{url,
 kind}]` — **485 refs, 340 marked `image` across 170 models** (manufacturer/
 authorized preferred; ADR-003 §Per-item sources). A colorway variant resolves to
-its base's sources. **Image links are recorded but no image is downloaded** —
-every image is still `mock`. Unverified items have no links (their facts come
-only from the aggregate, never cited).
+its base's sources. **Image links are recorded but no image is downloaded** — a
+direct-file link is *rendered* (hotlinked) via `imageSource: 'url'`, others stay
+`mock` (ADR-003 §Brand image URLs). Unverified items have no links (their facts
+come only from the aggregate, never cited).
 
 | Brand | Total | V | C | — | Images (cleared/total) | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -47,7 +52,7 @@ only from the aggregate, never cited).
 | Big Joe | 2 | 0 | 0 | 2 | 0 / 2 | supplies |
 | Behringer | 1 | 1 | 0 | 0 | 0 / 1 | P1 is an IEM amp, not a supply |
 | Effects Bakery | 1 | 0 | 0 | 1 | 0 / 1 | supply |
-| **Total** | **207** | **103** | **98** | **6** | **0 / 207** | all `mocked` |
+| **Total** | **207** | **103** | **98** | **6** | **0 / 207** | interim: 129 `url` / 78 `mock` |
 
 The 10 pilot brands (BOSS … Joyo) had their creatively-named pedals verified
 against official sources; the remaining supply brands (Big Joe, Effects Bakery)
@@ -56,17 +61,19 @@ is a personal in-ear-monitor amp, so it is a **pedal** (`utility`), not a supply
 
 ## Image status & acquisition (rights-first)
 
-**Status (today):** every one of the 207 seed items is **`mocked`**; **0 `cleared`**.
+**Status (today):** **0 `cleared`**; **129 pedals render a brand `url`**, 78 are
+`mock` (boards: 6 `url` / 4 `mock`). Still all `source: 'placeholder'`.
 
 Two orthogonal fields record an item's image (schema: `src/catalog/schema.ts`):
 
 - **`imageSource`** — *how* the image is provided: `mock` (procedural
-  placeholder; the seed today), `static` (a committed file under
-  `public/pedal-assets/`), or `url` (deferred same-origin/CDN path, ADR-002).
-  All 207 are `mock`.
+  placeholder), `static` (a committed file under `public/pedal-assets/`), or
+  `url` (a recorded direct brand URL, rendered by hotlink today). 129 pedals /
+  6 boards are `url`; the rest are `mock` (ADR-003 §Brand image URLs).
 - **`source`** — *rights* provenance: `placeholder` = not cleared; `licensed` /
-  `brand-assets` / `community` / `own` = cleared. So `mocked` ⇔ `source:
-  placeholder`, and `cleared` ⇔ `imageSource: static|url` + a cleared `source`.
+  `brand-assets` / `community` / `own` = cleared. So `cleared` ⇔ `imageSource`
+  is a real asset **and** `source` is cleared; a `url` today is still
+  `placeholder` (not cleared).
 
 Both are mirrored per-pedal in the appendix below.
 
@@ -178,7 +185,7 @@ committed-image **byte-determinism** test.
 
 ## Appendix — per-pedal image status & sources (snapshot)
 
-Snapshot from `src/catalog/data/pedals.json` (source of truth). `Image` = rights status (all `mocked` today). `Sources` = total per-item source refs; `Img links` = refs marked `image` (links only — no image is downloaded).
+Snapshot from `src/catalog/data/pedals.json` (source of truth). `Image` = rights status (`0 cleared` today; rights are `placeholder`, though 129 items now render a brand `url` — see §Image status). `Sources` = total per-item source refs; `Img links` = refs marked `image`.
 
 | Brand | Model | Image | Sources | Img links |
 | --- | --- | --- | --- | --- |

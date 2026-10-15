@@ -89,6 +89,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - Do not read whole docs unless the task says so — read the pointed sections only.
 - Code, comments, and UI text in English.
 - Catalog/image provenance is documented in `docs/decisions/003-catalog-data.md` ONLY. Never reference external dataset sources in code, commits, filenames, or public assets.
+- **Catalog images (owner decision, 2026-10-15):** where a direct official brand image URL is recorded in `sources`, render it (`imageSource: "url"`) — the procedural mock is the **fallback only** (items with no usable URL). No scraping/download; hotlink the recorded URL. Prefer top-down cropped cutouts (true-scale). See ADR-003 §Brand image URLs.
 - **NEVER run scaffolding/build tools with `--overwrite`/force flags in the repo root** — `docs/`, `AGENTS.md`, and the PDF are precious. Merge scaffold files manually. (This rule exists because `--overwrite` deleted the entire `docs/` tree on 2026-09-29.)
 
 ## Conventions
