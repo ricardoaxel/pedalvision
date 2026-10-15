@@ -157,4 +157,42 @@ test.describe("touch gestures (CDP-injected, Chromium)", () => {
 		// …but the board stayed put (it did not follow the pan on top of its drag).
 		expect(boardAfterPan).toBe(boardAfterCancel);
 	});
+
+	test("a pinch that starts on a board never moves the board", async ({
+		page,
+	}) => {
+		const { cx, cy, dispatch } = await openStage(page);
+		const stage = page.getByTestId("stage");
+
+		await page.getByTestId("add-board-boss-bcb-1000").click();
+		await expect(stage).toHaveAttribute("data-boards", "1");
+		await page.waitForTimeout(250);
+		const initial = await stage.getAttribute("data-positions");
+
+		// Finger 1 lands on the board; finger 2 lands immediately, with NO drag
+		// move in between (the real-device case that broke the first fix).
+		await dispatch("touchStart", [{ x: cx, y: cy }]);
+		await dispatch("touchStart", [
+			{ x: cx, y: cy },
+			{ x: cx + 60, y: cy },
+		]);
+
+		// Pinch + pan with both fingers.
+		for (let step = 1; step <= 6; step++) {
+			const ox = (160 * step) / 6;
+			const oy = (100 * step) / 6;
+			await dispatch("touchMove", [
+				{ x: cx + ox, y: cy + oy },
+				{ x: cx + 60 + ox * 1.5, y: cy + oy },
+			]);
+		}
+		const xDuringPan = await stage.getAttribute("data-x");
+		await dispatch("touchEnd", []);
+		await page.waitForTimeout(120);
+
+		// The viewport navigated…
+		expect(xDuringPan).not.toBe("0");
+		// …and the board never moved.
+		expect(await stage.getAttribute("data-positions")).toBe(initial);
+	});
 });

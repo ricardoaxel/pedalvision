@@ -1,8 +1,9 @@
 import type Konva from "konva";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
+import { useGesture } from "../state/gesture";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -44,18 +45,34 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 
 	const moveBoard = useScene((state) => state.moveBoard);
 	const selectBoard = useSelection((state) => state.selectBoard);
+	// While the viewport owns the gesture (pan/pinch), the board must not drag:
+	// a second finger would otherwise move it with both the drag and the pan.
+	const navigating = useGesture((state) => state.navigating);
 
 	const groupRef = useRef<Konva.Group>(null);
+	const draggingRef = useRef(false);
 	useEffect(() => {
 		registerNode(board.uid, groupRef.current);
 		return () => registerNode(board.uid, null);
 	}, [board.uid, registerNode]);
 
-	const commitPosition = () => {
+	const commitPosition = useCallback(() => {
 		const node = groupRef.current;
 		if (!node) return;
 		moveBoard(board.uid, pxToCm(node.x()), pxToCm(node.y()));
-	};
+	}, [board.uid, moveBoard]);
+
+	// When the viewport takes the gesture over (pan/pinch), drop the board where
+	// it is and stop dragging. Toggling `draggable` off can cancel Konva's drag
+	// *without* a `dragend`, so commit explicitly from the node's current position
+	// before stopping (otherwise the moved position is silently lost).
+	useEffect(() => {
+		if (!navigating) return;
+		if (!draggingRef.current) return;
+		draggingRef.current = false;
+		commitPosition();
+		groupRef.current?.stopDrag();
+	}, [navigating, commitPosition]);
 
 	const label = definition ? `${definition.brand} ${definition.name}` : "Board";
 	const dims = `${cmToDisplay(footprint.widthCm, "cm")} × ${cmToDisplay(footprint.heightCm, "cm")} cm`;
@@ -74,7 +91,7 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 			x={cmToPx(board.x)}
 			y={cmToPx(board.y)}
 			rotation={board.rotationDeg}
-			draggable
+			draggable={!navigating}
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
 				selectBoard(board.uid);
@@ -83,7 +100,13 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 				event.cancelBubble = true;
 				selectBoard(board.uid);
 			}}
-			onDragEnd={commitPosition}
+			onDragStart={() => {
+				draggingRef.current = true;
+			}}
+			onDragEnd={() => {
+				draggingRef.current = false;
+				commitPosition();
+			}}
 		>
 			{status === "loaded" && image ? (
 				<KonvaImage image={image} width={widthPx} height={heightPx} />

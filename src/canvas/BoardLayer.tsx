@@ -2,6 +2,7 @@ import type Konva from "konva";
 import { useCallback, useEffect, useRef } from "react";
 import { Layer, Transformer } from "react-konva";
 import { pxToCm } from "../lib/geometry";
+import { useGesture } from "../state/gesture";
 import { useScene } from "../state/scene";
 import { useSelection } from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
@@ -26,6 +27,8 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 	const selectedUid = useSelection((state) => state.selectedBoardUid);
 	const moveBoard = useScene((state) => state.moveBoard);
 	const rotateBoard = useScene((state) => state.rotateBoard);
+	// Suppress rotation while the viewport owns the gesture (pan/pinch).
+	const navigating = useGesture((state) => state.navigating);
 
 	const transformerRef = useRef<Konva.Transformer>(null);
 	const nodesRef = useRef(new Map<string, Konva.Group>());
@@ -37,16 +40,21 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 
 	// Attach the Transformer to the selected board's node. Runs after the child
 	// BoardNode effects have registered the node (child effects fire first), so a
-	// selection that exists before mount still attaches. `boards` is in the deps
-	// so removing the selected board detaches; drags commit on dragend, so this
-	// does not re-run per pointer-move.
+	// selection that exists before mount still attaches. Detached while the
+	// viewport is navigating (a pinch must not rotate the board). `boards` is in
+	// the deps so removing the selected board detaches; drags commit on dragend,
+	// so this does not re-run per pointer-move.
 	useEffect(() => {
 		const transformer = transformerRef.current;
 		if (!transformer) return;
+		if (navigating) {
+			transformer.nodes([]);
+			return;
+		}
 		const board = boards.find((candidate) => candidate.uid === selectedUid);
 		const node = board ? nodesRef.current.get(board.uid) : undefined;
 		transformer.nodes(node ? [node] : []);
-	}, [selectedUid, boards]);
+	}, [selectedUid, boards, navigating]);
 
 	// A single transform gesture writes both rotation and any origin shift
 	// (rotating about the node centre moves the top-left origin).

@@ -18,17 +18,6 @@ interface Size {
 	height: number;
 }
 
-/** Stop any in-flight Konva drag (a two-finger gesture takes the viewport over). */
-function stopDragging(container: Konva.Container): void {
-	for (const child of container.getChildren()) {
-		if (child.isDragging()) child.stopDrag();
-		const nested = child as unknown as { getChildren?: () => Konva.Node[] };
-		if (typeof nested.getChildren === "function") {
-			stopDragging(child as Konva.Container);
-		}
-	}
-}
-
 /**
  * The canvas host: a Konva `Stage` that fills its container and owns the
  * viewport (pan/zoom) as a stage transform (design.md §Canvas architecture).
@@ -67,14 +56,7 @@ export function Stage() {
 		return stageRef.current?.getIntersection(point) != null;
 	}, []);
 
-	// A second finger starts pinch/pan: stop any board drag so it doesn't move
-	// with both the drag and the pan (Copilot review, 2026-10-15).
-	const cancelObjectDrag = useCallback(() => {
-		const stage = stageRef.current;
-		if (stage) stopDragging(stage);
-	}, []);
-
-	useViewportGestures(containerRef, hitTest, cancelObjectDrag);
+	useViewportGestures(containerRef, hitTest);
 
 	useEffect(() => {
 		const element = containerRef.current;

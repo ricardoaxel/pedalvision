@@ -1,5 +1,6 @@
 import type { RefObject } from "react";
 import { useEffect } from "react";
+import { useGesture } from "../state/gesture";
 import { type Point, useViewport, type Viewport } from "../state/viewport";
 import {
 	type GestureEvent,
@@ -36,14 +37,13 @@ function snapshot(): Viewport {
  * under a press. P1-03 passes a Konva hit test so a single pointer on a board
  * drags the board while empty space pans.
  *
- * `onNavigationStart()` fires when a second pointer turns the gesture into a
- * pinch. Viewport navigation then owns the gesture, so the caller must stop any
- * object drag in flight (otherwise the object follows both the drag and the pan).
+ * While a viewport gesture is active (pan or pinch) `state/gesture.ts`
+ * `navigating` is set, so board dragging/rotation are suppressed — a second
+ * finger can never make a board follow both the drag and the pan.
  */
 export function useViewportGestures(
 	containerRef: RefObject<HTMLElement | null>,
 	hitTest?: (point: Point) => boolean,
-	onNavigationStart?: () => void,
 ): void {
 	useEffect(() => {
 		const element = containerRef.current;
@@ -60,16 +60,16 @@ export function useViewportGestures(
 		};
 
 		const dispatch = (event: GestureEvent) => {
-			const wasPinch = machine.gesture.type === "pinch";
 			const result = reduceGesture(machine, event, snapshot());
 			machine = result.machine;
 			if (result.viewport) {
 				useViewport.getState().setViewport(result.viewport);
 			}
-			// Two fingers now own the gesture: let the caller cancel an in-flight
-			// object drag so it doesn't move with both the drag and the pan.
-			if (!wasPinch && result.machine.gesture.type === "pinch") {
-				onNavigationStart?.();
+			// The viewport owns the gesture whenever it isn't idle: suppress board
+			// dragging/rotation so a second finger can't move a board while panning.
+			const navigating = result.machine.gesture.type !== "idle";
+			if (navigating !== useGesture.getState().navigating) {
+				useGesture.getState().setNavigating(navigating);
 			}
 		};
 
@@ -135,5 +135,5 @@ export function useViewportGestures(
 			window.removeEventListener("blur", onWindowBlur);
 			element.removeEventListener("wheel", onWheel);
 		};
-	}, [containerRef, hitTest, onNavigationStart]);
+	}, [containerRef, hitTest]);
 }
