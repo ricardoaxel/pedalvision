@@ -135,29 +135,24 @@ describe("boardToWorld / worldToBoard", () => {
 
 describe("centre-origin rotation (Transformer commit math)", () => {
 	// When Konva's Transformer rotates a board it rotates about the node centre,
-	// which moves the stored origin (top-left). The renderer commits the node's
-	// post-transform x/y + rotation; this asserts the value it commits keeps the
-	// board's world centre fixed — the contract BoardLayer relies on.
-	it.each([0, 15, 37.5, 90, 180, -123])(
-		"rotating about the centre by %d° keeps the world centre fixed",
-		(deg) => {
-			const size = { widthCm: 40, heightCm: 20 };
-			const centreLocal = { x: size.widthCm / 2, y: size.heightCm / 2 };
-			const board = { x: 10, y: 5, rotationDeg: 0 };
-			const before = boardToWorld(centreLocal, board);
+	// which moves the stored origin (top-left). These pin the committed values
+	// for a fixed board to literals, so the check cannot cancel against the same
+	// helper it exercises.
+	it("pins the committed origin and world centre for a 90° rotation", () => {
+		const size = { widthCm: 40, heightCm: 20 };
+		const centreLocal = { x: size.widthCm / 2, y: size.heightCm / 2 };
+		const start = { x: 10, y: 5, rotationDeg: 0 };
 
-			const rotatedCentreLocal = rotatePoint(centreLocal, ORIGIN, deg);
-			const nextBoard = {
-				x: before.x - rotatedCentreLocal.x,
-				y: before.y - rotatedCentreLocal.y,
-				rotationDeg: deg,
-			};
-			const after = boardToWorld(centreLocal, nextBoard);
+		// Sanity: the start centre is at (30, 15) world cm.
+		expect(boardToWorld(centreLocal, start)).toEqual({ x: 30, y: 15 });
 
-			expect(after.x).toBeCloseTo(before.x, 10);
-			expect(after.y).toBeCloseTo(before.y, 10);
-		},
-	);
+		// Rotating 90° CW about the centre commits origin (40, -5); the centre
+		// must still be (30, 15).
+		const committed = { x: 40, y: -5, rotationDeg: 90 };
+		const centre = boardToWorld(centreLocal, committed);
+		expect(centre.x).toBeCloseTo(30, 10);
+		expect(centre.y).toBeCloseTo(15, 10);
+	});
 });
 
 describe("A1 invariant — viewport independence", () => {

@@ -1,5 +1,5 @@
 import type Konva from "konva";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Layer, Transformer } from "react-konva";
 import { pxToCm } from "../lib/geometry";
 import { useScene } from "../state/scene";
@@ -35,13 +35,18 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 		else nodesRef.current.delete(uid);
 	}, []);
 
-	// Attach the Transformer declaratively to the selected board's node. No
-	// imperative `nodes()` call per render: only the selected uid + the boards
-	// list (for removal) drive it, so dragging doesn't re-bind anchors per frame.
-	const selectedBoard = boards.find((board) => board.uid === selectedUid);
-	const selectedNode = selectedBoard
-		? nodesRef.current.get(selectedBoard.uid)
-		: undefined;
+	// Attach the Transformer to the selected board's node. Runs after the child
+	// BoardNode effects have registered the node (child effects fire first), so a
+	// selection that exists before mount still attaches. `boards` is in the deps
+	// so removing the selected board detaches; drags commit on dragend, so this
+	// does not re-run per pointer-move.
+	useEffect(() => {
+		const transformer = transformerRef.current;
+		if (!transformer) return;
+		const board = boards.find((candidate) => candidate.uid === selectedUid);
+		const node = board ? nodesRef.current.get(board.uid) : undefined;
+		transformer.nodes(node ? [node] : []);
+	}, [selectedUid, boards]);
 
 	// A single transform gesture writes both rotation and any origin shift
 	// (rotating about the node centre moves the top-left origin).
@@ -64,7 +69,6 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 			))}
 			<Transformer
 				ref={transformerRef}
-				nodes={selectedNode ? [selectedNode] : []}
 				enabledAnchors={[]}
 				rotateEnabled
 				onTransformEnd={handleTransformEnd}
