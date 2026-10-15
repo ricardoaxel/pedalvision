@@ -1,6 +1,6 @@
 # P1-01: True-scale engine (geometry lib)
 
-**Phase:** P1 · **Status:** todo · **Model:** build-cheap
+**Phase:** P1 · **Status:** in review — PR #8 · **Model:** build-cheap
 
 ## Goal
 `src/lib/geometry.ts` implements the cm↔px mapping (`px = cm × PX_PER_CM × zoom`), `PX_PER_CM` constant, rotation-about-center math, board-relative ↔ world coordinate transforms, and cm↔in display conversion — fully unit-tested, no canvas code yet.
