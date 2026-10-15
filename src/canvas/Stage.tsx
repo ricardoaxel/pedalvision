@@ -1,9 +1,14 @@
+import Konva from "konva";
 import { useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useViewport } from "../state/viewport";
 import { GridLayer } from "./GridLayer";
 import { useCanvasTheme } from "./useCanvasTheme";
 import { useViewportGestures } from "./useViewportGestures";
+
+// Enable hit detection while dragging (task note). Harmless with no draggable
+// objects yet; required once P1-03/P1-04 add board/pedal dragging.
+Konva.hitOnDragEnabled = true;
 
 interface Size {
 	width: number;

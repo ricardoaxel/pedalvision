@@ -108,7 +108,7 @@ describe("applyPinch", () => {
 		).toEqual(start.midpoint);
 	});
 
-	it("treats a zero start distance as a pure translate", () => {
+	it("treats a zero/small start distance as a pure translate (no huge factor)", () => {
 		const start = {
 			viewport: { scale: 2, x: 0, y: 0 },
 			distance: 0,
@@ -117,6 +117,16 @@ describe("applyPinch", () => {
 		const result = applyPinch(start, 100, { x: 10, y: 10 });
 		expect(result.scale).toBe(2);
 		expect(result).toEqual({ scale: 2, x: 10, y: 10 });
+	});
+
+	it("still scales for a normal start distance", () => {
+		const start = {
+			viewport: { scale: 1, x: 0, y: 0 },
+			distance: 40,
+			midpoint: { x: 20, y: 20 },
+		};
+		const result = applyPinch(start, 80, { x: 20, y: 20 });
+		expect(result.scale).toBe(2);
 	});
 });
 
@@ -137,7 +147,7 @@ describe("useViewport store", () => {
 		expect(useViewport.getState().scale).toBe(MAX_SCALE);
 	});
 
-	it("setViewport applies pan without touching scale", () => {
+	it("setViewport replaces the whole viewport", () => {
 		useViewport.getState().setViewport({ scale: 1.5, x: 500, y: -200 });
 		const { scale, x, y } = useViewport.getState();
 		expect({ scale, x, y }).toEqual({ scale: 1.5, x: 500, y: -200 });

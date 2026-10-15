@@ -1,14 +1,18 @@
 import { create } from "zustand";
+import type { Point } from "../lib/geometry";
+
+export type { Point };
 
 /** Zoom bounds (design.md §Canvas architecture): 0.1×–8×. */
 export const MIN_SCALE = 0.1;
 export const MAX_SCALE = 8;
 
-/** A point in screen px, relative to the stage container's top-left. */
-export interface Point {
-	x: number;
-	y: number;
-}
+/**
+ * Pinch references below this finger distance (px) are ignored (treated as a
+ * pure translate) — two near-coincident fingers would otherwise produce a huge
+ * scale factor.
+ */
+export const MIN_PINCH_DISTANCE_PX = 8;
 
 /**
  * The viewport *is* the stage transform: `scale` is the zoom factor and `x`/`y`
@@ -85,7 +89,8 @@ export function applyPinch(
 	distance: number,
 	midpoint: Point,
 ): Viewport {
-	const factor = start.distance > 0 ? distance / start.distance : 1;
+	const factor =
+		start.distance >= MIN_PINCH_DISTANCE_PX ? distance / start.distance : 1;
 	const scale = clampScale(start.viewport.scale * factor);
 	const world = screenToWorld(start.midpoint, start.viewport);
 	return {
