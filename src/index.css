@@ -80,6 +80,99 @@ body {
 	outline-offset: 2px;
 }
 
+/* Temporary board picker (P1-03) — a plain list of catalog boards. Replaced by
+ * the picker modal in P2-01. */
+.board-picker {
+	position: absolute;
+	top: var(--space-4);
+	left: var(--space-4);
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+	width: min(240px, calc(100vw - var(--space-5) * 2));
+	max-height: min(320px, 40vh);
+	padding: var(--space-3);
+	color: var(--color-ink);
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-raised);
+}
+
+.board-picker__title {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.board-picker__list {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	overflow-y: auto;
+	list-style: none;
+}
+
+.board-picker__item {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	width: 100%;
+	padding: var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	text-align: left;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.board-picker__item:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.board-picker__item:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.board-picker__dims {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.board-picker__remove {
+	padding: var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-danger);
+	background-color: transparent;
+	border: 1px solid var(--color-danger-border);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.board-picker__remove:hover {
+	background-color: var(--color-danger-surface);
+}
+
+.board-picker__remove:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
 .visually-hidden {
 	position: absolute;
 	width: 1px;

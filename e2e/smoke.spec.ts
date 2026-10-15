@@ -4,7 +4,8 @@ test("app loads and renders the canvas stage", async ({ page }) => {
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await expect(stage.locator("canvas")).toBeVisible();
+	// The stage has one canvas per Konva layer (grid, boards).
+	await expect(stage.locator("canvas").first()).toBeVisible();
 });
 
 test("wheel zooms to the pointer (stage transform changes)", async ({
@@ -12,11 +13,13 @@ test("wheel zooms to the pointer (stage transform changes)", async ({
 }) => {
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
-	const canvas = stage.locator("canvas");
-	await expect(canvas).toBeVisible();
+	await expect(stage).toBeVisible();
+	await expect(stage.locator("canvas").first()).toBeVisible();
 
 	const before = Number(await stage.getAttribute("data-scale"));
-	await canvas.hover();
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 	await page.mouse.wheel(0, -300);
 
 	await expect
@@ -80,4 +83,24 @@ test("wheel during a drag is ignored (no stale-baseline jump)", async ({
 	expect(Number(await stage.getAttribute("data-scale"))).toBe(scaleDuringDrag);
 
 	await page.mouse.up();
+});
+
+test("adding a board places a selectable node at the viewport centre", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await expect(stage).toHaveAttribute("data-boards", "0");
+
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+
+	// The board lands at the viewport centre, so a click there must hit the
+	// Konva node (selecting it and revealing the remove control). A click on
+	// empty canvas would clear selection instead.
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+	await expect(page.getByTestId("remove-board")).toBeVisible();
 });

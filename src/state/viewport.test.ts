@@ -5,8 +5,10 @@ import {
 	DEFAULT_VIEWPORT,
 	MAX_SCALE,
 	MIN_SCALE,
+	pxToWorldCm,
 	screenToWorld,
 	useViewport,
+	viewportCenterCm,
 	worldToScreen,
 	zoomAroundPoint,
 } from "./viewport";
@@ -130,6 +132,31 @@ describe("applyPinch", () => {
 	});
 });
 
+describe("pxToWorldCm / viewportCenterCm", () => {
+	it("converts stage-local px to world cm (÷ PX_PER_CM)", () => {
+		expect(pxToWorldCm({ x: 40, y: 32 }, DEFAULT_VIEWPORT)).toEqual({
+			x: 10,
+			y: 8,
+		});
+	});
+
+	it("maps the canvas centre to world cm", () => {
+		// centre (400,300) px ÷ 4 = (100,75) cm at the default viewport
+		expect(
+			viewportCenterCm({ width: 800, height: 600 }, DEFAULT_VIEWPORT),
+		).toEqual({ x: 100, y: 75 });
+	});
+
+	it("respects pan and zoom", () => {
+		const viewport = { scale: 2, x: -200, y: -100 };
+		// local = ((400+200)/2, (300+100)/2) = (300,200) px ÷ 4 = (75,50) cm
+		expect(viewportCenterCm({ width: 800, height: 600 }, viewport)).toEqual({
+			x: 75,
+			y: 50,
+		});
+	});
+});
+
 describe("useViewport store", () => {
 	beforeEach(() => {
 		useViewport.getState().reset();
@@ -138,6 +165,13 @@ describe("useViewport store", () => {
 	it("starts at 1× with the origin at the top-left corner", () => {
 		const { scale, x, y } = useViewport.getState();
 		expect({ scale, x, y }).toEqual(DEFAULT_VIEWPORT);
+	});
+
+	it("setSize records the canvas size without touching the transform (A1)", () => {
+		useViewport.getState().setSize({ width: 1234, height: 567 });
+		const { scale, x, y, size } = useViewport.getState();
+		expect({ scale, x, y }).toEqual(DEFAULT_VIEWPORT);
+		expect(size).toEqual({ width: 1234, height: 567 });
 	});
 
 	it("zoomBy zooms about the anchor and clamps", () => {

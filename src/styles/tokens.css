@@ -16,6 +16,8 @@
 	/* Canvas — strictly neutral (no hue cast on content) */
 	--color-canvas-bg: #191a1c;
 	--color-grid-dot: #43484f;
+	/* Fallback board edge — clears 3:1 vs canvas-bg (grid dots are ~1.9:1). */
+	--color-board-outline: #5f6a76;
 
 	/* Surfaces & ink — cool tint lives here, never on the canvas */
 	--color-surface: #2b3036;
@@ -91,6 +93,7 @@
 	/* Canvas — neutral */
 	--color-canvas-bg: #e4e7ea;
 	--color-grid-dot: #a2abb5;
+	--color-board-outline: #6b7580;
 
 	/* Surfaces & ink */
 	--color-surface: #ffffff;

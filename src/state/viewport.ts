@@ -1,7 +1,29 @@
 import { create } from "zustand";
-import type { Point } from "../lib/geometry";
+import { type Point, PX_PER_CM } from "../lib/geometry";
 
 export type { Point };
+
+/** The stage's pixel size (its container's content box). */
+export interface CanvasSize {
+	width: number;
+	height: number;
+}
+
+/** Screen px → cm under `viewport` (stage-local px ÷ PX_PER_CM). */
+export function pxToWorldCm(point: Point, viewport: Viewport): Point {
+	const local = screenToWorld(point, viewport);
+	return { x: local.x / PX_PER_CM, y: local.y / PX_PER_CM };
+}
+
+/**
+ * The world cm point under the centre of the canvas (screen px). Used to drop a
+ * newly-added board "at the viewport centre" regardless of pan/zoom. Zoom/pan
+ * only move what is under the centre — they never change the world positions of
+ * existing objects (A1).
+ */
+export function viewportCenterCm(size: CanvasSize, viewport: Viewport): Point {
+	return pxToWorldCm({ x: size.width / 2, y: size.height / 2 }, viewport);
+}
 
 /** Zoom bounds (design.md §Canvas architecture): 0.1×–8×. */
 export const MIN_SCALE = 0.1;
@@ -101,20 +123,31 @@ export function applyPinch(
 }
 
 interface ViewportStore extends Viewport {
+	/** The stage's current pixel size (0 until the first ResizeObserver tick). */
+	size: CanvasSize;
 	/** Zoom about a screen-space anchor (clamped). */
 	zoomBy: (factor: number, anchor: Point) => void;
 	/** Set the whole viewport (used by pan/pinch gesture loops). */
 	setViewport: (viewport: Viewport) => void;
+	/** Record the stage size (ResizeObserver). Never affects world positions. */
+	setSize: (size: CanvasSize) => void;
 	/** Back to 1×, origin at the container's top-left. */
 	reset: () => void;
 }
 
 export const useViewport = create<ViewportStore>((set) => ({
 	...DEFAULT_VIEWPORT,
+	size: { width: 0, height: 0 },
 	zoomBy: (factor, anchor) =>
 		set((viewport) =>
 			zoomAroundPoint(viewport, viewport.scale * factor, anchor),
 		),
 	setViewport: (viewport) => set({ ...viewport }),
+	setSize: (size) =>
+		set((state) =>
+			state.size.width === size.width && state.size.height === size.height
+				? state
+				: { size },
+		),
 	reset: () => set({ ...DEFAULT_VIEWPORT }),
 }));
