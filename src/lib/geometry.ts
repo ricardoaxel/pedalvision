@@ -27,6 +27,13 @@ export interface Point {
  * A placed board's transform in world cm. `x`/`y` locate the board's local
  * origin in world space; `rotationDeg` is clockwise-positive (Konva
  * convention). See docs/design.md §Data model (PlacedBoard).
+ *
+ * Pivot contract: board-local coordinates are relative to this origin, and
+ * that origin is the board's **rotation pivot**. The Konva board group must
+ * therefore be rendered with `offset` 0 (pivot = group position). If a board
+ * is later pivoted about its centre via `offset = (w/2, h/2)`, callers must
+ * pre-adjust before using {@link boardToWorld}/{@link worldToBoard}, or drop
+ * hit-tests will land offset by the rotated half-footprint.
  */
 export interface BoardTransform {
 	x: number;
@@ -73,8 +80,9 @@ export function rotatePoint(point: Point, center: Point, deg: number): Point {
 
 /**
  * Map a board-local point (cm, board's unrotated frame) to world cm:
- * rotate about the board origin, then translate by the board's world
- * position. Board-attached items are stored board-relative (design.md).
+ * rotate about the board's local origin (the rotation pivot — see
+ * {@link BoardTransform}), then translate by the board's world position.
+ * Board-attached items are stored board-relative (design.md).
  */
 export function boardToWorld(item: Point, board: BoardTransform): Point {
 	const rotated = rotatePoint(item, ORIGIN, board.rotationDeg);
@@ -97,5 +105,7 @@ export function worldToBoard(point: Point, board: BoardTransform): Point {
  */
 export function cmToDisplay(cm: number, units: DisplayUnits): number {
 	const value = units === "in" ? cm / CM_PER_INCH : cm;
-	return Math.round(value * 100) / 100;
+	const rounded = Math.round(value * 100) / 100;
+	// Normalise -0 → 0 so display paths never format "-0".
+	return rounded === 0 ? 0 : rounded;
 }

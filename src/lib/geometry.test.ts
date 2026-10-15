@@ -164,7 +164,12 @@ describe("A1 invariant — viewport independence", () => {
 		},
 	];
 
-	it("stores one world position that no viewport transform can move", () => {
+	// A1 is largely structural: `boardToWorld` has no viewport input, so the
+	// stored world cm cannot depend on it. This test proves the *other* half —
+	// that the world↔screen mapping round-trips correctly under three different
+	// viewport transforms (a unit swap that stayed internally consistent would
+	// slip past it; the concrete `cmToPx(10) === 40` pin is what fixes the unit).
+	it("world↔screen round-trips identically across different viewport transforms", () => {
 		const world = boardToWorld(item, board);
 		const screens = viewports.map((vp) => ({
 			vp,
@@ -215,9 +220,14 @@ describe("cmToDisplay", () => {
 		expect(cmToDisplay(0, "in")).toBe(0);
 	});
 
-	it("does not round the stored value — only the display value", () => {
-		const stored = 1;
-		expect(cmToDisplay(stored, "in")).toBe(0.39);
-		expect(stored).toBe(1);
+	it("normalises -0 to 0", () => {
+		expect(Object.is(cmToDisplay(-0.001, "cm"), 0)).toBe(true);
+		expect(Object.is(cmToDisplay(0, "in"), 0)).toBe(true);
+	});
+
+	it("rounds only for display — geometry keeps full precision", () => {
+		const precise = 12.34567;
+		expect(cmToDisplay(precise, "cm")).toBe(12.35);
+		expect(pxToCm(cmToPx(precise, 2.5), 2.5)).toBeCloseTo(precise, 12);
 	});
 });
