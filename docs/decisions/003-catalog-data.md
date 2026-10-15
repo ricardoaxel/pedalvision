@@ -86,6 +86,13 @@ continues, without waiting for P5-02.
   (or are replaced in P5-02).
 - **Boards:** same rule; official board image URLs were researched + recorded in
   `sources` (7 of 10 — 3 discontinued models have no official image).
+- **Temporary dev-only exception (owner-directed, 2026-10-15):** a small set of
+  local top-down test images were added as committed `static` files for
+  development (and to ship nicer example renders), to be **deleted later**. They
+  are `source: "placeholder"` (not cleared) and do **not** change the rights
+  policy or the launch gate; the pipeline's "no download" rule (§no scraping)
+  still governs the catalog itself. Remove them by reverting the `imageSource`
+  to `url`/`mock` and deleting the files.
 
 ## Schema originality (our own model)
 

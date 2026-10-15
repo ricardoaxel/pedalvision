@@ -22,8 +22,34 @@ const committedBoards = readJson<CatalogBoard[]>(
 // image and have no committed PNG.
 const mockPedals = committedPedals.filter((p) => p.imageSource === "mock");
 const mockBoards = committedBoards.filter((b) => b.imageSource === "mock");
-const mockPedal = mockPedals[0];
-const mockBoard = mockBoards[0];
+// `static` items are committed files too (kept, not generator-drawn).
+const staticPedals = committedPedals.filter((p) => p.imageSource === "static");
+const staticBoards = committedBoards.filter((b) => b.imageSource === "static");
+
+// Synthetic mock fixtures (independent of the committed data, which may have no
+// mock boards at all).
+const mockPedal: CatalogPedal = {
+	id: "test-pedal",
+	brand: "Test",
+	name: "Pedal",
+	widthCm: 6,
+	heightCm: 12,
+	image: "test-pedal.png",
+	imageSource: "mock",
+	effectTypes: [],
+	category: "pedal",
+	source: "placeholder",
+};
+const mockBoard: CatalogBoard = {
+	id: "test-board",
+	brand: "Test",
+	name: "Board",
+	widthCm: 40,
+	heightCm: 20,
+	image: "test-board.png",
+	imageSource: "mock",
+	source: "placeholder",
+};
 
 const PNG_SIGNATURE = Buffer.from([
 	0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
@@ -51,11 +77,11 @@ describe("committed mock images", () => {
 
 	it("are the only files in the asset dirs (no stale PNGs)", () => {
 		const expected = new Set<string>();
-		for (const pedal of mockPedals) {
+		for (const pedal of [...mockPedals, ...staticPedals]) {
 			for (const size of [800, 350])
 				expected.add(`pedals/${size}/${pedal.image}`);
 		}
-		for (const board of mockBoards) {
+		for (const board of [...mockBoards, ...staticBoards]) {
 			for (const size of [800, 350])
 				expected.add(`boards/${size}/${board.image}`);
 		}
