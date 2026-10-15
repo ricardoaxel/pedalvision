@@ -2,8 +2,9 @@ import { Layer, Shape } from "react-konva";
 import { GRID_DOT_RADIUS, GRID_PITCH } from "../styles/theme";
 
 /**
- * The dominant (coarser) grid level is always at or above this on-screen pitch;
- * mid-crossfade the fading finer level dips to half this before it disappears.
+ * The coarser (replacement) grid level is always at or above this on-screen
+ * pitch; mid-crossfade the fading finer level dips to half this before it
+ * disappears.
  */
 const MIN_GRID_SCREEN_PITCH = 16;
 
