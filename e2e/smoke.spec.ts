@@ -183,3 +183,75 @@ test("a second pointer during rotation commits the rotation (no lost transform)"
 		.poll(async () => Number(await stage.getAttribute("data-rotations")))
 		.not.toBe(0);
 });
+
+test("adding a board and a pedal places both on the canvas", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await expect(stage).toHaveAttribute("data-boards", "0");
+	await expect(stage).toHaveAttribute("data-items", "0");
+
+	// Adding a board auto-selects it, so the pedal picker targets it.
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(stage).toHaveAttribute("data-items", "1");
+	// Parent index 0 = the only board.
+	await expect(stage).toHaveAttribute("data-item-parents", "0");
+	// The new pedal is selected (Transformer visible on canvas).
+	await expect(stage).not.toHaveAttribute("data-selected-item", "");
+});
+
+test("a pedal drags across boards; the Transformer follows and selection is clean", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	// Two small boards, both dropped at the viewport centre.
+	await page.getByTestId("add-board-d-addario-xpnd-1").click();
+	await page.getByTestId("add-board-boardmods-b").click();
+	await expect(stage).toHaveAttribute("data-boards", "2");
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Move the top board (added last) to the right, leaving the two apart.
+	await page.mouse.move(cx, cy);
+	await page.mouse.down();
+	await page.mouse.move(cx + 240, cy, { steps: 10 });
+	await page.mouse.up();
+
+	// Select board A (still at the centre) and add a pedal onto it.
+	await page.mouse.click(cx, cy);
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(stage).toHaveAttribute("data-items", "1");
+	await expect(stage).toHaveAttribute("data-item-parents", "0");
+	const selected = await stage.getAttribute("data-selected-item");
+	expect(selected).toBeTruthy();
+
+	// Drag the pedal from A's centre towards board B.
+	await page.mouse.move(cx, cy);
+	await page.mouse.down();
+	await page.mouse.move(cx + 120, cy, { steps: 6 });
+
+	// Mid-drag the pedal is lifted into the DragLayer; its Transformer travels
+	// with it and the selection is preserved.
+	await expect(stage).toHaveAttribute("data-lifted-item", selected ?? "");
+	await expect(stage).toHaveAttribute("data-selected-item", selected ?? "");
+
+	await page.mouse.move(cx + 240, cy, { steps: 6 });
+	await page.mouse.up();
+
+	// Dropped on board B: re-parented, lift cleared, selection intact (no stale
+	// Transformer, no dropped selection).
+	await expect(stage).toHaveAttribute("data-item-parents", "1");
+	await expect(stage).toHaveAttribute("data-lifted-item", "");
+	await expect(stage).toHaveAttribute("data-selected-item", selected ?? "");
+});

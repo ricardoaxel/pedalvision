@@ -20,6 +20,8 @@
 	--color-board-outline: #5f6a76;
 	/* Fallback board fill — recedes toward canvas (draft silhouette, not a panel). */
 	--color-board-draft-fill: #202327;
+	/* Soft lift shadow under a pedal while it is dragged (canvas). */
+	--color-item-shadow: rgb(0 0 0 / 0.5);
 
 	/* Surfaces & ink — cool tint lives here, never on the canvas */
 	--color-surface: #2b3036;
@@ -97,6 +99,7 @@
 	--color-grid-dot: #a2abb5;
 	--color-board-outline: #6b7580;
 	--color-board-draft-fill: #eceff1;
+	--color-item-shadow: rgb(15 23 42 / 0.32);
 
 	/* Surfaces & ink */
 	--color-surface: #ffffff;

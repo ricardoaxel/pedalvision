@@ -1,38 +1,58 @@
 import type Konva from "konva";
 import { useCallback, useEffect, useRef } from "react";
-import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
+import {
+	Group,
+	Image as KonvaImage,
+	Rect,
+	Text,
+	Transformer,
+} from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
 import {
 	boardDefinition,
 	boardFootprint,
+	itemFootprint,
 	type PlacedBoard,
+	type PlacedItem,
 	useScene,
 } from "../state/scene";
 import { useSelection } from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
 import { CANVAS_FONTS } from "../styles/theme";
+import { PedalNode } from "./PedalNode";
+import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
 
 interface BoardNodeProps {
 	board: PlacedBoard;
 	theme: CanvasTheme;
+	/** This board's attached items (excluding the one currently lifted). */
+	items: PlacedItem[];
+	selectedItemUid: string | null;
 	registerNode: (uid: string, node: Konva.Group | null) => void;
 }
 
 /**
  * One placed board (design.md §Canvas architecture → BoardLayer): a Konva
  * `Group` positioned at the board's world cm origin, carrying the board image
- * at its true cm footprint. Falls back to a labeled rectangle while the image
- * loads or if it fails (the image-resolution contract's missing-image clause).
+ * at its true cm footprint and **its attached pedals** (so they inherit the
+ * board transform for free — the reason pedals are not a flat layer). Falls
+ * back to a labeled rectangle while the image loads or if it fails.
  *
  * The Group is `draggable`; pan never starts on it because the gesture reducer
  * receives `target: "object"` for a hit (the `empty`/`object` seam in
- * gestures.ts). Committing position back to the store in cm keeps the store the
- * single source of truth while Konva owns the live drag.
+ * gestures.ts). A press on a contained pedal claims the gesture (see
+ * PedalNode), so grabbing a pedal never drags the board.
  */
-export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
+export function BoardNode({
+	board,
+	theme,
+	items,
+	selectedItemUid,
+	registerNode,
+}: BoardNodeProps) {
 	const definition = boardDefinition(board);
 	const footprint = boardFootprint(board);
 	const widthPx = cmToPx(footprint.widthCm);
@@ -55,6 +75,31 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 		registerNode(board.uid, groupRef.current);
 		return () => registerNode(board.uid, null);
 	}, [board.uid, registerNode]);
+
+	// The selected pedal's Transformer travels inside this board group (so it
+	// shares the pedal's coordinate frame under a rotated board). The node is
+	// registered by the child PedalNode effect before this one reads it.
+	const itemNodesRef = useRef(new Map<string, Konva.Group>());
+	const registerItemNode = useCallback(
+		(uid: string, node: Konva.Group | null) => {
+			if (node) itemNodesRef.current.set(uid, node);
+			else itemNodesRef.current.delete(uid);
+		},
+		[],
+	);
+	const itemTransformerRef = useRef<Konva.Transformer>(null);
+	const selectedItem = selectedItemUid
+		? items.find((item) => item.uid === selectedItemUid)
+		: undefined;
+	const selectedItemHere = selectedItem?.uid ?? null;
+	useEffect(() => {
+		const transformer = itemTransformerRef.current;
+		if (!transformer) return;
+		const node = selectedItemHere
+			? itemNodesRef.current.get(selectedItemHere)
+			: undefined;
+		transformer.nodes(node ? [node] : []);
+	}, [selectedItemHere]);
 
 	const commitPosition = useCallback(() => {
 		const node = groupRef.current;
@@ -153,6 +198,37 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 					) : null}
 				</>
 			)}
+			{items.map((item) => (
+				<PedalNode
+					key={item.uid}
+					item={item}
+					theme={theme}
+					xCm={item.x}
+					yCm={item.y}
+					registerNode={registerItemNode}
+				/>
+			))}
+			{selectedItem ? (
+				<SelectionOutline
+					xCm={selectedItem.x}
+					yCm={selectedItem.y}
+					widthCm={itemFootprint(selectedItem).widthCm}
+					heightCm={itemFootprint(selectedItem).heightCm}
+					theme={theme}
+				/>
+			) : null}
+			{selectedItemHere ? (
+				<Transformer
+					ref={itemTransformerRef}
+					enabledAnchors={[]}
+					rotateEnabled={false}
+					resizeEnabled={false}
+					listening={false}
+					borderStroke={theme.selectionStrong}
+					borderStrokeWidth={1.5}
+					ignoreStroke
+				/>
+			) : null}
 		</Group>
 	);
 }
