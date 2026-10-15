@@ -37,7 +37,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 
 1. Read `docs/progress.md` → find the current task.
 2. Read the task file in `docs/tasks/` — it lists exactly which files/sections to read. Read **only** those.
-3. Do the task. Verify its acceptance criteria by running them. Then run the **Code review loop** (below) before opening the PR.
+3. Do the task. Verify its acceptance criteria by running them. Then run the **code review** (light by default; see below) before opening the PR.
 4. Update `docs/progress.md` (done / next / blockers) — this is the handoff memory for the next session.
 5. One task per session. Commit per task (conventional commits).
 6. **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29).** If the next task — or any step of the current task — requires an owner action (GitHub repo, Cloudflare account/secrets, R2 bucket, dataset, permissions, etc. — see `docs/progress.md` → Blockers), **STOP and report to the owner**. Do NOT skip ahead to an unblocked task to "fill the gap". Wait for the owner to complete the required action before continuing.
@@ -51,22 +51,30 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - **If the owner does a design task manually** (e.g. "this looks bad, restyle it"), ALWAYS propose to run the designer agent first — never immediately hand-edit colors/tokens. Present the designer's proposal and get the owner's approval before implementing (owner chooses direction; agents do not).
 - **New/changed visual directions are owner-approved.** The designer produces the proposal; the owner approves it; only then is it implemented. Record the approval + the direction name in `docs/progress.md`.
 - Design PRs must state in the PR description which designer review ran and its verdict, and (for P1+ canvas/UI work) the owner's approval of the direction.
+- **Owner-directed simple changes skip the designer/reviewer too** (owner instruction, 2026-10-15) — see Code review → "Owner-directed simple changes skip review". A typo/one-line tweak inside an approved direction needs implementation + the checks, not a design pass.
 
 ### Heavy design tasks → designer⇄reviewer loop (owner instruction, 2026-10-12)
 - **A "heavy design task"** is any task that establishes or changes a visual direction: a new/redone palette or theme, a new component system, canvas visuals, or a page/chrome overhaul. Small token tweaks / bug-fixes inside an already-approved direction are NOT heavy — the designer review alone (above) is enough.
-- **The `design-reviewer` agent (`.opencode/agent/design-reviewer.md`) reviews the actual rendered pixels** — it opens the screenshots with a vision model (default `opencode-go/deepseek-v4-flash-vision-exp`), not the code. Run it with `/visual-review <paths|PR n>`.
-- **Heavy design tasks run a designer⇄reviewer loop of up to 3 iterations, only after the owner approves running it.** **Every iteration = reviewer feedback (on the rendered pixels) → designer revision → the change implemented in code → re-render (dark + light).** A round that only produces comments is NOT a round — implementation is mandatory each time. Stop early only on a reviewer "approve". Orchestrate with `/design-loop` (or step through manually).
+- **The `design-reviewer` agent (`.opencode/agent/design-reviewer.md`) reviews the actual rendered pixels** — it opens the screenshots with a vision-capable model (default `opencode/nemotron-3.5-super-vl-free`), not the code. Run it with `/visual-review <paths|PR n>`.
+- **Delegate ALL visual verification to the `design-reviewer` agent (owner instruction, 2026-10-15).** Any time rendered pixels must be judged — PR screenshots, a visual claim, "does this look right" — run the `design-reviewer` (or `/visual-review`). **Never eyeball images with the builder model:** builder models may be text-only and genuinely cannot see pixels, so a builder "description" of a screenshot would be inferred from context/filenames/code, not seen. If you cannot actually see an image, say so and delegate — do not invent a critique. This applies to every UI/canvas task, not only heavy design tasks.
+- **Screenshots for the visual review cover desktop AND mobile (owner instruction, 2026-10-15).** Capture and review **both** a desktop viewport and a narrow/mobile viewport for any UI/canvas change, so the responsive chrome + touch layout are actually verified. The P1-03/P1-04 PRs ran desktop-only — that is the **last** exception; from the next design-affecting PR on, a review with only desktop renders is incomplete.
+- **Heavy design tasks run a designer⇄reviewer loop of up to 3 iterations, only after the owner approves running it.** **Every iteration = reviewer feedback (on the rendered pixels) → designer revision → the change implemented in code → re-render (dark + light, desktop + mobile).** A round that only produces comments is NOT a round — implementation is mandatory each time. Stop early only on a reviewer "approve". Orchestrate with `/design-loop` (or step through manually).
 - **The loop is gated on owner approval before it starts**, and the final result still goes to the owner for approval. Record iteration count, reviewer verdict, and approval in `docs/progress.md`.
 - **Commit per round (owner instruction, 2026-10-13).** Each loop iteration is its own commit (round 1, round 2, …), so the owner can revert to any round ("go back to round X") with a simple `git revert`/checkout. Never squash multiple rounds into one commit.
 - The reviewer is authoritative only for *what is on screen*; the designer remains the design authority. If they conflict, present both to the owner.
 
-## Code review loop (MANDATORY — owner instruction, 2026-10-13)
+## Code review (MANDATORY — owner instructions 2026-10-13, revised 2026-10-15 for token cost)
 
-- **Before a task's PR is opened**, the change goes through the **code review loop**: a `code-reviewer` agent (`.opencode/agent/code-reviewer.md`, run via `/code-review`) reviews the diff as a senior staff engineer — architecture, code structure, security, correctness, tests, and doc/plan consistency. It is read-only (never edits or merges). Rationale: docs/decisions/006-code-review-governance.md.
-- **Two rounds max.** A round = reviewer findings → the builder fixes the real findings in code → re-review. Stop early on an "approve". Commit each round's fixes separately (revertible).
-- **After round 2, stop.** If blockers/should-fixes remain, do NOT open the PR as ready — **tell the owner plainly what is still open and propose more rounds**; wait for their decision.
-- Orchestrate with `/code-review-loop` (or step through `/code-review`). Record the outcome (round count, final verdict, any remaining findings) in `docs/progress.md`.
-- Scope vs the **Design gate**: the code-reviewer owns code/architecture/security/correctness; the `designer`/`design-reviewer` own visual direction (ADR-005). They are separate and both apply when a task touches both.
+- **Default = ONE lightweight pass, no loop.** Before a task's PR, the changed **source** is reviewed once by the `code-reviewer` agent on a **fast/cheap model** (`opencode-go/deepseek-v4.1-flash`, via `/code-review`). Rationale: docs/decisions/006-code-review-governance.md.
+- **Scope the diff to source only**: `git diff main...HEAD -- src tools e2e .github playwright.config.ts vite.config.ts package.json` — `docs/`, screenshots, and lockfiles are **out of scope**. Hand the reviewer the task-file path, not the repo; it reads only what it needs.
+- **Cap the output**: verdict + at most **5** findings (blocker / should-fix / nit) + a one-line round signal. No "what's good" prose. This keeps the review small and the token cost bounded.
+- **Fix blockers + should-fixes** (nits only if trivial); then re-run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
+- **Escalate to the full 2-round loop on a plan-tier model** (e.g. `opencode-go/kimi-k3`, via `/code-review-loop`) **only when:** the change is high-risk (architecture, security, persistence/serialization, catalog schema, CI/build, new dependencies), OR the light pass reports a blocker that needs a re-check, OR the owner asks. A loop round = reviewer findings → fix in code → re-review; **max 2 rounds**, commit each round's fixes separately (revertible); after round 2 with blockers/should-fixes open, STOP, tell the owner plainly, and propose more rounds.
+- **Skip the review entirely** for docs-only / screenshot-only / pure-formatting changes (say so in the PR).
+- **Owner-directed simple changes skip review (owner instruction, 2026-10-15).** When the owner asks for a small, low-risk change — or explicitly says to keep it light / skip the reviews — do **not** run the `code-reviewer`, `designer`, or `design-reviewer` at all. Just implement and run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`, then say so in the PR. Examples: one-line/typo fixes, comment/doc tweaks, a small defensive guard, config or CSS value tweaks inside an already-approved direction. When in doubt, ask the owner rather than spending tokens.
+- **Re-reviews are conditional, not automatic (owner instruction, 2026-10-15).** After fixing findings, re-run the checks — but run **another reviewer pass only when it's worth it**: the change is high-risk (architecture/security/persistence/serialization/catalog schema/CI/deps), or a *blocker's* fix substantially changed logic. A light pass's `FIX AND RE-REVIEW` signal does **not** obligate a second full pass for simple fixes — the test suite is the re-check.
+- Record the outcome (passes, verdict, remaining findings) in `docs/progress.md`.
+- Scope vs the **Design gate**: the code-reviewer owns code/architecture/security/correctness; the `designer`/`design-reviewer` own visual direction (ADR-005). Both apply when a task touches both — but **the visual check runs only when pixels actually changed**.
 
 ## Phase gate (MANDATORY)
 
@@ -85,6 +93,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - Do not read whole docs unless the task says so — read the pointed sections only.
 - Code, comments, and UI text in English.
 - Catalog/image provenance is documented in `docs/decisions/003-catalog-data.md` ONLY. Never reference external dataset sources in code, commits, filenames, or public assets.
+- **Catalog images (owner decision, 2026-10-15):** where a direct official brand image URL is recorded in `sources`, render it (`imageSource: "url"`) — the procedural mock is the **fallback only** (items with no usable URL). No scraping/download; hotlink the recorded URL. Prefer top-down cropped cutouts (true-scale). See ADR-003 §Brand image URLs.
 - **NEVER run scaffolding/build tools with `--overwrite`/force flags in the repo root** — `docs/`, `AGENTS.md`, and the PDF are precious. Merge scaffold files manually. (This rule exists because `--overwrite` deleted the entire `docs/` tree on 2026-09-29.)
 
 ## Conventions

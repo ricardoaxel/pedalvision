@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
+	CANVAS_FONTS,
 	CANVAS_THEME_VARS,
 	type CanvasTheme,
 	canvasTheme,
@@ -68,5 +69,15 @@ describe("canvas theme map", () => {
 	it("grid metrics mirror the dot-grid tokens", () => {
 		expect(`${GRID_PITCH}px`).toBe(darkVars["--grid-pitch"]);
 		expect(`${GRID_DOT_RADIUS}px`).toBe(darkVars["--grid-dot-radius"]);
+	});
+
+	it("canvas font stacks mirror --font-sans / --font-mono", () => {
+		const normalize = (value: string) => value.replace(/\s+/g, " ").trim();
+		expect(normalize(CANVAS_FONTS.sans)).toBe(
+			normalize(darkVars["--font-sans"]),
+		);
+		expect(normalize(CANVAS_FONTS.mono)).toBe(
+			normalize(darkVars["--font-mono"]),
+		);
 	});
 });

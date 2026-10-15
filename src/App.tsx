@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Stage } from "./canvas/Stage";
+import { BoardPicker } from "./components/BoardPicker";
 
 type Theme = "dark" | "light";
 
@@ -18,6 +19,7 @@ function App() {
 		<main className="app">
 			<h1 className="visually-hidden">Pedalvision</h1>
 			<Stage />
+			<BoardPicker />
 			<button type="button" className="hud-button" onClick={toggleTheme}>
 				{theme === "dark" ? "Light" : "Dark"} theme
 			</button>

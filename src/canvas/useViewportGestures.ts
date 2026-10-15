@@ -1,5 +1,6 @@
 import type { RefObject } from "react";
 import { useEffect } from "react";
+import { useGesture } from "../state/gesture";
 import { type Point, useViewport, type Viewport } from "../state/viewport";
 import {
 	type GestureEvent,
@@ -23,19 +24,26 @@ function snapshot(): Viewport {
  * Binds stage viewport gestures to the container (design.md §Canvas
  * architecture, N4):
  * - 1 pointer dragged on empty canvas → pan;
+ * - 1 pointer on an object → no pan (the object's own drag handles it);
  * - 2 pointers → pinch-zoom + pan **regardless of target**;
  * - wheel → zoom-to-pointer.
  *
  * The gesture logic itself is the pure reducer in `./gestures` (unit-tested);
- * this hook only translates DOM events into reducer events and applies the
- * resulting viewport (the stage transform — object props are never touched).
+ * this hook only translates DOM events into reducer events, resolves the hit
+ * target, and applies the resulting viewport (the stage transform — object
+ * props are never touched).
  *
- * Hit-testing is a seam: every press is currently `target: "empty"`. P1-03/
- * P1-04 will resolve the real target with a Konva hit test and pass
- * `"object"`, so a single pointer on a pedal/board drags it instead of panning.
+ * `hitTest(point)` is the `empty`/`object` seam: it reports whether a node is
+ * under a press. P1-03 passes a Konva hit test so a single pointer on a board
+ * drags the board while empty space pans.
+ *
+ * While a viewport gesture is active (pan or pinch) `state/gesture.ts`
+ * `navigating` is set, so board dragging/rotation are suppressed — a second
+ * finger can never make a board follow both the drag and the pan.
  */
 export function useViewportGestures(
 	containerRef: RefObject<HTMLElement | null>,
+	hitTest?: (point: Point) => boolean,
 ): void {
 	useEffect(() => {
 		const element = containerRef.current;
@@ -57,15 +65,22 @@ export function useViewportGestures(
 			if (result.viewport) {
 				useViewport.getState().setViewport(result.viewport);
 			}
+			// The viewport owns the gesture whenever it isn't idle: suppress board
+			// dragging/rotation so a second finger can't move a board while panning.
+			const navigating = result.machine.gesture.type !== "idle";
+			if (navigating !== useGesture.getState().navigating) {
+				useGesture.getState().setNavigating(navigating);
+			}
 		};
 
 		const onPointerDown = (event: PointerEvent) => {
 			if (event.pointerType === "mouse" && event.button !== 0) return;
+			const point = localPoint(event.clientX, event.clientY);
 			dispatch({
 				type: "down",
 				pointerId: event.pointerId,
-				point: localPoint(event.clientX, event.clientY),
-				target: "empty",
+				point,
+				target: hitTest?.(point) ? "object" : "empty",
 			});
 		};
 
@@ -120,5 +135,5 @@ export function useViewportGestures(
 			window.removeEventListener("blur", onWindowBlur);
 			element.removeEventListener("wheel", onWheel);
 		};
-	}, [containerRef]);
+	}, [containerRef, hitTest]);
 }

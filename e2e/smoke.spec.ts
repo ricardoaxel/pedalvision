@@ -4,7 +4,8 @@ test("app loads and renders the canvas stage", async ({ page }) => {
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await expect(stage.locator("canvas")).toBeVisible();
+	// The stage has one canvas per Konva layer (grid, boards).
+	await expect(stage.locator("canvas").first()).toBeVisible();
 });
 
 test("wheel zooms to the pointer (stage transform changes)", async ({
@@ -12,11 +13,13 @@ test("wheel zooms to the pointer (stage transform changes)", async ({
 }) => {
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
-	const canvas = stage.locator("canvas");
-	await expect(canvas).toBeVisible();
+	await expect(stage).toBeVisible();
+	await expect(stage.locator("canvas").first()).toBeVisible();
 
 	const before = Number(await stage.getAttribute("data-scale"));
-	await canvas.hover();
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 	await page.mouse.wheel(0, -300);
 
 	await expect
@@ -80,4 +83,103 @@ test("wheel during a drag is ignored (no stale-baseline jump)", async ({
 	expect(Number(await stage.getAttribute("data-scale"))).toBe(scaleDuringDrag);
 
 	await page.mouse.up();
+});
+
+test("adding a board places a selectable node at the viewport centre", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await expect(stage).toHaveAttribute("data-boards", "0");
+
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+
+	// The board lands at the viewport centre, so a click there must hit the
+	// Konva node (selecting it and revealing the remove control). A click on
+	// empty canvas would clear selection instead.
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+	await expect(page.getByTestId("remove-board")).toBeVisible();
+});
+
+test("rotating a selected board via the Transformer handle changes its rotation", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	await expect(stage).toHaveAttribute("data-rotations", "0");
+	await page.waitForTimeout(150);
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Select the board (placed at the viewport centre).
+	await page.mouse.click(cx, cy);
+	await expect(page.getByTestId("remove-board")).toBeVisible();
+
+	// Drag the rotate handle (28 px above the board's top edge at zoom 1;
+	// PX_PER_CM 4 × heightCm 35.23 / 2 ≈ 70 px).
+	await page.mouse.move(cx, cy - 98);
+	await page.mouse.down();
+	await page.mouse.move(cx + 130, cy - 30, { steps: 12 });
+	await page.mouse.up();
+
+	await expect
+		.poll(async () => Number(await stage.getAttribute("data-rotations")))
+		.not.toBe(0);
+});
+
+test("a second pointer during rotation commits the rotation (no lost transform)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	await page.waitForTimeout(150);
+	await expect(stage).toHaveAttribute("data-rotations", "0");
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Select, then start a rotation and hold it (handle ~98px above centre).
+	await page.mouse.click(cx, cy);
+	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await page.mouse.move(cx, cy - 98);
+	await page.mouse.down();
+	await page.mouse.move(cx + 70, cy - 40, { steps: 8 });
+
+	// A second pointer (CDP touch) turns it into a viewport gesture: the live
+	// rotation must be committed (not silently dropped when the Transformer stops).
+	const cdp = await page.context().newCDPSession(page);
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchStart",
+		touchPoints: [
+			{ id: 0, x: cx + 70, y: cy - 40 },
+			{ id: 1, x: cx + 140, y: cy + 40 },
+		],
+	});
+	await page.waitForTimeout(150);
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchEnd",
+		touchPoints: [],
+	});
+	await page.mouse.up();
+
+	await expect
+		.poll(async () => Number(await stage.getAttribute("data-rotations")))
+		.not.toBe(0);
 });

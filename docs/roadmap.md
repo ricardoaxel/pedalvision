@@ -17,10 +17,10 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | Task | Title | Status |
 |---|---|---|
 | P1-01 | True-scale engine (cm↔px geometry lib + tests) | done |
-| P1-02 | Stage: dot grid, pan, zoom-to-pointer, resize-proof | in review — PR #9 |
-| P1-02b | Touch/gesture E2E (Playwright + CDP multi-touch) | in review — PR #10 |
-| P1-03 | Boards: place / move / rotate | todo |
-| P1-04 | Pedals: place / drag / duplicate / delete | todo |
+| P1-02 | Stage: dot grid, pan, zoom-to-pointer, resize-proof | done |
+| P1-02b | Touch/gesture E2E (Playwright + CDP multi-touch) | done |
+| P1-03 | Boards: place / move / rotate | in review — PR #11 |
+| P1-04 | Pedals: place / drag / duplicate / delete | todo (brand-image slice merged into PR #11) |
 | P1-05 | Free rotation + selection UX (hover, touch anchors) | todo |
 | P1-06 | Z-order controls (bring forward / send back) | todo |
 

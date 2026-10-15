@@ -133,6 +133,28 @@ describe("boardToWorld / worldToBoard", () => {
 	});
 });
 
+describe("centre-origin rotation (Transformer commit math)", () => {
+	// When Konva's Transformer rotates a board it rotates about the node centre,
+	// which moves the stored origin (top-left). These pin the committed values
+	// for a fixed board to literals, so the check cannot cancel against the same
+	// helper it exercises.
+	it("pins the committed origin and world centre for a 90° rotation", () => {
+		const size = { widthCm: 40, heightCm: 20 };
+		const centreLocal = { x: size.widthCm / 2, y: size.heightCm / 2 };
+		const start = { x: 10, y: 5, rotationDeg: 0 };
+
+		// Sanity: the start centre is at (30, 15) world cm.
+		expect(boardToWorld(centreLocal, start)).toEqual({ x: 30, y: 15 });
+
+		// Rotating 90° CW about the centre commits origin (40, -5); the centre
+		// must still be (30, 15).
+		const committed = { x: 40, y: -5, rotationDeg: 90 };
+		const centre = boardToWorld(centreLocal, committed);
+		expect(centre.x).toBeCloseTo(30, 10);
+		expect(centre.y).toBeCloseTo(15, 10);
+	});
+});
+
 describe("A1 invariant — viewport independence", () => {
 	const board = { x: 12, y: 7, rotationDeg: 33 };
 	const item = { x: 5, y: -2.5 };
