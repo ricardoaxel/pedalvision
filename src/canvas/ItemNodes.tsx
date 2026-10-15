@@ -1,11 +1,9 @@
-import type Konva from "konva";
-import { useCallback, useEffect, useRef } from "react";
 import { Transformer } from "react-konva";
-import type { Point } from "../lib/geometry";
 import { itemFootprint, type PlacedItem } from "../state/scene";
 import type { CanvasTheme } from "../styles/theme";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
+import { useItemSelection } from "./useItemSelection";
 
 interface ItemNodesProps {
 	items: PlacedItem[];
@@ -15,7 +13,7 @@ interface ItemNodesProps {
 	 * When set, every item renders at this world-cm origin instead of its stored
 	 * position — used by the DragLayer for the single lifted item.
 	 */
-	worldPosition?: Point;
+	worldPosition?: { x: number; y: number };
 	/** Lift shadow + unskewed rendering cue (DragLayer only). */
 	lifted?: boolean;
 }
@@ -34,23 +32,10 @@ export function ItemNodes({
 	worldPosition,
 	lifted = false,
 }: ItemNodesProps) {
-	const nodesRef = useRef(new Map<string, Konva.Group>());
-	const registerNode = useCallback((uid: string, node: Konva.Group | null) => {
-		if (node) nodesRef.current.set(uid, node);
-		else nodesRef.current.delete(uid);
-	}, []);
-
-	const selected = selectedItemUid
-		? items.find((item) => item.uid === selectedItemUid)
-		: undefined;
-	const selectedHere = selected?.uid ?? null;
-	const transformerRef = useRef<Konva.Transformer>(null);
-	useEffect(() => {
-		const transformer = transformerRef.current;
-		if (!transformer) return;
-		const node = selectedHere ? nodesRef.current.get(selectedHere) : undefined;
-		transformer.nodes(node ? [node] : []);
-	}, [selectedHere]);
+	const { registerNode, selectedItem, transformerRef } = useItemSelection(
+		selectedItemUid,
+		items,
+	);
 
 	return (
 		<>
@@ -65,16 +50,16 @@ export function ItemNodes({
 					registerNode={registerNode}
 				/>
 			))}
-			{selected ? (
+			{selectedItem ? (
 				<SelectionOutline
-					xCm={worldPosition ? worldPosition.x : selected.x}
-					yCm={worldPosition ? worldPosition.y : selected.y}
-					widthCm={itemFootprint(selected).widthCm}
-					heightCm={itemFootprint(selected).heightCm}
+					xCm={worldPosition ? worldPosition.x : selectedItem.x}
+					yCm={worldPosition ? worldPosition.y : selectedItem.y}
+					widthCm={itemFootprint(selectedItem).widthCm}
+					heightCm={itemFootprint(selectedItem).heightCm}
 					theme={theme}
 				/>
 			) : null}
-			{selectedHere ? (
+			{selectedItem ? (
 				<Transformer
 					ref={transformerRef}
 					enabledAnchors={[]}

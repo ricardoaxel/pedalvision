@@ -60,6 +60,9 @@ export function Stage() {
 			return String(index);
 		})
 		.join(",");
+	const itemPositions = items
+		.map((item) => `${item.x.toFixed(2)},${item.y.toFixed(2)}`)
+		.join(";");
 
 	// Hit-test seam (gestures.ts `empty` | `object`): a press that lands on a
 	// node is an object gesture (drag the board/pedal), anything else pans the
@@ -101,6 +104,7 @@ export function Stage() {
 			data-positions={positions}
 			data-items={items.length}
 			data-item-parents={itemParents}
+			data-item-positions={itemPositions}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
 		>

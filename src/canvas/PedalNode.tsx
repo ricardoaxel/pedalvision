@@ -26,7 +26,8 @@ interface PedalNodeProps {
 /** Client-space pointer position from a mouse or touch Konva event. */
 function clientPoint(evt: MouseEvent | TouchEvent): Point {
 	if ("touches" in evt) {
-		const touch = evt.touches[0] ?? evt.changedTouches[0];
+		// The touch that started this event (not an unrelated first finger).
+		const touch = evt.changedTouches[0] ?? evt.touches[0];
 		return touch ? { x: touch.clientX, y: touch.clientY } : { x: 0, y: 0 };
 	}
 	return { x: evt.clientX, y: evt.clientY };
@@ -102,7 +103,11 @@ export function PedalNode({
 			ref={groupRef}
 			x={cmToPx(xCm)}
 			y={cmToPx(yCm)}
-			onMouseDown={(event) => handlePointerDown(event, clientPoint(event.evt))}
+			onMouseDown={(event) => {
+				// Only the primary mouse button starts a selection/drag.
+				if (event.evt.button !== 0) return;
+				handlePointerDown(event, clientPoint(event.evt));
+			}}
 			onTouchStart={(event) => handlePointerDown(event, clientPoint(event.evt))}
 		>
 			{status === "loaded" && image ? (

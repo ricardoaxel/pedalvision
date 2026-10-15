@@ -255,3 +255,51 @@ test("a pedal drags across boards; the Transformer follows and selection is clea
 	await expect(stage).toHaveAttribute("data-lifted-item", "");
 	await expect(stage).toHaveAttribute("data-selected-item", selected ?? "");
 });
+
+test("a two-finger pan mid-drag drops the lifted pedal in place (pan interrupt)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(stage).toHaveAttribute("data-items", "1");
+	await expect(stage).toHaveAttribute("data-item-parents", "0");
+	const selected = await stage.getAttribute("data-selected-item");
+	const before = await stage.getAttribute("data-item-positions");
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Drag the pedal well outside the board (to the right).
+	await page.mouse.move(cx, cy);
+	await page.mouse.down();
+	await page.mouse.move(cx + 320, cy, { steps: 10 });
+	await expect(stage).toHaveAttribute("data-lifted-item", selected ?? "");
+
+	// A second finger turns it into a viewport gesture: the lifted pedal must
+	// drop in place — here, outside the board, so it becomes loose (NOT dragged
+	// back to where it started).
+	const cdp = await page.context().newCDPSession(page);
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchStart",
+		touchPoints: [
+			{ id: 0, x: cx + 320, y: cy },
+			{ id: 1, x: cx + 400, y: cy + 80 },
+		],
+	});
+	await expect(stage).toHaveAttribute("data-lifted-item", "");
+	await expect(stage).toHaveAttribute("data-item-parents", "loose");
+	expect(await stage.getAttribute("data-item-positions")).not.toBe(before);
+
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchEnd",
+		touchPoints: [],
+	});
+	await page.mouse.up();
+});

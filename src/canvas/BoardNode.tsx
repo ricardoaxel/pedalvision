@@ -24,6 +24,7 @@ import { CANVAS_FONTS } from "../styles/theme";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
+import { useItemSelection } from "./useItemSelection";
 
 interface BoardNodeProps {
 	board: PlacedBoard;
@@ -77,29 +78,13 @@ export function BoardNode({
 	}, [board.uid, registerNode]);
 
 	// The selected pedal's Transformer travels inside this board group (so it
-	// shares the pedal's coordinate frame under a rotated board). The node is
-	// registered by the child PedalNode effect before this one reads it.
-	const itemNodesRef = useRef(new Map<string, Konva.Group>());
-	const registerItemNode = useCallback(
-		(uid: string, node: Konva.Group | null) => {
-			if (node) itemNodesRef.current.set(uid, node);
-			else itemNodesRef.current.delete(uid);
-		},
-		[],
-	);
-	const itemTransformerRef = useRef<Konva.Transformer>(null);
-	const selectedItem = selectedItemUid
-		? items.find((item) => item.uid === selectedItemUid)
-		: undefined;
-	const selectedItemHere = selectedItem?.uid ?? null;
-	useEffect(() => {
-		const transformer = itemTransformerRef.current;
-		if (!transformer) return;
-		const node = selectedItemHere
-			? itemNodesRef.current.get(selectedItemHere)
-			: undefined;
-		transformer.nodes(node ? [node] : []);
-	}, [selectedItemHere]);
+	// shares the pedal's coordinate frame under a rotated board); the shared
+	// hook keeps this in step with the loose/Drag layers.
+	const {
+		registerNode: registerItemNode,
+		selectedItem,
+		transformerRef: itemTransformerRef,
+	} = useItemSelection(selectedItemUid, items);
 
 	const commitPosition = useCallback(() => {
 		const node = groupRef.current;
@@ -217,7 +202,7 @@ export function BoardNode({
 					theme={theme}
 				/>
 			) : null}
-			{selectedItemHere ? (
+			{selectedItem ? (
 				<Transformer
 					ref={itemTransformerRef}
 					enabledAnchors={[]}

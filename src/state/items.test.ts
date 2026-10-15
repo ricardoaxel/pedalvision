@@ -71,11 +71,11 @@ describe("items slice", () => {
 		expect(useScene.getState().items.map((item) => item.uid)).toEqual([b]);
 	});
 
-	it("moveItem writes x/y in the item's own frame", () => {
+	it("dropItem moves an item within its container (world cm when loose)", () => {
 		const uid = useScene
 			.getState()
 			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
-		useScene.getState().moveItem(uid, 12.5, -3.25);
+		useScene.getState().dropItem(uid, { x: 12.5, y: -3.25 });
 		const item = useScene.getState().items[0];
 		expect({ x: item.x, y: item.y }).toEqual({ x: 12.5, y: -3.25 });
 	});
@@ -225,8 +225,8 @@ describe("dropItem re-parenting math", () => {
 		const expected = worldToBoard(originWorld, rotated);
 		expect(expected.x).toBeCloseTo(10, 10);
 		expect(expected.y).toBeCloseTo(20, 10);
-		expect(item.x).toBeCloseTo(expected.x, 10);
-		expect(item.y).toBeCloseTo(expected.y, 10);
+		expect(item.x).toBeCloseTo(10, 10);
+		expect(item.y).toBeCloseTo(20, 10);
 		// And the stored position maps back to the same world origin.
 		const back = boardToWorld({ x: item.x, y: item.y }, rotated);
 		expect(back.x).toBeCloseTo(originWorld.x, 10);
