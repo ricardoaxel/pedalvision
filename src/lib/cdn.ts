@@ -1,11 +1,7 @@
+import type { ImageSource } from "../catalog/schema";
+
 export type AssetKind = "pedal" | "board";
 export type AssetSize = 800 | 350;
-
-/**
- * How a catalog image is provided (mirrors `imageSource` in the catalog schema
- * — see design.md §Assets → image-resolution contract).
- */
-export type ImageSource = "mock" | "static" | "url";
 
 const ASSET_BASE = "/pedal-assets";
 

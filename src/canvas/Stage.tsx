@@ -37,6 +37,11 @@ export function Stage() {
 	const y = useViewport((state) => state.y);
 	const setSizeInStore = useViewport((state) => state.setSize);
 	const boardCount = useScene((state) => state.boards.length);
+	// Rotation per board (index-aligned) — a debug/assertion hook for the rotate
+	// Transformer path, like data-scale for the viewport.
+	const rotations = useScene((state) =>
+		state.boards.map((board) => board.rotationDeg).join(","),
+	);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	const theme = useCanvasTheme();
 
@@ -75,6 +80,7 @@ export function Stage() {
 			data-x={x}
 			data-y={y}
 			data-boards={boardCount}
+			data-rotations={rotations}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage

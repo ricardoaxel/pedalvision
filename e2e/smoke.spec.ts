@@ -104,3 +104,36 @@ test("adding a board places a selectable node at the viewport centre", async ({
 	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
 	await expect(page.getByTestId("remove-board")).toBeVisible();
 });
+
+test("rotating a selected board via the Transformer handle changes its rotation", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	await expect(stage).toHaveAttribute("data-rotations", "0");
+	await page.waitForTimeout(150);
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Select the board (placed at the viewport centre).
+	await page.mouse.click(cx, cy);
+	await expect(page.getByTestId("remove-board")).toBeVisible();
+
+	// Drag the rotate handle (28 px above the board's top edge at zoom 1;
+	// PX_PER_CM 4 × heightCm 35.23 / 2 ≈ 70 px).
+	await page.mouse.move(cx, cy - 98);
+	await page.mouse.down();
+	await page.mouse.move(cx + 130, cy - 30, { steps: 12 });
+	await page.mouse.up();
+
+	await expect
+		.poll(async () => Number(await stage.getAttribute("data-rotations")))
+		.not.toBe(0);
+});

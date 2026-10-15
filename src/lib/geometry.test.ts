@@ -133,6 +133,33 @@ describe("boardToWorld / worldToBoard", () => {
 	});
 });
 
+describe("centre-origin rotation (Transformer commit math)", () => {
+	// When Konva's Transformer rotates a board it rotates about the node centre,
+	// which moves the stored origin (top-left). The renderer commits the node's
+	// post-transform x/y + rotation; this asserts the value it commits keeps the
+	// board's world centre fixed — the contract BoardLayer relies on.
+	it.each([0, 15, 37.5, 90, 180, -123])(
+		"rotating about the centre by %d° keeps the world centre fixed",
+		(deg) => {
+			const size = { widthCm: 40, heightCm: 20 };
+			const centreLocal = { x: size.widthCm / 2, y: size.heightCm / 2 };
+			const board = { x: 10, y: 5, rotationDeg: 0 };
+			const before = boardToWorld(centreLocal, board);
+
+			const rotatedCentreLocal = rotatePoint(centreLocal, ORIGIN, deg);
+			const nextBoard = {
+				x: before.x - rotatedCentreLocal.x,
+				y: before.y - rotatedCentreLocal.y,
+				rotationDeg: deg,
+			};
+			const after = boardToWorld(centreLocal, nextBoard);
+
+			expect(after.x).toBeCloseTo(before.x, 10);
+			expect(after.y).toBeCloseTo(before.y, 10);
+		},
+	);
+});
+
 describe("A1 invariant — viewport independence", () => {
 	const board = { x: 12, y: 7, rotationDeg: 33 };
 	const item = { x: 5, y: -2.5 };

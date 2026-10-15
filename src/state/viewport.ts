@@ -9,7 +9,7 @@ export interface CanvasSize {
 	height: number;
 }
 
-/** Screen px → cm under `viewport` (stage-local px ÷ PX_PER_CM). */
+/** Screen px → cm under `viewport` (screen px → stage-local px → cm). */
 export function pxToWorldCm(point: Point, viewport: Viewport): Point {
 	const local = screenToWorld(point, viewport);
 	return { x: local.x / PX_PER_CM, y: local.y / PX_PER_CM };

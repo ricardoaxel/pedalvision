@@ -83,7 +83,6 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 				event.cancelBubble = true;
 				selectBoard(board.uid);
 			}}
-			onDragMove={commitPosition}
 			onDragEnd={commitPosition}
 		>
 			{status === "loaded" && image ? (
