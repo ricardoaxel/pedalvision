@@ -1,7 +1,7 @@
 name: CI
 
 # Every push to main and every pull request runs the full pipeline:
-#   lint -> typecheck -> unit tests -> build -> Playwright smoke (chromium).
+#   lint -> typecheck -> unit tests -> build -> Playwright e2e (chromium + mobile-chromium touch).
 # A failure at any step stops the job, so the deploy step below only runs
 # when everything is green.
 #
@@ -75,7 +75,7 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: E2E smoke (chromium)
+      - name: E2E (chromium + mobile-chromium)
         run: pnpm e2e
 
       - name: Deploy to Cloudflare Pages
