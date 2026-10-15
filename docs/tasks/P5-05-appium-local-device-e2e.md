@@ -17,4 +17,4 @@ Appium + Xcode/simulator (or Android SDK) is a **heavy local install** and a res
 
 ## Related
 - `docs/decisions/007-mobile-touch-testing.md` — the strategy + why paid clouds are out of scope.
-- Optional escape hatch if local setup is unwanted: free open-source cloud plan or free minutes (BrowserStack is the only provider running Playwright on real iOS Safari).
+- Optional escape hatch if local setup is unwanted: a free open-source cloud plan or pay-per-minute minutes (as of late 2025, BrowserStack was the only provider running Playwright on real iOS Safari — see ADR-007).
