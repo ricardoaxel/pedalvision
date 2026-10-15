@@ -1,6 +1,6 @@
 # ADR-003: Catalog data & asset strategy
 
-**Status:** Accepted (2026-09-22) · amended 2026-10-14 (committed seed = real facts + mocked images; schema-originality + taxonomy + ingestion model; per-item source links) — ⚠️ MUST BE REVISITED BEFORE ANY PUBLIC LAUNCH
+**Status:** Accepted (2026-09-22) · amended 2026-10-14 (committed seed = real facts + mocked images; schema-originality + taxonomy + ingestion model; per-item source links) · amended 2026-10-15 (render direct official brand image URLs where recorded; mock is the fallback) — ⚠️ MUST BE REVISITED BEFORE ANY PUBLIC LAUNCH
 
 ## Context
 The app needs pedals/boards with real footprint dimensions + top-down transparent PNGs. Research (Sep 2026) found no dataset with a clean image licence. A comprehensive community catalog exists (~8.5k pedals, ~250 boards, inches + 350/800px PNGs), but its repo has **no LICENSE file** (default copyright) and its maintainer has objected to unpermissioned reuse before.
@@ -42,8 +42,8 @@ recorded in an optional `sources` array per item:
   be `http(s)`.
 - `kind` is a non-empty array: `"info"` = backs specs / effect type / release
   date; `"image"` = an official source for the product image. A single URL may
-  be both (e.g. a manufacturer product page). **Only links are stored — no image
-  is downloaded; every image is still `mock`.**
+  be both (e.g. a manufacturer product page). **No image is downloaded** — the
+  URL is used either as provenance or (see §Brand image URLs) rendered directly.
 - Populated for the **verified** base models — the `curated.ts` keys plus models
   whose official image source was resolved. **176 of the 187 base models carry
   at least one source ref; 170 of them have an `image`-kind link.** The seed
@@ -55,6 +55,44 @@ recorded in an optional `sources` array per item:
   *aggregate* stays uncited; *per-item* source links are allowed and wanted.
 - No attribution strings beyond the URL itself; the agent returns the link, the
   curation stores it.
+
+## Brand image URLs (owner decision, 2026-10-15)
+
+**Where a direct official image URL is recorded, render it directly instead of a
+mock; the procedural mock is now the *fallback only* (items with no usable URL).**
+Provisional and pre-clearance — it lets the app show real gear while development
+continues, without waiting for P5-02.
+
+- **How:** a direct-file `image`-kind source (`sources[].url` ending in
+  `.jpg/.jpeg/.png/.webp/.gif/.avif`, not an HTML product page) is promoted to the
+  render image: `image = <url>`, `imageSource = "url"`. Implemented by the
+  `resolve-images` transformer command (pure `resolveImages()` in
+  `tools/catalog-transform/images.ts`); deterministic, idempotent. The render
+  contract is design.md §Assets (image-resolution contract).
+- **No download / no scraping:** only the URL already recorded in `sources` is
+  reused; nothing is fetched or committed — this is *hotlinking* an official
+  manufacturer asset, not copying it.
+- **Rights still pending:** items render a brand URL but keep `source:
+  "placeholder"` — the launch gate is unchanged (cleared assets only). P5-02
+  later replaces each `url` with a cleared `static` file (or drops it).
+- **CORS is a render-time concern:** images load with `crossOrigin="anonymous"`,
+  so CORS-clean hosts display (and keep the canvas untainted for export);
+  non-CORS hosts (and hosts that block hotlinking) fall back to the labeled
+  silhouette. A failed URL is never broken — it just falls back.
+- **True-scale bar:** the image is stretched to the item's exact cm footprint, so
+  only a **top-down, tightly-cropped cutout** (transparent/canvas-neutral
+  background, no shadow) keeps true scale. Angled "hero" shots and padded product
+  photos do not — a known provisional inconsistency; they stay mock until cropped
+  (or are replaced in P5-02).
+- **Boards:** same rule; official board image URLs were researched + recorded in
+  `sources` (7 of 10 — 3 discontinued models have no official image).
+- **Temporary dev-only exception (owner-directed, 2026-10-15):** a small set of
+  local top-down test images were added as committed `static` files for
+  development (and to ship nicer example renders), to be **deleted later**. They
+  are `source: "placeholder"` (not cleared) and do **not** change the rights
+  policy or the launch gate; the pipeline's "no download" rule (§no scraping)
+  still governs the catalog itself. Remove them by reverting the `imageSource`
+  to `url`/`mock` and deleting the files.
 
 ## Schema originality (our own model)
 

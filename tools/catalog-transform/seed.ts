@@ -38,35 +38,29 @@ export async function renderCatalogImages(
 ): Promise<SeedImage[]> {
 	const images: SeedImage[] = [];
 
-	for (const pedal of pedals) {
+	async function add(
+		item: CatalogPedal | CatalogBoard,
+		kindDir: "pedals" | "boards",
+	): Promise<void> {
+		// Only mock items are ours to draw. A `url` item is a remote image; a
+		// `static` item is a committed file we must not overwrite.
+		if (item.imageSource !== "mock") return;
 		for (const size of SIZES) {
 			images.push({
-				path: join(assetsDir, "pedals", String(size), pedal.image),
+				path: join(assetsDir, kindDir, String(size), item.image),
 				buffer: await renderPng({
-					id: pedal.id,
-					label: labelFor(pedal.name),
-					widthCm: pedal.widthCm,
-					heightCm: pedal.heightCm,
+					id: item.id,
+					label: labelFor(item.name),
+					widthCm: item.widthCm,
+					heightCm: item.heightCm,
 					size,
 				}),
 			});
 		}
 	}
 
-	for (const board of boards) {
-		for (const size of SIZES) {
-			images.push({
-				path: join(assetsDir, "boards", String(size), board.image),
-				buffer: await renderPng({
-					id: board.id,
-					label: labelFor(board.name),
-					widthCm: board.widthCm,
-					heightCm: board.heightCm,
-					size,
-				}),
-			});
-		}
-	}
+	for (const pedal of pedals) await add(pedal, "pedals");
+	for (const board of boards) await add(board, "boards");
 
 	return images;
 }
@@ -102,17 +96,9 @@ export async function writeSeedImages(
 		);
 	}
 
-	// Only mock items are ours to (re)draw. Never render over a cleared static
-	// image or treat a URL as a filename, and never prune an asset we don't own.
-	const nonMock = [...pedalsResult.data, ...boardsResult.data].find(
-		(item) => item.imageSource !== "mock",
-	);
-	if (nonMock) {
-		throw new Error(
-			`seed only renders mock images; "${nonMock.id}" uses "${nonMock.imageSource}"`,
-		);
-	}
-
+	// Only mock items are ours to (re)draw; `url` items are remote (never a
+	// filename) and `static` items are committed files we must not overwrite or
+	// prune. Everything not mock is simply skipped below.
 	const images = await renderCatalogImages(
 		pedalsResult.data,
 		boardsResult.data,
@@ -123,11 +109,25 @@ export async function writeSeedImages(
 		await writeFile(image.path, image.buffer);
 	}
 
-	// Prune stale generator-owned PNGs, but never from an empty manifest (an empty
+	// Prune stale generator-owned PNGs, but never from an empty catalog (an empty
 	// catalog must not wipe every committed asset). Rendition dirs are
 	// generator-managed — do not hand-place files there.
+	// `owned` = the mocks we just rendered + any committed `static` files (kept,
+	// never overwritten/pruned).
 	const owned = new Set(images.map((image) => resolve(image.path)));
-	for (const dir of images.length === 0
+	for (const item of pedalsResult.data) {
+		if (item.imageSource !== "static") continue;
+		for (const size of SIZES)
+			owned.add(resolve(join(assetsDir, "pedals", String(size), item.image)));
+	}
+	for (const item of boardsResult.data) {
+		if (item.imageSource !== "static") continue;
+		for (const size of SIZES)
+			owned.add(resolve(join(assetsDir, "boards", String(size), item.image)));
+	}
+	const catalogEmpty =
+		pedalsResult.data.length + boardsResult.data.length === 0;
+	for (const dir of catalogEmpty
 		? []
 		: [
 				join(assetsDir, "pedals", "800"),

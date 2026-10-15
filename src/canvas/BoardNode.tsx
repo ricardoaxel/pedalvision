@@ -92,9 +92,10 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 					<Rect
 						width={widthPx}
 						height={heightPx}
-						fill={theme.boardFill}
+						fill={theme.boardDraftFill}
 						stroke={theme.boardStroke}
 						strokeWidth={1}
+						dash={[4, 3]}
 						cornerRadius={2}
 					/>
 					{showName ? (
@@ -106,8 +107,7 @@ export function BoardNode({ board, theme, registerNode }: BoardNodeProps) {
 							align="center"
 							fontFamily={CANVAS_FONTS.sans}
 							fontSize={10}
-							fontStyle="bold"
-							fill={theme.boardInk}
+							fill={theme.boardLabel}
 							wrap="none"
 							ellipsis
 							listening={false}

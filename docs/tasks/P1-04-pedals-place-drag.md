@@ -1,6 +1,6 @@
 # P1-04: Pedals — place / drag / duplicate / delete
 
-**Phase:** P1 · **Status:** todo · **Model:** build-cheap
+**Phase:** P1 · **Status:** todo (brand-image slice: in review — PR #12, stacked on P1-03) · **Model:** build-cheap
 
 ## Goal
 User can add a catalog pedal onto a board (position stored in cm relative to the board, unrotated frame), drag it within/across boards, duplicate it, and delete it. Pedals render at true scale from catalog dimensions.
@@ -30,3 +30,14 @@ User can add a catalog pedal onto a board (position stored in cm relative to the
 
 ## Notes
 The rotated-board drop test is the tricky part — it's exactly the pedalplayground-bug class of error; cover it in Vitest.
+
+## Folded in (owner decision, 2026-10-15): catalog brand image URLs
+
+A prerequisite slice delivered ahead of the pedal work (own stacked PR, pending P1-03):
+
+- **Rule:** render a recorded direct official brand image URL (`imageSource: "url"`) where one exists; the procedural mock is the **fallback only** (items with no usable URL). ADR-003 §Brand image URLs; design.md §Assets; AGENTS.md Hard constraints.
+- **Transformer:** `pnpm catalog:resolve-images` (`resolveImages()` in `tools/catalog-transform/images.ts`) promotes a direct-file `image`-kind `sources` URL to `image`/`imageSource`; deterministic + idempotent. `seed` now renders only mock items and prunes their stale PNGs (keeps `static` files).
+- **Renderer:** unchanged — the image-resolution contract already handled `url` (loaded with `crossOrigin="anonymous"`; non-CORS/hotlink-blocked hosts fall back to the labeled silhouette). The board fallback was restyled as a *draft* silhouette (dashed outline + recessed fill + muted label).
+- **Data:** 129/207 pedals + 6/10 boards now render brand URLs; the rest stay mock. `source` stays `placeholder` (rights pending) — the launch gate is unchanged (P5-02 swaps `url` → cleared `static`).
+- **Caveat:** photos are stretched to the cm footprint; only top-down cropped cutouts keep true scale. Current brand shots are angled/hero — a known provisional inconsistency (see ADR-003).
+- **Temporary local images (owner-directed, 2026-10-15; delete later):** 10 boards + 15 pedals use committed `static` top-down test images (dev-only; `source` stays `placeholder`). Screenshot: `docs/screenshots/p1-04/boards-local-images.png`.
