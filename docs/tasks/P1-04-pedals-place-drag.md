@@ -1,6 +1,6 @@
 # P1-04: Pedals — place / drag / duplicate / delete
 
-**Phase:** P1 · **Status:** todo (brand-image slice: in review — PR #12, stacked on P1-03) · **Model:** build-cheap
+**Phase:** P1 · **Status:** todo (brand-image slice merged into PR #11) · **Model:** build-cheap
 
 ## Goal
 User can add a catalog pedal onto a board (position stored in cm relative to the board, unrotated frame), drag it within/across boards, duplicate it, and delete it. Pedals render at true scale from catalog dimensions.
