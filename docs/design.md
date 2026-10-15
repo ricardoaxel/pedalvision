@@ -1,6 +1,6 @@
 # Pedalvision — Design
 
-Decisions are recorded in `docs/decisions/` (001 canvas, 002 hosting/assets, 003 catalog data, 004 agent context). This file describes the target architecture.
+Decisions are recorded in `docs/decisions/` (001 canvas, 002 hosting/assets, 003 catalog data, 004 agent context, 005 design governance, 006 code review governance). This file describes the target architecture.
 
 ## Stack
 React 19 · TypeScript · Vite · react-konva (Konva 10) · Zustand · zod · pnpm · Biome · Vitest · Playwright · Cloudflare Pages (v1; R2 deferred — ADR-002)
@@ -20,7 +20,7 @@ tools/
   asset-pipeline/ # (P2) image processing: bg removal, trim, resize, JSON draft
   catalog-transform/ # (P0) one-off external catalog → our schema
 docs/             # this documentation
-scripts/          # dev tooling entrypoints (R2-era assets:sync unused in v1)
+scripts/          # dev tooling entrypoints (deferred: R2-era assets:sync; not created in v1)
 ```
 
 ## Canvas architecture (the core)
@@ -60,7 +60,7 @@ type CatalogPedal = {
   sources?: { url: string, kind: ('info' | 'image')[] }[] // per-item source links a fact/image was verified against (manufacturer preferred; a link may be both; ADR-003 §Per-item sources)
   links?: { label: string, url: string }[] // v2 affiliate (locale-aware)
 }
-type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, imageSource: 'mock'|'static'|'url', source: SourceTag } // tiers/risers DEFERRED to v2 (S4)
+type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, heightCm: number, image: string, imageSource: 'mock'|'static'|'url', source: SourceTag, sources?: { url: string, kind: ('info' | 'image')[] }[] } // tiers/risers DEFERRED to v2 (S4)
 
 // scene (user data)
 type PlacedItem = { uid: string, refId: string, kind: 'pedal'|'supply', x: number, y: number, rotationDeg: number, z: number } // x,y = cm relative to parent board (or world if boardUid null); refId resolves to a catalog item (its `category` must match `kind`) OR an entry in Scene.customPedals
@@ -84,13 +84,14 @@ External catalog formats are **transformed into this schema** by `tools/catalog-
 - **Undo/redo (S5):** snapshot-based undo stack on the persisted scene slice (cap ~50 snapshots), keyboard: Ctrl/Cmd+Z / Shift+Z (N6). Ships as its own task (P3-04), not bundled into save/load.
 
 ## Assets & catalog
-- Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import, zod-validated at build).
+- Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import). It is zod-validated **at module load** by `src/catalog/load.ts` (fail-fast) and guarded in CI by a Vitest test against the committed seed — not by a `vite build` step.
 - **v1 (ADR-002):** images live in the repo under `public/pedal-assets/` and ship with the Pages deployment (same-origin, no CORS). Two renditions per item — `800/` (master) and `350/` (thumb), pre-resized by the asset pipeline; **no runtime image service**.
 - URL convention (dev + v1 prod): `/pedal-assets/pedals/350/{image}`, built via `assetUrl()` in `src/lib/cdn.ts`. R2 with `{CDN_BASE}` is the deferred path (ADR-002) — revisit before ~2k items. `pnpm assets:sync` (scripts/) is the deferred **R2-era sync tool, unused in v1**.
+- **Image-resolution contract (P1 renderer):** branch on `imageSource` — `mock`/`static` → `assetUrl(kind, size, item.image)`; `url` → use `item.image` directly (it is an absolute `http(s)` URL, same-origin/CORS-clean). `assetUrl()` does not URL-encode, so the catalog schema guarantees safe filenames (ADR-003). A missing/failed image falls back to a labeled rectangle at the item's cm footprint (P1-03/P1-04).
 - Lazy loading: load image only when pedal enters viewport (Konva `Image` + intersection check on stage transform).
 
 ## CI/CD (ADR-002)
-PR / push to main → `pnpm install --frozen-lockfile` (cached) → `biome ci` → `tsc --noEmit` → `vitest run` → `vite build` → Playwright (chromium only, cached browsers, `vite preview`) → `wrangler-action` Pages deploy (PR = preview URL, main = production).
+PR / push to main → `pnpm install --frozen-lockfile` (cached) → `biome ci` → `tsc -b` (`pnpm typecheck`) → `vitest run` → `vite build` → Playwright (chromium only, cached browsers, `vite preview`) → `wrangler-action` Pages deploy (PR = preview URL, main = production).
 
 ## Security (static SPA threat model)
 - XSS via custom pedal/board names → React escaping; no `dangerouslySetInnerHTML`; any future rich text sanitized.

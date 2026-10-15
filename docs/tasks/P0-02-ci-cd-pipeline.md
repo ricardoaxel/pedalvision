@@ -1,6 +1,6 @@
 # P0-02: CI/CD pipeline
 
-**Phase:** P0 · **Status:** todo · **Model:** build-strong
+**Phase:** P0 · **Status:** done (merged 2026-09-30, PR #1) · **Model:** build-strong
 
 ## Goal
 GitHub Actions runs lint → typecheck → unit tests → build → Playwright smoke on every PR and push to main, and deploys to Cloudflare Pages (PR = preview URL, main = production).
@@ -17,7 +17,8 @@ GitHub Actions runs lint → typecheck → unit tests → build → Playwright s
 - No test sharding/matrix — suite is tiny.
 
 ## Steps
-1. `.github/workflows/ci.yml`: install → `biome ci` → `tsc --noEmit` → `vitest run` → `vite build` → Playwright (`vite preview` as webServer) → `cloudflare/wrangler-action` `pages deploy dist --project-name=pedalvision`
+1. `.github/workflows/ci.yml`: install → `biome ci` → `tsc -b` (`pnpm typecheck`) → `vitest run` → `vite build` → Playwright (`vite preview` as webServer) → `cloudflare/wrangler-action` `pages deploy dist --project-name=pedalvision`
+   > **Note (post-merge fix, 2026-10-13):** the original `tsc --noEmit` on the solution tsconfig checked **zero files** (silent no-op). `pnpm typecheck` is now `tsc -b`; CI calls `pnpm typecheck`.
 2. Add a trivial Playwright smoke test (page loads, heading visible)
 3. `package.json`: real `e2e` script (replaces P0-01 placeholder)
 4. Verify: push a PR, confirm preview URL appears; merge, confirm production deploy

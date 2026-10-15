@@ -18,7 +18,7 @@ User can pick a pedalboard from a temporary HTML list, it appears centered in th
 
 ## Steps
 1. `state/scene.ts`: boards slice (add/move/rotate/remove)
-2. `BoardNode`: Konva Group at world cm position; image layer via `use-image` from `src/lib/cdn.ts` (P0-04 — same-origin `/pedal-assets/`)
+2. `BoardNode`: Konva Group at world cm position; image resolved via the **image-resolution contract** (design.md §Assets: `mock`/`static` → `assetUrl()` from `src/lib/cdn.ts`; `url` → the item's `image`). Implement a tiny local `useImage()` hook in `src/canvas/` — **no new dependency** (`use-image` is NOT in the project; adding it needs justification under the minimal-deps rule). Fall back to a labeled rectangle at the cm footprint if the image fails to load.
 3. Temporary `BoardPicker` (HTML list from catalog boards) → adds board at viewport center (world coords)
 4. Drag bound to stage (don't fight stage pan: drag starts on the board, pan starts on empty space)
 

@@ -1,7 +1,8 @@
 /*
  * Pedalvision design tokens — the single source of truth for visual values.
- * Direction: "Blueprint" (designer⇄reviewer loop, 3 rounds, 2026-10-12; owner
- * approval pending — supersedes "Studio Clay"). True-scale drafting language:
+ * Direction: "Blueprint" (designer⇄reviewer loop R1–R7, 2026-10-12/13;
+ * owner-approved and merged in PR #2 — supersedes "Studio Clay"). True-scale
+ * drafting language:
  * NEUTRAL canvas (no cast on pedal photos), cool-tinted chrome, one cyan
  * accent reserved for primary actions/selection, mono only for measurement
  * labels, and quiet semantic status pills (tinted surface + colored ink).
