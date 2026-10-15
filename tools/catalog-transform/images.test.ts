@@ -83,20 +83,36 @@ describe("resolveImages", () => {
 		expect(items[0].imageSource).toBe("static");
 	});
 
-	it("reverts a url item back to mock when its URL is gone", () => {
+	it("reverts a url item back to mock when its direct image source is gone", () => {
 		const items = [
 			{
 				id: "d",
 				image: "https://dead.example/d.jpg",
 				imageSource: "url" as const,
 				sources: [
-					{ url: "https://maker.example/d", kind: ["info"] } as SourceRef,
+					{
+						url: "https://maker.example/d",
+						kind: ["info", "image"],
+					} as SourceRef,
 				],
 			},
 		];
 		expect(resolveImages(items)).toBe(1);
 		expect(items[0].image).toBe("d.png");
 		expect(items[0].imageSource).toBe("mock");
+	});
+
+	it("leaves a curated url with no recorded source untouched", () => {
+		const items = [
+			{
+				id: "e",
+				image: "https://cdn.example/e.jpg",
+				imageSource: "url" as const,
+			},
+		];
+		expect(resolveImages(items)).toBe(0);
+		expect(items[0].image).toBe("https://cdn.example/e.jpg");
+		expect(items[0].imageSource).toBe("url");
 	});
 
 	it("is idempotent", () => {

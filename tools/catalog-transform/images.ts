@@ -54,7 +54,13 @@ export function resolveImages(items: ImageResolvable[]): number {
 			item.image = url;
 			item.imageSource = "url";
 			changed++;
-		} else if (item.imageSource === "url") {
+		} else if (
+			item.imageSource === "url" &&
+			// Only demote a URL that came from a promoted source (an item with an
+			// image-kind ref but no usable direct file). A curated/external `url`
+			// with no such source is left alone.
+			item.sources?.some((ref) => ref.kind.includes("image"))
+		) {
 			item.image = `${item.id}.png`;
 			item.imageSource = "mock";
 			changed++;
