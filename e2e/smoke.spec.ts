@@ -137,3 +137,49 @@ test("rotating a selected board via the Transformer handle changes its rotation"
 		.poll(async () => Number(await stage.getAttribute("data-rotations")))
 		.not.toBe(0);
 });
+
+test("a second pointer during rotation commits the rotation (no lost transform)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	await page.waitForTimeout(150);
+	await expect(stage).toHaveAttribute("data-rotations", "0");
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Select, then start a rotation and hold it (handle ~98px above centre).
+	await page.mouse.click(cx, cy);
+	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await page.mouse.move(cx, cy - 98);
+	await page.mouse.down();
+	await page.mouse.move(cx + 70, cy - 40, { steps: 8 });
+
+	// A second pointer (CDP touch) turns it into a viewport gesture: the live
+	// rotation must be committed (not silently dropped when the Transformer stops).
+	const cdp = await page.context().newCDPSession(page);
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchStart",
+		touchPoints: [
+			{ id: 0, x: cx + 70, y: cy - 40 },
+			{ id: 1, x: cx + 140, y: cy + 40 },
+		],
+	});
+	await page.waitForTimeout(150);
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchEnd",
+		touchPoints: [],
+	});
+	await page.mouse.up();
+
+	await expect
+		.poll(async () => Number(await stage.getAttribute("data-rotations")))
+		.not.toBe(0);
+});

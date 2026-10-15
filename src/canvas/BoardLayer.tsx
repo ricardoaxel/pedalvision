@@ -32,38 +32,64 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 
 	const transformerRef = useRef<Konva.Transformer>(null);
 	const nodesRef = useRef(new Map<string, Konva.Group>());
+	// The board being transformed, captured at transformstart so a live
+	// rotation can be committed even if the selection is cleared mid-transform
+	// (e.g. a second finger lands on empty canvas).
+	const transformingUidRef = useRef<string | null>(null);
 
 	const registerNode = useCallback((uid: string, node: Konva.Group | null) => {
 		if (node) nodesRef.current.set(uid, node);
 		else nodesRef.current.delete(uid);
 	}, []);
 
+	const commitNode = useCallback(
+		(node: Konva.Node, uid: string) => {
+			rotateBoard(uid, node.rotation());
+			moveBoard(uid, pxToCm(node.x()), pxToCm(node.y()));
+		},
+		[moveBoard, rotateBoard],
+	);
+
+	// Commit a live transformer transform (if any) before detaching it, so an
+	// interrupted rotation isn't lost. Uses the captured uid, not `selectedUid`.
+	const commitActiveTransform = useCallback(() => {
+		const transformer = transformerRef.current;
+		if (!transformer?.isTransforming()) return;
+		const node = transformer.nodes()[0];
+		const uid = transformingUidRef.current;
+		transformer.stopTransform();
+		transformingUidRef.current = null;
+		if (node && uid) commitNode(node, uid);
+	}, [commitNode]);
+
 	// Attach the Transformer to the selected board's node. Runs after the child
 	// BoardNode effects have registered the node (child effects fire first), so a
-	// selection that exists before mount still attaches. Detached while the
-	// viewport is navigating (a pinch must not rotate the board). `boards` is in
-	// the deps so removing the selected board detaches; drags commit on dragend,
-	// so this does not re-run per pointer-move.
+	// selection that exists before mount still attaches. Before detaching (navigating,
+	// or the selection/board going away) any live transform is committed. `boards`
+	// is in the deps so removing the selected board detaches; drags commit on
+	// dragend, so this does not re-run per pointer-move.
 	useEffect(() => {
 		const transformer = transformerRef.current;
 		if (!transformer) return;
 		if (navigating) {
-			transformer.nodes([]);
+			commitActiveTransform();
+			// Keep the nodes attached (identity preserved) but non-interactive.
 			return;
 		}
 		const board = boards.find((candidate) => candidate.uid === selectedUid);
 		const node = board ? nodesRef.current.get(board.uid) : undefined;
+		if (!node) commitActiveTransform();
 		transformer.nodes(node ? [node] : []);
-	}, [selectedUid, boards, navigating]);
+	}, [selectedUid, boards, navigating, commitActiveTransform]);
 
 	// A single transform gesture writes both rotation and any origin shift
 	// (rotating about the node centre moves the top-left origin).
 	const handleTransformEnd = useCallback(() => {
 		const node = transformerRef.current?.nodes()[0];
-		if (!node || !selectedUid) return;
-		rotateBoard(selectedUid, node.rotation());
-		moveBoard(selectedUid, pxToCm(node.x()), pxToCm(node.y()));
-	}, [selectedUid, moveBoard, rotateBoard]);
+		const uid = transformingUidRef.current ?? selectedUid;
+		transformingUidRef.current = null;
+		if (node && uid) commitNode(node, uid);
+	}, [commitNode, selectedUid]);
 
 	return (
 		<Layer>
@@ -79,6 +105,10 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 				ref={transformerRef}
 				enabledAnchors={[]}
 				rotateEnabled
+				listening={!navigating}
+				onTransformStart={() => {
+					transformingUidRef.current = selectedUid;
+				}}
 				onTransformEnd={handleTransformEnd}
 				borderStroke={theme.selectionStrong}
 				borderStrokeWidth={1.5}
