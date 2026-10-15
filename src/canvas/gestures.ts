@@ -151,6 +151,16 @@ function onEnd(
 	return { machine: next };
 }
 
+/**
+ * Wheel zoom is only applied when no pointer gesture is in flight: a
+ * wheel-driven store change mid-gesture would leave the gesture's captured
+ * baseline (pan `viewport` / pinch `start`) stale, so the next pointer move
+ * would restore it — undoing the zoom and jumping the canvas.
+ */
+export function wheelZoomAllowed(machine: GestureMachine): boolean {
+	return machine.gesture.type === "idle";
+}
+
 /** Advance the gesture machine by one pointer event. Pure — no DOM/store. */
 export function reduceGesture(
 	machine: GestureMachine,

@@ -5,6 +5,7 @@ import {
 	type GestureMachine,
 	PAN_THRESHOLD_PX,
 	reduceGesture,
+	wheelZoomAllowed,
 } from "./gestures";
 
 const START: Viewport = { scale: 1, x: 0, y: 0 };
@@ -225,5 +226,32 @@ describe("reduceGesture — endings", () => {
 		const h = start();
 		const next = dispatch(h, mouseMove(9, 500, 500));
 		expect(next.viewport).toEqual(START);
+	});
+});
+
+describe("wheelZoomAllowed", () => {
+	it("is true only when no pointer gesture is active", () => {
+		const idle = start();
+		expect(wheelZoomAllowed(idle.machine)).toBe(true);
+
+		let h = dispatch(idle, {
+			type: "down",
+			pointerId: 1,
+			point: { x: 0, y: 0 },
+			target: "empty",
+		});
+		expect(wheelZoomAllowed(h.machine)).toBe(false); // pan in flight
+
+		h = dispatch(h, {
+			type: "down",
+			pointerId: 2,
+			point: { x: 100, y: 0 },
+			target: "empty",
+		});
+		expect(wheelZoomAllowed(h.machine)).toBe(false); // pinch in flight
+
+		h = dispatch(h, { type: "up", pointerId: 1 });
+		h = dispatch(h, { type: "up", pointerId: 2 });
+		expect(wheelZoomAllowed(h.machine)).toBe(true); // gesture ended
 	});
 });

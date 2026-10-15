@@ -5,6 +5,7 @@ import {
 	type GestureEvent,
 	type GestureMachine,
 	reduceGesture,
+	wheelZoomAllowed,
 } from "./gestures";
 
 /** Wheel delta → zoom factor. `deltaY` of ~100px ≈ 1.16×. */
@@ -90,6 +91,8 @@ export function useViewportGestures(
 
 		const onWheel = (event: WheelEvent) => {
 			event.preventDefault();
+			// Never zoom mid-gesture: it would invalidate the pan/pinch baseline.
+			if (!wheelZoomAllowed(machine)) return;
 			const unit =
 				event.deltaMode === 1
 					? LINE_HEIGHT_PX
