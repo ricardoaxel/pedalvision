@@ -11,7 +11,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P0-04 | Asset serving — Pages-shipped images (same-origin, no R2) | done |
 | P0-05 | Catalog schema + import transformer + seed | done |
 
-> **P0 COMPLETE** (all 5 merged, 2026-10-14). ⛔ **Do NOT start P1 directly** — the **Phase gate** applies: run a post-phase code review (AGENTS.md §Phase gate; NEW session, strong model) of the P0 merged PRs against the docs, fold valid findings in, THEN start **P1-01**. P0-05's transformer needs the external catalog file only to run `import`/backfill (the committed seed covers dev/CI).
+> **P0 COMPLETE + phase gate PASSED** (all 5 merged; post-phase review done 2026-10-14 — findings folded into the docs). ✅ **P1 cleared to start** (begin with **P1-01**). P0-05's transformer needs the external catalog file only to run `import`/backfill (the committed seed covers dev/CI).
 
 ## P1 — Canvas core
 | Task | Title | Status |
@@ -25,7 +25,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 
 ## P2 — Catalog & objects (expand when scheduled)
 - P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs
-- P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3)
+- P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **prereq:** widen the `jacks.kind` vocabulary first (current enum `in|out|exp|power` is too narrow for real pedals — add `send`/`return`/`exp-in`/`exp-out`/`midi`/`ctrl` in `src/catalog/schema.ts` + design.md §Data model)
 - P2-03 Pedal info panel (tags, dimensions, power)
 - P2-04 Asset-pipeline tooling (bg removal, trim, 800/350 sizes, JSON draft)
 - P2-05 Custom board creator (any W×D, texture)
@@ -41,7 +41,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P3-05 Storage-failure fallback (IndexedDB availability check + inline warning + JSON backup download) (N3 — separate task, one concern)
 
 ## P4 — Cables (expand when scheduled)
-- P4-01 Cable model + jack anchors in catalog schema
+- P4-01 Cable model + jack anchors in catalog schema — **prereq:** the widened `jacks.kind` vocabulary from P2-02 (see above)
 - P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints
 - P4-03 Auto length calculation + cable list summary
 

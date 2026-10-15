@@ -12,7 +12,7 @@ User can add a catalog pedal onto a board (position stored in cm relative to the
 
 ## Constraints
 - Position math via geometry lib only — no ad-hoc transforms in components.
-- Pedal images same-origin only (`src/lib/cdn.ts` from P0-04); fallback: labeled rectangle.
+- Pedal images via the **image-resolution contract** (design.md §Assets): `mock`/`static` → `assetUrl()` (`src/lib/cdn.ts` from P0-04); `url` → the item's `image`. Same-origin only; fallback: labeled rectangle. No new image dependency (reuse P1-03's local `useImage`).
 - Drop outside any board → item becomes "loose" (world coords), allowed (power supplies will need this).
 - No rotation in this task (P1-05), no z-order (P1-06).
 

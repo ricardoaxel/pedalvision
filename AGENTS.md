@@ -20,8 +20,6 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 
 > Deferred: `pnpm assets:sync` (R2-era image sync) does not exist until P2-07 — do not run it.
 
-> Until P0 scaffold lands, this repo contains docs only (no package.json yet).
-
 ## Repo map
 
 - `docs/requirements.md` — product spec (features, non-goals, acceptance criteria)
@@ -32,6 +30,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - `docs/decisions/` — ADRs (why things are the way they are)
 - `docs/tasks/` — one self-contained file per task
 - `src/` (from P0) — app code
+- `public/pedal-assets/` — committed pedal/board images (v1, same-origin; ADR-002)
 - `tools/` (from P0/P2) — dev tooling (asset pipeline, catalog transformer)
 
 ## Session protocol (MANDATORY)

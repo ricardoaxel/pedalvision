@@ -114,7 +114,9 @@ it returns the candidate official source + the rights metadata.
   are **not yet populated** in the seed. The pilot research produced them, but
   our jack model only allows `in | out | exp | power` while real pedals have
   `send`, `return`, `exp-in`, `exp-out`, `midi`, `ctrl` — **resolve the jack-kind
-  vocabulary before backfilling jacks** (schema/task; ADR-003 §Data model).
+  vocabulary before backfilling jacks**. This is a **hard prerequisite for
+  P2-02 (custom pedal creator) and P4-01 (cable anchors)**, not just P5-01;
+  see `docs/roadmap.md` P2-02/P4-01 and ADR-003 §Data model.
 - **Per-item provenance.** Today provenance is the coarse `source` tag. Planned
   enrichment: per-item source, last-verified date, and confidence
   (ADR-003 §Sourcing, rights & ingestion).
@@ -156,7 +158,7 @@ committed-image **byte-determinism** test.
   in the client bundle. Fine now; at full-catalog scale (P5-01, ~8.5k) move the
   rich provenance to a separate, non-runtime data file (keep only what the UI
   needs in the bundle).
-- **`curated.ts` rot.** The 85 hand-maintained base slugs will drift as the
+- **`curated.ts` rot.** The 86 hand-maintained base slugs will drift as the
   catalog grows; P5-01 must re-verify/regenerate them, and the no-dead-keys test
   should catch drift in both directions.
 - **`catalogVersion`.** Add a format version field when the catalog schema

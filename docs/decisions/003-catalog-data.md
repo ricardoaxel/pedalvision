@@ -45,9 +45,10 @@ recorded in an optional `sources` array per item:
   be both (e.g. a manufacturer product page). **Only links are stored — no image
   is downloaded; every image is still `mock`.**
 - Populated for the **verified** base models — the `curated.ts` keys plus models
-  whose official image source was resolved (**176 today**). The seed carries
-  **485 source refs, 340 of them `image` links across 170 models**. Sources live
-  on the **base** model; a colorway variant (`variantOf`) resolves to its base's
+  whose official image source was resolved. **176 of the 187 base models carry
+  at least one source ref; 170 of them have an `image`-kind link.** The seed
+  carries **485 source refs, 340 of them `image` links**. Sources live on the
+  **base** model; a colorway variant (`variantOf`) resolves to its base's
   sources (not duplicated). Unverified items have none — their facts come only
   from the aggregate, which is never cited.
 - This **amends** the earlier blanket "no URLs in catalog data" rule: the
