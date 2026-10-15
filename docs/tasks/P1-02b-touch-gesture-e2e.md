@@ -1,6 +1,6 @@
 # P1-02b: Touch/gesture E2E (Playwright + CDP multi-touch)
 
-**Phase:** P1 · **Status:** in review — PR #10 · **Model:** build-strong
+**Phase:** P1 · **Status:** done (merged 2026-10-15, PR #10) · **Model:** build-strong
 
 ## Goal
 Add automated coverage for the P1-02 canvas touch gestures — two-finger **pinch-zoom** and two-finger **pan** — using Playwright's CDP touch injection, so gesture regressions fail in CI instead of only surfacing on a physical device.
