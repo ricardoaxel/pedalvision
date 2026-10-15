@@ -109,7 +109,7 @@ export async function writeSeedImages(
 		await writeFile(image.path, image.buffer);
 	}
 
-	// Prune stale generator-owned PNGs, but never from an empty manifest (an empty
+	// Prune stale generator-owned PNGs, but never from an empty catalog (an empty
 	// catalog must not wipe every committed asset). Rendition dirs are
 	// generator-managed — do not hand-place files there.
 	// `owned` = the mocks we just rendered + any committed `static` files (kept,
@@ -125,7 +125,9 @@ export async function writeSeedImages(
 		for (const size of SIZES)
 			owned.add(resolve(join(assetsDir, "boards", String(size), item.image)));
 	}
-	for (const dir of images.length === 0 && owned.size === 0
+	const catalogEmpty =
+		pedalsResult.data.length + boardsResult.data.length === 0;
+	for (const dir of catalogEmpty
 		? []
 		: [
 				join(assetsDir, "pedals", "800"),

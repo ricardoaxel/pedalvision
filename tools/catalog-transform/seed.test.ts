@@ -161,6 +161,36 @@ describe("writeSeedImages", () => {
 		}
 	});
 
+	it("prunes the stale mock PNG of an item that is now url", async () => {
+		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-staleurl-"));
+		try {
+			const dataDir = join(dir, "data");
+			const assetsDir = join(dir, "assets");
+			await mkdir(join(assetsDir, "pedals", "800"), { recursive: true });
+			await writeFile(join(assetsDir, "pedals", "800", mockPedal.image), "old");
+			await mkdir(dataDir, { recursive: true });
+			await writeFile(
+				join(dataDir, "pedals.json"),
+				JSON.stringify([
+					{
+						...mockPedal,
+						imageSource: "url",
+						image: "https://cdn.example/x.jpg",
+					},
+				]),
+			);
+			await writeFile(join(dataDir, "boards.json"), JSON.stringify([]));
+
+			const summary = await writeSeedImages(dataDir, assetsDir);
+			expect(summary.images).toBe(0);
+			await expect(
+				readFile(join(assetsDir, "pedals", "800", mockPedal.image)),
+			).rejects.toThrow();
+		} finally {
+			await rm(dir, { recursive: true, force: true });
+		}
+	});
+
 	it("rejects an invalid catalog file before writing", async () => {
 		const dir = await mkdtemp(join(tmpdir(), "pedalvision-seed-bad-"));
 		try {
