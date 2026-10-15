@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { Stage } from "./canvas/Stage";
 
 type Theme = "dark" | "light";
 
 function App() {
+	// TODO(P1): move to the persisted settings store. Kept minimal here so the
+	// canvas theme map (Konva can't read CSS vars) can be verified live.
 	const [theme, setTheme] = useState<Theme>("dark");
 
-	// TODO(P1): replace with the real theme switcher (persisted settings store).
-	// Temporary; exists only to prove the variables-only `data-theme` override.
 	const toggleTheme = () => {
 		const next: Theme = theme === "dark" ? "light" : "dark";
 		document.documentElement.dataset.theme = next;
@@ -14,20 +15,12 @@ function App() {
 	};
 
 	return (
-		<main className="app dot-grid">
-			<section className="panel">
-				<p className="panel__eyebrow">True-scale planner</p>
-				<h1 className="panel__title">Pedalvision</h1>
-				<p className="panel__text">2D true-scale guitar pedalboard planner.</p>
-				<div className="badges">
-					<span className="badge badge--accent">Accent</span>
-					<span className="badge badge--warning">Warning</span>
-					<span className="badge badge--danger">Danger</span>
-				</div>
-				<button type="button" className="button" onClick={toggleTheme}>
-					Switch to {theme === "dark" ? "light" : "dark"} theme
-				</button>
-			</section>
+		<main className="app">
+			<h1 className="visually-hidden">Pedalvision</h1>
+			<Stage />
+			<button type="button" className="hud-button" onClick={toggleTheme}>
+				{theme === "dark" ? "Light" : "Dark"} theme
+			</button>
 		</main>
 	);
 }

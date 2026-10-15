@@ -25,120 +25,69 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-p {
-	margin: 0;
-}
-
-/* Dot-grid background — reusable, fully token-driven. */
-.dot-grid {
-	background-color: var(--color-canvas-bg);
-	background-image: radial-gradient(
-		circle,
-		var(--color-grid-dot) var(--grid-dot-radius),
-		transparent var(--grid-dot-radius)
-	);
-	background-size: var(--grid-dot-size) var(--grid-dot-size);
-}
-
 /*
- * Temporary demo chrome (see App.tsx TODO): proves that flipping `data-theme`
- * re-themes everything with zero component edits. Values come only from tokens.
+ * The app is the canvas: a full-bleed Stage host. Chrome (toolbar, panels,
+ * picker) is layered on in later P1/P2 tasks.
  */
 .app {
-	min-height: 100svh;
-	display: grid;
-	place-items: center;
-	padding: var(--space-5);
+	position: fixed;
+	inset: 0;
 }
 
-.panel {
-	display: grid;
-	gap: var(--space-4);
-	width: min(32rem, 100%);
-	padding: var(--space-5);
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-card);
-	box-shadow: var(--shadow-raised);
+.stage {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	/* Claim touch gestures for the canvas so pan/pinch don't scroll the page. */
+	touch-action: none;
+	cursor: grab;
+	background-color: var(--color-canvas-bg);
 }
 
-/* Mono is "instrumentation" — eyebrow labels, not prose. */
-.panel__eyebrow {
+.stage:active {
+	cursor: grabbing;
+}
+
+/* Minimal chrome: theme toggle (Konva can't read CSS vars — see theme.ts). */
+.hud-button {
+	position: absolute;
+	top: var(--space-4);
+	right: var(--space-4);
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: var(--space-2) var(--space-4);
 	font-family: var(--font-mono);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-medium);
 	letter-spacing: var(--tracking-wide);
 	text-transform: uppercase;
-	color: var(--color-ink-eyebrow);
-}
-
-.panel__title {
-	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-semibold);
-	letter-spacing: var(--tracking-tight);
-	line-height: 1.2;
 	color: var(--color-ink);
-}
-
-.panel__text {
-	color: var(--color-ink-muted);
-	line-height: 1.5;
-}
-
-.badges {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-2);
-}
-
-.badge {
-	display: inline-flex;
-	align-items: center;
-	padding: var(--space-1) var(--space-3);
-	border: 1px solid transparent;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: var(--radius-control);
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-medium);
-	letter-spacing: var(--tracking-wide);
-}
-
-/* Labels are quiet tinted chips: colored ink on a tinted surface + hairline. */
-.badge--accent {
-	background-color: var(--color-accent-surface);
-	border-color: var(--color-accent-border);
-	color: var(--color-accent-ink);
-}
-
-.badge--warning {
-	background-color: var(--color-warning-surface);
-	border-color: var(--color-warning-border);
-	color: var(--color-warning);
-}
-
-.badge--danger {
-	background-color: var(--color-danger-surface);
-	border-color: var(--color-danger-border);
-	color: var(--color-danger);
-}
-
-.button {
-	justify-self: stretch;
-	padding: var(--space-2) var(--space-4);
-	font: inherit;
-	font-weight: var(--font-weight-semibold);
-	color: var(--color-on-accent);
-	background-color: var(--color-accent-strong);
-	border: 1px solid transparent;
-	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
 	cursor: pointer;
 }
 
-.button:hover {
-	background-color: var(--color-accent);
+.hud-button:hover {
+	background-color: var(--color-surface-raised);
 }
 
-.button:focus-visible {
+.hud-button:focus-visible {
 	outline: 2px solid var(--color-accent-strong);
 	outline-offset: 2px;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
 }
