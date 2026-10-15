@@ -254,4 +254,17 @@ describe("wheelZoomAllowed", () => {
 		h = dispatch(h, { type: "up", pointerId: 2 });
 		expect(wheelZoomAllowed(h.machine)).toBe(true); // gesture ended
 	});
+
+	it("is false while a pointer is down on an object (board press, no pan)", () => {
+		const h = dispatch(start(), {
+			type: "down",
+			pointerId: 1,
+			point: { x: 10, y: 10 },
+			target: "object",
+		});
+		// A board press leaves the machine idle but the pointer tracked.
+		expect(h.machine.gesture.type).toBe("idle");
+		expect(h.machine.pointers.size).toBe(1);
+		expect(wheelZoomAllowed(h.machine)).toBe(false);
+	});
 });

@@ -18,6 +18,17 @@ interface Size {
 	height: number;
 }
 
+/** Stop any in-flight Konva drag (a two-finger gesture takes the viewport over). */
+function stopDragging(container: Konva.Container): void {
+	for (const child of container.getChildren()) {
+		if (child.isDragging()) child.stopDrag();
+		const nested = child as unknown as { getChildren?: () => Konva.Node[] };
+		if (typeof nested.getChildren === "function") {
+			stopDragging(child as Konva.Container);
+		}
+	}
+}
+
 /**
  * The canvas host: a Konva `Stage` that fills its container and owns the
  * viewport (pan/zoom) as a stage transform (design.md §Canvas architecture).
@@ -37,10 +48,14 @@ export function Stage() {
 	const y = useViewport((state) => state.y);
 	const setSizeInStore = useViewport((state) => state.setSize);
 	const boardCount = useScene((state) => state.boards.length);
-	// Rotation per board (index-aligned) — a debug/assertion hook for the rotate
-	// Transformer path, like data-scale for the viewport.
+	// Rotation + positions per board — debug/assertion hooks (like data-scale).
 	const rotations = useScene((state) =>
 		state.boards.map((board) => board.rotationDeg).join(","),
+	);
+	const positions = useScene((state) =>
+		state.boards
+			.map((board) => `${board.x.toFixed(2)},${board.y.toFixed(2)}`)
+			.join(";"),
 	);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	const theme = useCanvasTheme();
@@ -52,7 +67,14 @@ export function Stage() {
 		return stageRef.current?.getIntersection(point) != null;
 	}, []);
 
-	useViewportGestures(containerRef, hitTest);
+	// A second finger starts pinch/pan: stop any board drag so it doesn't move
+	// with both the drag and the pan (Copilot review, 2026-10-15).
+	const cancelObjectDrag = useCallback(() => {
+		const stage = stageRef.current;
+		if (stage) stopDragging(stage);
+	}, []);
+
+	useViewportGestures(containerRef, hitTest, cancelObjectDrag);
 
 	useEffect(() => {
 		const element = containerRef.current;
@@ -81,6 +103,7 @@ export function Stage() {
 			data-y={y}
 			data-boards={boardCount}
 			data-rotations={rotations}
+			data-positions={positions}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage

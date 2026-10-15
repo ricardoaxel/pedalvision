@@ -35,10 +35,15 @@ function snapshot(): Viewport {
  * `hitTest(point)` is the `empty`/`object` seam: it reports whether a node is
  * under a press. P1-03 passes a Konva hit test so a single pointer on a board
  * drags the board while empty space pans.
+ *
+ * `onNavigationStart()` fires when a second pointer turns the gesture into a
+ * pinch. Viewport navigation then owns the gesture, so the caller must stop any
+ * object drag in flight (otherwise the object follows both the drag and the pan).
  */
 export function useViewportGestures(
 	containerRef: RefObject<HTMLElement | null>,
 	hitTest?: (point: Point) => boolean,
+	onNavigationStart?: () => void,
 ): void {
 	useEffect(() => {
 		const element = containerRef.current;
@@ -55,10 +60,16 @@ export function useViewportGestures(
 		};
 
 		const dispatch = (event: GestureEvent) => {
+			const wasPinch = machine.gesture.type === "pinch";
 			const result = reduceGesture(machine, event, snapshot());
 			machine = result.machine;
 			if (result.viewport) {
 				useViewport.getState().setViewport(result.viewport);
+			}
+			// Two fingers now own the gesture: let the caller cancel an in-flight
+			// object drag so it doesn't move with both the drag and the pan.
+			if (!wasPinch && result.machine.gesture.type === "pinch") {
+				onNavigationStart?.();
 			}
 		};
 
@@ -124,5 +135,5 @@ export function useViewportGestures(
 			window.removeEventListener("blur", onWindowBlur);
 			element.removeEventListener("wheel", onWheel);
 		};
-	}, [containerRef, hitTest]);
+	}, [containerRef, hitTest, onNavigationStart]);
 }
