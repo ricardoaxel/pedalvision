@@ -136,6 +136,28 @@ export function findBoardAt(
 	return null;
 }
 
+/**
+ * A world-cm pointer position measured in the item's **unrotated** local frame,
+ * relative to the item's origin — the drag grab offset. The lifted item renders
+ * unrotated in the DragLayer, so a grab offset taken in world cm (which would
+ * include the board's rotation) would make a centre-grab on a rotated board
+ * leave the pointer off the pedal. Converting the press through `worldToBoard`
+ * first keeps the grabbed point under the pointer. Loose items are already in
+ * world cm.
+ */
+export function pointerGrabOffset(
+	item: PlacedItem,
+	boards: PlacedBoard[],
+	pointerWorld: Point,
+): Point {
+	let pressLocal = pointerWorld;
+	if (item.boardUid) {
+		const board = boards.find((candidate) => candidate.uid === item.boardUid);
+		if (board) pressLocal = worldToBoard(pointerWorld, board);
+	}
+	return { x: pressLocal.x - item.x, y: pressLocal.y - item.y };
+}
+
 /** The next dense z within a container (board or loose). */
 function nextZ(items: PlacedItem[], boardUid: string | null): number {
 	let max = -1;

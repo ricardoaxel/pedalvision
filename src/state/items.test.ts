@@ -5,6 +5,7 @@ import {
 	DUPLICATE_OFFSET_CM,
 	findBoardAt,
 	itemWorldOrigin,
+	pointerGrabOffset,
 	useScene,
 } from "./scene";
 
@@ -141,6 +142,54 @@ describe("itemWorldOrigin", () => {
 			x: 4,
 			y: 8,
 		});
+	});
+});
+
+describe("pointerGrabOffset", () => {
+	it("grabs an unmoved item at its own frame (loose)", () => {
+		const item = {
+			uid: "i",
+			refId: "boss-bd-2-blues-driver",
+			kind: "pedal" as const,
+			boardUid: null,
+			x: 10,
+			y: 20,
+			rotationDeg: 0,
+			z: 0,
+		};
+		// Press at the item's unrotated centre → offset = half-footprint.
+		const offset = pointerGrabOffset(item, [], { x: 13.65, y: 26.51 });
+		expect(offset.x).toBeCloseTo(3.65, 10);
+		expect(offset.y).toBeCloseTo(6.51, 10);
+	});
+
+	it("returns the unrotated offset for a centre-grab on a rotated board", () => {
+		const board = {
+			uid: "b",
+			boardRefId: boss.id,
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+		const item = {
+			uid: "i",
+			refId: "boss-bd-2-blues-driver",
+			kind: "pedal" as const,
+			boardUid: "b",
+			x: 10,
+			y: 20,
+			rotationDeg: 0,
+			z: 0,
+		};
+		// The pedal's world centre is rotated; grabbing it must still yield the
+		// unrotated half-footprint, not the rotated one (-6.51, 3.65).
+		const worldCentre = boardToWorld(
+			{ x: item.x + HALF.x, y: item.y + HALF.y },
+			board,
+		);
+		const offset = pointerGrabOffset(item, [board], worldCentre);
+		expect(offset.x).toBeCloseTo(HALF.x, 10);
+		expect(offset.y).toBeCloseTo(HALF.y, 10);
 	});
 });
 

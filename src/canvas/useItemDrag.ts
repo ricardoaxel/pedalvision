@@ -2,7 +2,7 @@ import type { RefObject } from "react";
 import { useEffect, useRef } from "react";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
-import { itemWorldOrigin, useScene } from "../state/scene";
+import { pointerGrabOffset, useScene } from "../state/scene";
 import { type Point, pxToWorldCm, useViewport } from "../state/viewport";
 
 /** Screen px the pointer may travel before a press becomes a pedal drag. */
@@ -10,9 +10,11 @@ export const ITEM_DRAG_THRESHOLD_PX = 4;
 
 interface PendingDrag {
 	uid: string;
+	/** The pointer that started the drag; other pointers' moves are ignored. */
+	pointerId: number | null;
 	/** Client-space pointer position where the press began. */
 	startClient: Point;
-	/** `itemWorldOrigin − pointerWorld` at press time, so the grab point sticks. */
+	/** Press offset in the item's unrotated frame (see `pointerGrabOffset`). */
 	grabOffsetCm: Point;
 }
 
@@ -31,9 +33,18 @@ interface PendingDrag {
  *
  * Object presses never pan (the gesture reducer sees `target: "object"`), so the
  * viewport stays put for the whole single-pointer drag.
+ *
+ * Copilot review (2026-10-15) hardening: a candidate is rejected while the
+ * viewport is navigating (a finger landing on a pedal mid-pan); the drag is
+ * bound to the initiating pointer so a stray second pointer can't move/commit
+ * it; and a non-touch move with no buttons held (released off-window) ends it —
+ * matching `gestures.ts`.
  */
 export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 	const pendingRef = useRef<PendingDrag | null>(null);
+	// Native pointer id of the most recent pointerdown (capture phase), paired
+	// with the candidate the Konva handler creates synchronously after it.
+	const nativePointerRef = useRef<number | null>(null);
 
 	useEffect(() => {
 		const element = containerRef.current;
@@ -48,8 +59,20 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 			);
 		};
 
+		const onNativePointerDown = (event: PointerEvent) => {
+			nativePointerRef.current = event.pointerId;
+		};
+
 		const unsubCandidate = useDrag.subscribe((state, prev) => {
 			if (state.candidate && state.candidate !== prev.candidate) {
+				// A press during navigation (e.g. a finger landing on a pedal while
+				// another pans/pinches) must not start a drag: cancellation only
+				// fires on the idle→navigating edge, which already passed.
+				if (useGesture.getState().navigating) {
+					pendingRef.current = null;
+					useDrag.getState().clear();
+					return;
+				}
 				const { uid, startClient } = state.candidate;
 				const { items, boards } = useScene.getState();
 				const item = items.find((candidate) => candidate.uid === uid);
@@ -57,15 +80,12 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 					pendingRef.current = null;
 					return;
 				}
-				const origin = itemWorldOrigin(item, boards);
 				const pointerWorld = localWorldCm(startClient);
 				pendingRef.current = {
 					uid,
+					pointerId: nativePointerRef.current,
 					startClient,
-					grabOffsetCm: {
-						x: origin.x - pointerWorld.x,
-						y: origin.y - pointerWorld.y,
-					},
+					grabOffsetCm: pointerGrabOffset(item, boards, pointerWorld),
 				};
 			}
 		});
@@ -73,14 +93,24 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 		const originFromPointer = (client: Point, grabOffsetCm: Point): Point => {
 			const pointerWorld = localWorldCm(client);
 			return {
-				x: pointerWorld.x + grabOffsetCm.x,
-				y: pointerWorld.y + grabOffsetCm.y,
+				x: pointerWorld.x - grabOffsetCm.x,
+				y: pointerWorld.y - grabOffsetCm.y,
 			};
 		};
 
 		const onMove = (event: PointerEvent) => {
 			const pending = pendingRef.current;
 			if (!pending) return;
+			// Only the pointer that started the drag may move it.
+			if (pending.pointerId !== null && event.pointerId !== pending.pointerId) {
+				return;
+			}
+			// A non-touch move without buttons means the release was missed (e.g.
+			// released off-window): end the drag instead of ghost-moving it.
+			if (event.pointerType !== "touch" && event.buttons === 0) {
+				finish();
+				return;
+			}
 			const client = { x: event.clientX, y: event.clientY };
 			const drag = useDrag.getState();
 			if (!drag.liftedUid) {
@@ -104,10 +134,25 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 			pendingRef.current = null;
 		};
 
-		const onUp = () => finish();
-		const onCancel = () => finish();
+		const onUp = (event: PointerEvent) => {
+			const pending = pendingRef.current;
+			if (!pending) return;
+			if (pending.pointerId !== null && event.pointerId !== pending.pointerId) {
+				return;
+			}
+			finish();
+		};
+		const onCancel = (event: PointerEvent) => {
+			const pending = pendingRef.current;
+			if (!pending) return;
+			if (pending.pointerId !== null && event.pointerId !== pending.pointerId) {
+				return;
+			}
+			finish();
+		};
 		const onBlur = () => finish();
 
+		window.addEventListener("pointerdown", onNativePointerDown, true);
 		window.addEventListener("pointermove", onMove);
 		window.addEventListener("pointerup", onUp);
 		window.addEventListener("pointercancel", onCancel);
@@ -121,6 +166,7 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 		return () => {
 			unsubCandidate();
 			unsubNavigate();
+			window.removeEventListener("pointerdown", onNativePointerDown, true);
 			window.removeEventListener("pointermove", onMove);
 			window.removeEventListener("pointerup", onUp);
 			window.removeEventListener("pointercancel", onCancel);

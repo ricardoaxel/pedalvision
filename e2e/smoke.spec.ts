@@ -303,3 +303,122 @@ test("a two-finger pan mid-drag drops the lifted pedal in place (pan interrupt)"
 	});
 	await page.mouse.up();
 });
+
+test("a press on a pedal during an active viewport gesture does not start a drag", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	const before = await stage.getAttribute("data-item-positions");
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	const cdp = await page.context().newCDPSession(page);
+	// One finger pans on empty canvas, so the viewport owns the gesture. Moving
+	// +40px pans the stage +40px, putting the pedal (board centre) at cx+40.
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchStart",
+		touchPoints: [{ id: 0, x: cx + 420, y: cy }],
+	});
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchMove",
+		touchPoints: [{ id: 0, x: cx + 460, y: cy }],
+	});
+
+	// While navigating, a press on the pedal must NOT start a drag (the idle→
+	// navigating cancellation edge already passed). Konva does not dispatch a
+	// shape touchstart for a second finger, so the press is injected via the mouse
+	// to reach the same candidate path.
+	await page.mouse.move(cx + 40, cy);
+	await page.mouse.down();
+	await page.mouse.move(cx + 90, cy + 10, { steps: 5 });
+
+	await expect(stage).toHaveAttribute("data-lifted-item", "");
+	expect(await stage.getAttribute("data-item-positions")).toBe(before);
+
+	await page.mouse.up();
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchEnd",
+		touchPoints: [],
+	});
+});
+
+test("a stray pointer or a button-less move ends the pedal drag", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	const selected = await stage.getAttribute("data-selected-item");
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Record the real mouse pointerId so synthetic events can match/mismatch it.
+	await page.evaluate(() => {
+		(window as unknown as { __pid?: number }).__pid = undefined;
+		window.addEventListener("pointermove", (event) => {
+			(window as unknown as { __pid?: number }).__pid = event.pointerId;
+		});
+	});
+
+	await page.mouse.move(cx, cy);
+	await page.mouse.down();
+	await page.mouse.move(cx + 60, cy, { steps: 6 });
+	await expect(stage).toHaveAttribute("data-lifted-item", selected ?? "");
+
+	const pid = await page.evaluate(
+		() => (window as unknown as { __pid?: number }).__pid,
+	);
+	if (typeof pid !== "number") throw new Error("no pointerId captured");
+	const liftedBefore = await stage.getAttribute("data-lifted-position");
+
+	// A DIFFERENT pointer moving must not move the lifted pedal (finding #4).
+	await page.evaluate(
+		({ pid, cx, cy }) => {
+			window.dispatchEvent(
+				new PointerEvent("pointermove", {
+					pointerId: pid + 1000,
+					pointerType: "touch",
+					buttons: 1,
+					clientX: cx + 320,
+					clientY: cy + 220,
+					bubbles: true,
+				}),
+			);
+		},
+		{ pid, cx, cy },
+	);
+	await page.waitForTimeout(50);
+	expect(await stage.getAttribute("data-lifted-position")).toBe(liftedBefore);
+
+	// The owning pointer with no buttons held (released off-window) ends the drag
+	// (finding #3).
+	await page.evaluate(
+		({ pid, cx, cy }) => {
+			window.dispatchEvent(
+				new PointerEvent("pointermove", {
+					pointerId: pid,
+					pointerType: "mouse",
+					buttons: 0,
+					clientX: cx + 61,
+					clientY: cy,
+					bubbles: true,
+				}),
+			);
+		},
+		{ pid, cx, cy },
+	);
+	await expect(stage).toHaveAttribute("data-lifted-item", "");
+	await page.mouse.up();
+});
