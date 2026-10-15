@@ -9,8 +9,8 @@ P1-02 introduced the canvas touch gestures (two-finger pinch-zoom + pan). The be
 Stay **free and lightweight**; layer coverage as follows:
 
 1. **Automate gestures now with Playwright + CDP multi-touch (free, in CI).** Inject trusted touch via `Input.dispatchTouchEvent` over a CDP session (Chromium-only, built into Playwright — **no new dependency**). This exercises the app's real **Pointer Events** gesture code (`src/canvas/gestures.ts`) in a real engine and runs in CI by default (`mobile-chromium` project). See `e2e/touch.spec.ts`, task **P1-02b**.
-2. **Real iOS Safari stays a manual owner gate.** No free tool drives actual MobileSafari on a real iPhone (Apple exposes only the Safari Web Inspector protocol); the engine, hardware gestures, momentum, page-zoom, and pull-to-refresh are OS-level. The owner does a short real-device pass before merge/launch.
-3. **Appium + local iOS Simulator / Android device is the recommended *future* path for true mobile-engine E2E — deferred, not scheduled.** It is free (open-source) and gives real MobileSafari/Chrome + W3C multi-touch, but requires a heavy local install (Xcode/simulator or Android SDK). It is parked as a **proposal for the final full-integration / pre-launch stage only** (task **P5-05**, status *proposed*) so a later session is reminded, without spending setup time now.
+2. **Real iOS Safari stays a manual owner gate for now.** Free, open-source automation of a real iPhone *does* exist — Appium's XCUITest driver drives Safari through WebDriverAgent — but it requires macOS/Xcode, a connected device, and WebDriverAgent signing, so it is **not adopted here** (deferred to P5-05, below). The owner does a short real-device pass before merge/launch to check the OS-level behaviour (hardware gestures, momentum, page-zoom, pull-to-refresh).
+3. **Appium + local iOS Simulator (or a real iPhone) / Android device is the recommended *future* path for true mobile-engine E2E — deferred, not scheduled.** It is free (open-source) and gives real MobileSafari/Chrome + W3C multi-touch; a real iPhone is automatable via the XCUITest/WebDriverAgent driver, and the iOS Simulator needs no device or signing. All variants still need a heavy local install (Xcode/simulator or Android SDK), so it is parked as a **proposal for the final full-integration / pre-launch stage only** (task **P5-05**, status *proposed*), without spending setup time now.
 4. **Paid device clouds are out of scope.** Real-device cloud providers (BrowserStack, Sauce Labs, LambdaTest, AWS Device Farm, …) are recorded only as an escape hatch, not adopted. If ever needed, prefer (a) a free open-source plan (several providers offer one) or (b) pay-per-minute. Note (**as of late 2025**): among them, BrowserStack is the only one that runs Playwright tests on real iOS Safari; the others automate real mobile via Appium.
 
 The chosen model for the grid's zoom-dependent behaviour is recorded separately; this ADR is about *testing*, not app behaviour.
@@ -20,13 +20,13 @@ The chosen model for the grid's zoom-dependent behaviour is recorded separately;
 |---|---|
 | Playwright WebKit + iPhone device profile | Emulates UA/viewport/touch flags, but the engine is Playwright's WebKit, not the iOS-Safari build — misses real Safari quirks |
 | Playwright `dispatchEvent('touchstart')` | Synthetic/untrusted, and the app listens to Pointer Events — wouldn't drive the handlers |
-| Appium 3 + simulator **now** | Correct tool, but heavy install (Xcode/simulator, Appium server, WebDriverAgent) for uncertain value mid-P1 — deferred to P5-05 |
+| Appium 3 + simulator / real device **now** | Correct tool (real MobileSafari/Chrome, W3C multi-touch; a real iPhone works via XCUITest/WebDriverAgent), but a heavy install (Xcode, Appium server, WebDriverAgent/device signing) for uncertain value mid-P1 — deferred to P5-05 |
 | Android emulator / DeviceFarmer self-hosted farm | Heavy on a modest machine (RAM/CPU) / needs a server + hardware; Android-only |
 | Paid real-device cloud as a standing tool | Cost; not justified for occasional gesture checks — free tiers + OSS plans remain the escape hatch |
 | Maestro / Drizz | Native-app-oriented; web support (Chromium-only) is early — not a better fit here |
 
 ## Consequences
 - Gesture regressions (pinch/pan) fail in **CI** without a device; the suite is Chromium-only and adds zero dependencies.
-- Real device/browser-engine coverage is still a **manual** step — automated emulation never fully replaces it (recorded as a review hint on every canvas PR).
+- Real device/browser-engine coverage is a **manual** step **for now** — automated emulation never fully replaces it, and the free real-device path (Appium/XCUITest) is deferred (recorded as a review hint on every canvas PR).
 - A **P5-05 proposal** is recorded in `docs/roadmap.md`, `docs/tasks/P5-05-*`, and `docs/progress.md` → Follow-ups so the Appium recommendation resurfaces at the final integration stage.
 - If true-device automation ever becomes worth it, the upgrade path is: local Appium (free) → free OSS cloud plan → paid real-device cloud.
