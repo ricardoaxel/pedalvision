@@ -1,18 +1,21 @@
 ---
-description: Orchestrate the ≤2-round code review+fix loop on the current task before opening its PR. Reviewer = code-reviewer agent. Stops after round 2; escalates to the owner if issues remain.
+description: ESCALATION — ≤2-round code review+fix loop on a plan-tier model for a HIGH-RISK task. Default is the single light /code-review pass. Stops after round 2; escalates to the owner if issues remain.
 agent: build
 ---
 
-Run the **code review loop** for the task in `$ARGUMENTS` (default: the current task from `docs/progress.md`). Goal: the `code-reviewer` gets up to **two** passes, and you fix real findings between rounds.
+Run the **code review loop** for the task in `$ARGUMENTS` (default: the current task from `docs/progress.md`). **This is the escalation only** — use it when the change is high-risk (architecture, security, persistence/serialization, catalog schema, CI/build, new dependencies), or the light `/code-review` pass reported a blocker, or the owner asked. For everything else, run the single light `/code-review` pass.
+
+Goal: the `code-reviewer` gets up to **two** passes, and you fix real findings between rounds.
 
 Rules:
 - **Max 2 rounds.** A round = reviewer feedback → you fix the real findings in code → re-review.
 - **After round 2, STOP.** If blockers/should-fixes remain, do NOT open the PR as ready — tell the owner plainly what is still open and **propose more rounds**; wait for their decision.
 - Only the reviewer's *real* findings get fixed. If you reject a finding, say why in one line.
+- **Scope the diff to source only** (docs/screenshots/lockfiles excluded) to keep it cheap.
 
 Each round:
-1. **Review** — run the code-reviewer on the current diff:
-   `opencode run --agent code-reviewer "Review the current branch vs main. Task: <task file / summary>. Obey docs/requirements.md, docs/design.md, AGENTS.md. Output per your format."`
+1. **Review** — run the code-reviewer on the current diff on a plan-tier model, source-only:
+   `opencode run --agent code-reviewer -m opencode-go/kimi-k3 "Review the current branch vs main, source-only (git diff main...HEAD -- src tools e2e .github playwright.config.ts vite.config.ts package.json). Task: <task file / summary>. Obey docs/requirements.md, docs/design.md, AGENTS.md. Keep findings to the blockers/should-fixes; output per your format."`
 2. **Triage & fix** — for each blocker/should-fix: fix it in code (nits: fix if cheap, else justify deferring). Re-run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
 3. **Commit** the fixes as their own commit (`fix: address code-review rN — <what>`), so rounds stay revertible.
 4. If the reviewer's verdict is **approve** → stop early (success). Otherwise next round.

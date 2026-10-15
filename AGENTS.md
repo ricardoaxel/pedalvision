@@ -37,7 +37,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 
 1. Read `docs/progress.md` → find the current task.
 2. Read the task file in `docs/tasks/` — it lists exactly which files/sections to read. Read **only** those.
-3. Do the task. Verify its acceptance criteria by running them. Then run the **Code review loop** (below) before opening the PR.
+3. Do the task. Verify its acceptance criteria by running them. Then run the **code review** (light by default; see below) before opening the PR.
 4. Update `docs/progress.md` (done / next / blockers) — this is the handoff memory for the next session.
 5. One task per session. Commit per task (conventional commits).
 6. **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29).** If the next task — or any step of the current task — requires an owner action (GitHub repo, Cloudflare account/secrets, R2 bucket, dataset, permissions, etc. — see `docs/progress.md` → Blockers), **STOP and report to the owner**. Do NOT skip ahead to an unblocked task to "fill the gap". Wait for the owner to complete the required action before continuing.
@@ -61,13 +61,16 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - **Commit per round (owner instruction, 2026-10-13).** Each loop iteration is its own commit (round 1, round 2, …), so the owner can revert to any round ("go back to round X") with a simple `git revert`/checkout. Never squash multiple rounds into one commit.
 - The reviewer is authoritative only for *what is on screen*; the designer remains the design authority. If they conflict, present both to the owner.
 
-## Code review loop (MANDATORY — owner instruction, 2026-10-13)
+## Code review (MANDATORY — owner instructions 2026-10-13, revised 2026-10-15 for token cost)
 
-- **Before a task's PR is opened**, the change goes through the **code review loop**: a `code-reviewer` agent (`.opencode/agent/code-reviewer.md`, run via `/code-review`) reviews the diff as a senior staff engineer — architecture, code structure, security, correctness, tests, and doc/plan consistency. It is read-only (never edits or merges). Rationale: docs/decisions/006-code-review-governance.md.
-- **Two rounds max.** A round = reviewer findings → the builder fixes the real findings in code → re-review. Stop early on an "approve". Commit each round's fixes separately (revertible).
-- **After round 2, stop.** If blockers/should-fixes remain, do NOT open the PR as ready — **tell the owner plainly what is still open and propose more rounds**; wait for their decision.
-- Orchestrate with `/code-review-loop` (or step through `/code-review`). Record the outcome (round count, final verdict, any remaining findings) in `docs/progress.md`.
-- Scope vs the **Design gate**: the code-reviewer owns code/architecture/security/correctness; the `designer`/`design-reviewer` own visual direction (ADR-005). They are separate and both apply when a task touches both.
+- **Default = ONE lightweight pass, no loop.** Before a task's PR, the changed **source** is reviewed once by the `code-reviewer` agent on a **fast/cheap model** (`opencode-go/deepseek-v4.1-flash`, via `/code-review`). Rationale: docs/decisions/006-code-review-governance.md.
+- **Scope the diff to source only**: `git diff main...HEAD -- src tools e2e .github playwright.config.ts vite.config.ts package.json` — `docs/`, screenshots, and lockfiles are **out of scope**. Hand the reviewer the task-file path, not the repo; it reads only what it needs.
+- **Cap the output**: verdict + at most **5** findings (blocker / should-fix / nit) + a one-line round signal. No "what's good" prose. This keeps the review small and the token cost bounded.
+- **Fix blockers + should-fixes** (nits only if trivial); then re-run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
+- **Escalate to the full 2-round loop on a plan-tier model** (e.g. `opencode-go/kimi-k3`, via `/code-review-loop`) **only when:** the change is high-risk (architecture, security, persistence/serialization, catalog schema, CI/build, new dependencies), OR the light pass reports a blocker that needs a re-check, OR the owner asks. A loop round = reviewer findings → fix in code → re-review; **max 2 rounds**, commit each round's fixes separately (revertible); after round 2 with blockers/should-fixes open, STOP, tell the owner plainly, and propose more rounds.
+- **Skip the review entirely** for docs-only / screenshot-only / pure-formatting changes (say so in the PR).
+- Record the outcome (passes, verdict, remaining findings) in `docs/progress.md`.
+- Scope vs the **Design gate**: the code-reviewer owns code/architecture/security/correctness; the `designer`/`design-reviewer` own visual direction (ADR-005). Both apply when a task touches both — but **the visual check runs only when pixels actually changed**.
 
 ## Phase gate (MANDATORY)
 
