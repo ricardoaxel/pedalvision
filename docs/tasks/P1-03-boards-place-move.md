@@ -1,6 +1,6 @@
 # P1-03: Boards — place / move / rotate
 
-**Phase:** P1 · **Status:** in review — PR #11 · **Model:** build-cheap → ran build-strong
+**Phase:** P1 · **Status:** done (merged 2026-10-15, PR #11 — incl. the folded P1-04 brand-image slice) · **Model:** build-cheap → ran build-strong
 
 ## Goal
 User can pick a pedalboard from a temporary HTML list, it appears centered in the current viewport, and can be dragged and rotated anywhere on the infinite canvas. Multiple boards coexist. State lives in the scene store (cm, world coordinates).
