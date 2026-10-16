@@ -459,28 +459,19 @@ export const useScene = create<SceneStore>((set) => ({
 			return {
 				boards: state.boards.filter((candidate) => candidate.uid !== uid),
 				// Keep the user's work: attached items fall loose preserving their
-				// visible centre (the loose renderer drops the board rotation, so
-				// keeping the origin would swing the footprint about it).
+				// **visible** orientation and position. The loose renderer drops the
+				// board transform, so bake the board rotation into the item (its own
+				// rotation becomes the world rotation) and store its world origin —
+				// otherwise the pedal visibly rotates by −board.rotationDeg on removal.
 				items: state.items.map((item) => {
 					if (item.boardUid !== uid) return item;
-					const footprint = itemFootprint(item);
-					// A rotated item's visible centre is `origin + R(itemRotation)·half`
-					// (both attached and loose); use the rotated half-vector so a
-					// rotated pedal keeps its on-screen centre when its board goes away.
-					const rotatedHalf = rotatePoint(
-						{ x: footprint.widthCm / 2, y: footprint.heightCm / 2 },
-						{ x: 0, y: 0 },
-						item.rotationDeg,
-					);
-					const worldCentre = boardToWorld(
-						{ x: item.x + rotatedHalf.x, y: item.y + rotatedHalf.y },
-						board,
-					);
+					const worldOrigin = boardToWorld({ x: item.x, y: item.y }, board);
 					return {
 						...item,
 						boardUid: null,
-						x: worldCentre.x - rotatedHalf.x,
-						y: worldCentre.y - rotatedHalf.y,
+						x: worldOrigin.x,
+						y: worldOrigin.y,
+						rotationDeg: normalizeDegrees(board.rotationDeg + item.rotationDeg),
 					};
 				}),
 			};

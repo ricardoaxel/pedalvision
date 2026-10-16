@@ -104,10 +104,11 @@ describe("items slice", () => {
 			.getState()
 			.items.find((candidate) => candidate.uid === itemUid);
 		expect(item?.boardUid).toBeNull();
-		expect(item?.rotationDeg).toBe(45);
-		// The loose item renders with the same rotation, so its centre is preserved.
-		expect((item?.x ?? 0) + rotHalf.x).toBeCloseTo(worldCentre.x, 10);
-		expect((item?.y ?? 0) + rotHalf.y).toBeCloseTo(worldCentre.y, 10);
+		// Visible orientation preserved: the board's 30° bakes into the loose item.
+		expect(item?.rotationDeg).toBe(75);
+		const looseHalf = rotatePoint(HALF, { x: 0, y: 0 }, item?.rotationDeg ?? 0);
+		expect((item?.x ?? 0) + looseHalf.x).toBeCloseTo(worldCentre.x, 10);
+		expect((item?.y ?? 0) + looseHalf.y).toBeCloseTo(worldCentre.y, 10);
 	});
 
 	it("removeBoard keeps an attached item's visible centre under rotation", () => {
@@ -129,9 +130,12 @@ describe("items slice", () => {
 			.getState()
 			.items.find((candidate) => candidate.uid === itemUid);
 		expect(item?.boardUid).toBeNull();
-		// The loose item renders unrotated; its centre is preserved (not the origin).
-		expect((item?.x ?? 0) + HALF.x).toBeCloseTo(worldCentre.x, 10);
-		expect((item?.y ?? 0) + HALF.y).toBeCloseTo(worldCentre.y, 10);
+		// The board's 30° becomes the loose item's own rotation (visible orientation
+		// preserved — it must NOT snap back to the canvas frame), and its centre holds.
+		expect(item?.rotationDeg).toBe(30);
+		const looseHalf = rotatePoint(HALF, { x: 0, y: 0 }, item?.rotationDeg ?? 0);
+		expect((item?.x ?? 0) + looseHalf.x).toBeCloseTo(worldCentre.x, 10);
+		expect((item?.y ?? 0) + looseHalf.y).toBeCloseTo(worldCentre.y, 10);
 	});
 });
 

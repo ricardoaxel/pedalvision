@@ -3,6 +3,7 @@ import { cmToPx } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import {
 	itemFootprint,
+	itemVisualRotationDeg,
 	itemWorldOrigin,
 	type PlacedBoard,
 	type PlacedItem,
@@ -70,10 +71,7 @@ function HoverOutline({
 }) {
 	if (!item) return null;
 	const origin = itemWorldOrigin(item, boards);
-	const board = item.boardUid
-		? boards.find((candidate) => candidate.uid === item.boardUid)
-		: undefined;
-	const rotation = (board?.rotationDeg ?? 0) + item.rotationDeg;
+	const rotation = itemVisualRotationDeg(item, boards);
 	const footprint = itemFootprint(item);
 	return (
 		<Rect

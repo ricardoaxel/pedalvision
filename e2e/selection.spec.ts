@@ -307,7 +307,15 @@ test("picking a pedal off a rotated board keeps its visible rotation (no snap-ba
 	await expect(stage).not.toHaveAttribute("data-lifted-item", "");
 	const lifted = Number(await stage.getAttribute("data-lifted-rotation"));
 	expect(Math.abs(lifted - (board.rotation + item.rotation))).toBeLessThan(0.5);
+
+	// Drop back on the same board: it re-attaches and the stored rotation returns
+	// to its pre-drag value (the visible orientation is preserved end to end).
 	await page.mouse.up();
+	await expect(stage).toHaveAttribute("data-lifted-item", "");
+	await expect(stage).toHaveAttribute("data-item-parents", "0");
+	await expect
+		.poll(async () => (await readItem(stage)).rotation)
+		.toBeCloseTo(item.rotation, 4);
 });
 
 test("the action bar stays inside a narrow portrait viewport", async ({
