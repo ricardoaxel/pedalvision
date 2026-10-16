@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { catalog } from "../catalog/load";
-import { boardToWorld, worldToBoard } from "../lib/geometry";
+import { boardToWorld, rotatePoint, worldToBoard } from "../lib/geometry";
 import {
 	DUPLICATE_OFFSET_CM,
 	findBoardAt,
@@ -79,6 +79,35 @@ describe("items slice", () => {
 		useScene.getState().dropItem(uid, { x: 12.5, y: -3.25 });
 		const item = useScene.getState().items[0];
 		expect({ x: item.x, y: item.y }).toEqual({ x: 12.5, y: -3.25 });
+	});
+
+	it("removeBoard keeps a rotated item's visible centre", () => {
+		const boardUid = useScene.getState().addBoard(boss.id, { x: 50, y: 40 });
+		useScene.getState().rotateBoard(boardUid, 30);
+		const rotated = { ...useScene.getState().boards[0] };
+		const itemUid = useScene
+			.getState()
+			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 10, y: 5 });
+		useScene.getState().rotateItem(itemUid, 45);
+		const before = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		if (!before) throw new Error("item missing");
+		const rotHalf = rotatePoint(HALF, { x: 0, y: 0 }, before.rotationDeg);
+		const worldCentre = boardToWorld(
+			{ x: before.x + rotHalf.x, y: before.y + rotHalf.y },
+			rotated,
+		);
+
+		useScene.getState().removeBoard(boardUid);
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		expect(item?.boardUid).toBeNull();
+		expect(item?.rotationDeg).toBe(45);
+		// The loose item renders with the same rotation, so its centre is preserved.
+		expect((item?.x ?? 0) + rotHalf.x).toBeCloseTo(worldCentre.x, 10);
+		expect((item?.y ?? 0) + rotHalf.y).toBeCloseTo(worldCentre.y, 10);
 	});
 
 	it("removeBoard keeps an attached item's visible centre under rotation", () => {
@@ -317,6 +346,44 @@ describe("dropItem re-parenting math", () => {
 		);
 		expect(renderedCentre.x).toBeCloseTo(centre.x, 10);
 		expect(renderedCentre.y).toBeCloseTo(centre.y, 10);
+	});
+
+	it("preserves the visible centre of a rotated item dropped onto a rotated board", () => {
+		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		useScene.getState().rotateBoard(boardUid, 90);
+		useScene.getState().moveBoard(boardUid, 100, 50);
+		const rotatedBoard = {
+			uid: boardUid,
+			boardRefId: boss.id,
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+
+		// A loose item the user has rotated to 45°.
+		const uid = useScene
+			.getState()
+			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
+		useScene.getState().rotateItem(uid, 45);
+		const before = useScene.getState().items[0];
+		const rotHalf = rotatePoint(HALF, { x: 0, y: 0 }, before.rotationDeg);
+		expect(before.rotationDeg).toBe(45);
+
+		// Drop so the rotated item's visible centre lands inside the board.
+		const targetCentre = boardToWorld({ x: 20, y: 10 }, rotatedBoard);
+		useScene.getState().dropItem(uid, {
+			x: targetCentre.x - rotHalf.x,
+			y: targetCentre.y - rotHalf.y,
+		});
+
+		const item = useScene.getState().items[0];
+		expect(item.boardUid).toBe(boardUid);
+		const renderedCentre = boardToWorld(
+			{ x: item.x + rotHalf.x, y: item.y + rotHalf.y },
+			rotatedBoard,
+		);
+		expect(renderedCentre.x).toBeCloseTo(targetCentre.x, 10);
+		expect(renderedCentre.y).toBeCloseTo(targetCentre.y, 10);
 	});
 
 	it("keeps the item loose (world cm) when dropped outside every board", () => {

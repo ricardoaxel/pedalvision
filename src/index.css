@@ -299,11 +299,11 @@ body {
 }
 
 /* Temporary pickers (P1-03/P1-04). Normally they sit in the two left corners
- * (desktop: top-left + bottom-left; phones: trimmed). On SHORT screens — of any
- * width — the corner panels can't both keep a usable list (26vh/42vh leaves less
- * than the chrome), and the later-painted pedal picker can cover the board
- * picker's "remove" button, so there they stack in one left rail that splits the
- * height. `display: contents` keeps the normal (tall) layout untouched. */
+ * (desktop: top-left + bottom-left; phones: trimmed). On SHORT LANDSCAPE screens
+ * the corner panels can't both keep a usable list (26vh/42vh leaves less than the
+ * chrome), and the later-painted pedal picker can cover the board picker's
+ * "remove" button, so there they stack in one left rail that splits the height.
+ * `display: contents` keeps the normal (tall) layout untouched. */
 .picker-rail {
 	display: contents;
 }
@@ -317,7 +317,10 @@ body {
 	}
 }
 
-@media (max-height: 620px) {
+/* Short AND landscape: the corner panels can't both keep a usable list there.
+ * (Short portrait phones keep the normal corners — a left rail would collide
+ * with the on-selection action bar.) */
+@media (max-height: 620px) and (orientation: landscape) {
 	.picker-rail {
 		position: absolute;
 		top: var(--space-4);

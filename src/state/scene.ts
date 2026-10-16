@@ -351,15 +351,20 @@ export const useScene = create<SceneStore>((set) => ({
 			const item = state.items.find((candidate) => candidate.uid === uid);
 			if (!item) return state;
 			const footprint = itemFootprint(item);
-			const halfX = footprint.widthCm / 2;
-			const halfY = footprint.heightCm / 2;
-			// The lifted item renders unrotated and is hit-tested/anchored by its
-			// visible centre (origin + half-footprint; no pedal rotation until
-			// P1-05). Attaching to a board must keep that centre put: the board
-			// group rotates the footprint about the item's origin, so store the
-			// local origin that reproduces the same world centre. For an unrotated
-			// board this equals the plain `worldToBoard(origin)`.
-			const centre = { x: worldOriginCm.x + halfX, y: worldOriginCm.y + halfY };
+			const half: Point = {
+				x: footprint.widthCm / 2,
+				y: footprint.heightCm / 2,
+			};
+			// The lifted item renders with its own rotation (P1-05), so its visible
+			// centre is `origin + R(itemRotation)·half`, not `origin + half`. Both
+			// the hit-test centre and the stored origin must use that rotated
+			// half-vector, or a rotated pedal shifts on release (and can hit-test
+			// onto the wrong board near an edge).
+			const rotatedHalf = rotatePoint(half, { x: 0, y: 0 }, item.rotationDeg);
+			const centre = {
+				x: worldOriginCm.x + rotatedHalf.x,
+				y: worldOriginCm.y + rotatedHalf.y,
+			};
 			const board = findBoardAt(state.boards, centre);
 			let boardUid: string | null = null;
 			let x = worldOriginCm.x;
@@ -367,8 +372,8 @@ export const useScene = create<SceneStore>((set) => ({
 			if (board) {
 				const localCentre = worldToBoard(centre, board);
 				boardUid = board.uid;
-				x = localCentre.x - halfX;
-				y = localCentre.y - halfY;
+				x = localCentre.x - rotatedHalf.x;
+				y = localCentre.y - rotatedHalf.y;
 			}
 			return {
 				items: state.items.map((candidate) =>
@@ -436,18 +441,23 @@ export const useScene = create<SceneStore>((set) => ({
 				items: state.items.map((item) => {
 					if (item.boardUid !== uid) return item;
 					const footprint = itemFootprint(item);
+					// A rotated item's visible centre is `origin + R(itemRotation)·half`
+					// (both attached and loose); use the rotated half-vector so a
+					// rotated pedal keeps its on-screen centre when its board goes away.
+					const rotatedHalf = rotatePoint(
+						{ x: footprint.widthCm / 2, y: footprint.heightCm / 2 },
+						{ x: 0, y: 0 },
+						item.rotationDeg,
+					);
 					const worldCentre = boardToWorld(
-						{
-							x: item.x + footprint.widthCm / 2,
-							y: item.y + footprint.heightCm / 2,
-						},
+						{ x: item.x + rotatedHalf.x, y: item.y + rotatedHalf.y },
 						board,
 					);
 					return {
 						...item,
 						boardUid: null,
-						x: worldCentre.x - footprint.widthCm / 2,
-						y: worldCentre.y - footprint.heightCm / 2,
+						x: worldCentre.x - rotatedHalf.x,
+						y: worldCentre.y - rotatedHalf.y,
 					};
 				}),
 			};

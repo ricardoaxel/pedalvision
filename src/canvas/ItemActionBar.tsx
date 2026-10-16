@@ -18,7 +18,7 @@ const GAP = 10;
 /** Keep the bar this far inside the canvas edges (px). */
 const MARGIN = 8;
 /** The temp picker rail (rents the left edge on short screens) — keep clear. */
-const RAIL_MEDIA = "(max-height: 620px)";
+const RAIL_MEDIA = "(max-height: 620px) and (orientation: landscape)";
 const RAIL_LEFT = 16; // matches --space-4
 const RAIL_MAX_WIDTH = 220;
 const RAIL_WIDTH_FRACTION = 0.45;
@@ -118,12 +118,19 @@ export function ItemActionBar() {
 		? RAIL_LEFT +
 			Math.min(RAIL_MAX_WIDTH, viewportSize.width * RAIL_WIDTH_FRACTION)
 		: 0;
-	const minLeft = Math.max(half + MARGIN, railRight + RAIL_CLEARANCE + half);
-	const left = clamp(
-		(minX + maxX) / 2,
-		minLeft,
-		Math.max(minLeft, viewportSize.width - half - MARGIN),
-	);
+	const viewportMin = half + MARGIN;
+	const viewportMax = Math.max(viewportMin, viewportSize.width - half - MARGIN);
+	const railBound = railPresent
+		? railRight + RAIL_CLEARANCE + half
+		: viewportMin;
+	// Only enforce the rail clearance when the bar still fits on-screen to the
+	// right of the rail; when the screen is too narrow for both, keep the whole
+	// bar inside the viewport instead of pushing Delete off the right edge.
+	const minLeft =
+		railBound + half <= viewportSize.width - MARGIN
+			? Math.max(viewportMin, railBound)
+			: viewportMin;
+	const left = clamp((minX + maxX) / 2, minLeft, viewportMax);
 	const top = clamp(
 		maxY + GAP,
 		MARGIN,

@@ -110,9 +110,9 @@ test("dragging the Transformer rotate handle spins a loose pedal", async ({
 	const cx = box.x + box.width / 2;
 	const cy = box.y + box.height / 2;
 
-	// The rotate handle sits 26 px above the pedal's top edge (zoom 1).
+	// The rotate handle sits 30 px above the pedal's top edge (zoom 1).
 	const halfHeightPx = (PEDAL_CM.height / 2) * PX_PER_CM;
-	const handleY = cy - halfHeightPx - 26;
+	const handleY = cy - halfHeightPx - 30;
 	await page.mouse.move(cx, handleY);
 	await page.mouse.down();
 	await page.mouse.move(cx + 120, cy - 10, { steps: 12 });
@@ -171,7 +171,7 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 	};
 	const composed = boardBefore.rotation + item.rotation;
 	const handleOffset = rotatePoint(
-		{ x: (PEDAL_CM.width / 2) * PX_PER_CM, y: -26 },
+		{ x: (PEDAL_CM.width / 2) * PX_PER_CM, y: -30 },
 		composed,
 	);
 	const handleX = box.x + originPx.x + handleOffset.x;
@@ -192,6 +192,83 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 	expect(boardAfter.y).toBeCloseTo(boardBefore.y, 5);
 	// The pedal stayed attached to the board.
 	await expect(stage).toHaveAttribute("data-item-parents", "0");
+});
+
+test("a second pointer during a pedal rotation commits it (no lost rotation)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(stage).toHaveAttribute("data-item-rotations", "0.00");
+	await page.waitForTimeout(150);
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const board = await readBoard(stage);
+	const item = await readItem(stage);
+	const origin = rotatePoint({ x: item.x, y: item.y }, board.rotation);
+	const originPx = {
+		x: box.x + (origin.x + board.x) * PX_PER_CM,
+		y: box.y + (origin.y + board.y) * PX_PER_CM,
+	};
+	const handle = rotatePoint(
+		{ x: (PEDAL_CM.width / 2) * PX_PER_CM, y: -30 },
+		board.rotation + item.rotation,
+	);
+	const hx = originPx.x + handle.x;
+	const hy = originPx.y + handle.y;
+
+	// Start a rotation and hold it mid-drag.
+	await page.mouse.move(hx, hy);
+	await page.mouse.down();
+	await page.mouse.move(hx + 60, hy + 40, { steps: 8 });
+
+	// A second pointer turns it into a viewport gesture: the live rotation must
+	// be committed (not dropped when the Transformer stops).
+	const cdp = await page.context().newCDPSession(page);
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchStart",
+		touchPoints: [
+			{ id: 0, x: hx + 60, y: hy + 40 },
+			{ id: 1, x: hx + 140, y: hy + 120 },
+		],
+	});
+	await page.waitForTimeout(150);
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchEnd",
+		touchPoints: [],
+	});
+	await page.mouse.up();
+
+	await expect
+		.poll(async () => Number(await stage.getAttribute("data-item-rotations")))
+		.not.toBe(0);
+});
+
+test("the action bar stays inside a narrow portrait viewport", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 320, height: 568 });
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+
+	const bar = page.getByTestId("item-action-bar");
+	await expect(bar).toBeVisible();
+	const box = await bar.boundingBox();
+	if (!box) throw new Error("action bar has no box");
+	const viewport = page.viewportSize();
+	if (!viewport) throw new Error("no viewport");
+	expect(box.x).toBeGreaterThanOrEqual(0);
+	expect(box.x + box.width).toBeLessThanOrEqual(viewport.width + 1);
+	// Delete is on-screen and usable.
+	await page.getByTestId("delete-item").click();
+	await expect(stage).toHaveAttribute("data-items", "0");
 });
 
 test("hovering a pedal sets the hover target (desktop outline wiring)", async ({

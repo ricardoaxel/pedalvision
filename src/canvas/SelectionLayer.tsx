@@ -39,18 +39,20 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 		hoveredItemUid && hoveredItemUid !== selectedItemUid
 			? items.find((candidate) => candidate.uid === hoveredItemUid)
 			: undefined;
-	// No rotate Transformer for the item while it is lifted (the drag owns it).
-	const showTransformer =
-		selectedItemUid !== null && selectedItemUid !== liftedUid;
+	// The Transformer stays mounted (so a rotation interrupted by a selection
+	// change still commits); it just detaches while the item is lifted mid-drag
+	// (the drag owns the position).
+	const attachUid =
+		selectedItemUid !== null && selectedItemUid !== liftedUid
+			? selectedItemUid
+			: null;
 
 	// One layer (Konva warns above 5): the hover Rect is non-listening, the
 	// Transformer listens for the rotate drag.
 	return (
 		<Layer>
 			<HoverOutline item={item} boards={boards} theme={theme} scale={scale} />
-			{showTransformer ? (
-				<ItemTransformer selectedUid={selectedItemUid} theme={theme} />
-			) : null}
+			<ItemTransformer selectedUid={attachUid} theme={theme} />
 		</Layer>
 	);
 }

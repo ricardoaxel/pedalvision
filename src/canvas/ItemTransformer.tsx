@@ -1,5 +1,5 @@
 import type Konva from "konva";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { Transformer } from "react-konva";
 import { pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
@@ -27,8 +27,12 @@ const ROTATION_SNAPS = Array.from(
 const SNAP_TOLERANCE = SNAP_DEGREES / 2;
 
 interface ItemTransformerProps {
-	/** The selected item's uid (stable while a transform is in flight). */
-	selectedUid: string;
+	/**
+	 * The item to attach to, or `null` when nothing is attached (no selection, or
+	 * the item is lifted mid-drag). The Transformer stays mounted regardless so a
+	 * rotation interrupted by a selection change is still committed.
+	 */
+	selectedUid: string | null;
 	theme: CanvasTheme;
 }
 
@@ -50,6 +54,7 @@ export function ItemTransformer({ selectedUid, theme }: ItemTransformerProps) {
 	// Captured at transformstart so a live rotation is committed even if the
 	// selection is cleared before transformend.
 	const transformingUidRef = useRef<string | null>(null);
+	const [attached, setAttached] = useState(false);
 
 	const commit = useCallback(() => {
 		const node = transformerRef.current?.nodes()[0];
@@ -61,27 +66,38 @@ export function ItemTransformer({ selectedUid, theme }: ItemTransformerProps) {
 			.transformItem(uid, pxToCm(node.x()), pxToCm(node.y()), node.rotation());
 	}, []);
 
-	// Attach to the selected item's node; re-attach when nodes mount/unmount
-	// (e.g. a cross-board drop reparents the node under the same uid).
-	useEffect(() => {
-		const attach = () => {
-			const transformer = transformerRef.current;
-			if (!transformer) return;
-			const node = getItemNode(selectedUid);
+	// Attach/detach on selection change. This component stays mounted across
+	// selection changes (SelectionLayer always renders it), so the commit runs
+	// here — before the node is detached — rather than in an unmount cleanup
+	// whose transformer ref React has already cleared. `sync` also runs on every
+	// node registration, because a child PedalNode registers its node in a
+	// *passive* effect (after this layout effect) and a cross-board drop
+	// reparents the node under the same uid.
+	useLayoutEffect(() => {
+		const transformer = transformerRef.current;
+		if (!transformer) return;
+		const sync = () => {
+			const node = selectedUid ? getItemNode(selectedUid) : null;
 			transformer.nodes(node ? [node] : []);
+			setAttached(Boolean(node));
 		};
-		attach();
-		const unsubscribe = subscribeItemNodes(attach);
-		return () => {
-			// Commit a live rotation before detaching (the selection was cleared
-			// or reparented mid-transform) so it isn't silently lost.
-			if (transformerRef.current?.isTransforming()) commit();
-			unsubscribe();
-		};
+		if (transformer.isTransforming()) commit();
+		sync();
+		return subscribeItemNodes(sync);
 	}, [selectedUid, commit]);
 
+	// A pan/pinch takes the gesture over: commit + stop the live rotation so the
+	// pedal can't keep rotating while the viewport moves (mirrors BoardLayer).
+	useLayoutEffect(() => {
+		if (!navigating) return;
+		const transformer = transformerRef.current;
+		if (!transformer?.isTransforming()) return;
+		commit();
+		transformer.stopTransform();
+	}, [navigating, commit]);
+
 	// The touch handle is an enlarged hit area around a small circular knob
-	// (~28px total) so rotation is thumb-friendly without a fat visual dot.
+	// (~44px total) so rotation is thumb-friendly without a fat visual dot.
 	const styleAnchor = useCallback((anchor: Konva.Rect) => {
 		if (anchor.hasName("rotater")) {
 			anchor.cornerRadius(anchor.width() / 2);
@@ -92,10 +108,11 @@ export function ItemTransformer({ selectedUid, theme }: ItemTransformerProps) {
 	return (
 		<Transformer
 			ref={transformerRef}
+			visible={attached}
 			enabledAnchors={[]}
 			resizeEnabled={false}
 			rotateEnabled
-			listening={!navigating}
+			listening={attached && !navigating}
 			rotationSnaps={shiftDown ? ROTATION_SNAPS : []}
 			rotationSnapTolerance={SNAP_TOLERANCE}
 			onTransformStart={() => {
