@@ -264,6 +264,16 @@ export function itemsByZ(items: PlacedItem[]): PlacedItem[] {
 	return [...items].sort(byAscendingZ);
 }
 
+/** Items sharing `item`'s container, in visual (z) order. */
+export function containerItemsByZ(
+	items: PlacedItem[],
+	item: PlacedItem,
+): PlacedItem[] {
+	return itemsByZ(
+		items.filter((candidate) => candidate.boardUid === item.boardUid),
+	);
+}
+
 /**
  * Re-normalise one container's z to a dense 0..n-1 in visual order. The flat
  * items array order is preserved (only z values change); other containers are
@@ -285,6 +295,15 @@ export function normalizeContainerZ(
 		const next = zByUid.get(item.uid) ?? item.z;
 		return next === item.z ? item : { ...item, z: next };
 	});
+}
+
+/** Normalise every container's z to dense 0..n-1 (used when loading a scene). */
+export function normalizeAllZ(items: PlacedItem[]): PlacedItem[] {
+	let result = items;
+	for (const key of new Set(items.map(containerKey))) {
+		result = normalizeContainerZ(result, key === LOOSE_CONTAINER ? null : key);
+	}
+	return result;
 }
 
 /**

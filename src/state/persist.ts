@@ -1,5 +1,5 @@
 import type { PlacedBoard, PlacedItem } from "./scene";
-import { useScene } from "./scene";
+import { normalizeAllZ, useScene } from "./scene";
 
 /**
  * Temporary v1 scene save (P1-06): the boards + items slices are mirrored to
@@ -89,24 +89,59 @@ export function parseSceneSnapshot(raw: string | null): SceneSnapshot | null {
 	};
 }
 
-/** Load the persisted scene into the store (no-op when absent/invalid). */
-export function hydrateScene(storage: Storage = localStorage): void {
-	const snapshot = parseSceneSnapshot(storage.getItem(SCENE_STORAGE_KEY));
+/**
+ * Resolve a usable `Storage`. An explicit store (tests) is returned as-is;
+ * otherwise `localStorage` is probed defensively — merely touching it throws a
+ * `SecurityError` when site storage is blocked (sandboxed iframe, "block all
+ * cookies"), and boot must not fail there.
+ */
+function resolveStorage(storage?: Storage | null): Storage | null {
+	if (storage) return storage;
+	try {
+		return typeof localStorage === "undefined" ? null : localStorage;
+	} catch {
+		return null;
+	}
+}
+
+/**
+ * Load the persisted scene into the store (no-op when absent/invalid/unavailable).
+ * Items whose owning board is missing are dropped (their board-relative position
+ * can't be resolved without the board transform, and they would otherwise render
+ * in neither the board nor the loose layer), and every container's z is
+ * re-normalised dense so a stale/hand-edited snapshot can't break ordering.
+ */
+export function hydrateScene(storage?: Storage | null): void {
+	const target = resolveStorage(storage);
+	if (!target) return;
+	let raw: string | null;
+	try {
+		raw = target.getItem(SCENE_STORAGE_KEY);
+	} catch {
+		return;
+	}
+	const snapshot = parseSceneSnapshot(raw);
 	if (!snapshot) return;
-	useScene.setState({ boards: snapshot.boards, items: snapshot.items });
+	const boardIds = new Set(snapshot.boards.map((board) => board.uid));
+	const items = normalizeAllZ(
+		snapshot.items.filter(
+			(item) => item.boardUid === null || boardIds.has(item.boardUid),
+		),
+	);
+	useScene.setState({ boards: snapshot.boards, items });
 }
 
 /**
  * Mirror the scene slice to storage on every change; returns an unsubscribe.
- * Storage failures (quota, private mode) are non-fatal in v1 — recovery is
- * P3-02's job.
+ * Storage failures (unavailable store, quota, private mode) are non-fatal in
+ * v1 — recovery is P3-02's job.
  */
-export function startScenePersistence(
-	storage: Storage = localStorage,
-): () => void {
+export function startScenePersistence(storage?: Storage | null): () => void {
+	const target = resolveStorage(storage);
+	if (!target) return () => {};
 	const save = (state: { boards: PlacedBoard[]; items: PlacedItem[] }) => {
 		try {
-			storage.setItem(SCENE_STORAGE_KEY, serializeScene(state));
+			target.setItem(SCENE_STORAGE_KEY, serializeScene(state));
 		} catch {
 			// Ignore: temporary save only.
 		}

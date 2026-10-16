@@ -2,7 +2,7 @@ import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
-import { useScene } from "../state/scene";
+import { itemsByZ, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { type Point, useViewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
@@ -69,9 +69,36 @@ export function Stage() {
 	const itemRotations = items
 		.map((item) => item.rotationDeg.toFixed(2))
 		.join(",");
-	// Per-container z in array order, so a smoke test can assert render order
-	// survives a reorder + reload (P1-06).
+	// Flat array order of z, for store-level debugging.
 	const itemZ = items.map((item) => item.z).join(",");
+	// The actually-rendered draw order (uid list): boards in array order with
+	// their attached items sorted by z, then loose items sorted by z, then the
+	// lifted item last (it renders on top in the DragLayer). This is what the
+	// canvas draws, so a smoke test can assert a reorder + reload in true render
+	// order (P1-06), not just that the array changed.
+	const renderOrder = (() => {
+		const uids: string[] = [];
+		for (const board of boards) {
+			for (const item of itemsByZ(
+				items.filter(
+					(candidate) =>
+						candidate.boardUid === board.uid && candidate.uid !== liftedItemUid,
+				),
+			)) {
+				uids.push(item.uid);
+			}
+		}
+		for (const item of itemsByZ(
+			items.filter(
+				(candidate) =>
+					candidate.boardUid === null && candidate.uid !== liftedItemUid,
+			),
+		)) {
+			uids.push(item.uid);
+		}
+		if (liftedItemUid) uids.push(liftedItemUid);
+		return uids.join(",");
+	})();
 
 	// Hit-test seam (gestures.ts `empty` | `object`): a press that lands on a
 	// node is an object gesture (drag the board/pedal), anything else pans the
@@ -152,6 +179,7 @@ export function Stage() {
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
 			data-item-z={itemZ}
+			data-item-order={renderOrder}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
 			data-lifted-rotation={liftedRotationDeg ?? ""}

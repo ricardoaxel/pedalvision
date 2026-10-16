@@ -5,25 +5,33 @@ test("reordering a pedal persists across a reload", async ({ page }) => {
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
 
-	// Two overlapping loose pedals: the original (z 0) and its clone (z 1).
+	// Two overlapping loose pedals: the original and its clone (z 1, on top).
 	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await page.getByTestId("duplicate-item").click();
 	await expect(stage).toHaveAttribute("data-items", "2");
-	await expect(stage).toHaveAttribute("data-item-z", "0,1");
 
-	// The clone is selected and sits on top: bring-forward is disabled there.
+	// The rendered draw order is [original, clone].
+	const before = ((await stage.getAttribute("data-item-order")) ?? "").split(
+		",",
+	);
+	expect(before).toHaveLength(2);
+
+	// The clone is selected and on top: bring-forward/forward are disabled there.
 	await expect(page.getByTestId("bring-forward")).toBeDisabled();
 	await expect(page.getByTestId("bring-to-front")).toBeDisabled();
 	await expect(page.getByTestId("send-backward")).toBeEnabled();
 
-	// Send it to the back: the two swap (array order [original, clone] → z 1,0).
+	// Send it to the back: the two swap in render order.
 	await page.getByTestId("send-to-back").click();
-	await expect(stage).toHaveAttribute("data-item-z", "1,0");
+	const swapped = [...before].reverse().join(",");
+	await expect
+		.poll(async () => (await stage.getAttribute("data-item-order")) ?? "")
+		.toBe(swapped);
 
-	// Reload: the persisted scene restores the same order.
+	// Reload: the persisted scene restores the same render order.
 	await page.reload();
 	const reloaded = page.getByTestId("stage");
 	await expect(reloaded).toHaveAttribute("data-items", "2");
-	await expect(reloaded).toHaveAttribute("data-item-z", "1,0");
+	await expect(reloaded).toHaveAttribute("data-item-order", swapped);
 });

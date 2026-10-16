@@ -2,13 +2,14 @@ import {
 	type KeyboardEvent,
 	useEffect,
 	useLayoutEffect,
+	useMemo,
 	useRef,
 	useState,
 } from "react";
 import { cmToPx } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import {
-	itemsByZ,
+	containerItemsByZ,
 	itemWorldCorners,
 	type PlacedItem,
 	useScene,
@@ -16,6 +17,7 @@ import {
 } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
+import { nextEnabledIndex } from "./toolbarNav";
 
 /** Degrees the action-bar rotate button advances per tap. */
 export const ACTION_ROTATE_STEP = 45;
@@ -123,12 +125,12 @@ export function ItemActionBar() {
 		? items.find((candidate) => candidate.uid === selectedItemUid)
 		: undefined;
 	const visible = item && item.uid !== liftedUid;
-	// Z-order buttons disable at their container's extremes (nothing to move past).
-	const peers = item
-		? itemsByZ(
-				items.filter((candidate) => candidate.boardUid === item.boardUid),
-			)
-		: [];
+	// Z-order buttons disable at their container's extremes (nothing to move
+	// past). Memoised so a pan/zoom re-render doesn't re-sort every item.
+	const peers = useMemo(
+		() => (item ? containerItemsByZ(items, item) : []),
+		[items, item],
+	);
 	const position = item
 		? peers.findIndex((candidate) => candidate.uid === item.uid)
 		: -1;
@@ -151,23 +153,9 @@ export function ItemActionBar() {
 		: (enabledIndices[0] ?? 0);
 
 	const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-		const position = enabledIndices.indexOf(activeIndex);
-		if (position === -1) return;
-		let nextPosition: number;
-		if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-			nextPosition = (position + 1) % enabledIndices.length;
-		} else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-			nextPosition =
-				(position - 1 + enabledIndices.length) % enabledIndices.length;
-		} else if (event.key === "Home") {
-			nextPosition = 0;
-		} else if (event.key === "End") {
-			nextPosition = enabledIndices.length - 1;
-		} else {
-			return;
-		}
+		const nextIndex = nextEnabledIndex(enabledIndices, activeIndex, event.key);
+		if (nextIndex === null) return;
 		event.preventDefault();
-		const nextIndex = enabledIndices[nextPosition];
 		setFocusIndex(nextIndex);
 		buttonRefs.current[nextIndex]?.focus();
 	};

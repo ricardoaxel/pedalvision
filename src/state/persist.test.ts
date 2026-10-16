@@ -113,4 +113,30 @@ describe("scene persistence", () => {
 		const after = parseSceneSnapshot(storage.getItem(SCENE_STORAGE_KEY));
 		expect(after?.boards).toHaveLength(1);
 	});
+
+	it("drops items whose board is missing and re-normalises z (no ghost items)", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [snapshot.boards[0]],
+			items: [
+				{ ...snapshot.items[0], uid: "ok", boardUid: "b1", z: 5 },
+				{ ...snapshot.items[1], uid: "orphan", boardUid: "gone" },
+			],
+		});
+		hydrateScene(fakeStorage({ [SCENE_STORAGE_KEY]: raw }));
+		const items = useScene.getState().items;
+		expect(items.map((item) => item.uid)).toEqual(["ok"]);
+		expect(items[0].z).toBe(0);
+	});
+
+	it("never throws at boot when storage is unavailable or blocked", () => {
+		const blocked = fakeStorage();
+		blocked.getItem = () => {
+			throw new Error("SecurityError: storage blocked");
+		};
+		expect(() => hydrateScene(blocked)).not.toThrow();
+		expect(() => hydrateScene()).not.toThrow();
+		expect(() => startScenePersistence(null)()).not.toThrow();
+		expect(useScene.getState().boards).toEqual([]);
+	});
 });
