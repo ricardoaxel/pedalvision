@@ -20,7 +20,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P1-02 | Stage: dot grid, pan, zoom-to-pointer, resize-proof | done |
 | P1-02b | Touch/gesture E2E (Playwright + CDP multi-touch) | done |
 | P1-03 | Boards: place / move / rotate | done |
-| P1-04 | Pedals: place / drag / duplicate / delete | in review — PR #13 |
+| P1-04 | Pedals: place / drag / duplicate / delete | done |
 | P1-05 | Free rotation + selection UX (hover, touch anchors) | todo |
 | P1-06 | Z-order controls (bring forward / send back) | todo |
 
