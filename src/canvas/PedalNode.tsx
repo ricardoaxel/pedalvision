@@ -9,6 +9,7 @@ import { itemDefinition, itemFootprint, type PlacedItem } from "../state/scene";
 import { useSelection } from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
 import { CANVAS_FONTS } from "../styles/theme";
+import { registerItemNode, unregisterItemNode } from "./itemNodeRegistry";
 import { useImage } from "./useImage";
 
 interface PedalNodeProps {
@@ -18,9 +19,12 @@ interface PedalNodeProps {
 	 * board, world cm when loose or lifted into the DragLayer. */
 	xCm: number;
 	yCm: number;
+	/** Overrides the rendered rotation (degrees). Defaults to the item's own
+	 * rotation; the DragLayer passes the composed board+own rotation so a lifted
+	 * pedal keeps its on-board orientation. */
+	rotationDeg?: number;
 	/** True while the item is lifted in the DragLayer — adds the lift shadow. */
 	lifted?: boolean;
-	registerNode: (uid: string, node: Konva.Group | null) => void;
 }
 
 /** Client-space pointer position from a mouse or touch Konva event. */
@@ -51,8 +55,8 @@ export function PedalNode({
 	theme,
 	xCm,
 	yCm,
+	rotationDeg,
 	lifted = false,
-	registerNode,
 }: PedalNodeProps) {
 	const definition = itemDefinition(item);
 	const footprint = itemFootprint(item);
@@ -65,13 +69,18 @@ export function PedalNode({
 	const { image, status } = useImage(src);
 
 	const selectItem = useSelection((state) => state.selectItem);
+	const setHoveredItem = useSelection((state) => state.setHoveredItem);
 	const beginCandidate = useDrag((state) => state.beginCandidate);
 
 	const groupRef = useRef<Konva.Group>(null);
+	// Register globally so the top-level rotate Transformer can attach to this
+	// node wherever it renders (design.md → SelectionLayer).
 	useEffect(() => {
-		registerNode(item.uid, groupRef.current);
-		return () => registerNode(item.uid, null);
-	}, [item.uid, registerNode]);
+		const node = groupRef.current;
+		if (!node) return;
+		registerItemNode(item.uid, node);
+		return () => unregisterItemNode(item.uid, node);
+	}, [item.uid]);
 
 	const handlePointerDown = useCallback(
 		(event: KonvaEventObject<MouseEvent | TouchEvent>, client: Point) => {
@@ -103,12 +112,17 @@ export function PedalNode({
 			ref={groupRef}
 			x={cmToPx(xCm)}
 			y={cmToPx(yCm)}
+			rotation={rotationDeg ?? item.rotationDeg}
 			onMouseDown={(event) => {
 				// Only the primary mouse button starts a selection/drag.
 				if (event.evt.button !== 0) return;
 				handlePointerDown(event, clientPoint(event.evt));
 			}}
 			onTouchStart={(event) => handlePointerDown(event, clientPoint(event.evt))}
+			// Desktop hover outline (touch has no hover). Konva `mouseenter`
+			// bubbles to this Group from its child shape.
+			onMouseEnter={() => setHoveredItem(item.uid)}
+			onMouseLeave={() => setHoveredItem(null)}
 		>
 			{status === "loaded" && image ? (
 				<KonvaImage

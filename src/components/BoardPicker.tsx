@@ -1,6 +1,6 @@
 import { catalog } from "../catalog/load";
 import { useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
 
 /**
@@ -12,7 +12,7 @@ import { useViewport, viewportCenterCm } from "../state/viewport";
 export function BoardPicker() {
 	const addBoard = useScene((state) => state.addBoard);
 	const removeBoard = useScene((state) => state.removeBoard);
-	const selectedBoardUid = useSelection((state) => state.selectedBoardUid);
+	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const selectBoard = useSelection((state) => state.selectBoard);
 
 	const handleAdd = (boardRefId: string) => {

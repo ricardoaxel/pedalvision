@@ -22,10 +22,16 @@ interface DragState {
 	liftedUid: string | null;
 	/** Live world-cm origin of the lifted item. */
 	liftedWorldCm: Point | null;
+	/**
+	 * The lifted item's **visible** world rotation (board + own, composed), so a
+	 * pedal lifted off a rotated board keeps its on-screen orientation instead of
+	 * snapping back to the canvas frame.
+	 */
+	liftedRotationDeg: number | null;
 	/** Begin tracking a possible drag (pointer-down on an item). */
 	beginCandidate: (candidate: DragCandidate) => void;
-	/** Promote the candidate to a lift at its current world-cm origin. */
-	lift: (uid: string, worldCm: Point) => void;
+	/** Promote the candidate to a lift at its world-cm origin + visible rotation. */
+	lift: (uid: string, worldCm: Point, rotationDeg: number) => void;
 	/** Update a lifted item's world-cm origin as the pointer moves. */
 	setLiftedWorldCm: (worldCm: Point) => void;
 	/** End the drag (committed elsewhere) and reset. */
@@ -36,9 +42,21 @@ export const useDrag = create<DragState>((set) => ({
 	candidate: null,
 	liftedUid: null,
 	liftedWorldCm: null,
+	liftedRotationDeg: null,
 	beginCandidate: (candidate) => set({ candidate }),
-	lift: (uid, worldCm) =>
-		set({ candidate: null, liftedUid: uid, liftedWorldCm: worldCm }),
+	lift: (uid, worldCm, rotationDeg) =>
+		set({
+			candidate: null,
+			liftedUid: uid,
+			liftedWorldCm: worldCm,
+			liftedRotationDeg: rotationDeg,
+		}),
 	setLiftedWorldCm: (worldCm) => set({ liftedWorldCm: worldCm }),
-	clear: () => set({ candidate: null, liftedUid: null, liftedWorldCm: null }),
+	clear: () =>
+		set({
+			candidate: null,
+			liftedUid: null,
+			liftedWorldCm: null,
+			liftedRotationDeg: null,
+		}),
 }));
