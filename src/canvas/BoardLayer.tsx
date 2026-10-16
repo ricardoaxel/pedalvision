@@ -4,7 +4,7 @@ import { Layer, Transformer } from "react-konva";
 import { pxToCm } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
-import { useScene } from "../state/scene";
+import { itemsByZ, useScene } from "../state/scene";
 import {
 	selectSelectedBoardUid,
 	selectSelectedItemUid,
@@ -109,8 +109,10 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 					key={board.uid}
 					board={board}
 					theme={theme}
-					items={items.filter(
-						(item) => item.boardUid === board.uid && item.uid !== liftedUid,
+					items={itemsByZ(
+						items.filter(
+							(item) => item.boardUid === board.uid && item.uid !== liftedUid,
+						),
 					)}
 					selectedItemUid={selectedItemUid}
 					registerNode={registerNode}

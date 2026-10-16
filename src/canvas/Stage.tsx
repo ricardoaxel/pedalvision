@@ -69,6 +69,9 @@ export function Stage() {
 	const itemRotations = items
 		.map((item) => item.rotationDeg.toFixed(2))
 		.join(",");
+	// Per-container z in array order, so a smoke test can assert render order
+	// survives a reorder + reload (P1-06).
+	const itemZ = items.map((item) => item.z).join(",");
 
 	// Hit-test seam (gestures.ts `empty` | `object`): a press that lands on a
 	// node is an object gesture (drag the board/pedal), anything else pans the
@@ -148,6 +151,7 @@ export function Stage() {
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
+			data-item-z={itemZ}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
 			data-lifted-rotation={liftedRotationDeg ?? ""}
