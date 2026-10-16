@@ -13,6 +13,12 @@ interface ItemNodesProps {
 	 * position — used by the DragLayer for the single lifted item.
 	 */
 	worldPosition?: Point;
+	/**
+	 * Overrides the rendered rotation (degrees). Used by the DragLayer to render
+	 * the lifted item with its composed board+own rotation, so picking a pedal
+	 * off a rotated board doesn't snap it back to the canvas frame.
+	 */
+	rotationDeg?: number;
 	/** Lift shadow + unskewed rendering cue (DragLayer only). */
 	lifted?: boolean;
 }
@@ -29,6 +35,7 @@ export function ItemNodes({
 	theme,
 	selectedItemUid,
 	worldPosition,
+	rotationDeg,
 	lifted = false,
 }: ItemNodesProps) {
 	const selectedItem = selectedItemUid
@@ -44,6 +51,7 @@ export function ItemNodes({
 					theme={theme}
 					xCm={worldPosition ? worldPosition.x : item.x}
 					yCm={worldPosition ? worldPosition.y : item.y}
+					rotationDeg={rotationDeg}
 					lifted={lifted}
 				/>
 			))}
@@ -53,7 +61,7 @@ export function ItemNodes({
 					yCm={worldPosition ? worldPosition.y : selectedItem.y}
 					widthCm={itemFootprint(selectedItem).widthCm}
 					heightCm={itemFootprint(selectedItem).heightCm}
-					rotationDeg={selectedItem.rotationDeg}
+					rotationDeg={rotationDeg ?? selectedItem.rotationDeg}
 					theme={theme}
 				/>
 			) : null}

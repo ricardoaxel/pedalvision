@@ -19,6 +19,10 @@ interface PedalNodeProps {
 	 * board, world cm when loose or lifted into the DragLayer. */
 	xCm: number;
 	yCm: number;
+	/** Overrides the rendered rotation (degrees). Defaults to the item's own
+	 * rotation; the DragLayer passes the composed board+own rotation so a lifted
+	 * pedal keeps its on-board orientation. */
+	rotationDeg?: number;
 	/** True while the item is lifted in the DragLayer — adds the lift shadow. */
 	lifted?: boolean;
 }
@@ -51,6 +55,7 @@ export function PedalNode({
 	theme,
 	xCm,
 	yCm,
+	rotationDeg,
 	lifted = false,
 }: PedalNodeProps) {
 	const definition = itemDefinition(item);
@@ -107,7 +112,7 @@ export function PedalNode({
 			ref={groupRef}
 			x={cmToPx(xCm)}
 			y={cmToPx(yCm)}
-			rotation={item.rotationDeg}
+			rotation={rotationDeg ?? item.rotationDeg}
 			onMouseDown={(event) => {
 				// Only the primary mouse button starts a selection/drag.
 				if (event.evt.button !== 0) return;

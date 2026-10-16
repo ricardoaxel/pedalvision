@@ -47,6 +47,7 @@ export function Stage() {
 	const clearSelection = useSelection((state) => state.clearSelection);
 	const setHoveredItem = useSelection((state) => state.setHoveredItem);
 	const liftedItemUid = useDrag((state) => state.liftedUid);
+	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
 
 	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
@@ -149,6 +150,7 @@ export function Stage() {
 			data-item-rotations={itemRotations}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
+			data-lifted-rotation={liftedRotationDeg ?? ""}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage

@@ -248,6 +248,68 @@ test("a second pointer during a pedal rotation commits it (no lost rotation)", a
 		.not.toBe(0);
 });
 
+test("picking a pedal off a rotated board keeps its visible rotation (no snap-back)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	await page.waitForTimeout(150);
+
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const cx = box.x + box.width / 2;
+	const cy = box.y + box.height / 2;
+
+	// Rotate the board (same geometry as the P1-03 test).
+	await page.mouse.click(cx, cy);
+	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await page.mouse.move(cx, cy - 98);
+	await page.mouse.down();
+	await page.mouse.move(cx + 130, cy - 30, { steps: 12 });
+	await page.mouse.up();
+	await expect
+		.poll(async () => Number(await stage.getAttribute("data-rotations")))
+		.not.toBe(0);
+	const board = await readBoard(stage);
+
+	// Add a pedal to the board, then start dragging it.
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(stage).toHaveAttribute("data-item-parents", "0");
+	await page.waitForTimeout(150);
+	const item = await readItem(stage);
+	const localCentre = {
+		x:
+			item.x +
+			rotatePoint(
+				{ x: PEDAL_CM.width / 2, y: PEDAL_CM.height / 2 },
+				item.rotation,
+			).x,
+		y:
+			item.y +
+			rotatePoint(
+				{ x: PEDAL_CM.width / 2, y: PEDAL_CM.height / 2 },
+				item.rotation,
+			).y,
+	};
+	const worldCentre = rotatePoint(localCentre, board.rotation);
+	const px = box.x + (worldCentre.x + board.x) * PX_PER_CM;
+	const py = box.y + (worldCentre.y + board.y) * PX_PER_CM;
+
+	await page.mouse.move(px, py);
+	await page.mouse.down();
+	await page.mouse.move(px + 40, py + 20, { steps: 6 });
+
+	// The lifted pedal shows its composed rotation (board + own), not the raw
+	// item rotation — i.e. it does NOT snap back to the canvas frame.
+	await expect(stage).not.toHaveAttribute("data-lifted-item", "");
+	const lifted = Number(await stage.getAttribute("data-lifted-rotation"));
+	expect(Math.abs(lifted - (board.rotation + item.rotation))).toBeLessThan(0.5);
+	await page.mouse.up();
+});
+
 test("the action bar stays inside a narrow portrait viewport", async ({
 	page,
 }) => {

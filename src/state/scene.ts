@@ -142,25 +142,35 @@ export function findBoardAt(
 }
 
 /**
- * A world-cm pointer position measured in the item's **unrotated** local frame,
- * relative to the item's origin — the drag grab offset. The lifted item renders
- * unrotated in the DragLayer, so a grab offset taken in world cm (which would
- * include the board's rotation) would make a centre-grab on a rotated board
- * leave the pointer off the pedal. Converting the press through `worldToBoard`
- * first keeps the grabbed point under the pointer. Loose items are already in
- * world cm.
+ * The item's **visible** rotation in world degrees: its own rotation plus its
+ * board's, composed. This is what the pedal actually looks like on screen, and
+ * it is the value the DragLayer renders while the item is lifted (so lifting a
+ * pedal off a rotated board does NOT snap it back to the canvas orientation).
+ */
+export function itemVisualRotationDeg(
+	item: PlacedItem,
+	boards: PlacedBoard[],
+): number {
+	if (!item.boardUid) return normalizeDegrees(item.rotationDeg);
+	const board = boards.find((candidate) => candidate.uid === item.boardUid);
+	return normalizeDegrees((board?.rotationDeg ?? 0) + item.rotationDeg);
+}
+
+/**
+ * The world-cm grab offset — the vector from the item's world origin to the
+ * pointer at press. The lifted item renders in the world frame with its
+ * **composed** rotation (`itemVisualRotationDeg`), so keeping the grabbed point
+ * under the pointer requires a world-frame offset (not a board-local one): the
+ * lifted origin that tracks the pointer is `pointerWorld − this`. Works for
+ * board-attached and loose items alike.
  */
 export function pointerGrabOffset(
 	item: PlacedItem,
 	boards: PlacedBoard[],
 	pointerWorld: Point,
 ): Point {
-	let pressLocal = pointerWorld;
-	if (item.boardUid) {
-		const board = boards.find((candidate) => candidate.uid === item.boardUid);
-		if (board) pressLocal = worldToBoard(pointerWorld, board);
-	}
-	return { x: pressLocal.x - item.x, y: pressLocal.y - item.y };
+	const origin = itemWorldOrigin(item, boards);
+	return { x: pointerWorld.x - origin.x, y: pointerWorld.y - origin.y };
 }
 
 /**
@@ -258,13 +268,20 @@ interface SceneStore {
 	duplicateItem: (uid: string) => string | null;
 	removeItem: (uid: string) => void;
 	/**
-	 * Finish a drag: hit-test the item's world centre against the boards and move
-	 * it to the topmost containing board (storing board-relative cm) or leave it
-	 * loose (world cm). `worldOriginCm` is the item's origin in world cm at drop
-	 * time. All the move + re-parenting math lives here so it is unit-testable
-	 * (the rotated-board case).
+	 * Finish a drag: hit-test the item's visible world centre against the boards
+	 * and move it to the topmost containing board (storing board-relative cm) or
+	 * leave it loose (world cm). `worldOriginCm` is the item's origin in world cm
+	 * and `worldRotationDeg` its **visible** rotation, both at drop time — the
+	 * drop preserves that visible orientation (it stores `worldRotationDeg −
+	 * board.rotationDeg` for an attached item, or `worldRotationDeg` loose), so a
+	 * pedal no longer snaps when lifted onto/off a rotated board. All the move +
+	 * re-parenting math lives here so it is unit-testable (the rotated-board case).
 	 */
-	dropItem: (uid: string, worldOriginCm: Point) => void;
+	dropItem: (
+		uid: string,
+		worldOriginCm: Point,
+		worldRotationDeg: number,
+	) => void;
 	/**
 	 * Set an item's absolute rotation (degrees), spinning it about its own
 	 * centre so it stays put. Rotation is normalised to [0, 360) (P1-05).
@@ -346,7 +363,7 @@ export const useScene = create<SceneStore>((set) => ({
 		set((state) => ({
 			items: state.items.filter((item) => item.uid !== uid),
 		})),
-	dropItem: (uid, worldOriginCm) =>
+	dropItem: (uid, worldOriginCm, worldRotationDeg) =>
 		set((state) => {
 			const item = state.items.find((candidate) => candidate.uid === uid);
 			if (!item) return state;
@@ -355,12 +372,9 @@ export const useScene = create<SceneStore>((set) => ({
 				x: footprint.widthCm / 2,
 				y: footprint.heightCm / 2,
 			};
-			// The lifted item renders with its own rotation (P1-05), so its visible
-			// centre is `origin + R(itemRotation)·half`, not `origin + half`. Both
-			// the hit-test centre and the stored origin must use that rotated
-			// half-vector, or a rotated pedal shifts on release (and can hit-test
-			// onto the wrong board near an edge).
-			const rotatedHalf = rotatePoint(half, { x: 0, y: 0 }, item.rotationDeg);
+			const visual = normalizeDegrees(worldRotationDeg);
+			// The lifted item's visible centre is `origin + R(visibleRotation)·half`.
+			const rotatedHalf = rotatePoint(half, { x: 0, y: 0 }, visual);
 			const centre = {
 				x: worldOriginCm.x + rotatedHalf.x,
 				y: worldOriginCm.y + rotatedHalf.y,
@@ -369,15 +383,24 @@ export const useScene = create<SceneStore>((set) => ({
 			let boardUid: string | null = null;
 			let x = worldOriginCm.x;
 			let y = worldOriginCm.y;
+			let rotationDeg = visual;
 			if (board) {
+				// Preserve the visible orientation: store the rotation relative to the
+				// destination board so the on-screen angle is unchanged on drop (and
+				// future board rotations then add on top). The origin reproduces the
+				// world centre in the board's unrotated frame.
+				rotationDeg = normalizeDegrees(visual - board.rotationDeg);
 				const localCentre = worldToBoard(centre, board);
+				const localHalf = rotatePoint(half, { x: 0, y: 0 }, rotationDeg);
 				boardUid = board.uid;
-				x = localCentre.x - rotatedHalf.x;
-				y = localCentre.y - rotatedHalf.y;
+				x = localCentre.x - localHalf.x;
+				y = localCentre.y - localHalf.y;
 			}
 			return {
 				items: state.items.map((candidate) =>
-					candidate.uid === uid ? { ...candidate, boardUid, x, y } : candidate,
+					candidate.uid === uid
+						? { ...candidate, boardUid, x, y, rotationDeg }
+						: candidate,
 				),
 			};
 		}),

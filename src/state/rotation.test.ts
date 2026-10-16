@@ -3,6 +3,7 @@ import { catalog } from "../catalog/load";
 import { boardToWorld, rotatePoint } from "../lib/geometry";
 import {
 	itemFootprint,
+	itemVisualRotationDeg,
 	itemWorldCorners,
 	normalizeDegrees,
 	type PlacedBoard,
@@ -198,6 +199,43 @@ describe("rotateItem store action (S3 rotated parent)", () => {
 		const item = useScene.getState().items[0];
 		expect({ x: item.x, y: item.y }).toEqual({ x: 4.5, y: 6.25 });
 		expect(item.rotationDeg).toBe(260);
+	});
+});
+
+describe("itemVisualRotationDeg", () => {
+	it("composes the board and item rotation for attached items", () => {
+		const placedBoard = {
+			uid: "b",
+			boardRefId: board.id,
+			x: 0,
+			y: 0,
+			rotationDeg: 30,
+		};
+		const item = {
+			uid: "i",
+			refId: pedal.id,
+			kind: "pedal" as const,
+			boardUid: "b",
+			x: 0,
+			y: 0,
+			rotationDeg: 20,
+			z: 0,
+		};
+		expect(itemVisualRotationDeg(item, [placedBoard])).toBe(50);
+	});
+
+	it("returns the item's own rotation when loose", () => {
+		const item = {
+			uid: "i",
+			refId: pedal.id,
+			kind: "pedal" as const,
+			boardUid: null,
+			x: 0,
+			y: 0,
+			rotationDeg: 20,
+			z: 0,
+		};
+		expect(itemVisualRotationDeg(item, [])).toBe(20);
 	});
 });
 

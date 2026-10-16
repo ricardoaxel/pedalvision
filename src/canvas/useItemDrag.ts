@@ -2,7 +2,11 @@ import type { RefObject } from "react";
 import { useEffect, useRef } from "react";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
-import { pointerGrabOffset, useScene } from "../state/scene";
+import {
+	itemVisualRotationDeg,
+	pointerGrabOffset,
+	useScene,
+} from "../state/scene";
 import { type Point, pxToWorldCm, useViewport } from "../state/viewport";
 
 /** Screen px the pointer may travel before a press becomes a pedal drag. */
@@ -14,8 +18,10 @@ interface PendingDrag {
 	pointerId: number | null;
 	/** Client-space pointer position where the press began. */
 	startClient: Point;
-	/** Press offset in the item's unrotated frame (see `pointerGrabOffset`). */
+	/** World-cm grab offset (see `pointerGrabOffset`). */
 	grabOffsetCm: Point;
+	/** The item's visible rotation at press (board + own), kept through the drag. */
+	visualRotationDeg: number;
 }
 
 /**
@@ -86,6 +92,7 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 					pointerId: nativePointerRef.current,
 					startClient,
 					grabOffsetCm: pointerGrabOffset(item, boards, pointerWorld),
+					visualRotationDeg: itemVisualRotationDeg(item, boards),
 				};
 			}
 		});
@@ -119,7 +126,11 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 					client.y - pending.startClient.y,
 				);
 				if (moved < ITEM_DRAG_THRESHOLD_PX) return;
-				drag.lift(pending.uid, originFromPointer(client, pending.grabOffsetCm));
+				drag.lift(
+					pending.uid,
+					originFromPointer(client, pending.grabOffsetCm),
+					pending.visualRotationDeg,
+				);
 				return;
 			}
 			drag.setLiftedWorldCm(originFromPointer(client, pending.grabOffsetCm));
@@ -128,7 +139,13 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 		const finish = () => {
 			const drag = useDrag.getState();
 			if (drag.liftedUid && drag.liftedWorldCm) {
-				useScene.getState().dropItem(drag.liftedUid, drag.liftedWorldCm);
+				useScene
+					.getState()
+					.dropItem(
+						drag.liftedUid,
+						drag.liftedWorldCm,
+						drag.liftedRotationDeg ?? 0,
+					);
 			}
 			drag.clear();
 			pendingRef.current = null;

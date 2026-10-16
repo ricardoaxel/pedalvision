@@ -76,7 +76,7 @@ describe("items slice", () => {
 		const uid = useScene
 			.getState()
 			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
-		useScene.getState().dropItem(uid, { x: 12.5, y: -3.25 });
+		useScene.getState().dropItem(uid, { x: 12.5, y: -3.25 }, 0);
 		const item = useScene.getState().items[0];
 		expect({ x: item.x, y: item.y }).toEqual({ x: 12.5, y: -3.25 });
 	});
@@ -197,7 +197,7 @@ describe("pointerGrabOffset", () => {
 		expect(offset.y).toBeCloseTo(6.51, 10);
 	});
 
-	it("returns the unrotated offset for a centre-grab on a rotated board", () => {
+	it("returns the world-frame offset for a centre-grab on a rotated board", () => {
 		const board = {
 			uid: "b",
 			boardRefId: boss.id,
@@ -215,15 +215,16 @@ describe("pointerGrabOffset", () => {
 			rotationDeg: 0,
 			z: 0,
 		};
-		// The pedal's world centre is rotated; grabbing it must still yield the
-		// unrotated half-footprint, not the rotated one (-6.51, 3.65).
+		// The lifted pedal keeps its composed (board+own) rotation, so the grab
+		// offset is the world vector from the item's world origin to the press —
+		// here the rotated half-footprint R(90)·HALF = (-6.51, 3.65).
 		const worldCentre = boardToWorld(
 			{ x: item.x + HALF.x, y: item.y + HALF.y },
 			board,
 		);
 		const offset = pointerGrabOffset(item, [board], worldCentre);
-		expect(offset.x).toBeCloseTo(HALF.x, 10);
-		expect(offset.y).toBeCloseTo(HALF.y, 10);
+		expect(offset.x).toBeCloseTo(-HALF.y, 10);
+		expect(offset.y).toBeCloseTo(HALF.x, 10);
 	});
 });
 
@@ -302,18 +303,21 @@ describe("dropItem re-parenting math", () => {
 		// Drop so the pedal's visible centre lands inside the rotated board.
 		const originWorld = { x: 80, y: 60 };
 		const centre = { x: originWorld.x + HALF.x, y: originWorld.y + HALF.y };
-		useScene.getState().dropItem(uid, originWorld);
+		useScene.getState().dropItem(uid, originWorld, 0);
 
 		const item = useScene.getState().items[0];
 		expect(item.boardUid).toBe(boardUid);
-		// Stored board-local origin = local centre − half-footprint.
+		// The drop preserves the visible orientation: relative rotation = 0 − 90°.
+		expect(item.rotationDeg).toBe(270);
+		// Stored board-local origin = local centre − the (relative-rotation) half.
+		const localHalf = rotatePoint(HALF, { x: 0, y: 0 }, item.rotationDeg);
 		const localCentre = worldToBoard(centre, rotated);
-		expect(item.x).toBeCloseTo(localCentre.x - HALF.x, 10);
-		expect(item.y).toBeCloseTo(localCentre.y - HALF.y, 10);
+		expect(item.x).toBeCloseTo(localCentre.x - localHalf.x, 10);
+		expect(item.y).toBeCloseTo(localCentre.y - localHalf.y, 10);
 		// The rendered world centre is preserved across the attach (no jump caused
 		// by the board group rotating the footprint about the origin).
 		const renderedCentre = boardToWorld(
-			{ x: item.x + HALF.x, y: item.y + HALF.y },
+			{ x: item.x + localHalf.x, y: item.y + localHalf.y },
 			rotated,
 		);
 		expect(renderedCentre.x).toBeCloseTo(centre.x, 10);
@@ -337,11 +341,12 @@ describe("dropItem re-parenting math", () => {
 
 		const dropOrigin = { x: 75, y: 55 };
 		const centre = { x: dropOrigin.x + HALF.x, y: dropOrigin.y + HALF.y };
-		useScene.getState().dropItem(uid, dropOrigin);
+		useScene.getState().dropItem(uid, dropOrigin, 0);
 
 		const item = useScene.getState().items[0];
+		const localHalf = rotatePoint(HALF, { x: 0, y: 0 }, item.rotationDeg);
 		const renderedCentre = boardToWorld(
-			{ x: item.x + HALF.x, y: item.y + HALF.y },
+			{ x: item.x + localHalf.x, y: item.y + localHalf.y },
 			rotated,
 		);
 		expect(renderedCentre.x).toBeCloseTo(centre.x, 10);
@@ -369,17 +374,25 @@ describe("dropItem re-parenting math", () => {
 		const rotHalf = rotatePoint(HALF, { x: 0, y: 0 }, before.rotationDeg);
 		expect(before.rotationDeg).toBe(45);
 
-		// Drop so the rotated item's visible centre lands inside the board.
+		// Drop so the rotated item's visible centre lands inside the board, keeping
+		// its 45° visible orientation (visual rotation passed to dropItem).
 		const targetCentre = boardToWorld({ x: 20, y: 10 }, rotatedBoard);
-		useScene.getState().dropItem(uid, {
-			x: targetCentre.x - rotHalf.x,
-			y: targetCentre.y - rotHalf.y,
-		});
+		useScene.getState().dropItem(
+			uid,
+			{
+				x: targetCentre.x - rotHalf.x,
+				y: targetCentre.y - rotHalf.y,
+			},
+			before.rotationDeg,
+		);
 
 		const item = useScene.getState().items[0];
 		expect(item.boardUid).toBe(boardUid);
+		// Relative rotation = visible (45°) − board (90°).
+		expect(item.rotationDeg).toBe(315);
+		const localHalf = rotatePoint(HALF, { x: 0, y: 0 }, item.rotationDeg);
 		const renderedCentre = boardToWorld(
-			{ x: item.x + rotHalf.x, y: item.y + rotHalf.y },
+			{ x: item.x + localHalf.x, y: item.y + localHalf.y },
 			rotatedBoard,
 		);
 		expect(renderedCentre.x).toBeCloseTo(targetCentre.x, 10);
@@ -392,10 +405,11 @@ describe("dropItem re-parenting math", () => {
 		const uid = useScene
 			.getState()
 			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 5 });
-		useScene.getState().dropItem(uid, { x: 0, y: 0 });
+		useScene.getState().dropItem(uid, { x: 0, y: 0 }, 0);
 		const item = useScene.getState().items[0];
 		expect(item.boardUid).toBeNull();
 		expect({ x: item.x, y: item.y }).toEqual({ x: 0, y: 0 });
+		expect(item.rotationDeg).toBe(0);
 	});
 
 	it("re-parents between boards using the topmost hit", () => {
@@ -406,7 +420,7 @@ describe("dropItem re-parenting math", () => {
 			.getState()
 			.addItem("boss-bd-2-blues-driver", "pedal", a, { x: 5, y: 5 });
 		// Drop so the pedal's centre lands inside the overlapping boards.
-		useScene.getState().dropItem(uid, { x: HALF.x, y: HALF.y });
+		useScene.getState().dropItem(uid, { x: HALF.x, y: HALF.y }, 0);
 		expect(useScene.getState().items[0].boardUid).toBe(b);
 	});
 });
