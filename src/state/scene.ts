@@ -186,13 +186,20 @@ export function rotateItemAboutCenter(
 	rotationDeg: number,
 ): { x: number; y: number; rotationDeg: number } {
 	const { widthCm, heightCm } = itemFootprint(item);
-	const center = { x: item.x + widthCm / 2, y: item.y + heightCm / 2 };
-	const deltaDeg = rotationDeg - item.rotationDeg;
-	const origin = rotatePoint({ x: item.x, y: item.y }, center, deltaDeg);
+	const origin: Point = { x: 0, y: 0 };
+	const half: Point = { x: widthCm / 2, y: heightCm / 2 };
+	// The footprint's true centre is origin + R(θ)·half — NOT origin + half once
+	// the item is rotated. Keeping that centre fixed means the new origin is
+	// `centre − R(θ')·half`. (Rotating about the unrotated centre would translate
+	// an already-rotated item on every press after the first.)
+	const currentHalf = rotatePoint(half, origin, item.rotationDeg);
+	const centre = { x: item.x + currentHalf.x, y: item.y + currentHalf.y };
+	const nextRotationDeg = normalizeDegrees(rotationDeg);
+	const nextHalf = rotatePoint(half, origin, nextRotationDeg);
 	return {
-		x: origin.x,
-		y: origin.y,
-		rotationDeg: normalizeDegrees(rotationDeg),
+		x: centre.x - nextHalf.x,
+		y: centre.y - nextHalf.y,
+		rotationDeg: nextRotationDeg,
 	};
 }
 

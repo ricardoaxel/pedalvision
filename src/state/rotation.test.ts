@@ -79,6 +79,31 @@ describe("rotateItemAboutCenter", () => {
 		expect(result.y + rotatedHalf.y).toBeCloseTo(center.y, 10);
 	});
 
+	it("keeps the true centre when rotating an already-rotated item", () => {
+		const item = {
+			uid: "i",
+			refId: pedal.id,
+			kind: "pedal" as const,
+			boardUid: null,
+			x: 3,
+			y: 7,
+			rotationDeg: 45,
+			z: 0,
+		};
+		const { widthCm, heightCm } = itemFootprint(item);
+		const half = { x: widthCm / 2, y: heightCm / 2 };
+		const halfAt = (deg: number) => rotatePoint(half, { x: 0, y: 0 }, deg);
+		const centreBefore = {
+			x: item.x + halfAt(45).x,
+			y: item.y + halfAt(45).y,
+		};
+
+		const result = rotateItemAboutCenter(item, 90);
+		expect(result.rotationDeg).toBe(90);
+		expect(result.x + halfAt(90).x).toBeCloseTo(centreBefore.x, 10);
+		expect(result.y + halfAt(90).y).toBeCloseTo(centreBefore.y, 10);
+	});
+
 	it("normalises the resulting rotation", () => {
 		const item = {
 			uid: "i",
@@ -140,6 +165,29 @@ describe("rotateItem store action (S3 rotated parent)", () => {
 		const centreAfter = itemCentreWorld(itemAfter, boardAfter);
 		expect(centreAfter.x).toBeCloseTo(centreBefore.x, 10);
 		expect(centreAfter.y).toBeCloseTo(centreBefore.y, 10);
+	});
+
+	it("keeps the world centre under repeated action-bar rotations", () => {
+		const boardUid = useScene.getState().addBoard(board.id, { x: 0, y: 0 });
+		useScene.getState().moveBoard(boardUid, 100, 50);
+		useScene.getState().rotateBoard(boardUid, 25);
+		const uid = useScene
+			.getState()
+			.addItem(pedal.id, "pedal", boardUid, { x: 10, y: 5 });
+
+		const before = itemCentreWorld(
+			useScene.getState().items[0],
+			useScene.getState().boards[0],
+		);
+		// Two presses: 0 → 45 → 90. The centre must hold each time.
+		useScene.getState().rotateItem(uid, 45);
+		useScene.getState().rotateItem(uid, 90);
+		const after = itemCentreWorld(
+			useScene.getState().items[0],
+			useScene.getState().boards[0],
+		);
+		expect(after.x).toBeCloseTo(before.x, 10);
+		expect(after.y).toBeCloseTo(before.y, 10);
 	});
 
 	it("transformItem commits an origin + normalised rotation", () => {

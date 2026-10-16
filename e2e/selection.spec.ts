@@ -40,6 +40,21 @@ function rotatePoint(
 	};
 }
 
+/** The item's geometric centre in world cm (board transform + item rotation). */
+async function itemCentreWorld(
+	stage: ReturnType<Page["getByTestId"]>,
+): Promise<{ x: number; y: number }> {
+	const board = await readBoard(stage);
+	const item = await readItem(stage);
+	const half = rotatePoint(
+		{ x: PEDAL_CM.width / 2, y: PEDAL_CM.height / 2 },
+		item.rotation,
+	);
+	const local = { x: item.x + half.x, y: item.y + half.y };
+	const rotated = rotatePoint(local, board.rotation);
+	return { x: rotated.x + board.x, y: rotated.y + board.y };
+}
+
 test("the action bar appears under a selected pedal and rotates it 45°", async ({
 	page,
 }) => {
@@ -54,8 +69,16 @@ test("the action bar appears under a selected pedal and rotates it 45°", async 
 	const bar = page.getByTestId("item-action-bar");
 	await expect(bar).toBeVisible();
 
+	const centreBefore = await itemCentreWorld(stage);
 	await page.getByTestId("rotate-item").click();
 	await expect(stage).toHaveAttribute("data-item-rotations", "45.00");
+	// A second press must spin about the same centre (not translate): the
+	// unrotated-centre bug only shows from the second press on.
+	await page.getByTestId("rotate-item").click();
+	await expect(stage).toHaveAttribute("data-item-rotations", "90.00");
+	const centreAfter = await itemCentreWorld(stage);
+	expect(centreAfter.x).toBeCloseTo(centreBefore.x, 4);
+	expect(centreAfter.y).toBeCloseTo(centreBefore.y, 4);
 	// The board is unaffected by rotating a pedal on it.
 	await expect(stage).toHaveAttribute("data-rotations", "0");
 

@@ -46,7 +46,6 @@ export function Stage() {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const clearSelection = useSelection((state) => state.clearSelection);
 	const setHoveredItem = useSelection((state) => state.setHoveredItem);
-	const hoveredItemUid = useSelection((state) => state.hoveredItemUid);
 	const liftedItemUid = useDrag((state) => state.liftedUid);
 	const theme = useCanvasTheme();
 
@@ -117,6 +116,22 @@ export function Stage() {
 		});
 	}, []);
 
+	// Same idea for the hover debug attribute: write it from the store so hover
+	// enter/leave doesn't re-render the whole stage (SelectionLayer re-renders).
+	useEffect(() => {
+		const apply = (uid: string | null) => {
+			const element = containerRef.current;
+			if (!element) return;
+			element.dataset.hoveredItem = uid ?? "";
+		};
+		apply(useSelection.getState().hoveredItemUid);
+		return useSelection.subscribe((state, prev) => {
+			if (state.hoveredItemUid !== prev.hoveredItemUid) {
+				apply(state.hoveredItemUid);
+			}
+		});
+	}, []);
+
 	return (
 		<div
 			ref={containerRef}
@@ -133,7 +148,6 @@ export function Stage() {
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
 			data-selected-item={selectedItemUid ?? ""}
-			data-hovered-item={hoveredItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
 		>
 			{size.width > 0 && size.height > 0 ? (
