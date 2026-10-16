@@ -37,7 +37,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 
 1. Read `docs/progress.md` → find the current task.
 2. Read the task file in `docs/tasks/` — it lists exactly which files/sections to read. Read **only** those.
-3. Do the task. Verify its acceptance criteria by running them. Then run the **code review** (pass 1 on the strong model; see below) before opening the PR.
+3. Do the task. Verify its acceptance criteria by running them. Then run the **code review** (light model; see below) before opening the PR.
 4. Update `docs/progress.md` (done / next / blockers) — this is the handoff memory for the next session.
 5. One task per session. Commit per task (conventional commits).
 6. **Owner-blocked tasks STOP the flow (owner instruction, 2026-09-29).** If the next task — or any step of the current task — requires an owner action (GitHub repo, Cloudflare account/secrets, R2 bucket, dataset, permissions, etc. — see `docs/progress.md` → Blockers), **STOP and report to the owner**. Do NOT skip ahead to an unblocked task to "fill the gap". Wait for the owner to complete the required action before continuing.
@@ -64,13 +64,13 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - **Commit per round (owner instruction, 2026-10-13).** Each loop iteration is its own commit (round 1, round 2, …), so the owner can revert to any round ("go back to round X") with a simple `git revert`/checkout. Never squash multiple rounds into one commit.
 - The reviewer is authoritative only for *what is on screen*; the designer remains the design authority. If they conflict, present both to the owner.
 
-## Code review (MANDATORY — owner instructions 2026-10-13; revised 2026-10-15 — strong first pass, light re-checks)
+## Code review (MANDATORY — owner instructions 2026-10-13; revised 2026-10-15 — light model for every pass)
 
-- **Default = ONE pass on a strong model; re-checks on the light model (owner instruction, 2026-10-15).** Before a task's PR, the changed **source** is reviewed once by the `code-reviewer` agent on a **strong plan-tier model** (`opencode-go/kimi-k3`, via `/code-review`) — the first pass is where it must see the most real problems. Any **second/confirmation pass** (a re-check after fixes) runs on the **light model** (`opencode-go/deepseek-v4.1-flash`) — the test suite is the primary re-check. **Escape hatch:** `/code-review --light` runs the single pass on the light model when the owner wants it cheap. Rationale: docs/decisions/006-code-review-governance.md.
+- **Default = ONE pass on the light model (owner instruction, 2026-10-15).** Before a task's PR, the changed **source** is reviewed once by the `code-reviewer` agent on the **light model** (`opencode-go/deepseek-v4.1-flash`, via `/code-review`) — **every** review pass uses the light model (the strong plan-tier model proved too expensive). The test suite is the primary re-check. Rationale: docs/decisions/006-code-review-governance.md.
 - **Scope the diff to source only**: `git diff main...HEAD -- src tools e2e .github playwright.config.ts vite.config.ts package.json` — `docs/`, screenshots, and lockfiles are **out of scope**. Hand the reviewer the task-file path, not the repo; it reads only what it needs.
 - **Cap the output**: verdict + at most **5** findings (blocker / should-fix / nit) + a one-line round signal. No "what's good" prose. This keeps the review small and the token cost bounded.
 - **Fix blockers + should-fixes** (nits only if trivial); then re-run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
-- **Escalate to the ≤2-pass loop** (`/code-review-loop`; pass 1 = strong `opencode-go/kimi-k3`, pass 2 = light `opencode-go/deepseek-v4.1-flash`) **only when:** the change is high-risk (architecture, security, persistence/serialization, catalog schema, CI/build, new dependencies), OR pass 1 reports a blocker that needs a re-check, OR the owner asks. A pass = reviewer findings → fix in code → re-review; **max 2 passes**, commit each pass's fixes separately (revertible); after pass 2 with blockers/should-fixes open, STOP, tell the owner plainly, and propose more passes.
+- **Escalate to the ≤2-pass loop** (`/code-review-loop`, light model) **only when:** the change is high-risk (architecture, security, persistence/serialization, catalog schema, CI/build, new dependencies), OR pass 1 reports a blocker that needs a re-check, OR the owner asks. A pass = reviewer findings → fix in code → re-review; **max 2 passes**, commit each pass's fixes separately (revertible); after pass 2 with blockers/should-fixes open, STOP, tell the owner plainly, and propose more passes.
 - **Skip the review entirely** for docs-only / screenshot-only / pure-formatting changes (say so in the PR).
 - **Owner-directed simple changes skip review (owner instruction, 2026-10-15).** When the owner asks for a small, low-risk change — or explicitly says to keep it light / skip the reviews — do **not** run the `code-reviewer`, `designer`, or `design-reviewer` at all. Just implement and run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`, then say so in the PR. Examples: one-line/typo fixes, comment/doc tweaks, a small defensive guard, config or CSS value tweaks inside an already-approved direction. When in doubt, ask the owner rather than spending tokens.
 - **Re-reviews are conditional, not automatic (owner instruction, 2026-10-15).** After fixing findings, re-run the checks — but run **another reviewer pass only when it's worth it**: the change is high-risk (architecture/security/persistence/serialization/catalog schema/CI/deps), or a *blocker's* fix substantially changed logic. A pass's `FIX AND RE-REVIEW` signal does **not** obligate a second full pass for simple fixes — the test suite is the re-check (and any second pass is the **light** model).
@@ -81,7 +81,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 ## Phase gate (MANDATORY)
 
 - When **all tasks of a phase** (per `docs/roadmap.md`) are committed, do NOT start the next phase directly.
-- Run a **post-phase code review** in a NEW session on a strong model (plan tier — Kimi K3 or better): point it at the phase's merged PRs + `docs/design.md` + `docs/roadmap.md`, and ask it to flag contradictions, gaps, and regressions vs the docs (this replaced doc-only reviews after planning — see ADR-004).
+- Run a **post-phase code review** in a NEW session on the **light model** (`opencode-go/deepseek-v4.1-flash`) — every review pass uses the light model (owner instruction, 2026-10-15): point it at the phase's merged PRs + `docs/design.md` + `docs/roadmap.md`, and ask it to flag contradictions, gaps, and regressions vs the docs (this replaced doc-only reviews after planning — see ADR-004).
 - Fold valid findings back into the docs/tasks **before** starting the next phase.
 - Record the review outcome in `docs/progress.md`.
 
