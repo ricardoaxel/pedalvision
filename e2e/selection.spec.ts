@@ -55,7 +55,7 @@ async function itemCentreWorld(
 	return { x: rotated.x + board.x, y: rotated.y + board.y };
 }
 
-test("the action bar appears under a selected pedal and rotates it 45°", async ({
+test("the action bar rotates a pedal in place across repeated presses", async ({
 	page,
 }) => {
 	await page.goto("/");
