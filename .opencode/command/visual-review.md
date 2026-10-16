@@ -7,6 +7,8 @@ You are running the visual design review. You must inspect real screenshots — 
 
 **Both viewports are required (owner instruction, 2026-10-15):** the review must include a **desktop** AND a **narrow/mobile** render for any UI/canvas change. If only one viewport is provided, say so explicitly and flag the responsive side as unverified — a desktop-only review is incomplete.
 
+**One review per frozen UI; hard cap ≤3 passes per task (owner instruction, 2026-10-15):** freeze the UI, then review **once**. **Batch every visual finding into a single change** before re-rendering, and re-run the reviewer **only when a fix materially changes the rendered result** (a layout/contrast/touch-visible change) — never per nit, never for internal refactors or value tweaks inside an approved look. When a re-run is warranted, pass **explicit questions in one call** instead of reviewing repeatedly. The heavy-loop's iterations count toward the cap; **at the cap with no approval, STOP** and hand the open findings to the owner.
+
 Inputs:
 - $ARGUMENTS = screenshot file paths (space-separated), OR `PR <n>` to review a PR's committed screenshots, OR empty to auto-discover.
 - If `PR <n>`: run `gh pr view <n> --json files` and `gh pr diff <n> --name-only`, then open the PNG files (they exist on the PR branch; if needed `gh pr checkout <n>` is NOT allowed — instead read them from the branch with `git show <branch>:<path> > /tmp/<name>.png`).

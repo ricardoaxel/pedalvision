@@ -1,13 +1,16 @@
 ---
-description: Run the staff-level code-reviewer once (light pass) on a diff, PR, or the current branch vs main.
+description: Run the staff-level code-reviewer once — pass 1 on the strong model (opencode-go/kimi-k3); `--light` runs it on the light model instead.
 agent: code-reviewer
-model: opencode-go/deepseek-v4.1-flash
+model: opencode-go/kimi-k3
 ---
 
-Run a single, **lightweight** code review. You are the `code-reviewer` agent — read-only, adversarial, specific. Keep the output small (this is the default, cost-bounded pass).
+Run a single code-review **pass 1 on the strong model** (`opencode-go/kimi-k3`, pinned above) — the first pass is where the reviewer must see the most real problems. You are the `code-reviewer` agent — read-only, adversarial, specific. Keep the output small.
 
 Inputs:
 - `$ARGUMENTS` = `PR <n>` to review a pull request, a path/scope to focus on, or empty to review the current branch vs `main`.
+- **`--light` escape hatch (owner instruction, 2026-10-15):** if `$ARGUMENTS` contains `--light`, do NOT rely on this command's pinned model — run the light model directly (the owner's cheap option), e.g.
+  `opencode run --agent code-reviewer -m opencode-go/deepseek-v4.1-flash "Review the current branch vs main, source-only (<scope below>). Task: <task file>. Obey docs/requirements.md, docs/design.md, AGENTS.md. Keep findings to the blockers/should-fixes; output per your format."`
+  (Pass 2 / confirmation after fixes always uses the light model — see AGENTS.md → Code review.)
 - **Scope to source only** — pass the paths so you do not read docs/screenshots/lockfiles:
   `git diff main...HEAD -- src tools e2e .github playwright.config.ts vite.config.ts package.json` (or `gh pr diff <n> -- <paths>`).
 - Read the task file it implements and only the docs it must obey (`AGENTS.md`, the relevant `docs/decisions/*`). Do not read the whole repo.
