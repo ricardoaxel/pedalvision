@@ -382,6 +382,8 @@ test("a stray pointer or a button-less move ends the pedal drag", async ({
 	);
 	if (typeof pid !== "number") throw new Error("no pointerId captured");
 	const liftedBefore = await stage.getAttribute("data-lifted-position");
+	// The imperative debug attribute is populated mid-drag.
+	expect(liftedBefore).toMatch(/^-?\d/);
 
 	// A DIFFERENT pointer moving must not move the lifted pedal (finding #4).
 	await page.evaluate(
@@ -423,28 +425,33 @@ test("a stray pointer or a button-less move ends the pedal drag", async ({
 	await page.mouse.up();
 });
 
-test("the temporary pickers stay usable and non-overlapping on a short viewport", async ({
+test("the temporary pickers stay usable and non-overlapping on short viewports", async ({
 	page,
 }) => {
-	// 568×320 is a small landscape phone: the pickers used to either collapse the
-	// pedal list (zero height) or overlap and cover the board picker's remove
-	// button (Copilot findings).
-	await page.setViewportSize({ width: 568, height: 320 });
-	await page.goto("/");
+	// 568×440 and 568×320 are short landscape screens where the two pickers used
+	// to either collapse the pedal list or overlap and cover the board picker's
+	// remove button (Copilot findings). Both take the stacked rail now.
 	const stage = page.getByTestId("stage");
+	for (const height of [440, 320]) {
+		await page.setViewportSize({ width: 568, height });
+		await page.goto("/");
 
-	// The pedal list has a real, scrollable height.
-	const list = page.locator('[data-testid="pedal-picker"] ul');
-	await expect(list).toBeVisible();
-	expect((await list.boundingBox())?.height ?? 0).toBeGreaterThan(40);
+		// The pedal list has a real, scrollable height.
+		const list = page.locator('[data-testid="pedal-picker"] ul');
+		await expect(list).toBeVisible();
+		expect(
+			(await list.boundingBox())?.height ?? 0,
+			`pedal list empty at 568×${height}`,
+		).toBeGreaterThan(40);
 
-	// The board picker's remove control is visible and actually clickable (not
-	// covered by the pedal picker — `click()` times out if another node
-	// intercepts the pointer).
-	await page.getByTestId("add-board-boss-bcb-1000").click();
-	await expect(stage).toHaveAttribute("data-boards", "1");
-	const remove = page.getByTestId("remove-board");
-	await expect(remove).toBeVisible();
-	await remove.click();
-	await expect(stage).toHaveAttribute("data-boards", "0");
+		// The board picker's remove control is visible and actually clickable (not
+		// covered by the pedal picker — `click()` times out if another node
+		// intercepts the pointer).
+		await page.getByTestId("add-board-boss-bcb-1000").click();
+		await expect(stage).toHaveAttribute("data-boards", "1");
+		const remove = page.getByTestId("remove-board");
+		await expect(remove).toBeVisible();
+		await remove.click();
+		await expect(stage).toHaveAttribute("data-boards", "0");
+	}
 });

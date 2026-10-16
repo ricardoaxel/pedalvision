@@ -45,7 +45,6 @@ export function Stage() {
 	const selectedItemUid = useSelection((state) => state.selectedItemUid);
 	const clearSelection = useSelection((state) => state.clearSelection);
 	const liftedItemUid = useDrag((state) => state.liftedUid);
-	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
 	const theme = useCanvasTheme();
 
 	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
@@ -92,6 +91,26 @@ export function Stage() {
 		return () => observer.disconnect();
 	}, [setSizeInStore]);
 
+	// `data-lifted-position` changes on every drag move; write it straight to the
+	// DOM so a drag doesn't re-render the Stage (and the grid/board layers) just
+	// to refresh a debug attribute — only the DragLayer re-renders. `data-lifted-item`
+	// changes on lift/drop only, so it stays a normal reactive attribute.
+	useEffect(() => {
+		const apply = (cm: Point | null) => {
+			const element = containerRef.current;
+			if (!element) return;
+			element.dataset.liftedPosition = cm
+				? `${cm.x.toFixed(2)},${cm.y.toFixed(2)}`
+				: "";
+		};
+		apply(useDrag.getState().liftedWorldCm);
+		return useDrag.subscribe((state, prev) => {
+			if (state.liftedWorldCm !== prev.liftedWorldCm) {
+				apply(state.liftedWorldCm);
+			}
+		});
+	}, []);
+
 	return (
 		<div
 			ref={containerRef}
@@ -108,11 +127,6 @@ export function Stage() {
 			data-item-positions={itemPositions}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
-			data-lifted-position={
-				liftedWorldCm
-					? `${liftedWorldCm.x.toFixed(2)},${liftedWorldCm.y.toFixed(2)}`
-					: ""
-			}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage

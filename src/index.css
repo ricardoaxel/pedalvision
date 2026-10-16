@@ -311,7 +311,7 @@ body {
 	}
 }
 
-@media (max-width: 640px) and (max-height: 400px) {
+@media (max-width: 640px) and (max-height: 620px) {
 	.picker-rail {
 		position: absolute;
 		top: var(--space-4);
@@ -321,7 +321,9 @@ body {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-3);
-		width: min(220px, calc(100vw - var(--space-5) * 2));
+		/* Capped below half-width so the rail never covers the canvas centre
+		 * (where a board is dropped) on narrow screens. */
+		width: min(220px, 45vw);
 		pointer-events: none;
 	}
 
