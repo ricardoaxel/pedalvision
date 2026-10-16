@@ -3,12 +3,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
 import { useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { type Point, useViewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
 import { DragLayer } from "./DragLayer";
 import { GridLayer } from "./GridLayer";
 import { LooseItemLayer } from "./LooseItemLayer";
+import { SelectionLayer } from "./SelectionLayer";
 import { useCanvasTheme } from "./useCanvasTheme";
 import { useItemDrag } from "./useItemDrag";
 import { useViewportGestures } from "./useViewportGestures";
@@ -42,9 +43,11 @@ export function Stage() {
 	const setSizeInStore = useViewport((state) => state.setSize);
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
-	const selectedItemUid = useSelection((state) => state.selectedItemUid);
+	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const clearSelection = useSelection((state) => state.clearSelection);
+	const setHoveredItem = useSelection((state) => state.setHoveredItem);
 	const liftedItemUid = useDrag((state) => state.liftedUid);
+	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
 
 	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
@@ -63,6 +66,9 @@ export function Stage() {
 	const itemPositions = items
 		.map((item) => `${item.x.toFixed(2)},${item.y.toFixed(2)}`)
 		.join(";");
+	const itemRotations = items
+		.map((item) => item.rotationDeg.toFixed(2))
+		.join(",");
 
 	// Hit-test seam (gestures.ts `empty` | `object`): a press that lands on a
 	// node is an object gesture (drag the board/pedal), anything else pans the
@@ -111,6 +117,22 @@ export function Stage() {
 		});
 	}, []);
 
+	// Same idea for the hover debug attribute: write it from the store so hover
+	// enter/leave doesn't re-render the whole stage (SelectionLayer re-renders).
+	useEffect(() => {
+		const apply = (uid: string | null) => {
+			const element = containerRef.current;
+			if (!element) return;
+			element.dataset.hoveredItem = uid ?? "";
+		};
+		apply(useSelection.getState().hoveredItemUid);
+		return useSelection.subscribe((state, prev) => {
+			if (state.hoveredItemUid !== prev.hoveredItemUid) {
+				apply(state.hoveredItemUid);
+			}
+		});
+	}, []);
+
 	return (
 		<div
 			ref={containerRef}
@@ -125,8 +147,10 @@ export function Stage() {
 			data-items={items.length}
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
+			data-item-rotations={itemRotations}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
+			data-lifted-rotation={liftedRotationDeg ?? ""}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage
@@ -145,6 +169,8 @@ export function Stage() {
 					onTouchStart={(event) => {
 						if (event.target === event.target.getStage()) clearSelection();
 					}}
+					// A pointer leaving the whole canvas must drop the hover ring.
+					onMouseLeave={() => setHoveredItem(null)}
 				>
 					<GridLayer
 						color={theme.gridDot}
@@ -157,6 +183,7 @@ export function Stage() {
 					<BoardLayer theme={theme} />
 					<LooseItemLayer theme={theme} />
 					<DragLayer theme={theme} />
+					<SelectionLayer theme={theme} />
 				</KonvaStage>
 			) : null}
 		</div>

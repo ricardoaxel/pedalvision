@@ -7,6 +7,9 @@ interface SelectionOutlineProps {
 	yCm: number;
 	widthCm: number;
 	heightCm: number;
+	/** The item's own rotation (degrees); the board transform is inherited by
+	 * the enclosing group. */
+	rotationDeg?: number;
 	theme: CanvasTheme;
 }
 
@@ -26,14 +29,20 @@ export function SelectionOutline({
 	yCm,
 	widthCm,
 	heightCm,
+	rotationDeg = 0,
 	theme,
 }: SelectionOutlineProps) {
 	return (
 		<Rect
-			x={cmToPx(xCm) - INSET}
-			y={cmToPx(yCm) - INSET}
+			x={cmToPx(xCm)}
+			y={cmToPx(yCm)}
+			// Offset so the ring still sits just outside the footprint, while
+			// rotation pivots about the item origin (not the inset corner).
+			offsetX={INSET}
+			offsetY={INSET}
 			width={cmToPx(widthCm) + INSET * 2}
 			height={cmToPx(heightCm) + INSET * 2}
+			rotation={rotationDeg}
 			stroke={theme.canvasBackground}
 			strokeWidth={STROKE}
 			cornerRadius={3}

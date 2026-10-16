@@ -1,12 +1,6 @@
 import type Konva from "konva";
 import { useCallback, useEffect, useRef } from "react";
-import {
-	Group,
-	Image as KonvaImage,
-	Rect,
-	Text,
-	Transformer,
-} from "react-konva";
+import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
@@ -24,7 +18,6 @@ import { CANVAS_FONTS } from "../styles/theme";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
-import { useItemSelection } from "./useItemSelection";
 
 interface BoardNodeProps {
 	board: PlacedBoard;
@@ -77,14 +70,12 @@ export function BoardNode({
 		return () => registerNode(board.uid, null);
 	}, [board.uid, registerNode]);
 
-	// The selected pedal's Transformer travels inside this board group (so it
-	// shares the pedal's coordinate frame under a rotated board); the shared
-	// hook keeps this in step with the loose/Drag layers.
-	const {
-		registerNode: registerItemNode,
-		selectedItem,
-		transformerRef: itemTransformerRef,
-	} = useItemSelection(selectedItemUid, items);
+	// The selected pedal's halo is drawn here (inheriting the board transform);
+	// its rotate Transformer lives in the top-level SelectionLayer and attaches
+	// to the node through the global registry (see ItemTransformer).
+	const selectedItem = selectedItemUid
+		? items.find((item) => item.uid === selectedItemUid)
+		: undefined;
 
 	const commitPosition = useCallback(() => {
 		const node = groupRef.current;
@@ -190,7 +181,6 @@ export function BoardNode({
 					theme={theme}
 					xCm={item.x}
 					yCm={item.y}
-					registerNode={registerItemNode}
 				/>
 			))}
 			{selectedItem ? (
@@ -199,19 +189,8 @@ export function BoardNode({
 					yCm={selectedItem.y}
 					widthCm={itemFootprint(selectedItem).widthCm}
 					heightCm={itemFootprint(selectedItem).heightCm}
+					rotationDeg={selectedItem.rotationDeg}
 					theme={theme}
-				/>
-			) : null}
-			{selectedItem ? (
-				<Transformer
-					ref={itemTransformerRef}
-					enabledAnchors={[]}
-					rotateEnabled={false}
-					resizeEnabled={false}
-					listening={false}
-					borderStroke={theme.selectionStrong}
-					borderStrokeWidth={1.5}
-					ignoreStroke
 				/>
 			) : null}
 		</Group>

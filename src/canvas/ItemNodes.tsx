@@ -1,10 +1,8 @@
-import { Transformer } from "react-konva";
 import type { Point } from "../lib/geometry";
 import { itemFootprint, type PlacedItem } from "../state/scene";
 import type { CanvasTheme } from "../styles/theme";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
-import { useItemSelection } from "./useItemSelection";
 
 interface ItemNodesProps {
 	items: PlacedItem[];
@@ -15,28 +13,34 @@ interface ItemNodesProps {
 	 * position — used by the DragLayer for the single lifted item.
 	 */
 	worldPosition?: Point;
+	/**
+	 * Overrides the rendered rotation (degrees). Used by the DragLayer to render
+	 * the lifted item with its composed board+own rotation, so picking a pedal
+	 * off a rotated board doesn't snap it back to the canvas frame.
+	 */
+	rotationDeg?: number;
 	/** Lift shadow + unskewed rendering cue (DragLayer only). */
 	lifted?: boolean;
 }
 
 /**
- * A set of pedal/supply nodes plus a selection halo + Transformer for whichever
- * is selected. Shared by the loose-items layer and the transient DragLayer
- * (board-attached pedals render through BoardNode instead). The Outline and
- * Transformer are siblings in the same container, so they share the item's
- * coordinate frame.
+ * A set of pedal/supply nodes plus the selected item's halo, shared by the
+ * loose-items layer and the transient DragLayer (board-attached pedals render
+ * through BoardNode instead). The halo is a sibling in the same container, so
+ * it shares the item's coordinate frame; the rotate Transformer is top-level
+ * (SelectionLayer) and attaches to the node via the global registry.
  */
 export function ItemNodes({
 	items,
 	theme,
 	selectedItemUid,
 	worldPosition,
+	rotationDeg,
 	lifted = false,
 }: ItemNodesProps) {
-	const { registerNode, selectedItem, transformerRef } = useItemSelection(
-		selectedItemUid,
-		items,
-	);
+	const selectedItem = selectedItemUid
+		? items.find((item) => item.uid === selectedItemUid)
+		: undefined;
 
 	return (
 		<>
@@ -47,8 +51,8 @@ export function ItemNodes({
 					theme={theme}
 					xCm={worldPosition ? worldPosition.x : item.x}
 					yCm={worldPosition ? worldPosition.y : item.y}
+					rotationDeg={rotationDeg}
 					lifted={lifted}
-					registerNode={registerNode}
 				/>
 			))}
 			{selectedItem ? (
@@ -57,19 +61,8 @@ export function ItemNodes({
 					yCm={worldPosition ? worldPosition.y : selectedItem.y}
 					widthCm={itemFootprint(selectedItem).widthCm}
 					heightCm={itemFootprint(selectedItem).heightCm}
+					rotationDeg={rotationDeg ?? selectedItem.rotationDeg}
 					theme={theme}
-				/>
-			) : null}
-			{selectedItem ? (
-				<Transformer
-					ref={transformerRef}
-					enabledAnchors={[]}
-					rotateEnabled={false}
-					resizeEnabled={false}
-					listening={false}
-					borderStroke={theme.selectionStrong}
-					borderStrokeWidth={1.5}
-					ignoreStroke
 				/>
 			) : null}
 		</>

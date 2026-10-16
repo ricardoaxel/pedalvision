@@ -1,7 +1,7 @@
 import { Layer } from "react-konva";
 import { useDrag } from "../state/drag";
 import { useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectSelectedItemUid, useSelection } from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
 import { ItemNodes } from "./ItemNodes";
 
@@ -19,8 +19,9 @@ interface DragLayerProps {
 export function DragLayer({ theme }: DragLayerProps) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
+	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const items = useScene((state) => state.items);
-	const selectedItemUid = useSelection((state) => state.selectedItemUid);
+	const selectedItemUid = useSelection(selectSelectedItemUid);
 
 	const item = liftedUid
 		? items.find((candidate) => candidate.uid === liftedUid)
@@ -34,6 +35,8 @@ export function DragLayer({ theme }: DragLayerProps) {
 					theme={theme}
 					selectedItemUid={selectedItemUid}
 					worldPosition={liftedWorldCm}
+					// Keep the pedal's visible rotation while lifted (board + own).
+					rotationDeg={liftedRotationDeg ?? item.rotationDeg}
 					lifted
 				/>
 			) : null}
