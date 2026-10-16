@@ -428,12 +428,16 @@ test("a stray pointer or a button-less move ends the pedal drag", async ({
 test("the temporary pickers stay usable and non-overlapping on short viewports", async ({
 	page,
 }) => {
-	// 568×440 and 568×320 are short landscape screens where the two pickers used
-	// to either collapse the pedal list or overlap and cover the board picker's
-	// remove button (Copilot findings). Both take the stacked rail now.
+	// 568×440, 568×320 and 667×320 are short screens (narrow and wide landscape)
+	// where the corner panels used to collapse the pedal list or overlap and cover
+	// the board picker's remove button (Copilot findings). All take the rail now.
 	const stage = page.getByTestId("stage");
-	for (const height of [440, 320]) {
-		await page.setViewportSize({ width: 568, height });
+	for (const { width, height } of [
+		{ width: 568, height: 440 },
+		{ width: 568, height: 320 },
+		{ width: 667, height: 320 },
+	]) {
+		await page.setViewportSize({ width, height });
 		await page.goto("/");
 
 		// The pedal list has a real, scrollable height.
@@ -441,7 +445,7 @@ test("the temporary pickers stay usable and non-overlapping on short viewports",
 		await expect(list).toBeVisible();
 		expect(
 			(await list.boundingBox())?.height ?? 0,
-			`pedal list empty at 568×${height}`,
+			`pedal list empty at ${width}×${height}`,
 		).toBeGreaterThan(40);
 
 		// The board picker's remove control is visible and actually clickable (not
