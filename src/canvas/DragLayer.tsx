@@ -1,7 +1,7 @@
 import { Layer } from "react-konva";
 import { useDrag } from "../state/drag";
 import { useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectSelectedItemUid, useSelection } from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
 import { ItemNodes } from "./ItemNodes";
 
@@ -20,7 +20,7 @@ export function DragLayer({ theme }: DragLayerProps) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
 	const items = useScene((state) => state.items);
-	const selectedItemUid = useSelection((state) => state.selectedItemUid);
+	const selectedItemUid = useSelection(selectSelectedItemUid);
 
 	const item = liftedUid
 		? items.find((candidate) => candidate.uid === liftedUid)

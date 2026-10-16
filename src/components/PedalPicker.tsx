@@ -1,22 +1,19 @@
 import { catalog } from "../catalog/load";
 import { boardFootprint, useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
 
 /**
  * Temporary HTML pedal picker (P1-04): a plain list of catalog pedals that adds
  * the chosen pedal to the selected board's centre (or loose at the viewport
- * centre if no board exists), plus duplicate/delete for the selected pedal. The
- * real searchable/filterable picker modal is P2-01 — this exists only so pedals
- * can be placed, duplicated and deleted now.
+ * centre if no board exists). The real searchable/filterable picker modal is
+ * P2-01 — this exists only so pedals can be placed now (duplicate/delete moved
+ * to the on-selection action bar in P1-05).
  */
 export function PedalPicker() {
 	const boards = useScene((state) => state.boards);
 	const addItem = useScene((state) => state.addItem);
-	const duplicateItem = useScene((state) => state.duplicateItem);
-	const removeItem = useScene((state) => state.removeItem);
-	const selectedBoardUid = useSelection((state) => state.selectedBoardUid);
-	const selectedItemUid = useSelection((state) => state.selectedItemUid);
+	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const selectItem = useSelection((state) => state.selectItem);
 
 	const pedals = catalog.pedals.filter((pedal) => pedal.category === "pedal");
@@ -70,36 +67,6 @@ export function PedalPicker() {
 					</li>
 				))}
 			</ul>
-			{/* Row is always rendered so selecting a pedal doesn't shift the panel;
-			 * the buttons disable without a selection. */}
-			<div className="pedal-picker__actions">
-				<button
-					type="button"
-					className="pedal-picker__action"
-					data-testid="duplicate-pedal"
-					disabled={!selectedItemUid}
-					onClick={() => {
-						if (!selectedItemUid) return;
-						const uid = duplicateItem(selectedItemUid);
-						if (uid) selectItem(uid);
-					}}
-				>
-					Duplicate
-				</button>
-				<button
-					type="button"
-					className="pedal-picker__action pedal-picker__action--danger"
-					data-testid="delete-pedal"
-					disabled={!selectedItemUid}
-					onClick={() => {
-						if (!selectedItemUid) return;
-						removeItem(selectedItemUid);
-						selectItem(null);
-					}}
-				>
-					Delete
-				</button>
-			</div>
 		</aside>
 	);
 }

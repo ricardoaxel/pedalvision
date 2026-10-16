@@ -5,7 +5,11 @@ import { pxToCm } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
 import { useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
+import {
+	selectSelectedBoardUid,
+	selectSelectedItemUid,
+	useSelection,
+} from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
 import { BoardNode } from "./BoardNode";
 
@@ -28,8 +32,8 @@ interface BoardLayerProps {
 export function BoardLayer({ theme }: BoardLayerProps) {
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
-	const selectedUid = useSelection((state) => state.selectedBoardUid);
-	const selectedItemUid = useSelection((state) => state.selectedItemUid);
+	const selectedUid = useSelection(selectSelectedBoardUid);
+	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const moveBoard = useScene((state) => state.moveBoard);
 	const rotateBoard = useScene((state) => state.rotateBoard);
 	// The lifted item renders in the DragLayer, not in its board group.

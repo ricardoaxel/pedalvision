@@ -1,7 +1,12 @@
 import { create } from "zustand";
 import { catalog } from "../catalog/load";
 import type { CatalogBoard, CatalogPedal } from "../catalog/schema";
-import { boardToWorld, type Point, worldToBoard } from "../lib/geometry";
+import {
+	boardToWorld,
+	type Point,
+	rotatePoint,
+	worldToBoard,
+} from "../lib/geometry";
 
 /**
  * The scene document (design.md §Data model). The boards and pedal/supply
@@ -158,6 +163,67 @@ export function pointerGrabOffset(
 	return { x: pressLocal.x - item.x, y: pressLocal.y - item.y };
 }
 
+/**
+ * Wrap an angle to [0, 360). Stored rotations are always normalised so a long
+ * rotation drag can't accumulate unbounded degrees (and A4 save/load stays
+ * canonical). Non-finite → 0; `-0` → `0`.
+ */
+export function normalizeDegrees(deg: number): number {
+	if (!Number.isFinite(deg)) return 0;
+	const wrapped = ((deg % 360) + 360) % 360;
+	return wrapped === 0 ? 0 : wrapped;
+}
+
+/**
+ * Rotate an item to `rotationDeg` **about its own centre**, returning the new
+ * board-relative (or world) origin so the footprint spins in place. The frame
+ * cancels: the item's `rotationDeg` is relative to its parent frame, so the
+ * same math is correct for a loose item and for one on a rotated board. The
+ * result rotation is normalised to [0, 360).
+ */
+export function rotateItemAboutCenter(
+	item: PlacedItem,
+	rotationDeg: number,
+): { x: number; y: number; rotationDeg: number } {
+	const { widthCm, heightCm } = itemFootprint(item);
+	const center = { x: item.x + widthCm / 2, y: item.y + heightCm / 2 };
+	const deltaDeg = rotationDeg - item.rotationDeg;
+	const origin = rotatePoint({ x: item.x, y: item.y }, center, deltaDeg);
+	return {
+		x: origin.x,
+		y: origin.y,
+		rotationDeg: normalizeDegrees(rotationDeg),
+	};
+}
+
+/**
+ * The item's four footprint corners in **world cm**, including its own rotation
+ * (about its origin) and, for attached items, the board transform. Used by the
+ * HTML action bar to anchor below the selection's real on-screen bounds under
+ * any rotation (P1-05).
+ */
+export function itemWorldCorners(
+	item: PlacedItem,
+	boards: PlacedBoard[],
+): Point[] {
+	const { widthCm, heightCm } = itemFootprint(item);
+	const origin: Point = { x: 0, y: 0 };
+	const corners: Point[] = [
+		{ x: 0, y: 0 },
+		{ x: widthCm, y: 0 },
+		{ x: widthCm, y: heightCm },
+		{ x: 0, y: heightCm },
+	];
+	const parent = corners.map((corner) => {
+		const rotated = rotatePoint(corner, origin, item.rotationDeg);
+		return { x: rotated.x + item.x, y: rotated.y + item.y };
+	});
+	if (!item.boardUid) return parent;
+	const board = boards.find((candidate) => candidate.uid === item.boardUid);
+	if (!board) return parent;
+	return parent.map((point) => boardToWorld(point, board));
+}
+
 /** The next dense z within a container (board or loose). */
 function nextZ(items: PlacedItem[], boardUid: string | null): number {
 	let max = -1;
@@ -192,6 +258,22 @@ interface SceneStore {
 	 * (the rotated-board case).
 	 */
 	dropItem: (uid: string, worldOriginCm: Point) => void;
+	/**
+	 * Set an item's absolute rotation (degrees), spinning it about its own
+	 * centre so it stays put. Rotation is normalised to [0, 360) (P1-05).
+	 */
+	rotateItem: (uid: string, rotationDeg: number) => void;
+	/**
+	 * Commit a live Transformer transform: the item's origin in its parent frame
+	 * (board-local cm when attached, world cm when loose) plus a rotation that is
+	 * normalised to [0, 360) (P1-05).
+	 */
+	transformItem: (
+		uid: string,
+		xCm: number,
+		yCm: number,
+		rotationDeg: number,
+	) => void;
 	/**
 	 * Add a catalog board centred on `centerCm` (world cm), returning its uid.
 	 * Stored `x`/`y` is the board's origin (top-left), so the caller stays free
@@ -287,6 +369,27 @@ export const useScene = create<SceneStore>((set) => ({
 				),
 			};
 		}),
+	rotateItem: (uid, rotationDeg) =>
+		set((state) => ({
+			items: state.items.map((item) =>
+				item.uid === uid
+					? { ...item, ...rotateItemAboutCenter(item, rotationDeg) }
+					: item,
+			),
+		})),
+	transformItem: (uid, xCm, yCm, rotationDeg) =>
+		set((state) => ({
+			items: state.items.map((item) =>
+				item.uid === uid
+					? {
+							...item,
+							x: xCm,
+							y: yCm,
+							rotationDeg: normalizeDegrees(rotationDeg),
+						}
+					: item,
+			),
+		})),
 	addBoard: (boardRefId, centerCm) => {
 		const uid = crypto.randomUUID();
 		const definition = BOARD_BY_ID.get(boardRefId);

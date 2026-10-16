@@ -26,4 +26,4 @@ Supporting evidence: multiple open-source true-scale planners (floor-plan apps w
 3. **CORS-tainted images break `toDataURL`** → all images same-origin or CORS-enabled CDN (hard rule, see AGENTS.md + ADR-002).
 4. **Stage doesn't auto-resize** → ResizeObserver in P1-02.
 5. **Canvas has no a11y semantics** → all controls mirrored in HTML (design.md).
-6. **Transformer under a rotated parent** → for board-attached pedals the Transformer lives inside the board's group (B2); never a world-space Transformer over a rotated board group.
+6. **Transformer under a rotated parent** → Konva transforms nodes via absolute transforms, so a single top-level `SelectionLayer` Transformer attaches to the item's node even on a rotated board; `_fitNodesInto` writes the item's local rotation relative to the pedal and the board is untouched. (P1-05 revised the original "Transformer inside the board group" plan after finding a nested Transformer receives no pointer events. See design.md → B2.)
