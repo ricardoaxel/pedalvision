@@ -248,7 +248,7 @@ describe("dropItem re-parenting math", () => {
 		useScene.setState({ boards: [], items: [] });
 	});
 
-	it("stores board-relative cm under a rotated board", () => {
+	it("attaches under a rotated board preserving the hit-tested centre", () => {
 		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
 		useScene.getState().rotateBoard(boardUid, 90);
 		useScene.getState().moveBoard(boardUid, 100, 50);
@@ -265,21 +265,53 @@ describe("dropItem re-parenting math", () => {
 		const uid = useScene
 			.getState()
 			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
-		// Drop so the pedal's centre lands inside the rotated board.
+		// Drop so the pedal's visible centre lands inside the rotated board.
 		const originWorld = { x: 80, y: 60 };
+		const centre = { x: originWorld.x + HALF.x, y: originWorld.y + HALF.y };
 		useScene.getState().dropItem(uid, originWorld);
 
 		const item = useScene.getState().items[0];
 		expect(item.boardUid).toBe(boardUid);
-		const expected = worldToBoard(originWorld, rotated);
-		expect(expected.x).toBeCloseTo(10, 10);
-		expect(expected.y).toBeCloseTo(20, 10);
-		expect(item.x).toBeCloseTo(10, 10);
-		expect(item.y).toBeCloseTo(20, 10);
-		// And the stored position maps back to the same world origin.
-		const back = boardToWorld({ x: item.x, y: item.y }, rotated);
-		expect(back.x).toBeCloseTo(originWorld.x, 10);
-		expect(back.y).toBeCloseTo(originWorld.y, 10);
+		// Stored board-local origin = local centre − half-footprint.
+		const localCentre = worldToBoard(centre, rotated);
+		expect(item.x).toBeCloseTo(localCentre.x - HALF.x, 10);
+		expect(item.y).toBeCloseTo(localCentre.y - HALF.y, 10);
+		// The rendered world centre is preserved across the attach (no jump caused
+		// by the board group rotating the footprint about the origin).
+		const renderedCentre = boardToWorld(
+			{ x: item.x + HALF.x, y: item.y + HALF.y },
+			rotated,
+		);
+		expect(renderedCentre.x).toBeCloseTo(centre.x, 10);
+		expect(renderedCentre.y).toBeCloseTo(centre.y, 10);
+	});
+
+	it("preserves the rendered centre when nudging within a rotated board", () => {
+		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		useScene.getState().rotateBoard(boardUid, 90);
+		useScene.getState().moveBoard(boardUid, 100, 50);
+		const rotated = {
+			uid: boardUid,
+			boardRefId: boss.id,
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+		const uid = useScene
+			.getState()
+			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 5 });
+
+		const dropOrigin = { x: 75, y: 55 };
+		const centre = { x: dropOrigin.x + HALF.x, y: dropOrigin.y + HALF.y };
+		useScene.getState().dropItem(uid, dropOrigin);
+
+		const item = useScene.getState().items[0];
+		const renderedCentre = boardToWorld(
+			{ x: item.x + HALF.x, y: item.y + HALF.y },
+			rotated,
+		);
+		expect(renderedCentre.x).toBeCloseTo(centre.x, 10);
+		expect(renderedCentre.y).toBeCloseTo(centre.y, 10);
 	});
 
 	it("keeps the item loose (world cm) when dropped outside every board", () => {

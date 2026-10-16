@@ -262,19 +262,28 @@ export const useScene = create<SceneStore>((set) => ({
 			const item = state.items.find((candidate) => candidate.uid === uid);
 			if (!item) return state;
 			const footprint = itemFootprint(item);
-			// Hit-test the item's centre (its origin + half-footprint, no pedal
-			// rotation until P1-05), so the drop reads by where the pedal sits.
-			const centre = {
-				x: worldOriginCm.x + footprint.widthCm / 2,
-				y: worldOriginCm.y + footprint.heightCm / 2,
-			};
+			const halfX = footprint.widthCm / 2;
+			const halfY = footprint.heightCm / 2;
+			// The lifted item renders unrotated and is hit-tested/anchored by its
+			// visible centre (origin + half-footprint; no pedal rotation until
+			// P1-05). Attaching to a board must keep that centre put: the board
+			// group rotates the footprint about the item's origin, so store the
+			// local origin that reproduces the same world centre. For an unrotated
+			// board this equals the plain `worldToBoard(origin)`.
+			const centre = { x: worldOriginCm.x + halfX, y: worldOriginCm.y + halfY };
 			const board = findBoardAt(state.boards, centre);
-			const next = board
-				? { boardUid: board.uid, ...worldToBoard(worldOriginCm, board) }
-				: { boardUid: null, x: worldOriginCm.x, y: worldOriginCm.y };
+			let boardUid: string | null = null;
+			let x = worldOriginCm.x;
+			let y = worldOriginCm.y;
+			if (board) {
+				const localCentre = worldToBoard(centre, board);
+				boardUid = board.uid;
+				x = localCentre.x - halfX;
+				y = localCentre.y - halfY;
+			}
 			return {
 				items: state.items.map((candidate) =>
-					candidate.uid === uid ? { ...candidate, ...next } : candidate,
+					candidate.uid === uid ? { ...candidate, boardUid, x, y } : candidate,
 				),
 			};
 		}),
