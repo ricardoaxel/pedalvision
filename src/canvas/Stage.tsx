@@ -69,13 +69,11 @@ export function Stage() {
 	const itemRotations = items
 		.map((item) => item.rotationDeg.toFixed(2))
 		.join(",");
-	// Flat array order of z, for store-level debugging.
-	const itemZ = items.map((item) => item.z).join(",");
-	// The actually-rendered draw order (uid list): boards in array order with
-	// their attached items sorted by z, then loose items sorted by z, then the
-	// lifted item last (it renders on top in the DragLayer). This is what the
-	// canvas draws, so a smoke test can assert a reorder + reload in true render
-	// order (P1-06), not just that the array changed.
+	// The actually-rendered draw order (uid list). MUST MIRROR the render layers:
+	// BoardLayer draws each board (array order) with its attached items sorted by
+	// z, then LooseItemLayer draws loose items sorted by z, then DragLayer draws
+	// the lifted item last. A smoke test asserts a reorder + reload in this true
+	// render order (P1-06), not just that the store array changed.
 	const renderOrder = (() => {
 		const uids: string[] = [];
 		for (const board of boards) {
@@ -178,7 +176,6 @@ export function Stage() {
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
-			data-item-z={itemZ}
 			data-item-order={renderOrder}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}

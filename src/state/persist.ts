@@ -146,7 +146,8 @@ export function startScenePersistence(storage?: Storage | null): () => void {
 			// Ignore: temporary save only.
 		}
 	};
-	save(useScene.getState());
+	// No initial save: only mirror real changes, so booting an older build can't
+	// overwrite a newer (unparsed) payload with the empty starting store.
 	return useScene.subscribe((state, previous) => {
 		if (state.boards !== previous.boards || state.items !== previous.items) {
 			save(state);
