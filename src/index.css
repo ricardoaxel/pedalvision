@@ -126,6 +126,7 @@ body {
 	flex-direction: column;
 	gap: 2px;
 	width: 100%;
+	min-height: 44px;
 	padding: var(--space-2);
 	font-family: var(--font-sans);
 	font-size: var(--font-size-sm);
@@ -153,6 +154,7 @@ body {
 }
 
 .board-picker__remove {
+	min-height: 44px;
 	padding: var(--space-2);
 	font-family: var(--font-sans);
 	font-size: var(--font-size-sm);
@@ -171,6 +173,182 @@ body {
 .board-picker__remove:focus-visible {
 	outline: 2px solid var(--color-accent-strong);
 	outline-offset: 2px;
+}
+
+/* Temporary pedal picker (P1-04) — a plain catalog list, anchored bottom-left so
+ * it doesn't collide with the board picker. Replaced by the picker modal in
+ * P2-01. */
+.pedal-picker {
+	position: absolute;
+	bottom: var(--space-4);
+	left: var(--space-4);
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+	width: min(240px, calc(100vw - var(--space-5) * 2));
+	max-height: min(340px, 42vh);
+	padding: var(--space-3);
+	color: var(--color-ink);
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-raised);
+}
+
+.pedal-picker__title {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.pedal-picker__hint {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.pedal-picker__list {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	overflow-y: auto;
+	list-style: none;
+}
+
+.pedal-picker__item {
+	width: 100%;
+	min-height: 44px;
+	padding: var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	text-align: left;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.pedal-picker__item:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.pedal-picker__item:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.pedal-picker__actions {
+	display: flex;
+	gap: var(--space-2);
+}
+
+.pedal-picker__action {
+	flex: 1;
+	min-height: 44px;
+	padding: var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.pedal-picker__action:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.pedal-picker__action:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.pedal-picker__action--danger {
+	color: var(--color-danger);
+	border-color: var(--color-danger-border);
+}
+
+.pedal-picker__action--danger:hover {
+	background-color: var(--color-danger-surface);
+}
+
+.pedal-picker__action:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+.pedal-picker__action:disabled:hover {
+	background-color: transparent;
+}
+
+/* Temporary pickers (P1-03/P1-04). Normally they sit in the two left corners
+ * (desktop: top-left + bottom-left; phones: trimmed). On SHORT screens — of any
+ * width — the corner panels can't both keep a usable list (26vh/42vh leaves less
+ * than the chrome), and the later-painted pedal picker can cover the board
+ * picker's "remove" button, so there they stack in one left rail that splits the
+ * height. `display: contents` keeps the normal (tall) layout untouched. */
+.picker-rail {
+	display: contents;
+}
+
+@media (max-width: 640px) {
+	.board-picker,
+	.pedal-picker {
+		width: min(220px, calc(100vw - var(--space-5) * 2));
+		max-height: 26vh;
+		padding: var(--space-2);
+	}
+}
+
+@media (max-height: 620px) {
+	.picker-rail {
+		position: absolute;
+		top: var(--space-4);
+		bottom: var(--space-4);
+		left: var(--space-4);
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		/* Capped below half-width so the rail never covers the canvas centre
+		 * (where a board is dropped) on narrow screens. */
+		width: min(220px, 45vw);
+		pointer-events: none;
+	}
+
+	.picker-rail > * {
+		pointer-events: auto;
+	}
+
+	.board-picker,
+	.pedal-picker {
+		position: static;
+		width: 100%;
+		min-height: 0;
+		max-height: none;
+		padding: var(--space-2);
+	}
+
+	.board-picker {
+		flex: 0 1 38%;
+	}
+
+	/* Zero basis so the (very long) pedal list can't starve the board picker. */
+	.pedal-picker {
+		flex: 1 1 0;
+	}
 }
 
 .visually-hidden {

@@ -1,12 +1,16 @@
 import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
+import { useDrag } from "../state/drag";
 import { useScene } from "../state/scene";
 import { useSelection } from "../state/selection";
 import { type Point, useViewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
+import { DragLayer } from "./DragLayer";
 import { GridLayer } from "./GridLayer";
+import { LooseItemLayer } from "./LooseItemLayer";
 import { useCanvasTheme } from "./useCanvasTheme";
+import { useItemDrag } from "./useItemDrag";
 import { useViewportGestures } from "./useViewportGestures";
 
 // Enable hit detection while dragging (task note). Harmless with no draggable
@@ -36,27 +40,39 @@ export function Stage() {
 	const x = useViewport((state) => state.x);
 	const y = useViewport((state) => state.y);
 	const setSizeInStore = useViewport((state) => state.setSize);
-	const boardCount = useScene((state) => state.boards.length);
-	// Rotation + positions per board — debug/assertion hooks (like data-scale).
-	const rotations = useScene((state) =>
-		state.boards.map((board) => board.rotationDeg).join(","),
-	);
-	const positions = useScene((state) =>
-		state.boards
-			.map((board) => `${board.x.toFixed(2)},${board.y.toFixed(2)}`)
-			.join(";"),
-	);
-	const selectBoard = useSelection((state) => state.selectBoard);
+	const boards = useScene((state) => state.boards);
+	const items = useScene((state) => state.items);
+	const selectedItemUid = useSelection((state) => state.selectedItemUid);
+	const clearSelection = useSelection((state) => state.clearSelection);
+	const liftedItemUid = useDrag((state) => state.liftedUid);
 	const theme = useCanvasTheme();
 
+	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
+	// the DOM so Playwright can assert store-level outcomes without pixels.
+	const rotations = boards.map((board) => board.rotationDeg).join(",");
+	const positions = boards
+		.map((board) => `${board.x.toFixed(2)},${board.y.toFixed(2)}`)
+		.join(";");
+	const itemParents = items
+		.map((item) => {
+			if (item.boardUid === null) return "loose";
+			const index = boards.findIndex((board) => board.uid === item.boardUid);
+			return String(index);
+		})
+		.join(",");
+	const itemPositions = items
+		.map((item) => `${item.x.toFixed(2)},${item.y.toFixed(2)}`)
+		.join(";");
+
 	// Hit-test seam (gestures.ts `empty` | `object`): a press that lands on a
-	// node is an object gesture (drag the board), anything else pans the stage.
-	// The grid layer is non-listening, so an empty press misses every node.
+	// node is an object gesture (drag the board/pedal), anything else pans the
+	// stage. The grid layer is non-listening, so an empty press misses every node.
 	const hitTest = useCallback((point: Point) => {
 		return stageRef.current?.getIntersection(point) != null;
 	}, []);
 
 	useViewportGestures(containerRef, hitTest);
+	useItemDrag(containerRef);
 
 	useEffect(() => {
 		const element = containerRef.current;
@@ -75,6 +91,26 @@ export function Stage() {
 		return () => observer.disconnect();
 	}, [setSizeInStore]);
 
+	// `data-lifted-position` changes on every drag move; write it straight to the
+	// DOM so a drag doesn't re-render the Stage (and the grid/board layers) just
+	// to refresh a debug attribute — only the DragLayer re-renders. `data-lifted-item`
+	// changes on lift/drop only, so it stays a normal reactive attribute.
+	useEffect(() => {
+		const apply = (cm: Point | null) => {
+			const element = containerRef.current;
+			if (!element) return;
+			element.dataset.liftedPosition = cm
+				? `${cm.x.toFixed(2)},${cm.y.toFixed(2)}`
+				: "";
+		};
+		apply(useDrag.getState().liftedWorldCm);
+		return useDrag.subscribe((state, prev) => {
+			if (state.liftedWorldCm !== prev.liftedWorldCm) {
+				apply(state.liftedWorldCm);
+			}
+		});
+	}, []);
+
 	return (
 		<div
 			ref={containerRef}
@@ -83,9 +119,14 @@ export function Stage() {
 			data-scale={scale}
 			data-x={x}
 			data-y={y}
-			data-boards={boardCount}
+			data-boards={boards.length}
 			data-rotations={rotations}
 			data-positions={positions}
+			data-items={items.length}
+			data-item-parents={itemParents}
+			data-item-positions={itemPositions}
+			data-selected-item={selectedItemUid ?? ""}
+			data-lifted-item={liftedItemUid ?? ""}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage
@@ -99,10 +140,10 @@ export function Stage() {
 					// Tapping empty space clears the selection (Konva target ===
 					// stage means no node was hit).
 					onMouseDown={(event) => {
-						if (event.target === event.target.getStage()) selectBoard(null);
+						if (event.target === event.target.getStage()) clearSelection();
 					}}
 					onTouchStart={(event) => {
-						if (event.target === event.target.getStage()) selectBoard(null);
+						if (event.target === event.target.getStage()) clearSelection();
 					}}
 				>
 					<GridLayer
@@ -114,6 +155,8 @@ export function Stage() {
 						y={y}
 					/>
 					<BoardLayer theme={theme} />
+					<LooseItemLayer theme={theme} />
+					<DragLayer theme={theme} />
 				</KonvaStage>
 			) : null}
 		</div>

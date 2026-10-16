@@ -20,12 +20,12 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P1-02 | Stage: dot grid, pan, zoom-to-pointer, resize-proof | done |
 | P1-02b | Touch/gesture E2E (Playwright + CDP multi-touch) | done |
 | P1-03 | Boards: place / move / rotate | done |
-| P1-04 | Pedals: place / drag / duplicate / delete | todo |
+| P1-04 | Pedals: place / drag / duplicate / delete | in review — PR #13 |
 | P1-05 | Free rotation + selection UX (hover, touch anchors) | todo |
 | P1-06 | Z-order controls (bring forward / send back) | todo |
 
 ## P2 — Catalog & objects (expand when scheduled)
-- P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs
+- P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs — **note:** any temporary/placeholder chrome added before this task (e.g. the current `BoardPicker`/`PedalPicker`) must keep a **small on-screen footprint, especially on mobile** so it doesn't cover the canvas (owner instruction, 2026-10-15).
 - P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **prereq:** widen the `jacks.kind` vocabulary first (current enum `in|out|exp|power` is too narrow for real pedals — add `send`/`return`/`exp-in`/`exp-out`/`midi`/`ctrl` in `src/catalog/schema.ts` + design.md §Data model)
 - P2-03 Pedal info panel (tags, dimensions, power)
 - P2-04 Asset-pipeline tooling (bg removal, trim, 800/350 sizes, JSON draft)

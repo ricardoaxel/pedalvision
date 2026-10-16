@@ -2,6 +2,7 @@ import type Konva from "konva";
 import { useCallback, useEffect, useRef } from "react";
 import { Layer, Transformer } from "react-konva";
 import { pxToCm } from "../lib/geometry";
+import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
 import { useScene } from "../state/scene";
 import { useSelection } from "../state/selection";
@@ -14,19 +15,25 @@ interface BoardLayerProps {
 
 /**
  * The board layer (design.md §Canvas architecture): one Group per board, plus a
- * Transformer attached to the selected board. Boards stack by array order —
- * later-placed boards render on top (S6; user reordering is v2).
+ * Transformer attached to the selected board. Each board group owns its
+ * attached pedals, so board transforms carry them for free and z-order is
+ * scoped per container. Boards stack by array order — later-placed boards
+ * render on top (S6; user reordering is v2).
  *
- * The Transformer only exposes the rotate handle for now (no resize anchors):
- * board footprints come from the catalog and aren't resizable. Any-angle
+ * The board Transformer only exposes the rotate handle for now (no resize
+ * anchors): board footprints come from the catalog and aren't resizable. Any-angle
  * rotation is the point (design.md → free rotation); polished touch anchors +
  * on-selection action buttons are P1-05.
  */
 export function BoardLayer({ theme }: BoardLayerProps) {
 	const boards = useScene((state) => state.boards);
+	const items = useScene((state) => state.items);
 	const selectedUid = useSelection((state) => state.selectedBoardUid);
+	const selectedItemUid = useSelection((state) => state.selectedItemUid);
 	const moveBoard = useScene((state) => state.moveBoard);
 	const rotateBoard = useScene((state) => state.rotateBoard);
+	// The lifted item renders in the DragLayer, not in its board group.
+	const liftedUid = useDrag((state) => state.liftedUid);
 	// Suppress rotation while the viewport owns the gesture (pan/pinch).
 	const navigating = useGesture((state) => state.navigating);
 
@@ -98,6 +105,10 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 					key={board.uid}
 					board={board}
 					theme={theme}
+					items={items.filter(
+						(item) => item.boardUid === board.uid && item.uid !== liftedUid,
+					)}
+					selectedItemUid={selectedItemUid}
 					registerNode={registerNode}
 				/>
 			))}

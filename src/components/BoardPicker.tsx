@@ -17,7 +17,9 @@ export function BoardPicker() {
 
 	const handleAdd = (boardRefId: string) => {
 		const { scale, x, y, size } = useViewport.getState();
-		addBoard(boardRefId, viewportCenterCm(size, { scale, x, y }));
+		const uid = addBoard(boardRefId, viewportCenterCm(size, { scale, x, y }));
+		// Select the new board so the pedal picker's target is unambiguous.
+		selectBoard(uid);
 	};
 
 	return (

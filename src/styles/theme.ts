@@ -19,6 +19,8 @@ export const CANVAS_THEME_VARS = {
 	boardStroke: "--color-board-outline",
 	boardDraftFill: "--color-board-draft-fill",
 	boardLabel: "--color-ink-muted",
+	// Lift shadow under a dragged pedal — P1-04.
+	itemShadow: "--color-item-shadow",
 } as const;
 
 /**
@@ -54,6 +56,7 @@ export const canvasTheme: CanvasTheme = {
 	boardStroke: "#5f6a76",
 	boardDraftFill: "#202327",
 	boardLabel: "#a8b0b8",
+	itemShadow: "rgb(0 0 0 / 0.5)",
 };
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
@@ -66,4 +69,5 @@ export const lightCanvasTheme: CanvasTheme = {
 	boardStroke: "#6b7580",
 	boardDraftFill: "#eceff1",
 	boardLabel: "#565d66",
+	itemShadow: "rgb(15 23 42 / 0.32)",
 };
