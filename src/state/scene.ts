@@ -320,11 +320,25 @@ export const useScene = create<SceneStore>((set) => ({
 			if (!board) return state;
 			return {
 				boards: state.boards.filter((candidate) => candidate.uid !== uid),
-				// Keep the user's work: attached items fall loose where they sit.
+				// Keep the user's work: attached items fall loose preserving their
+				// visible centre (the loose renderer drops the board rotation, so
+				// keeping the origin would swing the footprint about it).
 				items: state.items.map((item) => {
 					if (item.boardUid !== uid) return item;
-					const world = boardToWorld({ x: item.x, y: item.y }, board);
-					return { ...item, boardUid: null, x: world.x, y: world.y };
+					const footprint = itemFootprint(item);
+					const worldCentre = boardToWorld(
+						{
+							x: item.x + footprint.widthCm / 2,
+							y: item.y + footprint.heightCm / 2,
+						},
+						board,
+					);
+					return {
+						...item,
+						boardUid: null,
+						x: worldCentre.x - footprint.widthCm / 2,
+						y: worldCentre.y - footprint.heightCm / 2,
+					};
 				}),
 			};
 		}),

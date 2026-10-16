@@ -294,12 +294,14 @@ body {
 }
 
 /* On phones the two temporary pickers would otherwise eat most of the canvas;
- * trim them so the board being edited stays visible. */
+ * trim them so the board being edited stays visible. The `max()` floor keeps a
+ * usable list on short/narrow-landscape screens (a pure 26vh cap lets the
+ * scrollable list collapse to 0 once the panel's chrome exceeds it). */
 @media (max-width: 640px) {
 	.board-picker,
 	.pedal-picker {
 		width: min(220px, calc(100vw - var(--space-5) * 2));
-		max-height: 26vh;
+		max-height: max(26vh, 176px);
 		padding: var(--space-2);
 	}
 }

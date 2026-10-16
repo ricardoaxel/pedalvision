@@ -81,7 +81,7 @@ describe("items slice", () => {
 		expect({ x: item.x, y: item.y }).toEqual({ x: 12.5, y: -3.25 });
 	});
 
-	it("removeBoard drops its attached items loose at their world positions", () => {
+	it("removeBoard keeps an attached item's visible centre under rotation", () => {
 		const uid = useScene.getState().addBoard(boss.id, { x: 50, y: 40 });
 		const board = useScene.getState().boards[0];
 		useScene.getState().rotateBoard(uid, 30);
@@ -89,15 +89,20 @@ describe("items slice", () => {
 		const itemUid = useScene
 			.getState()
 			.addItem("boss-bd-2-blues-driver", "pedal", uid, { x: 10, y: 5 });
-		const world = boardToWorld({ x: 10, y: 5 }, rotated);
+		// The attached item's visible world centre (rendered on the rotated board).
+		const worldCentre = boardToWorld(
+			{ x: 10 + HALF.x, y: 5 + HALF.y },
+			rotated,
+		);
 
 		useScene.getState().removeBoard(uid);
 		const item = useScene
 			.getState()
 			.items.find((candidate) => candidate.uid === itemUid);
 		expect(item?.boardUid).toBeNull();
-		expect(item?.x).toBeCloseTo(world.x, 10);
-		expect(item?.y).toBeCloseTo(world.y, 10);
+		// The loose item renders unrotated; its centre is preserved (not the origin).
+		expect((item?.x ?? 0) + HALF.x).toBeCloseTo(worldCentre.x, 10);
+		expect((item?.y ?? 0) + HALF.y).toBeCloseTo(worldCentre.y, 10);
 	});
 });
 
