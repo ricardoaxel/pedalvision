@@ -423,18 +423,28 @@ test("a stray pointer or a button-less move ends the pedal drag", async ({
 	await page.mouse.up();
 });
 
-test("the pedal list stays usable on a short narrow-landscape viewport", async ({
+test("the temporary pickers stay usable and non-overlapping on a short viewport", async ({
 	page,
 }) => {
-	// 568×320 is a small landscape phone: a pure 26vh cap on the panel would
-	// collapse its scrollable list to zero (Copilot finding).
+	// 568×320 is a small landscape phone: the pickers used to either collapse the
+	// pedal list (zero height) or overlap and cover the board picker's remove
+	// button (Copilot findings).
 	await page.setViewportSize({ width: 568, height: 320 });
 	await page.goto("/");
+	const stage = page.getByTestId("stage");
+
+	// The pedal list has a real, scrollable height.
 	const list = page.locator('[data-testid="pedal-picker"] ul');
 	await expect(list).toBeVisible();
-	const box = await list.boundingBox();
-	expect(box?.height ?? 0).toBeGreaterThan(40);
-	await expect(
-		page.getByTestId("add-pedal-boss-bd-2-blues-driver"),
-	).toBeVisible();
+	expect((await list.boundingBox())?.height ?? 0).toBeGreaterThan(40);
+
+	// The board picker's remove control is visible and actually clickable (not
+	// covered by the pedal picker — `click()` times out if another node
+	// intercepts the pointer).
+	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	const remove = page.getByTestId("remove-board");
+	await expect(remove).toBeVisible();
+	await remove.click();
+	await expect(stage).toHaveAttribute("data-boards", "0");
 });

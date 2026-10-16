@@ -293,16 +293,58 @@ body {
 	background-color: transparent;
 }
 
-/* On phones the two temporary pickers would otherwise eat most of the canvas;
- * trim them so the board being edited stays visible. The `max()` floor keeps a
- * usable list on short/narrow-landscape screens (a pure 26vh cap lets the
- * scrollable list collapse to 0 once the panel's chrome exceeds it). */
+/* Temporary pickers (P1-03/P1-04). Normally they sit in the two left corners
+ * (desktop: top-left + bottom-left; phones: trimmed). On SHORT screens the two
+ * panels would overlap and the later-painted pedal picker can cover the board
+ * picker's "remove" button, so there they stack in one left rail that splits the
+ * height. `display: contents` keeps the normal corner layout untouched. */
+.picker-rail {
+	display: contents;
+}
+
 @media (max-width: 640px) {
 	.board-picker,
 	.pedal-picker {
 		width: min(220px, calc(100vw - var(--space-5) * 2));
-		max-height: max(26vh, 176px);
+		max-height: 26vh;
 		padding: var(--space-2);
+	}
+}
+
+@media (max-width: 640px) and (max-height: 400px) {
+	.picker-rail {
+		position: absolute;
+		top: var(--space-4);
+		bottom: var(--space-4);
+		left: var(--space-4);
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		width: min(220px, calc(100vw - var(--space-5) * 2));
+		pointer-events: none;
+	}
+
+	.picker-rail > * {
+		pointer-events: auto;
+	}
+
+	.board-picker,
+	.pedal-picker {
+		position: static;
+		width: 100%;
+		min-height: 0;
+		max-height: none;
+		padding: var(--space-2);
+	}
+
+	.board-picker {
+		flex: 0 1 38%;
+	}
+
+	/* Zero basis so the (very long) pedal list can't starve the board picker. */
+	.pedal-picker {
+		flex: 1 1 0;
 	}
 }
 

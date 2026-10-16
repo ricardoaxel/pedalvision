@@ -20,8 +20,10 @@ function App() {
 		<main className="app">
 			<h1 className="visually-hidden">Pedalvision</h1>
 			<Stage />
-			<BoardPicker />
-			<PedalPicker />
+			<div className="picker-rail">
+				<BoardPicker />
+				<PedalPicker />
+			</div>
 			<button type="button" className="hud-button" onClick={toggleTheme}>
 				{theme === "dark" ? "Light" : "Dark"} theme
 			</button>
