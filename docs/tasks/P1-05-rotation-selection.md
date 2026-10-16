@@ -1,6 +1,6 @@
 # P1-05: Free rotation + selection UX
 
-**Phase:** P1 · **Status:** todo · **Model:** build-strong
+**Phase:** P1 · **Status:** in review — PR #14 · **Model:** build-strong
 
 ## Goal
 Click/tap selects an item (hover outline on desktop), a Konva Transformer enables rotation to **any angle**, and a small action bar appears under the selection (rotate, duplicate, delete — stompboxgarden pattern) sized for touch.
