@@ -1,6 +1,6 @@
 # P1-06: Z-order controls
 
-**Phase:** P1 · **Status:** todo · **Model:** build-cheap
+**Phase:** P1 · **Status:** in review — PR #16 · **Model:** build-cheap
 
 ## Goal
 Selected item can be brought forward / sent back one step, and brought to front / sent to back, within its parent board's item stack (loose items have their own stack). Order persists in the scene (`z` field) and survives save/reload (verified with a temporary localStorage save — full save system is P3-02).

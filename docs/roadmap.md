@@ -22,7 +22,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 | P1-03 | Boards: place / move / rotate | done |
 | P1-04 | Pedals: place / drag / duplicate / delete | done |
 | P1-05 | Free rotation + selection UX (hover, touch anchors) | done |
-| P1-06 | Z-order controls (bring forward / send back) | todo |
+| P1-06 | Z-order controls (bring forward / send back) | in review — PR #16 |
 
 ## P2 — Catalog & objects (expand when scheduled)
 - P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs — **note:** any temporary/placeholder chrome added before this task (e.g. the current `BoardPicker`/`PedalPicker`) must keep a **small on-screen footprint, especially on mobile** so it doesn't cover the canvas (owner instruction, 2026-10-15).
