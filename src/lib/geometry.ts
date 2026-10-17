@@ -125,17 +125,22 @@ export function placeItem(
 	const gap = options.gapCm ?? 0.5;
 	const stepX = size.widthCm + gap;
 	const stepY = size.heightCm + gap;
+	const hasBounds = options.bounds !== undefined;
 	const maxX = options.bounds
 		? Math.max(0, options.bounds.widthCm - size.widthCm)
 		: Number.POSITIVE_INFINITY;
 	const maxY = options.bounds
 		? Math.max(0, options.bounds.heightCm - size.heightCm)
 		: Number.POSITIVE_INFINITY;
+	// Only clamp to the container when bounded — an unbounded search (loose
+	// items) must be free to go negative (world cm left of/above the origin).
+	const minX = hasBounds ? 0 : Number.NEGATIVE_INFINITY;
+	const minY = hasBounds ? 0 : Number.NEGATIVE_INFINITY;
 
 	const seen = new Set<string>();
 	const at = (i: number, j: number): Point | null => {
-		const x = Math.min(Math.max(base.x + i * stepX, 0), maxX);
-		const y = Math.min(Math.max(base.y + j * stepY, 0), maxY);
+		const x = Math.min(Math.max(base.x + i * stepX, minX), maxX);
+		const y = Math.min(Math.max(base.y + j * stepY, minY), maxY);
 		const key = `${x.toFixed(3)},${y.toFixed(3)}`;
 		if (seen.has(key)) return null;
 		seen.add(key);

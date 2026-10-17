@@ -81,7 +81,6 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const [activeId, setActiveId] = useState<string | null>(null);
 
 	const panelRef = useRef<HTMLDivElement>(null);
-	const barRef = useRef<HTMLElement>(null);
 	const searchRef = useRef<HTMLInputElement>(null);
 	const returnFocusRef = useRef<HTMLElement | null>(null);
 	const rowRefs = useRef(new Map<string, HTMLButtonElement>());
@@ -245,20 +244,17 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		requestAnimationFrame(() => rowRefs.current.get(entry.id)?.focus());
 	};
 
-	// Keep Tab inside the dialog (ARIA modal). The mobile tab switcher lives
-	// INSIDE the dialog when open, so it is part of the trap (and reachable by
-	// screen readers) rather than outside the modal scope.
+	// Keep Tab inside the dialog (ARIA modal). The mobile tab switcher is
+	// rendered INSIDE the panel while open (so it is part of the trap and
+	// reachable by screen readers), so the panel is the only trap root.
 	const trapTab = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		if (event.key !== "Tab") return;
 		const selector =
 			'button, input, select, a[href], [tabindex]:not([tabindex="-1"])';
-		const focusables = [panelRef.current, barRef.current]
-			.flatMap((root) => [
-				...(root?.querySelectorAll<HTMLElement>(selector) ?? []),
-			])
-			// Exclude the desktop-only tabs while they're display:none on mobile
-			// (and the bar while it's display:none on desktop).
-			.filter((element) => element.offsetParent !== null);
+		const focusables = [
+			...(panelRef.current?.querySelectorAll<HTMLElement>(selector) ?? []),
+			// Exclude the desktop-only tabs while they're display:none on mobile.
+		].filter((element) => element.offsetParent !== null);
 		if (focusables.length === 0) return;
 		const first = focusables[0];
 		const last = focusables[focusables.length - 1];
@@ -307,7 +303,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	// The mobile bottom tab bar. Rendered inside the dialog while open (so the
 	// modal's switcher is in the AT/focus scope) and standalone while closed.
 	const tabBar = (
-		<nav className="picker-bar" aria-label="Catalog" ref={barRef}>
+		<nav className="picker-bar" aria-label="Catalog">
 			<button
 				type="button"
 				className="picker-bar__tab"

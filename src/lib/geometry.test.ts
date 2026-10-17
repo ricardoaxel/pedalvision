@@ -311,6 +311,15 @@ describe("placeItem — de-stack placement", () => {
 		expect(placed).not.toEqual(base);
 		expect(rectsOverlap({ ...placed, ...size }, occupied[0])).toBe(false);
 	});
+
+	it("never clamps an unbounded base (loose items at negative world cm)", () => {
+		const base = { x: -20, y: -12 };
+		expect(placeItem(base, size, [])).toEqual(base);
+		const occupied = [{ x: -20, y: -12, widthCm: 7, heightCm: 12 }];
+		const placed = placeItem(base, size, occupied);
+		expect(rectsOverlap({ ...placed, ...size }, occupied[0], 0.5)).toBe(false);
+		expect(placed.y).toBeLessThan(0);
+	});
 });
 
 describe("rectsOverlap", () => {

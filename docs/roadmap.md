@@ -27,7 +27,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 > **P1 COMPLETE + phase gate PASSED** (all 7 merged: #8 · #9 · #10 · #11 · #13 · #14 · #16; post-phase review done 2026-10-17 — findings folded into the docs). ✅ **Begin P2-01.**
 
 ## P2 — Catalog & objects (expand when scheduled)
-- P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs — **in review — PR #17** (owner-approved "Parts Bin" direction; replaces the temporary `BoardPicker`/`PedalPicker`). **note:** any temporary/placeholder chrome added before a task must keep a **small on-screen footprint, especially on mobile** so it doesn't cover the canvas (owner instruction, 2026-10-15).
+- P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs — **in review — PR #17** (owner-approved "Specimen Bench" direction, extending "Parts Bin"; replaces the temporary `BoardPicker`/`PedalPicker`). **note:** any temporary/placeholder chrome added before a task must keep a **small on-screen footprint, especially on mobile** so it doesn't cover the canvas (owner instruction, 2026-10-15).
 - P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **prereq:** widen the `jacks.kind` vocabulary first (current enum `in|out|exp|power` is too narrow for real pedals — add `send`/`return`/`exp-in`/`exp-out`/`midi`/`ctrl` in `src/catalog/schema.ts` + design.md §Data model)
 - P2-03 Pedal info panel (tags, dimensions, power)
 - P2-04 Asset-pipeline tooling (bg removal, trim, 800/350 sizes, JSON draft)
