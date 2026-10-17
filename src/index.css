@@ -62,11 +62,11 @@ body {
 .app-toolbar__add {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	gap: 2px;
 	min-height: 44px;
-	padding: var(--space-2) var(--space-4);
-	font-family: var(--font-sans);
-	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-semibold);
+	min-width: 44px;
+	padding: var(--space-2) var(--space-3);
 	color: var(--color-on-accent);
 	background-color: var(--color-accent);
 	border: 1px solid var(--color-accent-strong);
@@ -302,11 +302,14 @@ body {
 	gap: 2px;
 	padding: 2px;
 	background-color: var(--color-input-bg);
-	border: 1px solid var(--color-border);
+	border: 1px solid var(--color-border-strong);
 	border-radius: var(--radius-control);
 }
 
 .picker__segment {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
 	min-height: 32px;
 	padding: 0 var(--space-3);
 	font-family: var(--font-sans);
@@ -314,15 +317,24 @@ body {
 	font-weight: var(--font-weight-medium);
 	color: var(--color-ink-muted);
 	background-color: transparent;
-	border: 0;
+	/* Always 1px (transparent → accent-border) so the pill never reflows. */
+	border: 1px solid transparent;
 	border-radius: var(--radius-row);
 	cursor: pointer;
 }
 
-.picker__segment[aria-pressed="true"] {
+/* Unselected reacts on hover = obviously a button. */
+.picker__segment:hover:not([aria-pressed="true"]) {
 	color: var(--color-ink);
 	background-color: var(--color-surface-raised);
-	box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+}
+
+/* Selected = accent ink on an accent-tinted pill with an accent outline (same
+ * selection language as the filter chips + the mobile tab's accent ink). */
+.picker__segment[aria-pressed="true"] {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border-color: var(--color-accent-border);
 }
 
 .picker__segment:focus-visible {
@@ -464,13 +476,23 @@ body {
 	flex: 0 0 auto;
 	min-height: 36px;
 	max-width: 180px;
-	padding: var(--space-1) var(--space-2);
+	/* Chevron rail = 8px inset + 16px glyph + 4px text gap. */
+	padding: var(--space-1) calc(var(--space-4) + var(--space-3)) var(--space-1)
+		var(--space-2);
 	font-family: var(--font-sans);
 	font-size: var(--font-size-sm);
 	color: var(--color-ink);
 	background-color: var(--color-input-bg);
+	background-image: var(--icon-chevron);
+	background-repeat: no-repeat;
+	background-position: right var(--space-2) center;
+	background-size: 16px 16px;
 	border: 1px solid var(--color-border-strong);
 	border-radius: var(--radius-control);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
 }
 
 .picker__brand:focus-visible {
@@ -580,19 +602,21 @@ body {
 	border-radius: var(--radius-key);
 }
 
-/* Boards are wide, mostly-transparent top-down outlines — a square tile shrinks
- * them to a sliver, so board rows show a landscape glyph tile instead. */
+/* Real board art: a dark top-down plan on the light plate, letterboxed to keep
+ * true aspect (boards run 1.36:1–2.78:1) — never cropped. */
 .picker-item__thumb--board {
-	flex: 0 0 44px;
-	width: 44px;
-	height: 30px;
+	flex: 0 0 52px;
+	width: 52px;
+	height: 32px;
 }
 
 .picker-item__thumb--glyph {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--color-ink-muted);
+	/* --color-border-strong clears 3:1 on the thumb tile; ink-muted (1.8:1) was
+	 * effectively invisible. */
+	color: var(--color-border-strong);
 }
 
 /* Neutral tile / glyph when a thumbnail has no image (catalog limitation). */
@@ -929,6 +953,11 @@ body {
 		padding: var(--space-3) var(--space-4) var(--space-2);
 	}
 
+	/* Touch target (the desktop field is 36px). */
+	.picker__brand {
+		min-height: 44px;
+	}
+
 	.picker__status {
 		justify-content: flex-end;
 		padding: var(--space-1) var(--space-4) var(--space-2);
@@ -949,8 +978,8 @@ body {
 	}
 
 	.picker-item__thumb--board {
-		flex: 0 0 60px;
-		width: 60px;
+		flex: 0 0 64px;
+		width: 64px;
 		height: 40px;
 	}
 

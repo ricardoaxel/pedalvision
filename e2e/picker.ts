@@ -3,17 +3,18 @@ import { expect, type Page } from "@playwright/test";
 export type PickerTab = "pedals" | "boards";
 
 /**
- * Open the P2-01 picker on `tab` and wait for its panel. Desktop (≥1024px) uses
- * the toolbar "Add" trigger + modal tabs; mobile (<1024px) uses the persistent
- * bottom tab bar, which is the only visible control there.
+ * Open the P2-01 picker on `tab` and wait for its panel. Desktop (≥1024px) has
+ * toolbar icon buttons that open directly on a tab ("Add pedal" / "Add board");
+ * mobile (<1024px) uses the persistent bottom tab bar, the only control there.
  */
 export async function openPicker(page: Page, tab: PickerTab): Promise<void> {
 	const barTab = page.getByTestId(`picker-bar-${tab}`);
 	if (await barTab.isVisible()) {
 		await barTab.click();
 	} else {
-		await page.getByTestId("picker-open").click();
-		await page.getByTestId(`picker-tab-${tab}`).click();
+		await page
+			.getByTestId(tab === "boards" ? "picker-open-board" : "picker-open")
+			.click();
 	}
 	await expect(page.getByTestId("picker-panel")).toBeVisible();
 }

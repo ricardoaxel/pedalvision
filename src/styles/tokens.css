@@ -35,6 +35,9 @@
 	--color-border-strong: #7c868f;
 	/* Recessed field fill — reads as an input, not a panel (P2-01). */
 	--color-input-bg: #2b3036;
+	/* Native <select> chevron (cannot inherit currentColor in a data-URI
+	 * background) — stroke = --color-ink-muted, per theme (P2-01). */
+	--icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23a8b0b8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 	/* Specimen bench stage — one step below --color-input-bg, holds the picker's
 	 * dot grid + photographic plate ("Specimen Bench", P2-01). */
 	--color-specimen-bg: #24282d;
@@ -143,6 +146,7 @@
 	--color-border: #d5dae0;
 	--color-border-strong: #7c868f;
 	--color-input-bg: #f1f3f5;
+	--icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23565d66' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 	--color-specimen-bg: #d5dade;
 	--color-specimen-dot: #868f99;
 	--color-thumb-bg: #eceef1;

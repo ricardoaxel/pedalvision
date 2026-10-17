@@ -279,14 +279,39 @@ test("result thumbnails resolve (DOM images load without CORS)", async ({
 		.toBeGreaterThan(0);
 });
 
-test("board rows show a board glyph tile (not a blank placeholder)", async ({
+test("board rows show a board preview image (falling back to a glyph)", async ({
 	page,
 }) => {
 	await page.goto("/");
 	await openPicker(page, "boards");
-	await expect(
-		page.locator(".picker-item__thumb--glyph").first(),
-	).toBeVisible();
+	// The ledger shows the real board art, not a generic glyph.
+	const thumb = page.locator("img.picker-item__thumb--board").first();
+	await expect(thumb).toBeVisible();
+	await expect
+		.poll(() => thumb.evaluate((el) => (el as HTMLImageElement).naturalWidth), {
+			timeout: 15_000,
+		})
+		.toBeGreaterThan(0);
+});
+
+test("the toolbar has separate Add-pedal and Add-board buttons (desktop)", async ({
+	page,
+}) => {
+	test.skip(!isDesktop(page), "desktop toolbar");
+	await page.goto("/");
+	await page.getByTestId("picker-open-board").click();
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	// It opens directly on the Boards tab.
+	await expect(page.getByTestId("picker-tab-boards")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	await page.keyboard.press("Escape");
+	await page.getByTestId("picker-open").click();
+	await expect(page.getByTestId("picker-tab-pedals")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
 });
 
 test("a CORS-clean pedal stays loadable with CORS after the picker shows it (no cache poisoning)", async ({

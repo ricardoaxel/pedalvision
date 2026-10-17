@@ -371,6 +371,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 										aria-pressed={tab === "pedals"}
 										onClick={() => changeTab("pedals")}
 									>
+										<BarIcon kind="pedal" />
 										Pedals
 									</button>
 									<button
@@ -380,6 +381,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 										aria-pressed={tab === "boards"}
 										onClick={() => changeTab("boards")}
 									>
+										<BarIcon kind="board" />
 										Boards
 									</button>
 								</div>
@@ -742,23 +744,19 @@ function PickerThumb({
 		);
 	}
 
-	// Board rows: the catalog board art is a wide, mostly-transparent top-down
-	// outline that shrinks to an invisible sliver at tile scale — so the ledger
-	// shows a clear board glyph instead (the specimen pane still shows the real
-	// image at size).
-	if (kind === "board") {
-		return (
+	// Board rows show the real board art (a dark top-down plan) on the light
+	// plate, letterboxed to true aspect; the glyph is only the failure fallback.
+	const boardClass = kind === "board" ? " picker-item__thumb--board" : "";
+
+	if (phase === "failed") {
+		return kind === "board" ? (
 			<span
 				className="picker-item__thumb picker-item__thumb--board picker-item__thumb--glyph"
 				aria-hidden="true"
 			>
 				<BoardGlyph />
 			</span>
-		);
-	}
-
-	if (phase === "failed") {
-		return (
+		) : (
 			<span
 				className="picker-item__thumb picker-item__thumb--empty"
 				aria-hidden="true"
@@ -769,7 +767,7 @@ function PickerThumb({
 	return (
 		<img
 			key={`${src}:${phase}`}
-			className="picker-item__thumb"
+			className={`picker-item__thumb${boardClass}`}
 			src={src}
 			alt=""
 			loading="lazy"

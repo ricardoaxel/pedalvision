@@ -113,6 +113,20 @@ footprint on mobile** so the working canvas stays visible.
   feedback that the card grid was too plain and the desktop experience needed
   more.
 - Supersedes the temporary `BoardPicker`/`PedalPicker` from P1-03/P1-04.
+- **Owner polish round (2026-10-17, after PR review).** (1) The brand `<select>`
+  gained a custom chevron (new `--icon-chevron` token, `appearance: none`, right
+  padding) so the arrow no longer hugs the edge. (2) **Board rows show the real
+  board preview image again** (dark top-down plan on the light tile; 52×32
+  desktop / 64×40 mobile) — the earlier glyph-only call was wrong (the board art
+  is 60–100% opaque, not a sliver); the glyph is now only the failure fallback,
+  and its colour moved `ink-muted`→`border-strong` (1.8:1 → 3:1; it was
+  effectively invisible). (3) The Pedals | Boards switcher is framed
+  (`--color-border-strong`), carries the tab-bar icons, and the selected segment
+  is an accent-tinted pill with an accent outline (was a faint raised fill).
+  (4) The toolbar "Add" button became two icon buttons — pedal glyph + "+" (Add
+  pedal) and board glyph + "+" (Add board); the mobile tab bar remains the
+  trigger `<1024px`. `design-reviewer` **approve** (desktop + mobile, dark +
+  light).
 - The modal/sheet is shared by boards + pedals; more tabs (Cables/Custom/More from
   design.md §Responsive approach) arrive with their own tasks (P2-02, P4) — do not
   stub them here beyond what P2-01 needs.
