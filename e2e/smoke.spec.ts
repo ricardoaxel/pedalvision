@@ -205,7 +205,7 @@ test("adding a board and a pedal places both on the canvas", async ({
 	await expect(stage).not.toHaveAttribute("data-selected-item", "");
 });
 
-test("a pedal drags across boards; the Transformer follows and selection is clean", async ({
+test("a pedal drags across boards; selection stays clean and the Transformer re-attaches", async ({
 	page,
 }) => {
 	await page.goto("/");
@@ -241,8 +241,8 @@ test("a pedal drags across boards; the Transformer follows and selection is clea
 	await page.mouse.down();
 	await page.mouse.move(cx + 120, cy, { steps: 6 });
 
-	// Mid-drag the pedal is lifted into the DragLayer; its Transformer travels
-	// with it and the selection is preserved.
+	// Mid-drag the pedal is lifted into the DragLayer; the single top-level
+	// Transformer is detached (not shown) but the selection is preserved.
 	await expect(stage).toHaveAttribute("data-lifted-item", selected ?? "");
 	await expect(stage).toHaveAttribute("data-selected-item", selected ?? "");
 
