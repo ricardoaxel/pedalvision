@@ -47,6 +47,13 @@ export interface PlacedItem {
 	z: number;
 }
 
+/**
+ * Z-order operation for an item within its container (F5/P1-06). `forward`/
+ * `back` move one step; `front`/`bottom` jump to the top/bottom. There is no
+ * global z — an item only competes with the others in its container (B1).
+ */
+export type ZDirection = "forward" | "back" | "front" | "bottom";
+
 const BOARD_BY_ID = new Map<string, CatalogBoard>(
 	catalog.boards.map((board) => [board.id, board]),
 );
@@ -241,6 +248,104 @@ export function itemWorldCorners(
 	return parent.map((point) => boardToWorld(point, board));
 }
 
+/** Sentinel grouping key for loose items (`boardUid === null`). */
+const LOOSE_CONTAINER = "\u0000loose";
+
+function containerKey(item: PlacedItem): string {
+	return item.boardUid ?? LOOSE_CONTAINER;
+}
+
+function byAscendingZ(a: PlacedItem, b: PlacedItem): number {
+	return a.z - b.z;
+}
+
+/** Items in ascending z (render order — later draws on top); stable on ties. */
+export function itemsByZ(items: PlacedItem[]): PlacedItem[] {
+	return [...items].sort(byAscendingZ);
+}
+
+/** Items sharing `item`'s container, in visual (z) order. */
+export function containerItemsByZ(
+	items: PlacedItem[],
+	item: PlacedItem,
+): PlacedItem[] {
+	return itemsByZ(
+		items.filter((candidate) => candidate.boardUid === item.boardUid),
+	);
+}
+
+/**
+ * Re-normalise one container's z to a dense 0..n-1 in visual order. The flat
+ * items array order is preserved (only z values change); other containers are
+ * untouched. Keeps z dense per container after removals/re-parents (B1).
+ */
+export function normalizeContainerZ(
+	items: PlacedItem[],
+	boardUid: string | null,
+): PlacedItem[] {
+	const key = boardUid ?? LOOSE_CONTAINER;
+	const zByUid = new Map(
+		items
+			.filter((item) => containerKey(item) === key)
+			.sort(byAscendingZ)
+			.map((item, position) => [item.uid, position]),
+	);
+	return items.map((item) => {
+		if (containerKey(item) !== key) return item;
+		const next = zByUid.get(item.uid) ?? item.z;
+		return next === item.z ? item : { ...item, z: next };
+	});
+}
+
+/** Normalise every container's z to dense 0..n-1 (used when loading a scene). */
+export function normalizeAllZ(items: PlacedItem[]): PlacedItem[] {
+	let result = items;
+	for (const key of new Set(items.map(containerKey))) {
+		result = normalizeContainerZ(result, key === LOOSE_CONTAINER ? null : key);
+	}
+	return result;
+}
+
+/**
+ * Re-order the selected item within its container (its board group, or the
+ * loose group) and re-normalise that container's z to a dense 0..n-1 by visual
+ * order. Other containers are untouched. A no-op when the item is already at
+ * the requested extreme or `uid` is unknown.
+ */
+export function reorderItems(
+	items: PlacedItem[],
+	uid: string,
+	direction: ZDirection,
+): PlacedItem[] {
+	const target = items.find((item) => item.uid === uid);
+	if (!target) return items;
+	const key = containerKey(target);
+	const ordered = items
+		.filter((item) => containerKey(item) === key)
+		.sort(byAscendingZ);
+	const index = ordered.findIndex((item) => item.uid === uid);
+	if (index === -1) return items;
+	// Remove the target, then re-insert it at the direction's slot. `forward`/
+	// `back` clamp at the extremes, so an item already at the top/bottom stays
+	// put; `front`/`bottom` always jump to the end/start.
+	const without = ordered.filter((item) => item.uid !== uid);
+	const insertAt =
+		direction === "front"
+			? without.length
+			: direction === "bottom"
+				? 0
+				: direction === "forward"
+					? Math.min(index + 1, without.length)
+					: Math.max(index - 1, 0);
+	without.splice(insertAt, 0, target);
+	const zByUid = new Map(without.map((item, position) => [item.uid, position]));
+	return items.map((item) =>
+		containerKey(item) === key
+			? { ...item, z: zByUid.get(item.uid) ?? item.z }
+			: item,
+	);
+}
+
 /** The next dense z within a container (board or loose). */
 function nextZ(items: PlacedItem[], boardUid: string | null): number {
 	let max = -1;
@@ -267,6 +372,12 @@ interface SceneStore {
 	/** Clone an item, offset slightly, in the same container. Returns the new uid. */
 	duplicateItem: (uid: string) => string | null;
 	removeItem: (uid: string) => void;
+	/**
+	 * Move an item one step forward/back or to the front/bottom of its container
+	 * (its board group, or the loose group), keeping `z` dense per container
+	 * (F5/P1-06).
+	 */
+	reorder: (uid: string, direction: ZDirection) => void;
 	/**
 	 * Finish a drag: hit-test the item's visible world centre against the boards
 	 * and move it to the topmost containing board (storing board-relative cm) or
@@ -360,9 +471,17 @@ export const useScene = create<SceneStore>((set) => ({
 		return cloneUid;
 	},
 	removeItem: (uid) =>
-		set((state) => ({
-			items: state.items.filter((item) => item.uid !== uid),
-		})),
+		set((state) => {
+			const item = state.items.find((candidate) => candidate.uid === uid);
+			if (!item) return state;
+			const remaining = state.items.filter(
+				(candidate) => candidate.uid !== uid,
+			);
+			// Close the z gap the removal leaves behind (keep it dense per container).
+			return { items: normalizeContainerZ(remaining, item.boardUid) };
+		}),
+	reorder: (uid, direction) =>
+		set((state) => ({ items: reorderItems(state.items, uid, direction) })),
 	dropItem: (uid, worldOriginCm, worldRotationDeg) =>
 		set((state) => {
 			const item = state.items.find((candidate) => candidate.uid === uid);
@@ -396,13 +515,25 @@ export const useScene = create<SceneStore>((set) => ({
 				x = localCentre.x - localHalf.x;
 				y = localCentre.y - localHalf.y;
 			}
-			return {
-				items: state.items.map((candidate) =>
-					candidate.uid === uid
-						? { ...candidate, boardUid, x, y, rotationDeg }
-						: candidate,
-				),
-			};
+			// A drop into a *different* container lands the item on top there (like a
+			// fresh add) and closes the source container's z gap; within the same
+			// container the item keeps its slot (a drag is not a re-order).
+			const sameContainer = item.boardUid === boardUid;
+			const z = sameContainer
+				? item.z
+				: nextZ(
+						state.items.filter((candidate) => candidate.uid !== uid),
+						boardUid,
+					);
+			let items = state.items.map((candidate) =>
+				candidate.uid === uid
+					? { ...candidate, boardUid, x, y, rotationDeg, z }
+					: candidate,
+			);
+			if (!sameContainer) {
+				items = normalizeContainerZ(items, item.boardUid);
+			}
+			return { items };
 		}),
 	rotateItem: (uid, rotationDeg) =>
 		set((state) => ({
@@ -456,24 +587,27 @@ export const useScene = create<SceneStore>((set) => ({
 		set((state) => {
 			const board = state.boards.find((candidate) => candidate.uid === uid);
 			if (!board) return state;
+			// Keep the user's work: attached items fall loose preserving their
+			// **visible** orientation and position. The loose renderer drops the
+			// board transform, so bake the board rotation into the item (its own
+			// rotation becomes the world rotation) and store its world origin —
+			// otherwise the pedal visibly rotates by −board.rotationDeg on removal.
+			const items = state.items.map((item) => {
+				if (item.boardUid !== uid) return item;
+				const worldOrigin = boardToWorld({ x: item.x, y: item.y }, board);
+				return {
+					...item,
+					boardUid: null,
+					x: worldOrigin.x,
+					y: worldOrigin.y,
+					rotationDeg: normalizeDegrees(board.rotationDeg + item.rotationDeg),
+				};
+			});
 			return {
 				boards: state.boards.filter((candidate) => candidate.uid !== uid),
-				// Keep the user's work: attached items fall loose preserving their
-				// **visible** orientation and position. The loose renderer drops the
-				// board transform, so bake the board rotation into the item (its own
-				// rotation becomes the world rotation) and store its world origin —
-				// otherwise the pedal visibly rotates by −board.rotationDeg on removal.
-				items: state.items.map((item) => {
-					if (item.boardUid !== uid) return item;
-					const worldOrigin = boardToWorld({ x: item.x, y: item.y }, board);
-					return {
-						...item,
-						boardUid: null,
-						x: worldOrigin.x,
-						y: worldOrigin.y,
-						rotationDeg: normalizeDegrees(board.rotationDeg + item.rotationDeg),
-					};
-				}),
+				// The freed items now share the loose container's z; re-normalise it so
+				// their board-relative z can't collide with existing loose items (B1).
+				items: normalizeContainerZ(items, null),
 			};
 		}),
 }));

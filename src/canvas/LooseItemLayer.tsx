@@ -1,6 +1,6 @@
 import { Layer } from "react-konva";
 import { useDrag } from "../state/drag";
-import { useScene } from "../state/scene";
+import { itemsByZ, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
 import { ItemNodes } from "./ItemNodes";
@@ -19,8 +19,8 @@ export function LooseItemLayer({ theme }: LooseItemLayerProps) {
 	const items = useScene((state) => state.items);
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const liftedUid = useDrag((state) => state.liftedUid);
-	const loose = items.filter(
-		(item) => item.boardUid === null && item.uid !== liftedUid,
+	const loose = itemsByZ(
+		items.filter((item) => item.boardUid === null && item.uid !== liftedUid),
 	);
 
 	return (

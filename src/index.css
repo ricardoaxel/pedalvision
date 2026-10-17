@@ -254,8 +254,15 @@ body {
 	position: absolute;
 	z-index: 2;
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: var(--space-1);
-	padding: var(--space-1);
+	padding: var(--space-2);
+	/* `max-content` (not shrink-to-fit) so the bar takes its full width and wraps
+	 * into rows instead of collapsing to the space right of `left`; `max-width`
+	 * keeps it inside the viewport on narrow screens. */
+	width: max-content;
+	max-width: calc(100vw - var(--space-2) * 2);
 	/* Reliable taps on touch (no inherited canvas gesture handling). */
 	touch-action: manipulation;
 	transform: translateX(-50%);
@@ -263,6 +270,14 @@ body {
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-control);
 	box-shadow: var(--shadow-raised);
+}
+
+/* The z-order cluster is a single unit so a wrap never splits it (e.g. 3 icons
+ * on one row, the 4th pairing with Rotate). */
+.item-action-bar__group {
+	display: flex;
+	flex: 0 0 auto;
+	gap: var(--space-1);
 }
 
 .item-action-bar__button {
@@ -279,7 +294,16 @@ body {
 	cursor: pointer;
 }
 
-.item-action-bar__button:hover {
+/* Z-order cluster: compact square icon targets (labels via aria-label/title). */
+.item-action-bar__button--icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	padding: var(--space-2);
+}
+
+.item-action-bar__button:hover:not(:disabled) {
 	background-color: var(--color-surface-raised);
 }
 
@@ -288,14 +312,30 @@ body {
 	outline-offset: 2px;
 }
 
+/* Muted (not faded): keeps disabled icons legible while clearly dimmer than the
+ * enabled ink (a stroke-only glyph at low opacity reads as an empty slot). */
+.item-action-bar__button:disabled {
+	color: var(--color-ink-muted);
+	cursor: not-allowed;
+}
+
 .item-action-bar__button--danger {
 	/* Separate the destructive action from Duplicate (mis-tap guard). */
 	margin-left: var(--space-2);
 	color: var(--color-danger);
 }
 
-.item-action-bar__button--danger:hover {
+.item-action-bar__button--danger:hover:not(:disabled) {
 	background-color: var(--color-danger-surface);
+}
+
+/* On narrow screens the bar wraps: keep the z-order cluster on its own row so it
+ * never mixes with the Rotate/Duplicate/Delete text actions. */
+@media (max-width: 640px) {
+	.item-action-bar__group {
+		flex-basis: 100%;
+		justify-content: center;
+	}
 }
 
 /* Temporary pickers (P1-03/P1-04). Normally they sit in the two left corners

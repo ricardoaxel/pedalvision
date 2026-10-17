@@ -1,6 +1,6 @@
 # P1-06: Z-order controls
 
-**Phase:** P1 · **Status:** todo · **Model:** build-cheap
+**Phase:** P1 · **Status:** in review — PR #16 · **Model:** build-cheap
 
 ## Goal
 Selected item can be brought forward / sent back one step, and brought to front / sent to back, within its parent board's item stack (loose items have their own stack). Order persists in the scene (`z` field) and survives save/reload (verified with a temporary localStorage save — full save system is P3-02).
@@ -28,3 +28,5 @@ Selected item can be brought forward / sent back one step, and brought to front 
 - Playwright smoke: reorder → reload → order unchanged
 
 ## Notes
+- **Behaviour rules are documented in `docs/design.md` §"Z-order & container rules"** — the source of truth for the per-container model, dense-`z` invariant, and the add / reorder / move-between-containers / remove semantics. A future user-facing help entry (roadmap **P5-06**) will surface it to end users.
+- `-c` (resume) in `opencode run` hung for the code-review confirmation pass; it was run as a fresh light-model session instead. `design-reviewer` was run via the CLI (`opencode run --agent design-reviewer -m opencode/nemotron-3.5-super-vl-free`) because the Task tool couldn't resolve its pinned vision model.

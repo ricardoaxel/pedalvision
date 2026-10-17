@@ -2,7 +2,7 @@ import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
-import { useScene } from "../state/scene";
+import { itemsByZ, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { type Point, useViewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
@@ -69,6 +69,34 @@ export function Stage() {
 	const itemRotations = items
 		.map((item) => item.rotationDeg.toFixed(2))
 		.join(",");
+	// The actually-rendered draw order (uid list). MUST MIRROR the render layers:
+	// BoardLayer draws each board (array order) with its attached items sorted by
+	// z, then LooseItemLayer draws loose items sorted by z, then DragLayer draws
+	// the lifted item last. A smoke test asserts a reorder + reload in this true
+	// render order (P1-06), not just that the store array changed.
+	const renderOrder = (() => {
+		const uids: string[] = [];
+		for (const board of boards) {
+			for (const item of itemsByZ(
+				items.filter(
+					(candidate) =>
+						candidate.boardUid === board.uid && candidate.uid !== liftedItemUid,
+				),
+			)) {
+				uids.push(item.uid);
+			}
+		}
+		for (const item of itemsByZ(
+			items.filter(
+				(candidate) =>
+					candidate.boardUid === null && candidate.uid !== liftedItemUid,
+			),
+		)) {
+			uids.push(item.uid);
+		}
+		if (liftedItemUid) uids.push(liftedItemUid);
+		return uids.join(",");
+	})();
 
 	// Hit-test seam (gestures.ts `empty` | `object`): a press that lands on a
 	// node is an object gesture (drag the board/pedal), anything else pans the
@@ -148,6 +176,7 @@ export function Stage() {
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
+			data-item-order={renderOrder}
 			data-selected-item={selectedItemUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
 			data-lifted-rotation={liftedRotationDeg ?? ""}
