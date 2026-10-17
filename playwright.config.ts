@@ -13,10 +13,11 @@ export default defineConfig({
 			testIgnore: /touch\.spec\.ts/,
 		},
 		{
-			// Chromium with a touch-enabled mobile context for the gesture specs.
+			// Chromium with a touch-enabled mobile context for the gesture specs
+			// (and the picker's responsive/mobile coverage).
 			name: "mobile-chromium",
 			use: { ...devices["Pixel 7"] },
-			testMatch: /touch\.spec\.ts/,
+			testMatch: /(touch|picker)\.spec\.ts/,
 		},
 	],
 	webServer: {

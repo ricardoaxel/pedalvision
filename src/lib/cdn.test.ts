@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { assetUrl, resolveImageUrl } from "./cdn";
+import { assetUrl, bustCache, resolveImageUrl } from "./cdn";
 
 describe("assetUrl", () => {
 	it("builds pedal paths for both renditions", () => {
@@ -34,5 +34,31 @@ describe("resolveImageUrl (image-resolution contract)", () => {
 	it("passes an absolute url source through untouched", () => {
 		const url = "https://cdn.example.com/board.png";
 		expect(resolveImageUrl("url", url, "board", 800)).toBe(url);
+	});
+});
+
+describe("bustCache (cache-poisoning self-heal)", () => {
+	it("appends a stable key to an absolute URL", () => {
+		expect(bustCache("https://cdn.example.com/a.jpg")).toBe(
+			"https://cdn.example.com/a.jpg?pedalvision-v=1",
+		);
+	});
+
+	it("uses & when the URL already has a query string", () => {
+		expect(bustCache("https://cdn.example.com/a.jpg?v=42")).toBe(
+			"https://cdn.example.com/a.jpg?v=42&pedalvision-v=1",
+		);
+	});
+
+	it("inserts before a fragment", () => {
+		expect(bustCache("https://cdn.example.com/a.jpg#frag")).toBe(
+			"https://cdn.example.com/a.jpg?pedalvision-v=1#frag",
+		);
+	});
+
+	it("leaves same-origin asset paths untouched", () => {
+		expect(bustCache("/pedal-assets/pedals/800/boss-tr-2.png")).toBe(
+			"/pedal-assets/pedals/800/boss-tr-2.png",
+		);
 	});
 });

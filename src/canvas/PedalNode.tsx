@@ -6,9 +6,10 @@ import { resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import { itemDefinition, itemFootprint, type PlacedItem } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectSelectedItemUid, useSelection } from "../state/selection";
+import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
-import { CANVAS_FONTS } from "../styles/theme";
+import { CANVAS_FONTS, ITEM_LABEL } from "../styles/theme";
 import { registerItemNode, unregisterItemNode } from "./itemNodeRegistry";
 import { useImage } from "./useImage";
 
@@ -66,10 +67,13 @@ export function PedalNode({
 	const src = definition
 		? resolveImageUrl(definition.imageSource, definition.image, "pedal", 800)
 		: null;
-	const { image, status } = useImage(src);
+	const { image, status } = useImage(src, item.uid);
 
 	const selectItem = useSelection((state) => state.selectItem);
 	const setHoveredItem = useSelection((state) => state.setHoveredItem);
+	const hoveredItemUid = useSelection((state) => state.hoveredItemUid);
+	const selectedItemUid = useSelection(selectSelectedItemUid);
+	const scale = useViewport((state) => state.scale);
 	const beginCandidate = useDrag((state) => state.beginCandidate);
 
 	const groupRef = useRef<Konva.Group>(null);
@@ -96,6 +100,33 @@ export function PedalNode({
 	const pad = Math.min(4, widthPx * 0.08);
 	const textWidth = Math.max(0, widthPx - pad * 2);
 	const showLabel = heightPx >= 26 && widthPx >= 30;
+
+	// Always-on name label ("Specimen Bench"): a chip inside the pedal's bottom
+	// edge, drawn at screen-constant size (counter-scaled by the stage zoom) so
+	// it never becomes 3px text or a banner. Hidden when the footprint is too
+	// narrow to hold a readable name; full opacity when hovered/selected or once
+	// the footprint passes the legibility threshold.
+	const labelScale = scale > 0 ? scale : 1;
+	const screenWidth = widthPx * labelScale;
+	const showItemLabel =
+		status === "loaded" &&
+		image !== null &&
+		screenWidth >= ITEM_LABEL.minWidthPx;
+	const labelInset = ITEM_LABEL.insetPx / labelScale;
+	const labelPad = 3 / labelScale;
+	const labelHeight = Math.max(
+		0,
+		Math.min(ITEM_LABEL.heightPx / labelScale, heightPx - labelInset * 2),
+	);
+	const labelWidth = Math.max(0, widthPx - labelInset * 2);
+	const labelY = heightPx - labelInset - labelHeight;
+	const labelFontSize = ITEM_LABEL.fontSizePx / labelScale;
+	const labelEmphasized =
+		hoveredItemUid === item.uid || selectedItemUid === item.uid;
+	const labelOpacity =
+		labelEmphasized || screenWidth >= ITEM_LABEL.fullOpacityWidthPx
+			? 1
+			: ITEM_LABEL.opacity;
 
 	// Lifted items get a soft shadow so the cross-board drag reads as "raised".
 	const shadow = lifted
@@ -125,12 +156,41 @@ export function PedalNode({
 			onMouseLeave={() => setHoveredItem(null)}
 		>
 			{status === "loaded" && image ? (
-				<KonvaImage
-					image={image}
-					width={widthPx}
-					height={heightPx}
-					{...shadow}
-				/>
+				<>
+					<KonvaImage
+						image={image}
+						width={widthPx}
+						height={heightPx}
+						{...shadow}
+					/>
+					{showItemLabel && labelHeight > 0 && labelWidth > 0 ? (
+						<Group opacity={labelOpacity} listening={false}>
+							<Rect
+								x={labelInset}
+								y={labelY}
+								width={labelWidth}
+								height={labelHeight}
+								fill={theme.itemLabelBg}
+								cornerRadius={Math.min(labelHeight / 2, 3 / labelScale)}
+							/>
+							<Text
+								text={label}
+								x={labelInset + labelPad}
+								y={labelY}
+								width={labelWidth - labelPad * 2}
+								height={labelHeight}
+								align="center"
+								verticalAlign="middle"
+								fontFamily={CANVAS_FONTS.sans}
+								fontSize={labelFontSize}
+								fill={theme.itemLabelInk}
+								wrap="none"
+								ellipsis
+								listening={false}
+							/>
+						</Group>
+					) : null}
+				</>
 			) : (
 				<>
 					<Rect

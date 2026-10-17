@@ -43,3 +43,33 @@ export function resolveImageUrl(
 ): string {
 	return imageSource === "url" ? image : assetUrl(kind, size, image);
 }
+
+/**
+ * The stable cache-busting key used by {@link bustCache}. Constant (not random)
+ * so the busted URL caches normally once it has been fetched.
+ */
+export const CACHE_BUST_QUERY = "pedalvision-v=1";
+
+/**
+ * Return a variant of `url` under a **distinct** cache key, used to self-heal a
+ * poisoned HTTP cache entry.
+ *
+ * Background: a plain no-CORS load of a hotlinked image (e.g. the picker's
+ * `<img>`) caches a response with no `Access-Control-Allow-Origin`; a later
+ * `crossOrigin="anonymous"` request (the canvas loader) reuses that cached copy
+ * and fails the CORS check — for hosts that only send ACAO when the request
+ * carries an `Origin`. A different URL is a different cache key, so the retry
+ * fetches a fresh, CORS-clean response.
+ *
+ * Only absolute `http(s)` URLs are busted; same-origin asset paths are returned
+ * unchanged (their cache can't be poisoned this way).
+ */
+export function bustCache(url: string): string {
+	if (!/^https?:\/\//i.test(url)) return url;
+	// Insert before any fragment so the query isn't parked inside `#…`.
+	const hashIndex = url.indexOf("#");
+	const base = hashIndex === -1 ? url : url.slice(0, hashIndex);
+	const hash = hashIndex === -1 ? "" : url.slice(hashIndex);
+	const separator = base.includes("?") ? "&" : "?";
+	return `${base}${separator}${CACHE_BUST_QUERY}${hash}`;
+}

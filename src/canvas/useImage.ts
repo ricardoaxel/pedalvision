@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { clearImageStatus, reportImageStatus } from "./imageStatus";
+import { loadImageWithHeal } from "./loadImage";
 
 export type ImageStatus = "loading" | "loaded" | "failed";
 
@@ -8,18 +10,27 @@ export interface UseImageResult {
 }
 
 /**
- * Load an image for a Konva `Image` node. A tiny local hook — deliberately not
- * the `use-image` package (minimal-deps rule: no new dependency for ~20 lines).
+ * Load an image for a Konva `Image` node (design.md §Canvas architecture).
  *
- * Returns `{ image, status }`: `image` is set only once `status === "loaded"`.
- * A null/empty `src` or a load error yields `status: "failed"` so the caller
- * can render a fallback (the labeled rectangle at the cm footprint).
+ * `key` is a stable identity (the item/board uid) used to report load status to
+ * the `imageStatus` registry — keyed by identity, not `src`, so duplicates and
+ * removals are counted correctly. Reports are pruned on unmount. Load logic
+ * (including the cache-poisoning self-heal) lives in {@link loadImageWithHeal}.
+ *
+ * Returns `{ image, status }`: `image` is set only once `status === "loaded"`; a
+ * null/empty `src` or a load error yields `"failed"` so the caller can render a
+ * fallback.
  */
-export function useImage(src: string | null | undefined): UseImageResult {
+export function useImage(
+	src: string | null | undefined,
+	key?: string,
+): UseImageResult {
 	const [result, setResult] = useState<UseImageResult>({
 		image: null,
 		status: src ? "loading" : "failed",
 	});
+
+	const identity = key ?? src ?? "";
 
 	useEffect(() => {
 		if (!src) {
@@ -29,22 +40,25 @@ export function useImage(src: string | null | undefined): UseImageResult {
 
 		let cancelled = false;
 		setResult({ image: null, status: "loading" });
+		reportImageStatus(identity, "loading");
 
-		const image = new window.Image();
-		// Same-origin/CORS-clean images keep the canvas untainted for export.
-		image.crossOrigin = "anonymous";
-		image.onload = () => {
-			if (!cancelled) setResult({ image, status: "loaded" });
-		};
-		image.onerror = () => {
-			if (!cancelled) setResult({ image: null, status: "failed" });
-		};
-		image.src = src;
+		loadImageWithHeal(src)
+			.then((image) => {
+				if (cancelled) return;
+				setResult({ image, status: "loaded" });
+				reportImageStatus(identity, "loaded");
+			})
+			.catch(() => {
+				if (cancelled) return;
+				setResult({ image: null, status: "failed" });
+				reportImageStatus(identity, "failed");
+			});
 
 		return () => {
 			cancelled = true;
+			clearImageStatus(identity);
 		};
-	}, [src]);
+	}, [src, identity]);
 
 	return result;
 }

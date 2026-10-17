@@ -1,10 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
 	boardToWorld,
+	centerOffset,
 	cmToDisplay,
 	cmToPx,
 	PX_PER_CM,
+	placeItem,
 	pxToCm,
+	rectsOverlap,
 	rotatePoint,
 	worldToBoard,
 } from "./geometry";
@@ -40,6 +43,19 @@ describe("cmToPx / pxToCm", () => {
 				expect(pxToCm(cmToPx(cm, zoom), zoom)).toBeCloseTo(cm, 10);
 			}
 		}
+	});
+});
+
+describe("centerOffset", () => {
+	it("centres a smaller footprint inside a larger one", () => {
+		expect(centerOffset(40, 20, 7.3, 13.02)).toEqual({
+			x: (40 - 7.3) / 2,
+			y: (20 - 13.02) / 2,
+		});
+	});
+
+	it("returns negative halves when centring an item on a point", () => {
+		expect(centerOffset(0, 0, 7.3, 13.02)).toEqual({ x: -3.65, y: -6.51 });
 	});
 });
 
@@ -227,6 +243,100 @@ describe("A1 invariant — viewport independence", () => {
 			expect(local.y).toBeCloseTo(item.y, 10);
 		},
 	);
+});
+
+describe("placeItem — de-stack placement", () => {
+	const size = { widthCm: 7, heightCm: 12 };
+
+	it("returns the base when nothing occupies the spot", () => {
+		expect(placeItem({ x: 10, y: 4 }, size, [])).toEqual({ x: 10, y: 4 });
+	});
+
+	it("moves to the nearest free spot when the base is occupied", () => {
+		const base = { x: 10, y: 4 };
+		const occupied = [{ x: 10, y: 4, widthCm: 7, heightCm: 12 }];
+		const placed = placeItem(base, size, occupied);
+		expect(placed).not.toEqual(base);
+		expect(rectsOverlap({ ...placed, ...size }, occupied[0], 0.5)).toBe(false);
+	});
+
+	it("keeps every placed item clear of the previous ones (cascade)", () => {
+		const occupied: {
+			x: number;
+			y: number;
+			widthCm: number;
+			heightCm: number;
+		}[] = [];
+		const base = centerOffset(60, 30, size.widthCm, size.heightCm);
+		for (let index = 0; index < 6; index++) {
+			const spot = placeItem(base, size, occupied, {
+				bounds: { widthCm: 60, heightCm: 30 },
+			});
+			const rect = { ...spot, ...size };
+			for (const other of occupied) {
+				expect(rectsOverlap(rect, other, 0.5)).toBe(false);
+			}
+			occupied.push(rect);
+		}
+		expect(occupied).toHaveLength(6);
+	});
+
+	it("clamps candidates inside the given bounds", () => {
+		const bounds = { widthCm: 20, heightCm: 20 };
+		const base = centerOffset(bounds.widthCm, bounds.heightCm, 7, 12);
+		const occupied = [{ x: 0, y: 0, widthCm: 20, heightCm: 20 }];
+		const spot = placeItem(base, size, occupied, { bounds });
+		expect(spot.x).toBeGreaterThanOrEqual(0);
+		expect(spot.y).toBeGreaterThanOrEqual(0);
+		expect(spot.x + size.widthCm).toBeLessThanOrEqual(bounds.widthCm);
+		expect(spot.y + size.heightCm).toBeLessThanOrEqual(bounds.heightCm);
+	});
+
+	it("returns the base when a bounded container is completely full", () => {
+		const bounds = { widthCm: 20, heightCm: 20 };
+		const base = centerOffset(
+			bounds.widthCm,
+			bounds.heightCm,
+			size.widthCm,
+			size.heightCm,
+		);
+		const occupied = [{ x: 0, y: 0, widthCm: 20, heightCm: 20 }];
+		expect(placeItem(base, size, occupied, { bounds })).toEqual(base);
+	});
+
+	it("cascades outward without limit when no bounds are given (loose items)", () => {
+		const base = { x: 0, y: 0 };
+		const occupied = [{ x: 0, y: 0, widthCm: 100, heightCm: 100 }];
+		const placed = placeItem(base, size, occupied, { gapCm: 0 });
+		expect(placed).not.toEqual(base);
+		expect(rectsOverlap({ ...placed, ...size }, occupied[0])).toBe(false);
+	});
+
+	it("never clamps an unbounded base (loose items at negative world cm)", () => {
+		const base = { x: -20, y: -12 };
+		expect(placeItem(base, size, [])).toEqual(base);
+		const occupied = [{ x: -20, y: -12, widthCm: 7, heightCm: 12 }];
+		const placed = placeItem(base, size, occupied);
+		expect(rectsOverlap({ ...placed, ...size }, occupied[0], 0.5)).toBe(false);
+		expect(placed.y).toBeLessThan(0);
+	});
+});
+
+describe("rectsOverlap", () => {
+	it("detects overlap and treats the gap as part of the rectangle", () => {
+		const a = { x: 0, y: 0, widthCm: 10, heightCm: 10 };
+		const b = { x: 5, y: 5, widthCm: 10, heightCm: 10 };
+		expect(rectsOverlap(a, b)).toBe(true);
+		const near = { x: 10.4, y: 0, widthCm: 5, heightCm: 10 };
+		expect(rectsOverlap(a, near, 0)).toBe(false);
+		expect(rectsOverlap(a, near, 0.5)).toBe(true);
+	});
+
+	it("does not treat touching edges as overlap", () => {
+		const a = { x: 0, y: 0, widthCm: 10, heightCm: 10 };
+		const b = { x: 10, y: 0, widthCm: 5, heightCm: 10 };
+		expect(rectsOverlap(a, b)).toBe(false);
+	});
 });
 
 describe("cmToDisplay", () => {

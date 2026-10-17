@@ -55,7 +55,7 @@ export function BoardNode({
 	const src = definition
 		? resolveImageUrl(definition.imageSource, definition.image, "board", 800)
 		: null;
-	const { image, status } = useImage(src);
+	const { image, status } = useImage(src, board.uid);
 
 	const moveBoard = useScene((state) => state.moveBoard);
 	const selectBoard = useSelection((state) => state.selectBoard);

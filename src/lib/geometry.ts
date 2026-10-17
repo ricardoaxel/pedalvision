@@ -63,6 +63,118 @@ export function pxToCm(px: number, zoom = 1): number {
 }
 
 /**
+ * The top-left offset that centres an item footprint inside a container
+ * footprint (both cm) — e.g. dropping a pedal at a board's centre. Centres the
+ * unsnugged rectangles; callers apply it in the container's local frame.
+ */
+export function centerOffset(
+	containerWidthCm: number,
+	containerHeightCm: number,
+	itemWidthCm: number,
+	itemHeightCm: number,
+): Point {
+	return {
+		x: (containerWidthCm - itemWidthCm) / 2,
+		y: (containerHeightCm - itemHeightCm) / 2,
+	};
+}
+
+/** An axis-aligned rectangle in cm (top-left origin). */
+export interface RectCm {
+	x: number;
+	y: number;
+	widthCm: number;
+	heightCm: number;
+}
+
+/**
+ * Do two cm rectangles overlap, inflated by `gapCm` on every side (so a small
+ * packing gap counts as a collision)? Touching edges do not overlap.
+ */
+export function rectsOverlap(a: RectCm, b: RectCm, gapCm = 0): boolean {
+	return (
+		a.x < b.x + b.widthCm + gapCm &&
+		a.x + a.widthCm > b.x - gapCm &&
+		a.y < b.y + b.heightCm + gapCm &&
+		a.y + a.heightCm > b.y - gapCm
+	);
+}
+
+/**
+ * The top-left offset (cm) at which to place an item of `size` near `base`
+ * without overlapping any of `existing` (P2-01 de-stack placement). Scans a
+ * grid of candidate spots outward from `base` in rings (ring 0 = the exact
+ * `base`, so the first item still lands centred), returning the nearest spot
+ * that clears every existing rectangle by `gapCm`.
+ *
+ * `base` is the desired top-left origin in the caller's frame (a board's
+ * local frame, or world cm). Pass `bounds` to keep the search inside a
+ * container (a board); omit it to spiral outward without limit (loose items).
+ * When the container is too full for any free spot, the centred `base` is
+ * returned so the drop is never lost.
+ */
+export function placeItem(
+	base: Point,
+	size: { widthCm: number; heightCm: number },
+	existing: RectCm[],
+	options: {
+		gapCm?: number;
+		bounds?: { widthCm: number; heightCm: number };
+	} = {},
+): Point {
+	const gap = options.gapCm ?? 0.5;
+	const stepX = size.widthCm + gap;
+	const stepY = size.heightCm + gap;
+	const hasBounds = options.bounds !== undefined;
+	const maxX = options.bounds
+		? Math.max(0, options.bounds.widthCm - size.widthCm)
+		: Number.POSITIVE_INFINITY;
+	const maxY = options.bounds
+		? Math.max(0, options.bounds.heightCm - size.heightCm)
+		: Number.POSITIVE_INFINITY;
+	// Only clamp to the container when bounded — an unbounded search (loose
+	// items) must be free to go negative (world cm left of/above the origin).
+	const minX = hasBounds ? 0 : Number.NEGATIVE_INFINITY;
+	const minY = hasBounds ? 0 : Number.NEGATIVE_INFINITY;
+
+	const seen = new Set<string>();
+	const at = (i: number, j: number): Point | null => {
+		const x = Math.min(Math.max(base.x + i * stepX, minX), maxX);
+		const y = Math.min(Math.max(base.y + j * stepY, minY), maxY);
+		const key = `${x.toFixed(3)},${y.toFixed(3)}`;
+		if (seen.has(key)) return null;
+		seen.add(key);
+		return { x, y };
+	};
+	const free = (point: Point): boolean =>
+		!existing.some((rect) =>
+			rectsOverlap(
+				{
+					x: point.x,
+					y: point.y,
+					widthCm: size.widthCm,
+					heightCm: size.heightCm,
+				},
+				rect,
+				gap,
+			),
+		);
+
+	// Ring 0 is the centred base; each further ring is the square border at that
+	// Chebyshev distance, so candidates are tried nearest-first.
+	for (let ring = 0; ring <= 24; ring++) {
+		for (let i = -ring; i <= ring; i++) {
+			for (let j = -ring; j <= ring; j++) {
+				if (Math.max(Math.abs(i), Math.abs(j)) !== ring) continue;
+				const point = at(i, j);
+				if (point && free(point)) return point;
+			}
+		}
+	}
+	return { x: base.x, y: base.y };
+}
+
+/**
  * Rotate `point` around `center` by `deg` degrees, clockwise-positive
  * (screen coordinates, y growing down — matches Konva's `rotation`).
  */
