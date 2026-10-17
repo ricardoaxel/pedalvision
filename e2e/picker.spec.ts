@@ -327,19 +327,35 @@ test("the toolbar has separate Add-pedal and Add-board buttons (desktop)", async
 	);
 });
 
-test("a CORS-clean pedal stays loadable with CORS after the picker shows it (no cache poisoning)", async ({
+test("the canvas self-heals a poisoned image cache (offline simulation)", async ({
 	page,
 }) => {
-	// Regression: hashed before, the CE-20 (static.roland.com) showed in the
-	// picker but its canvas image failed. The picker's no-CORS load cached a
-	// response without ACAO, and the canvas's crossOrigin request then reused it.
-	// The picker now loads CORS-first, so a later crossOrigin load must succeed.
-	// Requires network.
+	// Deterministic, no third-party host: the plain CE-20 request always fails
+	// (a poisoned/no-ACAO cache) and only the busted key (?pedalvision-v=1)
+	// succeeds. The loader must self-heal on both the picker thumb and the
+	// canvas. (1x1 PNG.)
+	const PNG = Buffer.from(
+		"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+		"base64",
+	);
+	await page.route("**/ce_20_top_main.jpg*", (route) => {
+		if (route.request().url().includes("pedalvision-v=1")) {
+			return route.fulfill({
+				status: 200,
+				contentType: "image/png",
+				body: PNG,
+				headers: { "access-control-allow-origin": "*" },
+			});
+		}
+		return route.abort("failed");
+	});
+
 	await page.goto("/");
 	await openPicker(page, "pedals");
 	await page.getByTestId("picker-search").fill("CE-20");
 	const row = page.getByTestId("add-pedal-boss-ce-20-chorus-ensemble");
 	await expect(row).toBeVisible();
+	// The thumbnail self-heals (CORS-first → busted retry) and resolves.
 	const thumb = row.locator("img.picker-item__thumb");
 	await expect
 		.poll(() => thumb.evaluate((el) => (el as HTMLImageElement).naturalWidth), {
@@ -347,51 +363,10 @@ test("a CORS-clean pedal stays loadable with CORS after the picker shows it (no 
 		})
 		.toBeGreaterThan(0);
 
-	// The canvas loads images with crossOrigin="anonymous" (canvas/useImage.ts);
-	// after the picker's load, that same request must still resolve.
-	const src = await thumb.getAttribute("src");
-	if (!src) throw new Error("thumbnail has no src");
-	const corsOk = await page.evaluate(
-		(url) =>
-			new Promise<boolean>((resolve) => {
-				const img = new Image();
-				img.crossOrigin = "anonymous";
-				img.onload = () => resolve(true);
-				img.onerror = () => resolve(false);
-				img.src = url;
-			}),
-		src,
-	);
-	expect(corsOk).toBe(true);
-});
-
-test("the canvas self-heals a poisoned image cache (CE-20)", async ({
-	page,
-}) => {
-	// Requires network. Regression for the CE-20 "shows in picker, blank on
-	// canvas" bug when the browser already cached a no-CORS (ACAO-less) copy:
-	// the loader retries under a fresh cache key and must still load.
-	await page.goto("/");
-	const src =
-		"https://static.roland.com/assets/images/products/main/ce_20_top_main.jpg";
-	const poisoned = await page.evaluate(
-		(url) =>
-			new Promise<boolean>((resolve) => {
-				const img = new Image();
-				img.onload = () => resolve(true);
-				img.onerror = () => resolve(false);
-				img.src = url;
-			}),
-		src,
-	);
-	expect(poisoned).toBe(true);
-
-	await openPicker(page, "pedals");
-	await page.getByTestId("picker-search").fill("CE-20");
-	await page.getByTestId("add-pedal-boss-ce-20-chorus-ensemble").click();
+	// Placing it: the canvas loader must also recover (never end "failed").
+	await row.click();
 	const stage = page.getByTestId("stage");
 	await expect(stage).toHaveAttribute("data-items", "1");
-	// The canvas image eventually loads and never ends up "failed".
 	await expect
 		.poll(async () => (await stage.getAttribute("data-item-images")) ?? "", {
 			timeout: 15_000,

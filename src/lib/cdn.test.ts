@@ -50,6 +50,12 @@ describe("bustCache (cache-poisoning self-heal)", () => {
 		);
 	});
 
+	it("inserts before a fragment", () => {
+		expect(bustCache("https://cdn.example.com/a.jpg#frag")).toBe(
+			"https://cdn.example.com/a.jpg?pedalvision-v=1#frag",
+		);
+	});
+
 	it("leaves same-origin asset paths untouched", () => {
 		expect(bustCache("/pedal-assets/pedals/800/boss-tr-2.png")).toBe(
 			"/pedal-assets/pedals/800/boss-tr-2.png",

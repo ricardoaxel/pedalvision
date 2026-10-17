@@ -66,6 +66,10 @@ export const CACHE_BUST_QUERY = "pedalvision-v=1";
  */
 export function bustCache(url: string): string {
 	if (!/^https?:\/\//i.test(url)) return url;
-	const separator = url.includes("?") ? "&" : "?";
-	return `${url}${separator}${CACHE_BUST_QUERY}`;
+	// Insert before any fragment so the query isn't parked inside `#…`.
+	const hashIndex = url.indexOf("#");
+	const base = hashIndex === -1 ? url : url.slice(0, hashIndex);
+	const hash = hashIndex === -1 ? "" : url.slice(hashIndex);
+	const separator = base.includes("?") ? "&" : "?";
+	return `${base}${separator}${CACHE_BUST_QUERY}${hash}`;
 }

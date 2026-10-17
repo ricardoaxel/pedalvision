@@ -67,7 +67,7 @@ export function PedalNode({
 	const src = definition
 		? resolveImageUrl(definition.imageSource, definition.image, "pedal", 800)
 		: null;
-	const { image, status } = useImage(src);
+	const { image, status } = useImage(src, item.uid);
 
 	const selectItem = useSelection((state) => state.selectItem);
 	const setHoveredItem = useSelection((state) => state.setHoveredItem);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { bustCache } from "../lib/cdn";
-import { reportImageStatus } from "./imageStatus";
+import { clearImageStatus, reportImageStatus } from "./imageStatus";
+import { loadImageWithHeal } from "./loadImage";
 
 export type ImageStatus = "loading" | "loaded" | "failed";
 
@@ -10,25 +10,27 @@ export interface UseImageResult {
 }
 
 /**
- * Load an image for a Konva `Image` node. A tiny local hook — deliberately not
- * the `use-image` package (minimal-deps rule: no new dependency for ~20 lines).
+ * Load an image for a Konva `Image` node (design.md §Canvas architecture).
  *
- * Returns `{ image, status }`: `image` is set only once `status === "loaded"`.
- * A null/empty `src` or a load error yields `status: "failed"` so the caller
- * can render a fallback (the labeled rectangle at the cm footprint).
+ * `key` is a stable identity (the item/board uid) used to report load status to
+ * the `imageStatus` registry — keyed by identity, not `src`, so duplicates and
+ * removals are counted correctly. Reports are pruned on unmount. Load logic
+ * (including the cache-poisoning self-heal) lives in {@link loadImageWithHeal}.
  *
- * The load is `crossOrigin="anonymous"` so the canvas stays untainted for
- * export. If that CORS load fails, it **self-heals once** by retrying under a
- * distinct cache key ({@link bustCache}): a plain no-CORS load can have cached a
- * response without `Access-Control-Allow-Origin`, which the CORS request would
- * otherwise reuse and reject (P2-01 CE-20 bug). The second attempt fetches a
- * fresh, CORS-clean response; both stay `crossOrigin` so export is unaffected.
+ * Returns `{ image, status }`: `image` is set only once `status === "loaded"`; a
+ * null/empty `src` or a load error yields `"failed"` so the caller can render a
+ * fallback.
  */
-export function useImage(src: string | null | undefined): UseImageResult {
+export function useImage(
+	src: string | null | undefined,
+	key?: string,
+): UseImageResult {
 	const [result, setResult] = useState<UseImageResult>({
 		image: null,
 		status: src ? "loading" : "failed",
 	});
+
+	const identity = key ?? src ?? "";
 
 	useEffect(() => {
 		if (!src) {
@@ -38,38 +40,25 @@ export function useImage(src: string | null | undefined): UseImageResult {
 
 		let cancelled = false;
 		setResult({ image: null, status: "loading" });
-		reportImageStatus(src, "loading");
+		reportImageStatus(identity, "loading");
 
-		let retried = false;
-		const load = (url: string) => {
-			const image = new window.Image();
-			// Same-origin/CORS-clean images keep the canvas untainted for export.
-			image.crossOrigin = "anonymous";
-			image.onload = () => {
+		loadImageWithHeal(src)
+			.then((image) => {
 				if (cancelled) return;
 				setResult({ image, status: "loaded" });
-				reportImageStatus(src, "loaded");
-			};
-			image.onerror = () => {
+				reportImageStatus(identity, "loaded");
+			})
+			.catch(() => {
 				if (cancelled) return;
-				const busted = bustCache(url);
-				// One self-heal retry, only when a distinct cache key exists.
-				if (!retried && busted !== url) {
-					retried = true;
-					load(busted);
-					return;
-				}
 				setResult({ image: null, status: "failed" });
-				reportImageStatus(src, "failed");
-			};
-			image.src = url;
-		};
-		load(src);
+				reportImageStatus(identity, "failed");
+			});
 
 		return () => {
 			cancelled = true;
+			clearImageStatus(identity);
 		};
-	}, [src]);
+	}, [src, identity]);
 
 	return result;
 }
