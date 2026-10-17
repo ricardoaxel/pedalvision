@@ -74,6 +74,23 @@ type Settings = { units: 'cm' | 'in' }  // display only — storage is always cm
 ```
 External catalog formats are **transformed into this schema** by `tools/catalog-transform` (one-off dev tool). This schema is our **own model**, not a rename of any external one — see ADR-003 §Schema originality for the field mapping (cm-native geometry, slug ids, referential variants, provenance enum, our effect taxonomy). We do not inherit external conventions, field names, or images (inches, name-keyed entries, per-colorway duplicates, source image files).
 
+### Z-order & container rules (P1-06)
+Layering is **per-container, never global.** A *container* is either one board's group or the loose group (`boardUid: null`). A pedal's `z` only competes with the other items in its own container; boards stack independently by array order (S6). This follows directly from each board group owning its attached pedals (§Canvas architecture) — moving a pedal between boards is a **re-parent**, not a global layer change.
+
+- **Dense per container:** `z` is always `0..n-1` — no gaps, no floats. Every mutation that adds, removes or reorders within a container re-normalises it. Renders sort a container's children ascending by `z` (higher draws on top); a stable sort is the fallback so ties can never scramble draw order.
+- **New / duplicated item** → `z = (max z in its container) + 1` — it lands on top.
+- **Reorder** (the action-bar `reorder(uid, forward | back | front | bottom)`) moves within the item's own container one step or to the extreme, then re-normalises. `forward`/`back` are no-ops at the top/bottom (those buttons are disabled there). v1 has **no drag-on-canvas reordering** — reordering is only via the action-bar controls (a layer-panel affordance is deferred).
+- **Move between containers** (drag board A → board B, or → loose; the drop hit-tests the pedal's visible world centre against the topmost board):
+  - the item lands **on top of the destination** (`z = max + 1` there), exactly like a fresh add;
+  - the **source container is re-normalised** to close the hole it left;
+  - a drop **inside the same container** keeps the item's `z` — dragging is not a re-order.
+- **Remove board:** its attached items fall loose (geometry baked, visible rotation preserved) and the loose container is re-normalised, so a freed pedal's old board-relative `z` cannot collide with existing loose items.
+- **Remove item:** its own container is re-normalised.
+
+`z` is part of `PlacedItem` and therefore survives save/reload (A4). The full save system (IndexedDB + autosave + boot reconcile) is P3-02; until then a temporary localStorage mirror keeps `z` across reloads.
+
+> This section is the **source of truth** for a future user-facing help/onboarding entry ("how layering works") — see the roadmap's user-help item.
+
 ## Persistence (v1, no backend)
 - `localStorage`: settings + scene index (id → name, updatedAt)
 - `IndexedDB` (via `idb`): scene documents; autosave debounced ~500ms

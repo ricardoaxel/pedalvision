@@ -54,6 +54,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - **P5-03 Provenance & verification sweep** — per-item verification date + confidence; dimension spot-check (≥10) against manufacturer spec sheets.
 - **P5-04 Launch-gate sign-off** — minimum bar (≥200 pedals / ≥10 brands, cleared assets only), A1–A5 green, `pnpm audit`, iOS export.
 - **P5-05 Full-integration device E2E (Appium, local) — PROPOSED (not scheduled).** At the very final integration stage, a small Appium smoke against the local iOS Simulator / real iPhone (XCUITest) / real Android to validate real-engine touch end-to-end. Free if Xcode/Android SDK present; deferred to avoid heavy setup now. See `docs/decisions/007-mobile-touch-testing.md` + `docs/tasks/P5-05-appium-local-device-e2e.md`.
+- **P5-06 User help / how-to content — PROPOSED (not scheduled).** Short end-user help ("how layering works", cables, save/share/export) so users understand the model. Draws on **`docs/design.md` §Z-order & container rules** (the source of truth) + the other behaviour sections; pairs with P2-08 first-run guidance. Surface at the final content pass before launch.
 
 ## v2 backlog (not scheduled)
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
