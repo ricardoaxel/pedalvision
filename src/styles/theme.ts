@@ -21,6 +21,11 @@ export const CANVAS_THEME_VARS = {
 	boardLabel: "--color-ink-muted",
 	// Lift shadow under a dragged pedal — P1-04.
 	itemShadow: "--color-item-shadow",
+	// Always-on pedal name-label chip — P2-01 (Specimen Bench).
+	itemLabelBg: "--color-item-label-bg",
+	itemLabelInk: "--color-item-label-ink",
+	// Desktop hover brackets on a non-selected pedal — neutral ink (P2-01).
+	hoverOutline: "--color-ink",
 } as const;
 
 /**
@@ -42,6 +47,21 @@ export const CANVAS_FONTS = {
 export const GRID_PITCH = 24;
 export const GRID_DOT_RADIUS = 1;
 
+/**
+ * Canvas pedal name-label metrics (screen px — counter-scaled at render so the
+ * label stays a constant size at any zoom). The chip is hidden below
+ * `minWidthPx` (a name would be ellipsis soup) and fades to full opacity above
+ * `fullOpacityWidthPx`; hovered/selected items are always full opacity.
+ */
+export const ITEM_LABEL = {
+	fontSizePx: 10,
+	heightPx: 14,
+	insetPx: 2,
+	opacity: 0.9,
+	minWidthPx: 52,
+	fullOpacityWidthPx: 80,
+} as const;
+
 export type CanvasThemeKey = keyof typeof CANVAS_THEME_VARS;
 
 export type CanvasTheme = Record<CanvasThemeKey, string>;
@@ -57,6 +77,9 @@ export const canvasTheme: CanvasTheme = {
 	boardDraftFill: "#202327",
 	boardLabel: "#a8b0b8",
 	itemShadow: "rgb(0 0 0 / 0.5)",
+	itemLabelBg: "#1b1e21",
+	itemLabelInk: "#eef1f4",
+	hoverOutline: "#eef1f4",
 };
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
@@ -70,4 +93,7 @@ export const lightCanvasTheme: CanvasTheme = {
 	boardDraftFill: "#eceff1",
 	boardLabel: "#565d66",
 	itemShadow: "rgb(15 23 42 / 0.32)",
+	itemLabelBg: "#f4f6f7",
+	itemLabelInk: "#16191d",
+	hoverOutline: "#16191d",
 };

@@ -28,7 +28,11 @@ footprint on mobile** so the working canvas stays visible.
 - **Zero new deps by default.** A searchable list over ~207 pedals needs no
   library — justify any exception in this file or a new ADR.
 - cm stays the source of truth — placement reuses the existing store actions
-  (board/pedal dropped at viewport centre / selected-board centre); no new geometry.
+  (`addItem`/`addBoard`) and stays cm-native. Placement now **de-stacks** via a
+  pure `lib/geometry.ts` `placeItem()` (owner-approved, 2026-10-17: repeated adds
+  must not stack on top of each other — see Notes); it scans a grid of spots from
+  the centred base and falls back to the centred base when a bounded container is
+  full. No pixels in geometry.
 - Keep the **on-screen footprint small on mobile** (owner instruction, 2026-10-15):
   the sheet is dismissible and does not permanently cover the canvas.
 - Do **not** widen the `jacks.kind` vocabulary or touch P2-02 concerns (that is a
@@ -64,7 +68,36 @@ footprint on mobile** so the working canvas stays visible.
 - `grep`/review confirms no hardcoded colors and no external catalog provenance leaked.
 
 ## Notes
-- **Approved direction: "Parts Bin"** (designer proposal, owner-approved 2026-10-17) — a drafting parts drawer inside the Blueprint direction. Desktop = centered modal (top toolbar trigger); mobile = ~56px bottom tab bar + transient sheet with a ~15vh canvas peek. **Card grid** is the desktop results default. **Placement is implicit** (pedal → selected board, board → viewport centre) with a read-only footer hint (no explicit target control). New tokens only: `--color-surface-elevated`, `--color-scrim`, `--color-input-bg`, `--color-border-strong`.
+- **Approved direction: "Specimen Bench"** (designer proposal, owner-approved
+  2026-10-17 — extends "Parts Bin", supersedes its card grid). Desktop = a
+  top-anchored **two-pane instrument**: a dense keyboard-first **ledger** of rows
+  on the left (thumb · name · brand · dims; ↑↓ browse, ↵ place; one neutral
+  hover, accent reserved for the **active** row) and a **specimen** pane on the
+  right (the active item on a lit photographic plate over the bench dot grid,
+  identity + a placement CTA). Mobile (<1024px) = a persistent ~56px bottom tab
+  bar + a compact dismissible sheet (specimen hidden). Placement stays implicit
+  (pedal → selected board, board → viewport centre) and the header hint states
+  it. New tokens: `--color-specimen-bg`, `--color-specimen-dot`,
+  `--color-item-label-bg/ink`, `--shadow-plate`, `--radius-row`, `--radius-key`,
+  `--font-size-2xs`, `--tracking-caps`, `--leading-tight` (+ the earlier
+  `--color-surface-elevated`, `--color-scrim`, `--color-input-bg`,
+  `--color-border-strong`, `--color-thumb-bg`).
+- **Canvas polish folded in (owner instruction, 2026-10-17):**
+  `PedalNode` gains an **always-on name chip** inside the pedal's bottom edge
+  (screen-constant via `ITEM_LABEL` in `theme.ts`; hidden below 52 screen px;
+  full opacity when hovered/selected). The desktop hover is now four neutral
+  **corner brackets** (`SelectionLayer`), replacing the dashed inset ring that
+  read as odd padding.
+- **Board rows use a glyph tile, not the board art** — the catalog board images
+  are wide, mostly-transparent top-down outlines that shrink to an invisible
+  sliver at tile scale; the specimen pane still shows the real board art at size.
+- **Filter row wraps** (desktop + mobile); only short landscape
+  (`max-height:520px`) falls back to a single scrolling strip to protect the
+  results height.
+- First approved sub-direction (superseded): **"Parts Bin"** (2026-10-17) — a
+  drafting parts drawer. Direction evolved to "Specimen Bench" after owner
+  feedback that the card grid was too plain and the desktop experience needed
+  more.
 - Supersedes the temporary `BoardPicker`/`PedalPicker` from P1-03/P1-04.
 - The modal/sheet is shared by boards + pedals; more tabs (Cables/Custom/More from
   design.md §Responsive approach) arrive with their own tasks (P2-02, P4) — do not

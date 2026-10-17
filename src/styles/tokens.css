@@ -35,9 +35,18 @@
 	--color-border-strong: #7c868f;
 	/* Recessed field fill — reads as an input, not a panel (P2-01). */
 	--color-input-bg: #2b3036;
+	/* Specimen bench stage — one step below --color-input-bg, holds the picker's
+	 * dot grid + photographic plate ("Specimen Bench", P2-01). */
+	--color-specimen-bg: #24282d;
+	/* Specimen-stage dot grid — its own token so the canvas grid stays the
+	 * calmest layer; the framed bench reads a touch stronger. */
+	--color-specimen-dot: #5a616b;
 	/* Product-thumbnail tile (P2-01 picker) — light in BOTH themes so dark gear
 	 * photos/boards read against it instead of vanishing into a dark tile. */
 	--color-thumb-bg: #e6e9ec;
+	/* Canvas pedal name-label chip (always-on; opaque so contrast is deterministic) */
+	--color-item-label-bg: #1b1e21;
+	--color-item-label-ink: #eef1f4;
 	/* Modal backdrop dim (DOM only — the canvas is never tinted, P2-01). */
 	--color-scrim: rgb(10 12 14 / 0.55);
 	--color-ink: #eef1f4;
@@ -67,6 +76,9 @@
 	--shadow-raised:
 		0 2px 6px rgb(0 0 0 / 0.34), 0 14px 36px rgb(0 0 0 / 0.38),
 		inset 0 1px 0 rgb(255 255 255 / 0.14);
+	/* The photographic plate (picker specimen) — light in BOTH themes, so the
+	 * raised token's inset highlight would look wrong on it. */
+	--shadow-plate: 0 1px 2px rgb(0 0 0 / 0.45), 0 12px 32px rgb(0 0 0 / 0.5);
 
 	/* Spacing scale (4px base) */
 	--space-1: 4px;
@@ -80,6 +92,10 @@
 	--radius-control: 8px;
 	--radius-card: 12px;
 	--radius-pill: 999px;
+	/* Dense ledger rows (picker) sit tighter than buttons. */
+	--radius-row: 6px;
+	/* Keycap chips + concentric inner controls (outer 8 − 4 padding). */
+	--radius-key: 4px;
 
 	/* Typography — humanist sans carries the voice; mono is instrumentation only */
 	--font-sans:
@@ -93,12 +109,17 @@
 	--font-size-md: 1rem;
 	--font-size-lg: 1.25rem;
 	--font-size-xl: 1.75rem;
+	/* Mono eyebrows / dims / scale bar / keycaps (instrument voice). */
+	--font-size-2xs: 0.6875rem;
 	--font-weight-normal: 400;
 	--font-weight-medium: 500;
 	--font-weight-semibold: 600;
 	--tracking-tight: -0.01em;
 	--tracking-normal: 0;
 	--tracking-wide: 0.04em;
+	/* Mono uppercase micro-labels (instrument voice). */
+	--tracking-caps: 0.08em;
+	--leading-tight: 1.15;
 
 	/* Dot grid — clearly visible, still the calmest layer (~1.9:1 vs canvas) */
 	--grid-pitch: 24px;
@@ -122,7 +143,11 @@
 	--color-border: #d5dae0;
 	--color-border-strong: #7c868f;
 	--color-input-bg: #f1f3f5;
+	--color-specimen-bg: #d5dade;
+	--color-specimen-dot: #868f99;
 	--color-thumb-bg: #eceef1;
+	--color-item-label-bg: #f4f6f7;
+	--color-item-label-ink: #16191d;
 	--color-scrim: rgb(23 28 34 / 0.35);
 	--color-ink: #16191d;
 	--color-ink-muted: #565d66;
@@ -149,4 +174,6 @@
 	/* Elevation — white cards get a cool-tinted soft shadow */
 	--shadow-raised:
 		0 1px 2px rgb(15 23 42 / 0.07), 0 6px 20px rgb(15 23 42 / 0.1);
+	--shadow-plate:
+		0 1px 2px rgb(15 23 42 / 0.1), 0 10px 28px rgb(15 23 42 / 0.12);
 }

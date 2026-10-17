@@ -1,10 +1,15 @@
 import { expect, type Page, test } from "@playwright/test";
-import { addBoard, openPicker } from "./picker.ts";
+import { addBoard, addPedal, openPicker } from "./picker.ts";
 
 /** The numeric result count from the picker footer (e.g. "137 pedals"). */
 async function resultCount(page: Page): Promise<number> {
 	const text = (await page.getByTestId("picker-count").textContent()) ?? "0";
 	return Number.parseInt(text, 10);
+}
+
+/** True on the desktop layout (≥1024px) where the specimen pane is shown. */
+function isDesktop(page: Page): boolean {
+	return (page.viewportSize()?.width ?? 1280) >= 1024;
 }
 
 test("the picker searches, filters and places a pedal", async ({ page }) => {
@@ -100,6 +105,10 @@ test("mobile shows the persistent bottom tab bar and the sheet", async ({
 
 	// The sheet leaves the tab bar reachable (small persistent footprint).
 	await expect(page.getByTestId("picker-bar-pedals")).toBeVisible();
+	// The switcher lives INSIDE the dialog (part of the modal's AT + focus scope).
+	await expect(
+		page.getByTestId("picker-panel").locator('nav[aria-label="Catalog"]'),
+	).toHaveCount(1);
 	const panel = await page.getByTestId("picker-panel").boundingBox();
 	const viewport = page.viewportSize();
 	if (!panel || !viewport) throw new Error("missing box");
@@ -108,4 +117,174 @@ test("mobile shows the persistent bottom tab bar and the sheet", async ({
 	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
 	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
+});
+
+test("the specimen follows the active row and its CTA places the pedal", async ({
+	page,
+}) => {
+	test.skip(
+		!isDesktop(page),
+		"the specimen pane (and its CTA) is desktop-only",
+	);
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("blues driver");
+
+	// Hovering a row makes it the active row (specimen mirrors it).
+	const row = page.getByTestId("add-pedal-boss-bd-2-blues-driver");
+	await row.hover();
+	await expect(row).toHaveAttribute("data-active", "true");
+	await expect(page.getByTestId("picker-specimen")).toContainText(
+		"Blues Driver",
+	);
+
+	// The CTA places the active item and dismisses the picker.
+	await page.getByTestId("picker-place").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	await expect(stage).toHaveAttribute("data-items", "1");
+});
+
+test("arrow keys move the active row and Enter places it (keyboard-first)", async ({
+	page,
+}) => {
+	test.skip(!isDesktop(page), "keyboard ledger is desktop-first");
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await openPicker(page, "pedals");
+
+	// Focus starts in the search field; the first ArrowDown moves into the list.
+	await page.keyboard.press("ArrowDown");
+	const active = page.locator('.picker-item[data-active="true"]');
+	await expect(active).toHaveCount(1);
+	const firstId = await active.getAttribute("data-testid");
+
+	await page.keyboard.press("ArrowDown");
+	await expect(active).not.toHaveAttribute("data-testid", firstId ?? "");
+
+	// Enter places the active row.
+	await page.keyboard.press("Enter");
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	await expect(stage).toHaveAttribute("data-items", "1");
+});
+
+test("switching tabs and the clear button reset the filters", async ({
+	page,
+}) => {
+	test.skip(!isDesktop(page), "desktop segmented tabs switch the catalog");
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("blues driver");
+	await page.getByTestId("picker-brand").selectOption("BOSS");
+	expect(await resultCount(page)).toBeLessThan(20);
+
+	// Switching tabs clears the shared filters.
+	await page.getByTestId("picker-tab-boards").click();
+	await expect(page.getByTestId("picker-search")).toHaveValue("");
+	await expect(page.getByTestId("picker-brand")).toHaveValue("");
+
+	// The inline clear button restores the full list.
+	await page.getByTestId("picker-tab-pedals").click();
+	const full = await resultCount(page);
+	await page.getByTestId("picker-search").fill("zzzzzzzz");
+	await expect(page.getByTestId("picker-empty")).toBeVisible();
+	await page.getByRole("button", { name: "Clear filters" }).click();
+	expect(await resultCount(page)).toBe(full);
+});
+
+test("the 'All types' toggle reveals the full effect list", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	const toggle = page.getByTestId("picker-effects-toggle");
+	// A type outside the collapsed preview is hidden until expanded.
+	const hidden = page.getByTestId("picker-effect-reverb");
+	const before = await hidden.count();
+	await toggle.click();
+	if (before === 0) await expect(hidden).toBeVisible();
+	await expect(toggle).toHaveText("Fewer");
+	await toggle.click();
+	await expect(toggle).toHaveText("All types");
+});
+
+test("adding several pedals to a board de-stacks them (no overlap)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await addBoard(page, "boss-bcb-1000");
+	for (const id of [
+		"boss-bd-2-blues-driver",
+		"boss-dd-8-digital-delay",
+		"boss-ce-20-chorus-ensemble",
+	]) {
+		await addPedal(page, id);
+	}
+	await expect(stage).toHaveAttribute("data-items", "3");
+
+	const positions = (await stage.getAttribute("data-item-positions")) ?? "";
+	const spots = positions.split(";");
+	expect(spots).toHaveLength(3);
+	expect(new Set(spots).size).toBe(3);
+});
+
+test("loose pedals cascade instead of stacking at the viewport centre", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(stage).toHaveAttribute("data-items", "3");
+	const spots = ((await stage.getAttribute("data-item-positions")) ?? "").split(
+		";",
+	);
+	expect(new Set(spots).size).toBe(3);
+});
+
+test("no filter chip is clipped (wrap, not a cut-off scroll strip)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	const panel = await page.getByTestId("picker-panel").boundingBox();
+	if (!panel) throw new Error("no panel");
+	// The visible chips must all sit inside the panel's horizontal bounds.
+	const chips = page.locator(".picker__chip");
+	const count = await chips.count();
+	for (let index = 0; index < count; index++) {
+		const box = await chips.nth(index).boundingBox();
+		if (!box) continue;
+		expect(box.x + box.width).toBeLessThanOrEqual(panel.x + panel.width + 1);
+	}
+});
+
+test("result thumbnails resolve (DOM images load without CORS)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("blues driver");
+	// The picker thumbnails are plain DOM images (no crossOrigin), so a
+	// hotlinked host without CORS headers still renders. If the image failed,
+	// React swaps it for the neutral fallback and this locator would vanish.
+	const first = page.locator("img.picker-item__thumb").first();
+	await expect(first).toBeVisible();
+	await expect
+		.poll(() => first.evaluate((el) => (el as HTMLImageElement).naturalWidth), {
+			timeout: 15_000,
+		})
+		.toBeGreaterThan(0);
+});
+
+test("board rows show a board glyph tile (not a blank placeholder)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "boards");
+	await expect(
+		page.locator(".picker-item__thumb--glyph").first(),
+	).toBeVisible();
 });

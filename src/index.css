@@ -155,7 +155,7 @@ body {
 	background-color: transparent;
 	border: 1px solid transparent;
 	/* Concentric with the bar: outer 8px − 4px padding. */
-	border-radius: 4px;
+	border-radius: var(--radius-key);
 	cursor: pointer;
 }
 
@@ -204,8 +204,9 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Picker (P2-01) — "Parts Bin". Desktop: centered modal. Mobile (<1024px):
- * persistent bottom tab bar + dismissible sheet with a canvas peek.
+ * Picker (P2-01) — "Specimen Bench". Desktop: a top-anchored two-pane
+ * instrument (ledger + specimen). Mobile (<1024px): persistent bottom tab bar +
+ * compact dismissible sheet.
  * ------------------------------------------------------------------------- */
 
 .picker {
@@ -213,8 +214,9 @@ body {
 	inset: 0;
 	z-index: 3;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
+	padding: clamp(48px, 8vh, 96px) var(--space-4) var(--space-4);
 }
 
 .picker__scrim {
@@ -233,8 +235,8 @@ body {
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
-	width: min(820px, 92vw);
-	height: min(640px, 82vh);
+	width: min(1080px, 94vw);
+	height: min(720px, calc(100dvh - 96px));
 	color: var(--color-ink);
 	background-color: var(--color-surface-elevated);
 	border: 1px solid var(--color-border);
@@ -247,28 +249,85 @@ body {
 	display: none;
 }
 
-/* Only the results region flexes/shrinks; the chrome keeps its content height
- * so a short screen can't collapse the filters or footer. */
-.picker__header,
-.picker__search,
-.picker__filters,
-.picker__footer {
-	flex: 0 0 auto;
-}
-
 .picker__header {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-between;
-	gap: var(--space-3);
+	gap: var(--space-4);
+	flex: 0 0 auto;
 	padding: var(--space-4) var(--space-5);
 	border-bottom: 1px solid var(--color-border);
 }
 
+.picker__heading {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+
+.picker__eyebrow {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-eyebrow);
+}
+
 .picker__title {
 	margin: 0;
-	font-size: var(--font-size-md);
+	font-size: var(--font-size-lg);
 	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--tracking-tight);
+	line-height: var(--leading-tight);
+}
+
+/* Placement hint: folded into the header on mobile, where the footer is gone. */
+.picker__header-hint {
+	display: none;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.picker__header-aside {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	flex: 0 0 auto;
+}
+
+.picker__segmented {
+	display: flex;
+	gap: 2px;
+	padding: 2px;
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+}
+
+.picker__segment {
+	min-height: 32px;
+	padding: 0 var(--space-3);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 0;
+	border-radius: var(--radius-row);
+	cursor: pointer;
+}
+
+.picker__segment[aria-pressed="true"] {
+	color: var(--color-ink);
+	background-color: var(--color-surface-raised);
+	box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+}
+
+.picker__segment:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
 }
 
 .picker__close {
@@ -286,8 +345,6 @@ body {
 
 .picker__close:hover {
 	color: var(--color-ink);
-	/* Distinct from the elevated panel in BOTH themes (surface-raised is white
-	 * in light, so it would be an invisible hover there). */
 	background-color: var(--color-input-bg);
 }
 
@@ -296,60 +353,104 @@ body {
 	outline-offset: 2px;
 }
 
-.picker__tabs {
+.picker__body {
 	display: flex;
-	gap: var(--space-4);
-	padding: 0 var(--space-5);
-	border-bottom: 1px solid var(--color-border);
+	flex: 1 1 auto;
+	min-height: 0;
 }
 
-.picker__tab {
-	min-height: 44px;
-	padding: var(--space-2) 0;
-	font-family: var(--font-sans);
-	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-medium);
-	color: var(--color-ink-muted);
-	background-color: transparent;
-	border: 0;
-	border-bottom: 2px solid transparent;
-	cursor: pointer;
+.picker__ledger {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 0;
 }
 
-.picker__tab[aria-pressed="true"] {
-	color: var(--color-accent);
-	border-bottom-color: var(--color-accent);
-}
+/* ---- Ledger: tools (search + filters) -------------------------------------- */
 
-.picker__tab:focus-visible {
-	outline: 2px solid var(--color-accent-strong);
-	outline-offset: 2px;
-}
-
-.picker__search {
+.picker__tools {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	flex: 0 0 auto;
 	padding: var(--space-4) var(--space-5) var(--space-3);
 }
 
-.picker__search-input {
-	width: 100%;
+.picker__search {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
 	min-height: 44px;
-	padding: var(--space-2) var(--space-3);
+	padding: 0 var(--space-3);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+}
+
+.picker__search:focus-within {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 1px;
+}
+
+.picker__search-icon {
+	flex: 0 0 auto;
+	color: var(--color-ink-muted);
+}
+
+.picker__search-input {
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 42px;
+	padding: 0;
 	font-family: var(--font-sans);
 	/* 16px prevents iOS auto-zoom on focus. */
 	font-size: var(--font-size-md);
 	color: var(--color-ink);
-	background-color: var(--color-input-bg);
-	border: 1px solid var(--color-border-strong);
-	border-radius: var(--radius-control);
+	background-color: transparent;
+	border: 0;
+}
+
+.picker__search-input:focus {
+	outline: none;
 }
 
 .picker__search-input::placeholder {
 	color: var(--color-ink-muted);
 }
 
-.picker__search-input:focus-visible {
+.picker__search-clear {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 0;
+	border-radius: var(--radius-key);
+	cursor: pointer;
+}
+
+.picker__search-clear:hover {
+	color: var(--color-ink);
+	background-color: var(--color-surface-raised);
+}
+
+.picker__search-clear:focus-visible {
 	outline: 2px solid var(--color-accent-strong);
 	outline-offset: 1px;
+}
+
+/* Mobile-only result-count badge (replaces the desktop status strip). */
+.picker__search-count {
+	display: none;
+	flex: 0 0 auto;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	color: var(--color-ink-muted);
+	white-space: nowrap;
 }
 
 .picker__filters {
@@ -357,10 +458,10 @@ body {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: var(--space-2);
-	padding: 0 var(--space-5) var(--space-3);
 }
 
 .picker__brand {
+	flex: 0 0 auto;
 	min-height: 36px;
 	max-width: 180px;
 	padding: var(--space-1) var(--space-2);
@@ -379,7 +480,9 @@ body {
 
 .picker__chips {
 	display: flex;
+	flex: 1 1 auto;
 	flex-wrap: wrap;
+	min-width: 0;
 	gap: var(--space-2);
 	margin: 0;
 	padding: 0;
@@ -387,6 +490,7 @@ body {
 }
 
 .picker__chip {
+	flex: 0 0 auto;
 	min-height: 32px;
 	padding: var(--space-1) var(--space-3);
 	font-family: var(--font-sans);
@@ -409,86 +513,135 @@ body {
 	outline-offset: 2px;
 }
 
+/* Plain text button — no dashed chrome anywhere in the picker. */
 .picker__chip--more {
+	padding: var(--space-1) var(--space-2);
 	font-weight: var(--font-weight-medium);
 	color: var(--color-accent);
 	background-color: transparent;
-	border-style: dashed;
+	border-color: transparent;
+	text-decoration: underline;
+	text-underline-offset: 2px;
 }
 
+/* ---- Ledger: results (rows) ------------------------------------------------ */
+
 .picker__results {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	flex: 1 1 auto;
-	grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
-	gap: var(--space-3);
+	gap: var(--space-1);
 	min-height: 0;
-	padding: 0 var(--space-5) var(--space-4);
+	padding: 0 var(--space-4) var(--space-2);
 	overflow-y: auto;
 }
 
 .picker-item {
 	display: flex;
-	flex-direction: column;
-	gap: var(--space-2);
+	align-items: center;
+	gap: var(--space-3);
 	min-height: 44px;
-	padding: var(--space-2);
+	padding: var(--space-1) var(--space-2);
 	text-align: left;
 	color: var(--color-ink);
 	background-color: transparent;
 	border: 1px solid transparent;
-	border-radius: var(--radius-control);
+	/* The active bar is always 2px wide (transparent → accent) so rows never
+	 * reflow as the active item changes. */
+	border-left: 2px solid transparent;
+	border-radius: var(--radius-row);
 	cursor: pointer;
 }
 
 .picker-item:hover {
-	/* input-bg differs from the elevated panel in both themes (see above). */
 	background-color: var(--color-input-bg);
+}
+
+.picker-item[data-active="true"] {
+	background-color: var(--color-accent-surface);
+	border-left-color: var(--color-accent);
+	box-shadow: inset 0 0 0 1px var(--color-accent-border);
 }
 
 .picker-item:focus-visible {
 	outline: 2px solid var(--color-accent-strong);
-	outline-offset: 2px;
+	outline-offset: -2px;
 }
 
 .picker-item__thumb {
 	display: block;
-	width: 100%;
-	height: 96px;
+	flex: 0 0 32px;
+	width: 32px;
+	height: 32px;
 	object-fit: contain;
 	/* Light tile in both themes so dark product photos read (P2-01). */
 	background-color: var(--color-thumb-bg);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-control);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-key);
+}
+
+/* Boards are wide, mostly-transparent top-down outlines — a square tile shrinks
+ * them to a sliver, so board rows show a landscape glyph tile instead. */
+.picker-item__thumb--board {
+	flex: 0 0 44px;
+	width: 44px;
+	height: 30px;
+}
+
+.picker-item__thumb--glyph {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-ink-muted);
+}
+
+/* Neutral tile / glyph when a thumbnail has no image (catalog limitation). */
+.picker-item__thumb--empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-border-strong);
+	background-color: var(--color-thumb-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-key);
 }
 
 .picker-item__text {
 	display: flex;
+	flex: 1 1 auto;
 	flex-direction: column;
-	gap: 1px;
 	min-width: 0;
 }
 
 .picker-item__name {
+	overflow: hidden;
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-medium);
 	color: var(--color-ink);
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .picker-item__brand {
+	overflow: hidden;
 	font-size: var(--font-size-xs);
 	color: var(--color-ink-muted);
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .picker-item__dims {
+	flex: 0 0 auto;
 	font-family: var(--font-mono);
-	font-size: var(--font-size-xs);
+	font-size: var(--font-size-2xs);
 	color: var(--color-ink-muted);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
 }
 
 .picker__empty {
-	grid-column: 1 / -1;
 	margin: 0;
-	padding: var(--space-5) 0;
+	padding: var(--space-5) var(--space-3);
 	font-size: var(--font-size-sm);
 	text-align: center;
 	color: var(--color-ink-muted);
@@ -504,23 +657,40 @@ body {
 	cursor: pointer;
 }
 
-.picker__footer {
+/* ---- Ledger: status strip -------------------------------------------------- */
+
+.picker__status {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: var(--space-3);
-	padding: var(--space-3) var(--space-5);
+	flex: 0 0 auto;
+	min-height: 36px;
+	padding: var(--space-1) var(--space-5);
 	border-top: 1px solid var(--color-border);
 }
 
-.picker__count {
+.picker__keys {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
 	font-family: var(--font-mono);
-	font-size: var(--font-size-xs);
+	font-size: var(--font-size-2xs);
 	color: var(--color-ink-muted);
 }
 
-.picker__hint {
-	font-size: var(--font-size-xs);
+.picker__key {
+	padding: 1px 5px;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1.4;
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-key);
+}
+
+.picker__key-sep {
 	color: var(--color-ink-muted);
 }
 
@@ -546,6 +716,153 @@ body {
 	outline-offset: 2px;
 }
 
+/* ---- Specimen pane (desktop only) ------------------------------------------ */
+
+.picker__specimen {
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 auto;
+	width: 352px;
+	min-height: 0;
+	padding: var(--space-5);
+	overflow-y: auto;
+	border-left: 1px solid var(--color-border);
+	/* Same drafting grid as the canvas, but a touch stronger (its own dot token)
+	 * so the framed bench reads as a distinct stage. */
+	background-color: var(--color-specimen-bg);
+	background-image: radial-gradient(
+		circle,
+		var(--color-specimen-dot) var(--grid-dot-radius),
+		transparent calc(var(--grid-dot-radius) + 0.5px)
+	);
+	background-size: var(--grid-pitch) var(--grid-pitch);
+}
+
+.specimen {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	gap: var(--space-3);
+	min-height: 0;
+}
+
+.specimen__eyebrow {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.specimen__target {
+	margin-top: -6px;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink);
+}
+
+.specimen__plate {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	padding: var(--space-5);
+	background-color: var(--color-thumb-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-plate);
+}
+
+.specimen__img {
+	max-width: 100%;
+	max-height: 220px;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+}
+
+[data-empty="true"].specimen__img {
+	width: 100%;
+	height: 160px;
+	background-color: var(--color-input-bg);
+}
+
+.specimen__identity {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.specimen__brand {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.specimen__name {
+	margin: 0;
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--tracking-tight);
+	line-height: var(--leading-tight);
+	color: var(--color-ink);
+}
+
+.specimen__meta {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	color: var(--color-ink-muted);
+}
+
+.specimen__dims {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	color: var(--color-ink-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.specimen__cta {
+	margin-top: auto;
+	min-height: 44px;
+	padding: 0 var(--space-4);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-on-accent);
+	background-color: var(--color-accent);
+	border: 1px solid var(--color-accent-strong);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.specimen__cta:hover {
+	background-color: var(--color-accent-strong);
+}
+
+.specimen__cta:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.picker__specimen-empty {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	justify-content: center;
+	min-height: 0;
+}
+
+.picker__specimen-hint {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	text-align: center;
+	color: var(--color-ink-muted);
+}
+
 /* The bottom tab bar is mobile-only chrome. */
 .picker-bar {
 	display: none;
@@ -560,18 +877,19 @@ body {
 	/* The sheet rises from the bottom, above the persistent tab bar. */
 	.picker {
 		align-items: flex-end;
-		padding-bottom: calc(56px + env(safe-area-inset-bottom));
+		padding: 0 0 calc(56px + env(safe-area-inset-bottom));
 	}
 
 	.picker__panel {
 		width: 100%;
-		/* Tall sheet above the persistent tab bar, leaving a canvas peek so the
-		 * backdrop stays tappable. The always-on footprint is the 56px tab bar,
-		 * not the transient sheet. Short screens drop the peek (see below).
-		 * dvh (not vh) so MobileSafari's URL bar can't over-size the sheet. */
 		height: calc(100dvh - 56px - env(safe-area-inset-bottom) - 16dvh);
 		max-height: calc(100dvh - 56px - env(safe-area-inset-bottom));
 		border-radius: var(--radius-card) var(--radius-card) 0 0;
+	}
+
+	/* No specimen pane on mobile — the sheet must stay small. */
+	.picker__specimen {
+		display: none;
 	}
 
 	.picker__handle {
@@ -583,21 +901,44 @@ body {
 		background-color: var(--color-border-strong);
 	}
 
+	.picker__header {
+		align-items: center;
+		padding: var(--space-2) var(--space-4) var(--space-3);
+	}
+
 	/* The persistent tab bar is the tab switcher on mobile. */
-	.picker__tabs {
+	.picker__segmented {
 		display: none;
 	}
 
+	.picker__header-hint {
+		display: block;
+	}
+
+	/* The count lives in the search field on mobile; the status strip keeps only
+	 * the (keyboard-free) remove-board action. */
+	.picker__search-count {
+		display: inline;
+	}
+
+	.picker__keys {
+		display: none;
+	}
+
+	.picker__tools {
+		padding: var(--space-3) var(--space-4) var(--space-2);
+	}
+
+	.picker__status {
+		justify-content: flex-end;
+		padding: var(--space-1) var(--space-4) var(--space-2);
+	}
+
 	.picker__results {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-1);
+		padding: 0 var(--space-3) var(--space-2);
 	}
 
 	.picker-item {
-		flex-direction: row;
-		align-items: center;
-		gap: var(--space-3);
 		min-height: 56px;
 	}
 
@@ -605,6 +946,12 @@ body {
 		flex: 0 0 44px;
 		width: 44px;
 		height: 44px;
+	}
+
+	.picker-item__thumb--board {
+		flex: 0 0 60px;
+		width: 60px;
+		height: 40px;
 	}
 
 	.picker-bar {
@@ -623,25 +970,33 @@ body {
 	.picker-bar__tab {
 		display: inline-flex;
 		flex: 1 1 0;
+		flex-direction: column;
+		gap: 2px;
 		align-items: center;
 		justify-content: center;
 		min-height: 56px;
 		font-family: var(--font-sans);
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-2xs);
 		font-weight: var(--font-weight-medium);
 		color: var(--color-ink-muted);
 		background-color: transparent;
 		border: 0;
+		border-top: 2px solid transparent;
 		cursor: pointer;
 	}
 
 	.picker-bar__tab[aria-current] {
 		color: var(--color-accent);
+		border-top-color: var(--color-accent);
 	}
 
 	.picker-bar__tab:focus-visible {
 		outline: 2px solid var(--color-accent-strong);
 		outline-offset: -2px;
+	}
+
+	.picker-bar__icon {
+		display: block;
 	}
 }
 
@@ -667,15 +1022,24 @@ body {
 		font-size: var(--font-size-sm);
 	}
 
-	.picker__search {
+	.picker__eyebrow {
+		display: none;
+	}
+
+	.picker__tools {
 		padding: var(--space-2) var(--space-4);
 	}
 
-	/* Brand + chips share one horizontally-scrollable strip (no second row). */
+	.picker__header-hint {
+		display: none;
+	}
+
+	/* Short landscape: a wrapping chip set eats the little height there is, so
+	 * fall back to a single horizontally-scrollable strip. */
 	.picker__filters {
 		flex-wrap: nowrap;
 		overflow-x: auto;
-		padding: 0 var(--space-4) var(--space-2);
+		scrollbar-width: none;
 	}
 
 	.picker__brand,
@@ -685,11 +1049,6 @@ body {
 
 	.picker__chips {
 		flex-wrap: nowrap;
-		overflow: visible;
-	}
-
-	.picker__footer {
-		padding: var(--space-2) var(--space-4);
 	}
 }
 
