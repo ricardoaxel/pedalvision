@@ -1,4 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
+import { addBoard } from "./picker.ts";
 
 type TouchType = "touchStart" | "touchEnd" | "touchMove" | "touchCancel";
 
@@ -118,7 +119,7 @@ test.describe("touch gestures (CDP-injected, Chromium)", () => {
 		const { cx, cy, dispatch } = await openStage(page);
 		const stage = page.getByTestId("stage");
 
-		await page.getByTestId("add-board-boss-bcb-1000").click();
+		await addBoard(page, "boss-bcb-1000");
 		await expect(stage).toHaveAttribute("data-boards", "1");
 		await page.waitForTimeout(250);
 		const initial = await stage.getAttribute("data-positions");
@@ -164,7 +165,7 @@ test.describe("touch gestures (CDP-injected, Chromium)", () => {
 		const { cx, cy, dispatch } = await openStage(page);
 		const stage = page.getByTestId("stage");
 
-		await page.getByTestId("add-board-boss-bcb-1000").click();
+		await addBoard(page, "boss-bcb-1000");
 		await expect(stage).toHaveAttribute("data-boards", "1");
 		await page.waitForTimeout(250);
 		const initial = await stage.getAttribute("data-positions");

@@ -1,4 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
+import { addBoard, addPedal } from "./picker.ts";
 
 /** The blues-driver fixture (seed dims 7.3 × 13.02 cm). */
 const PEDAL_CM = { width: 7.3, height: 13.02 };
@@ -61,8 +62,8 @@ test("the action bar rotates a pedal in place across repeated presses", async ({
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await page.getByTestId("add-board-boss-bcb-1000").click();
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await expect(stage).toHaveAttribute("data-item-rotations", "0.00");
 
@@ -99,7 +100,7 @@ test("dragging the Transformer rotate handle spins a loose pedal", async ({
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
 	// No board → the pedal drops loose at the viewport centre.
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await expect(stage).toHaveAttribute("data-item-parents", "loose");
 	await expect(stage).toHaveAttribute("data-item-rotations", "0.00");
@@ -130,7 +131,7 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
 
-	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
 	await page.waitForTimeout(150);
 
@@ -141,7 +142,7 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 
 	// Select + rotate the board via its handle (same geometry as the P1-03 test).
 	await page.mouse.click(cx, cy);
-	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await expect(stage).not.toHaveAttribute("data-selected-board", "");
 	await page.mouse.move(cx, cy - 98);
 	await page.mouse.down();
 	await page.mouse.move(cx + 130, cy - 30, { steps: 12 });
@@ -153,7 +154,7 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 	const boardBefore = await readBoard(stage);
 
 	// Add a pedal to the (still selected) board, then rotate it via the handle.
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await expect(stage).toHaveAttribute("data-item-parents", "0");
 	await page.waitForTimeout(150);
@@ -200,8 +201,8 @@ test("a second pointer during a pedal rotation commits it (no lost rotation)", a
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await page.getByTestId("add-board-boss-bcb-1000").click();
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-item-rotations", "0.00");
 	await page.waitForTimeout(150);
 
@@ -254,7 +255,7 @@ test("picking a pedal off a rotated board keeps its visible rotation (no snap-ba
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
 	await page.waitForTimeout(150);
 
@@ -265,7 +266,7 @@ test("picking a pedal off a rotated board keeps its visible rotation (no snap-ba
 
 	// Rotate the board (same geometry as the P1-03 test).
 	await page.mouse.click(cx, cy);
-	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await expect(stage).not.toHaveAttribute("data-selected-board", "");
 	await page.mouse.move(cx, cy - 98);
 	await page.mouse.down();
 	await page.mouse.move(cx + 130, cy - 30, { steps: 12 });
@@ -276,7 +277,7 @@ test("picking a pedal off a rotated board keeps its visible rotation (no snap-ba
 	const board = await readBoard(stage);
 
 	// Add a pedal to the board, then start dragging it.
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-item-parents", "0");
 	await page.waitForTimeout(150);
 	const item = await readItem(stage);
@@ -325,8 +326,8 @@ test("the action bar stays inside a narrow portrait viewport", async ({
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await page.getByTestId("add-board-boss-bcb-1000").click();
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
 
 	const bar = page.getByTestId("item-action-bar");
 	await expect(bar).toBeVisible();
@@ -347,7 +348,7 @@ test("hovering a pedal sets the hover target (desktop outline wiring)", async ({
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	const selected = await stage.getAttribute("data-selected-item");
 	await page.waitForTimeout(150);

@@ -3,7 +3,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
 import { itemsByZ, useScene } from "../state/scene";
-import { selectSelectedItemUid, useSelection } from "../state/selection";
+import {
+	selectSelectedBoardUid,
+	selectSelectedItemUid,
+	useSelection,
+} from "../state/selection";
 import { type Point, useViewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
 import { DragLayer } from "./DragLayer";
@@ -44,6 +48,7 @@ export function Stage() {
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const selectedItemUid = useSelection(selectSelectedItemUid);
+	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const clearSelection = useSelection((state) => state.clearSelection);
 	const setHoveredItem = useSelection((state) => state.setHoveredItem);
 	const liftedItemUid = useDrag((state) => state.liftedUid);
@@ -178,6 +183,7 @@ export function Stage() {
 			data-item-rotations={itemRotations}
 			data-item-order={renderOrder}
 			data-selected-item={selectedItemUid ?? ""}
+			data-selected-board={selectedBoardUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
 			data-lifted-rotation={liftedRotationDeg ?? ""}
 		>

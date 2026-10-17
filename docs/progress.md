@@ -2,7 +2,7 @@
 
 **Current phase:** P1 — Canvas core (COMPLETE; phase gate PASSED 2026-10-17).
 **Next task:** **P2-01 — Picker modal** (search + brand/effect filters; mobile bottom tabs). Keep the temporary pickers' on-screen footprint small on mobile.
-**Last updated:** 2026-10-17 (P1 phase gate PASSED — review changes-required folded, P1 cleared for P2; owner workflow: model-failure alerting recorded)
+**Last updated:** 2026-10-17 (P2-01 started — task file created, designer "Parts Bin" direction **owner-approved**; implementation in progress)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
@@ -24,7 +24,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- _(none — P1 complete + phase gate PASSED; **P2-01 is next**)_.
+- **P2-01 — Picker modal** (task file `docs/tasks/P2-01-picker-modal.md` created this session). **Heavy design task.** Designer direction **"Parts Bin"** proposed + **owner-approved 2026-10-17** (owner chose: desktop card grid; implicit placement + footer hint). Replaces the temporary `BoardPicker`/`PedalPicker`; desktop modal + mobile bottom-tab sheet; small mobile footprint. Implementing now (build-cheap)..
 
 ## Follow-ups
 - **Always surface model/provider call failures (owner instruction, 2026-10-17).** Whenever a model or provider call fails — **free-quota/usage-limit exhausted**, **429/rate-limit**, **expired/invalid/revoked API key (401)**, or any provider error/timeout — **STOP and tell the owner immediately** (which `provider/model-id`, the actual error, and the suggested action). Never silently retry, silently substitute another model, or continue as if it succeeded. Applies especially to the **free vision models** used by the design gate (`opencode/nemotron-3.5-super-vl-free`, `opencode/deepseek-v4-flash-vision-exp`): if free vision quota is exhausted mid-review, report it right away so the owner can choose to wait for the reset or switch to a **paid** `opencode-go/*` vision model — never silently fall back to paid. Mirrored as a global rule in `~/.config/opencode/AGENTS.md`.

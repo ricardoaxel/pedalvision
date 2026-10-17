@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { addPedal } from "./picker.ts";
 
 test("reordering a pedal persists across a reload", async ({ page }) => {
 	await page.goto("/");
@@ -6,7 +7,7 @@ test("reordering a pedal persists across a reload", async ({ page }) => {
 	await expect(stage).toBeVisible();
 
 	// Two overlapping loose pedals: the original and its clone (z 1, on top).
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await page.getByTestId("duplicate-item").click();
 	await expect(stage).toHaveAttribute("data-items", "2");

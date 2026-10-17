@@ -1,4 +1,10 @@
 import { expect, test } from "@playwright/test";
+import {
+	addBoard,
+	addPedal,
+	openPicker,
+	removeSelectedBoard,
+} from "./picker.ts";
 
 test("app loads and renders the canvas stage", async ({ page }) => {
 	await page.goto("/");
@@ -93,16 +99,16 @@ test("adding a board places a selectable node at the viewport centre", async ({
 	await expect(stage).toBeVisible();
 	await expect(stage).toHaveAttribute("data-boards", "0");
 
-	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
 
 	// The board lands at the viewport centre, so a click there must hit the
-	// Konva node (selecting it and revealing the remove control). A click on
-	// empty canvas would clear selection instead.
+	// Konva node (selecting it). A click on empty canvas would clear the
+	// selection instead.
 	const box = await stage.boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
 	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await expect(stage).not.toHaveAttribute("data-selected-board", "");
 });
 
 test("rotating a selected board via the Transformer handle changes its rotation", async ({
@@ -112,7 +118,7 @@ test("rotating a selected board via the Transformer handle changes its rotation"
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
 
-	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
 	await expect(stage).toHaveAttribute("data-rotations", "0");
 	await page.waitForTimeout(150);
@@ -124,7 +130,7 @@ test("rotating a selected board via the Transformer handle changes its rotation"
 
 	// Select the board (placed at the viewport centre).
 	await page.mouse.click(cx, cy);
-	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await expect(stage).not.toHaveAttribute("data-selected-board", "");
 
 	// Drag the rotate handle (28 px above the board's top edge at zoom 1;
 	// PX_PER_CM 4 × heightCm 35.23 / 2 ≈ 70 px).
@@ -145,7 +151,7 @@ test("a second pointer during rotation commits the rotation (no lost transform)"
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
 
-	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
 	await page.waitForTimeout(150);
 	await expect(stage).toHaveAttribute("data-rotations", "0");
@@ -157,7 +163,7 @@ test("a second pointer during rotation commits the rotation (no lost transform)"
 
 	// Select, then start a rotation and hold it (handle ~98px above centre).
 	await page.mouse.click(cx, cy);
-	await expect(page.getByTestId("remove-board")).toBeVisible();
+	await expect(stage).not.toHaveAttribute("data-selected-board", "");
 	await page.mouse.move(cx, cy - 98);
 	await page.mouse.down();
 	await page.mouse.move(cx + 70, cy - 40, { steps: 8 });
@@ -194,10 +200,10 @@ test("adding a board and a pedal places both on the canvas", async ({
 	await expect(stage).toHaveAttribute("data-items", "0");
 
 	// Adding a board auto-selects it, so the pedal picker targets it.
-	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
 
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	// Parent index 0 = the only board.
 	await expect(stage).toHaveAttribute("data-item-parents", "0");
@@ -213,8 +219,8 @@ test("a pedal drags across boards; selection stays clean and the Transformer re-
 	await expect(stage).toBeVisible();
 
 	// Two small boards, both dropped at the viewport centre.
-	await page.getByTestId("add-board-d-addario-xpnd-1").click();
-	await page.getByTestId("add-board-boardmods-b").click();
+	await addBoard(page, "d-addario-xpnd-1");
+	await addBoard(page, "boardmods-b");
 	await expect(stage).toHaveAttribute("data-boards", "2");
 
 	const box = await stage.boundingBox();
@@ -230,7 +236,7 @@ test("a pedal drags across boards; selection stays clean and the Transformer re-
 
 	// Select board A (still at the centre) and add a pedal onto it.
 	await page.mouse.click(cx, cy);
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await expect(stage).toHaveAttribute("data-item-parents", "0");
 	const selected = await stage.getAttribute("data-selected-item");
@@ -263,9 +269,9 @@ test("a two-finger pan mid-drag drops the lifted pedal in place (pan interrupt)"
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
 
-	await page.getByTestId("add-board-boss-bcb-1000").click();
+	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await expect(stage).toHaveAttribute("data-item-parents", "0");
 	const selected = await stage.getAttribute("data-selected-item");
@@ -310,8 +316,8 @@ test("a press on a pedal during an active viewport gesture does not start a drag
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await page.getByTestId("add-board-boss-bcb-1000").click();
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
 	const before = await stage.getAttribute("data-item-positions");
 
 	const box = await stage.boundingBox();
@@ -355,8 +361,8 @@ test("a stray pointer or a button-less move ends the pedal drag", async ({
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
-	await page.getByTestId("add-board-boss-bcb-1000").click();
-	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
 	const selected = await stage.getAttribute("data-selected-item");
 
 	const box = await stage.boundingBox();
@@ -425,37 +431,47 @@ test("a stray pointer or a button-less move ends the pedal drag", async ({
 	await page.mouse.up();
 });
 
-test("the temporary pickers stay usable and non-overlapping on short viewports", async ({
-	page,
-}) => {
-	// 568×440, 568×320 and 667×320 are short screens (narrow and wide landscape)
-	// where the corner panels used to collapse the pedal list or overlap and cover
-	// the board picker's remove button (Copilot findings). All take the rail now.
+test("the picker stays usable on short/narrow viewports", async ({ page }) => {
+	// Portrait + short landscape phones: the persistent bottom tab bar is the
+	// small mobile chrome, the sheet is dismissible, and a canvas strip remains.
 	const stage = page.getByTestId("stage");
 	for (const { width, height } of [
-		{ width: 568, height: 440 },
+		{ width: 320, height: 568 },
 		{ width: 568, height: 320 },
 		{ width: 667, height: 320 },
 	]) {
 		await page.setViewportSize({ width, height });
 		await page.goto("/");
+		await expect(stage).toBeVisible();
 
-		// The pedal list has a real, scrollable height.
-		const list = page.locator('[data-testid="pedal-picker"] ul');
-		await expect(list).toBeVisible();
+		// The tab bar is always there (the small mobile footprint).
+		const barTab = page.getByTestId("picker-bar-boards");
+		await expect(barTab).toBeVisible();
+
+		// Opening the sheet leaves a canvas strip + the tab bar visible.
+		await barTab.click();
+		const panel = page.getByTestId("picker-panel");
+		await expect(panel).toBeVisible();
 		expect(
-			(await list.boundingBox())?.height ?? 0,
+			(await panel.boundingBox())?.height ?? 0,
+			`sheet covers the whole viewport at ${width}×${height}`,
+		).toBeLessThan(height - 40);
+		await expect(page.getByTestId("picker-bar-boards")).toBeVisible();
+
+		// Place a board, then remove it via the boards tab.
+		await page.getByTestId("add-board-boss-bcb-1000").click();
+		await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+		await expect(stage).toHaveAttribute("data-boards", "1");
+		await removeSelectedBoard(page);
+		await expect(stage).toHaveAttribute("data-boards", "0");
+
+		// The pedal results list has a real scrollable height.
+		await openPicker(page, "pedals");
+		const results = page.getByTestId("picker-results");
+		await expect(results).toBeVisible();
+		expect(
+			(await results.boundingBox())?.height ?? 0,
 			`pedal list empty at ${width}×${height}`,
 		).toBeGreaterThan(40);
-
-		// The board picker's remove control is visible and actually clickable (not
-		// covered by the pedal picker — `click()` times out if another node
-		// intercepts the pointer).
-		await page.getByTestId("add-board-boss-bcb-1000").click();
-		await expect(stage).toHaveAttribute("data-boards", "1");
-		const remove = page.getByTestId("remove-board");
-		await expect(remove).toBeVisible();
-		await remove.click();
-		await expect(stage).toHaveAttribute("data-boards", "0");
 	}
 });
