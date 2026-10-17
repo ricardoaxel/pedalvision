@@ -91,6 +91,20 @@ footprint on mobile** so the working canvas stays visible.
 - **Board rows use a glyph tile, not the board art** — the catalog board images
   are wide, mostly-transparent top-down outlines that shrink to an invisible
   sliver at tile scale; the specimen pane still shows the real board art at size.
+- **Picker thumbnails load CORS-first, then fall back to no-CORS** (owner bug,
+  2026-10-17 — "the BOSS CE-20 shows in the picker but never loads on the
+  canvas"). Root cause: the picker's plain no-CORS `<img>` cached a response
+  **without** `Access-Control-Allow-Origin`; the canvas's `crossOrigin` request
+  then reused that cached copy and failed the CORS check for hosts that only send
+  ACAO when the request carries an `Origin` (e.g. `static.roland.com`). Fix:
+  `PickerThumb` requests with `crossOrigin="anonymous"` first (so the CORS-clean
+  response is what gets cached) and retries once **without** CORS only if that
+  fails (keeps hotlinked no-CORS hosts visible in the DOM picker). The canvas
+  loader stays `crossOrigin`-only (export must stay untainted). Regression e2e:
+  `picker.spec.ts` "no cache poisoning". **Catalog follow-up:** the `url` contract
+  is CORS-clean (design.md §Assets), so the ~20 entries on non-CORS hosts
+  (`cdn-media.empowertribe.com`, `img201.yun300.cn`) should be re-sourced or
+  re-tagged — they render in the picker but fall back on the canvas.
 - **Filter row wraps** (desktop + mobile); only short landscape
   (`max-height:520px`) falls back to a single scrolling strip to protect the
   results height.

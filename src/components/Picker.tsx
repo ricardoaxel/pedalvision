@@ -676,11 +676,20 @@ function Specimen({
 }
 
 /**
- * Thumbnail for the ledger rows + the specimen plate. These are plain DOM
- * images (never drawn into Konva), so they deliberately do NOT set
- * `crossOrigin` — the picker must render hotlinked hosts that send no CORS
- * header. Only the canvas loader (`canvas/useImage.ts`) needs `crossOrigin`, to
- * keep the export canvas untainted — see ADR-003 §Brand image URLs.
+ * Thumbnail for the ledger rows + the specimen plate.
+ *
+ * It loads **CORS-first** (`crossOrigin="anonymous"`, mirroring the canvas
+ * `useImage` loader), then retries once **without** CORS, then falls back to a
+ * neutral tile. This order matters: a plain no-CORS load first poisons the HTTP
+ * cache with a response that has no `Access-Control-Allow-Origin`, so the
+ * canvas's later `crossOrigin` request reuses that cached copy and fails — for
+ * hosts that only send the header when the request carries an `Origin` (e.g.
+ * `static.roland.com`), the BOSS CE-20 thumbnail would then show in the picker
+ * but its canvas image would never load. Loading CORS-first caches the
+ * CORS-clean response; the no-CORS retry is safe here because these images are
+ * DOM-only (never drawn into Konva), so it can display hotlinked hosts that
+ * send no CORS header while the canvas correctly falls back for those.
+ * See ADR-003 §Brand image URLs.
  */
 function PickerThumb({
 	src,
@@ -691,13 +700,25 @@ function PickerThumb({
 	variant?: "row" | "specimen";
 	kind?: "pedal" | "board";
 }) {
-	// Scope the failure to the current src: a failed board must not suppress a
-	// later valid pedal image (and vice-versa) as the active item changes.
-	const [failedSrc, setFailedSrc] = useState<string | null>(null);
-	const erroring = failedSrc === src;
+	// Attempt state, scoped to the current `src` (a failed board must not
+	// suppress a later valid pedal image as the active item changes).
+	const [attempt, setAttempt] = useState<{ src: string; phase: Phase }>({
+		src,
+		phase: "cors",
+	});
+	const phase: Phase = attempt.src === src ? attempt.phase : "cors";
+	const bump = () =>
+		setAttempt((current) => ({
+			src,
+			phase:
+				(current.src === src ? current.phase : "cors") === "cors"
+					? "nocors"
+					: "failed",
+		}));
+	const crossOrigin = phase === "cors" ? "anonymous" : undefined;
 
 	if (variant === "specimen") {
-		if (erroring) {
+		if (phase === "failed") {
 			return (
 				<span
 					className="specimen__img picker-item__thumb--empty"
@@ -710,12 +731,13 @@ function PickerThumb({
 		}
 		return (
 			<img
-				key={src}
+				key={`${src}:${phase}`}
 				className="specimen__img"
 				src={src}
 				alt=""
 				loading="lazy"
-				onError={() => setFailedSrc(src)}
+				crossOrigin={crossOrigin}
+				onError={bump}
 			/>
 		);
 	}
@@ -735,7 +757,7 @@ function PickerThumb({
 		);
 	}
 
-	if (erroring) {
+	if (phase === "failed") {
 		return (
 			<span
 				className="picker-item__thumb picker-item__thumb--empty"
@@ -746,15 +768,18 @@ function PickerThumb({
 	}
 	return (
 		<img
-			key={src}
+			key={`${src}:${phase}`}
 			className="picker-item__thumb"
 			src={src}
 			alt=""
 			loading="lazy"
-			onError={() => setFailedSrc(src)}
+			crossOrigin={crossOrigin}
+			onError={bump}
 		/>
 	);
 }
+
+type Phase = "cors" | "nocors" | "failed";
 
 /** Neutral "board, no photo yet" glyph for an empty board tile. */
 function BoardGlyph() {

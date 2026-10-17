@@ -288,3 +288,41 @@ test("board rows show a board glyph tile (not a blank placeholder)", async ({
 		page.locator(".picker-item__thumb--glyph").first(),
 	).toBeVisible();
 });
+
+test("a CORS-clean pedal stays loadable with CORS after the picker shows it (no cache poisoning)", async ({
+	page,
+}) => {
+	// Regression: hashed before, the CE-20 (static.roland.com) showed in the
+	// picker but its canvas image failed. The picker's no-CORS load cached a
+	// response without ACAO, and the canvas's crossOrigin request then reused it.
+	// The picker now loads CORS-first, so a later crossOrigin load must succeed.
+	// Requires network.
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("CE-20");
+	const row = page.getByTestId("add-pedal-boss-ce-20-chorus-ensemble");
+	await expect(row).toBeVisible();
+	const thumb = row.locator("img.picker-item__thumb");
+	await expect
+		.poll(() => thumb.evaluate((el) => (el as HTMLImageElement).naturalWidth), {
+			timeout: 15_000,
+		})
+		.toBeGreaterThan(0);
+
+	// The canvas loads images with crossOrigin="anonymous" (canvas/useImage.ts);
+	// after the picker's load, that same request must still resolve.
+	const src = await thumb.getAttribute("src");
+	if (!src) throw new Error("thumbnail has no src");
+	const corsOk = await page.evaluate(
+		(url) =>
+			new Promise<boolean>((resolve) => {
+				const img = new Image();
+				img.crossOrigin = "anonymous";
+				img.onload = () => resolve(true);
+				img.onerror = () => resolve(false);
+				img.src = url;
+			}),
+		src,
+	);
+	expect(corsOk).toBe(true);
+});
