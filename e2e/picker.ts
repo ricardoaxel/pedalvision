@@ -2,6 +2,12 @@ import { expect, type Page } from "@playwright/test";
 
 export type PickerTab = "pedals" | "boards";
 
+/** Desktop toolbar trigger per tab (each opens the picker on its own tab). */
+const TOOLBAR_TRIGGER: Record<PickerTab, string> = {
+	pedals: "picker-open",
+	boards: "picker-open-board",
+};
+
 /**
  * Open the P2-01 picker on `tab` and wait for its panel. Desktop (≥1024px) has
  * toolbar icon buttons that open directly on a tab ("Add pedal" / "Add board");
@@ -12,9 +18,7 @@ export async function openPicker(page: Page, tab: PickerTab): Promise<void> {
 	if (await barTab.isVisible()) {
 		await barTab.click();
 	} else {
-		await page
-			.getByTestId(tab === "boards" ? "picker-open-board" : "picker-open")
-			.click();
+		await page.getByTestId(TOOLBAR_TRIGGER[tab]).click();
 	}
 	await expect(page.getByTestId("picker-panel")).toBeVisible();
 }

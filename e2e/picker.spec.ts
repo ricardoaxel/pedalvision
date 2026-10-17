@@ -97,6 +97,7 @@ test("mobile shows the persistent bottom tab bar and the sheet", async ({
 
 	await page.goto("/");
 	await expect(page.getByTestId("picker-open")).toBeHidden();
+	await expect(page.getByTestId("picker-open-board")).toBeHidden();
 
 	const barTab = page.getByTestId("picker-bar-pedals");
 	await expect(barTab).toBeVisible();
@@ -292,6 +293,18 @@ test("board rows show a board preview image (falling back to a glyph)", async ({
 			timeout: 15_000,
 		})
 		.toBeGreaterThan(0);
+});
+
+test("a board thumbnail falls back to the board glyph when its image fails", async ({
+	page,
+}) => {
+	// The glyph is only the failure fallback; exercise it by failing the assets.
+	await page.route("**/pedal-assets/boards/**", (route) => route.abort());
+	await page.goto("/");
+	await openPicker(page, "boards");
+	await expect(
+		page.locator(".picker-item__thumb--glyph").first(),
+	).toBeVisible();
 });
 
 test("the toolbar has separate Add-pedal and Add-board buttons (desktop)", async ({

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
+import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
 
 type Theme = "dark" | "light";
@@ -45,8 +46,8 @@ function App() {
 					title="Add pedal"
 					onClick={() => openPicker("pedals")}
 				>
-					<PedalGlyph />
-					<PlusGlyph />
+					<PedalIcon />
+					<PlusIcon />
 				</button>
 				<button
 					type="button"
@@ -57,8 +58,8 @@ function App() {
 					title="Add board"
 					onClick={() => openPicker("boards")}
 				>
-					<BoardGlyph />
-					<PlusGlyph />
+					<BoardIcon />
+					<PlusIcon />
 				</button>
 				<button type="button" className="hud-button" onClick={toggleTheme}>
 					{theme === "dark" ? "Light" : "Dark"} theme
@@ -72,64 +73,6 @@ function App() {
 				onClose={() => setPickerOpen(false)}
 			/>
 		</main>
-	);
-}
-
-/** Pedal glyph (20px, currentColor) for the "Add pedal" toolbar button. */
-function PedalGlyph() {
-	return (
-		<svg
-			width="20"
-			height="20"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.8"
-			strokeLinecap="round"
-			aria-hidden="true"
-		>
-			<rect x="5" y="3" width="14" height="18" rx="2" />
-			<circle cx="9.5" cy="8" r="1.4" />
-			<circle cx="14.5" cy="8" r="1.4" />
-			<path d="M9.5 13h5" />
-		</svg>
-	);
-}
-
-/** Board glyph (20px, currentColor) for the "Add board" toolbar button. */
-function BoardGlyph() {
-	return (
-		<svg
-			width="20"
-			height="20"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.8"
-			strokeLinecap="round"
-			aria-hidden="true"
-		>
-			<rect x="2.5" y="7" width="19" height="10" rx="2" />
-			<path d="M6 7v10M18 7v10" opacity="0.5" />
-		</svg>
-	);
-}
-
-/** Small plus (12px) marking both toolbar buttons as "add". */
-function PlusGlyph() {
-	return (
-		<svg
-			width="12"
-			height="12"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="2.4"
-			strokeLinecap="round"
-			aria-hidden="true"
-		>
-			<path d="M12 5v14M5 12h14" />
-		</svg>
 	);
 }
 

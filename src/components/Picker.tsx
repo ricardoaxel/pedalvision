@@ -11,6 +11,7 @@ import {
 } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
+import { BoardIcon, PedalIcon } from "./icons";
 import {
 	brandsOf,
 	effectLabel,
@@ -311,7 +312,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 				aria-current={tab === "pedals" ? "true" : undefined}
 				onClick={() => openTab("pedals")}
 			>
-				<BarIcon kind="pedal" />
+				<PedalIcon size={18} className="picker-bar__icon" />
 				Pedals
 			</button>
 			<button
@@ -321,7 +322,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 				aria-current={tab === "boards" ? "true" : undefined}
 				onClick={() => openTab("boards")}
 			>
-				<BarIcon kind="board" />
+				<BoardIcon size={18} className="picker-bar__icon" />
 				Boards
 			</button>
 		</nav>
@@ -371,7 +372,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 										aria-pressed={tab === "pedals"}
 										onClick={() => changeTab("pedals")}
 									>
-										<BarIcon kind="pedal" />
+										<PedalIcon size={16} />
 										Pedals
 									</button>
 									<button
@@ -381,7 +382,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 										aria-pressed={tab === "boards"}
 										onClick={() => changeTab("boards")}
 									>
-										<BarIcon kind="board" />
+										<BoardIcon size={16} />
 										Boards
 									</button>
 								</div>
@@ -727,7 +728,7 @@ function PickerThumb({
 					aria-hidden="true"
 					data-empty="true"
 				>
-					{kind === "board" ? <BoardGlyph /> : null}
+					{kind === "board" ? <BoardIcon size={22} strokeWidth={1.6} /> : null}
 				</span>
 			);
 		}
@@ -754,7 +755,7 @@ function PickerThumb({
 				className="picker-item__thumb picker-item__thumb--board picker-item__thumb--glyph"
 				aria-hidden="true"
 			>
-				<BoardGlyph />
+				<BoardIcon size={22} strokeWidth={1.6} />
 			</span>
 		) : (
 			<span
@@ -778,59 +779,3 @@ function PickerThumb({
 }
 
 type Phase = "cors" | "nocors" | "failed";
-
-/** Neutral "board, no photo yet" glyph for an empty board tile. */
-function BoardGlyph() {
-	return (
-		<svg
-			width="22"
-			height="22"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.6"
-			strokeLinecap="round"
-			aria-hidden="true"
-		>
-			<rect x="2.5" y="8" width="19" height="8" rx="2" />
-			<path d="M7 8v8M17 8v8" opacity="0.5" />
-		</svg>
-	);
-}
-
-/** Mobile bottom-bar glyphs (18px, currentColor). */
-function BarIcon({ kind }: { kind: "pedal" | "board" }) {
-	return kind === "pedal" ? (
-		<svg
-			className="picker-bar__icon"
-			width="18"
-			height="18"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.8"
-			strokeLinecap="round"
-			aria-hidden="true"
-		>
-			<rect x="5" y="3" width="14" height="18" rx="2" />
-			<circle cx="9.5" cy="8" r="1.4" />
-			<circle cx="14.5" cy="8" r="1.4" />
-			<path d="M9.5 13h5" />
-		</svg>
-	) : (
-		<svg
-			className="picker-bar__icon"
-			width="18"
-			height="18"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.8"
-			strokeLinecap="round"
-			aria-hidden="true"
-		>
-			<rect x="2.5" y="7" width="19" height="10" rx="2" />
-			<path d="M6 7v10M18 7v10" opacity="0.5" />
-		</svg>
-	);
-}
