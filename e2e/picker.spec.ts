@@ -364,3 +364,37 @@ test("a CORS-clean pedal stays loadable with CORS after the picker shows it (no 
 	);
 	expect(corsOk).toBe(true);
 });
+
+test("the canvas self-heals a poisoned image cache (CE-20)", async ({
+	page,
+}) => {
+	// Requires network. Regression for the CE-20 "shows in picker, blank on
+	// canvas" bug when the browser already cached a no-CORS (ACAO-less) copy:
+	// the loader retries under a fresh cache key and must still load.
+	await page.goto("/");
+	const src =
+		"https://static.roland.com/assets/images/products/main/ce_20_top_main.jpg";
+	const poisoned = await page.evaluate(
+		(url) =>
+			new Promise<boolean>((resolve) => {
+				const img = new Image();
+				img.onload = () => resolve(true);
+				img.onerror = () => resolve(false);
+				img.src = url;
+			}),
+		src,
+	);
+	expect(poisoned).toBe(true);
+
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("CE-20");
+	await page.getByTestId("add-pedal-boss-ce-20-chorus-ensemble").click();
+	const stage = page.getByTestId("stage");
+	await expect(stage).toHaveAttribute("data-items", "1");
+	// The canvas image eventually loads and never ends up "failed".
+	await expect
+		.poll(async () => (await stage.getAttribute("data-item-images")) ?? "", {
+			timeout: 15_000,
+		})
+		.toBe("loaded:1 failed:0");
+});

@@ -91,20 +91,27 @@ footprint on mobile** so the working canvas stays visible.
 - **Board rows use a glyph tile, not the board art** — the catalog board images
   are wide, mostly-transparent top-down outlines that shrink to an invisible
   sliver at tile scale; the specimen pane still shows the real board art at size.
-- **Picker thumbnails load CORS-first, then fall back to no-CORS** (owner bug,
-  2026-10-17 — "the BOSS CE-20 shows in the picker but never loads on the
-  canvas"). Root cause: the picker's plain no-CORS `<img>` cached a response
-  **without** `Access-Control-Allow-Origin`; the canvas's `crossOrigin` request
-  then reused that cached copy and failed the CORS check for hosts that only send
-  ACAO when the request carries an `Origin` (e.g. `static.roland.com`). Fix:
-  `PickerThumb` requests with `crossOrigin="anonymous"` first (so the CORS-clean
-  response is what gets cached) and retries once **without** CORS only if that
-  fails (keeps hotlinked no-CORS hosts visible in the DOM picker). The canvas
-  loader stays `crossOrigin`-only (export must stay untainted). Regression e2e:
-  `picker.spec.ts` "no cache poisoning". **Catalog follow-up:** the `url` contract
-  is CORS-clean (design.md §Assets), so the ~20 entries on non-CORS hosts
-  (`cdn-media.empowertribe.com`, `img201.yun300.cn`) should be re-sourced or
-  re-tagged — they render in the picker but fall back on the canvas.
+- **Image cache-poisoning self-heal** (owner bug, 2026-10-17 — "the BOSS CE-20
+  shows in the picker but never loads on the canvas"). Root cause: a plain
+  no-CORS load of a hotlinked `url` image cached a response **without**
+  `Access-Control-Allow-Origin`; the canvas's `crossOrigin` request then reused
+  that cached copy and failed the CORS check for hosts that only send ACAO when
+  the request carries an `Origin` (e.g. `static.roland.com`). Two parts to the
+  fix: (1) **load CORS-first** — `PickerThumb` and `canvas/useImage.ts` request
+  with `crossOrigin="anonymous"` first, so the CORS-clean response is cached;
+  (2) **self-heal a poisoned cache** — on failure each retries **once under a
+  distinct cache key** (`lib/cdn.ts` `bustCache`, a stable `?pedalvision-v=1`),
+  which fetches a fresh, CORS-clean response and works even when the browser
+  already holds the ACAO-less copy. The picker additionally retries **no-CORS**
+  so hosts with no ACAO still display in the DOM (the canvas falls back for
+  those, by design — export stays untainted; both attempts stay `crossOrigin`).
+  `Stage` exposes `data-item-images` (`loaded:N failed:N`) for the e2e.
+  Regression: `picker.spec.ts` "no cache poisoning" + "the canvas self-heals a
+  poisoned image cache (CE-20)" (verified it **fails** without the retry).
+  **Catalog follow-up:** the `url` contract is CORS-clean (design.md §Assets), so
+  the ~20 entries on non-CORS hosts (`cdn-media.empowertribe.com`,
+  `img201.yun300.cn`) should be re-sourced or re-tagged — they render in the
+  picker but fall back on the canvas.
 - **Filter row wraps** (desktop + mobile); only short landscape
   (`max-height:520px`) falls back to a single scrolling strip to protect the
   results height.

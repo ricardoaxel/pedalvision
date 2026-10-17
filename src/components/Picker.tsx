@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
-import { resolveImageUrl } from "../lib/cdn";
+import { bustCache, resolveImageUrl } from "../lib/cdn";
 import { centerOffset, placeItem } from "../lib/geometry";
 import {
 	boardDefinition,
@@ -710,15 +710,27 @@ function PickerThumb({
 		phase: "cors",
 	});
 	const phase: Phase = attempt.src === src ? attempt.phase : "cors";
+	// CORS-first (matches the canvas loader) so a clean cache entry is stored;
+	// `cors-bust` retries under a distinct key to self-heal a poisoned cache;
+	// `nocors` still displays hosts that send no ACAO (DOM needs no CORS).
+	const busted = bustCache(src);
+	const bustable = busted !== src;
+	const nextPhase = (current: Phase): Phase =>
+		current === "cors"
+			? bustable
+				? "cors-bust"
+				: "nocors"
+			: current === "cors-bust"
+				? "nocors"
+				: "failed";
 	const bump = () =>
 		setAttempt((current) => ({
 			src,
-			phase:
-				(current.src === src ? current.phase : "cors") === "cors"
-					? "nocors"
-					: "failed",
+			phase: nextPhase(current.src === src ? current.phase : "cors"),
 		}));
-	const crossOrigin = phase === "cors" ? "anonymous" : undefined;
+	const crossOrigin =
+		phase === "cors" || phase === "cors-bust" ? "anonymous" : undefined;
+	const url = phase === "cors-bust" ? busted : src;
 
 	if (variant === "specimen") {
 		if (phase === "failed") {
@@ -736,7 +748,7 @@ function PickerThumb({
 			<img
 				key={`${src}:${phase}`}
 				className="specimen__img"
-				src={src}
+				src={url}
 				alt=""
 				loading="lazy"
 				crossOrigin={crossOrigin}
@@ -769,7 +781,7 @@ function PickerThumb({
 		<img
 			key={`${src}:${phase}`}
 			className={`picker-item__thumb${boardClass}`}
-			src={src}
+			src={url}
 			alt=""
 			loading="lazy"
 			crossOrigin={crossOrigin}
@@ -778,4 +790,4 @@ function PickerThumb({
 	);
 }
 
-type Phase = "cors" | "nocors" | "failed";
+type Phase = "cors" | "cors-bust" | "nocors" | "failed";

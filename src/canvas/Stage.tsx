@@ -12,6 +12,7 @@ import { type Point, useViewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
 import { DragLayer } from "./DragLayer";
 import { GridLayer } from "./GridLayer";
+import { imageStatusSummary, subscribeImageStatus } from "./imageStatus";
 import { LooseItemLayer } from "./LooseItemLayer";
 import { SelectionLayer } from "./SelectionLayer";
 import { useCanvasTheme } from "./useCanvasTheme";
@@ -164,6 +165,18 @@ export function Stage() {
 				apply(state.hoveredItemUid);
 			}
 		});
+	}, []);
+
+	// Canvas image load statuses (P2-01 self-heal) → `data-item-images`, written
+	// imperatively so an image loading never re-renders the stage.
+	useEffect(() => {
+		const apply = () => {
+			const element = containerRef.current;
+			if (!element) return;
+			element.dataset.itemImages = imageStatusSummary();
+		};
+		apply();
+		return subscribeImageStatus(apply);
 	}, []);
 
 	return (
