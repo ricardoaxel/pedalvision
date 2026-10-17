@@ -1,6 +1,6 @@
 # P2-01: Picker modal
 
-**Phase:** P2 · **Status:** in review — PR #17 · **Model:** build-cheap
+**Phase:** P2 · **Status:** done (merged 2026-10-17, PR #17, squash `36734a2`) · **Model:** build-cheap
 
 ## Goal
 Replace the two temporary side-panel pickers (`src/components/BoardPicker.tsx` +
