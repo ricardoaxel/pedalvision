@@ -327,6 +327,34 @@ test("the toolbar has separate Add-pedal and Add-board buttons (desktop)", async
 	);
 });
 
+test("the picker loads thumbnails CORS-first (clean cache entry)", async ({
+	page,
+}) => {
+	// The float fix: the picker's FIRST thumbnail request must be crossOrigin
+	// (CORS-clean), not no-CORS — otherwise it caches an ACAO-less response that
+	// later poisons the canvas's crossOrigin request.
+	const PNG = Buffer.from(
+		"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+		"base64",
+	);
+	await page.route("**/ce_20_top_main.jpg*", (route) =>
+		route.fulfill({
+			status: 200,
+			contentType: "image/png",
+			body: PNG,
+			headers: { "access-control-allow-origin": "*" },
+		}),
+	);
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("CE-20");
+	const thumb = page
+		.getByTestId("add-pedal-boss-ce-20-chorus-ensemble")
+		.locator("img.picker-item__thumb");
+	await expect(thumb).toBeVisible();
+	await expect(thumb).toHaveAttribute("crossorigin", "anonymous");
+});
+
 test("the canvas self-heals a poisoned image cache (offline simulation)", async ({
 	page,
 }) => {
