@@ -7,6 +7,7 @@ import {
 	type EffectType,
 } from "../catalog/schema";
 import { resolveImageUrl } from "../lib/cdn";
+import { centerOffset } from "../lib/geometry";
 import { boardFootprint, useScene } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
@@ -15,6 +16,7 @@ import {
 	effectLabel,
 	filterBoards,
 	filterPedals,
+	pedalBrands,
 	toggleEffectType,
 } from "./pickerFilter";
 
@@ -57,6 +59,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const [showAllEffects, setShowAllEffects] = useState(false);
 
 	const panelRef = useRef<HTMLDivElement>(null);
+	const barRef = useRef<HTMLElement>(null);
 	const searchRef = useRef<HTMLInputElement>(null);
 	const returnFocusRef = useRef<HTMLElement | null>(null);
 
@@ -101,10 +104,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		return () => window.removeEventListener("keydown", onKey);
 	}, [open, onClose]);
 
-	const pedalBrands = useMemo(
-		() => brandsOf(catalog.pedals.filter((item) => item.category === "pedal")),
-		[],
-	);
+	const pedalBrandOptions = useMemo(() => pedalBrands(catalog.pedals), []);
 	const boardBrands = useMemo(() => brandsOf(catalog.boards), []);
 
 	const pedals = useMemo(
@@ -132,32 +132,41 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const handleAddPedal = (pedal: CatalogPedal) => {
 		if (targetBoard) {
 			const footprint = boardFootprint(targetBoard);
-			const uid = addItem(pedal.id, "pedal", targetBoard.uid, {
-				x: footprint.widthCm / 2 - pedal.widthCm / 2,
-				y: footprint.heightCm / 2 - pedal.heightCm / 2,
-			});
+			const offset = centerOffset(
+				footprint.widthCm,
+				footprint.heightCm,
+				pedal.widthCm,
+				pedal.heightCm,
+			);
+			const uid = addItem(pedal.id, "pedal", targetBoard.uid, offset);
 			selectItem(uid);
 		} else {
 			const { scale, x, y, size } = useViewport.getState();
 			const center = viewportCenterCm(size, { scale, x, y });
+			const offset = centerOffset(0, 0, pedal.widthCm, pedal.heightCm);
 			const uid = addItem(pedal.id, "pedal", null, {
-				x: center.x - pedal.widthCm / 2,
-				y: center.y - pedal.heightCm / 2,
+				x: center.x + offset.x,
+				y: center.y + offset.y,
 			});
 			selectItem(uid);
 		}
 		onClose();
 	};
 
-	// Keep Tab inside the dialog (ARIA modal).
+	// Keep Tab inside the dialog (ARIA modal). The mobile tab switcher lives
+	// INSIDE the dialog when open, so it is part of the trap (and reachable by
+	// screen readers) rather than outside the modal scope.
 	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		if (event.key !== "Tab") return;
-		const focusables = [
-			...(panelRef.current?.querySelectorAll<HTMLElement>(
-				'button, input, select, a[href], [tabindex]:not([tabindex="-1"])',
-			) ?? []),
-			// Exclude the desktop-only tabs while they're display:none on mobile.
-		].filter((element) => element.offsetParent !== null);
+		const selector =
+			'button, input, select, a[href], [tabindex]:not([tabindex="-1"])';
+		const focusables = [panelRef.current, barRef.current]
+			.flatMap((root) => [
+				...(root?.querySelectorAll<HTMLElement>(selector) ?? []),
+			])
+			// Exclude the desktop-only tabs while they're display:none on mobile
+			// (and the bar while it's display:none on desktop).
+			.filter((element) => element.offsetParent !== null);
 		if (focusables.length === 0) return;
 		const first = focusables[0];
 		const last = focusables[focusables.length - 1];
@@ -170,34 +179,46 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		}
 	};
 
+	// When collapsed, always keep any SELECTED effect type visible (even one
+	// outside the preview) so an active filter is never invisible/unremovable.
+	const effectPreview = EFFECT_TYPES.slice(0, EFFECT_CHIP_PREVIEW);
 	const visibleEffects = showAllEffects
 		? EFFECT_TYPES
-		: EFFECT_TYPES.slice(0, EFFECT_CHIP_PREVIEW);
-	const brands = tab === "boards" ? boardBrands : pedalBrands;
+		: [
+				...effectPreview,
+				...effectTypes.filter((type) => !effectPreview.includes(type)),
+			];
+	const brands = tab === "boards" ? boardBrands : pedalBrandOptions;
 	const count = tab === "boards" ? filteredBoards.length : pedals.length;
+
+	// The mobile bottom tab bar. Rendered inside the dialog while open (so the
+	// modal's switcher is in the AT/focus scope) and standalone while closed.
+	const tabBar = (
+		<nav className="picker-bar" aria-label="Catalog">
+			<button
+				type="button"
+				className="picker-bar__tab"
+				data-testid="picker-bar-pedals"
+				aria-current={tab === "pedals" ? "true" : undefined}
+				onClick={() => openTab("pedals")}
+			>
+				Pedals
+			</button>
+			<button
+				type="button"
+				className="picker-bar__tab"
+				data-testid="picker-bar-boards"
+				aria-current={tab === "boards" ? "true" : undefined}
+				onClick={() => openTab("boards")}
+			>
+				Boards
+			</button>
+		</nav>
+	);
 
 	return (
 		<>
-			<nav className="picker-bar" aria-label="Catalog">
-				<button
-					type="button"
-					className="picker-bar__tab"
-					data-testid="picker-bar-pedals"
-					aria-current={tab === "pedals" ? "page" : undefined}
-					onClick={() => openTab("pedals")}
-				>
-					Pedals
-				</button>
-				<button
-					type="button"
-					className="picker-bar__tab"
-					data-testid="picker-bar-boards"
-					aria-current={tab === "boards" ? "page" : undefined}
-					onClick={() => openTab("boards")}
-				>
-					Boards
-				</button>
-			</nav>
+			{open ? null : tabBar}
 
 			{open ? (
 				<div className="picker" data-testid="picker">
@@ -460,6 +481,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 							)}
 						</footer>
 					</div>
+					{tabBar}
 				</div>
 			) : null}
 		</>

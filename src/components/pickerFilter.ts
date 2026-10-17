@@ -67,6 +67,14 @@ export function brandsOf(items: { brand: string }[]): string[] {
 	);
 }
 
+/**
+ * The brands offered in the Pedals tab's filter menu. Supplies are excluded
+ * (they are a different tab/task), so a supply-only brand must not appear.
+ */
+export function pedalBrands(pedals: CatalogPedal[]): string[] {
+	return brandsOf(pedals.filter((pedal) => pedal.category === "pedal"));
+}
+
 /** Toggle one effect type in/out of the selected set (order preserved). */
 export function toggleEffectType(
 	selected: EffectType[],

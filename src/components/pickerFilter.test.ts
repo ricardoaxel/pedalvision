@@ -5,6 +5,7 @@ import {
 	effectLabel,
 	filterBoards,
 	filterPedals,
+	pedalBrands,
 	toggleEffectType,
 } from "./pickerFilter";
 
@@ -55,6 +56,12 @@ const PEDALS: CatalogPedal[] = [
 		effectTypes: ["phaser"],
 	}),
 	pedal({ id: "boss-psu", name: "Power Supply", category: "supply" }),
+	pedal({
+		id: "voodoo-psu",
+		brand: "Voodoo Lab",
+		name: "Pedal Power",
+		category: "supply",
+	}),
 ];
 
 describe("filterPedals", () => {
@@ -129,7 +136,14 @@ describe("filterBoards", () => {
 
 describe("brandsOf", () => {
 	it("returns sorted distinct brands", () => {
-		expect(brandsOf(PEDALS)).toEqual(["Boss", "MXR"]);
+		expect(brandsOf(PEDALS)).toEqual(["Boss", "MXR", "Voodoo Lab"]);
+	});
+});
+
+describe("pedalBrands", () => {
+	it("excludes supply-only brands from the pedals menu", () => {
+		// "Voodoo Lab" only makes supplies in the fixture → must not be offered.
+		expect(pedalBrands(PEDALS)).toEqual(["Boss", "MXR"]);
 	});
 });
 
