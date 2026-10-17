@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
 	boardToWorld,
+	centerOffset,
 	cmToDisplay,
 	cmToPx,
 	PX_PER_CM,
@@ -40,6 +41,19 @@ describe("cmToPx / pxToCm", () => {
 				expect(pxToCm(cmToPx(cm, zoom), zoom)).toBeCloseTo(cm, 10);
 			}
 		}
+	});
+});
+
+describe("centerOffset", () => {
+	it("centres a smaller footprint inside a larger one", () => {
+		expect(centerOffset(40, 20, 7.3, 13.02)).toEqual({
+			x: (40 - 7.3) / 2,
+			y: (20 - 13.02) / 2,
+		});
+	});
+
+	it("returns negative halves when centring an item on a point", () => {
+		expect(centerOffset(0, 0, 7.3, 13.02)).toEqual({ x: -3.65, y: -6.51 });
 	});
 });
 

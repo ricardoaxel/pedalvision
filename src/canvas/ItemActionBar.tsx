@@ -25,12 +25,9 @@ export const ACTION_ROTATE_STEP = 45;
 const GAP = 10;
 /** Keep the bar this far inside the canvas edges (px). */
 const MARGIN = 8;
-/** The temp picker rail (rents the left edge on short screens) — keep clear. */
-const RAIL_MEDIA = "(max-height: 620px) and (orientation: landscape)";
-const RAIL_LEFT = 16; // matches --space-4
-const RAIL_MAX_WIDTH = 220;
-const RAIL_WIDTH_FRACTION = 0.45;
-const RAIL_CLEARANCE = 16;
+/** Mobile keeps the picker bottom tab bar clear (P2-01) — bar height (px). */
+const MOBILE_MEDIA = "(max-width: 1023px)";
+const TAB_BAR_HEIGHT = 56;
 /** Buttons in the leading z-order cluster (kept as one non-breaking group). */
 const Z_ACTION_COUNT = 4;
 
@@ -106,12 +103,12 @@ export function ItemActionBar() {
 	const barRef = useRef<HTMLDivElement>(null);
 	const [barWidth, setBarWidth] = useState(0);
 	const [barHeight, setBarHeight] = useState(0);
-	// On short screens the temp pickers stack in a left rail; the bar must not
-	// paint over it.
-	const [railPresent, setRailPresent] = useState(false);
+	// Mobile shows the picker's persistent bottom tab bar; the bar must not
+	// paint over it (P2-01).
+	const [mobile, setMobile] = useState(false);
 	useEffect(() => {
-		const query = window.matchMedia(RAIL_MEDIA);
-		const update = () => setRailPresent(query.matches);
+		const query = window.matchMedia(MOBILE_MEDIA);
+		const update = () => setMobile(query.matches);
 		update();
 		query.addEventListener("change", update);
 		return () => query.removeEventListener("change", update);
@@ -181,27 +178,14 @@ export function ItemActionBar() {
 	const maxY = Math.max(...corners.map((corner) => corner.y));
 
 	const half = barWidth / 2;
-	const railRight = railPresent
-		? RAIL_LEFT +
-			Math.min(RAIL_MAX_WIDTH, viewportSize.width * RAIL_WIDTH_FRACTION)
-		: 0;
 	const viewportMin = half + MARGIN;
 	const viewportMax = Math.max(viewportMin, viewportSize.width - half - MARGIN);
-	const railBound = railPresent
-		? railRight + RAIL_CLEARANCE + half
-		: viewportMin;
-	// Only enforce the rail clearance when the bar still fits on-screen to the
-	// right of the rail; when the screen is too narrow for both, keep the whole
-	// bar inside the viewport instead of pushing Delete off the right edge.
-	const minLeft =
-		railBound + half <= viewportSize.width - MARGIN
-			? Math.max(viewportMin, railBound)
-			: viewportMin;
-	const left = clamp((minX + maxX) / 2, minLeft, viewportMax);
+	const bottomReserve = mobile ? TAB_BAR_HEIGHT : 0;
+	const left = clamp((minX + maxX) / 2, viewportMin, viewportMax);
 	const top = clamp(
 		maxY + GAP,
 		MARGIN,
-		Math.max(MARGIN, viewportSize.height - barHeight - MARGIN),
+		Math.max(MARGIN, viewportSize.height - bottomReserve - barHeight - MARGIN),
 	);
 
 	const button = (action: ActionDef, index: number) => (

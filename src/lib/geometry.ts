@@ -63,6 +63,23 @@ export function pxToCm(px: number, zoom = 1): number {
 }
 
 /**
+ * The top-left offset that centres an item footprint inside a container
+ * footprint (both cm) — e.g. dropping a pedal at a board's centre. Centres the
+ * unsnugged rectangles; callers apply it in the container's local frame.
+ */
+export function centerOffset(
+	containerWidthCm: number,
+	containerHeightCm: number,
+	itemWidthCm: number,
+	itemHeightCm: number,
+): Point {
+	return {
+		x: (containerWidthCm - itemWidthCm) / 2,
+		y: (containerHeightCm - itemHeightCm) / 2,
+	};
+}
+
+/**
  * Rotate `point` around `center` by `deg` degrees, clockwise-positive
  * (screen coordinates, y growing down — matches Konva's `rotation`).
  */

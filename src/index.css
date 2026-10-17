@@ -26,8 +26,8 @@ body {
 }
 
 /*
- * The app is the canvas: a full-bleed Stage host. Chrome (toolbar, panels,
- * picker) is layered on in later P1/P2 tasks.
+ * The app is the canvas: a full-bleed Stage host. Chrome (toolbar, picker,
+ * action bar) is layered on top.
  */
 .app {
 	position: fixed;
@@ -48,12 +48,44 @@ body {
 	cursor: grabbing;
 }
 
-/* Minimal chrome: theme toggle (Konva can't read CSS vars — see theme.ts). */
-.hud-button {
+/* Top-right chrome cluster: the primary "Add" trigger + theme toggle. */
+.app-toolbar {
 	position: absolute;
 	top: var(--space-4);
 	right: var(--space-4);
 	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.app-toolbar__add {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: var(--space-2) var(--space-4);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-on-accent);
+	background-color: var(--color-accent);
+	border: 1px solid var(--color-accent-strong);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
+	cursor: pointer;
+}
+
+.app-toolbar__add:hover {
+	background-color: var(--color-accent-strong);
+}
+
+.app-toolbar__add:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+/* Minimal chrome: theme toggle (Konva can't read CSS vars — see theme.ts). */
+.hud-button {
 	display: inline-flex;
 	align-items: center;
 	min-height: 44px;
@@ -76,173 +108,6 @@ body {
 }
 
 .hud-button:focus-visible {
-	outline: 2px solid var(--color-accent-strong);
-	outline-offset: 2px;
-}
-
-/* Temporary board picker (P1-03) — a plain list of catalog boards. Replaced by
- * the picker modal in P2-01. */
-.board-picker {
-	position: absolute;
-	top: var(--space-4);
-	left: var(--space-4);
-	z-index: 1;
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-2);
-	width: min(240px, calc(100vw - var(--space-5) * 2));
-	max-height: min(320px, 40vh);
-	padding: var(--space-3);
-	color: var(--color-ink);
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-card);
-	box-shadow: var(--shadow-raised);
-}
-
-.board-picker__title {
-	margin: 0;
-	font-family: var(--font-mono);
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-medium);
-	letter-spacing: var(--tracking-wide);
-	text-transform: uppercase;
-	color: var(--color-ink-muted);
-}
-
-.board-picker__list {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	min-height: 0;
-	margin: 0;
-	padding: 0;
-	overflow-y: auto;
-	list-style: none;
-}
-
-.board-picker__item {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	width: 100%;
-	min-height: 44px;
-	padding: var(--space-2);
-	font-family: var(--font-sans);
-	font-size: var(--font-size-sm);
-	text-align: left;
-	color: var(--color-ink);
-	background-color: transparent;
-	border: 1px solid transparent;
-	border-radius: var(--radius-control);
-	cursor: pointer;
-}
-
-.board-picker__item:hover {
-	background-color: var(--color-surface-raised);
-}
-
-.board-picker__item:focus-visible {
-	outline: 2px solid var(--color-accent-strong);
-	outline-offset: 2px;
-}
-
-.board-picker__dims {
-	font-family: var(--font-mono);
-	font-size: var(--font-size-xs);
-	color: var(--color-ink-muted);
-}
-
-.board-picker__remove {
-	min-height: 44px;
-	padding: var(--space-2);
-	font-family: var(--font-sans);
-	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-medium);
-	color: var(--color-danger);
-	background-color: transparent;
-	border: 1px solid var(--color-danger-border);
-	border-radius: var(--radius-control);
-	cursor: pointer;
-}
-
-.board-picker__remove:hover {
-	background-color: var(--color-danger-surface);
-}
-
-.board-picker__remove:focus-visible {
-	outline: 2px solid var(--color-accent-strong);
-	outline-offset: 2px;
-}
-
-/* Temporary pedal picker (P1-04) — a plain catalog list, anchored bottom-left so
- * it doesn't collide with the board picker. Replaced by the picker modal in
- * P2-01. */
-.pedal-picker {
-	position: absolute;
-	bottom: var(--space-4);
-	left: var(--space-4);
-	z-index: 1;
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-2);
-	width: min(240px, calc(100vw - var(--space-5) * 2));
-	max-height: min(340px, 42vh);
-	padding: var(--space-3);
-	color: var(--color-ink);
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-card);
-	box-shadow: var(--shadow-raised);
-}
-
-.pedal-picker__title {
-	margin: 0;
-	font-family: var(--font-mono);
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-medium);
-	letter-spacing: var(--tracking-wide);
-	text-transform: uppercase;
-	color: var(--color-ink-muted);
-}
-
-.pedal-picker__hint {
-	margin: 0;
-	font-family: var(--font-mono);
-	font-size: var(--font-size-xs);
-	color: var(--color-ink-muted);
-}
-
-.pedal-picker__list {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	min-height: 0;
-	margin: 0;
-	padding: 0;
-	overflow-y: auto;
-	list-style: none;
-}
-
-.pedal-picker__item {
-	width: 100%;
-	min-height: 44px;
-	padding: var(--space-2);
-	font-family: var(--font-sans);
-	font-size: var(--font-size-sm);
-	text-align: left;
-	color: var(--color-ink);
-	background-color: transparent;
-	border: 1px solid transparent;
-	border-radius: var(--radius-control);
-	cursor: pointer;
-}
-
-.pedal-picker__item:hover {
-	background-color: var(--color-surface-raised);
-}
-
-.pedal-picker__item:focus-visible {
 	outline: 2px solid var(--color-accent-strong);
 	outline-offset: 2px;
 }
@@ -338,64 +203,493 @@ body {
 	}
 }
 
-/* Temporary pickers (P1-03/P1-04). Normally they sit in the two left corners
- * (desktop: top-left + bottom-left; phones: trimmed). On SHORT LANDSCAPE screens
- * the corner panels can't both keep a usable list (26vh/42vh leaves less than the
- * chrome), and the later-painted pedal picker can cover the board picker's
- * "remove" button, so there they stack in one left rail that splits the height.
- * `display: contents` keeps the normal (tall) layout untouched. */
-.picker-rail {
-	display: contents;
+/* ---------------------------------------------------------------------------
+ * Picker (P2-01) — "Parts Bin". Desktop: centered modal. Mobile (<1024px):
+ * persistent bottom tab bar + dismissible sheet with a canvas peek.
+ * ------------------------------------------------------------------------- */
+
+.picker {
+	position: fixed;
+	inset: 0;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-@media (max-width: 640px) {
-	.board-picker,
-	.pedal-picker {
-		width: min(220px, calc(100vw - var(--space-5) * 2));
-		max-height: 26vh;
-		padding: var(--space-2);
+.picker__scrim {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	border: 0;
+	background-color: var(--color-scrim);
+	cursor: pointer;
+}
+
+.picker__panel {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	width: min(820px, 92vw);
+	height: min(640px, 82vh);
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-raised);
+	overflow: hidden;
+}
+
+.picker__handle {
+	display: none;
+}
+
+/* Only the results region flexes/shrinks; the chrome keeps its content height
+ * so a short screen can't collapse the filters or footer. */
+.picker__header,
+.picker__search,
+.picker__filters,
+.picker__footer {
+	flex: 0 0 auto;
+}
+
+.picker__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding: var(--space-4) var(--space-5);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.picker__title {
+	margin: 0;
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-semibold);
+}
+
+.picker__close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.picker__close:hover {
+	color: var(--color-ink);
+	/* Distinct from the elevated panel in BOTH themes (surface-raised is white
+	 * in light, so it would be an invisible hover there). */
+	background-color: var(--color-input-bg);
+}
+
+.picker__close:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.picker__tabs {
+	display: flex;
+	gap: var(--space-4);
+	padding: 0 var(--space-5);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.picker__tab {
+	min-height: 44px;
+	padding: var(--space-2) 0;
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+}
+
+.picker__tab[aria-pressed="true"] {
+	color: var(--color-accent);
+	border-bottom-color: var(--color-accent);
+}
+
+.picker__tab:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.picker__search {
+	padding: var(--space-4) var(--space-5) var(--space-3);
+}
+
+.picker__search-input {
+	width: 100%;
+	min-height: 44px;
+	padding: var(--space-2) var(--space-3);
+	font-family: var(--font-sans);
+	/* 16px prevents iOS auto-zoom on focus. */
+	font-size: var(--font-size-md);
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+}
+
+.picker__search-input::placeholder {
+	color: var(--color-ink-muted);
+}
+
+.picker__search-input:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 1px;
+}
+
+.picker__filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2);
+	padding: 0 var(--space-5) var(--space-3);
+}
+
+.picker__brand {
+	min-height: 36px;
+	max-width: 180px;
+	padding: var(--space-1) var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+}
+
+.picker__brand:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.picker__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.picker__chip {
+	min-height: 32px;
+	padding: var(--space-1) var(--space-3);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-xs);
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-pill);
+	cursor: pointer;
+}
+
+.picker__chip[aria-pressed="true"] {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border-color: var(--color-accent-border);
+}
+
+.picker__chip:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.picker__chip--more {
+	font-weight: var(--font-weight-medium);
+	color: var(--color-accent);
+	background-color: transparent;
+	border-style: dashed;
+}
+
+.picker__results {
+	display: grid;
+	flex: 1 1 auto;
+	grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+	gap: var(--space-3);
+	min-height: 0;
+	padding: 0 var(--space-5) var(--space-4);
+	overflow-y: auto;
+}
+
+.picker-item {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+	min-height: 44px;
+	padding: var(--space-2);
+	text-align: left;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.picker-item:hover {
+	/* input-bg differs from the elevated panel in both themes (see above). */
+	background-color: var(--color-input-bg);
+}
+
+.picker-item:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.picker-item__thumb {
+	display: block;
+	width: 100%;
+	height: 96px;
+	object-fit: contain;
+	/* Light tile in both themes so dark product photos read (P2-01). */
+	background-color: var(--color-thumb-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+}
+
+.picker-item__text {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	min-width: 0;
+}
+
+.picker-item__name {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink);
+}
+
+.picker-item__brand {
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.picker-item__dims {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.picker__empty {
+	grid-column: 1 / -1;
+	margin: 0;
+	padding: var(--space-5) 0;
+	font-size: var(--font-size-sm);
+	text-align: center;
+	color: var(--color-ink-muted);
+}
+
+.picker__clear-inline {
+	padding: 0;
+	font: inherit;
+	color: var(--color-accent);
+	background: none;
+	border: 0;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.picker__footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding: var(--space-3) var(--space-5);
+	border-top: 1px solid var(--color-border);
+}
+
+.picker__count {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.picker__hint {
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.picker__remove {
+	min-height: 36px;
+	padding: var(--space-1) var(--space-3);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-danger);
+	background-color: transparent;
+	border: 1px solid var(--color-danger-border);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.picker__remove:hover {
+	background-color: var(--color-danger-surface);
+}
+
+.picker__remove:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+/* The bottom tab bar is mobile-only chrome. */
+.picker-bar {
+	display: none;
+}
+
+@media (max-width: 1023px) {
+	/* The primary Add button is redundant with the tab bar on mobile. */
+	.app-toolbar__add {
+		display: none;
 	}
-}
 
-/* Short AND landscape: the corner panels can't both keep a usable list there.
- * (Short portrait phones keep the normal corners — a left rail would collide
- * with the on-selection action bar.) */
-@media (max-height: 620px) and (orientation: landscape) {
-	.picker-rail {
-		position: absolute;
-		top: var(--space-4);
-		bottom: var(--space-4);
-		left: var(--space-4);
-		z-index: 1;
+	/* The sheet rises from the bottom, above the persistent tab bar. */
+	.picker {
+		align-items: flex-end;
+		padding-bottom: calc(56px + env(safe-area-inset-bottom));
+	}
+
+	.picker__panel {
+		width: 100%;
+		/* Tall sheet above the persistent tab bar, leaving a canvas peek so the
+		 * backdrop stays tappable. The always-on footprint is the 56px tab bar,
+		 * not the transient sheet. Short screens drop the peek (see below).
+		 * dvh (not vh) so MobileSafari's URL bar can't over-size the sheet. */
+		height: calc(100dvh - 56px - env(safe-area-inset-bottom) - 16dvh);
+		max-height: calc(100dvh - 56px - env(safe-area-inset-bottom));
+		border-radius: var(--radius-card) var(--radius-card) 0 0;
+	}
+
+	.picker__handle {
+		display: block;
+		width: 36px;
+		height: 4px;
+		margin: var(--space-2) auto var(--space-1);
+		border-radius: var(--radius-pill);
+		background-color: var(--color-border-strong);
+	}
+
+	/* The persistent tab bar is the tab switcher on mobile. */
+	.picker__tabs {
+		display: none;
+	}
+
+	.picker__results {
 		display: flex;
 		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.picker-item {
+		flex-direction: row;
+		align-items: center;
 		gap: var(--space-3);
-		/* Capped below half-width so the rail never covers the canvas centre
-		 * (where a board is dropped) on narrow screens. */
-		width: min(220px, 45vw);
-		pointer-events: none;
+		min-height: 56px;
 	}
 
-	.picker-rail > * {
-		pointer-events: auto;
+	.picker-item__thumb {
+		flex: 0 0 44px;
+		width: 44px;
+		height: 44px;
 	}
 
-	.board-picker,
-	.pedal-picker {
-		position: static;
-		width: 100%;
-		min-height: 0;
-		max-height: none;
-		padding: var(--space-2);
+	.picker-bar {
+		display: flex;
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 4;
+		justify-content: space-around;
+		padding-bottom: env(safe-area-inset-bottom);
+		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
 	}
 
-	.board-picker {
-		flex: 0 1 38%;
-	}
-
-	/* Zero basis so the (very long) pedal list can't starve the board picker. */
-	.pedal-picker {
+	.picker-bar__tab {
+		display: inline-flex;
 		flex: 1 1 0;
+		align-items: center;
+		justify-content: center;
+		min-height: 56px;
+		font-family: var(--font-sans);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-ink-muted);
+		background-color: transparent;
+		border: 0;
+		cursor: pointer;
+	}
+
+	.picker-bar__tab[aria-current] {
+		color: var(--color-accent);
+	}
+
+	.picker-bar__tab:focus-visible {
+		outline: 2px solid var(--color-accent-strong);
+		outline-offset: -2px;
+	}
+}
+
+/* Short landscape phones: compact the sheet chrome so the results still get
+ * usable height (the panel already fills the space above the tab bar). */
+@media (max-width: 1023px) and (max-height: 520px) {
+	/* No peek on a short screen: use the full space above the tab bar so the
+	 * results stay usable (the tab bar is still the persistent footprint). */
+	.picker__panel {
+		height: calc(100dvh - 56px - env(safe-area-inset-bottom));
+	}
+
+	/* The drag handle is decorative — drop it to reclaim a row. */
+	.picker__handle {
+		display: none;
+	}
+
+	.picker__header {
+		padding: var(--space-2) var(--space-4);
+	}
+
+	.picker__title {
+		font-size: var(--font-size-sm);
+	}
+
+	.picker__search {
+		padding: var(--space-2) var(--space-4);
+	}
+
+	/* Brand + chips share one horizontally-scrollable strip (no second row). */
+	.picker__filters {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		padding: 0 var(--space-4) var(--space-2);
+	}
+
+	.picker__brand,
+	.picker__chips {
+		flex: 0 0 auto;
+	}
+
+	.picker__chips {
+		flex-wrap: nowrap;
+		overflow: visible;
+	}
+
+	.picker__footer {
+		padding: var(--space-2) var(--space-4);
 	}
 }
 
