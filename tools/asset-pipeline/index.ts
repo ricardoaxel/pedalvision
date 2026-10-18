@@ -169,7 +169,7 @@ function parseArgs(argv: string[]): Args {
 /** The catalog id: an explicit `--id`, else a slug of brand + name. */
 function resolveId(args: Args): string {
 	if (!args.brand || !args.name) {
-		throw new Error("--brand and --name are required (or pass --id)");
+		throw new Error("--brand and --name are required");
 	}
 	return args.id ?? slugId(args.brand, args.name);
 }
@@ -191,18 +191,8 @@ async function main(): Promise<void> {
 	const filename = imageFilename(id);
 	const assetsDir = resolve(process.cwd(), args.assetsDir);
 
-	const input = await readFile(resolve(process.cwd(), args.input));
-	const renditions = await renderRenditions(input, {
-		tolerance: args.tolerance,
-	});
-
-	for (const size of RENDITIONS) {
-		const path = outputPath(assetsDir, args.kind, size, filename);
-		await mkdir(dirname(path), { recursive: true });
-		await writeFile(path, renditions[size]);
-		console.log(`wrote ${path}`);
-	}
-
+	// Validate the draft (id, brand/name, footprint) BEFORE touching the
+	// filesystem, so an invalid id never leaves orphan PNGs behind.
 	const draftInput: DraftInput = {
 		kind: args.kind,
 		id,
@@ -215,6 +205,18 @@ async function main(): Promise<void> {
 		...(args.kind === "pedal" ? { category: args.category } : {}),
 	};
 	const draft = `${JSON.stringify([buildDraftEntry(draftInput)], null, 2)}\n`;
+
+	const input = await readFile(resolve(process.cwd(), args.input));
+	const renditions = await renderRenditions(input, {
+		tolerance: args.tolerance,
+	});
+
+	for (const size of RENDITIONS) {
+		const path = outputPath(assetsDir, args.kind, size, filename);
+		await mkdir(dirname(path), { recursive: true });
+		await writeFile(path, renditions[size]);
+		console.log(`wrote ${path}`);
+	}
 
 	if (args.draft) {
 		const path = resolve(process.cwd(), args.draft);

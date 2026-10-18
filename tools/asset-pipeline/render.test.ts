@@ -53,4 +53,18 @@ describe("renderRenditions", () => {
 			expect(first[size].equals(second[size])).toBe(true);
 		}
 	});
+
+	it("rejects a frame the background key removes entirely", async () => {
+		const width = 20;
+		const height = 20;
+		const data = Buffer.alloc(width * height * 4, 255);
+		const solid = await sharp(data, {
+			raw: { width, height, channels: 4 },
+		})
+			.png()
+			.toBuffer();
+		await expect(renderRenditions(solid)).rejects.toThrow(
+			/background removal left no visible pixels/,
+		);
+	});
 });

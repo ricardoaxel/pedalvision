@@ -92,8 +92,8 @@ Flipping it to a cleared tag is a launch-gate decision, not the tool's.
 | Flag                     | Default                | Notes                                        |
 | ------------------------ | ---------------------- | -------------------------------------------- |
 | `--input <file>`         | —                      | required; the raw source image               |
-| `--brand <brand>`        | —                      | required (unless `--id`)                     |
-| `--name <name>`          | —                      | required (unless `--id`)                     |
+| `--brand <brand>`        | —                      | required                                     |
+| `--name <name>`          | —                      | required                                     |
 | `--width-cm`/`--height-cm` | —                    | required; the true footprint in cm           |
 | `--kind <pedal\|board>`  | `pedal`                | selects the target folder                    |
 | `--id <slug>`            | slug(brand + name)     | stable catalog id / filename stem            |

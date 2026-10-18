@@ -108,7 +108,8 @@ replaces today's manual/placeholder image flow (P0-04 created the folders/fixtur
 - Vitest: `naming` — `kindDir`, `imageFilename` (valid + rejects an unsafe id),
   `fitToLongEdge` (portrait/landscape/square, min 1px), `outputPath`.
 - Vitest: `draft` — produces a schema-valid `static` entry (kind both) and rejects
-  an invalid id; `render` — output buffers are PNGs at the expected long-edge sizes.
+  an invalid id; `render` — output buffers are PNGs at the expected long-edge sizes
+  (and an all-background frame is rejected, not written as an invisible asset).
 - Manual/grep: the tool is dev-only (`tools/`), no `src/` import, **no new
   dependency** (`package.json` deps unchanged; lockfile unchanged); no external
   provenance strings anywhere in `tools/asset-pipeline/`.

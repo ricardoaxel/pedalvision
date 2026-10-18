@@ -40,13 +40,15 @@ export async function renderRenditions(
 	const background = sampleBackgroundColor(data, width, height);
 	removeBackground(data, width, height, background, tolerance);
 
-	// Nothing survived the knockout? Keep the full frame rather than fail.
-	const bounds = trimBounds(data, width, height) ?? {
-		left: 0,
-		top: 0,
-		width,
-		height,
-	};
+	// If the key matched the whole frame there is nothing to ship — fail loudly
+	// rather than write an invisible asset the catalog would treat as real.
+	const bounds = trimBounds(data, width, height);
+	if (!bounds) {
+		throw new Error(
+			"background removal left no visible pixels — the corner key matched the " +
+				"subject; retry with a lower --tolerance or a different source image",
+		);
+	}
 
 	// Extract the trimmed cutout once, then downscale it per rendition.
 	const cutout = await sharp(data, {
