@@ -1,7 +1,7 @@
 # Progress
 
 **Current phase:** P2 — Catalog & custom parts (in progress).
-**Next task:** **P2-03 — Pedal info panel** (tags, dimensions, power). No owner action (phase-guide). **No task file exists yet** — create `docs/tasks/P2-03-pedal-info-panel.md` before starting (see roadmap P2-03). `jacks.kind` was widened in P2-02 to `in|out|exp|exp-in|exp-out|send|return|midi|ctrl|power`.
+**Next task:** **P2-03 — Pedal info panel** (tags, dimensions, power) **+ space warning** (owner folded 2026-10-18: warn — but still allow — when a pedal overlaps another or extends past its board). No owner action (phase-guide). **No task file exists yet** — create `docs/tasks/P2-03-pedal-info-panel.md` before starting (see roadmap P2-03). `jacks.kind` was widened in P2-02 to `in|out|exp|exp-in|exp-out|send|return|midi|ctrl|power`.
 **Last updated:** 2026-10-18 (P2-02 merged — PR #18, squash `c654e56`; Next advanced to P2-03)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
@@ -26,7 +26,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- _None._ **P2-03 (Pedal info panel) is next** — create `docs/tasks/P2-03-pedal-info-panel.md` before starting.
+- _None._ **P2-03 (Pedal info panel + space warning) is next** — create `docs/tasks/P2-03-pedal-info-panel.md` before starting.
 
 ## Follow-ups
 - **Always surface model/provider call failures (owner instruction, 2026-10-17).** Whenever a model or provider call fails — **free-quota/usage-limit exhausted**, **429/rate-limit**, **expired/invalid/revoked API key (401)**, or any provider error/timeout — **STOP and tell the owner immediately** (which `provider/model-id`, the actual error, and the suggested action). Never silently retry, silently substitute another model, or continue as if it succeeded. Applies especially to the **free vision models** used by the design gate (`opencode/nemotron-3.5-super-vl-free`, `opencode/deepseek-v4-flash-vision-exp`): if free vision quota is exhausted mid-review, report it right away so the owner can choose to wait for the reset or switch to a **paid** `opencode-go/*` vision model — never silently fall back to paid. Mirrored as a global rule in `~/.config/opencode/AGENTS.md`.
