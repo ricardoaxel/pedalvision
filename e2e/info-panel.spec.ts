@@ -87,6 +87,11 @@ test("warns about an overlapping pedal but keeps it placed", async ({
 	await expect(page.getByTestId("info-panel")).toBeVisible();
 	await expect(page.getByTestId("info-warning")).toHaveCount(0);
 
+	// The source pedal's stored (board-local) position, before the overlap.
+	const sourcePosition = (
+		(await stage.getAttribute("data-item-positions")) ?? ""
+	).split(";")[0];
+
 	// Duplicating offsets the clone 1.5 cm — it overlaps its source.
 	await page.getByTestId("duplicate-item").click();
 	await expect(stage).toHaveAttribute("data-items", "2");
@@ -94,8 +99,11 @@ test("warns about an overlapping pedal but keeps it placed", async ({
 	const warning = page.getByTestId("info-warning");
 	await expect(warning).toBeVisible();
 	await expect(warning).toContainText("Overlaps");
-	// Warn — but still allow: the placement stands.
+	// Warn — but still allow: the placement stands and nothing moved.
 	await expect(stage).toHaveAttribute("data-items", "2");
+	expect(
+		((await stage.getAttribute("data-item-positions")) ?? "").split(";")[0],
+	).toBe(sourcePosition);
 });
 
 test("clearing the selection hides the panel", async ({ page }) => {

@@ -126,6 +126,7 @@ export function InfoPanel() {
 						className="info-panel__icon-button info-panel__expand"
 						data-testid="info-expand"
 						aria-expanded={expanded}
+						aria-controls="info-panel-detail"
 						aria-label={expanded ? "Collapse details" : "Expand details"}
 						onClick={toggleExpanded}
 					>
@@ -203,7 +204,7 @@ export function InfoPanel() {
 				</dl>
 			</section>
 
-			<div className="info-panel__detail">
+			<div className="info-panel__detail" id="info-panel-detail">
 				{info.effectTypes.length > 0 ? (
 					<section className="info-panel__section" data-testid="info-effects">
 						<div className="info-panel__section-head">

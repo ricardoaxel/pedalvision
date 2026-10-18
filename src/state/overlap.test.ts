@@ -116,6 +116,20 @@ describe("spaceWarning — overlaps", () => {
 		expect(warning.outOfBounds).toBe(false);
 	});
 
+	it("flags an overlap across containers (a loose pedal over a board pedal)", () => {
+		// Overlap is world-space: a container boundary does not hide a real
+		// on-canvas overlap.
+		const boardA = board("b1", 10, 10);
+		const onBoard = item("i1", A.refId, "b1", 2, 2); // world 2..6
+		const loose = item("i2", B.refId, null, 3, 3); // world 3..7
+		const warning = spaceWarning(loose, {
+			items: [onBoard, loose],
+			boards: [boardA],
+			customPedals: [A, B],
+		});
+		expect(warning.overlaps).toEqual(["Alpha"]);
+	});
+
 	it("uses the live placement while dragging", () => {
 		const boardA = board("b1", 40, 40);
 		const one = item("i1", A.refId, "b1", 0, 0); // stored far from two

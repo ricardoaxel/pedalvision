@@ -73,13 +73,14 @@ auto-avoidance / reflow** — it only warns. Extract a **pure predicate**
 1. **Create this task file** (done) — no task file existed.
 2. **Designer direction** for both surfaces → **owner approval** (record the name
    + approval date here and in `docs/progress.md`).
-3. **Pure predicate** (`src/lib/overlap.ts`): given an item, its resolved
+3. **Pure predicate** (`src/state/overlap.ts`): given an item, its resolved
    footprint, the other items and the boards, return whether it **overlaps** a
-   peer (in the same container, using `rectsOverlap`) and/or is **out of bounds**
-   of its board footprint (`boardFootprint` + `worldToBoard`), with the
+   peer (world-cm AABB across **all** containers — a container boundary does not
+   hide a real on-canvas overlap; using `rectsOverlap`) and/or is **out of
+   bounds** of its board footprint (`boardFootprint` + `worldToBoard`), with the
    offending peer(s) named. Unit tests (overlap in board frame for a rotated
-   board; loose-item peer overlap; boundary-touch = no warning; out-of-bounds
-   each edge; no board → no bounds check).
+   board; loose-item peer overlap; cross-container overlap; boundary-touch = no
+   warning; out-of-bounds each edge; no board → no bounds check).
 4. **Info panel** (`src/components/InfoPanel.tsx` + tokens/CSS): desktop right
    sidebar; mobile bottom sheet/section. Renders identity, category, effect
    tags, dimensions + cm/in toggle, power (when present), jacks (when present),
@@ -102,8 +103,9 @@ auto-avoidance / reflow** — it only warns. Extract a **pure predicate**
 ## Acceptance (executable)
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm e2e` all green.
 - Vitest: the pure overlap/out-of-bounds predicate covers same-container
-  overlap, cross-container non-overlap, board-frame correctness under a rotated
-  board, boundary-touch (no warning), each out-of-bounds edge, and no-board
+  overlap, cross-container overlap (a loose pedal over a board pedal, since the
+  test is world-space), board-frame correctness under a rotated board,
+  boundary-touch (no warning), each out-of-bounds edge, and no-board
   (no bounds check).
 - Vitest: display formatting (cm/in via `cmToDisplay`, power + jack labels) is
   covered.

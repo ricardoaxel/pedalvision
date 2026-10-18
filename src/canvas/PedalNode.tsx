@@ -280,7 +280,7 @@ export function PedalNode({
 			stroke={theme.warningOutline}
 			strokeWidth={WARNING_STROKE_PX / labelScale}
 			fillEnabled={false}
-			cornerRadius={4}
+			cornerRadius={4 / labelScale}
 			listening={false}
 			perfectDrawEnabled={false}
 		/>

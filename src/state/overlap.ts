@@ -21,9 +21,10 @@ import {
  * "this overlaps / extends beyond its board" cue (owner folded 2026-10-18). It
  * only **reports**; it never constrains a placement (no auto-avoidance/reflow).
  *
- * Overlap is an axis-aligned bounding-box test in **world cm** (the same
- * convention as `rectsOverlap`), so it is correct across containers and board
- * rotations but deliberately an approximation for a rotated item. Out-of-bounds
+ * Overlap is an axis-aligned bounding-box test in **world cm**, across **every**
+ * item regardless of container (a loose pedal over a board pedal is a real
+ * visual overlap), so it is correct across container boundaries and board
+ * rotations — but deliberately an approximation for a rotated item. Out-of-bounds
  * is exact: the item's four corners are mapped into its board's unrotated frame
  * and compared edge-by-edge against the board footprint.
  */
@@ -35,13 +36,6 @@ export interface SpaceWarning {
 	/** True when either condition holds. */
 	any: boolean;
 }
-
-/** The "no warning" result (also the panel's default when nothing is selected). */
-export const NO_WARNING: SpaceWarning = {
-	overlaps: [],
-	outOfBounds: false,
-	any: false,
-};
 
 /**
  * Live placement override while an item is being dragged: its world-cm origin +
