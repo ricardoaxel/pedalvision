@@ -131,6 +131,9 @@
 	/* Dot grid — clearly visible, still the calmest layer (~1.9:1 vs canvas) */
 	--grid-pitch: 24px;
 	--grid-dot-radius: 1px;
+
+	/* Info panel (P2-03 "Readout") — desktop trailing push rail width. */
+	--panel-width: 320px;
 }
 
 [data-theme="light"] {

@@ -4,6 +4,7 @@ import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
+import { spaceWarning } from "../state/overlap";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -59,6 +60,8 @@ export function BoardNode({
 
 	const moveBoard = useScene((state) => state.moveBoard);
 	const customPedals = useScene((state) => state.customPedals);
+	const allItems = useScene((state) => state.items);
+	const boards = useScene((state) => state.boards);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	// While the viewport owns the gesture (pan/pinch), the board must not drag:
 	// a second finger would otherwise move it with both the drag and the pan.
@@ -77,6 +80,13 @@ export function BoardNode({
 	const selectedItem = selectedItemUid
 		? items.find((item) => item.uid === selectedItemUid)
 		: undefined;
+
+	// Space warning (P2-03): only the selected attached item is flagged. The
+	// lifted item is excluded from `items` (it renders in the DragLayer), so no
+	// live override is needed here.
+	const warning = selectedItem
+		? spaceWarning(selectedItem, { items: allItems, boards, customPedals }).any
+		: false;
 
 	const commitPosition = useCallback(() => {
 		const node = groupRef.current;
@@ -182,6 +192,7 @@ export function BoardNode({
 					theme={theme}
 					xCm={item.x}
 					yCm={item.y}
+					warning={item.uid === selectedItemUid ? warning : false}
 				/>
 			))}
 			{selectedItem ? (

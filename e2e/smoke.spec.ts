@@ -5,6 +5,10 @@ import {
 	openPicker,
 	removeSelectedBoard,
 } from "./picker.ts";
+import { firstItemScreenCentre } from "./stage.ts";
+
+/** The blues-driver fixture footprint (seed dims). */
+const PEDAL_CM = { widthCm: 7.3, heightCm: 13.02 };
 
 test("app loads and renders the canvas stage", async ({ page }) => {
 	await page.goto("/");
@@ -277,15 +281,15 @@ test("a two-finger pan mid-drag drops the lifted pedal in place (pan interrupt)"
 	const selected = await stage.getAttribute("data-selected-item");
 	const before = await stage.getAttribute("data-item-positions");
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	// Locate the pedal from the stage state (the P2-03 info rail narrowed the
+	// canvas when the pedal was selected).
+	const { x: cx, y: cy } = await firstItemScreenCentre(page, PEDAL_CM);
 
-	// Drag the pedal well outside the board (to the right).
+	// Drag the pedal just outside the board (to the right), staying within the
+	// canvas pane so the second finger lands on the stage, not the info rail.
 	await page.mouse.move(cx, cy);
 	await page.mouse.down();
-	await page.mouse.move(cx + 320, cy, { steps: 10 });
+	await page.mouse.move(cx + 160, cy, { steps: 10 });
 	await expect(stage).toHaveAttribute("data-lifted-item", selected ?? "");
 
 	// A second finger turns it into a viewport gesture: the lifted pedal must
@@ -295,8 +299,8 @@ test("a two-finger pan mid-drag drops the lifted pedal in place (pan interrupt)"
 	await cdp.send("Input.dispatchTouchEvent", {
 		type: "touchStart",
 		touchPoints: [
-			{ id: 0, x: cx + 320, y: cy },
-			{ id: 1, x: cx + 400, y: cy + 80 },
+			{ id: 0, x: cx + 160, y: cy },
+			{ id: 1, x: cx + 240, y: cy + 80 },
 		],
 	});
 	await expect(stage).toHaveAttribute("data-lifted-item", "");
@@ -320,21 +324,20 @@ test("a press on a pedal during an active viewport gesture does not start a drag
 	await addPedal(page, "boss-bd-2-blues-driver");
 	const before = await stage.getAttribute("data-item-positions");
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	// Locate the pedal from the stage state (the P2-03 info rail narrowed the
+	// canvas when the pedal was selected).
+	const { x: cx, y: cy } = await firstItemScreenCentre(page, PEDAL_CM);
 
 	const cdp = await page.context().newCDPSession(page);
-	// One finger pans on empty canvas, so the viewport owns the gesture. Moving
-	// +40px pans the stage +40px, putting the pedal (board centre) at cx+40.
+	// One finger pans on empty canvas (left of the board), so the viewport owns
+	// the gesture. Moving +40px pans the stage +40px, putting the pedal at cx+40.
 	await cdp.send("Input.dispatchTouchEvent", {
 		type: "touchStart",
-		touchPoints: [{ id: 0, x: cx + 420, y: cy }],
+		touchPoints: [{ id: 0, x: 80, y: cy }],
 	});
 	await cdp.send("Input.dispatchTouchEvent", {
 		type: "touchMove",
-		touchPoints: [{ id: 0, x: cx + 460, y: cy }],
+		touchPoints: [{ id: 0, x: 120, y: cy }],
 	});
 
 	// While navigating, a press on the pedal must NOT start a drag (the idle→
@@ -365,10 +368,9 @@ test("a stray pointer or a button-less move ends the pedal drag", async ({
 	await addPedal(page, "boss-bd-2-blues-driver");
 	const selected = await stage.getAttribute("data-selected-item");
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	// Locate the pedal from the stage state (the P2-03 info rail narrowed the
+	// canvas when the pedal was selected).
+	const { x: cx, y: cy } = await firstItemScreenCentre(page, PEDAL_CM);
 
 	// Record the real mouse pointerId so synthetic events can match/mismatch it.
 	await page.evaluate(() => {
