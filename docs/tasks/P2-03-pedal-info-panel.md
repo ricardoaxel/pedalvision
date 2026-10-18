@@ -122,26 +122,47 @@ auto-avoidance / reflow** — it only warns. Extract a **pure predicate**
 
 ## Notes
 - **Approved direction: "Readout"** (designer proposal, **owner-approved
-  2026-10-18**). The panel is the selected specimen's instrument readout; the
-  space warning is its out-of-tolerance flag. Extends the Blueprint → Specimen
-  Bench → Datasheet family as its quietest, persistent-chrome member (mono
-  eyebrows + sans values + hairline rules; sections render only when data
-  exists; accent stays reserved for action/selection). **Desktop:** a trailing
-  **push** column (`[canvas pane][320px rail]`) — owner chose push over overlay
-  so the canvas narrows and nothing is occluded (no action-bar/toolbar
-  collisions). **Mobile:** a compact, **collapsed-by-default** bottom sheet above
-  the persistent tab bar (identity + dimensions + the warning line always
-  visible; expand for effects/jacks/power) so the canvas stays visible.
-  **Warning:** a solid 2px `--color-warning` stroke on the offending item's exact
-  footprint (screen-constant width, no fill tint, no animation — distinct from
-  the cyan selection halo by both color and channel) + a tinted inline band as
-  the panel's first section (`role="status"`): "Overlaps {name}." /
-  "Extends beyond the board." Owner chose to keep **Edit action-bar-only** (no
-  duplicate in the panel).
-- The seed's catalog pedals carry **no** `power`/`jacks` (P5-01 backfill) — the
-  panel must render those sections only when present.
+  2026-10-18**; **superseded/extended by the "Specimen Readout" rework below** — rail
+  360px, warning strip under the plate, specimen preview). The panel is the selected
+  specimen's instrument readout; the space warning is its out-of-tolerance flag.
+  Extends the Blueprint → Specimen Bench → Datasheet family as its quietest,
+  persistent-chrome member (mono eyebrows + sans values + hairline rules; sections
+  render only when data exists; accent stays reserved for action/selection).
+  **Desktop:** a trailing **push** column — owner chose push over overlay so the
+  canvas narrows and nothing is occluded. **Mobile:** a compact,
+  **collapsed-by-default** bottom sheet above the persistent tab bar (identity +
+  dimensions + the warning always visible; expand for the plate + effects/jacks/
+  power). **Warning:** a non-blocking `--color-warning` cue on the offending item
+  (the "Specimen Readout" rework made it an amber **outer ring** beyond the
+  selection border) + the panel's status strip (`role="status"`): "Overlaps
+  {name}." / "Extends beyond the board." Owner chose to keep **Edit
+  action-bar-only** (no duplicate in the panel).
+- **Owner-requested rework (2026-10-18, same PR) — "Specimen Readout".** Mid-review the
+  owner asked for an intense UX/UI pass and a **larger pedal image** so the selected
+  pedal is identifiable. Added a **specimen preview**: a lit plate (light in both
+  themes) on the desktop rail; the **mobile collapsed** sheet shows a **48px header
+  thumb** and the **expanded** sheet the full plate. The image loads through the
+  picker's loader extracted to a shared `src/components/partImage.ts` (CORS-first →
+  cache-bust → no-CORS → failed), so a hotlinked `url` can't re-poison the canvas
+  cache. Custom parts render the on-plate `PartDrawing` (extracted to
+  `src/components/PartDrawing.tsx`, shared with the Datasheet); unknown/failed →
+  a glyph tile. Polish: the warning band became a slim left-bar **status strip**
+  (mono `SPACE` label + sentence) and moved **under the plate**; section eyebrows
+  muted + hero name `--font-size-xl`; rail **320→360px**; borderless inline cm/in
+  segment (44px touch on mobile); 12px mobile bottom inset; and a shared fix for
+  the **existing on-plate ink defect** (theme-invariant `--color-plate-*` tokens —
+  the Datasheet's mobile drawing moved onto the same light plate so its callouts
+  are legible in dark theme). Mid-session owner approvals: rail 360, warning under
+  the plate, full-`PartDrawing` fallback, shared ink fix.
+- **Review rounds (rework):** `design-reviewer` R1 approve-with-changes → revision
+  → R2 **approve** → R3 (shared drawing) **approve**; light `code-review` rework
+  pass → fixed (shared drawing plate, drawing follows the cm/in toggle, empty-src
+  guard, single `onError`). Screenshots `docs/screenshots/P2-03/` (desktop + mobile,
+  dark + light; catalog / custom / warning / drawing).
 - `Settings.units` (app-wide) arrives with P3-02; until then the panel's cm/in
   toggle is local (like P2-02's creator toggle).
+- The seed's catalog pedals carry **no** `power`/`jacks` (P5-01 backfill) — the
+  panel must render those sections only when present.
 - Depends on P2-01 (picker shell) + P2-02 (custom part fields, `jackKindLabel`).
 - The space warning reuses `rectsOverlap` (geometry) + `itemFootprint`/
   `boardFootprint`/`worldToBoard` (scene); it adds **no** placement constraint.
