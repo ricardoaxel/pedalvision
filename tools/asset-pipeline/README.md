@@ -35,7 +35,8 @@ node --experimental-strip-types tools/asset-pipeline/index.ts --input raw.png \
    §Assets & catalog; ADR-003 true-scale bar).
 4. **Write + draft.** Two PNGs are written to
    `public/pedal-assets/{pedals,boards}/{800,350}/<id>.png`, and a catalog-shaped
-   JSON draft is printed (or written with `--draft`).
+   JSON draft is printed (or written with `--draft`). Progress lines go to
+   **stderr**, so stdout is pure JSON (`… > draft.json` works).
 
 ## Output contract
 

@@ -215,14 +215,15 @@ async function main(): Promise<void> {
 		const path = outputPath(assetsDir, args.kind, size, filename);
 		await mkdir(dirname(path), { recursive: true });
 		await writeFile(path, renditions[size]);
-		console.log(`wrote ${path}`);
+		// Progress on stderr so a piped stdout stays valid JSON (draft only).
+		console.error(`wrote ${path}`);
 	}
 
 	if (args.draft) {
 		const path = resolve(process.cwd(), args.draft);
 		await mkdir(dirname(path), { recursive: true });
 		await writeFile(path, draft);
-		console.log(`wrote draft ${path}`);
+		console.error(`wrote draft ${path}`);
 	} else {
 		console.log(draft);
 	}
