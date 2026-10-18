@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
-import { bustCache, resolveImageUrl } from "../lib/cdn";
+import { resolveImageUrl } from "../lib/cdn";
 import {
 	draftFromCustomPedal,
 	emptyCustomPedalDraft,
@@ -19,6 +19,7 @@ import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
 import { CustomPedalForm } from "./CustomPedalForm";
 import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
+import { usePartImage } from "./partImage";
 import {
 	brandsOf,
 	effectLabel,
@@ -928,34 +929,8 @@ function PickerThumb({
 	variant?: "row" | "specimen";
 	kind?: "pedal" | "board";
 }) {
-	// Attempt state, scoped to the current `src` (a failed board must not
-	// suppress a later valid pedal image as the active item changes).
-	const [attempt, setAttempt] = useState<{ src: string; phase: Phase }>({
-		src,
-		phase: "cors",
-	});
-	const phase: Phase = attempt.src === src ? attempt.phase : "cors";
-	// CORS-first (matches the canvas loader) so a clean cache entry is stored;
-	// `cors-bust` retries under a distinct key to self-heal a poisoned cache;
-	// `nocors` still displays hosts that send no ACAO (DOM needs no CORS).
-	const busted = bustCache(src);
-	const bustable = busted !== src;
-	const nextPhase = (current: Phase): Phase =>
-		current === "cors"
-			? bustable
-				? "cors-bust"
-				: "nocors"
-			: current === "cors-bust"
-				? "nocors"
-				: "failed";
-	const bump = () =>
-		setAttempt((current) => ({
-			src,
-			phase: nextPhase(current.src === src ? current.phase : "cors"),
-		}));
-	const crossOrigin =
-		phase === "cors" || phase === "cors-bust" ? "anonymous" : undefined;
-	const url = phase === "cors-bust" ? busted : src;
+	// CORS-first → cache-bust → no-CORS → failed (shared with the P2-03 panel).
+	const { phase, url, crossOrigin, onError } = usePartImage(src);
 
 	if (variant === "specimen") {
 		if (phase === "failed") {
@@ -977,7 +952,7 @@ function PickerThumb({
 				alt=""
 				loading="lazy"
 				crossOrigin={crossOrigin}
-				onError={bump}
+				onError={onError}
 			/>
 		);
 	}
@@ -1010,9 +985,7 @@ function PickerThumb({
 			alt=""
 			loading="lazy"
 			crossOrigin={crossOrigin}
-			onError={bump}
+			onError={onError}
 		/>
 	);
 }
-
-type Phase = "cors" | "cors-bust" | "nocors" | "failed";

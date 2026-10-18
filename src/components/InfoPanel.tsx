@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
+import { resolveImageUrl } from "../lib/cdn";
 import type { DisplayUnits } from "../lib/geometry";
 import {
 	buildPartInfo,
@@ -11,21 +12,24 @@ import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
 import { resolveItem, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
-import { ChevronIcon, WarningIcon } from "./icons";
+import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
+import { PartDrawing } from "./PartDrawing";
+import { usePartImage } from "./partImage";
 import { effectLabel } from "./pickerFilter";
 
 /**
- * The pedal info panel (P2-03, owner-approved "Readout" direction). It is the
- * HTML mirror of the canvas selection (design.md §Accessibility): identity,
- * category, effect tags, dimensions (with a display-only cm/in toggle), power
- * and jack locations — each rendered **only when present** (the committed catalog
- * seed has no power/jacks yet; that backfill is P5-01, so those sections must
- * degrade gracefully). It is also the home of the non-blocking **space warning**
- * (overlaps a peer / extends beyond its board) as its first band.
+ * The pedal info panel (P2-03, owner-approved "Specimen Readout" direction,
+ * 2026-10-18). It is the HTML mirror of the canvas selection (design.md
+ * §Accessibility), and it carries the **specimen itself**: a lit plate at the
+ * top (photo = identity) with the measuring readout beneath — identity,
+ * category, effect tags, dimensions (display-only cm/in toggle), and power/jacks
+ * **only when present** (the seed has no power/jacks for catalog pedals; that
+ * backfill is P5-01). It is also the home of the non-blocking **space warning**
+ * (its first band).
  *
- * Desktop (≥1024px) is a trailing **push** rail (`--panel-width`); mobile
- * (<1024px) is a compact, collapsed-by-default bottom sheet above the persistent
- * tab bar (owner: keep the mobile footprint small so the canvas stays visible).
+ * Desktop (≥1024px) is a trailing **push** rail; mobile (<1024px) is a compact
+ * bottom sheet — collapsed shows identity + dimensions + the warning with a 48px
+ * specimen thumb inline, expanded reveals the full plate + details.
  */
 export function InfoPanel() {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
@@ -50,9 +54,20 @@ export function InfoPanel() {
 	const item = selectedItemUid
 		? items.find((candidate) => candidate.uid === selectedItemUid)
 		: undefined;
+	const resolved = item ? resolveItem(item, customPedals) : null;
+	const imageSrc = resolved?.definition
+		? resolveImageUrl(
+				resolved.definition.imageSource,
+				resolved.definition.image,
+				"pedal",
+				800,
+			)
+		: null;
+	// The CORS-first → cache-bust → no-CORS → failed ladder, shared with the
+	// picker (so a hotlinked `url` never re-poisons the canvas image cache).
+	const preview = usePartImage(imageSrc ?? "");
 
-	// Report the sheet's real rendered height so the action bar always clears it
-	// (a fixed guess was wrong once the name wrapped).
+	// Report the sheet's real rendered height so the action bar always clears it.
 	const asideRef = useRef<HTMLElement>(null);
 	const setSheetHeight = usePanelMetrics((state) => state.setSheetHeight);
 	useLayoutEffect(() => {
@@ -68,9 +83,8 @@ export function InfoPanel() {
 		return () => observer.disconnect();
 	}, [item, setSheetHeight]);
 
-	if (!item) return null;
+	if (!item || !resolved) return null;
 
-	const resolved = resolveItem(item, customPedals);
 	const info = buildPartInfo(resolved, item.kind);
 
 	// While this item is lifted, evaluate the warning where it floats (live
@@ -91,8 +105,64 @@ export function InfoPanel() {
 	}
 	if (warning.outOfBounds) warningLines.push("Extends beyond the board.");
 
-	const hasDetail =
-		info.effectTypes.length > 0 || info.jacks.length > 0 || info.power !== null;
+	// The specimen plate: photo (catalog) / drawing (custom) / glyph (unknown or
+	// a failed image). The category drives the caption.
+	const showImage = info.image !== null && preview.phase !== "failed";
+	const caption = info.isCustom
+		? "Drawing"
+		: info.unknown
+			? "Part"
+			: "Specimen";
+	const previewKind = info.isCustom
+		? "custom"
+		: info.unknown
+			? "unknown"
+			: "image";
+
+	const glyph = <PedalIcon size={28} strokeWidth={1.5} />;
+	const plate = info.isCustom ? (
+		<PartDrawing
+			widthCm={info.widthCm}
+			depthCm={info.heightCm}
+			jacks={info.jacks}
+			units="cm"
+		/>
+	) : showImage ? (
+		<img
+			key={`${imageSrc}:${preview.phase}`}
+			className="info-panel__preview-img"
+			src={preview.url}
+			alt=""
+			loading="lazy"
+			crossOrigin={preview.crossOrigin}
+			onError={preview.onError}
+		/>
+	) : (
+		<span
+			className={`info-panel__plate-glyph${
+				info.unknown ? " info-panel__plate-glyph--dashed" : ""
+			}`}
+			aria-hidden="true"
+		>
+			{glyph}
+		</span>
+	);
+
+	// The 48px header thumb (mobile collapsed, where the plate is hidden): image
+	// when available, otherwise the glyph (a drawing is illegible at this size).
+	const thumb = showImage ? (
+		<img
+			key={`thumb:${imageSrc}:${preview.phase}`}
+			className="info-panel__thumb-img"
+			src={preview.url}
+			alt=""
+			loading="lazy"
+			crossOrigin={preview.crossOrigin}
+			onError={preview.onError}
+		/>
+	) : (
+		<PedalIcon size={22} strokeWidth={1.5} />
+	);
 
 	return (
 		<aside
@@ -100,10 +170,16 @@ export function InfoPanel() {
 			className="info-panel"
 			data-testid="info-panel"
 			data-expanded={expanded ? "true" : "false"}
-			data-detail={hasDetail ? "true" : "false"}
 			aria-label="Selected part details"
 		>
 			<header className="info-panel__header">
+				<span
+					className="info-panel__thumb"
+					data-testid="info-thumb"
+					aria-hidden="true"
+				>
+					{thumb}
+				</span>
 				<div className="info-panel__heading">
 					<span className="info-panel__eyebrow">
 						{info.category === "supply" ? "Power supply" : "Pedal"}
@@ -155,6 +231,13 @@ export function InfoPanel() {
 				</div>
 			</header>
 
+			<div className="info-panel__preview" data-testid="info-preview">
+				<span className="info-panel__preview-caption">{caption}</span>
+				<div className="info-panel__plate" data-preview={previewKind}>
+					{plate}
+				</div>
+			</div>
+
 			{warning.any ? (
 				<div
 					className="info-panel__warning"
@@ -164,10 +247,13 @@ export function InfoPanel() {
 					aria-live="polite"
 				>
 					<WarningIcon className="info-panel__warning-icon" />
-					<span className="info-panel__warning-text">
-						{warningLines.map((line) => (
-							<span key={line}>{line}</span>
-						))}
+					<span className="info-panel__warning-body">
+						<span className="info-panel__warning-label">Space</span>
+						<span className="info-panel__warning-text">
+							{warningLines.map((line) => (
+								<span key={line}>{line}</span>
+							))}
+						</span>
 					</span>
 				</div>
 			) : null}

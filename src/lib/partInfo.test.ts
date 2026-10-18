@@ -78,20 +78,24 @@ describe("buildPartInfo", () => {
 		expect(info.effectTypes).toEqual(["delay", "eq"]);
 		expect(info.jacks).toHaveLength(2);
 		expect(info.power).toEqual({ voltage: 9, acDc: "DC", currentMa: 100 });
+		expect(info.image).toEqual({ source: "mock", value: "acme-echo.png" });
 	});
 
 	it("omits power + jacks for a bare catalog item (graceful degradation)", () => {
 		const info = buildPartInfo(resolved(catalogBare, null), "pedal");
 		expect(info.jacks).toEqual([]);
 		expect(info.power).toBeNull();
+		// A bare catalog item still has an image (the preview's anchor).
+		expect(info.image).toEqual({ source: "mock", value: "boss-bd-2.png" });
 	});
 
-	it("marks an inline custom part", () => {
+	it("marks an inline custom part (text-only — no image)", () => {
 		const info = buildPartInfo(resolved(null, customSupply), "supply");
 		expect(info.isCustom).toBe(true);
 		expect(info.category).toBe("supply");
 		expect(info.jacks).toHaveLength(1);
 		expect(info.power?.acDc).toBe("AC");
+		expect(info.image).toBeNull();
 	});
 
 	it("flags an unresolved ref and keeps its geometry", () => {
@@ -100,6 +104,7 @@ describe("buildPartInfo", () => {
 		expect(info.name).toBe("ghost-ref");
 		expect(info.category).toBe("supply");
 		expect(info.power).toBeNull();
+		expect(info.image).toBeNull();
 	});
 });
 

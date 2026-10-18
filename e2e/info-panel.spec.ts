@@ -57,6 +57,39 @@ test("the cm/in toggle switches the displayed dimensions", async ({ page }) => {
 	await expect(dims).toHaveText("7.3 × 13.02 cm");
 });
 
+test("shows the selected catalog pedal's image in the specimen preview", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(page.getByTestId("info-panel")).toBeVisible();
+
+	// On mobile the plate is only revealed when the sheet is expanded.
+	await expandDetails(page);
+	const preview = page.getByTestId("info-preview");
+	await expect(preview).toBeVisible();
+	await expect(preview.locator("img")).toBeVisible();
+	await expect(preview).toContainText("Specimen");
+});
+
+test("shows a drawing (no image) as a custom part's preview", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "custom");
+	await fillMinimalPart(page, { name: "My Fuzz", width: "6", depth: "12" });
+	await page.getByTestId("custom-submit").click();
+
+	await expect(page.getByTestId("info-panel")).toBeVisible();
+	await expandDetails(page);
+	const preview = page.getByTestId("info-preview");
+	await expect(preview).toBeVisible();
+	await expect(preview.locator("[data-preview='custom']")).toBeVisible();
+	// Custom parts are text-only — no image element.
+	await expect(preview.locator("img")).toHaveCount(0);
+});
+
 test("shows power and jack sections for a custom part", async ({ page }) => {
 	await page.goto("/");
 	await openPicker(page, "custom");

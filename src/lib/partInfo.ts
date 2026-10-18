@@ -1,4 +1,10 @@
-import type { EffectType, Jack, JackEdge, Power } from "../catalog/schema";
+import type {
+	EffectType,
+	ImageSource,
+	Jack,
+	JackEdge,
+	Power,
+} from "../catalog/schema";
 import type { ResolvedItem } from "../state/scene";
 import { jackKindLabel } from "./customPedal";
 import { cmToDisplay, type DisplayUnits } from "./geometry";
@@ -19,6 +25,12 @@ export interface PartInfo {
 	heightCm: number;
 	jacks: Jack[];
 	power: Power | null;
+	/**
+	 * The catalog image (mock/static/url), or null for custom + unknown parts
+	 * (which are text-only and render a drawing instead). Resolve it with
+	 * `resolveImageUrl(image.source, image.value, "pedal", 800)`.
+	 */
+	image: { source: ImageSource; value: string } | null;
 	/** True when the item is a user-defined part (adds the `CUSTOM` tag). */
 	isCustom: boolean;
 	/** True when `refId` resolved to neither a catalog item nor a custom part. */
@@ -45,6 +57,7 @@ export function buildPartInfo(
 			heightCm: definition.heightCm,
 			jacks: definition.jacks ?? [],
 			power: definition.power ?? null,
+			image: { source: definition.imageSource, value: definition.image },
 			isCustom: false,
 			unknown: false,
 		};
@@ -60,6 +73,7 @@ export function buildPartInfo(
 			heightCm: custom.heightCm,
 			jacks: custom.jacks ?? [],
 			power: custom.power ?? null,
+			image: null,
 			isCustom: true,
 			unknown: false,
 		};
@@ -73,6 +87,7 @@ export function buildPartInfo(
 		heightCm: resolved.heightCm,
 		jacks: [],
 		power: null,
+		image: null,
 		isCustom: false,
 		unknown: true,
 	};
