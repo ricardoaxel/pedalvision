@@ -154,7 +154,21 @@ auto-avoidance / reflow** — it only warns. Extract a **pure predicate**
   the Datasheet's mobile drawing moved onto the same light plate so its callouts
   are legible in dark theme). Mid-session owner approvals: rail 360, warning under
   the plate, full-`PartDrawing` fallback, shared ink fix.
-- **Review rounds (rework):** `design-reviewer` R1 approve-with-changes → revision
+- **Owner-requested rework 2 (2026-10-18, same PR) — "Specimen Cover" (mobile-first).**
+  The owner asked for a **much better mobile preview interface** (+ desktop if
+  possible). The preview is now the anchor: mobile shows a constant-height **cover
+  row** in the peek — a **64px sleeve** + one-line name + a `brand · category`
+  subline + actions — with a **status row** (dimensions + a compact warning
+  **chip**); one tap expands to a **72dvh hero** (a full-bleed **banner** + a
+  **measure row** with the cm/in toggle) + the readout. Desktop adopts the same
+  **full-bleed banner + measure row**. Warning: chip in the peek, status strip
+  when open. The peek is *shorter* than before (more canvas at rest) while the
+  image is bigger. Owner-approved mid-session (72dvh detent, chip).
+- **Review rounds (Specimen Cover):** `design-reviewer` R1 **approve** → light
+  `code-review` pass changes-required (mobile rule hid the readout section titles;
+  sleeve img missing `onError`; chip a11y label; e2e exclusivity) → fixed →
+  `design-reviewer` R2 **approve**.
+- **Review rounds (rework 1):** `design-reviewer` R1 approve-with-changes → revision
   → R2 **approve** → R3 (shared drawing) **approve**; light `code-review` rework
   pass → fixed (shared drawing plate, drawing follows the cm/in toggle, empty-src
   guard, single `onError`). Screenshots `docs/screenshots/P2-03/` (desktop + mobile,
