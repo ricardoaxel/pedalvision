@@ -2067,9 +2067,10 @@ body {
 	}
 
 	/* The peek collapses identity to one name line + a `brand · category`
-	 * subline (the eyebrow/brand lines are folded into it). */
-	.info-panel__eyebrow,
-	.info-panel__brand {
+	 * subline (only the HEADER eyebrow/brand fold away — section heads reuse
+	 * `.info-panel__eyebrow` and must stay). */
+	.info-panel__header .info-panel__eyebrow,
+	.info-panel__header .info-panel__brand {
 		display: none;
 	}
 

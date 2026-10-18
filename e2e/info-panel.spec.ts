@@ -159,15 +159,19 @@ test("the mobile peek shows the cover sleeve and warning chip, then expands to t
 	await expect(page.getByTestId("info-peek-dims")).toBeVisible();
 	await expect(page.getByTestId("info-preview")).toBeHidden();
 
-	// An overlap surfaces the compact chip in the peek.
+	// An overlap surfaces the compact chip in the peek (and NOT the full band,
+	// which is the expanded/desktop form) — exactly one live region is shown.
 	await page.getByTestId("duplicate-item").click();
 	await expect(page.getByTestId("info-warning-chip")).toBeVisible();
+	await expect(page.getByTestId("info-warning")).toBeHidden();
 
 	// Expand: the banner (hero) replaces the sleeve + status row.
 	await page.getByTestId("info-expand").click();
 	await expect(page.getByTestId("info-preview")).toBeVisible();
 	await expect(page.getByTestId("info-cover")).toBeHidden();
 	await expect(page.getByTestId("info-units")).toBeVisible();
+	await expect(page.getByTestId("info-warning")).toBeVisible();
+	await expect(page.getByTestId("info-warning-chip")).toBeHidden();
 });
 
 test("clearing the selection hides the panel", async ({ page }) => {

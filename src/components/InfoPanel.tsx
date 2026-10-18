@@ -160,7 +160,9 @@ export function InfoPanel() {
 	);
 
 	// The mobile-collapsed sleeve: image when available, else the glyph (a
-	// drawing is illegible at 64px).
+	// drawing is illegible at 64px). Binds onError too: while collapsed the
+	// banner is display:none (so its lazy img isn't requested), making the
+	// sleeve the only requester — the ladder must still advance on failure.
 	const sleeve = showImage ? (
 		<img
 			key={`sleeve:${imageSrc}:${preview.phase}`}
@@ -169,6 +171,7 @@ export function InfoPanel() {
 			alt=""
 			loading="lazy"
 			crossOrigin={preview.crossOrigin}
+			onError={preview.onError}
 		/>
 	) : (
 		<PedalIcon size={24} strokeWidth={1.5} />
@@ -253,6 +256,7 @@ export function InfoPanel() {
 						data-testid="info-warning-chip"
 						role="status"
 						aria-live="polite"
+						aria-label={warningLines.join(" ")}
 					>
 						{warningChip}
 					</span>
