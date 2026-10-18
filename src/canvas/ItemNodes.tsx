@@ -1,4 +1,5 @@
 import type { Point } from "../lib/geometry";
+import { spaceWarning } from "../state/overlap";
 import { itemFootprint, type PlacedItem, useScene } from "../state/scene";
 import type { CanvasTheme } from "../styles/theme";
 import { PedalNode } from "./PedalNode";
@@ -39,9 +40,30 @@ export function ItemNodes({
 	lifted = false,
 }: ItemNodesProps) {
 	const customPedals = useScene((state) => state.customPedals);
+	const allItems = useScene((state) => state.items);
+	const boards = useScene((state) => state.boards);
 	const selectedItem = selectedItemUid
 		? items.find((item) => item.uid === selectedItemUid)
 		: undefined;
+
+	// Space warning (P2-03): flag only the item under attention (the selected /
+	// lifted one), evaluated at its live position while it's in the DragLayer.
+	const live =
+		lifted && worldPosition && items[0]
+			? {
+					originCm: worldPosition,
+					rotationDeg: rotationDeg ?? items[0].rotationDeg,
+				}
+			: undefined;
+	const warning =
+		selectedItem !== undefined
+			? spaceWarning(selectedItem, {
+					items: allItems,
+					boards,
+					customPedals,
+					live,
+				}).any
+			: false;
 
 	return (
 		<>
@@ -54,6 +76,7 @@ export function ItemNodes({
 					yCm={worldPosition ? worldPosition.y : item.y}
 					rotationDeg={rotationDeg}
 					lifted={lifted}
+					warning={item.uid === selectedItemUid ? warning : false}
 				/>
 			))}
 			{selectedItem ? (

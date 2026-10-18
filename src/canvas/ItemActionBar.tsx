@@ -8,6 +8,7 @@ import {
 } from "react";
 import { cmToPx } from "../lib/geometry";
 import { useDrag } from "../state/drag";
+import { usePanelMetrics } from "../state/panel";
 import {
 	containerItemsByZ,
 	itemWorldCorners,
@@ -100,6 +101,7 @@ export function ItemActionBar({
 	const selectItem = useSelection((state) => state.selectItem);
 	const clearSelection = useSelection((state) => state.clearSelection);
 	const liftedUid = useDrag((state) => state.liftedUid);
+	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
 
 	// Subscribed so React re-renders (and re-anchors) on any zoom/pan.
 	const scale = useViewport((state) => state.scale);
@@ -193,7 +195,9 @@ export function ItemActionBar({
 	const half = barWidth / 2;
 	const viewportMin = half + MARGIN;
 	const viewportMax = Math.max(viewportMin, viewportSize.width - half - MARGIN);
-	const bottomReserve = mobile ? TAB_BAR_HEIGHT : 0;
+	// Mobile reserves the picker tab bar AND the info sheet's measured height
+	// (the sheet is always present while an item is selected, P2-03).
+	const bottomReserve = mobile ? TAB_BAR_HEIGHT + sheetHeight : 0;
 	const left = clamp((minX + maxX) / 2, viewportMin, viewportMax);
 	const top = clamp(
 		maxY + GAP,

@@ -30,6 +30,9 @@ export const CANVAS_THEME_VARS = {
 	itemLabelInk: "--color-item-label-ink",
 	// Desktop hover brackets on a non-selected pedal — neutral ink (P2-01).
 	hoverOutline: "--color-ink",
+	// Space-warning stroke on an item that overlaps / extends past its board —
+	// P2-03 (semantic amber; distinct from the cyan selection halo).
+	warningOutline: "--color-warning",
 } as const;
 
 /**
@@ -66,6 +69,16 @@ export const ITEM_LABEL = {
 	fullOpacityWidthPx: 80,
 } as const;
 
+/**
+ * Space-warning cue metrics (screen px, counter-scaled at render so the flag
+ * stays a constant weight at any zoom) — P2-03. The stroke rides an **outer
+ * ring** beyond the selection halo/Transformer border so a selected + warned
+ * item shows both (the cyan selection border otherwise covers an on-bounds
+ * stroke).
+ */
+export const WARNING_STROKE_PX = 2;
+export const WARNING_OUTSET_PX = 5;
+
 export type CanvasThemeKey = keyof typeof CANVAS_THEME_VARS;
 
 export type CanvasTheme = Record<CanvasThemeKey, string>;
@@ -86,6 +99,7 @@ export const canvasTheme: CanvasTheme = {
 	itemLabelBg: "#1b1e21",
 	itemLabelInk: "#eef1f4",
 	hoverOutline: "#eef1f4",
+	warningOutline: "#ffd166",
 };
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
@@ -104,4 +118,5 @@ export const lightCanvasTheme: CanvasTheme = {
 	itemLabelBg: "#f4f6f7",
 	itemLabelInk: "#16191d",
 	hoverOutline: "#16191d",
+	warningOutline: "#9a5b00",
 };

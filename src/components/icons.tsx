@@ -103,3 +103,53 @@ export function CustomIcon({
 		</svg>
 	);
 }
+
+/** Space-warning triangle (info panel band + canvas context). */
+export function WarningIcon({
+	size = 16,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M12 4.5 21 19H3z" />
+			<path d="M12 10v4" />
+			<path d="M12 16.6v.01" />
+		</svg>
+	);
+}
+
+/** Chevron — the mobile info-sheet expand/collapse affordance. */
+export function ChevronIcon({
+	size = 18,
+	strokeWidth = 2,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M6 9l6 6 6-6" />
+		</svg>
+	);
+}

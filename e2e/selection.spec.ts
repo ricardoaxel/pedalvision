@@ -1,8 +1,9 @@
 import { expect, type Page, test } from "@playwright/test";
 import { addBoard, addPedal } from "./picker.ts";
+import { firstItemScreenCentre } from "./stage.ts";
 
 /** The blues-driver fixture (seed dims 7.3 × 13.02 cm). */
-const PEDAL_CM = { width: 7.3, height: 13.02 };
+const PEDAL_CM = { widthCm: 7.3, heightCm: 13.02 };
 const PX_PER_CM = 4;
 
 /** Board origin (world cm) and rotation from the stage's debug attributes. */
@@ -48,7 +49,7 @@ async function itemCentreWorld(
 	const board = await readBoard(stage);
 	const item = await readItem(stage);
 	const half = rotatePoint(
-		{ x: PEDAL_CM.width / 2, y: PEDAL_CM.height / 2 },
+		{ x: PEDAL_CM.widthCm / 2, y: PEDAL_CM.heightCm / 2 },
 		item.rotation,
 	);
 	const local = { x: item.x + half.x, y: item.y + half.y };
@@ -106,13 +107,12 @@ test("dragging the Transformer rotate handle spins a loose pedal", async ({
 	await expect(stage).toHaveAttribute("data-item-rotations", "0.00");
 	await page.waitForTimeout(150);
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	// The info rail (P2-03) narrows the canvas when the pedal is selected, so
+	// locate the pedal from the stage state rather than the window centre.
+	const { x: cx, y: cy } = await firstItemScreenCentre(page, PEDAL_CM);
 
 	// The rotate handle sits 30 px above the pedal's top edge (zoom 1).
-	const halfHeightPx = (PEDAL_CM.height / 2) * PX_PER_CM;
+	const halfHeightPx = (PEDAL_CM.heightCm / 2) * PX_PER_CM;
 	const handleY = cy - halfHeightPx - 30;
 	await page.mouse.move(cx, handleY);
 	await page.mouse.down();
@@ -172,7 +172,7 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 	};
 	const composed = boardBefore.rotation + item.rotation;
 	const handleOffset = rotatePoint(
-		{ x: (PEDAL_CM.width / 2) * PX_PER_CM, y: -30 },
+		{ x: (PEDAL_CM.widthCm / 2) * PX_PER_CM, y: -30 },
 		composed,
 	);
 	const handleX = box.x + originPx.x + handleOffset.x;
@@ -216,7 +216,7 @@ test("a second pointer during a pedal rotation commits it (no lost rotation)", a
 		y: box.y + (origin.y + board.y) * PX_PER_CM,
 	};
 	const handle = rotatePoint(
-		{ x: (PEDAL_CM.width / 2) * PX_PER_CM, y: -30 },
+		{ x: (PEDAL_CM.widthCm / 2) * PX_PER_CM, y: -30 },
 		board.rotation + item.rotation,
 	);
 	const hx = originPx.x + handle.x;
@@ -285,13 +285,13 @@ test("picking a pedal off a rotated board keeps its visible rotation (no snap-ba
 		x:
 			item.x +
 			rotatePoint(
-				{ x: PEDAL_CM.width / 2, y: PEDAL_CM.height / 2 },
+				{ x: PEDAL_CM.widthCm / 2, y: PEDAL_CM.heightCm / 2 },
 				item.rotation,
 			).x,
 		y:
 			item.y +
 			rotatePoint(
-				{ x: PEDAL_CM.width / 2, y: PEDAL_CM.height / 2 },
+				{ x: PEDAL_CM.widthCm / 2, y: PEDAL_CM.heightCm / 2 },
 				item.rotation,
 			).y,
 	};
@@ -355,16 +355,15 @@ test("hovering a pedal sets the hover target (desktop outline wiring)", async ({
 
 	const box = await stage.boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	const centre = await firstItemScreenCentre(page, PEDAL_CM);
 
 	// Deselect (tap empty canvas well clear of the pedal)…
-	await page.mouse.click(cx + 320, cy + 220);
+	await page.mouse.click(box.x + 40, box.y + 40);
 	await expect(stage).toHaveAttribute("data-selected-item", "");
 	// …then hover the pedal: the outline target is the item under the pointer.
-	await page.mouse.move(cx, cy);
+	await page.mouse.move(centre.x, centre.y);
 	await expect(stage).toHaveAttribute("data-hovered-item", selected ?? "");
 	// Moving off the pedal clears it.
-	await page.mouse.move(cx + 320, cy + 220);
+	await page.mouse.move(box.x + 40, box.y + 40);
 	await expect(stage).toHaveAttribute("data-hovered-item", "");
 });

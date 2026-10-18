@@ -51,6 +51,13 @@
 	/* Product-thumbnail tile (P2-01 picker) — light in BOTH themes so dark gear
 	 * photos/boards read against it instead of vanishing into a dark tile. */
 	--color-thumb-bg: #e6e9ec;
+	/* On-plate palette (P2-03 "Specimen Readout") — the plate is light in BOTH
+	 * themes, so anything drawn on it must be dark regardless of theme. Defined
+	 * in :root ONLY (never overridden under light); DOM-only, so no theme.ts
+	 * mirror. Drawing dims/captions 6.3:1 on the plate, lines 3.5:1 (non-text). */
+	--color-plate-ink: #4a545e;
+	--color-plate-line: #6f7b88;
+	--color-plate-fill: #22262b;
 	/* Canvas pedal name-label chip (always-on; opaque so contrast is deterministic) */
 	--color-item-label-bg: #1b1e21;
 	--color-item-label-ink: #eef1f4;
@@ -131,6 +138,9 @@
 	/* Dot grid — clearly visible, still the calmest layer (~1.9:1 vs canvas) */
 	--grid-pitch: 24px;
 	--grid-dot-radius: 1px;
+
+	/* Info panel (P2-03 "Readout") — desktop trailing push rail width. */
+	--panel-width: 360px;
 }
 
 [data-theme="light"] {

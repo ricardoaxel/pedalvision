@@ -9,7 +9,12 @@ import { type PlacedItem, resolveItem, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
-import { CANVAS_FONTS, ITEM_LABEL } from "../styles/theme";
+import {
+	CANVAS_FONTS,
+	ITEM_LABEL,
+	WARNING_OUTSET_PX,
+	WARNING_STROKE_PX,
+} from "../styles/theme";
 import { registerItemNode, unregisterItemNode } from "./itemNodeRegistry";
 import { useImage } from "./useImage";
 
@@ -26,6 +31,12 @@ interface PedalNodeProps {
 	rotationDeg?: number;
 	/** True while the item is lifted in the DragLayer — adds the lift shadow. */
 	lifted?: boolean;
+	/**
+	 * Space warning (P2-03): true when this item overlaps a peer or extends past
+	 * its board. Draws a screen-constant amber on-bounds stroke — a non-blocking
+	 * cue (never affects the placement).
+	 */
+	warning?: boolean;
 }
 
 /** Client-space pointer position from a mouse or touch Konva event. */
@@ -63,6 +74,7 @@ export function PedalNode({
 	yCm,
 	rotationDeg,
 	lifted = false,
+	warning = false,
 }: PedalNodeProps) {
 	const customPedals = useScene((state) => state.customPedals);
 	const resolved = resolveItem(item, customPedals);
@@ -251,6 +263,29 @@ export function PedalNode({
 		</>
 	);
 
+	// Non-blocking space-warning cue: a solid amber **outer ring** around the
+	// item's footprint. It sits outside the selection halo + Transformer border
+	// (both drawn on the bounds) so a selected + warned item shows BOTH the cyan
+	// selection and the amber flag; solid (not dashed — dashed is the
+	// missing-image language) and no fill tint (the canvas stays neutral). The
+	// width and outset are counter-scaled so the cue stays a constant screen
+	// weight at any zoom.
+	const warningOutset = WARNING_OUTSET_PX / labelScale;
+	const warningCue = warning ? (
+		<Rect
+			x={-warningOutset}
+			y={-warningOutset}
+			width={widthPx + warningOutset * 2}
+			height={heightPx + warningOutset * 2}
+			stroke={theme.warningOutline}
+			strokeWidth={WARNING_STROKE_PX / labelScale}
+			fillEnabled={false}
+			cornerRadius={4 / labelScale}
+			listening={false}
+			perfectDrawEnabled={false}
+		/>
+	) : null;
+
 	return (
 		<Group
 			ref={groupRef}
@@ -269,6 +304,7 @@ export function PedalNode({
 			onMouseLeave={() => setHoveredItem(null)}
 		>
 			{body}
+			{warningCue}
 		</Group>
 	);
 }

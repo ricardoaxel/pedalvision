@@ -29,7 +29,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 ## P2 — Catalog & objects (expand when scheduled)
 - P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs — **done** (merged 2026-10-17, PR #17, squash `36734a2`; owner-approved "Specimen Bench" direction, extending "Parts Bin"; replaces the temporary `BoardPicker`/`PedalPicker`). **note:** any temporary/placeholder chrome added before a task must keep a **small on-screen footprint, especially on mobile** so it doesn't cover the canvas (owner instruction, 2026-10-15).
 - P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **done** (merged 2026-10-18, PR #18, squash `c654e56`; owner-approved "Datasheet" direction; includes edit-a-custom-part + the widened `jacks.kind` vocabulary `in|out|exp|exp-in|exp-out|send|return|midi|ctrl|power`).
-- P2-03 Pedal info panel (tags, dimensions, power) **+ space warning** (warn — but still allow — when a pedal overlaps another or extends beyond its board; owner-folded 2026-10-18)
+- P2-03 Pedal info panel (tags, dimensions, power) **+ space warning** (warn — but still allow — when a pedal overlaps another or extends beyond its board; owner-folded 2026-10-18) — **in review (PR #19)**; owner-approved "Readout" + "Specimen Readout" rework (specimen image preview: desktop plate / mobile thumb→plate)
 - P2-04 Asset-pipeline tooling (bg removal, trim, 800/350 sizes, JSON draft)
 - P2-05 Custom board creator (any W×D, texture)
 - P2-06 Catalog procurement (owner-assisted): brand outreach log + permission tracking + dimension spot-check (S4/S6)
