@@ -198,6 +198,39 @@ describe("scene persistence", () => {
 		expect(items[0].z).toBe(0);
 	});
 
+	it("prunes a custom pedal left orphaned by a dropped item on hydrate", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [],
+			items: [
+				{
+					uid: "i",
+					refId: "custom-x",
+					kind: "pedal",
+					boardUid: "gone",
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+					z: 0,
+				},
+			],
+			customPedals: [
+				{
+					refId: "custom-x",
+					brand: "",
+					name: "X",
+					widthCm: 6,
+					heightCm: 12,
+					category: "pedal",
+					effectTypes: [],
+				},
+			],
+		});
+		hydrateScene(fakeStorage({ [SCENE_STORAGE_KEY]: raw }));
+		expect(useScene.getState().items).toHaveLength(0);
+		expect(useScene.getState().customPedals).toHaveLength(0);
+	});
+
 	it("never throws at boot when storage is unavailable or blocked", () => {
 		const blocked = fakeStorage();
 		blocked.getItem = () => {

@@ -1,6 +1,6 @@
 import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
-import { normalizeAllZ, useScene } from "./scene";
+import { normalizeAllZ, pruneCustomPedals, useScene } from "./scene";
 
 /**
  * Temporary v1 scene save (P1-06): the boards + items slices are mirrored to
@@ -192,7 +192,9 @@ export function hydrateScene(storage?: Storage | null): void {
 	useScene.setState({
 		boards: snapshot.boards,
 		items,
-		customPedals: snapshot.customPedals,
+		// A snapshot whose item referenced a dropped (orphan) item can leave a
+		// custom definition unreferenced — prune it like `removeItem` does.
+		customPedals: pruneCustomPedals(snapshot.customPedals, items),
 	});
 }
 

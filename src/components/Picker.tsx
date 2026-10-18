@@ -154,15 +154,24 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 
 	const openTab = (next: PickerTab) => {
 		if (!open || next !== tab) resetFilters();
+		// Capture the trigger BEFORE the panel (and the Custom form's focus
+		// effect, which runs first for a child) can move focus, so closing
+		// restores to the real trigger (P2-02).
+		if (!open) {
+			returnFocusRef.current = document.activeElement as HTMLElement | null;
+		}
 		onOpen(next);
 	};
 
 	// Focus management: move focus into the picker on open, restore on close.
-	// The Custom tab has no search field, so it focuses its first field via
-	// `autoFocus` instead (P2-02); this effect's `searchRef` is null there.
+	// The Custom tab has no search field; its first field focuses itself on mount
+	// (P2-02), so the search-ref focus here is simply a no-op there.
 	useEffect(() => {
 		if (open) {
-			returnFocusRef.current = document.activeElement as HTMLElement | null;
+			// Don't clobber a capture made in the open handler (mobile tab bar).
+			if (!returnFocusRef.current) {
+				returnFocusRef.current = document.activeElement as HTMLElement | null;
+			}
 			searchRef.current?.focus();
 			return;
 		}
