@@ -32,6 +32,16 @@ export function usePartImage(src: string): PartImageState {
 		src: string;
 		phase: PartImagePhase;
 	}>({ src, phase: "cors" });
+	// A part with no image (custom/unknown) passes ""; return a neutral failed
+	// state without running the ladder.
+	if (src === "") {
+		return {
+			phase: "failed",
+			url: "",
+			crossOrigin: undefined,
+			onError: () => {},
+		};
+	}
 	const phase: PartImagePhase = attempt.src === src ? attempt.phase : "cors";
 	const busted = bustCache(src);
 	const bustable = busted !== src;

@@ -1393,14 +1393,10 @@ body {
 		z-index: 1;
 		min-height: 140px;
 		padding: var(--space-3);
-		background-color: var(--color-specimen-bg);
-		background-image: radial-gradient(
-			circle,
-			var(--color-specimen-dot) var(--grid-dot-radius),
-			transparent calc(var(--grid-dot-radius) + 0.5px)
-		);
-		background-size: var(--grid-pitch) var(--grid-pitch);
-		border: 1px solid var(--color-border);
+		/* A light plate in both themes, matching .custom__plate / the P2-03
+		 * panel plate — the drawing's on-plate ink is dark in both themes. */
+		background-color: var(--color-thumb-bg);
+		border: 1px solid var(--color-border-strong);
 		border-radius: var(--radius-control);
 	}
 

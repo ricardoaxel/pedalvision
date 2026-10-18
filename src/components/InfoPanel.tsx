@@ -125,7 +125,7 @@ export function InfoPanel() {
 			widthCm={info.widthCm}
 			depthCm={info.heightCm}
 			jacks={info.jacks}
-			units="cm"
+			units={units}
 		/>
 	) : showImage ? (
 		<img
@@ -158,7 +158,6 @@ export function InfoPanel() {
 			alt=""
 			loading="lazy"
 			crossOrigin={preview.crossOrigin}
-			onError={preview.onError}
 		/>
 	) : (
 		<PedalIcon size={22} strokeWidth={1.5} />
