@@ -80,12 +80,17 @@ high-risk code review.
   the cm/in toggle and ≥1 jack + power) → submit → the item appears at its true
   cm footprint as a **labeled rectangle** (text-only) with `data-items`
   incremented.
+- Playwright (desktop + mobile): select a placed custom part → **Edit** reopens
+  the creator **pre-filled** → change a field → **Save changes** updates the
+  shared definition in place (one item, not a new placement); an edit draft never
+  leaks into a later Create.
 - Manual/grep: no hardcoded colors; no external catalog provenance leaked; storage
   stays cm.
 
 ## Notes
 - **Approved direction: "Datasheet"** (designer proposal, **owner-approved 2026-10-17**): a custom part is its datasheet — a spec sheet (TYPE → IDENTITY → FOOTPRINT → EFFECTS → JACKS → POWER) beside a **live dimensioned drawing** in the specimen pane (desktop), or the drawing in-flow above the Jacks rows (mobile). Custom tab joins the picker's segmented control + mobile bottom bar. Jack editor = kind `<select>` + **T/R/B/L** edge segments + **pos range slider** + remove; the actively-edited jack's dot is accent. cm/in is **local to the creator** for now (derived from canonical cm, seeded from `Settings.units` when it lands). Canvas cue (also owner-approved): **solid** rect (**not** dashed) + **dog-eared top-right corner** + existing bottom name chip + a small mono `CUSTOM` tag; two new neutral tokens `--color-custom-fill`/`--color-custom-stroke`; accent stays reserved for selection. Jack `pos` convention (owner-approved, inherited by P4-01): **reading order** — left→right on top/bottom, top→bottom on left/right; 0.5 centred.
 - Folds the designer's **7 picker defects**: arrow-key hijack in form fields, initial focus when there is no search field, no dirty guard on Esc, focus trap missing `textarea`, two-way ternary header labels, scroll hard-wired to the results list, and `resetFilters` wiping a draft.
+- **Owner follow-up (2026-10-17, folded into the same PR): edit a custom part.** A **custom-only** `Edit` action in the selection action bar (first text action after the z-cluster, plain — no accent) reopens the creator **pre-filled** (`draftFromCustomPedal`); the title becomes "Edit custom part" and the CTA "Save changes". Saving calls `updateCustomPedal(refId, definition)` — the shared definition updates and **every placed copy** re-renders at the new name/footprint, while place items' `x/y/uid/z` are untouched. Leaving edit mode (save/Esc/scrim/close/tab-switch) clears the edit draft so it can never leak into Create; a plain Create draft still survives tab switches. Canonical cm (`widthCm`/`depthCm`, `setDraftDimension`) keeps an untouched imperial save bit-identical. Designer spec + `design-reviewer` (desktop+mobile, dark+light) → approve; light `/code-review` pass (blocker: edit-draft leak — fixed).
 - First `Settings.units` (app-wide) arrives with the settings/persistence task (P3-02); P2-02 keeps the toggle local.
 - Depends on P2-01's picker shell (Custom tab joins Pedals/Boards).
 - Roadmap P4-01 (cables) consumes the widened jack vocabulary.
