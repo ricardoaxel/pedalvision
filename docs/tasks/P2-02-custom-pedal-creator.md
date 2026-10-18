@@ -1,6 +1,6 @@
 # P2-02: Custom pedal creator
 
-**Phase:** P2 · **Status:** in review — PR #18 (opened 2026-10-17) · **Model:** build-cheap
+**Phase:** P2 · **Status:** done (merged 2026-10-18, PR #18, squash `c654e56`) · **Model:** build-cheap
 
 ## Goal
 Let a user define their own pedal or power supply (F7) and place it on the
