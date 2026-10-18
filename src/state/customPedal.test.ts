@@ -123,4 +123,34 @@ describe("custom pedals (P2-02)", () => {
 		expect(clone).not.toBeNull();
 		expect(useScene.getState().customPedals).toHaveLength(1);
 	});
+
+	it("edits a custom pedal in place (keeps refId, updates the footprint)", () => {
+		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const uid = useScene.getState().addItem(refId, "pedal", null, {
+			x: 2,
+			y: 3,
+		});
+		const before = useScene.getState().items.find((i) => i.uid === uid);
+		if (!before) throw new Error("item missing");
+		useScene
+			.getState()
+			.updateCustomPedal(refId, { ...CUSTOM, name: "Renamed", widthCm: 10 });
+		const stored = useScene.getState().customPedals;
+		expect(stored).toHaveLength(1);
+		expect(stored[0].refId).toBe(refId);
+		expect(stored[0].name).toBe("Renamed");
+		const item = useScene.getState().items.find((i) => i.uid === uid);
+		if (!item) throw new Error("item missing");
+		expect(itemFootprint(item, stored)).toEqual({
+			widthCm: 10,
+			heightCm: 12.1,
+		});
+		// Editing the definition never moves placed items.
+		expect({ uid: item.uid, x: item.x, y: item.y, z: item.z }).toEqual({
+			uid: before.uid,
+			x: before.x,
+			y: before.y,
+			z: before.z,
+		});
+	});
 });

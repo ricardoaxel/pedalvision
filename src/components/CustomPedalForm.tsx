@@ -30,8 +30,10 @@ interface CustomPedalFormProps {
 	onChange: (draft: CustomPedalDraft) => void;
 	/** The board a created part will attach to (null → loose). */
 	targetBoard: PlacedBoard | null;
+	/** Edit mode: the part already exists — saving updates it in place. */
+	editing?: boolean;
 	/** Called with the validated definition when the CTA is pressed. */
-	onCreate: (definition: CustomPedalDefinition) => void;
+	onSubmit: (definition: CustomPedalDefinition) => void;
 }
 
 /**
@@ -50,7 +52,8 @@ export function CustomPedalForm({
 	draft,
 	onChange,
 	targetBoard,
-	onCreate,
+	editing = false,
+	onSubmit,
 }: CustomPedalFormProps) {
 	const [activeJackId, setActiveJackId] = useState<string | null>(null);
 	const [showAllEffects, setShowAllEffects] = useState(false);
@@ -119,7 +122,7 @@ export function CustomPedalForm({
 		});
 
 	const submit = () => {
-		if (validation.ok) onCreate(validation.value);
+		if (validation.ok) onSubmit(validation.value);
 	};
 
 	const drawing = (
@@ -234,7 +237,15 @@ export function CustomPedalForm({
 									inputMode="decimal"
 									placeholder="0"
 									value={draft.width}
-									onChange={(event) => patch({ width: event.target.value })}
+									onChange={(event) =>
+										patch({
+											width: event.target.value,
+											widthCm: parseDimensionToCm(
+												event.target.value,
+												draft.units,
+											),
+										})
+									}
 									onBlur={() => touch("width")}
 								/>
 							</Field>
@@ -252,7 +263,15 @@ export function CustomPedalForm({
 									inputMode="decimal"
 									placeholder="0"
 									value={draft.depth}
-									onChange={(event) => patch({ depth: event.target.value })}
+									onChange={(event) =>
+										patch({
+											depth: event.target.value,
+											depthCm: parseDimensionToCm(
+												event.target.value,
+												draft.units,
+											),
+										})
+									}
 									onBlur={() => touch("depth")}
 								/>
 							</Field>
@@ -495,11 +514,16 @@ export function CustomPedalForm({
 					</Section>
 				</div>
 
-				<div className="custom__footer">
+				<div
+					className="custom__footer"
+					data-editing={editing ? "true" : undefined}
+				>
 					<span className="custom__footer-hint">
-						{targetBoard
-							? "Adds to the selected board"
-							: "No board — adds loosely"}
+						{editing
+							? "Updates all placed copies"
+							: targetBoard
+								? "Adds to the selected board"
+								: "No board — adds loosely"}
 					</span>
 					<button
 						type="button"
@@ -508,7 +532,7 @@ export function CustomPedalForm({
 						disabled={!validation.ok}
 						onClick={submit}
 					>
-						Add custom part
+						{editing ? "Save changes" : "Add custom part"}
 					</button>
 				</div>
 			</div>

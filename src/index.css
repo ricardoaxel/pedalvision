@@ -1363,6 +1363,11 @@ body {
 		padding: var(--space-3) var(--space-4) var(--space-2);
 	}
 
+	/* Stack the identity fields full-width so a long brand name isn't clipped. */
+	.custom__row--identity > .custom__field {
+		flex-basis: 100%;
+	}
+
 	/* No second pane on mobile — the drawing joins the Jacks section. */
 	.custom__drawing {
 		display: none;
@@ -1397,6 +1402,16 @@ body {
 	/* The header hint already states the placement on mobile. */
 	.custom__footer-hint {
 		display: none;
+	}
+
+	/* Edit mode keeps the footer hint: it is the only place that explains the
+	 * save rewrites every placed copy. */
+	.custom__footer[data-editing="true"] {
+		flex-wrap: wrap;
+	}
+
+	.custom__footer[data-editing="true"] .custom__footer-hint {
+		display: block;
 	}
 
 	.custom__cta {

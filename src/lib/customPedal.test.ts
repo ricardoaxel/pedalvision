@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
+import type { CustomPedal } from "../state/scene";
 import {
 	type CustomPedalDraft,
 	changeDraftUnits,
+	draftFromCustomPedal,
 	emptyCustomPedalDraft,
 	formatDimension,
 	jackKindLabel,
@@ -66,6 +68,23 @@ describe("changeDraftUnits", () => {
 		expect(changeDraftUnits(validDraft({ width: "7" }), "in").width).toBe(
 			"2.76",
 		);
+	});
+
+	it("preserves exact cm across a unit toggle when canonical is set", () => {
+		const draft: CustomPedalDraft = {
+			...validDraft({ width: "7", depth: "7" }),
+			widthCm: 7,
+			depthCm: 7,
+		};
+		const imperial = changeDraftUnits(draft, "in");
+		expect(imperial.width).toBe("2.76");
+		// The canonical cm is unchanged, so saving is exact (no drift).
+		expect(imperial.widthCm).toBe(7);
+		const result = validateCustomPedalDraft(imperial);
+		expect(result.ok).toBe(true);
+		if (!result.ok) return;
+		expect(result.value.widthCm).toBe(7);
+		expect(result.value.heightCm).toBe(7);
 	});
 
 	it("keeps an invalid dimension verbatim (no data loss)", () => {
@@ -167,5 +186,56 @@ describe("jackKindLabel", () => {
 		expect(jackKindLabel("in")).toBe("In");
 		expect(jackKindLabel("exp-in")).toBe("Exp In");
 		expect(jackKindLabel("midi")).toBe("MIDI");
+	});
+});
+
+describe("draftFromCustomPedal", () => {
+	const custom: CustomPedal = {
+		refId: "custom-x",
+		brand: "Acme",
+		name: "My Fuzz",
+		widthCm: 6.35,
+		heightCm: 12.7,
+		category: "pedal",
+		effectTypes: ["fuzz"],
+		jacks: [{ kind: "in", edge: "top", pos: 0.5 }],
+		power: { voltage: 9, acDc: "DC", currentMa: 40 },
+	};
+
+	it("seeds a draft from a stored definition (round-trips validation)", () => {
+		const draft = draftFromCustomPedal(custom);
+		expect(draft.name).toBe("My Fuzz");
+		expect(draft.brand).toBe("Acme");
+		expect(draft.width).toBe("6.35");
+		expect(draft.depth).toBe("12.7");
+		expect(draft.widthCm).toBe(6.35);
+		expect(draft.depthCm).toBe(12.7);
+		expect(draft.effectTypes).toEqual(["fuzz"]);
+		expect(draft.jacks).toHaveLength(1);
+		expect(draft.jacks[0]).toMatchObject({ kind: "in", edge: "top", pos: 0.5 });
+		expect(draft.powerEnabled).toBe(true);
+		expect(draft.voltage).toBe("9");
+		expect(draft.currentMa).toBe("40");
+
+		const result = validateCustomPedalDraft(draft);
+		expect(result.ok).toBe(true);
+		if (!result.ok) return;
+		expect(result.value.widthCm).toBeCloseTo(6.35, 12);
+		expect(result.value.jacks).toEqual([{ kind: "in", edge: "top", pos: 0.5 }]);
+		expect(result.value.power).toEqual({
+			voltage: 9,
+			acDc: "DC",
+			currentMa: 40,
+		});
+	});
+
+	it("seeds a part with no power and no jacks", () => {
+		const draft = draftFromCustomPedal({
+			...custom,
+			power: undefined,
+			jacks: undefined,
+		});
+		expect(draft.powerEnabled).toBe(false);
+		expect(draft.jacks).toEqual([]);
 	});
 });

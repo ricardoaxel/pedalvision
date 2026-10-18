@@ -180,6 +180,14 @@ export function itemFootprint(
 	return { widthCm: resolved.widthCm, heightCm: resolved.heightCm };
 }
 
+/** The custom pedal with `refId`, or null. */
+export function customPedalById(
+	customPedals: CustomPedal[],
+	refId: string,
+): CustomPedal | null {
+	return customPedals.find((candidate) => candidate.refId === refId) ?? null;
+}
+
 /**
  * Drop custom-pedal definitions that no remaining placed item references, so
  * deleting the last instance of a custom part doesn't leave its definition
@@ -459,6 +467,12 @@ interface SceneStore {
 	 */
 	addCustomPedal: (definition: CustomPedalDefinition) => string;
 	/**
+	 * Replace a custom part's definition in place (P2-02 edit). Every placed item
+	 * that references `refId` re-resolves to the new name/footprint — items never
+	 * move, only the definition changes.
+	 */
+	updateCustomPedal: (refId: string, definition: CustomPedalDefinition) => void;
+	/**
 	 * Add a catalog pedal/supply with its origin at `posCm` (parent frame:
 	 * board-local when `boardUid` is set, world cm when loose), returning its uid.
 	 */
@@ -537,6 +551,12 @@ export const useScene = create<SceneStore>((set) => ({
 		}));
 		return refId;
 	},
+	updateCustomPedal: (refId, definition) =>
+		set((state) => ({
+			customPedals: state.customPedals.map((candidate) =>
+				candidate.refId === refId ? { ...definition, refId } : candidate,
+			),
+		})),
 	addItem: (refId, kind, boardUid, posCm) => {
 		const uid = crypto.randomUUID();
 		set((state) => ({

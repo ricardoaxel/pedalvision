@@ -1,13 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
 import { bustCache, resolveImageUrl } from "../lib/cdn";
-import { emptyCustomPedalDraft } from "../lib/customPedal";
+import {
+	draftFromCustomPedal,
+	emptyCustomPedalDraft,
+} from "../lib/customPedal";
 import { centerOffset, placeItem } from "../lib/geometry";
 import {
 	boardDefinition,
 	boardFootprint,
 	type CustomPedalDefinition,
+	customPedalById,
 	itemFootprint,
 	useScene,
 } from "../state/scene";
@@ -73,10 +77,14 @@ const EFFECT_CHIP_PREVIEW = 8;
 interface PickerProps {
 	open: boolean;
 	tab: PickerTab;
+	/** When set, the Custom tab opens in edit mode seeded from this part. */
+	editRefId?: string | null;
 	/** Open the picker on `tab` (mobile tab bar + desktop trigger). */
 	onOpen: (tab: PickerTab) => void;
 	/** Switch tab while open (desktop modal tabs). */
 	onTab: (tab: PickerTab) => void;
+	/** Leave edit mode (tab switch away from Custom). */
+	onClearEdit?: () => void;
 	onClose: () => void;
 }
 
@@ -108,7 +116,15 @@ interface PickerEntry {
  * See `docs/tasks/P2-01-picker-modal.md` (owner-approved "Specimen Bench"
  * direction, 2026-10-17, extending "Parts Bin").
  */
-export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
+export function Picker({
+	open,
+	tab,
+	editRefId,
+	onOpen,
+	onTab,
+	onClearEdit,
+	onClose,
+}: PickerProps) {
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
@@ -116,6 +132,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const removeBoard = useScene((state) => state.removeBoard);
 	const addItem = useScene((state) => state.addItem);
 	const addCustomPedal = useScene((state) => state.addCustomPedal);
+	const updateCustomPedal = useScene((state) => state.updateCustomPedal);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	const selectItem = useSelection((state) => state.selectItem);
@@ -136,6 +153,37 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const returnFocusRef = useRef<HTMLElement | null>(null);
 	const rowRefs = useRef(new Map<string, HTMLButtonElement>());
 
+	// Edit mode: the Custom tab seeded from an existing custom part (P2-02 edit).
+	const isEditing = tab === "custom" && editRefId != null;
+	const editedPart =
+		editRefId != null ? customPedalById(customPedals, editRefId) : null;
+	const appliedEditRef = useRef<string | null>(null);
+
+	// Seed the draft from the stored definition when edit mode is entered (once
+	// per refId), so re-opening Custom for a NEW part keeps the new-part draft.
+	// `useLayoutEffect` applies the seed before paint — no empty-form flash.
+	useLayoutEffect(() => {
+		if (!open || editRefId == null) {
+			appliedEditRef.current = null;
+			return;
+		}
+		if (appliedEditRef.current === editRefId) return;
+		const custom = customPedalById(customPedals, editRefId);
+		if (custom) {
+			appliedEditRef.current = editRefId;
+			setCustomDraft((current) => draftFromCustomPedal(custom, current.units));
+		}
+	}, [open, editRefId, customPedals]);
+
+	// Leaving edit mode (tab switch) clears the edit draft so it can't leak into
+	// Create; the next Edit re-seeds from the saved definition.
+	// Leaving edit mode clears the edit draft so it can't leak into Create; the
+	// next Edit re-seeds from the saved definition.
+	const leaveEdit = () => {
+		onClearEdit?.();
+		setCustomDraft((current) => emptyCustomPedalDraft(current.units));
+	};
+
 	// Reset filters when switching tabs: the brand menu and the effect chips
 	// differ per tab, so a stale selection would silently hide every result.
 	const resetFilters = () => {
@@ -148,11 +196,15 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 
 	const changeTab = (next: PickerTab) => {
 		if (next === tab) return;
+		// Only an EDIT draft is dropped on a tab change; a Create draft survives
+		// (see the note above `resetFilters`).
+		if (isEditing) leaveEdit();
 		resetFilters();
 		onTab(next);
 	};
 
 	const openTab = (next: PickerTab) => {
+		if (open && next !== tab && isEditing) leaveEdit();
 		if (!open || next !== tab) resetFilters();
 		// Capture the trigger BEFORE the panel (and the Custom form's focus
 		// effect, which runs first for a child) can move focus, so closing
@@ -161,6 +213,17 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 			returnFocusRef.current = document.activeElement as HTMLElement | null;
 		}
 		onOpen(next);
+	};
+
+	// Every close path (Esc / scrim / close X / after Save) must drop an edit
+	// draft, or the next Create reopens pre-filled with the edited part.
+	const editingRef = useRef(false);
+	editingRef.current = isEditing;
+	const closePicker = () => {
+		if (editingRef.current) {
+			setCustomDraft((current) => emptyCustomPedalDraft(current.units));
+		}
+		onClose();
 	};
 
 	// Focus management: move focus into the picker on open, restore on close.
@@ -179,11 +242,16 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		returnFocusRef.current = null;
 	}, [open]);
 
-	// Esc closes from anywhere in the dialog.
+	// Esc closes from anywhere in the dialog (dropping an edit draft like the
+	// other close paths, via the stable `editingRef`).
 	useEffect(() => {
 		if (!open) return;
 		const onKey = (event: KeyboardEvent) => {
-			if (event.key === "Escape") onClose();
+			if (event.key !== "Escape") return;
+			if (editingRef.current) {
+				setCustomDraft((current) => emptyCustomPedalDraft(current.units));
+			}
+			onClose();
 		};
 		window.addEventListener("keydown", onKey);
 		return () => window.removeEventListener("keydown", onKey);
@@ -327,6 +395,14 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		onClose();
 	};
 
+	// Save an edited custom part in place: the definition updates, every placed
+	// copy re-renders at the new name/footprint, and the selection stays (the
+	// halo is the feedback — no toast).
+	const handleSave = (definition: CustomPedalDefinition) => {
+		if (editRefId) updateCustomPedal(editRefId, definition);
+		closePicker();
+	};
+
 	// Move the keyboard-active row and mirror focus to it (listbox behaviour).
 	const moveActive = (delta: number) => {
 		if (entries.length === 0) return;
@@ -401,11 +477,19 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const isBoards = tab === "boards";
 	const isCustom = tab === "custom";
 	const copy = TAB_COPY[tab];
-	const hint = isBoards
-		? "Adds at the viewport centre"
-		: targetBoard
-			? "Adds to the selected board"
-			: "No board — adds loosely";
+	// Edit mode overrides only the title/dialog (the eyebrow is a location
+	// label) and, on mobile, swaps the placement hint for the part's identity.
+	const title = isEditing ? "Edit custom part" : copy.title;
+	const dialog = isEditing ? "Edit a custom part" : copy.dialog;
+	const hint = isEditing
+		? editedPart
+			? `${editedPart.brand || "Custom"} · ${editedPart.name || "Untitled part"}`
+			: "Editing part"
+		: isBoards
+			? "Adds at the viewport centre"
+			: targetBoard
+				? "Adds to the selected board"
+				: "No board — adds loosely";
 
 	// The mobile bottom tab bar. Rendered inside the dialog while open (so the
 	// modal's switcher is in the AT/focus scope) and standalone while closed.
@@ -455,7 +539,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 						className="picker__scrim"
 						data-testid="picker-scrim"
 						aria-label="Close picker"
-						onClick={onClose}
+						onClick={closePicker}
 					/>
 					<div
 						ref={panelRef}
@@ -463,14 +547,14 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 						data-testid="picker-panel"
 						role="dialog"
 						aria-modal="true"
-						aria-label={copy.dialog}
+						aria-label={dialog}
 						onKeyDown={handlePanelKeyDown}
 					>
 						<div className="picker__handle" aria-hidden="true" />
 						<header className="picker__header">
 							<div className="picker__heading">
 								<span className="picker__eyebrow">{copy.eyebrow}</span>
-								<h2 className="picker__title">{copy.title}</h2>
+								<h2 className="picker__title">{title}</h2>
 								<span className="picker__header-hint" data-testid="picker-hint">
 									{hint}
 								</span>
@@ -513,7 +597,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 									className="picker__close"
 									data-testid="picker-close"
 									aria-label="Close"
-									onClick={onClose}
+									onClick={closePicker}
 								>
 									<svg
 										width="18"
@@ -536,7 +620,8 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 								draft={customDraft}
 								onChange={setCustomDraft}
 								targetBoard={targetBoard}
-								onCreate={handleCreate}
+								editing={isEditing}
+								onSubmit={isEditing ? handleSave : handleCreate}
 							/>
 						) : (
 							<div className="picker__body">

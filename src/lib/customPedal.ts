@@ -5,7 +5,7 @@ import type {
 	JackKind,
 	Power,
 } from "../catalog/schema";
-import type { CustomPedalDefinition } from "../state/scene";
+import type { CustomPedal, CustomPedalDefinition } from "../state/scene";
 import { cmToDisplay, type DisplayUnits, displayToCm } from "./geometry";
 
 /**
@@ -39,6 +39,13 @@ export interface CustomPedalDraft {
 	name: string;
 	width: string;
 	depth: string;
+	/**
+	 * Canonical cm parsed from `width`/`depth` on the last edit (null when the
+	 * string is empty/invalid). Submitting uses these, so switching units (whose
+	 * display is only 2-decimal) never silently changes the stored size.
+	 */
+	widthCm: number | null;
+	depthCm: number | null;
 	units: DisplayUnits;
 	effectTypes: EffectType[];
 	jacks: JackDraft[];
@@ -92,6 +99,8 @@ export function emptyCustomPedalDraft(
 		name: "",
 		width: "",
 		depth: "",
+		widthCm: null,
+		depthCm: null,
 		units,
 		effectTypes: [],
 		jacks: [],
@@ -103,31 +112,70 @@ export function emptyCustomPedalDraft(
 }
 
 /**
- * Switch the draft's display unit: both dimensions are parsed from the old unit
- * to canonical cm and re-formatted in the new one (2-decimal display precision,
- * so the result is a display value, not a bit-exact re-encoding). An invalid
- * dimension is kept verbatim so no floating-point noise enters the field.
+ * Seed a draft from an existing custom part (P2-02 edit), so the creator modal
+ * reopens pre-filled. Jacks get fresh row ids; the definition itself keeps its
+ * `refId` (assigned by the store). The canonical cm is seeded exactly, so an
+ * untouched "Save changes" is bit-identical even if the display rounds.
+ */
+export function draftFromCustomPedal(
+	custom: CustomPedal,
+	units: DisplayUnits = "cm",
+): CustomPedalDraft {
+	return {
+		category: custom.category,
+		brand: custom.brand,
+		name: custom.name,
+		width: formatDimension(custom.widthCm, units),
+		depth: formatDimension(custom.heightCm, units),
+		widthCm: custom.widthCm,
+		depthCm: custom.heightCm,
+		units,
+		effectTypes: [...custom.effectTypes],
+		jacks: (custom.jacks ?? []).map((jack) => ({
+			id: crypto.randomUUID(),
+			kind: jack.kind,
+			edge: jack.edge,
+			pos: jack.pos,
+		})),
+		powerEnabled: custom.power !== undefined,
+		voltage: custom.power ? String(custom.power.voltage) : "9",
+		acDc: custom.power?.acDc ?? "DC",
+		currentMa: custom.power ? String(custom.power.currentMa) : "100",
+	};
+}
+
+/**
+ * Switch the draft's display unit. The display is re-derived from the canonical
+ * cm (`widthCm`/`depthCm`) when present — so switching units never changes the
+ * stored size — and falls back to parsing the current string for a draft built
+ * without canonical values. An invalid dimension is kept verbatim.
  */
 export function changeDraftUnits(
 	draft: CustomPedalDraft,
 	units: DisplayUnits,
 ): CustomPedalDraft {
 	if (draft.units === units) return draft;
-	const convert = (raw: string, from: DisplayUnits): string => {
-		const cm = parseDimensionToCm(raw, from);
+	const convert = (
+		canonical: number | null,
+		raw: string,
+		from: DisplayUnits,
+	): string => {
+		const cm = canonical ?? parseDimensionToCm(raw, from);
 		return cm === null ? raw : formatDimension(cm, units);
 	};
 	return {
 		...draft,
 		units,
-		width: convert(draft.width, draft.units),
-		depth: convert(draft.depth, draft.units),
+		width: convert(draft.widthCm, draft.width, draft.units),
+		depth: convert(draft.depthCm, draft.depth, draft.units),
 	};
 }
 
 /**
  * Validate a draft and, when valid, produce the placeable definition. A supply
  * always requires power (it is its primary spec); a pedal's power is optional.
+ * Dimensions prefer the canonical cm (exact) and fall back to parsing the
+ * display string.
  */
 export function validateCustomPedalDraft(
 	draft: CustomPedalDraft,
@@ -137,12 +185,13 @@ export function validateCustomPedalDraft(
 	const name = draft.name.trim();
 	if (name === "") errors.name = "Name is required.";
 
-	const widthCm = parseDimensionToCm(draft.width, draft.units);
+	const widthCm = draft.widthCm ?? parseDimensionToCm(draft.width, draft.units);
 	if (widthCm === null) errors.width = "Enter a positive width.";
 	else if (widthCm > MAX_DIMENSION_CM)
 		errors.width = `Keep it under ${MAX_DIMENSION_CM} cm.`;
 
-	const heightCm = parseDimensionToCm(draft.depth, draft.units);
+	const heightCm =
+		draft.depthCm ?? parseDimensionToCm(draft.depth, draft.units);
 	if (heightCm === null) errors.depth = "Enter a positive depth.";
 	else if (heightCm > MAX_DIMENSION_CM)
 		errors.depth = `Keep it under ${MAX_DIMENSION_CM} cm.`;
