@@ -1,5 +1,6 @@
-import type { PlacedBoard, PlacedItem } from "./scene";
-import { normalizeAllZ, useScene } from "./scene";
+import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
+import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
+import { normalizeAllZ, pruneCustomPedals, useScene } from "./scene";
 
 /**
  * Temporary v1 scene save (P1-06): the boards + items slices are mirrored to
@@ -15,20 +16,29 @@ export interface SceneSnapshot {
 	version: 1;
 	boards: PlacedBoard[];
 	items: PlacedItem[];
+	/** Inline custom pedals (P2-02) travel with the scene (A5). */
+	customPedals: CustomPedal[];
 }
 
 /** A snapshot of the store's persisted fields. */
 export function sceneSnapshot(state: {
 	boards: PlacedBoard[];
 	items: PlacedItem[];
+	customPedals: CustomPedal[];
 }): SceneSnapshot {
-	return { version: 1, boards: state.boards, items: state.items };
+	return {
+		version: 1,
+		boards: state.boards,
+		items: state.items,
+		customPedals: state.customPedals,
+	};
 }
 
 /** Serialise the persisted fields to a JSON string. */
 export function serializeScene(state: {
 	boards: PlacedBoard[];
 	items: PlacedItem[];
+	customPedals: CustomPedal[];
 }): string {
 	return JSON.stringify(sceneSnapshot(state));
 }
@@ -66,6 +76,52 @@ function isPlacedItem(value: unknown): value is PlacedItem {
 	);
 }
 
+function isJack(value: unknown): boolean {
+	return (
+		isRecord(value) &&
+		typeof value.kind === "string" &&
+		(JACK_KINDS as readonly string[]).includes(value.kind) &&
+		typeof value.edge === "string" &&
+		(JACK_EDGES as readonly string[]).includes(value.edge) &&
+		isFiniteNumber(value.pos) &&
+		value.pos >= 0 &&
+		value.pos <= 1
+	);
+}
+
+function isPower(value: unknown): boolean {
+	return (
+		isRecord(value) &&
+		isFiniteNumber(value.voltage) &&
+		(value.acDc === "DC" || value.acDc === "AC") &&
+		isFiniteNumber(value.currentMa)
+	);
+}
+
+/** Structural check so a corrupt inline custom pedal can't reach the renderer. */
+function isCustomPedal(value: unknown): value is CustomPedal {
+	return (
+		isRecord(value) &&
+		typeof value.refId === "string" &&
+		typeof value.brand === "string" &&
+		typeof value.name === "string" &&
+		isFiniteNumber(value.widthCm) &&
+		value.widthCm > 0 &&
+		isFiniteNumber(value.heightCm) &&
+		value.heightCm > 0 &&
+		(value.category === "pedal" || value.category === "supply") &&
+		Array.isArray(value.effectTypes) &&
+		value.effectTypes.every(
+			(type) =>
+				typeof type === "string" &&
+				(EFFECT_TYPES as readonly string[]).includes(type),
+		) &&
+		(value.jacks === undefined ||
+			(Array.isArray(value.jacks) && value.jacks.every(isJack))) &&
+		(value.power === undefined || isPower(value.power))
+	);
+}
+
 /**
  * Parse a persisted snapshot, returning null for anything missing, corrupt or
  * from an unknown version (never throws). Bad entries are dropped rather than
@@ -82,10 +138,15 @@ export function parseSceneSnapshot(raw: string | null): SceneSnapshot | null {
 	if (!isRecord(parsed) || parsed.version !== 1) return null;
 	if (!Array.isArray(parsed.boards) || !Array.isArray(parsed.items))
 		return null;
+	// `customPedals` is additive (P2-02): an older snapshot without it is valid.
+	const customPedals = Array.isArray(parsed.customPedals)
+		? parsed.customPedals.filter(isCustomPedal)
+		: [];
 	return {
 		version: 1,
 		boards: parsed.boards.filter(isPlacedBoard),
 		items: parsed.items.filter(isPlacedItem),
+		customPedals,
 	};
 }
 
@@ -128,7 +189,13 @@ export function hydrateScene(storage?: Storage | null): void {
 			(item) => item.boardUid === null || boardIds.has(item.boardUid),
 		),
 	);
-	useScene.setState({ boards: snapshot.boards, items });
+	useScene.setState({
+		boards: snapshot.boards,
+		items,
+		// A snapshot whose item referenced a dropped (orphan) item can leave a
+		// custom definition unreferenced — prune it like `removeItem` does.
+		customPedals: pruneCustomPedals(snapshot.customPedals, items),
+	});
 }
 
 /**
@@ -139,7 +206,11 @@ export function hydrateScene(storage?: Storage | null): void {
 export function startScenePersistence(storage?: Storage | null): () => void {
 	const target = resolveStorage(storage);
 	if (!target) return () => {};
-	const save = (state: { boards: PlacedBoard[]; items: PlacedItem[] }) => {
+	const save = (state: {
+		boards: PlacedBoard[];
+		items: PlacedItem[];
+		customPedals: CustomPedal[];
+	}) => {
 		try {
 			target.setItem(SCENE_STORAGE_KEY, serializeScene(state));
 		} catch {
@@ -149,7 +220,11 @@ export function startScenePersistence(storage?: Storage | null): () => void {
 	// No initial save: only mirror real changes, so booting an older build can't
 	// overwrite a newer (unparsed) payload with the empty starting store.
 	return useScene.subscribe((state, previous) => {
-		if (state.boards !== previous.boards || state.items !== previous.items) {
+		if (
+			state.boards !== previous.boards ||
+			state.items !== previous.items ||
+			state.customPedals !== previous.customPedals
+		) {
 			save(state);
 		}
 	});

@@ -55,6 +55,7 @@ const snapshot = {
 			z: 1,
 		},
 	],
+	customPedals: [],
 };
 
 describe("scene serialization", () => {
@@ -83,13 +84,81 @@ describe("scene serialization", () => {
 			version: 1,
 			boards: [snapshot.boards[0]],
 			items: [snapshot.items[0]],
+			customPedals: [],
 		});
+	});
+
+	it("round-trips inline custom pedals (P2-02)", () => {
+		const withCustom = {
+			...snapshot,
+			customPedals: [
+				{
+					refId: "custom-abc",
+					brand: "Acme",
+					name: "My Fuzz",
+					widthCm: 6,
+					heightCm: 12,
+					category: "pedal" as const,
+					effectTypes: ["fuzz" as const],
+					jacks: [{ kind: "in" as const, edge: "top" as const, pos: 0.5 }],
+					power: { voltage: 9, acDc: "DC" as const, currentMa: 20 },
+				},
+			],
+		};
+		const parsed = parseSceneSnapshot(serializeScene(withCustom));
+		expect(parsed?.customPedals).toEqual(withCustom.customPedals);
+	});
+
+	it("drops a malformed inline custom pedal", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [],
+			items: [],
+			customPedals: [
+				{
+					refId: "custom-ok",
+					brand: "",
+					name: "Ok",
+					widthCm: 6,
+					heightCm: 12,
+					category: "pedal",
+					effectTypes: [],
+				},
+				{ refId: "custom-bad", widthCm: -1 },
+			],
+		});
+		expect(parseSceneSnapshot(raw)?.customPedals).toHaveLength(1);
+	});
+
+	it("rejects a custom pedal with an unknown jack kind or edge", () => {
+		const base = {
+			refId: "custom-x",
+			brand: "",
+			name: "X",
+			widthCm: 6,
+			heightCm: 12,
+			category: "pedal",
+			effectTypes: ["fuzz"],
+		};
+		for (const jack of [
+			{ kind: "banana", edge: "top", pos: 0.5 },
+			{ kind: "in", edge: "middle", pos: 0.5 },
+			{ kind: "in", edge: "top", pos: 2 },
+		]) {
+			const raw = JSON.stringify({
+				version: 1,
+				boards: [],
+				items: [],
+				customPedals: [{ ...base, jacks: [jack] }],
+			});
+			expect(parseSceneSnapshot(raw)?.customPedals).toHaveLength(0);
+		}
 	});
 });
 
 describe("scene persistence", () => {
 	beforeEach(() => {
-		useScene.setState({ boards: [], items: [] });
+		useScene.setState({ boards: [], items: [], customPedals: [] });
 	});
 
 	it("hydrates the store from storage", () => {
@@ -127,6 +196,39 @@ describe("scene persistence", () => {
 		const items = useScene.getState().items;
 		expect(items.map((item) => item.uid)).toEqual(["ok"]);
 		expect(items[0].z).toBe(0);
+	});
+
+	it("prunes a custom pedal left orphaned by a dropped item on hydrate", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [],
+			items: [
+				{
+					uid: "i",
+					refId: "custom-x",
+					kind: "pedal",
+					boardUid: "gone",
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+					z: 0,
+				},
+			],
+			customPedals: [
+				{
+					refId: "custom-x",
+					brand: "",
+					name: "X",
+					widthCm: 6,
+					heightCm: 12,
+					category: "pedal",
+					effectTypes: [],
+				},
+			],
+		});
+		hydrateScene(fakeStorage({ [SCENE_STORAGE_KEY]: raw }));
+		expect(useScene.getState().items).toHaveLength(0);
+		expect(useScene.getState().customPedals).toHaveLength(0);
 	});
 
 	it("never throws at boot when storage is unavailable or blocked", () => {

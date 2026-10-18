@@ -12,6 +12,7 @@ import {
 	containerItemsByZ,
 	itemWorldCorners,
 	type PlacedItem,
+	resolveItem,
 	useScene,
 	type ZDirection,
 } from "../state/scene";
@@ -82,10 +83,16 @@ function ZOrderIcon({ direction }: { direction: ZDirection }) {
  * viewport-px coordinates map straight onto `left`/`top` and its presses never
  * reach the canvas gesture handler.
  */
-export function ItemActionBar() {
+export function ItemActionBar({
+	onEditCustom,
+}: {
+	/** Open the custom creator pre-filled for this custom part (P2-02 edit). */
+	onEditCustom?: (refId: string) => void;
+}) {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const items = useScene((state) => state.items);
 	const boards = useScene((state) => state.boards);
+	const customPedals = useScene((state) => state.customPedals);
 	const rotateItem = useScene((state) => state.rotateItem);
 	const duplicateItem = useScene((state) => state.duplicateItem);
 	const removeItem = useScene((state) => state.removeItem);
@@ -131,15 +138,21 @@ export function ItemActionBar() {
 	const position = item
 		? peers.findIndex((candidate) => candidate.uid === item.uid)
 		: -1;
+	// A user-defined part can be re-opened in the creator; catalog items can't.
+	const isCustom = item
+		? resolveItem(item, customPedals).custom !== null
+		: false;
 	const actions: ActionDef[] =
 		item && visible
 			? buildActions(item, position === peers.length - 1, position === 0, {
+					isCustom,
 					reorder,
 					rotateItem,
 					duplicateItem,
 					removeItem,
 					selectItem,
 					clearSelection,
+					onEditCustom,
 				})
 			: [];
 	const enabledIndices = actions
@@ -169,7 +182,7 @@ export function ItemActionBar() {
 
 	// The selection's screen-space bounding box (rotation-correct), so the bar
 	// sits below the lowest corner for any item/board rotation.
-	const corners = itemWorldCorners(item, boards).map((point) => ({
+	const corners = itemWorldCorners(item, boards, customPedals).map((point) => ({
 		x: cmToPx(point.x) * scale + vx,
 		y: cmToPx(point.y) * scale + vy,
 	}));
@@ -243,16 +256,29 @@ function buildActions(
 	atTop: boolean,
 	atBottom: boolean,
 	handlers: {
+		isCustom: boolean;
 		reorder: (uid: string, direction: ZDirection) => void;
 		rotateItem: (uid: string, rotationDeg: number) => void;
 		duplicateItem: (uid: string) => string | null;
 		removeItem: (uid: string) => void;
 		selectItem: (uid: string | null) => void;
 		clearSelection: () => void;
+		onEditCustom?: (refId: string) => void;
 	},
 ): ActionDef[] {
 	const z = (direction: ZDirection) => () =>
 		handlers.reorder(item.uid, direction);
+	const edit: ActionDef[] =
+		handlers.isCustom && handlers.onEditCustom
+			? [
+					{
+						key: "edit-custom-part",
+						label: "Edit custom part",
+						text: "Edit",
+						onClick: () => handlers.onEditCustom?.(item.refId),
+					},
+				]
+			: [];
 	return [
 		{
 			key: "bring-to-front",
@@ -282,6 +308,7 @@ function buildActions(
 			disabled: atBottom,
 			onClick: z("bottom"),
 		},
+		...edit,
 		{
 			key: "rotate-item",
 			label: `Rotate ${ACTION_ROTATE_STEP} degrees`,

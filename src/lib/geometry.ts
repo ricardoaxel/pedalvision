@@ -221,3 +221,12 @@ export function cmToDisplay(cm: number, units: DisplayUnits): number {
 	// Normalise -0 → 0 so display paths never format "-0".
 	return rounded === 0 ? 0 : rounded;
 }
+
+/**
+ * Inverse of {@link cmToDisplay}: parse a value in the active display unit back
+ * to storage cm (no rounding — storage stays exact). The parse side of the
+ * custom creator's cm/in toggle (P2-02).
+ */
+export function displayToCm(value: number, units: DisplayUnits): number {
+	return units === "in" ? value * CM_PER_INCH : value;
+}

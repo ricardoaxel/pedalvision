@@ -15,6 +15,10 @@ function App() {
 	// sheet from the persistent bottom tab bar.
 	const [pickerOpen, setPickerOpen] = useState(false);
 	const [pickerTab, setPickerTab] = useState<PickerTab>("pedals");
+	// P2-02 edit: when set, the picker opens on Custom in edit mode.
+	const [editingCustomRefId, setEditingCustomRefId] = useState<string | null>(
+		null,
+	);
 	// Delete/duplicate shortcuts for the selected pedal (F6).
 	useSelectionShortcuts();
 
@@ -25,8 +29,20 @@ function App() {
 	};
 
 	const openPicker = (tab: PickerTab) => {
+		setEditingCustomRefId(null);
 		setPickerTab(tab);
 		setPickerOpen(true);
+	};
+
+	const openCustomEdit = (refId: string) => {
+		setEditingCustomRefId(refId);
+		setPickerTab("custom");
+		setPickerOpen(true);
+	};
+
+	const closePicker = () => {
+		setPickerOpen(false);
+		setEditingCustomRefId(null);
 	};
 
 	return (
@@ -35,7 +51,7 @@ function App() {
 			<Stage />
 			{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
 			 * so its presses never reach the canvas gesture handler. */}
-			<ItemActionBar />
+			<ItemActionBar onEditCustom={openCustomEdit} />
 			<div className="app-toolbar">
 				<button
 					type="button"
@@ -68,9 +84,11 @@ function App() {
 			<Picker
 				open={pickerOpen}
 				tab={pickerTab}
+				editRefId={editingCustomRefId}
 				onOpen={openPicker}
 				onTab={setPickerTab}
-				onClose={() => setPickerOpen(false)}
+				onClearEdit={() => setEditingCustomRefId(null)}
+				onClose={closePicker}
 			/>
 		</main>
 	);

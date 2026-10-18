@@ -17,7 +17,7 @@ export default defineConfig({
 			// (and the picker's responsive/mobile coverage).
 			name: "mobile-chromium",
 			use: { ...devices["Pixel 7"] },
-			testMatch: /(touch|picker)\.spec\.ts/,
+			testMatch: /(touch|picker|custom)\.spec\.ts/,
 		},
 	],
 	webServer: {

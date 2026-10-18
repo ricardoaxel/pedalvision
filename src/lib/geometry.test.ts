@@ -4,6 +4,7 @@ import {
 	centerOffset,
 	cmToDisplay,
 	cmToPx,
+	displayToCm,
 	PX_PER_CM,
 	placeItem,
 	pxToCm,
@@ -361,5 +362,20 @@ describe("cmToDisplay", () => {
 		const precise = 12.34567;
 		expect(cmToDisplay(precise, "cm")).toBe(12.35);
 		expect(pxToCm(cmToPx(precise, 2.5), 2.5)).toBeCloseTo(precise, 12);
+	});
+});
+
+describe("displayToCm", () => {
+	it("converts inches → cm exactly", () => {
+		expect(displayToCm(1, "in")).toBe(2.54);
+		expect(displayToCm(2.5, "in")).toBeCloseTo(6.35, 12);
+	});
+
+	it("passes cm through unchanged", () => {
+		expect(displayToCm(12.345, "cm")).toBe(12.345);
+	});
+
+	it("round-trips through cmToDisplay without drift for exact values", () => {
+		expect(displayToCm(cmToDisplay(2.54, "in"), "in")).toBeCloseTo(2.54, 12);
 	});
 });

@@ -1,6 +1,12 @@
 import { create } from "zustand";
 import { catalog } from "../catalog/load";
-import type { CatalogBoard, CatalogPedal } from "../catalog/schema";
+import type {
+	CatalogBoard,
+	CatalogPedal,
+	EffectType,
+	Jack,
+	Power,
+} from "../catalog/schema";
 import {
 	boardToWorld,
 	type Point,
@@ -48,6 +54,28 @@ export interface PlacedItem {
 }
 
 /**
+ * A user-defined pedal/supply (F7/P2-02), embedded in the scene
+ * (`Scene.customPedals`) so it travels inline on share (A5). **Text-only** — no
+ * image; it renders as the labeled rectangle at its cm footprint. `refId` is a
+ * scene-local id (`custom-<uuid>`) that `PlacedItem.refId` resolves to.
+ */
+export interface CustomPedal {
+	refId: string;
+	brand: string;
+	name: string;
+	widthCm: number;
+	heightCm: number;
+	category: "pedal" | "supply";
+	/** OUR effect taxonomy (a supply may have an empty list). */
+	effectTypes: EffectType[];
+	jacks?: Jack[];
+	power?: Power;
+}
+
+/** The user-editable part of a custom pedal (the store assigns `refId`). */
+export type CustomPedalDefinition = Omit<CustomPedal, "refId">;
+
+/**
  * Z-order operation for an item within its container (F5/P1-06). `forward`/
  * `back` move one step; `front`/`bottom` jump to the top/bottom. There is no
  * global z — an item only competes with the others in its container (B1).
@@ -90,20 +118,87 @@ export function boardDefinition(board: PlacedBoard): CatalogBoard | null {
 	return board.boardRefId ? (BOARD_BY_ID.get(board.boardRefId) ?? null) : null;
 }
 
-/** Resolve the catalog entry backing a placed item (null if unknown). */
-export function itemDefinition(item: PlacedItem): CatalogPedal | null {
-	return PEDAL_BY_ID.get(item.refId) ?? null;
+/**
+ * The render-relevant data for a placed item, resolving `refId` against the
+ * catalog first, then the scene's inline custom pedals (design.md §Data model /
+ * A5). Unknown refs keep their geometry (fallback footprint) and show the refId
+ * as the label so a scene never fails to render after the catalog changes.
+ */
+export interface ResolvedItem {
+	name: string;
+	widthCm: number;
+	heightCm: number;
+	/** Catalog definition (image contract applies), or null. */
+	definition: CatalogPedal | null;
+	/** Inline custom definition (text-only), or null. */
+	custom: CustomPedal | null;
 }
 
-/** Resolve a placed item's footprint in cm (catalog ref → fallback). */
-export function itemFootprint(item: PlacedItem): {
+/** Resolve a placed item against the catalog + the scene's custom pedals. */
+export function resolveItem(
+	item: PlacedItem,
+	customPedals: CustomPedal[] = [],
+): ResolvedItem {
+	const definition = PEDAL_BY_ID.get(item.refId) ?? null;
+	if (definition) {
+		return {
+			name: definition.name,
+			widthCm: definition.widthCm,
+			heightCm: definition.heightCm,
+			definition,
+			custom: null,
+		};
+	}
+	const custom =
+		customPedals.find((candidate) => candidate.refId === item.refId) ?? null;
+	if (custom) {
+		return {
+			name: custom.name,
+			widthCm: custom.widthCm,
+			heightCm: custom.heightCm,
+			definition: null,
+			custom,
+		};
+	}
+	return {
+		name: item.refId,
+		...FALLBACK_PEDAL_CM,
+		definition: null,
+		custom: null,
+	};
+}
+
+/** Resolve a placed item's footprint in cm (catalog → custom → fallback). */
+export function itemFootprint(
+	item: PlacedItem,
+	customPedals: CustomPedal[] = [],
+): {
 	widthCm: number;
 	heightCm: number;
 } {
-	const definition = itemDefinition(item);
-	return definition
-		? { widthCm: definition.widthCm, heightCm: definition.heightCm }
-		: FALLBACK_PEDAL_CM;
+	const resolved = resolveItem(item, customPedals);
+	return { widthCm: resolved.widthCm, heightCm: resolved.heightCm };
+}
+
+/** The custom pedal with `refId`, or null. */
+export function customPedalById(
+	customPedals: CustomPedal[],
+	refId: string,
+): CustomPedal | null {
+	return customPedals.find((candidate) => candidate.refId === refId) ?? null;
+}
+
+/**
+ * Drop custom-pedal definitions that no remaining placed item references, so
+ * deleting the last instance of a custom part doesn't leave its definition
+ * (jacks + power) accumulating in the scene/persistence forever.
+ */
+export function pruneCustomPedals(
+	customPedals: CustomPedal[],
+	items: PlacedItem[],
+): CustomPedal[] {
+	const referenced = new Set(items.map((item) => item.refId));
+	return customPedals.filter((custom) => referenced.has(custom.refId));
 }
 
 /**
@@ -201,8 +296,9 @@ export function normalizeDegrees(deg: number): number {
 export function rotateItemAboutCenter(
 	item: PlacedItem,
 	rotationDeg: number,
+	customPedals: CustomPedal[] = [],
 ): { x: number; y: number; rotationDeg: number } {
-	const { widthCm, heightCm } = itemFootprint(item);
+	const { widthCm, heightCm } = itemFootprint(item, customPedals);
 	const origin: Point = { x: 0, y: 0 };
 	const half: Point = { x: widthCm / 2, y: heightCm / 2 };
 	// The footprint's true centre is origin + R(θ)·half — NOT origin + half once
@@ -229,8 +325,9 @@ export function rotateItemAboutCenter(
 export function itemWorldCorners(
 	item: PlacedItem,
 	boards: PlacedBoard[],
+	customPedals: CustomPedal[] = [],
 ): Point[] {
-	const { widthCm, heightCm } = itemFootprint(item);
+	const { widthCm, heightCm } = itemFootprint(item, customPedals);
 	const origin: Point = { x: 0, y: 0 };
 	const corners: Point[] = [
 		{ x: 0, y: 0 },
@@ -360,6 +457,22 @@ interface SceneStore {
 	boards: PlacedBoard[];
 	items: PlacedItem[];
 	/**
+	 * User-defined pedals/supplies (F7/P2-02), inline in the scene so a shared
+	 * scene renders them anywhere (A5). `PlacedItem.refId` may resolve here.
+	 */
+	customPedals: CustomPedal[];
+	/**
+	 * Register a user-defined pedal/supply (assigning a scene-local `refId`) and
+	 * return that id, which `addItem` can then place like a catalog pedal.
+	 */
+	addCustomPedal: (definition: CustomPedalDefinition) => string;
+	/**
+	 * Replace a custom part's definition in place (P2-02 edit). Every placed item
+	 * that references `refId` re-resolves to the new name/footprint — items never
+	 * move, only the definition changes.
+	 */
+	updateCustomPedal: (refId: string, definition: CustomPedalDefinition) => void;
+	/**
 	 * Add a catalog pedal/supply with its origin at `posCm` (parent frame:
 	 * board-local when `boardUid` is set, world cm when loose), returning its uid.
 	 */
@@ -430,6 +543,20 @@ interface SceneStore {
 export const useScene = create<SceneStore>((set) => ({
 	boards: [],
 	items: [],
+	customPedals: [],
+	addCustomPedal: (definition) => {
+		const refId = `custom-${crypto.randomUUID()}`;
+		set((state) => ({
+			customPedals: [...state.customPedals, { ...definition, refId }],
+		}));
+		return refId;
+	},
+	updateCustomPedal: (refId, definition) =>
+		set((state) => ({
+			customPedals: state.customPedals.map((candidate) =>
+				candidate.refId === refId ? { ...definition, refId } : candidate,
+			),
+		})),
 	addItem: (refId, kind, boardUid, posCm) => {
 		const uid = crypto.randomUUID();
 		set((state) => ({
@@ -477,8 +604,12 @@ export const useScene = create<SceneStore>((set) => ({
 			const remaining = state.items.filter(
 				(candidate) => candidate.uid !== uid,
 			);
-			// Close the z gap the removal leaves behind (keep it dense per container).
-			return { items: normalizeContainerZ(remaining, item.boardUid) };
+			// Close the z gap the removal leaves behind (keep it dense per
+			// container) and drop any custom definition left unreferenced.
+			return {
+				items: normalizeContainerZ(remaining, item.boardUid),
+				customPedals: pruneCustomPedals(state.customPedals, remaining),
+			};
 		}),
 	reorder: (uid, direction) =>
 		set((state) => ({ items: reorderItems(state.items, uid, direction) })),
@@ -486,7 +617,7 @@ export const useScene = create<SceneStore>((set) => ({
 		set((state) => {
 			const item = state.items.find((candidate) => candidate.uid === uid);
 			if (!item) return state;
-			const footprint = itemFootprint(item);
+			const footprint = itemFootprint(item, state.customPedals);
 			const half: Point = {
 				x: footprint.widthCm / 2,
 				y: footprint.heightCm / 2,
@@ -539,7 +670,10 @@ export const useScene = create<SceneStore>((set) => ({
 		set((state) => ({
 			items: state.items.map((item) =>
 				item.uid === uid
-					? { ...item, ...rotateItemAboutCenter(item, rotationDeg) }
+					? {
+							...item,
+							...rotateItemAboutCenter(item, rotationDeg, state.customPedals),
+						}
 					: item,
 			),
 		})),

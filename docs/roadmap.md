@@ -28,7 +28,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 
 ## P2 — Catalog & objects (expand when scheduled)
 - P2-01 Picker modal: search + brand/effect filters; mobile bottom tabs — **done** (merged 2026-10-17, PR #17, squash `36734a2`; owner-approved "Specimen Bench" direction, extending "Parts Bin"; replaces the temporary `BoardPicker`/`PedalPicker`). **note:** any temporary/placeholder chrome added before a task must keep a **small on-screen footprint, especially on mobile** so it doesn't cover the canvas (owner instruction, 2026-10-15).
-- P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **prereq:** widen the `jacks.kind` vocabulary first (current enum `in|out|exp|power` is too narrow for real pedals — add `send`/`return`/`exp-in`/`exp-out`/`midi`/`ctrl` in `src/catalog/schema.ts` + design.md §Data model)
+- P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **in review — PR #18** (opened 2026-10-17; owner-approved "Datasheet" direction). **prereq done:** widened the `jacks.kind` vocabulary in `src/catalog/schema.ts` + design.md §Data model to `in|out|exp|exp-in|exp-out|send|return|midi|ctrl|power`.
 - P2-03 Pedal info panel (tags, dimensions, power)
 - P2-04 Asset-pipeline tooling (bg removal, trim, 800/350 sizes, JSON draft)
 - P2-05 Custom board creator (any W×D, texture)

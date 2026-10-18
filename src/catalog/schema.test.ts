@@ -32,6 +32,29 @@ describe("CatalogPedalSchema", () => {
 		expect(result.success).toBe(true);
 	});
 
+	it("accepts the widened jack-kind vocabulary", () => {
+		for (const kind of [
+			"in",
+			"out",
+			"exp",
+			"exp-in",
+			"exp-out",
+			"send",
+			"return",
+			"midi",
+			"ctrl",
+			"power",
+		]) {
+			expect(
+				CatalogPedalSchema.safeParse({
+					...validPedal,
+					jacks: [{ kind, edge: "bottom", pos: 0 }],
+				}).success,
+				kind,
+			).toBe(true);
+		}
+	});
+
 	it("accepts optional per-item sources", () => {
 		expect(
 			CatalogPedalSchema.safeParse({
@@ -100,7 +123,7 @@ describe("CatalogPedalSchema", () => {
 		],
 		[
 			"unknown jack kind",
-			{ ...validPedal, jacks: [{ kind: "midi", edge: "top", pos: 0.5 }] },
+			{ ...validPedal, jacks: [{ kind: "banana", edge: "top", pos: 0.5 }] },
 		],
 	])("rejects %s", (_label, pedal) => {
 		expect(CatalogPedalSchema.safeParse(pedal).success).toBe(false);

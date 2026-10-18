@@ -53,7 +53,7 @@ type CatalogPedal = {
   imageSource: 'mock' | 'static' | 'url' // HOW the image is provided: mock=procedural placeholder; static=committed file under /pedal-assets/{kind}/{size}/; url=deferred same-origin/CDN (ADR-002). Orthogonal to `source` (rights).
   effectTypes: EffectType[] // OUR taxonomy enum (EFFECT_TYPES): sound effects + non-effect roles ("delay", "preamp", "buffer", …); see ADR-003 §Effect taxonomy
   category: 'pedal' | 'supply'  // R6/N1 — lets the picker + custom creator distinguish pedals from power supplies
-  jacks?: { kind: 'in'|'out'|'exp'|'power', edge: 'top'|'right'|'bottom'|'left', pos: number }[] // pos = 0..1 position ALONG the edge (e.g. 0.5 = centered) — required so cable attach points + length calc have a concrete coordinate (S3)
+  jacks?: Jack[] // { kind: JackKind, edge: 'top'|'right'|'bottom'|'left', pos: number }; JackKind = 'in'|'out'|'exp'|'exp-in'|'exp-out'|'send'|'return'|'midi'|'ctrl'|'power' (widened in P2-02; P4-01 consumes it). pos = 0..1 position ALONG the edge (e.g. 0.5 = centered) — required so cable attach points + length calc have a concrete coordinate (S3)
   power?: { voltage: 9|12|18|number, acDc: 'DC'|'AC', currentMa: number }
   variantOf?: string    // model id for colorways (avoid catalog bloat)
   source: SourceTag     // provenance tag — zod enum: licensed | brand-assets | community | own | placeholder | synthetic (ADR-003; never a name/URL)
@@ -68,7 +68,7 @@ type PlacedBoard = { uid: string, boardRefId: string | null, customSize?: { widt
 type Endpoint = { uid: string, kind: 'amp' | 'instrument', x: number, y: number } // world cm — cable termination targets (B2)
 type Cable = { uid: string, from: { itemUid: string, jack: string }, to: { itemUid: string, jack: string } | { endpointUid: string }, color?: string } // length computed, not stored
 // custom pedal definition — embedded in the scene so it travels on share (R6/S1)
-type CustomPedal = { refId: string, brand: string, name: string, widthCm: number, heightCm: number, category: 'pedal'|'supply', jacks?: CatalogPedal['jacks'], power?: CatalogPedal['power'] } // text-only, no image (renders as labeled rectangle)
+type CustomPedal = { refId: string, brand: string, name: string, widthCm: number, heightCm: number, category: 'pedal'|'supply', effectTypes: EffectType[], jacks?: CatalogPedal['jacks'], power?: CatalogPedal['power'] } // text-only, no image (renders as labeled rectangle); refId is a scene-local id ('custom-<uuid>'), resolved via Scene.customPedals
 type Scene = { id: string, version: 1, name: string, boards: PlacedBoard[], items: PlacedItem[], customPedals: CustomPedal[], endpoints: Endpoint[], cables: Cable[], updatedAt: string }
 type Settings = { units: 'cm' | 'in' }  // display only — storage is always cm
 ```
