@@ -158,6 +158,8 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	};
 
 	// Focus management: move focus into the picker on open, restore on close.
+	// The Custom tab has no search field, so it focuses its first field via
+	// `autoFocus` instead (P2-02); this effect's `searchRef` is null there.
 	useEffect(() => {
 		if (open) {
 			returnFocusRef.current = document.activeElement as HTMLElement | null;

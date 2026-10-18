@@ -12,8 +12,12 @@ import { cmToDisplay, type DisplayUnits, displayToCm } from "./geometry";
  * Custom-pedal creator logic (F7/P2-02) — pure, so units handling and draft
  * validation are unit-tested independently of the DOM. The draft holds the raw
  * form strings; canonical cm is one step away (`parseDimensionToCm`). Storage is
- * always cm: switching units re-derives the displayed number from the canonical
- * cm so a rounded display can never drift the stored value.
+ * always cm: switching units re-derives the displayed number from the cm parsed
+ * out of the *current* input, so a displayed value can't silently compound a
+ * conversion. Note the displayed values are rounded to 2 decimals (`cmToDisplay`)
+ * — a conversion is exact only when the value has an exact 2-dp representation
+ * in both units (e.g. 2.5 in ⇄ 6.35 cm); inexact values are stored at display
+ * precision, which is sub-millimetre.
  */
 
 /** Largest accepted footprint edge (cm) — a sanity bound, not a product limit. */
@@ -99,9 +103,10 @@ export function emptyCustomPedalDraft(
 }
 
 /**
- * Switch the draft's display unit **losslessly**: both dimensions are parsed
- * from the old unit to canonical cm and re-formatted in the new one. An invalid
- * dimension is kept verbatim so the user sees their own input unchanged.
+ * Switch the draft's display unit: both dimensions are parsed from the old unit
+ * to canonical cm and re-formatted in the new one (2-decimal display precision,
+ * so the result is a display value, not a bit-exact re-encoding). An invalid
+ * dimension is kept verbatim so no floating-point noise enters the field.
  */
 export function changeDraftUnits(
 	draft: CustomPedalDraft,

@@ -49,7 +49,7 @@ describe("formatDimension", () => {
 });
 
 describe("changeDraftUnits", () => {
-	it("converts both dimensions losslessly via cm", () => {
+	it("converts both dimensions via cm (exact for exact values)", () => {
 		const metric = validDraft({ width: "6.35", depth: "12.7" });
 		const imperial = changeDraftUnits(metric, "in");
 		expect(imperial.units).toBe("in");
@@ -59,6 +59,13 @@ describe("changeDraftUnits", () => {
 		const back = changeDraftUnits(imperial, "cm");
 		expect(back.width).toBe("6.35");
 		expect(back.depth).toBe("12.7");
+	});
+
+	it("rounds inexact conversions to the 2-decimal display precision", () => {
+		// 7 cm = 2.7559 in → displayed as 2.76 in (documented limitation).
+		expect(changeDraftUnits(validDraft({ width: "7" }), "in").width).toBe(
+			"2.76",
+		);
 	});
 
 	it("keeps an invalid dimension verbatim (no data loss)", () => {

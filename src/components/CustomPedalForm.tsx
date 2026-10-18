@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import {
 	EFFECT_TYPES,
 	type EffectType,
@@ -67,6 +67,13 @@ export function CustomPedalForm({
 		);
 	const errorFor = (field: keyof CustomPedalErrors) =>
 		touched[field] ? validation.errors[field] : undefined;
+
+	// The Custom tab has no search field, so the first field claims focus when
+	// the form mounts (a dialog should start inside itself, P2-02).
+	const nameRef = useRef<HTMLInputElement>(null);
+	useEffect(() => {
+		nameRef.current?.focus();
+	}, []);
 
 	const addJack = () => {
 		const jack = {
@@ -175,6 +182,7 @@ export function CustomPedalForm({
 							>
 								<input
 									id="custom-name"
+									ref={nameRef}
 									className="custom__input"
 									data-testid="custom-name"
 									type="text"

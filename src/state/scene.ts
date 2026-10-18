@@ -168,14 +168,6 @@ export function resolveItem(
 	};
 }
 
-/** Resolve the catalog entry backing a placed item (null for custom/unknown). */
-export function itemDefinition(
-	item: PlacedItem,
-	customPedals: CustomPedal[] = [],
-): CatalogPedal | null {
-	return resolveItem(item, customPedals).definition;
-}
-
 /** Resolve a placed item's footprint in cm (catalog → custom → fallback). */
 export function itemFootprint(
 	item: PlacedItem,
@@ -186,6 +178,19 @@ export function itemFootprint(
 } {
 	const resolved = resolveItem(item, customPedals);
 	return { widthCm: resolved.widthCm, heightCm: resolved.heightCm };
+}
+
+/**
+ * Drop custom-pedal definitions that no remaining placed item references, so
+ * deleting the last instance of a custom part doesn't leave its definition
+ * (jacks + power) accumulating in the scene/persistence forever.
+ */
+export function pruneCustomPedals(
+	customPedals: CustomPedal[],
+	items: PlacedItem[],
+): CustomPedal[] {
+	const referenced = new Set(items.map((item) => item.refId));
+	return customPedals.filter((custom) => referenced.has(custom.refId));
 }
 
 /**
@@ -579,8 +584,12 @@ export const useScene = create<SceneStore>((set) => ({
 			const remaining = state.items.filter(
 				(candidate) => candidate.uid !== uid,
 			);
-			// Close the z gap the removal leaves behind (keep it dense per container).
-			return { items: normalizeContainerZ(remaining, item.boardUid) };
+			// Close the z gap the removal leaves behind (keep it dense per
+			// container) and drop any custom definition left unreferenced.
+			return {
+				items: normalizeContainerZ(remaining, item.boardUid),
+				customPedals: pruneCustomPedals(state.customPedals, remaining),
+			};
 		}),
 	reorder: (uid, direction) =>
 		set((state) => ({ items: reorderItems(state.items, uid, direction) })),

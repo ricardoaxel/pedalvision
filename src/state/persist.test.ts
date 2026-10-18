@@ -129,6 +129,31 @@ describe("scene serialization", () => {
 		});
 		expect(parseSceneSnapshot(raw)?.customPedals).toHaveLength(1);
 	});
+
+	it("rejects a custom pedal with an unknown jack kind or edge", () => {
+		const base = {
+			refId: "custom-x",
+			brand: "",
+			name: "X",
+			widthCm: 6,
+			heightCm: 12,
+			category: "pedal",
+			effectTypes: ["fuzz"],
+		};
+		for (const jack of [
+			{ kind: "banana", edge: "top", pos: 0.5 },
+			{ kind: "in", edge: "middle", pos: 0.5 },
+			{ kind: "in", edge: "top", pos: 2 },
+		]) {
+			const raw = JSON.stringify({
+				version: 1,
+				boards: [],
+				items: [],
+				customPedals: [{ ...base, jacks: [jack] }],
+			});
+			expect(parseSceneSnapshot(raw)?.customPedals).toHaveLength(0);
+		}
+	});
 });
 
 describe("scene persistence", () => {

@@ -1,3 +1,4 @@
+import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
 import { normalizeAllZ, useScene } from "./scene";
 
@@ -79,7 +80,9 @@ function isJack(value: unknown): boolean {
 	return (
 		isRecord(value) &&
 		typeof value.kind === "string" &&
+		(JACK_KINDS as readonly string[]).includes(value.kind) &&
 		typeof value.edge === "string" &&
+		(JACK_EDGES as readonly string[]).includes(value.edge) &&
 		isFiniteNumber(value.pos) &&
 		value.pos >= 0 &&
 		value.pos <= 1
@@ -108,7 +111,11 @@ function isCustomPedal(value: unknown): value is CustomPedal {
 		value.heightCm > 0 &&
 		(value.category === "pedal" || value.category === "supply") &&
 		Array.isArray(value.effectTypes) &&
-		value.effectTypes.every((type) => typeof type === "string") &&
+		value.effectTypes.every(
+			(type) =>
+				typeof type === "string" &&
+				(EFFECT_TYPES as readonly string[]).includes(type),
+		) &&
 		(value.jacks === undefined ||
 			(Array.isArray(value.jacks) && value.jacks.every(isJack))) &&
 		(value.power === undefined || isPower(value.power))

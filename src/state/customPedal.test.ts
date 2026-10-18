@@ -100,4 +100,27 @@ describe("custom pedals (P2-02)", () => {
 		expect(corners).toContainEqual({ x: 1, y: 1 });
 		expect(corners).toContainEqual({ x: 1 + 6.4, y: 1 + 12.1 });
 	});
+
+	it("prunes a custom pedal once its last placed item is removed", () => {
+		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const uid = useScene.getState().addItem(refId, "pedal", null, {
+			x: 0,
+			y: 0,
+		});
+		expect(useScene.getState().customPedals).toHaveLength(1);
+		useScene.getState().removeItem(uid);
+		expect(useScene.getState().customPedals).toHaveLength(0);
+	});
+
+	it("keeps a custom pedal while a duplicate still references it", () => {
+		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const uid = useScene.getState().addItem(refId, "pedal", null, {
+			x: 0,
+			y: 0,
+		});
+		const clone = useScene.getState().duplicateItem(uid);
+		useScene.getState().removeItem(uid);
+		expect(clone).not.toBeNull();
+		expect(useScene.getState().customPedals).toHaveLength(1);
+	});
 });

@@ -14,6 +14,12 @@ async function fillMinimalPart(
 	await page.getByTestId("custom-depth").fill(depth);
 }
 
+test("opening the Custom tab focuses its first field", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "custom");
+	await expect(page.getByTestId("custom-name")).toBeFocused();
+});
+
 test("creates a custom pedal and places it as a text-only part", async ({
 	page,
 }) => {
