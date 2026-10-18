@@ -1,6 +1,6 @@
 # P2-04: Asset-pipeline tooling
 
-**Phase:** P2 · **Status:** todo · **Model:** build-cheap
+**Phase:** P2 · **Status:** in review — PR #20 · **Model:** build-cheap
 
 ## Goal
 A **dev-only CLI** (`tools/asset-pipeline/`) that turns a **raw source image** into
@@ -130,3 +130,10 @@ replaces today's manual/placeholder image flow (P0-04 created the folders/fixtur
   tag is a launch-gate decision (ADR-003 exit criteria), out of scope here.
 - Reuses `toSlug` (`tools/catalog-transform/slug.ts`) and the catalog zod schema —
   no duplicated slug/validation logic.
+- **Review (code, light `opencode-go/deepseek-v4.1-flash`, HIGH-RISK → ≤2-pass loop):**
+  pass 1 **changes-required** → 3 should-fixes fixed (reject a fully-knocked-out
+  frame instead of writing an invisible asset; validate the draft/id **before**
+  writing PNGs; correct the `--brand`/`--name` "required" contract); pass 2
+  (same session resumed) **APPROVE**. The stdout-interleaving nit was folded
+  (progress → stderr); the ~1px near-empty hardening was deferred (out of scope).
+  Tests **340**; e2e **95** (+6 skipped); lint/typecheck/build green. PR #20.
