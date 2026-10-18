@@ -1,5 +1,5 @@
 import type { Point } from "../lib/geometry";
-import { itemFootprint, type PlacedItem } from "../state/scene";
+import { itemFootprint, type PlacedItem, useScene } from "../state/scene";
 import type { CanvasTheme } from "../styles/theme";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
@@ -38,6 +38,7 @@ export function ItemNodes({
 	rotationDeg,
 	lifted = false,
 }: ItemNodesProps) {
+	const customPedals = useScene((state) => state.customPedals);
 	const selectedItem = selectedItemUid
 		? items.find((item) => item.uid === selectedItemUid)
 		: undefined;
@@ -59,8 +60,8 @@ export function ItemNodes({
 				<SelectionOutline
 					xCm={worldPosition ? worldPosition.x : selectedItem.x}
 					yCm={worldPosition ? worldPosition.y : selectedItem.y}
-					widthCm={itemFootprint(selectedItem).widthCm}
-					heightCm={itemFootprint(selectedItem).heightCm}
+					widthCm={itemFootprint(selectedItem, customPedals).widthCm}
+					heightCm={itemFootprint(selectedItem, customPedals).heightCm}
 					rotationDeg={rotationDeg ?? selectedItem.rotationDeg}
 					theme={theme}
 				/>

@@ -2,16 +2,19 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
 import { bustCache, resolveImageUrl } from "../lib/cdn";
+import { emptyCustomPedalDraft } from "../lib/customPedal";
 import { centerOffset, placeItem } from "../lib/geometry";
 import {
 	boardDefinition,
 	boardFootprint,
+	type CustomPedalDefinition,
 	itemFootprint,
 	useScene,
 } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
-import { BoardIcon, PedalIcon } from "./icons";
+import { CustomPedalForm } from "./CustomPedalForm";
+import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
 import {
 	brandsOf,
 	effectLabel,
@@ -21,7 +24,48 @@ import {
 	toggleEffectType,
 } from "./pickerFilter";
 
-export type PickerTab = "pedals" | "boards";
+export type PickerTab = "pedals" | "boards" | "custom";
+
+/**
+ * Per-tab header copy — a map, not nested ternaries, so a new tab can't silently
+ * mislabel the dialog for assistive tech (P2-02 defect fix).
+ */
+const TAB_COPY: Record<
+	PickerTab,
+	{
+		eyebrow: string;
+		title: string;
+		dialog: string;
+		search: string;
+		count: string;
+		empty: string;
+	}
+> = {
+	pedals: {
+		eyebrow: "Catalog — Pedals",
+		title: "Add pedal",
+		dialog: "Add a pedal",
+		search: "Search pedals…",
+		count: "pedals",
+		empty: "No pedals match. ",
+	},
+	boards: {
+		eyebrow: "Catalog — Boards",
+		title: "Add board",
+		dialog: "Add a board",
+		search: "Search boards…",
+		count: "boards",
+		empty: "No boards match. ",
+	},
+	custom: {
+		eyebrow: "Catalog — Custom",
+		title: "Add custom part",
+		dialog: "Create a custom part",
+		search: "",
+		count: "parts",
+		empty: "No parts match. ",
+	},
+};
 
 /** Effect chips shown before the "More" reveal (keeps the filter row compact). */
 const EFFECT_CHIP_PREVIEW = 8;
@@ -67,9 +111,11 @@ interface PickerEntry {
 export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
+	const customPedals = useScene((state) => state.customPedals);
 	const addBoard = useScene((state) => state.addBoard);
 	const removeBoard = useScene((state) => state.removeBoard);
 	const addItem = useScene((state) => state.addItem);
+	const addCustomPedal = useScene((state) => state.addCustomPedal);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	const selectItem = useSelection((state) => state.selectItem);
@@ -80,6 +126,10 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	/** The item shown in the specimen pane (hover/keyboard-active). */
 	const [activeId, setActiveId] = useState<string | null>(null);
+	/** Custom-part draft lives here so Esc/close/tab-switch never discards it. */
+	const [customDraft, setCustomDraft] = useState(() =>
+		emptyCustomPedalDraft("cm"),
+	);
 
 	const panelRef = useRef<HTMLDivElement>(null);
 	const searchRef = useRef<HTMLInputElement>(null);
@@ -192,7 +242,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		items
 			.filter((item) => item.boardUid === boardUid)
 			.map((item) => {
-				const footprint = itemFootprint(item);
+				const footprint = itemFootprint(item, customPedals);
 				return {
 					x: item.x,
 					y: item.y,
@@ -235,6 +285,37 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		onClose();
 	};
 
+	// Register the custom part, then place it exactly like a catalog pedal and
+	// reset the draft so the sheet is ready for the next one.
+	const handleCreate = (definition: CustomPedalDefinition) => {
+		const refId = addCustomPedal(definition);
+		const size = { widthCm: definition.widthCm, heightCm: definition.heightCm };
+		if (targetBoard) {
+			const footprint = boardFootprint(targetBoard);
+			const base = centerOffset(
+				footprint.widthCm,
+				footprint.heightCm,
+				size.widthCm,
+				size.heightCm,
+			);
+			const pos = placeItem(base, size, occupied(targetBoard.uid), {
+				bounds: footprint,
+			});
+			selectItem(addItem(refId, definition.category, targetBoard.uid, pos));
+		} else {
+			const { scale, x, y, size: viewportSize } = useViewport.getState();
+			const center = viewportCenterCm(viewportSize, { scale, x, y });
+			const base = {
+				x: center.x - size.widthCm / 2,
+				y: center.y - size.heightCm / 2,
+			};
+			const pos = placeItem(base, size, occupied(null));
+			selectItem(addItem(refId, definition.category, null, pos));
+		}
+		setCustomDraft(emptyCustomPedalDraft(customDraft.units));
+		onClose();
+	};
+
 	// Move the keyboard-active row and mirror focus to it (listbox behaviour).
 	const moveActive = (delta: number) => {
 		if (entries.length === 0) return;
@@ -251,7 +332,7 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const trapTab = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		if (event.key !== "Tab") return;
 		const selector =
-			'button, input, select, a[href], [tabindex]:not([tabindex="-1"])';
+			'button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])';
 		const focusables = [
 			...(panelRef.current?.querySelectorAll<HTMLElement>(selector) ?? []),
 			// Exclude the desktop-only tabs while they're display:none on mobile.
@@ -268,12 +349,24 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 		}
 	};
 
-	// ↑↓ browse the ledger, ↵ places (the row is a button). Arrows are left to
-	// the brand <select> while it owns focus.
+	// ↑↓ browse the ledger, ↵ places. The catalog search field keeps arrow
+	// navigation into the results (a listbox-search pattern), but every OTHER
+	// text field, select, and the jack range slider keep their own arrows
+	// (P2-02 — the custom form must not have its caret/stepping hijacked).
 	const handlePanelKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
 		trapTab(event);
 		if (event.defaultPrevented) return;
-		if (event.target instanceof HTMLSelectElement) return;
+		const target = event.target;
+		const isSearchField =
+			target instanceof HTMLInputElement && target.id === "picker-search";
+		if (
+			!isSearchField &&
+			(target instanceof HTMLInputElement ||
+				target instanceof HTMLTextAreaElement ||
+				target instanceof HTMLSelectElement)
+		) {
+			return;
+		}
 		if (event.key === "ArrowDown") {
 			event.preventDefault();
 			moveActive(1);
@@ -295,6 +388,8 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 	const brands = tab === "boards" ? boardBrands : pedalBrandOptions;
 	const count = entries.length;
 	const isBoards = tab === "boards";
+	const isCustom = tab === "custom";
+	const copy = TAB_COPY[tab];
 	const hint = isBoards
 		? "Adds at the viewport centre"
 		: targetBoard
@@ -325,6 +420,16 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 				<BoardIcon size={18} className="picker-bar__icon" />
 				Boards
 			</button>
+			<button
+				type="button"
+				className="picker-bar__tab"
+				data-testid="picker-bar-custom"
+				aria-current={tab === "custom" ? "true" : undefined}
+				onClick={() => openTab("custom")}
+			>
+				<CustomIcon size={18} className="picker-bar__icon" />
+				Custom
+			</button>
 		</nav>
 	);
 
@@ -347,18 +452,14 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 						data-testid="picker-panel"
 						role="dialog"
 						aria-modal="true"
-						aria-label={isBoards ? "Add a board" : "Add a pedal"}
+						aria-label={copy.dialog}
 						onKeyDown={handlePanelKeyDown}
 					>
 						<div className="picker__handle" aria-hidden="true" />
 						<header className="picker__header">
 							<div className="picker__heading">
-								<span className="picker__eyebrow">
-									{isBoards ? "Catalog — Boards" : "Catalog — Pedals"}
-								</span>
-								<h2 className="picker__title">
-									{isBoards ? "Add board" : "Add pedal"}
-								</h2>
+								<span className="picker__eyebrow">{copy.eyebrow}</span>
+								<h2 className="picker__title">{copy.title}</h2>
 								<span className="picker__header-hint" data-testid="picker-hint">
 									{hint}
 								</span>
@@ -385,6 +486,16 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 										<BoardIcon size={16} />
 										Boards
 									</button>
+									<button
+										type="button"
+										className="picker__segment"
+										data-testid="picker-tab-custom"
+										aria-pressed={tab === "custom"}
+										onClick={() => changeTab("custom")}
+									>
+										<CustomIcon size={16} />
+										Custom
+									</button>
 								</div>
 								<button
 									type="button"
@@ -409,226 +520,243 @@ export function Picker({ open, tab, onOpen, onTab, onClose }: PickerProps) {
 							</div>
 						</header>
 
-						<div className="picker__body">
-							<div className="picker__ledger">
-								<div className="picker__tools">
-									<div className="picker__search">
-										<svg
-											className="picker__search-icon"
-											width="16"
-											height="16"
-											viewBox="0 0 24 24"
-											fill="none"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											aria-hidden="true"
-										>
-											<circle cx="11" cy="11" r="7" />
-											<path d="M20 20l-3.2-3.2" />
-										</svg>
-										<label className="visually-hidden" htmlFor="picker-search">
-											Search the catalog
-										</label>
-										<input
-											id="picker-search"
-											ref={searchRef}
-											className="picker__search-input"
-											data-testid="picker-search"
-											type="search"
-											placeholder={
-												isBoards ? "Search boards…" : "Search pedals…"
-											}
-											value={query}
-											onChange={(event) => setQuery(event.target.value)}
-										/>
-										{query ? (
-											<button
-												type="button"
-												className="picker__search-clear"
-												aria-label="Clear search"
-												onClick={() => setQuery("")}
+						{isCustom ? (
+							<CustomPedalForm
+								draft={customDraft}
+								onChange={setCustomDraft}
+								targetBoard={targetBoard}
+								onCreate={handleCreate}
+							/>
+						) : (
+							<div className="picker__body">
+								<div className="picker__ledger">
+									<div className="picker__tools">
+										<div className="picker__search">
+											<svg
+												className="picker__search-icon"
+												width="16"
+												height="16"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth="2"
+												strokeLinecap="round"
+												aria-hidden="true"
 											>
-												<svg
-													width="14"
-													height="14"
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													strokeWidth="2"
-													strokeLinecap="round"
-													aria-hidden="true"
-												>
-													<path d="M6 6l12 12M18 6L6 18" />
-												</svg>
-											</button>
-										) : null}
-										<span
-											className="picker__search-count"
-											data-testid="picker-count"
-											aria-live="polite"
-										>
-											{count} {isBoards ? "boards" : "pedals"}
-										</span>
-									</div>
-
-									<div className="picker__filters">
-										<label className="visually-hidden" htmlFor="picker-brand">
-											Brand
-										</label>
-										<select
-											id="picker-brand"
-											className="picker__brand"
-											data-testid="picker-brand"
-											value={brand ?? ""}
-											onChange={(event) => setBrand(event.target.value || null)}
-										>
-											<option value="">All brands</option>
-											{brands.map((option) => (
-												<option key={option} value={option}>
-													{option}
-												</option>
-											))}
-										</select>
-
-										{isBoards ? null : (
-											<fieldset className="picker__chips">
-												<legend className="visually-hidden">Effect type</legend>
-												{visibleEffects.map((type) => (
-													<button
-														key={type}
-														type="button"
-														className="picker__chip"
-														data-testid={`picker-effect-${type}`}
-														aria-pressed={effectTypes.includes(type)}
-														onClick={() =>
-															setEffectTypes((current) =>
-																toggleEffectType(current, type),
-															)
-														}
-													>
-														{effectLabel(type)}
-													</button>
-												))}
+												<circle cx="11" cy="11" r="7" />
+												<path d="M20 20l-3.2-3.2" />
+											</svg>
+											<label
+												className="visually-hidden"
+												htmlFor="picker-search"
+											>
+												Search the catalog
+											</label>
+											<input
+												id="picker-search"
+												ref={searchRef}
+												className="picker__search-input"
+												data-testid="picker-search"
+												type="search"
+												placeholder={copy.search}
+												value={query}
+												onChange={(event) => setQuery(event.target.value)}
+											/>
+											{query ? (
 												<button
 													type="button"
-													className="picker__chip picker__chip--more"
-													data-testid="picker-effects-toggle"
-													aria-expanded={showAllEffects}
-													onClick={() => setShowAllEffects((value) => !value)}
+													className="picker__search-clear"
+													aria-label="Clear search"
+													onClick={() => setQuery("")}
 												>
-													{showAllEffects ? "Fewer" : "All types"}
+													<svg
+														width="14"
+														height="14"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+														strokeWidth="2"
+														strokeLinecap="round"
+														aria-hidden="true"
+													>
+														<path d="M6 6l12 12M18 6L6 18" />
+													</svg>
 												</button>
-											</fieldset>
+											) : null}
+											<span
+												className="picker__search-count"
+												data-testid="picker-count"
+												aria-live="polite"
+											>
+												{count} {copy.count}
+											</span>
+										</div>
+
+										<div className="picker__filters">
+											<label className="visually-hidden" htmlFor="picker-brand">
+												Brand
+											</label>
+											<select
+												id="picker-brand"
+												className="picker__brand"
+												data-testid="picker-brand"
+												value={brand ?? ""}
+												onChange={(event) =>
+													setBrand(event.target.value || null)
+												}
+											>
+												<option value="">All brands</option>
+												{brands.map((option) => (
+													<option key={option} value={option}>
+														{option}
+													</option>
+												))}
+											</select>
+
+											{isBoards ? null : (
+												<fieldset className="picker__chips">
+													<legend className="visually-hidden">
+														Effect type
+													</legend>
+													{visibleEffects.map((type) => (
+														<button
+															key={type}
+															type="button"
+															className="picker__chip"
+															data-testid={`picker-effect-${type}`}
+															aria-pressed={effectTypes.includes(type)}
+															onClick={() =>
+																setEffectTypes((current) =>
+																	toggleEffectType(current, type),
+																)
+															}
+														>
+															{effectLabel(type)}
+														</button>
+													))}
+													<button
+														type="button"
+														className="picker__chip picker__chip--more"
+														data-testid="picker-effects-toggle"
+														aria-expanded={showAllEffects}
+														onClick={() => setShowAllEffects((value) => !value)}
+													>
+														{showAllEffects ? "Fewer" : "All types"}
+													</button>
+												</fieldset>
+											)}
+										</div>
+									</div>
+
+									<div className="picker__results" data-testid="picker-results">
+										{count === 0 ? (
+											<p className="picker__empty" data-testid="picker-empty">
+												{copy.empty}
+												<button
+													type="button"
+													className="picker__clear-inline"
+													onClick={() => {
+														setQuery("");
+														setBrand(null);
+														setEffectTypes([]);
+													}}
+												>
+													Clear filters
+												</button>
+											</p>
+										) : (
+											entries.map((entry) => {
+												const isActive = entry.id === activeEntry?.id;
+												return (
+													<button
+														key={entry.id}
+														ref={(node) => {
+															if (node) rowRefs.current.set(entry.id, node);
+															else rowRefs.current.delete(entry.id);
+														}}
+														type="button"
+														aria-current={isActive ? "true" : undefined}
+														className="picker-item"
+														data-active={isActive ? "true" : undefined}
+														data-testid={`${isBoards ? "add-board" : "add-pedal"}-${entry.id}`}
+														onMouseEnter={() => setActiveId(entry.id)}
+														onFocus={() => setActiveId(entry.id)}
+														onClick={() => handlePlace(entry)}
+													>
+														<PickerThumb
+															src={entry.imageSrc}
+															kind={isBoards ? "board" : "pedal"}
+														/>
+														<span className="picker-item__text">
+															<span className="picker-item__name">
+																{entry.name}
+															</span>
+															<span className="picker-item__brand">
+																{entry.brand}
+															</span>
+														</span>
+														<span className="picker-item__dims">
+															{entry.widthCm} × {entry.heightCm} cm
+														</span>
+													</button>
+												);
+											})
 										)}
 									</div>
-								</div>
 
-								<div className="picker__results" data-testid="picker-results">
-									{count === 0 ? (
-										<p className="picker__empty" data-testid="picker-empty">
-											{isBoards ? "No boards match. " : "No pedals match. "}
+									<div className="picker__status">
+										<span className="picker__keys" aria-hidden="true">
+											<kbd className="picker__key">↑</kbd>
+											<kbd className="picker__key">↓</kbd> browse
+											<span className="picker__key-sep">·</span>
+											<kbd className="picker__key">↵</kbd> place
+										</span>
+										{isBoards && selectedBoardUid ? (
 											<button
 												type="button"
-												className="picker__clear-inline"
+												className="picker__remove"
+												data-testid="remove-board"
 												onClick={() => {
-													setQuery("");
-													setBrand(null);
-													setEffectTypes([]);
+													removeBoard(selectedBoardUid);
+													selectBoard(null);
+													onClose();
 												}}
 											>
-												Clear filters
+												Remove selected board
 											</button>
-										</p>
-									) : (
-										entries.map((entry) => {
-											const isActive = entry.id === activeEntry?.id;
-											return (
-												<button
-													key={entry.id}
-													ref={(node) => {
-														if (node) rowRefs.current.set(entry.id, node);
-														else rowRefs.current.delete(entry.id);
-													}}
-													type="button"
-													aria-current={isActive ? "true" : undefined}
-													className="picker-item"
-													data-active={isActive ? "true" : undefined}
-													data-testid={`${isBoards ? "add-board" : "add-pedal"}-${entry.id}`}
-													onMouseEnter={() => setActiveId(entry.id)}
-													onFocus={() => setActiveId(entry.id)}
-													onClick={() => handlePlace(entry)}
-												>
-													<PickerThumb
-														src={entry.imageSrc}
-														kind={isBoards ? "board" : "pedal"}
-													/>
-													<span className="picker-item__text">
-														<span className="picker-item__name">
-															{entry.name}
-														</span>
-														<span className="picker-item__brand">
-															{entry.brand}
-														</span>
-													</span>
-													<span className="picker-item__dims">
-														{entry.widthCm} × {entry.heightCm} cm
-													</span>
-												</button>
-											);
-										})
-									)}
-								</div>
-
-								<div className="picker__status">
-									<span className="picker__keys" aria-hidden="true">
-										<kbd className="picker__key">↑</kbd>
-										<kbd className="picker__key">↓</kbd> browse
-										<span className="picker__key-sep">·</span>
-										<kbd className="picker__key">↵</kbd> place
-									</span>
-									{isBoards && selectedBoardUid ? (
-										<button
-											type="button"
-											className="picker__remove"
-											data-testid="remove-board"
-											onClick={() => {
-												removeBoard(selectedBoardUid);
-												selectBoard(null);
-												onClose();
-											}}
-										>
-											Remove selected board
-										</button>
-									) : null}
-								</div>
-							</div>
-
-							<aside className="picker__specimen" data-testid="picker-specimen">
-								{activeEntry ? (
-									<Specimen
-										key={activeEntry.id}
-										entry={activeEntry}
-										kind={isBoards ? "board" : "pedal"}
-										targetLabel={targetLabel}
-										ctaLabel={
-											isBoards
-												? "Place at centre"
-												: targetBoard
-													? "Place on board"
-													: "Place at centre"
-										}
-										onPlace={() => handlePlace(activeEntry)}
-									/>
-								) : (
-									<div className="picker__specimen-empty">
-										<p className="picker__specimen-hint">
-											Nothing to inspect — adjust the search or filters.
-										</p>
+										) : null}
 									</div>
-								)}
-							</aside>
-						</div>
+								</div>
+
+								<aside
+									className="picker__specimen"
+									data-testid="picker-specimen"
+								>
+									{activeEntry ? (
+										<Specimen
+											key={activeEntry.id}
+											entry={activeEntry}
+											kind={isBoards ? "board" : "pedal"}
+											targetLabel={targetLabel}
+											ctaLabel={
+												isBoards
+													? "Place at centre"
+													: targetBoard
+														? "Place on board"
+														: "Place at centre"
+											}
+											onPlace={() => handlePlace(activeEntry)}
+										/>
+									) : (
+										<div className="picker__specimen-empty">
+											<p className="picker__specimen-hint">
+												Nothing to inspect — adjust the search or filters.
+											</p>
+										</div>
+									)}
+								</aside>
+							</div>
+						)}
 						{tabBar}
 					</div>
 				</div>

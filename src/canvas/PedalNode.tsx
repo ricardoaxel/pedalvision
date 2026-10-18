@@ -5,7 +5,7 @@ import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { useDrag } from "../state/drag";
-import { itemDefinition, itemFootprint, type PlacedItem } from "../state/scene";
+import { type PlacedItem, resolveItem, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
@@ -45,6 +45,11 @@ function clientPoint(evt: MouseEvent | TouchEvent): Point {
  * image-resolution contract; a missing/failed image falls back to a labeled
  * rectangle at the true cm footprint.
  *
+ * A **custom pedal** (P2-02) is text-only: it renders as a **solid** neutral
+ * rectangle with a **dog-eared top-right corner** and a mono `CUSTOM` tag
+ * (distinct from the dashed "missing image" fallback), plus the same bottom name
+ * chip catalog pedals get — accent stays reserved for selection.
+ *
  * Drag is intentionally NOT Konva's built-in `draggable`: a cross-board drop
  * lifts the item into the DragLayer (a different React tree), which would kill
  * a live Konva drag. `useItemDrag` drives the pointer instead, so the node can
@@ -59,13 +64,18 @@ export function PedalNode({
 	rotationDeg,
 	lifted = false,
 }: PedalNodeProps) {
-	const definition = itemDefinition(item);
-	const footprint = itemFootprint(item);
-	const widthPx = cmToPx(footprint.widthCm);
-	const heightPx = cmToPx(footprint.heightCm);
+	const customPedals = useScene((state) => state.customPedals);
+	const resolved = resolveItem(item, customPedals);
+	const widthPx = cmToPx(resolved.widthCm);
+	const heightPx = cmToPx(resolved.heightCm);
 
-	const src = definition
-		? resolveImageUrl(definition.imageSource, definition.image, "pedal", 800)
+	const src = resolved.definition
+		? resolveImageUrl(
+				resolved.definition.imageSource,
+				resolved.definition.image,
+				"pedal",
+				800,
+			)
 		: null;
 	const { image, status } = useImage(src, item.uid);
 
@@ -96,21 +106,23 @@ export function PedalNode({
 		[item.uid, selectItem, beginCandidate],
 	);
 
-	const label = definition ? definition.name : item.refId;
+	const label = resolved.name;
 	const pad = Math.min(4, widthPx * 0.08);
 	const textWidth = Math.max(0, widthPx - pad * 2);
-	const showLabel = heightPx >= 26 && widthPx >= 30;
+	const showFallbackText = heightPx >= 26 && widthPx >= 30;
 
 	// Always-on name label ("Specimen Bench"): a chip inside the pedal's bottom
 	// edge, drawn at screen-constant size (counter-scaled by the stage zoom) so
 	// it never becomes 3px text or a banner. Hidden when the footprint is too
 	// narrow to hold a readable name; full opacity when hovered/selected or once
-	// the footprint passes the legibility threshold.
+	// the footprint passes the legibility threshold. A custom part always shows
+	// it (the chip is its identity), so it is exempt from the image-loaded guard.
 	const labelScale = scale > 0 ? scale : 1;
 	const screenWidth = widthPx * labelScale;
+	const screenHeight = heightPx * labelScale;
+	const isCustom = resolved.custom !== null;
 	const showItemLabel =
-		status === "loaded" &&
-		image !== null &&
+		(isCustom || (status === "loaded" && image !== null)) &&
 		screenWidth >= ITEM_LABEL.minWidthPx;
 	const labelInset = ITEM_LABEL.insetPx / labelScale;
 	const labelPad = 3 / labelScale;
@@ -124,9 +136,15 @@ export function PedalNode({
 	const labelEmphasized =
 		hoveredItemUid === item.uid || selectedItemUid === item.uid;
 	const labelOpacity =
-		labelEmphasized || screenWidth >= ITEM_LABEL.fullOpacityWidthPx
+		isCustom || labelEmphasized || screenWidth >= ITEM_LABEL.fullOpacityWidthPx
 			? 1
 			: ITEM_LABEL.opacity;
+	// The `CUSTOM` micro-tag is the always-on cue that this part is user-defined
+	// (text-only), so it appears at any legible size — a typical ~6cm pedal at
+	// zoom 1 is ~24px wide, below the name-chip threshold, and would otherwise
+	// read as a generic shape. The name chip keeps the catalog threshold.
+	const showCustomTag = isCustom && screenWidth >= 20 && screenHeight >= 16;
+	const tagFontSize = (ITEM_LABEL.fontSizePx * 0.6) / labelScale;
 
 	// Lifted items get a soft shadow so the cross-board drag reads as "raised".
 	const shadow = lifted
@@ -137,6 +155,101 @@ export function PedalNode({
 				shadowOpacity: 1,
 			}
 		: { shadowOpacity: 0 };
+
+	const nameChip =
+		showItemLabel && labelHeight > 0 && labelWidth > 0 ? (
+			<Group opacity={labelOpacity} listening={false}>
+				<Rect
+					x={labelInset}
+					y={labelY}
+					width={labelWidth}
+					height={labelHeight}
+					fill={theme.itemLabelBg}
+					cornerRadius={Math.min(labelHeight / 2, 3 / labelScale)}
+				/>
+				<Text
+					text={label}
+					x={labelInset + labelPad}
+					y={labelY}
+					width={labelWidth - labelPad * 2}
+					height={labelHeight}
+					align="center"
+					verticalAlign="middle"
+					fontFamily={CANVAS_FONTS.sans}
+					fontSize={labelFontSize}
+					fill={theme.itemLabelInk}
+					wrap="none"
+					ellipsis
+					listening={false}
+				/>
+			</Group>
+		) : null;
+
+	const body = isCustom ? (
+		<>
+			{/* Custom part: solid body + dog-eared top-right corner (not dashed —
+			 * dashed means a missing image). */}
+			<Rect
+				width={widthPx}
+				height={heightPx}
+				fill={theme.customFill}
+				stroke={theme.customStroke}
+				strokeWidth={1}
+				cornerRadius={[0, Math.min(widthPx, heightPx) * 0.22, 0, 0]}
+				{...shadow}
+			/>
+			{showCustomTag ? (
+				<Text
+					text="CUSTOM"
+					x={labelInset}
+					y={labelInset}
+					width={labelWidth}
+					align="center"
+					fontFamily={CANVAS_FONTS.mono}
+					fontSize={tagFontSize}
+					letterSpacing={0.5 / labelScale}
+					fill={theme.itemLabelInk}
+					wrap="none"
+					ellipsis
+					listening={false}
+				/>
+			) : null}
+			{nameChip}
+		</>
+	) : status === "loaded" && image ? (
+		<>
+			<KonvaImage image={image} width={widthPx} height={heightPx} {...shadow} />
+			{nameChip}
+		</>
+	) : (
+		<>
+			<Rect
+				width={widthPx}
+				height={heightPx}
+				fill={theme.boardDraftFill}
+				stroke={theme.boardStroke}
+				strokeWidth={1}
+				dash={[3, 2]}
+				cornerRadius={2}
+				{...shadow}
+			/>
+			{showFallbackText ? (
+				<Text
+					text={label}
+					x={pad}
+					width={textWidth}
+					y={heightPx / 2 - 6}
+					align="center"
+					fontFamily={CANVAS_FONTS.sans}
+					fontSize={9}
+					fill={theme.boardLabel}
+					wrap="none"
+					ellipsis
+					listening={false}
+				/>
+			) : null}
+		</>
+	);
 
 	return (
 		<Group
@@ -155,71 +268,7 @@ export function PedalNode({
 			onMouseEnter={() => setHoveredItem(item.uid)}
 			onMouseLeave={() => setHoveredItem(null)}
 		>
-			{status === "loaded" && image ? (
-				<>
-					<KonvaImage
-						image={image}
-						width={widthPx}
-						height={heightPx}
-						{...shadow}
-					/>
-					{showItemLabel && labelHeight > 0 && labelWidth > 0 ? (
-						<Group opacity={labelOpacity} listening={false}>
-							<Rect
-								x={labelInset}
-								y={labelY}
-								width={labelWidth}
-								height={labelHeight}
-								fill={theme.itemLabelBg}
-								cornerRadius={Math.min(labelHeight / 2, 3 / labelScale)}
-							/>
-							<Text
-								text={label}
-								x={labelInset + labelPad}
-								y={labelY}
-								width={labelWidth - labelPad * 2}
-								height={labelHeight}
-								align="center"
-								verticalAlign="middle"
-								fontFamily={CANVAS_FONTS.sans}
-								fontSize={labelFontSize}
-								fill={theme.itemLabelInk}
-								wrap="none"
-								ellipsis
-								listening={false}
-							/>
-						</Group>
-					) : null}
-				</>
-			) : (
-				<>
-					<Rect
-						width={widthPx}
-						height={heightPx}
-						fill={theme.boardDraftFill}
-						stroke={theme.boardStroke}
-						strokeWidth={1}
-						dash={[3, 2]}
-						cornerRadius={2}
-						{...shadow}
-					/>
-					{showLabel ? (
-						<Text
-							text={label}
-							x={pad}
-							width={textWidth}
-							y={heightPx / 2 - 6}
-							align="center"
-							fontFamily={CANVAS_FONTS.sans}
-							fontSize={9}
-							fill={theme.boardLabel}
-							wrap="none"
-							ellipsis
-							listening={false}
-						/>
-					) : null}
-				</>
-			)}
+			{body}
 		</Group>
 	);
 }

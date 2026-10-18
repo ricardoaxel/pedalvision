@@ -86,6 +86,7 @@ export function ItemActionBar() {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const items = useScene((state) => state.items);
 	const boards = useScene((state) => state.boards);
+	const customPedals = useScene((state) => state.customPedals);
 	const rotateItem = useScene((state) => state.rotateItem);
 	const duplicateItem = useScene((state) => state.duplicateItem);
 	const removeItem = useScene((state) => state.removeItem);
@@ -169,7 +170,7 @@ export function ItemActionBar() {
 
 	// The selection's screen-space bounding box (rotation-correct), so the bar
 	// sits below the lowest corner for any item/board rotation.
-	const corners = itemWorldCorners(item, boards).map((point) => ({
+	const corners = itemWorldCorners(item, boards, customPedals).map((point) => ({
 		x: cmToPx(point.x) * scale + vx,
 		y: cmToPx(point.y) * scale + vy,
 	}));

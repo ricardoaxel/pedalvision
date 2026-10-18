@@ -2,6 +2,7 @@ import { Group, Layer, Line } from "react-konva";
 import { cmToPx } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import {
+	type CustomPedal,
 	itemFootprint,
 	itemVisualRotationDeg,
 	itemWorldOrigin,
@@ -35,6 +36,7 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const items = useScene((state) => state.items);
 	const boards = useScene((state) => state.boards);
+	const customPedals = useScene((state) => state.customPedals);
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const scale = useViewport((state) => state.scale);
 
@@ -55,7 +57,13 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 	// Transformer listens for the rotate drag.
 	return (
 		<Layer>
-			<HoverOutline item={item} boards={boards} theme={theme} scale={scale} />
+			<HoverOutline
+				item={item}
+				boards={boards}
+				customPedals={customPedals}
+				theme={theme}
+				scale={scale}
+			/>
 			<ItemTransformer selectedUid={attachUid} theme={theme} />
 		</Layer>
 	);
@@ -64,18 +72,20 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 function HoverOutline({
 	item,
 	boards,
+	customPedals,
 	theme,
 	scale,
 }: {
 	item: PlacedItem | undefined;
 	boards: PlacedBoard[];
+	customPedals: CustomPedal[];
 	theme: CanvasTheme;
 	scale: number;
 }) {
 	if (!item) return null;
 	const origin = itemWorldOrigin(item, boards);
 	const rotation = itemVisualRotationDeg(item, boards);
-	const footprint = itemFootprint(item);
+	const footprint = itemFootprint(item, customPedals);
 	return (
 		<Group
 			x={cmToPx(origin.x)}

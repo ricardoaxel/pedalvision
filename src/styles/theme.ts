@@ -19,6 +19,10 @@ export const CANVAS_THEME_VARS = {
 	boardStroke: "--color-board-outline",
 	boardDraftFill: "--color-board-draft-fill",
 	boardLabel: "--color-ink-muted",
+	// Text-only custom pedal body (solid; P2-02) — distinct from the dashed
+	// missing-image fallback.
+	customFill: "--color-custom-fill",
+	customStroke: "--color-custom-stroke",
 	// Lift shadow under a dragged pedal — P1-04.
 	itemShadow: "--color-item-shadow",
 	// Always-on pedal name-label chip — P2-01 (Specimen Bench).
@@ -76,6 +80,8 @@ export const canvasTheme: CanvasTheme = {
 	boardStroke: "#5f6a76",
 	boardDraftFill: "#202327",
 	boardLabel: "#a8b0b8",
+	customFill: "#22262b",
+	customStroke: "#6f7b88",
 	itemShadow: "rgb(0 0 0 / 0.5)",
 	itemLabelBg: "#1b1e21",
 	itemLabelInk: "#eef1f4",
@@ -92,6 +98,8 @@ export const lightCanvasTheme: CanvasTheme = {
 	boardStroke: "#6b7580",
 	boardDraftFill: "#eceff1",
 	boardLabel: "#565d66",
+	customFill: "#e9ecee",
+	customStroke: "#4a545e",
 	itemShadow: "rgb(15 23 42 / 0.32)",
 	itemLabelBg: "#f4f6f7",
 	itemLabelInk: "#16191d",

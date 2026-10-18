@@ -55,6 +55,7 @@ const snapshot = {
 			z: 1,
 		},
 	],
+	customPedals: [],
 };
 
 describe("scene serialization", () => {
@@ -83,13 +84,56 @@ describe("scene serialization", () => {
 			version: 1,
 			boards: [snapshot.boards[0]],
 			items: [snapshot.items[0]],
+			customPedals: [],
 		});
+	});
+
+	it("round-trips inline custom pedals (P2-02)", () => {
+		const withCustom = {
+			...snapshot,
+			customPedals: [
+				{
+					refId: "custom-abc",
+					brand: "Acme",
+					name: "My Fuzz",
+					widthCm: 6,
+					heightCm: 12,
+					category: "pedal" as const,
+					effectTypes: ["fuzz" as const],
+					jacks: [{ kind: "in" as const, edge: "top" as const, pos: 0.5 }],
+					power: { voltage: 9, acDc: "DC" as const, currentMa: 20 },
+				},
+			],
+		};
+		const parsed = parseSceneSnapshot(serializeScene(withCustom));
+		expect(parsed?.customPedals).toEqual(withCustom.customPedals);
+	});
+
+	it("drops a malformed inline custom pedal", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [],
+			items: [],
+			customPedals: [
+				{
+					refId: "custom-ok",
+					brand: "",
+					name: "Ok",
+					widthCm: 6,
+					heightCm: 12,
+					category: "pedal",
+					effectTypes: [],
+				},
+				{ refId: "custom-bad", widthCm: -1 },
+			],
+		});
+		expect(parseSceneSnapshot(raw)?.customPedals).toHaveLength(1);
 	});
 });
 
 describe("scene persistence", () => {
 	beforeEach(() => {
-		useScene.setState({ boards: [], items: [] });
+		useScene.setState({ boards: [], items: [], customPedals: [] });
 	});
 
 	it("hydrates the store from storage", () => {

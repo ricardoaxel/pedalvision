@@ -138,9 +138,32 @@ export const EFFECT_TYPES = [
 	"utility",
 ] as const;
 
+/**
+ * Jack-kind vocabulary (F7/P4-01) — the anchors a cable attaches to and the
+ * kinds the custom creator offers. Widened in P2-02 from the original
+ * `in|out|exp|power`: real pedals also carry expression split as `exp-in`/
+ * `exp-out`, an effects-loop pair (`send`/`return`), and control
+ * (`midi`/`ctrl`). `pos` is the position ALONG the chosen `edge` (0..1).
+ */
+export const JACK_KINDS = [
+	"in",
+	"out",
+	"exp",
+	"exp-in",
+	"exp-out",
+	"send",
+	"return",
+	"midi",
+	"ctrl",
+	"power",
+] as const;
+
+/** Jack edges (F7/P4-01) — which side of the footprint a jack sits on. */
+export const JACK_EDGES = ["top", "right", "bottom", "left"] as const;
+
 export const JackSchema = z.object({
-	kind: z.enum(["in", "out", "exp", "power"]),
-	edge: z.enum(["top", "right", "bottom", "left"]),
+	kind: z.enum(JACK_KINDS),
+	edge: z.enum(JACK_EDGES),
 	/** Position along the edge, 0..1 (0.5 = centered). */
 	pos: z.number().min(0).max(1),
 });
@@ -192,6 +215,8 @@ export const CatalogSchema = z.object({
 
 export type SourceRef = z.infer<typeof SourceRefSchema>;
 export type Jack = z.infer<typeof JackSchema>;
+export type JackKind = (typeof JACK_KINDS)[number];
+export type JackEdge = (typeof JACK_EDGES)[number];
 export type Power = z.infer<typeof PowerSchema>;
 export type CatalogPedal = z.infer<typeof CatalogPedalSchema>;
 export type CatalogBoard = z.infer<typeof CatalogBoardSchema>;

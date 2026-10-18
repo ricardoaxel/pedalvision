@@ -887,6 +887,552 @@ body {
 	color: var(--color-ink-muted);
 }
 
+/* ---------------------------------------------------------------------------
+ * Custom part creator (P2-02) — "Datasheet". A spec sheet + live dimensioned
+ * drawing inside the picker shell (desktop: right pane; mobile: in-flow).
+ * ------------------------------------------------------------------------- */
+
+.custom__sheet {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 0;
+}
+
+.custom__scroll {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	gap: var(--space-5);
+	min-height: 0;
+	padding: var(--space-4) var(--space-5) var(--space-3);
+	overflow-y: auto;
+}
+
+.custom__section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+}
+
+.custom__section-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding-bottom: var(--space-2);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.custom__eyebrow {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-eyebrow);
+}
+
+.custom__count {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	color: var(--color-ink-muted);
+}
+
+.custom__row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+}
+
+.custom__field {
+	display: flex;
+	flex: 1 1 140px;
+	flex-direction: column;
+	gap: var(--space-1);
+	min-width: 0;
+}
+
+.custom__row--identity > .custom__field {
+	flex: 1 1 160px;
+}
+
+.custom__field--polarity {
+	flex: 1 1 220px;
+}
+
+.custom__label {
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink-muted);
+}
+
+.custom__control {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: 36px;
+	padding: 0 var(--space-2);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+}
+
+.custom__control:focus-within {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 1px;
+}
+
+.custom__input {
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 34px;
+	padding: 0;
+	font-family: var(--font-sans);
+	/* 16px prevents iOS auto-zoom on focus. */
+	font-size: var(--font-size-md);
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 0;
+}
+
+.custom__input:focus {
+	outline: none;
+}
+
+.custom__input::placeholder {
+	color: var(--color-ink-muted);
+}
+
+.custom__suffix {
+	flex: 0 0 auto;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	color: var(--color-ink-muted);
+}
+
+.custom__helper {
+	flex: 0 0 100%;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	color: var(--color-ink-muted);
+}
+
+.custom__error {
+	margin: 0;
+	font-size: var(--font-size-xs);
+	color: var(--color-danger);
+}
+
+/* Segmented control — reused by category / units / jack edge / AC-DC. */
+.segmented {
+	display: inline-flex;
+	gap: 2px;
+	margin: 0;
+	min-inline-size: 0;
+	padding: 2px;
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+}
+
+.segmented__option {
+	min-height: 32px;
+	padding: 0 var(--space-3);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	/* Always 1px so the pill never reflows between states. */
+	border: 1px solid transparent;
+	border-radius: var(--radius-row);
+	cursor: pointer;
+}
+
+.segmented--compact .segmented__option {
+	min-height: 28px;
+	padding: 0 var(--space-2);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+}
+
+.segmented__option:hover:not([aria-pressed="true"]) {
+	color: var(--color-ink);
+	background-color: var(--color-surface-raised);
+}
+
+.segmented__option[aria-pressed="true"] {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border-color: var(--color-accent-border);
+}
+
+.segmented__option:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.custom__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.custom__jacks {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.custom__jack {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2);
+	padding: var(--space-2);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+}
+
+.custom__jack[data-active="true"] {
+	border-color: var(--color-accent-border);
+}
+
+.custom__jack-kind {
+	max-width: 120px;
+	min-height: 32px;
+}
+
+.custom__edge .segmented__option {
+	min-width: 32px;
+}
+
+.custom__range {
+	flex: 1 1 110px;
+	min-width: 0;
+	accent-color: var(--color-accent);
+}
+
+.custom__pos {
+	flex: 0 0 auto;
+	min-width: 32px;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-variant-numeric: tabular-nums;
+	color: var(--color-ink-muted);
+	text-align: right;
+}
+
+.custom__jack-remove {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-key);
+	cursor: pointer;
+}
+
+.custom__jack-remove:hover {
+	color: var(--color-danger);
+	background-color: var(--color-danger-surface);
+}
+
+.custom__jack-remove:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 1px;
+}
+
+.custom__add-jack {
+	align-self: flex-start;
+	min-height: 36px;
+	padding: 0 var(--space-3);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+	border: 1px dashed var(--color-border-strong);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.custom__add-jack:hover {
+	color: var(--color-accent-ink);
+	border-style: solid;
+}
+
+.custom__add-jack:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.custom__empty {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	color: var(--color-ink-muted);
+}
+
+.custom__toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--font-size-sm);
+	color: var(--color-ink);
+}
+
+.custom__toggle input {
+	width: 18px;
+	height: 18px;
+	accent-color: var(--color-accent);
+}
+
+.custom__current {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.custom__input--ma {
+	flex: 0 0 auto;
+	width: 72px;
+	min-height: 34px;
+	padding: 0 var(--space-2);
+	background-color: var(--color-input-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+}
+
+.custom__footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--space-3);
+	flex: 0 0 auto;
+	padding: var(--space-3) var(--space-5);
+	border-top: 1px solid var(--color-border);
+	background-color: var(--color-surface-elevated);
+}
+
+.custom__footer-hint {
+	margin-right: auto;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.custom__cta {
+	min-height: 40px;
+	padding: 0 var(--space-5);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-on-accent);
+	background-color: var(--color-accent);
+	border: 1px solid var(--color-accent-strong);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.custom__cta:hover:not(:disabled) {
+	background-color: var(--color-accent-strong);
+}
+
+.custom__cta:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.custom__cta:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+/* Desktop drawing pane (right) — same bench stage as the specimen. */
+.custom__drawing {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	flex: 0 0 auto;
+	width: 352px;
+	min-height: 0;
+	padding: var(--space-5);
+	overflow-y: auto;
+	border-left: 1px solid var(--color-border);
+	background-color: var(--color-specimen-bg);
+	background-image: radial-gradient(
+		circle,
+		var(--color-specimen-dot) var(--grid-dot-radius),
+		transparent calc(var(--grid-dot-radius) + 0.5px)
+	);
+	background-size: var(--grid-pitch) var(--grid-pitch);
+}
+
+.custom__plate {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 220px;
+	padding: var(--space-5);
+	background-color: var(--color-thumb-bg);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-plate);
+}
+
+.part-drawing {
+	width: 100%;
+	max-height: 220px;
+	height: auto;
+}
+
+.part-drawing__body {
+	fill: var(--color-custom-fill);
+	stroke: var(--color-custom-stroke);
+	stroke-linejoin: round;
+}
+
+.part-drawing__fold {
+	stroke: var(--color-custom-stroke);
+	opacity: 0.5;
+}
+
+.part-drawing__dim {
+	fill: var(--color-ink-muted);
+	font-family: var(--font-mono);
+}
+
+.part-drawing__dot {
+	fill: var(--color-custom-stroke);
+	stroke: var(--color-thumb-bg);
+}
+
+.part-drawing__dot--active {
+	fill: var(--color-accent);
+}
+
+.custom__identity {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.custom__identity-brand {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.custom__identity-name {
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--tracking-tight);
+	line-height: var(--leading-tight);
+	color: var(--color-ink);
+}
+
+.custom__identity-dims {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-variant-numeric: tabular-nums;
+	color: var(--color-ink-muted);
+}
+
+/* The in-flow drawing is mobile-only (desktop uses the side pane). */
+.custom__drawing-inline {
+	display: none;
+}
+
+@media (max-width: 1023px) {
+	.custom__scroll {
+		gap: var(--space-4);
+		padding: var(--space-3) var(--space-4) var(--space-2);
+	}
+
+	/* No second pane on mobile — the drawing joins the Jacks section. */
+	.custom__drawing {
+		display: none;
+	}
+
+	.custom__drawing-inline {
+		display: block;
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		min-height: 140px;
+		padding: var(--space-3);
+		background-color: var(--color-specimen-bg);
+		background-image: radial-gradient(
+			circle,
+			var(--color-specimen-dot) var(--grid-dot-radius),
+			transparent calc(var(--grid-dot-radius) + 0.5px)
+		);
+		background-size: var(--grid-pitch) var(--grid-pitch);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-control);
+	}
+
+	.custom__drawing-inline .part-drawing {
+		max-height: 160px;
+	}
+
+	.custom__footer {
+		padding: var(--space-2) var(--space-4);
+	}
+
+	/* The header hint already states the placement on mobile. */
+	.custom__footer-hint {
+		display: none;
+	}
+
+	.custom__cta {
+		flex: 1 1 auto;
+		min-height: 44px;
+	}
+
+	/* Touch targets. */
+	.custom__control,
+	.custom__input--ma {
+		min-height: 44px;
+	}
+
+	.custom__input {
+		min-height: 42px;
+	}
+
+	.segmented__option {
+		min-height: 40px;
+	}
+
+	.segmented--compact .segmented__option {
+		min-height: 36px;
+	}
+
+	.custom__jack-remove,
+	.custom__add-jack {
+		min-height: 44px;
+	}
+
+	.custom__jack-remove {
+		width: 44px;
+		height: 44px;
+	}
+}
+
 /* The bottom tab bar is mobile-only chrome. */
 .picker-bar {
 	display: none;

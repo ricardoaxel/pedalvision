@@ -58,6 +58,7 @@ export function BoardNode({
 	const { image, status } = useImage(src, board.uid);
 
 	const moveBoard = useScene((state) => state.moveBoard);
+	const customPedals = useScene((state) => state.customPedals);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	// While the viewport owns the gesture (pan/pinch), the board must not drag:
 	// a second finger would otherwise move it with both the drag and the pan.
@@ -187,8 +188,8 @@ export function BoardNode({
 				<SelectionOutline
 					xCm={selectedItem.x}
 					yCm={selectedItem.y}
-					widthCm={itemFootprint(selectedItem).widthCm}
-					heightCm={itemFootprint(selectedItem).heightCm}
+					widthCm={itemFootprint(selectedItem, customPedals).widthCm}
+					heightCm={itemFootprint(selectedItem, customPedals).heightCm}
 					rotationDeg={selectedItem.rotationDeg}
 					theme={theme}
 				/>
