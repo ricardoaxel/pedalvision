@@ -175,8 +175,6 @@ export function Picker({
 		}
 	}, [open, editRefId, customPedals]);
 
-	// Leaving edit mode (tab switch) clears the edit draft so it can't leak into
-	// Create; the next Edit re-seeds from the saved definition.
 	// Leaving edit mode clears the edit draft so it can't leak into Create; the
 	// next Edit re-seeds from the saved definition.
 	const leaveEdit = () => {
@@ -204,6 +202,9 @@ export function Picker({
 	};
 
 	const openTab = (next: PickerTab) => {
+		// Re-tapping the active tab is a no-op: it must NOT reopen the picker
+		// (which would clear edit mode and leak the edit draft into Create).
+		if (open && next === tab) return;
 		if (open && next !== tab && isEditing) leaveEdit();
 		if (!open || next !== tab) resetFilters();
 		// Capture the trigger BEFORE the panel (and the Custom form's focus

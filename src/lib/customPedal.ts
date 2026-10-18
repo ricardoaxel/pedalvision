@@ -43,6 +43,8 @@ export interface CustomPedalDraft {
 	 * Canonical cm parsed from `width`/`depth` on the last edit (null when the
 	 * string is empty/invalid). Submitting uses these, so switching units (whose
 	 * display is only 2-decimal) never silently changes the stored size.
+	 * Invariant: every write to `width`/`depth` must set the matching canonical
+	 * field in the same patch — use `setDraftDimension`.
 	 */
 	widthCm: number | null;
 	depthCm: number | null;
@@ -87,6 +89,22 @@ export function parseDimensionToCm(
 /** Format canonical cm in the active display unit (2-decimal, trimmed). */
 export function formatDimension(cm: number, units: DisplayUnits): string {
 	return String(cmToDisplay(cm, units));
+}
+
+/**
+ * Set one dimension from the form's raw string, keeping the canonical cm in the
+ * same patch (the `CustomPedalDraft` invariant). Use this instead of writing
+ * `width`/`depth` directly, so the two can never diverge.
+ */
+export function setDraftDimension(
+	draft: CustomPedalDraft,
+	field: "width" | "depth",
+	raw: string,
+): CustomPedalDraft {
+	const cm = parseDimensionToCm(raw, draft.units);
+	return field === "width"
+		? { ...draft, width: raw, widthCm: cm }
+		: { ...draft, depth: raw, depthCm: cm };
 }
 
 /** A fresh draft (units seeded from the caller; dimensions empty). */

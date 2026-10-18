@@ -15,6 +15,7 @@ import {
 	JACK_EDGE_LABELS,
 	jackKindLabel,
 	parseDimensionToCm,
+	setDraftDimension,
 	validateCustomPedalDraft,
 } from "../lib/customPedal";
 import type { DisplayUnits } from "../lib/geometry";
@@ -238,13 +239,9 @@ export function CustomPedalForm({
 									placeholder="0"
 									value={draft.width}
 									onChange={(event) =>
-										patch({
-											width: event.target.value,
-											widthCm: parseDimensionToCm(
-												event.target.value,
-												draft.units,
-											),
-										})
+										onChange(
+											setDraftDimension(draft, "width", event.target.value),
+										)
 									}
 									onBlur={() => touch("width")}
 								/>
@@ -264,13 +261,9 @@ export function CustomPedalForm({
 									placeholder="0"
 									value={draft.depth}
 									onChange={(event) =>
-										patch({
-											depth: event.target.value,
-											depthCm: parseDimensionToCm(
-												event.target.value,
-												draft.units,
-											),
-										})
+										onChange(
+											setDraftDimension(draft, "depth", event.target.value),
+										)
 									}
 									onBlur={() => touch("depth")}
 								/>

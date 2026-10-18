@@ -8,6 +8,7 @@ import {
 	formatDimension,
 	jackKindLabel,
 	parseDimensionToCm,
+	setDraftDimension,
 	validateCustomPedalDraft,
 } from "./customPedal";
 
@@ -47,6 +48,17 @@ describe("formatDimension", () => {
 	it("formats canonical cm in the display unit (2 decimals)", () => {
 		expect(formatDimension(6.35, "cm")).toBe("6.35");
 		expect(formatDimension(6.35, "in")).toBe("2.5");
+	});
+});
+
+describe("setDraftDimension", () => {
+	it("keeps the canonical cm in sync with the raw string", () => {
+		const cm = setDraftDimension(emptyCustomPedalDraft("cm"), "width", "2.5");
+		expect(cm.width).toBe("2.5");
+		expect(cm.widthCm).toBe(2.5);
+		const inches = setDraftDimension({ ...cm, units: "in" }, "width", "1");
+		expect(inches.widthCm).toBeCloseTo(2.54, 12);
+		expect(setDraftDimension(cm, "depth", "abc").depthCm).toBeNull();
 	});
 });
 

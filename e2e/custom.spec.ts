@@ -109,6 +109,24 @@ test("an edit draft does not leak into the next Create", async ({ page }) => {
 	await expect(page.getByTestId("custom-submit")).toHaveText("Add custom part");
 });
 
+test("re-tapping the active Custom tab keeps edit mode", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "custom");
+	await fillMinimalPart(page, { name: "Stay", width: "6", depth: "12" });
+	await page.getByTestId("custom-submit").click();
+	await page.getByTestId("edit-custom-part").click();
+	await expect(page.getByTestId("custom-name")).toHaveValue("Stay");
+
+	// Re-tapping the already-active Custom tab must not reopen the picker (which
+	// would drop edit mode and leak the edit draft into Create).
+	const bar = page.getByTestId("picker-bar-custom");
+	if (await bar.isVisible()) await bar.click();
+	else await page.getByTestId("picker-tab-custom").click();
+
+	await expect(page.getByTestId("custom-name")).toHaveValue("Stay");
+	await expect(page.getByTestId("custom-submit")).toHaveText("Save changes");
+});
+
 test("switching tabs keeps an in-progress create draft", async ({ page }) => {
 	await page.goto("/");
 	await openPicker(page, "custom");
