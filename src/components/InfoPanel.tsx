@@ -18,18 +18,17 @@ import { usePartImage } from "./partImage";
 import { effectLabel } from "./pickerFilter";
 
 /**
- * The pedal info panel (P2-03, owner-approved "Specimen Readout" direction,
- * 2026-10-18). It is the HTML mirror of the canvas selection (design.md
- * §Accessibility), and it carries the **specimen itself**: a lit plate at the
- * top (photo = identity) with the measuring readout beneath — identity,
- * category, effect tags, dimensions (display-only cm/in toggle), and power/jacks
- * **only when present** (the seed has no power/jacks for catalog pedals; that
- * backfill is P5-01). It is also the home of the non-blocking **space warning**
- * (its first band).
+ * The pedal info panel (P2-03). Direction: **"Specimen Readout"** (owner-approved
+ * 2026-10-18), extended by **"Specimen Cover"** — the specimen is the anchor: a
+ * sleeve in the mobile peek, a full-bleed banner when open, with the measurement
+ * riding it as a museum label. It is the HTML mirror of the canvas selection
+ * (design.md §Accessibility).
  *
- * Desktop (≥1024px) is a trailing **push** rail; mobile (<1024px) is a compact
- * bottom sheet — collapsed shows identity + dimensions + the warning with a 48px
- * specimen thumb inline, expanded reveals the full plate + details.
+ * Desktop (≥1024px) = a trailing **push** rail; mobile (<1024px) = a compact
+ * bottom sheet — a constant-height **cover row** peek (64px sleeve + identity +
+ * actions + a dimensions/warning status row) that expands to a **hero banner** +
+ * measure row + readout sections. Power/jacks render **only when present** (the
+ * seed has no power/jacks for catalog pedals; that backfill is P5-01).
  */
 export function InfoPanel() {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
@@ -104,9 +103,21 @@ export function InfoPanel() {
 		warningLines.push(`Overlaps ${warning.overlaps.length} items.`);
 	}
 	if (warning.outOfBounds) warningLines.push("Extends beyond the board.");
+	// The peek shows a compact chip; the expanded band shows the full sentence.
+	const warningChip = warning.overlaps.length > 0 ? "Overlap" : "Off board";
 
-	// The specimen plate: photo (catalog) / drawing (custom) / glyph (unknown or
-	// a failed image). The category drives the caption.
+	const dimensions = formatDimensions(info.widthCm, info.heightCm, units);
+	// The peek identity collapses to one name line + a `brand · category` subline.
+	const subline = [
+		info.brand,
+		info.category === "supply" ? "Supply" : "Pedal",
+		...(info.isCustom ? ["Custom"] : []),
+	]
+		.filter(Boolean)
+		.join(" · ");
+
+	// The cover: photo (catalog) / drawing (custom) / glyph (unknown or a failed
+	// image). The category drives the caption.
 	const showImage = info.image !== null && preview.phase !== "failed";
 	const caption = info.isCustom
 		? "Drawing"
@@ -120,7 +131,7 @@ export function InfoPanel() {
 			: "image";
 
 	const glyph = <PedalIcon size={28} strokeWidth={1.5} />;
-	const plate = info.isCustom ? (
+	const cover = info.isCustom ? (
 		<PartDrawing
 			widthCm={info.widthCm}
 			depthCm={info.heightCm}
@@ -130,7 +141,7 @@ export function InfoPanel() {
 	) : showImage ? (
 		<img
 			key={`${imageSrc}:${preview.phase}`}
-			className="info-panel__preview-img"
+			className="info-panel__cover-img"
 			src={preview.url}
 			alt=""
 			loading="lazy"
@@ -139,8 +150,8 @@ export function InfoPanel() {
 		/>
 	) : (
 		<span
-			className={`info-panel__plate-glyph${
-				info.unknown ? " info-panel__plate-glyph--dashed" : ""
+			className={`info-panel__cover-glyph${
+				info.unknown ? " info-panel__cover-glyph--dashed" : ""
 			}`}
 			aria-hidden="true"
 		>
@@ -148,19 +159,19 @@ export function InfoPanel() {
 		</span>
 	);
 
-	// The 48px header thumb (mobile collapsed, where the plate is hidden): image
-	// when available, otherwise the glyph (a drawing is illegible at this size).
-	const thumb = showImage ? (
+	// The mobile-collapsed sleeve: image when available, else the glyph (a
+	// drawing is illegible at 64px).
+	const sleeve = showImage ? (
 		<img
-			key={`thumb:${imageSrc}:${preview.phase}`}
-			className="info-panel__thumb-img"
+			key={`sleeve:${imageSrc}:${preview.phase}`}
+			className="info-panel__sleeve-img"
 			src={preview.url}
 			alt=""
 			loading="lazy"
 			crossOrigin={preview.crossOrigin}
 		/>
 	) : (
-		<PedalIcon size={22} strokeWidth={1.5} />
+		<PedalIcon size={24} strokeWidth={1.5} />
 	);
 
 	return (
@@ -173,11 +184,11 @@ export function InfoPanel() {
 		>
 			<header className="info-panel__header">
 				<span
-					className="info-panel__thumb"
-					data-testid="info-thumb"
+					className="info-panel__sleeve"
+					data-testid="info-cover"
 					aria-hidden="true"
 				>
-					{thumb}
+					{sleeve}
 				</span>
 				<div className="info-panel__heading">
 					<span className="info-panel__eyebrow">
@@ -194,6 +205,7 @@ export function InfoPanel() {
 							{info.brand}
 						</span>
 					) : null}
+					<span className="info-panel__subline">{subline}</span>
 				</div>
 				<div className="info-panel__header-actions">
 					<button
@@ -230,11 +242,57 @@ export function InfoPanel() {
 				</div>
 			</header>
 
-			<div className="info-panel__preview" data-testid="info-preview">
-				<span className="info-panel__preview-caption">{caption}</span>
-				<div className="info-panel__plate" data-preview={previewKind}>
-					{plate}
-				</div>
+			{/* Mobile peek status row: dimensions + the compact warning chip. */}
+			<div className="info-panel__status">
+				<span className="info-panel__dims" data-testid="info-peek-dims">
+					{dimensions}
+				</span>
+				{warning.any ? (
+					<span
+						className="info-panel__warning-chip"
+						data-testid="info-warning-chip"
+						role="status"
+						aria-live="polite"
+					>
+						{warningChip}
+					</span>
+				) : null}
+			</div>
+
+			{/* The hero cover banner. */}
+			<div
+				className="info-panel__banner"
+				data-testid="info-preview"
+				data-preview={previewKind}
+			>
+				{cover}
+				<span className="info-panel__banner-caption">{caption}</span>
+			</div>
+
+			{/* Measure row: dimensions + the cm/in toggle (desktop always; mobile
+			 * when the sheet is expanded). */}
+			<div className="info-panel__measure">
+				<span className="info-panel__dims" data-testid="info-dims">
+					{dimensions}
+				</span>
+				<fieldset
+					className="segmented segmented--compact info-panel__units"
+					data-testid="info-units"
+				>
+					<legend className="visually-hidden">Units</legend>
+					{(["cm", "in"] as const).map((unit) => (
+						<button
+							key={unit}
+							type="button"
+							className="segmented__option"
+							data-testid={`info-units-${unit}`}
+							aria-pressed={units === unit}
+							onClick={() => setUnits(unit)}
+						>
+							{unit}
+						</button>
+					))}
+				</fieldset>
 			</div>
 
 			{warning.any ? (
@@ -256,38 +314,6 @@ export function InfoPanel() {
 					</span>
 				</div>
 			) : null}
-
-			<section className="info-panel__section">
-				<div className="info-panel__section-head">
-					<h3 className="info-panel__eyebrow">Dimensions</h3>
-					<fieldset
-						className="segmented segmented--compact info-panel__units"
-						data-testid="info-units"
-					>
-						<legend className="visually-hidden">Units</legend>
-						{(["cm", "in"] as const).map((unit) => (
-							<button
-								key={unit}
-								type="button"
-								className="segmented__option"
-								data-testid={`info-units-${unit}`}
-								aria-pressed={units === unit}
-								onClick={() => setUnits(unit)}
-							>
-								{unit}
-							</button>
-						))}
-					</fieldset>
-				</div>
-				<dl className="info-panel__facts">
-					<div className="info-panel__fact">
-						<dt>Size</dt>
-						<dd className="info-panel__mono" data-testid="info-dims">
-							{formatDimensions(info.widthCm, info.heightCm, units)}
-						</dd>
-					</div>
-				</dl>
-			</section>
 
 			<div className="info-panel__detail" id="info-panel-detail">
 				{info.effectTypes.length > 0 ? (

@@ -37,9 +37,11 @@ test("shows a selected catalog pedal's identity, tags and dimensions", async ({
 	// (graceful omission, never empty scaffolding).
 	await expect(page.getByTestId("info-power")).toHaveCount(0);
 	await expect(page.getByTestId("info-jacks")).toHaveCount(0);
-	await expect(page.getByTestId("info-dims")).toContainText("cm");
 
+	// Dimensions + effects live in the expanded readout (the mobile peek shows
+	// dimensions in its status row); expand so both are visible.
 	await expandDetails(page);
+	await expect(page.getByTestId("info-dims")).toContainText("cm");
 	await expect(page.getByTestId("info-effects")).toContainText("Overdrive");
 });
 
@@ -48,6 +50,7 @@ test("the cm/in toggle switches the displayed dimensions", async ({ page }) => {
 	await addBoard(page, "boss-bcb-1000");
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(page.getByTestId("info-panel")).toBeVisible();
+	await expandDetails(page);
 
 	const dims = page.getByTestId("info-dims");
 	await expect(dims).toHaveText("7.3 × 13.02 cm");
@@ -85,7 +88,7 @@ test("shows a drawing (no image) as a custom part's preview", async ({
 	await expandDetails(page);
 	const preview = page.getByTestId("info-preview");
 	await expect(preview).toBeVisible();
-	await expect(preview.locator("[data-preview='custom']")).toBeVisible();
+	await expect(preview).toHaveAttribute("data-preview", "custom");
 	// Custom parts are text-only — no image element.
 	await expect(preview.locator("img")).toHaveCount(0);
 });
@@ -129,6 +132,9 @@ test("warns about an overlapping pedal but keeps it placed", async ({
 	await page.getByTestId("duplicate-item").click();
 	await expect(stage).toHaveAttribute("data-items", "2");
 
+	// The compact chip shows on the mobile peek; the full sentence band shows
+	// when the sheet is expanded (and always on the desktop rail).
+	await expandDetails(page);
 	const warning = page.getByTestId("info-warning");
 	await expect(warning).toBeVisible();
 	await expect(warning).toContainText("Overlaps");
@@ -137,6 +143,31 @@ test("warns about an overlapping pedal but keeps it placed", async ({
 	expect(
 		((await stage.getAttribute("data-item-positions")) ?? "").split(";")[0],
 	).toBe(sourcePosition);
+});
+
+test("the mobile peek shows the cover sleeve and warning chip, then expands to the banner", async ({
+	page,
+}, testInfo) => {
+	test.skip(testInfo.project.name !== "mobile-chromium", "mobile-only layout");
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(page.getByTestId("info-panel")).toBeVisible();
+
+	// Collapsed peek: sleeve + dimensions in the status row, no banner.
+	await expect(page.getByTestId("info-cover")).toBeVisible();
+	await expect(page.getByTestId("info-peek-dims")).toBeVisible();
+	await expect(page.getByTestId("info-preview")).toBeHidden();
+
+	// An overlap surfaces the compact chip in the peek.
+	await page.getByTestId("duplicate-item").click();
+	await expect(page.getByTestId("info-warning-chip")).toBeVisible();
+
+	// Expand: the banner (hero) replaces the sleeve + status row.
+	await page.getByTestId("info-expand").click();
+	await expect(page.getByTestId("info-preview")).toBeVisible();
+	await expect(page.getByTestId("info-cover")).toBeHidden();
+	await expect(page.getByTestId("info-units")).toBeVisible();
 });
 
 test("clearing the selection hides the panel", async ({ page }) => {

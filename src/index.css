@@ -1652,10 +1652,11 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Info panel (P2-03) — "Readout". The selected item's details (identity, tags,
- * dimensions + cm/in toggle, power, jacks) and the non-blocking space warning.
- * Desktop: a trailing push rail. Mobile: a compact bottom sheet. Sections render
- * only when data exists (the catalog seed has no power/jacks yet).
+ * Info panel (P2-03) — "Specimen Cover" (extends "Specimen Readout"). The
+ * selected part's cover is the anchor: a sleeve in the mobile peek, a full-bleed
+ * banner when open, with the measurement riding it. Desktop: a trailing push
+ * rail. Mobile: a compact cover-peek sheet that expands to a hero. Sections
+ * render only when data exists (the seed has no power/jacks yet).
  * ------------------------------------------------------------------------- */
 
 .info-panel {
@@ -1672,13 +1673,13 @@ body {
 	border-left: 1px solid var(--color-border);
 }
 
+/* ---- Header: identity + actions ---- */
 .info-panel__header {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	gap: var(--space-3);
 	padding: var(--space-5) var(--space-5) var(--space-4);
-	border-bottom: 1px solid var(--color-border);
 }
 
 .info-panel__heading {
@@ -1727,6 +1728,17 @@ body {
 	color: var(--color-ink-muted);
 }
 
+/* The one-line `brand · category` subline is the mobile peek's identity (it
+ * replaces the eyebrow + brand lines, keeping the peek short). */
+.info-panel__subline {
+	display: none;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
 .info-panel__header-actions {
 	display: flex;
 	align-items: center;
@@ -1762,23 +1774,24 @@ body {
 	display: none;
 }
 
-/* Specimen thumb — mobile-collapsed identity (the full plate is desktop-only
- * there / shown when expanded). */
-.info-panel__thumb {
+/* ---- Mobile peek: 64px sleeve + status row (mobile-only) ---- */
+.info-panel__sleeve {
 	display: none;
 	flex: 0 0 auto;
 	align-items: center;
 	justify-content: center;
-	width: 48px;
-	height: 48px;
+	width: 64px;
+	height: 64px;
+	padding: var(--space-1);
 	overflow: hidden;
 	color: var(--color-plate-line);
 	background-color: var(--color-thumb-bg);
 	border: 1px solid var(--color-border-strong);
 	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-plate);
 }
 
-.info-panel__thumb-img {
+.info-panel__sleeve-img {
 	max-width: 100%;
 	max-height: 100%;
 	width: auto;
@@ -1786,63 +1799,129 @@ body {
 	object-fit: contain;
 }
 
-/* Specimen preview — the lit plate that anchors the readout. */
-.info-panel__preview {
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-2);
-	padding: var(--space-4) var(--space-5) 0;
+.info-panel__status {
+	display: none;
 }
 
-.info-panel__preview-caption {
+.info-panel__dims {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	font-variant-numeric: tabular-nums;
+	color: var(--color-ink);
+}
+
+.info-panel__warning-chip {
+	flex: 0 0 auto;
+	padding: 2px var(--space-2);
 	font-family: var(--font-mono);
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
 	letter-spacing: var(--tracking-caps);
 	text-transform: uppercase;
-	color: var(--color-ink-muted);
+	color: var(--color-warning);
+	background-color: var(--color-warning-surface);
+	border: 1px solid var(--color-warning-border);
+	border-radius: var(--radius-pill);
+	white-space: nowrap;
 }
 
-.info-panel__plate {
+/* ---- Cover banner (the hero) ---- */
+.info-panel__banner {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 200px;
-	padding: var(--space-3);
+	height: min(38vh, 300px);
+	padding: var(--space-5);
 	background-color: var(--color-thumb-bg);
-	border: 1px solid var(--color-border-strong);
-	border-radius: var(--radius-control);
-	box-shadow: var(--shadow-plate);
+	border-bottom: 1px solid var(--color-border);
 }
 
-.info-panel__preview-img {
+.info-panel__cover-img {
 	max-width: 100%;
-	max-height: 200px;
+	max-height: 100%;
 	width: auto;
 	height: auto;
 	object-fit: contain;
 }
 
-.info-panel__plate .part-drawing {
-	max-height: 200px;
+.info-panel__banner .part-drawing {
+	max-height: 100%;
 }
-.info-panel__plate-glyph {
+
+.info-panel__cover-glyph {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: var(--color-plate-line);
 }
 
-.info-panel__plate-glyph--dashed {
+.info-panel__cover-glyph--dashed {
 	width: 100%;
-	min-height: 160px;
+	height: 100%;
 	border: 1px dashed var(--color-plate-line);
 	border-radius: var(--radius-key);
 }
 
-/* Space warning band — a slim left-bar status strip under the specimen (it is a
- * property of the selected part's placement, not a page banner). Colored mono
- * label + a readable normal-case sentence; non-blocking, AA in both themes. */
+/* Museum label riding the cover (theme-invariant on-plate ink). */
+.info-panel__banner-caption {
+	position: absolute;
+	left: var(--space-4);
+	bottom: var(--space-3);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-plate-ink);
+}
+
+/* ---- Measure row: dimensions + cm/in toggle ---- */
+.info-panel__measure {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding: var(--space-3) var(--space-5);
+	border-bottom: 1px solid var(--color-border);
+}
+
+/* The cm/in toggle reads as specimen detail, not form chrome: a borderless
+ * inline segment (accent active / muted inactive). */
+.info-panel__units {
+	padding: 0;
+	gap: var(--space-1);
+	background-color: transparent;
+	border: 0;
+}
+
+.info-panel__units .segmented__option {
+	min-height: 28px;
+	padding: 0 var(--space-2);
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 0;
+}
+
+.info-panel__units .segmented__option:hover:not([aria-pressed="true"]) {
+	color: var(--color-ink);
+	background-color: transparent;
+}
+
+.info-panel__units .segmented__option[aria-pressed="true"] {
+	color: var(--color-accent);
+	background-color: transparent;
+	border: 0;
+	font-weight: var(--font-weight-medium);
+}
+
+.info-panel__units .segmented__option + .segmented__option::before {
+	content: "·";
+	margin-right: var(--space-1);
+	color: var(--color-ink-muted);
+}
+
+/* ---- Space warning band (expanded): slim left-bar status strip ---- */
 .info-panel__warning {
 	display: flex;
 	align-items: flex-start;
@@ -1886,6 +1965,12 @@ body {
 	color: var(--color-ink);
 }
 
+/* ---- Detail sections ---- */
+.info-panel__detail {
+	display: flex;
+	flex-direction: column;
+}
+
 .info-panel__section {
 	display: flex;
 	flex-direction: column;
@@ -1893,8 +1978,6 @@ body {
 	padding: var(--space-4) var(--space-5);
 }
 
-/* One consistent hairline under every section head (Dimensions/Effects/Jacks/
- * Power) — matches the Datasheet's rule rhythm. */
 .info-panel__section-head {
 	display: flex;
 	align-items: center;
@@ -1902,46 +1985,6 @@ body {
 	gap: var(--space-3);
 	padding-bottom: var(--space-2);
 	border-bottom: 1px solid var(--color-border);
-}
-
-.info-panel__detail {
-	display: flex;
-	flex-direction: column;
-}
-
-/* The cm/in toggle reads as specimen detail, not form chrome: a borderless
- * inline segment (accent active / muted inactive). */
-.info-panel__units {
-	padding: 0;
-	gap: var(--space-1);
-	background-color: transparent;
-	border: 0;
-}
-
-.info-panel__units .segmented__option {
-	min-height: 28px;
-	padding: 0 var(--space-2);
-	color: var(--color-ink-muted);
-	background-color: transparent;
-	border: 0;
-}
-
-.info-panel__units .segmented__option:hover:not([aria-pressed="true"]) {
-	color: var(--color-ink);
-	background-color: transparent;
-}
-
-.info-panel__units .segmented__option[aria-pressed="true"] {
-	color: var(--color-accent);
-	background-color: transparent;
-	border: 0;
-	font-weight: var(--font-weight-medium);
-}
-
-.info-panel__units .segmented__option + .segmented__option::before {
-	content: "·";
-	margin-right: var(--space-1);
-	color: var(--color-ink-muted);
 }
 
 .info-panel__facts {
@@ -1999,8 +2042,9 @@ body {
 }
 
 @media (max-width: 1023px) {
-	/* Compact sheet above the persistent tab bar; collapsed by default so the
-	 * canvas stays visible (owner instruction). */
+	/* Compact cover-peek sheet above the persistent tab bar; collapsed by
+	 * default so the canvas stays visible (owner instruction). One tap expands
+	 * to the hero detent (72dvh). */
 	.info-panel {
 		position: fixed;
 		right: 0;
@@ -2009,7 +2053,7 @@ body {
 		z-index: 2;
 		width: auto;
 		max-width: none;
-		max-height: 50dvh;
+		max-height: 72dvh;
 		padding-bottom: var(--space-3);
 		border-left: 0;
 		border-top: 1px solid var(--color-border);
@@ -2019,20 +2063,29 @@ body {
 
 	.info-panel__header {
 		align-items: center;
-		padding: var(--space-3) var(--space-4) var(--space-2);
+		padding: var(--space-3) var(--space-4);
+	}
+
+	/* The peek collapses identity to one name line + a `brand · category`
+	 * subline (the eyebrow/brand lines are folded into it). */
+	.info-panel__eyebrow,
+	.info-panel__brand {
+		display: none;
+	}
+
+	.info-panel__subline {
+		display: block;
 	}
 
 	.info-panel__name {
-		font-size: var(--font-size-lg);
+		font-size: var(--font-size-md);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
-	/* Keep the 44px touch target for the units toggle on touch devices. */
-	.info-panel__units .segmented__option {
-		min-height: 44px;
-	}
-
-	.info-panel__expand {
-		display: inline-flex;
+	.info-panel__header-actions {
+		gap: var(--space-1);
 	}
 
 	/* 44px touch targets for the two primary mobile affordances. */
@@ -2041,8 +2094,8 @@ body {
 		height: 44px;
 	}
 
-	.info-panel__header-actions {
-		gap: var(--space-1);
+	.info-panel__expand {
+		display: inline-flex;
 	}
 
 	.info-panel__expand svg {
@@ -2053,46 +2106,59 @@ body {
 		transform: rotate(180deg);
 	}
 
-	/* Collapsed: only identity + dimensions + the warning line are shown (plus
-	 * the header specimen thumb). */
-	.info-panel[data-expanded="false"] .info-panel__detail {
-		display: none;
-	}
-
-	/* Collapsed shows the 48px thumb; expanding swaps it for the full plate. */
-	.info-panel__thumb {
+	/* Base (collapsed) rules first so the [data-expanded] overrides below are
+	 * the higher-specificity ones (no descending specificity). */
+	.info-panel__sleeve {
 		display: flex;
 	}
 
-	/* Base preview spacing first (lower specificity than the [data-expanded]
-	 * overrides below, so it must precede them). */
-	.info-panel__preview {
-		padding: var(--space-3) var(--space-4) 0;
+	.info-panel__status {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-2);
+		padding: var(--space-2) var(--space-4) var(--space-3);
+		border-top: 1px solid var(--color-border);
 	}
 
-	.info-panel[data-expanded="true"] .info-panel__thumb {
-		display: none;
+	.info-panel__status .info-panel__dims {
+		font-size: var(--font-size-xs);
+		color: var(--color-ink-muted);
 	}
 
-	.info-panel[data-expanded="false"] .info-panel__preview {
-		display: none;
+	.info-panel__banner {
+		height: min(34dvh, 280px);
+		border-radius: var(--radius-card) var(--radius-card) 0 0;
 	}
 
-	.info-panel__plate {
-		min-height: 180px;
+	.info-panel__measure {
+		padding: var(--space-2) var(--space-4);
 	}
 
-	.info-panel__preview-img,
-	.info-panel__plate .part-drawing {
-		max-height: 180px;
+	.info-panel__units .segmented__option {
+		min-height: 44px;
 	}
 
 	.info-panel__warning {
-		margin: var(--space-2) var(--space-4) 0;
+		margin: var(--space-3) var(--space-4) 0;
 	}
 
 	.info-panel__section {
 		padding: var(--space-3) var(--space-4);
+	}
+
+	/* Collapsed peek: hide the banner + readout (the sleeve + status row are the
+	 * cover). Expanded: hide the pocket chrome (the banner is the hero). */
+	.info-panel[data-expanded="false"] .info-panel__banner,
+	.info-panel[data-expanded="false"] .info-panel__measure,
+	.info-panel[data-expanded="false"] .info-panel__warning,
+	.info-panel[data-expanded="false"] .info-panel__detail {
+		display: none;
+	}
+
+	.info-panel[data-expanded="true"] .info-panel__sleeve,
+	.info-panel[data-expanded="true"] .info-panel__status {
+		display: none;
 	}
 }
 
