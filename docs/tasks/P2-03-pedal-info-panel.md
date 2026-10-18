@@ -1,6 +1,6 @@
 # P2-03: Pedal info panel + space warning
 
-**Phase:** P2 · **Status:** in review — PR #19 · **Model:** build-cheap
+**Phase:** P2 · **Status:** done (merged 2026-10-18, PR #19, squash `ef4f5ff`) · **Model:** build-cheap
 
 ## Goal
 Two related, owner-approved-to-share surfaces (owner folded 2026-10-18):
