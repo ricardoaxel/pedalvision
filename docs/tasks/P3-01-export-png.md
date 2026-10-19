@@ -1,6 +1,6 @@
 # P3-01: Export PNG
 
-**Phase:** P3 · **Status:** in progress · **Model:** build-strong
+**Phase:** P3 · **Status:** in review — PR #23 · **Model:** build-strong
 
 ## Goal
 Let a user save a **real PNG of their pedalboard plan** — the finished artifact
@@ -168,4 +168,16 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
 - **Design gate:** `design-reviewer` **APPROVE** on pass 1 (desktop + mobile,
   dark + light, success + error, plus both exported PNGs); no findings.
 - **A3 remains an owner/manual device check:** real iOS Safari export.
+- **Checks:** lint / typecheck / test **382** (36 files; 16 in `exportScene.test.ts`) / build / e2e **134 passed + 7 skipped**. Screenshots
+  `docs/screenshots/P3-01/` (desktop + mobile, dark + light, success,
+  error, and both exported PNGs).
+- **Code review (light, 2-pass cap):** pass 1 **CHANGES-REQUIRED** → fixed the
+  fit-cap payload/preload leak (all-content now trims items/endpoints/cables to
+  the frame so a far bad image can't abort), empty-state focus (the empty CTA
+  no longer calls `onClose`; the picker owns focus), added the rotated
+  board+item bounds test / image-failure e2e / pedal-presence pixel assert,
+  mapped only `SecurityError` to tainted, and added a busy lockout. Pass 2
+  (same reviewer session) **CHANGES-REQUIRED** → fixed a stuck busy trigger
+  when the panel unmounts mid-export (busy reset in `openPicker` + effect
+  cleanup) with an e2e for "Add during preparing"; no third pass (2-pass cap).
 - The live stage keeps working unchanged — export is an additive path.
