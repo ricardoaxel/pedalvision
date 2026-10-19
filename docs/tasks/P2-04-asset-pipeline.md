@@ -136,4 +136,20 @@ replaces today's manual/placeholder image flow (P0-04 created the folders/fixtur
   writing PNGs; correct the `--brand`/`--name` "required" contract); pass 2
   (same session resumed) **APPROVE**. The stdout-interleaving nit was folded
   (progress → stderr); the ~1px near-empty hardening was deferred (out of scope).
-  Tests **340**; e2e **95** (+6 skipped); lint/typecheck/build green. PR #20.
+  **Owner-requested extra rounds 3–4:** pass 3 **changes-required** → fixed
+  (auto-orient EXIF before `raw()` so phone photos aren't baked sideways;
+  trim+reject whitespace-only brand/name in `buildDraftEntry`; reject
+  `--variant-of`/`--category` with `--kind board`; BFS queue → bounded
+  `Uint32Array`; + tests) → pass 4 **APPROVE** (folded the "pin
+  validate-before-write with a valid input" test nit). Tests **344** (5 tools
+  test files); e2e **95** (+6 skipped); lint/typecheck/build green. PR #20.
+- **Before/after verification + visual review (owner request, 2026-10-18):** the
+  real CLI was run on three inputs — a synthetic photo-like product shot on a
+  solid near-white background, a white-background shot with **interior white
+  details** that must survive, and a **real committed catalog PNG**
+  (`boss-bd-2-blues-driver`). Objective pixel checks: corners alpha 0; case-B
+  interior ring `(255,255,255,255)` preserved. Below-pixel judgement delegated to
+  the vision `design-reviewer` (`opencode/nemotron-3.5-super-vl-free`): **R1 PASS**
+  (caveat: A/B didn't *show* the checkerboard) → composites re-rendered with a
+  checkerboard frame → **R2 PASS** (background gone, subjects intact/upright,
+  interior detail survived, no artifacts). Screenshots `docs/screenshots/P2-04/`.
