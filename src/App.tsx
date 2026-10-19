@@ -3,6 +3,7 @@ import { BoardActionBar } from "./canvas/BoardActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
+import { FirstRunHint } from "./components/FirstRunHint";
 import { InfoPanel } from "./components/InfoPanel";
 import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
@@ -72,6 +73,8 @@ function App() {
 				 * so its presses never reach the canvas gesture handler. */}
 				<ItemActionBar onEditCustom={openCustomEdit} />
 				<BoardActionBar onEditBoard={openBoardEdit} />
+				{/* First-run "Bench Note" (P2-08): small, dismissible, non-modal. */}
+				<FirstRunHint onAddBoard={() => openPicker("boards")} />
 				<div className="app-toolbar">
 					<button
 						type="button"
@@ -87,6 +90,7 @@ function App() {
 					</button>
 					<button
 						type="button"
+						id="toolbar-add-board"
 						className="app-toolbar__add"
 						data-testid="picker-open-board"
 						aria-label="Add board"

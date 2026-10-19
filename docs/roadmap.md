@@ -34,7 +34,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P2-05 Custom board creator (any W×D, texture) — **done** (merged 2026-10-19, PR #21, squash `e068c35`; owner-approved **"Substrate"** direction — inline `customSize` + procedural finish `matte|brushed|wood|tolex`, edit-in-place, add/move/rotate/delete, kind-specific previews, catalog-miss shortcut; the optional `pedal-user` agent landed too)
 - P2-06 Catalog procurement — **MOVED to P4-04** (pre-launch owner track; it is not a P2/P3 gate).
 - P2-07 Asset CDN (R2) — deferred (ADR-002): revisit before catalog exceeds ~2k items
-- P2-08 First-run empty-state guidance (hint overlay / default-open picker — "instant use, easy to learn" lesson) (R6/N2)
+- P2-08 First-run empty-state guidance (hint overlay / default-open picker — "instant use, easy to learn" lesson) (R6/N2) — **in review (PR #PENDING)**: owner-approved **"Bench Note"** — a small derived-empty-scene note under the desktop Add cluster / above the mobile tab bar, board-first CTA, one-tap dismiss persisted in localStorage, non-modal and clear of the canvas centre; does not open P3 until merged.
 - P2-09 **PROPOSED (pedal-user review, 2026-10-19):** Board info readout + consistent board chrome — extend the info panel to boards (brand/name/true cm dims/finish) and give **every** board the same action bar (Delete; Edit only for custom), instead of catalog boards having no readout + Delete buried in the picker. Also candidate: **duplicate a board**. Design-affecting → designer first.
 
 ## P3 — Output (expand when scheduled)

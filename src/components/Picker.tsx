@@ -10,6 +10,7 @@ import {
 	draftFromCustomPedal,
 	emptyCustomPedalDraft,
 } from "../lib/customPedal";
+import { focusAddBoardTrigger } from "../lib/focus";
 import { centerOffset, placeItem } from "../lib/geometry";
 import {
 	boardDefinition,
@@ -322,7 +323,14 @@ export function Picker({
 			searchRef.current?.focus();
 			return;
 		}
-		returnFocusRef.current?.focus?.();
+		const returnTarget = returnFocusRef.current;
+		if (returnTarget?.isConnected) {
+			returnTarget.focus();
+		} else {
+			// The opener can unmount with the action it triggered (e.g. the P2-08
+			// first-run note placing the first board): never drop focus to <body>.
+			focusAddBoardTrigger();
+		}
 		returnFocusRef.current = null;
 	}, [open]);
 
@@ -666,6 +674,7 @@ export function Picker({
 			</button>
 			<button
 				type="button"
+				id="tab-bar-boards"
 				className="picker-bar__tab"
 				data-testid="picker-bar-boards"
 				aria-current={tab === "boards" ? "true" : undefined}

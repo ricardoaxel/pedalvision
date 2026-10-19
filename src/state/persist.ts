@@ -1,6 +1,7 @@
 import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
 import { isBoardTexture } from "../lib/boardTexture";
 import { MAX_BOARD_DIMENSION_CM } from "../lib/customBoard";
+import { resolveStorage } from "../lib/storage";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
 import { normalizeAllZ, pruneCustomPedals, useScene } from "./scene";
 
@@ -175,21 +176,6 @@ export function parseSceneSnapshot(raw: string | null): SceneSnapshot | null {
 		items: parsed.items.filter(isPlacedItem),
 		customPedals,
 	};
-}
-
-/**
- * Resolve a usable `Storage`. An explicit store (tests) is returned as-is;
- * otherwise `localStorage` is probed defensively — merely touching it throws a
- * `SecurityError` when site storage is blocked (sandboxed iframe, "block all
- * cookies"), and boot must not fail there.
- */
-function resolveStorage(storage?: Storage | null): Storage | null {
-	if (storage) return storage;
-	try {
-		return typeof localStorage === "undefined" ? null : localStorage;
-	} catch {
-		return null;
-	}
 }
 
 /**
