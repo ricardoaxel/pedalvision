@@ -185,6 +185,86 @@ describe("useScene custom boards (P2-05)", () => {
 		expect(item.y).toBeLessThanOrEqual(20 - pedal.heightCm);
 	});
 
+	it("does not nudge an item when the board only grows", () => {
+		const pedal = catalog.pedals.find(
+			(candidate) => candidate.id === "boss-bd-2-blues-driver",
+		);
+		if (!pedal) throw new Error("test fixture pedal missing from the seed");
+		const uid = useScene
+			.getState()
+			.addCustomBoard(
+				{ widthCm: 30, heightCm: 20, texture: "matte" },
+				{ x: 0, y: 0 },
+			);
+		const itemUid = useScene
+			.getState()
+			.addItem(pedal.id, "pedal", uid, { x: 22, y: 6 });
+		useScene.getState().updateCustomBoard(uid, {
+			widthCm: 60,
+			heightCm: 40,
+			texture: "matte",
+		});
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		// A deliberate overhang is preserved when the board isn't shrunk.
+		expect(item).toMatchObject({ x: 22, y: 6 });
+	});
+
+	it("clamps a pedal wider than the shrunk board to the origin", () => {
+		const pedal = catalog.pedals.find(
+			(candidate) => candidate.id === "boss-bd-2-blues-driver",
+		);
+		if (!pedal) throw new Error("test fixture pedal missing from the seed");
+		const uid = useScene
+			.getState()
+			.addCustomBoard(
+				{ widthCm: 5, heightCm: 30, texture: "matte" },
+				{ x: 0, y: 0 },
+			);
+		const itemUid = useScene
+			.getState()
+			.addItem(pedal.id, "pedal", uid, { x: 3, y: 4 });
+		useScene.getState().updateCustomBoard(uid, {
+			widthCm: 4,
+			heightCm: 30,
+			texture: "matte",
+		});
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		expect(item?.x).toBe(0);
+		// The non-shrunk axis is untouched.
+		expect(item?.y).toBe(4);
+	});
+
+	it("clamps a rotated pedal by its unrotated footprint (documented residual)", () => {
+		const pedal = catalog.pedals.find(
+			(candidate) => candidate.id === "boss-bd-2-blues-driver",
+		);
+		if (!pedal) throw new Error("test fixture pedal missing from the seed");
+		const uid = useScene
+			.getState()
+			.addCustomBoard(
+				{ widthCm: 60, heightCm: 30, texture: "matte" },
+				{ x: 0, y: 0 },
+			);
+		const itemUid = useScene
+			.getState()
+			.addItem(pedal.id, "pedal", uid, { x: 55, y: 20 });
+		useScene.getState().rotateItem(itemUid, 45);
+		useScene.getState().updateCustomBoard(uid, {
+			widthCm: 30,
+			heightCm: 30,
+			texture: "matte",
+		});
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		expect(item?.x).toBe(30 - pedal.widthCm);
+		expect(item?.rotationDeg).toBe(45);
+	});
+
 	it("boardWorldCorners maps the rotated footprint to world cm", () => {
 		const board = {
 			uid: "b",

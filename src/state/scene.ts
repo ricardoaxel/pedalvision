@@ -222,29 +222,36 @@ export function itemFootprint(
 }
 
 /**
- * Nudge attached items back inside a custom board after it is resized (P2-05
- * edit). Items keep their size and rotation; only their board-local `x`/`y`
- * move, so shrinking a board can never silently strand a pedal off the deck (a
- * rotated item's true AABB is larger than its unrotated footprint, so a
- * residual overflow can still be flagged by the P2-03 space warning).
+ * Nudge attached items back inside a custom board after it is **shrunk**
+ * (P2-05 edit). Only an axis that actually got smaller is clamped, so renaming,
+ * retexturing, enlarging, or a deliberate overhang the user left on an unchanged
+ * axis is never moved. Items keep their size and rotation; only their
+ * board-local `x`/`y` change. A rotated item's true AABB is larger than its
+ * unrotated footprint, so a residual overhang can still be flagged by the P2-03
+ * space warning.
  */
 export function clampItemsToBoard(
 	items: PlacedItem[],
 	boardUid: string,
-	footprint: { widthCm: number; heightCm: number },
+	next: { widthCm: number; heightCm: number },
+	previous: { widthCm: number; heightCm: number },
 	customPedals: CustomPedal[] = [],
 ): PlacedItem[] {
+	const shrinkX = next.widthCm < previous.widthCm;
+	const shrinkY = next.heightCm < previous.heightCm;
+	if (!shrinkX && !shrinkY) return items;
 	return items.map((item) => {
 		if (item.boardUid !== boardUid) return item;
 		const size = itemFootprint(item, customPedals);
-		const x = Math.min(
-			Math.max(item.x, 0),
-			Math.max(0, footprint.widthCm - size.widthCm),
-		);
-		const y = Math.min(
-			Math.max(item.y, 0),
-			Math.max(0, footprint.heightCm - size.heightCm),
-		);
+		const x = shrinkX
+			? Math.min(Math.max(item.x, 0), Math.max(0, next.widthCm - size.widthCm))
+			: item.x;
+		const y = shrinkY
+			? Math.min(
+					Math.max(item.y, 0),
+					Math.max(0, next.heightCm - size.heightCm),
+				)
+			: item.y;
 		return x === item.x && y === item.y ? item : { ...item, x, y };
 	});
 }
@@ -806,28 +813,32 @@ export const useScene = create<SceneStore>((set) => ({
 	},
 	updateCustomBoard: (uid, definition) =>
 		set((state) => {
+			const board = state.boards.find((candidate) => candidate.uid === uid);
+			if (!board) return state;
+			const previous = boardFootprint(board);
 			const footprint = {
 				widthCm: definition.widthCm,
 				heightCm: definition.heightCm,
 			};
 			return {
-				boards: state.boards.map((board) =>
-					board.uid === uid
+				boards: state.boards.map((candidate) =>
+					candidate.uid === uid
 						? {
-								...board,
+								...candidate,
 								boardRefId: null,
 								customSize: footprint,
 								texture: definition.texture,
 								name: definition.name,
 								brand: definition.brand,
 							}
-						: board,
+						: candidate,
 				),
 				// A shrink must not strand attached pedals off the deck.
 				items: clampItemsToBoard(
 					state.items,
 					uid,
 					footprint,
+					previous,
 					state.customPedals,
 				),
 			};
