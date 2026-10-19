@@ -187,7 +187,7 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   **APPROVE** on the follow-up pass for FORMAT + PDF (desktop + mobile, PDF
   selected, paper-light PDF rendered via `pdftoppm`); no findings.
 - **A3 remains an owner/manual device check:** real iOS Safari export.
-- **Checks:** lint / typecheck / test **387** (37 files; 18 in
+- **Checks:** lint / typecheck / test **386** (37 files; 18 in
   `exportScene.test.ts` + 2 in `pdf.test.ts`) / build / e2e **138 passed +
   7 skipped**. Screenshots `docs/screenshots/P3-01/` (desktop + mobile, dark +
   light, PNG and PDF selected, success, error, both exported PNGs, the PDF, and
