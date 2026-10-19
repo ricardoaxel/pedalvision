@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BoardActionBar } from "./canvas/BoardActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
+import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
 import { FirstRunHint } from "./components/FirstRunHint";
 import { InfoPanel } from "./components/InfoPanel";
 import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
@@ -25,6 +26,10 @@ function App() {
 	);
 	// P2-05 edit: when set, the picker opens on Custom in board-edit mode.
 	const [editingBoardUid, setEditingBoardUid] = useState<string | null>(null);
+	// P3-01 export: a non-modal Print Ticket surface anchored to the toolbar.
+	const [exportOpen, setExportOpen] = useState(false);
+	const [exportBusy, setExportBusy] = useState(false);
+	const exportTriggerRef = useRef<HTMLButtonElement>(null);
 	// P2-03: the info panel is a trailing push rail (desktop) / bottom sheet
 	// (mobile), shown only while an item is selected.
 	const selectedItemUid = useSelection(selectSelectedItemUid);
@@ -38,10 +43,27 @@ function App() {
 	};
 
 	const openPicker = (tab: PickerTab) => {
+		setExportOpen(false);
+		setExportBusy(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 		setPickerTab(tab);
 		setPickerOpen(true);
+	};
+
+	const openExport = () => {
+		setPickerOpen(false);
+		setEditingCustomRefId(null);
+		setEditingBoardUid(null);
+		setExportBusy(false);
+		setExportOpen(true);
+	};
+
+	// Close + return focus to the trigger (the non-modal dialog's contract).
+	const closeExport = () => {
+		setExportOpen(false);
+		setExportBusy(false);
+		requestAnimationFrame(() => exportTriggerRef.current?.focus());
 	};
 
 	const openCustomEdit = (refId: string) => {
@@ -65,7 +87,11 @@ function App() {
 	};
 
 	return (
-		<main className="app" data-panel={selectedItemUid ? "open" : undefined}>
+		<main
+			className="app"
+			data-panel={selectedItemUid ? "open" : undefined}
+			data-export={exportOpen ? "open" : undefined}
+		>
 			<h1 className="visually-hidden">Pedalvision</h1>
 			<div className="app-canvas">
 				<Stage />
@@ -101,10 +127,32 @@ function App() {
 						<BoardIcon />
 						<PlusIcon />
 					</button>
+					<button
+						ref={exportTriggerRef}
+						type="button"
+						className="hud-button export-trigger"
+						data-testid="export-open"
+						aria-label="Export PNG"
+						title="Export PNG"
+						aria-haspopup="dialog"
+						aria-expanded={exportOpen}
+						aria-controls="export-panel"
+						disabled={exportBusy}
+						onClick={exportOpen ? closeExport : openExport}
+					>
+						<ExportTriggerContent />
+					</button>
 					<button type="button" className="hud-button" onClick={toggleTheme}>
 						{theme === "dark" ? "Light" : "Dark"} theme
 					</button>
 				</div>
+				{exportOpen ? (
+					<ExportPanel
+						onClose={closeExport}
+						onAddBoard={() => openPicker("boards")}
+						onBusyChange={setExportBusy}
+					/>
+				) : null}
 			</div>
 			{/* The selected part's readout + the space warning (P2-03). */}
 			<InfoPanel />

@@ -130,6 +130,32 @@ export function WarningIcon({
 	);
 }
 
+/** Download / export — the P3-01 toolbar trigger + primary action. */
+export function DownloadIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M12 3v12" />
+			<path d="M7.5 10.5 12 15l4.5-4.5" />
+			<path d="M4 19h16" />
+		</svg>
+	);
+}
+
 /** Chevron — the mobile info-sheet expand/collapse affordance. */
 export function ChevronIcon({
 	size = 18,

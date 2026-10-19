@@ -42,8 +42,8 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 >
 > ✅ **P2 phase gate PASSED (2026-10-19)** — post-phase review on the light model (`opencode-go/deepseek-v4.1-flash`, PRs #17–#22 + docs): verdict changes-required; all findings folded into `design.md`/this file/task files + `progress.md`; one small code follow-up created (**P2-10**). No P2 regression; F3 (custom-size boards), F7 (custom pedal + info panel) and F11 (responsive picker) are satisfied. Checks green: lint / typecheck / test **366** / build / e2e **121** (+6 project-specific skips). **Next: P3-01 Export PNG** (new session; create its task file first; design-affecting). P2-10 is recommended before P3-01 — owner decides.
 
-## P3 — Output (expand when scheduled)
-- P3-01 Export PNG (detached offscreen Stage, scope: selected-board | all-content w/ fit-cap, pixelRatio ≤2 + total-pixel clamp, verify on iOS Safari) (S1/S2)
+## P3 — Output (in progress)
+- P3-01 Export **PNG + PDF** (detached offscreen Stage, scope: selected-board | all-content (everything), Standard/HD quality (32/64 px/cm), pixelRatio ≤2 + 16.7 MP/8192 px clamp, true-scale paper-light PDF, verify on iOS Safari) (S1/S2) — **in review — PR #23** (owner-approved "Print Ticket"; `src/lib/exportScene.ts` + `canvas/exportStage.ts` + `lib/pdf.ts`; 17+2 unit tests; desktop+mobile e2e; zero new deps). **A3 real-device iOS Safari is a manual owner check.** Do not start P3-02 until merged.
 - P3-02 Scene save/load + multi-scene index (IndexedDB) + autosave + **boot-time index↔doc reconcile** (R6/S2)
 - P3-03 Share links (versioned codec, **custom pedals travel inline**, deflate → base64url hash; read-only view + "save a copy"; note the ~200KB cap interplay) (S1/R6)
 - P3-04 Undo/redo (snapshot store) + keyboard shortcuts (S5/N6 — separate task, one concern)
