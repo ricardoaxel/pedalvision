@@ -1,6 +1,6 @@
 # P3-01: Export PNG + PDF
 
-**Phase:** P3 · **Status:** in review — PR #23 · **Model:** build-strong
+**Phase:** P3 · **Status:** done (merged 2026-10-19, PR #23, squash `d2a33bb`) · **Model:** build-strong
 
 ## Goal
 Let a user save a **real PNG or PDF of their pedalboard plan** — the finished
