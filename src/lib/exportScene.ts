@@ -26,10 +26,17 @@ export const ALL_CONTENT_FIT_RADIUS_CM = 40;
 export const EXPORT_PADDING_CM = 4;
 
 /** Output density at 1× (the live canvas renders at 4 px/cm). */
-export const EXPORT_PX_PER_CM = 16;
+export const EXPORT_PX_PER_CM = 32;
 
-/** Hard iOS-Safari canvas ceiling per edge (≈4096 × 4096 total pixels). */
-export const EXPORT_MAX_PX = 4096;
+/**
+ * Hard total-pixel budget. iOS 17 and older cap a canvas at 16,777,216 pixels
+ * (dimensions may exceed 4096 as long as the area stays under it); iOS 18+
+ * allows more, but we keep the conservative budget so export never blanks.
+ */
+export const EXPORT_MAX_PIXELS = 16_777_216;
+
+/** Absolute per-edge safety cap (well above 4096; the area budget dominates). */
+export const EXPORT_MAX_EDGE_PX = 8192;
 
 /** Never rasterize above 2× regardless of content size. */
 export const EXPORT_MAX_PIXEL_RATIO = 2;
@@ -72,6 +79,9 @@ export interface ExportSceneInput {
 
 export type ExportScope = "board" | "all";
 
+/** Downloadable artifact formats (P3-01). */
+export type ExportFormat = "png" | "pdf";
+
 export interface ExportPlan {
 	scope: ExportScope;
 	boards: PlacedBoard[];
@@ -95,6 +105,8 @@ export interface ExportPlan {
 	outputHeightPx: number;
 	/** Uniform content scale applied by the detached stage (<1 = fit-scaled). */
 	fitScale: number;
+	/** Final output density (pixels per inch) — useful for print expectations. */
+	outputPpi: number;
 	/** True when the pixel clamp reduced the ratio and/or fit scale. */
 	clampLimited: boolean;
 }
@@ -219,29 +231,35 @@ function computePixelPlan(
 	| "outputWidthPx"
 	| "outputHeightPx"
 	| "fitScale"
+	| "outputPpi"
 	| "clampLimited"
 > {
 	const baseWidthPx = Math.max(1, boundsCm.widthCm * EXPORT_PX_PER_CM);
 	const baseHeightPx = Math.max(1, boundsCm.heightCm * EXPORT_PX_PER_CM);
+	// Fit down against BOTH limits before rasterizing so the stage itself never
+	// exceeds the budget (a square 2 m board would otherwise blow the area cap).
 	const fitScale = Math.min(
 		1,
-		EXPORT_MAX_PX / baseWidthPx,
-		EXPORT_MAX_PX / baseHeightPx,
+		EXPORT_MAX_EDGE_PX / baseWidthPx,
+		EXPORT_MAX_EDGE_PX / baseHeightPx,
+		Math.sqrt(EXPORT_MAX_PIXELS / (baseWidthPx * baseHeightPx)),
 	);
 	const stageWidthPx = Math.max(1, Math.round(baseWidthPx * fitScale));
 	const stageHeightPx = Math.max(1, Math.round(baseHeightPx * fitScale));
 	const pixelRatio = Math.min(
 		EXPORT_MAX_PIXEL_RATIO,
-		EXPORT_MAX_PX / stageWidthPx,
-		EXPORT_MAX_PX / stageHeightPx,
+		EXPORT_MAX_EDGE_PX / stageWidthPx,
+		EXPORT_MAX_EDGE_PX / stageHeightPx,
+		Math.sqrt(EXPORT_MAX_PIXELS / (stageWidthPx * stageHeightPx)),
 	);
+	// Floor so rounding can never push the final area back over the budget.
 	const outputWidthPx = Math.min(
-		EXPORT_MAX_PX,
-		Math.max(1, Math.round(stageWidthPx * pixelRatio)),
+		EXPORT_MAX_EDGE_PX,
+		Math.max(1, Math.floor(stageWidthPx * pixelRatio)),
 	);
 	const outputHeightPx = Math.min(
-		EXPORT_MAX_PX,
-		Math.max(1, Math.round(stageHeightPx * pixelRatio)),
+		EXPORT_MAX_EDGE_PX,
+		Math.max(1, Math.floor(stageHeightPx * pixelRatio)),
 	);
 	return {
 		stageWidthPx,
@@ -250,6 +268,7 @@ function computePixelPlan(
 		outputWidthPx,
 		outputHeightPx,
 		fitScale,
+		outputPpi: outputWidthPx / (boundsCm.widthCm / 2.54),
 		clampLimited:
 			pixelRatio < EXPORT_MAX_PIXEL_RATIO - EPSILON || fitScale < 1 - EPSILON,
 	};
@@ -477,12 +496,13 @@ export function exportFileName(
 	plan: ExportPlan,
 	boardLabel: string | null,
 	now: Date = new Date(),
+	format: ExportFormat = "png",
 ): string {
 	const year = now.getFullYear();
 	const month = String(now.getMonth() + 1).padStart(2, "0");
 	const day = String(now.getDate()).padStart(2, "0");
 	const scope = plan.scope === "board" && boardLabel ? boardLabel : "plan";
-	return `pedalvision-${exportFileSlug(scope)}-${year}-${month}-${day}.png`;
+	return `pedalvision-${exportFileSlug(scope)}-${year}-${month}-${day}.${format}`;
 }
 
 /** World-cm point for a cable end (item centre / endpoint); P4 refines jacks. */

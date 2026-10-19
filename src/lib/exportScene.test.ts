@@ -4,8 +4,9 @@ import {
 	ALL_CONTENT_FIT_RADIUS_CM,
 	boardAabbCm,
 	ENDPOINT_MARGIN_CM,
+	EXPORT_MAX_EDGE_PX,
 	EXPORT_MAX_PIXEL_RATIO,
-	EXPORT_MAX_PX,
+	EXPORT_MAX_PIXELS,
 	EXPORT_PADDING_CM,
 	type ExportCable,
 	type ExportEndpoint,
@@ -320,7 +321,7 @@ describe("resolveExportPlan — all content", () => {
 });
 
 describe("pixel clamp + output size", () => {
-	it("caps a huge plan at 4096 px and ratio 2", () => {
+	it("caps a huge plan at the edge/area budget", () => {
 		const huge = board({
 			customSize: { widthCm: 400, heightCm: 400 },
 		});
@@ -328,19 +329,39 @@ describe("pixel clamp + output size", () => {
 			scope: "all",
 		});
 
-		expect(plan.outputWidthPx).toBeLessThanOrEqual(EXPORT_MAX_PX);
-		expect(plan.outputHeightPx).toBeLessThanOrEqual(EXPORT_MAX_PX);
+		expect(plan.outputWidthPx).toBeLessThanOrEqual(EXPORT_MAX_EDGE_PX);
+		expect(plan.outputHeightPx).toBeLessThanOrEqual(EXPORT_MAX_EDGE_PX);
+		expect(plan.outputWidthPx * plan.outputHeightPx).toBeLessThanOrEqual(
+			EXPORT_MAX_PIXELS,
+		);
 		expect(plan.pixelRatio).toBeLessThanOrEqual(EXPORT_MAX_PIXEL_RATIO);
 		expect(plan.clampLimited).toBe(true);
 	});
 
-	it("uses ~16 px/cm and 2× for a normal board", () => {
+	it("uses 32 px/cm and 2× for a normal board (~162 PPI)", () => {
 		const plan = resolveExportPlan(scene(), { scope: "all" });
 		const widthCm = plan.boundsCm.widthCm;
-		expect(plan.outputWidthPx).toBe(Math.round(widthCm * 16 * plan.pixelRatio));
+		expect(plan.outputWidthPx).toBe(Math.floor(widthCm * 32 * plan.pixelRatio));
 		expect(plan.pixelRatio).toBe(2);
 		expect(plan.outputWidthPx).toBeGreaterThan(0);
 		expect(plan.outputHeightPx).toBeGreaterThan(0);
+		expect(plan.outputPpi).toBeGreaterThan(150);
+	});
+
+	it("allows a wide plan past the old 4096 edge within the area budget", () => {
+		const wide = board({ customSize: { widthCm: 180, heightCm: 70 } });
+		const plan = resolveExportPlan(scene({ boards: [wide], items: [] }), {
+			scope: "all",
+		});
+
+		expect(plan.outputWidthPx).toBeGreaterThan(4096);
+		expect(plan.outputWidthPx).toBeLessThanOrEqual(EXPORT_MAX_EDGE_PX);
+		expect(plan.outputWidthPx * plan.outputHeightPx).toBeLessThanOrEqual(
+			EXPORT_MAX_PIXELS,
+		);
+		expect(plan.pixelRatio).toBeLessThan(EXPORT_MAX_PIXEL_RATIO);
+		expect(plan.clampLimited).toBe(true);
+		expect(plan.outputPpi).toBeGreaterThan(80);
 	});
 
 	it("never returns a zero-size output", () => {
@@ -370,6 +391,13 @@ describe("exportFileName", () => {
 		const plan = resolveExportPlan(scene(), { scope: "all" });
 		expect(exportFileName(plan, null, new Date(2026, 0, 2))).toBe(
 			"pedalvision-plan-2026-01-02.png",
+		);
+	});
+
+	it("uses the requested extension", () => {
+		const plan = resolveExportPlan(scene(), { scope: "all" });
+		expect(exportFileName(plan, null, new Date(2026, 0, 2), "pdf")).toBe(
+			"pedalvision-plan-2026-01-02.pdf",
 		);
 	});
 });

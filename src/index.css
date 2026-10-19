@@ -2610,11 +2610,15 @@ body {
 	color: var(--color-ink-muted);
 }
 
-.export-scope {
+.export-choice {
 	min-width: 0;
 	margin: 0;
 	padding: 0;
 	border: 0;
+}
+
+.export-choice--spaced {
+	margin-top: var(--space-3);
 }
 
 .export-scope__track {

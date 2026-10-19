@@ -5,11 +5,13 @@ import {
 	EXPORT_PADDING_CM,
 	EXPORT_PX_PER_CM,
 	ExportError,
+	type ExportFormat,
 	type ExportPlan,
 	SCALE_BAR_LONG_CM,
 	SCALE_BAR_SHORT_BELOW_CM,
 	SCALE_BAR_SHORT_CM,
 } from "../lib/exportScene";
+import { buildPdfFromJpeg } from "../lib/pdf";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -18,27 +20,43 @@ import {
 	type PlacedBoard,
 	resolveItem,
 } from "../state/scene";
-import { CANVAS_FONTS, type CanvasTheme, ITEM_LABEL } from "../styles/theme";
+import {
+	CANVAS_FONTS,
+	type CanvasTheme,
+	ITEM_LABEL,
+	lightCanvasTheme,
+} from "../styles/theme";
 import { finishBaseColor, finishPatternTile } from "./boardFinish";
 import { loadImageWithHeal } from "./loadImage";
 
 /**
- * Detached offscreen PNG renderer for P3-01 (design.md §Canvas architecture →
+ * Detached offscreen export renderer for P3-01 (design.md §Canvas architecture →
  * Export).
  *
  * The live stage is never rasterized: its zoom/pan and viewport-sized canvas
  * would clip off-screen content. This builds a separate Konva Stage sized to the
  * export bounds, draws from the scene document at true scale, fills an opaque
- * surface background, and then calls `toDataURL` with the iOS-safe ratio.
+ * surface background, and then rasterizes at the iOS-safe ratio.
+ *
+ * PNG follows the app theme. PDF is print-oriented and always uses the light
+ * "paper" palette, then wraps the same raster in a true-scale single-page PDF.
  */
 
 const PX = EXPORT_PX_PER_CM;
 
-export interface ExportPngResult {
-	dataUrl: string;
-	widthPx: number;
-	heightPx: number;
-}
+export type ExportFileResult =
+	| {
+			format: "png";
+			dataUrl: string;
+			widthPx: number;
+			heightPx: number;
+	  }
+	| {
+			format: "pdf";
+			bytes: Uint8Array;
+			widthPx: number;
+			heightPx: number;
+	  };
 
 interface RenderContext {
 	plan: ExportPlan;
@@ -509,15 +527,27 @@ function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
 	);
 }
 
+function dataUrlBytes(dataUrl: string): Uint8Array {
+	const separator = dataUrl.indexOf(",");
+	if (separator === -1) throw new Error("invalid data URL");
+	const binary = atob(dataUrl.slice(separator + 1));
+	const bytes = new Uint8Array(binary.length);
+	for (let index = 0; index < binary.length; index++) {
+		bytes[index] = binary.charCodeAt(index);
+	}
+	return bytes;
+}
+
 /**
- * Render the plan to a PNG data URL. Throws {@link ExportError} with a
- * user-facing code when the scene is empty, images can't be loaded CORS-cleanly,
- * or the canvas is tainted.
+ * Render the plan to a PNG or a true-scale PDF. Throws {@link ExportError} with
+ * a user-facing code when the scene is empty, images can't be loaded
+ * CORS-cleanly, or the canvas is tainted.
  */
-export async function renderExportPng(
+export async function renderExportFile(
 	plan: ExportPlan,
 	theme: CanvasTheme,
-): Promise<ExportPngResult> {
+	format: ExportFormat,
+): Promise<ExportFileResult> {
 	const images = await preloadImages(plan);
 	const container = document.createElement("div");
 	const stage = new Konva.Stage({
@@ -528,8 +558,16 @@ export async function renderExportPng(
 	const layer = new Konva.Layer({ listening: false });
 	stage.add(layer);
 
+	// PDF is the print artifact: a dark background would print heavy, so the
+	// paper-light palette is used regardless of the app theme. PNG stays WYSIWYG.
+	const renderTheme = format === "pdf" ? lightCanvasTheme : theme;
 	const unit = plan.fitScale * plan.pixelRatio;
-	const context: RenderContext = { plan, theme, unit, images };
+	const context: RenderContext = {
+		plan,
+		theme: renderTheme,
+		unit,
+		images,
+	};
 
 	try {
 		layer.add(
@@ -538,7 +576,7 @@ export async function renderExportPng(
 				y: 0,
 				width: plan.stageWidthPx,
 				height: plan.stageHeightPx,
-				fill: theme.canvasBackground,
+				fill: renderTheme.canvasBackground,
 				listening: false,
 			}),
 		);
@@ -607,11 +645,12 @@ export async function renderExportPng(
 		drawScaleBar(content, context);
 		layer.draw();
 
-		let dataUrl: string;
+		let raster: string;
 		try {
-			dataUrl = stage.toDataURL({
+			raster = stage.toDataURL({
 				pixelRatio: plan.pixelRatio,
-				mimeType: "image/png",
+				mimeType: format === "pdf" ? "image/jpeg" : "image/png",
+				quality: format === "pdf" ? 0.92 : undefined,
 			});
 		} catch (error) {
 			const tainted =
@@ -624,8 +663,25 @@ export async function renderExportPng(
 			);
 		}
 
+		if (format === "pdf") {
+			const bytes = buildPdfFromJpeg({
+				jpeg: dataUrlBytes(raster),
+				widthPx: plan.outputWidthPx,
+				heightPx: plan.outputHeightPx,
+				widthCm: plan.boundsCm.widthCm,
+				heightCm: plan.boundsCm.heightCm,
+			});
+			return {
+				format: "pdf",
+				bytes,
+				widthPx: plan.outputWidthPx,
+				heightPx: plan.outputHeightPx,
+			};
+		}
+
 		return {
-			dataUrl,
+			format: "png",
+			dataUrl: raster,
 			widthPx: plan.outputWidthPx,
 			heightPx: plan.outputHeightPx,
 		};

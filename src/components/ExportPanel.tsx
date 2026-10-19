@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { renderExportPng } from "../canvas/exportStage";
+import { renderExportFile } from "../canvas/exportStage";
 import { useCanvasTheme } from "../canvas/useCanvasTheme";
 import {
 	ExportError,
+	type ExportFormat,
 	type ExportPlan,
 	type ExportScope,
 	exportFileName,
@@ -62,7 +63,12 @@ function errorMessage(error: unknown): string {
 
 function noticeLines(plan: ExportPlan): string[] {
 	const lines: string[] = [];
-	if (plan.clampLimited) lines.push("Resolution limited to 4,096 px.");
+	if (plan.clampLimited) {
+		lines.push("Resolution capped for iOS compatibility.");
+		if (plan.scope === "all" && plan.boards.length > 1) {
+			lines.push("Export a single board for more detail.");
+		}
+	}
 	if (plan.trimmed) lines.push("Far-off items were trimmed.");
 	return lines;
 }
@@ -75,6 +81,27 @@ function downloadDataUrl(dataUrl: string, filename: string): void {
 	document.body.appendChild(link);
 	link.click();
 	link.remove();
+}
+
+function downloadBytes(
+	bytes: Uint8Array,
+	filename: string,
+	mimeType: string,
+): void {
+	const buffer = bytes.buffer.slice(
+		bytes.byteOffset,
+		bytes.byteOffset + bytes.byteLength,
+	) as ArrayBuffer;
+	const url = URL.createObjectURL(new Blob([buffer], { type: mimeType }));
+	const link = document.createElement("a");
+	link.href = url;
+	link.download = filename;
+	link.rel = "noopener";
+	document.body.appendChild(link);
+	link.click();
+	link.remove();
+	// Revoke after the browser has had a chance to start the download.
+	setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 /**
@@ -98,10 +125,12 @@ export function ExportPanel({
 	const [scope, setScope] = useState<ExportScope>(
 		selectedBoardUid ? "board" : "all",
 	);
+	const [format, setFormat] = useState<ExportFormat>("png");
 	const [status, setStatus] = useState<Status>("idle");
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<{
 		filename: string;
+		format: ExportFormat;
 		widthPx: number;
 		heightPx: number;
 	} | null>(null);
@@ -192,11 +221,16 @@ export function ExportPanel({
 		// Let the busy state paint before the synchronous render starts.
 		await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
 		try {
-			const rendered = await renderExportPng(plan, theme);
-			const filename = exportFileName(plan, label);
-			downloadDataUrl(rendered.dataUrl, filename);
+			const rendered = await renderExportFile(plan, theme, format);
+			const filename = exportFileName(plan, label, new Date(), format);
+			if (rendered.format === "pdf") {
+				downloadBytes(rendered.bytes, filename, "application/pdf");
+			} else {
+				downloadDataUrl(rendered.dataUrl, filename);
+			}
 			setResult({
 				filename,
+				format,
 				widthPx: rendered.widthPx,
 				heightPx: rendered.heightPx,
 			});
@@ -231,14 +265,18 @@ export function ExportPanel({
 		>
 			<header className="export-panel__header">
 				<div className="export-panel__heading">
-					<span className="export-panel__eyebrow">Output — PNG</span>
+					<span className="export-panel__eyebrow">
+						Output — {format.toUpperCase()}
+					</span>
 					<h2 id={PANEL_TITLE_ID} className="export-panel__title">
 						{isEmpty ? "Nothing to export yet." : "Export plan"}
 					</h2>
 					<p id={PANEL_HINT_ID} className="export-panel__hint">
 						{isEmpty
 							? "Add a board or a pedal, then export it."
-							: "True scale. No grid."}
+							: format === "pdf"
+								? "True scale. Paper-light PDF."
+								: "True scale. No grid."}
 					</p>
 				</div>
 				<button
@@ -298,7 +336,9 @@ export function ExportPanel({
 								<path d="M4 12.5l5 5L20 6.5" />
 							</svg>
 						</span>
-						<h3 className="export-panel__success-title">PNG saved</h3>
+						<h3 className="export-panel__success-title">
+							{result.format.toUpperCase()} saved
+						</h3>
 						<p className="export-panel__filename">{result.filename}</p>
 						<p className="export-panel__success-meta">
 							{formatPx(result.widthPx)} × {formatPx(result.heightPx)} px
@@ -325,7 +365,46 @@ export function ExportPanel({
 				</div>
 			) : (
 				<div className="export-panel__body">
-					<fieldset className="export-scope" disabled={busy}>
+					<fieldset className="export-choice" disabled={busy}>
+						<legend className="export-label">Format</legend>
+						<div className="export-scope__track">
+							<label
+								className={`export-scope__option${
+									format === "png" ? " export-scope__option--active" : ""
+								}`}
+							>
+								<input
+									type="radio"
+									name="export-format"
+									value="png"
+									checked={format === "png"}
+									disabled={busy}
+									onChange={() => setFormat("png")}
+								/>
+								<span>PNG</span>
+							</label>
+							<label
+								className={`export-scope__option${
+									format === "pdf" ? " export-scope__option--active" : ""
+								}`}
+							>
+								<input
+									type="radio"
+									name="export-format"
+									value="pdf"
+									checked={format === "pdf"}
+									disabled={busy}
+									onChange={() => setFormat("pdf")}
+								/>
+								<span>PDF</span>
+							</label>
+						</div>
+					</fieldset>
+
+					<fieldset
+						className="export-choice export-choice--spaced"
+						disabled={busy}
+					>
 						<legend className="export-label">Scope</legend>
 						<div className="export-scope__track">
 							<label
@@ -375,7 +454,7 @@ export function ExportPanel({
 						</div>
 						<div className="export-spec__meta">
 							{plan
-								? `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm · ${plan.pixelRatio === 2 ? "2×" : `${plan.pixelRatio.toFixed(1)}×`}`
+								? `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm · ${plan.pixelRatio === 2 ? "2×" : `${plan.pixelRatio.toFixed(1)}×`} · ${Math.round(plan.outputPpi)} PPI`
 								: "—"}
 						</div>
 					</div>
@@ -411,7 +490,9 @@ export function ExportPanel({
 								<path d="M12 16.6v.01" />
 							</svg>
 							<div>
-								<p className="export-error__title">Couldn't create the PNG</p>
+								<p className="export-error__title">
+									Couldn't create the {format.toUpperCase()}
+								</p>
 								<p className="export-error__body">{error}</p>
 							</div>
 						</div>
@@ -427,7 +508,7 @@ export function ExportPanel({
 							aria-busy={busy}
 							onClick={handleExport}
 						>
-							{ctaLabel(busy, error)}
+							{ctaLabel(busy, error, format)}
 						</button>
 					</footer>
 				</div>
@@ -436,9 +517,14 @@ export function ExportPanel({
 	);
 }
 
-function ctaLabel(busy: boolean, error: string | null): string {
-	if (busy) return "Preparing PNG…";
-	return error ? "Try again" : "Download PNG";
+function ctaLabel(
+	busy: boolean,
+	error: string | null,
+	format: ExportFormat,
+): string {
+	const name = format.toUpperCase();
+	if (busy) return `Preparing ${name}…`;
+	return error ? "Try again" : `Download ${name}`;
 }
 
 /** Trigger glyph + label, shared by the toolbar button. */

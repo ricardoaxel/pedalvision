@@ -215,6 +215,18 @@ async function samplePixels(
 	);
 }
 
+async function readOutputSize(
+	page: Page,
+): Promise<{ width: number; height: number }> {
+	const text = await page.getByTestId("export-size").innerText();
+	const match = text.match(/([\d,]+) × ([\d,]+) px/);
+	if (!match) throw new Error(`unexpected output size: ${text}`);
+	return {
+		width: Number((match[1] ?? "").replaceAll(",", "")),
+		height: Number((match[2] ?? "").replaceAll(",", "")),
+	};
+}
+
 async function downloadPng(page: Page): Promise<Buffer> {
 	const [download] = await Promise.all([
 		page.waitForEvent("download"),
@@ -233,22 +245,23 @@ test("exports the selected board as an opaque, non-blank PNG", async ({
 	await openExport(page);
 
 	await page.getByRole("radio", { name: "Selected board" }).click();
-	await expect(page.getByTestId("export-size")).toHaveText("2,176 × 1,216 px");
+	await expect(page.getByTestId("export-size")).toHaveText("4,352 × 2,432 px");
+	await expect(page.getByTestId("export-spec")).toContainText("163 PPI");
 
 	const buffer = await downloadPng(page);
 	const stats = await inspectPng(page, buffer);
-	expect(stats.width).toBe(2176);
-	expect(stats.height).toBe(1216);
-	expect(stats.decodedWidth).toBe(2176);
-	expect(stats.decodedHeight).toBe(1216);
+	expect(stats.width).toBe(4352);
+	expect(stats.height).toBe(2432);
+	expect(stats.decodedWidth).toBe(4352);
+	expect(stats.decodedHeight).toBe(2432);
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
 
 	// The pedal itself is in the PNG, not just the board: its custom body differs
-	// from the wood board fill. Selected-board frame = 68 × 38 cm at 32 px/cm.
+	// from the wood board fill. Selected-board frame = 68 × 38 cm at 64 px/cm.
 	const [pedal, boardOnly] = await samplePixels(page, buffer, [
-		{ x: 608, y: 480 },
-		{ x: 1568, y: 928 },
+		{ x: 1216, y: 960 },
+		{ x: 3136, y: 1856 },
 	]);
 	expect(pedal).not.toEqual(boardOnly);
 
@@ -265,15 +278,19 @@ test("all content includes the other board and stays within the pixel clamp", as
 	await selectFirstBoard(page);
 	await openExport(page);
 	await page.getByRole("radio", { name: "Selected board" }).click();
-	await expect(page.getByTestId("export-size")).toHaveText("2,176 × 1,216 px");
+	await expect(page.getByTestId("export-size")).toHaveText("4,352 × 2,432 px");
 
 	await page.getByRole("radio", { name: "All content" }).click();
-	await expect(page.getByTestId("export-size")).toContainText("4,096 ×");
+	const allSize = await readOutputSize(page);
+	expect(allSize.width).toBeGreaterThan(4096);
+	expect(allSize.width).toBeLessThanOrEqual(8192);
+	expect(allSize.height).toBeGreaterThan(2000);
+	expect(allSize.width).toBeGreaterThan(4352);
 
 	const buffer = await downloadPng(page);
 	const stats = await inspectPng(page, buffer);
-	expect(stats.width).toBe(4096);
-	expect(stats.height).toBeLessThan(4096);
+	expect(stats.width).toBe(allSize.width);
+	expect(stats.height).toBe(allSize.height);
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
 });
@@ -308,7 +325,8 @@ test("export ignores the live zoom and pan (never the viewport)", async ({
 
 	const buffer = await downloadPng(page);
 	const stats = await inspectPng(page, buffer);
-	expect(stats.width).toBe(4096);
+	expect(stats.width).toBeGreaterThan(4096);
+	expect(stats.width).toBeLessThanOrEqual(8192);
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
 });
@@ -379,6 +397,34 @@ test("opening the picker mid-export releases the toolbar trigger", async ({
 	await expect(page.getByTestId("export-open")).toBeEnabled();
 });
 
+test("exports a true-scale paper-light PDF", async ({ page }) => {
+	await seedScene(page, sceneTwoBoards());
+	await selectFirstBoard(page);
+	await openExport(page);
+	await page.getByRole("radio", { name: "Selected board" }).click();
+	await page.getByRole("radio", { name: "PDF" }).click();
+	await expect(page.getByTestId("export-size")).toHaveText("4,352 × 2,432 px");
+
+	const [download] = await Promise.all([
+		page.waitForEvent("download"),
+		page.getByTestId("export-download").click(),
+	]);
+	const path = await download.path();
+	if (!path) throw new Error("download has no path");
+	const buffer = await readFile(path);
+	expect(buffer.subarray(0, 5).toString()).toBe("%PDF-");
+	const text = buffer.toString("latin1");
+	expect(text).toContain("/Subtype /Image");
+	expect(text).toContain("/Filter /DCTDecode");
+	// 68 × 38 cm page in points (1 cm = 28.3464567 pt).
+	expect(text).toContain("/MediaBox [0 0 1927.559 1077.165]");
+
+	await expect(page.getByText("PDF saved")).toBeVisible();
+	await expect(
+		page.getByText(/^pedalvision-rig-board-1-\d{4}-\d{2}-\d{2}\.pdf$/),
+	).toBeVisible();
+});
+
 test("mobile: the export tray stays above the tab bar and exports", async ({
 	page,
 	isMobile,
@@ -402,7 +448,7 @@ test("mobile: the export tray stays above the tab bar and exports", async ({
 	await page.getByRole("radio", { name: "Selected board" }).click();
 	const buffer = await downloadPng(page);
 	const stats = await inspectPng(page, buffer);
-	expect(stats.width).toBe(2176);
+	expect(stats.width).toBe(4352);
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
 });
