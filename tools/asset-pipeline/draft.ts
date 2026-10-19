@@ -40,8 +40,9 @@ export function buildDraftEntry(
 	const image = imageFilename(input.id);
 	const base = {
 		id: input.id,
-		brand: input.brand,
-		name: input.name,
+		// Trim so a whitespace-only name can't slip past the schema's `min(1)`.
+		brand: input.brand.trim(),
+		name: input.name.trim(),
 		widthCm: input.widthCm,
 		heightCm: input.heightCm,
 		image,

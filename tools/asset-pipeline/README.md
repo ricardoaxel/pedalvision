@@ -26,7 +26,9 @@ node --experimental-strip-types tools/asset-pipeline/index.ts --input raw.png \
    are averaged to a background colour, then a flood fill from the image borders
    turns every border-connected pixel within `--tolerance` (per channel) fully
    transparent. Because it is a *flood fill*, an interior pixel that happens to
-   match the background (e.g. white lettering on a pedal) is **kept**.
+   match the background (e.g. white lettering on a pedal) is **kept**. Phone/camera
+   photos are auto-oriented from their EXIF tag first, so a sideways capture isn't
+   baked in.
 2. **Trim.** The transparent/spare borders are cropped to the bounding box of the
    remaining opaque pixels.
 3. **Resize (true aspect).** The long edge is scaled to `800` (master) and `350`

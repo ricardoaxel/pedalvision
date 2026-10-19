@@ -29,8 +29,11 @@ export async function renderRenditions(
 ): Promise<Renditions> {
 	const tolerance = options.tolerance ?? DEFAULT_TOLERANCE;
 
-	// Normalise to raw RGBA so the pure pixel helpers can operate on it.
+	// Auto-orient from EXIF first: phone/camera photos commonly carry an
+	// orientation tag, and the raw→PNG path below drops metadata, so a missed
+	// rotation would bake a sideways asset into the catalog.
 	const { data, info } = await sharp(input)
+		.rotate()
 		.ensureAlpha()
 		.raw()
 		.toBuffer({ resolveWithObject: true });

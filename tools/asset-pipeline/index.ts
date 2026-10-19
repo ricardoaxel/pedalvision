@@ -63,6 +63,7 @@ type Args = {
 	widthCm?: number;
 	heightCm?: number;
 	category: "pedal" | "supply";
+	categoryProvided: boolean;
 	source: SourceTag;
 	variantOf?: string;
 	assetsDir: string;
@@ -84,6 +85,7 @@ function parseArgs(argv: string[]): Args {
 	const args: Args = {
 		kind: DEFAULTS.kind,
 		category: DEFAULTS.category,
+		categoryProvided: false,
 		source: DEFAULTS.source,
 		assetsDir: DEFAULTS.assetsDir,
 		tolerance: DEFAULTS.tolerance,
@@ -126,6 +128,7 @@ function parseArgs(argv: string[]): Args {
 					throw new Error(`--category must be pedal|supply (got "${value}")`);
 				}
 				args.category = value;
+				args.categoryProvided = true;
 				break;
 			}
 			case "--source": {
@@ -181,6 +184,12 @@ async function main(): Promise<void> {
 		return;
 	}
 	if (!args.input) throw new Error("--input <raw image> is required");
+	if (args.kind === "board" && args.variantOf) {
+		throw new Error("--variant-of is pedal-only");
+	}
+	if (args.kind === "board" && args.categoryProvided) {
+		throw new Error("--category is pedal-only");
+	}
 	if (args.widthCm === undefined || args.heightCm === undefined) {
 		throw new Error(
 			"--width-cm and --height-cm are required (the true footprint)",

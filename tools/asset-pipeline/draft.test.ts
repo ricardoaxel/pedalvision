@@ -77,4 +77,27 @@ describe("buildDraftEntry", () => {
 			}),
 		).toThrow();
 	});
+
+	it("rejects a whitespace-only brand or name", () => {
+		expect(() =>
+			buildDraftEntry({
+				kind: "pedal",
+				id: "acme-fuzz",
+				brand: "   ",
+				name: "Fuzz",
+				widthCm: 5,
+				heightCm: 10,
+			}),
+		).toThrow();
+		expect(() =>
+			buildDraftEntry({
+				kind: "pedal",
+				id: "acme-fuzz",
+				brand: "Acme",
+				name: "   ",
+				widthCm: 5,
+				heightCm: 10,
+			}),
+		).toThrow();
+	});
 });

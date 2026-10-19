@@ -80,7 +80,10 @@ export function removeBackground(
 	tolerance: number,
 ): number {
 	const visited = new Uint8Array(width * height);
-	const queue: number[] = [];
+	// Each pixel is enqueued at most once (guarded by `visited`), so the pixel
+	// count is a safe upper bound — a typed queue avoids unbounded `number[]`.
+	const queue = new Uint32Array(width * height);
+	let tail = 0;
 
 	const matches = (x: number, y: number): boolean => {
 		const p = y * width + x;
@@ -100,7 +103,7 @@ export function removeBackground(
 		if (!matches(x, y)) return;
 		const p = y * width + x;
 		visited[p] = 1;
-		queue.push(p);
+		queue[tail++] = p;
 	};
 
 	for (let x = 0; x < width; x++) {
@@ -113,8 +116,7 @@ export function removeBackground(
 	}
 
 	let removed = 0;
-	// Index-based pointer so the queue can grow while we drain it.
-	for (let head = 0; head < queue.length; head++) {
+	for (let head = 0; head < tail; head++) {
 		const p = queue[head];
 		const x = p % width;
 		const y = (p - x) / width;

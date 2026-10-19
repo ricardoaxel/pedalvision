@@ -67,4 +67,29 @@ describe("renderRenditions", () => {
 			/background removal left no visible pixels/,
 		);
 	});
+
+	it("auto-orients from EXIF (a rotated phone photo stays upright)", async () => {
+		// A landscape 100×50 subject tagged orientation 6 (rotate 90° CW).
+		const width = 100;
+		const height = 50;
+		const data = Buffer.alloc(width * height * 4, 255);
+		for (let y = 5; y < 45; y++) {
+			for (let x = 10; x < 60; x++) {
+				const i = (y * width + x) * 4;
+				data[i] = 200;
+				data[i + 1] = 30;
+				data[i + 2] = 30;
+			}
+		}
+		const jpeg = await sharp(data, { raw: { width, height, channels: 4 } })
+			.jpeg()
+			.withMetadata({ orientation: 6 })
+			.toBuffer();
+		expect((await sharp(jpeg).metadata()).orientation).toBe(6);
+
+		const renditions = await renderRenditions(jpeg, { tolerance: 16 });
+		const meta = await sharp(renditions[800]).metadata();
+		// Orientation 6 means the 100×50 frame displays as 50×100 → portrait.
+		expect(meta.height ?? 0).toBeGreaterThan(meta.width ?? 0);
+	});
 });
