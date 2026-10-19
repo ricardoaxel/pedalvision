@@ -1,6 +1,6 @@
 # P2-04: Asset-pipeline tooling
 
-**Phase:** P2 · **Status:** in review — PR #20 · **Model:** build-cheap
+**Phase:** P2 · **Status:** done (merged 2026-10-19, PR #20, squash `bfbe1fe`) · **Model:** build-cheap
 
 ## Goal
 A **dev-only CLI** (`tools/asset-pipeline/`) that turns a **raw source image** into
