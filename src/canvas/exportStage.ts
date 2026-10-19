@@ -219,22 +219,22 @@ function drawBoardFallback(
 	width: number,
 	height: number,
 ): void {
-	const { theme, unit } = context;
+	const { theme, unit, labelUnit } = context;
 	parent.add(
 		new Konva.Rect({
 			width,
 			height,
 			fill: theme.boardDraftFill,
 			stroke: theme.boardStroke,
-			strokeWidth: 1 / unit,
-			dash: [4 / unit, 3 / unit],
-			cornerRadius: 2 / unit,
+			strokeWidth: 1 / labelUnit,
+			dash: [4 / labelUnit, 3 / labelUnit],
+			cornerRadius: 2 / labelUnit,
 			listening: false,
 		}),
 	);
 	const showName = height * unit >= 40 && width * unit >= 72;
 	const showDims = height * unit >= 32;
-	const pad = Math.min(6 / unit, width * 0.1);
+	const pad = Math.min(6 / labelUnit, width * 0.1);
 	const textWidth = Math.max(0, width - pad * 2);
 	if (showName) {
 		parent.add(
@@ -242,10 +242,10 @@ function drawBoardFallback(
 				text: label,
 				x: pad,
 				width: textWidth,
-				y: height / 2 - 15 / unit,
+				y: height / 2 - 15 / labelUnit,
 				align: "center",
 				fontFamily: CANVAS_FONTS.sans,
-				fontSize: 10 / unit,
+				fontSize: 10 / labelUnit,
 				fill: theme.boardLabel,
 				wrap: "none",
 				ellipsis: true,
@@ -259,10 +259,10 @@ function drawBoardFallback(
 				text: dims,
 				x: pad,
 				width: textWidth,
-				y: showName ? height / 2 - 1 / unit : height / 2 - 6 / unit,
+				y: showName ? height / 2 - 1 / labelUnit : height / 2 - 6 / labelUnit,
 				align: "center",
 				fontFamily: CANVAS_FONTS.mono,
-				fontSize: 10 / unit,
+				fontSize: 10 / labelUnit,
 				fill: theme.boardLabel,
 				wrap: "none",
 				ellipsis: true,

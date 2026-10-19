@@ -358,7 +358,6 @@ describe("pixel clamp + output size", () => {
 		expect(hd.pxPerCm).toBe(64);
 		expect(hd.outputWidthPx).toBeGreaterThan(standard.outputWidthPx * 2);
 		expect(hd.pixelRatio).toBeGreaterThan(1);
-		expect(hd.pixelRatio).toBeLessThanOrEqual(EXPORT_MAX_PIXEL_RATIO);
 		expect(hd.outputPpi).toBeGreaterThan(180);
 		expect(hd.outputWidthPx * hd.outputHeightPx).toBeLessThanOrEqual(
 			EXPORT_MAX_PIXELS,

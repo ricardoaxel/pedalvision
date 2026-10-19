@@ -467,6 +467,7 @@ test("HD uses the full iOS-safe budget (PNG + PDF)", async ({ page }) => {
 	if (!path) throw new Error("download has no path");
 	const pdfText = (await readFile(path)).toString("latin1");
 	expect(pdfText).toContain(`/Width ${hdSize.width} /Height ${hdSize.height}`);
+	expect(pdfText).toContain("/MediaBox [0 0 1927.559 1077.165]");
 });
 
 test("exports a true-scale paper-light PDF", async ({ page }) => {
