@@ -1,7 +1,18 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import {
+	type ReactNode,
+	useEffect,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import { catalog } from "../catalog/load";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
 import { resolveImageUrl } from "../lib/cdn";
+import {
+	draftFromCustomBoard,
+	emptyCustomBoardDraft,
+} from "../lib/customBoard";
 import {
 	draftFromCustomPedal,
 	emptyCustomPedalDraft,
@@ -10,13 +21,16 @@ import { centerOffset, placeItem } from "../lib/geometry";
 import {
 	boardDefinition,
 	boardFootprint,
+	type CustomBoardDefinition,
 	type CustomPedalDefinition,
 	customPedalById,
+	isCustomBoard,
 	itemFootprint,
 	useScene,
 } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
+import { CustomBoardForm } from "./CustomBoardForm";
 import { CustomPedalForm } from "./CustomPedalForm";
 import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
 import { usePartImage } from "./partImage";
@@ -80,14 +94,21 @@ interface PickerProps {
 	tab: PickerTab;
 	/** When set, the Custom tab opens in edit mode seeded from this part. */
 	editRefId?: string | null;
+	/** When set, the Custom tab opens in board-edit mode seeded from this board uid. */
+	editBoardUid?: string | null;
 	/** Open the picker on `tab` (mobile tab bar + desktop trigger). */
 	onOpen: (tab: PickerTab) => void;
 	/** Switch tab while open (desktop modal tabs). */
 	onTab: (tab: PickerTab) => void;
 	/** Leave edit mode (tab switch away from Custom). */
 	onClearEdit?: () => void;
+	/** Leave board-edit mode. */
+	onClearEditBoard?: () => void;
 	onClose: () => void;
 }
+
+/** The user-defined part kinds offered by the Custom tab's kind segment. */
+type CustomKind = "pedal" | "supply" | "board";
 
 /**
  * A catalog entry flattened into the shape both the ledger rows and the
@@ -121,9 +142,11 @@ export function Picker({
 	open,
 	tab,
 	editRefId,
+	editBoardUid,
 	onOpen,
 	onTab,
 	onClearEdit,
+	onClearEditBoard,
 	onClose,
 }: PickerProps) {
 	const boards = useScene((state) => state.boards);
@@ -134,6 +157,8 @@ export function Picker({
 	const addItem = useScene((state) => state.addItem);
 	const addCustomPedal = useScene((state) => state.addCustomPedal);
 	const updateCustomPedal = useScene((state) => state.updateCustomPedal);
+	const addCustomBoard = useScene((state) => state.addCustomBoard);
+	const updateCustomBoard = useScene((state) => state.updateCustomBoard);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	const selectItem = useSelection((state) => state.selectItem);
@@ -148,17 +173,34 @@ export function Picker({
 	const [customDraft, setCustomDraft] = useState(() =>
 		emptyCustomPedalDraft("cm"),
 	);
+	/** Custom-board draft (P2-05) — same lifetime rules as `customDraft`. */
+	const [boardDraft, setBoardDraft] = useState(() =>
+		emptyCustomBoardDraft("cm"),
+	);
+	/** Which user-defined kind the Custom tab is showing (pedal/supply/board). */
+	const [customKind, setCustomKind] = useState<CustomKind>("pedal");
 
 	const panelRef = useRef<HTMLDivElement>(null);
 	const searchRef = useRef<HTMLInputElement>(null);
 	const returnFocusRef = useRef<HTMLElement | null>(null);
 	const rowRefs = useRef(new Map<string, HTMLButtonElement>());
 
-	// Edit mode: the Custom tab seeded from an existing custom part (P2-02 edit).
-	const isEditing = tab === "custom" && editRefId != null;
+	// Edit mode: the Custom tab seeded from an existing custom part (P2-02) or
+	// custom board (P2-05).
+	const isEditingBoard = tab === "custom" && editBoardUid != null;
+	const isEditingPedal = tab === "custom" && editRefId != null;
+	const isEditing = isEditingBoard || isEditingPedal;
+	const isBoard = customKind === "board";
 	const editedPart =
 		editRefId != null ? customPedalById(customPedals, editRefId) : null;
+	const editedBoard =
+		editBoardUid != null
+			? (boards.find(
+					(board) => board.uid === editBoardUid && isCustomBoard(board),
+				) ?? null)
+			: null;
 	const appliedEditRef = useRef<string | null>(null);
+	const appliedEditBoard = useRef<string | null>(null);
 
 	// Seed the draft from the stored definition when edit mode is entered (once
 	// per refId), so re-opening Custom for a NEW part keeps the new-part draft.
@@ -172,15 +214,48 @@ export function Picker({
 		const custom = customPedalById(customPedals, editRefId);
 		if (custom) {
 			appliedEditRef.current = editRefId;
+			setCustomKind(custom.category);
 			setCustomDraft((current) => draftFromCustomPedal(custom, current.units));
 		}
 	}, [open, editRefId, customPedals]);
 
-	// Leaving edit mode clears the edit draft so it can't leak into Create; the
-	// next Edit re-seeds from the saved definition.
+	// Same seed for a custom board edit (P2-05); forces the Board kind.
+	useLayoutEffect(() => {
+		if (!open || editBoardUid == null) {
+			appliedEditBoard.current = null;
+			return;
+		}
+		if (appliedEditBoard.current === editBoardUid) return;
+		const board = boards.find(
+			(candidate) => candidate.uid === editBoardUid && isCustomBoard(candidate),
+		);
+		if (board) {
+			appliedEditBoard.current = editBoardUid;
+			setCustomKind("board");
+			setBoardDraft((current) => draftFromCustomBoard(board, current.units));
+		}
+	}, [open, editBoardUid, boards]);
+
+	// Leaving edit mode clears the edit draft(s) so they can't leak into Create;
+	// the next Edit re-seeds from the saved definition.
 	const leaveEdit = () => {
 		onClearEdit?.();
+		onClearEditBoard?.();
 		setCustomDraft((current) => emptyCustomPedalDraft(current.units));
+		setBoardDraft((current) => emptyCustomBoardDraft(current.units));
+	};
+
+	/** Switch the Custom tab between Pedal / Supply / Board (locked mid-edit). */
+	const changeKind = (kind: CustomKind) => {
+		if (isEditing) return;
+		setCustomKind(kind);
+		if (kind === "board") return;
+		setCustomDraft((current) => ({
+			...current,
+			category: kind,
+			// A supply is its power spec — open the fields.
+			powerEnabled: kind === "supply" ? true : current.powerEnabled,
+		}));
 	};
 
 	// Reset filters when switching tabs: the brand menu and the effect chips
@@ -224,6 +299,7 @@ export function Picker({
 	const closePicker = () => {
 		if (editingRef.current) {
 			setCustomDraft((current) => emptyCustomPedalDraft(current.units));
+			setBoardDraft((current) => emptyCustomBoardDraft(current.units));
 		}
 		onClose();
 	};
@@ -252,6 +328,7 @@ export function Picker({
 			if (event.key !== "Escape") return;
 			if (editingRef.current) {
 				setCustomDraft((current) => emptyCustomPedalDraft(current.units));
+				setBoardDraft((current) => emptyCustomBoardDraft(current.units));
 			}
 			onClose();
 		};
@@ -405,6 +482,26 @@ export function Picker({
 		closePicker();
 	};
 
+	// Register the custom board and place it at the viewport centre (like a
+	// catalog board), then reset the draft.
+	const handleCreateBoard = (definition: CustomBoardDefinition) => {
+		const { scale, x, y, size: viewportSize } = useViewport.getState();
+		const uid = addCustomBoard(
+			definition,
+			viewportCenterCm(viewportSize, { scale, x, y }),
+		);
+		selectBoard(uid);
+		setBoardDraft((current) => emptyCustomBoardDraft(current.units));
+		onClose();
+	};
+
+	// Save an edited custom board in place: size/texture/name update, the board
+	// stays where it is (x/y/rotation untouched).
+	const handleSaveBoard = (definition: CustomBoardDefinition) => {
+		if (editBoardUid) updateCustomBoard(editBoardUid, definition);
+		closePicker();
+	};
+
 	// Move the keyboard-active row and mirror focus to it (listbox behaviour).
 	const moveActive = (delta: number) => {
 		if (entries.length === 0) return;
@@ -479,19 +576,73 @@ export function Picker({
 	const isBoards = tab === "boards";
 	const isCustom = tab === "custom";
 	const copy = TAB_COPY[tab];
-	// Edit mode overrides only the title/dialog (the eyebrow is a location
-	// label) and, on mobile, swaps the placement hint for the part's identity.
-	const title = isEditing ? "Edit custom part" : copy.title;
-	const dialog = isEditing ? "Edit a custom part" : copy.dialog;
-	const hint = isEditing
-		? editedPart
-			? `${editedPart.brand || "Custom"} · ${editedPart.name || "Untitled part"}`
-			: "Editing part"
-		: isBoards
-			? "Adds at the viewport centre"
-			: targetBoard
-				? "Adds to the selected board"
-				: "No board — adds loosely";
+	// Edit mode overrides the title/dialog (the eyebrow is a location label) and,
+	// on mobile, swaps the placement hint for the part's identity. The Custom tab
+	// is kind-aware: the board creator has its own title/hint (P2-05).
+	const customTitle = isBoard
+		? isEditingBoard
+			? "Edit custom board"
+			: "Add custom board"
+		: isEditingPedal
+			? "Edit custom part"
+			: copy.title;
+	const customDialog = isBoard
+		? isEditingBoard
+			? "Edit a custom board"
+			: "Create a custom board"
+		: isEditingPedal
+			? "Edit a custom part"
+			: copy.dialog;
+	const title = isCustom ? customTitle : copy.title;
+	const dialog = isCustom ? customDialog : copy.dialog;
+	const hint = isEditingBoard
+		? editedBoard
+			? `${editedBoard.brand || "Custom"} · ${editedBoard.name || "Untitled board"}`
+			: "Editing board"
+		: isEditingPedal
+			? editedPart
+				? `${editedPart.brand || "Custom"} · ${editedPart.name || "Untitled part"}`
+				: "Editing part"
+			: isBoard
+				? "Adds at the viewport centre"
+				: isBoards
+					? "Adds at the viewport centre"
+					: targetBoard
+						? "Adds to the selected board"
+						: "No board — adds loosely";
+
+	// The leading kind control for the Custom sheet (Pedal · Supply · Board).
+	// It replaces the old in-form Type section; locked while editing (a part
+	// cannot change kind after it exists).
+	const kindSegment = (
+		<Section label="Type">
+			<fieldset
+				className="segmented"
+				data-testid="custom-category"
+				disabled={isEditing}
+			>
+				<legend className="visually-hidden">Kind of part</legend>
+				{(
+					[
+						["pedal", "Pedal"],
+						["supply", "Supply"],
+						["board", "Board"],
+					] as const
+				).map(([value, label]) => (
+					<button
+						key={value}
+						type="button"
+						className="segmented__option"
+						data-testid={`custom-category-${value}`}
+						aria-pressed={customKind === value}
+						onClick={() => changeKind(value)}
+					>
+						{label}
+					</button>
+				))}
+			</fieldset>
+		</Section>
+	);
 
 	// The mobile bottom tab bar. Rendered inside the dialog while open (so the
 	// modal's switcher is in the AT/focus scope) and standalone while closed.
@@ -618,13 +769,26 @@ export function Picker({
 						</header>
 
 						{isCustom ? (
-							<CustomPedalForm
-								draft={customDraft}
-								onChange={setCustomDraft}
-								targetBoard={targetBoard}
-								editing={isEditing}
-								onSubmit={isEditing ? handleSave : handleCreate}
-							/>
+							isBoard ? (
+								<CustomBoardForm
+									draft={boardDraft}
+									onChange={setBoardDraft}
+									editing={isEditingBoard}
+									headerSlot={kindSegment}
+									onSubmit={
+										isEditingBoard ? handleSaveBoard : handleCreateBoard
+									}
+								/>
+							) : (
+								<CustomPedalForm
+									draft={customDraft}
+									onChange={setCustomDraft}
+									targetBoard={targetBoard}
+									editing={isEditingPedal}
+									headerSlot={kindSegment}
+									onSubmit={isEditingPedal ? handleSave : handleCreate}
+								/>
+							)
 						) : (
 							<div className="picker__body">
 								<div className="picker__ledger">
@@ -987,5 +1151,26 @@ function PickerThumb({
 			crossOrigin={crossOrigin}
 			onError={onError}
 		/>
+	);
+}
+
+/** A titled spec-sheet section (mirrors the one in `CustomPedalForm`). */
+function Section({
+	label,
+	aside,
+	children,
+}: {
+	label: string;
+	aside?: ReactNode;
+	children: ReactNode;
+}) {
+	return (
+		<section className="custom__section">
+			<div className="custom__section-head">
+				<h3 className="custom__eyebrow">{label}</h3>
+				{aside}
+			</div>
+			{children}
+		</section>
 	);
 }

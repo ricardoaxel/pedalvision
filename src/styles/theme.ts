@@ -9,6 +9,8 @@
  * Values track the "Blueprint" direction (Draft 2, designer⇄reviewer loop).
  */
 
+import type { BoardTexture } from "../lib/boardTexture";
+
 export const CANVAS_THEME_VARS = {
 	gridDot: "--color-grid-dot",
 	canvasBackground: "--color-canvas-bg",
@@ -23,6 +25,14 @@ export const CANVAS_THEME_VARS = {
 	// missing-image fallback.
 	customFill: "--color-custom-fill",
 	customStroke: "--color-custom-stroke",
+	// Custom-board surface finishes (P2-05 "Substrate") — base + pattern ink.
+	finishMatte: "--color-finish-matte",
+	finishBrushed: "--color-finish-brushed",
+	finishBrushedInk: "--color-finish-brushed-ink",
+	finishWood: "--color-finish-wood",
+	finishWoodInk: "--color-finish-wood-ink",
+	finishTolex: "--color-finish-tolex",
+	finishTolexInk: "--color-finish-tolex-ink",
 	// Lift shadow under a dragged pedal — P1-04.
 	itemShadow: "--color-item-shadow",
 	// Always-on pedal name-label chip — P2-01 (Specimen Bench).
@@ -83,6 +93,22 @@ export type CanvasThemeKey = keyof typeof CANVAS_THEME_VARS;
 
 export type CanvasTheme = Record<CanvasThemeKey, string>;
 
+/**
+ * Custom-board finish → theme keys (P2-05 "Substrate"). `base` is the solid
+ * fill; `pattern` (optional) is the procedural texture ink drawn over it. Matte
+ * is base-only. The canvas renderer (`canvas/boardFinish.ts`) draws the pattern
+ * into a small cached tile per (finish, theme).
+ */
+export const BOARD_FINISH: Record<
+	BoardTexture,
+	{ base: CanvasThemeKey; pattern?: CanvasThemeKey }
+> = {
+	matte: { base: "finishMatte" },
+	brushed: { base: "finishBrushed", pattern: "finishBrushedInk" },
+	wood: { base: "finishWood", pattern: "finishWoodInk" },
+	tolex: { base: "finishTolex", pattern: "finishTolexInk" },
+};
+
 /** Default theme (matches :root in tokens.css). */
 export const canvasTheme: CanvasTheme = {
 	gridDot: "#43484f",
@@ -95,6 +121,13 @@ export const canvasTheme: CanvasTheme = {
 	boardLabel: "#a8b0b8",
 	customFill: "#22262b",
 	customStroke: "#6f7b88",
+	finishMatte: "#24272b",
+	finishBrushed: "#2a2f35",
+	finishBrushedInk: "#3b434c",
+	finishWood: "#2a2620",
+	finishWoodInk: "#382f26",
+	finishTolex: "#1b1d20",
+	finishTolexInk: "#2a2d31",
 	itemShadow: "rgb(0 0 0 / 0.5)",
 	itemLabelBg: "#1b1e21",
 	itemLabelInk: "#eef1f4",
@@ -114,6 +147,13 @@ export const lightCanvasTheme: CanvasTheme = {
 	boardLabel: "#565d66",
 	customFill: "#e9ecee",
 	customStroke: "#4a545e",
+	finishMatte: "#dfe3e7",
+	finishBrushed: "#ccd2d8",
+	finishBrushedInk: "#bcc4cc",
+	finishWood: "#e7e1d5",
+	finishWoodInk: "#d3c9b8",
+	finishTolex: "#3d4247",
+	finishTolexInk: "#4a4f55",
 	itemShadow: "rgb(15 23 42 / 0.32)",
 	itemLabelBg: "#f4f6f7",
 	itemLabelInk: "#16191d",

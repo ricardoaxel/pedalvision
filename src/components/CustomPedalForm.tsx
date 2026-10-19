@@ -33,6 +33,8 @@ interface CustomPedalFormProps {
 	targetBoard: PlacedBoard | null;
 	/** Edit mode: the part already exists — saving updates it in place. */
 	editing?: boolean;
+	/** The leading kind control (Pedal · Supply · Board), rendered by the picker. */
+	headerSlot?: ReactNode;
 	/** Called with the validated definition when the CTA is pressed. */
 	onSubmit: (definition: CustomPedalDefinition) => void;
 }
@@ -54,6 +56,7 @@ export function CustomPedalForm({
 	onChange,
 	targetBoard,
 	editing = false,
+	headerSlot,
 	onSubmit,
 }: CustomPedalFormProps) {
 	const [activeJackId, setActiveJackId] = useState<string | null>(null);
@@ -140,31 +143,7 @@ export function CustomPedalForm({
 		<div className="picker__body picker__body--custom">
 			<div className="custom__sheet">
 				<div className="custom__scroll" data-testid="custom-scroll">
-					<Section label="Type">
-						<fieldset className="segmented" data-testid="custom-category">
-							<legend className="visually-hidden">Category</legend>
-							{(["pedal", "supply"] as const).map((value) => (
-								<button
-									key={value}
-									type="button"
-									className="segmented__option"
-									data-testid={`custom-category-${value}`}
-									aria-pressed={draft.category === value}
-									onClick={() =>
-										patch({
-											category: value,
-											// A supply is its power spec — open the fields.
-											powerEnabled:
-												value === "supply" ? true : draft.powerEnabled,
-										})
-									}
-								>
-									{value === "pedal" ? "Pedal" : "Supply"}
-								</button>
-							))}
-						</fieldset>
-					</Section>
-
+					{headerSlot}
 					<Section label="Identity">
 						<div className="custom__row custom__row--identity">
 							<Field label="Brand" htmlFor="custom-brand">

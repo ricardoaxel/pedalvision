@@ -1,4 +1,5 @@
 import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
+import { isBoardTexture } from "../lib/boardTexture";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
 import { normalizeAllZ, pruneCustomPedals, useScene } from "./scene";
 
@@ -51,11 +52,25 @@ function isFiniteNumber(value: unknown): value is number {
 	return typeof value === "number" && Number.isFinite(value);
 }
 
+function isSize(value: unknown): boolean {
+	return (
+		isRecord(value) &&
+		isFiniteNumber(value.widthCm) &&
+		value.widthCm > 0 &&
+		isFiniteNumber(value.heightCm) &&
+		value.heightCm > 0
+	);
+}
+
 function isPlacedBoard(value: unknown): value is PlacedBoard {
 	return (
 		isRecord(value) &&
 		typeof value.uid === "string" &&
 		(value.boardRefId === null || typeof value.boardRefId === "string") &&
+		(value.customSize === undefined || isSize(value.customSize)) &&
+		(value.texture === undefined || isBoardTexture(value.texture)) &&
+		(value.name === undefined || typeof value.name === "string") &&
+		(value.brand === undefined || typeof value.brand === "string") &&
 		isFiniteNumber(value.x) &&
 		isFiniteNumber(value.y) &&
 		isFiniteNumber(value.rotationDeg)

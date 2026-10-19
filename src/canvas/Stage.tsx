@@ -62,6 +62,16 @@ export function Stage() {
 	const positions = boards
 		.map((board) => `${board.x.toFixed(2)},${board.y.toFixed(2)}`)
 		.join(";");
+	// Custom boards (P2-05): count + their finishes, so e2e can assert a custom
+	// board was created with the chosen texture without touching pixels.
+	const customBoards = boards.filter(
+		(board) => board.boardRefId === null,
+	).length;
+	const boardTextures = boards
+		.map((board) =>
+			board.boardRefId === null ? (board.texture ?? "matte") : "",
+		)
+		.join(",");
 	const itemParents = items
 		.map((item) => {
 			if (item.boardUid === null) return "loose";
@@ -188,6 +198,8 @@ export function Stage() {
 			data-x={x}
 			data-y={y}
 			data-boards={boards.length}
+			data-custom-boards={customBoards}
+			data-board-textures={boardTextures}
 			data-rotations={rotations}
 			data-positions={positions}
 			data-items={items.length}

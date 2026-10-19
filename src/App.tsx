@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BoardActionBar } from "./canvas/BoardActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
@@ -21,6 +22,8 @@ function App() {
 	const [editingCustomRefId, setEditingCustomRefId] = useState<string | null>(
 		null,
 	);
+	// P2-05 edit: when set, the picker opens on Custom in board-edit mode.
+	const [editingBoardUid, setEditingBoardUid] = useState<string | null>(null);
 	// P2-03: the info panel is a trailing push rail (desktop) / bottom sheet
 	// (mobile), shown only while an item is selected.
 	const selectedItemUid = useSelection(selectSelectedItemUid);
@@ -35,12 +38,21 @@ function App() {
 
 	const openPicker = (tab: PickerTab) => {
 		setEditingCustomRefId(null);
+		setEditingBoardUid(null);
 		setPickerTab(tab);
 		setPickerOpen(true);
 	};
 
 	const openCustomEdit = (refId: string) => {
 		setEditingCustomRefId(refId);
+		setEditingBoardUid(null);
+		setPickerTab("custom");
+		setPickerOpen(true);
+	};
+
+	const openBoardEdit = (uid: string) => {
+		setEditingBoardUid(uid);
+		setEditingCustomRefId(null);
 		setPickerTab("custom");
 		setPickerOpen(true);
 	};
@@ -48,6 +60,7 @@ function App() {
 	const closePicker = () => {
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
+		setEditingBoardUid(null);
 	};
 
 	return (
@@ -58,6 +71,7 @@ function App() {
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
 				 * so its presses never reach the canvas gesture handler. */}
 				<ItemActionBar onEditCustom={openCustomEdit} />
+				<BoardActionBar onEditBoard={openBoardEdit} />
 				<div className="app-toolbar">
 					<button
 						type="button"
@@ -94,9 +108,11 @@ function App() {
 				open={pickerOpen}
 				tab={pickerTab}
 				editRefId={editingCustomRefId}
+				editBoardUid={editingBoardUid}
 				onOpen={openPicker}
 				onTab={setPickerTab}
 				onClearEdit={() => setEditingCustomRefId(null)}
+				onClearEditBoard={() => setEditingBoardUid(null)}
 				onClose={closePicker}
 			/>
 		</main>
