@@ -19,7 +19,7 @@ import {
 	validateCustomPedalDraft,
 } from "../lib/customPedal";
 import type { CustomPedalDefinition, PlacedBoard } from "../state/scene";
-import { PartDrawing } from "./PartDrawing";
+import { PART_PREVIEW_SIZES, PartDrawing } from "./PartDrawing";
 import { effectLabel } from "./pickerFilter";
 import { Section } from "./SheetSection";
 
@@ -137,6 +137,7 @@ export function CustomPedalForm({
 			jacks={draft.jacks}
 			units={draft.units}
 			activeJackId={activeJackId}
+			startSize={PART_PREVIEW_SIZES[draft.category]}
 		/>
 	);
 

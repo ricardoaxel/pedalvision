@@ -10,7 +10,7 @@ import {
 } from "../lib/customBoard";
 import { formatDimension, parseDimensionToCm } from "../lib/customPedal";
 import type { CustomBoardDefinition } from "../state/scene";
-import { PartDrawing } from "./PartDrawing";
+import { PART_PREVIEW_SIZES, PartDrawing } from "./PartDrawing";
 import { Section } from "./SheetSection";
 
 interface CustomBoardFormProps {
@@ -73,6 +73,7 @@ export function CustomBoardForm({
 			jacks={[]}
 			units={draft.units}
 			finish={draft.texture}
+			startSize={PART_PREVIEW_SIZES.board}
 		/>
 	);
 

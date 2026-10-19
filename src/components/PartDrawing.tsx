@@ -13,6 +13,18 @@ export interface DrawingJack {
 }
 
 /**
+ * Starting proportions for the live drawing while W/D are still empty (P2-05
+ * owner request): a pedal is portrait, a supply is a slim horizontal brick, and
+ * a board is a larger horizontal slab. The drawing auto-fits, so these read as
+ * shape/orientation, not scale.
+ */
+export const PART_PREVIEW_SIZES = {
+	pedal: { widthCm: 7, depthCm: 12 },
+	supply: { widthCm: 16, depthCm: 6 },
+	board: { widthCm: 60, depthCm: 30 },
+} as const;
+
+/**
  * A live dimensioned drawing of a part: the true-aspect footprint with a
  * dog-eared top-right corner, mono dimension callouts, and a dot per jack
  * (reading-order position along its edge). The actively edited jack's dot is
@@ -30,6 +42,7 @@ export function PartDrawing({
 	units,
 	activeJackId,
 	finish,
+	startSize,
 }: {
 	widthCm: number | null;
 	depthCm: number | null;
@@ -38,10 +51,12 @@ export function PartDrawing({
 	activeJackId?: string | null;
 	/** Board surface finish (P2-05) — fills the body with a procedural pattern. */
 	finish?: BoardTexture;
+	/** Shape shown while the dimensions are empty (kind-specific proportions). */
+	startSize?: { widthCm: number; depthCm: number };
 }) {
 	const patternId = useId();
-	const w = widthCm && widthCm > 0 ? widthCm : 6;
-	const h = depthCm && depthCm > 0 ? depthCm : 12;
+	const w = widthCm && widthCm > 0 ? widthCm : (startSize?.widthCm ?? 6);
+	const h = depthCm && depthCm > 0 ? depthCm : (startSize?.depthCm ?? 12);
 	const pad = Math.max(w, h) * 0.32;
 	const notch = Math.min(w, h) * 0.22;
 	const stroke = Math.max(w, h) * 0.012;
