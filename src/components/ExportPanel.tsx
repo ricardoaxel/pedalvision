@@ -242,6 +242,16 @@ export function ExportPanel({
 		}
 	};
 
+	const chooseFormat = (next: ExportFormat) => {
+		setFormat(next);
+		setError(null);
+	};
+
+	const chooseScope = (next: ExportScope) => {
+		setScope(next);
+		setError(null);
+	};
+
 	const exportAgain = () => {
 		setStatus("idle");
 		setError(null);
@@ -379,7 +389,7 @@ export function ExportPanel({
 									value="png"
 									checked={format === "png"}
 									disabled={busy}
-									onChange={() => setFormat("png")}
+									onChange={() => chooseFormat("png")}
 								/>
 								<span>PNG</span>
 							</label>
@@ -394,7 +404,7 @@ export function ExportPanel({
 									value="pdf"
 									checked={format === "pdf"}
 									disabled={busy}
-									onChange={() => setFormat("pdf")}
+									onChange={() => chooseFormat("pdf")}
 								/>
 								<span>PDF</span>
 							</label>
@@ -418,7 +428,7 @@ export function ExportPanel({
 									value="board"
 									checked={scope === "board"}
 									disabled={!selectedBoardUid || busy}
-									onChange={() => setScope("board")}
+									onChange={() => chooseScope("board")}
 								/>
 								<span>Selected board</span>
 							</label>
@@ -433,7 +443,7 @@ export function ExportPanel({
 									value="all"
 									checked={scope === "all"}
 									disabled={busy}
-									onChange={() => setScope("all")}
+									onChange={() => chooseScope("all")}
 								/>
 								<span>All content</span>
 							</label>

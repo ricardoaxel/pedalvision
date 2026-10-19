@@ -20,6 +20,7 @@ describe("buildPdfFromJpeg", () => {
 		expect(text).toContain("/Subtype /Image");
 		expect(text).toContain("/Filter /DCTDecode");
 		expect(text).toContain("/Width 2000 /Height 1000");
+		expect(text).toContain(`/Length ${JPEG.length}`);
 		expect(text).toContain(
 			`/MediaBox [0 0 ${cmToPt(63.88).toFixed(3)} ${cmToPt(43.23).toFixed(3)}]`,
 		);
@@ -44,5 +45,15 @@ describe("buildPdfFromJpeg", () => {
 		expect(Number.isFinite(startxref)).toBe(true);
 		expect(text.slice(startxref, startxref + 4)).toBe("xref");
 		expect(text.trimEnd().endsWith("%%EOF")).toBe(true);
+
+		// Every xref offset must land on its corresponding object header.
+		const rows = text.slice(startxref).split("\n").slice(2, 8);
+		expect(rows).toHaveLength(6);
+		expect(rows[0]?.slice(0, 10)).toBe("0000000000");
+		for (let index = 1; index < rows.length; index++) {
+			const offset = Number(rows[index]?.slice(0, 10));
+			expect(Number.isFinite(offset)).toBe(true);
+			expect(text.slice(offset).startsWith(`${index} 0 obj`)).toBe(true);
+		}
 	});
 });

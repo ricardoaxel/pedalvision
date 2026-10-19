@@ -416,6 +416,7 @@ test("exports a true-scale paper-light PDF", async ({ page }) => {
 	const text = buffer.toString("latin1");
 	expect(text).toContain("/Subtype /Image");
 	expect(text).toContain("/Filter /DCTDecode");
+	expect(text).toContain("/Width 4352 /Height 2432");
 	// 68 × 38 cm page in points (1 cm = 28.3464567 pt).
 	expect(text).toContain("/MediaBox [0 0 1927.559 1077.165]");
 
@@ -423,6 +424,22 @@ test("exports a true-scale paper-light PDF", async ({ page }) => {
 	await expect(
 		page.getByText(/^pedalvision-rig-board-1-\d{4}-\d{2}-\d{2}\.pdf$/),
 	).toBeVisible();
+
+	// All-content PDF exercises a clamped plan (ratio < 2) and a wider page.
+	await page.getByRole("button", { name: "Export again" }).click();
+	await page.getByRole("radio", { name: "All content" }).click();
+	const allSize = await readOutputSize(page);
+	const [allDownload] = await Promise.all([
+		page.waitForEvent("download"),
+		page.getByTestId("export-download").click(),
+	]);
+	const allPath = await allDownload.path();
+	if (!allPath) throw new Error("download has no path");
+	const allText = (await readFile(allPath)).toString("latin1");
+	expect(allText).toContain(
+		`/Width ${allSize.width} /Height ${allSize.height}`,
+	);
+	expect(allText).toContain("/MediaBox [0 0 4195.276 1077.165]");
 });
 
 test("mobile: the export tray stays above the tab bar and exports", async ({

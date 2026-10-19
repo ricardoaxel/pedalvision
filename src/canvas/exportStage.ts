@@ -556,6 +556,10 @@ export async function renderExportFile(
 		height: plan.stageHeightPx,
 	});
 	const layer = new Konva.Layer({ listening: false });
+	// The detached layer must not allocate a DPR-sized scene canvas: the stage is
+	// already sized to the export budget, and toDataURL re-renders at the explicit
+	// pixelRatio below. Without this, a 2–3× phone allocates 4–9× the budget.
+	layer.getCanvas().setPixelRatio(1);
 	stage.add(layer);
 
 	// PDF is the print artifact: a dark background would print heavy, so the
@@ -664,6 +668,12 @@ export async function renderExportFile(
 		}
 
 		if (format === "pdf") {
+			if (!raster.startsWith("data:image/jpeg")) {
+				throw new ExportError(
+					"unknown",
+					"The PDF encoder didn't finish. Try again.",
+				);
+			}
 			const bytes = buildPdfFromJpeg({
 				jpeg: dataUrlBytes(raster),
 				widthPx: plan.outputWidthPx,
