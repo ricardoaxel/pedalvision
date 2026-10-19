@@ -1,6 +1,6 @@
 # P2-05: Custom board creator
 
-**Phase:** P2 · **Status:** in review (PR pending) · **Model:** build-cheap
+**Phase:** P2 · **Status:** done (merged 2026-10-19, PR #21, squash `e068c35`) · **Model:** build-cheap
 
 ## Goal
 Let a user create a **custom pedalboard** of any **width × depth** (entered in
