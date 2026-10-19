@@ -14,7 +14,8 @@
 		"catalog:import": "node --experimental-strip-types tools/catalog-transform/index.ts import",
 		"catalog:seed": "node --experimental-strip-types tools/catalog-transform/index.ts seed",
 		"catalog:reclassify": "node --experimental-strip-types tools/catalog-transform/index.ts reclassify",
-		"catalog:resolve-images": "node --experimental-strip-types tools/catalog-transform/index.ts resolve-images"
+		"catalog:resolve-images": "node --experimental-strip-types tools/catalog-transform/index.ts resolve-images",
+		"asset:process": "node --experimental-strip-types tools/asset-pipeline/index.ts"
 	},
 	"dependencies": {
 		"konva": "^10.7.0",
