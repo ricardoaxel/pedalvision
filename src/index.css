@@ -400,6 +400,50 @@ body {
 	padding: var(--space-4) var(--space-5) var(--space-3);
 }
 
+/* "Not listed? Create a custom-size …" — a quiet fallback for a catalog miss.
+ * Sits after the filters (search → filters → not listed? → results), never
+ * above the primary search control. Underline carries the link affordance, so
+ * the accent stays reserved for the primary CTA/selection. */
+.picker__custom-line {
+	display: flex;
+	align-items: baseline;
+	gap: var(--space-2);
+	flex: 0 0 auto;
+	padding: 0 var(--space-5) var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-xs);
+	line-height: 1.4;
+}
+
+.picker__custom-prompt {
+	color: var(--color-ink-muted);
+}
+
+.picker__custom-link {
+	padding: 2px 4px;
+	margin: -2px -4px;
+	font: inherit;
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink-muted);
+	background: transparent;
+	border: 0;
+	border-radius: var(--radius-key);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	text-decoration-thickness: 1px;
+	cursor: pointer;
+}
+
+.picker__custom-link:hover {
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+}
+
+.picker__custom-link:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
 .picker__search {
 	position: relative;
 	display: flex;
@@ -1625,6 +1669,17 @@ body {
 		padding: var(--space-3) var(--space-4) var(--space-2);
 	}
 
+	/* One compact row (not a toolbar); 32px tap target, tighter gutter. */
+	.picker__custom-line {
+		padding: 0 var(--space-4) var(--space-2);
+	}
+
+	.picker__custom-link {
+		display: inline-flex;
+		align-items: center;
+		min-height: 32px;
+	}
+
 	/* Touch target (the desktop field is 36px). */
 	.picker__brand {
 		min-height: 44px;
@@ -1703,6 +1758,14 @@ body {
 
 /* Short landscape phones: compact the sheet chrome so the results still get
  * usable height (the panel already fills the space above the tab bar). */
+@media (max-width: 1023px) and (max-height: 620px) {
+	/* Very small/short screens need the result rows more than the fallback line;
+	 * the persistent bottom tab bar still exposes Custom. */
+	.picker__custom-line {
+		display: none;
+	}
+}
+
 @media (max-width: 1023px) and (max-height: 520px) {
 	/* No peek on a short screen: use the full space above the tab bar so the
 	 * results stay usable (the tab bar is still the persistent footprint). */

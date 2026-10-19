@@ -134,3 +134,9 @@ custom board has `boardRefId: null` and carries its own inline definition.
   (round 2 `valuable` / mergeable); non-P2-05 findings deferred to roadmap homes
   (P3-01 export, P4-02 cable gap, **P2-09 PROPOSED** board readout/chrome, P3-04
   undo, P3-02 units). Tests **362**; e2e **109** (+6 skipped).
+- **Owner follow-up 2 (same PR #21): catalog-miss shortcut.** The Pedals and
+  Boards ledgers now show **"Not listed? Create a custom-size pedal / board"**
+  after the filters (designer spec: never above the search, underline link not a
+  pill, no accent at rest, 32px mobile target, hidden on very short screens). It
+  jumps to the Custom creator with the matching kind preselected (`openCustom`),
+  preserving drafts. Tests **362**; e2e **111** (+6 skipped).

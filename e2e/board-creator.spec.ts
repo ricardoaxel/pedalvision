@@ -51,6 +51,39 @@ test("creates a custom board with a chosen finish", async ({ page }) => {
 	await expect(stage).toHaveAttribute("data-item-images", "loaded:0 failed:0");
 });
 
+/** Switch tabs while the picker is open (mobile bar if visible, else segment). */
+async function goToTab(page: Page, tab: "pedals" | "boards" | "custom") {
+	const bar = page.getByTestId(`picker-bar-${tab}`);
+	if (await bar.isVisible()) await bar.click();
+	else await page.getByTestId(`picker-tab-${tab}`).click();
+}
+
+test("the catalog ledger links to the custom creator with the right kind", async ({
+	page,
+}) => {
+	await page.goto("/");
+
+	// Pedals → "Create a custom-size pedal" opens Custom with kind=Pedal.
+	await openPicker(page, "pedals");
+	await expect(page.getByTestId("picker-custom-shortcut")).toBeVisible();
+	await page.getByTestId("picker-custom-shortcut").click();
+	await expect(page.getByTestId("custom-category-pedal")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	await expect(page.getByTestId("custom-name")).toBeVisible();
+
+	// Boards → "Create a custom-size board" opens Custom with kind=Board.
+	await goToTab(page, "boards");
+	await expect(page.getByTestId("picker-custom-shortcut")).toBeVisible();
+	await page.getByTestId("picker-custom-shortcut").click();
+	await expect(page.getByTestId("custom-category-board")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	await expect(page.getByTestId("board-name")).toBeVisible();
+});
+
 test("the cm/in toggle converts board dimensions losslessly", async ({
 	page,
 }) => {

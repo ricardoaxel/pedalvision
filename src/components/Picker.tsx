@@ -271,6 +271,18 @@ export function Picker({
 		onTab(next);
 	};
 
+	/**
+	 * "Not listed? Create a custom-size …" shortcut from the Pedals/Boards
+	 * ledgers. Sets the kind and switches tab in one batch (no wrong-kind paint),
+	 * reusing `changeTab` for the edit-draft + filter rules. Deliberately NOT
+	 * `changeKind` (edit-guarded, supply side effects) and NOT `openTab` (would
+	 * reset filters/focus on an already-open picker).
+	 */
+	const openCustom = (kind: CustomKind) => {
+		setCustomKind(kind);
+		changeTab("custom");
+	};
+
 	const openTab = (next: PickerTab) => {
 		// Re-tapping the active tab is a no-op: it must NOT reopen the picker
 		// (which would clear edit mode and leak the edit draft into Create).
@@ -902,6 +914,20 @@ export function Picker({
 												</fieldset>
 											)}
 										</div>
+									</div>
+
+									<div className="picker__custom-line">
+										<span className="picker__custom-prompt">Not listed?</span>
+										<button
+											type="button"
+											className="picker__custom-link"
+											data-testid="picker-custom-shortcut"
+											onClick={() => openCustom(isBoards ? "board" : "pedal")}
+										>
+											{isBoards
+												? "Create a custom-size board"
+												: "Create a custom-size pedal"}
+										</button>
 									</div>
 
 									<div className="picker__results" data-testid="picker-results">
