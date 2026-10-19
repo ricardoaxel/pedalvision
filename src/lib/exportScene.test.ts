@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
 import {
-	ALL_CONTENT_FIT_RADIUS_CM,
 	boardAabbCm,
 	ENDPOINT_MARGIN_CM,
 	EXPORT_MAX_EDGE_PX,
@@ -258,10 +257,9 @@ describe("resolveExportPlan — all content", () => {
 		expect(plan.items.map((candidate) => candidate.uid)).toContain("loose");
 		expect(plan.endpoints).toHaveLength(1);
 		expect(plan.cables).toHaveLength(1);
-		expect(plan.trimmed).toBe(false);
 	});
 
-	it("fit-caps a far-away loose item so the image isn't mostly empty", () => {
+	it("includes a far-away loose item (all content means all content)", () => {
 		const near = item({
 			uid: "near",
 			refId: "custom-2",
@@ -280,17 +278,17 @@ describe("resolveExportPlan — all content", () => {
 			scope: "all",
 		});
 
-		expect(plan.trimmed).toBe(true);
-		expect(plan.items.map((candidate) => candidate.uid)).not.toContain("far");
+		expect(plan.items.map((candidate) => candidate.uid)).toContain("far");
 		expect(plan.items.map((candidate) => candidate.uid)).toContain("near");
-		expect(plan.contentBoundsCm.x + plan.contentBoundsCm.widthCm).toBeLessThan(
-			300,
-		);
-		expect(plan.contentBoundsCm.x).toBeLessThanOrEqual(0);
-		expect(ALL_CONTENT_FIT_RADIUS_CM).toBeGreaterThan(0);
+		expect(
+			plan.contentBoundsCm.x + plan.contentBoundsCm.widthCm,
+		).toBeGreaterThan(300);
+		expect(
+			plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm,
+		).toBeGreaterThan(300);
 	});
 
-	it("drops endpoints and cables that the fit cap trimmed", () => {
+	it("includes far endpoints and cables in all-content scope", () => {
 		const near = endpoint("near", 60);
 		const far = endpoint("far", 400);
 		const plan = resolveExportPlan(
@@ -312,11 +310,14 @@ describe("resolveExportPlan — all content", () => {
 			{ scope: "all" },
 		);
 
-		expect(plan.endpoints.map((candidate) => candidate.uid)).toEqual(["near"]);
+		expect(plan.endpoints.map((candidate) => candidate.uid)).toEqual([
+			"near",
+			"far",
+		]);
 		expect(plan.cables.map((candidate) => candidate.uid)).toEqual([
 			"near-cable",
+			"far-cable",
 		]);
-		expect(plan.trimmed).toBe(true);
 	});
 });
 

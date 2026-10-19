@@ -295,6 +295,42 @@ test("all content includes the other board and stays within the pixel clamp", as
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
 });
 
+test("all content includes a far-off loose pedal (no trim)", async ({
+	page,
+}) => {
+	await seedScene(page, {
+		boards: [board("board-1", 0)],
+		items: [
+			{
+				uid: "far-pedal",
+				refId: "custom-pedal-1",
+				kind: "pedal",
+				boardUid: null,
+				x: 300,
+				y: 200,
+				rotationDeg: 0,
+				z: 0,
+			},
+		],
+		customPedals: [customPedal("custom-pedal-1", "Far Fuzz", 10, 6)],
+	});
+	await openExport(page);
+	await page.getByRole("radio", { name: "All content" }).click();
+
+	// The board alone would be 4,352 px wide; including the far pedal must make
+	// the frame wider (it is not trimmed away).
+	const size = await readOutputSize(page);
+	expect(size.width).toBeGreaterThan(4500);
+	await expect(page.getByTestId("export-panel")).not.toContainText(
+		"Far-off items were trimmed.",
+	);
+
+	const buffer = await downloadPng(page);
+	const stats = await inspectPng(page, buffer);
+	expect(stats.transparent).toBe(0);
+	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.01);
+});
+
 test("export ignores the live zoom and pan (never the viewport)", async ({
 	page,
 }) => {

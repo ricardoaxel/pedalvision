@@ -69,7 +69,6 @@ function noticeLines(plan: ExportPlan): string[] {
 			lines.push("Export a single board for more detail.");
 		}
 	}
-	if (plan.trimmed) lines.push("Far-off items were trimmed.");
 	return lines;
 }
 

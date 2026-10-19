@@ -9,9 +9,9 @@ viewport's zoom/pan or clipping leaking into it.
 
 Export runs through a **detached offscreen Konva Stage** (never the live stage).
 The user can export either **the selected board** (that board + attached pedals
-+ cables whose BOTH endpoints are in scope) or **all content** (every board,
-loose item, cable and endpoint), with a fit-cap so a stray loose item cannot
-produce a mostly-empty image. PNG follows the app theme; **PDF is a true-scale
++ cables whose BOTH endpoints are in scope) or **all content** (**everything**,
+including far-off loose items/endpoints; no automatic trim — the pixel clamp
+handles extreme layouts). PNG follows the app theme; **PDF is a true-scale
 paper-light raster PDF** for printing. Output has an opaque background, a
 32 px/cm base density, `pixelRatio ≤ 2`, and a **16.7 MP total + 8192 px edge**
 clamp for iOS Safari.
@@ -22,7 +22,7 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
 
 ## Read first (context pack)
 - `docs/design.md` §Canvas architecture → **Export** bullets (detached stage,
-  scope, out-of-scope cable rule, fit cap, background, pixel clamp) and
+  scope, out-of-scope cable rule, background, pixel clamp) and
   §Data model (`Cable`, `Endpoint`, `PlacedBoard`, `PlacedItem`).
 - `docs/requirements.md` F9 + A3.
 - `docs/roadmap.md` P3-01; `docs/phase-guide.md` P3.
@@ -52,10 +52,10 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
     **both** endpoints are in scope. A pedal→amp/instrument endpoint is in scope
     when the endpoint is inside **board bounds + `ENDPOINT_MARGIN_CM = 30`**.
     A cable to anything out of scope is **dropped** (never clipped mid-air).
-  - **All content** — every board, loose item, cable and endpoint. Apply the
-    **fit cap**: if content balloons far beyond the boards, crop to the fit
-    window of content near a board (`ALL_CONTENT_FIT_RADIUS_CM`, ~40 cm) so the
-    image is not mostly empty.
+  - **All content** — every board, loose item, cable and endpoint, even a
+    far-off orphan pedal with no board. **No automatic trim/fit cap**: the pixel
+    clamp fits extreme layouts into a valid image. A tight, high-density image is
+    what the selected-board scope is for.
   - Selected-board scope must be unavailable/disabled when no board is selected.
 - **Cables/endpoints:** the real cable store is P4. Model the scope engine over
   export-input `Cable`/`Endpoint` shapes (matching `design.md` §Data model) so
@@ -88,7 +88,7 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
    date here and in `docs/progress.md`. **No UI before approval.**
 3. **Pure export model** (`src/lib/exportScene.ts` + tests):
    scope resolution (selected board / all content), rotation-aware world bounds,
-   endpoint margin, both-endpoints cable rule, fit cap, padding, pixel-ratio +
+   endpoint margin, both-endpoints cable rule, padding, pixel-ratio +
    total-pixel clamp. No DOM.
 4. **Detached offscreen renderer** (`src/canvas/exportStage.ts` or similar):
    preload included images with the existing CORS loader, build a detached
@@ -104,8 +104,8 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
    primary download action, and an inline error/empty state. Desktop + mobile
    variants; tokens only.
 6. **Tests:** Vitest for the pure model (bounds under rotation, selected-board
-   exclusion, 30 cm endpoint margin, both-endpoints cable rule, fit cap, pixel
-   clamp, background-opaque flag). Playwright (desktop + mobile): create a
+   exclusion, 30 cm endpoint margin, both-endpoints cable rule, far-off loose
+   items/endpoints included, pixel clamp). Playwright (desktop + mobile): create a
    custom board + custom pedal (no external images), export selected board and
    all content, parse the downloaded PNG (signature + IHDR dimensions), verify
    non-blank/opaque pixels, verify export is unaffected by live zoom/pan, and
@@ -151,12 +151,11 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   effective ratio, clamp/fit notices); persistent inline success/error states.
   The owner also approved the **10/5 cm drafting scale bar** in the PNG's bottom
   margin (no branding/caption). Tokens only; zero new deps.
-- **Export model** (`src/lib/exportScene.ts`, 17 unit tests): rotation-aware
+- **Export model** (`src/lib/exportScene.ts`, 18 unit tests): rotation-aware
   bounds; selected-board scope keeps a cable only when BOTH ends are in scope
   (an endpoint must sit within board AABB + `ENDPOINT_MARGIN_CM = 30`);
-  all-content fit cap excludes loose content farther than
-  `ALL_CONTENT_FIT_RADIUS_CM = 40` from every board (trimmed flag); uniform
-  `EXPORT_PADDING_CM = 4`; `EXPORT_PX_PER_CM = 32`, `pixelRatio ≤ 2`, and the
+  all-content includes **every** board, loose item, endpoint and cable (no fit
+  cap); uniform `EXPORT_PADDING_CM = 4`; `EXPORT_PX_PER_CM = 32`, `pixelRatio ≤ 2`, and the
   `EXPORT_MAX_PIXELS = 16_777_216` + `EXPORT_MAX_EDGE_PX = 8192` clamp with
   fit-scale reduction; exposes `outputPpi`. The input carries
   `endpoints`/`cables` in the design.md shape, so P4 can wire the real store
@@ -188,8 +187,8 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   **APPROVE** on the follow-up pass for FORMAT + PDF (desktop + mobile, PDF
   selected, paper-light PDF rendered via `pdftoppm`); no findings.
 - **A3 remains an owner/manual device check:** real iOS Safari export.
-- **Checks:** lint / typecheck / test **386** (37 files; 17 in
-  `exportScene.test.ts` + 2 in `pdf.test.ts`) / build / e2e **136 passed +
+- **Checks:** lint / typecheck / test **387** (37 files; 18 in
+  `exportScene.test.ts` + 2 in `pdf.test.ts`) / build / e2e **138 passed +
   7 skipped**. Screenshots `docs/screenshots/P3-01/` (desktop + mobile, dark +
   light, PNG and PDF selected, success, error, both exported PNGs, the PDF, and
   a `pdftoppm` render of it).
@@ -201,6 +200,10 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   blocker (detached Layer scene canvas was allocated at DPR; now pinned to 1×),
   the JPEG MIME guard, xref/width/height test coverage, and stale-error clearing;
   pass 2 **APPROVE**. No further passes (2-pass cap per change).
+- **All-content scope fix (owner feedback, same PR #23):** the original 40 cm
+  fit cap silently dropped an orphan pedal far from both boards. It was removed:
+  all content now includes everything, and the pixel clamp (not a crop) handles
+  extreme layouts. The “Far-off items were trimmed.” notice is gone.
 - **Known limitation (reviewer nit, documented):** output PPI is raster density;
   catalog board images are 800 px masters, so a large catalog board is upscaled
   in a high-density export. Pedal images are below the ceiling at typical sizes;

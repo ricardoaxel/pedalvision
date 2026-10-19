@@ -19,9 +19,6 @@ import { boardToWorld, type Point, type RectCm } from "./geometry";
 /** Endpoints (amp/instrument) this close to a board join selected-board export. */
 export const ENDPOINT_MARGIN_CM = 30;
 
-/** All-content fit window: loose content this close to a board stays in frame. */
-export const ALL_CONTENT_FIT_RADIUS_CM = 40;
-
 /** Uniform margin around the exported content (cm). Holds the scale bar. */
 export const EXPORT_PADDING_CM = 4;
 
@@ -93,8 +90,6 @@ export interface ExportPlan {
 	boundsCm: RectCm;
 	/** Content bounds before the margin (scale bar positioning). */
 	contentBoundsCm: RectCm;
-	/** True when far-off loose content was excluded from the all-content frame. */
-	trimmed: boolean;
 	/** Stage pixels at fit scale (before `pixelRatio`). */
 	stageWidthPx: number;
 	stageHeightPx: number;
@@ -178,15 +173,6 @@ function pointInRect(point: Point, rect: RectCm): boolean {
 	);
 }
 
-function rectsIntersect(a: RectCm, b: RectCm): boolean {
-	return (
-		a.x <= b.x + b.widthCm + EPSILON &&
-		a.x + a.widthCm >= b.x - EPSILON &&
-		a.y <= b.y + b.heightCm + EPSILON &&
-		a.y + a.heightCm >= b.y - EPSILON
-	);
-}
-
 /** A board's rotated footprint AABB in world cm. */
 export function boardAabbCm(board: PlacedBoard): RectCm {
 	const { widthCm, heightCm } = boardFootprint(board);
@@ -209,16 +195,6 @@ function itemAabbCm(
 
 function endpointRect(endpoint: ExportEndpoint): RectCm {
 	return { x: endpoint.x, y: endpoint.y, widthCm: 0, heightCm: 0 };
-}
-
-function isNearAnyBoard(
-	rect: RectCm,
-	boardRects: RectCm[],
-	radiusCm: number,
-): boolean {
-	return boardRects.some((board) =>
-		rectsIntersect(rect, expandRect(board, radiusCm)),
-	);
 }
 
 function computePixelPlan(
@@ -282,7 +258,6 @@ function buildPlan(
 	endpoints: ExportEndpoint[],
 	cables: ExportCable[],
 	contentBounds: RectCm,
-	trimmed: boolean,
 ): ExportPlan {
 	const boundsCm = expandRect(contentBounds, EXPORT_PADDING_CM);
 	return {
@@ -294,7 +269,6 @@ function buildPlan(
 		cables,
 		boundsCm,
 		contentBoundsCm: contentBounds,
-		trimmed,
 		...computePixelPlan(boundsCm),
 	};
 }
@@ -363,7 +337,6 @@ function selectedBoardPlan(
 		[...includedEndpoints.values()],
 		cables,
 		content as RectCm,
-		false,
 	);
 }
 
@@ -372,12 +345,12 @@ function allContentPlan(scene: ExportSceneInput): ExportPlan {
 	const endpoints = scene.endpoints ?? [];
 	const cables = scene.cables ?? [];
 
+	// "All content" means ALL content: loose pedals/supplies and endpoints are
+	// part of the plan even when they sit far from every board. The pixel clamp
+	// (not a crop) is what keeps an extreme layout renderable.
 	let allContent: RectCm | null = null;
-	const boardRects: RectCm[] = [];
 	for (const board of boards) {
-		const rect = boardAabbCm(board);
-		boardRects.push(rect);
-		allContent = unionRects(allContent, rect);
+		allContent = unionRects(allContent, boardAabbCm(board));
 	}
 	for (const item of items) {
 		allContent = unionRects(allContent, itemAabbCm(item, boards, customPedals));
@@ -389,81 +362,14 @@ function allContentPlan(scene: ExportSceneInput): ExportPlan {
 		throw new ExportError("empty", "There is nothing to export yet.");
 	}
 
-	// Fit cap: if content balloons far from the boards (a stray loose item), the
-	// frame keeps everything within the fit radius of a board so the PNG isn't
-	// mostly empty. With no boards there is nothing to fit against.
-	let coreContent: RectCm | null = null;
-	if (boards.length > 0) {
-		for (const rect of boardRects) {
-			coreContent = unionRects(coreContent, rect);
-		}
-		for (const item of items) {
-			const attached = item.boardUid !== null;
-			const rect = itemAabbCm(item, boards, customPedals);
-			if (
-				attached ||
-				isNearAnyBoard(rect, boardRects, ALL_CONTENT_FIT_RADIUS_CM)
-			) {
-				coreContent = unionRects(coreContent, rect);
-			}
-		}
-		for (const endpoint of endpoints) {
-			if (
-				isNearAnyBoard(
-					endpointRect(endpoint),
-					boardRects,
-					ALL_CONTENT_FIT_RADIUS_CM,
-				)
-			) {
-				coreContent = unionRects(coreContent, endpointRect(endpoint));
-			}
-		}
-	}
-
-	const content = coreContent ?? allContent;
-	const fitted = boards.length > 0;
-
-	// Keep the payload consistent with the fit-capped frame: content outside the
-	// frame is excluded (not merely clipped) so a far item's missing/CORS-blocked
-	// image can't abort an export the user cannot see. Attached items always
-	// travel with their board; loose items/endpoints must intersect the frame.
-	const includedItems = fitted
-		? items.filter(
-				(item) =>
-					item.boardUid !== null ||
-					rectsIntersect(itemAabbCm(item, boards, customPedals), content),
-			)
-		: items;
-	const includedEndpoints = fitted
-		? endpoints.filter((endpoint) => pointInRect(endpoint, content))
-		: endpoints;
-	const itemUids = new Set(includedItems.map((item) => item.uid));
-	const endpointUids = new Set(
-		includedEndpoints.map((endpoint) => endpoint.uid),
-	);
-	const endIncluded = (end: ExportCableEnd): boolean =>
-		"itemUid" in end
-			? itemUids.has(end.itemUid)
-			: endpointUids.has(end.endpointUid);
-	// All-content cables still obey the no-dangling rule: both ends must survive
-	// the fit cap, so a cable to trimmed content is dropped rather than clipped.
-	const includedCables = fitted
-		? cables.filter((cable) => endIncluded(cable.from) && endIncluded(cable.to))
-		: cables;
-	const trimmed =
-		includedItems.length !== items.length ||
-		includedEndpoints.length !== endpoints.length ||
-		includedCables.length !== cables.length;
-
 	return buildPlan(
 		"all",
 		boards,
-		includedItems,
+		items,
 		customPedals,
-		includedEndpoints,
-		includedCables,
-		content,
-		trimmed,
+		endpoints,
+		cables,
+		allContent,
 	);
 }
 
