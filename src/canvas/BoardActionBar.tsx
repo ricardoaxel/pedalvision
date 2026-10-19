@@ -76,29 +76,31 @@ export function BoardActionBar({
 	const actions = [
 		{
 			key: "edit-custom-board",
-			label: "Edit custom board",
 			text: "Edit",
 			danger: false,
 			onClick: () => onEditBoard?.(board.uid),
 		},
 		{
 			key: "delete-custom-board",
-			label: "Delete custom board",
 			text: "Delete",
 			danger: true,
 			onClick: () => {
 				removeBoard(board.uid);
 				clearSelection();
-				// The bar unmounts with the selection — move focus to a stable,
-				// visible control so keyboard users aren't dropped onto <body>.
-				const target =
-					document.querySelector<HTMLElement>(
-						'[data-testid="picker-open-board"]',
-					) ??
-					document.querySelector<HTMLElement>(
-						'[data-testid="picker-bar-boards"]',
+				// The bar unmounts with the selection — move focus to the first
+				// VISIBLE stable control so keyboard users aren't dropped onto
+				// <body> (the desktop trigger is display:none on mobile, so a
+				// mere existence check would pick it and fail to focus).
+				const target = [
+					'[data-testid="picker-open-board"]',
+					'[data-testid="picker-bar-boards"]',
+				]
+					.map((selector) => document.querySelector<HTMLElement>(selector))
+					.find(
+						(element): element is HTMLElement =>
+							element !== null && element.offsetParent !== null,
 					);
-				if (target && target.offsetParent !== null) target.focus();
+				target?.focus();
 			},
 		},
 	];
@@ -158,7 +160,7 @@ export function BoardActionBar({
 					ref={(element) => {
 						buttonRefs.current[index] = element;
 					}}
-					tabIndex={index === (focusIndex === 1 ? 1 : 0) ? 0 : -1}
+					tabIndex={index === focusIndex ? 0 : -1}
 					onFocus={() => setFocusIndex(index)}
 					className={[
 						"item-action-bar__button",
