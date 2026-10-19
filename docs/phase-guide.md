@@ -32,7 +32,7 @@ Short explanations so both the owner and any agent session know why each phase e
 | P2-03 Pedal info panel | Tags, dims, power | No |
 | P2-04 Asset pipeline | bg removal, trim, resize | No |
 | P2-05 Custom board creator | Any W×D board | No |
-| P2-06 Catalog procurement | Brand outreach + permission + dims spot-check | **Yes** — owner sends outreach emails/permission requests. Reason: it's marketing identity — brands reply to the owner, not an agent. |
+| P2-06 Catalog procurement | Brand outreach + permission + dims spot-check | **Yes** — owner sends outreach emails/permission requests. Reason: it's marketing identity — brands reply to the owner, not an agent. **Scheduled after P4 / pre-launch (not a gate); kick off during P4 because replies are slow.** |
 | P2-07 R2 CDN (deferred) | Asset CDN when catalog grows | No (deferred, not now) |
 | P2-08 First-run guidance | Empty-state hint | No |
 
@@ -50,5 +50,5 @@ Accounts · cloud saves · community submissions · power planner · explore · 
 ## The only owner actions in the whole v1 plan
 1. **P0-02 (current blocker):** Cloudflare account + API token + account ID → for deploys.
 2. **P0-05:** external catalog file on owner machine → to run `import`/backfill (optional; the committed seed works without it).
-3. **P2-06:** brand outreach + permission requests → for the real catalog.
+3. **P2-06:** brand outreach + permission requests → for the real catalog. **Timing: start during P4; needed before P5-02 image clearance + the launch gate.**
 4. **Launch gate:** approve public launch.
