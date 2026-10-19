@@ -38,7 +38,7 @@ scripts/          # dev tooling entrypoints (deferred: R2-era assets:sync; not c
 - **Scope (b) bounds cap (N2):** if "all content" bounds balloon (e.g. one loose item dropped far from the boards), don't export a mostly-empty image — cap to a fit window (crop to the bounding box of content within X cm of a board) or offer a "fit visible" option alongside.
 - **Export background (N2):** fill the offscreen stage with the app's **surface color** (not transparent) — exported PNGs get shared into unknown light/dark contexts.
 - **All images must be same-origin / CORS-clean** or export throws (ADR-002). **Clamp total output pixels** (~4096×4096 max): if contentBounds × pixelRatio exceeds it, reduce pixelRatio/fit-scale — the iOS Safari silent-blank guard.
-- Accessibility (N3): canvas has no DOM semantics → catalog, selection controls, and scene list are always mirrored in HTML. This covers **panels and item actions** (delete/duplicate/undo/redo); it does NOT claim full spatial-editor equivalence — keyboard placement/moving/rotating of items on the canvas is out of v1 scope.
+- Accessibility (N3): canvas has no DOM semantics → the **catalog** (picker) and **selection controls / item actions** (rotate, duplicate, delete, z-order) plus the P2-03 info panel are mirrored in HTML. A **scene-list mirror** (an HTML list of placed boards/items for assistive tech) is **deferred** — it is not implemented and has no owning task yet; schedule it with a later accessibility/scene-management pass (see `docs/progress.md` → Follow-ups). This does NOT claim full spatial-editor equivalence — keyboard placement/moving/rotating of items on the canvas is out of v1 scope.
 
 ## Data model (Zustand; persisted slice)
 ```ts
@@ -52,7 +52,7 @@ type CatalogPedal = {
   image: string         // filename (mock/static) or URL (url) — see imageSource
   imageSource: 'mock' | 'static' | 'url' // HOW the image is provided: mock=procedural placeholder; static=committed file under /pedal-assets/{kind}/{size}/; url=deferred same-origin/CDN (ADR-002). Orthogonal to `source` (rights).
   effectTypes: EffectType[] // OUR taxonomy enum (EFFECT_TYPES): sound effects + non-effect roles ("delay", "preamp", "buffer", …); see ADR-003 §Effect taxonomy
-  category: 'pedal' | 'supply'  // R6/N1 — lets the picker + custom creator distinguish pedals from power supplies
+  category: 'pedal' | 'supply'  // R6/N1 — lets the custom creator + PlacedItem/renderer distinguish pedals from power supplies. The catalog picker currently lists pedals only; catalog supplies are not placeable yet (create a custom supply in the Custom tab — see progress.md Follow-ups)
   jacks?: Jack[] // { kind: JackKind, edge: 'top'|'right'|'bottom'|'left', pos: number }; JackKind = 'in'|'out'|'exp'|'exp-in'|'exp-out'|'send'|'return'|'midi'|'ctrl'|'power' (widened in P2-02; P4-01 consumes it). pos = 0..1 position ALONG the edge (e.g. 0.5 = centered) — required so cable attach points + length calc have a concrete coordinate (S3)
   power?: { voltage: 9|12|18|number, acDc: 'DC'|'AC', currentMa: number }
   variantOf?: string    // model id for colorways (avoid catalog bloat)
@@ -102,8 +102,8 @@ Layering is **per-container, never global.** A *container* is either one board's
 
 ## Assets & catalog
 - Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import). It is zod-validated **at module load** by `src/catalog/load.ts` (fail-fast) and guarded in CI by a Vitest test against the committed seed — not by a `vite build` step.
-- **v1 (ADR-002):** images live in the repo under `public/pedal-assets/` and ship with the Pages deployment (same-origin, no CORS). Two renditions per item — `800/` (master) and `350/` (thumb), pre-resized by the asset pipeline; **no runtime image service**.
-- URL convention (dev + v1 prod): `/pedal-assets/pedals/350/{image}`, built via `assetUrl()` in `src/lib/cdn.ts`. R2 with `{CDN_BASE}` is the deferred path (ADR-002) — revisit before ~2k items. `pnpm assets:sync` (scripts/) is the deferred **R2-era sync tool, unused in v1**.
+- **v1 (ADR-002):** images live in the repo under `public/pedal-assets/` and ship with the Pages deployment (same-origin, no CORS). Two renditions per item — `800/` (master) and `350/` (thumb), pre-resized by the asset pipeline; **no runtime image service**. As of P2 the app requests **800 everywhere** (picker ledger rows, info-panel sleeve, canvas); the `350/` renditions exist but are not consumed yet — using them for small UI is a small follow-up (P2-10).
+- URL convention (dev + v1 prod): `/pedal-assets/{kind}/{size}/{image}` (e.g. `/pedal-assets/pedals/800/boss-tr-2.png`), built via `assetUrl()` in `src/lib/cdn.ts`. R2 with `{CDN_BASE}` is the deferred path (ADR-002) — revisit before ~2k items. `pnpm assets:sync` (scripts/) is the deferred **R2-era sync tool, unused in v1**.
 - **Image-resolution contract (P1 renderer):** branch on `imageSource` — `mock`/`static` → `assetUrl(kind, size, item.image)`; `url` → use `item.image` directly (an absolute `http(s)` URL, loaded with `crossOrigin="anonymous"`). **Where an official brand image URL is recorded, `url` is preferred; `mock` is the fallback** (ADR-003 §Brand image URLs). CORS-clean hosts display (canvas stays untainted for export); non-CORS hosts + hotlink-blocked URLs fall back to the labeled rectangle. `assetUrl()` does not URL-encode, so the catalog schema guarantees safe filenames (ADR-003). A missing/failed image falls back to a labeled rectangle at the item's cm footprint (P1-03/P1-04).
 - **Cache-poisoning self-heal (P2-01):** a plain no-CORS load of a hotlinked `url` image (e.g. a picker `<img>`) can cache a response **without** `Access-Control-Allow-Origin`; the canvas's later `crossOrigin` request reuses that cached copy and fails the CORS check — for hosts that only send ACAO when the request carries an `Origin` (e.g. `static.roland.com`). Both the canvas loader (`canvas/useImage.ts`) and the picker thumbnails load **CORS-first**, and on failure retry **once under a distinct cache key** (`lib/cdn.ts` `bustCache`, a stable `?pedalvision-v=1`) — a fresh, CORS-clean response. The picker additionally retries **no-CORS** so hosts with no ACAO still display in the DOM (the canvas falls back for those, by design). Both attempts stay `crossOrigin`, so export is never tainted.
 - **Lazy loading — NOT implemented in P1 (deferred).** The design intent is to load an image only when the item enters the viewport (Konva `Image` + an intersection check on the stage transform); today every mounted node eagerly loads its asset on mount. Revisit when item counts / zoom-out workloads warrant it (tracked in `docs/progress.md` → Follow-ups).
@@ -116,7 +116,7 @@ PR / push to main → `pnpm install --frozen-lockfile` (cached) → `biome ci` �
 - XSS via custom pedal/board names → React escaping; no `dangerouslySetInnerHTML`; any future rich text sanitized.
 - Share-URL bomb → cap decoded payload (~200KB), zod-validate before applying to store.
 - Asset integrity → v1 images are static repo files reviewed via PR; no user uploads in v1. (If/when R2: bucket private, uploads only via CI/owner script.)
-- Dependencies → `pnpm audit` weekly in CI + Dependabot; keep deps < 6 months old (launch-gate check).
+- Dependencies → `pnpm audit` clean is a **launch-gate check** (manual today); a weekly CI audit job + Dependabot are **not set up yet** (small CI follow-up). Keep deps < 6 months old.
 - Secrets → Cloudflare token in GitHub Secrets only; never in repo.
 
 ## Testing strategy
@@ -125,5 +125,5 @@ PR / push to main → `pnpm install --frozen-lockfile` (cached) → `biome ci` �
 
 ## Responsive approach
 - ≥1024px: top toolbar + right sidebar panels + modal picker.
-- <1024px: bottom tab bar (Pedals / Boards / Cables / Custom / More), full-screen sheets, touch-first selection (bigger anchors, action buttons under selection).
+- <1024px: bottom tab bar (currently **Pedals / Boards / Custom**; **Cables** arrives with P4, **More** is future), full-screen sheets, touch-first selection (bigger anchors, action buttons under selection).
 - One codebase: layout switches via CSS/container queries; canvas interactions unified via pointer events.

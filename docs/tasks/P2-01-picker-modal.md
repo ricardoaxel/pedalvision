@@ -28,11 +28,14 @@ footprint on mobile** so the working canvas stays visible.
 - **Zero new deps by default.** A searchable list over ~207 pedals needs no
   library — justify any exception in this file or a new ADR.
 - cm stays the source of truth — placement reuses the existing store actions
-  (`addItem`/`addBoard`) and stays cm-native. Placement now **de-stacks** via a
-  pure `lib/geometry.ts` `placeItem()` (owner-approved, 2026-10-17: repeated adds
-  must not stack on top of each other — see Notes); it scans a grid of spots from
-  the centred base and falls back to the centred base when a bounded container is
-  full. No pixels in geometry.
+  (`addItem`/`addBoard`) and stays cm-native. **Pedal / custom-pedal placement
+  de-stacks** via a pure `lib/geometry.ts` `placeItem()` (owner-approved,
+  2026-10-17: repeated pedal adds must not stack on top of each other — see
+  Notes); it scans a grid of spots from the centred base and falls back to the
+  centred base when a bounded container is full. **Boards still place at the
+  viewport centre** and can overlap when added repeatedly (same-size boards hide
+  under each other); extending `placeItem` to board world rects is a noted
+  follow-up, not part of P2-01. No pixels in geometry.
 - Keep the **on-screen footprint small on mobile** (owner instruction, 2026-10-15):
   the sheet is dismissible and does not permanently cover the canvas.
 - Do **not** widen the `jacks.kind` vocabulary or touch P2-02 concerns (that is a
@@ -137,3 +140,9 @@ footprint on mobile** so the working canvas stays visible.
 - The modal/sheet is shared by boards + pedals; more tabs (Cables/Custom/More from
   design.md §Responsive approach) arrive with their own tasks (P2-02, P4) — do not
   stub them here beyond what P2-01 needs.
+- **P2 phase-gate folds (2026-10-19):** (1) the ledger rows request the `800`
+  master although the `350` rendition exists — tracked as **P2-10**; (2) catalog
+  **supplies** are excluded from the catalog list by design (the seed's supplies
+  are not placeable; use the Custom tab to create a supply) — `design.md` §Data
+  model corrected; (3) repeated **board** adds do not de-stack (wording above
+  narrowed to pedals; a board-de-stack follow-up is logged in `progress.md`).

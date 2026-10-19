@@ -130,6 +130,10 @@ replaces today's manual/placeholder image flow (P0-04 created the folders/fixtur
   tag is a launch-gate decision (ADR-003 exit criteria), out of scope here.
 - Reuses `toSlug` (`tools/catalog-transform/slug.ts`) and the catalog zod schema —
   no duplicated slug/validation logic.
+- **Phase-gate follow-up (2026-10-19):** the pipeline produces both renditions,
+  but the app still requests the `800` master in every surface (picker ledger
+  rows, mobile info-panel sleeve, canvas). Wiring the `350/` renditions into
+  small UI is **P2-10** (proposed).
 - **Review (code, light `opencode-go/deepseek-v4.1-flash`, HIGH-RISK → ≤2-pass loop):**
   pass 1 **changes-required** → 3 should-fixes fixed (reject a fully-knocked-out
   frame instead of writing an invisible asset; validate the draft/id **before**
