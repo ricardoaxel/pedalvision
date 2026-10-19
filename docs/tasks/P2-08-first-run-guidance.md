@@ -1,6 +1,6 @@
 # P2-08: First-run empty-state guidance
 
-**Phase:** P2 · **Status:** in review — PR #22 · **Model:** build-cheap
+**Phase:** P2 · **Status:** done (merged 2026-10-19, PR #22, squash `30bea5b`) · **Model:** build-cheap
 
 ## Goal
 A brand-new user lands on an empty infinite canvas with only two Add icons
