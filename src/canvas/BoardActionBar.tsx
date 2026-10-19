@@ -1,16 +1,21 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+	type KeyboardEvent,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from "react";
 import { cmToPx } from "../lib/geometry";
 import { boardWorldCorners, isCustomBoard, useScene } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
-
-/** Gap between the board's screen bounds and the bar (px). */
-const GAP = 10;
-/** Keep the bar this far inside the canvas edges (px). */
-const MARGIN = 8;
-/** Mobile keeps the picker bottom tab bar clear (px). */
-const MOBILE_MEDIA = "(max-width: 1023px)";
-const TAB_BAR_HEIGHT = 56;
+import {
+	ACTION_BAR_GAP,
+	ACTION_BAR_MARGIN,
+	ACTION_BAR_MOBILE_MEDIA,
+	ACTION_BAR_TAB_BAR_HEIGHT,
+} from "./actionBarLayout";
+import { nextEnabledIndex } from "./toolbarNav";
 
 /**
  * The HTML action bar under a selected **custom** board (P2-05). Catalog boards
@@ -18,7 +23,9 @@ const TAB_BAR_HEIGHT = 56;
  * board"); a user-made board additionally gets Edit (reopen the creator
  * pre-filled) and Delete here. Positioned from the board's screen coordinates —
  * a sibling of the stage, so its presses never reach the canvas gesture handler
- * — and clamped inside the canvas pane (reserving the mobile tab bar).
+ * — and clamped inside the canvas pane, reserving the mobile tab bar. The
+ * info sheet's height is NOT reserved: selecting a board clears the item
+ * selection, so the P2-03 panel is never open alongside this bar.
  */
 export function BoardActionBar({
 	onEditBoard,
@@ -38,11 +45,13 @@ export function BoardActionBar({
 	const viewportSize = useViewport((state) => state.size);
 
 	const barRef = useRef<HTMLDivElement>(null);
+	const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 	const [barWidth, setBarWidth] = useState(0);
 	const [barHeight, setBarHeight] = useState(0);
+	const [focusIndex, setFocusIndex] = useState(0);
 	const [mobile, setMobile] = useState(false);
 	useEffect(() => {
-		const query = window.matchMedia(MOBILE_MEDIA);
+		const query = window.matchMedia(ACTION_BAR_MOBILE_MEDIA);
 		const update = () => setMobile(query.matches);
 		update();
 		query.addEventListener("change", update);
@@ -64,6 +73,36 @@ export function BoardActionBar({
 
 	if (!board || !visible) return null;
 
+	const actions = [
+		{
+			key: "edit-custom-board",
+			label: "Edit custom board",
+			text: "Edit",
+			danger: false,
+			onClick: () => onEditBoard?.(board.uid),
+		},
+		{
+			key: "delete-custom-board",
+			label: "Delete custom board",
+			text: "Delete",
+			danger: true,
+			onClick: () => {
+				removeBoard(board.uid);
+				clearSelection();
+				// The bar unmounts with the selection — move focus to a stable,
+				// visible control so keyboard users aren't dropped onto <body>.
+				const target =
+					document.querySelector<HTMLElement>(
+						'[data-testid="picker-open-board"]',
+					) ??
+					document.querySelector<HTMLElement>(
+						'[data-testid="picker-bar-boards"]',
+					);
+				if (target && target.offsetParent !== null) target.focus();
+			},
+		},
+	];
+
 	// The board's screen-space bounding box (rotation-correct), so the bar sits
 	// below the lowest corner for any board rotation.
 	const corners = boardWorldCorners(board).map((point) => ({
@@ -75,15 +114,32 @@ export function BoardActionBar({
 	const maxY = Math.max(...corners.map((corner) => corner.y));
 
 	const half = barWidth / 2;
-	const viewportMin = half + MARGIN;
-	const viewportMax = Math.max(viewportMin, viewportSize.width - half - MARGIN);
-	const bottomReserve = mobile ? TAB_BAR_HEIGHT : 0;
+	const viewportMin = half + ACTION_BAR_MARGIN;
+	const viewportMax = Math.max(
+		viewportMin,
+		viewportSize.width - half - ACTION_BAR_MARGIN,
+	);
+	const bottomReserve = mobile ? ACTION_BAR_TAB_BAR_HEIGHT : 0;
 	const left = clamp((minX + maxX) / 2, viewportMin, viewportMax);
 	const top = clamp(
-		maxY + GAP,
-		MARGIN,
-		Math.max(MARGIN, viewportSize.height - bottomReserve - barHeight - MARGIN),
+		maxY + ACTION_BAR_GAP,
+		ACTION_BAR_MARGIN,
+		Math.max(
+			ACTION_BAR_MARGIN,
+			viewportSize.height - bottomReserve - barHeight - ACTION_BAR_MARGIN,
+		),
 	);
+
+	// Roving tabindex: the toolbar is one tab stop; arrows move between buttons
+	// (the same ARIA toolbar contract as the item action bar).
+	const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+		const enabled = actions.map((_action, index) => index);
+		const nextIndex = nextEnabledIndex(enabled, focusIndex, event.key);
+		if (nextIndex === null) return;
+		event.preventDefault();
+		setFocusIndex(nextIndex);
+		buttonRefs.current[nextIndex]?.focus();
+	};
 
 	return (
 		<div
@@ -92,27 +148,30 @@ export function BoardActionBar({
 			data-testid="board-action-bar"
 			role="toolbar"
 			aria-label="Selected board actions"
+			onKeyDown={handleKeyDown}
 			style={{ left: `${left}px`, top: `${top}px` }}
 		>
-			<button
-				type="button"
-				className="item-action-bar__button"
-				data-testid="edit-custom-board"
-				onClick={() => onEditBoard?.(board.uid)}
-			>
-				Edit
-			</button>
-			<button
-				type="button"
-				className="item-action-bar__button item-action-bar__button--danger"
-				data-testid="delete-custom-board"
-				onClick={() => {
-					removeBoard(board.uid);
-					clearSelection();
-				}}
-			>
-				Delete
-			</button>
+			{actions.map((action, index) => (
+				<button
+					key={action.key}
+					type="button"
+					ref={(element) => {
+						buttonRefs.current[index] = element;
+					}}
+					tabIndex={index === (focusIndex === 1 ? 1 : 0) ? 0 : -1}
+					onFocus={() => setFocusIndex(index)}
+					className={[
+						"item-action-bar__button",
+						action.danger ? "item-action-bar__button--danger" : "",
+					]
+						.join(" ")
+						.trim()}
+					data-testid={action.key}
+					onClick={action.onClick}
+				>
+					{action.text}
+				</button>
+			))}
 		</div>
 	);
 }

@@ -21,6 +21,7 @@ import {
 import type { CustomPedalDefinition, PlacedBoard } from "../state/scene";
 import { PartDrawing } from "./PartDrawing";
 import { effectLabel } from "./pickerFilter";
+import { Section } from "./SheetSection";
 
 /** Effect chips shown before the "All types" reveal (mirrors the picker). */
 const EFFECT_CHIP_PREVIEW = 8;
@@ -530,27 +531,6 @@ export function CustomPedalForm({
 				</div>
 			</aside>
 		</div>
-	);
-}
-
-/** A titled spec-sheet section (mono eyebrow + optional right-aligned aside). */
-function Section({
-	label,
-	aside,
-	children,
-}: {
-	label: string;
-	aside?: ReactNode;
-	children: ReactNode;
-}) {
-	return (
-		<section className="custom__section">
-			<div className="custom__section-head">
-				<h3 className="custom__eyebrow">{label}</h3>
-				{aside}
-			</div>
-			{children}
-		</section>
 	);
 }
 

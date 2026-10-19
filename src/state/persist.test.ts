@@ -210,6 +210,44 @@ describe("scene serialization", () => {
 			"ok",
 		]);
 	});
+
+	it("enforces the inline-definition invariant on boards", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [
+				// A custom board (no ref) must carry a bounded customSize.
+				{ uid: "no-size", boardRefId: null, x: 0, y: 0, rotationDeg: 0 },
+				{
+					uid: "too-big",
+					boardRefId: null,
+					customSize: { widthCm: 1e308, heightCm: 40 },
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				// A catalog board must NOT carry a stray customSize.
+				{
+					uid: "catalog-stretched",
+					boardRefId: boss.id,
+					customSize: { widthCm: 999, heightCm: 999 },
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				{
+					uid: "ok",
+					boardRefId: boss.id,
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+			],
+			items: [],
+		});
+		expect(parseSceneSnapshot(raw)?.boards.map((board) => board.uid)).toEqual([
+			"ok",
+		]);
+	});
 });
 
 describe("scene persistence", () => {

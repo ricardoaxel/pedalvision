@@ -169,8 +169,15 @@ test("a custom board persists across a reload", async ({ page }) => {
 		finish: "brushed",
 	});
 
-	await page.reload();
 	const stage = page.getByTestId("stage");
+	const uidBefore = await stage.getAttribute("data-board-uids");
+	expect(uidBefore).toBeTruthy();
+	await expect(stage).toHaveAttribute("data-board-sizes", "80x40");
+
+	await page.reload();
 	await expect(stage).toHaveAttribute("data-custom-boards", "1");
 	await expect(stage).toHaveAttribute("data-board-textures", "brushed");
+	// Same uuid + true cm size survive the reload (not flattened to the fallback).
+	await expect(stage).toHaveAttribute("data-board-uids", uidBefore ?? "");
+	await expect(stage).toHaveAttribute("data-board-sizes", "80x40");
 });

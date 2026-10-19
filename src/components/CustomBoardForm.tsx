@@ -11,6 +11,7 @@ import {
 import { formatDimension, parseDimensionToCm } from "../lib/customPedal";
 import type { CustomBoardDefinition } from "../state/scene";
 import { PartDrawing } from "./PartDrawing";
+import { Section } from "./SheetSection";
 
 interface CustomBoardFormProps {
 	/** Raw form state, owned by the picker so it survives close/tab switches. */
@@ -288,27 +289,6 @@ export function CustomBoardForm({
 				</div>
 			</aside>
 		</div>
-	);
-}
-
-/** A titled spec-sheet section (mono eyebrow + optional right-aligned aside). */
-function Section({
-	label,
-	aside,
-	children,
-}: {
-	label: string;
-	aside?: ReactNode;
-	children: ReactNode;
-}) {
-	return (
-		<section className="custom__section">
-			<div className="custom__section-head">
-				<h3 className="custom__eyebrow">{label}</h3>
-				{aside}
-			</div>
-			{children}
-		</section>
 	);
 }
 

@@ -2,7 +2,7 @@ import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
-import { itemsByZ, useScene } from "../state/scene";
+import { boardFootprint, itemsByZ, useScene } from "../state/scene";
 import {
 	selectSelectedBoardUid,
 	selectSelectedItemUid,
@@ -71,6 +71,13 @@ export function Stage() {
 		.map((board) =>
 			board.boardRefId === null ? (board.texture ?? "matte") : "",
 		)
+		.join(",");
+	const boardUids = boards.map((board) => board.uid).join(",");
+	const boardSizes = boards
+		.map((board) => {
+			const footprint = boardFootprint(board);
+			return `${footprint.widthCm}x${footprint.heightCm}`;
+		})
 		.join(",");
 	const itemParents = items
 		.map((item) => {
@@ -200,6 +207,8 @@ export function Stage() {
 			data-boards={boards.length}
 			data-custom-boards={customBoards}
 			data-board-textures={boardTextures}
+			data-board-uids={boardUids}
+			data-board-sizes={boardSizes}
 			data-rotations={rotations}
 			data-positions={positions}
 			data-items={items.length}

@@ -1,11 +1,4 @@
-import {
-	type ReactNode,
-	useEffect,
-	useLayoutEffect,
-	useMemo,
-	useRef,
-	useState,
-} from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
 import { resolveImageUrl } from "../lib/cdn";
@@ -42,6 +35,7 @@ import {
 	pedalBrands,
 	toggleEffectType,
 } from "./pickerFilter";
+import { Section } from "./SheetSection";
 
 export type PickerTab = "pedals" | "boards" | "custom";
 
@@ -1151,26 +1145,5 @@ function PickerThumb({
 			crossOrigin={crossOrigin}
 			onError={onError}
 		/>
-	);
-}
-
-/** A titled spec-sheet section (mirrors the one in `CustomPedalForm`). */
-function Section({
-	label,
-	aside,
-	children,
-}: {
-	label: string;
-	aside?: ReactNode;
-	children: ReactNode;
-}) {
-	return (
-		<section className="custom__section">
-			<div className="custom__section-head">
-				<h3 className="custom__eyebrow">{label}</h3>
-				{aside}
-			</div>
-			{children}
-		</section>
 	);
 }

@@ -19,17 +19,16 @@ import {
 } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
+import {
+	ACTION_BAR_GAP,
+	ACTION_BAR_MARGIN,
+	ACTION_BAR_MOBILE_MEDIA,
+	ACTION_BAR_TAB_BAR_HEIGHT,
+} from "./actionBarLayout";
 import { nextEnabledIndex } from "./toolbarNav";
 
 /** Degrees the action-bar rotate button advances per tap. */
 export const ACTION_ROTATE_STEP = 45;
-/** Gap between the selection's screen bounds and the bar (px). */
-const GAP = 10;
-/** Keep the bar this far inside the canvas edges (px). */
-const MARGIN = 8;
-/** Mobile keeps the picker bottom tab bar clear (P2-01) — bar height (px). */
-const MOBILE_MEDIA = "(max-width: 1023px)";
-const TAB_BAR_HEIGHT = 56;
 /** Buttons in the leading z-order cluster (kept as one non-breaking group). */
 const Z_ACTION_COUNT = 4;
 
@@ -116,7 +115,7 @@ export function ItemActionBar({
 	// paint over it (P2-01).
 	const [mobile, setMobile] = useState(false);
 	useEffect(() => {
-		const query = window.matchMedia(MOBILE_MEDIA);
+		const query = window.matchMedia(ACTION_BAR_MOBILE_MEDIA);
 		const update = () => setMobile(query.matches);
 		update();
 		query.addEventListener("change", update);
@@ -193,16 +192,22 @@ export function ItemActionBar({
 	const maxY = Math.max(...corners.map((corner) => corner.y));
 
 	const half = barWidth / 2;
-	const viewportMin = half + MARGIN;
-	const viewportMax = Math.max(viewportMin, viewportSize.width - half - MARGIN);
+	const viewportMin = half + ACTION_BAR_MARGIN;
+	const viewportMax = Math.max(
+		viewportMin,
+		viewportSize.width - half - ACTION_BAR_MARGIN,
+	);
 	// Mobile reserves the picker tab bar AND the info sheet's measured height
 	// (the sheet is always present while an item is selected, P2-03).
-	const bottomReserve = mobile ? TAB_BAR_HEIGHT + sheetHeight : 0;
+	const bottomReserve = mobile ? ACTION_BAR_TAB_BAR_HEIGHT + sheetHeight : 0;
 	const left = clamp((minX + maxX) / 2, viewportMin, viewportMax);
 	const top = clamp(
-		maxY + GAP,
-		MARGIN,
-		Math.max(MARGIN, viewportSize.height - bottomReserve - barHeight - MARGIN),
+		maxY + ACTION_BAR_GAP,
+		ACTION_BAR_MARGIN,
+		Math.max(
+			ACTION_BAR_MARGIN,
+			viewportSize.height - bottomReserve - barHeight - ACTION_BAR_MARGIN,
+		),
 	);
 
 	const button = (action: ActionDef, index: number) => (
