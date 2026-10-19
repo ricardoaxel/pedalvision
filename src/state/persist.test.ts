@@ -154,6 +154,100 @@ describe("scene serialization", () => {
 			expect(parseSceneSnapshot(raw)?.customPedals).toHaveLength(0);
 		}
 	});
+
+	it("round-trips an inline custom board with its finish (P2-05)", () => {
+		const customBoard = {
+			uid: "b2",
+			boardRefId: null,
+			customSize: { widthCm: 80, heightCm: 40 },
+			texture: "wood" as const,
+			name: "Big Rig",
+			brand: "Acme",
+			x: 3,
+			y: 4,
+			rotationDeg: 15,
+		};
+		const parsed = parseSceneSnapshot(
+			serializeScene({ ...snapshot, boards: [customBoard] }),
+		);
+		expect(parsed?.boards).toEqual([customBoard]);
+	});
+
+	it("drops a board with an invalid custom size or unknown finish", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [
+				{
+					uid: "ok",
+					boardRefId: null,
+					customSize: { widthCm: 80, heightCm: 40 },
+					texture: "matte",
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				{
+					uid: "bad-size",
+					boardRefId: null,
+					customSize: { widthCm: 0, heightCm: 40 },
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				{
+					uid: "bad-texture",
+					boardRefId: null,
+					customSize: { widthCm: 80, heightCm: 40 },
+					texture: "velvet",
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+			],
+			items: [],
+		});
+		expect(parseSceneSnapshot(raw)?.boards.map((board) => board.uid)).toEqual([
+			"ok",
+		]);
+	});
+
+	it("enforces the inline-definition invariant on boards", () => {
+		const raw = JSON.stringify({
+			version: 1,
+			boards: [
+				// A custom board (no ref) must carry a bounded customSize.
+				{ uid: "no-size", boardRefId: null, x: 0, y: 0, rotationDeg: 0 },
+				{
+					uid: "too-big",
+					boardRefId: null,
+					customSize: { widthCm: 1e308, heightCm: 40 },
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				// A catalog board must NOT carry a stray customSize.
+				{
+					uid: "catalog-stretched",
+					boardRefId: boss.id,
+					customSize: { widthCm: 999, heightCm: 999 },
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				{
+					uid: "ok",
+					boardRefId: boss.id,
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+			],
+			items: [],
+		});
+		expect(parseSceneSnapshot(raw)?.boards.map((board) => board.uid)).toEqual([
+			"ok",
+		]);
+	});
 });
 
 describe("scene persistence", () => {

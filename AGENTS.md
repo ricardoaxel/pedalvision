@@ -86,6 +86,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - Run a **post-phase code review** in a NEW session on the **light model** (`opencode-go/deepseek-v4.1-flash`) — every review pass uses the light model (owner instruction, 2026-10-15): point it at the phase's merged PRs + `docs/design.md` + `docs/roadmap.md`, and ask it to flag contradictions, gaps, and regressions vs the docs (this replaced doc-only reviews after planning — see ADR-004).
 - Fold valid findings back into the docs/tasks **before** starting the next phase.
 - Record the review outcome in `docs/progress.md`.
+- **Optional user-value review (owner request, 2026-10-19):** the `pedal-user` agent (`.opencode/agent/pedal-user.md`) reviews a phase/feature from the **end user's** perspective (signal chain, connections, power, layout ergonomics, gigging workflow). It is **not** a mandatory gate — propose it to the owner when it matters (e.g. after a phase, or before committing to a feature's direction). Run it with `opencode run --agent pedal-user "<prompt>"` (it isn't in the in-session Task list until a session restart). It advises; the owner decides.
 
 ## Hard constraints
 

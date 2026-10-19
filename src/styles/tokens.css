@@ -24,6 +24,14 @@
 	--color-custom-fill: #22262b;
 	/* Custom body outline — solid (not dashed), clears 3:1 vs canvas-bg. */
 	--color-custom-stroke: #6f7b88;
+	/* Board surface finishes (P2-05 "Substrate") — desaturated material samples, quiet (pattern under ~1.35:1 vs its base). */
+	--color-finish-matte: #24272b;
+	--color-finish-brushed: #2a2f35;
+	--color-finish-brushed-ink: #3b434c;
+	--color-finish-wood: #2a2620;
+	--color-finish-wood-ink: #382f26;
+	--color-finish-tolex: #1b1d20;
+	--color-finish-tolex-ink: #2a2d31;
 	/* Soft lift shadow under a pedal while it is dragged (canvas). */
 	--color-item-shadow: rgb(0 0 0 / 0.5);
 
@@ -153,6 +161,13 @@
 	--color-board-draft-fill: #eceff1;
 	--color-custom-fill: #e9ecee;
 	--color-custom-stroke: #4a545e;
+	--color-finish-matte: #dfe3e7;
+	--color-finish-brushed: #ccd2d8;
+	--color-finish-brushed-ink: #bcc4cc;
+	--color-finish-wood: #e7e1d5;
+	--color-finish-wood-ink: #d3c9b8;
+	--color-finish-tolex: #3d4247;
+	--color-finish-tolex-ink: #4a4f55;
 	--color-item-shadow: rgb(15 23 42 / 0.32);
 
 	/* Surfaces & ink */

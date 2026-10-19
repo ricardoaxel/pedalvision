@@ -1,6 +1,7 @@
 import type Konva from "konva";
 import { useCallback, useEffect, useRef } from "react";
-import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
+import { Group, Image as KonvaImage, Line, Rect, Text } from "react-konva";
+import { type BoardTexture, DEFAULT_BOARD_TEXTURE } from "../lib/boardTexture";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
@@ -8,14 +9,17 @@ import { spaceWarning } from "../state/overlap";
 import {
 	boardDefinition,
 	boardFootprint,
+	isCustomBoard,
 	itemFootprint,
 	type PlacedBoard,
 	type PlacedItem,
 	useScene,
 } from "../state/scene";
 import { useSelection } from "../state/selection";
+import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
-import { CANVAS_FONTS } from "../styles/theme";
+import { CANVAS_FONTS, ITEM_LABEL } from "../styles/theme";
+import { finishBaseColor, finishPatternTile } from "./boardFinish";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
@@ -52,6 +56,8 @@ export function BoardNode({
 	const footprint = boardFootprint(board);
 	const widthPx = cmToPx(footprint.widthCm);
 	const heightPx = cmToPx(footprint.heightCm);
+	const custom = isCustomBoard(board);
+	const scale = useViewport((state) => state.scale);
 
 	const src = definition
 		? resolveImageUrl(definition.imageSource, definition.image, "board", 800)
@@ -117,6 +123,109 @@ export function BoardNode({
 	const showName = heightPx >= 40 && widthPx >= 72;
 	const showDims = heightPx >= 32;
 
+	// Custom board (P2-05 "Substrate"): a notched board filled with its chosen
+	// finish (base + procedural pattern), a solid outline, and an opaque identity
+	// chip carrying the mono CUSTOM tag + name. Catalog boards (image or the
+	// dashed missing-image fallback) are untouched.
+	const finish: BoardTexture = board.texture ?? DEFAULT_BOARD_TEXTURE;
+	const finishBase = finishBaseColor(finish, theme);
+	const finishTile = finishPatternTile(finish, theme);
+	const notch = Math.min(Math.min(widthPx, heightPx) * 0.18, cmToPx(0.9));
+	const boardLabelScale = scale > 0 ? scale : 1;
+	const screenWidth = widthPx * boardLabelScale;
+	const chipInset = ITEM_LABEL.insetPx / boardLabelScale;
+	const chipHeight = Math.min(
+		ITEM_LABEL.heightPx / boardLabelScale,
+		Math.max(0, heightPx - chipInset * 2),
+	);
+	const chipWidth = Math.max(
+		0,
+		Math.min(widthPx - chipInset * 2, 240 / boardLabelScale),
+	);
+	const chipX = (widthPx - chipWidth) / 2;
+	const chipY = heightPx - chipInset - chipHeight;
+	const chipFont = ITEM_LABEL.fontSizePx / boardLabelScale;
+	const tagFont = (ITEM_LABEL.fontSizePx * 0.72) / boardLabelScale;
+	const chipPad = 4 / boardLabelScale;
+	const tagWidth = Math.min(chipWidth * 0.42, tagFont * 4.6 + chipPad);
+	const customName = board.name?.trim() || "Custom board";
+	const showChip =
+		screenWidth >= ITEM_LABEL.minWidthPx &&
+		chipHeight > 0 &&
+		chipWidth > 0 &&
+		widthPx >= notch + 1;
+	const customBody = (
+		<>
+			<Line
+				points={[
+					0,
+					0,
+					widthPx - notch,
+					0,
+					widthPx,
+					notch,
+					widthPx,
+					heightPx,
+					0,
+					heightPx,
+				]}
+				closed
+				fill={finishBase}
+				fillPatternImage={finishTile ?? undefined}
+				fillPriority={finishTile ? "pattern" : "color"}
+				stroke={theme.customStroke}
+				strokeWidth={1}
+				lineJoin="round"
+			/>
+			<Line
+				points={[widthPx - notch, 0, widthPx, notch]}
+				stroke={theme.customStroke}
+				strokeWidth={1}
+				opacity={0.5}
+				listening={false}
+			/>
+			{showChip ? (
+				<Group listening={false}>
+					<Rect
+						x={chipX}
+						y={chipY}
+						width={chipWidth}
+						height={chipHeight}
+						fill={theme.itemLabelBg}
+						cornerRadius={Math.min(chipHeight / 2, 3 / boardLabelScale)}
+					/>
+					<Text
+						text="CUSTOM"
+						x={chipX + chipPad}
+						y={chipY}
+						height={chipHeight}
+						verticalAlign="middle"
+						fontFamily={CANVAS_FONTS.mono}
+						fontSize={tagFont}
+						letterSpacing={0.5 / boardLabelScale}
+						fill={theme.itemLabelInk}
+						wrap="none"
+						listening={false}
+					/>
+					<Text
+						text={customName}
+						x={chipX + chipPad + tagWidth}
+						y={chipY}
+						width={Math.max(0, chipWidth - chipPad * 2 - tagWidth)}
+						height={chipHeight}
+						verticalAlign="middle"
+						fontFamily={CANVAS_FONTS.sans}
+						fontSize={chipFont}
+						fill={theme.itemLabelInk}
+						wrap="none"
+						ellipsis
+						listening={false}
+					/>
+				</Group>
+			) : null}
+		</>
+	);
+
 	return (
 		<Group
 			ref={groupRef}
@@ -140,7 +249,9 @@ export function BoardNode({
 				commitPosition();
 			}}
 		>
-			{status === "loaded" && image ? (
+			{custom ? (
+				customBody
+			) : status === "loaded" && image ? (
 				<KonvaImage image={image} width={widthPx} height={heightPx} />
 			) : (
 				<>

@@ -2,7 +2,7 @@ import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
-import { itemsByZ, useScene } from "../state/scene";
+import { boardFootprint, itemsByZ, useScene } from "../state/scene";
 import {
 	selectSelectedBoardUid,
 	selectSelectedItemUid,
@@ -62,6 +62,23 @@ export function Stage() {
 	const positions = boards
 		.map((board) => `${board.x.toFixed(2)},${board.y.toFixed(2)}`)
 		.join(";");
+	// Custom boards (P2-05): count + their finishes, so e2e can assert a custom
+	// board was created with the chosen texture without touching pixels.
+	const customBoards = boards.filter(
+		(board) => board.boardRefId === null,
+	).length;
+	const boardTextures = boards
+		.map((board) =>
+			board.boardRefId === null ? (board.texture ?? "matte") : "",
+		)
+		.join(",");
+	const boardUids = boards.map((board) => board.uid).join(",");
+	const boardSizes = boards
+		.map((board) => {
+			const footprint = boardFootprint(board);
+			return `${footprint.widthCm}x${footprint.heightCm}`;
+		})
+		.join(",");
 	const itemParents = items
 		.map((item) => {
 			if (item.boardUid === null) return "loose";
@@ -188,6 +205,10 @@ export function Stage() {
 			data-x={x}
 			data-y={y}
 			data-boards={boards.length}
+			data-custom-boards={customBoards}
+			data-board-textures={boardTextures}
+			data-board-uids={boardUids}
+			data-board-sizes={boardSizes}
 			data-rotations={rotations}
 			data-positions={positions}
 			data-items={items.length}

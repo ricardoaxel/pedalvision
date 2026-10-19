@@ -19,8 +19,9 @@ import {
 	validateCustomPedalDraft,
 } from "../lib/customPedal";
 import type { CustomPedalDefinition, PlacedBoard } from "../state/scene";
-import { PartDrawing } from "./PartDrawing";
+import { PART_PREVIEW_SIZES, PartDrawing } from "./PartDrawing";
 import { effectLabel } from "./pickerFilter";
+import { Section } from "./SheetSection";
 
 /** Effect chips shown before the "All types" reveal (mirrors the picker). */
 const EFFECT_CHIP_PREVIEW = 8;
@@ -33,6 +34,8 @@ interface CustomPedalFormProps {
 	targetBoard: PlacedBoard | null;
 	/** Edit mode: the part already exists — saving updates it in place. */
 	editing?: boolean;
+	/** The leading kind control (Pedal · Supply · Board), rendered by the picker. */
+	headerSlot?: ReactNode;
 	/** Called with the validated definition when the CTA is pressed. */
 	onSubmit: (definition: CustomPedalDefinition) => void;
 }
@@ -54,6 +57,7 @@ export function CustomPedalForm({
 	onChange,
 	targetBoard,
 	editing = false,
+	headerSlot,
 	onSubmit,
 }: CustomPedalFormProps) {
 	const [activeJackId, setActiveJackId] = useState<string | null>(null);
@@ -133,6 +137,7 @@ export function CustomPedalForm({
 			jacks={draft.jacks}
 			units={draft.units}
 			activeJackId={activeJackId}
+			startSize={PART_PREVIEW_SIZES[draft.category]}
 		/>
 	);
 
@@ -140,31 +145,7 @@ export function CustomPedalForm({
 		<div className="picker__body picker__body--custom">
 			<div className="custom__sheet">
 				<div className="custom__scroll" data-testid="custom-scroll">
-					<Section label="Type">
-						<fieldset className="segmented" data-testid="custom-category">
-							<legend className="visually-hidden">Category</legend>
-							{(["pedal", "supply"] as const).map((value) => (
-								<button
-									key={value}
-									type="button"
-									className="segmented__option"
-									data-testid={`custom-category-${value}`}
-									aria-pressed={draft.category === value}
-									onClick={() =>
-										patch({
-											category: value,
-											// A supply is its power spec — open the fields.
-											powerEnabled:
-												value === "supply" ? true : draft.powerEnabled,
-										})
-									}
-								>
-									{value === "pedal" ? "Pedal" : "Supply"}
-								</button>
-							))}
-						</fieldset>
-					</Section>
-
+					{headerSlot}
 					<Section label="Identity">
 						<div className="custom__row custom__row--identity">
 							<Field label="Brand" htmlFor="custom-brand">
@@ -551,27 +532,6 @@ export function CustomPedalForm({
 				</div>
 			</aside>
 		</div>
-	);
-}
-
-/** A titled spec-sheet section (mono eyebrow + optional right-aligned aside). */
-function Section({
-	label,
-	aside,
-	children,
-}: {
-	label: string;
-	aside?: ReactNode;
-	children: ReactNode;
-}) {
-	return (
-		<section className="custom__section">
-			<div className="custom__section-head">
-				<h3 className="custom__eyebrow">{label}</h3>
-				{aside}
-			</div>
-			{children}
-		</section>
 	);
 }
 

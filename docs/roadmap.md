@@ -31,10 +31,11 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **done** (merged 2026-10-18, PR #18, squash `c654e56`; owner-approved "Datasheet" direction; includes edit-a-custom-part + the widened `jacks.kind` vocabulary `in|out|exp|exp-in|exp-out|send|return|midi|ctrl|power`).
 - P2-03 Pedal info panel (tags, dimensions, power) **+ space warning** (warn — but still allow — when a pedal overlaps another or extends beyond its board; owner-folded 2026-10-18) — **done** (merged 2026-10-18, PR #19, squash `ef4f5ff`; owner-approved "Readout" → "Specimen Readout" → **"Specimen Cover"** — the specimen image preview: desktop full-bleed banner + measure row, mobile cover peek (64px sleeve) → 72dvh hero)
 - P2-04 Asset-pipeline tooling (bg removal, trim, 800/350 sizes, JSON draft) — **done** (merged 2026-10-19, PR #20, squash `bfbe1fe`; dev-only CLI `tools/asset-pipeline/` + `asset:process`; background→transparency flood fill, trim, EXIF auto-orient, catalog-shaped static draft; zero new deps)
-- P2-05 Custom board creator (any W×D, texture)
+- P2-05 Custom board creator (any W×D, texture) — **in review** (owner-approved "Substrate" direction; custom board = inline `customSize` + procedural finish `matte|brushed|wood|tolex`, edit-in-place, add/move/rotate/delete; PR open).
 - P2-06 Catalog procurement (owner-assisted): brand outreach log + permission tracking + dimension spot-check (S4/S6)
 - P2-07 Asset CDN (R2) — deferred (ADR-002): revisit before catalog exceeds ~2k items
 - P2-08 First-run empty-state guidance (hint overlay / default-open picker — "instant use, easy to learn" lesson) (R6/N2)
+- P2-09 **PROPOSED (pedal-user review, 2026-10-19):** Board info readout + consistent board chrome — extend the info panel to boards (brand/name/true cm dims/finish) and give **every** board the same action bar (Delete; Edit only for custom), instead of catalog boards having no readout + Delete buried in the picker. Also candidate: **duplicate a board**. Design-affecting → designer first.
 
 ## P3 — Output (expand when scheduled)
 - P3-01 Export PNG (detached offscreen Stage, scope: selected-board | all-content w/ fit-cap, pixelRatio ≤2 + total-pixel clamp, verify on iOS Safari) (S1/S2)
@@ -45,7 +46,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 
 ## P4 — Cables (expand when scheduled)
 - P4-01 Cable model + jack anchors in catalog schema — **prereq:** the widened `jacks.kind` vocabulary from P2-02 (see above)
-- P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints
+- P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints. **+ pedal-user review note (2026-10-19):** show jack edges/positions as ticks on the canvas pedal (not only in the info panel) and let the overlap check use a **patch-cable gap** (right-angle vs top-mount), so "no warning" means cableable — not just non-overlapping.
 - P4-03 Auto length calculation + cable list summary
 
 ## P5 — Catalog completion (pre-launch) (expand when scheduled)

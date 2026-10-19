@@ -7,6 +7,7 @@ import type {
 	Jack,
 	Power,
 } from "../catalog/schema";
+import type { BoardTexture } from "../lib/boardTexture";
 import {
 	boardToWorld,
 	type Point,
@@ -25,12 +26,32 @@ export interface PlacedBoard {
 	boardRefId: string | null;
 	/** Footprint override for custom boards (P2-05). */
 	customSize?: { widthCm: number; heightCm: number };
+	/** Custom-board surface finish (P2-05) — only for `boardRefId: null`. */
+	texture?: BoardTexture;
+	/** Optional user label for a custom board (P2-05). */
+	name?: string;
+	/** Optional user brand for a custom board (P2-05). */
+	brand?: string;
 	/** World cm of the board's local origin (its unrotated top-left — the
 	 * rotation pivot; see geometry.ts §BoardTransform). */
 	x: number;
 	y: number;
 	/** Clockwise-positive (Konva convention), any angle. */
 	rotationDeg: number;
+}
+
+/**
+ * The user-editable definition of a custom board (P2-05). Unlike a custom
+ * pedal, a board is never duplicated in v1, so its definition is stored
+ * **inline on `PlacedBoard`** rather than in a separate scene table — no
+ * shared-definition propagation is needed.
+ */
+export interface CustomBoardDefinition {
+	widthCm: number;
+	heightCm: number;
+	texture: BoardTexture;
+	name?: string;
+	brand?: string;
 }
 
 /**
@@ -118,6 +139,26 @@ export function boardDefinition(board: PlacedBoard): CatalogBoard | null {
 	return board.boardRefId ? (BOARD_BY_ID.get(board.boardRefId) ?? null) : null;
 }
 
+/** Is this a user-defined custom board (no catalog ref)? */
+export function isCustomBoard(board: PlacedBoard): boolean {
+	return board.boardRefId === null;
+}
+
+/**
+ * The board's four footprint corners in **world cm**, including its rotation
+ * about its origin. Used by the HTML board action bar (P2-05) to anchor below
+ * the board's real on-screen bounds under any rotation.
+ */
+export function boardWorldCorners(board: PlacedBoard): Point[] {
+	const { widthCm, heightCm } = boardFootprint(board);
+	return [
+		{ x: 0, y: 0 },
+		{ x: widthCm, y: 0 },
+		{ x: widthCm, y: heightCm },
+		{ x: 0, y: heightCm },
+	].map((corner) => boardToWorld(corner, board));
+}
+
 /**
  * The render-relevant data for a placed item, resolving `refId` against the
  * catalog first, then the scene's inline custom pedals (design.md §Data model /
@@ -178,6 +219,41 @@ export function itemFootprint(
 } {
 	const resolved = resolveItem(item, customPedals);
 	return { widthCm: resolved.widthCm, heightCm: resolved.heightCm };
+}
+
+/**
+ * Nudge attached items back inside a custom board after it is **shrunk**
+ * (P2-05 edit). Only an axis that actually got smaller is clamped, so renaming,
+ * retexturing, enlarging, or a deliberate overhang the user left on an unchanged
+ * axis is never moved. Items keep their size and rotation; only their
+ * board-local `x`/`y` change. A rotated item's true AABB is larger than its
+ * unrotated footprint, so a residual overhang can still be flagged by the P2-03
+ * space warning.
+ */
+export function clampItemsToBoard(
+	items: PlacedItem[],
+	boardUid: string,
+	next: { widthCm: number; heightCm: number },
+	previous: { widthCm: number; heightCm: number },
+	customPedals: CustomPedal[] = [],
+): PlacedItem[] {
+	const shrinkX = next.widthCm < previous.widthCm;
+	const shrinkY = next.heightCm < previous.heightCm;
+	if (!shrinkX && !shrinkY) return items;
+	return items.map((item) => {
+		if (item.boardUid !== boardUid) return item;
+		const size = itemFootprint(item, customPedals);
+		const x = shrinkX
+			? Math.min(Math.max(item.x, 0), Math.max(0, next.widthCm - size.widthCm))
+			: item.x;
+		const y = shrinkY
+			? Math.min(
+					Math.max(item.y, 0),
+					Math.max(0, next.heightCm - size.heightCm),
+				)
+			: item.y;
+		return x === item.x && y === item.y ? item : { ...item, x, y };
+	});
 }
 
 /** The custom pedal with `refId`, or null. */
@@ -528,6 +604,17 @@ interface SceneStore {
 	 * of footprint math; see `viewportCenterCm` for the usual "drop at centre".
 	 */
 	addBoard: (boardRefId: string, centerCm: Point) => string;
+	/**
+	 * Add a user-defined custom board centred on `centerCm` (world cm),
+	 * returning its uid (P2-05). The definition is stored inline on the board
+	 * (`customSize` + `texture` + optional name/brand); `boardRefId` is null.
+	 */
+	addCustomBoard: (
+		definition: CustomBoardDefinition,
+		centerCm: Point,
+	) => string;
+	/** Replace a custom board's definition in place (P2-05 edit). */
+	updateCustomBoard: (uid: string, definition: CustomBoardDefinition) => void;
 	moveBoard: (uid: string, xCm: number, yCm: number) => void;
 	rotateBoard: (uid: string, rotationDeg: number) => void;
 	/** Remove a board; its attached items fall loose at their world positions. */
@@ -705,6 +792,57 @@ export const useScene = create<SceneStore>((set) => ({
 		set((state) => ({ boards: [...state.boards, board] }));
 		return uid;
 	},
+	addCustomBoard: (definition, centerCm) => {
+		const uid = crypto.randomUUID();
+		const board: PlacedBoard = {
+			uid,
+			boardRefId: null,
+			customSize: {
+				widthCm: definition.widthCm,
+				heightCm: definition.heightCm,
+			},
+			texture: definition.texture,
+			name: definition.name,
+			brand: definition.brand,
+			x: centerCm.x - definition.widthCm / 2,
+			y: centerCm.y - definition.heightCm / 2,
+			rotationDeg: 0,
+		};
+		set((state) => ({ boards: [...state.boards, board] }));
+		return uid;
+	},
+	updateCustomBoard: (uid, definition) =>
+		set((state) => {
+			const board = state.boards.find((candidate) => candidate.uid === uid);
+			if (!board) return state;
+			const previous = boardFootprint(board);
+			const footprint = {
+				widthCm: definition.widthCm,
+				heightCm: definition.heightCm,
+			};
+			return {
+				boards: state.boards.map((candidate) =>
+					candidate.uid === uid
+						? {
+								...candidate,
+								boardRefId: null,
+								customSize: footprint,
+								texture: definition.texture,
+								name: definition.name,
+								brand: definition.brand,
+							}
+						: candidate,
+				),
+				// A shrink must not strand attached pedals off the deck.
+				items: clampItemsToBoard(
+					state.items,
+					uid,
+					footprint,
+					previous,
+					state.customPedals,
+				),
+			};
+		}),
 	moveBoard: (uid, xCm, yCm) =>
 		set((state) => ({
 			boards: state.boards.map((board) =>

@@ -1,4 +1,6 @@
 import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
+import { isBoardTexture } from "../lib/boardTexture";
+import { MAX_BOARD_DIMENSION_CM } from "../lib/customBoard";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
 import { normalizeAllZ, pruneCustomPedals, useScene } from "./scene";
 
@@ -51,11 +53,36 @@ function isFiniteNumber(value: unknown): value is number {
 	return typeof value === "number" && Number.isFinite(value);
 }
 
-function isPlacedBoard(value: unknown): value is PlacedBoard {
+function isSize(value: unknown): boolean {
 	return (
 		isRecord(value) &&
-		typeof value.uid === "string" &&
-		(value.boardRefId === null || typeof value.boardRefId === "string") &&
+		isFiniteNumber(value.widthCm) &&
+		value.widthCm > 0 &&
+		value.widthCm <= MAX_BOARD_DIMENSION_CM &&
+		isFiniteNumber(value.heightCm) &&
+		value.heightCm > 0 &&
+		value.heightCm <= MAX_BOARD_DIMENSION_CM
+	);
+}
+
+function isPlacedBoard(value: unknown): value is PlacedBoard {
+	if (!isRecord(value)) return false;
+	if (typeof value.uid !== "string") return false;
+	if (value.boardRefId !== null && typeof value.boardRefId !== "string") {
+		return false;
+	}
+	// The inline-definition invariant: a custom board (no ref) MUST carry a
+	// bounded customSize, and a catalog board must NOT carry one (boardFootprint
+	// would otherwise stretch the catalog image to the stray size).
+	if (value.boardRefId === null) {
+		if (!isSize(value.customSize)) return false;
+	} else if (value.customSize !== undefined) {
+		return false;
+	}
+	return (
+		(value.texture === undefined || isBoardTexture(value.texture)) &&
+		(value.name === undefined || typeof value.name === "string") &&
+		(value.brand === undefined || typeof value.brand === "string") &&
 		isFiniteNumber(value.x) &&
 		isFiniteNumber(value.y) &&
 		isFiniteNumber(value.rotationDeg)

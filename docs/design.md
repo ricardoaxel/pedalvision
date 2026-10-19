@@ -13,7 +13,7 @@ src/
   state/          # Zustand stores: scene, selection, viewport, settings
   lib/            # geometry (cm↔px, rotation), scale, units, serialization, share codec
   catalog/        # catalog types, schema (zod), loaders
-  assets/         # local static (icons, board textures)
+  assets/         # local static (icons) — board textures are procedural (tokens/Konva), NOT files (P2-05)
 public/
   pedal-assets/   # (P0-04) v1 images — same-origin, ship with Pages deployment
 tools/
@@ -64,7 +64,7 @@ type CatalogBoard = { id: string, brand: string, name: string, widthCm: number, 
 
 // scene (user data)
 type PlacedItem = { uid: string, refId: string, kind: 'pedal'|'supply', boardUid: string | null, x: number, y: number, rotationDeg: number, z: number } // boardUid = owning board's uid (which container it belongs to), or null when loose; x,y = cm relative to that board (or world when boardUid is null); refId resolves to a catalog item (its `category` must match `kind`) OR an entry in Scene.customPedals
-type PlacedBoard = { uid: string, boardRefId: string | null, customSize?: { widthCm: number, heightCm: number }, x: number, y: number, rotationDeg: number } // world cm; stack order = array order (S6)
+type PlacedBoard = { uid: string, boardRefId: string | null, customSize?: { widthCm: number, heightCm: number }, texture?: BoardTexture, name?: string, brand?: string, x: number, y: number, rotationDeg: number } // world cm; stack order = array order (S6). A custom board (boardRefId null) stores its definition INLINE (customSize + texture + optional name/brand) — P2-05; no separate def table (boards aren't duplicated in v1). BoardTexture = 'matte'|'brushed'|'wood'|'tolex' (procedural finishes, tokens only)
 type Endpoint = { uid: string, kind: 'amp' | 'instrument', x: number, y: number } // world cm — cable termination targets (B2)
 type Cable = { uid: string, from: { itemUid: string, jack: string }, to: { itemUid: string, jack: string } | { endpointUid: string }, color?: string } // length computed, not stored
 // custom pedal definition — embedded in the scene so it travels on share (R6/S1)
@@ -106,7 +106,8 @@ Layering is **per-container, never global.** A *container* is either one board's
 - URL convention (dev + v1 prod): `/pedal-assets/pedals/350/{image}`, built via `assetUrl()` in `src/lib/cdn.ts`. R2 with `{CDN_BASE}` is the deferred path (ADR-002) — revisit before ~2k items. `pnpm assets:sync` (scripts/) is the deferred **R2-era sync tool, unused in v1**.
 - **Image-resolution contract (P1 renderer):** branch on `imageSource` — `mock`/`static` → `assetUrl(kind, size, item.image)`; `url` → use `item.image` directly (an absolute `http(s)` URL, loaded with `crossOrigin="anonymous"`). **Where an official brand image URL is recorded, `url` is preferred; `mock` is the fallback** (ADR-003 §Brand image URLs). CORS-clean hosts display (canvas stays untainted for export); non-CORS hosts + hotlink-blocked URLs fall back to the labeled rectangle. `assetUrl()` does not URL-encode, so the catalog schema guarantees safe filenames (ADR-003). A missing/failed image falls back to a labeled rectangle at the item's cm footprint (P1-03/P1-04).
 - **Cache-poisoning self-heal (P2-01):** a plain no-CORS load of a hotlinked `url` image (e.g. a picker `<img>`) can cache a response **without** `Access-Control-Allow-Origin`; the canvas's later `crossOrigin` request reuses that cached copy and fails the CORS check — for hosts that only send ACAO when the request carries an `Origin` (e.g. `static.roland.com`). Both the canvas loader (`canvas/useImage.ts`) and the picker thumbnails load **CORS-first**, and on failure retry **once under a distinct cache key** (`lib/cdn.ts` `bustCache`, a stable `?pedalvision-v=1`) — a fresh, CORS-clean response. The picker additionally retries **no-CORS** so hosts with no ACAO still display in the DOM (the canvas falls back for those, by design). Both attempts stay `crossOrigin`, so export is never tainted.
-- Lazy loading — **NOT implemented in P1 (deferred).** The design intent is to load an image only when the item enters the viewport (Konva `Image` + an intersection check on the stage transform); today every mounted node eagerly loads its asset on mount. Revisit when item counts / zoom-out workloads warrant it (tracked in `docs/progress.md` → Follow-ups).
+- **Lazy loading — NOT implemented in P1 (deferred).** The design intent is to load an image only when the item enters the viewport (Konva `Image` + an intersection check on the stage transform); today every mounted node eagerly loads its asset on mount. Revisit when item counts / zoom-out workloads warrant it (tracked in `docs/progress.md` → Follow-ups).
+- **Custom-board finishes (P2-05, "Substrate")** are **procedural**, not image assets: `BoardTexture` (`matte|brushed|wood|tolex`) is rendered from finish tokens (`--color-finish-*`, mirrored in `theme.ts`) — a cached offscreen tile applied via Konva `fillPatternImage` on the canvas, and the equivalent CSS/SVG pattern in the DOM creator. Zero new deps/assets; pattern contrast is deliberately below the dot grid so a textured board never out-reads content.
 
 ## CI/CD (ADR-002)
 PR / push to main → `pnpm install --frozen-lockfile` (cached) → `biome ci` → `tsc -b` (`pnpm typecheck`) → `vitest run` → `vite build` → Playwright (chromium only, cached browsers, `vite preview`) → `wrangler-action` Pages deploy (PR = preview URL, main = production).
