@@ -61,6 +61,9 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   export-input `Cable`/`Endpoint` shapes (matching `design.md` §Data model) so
   P4 can wire the store in later without rewriting the export; unit-test the
   both-endpoints rule + endpoint margin with synthetic cables.
+- **Quality:** **Standard is the default** (32 px/cm at 1×, small file); **HD**
+  is opt-in (64 px/cm, up to the area/edge budget). Text/scale-bar physical size
+  stays constant across modes.
 - **Pixel safety:** `pixelRatio ≤ 2`; total output ≤ **16.7 MP** and each edge
   ≤ **8192 px** (fit-scale, then reduce pixelRatio; dimensions may exceed 4096
   as long as the area stays under the old-iOS ceiling). Never export a
@@ -99,10 +102,11 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
    The detached layer's scene canvas is pinned to 1× so device DPR can't inflate
    the iOS budget.
 5. **UI (owner-approved direction):** an Export trigger in the existing toolbar
-   chrome opening a compact export surface with **FORMAT (PNG | PDF)**, the scope
-   choice (selected board vs all content), an output-size + PPI readout, the
-   primary download action, and an inline error/empty state. Desktop + mobile
-   variants; tokens only.
+   chrome opening a compact export surface with **FORMAT (PNG | PDF)**,
+   **QUALITY (Standard | HD, Standard default)**, the scope choice (selected
+   board vs all content), an output-size + PPI readout, the primary download
+   action, and an inline error/empty state. Desktop + mobile variants; tokens
+   only.
 6. **Tests:** Vitest for the pure model (bounds under rotation, selected-board
    exclusion, 30 cm endpoint margin, both-endpoints cable rule, far-off loose
    items/endpoints included, pixel clamp). Playwright (desktop + mobile): create a
@@ -157,7 +161,8 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   all-content includes **every** board, loose item, endpoint and cable (no fit
   cap); uniform `EXPORT_PADDING_CM = 4`; `EXPORT_PX_PER_CM = 32`, `pixelRatio ≤ 2`, and the
   `EXPORT_MAX_PIXELS = 16_777_216` + `EXPORT_MAX_EDGE_PX = 8192` clamp with
-  fit-scale reduction; exposes `outputPpi`. The input carries
+  fit-scale reduction; `ExportQuality` Standard (32 px/cm @1×, default) / HD
+  (64 px/cm, area-capped); exposes `outputPpi` + `pxPerCm`. The input carries
   `endpoints`/`cables` in the design.md shape, so P4 can wire the real store
   without changing the scope rules.
 - **Renderer** (`src/canvas/exportStage.ts`): a detached Konva Stage (never the
@@ -187,8 +192,8 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   **APPROVE** on the follow-up pass for FORMAT + PDF (desktop + mobile, PDF
   selected, paper-light PDF rendered via `pdftoppm`); no findings.
 - **A3 remains an owner/manual device check:** real iOS Safari export.
-- **Checks:** lint / typecheck / test **386** (37 files; 18 in
-  `exportScene.test.ts` + 2 in `pdf.test.ts`) / build / e2e **138 passed +
+- **Checks:** lint / typecheck / test **388** (37 files; 20 in
+  `exportScene.test.ts` + 2 in `pdf.test.ts`) / build / e2e **140 passed +
   7 skipped**. Screenshots `docs/screenshots/P3-01/` (desktop + mobile, dark +
   light, PNG and PDF selected, success, error, both exported PNGs, the PDF, and
   a `pdftoppm` render of it).
@@ -204,6 +209,12 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   fit cap silently dropped an orphan pedal far from both boards. It was removed:
   all content now includes everything, and the pixel clamp (not a crop) handles
   extreme layouts. The “Far-off items were trimmed.” notice is gone.
+- **Standard / HD (owner request, same PR #23):** Standard is now the default
+  (32 px/cm at 1×, small file); HD is opt-in and uses the full iOS-safe budget
+  (64 px/cm, area-capped). The output spec shows quality + PPI. HD text/scale
+  bar physical size matches Standard (constant across fit-scale/quality).
+  `design-reviewer` approved both passes; code review approved after the
+  label-size and clamp-notice fixes.
 - **Known limitation (reviewer nit, documented):** output PPI is raster density;
   catalog board images are 800 px masters, so a large catalog board is upscaled
   in a high-density export. Pedal images are below the ceiling at typical sizes;
