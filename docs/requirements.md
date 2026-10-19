@@ -40,7 +40,7 @@ Guitarists/bassists planning a physical pedalboard; comparing board options; sha
 | F6 | Selection: hover highlight, click/tap select, rotate handle + action buttons (stompboxgarden-style), touch-friendly targets; keyboard shortcuts: delete/duplicate ship with P1, undo/redo shortcuts ship with undo in P3-04 (phased — N2) |
 | F7 | Custom pedal creator: brand, name, **category (pedal/supply)**, W/D (cm/in toggle), effect categories, jack locations (**edge + position along edge**), power (V, AC/DC, mA) |
 | F8 | Save/load: multiple named scenes, IndexedDB + localStorage, autosave (debounced), **undo/redo (snapshot store)**, storage-failure fallback (inline warning + JSON download) |
-| F9 | Export PNG via a **detached offscreen Stage** (never the live stage): scope = selected board (board + attached pedals + cables with BOTH endpoints in scope, endpoints within board bounds + margin) OR all content (fit-capped); pixelRatio ≤2 + total-pixel clamp for iOS; surface-color background |
+| F9 | Export **PNG + PDF** via a **detached offscreen Stage** (never the live stage): scope = selected board (board + attached pedals + cables with BOTH endpoints in scope, endpoints within board bounds + margin) OR all content (fit-capped); PNG follows the app theme, PDF is a **true-scale paper-light raster PDF**; 32 px/cm base, pixelRatio ≤2, 16.7 MP total + 8192 px edge clamp for iOS; opaque surface-color background |
 | F10 | Share: URL-encoded scene (deflate → base64url in hash); recipient gets read-only view |
 | F11 | Responsive from day 1: desktop toolbar/modals, mobile bottom tabs |
 | F12 | Cables: drag-connect pedal→pedal with direction, amp input / instrument endpoints, auto length calc + summary |
@@ -65,6 +65,6 @@ Guitarists/bassists planning a physical pedalboard; comparing board options; sha
 |---|---|
 | A1 | Resize browser window → pedal positions relative to their board are unchanged (the pedalplayground bug, tested) |
 | A2 | `pnpm test`, `pnpm typecheck`, `pnpm lint`, `pnpm e2e` all green in CI |
-| A3 | Export PNG on iOS Safari produces a valid non-blank image |
+| A3 | Export PNG (and PDF) on iOS Safari produces a valid non-blank file |
 | A4 | Save scene → reload app → identical state (positions, rotations, z-order, cables) |
 | A5 | Open share URL in a clean browser → identical scene, read-only (incl. custom pedals — they travel inline in the payload) |
