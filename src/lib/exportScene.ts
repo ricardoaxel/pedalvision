@@ -175,15 +175,6 @@ function rectsIntersect(a: RectCm, b: RectCm): boolean {
 	);
 }
 
-function rectsEqual(a: RectCm, b: RectCm): boolean {
-	return (
-		Math.abs(a.x - b.x) < EPSILON &&
-		Math.abs(a.y - b.y) < EPSILON &&
-		Math.abs(a.widthCm - b.widthCm) < EPSILON &&
-		Math.abs(a.heightCm - b.heightCm) < EPSILON
-	);
-}
-
 /** A board's rotated footprint AABB in world cm. */
 export function boardAabbCm(board: PlacedBoard): RectCm {
 	const { widthCm, heightCm } = boardFootprint(board);
@@ -411,15 +402,49 @@ function allContentPlan(scene: ExportSceneInput): ExportPlan {
 	}
 
 	const content = coreContent ?? allContent;
+	const fitted = boards.length > 0;
+
+	// Keep the payload consistent with the fit-capped frame: content outside the
+	// frame is excluded (not merely clipped) so a far item's missing/CORS-blocked
+	// image can't abort an export the user cannot see. Attached items always
+	// travel with their board; loose items/endpoints must intersect the frame.
+	const includedItems = fitted
+		? items.filter(
+				(item) =>
+					item.boardUid !== null ||
+					rectsIntersect(itemAabbCm(item, boards, customPedals), content),
+			)
+		: items;
+	const includedEndpoints = fitted
+		? endpoints.filter((endpoint) => pointInRect(endpoint, content))
+		: endpoints;
+	const itemUids = new Set(includedItems.map((item) => item.uid));
+	const endpointUids = new Set(
+		includedEndpoints.map((endpoint) => endpoint.uid),
+	);
+	const endIncluded = (end: ExportCableEnd): boolean =>
+		"itemUid" in end
+			? itemUids.has(end.itemUid)
+			: endpointUids.has(end.endpointUid);
+	// All-content cables still obey the no-dangling rule: both ends must survive
+	// the fit cap, so a cable to trimmed content is dropped rather than clipped.
+	const includedCables = fitted
+		? cables.filter((cable) => endIncluded(cable.from) && endIncluded(cable.to))
+		: cables;
+	const trimmed =
+		includedItems.length !== items.length ||
+		includedEndpoints.length !== endpoints.length ||
+		includedCables.length !== cables.length;
+
 	return buildPlan(
 		"all",
 		boards,
-		items,
+		includedItems,
 		customPedals,
-		endpoints,
-		cables,
+		includedEndpoints,
+		includedCables,
 		content,
-		!rectsEqual(content, allContent),
+		trimmed,
 	);
 }
 

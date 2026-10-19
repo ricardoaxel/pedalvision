@@ -2489,6 +2489,11 @@ body {
  * bar (never a full sheet — the canvas is the preview).
  * ------------------------------------------------------------------------- */
 
+.export-trigger:disabled {
+	cursor: progress;
+	opacity: 0.7;
+}
+
 .export-trigger {
 	gap: 6px;
 	font-family: var(--font-mono);

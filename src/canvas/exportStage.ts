@@ -613,10 +613,14 @@ export async function renderExportPng(
 				pixelRatio: plan.pixelRatio,
 				mimeType: "image/png",
 			});
-		} catch {
+		} catch (error) {
+			const tainted =
+				error instanceof DOMException && error.name === "SecurityError";
 			throw new ExportError(
-				"tainted",
-				"An image blocked the export. Try again.",
+				tainted ? "tainted" : "unknown",
+				tainted
+					? "An image blocked the export. Try again."
+					: "The export didn't finish. Try again.",
 			);
 		}
 

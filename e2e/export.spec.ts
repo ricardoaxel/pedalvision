@@ -162,6 +162,31 @@ async function inspectPng(page: Page, buffer: Buffer): Promise<PngStats> {
 	return { ...header, ...stats };
 }
 
+async function samplePixels(
+	page: Page,
+	buffer: Buffer,
+	points: Array<{ x: number; y: number }>,
+): Promise<number[][]> {
+	const base64 = buffer.toString("base64");
+	return page.evaluate(
+		async ({ data, samples }) => {
+			const image = new Image();
+			image.src = `data:image/png;base64,${data}`;
+			await image.decode();
+			const canvas = document.createElement("canvas");
+			canvas.width = image.naturalWidth;
+			canvas.height = image.naturalHeight;
+			const context = canvas.getContext("2d");
+			if (!context) throw new Error("no 2d context");
+			context.drawImage(image, 0, 0);
+			return samples.map((point) =>
+				Array.from(context.getImageData(point.x, point.y, 1, 1).data),
+			);
+		},
+		{ data: base64, samples: points },
+	);
+}
+
 async function downloadPng(page: Page): Promise<Buffer> {
 	const [download] = await Promise.all([
 		page.waitForEvent("download"),
@@ -190,6 +215,14 @@ test("exports the selected board as an opaque, non-blank PNG", async ({
 	expect(stats.decodedHeight).toBe(1216);
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
+
+	// The pedal itself is in the PNG, not just the board: its custom body differs
+	// from the wood board fill. Selected-board frame = 68 × 38 cm at 32 px/cm.
+	const [pedal, boardOnly] = await samplePixels(page, buffer, [
+		{ x: 608, y: 480 },
+		{ x: 1568, y: 928 },
+	]);
+	expect(pedal).not.toEqual(boardOnly);
 
 	await expect(page.getByText("PNG saved")).toBeVisible();
 	await expect(
@@ -259,6 +292,16 @@ test("empty and no-board-selection states are honest", async ({ page }) => {
 	await expect(page.getByTestId("export-download")).toHaveCount(0);
 	await page.getByTestId("export-add-board").click();
 	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	// The picker owns focus — it must not be stolen back by the toolbar trigger.
+	await expect
+		.poll(() =>
+			page.evaluate(
+				() =>
+					document.activeElement?.closest('[data-testid="picker-panel"]') !==
+					null,
+			),
+		)
+		.toBe(true);
 
 	await page.getByTestId("picker-close").click();
 	await seedScene(page, sceneTwoBoards());
@@ -274,6 +317,42 @@ test("empty and no-board-selection states are honest", async ({ page }) => {
 	await expect(selectedBoard).toBeEnabled();
 	await selectedBoard.click();
 	await expect(selectedBoard).toBeChecked();
+});
+
+test("a failed included image fails clearly (no silent fallback)", async ({
+	page,
+}) => {
+	await page.route("**/pedal-assets/**", (route) => route.abort());
+	await seedScene(page, {
+		boards: [
+			{
+				uid: "board-1",
+				boardRefId: "boss-bcb-1000",
+				x: 20,
+				y: 20,
+				rotationDeg: 0,
+			},
+		],
+		items: [
+			{
+				uid: "pedal-1",
+				refId: "boss-ce-3-chorus",
+				kind: "pedal",
+				boardUid: "board-1",
+				x: 5,
+				y: 5,
+				rotationDeg: 0,
+				z: 0,
+			},
+		],
+		customPedals: [],
+	});
+	await openExport(page);
+	await page.getByTestId("export-download").click();
+	await expect(page.getByTestId("export-error")).toBeVisible();
+	await expect(page.getByTestId("export-error")).toContainText(
+		"couldn't be loaded",
+	);
 });
 
 test("mobile: the export tray stays above the tab bar and exports", async ({

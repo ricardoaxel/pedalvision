@@ -154,6 +154,28 @@ describe("resolveExportPlan — selected board", () => {
 		expect(plan.endpoints.map((candidate) => candidate.uid)).toEqual(["amp-1"]);
 	});
 
+	it("includes an attached item's rotated corners in the bounds", () => {
+		const rotatedBoard = board({
+			x: 10,
+			y: 10,
+			rotationDeg: 90,
+			customSize: { widthCm: 40, heightCm: 20 },
+		});
+		const attached = item({ uid: "edge", refId: "custom-2", x: 35, y: 5 });
+		const plan = resolveExportPlan(
+			scene({ boards: [rotatedBoard], items: [attached] }),
+			{ scope: "board", boardUid: "board-1" },
+		);
+
+		// The item's rotated AABB reaches world y=55, 5 cm past the board's own
+		// rotated bounds — the export frame must include it.
+		expect(plan.items.map((candidate) => candidate.uid)).toEqual(["edge"]);
+		expect(plan.boundsCm.y + plan.boundsCm.heightCm).toBeCloseTo(
+			55 + EXPORT_PADDING_CM,
+		);
+		expect(plan.boundsCm.x).toBeCloseTo(-10 - EXPORT_PADDING_CM);
+	});
+
 	it("applies the endpoint margin to the board bounds", () => {
 		const e1 = endpoint("amp-1", 60 + ENDPOINT_MARGIN_CM - 1);
 		const plan = resolveExportPlan(
@@ -258,11 +280,42 @@ describe("resolveExportPlan — all content", () => {
 		});
 
 		expect(plan.trimmed).toBe(true);
+		expect(plan.items.map((candidate) => candidate.uid)).not.toContain("far");
+		expect(plan.items.map((candidate) => candidate.uid)).toContain("near");
 		expect(plan.contentBoundsCm.x + plan.contentBoundsCm.widthCm).toBeLessThan(
 			300,
 		);
 		expect(plan.contentBoundsCm.x).toBeLessThanOrEqual(0);
 		expect(ALL_CONTENT_FIT_RADIUS_CM).toBeGreaterThan(0);
+	});
+
+	it("drops endpoints and cables that the fit cap trimmed", () => {
+		const near = endpoint("near", 60);
+		const far = endpoint("far", 400);
+		const plan = resolveExportPlan(
+			scene({
+				endpoints: [near, far],
+				cables: [
+					{
+						uid: "near-cable",
+						from: { itemUid: "item-1", jack: "out" },
+						to: { endpointUid: "near" },
+					},
+					{
+						uid: "far-cable",
+						from: { itemUid: "item-1", jack: "out" },
+						to: { endpointUid: "far" },
+					},
+				],
+			}),
+			{ scope: "all" },
+		);
+
+		expect(plan.endpoints.map((candidate) => candidate.uid)).toEqual(["near"]);
+		expect(plan.cables.map((candidate) => candidate.uid)).toEqual([
+			"near-cable",
+		]);
+		expect(plan.trimmed).toBe(true);
 	});
 });
 

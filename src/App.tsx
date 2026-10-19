@@ -28,6 +28,7 @@ function App() {
 	const [editingBoardUid, setEditingBoardUid] = useState<string | null>(null);
 	// P3-01 export: a non-modal Print Ticket surface anchored to the toolbar.
 	const [exportOpen, setExportOpen] = useState(false);
+	const [exportBusy, setExportBusy] = useState(false);
 	const exportTriggerRef = useRef<HTMLButtonElement>(null);
 	// P2-03: the info panel is a trailing push rail (desktop) / bottom sheet
 	// (mobile), shown only while an item is selected.
@@ -53,12 +54,14 @@ function App() {
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
+		setExportBusy(false);
 		setExportOpen(true);
 	};
 
 	// Close + return focus to the trigger (the non-modal dialog's contract).
 	const closeExport = () => {
 		setExportOpen(false);
+		setExportBusy(false);
 		requestAnimationFrame(() => exportTriggerRef.current?.focus());
 	};
 
@@ -133,6 +136,7 @@ function App() {
 						aria-haspopup="dialog"
 						aria-expanded={exportOpen}
 						aria-controls="export-panel"
+						disabled={exportBusy}
 						onClick={exportOpen ? closeExport : openExport}
 					>
 						<ExportTriggerContent />
@@ -145,6 +149,7 @@ function App() {
 					<ExportPanel
 						onClose={closeExport}
 						onAddBoard={() => openPicker("boards")}
+						onBusyChange={setExportBusy}
 					/>
 				) : null}
 			</div>

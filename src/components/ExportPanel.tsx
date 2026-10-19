@@ -23,6 +23,8 @@ type Status = "idle" | "preparing" | "success";
 interface ExportPanelProps {
 	onClose: () => void;
 	onAddBoard: () => void;
+	/** Lets the toolbar trigger stay disabled while a bounded export runs. */
+	onBusyChange?: (busy: boolean) => void;
 }
 
 const PANEL_TITLE_ID = "export-title";
@@ -82,7 +84,11 @@ function downloadDataUrl(dataUrl: string, filename: string): void {
  * success/error states. The canvas stays interactive so the selected board can
  * drive the scope while the panel is open.
  */
-export function ExportPanel({ onClose, onAddBoard }: ExportPanelProps) {
+export function ExportPanel({
+	onClose,
+	onAddBoard,
+	onBusyChange,
+}: ExportPanelProps) {
 	const theme = useCanvasTheme();
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
@@ -105,6 +111,10 @@ export function ExportPanel({ onClose, onAddBoard }: ExportPanelProps) {
 
 	const busy = status === "preparing";
 	const isEmpty = boards.length === 0 && items.length === 0;
+
+	useEffect(() => {
+		onBusyChange?.(busy);
+	}, [busy, onBusyChange]);
 
 	// Place focus inside the non-modal dialog on open: the checked scope radio,
 	// or the empty-state CTA. Focus is preserved (never dropped to <body>).
@@ -261,10 +271,7 @@ export function ExportPanel({ onClose, onAddBoard }: ExportPanelProps) {
 						className="export-panel__secondary export-panel__empty-cta"
 						data-testid="export-add-board"
 						data-export-autofocus
-						onClick={() => {
-							onAddBoard();
-							onClose();
-						}}
+						onClick={onAddBoard}
 					>
 						<BoardIcon size={16} />
 						Add a board
