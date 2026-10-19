@@ -31,7 +31,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P2-02 Custom pedal creator (category pedal/supply, power fields, **jack edge + pos along edge**, cm/in toggle) (N3) — **done** (merged 2026-10-18, PR #18, squash `c654e56`; owner-approved "Datasheet" direction; includes edit-a-custom-part + the widened `jacks.kind` vocabulary `in|out|exp|exp-in|exp-out|send|return|midi|ctrl|power`).
 - P2-03 Pedal info panel (tags, dimensions, power) **+ space warning** (warn — but still allow — when a pedal overlaps another or extends beyond its board; owner-folded 2026-10-18) — **done** (merged 2026-10-18, PR #19, squash `ef4f5ff`; owner-approved "Readout" → "Specimen Readout" → **"Specimen Cover"** — the specimen image preview: desktop full-bleed banner + measure row, mobile cover peek (64px sleeve) → 72dvh hero)
 - P2-04 Asset-pipeline tooling (bg removal, trim, 800/350 sizes, JSON draft) — **done** (merged 2026-10-19, PR #20, squash `bfbe1fe`; dev-only CLI `tools/asset-pipeline/` + `asset:process`; background→transparency flood fill, trim, EXIF auto-orient, catalog-shaped static draft; zero new deps)
-- P2-05 Custom board creator (any W×D, texture)
+- P2-05 Custom board creator (any W×D, texture) — **in review** (owner-approved "Substrate" direction; custom board = inline `customSize` + procedural finish `matte|brushed|wood|tolex`, edit-in-place, add/move/rotate/delete; PR open).
 - P2-06 Catalog procurement (owner-assisted): brand outreach log + permission tracking + dimension spot-check (S4/S6)
 - P2-07 Asset CDN (R2) — deferred (ADR-002): revisit before catalog exceeds ~2k items
 - P2-08 First-run empty-state guidance (hint overlay / default-open picker — "instant use, easy to learn" lesson) (R6/N2)

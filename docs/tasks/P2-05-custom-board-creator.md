@@ -1,6 +1,6 @@
 # P2-05: Custom board creator
 
-**Phase:** P2 · **Status:** todo · **Model:** build-cheap
+**Phase:** P2 · **Status:** in review (PR pending) · **Model:** build-cheap
 
 ## Goal
 Let a user create a **custom pedalboard** of any **width × depth** (entered in
@@ -110,3 +110,18 @@ custom board has `boardRefId: null` and carries its own inline definition.
   (≤2-pass loop).
 - Precedent: reuse P2-02's creator patterns (`lib/customPedal.ts` dims helpers,
   `Picker`'s edit flow, `persist.ts` guards).
+- **Landed (2026-10-19):** the **"Substrate"** finish direction was
+  owner-approved before any UI (with: creator in the Custom tab via a
+  `Pedal·Supply·Board` kind segment; a small Edit/Delete action bar under a
+  selected custom board). Shipped `src/lib/boardTexture.ts` (finish enum),
+  `src/lib/customBoard.ts` (draft/validate/units), `src/canvas/boardFinish.ts`
+  (procedural tiles), `src/components/CustomBoardForm.tsx`,
+  `src/canvas/BoardActionBar.tsx`, `src/components/SheetSection.tsx`,
+  `src/canvas/actionBarLayout.ts`; `PlacedBoard.texture|name|brand` +
+  `addCustomBoard`/`updateCustomBoard`/`isCustomBoard`/`boardWorldCorners`.
+  **Design gate:** `design-reviewer` R1 approve-with-changes (unselected Matte
+  swatch blended into the panel) → stronger swatch hairline → R2 **approve**
+  (desktop+mobile, dark+light). **Code review (light, HIGH-RISK ≤2 passes):**
+  pass 1 changes-required (3 should-fixes: bounded persisted sizes, the
+  inline-definition invariant, reload asserts uuid+size; 2 nits) → fixed →
+  pass 2 **APPROVE** (2 nits folded). Tests **358**; e2e **109** (+6 skipped).
