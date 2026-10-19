@@ -221,6 +221,34 @@ export function itemFootprint(
 	return { widthCm: resolved.widthCm, heightCm: resolved.heightCm };
 }
 
+/**
+ * Nudge attached items back inside a custom board after it is resized (P2-05
+ * edit). Items keep their size and rotation; only their board-local `x`/`y`
+ * move, so shrinking a board can never silently strand a pedal off the deck (a
+ * rotated item's true AABB is larger than its unrotated footprint, so a
+ * residual overflow can still be flagged by the P2-03 space warning).
+ */
+export function clampItemsToBoard(
+	items: PlacedItem[],
+	boardUid: string,
+	footprint: { widthCm: number; heightCm: number },
+	customPedals: CustomPedal[] = [],
+): PlacedItem[] {
+	return items.map((item) => {
+		if (item.boardUid !== boardUid) return item;
+		const size = itemFootprint(item, customPedals);
+		const x = Math.min(
+			Math.max(item.x, 0),
+			Math.max(0, footprint.widthCm - size.widthCm),
+		);
+		const y = Math.min(
+			Math.max(item.y, 0),
+			Math.max(0, footprint.heightCm - size.heightCm),
+		);
+		return x === item.x && y === item.y ? item : { ...item, x, y };
+	});
+}
+
 /** The custom pedal with `refId`, or null. */
 export function customPedalById(
 	customPedals: CustomPedal[],
@@ -777,23 +805,33 @@ export const useScene = create<SceneStore>((set) => ({
 		return uid;
 	},
 	updateCustomBoard: (uid, definition) =>
-		set((state) => ({
-			boards: state.boards.map((board) =>
-				board.uid === uid
-					? {
-							...board,
-							boardRefId: null,
-							customSize: {
-								widthCm: definition.widthCm,
-								heightCm: definition.heightCm,
-							},
-							texture: definition.texture,
-							name: definition.name,
-							brand: definition.brand,
-						}
-					: board,
-			),
-		})),
+		set((state) => {
+			const footprint = {
+				widthCm: definition.widthCm,
+				heightCm: definition.heightCm,
+			};
+			return {
+				boards: state.boards.map((board) =>
+					board.uid === uid
+						? {
+								...board,
+								boardRefId: null,
+								customSize: footprint,
+								texture: definition.texture,
+								name: definition.name,
+								brand: definition.brand,
+							}
+						: board,
+				),
+				// A shrink must not strand attached pedals off the deck.
+				items: clampItemsToBoard(
+					state.items,
+					uid,
+					footprint,
+					state.customPedals,
+				),
+			};
+		}),
 	moveBoard: (uid, xCm, yCm) =>
 		set((state) => ({
 			boards: state.boards.map((board) =>

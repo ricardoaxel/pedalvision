@@ -102,7 +102,7 @@ describe("useScene boards slice", () => {
 
 describe("useScene custom boards (P2-05)", () => {
 	beforeEach(() => {
-		useScene.setState({ boards: [] });
+		useScene.setState({ boards: [], items: [] });
 	});
 
 	const definition = {
@@ -153,6 +153,36 @@ describe("useScene custom boards (P2-05)", () => {
 			y: 22,
 			rotationDeg: 30,
 		});
+	});
+
+	it("nudges attached pedals inside a board when it is shrunk", () => {
+		const pedal = catalog.pedals.find(
+			(candidate) => candidate.id === "boss-bd-2-blues-driver",
+		);
+		if (!pedal) throw new Error("test fixture pedal missing from the seed");
+		const uid = useScene
+			.getState()
+			.addCustomBoard(
+				{ widthCm: 60, heightCm: 30, texture: "matte" },
+				{ x: 0, y: 0 },
+			);
+		const itemUid = useScene
+			.getState()
+			.addItem(pedal.id, "pedal", uid, { x: 55, y: 25 });
+		useScene.getState().updateCustomBoard(uid, {
+			widthCm: 30,
+			heightCm: 20,
+			texture: "matte",
+		});
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		expect(item).toBeDefined();
+		if (!item) return;
+		expect(item.x).toBeGreaterThanOrEqual(0);
+		expect(item.y).toBeGreaterThanOrEqual(0);
+		expect(item.x).toBeLessThanOrEqual(30 - pedal.widthCm);
+		expect(item.y).toBeLessThanOrEqual(20 - pedal.heightCm);
 	});
 
 	it("boardWorldCorners maps the rotated footprint to world cm", () => {

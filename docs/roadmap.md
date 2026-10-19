@@ -35,6 +35,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P2-06 Catalog procurement (owner-assisted): brand outreach log + permission tracking + dimension spot-check (S4/S6)
 - P2-07 Asset CDN (R2) — deferred (ADR-002): revisit before catalog exceeds ~2k items
 - P2-08 First-run empty-state guidance (hint overlay / default-open picker — "instant use, easy to learn" lesson) (R6/N2)
+- P2-09 **PROPOSED (pedal-user review, 2026-10-19):** Board info readout + consistent board chrome — extend the info panel to boards (brand/name/true cm dims/finish) and give **every** board the same action bar (Delete; Edit only for custom), instead of catalog boards having no readout + Delete buried in the picker. Also candidate: **duplicate a board**. Design-affecting → designer first.
 
 ## P3 — Output (expand when scheduled)
 - P3-01 Export PNG (detached offscreen Stage, scope: selected-board | all-content w/ fit-cap, pixelRatio ≤2 + total-pixel clamp, verify on iOS Safari) (S1/S2)
@@ -45,7 +46,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 
 ## P4 — Cables (expand when scheduled)
 - P4-01 Cable model + jack anchors in catalog schema — **prereq:** the widened `jacks.kind` vocabulary from P2-02 (see above)
-- P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints
+- P4-02 Drag-connect UI + direction arrows + amp/instrument endpoints. **+ pedal-user review note (2026-10-19):** show jack edges/positions as ticks on the canvas pedal (not only in the info panel) and let the overlap check use a **patch-cable gap** (right-angle vs top-mount), so "no warning" means cableable — not just non-overlapping.
 - P4-03 Auto length calculation + cable list summary
 
 ## P5 — Catalog completion (pre-launch) (expand when scheduled)
