@@ -263,12 +263,13 @@ function computePixelPlan(
 		outputPpi: outputWidthPx / (boundsCm.widthCm / 2.54),
 		quality,
 		pxPerCm,
-		// HD explicitly targets the full safe budget, so hitting it is not a
-		// warning. Standard is the low-file mode; only flag when it can't reach
-		// its 1× target because the content is extreme.
+		// Flag when the content is so large that even the requested mode had to be
+		// fit-scaled (both modes), or Standard could not reach its 1× target. HD
+		// hitting the area budget at fitScale 1 is the intended maximum, not a
+		// warning.
 		clampLimited:
-			quality === "standard" &&
-			(pixelRatio < 1 - EPSILON || fitScale < 1 - EPSILON),
+			fitScale < 1 - EPSILON ||
+			(quality === "standard" && pixelRatio < 1 - EPSILON),
 	};
 }
 

@@ -365,6 +365,21 @@ describe("pixel clamp + output size", () => {
 		);
 	});
 
+	it("HD fit-scales an oversized plan and reports the cap", () => {
+		const huge = board({ customSize: { widthCm: 400, heightCm: 400 } });
+		const plan = resolveExportPlan(scene({ boards: [huge], items: [] }), {
+			scope: "all",
+			quality: "hd",
+		});
+		expect(plan.fitScale).toBeLessThan(1);
+		expect(plan.clampLimited).toBe(true);
+		expect(plan.outputWidthPx).toBeLessThanOrEqual(EXPORT_MAX_EDGE_PX);
+		expect(plan.outputHeightPx).toBeLessThanOrEqual(EXPORT_MAX_EDGE_PX);
+		expect(plan.outputWidthPx * plan.outputHeightPx).toBeLessThanOrEqual(
+			EXPORT_MAX_PIXELS,
+		);
+	});
+
 	it("allows a wide plan past 4096 in Standard within the area budget", () => {
 		const wide = board({ customSize: { widthCm: 180, heightCm: 70 } });
 		const plan = resolveExportPlan(scene({ boards: [wide], items: [] }), {

@@ -3,6 +3,7 @@ import { resolveImageUrl } from "../lib/cdn";
 import {
 	cableEndPointCm,
 	EXPORT_PADDING_CM,
+	EXPORT_STANDARD_PX_PER_CM,
 	ExportError,
 	type ExportFormat,
 	type ExportPlan,
@@ -60,7 +61,7 @@ interface RenderContext {
 	theme: CanvasTheme;
 	/** Output pixels per local (export-stage) pixel (fitScale × pixelRatio). */
 	unit: number;
-	/** Label/text sizing unit — doubled in HD so print text stays legible. */
+	/** Label/text sizing unit — keeps physical text size constant in HD. */
 	labelUnit: number;
 	/** Stage pixels per centimetre for this quality (32 standard / 64 HD). */
 	pxPerCm: number;
@@ -278,7 +279,7 @@ function drawCustomBoard(
 	width: number,
 	height: number,
 ): void {
-	const { theme, unit, pxPerCm } = context;
+	const { theme, unit, labelUnit, pxPerCm } = context;
 	const notch = Math.min(Math.min(width, height) * 0.18, 0.9 * pxPerCm);
 	const finish = board.texture ?? "matte";
 	const pattern = finishPatternTile(finish, theme);
@@ -290,7 +291,7 @@ function drawCustomBoard(
 			fillPatternImage: pattern ?? undefined,
 			fillPriority: pattern ? "pattern" : "color",
 			stroke: theme.customStroke,
-			strokeWidth: 1 / unit,
+			strokeWidth: 1 / labelUnit,
 			lineJoin: "round",
 			listening: false,
 		}),
@@ -299,7 +300,7 @@ function drawCustomBoard(
 		new Konva.Line({
 			points: [width - notch, 0, width, notch],
 			stroke: theme.customStroke,
-			strokeWidth: 1 / unit,
+			strokeWidth: 1 / labelUnit,
 			opacity: 0.5,
 			listening: false,
 		}),
@@ -346,7 +347,7 @@ function drawItem(
 				height,
 				fill: theme.customFill,
 				stroke: theme.customStroke,
-				strokeWidth: 1 / unit,
+				strokeWidth: 1 / labelUnit,
 				cornerRadius: [0, Math.min(width, height) * 0.22, 0, 0],
 				listening: false,
 			}),
@@ -388,9 +389,9 @@ function drawItem(
 					height,
 					fill: theme.boardDraftFill,
 					stroke: theme.boardStroke,
-					strokeWidth: 1 / unit,
-					dash: [3 / unit, 2 / unit],
-					cornerRadius: 2 / unit,
+					strokeWidth: 1 / labelUnit,
+					dash: [3 / labelUnit, 2 / labelUnit],
+					cornerRadius: 2 / labelUnit,
 					listening: false,
 				}),
 			);
@@ -429,7 +430,7 @@ function drawItem(
 }
 
 function drawCables(parent: Konva.Group, context: RenderContext): void {
-	const { plan, theme, unit, labelUnit, pxPerCm } = context;
+	const { plan, theme, labelUnit, pxPerCm } = context;
 	for (const cable of plan.cables) {
 		const from = cableEndPointCm(cable.from, plan);
 		const to = cableEndPointCm(cable.to, plan);
@@ -444,9 +445,9 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 				],
 				stroke: cable.color ?? theme.cable,
 				fill: cable.color ?? theme.cable,
-				strokeWidth: 2 / unit,
-				pointerLength: 8 / unit,
-				pointerWidth: 6 / unit,
+				strokeWidth: 2 / labelUnit,
+				pointerLength: 8 / labelUnit,
+				pointerWidth: 6 / labelUnit,
 				lineCap: "round",
 				listening: false,
 			}),
@@ -460,10 +461,10 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 			new Konva.Circle({
 				x,
 				y,
-				radius: 4 / unit,
+				radius: 4 / labelUnit,
 				fill: theme.canvasBackground,
 				stroke: theme.cable,
-				strokeWidth: 1.5 / unit,
+				strokeWidth: 1.5 / labelUnit,
 				listening: false,
 			}),
 		);
@@ -576,7 +577,9 @@ export async function renderExportFile(
 		plan,
 		theme: renderTheme,
 		unit,
-		labelUnit: plan.quality === "hd" ? unit / 2 : unit,
+		// Keep text/line physical size constant across quality and fit-scale:
+		// local label px scale with the stage density (Standard 1, HD 0.5).
+		labelUnit: EXPORT_STANDARD_PX_PER_CM / plan.pxPerCm,
 		pxPerCm: plan.pxPerCm,
 		images,
 	};
