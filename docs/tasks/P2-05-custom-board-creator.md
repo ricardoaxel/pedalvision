@@ -125,3 +125,12 @@ custom board has `boardRefId: null` and carries its own inline definition.
   pass 1 changes-required (3 should-fixes: bounded persisted sizes, the
   inline-definition invariant, reload asserts uuid+size; 2 nits) → fixed →
   pass 2 **APPROVE** (2 nits folded). Tests **358**; e2e **109** (+6 skipped).
+- **Owner follow-ups (same PR #21):** (a) the empty part-drawing preview now uses
+  **kind-specific proportions** (`PART_PREVIEW_SIZES`: pedal portrait, supply slim
+  horizontal, board larger horizontal). (b) shrinking a custom board **nudges
+  attached pedals back inside** the new footprint (`clampItemsToBoard`, per-axis,
+  only on an actual shrink) so none are silently stranded. (c) new optional
+  `pedal-user` agent (`.opencode/agent/pedal-user.md`) + its **2 review rounds**
+  (round 2 `valuable` / mergeable); non-P2-05 findings deferred to roadmap homes
+  (P3-01 export, P4-02 cable gap, **P2-09 PROPOSED** board readout/chrome, P3-04
+  undo, P3-02 units). Tests **362**; e2e **109** (+6 skipped).
