@@ -22,8 +22,11 @@ export const ENDPOINT_MARGIN_CM = 30;
 /** Uniform margin around the exported content (cm). Holds the scale bar. */
 export const EXPORT_PADDING_CM = 4;
 
-/** Output density at 1× (the live canvas renders at 4 px/cm). */
-export const EXPORT_PX_PER_CM = 32;
+/** Standard export density (the default, small-file mode). */
+export const EXPORT_STANDARD_PX_PER_CM = 32;
+
+/** HD export density: the maximum the iOS-safe pixel budget can provide. */
+export const EXPORT_HD_PX_PER_CM = 64;
 
 /**
  * Hard total-pixel budget. iOS 17 and older cap a canvas at 16,777,216 pixels
@@ -79,6 +82,9 @@ export type ExportScope = "board" | "all";
 /** Downloadable artifact formats (P3-01). */
 export type ExportFormat = "png" | "pdf";
 
+/** Export quality modes: Standard is the default; HD uses the full safe budget. */
+export type ExportQuality = "standard" | "hd";
+
 export interface ExportPlan {
 	scope: ExportScope;
 	boards: PlacedBoard[];
@@ -102,6 +108,10 @@ export interface ExportPlan {
 	fitScale: number;
 	/** Final output density (pixels per inch) — useful for print expectations. */
 	outputPpi: number;
+	/** The selected quality mode. */
+	quality: ExportQuality;
+	/** Export-stage pixels per centimetre (32 standard / 64 HD). */
+	pxPerCm: number;
 	/** True when the pixel clamp reduced the ratio and/or fit scale. */
 	clampLimited: boolean;
 }
@@ -199,6 +209,7 @@ function endpointRect(endpoint: ExportEndpoint): RectCm {
 
 function computePixelPlan(
 	boundsCm: RectCm,
+	quality: ExportQuality,
 ): Pick<
 	ExportPlan,
 	| "stageWidthPx"
@@ -208,10 +219,15 @@ function computePixelPlan(
 	| "outputHeightPx"
 	| "fitScale"
 	| "outputPpi"
+	| "quality"
+	| "pxPerCm"
 	| "clampLimited"
 > {
-	const baseWidthPx = Math.max(1, boundsCm.widthCm * EXPORT_PX_PER_CM);
-	const baseHeightPx = Math.max(1, boundsCm.heightCm * EXPORT_PX_PER_CM);
+	const pxPerCm =
+		quality === "hd" ? EXPORT_HD_PX_PER_CM : EXPORT_STANDARD_PX_PER_CM;
+	const widthRatioCap = quality === "hd" ? EXPORT_MAX_PIXEL_RATIO : 1;
+	const baseWidthPx = Math.max(1, boundsCm.widthCm * pxPerCm);
+	const baseHeightPx = Math.max(1, boundsCm.heightCm * pxPerCm);
 	// Fit down against BOTH limits before rasterizing so the stage itself never
 	// exceeds the budget (a square 2 m board would otherwise blow the area cap).
 	const fitScale = Math.min(
@@ -223,7 +239,7 @@ function computePixelPlan(
 	const stageWidthPx = Math.max(1, Math.round(baseWidthPx * fitScale));
 	const stageHeightPx = Math.max(1, Math.round(baseHeightPx * fitScale));
 	const pixelRatio = Math.min(
-		EXPORT_MAX_PIXEL_RATIO,
+		widthRatioCap,
 		EXPORT_MAX_EDGE_PX / stageWidthPx,
 		EXPORT_MAX_EDGE_PX / stageHeightPx,
 		Math.sqrt(EXPORT_MAX_PIXELS / (stageWidthPx * stageHeightPx)),
@@ -245,8 +261,14 @@ function computePixelPlan(
 		outputHeightPx,
 		fitScale,
 		outputPpi: outputWidthPx / (boundsCm.widthCm / 2.54),
+		quality,
+		pxPerCm,
+		// HD explicitly targets the full safe budget, so hitting it is not a
+		// warning. Standard is the low-file mode; only flag when it can't reach
+		// its 1× target because the content is extreme.
 		clampLimited:
-			pixelRatio < EXPORT_MAX_PIXEL_RATIO - EPSILON || fitScale < 1 - EPSILON,
+			quality === "standard" &&
+			(pixelRatio < 1 - EPSILON || fitScale < 1 - EPSILON),
 	};
 }
 
@@ -258,6 +280,7 @@ function buildPlan(
 	endpoints: ExportEndpoint[],
 	cables: ExportCable[],
 	contentBounds: RectCm,
+	quality: ExportQuality,
 ): ExportPlan {
 	const boundsCm = expandRect(contentBounds, EXPORT_PADDING_CM);
 	return {
@@ -269,13 +292,14 @@ function buildPlan(
 		cables,
 		boundsCm,
 		contentBoundsCm: contentBounds,
-		...computePixelPlan(boundsCm),
+		...computePixelPlan(boundsCm, quality),
 	};
 }
 
 function selectedBoardPlan(
 	scene: ExportSceneInput,
 	boardUid: string,
+	quality: ExportQuality,
 ): ExportPlan {
 	const board = scene.boards.find((candidate) => candidate.uid === boardUid);
 	if (!board) {
@@ -337,10 +361,14 @@ function selectedBoardPlan(
 		[...includedEndpoints.values()],
 		cables,
 		content as RectCm,
+		quality,
 	);
 }
 
-function allContentPlan(scene: ExportSceneInput): ExportPlan {
+function allContentPlan(
+	scene: ExportSceneInput,
+	quality: ExportQuality,
+): ExportPlan {
 	const { boards, items, customPedals } = scene;
 	const endpoints = scene.endpoints ?? [];
 	const cables = scene.cables ?? [];
@@ -370,21 +398,27 @@ function allContentPlan(scene: ExportSceneInput): ExportPlan {
 		endpoints,
 		cables,
 		allContent,
+		quality,
 	);
 }
 
 /** Resolve an export plan (scope + bounds + iOS-safe output size). */
 export function resolveExportPlan(
 	scene: ExportSceneInput,
-	options: { scope: ExportScope; boardUid?: string | null },
+	options: {
+		scope: ExportScope;
+		boardUid?: string | null;
+		quality?: ExportQuality;
+	},
 ): ExportPlan {
+	const quality = options.quality ?? "standard";
 	if (options.scope === "board") {
 		if (!options.boardUid) {
 			throw new ExportError("scope", "Select a board to export it alone.");
 		}
-		return selectedBoardPlan(scene, options.boardUid);
+		return selectedBoardPlan(scene, options.boardUid, quality);
 	}
-	return allContentPlan(scene);
+	return allContentPlan(scene, quality);
 }
 
 /** A filename-safe slug for the download. */

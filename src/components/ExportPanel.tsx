@@ -5,6 +5,7 @@ import {
 	ExportError,
 	type ExportFormat,
 	type ExportPlan,
+	type ExportQuality,
 	type ExportScope,
 	exportFileName,
 	resolveExportPlan,
@@ -125,6 +126,7 @@ export function ExportPanel({
 		selectedBoardUid ? "board" : "all",
 	);
 	const [format, setFormat] = useState<ExportFormat>("png");
+	const [quality, setQuality] = useState<ExportQuality>("standard");
 	const [status, setStatus] = useState<Status>("idle");
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<{
@@ -190,12 +192,12 @@ export function ExportPanel({
 		try {
 			return resolveExportPlan(
 				{ boards, items, customPedals },
-				{ scope, boardUid: selectedBoardUid },
+				{ scope, boardUid: selectedBoardUid, quality },
 			);
 		} catch {
 			return null;
 		}
-	}, [boards, items, customPedals, scope, selectedBoardUid, isEmpty]);
+	}, [boards, items, customPedals, scope, selectedBoardUid, quality, isEmpty]);
 
 	const selectedBoard = selectedBoardUid
 		? boards.find((board) => board.uid === selectedBoardUid)
@@ -248,6 +250,11 @@ export function ExportPanel({
 
 	const chooseScope = (next: ExportScope) => {
 		setScope(next);
+		setError(null);
+	};
+
+	const chooseQuality = (next: ExportQuality) => {
+		setQuality(next);
 		setError(null);
 	};
 
@@ -452,6 +459,49 @@ export function ExportPanel({
 						{scopeHint}
 					</p>
 
+					<fieldset
+						className="export-choice export-choice--spaced"
+						disabled={busy}
+						data-testid="export-quality"
+					>
+						<legend className="export-label">Quality</legend>
+						<div className="export-scope__track">
+							<label
+								className={`export-scope__option${
+									quality === "standard" ? " export-scope__option--active" : ""
+								}`}
+							>
+								<input
+									type="radio"
+									name="export-quality"
+									value="standard"
+									checked={quality === "standard"}
+									disabled={busy}
+									onChange={() => chooseQuality("standard")}
+								/>
+								<span>Standard</span>
+							</label>
+							<label
+								className={`export-scope__option${
+									quality === "hd" ? " export-scope__option--active" : ""
+								}`}
+							>
+								<input
+									type="radio"
+									name="export-quality"
+									value="hd"
+									checked={quality === "hd"}
+									disabled={busy}
+									onChange={() => chooseQuality("hd")}
+								/>
+								<span>HD</span>
+							</label>
+						</div>
+						<p className="export-panel__quality-hint">
+							Standard is smaller; HD uses the full iOS-safe resolution.
+						</p>
+					</fieldset>
+
 					<div className="export-spec" data-testid="export-spec">
 						<div className="export-spec__row">
 							<span className="export-spec__label">Output</span>
@@ -463,7 +513,7 @@ export function ExportPanel({
 						</div>
 						<div className="export-spec__meta">
 							{plan
-								? `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm · ${plan.pixelRatio === 2 ? "2×" : `${plan.pixelRatio.toFixed(1)}×`} · ${Math.round(plan.outputPpi)} PPI`
+								? `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm · ${quality === "hd" ? "HD" : "Standard"} · ${Math.round(plan.outputPpi)} PPI`
 								: "—"}
 						</div>
 					</div>

@@ -339,17 +339,33 @@ describe("pixel clamp + output size", () => {
 		expect(plan.clampLimited).toBe(true);
 	});
 
-	it("uses 32 px/cm and 2× for a normal board (~162 PPI)", () => {
+	it("uses Standard by default: 32 px/cm at 1× (~81 PPI)", () => {
 		const plan = resolveExportPlan(scene(), { scope: "all" });
 		const widthCm = plan.boundsCm.widthCm;
-		expect(plan.outputWidthPx).toBe(Math.floor(widthCm * 32 * plan.pixelRatio));
-		expect(plan.pixelRatio).toBe(2);
-		expect(plan.outputWidthPx).toBeGreaterThan(0);
-		expect(plan.outputHeightPx).toBeGreaterThan(0);
-		expect(plan.outputPpi).toBeGreaterThan(150);
+		expect(plan.quality).toBe("standard");
+		expect(plan.pxPerCm).toBe(32);
+		expect(plan.outputWidthPx).toBe(Math.floor(widthCm * 32));
+		expect(plan.pixelRatio).toBe(1);
+		expect(plan.outputPpi).toBeGreaterThan(75);
+		expect(plan.outputPpi).toBeLessThan(90);
+		expect(plan.clampLimited).toBe(false);
 	});
 
-	it("allows a wide plan past the old 4096 edge within the area budget", () => {
+	it("HD doubles the density and uses the area budget (~200 PPI)", () => {
+		const standard = resolveExportPlan(scene(), { scope: "all" });
+		const hd = resolveExportPlan(scene(), { scope: "all", quality: "hd" });
+		expect(hd.quality).toBe("hd");
+		expect(hd.pxPerCm).toBe(64);
+		expect(hd.outputWidthPx).toBeGreaterThan(standard.outputWidthPx * 2);
+		expect(hd.pixelRatio).toBeGreaterThan(1);
+		expect(hd.pixelRatio).toBeLessThanOrEqual(EXPORT_MAX_PIXEL_RATIO);
+		expect(hd.outputPpi).toBeGreaterThan(180);
+		expect(hd.outputWidthPx * hd.outputHeightPx).toBeLessThanOrEqual(
+			EXPORT_MAX_PIXELS,
+		);
+	});
+
+	it("allows a wide plan past 4096 in Standard within the area budget", () => {
 		const wide = board({ customSize: { widthCm: 180, heightCm: 70 } });
 		const plan = resolveExportPlan(scene({ boards: [wide], items: [] }), {
 			scope: "all",
@@ -360,9 +376,9 @@ describe("pixel clamp + output size", () => {
 		expect(plan.outputWidthPx * plan.outputHeightPx).toBeLessThanOrEqual(
 			EXPORT_MAX_PIXELS,
 		);
-		expect(plan.pixelRatio).toBeLessThan(EXPORT_MAX_PIXEL_RATIO);
-		expect(plan.clampLimited).toBe(true);
-		expect(plan.outputPpi).toBeGreaterThan(80);
+		expect(plan.pixelRatio).toBe(1);
+		expect(plan.clampLimited).toBe(false);
+		expect(plan.outputPpi).toBeGreaterThan(75);
 	});
 
 	it("never returns a zero-size output", () => {

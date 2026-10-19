@@ -2681,6 +2681,12 @@ body {
 	color: var(--color-ink-muted);
 }
 
+.export-panel__quality-hint {
+	margin: 6px 0 0;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
 .export-spec {
 	display: flex;
 	flex-direction: column;

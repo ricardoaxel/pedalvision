@@ -3,7 +3,6 @@ import { resolveImageUrl } from "../lib/cdn";
 import {
 	cableEndPointCm,
 	EXPORT_PADDING_CM,
-	EXPORT_PX_PER_CM,
 	ExportError,
 	type ExportFormat,
 	type ExportPlan,
@@ -42,8 +41,6 @@ import { loadImageWithHeal } from "./loadImage";
  * "paper" palette, then wraps the same raster in a true-scale single-page PDF.
  */
 
-const PX = EXPORT_PX_PER_CM;
-
 export type ExportFileResult =
 	| {
 			format: "png";
@@ -63,6 +60,10 @@ interface RenderContext {
 	theme: CanvasTheme;
 	/** Output pixels per local (export-stage) pixel (fitScale × pixelRatio). */
 	unit: number;
+	/** Label/text sizing unit — doubled in HD so print text stays legible. */
+	labelUnit: number;
+	/** Stage pixels per centimetre for this quality (32 standard / 64 HD). */
+	pxPerCm: number;
 	images: Map<string, HTMLImageElement>;
 }
 
@@ -145,7 +146,7 @@ function labelChip(
 		monoPrefix?: string;
 	},
 ): void {
-	const { unit, theme } = context;
+	const { labelUnit: unit, theme } = context;
 	const inset = ITEM_LABEL.insetPx / unit;
 	const pad = 3 / unit;
 	const chipHeight = Math.max(
@@ -277,8 +278,8 @@ function drawCustomBoard(
 	width: number,
 	height: number,
 ): void {
-	const { theme, unit } = context;
-	const notch = Math.min(Math.min(width, height) * 0.18, 0.9 * PX);
+	const { theme, unit, pxPerCm } = context;
+	const notch = Math.min(Math.min(width, height) * 0.18, 0.9 * pxPerCm);
 	const finish = board.texture ?? "matte";
 	const pattern = finishPatternTile(finish, theme);
 	parent.add(
@@ -322,13 +323,13 @@ function drawItem(
 	context: RenderContext,
 	item: (typeof context.plan.items)[number],
 ): void {
-	const { plan, theme, unit } = context;
+	const { plan, theme, unit, labelUnit, pxPerCm } = context;
 	const resolved = resolveItem(item, plan.customPedals);
-	const width = resolved.widthCm * PX;
-	const height = resolved.heightCm * PX;
+	const width = resolved.widthCm * pxPerCm;
+	const height = resolved.heightCm * pxPerCm;
 	const group = new Konva.Group({
-		x: item.x * PX,
-		y: item.y * PX,
+		x: item.x * pxPerCm,
+		y: item.y * pxPerCm,
 		rotation: item.rotationDeg,
 		listening: false,
 	});
@@ -354,13 +355,13 @@ function drawItem(
 			group.add(
 				new Konva.Text({
 					text: "CUSTOM",
-					x: ITEM_LABEL.insetPx / unit,
-					y: ITEM_LABEL.insetPx / unit,
-					width: Math.max(0, width - (ITEM_LABEL.insetPx * 2) / unit),
+					x: ITEM_LABEL.insetPx / labelUnit,
+					y: ITEM_LABEL.insetPx / labelUnit,
+					width: Math.max(0, width - (ITEM_LABEL.insetPx * 2) / labelUnit),
 					align: "center",
 					fontFamily: CANVAS_FONTS.mono,
-					fontSize: (ITEM_LABEL.fontSizePx * 0.6) / unit,
-					letterSpacing: 0.5 / unit,
+					fontSize: (ITEM_LABEL.fontSizePx * 0.6) / labelUnit,
+					letterSpacing: 0.5 / labelUnit,
 					fill: theme.itemLabelInk,
 					wrap: "none",
 					ellipsis: true,
@@ -380,7 +381,7 @@ function drawItem(
 				}),
 			);
 		} else {
-			const pad = Math.min(4 / unit, width * 0.08);
+			const pad = Math.min(4 / labelUnit, width * 0.08);
 			group.add(
 				new Konva.Rect({
 					width,
@@ -399,10 +400,10 @@ function drawItem(
 						text: resolved.name,
 						x: pad,
 						width: Math.max(0, width - pad * 2),
-						y: height / 2 - 6 / unit,
+						y: height / 2 - 6 / labelUnit,
 						align: "center",
 						fontFamily: CANVAS_FONTS.sans,
-						fontSize: 9 / unit,
+						fontSize: 9 / labelUnit,
 						fill: theme.boardLabel,
 						wrap: "none",
 						ellipsis: true,
@@ -428,14 +429,19 @@ function drawItem(
 }
 
 function drawCables(parent: Konva.Group, context: RenderContext): void {
-	const { plan, theme, unit } = context;
+	const { plan, theme, unit, labelUnit, pxPerCm } = context;
 	for (const cable of plan.cables) {
 		const from = cableEndPointCm(cable.from, plan);
 		const to = cableEndPointCm(cable.to, plan);
 		if (!from || !to) continue;
 		parent.add(
 			new Konva.Arrow({
-				points: [from.x * PX, from.y * PX, to.x * PX, to.y * PX],
+				points: [
+					from.x * pxPerCm,
+					from.y * pxPerCm,
+					to.x * pxPerCm,
+					to.y * pxPerCm,
+				],
 				stroke: cable.color ?? theme.cable,
 				fill: cable.color ?? theme.cable,
 				strokeWidth: 2 / unit,
@@ -448,8 +454,8 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 	}
 
 	for (const endpoint of plan.endpoints) {
-		const x = endpoint.x * PX;
-		const y = endpoint.y * PX;
+		const x = endpoint.x * pxPerCm;
+		const y = endpoint.y * pxPerCm;
 		parent.add(
 			new Konva.Circle({
 				x,
@@ -464,10 +470,10 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 		parent.add(
 			new Konva.Text({
 				text: endpoint.kind === "amp" ? "AMP" : "IN",
-				x: x + 7 / unit,
-				y: y - 5 / unit,
+				x: x + 7 / labelUnit,
+				y: y - 5 / labelUnit,
 				fontFamily: CANVAS_FONTS.mono,
-				fontSize: 9 / unit,
+				fontSize: 9 / labelUnit,
 				fill: theme.boardLabel,
 				listening: false,
 			}),
@@ -476,19 +482,19 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 }
 
 function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
-	const { plan, theme, unit } = context;
+	const { plan, theme, labelUnit, pxPerCm } = context;
 	const contentWidth = plan.contentBoundsCm.widthCm;
 	const lengthCm =
 		contentWidth >= SCALE_BAR_SHORT_BELOW_CM
 			? SCALE_BAR_LONG_CM
 			: SCALE_BAR_SHORT_CM;
-	const startX = plan.contentBoundsCm.x * PX;
+	const startX = plan.contentBoundsCm.x * pxPerCm;
 	const y =
-		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * PX +
-		(EXPORT_PADDING_CM / 2) * PX;
-	const endX = startX + lengthCm * PX;
-	const tick = 4 / unit;
-	const strokeWidth = 1 / unit;
+		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * pxPerCm +
+		(EXPORT_PADDING_CM / 2) * pxPerCm;
+	const endX = startX + lengthCm * pxPerCm;
+	const tick = 4 / labelUnit;
+	const strokeWidth = 1 / labelUnit;
 
 	parent.add(
 		new Konva.Line({
@@ -517,10 +523,10 @@ function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
 	parent.add(
 		new Konva.Text({
 			text: `${lengthCm} cm`,
-			x: endX + 6 / unit,
-			y: y - 5.5 / unit,
+			x: endX + 6 / labelUnit,
+			y: y - 5.5 / labelUnit,
 			fontFamily: CANVAS_FONTS.mono,
-			fontSize: 11 / unit,
+			fontSize: 11 / labelUnit,
 			fill: theme.boardLabel,
 			listening: false,
 		}),
@@ -570,6 +576,8 @@ export async function renderExportFile(
 		plan,
 		theme: renderTheme,
 		unit,
+		labelUnit: plan.quality === "hd" ? unit / 2 : unit,
+		pxPerCm: plan.pxPerCm,
 		images,
 	};
 
@@ -586,8 +594,8 @@ export async function renderExportFile(
 		);
 
 		const content = new Konva.Group({
-			x: -plan.boundsCm.x * PX * plan.fitScale,
-			y: -plan.boundsCm.y * PX * plan.fitScale,
+			x: -plan.boundsCm.x * plan.pxPerCm * plan.fitScale,
+			y: -plan.boundsCm.y * plan.pxPerCm * plan.fitScale,
 			scaleX: plan.fitScale,
 			scaleY: plan.fitScale,
 			listening: false,
@@ -597,14 +605,14 @@ export async function renderExportFile(
 		for (const board of plan.boards) {
 			const footprint = boardFootprint(board);
 			const boardGroup = new Konva.Group({
-				x: board.x * PX,
-				y: board.y * PX,
+				x: board.x * plan.pxPerCm,
+				y: board.y * plan.pxPerCm,
 				rotation: board.rotationDeg,
 				listening: false,
 			});
 			content.add(boardGroup);
-			const width = footprint.widthCm * PX;
-			const height = footprint.heightCm * PX;
+			const width = footprint.widthCm * plan.pxPerCm;
+			const height = footprint.heightCm * plan.pxPerCm;
 
 			if (isCustomBoard(board)) {
 				drawCustomBoard(boardGroup, context, board, width, height);
