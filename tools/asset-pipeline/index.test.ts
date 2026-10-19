@@ -77,16 +77,19 @@ describe("asset-pipeline CLI", () => {
 		}
 	}, 30_000);
 
-	it("rejects a schema-invalid --id before writing any PNGs", () => {
+	it("rejects a schema-invalid --id before writing any PNGs", async () => {
 		const dir = mkdtempSync(join(tmpdir(), "pedalvision-cli-bad-"));
 		try {
+			// A valid input so the run reaches validation by its own path (not an
+			// ENOENT on the read) — proving nothing is written before validation.
+			const input = await writeRawPng(dir);
 			const assets = join(dir, "out");
 			// "a--b" passes IMAGE_PATTERN but fails the catalog ID_PATTERN, so it
 			// is only caught by the draft validation — which must run pre-write.
 			expect(() =>
 				runCli([
 					"--input",
-					join(dir, "does-not-exist.png"),
+					input,
 					"--brand",
 					"Acme",
 					"--name",
