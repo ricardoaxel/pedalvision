@@ -114,6 +114,9 @@ export function ExportPanel({
 
 	useEffect(() => {
 		onBusyChange?.(busy);
+		// Release the trigger if the panel is unmounted mid-export (e.g. opening
+		// the picker from the toolbar) — never leave it permanently disabled.
+		return () => onBusyChange?.(false);
 	}, [busy, onBusyChange]);
 
 	// Place focus inside the non-modal dialog on open: the checked scope radio,

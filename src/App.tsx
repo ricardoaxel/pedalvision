@@ -44,6 +44,7 @@ function App() {
 
 	const openPicker = (tab: PickerTab) => {
 		setExportOpen(false);
+		setExportBusy(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 		setPickerTab(tab);

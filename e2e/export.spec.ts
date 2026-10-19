@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { expect, type Page, test } from "@playwright/test";
+import { openPicker } from "./picker.ts";
 
 const SCENE_KEY = "pedalvision.scene.v1";
 const DARK_BACKGROUND = "#191a1c";
@@ -56,6 +57,33 @@ function sceneTwoBoards(): SceneFixture {
 			},
 		],
 		customPedals: [customPedal("custom-pedal-1", "Fuzz Unit", 10, 6)],
+	};
+}
+
+function sceneCatalog(): SceneFixture {
+	return {
+		boards: [
+			{
+				uid: "board-1",
+				boardRefId: "boss-bcb-1000",
+				x: 20,
+				y: 20,
+				rotationDeg: 0,
+			},
+		],
+		items: [
+			{
+				uid: "pedal-1",
+				refId: "boss-ce-3-chorus",
+				kind: "pedal",
+				boardUid: "board-1",
+				x: 5,
+				y: 5,
+				rotationDeg: 0,
+				z: 0,
+			},
+		],
+		customPedals: [],
 	};
 }
 
@@ -323,36 +351,32 @@ test("a failed included image fails clearly (no silent fallback)", async ({
 	page,
 }) => {
 	await page.route("**/pedal-assets/**", (route) => route.abort());
-	await seedScene(page, {
-		boards: [
-			{
-				uid: "board-1",
-				boardRefId: "boss-bcb-1000",
-				x: 20,
-				y: 20,
-				rotationDeg: 0,
-			},
-		],
-		items: [
-			{
-				uid: "pedal-1",
-				refId: "boss-ce-3-chorus",
-				kind: "pedal",
-				boardUid: "board-1",
-				x: 5,
-				y: 5,
-				rotationDeg: 0,
-				z: 0,
-			},
-		],
-		customPedals: [],
-	});
+	await seedScene(page, sceneCatalog());
 	await openExport(page);
 	await page.getByTestId("export-download").click();
 	await expect(page.getByTestId("export-error")).toBeVisible();
 	await expect(page.getByTestId("export-error")).toContainText(
 		"couldn't be loaded",
 	);
+});
+
+test("opening the picker mid-export releases the toolbar trigger", async ({
+	page,
+}) => {
+	await page.route("**/pedal-assets/**", async (route) => {
+		await new Promise((resolve) => setTimeout(resolve, 800));
+		await route.continue();
+	});
+	await seedScene(page, sceneCatalog());
+	await openExport(page);
+
+	const download = page.waitForEvent("download");
+	await page.getByTestId("export-download").click();
+	// The export panel is unmounted while the bounded export is still running.
+	await openPicker(page, "boards");
+	await download;
+	await page.getByTestId("picker-close").click();
+	await expect(page.getByTestId("export-open")).toBeEnabled();
 });
 
 test("mobile: the export tray stays above the tab bar and exports", async ({
