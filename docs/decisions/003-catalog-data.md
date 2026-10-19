@@ -25,7 +25,7 @@ Two different things are in play:
    c. Community submissions with moderation + attribution (v2 feature; pipeline from P2-04)
    d. Own photos (pedals we own)
 4. Every catalog item carries a `source` tag (`licensed` | `brand-assets` | `community` | `own` | `placeholder` | `synthetic`) so the launch gate is machine-checkable. The committed dev seed uses **`placeholder`**.
-5. **Procurement ownership (S4):** brand outreach + permission ask is owner-side work — tracked as a roadmap task (P2-06), not agent-implementable. The launch gate below sets a **minimum-content bar** so "launch" can't mean "launch with 2 pedals".
+5. **Procurement ownership (S4):** brand outreach + permission ask is owner-side work — tracked as a roadmap task (**P4-04**, renumbered from P2-06), not agent-implementable. The launch gate below sets a **minimum-content bar** so "launch" can't mean "launch with 2 pedals".
 
 ## Per-item sources (owner decision, 2026-10-14)
 
@@ -132,7 +132,7 @@ change the decisions above, it makes the workflow explicit.
   agent (`.opencode/agent/pedal-expert.md`).
 - **AI assists, never invents:** extraction/normalization is machine-assisted;
   conflicts, low-confidence records, and dimension spot-checks are **human
-  gates** (P2-06 / launch exit criteria). Prefer `unknown` over a wrong value.
+  gates** (P4-04 / launch exit criteria). Prefer `unknown` over a wrong value.
 - **Per-item provenance (planned):** retain source, last-verification date, and
   confidence per item — extends the coarse `source` tag. Tracked as a backfill /
   data-model task (`docs/catalog-backfill.md`); not needed for the v1 seed.

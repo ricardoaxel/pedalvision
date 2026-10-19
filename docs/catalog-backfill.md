@@ -127,7 +127,7 @@ it returns the candidate official source + the rights metadata.
 - **Per-item provenance.** Today provenance is the coarse `source` tag. Planned
   enrichment: per-item source, last-verified date, and confidence
   (ADR-003 §Sourcing, rights & ingestion).
-- **Cleared images.** Replace all mocked PNGs (launch gate; owner/P2-06).
+- **Cleared images.** Replace all mocked PNGs (launch gate; owner/P4-04).
 
 ## Backfill model (steps — same as the product plan)
 
