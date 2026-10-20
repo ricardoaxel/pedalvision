@@ -223,7 +223,9 @@ function softLine(
 	kind: "items" | "images" | "boards" | "graph",
 	measure: CapacityMeasure,
 ): string {
-	const denominator = measure.soft ?? measure.hard;
+	// Show the hard cap as the denominator: "200 of 400" is approaching the
+	// limit; using the soft threshold would falsely read as "at the limit".
+	const denominator = measure.hard;
 	switch (kind) {
 		case "items":
 			return `${measure.value} of ${denominator} parts — approaching the item limit.`;

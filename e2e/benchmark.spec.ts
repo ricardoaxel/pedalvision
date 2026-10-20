@@ -103,8 +103,10 @@ function makeItems(
 			refId: refs[index % refs.length].id,
 			kind: refs[index % refs.length].category,
 			boardUid: boards[boardIndex].uid,
-			x: 2 + (local % 20) * 9,
-			y: 2 + Math.floor(local / 20) * 12,
+			// 20×20 grid at 9.5 cm pitch keeps a 400-item fixture inside its
+			// 200×200 cm board (the item origins stay <= 182.5 cm).
+			x: 2 + (local % 20) * 9.5,
+			y: 2 + Math.floor(local / 20) * 9.5,
 			rotationDeg: 0,
 			z: index,
 		};

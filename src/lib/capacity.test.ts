@@ -135,7 +135,7 @@ describe("capacityStatus", () => {
 	it("warns softly at 200 parts and refuses adds at 400", () => {
 		const soft = capacityStatus(scene({ items: items(200) }));
 		expect(soft.items.level).toBe("soft");
-		expect(soft.warning).toBe("200 of 200 parts — approaching the item limit.");
+		expect(soft.warning).toBe("200 of 400 parts — approaching the item limit.");
 
 		const hard = capacityStatus(scene({ items: items(400) }));
 		expect(hard.items.level).toBe("hard");

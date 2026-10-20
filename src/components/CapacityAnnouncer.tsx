@@ -33,6 +33,9 @@ export function CapacityAnnouncer() {
 	const [message, setMessage] = useState("");
 
 	useEffect(() => {
+		// Count changes keep the same key. Never speak for a count-only change:
+		// only an ok→soft / soft→hard / hard→over transition is announced.
+		if (previous.current === key) return;
 		const first = previous.current === null;
 		previous.current = key;
 		if (status.level === "ok") {

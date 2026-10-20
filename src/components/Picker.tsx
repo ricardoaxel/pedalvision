@@ -629,12 +629,16 @@ export function Picker({
 		capacity.boards.level === "hard"
 			? "Board limit reached — remove a board to create another."
 			: null;
-	const stripRefusal = isBoards
-		? (boardRefusal ?? capacity.warning)
-		: isCustom
-			? ((isBoard ? customBoardRefusal : customPedalRefusal) ??
-				capacity.warning)
-			: (activeRefusal ?? capacity.warning);
+	// Editing an existing part/board never adds an object, so a create refusal
+	// would be false; fall back to the plain capacity warning.
+	const stripRefusal = isEditing
+		? capacity.warning
+		: isBoards
+			? (boardRefusal ?? capacity.warning)
+			: isCustom
+				? ((isBoard ? customBoardRefusal : customPedalRefusal) ??
+					capacity.warning)
+				: (activeRefusal ?? capacity.warning);
 	// Edit mode overrides the title/dialog (the eyebrow is a location label) and,
 	// on mobile, swaps the placement hint for the part's identity. The Custom tab
 	// is kind-aware: the board creator has its own title/hint (P2-05).

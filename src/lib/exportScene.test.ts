@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { catalog } from "../catalog/load";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
 import {
 	boardAabbCm,
@@ -318,6 +319,44 @@ describe("resolveExportPlan — all content", () => {
 			"near-cable",
 			"far-cable",
 		]);
+	});
+});
+
+describe("distinctImages", () => {
+	it("dedupes repeated catalog items and includes board art for the export", () => {
+		const catalogBoard = board({
+			uid: "catalog-board",
+			boardRefId: catalog.boards[0].id,
+			customSize: undefined,
+		});
+		const catalogItem = item({
+			uid: "pedal-1",
+			refId: "boss-bd-2-blues-driver",
+			boardUid: "catalog-board",
+		});
+		const plan = resolveExportPlan(
+			{
+				boards: [catalogBoard],
+				items: [
+					catalogItem,
+					{ ...catalogItem, uid: "pedal-2" },
+					{ ...catalogItem, uid: "pedal-3", refId: "custom-1" },
+				],
+				customPedals: [CUSTOM_PEDAL],
+			},
+			{ scope: "all" },
+		);
+		// One pedal URL (repeated three times, one of them a text-only custom
+		// part) + one board URL.
+		expect(plan.distinctImages).toBe(2);
+	});
+
+	it("excludes text-only custom parts and custom boards", () => {
+		const plan = resolveExportPlan(
+			{ boards: [board()], items: [item()], customPedals: [CUSTOM_PEDAL] },
+			{ scope: "all" },
+		);
+		expect(plan.distinctImages).toBe(0);
 	});
 });
 
