@@ -3431,3 +3431,12 @@ body {
 		display: block;
 	}
 }
+
+/* Session-only (IndexedDB unavailable at boot): the register is readable but
+ * its actions cannot be honoured, so they are honestly disabled. P3-05 adds the
+ * explanatory warning/backup UI. */
+.scene-row__open:disabled,
+.scene-panel__new:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}

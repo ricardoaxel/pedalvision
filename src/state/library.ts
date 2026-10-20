@@ -35,6 +35,8 @@ export interface SceneLibraryState {
 	ready: boolean;
 	/** IndexedDB + the index store are usable (P3-05 surfaces a warning). */
 	storageAvailable: boolean;
+	/** Documents could not be read/opened at boot: session-only canvas. */
+	sessionOnly: boolean;
 	saving: boolean;
 	/** ISO timestamp of the last successful write. */
 	lastSavedAt: string | null;
@@ -45,6 +47,7 @@ const INITIAL_STATE: SceneLibraryState = {
 	activeId: null,
 	ready: false,
 	storageAvailable: false,
+	sessionOnly: false,
 	saving: false,
 	lastSavedAt: null,
 };
@@ -129,6 +132,7 @@ export function createSceneLibraryRuntime(
 	let unsubscribe: (() => void) | null = null;
 
 	const persistIndex = (): boolean => {
+		if (store.getState().sessionOnly) return false;
 		const ok = writeSceneIndex(
 			{ version: 1, scenes: store.getState().scenes },
 			deps.storage,
@@ -153,7 +157,7 @@ export function createSceneLibraryRuntime(
 
 	const saveActive = async (): Promise<void> => {
 		const state = store.getState();
-		if (!deps.repo || !state.activeId) return;
+		if (!deps.repo || !state.activeId || state.sessionOnly) return;
 		const entry = activeEntry(state);
 		if (!entry) return;
 		const scene = useScene.getState();
@@ -269,6 +273,7 @@ export function createSceneLibraryRuntime(
 				activeId,
 				ready: true,
 				storageAvailable: false,
+				sessionOnly: true,
 				saving: false,
 				lastSavedAt:
 					scenes.find((entry) => entry.id === activeId)?.updatedAt ?? null,
@@ -371,6 +376,7 @@ export function createSceneLibraryRuntime(
 				activeId: null,
 				ready: true,
 				storageAvailable: false,
+				sessionOnly: true,
 				saving: false,
 				lastSavedAt: null,
 			});
@@ -396,6 +402,7 @@ export function createSceneLibraryRuntime(
 			activeId,
 			ready: true,
 			storageAvailable,
+			sessionOnly: false,
 			saving: false,
 			lastSavedAt:
 				scenes.find((entry) => entry.id === activeId)?.updatedAt ?? null,
@@ -428,7 +435,7 @@ export function createSceneLibraryRuntime(
 	};
 
 	const newScene = async (name?: string): Promise<string | null> => {
-		if (!deps.repo) return null;
+		if (!deps.repo || store.getState().sessionOnly) return null;
 		await autosave.flush();
 		const state = store.getState();
 		const id = newId();
@@ -466,6 +473,7 @@ export function createSceneLibraryRuntime(
 
 	const switchScene = async (id: string): Promise<boolean> => {
 		const state = store.getState();
+		if (state.sessionOnly) return false;
 		if (id === state.activeId) return true;
 		if (!state.scenes.some((entry) => entry.id === id)) return false;
 		await autosave.flush();
@@ -489,6 +497,7 @@ export function createSceneLibraryRuntime(
 	};
 
 	const renameScene = async (id: string, name: string): Promise<boolean> => {
+		if (store.getState().sessionOnly) return false;
 		const nextName = normalizeSceneName(name);
 		if (!nextName) return false;
 		const state = store.getState();
@@ -519,6 +528,7 @@ export function createSceneLibraryRuntime(
 
 	const deleteScene = async (id: string): Promise<boolean> => {
 		const initial = store.getState();
+		if (initial.sessionOnly) return false;
 		if (initial.scenes.length <= 1) return false;
 		const removingActive = initial.activeId === id;
 		if (removingActive) autosave.cancel();

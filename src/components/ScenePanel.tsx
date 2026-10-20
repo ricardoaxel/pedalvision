@@ -146,6 +146,7 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 	const activeId = useSceneLibrary((state) => state.activeId);
 	const saving = useSceneLibrary((state) => state.saving);
 	const storageAvailable = useSceneLibrary((state) => state.storageAvailable);
+	const sessionOnly = useSceneLibrary((state) => state.sessionOnly);
 	const panelRef = useRef<HTMLDivElement>(null);
 	const newSceneRef = useRef<HTMLButtonElement>(null);
 	const renameInputRef = useRef<HTMLInputElement>(null);
@@ -219,6 +220,7 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 	}, [deletingId, onClose, renamingId]);
 
 	const startRename = (entry: SceneIndexEntry) => {
+		if (sessionOnly) return;
 		setDeletingId(null);
 		setRenamingId(entry.id);
 		setRenameValue(entry.name);
@@ -432,6 +434,7 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 								className="scene-row__open"
 								data-scene-open={entry.id}
 								aria-current={active ? "true" : undefined}
+								disabled={sessionOnly}
 								onClick={() => void openScene(entry.id)}
 							>
 								<span className="scene-row__name">{entry.name}</span>
@@ -447,6 +450,7 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 								className="scene-row__action"
 								data-scene-rename={entry.id}
 								aria-label={`Rename ${entry.name}`}
+								disabled={sessionOnly}
 								onClick={() => startRename(entry)}
 							>
 								<PencilIcon size={16} />
@@ -456,7 +460,7 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 								className="scene-row__action scene-row__action--danger"
 								data-scene-delete={entry.id}
 								aria-label={`Delete ${entry.name}`}
-								disabled={hasOneScene}
+								disabled={hasOneScene || sessionOnly}
 								aria-describedby={hasOneScene ? LAST_SCENE_HINT_ID : undefined}
 								onClick={() => {
 									setRenamingId(null);
@@ -480,6 +484,7 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 					className="scene-panel__new"
 					data-testid="scene-new"
 					data-scene-new
+					disabled={sessionOnly}
 					onClick={() => void createScene()}
 				>
 					<span aria-hidden="true">+</span> New scene

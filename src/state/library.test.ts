@@ -104,6 +104,7 @@ function freshStore() {
 		activeId: null,
 		ready: false,
 		storageAvailable: false,
+		sessionOnly: false,
 		saving: false,
 		lastSavedAt: null,
 	}));
@@ -493,6 +494,32 @@ describe("scene library", () => {
 			"Fast B",
 		]);
 		expect(repo.docs.size).toBe(3);
+	});
+
+	it("session-only actions never mutate the stored index", async () => {
+		const indexRaw = JSON.stringify({
+			version: 1,
+			scenes: [
+				{ id: "a", name: "A", updatedAt: "2026-10-19T10:00:00.000Z" },
+				{ id: "b", name: "B", updatedAt: "2026-10-19T09:00:00.000Z" },
+			],
+		});
+		const storage = fakeStorage({
+			[SCENE_INDEX_KEY]: indexRaw,
+			[SETTINGS_KEY]: JSON.stringify({
+				version: 1,
+				units: "cm",
+				activeSceneId: "a",
+			}),
+		});
+		const { runtime, store } = setup({ repo: null, storage });
+		await runtime.boot();
+		expect(store.getState().sessionOnly).toBe(true);
+		expect(await runtime.switchScene("b")).toBe(false);
+		expect(await runtime.deleteScene("b")).toBe(false);
+		expect(await runtime.renameScene("b", "Nope")).toBe(false);
+		expect(await runtime.newScene()).toBeNull();
+		expect(storage.getItem(SCENE_INDEX_KEY)).toBe(indexRaw);
 	});
 
 	it("boots in session-only mode when storage is unavailable", async () => {
