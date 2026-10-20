@@ -2,7 +2,12 @@ import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
-import { boardFootprint, itemsByZ, useScene } from "../state/scene";
+import {
+	boardFootprint,
+	itemsByZ,
+	resolveItem,
+	useScene,
+} from "../state/scene";
 import {
 	selectSelectedBoardUid,
 	selectSelectedItemUid,
@@ -48,6 +53,7 @@ export function Stage() {
 	const setSizeInStore = useViewport((state) => state.setSize);
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
+	const customPedals = useScene((state) => state.customPedals);
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const clearSelection = useSelection((state) => state.clearSelection);
@@ -92,6 +98,12 @@ export function Stage() {
 	const itemRotations = items
 		.map((item) => item.rotationDeg.toFixed(2))
 		.join(",");
+	// Resolved labels (catalog → inline custom → unknown-ref fallback). A shared
+	// scene with an unknown ref must still render a labeled placeholder; e2e
+	// asserts this without reading pixels.
+	const itemLabels = items
+		.map((item) => resolveItem(item, customPedals).name)
+		.join("|");
 	// The actually-rendered draw order (uid list). MUST MIRROR the render layers:
 	// BoardLayer draws each board (array order) with its attached items sorted by
 	// z, then LooseItemLayer draws loose items sorted by z, then DragLayer draws
@@ -215,6 +227,7 @@ export function Stage() {
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
+			data-item-labels={itemLabels}
 			data-item-order={renderOrder}
 			data-selected-item={selectedItemUid ?? ""}
 			data-selected-board={selectedBoardUid ?? ""}

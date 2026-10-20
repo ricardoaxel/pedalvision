@@ -165,7 +165,6 @@ export function createSceneLibraryRuntime(
 	let previewing = false;
 	let previewName = "Shared scene";
 	let previousSnapshot: SceneSnapshot | null = null;
-	let previousActiveId: string | null = null;
 
 	const persistIndex = (): boolean => {
 		if (store.getState().sessionOnly) return false;
@@ -533,7 +532,6 @@ export function createSceneLibraryRuntime(
 				items: scene.items,
 				customPedals: scene.customPedals,
 			};
-			previousActiveId = store.getState().activeId;
 		}
 		previewName = normalizeSceneName(name) ?? "Shared scene";
 		autosave.cancel();
@@ -610,28 +608,19 @@ export function createSceneLibraryRuntime(
 		applyScene(sceneFromDocument(document));
 		autosave.cancel();
 		previousSnapshot = null;
-		previousActiveId = null;
 		previewName = "Shared scene";
 		return { ok: true, id, name: sceneName };
 	};
 
 	const exitPreview = async (): Promise<void> => {
 		if (!previewing) return;
+		// Restore the captured in-memory snapshot *before* re-arming any write
+		// path. The entry flush may have failed (quota/eviction), so reloading the
+		// stored document could silently drop the recipient's unsaved edits.
+		applyScene(previousSnapshot ?? emptyScene());
 		previewing = false;
 		useReadOnly.getState().setReadOnly(false);
-		const activeId = previousActiveId ?? store.getState().activeId;
-		if (activeId && deps.repo) {
-			const document = await loadDocument(activeId);
-			if (document) {
-				applyScene(sceneFromDocument(document));
-				previousSnapshot = null;
-				previousActiveId = null;
-				return;
-			}
-		}
-		applyScene(previousSnapshot ?? emptyScene());
 		previousSnapshot = null;
-		previousActiveId = null;
 	};
 
 	const switchScene = async (id: string): Promise<boolean> => {

@@ -1,4 +1,4 @@
-import { deflateSync, inflateSync, strFromU8, strToU8 } from "fflate";
+import { deflateSync, Inflate, strFromU8, strToU8 } from "fflate";
 import { z } from "zod";
 import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
@@ -347,21 +347,43 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 	}
 	if (compressed.length > SHARE_COMPRESSED_LIMIT_BYTES) return tooLargeDecode();
 
-	// A bounded output buffer turns a link bomb into a deterministic too-large
-	// error instead of an unbounded allocation. fflate truncates to `out`.
+	// Stream the inflation and abort as soon as the decoded payload crosses the
+	// cap. A plain `inflateSync({ out })` would bound memory but still decode the
+	// whole stream, turning a malicious link into a blocking main-thread freeze
+	// before first render. Throwing out of the chunk callback stops fflate.
 	let inflated: Uint8Array;
+	let tooLarge = false;
 	try {
-		inflated = inflateSync(compressed, {
-			out: new Uint8Array(SHARE_DECODED_LIMIT_BYTES + 1),
+		const chunks: Uint8Array[] = [];
+		let total = 0;
+		const inflator = new Inflate((chunk) => {
+			if (tooLarge) return;
+			total += chunk.length;
+			if (total > SHARE_DECODED_LIMIT_BYTES) {
+				tooLarge = true;
+				throw new RangeError("share-payload-too-large");
+			}
+			chunks.push(chunk.slice());
 		});
+		for (let index = 0; index < compressed.length; index += 8_192) {
+			const end = Math.min(index + 8_192, compressed.length);
+			inflator.push(compressed.subarray(index, end), end === compressed.length);
+		}
+		if (tooLarge) return tooLargeDecode();
+		inflated = new Uint8Array(total);
+		let offset = 0;
+		for (const chunk of chunks) {
+			inflated.set(chunk, offset);
+			offset += chunk.length;
+		}
 	} catch {
+		if (tooLarge) return tooLargeDecode();
 		return {
 			ok: false,
 			reason: "corrupt",
 			message: "This share link is damaged.",
 		};
 	}
-	if (inflated.length > SHARE_DECODED_LIMIT_BYTES) return tooLargeDecode();
 
 	let raw: unknown;
 	try {

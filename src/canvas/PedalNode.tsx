@@ -123,7 +123,12 @@ export function PedalNode({
 	const label = resolved.name;
 	const pad = Math.min(4, widthPx * 0.08);
 	const textWidth = Math.max(0, widthPx - pad * 2);
-	const showFallbackText = heightPx >= 26 && widthPx >= 30;
+	// Screen-size gates (not raw px) so the labeled fallback stays legible at
+	// any zoom — the 7 cm × 12 cm unknown-ref footprint is only 28 raw px wide.
+	const labelScale = scale > 0 ? scale : 1;
+	const screenWidth = widthPx * labelScale;
+	const screenHeight = heightPx * labelScale;
+	const showFallbackText = screenHeight >= 18 && screenWidth >= 20;
 
 	// Always-on name label ("Specimen Bench"): a chip inside the pedal's bottom
 	// edge, drawn at screen-constant size (counter-scaled by the stage zoom) so
@@ -131,9 +136,6 @@ export function PedalNode({
 	// narrow to hold a readable name; full opacity when hovered/selected or once
 	// the footprint passes the legibility threshold. A custom part always shows
 	// it (the chip is its identity), so it is exempt from the image-loaded guard.
-	const labelScale = scale > 0 ? scale : 1;
-	const screenWidth = widthPx * labelScale;
-	const screenHeight = heightPx * labelScale;
 	const isCustom = resolved.custom !== null;
 	const showItemLabel =
 		(isCustom || (status === "loaded" && image !== null)) &&

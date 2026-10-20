@@ -181,6 +181,16 @@ describe("share links (P3-03)", () => {
 		});
 	});
 
+	it("aborts a highly compressed link bomb instead of inflating it all", () => {
+		const bomb = `#s=v1:${Buffer.from(
+			deflateSync(new Uint8Array(8 * 1024 * 1024)),
+		).toString("base64url")}`;
+		expect(decodeShareHash(bomb)).toMatchObject({
+			ok: false,
+			reason: "too-large",
+		});
+	});
+
 	it("refuses to encode an over-ceiling scene (never truncates)", () => {
 		const customPedals = Array.from({ length: 1_200 }, (_, index) =>
 			custom(`custom-${index}`, { name: "X".repeat(200) }),

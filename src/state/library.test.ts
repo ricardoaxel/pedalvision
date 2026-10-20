@@ -671,6 +671,38 @@ describe("scene library", () => {
 		expect(useScene.getState().boards[0]?.uid).toBe(recipientBoard);
 	});
 
+	it("restores the in-memory scene on exit even when the entry flush failed", async () => {
+		vi.useFakeTimers();
+		const repo = new FailingRepository();
+		const { runtime } = setup({ repo });
+		await runtime.boot();
+		const recipientBoard = required(
+			useScene.getState().addBoard(bossId, { x: 10, y: 10 }),
+		);
+		// The outgoing flush fails (quota/eviction). The snapshot captured at
+		// enterPreview is the only copy of the recipient's unsaved work.
+		repo.failPuts = true;
+		await runtime.enterPreview(
+			{
+				boards: [
+					{
+						uid: "shared-board",
+						boardRefId: bossId,
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [],
+				customPedals: [],
+			},
+			"Shared board",
+		);
+		await runtime.exitPreview();
+		expect(useReadOnly.getState().readOnly).toBe(false);
+		expect(useScene.getState().boards[0]?.uid).toBe(recipientBoard);
+	});
+
 	it("refuses save-a-copy at the scene cap without leaving preview", async () => {
 		const repo = new MemoryRepository();
 		const { runtime, store } = setup({ repo });
