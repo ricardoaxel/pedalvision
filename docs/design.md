@@ -88,12 +88,12 @@ Layering is **per-container, never global.** A *container* is either one board's
 - **Remove board:** its attached items fall loose (geometry baked, visible rotation preserved) and the loose container is re-normalised, so a freed pedal's old board-relative `z` cannot collide with existing loose items.
 - **Remove item:** its own container is re-normalised.
 
-`z` is part of `PlacedItem` and therefore survives save/reload (A4). The full save system (IndexedDB + autosave + boot reconcile) is P3-02; until then a temporary localStorage mirror keeps `z` across reloads.
+`z` is part of `PlacedItem` and therefore survives save/reload (A4). The P3-02 save system (IndexedDB documents + autosave + boot reconcile) persists it; the old temporary single-scene localStorage mirror was migrated once at first boot.
 
 > This section is the **source of truth** for a future user-facing help/onboarding entry ("how layering works") — see the roadmap's user-help item.
 
 ## Persistence (v1, no backend)
-- `localStorage`: settings + scene index (id → name, updatedAt)
+- `localStorage`: settings (`units`, `activeSceneId`) + scene index (id → name, updatedAt, cached board/part counts). Implemented in P3-02; the pre-P3 temporary single-scene mirror (`pedalvision.scene.v1`) is migrated once into a named scene and removed.
 - `IndexedDB` (via `idb`): scene documents; autosave debounced ~500ms
 - **Boot reconcile (R6/S2):** on boot, reconcile the scene index (localStorage) against the scene documents (IndexedDB) — drop index entries with no document, and surface any orphaned documents back into the index. Handles partial eviction (private mode, extensions, browser settings). Lives in P3-02.
 - Share: `scene → JSON → deflate (fflate) → base64url → location.hash (#s=…)`; recipients get a read-only view ("save a copy" button). Validate with zod + size cap on load. **Custom pedals travel in the scene payload** (R6/S1) so shared scenes render identically on any device (A5). Watch the ~200KB cap interplay (R6/N4): many custom pedals, each with jacks+power, approach the decoded-payload limit — the codec task (P3-03) should note this.

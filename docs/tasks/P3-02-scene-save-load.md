@@ -1,6 +1,6 @@
 # P3-02: Scene save/load + multi-scene index (IndexedDB) + autosave + boot reconcile
 
-**Phase:** P3 · **Status:** todo · **Model:** build-strong
+**Phase:** P3 · **Status:** in review — PR #24 · **Model:** build-strong
 
 ## Goal
 
