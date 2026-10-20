@@ -230,6 +230,10 @@ test("share → read-only → save a copy never overwrites the recipient's scene
 	await expect(page.getByTestId("share-saved")).toBeVisible();
 	await expect(page.getByTestId("share-stamp")).toHaveCount(0);
 	await expect(page.getByTestId("scene-open")).toBeVisible();
+	// The copy is a real editable scene, not a read-only snapshot.
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "2");
+	await waitForSavedItems(page, 2);
 	await openScenes(page);
 	await expect(page.locator("[data-scene-open]")).toHaveCount(3);
 	await expect(
@@ -243,10 +247,11 @@ test("share → read-only → save a copy never overwrites the recipient's scene
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "0");
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-boards", "1");
 
-	// Reload: the saved copy is still active, and the recipient's scene is intact.
+	// Reload: the saved copy (with the pedal added after saving) is still active,
+	// and the recipient's scene is intact.
 	await switchScene(page, "Sender board (copy)");
 	await page.reload();
-	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "2");
 	await switchScene(page, "Mine");
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "0");
 });
@@ -272,7 +277,7 @@ test("an unknown ref keeps its geometry and renders a labeled placeholder", asyn
 }) => {
 	const hash = shareHash({
 		name: "Unknown part",
-		boards: [board("b-1", { x: 40, y: 30 })],
+		boards: [board("b-1", { boardRefId: "retired-board", x: 40, y: 30 })],
 		items: [
 			item("i-1", {
 				refId: "mystery-pedal",
@@ -297,6 +302,101 @@ test("an unknown ref keeps its geometry and renders a labeled placeholder", asyn
 	});
 	await page.mouse.click(centre.x, centre.y);
 	await expect(page.getByTestId("info-name")).toHaveText("mystery-pedal");
+});
+
+test("clipboard denial leaves the link selectable", async ({ page }) => {
+	await page.addInitScript(() => {
+		Object.defineProperty(Navigator.prototype, "clipboard", {
+			configurable: true,
+			get: () => ({
+				writeText: async () => {
+					throw new Error("clipboard denied");
+				},
+			}),
+		});
+	});
+	await page.goto("/");
+	await expect(page.getByTestId("stage")).toBeVisible();
+	await addBoard(page, "boss-bcb-1000");
+	await page.getByTestId("share-open").click();
+	await expect(page.getByTestId("share-panel")).toBeVisible();
+	await page.getByTestId("share-copy").click();
+	await expect(page.getByTestId("share-panel")).toContainText(
+		"Couldn’t copy automatically",
+	);
+	const field = page.getByTestId("share-link");
+	await expect(field).toBeFocused();
+	const selected = await field.evaluate((element) => {
+		const input = element as HTMLInputElement;
+		return (
+			input.selectionStart === 0 && input.selectionEnd === input.value.length
+		);
+	});
+	expect(selected).toBe(true);
+});
+
+test("an over-cap shared scene can be saved as an editable copy", async ({
+	page,
+}) => {
+	const boards = Array.from({ length: 11 }, (_, index) =>
+		board(`b-${index + 1}`, { x: index * 12, y: 0 }),
+	);
+	await openShare(page, shareHash({ name: "Over cap", boards, items: [] }));
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await page.getByTestId("share-save-copy").click();
+	await expect(page.getByTestId("share-saved")).toBeVisible();
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-boards", "11");
+	// Capacity caps guard adding, not loading: the copy is still editable.
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
+	await waitForSavedItems(page, 1);
+	await page.reload();
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-boards", "11");
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
+});
+
+test("shared scenes keep multiple boards, rotations, loose items and pan/zoom", async ({
+	page,
+}) => {
+	const boards = [
+		board("b-1", { x: 10, y: 10 }),
+		board("b-2", { x: 80, y: 10, rotationDeg: 30 }),
+	];
+	const items = [
+		item("i-1", { boardUid: "b-1", x: 5, y: 5, rotationDeg: 0, z: 0 }),
+		item("i-2", { boardUid: "b-2", x: 6, y: 6, rotationDeg: 45, z: 0 }),
+		item("i-3", { boardUid: null, x: 120, y: 80, rotationDeg: 15, z: 0 }),
+	];
+	await openShare(page, shareHash({ name: "Multi board", boards, items }));
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-boards", "2");
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-rotations",
+		"0,30",
+	);
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-positions",
+		"10.00,10.00;80.00,10.00",
+	);
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "3");
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-item-parents",
+		"0,1,loose",
+	);
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-item-rotations",
+		"0.00,45.00,15.00",
+	);
+	// Read-only must not freeze navigation.
+	const stage = page.getByTestId("stage");
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const before = await stage.getAttribute("data-scale");
+	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+	await page.mouse.wheel(0, -300);
+	await expect
+		.poll(async () => await stage.getAttribute("data-scale"))
+		.not.toBe(before);
 });
 
 test("save a copy at the 10-scene cap shows an inline reason", async ({

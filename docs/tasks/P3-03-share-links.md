@@ -95,7 +95,7 @@ A user can turn the active scene into a self-contained URL (`#s=v1:…`) that a 
 - **Share orchestration:** `src/state/share.ts` + `main.tsx` decode after persistence boot; share state/error; link builder; hash cleared on save/exit/dismiss. Sender's address bar is never mutated.
 - **UI:** `SharePanel.tsx` (sender) + `ShareView.tsx` (stamp, actions, saved notice, error card); `LinkIcon`/`CopyIcon`/`LockIcon`; tokens-only CSS; desktop dock / mobile tray + fixed bottom action bar.
 - **Tests:** 10 codec unit tests + 4 library preview/save/exit/cap tests + 2 read-only guard tests; `e2e/share.spec.ts` (5 tests × desktop + mobile): generate → open read-only → identical geometry, edit attempts blocked, save a copy, recipient scene intact + reload; over-cap share loads with the capacity warning; unknown ref preserves geometry + labeled fallback; 10-scene cap inline reason; damaged link inline error + dismiss.
-- **Checks:** lint / typecheck / test **463** / build / e2e **174 passed + 7 skipped**.
+- **Checks:** lint / typecheck / test **464** / build / e2e **180 passed + 7 skipped**.
 
 ## Performance & cost review (2026-10-20)
 

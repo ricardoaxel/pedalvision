@@ -703,6 +703,35 @@ describe("scene library", () => {
 		expect(useScene.getState().boards[0]?.uid).toBe(recipientBoard);
 	});
 
+	it("stays in preview when the save-a-copy write fails", async () => {
+		vi.useFakeTimers();
+		const repo = new FailingRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		await runtime.enterPreview(
+			{
+				boards: [
+					{
+						uid: "shared-board",
+						boardRefId: bossId,
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [],
+				customPedals: [],
+			},
+			"Shared board",
+		);
+		repo.failPuts = true;
+		const result = await runtime.savePreviewAsCopy();
+		expect(result).toMatchObject({ ok: false, reason: "write" });
+		expect(store.getState().scenes).toHaveLength(1);
+		expect(useReadOnly.getState().readOnly).toBe(true);
+		expect(useScene.getState().boards[0]?.uid).toBe("shared-board");
+	});
+
 	it("refuses save-a-copy at the scene cap without leaving preview", async () => {
 		const repo = new MemoryRepository();
 		const { runtime, store } = setup({ repo });
