@@ -1,6 +1,6 @@
 # P3-06: Capacity budgets + repeatable benchmark
 
-**Phase:** P3 · **Status:** in review — PR pending (do not merge) · **Model:** build-strong
+**Phase:** P3 · **Status:** in review — PR #25 (do not merge) · **Model:** build-strong
 
 > Proposed from the owner-requested capacity research (2026-10-19) and **scheduled by the owner as the next task** after P3-02 merges. Not part of P3-02; runs before **P3-03** and **P4-01** (cables add another node/cable dimension) and before raising the 10-scene cap.
 
