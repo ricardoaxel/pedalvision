@@ -80,10 +80,10 @@ function items(
 		boardUid,
 		x: options.samePosition
 			? (options.x ?? 30)
-			: (options.x ?? 2) + (index % 20) * 9.5,
+			: (options.x ?? 2) + (index % 20) * 8.5,
 		y: options.samePosition
 			? (options.y ?? 20)
-			: (options.y ?? 2) + Math.floor(index / 20) * 9.5,
+			: (options.y ?? 2) + Math.floor(index / 20) * 8.5,
 		rotationDeg: 0,
 		z: index,
 	}));
@@ -232,8 +232,8 @@ test.describe("capacity Load Chart", () => {
 			refId: FIRST_PEDAL,
 			kind: "pedal" as const,
 			boardUid: boards[index % boards.length].uid,
-			x: 2 + (index % 20) * 9.5,
-			y: 2 + Math.floor(index / 20) * 9.5,
+			x: 2 + (index % 20) * 8.5,
+			y: 2 + Math.floor(index / 20) * 8.5,
 			rotationDeg: 0,
 			z: index,
 		}));

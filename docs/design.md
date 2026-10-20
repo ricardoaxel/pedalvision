@@ -109,15 +109,15 @@ v1 targets, from the report-only benchmark (`pnpm bench:capacity`, desktop Chrom
 
 | Scenario | Distinct images | Doc bytes | Boot | JS heap | rAF (1 s zoom) | Export | PNG |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| 89 distinct · 10 boards | 89 | 12.5 KB | 37 ms | 12.1 MB | 58 fps | 312 ms | 0.55 MB (6485×2586) |
-| 1 board · 50 items (7 images) | 7 | 6.3 KB | 36 ms | 12.1 MB | 61 fps | 238 ms | 1.68 MB (4096²) |
-| 1 board · 100 items (7 images) | 7 | 12.4 KB | 31 ms | 12.1 MB | 61 fps | 294 ms | 2.86 MB (4177×4015) |
-| 1 board · 200 items (7 images) | 7 | 24.8 KB | 109 ms | 12.1 MB | 60 fps | 405 ms | 5.20 MB (4177×4015) |
-| 1 board · 400 items (7 images) | 7 | 49.6 KB | 35 ms | 12.1 MB | 46 fps | 662 ms | 10.01 MB (4177×4015) |
-| 400 items · 89 distinct | 89 | 51.2 KB | 36 ms | 12.1 MB | 36 fps | 621 ms | 5.53 MB (4177×4015) |
-| 10 boards · 400 items (7 images) | 7 | 50.6 KB | 34 ms | 12.1 MB | 52 fps | 308 ms | 1.54 MB (6511×2576) |
-| 10 scenes · 100 items | 7 | 12.4 KB each | 30 ms | 12.1 MB | 61 fps | 297 ms | 2.86 MB (4177×4015) |
-| 50 scenes · 100 items | 7 | 12.4 KB each | 33 ms | 12.1 MB | 61 fps | 287 ms | 2.86 MB (4177×4015) |
+| 89 distinct · 10 boards | 89 | 12.5 KB | 35 ms | 12.1 MB | 58 fps | 304 ms | 0.54 MB (6485×2586) |
+| 1 board · 50 items (7 images) | 7 | 6.3 KB | 37 ms | 12.1 MB | 61 fps | 208 ms | 1.65 MB (4096²) |
+| 1 board · 100 items (7 images) | 7 | 12.4 KB | 31 ms | 12.1 MB | 61 fps | 277 ms | 2.85 MB (4096²) |
+| 1 board · 200 items (7 images) | 7 | 24.8 KB | 111 ms | 12.1 MB | 61 fps | 417 ms | 5.16 MB (4096²) |
+| 1 board · 400 items (7 images) | 7 | 49.6 KB | 35 ms | 12.1 MB | 43 fps | 630 ms | 9.87 MB (4096²) |
+| 400 items · 89 distinct | 89 | 51.2 KB | 36 ms | 12.1 MB | 35 fps | 630 ms | 5.39 MB (4096²) |
+| 10 boards · 400 items (7 images) | 7 | 50.6 KB | 36 ms | 12.1 MB | 49 fps | 319 ms | 1.61 MB (6485×2586) |
+| 10 scenes · 100 items | 7 | 12.4 KB each | 37 ms | 12.1 MB | 61 fps | 280 ms | 2.85 MB (4096²) |
+| 50 scenes · 100 items | 7 | 12.4 KB each | 34 ms | 12.1 MB | 61 fps | 278 ms | 2.85 MB (4096²) |
 
 Boot is wall-clock reload until the scene chrome is visible (includes engine startup); heap is the Chromium JS heap (`performance.memory`), so image decodes held natively are not all counted. Export is **all content, Standard**. No CI timing gate exists — the numbers are a human comparison table.
 
