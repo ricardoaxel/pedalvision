@@ -78,6 +78,8 @@ export function ShareStamp() {
 export function ShareEditCue() {
 	const cue = useReadOnly((state) => state.cue);
 	const clearCue = useReadOnly((state) => state.clearCue);
+	const [saving, setSaving] = useState(false);
+	const [saveError, setSaveError] = useState<string | null>(null);
 	// On mobile, sit above the info sheet when a selection opened it, so the
 	// cue never sandwiches between the sheet and the bottom action bar.
 	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
@@ -85,11 +87,21 @@ export function ShareEditCue() {
 		"--share-cue-bottom": `calc(56px + env(safe-area-inset-bottom) + ${sheetHeight}px + var(--space-2))`,
 	} as CSSProperties;
 	useEffect(() => {
-		if (!cue) return;
+		// Keep the cue up while saving or showing an error; the next pointerdown
+		// still clears it.
+		if (!cue || saving || saveError) return;
 		const timer = setTimeout(clearCue, 5_000);
 		return () => clearTimeout(timer);
-	}, [cue, clearCue]);
+	}, [cue, saving, saveError, clearCue]);
 	if (!cue) return null;
+	const save = async () => {
+		if (saving) return;
+		setSaving(true);
+		setSaveError(null);
+		const result = await saveSharedCopy();
+		setSaving(false);
+		if (!result.ok) setSaveError(result.message);
+	};
 	return (
 		<>
 			<span
@@ -98,6 +110,7 @@ export function ShareEditCue() {
 				aria-hidden="true"
 			/>
 			<div
+				id="share-edit-cue"
 				className="share-edit-cue"
 				data-testid="share-edit-cue"
 				data-kind={cue.kind}
@@ -112,8 +125,24 @@ export function ShareEditCue() {
 				</span>
 				<p className="share-edit-cue__lead">This is a shared copy.</p>
 				<p className="share-edit-cue__text">
-					Choose <strong>Save a copy</strong> to edit it.
+					Choose{" "}
+					<button
+						type="button"
+						className="share-edit-cue__save"
+						data-testid="share-cue-save"
+						aria-describedby="share-edit-cue"
+						disabled={saving}
+						onClick={() => void save()}
+					>
+						{saving ? "Saving…" : "Save a copy"}
+					</button>{" "}
+					to edit it.
 				</p>
+				{saveError ? (
+					<p className="share-edit-cue__error" role="alert">
+						{saveError}
+					</p>
+				) : null}
 			</div>
 		</>
 	);
@@ -126,6 +155,7 @@ export function ShareEditCue() {
 export function ShareActions() {
 	const [saving, setSaving] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+	const cue = useReadOnly((state) => state.cue);
 
 	const save = async () => {
 		if (saving) return;
@@ -145,8 +175,10 @@ export function ShareActions() {
 		<div className="share-actions">
 			<button
 				type="button"
-				className="share-actions__save"
+				className={`share-actions__save${cue ? " share-actions__save--cue" : ""}`}
 				data-testid="share-save-copy"
+				data-cue-highlight={cue ? "true" : undefined}
+				aria-describedby={cue ? "share-edit-cue" : undefined}
 				aria-busy={saving}
 				disabled={saving}
 				onClick={() => void save()}

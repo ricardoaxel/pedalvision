@@ -24,9 +24,14 @@ export function useReadOnlyEditCue(): void {
 			}
 		};
 		const onEnd = () => useReadOnly.getState().cancelAttempt();
-		const onDown = () => {
+		const onDown = (event: PointerEvent) => {
 			// A new press means the user moved on: don't leave a stale red ring
-			// on an object after a pan/selection elsewhere.
+			// on an object after a pan/selection elsewhere. Presses inside the cue
+			// itself (the inline Save a copy action) must not dismiss it first.
+			const target = event.target;
+			if (target instanceof Element && target.closest(".share-edit-cue")) {
+				return;
+			}
 			if (useReadOnly.getState().cue) useReadOnly.getState().clearCue();
 		};
 		window.addEventListener("pointermove", onMove);

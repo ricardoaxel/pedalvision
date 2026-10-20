@@ -4310,3 +4310,48 @@ body {
 		transform: translateY(0);
 	}
 }
+
+/* The real Save a copy action gets a high-contrast ring while the held cue is
+ * visible, so the instruction and the control read as one event. */
+.share-actions__save--cue {
+	outline: 3px solid var(--color-ink);
+	outline-offset: 3px;
+}
+
+/* Inline shortcut inside the held slip: the phrase is the action. The parent
+ * card is pointer-events:none, so the button opts back in. */
+.share-edit-cue__save {
+	padding: 2px 0;
+	font: inherit;
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-accent-ink);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.share-edit-cue__save:hover:not(:disabled) {
+	color: var(--color-ink);
+}
+
+.share-edit-cue__save:focus-visible {
+	outline: 2px solid var(--color-ink);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+.share-edit-cue__save:disabled {
+	cursor: default;
+	opacity: 0.7;
+}
+
+.share-edit-cue__error {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	line-height: 1.4;
+	color: var(--color-danger);
+}

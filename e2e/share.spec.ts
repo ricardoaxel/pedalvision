@@ -443,6 +443,10 @@ test("read-only drag attempts explain why editing is disabled", async ({
 	await expect(page.getByTestId("share-edit-cue")).toBeVisible();
 	await expect(page.getByTestId("share-edit-cue")).toContainText("Save a copy");
 	await expect(stage).toHaveAttribute("data-readonly-cue", "item:i-1");
+	await expect(page.getByTestId("share-save-copy")).toHaveAttribute(
+		"data-cue-highlight",
+		"true",
+	);
 
 	// The board gives the same explanation.
 	const boardPoint = await boardCenter(page);
@@ -451,6 +455,10 @@ test("read-only drag attempts explain why editing is disabled", async ({
 	await page.mouse.move(boardPoint.x + 40, boardPoint.y + 24, { steps: 6 });
 	await page.mouse.up();
 	await expect(stage).toHaveAttribute("data-readonly-cue", "board:b-1");
+	await expect(page.getByTestId("share-save-copy")).toHaveAttribute(
+		"data-cue-highlight",
+		"true",
+	);
 
 	// The cue never blocks navigation: an empty-canvas drag still pans.
 	const beforeX = await stage.getAttribute("data-x");
@@ -465,9 +473,22 @@ test("read-only drag attempts explain why editing is disabled", async ({
 	await expect
 		.poll(async () => await stage.getAttribute("data-x"))
 		.not.toBe(beforeX);
+	await expect(page.getByTestId("share-save-copy")).not.toHaveAttribute(
+		"data-cue-highlight",
+		"true",
+	);
 
-	// The inline cue is non-blocking: Save a copy still works while it is up.
-	await page.getByTestId("share-save-copy").click();
+	// The cue text itself is the shortcut: clicking "Save a copy" saves the copy.
+	const again = await firstItemScreenCentre(page, {
+		widthCm: 7,
+		heightCm: 12,
+	});
+	await page.mouse.move(again.x, again.y);
+	await page.mouse.down();
+	await page.mouse.move(again.x + 36, again.y + 24, { steps: 6 });
+	await page.mouse.up();
+	await expect(page.getByTestId("share-edit-cue")).toBeVisible();
+	await page.getByTestId("share-cue-save").click();
 	await expect(page.getByTestId("share-saved")).toBeVisible();
 });
 
