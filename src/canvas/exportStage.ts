@@ -45,7 +45,8 @@ import { loadImageWithHeal } from "./loadImage";
 export type ExportFileResult =
 	| {
 			format: "png";
-			dataUrl: string;
+			/** Encoded directly by the canvas (no base64 data URL in memory). */
+			blob: Blob;
 			widthPx: number;
 			heightPx: number;
 	  }
@@ -534,17 +535,6 @@ function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
 	);
 }
 
-function dataUrlBytes(dataUrl: string): Uint8Array {
-	const separator = dataUrl.indexOf(",");
-	if (separator === -1) throw new Error("invalid data URL");
-	const binary = atob(dataUrl.slice(separator + 1));
-	const bytes = new Uint8Array(binary.length);
-	for (let index = 0; index < binary.length; index++) {
-		bytes[index] = binary.charCodeAt(index);
-	}
-	return bytes;
-}
-
 /**
  * Render the plan to a PNG or a true-scale PDF. Throws {@link ExportError} with
  * a user-facing code when the scene is empty, images can't be loaded
@@ -660,9 +650,12 @@ export async function renderExportFile(
 		drawScaleBar(content, context);
 		layer.draw();
 
-		let raster: string;
+		// Encode straight to a Blob. `toDataURL` would build a multi-MB base64
+		// string; iOS Safari then silently fails to save large `data:` download
+		// URLs (A3). A Blob is passed to the save path untouched.
+		let blob: Blob;
 		try {
-			raster = stage.toDataURL({
+			blob = await stage.toBlob({
 				pixelRatio: plan.pixelRatio,
 				mimeType: format === "pdf" ? "image/jpeg" : "image/png",
 				quality: format === "pdf" ? 0.92 : undefined,
@@ -679,22 +672,22 @@ export async function renderExportFile(
 		}
 
 		if (format === "pdf") {
-			if (!raster.startsWith("data:image/jpeg")) {
+			if (blob.type !== "image/jpeg") {
 				throw new ExportError(
 					"unknown",
 					"The PDF encoder didn't finish. Try again.",
 				);
 			}
-			const bytes = buildPdfFromJpeg({
-				jpeg: dataUrlBytes(raster),
-				widthPx: plan.outputWidthPx,
-				heightPx: plan.outputHeightPx,
-				widthCm: plan.boundsCm.widthCm,
-				heightCm: plan.boundsCm.heightCm,
-			});
+			const bytes = new Uint8Array(await blob.arrayBuffer());
 			return {
 				format: "pdf",
-				bytes,
+				bytes: buildPdfFromJpeg({
+					jpeg: bytes,
+					widthPx: plan.outputWidthPx,
+					heightPx: plan.outputHeightPx,
+					widthCm: plan.boundsCm.widthCm,
+					heightCm: plan.boundsCm.heightCm,
+				}),
 				widthPx: plan.outputWidthPx,
 				heightPx: plan.outputHeightPx,
 			};
@@ -702,7 +695,7 @@ export async function renderExportFile(
 
 		return {
 			format: "png",
-			dataUrl: raster,
+			blob,
 			widthPx: plan.outputWidthPx,
 			heightPx: plan.outputHeightPx,
 		};

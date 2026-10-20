@@ -103,6 +103,34 @@ Layering is **per-container, never global.** A *container* is either one board's
 - **Storage failure (N3):** check IndexedDB availability/quota on boot; if unavailable, disable autosave + show an inline warning + offer "download scene backup" (JSON). Never lose work silently.
 - **Undo/redo (S5):** snapshot-based undo stack on the persisted scene slice (cap ~50 snapshots), keyboard: Ctrl/Cmd+Z / Shift+Z (N6). Ships as its own task (P3-04), not bundled into save/load.
 
+## Capacity budgets (measured 2026-10-19)
+
+v1 targets, from a desktop Chromium benchmark (7 distinct BOSS photographic images repeated; all-content Standard export). **Distinct image-bearing items — not item count or document bytes — are the memory driver**: a pedal image is ~1.44 MB decoded, so 400 *distinct* images ≈ 577 MB, while 400 repeated items share the decode cache.
+
+| Scenario | Doc JSON | Boot | rAF (1 s zoom) | Export | PNG |
+|---|---:|---:|---:|---:|---:|
+| 1 board · 50 items | 6.5 KB | 37 ms | 60 fps | — | — |
+| 1 board · 100 items | 12.5 KB | 104 ms | 60 fps | — | — |
+| 1 board · 200 items | 26.9 KB | 137 ms | 60 fps | 629 ms | 14.6 MB (4096²) |
+| 1 board · 400 items | 50.3 KB | 33 ms | 54 fps | 967 ms | 24.2 MB (4113×4079) |
+| 10 boards · 100 items | 13.7 KB | 36 ms | 60 fps | 217 ms | 1.38 MB |
+| 10 boards · 400 items | 55.8 KB | 32 ms | 56 fps | 353 ms | 4.47 MB |
+| 10 scenes · 100 items | 12.5 KB each | 37 ms | 61 fps | — | — |
+| 50 scenes · 100 items | 12.5 KB each | 90 ms | 60 fps | — | — |
+
+**Budgets (soft = inline warning; hard = refusal with an inline reason):**
+
+| Dimension | Soft | Hard |
+|---|---:|---:|
+| Items / scene | 200 | 400 |
+| Distinct image-bearing items / scene | 150 | 250 |
+| Boards / scene | 8 | 10 |
+| Cables / scene (P4 estimate) | 150 | 300 |
+| Scenes | — | **10** (implemented) |
+| Export | >12 MP or ~15 MB estimate | **16.7 MP / 8192 px** (implemented clamp) |
+
+At 2× the hard budget the live canvas drops below ~50 fps and distinct-image decode approaches iOS jetsam; at 5× it is unusable. The 16.7 MP clamp keeps export allocation bounded, and PNG is encoded directly to a Blob (`stage.toBlob()`), never a multi-MB `data:` URL. Hard caps are **not yet enforced** for items/boards/cables; the follow-up is `docs/tasks/P3-06-capacity-budgets.md` (proposed, schedule before P4-01). Over-cap shared/recovered scenes must still load (A4/A5).
+
 ## Assets & catalog
 - Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import). It is zod-validated **at module load** by `src/catalog/load.ts` (fail-fast) and guarded in CI by a Vitest test against the committed seed — not by a `vite build` step.
 - **v1 (ADR-002):** images live in the repo under `public/pedal-assets/` and ship with the Pages deployment (same-origin, no CORS). Two renditions per item — `800/` (master) and `350/` (thumb), pre-resized by the asset pipeline; **no runtime image service**. As of P2 the app requests **800 everywhere** (picker ledger rows, info-panel sleeve, canvas); the `350/` renditions exist but are not consumed yet — using them for small UI is a small follow-up (P2-10).

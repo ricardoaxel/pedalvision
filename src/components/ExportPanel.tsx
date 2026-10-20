@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { renderExportFile } from "../canvas/exportStage";
 import { useCanvasTheme } from "../canvas/useCanvasTheme";
-import { dataUrlToBlob } from "../lib/download";
 import {
 	ExportError,
 	type ExportFormat,
@@ -223,9 +222,9 @@ export function ExportPanel({
 			if (rendered.format === "pdf") {
 				downloadBytes(rendered.bytes, filename, "application/pdf");
 			} else {
-				// Blob URLs, not `data:` URLs — iOS Safari silently fails to save
-				// large photographic PNGs from a data URL (A3).
-				downloadBlob(dataUrlToBlob(rendered.dataUrl), filename);
+				// The renderer already produced a Blob (never a data: URL) — iOS
+				// Safari silently fails to save large data-URL downloads (A3).
+				downloadBlob(rendered.blob, filename);
 			}
 			setResult({
 				filename,

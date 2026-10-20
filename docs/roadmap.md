@@ -48,6 +48,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - P3-03 Share links (versioned codec, **custom pedals travel inline**, deflate → base64url hash; read-only view + "save a copy"; note the ~200KB cap interplay) (S1/R6)
 - P3-04 Undo/redo (snapshot store) + keyboard shortcuts (S5/N6 — separate task, one concern)
 - P3-05 Storage-failure fallback (IndexedDB availability check + inline warning + JSON backup download) (N3 — separate task, one concern)
+- P3-06 **PROPOSED** Capacity budgets + repeatable benchmark (items/boards/cables/scenes/export; distinguish **distinct images** from item count). Not scheduled; run **before P4-01**. See `docs/tasks/P3-06-capacity-budgets.md`. Measured 2026-10-19: 200 items → 14.6 MB PNG/629 ms; 400 items → 24.2 MB/967 ms; 50 scenes boot 90 ms (7 repeated images — best case).
 
 ## P4 — Cables (expand when scheduled)
 - P4-01 Cable model + jack anchors in catalog schema — **prereq:** the widened `jacks.kind` vocabulary from P2-02 (see above)
