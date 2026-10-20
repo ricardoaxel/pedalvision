@@ -2495,6 +2495,7 @@ body {
 }
 
 .export-trigger {
+	justify-content: center;
 	gap: 6px;
 	font-family: var(--font-mono);
 	font-size: var(--font-size-2xs);

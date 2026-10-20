@@ -564,6 +564,24 @@ test("mobile: the export tray stays above the tab bar and exports", async ({
 	test.skip(!isMobile, "mobile geometry check");
 	await seedScene(page, sceneTwoBoards());
 	await selectFirstBoard(page);
+
+	// The compact 44px mobile trigger must centre its icon horizontally and
+	// vertically (a 0-padding square with a flex label hidden).
+	const trigger = page.getByTestId("export-open");
+	const triggerBox = await trigger.boundingBox();
+	const iconBox = await trigger.locator("svg").boundingBox();
+	if (!triggerBox || !iconBox) throw new Error("missing trigger/icon box");
+	expect(
+		Math.abs(
+			iconBox.x + iconBox.width / 2 - (triggerBox.x + triggerBox.width / 2),
+		),
+	).toBeLessThanOrEqual(1);
+	expect(
+		Math.abs(
+			iconBox.y + iconBox.height / 2 - (triggerBox.y + triggerBox.height / 2),
+		),
+	).toBeLessThanOrEqual(1);
+
 	await openExport(page);
 
 	const panel = await page.getByTestId("export-panel").boundingBox();
