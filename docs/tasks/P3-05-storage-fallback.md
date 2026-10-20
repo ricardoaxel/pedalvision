@@ -1,6 +1,6 @@
 # P3-05: Storage-failure fallback (availability/quota check + inline warning + JSON backup)
 
-**Phase:** P3 · **Status:** todo — scheduled next (design direction pending owner approval) · **Model:** build-strong
+**Phase:** P3 · **Status:** in progress — design direction ("Margin Note") awaiting owner approval; no UI written · **Model:** build-strong
 
 ## Goal
 
