@@ -24,13 +24,20 @@ export function useReadOnlyEditCue(): void {
 			}
 		};
 		const onEnd = () => useReadOnly.getState().cancelAttempt();
+		const onDown = () => {
+			// A new press means the user moved on: don't leave a stale red ring
+			// on an object after a pan/selection elsewhere.
+			if (useReadOnly.getState().cue) useReadOnly.getState().clearCue();
+		};
 		window.addEventListener("pointermove", onMove);
 		window.addEventListener("pointerup", onEnd);
 		window.addEventListener("pointercancel", onEnd);
+		window.addEventListener("pointerdown", onDown, true);
 		return () => {
 			window.removeEventListener("pointermove", onMove);
 			window.removeEventListener("pointerup", onEnd);
 			window.removeEventListener("pointercancel", onEnd);
+			window.removeEventListener("pointerdown", onDown, true);
 		};
 	}, []);
 }

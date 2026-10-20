@@ -22,8 +22,11 @@ import type { CanvasTheme } from "../styles/theme";
 import {
 	CANVAS_FONTS,
 	ITEM_LABEL,
+	READ_ONLY_CUE_INNER_OUTSET_PX,
+	READ_ONLY_CUE_INNER_STROKE_PX,
 	READ_ONLY_CUE_OUTSET_PX,
 	READ_ONLY_CUE_STROKE_PX,
+	READ_ONLY_CUE_UNDER_STROKE_PX,
 } from "../styles/theme";
 import { finishBaseColor, finishPatternTile } from "./boardFinish";
 import { PedalNode } from "./PedalNode";
@@ -86,7 +89,12 @@ export function BoardNode({
 	// While the viewport owns the gesture (pan/pinch), the board must not drag:
 	// a second finger would otherwise move it with both the drag and the pan.
 	const navigating = useGesture((state) => state.navigating);
-	const readOnlyCue = useReadOnly((state) => state.cue);
+	// Only the attempted board re-renders when the cue appears/clears.
+	const readOnlyCueNonce = useReadOnly((state) =>
+		state.cue?.kind === "board" && state.cue.uid === board.uid
+			? state.cue.nonce
+			: 0,
+	);
 	const beginReadOnlyAttempt = useReadOnly((state) => state.beginAttempt);
 	const readOnly = isReadOnly();
 
@@ -327,24 +335,53 @@ export function BoardNode({
 					) : null}
 				</>
 			)}
-			{readOnlyCue?.kind === "board" && readOnlyCue.uid === board.uid ? (
-				<Rect
-					x={-READ_ONLY_CUE_OUTSET_PX / (scale > 0 ? scale : 1)}
-					y={-READ_ONLY_CUE_OUTSET_PX / (scale > 0 ? scale : 1)}
-					width={
-						widthPx + (READ_ONLY_CUE_OUTSET_PX * 2) / (scale > 0 ? scale : 1)
-					}
-					height={
-						heightPx + (READ_ONLY_CUE_OUTSET_PX * 2) / (scale > 0 ? scale : 1)
-					}
-					stroke={theme.dangerOutline}
-					strokeWidth={READ_ONLY_CUE_STROKE_PX / (scale > 0 ? scale : 1)}
-					fillEnabled={false}
-					cornerRadius={4 / (scale > 0 ? scale : 1)}
-					listening={false}
-					perfectDrawEnabled={false}
-				/>
-			) : null}
+			{readOnlyCueNonce > 0
+				? (() => {
+						const cueScale = scale > 0 ? scale : 1;
+						const outer = READ_ONLY_CUE_OUTSET_PX / cueScale;
+						const inner = READ_ONLY_CUE_INNER_OUTSET_PX / cueScale;
+						return (
+							<>
+								<Rect
+									x={-outer}
+									y={-outer}
+									width={widthPx + outer * 2}
+									height={heightPx + outer * 2}
+									stroke={theme.canvasBackground}
+									strokeWidth={READ_ONLY_CUE_UNDER_STROKE_PX / cueScale}
+									fillEnabled={false}
+									cornerRadius={5 / cueScale}
+									listening={false}
+									perfectDrawEnabled={false}
+								/>
+								<Rect
+									x={-outer}
+									y={-outer}
+									width={widthPx + outer * 2}
+									height={heightPx + outer * 2}
+									stroke={theme.dangerOutline}
+									strokeWidth={READ_ONLY_CUE_STROKE_PX / cueScale}
+									fillEnabled={false}
+									cornerRadius={5 / cueScale}
+									listening={false}
+									perfectDrawEnabled={false}
+								/>
+								<Rect
+									x={-inner}
+									y={-inner}
+									width={widthPx + inner * 2}
+									height={heightPx + inner * 2}
+									stroke={theme.dangerOutlineSoft}
+									strokeWidth={READ_ONLY_CUE_INNER_STROKE_PX / cueScale}
+									fillEnabled={false}
+									cornerRadius={3 / cueScale}
+									listening={false}
+									perfectDrawEnabled={false}
+								/>
+							</>
+						);
+					})()
+				: null}
 			{items.map((item) => (
 				<PedalNode
 					key={item.uid}

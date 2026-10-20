@@ -104,6 +104,17 @@ describe("read-only share mode (P3-03)", () => {
 		expect(useReadOnly.getState().cue).toBeNull();
 	});
 
+	it("shows the cue directly for a blocked keyboard edit", () => {
+		useReadOnly.setState({ readOnly: true });
+		useReadOnly.getState().showCueFor("i-1", "item");
+		expect(useReadOnly.getState().cue).toMatchObject({
+			uid: "i-1",
+			kind: "item",
+		});
+		useReadOnly.getState().clearCue();
+		expect(useReadOnly.getState().cue).toBeNull();
+	});
+
 	it("restores mutation after leaving read-only", () => {
 		useReadOnly.setState({ readOnly: true });
 		expect(

@@ -30,6 +30,8 @@ interface ReadOnlyStore {
 	beginAttempt: (attempt: ReadOnlyAttempt) => void;
 	cancelAttempt: () => void;
 	showCue: () => void;
+	/** Keyboard/edit path with no pointer attempt (e.g. Delete/Cmd-D). */
+	showCueFor: (uid: string, kind: ReadOnlyAttempt["kind"]) => void;
 	clearCue: () => void;
 }
 
@@ -58,6 +60,8 @@ export const useReadOnly = create<ReadOnlyStore>((set) => ({
 				},
 			};
 		}),
+	showCueFor: (uid, kind) =>
+		set({ attempt: null, cue: { uid, kind, nonce: Date.now() } }),
 	clearCue: () => set({ cue: null }),
 }));
 

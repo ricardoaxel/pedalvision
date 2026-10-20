@@ -91,19 +91,31 @@ export function ShareEditCue() {
 	}, [cue, clearCue]);
 	if (!cue) return null;
 	return (
-		<div
-			className="share-edit-cue"
-			data-testid="share-edit-cue"
-			data-kind={cue.kind}
-			role="status"
-			aria-live="polite"
-			style={style}
-		>
-			<span className="share-edit-cue__label">Read-only</span>
-			<p className="share-edit-cue__text">
-				This is a shared copy. Choose <strong>Save a copy</strong> to edit it.
-			</p>
-		</div>
+		<>
+			<span
+				className="share-hold-frame"
+				data-testid="share-hold-frame"
+				aria-hidden="true"
+			/>
+			<div
+				className="share-edit-cue"
+				data-testid="share-edit-cue"
+				data-kind={cue.kind}
+				role="status"
+				aria-live="polite"
+				aria-atomic="true"
+				style={style}
+			>
+				<span className="share-edit-cue__label">
+					<LockIcon size={14} />
+					Read-only copy
+				</span>
+				<p className="share-edit-cue__lead">This is a shared copy.</p>
+				<p className="share-edit-cue__text">
+					Choose <strong>Save a copy</strong> to edit it.
+				</p>
+			</div>
+		</>
 	);
 }
 

@@ -4183,9 +4183,26 @@ body {
 	}
 }
 
-/* Read-only edit-attempt cue (P3-03 follow-up). The attempted object also gets
- * a danger outline on the canvas; this is the inline explanation. It never
- * intercepts pointers, so pan/zoom and Save a copy stay usable. */
+/* Read-only edit-attempt cue (P3-03 "Held for Review"). The attempted object
+ * gets a two-tone double rule on the canvas, the canvas frame is marked as a
+ * proof, and this inline slip explains why. Everything is non-interactive so
+ * pan/zoom and Save a copy stay usable. */
+.share-hold-frame {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	border: 2px solid var(--color-danger);
+	pointer-events: none;
+	animation: share-cue-fade-in 140ms ease-out;
+}
+
+.share-hold-frame::after {
+	position: absolute;
+	inset: 4px;
+	border: 1px solid var(--color-danger-border);
+	content: "";
+}
+
 .share-edit-cue {
 	position: absolute;
 	bottom: var(--space-4);
@@ -4193,38 +4210,79 @@ body {
 	z-index: 4;
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
+	gap: var(--space-1);
 	width: max-content;
 	max-width: min(420px, calc(100% - 32px));
-	padding: var(--space-2) var(--space-3);
+	padding: var(--space-3) var(--space-4);
 	color: var(--color-ink);
-	background-color: var(--color-surface-elevated);
+	background-color: var(--color-danger-surface);
 	border: 1px solid var(--color-danger-border);
 	border-left: 3px solid var(--color-danger);
 	border-radius: var(--radius-control);
 	box-shadow: var(--shadow-raised);
 	transform: translateX(-50%);
 	pointer-events: none;
+	animation: share-cue-in 140ms ease-out;
 }
 
 .share-edit-cue__label {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
 	font-family: var(--font-mono);
-	font-size: var(--font-size-2xs);
+	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-semibold);
 	letter-spacing: var(--tracking-caps);
 	text-transform: uppercase;
 	color: var(--color-danger);
 }
 
+.share-edit-cue__lead,
 .share-edit-cue__text {
 	margin: 0;
 	font-size: var(--font-size-sm);
 	line-height: 1.4;
 }
 
+.share-edit-cue__lead {
+	font-weight: var(--font-weight-semibold);
+}
+
+@keyframes share-cue-in {
+	from {
+		opacity: 0;
+		transform: translate(-50%, 4px);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+}
+
+@keyframes share-cue-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.share-edit-cue,
+	.share-hold-frame {
+		animation: none;
+		transition: none;
+	}
+}
+
 @media (max-width: 1023px) {
 	.share-stamp__trust {
 		display: block;
+	}
+
+	.share-hold-frame {
+		bottom: calc(56px + env(safe-area-inset-bottom));
 	}
 
 	.share-edit-cue {
@@ -4238,5 +4296,17 @@ body {
 		width: auto;
 		max-width: none;
 		transform: none;
+		animation-name: share-cue-in-mobile;
+	}
+}
+
+@keyframes share-cue-in-mobile {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

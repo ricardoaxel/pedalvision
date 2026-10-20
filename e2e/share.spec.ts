@@ -426,6 +426,11 @@ test("read-only drag attempts explain why editing is disabled", async ({
 	await page.mouse.click(firstPoint.x, firstPoint.y);
 	await expect(page.getByTestId("share-edit-cue")).toHaveCount(0);
 
+	// Keyboard edit attempts get the same explanation (no silent no-op).
+	await page.keyboard.press("Delete");
+	await expect(page.getByTestId("share-edit-cue")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-readonly-cue", "item:i-1");
+
 	// Moving the pedal like a drag shows the red outline + inline reason.
 	const itemPoint = await firstItemScreenCentre(page, {
 		widthCm: 7,

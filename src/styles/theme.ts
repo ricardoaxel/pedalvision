@@ -46,6 +46,7 @@ export const CANVAS_THEME_VARS = {
 	// Read-only "cannot edit" cue — P3-03. Semantic danger, distinct from the
 	// amber space warning and the cyan selection.
 	dangerOutline: "--color-danger",
+	dangerOutlineSoft: "--color-danger-border",
 } as const;
 
 /**
@@ -92,9 +93,15 @@ export const ITEM_LABEL = {
 export const WARNING_STROKE_PX = 2;
 export const WARNING_OUTSET_PX = 5;
 
-/** Read-only "can't edit" cue (P3-03) — a danger outer ring, screen-constant. */
-export const READ_ONLY_CUE_STROKE_PX = 2;
-export const READ_ONLY_CUE_OUTSET_PX = 4;
+/**
+ * Read-only "can't edit" cue (P3-03, "Held for Review") — a two-tone double
+ * rule that reads as a print hold stamp, not a hairline. Screen-constant.
+ */
+export const READ_ONLY_CUE_STROKE_PX = 3;
+export const READ_ONLY_CUE_OUTSET_PX = 8;
+export const READ_ONLY_CUE_INNER_STROKE_PX = 1;
+export const READ_ONLY_CUE_INNER_OUTSET_PX = 2;
+export const READ_ONLY_CUE_UNDER_STROKE_PX = 5;
 
 export type CanvasThemeKey = keyof typeof CANVAS_THEME_VARS;
 
@@ -141,6 +148,7 @@ export const canvasTheme: CanvasTheme = {
 	hoverOutline: "#eef1f4",
 	warningOutline: "#ffd166",
 	dangerOutline: "#ff938a",
+	dangerOutlineSoft: "#b87a72",
 };
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
@@ -168,4 +176,5 @@ export const lightCanvasTheme: CanvasTheme = {
 	hoverOutline: "#16191d",
 	warningOutline: "#9a5b00",
 	dangerOutline: "#b42318",
+	dangerOutlineSoft: "#c94f4f",
 };
