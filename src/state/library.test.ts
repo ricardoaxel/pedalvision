@@ -59,8 +59,22 @@ class MemoryRepository implements SceneRepository {
 	async remove(id: string): Promise<void> {
 		this.docs.delete(id);
 	}
+}
 
-	close(): void {}
+/** A repository that can simulate a blocked store after a successful boot. */
+class FailingRepository extends MemoryRepository {
+	failAll = false;
+	failPuts = false;
+
+	override async all(): Promise<SceneDocument[]> {
+		if (this.failAll) throw new Error("blocked");
+		return super.all();
+	}
+
+	override async put(document: SceneDocument): Promise<void> {
+		if (this.failPuts) throw new Error("quota");
+		return super.put(document);
+	}
 }
 
 function documentOf(
@@ -349,6 +363,136 @@ describe("scene library", () => {
 		expect(await runtime.deleteScene("scene-1")).toBe(true);
 		expect(store.getState().activeId).toBe("b");
 		expect(useScene.getState().boards).toHaveLength(1);
+	});
+
+	it("never overwrites the register when the document store is unreadable", async () => {
+		const repo = new FailingRepository();
+		repo.failAll = true;
+		const indexRaw = JSON.stringify({
+			version: 1,
+			scenes: [
+				{ id: "a", name: "Kept sheet", updatedAt: "2026-10-19T10:00:00.000Z" },
+			],
+		});
+		const settingsRaw = JSON.stringify({
+			version: 1,
+			units: "cm",
+			activeSceneId: "a",
+		});
+		const storage = fakeStorage({
+			[SCENE_INDEX_KEY]: indexRaw,
+			[SETTINGS_KEY]: settingsRaw,
+		});
+		const legacy = {
+			boards: [
+				{ uid: "legacy-board", boardRefId: bossId, x: 0, y: 0, rotationDeg: 0 },
+			],
+			items: [],
+			customPedals: [],
+		};
+		const { runtime, store } = setup({ repo, storage, legacy });
+		await runtime.boot();
+		expect(store.getState()).toMatchObject({
+			ready: true,
+			storageAvailable: false,
+			activeId: "a",
+		});
+		expect(store.getState().scenes.map((scene) => scene.name)).toEqual([
+			"Kept sheet",
+		]);
+		// The stored index/settings are untouched (no empty overwrite).
+		expect(storage.getItem(SCENE_INDEX_KEY)).toBe(indexRaw);
+		expect(storage.getItem(SETTINGS_KEY)).toBe(settingsRaw);
+		// The legacy mirror is still usable in memory for the session.
+		expect(useScene.getState().boards).toHaveLength(1);
+		expect(repo.docs.size).toBe(0);
+	});
+
+	it("does not strand a legacy scene when its migration write fails", async () => {
+		const repo = new FailingRepository();
+		repo.failPuts = true;
+		const legacy = {
+			boards: [
+				{ uid: "legacy-board", boardRefId: bossId, x: 0, y: 0, rotationDeg: 0 },
+			],
+			items: [],
+			customPedals: [],
+		};
+		const storage = fakeStorage({
+			[LEGACY_SCENE_KEY]: JSON.stringify({ version: 1, ...legacy }),
+		});
+		const { runtime, store } = setup({ repo, storage, legacy });
+		await runtime.boot();
+		expect(store.getState()).toMatchObject({
+			ready: true,
+			storageAvailable: false,
+			activeId: null,
+		});
+		expect(store.getState().scenes).toEqual([]);
+		// In-memory fallback only; the key stays for a later successful boot.
+		expect(useScene.getState().boards).toHaveLength(1);
+		expect(repo.docs.size).toBe(0);
+		expect(storage.getItem(LEGACY_SCENE_KEY)).not.toBeNull();
+	});
+
+	it("never reports Saved when the document write fails", async () => {
+		vi.useFakeTimers();
+		const repo = new FailingRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		repo.failPuts = true;
+		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
+		await vi.advanceTimersByTimeAsync(500);
+		expect(store.getState().storageAvailable).toBe(false);
+		expect(store.getState().saving).toBe(false);
+	});
+
+	it("deleting an inactive scene keeps the flushed active metadata", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		await repo.put(documentOf("a", "A", "2026-10-19T10:00:00.000Z"));
+		await repo.put(documentOf("b", "B", "2026-10-19T09:00:00.000Z"));
+		const storage = fakeStorage({
+			[SCENE_INDEX_KEY]: JSON.stringify({
+				version: 1,
+				scenes: [
+					{ id: "a", name: "A", updatedAt: "2026-10-19T10:00:00.000Z" },
+					{ id: "b", name: "B", updatedAt: "2026-10-19T09:00:00.000Z" },
+				],
+			}),
+			[SETTINGS_KEY]: JSON.stringify({
+				version: 1,
+				units: "cm",
+				activeSceneId: "a",
+			}),
+		});
+		const { runtime } = setup({ repo, storage });
+		await runtime.boot();
+		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
+		expect(await runtime.deleteScene("b")).toBe(true);
+		const index = readSceneIndex(storage);
+		expect(index.scenes.map((scene) => scene.id)).toEqual(["a"]);
+		// The flush updated A (new timestamp + board count), not the stale snapshot.
+		expect(index.scenes[0].updatedAt).toBe("2026-10-19T12:00:00.000Z");
+		expect(index.scenes[0].boardCount).toBe(1);
+	});
+
+	it("serialises two fast New scene clicks without losing an entry", async () => {
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		const [first, second] = await Promise.all([
+			runtime.newScene("Fast A"),
+			runtime.newScene("Fast B"),
+		]);
+		expect(first).toBeTruthy();
+		expect(second).toBeTruthy();
+		expect(store.getState().scenes.map((scene) => scene.name)).toEqual([
+			"Scene 1",
+			"Fast A",
+			"Fast B",
+		]);
+		expect(repo.docs.size).toBe(3);
 	});
 
 	it("boots in session-only mode when storage is unavailable", async () => {

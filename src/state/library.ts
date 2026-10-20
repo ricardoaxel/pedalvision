@@ -170,7 +170,9 @@ export function createSceneLibraryRuntime(
 		try {
 			await deps.repo.put(document);
 		} catch {
-			store.setState({ saving: false });
+			// Never claim "Saved" for a write that did not land. P3-05 adds the
+			// user-facing warning + JSON backup.
+			store.setState({ saving: false, storageAvailable: false });
 			return;
 		}
 		const scenes = store.getState().scenes.map((candidate) =>
@@ -206,18 +208,23 @@ export function createSceneLibraryRuntime(
 		});
 	};
 
-	const flushOnHide = () => {
+	// `pagehide` does not guarantee visibilityState === "hidden", so flush
+	// unconditionally there; the visibility event keeps its hidden check.
+	const flushOnPageHide = () => {
+		void autosave.flush();
+	};
+	const flushOnHidden = () => {
 		if (document.visibilityState === "hidden") void autosave.flush();
 	};
 	const installLifecycle = () => {
 		if (typeof window === "undefined") return;
-		window.addEventListener("pagehide", flushOnHide);
-		document.addEventListener("visibilitychange", flushOnHide);
+		window.addEventListener("pagehide", flushOnPageHide);
+		document.addEventListener("visibilitychange", flushOnHidden);
 	};
 	const removeLifecycle = () => {
 		if (typeof window === "undefined") return;
-		window.removeEventListener("pagehide", flushOnHide);
-		document.removeEventListener("visibilitychange", flushOnHide);
+		window.removeEventListener("pagehide", flushOnPageHide);
+		document.removeEventListener("visibilitychange", flushOnHidden);
 	};
 
 	const loadDocument = async (id: string): Promise<SceneDocument | null> => {
@@ -230,23 +237,55 @@ export function createSceneLibraryRuntime(
 	};
 
 	const boot = async (): Promise<void> => {
+		const baseIndex = readSceneIndex(deps.storage);
+		const preferred = readSettings(deps.storage).activeSceneId;
+
 		let documents: SceneDocument[] = [];
-		let storageAvailable = deps.storage !== null;
+		let documentsAvailable = false;
 		if (deps.repo) {
 			try {
 				const stored = await deps.repo.all();
 				documents = stored
 					.map(parseSceneDocument)
 					.filter((document): document is SceneDocument => document !== null);
+				documentsAvailable = true;
 			} catch {
-				documents = [];
-				storageAvailable = false;
+				// A failed read is NOT an empty library. Never reconcile/persist
+				// the resulting empty list over a valid stored register.
+				documentsAvailable = false;
 			}
-		} else {
-			storageAvailable = false;
 		}
 
-		const baseIndex = readSceneIndex(deps.storage);
+		if (!documentsAvailable) {
+			// Session-only: keep the stored register visible, hydrate the legacy
+			// mirror in memory if present, and never write over the real store.
+			const scenes = baseIndex.scenes;
+			const activeId =
+				preferred && scenes.some((entry) => entry.id === preferred)
+					? preferred
+					: newestSceneId(scenes);
+			store.setState({
+				scenes,
+				activeId,
+				ready: true,
+				storageAvailable: false,
+				saving: false,
+				lastSavedAt:
+					scenes.find((entry) => entry.id === activeId)?.updatedAt ?? null,
+			});
+			applyScene(
+				deps.legacy
+					? normalizeSceneContent({
+							boards: deps.legacy.boards,
+							items: deps.legacy.items,
+							customPedals: deps.legacy.customPedals,
+						})
+					: emptyScene(),
+			);
+			return;
+		}
+
+		let storageAvailable = deps.storage !== null;
 		const reconciled = reconcileIndex(
 			baseIndex.scenes,
 			documents.map(({ id, name, updatedAt, boards, items }) => ({
@@ -258,7 +297,6 @@ export function createSceneLibraryRuntime(
 			})),
 		);
 		let scenes = reconciled.index;
-		const preferred = readSettings(deps.storage).activeSceneId;
 
 		// Migrate the P1-06 single-scene localStorage mirror exactly once, when
 		// there is nothing in the new store yet.
@@ -275,36 +313,31 @@ export function createSceneLibraryRuntime(
 				...content,
 				updatedAt: nowIso(),
 			});
-			if (deps.repo) {
-				try {
-					await deps.repo.put(document);
-					documents.push(document);
-					scenes = [
-						{
-							id,
-							name: document.name,
-							updatedAt: document.updatedAt,
-							boardCount: document.boards.length,
-							itemCount: document.items.length,
-						},
-					];
-					storageAvailable = true;
-				} catch {
-					storageAvailable = false;
-				}
-			}
-			if (scenes.some((entry) => entry.id === id)) {
+			try {
+				await deps.repo?.put(document);
+				documents.push(document);
+				scenes = [
+					{
+						id,
+						name: document.name,
+						updatedAt: document.updatedAt,
+						boardCount: document.boards.length,
+						itemCount: document.items.length,
+					},
+				];
 				try {
 					deps.storage?.removeItem(LEGACY_SCENE_KEY);
 				} catch {
 					// Fail-soft: the migrated scene is already in IndexedDB.
 				}
+			} catch {
+				storageAvailable = false;
 			}
 		}
 
-		// Always have one named scene to edit (unless storage is unavailable, in
-		// which case the app runs as a session-only canvas — P3-05 adds the UI).
-		if (scenes.length === 0 && deps.repo) {
+		// Always have one named scene to edit (but never paper over a failed
+		// legacy migration: that would strand the user's old scene in the key).
+		if (scenes.length === 0 && !deps.legacy && deps.repo) {
 			const id = newId();
 			const document = createSceneDocument({
 				id,
@@ -328,6 +361,29 @@ export function createSceneLibraryRuntime(
 			} catch {
 				storageAvailable = false;
 			}
+		}
+
+		if (scenes.length === 0) {
+			// Writes failed: hydrate the legacy mirror in memory and stay
+			// session-only rather than persisting an empty register.
+			store.setState({
+				scenes: [],
+				activeId: null,
+				ready: true,
+				storageAvailable: false,
+				saving: false,
+				lastSavedAt: null,
+			});
+			applyScene(
+				deps.legacy
+					? normalizeSceneContent({
+							boards: deps.legacy.boards,
+							items: deps.legacy.items,
+							customPedals: deps.legacy.customPedals,
+						})
+					: emptyScene(),
+			);
+			return;
 		}
 
 		let activeId =
@@ -392,7 +448,7 @@ export function createSceneLibraryRuntime(
 			return null;
 		}
 		const scenes = [
-			...state.scenes,
+			...store.getState().scenes,
 			{ id, name: sceneName, updatedAt, boardCount: 0, itemCount: 0 },
 		];
 		store.setState({
@@ -462,13 +518,15 @@ export function createSceneLibraryRuntime(
 	};
 
 	const deleteScene = async (id: string): Promise<boolean> => {
-		const state = store.getState();
-		if (state.scenes.length <= 1) return false;
-		const position = state.scenes.findIndex((entry) => entry.id === id);
-		if (position === -1) return false;
-		const removingActive = state.activeId === id;
+		const initial = store.getState();
+		if (initial.scenes.length <= 1) return false;
+		const removingActive = initial.activeId === id;
 		if (removingActive) autosave.cancel();
 		else await autosave.flush();
+		// Re-read after the flush: it updates the active entry's metadata.
+		const state = store.getState();
+		const position = state.scenes.findIndex((entry) => entry.id === id);
+		if (position === -1) return false;
 		if (deps.repo) {
 			try {
 				await deps.repo.remove(id);
@@ -508,13 +566,26 @@ export function createSceneLibraryRuntime(
 		removeLifecycle();
 	};
 
+	// Mutating library actions run one at a time so a fast double "New scene"
+	// (or a delete racing a flush) can never overwrite the register with a stale
+	// snapshot.
+	let tail: Promise<unknown> = Promise.resolve();
+	const serialize = <T>(task: () => Promise<T>): Promise<T> => {
+		const result = tail.then(task, task);
+		tail = result.then(
+			() => undefined,
+			() => undefined,
+		);
+		return result;
+	};
+
 	return {
 		store,
 		boot,
-		newScene,
-		switchScene,
-		renameScene,
-		deleteScene,
+		newScene: (name) => serialize(() => newScene(name)),
+		switchScene: (id) => serialize(() => switchScene(id)),
+		renameScene: (id, name) => serialize(() => renameScene(id, name)),
+		deleteScene: (id) => serialize(() => deleteScene(id)),
 		saveNow,
 		dispose,
 	};
@@ -527,10 +598,6 @@ export function setSceneLibraryRuntime(
 	next: SceneLibraryRuntime | null,
 ): SceneLibraryRuntime | null {
 	runtime = next;
-	return runtime;
-}
-
-export function getSceneLibraryRuntime(): SceneLibraryRuntime | null {
 	return runtime;
 }
 

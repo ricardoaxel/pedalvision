@@ -23,7 +23,6 @@ export interface SceneRepository {
 	get(id: string): Promise<SceneDocument | undefined>;
 	put(document: SceneDocument): Promise<void>;
 	remove(id: string): Promise<void>;
-	close(): void;
 }
 
 /**
@@ -52,6 +51,5 @@ export async function openSceneRepository(): Promise<SceneRepository> {
 		remove: async (id) => {
 			await database.delete(STORE, id);
 		},
-		close: () => database.close(),
 	};
 }
