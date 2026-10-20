@@ -1,9 +1,11 @@
 import {
 	type KeyboardEvent as ReactKeyboardEvent,
 	useEffect,
+	useMemo,
 	useRef,
 	useState,
 } from "react";
+import { capacityStatus } from "../lib/capacity";
 import type { SceneIndexEntry } from "../lib/sceneIndex";
 import {
 	MAX_SCENES,
@@ -11,6 +13,7 @@ import {
 	sceneLibrary,
 	useSceneLibrary,
 } from "../state/library";
+import { useScene } from "../state/scene";
 import {
 	CheckIcon,
 	CloseIcon,
@@ -21,6 +24,7 @@ import {
 
 const PANEL_TITLE_ID = "scene-panel-title";
 const STATUS_ID = "scene-panel-status";
+const CAPACITY_ID = "scene-panel-capacity";
 const LAST_SCENE_HINT_ID = "scene-panel-last-hint";
 const SCENE_LIMIT_HINT_ID = "scene-panel-limit-hint";
 
@@ -109,10 +113,18 @@ export function SceneTriggerContent() {
 		const active = state.scenes.find((entry) => entry.id === state.activeId);
 		return active?.name ?? "Untitled scene";
 	});
+	// The only cue while the register is closed: a small danger dot at hard /
+	// over-cap. Soft stays silent in the chrome (owner: no needless noise).
+	const atCapacity = useScene(
+		(state) => capacityStatus(state).level === "hard",
+	);
 	return (
 		<>
 			<SceneIcon size={16} />
 			<span className="scene-trigger__name">{name}</span>
+			{atCapacity ? (
+				<span className="scene-trigger__dot" aria-hidden="true" />
+			) : null}
 			<span className="scene-trigger__chevron" aria-hidden="true">
 				<svg
 					width="14"
@@ -149,6 +161,13 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 	const saving = useSceneLibrary((state) => state.saving);
 	const storageAvailable = useSceneLibrary((state) => state.storageAvailable);
 	const sessionOnly = useSceneLibrary((state) => state.sessionOnly);
+	const boards = useScene((state) => state.boards);
+	const items = useScene((state) => state.items);
+	const customPedals = useScene((state) => state.customPedals);
+	const capacity = useMemo(
+		() => capacityStatus({ boards, items, customPedals }),
+		[boards, items, customPedals],
+	);
 	const panelRef = useRef<HTMLDivElement>(null);
 	const newSceneRef = useRef<HTMLButtonElement>(null);
 	const renameInputRef = useRef<HTMLInputElement>(null);
@@ -318,6 +337,19 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 					) : (
 						<p id={STATUS_ID} className="scene-panel__status" hidden />
 					)}
+					{/* Load Chart (P3-06): only appears once a budget is tight, so a
+					 * healthy scene adds no chrome (owner instruction 2026-10-20). */}
+					{capacity.warning ? (
+						<p
+							id={CAPACITY_ID}
+							className="scene-panel__capacity"
+							data-testid="scene-capacity"
+							data-level={capacity.level}
+						>
+							<span className="scene-panel__capacity-label">Capacity</span>
+							{capacity.warning}
+						</p>
+					) : null}
 				</div>
 				<button
 					type="button"
@@ -437,6 +469,9 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 								className="scene-row__open"
 								data-scene-open={entry.id}
 								aria-current={active ? "true" : undefined}
+								aria-describedby={
+									active && capacity.warning ? CAPACITY_ID : undefined
+								}
 								disabled={sessionOnly}
 								onClick={() => void openScene(entry.id)}
 							>

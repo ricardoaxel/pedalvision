@@ -3,13 +3,16 @@ import { BoardActionBar } from "./canvas/BoardActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
+import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
 import { FirstRunHint } from "./components/FirstRunHint";
 import { InfoPanel } from "./components/InfoPanel";
 import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
+import { capacityStatus } from "./lib/capacity";
 import { useSceneLibrary } from "./state/library";
+import { useScene } from "./state/scene";
 import { selectSelectedItemUid, useSelection } from "./state/selection";
 
 type Theme = "dark" | "light";
@@ -38,6 +41,18 @@ function App() {
 	const activeSceneName = useSceneLibrary((state) => {
 		const active = state.scenes.find((entry) => entry.id === state.activeId);
 		return active?.name ?? "Untitled scene";
+	});
+	// Load Chart (P3-06): only hard/over-cap reaches the closed trigger, and only
+	// in its accessible name (the dot is decorative). No noise at ok/soft.
+	const sceneCapacitySuffix = useScene((state) => {
+		const status = capacityStatus(state);
+		if (status.level !== "hard") return "";
+		const over =
+			status.items.over ||
+			status.images.over ||
+			status.boards.over ||
+			status.graph.over;
+		return over ? " — over capacity, this scene still opens" : " — at capacity";
 	});
 	// P2-03: the info panel is a trailing push rail (desktop) / bottom sheet
 	// (mobile), shown only while an item is selected.
@@ -120,6 +135,7 @@ function App() {
 			data-scenes={scenesOpen ? "open" : undefined}
 		>
 			<h1 className="visually-hidden">Pedalvision</h1>
+			<CapacityAnnouncer />
 			<div className="app-canvas">
 				<Stage />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
@@ -134,7 +150,7 @@ function App() {
 					className="scene-trigger"
 					data-testid="scene-open"
 					data-scene-trigger
-					aria-label={`Scenes — current: ${activeSceneName}`}
+					aria-label={`Scenes — current: ${activeSceneName}${sceneCapacitySuffix}`}
 					aria-haspopup="dialog"
 					aria-expanded={scenesOpen}
 					aria-controls="scene-panel"

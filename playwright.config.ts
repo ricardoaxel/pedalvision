@@ -9,8 +9,9 @@ export default defineConfig({
 		{
 			name: "chromium",
 			use: { browserName: "chromium" },
-			// Touch gestures need CDP + a touch-enabled context (see touch.spec.ts).
-			testIgnore: /touch\.spec\.ts/,
+			// Touch gestures need CDP + a touch-enabled context (see touch.spec.ts);
+			// the capacity benchmark is report-only and runs via `pnpm bench:capacity`.
+			testIgnore: /(touch|benchmark)\.spec\.ts/,
 		},
 		{
 			// Chromium with a touch-enabled mobile context for the gesture specs
@@ -18,7 +19,7 @@ export default defineConfig({
 			name: "mobile-chromium",
 			use: { ...devices["Pixel 7"] },
 			testMatch:
-				/(touch|picker|custom|info-panel|board-creator|first-run|export|scenes)\.spec\.ts/,
+				/(touch|picker|custom|info-panel|board-creator|first-run|export|scenes|capacity)\.spec\.ts/,
 		},
 	],
 	webServer: {

@@ -34,6 +34,8 @@ interface CustomPedalFormProps {
 	targetBoard: PlacedBoard | null;
 	/** Edit mode: the part already exists — saving updates it in place. */
 	editing?: boolean;
+	/** Hard-cap reason (P3-06): shown above the CTA; saving a new part is refused. */
+	limitReason?: string | null;
 	/** The leading kind control (Pedal · Supply · Board), rendered by the picker. */
 	headerSlot?: ReactNode;
 	/** Called with the validated definition when the CTA is pressed. */
@@ -57,9 +59,11 @@ export function CustomPedalForm({
 	onChange,
 	targetBoard,
 	editing = false,
+	limitReason = null,
 	headerSlot,
 	onSubmit,
 }: CustomPedalFormProps) {
+	const blocked = Boolean(limitReason);
 	const [activeJackId, setActiveJackId] = useState<string | null>(null);
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	// Inline errors only after a field has been touched (blurred), so an empty
@@ -127,7 +131,7 @@ export function CustomPedalForm({
 		});
 
 	const submit = () => {
-		if (validation.ok) onSubmit(validation.value);
+		if (!blocked && validation.ok) onSubmit(validation.value);
 	};
 
 	const drawing = (
@@ -488,6 +492,16 @@ export function CustomPedalForm({
 					</Section>
 				</div>
 
+				{limitReason ? (
+					<p
+						id="custom-capacity-limit"
+						className="custom__limit"
+						role="note"
+						data-testid="custom-limit"
+					>
+						{limitReason}
+					</p>
+				) : null}
 				<div
 					className="custom__footer"
 					data-editing={editing ? "true" : undefined}
@@ -504,6 +518,8 @@ export function CustomPedalForm({
 						className="custom__cta"
 						data-testid="custom-submit"
 						disabled={!validation.ok}
+						aria-disabled={blocked ? "true" : undefined}
+						aria-describedby={blocked ? "custom-capacity-limit" : undefined}
 						onClick={submit}
 					>
 						{editing ? "Save changes" : "Add custom part"}

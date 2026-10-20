@@ -10,6 +10,7 @@
 		"typecheck": "tsc -b",
 		"lint": "biome ci",
 		"e2e": "playwright test",
+		"bench:capacity": "pnpm build && playwright test --config=playwright.benchmark.config.ts",
 		"preview": "vite preview",
 		"catalog:import": "node --experimental-strip-types tools/catalog-transform/index.ts import",
 		"catalog:seed": "node --experimental-strip-types tools/catalog-transform/index.ts seed",

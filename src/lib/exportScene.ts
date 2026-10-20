@@ -5,6 +5,7 @@ import {
 	type PlacedBoard,
 	type PlacedItem,
 } from "../state/scene";
+import { distinctImageUrls } from "./capacity";
 import { boardToWorld, type Point, type RectCm } from "./geometry";
 
 /**
@@ -114,6 +115,8 @@ export interface ExportPlan {
 	pxPerCm: number;
 	/** True when the pixel clamp reduced the ratio and/or fit scale. */
 	clampLimited: boolean;
+	/** Distinct item + board images this export has to decode (P3-06). */
+	distinctImages: number;
 }
 
 export type ExportErrorCode =
@@ -293,6 +296,10 @@ function buildPlan(
 		cables,
 		boundsCm,
 		contentBoundsCm: contentBounds,
+		// Boards are image-bearing too, so the export estimate includes their art
+		// (the scene-wide item-image budget does not — boards have their own cap).
+		distinctImages: distinctImageUrls({ boards, items, customPedals }, true)
+			.length,
 		...computePixelPlan(boundsCm, quality),
 	};
 }

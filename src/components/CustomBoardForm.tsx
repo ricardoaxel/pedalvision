@@ -19,6 +19,8 @@ interface CustomBoardFormProps {
 	onChange: (draft: CustomBoardDraft) => void;
 	/** Edit mode: the board already exists — saving updates it in place. */
 	editing?: boolean;
+	/** Hard-cap reason (P3-06): shown above the CTA; saving a new board is refused. */
+	limitReason?: string | null;
 	/** The leading kind control (Pedal · Supply · Board), rendered by the picker. */
 	headerSlot?: ReactNode;
 	/** Called with the validated definition when the CTA is pressed. */
@@ -36,9 +38,11 @@ export function CustomBoardForm({
 	draft,
 	onChange,
 	editing = false,
+	limitReason = null,
 	headerSlot,
 	onSubmit,
 }: CustomBoardFormProps) {
+	const blocked = Boolean(limitReason);
 	// Inline errors only after a field has been touched (blurred), so an empty
 	// form doesn't open covered in red.
 	const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -63,7 +67,7 @@ export function CustomBoardForm({
 	const depthCm = parseDimensionToCm(draft.depth, draft.units);
 
 	const submit = () => {
-		if (validation.ok) onSubmit(validation.value);
+		if (!blocked && validation.ok) onSubmit(validation.value);
 	};
 
 	const drawing = (
@@ -245,6 +249,16 @@ export function CustomBoardForm({
 					</Section>
 				</div>
 
+				{limitReason ? (
+					<p
+						id="board-capacity-limit"
+						className="custom__limit"
+						role="note"
+						data-testid="board-limit"
+					>
+						{limitReason}
+					</p>
+				) : null}
 				<div
 					className="custom__footer"
 					data-editing={editing ? "true" : undefined}
@@ -259,6 +273,8 @@ export function CustomBoardForm({
 						className="custom__cta"
 						data-testid="board-submit"
 						disabled={!validation.ok}
+						aria-disabled={blocked ? "true" : undefined}
+						aria-describedby={blocked ? "board-capacity-limit" : undefined}
 						onClick={submit}
 					>
 						{editing ? "Save changes" : "Add custom board"}

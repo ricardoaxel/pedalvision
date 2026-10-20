@@ -1,5 +1,6 @@
 import { useStore } from "zustand";
 import { createStore, type StoreApi } from "zustand/vanilla";
+import { CAPACITY } from "../lib/capacity";
 import type { SceneRepository } from "../lib/idb";
 import {
 	LEGACY_SCENE_KEY,
@@ -70,7 +71,7 @@ export const SCENE_NAME_MAX_LENGTH = 48;
  * without getting in the way of realistic use. Raise it when search/folders
  * land; it is intentionally a single constant.
  */
-export const MAX_SCENES = 10;
+export const MAX_SCENES = CAPACITY.scenes.hard;
 
 /** Trim + cap a user-entered scene name; empty/whitespace → null. */
 export function normalizeSceneName(name: string): string | null {

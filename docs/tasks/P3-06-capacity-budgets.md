@@ -1,6 +1,6 @@
 # P3-06: Capacity budgets + repeatable benchmark
 
-**Phase:** P3 · **Status:** todo — scheduled next, after P3-02 (PR #24) merges · **Model:** build-strong
+**Phase:** P3 · **Status:** in review — PR #25 (do not merge) · **Model:** build-strong
 
 > Proposed from the owner-requested capacity research (2026-10-19) and **scheduled by the owner as the next task** after P3-02 merges. Not part of P3-02; runs before **P3-03** and **P4-01** (cables add another node/cable dimension) and before raising the 10-scene cap.
 
@@ -48,5 +48,16 @@ Turn the measured v1 capacity envelope into **enforced soft/hard budgets** with 
 
 ## Notes
 
-- Measured 2026-10-19 (Chromium desktop, 7 repeated BOSS images): 200 items → 14.6 MB PNG in 629 ms; 400 items → 24.2 MB in 967 ms; 10 boards/400 items → 4.5 MB; 50 scenes boot 90 ms. These are **best-case image reuse** numbers.
 - The PNG download path is already Blob-first (`stage.toBlob()`), so the iOS data-URL size failure cannot recur; the remaining risk at scale is decoded-image memory and encode time, not the download.
+
+## Implementation (2026-10-20)
+
+- **Model:** `src/lib/capacity.ts` — `CAPACITY` soft/hard constants (items 200/400, distinct images 150/250, boards 8/10, graph 150/300, scenes 10, export soft 12 MP/15 MB), `sceneObjectCounts` over **every** scene array (boards, items incl. supplies/custom, custom definitions, cables, endpoints, graph), `distinctImageUrls`/`distinctImageCount` (URL dedupe; text-only custom parts + unknown refs exempt; boards only for export sizing), `capacityStatus`, and per-action refusals (`addItemRefusal`, `duplicateRefusal`, `boardAddRefusal`, `graphAddRefusal` for P4). Repeats of an image already in the scene stay allowed at the image cap.
+- **Enforcement:** the hard caps live in `src/state/scene.ts` (`addItem`/`duplicateItem`/`addBoard`/`addCustomBoard` return `null`), so future import/paste cannot bypass them; the UI supplies the inline reason. Over-cap stored/shared scenes still hydrate (only adding is guarded).
+- **UI:** owner-approved **"Load Chart"** (2026-10-20; owner asked for no capacity chrome until a budget is actually tight): Scene register line (only at soft/hard), Picker strip (hidden at ok; blocked rows + CTA), selected-item action-bar note (item cap; Duplicate refused), Export spec `Distinct images` + `File size` + subordinate `Large export` notice, 8px trigger dot at hard/over-cap. Tokens only; no new color tokens.
+- **Export:** `ExportPlan.distinctImages` (item + board art in scope); estimated PNG/PDF bytes from output pixels. The existing 16.7 MP/8192 px clamp and Standard/HD copy are unchanged.
+- **Benchmark:** `pnpm bench:capacity` (build + `playwright.benchmark.config.ts` + `e2e/benchmark.spec.ts`) is report-only, never part of CI e2e, and asserts only structural facts (valid PNG, clamp). It logs 89 distinct same-origin items/10 boards, 50/100/200/400-item, 400-item/89-distinct, 10-board/400-item, 10/50-scene rows with distinct images, doc bytes, boot, heap, fps, export ms/bytes/spec.
+- **Measured 2026-10-20 (desktop Chromium 1440×900, all-content Standard):** 89 distinct/10 boards → 35 ms boot, 304 ms export, 0.54 MB PNG; 200 items/7 images → 417 ms, 5.16 MB; 400 items/7 images → 630 ms, 9.87 MB; 400 items/89 distinct → 630 ms, 5.39 MB; 50 scenes → 34 ms boot. Full table in `docs/design.md` §Capacity budgets.
+- **P4 follow-up:** extend the benchmark with cables + endpoints and re-run it before raising the shared 150/300 graph cap (the model already counts them).
+- **Review:** designer "Load Chart" owner-approved before UI; `design-reviewer` pass 1 changes-required (light-theme ink + trigger dot + notice hierarchy) → pass 2 **approve**. Code review (light model, high-risk ≤2): pass 1 changes-required (announcer count spam, soft denominator, edit-mode false refusal, test/benchmark gaps) → fixed → pass 2 **approve** (2 nits: benchmark grid fit + stale docs, both fixed). Checks: lint / typecheck / test **443** / build / e2e **164 passed + 7 skipped**; benchmark passed.
+

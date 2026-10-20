@@ -142,6 +142,7 @@
 	/* Mono uppercase micro-labels (instrument voice). */
 	--tracking-caps: 0.08em;
 	--leading-tight: 1.15;
+	--leading-normal: 1.4;
 
 	/* Dot grid — clearly visible, still the calmest layer (~1.9:1 vs canvas) */
 	--grid-pitch: 24px;

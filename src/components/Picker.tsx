@@ -1,6 +1,11 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
+import {
+	addItemRefusal,
+	boardAddRefusal,
+	capacityStatus,
+} from "../lib/capacity";
 import { resolveImageUrl } from "../lib/cdn";
 import {
 	draftFromCustomBoard,
@@ -424,6 +429,10 @@ export function Picker({
 			});
 
 	const handlePlace = (entry: PickerEntry) => {
+		// Hard cap: refuse quietly — the inline strip beside the ledger explains
+		// why (never a toast, N8).
+		const refusal = tab === "boards" ? boardRefusal : itemRefusalFor(entry);
+		if (refusal) return;
 		const size = { widthCm: entry.widthCm, heightCm: entry.heightCm };
 		if (tab === "boards") {
 			const { scale, x, y, size: viewportSize } = useViewport.getState();
@@ -460,6 +469,9 @@ export function Picker({
 	// Register the custom part, then place it exactly like a catalog pedal and
 	// reset the draft so the sheet is ready for the next one.
 	const handleCreate = (definition: CustomPedalDefinition) => {
+		// Never register an orphan definition when the placed item would be
+		// refused by the capacity cap.
+		if (customPedalRefusal) return;
 		const refId = addCustomPedal(definition);
 		const size = { widthCm: definition.widthCm, heightCm: definition.heightCm };
 		if (targetBoard) {
@@ -499,6 +511,7 @@ export function Picker({
 	// Register the custom board and place it at the viewport centre (like a
 	// catalog board), then reset the draft.
 	const handleCreateBoard = (definition: CustomBoardDefinition) => {
+		if (customBoardRefusal) return;
 		const { scale, x, y, size: viewportSize } = useViewport.getState();
 		const uid = addCustomBoard(
 			definition,
@@ -590,6 +603,42 @@ export function Picker({
 	const isBoards = tab === "boards";
 	const isCustom = tab === "custom";
 	const copy = TAB_COPY[tab];
+
+	// Load Chart (P3-06): hard caps are evaluated per action. Item-cap refuses
+	// every add; image-cap refuses only a NEW image (repeats add no decode);
+	// board-cap refuses board adds. Soft is advisory and never blocks.
+	const capacity = useMemo(
+		() => capacityStatus({ boards, items, customPedals }),
+		[boards, items, customPedals],
+	);
+	const boardRefusal = boardAddRefusal({ boards, items, customPedals });
+	const itemRefusalFor = (
+		entry: Pick<PickerEntry, "id"> | null,
+	): string | null =>
+		entry ? addItemRefusal({ boards, items, customPedals }, entry.id) : null;
+	const activeRefusal = activeEntry
+		? isBoards
+			? boardRefusal
+			: itemRefusalFor(activeEntry)
+		: null;
+	const customPedalRefusal =
+		capacity.items.level === "hard"
+			? "Item limit reached — remove a part to create another."
+			: null;
+	const customBoardRefusal =
+		capacity.boards.level === "hard"
+			? "Board limit reached — remove a board to create another."
+			: null;
+	// Editing an existing part/board never adds an object, so a create refusal
+	// would be false; fall back to the plain capacity warning.
+	const stripRefusal = isEditing
+		? capacity.warning
+		: isBoards
+			? (boardRefusal ?? capacity.warning)
+			: isCustom
+				? ((isBoard ? customBoardRefusal : customPedalRefusal) ??
+					capacity.warning)
+				: (activeRefusal ?? capacity.warning);
 	// Edit mode overrides the title/dialog (the eyebrow is a location label) and,
 	// on mobile, swaps the placement hint for the part's identity. The Custom tab
 	// is kind-aware: the board creator has its own title/hint (P2-05).
@@ -783,12 +832,29 @@ export function Picker({
 							</div>
 						</header>
 
+						{/* Load Chart (P3-06): hidden at ok; soft is advisory, hard refuses
+						 * the affected action. Never a toast (N8). */}
+						{capacity.level !== "ok" && stripRefusal ? (
+							<div
+								className="picker__capacity"
+								data-testid="picker-capacity"
+								data-level={capacity.level}
+								role="status"
+							>
+								<span className="picker__capacity-label">Capacity</span>
+								<p id="picker-capacity-text" className="picker__capacity-text">
+									{stripRefusal}
+								</p>
+							</div>
+						) : null}
+
 						{isCustom ? (
 							isBoard ? (
 								<CustomBoardForm
 									draft={boardDraft}
 									onChange={setBoardDraft}
 									editing={isEditingBoard}
+									limitReason={isEditingBoard ? null : customBoardRefusal}
 									headerSlot={kindSegment}
 									onSubmit={
 										isEditingBoard ? handleSaveBoard : handleCreateBoard
@@ -800,6 +866,7 @@ export function Picker({
 									onChange={setCustomDraft}
 									targetBoard={targetBoard}
 									editing={isEditingPedal}
+									limitReason={isEditingPedal ? null : customPedalRefusal}
 									headerSlot={kindSegment}
 									onSubmit={isEditingPedal ? handleSave : handleCreate}
 								/>
@@ -958,6 +1025,9 @@ export function Picker({
 										) : (
 											entries.map((entry) => {
 												const isActive = entry.id === activeEntry?.id;
+												const blocked = isBoards
+													? boardRefusal !== null
+													: itemRefusalFor(entry) !== null;
 												return (
 													<button
 														key={entry.id}
@@ -967,12 +1037,21 @@ export function Picker({
 														}}
 														type="button"
 														aria-current={isActive ? "true" : undefined}
+														aria-disabled={blocked ? "true" : undefined}
+														aria-describedby={
+															capacity.level !== "ok"
+																? "picker-capacity-text"
+																: undefined
+														}
 														className="picker-item"
 														data-active={isActive ? "true" : undefined}
+														data-blocked={blocked ? "true" : undefined}
 														data-testid={`${isBoards ? "add-board" : "add-pedal"}-${entry.id}`}
 														onMouseEnter={() => setActiveId(entry.id)}
 														onFocus={() => setActiveId(entry.id)}
-														onClick={() => handlePlace(entry)}
+														onClick={() => {
+															if (!blocked) handlePlace(entry);
+														}}
 													>
 														<PickerThumb
 															src={entry.imageSrc}
@@ -1036,6 +1115,10 @@ export function Picker({
 														? "Place on board"
 														: "Place at centre"
 											}
+											refusal={activeRefusal}
+											describedBy={
+												capacity.level !== "ok" ? "picker-capacity-text" : null
+											}
 											onPlace={() => handlePlace(activeEntry)}
 										/>
 									) : (
@@ -1062,12 +1145,17 @@ function Specimen({
 	kind,
 	targetLabel,
 	ctaLabel,
+	refusal,
+	describedBy,
 	onPlace,
 }: {
 	entry: PickerEntry;
 	kind: "pedal" | "board";
 	targetLabel: string;
 	ctaLabel: string;
+	/** Hard-cap reason; keeps the CTA focusable but refuses the action. */
+	refusal?: string | null;
+	describedBy?: string | null;
 	onPlace: () => void;
 }) {
 	return (
@@ -1089,7 +1177,11 @@ function Specimen({
 				type="button"
 				className="specimen__cta"
 				data-testid="picker-place"
-				onClick={onPlace}
+				aria-disabled={refusal ? "true" : undefined}
+				aria-describedby={refusal ? (describedBy ?? undefined) : undefined}
+				onClick={() => {
+					if (!refusal) onPlace();
+				}}
 			>
 				{ctaLabel}
 			</button>

@@ -9,6 +9,11 @@ import {
 	useScene,
 } from "./scene";
 
+function required<T>(value: T | null): T {
+	if (value === null) throw new Error("expected a value");
+	return value;
+}
+
 const boss = catalog.boards.find((board) => board.id === "boss-bcb-1000");
 if (!boss) throw new Error("test fixture board missing from the seed");
 
@@ -24,16 +29,24 @@ describe("items slice", () => {
 	});
 
 	it("addItem stores the origin and a dense per-container z", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
-		const a = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 1, y: 2 });
-		const b = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 3, y: 4 });
-		const loose = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 9, y: 9 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
+		const a = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 1, y: 2 }),
+		);
+		const b = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 3, y: 4 }),
+		);
+		const loose = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 9, y: 9 }),
+		);
 
 		const items = useScene.getState().items;
 		expect(items.map((item) => item.uid)).toEqual([a, b, loose]);
@@ -44,11 +57,15 @@ describe("items slice", () => {
 	});
 
 	it("duplicateItem clones with an offset, same parent and a new uid", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
-		const uid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 6 });
-		const cloneUid = useScene.getState().duplicateItem(uid);
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
+		const uid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 6 }),
+		);
+		const cloneUid = required(useScene.getState().duplicateItem(uid));
 		const items = useScene.getState().items;
 		expect(cloneUid).not.toBe(uid);
 		expect(items).toHaveLength(2);
@@ -62,32 +79,42 @@ describe("items slice", () => {
 	});
 
 	it("removeItem drops only the target", () => {
-		const a = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
-		const b = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 1, y: 1 });
+		const a = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 }),
+		);
+		const b = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 1, y: 1 }),
+		);
 		useScene.getState().removeItem(a);
 		expect(useScene.getState().items.map((item) => item.uid)).toEqual([b]);
 	});
 
 	it("dropItem moves an item within its container (world cm when loose)", () => {
-		const uid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
+		const uid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 }),
+		);
 		useScene.getState().dropItem(uid, { x: 12.5, y: -3.25 }, 0);
 		const item = useScene.getState().items[0];
 		expect({ x: item.x, y: item.y }).toEqual({ x: 12.5, y: -3.25 });
 	});
 
 	it("removeBoard keeps a rotated item's visible centre", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 50, y: 40 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 50, y: 40 }),
+		);
 		useScene.getState().rotateBoard(boardUid, 30);
 		const rotated = { ...useScene.getState().boards[0] };
-		const itemUid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 10, y: 5 });
+		const itemUid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 10, y: 5 }),
+		);
 		useScene.getState().rotateItem(itemUid, 45);
 		const before = useScene
 			.getState()
@@ -112,13 +139,17 @@ describe("items slice", () => {
 	});
 
 	it("removeBoard keeps an attached item's visible centre under rotation", () => {
-		const uid = useScene.getState().addBoard(boss.id, { x: 50, y: 40 });
+		const uid = required(
+			useScene.getState().addBoard(boss.id, { x: 50, y: 40 }),
+		);
 		const board = useScene.getState().boards[0];
 		useScene.getState().rotateBoard(uid, 30);
 		const rotated = { ...board, rotationDeg: 30 };
-		const itemUid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", uid, { x: 10, y: 5 });
+		const itemUid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", uid, { x: 10, y: 5 }),
+		);
 		// The attached item's visible world centre (rendered on the rotated board).
 		const worldCentre = boardToWorld(
 			{ x: 10 + HALF.x, y: 5 + HALF.y },
@@ -288,7 +319,9 @@ describe("dropItem re-parenting math", () => {
 	});
 
 	it("attaches under a rotated board preserving the hit-tested centre", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().rotateBoard(boardUid, 90);
 		useScene.getState().moveBoard(boardUid, 100, 50);
 		// Board local origin at world (100, 50); a 90° board spans
@@ -301,9 +334,11 @@ describe("dropItem re-parenting math", () => {
 			rotationDeg: 90,
 		};
 
-		const uid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
+		const uid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 }),
+		);
 		// Drop so the pedal's visible centre lands inside the rotated board.
 		const originWorld = { x: 80, y: 60 };
 		const centre = { x: originWorld.x + HALF.x, y: originWorld.y + HALF.y };
@@ -329,7 +364,9 @@ describe("dropItem re-parenting math", () => {
 	});
 
 	it("preserves the rendered centre when nudging within a rotated board", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().rotateBoard(boardUid, 90);
 		useScene.getState().moveBoard(boardUid, 100, 50);
 		const rotated = {
@@ -339,9 +376,11 @@ describe("dropItem re-parenting math", () => {
 			y: 50,
 			rotationDeg: 90,
 		};
-		const uid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 5 });
+		const uid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 5 }),
+		);
 
 		const dropOrigin = { x: 75, y: 55 };
 		const centre = { x: dropOrigin.x + HALF.x, y: dropOrigin.y + HALF.y };
@@ -358,7 +397,9 @@ describe("dropItem re-parenting math", () => {
 	});
 
 	it("preserves the visible centre of a rotated item dropped onto a rotated board", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().rotateBoard(boardUid, 90);
 		useScene.getState().moveBoard(boardUid, 100, 50);
 		const rotatedBoard = {
@@ -370,9 +411,11 @@ describe("dropItem re-parenting math", () => {
 		};
 
 		// A loose item the user has rotated to 45°.
-		const uid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 });
+		const uid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 }),
+		);
 		useScene.getState().rotateItem(uid, 45);
 		const before = useScene.getState().items[0];
 		const rotHalf = rotatePoint(HALF, { x: 0, y: 0 }, before.rotationDeg);
@@ -404,11 +447,15 @@ describe("dropItem re-parenting math", () => {
 	});
 
 	it("keeps the item loose (world cm) when dropped outside every board", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().moveBoard(boardUid, 100, 50);
-		const uid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 5 });
+		const uid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", boardUid, { x: 5, y: 5 }),
+		);
 		useScene.getState().dropItem(uid, { x: 0, y: 0 }, 0);
 		const item = useScene.getState().items[0];
 		expect(item.boardUid).toBeNull();
@@ -417,12 +464,14 @@ describe("dropItem re-parenting math", () => {
 	});
 
 	it("re-parents between boards using the topmost hit", () => {
-		const a = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
-		const b = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const a = required(useScene.getState().addBoard(boss.id, { x: 0, y: 0 }));
+		const b = required(useScene.getState().addBoard(boss.id, { x: 0, y: 0 }));
 		// Both at the viewport origin; the later board (b) is on top.
-		const uid = useScene
-			.getState()
-			.addItem("boss-bd-2-blues-driver", "pedal", a, { x: 5, y: 5 });
+		const uid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", a, { x: 5, y: 5 }),
+		);
 		// Drop so the pedal's centre lands inside the overlapping boards.
 		useScene.getState().dropItem(uid, { x: HALF.x, y: HALF.y }, 0);
 		expect(useScene.getState().items[0].boardUid).toBe(b);

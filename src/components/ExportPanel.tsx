@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { renderExportFile } from "../canvas/exportStage";
 import { useCanvasTheme } from "../canvas/useCanvasTheme";
+import { exportCapacity, formatEstimatedBytes } from "../lib/capacity";
 import {
 	ExportError,
 	type ExportFormat,
@@ -263,6 +264,9 @@ export function ExportPanel({
 	};
 
 	const notices = plan ? noticeLines(plan) : [];
+	const capacity = plan
+		? exportCapacity(plan.outputWidthPx, plan.outputHeightPx, format)
+		: null;
 
 	return (
 		<div
@@ -513,6 +517,28 @@ export function ExportPanel({
 								? `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm · ${quality === "hd" ? "HD" : "Standard"} · ${Math.round(plan.outputPpi)} PPI`
 								: "—"}
 						</div>
+						{plan && capacity ? (
+							<div className="export-spec__row export-spec__row--spaced">
+								<span className="export-spec__label">Distinct images</span>
+								<span
+									className="export-spec__value"
+									data-testid="export-images"
+								>
+									{formatPx(plan.distinctImages)}
+								</span>
+							</div>
+						) : null}
+						{plan && capacity ? (
+							<div className="export-spec__row">
+								<span className="export-spec__label">File size</span>
+								<span
+									className="export-spec__value"
+									data-testid="export-file-size"
+								>
+									{formatEstimatedBytes(capacity.estimatedBytes)}
+								</span>
+							</div>
+						) : null}
 					</div>
 
 					{notices.length > 0 ? (
@@ -520,6 +546,14 @@ export function ExportPanel({
 							{notices.map((line) => (
 								<p key={line}>{line}</p>
 							))}
+						</div>
+					) : null}
+					{capacity?.warning ? (
+						<div
+							className="export-notice export-notice--capacity"
+							data-testid="export-capacity-warning"
+						>
+							<p>{capacity.warning}</p>
 						</div>
 					) : null}
 
