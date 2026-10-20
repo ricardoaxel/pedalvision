@@ -62,6 +62,55 @@ async function closeScenes(page: Page) {
 	await expect(page.getByTestId("scene-panel")).toHaveCount(0);
 }
 
+/** Seed `count` empty scenes (for the product-cap UI state). */
+async function seedSceneCount(page: Page, count: number): Promise<void> {
+	await page.goto("/");
+	await expect(page.getByTestId("stage")).toBeVisible();
+	await page.evaluate(async (total) => {
+		const now = new Date().toISOString();
+		const docs = Array.from({ length: total }, (_, index) => ({
+			id: `cap-${index + 1}`,
+			version: 1,
+			name: `Scene ${index + 1}`,
+			boards: [],
+			items: [],
+			customPedals: [],
+			updatedAt: now,
+		}));
+		await new Promise<void>((resolve, reject) => {
+			const request = indexedDB.open("pedalvision", 1);
+			request.onerror = () => reject(request.error);
+			request.onsuccess = () => {
+				const tx = request.result.transaction("scenes", "readwrite");
+				const store = tx.objectStore("scenes");
+				store.clear();
+				for (const doc of docs) store.put(doc);
+				tx.oncomplete = () => resolve();
+				tx.onerror = () => reject(tx.error);
+			};
+		});
+		localStorage.setItem(
+			"pedalvision.scenes.v1",
+			JSON.stringify({
+				version: 1,
+				scenes: docs.map((doc) => ({
+					id: doc.id,
+					name: doc.name,
+					updatedAt: doc.updatedAt,
+					boardCount: 0,
+					itemCount: 0,
+				})),
+			}),
+		);
+		localStorage.setItem(
+			"pedalvision.settings.v1",
+			JSON.stringify({ version: 1, units: "cm", activeSceneId: "cap-1" }),
+		);
+	}, count);
+	await page.reload();
+	await expect(page.getByTestId("stage")).toBeVisible();
+}
+
 test("A4: save → reload → identical state (geometry, rotation, z-order, inline custom pedal)", async ({
 	page,
 }) => {
@@ -216,6 +265,16 @@ test("deleting a scene persists and keeps at least one sheet", async ({
 	await openScenes(page);
 	await expect(page.getByRole("button", { name: /^Scene 2/ })).toHaveCount(0);
 	await expect(page.getByRole("button", { name: /^Scene 1/ })).toBeVisible();
+});
+
+test("the product cap disables New scene at 10 sheets", async ({ page }) => {
+	await seedSceneCount(page, 10);
+	await openScenes(page);
+	await expect(page.getByTestId("scene-new")).toBeDisabled();
+	await expect(page.getByTestId("scene-limit")).toContainText(
+		"Scene limit reached",
+	);
+	await expect(page.getByRole("button", { name: /^Scene 10/ })).toBeVisible();
 });
 
 test("boot reconcile drops stale index entries and surfaces orphan documents", async ({

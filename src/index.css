@@ -3441,3 +3441,11 @@ body {
 	cursor: not-allowed;
 	opacity: 0.5;
 }
+
+/* P3-02 product cap: at 10 scenes the register explains why New scene is off. */
+.scene-panel__limit {
+	margin: 0 0 var(--space-2);
+	font-size: var(--font-size-xs);
+	line-height: var(--leading-normal);
+	color: var(--color-ink-muted);
+}

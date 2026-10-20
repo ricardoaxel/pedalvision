@@ -6,6 +6,7 @@ import {
 } from "react";
 import type { SceneIndexEntry } from "../lib/sceneIndex";
 import {
+	MAX_SCENES,
 	SCENE_NAME_MAX_LENGTH,
 	sceneLibrary,
 	useSceneLibrary,
@@ -21,6 +22,7 @@ import {
 const PANEL_TITLE_ID = "scene-panel-title";
 const STATUS_ID = "scene-panel-status";
 const LAST_SCENE_HINT_ID = "scene-panel-last-hint";
+const SCENE_LIMIT_HINT_ID = "scene-panel-limit-hint";
 
 const timeFormat = new Intl.DateTimeFormat("en-US", {
 	hour: "2-digit",
@@ -282,6 +284,7 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 	};
 
 	const hasOneScene = scenes.length <= 1;
+	const atSceneLimit = scenes.length >= MAX_SCENES;
 
 	return (
 		<div
@@ -478,13 +481,24 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 				<p id={LAST_SCENE_HINT_ID} className="visually-hidden">
 					Keep at least one scene.
 				</p>
+				{atSceneLimit ? (
+					<p
+						id={SCENE_LIMIT_HINT_ID}
+						className="scene-panel__limit"
+						role="note"
+						data-testid="scene-limit"
+					>
+						Scene limit reached — delete a scene to make room.
+					</p>
+				) : null}
 				<button
 					ref={newSceneRef}
 					type="button"
 					className="scene-panel__new"
 					data-testid="scene-new"
 					data-scene-new
-					disabled={sessionOnly}
+					disabled={sessionOnly || atSceneLimit}
+					aria-describedby={atSceneLimit ? SCENE_LIMIT_HINT_ID : undefined}
 					onClick={() => void createScene()}
 				>
 					<span aria-hidden="true">+</span> New scene

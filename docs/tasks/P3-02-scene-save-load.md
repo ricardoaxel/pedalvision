@@ -67,6 +67,7 @@ Replace the temporary `localStorage` scene mirror (P1-06) with the real v1 persi
 - `docs/progress.md`, `docs/roadmap.md` and this file reflect **in review — PR #N** (not done) until the owner merges.
 
 ## Notes
+- **Owner-directed additions folded into this PR (2026-10-19):** a product cap of **10 named scenes** (`MAX_SCENES`, inline "limit reached" state), centring the compact mobile Export trigger icon, and switching the PNG download to a Blob object URL (A3: iOS Safari fails on multi-MB `data:` downloads; the reported 7-pedal board exports as a ~2.14 MB PNG).
 
 - `idb` (P3 persistence) is pre-authorized in `docs/progress.md` → Deps note; keep it the only new dependency.
 - The index lives in `localStorage` even though documents live in IndexedDB (design.md §Persistence) — reconcile exists because the two stores can evict independently.

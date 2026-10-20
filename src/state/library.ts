@@ -64,6 +64,14 @@ export function useSceneLibrary<T>(
 
 export const SCENE_NAME_MAX_LENGTH = 48;
 
+/**
+ * Product cap for v1 (owner decision, 2026-10-19). 10 keeps the register
+ * search-free and bounds the boot reconcile (`getAll()` reads every document)
+ * without getting in the way of realistic use. Raise it when search/folders
+ * land; it is intentionally a single constant.
+ */
+export const MAX_SCENES = 10;
+
 /** Trim + cap a user-entered scene name; empty/whitespace → null. */
 export function normalizeSceneName(name: string): string | null {
 	const trimmed = name.trim();
@@ -438,6 +446,7 @@ export function createSceneLibraryRuntime(
 		if (!deps.repo || store.getState().sessionOnly) return null;
 		await autosave.flush();
 		const state = store.getState();
+		if (state.scenes.length >= MAX_SCENES) return null;
 		const id = newId();
 		const sceneName =
 			(name === undefined ? null : normalizeSceneName(name)) ??

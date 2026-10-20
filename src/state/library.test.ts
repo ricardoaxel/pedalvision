@@ -12,6 +12,7 @@ import {
 } from "../lib/sceneIndex";
 import {
 	createSceneLibraryRuntime,
+	MAX_SCENES,
 	type SceneLibraryRuntime,
 	type SceneLibraryState,
 } from "./library";
@@ -520,6 +521,19 @@ describe("scene library", () => {
 		expect(await runtime.renameScene("b", "Nope")).toBe(false);
 		expect(await runtime.newScene()).toBeNull();
 		expect(storage.getItem(SCENE_INDEX_KEY)).toBe(indexRaw);
+	});
+
+	it("stops at the 10-scene product cap", async () => {
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		for (let index = 2; index <= MAX_SCENES; index++) {
+			expect(await runtime.newScene(`Scene ${index}`)).toBeTruthy();
+		}
+		expect(store.getState().scenes).toHaveLength(MAX_SCENES);
+		expect(await runtime.newScene("Too many")).toBeNull();
+		expect(store.getState().scenes).toHaveLength(MAX_SCENES);
+		expect(repo.docs.size).toBe(MAX_SCENES);
 	});
 
 	it("boots in session-only mode when storage is unavailable", async () => {

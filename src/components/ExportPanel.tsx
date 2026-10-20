@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { renderExportFile } from "../canvas/exportStage";
 import { useCanvasTheme } from "../canvas/useCanvasTheme";
+import { dataUrlToBlob } from "../lib/download";
 import {
 	ExportError,
 	type ExportFormat,
@@ -73,14 +74,18 @@ function noticeLines(plan: ExportPlan): string[] {
 	return lines;
 }
 
-function downloadDataUrl(dataUrl: string, filename: string): void {
+function downloadBlob(blob: Blob, filename: string): void {
+	const url = URL.createObjectURL(blob);
 	const link = document.createElement("a");
-	link.href = dataUrl;
+	link.href = url;
 	link.download = filename;
 	link.rel = "noopener";
 	document.body.appendChild(link);
 	link.click();
 	link.remove();
+	// iOS Safari can drop a save if the object URL is revoked immediately; keep
+	// it alive long enough for the save sheet, then release the memory.
+	setTimeout(() => URL.revokeObjectURL(url), 60_000);
 }
 
 function downloadBytes(
@@ -92,16 +97,7 @@ function downloadBytes(
 		bytes.byteOffset,
 		bytes.byteOffset + bytes.byteLength,
 	) as ArrayBuffer;
-	const url = URL.createObjectURL(new Blob([buffer], { type: mimeType }));
-	const link = document.createElement("a");
-	link.href = url;
-	link.download = filename;
-	link.rel = "noopener";
-	document.body.appendChild(link);
-	link.click();
-	link.remove();
-	// Revoke after the browser has had a chance to start the download.
-	setTimeout(() => URL.revokeObjectURL(url), 1000);
+	downloadBlob(new Blob([buffer], { type: mimeType }), filename);
 }
 
 /**
@@ -227,7 +223,9 @@ export function ExportPanel({
 			if (rendered.format === "pdf") {
 				downloadBytes(rendered.bytes, filename, "application/pdf");
 			} else {
-				downloadDataUrl(rendered.dataUrl, filename);
+				// Blob URLs, not `data:` URLs — iOS Safari silently fails to save
+				// large photographic PNGs from a data URL (A3).
+				downloadBlob(dataUrlToBlob(rendered.dataUrl), filename);
 			}
 			setResult({
 				filename,
