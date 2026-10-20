@@ -83,7 +83,7 @@ A user can turn the active scene into a self-contained URL (`#s=v1:…`) that a 
 - `fflate` justification: pre-authorized in P0-01 + the progress Deps note, named by `design.md`, tiny/stable with no transitive deps; used sync (`deflateSync`/bounded inflate) so the codec stays deterministic and testable in Node.
 - Read-only shares reuse the existing catalog → `customPedals` → fallback resolution; the placeholder label is the `refId`, at the item's true cm footprint.
 - P4 cables/endpoints are deliberately not encoded yet. The version-1 payload is additive, matching `SceneDocument`'s versioning model; P4 extends it rather than creating a new share version.
-- The ~200 KB cap is on decoded JSON; compressed/hash caps plus bounded inflation protect memory. A scene at the item/board/image caps is well under it; many custom pedals are the realistic path to the ceiling and get an inline refusal from the sender.
+- The ~200 KB cap is on decoded JSON; compressed/hash caps plus streamed inflation with a 200 KB output cutoff protect memory and main-thread time. A scene at the item/board/image caps is well under it; many custom pedals are the realistic path to the ceiling and get an inline refusal from the sender.
 
 ## Implementation (2026-10-20)
 

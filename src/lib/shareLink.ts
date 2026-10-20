@@ -20,9 +20,10 @@ import { MAX_DIMENSION_CM } from "./customPedal";
  * fallback at the stored footprint rather than failing the scene.
  *
  * Untrusted input is validated with zod **before** it reaches the store. The
- * decoded JSON is capped at ~200 KB and the compressed input is capped and
- * inflated into a bounded output buffer, so a link bomb can't allocate memory
- * proportional to its expansion ratio. The capacity hard caps are NOT applied
+ * decoded JSON is capped at ~200 KB and the compressed input is capped; the
+ * inflation is streamed and aborted as soon as the output crosses the cap, so a
+ * link bomb can't allocate memory proportional to its expansion ratio or block
+ * the main thread for the whole stream. The capacity hard caps are NOT applied
  * on load: an over-cap shared scene still opens (read-only, warned; A4/A5).
  */
 
