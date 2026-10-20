@@ -2,6 +2,7 @@ import type { RefObject } from "react";
 import { useEffect, useRef } from "react";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
+import { isReadOnly } from "../state/readOnly";
 import {
 	itemVisualRotationDeg,
 	pointerGrabOffset,
@@ -71,6 +72,11 @@ export function useItemDrag(containerRef: RefObject<HTMLElement | null>): void {
 
 		const unsubCandidate = useDrag.subscribe((state, prev) => {
 			if (state.candidate && state.candidate !== prev.candidate) {
+				if (isReadOnly()) {
+					pendingRef.current = null;
+					useDrag.getState().clear();
+					return;
+				}
 				// A press during navigation (e.g. a finger landing on a pedal while
 				// another pans/pinches) must not start a drag: cancellation only
 				// fires on the idle→navigating edge, which already passed.

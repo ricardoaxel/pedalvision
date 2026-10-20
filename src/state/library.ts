@@ -13,6 +13,7 @@ import {
 	writeSettings,
 } from "../lib/sceneIndex";
 import { type AutosaveTimers, createAutosave } from "./autosave";
+import { useReadOnly } from "./readOnly";
 import { useScene } from "./scene";
 import {
 	createSceneDocument,
@@ -93,6 +94,20 @@ export interface SceneLibraryDeps {
 	store?: StoreApi<SceneLibraryState>;
 }
 
+export interface SaveCopySuccess {
+	ok: true;
+	id: string;
+	name: string;
+}
+
+export interface SaveCopyFailure {
+	ok: false;
+	reason: "limit" | "storage" | "write";
+	message: string;
+}
+
+export type SaveCopyResult = SaveCopySuccess | SaveCopyFailure;
+
 export interface SceneLibraryRuntime {
 	store: StoreApi<SceneLibraryState>;
 	boot: () => Promise<void>;
@@ -101,6 +116,12 @@ export interface SceneLibraryRuntime {
 	renameScene: (id: string, name: string) => Promise<boolean>;
 	deleteScene: (id: string) => Promise<boolean>;
 	saveNow: () => Promise<void>;
+	/** Enter the read-only shared-scene preview (P3-03). */
+	enterPreview: (snapshot: SceneSnapshot, name: string) => Promise<void>;
+	/** Save the preview as a new editable scene; never overwrites the active one. */
+	savePreviewAsCopy: (name?: string) => Promise<SaveCopyResult>;
+	/** Leave the preview and restore the recipient's scene. */
+	exitPreview: () => Promise<void>;
 	dispose: () => void;
 }
 
@@ -139,6 +160,11 @@ export function createSceneLibraryRuntime(
 	let applying = false;
 	let disposed = false;
 	let unsubscribe: (() => void) | null = null;
+	// P3-03 read-only preview: the shared scene lives in the global store for
+	// rendering, while the recipient's document stays untouched in IndexedDB.
+	let previewing = false;
+	let previewName = "Shared scene";
+	let previousSnapshot: SceneSnapshot | null = null;
 
 	const persistIndex = (): boolean => {
 		if (store.getState().sessionOnly) return false;
@@ -165,6 +191,7 @@ export function createSceneLibraryRuntime(
 	};
 
 	const saveActive = async (): Promise<void> => {
+		if (previewing) return;
 		const state = store.getState();
 		if (!deps.repo || !state.activeId || state.sessionOnly) return;
 		const entry = activeEntry(state);
@@ -210,7 +237,7 @@ export function createSceneLibraryRuntime(
 	const subscribe = () => {
 		unsubscribe?.();
 		unsubscribe = useScene.subscribe((state, previous) => {
-			if (applying || disposed) return;
+			if (applying || disposed || previewing) return;
 			if (
 				state.boards !== previous.boards ||
 				state.items !== previous.items ||
@@ -481,6 +508,121 @@ export function createSceneLibraryRuntime(
 		return id;
 	};
 
+	const copySceneName = (base: string): string => {
+		const suffix = " (copy)";
+		const clean = normalizeSceneName(base) ?? "Shared scene";
+		return (
+			normalizeSceneName(
+				`${clean.slice(0, SCENE_NAME_MAX_LENGTH - suffix.length)}${suffix}`,
+			) ?? "Shared scene (copy)"
+		);
+	};
+
+	const enterPreview = async (
+		snapshot: SceneSnapshot,
+		name: string,
+	): Promise<void> => {
+		if (!previewing) {
+			// Save the recipient's pending edits, then freeze autosave for the
+			// duration of the preview. Their active document is never written.
+			await autosave.flush();
+			const scene = useScene.getState();
+			previousSnapshot = {
+				boards: scene.boards,
+				items: scene.items,
+				customPedals: scene.customPedals,
+			};
+		}
+		previewName = normalizeSceneName(name) ?? "Shared scene";
+		autosave.cancel();
+		previewing = true;
+		useReadOnly.getState().setReadOnly(true);
+		applyScene(normalizeSceneContent(snapshot));
+		store.setState({ saving: false });
+	};
+
+	const savePreviewAsCopy = async (name?: string): Promise<SaveCopyResult> => {
+		if (!previewing) {
+			return {
+				ok: false,
+				reason: "storage",
+				message: "No shared scene is open.",
+			};
+		}
+		const state = store.getState();
+		if (!deps.repo || state.sessionOnly) {
+			return {
+				ok: false,
+				reason: "storage",
+				message: "Storage isn’t available, so a copy can’t be saved.",
+			};
+		}
+		if (state.scenes.length >= MAX_SCENES) {
+			return {
+				ok: false,
+				reason: "limit",
+				message: `Scene limit reached — ${MAX_SCENES} of ${MAX_SCENES}. Delete a scene to make room for this copy.`,
+			};
+		}
+		const id = newId();
+		const sceneName = copySceneName(name ?? previewName);
+		const scene = useScene.getState();
+		const updatedAt = nowIso();
+		const document = createSceneDocument({
+			id,
+			name: sceneName,
+			boards: scene.boards,
+			items: scene.items,
+			customPedals: scene.customPedals,
+			updatedAt,
+		});
+		try {
+			await deps.repo.put(document);
+		} catch {
+			return {
+				ok: false,
+				reason: "write",
+				message: "Couldn’t save the copy. Try again.",
+			};
+		}
+		previewing = false;
+		useReadOnly.getState().setReadOnly(false);
+		const scenes = [
+			...state.scenes,
+			{
+				id,
+				name: sceneName,
+				updatedAt,
+				boardCount: scene.boards.length,
+				itemCount: scene.items.length,
+			},
+		];
+		store.setState({
+			scenes,
+			activeId: id,
+			lastSavedAt: updatedAt,
+			saving: false,
+		});
+		persistIndex();
+		writeSettings({ activeSceneId: id }, deps.storage);
+		applyScene(sceneFromDocument(document));
+		autosave.cancel();
+		previousSnapshot = null;
+		previewName = "Shared scene";
+		return { ok: true, id, name: sceneName };
+	};
+
+	const exitPreview = async (): Promise<void> => {
+		if (!previewing) return;
+		// Restore the captured in-memory snapshot *before* re-arming any write
+		// path. The entry flush may have failed (quota/eviction), so reloading the
+		// stored document could silently drop the recipient's unsaved edits.
+		applyScene(previousSnapshot ?? emptyScene());
+		previewing = false;
+		useReadOnly.getState().setReadOnly(false);
+		previousSnapshot = null;
+	};
+
 	const switchScene = async (id: string): Promise<boolean> => {
 		const state = store.getState();
 		if (state.sessionOnly) return false;
@@ -606,6 +748,10 @@ export function createSceneLibraryRuntime(
 		switchScene: (id) => serialize(() => switchScene(id)),
 		renameScene: (id, name) => serialize(() => renameScene(id, name)),
 		deleteScene: (id) => serialize(() => deleteScene(id)),
+		enterPreview: (snapshot, name) =>
+			serialize(() => enterPreview(snapshot, name)),
+		savePreviewAsCopy: (name) => serialize(() => savePreviewAsCopy(name)),
+		exitPreview: () => serialize(() => exitPreview()),
 		saveNow,
 		dispose,
 	};
@@ -631,5 +777,15 @@ export const sceneLibrary = {
 		runtime?.renameScene(id, name) ?? Promise.resolve(false),
 	deleteScene: (id: string): Promise<boolean> =>
 		runtime?.deleteScene(id) ?? Promise.resolve(false),
+	enterPreview: (snapshot: SceneSnapshot, name: string): Promise<void> =>
+		runtime?.enterPreview(snapshot, name) ?? Promise.resolve(),
+	savePreviewAsCopy: (name?: string): Promise<SaveCopyResult> =>
+		runtime?.savePreviewAsCopy(name) ??
+		Promise.resolve({
+			ok: false,
+			reason: "storage",
+			message: "No shared scene is open.",
+		}),
+	exitPreview: (): Promise<void> => runtime?.exitPreview() ?? Promise.resolve(),
 	saveNow: (): Promise<void> => runtime?.saveNow() ?? Promise.resolve(),
 };

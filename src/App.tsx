@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BoardActionBar } from "./canvas/BoardActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
+import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
@@ -10,10 +11,20 @@ import { InfoPanel } from "./components/InfoPanel";
 import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
+import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
+import {
+	ShareActions,
+	ShareEditCue,
+	ShareErrorNotice,
+	ShareSavedNotice,
+	ShareStamp,
+} from "./components/ShareView";
 import { capacityStatus } from "./lib/capacity";
 import { useSceneLibrary } from "./state/library";
+import { useReadOnly } from "./state/readOnly";
 import { useScene } from "./state/scene";
 import { selectSelectedItemUid, useSelection } from "./state/selection";
+import { useShare } from "./state/share";
 
 type Theme = "dark" | "light";
 
@@ -38,6 +49,18 @@ function App() {
 	// P3-02 scenes: an always-visible current-scene plate opening the register.
 	const [scenesOpen, setScenesOpen] = useState(false);
 	const sceneTriggerRef = useRef<HTMLButtonElement>(null);
+	// P3-03: a share link opens a read-only preview; the Share panel is sender-only.
+	const [shareOpen, setShareOpen] = useState(false);
+	const shareTriggerRef = useRef<HTMLButtonElement>(null);
+	const readOnly = useReadOnly((state) => state.readOnly);
+	const shareStatus = useShare((state) => state.status);
+	const previousReadOnly = useRef(readOnly);
+	useEffect(() => {
+		if (previousReadOnly.current && !readOnly) {
+			requestAnimationFrame(() => sceneTriggerRef.current?.focus());
+		}
+		previousReadOnly.current = readOnly;
+	}, [readOnly]);
 	const activeSceneName = useSceneLibrary((state) => {
 		const active = state.scenes.find((entry) => entry.id === state.activeId);
 		return active?.name ?? "Untitled scene";
@@ -59,6 +82,8 @@ function App() {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	// Delete/duplicate shortcuts for the selected pedal (F6).
 	useSelectionShortcuts();
+	// Explain read-only drag attempts on a shared scene (P3-03).
+	useReadOnlyEditCue();
 
 	const toggleTheme = () => {
 		const next: Theme = theme === "dark" ? "light" : "dark";
@@ -67,9 +92,11 @@ function App() {
 	};
 
 	const openPicker = (tab: PickerTab) => {
+		useShare.getState().dismissSaved();
 		setExportOpen(false);
 		setExportBusy(false);
 		setScenesOpen(false);
+		setShareOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 		setPickerTab(tab);
@@ -77,21 +104,40 @@ function App() {
 	};
 
 	const openExport = () => {
+		useShare.getState().dismissSaved();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 		setExportBusy(false);
 		setScenesOpen(false);
+		setShareOpen(false);
 		setExportOpen(true);
 	};
 
 	const openScenes = () => {
+		useShare.getState().dismissSaved();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 		setExportOpen(false);
 		setExportBusy(false);
+		setShareOpen(false);
 		setScenesOpen(true);
+	};
+
+	const openShare = () => {
+		setPickerOpen(false);
+		setEditingCustomRefId(null);
+		setEditingBoardUid(null);
+		setExportOpen(false);
+		setExportBusy(false);
+		setScenesOpen(false);
+		setShareOpen(true);
+	};
+
+	const closeShare = () => {
+		setShareOpen(false);
+		requestAnimationFrame(() => shareTriggerRef.current?.focus());
 	};
 
 	// Close + return focus to the trigger (the non-modal dialog's contract).
@@ -133,59 +179,89 @@ function App() {
 			data-panel={selectedItemUid ? "open" : undefined}
 			data-export={exportOpen ? "open" : undefined}
 			data-scenes={scenesOpen ? "open" : undefined}
+			data-share={shareStatus === "none" ? undefined : shareStatus}
+			data-readonly={readOnly ? "true" : undefined}
 		>
 			<h1 className="visually-hidden">Pedalvision</h1>
 			<CapacityAnnouncer />
 			<div className="app-canvas">
 				<Stage />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
-				 * so its presses never reach the canvas gesture handler. */}
-				<ItemActionBar onEditCustom={openCustomEdit} />
-				<BoardActionBar onEditBoard={openBoardEdit} />
-				{/* First-run "Bench Note" (P2-08): small, dismissible, non-modal. */}
-				<FirstRunHint onAddBoard={() => openPicker("boards")} />
-				<button
-					ref={sceneTriggerRef}
-					type="button"
-					className="scene-trigger"
-					data-testid="scene-open"
-					data-scene-trigger
-					aria-label={`Scenes — current: ${activeSceneName}${sceneCapacitySuffix}`}
-					aria-haspopup="dialog"
-					aria-expanded={scenesOpen}
-					aria-controls="scene-panel"
-					title={activeSceneName}
-					onClick={scenesOpen ? closeScenes : openScenes}
-				>
-					<SceneTriggerContent />
-				</button>
-				{scenesOpen ? <ScenePanel onClose={closeScenes} /> : null}
+				 * so its presses never reach the canvas gesture handler. Read-only
+				 * shares keep selection + the info panel, but remove every edit affordance. */}
+				{readOnly ? (
+					<ShareStamp />
+				) : (
+					<>
+						<ItemActionBar onEditCustom={openCustomEdit} />
+						<BoardActionBar onEditBoard={openBoardEdit} />
+						{/* First-run "Bench Note" (P2-08): small, dismissible, non-modal. */}
+						<FirstRunHint onAddBoard={() => openPicker("boards")} />
+						<button
+							ref={sceneTriggerRef}
+							type="button"
+							className="scene-trigger"
+							data-testid="scene-open"
+							data-scene-trigger
+							aria-label={`Scenes — current: ${activeSceneName}${sceneCapacitySuffix}`}
+							aria-haspopup="dialog"
+							aria-expanded={scenesOpen}
+							aria-controls="scene-panel"
+							title={activeSceneName}
+							onClick={scenesOpen ? closeScenes : openScenes}
+						>
+							<SceneTriggerContent />
+						</button>
+						{scenesOpen ? <ScenePanel onClose={closeScenes} /> : null}
+					</>
+				)}
 				<div className="app-toolbar">
-					<button
-						type="button"
-						className="app-toolbar__add"
-						data-testid="picker-open"
-						aria-label="Add pedal"
-						aria-haspopup="dialog"
-						title="Add pedal"
-						onClick={() => openPicker("pedals")}
-					>
-						<PedalIcon />
-						<PlusIcon />
-					</button>
-					<button
-						type="button"
-						id="toolbar-add-board"
-						className="app-toolbar__add"
-						data-testid="picker-open-board"
-						aria-label="Add board"
-						aria-haspopup="dialog"
-						title="Add board"
-						onClick={() => openPicker("boards")}
-					>
-						<BoardIcon />
-						<PlusIcon />
-					</button>
+					{readOnly ? (
+						<ShareActions />
+					) : (
+						<>
+							<button
+								type="button"
+								className="app-toolbar__add"
+								data-testid="picker-open"
+								aria-label="Add pedal"
+								aria-haspopup="dialog"
+								title="Add pedal"
+								onClick={() => openPicker("pedals")}
+							>
+								<PedalIcon />
+								<PlusIcon />
+							</button>
+							<button
+								type="button"
+								id="toolbar-add-board"
+								className="app-toolbar__add"
+								data-testid="picker-open-board"
+								aria-label="Add board"
+								aria-haspopup="dialog"
+								title="Add board"
+								onClick={() => openPicker("boards")}
+							>
+								<BoardIcon />
+								<PlusIcon />
+							</button>
+							<button
+								ref={shareTriggerRef}
+								type="button"
+								className="hud-button share-trigger"
+								data-testid="share-open"
+								data-share-trigger
+								aria-label="Share scene"
+								title="Share scene"
+								aria-haspopup="dialog"
+								aria-expanded={shareOpen}
+								aria-controls="share-panel"
+								onClick={shareOpen ? closeShare : openShare}
+							>
+								<ShareTriggerContent />
+							</button>
+						</>
+					)}
 					<button
 						ref={exportTriggerRef}
 						type="button"
@@ -212,20 +288,34 @@ function App() {
 						onBusyChange={setExportBusy}
 					/>
 				) : null}
+				<ShareEditCue />
+				{shareOpen && !readOnly ? (
+					<SharePanel
+						onClose={closeShare}
+						onAddBoard={() => {
+							setShareOpen(false);
+							openPicker("boards");
+						}}
+					/>
+				) : null}
 			</div>
 			{/* The selected part's readout + the space warning (P2-03). */}
 			<InfoPanel />
-			<Picker
-				open={pickerOpen}
-				tab={pickerTab}
-				editRefId={editingCustomRefId}
-				editBoardUid={editingBoardUid}
-				onOpen={openPicker}
-				onTab={setPickerTab}
-				onClearEdit={() => setEditingCustomRefId(null)}
-				onClearEditBoard={() => setEditingBoardUid(null)}
-				onClose={closePicker}
-			/>
+			{!readOnly ? (
+				<Picker
+					open={pickerOpen}
+					tab={pickerTab}
+					editRefId={editingCustomRefId}
+					editBoardUid={editingBoardUid}
+					onOpen={openPicker}
+					onTab={setPickerTab}
+					onClearEdit={() => setEditingCustomRefId(null)}
+					onClearEditBoard={() => setEditingBoardUid(null)}
+					onClose={closePicker}
+				/>
+			) : null}
+			<ShareSavedNotice />
+			<ShareErrorNotice />
 		</main>
 	);
 }

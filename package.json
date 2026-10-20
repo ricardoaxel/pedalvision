@@ -19,6 +19,7 @@
 		"asset:process": "node --experimental-strip-types tools/asset-pipeline/index.ts"
 	},
 	"dependencies": {
+		"fflate": "^0.8.3",
 		"idb": "^8.0.4",
 		"konva": "^10.7.0",
 		"react": "^19.3.0",

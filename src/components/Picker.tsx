@@ -473,6 +473,7 @@ export function Picker({
 		// refused by the capacity cap.
 		if (customPedalRefusal) return;
 		const refId = addCustomPedal(definition);
+		if (!refId) return;
 		const size = { widthCm: definition.widthCm, heightCm: definition.heightCm };
 		if (targetBoard) {
 			const footprint = boardFootprint(targetBoard);

@@ -6,6 +6,7 @@ import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
 import { spaceWarning } from "../state/overlap";
+import { isReadOnly, useReadOnly } from "../state/readOnly";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -18,11 +19,27 @@ import {
 import { useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
-import { CANVAS_FONTS, ITEM_LABEL } from "../styles/theme";
+import {
+	CANVAS_FONTS,
+	ITEM_LABEL,
+	READ_ONLY_CUE_INNER_OUTSET_PX,
+	READ_ONLY_CUE_INNER_STROKE_PX,
+	READ_ONLY_CUE_OUTSET_PX,
+	READ_ONLY_CUE_STROKE_PX,
+	READ_ONLY_CUE_UNDER_STROKE_PX,
+} from "../styles/theme";
 import { finishBaseColor, finishPatternTile } from "./boardFinish";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
+
+function clientPoint(evt: MouseEvent | TouchEvent): { x: number; y: number } {
+	if ("touches" in evt) {
+		const touch = evt.changedTouches[0] ?? evt.touches[0];
+		return touch ? { x: touch.clientX, y: touch.clientY } : { x: 0, y: 0 };
+	}
+	return { x: evt.clientX, y: evt.clientY };
+}
 
 interface BoardNodeProps {
 	board: PlacedBoard;
@@ -72,6 +89,14 @@ export function BoardNode({
 	// While the viewport owns the gesture (pan/pinch), the board must not drag:
 	// a second finger would otherwise move it with both the drag and the pan.
 	const navigating = useGesture((state) => state.navigating);
+	// Only the attempted board re-renders when the cue appears/clears.
+	const readOnlyCueNonce = useReadOnly((state) =>
+		state.cue?.kind === "board" && state.cue.uid === board.uid
+			? state.cue.nonce
+			: 0,
+	);
+	const beginReadOnlyAttempt = useReadOnly((state) => state.beginAttempt);
+	const readOnly = isReadOnly();
 
 	const groupRef = useRef<Konva.Group>(null);
 	const draggingRef = useRef(false);
@@ -232,14 +257,28 @@ export function BoardNode({
 			x={cmToPx(board.x)}
 			y={cmToPx(board.y)}
 			rotation={board.rotationDeg}
-			draggable={!navigating}
+			draggable={!navigating && !isReadOnly()}
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
 				selectBoard(board.uid);
+				if (readOnly && event.evt.button === 0) {
+					beginReadOnlyAttempt({
+						uid: board.uid,
+						kind: "board",
+						startClient: clientPoint(event.evt),
+					});
+				}
 			}}
 			onTouchStart={(event) => {
 				event.cancelBubble = true;
 				selectBoard(board.uid);
+				if (readOnly) {
+					beginReadOnlyAttempt({
+						uid: board.uid,
+						kind: "board",
+						startClient: clientPoint(event.evt),
+					});
+				}
 			}}
 			onDragStart={() => {
 				draggingRef.current = true;
@@ -296,6 +335,53 @@ export function BoardNode({
 					) : null}
 				</>
 			)}
+			{readOnlyCueNonce > 0
+				? (() => {
+						const cueScale = scale > 0 ? scale : 1;
+						const outer = READ_ONLY_CUE_OUTSET_PX / cueScale;
+						const inner = READ_ONLY_CUE_INNER_OUTSET_PX / cueScale;
+						return (
+							<>
+								<Rect
+									x={-outer}
+									y={-outer}
+									width={widthPx + outer * 2}
+									height={heightPx + outer * 2}
+									stroke={theme.canvasBackground}
+									strokeWidth={READ_ONLY_CUE_UNDER_STROKE_PX / cueScale}
+									fillEnabled={false}
+									cornerRadius={5 / cueScale}
+									listening={false}
+									perfectDrawEnabled={false}
+								/>
+								<Rect
+									x={-outer}
+									y={-outer}
+									width={widthPx + outer * 2}
+									height={heightPx + outer * 2}
+									stroke={theme.dangerOutline}
+									strokeWidth={READ_ONLY_CUE_STROKE_PX / cueScale}
+									fillEnabled={false}
+									cornerRadius={5 / cueScale}
+									listening={false}
+									perfectDrawEnabled={false}
+								/>
+								<Rect
+									x={-inner}
+									y={-inner}
+									width={widthPx + inner * 2}
+									height={heightPx + inner * 2}
+									stroke={theme.dangerOutlineSoft}
+									strokeWidth={READ_ONLY_CUE_INNER_STROKE_PX / cueScale}
+									fillEnabled={false}
+									cornerRadius={3 / cueScale}
+									listening={false}
+									perfectDrawEnabled={false}
+								/>
+							</>
+						);
+					})()
+				: null}
 			{items.map((item) => (
 				<PedalNode
 					key={item.uid}

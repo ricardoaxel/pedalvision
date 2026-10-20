@@ -87,6 +87,7 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - Fold valid findings back into the docs/tasks **before** starting the next phase.
 - Record the review outcome in `docs/progress.md`.
 - **Optional user-value review (owner request, 2026-10-19):** the `pedal-user` agent (`.opencode/agent/pedal-user.md`) reviews a phase/feature from the **end user's** perspective (signal chain, connections, power, layout ergonomics, gigging workflow). It is **not** a mandatory gate — propose it to the owner when it matters (e.g. after a phase, or before committing to a feature's direction). Run it with `opencode run --agent pedal-user "<prompt>"` (it isn't in the in-session Task list until a session restart). It advises; the owner decides.
+- **Optional performance & cost review (owner request, 2026-10-20):** the `performance-expert` agent (`.opencode/agent/performance-expert.md`) reviews a feature for client CPU/memory/bandwidth/storage cost, Cloudflare free-tier/hosting cost, abuse limits, and free-tier product caps. It is **not** a mandatory gate — run it for performance-sensitive features (canvas scale, share/link payloads, export, storage, bundles) or when the owner asks. Run it with `opencode run --agent performance-expert "<prompt>"` (it isn't in the in-session Task list until a session restart). It advises; the owner decides.
 
 ## Hard constraints
 

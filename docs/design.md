@@ -97,7 +97,7 @@ Layering is **per-container, never global.** A *container* is either one board's
 - `localStorage`: settings (`units`, `activeSceneId`) + scene index (id → name, updatedAt, cached board/part counts). Implemented in P3-02; the pre-P3 temporary single-scene mirror (`pedalvision.scene.v1`) is migrated once into a named scene and removed.
 - `IndexedDB` (via `idb`): scene documents; autosave debounced ~500ms
 - **Boot reconcile (R6/S2):** on boot, reconcile the scene index (localStorage) against the scene documents (IndexedDB) — drop index entries with no document, and surface any orphaned documents back into the index. Handles partial eviction (private mode, extensions, browser settings). Lives in P3-02.
-- Share: `scene → JSON → deflate (fflate) → base64url → location.hash (#s=…)`; recipients get a read-only view ("save a copy" button). Validate with zod + size cap on load. **Custom pedals travel in the scene payload** (R6/S1) so shared scenes render identically on any device (A5). Watch the ~200KB cap interplay (R6/N4): many custom pedals, each with jacks+power, approach the decoded-payload limit — the codec task (P3-03) should note this.
+- **Share (P3-03, `src/lib/shareLink.ts`):** `scene → JSON → deflate (fflate) → base64url → location.hash (#s=v1:…)`; recipients get a read-only view with "Save a copy". The payload is `{ version, name, boards, items, customPedals }` — **custom pedals travel inline** (R6/S1) so shared scenes render identically on any device (A5). Untrusted input is zod-validated before it reaches the store; unknown `refId`s are preserved and render the labeled fallback (never fail the scene). Caps: **200 KB decoded JSON**, a **32,000-character URL hard cap** (soft warning at 4,000; compressed/base64 limits are derived from it, ~24 KB), and streamed inflation with a 200 KB output cutoff (a link bomb aborts early and becomes a typed `too-large` error). An over-ceiling scene, or one whose link would be truncated by chat apps/address bars, is refused at encode time with an inline reason. A scene at the item/board/image hard caps is well under both ceilings. The recipient's scene document is never written while previewing: `enterPreview` flushes + suspends autosave, `savePreviewAsCopy` creates a **new** document (respecting `MAX_SCENES`), `exitPreview` restores the recipient's document. Every scene-store mutator is a no-op in read-only mode; the share hash is cleared after save/exit.
 - **Versioning (S1):** `Scene.version` (starts at 1) + share-URL prefix `#s=v1:…`. Zod schema per version; on load, resolve `refId` against the catalog first, then `Scene.customPedals`; if still unknown, render a labeled placeholder box (keep geometry) rather than failing — so A4/A5 hold even after the catalog changes.
 - **Scene cap (product decision, 2026-10-19):** **10 named scenes** in v1. It bounds the boot reconcile (`getAll()` reads every document) and keeps the register usable without search; `newScene` is refused at the cap and the register shows an inline reason (never a toast). Raise it when search/folders land.
 - **Storage failure (N3):** check IndexedDB availability/quota on boot; if unavailable, disable autosave + show an inline warning + offer "download scene backup" (JSON). Never lose work silently.
@@ -155,14 +155,14 @@ PR / push to main → `pnpm install --frozen-lockfile` (cached) → `biome ci` �
 
 ## Security (static SPA threat model)
 - XSS via custom pedal/board names → React escaping; no `dangerouslySetInnerHTML`; any future rich text sanitized.
-- Share-URL bomb → cap decoded payload (~200KB), zod-validate before applying to store.
+- Share-URL bomb → cap decoded payload (200KB), cap the compressed/base64 input, inflate into a bounded output, and zod-validate before applying to the store. Unknown refs are data, never code.
 - Asset integrity → v1 images are static repo files reviewed via PR; no user uploads in v1. (If/when R2: bucket private, uploads only via CI/owner script.)
 - Dependencies → `pnpm audit` clean is a **launch-gate check** (manual today); a weekly CI audit job + Dependabot are **not set up yet** (small CI follow-up). Keep deps < 6 months old.
 - Secrets → Cloudflare token in GitHub Secrets only; never in repo.
 
 ## Testing strategy
-- **Vitest** (the guardrails): geometry (cm↔px, rotation about center, board-relative transforms incl. A1 invariance), serialization round-trip, share codec round-trip + size cap, cable length calc, units conversion, catalog zod schema.
-- **Playwright** (chromium, smoke only): app loads → add board → add pedal → rotate → save → reload persists → export non-blank → share URL loads read-only scene.
+- **Vitest** (the guardrails): geometry (cm↔px, rotation about center, board-relative transforms incl. A1 invariance), serialization round-trip, share codec round-trip + malformed/oversize/version/unknown-ref/custom-pedal/size-cap cases, read-only mutation guards and preview save/exit, cable length calc, units conversion, catalog zod schema.
+- **Playwright** (chromium, smoke only): app loads → add board → add pedal → rotate → save → reload persists → export non-blank → share URL loads read-only scene → Save a copy (recipient scene untouched) → over-cap shared scene warns without failing. Desktop + mobile.
 
 ## Responsive approach
 - ≥1024px: top toolbar + right sidebar panels + modal picker.

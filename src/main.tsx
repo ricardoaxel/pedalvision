@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { bootScenePersistence } from "./state/persist";
 import { hydrateSettings } from "./state/settings";
+import { initSharePreview } from "./state/share";
 
 const root = document.getElementById("root");
 if (!root) {
@@ -15,7 +16,10 @@ async function start() {
 	// P3-02: open IndexedDB, reconcile the multi-scene index, migrate the legacy
 	// mirror once, then hydrate the active scene before the first render.
 	// Boot never throws; a blocked store leaves the app running in memory.
-	await bootScenePersistence();
+	const runtime = await bootScenePersistence();
+	// P3-03: a share link is decoded after the recipient's own scene is loaded,
+	// then applied as a read-only preview. A damaged link is an inline error.
+	await initSharePreview(runtime);
 	createRoot(root as HTMLElement).render(
 		<StrictMode>
 			<App />

@@ -1,6 +1,7 @@
 import { Group, Layer, Line } from "react-konva";
 import { cmToPx } from "../lib/geometry";
 import { useDrag } from "../state/drag";
+import { useReadOnly } from "../state/readOnly";
 import {
 	type CustomPedal,
 	itemFootprint,
@@ -39,6 +40,7 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 	const customPedals = useScene((state) => state.customPedals);
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const scale = useViewport((state) => state.scale);
+	const readOnly = useReadOnly((state) => state.readOnly);
 
 	// The selected item already shows its halo; hide the hover ring for it.
 	const item =
@@ -49,7 +51,7 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 	// change still commits); it just detaches while the item is lifted mid-drag
 	// (the drag owns the position).
 	const attachUid =
-		selectedItemUid !== null && selectedItemUid !== liftedUid
+		!readOnly && selectedItemUid !== null && selectedItemUid !== liftedUid
 			? selectedItemUid
 			: null;
 

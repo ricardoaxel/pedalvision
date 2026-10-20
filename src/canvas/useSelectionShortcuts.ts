@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { isReadOnly, useReadOnly } from "../state/readOnly";
 import { useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 
@@ -23,6 +24,21 @@ export function useSelectionShortcuts(): void {
 		const onKeyDown = (event: KeyboardEvent) => {
 			if (isTypingTarget(event.target)) return;
 			const selected = selectSelectedItemUid(useSelection.getState());
+			if (isReadOnly()) {
+				// Read-only: explain the blocked keyboard edit instead of failing
+				// silently (the pointer path shows the same cue).
+				if (
+					selected &&
+					(event.key === "Delete" ||
+						event.key === "Backspace" ||
+						((event.metaKey || event.ctrlKey) &&
+							event.key.toLowerCase() === "d"))
+				) {
+					event.preventDefault();
+					useReadOnly.getState().showCueFor(selected, "item");
+				}
+				return;
+			}
 			if (!selected) return;
 			if (event.key === "Delete" || event.key === "Backspace") {
 				event.preventDefault();

@@ -156,6 +156,77 @@ export function DownloadIcon({
 	);
 }
 
+/** Link — the P3-03 share trigger / transmittal link. */
+export function LinkIcon({
+	size = 18,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M10 13.5a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7L11.5 6.3" />
+			<path d="M14 10.5a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 0 0 5.7 5.7l1.3-1.3" />
+		</svg>
+	);
+}
+
+/** Copy — the share panel's primary action. */
+export function CopyIcon({
+	size = 16,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<rect x="8" y="8" width="12" height="12" rx="2" />
+			<path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+		</svg>
+	);
+}
+
+/** Lock — the read-only "REVIEW COPY" stamp. */
+export function LockIcon({ size = 14, strokeWidth = 2, className }: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<rect x="5" y="10" width="14" height="10" rx="2" />
+			<path d="M8 10V7a4 4 0 0 1 8 0v3" />
+		</svg>
+	);
+}
+
 /** Chevron — the mobile info-sheet expand/collapse affordance. */
 export function ChevronIcon({
 	size = 18,
