@@ -1,6 +1,6 @@
 # P3-04: Undo/redo (snapshot store) + keyboard shortcuts
 
-**Phase:** P3 · **Status:** todo — scheduled next · **Model:** build-strong
+**Phase:** P3 · **Status:** in review — PR #27 (not done) · **Model:** build-strong
 
 ## Goal
 
@@ -82,7 +82,12 @@ A user can confidently experiment: every committed scene edit is one undo step, 
 
 ## Notes
 
-- **Owner decision (2026-10-20):** visible Undo/Redo controls on desktop **and** mobile, plus keyboard shortcuts — mobile users must have undo because delete is immediate. Design gate applies (direction owner-approved before any UI; design-reviewer ≤2 passes).
+- **Owner decision (2026-10-20):** visible Undo/Redo controls on desktop **and** mobile, plus keyboard shortcuts — mobile users must have undo because delete is immediate. Design gate applies (direction owner-approved before any UI; design-reviewer ≤2 passes). Approved direction: **"Proof Marks"** (icon-only joined desktop capsule + mobile dock pair, zero new tokens).
+- **Implementation (2026-10-20):** `src/state/history.ts` (snapshot stacks, cap 50, lazy capture, `queueMicrotask` coalescing, restore guard, exhaustive `Record<keyof SceneSnapshot, true>` key map), `library.applyScene` clears history after every document change, `src/canvas/useHistoryShortcuts.ts` (text/composing/modal scoping), `src/components/HistoryControls.tsx` + `icons.tsx` (aria-disabled focus retention), App/Picker/CSS mounts (desktop capsule + mobile dock; controls absent read-only), Stage `data-undo-depth`/`data-redo-depth`.
+- **Checks (2026-10-20):** lint / typecheck / test **482** / build / e2e **200 passed + 7 skipped** (9 history tests × desktop + mobile).
+- **Design gate:** owner approved "Proof Marks" before any UI; `design-reviewer` **approve** (10 renders, desktop+mobile, dark+light, empty/enabled/extreme/read-only/sheet/320 px).
+- **Code review (light, HIGH-RISK ≤2):** pass 1 changes-required (exhaustive P4 key map + real extension test, production-microtask coalescer test + real custom-pedal round-trip, `flushHistory` internal) → fixed in `03f8b6f` → pass 2 (same reviewer session) **approve**. The first pass-1 attempt hit a provider **429** ("Endpoint is unavailable") and was retried on the same light model after owner confirmation.
+- **PR:** #27 (do not merge without owner approval).
 - History is intentionally **in-memory only** (S5): it is not persisted, so a reload starts with an empty history; persistence of the resulting scene still happens through autosave.
 - P4 adds `endpoints`/`cables` to `SceneSnapshot`; add them in the history capture/apply field set and to `applyScene` in one place.
 - Snapshots share unchanged item/board objects with the live store (mutators copy on write), so 50 entries stay cheap; no deep clone per action.
