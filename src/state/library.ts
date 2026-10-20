@@ -187,7 +187,9 @@ export function createSceneLibraryRuntime(
 	 * A failed write is never silent: the library flips to session-only, stops
 	 * autosave, and records the classified health the inline notice renders.
 	 */
-	const markWriteFailure = (reason: "read" | "write" = "write") => {
+	const markWriteFailure = (
+		reason: "read" | "write" | "local-storage" = "write",
+	) => {
 		const state = store.getState();
 		store.setState({
 			storageAvailable: false,
@@ -199,12 +201,11 @@ export function createSceneLibraryRuntime(
 	};
 
 	const markIndexFailure = () => {
+		if (indexFailed) return;
 		indexFailed = true;
-		const state = store.getState();
-		store.setState({
-			storageAvailable: false,
-			storageHealth: withStorageFailure(state.storageHealth, "local-storage"),
-		});
+		// The register cannot be written, so the session cannot be trusted to
+		// restore: stop autosave and surface the same truthful "Not saving" state.
+		markWriteFailure("local-storage");
 	};
 
 	const persistIndex = (): boolean => {
@@ -489,12 +490,16 @@ export function createSceneLibraryRuntime(
 				? preferred
 				: newestSceneId(scenes);
 
+		// Blocked localStorage is a session-only boot too (the register/settings
+		// cannot be written), even when IndexedDB opened: the notice must never
+		// claim "changes stay in this tab only" while silently autosaving.
+		const healthUnavailable = bootHealth.level === "unavailable";
 		store.setState({
 			scenes,
 			activeId,
 			ready: true,
-			storageAvailable,
-			sessionOnly: false,
+			storageAvailable: storageAvailable && !healthUnavailable,
+			sessionOnly: healthUnavailable,
 			saving: false,
 			lastSavedAt:
 				scenes.find((entry) => entry.id === activeId)?.updatedAt ?? null,
@@ -523,8 +528,12 @@ export function createSceneLibraryRuntime(
 			applyScene(emptyScene());
 		}
 
-		subscribe();
-		installLifecycle();
+		if (healthUnavailable) {
+			autosave.cancel();
+		} else {
+			subscribe();
+			installLifecycle();
+		}
 	};
 
 	const newScene = async (name?: string): Promise<string | null> => {

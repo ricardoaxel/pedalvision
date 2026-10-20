@@ -67,6 +67,7 @@ export function StorageNotice() {
 	const ready = useSceneLibrary((state) => state.ready);
 	const health = useSceneLibrary((state) => state.storageHealth);
 	const activeId = useSceneLibrary((state) => state.activeId);
+	const sessionOnly = useSceneLibrary((state) => state.sessionOnly);
 	const sceneName = useSceneLibrary((state) => {
 		const active = state.scenes.find((entry) => entry.id === state.activeId);
 		return active?.name ?? "Untitled scene";
@@ -95,9 +96,11 @@ export function StorageNotice() {
 		try {
 			// The live in-memory scene — never the last stored document.
 			const scene = useScene.getState();
+			// Never reuse a stored document's id/name for session-only content
+			// (a failed read can leave the register pointing at a different doc).
 			const backup = buildSceneBackup({
-				id: activeId ?? "session-backup",
-				name: sceneName,
+				id: sessionOnly ? "session-backup" : (activeId ?? "session-backup"),
+				name: sessionOnly ? "Unsaved scene" : sceneName,
 				snapshot: {
 					boards: scene.boards,
 					items: scene.items,

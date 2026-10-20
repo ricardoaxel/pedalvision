@@ -547,17 +547,45 @@ describe("scene library", () => {
 		expect(store.getState()).toMatchObject({
 			ready: true,
 			storageAvailable: false,
+			sessionOnly: true,
 			saving: false,
 			storageHealth: { level: "unavailable", reason: "local-storage" },
 		});
-		// Documents still live in IndexedDB; only the index is unavailable.
+		// The boot document exists, but a blocked register disables writes so the
+		// app cannot claim persistence it cannot restore.
 		expect(repo.docs.size).toBe(1);
-		// A blocked index is not retried on every autosave.
 		const blockedWrites = storage.setCalls;
 		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
 		await runtime.saveNow();
-		expect(repo.docs.get("scene-1")?.boards).toHaveLength(1);
+		expect(repo.docs.get("scene-1")?.boards).toHaveLength(0);
 		expect(storage.setCalls).toBe(blockedWrites);
+	});
+
+	it("boots session-only when localStorage is blocked but IndexedDB works", async () => {
+		const repo = new MemoryRepository();
+		const storage = fakeStorage({}, { failWrites: true });
+		const { runtime, store } = setup({
+			repo,
+			storage,
+			health: {
+				level: "unavailable",
+				reason: "local-storage",
+				usageBytes: null,
+				quotaBytes: null,
+				usageRatio: null,
+			},
+		});
+		await runtime.boot();
+		expect(store.getState()).toMatchObject({
+			ready: true,
+			storageAvailable: false,
+			sessionOnly: true,
+			storageHealth: { level: "unavailable", reason: "local-storage" },
+		});
+		expect(await runtime.newScene()).toBeNull();
+		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
+		await runtime.saveNow();
+		expect(repo.docs.get("scene-1")?.boards).toHaveLength(0);
 	});
 
 	it("keeps a low-quota signal advisory (register + autosave still work)", async () => {

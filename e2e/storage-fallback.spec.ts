@@ -73,7 +73,8 @@ test("blocked IndexedDB: the app stays editable, warns, and exports a backup", a
 	const { download, json } = await downloadBackup(page);
 	expect(download.suggestedFilename()).toMatch(/\.json$/);
 	expect(json.version).toBe(1);
-	expect(json.name).toBe("Untitled scene");
+	expect(json.name).toBe("Unsaved scene");
+	expect(json.id).toBe("session-backup");
 	expect(json.boards).toHaveLength(1);
 	expect(json.items).toHaveLength(1);
 	await expect(page.getByTestId("storage-receipt")).toContainText("Downloaded");
@@ -108,10 +109,22 @@ test("mid-session write failure warns and keeps the work in memory", async ({
 	await expect(stage(page)).toHaveAttribute("data-boards", "1");
 	await expect(stage(page)).toHaveAttribute("data-items", "1");
 
+	const id = await activeSceneId(page);
+	const storedBefore = id ? await readSceneDocument(page, id) : null;
+	const localBefore = await page.evaluate(() =>
+		JSON.stringify({ ...localStorage }),
+	);
 	const { json } = await downloadBackup(page);
 	// Built from the live in-memory scene, not the last stored document.
 	expect(json.boards).toHaveLength(1);
 	expect(json.items).toHaveLength(1);
+	// Downloading is read-only: no document/index/settings write.
+	const storedAfter = id ? await readSceneDocument(page, id) : null;
+	const localAfter = await page.evaluate(() =>
+		JSON.stringify({ ...localStorage }),
+	);
+	expect(storedAfter).toEqual(storedBefore);
+	expect(localAfter).toBe(localBefore);
 });
 
 test("an unavailable quota estimate does not warn", async ({ page }) => {
