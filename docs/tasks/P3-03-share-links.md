@@ -1,6 +1,6 @@
 # P3-03: Share links (versioned codec + read-only recipient + save a copy)
 
-**Phase:** P3 · **Status:** in review — PR #26 (do not merge) · **Model:** build-strong
+**Phase:** P3 · **Status:** done (merged 2026-10-20, PR #26, squash `8410a3c`) · **Model:** build-strong
 
 ## Goal
 
