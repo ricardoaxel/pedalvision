@@ -1,8 +1,8 @@
 import { readFile } from "node:fs/promises";
 import { expect, type Page, test } from "@playwright/test";
+import { waitForSavedScene } from "./persistence.ts";
 import { openPicker } from "./picker.ts";
 
-const SCENE_KEY = "pedalvision.scene.v1";
 const DARK_BACKGROUND = "#191a1c";
 
 interface SceneFixture {
@@ -88,13 +88,48 @@ function sceneCatalog(): SceneFixture {
 }
 
 async function seedScene(page: Page, scene: SceneFixture): Promise<void> {
-	await page.addInitScript(
-		({ key, value }) => {
-			localStorage.setItem(key, JSON.stringify(value));
-		},
-		{ key: SCENE_KEY, value: { version: 1, ...scene } },
-	);
+	// The real store is IndexedDB + a localStorage index/settings pair (P3-02).
+	// Seed the document directly, then reload so boot hydrates it.
 	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await page.evaluate(async (fixture) => {
+		const id = "e2e-scene";
+		const updatedAt = new Date().toISOString();
+		await new Promise<void>((resolve, reject) => {
+			const request = indexedDB.open("pedalvision", 1);
+			request.onerror = () => reject(request.error);
+			request.onsuccess = () => {
+				const db = request.result;
+				const tx = db.transaction("scenes", "readwrite");
+				const store = tx.objectStore("scenes");
+				store.clear();
+				store.put({
+					id,
+					version: 1,
+					name: "E2E sheet",
+					boards: fixture.boards,
+					items: fixture.items,
+					customPedals: fixture.customPedals,
+					updatedAt,
+				});
+				tx.oncomplete = () => resolve();
+				tx.onerror = () => reject(tx.error);
+			};
+		});
+		localStorage.setItem(
+			"pedalvision.scenes.v1",
+			JSON.stringify({
+				version: 1,
+				scenes: [{ id, name: "E2E sheet", updatedAt }],
+			}),
+		);
+		localStorage.setItem(
+			"pedalvision.settings.v1",
+			JSON.stringify({ version: 1, units: "cm", activeSceneId: id }),
+		);
+	}, scene);
+	await page.reload();
 	await expect(page.getByTestId("stage")).toHaveAttribute(
 		"data-boards",
 		String(scene.boards.length),
@@ -102,6 +137,13 @@ async function seedScene(page: Page, scene: SceneFixture): Promise<void> {
 	await expect(page.getByTestId("stage")).toHaveAttribute(
 		"data-items",
 		String(scene.items.length),
+	);
+	// Persisted and rendered — nothing pending that a later reload could drop.
+	await waitForSavedScene(
+		page,
+		(document) =>
+			document.boards.length === scene.boards.length &&
+			document.items.length === scene.items.length,
 	);
 }
 

@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { resolveImageUrl } from "../lib/cdn";
-import type { DisplayUnits } from "../lib/geometry";
 import {
 	buildPartInfo,
 	formatDimensions,
@@ -12,6 +11,7 @@ import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
 import { resolveItem, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
+import { useSettings } from "../state/settings";
 import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
 import { PartDrawing } from "./PartDrawing";
 import { usePartImage } from "./partImage";
@@ -40,9 +40,10 @@ export function InfoPanel() {
 	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 
-	// The cm/in toggle is display-only and local until `Settings.units` lands
-	// (P3-02); storage stays cm.
-	const [units, setUnits] = useState<DisplayUnits>("cm");
+	// App-wide display units (P3-02) — persisted with the scene index; storage
+	// is always cm.
+	const units = useSettings((state) => state.units);
+	const setUnits = useSettings((state) => state.setUnits);
 	// Mobile expand state, scoped to the selected uid so a new selection opens
 	// collapsed (no reset effect needed).
 	const [expandedUid, setExpandedUid] = useState<string | null>(null);

@@ -8,6 +8,8 @@ import { FirstRunHint } from "./components/FirstRunHint";
 import { InfoPanel } from "./components/InfoPanel";
 import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
+import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
+import { useSceneLibrary } from "./state/library";
 import { selectSelectedItemUid, useSelection } from "./state/selection";
 
 type Theme = "dark" | "light";
@@ -30,6 +32,13 @@ function App() {
 	const [exportOpen, setExportOpen] = useState(false);
 	const [exportBusy, setExportBusy] = useState(false);
 	const exportTriggerRef = useRef<HTMLButtonElement>(null);
+	// P3-02 scenes: an always-visible current-scene plate opening the register.
+	const [scenesOpen, setScenesOpen] = useState(false);
+	const sceneTriggerRef = useRef<HTMLButtonElement>(null);
+	const activeSceneName = useSceneLibrary((state) => {
+		const active = state.scenes.find((entry) => entry.id === state.activeId);
+		return active?.name ?? "Untitled scene";
+	});
 	// P2-03: the info panel is a trailing push rail (desktop) / bottom sheet
 	// (mobile), shown only while an item is selected.
 	const selectedItemUid = useSelection(selectSelectedItemUid);
@@ -45,6 +54,7 @@ function App() {
 	const openPicker = (tab: PickerTab) => {
 		setExportOpen(false);
 		setExportBusy(false);
+		setScenesOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 		setPickerTab(tab);
@@ -56,7 +66,23 @@ function App() {
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 		setExportBusy(false);
+		setScenesOpen(false);
 		setExportOpen(true);
+	};
+
+	const openScenes = () => {
+		setPickerOpen(false);
+		setEditingCustomRefId(null);
+		setEditingBoardUid(null);
+		setExportOpen(false);
+		setExportBusy(false);
+		setScenesOpen(true);
+	};
+
+	// Close + return focus to the trigger (the non-modal dialog's contract).
+	const closeScenes = () => {
+		setScenesOpen(false);
+		requestAnimationFrame(() => sceneTriggerRef.current?.focus());
 	};
 
 	// Close + return focus to the trigger (the non-modal dialog's contract).
@@ -91,6 +117,7 @@ function App() {
 			className="app"
 			data-panel={selectedItemUid ? "open" : undefined}
 			data-export={exportOpen ? "open" : undefined}
+			data-scenes={scenesOpen ? "open" : undefined}
 		>
 			<h1 className="visually-hidden">Pedalvision</h1>
 			<div className="app-canvas">
@@ -101,6 +128,22 @@ function App() {
 				<BoardActionBar onEditBoard={openBoardEdit} />
 				{/* First-run "Bench Note" (P2-08): small, dismissible, non-modal. */}
 				<FirstRunHint onAddBoard={() => openPicker("boards")} />
+				<button
+					ref={sceneTriggerRef}
+					type="button"
+					className="scene-trigger"
+					data-testid="scene-open"
+					data-scene-trigger
+					aria-label={`Scenes — current: ${activeSceneName}`}
+					aria-haspopup="dialog"
+					aria-expanded={scenesOpen}
+					aria-controls="scene-panel"
+					title={activeSceneName}
+					onClick={scenesOpen ? closeScenes : openScenes}
+				>
+					<SceneTriggerContent />
+				</button>
+				{scenesOpen ? <ScenePanel onClose={closeScenes} /> : null}
 				<div className="app-toolbar">
 					<button
 						type="button"
