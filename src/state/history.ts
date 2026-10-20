@@ -16,25 +16,28 @@ import type { SceneSnapshot } from "./sceneDocument";
  * shift) are coalesced into a single microtask, so only one entry is pushed.
  * Undo/redo restore a snapshot without recording anything.
  *
- * P4 extension point: add `endpoints`/`cables` to `HISTORY_SCENE_KEYS` (and the
- * `SceneSnapshot` type) and both capture and restore pick them up here.
+ * P4 extension point: adding `endpoints`/`cables` to `SceneSnapshot` makes the
+ * exhaustive `satisfies Record<keyof SceneSnapshot, true>` below fail to
+ * compile until they are added there — capture and restore then pick them up.
  */
-export const HISTORY_SCENE_KEYS = [
-	"boards",
-	"items",
-	"customPedals",
-] as const satisfies readonly (keyof SceneSnapshot)[];
+const HISTORY_SCENE_KEY_MAP = {
+	boards: true,
+	items: true,
+	customPedals: true,
+} satisfies Record<keyof SceneSnapshot, true>;
+
+export const HISTORY_SCENE_KEYS = Object.keys(
+	HISTORY_SCENE_KEY_MAP,
+) as (keyof SceneSnapshot)[];
 
 /** The maximum number of undo (and redo) entries kept. */
 export const HISTORY_LIMIT = 50;
 
-export type HistorySnapshot = SceneSnapshot;
-
 interface HistoryStore {
 	/** Past states, oldest first; the last entry is the next undo target. */
-	past: HistorySnapshot[];
+	past: SceneSnapshot[];
 	/** Undone states, oldest first; the last entry is the next redo target. */
-	future: HistorySnapshot[];
+	future: SceneSnapshot[];
 }
 
 export const useHistory = create<HistoryStore>(() => ({
@@ -43,15 +46,15 @@ export const useHistory = create<HistoryStore>(() => ({
 }));
 
 /** Copy the editable scene fields out of any scene-shaped object. */
-function pickScene(source: SceneSnapshot): HistorySnapshot {
-	const snapshot = {} as HistorySnapshot;
+function pickScene(source: SceneSnapshot): SceneSnapshot {
+	const snapshot = {} as SceneSnapshot;
 	const writable = snapshot as unknown as Record<string, unknown>;
 	for (const key of HISTORY_SCENE_KEYS) writable[key] = source[key];
 	return snapshot;
 }
 
 /** The scene fields as they are right now. */
-export function captureScene(): HistorySnapshot {
+export function captureScene(): SceneSnapshot {
 	return pickScene(useScene.getState());
 }
 
@@ -59,7 +62,7 @@ function keysChanged(next: SceneSnapshot, previous: SceneSnapshot): boolean {
 	return HISTORY_SCENE_KEYS.some((key) => next[key] !== previous[key]);
 }
 
-function sameContent(a: HistorySnapshot, b: HistorySnapshot): boolean {
+function sameContent(a: SceneSnapshot, b: SceneSnapshot): boolean {
 	if (!keysChanged(a, b)) return true;
 	return HISTORY_SCENE_KEYS.every(
 		(key) => JSON.stringify(a[key]) === JSON.stringify(b[key]),
@@ -69,7 +72,7 @@ function sameContent(a: HistorySnapshot, b: HistorySnapshot): boolean {
 /** Set while a snapshot is being restored so it is never recorded. */
 let restoring = false;
 /** The state before the current synchronous burst of edits. */
-let pendingBefore: HistorySnapshot | null = null;
+let pendingBefore: SceneSnapshot | null = null;
 let finalizeScheduled = false;
 
 function finalize(): void {
@@ -102,7 +105,7 @@ useScene.subscribe((state, previous) => {
 });
 
 /** Apply a snapshot without letting the subscription record it. */
-function applySnapshot(snapshot: HistorySnapshot): void {
+function applySnapshot(snapshot: SceneSnapshot): void {
 	restoring = true;
 	try {
 		useScene.setState(pickScene(snapshot));
@@ -111,7 +114,11 @@ function applySnapshot(snapshot: HistorySnapshot): void {
 	}
 }
 
-/** Capture any queued edit immediately (used by the shortcut entry points). */
+/**
+ * Capture any queued edit immediately.
+ * @internal Deterministic-test helper; production entry points call `undo`/`redo`,
+ * which finalise the pending burst first.
+ */
 export function flushHistory(): void {
 	finalize();
 }

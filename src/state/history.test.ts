@@ -54,23 +54,55 @@ describe("undo/redo history", () => {
 		useScene.getState().rotateItem(item, 37.5);
 		useScene.getState().dropItem(item, { x: 3, y: 4 }, 12);
 		flushHistory();
-		const original = captureScene();
+		const beforeCustom = captureScene();
 
-		useScene.getState().moveBoard(board, 5, 6);
-		useScene.getState().updateCustomPedal("missing", {
-			brand: "A",
-			name: "B",
+		// Definition + placement land in one snapshot and restore together.
+		const refId = useScene.getState().addCustomPedal({
+			brand: "Homebrew",
+			name: "Fuzz",
 			widthCm: 7,
 			heightCm: 12,
 			category: "pedal",
 			effectTypes: [],
 		});
+		if (!refId) throw new Error("expected the custom pedal to register");
+		useScene.getState().addItem(refId, "pedal", null, { x: 1, y: 1 });
 		flushHistory();
+		expect(captureScene().customPedals).toHaveLength(1);
 
 		expect(undo()).toBe(true);
-		expect(captureScene()).toEqual(original);
+		expect(captureScene()).toEqual(beforeCustom);
+		expect(redo()).toBe(true);
+		expect(captureScene().customPedals).toHaveLength(1);
+		expect(captureScene().items).toHaveLength(2);
+
+		const afterCustom = captureScene();
+		useScene.getState().moveBoard(board, 5, 6);
+		flushHistory();
+		expect(undo()).toBe(true);
+		expect(captureScene()).toEqual(afterCustom);
 		expect(redo()).toBe(true);
 		expect(useScene.getState().boards[0].x).toBe(5);
+	});
+
+	it("coalesces a synchronous burst via the production microtask", async () => {
+		// No flushHistory: the real queueMicrotask coalescer must produce one step.
+		const refId = useScene.getState().addCustomPedal({
+			brand: "Homebrew",
+			name: "Fuzz",
+			widthCm: 7,
+			heightCm: 12,
+			category: "pedal",
+			effectTypes: [],
+		});
+		if (!refId) throw new Error("expected the custom pedal to register");
+		useScene.getState().addItem(refId, "pedal", null, { x: 1, y: 1 });
+		await Promise.resolve();
+		expect(useHistory.getState().past).toHaveLength(1);
+
+		useScene.getState().addItem(pedalId, "pedal", null, { x: 5, y: 5 });
+		await Promise.resolve();
+		expect(useHistory.getState().past).toHaveLength(2);
 	});
 
 	it("keeps the newest 50 snapshots", () => {
@@ -251,12 +283,7 @@ describe("undo/redo history", () => {
 		expect(useScene.getState().items).toHaveLength(401);
 	});
 
-	it("captures every editable scene field (the P4 cables/endpoints extension point)", () => {
-		expect([...HISTORY_SCENE_KEYS]).toEqual([
-			"boards",
-			"items",
-			"customPedals",
-		]);
+	it("captures and restores every editable scene field (P4 extension point)", () => {
 		const board: PlacedBoard = {
 			uid: "b",
 			boardRefId: boardId,
@@ -291,10 +318,14 @@ describe("undo/redo history", () => {
 			],
 		});
 		flushHistory();
-		const snapshot = captureScene();
-		// Every key the history captures is one that P4 must add in ONE place.
-		for (const key of HISTORY_SCENE_KEYS) {
-			expect(snapshot).toHaveProperty(key);
-		}
+		const before = captureScene();
+		// The `satisfies Record<keyof SceneSnapshot, true>` map makes this set
+		// exhaustive at compile time: P4 must add cables/endpoints there.
+		expect(Object.keys(before).sort()).toEqual([...HISTORY_SCENE_KEYS].sort());
+
+		useScene.getState().removeItem("i");
+		flushHistory();
+		expect(undo()).toBe(true);
+		expect(captureScene()).toEqual(before);
 	});
 });
