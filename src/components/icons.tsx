@@ -251,6 +251,56 @@ export function ChevronIcon({
 	);
 }
 
+/** Undo — the "Proof Marks" history pair (P3-04). */
+export function UndoIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M9 14 4 9l5-5" />
+			<path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11" />
+		</svg>
+	);
+}
+
+/** Redo — the mirrored half of the "Proof Marks" pair (P3-04). */
+export function RedoIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M15 14l5-5-5-5" />
+			<path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13" />
+		</svg>
+	);
+}
+
 /** Scene / sheet-stack glyph — the always-visible scene plate. */
 export function SceneIcon({
 	size = 20,

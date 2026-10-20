@@ -31,6 +31,7 @@ import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport, viewportCenterCm } from "../state/viewport";
 import { CustomBoardForm } from "./CustomBoardForm";
 import { CustomPedalForm } from "./CustomPedalForm";
+import { HistoryControls } from "./HistoryControls";
 import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
 import { usePartImage } from "./partImage";
 import {
@@ -710,8 +711,10 @@ export function Picker({
 
 	// The mobile bottom tab bar. Rendered inside the dialog while open (so the
 	// modal's switcher is in the AT/focus scope) and standalone while closed.
-	const tabBar = (
-		<nav className="picker-bar" aria-label="Catalog">
+	// The standalone dock also carries the P3-04 history pair; the in-sheet
+	// switcher stays tabs-only (the modal owns the keyboard).
+	const tabButtons = (
+		<>
 			<button
 				type="button"
 				className="picker-bar__tab"
@@ -743,12 +746,31 @@ export function Picker({
 				<CustomIcon size={18} className="picker-bar__icon" />
 				Custom
 			</button>
+		</>
+	);
+
+	const tabDock = (
+		<div className="picker-dock" data-testid="picker-dock">
+			<nav className="picker-bar" aria-label="Catalog">
+				{tabButtons}
+			</nav>
+			<HistoryControls variant="dock" />
+		</div>
+	);
+
+	const tabBar = (
+		<nav
+			className="picker-bar picker-bar--modal"
+			aria-label="Catalog"
+			data-testid="picker-bar-modal"
+		>
+			{tabButtons}
 		</nav>
 	);
 
 	return (
 		<>
-			{open ? null : tabBar}
+			{open ? null : tabDock}
 
 			{open ? (
 				<div className="picker" data-testid="picker">

@@ -13,6 +13,7 @@ import {
 	writeSettings,
 } from "../lib/sceneIndex";
 import { type AutosaveTimers, createAutosave } from "./autosave";
+import { clearHistory } from "./history";
 import { useReadOnly } from "./readOnly";
 import { useScene } from "./scene";
 import {
@@ -188,6 +189,10 @@ export function createSceneLibraryRuntime(
 		} finally {
 			applying = false;
 		}
+		// History is per document (P3-04): a new/loaded/shared scene starts with
+		// nothing to undo. Runs after the setState so the outgoing scene's queued
+		// edit is discarded rather than recorded against the new document.
+		clearHistory();
 	};
 
 	const saveActive = async (): Promise<void> => {

@@ -10,6 +10,7 @@ import {
 	SCENE_INDEX_KEY,
 	SETTINGS_KEY,
 } from "../lib/sceneIndex";
+import { flushHistory, undo, useHistory } from "./history";
 import {
 	createSceneLibraryRuntime,
 	MAX_SCENES,
@@ -275,6 +276,56 @@ describe("scene library", () => {
 		expect(saved?.boards).toHaveLength(1);
 		expect(store.getState().lastSavedAt).toBe("2026-10-19T12:00:01.000Z");
 		expect(store.getState().scenes[0].boardCount).toBe(1);
+	});
+
+	it("autosaves after undo and refreshes index counts + updatedAt", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		await vi.advanceTimersByTimeAsync(500);
+		expect(repo.docs.get("scene-1")?.boards).toHaveLength(1);
+		expect(store.getState().scenes[0].boardCount).toBe(1);
+		const savedAt = store.getState().lastSavedAt;
+
+		flushHistory();
+		expect(undo()).toBe(true);
+		expect(useScene.getState().boards).toHaveLength(0);
+		await vi.advanceTimersByTimeAsync(500);
+
+		const saved = repo.docs.get("scene-1");
+		expect(saved?.boards).toHaveLength(0);
+		expect(store.getState().scenes[0].boardCount).toBe(0);
+		expect(store.getState().lastSavedAt).not.toBe(savedAt);
+		expect(store.getState().scenes[0].updatedAt).toBe(
+			store.getState().lastSavedAt,
+		);
+		expect(saved?.updatedAt).toBe(store.getState().lastSavedAt);
+	});
+
+	it("clears undo history when the scene switches", async () => {
+		const repo = new MemoryRepository();
+		await repo.put(documentOf("a", "A", "2026-10-19T10:00:00.000Z"));
+		await repo.put(documentOf("b", "B", "2026-10-19T09:00:00.000Z"));
+		const storage = fakeStorage({
+			[SCENE_INDEX_KEY]: JSON.stringify({
+				version: 1,
+				scenes: [
+					{ id: "a", name: "A", updatedAt: "2026-10-19T10:00:00.000Z" },
+					{ id: "b", name: "B", updatedAt: "2026-10-19T09:00:00.000Z" },
+				],
+			}),
+		});
+		const { runtime } = setup({ repo, storage });
+		await runtime.boot();
+		useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		flushHistory();
+		expect(useHistory.getState().past.length).toBeGreaterThan(0);
+
+		expect(await runtime.switchScene("b")).toBe(true);
+		expect(useHistory.getState()).toMatchObject({ past: [], future: [] });
+		expect(undo()).toBe(false);
 	});
 
 	it("flushes the outgoing scene before switching", async () => {
