@@ -8,6 +8,11 @@ import {
 	useScene,
 } from "./scene";
 
+function required<T>(value: T | null): T {
+	if (value === null) throw new Error("expected a value");
+	return value;
+}
+
 const CUSTOM = {
 	brand: "Acme",
 	name: "My Deluxe Fuzz",
@@ -51,10 +56,12 @@ describe("custom pedals (P2-02)", () => {
 
 	it("places and resolves a custom pedal by name + cm footprint", () => {
 		const refId = useScene.getState().addCustomPedal(CUSTOM);
-		const uid = useScene.getState().addItem(refId, "pedal", null, {
-			x: 2,
-			y: 3,
-		});
+		const uid = required(
+			useScene.getState().addItem(refId, "pedal", null, {
+				x: 2,
+				y: 3,
+			}),
+		);
 		const item = useScene.getState().items.find((i) => i.uid === uid);
 		if (!item) throw new Error("item not placed");
 		const resolved = resolveItem(item, useScene.getState().customPedals);
@@ -103,10 +110,12 @@ describe("custom pedals (P2-02)", () => {
 
 	it("prunes a custom pedal once its last placed item is removed", () => {
 		const refId = useScene.getState().addCustomPedal(CUSTOM);
-		const uid = useScene.getState().addItem(refId, "pedal", null, {
-			x: 0,
-			y: 0,
-		});
+		const uid = required(
+			useScene.getState().addItem(refId, "pedal", null, {
+				x: 0,
+				y: 0,
+			}),
+		);
 		expect(useScene.getState().customPedals).toHaveLength(1);
 		useScene.getState().removeItem(uid);
 		expect(useScene.getState().customPedals).toHaveLength(0);
@@ -114,11 +123,13 @@ describe("custom pedals (P2-02)", () => {
 
 	it("keeps a custom pedal while a duplicate still references it", () => {
 		const refId = useScene.getState().addCustomPedal(CUSTOM);
-		const uid = useScene.getState().addItem(refId, "pedal", null, {
-			x: 0,
-			y: 0,
-		});
-		const clone = useScene.getState().duplicateItem(uid);
+		const uid = required(
+			useScene.getState().addItem(refId, "pedal", null, {
+				x: 0,
+				y: 0,
+			}),
+		);
+		const clone = required(useScene.getState().duplicateItem(uid));
 		useScene.getState().removeItem(uid);
 		expect(clone).not.toBeNull();
 		expect(useScene.getState().customPedals).toHaveLength(1);
@@ -126,10 +137,12 @@ describe("custom pedals (P2-02)", () => {
 
 	it("edits a custom pedal in place (keeps refId, updates the footprint)", () => {
 		const refId = useScene.getState().addCustomPedal(CUSTOM);
-		const uid = useScene.getState().addItem(refId, "pedal", null, {
-			x: 2,
-			y: 3,
-		});
+		const uid = required(
+			useScene.getState().addItem(refId, "pedal", null, {
+				x: 2,
+				y: 3,
+			}),
+		);
 		const before = useScene.getState().items.find((i) => i.uid === uid);
 		if (!before) throw new Error("item missing");
 		useScene

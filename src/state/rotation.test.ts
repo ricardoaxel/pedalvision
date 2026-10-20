@@ -12,6 +12,11 @@ import {
 	useScene,
 } from "./scene";
 
+function required<T>(value: T | null): T {
+	if (value === null) throw new Error("expected a value");
+	return value;
+}
+
 /** Geometric centre (world cm) of a placed item's rotated footprint. */
 function itemCentreWorld(
 	item: PlacedItem,
@@ -127,12 +132,14 @@ describe("rotateItem store action (S3 rotated parent)", () => {
 	});
 
 	it("stores rotation relative to the pedal and leaves the board transform alone", () => {
-		const boardUid = useScene.getState().addBoard(board.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(board.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().moveBoard(boardUid, 100, 50);
 		useScene.getState().rotateBoard(boardUid, 25);
-		const uid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", boardUid, { x: 10, y: 5 });
+		const uid = required(
+			useScene.getState().addItem(pedal.id, "pedal", boardUid, { x: 10, y: 5 }),
+		);
 
 		useScene.getState().rotateItem(uid, 30);
 
@@ -148,12 +155,14 @@ describe("rotateItem store action (S3 rotated parent)", () => {
 	});
 
 	it("keeps the item's world centre fixed when rotating on a rotated board", () => {
-		const boardUid = useScene.getState().addBoard(board.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(board.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().moveBoard(boardUid, 100, 50);
 		useScene.getState().rotateBoard(boardUid, 25);
-		const uid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", boardUid, { x: 10, y: 5 });
+		const uid = required(
+			useScene.getState().addItem(pedal.id, "pedal", boardUid, { x: 10, y: 5 }),
+		);
 
 		const boardBefore = { ...useScene.getState().boards[0] };
 		const itemBefore = { ...useScene.getState().items[0] };
@@ -169,12 +178,14 @@ describe("rotateItem store action (S3 rotated parent)", () => {
 	});
 
 	it("keeps the world centre under repeated action-bar rotations", () => {
-		const boardUid = useScene.getState().addBoard(board.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(board.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().moveBoard(boardUid, 100, 50);
 		useScene.getState().rotateBoard(boardUid, 25);
-		const uid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", boardUid, { x: 10, y: 5 });
+		const uid = required(
+			useScene.getState().addItem(pedal.id, "pedal", boardUid, { x: 10, y: 5 }),
+		);
 
 		const before = itemCentreWorld(
 			useScene.getState().items[0],
@@ -192,9 +203,9 @@ describe("rotateItem store action (S3 rotated parent)", () => {
 	});
 
 	it("transformItem commits an origin + normalised rotation", () => {
-		const uid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", null, { x: 0, y: 0 });
+		const uid = required(
+			useScene.getState().addItem(pedal.id, "pedal", null, { x: 0, y: 0 }),
+		);
 		useScene.getState().transformItem(uid, 4.5, 6.25, -100);
 		const item = useScene.getState().items[0];
 		expect({ x: item.x, y: item.y }).toEqual({ x: 4.5, y: 6.25 });

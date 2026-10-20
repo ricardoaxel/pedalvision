@@ -9,6 +9,11 @@ import {
 	useScene,
 } from "./scene";
 
+function required<T>(value: T | null): T {
+	if (value === null) throw new Error("expected a value");
+	return value;
+}
+
 const boss = catalog.boards.find((board) => board.id === "boss-bcb-1000");
 if (!boss) throw new Error("test fixture board missing from the seed");
 
@@ -59,7 +64,9 @@ describe("useScene boards slice", () => {
 	});
 
 	it("addBoard centres the board on the given world point and returns its uid", () => {
-		const uid = useScene.getState().addBoard(boss.id, { x: 100, y: 50 });
+		const uid = required(
+			useScene.getState().addBoard(boss.id, { x: 100, y: 50 }),
+		);
 		const board = useScene.getState().boards[0];
 		expect(board.uid).toBe(uid);
 		expect(board.boardRefId).toBe(boss.id);
@@ -70,29 +77,31 @@ describe("useScene boards slice", () => {
 	});
 
 	it("gives each board a unique uid", () => {
-		const a = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
-		const b = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const a = required(useScene.getState().addBoard(boss.id, { x: 0, y: 0 }));
+		const b = required(useScene.getState().addBoard(boss.id, { x: 0, y: 0 }));
 		expect(a).not.toBe(b);
 	});
 
 	it("moveBoard writes x/y in cm", () => {
-		const uid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const uid = required(useScene.getState().addBoard(boss.id, { x: 0, y: 0 }));
 		useScene.getState().moveBoard(uid, 12.5, -3.25);
 		const board = useScene.getState().boards[0];
 		expect({ x: board.x, y: board.y }).toEqual({ x: 12.5, y: -3.25 });
 	});
 
 	it("rotateBoard sets any angle", () => {
-		const uid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const uid = required(useScene.getState().addBoard(boss.id, { x: 0, y: 0 }));
 		useScene.getState().rotateBoard(uid, 37.5);
 		expect(useScene.getState().boards[0].rotationDeg).toBe(37.5);
 	});
 
 	it("removeBoard drops only the target", () => {
-		const first = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
-		const second = useScene
-			.getState()
-			.addBoard(catalog.boards[1].id, { x: 0, y: 0 });
+		const first = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
+		const second = required(
+			useScene.getState().addBoard(catalog.boards[1].id, { x: 0, y: 0 }),
+		);
 		useScene.getState().removeBoard(first);
 		expect(useScene.getState().boards.map((board) => board.uid)).toEqual([
 			second,
@@ -114,9 +123,9 @@ describe("useScene custom boards (P2-05)", () => {
 	};
 
 	it("addCustomBoard stores an inline definition and centres on the point", () => {
-		const uid = useScene
-			.getState()
-			.addCustomBoard(definition, { x: 100, y: 50 });
+		const uid = required(
+			useScene.getState().addCustomBoard(definition, { x: 100, y: 50 }),
+		);
 		const board = useScene.getState().boards[0];
 		expect(board.uid).toBe(uid);
 		expect(board.boardRefId).toBeNull();
@@ -134,7 +143,9 @@ describe("useScene custom boards (P2-05)", () => {
 	});
 
 	it("updateCustomBoard edits the definition but keeps position/rotation", () => {
-		const uid = useScene.getState().addCustomBoard(definition, { x: 0, y: 0 });
+		const uid = required(
+			useScene.getState().addCustomBoard(definition, { x: 0, y: 0 }),
+		);
 		useScene.getState().moveBoard(uid, 11, 22);
 		useScene.getState().rotateBoard(uid, 30);
 		useScene.getState().updateCustomBoard(uid, {
@@ -160,15 +171,17 @@ describe("useScene custom boards (P2-05)", () => {
 			(candidate) => candidate.id === "boss-bd-2-blues-driver",
 		);
 		if (!pedal) throw new Error("test fixture pedal missing from the seed");
-		const uid = useScene
-			.getState()
-			.addCustomBoard(
-				{ widthCm: 60, heightCm: 30, texture: "matte" },
-				{ x: 0, y: 0 },
-			);
-		const itemUid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", uid, { x: 55, y: 25 });
+		const uid = required(
+			useScene
+				.getState()
+				.addCustomBoard(
+					{ widthCm: 60, heightCm: 30, texture: "matte" },
+					{ x: 0, y: 0 },
+				),
+		);
+		const itemUid = required(
+			useScene.getState().addItem(pedal.id, "pedal", uid, { x: 55, y: 25 }),
+		);
 		useScene.getState().updateCustomBoard(uid, {
 			widthCm: 30,
 			heightCm: 20,
@@ -190,15 +203,17 @@ describe("useScene custom boards (P2-05)", () => {
 			(candidate) => candidate.id === "boss-bd-2-blues-driver",
 		);
 		if (!pedal) throw new Error("test fixture pedal missing from the seed");
-		const uid = useScene
-			.getState()
-			.addCustomBoard(
-				{ widthCm: 30, heightCm: 20, texture: "matte" },
-				{ x: 0, y: 0 },
-			);
-		const itemUid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", uid, { x: 22, y: 6 });
+		const uid = required(
+			useScene
+				.getState()
+				.addCustomBoard(
+					{ widthCm: 30, heightCm: 20, texture: "matte" },
+					{ x: 0, y: 0 },
+				),
+		);
+		const itemUid = required(
+			useScene.getState().addItem(pedal.id, "pedal", uid, { x: 22, y: 6 }),
+		);
 		useScene.getState().updateCustomBoard(uid, {
 			widthCm: 60,
 			heightCm: 40,
@@ -216,15 +231,17 @@ describe("useScene custom boards (P2-05)", () => {
 			(candidate) => candidate.id === "boss-bd-2-blues-driver",
 		);
 		if (!pedal) throw new Error("test fixture pedal missing from the seed");
-		const uid = useScene
-			.getState()
-			.addCustomBoard(
-				{ widthCm: 5, heightCm: 30, texture: "matte" },
-				{ x: 0, y: 0 },
-			);
-		const itemUid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", uid, { x: 3, y: 4 });
+		const uid = required(
+			useScene
+				.getState()
+				.addCustomBoard(
+					{ widthCm: 5, heightCm: 30, texture: "matte" },
+					{ x: 0, y: 0 },
+				),
+		);
+		const itemUid = required(
+			useScene.getState().addItem(pedal.id, "pedal", uid, { x: 3, y: 4 }),
+		);
 		useScene.getState().updateCustomBoard(uid, {
 			widthCm: 4,
 			heightCm: 30,
@@ -243,15 +260,17 @@ describe("useScene custom boards (P2-05)", () => {
 			(candidate) => candidate.id === "boss-bd-2-blues-driver",
 		);
 		if (!pedal) throw new Error("test fixture pedal missing from the seed");
-		const uid = useScene
-			.getState()
-			.addCustomBoard(
-				{ widthCm: 60, heightCm: 30, texture: "matte" },
-				{ x: 0, y: 0 },
-			);
-		const itemUid = useScene
-			.getState()
-			.addItem(pedal.id, "pedal", uid, { x: 55, y: 20 });
+		const uid = required(
+			useScene
+				.getState()
+				.addCustomBoard(
+					{ widthCm: 60, heightCm: 30, texture: "matte" },
+					{ x: 0, y: 0 },
+				),
+		);
+		const itemUid = required(
+			useScene.getState().addItem(pedal.id, "pedal", uid, { x: 55, y: 20 }),
+		);
 		useScene.getState().rotateItem(itemUid, 45);
 		useScene.getState().updateCustomBoard(uid, {
 			widthCm: 30,

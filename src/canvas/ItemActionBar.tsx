@@ -6,6 +6,7 @@ import {
 	useRef,
 	useState,
 } from "react";
+import { duplicateRefusal } from "../lib/capacity";
 import { cmToPx } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import { usePanelMetrics } from "../state/panel";
@@ -101,6 +102,11 @@ export function ItemActionBar({
 	const clearSelection = useSelection((state) => state.clearSelection);
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
+	// Load Chart (P3-06): only the item budget blocks Duplicate (a duplicate
+	// reuses the same image, so the image cap does not apply).
+	const duplicateBlocked = useScene(
+		(state) => duplicateRefusal(state) !== null,
+	);
 
 	// Subscribed so React re-renders (and re-anchors) on any zoom/pan.
 	const scale = useViewport((state) => state.scale);
@@ -147,6 +153,7 @@ export function ItemActionBar({
 		item && visible
 			? buildActions(item, position === peers.length - 1, position === 0, {
 					isCustom,
+					duplicateBlocked,
 					reorder,
 					rotateItem,
 					duplicateItem,
@@ -175,8 +182,16 @@ export function ItemActionBar({
 		if (!visible) return;
 		const bar = barRef.current;
 		if (!bar) return;
-		setBarWidth(bar.offsetWidth);
-		setBarHeight(bar.offsetHeight);
+		// Observe the bar instead of depending on every note/action change: the
+		// capacity note (P3-06) adds a row and must re-anchor the bar.
+		const measure = () => {
+			setBarWidth(bar.offsetWidth);
+			setBarHeight(bar.offsetHeight);
+		};
+		measure();
+		const observer = new ResizeObserver(measure);
+		observer.observe(bar);
+		return () => observer.disconnect();
 	}, [visible]);
 
 	if (!item || !visible) return null;
@@ -229,6 +244,11 @@ export function ItemActionBar({
 				.trim()}
 			data-testid={action.key}
 			aria-label={action.label}
+			aria-describedby={
+				action.key === "duplicate-item" && duplicateBlocked
+					? "item-capacity-note"
+					: undefined
+			}
 			title={action.label}
 			onClick={action.onClick}
 		>
@@ -252,6 +272,15 @@ export function ItemActionBar({
 			{actions
 				.slice(Z_ACTION_COUNT)
 				.map((action, index) => button(action, Z_ACTION_COUNT + index))}
+			{duplicateBlocked ? (
+				<p
+					id="item-capacity-note"
+					className="item-action-bar__capacity"
+					data-testid="item-capacity"
+				>
+					Item limit reached. Remove a part to duplicate.
+				</p>
+			) : null}
 		</div>
 	);
 }
@@ -266,6 +295,8 @@ function buildActions(
 	atBottom: boolean,
 	handlers: {
 		isCustom: boolean;
+		/** At the item hard cap: Duplicate is refused (P3-06). */
+		duplicateBlocked: boolean;
 		reorder: (uid: string, direction: ZDirection) => void;
 		rotateItem: (uid: string, rotationDeg: number) => void;
 		duplicateItem: (uid: string) => string | null;
@@ -329,7 +360,9 @@ function buildActions(
 			key: "duplicate-item",
 			label: "Duplicate",
 			text: "Duplicate",
+			disabled: handlers.duplicateBlocked,
 			onClick: () => {
+				if (handlers.duplicateBlocked) return;
 				const uid = handlers.duplicateItem(item.uid);
 				if (uid) handlers.selectItem(uid);
 			},

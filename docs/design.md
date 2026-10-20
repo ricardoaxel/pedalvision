@@ -103,20 +103,23 @@ Layering is **per-container, never global.** A *container* is either one board's
 - **Storage failure (N3):** check IndexedDB availability/quota on boot; if unavailable, disable autosave + show an inline warning + offer "download scene backup" (JSON). Never lose work silently.
 - **Undo/redo (S5):** snapshot-based undo stack on the persisted scene slice (cap ~50 snapshots), keyboard: Ctrl/Cmd+Z / Shift+Z (N6). Ships as its own task (P3-04), not bundled into save/load.
 
-## Capacity budgets (measured 2026-10-19)
+## Capacity budgets (enforced in P3-06; benchmarked 2026-10-20)
 
-v1 targets, from a desktop Chromium benchmark (7 distinct BOSS photographic images repeated; all-content Standard export). **Distinct image-bearing items — not item count or document bytes — are the memory driver**: a pedal image is ~1.44 MB decoded, so 400 *distinct* images ≈ 577 MB, while 400 repeated items share the decode cache.
+v1 targets, from the report-only benchmark (`pnpm bench:capacity`, desktop Chromium, 1440×900). **Distinct image-bearing items — not item count or document bytes — are the memory driver**: a pedal image is ~1.44 MB decoded, so 400 *distinct* images ≈ 577 MB, while repeated items share the decode cache. The distinct scenarios use the **89 same-origin catalog items** (mock/static, so timings measure decode + draw work, not the network); the reuse scenarios use 7 repeated images. The benchmark asserts only structural facts (export clamp + a valid PNG), never ms thresholds.
 
-| Scenario | Doc JSON | Boot | rAF (1 s zoom) | Export | PNG |
-|---|---:|---:|---:|---:|---:|
-| 1 board · 50 items | 6.5 KB | 37 ms | 60 fps | — | — |
-| 1 board · 100 items | 12.5 KB | 104 ms | 60 fps | — | — |
-| 1 board · 200 items | 26.9 KB | 137 ms | 60 fps | 629 ms | 14.6 MB (4096²) |
-| 1 board · 400 items | 50.3 KB | 33 ms | 54 fps | 967 ms | 24.2 MB (4113×4079) |
-| 10 boards · 100 items | 13.7 KB | 36 ms | 60 fps | 217 ms | 1.38 MB |
-| 10 boards · 400 items | 55.8 KB | 32 ms | 56 fps | 353 ms | 4.47 MB |
-| 10 scenes · 100 items | 12.5 KB each | 37 ms | 61 fps | — | — |
-| 50 scenes · 100 items | 12.5 KB each | 90 ms | 60 fps | — | — |
+| Scenario | Distinct images | Doc bytes | Boot | JS heap | rAF (1 s zoom) | Export | PNG |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 89 distinct · 10 boards | 89 | 12.4 KB | 40 ms | 12.1 MB | 58 fps | 296 ms | 0.54 MB (6485×2586) |
+| 1 board · 50 items (7 images) | 7 | 6.2 KB | 37 ms | 12.1 MB | 61 fps | 232 ms | 1.78 MB (4096²) |
+| 1 board · 100 items (7 images) | 7 | 12.2 KB | 30 ms | 12.1 MB | 61 fps | 278 ms | 3.17 MB (4096²) |
+| 1 board · 200 items (7 images) | 7 | 24.4 KB | 100 ms | 12.1 MB | 61 fps | 412 ms | 5.86 MB (4096²) |
+| 1 board · 400 items (7 images) | 7 | 48.9 KB | 35 ms | 12.1 MB | 47 fps | 611 ms | 9.51 MB (3695×4540) |
+| 400 items · 89 distinct | 89 | 50.5 KB | 32 ms | 12.1 MB | 35 fps | 562 ms | 5.55 MB (3729×4497) |
+| 10 boards · 400 items (7 images) | 7 | 49.8 KB | 34 ms | 12.1 MB | 51 fps | 318 ms | 1.57 MB (6485×2586) |
+| 10 scenes · 100 items | 7 | 12.2 KB each | 30 ms | 12.1 MB | 61 fps | 312 ms | 3.17 MB (4096²) |
+| 50 scenes · 100 items | 7 | 12.2 KB each | 33 ms | 12.1 MB | 61 fps | 307 ms | 3.17 MB (4096²) |
+
+Boot is wall-clock reload until the scene chrome is visible (includes engine startup); heap is the Chromium JS heap (`performance.memory`), so image decodes held natively are not all counted. Export is **all content, Standard**. No CI timing gate exists — the numbers are a human comparison table.
 
 **Budgets (soft = inline warning; hard = refusal with an inline reason):**
 
@@ -126,12 +129,17 @@ v1 targets, from a desktop Chromium benchmark (7 distinct BOSS photographic imag
 | Distinct image-bearing items / scene | 150 | 250 |
 | Boards / scene | 8 | 10 |
 | Cables + endpoints / scene (P4 estimate) | 150 | 300 |
-| Scenes | — | **10** (implemented) |
+| Scenes | — | **10** (implemented, P3-02) |
 | Export | >12 MP or ~15 MB estimate | **16.7 MP / 8192 px** (implemented clamp) |
 
-**The budgets are scene-wide totals across every placed object type** — boards, items (catalog pedals, supplies, custom pedals), cables and endpoints. Supplies and custom parts count as items; custom parts are text-only and exempt from the distinct-image count. Cables/endpoints arrive in **P4** but must be included in the capacity model from day one (they add Konva nodes, export draw work and share-payload bytes; one endpoint ≈ one cable node, so they share the 150/300 graph budget). Re-run the benchmark with P4-01/P4-02 data before raising any cap.
+**The budgets are scene-wide totals across every placed object type** — boards, items (catalog pedals, supplies, custom pedals), cables and endpoints. Supplies and custom parts count as items; custom parts are text-only and exempt from the distinct-image count. **Repeats of an image already in the scene are allowed at the image cap** (they add no decode). Cables/endpoints arrive in **P4** but are already in the capacity model (`sceneObjectCounts` counts them; one endpoint ≈ one cable node, so they share the 150/300 graph budget). **P4-01/P4-02 must extend the benchmark with cables + endpoints before the graph cap is raised.**
 
-At 2× the hard budget the live canvas drops below ~50 fps and distinct-image decode approaches iOS jetsam; at 5× it is unusable. The 16.7 MP clamp keeps export allocation bounded, and PNG is encoded directly to a Blob (`stage.toBlob()`), never a multi-MB `data:` URL. Hard caps are **not yet enforced** for items/boards/cables; the follow-up is `docs/tasks/P3-06-capacity-budgets.md` (**scheduled next**, before P3-03/P4-01). Over-cap shared/recovered scenes must still load (A4/A5).
+**Enforcement (P3-06, `src/lib/capacity.ts`):** the hard caps live in the scene store itself (`addItem`/`duplicateItem`/`addBoard`/`addCustomBoard` return null), so a future import/paste cannot bypass them; the UI shows an **inline reason** (never a toast, N8). Soft warnings appear only when a budget is actually tight: the Scene register line, the Picker strip, and the Export spec. The Export panel shows the distinct-image count and an estimated file size, with a subordinate `Large export` notice above ~12 MP or ~15 MB. **Over-cap shared/recovered scenes still hydrate** (A4/A5) — they are measured and warned ("This scene still opens"), never rejected or trimmed; only adding is guarded. A max scene must stay under the **~200 KB share-payload ceiling** (P3-03).
+
+At 2× the hard budget the live canvas drops below ~50 fps and distinct-image decode approaches iOS jetsam; at 5× it is unusable. The 16.7 MP clamp keeps export allocation bounded, and PNG is encoded directly to a Blob (`stage.toBlob()`), never a multi-MB `data:` URL.
+
+**Raising a cap safely:** run `pnpm bench:capacity` and compare the table; confirm the 50-scene boot and the 400-item/89-distinct export still pass the structural checks; keep the max scene under ~200 KB (P3-03); bump the constant in `src/lib/capacity.ts`, update this table + the unit/e2e thresholds, and only then raise the cap. Re-run with P4 cables/endpoints in the mix first.
+
 
 ## Assets & catalog
 - Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import). It is zod-validated **at module load** by `src/catalog/load.ts` (fail-fast) and guarded in CI by a Vitest test against the committed seed — not by a `vite build` step.

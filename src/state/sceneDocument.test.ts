@@ -118,6 +118,27 @@ describe("scene documents", () => {
 		expect(parseSceneDocument(legacy)?.customPedals).toEqual([]);
 	});
 
+	it("loads an over-cap recovered scene instead of rejecting it (P3-06)", () => {
+		// A stored/shared scene may exceed the product budgets after catalog or
+		// cap changes. Parsing must keep every object; only adding is guarded.
+		const boards = Array.from({ length: 11 }, (_, index) => ({
+			...board,
+			uid: `b${index + 1}`,
+			boardRefId: null,
+			customSize: { widthCm: 40, heightCm: 20 },
+			texture: "matte" as const,
+		}));
+		const items = Array.from({ length: 401 }, (_, index) =>
+			item({ uid: `i${index + 1}`, boardUid: "b1" }),
+		);
+		const document = documentOf({ boards, items, customPedals: [] });
+		const loaded = parseSceneDocument(document);
+		if (!loaded) throw new Error("over-cap scene must load");
+		expect(loaded.boards).toHaveLength(11);
+		expect(loaded.items).toHaveLength(401);
+		expect(sceneFromDocument(loaded).items).toHaveLength(401);
+	});
+
 	it("round-trips an inline custom board with its finish", () => {
 		const customBoard: PlacedBoard = {
 			uid: "b2",

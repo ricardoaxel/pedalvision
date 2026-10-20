@@ -9,6 +9,11 @@ import type {
 } from "../catalog/schema";
 import type { BoardTexture } from "../lib/boardTexture";
 import {
+	addItemRefusal,
+	boardAddRefusal,
+	duplicateRefusal,
+} from "../lib/capacity";
+import {
 	boardToWorld,
 	type Point,
 	rotatePoint,
@@ -550,15 +555,20 @@ interface SceneStore {
 	updateCustomPedal: (refId: string, definition: CustomPedalDefinition) => void;
 	/**
 	 * Add a catalog pedal/supply with its origin at `posCm` (parent frame:
-	 * board-local when `boardUid` is set, world cm when loose), returning its uid.
+	 * board-local when `boardUid` is set, world cm when loose), returning its uid
+	 * — or null when a hard capacity cap refuses the add (P3-06). The caller
+	 * shows the inline reason from `src/lib/capacity.ts`.
 	 */
 	addItem: (
 		refId: string,
 		kind: PlacedItem["kind"],
 		boardUid: string | null,
 		posCm: Point,
-	) => string;
-	/** Clone an item, offset slightly, in the same container. Returns the new uid. */
+	) => string | null;
+	/**
+	 * Clone an item, offset slightly, in the same container. Returns the new uid,
+	 * or null when the item hard cap refuses the duplicate (P3-06).
+	 */
 	duplicateItem: (uid: string) => string | null;
 	removeItem: (uid: string) => void;
 	/**
@@ -599,20 +609,22 @@ interface SceneStore {
 		rotationDeg: number,
 	) => void;
 	/**
-	 * Add a catalog board centred on `centerCm` (world cm), returning its uid.
-	 * Stored `x`/`y` is the board's origin (top-left), so the caller stays free
-	 * of footprint math; see `viewportCenterCm` for the usual "drop at centre".
+	 * Add a catalog board centred on `centerCm` (world cm), returning its uid —
+	 * or null when the board hard cap refuses the add (P3-06). Stored `x`/`y` is
+	 * the board's origin (top-left), so the caller stays free of footprint math;
+	 * see `viewportCenterCm` for the usual "drop at centre".
 	 */
-	addBoard: (boardRefId: string, centerCm: Point) => string;
+	addBoard: (boardRefId: string, centerCm: Point) => string | null;
 	/**
 	 * Add a user-defined custom board centred on `centerCm` (world cm),
-	 * returning its uid (P2-05). The definition is stored inline on the board
-	 * (`customSize` + `texture` + optional name/brand); `boardRefId` is null.
+	 * returning its uid (P2-05), or null at the board hard cap. The definition is
+	 * stored inline on the board (`customSize` + `texture` + optional
+	 * name/brand); `boardRefId` is null.
 	 */
 	addCustomBoard: (
 		definition: CustomBoardDefinition,
 		centerCm: Point,
-	) => string;
+	) => string | null;
 	/** Replace a custom board's definition in place (P2-05 edit). */
 	updateCustomBoard: (uid: string, definition: CustomBoardDefinition) => void;
 	moveBoard: (uid: string, xCm: number, yCm: number) => void;
@@ -627,7 +639,7 @@ interface SceneStore {
  * Selection is deliberately *not* here — it is transient UI state
  * (`state/selection.ts`) and is not part of the scene document.
  */
-export const useScene = create<SceneStore>((set) => ({
+export const useScene = create<SceneStore>((set, get) => ({
 	boards: [],
 	items: [],
 	customPedals: [],
@@ -645,6 +657,9 @@ export const useScene = create<SceneStore>((set) => ({
 			),
 		})),
 	addItem: (refId, kind, boardUid, posCm) => {
+		// Hard capacity cap (P3-06): refuse with an inline reason at the caller.
+		// A recovered/shared over-cap scene still loads — only adding is guarded.
+		if (addItemRefusal(get(), refId)) return null;
 		const uid = crypto.randomUUID();
 		set((state) => ({
 			items: [
@@ -664,6 +679,7 @@ export const useScene = create<SceneStore>((set) => ({
 		return uid;
 	},
 	duplicateItem: (uid) => {
+		if (duplicateRefusal(get())) return null;
 		let cloneUid: string | null = null;
 		set((state) => {
 			const source = state.items.find((item) => item.uid === uid);
@@ -778,6 +794,7 @@ export const useScene = create<SceneStore>((set) => ({
 			),
 		})),
 	addBoard: (boardRefId, centerCm) => {
+		if (boardAddRefusal(get())) return null;
 		const uid = crypto.randomUUID();
 		const definition = BOARD_BY_ID.get(boardRefId);
 		const widthCm = definition?.widthCm ?? FALLBACK_BOARD_CM.widthCm;
@@ -793,6 +810,7 @@ export const useScene = create<SceneStore>((set) => ({
 		return uid;
 	},
 	addCustomBoard: (definition, centerCm) => {
+		if (boardAddRefusal(get())) return null;
 		const uid = crypto.randomUUID();
 		const board: PlacedBoard = {
 			uid,

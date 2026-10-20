@@ -2,6 +2,11 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { catalog } from "../catalog/load";
 import { itemsByZ, type PlacedItem, reorderItems, useScene } from "./scene";
 
+function required<T>(value: T | null): T {
+	if (value === null) throw new Error("expected a value");
+	return value;
+}
+
 const boss = catalog.boards.find((board) => board.id === "boss-bcb-1000");
 if (!boss) throw new Error("test fixture board missing from the seed");
 
@@ -134,16 +139,18 @@ describe("scene reorder integration", () => {
 	});
 
 	it("keeps z dense per container after a removal, then reorders", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
-		const a = useScene
-			.getState()
-			.addItem(PEDAL, "pedal", boardUid, { x: 0, y: 0 });
-		const b = useScene
-			.getState()
-			.addItem(PEDAL, "pedal", boardUid, { x: 1, y: 0 });
-		const c = useScene
-			.getState()
-			.addItem(PEDAL, "pedal", boardUid, { x: 2, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
+		const a = required(
+			useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 0, y: 0 }),
+		);
+		const b = required(
+			useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 1, y: 0 }),
+		);
+		const c = required(
+			useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 2, y: 0 }),
+		);
 
 		// Removing the middle item closes the gap (dense again).
 		useScene.getState().removeItem(b);
@@ -155,14 +162,20 @@ describe("scene reorder integration", () => {
 	});
 
 	it("lands an item on top when it is dropped into a new container", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
 		useScene.getState().moveBoard(boardUid, 100, 50);
-		useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 5, y: 5 });
-		useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 20, y: 5 });
+		required(
+			useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 5, y: 5 }),
+		);
+		required(
+			useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 20, y: 5 }),
+		);
 
-		const loose = useScene
-			.getState()
-			.addItem(PEDAL, "pedal", null, { x: 0, y: 0 });
+		const loose = required(
+			useScene.getState().addItem(PEDAL, "pedal", null, { x: 0, y: 0 }),
+		);
 		// Drop the loose item onto the board (its visible centre lands inside).
 		useScene.getState().dropItem(loose, { x: 105, y: 55 }, 0);
 
@@ -174,11 +187,17 @@ describe("scene reorder integration", () => {
 	});
 
 	it("re-normalises the loose container when a board is removed", () => {
-		const boardUid = useScene.getState().addBoard(boss.id, { x: 0, y: 0 });
-		useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 0, y: 0 });
-		useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 1, y: 0 });
+		const boardUid = required(
+			useScene.getState().addBoard(boss.id, { x: 0, y: 0 }),
+		);
+		required(
+			useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 0, y: 0 }),
+		);
+		required(
+			useScene.getState().addItem(PEDAL, "pedal", boardUid, { x: 1, y: 0 }),
+		);
 		// A loose item already occupies loose z 0.
-		useScene.getState().addItem(PEDAL, "pedal", null, { x: 0, y: 0 });
+		required(useScene.getState().addItem(PEDAL, "pedal", null, { x: 0, y: 0 }));
 
 		useScene.getState().removeBoard(boardUid);
 		const zs = useScene
