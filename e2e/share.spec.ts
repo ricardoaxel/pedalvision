@@ -286,6 +286,11 @@ test("an unknown ref keeps its geometry and renders a labeled placeholder", asyn
 	await expect(page.getByTestId("share-stamp")).toBeVisible();
 	await expect(page.getByTestId("share-error")).toHaveCount(0);
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
+	// The canvas fallback is labeled with the refId (not just the info panel).
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-item-labels",
+		"mystery-pedal",
+	);
 	const centre = await firstItemScreenCentre(page, {
 		widthCm: 7,
 		heightCm: 12,
