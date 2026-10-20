@@ -40,7 +40,7 @@ Short explanations so both the owner and any agent session know why each phase e
 > ✅ **P2 phase gate PASSED (2026-10-19)** — all scheduled P2 tasks merged; post-phase review folded into the docs, with one small proposed follow-up (**P2-10** thumbnails). **P3-01 Export PNG + PDF is done** (merged 2026-10-19, PR #23). Next: **P3-02 Scene save/load**.
 
 ## P3 — Output (no owner action)
-Export PNG + PDF · save/load + boot reconcile · share links · undo/redo · storage-failure fallback.
+Export PNG + PDF · save/load + boot reconcile · capacity budgets + benchmark · share links · undo/redo · storage-failure fallback.
 
 ## P4 — Cables
 Cable model + jack anchors · drag-connect + endpoints · auto length calc.

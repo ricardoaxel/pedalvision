@@ -129,7 +129,7 @@ v1 targets, from a desktop Chromium benchmark (7 distinct BOSS photographic imag
 | Scenes | — | **10** (implemented) |
 | Export | >12 MP or ~15 MB estimate | **16.7 MP / 8192 px** (implemented clamp) |
 
-At 2× the hard budget the live canvas drops below ~50 fps and distinct-image decode approaches iOS jetsam; at 5× it is unusable. The 16.7 MP clamp keeps export allocation bounded, and PNG is encoded directly to a Blob (`stage.toBlob()`), never a multi-MB `data:` URL. Hard caps are **not yet enforced** for items/boards/cables; the follow-up is `docs/tasks/P3-06-capacity-budgets.md` (proposed, schedule before P4-01). Over-cap shared/recovered scenes must still load (A4/A5).
+At 2× the hard budget the live canvas drops below ~50 fps and distinct-image decode approaches iOS jetsam; at 5× it is unusable. The 16.7 MP clamp keeps export allocation bounded, and PNG is encoded directly to a Blob (`stage.toBlob()`), never a multi-MB `data:` URL. Hard caps are **not yet enforced** for items/boards/cables; the follow-up is `docs/tasks/P3-06-capacity-budgets.md` (**scheduled next** after P3-02, before P3-03/P4-01). Over-cap shared/recovered scenes must still load (A4/A5).
 
 ## Assets & catalog
 - Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import). It is zod-validated **at module load** by `src/catalog/load.ts` (fail-fast) and guarded in CI by a Vitest test against the committed seed — not by a `vite build` step.
