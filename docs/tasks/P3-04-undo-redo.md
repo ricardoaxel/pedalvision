@@ -1,6 +1,6 @@
 # P3-04: Undo/redo (snapshot store) + keyboard shortcuts
 
-**Phase:** P3 · **Status:** in review — PR #27 (not done) · **Model:** build-strong
+**Phase:** P3 · **Status:** done (merged 2026-10-20, PR #27, squash `06ee5e3`) · **Model:** build-strong
 
 ## Goal
 
