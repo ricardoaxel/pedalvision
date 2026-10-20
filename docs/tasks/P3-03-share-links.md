@@ -1,6 +1,6 @@
 # P3-03: Share links (versioned codec + read-only recipient + save a copy)
 
-**Phase:** P3 · **Status:** todo — scheduled next · **Model:** build-strong
+**Phase:** P3 · **Status:** in review — PR #26 (do not merge) · **Model:** build-strong
 
 ## Goal
 
