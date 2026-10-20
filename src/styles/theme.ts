@@ -43,6 +43,9 @@ export const CANVAS_THEME_VARS = {
 	// Space-warning stroke on an item that overlaps / extends past its board —
 	// P2-03 (semantic amber; distinct from the cyan selection halo).
 	warningOutline: "--color-warning",
+	// Read-only "cannot edit" cue — P3-03. Semantic danger, distinct from the
+	// amber space warning and the cyan selection.
+	dangerOutline: "--color-danger",
 } as const;
 
 /**
@@ -89,6 +92,10 @@ export const ITEM_LABEL = {
 export const WARNING_STROKE_PX = 2;
 export const WARNING_OUTSET_PX = 5;
 
+/** Read-only "can't edit" cue (P3-03) — a danger outer ring, screen-constant. */
+export const READ_ONLY_CUE_STROKE_PX = 2;
+export const READ_ONLY_CUE_OUTSET_PX = 4;
+
 export type CanvasThemeKey = keyof typeof CANVAS_THEME_VARS;
 
 export type CanvasTheme = Record<CanvasThemeKey, string>;
@@ -133,6 +140,7 @@ export const canvasTheme: CanvasTheme = {
 	itemLabelInk: "#eef1f4",
 	hoverOutline: "#eef1f4",
 	warningOutline: "#ffd166",
+	dangerOutline: "#ff938a",
 };
 
 /** Light theme (matches [data-theme="light"] in tokens.css). */
@@ -159,4 +167,5 @@ export const lightCanvasTheme: CanvasTheme = {
 	itemLabelInk: "#16191d",
 	hoverOutline: "#16191d",
 	warningOutline: "#9a5b00",
+	dangerOutline: "#b42318",
 };

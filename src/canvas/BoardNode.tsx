@@ -6,7 +6,7 @@ import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
 import { spaceWarning } from "../state/overlap";
-import { isReadOnly } from "../state/readOnly";
+import { isReadOnly, useReadOnly } from "../state/readOnly";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -19,11 +19,24 @@ import {
 import { useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
-import { CANVAS_FONTS, ITEM_LABEL } from "../styles/theme";
+import {
+	CANVAS_FONTS,
+	ITEM_LABEL,
+	READ_ONLY_CUE_OUTSET_PX,
+	READ_ONLY_CUE_STROKE_PX,
+} from "../styles/theme";
 import { finishBaseColor, finishPatternTile } from "./boardFinish";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
+
+function clientPoint(evt: MouseEvent | TouchEvent): { x: number; y: number } {
+	if ("touches" in evt) {
+		const touch = evt.changedTouches[0] ?? evt.touches[0];
+		return touch ? { x: touch.clientX, y: touch.clientY } : { x: 0, y: 0 };
+	}
+	return { x: evt.clientX, y: evt.clientY };
+}
 
 interface BoardNodeProps {
 	board: PlacedBoard;
@@ -73,6 +86,9 @@ export function BoardNode({
 	// While the viewport owns the gesture (pan/pinch), the board must not drag:
 	// a second finger would otherwise move it with both the drag and the pan.
 	const navigating = useGesture((state) => state.navigating);
+	const readOnlyCue = useReadOnly((state) => state.cue);
+	const beginReadOnlyAttempt = useReadOnly((state) => state.beginAttempt);
+	const readOnly = isReadOnly();
 
 	const groupRef = useRef<Konva.Group>(null);
 	const draggingRef = useRef(false);
@@ -237,10 +253,24 @@ export function BoardNode({
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
 				selectBoard(board.uid);
+				if (readOnly && event.evt.button === 0) {
+					beginReadOnlyAttempt({
+						uid: board.uid,
+						kind: "board",
+						startClient: clientPoint(event.evt),
+					});
+				}
 			}}
 			onTouchStart={(event) => {
 				event.cancelBubble = true;
 				selectBoard(board.uid);
+				if (readOnly) {
+					beginReadOnlyAttempt({
+						uid: board.uid,
+						kind: "board",
+						startClient: clientPoint(event.evt),
+					});
+				}
 			}}
 			onDragStart={() => {
 				draggingRef.current = true;
@@ -297,6 +327,24 @@ export function BoardNode({
 					) : null}
 				</>
 			)}
+			{readOnlyCue?.kind === "board" && readOnlyCue.uid === board.uid ? (
+				<Rect
+					x={-READ_ONLY_CUE_OUTSET_PX / (scale > 0 ? scale : 1)}
+					y={-READ_ONLY_CUE_OUTSET_PX / (scale > 0 ? scale : 1)}
+					width={
+						widthPx + (READ_ONLY_CUE_OUTSET_PX * 2) / (scale > 0 ? scale : 1)
+					}
+					height={
+						heightPx + (READ_ONLY_CUE_OUTSET_PX * 2) / (scale > 0 ? scale : 1)
+					}
+					stroke={theme.dangerOutline}
+					strokeWidth={READ_ONLY_CUE_STROKE_PX / (scale > 0 ? scale : 1)}
+					fillEnabled={false}
+					cornerRadius={4 / (scale > 0 ? scale : 1)}
+					listening={false}
+					perfectDrawEnabled={false}
+				/>
+			) : null}
 			{items.map((item) => (
 				<PedalNode
 					key={item.uid}

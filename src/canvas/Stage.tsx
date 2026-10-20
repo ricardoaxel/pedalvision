@@ -2,6 +2,7 @@ import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
+import { useReadOnly } from "../state/readOnly";
 import {
 	boardFootprint,
 	itemsByZ,
@@ -61,6 +62,7 @@ export function Stage() {
 	const liftedItemUid = useDrag((state) => state.liftedUid);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
+	const readOnlyCue = useReadOnly((state) => state.cue);
 
 	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
 	// the DOM so Playwright can assert store-level outcomes without pixels.
@@ -229,6 +231,9 @@ export function Stage() {
 			data-item-rotations={itemRotations}
 			data-item-labels={itemLabels}
 			data-item-order={renderOrder}
+			data-readonly-cue={
+				readOnlyCue ? `${readOnlyCue.kind}:${readOnlyCue.uid}` : ""
+			}
 			data-selected-item={selectedItemUid ?? ""}
 			data-selected-board={selectedBoardUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}

@@ -1,5 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+	type CSSProperties,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import { capacityStatus } from "../lib/capacity";
+import { usePanelMetrics } from "../state/panel";
+import { useReadOnly } from "../state/readOnly";
 import { useScene } from "../state/scene";
 import {
 	dismissShareError,
@@ -49,7 +57,8 @@ export function ShareStamp() {
 				{name}
 			</h2>
 			<p className="share-stamp__trust">
-				Read-only. Your own scenes are untouched.
+				Read-only shared scene. Choose <strong>Save a copy</strong> to edit it —
+				your own scenes are untouched.
 			</p>
 			{overHard ? (
 				<p
@@ -62,6 +71,39 @@ export function ShareStamp() {
 				</p>
 			) : null}
 		</section>
+	);
+}
+
+/** Inline explanation after a read-only drag attempt (P3-03 follow-up). */
+export function ShareEditCue() {
+	const cue = useReadOnly((state) => state.cue);
+	const clearCue = useReadOnly((state) => state.clearCue);
+	// On mobile, sit above the info sheet when a selection opened it, so the
+	// cue never sandwiches between the sheet and the bottom action bar.
+	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
+	const style = {
+		"--share-cue-bottom": `calc(56px + env(safe-area-inset-bottom) + ${sheetHeight}px + var(--space-2))`,
+	} as CSSProperties;
+	useEffect(() => {
+		if (!cue) return;
+		const timer = setTimeout(clearCue, 5_000);
+		return () => clearTimeout(timer);
+	}, [cue, clearCue]);
+	if (!cue) return null;
+	return (
+		<div
+			className="share-edit-cue"
+			data-testid="share-edit-cue"
+			data-kind={cue.kind}
+			role="status"
+			aria-live="polite"
+			style={style}
+		>
+			<span className="share-edit-cue__label">Read-only</span>
+			<p className="share-edit-cue__text">
+				This is a shared copy. Choose <strong>Save a copy</strong> to edit it.
+			</p>
+		</div>
 	);
 }
 

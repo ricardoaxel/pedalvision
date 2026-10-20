@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { BoardActionBar } from "./canvas/BoardActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
+import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
@@ -13,6 +14,7 @@ import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
 import {
 	ShareActions,
+	ShareEditCue,
 	ShareErrorNotice,
 	ShareSavedNotice,
 	ShareStamp,
@@ -80,6 +82,8 @@ function App() {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	// Delete/duplicate shortcuts for the selected pedal (F6).
 	useSelectionShortcuts();
+	// Explain read-only drag attempts on a shared scene (P3-03).
+	useReadOnlyEditCue();
 
 	const toggleTheme = () => {
 		const next: Theme = theme === "dark" ? "light" : "dark";
@@ -284,6 +288,7 @@ function App() {
 						onBusyChange={setExportBusy}
 					/>
 				) : null}
+				<ShareEditCue />
 				{shareOpen && !readOnly ? (
 					<SharePanel
 						onClose={closeShare}

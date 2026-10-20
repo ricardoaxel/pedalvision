@@ -5,7 +5,7 @@ import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { useDrag } from "../state/drag";
-import { isReadOnly } from "../state/readOnly";
+import { isReadOnly, useReadOnly } from "../state/readOnly";
 import { type PlacedItem, resolveItem, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
@@ -13,6 +13,8 @@ import type { CanvasTheme } from "../styles/theme";
 import {
 	CANVAS_FONTS,
 	ITEM_LABEL,
+	READ_ONLY_CUE_OUTSET_PX,
+	READ_ONLY_CUE_STROKE_PX,
 	WARNING_OUTSET_PX,
 	WARNING_STROKE_PX,
 } from "../styles/theme";
@@ -98,6 +100,8 @@ export function PedalNode({
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const scale = useViewport((state) => state.scale);
 	const beginCandidate = useDrag((state) => state.beginCandidate);
+	const readOnlyCue = useReadOnly((state) => state.cue);
+	const beginReadOnlyAttempt = useReadOnly((state) => state.beginAttempt);
 
 	const groupRef = useRef<Konva.Group>(null);
 	// Register globally so the top-level rotate Transformer can attach to this
@@ -114,10 +118,17 @@ export function PedalNode({
 			// Claim the press: the board underneath must not start dragging.
 			event.cancelBubble = true;
 			selectItem(item.uid);
-			if (isReadOnly()) return;
+			if (isReadOnly()) {
+				beginReadOnlyAttempt({
+					uid: item.uid,
+					kind: "item",
+					startClient: client,
+				});
+				return;
+			}
 			beginCandidate({ uid: item.uid, startClient: client });
 		},
-		[item.uid, selectItem, beginCandidate],
+		[item.uid, selectItem, beginCandidate, beginReadOnlyAttempt],
 	);
 
 	const label = resolved.name;
@@ -275,6 +286,23 @@ export function PedalNode({
 	// width and outset are counter-scaled so the cue stays a constant screen
 	// weight at any zoom.
 	const warningOutset = WARNING_OUTSET_PX / labelScale;
+	const readOnlyOutset = READ_ONLY_CUE_OUTSET_PX / labelScale;
+	const readOnlyCueRect =
+		readOnlyCue?.kind === "item" && readOnlyCue.uid === item.uid ? (
+			<Rect
+				x={-readOnlyOutset}
+				y={-readOnlyOutset}
+				width={widthPx + readOnlyOutset * 2}
+				height={heightPx + readOnlyOutset * 2}
+				stroke={theme.dangerOutline}
+				strokeWidth={READ_ONLY_CUE_STROKE_PX / labelScale}
+				fillEnabled={false}
+				cornerRadius={4 / labelScale}
+				listening={false}
+				perfectDrawEnabled={false}
+			/>
+		) : null;
+
 	const warningCue = warning ? (
 		<Rect
 			x={-warningOutset}
@@ -309,6 +337,7 @@ export function PedalNode({
 		>
 			{body}
 			{warningCue}
+			{readOnlyCueRect}
 		</Group>
 	);
 }

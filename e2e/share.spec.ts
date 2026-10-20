@@ -277,7 +277,7 @@ test("an unknown ref keeps its geometry and renders a labeled placeholder", asyn
 }) => {
 	const hash = shareHash({
 		name: "Unknown part",
-		boards: [board("b-1", { boardRefId: "retired-board", x: 40, y: 30 })],
+		boards: [board("b-1", { boardRefId: "retired-board", x: 40, y: 80 })],
 		items: [
 			item("i-1", {
 				refId: "mystery-pedal",
@@ -397,6 +397,73 @@ test("shared scenes keep multiple boards, rotations, loose items and pan/zoom", 
 	await expect
 		.poll(async () => await stage.getAttribute("data-scale"))
 		.not.toBe(before);
+});
+
+test("read-only drag attempts explain why editing is disabled", async ({
+	page,
+}) => {
+	const hash = shareHash({
+		name: "Read only",
+		boards: [board("b-1", { x: 40, y: 80 })],
+		items: [
+			item("i-1", {
+				refId: "mystery-pedal",
+				boardUid: "b-1",
+				x: 5,
+				y: 5,
+			}),
+		],
+	});
+	await openShare(page, hash);
+	const stage = page.getByTestId("stage");
+	await expect(stage).toHaveAttribute("data-items", "1");
+
+	// A tap/selection is allowed and must not nag.
+	const firstPoint = await firstItemScreenCentre(page, {
+		widthCm: 7,
+		heightCm: 12,
+	});
+	await page.mouse.click(firstPoint.x, firstPoint.y);
+	await expect(page.getByTestId("share-edit-cue")).toHaveCount(0);
+
+	// Moving the pedal like a drag shows the red outline + inline reason.
+	const itemPoint = await firstItemScreenCentre(page, {
+		widthCm: 7,
+		heightCm: 12,
+	});
+	await page.mouse.move(itemPoint.x, itemPoint.y);
+	await page.mouse.down();
+	await page.mouse.move(itemPoint.x + 36, itemPoint.y + 24, { steps: 6 });
+	await page.mouse.up();
+	await expect(page.getByTestId("share-edit-cue")).toBeVisible();
+	await expect(page.getByTestId("share-edit-cue")).toContainText("Save a copy");
+	await expect(stage).toHaveAttribute("data-readonly-cue", "item:i-1");
+
+	// The board gives the same explanation.
+	const boardPoint = await boardCenter(page);
+	await page.mouse.move(boardPoint.x, boardPoint.y);
+	await page.mouse.down();
+	await page.mouse.move(boardPoint.x + 40, boardPoint.y + 24, { steps: 6 });
+	await page.mouse.up();
+	await expect(stage).toHaveAttribute("data-readonly-cue", "board:b-1");
+
+	// The cue never blocks navigation: an empty-canvas drag still pans.
+	const beforeX = await stage.getAttribute("data-x");
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	await page.mouse.move(box.x + box.width - 40, box.y + box.height - 140);
+	await page.mouse.down();
+	await page.mouse.move(box.x + box.width - 100, box.y + box.height - 100, {
+		steps: 6,
+	});
+	await page.mouse.up();
+	await expect
+		.poll(async () => await stage.getAttribute("data-x"))
+		.not.toBe(beforeX);
+
+	// The inline cue is non-blocking: Save a copy still works while it is up.
+	await page.getByTestId("share-save-copy").click();
+	await expect(page.getByTestId("share-saved")).toBeVisible();
 });
 
 test("save a copy at the 10-scene cap shows an inline reason", async ({

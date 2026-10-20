@@ -13,7 +13,7 @@ const CUSTOM = {
 
 function reset() {
 	useScene.setState({ boards: [], items: [], customPedals: [] });
-	useReadOnly.setState({ readOnly: false });
+	useReadOnly.setState({ readOnly: false, attempt: null, cue: null });
 }
 
 describe("read-only share mode (P3-03)", () => {
@@ -78,6 +78,30 @@ describe("read-only share mode (P3-03)", () => {
 		expect(useScene.getState().boards).toEqual(before.boards);
 		expect(useScene.getState().items).toEqual(before.items);
 		expect(useScene.getState().customPedals).toEqual(before.customPedals);
+	});
+
+	it("only turns a mismatched drag attempt into the edit cue", () => {
+		const attempt = {
+			uid: "i-1",
+			kind: "item" as const,
+			startClient: { x: 10, y: 10 },
+		};
+		// Not read-only: an ordinary drag never creates the cue.
+		useReadOnly.getState().beginAttempt(attempt);
+		expect(useReadOnly.getState().attempt).toBeNull();
+		// Read-only: a pointer-down is pending until the drag threshold is met.
+		useReadOnly.setState({ readOnly: true });
+		useReadOnly.getState().beginAttempt(attempt);
+		expect(useReadOnly.getState().attempt).toEqual(attempt);
+		useReadOnly.getState().showCue();
+		expect(useReadOnly.getState().attempt).toBeNull();
+		expect(useReadOnly.getState().cue).toMatchObject({
+			uid: "i-1",
+			kind: "item",
+		});
+		// Leaving read-only clears any pending cue.
+		useReadOnly.getState().setReadOnly(false);
+		expect(useReadOnly.getState().cue).toBeNull();
 	});
 
 	it("restores mutation after leaving read-only", () => {
