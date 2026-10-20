@@ -86,6 +86,31 @@ test("blocked IndexedDB: the app stays editable, warns, and exports a backup", a
 	await expect(stage(page)).toHaveAttribute("data-boards", "0");
 });
 
+test("blocked localStorage (IndexedDB healthy) is session-only and truthful", async ({
+	page,
+}) => {
+	// P3-05 injection: all Web Storage writes throw (blocked/private mode).
+	await page.addInitScript(() => {
+		Storage.prototype.setItem = () => {
+			throw new DOMException("blocked", "SecurityError");
+		};
+	});
+	await page.goto("/");
+	await expect(stage(page)).toBeVisible();
+	await expect(warning(page)).toBeVisible();
+	await expect(warning(page)).toHaveAttribute("data-state", "unavailable");
+	await expect(warning(page)).toHaveAttribute("data-reason", "local-storage");
+	await expect(warning(page)).toContainText("Storage is blocked");
+
+	await addBoard(page, "boss-bcb-1000");
+	await expect(stage(page)).toHaveAttribute("data-boards", "1");
+	const { json } = await downloadBackup(page);
+	// Never borrows the (unreadable) stored register's identity.
+	expect(json.id).toBe("session-backup");
+	expect(json.name).toBe("Unsaved scene");
+	expect(json.boards).toHaveLength(1);
+});
+
 test("mid-session write failure warns and keeps the work in memory", async ({
 	page,
 }) => {

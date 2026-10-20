@@ -528,7 +528,8 @@ export function createSceneLibraryRuntime(
 			applyScene(emptyScene());
 		}
 
-		if (healthUnavailable) {
+		// Re-read: the index write above may have latched a session-only failure.
+		if (healthUnavailable || store.getState().sessionOnly) {
 			autosave.cancel();
 		} else {
 			subscribe();
