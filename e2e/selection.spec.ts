@@ -357,13 +357,14 @@ test("hovering a pedal sets the hover target (desktop outline wiring)", async ({
 	if (!box) throw new Error("stage has no bounding box");
 	const centre = await firstItemScreenCentre(page, PEDAL_CM);
 
-	// Deselect (tap empty canvas well clear of the pedal)…
-	await page.mouse.click(box.x + 40, box.y + 40);
+	// Deselect (tap empty canvas well clear of the pedal and the top-left/
+	// top-right chrome)…
+	await page.mouse.click(box.x + box.width - 40, box.y + box.height - 40);
 	await expect(stage).toHaveAttribute("data-selected-item", "");
 	// …then hover the pedal: the outline target is the item under the pointer.
 	await page.mouse.move(centre.x, centre.y);
 	await expect(stage).toHaveAttribute("data-hovered-item", selected ?? "");
 	// Moving off the pedal clears it.
-	await page.mouse.move(box.x + 40, box.y + 40);
+	await page.mouse.move(box.x + box.width - 40, box.y + box.height - 40);
 	await expect(stage).toHaveAttribute("data-hovered-item", "");
 });

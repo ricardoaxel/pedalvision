@@ -37,6 +37,7 @@ scripts/          # dev tooling entrypoints (deferred: R2-era assets:sync; not c
 - **Out-of-scope cable rule (S1):** in scope (a), a cable is included **only if BOTH endpoints are in scope** (pedal↔pedal both on this board, or pedal → endpoint within **board bounds + a defined margin**, e.g. +30 cm — so the amp/instrument signal cables that sit beside the board are NOT dropped from the headline export). A cable to anything out of scope is **dropped** — never clipped mid-air. Endpoints are included in scope (a) only as the far end of an in-scope cable within the inflated bounds.
 - **Scope (b) includes everything (owner decision, 2026-10-19):** all content = every board, loose item, cable and endpoint, even a far-off loose pedal with no board. No automatic fit/trim — the **16.7 MP pixel clamp** fits extreme layouts into a valid image. A user who wants a tight, high-density image selects a board instead.
 - **Export background (N2):** fill the offscreen stage with the app's **surface color** (not transparent) — exported PNGs get shared into unknown light/dark contexts. **PDF is the print artifact** and always uses the **paper-light palette** (regardless of the app theme) so it prints cleanly.
+- **PNG download transport (A3 follow-up, 2026-10-19):** the generated PNG is saved through a **Blob object URL**, not a `data:` URL. iOS Safari's `<a download>` silently fails for multi-MB data URLs; a realistic photographic board exports at ~2.14 MB, so the previous path could report "PNG saved" without producing a file. The object URL is revoked after 60 s (revoking immediately can break the iOS save sheet).
 - **PDF export (P3-01 follow-up):** the same detached renderer rasterizes to JPEG (~0.92) and wraps it in a **single-page PDF at exact physical size** (cm → pt, 1 cm = 28.3465 pt) with a `DCTDecode` image XObject. Zero new dependencies (`src/lib/pdf.ts`); the page is true scale and includes the same 4 cm margin + drafting scale bar. SVG is deliberately not offered in v1: the artwork is photographic raster, and PDF covers print/share.
 - **All images must be same-origin / CORS-clean** or export throws (ADR-002). **Clamp total output pixels** to **16.7 MP** (the iOS 17-and-older canvas ceiling) with an **8192 px edge** safety cap: fit-scale then reduce pixelRatio so the output never exceeds either limit — the iOS Safari silent-blank guard. Dimensions may exceed 4096 px as long as total area stays under 16.7 MP (supported by older iOS). The output spec shows the effective **PPI**; the notice reads "Resolution capped for iOS compatibility." when the cap binds.
 - Accessibility (N3): canvas has no DOM semantics → the **catalog** (picker) and **selection controls / item actions** (rotate, duplicate, delete, z-order) plus the P2-03 info panel are mirrored in HTML. A **scene-list mirror** (an HTML list of placed boards/items for assistive tech) is **deferred** — it is not implemented and has no owning task yet; schedule it with a later accessibility/scene-management pass (see `docs/progress.md` → Follow-ups). This does NOT claim full spatial-editor equivalence — keyboard placement/moving/rotating of items on the canvas is out of v1 scope.
@@ -88,18 +89,49 @@ Layering is **per-container, never global.** A *container* is either one board's
 - **Remove board:** its attached items fall loose (geometry baked, visible rotation preserved) and the loose container is re-normalised, so a freed pedal's old board-relative `z` cannot collide with existing loose items.
 - **Remove item:** its own container is re-normalised.
 
-`z` is part of `PlacedItem` and therefore survives save/reload (A4). The full save system (IndexedDB + autosave + boot reconcile) is P3-02; until then a temporary localStorage mirror keeps `z` across reloads.
+`z` is part of `PlacedItem` and therefore survives save/reload (A4). The P3-02 save system (IndexedDB documents + autosave + boot reconcile) persists it; the old temporary single-scene localStorage mirror was migrated once at first boot.
 
 > This section is the **source of truth** for a future user-facing help/onboarding entry ("how layering works") — see the roadmap's user-help item.
 
 ## Persistence (v1, no backend)
-- `localStorage`: settings + scene index (id → name, updatedAt)
+- `localStorage`: settings (`units`, `activeSceneId`) + scene index (id → name, updatedAt, cached board/part counts). Implemented in P3-02; the pre-P3 temporary single-scene mirror (`pedalvision.scene.v1`) is migrated once into a named scene and removed.
 - `IndexedDB` (via `idb`): scene documents; autosave debounced ~500ms
 - **Boot reconcile (R6/S2):** on boot, reconcile the scene index (localStorage) against the scene documents (IndexedDB) — drop index entries with no document, and surface any orphaned documents back into the index. Handles partial eviction (private mode, extensions, browser settings). Lives in P3-02.
 - Share: `scene → JSON → deflate (fflate) → base64url → location.hash (#s=…)`; recipients get a read-only view ("save a copy" button). Validate with zod + size cap on load. **Custom pedals travel in the scene payload** (R6/S1) so shared scenes render identically on any device (A5). Watch the ~200KB cap interplay (R6/N4): many custom pedals, each with jacks+power, approach the decoded-payload limit — the codec task (P3-03) should note this.
 - **Versioning (S1):** `Scene.version` (starts at 1) + share-URL prefix `#s=v1:…`. Zod schema per version; on load, resolve `refId` against the catalog first, then `Scene.customPedals`; if still unknown, render a labeled placeholder box (keep geometry) rather than failing — so A4/A5 hold even after the catalog changes.
+- **Scene cap (product decision, 2026-10-19):** **10 named scenes** in v1. It bounds the boot reconcile (`getAll()` reads every document) and keeps the register usable without search; `newScene` is refused at the cap and the register shows an inline reason (never a toast). Raise it when search/folders land.
 - **Storage failure (N3):** check IndexedDB availability/quota on boot; if unavailable, disable autosave + show an inline warning + offer "download scene backup" (JSON). Never lose work silently.
 - **Undo/redo (S5):** snapshot-based undo stack on the persisted scene slice (cap ~50 snapshots), keyboard: Ctrl/Cmd+Z / Shift+Z (N6). Ships as its own task (P3-04), not bundled into save/load.
+
+## Capacity budgets (measured 2026-10-19)
+
+v1 targets, from a desktop Chromium benchmark (7 distinct BOSS photographic images repeated; all-content Standard export). **Distinct image-bearing items — not item count or document bytes — are the memory driver**: a pedal image is ~1.44 MB decoded, so 400 *distinct* images ≈ 577 MB, while 400 repeated items share the decode cache.
+
+| Scenario | Doc JSON | Boot | rAF (1 s zoom) | Export | PNG |
+|---|---:|---:|---:|---:|---:|
+| 1 board · 50 items | 6.5 KB | 37 ms | 60 fps | — | — |
+| 1 board · 100 items | 12.5 KB | 104 ms | 60 fps | — | — |
+| 1 board · 200 items | 26.9 KB | 137 ms | 60 fps | 629 ms | 14.6 MB (4096²) |
+| 1 board · 400 items | 50.3 KB | 33 ms | 54 fps | 967 ms | 24.2 MB (4113×4079) |
+| 10 boards · 100 items | 13.7 KB | 36 ms | 60 fps | 217 ms | 1.38 MB |
+| 10 boards · 400 items | 55.8 KB | 32 ms | 56 fps | 353 ms | 4.47 MB |
+| 10 scenes · 100 items | 12.5 KB each | 37 ms | 61 fps | — | — |
+| 50 scenes · 100 items | 12.5 KB each | 90 ms | 60 fps | — | — |
+
+**Budgets (soft = inline warning; hard = refusal with an inline reason):**
+
+| Dimension | Soft | Hard |
+|---|---:|---:|
+| Items / scene | 200 | 400 |
+| Distinct image-bearing items / scene | 150 | 250 |
+| Boards / scene | 8 | 10 |
+| Cables + endpoints / scene (P4 estimate) | 150 | 300 |
+| Scenes | — | **10** (implemented) |
+| Export | >12 MP or ~15 MB estimate | **16.7 MP / 8192 px** (implemented clamp) |
+
+**The budgets are scene-wide totals across every placed object type** — boards, items (catalog pedals, supplies, custom pedals), cables and endpoints. Supplies and custom parts count as items; custom parts are text-only and exempt from the distinct-image count. Cables/endpoints arrive in **P4** but must be included in the capacity model from day one (they add Konva nodes, export draw work and share-payload bytes; one endpoint ≈ one cable node, so they share the 150/300 graph budget). Re-run the benchmark with P4-01/P4-02 data before raising any cap.
+
+At 2× the hard budget the live canvas drops below ~50 fps and distinct-image decode approaches iOS jetsam; at 5× it is unusable. The 16.7 MP clamp keeps export allocation bounded, and PNG is encoded directly to a Blob (`stage.toBlob()`), never a multi-MB `data:` URL. Hard caps are **not yet enforced** for items/boards/cables; the follow-up is `docs/tasks/P3-06-capacity-budgets.md` (**scheduled next** after P3-02, before P3-03/P4-01). Over-cap shared/recovered scenes must still load (A4/A5).
 
 ## Assets & catalog
 - Catalog JSON (`pedals.json`, `boards.json`) ships in the app bundle (static import). It is zod-validated **at module load** by `src/catalog/load.ts` (fail-fast) and guarded in CI by a Vitest test against the committed seed — not by a `vite build` step.

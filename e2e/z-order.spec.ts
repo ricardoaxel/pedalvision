@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { waitForSavedScene } from "./persistence.ts";
 import { addPedal } from "./picker.ts";
 
 test("reordering a pedal persists across a reload", async ({ page }) => {
@@ -31,6 +32,11 @@ test("reordering a pedal persists across a reload", async ({ page }) => {
 		.toBe(swapped);
 
 	// Reload: the persisted scene restores the same render order.
+	await waitForSavedScene(page, (document) => {
+		const clone = document.items.find((item) => item.uid === before[1]);
+		const original = document.items.find((item) => item.uid === before[0]);
+		return document.items.length === 2 && clone?.z === 0 && original?.z === 1;
+	});
 	await page.reload();
 	const reloaded = page.getByTestId("stage");
 	await expect(reloaded).toHaveAttribute("data-items", "2");

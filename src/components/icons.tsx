@@ -179,3 +179,124 @@ export function ChevronIcon({
 		</svg>
 	);
 }
+
+/** Scene / sheet-stack glyph — the always-visible scene plate. */
+export function SceneIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M7 4.5h10a2 2 0 0 1 2 2V18" opacity="0.5" />
+			<rect x="4" y="6.5" width="12" height="14" rx="2" />
+			<path d="M7 11h6M7 14.5h6" />
+		</svg>
+	);
+}
+
+export function PencilIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17z" />
+			<path d="M13.5 6.5l4 4" />
+		</svg>
+	);
+}
+
+export function TrashIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M4 7h16" />
+			<path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+			<path d="M6.5 7l1 12a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2l1-12" />
+			<path d="M10 11v6M14 11v6" opacity="0.6" />
+		</svg>
+	);
+}
+
+export function CheckIcon({
+	size = 18,
+	strokeWidth = 2,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M5 12.5l4.5 4.5L19 7" />
+		</svg>
+	);
+}
+
+export function CloseIcon({
+	size = 18,
+	strokeWidth = 2,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			aria-hidden="true"
+		>
+			<path d="M6 6l12 12M18 6 6 18" />
+		</svg>
+	);
+}

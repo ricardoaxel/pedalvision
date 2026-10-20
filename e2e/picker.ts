@@ -17,10 +17,16 @@ const TOOLBAR_TRIGGER: Record<PickerTab, string> = {
  */
 export async function openPicker(page: Page, tab: PickerTab): Promise<void> {
 	const barTab = page.getByTestId(`picker-bar-${tab}`);
-	if (await barTab.isVisible()) {
+	const toolbarTrigger = page.getByTestId(TOOLBAR_TRIGGER[tab]);
+	// P3-02 boots persistence before the first render, so `goto` can resolve
+	// before the chrome exists. Wait for the trigger this viewport uses instead
+	// of racing `isVisible()` against an empty document.
+	const mobile = (page.viewportSize()?.width ?? 1280) < 1024;
+	await expect(mobile ? barTab : toolbarTrigger).toBeVisible();
+	if (mobile) {
 		await barTab.click();
 	} else {
-		await page.getByTestId(TOOLBAR_TRIGGER[tab]).click();
+		await toolbarTrigger.click();
 		if (tab === "custom") {
 			await page.getByTestId("picker-tab-custom").click();
 		}

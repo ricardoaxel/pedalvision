@@ -1,4 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
+import { waitForSavedScene } from "./persistence.ts";
 import { addPedal } from "./picker.ts";
 
 const STORAGE_KEY = "pedalvision.firstRun.v1";
@@ -109,6 +110,7 @@ test("placing the first board from the note retires it and keeps focus", async (
 	).toBeFocused();
 
 	// A restored non-empty scene never flashes it either.
+	await waitForSavedScene(page, (document) => document.boards.length === 1);
 	await page.reload();
 	await expect(page.getByTestId("first-run-hint")).toHaveCount(0);
 });

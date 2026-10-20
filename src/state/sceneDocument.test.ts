@@ -1,0 +1,235 @@
+import { describe, expect, it } from "vitest";
+import { catalog } from "../catalog/load";
+import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
+import {
+	createSceneDocument,
+	normalizeSceneContent,
+	parseSceneDocument,
+	type SceneSnapshot,
+	sceneFromDocument,
+} from "./sceneDocument";
+
+const boss = catalog.boards.find((board) => board.id === "boss-bcb-1000");
+if (!boss) throw new Error("test fixture board missing from the seed");
+
+const board: PlacedBoard = {
+	uid: "b1",
+	boardRefId: boss.id,
+	x: 1,
+	y: 2,
+	rotationDeg: 0,
+};
+
+const item = (overrides: Partial<PlacedItem> = {}): PlacedItem => ({
+	uid: "i1",
+	refId: "boss-bd-2-blues-driver",
+	kind: "pedal",
+	boardUid: "b1",
+	x: 3,
+	y: 4,
+	rotationDeg: 45,
+	z: 0,
+	...overrides,
+});
+
+const customPedal: CustomPedal = {
+	refId: "custom-abc",
+	brand: "Acme",
+	name: "My Fuzz",
+	widthCm: 6,
+	heightCm: 12,
+	category: "pedal",
+	effectTypes: ["fuzz"],
+	jacks: [{ kind: "in", edge: "top", pos: 0.5 }],
+	power: { voltage: 9, acDc: "DC", currentMa: 20 },
+};
+
+function documentOf(snapshot: SceneSnapshot) {
+	return createSceneDocument({
+		id: "scene-1",
+		name: "My board",
+		updatedAt: "2026-10-19T12:00:00.000Z",
+		...snapshot,
+	});
+}
+
+describe("scene documents", () => {
+	it("round-trips boards, items, inline custom pedals and z-order", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [item(), item({ uid: "i2", z: 1, rotationDeg: 0 })],
+			customPedals: [customPedal],
+		});
+		expect(parseSceneDocument(document)).toEqual(document);
+		expect(parseSceneDocument(JSON.stringify(document))).toEqual(document);
+	});
+
+	it("rejects corrupt / incomplete / unknown-version documents", () => {
+		const document = documentOf({
+			boards: [],
+			items: [],
+			customPedals: [],
+		});
+		expect(parseSceneDocument(null)).toBeNull();
+		expect(parseSceneDocument("")).toBeNull();
+		expect(parseSceneDocument("{ not json")).toBeNull();
+		expect(parseSceneDocument({ ...document, version: 2 })).toBeNull();
+		expect(parseSceneDocument({ ...document, id: "" })).toBeNull();
+		expect(parseSceneDocument({ ...document, name: 4 })).toBeNull();
+		expect(parseSceneDocument({ ...document, updatedAt: 4 })).toBeNull();
+		expect(parseSceneDocument({ ...document, boards: {} })).toBeNull();
+		expect(parseSceneDocument({ ...document, items: {} })).toBeNull();
+	});
+
+	it("drops malformed entries instead of failing the whole document", () => {
+		const raw = {
+			...documentOf({ boards: [], items: [], customPedals: [] }),
+			boards: [board, { uid: 5 }],
+			items: [item(), { refId: "x" }],
+		};
+		expect(parseSceneDocument(raw)).toEqual({
+			id: "scene-1",
+			version: 1,
+			name: "My board",
+			boards: [board],
+			items: [item()],
+			customPedals: [],
+			updatedAt: "2026-10-19T12:00:00.000Z",
+		});
+	});
+
+	it("treats customPedals as additive and drops malformed definitions", () => {
+		const raw = {
+			...documentOf({ boards: [], items: [], customPedals: [] }),
+			customPedals: [
+				customPedal,
+				{ refId: "custom-bad", widthCm: -1 },
+				{ ...customPedal, refId: "custom-jack", jacks: [{ kind: "banana" }] },
+			],
+		};
+		expect(parseSceneDocument(raw)?.customPedals).toEqual([customPedal]);
+
+		const withoutField = documentOf({
+			boards: [],
+			items: [],
+			customPedals: [],
+		});
+		const { customPedals: _unused, ...legacy } = withoutField;
+		expect(parseSceneDocument(legacy)?.customPedals).toEqual([]);
+	});
+
+	it("round-trips an inline custom board with its finish", () => {
+		const customBoard: PlacedBoard = {
+			uid: "b2",
+			boardRefId: null,
+			customSize: { widthCm: 80, heightCm: 40 },
+			texture: "wood",
+			name: "Big Rig",
+			brand: "Acme",
+			x: 3,
+			y: 4,
+			rotationDeg: 15,
+		};
+		expect(
+			parseSceneDocument(
+				documentOf({ boards: [customBoard], items: [], customPedals: [] }),
+			)?.boards,
+		).toEqual([customBoard]);
+	});
+
+	it("drops invalid custom boards and enforces the inline invariant", () => {
+		const raw = {
+			...documentOf({ boards: [], items: [], customPedals: [] }),
+			boards: [
+				{
+					uid: "ok",
+					boardRefId: null,
+					customSize: { widthCm: 80, heightCm: 40 },
+					texture: "matte",
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				// A custom board (no ref) must carry a bounded customSize.
+				{ uid: "no-size", boardRefId: null, x: 0, y: 0, rotationDeg: 0 },
+				{
+					uid: "too-big",
+					boardRefId: null,
+					customSize: { widthCm: 1e308, heightCm: 40 },
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				// A catalog board must NOT carry a stray customSize.
+				{
+					uid: "catalog-stretched",
+					boardRefId: boss.id,
+					customSize: { widthCm: 999, heightCm: 999 },
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+				{
+					uid: "bad-texture",
+					boardRefId: null,
+					customSize: { widthCm: 80, heightCm: 40 },
+					texture: "velvet",
+					x: 0,
+					y: 0,
+					rotationDeg: 0,
+				},
+			],
+		};
+		expect(
+			parseSceneDocument(raw)?.boards.map((candidate) => candidate.uid),
+		).toEqual(["ok"]);
+	});
+});
+
+describe("normalizing a loaded document", () => {
+	it("drops orphaned items, densifies z and prunes unreferenced customs", () => {
+		const normalized = normalizeSceneContent({
+			boards: [board],
+			items: [
+				item({ uid: "ok", boardUid: "b1", z: 5 }),
+				item({ uid: "orphan", boardUid: "gone", z: 2 }),
+				item({
+					uid: "custom",
+					refId: "custom-abc",
+					boardUid: null,
+					z: 9,
+				}),
+			],
+			customPedals: [customPedal],
+		});
+		expect(normalized.items.map((candidate) => candidate.uid)).toEqual([
+			"ok",
+			"custom",
+		]);
+		expect(normalized.items.map((candidate) => candidate.z)).toEqual([0, 0]);
+		expect(normalized.customPedals).toHaveLength(1);
+	});
+
+	it("prunes a custom definition whose placed item was dropped with its board", () => {
+		const normalized = normalizeSceneContent({
+			boards: [],
+			items: [item({ refId: "custom-abc", boardUid: "gone" })],
+			customPedals: [customPedal],
+		});
+		expect(normalized.items).toHaveLength(0);
+		expect(normalized.customPedals).toHaveLength(0);
+	});
+
+	it("sceneFromDocument applies the same normalization", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [item({ boardUid: "gone" })],
+			customPedals: [customPedal],
+		});
+		expect(sceneFromDocument(document)).toEqual({
+			boards: [board],
+			items: [],
+			customPedals: [],
+		});
+	});
+});

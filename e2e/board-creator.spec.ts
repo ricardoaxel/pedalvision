@@ -1,4 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
+import { waitForSavedScene } from "./persistence.ts";
 import { openPicker } from "./picker.ts";
 
 /**
@@ -206,6 +207,7 @@ test("a custom board persists across a reload", async ({ page }) => {
 	const uidBefore = await stage.getAttribute("data-board-uids");
 	expect(uidBefore).toBeTruthy();
 	await expect(stage).toHaveAttribute("data-board-sizes", "80x40");
+	await waitForSavedScene(page, (document) => document.boards.length === 1);
 
 	await page.reload();
 	await expect(stage).toHaveAttribute("data-custom-boards", "1");
