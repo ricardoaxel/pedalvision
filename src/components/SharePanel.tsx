@@ -1,9 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { formatEstimatedBytes } from "../lib/capacity";
-import {
-	SHARE_DECODED_LIMIT_BYTES,
-	SHARE_LONG_LINK_THRESHOLD,
-} from "../lib/shareLink";
+import { SHARE_LONG_LINK_THRESHOLD } from "../lib/shareLink";
 import { useSceneLibrary } from "../state/library";
 import { useScene } from "../state/scene";
 import { buildShareLink } from "../state/share";
@@ -229,9 +225,7 @@ export function SharePanel({ onClose, onAddBoard }: SharePanelProps) {
 			) : (
 				<div className="share-panel__body">
 					<p id={HINT_ID} className="share-panel__hint">
-						Share links have a {formatEstimatedBytes(SHARE_DECODED_LIMIT_BYTES)}{" "}
-						limit. This scene is {formatEstimatedBytes(result.decodedBytes)}.
-						Remove custom parts or split it into two scenes.
+						{result.message}
 					</p>
 				</div>
 			)}

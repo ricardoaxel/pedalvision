@@ -7,6 +7,7 @@ import {
 	encodeShareLink,
 	SHARE_BASE64_LIMIT_LENGTH,
 	SHARE_DECODED_LIMIT_BYTES,
+	SHARE_URL_HARD_LIMIT_CHARS,
 	type SharePayload,
 } from "./shareLink";
 
@@ -239,6 +240,53 @@ describe("share links (P3-03)", () => {
 		expect(status.boards.over).toBe(true);
 		expect(status.items.over).toBe(true);
 		expect(status.level).toBe("hard");
+	});
+
+	it("keeps a 1,500-item share link under the 32K URL cap", () => {
+		const boards = Array.from({ length: 10 }, (_, index) =>
+			board(`board-${index + 1}`),
+		);
+		const items = Array.from({ length: 1_500 }, (_, index) =>
+			item(`item-${index + 1}`, {
+				boardUid: boards[index % boards.length]?.uid ?? null,
+				refId: `catalog-${index % 200}`,
+				x: index % 80,
+				y: Math.floor(index / 80),
+				z: index,
+			}),
+		);
+		const encoded = encodeShareLink("Large board", {
+			boards,
+			items,
+			customPedals: [],
+		});
+		if (!encoded.ok) throw new Error("expected a 1,500-item link to fit");
+		expect(encoded.hash.length).toBeLessThanOrEqual(SHARE_URL_HARD_LIMIT_CHARS);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items).toHaveLength(1_500);
+	});
+
+	it("refuses a link that would exceed the 32K delivery cap", () => {
+		const boards = Array.from({ length: 10 }, () => board(crypto.randomUUID()));
+		const items = Array.from({ length: 700 }, (_, index) =>
+			item(crypto.randomUUID(), {
+				refId: `random-${crypto.randomUUID()}`,
+				boardUid: boards[index % boards.length]?.uid ?? null,
+				x: index,
+				y: index * 2,
+				z: index,
+			}),
+		);
+		const encoded = encodeShareLink("Too long", {
+			boards,
+			items,
+			customPedals: [],
+		});
+		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
+		if (encoded.ok) throw new Error("expected a refusal");
+		expect(encoded.hashLength).toBeGreaterThan(SHARE_URL_HARD_LIMIT_CHARS);
+		expect(encoded.message).toContain("too long");
 	});
 
 	it("keeps a max-cap scene under the ~200 KB share ceiling", () => {

@@ -30,16 +30,25 @@ import { MAX_DIMENSION_CM } from "./customPedal";
 export const SHARE_HASH_PREFIX = "#s=";
 export const SHARE_VERSION = 1;
 export const SHARE_DECODED_LIMIT_BYTES = 200 * 1024;
-export const SHARE_COMPRESSED_LIMIT_BYTES = 256 * 1024;
-/** Base64 of the compressed limit, +4 for rounding. */
-export const SHARE_BASE64_LIMIT_LENGTH = Math.ceil(
-	(SHARE_COMPRESSED_LIMIT_BYTES * 4) / 3 + 4,
+/**
+ * Delivery limit (owner-facing): a URL that is too long is silently truncated
+ * by chat apps / mobile address bars long before a browser's parser gives up.
+ * Chrome displays ~32 KB, Android ~8 KB, Safari ~80 KB practical. We cap the
+ * whole hash at 32 KB (the sender gets an inline refusal) and warn at 4 KB.
+ * The compressed limit is derived from this so the two can never drift.
+ */
+export const SHARE_URL_SOFT_LIMIT_CHARS = 4_000;
+export const SHARE_URL_HARD_LIMIT_CHARS = 32_000;
+export const SHARE_BASE64_LIMIT_LENGTH =
+	SHARE_URL_HARD_LIMIT_CHARS - SHARE_HASH_PREFIX.length - "v1:".length;
+export const SHARE_COMPRESSED_LIMIT_BYTES = Math.floor(
+	(SHARE_BASE64_LIMIT_LENGTH * 3) / 4,
 );
 /** Matches the scene-name cap used by the library (`SCENE_NAME_MAX_LENGTH`). */
 export const SHARE_NAME_MAX_LENGTH = 48;
 
-/** Giving up on the share panel's "large but valid" hint. */
-export const SHARE_LONG_LINK_THRESHOLD = 8_000;
+/** Soft "large but valid" hint in the Share panel. */
+export const SHARE_LONG_LINK_THRESHOLD = SHARE_URL_SOFT_LIMIT_CHARS;
 
 export type ShareErrorReason =
 	| "invalid"
@@ -66,6 +75,9 @@ export interface ShareEncodeTooLarge {
 	decodedBytes: number;
 	compressedBytes: number;
 	limitBytes: number;
+	/** The full `#s=v1:…` length that would have been produced. */
+	hashLength: number;
+	limitChars: number;
 	message: string;
 }
 
@@ -177,23 +189,30 @@ const payloadSchema = z.object({
 function tooLargeEncode(
 	decodedBytes: number,
 	compressedBytes: number,
+	hashLength = 0,
 ): ShareEncodeTooLarge {
+	const overPayload = decodedBytes > SHARE_DECODED_LIMIT_BYTES;
 	return {
 		ok: false,
 		reason: "too-large",
 		decodedBytes,
 		compressedBytes,
 		limitBytes: SHARE_DECODED_LIMIT_BYTES,
-		message: `This scene is too large to share (${formatKb(decodedBytes)} of the ${formatKb(SHARE_DECODED_LIMIT_BYTES)} limit).`,
+		hashLength,
+		limitChars: SHARE_URL_HARD_LIMIT_CHARS,
+		message: overPayload
+			? `This scene is too large to share (${formatKb(decodedBytes)} of the ${formatKb(SHARE_DECODED_LIMIT_BYTES)} limit). Remove custom parts or split it into two scenes.`
+			: `This scene’s link would be too long to share reliably (${hashLength.toLocaleString("en-US")} of ${SHARE_URL_HARD_LIMIT_CHARS.toLocaleString("en-US")} characters). Remove custom parts or split it into two scenes.`,
 	};
 }
 
-function tooLargeDecode(): ShareError {
+function tooLargeDecode(
+	message = "This share link is too big to open. It is over the 200 KB share limit.",
+): ShareError {
 	return {
 		ok: false,
 		reason: "too-large",
-		message:
-			"This share link is too big to open. It is over the 200 KB share limit.",
+		message,
 	};
 }
 
@@ -281,12 +300,18 @@ export function encodeShareLink(
 		return tooLargeEncode(decoded.length, 0);
 	}
 	const compressed = deflateSync(decoded);
-	if (compressed.length > SHARE_COMPRESSED_LIMIT_BYTES) {
-		return tooLargeEncode(decoded.length, compressed.length);
+	const hash = `${SHARE_HASH_PREFIX}v${SHARE_VERSION}:${bytesToBase64Url(compressed)}`;
+	// The URL is the delivery mechanism: cap the whole hash (not just the
+	// compressed bytes) so chat apps / mobile address bars can't truncate it.
+	if (
+		hash.length > SHARE_URL_HARD_LIMIT_CHARS ||
+		compressed.length > SHARE_COMPRESSED_LIMIT_BYTES
+	) {
+		return tooLargeEncode(decoded.length, compressed.length, hash.length);
 	}
 	return {
 		ok: true,
-		hash: `${SHARE_HASH_PREFIX}v${SHARE_VERSION}:${bytesToBase64Url(compressed)}`,
+		hash,
 		decodedBytes: decoded.length,
 		compressedBytes: compressed.length,
 	};
@@ -337,7 +362,14 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 			message: "This share link didn’t work.",
 		};
 	}
-	if (encoded.length > SHARE_BASE64_LIMIT_LENGTH) return tooLargeDecode();
+	if (
+		hash.length > SHARE_URL_HARD_LIMIT_CHARS ||
+		encoded.length > SHARE_BASE64_LIMIT_LENGTH
+	) {
+		return tooLargeDecode(
+			`This share link is too long to open reliably (over ${SHARE_URL_HARD_LIMIT_CHARS.toLocaleString("en-US")} characters).`,
+		);
+	}
 	const compressed = base64UrlToBytes(encoded);
 	if (!compressed) {
 		return {
@@ -346,7 +378,11 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 			message: "This share link didn’t work.",
 		};
 	}
-	if (compressed.length > SHARE_COMPRESSED_LIMIT_BYTES) return tooLargeDecode();
+	if (compressed.length > SHARE_COMPRESSED_LIMIT_BYTES) {
+		return tooLargeDecode(
+			`This share link is too long to open reliably (over ${SHARE_URL_HARD_LIMIT_CHARS.toLocaleString("en-US")} characters).`,
+		);
+	}
 
 	// Stream the inflation and abort as soon as the decoded payload crosses the
 	// cap. A plain `inflateSync({ out })` would bound memory but still decode the
