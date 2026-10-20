@@ -4,6 +4,7 @@ import { Layer, Transformer } from "react-konva";
 import { pxToCm } from "../lib/geometry";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
+import { useReadOnly } from "../state/readOnly";
 import { itemsByZ, useScene } from "../state/scene";
 import {
 	selectSelectedBoardUid,
@@ -40,6 +41,7 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	// Suppress rotation while the viewport owns the gesture (pan/pinch).
 	const navigating = useGesture((state) => state.navigating);
+	const readOnly = useReadOnly((state) => state.readOnly);
 
 	const transformerRef = useRef<Konva.Transformer>(null);
 	const nodesRef = useRef(new Map<string, Konva.Group>());
@@ -82,7 +84,7 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 	useEffect(() => {
 		const transformer = transformerRef.current;
 		if (!transformer) return;
-		if (navigating) {
+		if (navigating || readOnly) {
 			commitActiveTransform();
 			// Keep the nodes attached (identity preserved) but non-interactive.
 			return;
@@ -91,7 +93,7 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 		const node = board ? nodesRef.current.get(board.uid) : undefined;
 		if (!node) commitActiveTransform();
 		transformer.nodes(node ? [node] : []);
-	}, [selectedUid, boards, navigating, commitActiveTransform]);
+	}, [selectedUid, boards, navigating, readOnly, commitActiveTransform]);
 
 	// A single transform gesture writes both rotation and any origin shift
 	// (rotating about the node centre moves the top-left origin).
@@ -122,7 +124,7 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 				ref={transformerRef}
 				enabledAnchors={[]}
 				rotateEnabled
-				listening={!navigating}
+				listening={!navigating && !readOnly}
 				onTransformStart={() => {
 					transformingUidRef.current = selectedUid;
 				}}

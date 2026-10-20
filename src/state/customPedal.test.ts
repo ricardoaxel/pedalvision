@@ -47,7 +47,7 @@ describe("custom pedals (P2-02)", () => {
 	});
 
 	it("registers a custom pedal with a scene-local refId", () => {
-		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const refId = required(useScene.getState().addCustomPedal(CUSTOM));
 		expect(refId.startsWith("custom-")).toBe(true);
 		const stored = useScene.getState().customPedals;
 		expect(stored).toHaveLength(1);
@@ -55,7 +55,7 @@ describe("custom pedals (P2-02)", () => {
 	});
 
 	it("places and resolves a custom pedal by name + cm footprint", () => {
-		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const refId = required(useScene.getState().addCustomPedal(CUSTOM));
 		const uid = required(
 			useScene.getState().addItem(refId, "pedal", null, {
 				x: 2,
@@ -109,7 +109,7 @@ describe("custom pedals (P2-02)", () => {
 	});
 
 	it("prunes a custom pedal once its last placed item is removed", () => {
-		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const refId = required(useScene.getState().addCustomPedal(CUSTOM));
 		const uid = required(
 			useScene.getState().addItem(refId, "pedal", null, {
 				x: 0,
@@ -122,7 +122,7 @@ describe("custom pedals (P2-02)", () => {
 	});
 
 	it("keeps a custom pedal while a duplicate still references it", () => {
-		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const refId = required(useScene.getState().addCustomPedal(CUSTOM));
 		const uid = required(
 			useScene.getState().addItem(refId, "pedal", null, {
 				x: 0,
@@ -136,7 +136,7 @@ describe("custom pedals (P2-02)", () => {
 	});
 
 	it("edits a custom pedal in place (keeps refId, updates the footprint)", () => {
-		const refId = useScene.getState().addCustomPedal(CUSTOM);
+		const refId = required(useScene.getState().addCustomPedal(CUSTOM));
 		const uid = required(
 			useScene.getState().addItem(refId, "pedal", null, {
 				x: 2,

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { isReadOnly } from "../state/readOnly";
 import { useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 
@@ -21,7 +22,7 @@ function isTypingTarget(target: EventTarget | null): boolean {
 export function useSelectionShortcuts(): void {
 	useEffect(() => {
 		const onKeyDown = (event: KeyboardEvent) => {
-			if (isTypingTarget(event.target)) return;
+			if (isReadOnly() || isTypingTarget(event.target)) return;
 			const selected = selectSelectedItemUid(useSelection.getState());
 			if (!selected) return;
 			if (event.key === "Delete" || event.key === "Backspace") {

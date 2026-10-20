@@ -6,6 +6,7 @@ import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useGesture } from "../state/gesture";
 import { spaceWarning } from "../state/overlap";
+import { isReadOnly } from "../state/readOnly";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -232,7 +233,7 @@ export function BoardNode({
 			x={cmToPx(board.x)}
 			y={cmToPx(board.y)}
 			rotation={board.rotationDeg}
-			draggable={!navigating}
+			draggable={!navigating && !isReadOnly()}
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
 				selectBoard(board.uid);

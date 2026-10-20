@@ -5,6 +5,7 @@ import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { useDrag } from "../state/drag";
+import { isReadOnly } from "../state/readOnly";
 import { type PlacedItem, resolveItem, useScene } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
@@ -113,6 +114,7 @@ export function PedalNode({
 			// Claim the press: the board underneath must not start dragging.
 			event.cancelBubble = true;
 			selectItem(item.uid);
+			if (isReadOnly()) return;
 			beginCandidate({ uid: item.uid, startClient: client });
 		},
 		[item.uid, selectItem, beginCandidate],

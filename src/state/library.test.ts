@@ -16,6 +16,7 @@ import {
 	type SceneLibraryRuntime,
 	type SceneLibraryState,
 } from "./library";
+import { useReadOnly } from "./readOnly";
 import { useScene } from "./scene";
 import type { SceneDocument } from "./sceneDocument";
 import { useSelection } from "./selection";
@@ -99,6 +100,12 @@ function documentOf(
 
 const runtimes: SceneLibraryRuntime[] = [];
 
+function required<T>(value: T | null | undefined): T {
+	if (value === null || value === undefined)
+		throw new Error("expected a value");
+	return value;
+}
+
 function freshStore() {
 	return createStore<SceneLibraryState>(() => ({
 		scenes: [],
@@ -138,6 +145,7 @@ describe("scene library", () => {
 	beforeEach(() => {
 		useScene.setState({ boards: [], items: [], customPedals: [] });
 		useSelection.setState({ selection: null, hoveredItemUid: null });
+		useReadOnly.setState({ readOnly: false });
 	});
 
 	afterEach(() => {
@@ -534,6 +542,162 @@ describe("scene library", () => {
 		expect(await runtime.newScene("Too many")).toBeNull();
 		expect(store.getState().scenes).toHaveLength(MAX_SCENES);
 		expect(repo.docs.size).toBe(MAX_SCENES);
+	});
+
+	it("previews a shared scene read-only and never writes it into the recipient's document", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+
+		// The recipient's own scene, persisted before the share opens.
+		const recipientBoard = required(
+			useScene.getState().addBoard(bossId, { x: 10, y: 10 }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		const before = repo.docs.get("scene-1");
+		expect(before?.boards[0]?.uid).toBe(recipientBoard);
+
+		await runtime.enterPreview(
+			{
+				boards: [
+					{
+						uid: "shared-board",
+						boardRefId: bossId,
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [
+					{
+						uid: "shared-item",
+						refId: "boss-bd-2-blues-driver",
+						kind: "pedal",
+						boardUid: "shared-board",
+						x: 1,
+						y: 2,
+						rotationDeg: 0,
+						z: 0,
+					},
+				],
+				customPedals: [],
+			},
+			"Shared board",
+		);
+		expect(useReadOnly.getState().readOnly).toBe(true);
+		expect(store.getState().activeId).toBe("scene-1");
+		expect(useScene.getState().boards[0]?.uid).toBe("shared-board");
+
+		// Editing is refused while the preview is open.
+		expect(useScene.getState().addBoard(bossId, { x: 0, y: 0 })).toBeNull();
+		useScene.getState().removeBoard("shared-board");
+		expect(useScene.getState().boards).toHaveLength(1);
+		expect(useScene.getState().boards[0]?.uid).toBe("shared-board");
+
+		// No autosave may leak the shared content into the recipient's document.
+		await vi.advanceTimersByTimeAsync(1_000);
+		expect(repo.docs.get("scene-1")).toEqual(before);
+	});
+
+	it("saves a preview as a new editable scene and leaves the recipient's original intact", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		const recipientBoard = required(
+			useScene.getState().addBoard(bossId, { x: 10, y: 10 }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		const before = repo.docs.get("scene-1");
+
+		await runtime.enterPreview(
+			{
+				boards: [
+					{
+						uid: "shared-board",
+						boardRefId: bossId,
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [],
+				customPedals: [],
+			},
+			"Shared board",
+		);
+		const result = await runtime.savePreviewAsCopy();
+		expect(result.ok).toBe(true);
+		if (!result.ok) throw new Error(result.message);
+		expect(result.name).toBe("Shared board (copy)");
+		expect(store.getState().scenes).toHaveLength(2);
+		expect(store.getState().activeId).toBe(result.id);
+		expect(useReadOnly.getState().readOnly).toBe(false);
+		expect(useScene.getState().boards[0]?.uid).toBe("shared-board");
+		expect(repo.docs.get(result.id)?.boards[0]?.uid).toBe("shared-board");
+		expect(repo.docs.get("scene-1")).toEqual(before);
+		expect(before?.boards[0]?.uid).toBe(recipientBoard);
+	});
+
+	it("exits a preview back to the recipient's scene", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		const recipientBoard = required(
+			useScene.getState().addBoard(bossId, { x: 10, y: 10 }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		await runtime.enterPreview(
+			{
+				boards: [
+					{
+						uid: "shared-board",
+						boardRefId: bossId,
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [],
+				customPedals: [],
+			},
+			"Shared board",
+		);
+		await runtime.exitPreview();
+		expect(useReadOnly.getState().readOnly).toBe(false);
+		expect(store.getState().activeId).toBe("scene-1");
+		expect(useScene.getState().boards[0]?.uid).toBe(recipientBoard);
+	});
+
+	it("refuses save-a-copy at the scene cap without leaving preview", async () => {
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		for (let index = 2; index <= MAX_SCENES; index++) {
+			expect(await runtime.newScene(`Scene ${index}`)).toBeTruthy();
+		}
+		await runtime.enterPreview(
+			{
+				boards: [
+					{
+						uid: "shared-board",
+						boardRefId: bossId,
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [],
+				customPedals: [],
+			},
+			"Shared board",
+		);
+		const result = await runtime.savePreviewAsCopy();
+		expect(result).toMatchObject({ ok: false, reason: "limit" });
+		expect(store.getState().scenes).toHaveLength(MAX_SCENES);
+		expect(useReadOnly.getState().readOnly).toBe(true);
 	});
 
 	it("boots in session-only mode when storage is unavailable", async () => {

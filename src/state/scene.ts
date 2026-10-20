@@ -19,6 +19,7 @@ import {
 	rotatePoint,
 	worldToBoard,
 } from "../lib/geometry";
+import { isReadOnly } from "./readOnly";
 
 /**
  * The scene document (design.md §Data model). The boards and pedal/supply
@@ -545,8 +546,9 @@ interface SceneStore {
 	/**
 	 * Register a user-defined pedal/supply (assigning a scene-local `refId`) and
 	 * return that id, which `addItem` can then place like a catalog pedal.
+	 * Returns null in read-only share mode.
 	 */
-	addCustomPedal: (definition: CustomPedalDefinition) => string;
+	addCustomPedal: (definition: CustomPedalDefinition) => string | null;
 	/**
 	 * Replace a custom part's definition in place (P2-02 edit). Every placed item
 	 * that references `refId` re-resolves to the new name/footprint — items never
@@ -644,19 +646,23 @@ export const useScene = create<SceneStore>((set, get) => ({
 	items: [],
 	customPedals: [],
 	addCustomPedal: (definition) => {
+		if (isReadOnly()) return null;
 		const refId = `custom-${crypto.randomUUID()}`;
 		set((state) => ({
 			customPedals: [...state.customPedals, { ...definition, refId }],
 		}));
 		return refId;
 	},
-	updateCustomPedal: (refId, definition) =>
+	updateCustomPedal: (refId, definition) => {
+		if (isReadOnly()) return;
 		set((state) => ({
 			customPedals: state.customPedals.map((candidate) =>
 				candidate.refId === refId ? { ...definition, refId } : candidate,
 			),
-		})),
+		}));
+	},
 	addItem: (refId, kind, boardUid, posCm) => {
+		if (isReadOnly()) return null;
 		// Hard capacity cap (P3-06): refuse with an inline reason at the caller.
 		// A recovered/shared over-cap scene still loads — only adding is guarded.
 		if (addItemRefusal(get(), refId)) return null;
@@ -679,6 +685,7 @@ export const useScene = create<SceneStore>((set, get) => ({
 		return uid;
 	},
 	duplicateItem: (uid) => {
+		if (isReadOnly()) return null;
 		if (duplicateRefusal(get())) return null;
 		let cloneUid: string | null = null;
 		set((state) => {
@@ -700,7 +707,8 @@ export const useScene = create<SceneStore>((set, get) => ({
 		});
 		return cloneUid;
 	},
-	removeItem: (uid) =>
+	removeItem: (uid) => {
+		if (isReadOnly()) return;
 		set((state) => {
 			const item = state.items.find((candidate) => candidate.uid === uid);
 			if (!item) return state;
@@ -713,10 +721,14 @@ export const useScene = create<SceneStore>((set, get) => ({
 				items: normalizeContainerZ(remaining, item.boardUid),
 				customPedals: pruneCustomPedals(state.customPedals, remaining),
 			};
-		}),
-	reorder: (uid, direction) =>
-		set((state) => ({ items: reorderItems(state.items, uid, direction) })),
-	dropItem: (uid, worldOriginCm, worldRotationDeg) =>
+		});
+	},
+	reorder: (uid, direction) => {
+		if (isReadOnly()) return;
+		set((state) => ({ items: reorderItems(state.items, uid, direction) }));
+	},
+	dropItem: (uid, worldOriginCm, worldRotationDeg) => {
+		if (isReadOnly()) return;
 		set((state) => {
 			const item = state.items.find((candidate) => candidate.uid === uid);
 			if (!item) return state;
@@ -768,8 +780,10 @@ export const useScene = create<SceneStore>((set, get) => ({
 				items = normalizeContainerZ(items, item.boardUid);
 			}
 			return { items };
-		}),
-	rotateItem: (uid, rotationDeg) =>
+		});
+	},
+	rotateItem: (uid, rotationDeg) => {
+		if (isReadOnly()) return;
 		set((state) => ({
 			items: state.items.map((item) =>
 				item.uid === uid
@@ -779,8 +793,10 @@ export const useScene = create<SceneStore>((set, get) => ({
 						}
 					: item,
 			),
-		})),
-	transformItem: (uid, xCm, yCm, rotationDeg) =>
+		}));
+	},
+	transformItem: (uid, xCm, yCm, rotationDeg) => {
+		if (isReadOnly()) return;
 		set((state) => ({
 			items: state.items.map((item) =>
 				item.uid === uid
@@ -792,8 +808,10 @@ export const useScene = create<SceneStore>((set, get) => ({
 						}
 					: item,
 			),
-		})),
+		}));
+	},
 	addBoard: (boardRefId, centerCm) => {
+		if (isReadOnly()) return null;
 		if (boardAddRefusal(get())) return null;
 		const uid = crypto.randomUUID();
 		const definition = BOARD_BY_ID.get(boardRefId);
@@ -810,6 +828,7 @@ export const useScene = create<SceneStore>((set, get) => ({
 		return uid;
 	},
 	addCustomBoard: (definition, centerCm) => {
+		if (isReadOnly()) return null;
 		if (boardAddRefusal(get())) return null;
 		const uid = crypto.randomUUID();
 		const board: PlacedBoard = {
@@ -829,7 +848,8 @@ export const useScene = create<SceneStore>((set, get) => ({
 		set((state) => ({ boards: [...state.boards, board] }));
 		return uid;
 	},
-	updateCustomBoard: (uid, definition) =>
+	updateCustomBoard: (uid, definition) => {
+		if (isReadOnly()) return;
 		set((state) => {
 			const board = state.boards.find((candidate) => candidate.uid === uid);
 			if (!board) return state;
@@ -860,20 +880,26 @@ export const useScene = create<SceneStore>((set, get) => ({
 					state.customPedals,
 				),
 			};
-		}),
-	moveBoard: (uid, xCm, yCm) =>
+		});
+	},
+	moveBoard: (uid, xCm, yCm) => {
+		if (isReadOnly()) return;
 		set((state) => ({
 			boards: state.boards.map((board) =>
 				board.uid === uid ? { ...board, x: xCm, y: yCm } : board,
 			),
-		})),
-	rotateBoard: (uid, rotationDeg) =>
+		}));
+	},
+	rotateBoard: (uid, rotationDeg) => {
+		if (isReadOnly()) return;
 		set((state) => ({
 			boards: state.boards.map((board) =>
 				board.uid === uid ? { ...board, rotationDeg } : board,
 			),
-		})),
-	removeBoard: (uid) =>
+		}));
+	},
+	removeBoard: (uid) => {
+		if (isReadOnly()) return;
 		set((state) => {
 			const board = state.boards.find((candidate) => candidate.uid === uid);
 			if (!board) return state;
@@ -899,5 +925,6 @@ export const useScene = create<SceneStore>((set, get) => ({
 				// their board-relative z can't collide with existing loose items (B1).
 				items: normalizeContainerZ(items, null),
 			};
-		}),
+		});
+	},
 }));
