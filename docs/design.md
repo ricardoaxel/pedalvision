@@ -125,9 +125,11 @@ v1 targets, from a desktop Chromium benchmark (7 distinct BOSS photographic imag
 | Items / scene | 200 | 400 |
 | Distinct image-bearing items / scene | 150 | 250 |
 | Boards / scene | 8 | 10 |
-| Cables / scene (P4 estimate) | 150 | 300 |
+| Cables + endpoints / scene (P4 estimate) | 150 | 300 |
 | Scenes | — | **10** (implemented) |
 | Export | >12 MP or ~15 MB estimate | **16.7 MP / 8192 px** (implemented clamp) |
+
+**The budgets are scene-wide totals across every placed object type** — boards, items (catalog pedals, supplies, custom pedals), cables and endpoints. Supplies and custom parts count as items; custom parts are text-only and exempt from the distinct-image count. Cables/endpoints arrive in **P4** but must be included in the capacity model from day one (they add Konva nodes, export draw work and share-payload bytes; one endpoint ≈ one cable node, so they share the 150/300 graph budget). Re-run the benchmark with P4-01/P4-02 data before raising any cap.
 
 At 2× the hard budget the live canvas drops below ~50 fps and distinct-image decode approaches iOS jetsam; at 5× it is unusable. The 16.7 MP clamp keeps export allocation bounded, and PNG is encoded directly to a Blob (`stage.toBlob()`), never a multi-MB `data:` URL. Hard caps are **not yet enforced** for items/boards/cables; the follow-up is `docs/tasks/P3-06-capacity-budgets.md` (**scheduled next** after P3-02, before P3-03/P4-01). Over-cap shared/recovered scenes must still load (A4/A5).
 
