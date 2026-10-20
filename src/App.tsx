@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { BoardActionBar } from "./canvas/BoardActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
+import { useHistoryShortcuts } from "./canvas/useHistoryShortcuts";
 import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
 import { FirstRunHint } from "./components/FirstRunHint";
+import { HistoryControls } from "./components/HistoryControls";
 import { InfoPanel } from "./components/InfoPanel";
 import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
@@ -82,6 +84,8 @@ function App() {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	// Delete/duplicate shortcuts for the selected pedal (F6).
 	useSelectionShortcuts();
+	// Undo/redo shortcuts (P3-04): Cmd/Ctrl+Z / Cmd/Ctrl+Shift+Z.
+	useHistoryShortcuts();
 	// Explain read-only drag attempts on a shared scene (P3-03).
 	useReadOnlyEditCue();
 
@@ -220,6 +224,7 @@ function App() {
 						<ShareActions />
 					) : (
 						<>
+							<HistoryControls variant="toolbar" />
 							<button
 								type="button"
 								className="app-toolbar__add"

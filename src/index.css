@@ -123,6 +123,75 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
+ * Undo / Redo — "Proof Marks" (P3-04, owner-approved 2026-10-20). One quiet
+ * joined pair: a capsule at the leading edge of the desktop toolbar, and a
+ * flat group pinned to the trailing edge of the mobile bottom dock. Tokens
+ * only; the accent stays reserved for primary actions/selection.
+ * ------------------------------------------------------------------------- */
+
+.history-bar {
+	display: inline-flex;
+	min-height: 44px;
+	min-inline-size: 0;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: var(--color-surface);
+	border: 0;
+	border-radius: var(--radius-control);
+	box-shadow:
+		var(--shadow-raised),
+		inset 0 0 0 1px var(--color-border);
+}
+
+.history-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 0;
+	color: var(--color-ink);
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	touch-action: manipulation;
+}
+
+.history-button + .history-button {
+	border-left: 1px solid var(--color-border);
+}
+
+.history-button:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.history-button:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: -2px;
+	border-radius: var(--radius-key);
+}
+
+/* aria-disabled (not native disabled) so the final undo keeps focus. */
+.history-button[aria-disabled="true"] {
+	color: var(--color-ink-muted);
+	cursor: not-allowed;
+}
+
+/* The mobile dock supplies surface + border; the pair sits flush in it. */
+.history-bar--dock {
+	min-height: 56px;
+	background: transparent;
+	border-radius: 0;
+	box-shadow: none;
+	border-left: 1px solid var(--color-border);
+}
+
+.history-bar--dock .history-button {
+	min-height: 56px;
+}
+
+/* ---------------------------------------------------------------------------
  * First-run guidance (P2-08) — "Bench Note", owner-approved 2026-10-19. A small
  * drafting annotation under the desktop Add cluster / above the mobile tab bar.
  * It never covers the canvas centre and is dismissed in one tap.
@@ -1839,8 +1908,9 @@ body {
 	}
 }
 
-/* The bottom tab bar is mobile-only chrome. */
-.picker-bar {
+/* The bottom tab bar / dock is mobile-only chrome. */
+.picker-bar,
+.picker-dock {
 	display: none;
 }
 
@@ -1954,17 +2024,36 @@ body {
 		height: 40px;
 	}
 
-	.picker-bar {
+	/* The persistent bottom band: the standalone dock (tabs + history pair) and
+	 * the in-sheet tab switcher share the same fixed bar. The P3-04 history
+	 * pair lives only in the standalone dock — the modal owns the keyboard. */
+	.picker-dock,
+	.picker-bar--modal {
 		display: flex;
 		position: fixed;
 		right: 0;
 		bottom: 0;
 		left: 0;
 		z-index: 4;
-		justify-content: space-around;
 		padding-bottom: env(safe-area-inset-bottom);
 		background-color: var(--color-surface);
 		border-top: 1px solid var(--color-border);
+	}
+
+	.picker-dock {
+		align-items: stretch;
+	}
+
+	.picker-bar {
+		display: flex;
+		flex: 1 1 0;
+		min-width: 0;
+		justify-content: space-around;
+	}
+
+	/* The desktop capsule is replaced by the dock pair on mobile. */
+	.app-toolbar .history-bar {
+		display: none;
 	}
 
 	.picker-bar__tab {

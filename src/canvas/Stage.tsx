@@ -2,6 +2,7 @@ import Konva from "konva";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { useDrag } from "../state/drag";
+import { useHistory } from "../state/history";
 import { useReadOnly } from "../state/readOnly";
 import {
 	boardFootprint,
@@ -63,6 +64,9 @@ export function Stage() {
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
 	const readOnlyCue = useReadOnly((state) => state.cue);
+	// Undo/redo depth (P3-04) mirrored for deterministic e2e assertions.
+	const undoDepth = useHistory((state) => state.past.length);
+	const redoDepth = useHistory((state) => state.future.length);
 
 	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
 	// the DOM so Playwright can assert store-level outcomes without pixels.
@@ -238,6 +242,8 @@ export function Stage() {
 			data-selected-board={selectedBoardUid ?? ""}
 			data-lifted-item={liftedItemUid ?? ""}
 			data-lifted-rotation={liftedRotationDeg ?? ""}
+			data-undo-depth={undoDepth}
+			data-redo-depth={redoDepth}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage
