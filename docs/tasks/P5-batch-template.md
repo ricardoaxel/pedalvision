@@ -16,7 +16,7 @@ Research and deliver one catalog batch (raw records + hosted assets) for `<brand
 
 ## Constraints
 
-- **Raw records + assets only** in the PR; `catalog:build` runs in CI to a temp dir, and the post-merge build commits mapped/runtime.
+- **Raw records + assets only** in the PR; CI runs `catalog:build` to a temp dir **and an uncommitted app-workspace runtime** for Playwright; the post-merge build commits mapped/runtime.
 - **Optional fields only if found in the same base research** — no extra searches/tabs/tokens for serials, videos, artist, price, jacks, MIDI/USB, board extras.
 - One batch = one branch/worktree = **one PR**. Max 3 batch sessions in flight.
 - Board batches: exactly 150-board Tier A cap; board images count against the separate board budget.

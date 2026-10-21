@@ -57,7 +57,7 @@ Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
 
-## P5 — Catalog completion (plan approved 2026-10-21; P5-01 next)
+## P5 — Catalog completion (plan approved 2026-10-21; docs restructure in review — PR #32; P5-01 next after merge)
 P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
 
 | Task | What it does | Owner action? |

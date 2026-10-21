@@ -29,7 +29,7 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 
 ## Steps
 
-1. **Pilot:** TC Choka — one PR with the **raw research record + assets only**; CI runs `catalog:build` into a temp dir for validation; the post-merge build commits mapped/runtime. Add the hosted 800/350 image, contact sheet, and Playwright render/filter check. Capture every verified fact found — connectors, audio I/O, electrical specs, routing/loops, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical/jack orientation, lifecycle, **artist association when already found**, **price observations (new/used) when already found**, and `extra` — not just what the UI shows today. The H90 is the stress fixture for multi-connector pedals.
+1. **Pilot:** TC Choka — one PR with the **raw research record + assets only**; CI runs `catalog:build` into a temp dir and an **uncommitted** app-workspace runtime for Playwright; the post-merge build commits mapped/runtime. Add the hosted 800/350 image, contact sheet, and Playwright render/filter check. Capture every verified fact found — connectors, audio I/O, electrical specs, routing/loops, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical/jack orientation, lifecycle, **artist association when already found**, **price observations (new/used) when already found**, and `extra` — not just what the UI shows today. The H90 is the stress fixture for multi-connector pedals.
 2. **Owner checkpoint.** Only continue if the pilot is approved.
 3. **Board pilot:** Pedaltrain Classic 2 (or Temple Audio Duo 24) — board facts, hosted top-down image, contact sheet, Playwright board picker/placement.
 4. **Small parallel test:** Meris (15) + Red Panda (14) + one board batch (Pedaltrain), one PR each; verify filters, image load, canvas/board placement.
@@ -40,9 +40,9 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 ## Acceptance (executable)
 
 - Pilot PR approved by the owner.
-- Board pilot (Pedaltrain Classic 2 or Temple Duo 24) approved by the owner; board facts + top-down image + Playwright.
+- Board pilot (Pedaltrain Classic 2 or Temple Duo 24) approved by the owner; board facts + top-down image + Playwright. The final Tier A board batch may be a smaller partial batch (even 1 board).
 - Meris + Red Panda + one board batch PRs merged with green checks (catalog validate + Playwright).
-- Three BOSS batch PRs merged without merge conflicts; PRs contain no mapped/runtime edits; CI temp build validates; post-merge build stable; count/coverage report.
+- Three BOSS batch PRs merged without merge conflicts; PRs contain no mapped/runtime edits; CI temp build validates; the uncommitted app-workspace runtime feeds Playwright; post-merge build stable; count/coverage report.
 - First 2,000 catalog items = ~1,850 pedals + ~150 boards; board images count toward the separate board budget.
 - Absolute minimum (≥200 pedals / ≥10 brands / ≥10 boards) and Tier A target are reported separately; launching below Tier A needs owner acceptance.
 - Each PR contains: data, images, contact sheet, coverage/reject report, Playwright evidence.

@@ -317,11 +317,12 @@ public/pedal-assets/**                              # final assets
 - Brand agents write **only** their batch file + own assets; never
   `src/catalog/data/pedals.json`.
 - Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
-- **Agents write raw records only.** A batch PR contains **raw records + assets only**; CI runs `catalog:build` into a temp dir and `catalog:validate` there. A **post-merge build** deterministically projects raw → `data/catalog/{pedals,boards}/...` (mapped) → `src/catalog/data/{pedals,boards}.json` (runtime). No agent edits the mapped/runtime files. A post-merge drift check catches stale generated files.
+- **Agents write raw records only.** A batch PR contains **raw records + assets only**; CI runs `catalog:build` into a temp dir for validation **and** generates an **uncommitted** runtime into the app workspace before `pnpm build`/Playwright, so the PR's new items are actually testable. A **post-merge build** deterministically commits raw → `data/catalog/{pedals,boards}/...` (mapped) → `src/catalog/data/{pedals,boards}.json` (runtime). No agent edits the mapped/runtime files. A post-merge drift check catches stale generated files.
 - **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR.
 - Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches. Boards: 10–25
-  models per batch (families/sizes); a board brand batch runs alongside pedal
-  batches in the same 3-slot queue.
+  models per batch (families/sizes); the final Tier A partial batch may be
+  smaller (even 1 board). A board brand batch runs alongside pedal batches in the
+  same 3-slot queue.
 - `catalog-runner` + `pnpm catalog:status [--watch]`,
   `catalog:pause|stop|resume`, global `STOP`, per-agent flags.
 - Per-agent state: kind (pedals/boards), progress %, done/total, images
@@ -336,8 +337,8 @@ public/pedal-assets/**                              # final assets
 1. **P5-01** policy, data contract, inventory, schema, 2k cap.
 2. **P5-02** tooling, quality gates, control plane, agent templates.
 3. **Pedal pilot:** TC Choka — one PR with the raw record + assets; CI runs
-   `catalog:build` into a temp dir for validation; the post-merge build commits
-   mapped/runtime. Hosted image, contact sheet, Playwright.
+   `catalog:build` into a temp dir and an **uncommitted** app-workspace runtime
+   for Playwright; the post-merge build commits mapped/runtime. Hosted image, contact sheet, Playwright.
 4. **Board pilot:** **Pedaltrain Classic 2** (or Temple Audio Duo 24) — one PR
    with board facts, hosted top-down image, contact sheet, Playwright board
    picker/placement. Boards are first-class: this runs immediately after the
