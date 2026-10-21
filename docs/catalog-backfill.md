@@ -31,7 +31,9 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 
 ## Capture once, normalize later
 
-**Rule: never discard a verified fact because the current UI doesn't display it yet.** Research is the expensive part; schema/UI changes are cheap. Every batch writes a **raw research record** first, then a projection maps the subset we ship to the runtime catalog. Later field additions read the raw record instead of re-researching the pedal.
+**Rule: never discard a verified fact because the current UI doesn't display it yet.** Research is the expensive part; schema/UI changes are cheap.
+
+**Optional fields are opportunistic.** Capture an optional field **only when it appears in the same base research** (the same manufacturer page/manual/retailer page already open for the mandatory facts). Do **not** run extra searches, open extra tabs, or spend more tokens chasing serial numbers, videos, artist associations, prices, jacks, MIDI/USB/power details, or board extras. Missing optional data is fine; the raw record stays useful. Every batch writes a **raw research record** first, then a projection maps the subset we ship to the runtime catalog. Later field additions read the raw record instead of re-researching the pedal.
 
 Raw records live off-runtime in:
 
@@ -93,7 +95,7 @@ Shape (superset; extra verified facts go in `extra`):
 
 ## Optional metadata — capture everything verified
 
-These are **optional**: capture them when a source provides them, never invent them. The raw archive holds the full set; the runtime catalog projects only what the UI shows. This is the “no double-checking later” layer.
+These are **optional**: capture them only when they appear during the same base research, never invent them, and never run a separate search just for an optional field. The raw archive holds the full set; the runtime catalog projects only what the UI shows. This is the “no double-checking later” layer.
 
 ### Connectors & jacks
 Per jack/connector: `label`, `kind` (semantic: in/out/send/return/exp/exp-in/exp-out/midi/ctrl/power), `edge`, `pos?`/`xCm?`/`yCm?`, `approximate?`, `connector` (`ts`, `trs`, `xlr`, `din5`, `trs-midi-a`, `trs-midi-b`, `usb-a`, `usb-b`, `usb-c`, `micro-usb`, `mini-usb`, `barrel`, `iec`, `rca`, `3.5mm`, `other`), `channels`, `signal` (`audio`, `midi`, `control`, `power`, `usb`, `digital-audio`), `balanced?`, `level?` (`instrument`, `line`, `speaker`, `headphone`), `impedanceOhm?`, `maxLevelDbu?`, `stereo?`, `midiType?` (`a`, `b`, `din5`, `usb`), `usbFunctions?` (`audio`, `midi`, `editor`, `firmware`, `power`, `host`), `note?`.

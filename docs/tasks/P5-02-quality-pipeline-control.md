@@ -47,3 +47,4 @@ Build the deterministic tooling that makes parallel catalog work safe, cheap, ob
 
 - This task creates the tooling only; P5-03 runs the pilot and waves.
 - Keep token use low: scripts first, vision only on contact sheets, cache everything.
+- **Optional fields never justify extra research:** the agent template must state that only data encountered during the base pass is captured; no follow-up search for optional fields. Missing is valid.

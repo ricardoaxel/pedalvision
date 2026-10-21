@@ -24,6 +24,7 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 - Jacks are optional enrichment; use fallback anchors when absent.
 - Every agent reports every 15 minutes: `% · items done/total · images accepted/rejected · blockers`.
 - Per-item hard limit starts at 12 min; per-batch at 4 h; tune after the pilot.
+- **Optional data is opportunistic:** capture only what appears in the same base research. Never run a separate search for serials, videos, artist, price, jacks, MIDI/USB, board extras, etc.
 - No merge by the agent; owner reviews each PR.
 
 ## Steps
