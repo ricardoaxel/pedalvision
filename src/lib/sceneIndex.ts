@@ -29,6 +29,8 @@ export interface SceneSettings {
 	version: 1;
 	units: DisplayUnits;
 	activeSceneId: string | null;
+	/** Canvas view preference: show cables, jack ticks and endpoints. */
+	showCables: boolean;
 }
 
 /** The smallest document shape the reconcile needs. */
@@ -51,6 +53,9 @@ export const DEFAULT_SETTINGS: SceneSettings = {
 	version: 1,
 	units: "cm",
 	activeSceneId: null,
+	// Owner decision 2026-10-21: connections start hidden (quiet canvas);
+	// the Patch popover's "Show patch" toggle opts in and persists.
+	showCables: false,
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -152,6 +157,8 @@ export function parseSettings(raw: string | null): SceneSettings {
 		units: parsed.units === "in" ? "in" : "cm",
 		activeSceneId:
 			typeof parsed.activeSceneId === "string" ? parsed.activeSceneId : null,
+		// Absent = the new quiet default (off).
+		showCables: parsed.showCables === true,
 	};
 }
 
@@ -166,7 +173,7 @@ export function readSettings(storage?: Storage | null): SceneSettings {
  * write is unavailable.
  */
 export function writeSettings(
-	patch: Partial<Pick<SceneSettings, "units" | "activeSceneId">>,
+	patch: Partial<Pick<SceneSettings, "units" | "activeSceneId" | "showCables">>,
 	storage?: Storage | null,
 ): boolean {
 	const target = resolveStorage(storage);

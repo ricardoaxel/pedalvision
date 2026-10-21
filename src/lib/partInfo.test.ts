@@ -127,5 +127,11 @@ describe("formatters", () => {
 		expect(formatJack({ kind: "midi", edge: "left", pos: 0.5 })).toBe(
 			"MIDI · Left · 0.50",
 		);
+		expect(
+			formatJack({ kind: "out", edge: "right", pos: 0.5, stereo: true }),
+		).toBe("O · Right · 0.50 · TRS");
+		expect(formatJack({ kind: "in", edge: "left", pos: 0.5 })).toBe(
+			"I · Left · 0.50",
+		);
 	});
 });

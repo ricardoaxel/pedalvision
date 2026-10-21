@@ -1,7 +1,13 @@
 import { deflateSync, Inflate, strFromU8, strToU8 } from "fflate";
 import { z } from "zod";
 import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
-import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
+import type {
+	Cable,
+	CustomPedal,
+	Endpoint,
+	PlacedBoard,
+	PlacedItem,
+} from "../state/scene";
 import {
 	normalizeSceneContent,
 	type SceneSnapshot,
@@ -13,9 +19,10 @@ import { MAX_DIMENSION_CM } from "./customPedal";
 /**
  * Share-link codec (P3-03, design.md §Persistence).
  *
- * Format: `#s=v1:<base64url(deflate(JSON))>`. The payload is self-contained:
- * boards, placed items and inline custom pedals travel together, so a shared
- * scene renders identically on any device even after the catalog changes (A5).
+ * Format: `#s=v2:<base64url(deflate(JSON))>`. The payload is self-contained:
+ * boards, placed items, inline custom pedals, endpoints and cables travel
+ * together, so a shared scene renders identically on any device even after the
+ * catalog changes (A5). Decoding still accepts legacy `v1` links (no graph).
  * Unknown refIds are deliberately accepted — `resolveItem` renders a labeled
  * fallback at the stored footprint rather than failing the scene.
  *
@@ -28,7 +35,7 @@ import { MAX_DIMENSION_CM } from "./customPedal";
  */
 
 export const SHARE_HASH_PREFIX = "#s=";
-export const SHARE_VERSION = 1;
+export const SHARE_VERSION = 2;
 export const SHARE_DECODED_LIMIT_BYTES = 200 * 1024;
 /**
  * Delivery limit (owner-facing): a URL that is too long is silently truncated
@@ -75,7 +82,7 @@ export interface ShareEncodeTooLarge {
 	decodedBytes: number;
 	compressedBytes: number;
 	limitBytes: number;
-	/** The full `#s=v1:…` length that would have been produced. */
+	/** The full `#s=v2:…` length that would have been produced. */
 	hashLength: number;
 	limitChars: number;
 	message: string;
@@ -94,11 +101,13 @@ export interface ShareDecodeOk {
 export type ShareDecodeResult = ShareDecodeOk | ShareError;
 
 export interface SharePayload {
-	version: 1;
+	version: 2;
 	name: string;
 	boards: PlacedBoard[];
 	items: PlacedItem[];
 	customPedals: CustomPedal[];
+	endpoints: Endpoint[];
+	cables: Cable[];
 }
 
 const COORD_LIMIT_CM = 1_000_000;
@@ -158,6 +167,7 @@ const jackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
 	edge: z.enum(JACK_EDGES),
 	pos: z.number().finite().min(0).max(1),
+	stereo: z.boolean().optional(),
 });
 
 const powerSchema = z.object({
@@ -178,20 +188,61 @@ const customPedalSchema = z.object({
 	power: powerSchema.optional(),
 });
 
-const payloadSchema = z.object({
-	version: z.literal(SHARE_VERSION),
+const endpointSchema = z.object({
+	uid: boundedString(128),
+	kind: z.enum(["amp", "instrument"]),
+	x: coordinate,
+	y: coordinate,
+});
+
+const cableEndSchema = z.union([
+	z.object({
+		itemUid: boundedString(128),
+		jack: z.string().regex(/^(0|[1-9]\d*)$/),
+	}),
+	z.object({ endpointUid: boundedString(128) }),
+]);
+
+const cableSchema = z.object({
+	uid: boundedString(128),
+	from: cableEndSchema,
+	to: cableEndSchema,
+	color: optionalString(40),
+});
+
+const legacyPayloadSchema = z.object({
+	version: z.literal(1),
 	name: optionalString(200),
 	boards: z.array(boardSchema).max(5_000),
 	items: z.array(itemSchema).max(5_000),
 	customPedals: z.array(customPedalSchema).max(5_000),
 });
 
+const currentPayloadSchema = z.object({
+	version: z.literal(2),
+	name: optionalString(200),
+	boards: z.array(boardSchema).max(5_000),
+	items: z.array(itemSchema).max(5_000),
+	customPedals: z.array(customPedalSchema).max(5_000),
+	endpoints: z.array(endpointSchema).max(5_000),
+	cables: z.array(cableSchema).max(5_000),
+});
+
+const payloadSchema = z.discriminatedUnion("version", [
+	legacyPayloadSchema,
+	currentPayloadSchema,
+]);
+
 function tooLargeEncode(
 	decodedBytes: number,
 	compressedBytes: number,
 	hashLength = 0,
+	counts?: { parts: number; graph: number },
 ): ShareEncodeTooLarge {
 	const overPayload = decodedBytes > SHARE_DECODED_LIMIT_BYTES;
+	const graphNote = counts
+		? ` (${counts.parts} parts + ${counts.graph} cables/endpoints)`
+		: "";
 	return {
 		ok: false,
 		reason: "too-large",
@@ -202,7 +253,7 @@ function tooLargeEncode(
 		limitChars: SHARE_URL_HARD_LIMIT_CHARS,
 		message: overPayload
 			? `This scene is too large to share (${formatKb(decodedBytes)} of the ${formatKb(SHARE_DECODED_LIMIT_BYTES)} limit). Remove custom parts or split it into two scenes.`
-			: `This scene’s link would be too long to share reliably (${hashLength.toLocaleString("en-US")} of ${SHARE_URL_HARD_LIMIT_CHARS.toLocaleString("en-US")} characters). Remove custom parts or split it into two scenes.`,
+			: `This scene’s link would be too long to share reliably (${hashLength.toLocaleString("en-US")} of ${SHARE_URL_HARD_LIMIT_CHARS.toLocaleString("en-US")} characters${graphNote}). Remove parts or split it into two scenes.`,
 	};
 }
 
@@ -287,14 +338,16 @@ export function encodeShareLink(
 	name: string,
 	snapshot: SceneSnapshot,
 ): ShareEncodeResult {
-	// P4-01: cables/endpoints are saved but deliberately not shared yet (the
-	// P4-02 version-policy decision). They are omitted from this payload.
+	// v2 (owner decision 2026-10-21): cables/endpoints travel in the payload.
+	// Old v1 clients reject a v2 link cleanly instead of silently dropping them.
 	const payload: SharePayload = {
 		version: SHARE_VERSION,
 		name: normalizeShareName(name),
 		boards: snapshot.boards,
 		items: snapshot.items,
 		customPedals: snapshot.customPedals,
+		endpoints: snapshot.endpoints,
+		cables: snapshot.cables,
 	};
 	const json = JSON.stringify(payload);
 	const decoded = strToU8(json);
@@ -309,7 +362,10 @@ export function encodeShareLink(
 		hash.length > SHARE_URL_HARD_LIMIT_CHARS ||
 		compressed.length > SHARE_COMPRESSED_LIMIT_BYTES
 	) {
-		return tooLargeEncode(decoded.length, compressed.length, hash.length);
+		return tooLargeEncode(decoded.length, compressed.length, hash.length, {
+			parts: snapshot.items.length,
+			graph: snapshot.cables.length + snapshot.endpoints.length,
+		});
 	}
 	return {
 		ok: true,
@@ -320,7 +376,7 @@ export function encodeShareLink(
 }
 
 /**
- * Decode a `#s=v1:…` hash. Never throws. Returns a typed reason so the UI can
+ * Decode a `#s=v1:…` / `#s=v2:…` hash. Never throws. Returns a typed reason so the UI can
  * show a precise inline message; the recipient's stored scene is never touched.
  */
 export function decodeShareHash(hash: string): ShareDecodeResult {
@@ -349,7 +405,10 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 			message: "This share link didn’t work.",
 		};
 	}
-	if (Number(versionMatch[1]) !== SHARE_VERSION) {
+	const version = Number(versionMatch[1]);
+	// Decode the current version and the legacy graph-less v1. Anything else
+	// (older/newer) is rejected with a precise reason — never silently dropped.
+	if (version !== 1 && version !== SHARE_VERSION) {
 		return {
 			ok: false,
 			reason: "unsupported-version",
@@ -449,18 +508,22 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 		parsed.data.customPedals,
 		(custom) => custom.refId,
 	);
-	// Orphan items, dense z and unreferenced custom definitions: the same
-	// normalization every stored document gets (sceneDocument.ts).
-	// P4-01 boundary (owner decision 2026-10-21): the share payload stays the
-	// P3 v1 `{ boards, items, customPedals }` shape, so a link carries no
-	// cables/endpoints yet. P4-02 adds them and makes the explicit additive-v1
-	// vs v2 version decision.
+	// v1 is graph-less by construction; v2 carries both arrays. Read them off the
+	// discriminated union so the legacy path can't accidentally read undefined.
+	const endpoints =
+		parsed.data.version === 2
+			? uniqueBy(parsed.data.endpoints, (e) => e.uid)
+			: [];
+	const cables =
+		parsed.data.version === 2 ? uniqueBy(parsed.data.cables, (c) => c.uid) : [];
+	// Orphan items, dense z, unreferenced custom definitions and dead cable
+	// references get the same normalization every stored document gets.
 	const snapshot = normalizeSceneContent({
 		boards,
 		items,
 		customPedals,
-		endpoints: [],
-		cables: [],
+		endpoints,
+		cables,
 	});
 	return {
 		ok: true,

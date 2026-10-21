@@ -84,6 +84,9 @@
 	--color-accent-ink: #9ce4ef;
 	--color-accent-border: #4b8791;
 	--color-cable: #b9c2cc;
+	/* Jack sockets + the knockout under-stroke (P4-02 "Patch Drafting"). */
+	--color-jack: #8e99a5;
+	--color-cable-halo: rgb(25 26 28 / 0.9);
 
 	/* Status — vivid semantic labels on a tinted surface */
 	--color-warning: #ffd166;
@@ -198,6 +201,8 @@
 	--color-accent-ink: #006b82;
 	--color-accent-border: #4b8996;
 	--color-cable: #4d565f;
+	--color-jack: #5f6973;
+	--color-cable-halo: rgb(228 231 234 / 0.95);
 
 	/* Status — vivid semantic labels on a tinted surface */
 	--color-warning: #9a5b00;

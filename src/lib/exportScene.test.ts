@@ -195,8 +195,10 @@ describe("resolveExportPlan — selected board", () => {
 
 		expect(plan.endpoints).toHaveLength(1);
 		expect(plan.boundsCm.x).toBeCloseTo(-EXPORT_PADDING_CM);
+		// The endpoint's terminal chip extends 1.5 cm past its point; the bounds
+		// include it so the tag is never cropped in the export.
 		expect(plan.boundsCm.x + plan.boundsCm.widthCm).toBeCloseTo(
-			e1.x + EXPORT_PADDING_CM,
+			e1.x + 1.5 + EXPORT_PADDING_CM,
 		);
 	});
 

@@ -252,13 +252,51 @@ export function resolveItem(
 	};
 }
 
-/** The jacks an item exposes (catalog definition first, then inline custom). */
+/**
+ * Documented fallback anchors for **catalog pedals that carry no jack data**
+ * (owner decision 2026-10-21; the seed has zero `jacks`). This is an explicit
+ * assumption — IN on the left edge midpoint, OUT on the right edge midpoint —
+ * not manufacturer data. Custom pedals never get it (an empty jack list there is
+ * deliberate), nor do supplies or unknown refs. The canvas renders fallback
+ * ticks as hollow diamonds and labels them "assumed".
+ */
+export const FALLBACK_JACKS: readonly Jack[] = [
+	{ kind: "in", edge: "left", pos: 0.5 },
+	{ kind: "out", edge: "right", pos: 0.5 },
+];
+
+/**
+ * The jacks an item exposes for cable attachment: the real definition first,
+ * then the documented fallback pair for a catalog pedal with no jack data.
+ * Persistence validation uses the same resolution, so a cable to a fallback
+ * anchor survives save/load.
+ */
 export function resolveItemJacks(
 	item: PlacedItem,
 	customPedals: CustomPedal[] = [],
 ): Jack[] {
 	const resolved = resolveItem(item, customPedals);
-	return resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
+	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
+	if (real.length > 0) return real;
+	if (resolved.definition !== null && item.kind === "pedal") {
+		return [...FALLBACK_JACKS];
+	}
+	return [];
+}
+
+/**
+ * Are this item's jacks the documented fallback pair rather than real data?
+ * The canvas uses this to draw nested hollow diamonds (an "assumed" anchor).
+ */
+export function usesFallbackJacks(
+	item: PlacedItem,
+	customPedals: CustomPedal[] = [],
+): boolean {
+	const resolved = resolveItem(item, customPedals);
+	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
+	return (
+		real.length === 0 && resolved.definition !== null && item.kind === "pedal"
+	);
 }
 
 /** Parse a cable's opaque jack reference into an array index, or null. */
@@ -336,6 +374,17 @@ export function pruneCustomPedals(
 	return customPedals.filter((custom) => referenced.has(custom.refId));
 }
 
+/** Do two cable ends name the same termination? */
+export function sameCableEnd(a: CableEnd, b: CableEnd): boolean {
+	if ("endpointUid" in a && "endpointUid" in b) {
+		return a.endpointUid === b.endpointUid;
+	}
+	if ("itemUid" in a && "itemUid" in b) {
+		return a.itemUid === b.itemUid && jackIndex(a.jack) === jackIndex(b.jack);
+	}
+	return false;
+}
+
 /** Does a cable end reference `itemUid` (regardless of its jack index)? */
 export function cableReferencesItem(cable: Cable, itemUid: string): boolean {
 	return (
@@ -377,6 +426,228 @@ export function cableEndExists(
 	return (
 		index !== null && resolveItemJacks(item, customPedals)[index] !== undefined
 	);
+}
+
+/** Signal role of a jack / endpoint (P4-02 direction normalization). */
+export type CableEndRole = "source" | "sink" | "neutral";
+
+const SOURCE_JACKS = new Set(["out", "send", "exp-out"]);
+const SINK_JACKS = new Set(["in", "return", "exp-in"]);
+
+/** Which way signal flows through a cable end, or null for an unknown end. */
+export function cableEndRole(
+	end: CableEnd,
+	items: readonly PlacedItem[],
+	endpoints: readonly Endpoint[],
+	customPedals: CustomPedal[] = [],
+): CableEndRole | null {
+	if ("endpointUid" in end) {
+		const endpoint = endpoints.find((entry) => entry.uid === end.endpointUid);
+		if (!endpoint) return null;
+		return endpoint.kind === "instrument" ? "source" : "sink";
+	}
+	const item = items.find((entry) => entry.uid === end.itemUid);
+	const index = jackIndex(end.jack);
+	if (!item || index === null) return null;
+	const jack = resolveItemJacks(item, customPedals)[index];
+	if (!jack) return null;
+	if (SOURCE_JACKS.has(jack.kind)) return "source";
+	if (SINK_JACKS.has(jack.kind)) return "sink";
+	return "neutral";
+}
+
+export interface NormalizedCableDirection {
+	from: CableEnd;
+	to: CableEnd;
+	valid: boolean;
+}
+
+/**
+ * Orient a cable by **signal semantics**, not drag order: OUT/SEND/EXP-OUT and
+ * the instrument endpoint are sources; IN/RETURN/EXP-IN and the amp endpoint are
+ * sinks. Dragging backwards (or amp → pedal) yields the same arrow direction;
+ * source↔source and sink↔sink pairs are refused. Neutral jacks (MIDI/CTRL/EXP/
+ * POWER) keep the gesture order.
+ */
+export function normalizeCableDirection(
+	from: CableEnd,
+	to: CableEnd,
+	scene: {
+		items: readonly PlacedItem[];
+		endpoints: readonly Endpoint[];
+		customPedals?: CustomPedal[];
+	},
+): NormalizedCableDirection {
+	const a = cableEndRole(
+		from,
+		scene.items,
+		scene.endpoints,
+		scene.customPedals,
+	);
+	const b = cableEndRole(to, scene.items, scene.endpoints, scene.customPedals);
+	if (!a || !b || sameCableEnd(from, to)) {
+		return { from, to, valid: false };
+	}
+	if (a === "source" && b === "sink") return { from, to, valid: true };
+	if (a === "sink" && b === "source")
+		return { from: to, to: from, valid: true };
+	if (a === "neutral" || b === "neutral") return { from, to, valid: true };
+	// source → source or sink → sink.
+	return { from, to, valid: false };
+}
+
+/** How many cables one socket accepts: mono = 1, stereo/TRS = 2. */
+export function jackCapacity(jack: Jack): number {
+	return jack.stereo === true ? 2 : 1;
+}
+
+/** Does this cable end terminate on `itemUid`'s jack index? */
+export function cableEndUsesItemJack(
+	end: CableEnd,
+	itemUid: string,
+	index: number,
+): boolean {
+	return (
+		"itemUid" in end && end.itemUid === itemUid && jackIndex(end.jack) === index
+	);
+}
+
+/**
+ * Can this jack/endpoint accept one more cable? A mono jack and an endpoint
+ * accept one cable; a stereo/TRS jack accepts two (P4-02 bug fix: two cables on
+ * the same mono output were previously allowed because only the identical pair
+ * was rejected). `cables` is the current/partially-accepted list, so this also
+ * powers load normalisation.
+ */
+export function cableEndHasCapacity(
+	end: CableEnd,
+	cables: readonly Cable[],
+	items: readonly PlacedItem[],
+	endpoints: readonly Endpoint[],
+	customPedals: CustomPedal[] = [],
+): boolean {
+	if ("endpointUid" in end) {
+		if (!endpoints.some((endpoint) => endpoint.uid === end.endpointUid)) {
+			return false;
+		}
+		const used = cables.filter((cable) =>
+			cableReferencesEndpoint(cable, end.endpointUid),
+		).length;
+		return used < 1;
+	}
+	const item = items.find((candidate) => candidate.uid === end.itemUid);
+	if (!item) return false;
+	const index = jackIndex(end.jack);
+	if (index === null) return false;
+	const jack = resolveItemJacks(item, customPedals)[index];
+	if (!jack) return false;
+	const used = cables.filter(
+		(cable) =>
+			cableEndUsesItemJack(cable.from, item.uid, index) ||
+			cableEndUsesItemJack(cable.to, item.uid, index),
+	).length;
+	return used < jackCapacity(jack);
+}
+
+/** Inline reason when a cable end is already occupied (or full for stereo). */
+export function cableEndCapacityNotice(
+	end: CableEnd,
+	items: readonly PlacedItem[],
+	customPedals: CustomPedal[] = [],
+): string {
+	if ("endpointUid" in end) return "That endpoint is already connected.";
+	const item = items.find((candidate) => candidate.uid === end.itemUid);
+	const index = jackIndex(end.jack);
+	const jack =
+		item && index !== null
+			? resolveItemJacks(item, customPedals)[index]
+			: undefined;
+	if (jack?.stereo === true) return "This TRS jack already has two cables.";
+	const editable = customPedals.some((custom) => custom.refId === item?.refId);
+	return editable
+		? "That jack is already connected. A TRS jack can take two cables."
+		: "That jack is already connected.";
+}
+
+/**
+ * Drop cables whose ends no longer resolve and endpoints orphaned by those
+ * dropped cables. A standalone endpoint (no stored cable referenced it) is a
+ * placed object and survives. Shared by load normalisation and custom-part
+ * edits so the two paths can never drift (P4 extension contract).
+ */
+export function pruneCableGraph(
+	cables: Cable[],
+	endpoints: Endpoint[],
+	items: PlacedItem[],
+	customPedals: CustomPedal[] = [],
+): { cables: Cable[]; endpoints: Endpoint[] } {
+	const resolvable = cables.filter(
+		(cable) =>
+			cableEndExists(cable.from, items, endpoints, customPedals) &&
+			cableEndExists(cable.to, items, endpoints, customPedals),
+	);
+	// One physical cable per jack pair (unordered), so a hand-edited/shared
+	// document can never hold a state the live UI refuses to create.
+	const seenPairs = new Set<string>();
+	const deduped = resolvable.filter((cable) => {
+		const pair = [
+			cableEndKeyForPair(cable.from),
+			cableEndKeyForPair(cable.to),
+		].sort();
+		const key = pair.join("|");
+		if (seenPairs.has(key)) return false;
+		seenPairs.add(key);
+		return true;
+	});
+	// Enforce per-socket capacity in document order: mono = 1, stereo/TRS = 2,
+	// endpoint = 1. Keep the first cable(s) and drop the excess.
+	const kept: Cable[] = [];
+	for (const cable of deduped) {
+		if (sameCableEnd(cable.from, cable.to)) continue;
+		if (
+			!cableEndHasCapacity(cable.from, kept, items, endpoints, customPedals) ||
+			!cableEndHasCapacity(cable.to, kept, items, endpoints, customPedals)
+		) {
+			continue;
+		}
+		const direction = normalizeCableDirection(cable.from, cable.to, {
+			items,
+			endpoints,
+			customPedals,
+		});
+		if (!direction.valid) continue;
+		kept.push({ ...cable, from: direction.from, to: direction.to });
+	}
+	const resolvableUids = new Set(resolvable.map((cable) => cable.uid));
+	const brokenCables = cables.filter((cable) => !resolvableUids.has(cable.uid));
+	// Only cables dropped because their **refs** were gone orphan an endpoint.
+	// Duplicate/capacity drops leave the endpoint as a placed object (A4).
+	const brokenRefs = endpointRefs(brokenCables);
+	const after = endpointRefs(kept);
+	return {
+		cables: kept,
+		endpoints: endpoints.filter(
+			(endpoint) => !brokenRefs.has(endpoint.uid) || after.has(endpoint.uid),
+		),
+	};
+}
+
+/** A stable key for one cable end, used to dedupe unordered pairs. */
+export function cableEndKeyForPair(end: CableEnd): string {
+	return "endpointUid" in end
+		? `endpoint:${end.endpointUid}`
+		: `item:${end.itemUid}:${jackIndex(end.jack) ?? -1}`;
+}
+
+/** The endpoint uids any of these cables terminate on. */
+export function endpointRefs(cables: readonly Cable[]): Set<string> {
+	const refs = new Set<string>();
+	for (const cable of cables) {
+		for (const end of [cable.from, cable.to]) {
+			if ("endpointUid" in end) refs.add(end.endpointUid);
+		}
+	}
+	return refs;
 }
 
 /**
@@ -808,10 +1079,48 @@ export const useScene = create<SceneStore>((set, get) => ({
 		if (!cableEndExists(to, state.items, state.endpoints, state.customPedals)) {
 			return null;
 		}
+		// Orient by signal semantics so the arrow can never point into an output.
+		const direction = normalizeCableDirection(from, to, state);
+		if (!direction.valid) return null;
+		const fromEnd = direction.from;
+		const toEnd = direction.to;
+		// One physical cable per jack pair: a repeated drag (or the reverse
+		// direction) must not stack a duplicate that double-spends the graph.
+		if (
+			state.cables.some(
+				(cable) =>
+					(sameCableEnd(cable.from, fromEnd) &&
+						sameCableEnd(cable.to, toEnd)) ||
+					(sameCableEnd(cable.from, toEnd) && sameCableEnd(cable.to, fromEnd)),
+			)
+		) {
+			return null;
+		}
+		// Mono jacks / endpoints accept one cable; stereo/TRS jacks accept two.
+		if (
+			!cableEndHasCapacity(
+				fromEnd,
+				state.cables,
+				state.items,
+				state.endpoints,
+				state.customPedals,
+			) ||
+			!cableEndHasCapacity(
+				toEnd,
+				state.cables,
+				state.items,
+				state.endpoints,
+				state.customPedals,
+			)
+		) {
+			return null;
+		}
 		// Cables and endpoints share the 150/300 graph budget (P3-06).
 		if (graphAddRefusal(state)) return null;
 		const uid = crypto.randomUUID();
-		set((current) => ({ cables: [...current.cables, { uid, from, to }] }));
+		set((current) => ({
+			cables: [...current.cables, { uid, from: fromEnd, to: toEnd }],
+		}));
 		return uid;
 	},
 	removeCable: (uid) => {
@@ -830,11 +1139,25 @@ export const useScene = create<SceneStore>((set, get) => ({
 	},
 	updateCustomPedal: (refId, definition) => {
 		if (isReadOnly()) return;
-		set((state) => ({
-			customPedals: state.customPedals.map((candidate) =>
+		set((state) => {
+			const customPedals = state.customPedals.map((candidate) =>
 				candidate.refId === refId ? { ...definition, refId } : candidate,
-			),
-		}));
+			);
+			// A jack edit can invalidate an existing cable (its stored index no
+			// longer resolves) or strand an endpoint. Prune immediately rather
+			// than leaving an invisible cable in memory until the next load.
+			const graph = pruneCableGraph(
+				state.cables,
+				state.endpoints,
+				state.items,
+				customPedals,
+			);
+			return {
+				customPedals,
+				cables: graph.cables,
+				endpoints: graph.endpoints,
+			};
+		});
 	},
 	addItem: (refId, kind, boardUid, posCm) => {
 		if (isReadOnly()) return null;

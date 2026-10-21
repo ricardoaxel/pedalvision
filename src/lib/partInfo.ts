@@ -24,6 +24,8 @@ export interface PartInfo {
 	widthCm: number;
 	heightCm: number;
 	jacks: Jack[];
+	/** True when `jacks` are the documented fallback pair, not catalog data. */
+	jacksAssumed: boolean;
 	power: Power | null;
 	/**
 	 * The catalog image (mock/static/url), or null for custom + unknown parts
@@ -45,6 +47,9 @@ export interface PartInfo {
 export function buildPartInfo(
 	resolved: ResolvedItem,
 	kind: "pedal" | "supply",
+	/** The item's effective jacks (real or the documented fallback pair). */
+	jacks?: Jack[],
+	assumed = false,
 ): PartInfo {
 	if (resolved.definition) {
 		const { definition } = resolved;
@@ -55,7 +60,8 @@ export function buildPartInfo(
 			effectTypes: definition.effectTypes,
 			widthCm: definition.widthCm,
 			heightCm: definition.heightCm,
-			jacks: definition.jacks ?? [],
+			jacks: jacks ?? definition.jacks ?? [],
+			jacksAssumed: assumed,
 			power: definition.power ?? null,
 			image: { source: definition.imageSource, value: definition.image },
 			isCustom: false,
@@ -71,7 +77,8 @@ export function buildPartInfo(
 			effectTypes: custom.effectTypes,
 			widthCm: custom.widthCm,
 			heightCm: custom.heightCm,
-			jacks: custom.jacks ?? [],
+			jacks: jacks ?? custom.jacks ?? [],
+			jacksAssumed: assumed,
 			power: custom.power ?? null,
 			image: null,
 			isCustom: true,
@@ -85,7 +92,8 @@ export function buildPartInfo(
 		effectTypes: [],
 		widthCm: resolved.widthCm,
 		heightCm: resolved.heightCm,
-		jacks: [],
+		jacks: jacks ?? [],
+		jacksAssumed: assumed,
 		power: null,
 		image: null,
 		isCustom: false,
@@ -115,7 +123,14 @@ export const JACK_EDGE_NAMES: Record<JackEdge, string> = {
 	left: "Left",
 };
 
-/** "In · Top · 0.30" — kind, edge, position along the edge. */
+/** "I · Top · 0.30" — short kind, edge, position along the edge. */
 export function formatJack(jack: Jack): string {
-	return `${jackKindLabel(jack.kind)} · ${JACK_EDGE_NAMES[jack.edge]} · ${jack.pos.toFixed(2)}`;
+	const kind =
+		jack.kind === "in"
+			? "I"
+			: jack.kind === "out"
+				? "O"
+				: jackKindLabel(jack.kind);
+	const stereo = jack.stereo === true ? " · TRS" : "";
+	return `${kind} · ${JACK_EDGE_NAMES[jack.edge]} · ${jack.pos.toFixed(2)}${stereo}`;
 }

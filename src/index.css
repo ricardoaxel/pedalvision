@@ -122,6 +122,11 @@ body {
 	outline-offset: 2px;
 }
 
+.theme-toggle {
+	justify-content: center;
+	gap: 6px;
+}
+
 /* ---------------------------------------------------------------------------
  * Undo / Redo — "Proof Marks" (P3-04, owner-approved 2026-10-20). One quiet
  * joined pair: a capsule at the leading edge of the desktop toolbar, and a
@@ -1639,6 +1644,27 @@ body {
 	text-align: right;
 }
 
+.custom__jack-stereo {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 44px;
+	padding: 0 var(--space-1);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-wide);
+	color: var(--color-ink-muted);
+	cursor: pointer;
+	user-select: none;
+}
+
+.custom__jack-stereo input {
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	accent-color: var(--color-accent);
+}
+
 .custom__jack-remove {
 	display: inline-flex;
 	align-items: center;
@@ -2058,6 +2084,11 @@ body {
 
 	.custom__jack-remove,
 	.custom__add-jack {
+		min-height: 44px;
+	}
+
+	.custom__edge .segmented__option {
+		min-width: 40px;
 		min-height: 44px;
 	}
 
@@ -2666,6 +2697,13 @@ body {
 .info-panel__fact dd {
 	margin: 0;
 	color: var(--color-ink);
+}
+
+.info-panel__assumed {
+	margin: var(--space-1) 0 0;
+	font-size: var(--font-size-xs);
+	line-height: var(--leading-normal);
+	color: var(--color-ink-muted);
 }
 
 .info-panel__mono {
@@ -3812,7 +3850,37 @@ body {
 
 @media (max-width: 1023px) {
 	.scene-trigger {
-		max-width: 38vw;
+		/* Leave room for four 44px toolbar buttons + tighter mobile gaps; the
+		 * scene plate never runs under the endpoint/share/export/theme cluster. */
+		max-width: min(38vw, calc(100vw - 236px));
+	}
+
+	.app-toolbar {
+		gap: 4px;
+	}
+
+	.endpoint-control__trigger,
+	.theme-toggle {
+		width: 44px;
+		min-width: 44px;
+		padding: 0;
+	}
+
+	.endpoint-control__label,
+	.theme-toggle__label {
+		display: none;
+	}
+
+	/* The theme toggle is a quiet utility, not a fourth primary action. */
+	.theme-toggle {
+		color: var(--color-ink-muted);
+		background-color: transparent;
+		border-color: transparent;
+		box-shadow: none;
+	}
+
+	.theme-toggle:hover {
+		background-color: var(--color-surface);
 	}
 
 	.scene-panel {
@@ -4602,4 +4670,214 @@ body {
 	font-weight: var(--font-weight-medium);
 	line-height: 1.4;
 	color: var(--color-danger);
+}
+
+/* ---------------------------------------------------------------------------
+ * P4-02 "Patch Drafting" — endpoint control, placement capture + transient
+ * graph status. Tokens only; the status line is inline, never a toast (N8).
+ * ------------------------------------------------------------------------- */
+.endpoint-control {
+	position: relative;
+}
+
+.endpoint-control__trigger {
+	justify-content: center;
+	min-width: 44px;
+	padding: var(--space-2);
+	gap: 6px;
+}
+
+.endpoint-control__label {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+}
+
+.endpoint-control__trigger[data-armed="true"] {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border-color: var(--color-accent-border);
+}
+
+.endpoint-popover {
+	position: absolute;
+	top: calc(100% + var(--space-2));
+	right: 0;
+	z-index: 2;
+	display: grid;
+	gap: var(--space-1);
+	width: 232px;
+	padding: var(--space-3);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-raised);
+}
+
+.endpoint-popover__eyebrow {
+	margin: 0 0 var(--space-1);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.endpoint-popover__row {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: 44px;
+	padding: var(--space-2);
+	text-align: left;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.endpoint-popover__row:hover:not(:disabled) {
+	background-color: var(--color-surface-raised);
+}
+
+.endpoint-popover__row:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.endpoint-popover__row:disabled {
+	color: var(--color-ink-muted);
+	cursor: not-allowed;
+}
+
+.endpoint-popover__row strong {
+	display: block;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+}
+
+.endpoint-popover__glyph {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	color: var(--color-jack);
+}
+
+.endpoint-popover__hint {
+	display: block;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.endpoint-popover__note {
+	margin: var(--space-1) 0 0;
+	font-size: var(--font-size-xs);
+	line-height: var(--leading-normal);
+	color: var(--color-warning);
+}
+
+.endpoint-popover__toggle {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: 44px;
+	margin-top: var(--space-1);
+	padding: var(--space-2);
+	font-size: var(--font-size-sm);
+	color: var(--color-ink);
+	border-top: 1px solid var(--color-border);
+	cursor: pointer;
+}
+
+.endpoint-popover__toggle input {
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	accent-color: var(--color-accent);
+}
+
+.endpoint-placement {
+	position: absolute;
+	inset: 0;
+	/* Above the stage, BELOW every chrome element (toolbar z-index 1). */
+	z-index: 0;
+	cursor: crosshair;
+	touch-action: none;
+	background-color: transparent;
+}
+
+.graph-status {
+	position: absolute;
+	left: 50%;
+	bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	width: max-content;
+	max-width: calc(100% - var(--space-4) * 2);
+	padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+	transform: translateX(-50%);
+	font-size: var(--font-size-sm);
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
+}
+
+.graph-status__cancel {
+	min-height: 44px;
+	padding: var(--space-2) var(--space-3);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.graph-status__cancel:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.graph-status__cancel:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+@media (max-width: 1023px) {
+	.graph-status {
+		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-3));
+	}
+}
+
+@media (max-width: 400px) {
+	/* On very small phones the scene plate keeps its name readable by dropping
+	 * the leading glyph; the chevron still says "menu". */
+	.scene-trigger {
+		gap: 4px;
+		padding-left: var(--space-2);
+	}
+
+	.scene-trigger > svg {
+		display: none;
+	}
+}
+
+/* The mobile Patch popover must be declared AFTER the base .endpoint-popover
+ * rule (equal specificity) or the absolute/right/width base wins and clips the
+ * menu off-screen. Keep it compact: it controls a view toggle. */
+@media (max-width: 1023px) {
+	.endpoint-popover {
+		position: fixed;
+		top: calc(var(--space-4) + 44px + var(--space-2));
+		right: var(--space-4);
+		left: auto;
+		width: min(280px, calc(100vw - var(--space-4) * 2));
+	}
 }

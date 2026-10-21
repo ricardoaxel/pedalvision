@@ -9,7 +9,12 @@ import {
 import { useDrag } from "../state/drag";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
-import { resolveItem, useScene } from "../state/scene";
+import {
+	resolveItem,
+	resolveItemJacks,
+	useScene,
+	usesFallbackJacks,
+} from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useSettings } from "../state/settings";
 import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
@@ -85,7 +90,12 @@ export function InfoPanel() {
 
 	if (!item || !resolved) return null;
 
-	const info = buildPartInfo(resolved, item.kind);
+	const info = buildPartInfo(
+		resolved,
+		item.kind,
+		resolveItemJacks(item, customPedals),
+		usesFallbackJacks(item, customPedals),
+	);
 
 	// While this item is lifted, evaluate the warning where it floats (live
 	// world origin + visible rotation) so the cue follows the drag.
@@ -103,9 +113,21 @@ export function InfoPanel() {
 	} else if (warning.overlaps.length > 1) {
 		warningLines.push(`Overlaps ${warning.overlaps.length} items.`);
 	}
+	if (warning.tight.length === 1) {
+		warningLines.push(`Tight for a patch cable near ${warning.tight[0]}.`);
+	} else if (warning.tight.length > 1) {
+		warningLines.push(
+			`Tight for a patch cable near ${warning.tight.length} items.`,
+		);
+	}
 	if (warning.outOfBounds) warningLines.push("Extends beyond the board.");
 	// The peek shows a compact chip; the expanded band shows the full sentence.
-	const warningChip = warning.overlaps.length > 0 ? "Overlap" : "Off board";
+	const warningChip =
+		warning.overlaps.length > 0
+			? "Overlap"
+			: warning.tight.length > 0
+				? "Cable gap"
+				: "Off board";
 
 	const dimensions = formatDimensions(info.widthCm, info.heightCm, units);
 	// The peek identity collapses to one name line + a `brand · category` subline.
@@ -354,6 +376,9 @@ export function InfoPanel() {
 								</div>
 							))}
 						</dl>
+						{info.jacksAssumed ? (
+							<p className="info-panel__assumed">Jack positions assumed.</p>
+						) : null}
 					</section>
 				) : null}
 

@@ -51,7 +51,7 @@ Run the **`performance-expert`** agent (`.opencode/agent/performance-expert.md`)
 ## P4 — Cables (in progress)
 Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 
-> **P4-01 (cable model + jack anchors) is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **Next: P4-02** (drag-connect UI + share/export/capacity wiring; UX/design-heavy). P4-04 brand outreach runs in parallel (owner track, not a gate).
+> **P4-01 (cable model + jack anchors) is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **P4-02 (drag-connect UI + endpoints + share v2 wiring) is in review — PR #31** (owner-approved “Patch Drafting”; fallback anchors + share v2; 2/2 design-review cap; performance `risk`; light code review pass 2 approve). **Next: P4-02 pending merge — do not start P4-03.** P4-04 brand outreach runs in parallel (owner track, not a gate).
 
 | Task | What it does | Owner action? |
 |---|---|---|

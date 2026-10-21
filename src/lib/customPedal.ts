@@ -30,6 +30,8 @@ export interface JackDraft {
 	edge: JackEdge;
 	/** Position along the edge, 0..1. */
 	pos: number;
+	/** Stereo / TRS jack (accepts two cables); absent = mono. */
+	stereo?: boolean;
 }
 
 /** The creator form's raw state (dimensions are display-unit strings). */
@@ -154,6 +156,7 @@ export function draftFromCustomPedal(
 			kind: jack.kind,
 			edge: jack.edge,
 			pos: jack.pos,
+			stereo: jack.stereo ?? false,
 		})),
 		powerEnabled: custom.power !== undefined,
 		voltage: custom.power ? String(custom.power.voltage) : "9",
@@ -234,6 +237,7 @@ export function validateCustomPedalDraft(
 		kind: jack.kind,
 		edge: jack.edge,
 		pos: clamp01(jack.pos),
+		...(jack.stereo ? { stereo: true } : {}),
 	}));
 
 	return {

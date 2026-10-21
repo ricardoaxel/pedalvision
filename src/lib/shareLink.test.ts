@@ -1,6 +1,12 @@
 import { deflateSync, strToU8 } from "fflate";
 import { describe, expect, it } from "vitest";
-import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
+import type {
+	Cable,
+	CustomPedal,
+	Endpoint,
+	PlacedBoard,
+	PlacedItem,
+} from "../state/scene";
 import type { SceneSnapshot } from "../state/sceneDocument";
 import { capacityStatus } from "./capacity";
 import {
@@ -45,7 +51,7 @@ const custom = (
 	category: "pedal",
 	effectTypes: ["fuzz"],
 	jacks: [
-		{ kind: "in", edge: "top", pos: 0.5 },
+		{ kind: "in", edge: "top", pos: 0.5, stereo: true },
 		{ kind: "out", edge: "bottom", pos: 0.25 },
 	],
 	power: { voltage: 9, acDc: "DC", currentMa: 20 },
@@ -54,7 +60,10 @@ const custom = (
 
 function snapshot(
 	overrides: Partial<
-		Pick<SharePayload, "boards" | "items" | "customPedals">
+		Pick<
+			SharePayload,
+			"boards" | "items" | "customPedals" | "endpoints" | "cables"
+		>
 	> = {},
 ): SceneSnapshot {
 	return {
@@ -67,9 +76,9 @@ function snapshot(
 	};
 }
 
-function hashOf(value: unknown): string {
+function hashOf(value: unknown, version = 2): string {
 	const compressed = deflateSync(strToU8(JSON.stringify(value)));
-	return `#s=v1:${Buffer.from(compressed).toString("base64url")}`;
+	return `#s=v${version}:${Buffer.from(compressed).toString("base64url")}`;
 }
 
 describe("share links (P3-03)", () => {
@@ -117,11 +126,55 @@ describe("share links (P3-03)", () => {
 		expect(decoded.snapshot.items.map((entry) => entry.z)).toEqual([0, 0]);
 	});
 
-	it("uses the #s=v1: prefix and base64url without padding", () => {
+	it("round-trips cables + endpoints and decodes a legacy v1 link", () => {
+		const endpoint: Endpoint = {
+			uid: "endpoint-amp",
+			kind: "amp",
+			x: 30,
+			y: 12,
+		};
+		const cable: Cable = {
+			uid: "cable-1",
+			from: { itemUid: "item-1", jack: "1" },
+			to: { endpointUid: "endpoint-amp" },
+		};
+		const payload = snapshot({
+			customPedals: [custom("custom-fuzz")],
+			items: [item("item-1", { refId: "custom-fuzz" })],
+			endpoints: [endpoint],
+			cables: [cable],
+		});
+		const encoded = encodeShareLink("Patched", payload);
+		if (!encoded.ok) throw new Error("expected an encodable scene");
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.endpoints).toEqual([endpoint]);
+		expect(decoded.snapshot.cables).toEqual([cable]);
+
+		// A P3-era v1 link has no graph keys; it still opens with an empty graph.
+		const legacy = decodeShareHash(
+			hashOf(
+				{
+					version: 1,
+					name: "Legacy",
+					boards: [board("board-1")],
+					items: [item("item-1")],
+					customPedals: [],
+				},
+				1,
+			),
+		);
+		if (!legacy.ok) throw new Error(legacy.message);
+		expect(legacy.name).toBe("Legacy");
+		expect(legacy.snapshot.endpoints).toEqual([]);
+		expect(legacy.snapshot.cables).toEqual([]);
+	});
+
+	it("uses the #s=v2: prefix and base64url without padding", () => {
 		const encoded = encodeShareLink("Main board", snapshot());
 		if (!encoded.ok) throw new Error("expected an encodable scene");
-		expect(encoded.hash.startsWith("#s=v1:")).toBe(true);
-		const body = encoded.hash.slice("#s=v1:".length);
+		expect(encoded.hash.startsWith("#s=v2:")).toBe(true);
+		const body = encoded.hash.slice("#s=v2:".length);
 		expect(body).toMatch(/^[A-Za-z0-9_-]+$/);
 		expect(body).not.toContain("=");
 	});
@@ -144,6 +197,10 @@ describe("share links (P3-03)", () => {
 			reason: "invalid",
 		});
 		expect(decodeShareHash("#s=v2:abc")).toMatchObject({
+			ok: false,
+			reason: "corrupt",
+		});
+		expect(decodeShareHash("#s=v3:abc")).toMatchObject({
 			ok: false,
 			reason: "unsupported-version",
 		});
@@ -211,6 +268,64 @@ describe("share links (P3-03)", () => {
 		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
 		if (encoded.ok) throw new Error("expected a refusal");
 		expect(encoded.limitBytes).toBe(SHARE_DECODED_LIMIT_BYTES);
+	});
+
+	it("re-measures the share-URL budget with a graph (do not raise the cap)", () => {
+		const graphSnapshot = (
+			itemCount: number,
+			cableCount: number,
+			endpointCount: number,
+		): SceneSnapshot => {
+			const items = Array.from({ length: itemCount }, (_, index) =>
+				item(`item-${index}`, {
+					refId: `pedal-${index % 207}`,
+					boardUid: null,
+					x: (index % 20) * 9 + (index % 7) * 0.37,
+					y: Math.floor(index / 20) * 9 + (index % 11) * 0.29,
+					rotationDeg: (index * 17) % 360,
+				}),
+			);
+			const endpoints = Array.from({ length: endpointCount }, (_, index) => ({
+				uid: `endpoint-${index}`,
+				kind: index % 2 === 0 ? ("amp" as const) : ("instrument" as const),
+				x: 200 + index,
+				y: 20,
+			}));
+			const cables = Array.from({ length: cableCount }, (_, index) => ({
+				uid: `cable-${index}`,
+				from: {
+					itemUid: items[index % items.length]?.uid ?? "item-0",
+					jack: "1",
+				},
+				to: {
+					itemUid: items[(index + 1) % items.length]?.uid ?? "item-1",
+					jack: "0",
+				},
+			}));
+			return { boards: [], items, customPedals: [], endpoints, cables };
+		};
+
+		// 100 / 200 items + a graph stay comfortably encodable.
+		const hundred = encodeShareLink("Graph 100", graphSnapshot(100, 50, 50));
+		if (!hundred.ok) throw new Error(hundred.message);
+		expect(hundred.hash.length).toBeLessThan(SHARE_URL_HARD_LIMIT_CHARS);
+
+		const twoHundred = encodeShareLink("Graph 200", graphSnapshot(200, 75, 75));
+		if (!twoHundred.ok) throw new Error(twoHundred.message);
+		expect(twoHundred.hash.length).toBeLessThan(SHARE_URL_HARD_LIMIT_CHARS);
+
+		// At the graph cap the 32,000-char hard cap can bind (the P4-01 note
+		// measured 400 items + 200 cables + 100 endpoints at 38,184 chars). Record
+		// either outcome — the cap must not be raised for the benchmark.
+		const maxGraph = encodeShareLink("Graph 400", graphSnapshot(400, 200, 100));
+		if (maxGraph.ok) {
+			expect(maxGraph.hash.length).toBeLessThanOrEqual(
+				SHARE_URL_HARD_LIMIT_CHARS,
+			);
+		} else {
+			expect(maxGraph.reason).toBe("too-large");
+			expect(maxGraph.hashLength).toBeGreaterThan(SHARE_URL_HARD_LIMIT_CHARS);
+		}
 	});
 
 	it("keeps an unknown refId and leaves the labeled fallback to the renderer", () => {

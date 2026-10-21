@@ -2,6 +2,7 @@ import type Konva from "konva";
 import { useCallback, useEffect, useRef } from "react";
 import { Layer, Transformer } from "react-konva";
 import { pxToCm } from "../lib/geometry";
+import { useBoardDrag } from "../state/boardDrag";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
 import { useReadOnly } from "../state/readOnly";
@@ -42,6 +43,14 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 	// Suppress rotation while the viewport owns the gesture (pan/pinch).
 	const navigating = useGesture((state) => state.navigating);
 	const readOnly = useReadOnly((state) => state.readOnly);
+	// While the board is dragged (not rotated), hide the rotate handle so it
+	// doesn't float away from the moving board (design-review note, 2026-10-21).
+	const boardDragging = useBoardDrag(
+		(state) =>
+			selectedUid !== null &&
+			state.uid === selectedUid &&
+			state.kind === "drag",
+	);
 
 	const transformerRef = useRef<Konva.Transformer>(null);
 	const nodesRef = useRef(new Map<string, Konva.Group>());
@@ -73,6 +82,7 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 		transformer.stopTransform();
 		transformingUidRef.current = null;
 		if (node && uid) commitNode(node, uid);
+		useBoardDrag.getState().clear();
 	}, [commitNode]);
 
 	// Attach the Transformer to the selected board's node. Runs after the child
@@ -102,6 +112,7 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 		const uid = transformingUidRef.current ?? selectedUid;
 		transformingUidRef.current = null;
 		if (node && uid) commitNode(node, uid);
+		useBoardDrag.getState().clear();
 	}, [commitNode, selectedUid]);
 
 	return (
@@ -123,10 +134,30 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 			<Transformer
 				ref={transformerRef}
 				enabledAnchors={[]}
-				rotateEnabled
+				rotateEnabled={!boardDragging}
 				listening={!navigating && !readOnly}
 				onTransformStart={() => {
 					transformingUidRef.current = selectedUid;
+					const node = transformerRef.current?.nodes()[0];
+					if (node && selectedUid) {
+						useBoardDrag.getState().begin({
+							uid: selectedUid,
+							x: pxToCm(node.x()),
+							y: pxToCm(node.y()),
+							rotationDeg: node.rotation(),
+							kind: "transform",
+						});
+					}
+				}}
+				onTransform={() => {
+					const node = transformerRef.current?.nodes()[0];
+					if (!node) return;
+					useBoardDrag.getState().set({
+						x: pxToCm(node.x()),
+						y: pxToCm(node.y()),
+						rotationDeg: node.rotation(),
+						kind: "transform",
+					});
 				}}
 				onTransformEnd={handleTransformEnd}
 				borderStroke={theme.selectionStrong}

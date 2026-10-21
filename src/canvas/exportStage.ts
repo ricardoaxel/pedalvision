@@ -1,7 +1,7 @@
 import Konva from "konva";
+import { cableCurveCm, cablePathDataCm, EXPORT_CABLE } from "../lib/cablePath";
 import { resolveImageUrl } from "../lib/cdn";
 import {
-	cableEndPointCm,
 	EXPORT_PADDING_CM,
 	EXPORT_STANDARD_PX_PER_CM,
 	ExportError,
@@ -11,6 +11,7 @@ import {
 	SCALE_BAR_SHORT_BELOW_CM,
 	SCALE_BAR_SHORT_CM,
 } from "../lib/exportScene";
+import { buildAnchorIndex, cableEndAnchorFromIndex } from "../lib/jackAnchor";
 import { buildPdfFromJpeg } from "../lib/pdf";
 import {
 	boardDefinition,
@@ -19,6 +20,7 @@ import {
 	itemsByZ,
 	type PlacedBoard,
 	resolveItem,
+	usesFallbackJacks,
 } from "../state/scene";
 import {
 	CANVAS_FONTS,
@@ -432,25 +434,64 @@ function drawItem(
 
 function drawCables(parent: Konva.Group, context: RenderContext): void {
 	const { plan, theme, labelUnit, pxPerCm } = context;
-	for (const cable of plan.cables) {
-		const from = cableEndPointCm(cable.from, plan);
-		const to = cableEndPointCm(cable.to, plan);
-		if (!from || !to) continue;
+	// Use the SAME jack anchors + cubic curve as the live canvas, re-derived in
+	// physical cm. The previous straight centre-to-centre Konva.Arrow read as a
+	// different (ugly) drawing in exports (owner bug report, 2026-10-21).
+	const index = buildAnchorIndex({
+		boards: plan.boards,
+		items: plan.items,
+		customPedals: plan.customPedals,
+		endpoints: plan.endpoints,
+	});
+	const cables = plan.cables.flatMap((cable) => {
+		const from = cableEndAnchorFromIndex(cable.from, index);
+		const to = cableEndAnchorFromIndex(cable.to, index);
+		if (!from || !to) return [];
+		return [{ cable, curve: cableCurveCm(from, to) }];
+	});
+	const color = (cable: (typeof plan.cables)[number]) =>
+		cable.color ?? theme.cable;
+
+	// Halo first, then traces, then arrowheads — so crossings read as bridges.
+	for (const { curve } of cables) {
 		parent.add(
-			new Konva.Arrow({
-				points: [
-					from.x * pxPerCm,
-					from.y * pxPerCm,
-					to.x * pxPerCm,
-					to.y * pxPerCm,
-				],
-				stroke: cable.color ?? theme.cable,
-				fill: cable.color ?? theme.cable,
-				strokeWidth: 2 / labelUnit,
-				pointerLength: 8 / labelUnit,
-				pointerWidth: 6 / labelUnit,
+			new Konva.Path({
+				data: cablePathDataCm(curve, pxPerCm),
+				stroke: theme.cableHalo,
+				strokeWidth: EXPORT_CABLE.haloCm * pxPerCm,
 				lineCap: "round",
+				lineJoin: "round",
 				listening: false,
+				perfectDrawEnabled: false,
+			}),
+		);
+	}
+	for (const { cable, curve } of cables) {
+		parent.add(
+			new Konva.Path({
+				data: cablePathDataCm(curve, pxPerCm),
+				stroke: color(cable),
+				strokeWidth: EXPORT_CABLE.strokeCm * pxPerCm,
+				lineCap: "round",
+				lineJoin: "round",
+				listening: false,
+				perfectDrawEnabled: false,
+			}),
+		);
+	}
+	for (const { cable, curve } of cables) {
+		parent.add(
+			new Konva.Line({
+				points: curve.arrow.flatMap((point) => [
+					point.x * pxPerCm,
+					point.y * pxPerCm,
+				]),
+				closed: true,
+				fill: color(cable),
+				stroke: theme.canvasBackground,
+				strokeWidth: 0.05 * pxPerCm,
+				listening: false,
+				perfectDrawEnabled: false,
 			}),
 		);
 	}
@@ -458,29 +499,76 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 	for (const endpoint of plan.endpoints) {
 		const x = endpoint.x * pxPerCm;
 		const y = endpoint.y * pxPerCm;
+		const label = endpoint.kind === "amp" ? "AMP" : "INSTR";
+		const chipWidth = Math.max(1.4, label.length * 0.19 + 0.4) * pxPerCm;
+		const chipHeight = 0.62 * pxPerCm;
+		// Opaque terminal chip above the cable, matching the live AMP/INSTR tag.
 		parent.add(
-			new Konva.Circle({
-				x,
-				y,
-				radius: 4 / labelUnit,
-				fill: theme.canvasBackground,
-				stroke: theme.cable,
-				strokeWidth: 1.5 / labelUnit,
+			new Konva.Rect({
+				x: x - chipWidth / 2,
+				y: y - chipHeight / 2,
+				width: chipWidth,
+				height: chipHeight,
+				fill: theme.itemLabelBg,
+				stroke: theme.jack,
+				strokeWidth: 0.04 * pxPerCm,
+				cornerRadius: 0.16 * pxPerCm,
 				listening: false,
 			}),
 		);
 		parent.add(
 			new Konva.Text({
-				text: endpoint.kind === "amp" ? "AMP" : "IN",
-				x: x + 7 / labelUnit,
-				y: y - 5 / labelUnit,
+				text: label,
+				x: x - chipWidth / 2,
+				y: y - chipHeight / 2,
+				width: chipWidth,
+				height: chipHeight,
+				align: "center",
+				verticalAlign: "middle",
 				fontFamily: CANVAS_FONTS.mono,
 				fontSize: 9 / labelUnit,
-				fill: theme.boardLabel,
+				fill: theme.itemLabelInk,
 				listening: false,
 			}),
 		);
 	}
+}
+
+/**
+ * Honesty note for exports that include a cable to a catalog pedal with no jack
+ * data: its endpoints are the documented fallback anchors, not manufacturer
+ * positions (owner decision, 2026-10-21).
+ */
+function drawAssumedJackNote(
+	parent: Konva.Group,
+	context: RenderContext,
+): void {
+	const { plan, theme, labelUnit, pxPerCm } = context;
+	const used = plan.cables.some((cable) =>
+		[cable.from, cable.to].some((end) => {
+			if ("endpointUid" in end) return false;
+			const item = plan.items.find(
+				(candidate) => candidate.uid === end.itemUid,
+			);
+			return item ? usesFallbackJacks(item, plan.customPedals) : false;
+		}),
+	);
+	if (!used) return;
+	const x = plan.contentBoundsCm.x * pxPerCm;
+	const y =
+		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * pxPerCm +
+		EXPORT_PADDING_CM * 0.78 * pxPerCm;
+	parent.add(
+		new Konva.Text({
+			text: "Cables to catalog pedals may use assumed IN/OUT jack positions.",
+			x,
+			y,
+			fontFamily: CANVAS_FONTS.mono,
+			fontSize: 8 / labelUnit,
+			fill: theme.boardLabel,
+			listening: false,
+		}),
+	);
 }
 
 function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
@@ -648,6 +736,7 @@ export async function renderExportFile(
 
 		drawCables(content, context);
 		drawScaleBar(content, context);
+		drawAssumedJackNote(content, context);
 		layer.draw();
 
 		// Encode straight to a Blob. `toDataURL` would build a multi-MB base64

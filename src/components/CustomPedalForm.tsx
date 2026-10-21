@@ -92,6 +92,7 @@ export function CustomPedalForm({
 			id: crypto.randomUUID(),
 			kind: "in" as JackKind,
 			edge: "top" as JackEdge,
+			stereo: false,
 			pos: 0.5,
 		};
 		onChange({ ...draft, jacks: [...draft.jacks, jack] });
@@ -376,6 +377,22 @@ export function CustomPedalForm({
 											}
 										/>
 										<span className="custom__pos">{jack.pos.toFixed(2)}</span>
+
+										<label
+											className="custom__jack-stereo"
+											title="Stereo / TRS jack — accepts two cables"
+										>
+											<input
+												type="checkbox"
+												data-testid={`custom-jack-stereo-${jack.id}`}
+												checked={jack.stereo ?? false}
+												onFocus={() => setActiveJackId(jack.id)}
+												onChange={(event) =>
+													updateJack(jack.id, { stereo: event.target.checked })
+												}
+											/>
+											<span>TRS (2 cables)</span>
+										</label>
 
 										<button
 											type="button"

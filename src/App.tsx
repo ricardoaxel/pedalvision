@@ -1,16 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { BoardActionBar } from "./canvas/BoardActionBar";
+import { GraphActionBar } from "./canvas/GraphActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useHistoryShortcuts } from "./canvas/useHistoryShortcuts";
 import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
+import {
+	EndpointControl,
+	EndpointPlacementOverlay,
+	GraphStatusChip,
+} from "./components/EndpointControls";
 import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
 import { FirstRunHint } from "./components/FirstRunHint";
 import { HistoryControls } from "./components/HistoryControls";
 import { InfoPanel } from "./components/InfoPanel";
-import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
+import {
+	BoardIcon,
+	MoonIcon,
+	PedalIcon,
+	PlusIcon,
+	SunIcon,
+} from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
@@ -23,13 +35,43 @@ import {
 } from "./components/ShareView";
 import { StorageAnnouncer, StorageNotice } from "./components/StorageNotice";
 import { capacityStatus } from "./lib/capacity";
+import { useCableDrag } from "./state/cableDrag";
+import { useEndpointPlacement } from "./state/endpointPlacement";
 import { useSceneLibrary } from "./state/library";
 import { useReadOnly } from "./state/readOnly";
 import { useScene } from "./state/scene";
 import { selectSelectedItemUid, useSelection } from "./state/selection";
+import { useSettings } from "./state/settings";
 import { useShare } from "./state/share";
 
 type Theme = "dark" | "light";
+
+/** On-canvas cue when the user hid the patch; the only other entry is the
+ * "Patch" popover, which is easy to forget. */
+function PatchHiddenCue() {
+	const showCables = useSettings((state) => state.showCables);
+	const readOnly = useReadOnly((state) => state.readOnly);
+	const setShowCables = useSettings((state) => state.setShowCables);
+	const cables = useScene((state) => state.cables.length);
+	const endpoints = useScene((state) => state.endpoints.length);
+	if (showCables || readOnly || cables + endpoints === 0) return null;
+	return (
+		<div className="graph-status" data-testid="patch-hidden" role="status">
+			<span>
+				Patch hidden · {cables} {cables === 1 ? "cable" : "cables"} ·{" "}
+				{endpoints} {endpoints === 1 ? "endpoint" : "endpoints"}
+			</span>
+			<button
+				type="button"
+				className="graph-status__cancel"
+				data-testid="patch-hidden-show"
+				onClick={() => setShowCables(true)}
+			>
+				Show
+			</button>
+		</div>
+	);
+}
 
 function App() {
 	// TODO(P1): move to the persisted settings store. Kept minimal here so the
@@ -57,6 +99,7 @@ function App() {
 	const shareTriggerRef = useRef<HTMLButtonElement>(null);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const shareStatus = useShare((state) => state.status);
+	const showCables = useSettings((state) => state.showCables);
 	const storageLevel = useSceneLibrary((state) => state.storageHealth.level);
 	const previousReadOnly = useRef(readOnly);
 	useEffect(() => {
@@ -90,6 +133,20 @@ function App() {
 	useHistoryShortcuts();
 	// Explain read-only drag attempts on a shared scene (P3-03).
 	useReadOnlyEditCue();
+	// Hiding the graph is a view-only preference: drop cable/endpoint edit state.
+	useEffect(() => {
+		if (showCables) return;
+		const selection = useSelection.getState();
+		if (
+			selection.selection?.kind === "cable" ||
+			selection.selection?.kind === "endpoint"
+		) {
+			selection.clearSelection();
+		}
+		useCableDrag.getState().cancel();
+		useCableDrag.getState().setNotice(null);
+		useEndpointPlacement.getState().disarm();
+	}, [showCables]);
 
 	const toggleTheme = () => {
 		const next: Theme = theme === "dark" ? "light" : "dark";
@@ -99,6 +156,8 @@ function App() {
 
 	const openPicker = (tab: PickerTab) => {
 		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setExportOpen(false);
 		setExportBusy(false);
 		setScenesOpen(false);
@@ -111,6 +170,8 @@ function App() {
 
 	const openExport = () => {
 		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
@@ -122,6 +183,8 @@ function App() {
 
 	const openScenes = () => {
 		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
@@ -132,6 +195,8 @@ function App() {
 	};
 
 	const openShare = () => {
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
@@ -203,6 +268,7 @@ function App() {
 					<>
 						<ItemActionBar onEditCustom={openCustomEdit} />
 						<BoardActionBar onEditBoard={openBoardEdit} />
+						<GraphActionBar />
 						{/* First-run "Bench Note" (P2-08): one notice at a time — the
 						 * storage warning wins while saving is unavailable (P3-05). */}
 						{storageLevel === "unavailable" ? null : (
@@ -259,6 +325,7 @@ function App() {
 								<BoardIcon />
 								<PlusIcon />
 							</button>
+							<EndpointControl />
 							<button
 								ref={shareTriggerRef}
 								type="button"
@@ -291,8 +358,25 @@ function App() {
 					>
 						<ExportTriggerContent />
 					</button>
-					<button type="button" className="hud-button" onClick={toggleTheme}>
-						{theme === "dark" ? "Light" : "Dark"} theme
+					<button
+						type="button"
+						className="hud-button theme-toggle"
+						aria-label={
+							theme === "dark"
+								? "Switch to light theme"
+								: "Switch to dark theme"
+						}
+						title={
+							theme === "dark"
+								? "Switch to light theme"
+								: "Switch to dark theme"
+						}
+						onClick={toggleTheme}
+					>
+						{theme === "dark" ? <SunIcon /> : <MoonIcon />}
+						<span className="theme-toggle__label">
+							{theme === "dark" ? "Light" : "Dark"} theme
+						</span>
 					</button>
 				</div>
 				{exportOpen ? (
@@ -302,6 +386,9 @@ function App() {
 						onBusyChange={setExportBusy}
 					/>
 				) : null}
+				<EndpointPlacementOverlay />
+				<GraphStatusChip />
+				<PatchHiddenCue />
 				<ShareEditCue />
 				{shareOpen && !readOnly ? (
 					<SharePanel

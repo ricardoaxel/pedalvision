@@ -24,19 +24,45 @@ export interface ShareFixture {
 		z: number;
 	}>;
 	customPedals?: unknown[];
+	endpoints?: Array<{
+		uid: string;
+		kind: "amp" | "instrument";
+		x: number;
+		y: number;
+	}>;
+	cables?: Array<{
+		uid: string;
+		from: { itemUid: string; jack: string } | { endpointUid: string };
+		to: { itemUid: string; jack: string } | { endpointUid: string };
+		color?: string;
+	}>;
+	/** Default 2 (current); pass 1 to build a legacy graph-less link. */
+	version?: 1 | 2;
 }
 
-/** Build a valid `#s=v1:…` payload without importing app code. */
+/** Build a valid `#s=v2:…` payload without importing app code. */
 export function shareHash(fixture: ShareFixture): string {
-	const payload = {
-		version: 1,
-		name: fixture.name ?? "Shared board",
-		boards: fixture.boards,
-		items: fixture.items,
-		customPedals: fixture.customPedals ?? [],
-	};
+	const version = fixture.version ?? 2;
+	const payload =
+		version === 1
+			? {
+					version: 1,
+					name: fixture.name ?? "Shared board",
+					boards: fixture.boards,
+					items: fixture.items,
+					customPedals: fixture.customPedals ?? [],
+				}
+			: {
+					version: 2,
+					name: fixture.name ?? "Shared board",
+					boards: fixture.boards,
+					items: fixture.items,
+					customPedals: fixture.customPedals ?? [],
+					endpoints: fixture.endpoints ?? [],
+					cables: fixture.cables ?? [],
+				};
 	const compressed = deflateSync(strToU8(JSON.stringify(payload)));
-	return `#s=v1:${Buffer.from(compressed).toString("base64url")}`;
+	return `#s=v${version}:${Buffer.from(compressed).toString("base64url")}`;
 }
 
 export function board(

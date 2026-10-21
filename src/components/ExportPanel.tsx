@@ -103,6 +103,8 @@ export function ExportPanel({
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
+	const endpoints = useScene((state) => state.endpoints);
+	const cables = useScene((state) => state.cables);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 
 	const [scope, setScope] = useState<ExportScope>(
@@ -174,13 +176,23 @@ export function ExportPanel({
 		if (isEmpty) return null;
 		try {
 			return resolveExportPlan(
-				{ boards, items, customPedals },
+				{ boards, items, customPedals, endpoints, cables },
 				{ scope, boardUid: selectedBoardUid, quality },
 			);
 		} catch {
 			return null;
 		}
-	}, [boards, items, customPedals, scope, selectedBoardUid, quality, isEmpty]);
+	}, [
+		boards,
+		items,
+		customPedals,
+		endpoints,
+		cables,
+		scope,
+		selectedBoardUid,
+		quality,
+		isEmpty,
+	]);
 
 	const selectedBoard = selectedBoardUid
 		? boards.find((board) => board.uid === selectedBoardUid)

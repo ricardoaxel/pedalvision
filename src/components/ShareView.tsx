@@ -29,9 +29,11 @@ export function ShareStamp() {
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
+	const endpoints = useScene((state) => state.endpoints);
+	const cables = useScene((state) => state.cables);
 	const status = useMemo(
-		() => capacityStatus({ boards, items, customPedals }),
-		[boards, items, customPedals],
+		() => capacityStatus({ boards, items, customPedals, endpoints, cables }),
+		[boards, items, customPedals, endpoints, cables],
 	);
 	// A review copy carries only the actionable hard/over-cap warning, never the
 	// "approaching a limit" soft nudge.

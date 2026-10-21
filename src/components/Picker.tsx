@@ -17,6 +17,7 @@ import {
 } from "../lib/customPedal";
 import { focusAddBoardTrigger } from "../lib/focus";
 import { centerOffset, placeItem } from "../lib/geometry";
+import { PATCH_CABLE_GAP_CM } from "../state/overlap";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -153,6 +154,8 @@ export function Picker({
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
+	const endpoints = useScene((state) => state.endpoints);
+	const cables = useScene((state) => state.cables);
 	const addBoard = useScene((state) => state.addBoard);
 	const removeBoard = useScene((state) => state.removeBoard);
 	const addItem = useScene((state) => state.addItem);
@@ -451,6 +454,7 @@ export function Picker({
 				entry.heightCm,
 			);
 			const pos = placeItem(base, size, occupied(targetBoard.uid), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 				bounds: footprint,
 			});
 			selectItem(addItem(entry.id, "pedal", targetBoard.uid, pos));
@@ -461,7 +465,9 @@ export function Picker({
 				x: center.x - entry.widthCm / 2,
 				y: center.y - entry.heightCm / 2,
 			};
-			const pos = placeItem(base, size, occupied(null));
+			const pos = placeItem(base, size, occupied(null), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
+			});
 			selectItem(addItem(entry.id, "pedal", null, pos));
 		}
 		onClose();
@@ -485,6 +491,7 @@ export function Picker({
 				size.heightCm,
 			);
 			const pos = placeItem(base, size, occupied(targetBoard.uid), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 				bounds: footprint,
 			});
 			selectItem(addItem(refId, definition.category, targetBoard.uid, pos));
@@ -495,7 +502,9 @@ export function Picker({
 				x: center.x - size.widthCm / 2,
 				y: center.y - size.heightCm / 2,
 			};
-			const pos = placeItem(base, size, occupied(null));
+			const pos = placeItem(base, size, occupied(null), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
+			});
 			selectItem(addItem(refId, definition.category, null, pos));
 		}
 		setCustomDraft(emptyCustomPedalDraft(customDraft.units));
@@ -609,15 +618,18 @@ export function Picker({
 	// Load Chart (P3-06): hard caps are evaluated per action. Item-cap refuses
 	// every add; image-cap refuses only a NEW image (repeats add no decode);
 	// board-cap refuses board adds. Soft is advisory and never blocks.
-	const capacity = useMemo(
-		() => capacityStatus({ boards, items, customPedals }),
-		[boards, items, customPedals],
+	const sceneCapacity = useMemo(
+		() => ({ boards, items, customPedals, endpoints, cables }),
+		[boards, items, customPedals, endpoints, cables],
 	);
-	const boardRefusal = boardAddRefusal({ boards, items, customPedals });
+	const capacity = useMemo(
+		() => capacityStatus(sceneCapacity),
+		[sceneCapacity],
+	);
+	const boardRefusal = boardAddRefusal(sceneCapacity);
 	const itemRefusalFor = (
 		entry: Pick<PickerEntry, "id"> | null,
-	): string | null =>
-		entry ? addItemRefusal({ boards, items, customPedals }, entry.id) : null;
+	): string | null => (entry ? addItemRefusal(sceneCapacity, entry.id) : null);
 	const activeRefusal = activeEntry
 		? isBoards
 			? boardRefusal

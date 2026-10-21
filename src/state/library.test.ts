@@ -1005,14 +1005,14 @@ describe("cable persistence wiring (P4-01)", () => {
 		expect(repo.docs.get("scene-1")?.cables).toEqual([]);
 
 		const cableUid = required(
-			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
 		);
 		await vi.advanceTimersByTimeAsync(500);
 		const saved = repo.docs.get("scene-1");
 		expect(saved?.cables).toEqual([
 			{
 				uid: cableUid,
-				from: { itemUid, jack: "0" },
+				from: { itemUid, jack: "1" },
 				to: { endpointUid },
 			},
 		]);

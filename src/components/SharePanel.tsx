@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { SHARE_LONG_LINK_THRESHOLD } from "../lib/shareLink";
+import { SHARE_LONG_LINK_THRESHOLD, SHARE_VERSION } from "../lib/shareLink";
 import { useSceneLibrary } from "../state/library";
 import { useScene } from "../state/scene";
 import { buildShareLink } from "../state/share";
@@ -45,8 +45,7 @@ export function SharePanel({ onClose, onAddBoard }: SharePanelProps) {
 	const cables = useScene((state) => state.cables);
 	const empty = boards.length === 0 && items.length === 0;
 
-	// P4-01: the full snapshot is passed (the codec requires every key), but the
-	// P3 v1 share payload deliberately omits cables/endpoints until P4-02.
+	// v2 carries the full graph (cables + endpoints) — see shareLink.ts.
 	const result = useMemo(
 		() =>
 			buildShareLink(sceneName, {
@@ -184,7 +183,7 @@ export function SharePanel({ onClose, onAddBoard }: SharePanelProps) {
 						onFocus={(event) => event.currentTarget.select()}
 					/>
 					<p className="share-panel__meta">
-						Link size {formatLinkSize(result.url.length)} · V1
+						Link size {formatLinkSize(result.url.length)} · V{SHARE_VERSION}
 					</p>
 					{result.url.length > SHARE_LONG_LINK_THRESHOLD ? (
 						<p className="share-panel__note">

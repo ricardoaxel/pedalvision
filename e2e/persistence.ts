@@ -13,6 +13,12 @@ export interface SavedDocument {
 		boardUid?: string | null;
 	}>;
 	customPedals: unknown[];
+	endpoints?: Array<{ uid: string; kind: string; x: number; y: number }>;
+	cables?: Array<{
+		uid: string;
+		from: unknown;
+		to: unknown;
+	}>;
 	updatedAt: string;
 }
 

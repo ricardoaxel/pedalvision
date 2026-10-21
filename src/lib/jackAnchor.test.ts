@@ -1,10 +1,20 @@
 import { describe, expect, it } from "vitest";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
 import {
+	FALLBACK_JACKS,
+	itemFootprint,
+	usesFallbackJacks,
+} from "../state/scene";
+import {
+	anchorIndexFor,
+	buildAnchorIndex,
+	cableEndAnchorFromIndex,
 	cableEndAnchorWorld,
+	cableEndKey,
 	jackAnchorWorld,
 	jackIndex,
 	jackLocalPoint,
+	liftedJackAnchor,
 	resolveItemJacks,
 } from "./jackAnchor";
 
@@ -149,5 +159,118 @@ describe("jack anchors in world cm", () => {
 				},
 			),
 		).toBeNull();
+	});
+});
+
+describe("fallback anchors (catalog pedals without jack data)", () => {
+	it("synthesises the documented IN/OUT pair for a catalog pedal", () => {
+		const catalogItem = item({ refId: "boss-bd-2-blues-driver" });
+		const { widthCm, heightCm } = itemFootprint(catalogItem, []);
+		expect(resolveItemJacks(catalogItem, [])).toEqual([...FALLBACK_JACKS]);
+		expect(usesFallbackJacks(catalogItem, [])).toBe(true);
+		// IN is the left-edge midpoint, OUT the right-edge midpoint.
+		expect(jackAnchorWorld(catalogItem, "0", [], [])).toEqual({
+			x: 10,
+			y: 20 + heightCm / 2,
+		});
+		expect(jackAnchorWorld(catalogItem, "1", [], [])).toEqual({
+			x: 10 + widthCm,
+			y: 20 + heightCm / 2,
+		});
+	});
+
+	it("never overrides real custom jacks and gives supplies no fallback", () => {
+		expect(resolveItemJacks(item(), [customPedal])).toHaveLength(4);
+		expect(usesFallbackJacks(item(), [customPedal])).toBe(false);
+		const supply = item({
+			refId: "custom-supply",
+			kind: "supply",
+		});
+		const supplyDef: CustomPedal = {
+			refId: "custom-supply",
+			brand: "Acme",
+			name: "Power",
+			widthCm: 5,
+			heightCm: 4,
+			category: "supply",
+			effectTypes: [],
+		};
+		expect(resolveItemJacks(supply, [supplyDef])).toEqual([]);
+		expect(usesFallbackJacks(supply, [supplyDef])).toBe(false);
+	});
+
+	it("recomputes a lifted pedal's jack anchor at its transient world position", () => {
+		const jack = customPedal.jacks?.[0];
+		if (!jack) throw new Error("jack fixture missing");
+		const anchor = {
+			point: { x: 15, y: 20 },
+			normal: { x: 0, y: -1 },
+			assumed: false,
+			jack,
+		};
+		const lifted = liftedJackAnchor(
+			anchor,
+			item({ x: 100, y: 50 }),
+			[customPedal],
+			{ x: 100, y: 50 },
+			90,
+		);
+		// Item-local top-centre (5,0) → 90° → (0,5) → lifted origin (100,50).
+		expect(lifted?.point.x).toBeCloseTo(100);
+		expect(lifted?.point.y).toBeCloseTo(55);
+		// The top normal rotates to the right edge.
+		expect(lifted?.normal?.x).toBeCloseTo(1);
+		expect(lifted?.normal?.y).toBeCloseTo(0);
+	});
+
+	it("builds the same anchor as jackAnchorWorld on a rotated board", () => {
+		const board: PlacedBoard = {
+			uid: "b1",
+			boardRefId: "boss-bcb-1000",
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+		const attached = item({
+			boardUid: "b1",
+			x: 0,
+			y: 0,
+			rotationDeg: 90,
+		});
+		const index = buildAnchorIndex({
+			boards: [board],
+			items: [attached],
+			customPedals: [customPedal],
+			endpoints: [],
+		});
+		const anchor = cableEndAnchorFromIndex({ itemUid: "i1", jack: "0" }, index);
+		// Hand-computed: item top-centre (5,0) → item 90° → (0,5) → board 90°
+		// → (-5,0) → board origin (100,50).
+		expect(anchor?.point.x).toBeCloseTo(95);
+		expect(anchor?.point.y).toBeCloseTo(50);
+		expect(anchor?.point).toEqual(
+			jackAnchorWorld(attached, "0", [board], [customPedal]),
+		);
+	});
+
+	it("builds a keyed anchor index and caches it per mutation", () => {
+		const scene = {
+			boards: [],
+			items: [item()],
+			customPedals: [customPedal],
+			endpoints: [{ uid: "amp-1", kind: "amp" as const, x: 60, y: 20 }],
+		};
+		const index = buildAnchorIndex(scene);
+		expect(index.all).toHaveLength(5); // 4 jacks + 1 endpoint
+		expect(cableEndKey({ itemUid: "i1", jack: "0" })).toBe("item:i1:0");
+		expect(cableEndKey({ endpointUid: "amp-1" })).toBe("endpoint:amp-1");
+		const anchor = cableEndAnchorFromIndex({ itemUid: "i1", jack: "0" }, index);
+		expect(anchor?.point).toEqual({ x: 15, y: 20 });
+		expect(anchor?.normal).toEqual({ x: 0, y: -1 });
+		const memo = anchorIndexFor(scene);
+		expect(anchorIndexFor(scene)).toBe(memo);
+		expect(anchorIndexFor({ ...scene, items: [...scene.items] })).not.toBe(
+			index,
+		);
 	});
 });
