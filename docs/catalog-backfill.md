@@ -46,6 +46,9 @@ Shape (superset; extra verified facts go in `extra`):
   "name": "DS-1 Distortion",
   "aliases": ["DS1"],
   "category": "pedal",
+  "deviceType": "stompbox",             // stompbox | multi-fx | amp-modeler | preamp | di | power-supply | switcher | controller | interface | other
+  "formFactor": "standard",            // compact | standard | double | mini | desktop | rack | expression | other
+  "instrumentTypes": ["guitar", "bass"], // optional compatibility
   "effectTypes": ["distortion"],
   "widthCm": 7.3, "heightCm": 12.9,
   "dimensionsSource": "manufacturer page",
@@ -132,8 +135,8 @@ Bluetooth audio/control/version/codec/latency; BLE-MIDI; Wi-Fi; 2.4 GHz propriet
 ### Power details & supplies
 Peak/inrush current; power consumption (W); battery type/life; USB bus power/charging; isolation/daisy-chain requirement; voltage-sag behavior; connector size/polarity; recommended PSU; power switch/soft start. For a **power supply**: outlet count, isolated vs shared, per-output V/mA, total mA, AC input, courtesy outlet, USB charging, sag/dip switches, included cables, mounting.
 
-### Product lifecycle & commercial
-Release year; discontinued year; replacement model; `variantOf`; limited edition; artist signature; colorway; made in; MSRP/price (optional); official manual/press-kit URL; firmware version; aliases.
+### Identity, compatibility & lifecycle
+`deviceType` (stompbox/multi-fx/amp-modeler/preamp/DI/power-supply/switcher/controller/interface/other); `formFactor` (compact/standard/double/mini/desktop/rack/expression/other); `instrumentTypes` (guitar/bass/synth/keys/vocal); release year; discontinued year; replacement model; `variantOf`; limited edition; artist signature; colorway; made in; MSRP/price (optional); official manual/press-kit URL; firmware version; MIDI implementation chart URL; aliases.
 
 ### Provenance
 `sources`, `confidence`, `lastVerified`, `dimensionsSource`, `imageCandidates`, and the `extra` bag for anything else verified.
