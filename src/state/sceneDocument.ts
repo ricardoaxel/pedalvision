@@ -254,8 +254,9 @@ export function parseSceneDocument(raw: unknown): SceneDocument | null {
  * owning board is gone are dropped (their board-relative position can't be
  * resolved, and they would render in neither layer), every container's z is
  * re-normalised dense, custom definitions left unreferenced are pruned, cables
- * with a gone item/endpoint are dropped, and endpoints no surviving cable
- * references are dropped (a dangling endpoint can't render a connection).
+ * with a gone item/endpoint or an unresolvable jack are dropped, and endpoints
+ * left dangling by those dropped cables are dropped too. A standalone endpoint
+ * (one no stored cable references) is a placed object and is kept (A4).
  */
 export function normalizeSceneContent(snapshot: SceneSnapshot): SceneSnapshot {
 	const boardIds = new Set(snapshot.boards.map((board) => board.uid));
@@ -264,26 +265,41 @@ export function normalizeSceneContent(snapshot: SceneSnapshot): SceneSnapshot {
 			(item) => item.boardUid === null || boardIds.has(item.boardUid),
 		),
 	);
+	const customPedals = pruneCustomPedals(snapshot.customPedals, items);
 	const cables = snapshot.cables.filter(
 		(cable) =>
-			cableEndExists(cable.from, items, snapshot.endpoints) &&
-			cableEndExists(cable.to, items, snapshot.endpoints),
+			cableEndExists(cable.from, items, snapshot.endpoints, customPedals) &&
+			cableEndExists(cable.to, items, snapshot.endpoints, customPedals),
 	);
-	const referencedEndpoints = new Set<string>();
-	for (const cable of cables) {
-		for (const end of [cable.from, cable.to]) {
-			if ("endpointUid" in end) referencedEndpoints.add(end.endpointUid);
-		}
-	}
+	// An endpoint is dangling only when a cable in the stored document pointed
+	// at it and that cable was dropped (its other end is gone / its jack no
+	// longer resolves). An endpoint with no cable at all is a placed object and
+	// must survive save → reload (A4) — P4-02's "place the amp, then connect"
+	// flow depends on it.
+	const referencedInDocument = endpointRefs(snapshot.cables);
+	const referencedAfterCleanup = endpointRefs(cables);
 	return {
 		boards: snapshot.boards,
 		items,
-		customPedals: pruneCustomPedals(snapshot.customPedals, items),
-		endpoints: snapshot.endpoints.filter((endpoint) =>
-			referencedEndpoints.has(endpoint.uid),
+		customPedals,
+		endpoints: snapshot.endpoints.filter(
+			(endpoint) =>
+				!referencedInDocument.has(endpoint.uid) ||
+				referencedAfterCleanup.has(endpoint.uid),
 		),
 		cables,
 	};
+}
+
+/** The endpoint uids any of these cables terminate on. */
+function endpointRefs(cables: readonly Cable[]): Set<string> {
+	const refs = new Set<string>();
+	for (const cable of cables) {
+		for (const end of [cable.from, cable.to]) {
+			if ("endpointUid" in end) refs.add(end.endpointUid);
+		}
+	}
+	return refs;
 }
 
 /** The normalised scene fields to apply to the store for a document. */

@@ -4,9 +4,10 @@ import {
 	type CustomPedal,
 	type Endpoint,
 	itemFootprint,
+	jackIndex,
 	type PlacedBoard,
 	type PlacedItem,
-	resolveItem,
+	resolveItemJacks,
 } from "../state/scene";
 import { boardToWorld, type Point, rotatePoint } from "./geometry";
 
@@ -23,21 +24,7 @@ import { boardToWorld, type Point, rotatePoint } from "./geometry";
  * only at render time. Returns null for a gone item / invalid jack index.
  */
 
-/** The jacks an item exposes (catalog definition first, then inline custom). */
-export function resolveItemJacks(
-	item: PlacedItem,
-	customPedals: CustomPedal[] = [],
-): Jack[] {
-	const resolved = resolveItem(item, customPedals);
-	return resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
-}
-
-/** Parse a cable's opaque jack reference into an array index, or null. */
-export function jackIndex(ref: string): number | null {
-	if (!/^(0|[1-9]\d*)$/.test(ref)) return null;
-	const index = Number(ref);
-	return Number.isSafeInteger(index) ? index : null;
-}
+export { jackIndex, resolveItemJacks };
 
 /**
  * The jack's point in the item's **unrotated local frame** (cm from the item's

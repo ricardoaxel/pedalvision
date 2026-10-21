@@ -90,6 +90,26 @@ describe("jack anchors in world cm", () => {
 		expect(anchor?.y).toBeCloseTo(55);
 	});
 
+	it("composes the item's rotation with a rotated board", () => {
+		const board: PlacedBoard = {
+			uid: "b1",
+			boardRefId: "boss-bcb-1000",
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+		const attached = item({
+			boardUid: "b1",
+			x: 0,
+			y: 0,
+			rotationDeg: 90,
+		});
+		// Item-local top-centre (5,0) → item 90° → (0,5) → board 90° → (-5,0).
+		const anchor = jackAnchorWorld(attached, "0", [board], [customPedal]);
+		expect(anchor?.x).toBeCloseTo(95);
+		expect(anchor?.y).toBeCloseTo(50);
+	});
+
 	it("resolves an endpoint and both cable-end shapes", () => {
 		const scene = {
 			boards: [],

@@ -252,6 +252,22 @@ export function resolveItem(
 	};
 }
 
+/** The jacks an item exposes (catalog definition first, then inline custom). */
+export function resolveItemJacks(
+	item: PlacedItem,
+	customPedals: CustomPedal[] = [],
+): Jack[] {
+	const resolved = resolveItem(item, customPedals);
+	return resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
+}
+
+/** Parse a cable's opaque jack reference into an array index, or null. */
+export function jackIndex(ref: string): number | null {
+	if (!/^(0|[1-9]\d*)$/.test(ref)) return null;
+	const index = Number(ref);
+	return Number.isSafeInteger(index) ? index : null;
+}
+
 /** Resolve a placed item's footprint in cm (catalog → custom → fallback). */
 export function itemFootprint(
 	item: PlacedItem,
@@ -341,20 +357,26 @@ export function cableReferencesEndpoint(
 
 /**
  * Is this cable end resolvable against the scene graph? Item ends must name an
- * existing placed item; endpoint ends must name an existing endpoint. Jack
- * validity is deliberately NOT checked here: a custom part's jacks can be edited
- * after a cable exists and the anchor resolver simply returns null (P4-02
- * renders/reconciles that); normalisation's contract is about gone objects.
+ * existing placed item **and** a jack index that item still exposes (a custom
+ * part's jacks can be edited after a cable exists); endpoint ends must name an
+ * existing endpoint. An unresolvable jack would render an invisible cable that
+ * still occupies the graph budget, so it is rejected/normalised away.
  */
 export function cableEndExists(
 	end: CableEnd,
 	items: readonly PlacedItem[],
 	endpoints: readonly Endpoint[],
+	customPedals: CustomPedal[] = [],
 ): boolean {
 	if ("endpointUid" in end) {
 		return endpoints.some((endpoint) => endpoint.uid === end.endpointUid);
 	}
-	return items.some((item) => item.uid === end.itemUid);
+	const item = items.find((candidate) => candidate.uid === end.itemUid);
+	if (!item) return false;
+	const index = jackIndex(end.jack);
+	return (
+		index !== null && resolveItemJacks(item, customPedals)[index] !== undefined
+	);
 }
 
 /**
@@ -778,8 +800,14 @@ export const useScene = create<SceneStore>((set, get) => ({
 	addCable: (from, to) => {
 		if (isReadOnly()) return null;
 		const state = get();
-		if (!cableEndExists(from, state.items, state.endpoints)) return null;
-		if (!cableEndExists(to, state.items, state.endpoints)) return null;
+		if (
+			!cableEndExists(from, state.items, state.endpoints, state.customPedals)
+		) {
+			return null;
+		}
+		if (!cableEndExists(to, state.items, state.endpoints, state.customPedals)) {
+			return null;
+		}
 		// Cables and endpoints share the 150/300 graph budget (P3-06).
 		if (graphAddRefusal(state)) return null;
 		const uid = crypto.randomUUID();

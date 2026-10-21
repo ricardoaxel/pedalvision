@@ -1,15 +1,32 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { catalog } from "../catalog/load";
 import { CAPACITY, capacityStatus } from "../lib/capacity";
 import { useReadOnly } from "./readOnly";
 import { useScene } from "./scene";
 
-const pedalId = catalog.pedals[0]?.id;
-if (!pedalId) throw new Error("test fixture pedal missing from the seed");
-
 function required<T>(value: T | null): T {
 	if (value === null) throw new Error("expected a value");
 	return value;
+}
+
+/** A custom item with two jacks (the catalog seed carries no jack data yet). */
+function addJackedItem(x = 0): string {
+	const refId = required(
+		useScene.getState().addCustomPedal({
+			brand: "Acme",
+			name: "Jacked",
+			widthCm: 7,
+			heightCm: 12,
+			category: "pedal",
+			effectTypes: [],
+			jacks: [
+				{ kind: "in", edge: "top", pos: 0.5 },
+				{ kind: "out", edge: "bottom", pos: 0.5 },
+			],
+		}),
+	);
+	return required(
+		useScene.getState().addItem(refId, "pedal", null, { x, y: 0 }),
+	);
 }
 
 function reset(): void {
@@ -45,9 +62,7 @@ describe("endpoints + cables (P4-01)", () => {
 	});
 
 	it("connects an item jack to an endpoint and persists both counts", () => {
-		const itemUid = required(
-			useScene.getState().addItem(pedalId, "pedal", null, { x: 0, y: 0 }),
-		);
+		const itemUid = addJackedItem();
 		const endpointUid = required(
 			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
 		);
@@ -68,9 +83,7 @@ describe("endpoints + cables (P4-01)", () => {
 	});
 
 	it("rejects a cable whose item or endpoint is gone", () => {
-		const itemUid = required(
-			useScene.getState().addItem(pedalId, "pedal", null, { x: 0, y: 0 }),
-		);
+		const itemUid = addJackedItem();
 		expect(
 			useScene
 				.getState()
@@ -84,10 +97,25 @@ describe("endpoints + cables (P4-01)", () => {
 		expect(useScene.getState().cables).toEqual([]);
 	});
 
-	it("removing an endpoint removes its cables; the other endpoint survives", () => {
-		const itemUid = required(
-			useScene.getState().addItem(pedalId, "pedal", null, { x: 0, y: 0 }),
+	it("rejects a cable with an unresolvable jack index", () => {
+		const itemUid = addJackedItem();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
 		);
+		expect(
+			useScene.getState().addCable({ itemUid, jack: "9" }, { endpointUid }),
+		).toBeNull();
+		expect(
+			useScene.getState().addCable({ itemUid, jack: "in" }, { endpointUid }),
+		).toBeNull();
+		expect(useScene.getState().cables).toEqual([]);
+		expect(
+			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
+		).not.toBeNull();
+	});
+
+	it("removing an endpoint removes its cables; the other endpoint survives", () => {
+		const itemUid = addJackedItem();
 		const amp = required(
 			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
 		);
@@ -115,12 +143,8 @@ describe("endpoints + cables (P4-01)", () => {
 	});
 
 	it("removing an item removes every cable that terminated on it", () => {
-		const itemUid = required(
-			useScene.getState().addItem(pedalId, "pedal", null, { x: 0, y: 0 }),
-		);
-		const otherUid = required(
-			useScene.getState().addItem(pedalId, "pedal", null, { x: 20, y: 0 }),
-		);
+		const itemUid = addJackedItem();
+		const otherUid = addJackedItem(20);
 		const endpointUid = required(
 			useScene.getState().addEndpoint("amp", { x: 40, y: 0 }),
 		);
@@ -149,9 +173,7 @@ describe("endpoints + cables (P4-01)", () => {
 		}
 		expect(useScene.getState().endpoints).toHaveLength(CAPACITY.graph.hard);
 		expect(useScene.getState().addEndpoint("amp", { x: 0, y: 0 })).toBeNull();
-		const itemUid = required(
-			useScene.getState().addItem(pedalId, "pedal", null, { x: 0, y: 0 }),
-		);
+		const itemUid = addJackedItem();
 		const endpointUid = useScene.getState().endpoints[0]?.uid;
 		if (!endpointUid) throw new Error("expected an endpoint");
 		expect(

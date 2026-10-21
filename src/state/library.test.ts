@@ -955,6 +955,26 @@ describe("scene library", () => {
 });
 
 describe("cable persistence wiring (P4-01)", () => {
+	function addJackedItem(): string {
+		const refId = required(
+			useScene.getState().addCustomPedal({
+				brand: "Acme",
+				name: "Jacked",
+				widthCm: 7,
+				heightCm: 12,
+				category: "pedal",
+				effectTypes: [],
+				jacks: [
+					{ kind: "in", edge: "top", pos: 0.5 },
+					{ kind: "out", edge: "bottom", pos: 0.5 },
+				],
+			}),
+		);
+		return required(
+			useScene.getState().addItem(refId, "pedal", null, { x: 0, y: 0 }),
+		);
+	}
+
 	beforeEach(() => {
 		useScene.setState({
 			boards: [],
@@ -977,9 +997,7 @@ describe("cable persistence wiring (P4-01)", () => {
 		const repo = new MemoryRepository();
 		const { runtime, store } = setup({ repo });
 		await runtime.boot();
-		const itemUid = required(
-			useScene.getState().addItem(bossId, "pedal", null, { x: 0, y: 0 }),
-		);
+		const itemUid = addJackedItem();
 		const endpointUid = required(
 			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
 		);
@@ -1015,9 +1033,7 @@ describe("cable persistence wiring (P4-01)", () => {
 		const repo = new MemoryRepository();
 		const { runtime, store } = setup({ repo });
 		await runtime.boot();
-		const itemUid = required(
-			useScene.getState().addItem(bossId, "pedal", null, { x: 0, y: 0 }),
-		);
+		const itemUid = addJackedItem();
 		const endpointUid = required(
 			useScene.getState().addEndpoint("instrument", { x: 5, y: 5 }),
 		);
@@ -1038,5 +1054,26 @@ describe("cable persistence wiring (P4-01)", () => {
 		await runtime.switchScene(secondId);
 		expect(useScene.getState().cables).toEqual([]);
 		expect(useScene.getState().endpoints).toEqual([]);
+	});
+
+	it("keeps a standalone endpoint with no cable across save → reload (A4)", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("amp", { x: 12, y: -4 }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		expect(repo.docs.get("scene-1")?.endpoints).toEqual([
+			{ uid: endpointUid, kind: "amp", x: 12, y: -4 },
+		]);
+
+		const firstId = required(store.getState().activeId);
+		required(await runtime.newScene("Other sheet"));
+		await runtime.switchScene(firstId);
+		expect(useScene.getState().endpoints).toEqual([
+			{ uid: endpointUid, kind: "amp", x: 12, y: -4 },
+		]);
 	});
 });

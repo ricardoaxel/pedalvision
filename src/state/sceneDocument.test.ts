@@ -287,11 +287,13 @@ describe("cables and endpoints (P4-01)", () => {
 		to: { endpointUid: "amp-1" },
 	};
 
+	const customItem = item({ refId: "custom-abc" });
+
 	it("round-trips cables and endpoints through the document codec", () => {
 		const document = documentOf({
 			boards: [board],
-			items: [item()],
-			customPedals: [],
+			items: [customItem],
+			customPedals: [customPedal],
 			endpoints: [endpoint],
 			cables: [cable],
 		});
@@ -299,8 +301,8 @@ describe("cables and endpoints (P4-01)", () => {
 		expect(parseSceneDocument(JSON.stringify(document))).toEqual(document);
 		expect(sceneFromDocument(document)).toEqual({
 			boards: [board],
-			items: [item()],
-			customPedals: [],
+			items: [customItem],
+			customPedals: [customPedal],
 			endpoints: [endpoint],
 			cables: [cable],
 		});
@@ -338,11 +340,29 @@ describe("cables and endpoints (P4-01)", () => {
 		expect(parsed?.cables).toEqual([cable]);
 	});
 
-	it("drops cables whose item/endpoint is gone and dangling endpoints", () => {
+	it("keeps a standalone endpoint (a placed object) across normalisation", () => {
+		const spare: Endpoint = {
+			uid: "spare",
+			kind: "instrument",
+			x: -10,
+			y: 5,
+		};
 		const normalized = normalizeSceneContent({
 			boards: [board],
-			items: [item()],
-			customPedals: [],
+			items: [customItem],
+			customPedals: [customPedal],
+			endpoints: [spare],
+			cables: [],
+		});
+		expect(normalized.endpoints).toEqual([spare]);
+		expect(normalized.cables).toEqual([]);
+	});
+
+	it("drops cables whose item/endpoint/jack is gone and the endpoints they orphan", () => {
+		const normalized = normalizeSceneContent({
+			boards: [board],
+			items: [customItem],
+			customPedals: [customPedal],
 			endpoints: [
 				endpoint,
 				{ uid: "dangling", kind: "instrument", x: 0, y: 0 },
@@ -352,12 +372,17 @@ describe("cables and endpoints (P4-01)", () => {
 				{
 					uid: "gone-item",
 					from: { itemUid: "gone", jack: "0" },
-					to: { endpointUid: "amp-1" },
+					to: { endpointUid: "dangling" },
 				},
 				{
 					uid: "gone-endpoint",
 					from: { itemUid: "i1", jack: "0" },
 					to: { endpointUid: "missing" },
+				},
+				{
+					uid: "bad-jack",
+					from: { itemUid: "i1", jack: "9" },
+					to: { endpointUid: "amp-1" },
 				},
 			],
 		});
