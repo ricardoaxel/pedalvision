@@ -51,13 +51,13 @@ Run the **`performance-expert`** agent (`.opencode/agent/performance-expert.md`)
 ## P4 — Cables (in progress)
 Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 
-> **P4-01 is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **P4-02 is DONE** (merged 2026-10-21, PR #31, squash `f001a0b`). **P4-03 is in progress in a separate session** (branch `p4-03-cable-length`). **P4-04 is retired → P5-01** (owner decision 2026-10-21): catalog procurement moves into P5; brand-permission outreach is replaced by the self-hosted public-asset policy.
+> **P4-01 is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **P4-02 is DONE** (merged 2026-10-21, PR #31, squash `f001a0b`). **P4-03 is in review — PR #33** (owner-approved “Cable Schedule”; derived-only lengths; view-only; read-only recipients can open it; design-reviewer 2/2 approve; performance watch; light code review fixed). **Do not start P4-04 code.** **P4-04 is retired → P5-01** (owner decision 2026-10-21): catalog procurement moved into P5; brand-permission outreach is replaced by the self-hosted public-asset policy. **P5-01 can start in parallel with P4-03 (P5 plan PR #32 merged).**
 
 | Task | What it does | Owner action? |
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
 
-## P5 — Catalog completion (plan approved 2026-10-21; docs restructure in review — PR #32; P5-01 next after merge)
+## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 next — parallel with P4-03)
 P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
 
 | Task | What it does | Owner action? |

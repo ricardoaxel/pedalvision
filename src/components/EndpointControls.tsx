@@ -37,8 +37,13 @@ function PlugIcon() {
  * choosing Amp/Instrument arms placement and the next canvas tap places it
  * exactly where the user points (the canvas stays unobstructed; no auto-drop at
  * the viewport centre). The graph hard cap is reported inline, never a toast.
+ * P4-03 adds the deliberate entry to the derived cable schedule.
  */
-export function EndpointControl() {
+export function EndpointControl({
+	onOpenSchedule,
+}: {
+	onOpenSchedule: () => void;
+}) {
 	const [open, setOpen] = useState(false);
 	const rootRef = useRef<HTMLDivElement>(null);
 	const endpoints = useScene((state) => state.endpoints);
@@ -90,6 +95,7 @@ export function EndpointControl() {
 				type="button"
 				className="hud-button endpoint-control__trigger"
 				data-testid="endpoint-open"
+				data-schedule-return
 				aria-label="Add amp or instrument endpoint"
 				aria-haspopup="dialog"
 				aria-expanded={open}
@@ -154,6 +160,29 @@ export function EndpointControl() {
 							</span>
 						</span>
 					</label>
+					<button
+						type="button"
+						className="endpoint-popover__row endpoint-popover__row--link"
+						data-testid="schedule-open"
+						data-schedule-trigger
+						onClick={() => {
+							setOpen(false);
+							onOpenSchedule();
+						}}
+					>
+						<span className="endpoint-popover__glyph" aria-hidden="true">
+							≡
+						</span>
+						<span>
+							<strong>Cable schedule</strong>
+							<span className="endpoint-popover__hint">
+								{cables.length} {cables.length === 1 ? "cable" : "cables"}
+							</span>
+						</span>
+						<span className="endpoint-popover__chevron" aria-hidden="true">
+							›
+						</span>
+					</button>
 				</div>
 			) : null}
 		</div>

@@ -1,6 +1,6 @@
 # P5 plan restructure (docs-only)
 
-**Phase:** P5 · **Status:** in review — PR #32 · **Model:** build-cheap
+**Phase:** P5 · **Status:** done (merged 2026-10-21, PR #32, squash `6e7deef`) · **Model:** build-cheap
 
 ## Goal
 
