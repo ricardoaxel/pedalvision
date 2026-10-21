@@ -40,7 +40,7 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
   (`data/catalog/fixtures/eventide-h90.json`) maps 14 connectors without
   inventing positions.
 - **Master inventory:** `data/catalog/inventory.json` — 8,557 pedals / 779
-  brands → **8,549 unique** (8 duplicates removed, 481 conservative colorway
+  brands → **8,549 unique** (8 duplicates removed, 338 conservative colorway
   links, 143 orphan variants kept standalone); 263 boards / 38 brands → **263
   unique**. **Tier A = 1,850 pedals + exactly 150 boards**; Tier B = 1,673
   pedals / 108 boards; Tier C = 5,026 pedals / 5 boards. Seed overlap: **207

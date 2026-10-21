@@ -83,7 +83,6 @@ export interface CableSchedule {
 	unconnectedEndpoints: string[];
 	cableCount: number;
 	assumedCount: number;
-	approximateCount: number;
 	unresolvedCount: number;
 	customCount: number;
 	/** Sum of the lengths to buy (custom runs use their calculated length). */
@@ -300,12 +299,10 @@ export function buildCableSchedule(scene: CableScheduleScene): CableSchedule {
 	const totalMap = new Map<string, CableScheduleTotal>();
 	let totalLengthCm = 0;
 	let assumedCount = 0;
-	let approximateCount = 0;
 	let unresolvedCount = 0;
 	let customCount = 0;
 	for (const row of orderedRows) {
 		if (row.assumed) assumedCount += 1;
-		if (row.approximate) approximateCount += 1;
 		if (row.unresolved) {
 			unresolvedCount += 1;
 			continue;
@@ -356,7 +353,6 @@ export function buildCableSchedule(scene: CableScheduleScene): CableSchedule {
 		unconnectedEndpoints,
 		cableCount: scene.cables.length,
 		assumedCount,
-		approximateCount,
 		unresolvedCount,
 		customCount,
 		totalLengthCm,

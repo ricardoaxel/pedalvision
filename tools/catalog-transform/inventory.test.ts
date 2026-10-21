@@ -128,6 +128,7 @@ describe("buildInventory", () => {
 			[
 				pedal("Source Audio", "Ultrawave"),
 				pedal("Source Audio", "Ultrawave (Bass)"),
+				pedal("Pete Cornish", "CC-1"),
 				pedal("Pete Cornish", "CC-1 (Deluxe)"),
 			],
 			[],
@@ -136,9 +137,13 @@ describe("buildInventory", () => {
 		const bass = inventory.pedals.find(
 			(item) => item.id === "source-audio-ultrawave-bass",
 		);
+		const base = inventory.pedals.find(
+			(item) => item.id === "pete-cornish-cc-1",
+		);
 		const deluxe = inventory.pedals.find(
 			(item) => item.id === "pete-cornish-cc-1-deluxe",
 		);
+		expect(base).toBeDefined();
 		expect(bass?.variantOf).toBeUndefined();
 		expect(deluxe?.variantOf).toBeUndefined();
 	});

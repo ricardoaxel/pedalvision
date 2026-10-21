@@ -207,7 +207,6 @@ describe("buildCableSchedule", () => {
 		expect(schedule.rows[0]?.approximate).toBe(true);
 		expect(schedule.rows[0]?.approximateFrom).toBe(true);
 		expect(schedule.rows[0]?.approximateTo).toBe(true);
-		expect(schedule.approximateCount).toBe(1);
 		expect(schedule.assumedCount).toBe(0);
 	});
 

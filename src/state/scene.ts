@@ -284,7 +284,12 @@ export type ResolvedJack = Jack & { pos: number; approximate?: boolean };
  */
 export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
 	if (jacks.every((jack) => jack.pos !== undefined)) {
-		return jacks as ResolvedJack[];
+		// `pos` wins: a stale author-supplied `approximate` flag is cleared.
+		return jacks.map((jack) =>
+			jack.approximate === undefined
+				? (jack as ResolvedJack)
+				: ({ ...jack, approximate: false } as ResolvedJack),
+		);
 	}
 	const missingByEdge = new Map<JackEdge, number[]>();
 	jacks.forEach((jack, index) => {

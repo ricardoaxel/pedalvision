@@ -536,9 +536,9 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 }
 
 /**
- * Honesty note for exports that include a cable to a catalog pedal with no jack
- * data: its endpoints are the documented fallback anchors, not manufacturer
- * positions (owner decision, 2026-10-21).
+ * Honesty note for exports that include a cable to a catalog pedal whose jack
+ * position is assumed (the documented fallback pair) or approximate (edge-only
+ * data, P5-01) rather than a measured manufacturer position.
  */
 function drawAssumedJackNote(
 	parent: Konva.Group,

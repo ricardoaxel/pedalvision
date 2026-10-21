@@ -266,7 +266,6 @@ function buildPedals(rows: DiscoveryRow[]): ParsedItems {
 			duplicatesRemoved++;
 			continue;
 		}
-		if (colorway) variants++;
 		const item: RawItem = {
 			id,
 			brand,
@@ -290,6 +289,7 @@ function buildPedals(rows: DiscoveryRow[]): ParsedItems {
 		}
 	}
 
+	variants = items.filter((item) => item.variantOf !== undefined).length;
 	return { items, skipped, duplicatesRemoved, variants, orphanVariants };
 }
 

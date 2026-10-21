@@ -60,7 +60,7 @@ describe("jack local points", () => {
 		expect(jackLocalPoint(left, footprint)).toEqual({ x: 0, y: 10 });
 	});
 
-	it("distributes edge-only jacks evenly and marks them approximate", () => {
+	it("places edge-only jacks in the largest remaining gap and marks them approximate", () => {
 		const jacks = resolveJackLayout([
 			{ kind: "in", edge: "top" },
 			{ kind: "in", edge: "top" },
