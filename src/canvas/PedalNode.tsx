@@ -25,6 +25,7 @@ import {
 	usesFallbackJacks,
 } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
+import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
 import {
@@ -155,6 +156,7 @@ export function PedalNode({
 			: -1,
 	);
 	const readOnly = isReadOnly();
+	const showCables = useSettings((state) => state.showCables);
 	const coarsePointer = useCoarsePointer();
 	const [hoveredJack, setHoveredJack] = useState<number | null>(null);
 
@@ -388,7 +390,8 @@ export function PedalNode({
 	// Jack ticks (P4-02 "Patch Drafting"): quiet sockets on the footprint edge.
 	// Real jacks show a ring + centre dot; the documented fallback pair shows a
 	// hollow diamond + "assumed" so it never reads as manufacturer data.
-	const jacks = readOnly ? [] : resolveItemJacks(item, customPedals);
+	const jacks =
+		readOnly || !showCables ? [] : resolveItemJacks(item, customPedals);
 	const assumedJacks = usesFallbackJacks(item, customPedals);
 	const showSecondaryJacks =
 		hoveredItemUid === item.uid ||
@@ -441,7 +444,9 @@ export function PedalNode({
 			) {
 				return;
 			}
-			selectItem(item.uid);
+			// On touch, do not select while starting a connection: selecting opens
+			// the info sheet over the canvas and hides the connection guidance.
+			if (!coarsePointer) selectItem(item.uid);
 			if (readOnly) {
 				beginReadOnlyAttempt({
 					uid: item.uid,
@@ -557,6 +562,16 @@ export function PedalNode({
 						)}
 					</>
 				)}
+				{jack.stereo ? (
+					<Circle
+						radius={radius + 2.5 / labelScale}
+						stroke={ringColor}
+						strokeWidth={0.8 / labelScale}
+						fillEnabled={false}
+						listening={false}
+						perfectDrawEnabled={false}
+					/>
+				) : null}
 				{/* Invisible 44px hit disc: the stroke-only socket is too thin to
 				 * hit reliably over a photo, and touch needs the full target. */}
 				<Circle
@@ -571,7 +586,7 @@ export function PedalNode({
 						setHoveredJack((current) => (current === index ? null : current))
 					}
 				/>
-				{isHovered || isSource || isTarget ? (
+				{isHovered || isSource || isTarget || selectedItemUid === item.uid ? (
 					<Group listening={false}>
 						<Rect
 							x={-chipWidth / 2}

@@ -67,12 +67,12 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
 		);
 		const cableUid = required(
-			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
 		);
 		expect(useScene.getState().cables).toEqual([
 			{
 				uid: cableUid,
-				from: { itemUid, jack: "0" },
+				from: { itemUid, jack: "1" },
 				to: { endpointUid },
 			},
 		]);
@@ -118,7 +118,7 @@ describe("endpoints + cables (P4-01)", () => {
 		expect(
 			useScene
 				.getState()
-				.addCable({ itemUid: catalogUid, jack: "0" }, { endpointUid }),
+				.addCable({ itemUid: catalogUid, jack: "1" }, { endpointUid }),
 		).not.toBeNull();
 		expect(
 			useScene
@@ -132,7 +132,7 @@ describe("endpoints + cables (P4-01)", () => {
 		expect(
 			useScene
 				.getState()
-				.addCable({ itemUid, jack: "1" }, { endpointUid: freeEndpoint }),
+				.addCable({ itemUid, jack: "0" }, { endpointUid: freeEndpoint }),
 		).not.toBeNull();
 	});
 
@@ -180,14 +180,14 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
 		);
 		expect(
-			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
 		).not.toBeNull();
 		// Same pair (same direction) and the reverse direction are both no-ops.
 		expect(
-			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
 		).toBeNull();
 		expect(
-			useScene.getState().addCable({ endpointUid }, { itemUid, jack: "0" }),
+			useScene.getState().addCable({ endpointUid }, { itemUid, jack: "1" }),
 		).toBeNull();
 		expect(useScene.getState().cables).toHaveLength(1);
 	});
@@ -230,7 +230,7 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene.getState().addEndpoint("amp", { x: 80, y: 10 }),
 		);
 		const s2 = required(
-			useScene.getState().addEndpoint("instrument", { x: 90, y: 10 }),
+			useScene.getState().addEndpoint("amp", { x: 90, y: 10 }),
 		);
 		const s3 = required(
 			useScene.getState().addEndpoint("amp", { x: 100, y: 10 }),
@@ -250,6 +250,47 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene
 				.getState()
 				.addCable({ itemUid: stereoUid, jack: "0" }, { endpointUid: s3 }),
+		).toBeNull();
+	});
+
+	it("orders a cable by signal semantics, not drag direction", () => {
+		const itemUid = addJackedItem();
+		const instrument = required(
+			useScene.getState().addEndpoint("instrument", { x: -20, y: 10 }),
+		);
+		const amp = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		// Drag backwards: instrument (source) → pedal IN (sink) is stored forward.
+		required(
+			useScene
+				.getState()
+				.addCable({ endpointUid: instrument }, { itemUid, jack: "0" }),
+		);
+		// Drag amp (sink) → pedal OUT (source): stored pedal OUT → amp.
+		required(
+			useScene
+				.getState()
+				.addCable({ endpointUid: amp }, { itemUid, jack: "1" }),
+		);
+		expect(useScene.getState().cables.map((cable) => cable.from)).toEqual([
+			{ endpointUid: instrument },
+			{ itemUid, jack: "1" },
+		]);
+		expect(useScene.getState().cables.map((cable) => cable.to)).toEqual([
+			{ itemUid, jack: "0" },
+			{ endpointUid: amp },
+		]);
+		// Source→source and sink→sink are invalid regardless of drag order.
+		expect(
+			useScene
+				.getState()
+				.addCable({ endpointUid: instrument }, { itemUid, jack: "1" }),
+		).toBeNull();
+		expect(
+			useScene
+				.getState()
+				.addCable({ endpointUid: amp }, { itemUid, jack: "0" }),
 		).toBeNull();
 	});
 
@@ -299,6 +340,12 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene.getState().customPedals,
 		);
 		expect(graph.cables.map((cable) => cable.uid)).toEqual(["c1"]);
+		// The second endpoint was a placed object, not an unresolvable orphan:
+		// capacity pruning drops the excess cable but keeps the endpoint (A4).
+		expect(graph.endpoints.map((endpoint) => endpoint.uid)).toEqual([
+			"amp-1",
+			"amp-2",
+		]);
 	});
 
 	it("prunes duplicate unordered cable pairs during normalisation", () => {
@@ -316,8 +363,8 @@ describe("endpoints + cables (P4-01)", () => {
 		if (!item) throw new Error("expected the placed item");
 		const graph = pruneCableGraph(
 			[
-				{ uid: "c1", from: { itemUid, jack: "0" }, to: { endpointUid } },
-				{ uid: "c2", from: { endpointUid }, to: { itemUid, jack: "0" } },
+				{ uid: "c1", from: { itemUid, jack: "1" }, to: { endpointUid } },
+				{ uid: "c2", from: { endpointUid }, to: { itemUid, jack: "1" } },
 			],
 			[endpoint],
 			[item],
@@ -338,16 +385,16 @@ describe("endpoints + cables (P4-01)", () => {
 		required(
 			useScene
 				.getState()
-				.addCable({ itemUid, jack: "0" }, { endpointUid: amp }),
+				.addCable({ itemUid, jack: "1" }, { endpointUid: amp }),
 		);
 		required(
 			useScene
 				.getState()
-				.addCable({ itemUid, jack: "1" }, { endpointUid: instrument }),
+				.addCable({ endpointUid: instrument }, { itemUid, jack: "0" }),
 		);
 		useScene.getState().removeEndpoint(amp);
 		expect(useScene.getState().cables).toHaveLength(1);
-		expect(useScene.getState().cables[0]?.to).toEqual({
+		expect(useScene.getState().cables[0]?.from).toEqual({
 			endpointUid: instrument,
 		});
 		expect(
@@ -359,7 +406,7 @@ describe("endpoints + cables (P4-01)", () => {
 		const itemUid = addJackedItem();
 		const otherUid = addJackedItem(20);
 		const endpointUid = required(
-			useScene.getState().addEndpoint("amp", { x: 40, y: 0 }),
+			useScene.getState().addEndpoint("instrument", { x: 40, y: 0 }),
 		);
 		required(
 			useScene

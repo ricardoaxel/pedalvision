@@ -7,6 +7,7 @@ import {
 } from "../state/endpointPlacement";
 import { resolveItemJacks, useScene } from "../state/scene";
 import { useSelection } from "../state/selection";
+import { useSettings } from "../state/settings";
 import { pxToWorldCm, useViewport } from "../state/viewport";
 
 /** A plug glyph (toolbar trigger). */
@@ -53,6 +54,9 @@ export function EndpointControl() {
 		cables,
 	});
 	const blocked = status.graph.level === "hard";
+	const armed = useEndpointPlacement((state) => state.kind !== null);
+	const showCables = useSettings((state) => state.showCables);
+	const setShowCables = useSettings((state) => state.setShowCables);
 
 	useEffect(() => {
 		if (!open) return;
@@ -74,6 +78,8 @@ export function EndpointControl() {
 
 	const choose = (kind: EndpointKind) => {
 		if (blocked) return;
+		// Endpoints are invisible while the graph is hidden; show it first.
+		if (!showCables) setShowCables(true);
 		useEndpointPlacement.getState().arm(kind);
 		setOpen(false);
 	};
@@ -88,10 +94,13 @@ export function EndpointControl() {
 				aria-haspopup="dialog"
 				aria-expanded={open}
 				aria-controls="endpoint-popover"
+				aria-pressed={armed}
+				data-armed={armed ? "true" : undefined}
 				title="Add endpoint"
 				onClick={() => setOpen((current) => !current)}
 			>
 				<PlugIcon />
+				<span className="endpoint-control__label">Patch</span>
 			</button>
 			{open ? (
 				<div
@@ -131,6 +140,15 @@ export function EndpointControl() {
 					{blocked ? (
 						<p className="endpoint-popover__note">{status.warning}</p>
 					) : null}
+					<label className="endpoint-popover__toggle">
+						<input
+							type="checkbox"
+							data-testid="toggle-cables"
+							checked={showCables}
+							onChange={(event) => setShowCables(event.target.checked)}
+						/>
+						<span>Show cables &amp; jacks</span>
+					</label>
 				</div>
 			) : null}
 		</div>

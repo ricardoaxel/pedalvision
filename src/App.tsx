@@ -41,6 +41,7 @@ import { useSceneLibrary } from "./state/library";
 import { useReadOnly } from "./state/readOnly";
 import { useScene } from "./state/scene";
 import { selectSelectedItemUid, useSelection } from "./state/selection";
+import { useSettings } from "./state/settings";
 import { useShare } from "./state/share";
 
 type Theme = "dark" | "light";
@@ -71,6 +72,7 @@ function App() {
 	const shareTriggerRef = useRef<HTMLButtonElement>(null);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const shareStatus = useShare((state) => state.status);
+	const showCables = useSettings((state) => state.showCables);
 	const storageLevel = useSceneLibrary((state) => state.storageHealth.level);
 	const previousReadOnly = useRef(readOnly);
 	useEffect(() => {
@@ -104,6 +106,19 @@ function App() {
 	useHistoryShortcuts();
 	// Explain read-only drag attempts on a shared scene (P3-03).
 	useReadOnlyEditCue();
+	// Hiding the graph is a view-only preference: drop cable/endpoint edit state.
+	useEffect(() => {
+		if (showCables) return;
+		const selection = useSelection.getState();
+		if (
+			selection.selection?.kind === "cable" ||
+			selection.selection?.kind === "endpoint"
+		) {
+			selection.clearSelection();
+		}
+		useCableDrag.getState().cancel();
+		useEndpointPlacement.getState().disarm();
+	}, [showCables]);
 
 	const toggleTheme = () => {
 		const next: Theme = theme === "dark" ? "light" : "dark";

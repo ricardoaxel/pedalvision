@@ -10,7 +10,12 @@ import {
 } from "../state/cableDrag";
 import { useGesture } from "../state/gesture";
 import { isReadOnly } from "../state/readOnly";
-import { cableEndHasCapacity, sameCableEnd, useScene } from "../state/scene";
+import {
+	cableEndHasCapacity,
+	normalizeCableDirection,
+	sameCableEnd,
+	useScene,
+} from "../state/scene";
 import { pxToWorldCm, useViewport } from "../state/viewport";
 
 /** Screen-px snap radius for a mouse / touch destination anchor. */
@@ -90,13 +95,24 @@ export function useCableDrag(
 				target.kind === "item"
 					? { itemUid: target.uid, jack: String(target.jackIndex) }
 					: { endpointUid: target.uid };
-			return cableEndHasCapacity(
-				end,
-				scene.cables,
-				scene.items,
-				scene.endpoints,
-				scene.customPedals,
-			)
+			if (
+				!cableEndHasCapacity(
+					end,
+					scene.cables,
+					scene.items,
+					scene.endpoints,
+					scene.customPedals,
+				)
+			) {
+				return null;
+			}
+			// Direction follows signal, not gesture order: refuse source↔source /
+			// sink↔sink (IN→IN, OUT→OUT, amp→amp, instrument→instrument).
+			const sourceEnd = {
+				itemUid: source.itemUid,
+				jack: String(source.jackIndex),
+			};
+			return normalizeCableDirection(sourceEnd, end, scene).valid
 				? target
 				: null;
 		};

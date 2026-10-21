@@ -131,6 +131,28 @@ test("drags jack → jack, renders a direction arrow and autosaves", async ({
 	);
 });
 
+test("a backwards drag is stored with the signal direction", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await addPedal(page, "boss-da-2-adaptive-distortion");
+	const { uidA, uidB } = await firstTwoItemJacks(page);
+	await clearSelection(page);
+	// Drag from A's IN to B's OUT (backwards): the stored cable must be B OUT → A IN.
+	await dragBetween(
+		page,
+		await anchorScreenPoint(page, `item:${uidA}:0`),
+		await anchorScreenPoint(page, `item:${uidB}:1`),
+	);
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(stage).toHaveAttribute(
+		"data-cable-directions",
+		`item:${uidB}:1>item:${uidA}:0`,
+	);
+});
+
 test("a mono jack accepts only one cable (no second connection)", async ({
 	page,
 }) => {
@@ -168,6 +190,20 @@ test("a mono jack accepts only one cable (no second connection)", async ({
 		"data-cable-directions",
 		`item:${uidA}:1>item:${uidB}:0`,
 	);
+});
+
+test("armed endpoint placement never swallows a toolbar tap", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await page.getByTestId("endpoint-open").click();
+	await page.getByTestId("endpoint-add-amp").click();
+	await expect(page.getByTestId("endpoint-placement")).toBeVisible();
+	// The placement overlay sits below the chrome: Export must open normally.
+	await page.getByTestId("export-open").click();
+	await expect(page.getByTestId("export-panel")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-endpoints", "0");
 });
 
 test("escapes and empty releases never create a cable", async ({ page }) => {
@@ -241,6 +277,45 @@ test("places an amp endpoint, connects to it, then deletes both", async ({
 	await page.getByTestId("delete-graph-item").click();
 	await expect(stage).toHaveAttribute("data-endpoints", "0");
 	await expect(stage).toHaveAttribute("data-cables", "0");
+});
+
+test("the show-cables toggle hides the graph and persists", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await addPedal(page, "boss-da-2-adaptive-distortion");
+	const { outA, inB } = await firstTwoItemJacks(page);
+	await clearSelection(page);
+	await dragBetween(
+		page,
+		await anchorScreenPoint(page, outA),
+		await anchorScreenPoint(page, inB),
+	);
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(stage).toHaveAttribute("data-show-cables", "true");
+
+	await page.getByTestId("endpoint-open").click();
+	await page.getByTestId("toggle-cables").uncheck();
+	await expect(stage).toHaveAttribute("data-show-cables", "false");
+	// Scene data is untouched; this is a view preference.
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	// Let the debounced autosave land before reloading (the scene must persist).
+	await waitForSavedScene(page, (document) => document.cables?.length === 1);
+
+	await page.reload();
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-show-cables",
+		"false",
+	);
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-cables", "1");
+	await page.getByTestId("endpoint-open").click();
+	await page.getByTestId("toggle-cables").check();
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-show-cables",
+		"true",
+	);
 });
 
 test("share v2 round-trips cables and endpoints read-only", async ({

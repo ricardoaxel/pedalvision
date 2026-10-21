@@ -135,7 +135,7 @@ describe("share links (P3-03)", () => {
 		};
 		const cable: Cable = {
 			uid: "cable-1",
-			from: { itemUid: "item-1", jack: "0" },
+			from: { itemUid: "item-1", jack: "1" },
 			to: { endpointUid: "endpoint-amp" },
 		};
 		const payload = snapshot({

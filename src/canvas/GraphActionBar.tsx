@@ -9,6 +9,7 @@ import {
 	selectSelectedEndpointUid,
 	useSelection,
 } from "../state/selection";
+import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 import {
 	ACTION_BAR_GAP,
@@ -32,6 +33,7 @@ export function GraphActionBar() {
 	const removeCable = useScene((state) => state.removeCable);
 	const removeEndpoint = useScene((state) => state.removeEndpoint);
 	const readOnly = useReadOnly((state) => state.readOnly);
+	const showCables = useSettings((state) => state.showCables);
 	const selectedCableUid = useSelection(selectSelectedCableUid);
 	const selectedEndpointUid = useSelection(selectSelectedEndpointUid);
 	const clearSelection = useSelection((state) => state.clearSelection);
@@ -57,7 +59,8 @@ export function GraphActionBar() {
 	const endpoint = selectedEndpointUid
 		? endpoints.find((candidate) => candidate.uid === selectedEndpointUid)
 		: undefined;
-	const visible = !readOnly && (cable !== undefined || endpoint !== undefined);
+	const visible =
+		!readOnly && showCables && (cable !== undefined || endpoint !== undefined);
 
 	useLayoutEffect(() => {
 		if (!visible) return;

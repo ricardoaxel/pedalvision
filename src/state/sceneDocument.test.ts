@@ -46,7 +46,10 @@ const customPedal: CustomPedal = {
 	heightCm: 12,
 	category: "pedal",
 	effectTypes: ["fuzz"],
-	jacks: [{ kind: "in", edge: "top", pos: 0.5 }],
+	jacks: [
+		{ kind: "in", edge: "top", pos: 0.5 },
+		{ kind: "out", edge: "bottom", pos: 0.5 },
+	],
 	power: { voltage: 9, acDc: "DC", currentMa: 20 },
 };
 
@@ -283,7 +286,7 @@ describe("cables and endpoints (P4-01)", () => {
 	};
 	const cable: Cable = {
 		uid: "cable-1",
-		from: { itemUid: "i1", jack: "0" },
+		from: { itemUid: "i1", jack: "1" },
 		to: { endpointUid: "amp-1" },
 	};
 

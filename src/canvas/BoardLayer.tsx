@@ -46,7 +46,10 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 	// While the board is dragged (not rotated), hide the rotate handle so it
 	// doesn't float away from the moving board (design-review note, 2026-10-21).
 	const boardDragging = useBoardDrag(
-		(state) => state.uid !== "" && state.kind === "drag",
+		(state) =>
+			selectedUid !== null &&
+			state.uid === selectedUid &&
+			state.kind === "drag",
 	);
 
 	const transformerRef = useRef<Konva.Transformer>(null);

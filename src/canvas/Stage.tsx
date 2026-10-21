@@ -17,6 +17,7 @@ import {
 	selectSelectedItemUid,
 	useSelection,
 } from "../state/selection";
+import { useSettings } from "../state/settings";
 import { type Point, useViewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
 import { CableLayer } from "./CableLayer";
@@ -72,6 +73,7 @@ export function Stage() {
 	const liftedItemUid = useDrag((state) => state.liftedUid);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
+	const showCables = useSettings((state) => state.showCables);
 	const readOnlyCue = useReadOnly((state) => state.cue);
 	// Undo/redo depth (P3-04) mirrored for deterministic e2e assertions.
 	const undoDepth = useHistory((state) => state.past.length);
@@ -304,6 +306,7 @@ export function Stage() {
 			data-cables={cables.length}
 			data-cable-directions={cableDirections}
 			data-cable-arrows={cableArrows}
+			data-show-cables={showCables ? "true" : "false"}
 			data-cable-preview={cablePreviewKey}
 			data-cable-target={cableTargetKey}
 			data-jack-anchors={jackAnchors}

@@ -30,7 +30,11 @@ describe("cable curve", () => {
 		const curve = cableCurve(rightEdge, leftEdge, 1);
 		expect(curve.start).toEqual({ x: 0, y: 0 });
 		expect(curve.end).toEqual({ x: 80, y: 0 });
-		expect(cablePathData(curve)).toMatch(/^M 0 0 C /);
+		expect(
+			cablePathData(curve).startsWith(
+				`M ${curve.pathStart.x} ${curve.pathStart.y} C `,
+			),
+		).toBe(true);
 	});
 
 	it("leaves a jack along its outward normal", () => {
@@ -85,6 +89,23 @@ describe("cable curve", () => {
 			(curve.arrow[1].y - curve.arrow[2].y) * 32,
 		);
 		expect(arrowWidthPx).toBeCloseTo(EXPORT_CABLE.arrowWidthCm * 32);
+	});
+
+	it("shrinks the arrow into a short patch run", () => {
+		const near = { ...leftEdge, point: { x: 3, y: 0 } };
+		const curve = cableCurve(rightEdge, near, 1);
+		const width = Math.hypot(
+			curve.arrow[1].x - curve.arrow[2].x,
+			curve.arrow[1].y - curve.arrow[2].y,
+		);
+		expect(width).toBeCloseTo(3);
+		expect(curve.arrow[0].x).toBeCloseTo(6);
+	});
+
+	it("trims the drawn path at the socket collars", () => {
+		const curve = cableCurve(rightEdge, leftEdge, 1);
+		expect(curve.pathStart.x).toBeGreaterThan(curve.start.x);
+		expect(curve.pathEnd.x).toBeLessThan(curve.end.x);
 	});
 
 	it("reports a midpoint on the curve for the action bar", () => {

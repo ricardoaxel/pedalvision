@@ -70,6 +70,9 @@ test("drags jack → jack with a real touch pointer", async ({ page }) => {
 			touchPoints: [{ id: 0, x, y }],
 		});
 	await dispatch("touchStart", from.x, from.y);
+	// Starting from a tick must not select the pedal on touch (the info sheet
+	// would cover the connection guidance/canvas).
+	await expect(page.getByTestId("info-panel")).toHaveCount(0);
 	for (let step = 1; step <= 8; step++) {
 		await dispatch(
 			"touchMove",

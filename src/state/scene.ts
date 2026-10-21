@@ -428,6 +428,74 @@ export function cableEndExists(
 	);
 }
 
+/** Signal role of a jack / endpoint (P4-02 direction normalization). */
+export type CableEndRole = "source" | "sink" | "neutral";
+
+const SOURCE_JACKS = new Set(["out", "send", "exp-out"]);
+const SINK_JACKS = new Set(["in", "return", "exp-in"]);
+
+/** Which way signal flows through a cable end, or null for an unknown end. */
+export function cableEndRole(
+	end: CableEnd,
+	items: readonly PlacedItem[],
+	endpoints: readonly Endpoint[],
+	customPedals: CustomPedal[] = [],
+): CableEndRole | null {
+	if ("endpointUid" in end) {
+		const endpoint = endpoints.find((entry) => entry.uid === end.endpointUid);
+		if (!endpoint) return null;
+		return endpoint.kind === "instrument" ? "source" : "sink";
+	}
+	const item = items.find((entry) => entry.uid === end.itemUid);
+	const index = jackIndex(end.jack);
+	if (!item || index === null) return null;
+	const jack = resolveItemJacks(item, customPedals)[index];
+	if (!jack) return null;
+	if (SOURCE_JACKS.has(jack.kind)) return "source";
+	if (SINK_JACKS.has(jack.kind)) return "sink";
+	return "neutral";
+}
+
+export interface NormalizedCableDirection {
+	from: CableEnd;
+	to: CableEnd;
+	valid: boolean;
+}
+
+/**
+ * Orient a cable by **signal semantics**, not drag order: OUT/SEND/EXP-OUT and
+ * the instrument endpoint are sources; IN/RETURN/EXP-IN and the amp endpoint are
+ * sinks. Dragging backwards (or amp → pedal) yields the same arrow direction;
+ * source↔source and sink↔sink pairs are refused. Neutral jacks (MIDI/CTRL/EXP/
+ * POWER) keep the gesture order.
+ */
+export function normalizeCableDirection(
+	from: CableEnd,
+	to: CableEnd,
+	scene: {
+		items: readonly PlacedItem[];
+		endpoints: readonly Endpoint[];
+		customPedals?: CustomPedal[];
+	},
+): NormalizedCableDirection {
+	const a = cableEndRole(
+		from,
+		scene.items,
+		scene.endpoints,
+		scene.customPedals,
+	);
+	const b = cableEndRole(to, scene.items, scene.endpoints, scene.customPedals);
+	if (!a || !b || sameCableEnd(from, to)) {
+		return { from, to, valid: false };
+	}
+	if (a === "source" && b === "sink") return { from, to, valid: true };
+	if (a === "sink" && b === "source")
+		return { from: to, to: from, valid: true };
+	if (a === "neutral" || b === "neutral") return { from, to, valid: true };
+	// source → source or sink → sink.
+	return { from, to, valid: false };
+}
+
 /** How many cables one socket accepts: mono = 1, stereo/TRS = 2. */
 export function jackCapacity(jack: Jack): number {
 	return jack.stereo === true ? 2 : 1;
@@ -496,7 +564,7 @@ export function cableEndCapacityNotice(
 			: undefined;
 	return jack?.stereo === true
 		? "This TRS jack already has two cables."
-		: "That jack is already connected.";
+		: "That jack is already connected. A TRS jack can take two cables.";
 }
 
 /**
@@ -540,14 +608,24 @@ export function pruneCableGraph(
 		) {
 			continue;
 		}
-		kept.push(cable);
+		const direction = normalizeCableDirection(cable.from, cable.to, {
+			items,
+			endpoints,
+			customPedals,
+		});
+		if (!direction.valid) continue;
+		kept.push({ ...cable, from: direction.from, to: direction.to });
 	}
-	const before = endpointRefs(cables);
+	const resolvableUids = new Set(resolvable.map((cable) => cable.uid));
+	const brokenCables = cables.filter((cable) => !resolvableUids.has(cable.uid));
+	// Only cables dropped because their **refs** were gone orphan an endpoint.
+	// Duplicate/capacity drops leave the endpoint as a placed object (A4).
+	const brokenRefs = endpointRefs(brokenCables);
 	const after = endpointRefs(kept);
 	return {
 		cables: kept,
 		endpoints: endpoints.filter(
-			(endpoint) => !before.has(endpoint.uid) || after.has(endpoint.uid),
+			(endpoint) => !brokenRefs.has(endpoint.uid) || after.has(endpoint.uid),
 		),
 	};
 }
@@ -999,14 +1077,19 @@ export const useScene = create<SceneStore>((set, get) => ({
 		if (!cableEndExists(to, state.items, state.endpoints, state.customPedals)) {
 			return null;
 		}
+		// Orient by signal semantics so the arrow can never point into an output.
+		const direction = normalizeCableDirection(from, to, state);
+		if (!direction.valid) return null;
+		const fromEnd = direction.from;
+		const toEnd = direction.to;
 		// One physical cable per jack pair: a repeated drag (or the reverse
 		// direction) must not stack a duplicate that double-spends the graph.
 		if (
-			sameCableEnd(from, to) ||
 			state.cables.some(
 				(cable) =>
-					(sameCableEnd(cable.from, from) && sameCableEnd(cable.to, to)) ||
-					(sameCableEnd(cable.from, to) && sameCableEnd(cable.to, from)),
+					(sameCableEnd(cable.from, fromEnd) &&
+						sameCableEnd(cable.to, toEnd)) ||
+					(sameCableEnd(cable.from, toEnd) && sameCableEnd(cable.to, fromEnd)),
 			)
 		) {
 			return null;
@@ -1014,14 +1097,14 @@ export const useScene = create<SceneStore>((set, get) => ({
 		// Mono jacks / endpoints accept one cable; stereo/TRS jacks accept two.
 		if (
 			!cableEndHasCapacity(
-				from,
+				fromEnd,
 				state.cables,
 				state.items,
 				state.endpoints,
 				state.customPedals,
 			) ||
 			!cableEndHasCapacity(
-				to,
+				toEnd,
 				state.cables,
 				state.items,
 				state.endpoints,
@@ -1033,7 +1116,9 @@ export const useScene = create<SceneStore>((set, get) => ({
 		// Cables and endpoints share the 150/300 graph budget (P3-06).
 		if (graphAddRefusal(state)) return null;
 		const uid = crypto.randomUUID();
-		set((current) => ({ cables: [...current.cables, { uid, from, to }] }));
+		set((current) => ({
+			cables: [...current.cables, { uid, from: fromEnd, to: toEnd }],
+		}));
 		return uid;
 	},
 	removeCable: (uid) => {

@@ -33,14 +33,22 @@ test("shows a selected catalog pedal's identity, tags and dimensions", async ({
 	await expect(panel).toBeVisible();
 	await expect(page.getByTestId("info-name")).toHaveText("BD-2 Blues Driver");
 	await expect(page.getByTestId("info-brand")).toHaveText("BOSS");
-	// The catalog seed has no power/jacks yet → those sections are absent
-	// (graceful omission, never empty scaffolding).
+	// The catalog seed has no power yet → that section is absent (graceful
+	// omission, never empty scaffolding). Jacks now show the documented fallback
+	// pair, clearly labelled as assumed.
 	await expect(page.getByTestId("info-power")).toHaveCount(0);
-	await expect(page.getByTestId("info-jacks")).toHaveCount(0);
 
 	// Dimensions + effects live in the expanded readout (the mobile peek shows
 	// dimensions in its status row); expand so both are visible.
 	await expandDetails(page);
+	await expect(page.getByTestId("info-jacks")).toBeVisible();
+	await expect(page.getByTestId("info-jacks")).toContainText(
+		"In · Left · 0.50",
+	);
+	await expect(page.getByTestId("info-jacks")).toContainText(
+		"Out · Right · 0.50",
+	);
+	await expect(page.getByTestId("info-jacks")).toContainText("assumed");
 	await expect(page.getByTestId("info-dims")).toContainText("cm");
 	await expect(page.getByTestId("info-effects")).toContainText("Overdrive");
 });

@@ -9,7 +9,12 @@ import {
 import { useDrag } from "../state/drag";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
-import { resolveItem, useScene } from "../state/scene";
+import {
+	resolveItem,
+	resolveItemJacks,
+	useScene,
+	usesFallbackJacks,
+} from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useSettings } from "../state/settings";
 import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
@@ -85,7 +90,12 @@ export function InfoPanel() {
 
 	if (!item || !resolved) return null;
 
-	const info = buildPartInfo(resolved, item.kind);
+	const info = buildPartInfo(
+		resolved,
+		item.kind,
+		resolveItemJacks(item, customPedals),
+		usesFallbackJacks(item, customPedals),
+	);
 
 	// While this item is lifted, evaluate the warning where it floats (live
 	// world origin + visible rotation) so the cue follows the drag.
@@ -366,6 +376,12 @@ export function InfoPanel() {
 								</div>
 							))}
 						</dl>
+						{info.jacksAssumed ? (
+							<p className="info-panel__assumed">
+								No catalog jack data — left/right anchors are assumed. Edit a
+								custom part to set real jacks.
+							</p>
+						) : null}
 					</section>
 				) : null}
 

@@ -8,6 +8,7 @@ import { useGesture } from "../state/gesture";
 import { useReadOnly } from "../state/readOnly";
 import { type Endpoint, useScene } from "../state/scene";
 import { useSelection } from "../state/selection";
+import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 import { CANVAS_FONTS, type CanvasTheme, ENDPOINT } from "../styles/theme";
 
@@ -26,6 +27,7 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 	const endpoints = useScene((state) => state.endpoints);
 	const moveEndpoint = useScene((state) => state.moveEndpoint);
 	const readOnly = useReadOnly((state) => state.readOnly);
+	const showCables = useSettings((state) => state.showCables);
 	const navigating = useGesture((state) => state.navigating);
 	const scale = useViewport((state) => state.scale);
 	const selectedUid = useSelection((state) =>
@@ -47,6 +49,7 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 		useEndpointDrag.getState().clear();
 	}, [navigating, moveEndpoint]);
 
+	if (!showCables) return null;
 	return (
 		<Layer>
 			{endpoints.map((endpoint) => (

@@ -5,10 +5,14 @@ import type { AnchorPoint } from "./jackAnchor";
 
 /** A screen-px cubic Bezier + its destination arrowhead. */
 export interface CableCurve {
+	/** Anchor points (used for the arrow / midpoint). */
 	start: Point;
 	control1: Point;
 	control2: Point;
 	end: Point;
+	/** Path points after trimming the socket collar at both ends. */
+	pathStart: Point;
+	pathEnd: Point;
 	/** Arrow triangle: tip, base-left, base-right (screen px). */
 	arrow: [Point, Point, Point];
 }
@@ -62,17 +66,49 @@ export function cableCurve(
 		: add(end, scalePoint(direction, -handle));
 
 	const tangent = normalize(sub(end, control2));
-	const tip = sub(end, scalePoint(tangent, CABLE.arrowGapPx / safeScale));
-	const baseCentre = sub(
-		tip,
-		scalePoint(tangent, CABLE.arrowLengthPx / safeScale),
-	);
+	// Short patch runs are normal (adjacent pedals are ~2–3 cm apart = 8–16 px
+	// at 1×). A fixed 14 + 10 px arrow would sit on/behind the source socket, so
+	// clamp it to the run and fall back to a tiny midpoint chevron.
+	const tickDiameter = 9 / safeScale;
+	const free = Math.max(0, chord - tickDiameter);
+	const short = free < 8 / safeScale;
+	const arrowLength = short
+		? 3 / safeScale
+		: Math.min(
+				CABLE.arrowLengthPx / safeScale,
+				Math.max(4 / safeScale, free * 0.45),
+			);
+	const arrowGap = short
+		? 0
+		: Math.min(
+				CABLE.arrowGapPx / safeScale,
+				Math.max(3 / safeScale, free * 0.3),
+			);
+	const tip = short
+		? { x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 }
+		: sub(end, scalePoint(tangent, arrowGap));
+	const baseCentre = sub(tip, scalePoint(tangent, arrowLength));
 	const perpendicular = { x: -tangent.y, y: tangent.x };
-	const halfWidth = CABLE.arrowWidthPx / 2 / safeScale;
+	const halfWidth = short ? 1.5 / safeScale : arrowLength * 0.4;
 	const left = add(baseCentre, scalePoint(perpendicular, halfWidth));
 	const right = sub(baseCentre, scalePoint(perpendicular, halfWidth));
 
-	return { start, control1, control2, end, arrow: [tip, left, right] };
+	// Trim the drawn path by the socket collar so the trace/halo never paints
+	// over the jack ring (the cable layer sits above the pedal).
+	const trim = Math.min(tickDiameter / 2 + 1 / safeScale, chord * 0.2);
+	const startTangent = normalize(sub(control1, start));
+	const pathStart = add(start, scalePoint(startTangent, trim));
+	const pathEnd = sub(end, scalePoint(tangent, trim));
+
+	return {
+		start,
+		control1,
+		control2,
+		end,
+		pathStart,
+		pathEnd,
+		arrow: [tip, left, right],
+	};
 }
 
 /**
@@ -120,7 +156,15 @@ export function cableCurveCm(from: AnchorPoint, to: AnchorPoint): CableCurve {
 	const halfWidth = EXPORT_CABLE.arrowWidthCm / 2;
 	const left = add(baseCentre, scalePoint(perpendicular, halfWidth));
 	const right = sub(baseCentre, scalePoint(perpendicular, halfWidth));
-	return { start, control1, control2, end, arrow: [tip, left, right] };
+	return {
+		start,
+		control1,
+		control2,
+		end,
+		pathStart: start,
+		pathEnd: end,
+		arrow: [tip, left, right],
+	};
 }
 
 /**
@@ -134,8 +178,8 @@ export function cablePathDataCm(curve: CableCurve, pxPerCm: number): string {
 
 /** Konva `Path` data for a cubic curve. */
 export function cablePathData(curve: CableCurve): string {
-	const { start, control1, control2, end } = curve;
-	return `M ${start.x} ${start.y} C ${control1.x} ${control1.y} ${control2.x} ${control2.y} ${end.x} ${end.y}`;
+	const { pathStart, control1, control2, pathEnd } = curve;
+	return `M ${pathStart.x} ${pathStart.y} C ${control1.x} ${control1.y} ${control2.x} ${control2.y} ${pathEnd.x} ${pathEnd.y}`;
 }
 
 /** A point on the curve (t = 0..1) — used to anchor the cable action bar. */

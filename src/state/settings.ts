@@ -9,6 +9,9 @@ import { readSettings, writeSettings } from "../lib/sceneIndex";
 interface SettingsStore {
 	units: DisplayUnits;
 	setUnits: (units: DisplayUnits) => void;
+	/** Canvas view preference: show cables, jack ticks and endpoints. */
+	showCables: boolean;
+	setShowCables: (showCables: boolean) => void;
 }
 
 export const useSettings = create<SettingsStore>((set) => ({
@@ -17,9 +20,18 @@ export const useSettings = create<SettingsStore>((set) => ({
 		set({ units });
 		writeSettings({ units });
 	},
+	showCables: true,
+	setShowCables: (showCables) => {
+		set({ showCables });
+		writeSettings({ showCables });
+	},
 }));
 
 /** Load persisted settings before the first render. */
 export function hydrateSettings(): void {
-	useSettings.setState({ units: readSettings().units });
+	const settings = readSettings();
+	useSettings.setState({
+		units: settings.units,
+		showCables: settings.showCables,
+	});
 }

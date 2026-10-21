@@ -107,7 +107,10 @@ describe("settings", () => {
 			version: 1,
 			units: "in",
 			activeSceneId: "scene-2",
+			showCables: true,
 		});
+		expect(writeSettings({ showCables: false }, storage)).toBe(true);
+		expect(parseSettings(storage.getItem(SETTINGS_KEY)).showCables).toBe(false);
 	});
 });
 

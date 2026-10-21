@@ -20,6 +20,7 @@ import {
 	itemsByZ,
 	type PlacedBoard,
 	resolveItem,
+	usesFallbackJacks,
 } from "../state/scene";
 import {
 	CANVAS_FONTS,
@@ -524,6 +525,43 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 	}
 }
 
+/**
+ * Honesty note for exports that include a cable to a catalog pedal with no jack
+ * data: its endpoints are the documented fallback anchors, not manufacturer
+ * positions (owner decision, 2026-10-21).
+ */
+function drawAssumedJackNote(
+	parent: Konva.Group,
+	context: RenderContext,
+): void {
+	const { plan, theme, labelUnit, pxPerCm } = context;
+	const used = plan.cables.some((cable) =>
+		[cable.from, cable.to].some((end) => {
+			if ("endpointUid" in end) return false;
+			const item = plan.items.find(
+				(candidate) => candidate.uid === end.itemUid,
+			);
+			return item ? usesFallbackJacks(item, plan.customPedals) : false;
+		}),
+	);
+	if (!used) return;
+	const x = plan.contentBoundsCm.x * pxPerCm;
+	const y =
+		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * pxPerCm +
+		EXPORT_PADDING_CM * 0.78 * pxPerCm;
+	parent.add(
+		new Konva.Text({
+			text: "Cables to catalog pedals may use assumed IN/OUT jack positions.",
+			x,
+			y,
+			fontFamily: CANVAS_FONTS.mono,
+			fontSize: 8 / labelUnit,
+			fill: theme.boardLabel,
+			listening: false,
+		}),
+	);
+}
+
 function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
 	const { plan, theme, labelUnit, pxPerCm } = context;
 	const contentWidth = plan.contentBoundsCm.widthCm;
@@ -689,6 +727,7 @@ export async function renderExportFile(
 
 		drawCables(content, context);
 		drawScaleBar(content, context);
+		drawAssumedJackNote(content, context);
 		layer.draw();
 
 		// Encode straight to a Blob. `toDataURL` would build a multi-MB base64

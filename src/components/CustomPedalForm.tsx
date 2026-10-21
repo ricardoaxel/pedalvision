@@ -391,7 +391,7 @@ export function CustomPedalForm({
 													updateJack(jack.id, { stereo: event.target.checked })
 												}
 											/>
-											<span>TRS</span>
+											<span>TRS (2 cables)</span>
 										</label>
 
 										<button
