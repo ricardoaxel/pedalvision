@@ -10,7 +10,7 @@ Make the P4-01 cable graph usable and truthful end to end: drag from a visible j
 
 - `docs/design.md` §Canvas architecture (CableLayer, DragLayer, export scope), §Data model (Cable/Endpoint/Jack), §Persistence → P4 extension contract, §Capacity budgets
 - `docs/requirements.md` F12 (cables), F10 (share), A4 (identical state), A5 (share identical)
-- `docs/roadmap.md` P4-02 + the P4-02 notes left by P4-01's reviews + P4-04
+- `docs/roadmap.md` P4-02 + the P4-02 notes left by P4-01's reviews + P5-01 (was P4-04)
 - `src/state/scene.ts`, `sceneDocument.ts`, `library.ts`, `history.ts`, `drag.ts`
 - `src/lib/jackAnchor.ts`, `shareLink.ts`, `exportScene.ts`, `capacity.ts`
 - `src/components/SharePanel.tsx`, `ShareView.tsx`, `ExportPanel.tsx`, `CapacityAnnouncer.tsx`, `ScenePanel.tsx`, `Picker.tsx`
@@ -29,7 +29,7 @@ Make the P4-01 cable graph usable and truthful end to end: drag from a visible j
 - Endpoint/cable dragging is **transient** (`state/drag.ts` style): no store writes per pointermove; commit exactly once on pointerup → one history step, one autosave.
 - Memoize jack anchors per scene mutation (uid→anchor map); never resolve anchors inside the render loop.
 - Do not raise the 150/300 graph cap.
-- P4-04 (catalog procurement) runs in parallel; not a dependency. Do not start P4-03.
+- P5-01 (catalog program, was P4-04) runs in parallel; not a dependency. Do not start P4-03.
 
 ## Steps
 
@@ -63,6 +63,6 @@ Make the P4-01 cable graph usable and truthful end to end: drag from a visible j
 - **Owner decisions (2026-10-21):** fallback anchors for catalog pedals; share `v2` with legacy `v1` decode.
 - P4-01 review notes folded: transient endpoint drag, anchor memoization, custom-part cable pruning, share URL budget.
 - **Expected performance finding:** the share URL budget binds once cables travel — a 400-item + 200-cable + 100-endpoint scene measured **38,184 chars** vs the 32,000 hard cap (200 items + 300 graph = 27,276). Re-measure at 100/200/400 items + graph and record the verdict; do not raise the graph cap.
-- P4-04 owner outreach runs in parallel; not a gate.
+- P5-01 catalog work runs in parallel; not a gate.
 - **Owner bug fixes (2026-10-21, folded into PR #31):** (a) the first cut only rejected the same cable pair, so a mono output could take two cables. Added `Jack.stereo?: boolean` (custom editor **TRS** toggle), one-cable-per-mono-jack/endpoint and two-per-TRS enforcement in `addCable`, the drag target check, the source-jack check, and `pruneCableGraph`; unit + e2e coverage. (b) Exported cables were straight centre-to-centre lines — export now reuses `cableCurveCm` + the jack-anchor index in physical cm (halo + arrow), and a lifted pedal's incident cables follow `liftedWorldCm`/`liftedRotationDeg` via `liftedJackAnchor`; unit tests + export/drag screenshot verification. (c) Moving/rotating a **board** left its cables behind until release — a transient `boardDrag` transform now feeds `CableLayer` (live board transform) and the rotate handle is hidden during a translation drag; mid-drag screenshot verified.
 - **Owner-requested 2 review rounds + confirmation (2026-10-21):** round 1 folded semantic direction normalization, endpoint arrow/tag geometry, assumed disclosure, 44px TRS control/double-ring, mobile cable drag/overlay fixes, static/live cable split, persisted **Show patch** toggle (off by default, owner follow-up), mobile header/popover + centered theme icon; round 2 folded popover CSS order, read-only graph visibility + hidden-patch cue, direction-rejected notice, muted assumed diamonds, export endpoint chips/bounds; confirmation: code-reviewer **approve**, designer **approve-with-changes** (trace thread/status width fixed), design-reviewer **approve**. Checks: lint / typecheck / test **553** / build / e2e **245 + 7 skipped**. Design: owner approved “Patch Drafting”; `design-reviewer` 2/2 (R2 approve-with-changes, no blockers; fixed hollow fallback diamonds + stronger halo; remaining halo-over-photo note handed to the owner). Performance `performance-expert`: **risk** (drag fan-out, endpoint per-tag drag + live cables and graph-aware refusal copy fixed; hard-cap **16 fps at 400+300**, untrusted v2 payload confirmation and a ~24K share warning tier recorded as watch notes; cap unchanged). Code review: light pass 1 changes-required → pass 2 same session **approve** (nits folded: touch cross-item assertion, hand-computed rotated anchor, inline refusal + load dedupe). **Merged 2026-10-21 (PR #31, squash `f001a0b`).**
