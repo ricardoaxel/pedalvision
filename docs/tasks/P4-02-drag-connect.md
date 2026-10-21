@@ -1,6 +1,6 @@
 # P4-02: Drag-connect UI + direction arrows + amp/instrument endpoints
 
-**Phase:** P4 · **Status:** todo · **Model:** build-strong
+**Phase:** P4 · **Status:** in review — PR #31 (not merged) · **Model:** build-strong
 
 ## Goal
 
@@ -64,3 +64,4 @@ Make the P4-01 cable graph usable and truthful end to end: drag from a visible j
 - P4-01 review notes folded: transient endpoint drag, anchor memoization, custom-part cable pruning, share URL budget.
 - **Expected performance finding:** the share URL budget binds once cables travel — a 400-item + 200-cable + 100-endpoint scene measured **38,184 chars** vs the 32,000 hard cap (200 items + 300 graph = 27,276). Re-measure at 100/200/400 items + graph and record the verdict; do not raise the graph cap.
 - P4-04 owner outreach runs in parallel; not a gate.
+- **Outcome (2026-10-21):** implemented + reviewed; **PR #31** open (branch `p4-02-drag-connect`, commits `15ca368`/`dd511b6`/`aed0f54`). Checks: lint / typecheck / test **543** / build / e2e **229 + 7 skipped**. Design: owner approved “Patch Drafting”; `design-reviewer` 2/2 (R2 approve-with-changes, no blockers; fixed hollow fallback diamonds + stronger halo; remaining halo-over-photo note handed to the owner). Performance `performance-expert`: **risk** (drag fan-out, endpoint per-tag drag + live cables and graph-aware refusal copy fixed; hard-cap **16 fps at 400+300**, untrusted v2 payload confirmation and a ~24K share warning tier recorded as watch notes; cap unchanged). Code review: light pass 1 changes-required → pass 2 same session **approve** (nits folded: touch cross-item assertion, hand-computed rotated anchor, inline refusal + load dedupe). **Do not start P4-03 until #31 merges.**
