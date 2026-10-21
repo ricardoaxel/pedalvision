@@ -440,11 +440,24 @@ export function pruneCableGraph(
 	items: PlacedItem[],
 	customPedals: CustomPedal[] = [],
 ): { cables: Cable[]; endpoints: Endpoint[] } {
-	const kept = cables.filter(
+	const resolvable = cables.filter(
 		(cable) =>
 			cableEndExists(cable.from, items, endpoints, customPedals) &&
 			cableEndExists(cable.to, items, endpoints, customPedals),
 	);
+	// One physical cable per jack pair (unordered), so a hand-edited/shared
+	// document can never hold a state the live UI refuses to create.
+	const seenPairs = new Set<string>();
+	const kept = resolvable.filter((cable) => {
+		const pair = [
+			cableEndKeyForPair(cable.from),
+			cableEndKeyForPair(cable.to),
+		].sort();
+		const key = pair.join("|");
+		if (seenPairs.has(key)) return false;
+		seenPairs.add(key);
+		return true;
+	});
 	const before = endpointRefs(cables);
 	const after = endpointRefs(kept);
 	return {
@@ -453,6 +466,13 @@ export function pruneCableGraph(
 			(endpoint) => !before.has(endpoint.uid) || after.has(endpoint.uid),
 		),
 	};
+}
+
+/** A stable key for one cable end, used to dedupe unordered pairs. */
+export function cableEndKeyForPair(end: CableEnd): string {
+	return "endpointUid" in end
+		? `endpoint:${end.endpointUid}`
+		: `item:${end.itemUid}:${jackIndex(end.jack) ?? -1}`;
 }
 
 /** The endpoint uids any of these cables terminate on. */

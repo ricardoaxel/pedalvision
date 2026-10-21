@@ -51,10 +51,15 @@ test("drags jack → jack with a real touch pointer", async ({ page }) => {
 		.filter((entry) => entry.startsWith("item:"))
 		.map((entry) => entry.split("@")[0]);
 	const outA = keys.find((key) => key.endsWith(":1"));
+	const uidA = outA?.split(":")[1];
 	const inB = keys.find(
-		(key) => key.startsWith("item:") && key.endsWith(":0") && key !== outA,
+		(key) =>
+			key.startsWith("item:") &&
+			key.endsWith(":0") &&
+			uidA !== undefined &&
+			!key.startsWith(`item:${uidA}:`),
 	);
-	if (!outA || !inB) throw new Error("expected two jacked items");
+	if (!outA || !inB || !uidA) throw new Error("expected two jacked items");
 	const from = await anchorScreenPoint(page, outA);
 	const to = await anchorScreenPoint(page, inB);
 
@@ -76,4 +81,9 @@ test("drags jack → jack with a real touch pointer", async ({ page }) => {
 
 	await expect(stage).toHaveAttribute("data-cables", "1");
 	await expect(stage).toHaveAttribute("data-cable-arrows", "1");
+	const uidB = inB.split(":")[1];
+	await expect(stage).toHaveAttribute(
+		"data-cable-directions",
+		`item:${uidA}:1>item:${uidB}:0`,
+	);
 });

@@ -190,6 +190,7 @@ export function EndpointPlacementOverlay() {
 export function GraphStatusChip() {
 	const kind = useEndpointPlacement((state) => state.kind);
 	const source = useCableDrag((state) => state.source);
+	const notice = useCableDrag((state) => state.notice);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
 
@@ -201,10 +202,21 @@ export function GraphStatusChip() {
 		return jack ? jack.kind.toUpperCase() : "a jack";
 	})();
 
-	if (!kind && !source) return null;
+	useEffect(() => {
+		if (!notice) return;
+		const timer = setTimeout(
+			() => useCableDrag.getState().setNotice(null),
+			5_000,
+		);
+		return () => clearTimeout(timer);
+	}, [notice]);
+
+	if (!kind && !source && !notice) return null;
 	const text = kind
 		? `Place ${kind === "amp" ? "Amp input" : "Instrument"} — tap the canvas.`
-		: `Connecting from ${sourceLabel} — release on a jack.`;
+		: source
+			? `Connecting from ${sourceLabel} — release on a jack.`
+			: (notice ?? "");
 
 	return (
 		<div
@@ -215,17 +227,19 @@ export function GraphStatusChip() {
 			aria-atomic="true"
 		>
 			<span>{text}</span>
-			<button
-				type="button"
-				className="graph-status__cancel"
-				data-testid="graph-status-cancel"
-				onClick={() => {
-					useEndpointPlacement.getState().disarm();
-					useCableDrag.getState().cancel();
-				}}
-			>
-				Cancel
-			</button>
+			{kind || source ? (
+				<button
+					type="button"
+					className="graph-status__cancel"
+					data-testid="graph-status-cancel"
+					onClick={() => {
+						useEndpointPlacement.getState().disarm();
+						useCableDrag.getState().cancel();
+					}}
+				>
+					Cancel
+				</button>
+			) : null}
 		</div>
 	);
 }

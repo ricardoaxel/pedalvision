@@ -1,5 +1,6 @@
 import type { RefObject } from "react";
 import { useEffect, useRef } from "react";
+import { graphAddRefusal } from "../lib/capacity";
 import { type Point, pxToCm } from "../lib/geometry";
 import { anchorIndexFor } from "../lib/jackAnchor";
 import {
@@ -9,7 +10,7 @@ import {
 } from "../state/cableDrag";
 import { useGesture } from "../state/gesture";
 import { isReadOnly } from "../state/readOnly";
-import { useScene } from "../state/scene";
+import { sameCableEnd, useScene } from "../state/scene";
 import { pxToWorldCm, useViewport } from "../state/viewport";
 
 /** Screen-px snap radius for a mouse / touch destination anchor. */
@@ -124,7 +125,23 @@ export function useCableDrag(
 					target.kind === "item"
 						? { itemUid: target.uid, jack: String(target.jackIndex) }
 						: { endpointUid: target.uid };
-				useScene.getState().addCable(from, to);
+				const scene = useScene.getState();
+				const duplicate = scene.cables.some(
+					(cable) =>
+						(sameCableEnd(cable.from, from) && sameCableEnd(cable.to, to)) ||
+						(sameCableEnd(cable.from, to) && sameCableEnd(cable.to, from)),
+				);
+				const uid = scene.addCable(from, to);
+				if (!uid) {
+					// Never fail silently: the duplicate/graph-cap refusal is inline.
+					drag.cancel();
+					drag.setNotice(
+						duplicate
+							? "Those jacks are already connected."
+							: (graphAddRefusal(scene) ?? "Couldn’t connect those jacks."),
+					);
+					return;
+				}
 			}
 			drag.cancel();
 		};

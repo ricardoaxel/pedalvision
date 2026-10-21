@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { CAPACITY, capacityStatus } from "../lib/capacity";
 import { useReadOnly } from "./readOnly";
-import { useScene } from "./scene";
+import { pruneCableGraph, useScene } from "./scene";
 
 function required<T>(value: T | null): T {
 	if (value === null) throw new Error("expected a value");
@@ -185,6 +185,32 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene.getState().addCable({ endpointUid }, { itemUid, jack: "0" }),
 		).toBeNull();
 		expect(useScene.getState().cables).toHaveLength(1);
+	});
+
+	it("prunes duplicate unordered cable pairs during normalisation", () => {
+		const itemUid = addJackedItem();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		const endpoint = useScene
+			.getState()
+			.endpoints.find((entry) => entry.uid === endpointUid);
+		if (!endpoint) throw new Error("expected the endpoint");
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		if (!item) throw new Error("expected the placed item");
+		const graph = pruneCableGraph(
+			[
+				{ uid: "c1", from: { itemUid, jack: "0" }, to: { endpointUid } },
+				{ uid: "c2", from: { endpointUid }, to: { itemUid, jack: "0" } },
+			],
+			[endpoint],
+			[item],
+			useScene.getState().customPedals,
+		);
+		expect(graph.cables.map((cable) => cable.uid)).toEqual(["c1"]);
+		expect(graph.endpoints.map((entry) => entry.uid)).toEqual([endpointUid]);
 	});
 
 	it("removing an endpoint removes its cables; the other endpoint survives", () => {

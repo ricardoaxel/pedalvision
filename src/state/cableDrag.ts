@@ -22,7 +22,11 @@ interface CableDragState {
 	pointerWorldCm: Point | null;
 	/** The jack/endpoint under the pointer, snapped within the hit threshold. */
 	target: CableDragTarget | null;
+	/** Inline refusal after a failed commit (duplicate / graph cap). */
+	notice: string | null;
 	begin: (source: CableDragSource) => void;
+	/** Set/clear the inline refusal (cleared when a new drag starts). */
+	setNotice: (notice: string | null) => void;
 	setPointer: (point: Point) => void;
 	setTarget: (target: CableDragTarget | null) => void;
 	/** One store update per pointermove; keeps the target reference stable. */
@@ -34,7 +38,10 @@ export const useCableDrag = create<CableDragState>((set) => ({
 	source: null,
 	pointerWorldCm: null,
 	target: null,
-	begin: (source) => set({ source, pointerWorldCm: null, target: null }),
+	notice: null,
+	begin: (source) =>
+		set({ source, pointerWorldCm: null, target: null, notice: null }),
+	setNotice: (notice) => set({ notice }),
 	setPointer: (pointerWorldCm) => set({ pointerWorldCm }),
 	setTarget: (target) => set({ target }),
 	update: (pointerWorldCm, target) =>

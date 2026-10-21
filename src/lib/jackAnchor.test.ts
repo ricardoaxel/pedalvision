@@ -219,6 +219,10 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 			endpoints: [],
 		});
 		const anchor = cableEndAnchorFromIndex({ itemUid: "i1", jack: "0" }, index);
+		// Hand-computed: item top-centre (5,0) → item 90° → (0,5) → board 90°
+		// → (-5,0) → board origin (100,50).
+		expect(anchor?.point.x).toBeCloseTo(95);
+		expect(anchor?.point.y).toBeCloseTo(50);
 		expect(anchor?.point).toEqual(
 			jackAnchorWorld(attached, "0", [board], [customPedal]),
 		);
