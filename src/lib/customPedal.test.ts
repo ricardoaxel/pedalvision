@@ -251,3 +251,34 @@ describe("draftFromCustomPedal", () => {
 		expect(draft.jacks).toEqual([]);
 	});
 });
+
+describe("stereo / TRS jack drafts", () => {
+	it("round-trips the stereo flag through the draft and definition", () => {
+		const base = emptyCustomPedalDraft("cm");
+		const draft = {
+			...base,
+			name: "Stereo",
+			width: "8",
+			depth: "12",
+			widthCm: 8,
+			depthCm: 12,
+			jacks: [
+				{
+					id: "j1",
+					kind: "out" as const,
+					edge: "right" as const,
+					pos: 0.5,
+					stereo: true,
+				},
+			],
+		};
+		const result = validateCustomPedalDraft(draft);
+		if (!result.ok) throw new Error("expected a valid draft");
+		expect(result.value.jacks?.[0]).toMatchObject({ stereo: true });
+		const seeded = draftFromCustomPedal({
+			...result.value,
+			refId: "custom-trs",
+		});
+		expect(seeded.jacks[0].stereo).toBe(true);
+	});
+});

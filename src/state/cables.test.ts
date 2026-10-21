@@ -126,8 +126,13 @@ describe("endpoints + cables (P4-01)", () => {
 				.addCable({ itemUid: catalogUid, jack: "2" }, { endpointUid }),
 		).toBeNull();
 		expect(useScene.getState().cables).toHaveLength(1);
+		const freeEndpoint = required(
+			useScene.getState().addEndpoint("instrument", { x: -20, y: 10 }),
+		);
 		expect(
-			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
+			useScene
+				.getState()
+				.addCable({ itemUid, jack: "1" }, { endpointUid: freeEndpoint }),
 		).not.toBeNull();
 	});
 
@@ -185,6 +190,115 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene.getState().addCable({ endpointUid }, { itemUid, jack: "0" }),
 		).toBeNull();
 		expect(useScene.getState().cables).toHaveLength(1);
+	});
+
+	it("allows one cable per mono jack, two per stereo/TRS jack", () => {
+		const monoUid = addJackedItem();
+		const amp = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		const inst = required(
+			useScene.getState().addEndpoint("instrument", { x: -20, y: 10 }),
+		);
+		required(
+			useScene
+				.getState()
+				.addCable({ itemUid: monoUid, jack: "1" }, { endpointUid: amp }),
+		);
+		// Same mono output, different destination → refused.
+		expect(
+			useScene
+				.getState()
+				.addCable({ itemUid: monoUid, jack: "1" }, { endpointUid: inst }),
+		).toBeNull();
+
+		const stereoRef = required(
+			useScene.getState().addCustomPedal({
+				brand: "Acme",
+				name: "Stereo Out",
+				widthCm: 8,
+				heightCm: 12,
+				category: "pedal",
+				effectTypes: [],
+				jacks: [{ kind: "out", edge: "right", pos: 0.5, stereo: true }],
+			}),
+		);
+		const stereoUid = required(
+			useScene.getState().addItem(stereoRef, "pedal", null, { x: 0, y: 0 }),
+		);
+		const s1 = required(
+			useScene.getState().addEndpoint("amp", { x: 80, y: 10 }),
+		);
+		const s2 = required(
+			useScene.getState().addEndpoint("instrument", { x: 90, y: 10 }),
+		);
+		const s3 = required(
+			useScene.getState().addEndpoint("amp", { x: 100, y: 10 }),
+		);
+		expect(
+			useScene
+				.getState()
+				.addCable({ itemUid: stereoUid, jack: "0" }, { endpointUid: s1 }),
+		).not.toBeNull();
+		expect(
+			useScene
+				.getState()
+				.addCable({ itemUid: stereoUid, jack: "0" }, { endpointUid: s2 }),
+		).not.toBeNull();
+		// A TRS jack has two channels, not three.
+		expect(
+			useScene
+				.getState()
+				.addCable({ itemUid: stereoUid, jack: "0" }, { endpointUid: s3 }),
+		).toBeNull();
+	});
+
+	it("allows one cable per endpoint", () => {
+		const one = addJackedItem();
+		const two = addJackedItem(20);
+		const amp = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		required(
+			useScene
+				.getState()
+				.addCable({ itemUid: one, jack: "1" }, { endpointUid: amp }),
+		);
+		expect(
+			useScene
+				.getState()
+				.addCable({ itemUid: two, jack: "1" }, { endpointUid: amp }),
+		).toBeNull();
+	});
+
+	it("prunes excess cables on one socket during normalisation", () => {
+		const itemUid = addJackedItem();
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		if (!item) throw new Error("expected the placed item");
+		const endpoints = [
+			{ uid: "amp-1", kind: "amp" as const, x: 40, y: 10 },
+			{ uid: "amp-2", kind: "amp" as const, x: 60, y: 10 },
+		];
+		const graph = pruneCableGraph(
+			[
+				{
+					uid: "c1",
+					from: { itemUid, jack: "1" },
+					to: { endpointUid: "amp-1" },
+				},
+				{
+					uid: "c2",
+					from: { itemUid, jack: "1" },
+					to: { endpointUid: "amp-2" },
+				},
+			],
+			endpoints,
+			[item],
+			useScene.getState().customPedals,
+		);
+		expect(graph.cables.map((cable) => cable.uid)).toEqual(["c1"]);
 	});
 
 	it("prunes duplicate unordered cable pairs during normalisation", () => {

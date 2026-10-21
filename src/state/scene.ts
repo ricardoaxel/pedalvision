@@ -428,6 +428,77 @@ export function cableEndExists(
 	);
 }
 
+/** How many cables one socket accepts: mono = 1, stereo/TRS = 2. */
+export function jackCapacity(jack: Jack): number {
+	return jack.stereo === true ? 2 : 1;
+}
+
+/** Does this cable end terminate on `itemUid`'s jack index? */
+export function cableEndUsesItemJack(
+	end: CableEnd,
+	itemUid: string,
+	index: number,
+): boolean {
+	return (
+		"itemUid" in end && end.itemUid === itemUid && jackIndex(end.jack) === index
+	);
+}
+
+/**
+ * Can this jack/endpoint accept one more cable? A mono jack and an endpoint
+ * accept one cable; a stereo/TRS jack accepts two (P4-02 bug fix: two cables on
+ * the same mono output were previously allowed because only the identical pair
+ * was rejected). `cables` is the current/partially-accepted list, so this also
+ * powers load normalisation.
+ */
+export function cableEndHasCapacity(
+	end: CableEnd,
+	cables: readonly Cable[],
+	items: readonly PlacedItem[],
+	endpoints: readonly Endpoint[],
+	customPedals: CustomPedal[] = [],
+): boolean {
+	if ("endpointUid" in end) {
+		if (!endpoints.some((endpoint) => endpoint.uid === end.endpointUid)) {
+			return false;
+		}
+		const used = cables.filter((cable) =>
+			cableReferencesEndpoint(cable, end.endpointUid),
+		).length;
+		return used < 1;
+	}
+	const item = items.find((candidate) => candidate.uid === end.itemUid);
+	if (!item) return false;
+	const index = jackIndex(end.jack);
+	if (index === null) return false;
+	const jack = resolveItemJacks(item, customPedals)[index];
+	if (!jack) return false;
+	const used = cables.filter(
+		(cable) =>
+			cableEndUsesItemJack(cable.from, item.uid, index) ||
+			cableEndUsesItemJack(cable.to, item.uid, index),
+	).length;
+	return used < jackCapacity(jack);
+}
+
+/** Inline reason when a cable end is already occupied (or full for stereo). */
+export function cableEndCapacityNotice(
+	end: CableEnd,
+	items: readonly PlacedItem[],
+	customPedals: CustomPedal[] = [],
+): string {
+	if ("endpointUid" in end) return "That endpoint is already connected.";
+	const item = items.find((candidate) => candidate.uid === end.itemUid);
+	const index = jackIndex(end.jack);
+	const jack =
+		item && index !== null
+			? resolveItemJacks(item, customPedals)[index]
+			: undefined;
+	return jack?.stereo === true
+		? "This TRS jack already has two cables."
+		: "That jack is already connected.";
+}
+
 /**
  * Drop cables whose ends no longer resolve and endpoints orphaned by those
  * dropped cables. A standalone endpoint (no stored cable referenced it) is a
@@ -448,7 +519,7 @@ export function pruneCableGraph(
 	// One physical cable per jack pair (unordered), so a hand-edited/shared
 	// document can never hold a state the live UI refuses to create.
 	const seenPairs = new Set<string>();
-	const kept = resolvable.filter((cable) => {
+	const deduped = resolvable.filter((cable) => {
 		const pair = [
 			cableEndKeyForPair(cable.from),
 			cableEndKeyForPair(cable.to),
@@ -458,6 +529,19 @@ export function pruneCableGraph(
 		seenPairs.add(key);
 		return true;
 	});
+	// Enforce per-socket capacity in document order: mono = 1, stereo/TRS = 2,
+	// endpoint = 1. Keep the first cable(s) and drop the excess.
+	const kept: Cable[] = [];
+	for (const cable of deduped) {
+		if (sameCableEnd(cable.from, cable.to)) continue;
+		if (
+			!cableEndHasCapacity(cable.from, kept, items, endpoints, customPedals) ||
+			!cableEndHasCapacity(cable.to, kept, items, endpoints, customPedals)
+		) {
+			continue;
+		}
+		kept.push(cable);
+	}
 	const before = endpointRefs(cables);
 	const after = endpointRefs(kept);
 	return {
@@ -918,10 +1002,30 @@ export const useScene = create<SceneStore>((set, get) => ({
 		// One physical cable per jack pair: a repeated drag (or the reverse
 		// direction) must not stack a duplicate that double-spends the graph.
 		if (
+			sameCableEnd(from, to) ||
 			state.cables.some(
 				(cable) =>
 					(sameCableEnd(cable.from, from) && sameCableEnd(cable.to, to)) ||
 					(sameCableEnd(cable.from, to) && sameCableEnd(cable.to, from)),
+			)
+		) {
+			return null;
+		}
+		// Mono jacks / endpoints accept one cable; stereo/TRS jacks accept two.
+		if (
+			!cableEndHasCapacity(
+				from,
+				state.cables,
+				state.items,
+				state.endpoints,
+				state.customPedals,
+			) ||
+			!cableEndHasCapacity(
+				to,
+				state.cables,
+				state.items,
+				state.endpoints,
+				state.customPedals,
 			)
 		) {
 			return null;

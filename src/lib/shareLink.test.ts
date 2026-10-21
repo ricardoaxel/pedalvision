@@ -51,7 +51,7 @@ const custom = (
 	category: "pedal",
 	effectTypes: ["fuzz"],
 	jacks: [
-		{ kind: "in", edge: "top", pos: 0.5 },
+		{ kind: "in", edge: "top", pos: 0.5, stereo: true },
 		{ kind: "out", edge: "bottom", pos: 0.25 },
 	],
 	power: { voltage: 9, acDc: "DC", currentMa: 20 },

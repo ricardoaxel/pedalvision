@@ -167,6 +167,7 @@ const jackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
 	edge: z.enum(JACK_EDGES),
 	pos: z.number().finite().min(0).max(1),
+	stereo: z.boolean().optional(),
 });
 
 const powerSchema = z.object({

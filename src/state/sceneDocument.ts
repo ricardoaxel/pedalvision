@@ -132,7 +132,8 @@ function isJack(value: unknown): boolean {
 		(JACK_EDGES as readonly string[]).includes(value.edge) &&
 		isFiniteNumber(value.pos) &&
 		value.pos >= 0 &&
-		value.pos <= 1
+		value.pos <= 1 &&
+		(value.stereo === undefined || typeof value.stereo === "boolean")
 	);
 }
 

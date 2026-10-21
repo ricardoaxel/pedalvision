@@ -166,6 +166,12 @@ export const JackSchema = z.object({
 	edge: z.enum(JACK_EDGES),
 	/** Position along the edge, 0..1 (0.5 = centered). */
 	pos: z.number().min(0).max(1),
+	/**
+	 * Stereo / TRS jack (P4-02 bug fix): a stereo jack can carry two cables
+	 * (e.g. a TRS output split to two destinations). Mono jacks accept one.
+	 * Absent = mono (keeps older catalog/custom definitions valid).
+	 */
+	stereo: z.boolean().optional(),
 });
 
 export const PowerSchema = z.object({

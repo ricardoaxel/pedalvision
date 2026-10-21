@@ -82,6 +82,24 @@ test("edits an existing custom part from the action bar", async ({ page }) => {
 	await expect(page.getByTestId("custom-name")).toHaveValue("My Fuzz II");
 });
 
+test("marks a jack as stereo/TRS and reopens it checked", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "custom");
+	await fillMinimalPart(page, { name: "Stereo Out", width: "8", depth: "12" });
+	await page.getByTestId("custom-add-jack").click();
+	const trs = page.locator('[data-testid^="custom-jack-stereo-"]');
+	await expect(trs).toBeVisible();
+	await trs.check();
+	await page.getByTestId("custom-submit").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	// Edit reopens the stored definition with the TRS flag intact.
+	await page.getByTestId("edit-custom-part").click();
+	await expect(
+		page.locator('[data-testid^="custom-jack-stereo-"]'),
+	).toBeChecked();
+});
+
 test("the Edit action is not offered for a catalog pedal", async ({ page }) => {
 	await page.goto("/");
 	await addPedal(page, "boss-bd-2-blues-driver");

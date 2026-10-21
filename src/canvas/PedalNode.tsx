@@ -16,6 +16,8 @@ import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import {
+	cableEndCapacityNotice,
+	cableEndHasCapacity,
 	type PlacedItem,
 	resolveItem,
 	resolveItemJacks,
@@ -446,6 +448,26 @@ export function PedalNode({
 					kind: "item",
 					startClient: client,
 				});
+				return;
+			}
+			// Mono jacks accept one cable, stereo/TRS two: never start a second
+			// connection on an occupied socket (owner bug report, 2026-10-21).
+			const scene = useScene.getState();
+			const end = { itemUid: item.uid, jack: String(index) };
+			if (
+				!cableEndHasCapacity(
+					end,
+					scene.cables,
+					scene.items,
+					scene.endpoints,
+					scene.customPedals,
+				)
+			) {
+				useCableDrag
+					.getState()
+					.setNotice(
+						cableEndCapacityNotice(end, scene.items, scene.customPedals),
+					);
 				return;
 			}
 			useCableDrag.getState().begin({ itemUid: item.uid, jackIndex: index });

@@ -10,7 +10,7 @@ import {
 } from "../state/cableDrag";
 import { useGesture } from "../state/gesture";
 import { isReadOnly } from "../state/readOnly";
-import { sameCableEnd, useScene } from "../state/scene";
+import { cableEndHasCapacity, sameCableEnd, useScene } from "../state/scene";
 import { pxToWorldCm, useViewport } from "../state/viewport";
 
 /** Screen-px snap radius for a mouse / touch destination anchor. */
@@ -83,7 +83,22 @@ export function useCableDrag(
 							jackIndex: best.anchor.jackIndex,
 						}
 					: { kind: "endpoint", uid: best.anchor.uid };
-			return isCableTargetValid(source, target) ? target : null;
+			if (!isCableTargetValid(source, target)) return null;
+			// The destination must have a free socket (mono = 1, TRS = 2, endpoint
+			// = 1); an occupied target never snaps.
+			const end =
+				target.kind === "item"
+					? { itemUid: target.uid, jack: String(target.jackIndex) }
+					: { endpointUid: target.uid };
+			return cableEndHasCapacity(
+				end,
+				scene.cables,
+				scene.items,
+				scene.endpoints,
+				scene.customPedals,
+			)
+				? target
+				: null;
 		};
 
 		const onMove = (event: PointerEvent) => {

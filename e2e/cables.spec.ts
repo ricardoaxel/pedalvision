@@ -131,6 +131,45 @@ test("drags jack → jack, renders a direction arrow and autosaves", async ({
 	);
 });
 
+test("a mono jack accepts only one cable (no second connection)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await addPedal(page, "boss-da-2-adaptive-distortion");
+	await addPedal(page, "mxr-bass-distortion");
+	const { outA, inB, uidA, uidB } = await firstTwoItemJacks(page);
+	await clearSelection(page);
+
+	const from = await anchorScreenPoint(page, outA);
+	await dragBetween(page, from, await anchorScreenPoint(page, inB));
+	await expect(stage).toHaveAttribute("data-cables", "1");
+
+	// A second drag from the same (now occupied) mono output must not start.
+	await dragBetween(page, from, {
+		x: from.x + 120,
+		y: from.y + 60,
+	});
+	// The cable path sits above the pedal (and covers the occupied tick), so a
+	// press there selects that cable — but no second connection may be created.
+	await expect(stage).toHaveAttribute("data-cables", "1");
+
+	// A free output → the occupied output is also refused (no snap/commit).
+	const outB = `item:${uidB}:1`;
+	await dragBetween(
+		page,
+		await anchorScreenPoint(page, outB),
+		await anchorScreenPoint(page, outA),
+	);
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	// The first cable is still the only one and still points the right way.
+	await expect(stage).toHaveAttribute(
+		"data-cable-directions",
+		`item:${uidA}:1>item:${uidB}:0`,
+	);
+});
+
 test("escapes and empty releases never create a cable", async ({ page }) => {
 	await page.goto("/");
 	const stage = page.getByTestId("stage");

@@ -1639,6 +1639,23 @@ body {
 	text-align: right;
 }
 
+.custom__jack-stereo {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-wide);
+	color: var(--color-ink-muted);
+	cursor: pointer;
+	user-select: none;
+}
+
+.custom__jack-stereo input {
+	margin: 0;
+	accent-color: var(--color-accent);
+}
+
 .custom__jack-remove {
 	display: inline-flex;
 	align-items: center;
