@@ -25,13 +25,14 @@ Establish the owner-approved policy and data contract for the P5 catalog, then b
 
 ## Steps
 
-1. Update ADR-003: public-asset policy, `public-asset` tag, attribution/takedown, launch-gate wording, 2,000 cap.
+1. Update ADR-003: public-asset policy, `public-asset` tag, attribution/takedown, launch-gate wording, 2,000 cap, **capture-once raw research archive**.
 2. Extend the catalog schema (additive): `usage`, `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`, `public-asset` in `SOURCE_TAGS`; keep `jacks.stereo?`.
-3. Build `data/catalog/inventory.json` from the 8,557-item discovery list + other `pedal-expert` sources: normalize brand/name, slug, dedupe, collapse colorways to `variantOf`, brand tiers (A/B/C).
-4. Mark which inventory items overlap the current 207 seed; preserve curated effect types/sources.
-5. Produce `data/catalog/seed-validation.json` for the 207: keep/repair/replace/drop + reasons (missing mandatory field, bad dimensions, bad image, duplicate).
-6. Record the **2,000 hosted-pedal / ~4,000 image / ~300 MB** cap in the tooling constants/plan (no enforcement code yet if P5-02 owns it).
-7. Surface the owner decisions: public-asset policy + attribution/takedown page, and the `public-asset` tag.
+3. Define the **raw research record** (superset) and `data/catalog/research/<brand>/<batch>.json`, so all verified facts/image candidates/source pages are kept even when not yet in the runtime schema. Runtime catalog = projection; later fields are mapped from raw, never re-researched.
+4. Build `data/catalog/inventory.json` from the 8,557-item discovery list + other `pedal-expert` sources: normalize brand/name, slug, dedupe, collapse colorways to `variantOf`, brand tiers (A/B/C).
+5. Mark which inventory items overlap the current 207 seed; preserve curated effect types/sources, and create raw records for them where missing.
+6. Produce `data/catalog/seed-validation.json` for the 207: keep/repair/replace/drop + reasons (missing mandatory field, bad dimensions, bad image, duplicate).
+7. Record the **2,000 hosted-pedal / ~4,000 image / ~300 MB** cap in the tooling constants/plan (no enforcement code yet if P5-02 owns it).
+8. Surface the owner decisions: public-asset policy + attribution/takedown page, `public-asset` tag, and the capture-once archive.
 
 ## Acceptance (executable)
 
@@ -40,6 +41,7 @@ Establish the owner-approved policy and data contract for the P5 catalog, then b
 - Seed validation covers all 207 items, each with one of keep/repair/replace/drop + reason.
 - ADR-003 + roadmap/phase-guide/catalog-backfill agree on the policy, 2k cap, and P5 numbering.
 - No image downloads or `public/pedal-assets` changes.
+- Raw-capture schema documented; every field we may later surface has a home (`extra` for unknown/verified facts). No re-research needed for a future field addition.
 
 ## Notes
 

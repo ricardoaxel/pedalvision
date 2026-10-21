@@ -32,7 +32,9 @@ For each pedal you research, return a record matching our schema (units in **cm*
   "confidence": "confirmed",            // "confirmed" | "likely" | "unsure"
   "lastVerified": "2026-10-21",         // optional ISO date
   "sources": [ { "url": "https://...", "kind": ["info"] } ],  // stored shape; kind may also be ["image"] or both
-  "notes": "short, ORIGINAL one-line factual summary"
+  "notes": "short, ORIGINAL one-line factual summary",
+  "extra": { "anyVerifiedFact": "..." }, // capture facts not yet in the schema (bypass, battery, controls, made-in, …)
+  "imageCandidates": [ { "url": "https://...", "sourcePage": "https://...", "priority": 1, "notes": "top-down official" } ]
 }
 ```
 
@@ -58,6 +60,7 @@ State `confidence` per record: `confirmed` (official source or ≥2 independent 
 - **Images use the owner-approved public-asset policy** (ADR-003 §Self-hosted public-asset images). You may propose candidate image URLs from official manufacturer/press pages first, authorized retailers second, and existing public catalog images as a last resort. **Do not download or commit images** — you are research-only; the pipeline downloads, quality-gates, processes and hosts them. Record the source URL and note that it is a public-asset candidate.
 - **The external aggregate is never referenced in code/commits/filenames/assets.** **Per-item source links you verified against ARE recorded** in the catalog as `sources: [{ url, kind: ["info"|"image"] }]` (`kind` is an array; a URL may back both) — see ADR-003 §Per-item sources. Always return, per record, the authoritative URL(s) you actually verified against (**manufacturer/authorized first**; reputable retailer/community corroboration allowed as secondary). `http(s)` only.
 - **Optional jack layout:** if a source exposes input/output positions, record `jacks[]` with `kind`, `edge` (`top|right|bottom|left`), `pos` (0..1 along the edge) and `stereo` when known. Convert measured cm to `pos`: `x / widthCm` for top/bottom, `y / heightCm` for left/right, so exact edge positions are preserved. This is optional enrichment — never invent an exact position. If only the edge/count is known (e.g. “2 on top”), record the `kind` + `edge` and omit `pos`; the app distributes them evenly and marks them approximate. If nothing is known, omit `jacks` and the app uses fallback anchors.
+- **Capture once:** include every verified fact you find, even if it is not in the schema yet — put it in `extra`. Do not discard a fact because the UI may not display it; later schema additions reuse the raw record.
 - English only. Be concise. For batch work, return a strict JSON array/JSONL (no prose) so the coordinator can parse it cheaply.
 
 ## Images — where to look & what to record

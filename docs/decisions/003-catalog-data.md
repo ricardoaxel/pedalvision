@@ -143,6 +143,7 @@ change the decisions above, it makes the workflow explicit.
   kit) first → reputable retailer/catalog for corroboration → community/vintage
   archive as lower-confidence corroboration only. Embodied by the `pedal-expert`
   agent (`.opencode/agent/pedal-expert.md`).
+- **Capture once, normalize later:** research writes a raw record with **all verified facts, source pages and image candidates**, including fields the runtime schema does not use yet (`extra` bag). The shipped catalog is a projection; later schema/UI additions map from the raw archive instead of re-researching. Never discard a verified fact because the UI does not show it yet.
 - **AI assists, never invents:** extraction/normalization is machine-assisted;
   conflicts, low-confidence records, and dimension spot-checks are **human
   gates** (P5-01/P5-04 / launch exit criteria). Prefer `unknown` over a wrong value.

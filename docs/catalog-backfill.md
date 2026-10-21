@@ -27,6 +27,54 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 **Keep the 207 seed.** Run it through the quality gate and keep/repair/replace
 per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 
+## Capture once, normalize later
+
+**Rule: never discard a verified fact because the current UI doesn't display it yet.** Research is the expensive part; schema/UI changes are cheap. Every batch writes a **raw research record** first, then a projection maps the subset we ship to the runtime catalog. Later field additions read the raw record instead of re-researching the pedal.
+
+Raw records live off-runtime in:
+
+```text
+data/catalog/research/<brand>/<batch>.json
+```
+
+Shape (superset; extra verified facts go in `extra`):
+
+```jsonc
+{
+  "id": "boss-ds-1",
+  "brand": "BOSS",
+  "name": "DS-1 Distortion",
+  "aliases": ["DS1"],
+  "category": "pedal",
+  "effectTypes": ["distortion"],
+  "widthCm": 7.3, "heightCm": 12.9,
+  "dimensionsSource": "manufacturer page",
+  "jacks": [
+    { "kind": "in", "edge": "right", "pos": 0.5, "stereo": false },
+    { "kind": "out", "edge": "left", "pos": 0.5, "stereo": false }
+  ],
+  "power": { "voltage": 9, "acDc": "DC", "currentMa": 12 },
+  "io": { "inputs": 1, "outputs": 1, "stereo": false },
+  "usage": "guitar",
+  "color": "orange",
+  "year": 1978,
+  "status": "current",
+  "notes": "short original factual summary",
+  "extra": { "anyVerifiedFact": "…" },   // e.g. bypass, battery, controls, made-in
+  "sources": [ { "url": "https://…", "kind": ["info", "image"] } ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-21",
+  "imageCandidates": [
+    { "url": "https://…", "sourcePage": "https://…", "priority": 1, "notes": "top-down official" }
+  ]
+}
+```
+
+- The runtime catalog is a **projection** of the raw record; unknown/extra fields stay in the raw file (not shipped).
+- Image candidates, reject reasons and source pages are kept so a rejected image can be re-checked without re-researching the pedal.
+- A later schema addition (e.g. `color`, `stereo`, `bypass`) is a mapping change, not a new research pass: read the raw record first, only re-check fields that are missing.
+- The raw archive is committed (small JSON, no images) so every future session can reuse it.
+
 ## Data contract
 
 ### Mandatory
@@ -47,10 +95,11 @@ them evenly across that edge and marks the anchors **approximate** (hollow ticks
 Exact `pos` can be filled later from measured cm. When no jack data exists at all,
 P4-02's fallback anchors apply (assumed IN left / OUT right).
 
-### Enrichment (show when present)
+### Enrichment (capture everything verified; show when present)
 `power` (`voltage`, `acDc`, `currentMa`), `usage` (`guitar|bass|both|unknown`),
 input/output count, mono/stereo, `color`, `year`, `status`, original `notes`,
-`sources`, `confidence`, `lastVerified`.
+`sources`, `confidence`, `lastVerified`, plus any other verified fact in the raw
+record's `extra` bag. Missing fields are allowed; **do not invent** values.
 
 ### Schema additions (P5-01 implementation)
 `usage`, `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`,
