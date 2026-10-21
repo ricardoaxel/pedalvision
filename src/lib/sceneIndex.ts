@@ -53,7 +53,9 @@ export const DEFAULT_SETTINGS: SceneSettings = {
 	version: 1,
 	units: "cm",
 	activeSceneId: null,
-	showCables: true,
+	// Owner decision 2026-10-21: connections start hidden (quiet canvas);
+	// the Patch popover's "Show patch" toggle opts in and persists.
+	showCables: false,
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -155,8 +157,8 @@ export function parseSettings(raw: string | null): SceneSettings {
 		units: parsed.units === "in" ? "in" : "cm",
 		activeSceneId:
 			typeof parsed.activeSceneId === "string" ? parsed.activeSceneId : null,
-		// Absent = old setting / default visible.
-		showCables: parsed.showCables !== false,
+		// Absent = the new quiet default (off).
+		showCables: parsed.showCables === true,
 	};
 }
 

@@ -43,6 +43,14 @@ async function clearSelection(page: Page): Promise<void> {
 	await page.mouse.click(box.x + 16, box.y + 120);
 }
 
+/** Connections are off by default (owner decision): opt in via the Patch popover. */
+async function showPatch(page: Page): Promise<void> {
+	await page.getByTestId("endpoint-open").click();
+	const toggle = page.getByTestId("toggle-cables");
+	if (!(await toggle.isChecked())) await toggle.check();
+	await page.keyboard.press("Escape");
+}
+
 async function dragBetween(
 	page: Page,
 	from: { x: number; y: number },
@@ -101,6 +109,7 @@ test("drags jack → jack, renders a direction arrow and autosaves", async ({
 	await expect(stage).toHaveAttribute("data-items", "2");
 
 	const { outA, inB, uidA, uidB } = await firstTwoItemJacks(page);
+	await showPatch(page);
 	const undoBefore = Number(await stage.getAttribute("data-undo-depth"));
 	await clearSelection(page);
 	await dragBetween(
@@ -139,6 +148,7 @@ test("a backwards drag is stored with the signal direction", async ({
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await addPedal(page, "boss-da-2-adaptive-distortion");
 	const { uidA, uidB } = await firstTwoItemJacks(page);
+	await showPatch(page);
 	await clearSelection(page);
 	// Drag from A's IN to B's OUT (backwards): the stored cable must be B OUT → A IN.
 	await dragBetween(
@@ -162,6 +172,7 @@ test("a mono jack accepts only one cable (no second connection)", async ({
 	await addPedal(page, "boss-da-2-adaptive-distortion");
 	await addPedal(page, "mxr-bass-distortion");
 	const { outA, inB, uidA, uidB } = await firstTwoItemJacks(page);
+	await showPatch(page);
 	await clearSelection(page);
 
 	const from = await anchorScreenPoint(page, outA);
@@ -212,6 +223,7 @@ test("escapes and empty releases never create a cable", async ({ page }) => {
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await addPedal(page, "boss-da-2-adaptive-distortion");
 	const { outA } = await firstTwoItemJacks(page);
+	await showPatch(page);
 	await clearSelection(page);
 	const from = await anchorScreenPoint(page, outA);
 
@@ -260,6 +272,7 @@ test("places an amp endpoint, connects to it, then deletes both", async ({
 		.map((entry) => entry.split("@")[0])
 		.find((key) => key.startsWith("endpoint:"));
 	if (!endpointKey) throw new Error("endpoint anchor missing");
+	await showPatch(page);
 	const { outA } = await firstItemJacks(page);
 	await dragBetween(
 		page,
@@ -298,6 +311,7 @@ test("a direction-rejected drop explains itself", async ({ page }) => {
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await addPedal(page, "boss-da-2-adaptive-distortion");
 	const { uidA, uidB } = await firstTwoItemJacks(page);
+	await showPatch(page);
 	await clearSelection(page);
 	// OUT → OUT is invalid; the release must explain it, not just vanish.
 	await dragBetween(
@@ -317,6 +331,7 @@ test("the show-cables toggle hides the graph and persists", async ({
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await addPedal(page, "boss-da-2-adaptive-distortion");
 	const { outA, inB } = await firstTwoItemJacks(page);
+	await showPatch(page);
 	await clearSelection(page);
 	await dragBetween(
 		page,
@@ -395,6 +410,7 @@ test("share v2 round-trips cables and endpoints read-only", async ({
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await addPedal(page, "boss-da-2-adaptive-distortion");
 	const { outA, inB } = await firstTwoItemJacks(page);
+	await showPatch(page);
 	await clearSelection(page);
 	await dragBetween(
 		page,

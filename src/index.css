@@ -123,6 +123,7 @@ body {
 }
 
 .theme-toggle {
+	justify-content: center;
 	gap: 6px;
 }
 
@@ -4680,6 +4681,7 @@ body {
 }
 
 .endpoint-control__trigger {
+	justify-content: center;
 	min-width: 44px;
 	padding: var(--space-2);
 	gap: 6px;

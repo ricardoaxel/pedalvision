@@ -20,7 +20,7 @@ export const useSettings = create<SettingsStore>((set) => ({
 		set({ units });
 		writeSettings({ units });
 	},
-	showCables: true,
+	showCables: false,
 	setShowCables: (showCables) => {
 		set({ showCables });
 		writeSettings({ showCables });

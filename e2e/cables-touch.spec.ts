@@ -40,6 +40,10 @@ test("drags jack → jack with a real touch pointer", async ({ page }) => {
 	const stage = page.getByTestId("stage");
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await addPedal(page, "boss-da-2-adaptive-distortion");
+	// Connections are off by default; opt in via the Patch popover.
+	await page.getByTestId("endpoint-open").click();
+	await page.getByTestId("toggle-cables").check();
+	await page.keyboard.press("Escape");
 	// Deselect so the mobile item action bar cannot cover a tick.
 	const box = await stage.boundingBox();
 	if (box) await page.mouse.click(box.x + 16, box.y + 120);
