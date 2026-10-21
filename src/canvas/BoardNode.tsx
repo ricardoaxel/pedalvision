@@ -4,6 +4,7 @@ import { Group, Image as KonvaImage, Line, Rect, Text } from "react-konva";
 import { type BoardTexture, DEFAULT_BOARD_TEXTURE } from "../lib/boardTexture";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
+import { useBoardDrag } from "../state/boardDrag";
 import { useGesture } from "../state/gesture";
 import { spaceWarning } from "../state/overlap";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
@@ -134,6 +135,7 @@ export function BoardNode({
 		if (!draggingRef.current) return;
 		draggingRef.current = false;
 		commitPosition();
+		useBoardDrag.getState().clear();
 		groupRef.current?.stopDrag();
 	}, [navigating, commitPosition]);
 
@@ -282,10 +284,28 @@ export function BoardNode({
 			}}
 			onDragStart={() => {
 				draggingRef.current = true;
+				useBoardDrag.getState().begin({
+					uid: board.uid,
+					x: board.x,
+					y: board.y,
+					rotationDeg: board.rotationDeg,
+					kind: "drag",
+				});
+			}}
+			onDragMove={() => {
+				const node = groupRef.current;
+				if (!node) return;
+				useBoardDrag.getState().set({
+					x: pxToCm(node.x()),
+					y: pxToCm(node.y()),
+					rotationDeg: board.rotationDeg,
+					kind: "drag",
+				});
 			}}
 			onDragEnd={() => {
 				draggingRef.current = false;
 				commitPosition();
+				useBoardDrag.getState().clear();
 			}}
 		>
 			{custom ? (

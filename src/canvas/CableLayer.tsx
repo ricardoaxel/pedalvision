@@ -1,12 +1,16 @@
 import { useMemo } from "react";
 import { Layer, Line, Path } from "react-konva";
 import { cableCurve, cablePathData } from "../lib/cablePath";
+import { rotatePoint } from "../lib/geometry";
 import {
 	type AnchorPoint,
 	anchorIndexFor,
 	cableEndAnchorFromIndex,
+	jackAnchorWorld,
+	jackNormalLocal,
 	liftedJackAnchor,
 } from "../lib/jackAnchor";
+import { useBoardDrag } from "../state/boardDrag";
 import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { useEndpointDrag } from "../state/endpointDrag";
@@ -62,6 +66,12 @@ export function CableLayer({ theme }: CableLayerProps) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
+	// A board is moved natively by Konva and commits on release; its attached
+	// pedals + cables must follow the live transform meanwhile (owner bug report).
+	const boardDragUid = useBoardDrag((state) => state.uid);
+	const boardDragX = useBoardDrag((state) => state.x);
+	const boardDragY = useBoardDrag((state) => state.y);
+	const boardDragRotation = useBoardDrag((state) => state.rotationDeg);
 
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
 	const safeScale = Math.max(scale, 0.0001);
@@ -99,6 +109,44 @@ export function CableLayer({ theme }: CableLayerProps) {
 					);
 				}
 			}
+			// A board drag/rotation moves its attached pedals without committing to
+			// the scene until release; recompute those anchors from the live board.
+			if (
+				!("endpointUid" in end) &&
+				boardDragUid &&
+				boardDragUid ===
+					items.find((candidate) => candidate.uid === end.itemUid)?.boardUid
+			) {
+				const item = items.find((candidate) => candidate.uid === end.itemUid);
+				const board = item?.boardUid
+					? boards.find((candidate) => candidate.uid === item.boardUid)
+					: undefined;
+				if (item && board && anchor.jack) {
+					const liveBoard = {
+						...board,
+						x: boardDragX,
+						y: boardDragY,
+						rotationDeg: boardDragRotation,
+					};
+					const point = jackAnchorWorld(
+						item,
+						end.jack,
+						[liveBoard],
+						customPedals,
+					);
+					if (point) {
+						return {
+							...anchor,
+							point,
+							normal: rotatePoint(
+								jackNormalLocal(anchor.jack.edge),
+								{ x: 0, y: 0 },
+								boardDragRotation + item.rotationDeg,
+							),
+						};
+					}
+				}
+			}
 			return anchor;
 		};
 		return cables.flatMap((cable) => {
@@ -132,7 +180,12 @@ export function CableLayer({ theme }: CableLayerProps) {
 		liftedUid,
 		liftedWorldCm,
 		liftedRotationDeg,
+		boardDragUid,
+		boardDragX,
+		boardDragY,
+		boardDragRotation,
 		items,
+		boards,
 		customPedals,
 	]);
 
