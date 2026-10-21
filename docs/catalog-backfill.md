@@ -32,7 +32,7 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 **Keep the 207 seed.** Run it through the quality gate and keep/repair/replace
 per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 
-### P5-01 results (2026-10-21)
+### P5-01 results (2026-10-21 — PR #35)
 
 - **Raw archive defined:** `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`
   (schema `src/catalog/rawSchema.ts`; contract
