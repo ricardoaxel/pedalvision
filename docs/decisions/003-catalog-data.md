@@ -105,7 +105,7 @@ This **supersedes** the permission-first / hotlink-only rules for the P5 catalog
 - **Attribution + takedown:** a visible credits/attribution page and a removal-request contact; removal requests are honoured and the affected assets are replaced or dropped.
 - **Quality gate:** resolution, uniform/transparent background, top-down crop, aspect ratio vs the cm footprint (accept ~≤10%, flag 10–15%, reject >15%), rotation/skew, shadow/perspective checks; rejected candidates are re-sourced (max 3) or flagged. The BOSS AC-3 white-background and TC Choka bad-crop cases are regression fixtures.
 - **Hard cap:** **2,000 pedals with hosted images** (~4,000 files, ~300 MB) until **P5-05** (image hosting at scale) is decided. Agents stop at the cap; data/image work does not continue past it.
-- **Optional jack layout:** if a source exposes input/output positions, record `jacks[]` (`kind`, `edge`, `pos`, `stereo?`). This is **optional enrichment**, not mandatory; when absent, P4-02's documented fallback anchors apply (assumed IN left / OUT right).
+- **Optional jack layout:** if a source exposes input/output positions, record `jacks[]` (`kind`, `edge`, `pos`, `stereo?`). `pos` is 0..1 along the edge and is derived from exact cm (`x / widthCm` on top/bottom, `y / heightCm` on left/right), so measured edge positions are representable exactly. This is **optional enrichment**, not mandatory; when absent, P4-02's documented fallback anchors apply (assumed IN left / OUT right).
 
 ## Schema originality (our own model)
 

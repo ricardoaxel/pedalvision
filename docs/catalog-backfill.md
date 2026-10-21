@@ -35,8 +35,13 @@ supplies `[]`), `widthCm`, `heightCm`.
 
 ### Required for the cable feature
 `jacks[]`: `kind`, `edge`, `pos`, `stereo?`. **Optional enrichment for catalog
-data**: if a source exposes input/output positions, record them. When absent,
-P4-02's documented fallback anchors apply (assumed IN left / OUT right).
+data**: if a source exposes input/output positions, record them. `pos` is
+normalized 0..1 along the edge, but it is **derived from exact cm** — e.g. a jack
+3 cm from the left on a 7.3 cm-wide pedal is `edge: "top", pos: 3 / 7.3`; a jack
+2 cm down the left side of a 12 cm pedal is `edge: "left", pos: 2 / 12`. This
+represents any point on the four edges exactly. A jack inset from the edge would
+need an optional additive `xCm`/`yCm` (only if a source actually requires it).
+When absent, P4-02's fallback anchors apply (assumed IN left / OUT right).
 
 ### Enrichment (show when present)
 `power` (`voltage`, `acDc`, `currentMa`), `usage` (`guitar|bass|both|unknown`),
