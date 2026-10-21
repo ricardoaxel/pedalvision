@@ -122,6 +122,10 @@ body {
 	outline-offset: 2px;
 }
 
+.theme-toggle {
+	gap: 6px;
+}
+
 /* ---------------------------------------------------------------------------
  * Undo / Redo — "Proof Marks" (P3-04, owner-approved 2026-10-20). One quiet
  * joined pair: a capsule at the leading edge of the desktop toolbar, and a
@@ -3829,7 +3833,24 @@ body {
 
 @media (max-width: 1023px) {
 	.scene-trigger {
-		max-width: 38vw;
+		/* Leave room for four 44px toolbar buttons + tighter mobile gaps; the
+		 * scene plate never runs under the endpoint/share/export/theme cluster. */
+		max-width: min(38vw, calc(100vw - 236px));
+	}
+
+	.app-toolbar {
+		gap: 4px;
+	}
+
+	.endpoint-control__trigger,
+	.theme-toggle {
+		width: 44px;
+		min-width: 44px;
+		padding: 0;
+	}
+
+	.theme-toggle__label {
+		display: none;
 	}
 
 	.scene-panel {

@@ -16,7 +16,13 @@ import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
 import { FirstRunHint } from "./components/FirstRunHint";
 import { HistoryControls } from "./components/HistoryControls";
 import { InfoPanel } from "./components/InfoPanel";
-import { BoardIcon, PedalIcon, PlusIcon } from "./components/icons";
+import {
+	BoardIcon,
+	MoonIcon,
+	PedalIcon,
+	PlusIcon,
+	SunIcon,
+} from "./components/icons";
 import { Picker, type PickerTab } from "./components/Picker";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
@@ -309,8 +315,25 @@ function App() {
 					>
 						<ExportTriggerContent />
 					</button>
-					<button type="button" className="hud-button" onClick={toggleTheme}>
-						{theme === "dark" ? "Light" : "Dark"} theme
+					<button
+						type="button"
+						className="hud-button theme-toggle"
+						aria-label={
+							theme === "dark"
+								? "Switch to light theme"
+								: "Switch to dark theme"
+						}
+						title={
+							theme === "dark"
+								? "Switch to light theme"
+								: "Switch to dark theme"
+						}
+						onClick={toggleTheme}
+					>
+						{theme === "dark" ? <SunIcon /> : <MoonIcon />}
+						<span className="theme-toggle__label">
+							{theme === "dark" ? "Light" : "Dark"} theme
+						</span>
 					</button>
 				</div>
 				{exportOpen ? (
