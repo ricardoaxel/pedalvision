@@ -1,6 +1,6 @@
 # P4-01: Cable model + jack anchors
 
-**Phase:** P4 · **Status:** todo · **Model:** build-strong
+**Phase:** P4 · **Status:** in review — PR #30 · **Model:** build-strong
 
 ## Goal
 
@@ -46,3 +46,4 @@ Add the persisted cable graph (endpoints + cables) and a deterministic jack-anch
 
 - Owner decision (2026-10-21): **P4-01 ships save/load only** — no share support yet; P4-02 adds cables to the share payload and makes the version-policy decision explicit.
 - P4-04 (brand outreach) runs in parallel as an owner track; not a dependency.
+- **Performance review (2026-10-21, `performance-expert`): verdict `watch`.** P4-01 adds +0.74 kB gz, ~+44 KB per max scene and ~3 ms codec work; hosting $0. Deferred to P4-02: share-URL budget when the graph travels (a 400-item + 300-graph scene measures 38,184 chars vs the 32,000 hard cap), transient endpoint dragging (commit once on pointerup), anchor memoization for `CableLayer`, and the capacity graph UI.
