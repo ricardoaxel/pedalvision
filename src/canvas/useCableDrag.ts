@@ -11,6 +11,7 @@ import {
 import { useGesture } from "../state/gesture";
 import { isReadOnly } from "../state/readOnly";
 import {
+	cableEndCapacityNotice,
 	cableEndHasCapacity,
 	normalizeCableDirection,
 	sameCableEnd,
@@ -42,6 +43,8 @@ export function useCableDrag(
 	containerRef: RefObject<HTMLElement | null>,
 ): void {
 	const pointerIdRef = useRef<number | null>(null);
+	/** Why the last hovered destination was rejected (shown on release). */
+	const blockedNoticeRef = useRef<string | null>(null);
 
 	useEffect(() => {
 		const element = containerRef.current;
@@ -54,10 +57,10 @@ export function useCableDrag(
 		const nearestTarget = (
 			client: Point,
 			pointerType: string,
-		): CableDragTarget | null => {
+		): { target: CableDragTarget | null; notice: string | null } => {
 			const drag = useCableDragStore.getState();
 			const source = drag.source;
-			if (!source) return null;
+			if (!source) return { target: null, notice: null };
 			const scene = useScene.getState();
 			const index = anchorIndexFor(scene);
 			const pointer = localWorldCm(element, client);
@@ -79,7 +82,7 @@ export function useCableDrag(
 				if (distance > snapCm) continue;
 				if (!best || distance < best.distance) best = { anchor, distance };
 			}
-			if (!best) return null;
+			if (!best) return { target: null, notice: null };
 			const target: CableDragTarget =
 				best.anchor.jackIndex !== undefined
 					? {
@@ -88,7 +91,12 @@ export function useCableDrag(
 							jackIndex: best.anchor.jackIndex,
 						}
 					: { kind: "endpoint", uid: best.anchor.uid };
-			if (!isCableTargetValid(source, target)) return null;
+			if (!isCableTargetValid(source, target)) {
+				return {
+					target: null,
+					notice: "A cable needs two different sockets.",
+				};
+			}
 			// The destination must have a free socket (mono = 1, TRS = 2, endpoint
 			// = 1); an occupied target never snaps.
 			const end =
@@ -104,7 +112,10 @@ export function useCableDrag(
 					scene.customPedals,
 				)
 			) {
-				return null;
+				return {
+					target: null,
+					notice: cableEndCapacityNotice(end, scene.items, scene.customPedals),
+				};
 			}
 			// Direction follows signal, not gesture order: refuse source↔source /
 			// sink↔sink (IN→IN, OUT→OUT, amp→amp, instrument→instrument).
@@ -112,9 +123,14 @@ export function useCableDrag(
 				itemUid: source.itemUid,
 				jack: String(source.jackIndex),
 			};
-			return normalizeCableDirection(sourceEnd, end, scene).valid
-				? target
-				: null;
+			if (!normalizeCableDirection(sourceEnd, end, scene).valid) {
+				return {
+					target: null,
+					notice:
+						"Both ends are inputs or both are outputs — connect an output to an input.",
+				};
+			}
+			return { target, notice: null };
 		};
 
 		const onMove = (event: PointerEvent) => {
@@ -133,13 +149,12 @@ export function useCableDrag(
 			const client = { x: event.clientX, y: event.clientY };
 			// One update per move; `update` reuses the target reference when the
 			// snapped jack is unchanged, so subscribers don't fan out.
-			drag.update(
-				localWorldCm(element, client),
-				nearestTarget(client, event.pointerType),
-			);
+			const snap = nearestTarget(client, event.pointerType);
+			blockedNoticeRef.current = snap.notice;
+			drag.update(localWorldCm(element, client), snap.target);
 		};
 
-		const finish = () => {
+		const finish = (showNotice = true) => {
 			const drag = useCableDragStore.getState();
 			const { source, target } = drag;
 			if (
@@ -173,6 +188,11 @@ export function useCableDrag(
 					);
 					return;
 				}
+			}
+			if (!target && showNotice && blockedNoticeRef.current) {
+				drag.cancel();
+				drag.setNotice(blockedNoticeRef.current);
+				return;
 			}
 			drag.cancel();
 		};
@@ -212,7 +232,8 @@ export function useCableDrag(
 		window.addEventListener("pointermove", onMove);
 		window.addEventListener("pointerup", onUp);
 		window.addEventListener("pointercancel", onCancel);
-		window.addEventListener("blur", finish);
+		const onBlur = () => finish(false);
+		window.addEventListener("blur", onBlur);
 		window.addEventListener("keydown", onKeyDown);
 
 		// Pan/pinch wins: cancel the connection preview, never commit.
@@ -228,7 +249,7 @@ export function useCableDrag(
 			window.removeEventListener("pointermove", onMove);
 			window.removeEventListener("pointerup", onUp);
 			window.removeEventListener("pointercancel", onCancel);
-			window.removeEventListener("blur", finish);
+			window.removeEventListener("blur", onBlur);
 			window.removeEventListener("keydown", onKeyDown);
 		};
 	}, [containerRef]);

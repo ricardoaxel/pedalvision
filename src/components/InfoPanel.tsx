@@ -378,8 +378,7 @@ export function InfoPanel() {
 						</dl>
 						{info.jacksAssumed ? (
 							<p className="info-panel__assumed">
-								No catalog jack data — left/right anchors are assumed. Edit a
-								custom part to set real jacks.
+								No catalog jack positions — left/right anchors are assumed.
 							</p>
 						) : null}
 					</section>

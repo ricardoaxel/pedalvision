@@ -410,13 +410,15 @@ export function PedalNode({
 		const isSource = cableSourceJack === index;
 		const isTarget = cableTargetJack === index;
 		const isHovered = hoveredJack === index;
-		const diameter =
-			(isTarget
-				? JACK_TICK.targetDiameterPx
-				: isHovered
-					? JACK_TICK.hoverDiameterPx
-					: JACK_TICK.diameterPx) / labelScale;
+		const diameter = assumedJacks
+			? JACK_TICK.diameterPx / labelScale
+			: (isTarget
+					? JACK_TICK.targetDiameterPx
+					: isHovered
+						? JACK_TICK.hoverDiameterPx
+						: JACK_TICK.diameterPx) / labelScale;
 		const radius = diameter / 2;
+		const diamondRadius = assumedJacks ? radius * 0.85 : radius;
 		const ringColor = isSource || isTarget ? theme.selection : theme.jack;
 		const label = JACK_LABELS[jack.kind] ?? jack.kind.toUpperCase();
 		const chipText = `${label}${assumedJacks ? " · assumed" : ""}`;
@@ -491,10 +493,10 @@ export function PedalNode({
 						<Line
 							points={
 								[
-									[0, -(radius + 1.2 / labelScale)],
-									[radius + 1.2 / labelScale, 0],
-									[0, radius + 1.2 / labelScale],
-									[-(radius + 1.2 / labelScale), 0],
+									[0, -(diamondRadius + 0.8 / labelScale)],
+									[diamondRadius + 0.8 / labelScale, 0],
+									[0, diamondRadius + 0.8 / labelScale],
+									[-(diamondRadius + 0.8 / labelScale), 0],
 								].flat() as number[]
 							}
 							closed
@@ -507,16 +509,20 @@ export function PedalNode({
 						<Line
 							points={
 								[
-									[0, -radius],
-									[radius, 0],
-									[0, radius],
-									[-radius, 0],
+									[0, -diamondRadius],
+									[diamondRadius, 0],
+									[0, diamondRadius],
+									[-diamondRadius, 0],
 								].flat() as number[]
 							}
 							closed
 							stroke={ringColor}
 							strokeWidth={
-								(isSource || isTarget ? 2 : JACK_TICK.strokePx) / labelScale
+								(isSource || isTarget
+									? 2
+									: assumedJacks
+										? 1
+										: JACK_TICK.strokePx) / labelScale
 							}
 							fill={isSource ? theme.selection : undefined}
 							lineJoin="round"
@@ -538,7 +544,11 @@ export function PedalNode({
 							radius={radius}
 							stroke={ringColor}
 							strokeWidth={
-								(isSource || isTarget ? 2 : JACK_TICK.strokePx) / labelScale
+								(isSource || isTarget
+									? 2
+									: assumedJacks
+										? 1
+										: JACK_TICK.strokePx) / labelScale
 							}
 							fill={isSource ? theme.selection : theme.canvasBackground}
 							fillEnabled={isSource}

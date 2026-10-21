@@ -147,7 +147,12 @@ export function EndpointControl() {
 							checked={showCables}
 							onChange={(event) => setShowCables(event.target.checked)}
 						/>
-						<span>Show cables &amp; jacks</span>
+						<span>
+							<strong>Show patch</strong>
+							<span className="endpoint-popover__hint">
+								Cables, jacks &amp; endpoints
+							</span>
+						</span>
 					</label>
 				</div>
 			) : null}

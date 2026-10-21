@@ -49,7 +49,7 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 		useEndpointDrag.getState().clear();
 	}, [navigating, moveEndpoint]);
 
-	if (!showCables) return null;
+	if (!showCables && !readOnly) return null;
 	return (
 		<Layer>
 			{endpoints.map((endpoint) => (

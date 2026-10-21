@@ -70,7 +70,15 @@ export function cableCurve(
 	// at 1×). A fixed 14 + 10 px arrow would sit on/behind the source socket, so
 	// clamp it to the run and fall back to a tiny midpoint chevron.
 	const tickDiameter = 9 / safeScale;
-	const free = Math.max(0, chord - tickDiameter);
+	const startExtent =
+		(Math.abs(direction.y) > 0.6
+			? (from.extentY ?? from.extentPx ?? 0)
+			: (from.extentPx ?? 0)) / safeScale;
+	const endExtent =
+		(Math.abs(direction.y) > 0.6
+			? (to.extentY ?? to.extentPx ?? 0)
+			: (to.extentPx ?? 0)) / safeScale;
+	const free = Math.max(0, chord - tickDiameter - startExtent - endExtent);
 	const short = free < 8 / safeScale;
 	const arrowLength = short
 		? 3 / safeScale
@@ -86,7 +94,7 @@ export function cableCurve(
 			);
 	const tip = short
 		? { x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 }
-		: sub(end, scalePoint(tangent, arrowGap));
+		: sub(end, scalePoint(tangent, arrowGap + endExtent));
 	const baseCentre = sub(tip, scalePoint(tangent, arrowLength));
 	const perpendicular = { x: -tangent.y, y: tangent.x };
 	const halfWidth = short ? 1.5 / safeScale : arrowLength * 0.4;
@@ -97,8 +105,13 @@ export function cableCurve(
 	// over the jack ring (the cable layer sits above the pedal).
 	const trim = Math.min(tickDiameter / 2 + 1 / safeScale, chord * 0.2);
 	const startTangent = normalize(sub(control1, start));
-	const pathStart = add(start, scalePoint(startTangent, trim));
-	const pathEnd = sub(end, scalePoint(tangent, trim));
+	const pathStart = add(start, scalePoint(startTangent, trim + startExtent));
+	// For an endpoint, stop the trace at the arrow's base; continuing to
+	// `trim + extent` would poke a thread through the arrowhead.
+	const pathEnd =
+		endExtent > 0 && !short
+			? baseCentre
+			: sub(end, scalePoint(tangent, trim + endExtent));
 
 	return {
 		start,

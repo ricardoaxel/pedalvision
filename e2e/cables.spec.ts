@@ -1,7 +1,7 @@
 import { expect, type Page, test } from "@playwright/test";
 import { waitForSavedScene } from "./persistence.ts";
 import { addPedal } from "./picker.ts";
-import { shareHash } from "./share.ts";
+import { board, item, shareHash } from "./share.ts";
 
 const PX_PER_CM = 4;
 
@@ -279,6 +279,36 @@ test("places an amp endpoint, connects to it, then deletes both", async ({
 	await expect(stage).toHaveAttribute("data-cables", "0");
 });
 
+test("the mobile patch popover stays inside the viewport", async ({ page }) => {
+	await page.setViewportSize({ width: 360, height: 840 });
+	await page.goto("/");
+	await page.getByTestId("endpoint-open").click();
+	const popover = page.getByTestId("endpoint-popover");
+	await expect(popover).toBeVisible();
+	const box = await popover.boundingBox();
+	if (!box) throw new Error("popover has no box");
+	expect(box.x).toBeGreaterThanOrEqual(8);
+	expect(box.x + box.width).toBeLessThanOrEqual(352);
+	await expect(page.getByTestId("toggle-cables")).toBeVisible();
+});
+
+test("a direction-rejected drop explains itself", async ({ page }) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await addPedal(page, "boss-da-2-adaptive-distortion");
+	const { uidA, uidB } = await firstTwoItemJacks(page);
+	await clearSelection(page);
+	// OUT → OUT is invalid; the release must explain it, not just vanish.
+	await dragBetween(
+		page,
+		await anchorScreenPoint(page, `item:${uidA}:1`),
+		await anchorScreenPoint(page, `item:${uidB}:1`),
+	);
+	await expect(stage).toHaveAttribute("data-cables", "0");
+	await expect(page.getByTestId("graph-status")).toContainText("Both ends");
+});
+
 test("the show-cables toggle hides the graph and persists", async ({
 	page,
 }) => {
@@ -299,8 +329,9 @@ test("the show-cables toggle hides the graph and persists", async ({
 	await page.getByTestId("endpoint-open").click();
 	await page.getByTestId("toggle-cables").uncheck();
 	await expect(stage).toHaveAttribute("data-show-cables", "false");
-	// Scene data is untouched; this is a view preference.
+	// Scene data is untouched; this is a view preference, with a way back.
 	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(page.getByTestId("patch-hidden")).toBeVisible();
 	// Let the debounced autosave land before reloading (the scene must persist).
 	await waitForSavedScene(page, (document) => document.cables?.length === 1);
 
@@ -316,6 +347,44 @@ test("the show-cables toggle hides the graph and persists", async ({
 		"data-show-cables",
 		"true",
 	);
+});
+
+test("a read-only share always shows the graph even if the recipient hid it", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await page.getByTestId("endpoint-open").click();
+	await page.getByTestId("toggle-cables").uncheck();
+	await expect(stage).toHaveAttribute("data-show-cables", "false");
+	const hash = shareHash({
+		name: "Read only patch",
+		boards: [board("b1")],
+		items: [
+			item("i1", {
+				refId: "boss-bd-2-blues-driver",
+				boardUid: "b1",
+				x: 4,
+				y: 4,
+			}),
+		],
+		endpoints: [{ uid: "ep-amp", kind: "amp", x: 60, y: 20 }],
+		cables: [
+			{
+				uid: "c1",
+				from: { itemUid: "i1", jack: "1" },
+				to: { endpointUid: "ep-amp" },
+			},
+		],
+	});
+	await page.goto(`/?share=1${hash}`);
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-graph-visible",
+		"true",
+	);
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-cables", "1");
 });
 
 test("share v2 round-trips cables and endpoints read-only", async ({

@@ -112,7 +112,13 @@ function renderCables(options: RenderOptions): RenderedCable[] {
 			);
 		}
 		// A board drag/rotation moves its attached pedals without committing.
-		if (item && boardDragUid && item.boardUid === boardDragUid && anchor.jack) {
+		if (
+			item &&
+			!("endpointUid" in end) &&
+			boardDragUid &&
+			item.boardUid === boardDragUid &&
+			anchor.jack
+		) {
 			const board = item.boardUid
 				? boards.find((candidate) => candidate.uid === item.boardUid)
 				: undefined;
@@ -125,7 +131,7 @@ function renderCables(options: RenderOptions): RenderedCable[] {
 				};
 				const point = jackAnchorWorld(
 					item,
-					"endpointUid" in end ? "0" : end.jack,
+					end.jack,
 					[liveBoard],
 					customPedals,
 				);
@@ -194,6 +200,8 @@ export function CableLayer({ theme }: CableLayerProps) {
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
 	const dimFocus =
 		selectedItemUid ?? hoveredItemUid ?? selectedEndpointUid ?? null;
+	// A read-only share must never inherit a recipient's hidden-patch preference.
+	const graphVisible = showCables || readOnly;
 
 	const hidden = useMemo(() => {
 		const set = new Set<string>();
@@ -224,7 +232,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 
 	const rendered = useMemo(
 		() =>
-			showCables
+			graphVisible
 				? renderCables({
 						cables: cables.filter((cable) => !hidden.has(cable.uid)),
 						index,
@@ -246,7 +254,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 					})
 				: [],
 		[
-			showCables,
+			graphVisible,
 			cables,
 			hidden,
 			index,
@@ -259,7 +267,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 		],
 	);
 
-	if (!showCables) return null;
+	if (!graphVisible) return null;
 	return (
 		<Layer>
 			<CableShapes

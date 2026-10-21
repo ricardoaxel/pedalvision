@@ -46,6 +46,33 @@ import { useShare } from "./state/share";
 
 type Theme = "dark" | "light";
 
+/** On-canvas cue when the user hid the patch; the only other entry is the
+ * "Patch" popover, which is easy to forget. */
+function PatchHiddenCue() {
+	const showCables = useSettings((state) => state.showCables);
+	const readOnly = useReadOnly((state) => state.readOnly);
+	const setShowCables = useSettings((state) => state.setShowCables);
+	const cables = useScene((state) => state.cables.length);
+	const endpoints = useScene((state) => state.endpoints.length);
+	if (showCables || readOnly || cables + endpoints === 0) return null;
+	return (
+		<div className="graph-status" data-testid="patch-hidden" role="status">
+			<span>
+				Patch hidden · {cables} {cables === 1 ? "cable" : "cables"} ·{" "}
+				{endpoints} {endpoints === 1 ? "endpoint" : "endpoints"}
+			</span>
+			<button
+				type="button"
+				className="graph-status__cancel"
+				data-testid="patch-hidden-show"
+				onClick={() => setShowCables(true)}
+			>
+				Show
+			</button>
+		</div>
+	);
+}
+
 function App() {
 	// TODO(P1): move to the persisted settings store. Kept minimal here so the
 	// canvas theme map (Konva can't read CSS vars) can be verified live.
@@ -117,6 +144,7 @@ function App() {
 			selection.clearSelection();
 		}
 		useCableDrag.getState().cancel();
+		useCableDrag.getState().setNotice(null);
 		useEndpointPlacement.getState().disarm();
 	}, [showCables]);
 
@@ -360,6 +388,7 @@ function App() {
 				) : null}
 				<EndpointPlacementOverlay />
 				<GraphStatusChip />
+				<PatchHiddenCue />
 				<ShareEditCue />
 				{shareOpen && !readOnly ? (
 					<SharePanel

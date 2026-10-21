@@ -207,7 +207,14 @@ function itemAabbCm(
 }
 
 function endpointRect(endpoint: ExportEndpoint): RectCm {
-	return { x: endpoint.x, y: endpoint.y, widthCm: 0, heightCm: 0 };
+	// The exported AMP/INSTR chip is ~1.4–1.7 cm wide × 0.6 cm tall; include its
+	// footprint in the content bounds so the tag is never cropped (design review).
+	return {
+		x: endpoint.x - 1.5,
+		y: endpoint.y - 0.6,
+		widthCm: 3,
+		heightCm: 1.2,
+	};
 }
 
 function computePixelPlan(

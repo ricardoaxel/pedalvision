@@ -38,6 +38,13 @@ export interface AnchorPoint {
 	jack?: Jack;
 	/** World visual rotation of the owning item (jack-side handle orientation). */
 	rotationDeg?: number;
+	/**
+	 * Screen-px half-extent of the terminal (endpoint tags only), so the cable
+	 * arrow stops just outside the tag instead of inside it.
+	 */
+	extentPx?: number;
+	/** Screen-px half-height for non-square terminals (endpoint tags). */
+	extentY?: number;
 }
 
 /** A keyed anchor index for one scene mutation. */
@@ -144,6 +151,8 @@ export function buildAnchorIndex(scene: {
 			point: { x: endpoint.x, y: endpoint.y },
 			normal: null,
 			assumed: false,
+			extentPx: 26,
+			extentY: 15,
 		};
 		const key = `endpoint:${endpoint.uid}`;
 		endpoints.set(key, anchor);

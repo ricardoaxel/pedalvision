@@ -136,7 +136,7 @@ export function GraphActionBar() {
 				aria-label={cable ? "Delete cable" : "Delete endpoint"}
 				onClick={remove}
 			>
-				Delete
+				{cable ? "Delete cable" : "Delete endpoint"}
 			</button>
 		</div>
 	);

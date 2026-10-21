@@ -562,9 +562,11 @@ export function cableEndCapacityNotice(
 		item && index !== null
 			? resolveItemJacks(item, customPedals)[index]
 			: undefined;
-	return jack?.stereo === true
-		? "This TRS jack already has two cables."
-		: "That jack is already connected. A TRS jack can take two cables.";
+	if (jack?.stereo === true) return "This TRS jack already has two cables.";
+	const editable = customPedals.some((custom) => custom.refId === item?.refId);
+	return editable
+		? "That jack is already connected. A TRS jack can take two cables."
+		: "That jack is already connected.";
 }
 
 /**

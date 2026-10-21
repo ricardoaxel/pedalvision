@@ -23,6 +23,7 @@ const endpoint: AnchorPoint = {
 	point: { x: 20, y: 0 },
 	normal: null,
 	assumed: false,
+	extentPx: 26,
 };
 
 describe("cable curve", () => {
@@ -106,6 +107,15 @@ describe("cable curve", () => {
 		const curve = cableCurve(rightEdge, leftEdge, 1);
 		expect(curve.pathStart.x).toBeGreaterThan(curve.start.x);
 		expect(curve.pathEnd.x).toBeLessThan(curve.end.x);
+	});
+
+	it("stops the arrow and path outside an endpoint tag", () => {
+		const curve = cableCurve(rightEdge, endpoint, 1);
+		const endPx = { x: 80, y: 0 };
+		// The tag's 26px half-extent plus the arrow gap keeps the tip outside.
+		expect(curve.arrow[0].x).toBeLessThan(endPx.x - 26);
+		// The trace ends at the arrow's base (no thread through the arrowhead).
+		expect(curve.pathEnd.x).toBeCloseTo(curve.arrow[0].x - 10);
 	});
 
 	it("reports a midpoint on the curve for the action bar", () => {

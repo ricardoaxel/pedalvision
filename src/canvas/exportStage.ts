@@ -500,25 +500,34 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 		const x = endpoint.x * pxPerCm;
 		const y = endpoint.y * pxPerCm;
 		const label = endpoint.kind === "amp" ? "AMP" : "INSTR";
+		const chipWidth = Math.max(1.4, label.length * 0.19 + 0.4) * pxPerCm;
+		const chipHeight = 0.62 * pxPerCm;
+		// Opaque terminal chip above the cable, matching the live AMP/INSTR tag.
 		parent.add(
-			new Konva.Circle({
-				x,
-				y,
-				radius: 4 / labelUnit,
-				fill: theme.canvasBackground,
+			new Konva.Rect({
+				x: x - chipWidth / 2,
+				y: y - chipHeight / 2,
+				width: chipWidth,
+				height: chipHeight,
+				fill: theme.itemLabelBg,
 				stroke: theme.jack,
-				strokeWidth: 1.5 / labelUnit,
+				strokeWidth: 0.04 * pxPerCm,
+				cornerRadius: 0.16 * pxPerCm,
 				listening: false,
 			}),
 		);
 		parent.add(
 			new Konva.Text({
 				text: label,
-				x: x + 7 / labelUnit,
-				y: y - 5 / labelUnit,
+				x: x - chipWidth / 2,
+				y: y - chipHeight / 2,
+				width: chipWidth,
+				height: chipHeight,
+				align: "center",
+				verticalAlign: "middle",
 				fontFamily: CANVAS_FONTS.mono,
 				fontSize: 9 / labelUnit,
-				fill: theme.boardLabel,
+				fill: theme.itemLabelInk,
 				listening: false,
 			}),
 		);

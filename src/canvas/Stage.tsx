@@ -74,6 +74,7 @@ export function Stage() {
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
 	const showCables = useSettings((state) => state.showCables);
+	const readOnly = useReadOnly((state) => state.readOnly);
 	const readOnlyCue = useReadOnly((state) => state.cue);
 	// Undo/redo depth (P3-04) mirrored for deterministic e2e assertions.
 	const undoDepth = useHistory((state) => state.past.length);
@@ -307,6 +308,7 @@ export function Stage() {
 			data-cable-directions={cableDirections}
 			data-cable-arrows={cableArrows}
 			data-show-cables={showCables ? "true" : "false"}
+			data-graph-visible={showCables || readOnly ? "true" : "false"}
 			data-cable-preview={cablePreviewKey}
 			data-cable-target={cableTargetKey}
 			data-jack-anchors={jackAnchors}
