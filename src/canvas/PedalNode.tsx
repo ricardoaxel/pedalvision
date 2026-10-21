@@ -68,11 +68,11 @@ interface PedalNodeProps {
 /** Client-space pointer position from a mouse or touch Konva event. */
 /** Compact canvas labels for jack kinds (full names live in the info panel). */
 const JACK_LABELS: Record<string, string> = {
-	in: "IN",
-	out: "OUT",
+	in: "I",
+	out: "O",
 	exp: "EXP",
-	"exp-in": "EXP IN",
-	"exp-out": "EXP OUT",
+	"exp-in": "EXP I",
+	"exp-out": "EXP O",
 	send: "SEND",
 	return: "RET",
 	midi: "MIDI",
@@ -421,7 +421,9 @@ export function PedalNode({
 		const diamondRadius = assumedJacks ? radius * 0.85 : radius;
 		const ringColor = isSource || isTarget ? theme.selection : theme.jack;
 		const label = JACK_LABELS[jack.kind] ?? jack.kind.toUpperCase();
-		const chipText = `${label}${assumedJacks ? " · assumed" : ""}`;
+		// Short socket label only; the hollow diamond + info-panel note carry the
+		// "assumed" disclosure without a long chip (owner feedback).
+		const chipText = label;
 		const chipWidth = (Math.max(26, chipText.length * 6.2) + 8) / labelScale;
 		const chipHeight = 16 / labelScale;
 		// The hit disc sits mostly OUTSIDE the edge: a full 44px disc centred on

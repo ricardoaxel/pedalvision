@@ -377,9 +377,7 @@ export function InfoPanel() {
 							))}
 						</dl>
 						{info.jacksAssumed ? (
-							<p className="info-panel__assumed">
-								No catalog jack positions — left/right anchors are assumed.
-							</p>
+							<p className="info-panel__assumed">Jack positions assumed.</p>
 						) : null}
 					</section>
 				) : null}

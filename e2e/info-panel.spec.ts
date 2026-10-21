@@ -42,11 +42,9 @@ test("shows a selected catalog pedal's identity, tags and dimensions", async ({
 	// dimensions in its status row); expand so both are visible.
 	await expandDetails(page);
 	await expect(page.getByTestId("info-jacks")).toBeVisible();
+	await expect(page.getByTestId("info-jacks")).toContainText("I · Left · 0.50");
 	await expect(page.getByTestId("info-jacks")).toContainText(
-		"In · Left · 0.50",
-	);
-	await expect(page.getByTestId("info-jacks")).toContainText(
-		"Out · Right · 0.50",
+		"O · Right · 0.50",
 	);
 	await expect(page.getByTestId("info-jacks")).toContainText("assumed");
 	await expect(page.getByTestId("info-dims")).toContainText("cm");

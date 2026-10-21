@@ -123,8 +123,14 @@ export const JACK_EDGE_NAMES: Record<JackEdge, string> = {
 	left: "Left",
 };
 
-/** "In · Top · 0.30" — kind, edge, position along the edge. */
+/** "I · Top · 0.30" — short kind, edge, position along the edge. */
 export function formatJack(jack: Jack): string {
+	const kind =
+		jack.kind === "in"
+			? "I"
+			: jack.kind === "out"
+				? "O"
+				: jackKindLabel(jack.kind);
 	const stereo = jack.stereo === true ? " · TRS" : "";
-	return `${jackKindLabel(jack.kind)} · ${JACK_EDGE_NAMES[jack.edge]} · ${jack.pos.toFixed(2)}${stereo}`;
+	return `${kind} · ${JACK_EDGE_NAMES[jack.edge]} · ${jack.pos.toFixed(2)}${stereo}`;
 }

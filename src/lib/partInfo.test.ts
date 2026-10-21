@@ -129,6 +129,9 @@ describe("formatters", () => {
 		);
 		expect(
 			formatJack({ kind: "out", edge: "right", pos: 0.5, stereo: true }),
-		).toBe("Out · Right · 0.50 · TRS");
+		).toBe("O · Right · 0.50 · TRS");
+		expect(formatJack({ kind: "in", edge: "left", pos: 0.5 })).toBe(
+			"I · Left · 0.50",
+		);
 	});
 });
