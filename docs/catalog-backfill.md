@@ -109,7 +109,31 @@ Voltage; AC/DC; current draw (mA); power consumption (W); polarity (`center-nega
 Analog/digital/hybrid; bypass type (true/buffered/relay/electronic); switching method; DSP/modeling/IR; sample rate/bit depth; latency; trails/spillover; kill-dry; parallel/series routing; scenes/presets; tuner/looper/metronome.
 
 ### Physical
-Weight; depth/height; enclosure material; finish/color; display; footswitch count; onboard expression pedal; mounting.
+Weight; depth/height; enclosure material; finish/color; display; footswitch count; onboard expression pedal; mounting; **jack orientation** (top/side), **power-jack location**, recessed jacks, right-angle/straight plug clearance, jack spacing, mounting holes/feet, battery compartment.
+
+### Electrical & audio specs (optional, high value for warnings)
+Input/output impedance; maximum input/output level; nominal level; gain/headroom; signal-to-noise; THD+N; frequency response; phantom power; pad; ground lift; phase invert; true stereo vs summed; analog dry-through; balanced/unbalanced; instrument/line/speaker level.
+
+### Routing & performance
+Effects loops (send/return count, mono/stereo, TRS insert); 4-cable-method support; series/parallel/split routing; kill-dry; dry/wet mix; trails/spillover; true/buffered/relay bypass; switching method; latency; presets/banks/scenes; tuner; looper (length/layers); metronome; amp/cab modeling; IR slots/formats; expression assignments; snapshots.
+
+### Control details
+Expression/CV voltage range (e.g. 0–3.3 V, 0–5 V); TRS wiring/floating-ring notes; toe switch; footswitch type (latching/momentary, NO/NC); aux switch; amp channel switching (relay/latching/momentary, TS/TRS); remote jacks; tap tempo.
+
+### MIDI details
+5-pin DIN in/out/thru; TRS MIDI **Type A/B**; USB-MIDI; BLE-MIDI; MIDI clock; program change; CC/NRPN; 7-bit/14-bit; channel count; merge/thru behavior.
+
+### USB details
+Connector (A/B/C/micro/mini); device vs host; functions (audio/MIDI/editor/firmware/power/charging/host); class compliance; audio channels; sample rate; bit depth; latency; bus power; loopback/re-amp.
+
+### Wireless & app
+Bluetooth audio/control/version/codec/latency; BLE-MIDI; Wi-Fi; 2.4 GHz proprietary footswitch; companion app/editor; cloud/preset sharing; firmware-update method/version.
+
+### Power details & supplies
+Peak/inrush current; power consumption (W); battery type/life; USB bus power/charging; isolation/daisy-chain requirement; voltage-sag behavior; connector size/polarity; recommended PSU; power switch/soft start. For a **power supply**: outlet count, isolated vs shared, per-output V/mA, total mA, AC input, courtesy outlet, USB charging, sag/dip switches, included cables, mounting.
+
+### Product lifecycle & commercial
+Release year; discontinued year; replacement model; `variantOf`; limited edition; artist signature; colorway; made in; MSRP/price (optional); official manual/press-kit URL; firmware version; aliases.
 
 ### Provenance
 `sources`, `confidence`, `lastVerified`, `dimensionsSource`, `imageCandidates`, and the `extra` bag for anything else verified.

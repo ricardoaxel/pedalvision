@@ -28,7 +28,7 @@ Prove the full pipeline on one pedal, then on two small brands in parallel, then
 
 ## Steps
 
-1. **Pilot:** TC Choka — one PR with the **raw research record** + mapped data, hosted 800/350 image, contact sheet, Playwright render/filter check. Capture every verified fact found — connectors, audio I/O, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical and `extra` — not just what the UI shows today. The H90 is the stress fixture for multi-connector pedals.
+1. **Pilot:** TC Choka — one PR with the **raw research record** + mapped data, hosted 800/350 image, contact sheet, Playwright render/filter check. Capture every verified fact found — connectors, audio I/O, electrical specs, routing/loops, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical/jack orientation, lifecycle and `extra` — not just what the UI shows today. The H90 is the stress fixture for multi-connector pedals.
 2. **Owner checkpoint.** Only continue if the pilot is approved.
 3. **Small parallel test:** Meris (15) + Red Panda (14), one PR each; verify filters, image load, canvas placement.
 4. **Big-brand split test:** BOSS into ~5–6 batches; run 3 in parallel; one PR each; verify merge/build/QA and no conflicts.
