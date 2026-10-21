@@ -14,6 +14,7 @@ import {
 	jackAnchorWorld,
 	jackIndex,
 	jackLocalPoint,
+	liftedJackAnchor,
 	resolveItemJacks,
 } from "./jackAnchor";
 
@@ -196,6 +197,30 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 		};
 		expect(resolveItemJacks(supply, [supplyDef])).toEqual([]);
 		expect(usesFallbackJacks(supply, [supplyDef])).toBe(false);
+	});
+
+	it("recomputes a lifted pedal's jack anchor at its transient world position", () => {
+		const jack = customPedal.jacks?.[0];
+		if (!jack) throw new Error("jack fixture missing");
+		const anchor = {
+			point: { x: 15, y: 20 },
+			normal: { x: 0, y: -1 },
+			assumed: false,
+			jack,
+		};
+		const lifted = liftedJackAnchor(
+			anchor,
+			item({ x: 100, y: 50 }),
+			[customPedal],
+			{ x: 100, y: 50 },
+			90,
+		);
+		// Item-local top-centre (5,0) → 90° → (0,5) → lifted origin (100,50).
+		expect(lifted?.point.x).toBeCloseTo(100);
+		expect(lifted?.point.y).toBeCloseTo(55);
+		// The top normal rotates to the right edge.
+		expect(lifted?.normal?.x).toBeCloseTo(1);
+		expect(lifted?.normal?.y).toBeCloseTo(0);
 	});
 
 	it("builds the same anchor as jackAnchorWorld on a rotated board", () => {

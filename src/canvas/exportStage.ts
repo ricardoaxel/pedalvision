@@ -1,7 +1,7 @@
 import Konva from "konva";
+import { cableCurveCm, cablePathDataCm, EXPORT_CABLE } from "../lib/cablePath";
 import { resolveImageUrl } from "../lib/cdn";
 import {
-	cableEndPointCm,
 	EXPORT_PADDING_CM,
 	EXPORT_STANDARD_PX_PER_CM,
 	ExportError,
@@ -11,6 +11,7 @@ import {
 	SCALE_BAR_SHORT_BELOW_CM,
 	SCALE_BAR_SHORT_CM,
 } from "../lib/exportScene";
+import { buildAnchorIndex, cableEndAnchorFromIndex } from "../lib/jackAnchor";
 import { buildPdfFromJpeg } from "../lib/pdf";
 import {
 	boardDefinition,
@@ -432,25 +433,64 @@ function drawItem(
 
 function drawCables(parent: Konva.Group, context: RenderContext): void {
 	const { plan, theme, labelUnit, pxPerCm } = context;
-	for (const cable of plan.cables) {
-		const from = cableEndPointCm(cable.from, plan);
-		const to = cableEndPointCm(cable.to, plan);
-		if (!from || !to) continue;
+	// Use the SAME jack anchors + cubic curve as the live canvas, re-derived in
+	// physical cm. The previous straight centre-to-centre Konva.Arrow read as a
+	// different (ugly) drawing in exports (owner bug report, 2026-10-21).
+	const index = buildAnchorIndex({
+		boards: plan.boards,
+		items: plan.items,
+		customPedals: plan.customPedals,
+		endpoints: plan.endpoints,
+	});
+	const cables = plan.cables.flatMap((cable) => {
+		const from = cableEndAnchorFromIndex(cable.from, index);
+		const to = cableEndAnchorFromIndex(cable.to, index);
+		if (!from || !to) return [];
+		return [{ cable, curve: cableCurveCm(from, to) }];
+	});
+	const color = (cable: (typeof plan.cables)[number]) =>
+		cable.color ?? theme.cable;
+
+	// Halo first, then traces, then arrowheads — so crossings read as bridges.
+	for (const { curve } of cables) {
 		parent.add(
-			new Konva.Arrow({
-				points: [
-					from.x * pxPerCm,
-					from.y * pxPerCm,
-					to.x * pxPerCm,
-					to.y * pxPerCm,
-				],
-				stroke: cable.color ?? theme.cable,
-				fill: cable.color ?? theme.cable,
-				strokeWidth: 2 / labelUnit,
-				pointerLength: 8 / labelUnit,
-				pointerWidth: 6 / labelUnit,
+			new Konva.Path({
+				data: cablePathDataCm(curve, pxPerCm),
+				stroke: theme.cableHalo,
+				strokeWidth: EXPORT_CABLE.haloCm * pxPerCm,
 				lineCap: "round",
+				lineJoin: "round",
 				listening: false,
+				perfectDrawEnabled: false,
+			}),
+		);
+	}
+	for (const { cable, curve } of cables) {
+		parent.add(
+			new Konva.Path({
+				data: cablePathDataCm(curve, pxPerCm),
+				stroke: color(cable),
+				strokeWidth: EXPORT_CABLE.strokeCm * pxPerCm,
+				lineCap: "round",
+				lineJoin: "round",
+				listening: false,
+				perfectDrawEnabled: false,
+			}),
+		);
+	}
+	for (const { cable, curve } of cables) {
+		parent.add(
+			new Konva.Line({
+				points: curve.arrow.flatMap((point) => [
+					point.x * pxPerCm,
+					point.y * pxPerCm,
+				]),
+				closed: true,
+				fill: color(cable),
+				stroke: theme.canvasBackground,
+				strokeWidth: 0.05 * pxPerCm,
+				listening: false,
+				perfectDrawEnabled: false,
 			}),
 		);
 	}
@@ -458,20 +498,21 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 	for (const endpoint of plan.endpoints) {
 		const x = endpoint.x * pxPerCm;
 		const y = endpoint.y * pxPerCm;
+		const label = endpoint.kind === "amp" ? "AMP" : "INSTR";
 		parent.add(
 			new Konva.Circle({
 				x,
 				y,
 				radius: 4 / labelUnit,
 				fill: theme.canvasBackground,
-				stroke: theme.cable,
+				stroke: theme.jack,
 				strokeWidth: 1.5 / labelUnit,
 				listening: false,
 			}),
 		);
 		parent.add(
 			new Konva.Text({
-				text: endpoint.kind === "amp" ? "AMP" : "IN",
+				text: label,
 				x: x + 7 / labelUnit,
 				y: y - 5 / labelUnit,
 				fontFamily: CANVAS_FONTS.mono,

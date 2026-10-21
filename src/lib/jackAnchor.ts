@@ -192,6 +192,32 @@ export function anchorIndexFor(scene: {
 	return index;
 }
 
+/**
+ * The live anchor of a **lifted** pedal (P4-02 bug fix): the item is rendered in
+ * the DragLayer at its transient world origin + composed rotation, so its jack
+ * point and edge normal must be recomputed there — not at the stored position.
+ */
+export function liftedJackAnchor(
+	anchor: AnchorPoint,
+	item: PlacedItem,
+	customPedals: CustomPedal[],
+	worldCm: Point,
+	rotationDeg: number,
+): AnchorPoint | null {
+	if (!anchor.jack) return null;
+	const local = jackLocalPoint(anchor.jack, itemFootprint(item, customPedals));
+	const rotated = rotatePoint(local, { x: 0, y: 0 }, rotationDeg);
+	return {
+		...anchor,
+		point: { x: worldCm.x + rotated.x, y: worldCm.y + rotated.y },
+		normal: rotatePoint(
+			jackNormalLocal(anchor.jack.edge),
+			{ x: 0, y: 0 },
+			rotationDeg,
+		),
+	};
+}
+
 /** The key a cable end uses in the anchor index. */
 export function cableEndKey(end: CableEnd): string {
 	return "endpointUid" in end

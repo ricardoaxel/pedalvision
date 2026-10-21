@@ -5,8 +5,10 @@ import {
 	type AnchorPoint,
 	anchorIndexFor,
 	cableEndAnchorFromIndex,
+	liftedJackAnchor,
 } from "../lib/jackAnchor";
 import { useCableDrag } from "../state/cableDrag";
+import { useDrag } from "../state/drag";
 import { useEndpointDrag } from "../state/endpointDrag";
 import { useReadOnly } from "../state/readOnly";
 import {
@@ -55,6 +57,11 @@ export function CableLayer({ theme }: CableLayerProps) {
 	// endpoint drags subscribe here (not cable drags, which have their own preview).
 	const draggingEndpointUid = useEndpointDrag((state) => state.uid);
 	const draggingEndpointCm = useEndpointDrag((state) => state.worldCm);
+	// A lifted pedal renders in the DragLayer at its transient world origin; its
+	// incident cables must follow it frame-by-frame (owner bug report).
+	const liftedUid = useDrag((state) => state.liftedUid);
+	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
+	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
 	const safeScale = Math.max(scale, 0.0001);
@@ -72,6 +79,25 @@ export function CableLayer({ theme }: CableLayerProps) {
 				draggingEndpointCm
 			) {
 				return { ...anchor, point: draggingEndpointCm };
+			}
+			// A lifted pedal lives in the DragLayer at its live world origin +
+			// composed rotation; recompute its jack anchor there so the cable is
+			// attached to the pedal while it moves.
+			if (
+				!("endpointUid" in end) &&
+				liftedUid === end.itemUid &&
+				liftedWorldCm
+			) {
+				const item = items.find((candidate) => candidate.uid === end.itemUid);
+				if (item) {
+					return liftedJackAnchor(
+						anchor,
+						item,
+						customPedals,
+						liftedWorldCm,
+						liftedRotationDeg ?? item.rotationDeg,
+					);
+				}
 			}
 			return anchor;
 		};
@@ -103,6 +129,11 @@ export function CableLayer({ theme }: CableLayerProps) {
 		safeScale,
 		draggingEndpointUid,
 		draggingEndpointCm,
+		liftedUid,
+		liftedWorldCm,
+		liftedRotationDeg,
+		items,
+		customPedals,
 	]);
 
 	const colors = (selected: boolean) => ({

@@ -75,6 +75,63 @@ export function cableCurve(
 	return { start, control1, control2, end, arrow: [tip, left, right] };
 }
 
+/**
+ * Export cable metrics in **cm** (design.md §Cable visuals → export). The
+ * exported PNG/PDF is a physical drawing, so the live screen-constant values are
+ * re-derived here: 0.16 cm stroke, 0.32 cm halo, 0.62 × 0.5 cm arrowhead.
+ */
+export const EXPORT_CABLE = {
+	strokeCm: 0.16,
+	haloCm: 0.32,
+	strokeSelectedCm: 0.2,
+	arrowLengthCm: 0.62,
+	arrowWidthCm: 0.5,
+	arrowGapCm: 0.55,
+	handleMinCm: 6,
+	handleMaxCm: 24,
+	handleChordFraction: 0.45,
+} as const;
+
+/**
+ * The same cubic cable curve as the live canvas, but in **world cm** with
+ * physical handles, for the export renderer. Path normals are unchanged, so the
+ * exported trace matches the on-screen shape instead of a straight line.
+ */
+export function cableCurveCm(from: AnchorPoint, to: AnchorPoint): CableCurve {
+	const start = from.point;
+	const end = to.point;
+	const chord = Math.hypot(end.x - start.x, end.y - start.y);
+	const direction = normalize(sub(end, start));
+	const handle = Math.max(
+		EXPORT_CABLE.handleMinCm,
+		Math.min(
+			chord * EXPORT_CABLE.handleChordFraction,
+			EXPORT_CABLE.handleMaxCm,
+		),
+	);
+	const control1 = add(start, scalePoint(from.normal ?? direction, handle));
+	const control2 = to.normal
+		? add(end, scalePoint(to.normal, handle))
+		: add(end, scalePoint(direction, -handle));
+	const tangent = normalize(sub(end, control2));
+	const tip = sub(end, scalePoint(tangent, EXPORT_CABLE.arrowGapCm));
+	const baseCentre = sub(tip, scalePoint(tangent, EXPORT_CABLE.arrowLengthCm));
+	const perpendicular = { x: -tangent.y, y: tangent.x };
+	const halfWidth = EXPORT_CABLE.arrowWidthCm / 2;
+	const left = add(baseCentre, scalePoint(perpendicular, halfWidth));
+	const right = sub(baseCentre, scalePoint(perpendicular, halfWidth));
+	return { start, control1, control2, end, arrow: [tip, left, right] };
+}
+
+/**
+ * Konva `Path` data for a world-cm curve, converted to export-stage px.
+ * `pxPerCm` is the export density (32 standard / 64 HD).
+ */
+export function cablePathDataCm(curve: CableCurve, pxPerCm: number): string {
+	const at = (point: Point) => `${point.x * pxPerCm} ${point.y * pxPerCm}`;
+	return `M ${at(curve.start)} C ${at(curve.control1)} ${at(curve.control2)} ${at(curve.end)}`;
+}
+
 /** Konva `Path` data for a cubic curve. */
 export function cablePathData(curve: CableCurve): string {
 	const { start, control1, control2, end } = curve;

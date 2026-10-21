@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { cableCurve, cablePathData, cablePointAt } from "./cablePath";
+import {
+	cableCurve,
+	cableCurveCm,
+	cablePathData,
+	cablePathDataCm,
+	cablePointAt,
+	EXPORT_CABLE,
+} from "./cablePath";
 import type { AnchorPoint } from "./jackAnchor";
 
 const rightEdge: AnchorPoint = {
@@ -64,6 +71,20 @@ describe("cable curve", () => {
 				curve.arrow[1].y - curve.arrow[2].y,
 			);
 		expect(width(atTwo)).toBeCloseTo(width(atOne) / 2);
+	});
+
+	it("builds a physical world-cm cubic for export", () => {
+		const curve = cableCurveCm(rightEdge, leftEdge);
+		expect(curve.start).toEqual({ x: 0, y: 0 });
+		expect(curve.end).toEqual({ x: 20, y: 0 });
+		expect(curve.control1.x).toBeGreaterThan(0);
+		expect(curve.control2.x).toBeLessThan(20);
+		expect(cablePathDataCm(curve, 32)).toMatch(/^M 0 0 C /);
+		const arrowWidthPx = Math.hypot(
+			(curve.arrow[1].x - curve.arrow[2].x) * 32,
+			(curve.arrow[1].y - curve.arrow[2].y) * 32,
+		);
+		expect(arrowWidthPx).toBeCloseTo(EXPORT_CABLE.arrowWidthCm * 32);
 	});
 
 	it("reports a midpoint on the curve for the action bar", () => {
