@@ -1,6 +1,6 @@
 # P4-03: Auto cable length calculation + cable list summary
 
-**Phase:** P4 · **Status:** in review — PR #33 (not merged) · **Model:** build-strong
+**Phase:** P4 · **Status:** done (merged 2026-10-21, PR #33, squash `c0c419b`) · **Model:** build-strong
 
 ## Goal
 
@@ -72,3 +72,5 @@ Turn the P4-02 cable graph into a shop-ready **cable schedule**: derive every ca
 - **Design:** designer "Cable Schedule", owner-approved before UI; `design-reviewer` 2/2 — R1 approve-with-changes (◇ ASSUMED contrast, mobile read-only tray gap, length padding, dot size) → R2 **approve**.
 - **Performance (`performance-expert`): verdict `watch`** — CSS +2.06 kB gz, JS ≈+4 kB gz estimated, hosting $0; applied the per-row item/jack lookup should-fix; deferred 300-row cap/over-budget notice + lazy loading.
 - **Code review (light, one pass): changes-required** — unresolved-row tooltip fabricated a sold length / ignored units; Show patch dropped focus; payload-equality test gap → fixed (early return, units, panel focus, persisted-document equality). No second pass (simple fixes; test suite is the re-check). Nits: assumed-end title added; duplicated e2e helpers deferred.
+
+- **Merged 2026-10-21** (PR #33, squash `c0c419b`). P4 scheduled tasks are complete; the P4 phase gate runs in a separate docs-only session. P5-01 starts only after the gate merges.
