@@ -3,6 +3,7 @@ import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
 import {
 	FALLBACK_JACKS,
 	itemFootprint,
+	resolveJackLayout,
 	usesFallbackJacks,
 } from "../state/scene";
 import {
@@ -57,6 +58,22 @@ describe("jack local points", () => {
 		expect(jackLocalPoint(right, footprint)).toEqual({ x: 10, y: 5 });
 		expect(jackLocalPoint(bottom, footprint)).toEqual({ x: 10, y: 20 });
 		expect(jackLocalPoint(left, footprint)).toEqual({ x: 0, y: 10 });
+	});
+
+	it("distributes edge-only jacks evenly and marks them approximate", () => {
+		const jacks = resolveJackLayout([
+			{ kind: "in", edge: "top" },
+			{ kind: "in", edge: "top" },
+			{ kind: "out", edge: "left", pos: 0.25 },
+			{ kind: "out", edge: "left" },
+		]);
+		expect(jacks.map((jack) => jack.pos)).toEqual([1 / 3, 2 / 3, 0.25, 1 / 2]);
+		expect(jacks.map((jack) => jack.approximate === true)).toEqual([
+			true,
+			true,
+			false,
+			true,
+		]);
 	});
 });
 
@@ -197,6 +214,27 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 		};
 		expect(resolveItemJacks(supply, [supplyDef])).toEqual([]);
 		expect(usesFallbackJacks(supply, [supplyDef])).toBe(false);
+	});
+
+	it("marks edge-only jacks approximate in the anchor index", () => {
+		const edgeOnly: CustomPedal = {
+			...customPedal,
+			refId: "custom-edge-only",
+			jacks: [
+				{ kind: "in", edge: "top" },
+				{ kind: "out", edge: "top" },
+			],
+		};
+		const index = buildAnchorIndex({
+			boards: [],
+			items: [item({ refId: "custom-edge-only" })],
+			customPedals: [edgeOnly],
+			endpoints: [],
+		});
+		expect(index.all.map((anchor) => anchor.approximate)).toEqual([true, true]);
+		const first = cableEndAnchorFromIndex({ itemUid: "i1", jack: "0" }, index);
+		expect(first?.point.x).toBeCloseTo(10 + 10 / 3);
+		expect(first?.point.y).toBeCloseTo(20);
 	});
 
 	it("recomputes a lifted pedal's jack anchor at its transient world position", () => {

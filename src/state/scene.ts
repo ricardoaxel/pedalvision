@@ -5,6 +5,7 @@ import type {
 	CatalogPedal,
 	EffectType,
 	Jack,
+	JackEdge,
 	Power,
 } from "../catalog/schema";
 import type { BoardTexture } from "../lib/boardTexture";
@@ -260,24 +261,67 @@ export function resolveItem(
  * deliberate), nor do supplies or unknown refs. The canvas renders fallback
  * ticks as hollow diamonds and labels them "assumed".
  */
-export const FALLBACK_JACKS: readonly Jack[] = [
+export const FALLBACK_JACKS: readonly ResolvedJack[] = [
 	{ kind: "in", edge: "left", pos: 0.5 },
 	{ kind: "out", edge: "right", pos: 0.5 },
 ];
 
 /**
+ * A jack with its resolved position. Catalog data may omit `pos` when only the
+ * edge/count is known (P5-01); `resolveJackLayout` fills those evenly along
+ * their edge and marks them `approximate`, which the canvas draws as a hollow
+ * tick (same visual language as the fallback anchors).
+ */
+export type ResolvedJack = Jack & { pos: number; approximate?: boolean };
+
+/**
+ * Resolve edge-only jacks into concrete anchor positions (P5-01). A source may
+ * only confirm "2 jacks on top", so every jack with no `pos` is distributed
+ * evenly across its own edge at `(n+1)/(count+1)`; exact positions are kept.
+ * Deterministic and side-effect free. Returns the input array unchanged when
+ * every jack already has a position (the common case).
+ */
+export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
+	if (jacks.every((jack) => jack.pos !== undefined)) {
+		return jacks as ResolvedJack[];
+	}
+	const missingByEdge = new Map<JackEdge, number[]>();
+	jacks.forEach((jack, index) => {
+		if (jack.pos !== undefined) return;
+		const list = missingByEdge.get(jack.edge);
+		if (list) list.push(index);
+		else missingByEdge.set(jack.edge, [index]);
+	});
+	const positions = new Map<number, number>();
+	for (const indexes of missingByEdge.values()) {
+		indexes.forEach((index, position) => {
+			positions.set(index, (position + 1) / (indexes.length + 1));
+		});
+	}
+	return jacks.map((jack, index) => {
+		if (jack.pos !== undefined) return jack as ResolvedJack;
+		return {
+			...jack,
+			pos: positions.get(index) ?? 0.5,
+			approximate: true,
+		};
+	});
+}
+
+/**
  * The jacks an item exposes for cable attachment: the real definition first,
  * then the documented fallback pair for a catalog pedal with no jack data.
  * Persistence validation uses the same resolution, so a cable to a fallback
- * anchor survives save/load.
+ * anchor survives save/load. Edge-only jacks get a resolved (approximate)
+ * position here (P5-01).
  */
 export function resolveItemJacks(
 	item: PlacedItem,
 	customPedals: CustomPedal[] = [],
-): Jack[] {
+): ResolvedJack[] {
 	const resolved = resolveItem(item, customPedals);
 	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
-	if (real.length > 0) return real;
+	if (real.length > 0) return resolveJackLayout(real);
 	if (resolved.definition !== null && item.kind === "pedal") {
 		return [...FALLBACK_JACKS];
 	}

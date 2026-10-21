@@ -90,11 +90,13 @@ export function InfoPanel() {
 
 	if (!item || !resolved) return null;
 
+	const jacks = resolveItemJacks(item, customPedals);
 	const info = buildPartInfo(
 		resolved,
 		item.kind,
-		resolveItemJacks(item, customPedals),
-		usesFallbackJacks(item, customPedals),
+		jacks,
+		usesFallbackJacks(item, customPedals) ||
+			jacks.some((jack) => jack.approximate === true),
 	);
 
 	// While this item is lifted, evaluate the warning where it floats (live

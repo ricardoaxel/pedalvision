@@ -20,6 +20,9 @@ import { z } from "zod";
 /** Stable slug ids: lowercase ASCII words joined by single hyphens. */
 export const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+/** ISO calendar date (`YYYY-MM-DD`) — research verification date. */
+export const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+
 /**
  * Image filenames must be lowercase/hyphenated/ASCII `.png`. `assetUrl()` does
  * not URL-encode (src/lib/cdn.ts), so the catalog is the guarantee that only
@@ -84,9 +87,19 @@ export const SOURCE_TAGS = [
 	"brand-assets",
 	"community",
 	"own",
+	"public-asset",
 	"placeholder",
 	"synthetic",
 ] as const;
+
+/** Intended instrument use (P5-01). Absent = unknown. */
+export const USAGE_TYPES = ["guitar", "bass", "both", "unknown"] as const;
+
+/** Product lifecycle status (P5-01). Absent = unknown. */
+export const PEDAL_STATUSES = ["current", "discontinued", "unknown"] as const;
+
+/** Research confidence (P5-01, ADR-003). Absent = unknown. */
+export const CONFIDENCE_LEVELS = ["confirmed", "likely", "unsure"] as const;
 
 /**
  * Our effect-type taxonomy (ADR-003 §Schema originality). A pedal may have
@@ -164,8 +177,13 @@ export const JACK_EDGES = ["top", "right", "bottom", "left"] as const;
 export const JackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
 	edge: z.enum(JACK_EDGES),
-	/** Position along the edge, 0..1 (0.5 = centered). */
-	pos: z.number().min(0).max(1),
+	/**
+	 * Position along the edge, 0..1 (0.5 = centered). **Optional** (P5-01): a
+	 * source may expose only the edge/count ("2 on top"). Absent means
+	 * approximate — the resolver distributes edge-only jacks evenly and marks
+	 * them approximate (hollow ticks). Existing catalog/custom data stays valid.
+	 */
+	pos: z.number().min(0).max(1).optional(),
 	/**
 	 * Stereo / TRS jack (P4-02 bug fix): a stereo jack can carry two cables
 	 * (e.g. a TRS output split to two destinations). Mono jacks accept one.
@@ -194,6 +212,23 @@ export const CatalogPedalSchema = z
 		jacks: z.array(JackSchema).optional(),
 		power: PowerSchema.optional(),
 		variantOf: z.string().regex(ID_PATTERN).optional(),
+		/** Intended instrument use (P5-01). Absent = unknown. */
+		usage: z.enum(USAGE_TYPES).optional(),
+		/** Finish/colorway display string (e.g. "green"). Optional. */
+		color: z.string().min(1).optional(),
+		/** Short original factual summary. Optional. */
+		notes: z.string().min(1).optional(),
+		/** Release year (not a serial/date code). Optional. */
+		year: z.number().int().min(1900).max(2100).optional(),
+		/** Lifecycle status. Absent = unknown. */
+		status: z.enum(PEDAL_STATUSES).optional(),
+		/** Research confidence. Absent = unknown. */
+		confidence: z.enum(CONFIDENCE_LEVELS).optional(),
+		/** ISO date the record was last verified. Optional. */
+		lastVerified: z
+			.string()
+			.regex(ISO_DATE_PATTERN, "lastVerified must be YYYY-MM-DD")
+			.optional(),
 		source: z.enum(SOURCE_TAGS),
 		sources: z.array(SourceRefSchema).optional(),
 		links: z.array(z.object({ label: z.string(), url: HTTP_URL })).optional(),
@@ -209,6 +244,8 @@ export const CatalogBoardSchema = z
 		heightCm: z.number().positive(),
 		image: z.string().min(1, "image is required"),
 		imageSource: z.enum(IMAGE_SOURCES),
+		/** Size-family variant link (P5-01). Keeps real size/version items. */
+		variantOf: z.string().regex(ID_PATTERN).optional(),
 		source: z.enum(SOURCE_TAGS),
 		sources: z.array(SourceRefSchema).optional(),
 	})
@@ -230,3 +267,6 @@ export type Catalog = z.infer<typeof CatalogSchema>;
 export type SourceTag = (typeof SOURCE_TAGS)[number];
 export type EffectType = (typeof EFFECT_TYPES)[number];
 export type ImageSource = (typeof IMAGE_SOURCES)[number];
+export type Usage = (typeof USAGE_TYPES)[number];
+export type PedalStatus = (typeof PEDAL_STATUSES)[number];
+export type Confidence = (typeof CONFIDENCE_LEVELS)[number];

@@ -9,7 +9,7 @@ export interface DrawingJack {
 	id?: string;
 	kind: JackKind;
 	edge: JackEdge;
-	pos: number;
+	pos?: number;
 }
 
 /**
@@ -117,10 +117,13 @@ export function PartDrawing({
 				{depthLabel}
 			</text>
 			{jacks.map((jack, index) => {
-				const point = jackPoint(jack.edge, jack.pos, w, h);
+				const point = jackPoint(jack.edge, jack.pos ?? 0.5, w, h);
 				return (
 					<circle
-						key={jack.id ?? `${jack.kind}:${jack.edge}:${jack.pos}:${index}`}
+						key={
+							jack.id ??
+							`${jack.kind}:${jack.edge}:${jack.pos ?? "auto"}:${index}`
+						}
 						className={`part-drawing__dot${
 							jack.id !== undefined && jack.id === activeJackId
 								? " part-drawing__dot--active"

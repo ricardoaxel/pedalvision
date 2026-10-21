@@ -1,6 +1,6 @@
 # ADR-003: Catalog data & asset strategy
 
-**Status:** Accepted (2026-09-22) · amended 2026-10-14 (committed seed = real facts + mocked images; schema-originality + taxonomy + ingestion model; per-item source links) · amended 2026-10-15 (render direct official brand image URLs where recorded; mock is the fallback) — ⚠️ MUST BE REVISITED BEFORE ANY PUBLIC LAUNCH
+**Status:** Accepted (2026-09-22) · amended 2026-10-14 (committed seed = real facts + mocked images; schema-originality + taxonomy + ingestion model; per-item source links) · amended 2026-10-15 (render direct official brand image URLs where recorded; mock is the fallback) · amended 2026-10-21 (self-hosted public-asset policy; capture-once raw archive; master inventory + 2,000 cap; pedalboards first-class) — ⚠️ MUST BE REVISITED BEFORE ANY PUBLIC LAUNCH
 
 ## Context
 The app needs pedals/boards with real footprint dimensions + top-down transparent PNGs. Research (Sep 2026) found no dataset with a clean image licence. A comprehensive community catalog exists (~8.5k pedals, ~250 boards, inches + 350/800px PNGs), but its repo has **no LICENSE file** (default copyright) and its maintainer has objected to unpermissioned reuse before.
@@ -106,6 +106,33 @@ This **supersedes** the permission-first / hotlink-only rules for the P5 catalog
 - **Quality gate:** resolution, uniform/transparent background, top-down crop, aspect ratio vs the cm footprint (accept ~≤10%, flag 10–15%, reject >15%), rotation/skew, shadow/perspective checks; rejected candidates are re-sourced (max 3) or flagged. The BOSS AC-3 white-background and TC Choka bad-crop cases are regression fixtures.
 - **Hard cap:** **2,000 pedals with hosted images** (~4,000 files, ~300 MB) until **P5-05** (image hosting at scale) is decided. Agents stop at the cap; data/image work does not continue past it.
 - **Optional jack layout:** if a source exposes input/output positions, record `jacks[]` (`kind`, `edge`, `pos`, `stereo?`). `pos` is 0..1 along the edge and is derived from exact cm (`x / widthCm` on top/bottom, `y / heightCm` on left/right), so measured edge positions are representable exactly. This is **optional enrichment**, not mandatory. If only the edge/count is known (e.g. “2 on top”), omit `pos`; the resolver distributes them evenly on that edge and marks the anchors **approximate**. When no jack data exists at all, P4-02's fallback anchors apply (assumed IN left / OUT right).
+
+## Master inventory & raw research archive (P5-01, owner-approved 2026-10-21)
+
+The catalog is built **capture-once**: research writes a raw record with every
+verified fact + source page + image candidate, and the runtime catalog is a
+deterministic projection. Adding a runtime field later is a mapping change, not
+a new research pass.
+
+- Raw archive: `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`;
+  schema `src/catalog/rawSchema.ts`; contract
+  `docs/catalog/raw-research-record.md`.
+- Master inventory: `data/catalog/inventory.json` (off-runtime) from the
+  discovery lists — **8,557 pedals / 779 brands** and **263 boards / 38 brands**;
+  normalized/deduped to **8,549 pedals** and **263 boards**, with colorway
+  `variantOf` links and Tier A/B/C.
+- **Tier A = 1,850 pedals + exactly 150 boards** (priority-brand order, hard
+  caps). The first 2,000 catalog items are ~1,850 pedals + 150 boards. Tier B =
+  next brands + priority overflow; Tier C = the long tail.
+- Seed validation: `data/catalog/seed-validation.json` classifies every seed
+  item keep / repair / replace / drop (the 207 + 10 seed facts are kept; images
+  are replaced under the public-asset policy).
+- Caps: **2,000 hosted pedals** (~4,000 files, ~300 MB) until P5-05; board
+  images are a separate **150-board / ~300-file / ~20 MB** budget.
+- Community jack maps: `docs/catalog/jack-map-record.md` (pending/approved/
+  rejected; v1 prefilled GitHub issue/PR, v2 backend). Approved maps only.
+- Attribution/takedown page: `docs/catalog/attribution-takedown.md` (owner
+  approved the policy; the visible page ships before launch).
 
 ## Pedalboard catalog (P5, first-class)
 

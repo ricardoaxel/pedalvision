@@ -1,5 +1,6 @@
+import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import {
 	type CatalogBoard,
 	CatalogBoardSchema,
@@ -20,7 +21,9 @@ import {
 	deriveEffectTypes,
 } from "./curated.ts";
 import { resolveImages } from "./images.ts";
+import { buildInventory } from "./inventory.ts";
 import { writeSeedImages } from "./seed.ts";
+import { validateSeed } from "./seed-validation.ts";
 import {
 	DEFAULT_SELECT,
 	type SelectOptions,
@@ -61,6 +64,10 @@ Usage:
   seed   [--catalog-dir <dir>] [--assets-dir <dir>]
   reclassify [--catalog-dir <dir>]
   resolve-images [--catalog-dir <dir>]
+  inventory --pedals <pedals.json> --boards <boards.json>
+            [--out <inventory.json>] [--seed-dir <dir>] [--generated-at <YYYY-MM-DD>]
+  validate-seed [--catalog-dir <dir>] [--assets-dir <dir>]
+                [--out <seed-validation.json>] [--generated-at <YYYY-MM-DD>]
   --help
 
 Source tags: ${SOURCE_TAGS.join(" | ")}
@@ -78,6 +85,9 @@ type Args = {
 	boardLimit: number;
 	select: SelectOptions;
 	allowRemovals: boolean;
+	out?: string;
+	seedDir: string;
+	generatedAt: string;
 	help: boolean;
 };
 
@@ -100,6 +110,8 @@ function parseArgs(argv: string[]): Args {
 		boardLimit: DEFAULTS.boardLimit,
 		select: { ...DEFAULTS.select },
 		allowRemovals: false,
+		seedDir: "src/catalog/data",
+		generatedAt: new Date().toISOString().slice(0, 10),
 		help: false,
 	};
 	if (args.command === "--help" || args.command === "-h") {
@@ -111,6 +123,7 @@ function parseArgs(argv: string[]): Args {
 		const arg = argv[i];
 		switch (arg) {
 			case "--input":
+			case "--pedals":
 				args.input = argv[++i];
 				break;
 			case "--boards":
@@ -158,6 +171,20 @@ function parseArgs(argv: string[]): Args {
 			case "--allow-removals":
 				args.allowRemovals = true;
 				break;
+			case "--out":
+				args.out = argv[++i];
+				break;
+			case "--seed-dir":
+				args.seedDir = argv[++i];
+				break;
+			case "--generated-at": {
+				const value = argv[++i];
+				if (!/^\d{4}-\d{2}-\d{2}$/.test(value ?? "")) {
+					throw new Error(`--generated-at must be YYYY-MM-DD (got "${value}")`);
+				}
+				args.generatedAt = value;
+				break;
+			}
 			case "--help":
 			case "-h":
 				args.help = true;
@@ -408,6 +435,103 @@ async function runResolveImages(args: Args): Promise<void> {
 	);
 }
 
+/**
+ * Read the committed seed's brand/name pairs for the inventory overlap flag.
+ * A missing seed file is fine (fresh repo).
+ */
+async function readSeedNames(
+	path: string,
+): Promise<Array<{ brand: string; name: string }>> {
+	let raw: string;
+	try {
+		raw = await readFile(path, "utf8");
+	} catch (error) {
+		if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+		throw error;
+	}
+	const parsed = JSON.parse(raw);
+	if (!Array.isArray(parsed)) return [];
+	return parsed
+		.filter(
+			(item): item is { brand: string; name: string } =>
+				typeof item === "object" &&
+				item !== null &&
+				typeof (item as { brand?: unknown }).brand === "string" &&
+				typeof (item as { name?: unknown }).name === "string",
+		)
+		.map((item) => ({ brand: item.brand, name: item.name }));
+}
+
+/** Build the off-runtime master inventory from the discovery lists. */
+async function runInventory(args: Args): Promise<void> {
+	if (!args.input || !args.boards) {
+		throw new Error(
+			"inventory requires --pedals <pedals.json> --boards <boards.json>",
+		);
+	}
+	const pedalRows = await readRows(args.input);
+	const boardRows = await readRows(args.boards);
+	const seedDir = resolve(process.cwd(), args.seedDir);
+	const inventory = buildInventory(pedalRows, boardRows, {
+		generatedAt: args.generatedAt,
+		seedPedals: await readSeedNames(join(seedDir, "pedals.json")),
+		seedBoards: await readSeedNames(join(seedDir, "boards.json")),
+	});
+	const out = resolve(process.cwd(), args.out ?? "data/catalog/inventory.json");
+	await mkdir(dirname(out), { recursive: true });
+	await writeFile(out, `${JSON.stringify(inventory, null, 2)}\n`);
+	const { pedals, boards } = inventory.summary;
+	console.log(
+		`inventory: ${pedals.unique}/${pedals.discovered} pedals (${pedals.brands} brands) + ${boards.unique}/${boards.discovered} boards (${boards.brands} brands) → ${out}`,
+	);
+	console.log(
+		`  tiers pedals A=${pedals.tierA} B=${pedals.tierB} C=${pedals.tierC}; boards A=${boards.tierA} B=${boards.tierB} C=${boards.tierC}`,
+	);
+	console.log(
+		`  duplicates removed ${pedals.duplicatesRemoved} pedals / ${boards.duplicatesRemoved} boards; seed overlap ${pedals.seedOverlap} pedals / ${boards.seedOverlap} boards`,
+	);
+}
+
+/** Validate the committed seed and write the keep/repair/replace/drop report. */
+async function runValidateSeed(args: Args): Promise<void> {
+	const catalogDir = resolve(process.cwd(), args.catalogDir);
+	const assetsDir = resolve(process.cwd(), args.assetsDir);
+	const pedals = JSON.parse(
+		await readFile(join(catalogDir, "pedals.json"), "utf8"),
+	);
+	const boards = JSON.parse(
+		await readFile(join(catalogDir, "boards.json"), "utf8"),
+	);
+	if (!Array.isArray(pedals) || !Array.isArray(boards)) {
+		throw new Error("seed validation expects pedals.json/boards.json arrays");
+	}
+	const hasStaticImage = (kind: "pedal" | "board", image: string): boolean => {
+		const folder = kind === "pedal" ? "pedals" : "boards";
+		return [800, 350].every((size) =>
+			existsSync(join(assetsDir, folder, String(size), image)),
+		);
+	};
+	const report = validateSeed(pedals, boards, {
+		generatedAt: args.generatedAt,
+		hasStaticImage,
+	});
+	const out = resolve(
+		process.cwd(),
+		args.out ?? "data/catalog/seed-validation.json",
+	);
+	await mkdir(dirname(out), { recursive: true });
+	await writeFile(out, `${JSON.stringify(report, null, 2)}\n`);
+	console.log(
+		`seed validation: ${report.source.pedals} pedals / ${report.source.boards} boards → ${out}`,
+	);
+	console.log(
+		`  pedals keep=${report.summary.pedals.keep} repair=${report.summary.pedals.repair} replace=${report.summary.pedals.replace} drop=${report.summary.pedals.drop}`,
+	);
+	console.log(
+		`  boards keep=${report.summary.boards.keep} repair=${report.summary.boards.repair} replace=${report.summary.boards.replace} drop=${report.summary.boards.drop}`,
+	);
+}
+
 async function main(): Promise<void> {
 	const args = parseArgs(process.argv.slice(2));
 	if (args.help || !args.command) {
@@ -427,6 +551,12 @@ async function main(): Promise<void> {
 			return;
 		case "resolve-images":
 			await runResolveImages(args);
+			return;
+		case "inventory":
+			await runInventory(args);
+			return;
+		case "validate-seed":
+			await runValidateSeed(args);
 			return;
 		default:
 			throw new Error(`unknown command "${args.command}"`);

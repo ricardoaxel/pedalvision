@@ -1,0 +1,331 @@
+{
+	"id": "eventide-h90",
+	"brand": "Eventide",
+	"name": "H90 Harmonizer",
+	"aliases": ["H90"],
+	"category": "pedal",
+	"deviceType": "multi-fx",
+	"formFactor": "double",
+	"effectTypes": [
+		"delay",
+		"reverb",
+		"pitch",
+		"chorus",
+		"flanger",
+		"phaser",
+		"tremolo",
+		"looper",
+		"eq",
+		"compressor"
+	],
+	"widthCm": 17.9,
+	"heightCm": 13.6,
+	"dimensionsSource": "Eventide H90 manual §B Tech Specs (65 H x 179 W x 136 D mm)",
+	"jacks": [
+		{
+			"label": "IN 1",
+			"kind": "in",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "IN 2",
+			"kind": "in",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "IN 3",
+			"kind": "in",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "IN 4",
+			"kind": "in",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "OUT 1",
+			"kind": "out",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "OUT 2",
+			"kind": "out",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "OUT 3",
+			"kind": "out",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "OUT 4",
+			"kind": "out",
+			"edge": "top",
+			"connector": "ts",
+			"channels": 1,
+			"signal": "audio",
+			"balanced": false,
+			"level": "instrument",
+			"stereo": false,
+			"note": "1/4-inch mono TS; configurable to line level."
+		},
+		{
+			"label": "EXP/CTL 1",
+			"kind": "exp",
+			"edge": "top",
+			"connector": "trs",
+			"channels": 1,
+			"signal": "control",
+			"balanced": false,
+			"stereo": false,
+			"note": "1/4-inch TRS; expression pedal (10-25 kOhm), 0-5 V CV, or momentary aux switch."
+		},
+		{
+			"label": "EXP/CTL 2",
+			"kind": "exp",
+			"edge": "top",
+			"connector": "trs",
+			"channels": 1,
+			"signal": "control",
+			"balanced": false,
+			"stereo": false,
+			"note": "1/4-inch TRS; expression pedal (10-25 kOhm), 0-5 V CV, or momentary aux switch."
+		},
+		{
+			"label": "MIDI IN",
+			"kind": "midi",
+			"edge": "top",
+			"connector": "din5",
+			"channels": 1,
+			"signal": "midi",
+			"midiType": "din5",
+			"note": "5-pin DIN input."
+		},
+		{
+			"label": "MIDI OUT/THRU",
+			"kind": "midi",
+			"edge": "top",
+			"connector": "din5",
+			"channels": 1,
+			"signal": "midi",
+			"midiType": "din5",
+			"note": "5-pin DIN output or thru."
+		},
+		{
+			"label": "USB-C",
+			"kind": "ctrl",
+			"edge": "top",
+			"connector": "usb-c",
+			"channels": 1,
+			"signal": "usb",
+			"usbFunctions": ["editor", "firmware", "midi"],
+			"note": "H90 Control app, firmware updates and MIDI over USB."
+		},
+		{
+			"label": "12 VDC",
+			"kind": "power",
+			"edge": "top",
+			"connector": "barrel",
+			"channels": 1,
+			"signal": "power",
+			"note": "12 VDC center-positive, 5.5/2.5 mm; 600 mA (9 VDC 800 mA also supported)."
+		}
+	],
+	"power": {
+		"voltage": 12,
+		"acDc": "DC",
+		"currentMa": 600
+	},
+	"io": {
+		"inputs": 4,
+		"outputs": 4,
+		"channels": 8,
+		"stereo": true,
+		"trueStereo": true,
+		"balanced": false,
+		"level": "instrument",
+		"inputImpedanceOhm": {
+			"instrument": 600000,
+			"line": 80000
+		},
+		"outputImpedanceOhm": 220,
+		"maxInputLevelDbu": {
+			"instrument": 4,
+			"line": 14
+		},
+		"latencyMs": {
+			"parallel": 3.8,
+			"series": 4.5
+		},
+		"sampleRateKhz": 48,
+		"bitDepth": 24,
+		"note": "Four inputs and four outputs, 1/4-inch mono TS; instrument or line level per input/output."
+	},
+	"optional": {
+		"audio": {
+			"inputs": 4,
+			"outputs": 4,
+			"channels": 8,
+			"stereo": true,
+			"trueStereo": true,
+			"balanced": false,
+			"level": "instrument",
+			"inputImpedanceOhm": {
+				"instrument": 600000,
+				"line": 80000
+			},
+			"outputImpedanceOhm": 220,
+			"maxInputLevelDbu": {
+				"instrument": 4,
+				"line": 14
+			},
+			"latencyMs": {
+				"parallel": 3.8,
+				"series": 4.5
+			},
+			"sampleRateKhz": 48,
+			"bitDepth": 24,
+			"note": "AD/DA 24-bit, DSP 32-bit floating point."
+		},
+		"control": {
+			"expression": 2,
+			"expressionVoltageRange": "0-5 V",
+			"cv": true,
+			"cvVoltageRange": "0-5 V",
+			"footswitch": true,
+			"footswitchType": "momentary normally open, 1-3 button",
+			"tapTempo": true
+		},
+		"midi": {
+			"din5": "in-out-thru",
+			"din": true,
+			"usb": true,
+			"clock": true,
+			"programChange": true,
+			"cc": true
+		},
+		"usb": {
+			"connector": "usb-c",
+			"functions": ["editor", "firmware", "midi"],
+			"device": true,
+			"note": "No audio-interface function documented; editor, updates and MIDI over USB."
+		},
+		"circuit": {
+			"type": "digital",
+			"sampleRateKhz": 48,
+			"bitDepth": 24,
+			"note": "AD/DA 24-bit, DSP 32-bit floating point."
+		},
+		"physical": {
+			"weightG": 1360,
+			"depthCm": 13.6,
+			"heightCm": 6.5,
+			"jackOrientation": "rear",
+			"powerJackLocation": "rear",
+			"note": "65 H x 179 W x 136 D mm; 1.36 kg."
+		},
+		"electrical": {
+			"inputImpedanceOhm": {
+				"instrument": 600000,
+				"line": 80000
+			},
+			"outputImpedanceOhm": 220,
+			"maxInputLevelDbu": {
+				"instrument": 4,
+				"line": 14
+			},
+			"level": "instrument",
+			"note": "Operating level configurable throughout the four inputs and four outputs."
+		},
+		"routing": {
+			"series": true,
+			"parallel": true,
+			"note": "Two preset routing modes documented in the manual (parallel and series)."
+		},
+		"power": {
+			"voltage": 12,
+			"acDc": "DC",
+			"currentMa": 600,
+			"polarity": "center-positive",
+			"connector": "barrel",
+			"connectorSize": "5.5/2.5 mm",
+			"recommendedSupply": "12 VDC 1 A",
+			"note": "9 VDC at 800 mA is also supported."
+		},
+		"lifecycle": {
+			"manualUrl": "https://cdn.eventideaudio.com/manuals/h90/1.12.5/_static/141385_EventideH90Manual_v1.12.5.pdf"
+		}
+	},
+	"notes": "Dual-engine multi-effects processor with four inputs, four outputs and rear-panel MIDI/USB.",
+	"status": "current",
+	"sources": [
+		{
+			"url": "https://www.eventideaudio.com/pedals/h90/",
+			"kind": ["info", "image"]
+		},
+		{
+			"url": "https://cdn.eventideaudio.com/manuals/h90/1.12.5/content/appendix/specifications.html",
+			"kind": ["info"]
+		},
+		{
+			"url": "https://cdn.eventideaudio.com/manuals/h90/1.12.5/content/hardware/rear-side.html",
+			"kind": ["info"]
+		}
+	],
+	"confidence": "confirmed",
+	"lastVerified": "2026-10-21",
+	"extra": {
+		"operatingLevels": "Instrument or line level, configurable per input/output.",
+		"lineLevelLeds": true,
+		"latencyNote": "Parallel 3.8 ms; series 4.5 ms; each insert adds 3.8 ms plus any insert compensation."
+	}
+}

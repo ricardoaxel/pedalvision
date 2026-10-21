@@ -132,5 +132,7 @@ export function formatJack(jack: Jack): string {
 				? "O"
 				: jackKindLabel(jack.kind);
 	const stereo = jack.stereo === true ? " · TRS" : "";
-	return `${kind} · ${JACK_EDGE_NAMES[jack.edge]} · ${jack.pos.toFixed(2)}${stereo}`;
+	return `${kind} · ${JACK_EDGE_NAMES[jack.edge]} · ${
+		jack.pos === undefined ? "auto" : jack.pos.toFixed(2)
+	}${stereo}`;
 }

@@ -16,6 +16,8 @@
 		"catalog:seed": "node --experimental-strip-types tools/catalog-transform/index.ts seed",
 		"catalog:reclassify": "node --experimental-strip-types tools/catalog-transform/index.ts reclassify",
 		"catalog:resolve-images": "node --experimental-strip-types tools/catalog-transform/index.ts resolve-images",
+		"catalog:inventory": "node --experimental-strip-types tools/catalog-transform/index.ts inventory",
+		"catalog:validate-seed": "node --experimental-strip-types tools/catalog-transform/index.ts validate-seed",
 		"asset:process": "node --experimental-strip-types tools/asset-pipeline/index.ts"
 	},
 	"dependencies": {

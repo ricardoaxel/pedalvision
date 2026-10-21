@@ -1,0 +1,2336 @@
+{
+	"version": 1,
+	"generatedAt": "2026-10-21",
+	"source": {
+		"pedals": 207,
+		"boards": 10
+	},
+	"summary": {
+		"pedals": {
+			"keep": 0,
+			"repair": 0,
+			"replace": 207,
+			"drop": 0
+		},
+		"boards": {
+			"keep": 0,
+			"repair": 0,
+			"replace": 10,
+			"drop": 0
+		}
+	},
+	"items": [
+		{
+			"kind": "pedal",
+			"id": "boss-ac-2-acoustic-simulator",
+			"brand": "BOSS",
+			"name": "AC-2 Acoustic Simulator",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ac-3-acoustic-simulator",
+			"brand": "BOSS",
+			"name": "AC-3 Acoustic Simulator",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ad-2-acoustic-preamp",
+			"brand": "BOSS",
+			"name": "AD-2 Acoustic Preamp",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-aw-3-dynamic-wah",
+			"brand": "BOSS",
+			"name": "AW-3 Dynamic Wah",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-bb-1x-bass-driver",
+			"brand": "BOSS",
+			"name": "BB-1X Bass Driver",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-bc-1x-bass-compressor",
+			"brand": "BOSS",
+			"name": "BC-1x Bass Compressor",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-bc-2-combo-drive",
+			"brand": "BOSS",
+			"name": "BC-2 Combo Drive",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-bd-2-blues-driver",
+			"brand": "BOSS",
+			"name": "BD-2 Blues Driver",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-bf-2-flanger",
+			"brand": "BOSS",
+			"name": "BF-2 Flanger",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-bf-2b-bass-flanger",
+			"brand": "BOSS",
+			"name": "BF-2B Bass Flanger",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-bf-3-flanger",
+			"brand": "BOSS",
+			"name": "BF-3 Flanger",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ce-1-chorus-ensemble",
+			"brand": "BOSS",
+			"name": "CE-1 Chorus Ensemble",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ce-2-chorus",
+			"brand": "BOSS",
+			"name": "CE-2 Chorus",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ce-20-chorus-ensemble",
+			"brand": "BOSS",
+			"name": "CE-20 Chorus Ensemble",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ce-2b-bass-chorus",
+			"brand": "BOSS",
+			"name": "CE-2B Bass Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ce-3-chorus",
+			"brand": "BOSS",
+			"name": "CE-3 Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ce-5-chorus-ensemble",
+			"brand": "BOSS",
+			"name": "CE-5 Chorus Ensemble",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ceb-3-bass-chorus",
+			"brand": "BOSS",
+			"name": "CEB-3 Bass Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-ch-1-super-chorus",
+			"brand": "BOSS",
+			"name": "CH-1 Super Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-cp-1x-compressor",
+			"brand": "BOSS",
+			"name": "CP-1X Compressor",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-cs-2-compression-sustainer",
+			"brand": "BOSS",
+			"name": "CS-2 Compression Sustainer",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-cs-3-compression-sustainer",
+			"brand": "BOSS",
+			"name": "CS-3 Compression Sustainer",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-da-2-adaptive-distortion",
+			"brand": "BOSS",
+			"name": "DA-2 Adaptive Distortion",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dc-2-dimension-c",
+			"brand": "BOSS",
+			"name": "DC-2 Dimension C",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dc-3-digital-dimension",
+			"brand": "BOSS",
+			"name": "DC-3 Digital Dimension",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-2-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-2 Digital Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-20-giga-delay",
+			"brand": "BOSS",
+			"name": "DD-20 Giga Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-200-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-200 Digital Delay",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-3-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-3 Digital Delay",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-3t-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-3T Digital Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-5-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-5 Digital Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-500-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-500 Digital Delay",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-6-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-6 Digital Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-7-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-7 Digital Delay",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dd-8-digital-delay",
+			"brand": "BOSS",
+			"name": "DD-8 Digital Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-df-2-super-feedbacker-distortion",
+			"brand": "BOSS",
+			"name": "DF-2 Super Feedbacker & Distortion",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dm-101-delay-machine",
+			"brand": "BOSS",
+			"name": "DM-101 Delay Machine",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dm-2-delay",
+			"brand": "BOSS",
+			"name": "DM-2 Delay",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dm-3-delay",
+			"brand": "BOSS",
+			"name": "DM-3 Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-dn-2-dyna-drive",
+			"brand": "BOSS",
+			"name": "DN-2 Dyna Drive",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-1-echo",
+			"brand": "Electro-Harmonix",
+			"name": "#1 Echo",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-1440-stereo-looper",
+			"brand": "Electro-Harmonix",
+			"name": "1440 Stereo Looper",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-15watt-howitzer",
+			"brand": "Electro-Harmonix",
+			"name": "15Watt Howitzer",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-2020-tuner",
+			"brand": "Electro-Harmonix",
+			"name": "2020 Tuner",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-2020-tuner-v2",
+			"brand": "Electro-Harmonix",
+			"name": "2020 Tuner v2",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-22500-dual-stereo-looper",
+			"brand": "Electro-Harmonix",
+			"name": "22500 Dual Stereo Looper",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-22500-foot-controller",
+			"brand": "Electro-Harmonix",
+			"name": "22500 Foot Controller",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-44-magnum-power-amp",
+			"brand": "Electro-Harmonix",
+			"name": "44 Magnum Power Amp",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-5mm-power-amp",
+			"brand": "Electro-Harmonix",
+			"name": "5mm Power Amp",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-720-stereo-looper",
+			"brand": "Electro-Harmonix",
+			"name": "720 Stereo Looper",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-8-step-program",
+			"brand": "Electro-Harmonix",
+			"name": "8 Step Program",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-95000-performance-loop-laboratory",
+			"brand": "Electro-Harmonix",
+			"name": "95000 Performance Loop Laboratory",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-analogizer",
+			"brand": "Electro-Harmonix",
+			"name": "Analogizer",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-attack-decay",
+			"brand": "Electro-Harmonix",
+			"name": "Attack Decay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-b9-organ-machine",
+			"brand": "Electro-Harmonix",
+			"name": "B9 Organ Machine",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-bad-stone",
+			"brand": "Electro-Harmonix",
+			"name": "Bad Stone",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-bass-big-muff-pi",
+			"brand": "Electro-Harmonix",
+			"name": "Bass Big Muff Pi",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "electro-harmonix-bass-big-muff-pi-2",
+			"brand": "Electro-Harmonix",
+			"name": "Bass Big Muff Pi 2",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-385",
+			"brand": "Walrus Audio",
+			"name": "385",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-385-nat-parks",
+			"brand": "Walrus Audio",
+			"name": "385 (Nat. Parks)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-385-mkii",
+			"brand": "Walrus Audio",
+			"name": "385 MKII",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-385-mkii-black",
+			"brand": "Walrus Audio",
+			"name": "385 MKII (Black)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-arp-87",
+			"brand": "Walrus Audio",
+			"name": "ARP-87",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-arp-87-kamakura",
+			"brand": "Walrus Audio",
+			"name": "ARP-87 (Kamakura)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-arp-87-nat-parks",
+			"brand": "Walrus Audio",
+			"name": "ARP-87 (Nat. Parks)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-arp-87-nautical",
+			"brand": "Walrus Audio",
+			"name": "ARP-87 (Nautical)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-arp-87-obsidian",
+			"brand": "Walrus Audio",
+			"name": "ARP-87 (Obsidian)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-arp-87-platinum",
+			"brand": "Walrus Audio",
+			"name": "ARP-87 (Platinum)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-aetos",
+			"brand": "Walrus Audio",
+			"name": "Aetos",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-ages",
+			"brand": "Walrus Audio",
+			"name": "Ages",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-ages-kamakura",
+			"brand": "Walrus Audio",
+			"name": "Ages (Kamakura)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-ages-nat-parks",
+			"brand": "Walrus Audio",
+			"name": "Ages (Nat. Parks)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-badwater",
+			"brand": "Walrus Audio",
+			"name": "Badwater",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-bellwether",
+			"brand": "Walrus Audio",
+			"name": "Bellwether",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-canvas-clock",
+			"brand": "Walrus Audio",
+			"name": "Canvas Clock",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "walrus-audio-canvas-line-isolator",
+			"brand": "Walrus Audio",
+			"name": "Canvas Line Isolator",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-1962",
+			"brand": "Keeley",
+			"name": "1962",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-1962x",
+			"brand": "Keeley",
+			"name": "1962x",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-30ms-double-tracker",
+			"brand": "Keeley",
+			"name": "30ms Double Tracker",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-abbey-chamber-verb",
+			"brand": "Keeley",
+			"name": "Abbey Chamber Verb",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-angry-orange",
+			"brand": "Keeley",
+			"name": "Angry Orange",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-angry-orange-signalis",
+			"brand": "Keeley",
+			"name": "Angry Orange (Signalis)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-angry-orange-white",
+			"brand": "Keeley",
+			"name": "Angry Orange (White)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-aria",
+			"brand": "Keeley",
+			"name": "Aria",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-aurora",
+			"brand": "Keeley",
+			"name": "Aurora",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-bassist-compressor",
+			"brand": "Keeley",
+			"name": "Bassist Compressor",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-black-glass",
+			"brand": "Keeley",
+			"name": "Black Glass",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-blacktop",
+			"brand": "Keeley",
+			"name": "Blacktop",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-blues-disorder",
+			"brand": "Keeley",
+			"name": "Blues Disorder",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-blues-disorder-signalis",
+			"brand": "Keeley",
+			"name": "Blues Disorder (Signalis)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-blues-disorder-white",
+			"brand": "Keeley",
+			"name": "Blues Disorder (White)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-bubble-tron",
+			"brand": "Keeley",
+			"name": "Bubble Tron",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-bubble-tron-ler",
+			"brand": "Keeley",
+			"name": "Bubble Tron (Ler)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "keeley-california-girls",
+			"brand": "Keeley",
+			"name": "California Girls",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-a-b-box",
+			"brand": "EarthQuaker",
+			"name": "A/B Box",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-acapulco-gold",
+			"brand": "EarthQuaker",
+			"name": "Acapulco Gold",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-afterneath",
+			"brand": "EarthQuaker",
+			"name": "Afterneath",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-afterneath-v3",
+			"brand": "EarthQuaker",
+			"name": "Afterneath V3",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-afterneath-v3-pastel-purple",
+			"brand": "EarthQuaker",
+			"name": "Afterneath V3 (Pastel Purple)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-afterneath-v3-raw",
+			"brand": "EarthQuaker",
+			"name": "Afterneath V3 (Raw)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-aqueduct",
+			"brand": "EarthQuaker",
+			"name": "Aqueduct",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-arpanoid",
+			"brand": "EarthQuaker",
+			"name": "Arpanoid",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-arrows",
+			"brand": "EarthQuaker",
+			"name": "Arrows",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-arrows-v2",
+			"brand": "EarthQuaker",
+			"name": "Arrows V2",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-astral-destiny",
+			"brand": "EarthQuaker",
+			"name": "Astral Destiny",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-aurelius",
+			"brand": "EarthQuaker",
+			"name": "Aurelius",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-avalanche-run",
+			"brand": "EarthQuaker",
+			"name": "Avalanche Run",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-avalanche-run-v2",
+			"brand": "EarthQuaker",
+			"name": "Avalanche Run V2",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-avalanche-run-v2-black",
+			"brand": "EarthQuaker",
+			"name": "Avalanche Run V2 (Black)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-avalanche-run-v2-mint",
+			"brand": "EarthQuaker",
+			"name": "Avalanche Run V2 (Mint)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-avalanche-run-v2-purple-sparkle",
+			"brand": "EarthQuaker",
+			"name": "Avalanche Run V2 (Purple Sparkle)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "earthquaker-barrows-fuzz",
+			"brand": "EarthQuaker",
+			"name": "Barrows Fuzz",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-1966-series-bender",
+			"brand": "JHS",
+			"name": "1966 Series Bender",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-1966-series-boost",
+			"brand": "JHS",
+			"name": "1966 Series Boost",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-1966-series-fuzz",
+			"brand": "JHS",
+			"name": "1966 Series Fuzz",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-1966-series-italy",
+			"brand": "JHS",
+			"name": "1966 Series Italy",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-bit-crusher",
+			"brand": "JHS",
+			"name": "3 Series Bit Crusher",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-chorus",
+			"brand": "JHS",
+			"name": "3 Series Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-compressor",
+			"brand": "JHS",
+			"name": "3 Series Compressor",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-delay",
+			"brand": "JHS",
+			"name": "3 Series Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-distortion",
+			"brand": "JHS",
+			"name": "3 Series Distortion",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-flanger",
+			"brand": "JHS",
+			"name": "3 Series Flanger",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-fuzz",
+			"brand": "JHS",
+			"name": "3 Series Fuzz",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-glitch-delay",
+			"brand": "JHS",
+			"name": "3 Series Glitch Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-hall-reverb",
+			"brand": "JHS",
+			"name": "3 Series Hall Reverb",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-harmonic-trem",
+			"brand": "JHS",
+			"name": "3 Series Harmonic Trem",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-octave-reverb",
+			"brand": "JHS",
+			"name": "3 Series Octave Reverb",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-oil-can-delay",
+			"brand": "JHS",
+			"name": "3 Series Oil Can Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-oil-can-delay-black",
+			"brand": "JHS",
+			"name": "3 Series Oil Can Delay (Black)",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "jhs-3-series-overdrive",
+			"brand": "JHS",
+			"name": "3 Series Overdrive",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-2290-p-dynamic-digital-delay",
+			"brand": "TC Electronic",
+			"name": "2290 P Dynamic Digital Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-3rd-dimension-chorus",
+			"brand": "TC Electronic",
+			"name": "3rd Dimension Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-afterglow-chorus",
+			"brand": "TC Electronic",
+			"name": "Afterglow Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-alter-ego-v2-vintage-echo",
+			"brand": "TC Electronic",
+			"name": "Alter Ego v2 Vintage Echo",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-alter-ego-x4-vintage-echo",
+			"brand": "TC Electronic",
+			"name": "Alter Ego x4 Vintage Echo",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-ampworx-550",
+			"brand": "TC Electronic",
+			"name": "Ampworx 550",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-ampworx-combo-deluxe-65",
+			"brand": "TC Electronic",
+			"name": "Ampworx Combo Deluxe 65'",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-ampworx-dc30",
+			"brand": "TC Electronic",
+			"name": "Ampworx DC30",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-ampworx-dual-wreck",
+			"brand": "TC Electronic",
+			"name": "Ampworx Dual Wreck",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-ampworx-jims-45",
+			"brand": "TC Electronic",
+			"name": "Ampworx Jims 45",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-ampworx-jims-800",
+			"brand": "TC Electronic",
+			"name": "Ampworx Jims 800",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-arena-reverb",
+			"brand": "TC Electronic",
+			"name": "Arena Reverb",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-blood-moon-phaser",
+			"brand": "TC Electronic",
+			"name": "Blood Moon Phaser",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-bodyrez-acoustic-pickup-enhancer",
+			"brand": "TC Electronic",
+			"name": "BodyRez Acoustic Pickup Enhancer",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-bonafide-buffer",
+			"brand": "TC Electronic",
+			"name": "Bonafide Buffer",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-brainwaves-pitch-shifter",
+			"brand": "TC Electronic",
+			"name": "Brainwaves Pitch Shifter",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-bucket-brigade-analog-delay",
+			"brand": "TC Electronic",
+			"name": "Bucket Brigade Analog Delay",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "tc-electronic-choka-tremolo",
+			"brand": "TC Electronic",
+			"name": "Choka Tremolo",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-001-gas-station",
+			"brand": "Mooer",
+			"name": "001 Gas Station",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-002-uk-gold-900",
+			"brand": "Mooer",
+			"name": "002 UK Gold 900",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-003-power-zone",
+			"brand": "Mooer",
+			"name": "003 Power Zone",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-004-day-tripper",
+			"brand": "Mooer",
+			"name": "004 Day Tripper",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-005-brown-sound-3",
+			"brand": "Mooer",
+			"name": "005 Brown Sound 3",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-006-us-classic-deluxe",
+			"brand": "Mooer",
+			"name": "006 US Classic Deluxe",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-007-regal-tone",
+			"brand": "Mooer",
+			"name": "007 Regal Tone",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-008-cali-mk3",
+			"brand": "Mooer",
+			"name": "008 Cali-MK3",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-009-black-knight",
+			"brand": "Mooer",
+			"name": "009 Black Knight",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-010-two-stones",
+			"brand": "Mooer",
+			"name": "010 Two Stones",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-011-cali-dual",
+			"brand": "Mooer",
+			"name": "011 Cali-Dual",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-012-us-gold-100",
+			"brand": "Mooer",
+			"name": "012 US Gold 100",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-013-matchbox",
+			"brand": "Mooer",
+			"name": "013 Matchbox",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-014-taxidea-taxus",
+			"brand": "Mooer",
+			"name": "014 Taxidea Taxus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-015-brown-sound",
+			"brand": "Mooer",
+			"name": "015 Brown Sound",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-016-phoenix-digital",
+			"brand": "Mooer",
+			"name": "016 Phoenix Digital",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-017-cali-mkiv",
+			"brand": "Mooer",
+			"name": "017 Cali MKIV",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mooer-018-custom-100",
+			"brand": "Mooer",
+			"name": "018 Custom 100",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-a-b-box",
+			"brand": "MXR",
+			"name": "A/B Box",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-analog-chorus",
+			"brand": "MXR",
+			"name": "Analog Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-chorus-deluxe",
+			"brand": "MXR",
+			"name": "Bass Chorus Deluxe",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-compressor",
+			"brand": "MXR",
+			"name": "Bass Compressor",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-di",
+			"brand": "MXR",
+			"name": "Bass DI+",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-distortion",
+			"brand": "MXR",
+			"name": "Bass Distortion",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-envelope-filter",
+			"brand": "MXR",
+			"name": "Bass Envelope Filter",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-fuzz-deluxe",
+			"brand": "MXR",
+			"name": "Bass Fuzz Deluxe",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-octave-deluxe",
+			"brand": "MXR",
+			"name": "Bass Octave Deluxe",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-overdrive",
+			"brand": "MXR",
+			"name": "Bass Overdrive",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-preamp",
+			"brand": "MXR",
+			"name": "Bass Preamp",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-bass-synth",
+			"brand": "MXR",
+			"name": "Bass Synth",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-blue-box-fuzz",
+			"brand": "MXR",
+			"name": "Blue Box Fuzz",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-booster-mini",
+			"brand": "MXR",
+			"name": "Booster Mini",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-cae-boost-line-driver",
+			"brand": "MXR",
+			"name": "CAE Boost/Line Driver",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-cae-boost-overdrive",
+			"brand": "MXR",
+			"name": "CAE Boost/Overdrive",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-cae-buffer",
+			"brand": "MXR",
+			"name": "CAE Buffer",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "mxr-cae-power-system",
+			"brand": "MXR",
+			"name": "CAE Power System",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-d-seed",
+			"brand": "Joyo",
+			"name": "D-Seed",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-01-vintage-overdrive",
+			"brand": "Joyo",
+			"name": "JF-01 Vintage Overdrive",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-02-ultimate-drive",
+			"brand": "Joyo",
+			"name": "JF-02 Ultimate Drive",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-03-crunch-distortion",
+			"brand": "Joyo",
+			"name": "JF-03 Crunch Distortion",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-04-high-gain-distortion",
+			"brand": "Joyo",
+			"name": "JF-04 High Gain Distortion",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-05-classic-chorus",
+			"brand": "Joyo",
+			"name": "JF-05 Classic Chorus",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-06-vintage-phase",
+			"brand": "Joyo",
+			"name": "JF-06 Vintage Phase",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-07-classic-flanger",
+			"brand": "Joyo",
+			"name": "JF-07 Classic Flanger",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-08-digital-delay",
+			"brand": "Joyo",
+			"name": "JF-08 Digital Delay",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-09-tremolo",
+			"brand": "Joyo",
+			"name": "JF-09 Tremolo",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-10-dynamic-compressor",
+			"brand": "Joyo",
+			"name": "JF-10 Dynamic Compressor",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-11-6-band-eq",
+			"brand": "Joyo",
+			"name": "JF-11 6 Band EQ",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-12-voodoo-octave",
+			"brand": "Joyo",
+			"name": "JF-12 Voodoo Octave",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-13-ac-tone",
+			"brand": "Joyo",
+			"name": "JF-13 AC Tone",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-14-american-sound",
+			"brand": "Joyo",
+			"name": "JF-14 American Sound",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-15-california-sound",
+			"brand": "Joyo",
+			"name": "JF-15 California Sound",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-16-british-sound",
+			"brand": "Joyo",
+			"name": "JF-16 British Sound",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "joyo-jf-17-extreme-metal",
+			"brand": "Joyo",
+			"name": "JF-17 Extreme Metal",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "boss-psm-5-power-supply-master-switch",
+			"brand": "BOSS",
+			"name": "PSM-5 Power Supply & Master Switch",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "behringer-powerplay-p1",
+			"brand": "Behringer",
+			"name": "Powerplay P1",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is url, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "big-joe-pb-109-power-box-li2",
+			"brand": "Big Joe",
+			"name": "PB-109 Power Box Li2",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "big-joe-power-box-iso4",
+			"brand": "Big Joe",
+			"name": "Power Box ISO4",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "pedal",
+			"id": "effects-bakery-power-supply-hoden-sentai-donuts",
+			"brand": "Effects Bakery",
+			"name": "Power Supply Hoden Sentai Donuts",
+			"verdict": "replace",
+			"reasons": [
+				"replace:image is mock, not a hosted static asset",
+				"replace:rights tag is placeholder, not public-asset"
+			]
+		},
+		{
+			"kind": "board",
+			"id": "aclam-smart-track-l2-free",
+			"brand": "Aclam",
+			"name": "Smart Track L2 (Free)",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "boss-bcb-1000",
+			"brand": "BOSS",
+			"name": "BCB-1000",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "blackbird-tolex-1224",
+			"brand": "Blackbird",
+			"name": "Tolex 1224",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "boardmods-b",
+			"brand": "BoardMods",
+			"name": "B",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "caseman-gentleman-medium",
+			"brand": "Caseman",
+			"name": "Gentleman Medium",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "creation-music-co-aero-17x12-5",
+			"brand": "Creation Music Co",
+			"name": "Aero 17x12.5",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "donner-db-3",
+			"brand": "Donner",
+			"name": "DB-3",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "d-addario-xpnd-1",
+			"brand": "D’Addario",
+			"name": "XPND 1",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "emerson-custom-18x12",
+			"brand": "Emerson Custom",
+			"name": "18x12",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		},
+		{
+			"kind": "board",
+			"id": "fame-spaceboard-40",
+			"brand": "Fame",
+			"name": "Spaceboard 40",
+			"verdict": "replace",
+			"reasons": ["replace:rights tag is placeholder, not public-asset"]
+		}
+	]
+}

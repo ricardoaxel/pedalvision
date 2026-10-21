@@ -115,3 +115,43 @@ catalog:seed`. The full catalog is imported the same way; nothing else changes.
 so no font dependency) and rasterizes with a pinned `sharp`, giving
 byte-reproducible PNGs. Real images are the one piece gated on clearance
 (ADR-003); the generator is a dev-only stopgap, superseded by P2-04.
+
+# Master inventory (P5-01)
+
+Builds the off-runtime candidate list from the two discovery lists
+(`{ Brand, Name, Width, Height }`, inches). It normalizes brands/names, mints
+stable slugs (a `+` stays a meaningful token), dedupes, links colorways with
+`variantOf` when the base is present, and assigns Tier A/B/C. Tier A is capped
+at **1,850 pedals + exactly 150 boards**; the first 2,000 catalog items are
+~1,850 pedals + 150 boards.
+
+```sh
+pnpm catalog:inventory --pedals pedals.json --boards boards.json \
+  [--out data/catalog/inventory.json] [--seed-dir src/catalog/data] \
+  [--generated-at 2026-10-21]
+```
+
+The output is `data/catalog/inventory.json` (off-runtime; not imported by the
+app). It never stores external image filenames. Caps live in `limits.ts`.
+
+# Seed validation (P5-01)
+
+Classifies every committed seed item as `keep` / `repair` / `replace` / `drop`
+with reasons (missing mandatory field, duplicate, implausible dimensions, image
+not hosted/public-asset, missing static rendition).
+
+```sh
+pnpm catalog:validate-seed [--catalog-dir src/catalog/data] \
+  [--assets-dir public/pedal-assets] [--out data/catalog/seed-validation.json]
+```
+
+The seed is **kept**; the report tells P5-03 what to repair or re-source. A
+`replace` verdict means the image is mock/url/placeholder (the P5 policy requires
+a self-hosted `public-asset`), not that the facts are wrong.
+
+# Raw research archive (P5-01)
+
+Research writes `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`
+first (schema `src/catalog/rawSchema.ts`); the runtime catalog is a projection.
+See `docs/catalog/raw-research-record.md` and the
+`data/catalog/fixtures/eventide-h90.json` stress fixture.

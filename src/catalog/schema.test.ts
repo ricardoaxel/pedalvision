@@ -32,6 +32,42 @@ describe("CatalogPedalSchema", () => {
 		expect(result.success).toBe(true);
 	});
 
+	it("accepts edge-only jacks without a position (P5-01)", () => {
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				jacks: [{ kind: "in", edge: "top" }],
+			}).success,
+		).toBe(true);
+	});
+
+	it("accepts the P5 optional metadata and public-asset tag", () => {
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				source: "public-asset",
+				usage: "bass",
+				color: "green",
+				notes: "A short original factual summary.",
+				year: 1995,
+				status: "discontinued",
+				confidence: "confirmed",
+				lastVerified: "2026-10-21",
+			}).success,
+		).toBe(true);
+	});
+
+	it.each([
+		["unknown usage", { ...validPedal, usage: "keys" }],
+		["unknown status", { ...validPedal, status: "vintage" }],
+		["unknown confidence", { ...validPedal, confidence: "certain" }],
+		["bad year", { ...validPedal, year: 1200 }],
+		["bad lastVerified", { ...validPedal, lastVerified: "21/10/2026" }],
+		["empty notes", { ...validPedal, notes: "" }],
+	])("rejects %s", (_label, pedal) => {
+		expect(CatalogPedalSchema.safeParse(pedal).success).toBe(false);
+	});
+
 	it("accepts the widened jack-kind vocabulary", () => {
 		for (const kind of [
 			"in",
@@ -157,5 +193,21 @@ describe("CatalogBoardSchema", () => {
 				source: "synthetic",
 			}).success,
 		).toBe(false);
+	});
+
+	it("accepts an optional size-family variant link", () => {
+		expect(
+			CatalogBoardSchema.safeParse({
+				id: "acme-terra-24",
+				brand: "Acme",
+				name: "Terra 24",
+				widthCm: 60,
+				heightCm: 30,
+				image: "acme-terra-24.png",
+				imageSource: "mock",
+				source: "synthetic",
+				variantOf: "acme-terra",
+			}).success,
+		).toBe(true);
 	});
 });
