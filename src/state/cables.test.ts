@@ -108,6 +108,18 @@ describe("endpoints + cables (P4-01)", () => {
 		expect(
 			useScene.getState().addCable({ itemUid, jack: "in" }, { endpointUid }),
 		).toBeNull();
+		// The catalog seed has no jack data yet: a catalog item resolves to []
+		// jacks, so no cable can attach to it.
+		const catalogUid = required(
+			useScene
+				.getState()
+				.addItem("boss-bd-2-blues-driver", "pedal", null, { x: 0, y: 0 }),
+		);
+		expect(
+			useScene
+				.getState()
+				.addCable({ itemUid: catalogUid, jack: "0" }, { endpointUid }),
+		).toBeNull();
 		expect(useScene.getState().cables).toEqual([]);
 		expect(
 			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
