@@ -1,6 +1,6 @@
 # P5 plan restructure (docs-only)
 
-**Phase:** P5 · **Status:** in review — PR #N · **Model:** build-cheap
+**Phase:** P5 · **Status:** in review — PR #32 · **Model:** build-cheap
 
 ## Goal
 
