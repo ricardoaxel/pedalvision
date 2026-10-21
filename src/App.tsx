@@ -350,7 +350,7 @@ function App() {
 								aria-haspopup="dialog"
 								aria-expanded={scheduleOpen}
 								aria-controls="cable-schedule"
-								onClick={openSchedule}
+								onClick={scheduleOpen ? closeSchedule : openSchedule}
 							>
 								<span className="schedule-trigger__glyph" aria-hidden="true">
 									≡
