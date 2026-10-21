@@ -39,10 +39,10 @@ Short explanations so both the owner and any agent session know why each phase e
 >
 > ✅ **P2 phase gate PASSED (2026-10-19)** — all scheduled P2 tasks merged; post-phase review folded into the docs, with one small proposed follow-up (**P2-10** thumbnails). **P3-01 Export PNG + PDF**, **P3-02 Scene save/load**, **P3-03 Share links**, **P3-04 Undo/redo**, **P3-05 Storage-failure fallback** and **P3-06 Capacity budgets + benchmark** are done (merged 2026-10-19/21).
 
-## P3 — Output (COMPLETE — phase gate reviewed, PR pending merge)
+## P3 — Output (COMPLETE — phase gate PASSED)
 Export PNG + PDF · save/load + boot reconcile · capacity budgets + benchmark · share links · undo/redo · storage-failure fallback.
 
-> ✅ **P3 phase gate reviewed (2026-10-21, light model)** — verdict **changes-required**, no P3 regression; 5 findings folded docs-only (the **P4 wiring contract** replaces the "one-place extension" claim, the share version-policy decision is flagged, export/capacity call sites are listed, and stale status text is fixed). Baseline green: lint / typecheck / test **502** / build / e2e **216 passed + 7 skipped**. **Next: P4-01 (new session) once the gate PR merges; P4-04 owner outreach runs in parallel and is not a gate.**
+> ✅ **P3 phase gate PASSED (2026-10-21; PR #29 merged, squash `57dc9c7`; light model)** — verdict **changes-required**, no P3 regression; 5 findings folded docs-only, then confirmation passes 2–3 **approve** (the **P4 wiring contract** replaces the "one-place extension" claim, the share version-policy decision is flagged, export/capacity call sites are listed, and stale status text is fixed). Baseline green: lint / typecheck / test **502** / build / e2e **216 passed + 7 skipped**. **Next: P4-01 (new session); P4-04 owner outreach runs in parallel and is not a gate.**
 
 ## Performance & cost review (optional — owner request, 2026-10-20)
 
