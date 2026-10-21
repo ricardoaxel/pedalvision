@@ -17,7 +17,7 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 - Keep **cm** as the only stored unit; inches are converted at import.
 - Make data work **parallel with feature work** without merge conflicts.
 - Make every agent run **observable and stoppable**.
-- Stay inside the **2,000 hosted-pedal hard cap** until hosting is re-decided.
+- Hit the **Tier A target** (~1,850 pedals + 150 boards); the **2,000 hosted-pedal cap** is a safety limit. Exceeding Tier A requires the P5-05 hosting decision.
 
 ## Current state
 
@@ -317,10 +317,7 @@ public/pedal-assets/**                              # final assets
 - Brand agents write **only** their batch file + own assets; never
   `src/catalog/data/pedals.json`.
 - Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
-- **Agents write raw records only.** `pnpm catalog:build` deterministically
-  projects raw → `data/catalog/{pedals,boards}/...` (mapped) →
-  `src/catalog/data/{pedals,boards}.json` (runtime) after merges; no agent edits
-  the mapped/runtime files.
+- **Agents write raw records only.** A batch PR contains **raw records + assets only**; CI runs `catalog:build` into a temp dir and `catalog:validate` there. A **post-merge build** deterministically projects raw → `data/catalog/{pedals,boards}/...` (mapped) → `src/catalog/data/{pedals,boards}.json` (runtime). No agent edits the mapped/runtime files. A post-merge drift check catches stale generated files.
 - **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR.
 - Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches. Boards: 10–25
   models per batch (families/sizes); a board brand batch runs alongside pedal
@@ -338,9 +335,9 @@ public/pedal-assets/**                              # final assets
 
 1. **P5-01** policy, data contract, inventory, schema, 2k cap.
 2. **P5-02** tooling, quality gates, control plane, agent templates.
-3. **Pedal pilot:** TC Choka — one PR with the raw record; `catalog:build`
-   generates the mapped + runtime files in the PR. Hosted image, contact sheet,
-   Playwright.
+3. **Pedal pilot:** TC Choka — one PR with the raw record + assets; CI runs
+   `catalog:build` into a temp dir for validation; the post-merge build commits
+   mapped/runtime. Hosted image, contact sheet, Playwright.
 4. **Board pilot:** **Pedaltrain Classic 2** (or Temple Audio Duo 24) — one PR
    with board facts, hosted top-down image, contact sheet, Playwright board
    picker/placement. Boards are first-class: this runs immediately after the
@@ -350,7 +347,7 @@ public/pedal-assets/**                              # final assets
 6. **Big-brand split test:** BOSS, 3 batch PRs in parallel; verify build/merge.
 7. **Scale:** 3 batches in flight continuously, mixing pedals and boards;
    refill as each finishes. First 2,000 catalog items include ~150 boards.
-8. **At 2,000 hosted pedals:** stop; run P5-05; resume only after the decision.
+8. **At the Tier A target:** stop and run P5-04. Only if the owner chooses to exceed Tier A: the 2,000 hosted-pedal cap applies, then run P5-05 before scaling.
 9. **P5-04:** final QA, provenance, launch gate.
 
 ## Per-PR QA

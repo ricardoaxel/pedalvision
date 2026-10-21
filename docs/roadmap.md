@@ -67,7 +67,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 - **P5-02 Catalog quality pipeline & control plane.** Batch-file layout for **pedals and boards** (`data/catalog/research/{pedals,boards}/<brand>/<batch>.json` + mapped output), `catalog:build`/`catalog:validate`, image analyzer/processor scripts (board aspect = width×depth), runner + `catalog:status`/pause/stop/resume, checkpoints, 2,000-hosted-pedal cap + board image budget, agent templates.
 - **P5-03 Pilot + parallel brand backfill.** Pedal pilot TC Choka → **board pilot Pedaltrain Classic 2/Temple Duo 24** → Meris + Red Panda + one board batch → BOSS split batch test → continuous waves (max 3 in flight, mixing pedals/boards); one PR per batch; per-PR Playwright/contact-sheet QA. **First 2,000 items include ~150 boards.**
 - **P5-04 Final QA, provenance & launch gate.** Full validation (pedals + boards), dimension spot-check, provenance/confidence, A1–A5, `pnpm audit`, iOS export, launch sign-off.
-- **P5-05 Image hosting at scale — deferred spike** (trigger: 2,000 hosted pedals / ~4,000 images / ~300 MB). Evaluate R2 public bucket (leading), Pages Pro, separate Pages asset project, Backblaze B2, Bunny CDN; ADR-002 update + cost table + migration plan. No migration without owner approval.
+- **P5-05 Image hosting at scale — deferred spike** (trigger: owner chooses to exceed the Tier A target / 2,000 hosted pedals / ~4,000 images / ~300 MB). Evaluate R2 public bucket (leading), Pages Pro, separate Pages asset project, Backblaze B2, Bunny CDN; ADR-002 update + cost table + migration plan. No migration without owner approval.
 - **P5-06 Full-integration device E2E (Appium, local) — PROPOSED (not scheduled).** Old P5-05. At the final integration stage, a small Appium smoke against the local iOS Simulator / real iPhone (XCUITest) / real Android. See `docs/decisions/007-mobile-touch-testing.md` + `docs/tasks/P5-06-appium-local-device-e2e.md`.
 - **P5-07 User help / how-to content — PROPOSED (not scheduled).** Old P5-06. Short end-user help ("how layering works", cables, save/share/export); pairs with P2-08.
 - **P5-08 Observability — RUM + error monitoring — PROPOSED (not scheduled; owner decision).** Old P5-07. **No analytics/telemetry in v1** (no PostHog); compare privacy-first options if wanted. Requires an ADR/dependency note + privacy review; **not a launch gate.**
@@ -75,7 +75,7 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 ## v2 backlog (not scheduled)
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · **community jack-map suggestions + review** · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
 
-## Launch gate (v1 public) — ALL must pass
+## Launch gate (v1 public) — required minimum; Tier A target is owner-waivable
 - [ ] **Absolute minimum:** ≥200 pedals / ≥10 brands / ≥10 boards, with no placeholder/mock images; every shipped image is a hosted static asset with a per-item source URL and the attribution/takedown policy live (decisions/003 exit criteria, updated 2026-10-21) + dimension spot-check
 - [ ] **Tier A target:** ~1,850 pedals + ~150 boards (~2,000 catalog items) verified; launching below this needs explicit owner acceptance
 - [ ] A1–A5 acceptance criteria green on production

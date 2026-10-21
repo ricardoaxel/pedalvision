@@ -66,7 +66,7 @@ P5 turns the 207-item seed into the real catalog and prepares launch. Full plan:
 | P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap | No |
 | P5-03 Pilot + parallel backfill | Choka pilot → **board pilot** → Meris + Red Panda + board batch → BOSS split test → waves; first 2,000 items include ~150 boards | **Yes** — review the pedal + board pilots and first brand PRs |
 | P5-04 Final QA, provenance & launch gate | Full validation, spot-checks, iOS, launch sign-off | **Yes** — launch approval |
-| P5-05 Image hosting at scale | Deferred spike at 2,000 hosted pedals; R2 vs alternatives | **Yes** — choose the hosting option |
+| P5-05 Image hosting at scale | Deferred spike only if the owner chooses to exceed Tier A / 2,000 hosted pedals | **Yes** — choose the hosting option only when triggered |
 | P5-06 Appium · P5-07 Help · P5-08 Observability | Proposed/unscheduled | Later |
 
 ## v2 backlog
@@ -79,5 +79,5 @@ Accounts · cloud saves · community submissions · power planner · explore · 
 2. **P0-05:** external catalog file on owner machine → to run `import`/backfill (optional; the committed seed works without it).
 3. **P5-01:** approve the self-hosted public-asset policy + attribution/takedown page (owner accepts responsibility).
 4. **P5-03:** review the pilot pedal and the first brand PRs.
-5. **P5-05:** choose the image-hosting option at the 2,000-pedal cap.
+5. **P5-05 (only if exceeding Tier A):** choose the image-hosting option at the 2,000-pedal cap.
 6. **Launch gate:** approve public launch.

@@ -177,7 +177,7 @@ change the decisions above, it makes the workflow explicit.
   are used factually with no implied endorsement. Any future affiliate links
   carry disclosure and are locale-aware (non-goal N5 today).
 
-## Exit criteria (launch gate — all required)
+## Exit criteria (launch gate — required minimum; Tier A target is owner-waivable)
 - [ ] **Swap the dev seed for the hosted, quality-gated catalog before deploy (S1):** no `synthetic` or `placeholder` items in the deployed catalog
 - [ ] Zero `placeholder`-sourced items in the deployed catalog
 - [ ] Deployed images contain no placeholder/mocked files; every shipped image is a **hosted static asset** with a per-item source URL and is covered by the attribution/takedown policy

@@ -25,7 +25,7 @@ Build the deterministic tooling that makes parallel catalog work safe, cheap, ob
 
 ## Steps
 
-1. **Batch layout:** `data/catalog/research/{pedals,boards}/<brand>/<batch>.json` (raw) + `data/catalog/{pedals,boards}/<brand>/<batch>.json` (mapped); per-brand registry; agents write **raw only**, and `catalog:build` deterministically projects raw → mapped → `src/catalog/data/{pedals,boards}.json`; `catalog:validate` checks raw + runtime (schema, duplicate ids, variants, mandatory fields, foreign keys, board footprint/variant links). Raw records preserve all verified facts/image candidates — connectors, audio I/O, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical, **serial ranges, videos** — even when not yet in the runtime schema. Add enums + structural checks; missing is valid.
+1. **Batch layout:** `data/catalog/research/{pedals,boards}/<brand>/<batch>.json` (raw) + `data/catalog/{pedals,boards}/<brand>/<batch>.json` (mapped); per-brand registry; agents write **raw only**; a batch PR contains raw + assets only; CI runs `catalog:build` into a temp dir and `catalog:validate` checks the generated runtime there (schema, duplicate ids, variants, mandatory fields, foreign keys, board footprint/variant links). A post-merge build deterministically commits raw → mapped → runtime; a drift check catches stale generated files. Raw records preserve all verified facts/image candidates — connectors, audio I/O, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical, **serial ranges, videos** — even when not yet in the runtime schema. Add enums + structural checks; missing is valid.
 2. **Image analyzer** (script): min long edge 800; background uniformity/border-connected; alpha; trim bbox/whitespace; aspect vs `widthCm/heightCm` for **pedals and boards** (≤10% pass, 10–15% flag, >15% reject); rotation/skew; shadow/perspective signals; JSON report. Board images must be top-down/empty; angled hero shots rejected.
 3. **Image processor** (script): extend the asset pipeline's flood fill for white/solid backgrounds; optional dev-only matting fallback for gradients; trim; transparent PNG; 800/350; atomic temp→rename.
 4. **Vision QA:** contact-sheet helper (20–30 images per call) + a reviewer agent definition; cache accept/reject reasons.
@@ -44,6 +44,7 @@ Build the deterministic tooling that makes parallel catalog work safe, cheap, ob
 - The 150-board cap refuses the next board batch with an inline reason.
 - Board image budget (~300 files / ~20 MB) is checked independently.
 - No runtime UI behavior change; no real image downloads in the dry run.
+- A dry-run batch PR contains no mapped/runtime edits; CI temp build validates; the post-merge build is deterministic and the drift check passes.
 
 ## Notes
 
