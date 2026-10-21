@@ -1,11 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { BoardActionBar } from "./canvas/BoardActionBar";
+import { GraphActionBar } from "./canvas/GraphActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useHistoryShortcuts } from "./canvas/useHistoryShortcuts";
 import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
+import {
+	EndpointControl,
+	EndpointPlacementOverlay,
+	GraphStatusChip,
+} from "./components/EndpointControls";
 import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
 import { FirstRunHint } from "./components/FirstRunHint";
 import { HistoryControls } from "./components/HistoryControls";
@@ -23,6 +29,8 @@ import {
 } from "./components/ShareView";
 import { StorageAnnouncer, StorageNotice } from "./components/StorageNotice";
 import { capacityStatus } from "./lib/capacity";
+import { useCableDrag } from "./state/cableDrag";
+import { useEndpointPlacement } from "./state/endpointPlacement";
 import { useSceneLibrary } from "./state/library";
 import { useReadOnly } from "./state/readOnly";
 import { useScene } from "./state/scene";
@@ -99,6 +107,8 @@ function App() {
 
 	const openPicker = (tab: PickerTab) => {
 		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setExportOpen(false);
 		setExportBusy(false);
 		setScenesOpen(false);
@@ -111,6 +121,8 @@ function App() {
 
 	const openExport = () => {
 		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
@@ -122,6 +134,8 @@ function App() {
 
 	const openScenes = () => {
 		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
@@ -132,6 +146,8 @@ function App() {
 	};
 
 	const openShare = () => {
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
 		setPickerOpen(false);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
@@ -203,6 +219,7 @@ function App() {
 					<>
 						<ItemActionBar onEditCustom={openCustomEdit} />
 						<BoardActionBar onEditBoard={openBoardEdit} />
+						<GraphActionBar />
 						{/* First-run "Bench Note" (P2-08): one notice at a time — the
 						 * storage warning wins while saving is unavailable (P3-05). */}
 						{storageLevel === "unavailable" ? null : (
@@ -259,6 +276,7 @@ function App() {
 								<BoardIcon />
 								<PlusIcon />
 							</button>
+							<EndpointControl />
 							<button
 								ref={shareTriggerRef}
 								type="button"
@@ -302,6 +320,8 @@ function App() {
 						onBusyChange={setExportBusy}
 					/>
 				) : null}
+				<EndpointPlacementOverlay />
+				<GraphStatusChip />
 				<ShareEditCue />
 				{shareOpen && !readOnly ? (
 					<SharePanel

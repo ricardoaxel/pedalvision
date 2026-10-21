@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import { useScene } from "../state/scene";
-import { selectSelectedItemUid, useSelection } from "../state/selection";
+import {
+	selectSelectedCableUid,
+	selectSelectedEndpointUid,
+	selectSelectedItemUid,
+	useSelection,
+} from "../state/selection";
 
 /** True when the event target is a text field (never steal its keystrokes). */
 function isTypingTarget(target: EventTarget | null): boolean {
@@ -39,14 +44,26 @@ export function useSelectionShortcuts(): void {
 				}
 				return;
 			}
-			if (!selected) return;
+			const selection = useSelection.getState();
+			const selectedEndpoint = selectSelectedEndpointUid(selection);
+			const selectedCable = selectSelectedCableUid(selection);
+			const deletable = selected ?? selectedEndpoint ?? selectedCable;
+			if (!deletable) return;
 			if (event.key === "Delete" || event.key === "Backspace") {
 				event.preventDefault();
-				useScene.getState().removeItem(selected);
-				useSelection.getState().clearSelection();
+				if (selected) useScene.getState().removeItem(selected);
+				else if (selectedEndpoint)
+					useScene.getState().removeEndpoint(selectedEndpoint);
+				else if (selectedCable) useScene.getState().removeCable(selectedCable);
+				selection.clearSelection();
 				return;
 			}
-			if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "d") {
+			// Duplicate is item-only (a cable/endpoint has no meaningful clone).
+			if (
+				selected &&
+				(event.metaKey || event.ctrlKey) &&
+				event.key.toLowerCase() === "d"
+			) {
 				event.preventDefault();
 				const uid = useScene.getState().duplicateItem(selected);
 				if (uid) useSelection.getState().selectItem(uid);

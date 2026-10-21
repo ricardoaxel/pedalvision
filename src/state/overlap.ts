@@ -31,9 +31,15 @@ import {
 export interface SpaceWarning {
 	/** Names of the items this one overlaps (world AABB), in scene order. */
 	overlaps: string[];
+	/**
+	 * Names of items this one is close to but does not overlap. A patch cable
+	 * (right-angle plug) needs a little edge clearance, so "no warning" means
+	 * comfortably cableable, not merely non-overlapping (P4-02 / pedal-user).
+	 */
+	tight: string[];
 	/** True when the item extends past its (drop-target) board's footprint. */
 	outOfBounds: boolean;
-	/** True when either condition holds. */
+	/** True when any condition holds. */
 	any: boolean;
 }
 
@@ -57,6 +63,12 @@ export interface SpaceWarningContext {
 const ORIGIN: Point = { x: 0, y: 0 };
 /** Corners exactly on an edge are inside — treat sub-pixel drift as inside. */
 const EPSILON = 1e-6;
+/**
+ * Minimum edge clearance for a right-angle patch cable (cm). Below this the
+ * pedals can be non-overlapping but still awkward/impossible to cable; the cue
+ * is a separate "Cable gap" advisory, never an error.
+ */
+export const PATCH_CABLE_GAP_CM = 2.5;
 
 function footprintCorners(widthCm: number, heightCm: number): Point[] {
 	return [
@@ -136,11 +148,15 @@ export function spaceWarning(
 	const targetRect = aabb(placedCorners(item, boards, customPedals, live));
 
 	const overlaps: string[] = [];
+	const tight: string[] = [];
 	for (const peer of items) {
 		if (peer.uid === item.uid) continue;
 		const peerRect = aabb(placedCorners(peer, boards, customPedals));
+		const name = resolveItem(peer, customPedals).name;
 		if (rectsOverlap(targetRect, peerRect)) {
-			overlaps.push(resolveItem(peer, customPedals).name);
+			overlaps.push(name);
+		} else if (rectsOverlap(targetRect, peerRect, PATCH_CABLE_GAP_CM)) {
+			tight.push(name);
 		}
 	}
 
@@ -163,7 +179,8 @@ export function spaceWarning(
 
 	return {
 		overlaps,
+		tight,
 		outOfBounds,
-		any: overlaps.length > 0 || outOfBounds,
+		any: overlaps.length > 0 || tight.length > 0 || outOfBounds,
 	};
 }

@@ -252,13 +252,51 @@ export function resolveItem(
 	};
 }
 
-/** The jacks an item exposes (catalog definition first, then inline custom). */
+/**
+ * Documented fallback anchors for **catalog pedals that carry no jack data**
+ * (owner decision 2026-10-21; the seed has zero `jacks`). This is an explicit
+ * assumption — IN on the left edge midpoint, OUT on the right edge midpoint —
+ * not manufacturer data. Custom pedals never get it (an empty jack list there is
+ * deliberate), nor do supplies or unknown refs. The canvas renders fallback
+ * ticks as hollow diamonds and labels them "assumed".
+ */
+export const FALLBACK_JACKS: readonly Jack[] = [
+	{ kind: "in", edge: "left", pos: 0.5 },
+	{ kind: "out", edge: "right", pos: 0.5 },
+];
+
+/**
+ * The jacks an item exposes for cable attachment: the real definition first,
+ * then the documented fallback pair for a catalog pedal with no jack data.
+ * Persistence validation uses the same resolution, so a cable to a fallback
+ * anchor survives save/load.
+ */
 export function resolveItemJacks(
 	item: PlacedItem,
 	customPedals: CustomPedal[] = [],
 ): Jack[] {
 	const resolved = resolveItem(item, customPedals);
-	return resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
+	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
+	if (real.length > 0) return real;
+	if (resolved.definition !== null && item.kind === "pedal") {
+		return [...FALLBACK_JACKS];
+	}
+	return [];
+}
+
+/**
+ * Are this item's jacks the documented fallback pair rather than real data?
+ * The canvas uses this to draw nested hollow diamonds (an "assumed" anchor).
+ */
+export function usesFallbackJacks(
+	item: PlacedItem,
+	customPedals: CustomPedal[] = [],
+): boolean {
+	const resolved = resolveItem(item, customPedals);
+	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
+	return (
+		real.length === 0 && resolved.definition !== null && item.kind === "pedal"
+	);
 }
 
 /** Parse a cable's opaque jack reference into an array index, or null. */
@@ -377,6 +415,44 @@ export function cableEndExists(
 	return (
 		index !== null && resolveItemJacks(item, customPedals)[index] !== undefined
 	);
+}
+
+/**
+ * Drop cables whose ends no longer resolve and endpoints orphaned by those
+ * dropped cables. A standalone endpoint (no stored cable referenced it) is a
+ * placed object and survives. Shared by load normalisation and custom-part
+ * edits so the two paths can never drift (P4 extension contract).
+ */
+export function pruneCableGraph(
+	cables: Cable[],
+	endpoints: Endpoint[],
+	items: PlacedItem[],
+	customPedals: CustomPedal[] = [],
+): { cables: Cable[]; endpoints: Endpoint[] } {
+	const kept = cables.filter(
+		(cable) =>
+			cableEndExists(cable.from, items, endpoints, customPedals) &&
+			cableEndExists(cable.to, items, endpoints, customPedals),
+	);
+	const before = endpointRefs(cables);
+	const after = endpointRefs(kept);
+	return {
+		cables: kept,
+		endpoints: endpoints.filter(
+			(endpoint) => !before.has(endpoint.uid) || after.has(endpoint.uid),
+		),
+	};
+}
+
+/** The endpoint uids any of these cables terminate on. */
+export function endpointRefs(cables: readonly Cable[]): Set<string> {
+	const refs = new Set<string>();
+	for (const cable of cables) {
+		for (const end of [cable.from, cable.to]) {
+			if ("endpointUid" in end) refs.add(end.endpointUid);
+		}
+	}
+	return refs;
 }
 
 /**
@@ -830,11 +906,25 @@ export const useScene = create<SceneStore>((set, get) => ({
 	},
 	updateCustomPedal: (refId, definition) => {
 		if (isReadOnly()) return;
-		set((state) => ({
-			customPedals: state.customPedals.map((candidate) =>
+		set((state) => {
+			const customPedals = state.customPedals.map((candidate) =>
 				candidate.refId === refId ? { ...definition, refId } : candidate,
-			),
-		}));
+			);
+			// A jack edit can invalidate an existing cable (its stored index no
+			// longer resolves) or strand an endpoint. Prune immediately rather
+			// than leaving an invisible cable in memory until the next load.
+			const graph = pruneCableGraph(
+				state.cables,
+				state.endpoints,
+				state.items,
+				customPedals,
+			);
+			return {
+				customPedals,
+				cables: graph.cables,
+				endpoints: graph.endpoints,
+			};
+		});
 	},
 	addItem: (refId, kind, boardUid, posCm) => {
 		if (isReadOnly()) return null;

@@ -164,9 +164,11 @@ export function ScenePanel({ onClose }: ScenePanelProps) {
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
+	const endpoints = useScene((state) => state.endpoints);
+	const cables = useScene((state) => state.cables);
 	const capacity = useMemo(
-		() => capacityStatus({ boards, items, customPedals }),
-		[boards, items, customPedals],
+		() => capacityStatus({ boards, items, customPedals, endpoints, cables }),
+		[boards, items, customPedals, endpoints, cables],
 	);
 	const panelRef = useRef<HTMLDivElement>(null);
 	const newSceneRef = useRef<HTMLButtonElement>(null);

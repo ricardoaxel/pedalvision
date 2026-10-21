@@ -9,7 +9,7 @@ import type {
 	PlacedBoard,
 	PlacedItem,
 } from "./scene";
-import { cableEndExists, normalizeAllZ, pruneCustomPedals } from "./scene";
+import { normalizeAllZ, pruneCableGraph, pruneCustomPedals } from "./scene";
 
 /**
  * The v1 scene document stored in IndexedDB (design.md §Data model /
@@ -266,40 +266,24 @@ export function normalizeSceneContent(snapshot: SceneSnapshot): SceneSnapshot {
 		),
 	);
 	const customPedals = pruneCustomPedals(snapshot.customPedals, items);
-	const cables = snapshot.cables.filter(
-		(cable) =>
-			cableEndExists(cable.from, items, snapshot.endpoints, customPedals) &&
-			cableEndExists(cable.to, items, snapshot.endpoints, customPedals),
-	);
 	// An endpoint is dangling only when a cable in the stored document pointed
 	// at it and that cable was dropped (its other end is gone / its jack no
 	// longer resolves). An endpoint with no cable at all is a placed object and
 	// must survive save → reload (A4) — P4-02's "place the amp, then connect"
 	// flow depends on it.
-	const referencedInDocument = endpointRefs(snapshot.cables);
-	const referencedAfterCleanup = endpointRefs(cables);
+	const graph = pruneCableGraph(
+		snapshot.cables,
+		snapshot.endpoints,
+		items,
+		customPedals,
+	);
 	return {
 		boards: snapshot.boards,
 		items,
 		customPedals,
-		endpoints: snapshot.endpoints.filter(
-			(endpoint) =>
-				!referencedInDocument.has(endpoint.uid) ||
-				referencedAfterCleanup.has(endpoint.uid),
-		),
-		cables,
+		endpoints: graph.endpoints,
+		cables: graph.cables,
 	};
-}
-
-/** The endpoint uids any of these cables terminate on. */
-function endpointRefs(cables: readonly Cable[]): Set<string> {
-	const refs = new Set<string>();
-	for (const cable of cables) {
-		for (const end of [cable.from, cable.to]) {
-			if ("endpointUid" in end) refs.add(end.endpointUid);
-		}
-	}
-	return refs;
 }
 
 /** The normalised scene fields to apply to the store for a document. */

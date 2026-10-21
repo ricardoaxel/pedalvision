@@ -1,7 +1,16 @@
 import { describe, expect, it } from "vitest";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
 import {
+	FALLBACK_JACKS,
+	itemFootprint,
+	usesFallbackJacks,
+} from "../state/scene";
+import {
+	anchorIndexFor,
+	buildAnchorIndex,
+	cableEndAnchorFromIndex,
 	cableEndAnchorWorld,
+	cableEndKey,
 	jackAnchorWorld,
 	jackIndex,
 	jackLocalPoint,
@@ -149,5 +158,64 @@ describe("jack anchors in world cm", () => {
 				},
 			),
 		).toBeNull();
+	});
+});
+
+describe("fallback anchors (catalog pedals without jack data)", () => {
+	it("synthesises the documented IN/OUT pair for a catalog pedal", () => {
+		const catalogItem = item({ refId: "boss-bd-2-blues-driver" });
+		const { widthCm, heightCm } = itemFootprint(catalogItem, []);
+		expect(resolveItemJacks(catalogItem, [])).toEqual([...FALLBACK_JACKS]);
+		expect(usesFallbackJacks(catalogItem, [])).toBe(true);
+		// IN is the left-edge midpoint, OUT the right-edge midpoint.
+		expect(jackAnchorWorld(catalogItem, "0", [], [])).toEqual({
+			x: 10,
+			y: 20 + heightCm / 2,
+		});
+		expect(jackAnchorWorld(catalogItem, "1", [], [])).toEqual({
+			x: 10 + widthCm,
+			y: 20 + heightCm / 2,
+		});
+	});
+
+	it("never overrides real custom jacks and gives supplies no fallback", () => {
+		expect(resolveItemJacks(item(), [customPedal])).toHaveLength(4);
+		expect(usesFallbackJacks(item(), [customPedal])).toBe(false);
+		const supply = item({
+			refId: "custom-supply",
+			kind: "supply",
+		});
+		const supplyDef: CustomPedal = {
+			refId: "custom-supply",
+			brand: "Acme",
+			name: "Power",
+			widthCm: 5,
+			heightCm: 4,
+			category: "supply",
+			effectTypes: [],
+		};
+		expect(resolveItemJacks(supply, [supplyDef])).toEqual([]);
+		expect(usesFallbackJacks(supply, [supplyDef])).toBe(false);
+	});
+
+	it("builds a keyed anchor index and caches it per mutation", () => {
+		const scene = {
+			boards: [],
+			items: [item()],
+			customPedals: [customPedal],
+			endpoints: [{ uid: "amp-1", kind: "amp" as const, x: 60, y: 20 }],
+		};
+		const index = buildAnchorIndex(scene);
+		expect(index.all).toHaveLength(5); // 4 jacks + 1 endpoint
+		expect(cableEndKey({ itemUid: "i1", jack: "0" })).toBe("item:i1:0");
+		expect(cableEndKey({ endpointUid: "amp-1" })).toBe("endpoint:amp-1");
+		const anchor = cableEndAnchorFromIndex({ itemUid: "i1", jack: "0" }, index);
+		expect(anchor?.point).toEqual({ x: 15, y: 20 });
+		expect(anchor?.normal).toEqual({ x: 0, y: -1 });
+		const memo = anchorIndexFor(scene);
+		expect(anchorIndexFor(scene)).toBe(memo);
+		expect(anchorIndexFor({ ...scene, items: [...scene.items] })).not.toBe(
+			index,
+		);
 	});
 });

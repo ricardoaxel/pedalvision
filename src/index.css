@@ -4603,3 +4603,150 @@ body {
 	line-height: 1.4;
 	color: var(--color-danger);
 }
+
+/* ---------------------------------------------------------------------------
+ * P4-02 "Patch Drafting" — endpoint control, placement capture + transient
+ * graph status. Tokens only; the status line is inline, never a toast (N8).
+ * ------------------------------------------------------------------------- */
+.endpoint-control {
+	position: relative;
+}
+
+.endpoint-control__trigger {
+	min-width: 44px;
+	padding: var(--space-2);
+}
+
+.endpoint-popover {
+	position: absolute;
+	top: calc(100% + var(--space-2));
+	right: 0;
+	z-index: 2;
+	display: grid;
+	gap: var(--space-1);
+	width: 232px;
+	padding: var(--space-3);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-raised);
+}
+
+.endpoint-popover__eyebrow {
+	margin: 0 0 var(--space-1);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.endpoint-popover__row {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: 44px;
+	padding: var(--space-2);
+	text-align: left;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.endpoint-popover__row:hover:not(:disabled) {
+	background-color: var(--color-surface-raised);
+}
+
+.endpoint-popover__row:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.endpoint-popover__row:disabled {
+	color: var(--color-ink-muted);
+	cursor: not-allowed;
+}
+
+.endpoint-popover__row strong {
+	display: block;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+}
+
+.endpoint-popover__glyph {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	color: var(--color-jack);
+}
+
+.endpoint-popover__hint {
+	display: block;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.endpoint-popover__note {
+	margin: var(--space-1) 0 0;
+	font-size: var(--font-size-xs);
+	line-height: var(--leading-normal);
+	color: var(--color-warning);
+}
+
+.endpoint-placement {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	cursor: crosshair;
+	touch-action: none;
+	background-color: transparent;
+}
+
+.graph-status {
+	position: absolute;
+	left: 50%;
+	bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	max-width: calc(100% - var(--space-4) * 2);
+	padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+	transform: translateX(-50%);
+	font-size: var(--font-size-sm);
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
+}
+
+.graph-status__cancel {
+	min-height: 44px;
+	padding: var(--space-2) var(--space-3);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.graph-status__cancel:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.graph-status__cancel:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+@media (max-width: 1023px) {
+	.graph-status {
+		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-3));
+	}
+}

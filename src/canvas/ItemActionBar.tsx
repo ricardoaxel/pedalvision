@@ -204,6 +204,7 @@ export function ItemActionBar({
 	}));
 	const minX = Math.min(...corners.map((corner) => corner.x));
 	const maxX = Math.max(...corners.map((corner) => corner.x));
+	const minY = Math.min(...corners.map((corner) => corner.y));
 	const maxY = Math.max(...corners.map((corner) => corner.y));
 
 	const half = barWidth / 2;
@@ -216,14 +217,18 @@ export function ItemActionBar({
 	// (the sheet is always present while an item is selected, P2-03).
 	const bottomReserve = mobile ? ACTION_BAR_TAB_BAR_HEIGHT + sheetHeight : 0;
 	const left = clamp((minX + maxX) / 2, viewportMin, viewportMax);
-	const top = clamp(
-		maxY + ACTION_BAR_GAP,
+	// Prefer below the selection. When the reserve leaves no room there (a phone
+	// with the info sheet open), flip ABOVE it instead of clamping the bar onto
+	// the item — the bar must never cover the jack ticks (P4-02 drag-connect).
+	const maxTop = Math.max(
 		ACTION_BAR_MARGIN,
-		Math.max(
-			ACTION_BAR_MARGIN,
-			viewportSize.height - bottomReserve - barHeight - ACTION_BAR_MARGIN,
-		),
+		viewportSize.height - bottomReserve - barHeight - ACTION_BAR_MARGIN,
 	);
+	const below = maxY + ACTION_BAR_GAP;
+	const top =
+		below <= maxTop
+			? below
+			: clamp(minY - ACTION_BAR_GAP - barHeight, ACTION_BAR_MARGIN, maxTop);
 
 	const button = (action: ActionDef, index: number) => (
 		<button

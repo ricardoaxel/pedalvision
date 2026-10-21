@@ -79,7 +79,7 @@ describe("spaceWarning — overlaps", () => {
 		expect(warning.any).toBe(false);
 	});
 
-	it("treats an edge-touching placement as no overlap", () => {
+	it("treats edge-touching as a cable-gap warning, not an overlap", () => {
 		const boardA = board("b1", 20, 20);
 		const one = item("i1", A.refId, "b1", 0, 0);
 		const two = item("i2", B.refId, "b1", 4, 0); // one's right edge === two's left
@@ -88,7 +88,10 @@ describe("spaceWarning — overlaps", () => {
 			boards: [boardA],
 			customPedals: [A, B],
 		});
-		expect(warning.any).toBe(false);
+		// No true overlap, but a right-angle patch cable cannot fit.
+		expect(warning.overlaps).toEqual([]);
+		expect(warning.tight).toEqual(["Bravo"]);
+		expect(warning.any).toBe(true);
 	});
 
 	it("collects every overlapping peer", () => {

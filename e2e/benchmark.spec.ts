@@ -61,6 +61,19 @@ interface FixtureItem {
 	z: number;
 }
 
+interface FixtureEndpoint {
+	uid: string;
+	kind: "amp" | "instrument";
+	x: number;
+	y: number;
+}
+
+interface FixtureCable {
+	uid: string;
+	from: { itemUid: string; jack: string };
+	to: { itemUid: string; jack: string };
+}
+
 interface SceneRow {
 	id: string;
 	name: string;
@@ -68,7 +81,35 @@ interface SceneRow {
 	boards: FixtureBoard[];
 	items: FixtureItem[];
 	customPedals: [];
+	endpoints: FixtureEndpoint[];
+	cables: FixtureCable[];
 	updatedAt: string;
+}
+
+/** P4 graph fixture: `cableCount` jack→jack cables + `endpointCount` terminals. */
+function makeGraph(
+	items: FixtureItem[],
+	cableCount: number,
+	endpointCount: number,
+): { cables: FixtureCable[]; endpoints: FixtureEndpoint[] } {
+	if (items.length < 2) return { cables: [], endpoints: [] };
+	return {
+		cables: Array.from({ length: cableCount }, (_, index) => {
+			const from = items[index % items.length];
+			const to = items[(index + 1) % items.length];
+			return {
+				uid: `cable-${index}`,
+				from: { itemUid: from.uid, jack: "1" },
+				to: { itemUid: to.uid, jack: "0" },
+			};
+		}),
+		endpoints: Array.from({ length: endpointCount }, (_, index) => ({
+			uid: `endpoint-${index}`,
+			kind: index % 2 === 0 ? "amp" : "instrument",
+			x: 210 + (index % 20) * 4,
+			y: 20 + Math.floor(index / 20) * 4,
+		})),
+	};
 }
 
 /** `count` boards laid out in a 5-column grid, each 200×200 cm. */
@@ -120,15 +161,20 @@ function scene(
 	boardCount: number,
 	refs: CatalogPedal[],
 	index = 0,
+	graph: { cables: number; endpoints: number } = { cables: 0, endpoints: 0 },
 ): SceneRow {
 	const boards = makeBoards(boardCount);
+	const items = makeItems(itemCount, boards, refs);
+	const { cables, endpoints } = makeGraph(items, graph.cables, graph.endpoints);
 	return {
 		id: `bench-${index}`,
 		name,
 		version: 1,
 		boards,
-		items: makeItems(itemCount, boards, refs),
+		items,
 		customPedals: [],
+		endpoints,
+		cables,
 		updatedAt: new Date(2026, 0, 1, 0, 0, index).toISOString(),
 	};
 }
@@ -270,6 +316,7 @@ async function exportAllContent(page: Page): Promise<{
 interface ResultRow {
 	scenario: string;
 	items: number;
+	graph: number;
 	distinct: string;
 	docKb: string;
 	bootMs: number;
@@ -302,6 +349,7 @@ async function benchmark(
 	return {
 		scenario: name,
 		items: active.items.length,
+		graph: active.cables.length + active.endpoints.length,
 		distinct: exported.distinctImages,
 		docKb: kb(new TextEncoder().encode(JSON.stringify(active)).length),
 		bootMs,
@@ -317,6 +365,7 @@ function printTable(results: ResultRow[]): void {
 	const header = [
 		"Scenario",
 		"Items",
+		"Graph",
 		"Distinct",
 		"Doc KB",
 		"Boot ms",
@@ -333,6 +382,7 @@ function printTable(results: ResultRow[]): void {
 			[
 				row.scenario,
 				String(row.items),
+				String(row.graph),
 				row.distinct,
 				row.docKb,
 				String(row.bootMs),
@@ -368,6 +418,31 @@ test("capacity benchmark (report-only)", async ({ page }) => {
 		const row = scene(`1 board · ${count} items`, count, 1, REPEATED_PEDALS);
 		results.push(
 			await benchmark(page, `1 board · ${count} items (7 images)`, [row], row),
+		);
+	}
+
+	// P4 graph rows: cables + endpoints travel in the document and draw above
+	// every pedal. 150/300 is the shared graph hard cap — do not raise it.
+	for (const [items, cables, endpoints] of [
+		[100, 50, 50],
+		[200, 75, 75],
+		[400, 150, 150],
+	] as const) {
+		const row = scene(
+			`1 board · ${items} items + ${cables + endpoints} graph`,
+			items,
+			1,
+			REPEATED_PEDALS,
+			0,
+			{ cables, endpoints },
+		);
+		results.push(
+			await benchmark(
+				page,
+				`1 board · ${items} items + ${cables + endpoints} graph`,
+				[row],
+				row,
+			),
 		);
 	}
 

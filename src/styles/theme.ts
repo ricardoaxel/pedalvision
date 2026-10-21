@@ -17,6 +17,10 @@ export const CANVAS_THEME_VARS = {
 	selection: "--color-accent",
 	selectionStrong: "--color-accent-strong",
 	cable: "--color-cable",
+	// Cable knob under-stroke (keeps a trace legible over any finish) — P4-02.
+	cableHalo: "--color-cable-halo",
+	// Jack socket rings / fallback diamonds / endpoint borders — P4-02.
+	jack: "--color-jack",
 	// Board fallback (image missing/failed) + dimension labels — P1-03.
 	boardStroke: "--color-board-outline",
 	boardDraftFill: "--color-board-draft-fill",
@@ -103,6 +107,48 @@ export const READ_ONLY_CUE_INNER_STROKE_PX = 1;
 export const READ_ONLY_CUE_INNER_OUTSET_PX = 2;
 export const READ_ONLY_CUE_UNDER_STROKE_PX = 5;
 
+/**
+ * Jack-tick metrics (screen px, counter-scaled at render) — P4-02 "Patch
+ * Drafting". A tick is a socket: collar + ring, with a filled centre dot for a
+ * real jack and a hollow diamond for an assumed (fallback) anchor.
+ */
+export const JACK_TICK = {
+	diameterPx: 9,
+	strokePx: 1.5,
+	collarPx: 1,
+	dotPx: 2,
+	hoverDiameterPx: 11,
+	targetDiameterPx: 13,
+	/** Total hit band width; centred on the tick. */
+	hitPx: 44,
+} as const;
+
+/** Cable trace metrics (screen px, counter-scaled at render). */
+export const CABLE = {
+	strokePx: 2,
+	haloPx: 6,
+	selectedStrokePx: 2.5,
+	selectedHaloPx: 7,
+	hitStrokePx: 16,
+	arrowLengthPx: 10,
+	arrowWidthPx: 8,
+	arrowGapPx: 14,
+	handleMinPx: 24,
+	handleMaxPx: 96,
+	handleChordFraction: 0.45,
+	dimOpacity: 0.4,
+	previewDash: [5, 4] as const,
+} as const;
+
+/** Endpoint terminal-tag metrics (screen px). */
+export const ENDPOINT = {
+	heightPx: 30,
+	minWidthPx: 52,
+	glyphPx: 14,
+	labelPx: 9,
+	hitPx: 44,
+} as const;
+
 export type CanvasThemeKey = keyof typeof CANVAS_THEME_VARS;
 
 export type CanvasTheme = Record<CanvasThemeKey, string>;
@@ -130,6 +176,8 @@ export const canvasTheme: CanvasTheme = {
 	selection: "#66c9de",
 	selectionStrong: "#66c9de",
 	cable: "#b9c2cc",
+	cableHalo: "rgb(25 26 28 / 0.9)",
+	jack: "#8e99a5",
 	boardStroke: "#5f6a76",
 	boardDraftFill: "#202327",
 	boardLabel: "#a8b0b8",
@@ -158,6 +206,8 @@ export const lightCanvasTheme: CanvasTheme = {
 	selection: "#006b82",
 	selectionStrong: "#006b82",
 	cable: "#4d565f",
+	cableHalo: "rgb(228 231 234 / 0.95)",
+	jack: "#5f6973",
 	boardStroke: "#6b7580",
 	boardDraftFill: "#eceff1",
 	boardLabel: "#565d66",

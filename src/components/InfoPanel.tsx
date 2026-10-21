@@ -103,9 +103,21 @@ export function InfoPanel() {
 	} else if (warning.overlaps.length > 1) {
 		warningLines.push(`Overlaps ${warning.overlaps.length} items.`);
 	}
+	if (warning.tight.length === 1) {
+		warningLines.push(`Tight for a patch cable near ${warning.tight[0]}.`);
+	} else if (warning.tight.length > 1) {
+		warningLines.push(
+			`Tight for a patch cable near ${warning.tight.length} items.`,
+		);
+	}
 	if (warning.outOfBounds) warningLines.push("Extends beyond the board.");
 	// The peek shows a compact chip; the expanded band shows the full sentence.
-	const warningChip = warning.overlaps.length > 0 ? "Overlap" : "Off board";
+	const warningChip =
+		warning.overlaps.length > 0
+			? "Overlap"
+			: warning.tight.length > 0
+				? "Cable gap"
+				: "Off board";
 
 	const dimensions = formatDimensions(info.widthCm, info.heightCm, units);
 	// The peek identity collapses to one name line + a `brand · category` subline.

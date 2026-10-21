@@ -188,7 +188,7 @@ test("share → read-only → save a copy never overwrites the recipient's scene
 	await page.getByTestId("share-open").click();
 	await expect(page.getByTestId("share-panel")).toBeVisible();
 	const link = await page.getByTestId("share-link").inputValue();
-	expect(link).toContain("#s=v1:");
+	expect(link).toContain("#s=v2:");
 	await page.getByTestId("share-close").click();
 	await expect(page.getByTestId("share-panel")).toHaveCount(0);
 

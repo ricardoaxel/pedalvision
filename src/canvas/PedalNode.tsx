@@ -1,18 +1,34 @@
 import type Konva from "konva";
 import type { KonvaEventObject } from "konva/lib/Node";
-import { useCallback, useEffect, useRef } from "react";
-import { Group, Image as KonvaImage, Rect, Text } from "react-konva";
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+	Circle,
+	Group,
+	Image as KonvaImage,
+	Line,
+	Rect,
+	Text,
+} from "react-konva";
 import { resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
+import { jackLocalPoint, jackNormalLocal } from "../lib/jackAnchor";
+import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
-import { type PlacedItem, resolveItem, useScene } from "../state/scene";
+import {
+	type PlacedItem,
+	resolveItem,
+	resolveItemJacks,
+	useScene,
+	usesFallbackJacks,
+} from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
 import {
 	CANVAS_FONTS,
 	ITEM_LABEL,
+	JACK_TICK,
 	READ_ONLY_CUE_INNER_OUTSET_PX,
 	READ_ONLY_CUE_INNER_STROKE_PX,
 	READ_ONLY_CUE_OUTSET_PX,
@@ -22,6 +38,7 @@ import {
 	WARNING_STROKE_PX,
 } from "../styles/theme";
 import { registerItemNode, unregisterItemNode } from "./itemNodeRegistry";
+import { useCoarsePointer } from "./useCoarsePointer";
 import { useImage } from "./useImage";
 
 interface PedalNodeProps {
@@ -46,6 +63,20 @@ interface PedalNodeProps {
 }
 
 /** Client-space pointer position from a mouse or touch Konva event. */
+/** Compact canvas labels for jack kinds (full names live in the info panel). */
+const JACK_LABELS: Record<string, string> = {
+	in: "IN",
+	out: "OUT",
+	exp: "EXP",
+	"exp-in": "EXP IN",
+	"exp-out": "EXP OUT",
+	send: "SEND",
+	return: "RET",
+	midi: "MIDI",
+	ctrl: "CTRL",
+	power: "PWR",
+};
+
 function clientPoint(evt: MouseEvent | TouchEvent): Point {
 	if ("touches" in evt) {
 		// The touch that started this event (not an unrelated first finger).
@@ -110,6 +141,20 @@ export function PedalNode({
 			: 0,
 	);
 	const beginReadOnlyAttempt = useReadOnly((state) => state.beginAttempt);
+	// Drag-connect (P4-02). Subscribe to a **primitive per pedal** (never the live
+	// pointer or the whole target object) so a pointermove re-renders only the
+	// pedals whose source/target jack actually changed.
+	const cableSourceJack = useCableDrag((state) =>
+		state.source?.itemUid === item.uid ? state.source.jackIndex : -1,
+	);
+	const cableTargetJack = useCableDrag((state) =>
+		state.target?.kind === "item" && state.target.uid === item.uid
+			? state.target.jackIndex
+			: -1,
+	);
+	const readOnly = isReadOnly();
+	const coarsePointer = useCoarsePointer();
+	const [hoveredJack, setHoveredJack] = useState<number | null>(null);
 
 	const groupRef = useRef<Konva.Group>(null);
 	// Register globally so the top-level rotate Transformer can attach to this
@@ -338,6 +383,202 @@ export function PedalNode({
 			</>
 		) : null;
 
+	// Jack ticks (P4-02 "Patch Drafting"): quiet sockets on the footprint edge.
+	// Real jacks show a ring + centre dot; the documented fallback pair shows a
+	// hollow diamond + "assumed" so it never reads as manufacturer data.
+	const jacks = readOnly ? [] : resolveItemJacks(item, customPedals);
+	const assumedJacks = usesFallbackJacks(item, customPedals);
+	const showSecondaryJacks =
+		hoveredItemUid === item.uid ||
+		selectedItemUid === item.uid ||
+		screenWidth >= 44;
+	const jackTicks = jacks.map((jack, index) => {
+		if (!showSecondaryJacks && jack.kind !== "in" && jack.kind !== "out") {
+			return null;
+		}
+		const local = jackLocalPoint(jack, {
+			widthCm: resolved.widthCm,
+			heightCm: resolved.heightCm,
+		});
+		const x = cmToPx(local.x);
+		const y = cmToPx(local.y);
+		const isSource = cableSourceJack === index;
+		const isTarget = cableTargetJack === index;
+		const isHovered = hoveredJack === index;
+		const diameter =
+			(isTarget
+				? JACK_TICK.targetDiameterPx
+				: isHovered
+					? JACK_TICK.hoverDiameterPx
+					: JACK_TICK.diameterPx) / labelScale;
+		const radius = diameter / 2;
+		const ringColor = isSource || isTarget ? theme.selection : theme.jack;
+		const label = JACK_LABELS[jack.kind] ?? jack.kind.toUpperCase();
+		const chipText = `${label}${assumedJacks ? " · assumed" : ""}`;
+		const chipWidth = (Math.max(26, chipText.length * 6.2) + 8) / labelScale;
+		const chipHeight = 16 / labelScale;
+		// The hit disc sits mostly OUTSIDE the edge: a full 44px disc centred on
+		// the socket would cover the whole ~29px pedal at zoom 1 and steal the
+		// drag. It overlaps only ~4px inwards.
+		const hitRadius = (coarsePointer ? JACK_TICK.hitPx : 28) / 2 / labelScale;
+		const outward = jackNormalLocal(jack.edge);
+		const hitOffset = Math.max(0, hitRadius - 4 / labelScale);
+		const chipAbove = jack.edge !== "bottom";
+		const chipY = chipAbove
+			? y - radius - 6 / labelScale - chipHeight
+			: y + radius + 6 / labelScale;
+		const begin = (
+			event: KonvaEventObject<MouseEvent | TouchEvent>,
+			client: Point,
+		) => {
+			event.cancelBubble = true;
+			if (
+				"button" in event.evt &&
+				event.evt instanceof MouseEvent &&
+				event.evt.button !== 0
+			) {
+				return;
+			}
+			selectItem(item.uid);
+			if (readOnly) {
+				beginReadOnlyAttempt({
+					uid: item.uid,
+					kind: "item",
+					startClient: client,
+				});
+				return;
+			}
+			useCableDrag.getState().begin({ itemUid: item.uid, jackIndex: index });
+		};
+		return (
+			<Group
+				// biome-ignore lint/suspicious/noArrayIndexKey: jacks carry no id; the index is the cable reference
+				key={`jack-${index}`}
+				x={x}
+				y={y}
+			>
+				{assumedJacks ? (
+					/* Fallback anchor: a clearly hollow diamond (no centre dot) so an
+					 * assumed socket can never be mistaken for real jack data. */
+					<>
+						<Line
+							points={
+								[
+									[0, -(radius + 1.2 / labelScale)],
+									[radius + 1.2 / labelScale, 0],
+									[0, radius + 1.2 / labelScale],
+									[-(radius + 1.2 / labelScale), 0],
+								].flat() as number[]
+							}
+							closed
+							stroke={theme.canvasBackground}
+							strokeWidth={(JACK_TICK.collarPx * 2) / labelScale}
+							lineJoin="round"
+							listening={false}
+							perfectDrawEnabled={false}
+						/>
+						<Line
+							points={
+								[
+									[0, -radius],
+									[radius, 0],
+									[0, radius],
+									[-radius, 0],
+								].flat() as number[]
+							}
+							closed
+							stroke={ringColor}
+							strokeWidth={
+								(isSource || isTarget ? 2 : JACK_TICK.strokePx) / labelScale
+							}
+							fill={isSource ? theme.selection : undefined}
+							lineJoin="round"
+							listening={false}
+							perfectDrawEnabled={false}
+						/>
+					</>
+				) : (
+					<>
+						<Circle
+							radius={radius + JACK_TICK.collarPx / labelScale}
+							stroke={theme.canvasBackground}
+							strokeWidth={(JACK_TICK.collarPx * 2) / labelScale}
+							fillEnabled={false}
+							listening={false}
+							perfectDrawEnabled={false}
+						/>
+						<Circle
+							radius={radius}
+							stroke={ringColor}
+							strokeWidth={
+								(isSource || isTarget ? 2 : JACK_TICK.strokePx) / labelScale
+							}
+							fill={isSource ? theme.selection : theme.canvasBackground}
+							fillEnabled={isSource}
+							listening={false}
+							perfectDrawEnabled={false}
+						/>
+						{isSource ? (
+							<Circle
+								radius={JACK_TICK.dotPx / labelScale}
+								fill={theme.itemLabelInk}
+								listening={false}
+								perfectDrawEnabled={false}
+							/>
+						) : (
+							<Circle
+								radius={JACK_TICK.dotPx / labelScale}
+								fill={ringColor}
+								listening={false}
+								perfectDrawEnabled={false}
+							/>
+						)}
+					</>
+				)}
+				{/* Invisible 44px hit disc: the stroke-only socket is too thin to
+				 * hit reliably over a photo, and touch needs the full target. */}
+				<Circle
+					x={outward.x * hitOffset}
+					y={outward.y * hitOffset}
+					radius={hitRadius}
+					fill="rgba(0,0,0,0.001)"
+					onMouseDown={(event) => begin(event, clientPoint(event.evt))}
+					onTouchStart={(event) => begin(event, clientPoint(event.evt))}
+					onMouseEnter={() => setHoveredJack(index)}
+					onMouseLeave={() =>
+						setHoveredJack((current) => (current === index ? null : current))
+					}
+				/>
+				{isHovered || isSource || isTarget ? (
+					<Group listening={false}>
+						<Rect
+							x={-chipWidth / 2}
+							y={chipY}
+							width={chipWidth}
+							height={chipHeight}
+							fill={theme.itemLabelBg}
+							cornerRadius={3 / labelScale}
+						/>
+						<Text
+							text={chipText}
+							x={-chipWidth / 2}
+							y={chipY}
+							width={chipWidth}
+							height={chipHeight}
+							align="center"
+							verticalAlign="middle"
+							fontFamily={CANVAS_FONTS.mono}
+							fontSize={(JACK_TICK.dotPx * 4) / labelScale}
+							fill={theme.itemLabelInk}
+							wrap="none"
+							ellipsis
+						/>
+					</Group>
+				) : null}
+			</Group>
+		);
+	});
+
 	const warningCue = warning ? (
 		<Rect
 			x={-warningOutset}
@@ -371,6 +612,7 @@ export function PedalNode({
 			onMouseLeave={() => setHoveredItem(null)}
 		>
 			{body}
+			{jackTicks}
 			{warningCue}
 			{readOnlyCueRects}
 		</Group>

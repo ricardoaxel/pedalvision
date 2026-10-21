@@ -108,8 +108,8 @@ describe("endpoints + cables (P4-01)", () => {
 		expect(
 			useScene.getState().addCable({ itemUid, jack: "in" }, { endpointUid }),
 		).toBeNull();
-		// The catalog seed has no jack data yet: a catalog item resolves to []
-		// jacks, so no cable can attach to it.
+		// The catalog seed has no jack data yet: a catalog pedal resolves to the
+		// documented fallback pair, so index 0 (IN) works and index 2 does not.
 		const catalogUid = required(
 			useScene
 				.getState()
@@ -119,11 +119,54 @@ describe("endpoints + cables (P4-01)", () => {
 			useScene
 				.getState()
 				.addCable({ itemUid: catalogUid, jack: "0" }, { endpointUid }),
+		).not.toBeNull();
+		expect(
+			useScene
+				.getState()
+				.addCable({ itemUid: catalogUid, jack: "2" }, { endpointUid }),
 		).toBeNull();
-		expect(useScene.getState().cables).toEqual([]);
+		expect(useScene.getState().cables).toHaveLength(1);
 		expect(
 			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
 		).not.toBeNull();
+	});
+
+	it("prunes dead cables + orphaned endpoints when a custom jack is edited away", () => {
+		const itemUid = addJackedItem();
+		const item = useScene
+			.getState()
+			.items.find((candidate) => candidate.uid === itemUid);
+		if (!item) throw new Error("expected the placed item");
+		const amp = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		const standalone = required(
+			useScene.getState().addEndpoint("instrument", { x: -20, y: 10 }),
+		);
+		required(
+			useScene
+				.getState()
+				.addCable({ itemUid, jack: "1" }, { endpointUid: amp }),
+		);
+		expect(useScene.getState().cables).toHaveLength(1);
+
+		// Remove the second jack (index 1) — the cable to it can no longer resolve.
+		useScene.getState().updateCustomPedal(item.refId, {
+			brand: "Acme",
+			name: "Jacked",
+			widthCm: 7,
+			heightCm: 12,
+			category: "pedal",
+			effectTypes: [],
+			jacks: [{ kind: "in", edge: "top", pos: 0.5 }],
+		});
+
+		expect(useScene.getState().cables).toEqual([]);
+		// The endpoint that only existed for the dropped cable is pruned; the
+		// standalone one is a placed object and survives (A4).
+		expect(
+			useScene.getState().endpoints.map((endpoint) => endpoint.uid),
+		).toEqual([standalone]);
 	});
 
 	it("removing an endpoint removes its cables; the other endpoint survives", () => {
