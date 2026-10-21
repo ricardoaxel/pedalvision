@@ -1,4 +1,6 @@
-# P5-05: Full-integration device E2E (Appium, local) — PROPOSED (not scheduled)
+# P5-06: Full-integration device E2E (Appium, local) — PROPOSED (not scheduled)
+
+> Renumbered from P5-05 on 2026-10-21 (P5-05 is now Image hosting at scale).
 
 **Phase:** P5 · **Status:** proposed — deferred (see ADR-007) · **Model:** plan
 

@@ -98,8 +98,9 @@ Hosting: Cloudflare Pages (app + v1 image assets, same-origin) · R2 deferred (A
 - No new runtime dependencies without a note in the task file or a new ADR.
 - Do not read whole docs unless the task says so — read the pointed sections only.
 - Code, comments, and UI text in English.
-- Catalog/image provenance is documented in `docs/decisions/003-catalog-data.md` ONLY. Never reference external dataset sources in code, commits, filenames, or public assets.
-- **Catalog images (owner decision, 2026-10-15):** where a direct official brand image URL is recorded in `sources`, render it (`imageSource: "url"`) — the procedural mock is the **fallback only** (items with no usable URL). No scraping/download; hotlink the recorded URL. Prefer top-down cropped cutouts (true-scale). See ADR-003 §Brand image URLs.
+- Catalog/image provenance is documented in `docs/decisions/003-catalog-data.md` ONLY. Never reference external dataset sources in code, commits, filenames, or public assets; per-item source URLs live only in catalog data `sources`.
+- **Catalog images (owner decision, 2026-10-21 — supersedes the hotlink-only rule):** images are **self-hosted** (`imageSource: "static"` under `public/pedal-assets/`, or the P5-05 CDN) and quality-gated. Candidate sources prefer official brand/product/press pages, then authorized retailers, then existing public catalog images; record the source URL per item. Add the `public-asset` source tag + an attribution/takedown page (P5-01). No bulk copying of descriptions. **2,000 hosted pedals is a hard cap** until P5-05 (image hosting at scale) is decided.
+- **P5 catalog/data work isolation:** brand/data agents write only `data/catalog/brands/<brand>/<batch>.json` + their own hosted assets under the batch's worktree; they must **never** edit the generated `src/catalog/data/pedals.json` or feature code. Feature agents never edit catalog data. Generated catalog builds happen only after a brand PR merges. Max **3 batches in flight**; every agent must be observable (`catalog:status`) and stoppable (`catalog:pause/stop`) with per-pedal checkpoints.
 - **NEVER run scaffolding/build tools with `--overwrite`/force flags in the repo root** — `docs/`, `AGENTS.md`, and the PDF are precious. Merge scaffold files manually. (This rule exists because `--overwrite` deleted the entire `docs/` tree on 2026-09-29.)
 
 ## Conventions

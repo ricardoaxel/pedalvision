@@ -1,398 +1,156 @@
-# Catalog backfill plan
+# Catalog backfill plan (P5)
 
-Strategy + inventory for growing the committed catalog seed to the full,
-cleared catalog. Referenced from `docs/roadmap.md` (**P5 — Catalog completion,
-pre-launch**) and
-governed by ADR-003 (sourcing, rights, provenance).
+Plan for turning the committed 207-item seed into the real, quality-gated
+catalog. Governed by **ADR-003**; roadmap tasks **P5-01…P5-05**.
+Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 
-## Legend
+## Goals
 
-| Mark | Meaning |
-| --- | --- |
-| **V** | `effectTypes` from a **verified override** (`tools/catalog-transform/curated.ts`, base-model slug; variants inherit) |
-| **C** | `effectTypes` from the conservative name-keyword **classifier** (`effects.ts`) — correct for descriptive names, unverified for creative ones |
-| **—** | `effectTypes: []` by design (a power supply) |
-| **!** | **Still needs filling** — unverified spec/effectTypes |
-| **mocked** | image is a procedural placeholder (`source: 'placeholder'`) |
-| **cleared** | image is a real, rights-checked asset (`source ∈ {licensed, brand-assets, community, own}`) |
+- Ship a clean catalog with **real facts + hosted, quality-gated images**.
+- Cover **Tier A** (top ~20 brands / ~2,000 pedals) for launch; the long tail
+  continues after launch.
+- Keep **cm** as the only stored unit; inches are converted at import.
+- Make data work **parallel with feature work** without merge conflicts.
+- Make every agent run **observable and stoppable**.
+- Stay inside the **2,000 hosted-pedal hard cap** until hosting is re-decided.
 
-> **Interim (2026-10-15):** images are now **129 brand `url` + 78 `mock`** (of 207
-> pedals); boards **6 `url` + 4 `mock`** — a recorded direct brand image URL is
-> rendered, mock is the fallback (ADR-003 §Brand image URLs). There are still
-> **0 `cleared`**: `source` stays `placeholder`, so the launch blocker is
-> unchanged. Real, rights-checked assets are never committed until cleared
-> (ADR-003). Per-pedal status is in the appendix; the machine-readable source of
-> truth is the `source` field in `src/catalog/data/pedals.json`.
+## Current state
 
-## Current state (committed seed)
+- Seed: **207 pedals / 13 brands / 10 boards**; `effectTypes` for 201/207
+  (the 6 blanks are supplies).
+- **0 jacks, 0 power**; images: 129 hotlinked `url` + 78 `mock`; **0 hosted**.
+- Verified base models carry **485 source refs** (340 `image` links).
+- Discovery list: **8,557 pedals / 779 brands** from the PedalPlayground public
+  list (`Brand`, `Name`, `Width`, `Height`, `Image`; **inches**) + other sources
+  the `pedal-expert` agent uses.
 
-**207 pedals · 13 brands · 10 boards**; `source: 'placeholder'`; images **129
-`url` + 78 `mock`** (pedals) / **6 `url` + 4 `mock`** (boards);
-`effectTypes` present for **201/207** (the 6 blanks are all power supplies).
-**Source links:** the verified base models carry per-item `sources: [{url,
-kind}]` — **485 refs, 340 marked `image` across 170 models** (manufacturer/
-authorized preferred; ADR-003 §Per-item sources). A colorway variant resolves to
-its base's sources. **Image links are recorded but no image is downloaded** — a
-direct-file link is *rendered* (hotlinked) via `imageSource: 'url'`, others stay
-`mock` (ADR-003 §Brand image URLs). Unverified items have no links (their facts
-come only from the aggregate, never cited).
+**Keep the 207 seed.** Run it through the quality gate and keep/repair/replace
+per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 
-| Brand | Total | V | C | — | Images (cleared/total) | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| BOSS | 41 | 4 | 36 | 1 | 0 / 41 | PSM-5 is a supply |
-| Electro-Harmonix | 18 | 10 | 8 | 0 | 0 / 18 | |
-| Walrus Audio | 18 | 17 | 0 | 1 | 0 / 18 | Aetos is a supply (corrected) |
-| Keeley | 18 | 17 | 1 | 0 | 0 / 18 | |
-| EarthQuaker | 18 | 17 | 1 | 0 | 0 / 18 | |
-| JHS | 18 | 2 | 16 | 0 | 0 / 18 | |
-| TC Electronic | 18 | 8 | 10 | 0 | 0 / 18 | |
-| Mooer | 18 | 18 | 0 | 0 | 0 / 18 | amp-in-a-box preamps |
-| MXR | 18 | 3 | 14 | 1 | 0 / 18 | CAE Power System is a supply |
-| Joyo | 18 | 6 | 12 | 0 | 0 / 18 | |
-| Big Joe | 2 | 0 | 0 | 2 | 0 / 2 | supplies |
-| Behringer | 1 | 1 | 0 | 0 | 0 / 1 | P1 is an IEM amp, not a supply |
-| Effects Bakery | 1 | 0 | 0 | 1 | 0 / 1 | supply |
-| **Total** | **207** | **103** | **98** | **6** | **0 / 207** | interim: 129 `url` / 78 `mock` |
+## Data contract
 
-The 10 pilot brands (BOSS … Joyo) had their creatively-named pedals verified
-against official sources; the remaining supply brands (Big Joe, Effects Bakery)
-are power supplies with `effectTypes: []` by design. Behringer's **Powerplay P1**
-is a personal in-ear-monitor amp, so it is a **pedal** (`utility`), not a supply.
+### Mandatory
+`id`, `brand`, `name`, `category` (`pedal|supply`), `effectTypes` (pedals ≥1,
+supplies `[]`), `widthCm`, `heightCm`.
 
-## Image status & acquisition (rights-first)
+### Required for the cable feature
+`jacks[]`: `kind`, `edge`, `pos`, `stereo?`. **Optional enrichment for catalog
+data**: if a source exposes input/output positions, record them. When absent,
+P4-02's documented fallback anchors apply (assumed IN left / OUT right).
 
-**Status (today):** **0 `cleared`**; **129 pedals render a brand `url`**, 78 are
-`mock` (boards: 6 `url` / 4 `mock`). Still all `source: 'placeholder'`.
+### Enrichment (show when present)
+`power` (`voltage`, `acDc`, `currentMa`), `usage` (`guitar|bass|both|unknown`),
+input/output count, mono/stereo, `color`, `year`, `status`, original `notes`,
+`sources`, `confidence`, `lastVerified`.
 
-Two orthogonal fields record an item's image (schema: `src/catalog/schema.ts`):
+### Schema additions (P5-01 implementation)
+`usage`, `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`,
+and a **`public-asset`** value in `SOURCE_TAGS`. `jacks.stereo?` already exists.
 
-- **`imageSource`** — *how* the image is provided: `mock` (procedural
-  placeholder), `static` (a committed file under `public/pedal-assets/`), or
-  `url` (a recorded direct brand URL, rendered by hotlink today). 129 pedals /
-  6 boards are `url`; the rest are `mock` (ADR-003 §Brand image URLs).
-- **`source`** — *rights* provenance: `placeholder` = not cleared; `licensed` /
-  `brand-assets` / `community` / `own` = cleared. So `cleared` ⇔ `imageSource`
-  is a real asset **and** `source` is cleared; a `url` today is still
-  `placeholder` (not cleared).
+## Master inventory
 
-Both are mirrored per-pedal in the appendix below.
+- Normalize `Brand`/`Name`, dedupe by slug, collapse colorways to `variantOf`.
+- Inventory is **off-runtime** (`data/catalog/inventory.json`).
+- Tier A = top ~20 brands / ~2,000 pedals (launch scope); Tier B = next ~30
+  brands; Tier C = long tail.
+- Priority: BOSS, Electro-Harmonix, JHS, MXR, TC Electronic, Behringer, Keeley,
+  Walrus Audio, EarthQuaker, Mooer, Joyo, Strymon, Wampler, Dunlop, Fender,
+  DigiTech, Catalinbread, OBNE, GFI, Meris, Red Panda.
+- PedalPlayground is **discovery only** — facts and images are re-verified.
 
-**How real images are acquired — never by scraping.** Per ADR-003, an image is
-added only once its use is cleared, via (in priority order):
+## Image policy & pipeline
 
-1. **Permission** from the catalog maintainer.
-2. **Brand outreach / official brand assets** (product galleries, media/press
-   kits) — *with usage terms checked*.
-3. **Community submissions** (with moderation + attribution).
-4. **Our own photos**, or an appropriately-**licensed** image.
+Owner-approved self-hosted public-asset policy (ADR-003). Every shipped image is
+a **static asset** (`imageSource: "static"`) under `public/pedal-assets/`, or the
+P5-05 CDN.
 
-The `pedal-expert` agent knows where to look (manufacturer product pages;
-media/press/dealer pages such as `/press`, `/media`, `/press-materials`,
-`/newsroom`) and never downloads files or returns third-party catalog images —
-it returns the candidate official source + the rights metadata.
+### Candidate sourcing
+1. Official manufacturer product/press page.
+2. Authorized retailer/product page.
+3. Existing public catalog image (last resort).
+Record the source URL per item; never bulk-copy descriptions.
 
-**Per-asset record** (one row per image, filled when acquired):
+### Quality gate
+1. **Analyzer (script, `sharp`)** — min 800 px long edge; background uniformity;
+   alpha; trim bbox/whitespace; aspect ratio vs `widthCm/heightCm` (accept ~≤10%,
+   flag 10–15%, reject >15%); rotation/skew ≤2°; shadow/perspective/watermark
+   signals.
+2. **Processor (script)** — background removal (extend the existing flood fill;
+   dev-only ML fallback for gradients/shadows), trim, transparent PNG, 800/350.
+3. **Vision QA** — only ambiguous images, on **contact sheets** of 20–30; never
+   one call per image.
+4. **Fallback** — max 3 candidates → placeholder + `needs-new-image` flag.
+5. **Human contact sheet** per brand before PR merge.
 
-| Field | Meaning |
-| --- | --- |
-| `pedal` | catalog id |
-| `original_source_url` | where the asset lives |
-| `rights_holder` | manufacturer / photographer / owner |
-| `license_type` | license or permission basis |
-| `commercial_use_allowed` | covered for our use? |
-| `modifications_allowed` | crop/resize allowed? |
-| `attribution_required` | required credit + placement |
-| `permission_evidence` | license URL / written approval |
-| `status` | `pending` \| `approved` \| `restricted` \| `rejected` |
+Regression fixtures: **BOSS AC-3** (white background) and **TC Choka** (bad crop).
 
-**Cleared-assets log** (append as items clear; empty today):
+## Hosting cap and P5-05
 
-| Pedal | Source | Rights holder | Status | Cleared on |
-| --- | --- | --- | --- | --- |
-| _(none yet)_ | | | | |
+- **Hard cap: 2,000 pedals with hosted images** (~4,000 files, ~300 MB).
+- The runner checks before/after each batch; at the cap it stops all P5-03 waves
+  and reports.
+- Current Cloudflare Pages/GitHub setup is safe at this cap. Full 8,557 would be
+  ~17,100 images (~1.2 GB+) and hits Pages’ 20,000-file / repo-size / directory
+  limits.
+- **P5-05 (deferred)** evaluates R2 public bucket (leading), Pages Pro, a
+  separate Pages asset project, Backblaze B2, Bunny CDN; ADR-002 update + cost
+  table + migration plan. No migration without owner approval.
 
-## Missing (future backfill)
+## Parallel work & control plane
 
-- **All models & brands beyond the 13-brand slice.** The seed is a deterministic
-  top-brands slice; the full list is produced by re-running the importer with
-  higher limits — see _How to run_. The source has ~8.5k models / ~250 boards
-  (ADR-003); the committed seed intentionally covers a small, representative set.
-- **Verified specs.** Dimensions are real (from the source); `power` and `jacks`
-  are **not yet populated** in the seed. The pilot research produced them, but
-  our jack model only allows `in | out | exp | power` while real pedals have
-  `send`, `return`, `exp-in`, `exp-out`, `midi`, `ctrl` — **resolve the jack-kind
-  vocabulary before backfilling jacks**. This is a **hard prerequisite for
-  P2-02 (custom pedal creator) and P4-01 (cable anchors)**, not just P5-01;
-  see `docs/roadmap.md` P2-02/P4-01 and ADR-003 §Data model.
-- **Per-item provenance.** Today provenance is the coarse `source` tag. Planned
-  enrichment: per-item source, last-verified date, and confidence
-  (ADR-003 §Sourcing, rights & ingestion).
-- **Cleared images.** Replace all mocked PNGs (launch gate; owner/P4-04).
-
-## Backfill model (steps — same as the product plan)
-
-1. **Discover** — enumerate the full catalog (importer without caps).
-2. **Extract facts** — brand, model, footprint dimensions (public facts only).
-3. **Normalize** — inches→cm, stable slug ids, flat duplicates→`variantOf`.
-4. **Derive our content** — `deriveEffectTypes()` (verified override → classifier)
-   and `deriveCategory()`; no guessing.
-5. **Verify** — official manufacturer sources first; where the classifier is
-   wrong for a creative name, add a **verified override**; keep `unknown` over a
-   wrong value.
-6. **Provenance** — record source/date/confidence per item (planned field).
-7. **Clear images** — only then flip `source` and publish (launch gate).
-
-## How to run
-
-```sh
-# Grow the seed to the full catalog (external input file is off-repo by design)
-pnpm catalog:import --input <pedals.json> --boards <boards.json> \
-  --brand-limit 999 --top-brand-cap 999 --per-brand-cap 999 --board-limit 999
-pnpm catalog:seed        # (re)render mocked PNGs
-pnpm catalog:reclassify  # re-apply taxonomy/category (no external input needed)
+```text
+data/catalog/inventory.json
+data/catalog/brands/<brand>/<batch>.json      # one agent owns one batch file
+data/catalog/registry.json                    # coordinator only
+work/catalog/state|control|checkpoints|logs   # runtime control plane
+public/pedal-assets/**                        # final assets
 ```
 
-Hooks that keep this honest: a committed-data **no-drift** test (seed == fresh
-`deriveEffectTypes`/`deriveCategory`), a **no-dead-curated-keys** test, and a
-committed-image **byte-determinism** test.
+- Brand agents write **only** their batch file + own assets; never
+  `src/catalog/data/pedals.json`.
+- Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
+- `pnpm catalog:build` regenerates the runtime catalog after merges.
+- **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR.
+- Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches.
+- `catalog-runner` + `pnpm catalog:status [--watch]`,
+  `catalog:pause|stop|resume`, global `STOP`, per-agent flags.
+- Per-agent state: progress %, pedals done/total, images accepted/rejected,
+  elapsed, heartbeat, blockers.
+- Checkpoint after every pedal; atomic writes; no PR on stop; SIGTERM/SIGKILL
+  fallback; stale heartbeat alert after 30 min.
+- **Status message every 15 minutes**; hard per-pedal limit 12 min (initial),
+  per-batch 4 h; tune after the pilot.
 
-## Review follow-ups (architecture review, 2026-10-14)
+## Execution
 
-- **Source-link quality/tiers.** Most `sources` are manufacturer/CDN; a few are
-  low-authority corroboration. Before P5-02, do a quality pass (or add a link
-  tier) so image-rights clearance effort isn't spent on weak links.
-- **Runtime payload.** `pedals.json` is statically imported, so the 485 refs ship
-  in the client bundle. Fine now; at full-catalog scale (P5-01, ~8.5k) move the
-  rich provenance to a separate, non-runtime data file (keep only what the UI
-  needs in the bundle).
-- **`curated.ts` rot.** The 86 hand-maintained base slugs will drift as the
-  catalog grows; P5-01 must re-verify/regenerate them, and the no-dead-keys test
-  should catch drift in both directions.
-- **`catalogVersion`.** Add a format version field when the catalog schema
-  stabilizes (mirrors `Scene.version`) — not needed for the single v1 seed.
+1. **P5-01** policy, data contract, inventory, schema, 2k cap.
+2. **P5-02** tooling, quality gates, control plane, agent templates.
+3. **Pilot:** TC Choka — one PR with data + hosted image + contact sheet +
+   Playwright.
+4. **Small parallel test:** Meris (15) + Red Panda (14) — one PR each.
+5. **Big-brand split test:** BOSS, 3 batch PRs in parallel; verify build/merge.
+6. **Scale:** 3 batches in flight continuously; refill as each finishes (no
+   one-per-day assumption). Priority brands first.
+7. **At 2,000 hosted pedals:** stop; run P5-05; resume only after the decision.
+8. **P5-04:** final QA, provenance, launch gate.
 
-## Repercussions addressed
+## Per-PR QA
 
-- **Dedup / variants:** flat colorways are collapsed to `variantOf` links; a
-  variant always inherits its base's types and is never emitted without its base.
-- **Units:** cm is the storage unit; conversion is `× 2.54` at import only.
-- **Provenance rule:** no source name/URL ever enters code, commits, filenames,
-  or shipped assets; the audit trail lives in ADR-003 only.
-- **Schema originality:** our model is not a rename of the source (ADR-003
-  §Schema originality); mocked images mean no third-party asset is reused.
-- **Launch gate:** the seed stays `placeholder` until images are cleared, so an
-  uncleared catalog can never ship by accident.
+- Schema valid; no duplicate ids; variants resolve; mandatory fields present.
+- Both image renditions exist; alpha/background/aspect pass; image loads
+  same-origin; export stays untainted.
+- Playwright: picker search + brand/effect filters; canvas placement; no console
+  errors; screenshot/contact sheet in the PR.
+- Coverage report: pedals covered, unresolved, duplicates, image pass/reject.
 
-## Appendix — per-pedal image status & sources (snapshot)
+## Cost/time
 
-Snapshot from `src/catalog/data/pedals.json` (source of truth). `Image` = rights status (`0 cleared` today; rights are `placeholder`, though 129 items now render a brand `url` — see §Image status). `Sources` = total per-item source refs; `Img links` = refs marked `image`.
+After the BOSS split test, measure tokens/time per pedal, image accept rate, and
+rework rate. Tune batch size/model tier. No fixed calendar commitment until then.
+The 2,000 cap and the measured batch duration are the real constraints.
 
-| Brand | Model | Image | Sources | Img links |
-| --- | --- | --- | --- | --- |
-| BOSS | AC-2 Acoustic Simulator | mocked | 3 | 2 |
-| BOSS | AC-3 Acoustic Simulator | mocked | 6 | 3 |
-| BOSS | AD-2 Acoustic Preamp | mocked | 3 | 3 |
-| BOSS | AW-3 Dynamic Wah | mocked | 3 | 3 |
-| BOSS | BB-1X Bass Driver | mocked | 4 | 4 |
-| BOSS | BC-1x Bass Compressor | mocked | 4 | 4 |
-| BOSS | BC-2 Combo Drive | mocked | 3 | 3 |
-| BOSS | BD-2 Blues Driver | mocked | 4 | 4 |
-| BOSS | BF-2 Flanger | mocked | 2 | 2 |
-| BOSS | BF-2B Bass Flanger | mocked | — | — |
-| BOSS | BF-3 Flanger | mocked | 2 | 2 |
-| BOSS | CE-1 Chorus Ensemble | mocked | — | — |
-| BOSS | CE-2 Chorus | mocked | — | — |
-| BOSS | CE-20 Chorus Ensemble | mocked | 2 | 2 |
-| BOSS | CE-2B Bass Chorus | mocked | — | — |
-| BOSS | CE-3 Chorus | mocked | — | — |
-| BOSS | CE-5 Chorus Ensemble | mocked | 4 | 4 |
-| BOSS | CEB-3 Bass Chorus | mocked | 2 | 2 |
-| BOSS | CH-1 Super Chorus | mocked | 3 | 3 |
-| BOSS | CP-1X Compressor | mocked | 4 | 4 |
-| BOSS | CS-2 Compression Sustainer | mocked | — | — |
-| BOSS | CS-3 Compression Sustainer | mocked | 2 | 2 |
-| BOSS | DA-2 Adaptive Distortion | mocked | 2 | 2 |
-| BOSS | DC-2 Dimension C | mocked | 5 | 2 |
-| BOSS | DC-3 Digital Dimension | mocked | 4 | 2 |
-| BOSS | DD-2 Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-20 Giga Delay | mocked | 2 | 2 |
-| BOSS | DD-200 Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-3 Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-3T Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-5 Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-500 Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-6 Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-7 Digital Delay | mocked | 2 | 2 |
-| BOSS | DD-8 Digital Delay | mocked | 2 | 2 |
-| BOSS | DF-2 Super Feedbacker & Distortion | mocked | 2 | 2 |
-| BOSS | DM-101 Delay Machine | mocked | 2 | 2 |
-| BOSS | DM-2 Delay | mocked | 2 | 2 |
-| BOSS | DM-3 Delay | mocked | 2 | 2 |
-| BOSS | DN-2 Dyna Drive | mocked | 2 | 2 |
-| BOSS | PSM-5 Power Supply & Master Switch | mocked | 2 | 2 |
-| Electro-Harmonix | #1 Echo | mocked | 3 | 3 |
-| Electro-Harmonix | 1440 Stereo Looper | mocked | 4 | 4 |
-| Electro-Harmonix | 15Watt Howitzer | mocked | 5 | 3 |
-| Electro-Harmonix | 2020 Tuner | mocked | 3 | 3 |
-| Electro-Harmonix | 2020 Tuner v2 | mocked | 3 | 3 |
-| Electro-Harmonix | 22500 Dual Stereo Looper | mocked | 3 | 3 |
-| Electro-Harmonix | 22500 Foot Controller | mocked | 4 | 3 |
-| Electro-Harmonix | 44 Magnum Power Amp | mocked | 5 | 3 |
-| Electro-Harmonix | 5mm Power Amp | mocked | 5 | 3 |
-| Electro-Harmonix | 720 Stereo Looper | mocked | 3 | 3 |
-| Electro-Harmonix | 8 Step Program | mocked | 6 | 3 |
-| Electro-Harmonix | 95000 Performance Loop Laboratory | mocked | 5 | 3 |
-| Electro-Harmonix | Analogizer | mocked | 4 | 3 |
-| Electro-Harmonix | Attack Decay | mocked | 4 | 3 |
-| Electro-Harmonix | B9 Organ Machine | mocked | 5 | 3 |
-| Electro-Harmonix | Bad Stone | mocked | 4 | 3 |
-| Electro-Harmonix | Bass Big Muff Pi | mocked | 3 | 3 |
-| Electro-Harmonix | Bass Big Muff Pi 2 | mocked | 3 | 3 |
-| Walrus Audio | 385 | mocked | 2 | — |
-| Walrus Audio | 385 (Nat. Parks) | mocked | — | — |
-| Walrus Audio | 385 MKII | mocked | 3 | 2 |
-| Walrus Audio | 385 MKII (Black) | mocked | — | — |
-| Walrus Audio | ARP-87 | mocked | 4 | 2 |
-| Walrus Audio | ARP-87 (Kamakura) | mocked | — | — |
-| Walrus Audio | ARP-87 (Nat. Parks) | mocked | — | — |
-| Walrus Audio | ARP-87 (Nautical) | mocked | — | — |
-| Walrus Audio | ARP-87 (Obsidian) | mocked | — | — |
-| Walrus Audio | ARP-87 (Platinum) | mocked | — | — |
-| Walrus Audio | Aetos | mocked | 3 | — |
-| Walrus Audio | Ages | mocked | 4 | 2 |
-| Walrus Audio | Ages (Kamakura) | mocked | — | — |
-| Walrus Audio | Ages (Nat. Parks) | mocked | — | — |
-| Walrus Audio | Badwater | mocked | 4 | 2 |
-| Walrus Audio | Bellwether | mocked | 3 | 2 |
-| Walrus Audio | Canvas Clock | mocked | 4 | 2 |
-| Walrus Audio | Canvas Line Isolator | mocked | 3 | 2 |
-| Keeley | 1962 | mocked | 2 | 1 |
-| Keeley | 1962x | mocked | 2 | 1 |
-| Keeley | 30ms Double Tracker | mocked | 3 | 1 |
-| Keeley | Abbey Chamber Verb | mocked | 2 | — |
-| Keeley | Angry Orange | mocked | 3 | 1 |
-| Keeley | Angry Orange (Signalis) | mocked | — | — |
-| Keeley | Angry Orange (White) | mocked | — | — |
-| Keeley | Aria | mocked | 3 | 1 |
-| Keeley | Aurora | mocked | 3 | 1 |
-| Keeley | Bassist Compressor | mocked | 1 | 1 |
-| Keeley | Black Glass | mocked | 2 | 1 |
-| Keeley | Blacktop | mocked | 2 | 1 |
-| Keeley | Blues Disorder | mocked | 3 | 1 |
-| Keeley | Blues Disorder (Signalis) | mocked | — | — |
-| Keeley | Blues Disorder (White) | mocked | — | — |
-| Keeley | Bubble Tron | mocked | 3 | 1 |
-| Keeley | Bubble Tron (Ler) | mocked | — | — |
-| Keeley | California Girls | mocked | 4 | 1 |
-| EarthQuaker | A/B Box | mocked | 2 | — |
-| EarthQuaker | Acapulco Gold | mocked | 2 | 1 |
-| EarthQuaker | Afterneath | mocked | 3 | 1 |
-| EarthQuaker | Afterneath V3 | mocked | 2 | 1 |
-| EarthQuaker | Afterneath V3 (Pastel Purple) | mocked | — | — |
-| EarthQuaker | Afterneath V3 (Raw) | mocked | — | — |
-| EarthQuaker | Aqueduct | mocked | 2 | 1 |
-| EarthQuaker | Arpanoid | mocked | 1 | 1 |
-| EarthQuaker | Arrows | mocked | 2 | 1 |
-| EarthQuaker | Arrows V2 | mocked | 3 | 1 |
-| EarthQuaker | Astral Destiny | mocked | 2 | 1 |
-| EarthQuaker | Aurelius | mocked | 2 | 1 |
-| EarthQuaker | Avalanche Run | mocked | 2 | 1 |
-| EarthQuaker | Avalanche Run V2 | mocked | 2 | 1 |
-| EarthQuaker | Avalanche Run V2 (Black) | mocked | — | — |
-| EarthQuaker | Avalanche Run V2 (Mint) | mocked | — | — |
-| EarthQuaker | Avalanche Run V2 (Purple Sparkle) | mocked | — | — |
-| EarthQuaker | Barrows Fuzz | mocked | 1 | 1 |
-| JHS | 1966 Series Bender | mocked | 2 | — |
-| JHS | 1966 Series Boost | mocked | — | — |
-| JHS | 1966 Series Fuzz | mocked | — | — |
-| JHS | 1966 Series Italy | mocked | 2 | — |
-| JHS | 3 Series Bit Crusher | mocked | 2 | 2 |
-| JHS | 3 Series Chorus | mocked | 2 | 2 |
-| JHS | 3 Series Compressor | mocked | 2 | 2 |
-| JHS | 3 Series Delay | mocked | 2 | 2 |
-| JHS | 3 Series Distortion | mocked | 2 | 2 |
-| JHS | 3 Series Flanger | mocked | 2 | 2 |
-| JHS | 3 Series Fuzz | mocked | 2 | 2 |
-| JHS | 3 Series Glitch Delay | mocked | 2 | 2 |
-| JHS | 3 Series Hall Reverb | mocked | 2 | 2 |
-| JHS | 3 Series Harmonic Trem | mocked | 2 | 2 |
-| JHS | 3 Series Octave Reverb | mocked | 2 | 2 |
-| JHS | 3 Series Oil Can Delay | mocked | 2 | 2 |
-| JHS | 3 Series Oil Can Delay (Black) | mocked | — | — |
-| JHS | 3 Series Overdrive | mocked | 2 | 2 |
-| TC Electronic | 2290 P Dynamic Digital Delay | mocked | 2 | 2 |
-| TC Electronic | 3rd Dimension Chorus | mocked | 2 | 2 |
-| TC Electronic | Afterglow Chorus | mocked | 2 | 2 |
-| TC Electronic | Alter Ego v2 Vintage Echo | mocked | — | — |
-| TC Electronic | Alter Ego x4 Vintage Echo | mocked | — | — |
-| TC Electronic | Ampworx 550 | mocked | 6 | 2 |
-| TC Electronic | Ampworx Combo Deluxe 65' | mocked | 5 | 2 |
-| TC Electronic | Ampworx DC30 | mocked | 5 | 2 |
-| TC Electronic | Ampworx Dual Wreck | mocked | 5 | 2 |
-| TC Electronic | Ampworx Jims 45 | mocked | 5 | 2 |
-| TC Electronic | Ampworx Jims 800 | mocked | 5 | 2 |
-| TC Electronic | Arena Reverb | mocked | — | — |
-| TC Electronic | Blood Moon Phaser | mocked | 2 | 2 |
-| TC Electronic | BodyRez Acoustic Pickup Enhancer | mocked | 5 | 2 |
-| TC Electronic | Bonafide Buffer | mocked | 5 | 2 |
-| TC Electronic | Brainwaves Pitch Shifter | mocked | 2 | 2 |
-| TC Electronic | Bucket Brigade Analog Delay | mocked | 2 | 2 |
-| TC Electronic | Choka Tremolo | mocked | 2 | 2 |
-| Mooer | 001 Gas Station | mocked | 3 | 2 |
-| Mooer | 002 UK Gold 900 | mocked | 4 | 2 |
-| Mooer | 003 Power Zone | mocked | 3 | 2 |
-| Mooer | 004 Day Tripper | mocked | 4 | 2 |
-| Mooer | 005 Brown Sound 3 | mocked | 3 | 2 |
-| Mooer | 006 US Classic Deluxe | mocked | 3 | 2 |
-| Mooer | 007 Regal Tone | mocked | 3 | 2 |
-| Mooer | 008 Cali-MK3 | mocked | 3 | 2 |
-| Mooer | 009 Black Knight | mocked | 3 | 2 |
-| Mooer | 010 Two Stones | mocked | 3 | 2 |
-| Mooer | 011 Cali-Dual | mocked | 3 | 2 |
-| Mooer | 012 US Gold 100 | mocked | 4 | 2 |
-| Mooer | 013 Matchbox | mocked | 3 | 2 |
-| Mooer | 014 Taxidea Taxus | mocked | 3 | 2 |
-| Mooer | 015 Brown Sound | mocked | 3 | 2 |
-| Mooer | 016 Phoenix Digital | mocked | 3 | 2 |
-| Mooer | 017 Cali MKIV | mocked | 4 | 2 |
-| Mooer | 018 Custom 100 | mocked | 2 | 1 |
-| MXR | A/B Box | mocked | 6 | 3 |
-| MXR | Analog Chorus | mocked | 2 | 2 |
-| MXR | Bass Chorus Deluxe | mocked | 2 | 2 |
-| MXR | Bass Compressor | mocked | 2 | 2 |
-| MXR | Bass DI+ | mocked | 5 | 2 |
-| MXR | Bass Distortion | mocked | 2 | 2 |
-| MXR | Bass Envelope Filter | mocked | 2 | 2 |
-| MXR | Bass Fuzz Deluxe | mocked | 2 | 2 |
-| MXR | Bass Octave Deluxe | mocked | 2 | 2 |
-| MXR | Bass Overdrive | mocked | 2 | 2 |
-| MXR | Bass Preamp | mocked | 2 | 2 |
-| MXR | Bass Synth | mocked | 2 | 2 |
-| MXR | Blue Box Fuzz | mocked | 2 | 2 |
-| MXR | Booster Mini | mocked | 2 | 2 |
-| MXR | CAE Boost/Line Driver | mocked | 2 | 2 |
-| MXR | CAE Boost/Overdrive | mocked | 2 | 2 |
-| MXR | CAE Buffer | mocked | 5 | 2 |
-| MXR | CAE Power System | mocked | 6 | 3 |
-| Joyo | D-Seed | mocked | 1 | 1 |
-| Joyo | JF-01 Vintage Overdrive | mocked | 1 | 1 |
-| Joyo | JF-02 Ultimate Drive | mocked | 1 | 1 |
-| Joyo | JF-03 Crunch Distortion | mocked | 1 | 1 |
-| Joyo | JF-04 High Gain Distortion | mocked | 1 | 1 |
-| Joyo | JF-05 Classic Chorus | mocked | 1 | 1 |
-| Joyo | JF-06 Vintage Phase | mocked | 2 | 1 |
-| Joyo | JF-07 Classic Flanger | mocked | 1 | 1 |
-| Joyo | JF-08 Digital Delay | mocked | 1 | 1 |
-| Joyo | JF-09 Tremolo | mocked | 1 | 1 |
-| Joyo | JF-10 Dynamic Compressor | mocked | 1 | 1 |
-| Joyo | JF-11 6 Band EQ | mocked | 1 | 1 |
-| Joyo | JF-12 Voodoo Octave | mocked | 1 | 1 |
-| Joyo | JF-13 AC Tone | mocked | 3 | 2 |
-| Joyo | JF-14 American Sound | mocked | 3 | 2 |
-| Joyo | JF-15 California Sound | mocked | 3 | 2 |
-| Joyo | JF-16 British Sound | mocked | 3 | 2 |
-| Joyo | JF-17 Extreme Metal | mocked | 2 | 2 |
-| Big Joe | PB-109 Power Box Li2 | mocked | 1 | 1 |
-| Big Joe | Power Box ISO4 | mocked | 1 | 1 |
-| Behringer | Powerplay P1 | mocked | 6 | 6 |
-| Effects Bakery | Power Supply Hoden Sentai Donuts | mocked | 2 | 2 |
+## Historical note
+
+The old appendix (per-pedal mocked/cleared status for the 207-item seed) is
+superseded by this plan and remains in git history. The machine-readable source
+of truth is the catalog data + the P5 registry.

@@ -46,7 +46,7 @@ interactive behind/between the chrome.
   (labelled controls, 44px touch targets, `role=status`/`aria-live` only where
   it helps — no toast pattern, N8).
 - **Zero new deps.** Do not add a tour library or any package.
-- Do not build P5-06 help content, onboarding tours, or P3 save/share.
+- Do not build P5-07 help content, onboarding tours, or P3 save/share.
 - No external catalog provenance in UI (ADR-003).
 
 ## Steps
