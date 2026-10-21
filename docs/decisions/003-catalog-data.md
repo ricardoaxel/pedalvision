@@ -109,7 +109,7 @@ This **supersedes** the permission-first / hotlink-only rules for the P5 catalog
 
 ## Pedalboard catalog (P5, first-class)
 
-Pedalboards are part of the P5 catalog, not a side list. The discovery list has **263 boards / 38 brands**; the first 2,000 catalog items include **~150 boards** alongside ~1,850 pedals.
+Pedalboards are part of the P5 catalog, not a side list. The discovery list has **263 boards / 38 brands**; the first 2,000 catalog items include **150 boards** alongside ~1,850 pedals.
 
 - **Mandatory:** id, brand, name, `widthCm`/`heightCm` (footprint width × depth), image, source.
 - **Optional raw metadata:** thickness/max height, weight, material, board type (flat/angled/tiered/folding), tiers/tier heights, surface, bag/case, power-supply mount, cable routing/clearance, handles/feet/mounting, max pedal height, lifecycle, videos, sources, confidence.

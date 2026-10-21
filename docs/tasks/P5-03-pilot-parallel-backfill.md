@@ -4,7 +4,7 @@
 
 ## Goal
 
-Prove the full pipeline on one pedal and one **pedalboard**, then on two small pedal brands + one board batch in parallel, then on a split big brand (BOSS), then run continuous waves of up to 3 batches in flight. Every batch is data + hosted images + a PR with QA evidence. The first 2,000 catalog items include **~150 boards**. Stop at the **Tier A target** (~1,850 pedals + 150 boards); **2,000 hosted pedals is a safety cap**, and P5-05 only triggers if the owner chooses to exceed Tier A.
+Prove the full pipeline on one pedal and one **pedalboard**, then on two small pedal brands + one board batch in parallel, then on a split big brand (BOSS), then run continuous waves of up to 3 batches in flight. Every batch is data + hosted images + a PR with QA evidence. The first 2,000 catalog items include **150 boards**. Stop at the **Tier A target** (~1,850 pedals + 150 boards); **2,000 hosted pedals is a safety cap**, and P5-05 only triggers if the owner chooses to exceed Tier A.
 
 ## Read first (context pack)
 
@@ -34,8 +34,8 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 3. **Board pilot:** Pedaltrain Classic 2 (or Temple Audio Duo 24) — board facts, hosted top-down image, contact sheet, Playwright board picker/placement.
 4. **Small parallel test:** Meris (15) + Red Panda (14) + one board batch (Pedaltrain), one PR each; verify filters, image load, canvas/board placement.
 5. **Big-brand split test:** BOSS into ~5–6 batches; run 3 in parallel; one PR each; verify merge/build/QA and no conflicts.
-6. **Scale:** continuous queue, 3 batches in flight, **mixing pedal and board batches**; refill as each finishes; priority brands; update the registry after each merge. First 2,000 catalog items include ~150 boards.
-7. **Stop condition:** complete the Tier A target (~1,850 pedals + ~150 boards). If pedals reach 1,850 before boards reach 150, pause pedal batches and finish boards. Hard safety cap: **2,000 hosted pedals**; pedal waves stop there, boards continue to 150, then report and hand off to **P5-04**. P5-05 only if the owner chooses to exceed Tier A.
+6. **Scale:** continuous queue, 3 batches in flight, **mixing pedal and board batches**; refill as each finishes; priority brands; update the registry after each merge. First 2,000 catalog items include 150 boards.
+7. **Stop condition:** complete the Tier A target (~1,850 pedals + 150 boards). If pedals reach 1,850 before boards reach 150, pause pedal batches and finish boards. Hard safety cap: **2,000 hosted pedals**; pedal waves stop there, boards continue to 150, then report and hand off to **P5-04**. P5-05 only if the owner chooses to exceed Tier A.
 
 ## Acceptance (executable)
 
@@ -43,7 +43,7 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 - Board pilot (Pedaltrain Classic 2 or Temple Duo 24) approved by the owner; board facts + top-down image + Playwright. The final Tier A board batch may be a smaller partial batch (even 1 board).
 - Meris + Red Panda + one board batch PRs merged with green checks (catalog validate + Playwright).
 - Three BOSS batch PRs merged without merge conflicts; PRs contain no mapped/runtime edits; CI temp build validates; the uncommitted app-workspace runtime feeds Playwright; post-merge build stable; count/coverage report.
-- First 2,000 catalog items = ~1,850 pedals + ~150 boards; board images count toward the separate board budget.
+- First 2,000 catalog items = ~1,850 pedals + 150 boards; board images count toward the separate board budget.
 - Absolute minimum (≥200 pedals / ≥10 brands / ≥10 boards) and Tier A target are reported separately; launching below Tier A needs owner acceptance.
 - Each PR contains: data, images, contact sheet, coverage/reject report, Playwright evidence.
 - `catalog:status` shows the in-flight batches; pause/stop verified on at least one real batch.

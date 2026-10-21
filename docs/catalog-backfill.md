@@ -8,7 +8,7 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 
 - Ship a clean catalog with **real facts + hosted, quality-gated images**.
 - Cover **Tier A** (top ~20 pedal brands + top board brands, **~1,850 pedals +
-  ~150 boards = ~2,000 catalog items**) as the launch **target**; the long tail
+  150 boards = ~2,000 catalog items**) as the launch **target**; the long tail
   continues after launch.
 - **Absolute minimum launch bar:** ≥200 pedals / ≥10 brands / ≥10 boards. Below
   the Tier A target, launch requires explicit owner acceptance.
@@ -220,7 +220,7 @@ Two tracks, one catalog:
 - Normalize brand names and collapse size variants only where the family is the
   same base model; keep real size/version entries as their own products.
 
-**First 2,000 catalog items:** ~**1,850 pedals + ~150 boards**. The 2,000
+**First 2,000 catalog items:** ~**1,850 pedals + 150 boards**. The 2,000
 hosted-pedal cap still applies to pedals; board images are a small separate
 budget (~300 files / ~20 MB at Tier A) and stay inside the same Pages/GitHub
 safety margin.
@@ -347,7 +347,7 @@ public/pedal-assets/**                              # final assets
    one PR each, 3 in flight.
 6. **Big-brand split test:** BOSS, 3 batch PRs in parallel; verify build/merge.
 7. **Scale:** 3 batches in flight continuously, mixing pedals and boards;
-   refill as each finishes. First 2,000 catalog items include ~150 boards.
+   refill as each finishes. First 2,000 catalog items include 150 boards.
 8. **At the Tier A target:** stop and run P5-04. Only if the owner chooses to exceed Tier A: the 2,000 hosted-pedal cap applies, then run P5-05 before scaling.
 9. **P5-04:** final QA, provenance, launch gate.
 

@@ -19,7 +19,7 @@ Research and deliver one catalog batch (raw records + hosted assets) for `<brand
 - **Raw records + assets only** in the PR; CI runs `catalog:build` to a temp dir **and an uncommitted app-workspace runtime** for Playwright; the post-merge build commits mapped/runtime.
 - **Optional fields only if found in the same base research** — no extra searches/tabs/tokens for serials, videos, artist, price, jacks, MIDI/USB, board extras.
 - One batch = one branch/worktree = **one PR**. Max 3 batch sessions in flight.
-- Board batches: exactly 150-board Tier A cap; board images count against the separate board budget.
+- Tier A board cap: exactly **150 total**; the final partial batch may be smaller. Board images count against the separate board budget.
 - 2,000 hosted-pedal safety cap; stop at the Tier A target unless the owner says otherwise.
 - No edits to feature code, generated mapped/runtime catalog, or other brands' batches.
 - Status every 15 min; per-item 12 min initial; per-batch 4 h; checkpoint after every item.

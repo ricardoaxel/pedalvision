@@ -34,7 +34,7 @@ Validate the full launch-scope catalog, finish provenance/confidence records, ru
 
 - All P5-04 checks green; no placeholder/mock in the launch scope.
 - **Absolute minimum:** ≥200 pedals / ≥10 brands / ≥10 boards, hosted images + sources.
-- **Tier A target:** ~1,850 pedals + ~150 boards (2,000 catalog items) verified; if not reached, the owner explicitly accepts the reduced launch scope.
+- **Tier A target:** ~1,850 pedals + 150 boards (2,000 catalog items) verified; if not reached, the owner explicitly accepts the reduced launch scope.
 - Dimension spot-check documented (≥10).
 - `pnpm audit` clean; iOS export + real-device touch pass recorded.
 - Attribution/takedown live.

@@ -64,7 +64,7 @@ P5 turns the 207-item seed into the real catalog and prepares launch. Full plan:
 |---|---|---|
 | P5-01 Policy, data contract & master inventory | Public-asset policy, attribution/takedown, pedal + **pedalboard** schema, 8,557 pedals + 263 boards inventory, brand tiers | **Yes** — approve the public-asset policy + attribution/takedown page (owner accepts responsibility) |
 | P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap | No |
-| P5-03 Pilot + parallel backfill | Choka pilot → **board pilot** → Meris + Red Panda + board batch → BOSS split test → waves; first 2,000 items include ~150 boards | **Yes** — review the pedal + board pilots and first brand PRs |
+| P5-03 Pilot + parallel backfill | Choka pilot → **board pilot** → Meris + Red Panda + board batch → BOSS split test → waves; first 2,000 items include 150 boards | **Yes** — review the pedal + board pilots and first brand PRs |
 | P5-04 Final QA, provenance & launch gate | Full validation, spot-checks, iOS, launch sign-off | **Yes** — launch approval |
 | P5-05 Image hosting at scale | Deferred spike only if the owner chooses to exceed Tier A / 2,000 hosted pedals | **Yes** — choose the hosting option only when triggered |
 | P5-06 Appium · P5-07 Help · P5-08 Observability | Proposed/unscheduled | Later |

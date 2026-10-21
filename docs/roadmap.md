@@ -1,6 +1,6 @@
 # Roadmap
 
-Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases are one-liners — expand them into task files when scheduled (see decisions/004).
+Task files live in `docs/tasks/`. P0–P5 have detailed task files; proposed/unscheduled tasks are one-liners — expand them when scheduled (see decisions/004).
 
 ## P0 — Foundation
 | Task | Title | Status |
@@ -62,10 +62,10 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 
 ## P5 — Catalog completion (pre-launch) (plan approved 2026-10-21; docs restructure in review — PR #32; P5-01 next after merge)
 > Runs **alongside P4-03 and before launch**. The full data plan lives in **`docs/catalog-backfill.md`**; the launch bar is ADR-003's exit criteria (updated 2026-10-21 for self-hosted public assets + attribution/takedown).
-> **Seed:** 207 pedals / 13 brands / 10 boards; 0 jacks/power; mocked/url images. **Inventory target:** 8,557 pedals / 779 brands + **263 boards / 38 brands** (discovery lists + other sources). **First 2,000 catalog items = ~1,850 pedals + ~150 boards** — boards are first-class.
+> **Seed:** 207 pedals / 13 brands / 10 boards; 0 jacks/power; mocked/url images. **Inventory target:** 8,557 pedals / 779 brands + **263 boards / 38 brands** (discovery lists + other sources). **First 2,000 catalog items = ~1,850 pedals + 150 boards** — boards are first-class.
 - **P5-01 Catalog policy, data contract & master inventory — next** (can start in parallel with P4-03). Owner-approved public-asset policy, attribution/takedown page, `public-asset` source tag + data-contract schema (`usage`, `color`, `notes`, `year`, `status`, `confidence`, `lastVerified`, model-level serial ranges, videos, artist association (only if already found); optional `jacks[]`/jack edges incl. edge-only approximate counts), **pedalboard contract** (footprint, thickness/max height, weight, material/type/tiers, bag/case, power mount, cable routing, max pedal height), master inventory + dedupe + brand tiers, **capture-once raw research archive** (connectors/TS-TRS-XLR-MIDI-DIN-TRS-MIDI-USB, audio I/O, control/CV, power/supply, circuit/bypass, physical) so later fields never require re-research.
 - **P5-02 Catalog quality pipeline & control plane.** Batch-file layout for **pedals and boards** (`data/catalog/research/{pedals,boards}/<brand>/<batch>.json` + mapped output), `catalog:build`/`catalog:validate`, image analyzer/processor scripts (board aspect = width×depth), runner + `catalog:status`/pause/stop/resume, checkpoints, 2,000-hosted-pedal cap + board image budget, agent templates.
-- **P5-03 Pilot + parallel brand backfill.** Pedal pilot TC Choka → **board pilot Pedaltrain Classic 2/Temple Duo 24** → Meris + Red Panda + one board batch → BOSS split batch test → continuous waves (max 3 in flight, mixing pedals/boards); one PR per batch; per-PR Playwright/contact-sheet QA. **First 2,000 items include ~150 boards.**
+- **P5-03 Pilot + parallel brand backfill.** Pedal pilot TC Choka → **board pilot Pedaltrain Classic 2/Temple Duo 24** → Meris + Red Panda + one board batch → BOSS split batch test → continuous waves (max 3 in flight, mixing pedals/boards); one PR per batch; per-PR Playwright/contact-sheet QA. **First 2,000 items include 150 boards.**
 - **P5-04 Final QA, provenance & launch gate.** Full validation (pedals + boards), dimension spot-check, provenance/confidence, A1–A5, `pnpm audit`, iOS export, launch sign-off.
 - **P5-05 Image hosting at scale — deferred spike** (trigger: owner chooses to exceed the Tier A target / 2,000 hosted pedals / ~4,000 images / ~300 MB). Evaluate R2 public bucket (leading), Pages Pro, separate Pages asset project, Backblaze B2, Bunny CDN; ADR-002 update + cost table + migration plan. No migration without owner approval.
 - **P5-06 Full-integration device E2E (Appium, local) — PROPOSED (not scheduled).** Old P5-05. At the final integration stage, a small Appium smoke against the local iOS Simulator / real iPhone (XCUITest) / real Android. See `docs/decisions/007-mobile-touch-testing.md` + `docs/tasks/P5-06-appium-local-device-e2e.md`.
@@ -77,7 +77,7 @@ Accounts (Google OAuth) · cloud saves · community gear submissions + moderatio
 
 ## Launch gate (v1 public) — required minimum; Tier A target is owner-waivable
 - [ ] **Absolute minimum:** ≥200 pedals / ≥10 brands / ≥10 boards, with no placeholder/mock images; every shipped image is a hosted static asset with a per-item source URL and the attribution/takedown policy live (decisions/003 exit criteria, updated 2026-10-21) + dimension spot-check
-- [ ] **Tier A target:** ~1,850 pedals + ~150 boards (~2,000 catalog items) verified; launching below this needs explicit owner acceptance
+- [ ] **Tier A target:** ~1,850 pedals + 150 boards (~2,000 catalog items) verified; launching below this needs explicit owner acceptance
 - [ ] A1–A5 acceptance criteria green on production
 - [ ] `pnpm audit` clean; all dependencies < 6 months old
 - [ ] iOS Safari export verified on a real device
