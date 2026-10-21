@@ -105,6 +105,8 @@ export function StorageNotice() {
 					boards: scene.boards,
 					items: scene.items,
 					customPedals: scene.customPedals,
+					endpoints: scene.endpoints,
+					cables: scene.cables,
 				},
 				now: new Date(),
 			});

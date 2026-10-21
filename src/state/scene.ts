@@ -12,6 +12,7 @@ import {
 	addItemRefusal,
 	boardAddRefusal,
 	duplicateRefusal,
+	graphAddRefusal,
 } from "../lib/capacity";
 import {
 	boardToWorld,
@@ -101,6 +102,42 @@ export interface CustomPedal {
 
 /** The user-editable part of a custom pedal (the store assigns `refId`). */
 export type CustomPedalDefinition = Omit<CustomPedal, "refId">;
+
+/**
+ * A cable termination (design.md §Data model, F12/P4-01). Item ends name the
+ * resolved item's jack by its **decimal index** into that item's `jacks` array
+ * (catalog definition first, then the scene's inline custom definition). That
+ * index is the only stable identifier the existing `{ kind, edge, pos }` jack
+ * contract provides — jacks carry no id, and duplicate kinds are allowed.
+ * Endpoint ends point at a scene `Endpoint` (amp / instrument).
+ */
+export type CableEnd =
+	| { itemUid: string; jack: string }
+	| { endpointUid: string };
+
+/**
+ * A cable between two terminations (design.md §Data model, F12/P4-01). Length is
+ * computed at render time, never stored. Cables render above all pedals
+ * (`CableLayer`) and are part of the persisted scene graph.
+ */
+export interface Cable {
+	uid: string;
+	from: CableEnd;
+	to: CableEnd;
+	/** Optional user-chosen color (P4-02 UI); absent = theme default. */
+	color?: string;
+}
+
+/**
+ * An amp / instrument cable termination on the canvas (design.md §Data model,
+ * F12). Stored in **world cm** — loose, not attached to a board.
+ */
+export interface Endpoint {
+	uid: string;
+	kind: "amp" | "instrument";
+	x: number;
+	y: number;
+}
 
 /**
  * Z-order operation for an item within its container (F5/P1-06). `forward`/
@@ -281,6 +318,43 @@ export function pruneCustomPedals(
 ): CustomPedal[] {
 	const referenced = new Set(items.map((item) => item.refId));
 	return customPedals.filter((custom) => referenced.has(custom.refId));
+}
+
+/** Does a cable end reference `itemUid` (regardless of its jack index)? */
+export function cableReferencesItem(cable: Cable, itemUid: string): boolean {
+	return (
+		("itemUid" in cable.from && cable.from.itemUid === itemUid) ||
+		("itemUid" in cable.to && cable.to.itemUid === itemUid)
+	);
+}
+
+/** Does a cable end reference `endpointUid`? */
+export function cableReferencesEndpoint(
+	cable: Cable,
+	endpointUid: string,
+): boolean {
+	return (
+		("endpointUid" in cable.from && cable.from.endpointUid === endpointUid) ||
+		("endpointUid" in cable.to && cable.to.endpointUid === endpointUid)
+	);
+}
+
+/**
+ * Is this cable end resolvable against the scene graph? Item ends must name an
+ * existing placed item; endpoint ends must name an existing endpoint. Jack
+ * validity is deliberately NOT checked here: a custom part's jacks can be edited
+ * after a cable exists and the anchor resolver simply returns null (P4-02
+ * renders/reconciles that); normalisation's contract is about gone objects.
+ */
+export function cableEndExists(
+	end: CableEnd,
+	items: readonly PlacedItem[],
+	endpoints: readonly Endpoint[],
+): boolean {
+	if ("endpointUid" in end) {
+		return endpoints.some((endpoint) => endpoint.uid === end.endpointUid);
+	}
+	return items.some((item) => item.uid === end.itemUid);
 }
 
 /**
@@ -544,6 +618,27 @@ interface SceneStore {
 	 */
 	customPedals: CustomPedal[];
 	/**
+	 * Amp / instrument cable terminations (F12/P4-01), in world cm. Endpoints are
+	 * persisted with the scene and travel inline in the document/backup.
+	 */
+	endpoints: Endpoint[];
+	/** Cables between item jacks and/or endpoints (F12/P4-01). */
+	cables: Cable[];
+	/**
+	 * Place an amp/instrument endpoint at `posCm` (world cm). Returns its uid, or
+	 * null when the shared cable+endpoint graph cap refuses the add (P3-06).
+	 */
+	addEndpoint: (kind: Endpoint["kind"], posCm: Point) => string | null;
+	moveEndpoint: (uid: string, posCm: Point) => void;
+	/** Remove an endpoint and every cable that terminates on it. */
+	removeEndpoint: (uid: string) => void;
+	/**
+	 * Add a cable between two resolved terminations, returning its uid — or null
+	 * when the graph cap refuses it or an end names a gone item/endpoint.
+	 */
+	addCable: (from: CableEnd, to: CableEnd) => string | null;
+	removeCable: (uid: string) => void;
+	/**
 	 * Register a user-defined pedal/supply (assigning a scene-local `refId`) and
 	 * return that id, which `addItem` can then place like a catalog pedal.
 	 * Returns null in read-only share mode.
@@ -645,6 +740,58 @@ export const useScene = create<SceneStore>((set, get) => ({
 	boards: [],
 	items: [],
 	customPedals: [],
+	endpoints: [],
+	cables: [],
+	addEndpoint: (kind, posCm) => {
+		if (isReadOnly()) return null;
+		if (graphAddRefusal(get())) return null;
+		const uid = crypto.randomUUID();
+		set((state) => ({
+			endpoints: [...state.endpoints, { uid, kind, x: posCm.x, y: posCm.y }],
+		}));
+		return uid;
+	},
+	moveEndpoint: (uid, posCm) => {
+		if (isReadOnly()) return;
+		set((state) => ({
+			endpoints: state.endpoints.map((endpoint) =>
+				endpoint.uid === uid
+					? { ...endpoint, x: posCm.x, y: posCm.y }
+					: endpoint,
+			),
+		}));
+	},
+	removeEndpoint: (uid) => {
+		if (isReadOnly()) return;
+		set((state) => {
+			if (!state.endpoints.some((endpoint) => endpoint.uid === uid)) {
+				return state;
+			}
+			return {
+				endpoints: state.endpoints.filter((endpoint) => endpoint.uid !== uid),
+				cables: state.cables.filter(
+					(cable) => !cableReferencesEndpoint(cable, uid),
+				),
+			};
+		});
+	},
+	addCable: (from, to) => {
+		if (isReadOnly()) return null;
+		const state = get();
+		if (!cableEndExists(from, state.items, state.endpoints)) return null;
+		if (!cableEndExists(to, state.items, state.endpoints)) return null;
+		// Cables and endpoints share the 150/300 graph budget (P3-06).
+		if (graphAddRefusal(state)) return null;
+		const uid = crypto.randomUUID();
+		set((current) => ({ cables: [...current.cables, { uid, from, to }] }));
+		return uid;
+	},
+	removeCable: (uid) => {
+		if (isReadOnly()) return;
+		set((state) => ({
+			cables: state.cables.filter((cable) => cable.uid !== uid),
+		}));
+	},
 	addCustomPedal: (definition) => {
 		if (isReadOnly()) return null;
 		const refId = `custom-${crypto.randomUUID()}`;
@@ -716,10 +863,14 @@ export const useScene = create<SceneStore>((set, get) => ({
 				(candidate) => candidate.uid !== uid,
 			);
 			// Close the z gap the removal leaves behind (keep it dense per
-			// container) and drop any custom definition left unreferenced.
+			// container), drop any custom definition left unreferenced, and drop
+			// every cable that terminated on the removed item (P4-01).
 			return {
 				items: normalizeContainerZ(remaining, item.boardUid),
 				customPedals: pruneCustomPedals(state.customPedals, remaining),
+				cables: state.cables.filter(
+					(cable) => !cableReferencesItem(cable, uid),
+				),
 			};
 		});
 	},

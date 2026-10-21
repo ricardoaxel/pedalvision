@@ -287,6 +287,8 @@ export function encodeShareLink(
 	name: string,
 	snapshot: SceneSnapshot,
 ): ShareEncodeResult {
+	// P4-01: cables/endpoints are saved but deliberately not shared yet (the
+	// P4-02 version-policy decision). They are omitted from this payload.
 	const payload: SharePayload = {
 		version: SHARE_VERSION,
 		name: normalizeShareName(name),
@@ -449,7 +451,17 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 	);
 	// Orphan items, dense z and unreferenced custom definitions: the same
 	// normalization every stored document gets (sceneDocument.ts).
-	const snapshot = normalizeSceneContent({ boards, items, customPedals });
+	// P4-01 boundary (owner decision 2026-10-21): the share payload stays the
+	// P3 v1 `{ boards, items, customPedals }` shape, so a link carries no
+	// cables/endpoints yet. P4-02 adds them and makes the explicit additive-v1
+	// vs v2 version decision.
+	const snapshot = normalizeSceneContent({
+		boards,
+		items,
+		customPedals,
+		endpoints: [],
+		cables: [],
+	});
 	return {
 		ok: true,
 		name: normalizeShareName(parsed.data.name),

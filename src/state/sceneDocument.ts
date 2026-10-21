@@ -1,8 +1,15 @@
 import { EFFECT_TYPES, JACK_EDGES, JACK_KINDS } from "../catalog/schema";
 import { isBoardTexture } from "../lib/boardTexture";
 import { MAX_BOARD_DIMENSION_CM } from "../lib/customBoard";
-import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
-import { normalizeAllZ, pruneCustomPedals } from "./scene";
+import type {
+	Cable,
+	CableEnd,
+	CustomPedal,
+	Endpoint,
+	PlacedBoard,
+	PlacedItem,
+} from "./scene";
+import { cableEndExists, normalizeAllZ, pruneCustomPedals } from "./scene";
 
 /**
  * The v1 scene document stored in IndexedDB (design.md §Data model /
@@ -17,6 +24,8 @@ export interface SceneDocument {
 	boards: PlacedBoard[];
 	items: PlacedItem[];
 	customPedals: CustomPedal[];
+	endpoints: Endpoint[];
+	cables: Cable[];
 	updatedAt: string;
 }
 
@@ -25,6 +34,8 @@ export interface SceneSnapshot {
 	boards: PlacedBoard[];
 	items: PlacedItem[];
 	customPedals: CustomPedal[];
+	endpoints: Endpoint[];
+	cables: Cable[];
 }
 
 /** What a document needs when it is created/replaced from the live store. */
@@ -47,6 +58,8 @@ export function createSceneDocument(
 		boards: source.boards,
 		items: source.items,
 		customPedals: source.customPedals,
+		endpoints: source.endpoints,
+		cables: source.cables,
 		updatedAt: source.updatedAt,
 	};
 }
@@ -156,6 +169,42 @@ export function isCustomPedal(value: unknown): value is CustomPedal {
 	);
 }
 
+/** Validate a cable termination (exactly one of item+jack / endpoint). */
+function isCableEnd(value: unknown): value is CableEnd {
+	if (!isRecord(value)) return false;
+	const endpoint =
+		typeof value.endpointUid === "string" && value.endpointUid.length > 0;
+	const item =
+		typeof value.itemUid === "string" &&
+		value.itemUid.length > 0 &&
+		typeof value.jack === "string";
+	return endpoint !== item;
+}
+
+/** Validate an amp/instrument endpoint (world cm). */
+export function isEndpoint(value: unknown): value is Endpoint {
+	return (
+		isRecord(value) &&
+		typeof value.uid === "string" &&
+		value.uid.length > 0 &&
+		(value.kind === "amp" || value.kind === "instrument") &&
+		isFiniteNumber(value.x) &&
+		isFiniteNumber(value.y)
+	);
+}
+
+/** Validate a cable's structure (its references are checked on normalise). */
+export function isCable(value: unknown): value is Cable {
+	return (
+		isRecord(value) &&
+		typeof value.uid === "string" &&
+		value.uid.length > 0 &&
+		isCableEnd(value.from) &&
+		isCableEnd(value.to) &&
+		(value.color === undefined || typeof value.color === "string")
+	);
+}
+
 /**
  * Parse a stored document (IDB returns an already-structured object; strings
  * are accepted for tests/legacy callers). Returns null for anything corrupt or
@@ -176,9 +225,16 @@ export function parseSceneDocument(raw: unknown): SceneDocument | null {
 	if (typeof value.name !== "string") return null;
 	if (typeof value.updatedAt !== "string") return null;
 	if (!Array.isArray(value.boards) || !Array.isArray(value.items)) return null;
-	// `customPedals` is additive — older documents without it are valid.
+	// `customPedals`, `endpoints` and `cables` are additive — older documents
+	// without them stay valid (the additive v1 rule).
 	const customPedals = Array.isArray(value.customPedals)
 		? value.customPedals.filter(isCustomPedal)
+		: [];
+	const endpoints = Array.isArray(value.endpoints)
+		? value.endpoints.filter(isEndpoint)
+		: [];
+	const cables = Array.isArray(value.cables)
+		? value.cables.filter(isCable)
 		: [];
 	return {
 		id: value.id,
@@ -187,6 +243,8 @@ export function parseSceneDocument(raw: unknown): SceneDocument | null {
 		boards: value.boards.filter(isPlacedBoard),
 		items: value.items.filter(isPlacedItem),
 		customPedals,
+		endpoints,
+		cables,
 		updatedAt: value.updatedAt,
 	};
 }
@@ -195,7 +253,9 @@ export function parseSceneDocument(raw: unknown): SceneDocument | null {
  * Normalise a document's scene content before it reaches the store: items whose
  * owning board is gone are dropped (their board-relative position can't be
  * resolved, and they would render in neither layer), every container's z is
- * re-normalised dense, and custom definitions left unreferenced are pruned.
+ * re-normalised dense, custom definitions left unreferenced are pruned, cables
+ * with a gone item/endpoint are dropped, and endpoints no surviving cable
+ * references are dropped (a dangling endpoint can't render a connection).
  */
 export function normalizeSceneContent(snapshot: SceneSnapshot): SceneSnapshot {
 	const boardIds = new Set(snapshot.boards.map((board) => board.uid));
@@ -204,10 +264,25 @@ export function normalizeSceneContent(snapshot: SceneSnapshot): SceneSnapshot {
 			(item) => item.boardUid === null || boardIds.has(item.boardUid),
 		),
 	);
+	const cables = snapshot.cables.filter(
+		(cable) =>
+			cableEndExists(cable.from, items, snapshot.endpoints) &&
+			cableEndExists(cable.to, items, snapshot.endpoints),
+	);
+	const referencedEndpoints = new Set<string>();
+	for (const cable of cables) {
+		for (const end of [cable.from, cable.to]) {
+			if ("endpointUid" in end) referencedEndpoints.add(end.endpointUid);
+		}
+	}
 	return {
 		boards: snapshot.boards,
 		items,
 		customPedals: pruneCustomPedals(snapshot.customPedals, items),
+		endpoints: snapshot.endpoints.filter((endpoint) =>
+			referencedEndpoints.has(endpoint.uid),
+		),
+		cables,
 	};
 }
 
@@ -217,5 +292,7 @@ export function sceneFromDocument(document: SceneDocument): SceneSnapshot {
 		boards: document.boards,
 		items: document.items,
 		customPedals: document.customPedals,
+		endpoints: document.endpoints,
+		cables: document.cables,
 	});
 }

@@ -38,6 +38,8 @@ export function serializeScene(state: SceneSnapshot): string {
 		boards: state.boards,
 		items: state.items,
 		customPedals: state.customPedals,
+		endpoints: state.endpoints,
+		cables: state.cables,
 	});
 }
 
@@ -60,10 +62,13 @@ export function parseSceneSnapshot(raw: string | null): SceneSnapshot | null {
 	const customPedals = Array.isArray(parsed.customPedals)
 		? parsed.customPedals.filter(isCustomPedal)
 		: [];
+	// The legacy mirror predates cables/endpoints (P4-01) — additive arrays.
 	return {
 		boards: parsed.boards.filter(isPlacedBoard),
 		items: parsed.items.filter(isPlacedItem),
 		customPedals,
+		endpoints: [],
+		cables: [],
 	};
 }
 

@@ -41,11 +41,22 @@ export function SharePanel({ onClose, onAddBoard }: SharePanelProps) {
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
+	const endpoints = useScene((state) => state.endpoints);
+	const cables = useScene((state) => state.cables);
 	const empty = boards.length === 0 && items.length === 0;
 
+	// P4-01: the full snapshot is passed (the codec requires every key), but the
+	// P3 v1 share payload deliberately omits cables/endpoints until P4-02.
 	const result = useMemo(
-		() => buildShareLink(sceneName, { boards, items, customPedals }),
-		[sceneName, boards, items, customPedals],
+		() =>
+			buildShareLink(sceneName, {
+				boards,
+				items,
+				customPedals,
+				endpoints,
+				cables,
+			}),
+		[sceneName, boards, items, customPedals, endpoints, cables],
 	);
 	const url = result.ok ? result.url : null;
 	const changedSinceCopy =

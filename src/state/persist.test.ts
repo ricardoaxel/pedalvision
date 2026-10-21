@@ -43,6 +43,8 @@ const snapshot = {
 		},
 	],
 	customPedals: [],
+	endpoints: [],
+	cables: [],
 };
 
 describe("legacy single-scene mirror", () => {
@@ -70,6 +72,8 @@ describe("legacy single-scene mirror", () => {
 			boards: [snapshot.boards[0]],
 			items: [snapshot.items[0]],
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		});
 	});
 
