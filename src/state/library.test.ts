@@ -109,6 +109,8 @@ function documentOf(
 			: [],
 		items: [],
 		customPedals: [],
+		endpoints: [],
+		cables: [],
 		updatedAt,
 	};
 }
@@ -161,7 +163,13 @@ function setup(
 
 describe("scene library", () => {
 	beforeEach(() => {
-		useScene.setState({ boards: [], items: [], customPedals: [] });
+		useScene.setState({
+			boards: [],
+			items: [],
+			customPedals: [],
+			endpoints: [],
+			cables: [],
+		});
 		useSelection.setState({ selection: null, hoveredItemUid: null });
 		useReadOnly.setState({ readOnly: false });
 	});
@@ -250,6 +258,8 @@ describe("scene library", () => {
 					},
 				],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			}),
 		});
 		const { runtime, store } = setup({
@@ -270,6 +280,8 @@ describe("scene library", () => {
 					},
 				],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			},
 		});
 		await runtime.boot();
@@ -467,6 +479,8 @@ describe("scene library", () => {
 			],
 			items: [],
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		};
 		const { runtime, store } = setup({ repo, storage, legacy });
 		await runtime.boot();
@@ -496,6 +510,8 @@ describe("scene library", () => {
 			],
 			items: [],
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		};
 		const storage = fakeStorage({
 			[LEGACY_SCENE_KEY]: JSON.stringify({ version: 1, ...legacy }),
@@ -734,6 +750,8 @@ describe("scene library", () => {
 					},
 				],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			},
 			"Shared board",
 		);
@@ -776,6 +794,8 @@ describe("scene library", () => {
 				],
 				items: [],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			},
 			"Shared board",
 		);
@@ -814,6 +834,8 @@ describe("scene library", () => {
 				],
 				items: [],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			},
 			"Shared board",
 		);
@@ -847,6 +869,8 @@ describe("scene library", () => {
 				],
 				items: [],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			},
 			"Shared board",
 		);
@@ -873,6 +897,8 @@ describe("scene library", () => {
 				],
 				items: [],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			},
 			"Shared board",
 		);
@@ -904,6 +930,8 @@ describe("scene library", () => {
 				],
 				items: [],
 				customPedals: [],
+				endpoints: [],
+				cables: [],
 			},
 			"Shared board",
 		);
@@ -923,5 +951,129 @@ describe("scene library", () => {
 			storageHealth: { level: "unavailable", reason: "indexeddb" },
 		});
 		expect(await runtime.newScene()).toBeNull();
+	});
+});
+
+describe("cable persistence wiring (P4-01)", () => {
+	function addJackedItem(): string {
+		const refId = required(
+			useScene.getState().addCustomPedal({
+				brand: "Acme",
+				name: "Jacked",
+				widthCm: 7,
+				heightCm: 12,
+				category: "pedal",
+				effectTypes: [],
+				jacks: [
+					{ kind: "in", edge: "top", pos: 0.5 },
+					{ kind: "out", edge: "bottom", pos: 0.5 },
+				],
+			}),
+		);
+		return required(
+			useScene.getState().addItem(refId, "pedal", null, { x: 0, y: 0 }),
+		);
+	}
+
+	beforeEach(() => {
+		useScene.setState({
+			boards: [],
+			items: [],
+			customPedals: [],
+			endpoints: [],
+			cables: [],
+		});
+		useSelection.setState({ selection: null, hoveredItemUid: null });
+		useReadOnly.setState({ readOnly: false });
+	});
+
+	afterEach(() => {
+		for (const runtime of runtimes.splice(0)) runtime.dispose();
+		vi.useRealTimers();
+	});
+
+	it("autosaves a cable edit and the cable survives save → load", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		const itemUid = addJackedItem();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		expect(repo.docs.get("scene-1")?.cables).toEqual([]);
+
+		const cableUid = required(
+			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		const saved = repo.docs.get("scene-1");
+		expect(saved?.cables).toEqual([
+			{
+				uid: cableUid,
+				from: { itemUid, jack: "0" },
+				to: { endpointUid },
+			},
+		]);
+		expect(saved?.endpoints).toHaveLength(1);
+
+		// Reload through the real codec: switching away and back re-reads the
+		// stored document (a same-id switch is a deliberate no-op).
+		const firstId = required(store.getState().activeId);
+		required(await runtime.newScene("Other sheet"));
+		expect(useScene.getState().cables).toEqual([]);
+		expect(await runtime.switchScene(firstId)).toBe(true);
+		expect(useScene.getState().cables).toHaveLength(1);
+		expect(useScene.getState().endpoints).toHaveLength(1);
+	});
+
+	it("never leaks the outgoing scene's cables into a newly loaded scene", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		const itemUid = addJackedItem();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("instrument", { x: 5, y: 5 }),
+		);
+		required(
+			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		const firstId = required(store.getState().activeId);
+
+		const secondId = required(await runtime.newScene("Empty sheet"));
+		expect(useScene.getState().cables).toEqual([]);
+		expect(useScene.getState().endpoints).toEqual([]);
+
+		await runtime.switchScene(firstId);
+		expect(useScene.getState().cables).toHaveLength(1);
+		expect(useScene.getState().endpoints).toHaveLength(1);
+
+		await runtime.switchScene(secondId);
+		expect(useScene.getState().cables).toEqual([]);
+		expect(useScene.getState().endpoints).toEqual([]);
+	});
+
+	it("keeps a standalone endpoint with no cable across save → reload (A4)", async () => {
+		vi.useFakeTimers();
+		const repo = new MemoryRepository();
+		const { runtime, store } = setup({ repo });
+		await runtime.boot();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("amp", { x: 12, y: -4 }),
+		);
+		await vi.advanceTimersByTimeAsync(500);
+		expect(repo.docs.get("scene-1")?.endpoints).toEqual([
+			{ uid: endpointUid, kind: "amp", x: 12, y: -4 },
+		]);
+
+		const firstId = required(store.getState().activeId);
+		required(await runtime.newScene("Other sheet"));
+		await runtime.switchScene(firstId);
+		expect(useScene.getState().endpoints).toEqual([
+			{ uid: endpointUid, kind: "amp", x: 12, y: -4 },
+		]);
 	});
 });

@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { catalog } from "../catalog/load";
-import type { CustomPedal, PlacedBoard, PlacedItem } from "./scene";
+import type {
+	Cable,
+	CustomPedal,
+	Endpoint,
+	PlacedBoard,
+	PlacedItem,
+} from "./scene";
 import {
 	createSceneDocument,
 	normalizeSceneContent,
@@ -44,11 +50,16 @@ const customPedal: CustomPedal = {
 	power: { voltage: 9, acDc: "DC", currentMa: 20 },
 };
 
-function documentOf(snapshot: SceneSnapshot) {
+type SnapshotInput = Pick<SceneSnapshot, "boards" | "items" | "customPedals"> &
+	Partial<Pick<SceneSnapshot, "endpoints" | "cables">>;
+
+function documentOf(snapshot: SnapshotInput) {
 	return createSceneDocument({
 		id: "scene-1",
 		name: "My board",
 		updatedAt: "2026-10-19T12:00:00.000Z",
+		endpoints: [],
+		cables: [],
 		...snapshot,
 	});
 }
@@ -94,6 +105,8 @@ describe("scene documents", () => {
 			boards: [board],
 			items: [item()],
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 			updatedAt: "2026-10-19T12:00:00.000Z",
 		});
 	});
@@ -211,6 +224,8 @@ describe("normalizing a loaded document", () => {
 	it("drops orphaned items, densifies z and prunes unreferenced customs", () => {
 		const normalized = normalizeSceneContent({
 			boards: [board],
+			endpoints: [],
+			cables: [],
 			items: [
 				item({ uid: "ok", boardUid: "b1", z: 5 }),
 				item({ uid: "orphan", boardUid: "gone", z: 2 }),
@@ -234,6 +249,8 @@ describe("normalizing a loaded document", () => {
 	it("prunes a custom definition whose placed item was dropped with its board", () => {
 		const normalized = normalizeSceneContent({
 			boards: [],
+			endpoints: [],
+			cables: [],
 			items: [item({ refId: "custom-abc", boardUid: "gone" })],
 			customPedals: [customPedal],
 		});
@@ -251,6 +268,126 @@ describe("normalizing a loaded document", () => {
 			boards: [board],
 			items: [],
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		});
+	});
+});
+
+describe("cables and endpoints (P4-01)", () => {
+	const endpoint: Endpoint = {
+		uid: "amp-1",
+		kind: "amp",
+		x: 60,
+		y: 20,
+	};
+	const cable: Cable = {
+		uid: "cable-1",
+		from: { itemUid: "i1", jack: "0" },
+		to: { endpointUid: "amp-1" },
+	};
+
+	const customItem = item({ refId: "custom-abc" });
+
+	it("round-trips cables and endpoints through the document codec", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [customItem],
+			customPedals: [customPedal],
+			endpoints: [endpoint],
+			cables: [cable],
+		});
+		expect(parseSceneDocument(document)).toEqual(document);
+		expect(parseSceneDocument(JSON.stringify(document))).toEqual(document);
+		expect(sceneFromDocument(document)).toEqual({
+			boards: [board],
+			items: [customItem],
+			customPedals: [customPedal],
+			endpoints: [endpoint],
+			cables: [cable],
+		});
+	});
+
+	it("keeps the additive v1 rule: documents without the arrays stay valid", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [item()],
+			customPedals: [],
+		});
+		const { endpoints: _endpoints, cables: _cables, ...legacy } = document;
+		expect(parseSceneDocument(legacy)).toMatchObject({
+			endpoints: [],
+			cables: [],
+		});
+	});
+
+	it("drops malformed endpoints/cables instead of failing the document", () => {
+		const raw = {
+			...documentOf({ boards: [board], items: [item()], customPedals: [] }),
+			endpoints: [endpoint, { uid: "bad" }, { ...endpoint, kind: "mic" }],
+			cables: [
+				cable,
+				{ uid: "no-ends" },
+				{
+					uid: "mixed",
+					from: { itemUid: "i1", jack: "0", endpointUid: "x" },
+					to: { endpointUid: "amp-1" },
+				},
+			],
+		};
+		const parsed = parseSceneDocument(raw);
+		expect(parsed?.endpoints).toEqual([endpoint]);
+		expect(parsed?.cables).toEqual([cable]);
+	});
+
+	it("keeps a standalone endpoint (a placed object) across normalisation", () => {
+		const spare: Endpoint = {
+			uid: "spare",
+			kind: "instrument",
+			x: -10,
+			y: 5,
+		};
+		const normalized = normalizeSceneContent({
+			boards: [board],
+			items: [customItem],
+			customPedals: [customPedal],
+			endpoints: [spare],
+			cables: [],
+		});
+		expect(normalized.endpoints).toEqual([spare]);
+		expect(normalized.cables).toEqual([]);
+	});
+
+	it("drops cables whose item/endpoint/jack is gone and the endpoints they orphan", () => {
+		const normalized = normalizeSceneContent({
+			boards: [board],
+			items: [customItem],
+			customPedals: [customPedal],
+			endpoints: [
+				endpoint,
+				{ uid: "dangling", kind: "instrument", x: 0, y: 0 },
+			],
+			cables: [
+				cable,
+				{
+					uid: "gone-item",
+					from: { itemUid: "gone", jack: "0" },
+					to: { endpointUid: "dangling" },
+				},
+				{
+					uid: "gone-endpoint",
+					from: { itemUid: "i1", jack: "0" },
+					to: { endpointUid: "missing" },
+				},
+				{
+					uid: "bad-jack",
+					from: { itemUid: "i1", jack: "9" },
+					to: { endpointUid: "amp-1" },
+				},
+			],
+		});
+		expect(normalized.items.map((entry) => entry.uid)).toEqual(["i1"]);
+		expect(normalized.cables).toEqual([cable]);
+		expect(normalized.endpoints).toEqual([endpoint]);
 	});
 });

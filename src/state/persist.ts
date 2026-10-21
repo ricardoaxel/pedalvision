@@ -12,7 +12,9 @@ import {
 	setSceneLibraryRuntime,
 } from "./library";
 import {
+	isCable,
 	isCustomPedal,
+	isEndpoint,
 	isPlacedBoard,
 	isPlacedItem,
 	type SceneSnapshot,
@@ -38,6 +40,8 @@ export function serializeScene(state: SceneSnapshot): string {
 		boards: state.boards,
 		items: state.items,
 		customPedals: state.customPedals,
+		endpoints: state.endpoints,
+		cables: state.cables,
 	});
 }
 
@@ -60,10 +64,21 @@ export function parseSceneSnapshot(raw: string | null): SceneSnapshot | null {
 	const customPedals = Array.isArray(parsed.customPedals)
 		? parsed.customPedals.filter(isCustomPedal)
 		: [];
+	// The legacy mirror predates cables/endpoints (P4-01), but a newer backup
+	// replayed through this path must not silently lose them — the arrays are
+	// additive and structurally validated like the IndexedDB codec.
+	const endpoints = Array.isArray(parsed.endpoints)
+		? parsed.endpoints.filter(isEndpoint)
+		: [];
+	const cables = Array.isArray(parsed.cables)
+		? parsed.cables.filter(isCable)
+		: [];
 	return {
 		boards: parsed.boards.filter(isPlacedBoard),
 		items: parsed.items.filter(isPlacedItem),
 		customPedals,
+		endpoints,
+		cables,
 	};
 }
 

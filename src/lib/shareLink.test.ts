@@ -1,6 +1,7 @@
 import { deflateSync, strToU8 } from "fflate";
 import { describe, expect, it } from "vitest";
 import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
+import type { SceneSnapshot } from "../state/sceneDocument";
 import { capacityStatus } from "./capacity";
 import {
 	decodeShareHash,
@@ -52,12 +53,16 @@ const custom = (
 });
 
 function snapshot(
-	overrides: Partial<SharePayload> = {},
-): Pick<SharePayload, "boards" | "items" | "customPedals"> {
+	overrides: Partial<
+		Pick<SharePayload, "boards" | "items" | "customPedals">
+	> = {},
+): SceneSnapshot {
 	return {
 		boards: [board("board-1")],
 		items: [item("item-1")],
 		customPedals: [],
+		endpoints: [],
+		cables: [],
 		...overrides,
 	};
 }
@@ -200,6 +205,8 @@ describe("share links (P3-03)", () => {
 			boards: [],
 			items: [],
 			customPedals,
+			endpoints: [],
+			cables: [],
 		});
 		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
 		if (encoded.ok) throw new Error("expected a refusal");
@@ -211,6 +218,8 @@ describe("share links (P3-03)", () => {
 			boards: [board("board-1")],
 			items: [item("item-1", { refId: "not-in-catalog" })],
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		});
 		if (!encoded.ok) throw new Error("expected an encodable scene");
 		const decoded = decodeShareHash(encoded.hash);
@@ -232,6 +241,8 @@ describe("share links (P3-03)", () => {
 			boards,
 			items,
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		});
 		if (!encoded.ok) throw new Error("expected an encodable over-cap scene");
 		const decoded = decodeShareHash(encoded.hash);
@@ -259,6 +270,8 @@ describe("share links (P3-03)", () => {
 			boards,
 			items,
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		});
 		if (!encoded.ok) throw new Error("expected a 1,500-item link to fit");
 		expect(encoded.hash.length).toBeLessThanOrEqual(SHARE_URL_HARD_LIMIT_CHARS);
@@ -282,6 +295,8 @@ describe("share links (P3-03)", () => {
 			boards,
 			items,
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		});
 		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
 		if (encoded.ok) throw new Error("expected a refusal");
@@ -309,6 +324,8 @@ describe("share links (P3-03)", () => {
 			boards,
 			items,
 			customPedals,
+			endpoints: [],
+			cables: [],
 		});
 		if (!encoded.ok) throw new Error("expected a max scene to fit");
 		expect(encoded.decodedBytes).toBeLessThan(SHARE_DECODED_LIMIT_BYTES);

@@ -36,6 +36,14 @@ function snapshot(): SceneSnapshot {
 				effectTypes: ["fuzz"],
 			},
 		],
+		endpoints: [{ uid: "amp-1", kind: "amp", x: 60, y: 20 }],
+		cables: [
+			{
+				uid: "cable-1",
+				from: { itemUid: "item-1", jack: "0" },
+				to: { endpointUid: "amp-1" },
+			},
+		],
 	};
 }
 
@@ -60,6 +68,8 @@ describe("scene backup", () => {
 		expect(parsed?.boards).toEqual(snapshot().boards);
 		expect(parsed?.items).toEqual(snapshot().items);
 		expect(parsed?.customPedals).toEqual(snapshot().customPedals);
+		expect(parsed?.endpoints).toEqual(snapshot().endpoints);
+		expect(parsed?.cables).toEqual(snapshot().cables);
 	});
 
 	it("reflects unsaved live edits at build time", () => {

@@ -53,12 +53,12 @@ export function backupFileName(name: string, now: Date): string {
  * stored document). Pure: nothing is written to the scene, index or settings.
  */
 export function buildSceneBackup(input: SceneBackupInput): SceneBackup {
+	// The live snapshot is passed whole, so every persisted field (boards,
+	// items, custom pedals, endpoints, cables) inherits the codec wiring.
 	const document = createSceneDocument({
 		id: input.id,
 		name: input.name,
-		boards: input.snapshot.boards,
-		items: input.snapshot.items,
-		customPedals: input.snapshot.customPedals,
+		...input.snapshot,
 		updatedAt: input.now.toISOString(),
 	});
 	// Compact JSON: this is a machine backup with no import UI, and it keeps

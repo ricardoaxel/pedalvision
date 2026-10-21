@@ -43,6 +43,14 @@ const snapshot = {
 		},
 	],
 	customPedals: [],
+	endpoints: [{ uid: "amp", kind: "amp" as const, x: 40, y: 10 }],
+	cables: [
+		{
+			uid: "cable",
+			from: { itemUid: "i1", jack: "0" },
+			to: { endpointUid: "amp" },
+		},
+	],
 };
 
 describe("legacy single-scene mirror", () => {
@@ -70,6 +78,8 @@ describe("legacy single-scene mirror", () => {
 			boards: [snapshot.boards[0]],
 			items: [snapshot.items[0]],
 			customPedals: [],
+			endpoints: [],
+			cables: [],
 		});
 	});
 

@@ -24,6 +24,8 @@ const HISTORY_SCENE_KEY_MAP = {
 	boards: true,
 	items: true,
 	customPedals: true,
+	endpoints: true,
+	cables: true,
 } satisfies Record<keyof SceneSnapshot, true>;
 
 export const HISTORY_SCENE_KEYS = Object.keys(

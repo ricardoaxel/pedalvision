@@ -140,7 +140,7 @@ export interface SceneLibraryRuntime {
 }
 
 function emptyScene(): SceneSnapshot {
-	return { boards: [], items: [], customPedals: [] };
+	return { boards: [], items: [], customPedals: [], endpoints: [], cables: [] };
 }
 
 function activeEntry(state: SceneLibraryState): SceneIndexEntry | undefined {
@@ -221,10 +221,15 @@ export function createSceneLibraryRuntime(
 	const applyScene = (snapshot: SceneSnapshot) => {
 		applying = true;
 		try {
+			// Copy EVERY snapshot key: a partial copy would leave the outgoing
+			// scene's cables/endpoints in the newly loaded scene (P4 extension
+			// contract, P3 phase gate).
 			useScene.setState({
 				boards: snapshot.boards,
 				items: snapshot.items,
 				customPedals: snapshot.customPedals,
+				endpoints: snapshot.endpoints,
+				cables: snapshot.cables,
 			});
 			useSelection.getState().clearSelection();
 		} finally {
@@ -250,6 +255,8 @@ export function createSceneLibraryRuntime(
 			boards: scene.boards,
 			items: scene.items,
 			customPedals: scene.customPedals,
+			endpoints: scene.endpoints,
+			cables: scene.cables,
 			updatedAt,
 		});
 		store.setState({ saving: true });
@@ -290,7 +297,9 @@ export function createSceneLibraryRuntime(
 			if (
 				state.boards !== previous.boards ||
 				state.items !== previous.items ||
-				state.customPedals !== previous.customPedals
+				state.customPedals !== previous.customPedals ||
+				state.endpoints !== previous.endpoints ||
+				state.cables !== previous.cables
 			) {
 				autosave.schedule();
 			}
@@ -373,6 +382,8 @@ export function createSceneLibraryRuntime(
 							boards: deps.legacy.boards,
 							items: deps.legacy.items,
 							customPedals: deps.legacy.customPedals,
+							endpoints: deps.legacy.endpoints,
+							cables: deps.legacy.cables,
 						})
 					: emptyScene(),
 			);
@@ -400,6 +411,8 @@ export function createSceneLibraryRuntime(
 				boards: deps.legacy.boards,
 				items: deps.legacy.items,
 				customPedals: deps.legacy.customPedals,
+				endpoints: deps.legacy.endpoints,
+				cables: deps.legacy.cables,
 			});
 			const document = createSceneDocument({
 				id,
@@ -479,6 +492,8 @@ export function createSceneLibraryRuntime(
 							boards: deps.legacy.boards,
 							items: deps.legacy.items,
 							customPedals: deps.legacy.customPedals,
+							endpoints: deps.legacy.endpoints,
+							cables: deps.legacy.cables,
 						})
 					: emptyScene(),
 			);
@@ -598,6 +613,8 @@ export function createSceneLibraryRuntime(
 				boards: scene.boards,
 				items: scene.items,
 				customPedals: scene.customPedals,
+				endpoints: scene.endpoints,
+				cables: scene.cables,
 			};
 		}
 		previewName = normalizeSceneName(name) ?? "Shared scene";
@@ -641,6 +658,8 @@ export function createSceneLibraryRuntime(
 			boards: scene.boards,
 			items: scene.items,
 			customPedals: scene.customPedals,
+			endpoints: scene.endpoints,
+			cables: scene.cables,
 			updatedAt,
 		});
 		try {

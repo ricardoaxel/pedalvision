@@ -5,7 +5,6 @@ import {
 	clearHistory,
 	flushHistory,
 	HISTORY_LIMIT,
-	HISTORY_SCENE_KEYS,
 	redo,
 	undo,
 	useHistory,
@@ -22,7 +21,13 @@ if (!pedalId || !boardId)
 	throw new Error("test fixtures missing from the catalog seed");
 
 function reset(): void {
-	useScene.setState({ boards: [], items: [], customPedals: [] });
+	useScene.setState({
+		boards: [],
+		items: [],
+		customPedals: [],
+		endpoints: [],
+		cables: [],
+	});
 	clearHistory();
 	useReadOnly.setState({ readOnly: false });
 	useSelection.setState({ selection: null, hoveredItemUid: null });
@@ -291,13 +296,13 @@ describe("undo/redo history", () => {
 			y: 0,
 			rotationDeg: 0,
 		};
-		useScene.setState({
+		const expected = {
 			boards: [board],
 			items: [
 				{
 					uid: "i",
 					refId: pedalId,
-					kind: "pedal",
+					kind: "pedal" as const,
 					boardUid: "b",
 					x: 1,
 					y: 1,
@@ -312,20 +317,43 @@ describe("undo/redo history", () => {
 					name: "B",
 					widthCm: 7,
 					heightCm: 12,
-					category: "pedal",
+					category: "pedal" as const,
 					effectTypes: [],
 				},
 			],
-		});
+			endpoints: [{ uid: "amp", kind: "amp" as const, x: 50, y: 20 }],
+			cables: [
+				{
+					uid: "cable",
+					from: { itemUid: "i", jack: "0" },
+					to: { endpointUid: "amp" },
+				},
+			],
+		};
+		useScene.setState(expected);
 		flushHistory();
-		const before = captureScene();
-		// The `satisfies Record<keyof SceneSnapshot, true>` map makes this set
-		// exhaustive at compile time: P4 must add cables/endpoints there.
-		expect(Object.keys(before).sort()).toEqual([...HISTORY_SCENE_KEYS].sort());
+		// Explicit field/value fixture — not a key-set comparison: every
+		// persisted scene field must be captured with its actual value.
+		expect(captureScene()).toEqual(expected);
 
+		// Removing the item cascades its cable (P4-01).
 		useScene.getState().removeItem("i");
 		flushHistory();
+		expect(captureScene()).toEqual({
+			...expected,
+			items: [],
+			customPedals: [],
+			cables: [],
+		});
+
 		expect(undo()).toBe(true);
-		expect(captureScene()).toEqual(before);
+		expect(captureScene()).toEqual(expected);
+		expect(redo()).toBe(true);
+		expect(captureScene()).toEqual({
+			...expected,
+			items: [],
+			customPedals: [],
+			cables: [],
+		});
 	});
 });

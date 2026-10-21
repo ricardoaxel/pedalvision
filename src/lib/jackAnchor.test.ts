@@ -1,0 +1,153 @@
+import { describe, expect, it } from "vitest";
+import type { CustomPedal, PlacedBoard, PlacedItem } from "../state/scene";
+import {
+	cableEndAnchorWorld,
+	jackAnchorWorld,
+	jackIndex,
+	jackLocalPoint,
+	resolveItemJacks,
+} from "./jackAnchor";
+
+const customPedal: CustomPedal = {
+	refId: "custom-1",
+	brand: "Acme",
+	name: "Anchor",
+	widthCm: 10,
+	heightCm: 20,
+	category: "pedal",
+	effectTypes: [],
+	jacks: [
+		{ kind: "in", edge: "top", pos: 0.5 },
+		{ kind: "out", edge: "right", pos: 0.25 },
+		{ kind: "exp-out", edge: "bottom", pos: 1 },
+		{ kind: "send", edge: "left", pos: 0.5 },
+	],
+};
+
+const item = (overrides: Partial<PlacedItem> = {}): PlacedItem => ({
+	uid: "i1",
+	refId: "custom-1",
+	kind: "pedal",
+	boardUid: null,
+	x: 10,
+	y: 20,
+	rotationDeg: 0,
+	z: 0,
+	...overrides,
+});
+
+describe("jack local points", () => {
+	it("maps each edge's pos along the footprint", () => {
+		const footprint = { widthCm: 10, heightCm: 20 };
+		const [top, right, bottom, left] = customPedal.jacks ?? [];
+		if (!top || !right || !bottom || !left) {
+			throw new Error("jack fixture missing");
+		}
+		expect(jackLocalPoint(top, footprint)).toEqual({ x: 5, y: 0 });
+		expect(jackLocalPoint(right, footprint)).toEqual({ x: 10, y: 5 });
+		expect(jackLocalPoint(bottom, footprint)).toEqual({ x: 10, y: 20 });
+		expect(jackLocalPoint(left, footprint)).toEqual({ x: 0, y: 10 });
+	});
+});
+
+describe("jack anchors in world cm", () => {
+	it("resolves a loose item's jack in world coordinates", () => {
+		expect(jackAnchorWorld(item(), "0", [], [customPedal])).toEqual({
+			x: 15,
+			y: 20,
+		});
+		expect(jackAnchorWorld(item(), "1", [], [customPedal])).toEqual({
+			x: 20,
+			y: 25,
+		});
+	});
+
+	it("rotates the jack with the item about its origin", () => {
+		// A 10×20 item at the world origin rotated 90°: top-centre (5, 0)
+		// becomes (0, 5) under the clockwise-positive Konva convention.
+		const anchor = jackAnchorWorld(
+			item({ x: 0, y: 0, rotationDeg: 90 }),
+			"0",
+			[],
+			[customPedal],
+		);
+		expect(anchor?.x).toBeCloseTo(0);
+		expect(anchor?.y).toBeCloseTo(5);
+	});
+
+	it("applies the board transform for an attached item on a rotated board", () => {
+		const board: PlacedBoard = {
+			uid: "b1",
+			boardRefId: "boss-bcb-1000",
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+		const attached = item({ boardUid: "b1", x: 0, y: 0 });
+		// Board-local top-centre (5,0) → rotate 90° → (0,5) → + board origin.
+		const anchor = jackAnchorWorld(attached, "0", [board], [customPedal]);
+		expect(anchor?.x).toBeCloseTo(100);
+		expect(anchor?.y).toBeCloseTo(55);
+	});
+
+	it("composes the item's rotation with a rotated board", () => {
+		const board: PlacedBoard = {
+			uid: "b1",
+			boardRefId: "boss-bcb-1000",
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+		const attached = item({
+			boardUid: "b1",
+			x: 0,
+			y: 0,
+			rotationDeg: 90,
+		});
+		// Item-local top-centre (5,0) → item 90° → (0,5) → board 90° → (-5,0).
+		const anchor = jackAnchorWorld(attached, "0", [board], [customPedal]);
+		expect(anchor?.x).toBeCloseTo(95);
+		expect(anchor?.y).toBeCloseTo(50);
+	});
+
+	it("resolves an endpoint and both cable-end shapes", () => {
+		const scene = {
+			boards: [],
+			items: [item()],
+			customPedals: [customPedal],
+			endpoints: [{ uid: "amp-1", kind: "amp" as const, x: 60, y: 20 }],
+		};
+		expect(cableEndAnchorWorld({ endpointUid: "amp-1" }, scene)).toEqual({
+			x: 60,
+			y: 20,
+		});
+		expect(cableEndAnchorWorld({ itemUid: "i1", jack: "0" }, scene)).toEqual({
+			x: 15,
+			y: 20,
+		});
+	});
+
+	it("returns null for unknown items, gone endpoints and invalid jack refs", () => {
+		expect(jackAnchorWorld(item(), "4", [], [customPedal])).toBeNull();
+		expect(jackAnchorWorld(item(), "-1", [], [customPedal])).toBeNull();
+		expect(jackAnchorWorld(item(), "in", [], [customPedal])).toBeNull();
+		expect(
+			jackAnchorWorld(item({ refId: "not-listed" }), "0", [], [customPedal]),
+		).toBeNull();
+		expect(jackIndex("0")).toBe(0);
+		expect(jackIndex("12")).toBe(12);
+		expect(jackIndex("1.5")).toBeNull();
+		expect(resolveItemJacks(item(), [customPedal])).toHaveLength(4);
+		expect(
+			cableEndAnchorWorld(
+				{ endpointUid: "gone" },
+				{
+					boards: [],
+					items: [],
+					customPedals: [],
+					endpoints: [],
+				},
+			),
+		).toBeNull();
+	});
+});
