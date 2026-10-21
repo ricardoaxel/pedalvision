@@ -283,6 +283,14 @@ export type ResolvedJack = Jack & { pos: number; approximate?: boolean };
  * has a position (the common case).
  */
 export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
+	if (
+		jacks.every(
+			(jack) => jack.pos !== undefined && jack.approximate === undefined,
+		)
+	) {
+		// Zero-allocation fast path: nothing to resolve or normalize.
+		return jacks as ResolvedJack[];
+	}
 	if (jacks.every((jack) => jack.pos !== undefined)) {
 		// `pos` wins: a stale author-supplied `approximate` flag is cleared.
 		return jacks.map((jack) =>

@@ -20,8 +20,6 @@ import {
 	itemsByZ,
 	type PlacedBoard,
 	resolveItem,
-	resolveItemJacks,
-	usesFallbackJacks,
 } from "../state/scene";
 import {
 	CANVAS_FONTS,
@@ -545,19 +543,16 @@ function drawAssumedJackNote(
 	context: RenderContext,
 ): void {
 	const { plan, theme, labelUnit, pxPerCm } = context;
+	const index = buildAnchorIndex({
+		boards: plan.boards,
+		items: plan.items,
+		customPedals: plan.customPedals,
+		endpoints: plan.endpoints,
+	});
 	const used = plan.cables.some((cable) =>
 		[cable.from, cable.to].some((end) => {
-			if ("endpointUid" in end) return false;
-			const item = plan.items.find(
-				(candidate) => candidate.uid === end.itemUid,
-			);
-			if (!item) return false;
-			return (
-				usesFallbackJacks(item, plan.customPedals) ||
-				resolveItemJacks(item, plan.customPedals).some(
-					(jack) => jack.approximate === true,
-				)
-			);
+			const anchor = cableEndAnchorFromIndex(end, index);
+			return anchor?.assumed === true || anchor?.approximate === true;
 		}),
 	);
 	if (!used) return;
