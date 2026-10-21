@@ -41,7 +41,11 @@ normalized 0..1 along the edge, but it is **derived from exact cm** — e.g. a j
 2 cm down the left side of a 12 cm pedal is `edge: "left", pos: 2 / 12`. This
 represents any point on the four edges exactly. A jack inset from the edge would
 need an optional additive `xCm`/`yCm` (only if a source actually requires it).
-When absent, P4-02's fallback anchors apply (assumed IN left / OUT right).
+When only the **edge count** is known (e.g. “2 jacks on top”), record two
+`jacks` entries with `kind` + `edge` and **omit `pos`**; the resolver distributes
+them evenly across that edge and marks the anchors **approximate** (hollow ticks).
+Exact `pos` can be filled later from measured cm. When no jack data exists at all,
+P4-02's fallback anchors apply (assumed IN left / OUT right).
 
 ### Enrichment (show when present)
 `power` (`voltage`, `acDc`, `currentMa`), `usage` (`guitar|bass|both|unknown`),

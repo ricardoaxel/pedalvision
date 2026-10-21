@@ -21,7 +21,7 @@ Establish the owner-approved policy and data contract for the P5 catalog, then b
 - No bulk image download/processing in this task (P5-02/P5-03).
 - `public-asset` + new optional fields require a schema change + migration of existing data; keep the additive rule.
 - Do not touch the P4-03 branch/worktree.
-- `jacks[]` is **optional enrichment** for catalog data: record `kind`, `edge`, `pos`, `stereo?` when a source exposes it; never invent positions. `pos` is normalized 0..1, but derive it from exact cm (`x / widthCm` on top/bottom, `y / heightCm` on left/right) so measured positions are preserved. If a jack is inset from the edge, note it; add optional `xCm`/`yCm` only if the source requires it.
+- `jacks[]` is **optional enrichment** for catalog data: record `kind`, `edge`, `pos?`, `stereo?` when a source exposes it; never invent exact positions. `pos` is normalized 0..1, derived from exact cm (`x / widthCm` on top/bottom, `y / heightCm` on left/right). **Partial knowledge is allowed:** if only the edge/count is known (e.g. “2 on top”), omit `pos`; the resolver distributes the jacks evenly on that edge and marks them `approximate` (hollow ticks). Make `pos` optional in the schema, keep existing data valid, and let exact `pos` be filled later. If a jack is inset from the edge, add optional `xCm`/`yCm` only if the source requires it.
 
 ## Steps
 
