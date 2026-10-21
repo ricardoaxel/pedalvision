@@ -37,7 +37,7 @@ Short explanations so both the owner and any agent session know why each phase e
 
 > P2-06 Catalog procurement was **renumbered to P4-04** (pre-launch owner track; see P4).
 >
-> ✅ **P2 phase gate PASSED (2026-10-19)** — all scheduled P2 tasks merged; post-phase review folded into the docs, with one small proposed follow-up (**P2-10** thumbnails). **P3-01 Export PNG + PDF**, **P3-02 Scene save/load**, **P3-03 Share links**, **P3-04 Undo/redo** and **P3-06 Capacity budgets + benchmark** are done (merged 2026-10-19/20). **P3-05 Storage-failure fallback is in review — PR #28** (not done). After it merges, run the **P3 phase gate** (new session) — not P4 directly.
+> ✅ **P2 phase gate PASSED (2026-10-19)** — all scheduled P2 tasks merged; post-phase review folded into the docs, with one small proposed follow-up (**P2-10** thumbnails). **P3-01 Export PNG + PDF**, **P3-02 Scene save/load**, **P3-03 Share links**, **P3-04 Undo/redo**, **P3-05 Storage-failure fallback** and **P3-06 Capacity budgets + benchmark** are done (merged 2026-10-19/21). **P3 scheduled tasks are COMPLETE — run the P3 phase gate (new session), not P4 directly.**
 
 ## P3 — Output (no owner action)
 Export PNG + PDF · save/load + boot reconcile · capacity budgets + benchmark · share links · undo/redo · storage-failure fallback.

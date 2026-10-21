@@ -1,6 +1,6 @@
 # P3-05: Storage-failure fallback (availability/quota check + inline warning + JSON backup)
 
-**Phase:** P3 · **Status:** in review — PR #28 (design direction "Margin Note" owner-approved 2026-10-20) · **Model:** build-strong
+**Phase:** P3 · **Status:** done (merged 2026-10-21, PR #28, squash `fb4b1cd`) · **Model:** build-strong
 
 ## Goal
 
@@ -46,7 +46,7 @@ Never lose work silently (F8, `design.md` §Persistence → Storage failure). On
 7. **Tests:** unit — classification matrix, boot classification, register not overwritten on read failure, autosave disabled after put failure, index-write warning, backup round-trip/live edits/filename/no side effects. E2E — desktop + mobile: blocked IDB (renders, editable, warning, session-only edits, backup parses), mid-session put failure (warning, work in memory), estimate unavailable (no warning), normal storage (no warning), existing suites unaffected.
 8. **Checks:** `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm e2e`; `performance-expert`; `design-reviewer` (≤2); HIGH-RISK light code review (≤2, same session for pass 2).
 9. **One PR** to the full standard (Summary, Changes, Testing, inline screenshots at the commit SHA with captions, ≤3 owner review hints, review-round digest). **Do not merge.**
-10. **Docs:** update `docs/design.md` §Persistence if final behaviour differs; `docs/progress.md`, `docs/roadmap.md` and this file → **in review — PR #28** (not done) until merged.
+10. **Docs:** update `docs/design.md` §Persistence if final behaviour differs; `docs/progress.md`, `docs/roadmap.md` and this file → **in review — PR #28** until merged. **Merged 2026-10-21 (squash `fb4b1cd`).**
 
 ## Acceptance (executable)
 
@@ -67,7 +67,7 @@ Never lose work silently (F8, `design.md` §Persistence → Storage failure). On
   - `navigator.storage.estimate` unavailable → **no** warning with normal storage;
   - normal storage → no warning;
   - the existing scene/share/undo suites still pass (no regression).
-- `docs/progress.md`, `docs/roadmap.md` and this file say **in review — PR #28** (not done) until the owner merges.
+- `docs/progress.md`, `docs/roadmap.md` and this file said **in review — PR #28** until merged. **Merged 2026-10-21 (squash `fb4b1cd`).**
 
 ## Notes
 
