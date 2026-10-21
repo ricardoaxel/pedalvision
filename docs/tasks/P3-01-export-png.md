@@ -220,3 +220,4 @@ Per A3, the real iOS Safari export remains an owner/manual device check.
   in a high-density export. Pedal images are below the ceiling at typical sizes;
   cleared high-resolution assets (P5-02) are the real fix.
 - The live stage keeps working unchanged — export is an additive path.
+- **P4 export wiring (P3 phase gate, 2026-10-21):** `lib/exportScene.ts` already accepts `cables`/`endpoints` (both-endpoints scope rule + the 30 cm endpoint margin for a selected board), but the UI consumers (`components/ExportPanel.tsx`, `components/ShareView.tsx`) still pass only `{ boards, items, customPedals }`. P4-02 must pass the full scene; otherwise every export silently drops all cables. See `docs/design.md` §Persistence → **P4 extension contract**.

@@ -65,7 +65,7 @@ A user can confidently experiment: every committed scene edit is one undo step, 
   - read-only mode blocks undo/redo (scene unchanged);
   - restoring a state that would now exceed a hard cap (e.g. add was valid in the past) is not refused;
   - autosave is scheduled after undo (library autosave test with an injected repo/timers) and the index counts/`updatedAt` are refreshed by the save;
-  - the P4 extension point is covered by a test proving `captureScene`/`applySnapshot` restore every field listed in the editable-scene field set (adding cables/endpoints later is a one-place change).
+  - the P4 extension point is **compile-forced for history only**: `HISTORY_SCENE_KEYS` is a `satisfies Record<keyof SceneSnapshot, true>` map, so adding `cables`/`endpoints` to `SceneSnapshot` fails the build until they are added there. **Phase-gate correction (2026-10-21):** persistence, autosave, share encode/schema, backup, export and capacity consumers are *not* compile-forced — each must be wired explicitly; see `docs/design.md` §Persistence → **P4 extension contract**. The current unit assertion (`Object.keys(captureScene())` vs `HISTORY_SCENE_KEYS`, both derived from the same map) is tautological; strengthen it to an explicit field/value fixture in the P4-01 PR.
 - `pnpm build` → succeeds.
 - `pnpm e2e` → all green (desktop + `mobile-chromium`), including `e2e/history.spec.ts`:
   - add pedal → Undo removes it, Redo restores it (geometry/rotation/z identical);
