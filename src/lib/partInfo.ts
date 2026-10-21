@@ -26,6 +26,8 @@ export interface PartInfo {
 	jacks: Jack[];
 	/** True when `jacks` are the documented fallback pair, not catalog data. */
 	jacksAssumed: boolean;
+	/** True when at least one real jack has an invented (edge-only) position. */
+	jacksApproximate: boolean;
 	power: Power | null;
 	/**
 	 * The catalog image (mock/static/url), or null for custom + unknown parts
@@ -50,6 +52,7 @@ export function buildPartInfo(
 	/** The item's effective jacks (real or the documented fallback pair). */
 	jacks?: Jack[],
 	assumed = false,
+	approximate = false,
 ): PartInfo {
 	if (resolved.definition) {
 		const { definition } = resolved;
@@ -62,6 +65,7 @@ export function buildPartInfo(
 			heightCm: definition.heightCm,
 			jacks: jacks ?? definition.jacks ?? [],
 			jacksAssumed: assumed,
+			jacksApproximate: approximate,
 			power: definition.power ?? null,
 			image: { source: definition.imageSource, value: definition.image },
 			isCustom: false,
@@ -79,6 +83,7 @@ export function buildPartInfo(
 			heightCm: custom.heightCm,
 			jacks: jacks ?? custom.jacks ?? [],
 			jacksAssumed: assumed,
+			jacksApproximate: approximate,
 			power: custom.power ?? null,
 			image: null,
 			isCustom: true,
@@ -94,6 +99,7 @@ export function buildPartInfo(
 		heightCm: resolved.heightCm,
 		jacks: jacks ?? [],
 		jacksAssumed: assumed,
+		jacksApproximate: approximate,
 		power: null,
 		image: null,
 		isCustom: false,
@@ -132,7 +138,9 @@ export function formatJack(jack: Jack): string {
 				? "O"
 				: jackKindLabel(jack.kind);
 	const stereo = jack.stereo === true ? " · TRS" : "";
-	return `${kind} · ${JACK_EDGE_NAMES[jack.edge]} · ${
-		jack.pos === undefined ? "auto" : jack.pos.toFixed(2)
-	}${stereo}`;
+	const position =
+		jack.pos === undefined
+			? "auto"
+			: `${jack.approximate === true ? "~" : ""}${jack.pos.toFixed(2)}`;
+	return `${kind} · ${JACK_EDGE_NAMES[jack.edge]} · ${position}${stereo}`;
 }

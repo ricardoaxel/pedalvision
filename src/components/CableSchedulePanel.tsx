@@ -145,6 +145,7 @@ function ScheduleBody({
 							className="cable-schedule__row"
 							data-testid="cable-schedule-row"
 							data-assumed={row.assumed ? "true" : undefined}
+							data-approximate={row.approximate ? "true" : undefined}
 							data-unresolved={row.unresolved ? "true" : undefined}
 						>
 							<span className="cable-schedule__ordinal" aria-hidden="true">
@@ -170,6 +171,8 @@ function ScheduleBody({
 								</span>
 								{row.assumed ? (
 									<span className="cable-schedule__assumed">◇ Assumed</span>
+								) : row.approximate ? (
+									<span className="cable-schedule__assumed">◇ Approx</span>
 								) : null}
 							</span>
 						</li>
@@ -226,7 +229,7 @@ function ScheduleBody({
 
 			<p className="cable-schedule__legend">
 				Rounded up to {SOLD_CABLE_LENGTHS_CM.join(" / ")} cm. ◇ Jack position
-				assumed.
+				assumed or approximate.
 			</p>
 
 			<footer className="cable-schedule__footer">

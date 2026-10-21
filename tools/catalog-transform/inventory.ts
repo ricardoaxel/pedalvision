@@ -37,6 +37,11 @@ export type InventoryItem = {
 	variantOf?: string;
 	/** True when the item also exists in the committed seed. */
 	seed?: true;
+	/**
+	 * The committed seed's catalog id when it differs from `id` (legacy slug).
+	 * P5-03 must reuse this id so saved `PlacedItem.refId`s keep resolving.
+	 */
+	seedId?: string;
 };
 
 export type InventoryBrand = {
@@ -94,9 +99,91 @@ export type InventorySummary = {
 export type BuildInventoryOptions = {
 	generatedAt: string;
 	/** The committed seed, for the overlap flag (ids/names are normalized). */
-	seedPedals?: Array<{ brand: string; name: string }>;
-	seedBoards?: Array<{ brand: string; name: string }>;
+	seedPedals?: Array<{ id: string; brand: string; name: string }>;
+	seedBoards?: Array<{ id: string; brand: string; name: string }>;
 };
+
+/**
+ * Conservative colorway/finish tokens. A parenthetical suffix is linked via
+ * `variantOf` only when it reads as a finish/edition, never for a distinct
+ * model, revision or size (`(Bass)`, `(V2)`, `(Deluxe)`, `(18x12)` stay their
+ * own products).
+ */
+const COLORWAY_TOKENS = new Set([
+	"black",
+	"white",
+	"blue",
+	"red",
+	"green",
+	"orange",
+	"yellow",
+	"purple",
+	"pink",
+	"gray",
+	"grey",
+	"silver",
+	"gold",
+	"brown",
+	"tan",
+	"cream",
+	"teal",
+	"cyan",
+	"magenta",
+	"amber",
+	"violet",
+	"indigo",
+	"navy",
+	"burgundy",
+	"crimson",
+	"scarlet",
+	"olive",
+	"khaki",
+	"mint",
+	"salmon",
+	"lavender",
+	"ivory",
+	"copper",
+	"bronze",
+	"chrome",
+	"nickel",
+	"graphite",
+	"charcoal",
+	"smoke",
+	"clear",
+	"transparent",
+	"translucent",
+	"natural",
+	"sunburst",
+	"sparkle",
+	"glitter",
+	"matte",
+	"gloss",
+	"satin",
+	"relic",
+	"aged",
+	"blackout",
+	"whiteout",
+	"fractured",
+	"chibi",
+	"rainbow",
+	"pride",
+	"crystal",
+	"saccharine",
+	"alt",
+	"universe",
+	"anniversary",
+	"limited",
+	"exclusive",
+	"edition",
+]);
+
+function isColorwaySuffix(suffix: string): boolean {
+	const tokens = suffix
+		.toLowerCase()
+		.split(/[^a-z0-9]+/)
+		.filter(Boolean);
+	return tokens.some((token) => COLORWAY_TOKENS.has(token));
+}
 
 /** Board-brand display aliases → the priority-brand key. */
 const BRAND_ALIASES: Record<string, string> = {
@@ -106,6 +193,8 @@ const BRAND_ALIASES: Record<string, string> = {
 	"rockboard-by-warwick": "rockboard",
 	"vertex-effects": "vertex",
 	"skb-cases": "skb",
+	// The discovery brand is "GFI System"; the plan's Tier A list says "GFI".
+	gfi: "gfi-system",
 };
 
 /** Canonical brand key used for grouping/tier matching (aliases collapse). */
@@ -168,6 +257,7 @@ function buildPedals(rows: DiscoveryRow[]): ParsedItems {
 		const baseId = toSlug(`${brand} ${baseName}`);
 		const variantSlug = variantMatch ? toSlug(variantMatch[2]) : "";
 		const id = variantMatch ? `${baseId}-${variantSlug}` : baseId;
+		const colorway = variantMatch ? isColorwaySuffix(variantMatch[2]) : false;
 		if (!baseId || (variantMatch && !variantSlug)) {
 			skipped++;
 			continue;
@@ -176,21 +266,21 @@ function buildPedals(rows: DiscoveryRow[]): ParsedItems {
 			duplicatesRemoved++;
 			continue;
 		}
-		if (variantMatch) variants++;
+		if (colorway) variants++;
 		const item: RawItem = {
 			id,
 			brand,
 			name,
 			widthCm: inchesToCm(row.Width),
 			heightCm: inchesToCm(row.Height),
-			...(variantMatch ? { variantOf: baseId } : {}),
+			...(colorway ? { variantOf: baseId } : {}),
 		};
 		byId.set(id, item);
 		items.push(item);
 	}
 
-	// Only keep `variantOf` when the base model is actually present; a variant
-	// whose base is absent stays a real standalone candidate.
+	// Only keep `variantOf` for a colorway whose base model is actually present;
+	// a variant whose base is absent stays a real standalone candidate.
 	let orphanVariants = 0;
 	const ids = new Set(items.map((item) => item.id));
 	for (const item of items) {
@@ -376,7 +466,7 @@ function assignTiers(
 function toInventoryItems(
 	items: RawItem[],
 	tierOf: Map<RawItem, InventoryTier>,
-	seedKeys: Set<string>,
+	seedIds: Map<string, string>,
 ): InventoryItem[] {
 	return [...items]
 		.sort(
@@ -385,11 +475,14 @@ function toInventoryItems(
 				compare(a.brand, b.brand) ||
 				byTierOrder(a, b),
 		)
-		.map((item) => ({
-			...item,
-			tier: tierOf.get(item) ?? "C",
-			...(seedKeys.has(seedKey(item.brand, item.name)) ? { seed: true } : {}),
-		}));
+		.map((item) => {
+			const seedId = seedIds.get(seedKey(item.brand, item.name));
+			return {
+				...item,
+				tier: tierOf.get(item) ?? "C",
+				...(seedId ? { seed: true, seedId } : {}),
+			};
+		});
 }
 
 function summarize(
@@ -426,11 +519,17 @@ export function buildInventory(
 ): Inventory {
 	const pedals = buildPedals(pedalRows);
 	const boards = buildBoards(boardRows);
-	const seedPedalKeys = new Set(
-		(options.seedPedals ?? []).map((item) => seedKey(item.brand, item.name)),
+	const seedPedalIds = new Map(
+		(options.seedPedals ?? []).map((item) => [
+			seedKey(item.brand, item.name),
+			item.id,
+		]),
 	);
-	const seedBoardKeys = new Set(
-		(options.seedBoards ?? []).map((item) => seedKey(item.brand, item.name)),
+	const seedBoardIds = new Map(
+		(options.seedBoards ?? []).map((item) => [
+			seedKey(item.brand, item.name),
+			item.id,
+		]),
 	);
 
 	const pedalTiers = assignTiers(
@@ -448,12 +547,12 @@ export function buildInventory(
 	const pedalItems = toInventoryItems(
 		pedals.items,
 		pedalTiers.tierOf,
-		seedPedalKeys,
+		seedPedalIds,
 	);
 	const boardItems = toInventoryItems(
 		boards.items,
 		boardTiers.tierOf,
-		seedBoardKeys,
+		seedBoardIds,
 	);
 
 	return {

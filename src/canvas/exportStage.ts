@@ -20,6 +20,7 @@ import {
 	itemsByZ,
 	type PlacedBoard,
 	resolveItem,
+	resolveItemJacks,
 	usesFallbackJacks,
 } from "../state/scene";
 import {
@@ -550,7 +551,13 @@ function drawAssumedJackNote(
 			const item = plan.items.find(
 				(candidate) => candidate.uid === end.itemUid,
 			);
-			return item ? usesFallbackJacks(item, plan.customPedals) : false;
+			if (!item) return false;
+			return (
+				usesFallbackJacks(item, plan.customPedals) ||
+				resolveItemJacks(item, plan.customPedals).some(
+					(jack) => jack.approximate === true,
+				)
+			);
 		}),
 	);
 	if (!used) return;
@@ -560,7 +567,7 @@ function drawAssumedJackNote(
 		EXPORT_PADDING_CM * 0.78 * pxPerCm;
 	parent.add(
 		new Konva.Text({
-			text: "Cables to catalog pedals may use assumed IN/OUT jack positions.",
+			text: "Cables to catalog pedals may use assumed or approximate jack positions.",
 			x,
 			y,
 			fontFamily: CANVAS_FONTS.mono,

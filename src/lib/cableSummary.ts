@@ -51,6 +51,11 @@ export interface CableScheduleRow {
 	/** Which ends are the documented fallback. */
 	assumedFrom: boolean;
 	assumedTo: boolean;
+	/** Either end has an edge-only (invented) jack position. */
+	approximate: boolean;
+	/** Which ends have an approximate position. */
+	approximateFrom: boolean;
+	approximateTo: boolean;
 	/** Straight-line jack-to-jack distance (world cm). */
 	distanceCm: number;
 	/** Distance + plug overhang + slack. */
@@ -78,6 +83,7 @@ export interface CableSchedule {
 	unconnectedEndpoints: string[];
 	cableCount: number;
 	assumedCount: number;
+	approximateCount: number;
 	unresolvedCount: number;
 	customCount: number;
 	/** Sum of the lengths to buy (custom runs use their calculated length). */
@@ -269,6 +275,10 @@ export function buildCableSchedule(scene: CableScheduleScene): CableSchedule {
 			assumed: (fromAnchor?.assumed ?? false) || (toAnchor?.assumed ?? false),
 			assumedFrom: fromAnchor?.assumed ?? false,
 			assumedTo: toAnchor?.assumed ?? false,
+			approximate:
+				(fromAnchor?.approximate ?? false) || (toAnchor?.approximate ?? false),
+			approximateFrom: fromAnchor?.approximate ?? false,
+			approximateTo: toAnchor?.approximate ?? false,
 			distanceCm: length?.distanceCm ?? 0,
 			requiredCm: length?.requiredCm ?? 0,
 			lengthCm: length?.lengthCm ?? null,
@@ -290,10 +300,12 @@ export function buildCableSchedule(scene: CableScheduleScene): CableSchedule {
 	const totalMap = new Map<string, CableScheduleTotal>();
 	let totalLengthCm = 0;
 	let assumedCount = 0;
+	let approximateCount = 0;
 	let unresolvedCount = 0;
 	let customCount = 0;
 	for (const row of orderedRows) {
 		if (row.assumed) assumedCount += 1;
+		if (row.approximate) approximateCount += 1;
 		if (row.unresolved) {
 			unresolvedCount += 1;
 			continue;
@@ -344,6 +356,7 @@ export function buildCableSchedule(scene: CableScheduleScene): CableSchedule {
 		unconnectedEndpoints,
 		cableCount: scene.cables.length,
 		assumedCount,
+		approximateCount,
 		unresolvedCount,
 		customCount,
 		totalLengthCm,

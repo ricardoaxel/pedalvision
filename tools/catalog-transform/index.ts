@@ -441,7 +441,7 @@ async function runResolveImages(args: Args): Promise<void> {
  */
 async function readSeedNames(
 	path: string,
-): Promise<Array<{ brand: string; name: string }>> {
+): Promise<Array<{ id: string; brand: string; name: string }>> {
 	let raw: string;
 	try {
 		raw = await readFile(path, "utf8");
@@ -453,13 +453,14 @@ async function readSeedNames(
 	if (!Array.isArray(parsed)) return [];
 	return parsed
 		.filter(
-			(item): item is { brand: string; name: string } =>
+			(item): item is { id: string; brand: string; name: string } =>
 				typeof item === "object" &&
 				item !== null &&
+				typeof (item as { id?: unknown }).id === "string" &&
 				typeof (item as { brand?: unknown }).brand === "string" &&
 				typeof (item as { name?: unknown }).name === "string",
 		)
-		.map((item) => ({ brand: item.brand, name: item.name }));
+		.map((item) => ({ id: item.id, brand: item.brand, name: item.name }));
 }
 
 /** Build the off-runtime master inventory from the discovery lists. */

@@ -67,7 +67,7 @@ describe("jack local points", () => {
 			{ kind: "out", edge: "left", pos: 0.25 },
 			{ kind: "out", edge: "left" },
 		]);
-		expect(jacks.map((jack) => jack.pos)).toEqual([1 / 3, 2 / 3, 0.25, 1 / 2]);
+		expect(jacks.map((jack) => jack.pos)).toEqual([1 / 3, 2 / 3, 0.25, 0.625]);
 		expect(jacks.map((jack) => jack.approximate === true)).toEqual([
 			true,
 			true,
@@ -214,6 +214,15 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 		};
 		expect(resolveItemJacks(supply, [supplyDef])).toEqual([]);
 		expect(usesFallbackJacks(supply, [supplyDef])).toBe(false);
+	});
+
+	it("never overlaps an edge-only jack with an exact position", () => {
+		const jacks = resolveJackLayout([
+			{ kind: "in", edge: "top", pos: 0.5 },
+			{ kind: "out", edge: "top" },
+		]);
+		expect(jacks[1]?.pos).toBe(0.25);
+		expect(jacks[1]?.approximate).toBe(true);
 	});
 
 	it("marks edge-only jacks approximate in the anchor index", () => {

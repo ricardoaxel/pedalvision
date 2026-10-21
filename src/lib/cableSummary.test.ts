@@ -187,6 +187,30 @@ describe("buildCableSchedule", () => {
 		expect(schedule.unconnectedEndpoints).toEqual(["Amp input", "Amp input"]);
 	});
 
+	it("flags cables whose real jack positions are edge-only (approximate)", () => {
+		const edgeOnly = (refId: string) =>
+			pedal(refId, {
+				jacks: [
+					{ kind: "in", edge: "left" },
+					{ kind: "out", edge: "right" },
+				],
+			});
+		const schedule = buildCableSchedule({
+			boards: [],
+			items: [item("a", "a", 10, 10), item("b", "b", 40, 10)],
+			customPedals: [edgeOnly("a"), edgeOnly("b")],
+			endpoints: [],
+			cables: [
+				cable("c1", { itemUid: "a", jack: "1" }, { itemUid: "b", jack: "0" }),
+			],
+		});
+		expect(schedule.rows[0]?.approximate).toBe(true);
+		expect(schedule.rows[0]?.approximateFrom).toBe(true);
+		expect(schedule.rows[0]?.approximateTo).toBe(true);
+		expect(schedule.approximateCount).toBe(1);
+		expect(schedule.assumedCount).toBe(0);
+	});
+
 	it("defensively flags a cable whose end no longer resolves", () => {
 		const scene = {
 			boards: [],

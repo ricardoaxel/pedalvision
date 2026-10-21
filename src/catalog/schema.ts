@@ -190,6 +190,13 @@ export const JackSchema = z.object({
 	 * Absent = mono (keeps older catalog/custom definitions valid).
 	 */
 	stereo: z.boolean().optional(),
+	/**
+	 * Derived resolver flag (P5-01): the edge is known but the exact position
+	 * was not published, so `pos` is an even distribution — render it as
+	 * approximate (hollow tick). Not authored by hand; persisted only if a
+	 * definition already carries it.
+	 */
+	approximate: z.boolean().optional(),
 });
 
 export const PowerSchema = z.object({

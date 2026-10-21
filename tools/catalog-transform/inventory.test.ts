@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { brandKey, buildInventory, type DiscoveryRow } from "./inventory.ts";
-import { CATALOG_LIMITS } from "./limits.ts";
+import {
+	CATALOG_LIMITS,
+	TIER_A_BOARD_BRANDS,
+	TIER_A_PEDAL_BRANDS,
+} from "./limits.ts";
 
 function pedal(
 	brand: string,
@@ -21,6 +25,17 @@ describe("brandKey", () => {
 		expect(brandKey("Temple Audio")).toBe("temple-audio");
 		expect(brandKey("Morton Pedalboards")).toBe("morton");
 		expect(brandKey("Rockboard by Warwick")).toBe("rockboard");
+		expect(brandKey("GFI System")).toBe("gfi-system");
+		expect(brandKey("GFI")).toBe("gfi-system");
+	});
+
+	it("maps every priority brand to a unique canonical key", () => {
+		const pedalKeys = TIER_A_PEDAL_BRANDS.map((brand) => brandKey(brand));
+		const boardKeys = TIER_A_BOARD_BRANDS.map((brand) => brandKey(brand));
+		expect(new Set(pedalKeys).size).toBe(TIER_A_PEDAL_BRANDS.length);
+		expect(new Set(boardKeys).size).toBe(TIER_A_BOARD_BRANDS.length);
+		expect(pedalKeys).toContain("gfi-system");
+		expect(boardKeys).toContain("temple-audio");
 	});
 });
 
@@ -74,14 +89,58 @@ describe("buildInventory", () => {
 			[board("Creation Music Co", "Aero 17x12.5")],
 			{
 				generatedAt: "2026-10-21",
-				seedPedals: [{ brand: "BOSS", name: "DS-1 Distortion" }],
-				seedBoards: [{ brand: "Creation Music Co", name: "Aero 17x12.5" }],
+				seedPedals: [
+					{
+						id: "boss-ds-1-distortion",
+						brand: "BOSS",
+						name: "DS-1 Distortion",
+					},
+				],
+				seedBoards: [
+					{
+						id: "creation-music-co-aero-17x12-5",
+						brand: "Creation Music Co",
+						name: "Aero 17x12.5",
+					},
+				],
 			},
 		);
 		expect(inventory.summary.pedals.seedOverlap).toBe(1);
 		expect(inventory.summary.boards.seedOverlap).toBe(1);
 		expect(inventory.pedals[0]?.seed).toBe(true);
+		expect(inventory.pedals[0]?.seedId).toBe("boss-ds-1-distortion");
 		expect(inventory.boards[0]?.seed).toBe(true);
+		expect(inventory.boards[0]?.seedId).toBe("creation-music-co-aero-17x12-5");
+	});
+
+	it("carries the legacy seed id when the slug rule changed", () => {
+		const inventory = buildInventory([pedal("MXR", "Bass DI+")], [], {
+			generatedAt: "2026-10-21",
+			seedPedals: [{ id: "mxr-bass-di", brand: "MXR", name: "Bass DI+" }],
+		});
+		expect(inventory.pedals[0]?.id).toBe("mxr-bass-di-plus");
+		expect(inventory.pedals[0]?.seed).toBe(true);
+		expect(inventory.pedals[0]?.seedId).toBe("mxr-bass-di");
+	});
+
+	it("does not link a distinct model that merely has a parenthetical suffix", () => {
+		const inventory = buildInventory(
+			[
+				pedal("Source Audio", "Ultrawave"),
+				pedal("Source Audio", "Ultrawave (Bass)"),
+				pedal("Pete Cornish", "CC-1 (Deluxe)"),
+			],
+			[],
+			{ generatedAt: "2026-10-21" },
+		);
+		const bass = inventory.pedals.find(
+			(item) => item.id === "source-audio-ultrawave-bass",
+		);
+		const deluxe = inventory.pedals.find(
+			(item) => item.id === "pete-cornish-cc-1-deluxe",
+		);
+		expect(bass?.variantOf).toBeUndefined();
+		expect(deluxe?.variantOf).toBeUndefined();
 	});
 
 	it("caps Tier A at exactly 1,850 pedals", () => {

@@ -276,10 +276,11 @@ export type ResolvedJack = Jack & { pos: number; approximate?: boolean };
 
 /**
  * Resolve edge-only jacks into concrete anchor positions (P5-01). A source may
- * only confirm "2 jacks on top", so every jack with no `pos` is distributed
- * evenly across its own edge at `(n+1)/(count+1)`; exact positions are kept.
- * Deterministic and side-effect free. Returns the input array unchanged when
- * every jack already has a position (the common case).
+ * only confirm "2 jacks on top", so every jack with no `pos` is placed in the
+ * middle of the largest gap left by exact positions on its edge (evenly across
+ * the edge when none are exact). Exact positions always win. Deterministic and
+ * side-effect free. Returns the input array unchanged when every jack already
+ * has a position (the common case).
  */
 export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
 	if (jacks.every((jack) => jack.pos !== undefined)) {
@@ -293,10 +294,43 @@ export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
 		else missingByEdge.set(jack.edge, [index]);
 	});
 	const positions = new Map<number, number>();
-	for (const indexes of missingByEdge.values()) {
-		indexes.forEach((index, position) => {
-			positions.set(index, (position + 1) / (indexes.length + 1));
-		});
+	for (const [edge, indexes] of missingByEdge) {
+		// Exact positions on this edge are fixed. Place each missing jack in the
+		// middle of the largest remaining gap (splitting it), so mixed exact /
+		// edge-only data never produces two anchors at the same point.
+		const exact = jacks
+			.map((jack, index) => ({ jack, index }))
+			.filter(
+				({ jack, index }) =>
+					jack.edge === edge &&
+					jack.pos !== undefined &&
+					!indexes.includes(index),
+			)
+			.map(({ jack }) => jack.pos as number)
+			.sort((a, b) => a - b);
+		if (exact.length === 0) {
+			indexes.forEach((index, position) => {
+				positions.set(index, (position + 1) / (indexes.length + 1));
+			});
+			continue;
+		}
+		const boundaries = [0, ...exact, 1];
+		for (const index of indexes) {
+			let bestGap = -1;
+			let bestMidpoint = 0.5;
+			for (let i = 0; i < boundaries.length - 1; i++) {
+				const start = boundaries[i] ?? 0;
+				const end = boundaries[i + 1] ?? 1;
+				const gap = end - start;
+				if (gap > bestGap + 1e-9) {
+					bestGap = gap;
+					bestMidpoint = start + gap / 2;
+				}
+			}
+			positions.set(index, bestMidpoint);
+			boundaries.push(bestMidpoint);
+			boundaries.sort((a, b) => a - b);
+		}
 	}
 	return jacks.map((jack, index) => {
 		if (jack.pos !== undefined) return jack as ResolvedJack;

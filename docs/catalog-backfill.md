@@ -40,11 +40,12 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
   (`data/catalog/fixtures/eventide-h90.json`) maps 14 connectors without
   inventing positions.
 - **Master inventory:** `data/catalog/inventory.json` — 8,557 pedals / 779
-  brands → **8,549 unique** (8 duplicates removed, 900 colorway variants, 268
-  orphan variants kept standalone); 263 boards / 38 brands → **263 unique**.
-  **Tier A = 1,850 pedals + exactly 150 boards**; Tier B = 1,655 pedals / 108
-  boards; Tier C = 5,044 pedals / 5 boards. Seed overlap: **207 pedals / 10
-  boards**.
+  brands → **8,549 unique** (8 duplicates removed, 481 conservative colorway
+  links, 143 orphan variants kept standalone); 263 boards / 38 brands → **263
+  unique**. **Tier A = 1,850 pedals + exactly 150 boards**; Tier B = 1,673
+  pedals / 108 boards; Tier C = 5,026 pedals / 5 boards. Seed overlap: **207
+  pedals / 10 boards** (the single legacy id `mxr-bass-di` is carried as
+  `seedId` for `mxr-bass-di-plus`).
 - **Seed validation:** `data/catalog/seed-validation.json` covers all 207 + 10
   items (keep/repair/replace/drop). Today every item is **replace** because the
   seed images are mock/url/placeholder; the facts are kept.

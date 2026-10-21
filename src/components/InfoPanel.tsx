@@ -95,8 +95,8 @@ export function InfoPanel() {
 		resolved,
 		item.kind,
 		jacks,
-		usesFallbackJacks(item, customPedals) ||
-			jacks.some((jack) => jack.approximate === true),
+		usesFallbackJacks(item, customPedals),
+		jacks.some((jack) => jack.approximate === true),
 	);
 
 	// While this item is lifted, evaluate the warning where it floats (live
@@ -380,6 +380,10 @@ export function InfoPanel() {
 						</dl>
 						{info.jacksAssumed ? (
 							<p className="info-panel__assumed">Jack positions assumed.</p>
+						) : info.jacksApproximate ? (
+							<p className="info-panel__assumed">
+								Some jack positions are approximate.
+							</p>
 						) : null}
 					</section>
 				) : null}
