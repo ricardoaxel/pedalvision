@@ -50,11 +50,14 @@ Shape (superset; extra verified facts go in `extra`):
   "widthCm": 7.3, "heightCm": 12.9,
   "dimensionsSource": "manufacturer page",
   "jacks": [
-    { "kind": "in", "edge": "right", "pos": 0.5, "stereo": false },
-    { "kind": "out", "edge": "left", "pos": 0.5, "stereo": false }
+    { "kind": "in", "edge": "right", "pos": 0.5, "stereo": false,
+      "connector": "ts", "channels": 1, "signal": "audio", "balanced": false },
+    { "kind": "out", "edge": "left", "pos": 0.5, "stereo": false,
+      "connector": "ts", "channels": 1, "signal": "audio", "balanced": false }
   ],
   "power": { "voltage": 9, "acDc": "DC", "currentMa": 12 },
   "io": { "inputs": 1, "outputs": 1, "stereo": false },
+  "optional": { /* connectors, audio, control, MIDI, USB, wireless, circuit, physical, supply — see §Optional metadata */ },
   "usage": "guitar",
   "color": "orange",
   "year": 1978,
@@ -74,6 +77,51 @@ Shape (superset; extra verified facts go in `extra`):
 - Image candidates, reject reasons and source pages are kept so a rejected image can be re-checked without re-researching the pedal.
 - A later schema addition (e.g. `color`, `stereo`, `bypass`) is a mapping change, not a new research pass: read the raw record first, only re-check fields that are missing.
 - The raw archive is committed (small JSON, no images) so every future session can reuse it.
+
+## Optional metadata — capture everything verified
+
+These are **optional**: capture them when a source provides them, never invent them. The raw archive holds the full set; the runtime catalog projects only what the UI shows. This is the “no double-checking later” layer.
+
+### Connectors & jacks
+Per jack/connector: `label`, `kind` (semantic: in/out/send/return/exp/exp-in/exp-out/midi/ctrl/power), `edge`, `pos?`/`xCm?`/`yCm?`, `approximate?`, `connector` (`ts`, `trs`, `xlr`, `din5`, `trs-midi-a`, `trs-midi-b`, `usb-a`, `usb-b`, `usb-c`, `micro-usb`, `mini-usb`, `barrel`, `iec`, `rca`, `3.5mm`, `other`), `channels`, `signal` (`audio`, `midi`, `control`, `power`, `usb`, `digital-audio`), `balanced?`, `level?` (`instrument`, `line`, `speaker`, `headphone`), `impedanceOhm?`, `maxLevelDbu?`, `stereo?`, `midiType?` (`a`, `b`, `din5`, `usb`), `usbFunctions?` (`audio`, `midi`, `editor`, `firmware`, `power`, `host`), `note?`.
+
+This is why a single `kind` is not enough: the **Eventide H90** alone has 4× ¼″ TS inputs, 4× ¼″ TS outputs, 2× ¼″ TRS EXP/CTL jacks, MIDI DIN in + out/thru, USB-C, and a 12 V DC center-positive 5.5/2.5 mm power jack. All of that maps into the same jack/connector record without inventing positions.
+
+### Audio I/O
+Inputs/outputs count and channels; mono/stereo/true-stereo; balanced/unbalanced; instrument/line level; input/output impedance; maximum input/output level; dry-through (analog/digital/none); headphone out; aux in; DI/XLR out; effects loop (send/return count, mono/stereo, TRS insert); 4-cable-method support; ground lift; phase invert.
+
+### Control
+Expression/CV inputs (count, TRS wiring, voltage range); aux/footswitch inputs; tap-tempo; amp channel switching (latching/momentary, TS/TRS, relay); remote jacks; MIDI control.
+
+### MIDI
+5-pin DIN in/out/thru; TRS MIDI **Type A vs Type B**; USB-MIDI; BLE-MIDI; MIDI clock; program change/CC; channel count; merge/thru behavior.
+
+### USB
+Connector type; functions (audio interface, MIDI, editor, firmware update, power, host); class compliance; audio channels; sample rate; bit depth; latency; bus power.
+
+### Wireless, app & presets
+Bluetooth audio/control/version; Wi-Fi; companion app/editor; preset/bank/scene count; IR loading (slots, formats, sample rates); cloud/editor features.
+
+### Power
+Voltage; AC/DC; current draw (mA); power consumption (W); polarity (`center-negative`/`center-positive`); connector size (2.1/2.5 mm/IEC/USB-C); battery type/life; USB bus power; isolation requirement; inrush/peak current; recommended supply. For a **power supply**: outlet count, isolated outputs, per-output V/mA, total mA, AC input.
+
+### Circuit & performance
+Analog/digital/hybrid; bypass type (true/buffered/relay/electronic); switching method; DSP/modeling/IR; sample rate/bit depth; latency; trails/spillover; kill-dry; parallel/series routing; scenes/presets; tuner/looper/metronome.
+
+### Physical
+Weight; depth/height; enclosure material; finish/color; display; footswitch count; onboard expression pedal; mounting.
+
+### Provenance
+`sources`, `confidence`, `lastVerified`, `dimensionsSource`, `imageCandidates`, and the `extra` bag for anything else verified.
+
+## Future: community jack maps
+
+Once the catalog exists, users can be offered a **“suggest jack layout”** mode: place jack markers on a pedal's top-down footprint, choose connector/direction, attach a photo/evidence, and submit. We review and merge only approved maps into the raw archive (`status: pending|approved|rejected`, `contributor`, `evidence`, `reviewedAt`).
+
+- **v1 without a backend:** the builder produces a JSON snippet + prefilled GitHub issue/PR; no accounts, no server, no automatic writes.
+- **v2:** accounts + moderation queue + database; rate limits; contributor credit; removal path.
+- **What it unlocks:** exact anchors for pedals with no published layout; real patch-cable lengths (P4-03); 4-cable/amp-loop and stereo/TRS/MIDI routing validation; right-angle/straight plug clearance; power-jack planning; connectivity filters; better export diagrams; coverage metrics. Unmapped pedals keep the fallback anchors.
+- **Quality:** approved-only, evidence-backed, versioned; user photos follow the same rights/takedown policy.
 
 ## Data contract
 
@@ -212,3 +260,15 @@ The 2,000 cap and the measured batch duration are the real constraints.
 The old appendix (per-pedal mocked/cleared status for the 207-item seed) is
 superseded by this plan and remains in git history. The machine-readable source
 of truth is the catalog data + the P5 registry.
+
+## Research references (standards & examples)
+
+- Eventide H90 specifications / rear panel — 4 TS in, 4 TS out, 2 TRS EXP/CTL, MIDI DIN in/out, USB-C, 12 V center-positive 5.5/2.5 mm: <https://www.eventideaudio.com/pedals/h90/> and <https://cdn.eventideaudio.com/manuals/h90/1.12.5/content/appendix/specifications.html>
+- MIDI Association — TRS connectors with MIDI devices (Type A standard; Type B legacy): <https://midi.org/specification-for-use-of-trs-connectors-with-midi-devices>
+- MIDI transports / TRS A-B pinout: <https://midi.community/docs/transports/>
+- Red Panda — stereo/TRS vs balanced, CV/expression wiring: <https://support.redpandalab.com/support/solutions/articles/43000586536-stereo-pedal-connections> and <https://support.redpandalab.com/support/solutions/articles/43000583020-building-a-cv-to-expression-cable>
+- Elektron — TS/TRS, balanced/unbalanced, CV/expression/footswitch: <https://support.elektron.se/support/solutions/articles/43000601004-connectors-and-signals>
+- Strymon — pedal power requirements, 9V center-negative 2.1 mm, current headroom, isolated outputs: <https://www.strymon.net/gear-guide-getting-right-power-supply-strymon-pedal/>
+- Guitar.com — pedal power guide (voltage/polarity/current, AC exceptions): <https://guitar.com/guides/buyers-guide/pedal-power-explained/>
+- Truetone — power FAQ (voltage/polarity/current): <https://www.truetone.com/FAQ/>
+- Guitar World — true vs buffered bypass: <https://www.guitarworld.com/features/true-bypass-vs-buffered-bypass>

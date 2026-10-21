@@ -27,7 +27,7 @@ Establish the owner-approved policy and data contract for the P5 catalog, then b
 
 1. Update ADR-003: public-asset policy, `public-asset` tag, attribution/takedown, launch-gate wording, 2,000 cap, **capture-once raw research archive**.
 2. Extend the catalog schema (additive): `usage`, `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`, `public-asset` in `SOURCE_TAGS`; keep `jacks.stereo?`.
-3. Define the **raw research record** (superset) and `data/catalog/research/<brand>/<batch>.json`, so all verified facts/image candidates/source pages are kept even when not yet in the runtime schema. Runtime catalog = projection; later fields are mapped from raw, never re-researched.
+3. Define the **raw research record** (superset) and `data/catalog/research/<brand>/<batch>.json`, so all verified facts/image candidates/source pages are kept even when not yet in the runtime schema. Runtime catalog = projection; later fields are mapped from raw, never re-researched. The raw schema covers **connectors** (TS/TRS/XLR/DIN5/TRS-MIDI A/B/USB/barrel/IEC), **audio I/O** (mono/stereo/balanced/level/impedance/loops/DI/headphone), **control** (expression/CV/footswitch/tap/amp-switch), **MIDI** (DIN/TRS A-B/USB/BLE/clock), **USB** (type/functions/class/audio), **wireless/app/presets/IR**, **power** (V/AC-DC/mA/W/polarity/connector/battery/supply outlets), **circuit** (analog/digital/hybrid, bypass), and **physical** (weight/enclosure/display). Use the **H90** as a stress fixture (4 TS in, 4 TS out, 2 TRS EXP/CTL, MIDI DIN in/out, USB-C, 12 V center-positive 5.5/2.5 mm).
 4. Build `data/catalog/inventory.json` from the 8,557-item discovery list + other `pedal-expert` sources: normalize brand/name, slug, dedupe, collapse colorways to `variantOf`, brand tiers (A/B/C).
 5. Mark which inventory items overlap the current 207 seed; preserve curated effect types/sources, and create raw records for them where missing.
 6. Produce `data/catalog/seed-validation.json` for the 207: keep/repair/replace/drop + reasons (missing mandatory field, bad dimensions, bad image, duplicate).
@@ -42,6 +42,8 @@ Establish the owner-approved policy and data contract for the P5 catalog, then b
 - ADR-003 + roadmap/phase-guide/catalog-backfill agree on the policy, 2k cap, and P5 numbering.
 - No image downloads or `public/pedal-assets` changes.
 - Raw-capture schema documented; every field we may later surface has a home (`extra` for unknown/verified facts). No re-research needed for a future field addition.
+- The H90 stress fixture maps all its connectors without inventing positions; optional fields stay optional.
+- A future **community jack-map** record is specified (`pending|approved|rejected`, contributor/evidence/reviewedAt) with a v1 GitHub-submission path and a v2 backend path.
 
 ## Notes
 

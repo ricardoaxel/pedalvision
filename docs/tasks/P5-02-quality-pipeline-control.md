@@ -25,7 +25,7 @@ Build the deterministic tooling that makes parallel catalog work safe, cheap, ob
 
 ## Steps
 
-1. **Batch layout:** `data/catalog/research/<brand>/<batch>.json` (raw capture) + mapped batch output; per-brand registry; `catalog:build` maps raw → runtime and writes `src/catalog/data/pedals.json`; `catalog:validate` checks both raw and runtime (schema, duplicate ids, variants, mandatory fields, foreign keys). Raw records preserve all verified facts/image candidates, including fields not yet in the runtime schema.
+1. **Batch layout:** `data/catalog/research/<brand>/<batch>.json` (raw capture) + mapped batch output; per-brand registry; `catalog:build` maps raw → runtime and writes `src/catalog/data/pedals.json`; `catalog:validate` checks both raw and runtime (schema, duplicate ids, variants, mandatory fields, foreign keys). Raw records preserve all verified facts/image candidates — including connectors, audio I/O, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical — even when not yet in the runtime schema. Add enums + structural checks for the optional fields; missing is valid.
 2. **Image analyzer** (script): min long edge 800; background uniformity/border-connected; alpha; trim bbox/whitespace; aspect vs `widthCm/heightCm` (≤10% pass, 10–15% flag, >15% reject); rotation/skew; shadow/perspective signals; JSON report.
 3. **Image processor** (script): extend the asset pipeline's flood fill for white/solid backgrounds; optional dev-only matting fallback for gradients; trim; transparent PNG; 800/350; atomic temp→rename.
 4. **Vision QA:** contact-sheet helper (20–30 images per call) + a reviewer agent definition; cache accept/reject reasons.
