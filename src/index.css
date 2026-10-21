@@ -4881,3 +4881,465 @@ body {
 		width: min(280px, calc(100vw - var(--space-4) * 2));
 	}
 }
+
+/* ---------------------------------------------------------------------------
+ * P4-03 "Cable Schedule" — a ruled ledger derived from the cable graph.
+ * Owner-approved direction 2026-10-21. Zero new tokens: ink hierarchy +
+ * hairlines + mono instrumentation only. Non-modal desktop dock / mobile tray.
+ * ------------------------------------------------------------------------- */
+
+.schedule-trigger {
+	justify-content: center;
+	gap: 6px;
+}
+
+.schedule-trigger__glyph {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	line-height: 1;
+}
+
+.schedule-trigger__label {
+	text-transform: uppercase;
+}
+
+.endpoint-popover__row--link {
+	margin-top: var(--space-1);
+	border-top: 1px solid var(--color-border);
+	border-radius: 0 0 var(--radius-control) var(--radius-control);
+}
+
+.endpoint-popover__row--link > span:nth-child(2) {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.endpoint-popover__chevron {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule {
+	position: absolute;
+	top: calc(var(--space-4) + 44px + var(--space-2));
+	right: var(--space-4);
+	z-index: 3;
+	display: flex;
+	flex-direction: column;
+	width: var(--panel-width);
+	max-width: min(var(--panel-width), calc(100% - 32px));
+	max-height: calc(
+		100% -
+		(var(--space-4) + 44px + var(--space-2)) -
+		var(--space-4)
+	);
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-raised);
+	overflow: hidden;
+}
+
+.cable-schedule:focus {
+	outline: none;
+}
+
+.cable-schedule__header {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding: var(--space-4) var(--space-4) 0;
+}
+
+.cable-schedule__heading {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+
+.cable-schedule__eyebrow {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-eyebrow);
+}
+
+.cable-schedule__title {
+	margin: 0;
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--tracking-tight);
+	line-height: var(--leading-tight);
+}
+
+.cable-schedule__hint {
+	margin: 2px 0 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: var(--leading-normal);
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__close {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.cable-schedule__close:hover {
+	color: var(--color-ink);
+	background-color: var(--color-surface-raised);
+}
+
+.cable-schedule__close:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.cable-schedule__body {
+	flex: 1 1 auto;
+	min-height: 0;
+	padding: var(--space-1) var(--space-4) var(--space-4);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.cable-schedule__section {
+	margin-top: var(--space-4);
+}
+
+.cable-schedule__section-title {
+	margin: 0 0 var(--space-2);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-eyebrow);
+}
+
+.cable-schedule__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cable-schedule__row {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2);
+	min-height: 44px;
+	padding: var(--space-2) 0;
+	border-top: 1px solid var(--color-border);
+}
+
+.cable-schedule__row:first-child {
+	border-top: 0;
+}
+
+.cable-schedule__ordinal {
+	flex: 0 0 24px;
+	padding-top: 1px;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-variant-numeric: tabular-nums;
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__route {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: baseline;
+	gap: 4px;
+	min-width: 0;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	line-height: var(--leading-normal);
+}
+
+.cable-schedule__end {
+	flex: 0 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cable-schedule__arrow {
+	flex: 0 0 auto;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__measure {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 2px;
+	min-width: 68px;
+	padding-right: var(--space-1);
+	text-align: right;
+}
+
+.cable-schedule__length {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.cable-schedule__meta {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__assumed {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-eyebrow);
+	white-space: nowrap;
+}
+
+.cable-schedule__row[data-unresolved="true"] .cable-schedule__length {
+	color: var(--color-danger);
+}
+
+.cable-schedule__totals {
+	margin: 0;
+}
+
+.cable-schedule__total {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding: 6px 0;
+	border-top: 1px solid var(--color-border);
+}
+
+.cable-schedule__total:first-child {
+	border-top: 0;
+}
+
+.cable-schedule__total-label {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	font-variant-numeric: tabular-nums;
+}
+
+.cable-schedule__total-count {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	font-variant-numeric: tabular-nums;
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__flags {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cable-schedule__flag {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	min-width: 0;
+	font-size: var(--font-size-sm);
+}
+
+.cable-schedule__flag-dot {
+	flex: 0 0 auto;
+	width: 8px;
+	height: 8px;
+	border-radius: var(--radius-pill);
+	background-color: var(--color-warning);
+}
+
+.cable-schedule__flag-name {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cable-schedule__flag-note {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	color: var(--color-ink-muted);
+	white-space: nowrap;
+}
+
+.cable-schedule__dangling {
+	margin: var(--space-3) 0 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: var(--leading-normal);
+	color: var(--color-danger);
+}
+
+.cable-schedule__legend {
+	margin: var(--space-3) 0 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: var(--leading-normal);
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__footer {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--space-3);
+	padding: var(--space-3) var(--space-4);
+	background-color: var(--color-surface-elevated);
+	border-top: 1px solid var(--color-border);
+}
+
+.cable-schedule__footer-label {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__footer-value {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	font-variant-numeric: tabular-nums;
+}
+
+.cable-schedule__empty {
+	padding: var(--space-4) 0 var(--space-2);
+}
+
+.cable-schedule__empty-title {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+}
+
+.cable-schedule__empty-text {
+	margin: 4px 0 0;
+	font-size: var(--font-size-sm);
+	line-height: var(--leading-normal);
+	color: var(--color-ink-muted);
+}
+
+.cable-schedule__secondary {
+	min-height: 44px;
+	margin-top: var(--space-3);
+	padding: var(--space-2) var(--space-4);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.cable-schedule__secondary:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.cable-schedule__secondary:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+@media (max-width: 1023px) {
+	.schedule-trigger {
+		width: 44px;
+		min-width: 44px;
+		padding: 0;
+		gap: 0;
+	}
+
+	.schedule-trigger__label {
+		display: none;
+	}
+
+	/* Content-sized tray above the persistent tab bar — not a full sheet. */
+	.cable-schedule {
+		position: fixed;
+		top: auto;
+		right: 12px;
+		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-2));
+		left: 12px;
+		width: auto;
+		max-width: none;
+		max-height: 52dvh;
+	}
+
+	.cable-schedule__header {
+		padding: var(--space-2) var(--space-4) 0;
+	}
+
+	.cable-schedule__body {
+		padding: var(--space-1) var(--space-4) var(--space-3);
+	}
+
+	/* A read-only recipient has the Save/My scenes bar at the bottom; keep a
+	 * clear gap so the schedule never reads as part of it. */
+	.app[data-readonly="true"] .cable-schedule {
+		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-4));
+	}
+
+	/* Only one bottom surface at a time; the tab bar + canvas stay usable. */
+	.app[data-schedule="open"] .info-panel {
+		display: none;
+	}
+
+	.app[data-schedule="open"] .patch-hidden-cue {
+		display: none;
+	}
+}
+
+@media (max-width: 1023px) and (max-height: 560px) {
+	.cable-schedule {
+		position: absolute;
+		top: calc(var(--space-4) + 44px + var(--space-2));
+		right: 12px;
+		bottom: auto;
+		left: auto;
+		width: min(360px, calc(100% - 24px));
+		max-height: calc(100dvh - 68px - 56px);
+	}
+}

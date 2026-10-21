@@ -6,6 +6,7 @@ import { Stage } from "./canvas/Stage";
 import { useHistoryShortcuts } from "./canvas/useHistoryShortcuts";
 import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
+import { CableSchedulePanel } from "./components/CableSchedulePanel";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import {
 	EndpointControl,
@@ -56,7 +57,11 @@ function PatchHiddenCue() {
 	const endpoints = useScene((state) => state.endpoints.length);
 	if (showCables || readOnly || cables + endpoints === 0) return null;
 	return (
-		<div className="graph-status" data-testid="patch-hidden" role="status">
+		<div
+			className="graph-status patch-hidden-cue"
+			data-testid="patch-hidden"
+			role="status"
+		>
 			<span>
 				Patch hidden · {cables} {cables === 1 ? "cable" : "cables"} ·{" "}
 				{endpoints} {endpoints === 1 ? "endpoint" : "endpoints"}
@@ -97,6 +102,8 @@ function App() {
 	// P3-03: a share link opens a read-only preview; the Share panel is sender-only.
 	const [shareOpen, setShareOpen] = useState(false);
 	const shareTriggerRef = useRef<HTMLButtonElement>(null);
+	// P4-03: the derived cable schedule is opened deliberately, never auto-shown.
+	const [scheduleOpen, setScheduleOpen] = useState(false);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const shareStatus = useShare((state) => state.status);
 	const showCables = useSettings((state) => state.showCables);
@@ -107,6 +114,10 @@ function App() {
 			requestAnimationFrame(() => sceneTriggerRef.current?.focus());
 		}
 		previousReadOnly.current = readOnly;
+	}, [readOnly]);
+	// A read-only preview is a different document: never keep a sender schedule open.
+	useEffect(() => {
+		if (readOnly) setScheduleOpen(false);
 	}, [readOnly]);
 	const activeSceneName = useSceneLibrary((state) => {
 		const active = state.scenes.find((entry) => entry.id === state.activeId);
@@ -166,6 +177,7 @@ function App() {
 		setEditingBoardUid(null);
 		setPickerTab(tab);
 		setPickerOpen(true);
+		setScheduleOpen(false);
 	};
 
 	const openExport = () => {
@@ -179,6 +191,7 @@ function App() {
 		setScenesOpen(false);
 		setShareOpen(false);
 		setExportOpen(true);
+		setScheduleOpen(false);
 	};
 
 	const openScenes = () => {
@@ -192,6 +205,7 @@ function App() {
 		setExportBusy(false);
 		setShareOpen(false);
 		setScenesOpen(true);
+		setScheduleOpen(false);
 	};
 
 	const openShare = () => {
@@ -204,11 +218,36 @@ function App() {
 		setExportBusy(false);
 		setScenesOpen(false);
 		setShareOpen(true);
+		setScheduleOpen(false);
 	};
 
 	const closeShare = () => {
 		setShareOpen(false);
 		requestAnimationFrame(() => shareTriggerRef.current?.focus());
+	};
+
+	const openSchedule = () => {
+		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
+		setPickerOpen(false);
+		setEditingCustomRefId(null);
+		setEditingBoardUid(null);
+		setExportOpen(false);
+		setExportBusy(false);
+		setScenesOpen(false);
+		setShareOpen(false);
+		setScheduleOpen(true);
+	};
+
+	const closeSchedule = () => {
+		setScheduleOpen(false);
+		requestAnimationFrame(() => {
+			const trigger = document.querySelector<HTMLElement>(
+				"[data-schedule-return]",
+			);
+			trigger?.focus();
+		});
 	};
 
 	// Close + return focus to the trigger (the non-modal dialog's contract).
@@ -229,6 +268,7 @@ function App() {
 		setEditingBoardUid(null);
 		setPickerTab("custom");
 		setPickerOpen(true);
+		setScheduleOpen(false);
 	};
 
 	const openBoardEdit = (uid: string) => {
@@ -236,6 +276,7 @@ function App() {
 		setEditingCustomRefId(null);
 		setPickerTab("custom");
 		setPickerOpen(true);
+		setScheduleOpen(false);
 	};
 
 	const closePicker = () => {
@@ -251,6 +292,7 @@ function App() {
 			data-export={exportOpen ? "open" : undefined}
 			data-scenes={scenesOpen ? "open" : undefined}
 			data-share={shareStatus === "none" ? undefined : shareStatus}
+			data-schedule={scheduleOpen ? "open" : undefined}
 			data-readonly={readOnly ? "true" : undefined}
 			data-storage={storageLevel}
 		>
@@ -296,7 +338,27 @@ function App() {
 				)}
 				<div className="app-toolbar">
 					{readOnly ? (
-						<ShareActions />
+						<>
+							<button
+								type="button"
+								className="hud-button schedule-trigger"
+								data-testid="schedule-open-readonly"
+								data-schedule-trigger
+								data-schedule-return
+								aria-label="Open cable schedule"
+								title="Cable schedule"
+								aria-haspopup="dialog"
+								aria-expanded={scheduleOpen}
+								aria-controls="cable-schedule"
+								onClick={openSchedule}
+							>
+								<span className="schedule-trigger__glyph" aria-hidden="true">
+									≡
+								</span>
+								<span className="schedule-trigger__label">Cables</span>
+							</button>
+							<ShareActions />
+						</>
 					) : (
 						<>
 							<HistoryControls variant="toolbar" />
@@ -325,7 +387,7 @@ function App() {
 								<BoardIcon />
 								<PlusIcon />
 							</button>
-							<EndpointControl />
+							<EndpointControl onOpenSchedule={openSchedule} />
 							<button
 								ref={shareTriggerRef}
 								type="button"
@@ -388,6 +450,7 @@ function App() {
 				) : null}
 				<EndpointPlacementOverlay />
 				<GraphStatusChip />
+				{scheduleOpen ? <CableSchedulePanel onClose={closeSchedule} /> : null}
 				<PatchHiddenCue />
 				<ShareEditCue />
 				{shareOpen && !readOnly ? (
