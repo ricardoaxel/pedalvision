@@ -21,6 +21,7 @@ import {
 	ShareSavedNotice,
 	ShareStamp,
 } from "./components/ShareView";
+import { StorageAnnouncer, StorageNotice } from "./components/StorageNotice";
 import { capacityStatus } from "./lib/capacity";
 import { useSceneLibrary } from "./state/library";
 import { useReadOnly } from "./state/readOnly";
@@ -56,6 +57,7 @@ function App() {
 	const shareTriggerRef = useRef<HTMLButtonElement>(null);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const shareStatus = useShare((state) => state.status);
+	const storageLevel = useSceneLibrary((state) => state.storageHealth.level);
 	const previousReadOnly = useRef(readOnly);
 	useEffect(() => {
 		if (previousReadOnly.current && !readOnly) {
@@ -185,9 +187,11 @@ function App() {
 			data-scenes={scenesOpen ? "open" : undefined}
 			data-share={shareStatus === "none" ? undefined : shareStatus}
 			data-readonly={readOnly ? "true" : undefined}
+			data-storage={storageLevel}
 		>
 			<h1 className="visually-hidden">Pedalvision</h1>
 			<CapacityAnnouncer />
+			<StorageAnnouncer readOnly={readOnly} />
 			<div className="app-canvas">
 				<Stage />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
@@ -199,8 +203,13 @@ function App() {
 					<>
 						<ItemActionBar onEditCustom={openCustomEdit} />
 						<BoardActionBar onEditBoard={openBoardEdit} />
-						{/* First-run "Bench Note" (P2-08): small, dismissible, non-modal. */}
-						<FirstRunHint onAddBoard={() => openPicker("boards")} />
+						{/* First-run "Bench Note" (P2-08): one notice at a time — the
+						 * storage warning wins while saving is unavailable (P3-05). */}
+						{storageLevel === "unavailable" ? null : (
+							<FirstRunHint onAddBoard={() => openPicker("boards")} />
+						)}
+						{/* Storage fallback (P3-05): inline, non-modal, never a toast. */}
+						<StorageNotice />
 						<button
 							ref={sceneTriggerRef}
 							type="button"

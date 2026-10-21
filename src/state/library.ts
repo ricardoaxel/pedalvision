@@ -12,6 +12,11 @@ import {
 	writeSceneIndex,
 	writeSettings,
 } from "../lib/sceneIndex";
+import {
+	healthyStorageHealth,
+	type StorageHealth,
+	withStorageFailure,
+} from "../lib/storageHealth";
 import { type AutosaveTimers, createAutosave } from "./autosave";
 import { clearHistory } from "./history";
 import { useReadOnly } from "./readOnly";
@@ -43,6 +48,11 @@ export interface SceneLibraryState {
 	saving: boolean;
 	/** ISO timestamp of the last successful write. */
 	lastSavedAt: string | null;
+	/**
+	 * Classified storage health (P3-05). `ok` before boot so the warning never
+	 * flashes; boot + runtime write failures replace it.
+	 */
+	storageHealth: StorageHealth;
 }
 
 const INITIAL_STATE: SceneLibraryState = {
@@ -53,6 +63,7 @@ const INITIAL_STATE: SceneLibraryState = {
 	sessionOnly: false,
 	saving: false,
 	lastSavedAt: null,
+	storageHealth: healthyStorageHealth(),
 };
 
 export const sceneLibraryStore: StoreApi<SceneLibraryState> =
@@ -86,6 +97,8 @@ export interface SceneLibraryDeps {
 	/** Null when IndexedDB is unavailable — the app keeps an in-memory scene. */
 	repo: SceneRepository | null;
 	storage: Storage | null;
+	/** Boot probe result (P3-05); omitted in tests → assume healthy. */
+	health?: StorageHealth;
 	/** A pre-P3-02 single-scene mirror to migrate once (P1-06). */
 	legacy?: SceneSnapshot | null;
 	newId?: () => string;
@@ -157,6 +170,7 @@ export function createSceneLibraryRuntime(
 	const newId = deps.newId ?? (() => crypto.randomUUID());
 	const now = deps.now ?? (() => new Date());
 	const nowIso = () => now().toISOString();
+	const bootHealth = deps.health ?? healthyStorageHealth();
 
 	let applying = false;
 	let disposed = false;
@@ -166,14 +180,41 @@ export function createSceneLibraryRuntime(
 	let previewing = false;
 	let previewName = "Shared scene";
 	let previousSnapshot: SceneSnapshot | null = null;
+	// A blocked/full localStorage would otherwise re-fail on every autosave.
+	let indexFailed = false;
+
+	/**
+	 * A failed write is never silent: the library flips to session-only, stops
+	 * autosave, and records the classified health the inline notice renders.
+	 */
+	const markWriteFailure = (
+		reason: "read" | "write" | "local-storage" = "write",
+	) => {
+		const state = store.getState();
+		store.setState({
+			storageAvailable: false,
+			sessionOnly: true,
+			saving: false,
+			storageHealth: withStorageFailure(state.storageHealth, reason),
+		});
+		autosave.cancel();
+	};
+
+	const markIndexFailure = () => {
+		if (indexFailed) return;
+		indexFailed = true;
+		// The register cannot be written, so the session cannot be trusted to
+		// restore: stop autosave and surface the same truthful "Not saving" state.
+		markWriteFailure("local-storage");
+	};
 
 	const persistIndex = (): boolean => {
-		if (store.getState().sessionOnly) return false;
+		if (store.getState().sessionOnly || indexFailed) return false;
 		const ok = writeSceneIndex(
 			{ version: 1, scenes: store.getState().scenes },
 			deps.storage,
 		);
-		if (!ok) store.setState({ storageAvailable: false });
+		if (!ok) markIndexFailure();
 		return ok;
 	};
 
@@ -215,9 +256,9 @@ export function createSceneLibraryRuntime(
 		try {
 			await deps.repo.put(document);
 		} catch {
-			// Never claim "Saved" for a write that did not land. P3-05 adds the
-			// user-facing warning + JSON backup.
-			store.setState({ saving: false, storageAvailable: false });
+			// Never claim "Saved" for a write that did not land. Keep the work in
+			// memory, stop autosave and surface the inline warning + backup (P3-05).
+			markWriteFailure("write");
 			return;
 		}
 		const scenes = store.getState().scenes.map((candidate) =>
@@ -243,6 +284,9 @@ export function createSceneLibraryRuntime(
 		unsubscribe?.();
 		unsubscribe = useScene.subscribe((state, previous) => {
 			if (applying || disposed || previewing) return;
+			// A write failure already stopped autosave; do not arm timers that can
+			// never land (P3-05).
+			if (store.getState().sessionOnly) return;
 			if (
 				state.boards !== previous.boards ||
 				state.items !== previous.items ||
@@ -318,6 +362,10 @@ export function createSceneLibraryRuntime(
 				saving: false,
 				lastSavedAt:
 					scenes.find((entry) => entry.id === activeId)?.updatedAt ?? null,
+				storageHealth: withStorageFailure(
+					bootHealth,
+					deps.repo ? "read" : "indexeddb",
+				),
 			});
 			applyScene(
 				deps.legacy
@@ -420,6 +468,10 @@ export function createSceneLibraryRuntime(
 				sessionOnly: true,
 				saving: false,
 				lastSavedAt: null,
+				storageHealth: withStorageFailure(
+					bootHealth,
+					deps.repo ? "write" : "indexeddb",
+				),
 			});
 			applyScene(
 				deps.legacy
@@ -438,15 +490,20 @@ export function createSceneLibraryRuntime(
 				? preferred
 				: newestSceneId(scenes);
 
+		// Blocked localStorage is a session-only boot too (the register/settings
+		// cannot be written), even when IndexedDB opened: the notice must never
+		// claim "changes stay in this tab only" while silently autosaving.
+		const healthUnavailable = bootHealth.level === "unavailable";
 		store.setState({
 			scenes,
 			activeId,
 			ready: true,
-			storageAvailable,
-			sessionOnly: false,
+			storageAvailable: storageAvailable && !healthUnavailable,
+			sessionOnly: healthUnavailable,
 			saving: false,
 			lastSavedAt:
 				scenes.find((entry) => entry.id === activeId)?.updatedAt ?? null,
+			storageHealth: bootHealth,
 		});
 		persistIndex();
 		writeSettings({ activeSceneId: activeId }, deps.storage);
@@ -471,8 +528,13 @@ export function createSceneLibraryRuntime(
 			applyScene(emptyScene());
 		}
 
-		subscribe();
-		installLifecycle();
+		// Re-read: the index write above may have latched a session-only failure.
+		if (healthUnavailable || store.getState().sessionOnly) {
+			autosave.cancel();
+		} else {
+			subscribe();
+			installLifecycle();
+		}
 	};
 
 	const newScene = async (name?: string): Promise<string | null> => {

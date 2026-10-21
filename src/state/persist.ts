@@ -2,6 +2,11 @@ import { openSceneRepository, type SceneRepository } from "../lib/idb";
 import { LEGACY_SCENE_KEY } from "../lib/sceneIndex";
 import { resolveStorage } from "../lib/storage";
 import {
+	classifyStorageHealth,
+	probeStorage,
+	readStorageEstimate,
+} from "../lib/storageHealth";
+import {
 	createSceneLibraryRuntime,
 	type SceneLibraryRuntime,
 	setSceneLibraryRuntime,
@@ -84,13 +89,26 @@ export function readLegacyScene(
 export async function bootScenePersistence(): Promise<SceneLibraryRuntime> {
 	const storage = resolveStorage();
 	const legacy = readLegacyScene(storage);
+	// P3-05: the advisory quota probe runs concurrently with the IDB open (the
+	// critical path is the slower of the two, not their sum) and is time-boxed.
+	const estimate = readStorageEstimate();
 	let repo: SceneRepository | null = null;
 	try {
 		repo = await openSceneRepository();
 	} catch {
 		repo = null;
 	}
-	const runtime = createSceneLibraryRuntime({ repo, storage, legacy });
+	// Classify storage once (IDB open + localStorage usability + quota) instead
+	// of scattering try/catch through the UI. A missing IDB cannot be rescued by
+	// the estimate, so don't wait for it in that case.
+	const health = classifyStorageHealth(
+		await probeStorage({
+			indexedDbAvailable: repo !== null,
+			storage,
+			estimate: repo === null ? () => Promise.resolve(null) : () => estimate,
+		}),
+	);
+	const runtime = createSceneLibraryRuntime({ repo, storage, legacy, health });
 	setSceneLibraryRuntime(runtime);
 	try {
 		await runtime.boot();

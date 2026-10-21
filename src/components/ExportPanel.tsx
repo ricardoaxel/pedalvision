@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { renderExportFile } from "../canvas/exportStage";
 import { useCanvasTheme } from "../canvas/useCanvasTheme";
 import { exportCapacity, formatEstimatedBytes } from "../lib/capacity";
+import { downloadBlob } from "../lib/download";
 import {
 	ExportError,
 	type ExportFormat,
@@ -72,20 +73,6 @@ function noticeLines(plan: ExportPlan): string[] {
 		}
 	}
 	return lines;
-}
-
-function downloadBlob(blob: Blob, filename: string): void {
-	const url = URL.createObjectURL(blob);
-	const link = document.createElement("a");
-	link.href = url;
-	link.download = filename;
-	link.rel = "noopener";
-	document.body.appendChild(link);
-	link.click();
-	link.remove();
-	// iOS Safari can drop a save if the object URL is revoked immediately; keep
-	// it alive long enough for the save sheet, then release the memory.
-	setTimeout(() => URL.revokeObjectURL(url), 60_000);
 }
 
 function downloadBytes(

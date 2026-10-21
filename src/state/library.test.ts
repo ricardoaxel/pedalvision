@@ -10,6 +10,11 @@ import {
 	SCENE_INDEX_KEY,
 	SETTINGS_KEY,
 } from "../lib/sceneIndex";
+import {
+	classifyStorageHealth,
+	healthyStorageHealth,
+	type StorageHealth,
+} from "../lib/storageHealth";
 import { flushHistory, undo, useHistory } from "./history";
 import {
 	createSceneLibraryRuntime,
@@ -26,9 +31,13 @@ const boss = catalog.boards.find((board) => board.id === "boss-bcb-1000");
 if (!boss) throw new Error("test fixture board missing from the seed");
 const bossId = boss.id;
 
-function fakeStorage(initial: Record<string, string> = {}): Storage {
+function fakeStorage(
+	initial: Record<string, string> = {},
+	options: { failWrites?: boolean } = {},
+): Storage {
 	const map = new Map(Object.entries(initial));
-	return {
+	const storage: Storage & { setCalls: number } = {
+		setCalls: 0,
 		get length() {
 			return map.size;
 		},
@@ -39,9 +48,12 @@ function fakeStorage(initial: Record<string, string> = {}): Storage {
 			map.delete(key);
 		},
 		setItem: (key, value) => {
+			storage.setCalls += 1;
+			if (options.failWrites) throw new Error("blocked");
 			map.set(key, value);
 		},
 	};
+	return storage;
 }
 
 class MemoryRepository implements SceneRepository {
@@ -68,6 +80,7 @@ class MemoryRepository implements SceneRepository {
 class FailingRepository extends MemoryRepository {
 	failAll = false;
 	failPuts = false;
+	putCalls = 0;
 
 	override async all(): Promise<SceneDocument[]> {
 		if (this.failAll) throw new Error("blocked");
@@ -75,6 +88,7 @@ class FailingRepository extends MemoryRepository {
 	}
 
 	override async put(document: SceneDocument): Promise<void> {
+		this.putCalls += 1;
 		if (this.failPuts) throw new Error("quota");
 		return super.put(document);
 	}
@@ -116,6 +130,7 @@ function freshStore() {
 		sessionOnly: false,
 		saving: false,
 		lastSavedAt: null,
+		storageHealth: healthyStorageHealth(),
 	}));
 }
 
@@ -123,6 +138,7 @@ function setup(
 	options: {
 		repo?: SceneRepository | null;
 		storage?: Storage;
+		health?: StorageHealth;
 		legacy?: Parameters<typeof createSceneLibraryRuntime>[0]["legacy"];
 	} = {},
 ) {
@@ -132,6 +148,7 @@ function setup(
 	const runtime = createSceneLibraryRuntime({
 		repo: options.repo === undefined ? new MemoryRepository() : options.repo,
 		storage: options.storage ?? fakeStorage(),
+		health: options.health,
 		legacy: options.legacy,
 		newId: () => `scene-${++counter}`,
 		now: () => new Date(Date.parse("2026-10-19T12:00:00.000Z") + tick++ * 1000),
@@ -457,6 +474,7 @@ describe("scene library", () => {
 			ready: true,
 			storageAvailable: false,
 			activeId: "a",
+			storageHealth: { level: "unavailable", reason: "read" },
 		});
 		expect(store.getState().scenes.map((scene) => scene.name)).toEqual([
 			"Kept sheet",
@@ -496,16 +514,99 @@ describe("scene library", () => {
 		expect(storage.getItem(LEGACY_SCENE_KEY)).not.toBeNull();
 	});
 
-	it("never reports Saved when the document write fails", async () => {
+	it("stops autosave and surfaces a warning when a document write fails", async () => {
 		vi.useFakeTimers();
 		const repo = new FailingRepository();
 		const { runtime, store } = setup({ repo });
 		await runtime.boot();
 		repo.failPuts = true;
+		repo.putCalls = 0;
 		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
 		await vi.advanceTimersByTimeAsync(500);
-		expect(store.getState().storageAvailable).toBe(false);
+		expect(store.getState()).toMatchObject({
+			storageAvailable: false,
+			saving: false,
+			sessionOnly: true,
+			storageHealth: { level: "unavailable", reason: "write" },
+		});
+		// The work stays in memory, but no further write is attempted.
+		expect(useScene.getState().boards).toHaveLength(1);
+		expect(repo.putCalls).toBe(1);
+		useScene.getState().addBoard(bossId, { x: 40, y: 40 });
+		await vi.advanceTimersByTimeAsync(1_000);
 		expect(store.getState().saving).toBe(false);
+		expect(repo.putCalls).toBe(1);
+		expect(useScene.getState().boards).toHaveLength(2);
+	});
+
+	it("surfaces a degraded state when the index write is blocked and latches it", async () => {
+		const repo = new MemoryRepository();
+		const storage = fakeStorage({}, { failWrites: true });
+		const { runtime, store } = setup({ repo, storage });
+		await runtime.boot();
+		expect(store.getState()).toMatchObject({
+			ready: true,
+			storageAvailable: false,
+			sessionOnly: true,
+			saving: false,
+			storageHealth: { level: "unavailable", reason: "local-storage" },
+		});
+		// The boot document exists, but a blocked register disables writes so the
+		// app cannot claim persistence it cannot restore.
+		expect(repo.docs.size).toBe(1);
+		const blockedWrites = storage.setCalls;
+		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
+		await runtime.saveNow();
+		expect(repo.docs.get("scene-1")?.boards).toHaveLength(0);
+		expect(storage.setCalls).toBe(blockedWrites);
+	});
+
+	it("boots session-only when localStorage is blocked but IndexedDB works", async () => {
+		const repo = new MemoryRepository();
+		const storage = fakeStorage({}, { failWrites: true });
+		const { runtime, store } = setup({
+			repo,
+			storage,
+			health: {
+				level: "unavailable",
+				reason: "local-storage",
+				usageBytes: null,
+				quotaBytes: null,
+				usageRatio: null,
+			},
+		});
+		await runtime.boot();
+		expect(store.getState()).toMatchObject({
+			ready: true,
+			storageAvailable: false,
+			sessionOnly: true,
+			storageHealth: { level: "unavailable", reason: "local-storage" },
+		});
+		expect(await runtime.newScene()).toBeNull();
+		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
+		await runtime.saveNow();
+		expect(repo.docs.get("scene-1")?.boards).toHaveLength(0);
+	});
+
+	it("keeps a low-quota signal advisory (register + autosave still work)", async () => {
+		const repo = new MemoryRepository();
+		const health = classifyStorageHealth({
+			indexedDb: true,
+			localStorage: true,
+			estimate: { usage: 95, quota: 100 },
+		});
+		const { runtime, store } = setup({ repo, health });
+		await runtime.boot();
+		expect(store.getState()).toMatchObject({
+			ready: true,
+			storageAvailable: true,
+			sessionOnly: false,
+			storageHealth: { level: "low-quota", reason: "quota" },
+		});
+		useScene.getState().addBoard(bossId, { x: 0, y: 0 });
+		await runtime.saveNow();
+		expect(repo.docs.get("scene-1")?.boards).toHaveLength(1);
+		expect(store.getState().storageHealth.level).toBe("low-quota");
 	});
 
 	it("deleting an inactive scene keeps the flushed active metadata", async () => {
@@ -819,6 +920,7 @@ describe("scene library", () => {
 			ready: true,
 			storageAvailable: false,
 			activeId: null,
+			storageHealth: { level: "unavailable", reason: "indexeddb" },
 		});
 		expect(await runtime.newScene()).toBeNull();
 	});

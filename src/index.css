@@ -333,6 +333,165 @@ body {
 	}
 }
 
+/* ---------------------------------------------------------------------------
+ * Storage fallback (P3-05) — owner-approved "Margin Note" direction
+ * (2026-10-20). An inline drafting note pinned under the Title Block (desktop)
+ * or the top row (mobile). Unavailable is persistent (work is at risk); the
+ * low-quota advisory is dismissible. Never a toast/modal (N8); zero new tokens.
+ * ------------------------------------------------------------------------- */
+
+.storage-note {
+	position: absolute;
+	top: calc(var(--space-4) + 44px + var(--space-2));
+	left: var(--space-4);
+	z-index: 1;
+	width: 320px;
+	padding: var(--space-3) var(--space-4);
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-raised);
+	animation: storage-note-in 140ms ease-out;
+}
+
+.storage-note[data-state="unavailable"] {
+	border-left: 3px solid var(--color-warning);
+}
+
+.storage-note[data-state="low-quota"] {
+	padding: var(--space-3) 52px var(--space-3) var(--space-3);
+}
+
+.storage-note__label {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-warning);
+}
+
+.storage-note__text {
+	margin: var(--space-1) 0 0;
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	line-height: var(--leading-normal);
+	color: var(--color-ink);
+}
+
+.storage-note__actions {
+	margin-top: var(--space-3);
+}
+
+.storage-note__action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	padding: var(--space-2) var(--space-4);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border: 1px solid var(--color-accent-border);
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.storage-note__action:hover {
+	border-color: var(--color-accent-ink);
+}
+
+.storage-note__action:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.storage-note__action[aria-disabled="true"] {
+	cursor: progress;
+}
+
+.storage-note__receipt {
+	margin: var(--space-3) 0 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: var(--leading-normal);
+	color: var(--color-ink-muted);
+	overflow-wrap: anywhere;
+}
+
+.storage-note__receipt[data-tone="fail"] {
+	color: var(--color-danger);
+}
+
+.storage-note__dismiss {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	font-family: var(--font-sans);
+	font-size: var(--font-size-lg);
+	line-height: 1;
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 0;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.storage-note__dismiss:hover {
+	color: var(--color-ink);
+}
+
+.storage-note__dismiss:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: -2px;
+}
+
+/* The desktop Sheet Register claims the same top-left column. Rather than
+ * hiding the at-risk notice, step it beside the register so both stay visible
+ * (the mobile register is a bottom sheet, so the strip is unaffected). */
+@media (min-width: 1024px) {
+	.app[data-scenes="open"] .storage-note {
+		left: calc(var(--space-4) + 320px + var(--space-4));
+	}
+}
+
+@keyframes storage-note-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 1023px) {
+	.storage-note {
+		right: 12px;
+		left: 12px;
+		width: auto;
+	}
+
+	.storage-note__action {
+		width: 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.storage-note {
+		animation: none;
+	}
+}
+
 /* On-selection item action bar (P1-05). HTML chrome positioned from the item's
  * screen coordinates (recomputed on zoom/pan) — not a Konva shape, so it stays
  * crisp and is reachable by touch + screen readers. */
