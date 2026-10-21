@@ -25,7 +25,7 @@ Validate the full launch-scope catalog, finish provenance/confidence records, ru
 
 1. Full catalog validation: schema, duplicate ids, variants, mandatory fields, image files (800/350), source URLs, `public-asset` tag.
 2. Provenance sweep: `lastVerified`, `confidence`, per-item sources; document the ≥10-item dimension spot-check against manufacturer specs.
-3. Playwright: picker search + brand/effect filters, image load, placement, cables, share/read-only, export PNG/PDF, save/reload A4.
+3. Playwright: picker search + brand/effect filters, image load, pedal and **board** placement/rotation, cables, share/read-only, export PNG/PDF, save/reload A4.
 4. Platform checks: `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm e2e`, `pnpm audit`, iOS export on a real device, real-device touch pass.
 5. Verify the attribution/takedown page and removal contact.
 6. Produce the launch-gate report: catalog counts, image counts/bytes, hosting headroom, known gaps, sign-off checklist.
@@ -33,7 +33,7 @@ Validate the full launch-scope catalog, finish provenance/confidence records, ru
 ## Acceptance (executable)
 
 - All P5-04 checks green; no placeholder/mock in the launch scope.
-- ≥200 pedals / ≥10 brands (Tier A scope) with hosted images + sources.
+- ≥200 pedals / ≥10 brands (Tier A scope) with hosted images + sources; Tier A boards (~150) included and verified.
 - Dimension spot-check documented (≥10).
 - `pnpm audit` clean; iOS export + real-device touch pass recorded.
 - Attribution/takedown live.

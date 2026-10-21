@@ -107,6 +107,22 @@ This **supersedes** the permission-first / hotlink-only rules for the P5 catalog
 - **Hard cap:** **2,000 pedals with hosted images** (~4,000 files, ~300 MB) until **P5-05** (image hosting at scale) is decided. Agents stop at the cap; data/image work does not continue past it.
 - **Optional jack layout:** if a source exposes input/output positions, record `jacks[]` (`kind`, `edge`, `pos`, `stereo?`). `pos` is 0..1 along the edge and is derived from exact cm (`x / widthCm` on top/bottom, `y / heightCm` on left/right), so measured edge positions are representable exactly. This is **optional enrichment**, not mandatory. If only the edge/count is known (e.g. “2 on top”), omit `pos`; the resolver distributes them evenly on that edge and marks the anchors **approximate**. When no jack data exists at all, P4-02's fallback anchors apply (assumed IN left / OUT right).
 
+## Pedalboard catalog (P5, first-class)
+
+Pedalboards are part of the P5 catalog, not a side list. The discovery list has **263 boards / 38 brands**; the first 2,000 catalog items include **~150 boards** alongside ~1,850 pedals.
+
+- **Mandatory:** id, brand, name, `widthCm`/`heightCm` (footprint width × depth), image, source.
+- **Optional raw metadata:** thickness/max height, weight, material, board type (flat/angled/tiered/folding), tiers/tier heights, surface, bag/case, power-supply mount, cable routing/clearance, handles/feet/mounting, max pedal height, lifecycle, videos, sources, confidence.
+- **Images:** top-down empty board, neutral/transparent background; aspect check vs `widthCm/heightCm`; angled hero shots rejected.
+- **Priority:** Pedaltrain, Pivotal, Temple Audio, Creation Music, GigRig, Morton, Rockboard, Vertex, Mono, STRICH, Aclam, Friedman, Gator, BOSS, D'Addario, Voodoo Lab, Fender, Blackbird, plus Harley Benton/Palmer/Fame/SKB/Holeyboard.
+
+## Serial numbers, videos, artist association & price (optional, model-level)
+
+- **Price:** if a source already shows a price, record `priceObservations: [{ amount, currency, condition: new|used, source, observedAt, notes }]`. It is an observation, not a canonical fact; never infer a price or run a separate price search.
+- **Artist association:** if a source already states that a pedal/board is a signature model, designed with an artist, or notably used by one, record `artistAssociation: [{ artist, role: signature|endorsed|used-by|designed-with, notes, sources }]`. Optional; do **not** run a separate search for it.
+- **Serial numbers:** record the model's format and known ranges/revisions (date/lot codes) only, never a specific owner's unit serial: `serial: { format, ranges: [{ from, to, year, revision }], location, notes }`.
+- **Videos:** record links (not downloads) with `{ url, title, source, kind, verified }`; prefer manufacturer/official demos, manuals, then reputable reviews. Same attribution/takedown policy.
+
 ## Schema originality (our own model)
 
 Our catalog schema (`src/catalog/schema.ts`, mirrored in design.md §Data model)
@@ -165,7 +181,7 @@ change the decisions above, it makes the workflow explicit.
 - [ ] **Swap the dev seed for the hosted, quality-gated catalog before deploy (S1):** no `synthetic` or `placeholder` items in the deployed catalog
 - [ ] Zero `placeholder`-sourced items in the deployed catalog
 - [ ] Deployed images contain no placeholder/mocked files; every shipped image is a **hosted static asset** with a per-item source URL and is covered by the attribution/takedown policy
-- [ ] **Minimum content gate (S1):** ≥200 catalog pedals across ≥10 brands, plus ≥10 pedalboards; Tier A launch scope covered (no placeholder/`synthetic`)
+- [ ] **Minimum content gate (S1):** ≥200 catalog pedals across ≥10 brands, plus **~150 Tier A pedalboards** (≥10 board brands); first 2,000 catalog items include ~1,850 pedals + ~150 boards; no placeholder/`synthetic`
 - [ ] **Dimension spot-check (S6):** a documented sample (≥10 items) re-measured against manufacturer pages/spec sheets, screenshots/links recorded here — catches hand-measured footprint errors before they ship
 - [ ] **Hosting gate:** the 2,000-hosted-pedal cap is respected; if launch scope exceeds it, P5-05 has chosen and verified the hosting option
 - [ ] Attribution/takedown page is live and the removal contact works

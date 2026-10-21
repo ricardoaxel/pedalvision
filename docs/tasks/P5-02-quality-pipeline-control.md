@@ -25,13 +25,13 @@ Build the deterministic tooling that makes parallel catalog work safe, cheap, ob
 
 ## Steps
 
-1. **Batch layout:** `data/catalog/research/<brand>/<batch>.json` (raw capture) + mapped batch output; per-brand registry; `catalog:build` maps raw → runtime and writes `src/catalog/data/pedals.json`; `catalog:validate` checks both raw and runtime (schema, duplicate ids, variants, mandatory fields, foreign keys). Raw records preserve all verified facts/image candidates — including connectors, audio I/O, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical — even when not yet in the runtime schema. Add enums + structural checks for the optional fields; missing is valid.
-2. **Image analyzer** (script): min long edge 800; background uniformity/border-connected; alpha; trim bbox/whitespace; aspect vs `widthCm/heightCm` (≤10% pass, 10–15% flag, >15% reject); rotation/skew; shadow/perspective signals; JSON report.
+1. **Batch layout:** `data/catalog/research/{pedals,boards}/<brand>/<batch>.json` (raw) + `data/catalog/{pedals,boards}/<brand>/<batch>.json` (mapped); per-brand registry; `catalog:build` maps both kinds into `src/catalog/data/{pedals,boards}.json`; `catalog:validate` checks raw + runtime (schema, duplicate ids, variants, mandatory fields, foreign keys, board footprint/variant links). Raw records preserve all verified facts/image candidates — connectors, audio I/O, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical, **serial ranges, videos** — even when not yet in the runtime schema. Add enums + structural checks; missing is valid.
+2. **Image analyzer** (script): min long edge 800; background uniformity/border-connected; alpha; trim bbox/whitespace; aspect vs `widthCm/heightCm` for **pedals and boards** (≤10% pass, 10–15% flag, >15% reject); rotation/skew; shadow/perspective signals; JSON report. Board images must be top-down/empty; angled hero shots rejected.
 3. **Image processor** (script): extend the asset pipeline's flood fill for white/solid backgrounds; optional dev-only matting fallback for gradients; trim; transparent PNG; 800/350; atomic temp→rename.
 4. **Vision QA:** contact-sheet helper (20–30 images per call) + a reviewer agent definition; cache accept/reject reasons.
 5. **Control plane:** `catalog-runner` starts one batch per worktree/session; state files with progress/heartbeat/tokens/blockers; `catalog:status [--watch]`, `catalog:pause|stop|resume`, global `STOP`, per-agent flags; checkpoint after every pedal; `SIGTERM`/`SIGKILL` fallback.
 6. **Cap:** enforce 2,000 hosted pedals / ~4,000 images / ~300 MB before and after each batch; stop and report at the cap.
-7. **Agent templates:** data researcher, image scout, image reviewer, coordinator; 15-minute status line; per-pedal 12 min initial, per-batch 4 h; strict JSON output.
+7. **Agent templates:** pedal + **pedalboard** researcher, image scout, image reviewer, coordinator; 15-minute status line; per-item 12 min initial, per-batch 4 h; strict JSON output.
 8. Dry-run on 3 synthetic pedals (no real assets) and verify stop/pause/resume + status.
 
 ## Acceptance (executable)

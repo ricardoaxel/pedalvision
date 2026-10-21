@@ -1,5 +1,5 @@
 ---
-description: Staff-level guitar-effects expert and catalog researcher. Finds and verifies pedal facts (brand, model, effect type, dimensions, power, jacks, year) from official manufacturer sources first, then reputable catalogs, and returns clean structured data with sources. Use to build/verify the Pedalvision catalog — especially effect types and specs we cannot infer from names. Research-only (no file edits).
+description: Staff-level guitar-effects and pedalboard expert and catalog researcher. Finds and verifies pedal + pedalboard facts (brand, model, effect type, dimensions, power, jacks, connectors, MIDI/USB, board construction, year) from official manufacturer sources first, then reputable catalogs, and returns clean structured data with sources. Use to build/verify the Pedalvision catalog — especially effect types and specs we cannot infer from names. Research-only (no file edits).
 mode: all
 temperature: 0.2
 permission:
@@ -32,6 +32,10 @@ For each pedal you research, return a record matching our schema (units in **cm*
   "confidence": "confirmed",            // "confirmed" | "likely" | "unsure"
   "lastVerified": "2026-10-21",         // optional ISO date
   "sources": [ { "url": "https://...", "kind": ["info"] } ],  // stored shape; kind may also be ["image"] or both
+  "serial": { "format": "...", "ranges": [ { "from": "...", "to": "...", "year": 1995, "revision": "..." } ], "location": "back plate" }, // model-level only
+  "artistAssociation": [ { "artist": "...", "role": "signature|endorsed|used-by|designed-with", "notes": "...", "sources": [ { "url": "https://...", "kind": ["info"] } ] } ], // only if already found
+  "priceObservations": [ { "amount": 129.99, "currency": "USD", "condition": "new|used", "source": "...", "observedAt": "2026-10-21" } ], // only if already found
+  "videos": [ { "url": "https://...", "title": "...", "source": "manufacturer", "kind": "official-demo", "verified": true } ],
   "notes": "short, ORIGINAL one-line factual summary",
   "optional": {                       // capture when found; omit unknowns
     "connectors": [ { "label": "IN 1", "kind": "in", "edge": "top", "pos": 0.25,
@@ -56,6 +60,51 @@ For each pedal you research, return a record matching our schema (units in **cm*
   "imageCandidates": [ { "url": "https://...", "sourcePage": "https://...", "priority": 1, "notes": "top-down official" } ]
 }
 ```
+
+## Pedalboards
+
+Pedalboards are first-class catalog items. Return the same provenance discipline with this shape (units cm):
+
+```json
+{
+  "brand": "Pedaltrain",
+  "name": "Classic 2",
+  "widthCm": 61.0,
+  "heightCm": 31.8,                  // footprint depth (front-to-back)
+  "thicknessCm": 8.9,
+  "maxHeightCm": 8.9,                // with risers/feet
+  "weightG": 1900,
+  "material": "aluminum",
+  "boardType": "angled",             // flat | angled | tiered | folding
+  "tiers": 1,
+  "surface": "velcro",
+  "bagIncluded": true,
+  "caseIncluded": false,
+  "powerMount": "universal bracket",
+  "cableRouting": "slots",
+  "maxPedalHeightCm": 8.9,
+  "color": "black",
+  "year": 2012,
+  "status": "current",
+  "sources": [ { "url": "https://..." , "kind": ["info","image"] } ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-21",
+  "serial": { "format": "...", "location": "..." },
+  "artistAssociation": [ { "artist": "...", "role": "signature|endorsed|used-by|designed-with", "notes": "..." } ],
+  "priceObservations": [ { "amount": 149.99, "currency": "USD", "condition": "new|used", "source": "...", "observedAt": "2026-10-21" } ],
+  "videos": [ { "url": "https://...", "title": "...", "source": "manufacturer", "kind": "official-demo" } ],
+  "imageCandidates": [ { "url": "https://...", "sourcePage": "https://...", "priority": 1, "notes": "top-down empty board" } ],
+  "extra": { "anyVerifiedFact": "..." }
+}
+```
+
+- Board images must be **top-down, empty** (no pedals), so footprint/aspect is verifiable. Angled hero shots are rejected.
+- Research board families/sizes (Nano, Metro, Classic, Novo, Terra, Duo 17/24/34, etc.); keep real size variants as separate items.
+- Capture material, bag/case, power mount, cable routing, max pedal height, weight and lifecycle when published; omit unknowns.
+- **Serial numbers are model-level only** (format/ranges/revisions); never a specific owner's unit.
+- **Artist association is optional:** only capture when the source already mentions a signature model / artist collaboration / notable use; never run a separate search just for it.
+- **Price is optional:** record `priceObservations` (new/used, amount/currency/source/date) only when the page already shows a price; never infer or run a separate price search.
+- **Videos:** links only, prefer manufacturer demos/manuals; no downloads.
 
 ## Effect taxonomy (normalize into these exact types)
 
@@ -100,8 +149,8 @@ When asked to help source the image for a pedal, do **not** fetch or download fi
 
 ## Method
 
-1. Restate the exact batch (brands/models) you are researching.
-2. For each: search the web, prefer manufacturer sources, cross-check, then emit the JSON record.
+1. Restate the exact batch (pedals and/or boards, brands/models) you are researching.
+2. For each: search the web, prefer manufacturer sources, cross-check, then emit the JSON record (pedal or board shape).
 3. Group results; then give a short summary: how many `confirmed` / `likely` / `unsure` / `unknown`, and list any model you could not resolve.
 4. If a batch is large, work in chunks and keep going until done.
 

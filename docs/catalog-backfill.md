@@ -7,8 +7,10 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 ## Goals
 
 - Ship a clean catalog with **real facts + hosted, quality-gated images**.
-- Cover **Tier A** (top ~20 brands / ~2,000 pedals) for launch; the long tail
-  continues after launch.
+- Cover **Tier A** (top ~20 pedal brands + top board brands, ~2,000 catalog
+  items) for launch; the long tail continues after launch.
+- **Pedalboards are first-class**, not an afterthought: the first research wave
+  includes the most popular boards alongside the most popular pedals.
 - Keep **cm** as the only stored unit; inches are converted at import.
 - Make data work **parallel with feature work** without merge conflicts.
 - Make every agent run **observable and stoppable**.
@@ -17,12 +19,12 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 ## Current state
 
 - Seed: **207 pedals / 13 brands / 10 boards**; `effectTypes` for 201/207
-  (the 6 blanks are supplies).
+  (the 6 blanks are supplies). The board seed is a tiny slice.
 - **0 jacks, 0 power**; images: 129 hotlinked `url` + 78 `mock`; **0 hosted**.
 - Verified base models carry **485 source refs** (340 `image` links).
-- Discovery list: **8,557 pedals / 779 brands** from the PedalPlayground public
-  list (`Brand`, `Name`, `Width`, `Height`, `Image`; **inches**) + other sources
-  the `pedal-expert` agent uses.
+- Discovery lists: **8,557 pedals / 779 brands** and **263 boards / 38 brands**
+  (`Brand`, `Name`, `Width`, `Height`, `Image`; **inches**) + other sources the
+  `pedal-expert` agent uses.
 
 **Keep the 207 seed.** Run it through the quality gate and keep/repair/replace
 per item; do not wipe. Freeze a `legacy` snapshot for rollback.
@@ -68,6 +70,10 @@ Shape (superset; extra verified facts go in `extra`):
   "notes": "short original factual summary",
   "extra": { "anyVerifiedFact": "…" },   // e.g. bypass, battery, controls, made-in
   "sources": [ { "url": "https://…", "kind": ["info", "image"] } ],
+  "serial": { "format": "…", "ranges": [ { "from": "…", "to": "…", "year": 1995, "revision": "…" } ], "location": "back plate", "notes": "…" },
+  "artistAssociation": [ { "artist": "…", "role": "signature|endorsed|used-by|designed-with", "notes": "…", "sources": [ { "url": "https://…", "kind": ["info"] } ] } ],
+  "priceObservations": [ { "amount": 129.99, "currency": "USD", "condition": "new|used", "source": "manufacturer/retailer", "observedAt": "2026-10-21", "notes": "…" } ],
+  "videos": [ { "url": "https://…", "title": "…", "source": "manufacturer", "kind": "official-demo", "verified": true } ],
   "confidence": "confirmed",
   "lastVerified": "2026-10-21",
   "imageCandidates": [
@@ -79,6 +85,10 @@ Shape (superset; extra verified facts go in `extra`):
 - The runtime catalog is a **projection** of the raw record; unknown/extra fields stay in the raw file (not shipped).
 - Image candidates, reject reasons and source pages are kept so a rejected image can be re-checked without re-researching the pedal.
 - A later schema addition (e.g. `color`, `stereo`, `bypass`) is a mapping change, not a new research pass: read the raw record first, only re-check fields that are missing.
+- **Serial numbers are model-level, not unit-level:** record the format and known ranges/revisions (e.g. date/lot codes) only; never a specific owner's unit serial.
+- **Artist association is optional:** if a source already states that a pedal/board is a signature model, designed with an artist, or notably used by one, record `artistAssociation` (artist, role, notes, source). Do **not** run a separate search just for this; capture it only when it appears during normal research.
+- **Price is optional and an observation, not a canonical fact:** if a source already shows a price, record `priceObservations` (amount, currency, `condition: new|used`, source, observedAt). Never invent or infer a price; do not run a separate price search.
+- **Videos are links, not downloads:** record official/manufacturer demos, manuals and reputable reviews with title/source/kind; prefer manufacturer media.
 - The raw archive is committed (small JSON, no images) so every future session can reuse it.
 
 ## Optional metadata — capture everything verified
@@ -136,7 +146,7 @@ Bluetooth audio/control/version/codec/latency; BLE-MIDI; Wi-Fi; 2.4 GHz propriet
 Peak/inrush current; power consumption (W); battery type/life; USB bus power/charging; isolation/daisy-chain requirement; voltage-sag behavior; connector size/polarity; recommended PSU; power switch/soft start. For a **power supply**: outlet count, isolated vs shared, per-output V/mA, total mA, AC input, courtesy outlet, USB charging, sag/dip switches, included cables, mounting.
 
 ### Identity, compatibility & lifecycle
-`deviceType` (stompbox/multi-fx/amp-modeler/preamp/DI/power-supply/switcher/controller/interface/other); `formFactor` (compact/standard/double/mini/desktop/rack/expression/other); `instrumentTypes` (guitar/bass/synth/keys/vocal); release year; discontinued year; replacement model; `variantOf`; limited edition; artist signature; colorway; made in; MSRP/price (optional); official manual/press-kit URL; firmware version; MIDI implementation chart URL; aliases.
+`deviceType` (stompbox/multi-fx/amp-modeler/preamp/DI/power-supply/switcher/controller/interface/other); `formFactor` (compact/standard/double/mini/desktop/rack/expression/other); `instrumentTypes` (guitar/bass/synth/keys/vocal); release year; discontinued year; replacement model; `variantOf`; limited edition; **artist association** (`signature`, `endorsed`, `used-by`, `designed-with`; optional, only when already found); colorway; made in; **price observations** (new/used, amount/currency/source/date; optional, only when already found); official manual/press-kit URL; firmware version; MIDI implementation chart URL; aliases.
 
 ### Provenance
 `sources`, `confidence`, `lastVerified`, `dimensionsSource`, `imageCandidates`, and the `extra` bag for anything else verified.
@@ -182,14 +192,68 @@ and a **`public-asset`** value in `SOURCE_TAGS`. `jacks.stereo?` already exists.
 
 ## Master inventory
 
+Two tracks, one catalog:
+
+### Pedals
 - Normalize `Brand`/`Name`, dedupe by slug, collapse colorways to `variantOf`.
 - Inventory is **off-runtime** (`data/catalog/inventory.json`).
-- Tier A = top ~20 brands / ~2,000 pedals (launch scope); Tier B = next ~30
-  brands; Tier C = long tail.
+- Tier A = top ~20 brands / ~1,850 pedals; Tier B = next ~30 brands; Tier C = long tail.
 - Priority: BOSS, Electro-Harmonix, JHS, MXR, TC Electronic, Behringer, Keeley,
   Walrus Audio, EarthQuaker, Mooer, Joyo, Strymon, Wampler, Dunlop, Fender,
   DigiTech, Catalinbread, OBNE, GFI, Meris, Red Panda.
-- PedalPlayground is **discovery only** — facts and images are re-verified.
+
+### Pedalboards
+- **263 boards / 38 brands** in the discovery list; current seed has only 10.
+- Tier A = top **~150 boards** (all popular brands/families) in the first wave;
+  Tier B/C = the rest.
+- Priority brands (discovery counts): Pedaltrain (23), Pivotal (22), Templeboards/
+  Temple Audio (21), Creation Music Co (18), GigRig (18), Morton (17), Rockboard
+  (16), Vertex (14), Mono (11), STRICH (10), Aclam (8), Friedman (6), Gator (6),
+  BOSS (4), D'Addario (4), Voodoo Lab (4), Fender (3), Blackbird (2), plus
+  Harley Benton, Palmer, Fame, SKB, Holeyboard, Donner.
+- Normalize brand names and collapse size variants only where the family is the
+  same base model; keep real size/version entries as their own products.
+
+**First 2,000 catalog items:** ~**1,850 pedals + ~150 boards**. The 2,000
+hosted-pedal cap still applies to pedals; board images are a small separate
+budget (~300 files / ~20 MB at Tier A) and stay inside the same Pages/GitHub
+safety margin.
+
+PedalPlayground is **discovery only** — facts and images are re-verified.
+
+## Pedalboards — data contract
+
+Boards use the same capture-once raw archive and image pipeline, with a board-
+specific projection. `widthCm`/`heightCm` remain the **footprint** (width ×
+depth); physical thickness/height is separate.
+
+### Mandatory
+`id`, `brand`, `name`, `widthCm`, `heightCm` (footprint depth), `image`, `source`.
+
+### Optional enrichment (capture when found)
+- **Physical:** `thicknessCm`, `maxHeightCm` (with risers), `weightG`, `material`
+  (aluminum/wood/steel/composite), `finish`/`color`.
+- **Form:** `boardType` (flat/angled/tiered/folding), `tiers` + tier heights,
+  `surface` (velcro/loop/slat/track), `handles`, `feet`, `mounting`.
+- **Transport:** `bagIncluded`, `caseIncluded`, `caseModel`, `foldable`,
+  `weightWithCaseG`.
+- **Power/ routing:** `powerMount` (brand/size), `powerSupplySpace`,
+  `cableRouting` (slots/holes/undercarriage), `cableClearanceCm`.
+- **Compatibility:** `maxPedalHeightCm`, `maxPedalDepthCm`, recommended board
+  size/family, `variantOf` (size family).
+- **Lifecycle/commercial:** year, discontinued, replacement, limited edition,
+  made in, **price observations (new/used) when already found**, manual URL,
+  videos, serial format/ranges (model-level), artist association.
+- **Provenance:** `sources`, `confidence`, `lastVerified`, `imageCandidates`,
+  `extra`.
+
+### Board images
+- Prefer **top-down, empty board** images (no pedals) so true scale is clear; a
+  transparent/neutral background is ideal. Angled hero shots are rejected or
+  re-sourced.
+- Aspect check uses `widthCm / heightCm` (footprint); perspective distortion is
+  a reject signal.
+- Both 800/350 renditions, same as pedals.
 
 ## Image policy & pipeline
 
@@ -220,6 +284,8 @@ Regression fixtures: **BOSS AC-3** (white background) and **TC Choka** (bad crop
 ## Hosting cap and P5-05
 
 - **Hard cap: 2,000 pedals with hosted images** (~4,000 files, ~300 MB).
+- **Board image budget:** ~150 Tier A boards × 2 renditions ≈ 300 files / ~20 MB;
+  boards do not count toward the 2,000-hosted-pedal cap.
 - The runner checks before/after each batch; at the cap it stops all P5-03 waves
   and reports.
 - Current Cloudflare Pages/GitHub setup is safe at this cap. Full 8,557 would be
@@ -233,10 +299,13 @@ Regression fixtures: **BOSS AC-3** (white background) and **TC Choka** (bad crop
 
 ```text
 data/catalog/inventory.json
-data/catalog/brands/<brand>/<batch>.json      # one agent owns one batch file
-data/catalog/registry.json                    # coordinator only
-work/catalog/state|control|checkpoints|logs   # runtime control plane
-public/pedal-assets/**                        # final assets
+data/catalog/research/pedals/<brand>/<batch>.json   # raw capture (one agent owns one file)
+data/catalog/research/boards/<brand>/<batch>.json
+data/catalog/pedals/<brand>/<batch>.json            # mapped/normalised batch
+data/catalog/boards/<brand>/<batch>.json
+data/catalog/registry.json                          # coordinator only
+work/catalog/state|control|checkpoints|logs         # runtime control plane
+public/pedal-assets/**                              # final assets
 ```
 
 - Brand agents write **only** their batch file + own assets; never
@@ -244,11 +313,13 @@ public/pedal-assets/**                        # final assets
 - Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
 - `pnpm catalog:build` regenerates the runtime catalog after merges.
 - **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR.
-- Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches.
+- Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches. Boards: 10–25
+  models per batch (families/sizes); a board brand batch runs alongside pedal
+  batches in the same 3-slot queue.
 - `catalog-runner` + `pnpm catalog:status [--watch]`,
   `catalog:pause|stop|resume`, global `STOP`, per-agent flags.
-- Per-agent state: progress %, pedals done/total, images accepted/rejected,
-  elapsed, heartbeat, blockers.
+- Per-agent state: kind (pedals/boards), progress %, done/total, images
+  accepted/rejected, elapsed, heartbeat, blockers.
 - Checkpoint after every pedal; atomic writes; no PR on stop; SIGTERM/SIGKILL
   fallback; stale heartbeat alert after 30 min.
 - **Status message every 15 minutes**; hard per-pedal limit 12 min (initial),
@@ -258,14 +329,19 @@ public/pedal-assets/**                        # final assets
 
 1. **P5-01** policy, data contract, inventory, schema, 2k cap.
 2. **P5-02** tooling, quality gates, control plane, agent templates.
-3. **Pilot:** TC Choka — one PR with data + hosted image + contact sheet +
-   Playwright.
-4. **Small parallel test:** Meris (15) + Red Panda (14) — one PR each.
-5. **Big-brand split test:** BOSS, 3 batch PRs in parallel; verify build/merge.
-6. **Scale:** 3 batches in flight continuously; refill as each finishes (no
-   one-per-day assumption). Priority brands first.
-7. **At 2,000 hosted pedals:** stop; run P5-05; resume only after the decision.
-8. **P5-04:** final QA, provenance, launch gate.
+3. **Pedal pilot:** TC Choka — one PR with raw + mapped data, hosted image,
+   contact sheet, Playwright.
+4. **Board pilot:** **Pedaltrain Classic 2** (or Temple Audio Duo 24) — one PR
+   with board facts, hosted top-down image, contact sheet, Playwright board
+   picker/placement. Boards are first-class: this runs immediately after the
+   pedal pilot, not at the end.
+5. **Small parallel test:** Meris + Red Panda + one board batch (Pedaltrain) —
+   one PR each, 3 in flight.
+6. **Big-brand split test:** BOSS, 3 batch PRs in parallel; verify build/merge.
+7. **Scale:** 3 batches in flight continuously, mixing pedals and boards;
+   refill as each finishes. First 2,000 catalog items include ~150 boards.
+8. **At 2,000 hosted pedals:** stop; run P5-05; resume only after the decision.
+9. **P5-04:** final QA, provenance, launch gate.
 
 ## Per-PR QA
 
@@ -274,6 +350,8 @@ public/pedal-assets/**                        # final assets
   same-origin; export stays untainted.
 - Playwright: picker search + brand/effect filters; canvas placement; no console
   errors; screenshot/contact sheet in the PR.
+- Boards: footprint width×depth, top-down image aspect, picker board preview,
+  board placement/rotation, no console errors; board images 800/350.
 - Coverage report: pedals covered, unresolved, duplicates, image pass/reject.
 
 ## Cost/time
