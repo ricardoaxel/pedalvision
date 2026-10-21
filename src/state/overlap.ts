@@ -154,8 +154,15 @@ export function spaceWarning(
 		const peerRect = aabb(placedCorners(peer, boards, customPedals));
 		const name = resolveItem(peer, customPedals).name;
 		if (rectsOverlap(targetRect, peerRect)) {
+			// A real visual overlap is flagged across containers (a loose pedal
+			// over a board pedal is still a problem).
 			overlaps.push(name);
-		} else if (rectsOverlap(targetRect, peerRect, PATCH_CABLE_GAP_CM)) {
+		} else if (
+			peer.boardUid === item.boardUid &&
+			rectsOverlap(targetRect, peerRect, PATCH_CABLE_GAP_CM)
+		) {
+			// The patch-cable clearance is a packing concern inside one container;
+			// cross-board proximity must not nag permanently.
 			tight.push(name);
 		}
 	}

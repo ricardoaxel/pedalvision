@@ -51,8 +51,8 @@ export function cableCurve(
 	const chord = Math.hypot(end.x - start.x, end.y - start.y);
 	const direction = normalize(sub(end, start));
 	const handle = Math.max(
-		12 / safeScale,
-		Math.min(chord * CABLE.handleChordFraction, 72 / safeScale),
+		CABLE.handleMinPx / safeScale,
+		Math.min(chord * CABLE.handleChordFraction, CABLE.handleMaxPx / safeScale),
 	);
 	// A jack handle leaves along its outward normal. An endpoint has no edge, so
 	// its handle points back along the chord (the cable plugs into the tag).

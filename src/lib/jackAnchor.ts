@@ -82,18 +82,18 @@ function jackAnchorDetailed(
 	const jacks = resolveItemJacks(item, customPedals);
 	const jack = jacks[index];
 	if (!jack) return null;
-	const local = jackLocalPoint(jack, itemFootprint(item, customPedals));
-	const rotated = rotatePoint(local, { x: 0, y: 0 }, item.rotationDeg);
+	// Reuse the canonical anchor math (item rotation → board transform) so the
+	// visible/drag anchor and the persisted anchor can never drift.
+	const point = jackAnchorWorld(item, String(index), boards, customPedals);
+	if (!point) return null;
 	const normal = rotatePoint(
 		jackNormalLocal(jack.edge),
 		{ x: 0, y: 0 },
 		item.rotationDeg,
 	);
-	const parent = { x: rotated.x + item.x, y: rotated.y + item.y };
 	const board = item.boardUid
 		? boards.find((candidate) => candidate.uid === item.boardUid)
 		: undefined;
-	const point = board ? boardToWorld(parent, board) : parent;
 	const worldRotation = (board?.rotationDeg ?? 0) + item.rotationDeg;
 	const worldNormal = board
 		? rotatePoint(normal, { x: 0, y: 0 }, board.rotationDeg)

@@ -374,6 +374,17 @@ export function pruneCustomPedals(
 	return customPedals.filter((custom) => referenced.has(custom.refId));
 }
 
+/** Do two cable ends name the same termination? */
+export function sameCableEnd(a: CableEnd, b: CableEnd): boolean {
+	if ("endpointUid" in a && "endpointUid" in b) {
+		return a.endpointUid === b.endpointUid;
+	}
+	if ("itemUid" in a && "itemUid" in b) {
+		return a.itemUid === b.itemUid && jackIndex(a.jack) === jackIndex(b.jack);
+	}
+	return false;
+}
+
 /** Does a cable end reference `itemUid` (regardless of its jack index)? */
 export function cableReferencesItem(cable: Cable, itemUid: string): boolean {
 	return (
@@ -882,6 +893,17 @@ export const useScene = create<SceneStore>((set, get) => ({
 			return null;
 		}
 		if (!cableEndExists(to, state.items, state.endpoints, state.customPedals)) {
+			return null;
+		}
+		// One physical cable per jack pair: a repeated drag (or the reverse
+		// direction) must not stack a duplicate that double-spends the graph.
+		if (
+			state.cables.some(
+				(cable) =>
+					(sameCableEnd(cable.from, from) && sameCableEnd(cable.to, to)) ||
+					(sameCableEnd(cable.from, to) && sameCableEnd(cable.to, from)),
+			)
+		) {
 			return null;
 		}
 		// Cables and endpoints share the 150/300 graph budget (P3-06).

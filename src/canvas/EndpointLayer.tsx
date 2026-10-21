@@ -123,7 +123,11 @@ function EndpointTag({
 	const label = endpoint.kind === "amp" ? "AMP" : "INSTR";
 	const height = ENDPOINT.heightPx / scale;
 	const glyphWidth = ENDPOINT.glyphPx / scale;
-	const width = (label.length * 6.6 + 28) / scale;
+	const width = Math.max(
+		ENDPOINT.minWidthPx / scale,
+		(label.length * 6.6 + 28) / scale,
+	);
+	const hitSize = ENDPOINT.hitPx / scale;
 	const border = selected || connectTarget ? theme.selection : theme.jack;
 
 	return (
@@ -238,6 +242,15 @@ function EndpointTag({
 					perfectDrawEnabled={false}
 				/>
 			) : null}
+			{/* 44px touch target, visually transparent. */}
+			<Rect
+				x={-hitSize / 2}
+				y={-hitSize / 2}
+				width={hitSize}
+				height={hitSize}
+				fill="rgba(0,0,0,0.001)"
+				perfectDrawEnabled={false}
+			/>
 		</Group>
 	);
 }

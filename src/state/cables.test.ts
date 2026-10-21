@@ -169,6 +169,24 @@ describe("endpoints + cables (P4-01)", () => {
 		).toEqual([standalone]);
 	});
 
+	it("refuses a duplicate cable in either direction", () => {
+		const itemUid = addJackedItem();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		expect(
+			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+		).not.toBeNull();
+		// Same pair (same direction) and the reverse direction are both no-ops.
+		expect(
+			useScene.getState().addCable({ itemUid, jack: "0" }, { endpointUid }),
+		).toBeNull();
+		expect(
+			useScene.getState().addCable({ endpointUid }, { itemUid, jack: "0" }),
+		).toBeNull();
+		expect(useScene.getState().cables).toHaveLength(1);
+	});
+
 	it("removing an endpoint removes its cables; the other endpoint survives", () => {
 		const itemUid = addJackedItem();
 		const amp = required(

@@ -17,6 +17,7 @@ import {
 } from "../lib/customPedal";
 import { focusAddBoardTrigger } from "../lib/focus";
 import { centerOffset, placeItem } from "../lib/geometry";
+import { PATCH_CABLE_GAP_CM } from "../state/overlap";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -453,6 +454,7 @@ export function Picker({
 				entry.heightCm,
 			);
 			const pos = placeItem(base, size, occupied(targetBoard.uid), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 				bounds: footprint,
 			});
 			selectItem(addItem(entry.id, "pedal", targetBoard.uid, pos));
@@ -463,7 +465,9 @@ export function Picker({
 				x: center.x - entry.widthCm / 2,
 				y: center.y - entry.heightCm / 2,
 			};
-			const pos = placeItem(base, size, occupied(null));
+			const pos = placeItem(base, size, occupied(null), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
+			});
 			selectItem(addItem(entry.id, "pedal", null, pos));
 		}
 		onClose();
@@ -487,6 +491,7 @@ export function Picker({
 				size.heightCm,
 			);
 			const pos = placeItem(base, size, occupied(targetBoard.uid), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 				bounds: footprint,
 			});
 			selectItem(addItem(refId, definition.category, targetBoard.uid, pos));
@@ -497,7 +502,9 @@ export function Picker({
 				x: center.x - size.widthCm / 2,
 				y: center.y - size.heightCm / 2,
 			};
-			const pos = placeItem(base, size, occupied(null));
+			const pos = placeItem(base, size, occupied(null), {
+				gapCm: PATCH_CABLE_GAP_CM + 0.1,
+			});
 			selectItem(addItem(refId, definition.category, null, pos));
 		}
 		setCustomDraft(emptyCustomPedalDraft(customDraft.units));

@@ -198,6 +198,32 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 		expect(usesFallbackJacks(supply, [supplyDef])).toBe(false);
 	});
 
+	it("builds the same anchor as jackAnchorWorld on a rotated board", () => {
+		const board: PlacedBoard = {
+			uid: "b1",
+			boardRefId: "boss-bcb-1000",
+			x: 100,
+			y: 50,
+			rotationDeg: 90,
+		};
+		const attached = item({
+			boardUid: "b1",
+			x: 0,
+			y: 0,
+			rotationDeg: 90,
+		});
+		const index = buildAnchorIndex({
+			boards: [board],
+			items: [attached],
+			customPedals: [customPedal],
+			endpoints: [],
+		});
+		const anchor = cableEndAnchorFromIndex({ itemUid: "i1", jack: "0" }, index);
+		expect(anchor?.point).toEqual(
+			jackAnchorWorld(attached, "0", [board], [customPedal]),
+		);
+	});
+
 	it("builds a keyed anchor index and caches it per mutation", () => {
 		const scene = {
 			boards: [],
