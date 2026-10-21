@@ -76,7 +76,8 @@ Task files live in `docs/tasks/`. Only P0–P1 have detailed files; later phases
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · **community jack-map suggestions + review** · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
 
 ## Launch gate (v1 public) — ALL must pass
-- [ ] Catalog meets the launch scope (≥200 pedals / ≥10 brands — Tier A target) with **no placeholder/mock images**: every shipped image is a hosted static asset with a per-item source URL and the attribution/takedown policy live (decisions/003 exit criteria, updated 2026-10-21) + dimension spot-check
+- [ ] **Absolute minimum:** ≥200 pedals / ≥10 brands / ≥10 boards, with no placeholder/mock images; every shipped image is a hosted static asset with a per-item source URL and the attribution/takedown policy live (decisions/003 exit criteria, updated 2026-10-21) + dimension spot-check
+- [ ] **Tier A target:** ~1,850 pedals + ~150 boards (~2,000 catalog items) verified; launching below this needs explicit owner acceptance
 - [ ] A1–A5 acceptance criteria green on production
 - [ ] `pnpm audit` clean; all dependencies < 6 months old
 - [ ] iOS Safari export verified on a real device

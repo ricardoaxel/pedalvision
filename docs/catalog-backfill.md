@@ -7,8 +7,11 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 ## Goals
 
 - Ship a clean catalog with **real facts + hosted, quality-gated images**.
-- Cover **Tier A** (top ~20 pedal brands + top board brands, ~2,000 catalog
-  items) for launch; the long tail continues after launch.
+- Cover **Tier A** (top ~20 pedal brands + top board brands, **~1,850 pedals +
+  ~150 boards = ~2,000 catalog items**) as the launch **target**; the long tail
+  continues after launch.
+- **Absolute minimum launch bar:** ≥200 pedals / ≥10 brands / ≥10 boards. Below
+  the Tier A target, launch requires explicit owner acceptance.
 - **Pedalboards are first-class**, not an afterthought: the first research wave
   includes the most popular boards alongside the most popular pedals.
 - Keep **cm** as the only stored unit; inches are converted at import.
@@ -38,7 +41,7 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 Raw records live off-runtime in:
 
 ```text
-data/catalog/research/<brand>/<batch>.json
+data/catalog/research/{pedals,boards}/<brand>/<batch>.json
 ```
 
 Shape (superset; extra verified facts go in `extra`):
@@ -189,7 +192,7 @@ input/output count, mono/stereo, `color`, `year`, `status`, original `notes`,
 record's `extra` bag. Missing fields are allowed; **do not invent** values.
 
 ### Schema additions (P5-01 implementation)
-`usage`, `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`,
+`usage?` (absent = unknown), `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`,
 and a **`public-asset`** value in `SOURCE_TAGS`. `jacks.stereo?` already exists.
 
 ## Master inventory
@@ -206,8 +209,9 @@ Two tracks, one catalog:
 
 ### Pedalboards
 - **263 boards / 38 brands** in the discovery list; current seed has only 10.
-- Tier A = top **~150 boards** (all popular brands/families) in the first wave;
-  Tier B/C = the rest.
+- Tier A = **exactly 150 boards**, taken in priority-brand order until the cap;
+  Tier B/C = the rest. Do not expand beyond 150 without raising the board
+  image budget.
 - Priority brands (discovery counts): Pedaltrain (23), Pivotal (22), Templeboards/
   Temple Audio (21), Creation Music Co (18), GigRig (18), Morton (17), Rockboard
   (16), Vertex (14), Mono (11), STRICH (10), Aclam (8), Friedman (6), Gator (6),
@@ -313,7 +317,10 @@ public/pedal-assets/**                              # final assets
 - Brand agents write **only** their batch file + own assets; never
   `src/catalog/data/pedals.json`.
 - Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
-- `pnpm catalog:build` regenerates the runtime catalog after merges.
+- **Agents write raw records only.** `pnpm catalog:build` deterministically
+  projects raw → `data/catalog/{pedals,boards}/...` (mapped) →
+  `src/catalog/data/{pedals,boards}.json` (runtime) after merges; no agent edits
+  the mapped/runtime files.
 - **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR.
 - Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches. Boards: 10–25
   models per batch (families/sizes); a board brand batch runs alongside pedal
@@ -331,8 +338,9 @@ public/pedal-assets/**                              # final assets
 
 1. **P5-01** policy, data contract, inventory, schema, 2k cap.
 2. **P5-02** tooling, quality gates, control plane, agent templates.
-3. **Pedal pilot:** TC Choka — one PR with raw + mapped data, hosted image,
-   contact sheet, Playwright.
+3. **Pedal pilot:** TC Choka — one PR with the raw record; `catalog:build`
+   generates the mapped + runtime files in the PR. Hosted image, contact sheet,
+   Playwright.
 4. **Board pilot:** **Pedaltrain Classic 2** (or Temple Audio Duo 24) — one PR
    with board facts, hosted top-down image, contact sheet, Playwright board
    picker/placement. Boards are first-class: this runs immediately after the

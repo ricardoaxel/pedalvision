@@ -181,7 +181,8 @@ change the decisions above, it makes the workflow explicit.
 - [ ] **Swap the dev seed for the hosted, quality-gated catalog before deploy (S1):** no `synthetic` or `placeholder` items in the deployed catalog
 - [ ] Zero `placeholder`-sourced items in the deployed catalog
 - [ ] Deployed images contain no placeholder/mocked files; every shipped image is a **hosted static asset** with a per-item source URL and is covered by the attribution/takedown policy
-- [ ] **Minimum content gate (S1):** ≥200 catalog pedals across ≥10 brands, plus **~150 Tier A pedalboards** (≥10 board brands); first 2,000 catalog items include ~1,850 pedals + ~150 boards; no placeholder/`synthetic`
+- [ ] **Absolute minimum (S1):** ≥200 catalog pedals across ≥10 brands + ≥10 pedalboards, hosted images + sources, no placeholder/`synthetic`
+- [ ] **Tier A launch target:** ~1,850 pedals + ~150 pedalboards (~2,000 catalog items) verified; launching below this requires explicit owner acceptance
 - [ ] **Dimension spot-check (S6):** a documented sample (≥10 items) re-measured against manufacturer pages/spec sheets, screenshots/links recorded here — catches hand-measured footprint errors before they ship
 - [ ] **Hosting gate:** the 2,000-hosted-pedal cap is respected; if launch scope exceeds it, P5-05 has chosen and verified the hosting option
 - [ ] Attribution/takedown page is live and the removal contact works

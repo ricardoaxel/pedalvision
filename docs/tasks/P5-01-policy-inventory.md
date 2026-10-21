@@ -27,27 +27,28 @@ Establish the owner-approved policy and data contract for the P5 catalog — **p
 ## Steps
 
 1. Update ADR-003: public-asset policy, `public-asset` tag, attribution/takedown, launch-gate wording, 2,000 cap, **capture-once raw research archive**.
-2. Extend the catalog schema (additive): pedal `usage`, `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`, `public-asset` in `SOURCE_TAGS`; keep `jacks.stereo?`. Board schema: optional `variantOf?` for size families + keep width/height as footprint; richer board metadata stays in the raw archive/projection. Model-level `serial`/`videos` are raw-record fields.
+2. Extend the catalog schema (additive): pedal `usage?` (optional; absent = unknown, no migration needed), `color?`, `notes?`, `year?`, `status?`, `confidence?`, `lastVerified?`, `public-asset` in `SOURCE_TAGS`; keep `jacks.stereo?`. Board schema: optional `variantOf?` for size families + keep width/height as footprint; richer board metadata stays in the raw archive/projection. Model-level `serial`/`videos` are raw-record fields.
 3. Define the **raw research record** (superset) and `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`, so all verified facts/image candidates/source pages are kept even when not yet in the runtime schema. Runtime catalog = projection; later fields are mapped from raw, never re-researched. The raw schema covers **connectors** (TS/TRS/XLR/DIN5/TRS-MIDI A/B/USB/barrel/IEC), **audio I/O** (mono/stereo/balanced/level/impedance/loops/DI/headphone), **control** (expression/CV/footswitch/tap/amp-switch), **MIDI** (DIN/TRS A-B/USB/BLE/clock), **USB** (type/functions/class/audio), **wireless/app/presets/IR**, **power** (V/AC-DC/mA/W/polarity/connector/battery/supply outlets), **circuit** (analog/digital/hybrid, bypass), **physical** (weight/enclosure/display/jack orientation/plug clearance), **electrical/audio specs** (impedance/levels/SNR/THD/phantom/pad/ground lift/phase), **routing/performance** (loops/4-cable/bypass/trails/presets/tuner/looper/IR), **identity/compatibility** (`deviceType`, `formFactor`, `instrumentTypes`), **product lifecycle** (year/discontinued/replacement/variant/limited/**artist association**/made-in/manual/firmware/MIDI chart/**price observations new/used**), and **planner-specific** details (jack labels/orientation, power-jack location, right-angle clearance, mounting). Use the **H90** as a stress fixture (4 TS in, 4 TS out, 2 TRS EXP/CTL, MIDI DIN in/out, USB-C, 12 V center-positive 5.5/2.5 mm).
 4. Build `data/catalog/inventory.json` from the discovery lists: **8,557 pedals / 779 brands** and **263 boards / 38 brands** + other `pedal-expert` sources. Normalize brand/name, slug, dedupe, collapse colorways to `variantOf`, and set tiers (A/B/C). **Tier A = ~1,850 pedals + ~150 boards** (top board brands: Pedaltrain, Pivotal, Temple Audio, Creation Music, GigRig, Morton, Rockboard, Vertex, Mono, STRICH, Aclam, Friedman, Gator, BOSS, D'Addario, Voodoo Lab, Fender, Blackbird, Harley Benton, Palmer, Fame, SKB, Holeyboard).
 5. Mark which inventory items overlap the current 207-pedal/10-board seed; preserve curated effect types/sources, and create raw records for them where missing.
 6. Define the **pedalboard data contract** (footprint width×depth, thickness/max height, weight, material, board type/tiers, surface, bag/case, power mount, cable routing, handles/feet, max pedal height, lifecycle, videos, price observations (new/used), artist association, sources) and the **model-level serial-number** field (`format`, `ranges`, `location`, `notes`; never a unit's serial) + **videos** (`url`, `title`, `source`, `kind`, `verified`) + optional **artist association** (`artist`, `role`, `notes`, `sources`) and **price observations** (`amount`, `currency`, `condition: new|used`, `source`, `observedAt`) when already found — no separate search.
-7. Produce `data/catalog/seed-validation.json` for the 207 pedals + 10 boards: keep/repair/replace/drop + reasons (missing mandatory field, bad dimensions, bad image, duplicate).
-8. Record the **2,000 hosted-pedal / ~4,000 image / ~300 MB** cap (boards have a separate ~300-file/~20 MB budget) in the tooling constants/plan (no enforcement code yet if P5-02 owns it).
-9. Surface the owner decisions: public-asset policy + attribution/takedown page, `public-asset` tag, capture-once archive, boards in the first 2,000 items.
+7. Add the checked-in **H90 raw fixture** (`data/catalog/fixtures/eventide-h90.json`) and the **community jack-map record** spec/example (`docs/catalog/jack-map-record.md`: pending/approved/rejected, contributor/evidence/reviewedAt, v1 GitHub flow, v2 backend).
+8. Produce `data/catalog/seed-validation.json` for the 207 pedals + 10 boards: keep/repair/replace/drop + reasons (missing mandatory field, bad dimensions, bad image, duplicate).
+9. Record the **2,000 hosted-pedal / ~4,000 image / ~300 MB** cap (boards: exactly 150 Tier A / ~300 files / ~20 MB) in the tooling constants/plan (no enforcement code yet if P5-02 owns it).
+10. Surface the owner decisions: public-asset policy + attribution/takedown page, `public-asset` tag, capture-once archive, boards in the first 2,000 items.
 
 ## Acceptance (executable)
 
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build` green (schema/data changes).
 - Inventory exists with counts: total pedals/brands, total boards/brands, Tier A/B/C sizes, duplicates removed, overlap with the seed.
-- **Tier A includes ~150 boards**, not just pedals; first 2,000 catalog items = ~1,850 pedals + ~150 boards.
+- **Tier A includes exactly 150 boards** (priority order, hard cap), not just pedals; first 2,000 catalog items = ~1,850 pedals + 150 boards. Board image budget ~300 files / ~20 MB is enforced in P5-02.
 - Board contract covers footprint, thickness/max height, weight, material/type/tiers, bag/case, power mount, cable routing, max pedal height, lifecycle, videos, serial ranges.
 - Seed validation covers all 207 pedals + 10 boards, each with keep/repair/replace/drop + reason.
 - ADR-003 + roadmap/phase-guide/catalog-backfill agree on the policy, 2k cap, and P5 numbering.
 - No image downloads or `public/pedal-assets` changes.
 - Raw-capture schema documented; every field we may later surface has a home (`extra` for unknown/verified facts). No re-research needed for a future field addition.
-- The H90 stress fixture maps all its connectors without inventing positions; optional fields stay optional.
-- A future **community jack-map** record is specified (`pending|approved|rejected`, contributor/evidence/reviewedAt) with a v1 GitHub-submission path and a v2 backend path.
+- `data/catalog/fixtures/eventide-h90.json` maps all H90 connectors without inventing positions; optional fields stay optional.
+- `docs/catalog/jack-map-record.md` specifies the community record (`pending|approved|rejected`, contributor/evidence/reviewedAt) with a v1 GitHub-submission path and a v2 backend path.
 
 ## Notes
 
