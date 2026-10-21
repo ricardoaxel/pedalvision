@@ -1,6 +1,6 @@
 # P4-03: Auto cable length calculation + cable list summary
 
-**Phase:** P4 · **Status:** todo · **Model:** build-strong
+**Phase:** P4 · **Status:** in review — PR #33 (not merged) · **Model:** build-strong
 
 ## Goal
 
@@ -67,3 +67,8 @@ Turn the P4-02 cable graph into a shop-ready **cable schedule**: derive every ca
 - P4-02 is the source of the cable graph, direction semantics, TRS capacity, Show patch toggle and I/O labels — do not regress them.
 - P4-04 owner outreach runs in parallel; not a gate.
 - P4-02 watch notes (hard-cap 16 fps, untrusted share payload, ~24K link tier) stay watch notes.
+- **Implementation (2026-10-21):** `src/lib/cableLength.ts` (sold lengths 10/15/20/30/60, 1.5 cm plug overhang per end, 10% slack min 1 cm, >60 = custom), `src/lib/cableSummary.ts` (ordered signal path, FROM → TO, totals, unconnected/assumed/dangling flags, one per-item lookup pass), `src/components/CableSchedulePanel.tsx` + CSS (owner-approved "Cable Schedule", desktop dock / mobile 52dvh tray, cm/in units, read-only), Patch-popover entry + read-only toolbar trigger. 15 unit tests; `e2e/cable-schedule.spec.ts` 6 flows × desktop + mobile.
+- **Checks:** lint / typecheck / test **568** / build / e2e **257 passed + 7 skipped** (baseline 553 / 245 + 7).
+- **Design:** designer "Cable Schedule", owner-approved before UI; `design-reviewer` 2/2 — R1 approve-with-changes (◇ ASSUMED contrast, mobile read-only tray gap, length padding, dot size) → R2 **approve**.
+- **Performance (`performance-expert`): verdict `watch`** — CSS +2.06 kB gz, JS ≈+4 kB gz estimated, hosting $0; applied the per-row item/jack lookup should-fix; deferred 300-row cap/over-budget notice + lazy loading.
+- **Code review (light, one pass): changes-required** — unresolved-row tooltip fabricated a sold length / ignored units; Show patch dropped focus; payload-equality test gap → fixed (early return, units, panel focus, persisted-document equality). No second pass (simple fixes; test suite is the re-check). Nits: assumed-end title added; duplicated e2e helpers deferred.
