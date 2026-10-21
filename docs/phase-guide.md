@@ -35,14 +35,14 @@ Short explanations so both the owner and any agent session know why each phase e
 | P2-07 R2 CDN (deferred) | Asset CDN when catalog grows | No (deferred, not now) |
 | P2-08 First-run guidance | Empty-state hint | No |
 
-> P2-06 Catalog procurement was **renumbered to P4-04** (pre-launch owner track; see P4).
+> P2-06 Catalog procurement moved to **P4-04, then retired into P5-01** (owner decision 2026-10-21; see P5).
 >
 > ✅ **P2 phase gate PASSED (2026-10-19)** — all scheduled P2 tasks merged; post-phase review folded into the docs, with one small proposed follow-up (**P2-10** thumbnails). **P3-01 Export PNG + PDF**, **P3-02 Scene save/load**, **P3-03 Share links**, **P3-04 Undo/redo**, **P3-05 Storage-failure fallback** and **P3-06 Capacity budgets + benchmark** are done (merged 2026-10-19/21).
 
 ## P3 — Output (COMPLETE — phase gate PASSED)
 Export PNG + PDF · save/load + boot reconcile · capacity budgets + benchmark · share links · undo/redo · storage-failure fallback.
 
-> ✅ **P3 phase gate PASSED (2026-10-21; PR #29 merged, squash `57dc9c7`; light model)** — verdict **changes-required**, no P3 regression; 5 findings folded docs-only, then confirmation passes 2–3 **approve** (the **P4 wiring contract** replaces the "one-place extension" claim, the share version-policy decision is flagged, export/capacity call sites are listed, and stale status text is fixed). Baseline green: lint / typecheck / test **502** / build / e2e **216 passed + 7 skipped**. **Next: P4-01 (new session); P4-04 owner outreach runs in parallel and is not a gate.**
+> ✅ **P3 phase gate PASSED (2026-10-21; PR #29 merged, squash `57dc9c7`; light model)** — verdict **changes-required**, no P3 regression; 5 findings folded docs-only, then confirmation passes 2–3 **approve** (the **P4 wiring contract** replaces the "one-place extension" claim, the share version-policy decision is flagged, export/capacity call sites are listed, and stale status text is fixed). Baseline green: lint / typecheck / test **502** / build / e2e **216 passed + 7 skipped**. **Next: P4-01; catalog procurement later moved from P4-04 into P5-01.**
 
 ## Performance & cost review (optional — owner request, 2026-10-20)
 
@@ -51,20 +51,33 @@ Run the **`performance-expert`** agent (`.opencode/agent/performance-expert.md`)
 ## P4 — Cables (in progress)
 Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 
-> **P4-01 (cable model + jack anchors) is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **P4-02 (drag-connect UI + endpoints + share v2 wiring) is in review — PR #31** (owner-approved “Patch Drafting”; fallback anchors + share v2; 2/2 design-review cap; performance `risk`; light code review pass 2 approve). **Next: P4-02 pending merge — do not start P4-03.** P4-04 brand outreach runs in parallel (owner track, not a gate).
+> **P4-01 is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **P4-02 is DONE** (merged 2026-10-21, PR #31, squash `f001a0b`). **P4-03 is in progress in a separate session** (branch `p4-03-cable-length`). **P4-04 is retired → P5-01** (owner decision 2026-10-21): catalog procurement moves into P5; brand-permission outreach is replaced by the self-hosted public-asset policy.
 
 | Task | What it does | Owner action? |
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
-| P4-04 Catalog procurement | Brand outreach + permission + dims spot-check | **Yes** — owner sends outreach emails/permission requests (brands reply to the owner, not an agent). **Owner track: start during P4; feeds P5-02 + the launch gate. Not a code dependency for the cable tasks.** *(Renumbered from P2-06.)* |
+
+## P5 — Catalog completion (plan approved 2026-10-21; docs restructure in review — PR #32; P5-01 next after merge)
+P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
+
+| Task | What it does | Owner action? |
+|---|---|---|
+| P5-01 Policy, data contract & master inventory | Public-asset policy, attribution/takedown, pedal + **pedalboard** schema, 8,557 pedals + 263 boards inventory, brand tiers | **Yes** — approve the public-asset policy + attribution/takedown page (owner accepts responsibility) |
+| P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap | No |
+| P5-03 Pilot + parallel backfill | Choka pilot → **board pilot** → Meris + Red Panda + board batch → BOSS split test → waves; first 2,000 items include 150 boards | **Yes** — review the pedal + board pilots and first brand PRs |
+| P5-04 Final QA, provenance & launch gate | Full validation, spot-checks, iOS, launch sign-off | **Yes** — launch approval |
+| P5-05 Image hosting at scale | Deferred spike only if the owner chooses to exceed Tier A / 2,000 hosted pedals | **Yes** — choose the hosting option only when triggered |
+| P5-06 Appium · P5-07 Help · P5-08 Observability | Proposed/unscheduled | Later |
 
 ## v2 backlog
 Accounts · cloud saves · community submissions · power planner · explore · themes · affiliate links · favorites · tiered boards · board stacking.
 
-> **Launch gate** = the one moment the owner must decide (approve public launch with cleared catalog). Everything else in v2 is build work.
+> **Launch gate** = the one moment the owner must decide (approve public launch with the hosted, quality-gated catalog). Everything else in v2 is build work.
 
 ## The only owner actions in the whole v1 plan
 1. **P0-02 (current blocker):** Cloudflare account + API token + account ID → for deploys.
 2. **P0-05:** external catalog file on owner machine → to run `import`/backfill (optional; the committed seed works without it).
-3. **P4-04 (renumbered from P2-06):** brand outreach + permission requests → for the real catalog. **Timing: start during P4; needed before P5-02 image clearance + the launch gate.**
-4. **Launch gate:** approve public launch.
+3. **P5-01:** approve the self-hosted public-asset policy + attribution/takedown page (owner accepts responsibility).
+4. **P5-03:** review the pilot pedal and the first brand PRs.
+5. **P5-05 (only if exceeding Tier A):** choose the image-hosting option at the 2,000-pedal cap.
+6. **Launch gate:** approve public launch.

@@ -27,4 +27,4 @@ Add automated coverage for the P1-02 canvas touch gestures — two-finger **pinc
 - Each touch test fails when `applyPinch`/pan handling is broken (verified manually during implementation).
 
 ## Notes
-Real iOS Safari + true-device behaviour still needs a short owner pass (ADR-007). Appium local-device E2E is a deferred *proposal* (P5-05), not part of this task.
+Real iOS Safari + true-device behaviour still needs a short owner pass (ADR-007). Appium local-device E2E is a deferred *proposal* (P5-06), not part of this task.

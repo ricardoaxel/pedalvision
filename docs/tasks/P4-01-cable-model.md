@@ -10,7 +10,7 @@ Add the persisted cable graph (endpoints + cables) and a deterministic jack-anch
 
 - `docs/design.md` §Data model (Endpoint, Cable, Scene, Jack edge/pos), §Persistence → P4 extension contract, §Canvas architecture (CableLayer/DragLayer), §Capacity budgets
 - `docs/requirements.md` F12 (cables), A4 (identical state after reload)
-- `docs/roadmap.md` P4-01/P4-02 + the P4-04 owner track
+- `docs/roadmap.md` P4-01/P4-02 + the P5-01 catalog program (was P4-04)
 - `src/state/scene.ts`, `sceneDocument.ts`, `library.ts`, `history.ts`
 - `src/lib/capacity.ts`, `src/lib/customPedal.ts`, `src/catalog/schema.ts`
 - `src/lib/sceneBackup.ts`, `src/state/share.ts`, `src/state/persist.ts`, `src/lib/exportScene.ts` (types only)
@@ -45,5 +45,5 @@ Add the persisted cable graph (endpoints + cables) and a deterministic jack-anch
 ## Notes
 
 - Owner decision (2026-10-21): **P4-01 ships save/load only** — no share support yet; P4-02 adds cables to the share payload and makes the version-policy decision explicit.
-- P4-04 (brand outreach) runs in parallel as an owner track; not a dependency.
+- P5-01 (catalog program, was P4-04) runs in parallel; not a dependency.
 - **Performance review (2026-10-21, `performance-expert`): verdict `watch`.** P4-01 adds +0.74 kB gz, ~+44 KB per max scene and ~3 ms codec work; hosting $0. Deferred to P4-02: share-URL budget when the graph travels (a 400-item + 300-graph scene measures 38,184 chars vs the 32,000 hard cap), transient endpoint dragging (commit once on pointerup), anchor memoization for `CableLayer`, and the capacity graph UI.
