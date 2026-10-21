@@ -48,16 +48,16 @@ Export PNG + PDF · save/load + boot reconcile · capacity budgets + benchmark �
 
 Run the **`performance-expert`** agent (`.opencode/agent/performance-expert.md`) before the PR for a **performance-sensitive task**: canvas scale / many objects, share-link or URL payloads, export, IndexedDB/storage, bundle/dependency changes, or anything that raises a product cap. Also run it **before raising a capacity cap** and **before the launch gate**. It reviews client CPU/memory/bandwidth/storage, Cloudflare free-tier/hosting cost, abuse limits, and free-tier user caps, with current sources and a measurement plan. It is **not a mandatory gate** — it advises; the owner decides. Run it with `opencode run --agent performance-expert "<prompt>"` (it is not in the in-session Task list until a session restart). Record the verdict and applied/deferred findings in the task + `docs/progress.md`. Precedent: P3-03 Share links (2026-10-20) — verdict `watch`; the 32K URL cap was applied, the large-preview confirmation + bundle split were deferred.
 
-## P4 — Cables (COMPLETE — phase gate in review)
+## P4 — Cables (COMPLETE — phase gate PASSED)
 Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 
-> **P4-01 is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **P4-02 is DONE** (merged 2026-10-21, PR #31, squash `f001a0b`). **P4-03 is DONE** (merged 2026-10-21, PR #33, squash `c0c419b`; owner-approved “Cable Schedule”; derived-only lengths; view-only; read-only recipients can open it; design-reviewer 2/2 approve; performance watch; light code review fixed). **P4 scheduled tasks are COMPLETE** — the **P4 phase gate is in review** (docs-only; new session). **P4-04 is retired → P5-01** (owner decision 2026-10-21): catalog procurement moved into P5; brand-permission outreach is replaced by the self-hosted public-asset policy. **Do not start P5-01 until the gate PR merges.**
+> **P4-01 is DONE** (merged 2026-10-21, PR #30, squash `d0d79ad`). **P4-02 is DONE** (merged 2026-10-21, PR #31, squash `f001a0b`). **P4-03 is DONE** (merged 2026-10-21, PR #33, squash `c0c419b`; owner-approved “Cable Schedule”; derived-only lengths; view-only; read-only recipients can open it; design-reviewer 2/2 approve; performance watch; light code review fixed). **P4 phase gate PASSED** (merged 2026-10-21, PR #34, squash `caee58d`; docs-only). **P4-04 is retired → P5-01** (owner decision 2026-10-21): catalog procurement moved into P5; brand-permission outreach is replaced by the self-hosted public-asset policy. **P4-05 (cable follow-ups) is PROPOSED, not a P5 blocker.**
 
 | Task | What it does | Owner action? |
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
 
-## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 next after the P4 phase gate)
+## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 in progress)
 P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
 
 | Task | What it does | Owner action? |
