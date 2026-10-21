@@ -1,6 +1,6 @@
 # P4-01: Cable model + jack anchors
 
-**Phase:** P4 · **Status:** in review — PR #30 · **Model:** build-strong
+**Phase:** P4 · **Status:** done (merged 2026-10-21, PR #30, squash `d0d79ad`) · **Model:** build-strong
 
 ## Goal
 
