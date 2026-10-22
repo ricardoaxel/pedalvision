@@ -118,7 +118,8 @@
       "productCode": "0709-AHZ",
       "retailerAvailability": "Thomann lists the model as available since April 2018",
       "dimensions": "58 x 74 x 132 mm (H x W x D)",
-      "weight": "0.5 kg (1.1 lbs)"
+      "weight": "0.5 kg (1.1 lbs)",
+      "imageProcessing": "Official top-down has a bottom drop shadow/reflection. It was removed (alpha threshold before trimming) so the shadow is not part of the hosted cutout or the 7.4 x 13.2 cm footprint."
     },
     "sources": [
       {
@@ -139,7 +140,7 @@
         "url": "https://cdn-media.empowertribe.com/b09497da0ed74f48ab325ac0ff75feae/Image_TE_0709-AHZ_CHOKA-TREMOLO_Top_XL.png",
         "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHZ",
         "priority": 1,
-        "notes": "Official top-down view; used for the hosted asset with the soft matte. Vision QA accepted it as the best candidate (clean top-down, soft alpha edges, complete object)."
+        "notes": "Official top-down view; used for the hosted asset. The bottom drop shadow/reflection was removed before trimming (alpha threshold) so it is not part of the cutout or footprint. Vision QA rejected the earlier soft-matte version for the shadow and accepted this shadow-free version as the best candidate (complete pedal, not clipped, clean edges)."
       },
       {
         "url": "https://cdn-media.empowertribe.com/e812034e0da44b1e907bb6f7fc605d8e/Image_TE_0709-AHZ_CHOKA-TREMOLO_Left_XL.png",

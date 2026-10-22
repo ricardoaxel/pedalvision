@@ -17,6 +17,7 @@ end before any parallel wave starts.
 - **Items:** 1 — `tc-electronic-choka-tremolo` (Choka Tremolo)
 - **Raw file:** `data/catalog/research/pedals/tc-electronic/choka-1.json`
 - **Assets:** `public/pedal-assets/pedals/{800,350}/tc-electronic-choka-tremolo.png`
+- **Image note:** the official top-down has a bottom drop shadow/reflection; it was removed before trimming so it is **not** part of the cutout or the 7.4 × 13.2 cm footprint.
 
 ## Read first (context pack)
 
