@@ -35,7 +35,7 @@ node --experimental-strip-types tools/asset-pipeline/index.ts --input raw.png \
    (thumb), preserving aspect ratio — **no padding/letterboxing**, because the
    renderer stretches the cutout to the item's exact cm footprint (design.md
    §Assets & catalog; ADR-003 true-scale bar).
-4. **Write + draft.** Two PNGs are written to
+4. **Write + draft.** Two PNGs are written atomically (temp→rename) to
    `public/pedal-assets/{pedals,boards}/{800,350}/<id>.png`, and a catalog-shaped
    JSON draft is printed (or written with `--draft`). Progress lines go to
    **stderr**, so stdout is pure JSON (`… > draft.json` works).
@@ -90,6 +90,31 @@ Flipping it to a cleared tag is a launch-gate decision, not the tool's.
 > must be merged (via the draft) **before** you re-run `seed`, or `seed` will
 > delete it.
 
+## Analyzer (P5-02)
+
+```sh
+pnpm asset:analyze --input raw.png --kind pedal --width-cm 7.3 --height-cm 12.9 \
+  --id boss-ds-1 --batch boss/batch-1 --out report.json
+```
+
+Deterministic checks: min 800 px long edge, background uniformity, alpha, trim
+bbox/whitespace, aspect vs the **cm footprint** (≤10% pass, 10–15% flag, >15%
+reject), rotation/skew (>2° reject), shadow/perspective signals, and board
+top-down signals. Verdicts/reasons are cached under `work/catalog/image-qa/` by
+source SHA-256. No AI, no downloads.
+
+## Contact sheets & vision QA (P5-02)
+
+```sh
+pnpm asset:contact-sheet --images manifest.json --out sheet.png
+pnpm asset:qa --batch boss/batch-1 --id boss-ds-1 --verdict accept \
+  --reason "clean top-down cutout" --image raw.png
+```
+
+The sheet helper accepts **20–30 images per call**, writes a grid PNG plus a
+sidecar JSON mapping each cell to its id/hash. Vision runs only on contact
+sheets (`catalog-image-reviewer`), never per image.
+
 ## Options
 
 | Flag                     | Default                | Notes                                        |
@@ -106,6 +131,9 @@ Flipping it to a cleared tag is a launch-gate decision, not the tool's.
 | `--assets-dir <dir>`     | `public/pedal-assets`  | output root                                  |
 | `--draft <file>`         | stdout                 | where to write the JSON draft                |
 | `--tolerance <0-255>`    | `32`                   | background match tolerance                   |
+| `--matte flood\|soft`     | `flood`                | dev-only soft fallback for gradients         |
+| `--analyze <file>`       | —                      | write the analyzer report; reject >15%/busy  |
+| `--force`                | off                    | process despite an analyzer reject (manual)  |
 
 ## Rights & scope (ADR-003)
 
