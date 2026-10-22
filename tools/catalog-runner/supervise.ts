@@ -25,6 +25,10 @@ export type SuperviseOptions = {
 	statusEveryMs?: number;
 };
 
+function stopGraceMs(): number {
+	return Number(process.env.CATALOG_STOP_GRACE_MS ?? 5_000);
+}
+
 function killGraceMs(): number {
 	return Number(process.env.CATALOG_KILL_GRACE_MS ?? 5_000);
 }
@@ -73,7 +77,8 @@ export async function supervise(options: SuperviseOptions): Promise<number> {
 	);
 
 	let stopRequested = false;
-	let signalSentAt = 0;
+	let stopRequestedAt = 0;
+	let termSentAt = 0;
 	let killed = false;
 	const exit = new Promise<number>((resolve) => {
 		child.on("error", (error) => {
@@ -90,25 +95,28 @@ export async function supervise(options: SuperviseOptions): Promise<number> {
 			const globalStop = await isGlobalStop(options.root);
 			const batchStop = await isBatchStop(options.root, options.batchId);
 			if (!globalStop && !batchStop) return;
+			const now = Date.now();
 			if (!stopRequested) {
 				stopRequested = true;
-				signalSentAt = Date.now();
+				stopRequestedAt = now;
 				await requestBatchStop(
 					options.root,
 					options.batchId,
 					"supervisor stop",
 				);
-				if (child.pid && alive(child.pid)) {
-					try {
-						process.kill(child.pid, "SIGTERM");
-					} catch {
-						// Already gone.
-					}
-				}
 				return;
 			}
 			if (!child.pid || !alive(child.pid) || killed) return;
-			if (Date.now() - signalSentAt > killGraceMs()) {
+			if (termSentAt === 0 && now - stopRequestedAt > stopGraceMs()) {
+				termSentAt = now;
+				try {
+					process.kill(child.pid, "SIGTERM");
+				} catch {
+					// Already gone.
+				}
+				return;
+			}
+			if (termSentAt > 0 && now - termSentAt > killGraceMs()) {
 				killed = true;
 				try {
 					process.kill(child.pid, "SIGKILL");
@@ -133,6 +141,7 @@ export async function supervise(options: SuperviseOptions): Promise<number> {
 			(await isBatchStop(options.root, options.batchId));
 		if (stopped) {
 			finalState.status = "stopped";
+			finalState.stopRequested = true;
 		} else {
 			finalState.status = "paused";
 			addBlocker(finalState, "supervisor exited without finish");

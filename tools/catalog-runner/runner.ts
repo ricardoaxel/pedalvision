@@ -1,10 +1,10 @@
-import { access } from "node:fs/promises";
+import { access, mkdir, rm } from "node:fs/promises";
+import { join } from "node:path";
 import {
 	canStartBatch,
 	capIssues,
-	scanAssetCounts,
+	scanAssetCountsAcross,
 } from "../catalog-pipeline/caps.ts";
-import { assetsRoot } from "../catalog-pipeline/paths.ts";
 import {
 	clearBatchPause,
 	clearBatchStop,
@@ -16,7 +16,8 @@ import {
 	requestBatchStop,
 	requestGlobalStop,
 } from "./control.ts";
-import { ensureControlDirs } from "./paths.ts";
+import { remainingPlanned, runnerAssetCounts, withPlanned } from "./counts.ts";
+import { controlDir, ensureControlDirs } from "./paths.ts";
 import {
 	addBlocker,
 	appendCheckpoint,
@@ -24,7 +25,6 @@ import {
 	type BatchState,
 	batchLimitMs,
 	createState,
-	elapsedMs,
 	isActive,
 	itemLimitMs,
 	listStates,
@@ -63,39 +63,31 @@ export type RunnerResult = {
 	exitCode: number;
 };
 
-function killGraceMs(): number {
-	return Number(process.env.CATALOG_KILL_GRACE_MS ?? 5_000);
-}
-
-function alive(pid: number): boolean {
-	try {
-		process.kill(pid, 0);
-		return true;
-	} catch {
-		return false;
-	}
-}
-
-function sleep(ms: number): Promise<void> {
+async function sleep(ms: number): Promise<void> {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function terminate(pid: number | undefined): Promise<void> {
-	if (!pid || !alive(pid)) return;
-	try {
-		process.kill(pid, "SIGTERM");
-	} catch {
-		return;
+async function withStartLock<T>(
+	root: string,
+	fn: () => Promise<T>,
+): Promise<T> {
+	const lock = join(controlDir(root), "start.lock");
+	let locked = false;
+	for (let attempt = 0; attempt < 80; attempt++) {
+		try {
+			await mkdir(lock);
+			locked = true;
+			break;
+		} catch (error) {
+			if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
+			await sleep(25);
+		}
 	}
-	const deadline = Date.now() + killGraceMs();
-	while (Date.now() < deadline) {
-		if (!alive(pid)) return;
-		await sleep(50);
-	}
+	if (!locked) throw new Error("catalog start lock is busy; retry");
 	try {
-		process.kill(pid, "SIGKILL");
-	} catch {
-		// Already gone.
+		return await fn();
+	} finally {
+		await rm(lock, { recursive: true, force: true });
 	}
 }
 
@@ -119,38 +111,48 @@ export async function startBatch(options: StartOptions): Promise<BatchState> {
 			"global STOP is active; clear it with `catalog:resume --all`",
 		);
 	}
-	const existing = await tryReadState(options.root, options.batchId);
-	if (existing && isActive(existing)) {
-		throw new Error(`batch "${options.batchId}" is already ${existing.status}`);
-	}
-	const active = (await listStates(options.root)).filter(isActive);
-	if (active.length >= 3) {
-		throw new Error(
-			`max 3 batches in flight (active: ${active.map((state) => state.batchId).join(", ")})`,
-		);
-	}
 	await assertWorktree(options.worktree);
+	return withStartLock(options.root, async () => {
+		const existing = await tryReadState(options.root, options.batchId);
+		if (existing && isActive(existing)) {
+			throw new Error(
+				`batch "${options.batchId}" is already ${existing.status}`,
+			);
+		}
+		const states = await listStates(options.root);
+		const active = states.filter(isActive);
+		if (active.length >= 3) {
+			throw new Error(
+				`max 3 batches in flight (active: ${active.map((state) => state.batchId).join(", ")})`,
+			);
+		}
 
-	const counts = await scanAssetCounts(
-		options.assetsDir ?? assetsRoot(options.root),
-	);
-	const check = canStartBatch(options.kind, options.total, counts);
-	if (!check.ok) {
-		throw new Error(`refused "${options.batchId}": ${check.reason}`);
-	}
+		const counts = options.assetsDir
+			? await scanAssetCountsAcross([options.assetsDir])
+			: await runnerAssetCounts(options.root, [options.worktree]);
+		const projected = withPlanned(
+			counts,
+			remainingPlanned(states, options.kind),
+			options.kind,
+		);
+		const check = canStartBatch(options.kind, options.total, projected);
+		if (!check.ok) {
+			throw new Error(`refused "${options.batchId}": ${check.reason}`);
+		}
 
-	const state = createState({
-		batchId: options.batchId,
-		kind: options.kind,
-		brand: options.brand,
-		total: options.total,
-		worktree: options.worktree,
-		now: options.now,
+		const state = createState({
+			batchId: options.batchId,
+			kind: options.kind,
+			brand: options.brand,
+			total: options.total,
+			worktree: options.worktree,
+			now: options.now,
+		});
+		state.lastItemStartedAt = state.startedAt;
+		await writeState(options.root, state);
+		await appendLog(options.root, state.batchId, statusLine(state));
+		return state;
 	});
-	state.lastItemStartedAt = state.startedAt;
-	await writeState(options.root, state);
-	await appendLog(options.root, state.batchId, statusLine(state));
-	return state;
 }
 
 export async function checkpoint(
@@ -163,6 +165,13 @@ export async function checkpoint(
 	const now = options.now ?? new Date();
 	const nowMs = now.getTime();
 	const checkpointAt = now.toISOString();
+
+	state.activeMs =
+		(state.activeMs ?? 0) +
+		(state.activeSince
+			? Math.max(0, nowMs - Date.parse(state.activeSince))
+			: 0);
+	state.activeSince = checkpointAt;
 
 	const done = Math.min(
 		state.total,
@@ -197,7 +206,7 @@ export async function checkpoint(
 		state.status = "paused";
 		state.endedAt = checkpointAt;
 	}
-	if (elapsedMs(state, nowMs) > batchLimitMs()) {
+	if ((state.activeMs ?? 0) > batchLimitMs()) {
 		addBlocker(state, "per-batch 4h limit exceeded");
 		state.status = "stopped";
 		state.endedAt = checkpointAt;
@@ -217,6 +226,9 @@ export async function checkpoint(
 
 	if (state.status === "running") {
 		state.lastItemStartedAt = checkpointAt;
+		state.activeSince = checkpointAt;
+	} else {
+		state.activeSince = undefined;
 	}
 	await writeState(options.root, state);
 	await appendLog(options.root, options.batchId, statusLine(state, nowMs));
@@ -237,15 +249,20 @@ export async function finishBatch(
 	if (state.done < state.total) {
 		addBlocker(state, `finished at ${state.done}/${state.total} items`);
 	}
-	const counts = await scanAssetCounts(assetsDir ?? assetsRoot(root));
+	const counts = assetsDir
+		? await scanAssetCountsAcross([assetsDir])
+		: await runnerAssetCounts(root);
 	const issues = capIssues(counts);
 	for (const cap of issues) addBlocker(state, cap.message);
 	if (issues.length > 0) {
 		state.status = "cap-reached";
 		await requestGlobalStop(root, issues.map((cap) => cap.message).join("; "));
-	} else if (state.status !== "stopped") {
+	} else if (state.done < state.total) {
+		state.status = "blocked";
+	} else {
 		state.status = "complete";
 	}
+	state.activeSince = undefined;
 	state.updatedAt = now.toISOString();
 	state.heartbeatAt = state.updatedAt;
 	state.endedAt = state.updatedAt;
@@ -283,7 +300,6 @@ export async function stopBatch(
 		state.updatedAt = new Date().toISOString();
 		await writeState(root, state);
 	}
-	await terminate(state.pid);
 	await appendLog(root, batchId, `stop requested ${state.batchId}`);
 	return state;
 }
@@ -307,6 +323,7 @@ export async function resumeBatch(
 	state.updatedAt = new Date().toISOString();
 	state.heartbeatAt = state.updatedAt;
 	state.lastItemStartedAt = state.updatedAt;
+	state.activeSince = state.updatedAt;
 	await writeState(root, state);
 	await appendLog(root, batchId, `resumed ${state.batchId}`);
 	return state;
@@ -322,7 +339,6 @@ export async function stopAll(
 		state.stopRequested = true;
 		state.updatedAt = new Date().toISOString();
 		await writeState(root, state);
-		await terminate(state.pid);
 	}
 }
 
@@ -347,6 +363,7 @@ export async function resumeAll(root: string): Promise<BatchState[]> {
 		state.updatedAt = new Date().toISOString();
 		state.heartbeatAt = state.updatedAt;
 		state.lastItemStartedAt = state.updatedAt;
+		state.activeSince = state.updatedAt;
 		await writeState(root, state);
 	}
 	return listStates(root);

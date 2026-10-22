@@ -157,11 +157,19 @@ async function runCi(args: Args): Promise<void> {
 }
 
 async function runPostMerge(args: Args): Promise<void> {
+	const before = await checkDrift({ root: args.root });
+	if (before.ok) {
+		console.log("post-merge precheck: generated files already current");
+	} else {
+		console.log(
+			`post-merge precheck: ${before.drift.length} stale generated file(s) — rebuilding`,
+		);
+	}
 	await runBuild(args);
-	const check = await checkDrift({ root: args.root });
-	if (!check.ok) {
-		console.error("post-merge drift check failed:");
-		for (const line of check.drift) console.error(`  ${line}`);
+	const after = await checkDrift({ root: args.root });
+	if (!after.ok) {
+		console.error("post-merge drift check failed after rebuild:");
+		for (const line of after.drift) console.error(`  ${line}`);
 		process.exitCode = 1;
 		return;
 	}

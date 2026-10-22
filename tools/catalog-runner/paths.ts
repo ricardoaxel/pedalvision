@@ -1,9 +1,13 @@
 import { mkdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
+import { repoRoot } from "./repo.ts";
 
 /** Runtime control-plane paths (P5-02). Everything here is gitignored. */
 export function workRoot(root: string): string {
-	return resolve(root, process.env.CATALOG_WORK_DIR ?? "work/catalog");
+	if (process.env.CATALOG_WORK_DIR) {
+		return resolve(root, process.env.CATALOG_WORK_DIR);
+	}
+	return join(repoRoot(root), "work/catalog");
 }
 
 export function stateDir(root: string): string {

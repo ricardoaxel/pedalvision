@@ -82,7 +82,9 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 - **Control plane:** `catalog-runner` + `work/catalog/{state,control,checkpoints,logs}`;
   `catalog:status [--watch]`, start/pause/stop/resume/finish/flag, global STOP,
   checkpoints after every item, 3 batches max, stale-heartbeat warning, 12 min
-  item / 4 h batch limits, SIGTERM→SIGKILL fallback.
+  item / 4 h active-time limits, SIGTERM→SIGKILL fallback. The control plane is
+  shared across linked worktrees (git-common-dir) and caps aggregate the main
+  checkout + active/complete worktrees.
 - **Caps:** enforced at start/finish from `tools/catalog-transform/limits.ts`:
   2,000 hosted pedals (~4,000 files/~300 MB) and 150 Tier A boards
   (~300 files/~20 MB, independent).
@@ -387,7 +389,7 @@ public/pedal-assets/**                              # final assets
 - Checkpoint after every pedal; atomic writes; no PR on stop; SIGTERM/SIGKILL
   fallback; stale heartbeat alert after 30 min.
 - **Status message every 15 minutes**; hard per-pedal limit 12 min (initial),
-  per-batch 4 h; tune after the pilot.
+  per-batch 4 h of active time (paused gaps excluded); tune after the pilot.
 
 ## Execution
 

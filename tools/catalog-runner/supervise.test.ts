@@ -27,6 +27,7 @@ describe("supervisor stop fallback", () => {
 	it("SIGTERMs then SIGKILLs a child that ignores SIGTERM", async () => {
 		const root = await mkdtemp(join(tmpdir(), "pedalvision-supervise-"));
 		dirs.push(root);
+		process.env.CATALOG_STOP_GRACE_MS = "100";
 		process.env.CATALOG_KILL_GRACE_MS = "150";
 		await startBatch({
 			root,

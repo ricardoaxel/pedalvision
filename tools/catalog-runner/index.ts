@@ -36,7 +36,7 @@ Usage:
 
 State/control/checkpoints/logs live under work/catalog (gitignored).
 Checkpoint after every item. Stop is honoured at the next checkpoint; the
-supervisor adds SIGTERM then SIGKILL after the grace period.`;
+supervisor waits CATALOG_STOP_GRACE_MS, then adds SIGTERM/SIGKILL fallback.`;
 
 type Args = {
 	command: string;

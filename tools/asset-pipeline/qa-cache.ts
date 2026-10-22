@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
+let writeSequence = 0;
+
 /**
  * Image QA cache (P5-02). Keyed by the SHA-256 of the source bytes so a rejected
  * or accepted image is never re-reviewed unnecessarily. The contact-sheet
@@ -51,7 +53,7 @@ export async function writeQaCache(
 	cache: QaCache,
 ): Promise<void> {
 	await mkdir(dirname(path), { recursive: true });
-	const temp = `${path}.tmp-${process.pid}`;
+	const temp = `${path}.tmp-${process.pid}-${writeSequence++}`;
 	await writeFile(temp, `${JSON.stringify(cache, null, 2)}\n`);
 	await rename(temp, path);
 }

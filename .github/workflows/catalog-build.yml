@@ -41,10 +41,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build, validate and drift-check catalog
-        run: |
-          pnpm catalog:build
-          pnpm catalog:validate
-          pnpm catalog:check
+        run: pnpm catalog:post-merge
 
       - name: Commit generated files
         run: |

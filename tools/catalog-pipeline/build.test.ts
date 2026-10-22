@@ -103,6 +103,24 @@ describe("catalog build", () => {
 		expect(drift).toEqual({ ok: true, drift: [] });
 	});
 
+	it("detects stale generated files", async () => {
+		const root = await makeRoot();
+		await writeJson(
+			join(root, "data/catalog/research/pedals/acme/batch-1.json"),
+			[rawPedal("acme-alpha")],
+		);
+		await writeAsset(root, "acme-alpha");
+		await buildCatalog({ root });
+		const runtimePath = join(root, "src/catalog/data/pedals.json");
+		const runtime = JSON.parse(
+			await readFile(runtimePath, "utf8"),
+		) as unknown[];
+		await writeFile(runtimePath, JSON.stringify(runtime.slice(0, 1)));
+		const drift = await checkDrift({ root });
+		expect(drift.ok).toBe(false);
+		expect(drift.drift.join(" ")).toMatch(/stale|missing|unexpected/);
+	});
+
 	it("rejects duplicate ids across two batches", async () => {
 		const root = await makeRoot();
 		for (const batch of ["batch-1", "batch-2"]) {

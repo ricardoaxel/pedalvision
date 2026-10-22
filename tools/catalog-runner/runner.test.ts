@@ -1,11 +1,12 @@
 import { execFileSync } from "node:child_process";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, describe, expect, it } from "vitest";
 import {
 	checkpoint,
+	finishBatch,
 	pauseBatch,
 	resumeAll,
 	resumeBatch,
@@ -13,7 +14,7 @@ import {
 	stopAll,
 	stopBatch,
 } from "./runner.ts";
-import { readState } from "./state.ts";
+import { readState, writeState } from "./state.ts";
 import { renderStatus } from "./status.ts";
 
 const dirs: string[] = [];
@@ -82,6 +83,46 @@ describe("catalog runner", () => {
 		expect(output).toContain("beta/boards-1");
 	});
 
+	it("shares one control plane across worktrees", async () => {
+		const main = await root();
+		const first = join(main, "worktree-a");
+		const second = join(main, "worktree-b");
+		await mkdir(first, { recursive: true });
+		await mkdir(second, { recursive: true });
+		const previousRepo = process.env.CATALOG_REPO_ROOT;
+		const previousWork = process.env.CATALOG_WORK_DIR;
+		process.env.CATALOG_REPO_ROOT = main;
+		process.env.CATALOG_WORK_DIR = join(main, "work/catalog");
+		try {
+			await startBatch({
+				root: first,
+				batchId: "acme/pedals-1",
+				kind: "pedals",
+				brand: "Acme",
+				total: 2,
+				worktree: first,
+				assetsDir: join(first, "assets"),
+			});
+			await startBatch({
+				root: second,
+				batchId: "acme/pedals-2",
+				kind: "pedals",
+				brand: "Acme",
+				total: 2,
+				worktree: second,
+				assetsDir: join(second, "assets"),
+			});
+			const status = await renderStatus(main);
+			expect(status).toContain("acme/pedals-1");
+			expect(status).toContain("acme/pedals-2");
+		} finally {
+			if (previousRepo === undefined) delete process.env.CATALOG_REPO_ROOT;
+			else process.env.CATALOG_REPO_ROOT = previousRepo;
+			if (previousWork === undefined) delete process.env.CATALOG_WORK_DIR;
+			else process.env.CATALOG_WORK_DIR = previousWork;
+		}
+	});
+
 	it("pauses at a checkpoint and resumes", async () => {
 		const dir = await root();
 		await start(dir, "acme/pedals-1");
@@ -124,6 +165,35 @@ describe("catalog runner", () => {
 			itemId: "acme-beta",
 		});
 		expect(resumed.exitCode).toBe(0);
+	});
+
+	it("does not complete an incomplete batch", async () => {
+		const dir = await root();
+		await start(dir, "acme/pedals-1", "pedals", 10);
+		await checkpoint({ root: dir, batchId: "acme/pedals-1", itemId: "acme-a" });
+		const result = await finishBatch(dir, "acme/pedals-1", join(dir, "assets"));
+		expect(result.state.status).toBe("blocked");
+		expect(result.exitCode).toBe(75);
+		expect(result.state.blockers.join(" ")).toMatch(/1\/10/);
+	});
+
+	it("does not count paused gaps toward the 4h batch limit", async () => {
+		const dir = await root();
+		await start(dir, "acme/pedals-1", "pedals", 10);
+		const state = await readState(dir, "acme/pedals-1");
+		state.startedAt = new Date(Date.now() - 5 * 60 * 60_000).toISOString();
+		state.activeMs = 0;
+		state.activeSince = new Date().toISOString();
+		await writeState(dir, state);
+		await pauseBatch(dir, "acme/pedals-1");
+		await resumeBatch(dir, "acme/pedals-1");
+		const resumed = await checkpoint({
+			root: dir,
+			batchId: "acme/pedals-1",
+			itemId: "acme-a",
+		});
+		expect(resumed.exitCode).toBe(0);
+		expect(resumed.state.status).toBe("running");
 	});
 
 	it("global STOP stops every batch at its next checkpoint", async () => {

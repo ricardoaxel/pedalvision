@@ -1,5 +1,6 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+
 import { SOURCE_TAGS, type SourceTag } from "../../src/catalog/schema.ts";
 import { analyzeImage } from "./analyze.ts";
 import { buildDraftEntry, type DraftInput } from "./draft.ts";
@@ -11,6 +12,8 @@ import {
 	slugId,
 } from "./naming.ts";
 import { DEFAULT_TOLERANCE, renderRenditions } from "./render.ts";
+
+let writeSequence = 0;
 
 /**
  * `tools/asset-pipeline` — a dev-only CLI (P2-04).
@@ -191,7 +194,7 @@ function parseArgs(argv: string[]): Args {
 }
 
 async function writeFileAtomic(path: string, content: Buffer): Promise<void> {
-	const temp = `${path}.tmp-${process.pid}`;
+	const temp = `${path}.tmp-${process.pid}-${writeSequence++}`;
 	await writeFile(temp, content);
 	await rename(temp, path);
 }

@@ -34,39 +34,76 @@ function emptyBudget(): AssetBudget {
 	return { items: 0, files: 0, bytes: 0 };
 }
 
-async function countRenditions(
-	assetsDir: string,
-	folder: "pedals" | "boards",
-): Promise<AssetBudget> {
-	const budget = emptyBudget();
-	const ids = new Set<string>();
-	for (const size of ["800", "350"]) {
-		const dir = join(assetsDir, folder, size);
-		let entries: string[];
-		try {
-			entries = await readdir(dir);
-		} catch (error) {
-			if ((error as NodeJS.ErrnoException).code === "ENOENT") continue;
-			throw error;
-		}
-		for (const entry of entries.sort()) {
-			if (!entry.endsWith(".png")) continue;
-			const info = await stat(join(dir, entry));
-			if (!info.isFile()) continue;
-			budget.files++;
-			budget.bytes += info.size;
-			if (size === "800") ids.add(entry.slice(0, -4));
+type FileBudget = {
+	has800: boolean;
+	has350: boolean;
+	bytes800: number;
+	bytes350: number;
+};
+
+/**
+ * Count hosted assets across one or more roots. The same catalog id in two
+ * worktrees is counted once (max file size), so baseline assets are not
+ * multiplied by the number of worktrees.
+ */
+export async function scanAssetCountsAcross(
+	assetsDirs: string[],
+): Promise<AssetCounts> {
+	const files = new Map<string, FileBudget>();
+	for (const assetsDir of [...new Set(assetsDirs)]) {
+		for (const kind of ["pedals", "boards"] as const) {
+			for (const size of ["800", "350"] as const) {
+				const dir = join(assetsDir, kind, size);
+				let entries: string[];
+				try {
+					entries = await readdir(dir);
+				} catch (error) {
+					if ((error as NodeJS.ErrnoException).code === "ENOENT") continue;
+					throw error;
+				}
+				for (const entry of entries.sort()) {
+					if (!entry.endsWith(".png")) continue;
+					const info = await stat(join(dir, entry));
+					if (!info.isFile()) continue;
+					const key = `${kind}:${entry.slice(0, -4)}`;
+					const budget = files.get(key) ?? {
+						has800: false,
+						has350: false,
+						bytes800: 0,
+						bytes350: 0,
+					};
+					if (size === "800") {
+						budget.has800 = true;
+						budget.bytes800 = Math.max(budget.bytes800, info.size);
+					} else {
+						budget.has350 = true;
+						budget.bytes350 = Math.max(budget.bytes350, info.size);
+					}
+					files.set(key, budget);
+				}
+			}
 		}
 	}
-	budget.items = ids.size;
-	return budget;
+
+	const counts: AssetCounts = {
+		pedals: emptyBudget(),
+		boards: emptyBudget(),
+	};
+	for (const [key, budget] of files) {
+		const [kind] = key.split(":");
+		const target = kind === "pedals" ? counts.pedals : counts.boards;
+		if (budget.has800) {
+			target.items++;
+			target.files++;
+		}
+		if (budget.has350) target.files++;
+		target.bytes += budget.bytes800 + budget.bytes350;
+	}
+	return counts;
 }
 
 export async function scanAssetCounts(assetsDir: string): Promise<AssetCounts> {
-	return {
-		pedals: await countRenditions(assetsDir, "pedals"),
-		boards: await countRenditions(assetsDir, "boards"),
-	};
+	return scanAssetCountsAcross([assetsDir]);
 }
 
 function issue(

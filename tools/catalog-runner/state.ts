@@ -9,6 +9,8 @@ import {
 import { dirname } from "node:path";
 import { checkpointPath, logPath, stateDir, statePath } from "./paths.ts";
 
+let writeSequence = 0;
+
 /**
  * Per-batch progress state (P5-02). Written atomically; the checkpoint log is
  * append-only so a kill can never lose the items already completed.
@@ -40,6 +42,9 @@ export type BatchState = {
 	heartbeatAt: string;
 	lastCheckpointAt?: string;
 	lastItemStartedAt?: string;
+	/** Active (unpaused) time only; paused gaps do not count toward the 4h limit. */
+	activeMs?: number;
+	activeSince?: string;
 	endedAt?: string;
 	pid?: number;
 	pauseRequested?: boolean;
@@ -73,6 +78,8 @@ export function createState(input: NewBatchState): BatchState {
 		startedAt: now,
 		updatedAt: now,
 		heartbeatAt: now,
+		activeMs: 0,
+		activeSince: now,
 		blockers: [],
 	};
 }
@@ -83,7 +90,7 @@ export async function writeState(
 ): Promise<void> {
 	const path = statePath(root, state.batchId);
 	await mkdir(dirname(path), { recursive: true });
-	const temp = `${path}.tmp-${process.pid}`;
+	const temp = `${path}.tmp-${process.pid}-${writeSequence++}`;
 	await writeFile(temp, `${JSON.stringify(state, null, 2)}\n`);
 	await rename(temp, path);
 }

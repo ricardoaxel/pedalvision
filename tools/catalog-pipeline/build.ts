@@ -12,6 +12,7 @@ import {
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+
 import {
 	type CatalogBoard,
 	CatalogBoardSchema,
@@ -34,6 +35,8 @@ import {
 	writeRegistry,
 } from "./registry.ts";
 import { formatIssues, validateCatalog } from "./validate.ts";
+
+let writeSequence = 0;
 
 /**
  * Deterministic raw → mapped → runtime build (P5-02).
@@ -71,7 +74,7 @@ function json(value: unknown): string {
 
 async function writeJson(path: string, value: unknown): Promise<void> {
 	await mkdir(dirname(path), { recursive: true });
-	const temp = `${path}.tmp-${process.pid}`;
+	const temp = `${path}.tmp-${process.pid}-${writeSequence++}`;
 	await writeFile(temp, json(value));
 	await rename(temp, path);
 }

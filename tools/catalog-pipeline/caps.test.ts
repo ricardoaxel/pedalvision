@@ -1,12 +1,42 @@
-import { describe, expect, it } from "vitest";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { afterEach, describe, expect, it } from "vitest";
 import { CATALOG_LIMITS } from "../catalog-transform/limits.ts";
-import { type AssetCounts, canStartBatch, capIssues } from "./caps.ts";
+import {
+	type AssetCounts,
+	canStartBatch,
+	capIssues,
+	scanAssetCountsAcross,
+} from "./caps.ts";
 
 function counts(pedals = 0, boards = 0): AssetCounts {
 	return {
 		pedals: { items: pedals, files: pedals * 2, bytes: 0 },
 		boards: { items: boards, files: boards * 2, bytes: 0 },
 	};
+}
+
+const dirs: string[] = [];
+
+afterEach(async () => {
+	await Promise.all(
+		dirs.splice(0).map((dir) => rm(dir, { recursive: true, force: true })),
+	);
+});
+
+async function assetRoot(): Promise<string> {
+	const dir = await mkdtemp(join(tmpdir(), "pedalvision-caps-"));
+	dirs.push(dir);
+	return dir;
+}
+
+async function writeAsset(root: string, id: string): Promise<void> {
+	for (const size of ["800", "350"]) {
+		const dir = join(root, "pedals", size);
+		await mkdir(dir, { recursive: true });
+		await writeFile(join(dir, `${id}.png`), "x");
+	}
 }
 
 describe("catalog caps", () => {
@@ -54,5 +84,17 @@ describe("catalog caps", () => {
 
 	it("does not report a cap issue when boards exceed pedal counts", () => {
 		expect(capIssues(counts(10, 20))).toEqual([]);
+	});
+
+	it("counts a shared asset once across worktrees", async () => {
+		const first = await assetRoot();
+		const second = await assetRoot();
+		await writeAsset(first, "legacy-pedal");
+		await writeAsset(first, "acme-alpha");
+		await writeAsset(second, "legacy-pedal");
+		await writeAsset(second, "acme-beta");
+		const across = await scanAssetCountsAcross([first, second]);
+		expect(across.pedals.items).toBe(3);
+		expect(across.pedals.files).toBe(6);
 	});
 });
