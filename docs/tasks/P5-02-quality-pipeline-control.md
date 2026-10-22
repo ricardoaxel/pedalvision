@@ -1,6 +1,6 @@
 # P5-02: Catalog quality pipeline & control plane
 
-**Phase:** P5 · **Status:** in review — PR #36 · **Model:** build-strong
+**Phase:** P5 · **Status:** done — merged PR #36 · **Model:** build-strong
 
 ## Goal
 
