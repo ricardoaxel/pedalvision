@@ -1,0 +1,160 @@
+[
+  {
+    "id": "tc-electronic-choka-tremolo",
+    "brand": "TC Electronic",
+    "name": "Choka Tremolo",
+    "aliases": ["Choka"],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": ["guitar"],
+    "effectTypes": ["tremolo"],
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "dimensionsSource": "TC Electronic product page and Quick Start Guide (58 H x 74 W x 132 D mm)",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "impedanceOhm": 500000,
+        "stereo": false,
+        "note": "1/4-inch TS unbalanced; 500 kΩ input impedance."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "impedanceOhm": 1000,
+        "stereo": false,
+        "note": "1/4-inch TS unbalanced; 1 kΩ output impedance."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "Standard 9 V DC center-negative input, 5.5 x 2.1 mm; internal 9 V battery option."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "battery": "9 V",
+      "note": "Power input rated standard 9 V DC, center negative, >100 mA; current consumption 10 mA; internal 9 V battery connector."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 500000,
+      "outputImpedanceOhm": 1000,
+      "note": "One 1/4-inch TS unbalanced input and one 1/4-inch TS unbalanced output."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 500000,
+        "outputImpedanceOhm": 1000,
+        "note": "Mono in/out, unbuffered TS jacks; no effects loop, headphones or DI."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Speed, Depth and LFO knobs plus one on/bypass footswitch; LED shows effect on."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "All-analog circuitry; true bypass when disengaged."
+      },
+      "physical": {
+        "weightG": 500,
+        "depthCm": 13.2,
+        "heightCm": 5.8,
+        "enclosure": "metal",
+        "finish": "orange",
+        "footswitches": 1,
+        "jackOrientation": "top-mounted I/O",
+        "batteryCompartment": true,
+        "note": "58 x 74 x 132 mm (H x W x D); 0.5 kg; metal chassis; orange finish; top-mounted I/O."
+      },
+      "note": "Optional facts captured during the same official product-page and Quick Start Guide pass."
+    },
+    "usage": "guitar",
+    "color": "orange",
+    "status": "current",
+    "notes": "Vintage-flavored all-analog tremolo with Speed, Depth and LFO controls; the LFO knob morphs between triangle and square waveforms. True bypass with top-mounted I/O.",
+    "extra": {
+      "controls": ["Speed", "Depth", "LFO"],
+      "lfoWaveforms": "Seamless morph from triangle (soft) to square (hard/chop)",
+      "led": "Effect on",
+      "bypass": "True bypass",
+      "circuit": "All analog",
+      "chassis": "Metal",
+      "battery": "Internal 9 V battery connector",
+      "powerInputRating": "Standard 9 V DC, center negative, >100 mA",
+      "productCode": "0709-AHZ",
+      "retailerAvailability": "Thomann lists the model as available since April 2018",
+      "dimensions": "58 x 74 x 132 mm (H x W x D)",
+      "weight": "0.5 kg (1.1 lbs)"
+    },
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHZ",
+        "kind": ["info", "image"]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/f74c2d5aa50c49aeb0cc9745bc951289/QSG_TE_0709-AHZ_CHOKA-TREMOLO_WW.pdf",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b09497da0ed74f48ab325ac0ff75feae/Image_TE_0709-AHZ_CHOKA-TREMOLO_Top_XL.png",
+        "kind": ["image"]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/b09497da0ed74f48ab325ac0ff75feae/Image_TE_0709-AHZ_CHOKA-TREMOLO_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHZ",
+        "priority": 1,
+        "notes": "Official top-down view; used for the hosted asset with the soft matte. Vision QA accepted it as the best candidate (clean top-down, soft alpha edges, complete object)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e812034e0da44b1e907bb6f7fc605d8e/Image_TE_0709-AHZ_CHOKA-TREMOLO_Left_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHZ",
+        "priority": 2,
+        "notes": "Official left 3/4 perspective view; rejected by the analyzer (aspect 77% off, 27° skew, perspective distortion)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c09c7d8033b44c20b54692c62520a45b/Image_TE_0709-AHZ_CHOKA-TREMOLO_Right_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHZ",
+        "priority": 3,
+        "notes": "Official right 3/4 perspective view; rejected by the analyzer (aspect 77% off, 27° skew, perspective distortion)."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-22"
+  }
+]
