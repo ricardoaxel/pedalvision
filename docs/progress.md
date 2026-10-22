@@ -1,8 +1,8 @@
 # Progress
 
 **Current phase:** P5 — Catalog completion. **P4 is COMPLETE**: P4-01 (PR #30, squash `d0d79ad`), P4-02 (PR #31, squash `f001a0b`), P4-03 (PR #33, squash `c0c419b`) and the **P4 phase gate** (merged 2026-10-21, PR #34, squash `caee58d`) are **DONE**. The **P5 plan restructure** is **DONE** (merged 2026-10-21, PR #32, squash `6e7deef`).
-**Next task:** **P5-03 — pedal pilot (TC Choka)** — in progress. **P5-02 is DONE** (merged 2026-10-22, PR #36, squash `0a9da9b`). Do the Choka pilot PR, then **STOP for owner review**: do not start the board pilot, Meris/Red Panda, BOSS, or any parallel waves until the pilot is approved. **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed (Appium/help/observability; old P5-05/06/07).
-**Last updated:** 2026-10-22 (P5-02 merged; P5-03 Choka pilot in progress)
+**Next task:** **P5-03 — pedal pilot (TC Choka) — in review (PR #37)**. **P5-02 is DONE** (merged 2026-10-22, PR #36, squash `0a9da9b`). Review the pilot PR; **do not start the board pilot, Meris/Red Panda, BOSS, or any parallel waves** until the pilot is approved. **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed (Appium/help/observability; old P5-05/06/07).
+**Last updated:** 2026-10-22 (P5-03 Choka pilot in review — PR #37)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
@@ -44,7 +44,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- [ ] **P5-03 — Pilot + parallel backfill — Choka pilot in progress.** Only the **pedal pilot** (`tc-electronic-choka-tremolo`, batch `tc-electronic/choka-1`) is in flight. Raw record + hosted 800/350 image + batch task file in exactly **one PR**; CI builds a temp catalog + uncommitted runtime for Playwright. **Owner-blocked after the pilot PR:** do NOT start the board pilot, Meris/Red Panda, BOSS, or any parallel waves until the owner approves.
+- [ ] **P5-03 — Pilot + parallel backfill — Choka pilot in review (PR #37).** Only the **pedal pilot** (`tc-electronic-choka-tremolo`, batch `tc-electronic/choka-1`) is in flight. One PR with the raw record + hosted 800/350 image + batch task file; no mapped/runtime edits. **Checks:** `catalog:ci` validated 207/10; `catalog:validate` green; `catalog:post-merge` deterministic/drift-clean; `catalog:guard-batch-pr` clean; lint / typecheck / test **650** / build / e2e **257 passed + 7 skipped**; temporary Playwright picker/search/render check desktop + mobile. **Image QA:** official top-down used with soft matte; `catalog-image-reviewer` on `opencode/deepseek-v4.1-flash` accepted the soft-top candidate (raw-left/right rejected as 3/4 perspective; tight crop flagged). **Owner-blocked after the pilot PR:** do NOT start the board pilot, Meris/Red Panda, BOSS, or any parallel waves until the owner approves.
 
 ## Follow-ups
 - **P4 phase gate outcome (2026-10-21 — PR #34; light model).** Verdict **changes-required**, no P4 regression. 5 findings: (1) **should-fix (code)** read-only shares hide jack ticks (`src/canvas/PedalNode.tsx:394`), so the read-only tick cue is unreachable and the graph looks disconnected; (2) **should-fix (code)** selected-board export bounds omit the cubic cable curve (`src/lib/exportScene.ts:360-369`), so long outward handles can be clipped; (3) docs snap radius was wrong (real code: **18 px mouse / 44 px touch**, hit disc 28/44 px diameter) — fixed; (4) `design.md` typed `Cable.from` as item-only though an instrument endpoint is a valid source — fixed to `CableEnd`; (5) `progress.md` still said P5-01 could run parallel with P4-03 — fixed. Findings **1–2 are recorded as the follow-up task P4-05** (docs-only gate; no code expansion). Confirmation pass not required (docs-only; test suite is the re-check).
