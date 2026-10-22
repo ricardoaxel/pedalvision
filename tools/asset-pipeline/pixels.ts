@@ -131,6 +131,69 @@ export function removeBackground(
 }
 
 /**
+ * Soft background matte for gradient/shadow backgrounds (dev-only fallback).
+ * Border-connected pixels within `2 × tolerance` of the sampled background get a
+ * partial alpha ramp instead of a hard cut. Deterministic and dependency-free.
+ */
+export function removeBackgroundSoft(
+	data: Uint8Array,
+	width: number,
+	height: number,
+	background: BackgroundColor,
+	tolerance: number,
+): number {
+	const visited = new Uint8Array(width * height);
+	const queue = new Uint32Array(width * height);
+	let tail = 0;
+	const maxTolerance = Math.max(1, tolerance * 2);
+
+	const distance = (x: number, y: number): number => {
+		const i = (y * width + x) * CHANNELS;
+		return Math.max(
+			Math.abs(data[i] - background.r),
+			Math.abs(data[i + 1] - background.g),
+			Math.abs(data[i + 2] - background.b),
+		);
+	};
+
+	const push = (x: number, y: number): void => {
+		if (x < 0 || y < 0 || x >= width || y >= height) return;
+		const p = y * width + x;
+		if (visited[p]) return;
+		if (distance(x, y) > maxTolerance) return;
+		visited[p] = 1;
+		queue[tail++] = p;
+	};
+
+	for (let x = 0; x < width; x++) {
+		push(x, 0);
+		push(x, height - 1);
+	}
+	for (let y = 0; y < height; y++) {
+		push(0, y);
+		push(width - 1, y);
+	}
+
+	let changed = 0;
+	for (let head = 0; head < tail; head++) {
+		const p = queue[head];
+		const x = p % width;
+		const y = (p - x) / width;
+		const dist = distance(x, y);
+		const alpha =
+			dist <= tolerance
+				? 0
+				: Math.round((255 * (dist - tolerance)) / Math.max(1, tolerance));
+		if (data[p * CHANNELS + 3] !== alpha) changed++;
+		data[p * CHANNELS + 3] = Math.min(data[p * CHANNELS + 3], alpha);
+		push(x + 1, y);
+		push(x - 1, y);
+		push(x, y + 1);
+		push(x, y - 1);
+	}
+	return changed;
+}
+/**
  * Bounding box of the non-transparent pixels (alpha > `alphaThreshold`). Returns
  * `null` when every pixel is transparent (nothing to trim to).
  */

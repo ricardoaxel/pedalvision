@@ -1,6 +1,8 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+
 import { SOURCE_TAGS, type SourceTag } from "../../src/catalog/schema.ts";
+import { analyzeImage } from "./analyze.ts";
 import { buildDraftEntry, type DraftInput } from "./draft.ts";
 import {
 	type AssetKind,
@@ -10,6 +12,8 @@ import {
 	slugId,
 } from "./naming.ts";
 import { DEFAULT_TOLERANCE, renderRenditions } from "./render.ts";
+
+let writeSequence = 0;
 
 /**
  * `tools/asset-pipeline` — a dev-only CLI (P2-04).
@@ -43,6 +47,7 @@ Usage:
                  [--kind pedal|board] [--id <slug>] [--category pedal|supply]
                  [--source <tag>] [--variant-of <id>]
                  [--assets-dir <dir>] [--draft <file>] [--tolerance <0-255>]
+                 [--matte flood|soft] [--analyze <report.json>] [--force]
   --help
 
 Writes:
@@ -69,6 +74,9 @@ type Args = {
 	assetsDir: string;
 	draft?: string;
 	tolerance: number;
+	matte: "flood" | "soft";
+	analyze?: string;
+	force: boolean;
 	help: boolean;
 };
 
@@ -89,6 +97,8 @@ function parseArgs(argv: string[]): Args {
 		source: DEFAULTS.source,
 		assetsDir: DEFAULTS.assetsDir,
 		tolerance: DEFAULTS.tolerance,
+		matte: "flood",
+		force: false,
 		help: false,
 	};
 	for (let i = 0; i < argv.length; i++) {
@@ -158,6 +168,20 @@ function parseArgs(argv: string[]): Args {
 				args.tolerance = value;
 				break;
 			}
+			case "--matte": {
+				const value = argv[++i];
+				if (value !== "flood" && value !== "soft") {
+					throw new Error(`--matte must be flood|soft (got "${value}")`);
+				}
+				args.matte = value;
+				break;
+			}
+			case "--analyze":
+				args.analyze = argv[++i];
+				break;
+			case "--force":
+				args.force = true;
+				break;
 			case "--help":
 			case "-h":
 				args.help = true;
@@ -167,6 +191,12 @@ function parseArgs(argv: string[]): Args {
 		}
 	}
 	return args;
+}
+
+async function writeFileAtomic(path: string, content: Buffer): Promise<void> {
+	const temp = `${path}.tmp-${process.pid}-${writeSequence++}`;
+	await writeFile(temp, content);
+	await rename(temp, path);
 }
 
 /** The catalog id: an explicit `--id`, else a slug of brand + name. */
@@ -216,14 +246,36 @@ async function main(): Promise<void> {
 	const draft = `${JSON.stringify([buildDraftEntry(draftInput)], null, 2)}\n`;
 
 	const input = await readFile(resolve(process.cwd(), args.input));
+
+	if (args.analyze) {
+		const report = await analyzeImage(input, {
+			kind: args.kind,
+			widthCm: args.widthCm,
+			heightCm: args.heightCm,
+			tolerance: args.tolerance,
+		});
+		const path = resolve(process.cwd(), args.analyze);
+		await mkdir(dirname(path), { recursive: true });
+		await writeFile(path, `${JSON.stringify(report, null, 2)}\n`);
+		console.error(
+			`analyzer: ${report.verdict}${report.reasons.length ? ` — ${report.reasons.join(" | ")}` : ""}`,
+		);
+		if (report.verdict === "reject" && !args.force) {
+			throw new Error(
+				"image rejected by the analyzer (use --force only for a deliberate manual override)",
+			);
+		}
+	}
+
 	const renditions = await renderRenditions(input, {
 		tolerance: args.tolerance,
+		matte: args.matte,
 	});
 
 	for (const size of RENDITIONS) {
 		const path = outputPath(assetsDir, args.kind, size, filename);
 		await mkdir(dirname(path), { recursive: true });
-		await writeFile(path, renditions[size]);
+		await writeFileAtomic(path, renditions[size]);
 		// Progress on stderr so a piped stdout stays valid JSON (draft only).
 		console.error(`wrote ${path}`);
 	}
@@ -231,7 +283,7 @@ async function main(): Promise<void> {
 	if (args.draft) {
 		const path = resolve(process.cwd(), args.draft);
 		await mkdir(dirname(path), { recursive: true });
-		await writeFile(path, draft);
+		await writeFileAtomic(path, Buffer.from(draft));
 		console.error(`wrote draft ${path}`);
 	} else {
 		console.log(draft);

@@ -1,6 +1,6 @@
 # P5-01: Catalog policy, data contract & master inventory
 
-**Phase:** P5 · **Status:** in review — PR #35 · **Model:** build-strong
+**Phase:** P5 · **Status:** done — merged PR #35 · **Model:** build-strong
 
 ## Goal
 

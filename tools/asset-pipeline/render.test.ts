@@ -68,6 +68,38 @@ describe("renderRenditions", () => {
 		);
 	});
 
+	it("supports the dev-only soft matte fallback", async () => {
+		const width = 400;
+		const height = 400;
+		const data = Buffer.alloc(width * height * 4);
+		for (let y = 0; y < height; y++) {
+			for (let x = 0; x < width; x++) {
+				const i = (y * width + x) * 4;
+				const shade = 220 + Math.round((x / width) * 35);
+				data[i] = shade;
+				data[i + 1] = shade;
+				data[i + 2] = shade;
+				data[i + 3] = 255;
+			}
+		}
+		for (let y = 100; y < 300; y++) {
+			for (let x = 120; x < 280; x++) {
+				const i = (y * width + x) * 4;
+				data[i] = 20;
+				data[i + 1] = 40;
+				data[i + 2] = 60;
+			}
+		}
+		const input = await sharp(data, { raw: { width, height, channels: 4 } })
+			.png()
+			.toBuffer();
+		const soft = await renderRenditions(input, { matte: "soft" });
+		const hard = await renderRenditions(input, { matte: "flood" });
+		for (const size of RENDITIONS) {
+			expect(soft[size].subarray(0, 8)).toEqual(PNG_SIGNATURE);
+			expect(hard[size].subarray(0, 8)).toEqual(PNG_SIGNATURE);
+		}
+	});
 	it("auto-orients from EXIF (a rotated phone photo stays upright)", async () => {
 		// A landscape 100×50 subject tagged orientation 6 (rotate 90° CW).
 		const width = 100;

@@ -2,6 +2,7 @@ import sharp from "sharp";
 import { fitToLongEdge, RENDITIONS, type RenditionSize } from "./naming.ts";
 import {
 	removeBackground,
+	removeBackgroundSoft,
 	sampleBackgroundColor,
 	trimBounds,
 } from "./pixels.ts";
@@ -18,7 +19,11 @@ import {
  * cutout on a neutral background, so a modest default keeps it forgiving. */
 export const DEFAULT_TOLERANCE = 32;
 
-export type RenderOptions = { tolerance?: number };
+export type RenderOptions = {
+	tolerance?: number;
+	/** `flood` is the default hard key; `soft` is the gradient fallback. */
+	matte?: "flood" | "soft";
+};
 
 /** The two encoded PNG renditions keyed by long-edge size. */
 export type Renditions = Record<RenditionSize, Buffer>;
@@ -41,7 +46,11 @@ export async function renderRenditions(
 	const height = info.height;
 
 	const background = sampleBackgroundColor(data, width, height);
-	removeBackground(data, width, height, background, tolerance);
+	if (options.matte === "soft") {
+		removeBackgroundSoft(data, width, height, background, tolerance);
+	} else {
+		removeBackground(data, width, height, background, tolerance);
+	}
 
 	// If the key matched the whole frame there is nothing to ship — fail loudly
 	// rather than write an invisible asset the catalog would treat as real.

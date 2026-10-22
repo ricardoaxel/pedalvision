@@ -18,7 +18,7 @@ const validPedal: CatalogPedal = {
 describe("committed catalog seed", () => {
 	it("validates and meets the seed size", () => {
 		expect(catalog.pedals.length).toBeGreaterThanOrEqual(200);
-		expect(catalog.boards).toHaveLength(10);
+		expect(catalog.boards.length).toBeGreaterThanOrEqual(10);
 	});
 
 	it("covers at least 10 brands and includes the largest one", () => {
@@ -27,11 +27,19 @@ describe("committed catalog seed", () => {
 		expect(catalog.pedals.some((p) => p.brand === "BOSS")).toBe(true);
 	});
 
-	it("is placeholder-sourced (rights not cleared) with mock/url/static images", () => {
-		expect(catalog.pedals.every((p) => p.source === "placeholder")).toBe(true);
-		expect(catalog.boards.every((b) => b.source === "placeholder")).toBe(true);
-		// Provisional: mocks + brand URLs + a few temporary local test files —
-		// no rights-cleared assets yet (source stays `placeholder`).
+	it("keeps the legacy seed placeholder-sourced while allowing public-asset batch items", () => {
+		expect(
+			catalog.pedals.every(
+				(p) => p.source === "placeholder" || p.source === "public-asset",
+			),
+		).toBe(true);
+		expect(
+			catalog.boards.every(
+				(b) => b.source === "placeholder" || b.source === "public-asset",
+			),
+		).toBe(true);
+		// Legacy seed stays provisional; generated P5 batch items may be
+		// `public-asset` static files.
 		expect(
 			[...catalog.pedals, ...catalog.boards].every(
 				(item) =>

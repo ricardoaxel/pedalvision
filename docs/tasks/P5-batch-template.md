@@ -28,16 +28,20 @@ Research and deliver one catalog batch (raw records + hosted assets) for `<brand
 
 1. Restate the exact batch scope and expected item count.
 2. Create/confirm the raw records under `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`.
-3. Run the image scout/analyzer/processor/QA; keep candidates, accepts, rejects and reasons.
-4. Run `catalog:validate` (CI temp build) and the Playwright picker/render check.
-5. Produce the contact sheet + coverage report (covered, unresolved, duplicates, image pass/reject).
-6. Open exactly one PR for this batch; do not merge.
+3. Run `pnpm catalog:start` and checkpoint after every item.
+4. Run the image scout/analyzer/processor/QA; keep candidates, accepts, rejects and reasons
+   (`pnpm asset:analyze`, `pnpm asset:process`, `pnpm asset:contact-sheet`, `pnpm asset:qa`).
+5. Run `pnpm catalog:ci` (CI temp build) and the Playwright picker/render check.
+6. Run `pnpm catalog:guard-batch-pr`; the PR must contain raw records + assets + this task file only.
+7. Produce the contact sheet + coverage report (covered, unresolved, duplicates, image pass/reject).
+8. Finish the batch, then open exactly one PR; do not merge. The coordinator runs the
+   post-merge build (the GitHub workflow commits mapped/runtime).
 
 ## Acceptance (executable)
 
 - Raw records cover the batch; mandatory fields present; optional fields only if found.
 - Images: 800/350, alpha/background/aspect pass, same-origin; no placeholder in shipped scope.
-- `catalog:validate` green in CI temp build; PR contains no mapped/runtime edits.
+- `catalog:validate` green in CI temp build; `catalog:guard-batch-pr` green; PR contains no mapped/runtime edits.
 - Playwright: picker search/brand/effect, image load, canvas/board placement, no console errors.
 - Contact sheet + coverage/reject report in the PR.
 - One PR; no merge.

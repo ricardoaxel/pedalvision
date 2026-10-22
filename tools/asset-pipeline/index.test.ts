@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -72,6 +72,12 @@ describe("asset-pipeline CLI", () => {
 				true,
 			);
 			expect(existsSync(join(dir, "draft.json"))).toBe(true);
+			expect(readdirSync(join(assets, "pedals/800"))).toEqual([
+				"acme-big-fuzz.png",
+			]);
+			expect(readdirSync(join(assets, "pedals/350"))).toEqual([
+				"acme-big-fuzz.png",
+			]);
 		} finally {
 			rmSync(dir, { recursive: true, force: true });
 		}
