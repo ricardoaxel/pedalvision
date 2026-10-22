@@ -57,13 +57,13 @@ Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
 
-## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 DONE; P5-02 in review — PR #TBD)
+## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 DONE; P5-02 in review — PR #36)
 P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
 
 | Task | What it does | Owner action? |
 |---|---|---|
 | P5-01 Policy, data contract & master inventory | Public-asset policy, attribution/takedown, pedal + **pedalboard** schema, 8,557 pedals + 263 boards inventory, brand tiers — **DONE** (PR #35) | **Yes** — approve the public-asset policy + attribution/takedown page (owner accepts responsibility) |
-| P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap — **in review — PR #TBD** (tooling implemented; checks green) | No |
+| P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap — **in review — PR #36** (tooling implemented; checks green) | No |
 | P5-03 Pilot + parallel backfill | Choka pilot → **board pilot** → Meris + Red Panda + board batch → BOSS split test → waves; first 2,000 items include 150 boards | **Yes** — review the pedal + board pilots and first brand PRs |
 | P5-04 Final QA, provenance & launch gate | Full validation, spot-checks, iOS, launch sign-off | **Yes** — launch approval |
 | P5-05 Image hosting at scale | Deferred spike only if the owner chooses to exceed Tier A / 2,000 hosted pedals | **Yes** — choose the hosting option only when triggered |
