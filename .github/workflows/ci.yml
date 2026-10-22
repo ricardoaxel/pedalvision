@@ -69,6 +69,9 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Catalog pipeline (temp build + validate + uncommitted runtime)
+        run: pnpm catalog:ci
+
       - name: Unit tests
         run: pnpm test
 

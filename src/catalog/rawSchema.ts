@@ -10,7 +10,7 @@ import {
 	PEDAL_STATUSES,
 	SourceRefSchema,
 	USAGE_TYPES,
-} from "./schema";
+} from "./schema.ts";
 
 /**
  * Raw research archive schema (P5-01, docs/catalog/raw-research-record.md).

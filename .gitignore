@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Catalog control plane / build temp (P5-02)
+work/catalog/
+.catalog-build/
+
 # Playwright artifacts
 test-results
 playwright-report

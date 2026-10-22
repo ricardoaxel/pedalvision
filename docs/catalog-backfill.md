@@ -57,6 +57,38 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 - **Caps:** 2,000 hosted pedals / ~4,000 files / ~300 MB; boards 150 Tier A /
   ~300 files / ~20 MB (`tools/catalog-transform/limits.ts`).
 
+### P5-02 tooling (2026-10-22)
+
+- **Build:** `data/catalog/legacy/{pedals,boards}.json` is the frozen seed baseline.
+  `pnpm catalog:build` projects raw batches over it and writes
+  `data/catalog/{pedals,boards}/<brand>/<batch>.json` (mapped),
+  `src/catalog/data/{pedals,boards}.json` (runtime) and
+  `data/catalog/registry.json`. Deterministic, byte-stable, with a drift check
+  (`pnpm catalog:check`).
+- **CI:** `pnpm catalog:ci` builds into a temp dir, validates there, and writes an
+  **uncommitted** runtime into the app workspace for `pnpm build`/Playwright.
+  Batch PRs contain raw records + assets only; on merge to `main` the
+  `Catalog post-merge build` workflow commits the generated files.
+- **Validation:** schema/mandatory fields, catalog-wide duplicate ids, pedal/board
+  variant links (missing/self/cycle), board footprint, static 800/350 assets and
+  caps.
+- **Images:** deterministic analyzer (`asset:analyze`) — 800 px long edge,
+  background uniformity/alpha/trim, aspect vs the cm footprint (≤10% pass,
+  10–15% flag, >15% reject), rotation >2°, shadow/perspective, board top-down
+  signals. Processor adds an optional dev-only soft matte, atomic writes and an
+  optional analyzer report.
+- **Vision QA:** contact sheets of 20–30 images + `catalog-image-reviewer`;
+  verdicts/reasons cached by source hash in `work/catalog/image-qa/`.
+- **Control plane:** `catalog-runner` + `work/catalog/{state,control,checkpoints,logs}`;
+  `catalog:status [--watch]`, start/pause/stop/resume/finish/flag, global STOP,
+  checkpoints after every item, 3 batches max, stale-heartbeat warning, 12 min
+  item / 4 h batch limits, SIGTERM→SIGKILL fallback.
+- **Caps:** enforced at start/finish from `tools/catalog-transform/limits.ts`:
+  2,000 hosted pedals (~4,000 files/~300 MB) and 150 Tier A boards
+  (~300 files/~20 MB, independent).
+- **Agent templates:** `.opencode/agent/catalog-{pedal,board}-researcher.md`,
+  `catalog-image-scout.md`, `catalog-image-reviewer.md`, `catalog-coordinator.md`.
+
 ## Capture once, normalize later
 
 **Rule: never discard a verified fact because the current UI doesn't display it yet.** Research is the expensive part; schema/UI changes are cheap.

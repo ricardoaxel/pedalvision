@@ -1,0 +1,59 @@
+name: Catalog post-merge build
+
+# Batch PRs contain raw research records + assets only. After one merges, this
+# workflow deterministically projects raw -> mapped -> runtime and commits the
+# generated files. A GITHUB_TOKEN push does not trigger another workflow run, so
+# there is no loop and the merge's own CI already deployed the generated runtime.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/catalog/research/**"
+      - "public/pedal-assets/**"
+      - "data/catalog/legacy/**"
+
+concurrency:
+  group: catalog-post-merge
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build, validate and drift-check catalog
+        run: |
+          pnpm catalog:build
+          pnpm catalog:validate
+          pnpm catalog:check
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/catalog src/catalog/data
+          if git diff --cached --quiet; then
+            echo "generated catalog is already current"
+            exit 0
+          fi
+          git commit -m "chore(catalog): regenerate mapped + runtime [skip ci]"
+          git push
