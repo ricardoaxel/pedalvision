@@ -4,7 +4,7 @@ import {
 	scanAssetCountsAcross,
 } from "../catalog-pipeline/caps.ts";
 import { repoRoot } from "./repo.ts";
-import { type BatchState, isActive, listStates } from "./state.ts";
+import { type BatchState, listStates } from "./state.ts";
 
 /**
  * Caps are global across the main checkout + every active/complete batch
@@ -13,18 +13,20 @@ import { type BatchState, isActive, listStates } from "./state.ts";
  */
 export async function runnerAssetCounts(
 	root: string,
+	extraAssetsDirs: string[] = [],
 	extraRoots: string[] = [],
 ): Promise<AssetCounts> {
 	const states = await listStates(root);
 	const roots = new Set<string>([repoRoot(root), ...extraRoots]);
 	for (const state of states) {
-		if (isActive(state) || state.status === "complete") {
-			roots.add(state.worktree);
-		}
+		// Include stopped/blocked/paused batches too: their worktrees still hold
+		// hosted assets until they resume or are merged.
+		roots.add(state.worktree);
 	}
-	return scanAssetCountsAcross(
-		[...roots].map((entry) => join(entry, "public/pedal-assets")),
-	);
+	return scanAssetCountsAcross([
+		...[...roots].map((entry) => join(entry, "public/pedal-assets")),
+		...extraAssetsDirs,
+	]);
 }
 
 /** Remaining declared items for the active batches of one kind. */
@@ -33,7 +35,7 @@ export function remainingPlanned(
 	kind: "pedals" | "boards",
 ): number {
 	return states
-		.filter((state) => state.kind === kind && isActive(state))
+		.filter((state) => state.kind === kind && state.status !== "complete")
 		.reduce((sum, state) => sum + Math.max(0, state.total - state.done), 0);
 }
 

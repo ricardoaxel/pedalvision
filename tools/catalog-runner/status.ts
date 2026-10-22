@@ -1,6 +1,6 @@
-import { formatCounts, scanAssetCounts } from "../catalog-pipeline/caps.ts";
-import { assetsRoot } from "../catalog-pipeline/paths.ts";
+import { formatCounts } from "../catalog-pipeline/caps.ts";
 import { isGlobalStop } from "./control.ts";
+import { remainingPlanned, runnerAssetCounts, withPlanned } from "./counts.ts";
 import { elapsedMs, isStale, listStates, staleMs } from "./state.ts";
 
 /** Human-readable control-plane status (P5-02). */
@@ -17,7 +17,15 @@ export async function renderStatus(
 	now = Date.now(),
 ): Promise<string> {
 	const states = await listStates(root);
-	const counts = await scanAssetCounts(assetsRoot(root));
+	const counts = withPlanned(
+		withPlanned(
+			await runnerAssetCounts(root),
+			remainingPlanned(states, "pedals"),
+			"pedals",
+		),
+		remainingPlanned(states, "boards"),
+		"boards",
+	);
 	const globalStop = await isGlobalStop(root);
 	const lines = [
 		`catalog status${globalStop ? " — GLOBAL STOP ACTIVE" : ""}`,

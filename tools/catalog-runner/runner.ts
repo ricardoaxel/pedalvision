@@ -1,10 +1,6 @@
-import { access, mkdir, rm } from "node:fs/promises";
-import { join } from "node:path";
-import {
-	canStartBatch,
-	capIssues,
-	scanAssetCountsAcross,
-} from "../catalog-pipeline/caps.ts";
+import { access, mkdir, rm, stat } from "node:fs/promises";
+import { join, resolve } from "node:path";
+import { canStartBatch, capIssues } from "../catalog-pipeline/caps.ts";
 import {
 	clearBatchPause,
 	clearBatchStop,
@@ -80,6 +76,15 @@ async function withStartLock<T>(
 			break;
 		} catch (error) {
 			if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
+			try {
+				const info = await stat(lock);
+				if (Date.now() - info.mtimeMs > 60_000) {
+					await rm(lock, { recursive: true, force: true });
+					continue;
+				}
+			} catch {
+				// Lock disappeared between mkdir and stat.
+			}
 			await sleep(25);
 		}
 	}
@@ -111,7 +116,8 @@ export async function startBatch(options: StartOptions): Promise<BatchState> {
 			"global STOP is active; clear it with `catalog:resume --all`",
 		);
 	}
-	await assertWorktree(options.worktree);
+	const worktree = resolve(options.worktree);
+	await assertWorktree(worktree);
 	return withStartLock(options.root, async () => {
 		const existing = await tryReadState(options.root, options.batchId);
 		if (existing && isActive(existing)) {
@@ -127,9 +133,11 @@ export async function startBatch(options: StartOptions): Promise<BatchState> {
 			);
 		}
 
-		const counts = options.assetsDir
-			? await scanAssetCountsAcross([options.assetsDir])
-			: await runnerAssetCounts(options.root, [options.worktree]);
+		const counts = await runnerAssetCounts(
+			options.root,
+			options.assetsDir ? [options.assetsDir] : [],
+			[worktree],
+		);
 		const projected = withPlanned(
 			counts,
 			remainingPlanned(states, options.kind),
@@ -145,7 +153,7 @@ export async function startBatch(options: StartOptions): Promise<BatchState> {
 			kind: options.kind,
 			brand: options.brand,
 			total: options.total,
-			worktree: options.worktree,
+			worktree,
 			now: options.now,
 		});
 		state.lastItemStartedAt = state.startedAt;
@@ -249,9 +257,7 @@ export async function finishBatch(
 	if (state.done < state.total) {
 		addBlocker(state, `finished at ${state.done}/${state.total} items`);
 	}
-	const counts = assetsDir
-		? await scanAssetCountsAcross([assetsDir])
-		: await runnerAssetCounts(root);
+	const counts = await runnerAssetCounts(root, assetsDir ? [assetsDir] : []);
 	const issues = capIssues(counts);
 	for (const cap of issues) addBlocker(state, cap.message);
 	if (issues.length > 0) {

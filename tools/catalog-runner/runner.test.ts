@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { mkdir, mkdtemp, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -112,9 +112,24 @@ describe("catalog runner", () => {
 				worktree: second,
 				assetsDir: join(second, "assets"),
 			});
+			await mkdir(join(first, "public/pedal-assets/pedals/800"), {
+				recursive: true,
+			});
+			await mkdir(join(first, "public/pedal-assets/pedals/350"), {
+				recursive: true,
+			});
+			await writeFile(
+				join(first, "public/pedal-assets/pedals/800/acme-alpha.png"),
+				"x",
+			);
+			await writeFile(
+				join(first, "public/pedal-assets/pedals/350/acme-alpha.png"),
+				"x",
+			);
 			const status = await renderStatus(main);
 			expect(status).toContain("acme/pedals-1");
 			expect(status).toContain("acme/pedals-2");
+			expect(status).toContain("pedals 5 items");
 		} finally {
 			if (previousRepo === undefined) delete process.env.CATALOG_REPO_ROOT;
 			else process.env.CATALOG_REPO_ROOT = previousRepo;
