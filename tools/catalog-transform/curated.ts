@@ -1,6 +1,6 @@
 import type { EffectType } from "../../src/catalog/schema.ts";
 import { classifyEffects } from "./effects.ts";
-import { baseSlug } from "./slug.ts";
+import { baseSlug, toSlug } from "./slug.ts";
 
 /**
  * Verified effect-type overrides (ADR-003 §Effect taxonomy).
@@ -145,8 +145,29 @@ const SUPPLY_HINT =
 
 type DeviceInput = { brand: string; name: string; variantOf?: string };
 
-const baseKey = (input: DeviceInput): string =>
+const primaryKey = (input: DeviceInput): string =>
 	input.variantOf ?? baseSlug(input.brand, input.name);
+
+/** The pre-P5-01 slug (a trailing "+" collapsed into the previous word). */
+function legacyKey(input: DeviceInput): string {
+	if (input.variantOf) return input.variantOf.replace(/-plus$/, "");
+	const baseName = input.name.replace(/\s*\([^)]+\)\s*$/, "").trim();
+	return toSlug(`${input.brand} ${baseName}`).replace(/-plus$/, "");
+}
+
+/**
+ * Curated keys were authored before "+" became a meaningful slug token. Prefer
+ * the current key; fall back to the legacy key only for a "+" model that has no
+ * current key. New research uses the current (plus-preserving) slug.
+ */
+const baseKey = (input: DeviceInput): string => {
+	const primary = primaryKey(input);
+	if (CURATED_EFFECTS[primary] || CURATED_SUPPLIES.has(primary)) return primary;
+	if (!input.name.includes("+")) return primary;
+	const legacy = legacyKey(input);
+	if (CURATED_EFFECTS[legacy] || CURATED_SUPPLIES.has(legacy)) return legacy;
+	return primary;
+};
 
 /**
  * Resolve a pedal's effect types: a verified override for its base model wins,

@@ -9,13 +9,18 @@ export const VARIANT_SUFFIX = /^(.*?)\s*\(([^)]+)\)\s*$/;
 
 /** Slugify a display string: lowercase ASCII words joined by single hyphens. */
 export function toSlug(value: string): string {
-	return value
-		.normalize("NFD")
-		.replace(/[\u0300-\u036f]/g, "")
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, "-")
-		.replace(/^-+|-+$/g, "")
-		.replace(/-{2,}/g, "-");
+	return (
+		value
+			.normalize("NFD")
+			.replace(/[\u0300-\u036f]/g, "")
+			// "+" is meaningful model punctuation ("Pitch Fork+" vs "Pitch Fork"),
+			// so keep it as a word instead of silently collapsing the two models.
+			.replace(/\+/g, " plus ")
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-+|-+$/g, "")
+			.replace(/-{2,}/g, "-")
+	);
 }
 
 /** The base-model slug for a display name (strips a trailing variant suffix). */

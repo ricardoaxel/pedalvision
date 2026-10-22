@@ -20,7 +20,6 @@ import {
 	itemsByZ,
 	type PlacedBoard,
 	resolveItem,
-	usesFallbackJacks,
 } from "../state/scene";
 import {
 	CANVAS_FONTS,
@@ -535,22 +534,25 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 }
 
 /**
- * Honesty note for exports that include a cable to a catalog pedal with no jack
- * data: its endpoints are the documented fallback anchors, not manufacturer
- * positions (owner decision, 2026-10-21).
+ * Honesty note for exports that include a cable to a catalog pedal whose jack
+ * position is assumed (the documented fallback pair) or approximate (edge-only
+ * data, P5-01) rather than a measured manufacturer position.
  */
 function drawAssumedJackNote(
 	parent: Konva.Group,
 	context: RenderContext,
 ): void {
 	const { plan, theme, labelUnit, pxPerCm } = context;
+	const index = buildAnchorIndex({
+		boards: plan.boards,
+		items: plan.items,
+		customPedals: plan.customPedals,
+		endpoints: plan.endpoints,
+	});
 	const used = plan.cables.some((cable) =>
 		[cable.from, cable.to].some((end) => {
-			if ("endpointUid" in end) return false;
-			const item = plan.items.find(
-				(candidate) => candidate.uid === end.itemUid,
-			);
-			return item ? usesFallbackJacks(item, plan.customPedals) : false;
+			const anchor = cableEndAnchorFromIndex(end, index);
+			return anchor?.assumed === true || anchor?.approximate === true;
 		}),
 	);
 	if (!used) return;
@@ -560,7 +562,7 @@ function drawAssumedJackNote(
 		EXPORT_PADDING_CM * 0.78 * pxPerCm;
 	parent.add(
 		new Konva.Text({
-			text: "Cables to catalog pedals may use assumed IN/OUT jack positions.",
+			text: "Cables to catalog pedals may use assumed or approximate jack positions.",
 			x,
 			y,
 			fontFamily: CANVAS_FONTS.mono,

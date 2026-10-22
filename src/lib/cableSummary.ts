@@ -51,6 +51,11 @@ export interface CableScheduleRow {
 	/** Which ends are the documented fallback. */
 	assumedFrom: boolean;
 	assumedTo: boolean;
+	/** Either end has an edge-only (invented) jack position. */
+	approximate: boolean;
+	/** Which ends have an approximate position. */
+	approximateFrom: boolean;
+	approximateTo: boolean;
 	/** Straight-line jack-to-jack distance (world cm). */
 	distanceCm: number;
 	/** Distance + plug overhang + slack. */
@@ -269,6 +274,10 @@ export function buildCableSchedule(scene: CableScheduleScene): CableSchedule {
 			assumed: (fromAnchor?.assumed ?? false) || (toAnchor?.assumed ?? false),
 			assumedFrom: fromAnchor?.assumed ?? false,
 			assumedTo: toAnchor?.assumed ?? false,
+			approximate:
+				(fromAnchor?.approximate ?? false) || (toAnchor?.approximate ?? false),
+			approximateFrom: fromAnchor?.approximate ?? false,
+			approximateTo: toAnchor?.approximate ?? false,
 			distanceCm: length?.distanceCm ?? 0,
 			requiredCm: length?.requiredCm ?? 0,
 			lengthCm: length?.lengthCm ?? null,

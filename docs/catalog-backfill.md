@@ -32,6 +32,31 @@ Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).
 **Keep the 207 seed.** Run it through the quality gate and keep/repair/replace
 per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 
+### P5-01 results (2026-10-21 — PR #35)
+
+- **Raw archive defined:** `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`
+  (schema `src/catalog/rawSchema.ts`; contract
+  `docs/catalog/raw-research-record.md`). The **H90** stress fixture
+  (`data/catalog/fixtures/eventide-h90.json`) maps 14 connectors without
+  inventing positions.
+- **Master inventory:** `data/catalog/inventory.json` — 8,557 pedals / 779
+  brands → **8,549 unique** (8 duplicates removed, 338 conservative colorway
+  links, 143 orphan variants kept standalone); 263 boards / 38 brands → **263
+  unique**. **Tier A = 1,850 pedals + exactly 150 boards**; Tier B = 1,673
+  pedals / 108 boards; Tier C = 5,026 pedals / 5 boards. Seed overlap: **207
+  pedals / 10 boards** (the single legacy id `mxr-bass-di` is carried as
+  `seedId` for `mxr-bass-di-plus`).
+- **Seed validation:** `data/catalog/seed-validation.json` covers all 207 + 10
+  items (keep/repair/replace/drop). Today every item is **replace** because the
+  seed images are mock/url/placeholder; the facts are kept.
+- **Policy:** `public-asset` source tag + optional schema fields
+  (`usage`, `color`, `notes`, `year`, `status`, `confidence`, `lastVerified`;
+  board `variantOf`; optional jack `pos` with approximate edge-only layout).
+  Attribution/takedown content: `docs/catalog/attribution-takedown.md`.
+  Community jack maps: `docs/catalog/jack-map-record.md`.
+- **Caps:** 2,000 hosted pedals / ~4,000 files / ~300 MB; boards 150 Tier A /
+  ~300 files / ~20 MB (`tools/catalog-transform/limits.ts`).
+
 ## Capture once, normalize later
 
 **Rule: never discard a verified fact because the current UI doesn't display it yet.** Research is the expensive part; schema/UI changes are cheap.

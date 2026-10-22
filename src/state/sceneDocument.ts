@@ -130,10 +130,10 @@ function isJack(value: unknown): boolean {
 		(JACK_KINDS as readonly string[]).includes(value.kind) &&
 		typeof value.edge === "string" &&
 		(JACK_EDGES as readonly string[]).includes(value.edge) &&
-		isFiniteNumber(value.pos) &&
-		value.pos >= 0 &&
-		value.pos <= 1 &&
-		(value.stereo === undefined || typeof value.stereo === "boolean")
+		(value.pos === undefined ||
+			(isFiniteNumber(value.pos) && value.pos >= 0 && value.pos <= 1)) &&
+		(value.stereo === undefined || typeof value.stereo === "boolean") &&
+		(value.approximate === undefined || typeof value.approximate === "boolean")
 	);
 }
 

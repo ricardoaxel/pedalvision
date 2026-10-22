@@ -155,7 +155,7 @@ export function draftFromCustomPedal(
 			id: crypto.randomUUID(),
 			kind: jack.kind,
 			edge: jack.edge,
-			pos: jack.pos,
+			pos: jack.pos ?? 0.5,
 			stereo: jack.stereo ?? false,
 		})),
 		powerEnabled: custom.power !== undefined,

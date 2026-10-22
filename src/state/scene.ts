@@ -5,6 +5,7 @@ import type {
 	CatalogPedal,
 	EffectType,
 	Jack,
+	JackEdge,
 	Power,
 } from "../catalog/schema";
 import type { BoardTexture } from "../lib/boardTexture";
@@ -260,24 +261,114 @@ export function resolveItem(
  * deliberate), nor do supplies or unknown refs. The canvas renders fallback
  * ticks as hollow diamonds and labels them "assumed".
  */
-export const FALLBACK_JACKS: readonly Jack[] = [
+export const FALLBACK_JACKS: readonly ResolvedJack[] = [
 	{ kind: "in", edge: "left", pos: 0.5 },
 	{ kind: "out", edge: "right", pos: 0.5 },
 ];
 
 /**
+ * A jack with its resolved position. Catalog data may omit `pos` when only the
+ * edge/count is known (P5-01); `resolveJackLayout` fills those evenly along
+ * their edge and marks them `approximate`, which the canvas draws as a hollow
+ * tick (same visual language as the fallback anchors).
+ */
+export type ResolvedJack = Jack & { pos: number; approximate?: boolean };
+
+/**
+ * Resolve edge-only jacks into concrete anchor positions (P5-01). A source may
+ * only confirm "2 jacks on top", so every jack with no `pos` is placed in the
+ * middle of the largest gap left by exact positions on its edge (evenly across
+ * the edge when none are exact). Exact positions always win. Deterministic and
+ * side-effect free. Returns the input array unchanged when every jack already
+ * has a position (the common case).
+ */
+export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
+	if (
+		jacks.every(
+			(jack) => jack.pos !== undefined && jack.approximate === undefined,
+		)
+	) {
+		// Zero-allocation fast path: nothing to resolve or normalize.
+		return jacks as ResolvedJack[];
+	}
+	if (jacks.every((jack) => jack.pos !== undefined)) {
+		// `pos` wins: a stale author-supplied `approximate` flag is cleared.
+		return jacks.map((jack) =>
+			jack.approximate === undefined
+				? (jack as ResolvedJack)
+				: ({ ...jack, approximate: false } as ResolvedJack),
+		);
+	}
+	const missingByEdge = new Map<JackEdge, number[]>();
+	jacks.forEach((jack, index) => {
+		if (jack.pos !== undefined) return;
+		const list = missingByEdge.get(jack.edge);
+		if (list) list.push(index);
+		else missingByEdge.set(jack.edge, [index]);
+	});
+	const positions = new Map<number, number>();
+	for (const [edge, indexes] of missingByEdge) {
+		// Exact positions on this edge are fixed. Place each missing jack in the
+		// middle of the largest remaining gap (splitting it), so mixed exact /
+		// edge-only data never produces two anchors at the same point.
+		const exact = jacks
+			.map((jack, index) => ({ jack, index }))
+			.filter(
+				({ jack, index }) =>
+					jack.edge === edge &&
+					jack.pos !== undefined &&
+					!indexes.includes(index),
+			)
+			.map(({ jack }) => jack.pos as number)
+			.sort((a, b) => a - b);
+		if (exact.length === 0) {
+			indexes.forEach((index, position) => {
+				positions.set(index, (position + 1) / (indexes.length + 1));
+			});
+			continue;
+		}
+		const boundaries = [0, ...exact, 1];
+		for (const index of indexes) {
+			let bestGap = -1;
+			let bestMidpoint = 0.5;
+			for (let i = 0; i < boundaries.length - 1; i++) {
+				const start = boundaries[i] ?? 0;
+				const end = boundaries[i + 1] ?? 1;
+				const gap = end - start;
+				if (gap > bestGap + 1e-9) {
+					bestGap = gap;
+					bestMidpoint = start + gap / 2;
+				}
+			}
+			positions.set(index, bestMidpoint);
+			boundaries.push(bestMidpoint);
+			boundaries.sort((a, b) => a - b);
+		}
+	}
+	return jacks.map((jack, index) => {
+		if (jack.pos !== undefined) return jack as ResolvedJack;
+		return {
+			...jack,
+			pos: positions.get(index) ?? 0.5,
+			approximate: true,
+		};
+	});
+}
+
+/**
  * The jacks an item exposes for cable attachment: the real definition first,
  * then the documented fallback pair for a catalog pedal with no jack data.
  * Persistence validation uses the same resolution, so a cable to a fallback
- * anchor survives save/load.
+ * anchor survives save/load. Edge-only jacks get a resolved (approximate)
+ * position here (P5-01).
  */
 export function resolveItemJacks(
 	item: PlacedItem,
 	customPedals: CustomPedal[] = [],
-): Jack[] {
+): ResolvedJack[] {
 	const resolved = resolveItem(item, customPedals);
 	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
-	if (real.length > 0) return real;
+	if (real.length > 0) return resolveJackLayout(real);
 	if (resolved.definition !== null && item.kind === "pedal") {
 		return [...FALLBACK_JACKS];
 	}

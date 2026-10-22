@@ -34,6 +34,8 @@ export interface AnchorPoint {
 	normal: Point | null;
 	/** The anchor is the documented fallback pair, not manufacturer data. */
 	assumed: boolean;
+	/** The edge was known but not the exact position (P5-01, hollow tick). */
+	approximate?: boolean;
 	/** The jack this anchor belongs to (undefined for an endpoint). */
 	jack?: Jack;
 	/** World visual rotation of the owning item (jack-side handle orientation). */
@@ -109,6 +111,7 @@ function jackAnchorDetailed(
 		point,
 		normal: worldNormal,
 		assumed,
+		approximate: jack.approximate === true,
 		jack,
 		rotationDeg: worldRotation,
 	};
@@ -248,14 +251,15 @@ export function cableEndAnchorFromIndex(
 
 /**
  * The jack's point in the item's **unrotated local frame** (cm from the item's
- * origin). `pos` is clamped to 0..1 defensively; catalog validation already
- * guarantees it.
+ * origin). `pos` is clamped to 0..1 defensively; a missing position (edge-only
+ * catalog data) falls back to the edge midpoint — `resolveItemJacks` normally
+ * fills it with an approximate position first.
  */
 export function jackLocalPoint(
 	jack: Jack,
 	footprint: { widthCm: number; heightCm: number },
 ): Point {
-	const pos = Math.min(1, Math.max(0, jack.pos));
+	const pos = Math.min(1, Math.max(0, jack.pos ?? 0.5));
 	switch (jack.edge) {
 		case "top":
 			return { x: pos * footprint.widthCm, y: 0 };

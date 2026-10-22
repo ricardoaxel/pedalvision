@@ -410,7 +410,11 @@ export function PedalNode({
 		const isSource = cableSourceJack === index;
 		const isTarget = cableTargetJack === index;
 		const isHovered = hoveredJack === index;
-		const diameter = assumedJacks
+		// Edge-only catalog data (P5-01) is approximate like the fallback pair:
+		// draw a hollow diamond so it never reads as a measured position.
+		const approximate = jack.approximate === true;
+		const hollow = assumedJacks || approximate;
+		const diameter = hollow
 			? JACK_TICK.diameterPx / labelScale
 			: (isTarget
 					? JACK_TICK.targetDiameterPx
@@ -418,7 +422,7 @@ export function PedalNode({
 						? JACK_TICK.hoverDiameterPx
 						: JACK_TICK.diameterPx) / labelScale;
 		const radius = diameter / 2;
-		const diamondRadius = assumedJacks ? radius * 0.85 : radius;
+		const diamondRadius = hollow ? radius * 0.85 : radius;
 		const ringColor = isSource || isTarget ? theme.selection : theme.jack;
 		const label = JACK_LABELS[jack.kind] ?? jack.kind.toUpperCase();
 		// Short socket label only; the hollow diamond + info-panel note carry the
@@ -488,7 +492,7 @@ export function PedalNode({
 				x={x}
 				y={y}
 			>
-				{assumedJacks ? (
+				{hollow ? (
 					/* Fallback anchor: a clearly hollow diamond (no centre dot) so an
 					 * assumed socket can never be mistaken for real jack data. */
 					<>
@@ -519,13 +523,7 @@ export function PedalNode({
 							}
 							closed
 							stroke={ringColor}
-							strokeWidth={
-								(isSource || isTarget
-									? 2
-									: assumedJacks
-										? 1
-										: JACK_TICK.strokePx) / labelScale
-							}
+							strokeWidth={(isSource || isTarget ? 2 : 1) / labelScale}
 							fill={isSource ? theme.selection : undefined}
 							lineJoin="round"
 							listening={false}
@@ -546,11 +544,7 @@ export function PedalNode({
 							radius={radius}
 							stroke={ringColor}
 							strokeWidth={
-								(isSource || isTarget
-									? 2
-									: assumedJacks
-										? 1
-										: JACK_TICK.strokePx) / labelScale
+								(isSource || isTarget ? 2 : JACK_TICK.strokePx) / labelScale
 							}
 							fill={isSource ? theme.selection : theme.canvasBackground}
 							fillEnabled={isSource}

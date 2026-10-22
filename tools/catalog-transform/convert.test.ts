@@ -38,6 +38,12 @@ describe("toSlug", () => {
 		expect(toSlug("Nuñez Amps")).toBe("nunez-amps");
 		expect(toSlug("  Spaces   &  symbols!! ")).toBe("spaces-symbols");
 	});
+
+	it("keeps a trailing plus as a meaningful model token", () => {
+		expect(toSlug("Pitch Fork+")).toBe("pitch-fork-plus");
+		expect(toSlug("Bass DI+")).toBe("bass-di-plus");
+		expect(toSlug("Pitch Fork+")).not.toBe(toSlug("Pitch Fork"));
+	});
 });
 
 describe("convertPedals", () => {
