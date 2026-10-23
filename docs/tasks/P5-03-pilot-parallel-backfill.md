@@ -1,6 +1,6 @@
 # P5-03: Pilot + parallel brand backfill
 
-**Phase:** P5 · **Status:** in review — TC Choka pedal pilot (PR #37) · **Model:** build-strong
+**Phase:** P5 · **Status:** in progress — Choka pilot DONE (PR #37); second pedal + board pilot next · **Model:** build-strong
 
 ## Goal
 

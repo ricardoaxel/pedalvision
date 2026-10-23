@@ -1,6 +1,6 @@
 # P5-03: TC Electronic — pedals batch 1 (Choka pilot)
 
-**Phase:** P5 · **Status:** in review — PR #37 · **Model:** build-strong
+**Phase:** P5 · **Status:** done — merged PR #37 · **Model:** build-strong
 
 ## Goal
 
