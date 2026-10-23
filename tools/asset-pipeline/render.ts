@@ -32,7 +32,7 @@ export type RenderOptions = {
 	format?: ImageFormat;
 };
 
-/** The two encoded PNG renditions keyed by long-edge size. */
+/** The two encoded renditions (PNG or AVIF) keyed by long-edge size. */
 export type Renditions = Record<RenditionSize, Buffer>;
 
 export async function renderRenditions(

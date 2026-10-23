@@ -10,14 +10,42 @@ const ALLOWED = [
 	/^docs\/tasks\/P5-03-[a-z0-9-]+\.md$/,
 ];
 
-export function guardBatchPr(files: string[]): string[] {
+/**
+ * Owner-approved exception for the **pilot + delivery-pipeline** PR only. Normal
+ * brand batches must not pass `allowPipeline`; the pilot that introduces AVIF /
+ * the rendition map carries the pipeline code, docs and tests in the same PR.
+ */
+const PIPELINE_ALLOWED = [
+	/^src\//,
+	/^tools\//,
+	/^e2e\//,
+	/^\.opencode\/agent\//,
+	/^docs\//,
+	/^playwright\.config\.ts$/,
+	/^vite\.config\.ts$/,
+	/^package\.json$/,
+	/^pnpm-lock\.yaml$/,
+];
+
+export type GuardOptions = {
+	/** Allow the pipeline files only for the owner-approved pilot PR. */
+	allowPipeline?: boolean;
+};
+
+export function guardBatchPr(
+	files: string[],
+	options: GuardOptions = {},
+): string[] {
 	const isBatchPr = files.some(
 		(file) =>
 			file.startsWith("data/catalog/research/") ||
 			file.startsWith("public/pedal-assets/"),
 	);
 	if (!isBatchPr) return [];
-	return files.filter((file) => !ALLOWED.some((pattern) => pattern.test(file)));
+	const allowed = options.allowPipeline
+		? [...ALLOWED, ...PIPELINE_ALLOWED]
+		: ALLOWED;
+	return files.filter((file) => !allowed.some((pattern) => pattern.test(file)));
 }
 
 export function formatGuardViolations(violations: string[]): string {

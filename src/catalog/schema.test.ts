@@ -131,6 +131,16 @@ describe("CatalogPedalSchema", () => {
 		).toBe(true);
 	});
 
+	it("rejects a .avif mock image (the mock renderer writes PNG)", () => {
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				image: "acme-big-fuzz.avif",
+				imageSource: "mock",
+			}).success,
+		).toBe(false);
+	});
+
 	it("accepts a URL image when imageSource is 'url'", () => {
 		expect(
 			CatalogPedalSchema.safeParse({

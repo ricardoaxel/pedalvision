@@ -52,10 +52,13 @@ export const IMAGE_SOURCES = ["mock", "static", "url"] as const;
 /** http(s) URLs only — rejects `javascript:`, `data:`, `ftp:`, `mailto:`, … */
 export const HTTP_URL = z.url({ protocol: /^https?$/ });
 
+/** Mock images are generator-drawn PNGs; AVIF is only for hosted static files. */
+const MOCK_IMAGE_PATTERN = /^[a-z0-9][a-z0-9-]*\.png$/;
+
 function validImage(imageSource: ImageSource, image: string): boolean {
-	return imageSource === "url"
-		? HTTP_URL.safeParse(image).success
-		: IMAGE_PATTERN.test(image);
+	if (imageSource === "url") return HTTP_URL.safeParse(image).success;
+	if (imageSource === "mock") return MOCK_IMAGE_PATTERN.test(image);
+	return IMAGE_PATTERN.test(image);
 }
 
 function checkImage(
@@ -70,7 +73,9 @@ function checkImage(
 		message:
 			imageSource === "url"
 				? "image must be a URL when imageSource is 'url'"
-				: "image must be a safe .png filename when imageSource is 'mock' or 'static'",
+				: imageSource === "mock"
+					? "image must be a safe .png filename when imageSource is 'mock'"
+					: "image must be a safe .png or .avif filename when imageSource is 'static'",
 	});
 }
 

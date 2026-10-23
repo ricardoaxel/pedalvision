@@ -34,6 +34,11 @@ end before any parallel wave starts.
 - **Raw records + assets only** in the PR; CI runs `catalog:build` to a temp dir
   **and an uncommitted app-workspace runtime** for Playwright; the post-merge
   build commits mapped/runtime.
+- **Owner-approved deviation (2026-10-23):** this pilot PR also carries the
+  **AVIF delivery pipeline + global rendition map** (schema, asset pipeline,
+  Picker/canvas sizing, tests, docs). Run `pnpm catalog:guard-batch-pr
+  --allow-pipeline` for this PR only; future data-only batches run the guard
+  without the flag.
 - **Optional fields only if found in the same base research** — no extra
   searches/tabs/tokens for serials, videos, artist, price, jacks, MIDI/USB,
   board extras.
@@ -62,8 +67,9 @@ end before any parallel wave starts.
    contact sheet may be the single image if a multi-image sheet is not
    meaningful.
 5. Run `pnpm catalog:ci` (CI temp build) and the Playwright picker/render check.
-6. Run `pnpm catalog:guard-batch-pr`; the PR must contain raw records + assets +
-   this task file only.
+6. Run `pnpm catalog:guard-batch-pr --allow-pipeline` (owner-approved pilot +
+   pipeline scope); the data/assets/task portion is raw-only, and no
+   mapped/runtime files are included.
 7. Produce the contact sheet + coverage report (covered, unresolved, duplicates,
    image pass/reject).
 8. Finish the batch (`pnpm catalog:finish --batch tc-electronic/choka-1`), then
@@ -76,8 +82,8 @@ end before any parallel wave starts.
   only if found.
 - Image: 800/350, alpha/background/aspect pass, same-origin; no placeholder in
   shipped scope.
-- `catalog:validate` green in CI temp build; `catalog:guard-batch-pr` green; PR
-  contains no mapped/runtime edits.
+- `catalog:validate` green in CI temp build; `catalog:guard-batch-pr
+  --allow-pipeline` green for this pilot; PR contains no mapped/runtime edits.
 - Playwright: picker search/brand/effect, image load, canvas placement, no
   console errors.
 - Contact sheet + coverage/reject report in the PR.

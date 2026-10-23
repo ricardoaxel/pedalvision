@@ -13,6 +13,23 @@ describe("batch PR guard", () => {
 		).toEqual([]);
 	});
 
+	it("allows the owner-approved pilot pipeline only with allowPipeline", () => {
+		const batch = [
+			"data/catalog/research/pedals/acme/batch-1.json",
+			"public/pedal-assets/pedals/800/acme-alpha.avif",
+		];
+		const pipeline = [
+			"src/lib/cdn.ts",
+			"tools/asset-pipeline/index.ts",
+			"docs/design.md",
+			"e2e/picker-choka.spec.ts",
+		];
+		expect(guardBatchPr([...batch, ...pipeline])).toEqual(pipeline);
+		expect(
+			guardBatchPr([...batch, ...pipeline], { allowPipeline: true }),
+		).toEqual([]);
+	});
+
 	it("rejects mapped/runtime and feature-code edits in a batch PR", () => {
 		expect(
 			guardBatchPr([

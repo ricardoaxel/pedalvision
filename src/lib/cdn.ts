@@ -8,13 +8,12 @@ export type AssetSize = 800 | 350;
  * hardcode 800/350 at a call site — import this map instead, so the 350 thumb
  * is actually used and a future canvas rendition (e.g. 512) has one home.
  *
- * - `pickerRow` / `infoPeek`: small thumbnails (the 350 rendition).
+ * - `pickerRow`: the 350 thumbnail (ledger rows).
  * - `specimen` / `canvas` / `export`: the 800 master (the canvas is currently
  *   the master too; a 512 canvas LOD can be added here later).
  */
 export const ASSET_RENDITIONS = {
 	pickerRow: 350,
-	infoPeek: 350,
 	specimen: 800,
 	canvas: 800,
 	export: 800,

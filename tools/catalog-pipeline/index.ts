@@ -16,7 +16,7 @@ Usage:
   catalog-pipeline check [--root <dir>]
   catalog-pipeline ci [--root <dir>]
   catalog-pipeline post-merge [--root <dir>]
-  catalog-pipeline guard-batch-pr [--base <ref>]
+  catalog-pipeline guard-batch-pr [--base <ref>] [--allow-pipeline]
   catalog-pipeline dry-run [--root <dir>]
   --help
 
@@ -35,6 +35,7 @@ type Args = {
 	skipAssets: boolean;
 	skipCaps: boolean;
 	base: string;
+	allowPipeline: boolean;
 	help: boolean;
 };
 
@@ -45,6 +46,7 @@ function parseArgs(argv: string[]): Args {
 		skipAssets: false,
 		skipCaps: false,
 		base: "origin/main",
+		allowPipeline: false,
 		help: false,
 	};
 	for (let i = 1; i < argv.length; i++) {
@@ -73,6 +75,9 @@ function parseArgs(argv: string[]): Args {
 				break;
 			case "--base":
 				args.base = argv[++i];
+				break;
+			case "--allow-pipeline":
+				args.allowPipeline = true;
 				break;
 			case "--help":
 			case "-h":
@@ -195,13 +200,19 @@ function changedFiles(base: string): string[] {
 }
 
 async function runGuard(args: Args): Promise<void> {
-	const violations = guardBatchPr(changedFiles(args.base));
+	const violations = guardBatchPr(changedFiles(args.base), {
+		allowPipeline: args.allowPipeline,
+	});
 	if (violations.length > 0) {
 		console.error(formatGuardViolations(violations));
 		process.exitCode = 1;
 		return;
 	}
-	console.log("batch PR guard: clean (raw records + assets only)");
+	console.log(
+		args.allowPipeline
+			? "batch PR guard: clean (pilot + owner-approved delivery pipeline)"
+			: "batch PR guard: clean (raw records + assets only)",
+	);
 }
 
 async function main(): Promise<void> {

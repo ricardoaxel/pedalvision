@@ -75,13 +75,17 @@ describe("committed mock images", () => {
 		}
 	}, 60_000);
 
-	it("are the only files in the asset dirs (no stale images)", () => {
+	it("are the only PNG files in the asset dirs (no stale PNGs; AVIF allowed)", () => {
+		// AVIF hosted assets are committed by P5 batches and referenced by the
+		// post-merge runtime, so they are intentionally outside this seed check.
 		const expected = new Set<string>();
 		for (const pedal of [...mockPedals, ...staticPedals]) {
+			if (!pedal.image.endsWith(".png")) continue;
 			for (const size of [800, 350])
 				expected.add(`pedals/${size}/${pedal.image}`);
 		}
 		for (const board of [...mockBoards, ...staticBoards]) {
+			if (!board.image.endsWith(".png")) continue;
 			for (const size of [800, 350])
 				expected.add(`boards/${size}/${board.image}`);
 		}
@@ -96,9 +100,7 @@ describe("committed mock images", () => {
 			for (const entry of readdirSync(
 				new URL(`public/pedal-assets/${dir}`, repoRoot),
 			)) {
-				if (entry.endsWith(".png") || entry.endsWith(".avif")) {
-					actual.add(`${dir}/${entry}`);
-				}
+				if (entry.endsWith(".png")) actual.add(`${dir}/${entry}`);
 			}
 		}
 		expect(actual).toEqual(expected);
