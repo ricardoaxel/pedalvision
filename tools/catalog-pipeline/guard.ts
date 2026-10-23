@@ -17,7 +17,7 @@ const ALLOWED = [
  */
 const PIPELINE_ALLOWED = [
 	/^src\/lib\/cdn\.ts$/,
-	/^src\/lib\/(capacity|partInfo)\.ts$/,
+	/^src\/lib\/(capacity|partInfo|jackAnchor)(\.test)?\.ts$/,
 	/^src\/catalog\/(schema|schema\.test|rawSchema)\.ts$/,
 	/^src\/components\/(Picker|InfoPanel)\.tsx$/,
 	/^src\/canvas\/(PedalNode|BoardNode|exportStage)\.tsx?$/,
