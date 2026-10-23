@@ -17,6 +17,14 @@ const committedPedals = JSON.parse(
 	),
 ) as CatalogPedal[];
 
+// The selection test is about the frozen seed, not later P5 batch additions.
+const legacyPedals = JSON.parse(
+	readFileSync(
+		new URL("../../data/catalog/legacy/pedals.json", import.meta.url),
+		"utf8",
+	),
+) as CatalogPedal[];
+
 describe("classifyEffects", () => {
 	it("maps common effect keywords to our effect types", () => {
 		expect(classifyEffects("BD-2 Blues Driver")).toEqual(["overdrive"]);
@@ -157,9 +165,13 @@ describe("committed seed effectTypes", () => {
 		}
 	});
 
-	it("selection is idempotent on the committed seed (curated extras kept)", () => {
-		const out = selectPedals(pedals, { keepIds: Object.keys(CURATED_EFFECTS) });
-		expect(out.map((p) => p.id).sort()).toEqual(pedals.map((p) => p.id).sort());
+	it("selection is idempotent on the legacy seed (curated extras kept)", () => {
+		const out = selectPedals(legacyPedals, {
+			keepIds: Object.keys(CURATED_EFFECTS),
+		});
+		expect(out.map((p) => p.id).sort()).toEqual(
+			legacyPedals.map((p) => p.id).sort(),
+		);
 	});
 
 	it("keeps every colorway footprint equal to its base (true-scale)", () => {
