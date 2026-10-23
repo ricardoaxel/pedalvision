@@ -21,6 +21,7 @@ describe("batch PR guard", () => {
 		const pipeline = [
 			"src/lib/cdn.ts",
 			"src/lib/jackAnchor.ts",
+			"src/state/scene.ts",
 			"tools/asset-pipeline/index.ts",
 			"docs/design.md",
 			"e2e/picker-choka.spec.ts",

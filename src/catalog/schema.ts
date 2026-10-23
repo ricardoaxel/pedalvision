@@ -211,10 +211,10 @@ export const JackSchema = z.object({
 	 */
 	stereo: z.boolean().optional(),
 	/**
-	 * Derived resolver flag (P5-01): the edge is known but the exact position
-	 * was not published, so `pos` is an even distribution — render it as
-	 * approximate (hollow tick). Not authored by hand; persisted only if a
-	 * definition already carries it.
+	 * Approximate position (P5-01): the edge/order is known but the exact cm
+	 * was not published, so `pos` is an estimate (e.g. from a product photo or
+	 * an even edge distribution) — render it as approximate (hollow tick). An
+	 * explicit flag on a positioned jack is preserved by the resolver.
 	 */
 	approximate: z.boolean().optional(),
 });

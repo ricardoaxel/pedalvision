@@ -18,6 +18,8 @@
         "label": "INPUT",
         "kind": "in",
         "edge": "top",
+        "pos": 0.8,
+        "approximate": true,
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
@@ -25,27 +27,31 @@
         "level": "instrument",
         "impedanceOhm": 500000,
         "stereo": false,
-        "note": "1/4-inch TS unbalanced; 500 kΩ input impedance."
+        "note": "1/4-inch TS unbalanced; 500 kΩ input impedance. Position estimated from the official rear/top views: INPUT is on the player's right (top edge ~0.8)."
       },
       {
         "label": "OUTPUT",
         "kind": "out",
         "edge": "top",
+        "pos": 0.2,
+        "approximate": true,
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
         "balanced": false,
         "impedanceOhm": 1000,
         "stereo": false,
-        "note": "1/4-inch TS unbalanced; 1 kΩ output impedance."
+        "note": "1/4-inch TS unbalanced; 1 kΩ output impedance. Position estimated from the official rear/top views: OUTPUT is on the player's left (top edge ~0.2)."
       },
       {
         "label": "9V DC",
         "kind": "power",
         "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
         "connector": "barrel",
         "signal": "power",
-        "note": "Standard 9 V DC center-negative input, 5.5 x 2.1 mm; internal 9 V battery option."
+        "note": "Standard 9 V DC center-negative input, 5.5 x 2.1 mm; internal 9 V battery option. Centered on the top edge (~0.5); not a cable anchor."
       }
     ],
     "power": {
@@ -120,7 +126,8 @@
       "retailerAvailability": "Thomann lists the model as available since April 2018",
       "dimensions": "58 x 74 x 132 mm (H x W x D)",
       "weight": "0.5 kg (1.1 lbs)",
-      "imageProcessing": "Official top-down has a bottom drop shadow/reflection. It was removed (alpha threshold before trimming) so the shadow is not part of the hosted cutout or the 7.4 x 13.2 cm footprint. Hosted as AVIF q80 (800/350) for storage/bandwidth; PSNR 42.4 dB vs the approved PNG cutout."
+      "imageProcessing": "Official top-down has a bottom drop shadow/reflection. It was removed (alpha threshold before trimming) so the shadow is not part of the hosted cutout or the 7.4 x 13.2 cm footprint. Hosted as AVIF q80 (800/350) for storage/bandwidth; PSNR 42.4 dB vs the approved PNG cutout.",
+      "jackPositions": "Official rear view labels INPUT at panel-left, 9V DC center, OUTPUT at panel-right; mirrored to the top-down player view gives OUTPUT ~0.2, 9V ~0.5, INPUT ~0.8. Normalized estimates from the official rear/top images, not measured cm."
     },
     "sources": [
       {
@@ -134,6 +141,10 @@
       {
         "url": "https://cdn-media.empowertribe.com/b09497da0ed74f48ab325ac0ff75feae/Image_TE_0709-AHZ_CHOKA-TREMOLO_Top_XL.png",
         "kind": ["image"]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e08b590261824d898e752d7596ee278f/Image_TE_0709-AHZ_CHOKA-TREMOLO_Rear_XL.png",
+        "kind": ["info", "image"]
       }
     ],
     "imageCandidates": [
@@ -154,6 +165,12 @@
         "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHZ",
         "priority": 3,
         "notes": "Official right 3/4 perspective view; rejected by the analyzer (aspect 77% off, 27° skew, perspective distortion)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e08b590261824d898e752d7596ee278f/Image_TE_0709-AHZ_CHOKA-TREMOLO_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHZ",
+        "priority": 4,
+        "notes": "Official rear view used for jack order/position provenance (INPUT panel-left, 9V center, OUTPUT panel-right); not a cutout."
       }
     ],
     "confidence": "confirmed",

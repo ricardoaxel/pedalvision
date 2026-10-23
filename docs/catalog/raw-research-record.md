@@ -78,6 +78,10 @@ I/O, aux, expression/CV, MIDI, USB and power with `kind`, `edge` and
 future features; **only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor
 today**. Never omit a verified non-audio connector.
 
+If the **order/positions** are estimated from an official product photo (rear/top
+view) rather than measured cm, record `pos` + `approximate: true`; never claim
+exact cm. The canvas keeps those ticks hollow.
+
 `pos` is optional. Record it only when a source exposes the position (normalized
 0..1 from measured cm: `x / widthCm` on top/bottom, `y / heightCm` on
 left/right). If only the edge/count is known (e.g. “2 on top”), record `edge`

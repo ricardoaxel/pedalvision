@@ -245,7 +245,9 @@ today.**
 When only the **edge count** is known (e.g. “2 jacks on top”), record two
 `jacks` entries with `kind` + `edge` and **omit `pos`**; the resolver distributes
 them evenly across that edge and marks the anchors **approximate** (hollow ticks).
-Exact `pos` can be filled later from measured cm. When no jack data exists at all,
+Exact `pos` can be filled later from measured cm. If the order/positions are
+estimated from an official product photo (rear/top view), record `pos` +
+`approximate: true`; never claim exact cm. When no jack data exists at all,
 P4-02's fallback anchors apply (assumed IN left / OUT right).
 
 ### Enrichment (capture everything verified; show when present)

@@ -109,6 +109,18 @@ test("Choka AVIF: picker thumbs, canvas move/rotate, PNG/PDF export and share", 
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
 	await expect(page.getByTestId("info-name")).toHaveText("Choka Tremolo");
 
+	if (!isMobile(page)) {
+		// Official rear/top view: OUTPUT on the player's left (~0.2), INPUT on the
+		// right (~0.8), 9V centered (~0.5; not a cable anchor).
+		await expect(page.getByTestId("info-jacks")).toContainText(
+			"O · Top · ~0.20",
+		);
+		await expect(page.getByTestId("info-jacks")).toContainText(
+			"I · Top · ~0.80",
+		);
+		await expect(page.getByTestId("info-power-value")).toContainText("9 V");
+	}
+
 	// The canvas really decoded the AVIF (orange face, not the neutral fallback).
 	const centre = await firstItemScreenCentre(page, CHOKA);
 	const face = await screenRegion(page, centre.x - 10, centre.y - 22);

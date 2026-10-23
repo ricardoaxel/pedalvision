@@ -255,6 +255,14 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 		expect(index.items.size).toBe(7);
 	});
 
+	it("preserves an explicit approximate position (estimated from a photo)", () => {
+		const jacks = resolveJackLayout([
+			{ kind: "in", edge: "top", pos: 0.8, approximate: true },
+		]);
+		expect(jacks[0]?.pos).toBe(0.8);
+		expect(jacks[0]?.approximate).toBe(true);
+	});
+
 	it("marks edge-only jacks approximate in the anchor index", () => {
 		const edgeOnly: CustomPedal = {
 			...customPedal,
