@@ -1,5 +1,17 @@
 {
   "version": 1,
-  "pedals": {},
+  "pedals": {
+    "tc-electronic": {
+      "brand": "TC Electronic",
+      "batches": [
+        {
+          "batch": "choka-1",
+          "raw": "data/catalog/research/pedals/tc-electronic/choka-1.json",
+          "mapped": "data/catalog/pedals/tc-electronic/choka-1.json",
+          "items": 1
+        }
+      ]
+    }
+  },
   "boards": {}
 }

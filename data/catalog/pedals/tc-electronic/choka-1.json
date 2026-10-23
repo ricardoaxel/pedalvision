@@ -1,0 +1,77 @@
+[
+  {
+    "id": "tc-electronic-choka-tremolo",
+    "brand": "TC Electronic",
+    "name": "Choka Tremolo",
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "image": "tc-electronic-choka-tremolo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.8,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.2,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "color": "orange",
+    "notes": "Vintage-flavored all-analog tremolo with Speed, Depth and LFO controls; the LFO knob morphs between triangle and square waveforms. True bypass with top-mounted I/O.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-22",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHZ",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/f74c2d5aa50c49aeb0cc9745bc951289/QSG_TE_0709-AHZ_CHOKA-TREMOLO_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b09497da0ed74f48ab325ac0ff75feae/Image_TE_0709-AHZ_CHOKA-TREMOLO_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e08b590261824d898e752d7596ee278f/Image_TE_0709-AHZ_CHOKA-TREMOLO_Rear_XL.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ]
+  }
+]
