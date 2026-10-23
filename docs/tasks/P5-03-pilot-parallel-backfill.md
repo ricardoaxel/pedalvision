@@ -21,7 +21,7 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 - One brand batch = one branch/worktree = one PR; max 3 in flight.
 - No direct edits to `src/catalog/data/pedals.json`; batch files only.
 - Stop at the **Tier A target** (~1,850 pedals + 150 boards). **2,000 hosted pedals is a safety cap**; P5-05 only if the owner chooses to exceed Tier A.
-- Jacks are optional enrichment; use fallback anchors when absent.
+- Capture every connector with its position (audio I/O, aux, expression/CV, MIDI, USB, power); only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor today. Other connectors are future-feature data. Use fallback anchors only when a pedal has no jack data at all.
 - Every agent reports every 15 minutes: `% · items done/total · images accepted/rejected · blockers`.
 - Per-item hard limit starts at 12 min; per-batch at 4 h; tune after the pilot.
 - **Optional data is opportunistic:** capture only what appears in the same base research. Never run a separate search for serials, videos, artist, price, jacks, MIDI/USB, board extras, etc.

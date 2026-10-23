@@ -48,7 +48,7 @@ describe("raw → runtime projection", () => {
 		]);
 	});
 
-	it("drops a power inlet from the runtime cable anchors", () => {
+	it("keeps a power inlet in the runtime data (cable filtering happens later)", () => {
 		const pedal = projectPedal({
 			...rawPedal,
 			jacks: [
@@ -59,6 +59,7 @@ describe("raw → runtime projection", () => {
 		expect(pedal.jacks).toEqual([
 			{ kind: "in", edge: "top" },
 			{ kind: "out", edge: "left", pos: 0.25, stereo: true },
+			{ kind: "power", edge: "top" },
 		]);
 	});
 

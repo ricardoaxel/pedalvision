@@ -225,6 +225,36 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 		expect(jacks[1]?.approximate).toBe(true);
 	});
 
+	it("exposes only audio I/O as cable anchors", () => {
+		const mixed: CustomPedal = {
+			...customPedal,
+			refId: "custom-mixed",
+			jacks: [
+				{ kind: "in", edge: "top" },
+				{ kind: "out", edge: "top" },
+				{ kind: "send", edge: "top" },
+				{ kind: "return", edge: "top" },
+				{ kind: "exp-out", edge: "bottom" },
+				{ kind: "midi", edge: "top" },
+				{ kind: "power", edge: "top" },
+			],
+		};
+		const index = buildAnchorIndex({
+			boards: [],
+			items: [item({ refId: "custom-mixed" })],
+			customPedals: [mixed],
+			endpoints: [],
+		});
+		expect(index.all.map((anchor) => anchor.jack?.kind)).toEqual([
+			"in",
+			"out",
+			"send",
+			"return",
+		]);
+		// The full item index keeps every jack for existing/legacy cables.
+		expect(index.items.size).toBe(7);
+	});
+
 	it("marks edge-only jacks approximate in the anchor index", () => {
 		const edgeOnly: CustomPedal = {
 			...customPedal,
@@ -308,7 +338,7 @@ describe("fallback anchors (catalog pedals without jack data)", () => {
 			endpoints: [{ uid: "amp-1", kind: "amp" as const, x: 60, y: 20 }],
 		};
 		const index = buildAnchorIndex(scene);
-		expect(index.all).toHaveLength(5); // 4 jacks + 1 endpoint
+		expect(index.all).toHaveLength(4); // 3 audio jacks + 1 endpoint
 		expect(cableEndKey({ itemUid: "i1", jack: "0" })).toBe("item:i1:0");
 		expect(cableEndKey({ endpointUid: "amp-1" })).toBe("endpoint:amp-1");
 		const anchor = cableEndAnchorFromIndex({ itemUid: "i1", jack: "0" }, index);

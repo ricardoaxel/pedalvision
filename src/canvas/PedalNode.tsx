@@ -9,6 +9,7 @@ import {
 	Rect,
 	Text,
 } from "react-konva";
+import { isCableJack } from "../catalog/schema";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { jackLocalPoint, jackNormalLocal } from "../lib/jackAnchor";
@@ -398,6 +399,9 @@ export function PedalNode({
 		selectedItemUid === item.uid ||
 		screenWidth >= 44;
 	const jackTicks = jacks.map((jack, index) => {
+		// Only audio I/O is a cable anchor today. Other verified connectors stay in
+		// the catalog/info panel for future features but get no cable tick.
+		if (!isCableJack(jack.kind)) return null;
 		if (!showSecondaryJacks && jack.kind !== "in" && jack.kind !== "out") {
 			return null;
 		}

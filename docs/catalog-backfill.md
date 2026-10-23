@@ -238,6 +238,10 @@ normalized 0..1 along the edge, but it is **derived from exact cm** — e.g. a j
 2 cm down the left side of a 12 cm pedal is `edge: "left", pos: 2 / 12`. This
 represents any point on the four edges exactly. A jack inset from the edge would
 need an optional additive `xCm`/`yCm` (only if a source actually requires it).
+**Capture every connector** (audio I/O, aux, expression/CV, MIDI, USB, power)
+with its position when the source exposes it; the runtime catalog keeps them for
+future features. **Only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor
+today.**
 When only the **edge count** is known (e.g. “2 jacks on top”), record two
 `jacks` entries with `kind` + `edge` and **omit `pos`**; the resolver distributes
 them evenly across that edge and marks the anchors **approximate** (hollow ticks).

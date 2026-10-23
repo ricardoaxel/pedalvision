@@ -25,10 +25,7 @@ import {
 function projectJacks(jacks: RawJack[] | undefined): Jack[] | undefined {
 	if (!jacks) return undefined;
 	const projected = jacks
-		// A power inlet is not a patch-cable anchor. The raw record keeps the
-		// connector fact (and the `power` block carries its specs), but the
-		// runtime cable graph only exposes signal/control jacks.
-		.filter((jack) => jack.edge !== undefined && jack.kind !== "power")
+		.filter((jack) => jack.edge !== undefined)
 		.map((jack) => {
 			const value: Jack = {
 				kind: jack.kind,

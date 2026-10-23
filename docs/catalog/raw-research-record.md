@@ -72,9 +72,11 @@ All optional and **captured only when already found**:
 
 ### Jack positions
 
-Power inlets (`kind: "power"`) are kept in the raw record for provenance but are
-**not** cable anchors: the runtime projection drops them. Only signal/control
-jacks become canvas anchors.
+**Capture every connector, even if it is not connectable today.** Record audio
+I/O, aux, expression/CV, MIDI, USB and power with `kind`, `edge` and
+`pos`/`xCm`/`yCm` when the source exposes it. The runtime catalog keeps them for
+future features; **only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor
+today**. Never omit a verified non-audio connector.
 
 `pos` is optional. Record it only when a source exposes the position (normalized
 0..1 from measured cm: `x / widthCm` on top/bottom, `y / heightCm` on

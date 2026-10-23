@@ -186,6 +186,14 @@ export const JACK_KINDS = [
 /** Jack edges (F7/P4-01) — which side of the footprint a jack sits on. */
 export const JACK_EDGES = ["top", "right", "bottom", "left"] as const;
 
+/**
+ * Jack kinds that are **cable anchors today**: audio I/O only. Other verified
+ * connectors (expression/CV, MIDI, USB, power, …) are captured in the raw
+ * archive/runtime data for future features but are not connectable yet.
+ */
+export const CABLE_JACK_KINDS = ["in", "out", "send", "return"] as const;
+export type CableJackKind = (typeof CABLE_JACK_KINDS)[number];
+
 export const JackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
 	edge: z.enum(JACK_EDGES),
@@ -278,6 +286,11 @@ export const CatalogSchema = z.object({
 export type SourceRef = z.infer<typeof SourceRefSchema>;
 export type Jack = z.infer<typeof JackSchema>;
 export type JackKind = (typeof JACK_KINDS)[number];
+
+/** Whether a jack kind can carry a patch cable in the current release. */
+export function isCableJack(kind: JackKind): boolean {
+	return (CABLE_JACK_KINDS as readonly string[]).includes(kind);
+}
 export type JackEdge = (typeof JACK_EDGES)[number];
 export type Power = z.infer<typeof PowerSchema>;
 export type CatalogPedal = z.infer<typeof CatalogPedalSchema>;
