@@ -152,6 +152,7 @@ sheets (`catalog-image-reviewer`), never per image.
 | `--matte flood\|soft`     | `flood`                | dev-only soft fallback for gradients         |
 | `--format png\|avif`      | `png`                  | delivery format; P5 hosted assets use `avif` |
 | `--body-crop`             | off                    | crop side jack barrels/feet to the enclosure body |
+| `--quality 1-100`          | `80`                   | AVIF quality; escalate to 90 when a 2× crop flags |
 | `--analyze <file>`       | —                      | write the analyzer report; reject >15%/busy  |
 | `--force`                | off                    | process despite an analyzer reject (manual)  |
 

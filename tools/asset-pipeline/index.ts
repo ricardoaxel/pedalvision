@@ -50,7 +50,7 @@ Usage:
                  [--source <tag>] [--variant-of <id>]
                  [--assets-dir <dir>] [--draft <file>] [--tolerance <0-255>]
                  [--matte flood|soft] [--format png|avif] [--body-crop]
-                 [--analyze <report.json>] [--force]
+                 [--quality 1-100] [--analyze <report.json>] [--force]
   --help
 
 Writes:
@@ -80,6 +80,7 @@ type Args = {
 	matte: "flood" | "soft";
 	format: ImageFormat;
 	bodyCrop: boolean;
+	quality: number;
 	analyze?: string;
 	force: boolean;
 	help: boolean;
@@ -105,6 +106,7 @@ function parseArgs(argv: string[]): Args {
 		matte: "flood",
 		format: "png",
 		bodyCrop: false,
+		quality: 80,
 		force: false,
 		help: false,
 	};
@@ -186,6 +188,14 @@ function parseArgs(argv: string[]): Args {
 			case "--body-crop":
 				args.bodyCrop = true;
 				break;
+			case "--quality": {
+				const value = Number(argv[++i]);
+				if (!Number.isInteger(value) || value < 1 || value > 100) {
+					throw new Error("--quality must be an integer 1-100");
+				}
+				args.quality = value;
+				break;
+			}
 			case "--format": {
 				const value = argv[++i];
 				if (!IMAGE_FORMATS.includes(value as ImageFormat)) {
@@ -293,6 +303,7 @@ async function main(): Promise<void> {
 		matte: args.matte,
 		format: args.format,
 		bodyCrop: args.bodyCrop,
+		quality: args.quality,
 	});
 
 	for (const size of RENDITIONS) {

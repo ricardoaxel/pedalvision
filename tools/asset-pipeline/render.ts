@@ -33,6 +33,8 @@ export type RenderOptions = {
 	format?: ImageFormat;
 	/** Crop side protrusions (jack barrels/feet) to the enclosure body. */
 	bodyCrop?: boolean;
+	/** AVIF quality (1-100); defaults to 80, escalate to 90 when flagged. */
+	quality?: number;
 };
 
 /** The two encoded renditions (PNG or AVIF) keyed by long-edge size. */
@@ -92,7 +94,9 @@ export async function renderRenditions(
 		});
 		renditions[size] =
 			format === "avif"
-				? await resized.avif({ quality: 80, effort: 6 }).toBuffer()
+				? await resized
+						.avif({ quality: options.quality ?? 80, effort: 6 })
+						.toBuffer()
 				: await resized.png({ compressionLevel: 9 }).toBuffer();
 	}
 	return renditions;
