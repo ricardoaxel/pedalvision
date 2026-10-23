@@ -1,6 +1,17 @@
 {
   "version": 1,
   "pedals": {
+    "jhs": {
+      "brand": "JHS",
+      "batches": [
+        {
+          "batch": "3-series-screamer-1",
+          "raw": "data/catalog/research/pedals/jhs/3-series-screamer-1.json",
+          "mapped": "data/catalog/pedals/jhs/3-series-screamer-1.json",
+          "items": 1
+        }
+      ]
+    },
     "tc-electronic": {
       "brand": "TC Electronic",
       "batches": [

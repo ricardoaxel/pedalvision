@@ -1,0 +1,76 @@
+[
+  {
+    "id": "jhs-3-series-screamer",
+    "brand": "JHS",
+    "name": "3 Series Screamer",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-screamer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "pos": 0.7,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "pos": 0.7,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12
+    },
+    "usage": "guitar",
+    "color": "cream",
+    "notes": "JHS 3 Series Screamer — Tube Screamer-style overdrive with the JHS Strong Mod; Volume, Tone and Drive controls plus a +/- clipping toggle; true bypass; 9V DC, 12 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-23",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-screamer",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_SCREAMER_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Screamer-Front.png?v=1698427823",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/jhs_pedals_3_series_screamer_overdrive.htm",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  }
+]
