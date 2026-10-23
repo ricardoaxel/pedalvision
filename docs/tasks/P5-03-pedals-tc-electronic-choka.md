@@ -18,6 +18,7 @@ end before any parallel wave starts.
 - **Raw file:** `data/catalog/research/pedals/tc-electronic/choka-1.json`
 - **Assets:** `public/pedal-assets/pedals/{800,350}/tc-electronic-choka-tremolo.png`
 - **Image note:** the official top-down has a bottom drop shadow/reflection; it was removed before trimming so it is **not** part of the cutout or the 7.4 × 13.2 cm footprint.
+- **Cable anchors:** input/output only. The 9 V power inlet is captured in the raw record (`jacks` + `power`) for provenance but is **not** projected as a cable anchor.
 - **Format:** AVIF q80 at 800/350 (28 KB + 10 KB), PSNR **42.4 dB** vs the approved PNG cutout; `catalog-image-reviewer` accepted it at 1:1 and 2× (no banding/blur/halos/text softness). The picker ledger row uses the 350 rendition; the specimen/canvas/export use 800.
 
 ## Read first (context pack)

@@ -48,6 +48,20 @@ describe("raw → runtime projection", () => {
 		]);
 	});
 
+	it("drops a power inlet from the runtime cable anchors", () => {
+		const pedal = projectPedal({
+			...rawPedal,
+			jacks: [
+				...(rawPedal.jacks ?? []),
+				{ kind: "power", edge: "top", connector: "barrel", signal: "power" },
+			],
+		});
+		expect(pedal.jacks).toEqual([
+			{ kind: "in", edge: "top" },
+			{ kind: "out", edge: "left", pos: 0.25, stereo: true },
+		]);
+	});
+
 	it("uses the raw imageFormat for the static filename", () => {
 		const pedal = projectPedal({ ...rawPedal, imageFormat: "avif" });
 		expect(pedal.image).toBe("acme-big-fuzz.avif");

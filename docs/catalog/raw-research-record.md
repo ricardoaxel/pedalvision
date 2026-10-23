@@ -72,6 +72,10 @@ All optional and **captured only when already found**:
 
 ### Jack positions
 
+Power inlets (`kind: "power"`) are kept in the raw record for provenance but are
+**not** cable anchors: the runtime projection drops them. Only signal/control
+jacks become canvas anchors.
+
 `pos` is optional. Record it only when a source exposes the position (normalized
 0..1 from measured cm: `x / widthCm` on top/bottom, `y / heightCm` on
 left/right). If only the edge/count is known (e.g. “2 on top”), record `edge`

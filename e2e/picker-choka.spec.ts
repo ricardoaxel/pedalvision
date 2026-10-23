@@ -114,10 +114,11 @@ test("Choka AVIF: picker thumbs, canvas move/rotate, PNG/PDF export and share", 
 	const face = await screenRegion(page, centre.x - 10, centre.y - 22);
 	expect(looksOrange(face), `face pixel ${face.join(",")}`).toBe(true);
 
+	await page.screenshot({
+		path: `work/catalog/screenshots/avif-canvas-${testInfo.project.name}.png`,
+	});
+
 	if (isMobile(page)) {
-		await page.screenshot({
-			path: `work/catalog/screenshots/avif-canvas-${testInfo.project.name}.png`,
-		});
 		expect(errors).toEqual([]);
 		return;
 	}
