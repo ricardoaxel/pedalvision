@@ -22,6 +22,7 @@ pnpm catalog:check             # build to temp and byte-compare generated files
 pnpm catalog:ci                # temp build + validate + uncommitted runtime for CI
 pnpm catalog:post-merge        # build + validate + drift check
 pnpm catalog:guard-batch-pr    # batch PR may contain raw records + assets only
+pnpm catalog:guard-batch-pr --allow-pipeline  # owner-approved pilot + pipeline PR only
 pnpm catalog:dry-run           # 3 synthetic pedals + 3 fake control-plane batches
 ```
 

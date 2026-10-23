@@ -16,7 +16,11 @@ const ALLOWED = [
  * the rendition map carries the pipeline code, docs and tests in the same PR.
  */
 const PIPELINE_ALLOWED = [
-	/^src\//,
+	/^src\/lib\/cdn\.ts$/,
+	/^src\/lib\/(capacity|partInfo)\.ts$/,
+	/^src\/catalog\/(schema|schema\.test|rawSchema)\.ts$/,
+	/^src\/components\/(Picker|InfoPanel)\.tsx$/,
+	/^src\/canvas\/(PedalNode|BoardNode|exportStage)\.tsx?$/,
 	/^tools\//,
 	/^e2e\//,
 	/^\.opencode\/agent\//,
@@ -25,6 +29,14 @@ const PIPELINE_ALLOWED = [
 	/^vite\.config\.ts$/,
 	/^package\.json$/,
 	/^pnpm-lock\.yaml$/,
+];
+
+/** Generated/mapped files stay forbidden even for the pipeline exception. */
+const PIPELINE_DENIED = [
+	/^src\/catalog\/data\//,
+	/^data\/catalog\/(pedals|boards)\//,
+	/^data\/catalog\/registry\.json$/,
+	/^data\/catalog\/legacy\//,
 ];
 
 export type GuardOptions = {
@@ -45,7 +57,12 @@ export function guardBatchPr(
 	const allowed = options.allowPipeline
 		? [...ALLOWED, ...PIPELINE_ALLOWED]
 		: ALLOWED;
-	return files.filter((file) => !allowed.some((pattern) => pattern.test(file)));
+	return files.filter((file) => {
+		if (options.allowPipeline && PIPELINE_DENIED.some((p) => p.test(file))) {
+			return true;
+		}
+		return !allowed.some((pattern) => pattern.test(file));
+	});
 }
 
 export function formatGuardViolations(violations: string[]): string {

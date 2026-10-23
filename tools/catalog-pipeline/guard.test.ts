@@ -28,6 +28,20 @@ describe("batch PR guard", () => {
 		expect(
 			guardBatchPr([...batch, ...pipeline], { allowPipeline: true }),
 		).toEqual([]);
+		// Generated runtime/mapped files stay forbidden even with the exception.
+		expect(
+			guardBatchPr(
+				[
+					...batch,
+					"src/catalog/data/pedals.json",
+					"data/catalog/pedals/acme/batch-1.json",
+				],
+				{ allowPipeline: true },
+			),
+		).toEqual([
+			"src/catalog/data/pedals.json",
+			"data/catalog/pedals/acme/batch-1.json",
+		]);
 	});
 
 	it("rejects mapped/runtime and feature-code edits in a batch PR", () => {

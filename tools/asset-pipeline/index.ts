@@ -60,7 +60,7 @@ Writes:
 Source tags: ${SOURCE_TAGS.join(" | ")}
 The draft is catalog-shaped (imageSource "static"); merge it into
 src/catalog/data/{pedals,boards}.json, then re-run \`catalog:seed\` — the seed
-prunes asset-dir PNGs the catalog does not reference.`;
+prunes asset-dir images the catalog does not reference.`;
 
 type Args = {
 	input?: string;

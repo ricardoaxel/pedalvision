@@ -356,7 +356,9 @@ Record the source URL per item; never bulk-copy descriptions.
 ### Renditions & surfaces
 
 - `800/` — master: specimen plate, canvas (current), export/HD.
-- `350/` — thumbnail: picker ledger rows and the info-panel peek.
+- `350/` — thumbnail: picker ledger rows.
+- The info-panel sleeve/banner shares one URL with the specimen, so it uses the
+  800 master today; a separate peek rendition is a future refinement.
 - The app must not hardcode sizes: `ASSET_RENDITIONS` in `src/lib/cdn.ts` is the
   single source of truth. A future **512 canvas rendition** can be added there
   before the bulk fill if decoded-memory measurements justify it.
