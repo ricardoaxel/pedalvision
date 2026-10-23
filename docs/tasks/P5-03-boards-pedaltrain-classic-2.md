@@ -1,6 +1,6 @@
 # P5-03: Pedaltrain — boards batch 1 (Classic 2)
 
-**Phase:** P5 · **Status:** in progress · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #39 · **Model:** build-strong
 
 ## Goal
 
