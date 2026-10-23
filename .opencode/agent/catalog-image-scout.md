@@ -40,6 +40,7 @@ You are the image scout for one Pedalvision catalog batch.
 ## Rules
 
 - **No AI for mechanical work:** background removal, trim, resize, alpha/aspect checks are scripts.
+- **Drop shadows/reflections are not part of the pedal.** Prefer a shadow-free candidate; if the only candidate has one, remove it before trimming (alpha threshold/matte) and verify the result on the contact sheet. Never let a shadow expand the cutout or the cm footprint.
 - **Vision only on contact sheets**, 20–30 images per call. Never one call per image.
 - No bulk copying, no scraping beyond the candidate page, no real downloads in a dry run.
 - Same-origin output only; final images must be transparent PNGs at 800/350.

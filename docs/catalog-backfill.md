@@ -339,6 +339,10 @@ Record the source URL per item; never bulk-copy descriptions.
    signals.
 2. **Processor (script)** — background removal (extend the existing flood fill;
    dev-only ML fallback for gradients/shadows), trim, transparent PNG, 800/350.
+   **Drop shadows/reflections are not part of the product:** prefer a shadow-free
+   top-down candidate; if the only candidate has one, remove it before trimming
+   (alpha threshold/matte). The shadow must never be included in the cutout or
+   counted in the cm footprint.
 3. **Vision QA** — only ambiguous images, on **contact sheets** of 20–30; never
    one call per image.
 4. **Fallback** — max 3 candidates → placeholder + `needs-new-image` flag.
