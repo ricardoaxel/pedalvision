@@ -351,9 +351,15 @@ Record the source URL per item; never bulk-copy descriptions.
    (alpha threshold/matte). The shadow must never be included in the cutout or
    counted in the cm footprint.
 3. **AVIF quality gate:** encode at q80; require **PSNR ≥ 40 dB** (RGB where
-   alpha > 0) and a **1:1 original-vs-compressed contact-sheet review**; if the
-   item fails, escalate q90 → q100 or keep PNG for that item. AVIF q80 measured
-   6–11% of PNG at 36–42 dB on the pilot assets; q90 improves to ~39–45 dB.
+   alpha > 0) and a **dedicated 2-cell identical-coordinate PNG-vs-AVIF 2× crop**
+   review; if the item fails, escalate q90 → q100 or keep PNG for that item.
+   AVIF q80 measured 6–11% of PNG at 36–42 dB on the pilot assets; q90 improves
+   to ~39–45 dB. The analyzer always runs fresh; its image-QA cache is for the
+   **vision reviewer** verdicts only. For an alpha cutout the border is the
+   subject, so border uniformity is informational (not a reject).
+   **Side-jack pedals:** if jack barrels/feet protrude beyond the enclosure, use
+   `asset:process --body-crop` (median body edge) and analyze the processed
+   output so the enclosure, not the connectors, sets the true-scale width.
 4. **Vision QA** — only ambiguous images, on **contact sheets** of 20–30; never
    one call per image.
 5. **Fallback** — max 3 candidates → placeholder + `needs-new-image` flag.

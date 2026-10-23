@@ -101,14 +101,25 @@ Flipping it to a cleared tag is a launch-gate decision, not the tool's.
 
 ```sh
 pnpm asset:analyze --input raw.png --kind pedal --width-cm 7.3 --height-cm 12.9 \
-  --id boss-ds-1 --batch boss/batch-1 --out report.json
+  --id boss-ds-1 --out report.json
 ```
 
 Deterministic checks: min 800 px long edge, background uniformity, alpha, trim
 bbox/whitespace, aspect vs the **cm footprint** (≤10% pass, 10–15% flag, >15%
 reject), rotation/skew (>2° reject), shadow/perspective signals, and board
-top-down signals. Verdicts/reasons are cached under `work/catalog/image-qa/` by
-source SHA-256. No AI, no downloads.
+top-down signals. The analyzer always runs fresh (it is deterministic and cheap);
+the `work/catalog/image-qa/` cache is for the **vision reviewer** verdicts,
+recorded with `asset:qa`, never for analyzer results. For an alpha cutout the
+border is the subject, so border uniformity is informational (not a reject). No
+AI, no downloads.
+
+### Side-jack body crop
+
+Side-mounted jack barrels (and feet) can protrude beyond the enclosure and inflate
+the alpha bbox, making a true-scale pedal look too wide. Use `--body-crop` to
+crop the horizontal bbox to the **median body edge** while keeping the full
+height; the analyzer then sees the enclosure aspect. Analyze the **processed
+output** (not the padded raw image) for the final aspect/rotation verdict.
 
 ## Contact sheets & vision QA (P5-02)
 
@@ -140,6 +151,7 @@ sheets (`catalog-image-reviewer`), never per image.
 | `--tolerance <0-255>`    | `32`                   | background match tolerance                   |
 | `--matte flood\|soft`     | `flood`                | dev-only soft fallback for gradients         |
 | `--format png\|avif`      | `png`                  | delivery format; P5 hosted assets use `avif` |
+| `--body-crop`             | off                    | crop side jack barrels/feet to the enclosure body |
 | `--analyze <file>`       | —                      | write the analyzer report; reject >15%/busy  |
 | `--force`                | off                    | process despite an analyzer reject (manual)  |
 

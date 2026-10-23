@@ -40,6 +40,30 @@ async function buildInput(): Promise<Buffer> {
 		.toBuffer();
 }
 
+/** A 100×200 body with 20px side jack barrels at mid-height. */
+async function buildSideJackInput(): Promise<Buffer> {
+	const width = 200;
+	const height = 200;
+	const data = Buffer.alloc(width * height * 4);
+	const set = (x: number, y: number) => {
+		const i = (y * width + x) * 4;
+		data[i] = 240;
+		data[i + 1] = 235;
+		data[i + 2] = 225;
+		data[i + 3] = 255;
+	};
+	for (let y = 0; y < height; y++) {
+		for (let x = 50; x < 150; x++) set(x, y);
+	}
+	for (let y = 90; y < 110; y++) {
+		for (let x = 30; x < 50; x++) set(x, y);
+		for (let x = 150; x < 170; x++) set(x, y);
+	}
+	return sharp(data, { raw: { width, height, channels: 4 } })
+		.png()
+		.toBuffer();
+}
+
 describe("renderRenditions", () => {
 	it("outputs transparent PNGs scaled to each rendition size", async () => {
 		const renditions = await renderRenditions(await buildInput(), {
@@ -64,6 +88,17 @@ describe("renderRenditions", () => {
 			expect(meta.hasAlpha).toBe(true);
 			expect(Math.max(meta.width ?? 0, meta.height ?? 0)).toBe(size);
 		}
+	});
+
+	it("crops side jack protrusions to the body when bodyCrop is on", async () => {
+		const input = await buildSideJackInput();
+		const cropped = await renderRenditions(input, { bodyCrop: true });
+		const full = await renderRenditions(input);
+		const cropMeta = await sharp(cropped[800]).metadata();
+		const fullMeta = await sharp(full[800]).metadata();
+		// Body 100×200 (0.5); the full bbox with jack barrels is 140×200 (0.7).
+		expect((cropMeta.width ?? 0) / (cropMeta.height ?? 0)).toBeCloseTo(0.5, 1);
+		expect((fullMeta.width ?? 0) / (fullMeta.height ?? 0)).toBeCloseTo(0.7, 1);
 	});
 
 	it("is deterministic for identical input", async () => {

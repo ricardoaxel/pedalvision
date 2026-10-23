@@ -221,3 +221,41 @@ export function trimBounds(
 	if (right < left || bottom < top) return null;
 	return { left, top, width: right - left + 1, height: bottom - top + 1 };
 }
+
+/**
+ * Crop a tight alpha bbox horizontally to the **enclosure body** when small
+ * protrusions (side jack barrels, feet) extend the bbox. The body edges are the
+ * median first/last opaque pixel across the rows; the vertical bounds stay.
+ * Returns the input bounds when no narrower body is found. This keeps the true
+ * cm footprint from being inflated by connectors that stick out of the case.
+ */
+export function bodyCropBounds(
+	data: Uint8Array,
+	width: number,
+	bounds: Bounds,
+): Bounds {
+	const lefts: number[] = [];
+	const rights: number[] = [];
+	for (let y = bounds.top; y < bounds.top + bounds.height; y++) {
+		let first = -1;
+		let last = -1;
+		for (let x = bounds.left; x < bounds.left + bounds.width; x++) {
+			if (data[(y * width + x) * CHANNELS + 3] === 0) continue;
+			if (first < 0) first = x;
+			last = x;
+		}
+		if (first >= 0) {
+			lefts.push(first);
+			rights.push(last);
+		}
+	}
+	if (lefts.length === 0) return bounds;
+	lefts.sort((a, b) => a - b);
+	rights.sort((a, b) => a - b);
+	const left = lefts[Math.floor(lefts.length / 2)] ?? bounds.left;
+	const right =
+		rights[Math.floor(rights.length / 2)] ?? bounds.left + bounds.width - 1;
+	const bodyWidth = right - left + 1;
+	if (bodyWidth >= bounds.width) return bounds;
+	return { left, top: bounds.top, width: bodyWidth, height: bounds.height };
+}

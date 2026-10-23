@@ -78,6 +78,35 @@ describe("image analyzer", () => {
 		expect(result.alpha.transparentRatio).toBeGreaterThan(0.7);
 	});
 
+	it("accepts a tight transparent cutout whose border is the subject", async () => {
+		// The object fills the frame (border = subject) but the image is a
+		// transparent PNG with an interior transparent hole (>1% alpha), so the
+		// border-uniformity check must not reject it.
+		const width = 500;
+		const height = 900;
+		const data = Buffer.alloc(width * height * 4);
+		for (let i = 0; i < data.length; i += 4) {
+			data[i] = 30;
+			data[i + 1] = 50;
+			data[i + 2] = 70;
+			data[i + 3] = 255;
+		}
+		for (let y = 400; y < 500; y++) {
+			for (let x = 200; x < 300; x++) {
+				data[(y * width + x) * 4 + 3] = 0;
+			}
+		}
+		const png = await sharp(data, {
+			raw: { width, height, channels: 4 },
+		})
+			.png()
+			.toBuffer();
+		const result = await analyzeImage(png, { kind: "pedal", ...footprint });
+		expect(result.verdict).toBe("accept");
+		expect(result.aspect.verdict).toBe("pass");
+		expect(result.reasons.join(" ")).not.toMatch(/background/);
+	});
+
 	it("rejects a busy background", async () => {
 		const result = await analyzeImage(
 			await image({
