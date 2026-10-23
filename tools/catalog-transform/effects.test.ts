@@ -140,7 +140,9 @@ describe("committed seed effectTypes", () => {
 		const withImage = pedals.filter((p) =>
 			(p.sources ?? []).some((s) => s.kind.includes("image")),
 		);
-		expect(withImage).toHaveLength(170);
+		// The seed had 170 verified models with an image source; new P5 batches
+		// legitimately increase this, so assert the seed floor instead of a snapshot.
+		expect(withImage.length).toBeGreaterThanOrEqual(170);
 		for (const pedal of pedals) {
 			for (const source of pedal.sources ?? []) {
 				expect(source.kind.length, `${pedal.id} ${source.url}`).toBeGreaterThan(
