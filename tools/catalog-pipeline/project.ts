@@ -79,7 +79,7 @@ export function projectPedal(record: RawPedalRecord): CatalogPedal {
 		name: record.name,
 		widthCm: record.widthCm,
 		heightCm: record.heightCm,
-		image: `${record.id}.png`,
+		image: `${record.id}.${record.imageFormat ?? "png"}`,
 		imageSource: "static",
 		effectTypes: record.effectTypes ?? [],
 		category: record.category,
@@ -115,7 +115,7 @@ export function projectBoard(record: RawBoardRecord): CatalogBoard {
 		name: record.name,
 		widthCm: record.widthCm,
 		heightCm: record.heightCm,
-		image: `${record.id}.png`,
+		image: `${record.id}.${record.imageFormat ?? "png"}`,
 		imageSource: "static",
 		source: "public-asset",
 	};

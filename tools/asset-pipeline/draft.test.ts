@@ -21,6 +21,22 @@ describe("buildDraftEntry", () => {
 		});
 	});
 
+	it("builds an AVIF draft when requested", () => {
+		const entry = buildDraftEntry({
+			kind: "pedal",
+			id: "acme-fuzz",
+			brand: "Acme",
+			name: "Fuzz",
+			widthCm: 5,
+			heightCm: 10,
+			format: "avif",
+		});
+		expect(entry).toMatchObject({
+			image: "acme-fuzz.avif",
+			imageSource: "static",
+		});
+	});
+
 	it("carries a supply category and a variant link", () => {
 		expect(
 			buildDraftEntry({

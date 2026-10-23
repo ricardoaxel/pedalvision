@@ -48,6 +48,11 @@ describe("raw → runtime projection", () => {
 		]);
 	});
 
+	it("uses the raw imageFormat for the static filename", () => {
+		const pedal = projectPedal({ ...rawPedal, imageFormat: "avif" });
+		expect(pedal.image).toBe("acme-big-fuzz.avif");
+	});
+
 	it("omits incomplete runtime power but keeps raw-only facts out", () => {
 		const pedal = projectPedal({
 			...rawPedal,

@@ -75,7 +75,7 @@ describe("committed mock images", () => {
 		}
 	}, 60_000);
 
-	it("are the only files in the asset dirs (no stale PNGs)", () => {
+	it("are the only files in the asset dirs (no stale images)", () => {
 		const expected = new Set<string>();
 		for (const pedal of [...mockPedals, ...staticPedals]) {
 			for (const size of [800, 350])
@@ -96,7 +96,9 @@ describe("committed mock images", () => {
 			for (const entry of readdirSync(
 				new URL(`public/pedal-assets/${dir}`, repoRoot),
 			)) {
-				if (entry.endsWith(".png")) actual.add(`${dir}/${entry}`);
+				if (entry.endsWith(".png") || entry.endsWith(".avif")) {
+					actual.add(`${dir}/${entry}`);
+				}
 			}
 		}
 		expect(actual).toEqual(expected);

@@ -6,7 +6,7 @@ import {
 	boardAddRefusal,
 	capacityStatus,
 } from "../lib/capacity";
-import { resolveImageUrl } from "../lib/cdn";
+import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import {
 	draftFromCustomBoard,
 	emptyCustomBoardDraft,
@@ -122,8 +122,10 @@ interface PickerEntry {
 	name: string;
 	widthCm: number;
 	heightCm: number;
+	/** 350px thumbnail for the ledger row. */
+	thumbSrc: string;
 	/** 800px image for the specimen plate. */
-	imageSrc: string;
+	specimenSrc: string;
 	/** "Fuzz · Distortion" (pedals) or "" (boards). */
 	meta: string;
 }
@@ -380,7 +382,18 @@ export function Picker({
 				name: board.name,
 				widthCm: board.widthCm,
 				heightCm: board.heightCm,
-				imageSrc: resolveImageUrl(board.imageSource, board.image, "board", 800),
+				thumbSrc: resolveImageUrl(
+					board.imageSource,
+					board.image,
+					"board",
+					ASSET_RENDITIONS.pickerRow,
+				),
+				specimenSrc: resolveImageUrl(
+					board.imageSource,
+					board.image,
+					"board",
+					ASSET_RENDITIONS.specimen,
+				),
 				meta: "",
 			}));
 		}
@@ -397,7 +410,18 @@ export function Picker({
 				name: pedal.name,
 				widthCm: pedal.widthCm,
 				heightCm: pedal.heightCm,
-				imageSrc: resolveImageUrl(pedal.imageSource, pedal.image, "pedal", 800),
+				thumbSrc: resolveImageUrl(
+					pedal.imageSource,
+					pedal.image,
+					"pedal",
+					ASSET_RENDITIONS.pickerRow,
+				),
+				specimenSrc: resolveImageUrl(
+					pedal.imageSource,
+					pedal.image,
+					"pedal",
+					ASSET_RENDITIONS.specimen,
+				),
 				meta,
 			};
 		});
@@ -1089,7 +1113,7 @@ export function Picker({
 														}}
 													>
 														<PickerThumb
-															src={entry.imageSrc}
+															src={entry.thumbSrc}
 															kind={isBoards ? "board" : "pedal"}
 														/>
 														<span className="picker-item__text">
@@ -1198,7 +1222,7 @@ function Specimen({
 			<span className="specimen__eyebrow">Placing on</span>
 			<span className="specimen__target">{targetLabel}</span>
 			<div className="specimen__plate">
-				<PickerThumb src={entry.imageSrc} variant="specimen" kind={kind} />
+				<PickerThumb src={entry.specimenSrc} variant="specimen" kind={kind} />
 			</div>
 			<div className="specimen__identity">
 				<span className="specimen__brand">{entry.brand}</span>

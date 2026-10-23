@@ -9,7 +9,7 @@ import {
 	Rect,
 	Text,
 } from "react-konva";
-import { resolveImageUrl } from "../lib/cdn";
+import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { jackLocalPoint, jackNormalLocal } from "../lib/jackAnchor";
 import { useCableDrag } from "../state/cableDrag";
@@ -126,7 +126,7 @@ export function PedalNode({
 				resolved.definition.imageSource,
 				resolved.definition.image,
 				"pedal",
-				800,
+				ASSET_RENDITIONS.canvas,
 			)
 		: null;
 	const { image, status } = useImage(src, item.uid);

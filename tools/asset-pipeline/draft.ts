@@ -5,7 +5,7 @@ import {
 	CatalogPedalSchema,
 	type SourceTag,
 } from "../../src/catalog/schema.ts";
-import { type AssetKind, imageFilename } from "./naming.ts";
+import { type AssetKind, type ImageFormat, imageFilename } from "./naming.ts";
 
 /**
  * Build the **JSON draft** catalog entry for a processed asset. The draft is
@@ -32,12 +32,14 @@ export type DraftInput = {
 	category?: "pedal" | "supply";
 	/** Pedals only — the base model id for a colorway. */
 	variantOf?: string;
+	/** Delivery image format; defaults to `png` (P5 batches use `avif`). */
+	format?: ImageFormat;
 };
 
 export function buildDraftEntry(
 	input: DraftInput,
 ): CatalogPedal | CatalogBoard {
-	const image = imageFilename(input.id);
+	const image = imageFilename(input.id, input.format);
 	const base = {
 		id: input.id,
 		// Trim so a whitespace-only name can't slip past the schema's `min(1)`.

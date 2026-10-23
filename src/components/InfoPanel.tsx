@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { resolveImageUrl } from "../lib/cdn";
+import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import {
 	buildPartInfo,
 	formatDimensions,
@@ -65,7 +65,7 @@ export function InfoPanel() {
 				resolved.definition.imageSource,
 				resolved.definition.image,
 				"pedal",
-				800,
+				ASSET_RENDITIONS.specimen,
 			)
 		: null;
 	// The CORS-first → cache-bust → no-CORS → failed ladder, shared with the

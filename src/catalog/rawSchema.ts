@@ -4,6 +4,7 @@ import {
 	EFFECT_TYPES,
 	HTTP_URL,
 	ID_PATTERN,
+	IMAGE_FORMATS,
 	ISO_DATE_PATTERN,
 	JACK_EDGES,
 	JACK_KINDS,
@@ -506,6 +507,8 @@ export const RawPedalRecordSchema = z
 		widthCm: PositiveNumber,
 		heightCm: PositiveNumber,
 		dimensionsSource: z.string().optional(),
+		/** Delivery image format for the hosted asset; default `png`. */
+		imageFormat: z.enum(IMAGE_FORMATS).optional(),
 		jacks: z.array(RawJackSchema).optional(),
 		power: RawPowerSchema.optional(),
 		io: RawAudioSchema.optional(),
@@ -528,6 +531,8 @@ export const RawBoardRecordSchema = z
 		widthCm: PositiveNumber,
 		/** Footprint depth/front-to-back (cm); physical height is separate. */
 		heightCm: PositiveNumber,
+		/** Delivery image format for the hosted asset; default `png`. */
+		imageFormat: z.enum(IMAGE_FORMATS).optional(),
 		thicknessCm: PositiveNumber.optional(),
 		maxHeightCm: PositiveNumber.optional(),
 		weightG: NonNegativeNumber.optional(),

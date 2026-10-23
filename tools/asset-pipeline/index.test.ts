@@ -1,5 +1,11 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readdirSync, rmSync } from "node:fs";
+import {
+	existsSync,
+	mkdtempSync,
+	readdirSync,
+	readFileSync,
+	rmSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -78,6 +84,51 @@ describe("asset-pipeline CLI", () => {
 			expect(readdirSync(join(assets, "pedals/350"))).toEqual([
 				"acme-big-fuzz.png",
 			]);
+		} finally {
+			rmSync(dir, { recursive: true, force: true });
+		}
+	}, 30_000);
+
+	it("writes AVIF renditions and an AVIF draft with --format avif", async () => {
+		const dir = mkdtempSync(join(tmpdir(), "pedalvision-cli-avif-"));
+		try {
+			const input = await writeRawPng(dir);
+			const assets = join(dir, "out");
+			const draftPath = join(dir, "draft.json");
+			runCli([
+				"--input",
+				input,
+				"--brand",
+				"Acme",
+				"--name",
+				"Big Fuzz",
+				"--width-cm",
+				"6",
+				"--height-cm",
+				"10",
+				"--format",
+				"avif",
+				"--assets-dir",
+				assets,
+				"--draft",
+				draftPath,
+			]);
+			expect(existsSync(join(assets, "pedals/800/acme-big-fuzz.avif"))).toBe(
+				true,
+			);
+			expect(existsSync(join(assets, "pedals/350/acme-big-fuzz.avif"))).toBe(
+				true,
+			);
+			expect(readdirSync(join(assets, "pedals/800"))).toEqual([
+				"acme-big-fuzz.avif",
+			]);
+			expect(readdirSync(join(assets, "pedals/350"))).toEqual([
+				"acme-big-fuzz.avif",
+			]);
+			const draft = JSON.parse(readFileSync(draftPath, "utf8")) as Array<{
+				image: string;
+			}>;
+			expect(draft[0]?.image).toBe("acme-big-fuzz.avif");
 		} finally {
 			rmSync(dir, { recursive: true, force: true });
 		}

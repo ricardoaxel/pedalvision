@@ -121,6 +121,16 @@ describe("CatalogPedalSchema", () => {
 		).toBe(false);
 	});
 
+	it("accepts a .avif static image (P5 delivery format)", () => {
+		expect(
+			CatalogPedalSchema.safeParse({
+				...validPedal,
+				image: "acme-big-fuzz.avif",
+				imageSource: "static",
+			}).success,
+		).toBe(true);
+	});
+
 	it("accepts a URL image when imageSource is 'url'", () => {
 		expect(
 			CatalogPedalSchema.safeParse({

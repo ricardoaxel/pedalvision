@@ -1,6 +1,6 @@
 import { catalog } from "../catalog/load";
 import type { CatalogBoard, CatalogPedal } from "../catalog/schema";
-import { resolveImageUrl } from "./cdn";
+import { ASSET_RENDITIONS, resolveImageUrl } from "./cdn";
 
 /**
  * Capacity budgets (design.md §Capacity budgets, P3-06).
@@ -162,7 +162,7 @@ function itemImageUrl(definition: CatalogPedal): string {
 		definition.imageSource,
 		definition.image,
 		"pedal",
-		800,
+		ASSET_RENDITIONS.export,
 	);
 }
 
@@ -171,7 +171,7 @@ function boardImageUrl(definition: CatalogBoard): string {
 		definition.imageSource,
 		definition.image,
 		"board",
-		800,
+		ASSET_RENDITIONS.export,
 	);
 }
 

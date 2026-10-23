@@ -31,8 +31,12 @@ describe("slugId", () => {
 });
 
 describe("imageFilename", () => {
-	it("appends .png to a safe id", () => {
+	it("appends .png to a safe id by default", () => {
 		expect(imageFilename("boss-tr-2")).toBe("boss-tr-2.png");
+	});
+
+	it("uses .avif when requested", () => {
+		expect(imageFilename("boss-tr-2", "avif")).toBe("boss-tr-2.avif");
 	});
 
 	it("rejects an id that cannot form a safe filename", () => {

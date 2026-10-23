@@ -7,6 +7,14 @@ const PNG_SIGNATURE = Buffer.from([
 	0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
 ]);
 
+/** ISO BMFF: bytes 4–7 are `ftyp`, the brand at 8–11 is `avif`. */
+function isAvif(buffer: Buffer): boolean {
+	return (
+		buffer.subarray(4, 8).toString("ascii") === "ftyp" &&
+		buffer.subarray(8, 12).toString("ascii") === "avif"
+	);
+}
+
 /** A white 100×50 canvas with a red rectangle — a neutral-background cutout. */
 async function buildInput(): Promise<Buffer> {
 	const width = 100;
@@ -39,6 +47,19 @@ describe("renderRenditions", () => {
 		});
 		for (const size of RENDITIONS) {
 			expect(renditions[size].subarray(0, 8)).toEqual(PNG_SIGNATURE);
+			const meta = await sharp(renditions[size]).metadata();
+			expect(meta.hasAlpha).toBe(true);
+			expect(Math.max(meta.width ?? 0, meta.height ?? 0)).toBe(size);
+		}
+	});
+
+	it("outputs AVIF renditions with alpha when requested", async () => {
+		const renditions = await renderRenditions(await buildInput(), {
+			tolerance: 16,
+			format: "avif",
+		});
+		for (const size of RENDITIONS) {
+			expect(isAvif(renditions[size])).toBe(true);
 			const meta = await sharp(renditions[size]).metadata();
 			expect(meta.hasAlpha).toBe(true);
 			expect(Math.max(meta.width ?? 0, meta.height ?? 0)).toBe(size);

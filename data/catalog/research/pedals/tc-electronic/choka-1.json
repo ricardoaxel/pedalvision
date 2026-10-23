@@ -12,6 +12,7 @@
     "widthCm": 7.4,
     "heightCm": 13.2,
     "dimensionsSource": "TC Electronic product page and Quick Start Guide (58 H x 74 W x 132 D mm)",
+    "imageFormat": "avif",
     "jacks": [
       {
         "label": "INPUT",
@@ -119,7 +120,7 @@
       "retailerAvailability": "Thomann lists the model as available since April 2018",
       "dimensions": "58 x 74 x 132 mm (H x W x D)",
       "weight": "0.5 kg (1.1 lbs)",
-      "imageProcessing": "Official top-down has a bottom drop shadow/reflection. It was removed (alpha threshold before trimming) so the shadow is not part of the hosted cutout or the 7.4 x 13.2 cm footprint."
+      "imageProcessing": "Official top-down has a bottom drop shadow/reflection. It was removed (alpha threshold before trimming) so the shadow is not part of the hosted cutout or the 7.4 x 13.2 cm footprint. Hosted as AVIF q80 (800/350) for storage/bandwidth; PSNR 42.4 dB vs the approved PNG cutout."
     },
     "sources": [
       {
