@@ -198,7 +198,7 @@ Effects loops (send/return count, mono/stereo, TRS insert); 4-cable-method suppo
 Expression/CV voltage range (e.g. 0–3.3 V, 0–5 V); TRS wiring/floating-ring notes; toe switch; footswitch type (latching/momentary, NO/NC); aux switch; amp channel switching (relay/latching/momentary, TS/TRS); remote jacks; tap tempo.
 
 ### MIDI details
-5-pin DIN in/out/thru; TRS MIDI **Type A/B**; USB-MIDI; BLE-MIDI; MIDI clock; program change; CC/NRPN; 7-bit/14-bit; channel count; merge/thru behavior.
+5-pin DIN in/out/thru; TRS MIDI **Type A/B**; USB-MIDI; BLE-MIDI; MIDI clock; program change; CC/NRPN; 7-bit/14-bit; **MIDI channel(s)**; merge/thru behavior; and the **official MIDI implementation chart URL** (`optional.lifecycle.midiChartUrl`) when the source already provides it. No extra search; missing is valid.
 
 ### USB details
 Connector (A/B/C/micro/mini); device vs host; functions (audio/MIDI/editor/firmware/power/charging/host); class compliance; audio channels; sample rate; bit depth; latency; bus power; loopback/re-amp.

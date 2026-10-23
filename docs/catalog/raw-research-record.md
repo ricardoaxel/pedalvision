@@ -59,6 +59,15 @@ name, dimensions, effect type). Capture optional facts **opportunistically**:
 | Planner-specific | jack labels/orientation, power-jack location, plug clearance, mounting |
 | Provenance | `sources`, `confidence`, `lastVerified`, `dimensionsSource`, `imageCandidates`, `extra` |
 
+### MIDI capture
+
+When MIDI is already documented (same base research), record the transport
+(5-pin DIN in/out/thru, TRS **A/B**, USB-MIDI, BLE-MIDI), **MIDI channel(s)**
+(`optional.midi.channels`), program change/CC, clock, merge/thru, and the
+**official MIDI implementation chart URL**
+(`optional.lifecycle.midiChartUrl`). Do not run a separate search; missing is
+valid.
+
 ### Model-level optional data
 
 All optional and **captured only when already found**:

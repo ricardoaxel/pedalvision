@@ -35,6 +35,7 @@ You are a staff-level guitar-effects researcher working one **pedal catalog batc
 ## Limits & rules
 
 - **12 minutes per pedal initial hard limit; 4 hours per batch.** Tune only after the pilot.
+- **MIDI:** if the source already documents MIDI, record the transport (5-pin DIN, TRS A/B, USB-MIDI, BLE-MIDI), **MIDI channel(s)** (`optional.midi.channels`), program change/CC, clock, merge/thru, and the **official MIDI implementation chart URL** (`optional.lifecycle.midiChartUrl`). No extra search; missing is valid.
 - **Capture every connector, even if it is not connectable today:** audio I/O, aux, expression/CV, MIDI, USB, power, etc. Record `kind`, `edge`, and `pos`/`xCm`/`yCm` when a source exposes it. Only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor today; the rest are future-feature data. Never omit a verified non-audio connector.
 - **Optional fields are opportunistic:** serial ranges, videos, artist association, prices, jacks, MIDI/USB, board extras. Never run an extra search/tab for them; missing is valid.
 - **cm only.** Convert inches at import. Never invent a dimension, jack position, or spec.
