@@ -1,6 +1,6 @@
 import Konva from "konva";
 import { cableCurveCm, cablePathDataCm, EXPORT_CABLE } from "../lib/cablePath";
-import { resolveImageUrl } from "../lib/cdn";
+import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import {
 	EXPORT_PADDING_CM,
 	EXPORT_STANDARD_PX_PER_CM,
@@ -87,7 +87,7 @@ function imageRequests(plan: ExportPlan): ImageRequest[] {
 				definition.imageSource,
 				definition.image,
 				"board",
-				800,
+				ASSET_RENDITIONS.export,
 			),
 			name: `${definition.brand} ${definition.name}`,
 		});
@@ -101,7 +101,7 @@ function imageRequests(plan: ExportPlan): ImageRequest[] {
 				resolved.definition.imageSource,
 				resolved.definition.image,
 				"pedal",
-				800,
+				ASSET_RENDITIONS.export,
 			),
 			name: resolved.name,
 		});

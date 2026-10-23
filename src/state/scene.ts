@@ -278,7 +278,8 @@ export type ResolvedJack = Jack & { pos: number; approximate?: boolean };
  * Resolve edge-only jacks into concrete anchor positions (P5-01). A source may
  * only confirm "2 jacks on top", so every jack with no `pos` is placed in the
  * middle of the largest gap left by exact positions on its edge (evenly across
- * the edge when none are exact). Exact positions always win. Deterministic and
+ * the edge when none are exact). Exact positions always win; an explicit
+ * `approximate` flag on a positioned jack is preserved. Deterministic and
  * side-effect free. Returns the input array unchanged when every jack already
  * has a position (the common case).
  */
@@ -292,12 +293,9 @@ export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
 		return jacks as ResolvedJack[];
 	}
 	if (jacks.every((jack) => jack.pos !== undefined)) {
-		// `pos` wins: a stale author-supplied `approximate` flag is cleared.
-		return jacks.map((jack) =>
-			jack.approximate === undefined
-				? (jack as ResolvedJack)
-				: ({ ...jack, approximate: false } as ResolvedJack),
-		);
+		// `pos` wins; an explicit `approximate` flag (e.g. a position estimated
+		// from an official product photo) is preserved so the tick stays hollow.
+		return jacks as ResolvedJack[];
 	}
 	const missingByEdge = new Map<JackEdge, number[]>();
 	jacks.forEach((jack, index) => {

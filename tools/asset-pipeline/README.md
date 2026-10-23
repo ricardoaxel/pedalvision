@@ -10,8 +10,12 @@ pnpm asset:process -- \
   --input /path/to/raw.png \
   --kind pedal \
   --brand "BOSS" --name "TR-2 Tremolo" \
-  --width-cm 7.3 --height-cm 12.9
+  --width-cm 7.3 --height-cm 12.9 \
+  --format avif
 ```
+
+P5 hosted assets use **AVIF** (`--format avif`, q80 default); PNG remains the
+per-item fallback and the mock/legacy format.
 
 Or run it directly (like the catalog transformer):
 
@@ -36,19 +40,19 @@ node --experimental-strip-types tools/asset-pipeline/index.ts --input raw.png \
    renderer stretches the cutout to the item's exact cm footprint (design.md
    §Assets & catalog; ADR-003 true-scale bar).
 4. **Write + draft.** Two PNGs are written atomically (temp→rename) to
-   `public/pedal-assets/{pedals,boards}/{800,350}/<id>.png`, and a catalog-shaped
-   JSON draft is printed (or written with `--draft`). Progress lines go to
-   **stderr**, so stdout is pure JSON (`… > draft.json` works).
+   `public/pedal-assets/{pedals,boards}/{800,350}/<id>.<png|avif>`, and a
+   catalog-shaped JSON draft is printed (or written with `--draft`). Progress
+   lines go to **stderr**, so stdout is pure JSON (`… > draft.json` works).
 
 ## Output contract
 
 | Item        | Value                                                                 |
 | ----------- | --------------------------------------------------------------------- |
-| Pedals      | `public/pedal-assets/pedals/{800,350}/<id>.png`                        |
-| Boards      | `public/pedal-assets/boards/{800,350}/<id>.png`                        |
-| Filename    | `<id>.png` — must match `IMAGE_PATTERN` (`^[a-z0-9][a-z0-9-]*\.png$`)  |
-| Renditions  | long edge `800` and `350`, aspect preserved, alpha PNG                 |
-| URL         | `/pedal-assets/{pedals,boards}/{350,800}/<id>.png` via `assetUrl()`    |
+| Pedals      | `public/pedal-assets/pedals/{800,350}/<id>.<png\|avif>`                 |
+| Boards      | `public/pedal-assets/boards/{800,350}/<id>.<png\|avif>`                 |
+| Filename    | `<id>.<png\|avif>` — must match `IMAGE_PATTERN` (`^[a-z0-9][a-z0-9-]*\.(png\|avif)$`) |
+| Renditions  | long edge `800` and `350`, aspect preserved, alpha PNG/AVIF            |
+| URL         | `/pedal-assets/{pedals,boards}/{350,800}/<id>.<png\|avif>` via `assetUrl()` |
 
 `assetUrl()` (`src/lib/cdn.ts`) does **not** URL-encode, so the filename must stay
 lowercase/hyphenated/ASCII — the CLI asserts this and refuses an unsafe id.
@@ -80,6 +84,9 @@ It is validated against `CatalogPedalSchema`/`CatalogBoardSchema`, so the CLI ca
 never emit a draft the app would reject. Merge it into
 `src/catalog/data/{pedals,boards}.json`, then run `pnpm catalog:seed` (and
 `pnpm catalog:reclassify` if you want the taxonomy/category re-derived).
+
+With `--format avif` the draft's `image` is `<id>.avif`; the default remains
+`<id>.png` for back-compat.
 
 **Why a draft and not an auto-merge:** whether an asset is *cleared* is a rights
 decision (ADR-003), so `source` stays `placeholder` unless you pass `--source`.
@@ -132,8 +139,17 @@ sheets (`catalog-image-reviewer`), never per image.
 | `--draft <file>`         | stdout                 | where to write the JSON draft                |
 | `--tolerance <0-255>`    | `32`                   | background match tolerance                   |
 | `--matte flood\|soft`     | `flood`                | dev-only soft fallback for gradients         |
+| `--format png\|avif`      | `png`                  | delivery format; P5 hosted assets use `avif` |
 | `--analyze <file>`       | —                      | write the analyzer report; reject >15%/busy  |
 | `--force`                | off                    | process despite an analyzer reject (manual)  |
+
+## AVIF quality gate (P5)
+
+`--format avif` writes `<id>.avif` at 800/350 with alpha. Encode at q80; require
+**PSNR ≥ 40 dB** (RGB where alpha > 0) and a **1:1 original-vs-compressed review**
+(`catalog-image-reviewer`). If an item fails, re-encode at q90 → q100 or keep
+`--format png` for that item. Measured on the Choka pilot: 28 KB (800) + 10 KB
+(350), PSNR 42.4 dB, visually indistinguishable at 2×.
 
 ## Rights & scope (ADR-003)
 

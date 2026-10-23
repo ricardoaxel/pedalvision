@@ -42,7 +42,7 @@ name, dimensions, effect type). Capture optional facts **opportunistically**:
 | Group | Fields |
 | --- | --- |
 | Identity | `id`, `brand`, `name`, `aliases`, `category` (`pedal`/`supply`), `deviceType`, `formFactor`, `instrumentTypes`, `effectTypes`, `variantOf` |
-| Geometry | `widthCm`, `heightCm` (**cm only**; inches are converted at import), `dimensionsSource` |
+| Geometry | `widthCm`, `heightCm` (**cm only**; inches are converted at import), `dimensionsSource`, `imageFormat?` (`avif` for P5 hosted assets; default `png`) |
 | Connectors | `jacks[]`: `label`, `kind` (in/out/send/return/exp/exp-in/exp-out/midi/ctrl/power), `edge`, `pos?`/`xCm?`/`yCm?`, `approximate?`, `connector` (TS/TRS/XLR/DIN5/TRS-MIDI A-B/USB-A-B-C/micro/mini/barrel/IEC/RCA/3.5 mm/other), `channels`, `signal`, `balanced`, `level`, `impedanceOhm`, `maxLevelDbu`, `stereo`, `midiType`, `usbFunctions`, `note` |
 | Power | `power` (top-level runtime projection) + `optional.power`: voltage, AC/DC, mA, W, polarity, connector/size, battery/life, USB bus power, isolation, inrush, recommended supply; for a power supply: outlets, isolated outputs, per-output V/mA, total mA, AC input, courtesy outlet, sag |
 | Audio I/O | `io` / `optional.audio`: inputs/outputs, channels, mono/stereo/true-stereo, balanced, level, impedance, max level, gain/headroom, SNR/THD, frequency response, dry-through, headphone, aux, DI, effects loop, 4-cable, ground lift, phase invert, phantom, pad, latency |
@@ -71,6 +71,16 @@ All optional and **captured only when already found**:
   — an observation, never a canonical price.
 
 ### Jack positions
+
+**Capture every connector, even if it is not connectable today.** Record audio
+I/O, aux, expression/CV, MIDI, USB and power with `kind`, `edge` and
+`pos`/`xCm`/`yCm` when the source exposes it. The runtime catalog keeps them for
+future features; **only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor
+today**. Never omit a verified non-audio connector.
+
+If the **order/positions** are estimated from an official product photo (rear/top
+view) rather than measured cm, record `pos` + `approximate: true`; never claim
+exact cm. The canvas keeps those ticks hollow.
 
 `pos` is optional. Record it only when a source exposes the position (normalized
 0..1 from measured cm: `x / widthCm` on top/bottom, `y / heightCm` on
@@ -104,11 +114,13 @@ separate.
 
 Only fields the runtime schema supports are projected:
 
-- Pedal: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image`, `imageSource`,
+- Pedal: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image` (`<id>.<imageFormat>`;
+  P5 hosted assets use `.avif`), `imageSource`,
   `effectTypes`, `category`, optional `jacks` (`kind`, `edge`, `pos?`,
   `stereo?`), `power`, `variantOf`, `usage`, `color`, `notes`, `year`, `status`,
   `confidence`, `lastVerified`, `source`, `sources`, `links`.
-- Board: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image`, `imageSource`,
+- Board: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image`
+  (`<id>.<imageFormat>`; P5 hosted assets use `.avif`), `imageSource`,
   `variantOf`, `source`, `sources`.
 
 The projection is deterministic from the raw record. Adding a runtime field is a

@@ -1,6 +1,9 @@
 import { join } from "node:path";
-import { IMAGE_PATTERN } from "../../src/catalog/schema.ts";
+import { IMAGE_PATTERN, type ImageFormat } from "../../src/catalog/schema.ts";
 import { toSlug } from "../catalog-transform/slug.ts";
+
+export type { ImageFormat } from "../../src/catalog/schema.ts";
+export { IMAGE_FORMATS } from "../../src/catalog/schema.ts";
 
 /**
  * Pure naming/geometry for the asset pipeline — no filesystem, no sharp. Kept
@@ -25,11 +28,11 @@ export function slugId(brand: string, name: string): string {
 }
 
 /**
- * The committed `<id>.png` filename. Asserts `IMAGE_PATTERN` so an unsafe id can
- * never reach `assetUrl()` (which does not URL-encode) or the filesystem.
+ * The committed `<id>.<format>` filename. Asserts `IMAGE_PATTERN` so an unsafe
+ * id can never reach `assetUrl()` (which does not URL-encode) or the filesystem.
  */
-export function imageFilename(id: string): string {
-	const filename = `${id}.png`;
+export function imageFilename(id: string, format: ImageFormat = "png"): string {
+	const filename = `${id}.${format}`;
 	if (!IMAGE_PATTERN.test(filename)) {
 		throw new Error(
 			`id "${id}" does not form a safe image filename (expected ${IMAGE_PATTERN})`,

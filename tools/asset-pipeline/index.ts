@@ -6,6 +6,8 @@ import { analyzeImage } from "./analyze.ts";
 import { buildDraftEntry, type DraftInput } from "./draft.ts";
 import {
 	type AssetKind,
+	IMAGE_FORMATS,
+	type ImageFormat,
 	imageFilename,
 	outputPath,
 	RENDITIONS,
@@ -47,17 +49,18 @@ Usage:
                  [--kind pedal|board] [--id <slug>] [--category pedal|supply]
                  [--source <tag>] [--variant-of <id>]
                  [--assets-dir <dir>] [--draft <file>] [--tolerance <0-255>]
-                 [--matte flood|soft] [--analyze <report.json>] [--force]
+                 [--matte flood|soft] [--format png|avif]
+                 [--analyze <report.json>] [--force]
   --help
 
 Writes:
-  <assets-dir>/<pedals|boards>/{800,350}/<id>.png
+  <assets-dir>/<pedals|boards>/{800,350}/<id>.<png|avif>
   a one-entry JSON array draft (stdout, or --draft <file>)
 
 Source tags: ${SOURCE_TAGS.join(" | ")}
 The draft is catalog-shaped (imageSource "static"); merge it into
 src/catalog/data/{pedals,boards}.json, then re-run \`catalog:seed\` — the seed
-prunes asset-dir PNGs the catalog does not reference.`;
+prunes asset-dir images the catalog does not reference.`;
 
 type Args = {
 	input?: string;
@@ -75,6 +78,7 @@ type Args = {
 	draft?: string;
 	tolerance: number;
 	matte: "flood" | "soft";
+	format: ImageFormat;
 	analyze?: string;
 	force: boolean;
 	help: boolean;
@@ -98,6 +102,7 @@ function parseArgs(argv: string[]): Args {
 		assetsDir: DEFAULTS.assetsDir,
 		tolerance: DEFAULTS.tolerance,
 		matte: "flood",
+		format: "png",
 		force: false,
 		help: false,
 	};
@@ -176,6 +181,16 @@ function parseArgs(argv: string[]): Args {
 				args.matte = value;
 				break;
 			}
+			case "--format": {
+				const value = argv[++i];
+				if (!IMAGE_FORMATS.includes(value as ImageFormat)) {
+					throw new Error(
+						`--format must be ${IMAGE_FORMATS.join("|")} (got "${value}")`,
+					);
+				}
+				args.format = value as ImageFormat;
+				break;
+			}
 			case "--analyze":
 				args.analyze = argv[++i];
 				break;
@@ -227,7 +242,7 @@ async function main(): Promise<void> {
 	}
 
 	const id = resolveId(args);
-	const filename = imageFilename(id);
+	const filename = imageFilename(id, args.format);
 	const assetsDir = resolve(process.cwd(), args.assetsDir);
 
 	// Validate the draft (id, brand/name, footprint) BEFORE touching the
@@ -241,6 +256,7 @@ async function main(): Promise<void> {
 		heightCm: args.heightCm,
 		source: args.source,
 		variantOf: args.variantOf,
+		format: args.format,
 		...(args.kind === "pedal" ? { category: args.category } : {}),
 	};
 	const draft = `${JSON.stringify([buildDraftEntry(draftInput)], null, 2)}\n`;
@@ -270,6 +286,7 @@ async function main(): Promise<void> {
 	const renditions = await renderRenditions(input, {
 		tolerance: args.tolerance,
 		matte: args.matte,
+		format: args.format,
 	});
 
 	for (const size of RENDITIONS) {

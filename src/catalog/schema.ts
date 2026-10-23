@@ -24,11 +24,17 @@ export const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
- * Image filenames must be lowercase/hyphenated/ASCII `.png`. `assetUrl()` does
- * not URL-encode (src/lib/cdn.ts), so the catalog is the guarantee that only
- * safe filenames ever reach it (see ADR-003 / P0-04 README).
+ * Image filenames must be lowercase/hyphenated/ASCII `.png` or `.avif`.
+ * `assetUrl()` does not URL-encode (src/lib/cdn.ts), so the catalog is the
+ * guarantee that only safe filenames ever reach it (see ADR-003 / P0-04 README).
+ * `.avif` is the P5 delivery format; `.png` stays valid for mocks, legacy seed
+ * assets and a per-item fallback.
  */
-export const IMAGE_PATTERN = /^[a-z0-9][a-z0-9-]*\.png$/;
+export const IMAGE_PATTERN = /^[a-z0-9][a-z0-9-]*\.(png|avif)$/;
+
+/** Delivery image formats: AVIF for P5 hosted assets, PNG for mocks/legacy. */
+export const IMAGE_FORMATS = ["png", "avif"] as const;
+export type ImageFormat = (typeof IMAGE_FORMATS)[number];
 
 /**
  * How a catalog image is provided — orthogonal to `source` (which is rights
@@ -36,7 +42,8 @@ export const IMAGE_PATTERN = /^[a-z0-9][a-z0-9-]*\.png$/;
  *  - `mock`   — a procedurally generated placeholder drawn by
  *    `tools/catalog-transform` (no external file); the seed today.
  *  - `static` — a committed file under `public/pedal-assets/` (ADR-002 v1);
- *    `image` is a safe filename (`IMAGE_PATTERN`).
+ *    `image` is a safe filename (`IMAGE_PATTERN`; `.avif` for P5, `.png` for
+ *    mocks/legacy/fallback).
  *  - `url`    — an absolute, same-origin/CORS-clean URL (deferred R2/CDN path,
  *    ADR-002); `image` is a URL.
  */
@@ -45,10 +52,13 @@ export const IMAGE_SOURCES = ["mock", "static", "url"] as const;
 /** http(s) URLs only — rejects `javascript:`, `data:`, `ftp:`, `mailto:`, … */
 export const HTTP_URL = z.url({ protocol: /^https?$/ });
 
+/** Mock images are generator-drawn PNGs; AVIF is only for hosted static files. */
+const MOCK_IMAGE_PATTERN = /^[a-z0-9][a-z0-9-]*\.png$/;
+
 function validImage(imageSource: ImageSource, image: string): boolean {
-	return imageSource === "url"
-		? HTTP_URL.safeParse(image).success
-		: IMAGE_PATTERN.test(image);
+	if (imageSource === "url") return HTTP_URL.safeParse(image).success;
+	if (imageSource === "mock") return MOCK_IMAGE_PATTERN.test(image);
+	return IMAGE_PATTERN.test(image);
 }
 
 function checkImage(
@@ -63,7 +73,9 @@ function checkImage(
 		message:
 			imageSource === "url"
 				? "image must be a URL when imageSource is 'url'"
-				: "image must be a safe .png filename when imageSource is 'mock' or 'static'",
+				: imageSource === "mock"
+					? "image must be a safe .png filename when imageSource is 'mock'"
+					: "image must be a safe .png or .avif filename when imageSource is 'static'",
 	});
 }
 
@@ -174,6 +186,14 @@ export const JACK_KINDS = [
 /** Jack edges (F7/P4-01) — which side of the footprint a jack sits on. */
 export const JACK_EDGES = ["top", "right", "bottom", "left"] as const;
 
+/**
+ * Jack kinds that are **cable anchors today**: audio I/O only. Other verified
+ * connectors (expression/CV, MIDI, USB, power, …) are captured in the raw
+ * archive/runtime data for future features but are not connectable yet.
+ */
+export const CABLE_JACK_KINDS = ["in", "out", "send", "return"] as const;
+export type CableJackKind = (typeof CABLE_JACK_KINDS)[number];
+
 export const JackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
 	edge: z.enum(JACK_EDGES),
@@ -191,10 +211,10 @@ export const JackSchema = z.object({
 	 */
 	stereo: z.boolean().optional(),
 	/**
-	 * Derived resolver flag (P5-01): the edge is known but the exact position
-	 * was not published, so `pos` is an even distribution — render it as
-	 * approximate (hollow tick). Not authored by hand; persisted only if a
-	 * definition already carries it.
+	 * Approximate position (P5-01): the edge/order is known but the exact cm
+	 * was not published, so `pos` is an estimate (e.g. from a product photo or
+	 * an even edge distribution) — render it as approximate (hollow tick). An
+	 * explicit flag on a positioned jack is preserved by the resolver.
 	 */
 	approximate: z.boolean().optional(),
 });
@@ -266,6 +286,11 @@ export const CatalogSchema = z.object({
 export type SourceRef = z.infer<typeof SourceRefSchema>;
 export type Jack = z.infer<typeof JackSchema>;
 export type JackKind = (typeof JACK_KINDS)[number];
+
+/** Whether a jack kind can carry a patch cable in the current release. */
+export function isCableJack(kind: JackKind): boolean {
+	return (CABLE_JACK_KINDS as readonly string[]).includes(kind);
+}
 export type JackEdge = (typeof JACK_EDGES)[number];
 export type Power = z.infer<typeof PowerSchema>;
 export type CatalogPedal = z.infer<typeof CatalogPedalSchema>;

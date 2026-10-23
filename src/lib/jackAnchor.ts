@@ -1,4 +1,4 @@
-import type { Jack } from "../catalog/schema";
+import { isCableJack, type Jack } from "../catalog/schema";
 import {
 	type CableEnd,
 	type CustomPedal,
@@ -146,7 +146,11 @@ export function buildAnchorIndex(scene: {
 			if (!anchor) continue;
 			const key = `item:${item.uid}:${index}`;
 			items.set(key, anchor);
-			all.push({ ...anchor, key, uid: item.uid, jackIndex: index });
+			// Only audio I/O is connectable today. Keep every jack in `items` so
+			// existing cables to other connectors still resolve.
+			if (isCableJack(jacks[index]?.kind ?? "in")) {
+				all.push({ ...anchor, key, uid: item.uid, jackIndex: index });
+			}
 		}
 	}
 	for (const endpoint of scene.endpoints) {

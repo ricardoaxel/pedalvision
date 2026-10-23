@@ -31,11 +31,15 @@ async function assetRoot(): Promise<string> {
 	return dir;
 }
 
-async function writeAsset(root: string, id: string): Promise<void> {
+async function writeAsset(
+	root: string,
+	id: string,
+	ext: "png" | "avif" = "png",
+): Promise<void> {
 	for (const size of ["800", "350"]) {
 		const dir = join(root, "pedals", size);
 		await mkdir(dir, { recursive: true });
-		await writeFile(join(dir, `${id}.png`), "x");
+		await writeFile(join(dir, `${id}.${ext}`), "x");
 	}
 }
 
@@ -84,6 +88,15 @@ describe("catalog caps", () => {
 
 	it("does not report a cap issue when boards exceed pedal counts", () => {
 		expect(capIssues(counts(10, 20))).toEqual([]);
+	});
+
+	it("counts AVIF renditions toward the caps", async () => {
+		const root = await assetRoot();
+		await writeAsset(root, "acme-avif", "avif");
+		const across = await scanAssetCountsAcross([root]);
+		expect(across.pedals.items).toBe(1);
+		expect(across.pedals.files).toBe(2);
+		expect(across.pedals.bytes).toBeGreaterThan(0);
 	});
 
 	it("counts a shared asset once across worktrees", async () => {

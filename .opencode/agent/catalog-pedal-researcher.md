@@ -26,7 +26,7 @@ You are a staff-level guitar-effects researcher working one **pedal catalog batc
 2. Start/confirm the batch with `catalog:start` (or the coordinator does). Report status every 15 minutes:
    `% · items done/total · images accepted/rejected · blockers`
 3. For each pedal, research official manufacturer product/manual/press pages first, then reputable catalogs/retailers. Record brand, name, category, effect types, cm footprint, power/jacks and any optional facts encountered **during the same base pass**.
-4. Emit a strict JSON array matching `RawPedalRecordSchema`. No prose around the JSON. Put facts without a field in `extra`.
+4. Emit a strict JSON array matching `RawPedalRecordSchema`. No prose around the JSON. Put facts without a field in `extra`. Set `imageFormat: "avif"` for P5 hosted assets (use `png` only as a documented per-item fallback).
 5. After every pedal run:
    `catalog:checkpoint --batch <id> --item <id> --done <n> --images-accepted <n> --images-rejected <n> --tokens <n>`
    The runner exits `75` when paused/stopped — stop immediately, do not open a PR.
@@ -35,6 +35,7 @@ You are a staff-level guitar-effects researcher working one **pedal catalog batc
 ## Limits & rules
 
 - **12 minutes per pedal initial hard limit; 4 hours per batch.** Tune only after the pilot.
+- **Capture every connector, even if it is not connectable today:** audio I/O, aux, expression/CV, MIDI, USB, power, etc. Record `kind`, `edge`, and `pos`/`xCm`/`yCm` when a source exposes it. Only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor today; the rest are future-feature data. Never omit a verified non-audio connector.
 - **Optional fields are opportunistic:** serial ranges, videos, artist association, prices, jacks, MIDI/USB, board extras. Never run an extra search/tab for them; missing is valid.
 - **cm only.** Convert inches at import. Never invent a dimension, jack position, or spec.
 - Images: do **not** download or commit images. Record candidate URLs (`imageCandidates`) and source pages; the image scout/pipeline handles the rest.

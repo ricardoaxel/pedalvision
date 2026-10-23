@@ -1,5 +1,10 @@
 import sharp from "sharp";
-import { fitToLongEdge, RENDITIONS, type RenditionSize } from "./naming.ts";
+import {
+	fitToLongEdge,
+	type ImageFormat,
+	RENDITIONS,
+	type RenditionSize,
+} from "./naming.ts";
 import {
 	removeBackground,
 	removeBackgroundSoft,
@@ -23,9 +28,11 @@ export type RenderOptions = {
 	tolerance?: number;
 	/** `flood` is the default hard key; `soft` is the gradient fallback. */
 	matte?: "flood" | "soft";
+	/** Delivery format; P5 hosted assets use `avif`, PNG is the fallback. */
+	format?: ImageFormat;
 };
 
-/** The two encoded PNG renditions keyed by long-edge size. */
+/** The two encoded renditions (PNG or AVIF) keyed by long-edge size. */
 export type Renditions = Record<RenditionSize, Buffer>;
 
 export async function renderRenditions(
@@ -70,13 +77,17 @@ export async function renderRenditions(
 		.png()
 		.toBuffer();
 
+	const format = options.format ?? "png";
 	const renditions = {} as Renditions;
 	for (const size of RENDITIONS) {
 		const target = fitToLongEdge(bounds.width, bounds.height, size);
-		renditions[size] = await sharp(cutout)
-			.resize(target.width, target.height, { fit: "fill" })
-			.png({ compressionLevel: 9 })
-			.toBuffer();
+		const resized = sharp(cutout).resize(target.width, target.height, {
+			fit: "fill",
+		});
+		renditions[size] =
+			format === "avif"
+				? await resized.avif({ quality: 80, effort: 6 }).toBuffer()
+				: await resized.png({ compressionLevel: 9 }).toBuffer();
 	}
 	return renditions;
 }

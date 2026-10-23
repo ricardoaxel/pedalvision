@@ -35,10 +35,8 @@ function emptyBudget(): AssetBudget {
 }
 
 type FileBudget = {
-	has800: boolean;
-	has350: boolean;
-	bytes800: number;
-	bytes350: number;
+	/** Per-rendition max bytes, keyed `<size>:<ext>` (dedupes across worktrees). */
+	renditions: Map<string, number>;
 };
 
 /**
@@ -62,23 +60,17 @@ export async function scanAssetCountsAcross(
 					throw error;
 				}
 				for (const entry of entries.sort()) {
-					if (!entry.endsWith(".png")) continue;
+					const match = entry.match(/\.(png|avif)$/);
+					if (!match) continue;
 					const info = await stat(join(dir, entry));
 					if (!info.isFile()) continue;
-					const key = `${kind}:${entry.slice(0, -4)}`;
-					const budget = files.get(key) ?? {
-						has800: false,
-						has350: false,
-						bytes800: 0,
-						bytes350: 0,
-					};
-					if (size === "800") {
-						budget.has800 = true;
-						budget.bytes800 = Math.max(budget.bytes800, info.size);
-					} else {
-						budget.has350 = true;
-						budget.bytes350 = Math.max(budget.bytes350, info.size);
-					}
+					const key = `${kind}:${entry.slice(0, -match[0].length)}`;
+					const budget = files.get(key) ?? { renditions: new Map() };
+					const renditionKey = `${size}:${match[1]}`;
+					budget.renditions.set(
+						renditionKey,
+						Math.max(budget.renditions.get(renditionKey) ?? 0, info.size),
+					);
 					files.set(key, budget);
 				}
 			}
@@ -92,12 +84,12 @@ export async function scanAssetCountsAcross(
 	for (const [key, budget] of files) {
 		const [kind] = key.split(":");
 		const target = kind === "pedals" ? counts.pedals : counts.boards;
-		if (budget.has800) {
-			target.items++;
-			target.files++;
-		}
-		if (budget.has350) target.files++;
-		target.bytes += budget.bytes800 + budget.bytes350;
+		const has800 = [...budget.renditions.keys()].some((rendition) =>
+			rendition.startsWith("800:"),
+		);
+		if (has800) target.items++;
+		target.files += budget.renditions.size;
+		for (const bytes of budget.renditions.values()) target.bytes += bytes;
 	}
 	return counts;
 }

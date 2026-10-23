@@ -2,7 +2,7 @@ import type Konva from "konva";
 import { useCallback, useEffect, useRef } from "react";
 import { Group, Image as KonvaImage, Line, Rect, Text } from "react-konva";
 import { type BoardTexture, DEFAULT_BOARD_TEXTURE } from "../lib/boardTexture";
-import { resolveImageUrl } from "../lib/cdn";
+import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useBoardDrag } from "../state/boardDrag";
 import { useGesture } from "../state/gesture";
@@ -78,7 +78,12 @@ export function BoardNode({
 	const scale = useViewport((state) => state.scale);
 
 	const src = definition
-		? resolveImageUrl(definition.imageSource, definition.image, "board", 800)
+		? resolveImageUrl(
+				definition.imageSource,
+				definition.image,
+				"board",
+				ASSET_RENDITIONS.canvas,
+			)
 		: null;
 	const { image, status } = useImage(src, board.uid);
 

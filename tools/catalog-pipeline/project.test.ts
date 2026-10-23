@@ -48,6 +48,26 @@ describe("raw → runtime projection", () => {
 		]);
 	});
 
+	it("keeps a power inlet in the runtime data (cable filtering happens later)", () => {
+		const pedal = projectPedal({
+			...rawPedal,
+			jacks: [
+				...(rawPedal.jacks ?? []),
+				{ kind: "power", edge: "top", connector: "barrel", signal: "power" },
+			],
+		});
+		expect(pedal.jacks).toEqual([
+			{ kind: "in", edge: "top" },
+			{ kind: "out", edge: "left", pos: 0.25, stereo: true },
+			{ kind: "power", edge: "top" },
+		]);
+	});
+
+	it("uses the raw imageFormat for the static filename", () => {
+		const pedal = projectPedal({ ...rawPedal, imageFormat: "avif" });
+		expect(pedal.image).toBe("acme-big-fuzz.avif");
+	});
+
 	it("omits incomplete runtime power but keeps raw-only facts out", () => {
 		const pedal = projectPedal({
 			...rawPedal,

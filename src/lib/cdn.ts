@@ -3,6 +3,22 @@ import type { ImageSource } from "../catalog/schema";
 export type AssetKind = "pedal" | "board";
 export type AssetSize = 800 | 350;
 
+/**
+ * Single source of truth for **which rendition each surface uses**. Never
+ * hardcode 800/350 at a call site — import this map instead, so the 350 thumb
+ * is actually used and a future canvas rendition (e.g. 512) has one home.
+ *
+ * - `pickerRow`: the 350 thumbnail (ledger rows).
+ * - `specimen` / `canvas` / `export`: the 800 master (the canvas is currently
+ *   the master too; a 512 canvas LOD can be added here later).
+ */
+export const ASSET_RENDITIONS = {
+	pickerRow: 350,
+	specimen: 800,
+	canvas: 800,
+	export: 800,
+} as const satisfies Record<string, AssetSize>;
+
 const ASSET_BASE = "/pedal-assets";
 
 const KIND_DIR: Record<AssetKind, string> = {

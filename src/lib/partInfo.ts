@@ -32,7 +32,7 @@ export interface PartInfo {
 	/**
 	 * The catalog image (mock/static/url), or null for custom + unknown parts
 	 * (which are text-only and render a drawing instead). Resolve it with
-	 * `resolveImageUrl(image.source, image.value, "pedal", 800)`.
+	 * `resolveImageUrl(image.source, image.value, "pedal", ASSET_RENDITIONS.specimen)`.
 	 */
 	image: { source: ImageSource; value: string } | null;
 	/** True when the item is a user-defined part (adds the `CUSTOM` tag). */

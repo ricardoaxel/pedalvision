@@ -22,6 +22,7 @@ pnpm catalog:check             # build to temp and byte-compare generated files
 pnpm catalog:ci                # temp build + validate + uncommitted runtime for CI
 pnpm catalog:post-merge        # build + validate + drift check
 pnpm catalog:guard-batch-pr    # batch PR may contain raw records + assets only
+pnpm catalog:guard-batch-pr --allow-pipeline  # owner-approved pilot + pipeline PR only
 pnpm catalog:dry-run           # 3 synthetic pedals + 3 fake control-plane batches
 ```
 
@@ -32,7 +33,8 @@ pnpm catalog:dry-run           # 3 synthetic pedals + 3 fake control-plane batch
 - A raw batch may replace a legacy id by stable id. Two batches providing the
   same id is an error.
 - Projection only maps fields the runtime schema supports; everything else stays
-  in the raw file.
+  in the raw file. The static image filename is `<id>.<imageFormat>` (`avif` for
+  P5 hosted assets; `png` when the raw record omits `imageFormat`).
 - Runtime/mapped files are generated. Brand agents never edit them.
 
 ## Validation
@@ -41,7 +43,8 @@ pnpm catalog:dry-run           # 3 synthetic pedals + 3 fake control-plane batch
 - catalog-wide duplicate ids
 - pedal and board `variantOf` links (missing/self/cycle)
 - board footprint plausibility (10–250 cm) and variant base
-- static 800/350 renditions exist
+- static 800/350 renditions exist (`.avif` for P5 hosted assets; `.png` for
+  mocks/legacy/fallback — the extension comes from the runtime `image` field)
 - hosted-image caps (2,000 pedals / 4,000 files / 300 MB; 150 boards / 300 files / 20 MB, independent)
 
 ## CI / post-merge

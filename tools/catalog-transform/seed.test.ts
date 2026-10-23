@@ -75,13 +75,17 @@ describe("committed mock images", () => {
 		}
 	}, 60_000);
 
-	it("are the only files in the asset dirs (no stale PNGs)", () => {
+	it("are the only PNG files in the asset dirs (no stale PNGs; AVIF allowed)", () => {
+		// AVIF hosted assets are committed by P5 batches and referenced by the
+		// post-merge runtime, so they are intentionally outside this seed check.
 		const expected = new Set<string>();
 		for (const pedal of [...mockPedals, ...staticPedals]) {
+			if (!pedal.image.endsWith(".png")) continue;
 			for (const size of [800, 350])
 				expected.add(`pedals/${size}/${pedal.image}`);
 		}
 		for (const board of [...mockBoards, ...staticBoards]) {
+			if (!board.image.endsWith(".png")) continue;
 			for (const size of [800, 350])
 				expected.add(`boards/${size}/${board.image}`);
 		}
