@@ -7,6 +7,7 @@ describe("batch PR guard", () => {
 			guardBatchPr([
 				"data/catalog/research/pedals/acme/batch-1.json",
 				"public/pedal-assets/pedals/800/acme-alpha.png",
+				"public/pedal-assets/pedals/800/acme-alpha.avif",
 				"docs/tasks/P5-03-pedals-acme-1.md",
 			]),
 		).toEqual([]);

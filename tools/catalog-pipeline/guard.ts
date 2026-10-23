@@ -6,7 +6,7 @@
 
 const ALLOWED = [
 	/^data\/catalog\/research\/(pedals|boards)\/[a-z0-9-]+\/[a-z0-9-]+\.json$/,
-	/^public\/pedal-assets\/(pedals|boards)\/(800|350)\/[a-z0-9][a-z0-9-]*\.png$/,
+	/^public\/pedal-assets\/(pedals|boards)\/(800|350)\/[a-z0-9][a-z0-9-]*\.(png|avif)$/,
 	/^docs\/tasks\/P5-03-[a-z0-9-]+\.md$/,
 ];
 
