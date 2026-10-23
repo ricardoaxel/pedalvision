@@ -1,8 +1,8 @@
 # Progress
 
 **Current phase:** P5 — Catalog completion. **P4 is COMPLETE**: P4-01 (PR #30, squash `d0d79ad`), P4-02 (PR #31, squash `f001a0b`), P4-03 (PR #33, squash `c0c419b`) and the **P4 phase gate** (merged 2026-10-21, PR #34, squash `caee58d`) are **DONE**. The **P5 plan restructure** is **DONE** (merged 2026-10-21, PR #32, squash `6e7deef`).
-**Next task:** **P5-03 — board pilot (Pedaltrain Classic 2) — in progress.** The Choka pedal pilot is **DONE** (merged 2026-10-23, PR #37, squash `c23e83c`) and the **JHS 3 Series Screamer** second pedal is **DONE** (merged 2026-10-23, PR #38, squash `ef1762a`; post-merge build `01a756f`). The board pilot is the last owner-requested validation before the parallel waves. **Do not start Meris/Red Panda/BOSS/waves** until it is approved. **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed (Appium/help/observability; old P5-05/06/07).
-**Last updated:** 2026-10-23 (Choka + JHS merged; board pilot starting)
+**Next task:** **P5-03 — board pilot (Pedaltrain Classic 2) — in review (PR #39); parallel waves next after approval.** The Choka pedal pilot is **DONE** (merged 2026-10-23, PR #37, squash `c23e83c`) and the **JHS 3 Series Screamer** second pedal is **DONE** (merged 2026-10-23, PR #38, squash `ef1762a`; post-merge build `01a756f`). The board pilot is the last owner-requested validation before the parallel waves. **Do not start Meris/Red Panda/BOSS/waves** until it is approved. **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed (Appium/help/observability; old P5-05/06/07).
+**Last updated:** 2026-10-23 (board pilot in review — PR #39)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
@@ -46,7 +46,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- [ ] **P5-03 — board pilot (Pedaltrain Classic 2) — in progress.** The last owner-requested validation before the parallel waves: a raw **board** record + top-down/empty AVIF 800/350 + board task file, with a Playwright board picker/placement/rotate/export/share check. After approval: Meris + Red Panda + one board batch, then the BOSS split test, then continuous waves. First 2,000 items include 150 boards.
+- [ ] **P5-03 — board pilot (Pedaltrain Classic 2) — in review (PR #39).** The last owner-requested validation before the parallel waves: a raw **board** record + official top-down/empty AVIF q90 800/350 (**23.0 KB + 6.9 KB**, PSNR **51.0 dB**, aspect 1.856 vs 1.920 = 3.3% pass, perspective 1.7%) + board task file. Four-browser Playwright board picker/placement/rotation/export/share passed; catalog **208 pedals / 11 boards**; guard clean. After approval: Meris + Red Panda + one board batch, then the BOSS split test, then continuous waves. First 2,000 items include 150 boards.
 
 ## Follow-ups
 - **P4 phase gate outcome (2026-10-21 — PR #34; light model).** Verdict **changes-required**, no P4 regression. 5 findings: (1) **should-fix (code)** read-only shares hide jack ticks (`src/canvas/PedalNode.tsx:394`), so the read-only tick cue is unreachable and the graph looks disconnected; (2) **should-fix (code)** selected-board export bounds omit the cubic cable curve (`src/lib/exportScene.ts:360-369`), so long outward handles can be clipped; (3) docs snap radius was wrong (real code: **18 px mouse / 44 px touch**, hit disc 28/44 px diameter) — fixed; (4) `design.md` typed `Cable.from` as item-only though an instrument endpoint is a valid source — fixed to `CableEnd`; (5) `progress.md` still said P5-01 could run parallel with P4-03 — fixed. Findings **1–2 are recorded as the follow-up task P4-05** (docs-only gate; no code expansion). Confirmation pass not required (docs-only; test suite is the re-check).
