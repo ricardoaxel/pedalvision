@@ -1,0 +1,170 @@
+[
+  {
+    "id": "jhs-3-series-screamer",
+    "brand": "JHS",
+    "name": "3 Series Screamer",
+    "aliases": ["Screamer", "3-Series Screamer"],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": ["guitar"],
+    "effectTypes": ["overdrive"],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page (4.42 x 2.38 x 1.22 in) and Thomann (112 x 60 x 31 mm)",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "pos": 0.7,
+        "approximate": true,
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side; position estimated from the official top-down image."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "pos": 0.7,
+        "approximate": true,
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side; position estimated from the official top-down image."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC negative center; 12 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "One 1/4-inch TS mono input (right side) and one 1/4-inch TS mono output (left side)."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out; no effects loop, headphones or DI."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Tone and Drive knobs plus a +/- clipping toggle; LED shows effect on."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Tube Screamer-style analog circuit with the JHS Strong Mod; true bypass."
+      },
+      "physical": {
+        "weightG": 210,
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "jackOrientation": "side-mounted input/output; top-mounted power",
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); 210 g; metal housing."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA",
+        "manualUrl": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_SCREAMER_Manual_EN.pdf"
+      },
+      "note": "Optional facts captured during the same official page/manual/retailer pass."
+    },
+    "usage": "guitar",
+    "color": "cream",
+    "status": "current",
+    "notes": "JHS 3 Series Screamer — Tube Screamer-style overdrive with the JHS Strong Mod; Volume, Tone and Drive controls plus a +/- clipping toggle; true bypass; 9V DC, 12 mA.",
+    "extra": {
+      "controls": ["Volume", "Tone", "Drive"],
+      "toggle": "+/- clipping: up = asymmetrical (JHS Strong Mod), down = symmetrical (TS9/TS808 style)",
+      "bypass": "True bypass",
+      "circuit": "Analog Tube Screamer-style with JHS Strong Mod",
+      "madeIn": "Kansas City, MO, USA",
+      "dimensions": "112 x 60 x 31 mm (L x W x H); 4.42 x 2.38 x 1.22 in",
+      "weight": "210 g",
+      "battery": "No battery operation",
+      "jackPositions": "Official manual: INPUT on the right side, OUTPUT on the left side, POWER on the top edge. Positions estimated from the official top-down image (I/O ~0.70 along the side, 0=back/1=front) and the power assumed centered (~0.5); normalized estimates, not measured cm.",
+      "imageProcessing": "Official JHS Front top-down has transparent padding and protruding side jack barrels. Cropped to the enclosure body (1024x1904 px; aspect 0.540 vs the 6.05x11.23 cm footprint) so the jacks do not inflate the width; hosted as AVIF q80. PSNR 44.4 dB vs the PNG cutout; vision-accepted at 1:1 and 2x."
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-23",
+        "notes": "Listed price at the time of research."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-screamer",
+        "kind": ["info", "image"]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_SCREAMER_Manual_EN.pdf",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Screamer-Front.png?v=1698427823",
+        "kind": ["image"]
+      },
+      {
+        "url": "https://www.thomannmusic.com/jhs_pedals_3_series_screamer_overdrive.htm",
+        "kind": ["info"]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Screamer-Front.png?v=1698427823",
+        "sourcePage": "https://jhspedals.info/products/3-series-screamer",
+        "priority": 1,
+        "notes": "Official top-down cutout with transparent padding; cropped to the enclosure body for true scale and used for the hosted AVIF."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Screamer-Angle.png?v=1698427823",
+        "sourcePage": "https://jhspedals.info/products/3-series-screamer",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-23"
+  }
+]
