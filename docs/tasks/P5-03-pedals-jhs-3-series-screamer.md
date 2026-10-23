@@ -1,6 +1,6 @@
 # P5-03: JHS — pedals batch 1 (3 Series Screamer)
 
-**Phase:** P5 · **Status:** in progress · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #38 · **Model:** build-strong
 
 ## Goal
 
