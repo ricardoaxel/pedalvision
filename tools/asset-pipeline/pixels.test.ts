@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+	bodyCropBounds,
 	isBackground,
 	removeBackground,
 	sampleBackgroundColor,
@@ -148,5 +149,53 @@ describe("trimBounds", () => {
 			width: 1,
 			height: 1,
 		});
+	});
+});
+
+describe("bodyCropBounds", () => {
+	it("crops side protrusions to the body width", () => {
+		const width = 200;
+		const height = 200;
+		const data = new Uint8Array(width * height * 4);
+		const set = (x: number, y: number) => {
+			const i = (y * width + x) * 4;
+			data[i] = 240;
+			data[i + 1] = 235;
+			data[i + 2] = 225;
+			data[i + 3] = 255;
+		};
+		// Body 50..149 × 0..199.
+		for (let y = 0; y < height; y++) {
+			for (let x = 50; x < 150; x++) set(x, y);
+		}
+		// Jack barrels protrude 20px on each side around y=90..109.
+		for (let y = 90; y < 110; y++) {
+			for (let x = 30; x < 50; x++) set(x, y);
+			for (let x = 150; x < 170; x++) set(x, y);
+		}
+		const bounds = trimBounds(data, width, height);
+		expect(bounds).toEqual({ left: 30, top: 0, width: 140, height: 200 });
+		if (!bounds) throw new Error("missing bounds");
+		expect(bodyCropBounds(data, width, bounds)).toEqual({
+			left: 50,
+			top: 0,
+			width: 100,
+			height: 200,
+		});
+	});
+
+	it("returns the original bounds when the body fills them", () => {
+		const width = 100;
+		const height = 200;
+		const data = new Uint8Array(width * height * 4);
+		for (let i = 0; i < data.length; i += 4) {
+			data[i] = 240;
+			data[i + 1] = 235;
+			data[i + 2] = 225;
+			data[i + 3] = 255;
+		}
+		const bounds = trimBounds(data, width, height);
+		if (!bounds) throw new Error("missing bounds");
+		expect(bodyCropBounds(data, width, bounds)).toEqual(bounds);
 	});
 });

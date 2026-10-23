@@ -49,7 +49,7 @@ Usage:
                  [--kind pedal|board] [--id <slug>] [--category pedal|supply]
                  [--source <tag>] [--variant-of <id>]
                  [--assets-dir <dir>] [--draft <file>] [--tolerance <0-255>]
-                 [--matte flood|soft] [--format png|avif]
+                 [--matte flood|soft] [--format png|avif] [--body-crop]
                  [--analyze <report.json>] [--force]
   --help
 
@@ -79,6 +79,7 @@ type Args = {
 	tolerance: number;
 	matte: "flood" | "soft";
 	format: ImageFormat;
+	bodyCrop: boolean;
 	analyze?: string;
 	force: boolean;
 	help: boolean;
@@ -103,6 +104,7 @@ function parseArgs(argv: string[]): Args {
 		tolerance: DEFAULTS.tolerance,
 		matte: "flood",
 		format: "png",
+		bodyCrop: false,
 		force: false,
 		help: false,
 	};
@@ -181,6 +183,9 @@ function parseArgs(argv: string[]): Args {
 				args.matte = value;
 				break;
 			}
+			case "--body-crop":
+				args.bodyCrop = true;
+				break;
 			case "--format": {
 				const value = argv[++i];
 				if (!IMAGE_FORMATS.includes(value as ImageFormat)) {
@@ -287,6 +292,7 @@ async function main(): Promise<void> {
 		tolerance: args.tolerance,
 		matte: args.matte,
 		format: args.format,
+		bodyCrop: args.bodyCrop,
 	});
 
 	for (const size of RENDITIONS) {

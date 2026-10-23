@@ -249,14 +249,13 @@ export async function analyzeImage(
 		if (pixels[i] < 250) transparent++;
 	}
 	const transparentRatio = transparent / (width * height);
+	// A transparent PNG with a meaningful transparent area is a cutout: its border
+	// is the subject, so border uniformity is not a background-quality signal.
+	const isCutout = (metadata.hasAlpha ?? false) && transparentRatio > 0.001;
 
-	// A transparent border means the source is already a cutout; otherwise
-	// flood-fill the border-connected background into transparency.
-	const transparentBorder =
-		borderPixels(width, height).filter(
-			([x, y]) => pixels[(y * width + x) * 4 + 3] === 0,
-		).length / borderPixels(width, height).length;
-	if (transparentBorder < 0.25) {
+	// For an alpha cutout whose border is the subject (tight crop), keying the
+	// corners would erase the pedal; only key a non-cutout source.
+	if (!isCutout) {
 		removeBackground(pixels, width, height, background, tolerance);
 	}
 
@@ -311,14 +310,16 @@ export async function analyzeImage(
 		);
 	}
 
-	if (uniformity < 0.8) {
-		reasons.push(
-			`reject:background is not uniform (${Math.round(uniformity * 100)}% border match)`,
-		);
-	} else if (uniformity < 0.92) {
-		reasons.push(
-			`flag:background is uneven (${Math.round(uniformity * 100)}% border match)`,
-		);
+	if (!isCutout) {
+		if (uniformity < 0.8) {
+			reasons.push(
+				`reject:background is not uniform (${Math.round(uniformity * 100)}% border match)`,
+			);
+		} else if (uniformity < 0.92) {
+			reasons.push(
+				`flag:background is uneven (${Math.round(uniformity * 100)}% border match)`,
+			);
+		}
 	}
 
 	const rotation = skewDegrees(pixels, width, bounds);

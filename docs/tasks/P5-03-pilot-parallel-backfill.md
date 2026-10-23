@@ -1,6 +1,6 @@
 # P5-03: Pilot + parallel brand backfill
 
-**Phase:** P5 · **Status:** in progress — Choka pilot DONE (PR #37); second pedal + board pilot next · **Model:** build-strong
+**Phase:** P5 · **Status:** in progress — Choka pilot DONE (PR #37); JHS validation in review (PR #38); board pilot next · **Model:** build-strong
 
 ## Goal
 

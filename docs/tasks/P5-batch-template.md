@@ -23,6 +23,8 @@ Research and deliver one catalog batch (raw records + hosted assets) for `<brand
 - Tier A board cap: exactly **150 total**; the final partial batch may be smaller. Board images count against the separate board budget.
 - 2,000 hosted-pedal safety cap; stop at the Tier A target unless the owner says otherwise.
 - No edits to feature code, generated mapped/runtime catalog, or other brands' batches.
+- **Side-jack images:** if jack barrels/feet protrude beyond the enclosure, use `asset:process --body-crop` (then analyze the processed output) so the true-scale width is the enclosure, not the connectors. Use a dedicated 2-cell identical-coordinate PNG-vs-AVIF crop for the quality gate.
+- **Cleaning generated files:** use targeted `git restore data/catalog src/catalog/data`; never `rm -rf data/catalog/pedals` (it can delete tracked mapped files from `main`).
 - Status every 15 min; per-item 12 min initial; per-batch 4 h; checkpoint after every item.
 
 ## Steps

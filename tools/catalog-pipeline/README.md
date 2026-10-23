@@ -54,3 +54,7 @@ pnpm catalog:dry-run           # 3 synthetic pedals + 3 fake control-plane batch
   PR's new items.
 - On merge to `main`, `.github/workflows/catalog-build.yml` runs the deterministic
   build and commits generated mapped/runtime files. Batch PRs stay raw + assets only.
+- **Cleaning generated files on a batch branch:** use targeted
+  `git restore data/catalog src/catalog/data` / `rm` only the untracked batch
+  output. Never `rm -rf data/catalog/pedals` — it can delete tracked mapped
+  files that came from `main`.

@@ -6,6 +6,7 @@ import {
 	type RenditionSize,
 } from "./naming.ts";
 import {
+	bodyCropBounds,
 	removeBackground,
 	removeBackgroundSoft,
 	sampleBackgroundColor,
@@ -30,6 +31,8 @@ export type RenderOptions = {
 	matte?: "flood" | "soft";
 	/** Delivery format; P5 hosted assets use `avif`, PNG is the fallback. */
 	format?: ImageFormat;
+	/** Crop side protrusions (jack barrels/feet) to the enclosure body. */
+	bodyCrop?: boolean;
 };
 
 /** The two encoded renditions (PNG or AVIF) keyed by long-edge size. */
@@ -69,18 +72,21 @@ export async function renderRenditions(
 		);
 	}
 
-	// Extract the trimmed cutout once, then downscale it per rendition.
+	// Extract the trimmed cutout once, then downscale it per rendition. Optional
+	// body crop removes side jack barrels/feet so they do not inflate the
+	// true-scale footprint.
+	const crop = options.bodyCrop ? bodyCropBounds(data, width, bounds) : bounds;
 	const cutout = await sharp(data, {
 		raw: { width, height, channels: 4 },
 	})
-		.extract(bounds)
+		.extract(crop)
 		.png()
 		.toBuffer();
 
 	const format = options.format ?? "png";
 	const renditions = {} as Renditions;
 	for (const size of RENDITIONS) {
-		const target = fitToLongEdge(bounds.width, bounds.height, size);
+		const target = fitToLongEdge(crop.width, crop.height, size);
 		const resized = sharp(cutout).resize(target.width, target.height, {
 			fit: "fill",
 		});
