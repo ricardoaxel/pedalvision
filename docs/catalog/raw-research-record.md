@@ -42,7 +42,7 @@ name, dimensions, effect type). Capture optional facts **opportunistically**:
 | Group | Fields |
 | --- | --- |
 | Identity | `id`, `brand`, `name`, `aliases`, `category` (`pedal`/`supply`), `deviceType`, `formFactor`, `instrumentTypes`, `effectTypes`, `variantOf` |
-| Geometry | `widthCm`, `heightCm` (**cm only**; inches are converted at import), `dimensionsSource` |
+| Geometry | `widthCm`, `heightCm` (**cm only**; inches are converted at import), `dimensionsSource`, `imageFormat?` (`avif` for P5 hosted assets; default `png`) |
 | Connectors | `jacks[]`: `label`, `kind` (in/out/send/return/exp/exp-in/exp-out/midi/ctrl/power), `edge`, `pos?`/`xCm?`/`yCm?`, `approximate?`, `connector` (TS/TRS/XLR/DIN5/TRS-MIDI A-B/USB-A-B-C/micro/mini/barrel/IEC/RCA/3.5 mm/other), `channels`, `signal`, `balanced`, `level`, `impedanceOhm`, `maxLevelDbu`, `stereo`, `midiType`, `usbFunctions`, `note` |
 | Power | `power` (top-level runtime projection) + `optional.power`: voltage, AC/DC, mA, W, polarity, connector/size, battery/life, USB bus power, isolation, inrush, recommended supply; for a power supply: outlets, isolated outputs, per-output V/mA, total mA, AC input, courtesy outlet, sag |
 | Audio I/O | `io` / `optional.audio`: inputs/outputs, channels, mono/stereo/true-stereo, balanced, level, impedance, max level, gain/headroom, SNR/THD, frequency response, dry-through, headphone, aux, DI, effects loop, 4-cable, ground lift, phase invert, phantom, pad, latency |
@@ -104,11 +104,13 @@ separate.
 
 Only fields the runtime schema supports are projected:
 
-- Pedal: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image`, `imageSource`,
+- Pedal: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image` (`<id>.<imageFormat>`;
+  P5 hosted assets use `.avif`), `imageSource`,
   `effectTypes`, `category`, optional `jacks` (`kind`, `edge`, `pos?`,
   `stereo?`), `power`, `variantOf`, `usage`, `color`, `notes`, `year`, `status`,
   `confidence`, `lastVerified`, `source`, `sources`, `links`.
-- Board: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image`, `imageSource`,
+- Board: `id`, `brand`, `name`, `widthCm`, `heightCm`, `image`
+  (`<id>.<imageFormat>`; P5 hosted assets use `.avif`), `imageSource`,
   `variantOf`, `source`, `sources`.
 
 The projection is deterministic from the raw record. Adding a runtime field is a

@@ -26,7 +26,7 @@ You are a staff-level guitar-effects researcher working one **pedal catalog batc
 2. Start/confirm the batch with `catalog:start` (or the coordinator does). Report status every 15 minutes:
    `% · items done/total · images accepted/rejected · blockers`
 3. For each pedal, research official manufacturer product/manual/press pages first, then reputable catalogs/retailers. Record brand, name, category, effect types, cm footprint, power/jacks and any optional facts encountered **during the same base pass**.
-4. Emit a strict JSON array matching `RawPedalRecordSchema`. No prose around the JSON. Put facts without a field in `extra`.
+4. Emit a strict JSON array matching `RawPedalRecordSchema`. No prose around the JSON. Put facts without a field in `extra`. Set `imageFormat: "avif"` for P5 hosted assets (use `png` only as a documented per-item fallback).
 5. After every pedal run:
    `catalog:checkpoint --batch <id> --item <id> --done <n> --images-accepted <n> --images-rejected <n> --tokens <n>`
    The runner exits `75` when paused/stopped — stop immediately, do not open a PR.

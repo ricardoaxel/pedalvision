@@ -27,8 +27,12 @@ You are the image scout for one Pedalvision catalog batch.
    - Verdict `reject` → try the next candidate (max 3) or flag `needs-new-image`.
    - Verdict `flag` → include it on the contact sheet for vision QA.
 3. Process the accepted image:
-   `pnpm asset:process --input <file> --kind ... --brand ... --name ... --width-cm ... --height-cm ... --source public-asset --analyze <report.json> [--matte soft]`
-   This writes both 800/350 renditions atomically.
+   `pnpm asset:process --input <file> --kind ... --brand ... --name ... --width-cm ... --height-cm ... --source public-asset --format avif --analyze <report.json> [--matte soft]`
+   This writes both 800/350 AVIF renditions atomically. PNG is the per-item
+   fallback (`--format png`) only when AVIF fails the quality gate.
+   **AVIF quality gate:** q80 must pass **PSNR ≥ 40 dB** (RGB where alpha > 0)
+   and a 1:1 original-vs-compressed review; otherwise escalate q90 → q100 or
+   keep PNG for that item.
 4. Add ambiguous images to a contact sheet (20–30 per call):
    `pnpm asset:contact-sheet --images <manifest.json> --out work/catalog/contact-sheets/<batch>.png`
    The sidecar JSON maps cells to ids/hashes.

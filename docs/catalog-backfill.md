@@ -338,23 +338,42 @@ Record the source URL per item; never bulk-copy descriptions.
    flag 10–15%, reject >15%); rotation/skew ≤2°; shadow/perspective/watermark
    signals.
 2. **Processor (script)** — background removal (extend the existing flood fill;
-   dev-only ML fallback for gradients/shadows), trim, transparent PNG, 800/350.
+   dev-only ML fallback for gradients/shadows), trim, transparent **AVIF**
+   (q80 default, q90 escalation; PNG is the per-item fallback), 800/350.
    **Drop shadows/reflections are not part of the product:** prefer a shadow-free
    top-down candidate; if the only candidate has one, remove it before trimming
    (alpha threshold/matte). The shadow must never be included in the cutout or
    counted in the cm footprint.
-3. **Vision QA** — only ambiguous images, on **contact sheets** of 20–30; never
+3. **AVIF quality gate:** encode at q80; require **PSNR ≥ 40 dB** (RGB where
+   alpha > 0) and a **1:1 original-vs-compressed contact-sheet review**; if the
+   item fails, escalate q90 → q100 or keep PNG for that item. AVIF q80 measured
+   6–11% of PNG at 36–42 dB on the pilot assets; q90 improves to ~39–45 dB.
+4. **Vision QA** — only ambiguous images, on **contact sheets** of 20–30; never
    one call per image.
-4. **Fallback** — max 3 candidates → placeholder + `needs-new-image` flag.
-5. **Human contact sheet** per brand before PR merge.
+5. **Fallback** — max 3 candidates → placeholder + `needs-new-image` flag.
+6. **Human contact sheet** per brand before PR merge.
 
-Regression fixtures: **BOSS AC-3** (white background) and **TC Choka** (bad crop).
+### Renditions & surfaces
+
+- `800/` — master: specimen plate, canvas (current), export/HD.
+- `350/` — thumbnail: picker ledger rows and the info-panel peek.
+- The app must not hardcode sizes: `ASSET_RENDITIONS` in `src/lib/cdn.ts` is the
+  single source of truth. A future **512 canvas rendition** can be added there
+  before the bulk fill if decoded-memory measurements justify it.
+
+Regression fixtures: **BOSS AC-3** (white background) and **TC Choka** (bad crop
+and bottom drop shadow — removed before trimming).
 
 ## Hosting cap and P5-05
 
 - **Hard cap: 2,000 pedals with hosted images** (~4,000 files, ~300 MB).
 - **Board image budget:** ~150 Tier A boards × 2 renditions ≈ 300 files / ~20 MB;
   boards do not count toward the 2,000-hosted-pedal cap.
+- **AVIF changes the math:** the pilot Choka is 28 KB (800) + 10 KB (350); the
+  measured 800 range is ~28–106 KB and the 350 range ~10–27 KB, so 2,000 pedals
+  project to ~80–270 MB (fits 300 MB) and 150 boards to ~10 MB (fits 20 MB).
+  Re-measure on the first real brand batch; P5-05 stays deferred unless the
+  measured average exceeds the caps.
 - The runner checks before/after each batch; at the cap it stops all P5-03 waves
   and reports.
 - Current Cloudflare Pages/GitHub setup is safe at this cap. Full 8,557 would be
