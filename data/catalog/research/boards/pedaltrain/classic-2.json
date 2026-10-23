@@ -1,0 +1,116 @@
+[
+  {
+    "id": "pedaltrain-classic-2",
+    "brand": "Pedaltrain",
+    "name": "Classic 2",
+    "category": "board",
+    "widthCm": 60.96,
+    "heightCm": 31.75,
+    "imageFormat": "avif",
+    "thicknessCm": 8.9,
+    "maxHeightCm": 8.9,
+    "weightG": 1420,
+    "material": "aluminum (aircraft-grade)",
+    "color": "black",
+    "boardType": "angled",
+    "surface": "velcro",
+    "handles": false,
+    "feet": true,
+    "mounting": "Pedaltrain VDL-MK / UNI-MK mounting brackets (optional)",
+    "bagIncluded": false,
+    "caseIncluded": false,
+    "caseModel": "available with soft case (PT-CL2-SC) or tour case (PT-CL2-TC); board-only PT-CL2-F",
+    "foldable": false,
+    "powerMount": "Pedaltrain VDL-MK / UNI-MK mounting brackets (not included)",
+    "powerSupplySpace": "under the raised deck",
+    "cableRouting": "open front, four-rail; over/under/through slots; zip ties included",
+    "status": "current",
+    "notes": "Pedaltrain Classic 2 — 24 x 12.5 x 3.5 in angled four-rail aluminum pedalboard with an open front and raised elevation; 3.1 lb; includes 96 in hook-and-loop and zip ties; available with soft or tour case.",
+    "extra": {
+      "boardStyle": "Classic four-rail, open front, raised elevation",
+      "dimensions": "24 x 12.5 x 3.5 in (61 x 31.7 x 8.9 cm)",
+      "weight": "3.1 lb (1.42 kg) official; some retailers list 3.4 lb (1.47 kg)",
+      "caseOptions": "Soft Case PT-CL2-SC (interior 24 x 13 x 6 in / 61 x 33 x 15 cm); Tour Case PT-CL2-TC; board-only PT-CL2-F",
+      "included": "96 in (244 cm) professional-grade hook-and-loop and zip ties; soft case included with PT-CL2-SC",
+      "retailerAvailability": "Thomann lists the model as available since June 2015",
+      "powerMounting": "Pedaltrain one-size-fits-all brackets (VDL-MK / UNI-MK) available separately",
+      "imageProcessing": "Official top-down empty board (1000x562) from the Pedaltrain gallery; AVIF q90 (escalated after a subtle 2x crop flag at q80). PSNR 51.0 dB vs the PNG cutout; vision-accepted at full and identical-coordinate 2x."
+    },
+    "priceObservations": [
+      {
+        "amount": 159.99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Pedaltrain product page (board only, PT-CL2-F)",
+        "observedAt": "2026-10-23",
+        "notes": "Board + hook-and-loop + zip ties; no case."
+      },
+      {
+        "amount": 189.99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Pedaltrain product page (PT-CL2-SC)",
+        "observedAt": "2026-10-23",
+        "notes": "Board with fitted soft case."
+      },
+      {
+        "amount": 259.99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Pedaltrain product page (PT-CL2-TC)",
+        "observedAt": "2026-10-23",
+        "notes": "Board with professional-grade tour case."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://pedaltrain.com/products/pt-cl2-sc",
+        "kind": ["info", "image"]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pt-cl2-tc",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-classic-2-and-accessories-no-case",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://www.thomannmusic.com/pedaltrain_classic_2_sc.htm",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-3.jpg?v=1666898626",
+        "kind": ["image"]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-3.jpg?v=1666898626",
+        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
+        "priority": 1,
+        "notes": "Official top-down empty board; used for the hosted AVIF (aspect 1.86, perspective 1.7%)."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-4.jpg?v=1666898626",
+        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
+        "priority": 2,
+        "notes": "Official empty board with slight perspective; not used."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2PBPMeasurements.png?v=1666898626",
+        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
+        "priority": 3,
+        "notes": "Measurement/planner image loaded with pedals and overlays; rejected for an empty-board asset."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2SoftCaseComposite.png?v=1666898626",
+        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
+        "priority": 4,
+        "notes": "Board + soft case composite at an angle; rejected."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-23"
+  }
+]
