@@ -21,10 +21,13 @@ waves.
 - **Footprint:** **60.96 × 31.75 cm** (24 × 12.5 in), frame height 8.9 cm
   (3.5 in), 1.42 kg (official), aircraft-grade aluminum, angled four-rail/open
   front, hook-and-loop surface, no case included (available with soft/tour case).
-- **Image:** official Pedaltrain gallery `...-3.jpg` top-down empty board
-  (1000×562), processed with the **global white key** so the enclosed open
-  slots are transparent (the flood fill kept them white), then **AVIF q90**
-  800/350 (q90 escalated after a subtle 2× crop flag at q80).
+- **Image:** clean top-down empty **Pedalplayground planner PNG** (2400×1250,
+  transparent), used as the clean public-catalog asset (owner-approved; recorded
+  in `imageCandidates`/`sources`). Processed with `--matte none` (no keying —
+  a key would erase the black board on transparent-black corners), trimmed/
+  resized to 800/350, **AVIF q90**. Aspect 1.918 vs 1.920 (0.08%), rotation 0,
+  perspective 0, PSNR 48.4 dB, 56.4/7.3 KB; crisp alpha, transparent slots,
+  no white fringe; approved by the design reviewer at full + 3× crops.
 
 ## Read first (context pack)
 
@@ -67,9 +70,10 @@ waves.
    verified fact found in the same base pass.
 3. Run `pnpm catalog:start --batch pedaltrain/classic-2 --kind boards --brand "Pedaltrain" --total 1`
    and checkpoint after the item.
-4. Run the image scout/analyzer/processor/QA; use the official top-down empty
-   board image (`...-3.jpg`), process `--kind board --format avif`, analyze the
-   processed output, and run the `catalog-image-reviewer` quality gate.
+4. Run the image scout/analyzer/processor/QA; use the clean top-down empty
+   planner PNG (`--matte none`), process `--kind board --format avif`, analyze
+   the processed output, and run the `catalog-image-reviewer` clean-alpha
+   quality gate (full + 3× crops).
 5. Run `pnpm catalog:ci` and the Playwright board picker/placement/rotate/export
    check.
 6. Run `pnpm catalog:guard-batch-pr`; the PR must contain raw records + assets +
@@ -84,7 +88,8 @@ waves.
 - Raw record covers the board; mandatory fields present; optional fields only if
   found.
 - Image: 800/350 AVIF, top-down/empty, alpha/background/aspect pass or
-  documented flag, same-origin; no placeholder in shipped scope.
+  documented flag, same-origin; **clean crisp alpha with no white/black/any
+  halo, fringe or jagged edge**; no placeholder in shipped scope.
 - `catalog:validate` green in CI temp build; `catalog:guard-batch-pr` green; PR
   contains no mapped/runtime edits.
 - Playwright: board picker search/brand, image load, board placement/rotation,

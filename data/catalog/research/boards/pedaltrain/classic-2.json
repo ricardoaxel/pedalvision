@@ -25,7 +25,7 @@
     "powerSupplySpace": "under the raised deck",
     "cableRouting": "open front, four-rail; over/under/through slots; zip ties included",
     "status": "current",
-    "notes": "Pedaltrain Classic 2 — 24 x 12.5 x 3.5 in angled four-rail aluminum pedalboard with an open front and raised elevation; 3.1 lb; includes 96 in hook-and-loop and zip ties; available with soft or tour case.",
+    "notes": "Pedaltrain Classic 2 \u2014 24 x 12.5 x 3.5 in angled four-rail aluminum pedalboard with an open front and raised elevation; 3.1 lb; includes 96 in hook-and-loop and zip ties; available with soft or tour case.",
     "extra": {
       "boardStyle": "Classic four-rail, open front, raised elevation",
       "dimensions": "24 x 12.5 x 3.5 in (61 x 31.7 x 8.9 cm)",
@@ -34,7 +34,7 @@
       "included": "96 in (244 cm) professional-grade hook-and-loop and zip ties; soft case included with PT-CL2-SC",
       "retailerAvailability": "Thomann lists the model as available since June 2015",
       "powerMounting": "Pedaltrain one-size-fits-all brackets (VDL-MK / UNI-MK) available separately",
-      "imageProcessing": "Official top-down empty board (1000x562) from the Pedaltrain gallery. The global white key removes the enclosed open slots (the flood fill kept them white), then trims; AVIF q90 (escalated after a subtle 2x crop flag at q80). PSNR 50.1 dB vs the global-key PNG cutout; slots transparent, rails complete; vision-accepted at full and identical-coordinate 2x."
+      "imageProcessing": "Clean top-down empty Pedalplayground planner PNG (2400x1250, transparent). Processed with --matte none (no keying; a key would erase the black board on transparent-black corners), trimmed/resized to 800x417/350x182, AVIF q90. Aspect 1.918 vs 1.920 (0.08%), rotation 0, perspective 0, PSNR 48.4 dB; 56.4 KB / 7.3 KB. Clean crisp alpha, transparent slots, no white fringe; reviewer approved at full + 3x crops. Supersedes the photo-derived global-key cutout."
     },
     "priceObservations": [
       {
@@ -65,48 +65,77 @@
     "sources": [
       {
         "url": "https://pedaltrain.com/products/pt-cl2-sc",
-        "kind": ["info", "image"]
+        "kind": [
+          "info",
+          "image"
+        ]
       },
       {
         "url": "https://pedaltrain.com/products/pt-cl2-tc",
-        "kind": ["info"]
+        "kind": [
+          "info"
+        ]
       },
       {
         "url": "https://pedaltrain.com/products/pedaltrain-classic-2-and-accessories-no-case",
-        "kind": ["info"]
+        "kind": [
+          "info"
+        ]
       },
       {
         "url": "https://www.thomannmusic.com/pedaltrain_classic_2_sc.htm",
-        "kind": ["info"]
+        "kind": [
+          "info"
+        ]
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-3.jpg?v=1666898626",
-        "kind": ["image"]
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/public/images/pedalboards/pedaltrain-classic2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
       {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/public/images/pedalboards/pedaltrain-classic2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Clean top-down empty 2400x1250 transparent PNG; used (owner-approved clean public-catalog planner asset; processed with --matte none, no keying)."
+      },
+      {
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-3.jpg?v=1666898626",
         "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 1,
-        "notes": "Official top-down empty board; used for the hosted AVIF (aspect 1.86, perspective 1.7%)."
+        "priority": 2,
+        "notes": "Official top-down empty board photo; fallback only (photo-derived, glossy; superseded by the clean planner PNG)."
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-4.jpg?v=1666898626",
         "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 2,
+        "priority": 3,
         "notes": "Official empty board with slight perspective; not used."
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2PBPMeasurements.png?v=1666898626",
         "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 3,
+        "priority": 4,
         "notes": "Measurement/planner image loaded with pedals and overlays; rejected for an empty-board asset."
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2SoftCaseComposite.png?v=1666898626",
         "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 4,
+        "priority": 5,
         "notes": "Board + soft case composite at an angle; rejected."
       }
     ],
