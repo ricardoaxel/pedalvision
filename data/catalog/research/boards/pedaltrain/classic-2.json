@@ -1,0 +1,101 @@
+[
+  {
+    "id": "pedaltrain-classic-2",
+    "brand": "Pedaltrain",
+    "name": "Classic 2",
+    "category": "board",
+    "widthCm": 60.96,
+    "heightCm": 31.75,
+    "imageFormat": "avif",
+    "thicknessCm": 8.9,
+    "maxHeightCm": 8.9,
+    "weightG": 1420,
+    "material": "aluminum (aircraft-grade)",
+    "color": "black",
+    "boardType": "angled",
+    "surface": "velcro",
+    "handles": false,
+    "feet": true,
+    "mounting": "Pedaltrain VDL-MK / UNI-MK mounting brackets (optional)",
+    "bagIncluded": false,
+    "caseIncluded": false,
+    "caseModel": "available with soft case (PT-CL2-SC) or tour case (PT-CL2-TC); board-only PT-CL2-F",
+    "foldable": false,
+    "powerMount": "Pedaltrain VDL-MK / UNI-MK mounting brackets (not included)",
+    "powerSupplySpace": "under the raised deck",
+    "cableRouting": "open front, four-rail; over/under/through slots; zip ties included",
+    "status": "current",
+    "notes": "Pedaltrain Classic 2 \u2014 24 x 12.5 x 3.5 in angled four-rail aluminum pedalboard with an open front and raised elevation; 3.1 lb; includes 96 in hook-and-loop and zip ties; available with soft or tour case.",
+    "extra": {
+      "boardStyle": "Classic four-rail, open front, raised elevation",
+      "dimensions": "24 x 12.5 x 3.5 in (61 x 31.7 x 8.9 cm)",
+      "weight": "3.1 lb (1.42 kg) official; some retailers list 3.4 lb (1.47 kg)",
+      "caseOptions": "Soft Case PT-CL2-SC (interior 24 x 13 x 6 in / 61 x 33 x 15 cm); Tour Case PT-CL2-TC; board-only PT-CL2-F",
+      "included": "96 in (244 cm) professional-grade hook-and-loop and zip ties; soft case included with PT-CL2-SC",
+      "retailerAvailability": "Thomann lists the model as available since June 2015",
+      "powerMounting": "Pedaltrain one-size-fits-all brackets (VDL-MK / UNI-MK) available separately",
+      "imageProcessing": "Self-drawn flat SVG board. Geometry/proportions measured from the source board reference (34px side columns, slots x 34\u2192766, rail/slot bands 67 / 50 / 67 / 49 / 67 / 50 / 67), and the board color is sampled from that reference (#151515); NO reference pixels or image are used: our own vector, 4px outer corners, subtle gray outline, no brand line. Rendered 800x417 / 350x182, AVIF q90; aspect 1.918465 vs 1.92 (0.08% pass), rotation 0, perspective 0, bright residual 0%, bright edge 0%; transparent slots; no white/background/shadow/fringe. Source SVG: tools/asset-pipeline/board-art/pedaltrain-classic-2.svg. Reviewer approved. Real images are preferred; this generated board is the fallback because the real Pedaltrain photos were unusable."
+    },
+    "priceObservations": [
+      {
+        "amount": 159.99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Pedaltrain product page (board only, PT-CL2-F)",
+        "observedAt": "2026-10-23",
+        "notes": "Board + hook-and-loop + zip ties; no case."
+      },
+      {
+        "amount": 189.99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Pedaltrain product page (PT-CL2-SC)",
+        "observedAt": "2026-10-23",
+        "notes": "Board with fitted soft case."
+      },
+      {
+        "amount": 259.99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Pedaltrain product page (PT-CL2-TC)",
+        "observedAt": "2026-10-23",
+        "notes": "Board with professional-grade tour case."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://pedaltrain.com/products/pt-cl2-sc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pt-cl2-tc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-classic-2-and-accessories-no-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/pedaltrain_classic_2_sc.htm",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://github.com/ricardoaxel/pedalvision/blob/main/tools/asset-pipeline/board-art/pedaltrain-classic-2.svg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-23"
+  }
+]
