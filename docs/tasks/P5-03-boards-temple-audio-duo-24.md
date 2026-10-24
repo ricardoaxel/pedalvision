@@ -24,7 +24,7 @@ Deliver one **board batch** for the **Temple Audio Duo 24** (`temple-audio-duo-2
   are all angled, white-background, shadowed and non-transparent, so the
   real-first gate rejected them. **Generated flat art** from the official
   dimensions/layout, with the **board color sampled from the reference
-  (`#373737`)**: perforated top, side handles, end-cap module slots, vertical
+  (`#3a3c3b`)**: perforated top, side handles, end-cap module slots, vertical
   Temple Audio logo. Rendered **800×408 / 350×178 AVIF q90** (14.0 / 6.4 KB);
   aspect **1.9608 vs 1.96 (0.04%)**, rotation 0, perspective 0, **bright 0% /
   edge 0%**; transparent perforations; no white/background/shadow/fringe; no
