@@ -27,11 +27,21 @@ You are the image scout for one Pedalvision catalog batch.
    - Verdict `reject` → try the next candidate (max 3) or flag `needs-new-image`.
    - Verdict `flag` → include it on the contact sheet for vision QA.
 3. Process the accepted image:
-   `pnpm asset:process --input <file> --kind ... --brand ... --name ... --width-cm ... --height-cm ... --source public-asset --format avif [--body-crop] [--analyze <report.json>] [--matte soft]`
+   `pnpm asset:process --input <file> --kind ... --brand ... --name ... --width-cm ... --height-cm ... --source public-asset --format avif [--matte flood|soft|global|components] [--body-crop] [--analyze <report.json>]`
    This writes both 800/350 AVIF renditions atomically. PNG is the per-item
    fallback (`--format png`) only when AVIF fails the quality gate. Use
    `--body-crop` when side jack barrels/feet protrude beyond the enclosure, then
    analyze the processed output (the raw padded bbox is not the footprint).
+
+   **Background rule (pedals and boards):** the background colour is sampled
+   from the outer corners and may be **white, black or any other colour**. Remove
+   every **non-product** background area, including **enclosed** slots/holes — not
+   just the border. Use `--matte global` for boards/slotted objects (all
+   background-coloured pixels go), `--matte components` for pedals with enclosed
+   background regions (removes large enclosed regions but keeps small
+   lettering/logos), and `--matte flood` for a plain solid cutout. Never key
+   product details that merely match the background (white lettering, black
+   knobs); verify the result.
    **AVIF quality gate:** q80 must pass **PSNR ≥ 40 dB** (RGB where alpha > 0)
    and a 1:1 original-vs-compressed review; otherwise escalate q90 → q100 or
    keep PNG for that item.

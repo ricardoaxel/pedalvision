@@ -160,6 +160,73 @@ export function removeBackgroundGlobal(
 }
 
 /**
+ * Component-aware background key: remove the border-connected background **and**
+ * enclosed background-colored components larger than `minEnclosedArea` (fraction
+ * of the image). Small enclosed components are kept so white/black lettering,
+ * logos and details that merely match the background survive. This is the safe
+ * general mode for pedals with enclosed background regions; boards use `global`
+ * (all background-colored regions are background).
+ */
+export function removeBackgroundComponents(
+	data: Uint8Array,
+	width: number,
+	height: number,
+	background: BackgroundColor,
+	tolerance: number,
+	minEnclosedArea = 0.005,
+): number {
+	const total = width * height;
+	const threshold = Math.max(1, Math.round(minEnclosedArea * total));
+	const visited = new Uint8Array(total);
+	const queue = new Uint32Array(total);
+	let removed = 0;
+	const enqueue = (p: number, tail: number): number => {
+		if (visited[p]) return tail;
+		const i = p * CHANNELS;
+		if (data[i + 3] === 0) return tail;
+		if (
+			!isBackground(data[i], data[i + 1], data[i + 2], background, tolerance)
+		) {
+			return tail;
+		}
+		visited[p] = 1;
+		queue[tail] = p;
+		return tail + 1;
+	};
+	for (let start = 0; start < total; start++) {
+		if (visited[start]) continue;
+		let tail = enqueue(start, 0);
+		if (tail === 0) {
+			visited[start] = 1;
+			continue;
+		}
+		let head = 0;
+		let area = 0;
+		let touchesBorder = false;
+		while (head < tail) {
+			const p = queue[head++] ?? 0;
+			area++;
+			const x = p % width;
+			const y = (p - x) / width;
+			if (x === 0 || y === 0 || x === width - 1 || y === height - 1) {
+				touchesBorder = true;
+			}
+			if (x > 0) tail = enqueue(p - 1, tail);
+			if (x < width - 1) tail = enqueue(p + 1, tail);
+			if (y > 0) tail = enqueue(p - width, tail);
+			if (y < height - 1) tail = enqueue(p + width, tail);
+		}
+		if (touchesBorder || area >= threshold) {
+			for (let i = 0; i < tail; i++) {
+				data[(queue[i] ?? 0) * CHANNELS + 3] = 0;
+			}
+			removed += area;
+		}
+	}
+	return removed;
+}
+
+/**
  * Soft background matte for gradient/shadow backgrounds (dev-only fallback).
  * Border-connected pixels within `2 × tolerance` of the sampled background get a
  * partial alpha ramp instead of a hard cut. Deterministic and dependency-free.

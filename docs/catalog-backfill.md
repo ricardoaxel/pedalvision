@@ -346,6 +346,12 @@ Record the source URL per item; never bulk-copy descriptions.
 2. **Processor (script)** — background removal (extend the existing flood fill;
    dev-only ML fallback for gradients/shadows), trim, transparent **AVIF**
    (q80 default, q90 escalation; PNG is the per-item fallback), 800/350.
+   **Background rule (pedals and boards):** sample the outer corners; the
+   background may be **white, black or any colour**. Remove every **non-product**
+   background area, including **enclosed** slots/holes (use `--matte global` for
+   boards/slotted objects; `--matte components` for pedals with enclosed
+   background regions; `--matte flood` for a plain cutout). Never key product
+   details that merely match the background (white lettering, black knobs).
    **Drop shadows/reflections are not part of the product:** prefer a shadow-free
    top-down candidate; if the only candidate has one, remove it before trimming
    (alpha threshold/matte). The shadow must never be included in the cutout or
