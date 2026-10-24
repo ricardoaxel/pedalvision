@@ -72,7 +72,7 @@ task.
 - Owner approves the **direction** before any UI; owner approves the **final**
   result before merge.
 - **Never eyeball pixels with a builder model** — delegate to `design-reviewer`.
-- **Paid vision only (owner instruction, 2026-10-24):** reviewer runs `opencode/gemini-3.6-flash` (or another paid vision model). Never use a free vision model.
+- **DeepSeek opencode-go only (owner instruction, 2026-10-24):** reviewer runs `opencode-go/deepseek-v4.1-flash` (vision). Never use free/Gemini/Claude/other models.
   If you can't see an image, say so; never invent a critique.
 - **Never hand-tune colors/tokens without the designer.**
 - One task = **one PR**.

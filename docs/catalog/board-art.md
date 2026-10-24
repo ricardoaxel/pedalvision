@@ -82,7 +82,7 @@ Require:
 - board top-down/empty reviewer pass.
 
 Then:
-- **design-reviewer** on a dark/light/checker sheet + 3× corner (paid vision only — `opencode/gemini-3.6-flash`; never free): no
+- **design-reviewer** on a dark/light/checker sheet + 3× corner (**`opencode-go/deepseek-v4.1-flash` only**; vision; never free/Gemini/Claude/other): no
   white/bg/halo/shadow/border/fringe; transparent openings; corners smooth;
   faithful layout/color.
 - **App QA** in the picker/canvas/rotation/export/share on **desktop + mobile +
