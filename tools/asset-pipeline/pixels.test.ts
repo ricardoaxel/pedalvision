@@ -3,6 +3,7 @@ import {
 	bodyCropBounds,
 	isBackground,
 	removeBackground,
+	removeBackgroundComponents,
 	removeBackgroundGlobal,
 	sampleBackgroundColor,
 	trimBounds,
@@ -230,5 +231,45 @@ describe("removeBackgroundGlobal", () => {
 		const alpha = (buffer: Uint8Array) => buffer[(50 * width + 50) * 4 + 3];
 		expect(alpha(flood)).toBe(255);
 		expect(alpha(global)).toBe(0);
+	});
+});
+
+describe("removeBackgroundComponents", () => {
+	it("removes a large enclosed background region but keeps small lettering", () => {
+		const width = 200;
+		const height = 200;
+		const data = new Uint8Array(width * height * 4);
+		const set = (x: number, y: number, value: number) => {
+			const i = (y * width + x) * 4;
+			data[i] = value;
+			data[i + 1] = value;
+			data[i + 2] = value;
+			data[i + 3] = 255;
+		};
+		for (let y = 0; y < height; y++) {
+			for (let x = 0; x < width; x++) set(x, y, 255);
+		}
+		for (let y = 20; y < 180; y++) {
+			for (let x = 20; x < 180; x++) set(x, y, 0);
+		}
+		// Large enclosed background hole (80×80 = 6400 px, 16%).
+		for (let y = 60; y < 140; y++) {
+			for (let x = 60; x < 140; x++) set(x, y, 255);
+		}
+		// Small "lettering" hole (10×10 = 100 px, 0.25%) — must survive.
+		for (let y = 150; y < 160; y++) {
+			for (let x = 150; x < 160; x++) set(x, y, 255);
+		}
+		removeBackgroundComponents(
+			data,
+			width,
+			height,
+			{ r: 255, g: 255, b: 255 },
+			16,
+			0.005,
+		);
+		const alpha = (x: number, y: number) => data[(y * width + x) * 4 + 3];
+		expect(alpha(100, 100)).toBe(0);
+		expect(alpha(155, 155)).toBe(255);
 	});
 });

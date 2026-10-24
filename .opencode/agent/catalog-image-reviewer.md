@@ -20,6 +20,8 @@ You are the visual QA reviewer for Pedalvision catalog images. You look at **con
    - Background uniform or transparent? Any busy background, shadow, watermark, or perspective?
    - Is the object complete (not cropped) and the right way up? A tight crop is fine; a missing enclosure/footswitch is not.
    - Is any **drop shadow/reflection** still visible? Shadows are not part of the product — reject them (they must be removed before trimming).
+   - Is any **background-coloured non-product area** still visible (white/black bars, filled slots, halos, leftover background)? Background colours (white, black, any colour) must be transparent.
+   - Conversely, is any **product detail over-keyed** (holes in white lettering, missing black knobs, eaten edges)? Both leftover background and over-keying are reject signals.
    - For an AVIF quality gate, use a dedicated **2-cell identical-coordinate** PNG-vs-AVIF 2× crop sheet (not a combined full+crop sheet); reject visible banding, blur, halos, text softness or color shift.
    - For boards: **top-down and empty** — no pedals, no angled hero shot.
    - Any visible artifacts from background removal (holes, halos, leftover bg).
