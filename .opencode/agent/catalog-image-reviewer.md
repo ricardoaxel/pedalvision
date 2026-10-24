@@ -1,7 +1,7 @@
 ---
 description: Catalog image reviewer. Inspects contact sheets of 20–30 catalog images with a vision-capable model and returns strict accept/reject/flag verdicts with reasons. Never reviews per image and never edits files.
 mode: all
-model: opencode/nemotron-3.5-super-vl-free
+model: opencode-go/deepseek-v4.1-flash
 temperature: 0.2
 permission:
   edit: deny

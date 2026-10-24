@@ -9,7 +9,7 @@ Run the **design loop** for the design task in `$ARGUMENTS`. This is heavy desig
 
 Each round does ALL of:
 1. **Reviewer feedback (sees the current pixels):** run the design-reviewer on the current screenshots.
-   `opencode run --agent design-reviewer -m opencode/nemotron-3.5-super-vl-free -f <png paths...> "<review the attached renders>"`
+   `opencode run --agent design-reviewer -m opencode-go/deepseek-v4.1-flash -f <png paths...> "<review the attached renders>"`
 2. **Designer revision (authority):** give the designer the reviewer's findings; get the revised direction/values.
    `opencode run --agent designer "<current direction + reviewer findings → revised tokens/type/layout>"`
 3. **Implement:** apply the revision to code yourself (all visual values in `src/styles/tokens.css` + `src/styles/theme.ts`; components use tokens only).

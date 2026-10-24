@@ -1,7 +1,7 @@
 ---
 description: Design reviewer that inspects ACTUAL rendered screenshots (pixels, not code) and critiques the visual result — hierarchy, contrast, spacing, type, consistency, premium feel. Runs after the designer, in the design loop. Requires a vision-capable model.
 mode: all
-model: opencode/nemotron-3.5-super-vl-free
+model: opencode-go/deepseek-v4.1-flash
 temperature: 0.4
 permission:
   edit: deny
