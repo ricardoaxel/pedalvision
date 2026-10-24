@@ -49,7 +49,7 @@ Usage:
                  [--kind pedal|board] [--id <slug>] [--category pedal|supply]
                  [--source <tag>] [--variant-of <id>]
                  [--assets-dir <dir>] [--draft <file>] [--tolerance <0-255>]
-                 [--matte flood|soft] [--format png|avif] [--body-crop]
+                 [--matte flood|soft|global] [--format png|avif] [--body-crop]
                  [--quality 1-100] [--analyze <report.json>] [--force]
   --help
 
@@ -77,7 +77,7 @@ type Args = {
 	assetsDir: string;
 	draft?: string;
 	tolerance: number;
-	matte: "flood" | "soft";
+	matte: "flood" | "soft" | "global";
 	format: ImageFormat;
 	bodyCrop: boolean;
 	quality: number;
@@ -179,8 +179,8 @@ function parseArgs(argv: string[]): Args {
 			}
 			case "--matte": {
 				const value = argv[++i];
-				if (value !== "flood" && value !== "soft") {
-					throw new Error(`--matte must be flood|soft (got "${value}")`);
+				if (value !== "flood" && value !== "soft" && value !== "global") {
+					throw new Error(`--matte must be flood|soft|global (got "${value}")`);
 				}
 				args.matte = value;
 				break;
