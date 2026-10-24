@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="408" viewBox="0 0 800 408">
+  <title>Temple Audio Duo 24 flat board</title>
+  <defs>
+    <mask id="templeMask">
+      <rect width="800" height="408" fill="white"/>
+      <!-- perforated surface: 7 x 4 oval slots -->
+      <g fill="black">
+        <rect x="64" y="34" width="86" height="34" rx="17"/><rect x="166" y="34" width="86" height="34" rx="17"/><rect x="268" y="34" width="86" height="34" rx="17"/><rect x="370" y="34" width="86" height="34" rx="17"/><rect x="472" y="34" width="86" height="34" rx="17"/><rect x="574" y="34" width="86" height="34" rx="17"/><rect x="676" y="34" width="86" height="34" rx="17"/>
+        <rect x="64" y="120" width="86" height="34" rx="17"/><rect x="166" y="120" width="86" height="34" rx="17"/><rect x="268" y="120" width="86" height="34" rx="17"/><rect x="370" y="120" width="86" height="34" rx="17"/><rect x="472" y="120" width="86" height="34" rx="17"/><rect x="574" y="120" width="86" height="34" rx="17"/><rect x="676" y="120" width="86" height="34" rx="17"/>
+        <rect x="64" y="206" width="86" height="34" rx="17"/><rect x="166" y="206" width="86" height="34" rx="17"/><rect x="268" y="206" width="86" height="34" rx="17"/><rect x="370" y="206" width="86" height="34" rx="17"/><rect x="472" y="206" width="86" height="34" rx="17"/><rect x="574" y="206" width="86" height="34" rx="17"/><rect x="676" y="206" width="86" height="34" rx="17"/>
+        <rect x="64" y="292" width="86" height="34" rx="17"/><rect x="166" y="292" width="86" height="34" rx="17"/><rect x="268" y="292" width="86" height="34" rx="17"/><rect x="370" y="292" width="86" height="34" rx="17"/><rect x="472" y="292" width="86" height="34" rx="17"/><rect x="574" y="292" width="86" height="34" rx="17"/><rect x="676" y="292" width="86" height="34" rx="17"/>
+      </g>
+      <!-- side handle cutouts -->
+      <rect x="14" y="166" width="22" height="76" rx="11" fill="black"/>
+      <rect x="764" y="166" width="22" height="76" rx="11" fill="black"/>
+      <!-- end-cap module slots (2 mini + 1 micro per side) -->
+      <g fill="black">
+        <rect x="6" y="26" width="38" height="20" rx="4"/><rect x="6" y="56" width="38" height="20" rx="4"/><rect x="10" y="86" width="30" height="14" rx="3"/>
+        <rect x="756" y="26" width="38" height="20" rx="4"/><rect x="756" y="56" width="38" height="20" rx="4"/><rect x="760" y="86" width="30" height="14" rx="3"/>
+        <rect x="6" y="362" width="38" height="20" rx="4"/><rect x="756" y="362" width="38" height="20" rx="4"/>
+      </g>
+    </mask>
+    <clipPath id="templeClip"><rect width="800" height="408" rx="5"/></clipPath>
+  </defs>
+  <g clip-path="url(#templeClip)">
+    <rect width="800" height="408" fill="#373737" mask="url(#templeMask)"/>
+    <!-- darker end caps -->
+    <rect x="0" y="0" width="50" height="408" fill="#2e2e2e" opacity="0.55"/>
+    <rect x="750" y="0" width="50" height="408" fill="#2e2e2e" opacity="0.55"/>
+    <g fill="none" stroke="#565656" stroke-width="1">
+      <rect x="14" y="166" width="22" height="76" rx="11"/>
+      <rect x="764" y="166" width="22" height="76" rx="11"/>
+      <rect x="6" y="26" width="38" height="20" rx="4"/><rect x="6" y="56" width="38" height="20" rx="4"/><rect x="10" y="86" width="30" height="14" rx="3"/>
+      <rect x="756" y="26" width="38" height="20" rx="4"/><rect x="756" y="56" width="38" height="20" rx="4"/><rect x="760" y="86" width="30" height="14" rx="3"/>
+      <rect x="6" y="362" width="38" height="20" rx="4"/><rect x="756" y="362" width="38" height="20" rx="4"/>
+      <rect x="0.5" y="0.5" width="799" height="407" rx="4.5"/>
+    </g>
+    <text x="775" y="204" transform="rotate(90 775 204)" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" letter-spacing="2.2" fill="#8a8a8a">TEMPLE AUDIO</text>
+  </g>
+</svg>
