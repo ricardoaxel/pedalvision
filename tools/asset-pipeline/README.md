@@ -107,7 +107,14 @@ pnpm asset:analyze --input raw.png --kind pedal --width-cm 7.3 --height-cm 12.9 
 Deterministic checks: min 800 px long edge, background uniformity, alpha, trim
 bbox/whitespace, aspect vs the **cm footprint** (≤10% pass, 10–15% flag, >15%
 reject), rotation/skew (>2° reject), shadow/perspective signals, and board
-top-down signals. The analyzer always runs fresh (it is deterministic and cheap);
+top-down signals. **Board residual gate (owner instruction, 2026-10-24).** For `--kind board` the
+analyzer also reports **`bright.ratio`** (near-white/silver interior pixels) and
+**`bright.edgeRatio`** (bright pixels on the cutout edge). Require **<1%** and
+**<2%** respectively; boards must be **flat self-drawn/illustrated** (source SVG,
+e.g. `board-art/pedaltrain-classic-2.svg`), not photo-derived — real rail
+highlights/front strips/shadows cannot be keyed away. See the P5-03b task.
+
+The analyzer always runs fresh (it is deterministic and cheap);
 the `work/catalog/image-qa/` cache is for the **vision reviewer** verdicts,
 recorded with `asset:qa`, never for analyzer results. For an alpha cutout the
 border is the subject, so border uniformity is informational (not a reject). No

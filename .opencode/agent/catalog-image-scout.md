@@ -64,5 +64,5 @@ You are the image scout for one Pedalvision catalog batch.
 - Same-origin output only; final images must be transparent AVIF (or PNG fallback) at 800/350.
 - Verify the canvas image actually decoded with the stage's `data-item-images`
   (`loaded:N failed:0`) rather than a brittle colour sample.
-- Board images must be top-down and empty; reject angled/perspective shots.
+- **Boards need flat art, not photo cleanup.** Real rail highlights, silver front strips and shadows are product/photo light, not background — a keyer cannot remove them cleanly. Draw/illustrate the board flat from the official dimensions and rail/slot layout (source SVG, like `tools/asset-pipeline/board-art/pedaltrain-classic-2.svg`), with transparent slots, smooth/rounded edges, no white/bg/halo/shadow. Then run `asset:analyze` and require **bright residual <1%** and **bright edge <2%**. Reject angled/perspective photos for boards. Apply the flat-art workflow to **all** boards; Pedalplayground/planner images remain a very last resort.
 - English only.

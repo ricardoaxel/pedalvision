@@ -162,5 +162,37 @@ describe("image analyzer", () => {
 		);
 		expect(result.verdict).toBe("flag");
 		expect(result.reasons.join(" ")).toMatch(/contact-sheet/);
+		expect(result.bright?.ratio).toBe(0);
+	});
+
+	it("flags bright/white residual and edge fringe on a board", async () => {
+		const base = await image({
+			width: 1000,
+			height: 600,
+			rect: { x: 100, y: 80, width: 800, height: 440 },
+			background: white,
+		});
+		const stripe = await sharp({
+			create: {
+				width: 700,
+				height: 20,
+				channels: 4,
+				background: { r: 255, g: 255, b: 255, alpha: 1 },
+			},
+		})
+			.png()
+			.toBuffer();
+		const png = await sharp(base)
+			.composite([{ input: stripe, left: 150, top: 280 }])
+			.png()
+			.toBuffer();
+		const result = await analyzeImage(png, {
+			kind: "board",
+			widthCm: 60,
+			heightCm: 30,
+		});
+		expect(result.verdict).toBe("flag");
+		expect(result.bright?.ratio).toBeGreaterThan(0.01);
+		expect(result.reasons.join(" ")).toMatch(/bright\/white residual/);
 	});
 });
