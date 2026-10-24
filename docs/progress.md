@@ -2,6 +2,8 @@
 
 **Current phase:** P5 — Catalog completion. **P4 is COMPLETE**: P4-01 (PR #30, squash `d0d79ad`), P4-02 (PR #31, squash `f001a0b`), P4-03 (PR #33, squash `c0c419b`) and the **P4 phase gate** (merged 2026-10-21, PR #34, squash `caee58d`) are **DONE**. The **P5 plan restructure** is **DONE** (merged 2026-10-21, PR #32, squash `6e7deef`).
 **Next task:** **P5-03 — Temple Audio Duo 24 board batch — in review (PR #40); after merge, P5-03b board image repair (real-first).** The Choka pedal pilot (**PR #37**), JHS 3 Series Screamer (**PR #38**) and Pedaltrain Classic 2 board pilot (**PR #39**) are **DONE**. The Temple is the second-brand validation. **Do not start P5-03b/Meris/Red Panda/BOSS/waves** until the Temple is approved. **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed.
+**Paid vision only (owner instruction, 2026-10-24):** all design/visual reviews use `opencode/gemini-3.6-flash`; never free.
+
 **Last updated:** 2026-10-24 (Temple in review — PR #40; board-art SOP/tools added; P5-03b next)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).

@@ -67,5 +67,5 @@ pixels).
 - `catalog:validate` green in CI; guard clean; no mapped/runtime edits.
 - Playwright: picker search/brand, image load, placement/rotation, selected-board
   PNG export, read-only share; no console errors.
-- Design reviewer asset + app QA; evidence in the PR.
+- Design reviewer asset + app QA on a **paid vision model** (`opencode/gemini-3.6-flash`; never free); evidence in the PR.
 - One PR; no merge.

@@ -75,7 +75,7 @@ Current `asset:analyze` board report (Pedaltrain pilot passes bright 0% / edge 0
    top-down/empty reviewer pass.
 2. Render on **dark canvas, light, and checkerboard** (Playwright or one-off
    script); inspect 1× + 3× corner: no border/residual/fringe.
-3. `design-reviewer` reviews the batch contact sheet + renders;
+3. `design-reviewer` reviews the batch contact sheet + renders on a **paid vision model** (`opencode/gemini-3.6-flash`; never free);
    `catalog-image-reviewer` accepts the AVIF quality gate.
 4. `pnpm catalog:ci`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`,
    `pnpm e2e`; board picker/placement/rotation/export/share on desktop + mobile.
