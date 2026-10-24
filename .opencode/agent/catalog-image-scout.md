@@ -27,7 +27,7 @@ You are the image scout for one Pedalvision catalog batch.
    - Verdict `reject` → try the next candidate (max 3) or flag `needs-new-image`.
    - Verdict `flag` → include it on the contact sheet for vision QA.
 3. Process the accepted image:
-   `pnpm asset:process --input <file> --kind ... --brand ... --name ... --width-cm ... --height-cm ... --source public-asset --format avif [--matte flood|soft|global|components] [--body-crop] [--analyze <report.json>]`
+   `pnpm asset:process --input <file> --kind ... --brand ... --name ... --width-cm ... --height-cm ... --source public-asset --format avif [--matte flood|soft|global|components|none] [--body-crop] [--analyze <report.json>]`
    This writes both 800/350 AVIF renditions atomically. PNG is the per-item
    fallback (`--format png`) only when AVIF fails the quality gate. Use
    `--body-crop` when side jack barrels/feet protrude beyond the enclosure, then
