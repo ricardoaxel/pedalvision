@@ -25,7 +25,7 @@ waves.
   footprint and the Classic 2 four-rail/three-open-slot layout; proportions
   measured from the source board reference (**34px side columns, slots
   x 34→766, rail/slot bands 67 / 50 / 67 / 49 / 67 / 50 / 67**) and the
-  **board color is sampled from that reference (`#151515`)**, but **no planner
+  **board color is sampled from that reference (`#151515`)**, but **no reference
   pixels or image are used**. **No third-party image.** Generated only because
   the real Pedaltrain photos were unusable; real images remain first. Source SVG:
   `tools/asset-pipeline/board-art/pedaltrain-classic-2.svg`; rendered to
