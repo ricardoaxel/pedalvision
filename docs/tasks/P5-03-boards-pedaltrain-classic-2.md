@@ -23,7 +23,7 @@ waves.
   front, hook-and-loop surface, no case included (available with soft/tour case).
 - **Image:** **self-drawn flat vector board** from the official 60.96×31.75 cm
   footprint and the Classic 2 four-rail/three-open-slot layout; proportions
-  measured from the Pedalplayground planner board (**34px side columns, slots
+  measured from the source board reference (**34px side columns, slots
   x 34→766, rail/slot bands 67 / 50 / 67 / 49 / 67 / 50 / 67**) and the
   **board color is sampled from that reference (`#151515`)**, but **no planner
   pixels or image are used**. **No third-party image.** Generated only because
