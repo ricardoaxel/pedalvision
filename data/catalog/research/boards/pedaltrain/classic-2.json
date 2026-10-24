@@ -34,7 +34,7 @@
       "included": "96 in (244 cm) professional-grade hook-and-loop and zip ties; soft case included with PT-CL2-SC",
       "retailerAvailability": "Thomann lists the model as available since June 2015",
       "powerMounting": "Pedaltrain one-size-fits-all brackets (VDL-MK / UNI-MK) available separately",
-      "imageProcessing": "Official top-down empty board (1000x562) from the Pedaltrain gallery; AVIF q90 (escalated after a subtle 2x crop flag at q80). PSNR 51.0 dB vs the PNG cutout; vision-accepted at full and identical-coordinate 2x."
+      "imageProcessing": "Official top-down empty board (1000x562) from the Pedaltrain gallery. The global white key removes the enclosed open slots (the flood fill kept them white), then trims; AVIF q90 (escalated after a subtle 2x crop flag at q80). PSNR 50.1 dB vs the global-key PNG cutout; slots transparent, rails complete; vision-accepted at full and identical-coordinate 2x."
     },
     "priceObservations": [
       {

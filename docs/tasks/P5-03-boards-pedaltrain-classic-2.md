@@ -22,8 +22,9 @@ waves.
   (3.5 in), 1.42 kg (official), aircraft-grade aluminum, angled four-rail/open
   front, hook-and-loop surface, no case included (available with soft/tour case).
 - **Image:** official Pedaltrain gallery `...-3.jpg` top-down empty board
-  (1000×562), processed to a shadow-free **AVIF q90** 800/350 (q90 escalated
-  after a subtle 2× crop flag at q80).
+  (1000×562), processed with the **global white key** so the enclosed open
+  slots are transparent (the flood fill kept them white), then **AVIF q90**
+  800/350 (q90 escalated after a subtle 2× crop flag at q80).
 
 ## Read first (context pack)
 
