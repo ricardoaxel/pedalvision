@@ -1,0 +1,95 @@
+[
+  {
+    "id": "temple-audio-duo-24",
+    "brand": "Temple Audio",
+    "name": "Duo 24",
+    "category": "board",
+    "widthCm": 62.23,
+    "heightCm": 31.75,
+    "imageFormat": "avif",
+    "thicknessCm": 3.81,
+    "maxHeightCm": 6.35,
+    "weightG": 1540,
+    "material": "lightweight aluminum",
+    "color": "gunmetal",
+    "boardType": "angled",
+    "surface": "other",
+    "handles": true,
+    "feet": true,
+    "mounting": "Temple Audio Quick Release Pedal Plates (sold separately); power supply mounting bracket included",
+    "bagIncluded": false,
+    "caseIncluded": false,
+    "caseModel": "optional Temple soft case",
+    "foldable": false,
+    "powerMount": "power supply mounting bracket included; underside clearance 1.25 in front / 2.25 in back",
+    "powerSupplySpace": "under the perforated deck",
+    "cableRouting": "perforated top; offset routing holes; removable side end caps for modules and cables",
+    "status": "current",
+    "notes": "Temple Audio Duo 24 gunmetal \u2014 24.5 x 12.5 in (62.23 x 31.75 cm) modular aluminum board; perforated top; two rows; two MOD + one Micro MOD slot per side; handle pulls; Quick Release plates sold separately; optional soft case; 3.4 lb; made in Canada.",
+    "extra": {
+      "boardStyle": "Duo series, two rows, perforated aluminum, modular end caps",
+      "dimensions": "24.5 x 12.5 x 2.5 in (62.23 x 31.75 x 6.35 cm) including handles; mountable surface 23.2 x 12.5 in (58.93 x 31.75 cm)",
+      "weight": "3.4 lb (1.54 kg)",
+      "endCaps": "two mini MOD + one Micro MOD slot per side",
+      "undersideClearance": "1.25 in front / 2.25 in back",
+      "included": "power supply mounting bracket; no Quick Release pedal plates; no case",
+      "caseOptions": "Temple soft case optional",
+      "madeIn": "Canada",
+      "imageProcessing": "Real Sweetwater authorized-retailer images are angled, white-background, shadowed and non-transparent; the real-first gate rejected them. Generated flat art from the official dimensions/layout: gunmetal color #3a3c3b sampled from the Sweetwater main reference; perforated top, side handles, end-cap module slots, vertical Temple Audio logo. Rendered 800x408 / 350x178 AVIF q90; aspect 1.9608 vs 1.96 (0.04% pass); bright residual 0%, bright edge 0%; transparent perforations; no white/background/shadow/fringe; no reference pixels or third-party image. Source SVG: tools/asset-pipeline/board-art/temple-audio-duo-24.svg. Design reviewer approved.",
+      "surfaceType": "perforated aluminum (Quick Release plates; no velcro)"
+    },
+    "priceObservations": [
+      {
+        "amount": 139.0,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Sweetwater (DUO-24-GM)",
+        "observedAt": "2026-10-24",
+        "notes": "Duo 24 gunmetal, board only; no case."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.templeaudio.com/templeboards/duo-series",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/DUO-24-GM--temple-audio-duo-24-templeboard-gunmetal",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://media.sweetwater.com/api/i/version-115820b76a9748aef28dd14233baafea9ea10889__w-750__hmac-2e82361059d31bde771931a7ffbccc95e8c086b7/store/enhanced/items/DUO-24-GM/a99f7e-rs_duo-24-gm.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/temple_audio_design_duo_24_gm_pedalboard.htm",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.perfectcircuit.com/temple-audio-design-duo-24.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://github.com/ricardoaxel/pedalvision/blob/main/tools/asset-pipeline/board-art/temple-audio-duo-24.svg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-24"
+  }
+]
