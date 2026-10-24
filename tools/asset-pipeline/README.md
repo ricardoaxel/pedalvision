@@ -110,9 +110,32 @@ reject), rotation/skew (>2° reject), shadow/perspective signals, and board
 top-down signals. **Board residual gate (owner instruction, 2026-10-24).** For `--kind board` the
 analyzer also reports **`bright.ratio`** (near-white/silver interior pixels) and
 **`bright.edgeRatio`** (bright pixels on the cutout edge). Require **<1%** and
-**<2%** respectively; boards must be **flat self-drawn/illustrated** (source SVG,
-e.g. `board-art/pedaltrain-classic-2.svg`), not photo-derived — real rail
-highlights/front strips/shadows cannot be keyed away. See the P5-03b task.
+**<2%** respectively. Boards are **real-first**: keep a clean official/authorized
+top-down image; only when that is genuinely unusable (angled/shadowed/white
+fringe/3D rail highlights) generate our own **flat SVG** art. Real rail
+highlights/front strips/shadows cannot be keyed away. Generated art must use the
+**reference-sampled color** and never the reference pixels. See
+`docs/catalog/board-art.md` (SOP) and the P5-03b task.
+
+## Board art (generated fallback)
+
+The board-art workflow is codified in **`docs/catalog/board-art.md`**; the
+starter SVG is `board-art/_template.svg`, and the two deterministic helpers are:
+
+```sh
+# 1. sample the median board color from the reference image
+pnpm asset:board-color --input reference.jpg --out work/catalog/board-color/<id>.json
+
+# 2. render the self-drawn SVG to the committed 800/350 AVIF + PNG reference
+pnpm asset:board-art --input tools/asset-pipeline/board-art/<id>.svg --id <id>
+```
+
+Use the sampled **median hex** as the board fill; do not copy reference pixels.
+Then run `asset:analyze` (`bright <1%`, `edge <2%`), the design reviewer on
+dark/light/checker, and the app QA on desktop/mobile/WebKit/Firefox. The source
+SVG lives on `main`; the batch PR contains raw + assets + task only. The
+Pedaltrain (`#151515`) and Temple Audio Duo 24 (`#3a3c3b`) are reference
+examples.
 
 The analyzer always runs fresh (it is deterministic and cheap);
 the `work/catalog/image-qa/` cache is for the **vision reviewer** verdicts,

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="408" viewBox="0 0 800 408">
+  <title>Board name flat board — starter template</title>
+  <!--
+    BOARD-ART STARTER TEMPLATE
+    1. Copy to tools/asset-pipeline/board-art/<catalog-id>.svg.
+    2. Set width/height to the official footprint aspect (800 = long edge).
+    3. Replace the sample slots below with the board's real rail/slot/perforation
+       layout. Use the reference image for layout/proportions, never its pixels.
+    4. Set the body fill to the median color sampled by `asset:board-color`.
+    5. Transparent openings: mask them black; keep a restrained outline.
+    6. Render with: pnpm asset:board-art --input <this.svg> --id <catalog-id>
+    7. Run asset:analyze, design reviewer (dark/light/checker), app QA.
+    See docs/catalog/board-art.md.
+  -->
+  <defs>
+    <mask id="boardMask">
+      <rect width="800" height="408" fill="white"/>
+      <!-- sample slots: replace with the real layout -->
+      <rect x="34" y="72" width="732" height="48" rx="3" fill="black"/>
+      <rect x="34" y="180" width="732" height="48" rx="3" fill="black"/>
+      <rect x="34" y="288" width="732" height="48" rx="3" fill="black"/>
+    </mask>
+    <clipPath id="boardClip">
+      <rect width="800" height="408" rx="5"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#boardClip)">
+    <!-- sampled board color (example #151515); no reference pixels -->
+    <rect width="800" height="408" fill="#151515" mask="url(#boardMask)"/>
+    <g fill="none" stroke="#3a3a3a" stroke-width="1">
+      <rect x="34" y="72" width="732" height="48" rx="3"/>
+      <rect x="34" y="180" width="732" height="48" rx="3"/>
+      <rect x="34" y="288" width="732" height="48" rx="3"/>
+      <rect x="0.5" y="0.5" width="799" height="407" rx="4.5"/>
+    </g>
+  </g>
+</svg>

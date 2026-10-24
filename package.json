@@ -37,6 +37,8 @@
 		"catalog:flag": "node --experimental-strip-types tools/catalog-runner/index.ts flag",
 		"catalog:runner": "node --experimental-strip-types tools/catalog-runner/index.ts",
 		"asset:analyze": "node --experimental-strip-types tools/asset-pipeline/analyze-cli.ts",
+		"asset:board-color": "node --experimental-strip-types tools/asset-pipeline/board-color-cli.ts",
+		"asset:board-art": "node --experimental-strip-types tools/asset-pipeline/board-art-cli.ts",
 		"asset:contact-sheet": "node --experimental-strip-types tools/asset-pipeline/contact-sheet-cli.ts",
 		"asset:qa": "node --experimental-strip-types tools/asset-pipeline/qa-cli.ts"
 	},
