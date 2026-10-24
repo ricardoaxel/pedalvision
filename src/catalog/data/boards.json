@@ -232,5 +232,55 @@
         ]
       }
     ]
+  },
+  {
+    "id": "temple-audio-duo-24",
+    "brand": "Temple Audio",
+    "name": "Duo 24",
+    "widthCm": 62.23,
+    "heightCm": 31.75,
+    "image": "temple-audio-duo-24.avif",
+    "imageSource": "static",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.templeaudio.com/templeboards/duo-series",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/DUO-24-GM--temple-audio-duo-24-templeboard-gunmetal",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://media.sweetwater.com/api/i/version-115820b76a9748aef28dd14233baafea9ea10889__w-750__hmac-2e82361059d31bde771931a7ffbccc95e8c086b7/store/enhanced/items/DUO-24-GM/a99f7e-rs_duo-24-gm.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/temple_audio_design_duo_24_gm_pedalboard.htm",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.perfectcircuit.com/temple-audio-design-duo-24.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://github.com/ricardoaxel/pedalvision/blob/main/tools/asset-pipeline/board-art/temple-audio-duo-24.svg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   }
 ]

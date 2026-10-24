@@ -35,6 +35,17 @@
           "items": 1
         }
       ]
+    },
+    "temple-audio": {
+      "brand": "Temple Audio",
+      "batches": [
+        {
+          "batch": "duo-24",
+          "raw": "data/catalog/research/boards/temple-audio/duo-24.json",
+          "mapped": "data/catalog/boards/temple-audio/duo-24.json",
+          "items": 1
+        }
+      ]
     }
   }
 }
