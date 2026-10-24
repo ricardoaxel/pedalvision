@@ -23,7 +23,7 @@
     <clipPath id="templeClip"><rect width="800" height="408" rx="5"/></clipPath>
   </defs>
   <g clip-path="url(#templeClip)">
-    <rect width="800" height="408" fill="#373737" mask="url(#templeMask)"/>
+    <rect width="800" height="408" fill="#3a3c3b" mask="url(#templeMask)"/>
     <!-- darker end caps -->
     <rect x="0" y="0" width="50" height="408" fill="#2e2e2e" opacity="0.55"/>
     <rect x="750" y="0" width="50" height="408" fill="#2e2e2e" opacity="0.55"/>

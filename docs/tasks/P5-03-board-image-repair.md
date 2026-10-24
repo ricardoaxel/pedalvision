@@ -67,6 +67,9 @@ Current `asset:analyze` board report (Pedaltrain pilot passes bright 0% / edge 0
 
 ## QA (executable)
 
+0. For each repaired board: sample the reference color with
+   `pnpm asset:board-color --input <reference> --out …`; draw/copy the SVG;
+   render with `pnpm asset:board-art --input … --id …`.
 1. `pnpm asset:analyze --kind board --width-cm … --height-cm …` per asset:
    aspect pass; **bright residual <1%**; **bright edge <2%**; no shadow; board
    top-down/empty reviewer pass.
@@ -81,6 +84,8 @@ Current `asset:analyze` board report (Pedaltrain pilot passes bright 0% / edge 0
 
 ## Read first
 
+- `docs/catalog/board-art.md` (board-art SOP)
+- `docs/tasks/P5-03-boards-temple-audio-duo-24.md` (second-brand generated pilot)
 - `docs/tasks/P5-03-boards-pedaltrain-classic-2.md` (approved generated pilot)
 - `docs/catalog-backfill.md` §Board images / §Quality gate
 - `.opencode/agent/catalog-image-scout.md` + `catalog-image-reviewer.md`
