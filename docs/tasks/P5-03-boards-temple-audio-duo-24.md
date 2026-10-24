@@ -1,6 +1,6 @@
 # P5-03: Temple Audio — Duo 24 board batch
 
-**Phase:** P5 · **Status:** in review — fix PR (P5-03b) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #41 (P5-03b fix) · **Model:** build-strong
 
 ## Goal
 
