@@ -319,6 +319,7 @@ depth); physical thickness/height is separate.
   `extra`.
 
 ### Board images
+- **Source priority:** official brand/press page → authorized retailer → existing public catalog. **Pedalplayground/planner images are a very last resort only (owner instruction, 2026-10-24)** — try the official board-only shots and authorized-retailer product images first; never use a planner image just for a clean look.
 - Prefer **top-down, empty board** images (no pedals) so true scale is clear; a
   transparent/neutral background is ideal. Angled hero shots are rejected or
   re-sourced.
