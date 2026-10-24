@@ -350,7 +350,13 @@ Record the source URL per item; never bulk-copy descriptions.
    background may be **white, black or any colour**. Remove every **non-product**
    background area, including **enclosed** slots/holes (use `--matte global` for
    boards/slotted objects; `--matte components` for pedals with enclosed
-   background regions; `--matte flood` for a plain cutout). Never key product
+   background regions; `--matte flood` for a plain cutout). **If the source is
+   already a clean transparent PNG, use `--matte none`** — never re-key a
+   transparent source (a black object on a transparent-black PNG has the same
+   corner RGB and gets erased). **Clean-alpha gate:** the final cutout must have
+   clean, crisp alpha with **no white/black/any-colour halo, fringe or jagged
+   edge**; prefer an already-clean top-down transparent planner PNG over a glossy
+   photo, and defringe/re-source if a photo leaves a halo. Never key product
    details that merely match the background (white lettering, black knobs).
    **Drop shadows/reflections are not part of the product:** prefer a shadow-free
    top-down candidate; if the only candidate has one, remove it before trimming

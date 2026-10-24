@@ -124,6 +124,36 @@ describe("renderRenditions", () => {
 		);
 	});
 
+	it("preserves an already-transparent cutout when matte is none", async () => {
+		// A black object on transparent-black corners (the planner-PNG case):
+		// keying the background would erase the object because the RGB matches.
+		const width = 100;
+		const height = 50;
+		const data = Buffer.alloc(width * height * 4);
+		for (let y = 5; y <= 45; y++) {
+			for (let x = 10; x <= 60; x++) {
+				const i = (y * width + x) * 4;
+				data[i] = 0;
+				data[i + 1] = 0;
+				data[i + 2] = 0;
+				data[i + 3] = 255;
+			}
+		}
+		const input = await sharp(data, { raw: { width, height, channels: 4 } })
+			.png()
+			.toBuffer();
+		const renditions = await renderRenditions(input, { matte: "none" });
+		const { data: raw, info } = await sharp(renditions[800])
+			.ensureAlpha()
+			.raw()
+			.toBuffer({ resolveWithObject: true });
+		let visible = 0;
+		for (let i = 3; i < raw.length; i += info.channels) {
+			if (raw[i] > 0) visible++;
+		}
+		expect(visible).toBeGreaterThan(raw.length / info.channels / 10);
+	});
+
 	it("supports the dev-only soft matte fallback", async () => {
 		const width = 400;
 		const height = 400;

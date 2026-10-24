@@ -49,7 +49,7 @@ Usage:
                  [--kind pedal|board] [--id <slug>] [--category pedal|supply]
                  [--source <tag>] [--variant-of <id>]
                  [--assets-dir <dir>] [--draft <file>] [--tolerance <0-255>]
-                 [--matte flood|soft|global|components] [--format png|avif] [--body-crop]
+                 [--matte flood|soft|global|components|none] [--format png|avif] [--body-crop]
                  [--quality 1-100] [--analyze <report.json>] [--force]
   --help
 
@@ -77,7 +77,7 @@ type Args = {
 	assetsDir: string;
 	draft?: string;
 	tolerance: number;
-	matte: "flood" | "soft" | "global" | "components";
+	matte: "flood" | "soft" | "global" | "components" | "none";
 	format: ImageFormat;
 	bodyCrop: boolean;
 	quality: number;
@@ -183,10 +183,11 @@ function parseArgs(argv: string[]): Args {
 					value !== "flood" &&
 					value !== "soft" &&
 					value !== "global" &&
-					value !== "components"
+					value !== "components" &&
+					value !== "none"
 				) {
 					throw new Error(
-						`--matte must be flood|soft|global|components (got "${value}")`,
+						`--matte must be flood|soft|global|components|none (got "${value}")`,
 					);
 				}
 				args.matte = value;

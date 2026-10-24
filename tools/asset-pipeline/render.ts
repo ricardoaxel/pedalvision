@@ -32,9 +32,11 @@ export type RenderOptions = {
 	/**
 	 * `flood` is the default hard key; `soft` is the gradient fallback; `global`
 	 * removes all background-colored pixels including enclosed regions (boards);
-	 * `components` removes large enclosed regions but keeps small lettering.
+	 * `components` removes large enclosed regions but keeps small lettering;
+	 * `none` skips keying entirely (the source is already a clean transparent
+	 * cutout — never re-key a black object on a transparent black-background PNG).
 	 */
-	matte?: "flood" | "soft" | "global" | "components";
+	matte?: "flood" | "soft" | "global" | "components" | "none";
 	/** Delivery format; P5 hosted assets use `avif`, PNG is the fallback. */
 	format?: ImageFormat;
 	/** Crop side protrusions (jack barrels/feet) to the enclosure body. */
@@ -63,15 +65,17 @@ export async function renderRenditions(
 	const width = info.width;
 	const height = info.height;
 
-	const background = sampleBackgroundColor(data, width, height);
-	if (options.matte === "global") {
-		removeBackgroundGlobal(data, width, height, background, tolerance);
-	} else if (options.matte === "components") {
-		removeBackgroundComponents(data, width, height, background, tolerance);
-	} else if (options.matte === "soft") {
-		removeBackgroundSoft(data, width, height, background, tolerance);
-	} else {
-		removeBackground(data, width, height, background, tolerance);
+	if (options.matte !== "none") {
+		const background = sampleBackgroundColor(data, width, height);
+		if (options.matte === "global") {
+			removeBackgroundGlobal(data, width, height, background, tolerance);
+		} else if (options.matte === "components") {
+			removeBackgroundComponents(data, width, height, background, tolerance);
+		} else if (options.matte === "soft") {
+			removeBackgroundSoft(data, width, height, background, tolerance);
+		} else {
+			removeBackground(data, width, height, background, tolerance);
+		}
 	}
 
 	// If the key matched the whole frame there is nothing to ship — fail loudly

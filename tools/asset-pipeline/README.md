@@ -149,7 +149,7 @@ sheets (`catalog-image-reviewer`), never per image.
 | `--assets-dir <dir>`     | `public/pedal-assets`  | output root                                  |
 | `--draft <file>`         | stdout                 | where to write the JSON draft                |
 | `--tolerance <0-255>`    | `32`                   | background match tolerance                   |
-| `--matte flood\|soft\|global\|components` | `flood` | soft = gradient fallback; global = all bg colors incl. slots (boards); components = large enclosed regions only, keeps small lettering (pedals) |
+| `--matte flood\|soft\|global\|components\|none` | `flood` | soft = gradient fallback; global = all bg colors incl. slots (boards); components = large enclosed regions only, keeps small lettering (pedals); **none = already a clean transparent cutout, skip keying** |
 | `--format png\|avif`      | `png`                  | delivery format; P5 hosted assets use `avif` |
 | `--body-crop`             | off                    | crop side jack barrels/feet to the enclosure body |
 | `--quality 1-100`          | `80`                   | AVIF quality; escalate to 90 when a 2× crop flags |
