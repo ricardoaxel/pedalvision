@@ -24,5 +24,17 @@
       ]
     }
   },
-  "boards": {}
+  "boards": {
+    "pedaltrain": {
+      "brand": "Pedaltrain",
+      "batches": [
+        {
+          "batch": "classic-2",
+          "raw": "data/catalog/research/boards/pedaltrain/classic-2.json",
+          "mapped": "data/catalog/boards/pedaltrain/classic-2.json",
+          "items": 1
+        }
+      ]
+    }
+  }
 }

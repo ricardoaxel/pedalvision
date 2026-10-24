@@ -190,5 +190,47 @@
         ]
       }
     ]
+  },
+  {
+    "id": "pedaltrain-classic-2",
+    "brand": "Pedaltrain",
+    "name": "Classic 2",
+    "widthCm": 60.96,
+    "heightCm": 31.75,
+    "image": "pedaltrain-classic-2.avif",
+    "imageSource": "static",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedaltrain.com/products/pt-cl2-sc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pt-cl2-tc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-classic-2-and-accessories-no-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/pedaltrain_classic_2_sc.htm",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://github.com/ricardoaxel/pedalvision/blob/main/tools/asset-pipeline/board-art/pedaltrain-classic-2.svg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   }
 ]
