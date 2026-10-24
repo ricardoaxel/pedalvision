@@ -179,8 +179,15 @@ function parseArgs(argv: string[]): Args {
 			}
 			case "--matte": {
 				const value = argv[++i];
-				if (value !== "flood" && value !== "soft" && value !== "global") {
-					throw new Error(`--matte must be flood|soft|global (got "${value}")`);
+				if (
+					value !== "flood" &&
+					value !== "soft" &&
+					value !== "global" &&
+					value !== "components"
+				) {
+					throw new Error(
+						`--matte must be flood|soft|global|components (got "${value}")`,
+					);
 				}
 				args.matte = value;
 				break;
