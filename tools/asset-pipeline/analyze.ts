@@ -47,6 +47,8 @@ export type AnalyzeResult = {
 	rotationDeg: number | null;
 	perspectiveError: number | null;
 	shadowRatio: number | null;
+	/** Board-only: near-white/silver interior residual and bright edge fringe. */
+	bright: { ratio: number; edgeRatio: number } | null;
 	verdict: "accept" | "flag" | "reject";
 	reasons: string[];
 };
@@ -213,6 +215,52 @@ function shadowRatio(
 	return samples > 0 ? dark / samples : null;
 }
 
+function brightResidual(
+	data: Uint8Array,
+	width: number,
+	height: number,
+	bounds: Bounds,
+): { ratio: number; edgeRatio: number } {
+	let visible = 0;
+	let bright = 0;
+	let edge = 0;
+	let edgeBright = 0;
+	for (let y = bounds.top; y < bounds.top + bounds.height; y++) {
+		for (let x = bounds.left; x < bounds.left + bounds.width; x++) {
+			const i = (y * width + x) * 4;
+			if (data[i + 3] === 0) continue;
+			visible++;
+			const luma =
+				0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2];
+			const isBright = luma > 180;
+			if (isBright) bright++;
+			let onEdge = x === 0 || y === 0 || x === width - 1 || y === height - 1;
+			if (!onEdge) {
+				for (const [dx, dy] of [
+					[1, 0],
+					[-1, 0],
+					[0, 1],
+					[0, -1],
+				] as const) {
+					const ni = ((y + dy) * width + (x + dx)) * 4;
+					if (data[ni + 3] === 0) {
+						onEdge = true;
+						break;
+					}
+				}
+			}
+			if (onEdge) {
+				edge++;
+				if (isBright) edgeBright++;
+			}
+		}
+	}
+	return {
+		ratio: visible > 0 ? bright / visible : 0,
+		edgeRatio: edge > 0 ? edgeBright / edge : 0,
+	};
+}
+
 function aspectVerdict(error: number): AspectVerdict {
 	if (error <= ANALYZER_DEFAULTS.aspectPass) return "pass";
 	if (error <= ANALYZER_DEFAULTS.aspectFlag) return "flag";
@@ -291,6 +339,7 @@ export async function analyzeImage(
 			rotationDeg: null,
 			perspectiveError: null,
 			shadowRatio: null,
+			bright: null,
 			verdict: "reject",
 			reasons: [...reasons, "reject:no visible foreground after trim"],
 		};
@@ -345,6 +394,18 @@ export async function analyzeImage(
 		}
 	}
 
+	const bright = brightResidual(pixels, width, height, bounds);
+	if (options.kind === "board" && bright.ratio > 0.01) {
+		reasons.push(
+			`flag:bright/white residual ${Math.round(bright.ratio * 100)}% of visible pixels — flatten or redraw the board`,
+		);
+	}
+	if (options.kind === "board" && bright.edgeRatio > 0.02) {
+		reasons.push(
+			`flag:bright edge fringe ${Math.round(bright.edgeRatio * 100)}% of edge pixels — defringe or redraw the board`,
+		);
+	}
+
 	const shadow = shadowRatio(pixels, width, height, bounds, background);
 	if (shadow !== null && shadow > 0.15) {
 		reasons.push(
@@ -380,6 +441,7 @@ export async function analyzeImage(
 		rotationDeg: rotation,
 		perspectiveError: perspective,
 		shadowRatio: shadow,
+		bright,
 		verdict: rejected ? "reject" : flagged ? "flag" : "accept",
 		reasons,
 	};
