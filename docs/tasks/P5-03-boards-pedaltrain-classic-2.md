@@ -21,15 +21,14 @@ waves.
 - **Footprint:** **60.96 × 31.75 cm** (24 × 12.5 in), frame height 8.9 cm
   (3.5 in), 1.42 kg (official), aircraft-grade aluminum, angled four-rail/open
   front, hook-and-loop surface, no case included (available with soft/tour case).
-- **Image:** authorized-retailer official **top-down empty board** (Andertons
-  80184, 1056×594, white background), recorded in `imageCandidates`/`sources`
-  (official Pedaltrain board-only `...-4` is the fallback). Processed with
-  `--matte components` to remove the outer white background and enclosed open
-  slots while preserving the `classic` logo; trimmed/resized to 800/444 and
-  350/194, **AVIF q90**. Aspect 1.802 vs 1.920 (6.2% pass), rotation 0.06°,
-  perspective 6.5% (flag; reviewer accepted the flat geometry), PSNR 49.4 dB,
-  26.6/8.3 KB; crisp alpha, transparent slots, no white fringe; approved by the
-  design reviewer at full + 3× crops. **Pedalplayground is not used.**
+- **Image:** **self-drawn flat vector board** from the official 60.96×31.75 cm
+  footprint and the Classic 2 four-rail/three-open-slot layout; **no third-party
+  image** and **no Pedalplayground**. Source SVG:
+  `public/pedal-assets/boards/source/pedaltrain-classic-2.svg`; rendered to
+  800×417 / 350×182, **AVIF q90** (2.4 KB / 1.5 KB). Aspect 1.918465 vs 1.920
+  (0.08% pass), rotation 0, perspective 0; transparent slots, 7px rounded
+  corners, subtle gray outline/brand line; **no white/background/shadow/fringe**;
+  approved by the design reviewer at full + 3×. **Pedalplayground is not used.**
 
 ## Read first (context pack)
 
@@ -72,10 +71,9 @@ waves.
    verified fact found in the same base pass.
 3. Run `pnpm catalog:start --batch pedaltrain/classic-2 --kind boards --brand "Pedaltrain" --total 1`
    and checkpoint after the item.
-4. Run the image scout/analyzer/processor/QA; use the authorized-retailer
-   top-down empty board (`--matte components`), process `--kind board --format
-   avif`, analyze the processed output, and run the `catalog-image-reviewer`
-   clean-alpha quality gate (full + 3× crops).
+4. Run the image analyzer/QA on the self-drawn flat board; render the source
+   SVG to 800/350 AVIF q90, analyze the output, and run the
+   `catalog-image-reviewer` clean-alpha quality gate (full + 3× crops).
 5. Run `pnpm catalog:ci` and the Playwright board picker/placement/rotate/export
    check.
 6. Run `pnpm catalog:guard-batch-pr`; the PR must contain raw records + assets +

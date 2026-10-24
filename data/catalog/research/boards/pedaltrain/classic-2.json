@@ -34,7 +34,7 @@
       "included": "96 in (244 cm) professional-grade hook-and-loop and zip ties; soft case included with PT-CL2-SC",
       "retailerAvailability": "Thomann lists the model as available since June 2015",
       "powerMounting": "Pedaltrain one-size-fits-all brackets (VDL-MK / UNI-MK) available separately",
-      "imageProcessing": "Authorized-retailer official top-down empty board (Andertons 80184, 1056x594) on white. Components key removes the outer white background and enclosed open slots while preserving the classic logo; trim/resize to 800x444/350x194, AVIF q90. Aspect 1.802 vs 1.920 (6.2% pass), rotation 0.06\u00b0, perspective 6.5% (flag; reviewer accepted the flat geometry), PSNR 49.4 dB; 26.6 KB / 8.3 KB. Clean crisp alpha, transparent slots, no white fringe at 3x; reviewer approved. Pedalplayground is not used."
+      "imageProcessing": "Self-drawn flat vector board from the official 60.96x31.75 cm footprint and the Classic 2 four-rail/three-open-slot layout; no third-party image or Pedalplayground asset. Rendered to 800x417/350x182, AVIF q90; aspect 1.918465 vs 1.92 (0.08% pass), rotation 0, perspective 0; transparent slots, 7px rounded corners, subtle gray outline and brand line; no white/background/shadow/fringe. Source SVG: public/pedal-assets/boards/source/pedaltrain-classic-2.svg. Design reviewer approved."
     },
     "priceObservations": [
       {
@@ -66,8 +66,7 @@
       {
         "url": "https://pedaltrain.com/products/pt-cl2-sc",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
@@ -89,51 +88,13 @@
         ]
       },
       {
-        "url": "https://www.andertons.co.uk/pedaltrain-classic-2-w-soft-case/",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn11.bigcommerce.com/s-4hc0jwsnnq/images/stencil/original/products/13990/50968/80184-tmpCD6__51197.1715110783.jpg?c=1",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-4.jpg?v=1767376450",
+        "url": "https://github.com/ricardoaxel/pedalvision/blob/main/public/pedal-assets/boards/source/pedaltrain-classic-2.svg",
         "kind": [
           "image"
         ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://cdn11.bigcommerce.com/s-4hc0jwsnnq/images/stencil/original/products/13990/50968/80184-tmpCD6__51197.1715110783.jpg?c=1",
-        "sourcePage": "https://www.andertons.co.uk/pedaltrain-classic-2-w-soft-case/",
-        "priority": 1,
-        "notes": "Authorized-retailer official top-down empty board (1056x594, white background); used for the hosted AVIF. Components key preserves the classic logo and makes the open slots transparent; clean edge at 3x, no white fringe."
-      },
-      {
-        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-4.jpg?v=1767376450",
-        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 2,
-        "notes": "Official Pedaltrain board-only top-down fallback (1000x562); same product shot as the Andertons image."
-      },
-      {
-        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2PBPMeasurements.png?v=1666898626",
-        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 3,
-        "notes": "Measurement/planner image loaded with pedals and overlays; rejected for an empty-board asset."
-      },
-      {
-        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2SoftCaseComposite.png?v=1666898626",
-        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 4,
-        "notes": "Board + soft case composite at an angle; rejected."
-      }
-    ],
+    "imageCandidates": [],
     "confidence": "confirmed",
     "lastVerified": "2026-10-23"
   }
