@@ -22,13 +22,15 @@ waves.
   (3.5 in), 1.42 kg (official), aircraft-grade aluminum, angled four-rail/open
   front, hook-and-loop surface, no case included (available with soft/tour case).
 - **Image:** **self-drawn flat vector board** from the official 60.96×31.75 cm
-  footprint and the Classic 2 four-rail/three-open-slot layout; **no third-party
-  image** and **no Pedalplayground**. Source SVG:
+  footprint and the Classic 2 four-rail/three-open-slot layout; proportions
+  measured from the Pedalplayground planner board (**34px side columns, slots
+  x 34→766, rail/slot bands 67 / 50 / 67 / 49 / 67 / 50 / 67**) but **no
+  planner pixels or image are used**. **No third-party image.** Source SVG:
   `tools/asset-pipeline/board-art/pedaltrain-classic-2.svg`; rendered to
-  800×417 / 350×182, **AVIF q90** (2.4 KB / 1.5 KB). Aspect 1.918465 vs 1.920
-  (0.08% pass), rotation 0, perspective 0; transparent slots, 7px rounded
-  corners, subtle gray outline/brand line; **no white/background/shadow/fringe**;
-  approved by the design reviewer at full + 3×. **Pedalplayground is not used.**
+  800×417 / 350×182, **AVIF q90**. Aspect 1.918465 vs 1.920 (0.08% pass),
+  rotation 0, perspective 0, bright residual 0%, bright edge 0%; transparent
+  slots, 4px outer corners, subtle gray outline, no brand line; **no
+  white/background/shadow/fringe**; approved by the design reviewer.
 
 ## Read first (context pack)
 
