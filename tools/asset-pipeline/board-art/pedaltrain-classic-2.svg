@@ -12,7 +12,7 @@
     </clipPath>
   </defs>
   <g clip-path="url(#boardClip)">
-    <rect width="800" height="417" fill="#1a1a1a" mask="url(#boardMask)"/>
+    <rect width="800" height="417" fill="#151515" mask="url(#boardMask)"/>
     <g fill="none" stroke="#333333" stroke-width="1">
       <rect x="34" y="67" width="732" height="50" rx="3"/>
       <rect x="34" y="184" width="732" height="49" rx="3"/>
