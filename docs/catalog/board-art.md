@@ -47,7 +47,7 @@ not black.
   perforation layout from the reference. **Measure** proportions; do not copy
   pixels.
 - Body fill = the sampled median hex.
-- Transparent openings/slots/perforations; keep a restrained outline.
+- Transparent openings/slots; for a dense perforated deck, opaque dark perforations are allowed when the reference shows dark holes (this avoids white/checker bleed and halos) — keep a 0.5px transparent outer cutout edge so the asset still reads as a cutout.
 - Smooth outer edge, 4–5px rounded corners, anti-aliased.
 - No white/background/shadow/halo/fringe; no 3D highlights. Include a brand line
   only if it is part of the board in the reference.
@@ -55,7 +55,7 @@ not black.
 
 Reference examples:
 - `tools/asset-pipeline/board-art/pedaltrain-classic-2.svg` — `#151515`, 4 rails / 3 slots.
-- `tools/asset-pipeline/board-art/temple-audio-duo-24.svg` — `#3a3c3b`, perforated top, end caps, handles.
+- `tools/asset-pipeline/board-art/temple-audio-duo-24.svg` — `#3a3c3b` body / `#444643` caps, dense opaque perforation field, mirrored end caps/handles/module slots, no logo (P5-03b repair 2026-10-24).
 
 ## 4. Render the committed assets
 
@@ -107,6 +107,7 @@ Then:
 - **Repair only** the failures (BOSS, Boardmods, Caseman, D'Addario, Donner,
   Emerson) + the generated Pedaltrain pilot.
 - Do **not** regenerate clean real boards for style consistency.
+- **Temple Audio Duo 24 (2026-10-24):** repaired the merged art — mirrored 22px end caps/handles/2+1 module slots, centred unclipped staggered perforation field, removed the logo overlay; body `#3a3c3b`, caps `#444643`; opaque dark perforations + 0.5px cutout edge; evidence `docs/screenshots/P5-03-temple-audio-duo-24-fix/`.
 - One PR for the batch; source SVGs on `main`; no generated runtime drift.
 
 ## Checklist
