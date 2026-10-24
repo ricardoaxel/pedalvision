@@ -3,6 +3,7 @@ import {
 	bodyCropBounds,
 	isBackground,
 	removeBackground,
+	removeBackgroundGlobal,
 	sampleBackgroundColor,
 	trimBounds,
 } from "./pixels.ts";
@@ -197,5 +198,37 @@ describe("bodyCropBounds", () => {
 		const bounds = trimBounds(data, width, height);
 		if (!bounds) throw new Error("missing bounds");
 		expect(bodyCropBounds(data, width, bounds)).toEqual(bounds);
+	});
+});
+
+describe("removeBackgroundGlobal", () => {
+	it("removes enclosed background regions that a flood fill keeps", () => {
+		const width = 100;
+		const height = 100;
+		const data = new Uint8Array(width * height * 4);
+		const set = (x: number, y: number, value: number) => {
+			const i = (y * width + x) * 4;
+			data[i] = value;
+			data[i + 1] = value;
+			data[i + 2] = value;
+			data[i + 3] = 255;
+		};
+		for (let y = 0; y < height; y++) {
+			for (let x = 0; x < width; x++) set(x, y, 255);
+		}
+		for (let y = 20; y < 80; y++) {
+			for (let x = 20; x < 80; x++) set(x, y, 0);
+		}
+		for (let y = 40; y < 60; y++) {
+			for (let x = 40; x < 60; x++) set(x, y, 255);
+		}
+		const background = { r: 255, g: 255, b: 255 };
+		const flood = new Uint8Array(data);
+		removeBackground(flood, width, height, background, 16);
+		const global = new Uint8Array(data);
+		removeBackgroundGlobal(global, width, height, background, 16);
+		const alpha = (buffer: Uint8Array) => buffer[(50 * width + 50) * 4 + 3];
+		expect(alpha(flood)).toBe(255);
+		expect(alpha(global)).toBe(0);
 	});
 });

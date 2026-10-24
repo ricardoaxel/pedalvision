@@ -8,6 +8,7 @@ import {
 import {
 	bodyCropBounds,
 	removeBackground,
+	removeBackgroundGlobal,
 	removeBackgroundSoft,
 	sampleBackgroundColor,
 	trimBounds,
@@ -27,8 +28,11 @@ export const DEFAULT_TOLERANCE = 32;
 
 export type RenderOptions = {
 	tolerance?: number;
-	/** `flood` is the default hard key; `soft` is the gradient fallback. */
-	matte?: "flood" | "soft";
+	/**
+	 * `flood` is the default hard key; `soft` is the gradient fallback; `global`
+	 * removes enclosed background regions too (boards/slotted objects).
+	 */
+	matte?: "flood" | "soft" | "global";
 	/** Delivery format; P5 hosted assets use `avif`, PNG is the fallback. */
 	format?: ImageFormat;
 	/** Crop side protrusions (jack barrels/feet) to the enclosure body. */
@@ -58,7 +62,9 @@ export async function renderRenditions(
 	const height = info.height;
 
 	const background = sampleBackgroundColor(data, width, height);
-	if (options.matte === "soft") {
+	if (options.matte === "global") {
+		removeBackgroundGlobal(data, width, height, background, tolerance);
+	} else if (options.matte === "soft") {
 		removeBackgroundSoft(data, width, height, background, tolerance);
 	} else {
 		removeBackground(data, width, height, background, tolerance);

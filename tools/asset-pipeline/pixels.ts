@@ -131,6 +131,35 @@ export function removeBackground(
 }
 
 /**
+ * Global background key: remove **every** pixel matching the sampled background,
+ * including enclosed regions that a border flood fill cannot reach (e.g. the open
+ * slots in a pedalboard frame). Use for boards/slotted objects; the flood fill is
+ * safer for pedals because it preserves interior white lettering.
+ */
+export function removeBackgroundGlobal(
+	data: Uint8Array,
+	width: number,
+	height: number,
+	background: BackgroundColor,
+	tolerance: number,
+): number {
+	let removed = 0;
+	for (let y = 0; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+			const i = (y * width + x) * CHANNELS;
+			if (data[i + 3] === 0) continue;
+			if (
+				isBackground(data[i], data[i + 1], data[i + 2], background, tolerance)
+			) {
+				data[i + 3] = 0;
+				removed++;
+			}
+		}
+	}
+	return removed;
+}
+
+/**
  * Soft background matte for gradient/shadow backgrounds (dev-only fallback).
  * Border-connected pixels within `2 × tolerance` of the sampled background get a
  * partial alpha ramp instead of a hard cut. Deterministic and dependency-free.
