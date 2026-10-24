@@ -34,7 +34,7 @@
       "included": "96 in (244 cm) professional-grade hook-and-loop and zip ties; soft case included with PT-CL2-SC",
       "retailerAvailability": "Thomann lists the model as available since June 2015",
       "powerMounting": "Pedaltrain one-size-fits-all brackets (VDL-MK / UNI-MK) available separately",
-      "imageProcessing": "Clean top-down empty Pedalplayground planner PNG (2400x1250, transparent). Processed with --matte none (no keying; a key would erase the black board on transparent-black corners), trimmed/resized to 800x417/350x182, AVIF q90. Aspect 1.918 vs 1.920 (0.08%), rotation 0, perspective 0, PSNR 48.4 dB; 56.4 KB / 7.3 KB. Clean crisp alpha, transparent slots, no white fringe; reviewer approved at full + 3x crops. Supersedes the photo-derived global-key cutout."
+      "imageProcessing": "Authorized-retailer official top-down empty board (Andertons 80184, 1056x594) on white. Components key removes the outer white background and enclosed open slots while preserving the classic logo; trim/resize to 800x444/350x194, AVIF q90. Aspect 1.802 vs 1.920 (6.2% pass), rotation 0.06\u00b0, perspective 6.5% (flag; reviewer accepted the flat geometry), PSNR 49.4 dB; 26.6 KB / 8.3 KB. Clean crisp alpha, transparent slots, no white fringe at 3x; reviewer approved. Pedalplayground is not used."
     },
     "priceObservations": [
       {
@@ -89,19 +89,20 @@
         ]
       },
       {
-        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-3.jpg?v=1666898626",
+        "url": "https://www.andertons.co.uk/pedaltrain-classic-2-w-soft-case/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-4hc0jwsnnq/images/stencil/original/products/13990/50968/80184-tmpCD6__51197.1715110783.jpg?c=1",
         "kind": [
           "image"
         ]
       },
       {
-        "url": "https://pedalplayground.com/",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/public/images/pedalboards/pedaltrain-classic2.png",
+        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-4.jpg?v=1767376450",
         "kind": [
           "image"
         ]
@@ -109,33 +110,27 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/public/images/pedalboards/pedaltrain-classic2.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://cdn11.bigcommerce.com/s-4hc0jwsnnq/images/stencil/original/products/13990/50968/80184-tmpCD6__51197.1715110783.jpg?c=1",
+        "sourcePage": "https://www.andertons.co.uk/pedaltrain-classic-2-w-soft-case/",
         "priority": 1,
-        "notes": "Clean top-down empty 2400x1250 transparent PNG; used (owner-approved clean public-catalog planner asset; processed with --matte none, no keying)."
+        "notes": "Authorized-retailer official top-down empty board (1056x594, white background); used for the hosted AVIF. Components key preserves the classic logo and makes the open slots transparent; clean edge at 3x, no white fringe."
       },
       {
-        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-3.jpg?v=1666898626",
+        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-4.jpg?v=1767376450",
         "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
         "priority": 2,
-        "notes": "Official top-down empty board photo; fallback only (photo-derived, glossy; superseded by the clean planner PNG)."
-      },
-      {
-        "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/classic-2-with-soft-case-pedal-boards-pt-cl2-sc-pedaltrain-4.jpg?v=1666898626",
-        "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 3,
-        "notes": "Official empty board with slight perspective; not used."
+        "notes": "Official Pedaltrain board-only top-down fallback (1000x562); same product shot as the Andertons image."
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2PBPMeasurements.png?v=1666898626",
         "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 4,
+        "priority": 3,
         "notes": "Measurement/planner image loaded with pedals and overlays; rejected for an empty-board asset."
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/PedaltrainClassic2SoftCaseComposite.png?v=1666898626",
         "sourcePage": "https://pedaltrain.com/products/pt-cl2-sc",
-        "priority": 5,
+        "priority": 4,
         "notes": "Board + soft case composite at an angle; rejected."
       }
     ],
