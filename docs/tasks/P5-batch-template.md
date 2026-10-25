@@ -70,3 +70,4 @@ Read only the sections the task file points to; do not read whole docs.
 
 - Copy this file to `docs/tasks/P5-03-<kind>-<brand>-<batch>.md` for the batch session.
 - **Changing this template** (or the batch rules) requires the `token-usage-reviewer`; copying it for a per-batch task is exempt. See `AGENTS.md` §Agent/token review.
+- **If this batch uncovers a process/rule gap**, do not edit the rules in this PR. Propose the change + the `token-usage-reviewer` to the owner first; then fold the verdict into a separate plan/rule update.

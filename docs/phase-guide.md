@@ -57,6 +57,7 @@ Run the **`token-usage-reviewer`** (`.opencode/agent/token-usage-reviewer.md`) *
 - **Exempt:** per-batch task copies (`docs/tasks/P5-03-<kind>-<brand>-<batch>.md`) and routine data batches.
 - **Before a parallel wave:** max 3 batches, light models by default, per-batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave soft ≤1.2M / hard ≤2.4M; a global stop path. BOSS 209 → 6×~35 in 2 waves.
 - It is read-only. If it cannot make the plan lean/safe, **STOP** and report.
+- **Batch retro:** if a batch/QA step uncovers a process/plan gap, **propose** the change and the token review to the owner first; do not silently edit the rules.
 
 ## P4 — Cables (COMPLETE — phase gate PASSED)
 Cable model + jack anchors · drag-connect + endpoints · auto length calc.

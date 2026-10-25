@@ -35,4 +35,5 @@ You coordinate the P5 catalog batches. You **do not research a batch yourself an
 - Optional fields are opportunistic (same base pass); no extra searches.
 - Vision only via `catalog-image-reviewer` on 10–30-image contact sheets; cache verdicts with `pnpm asset:qa`.
 - If a model/provider call fails, STOP and report the exact model, operation, error and suggested action.
+- If a batch/QA step exposes a process/plan gap, **propose it plus a `token-usage-reviewer` pass to the owner** before changing the plan/rules; do not silently fold a process change into a batch.
 - English only.
