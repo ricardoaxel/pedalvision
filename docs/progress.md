@@ -1,10 +1,10 @@
 # Progress
 
 **Current phase:** P5 — Catalog completion. **P4 is COMPLETE**: P4-01 (PR #30, squash `d0d79ad`), P4-02 (PR #31, squash `f001a0b`), P4-03 (PR #33, squash `c0c419b`) and the **P4 phase gate** (merged 2026-10-21, PR #34, squash `caee58d`) are **DONE**. The **P5 plan restructure** is **DONE** (merged 2026-10-21, PR #32, squash `6e7deef`).
-**Next task:** **P5-03 — first parallel wave (Red Panda + one board batch).** Meris first-10 is **DONE (PR #42)**; batch guardrails + `token-usage-reviewer` are **DONE (PR #43 merged 2026-10-25, squash `722505b`; post-merge `471f7c5`)**; Temple Duo 24 is **DONE (PR #41)**. Before the wave, run the `token-usage-reviewer` on the wave plan and record its verdict/budget (soft ≤400k / hard ≤800k tokens per batch; wave ≤1.2M/2.4M; max 3 in flight). Then BOSS 6×~35 in 2 waves → continuous waves. **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed.
+**Next task:** **P5-03 — wave 1 in flight: Red Panda (14) + Pedaltrain Nano family (3 boards).** Meris (#42), batch guardrails + token reviewer (#43) and Temple Duo 24 (#41) are **DONE**. The wave-plan review verdict was **`adjust`**: 2 batches, slot 3 empty; Pedaltrain limited to the **Nano family (Nano, Nano+, Nano MAX)**, not the 10–25-board slice; parent session coordinates (no extra coordinator agent). Budgets: Red Panda 0.33/0.55/0.89M, boards 0.11/0.19/0.29M, wave 0.44/0.74/1.18M; proxy caps (12 min/item, 4 h, ≤3 candidates, ≤2 vision passes, ≤1 code pass) until token usage is reported. Red Panda is Tier B (calibration). **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed.
 **DeepSeek opencode-go only (owner instruction, 2026-10-24):** all design/visual reviews use `opencode-go/deepseek-v4.1-flash` (vision); never free/Gemini/Claude/other.
 
-**Last updated:** 2026-10-25 (Meris + batch guardrails merged — PRs #42/#43; next = Red Panda + one board wave)
+**Last updated:** 2026-10-25 (wave 1 started — Red Panda 14 + Pedaltrain Nano 3; verdict `adjust`)
 
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
@@ -52,7 +52,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- No batch in flight — **next = Red Panda + one board parallel wave.** Run the `token-usage-reviewer` on the wave plan first; then one light researcher per batch, scripts for images, one contact sheet/review, and one PR per batch.
+- **P5-03 — wave 1 (2 batches).** **Red Panda** (`red-panda/red-panda-1`, 14 pedals) + **Pedaltrain Nano family** (`pedaltrain/nano-1`, 3 boards: Nano, Nano+, Nano MAX); **slot 3 deliberately empty**. Wave review: **`adjust`** — do not use the 10–25-board Pedaltrain slice; one family SVG; one contact-sheet vision pass per batch; `design-reviewer` only if a board gate fails; parent session coordinates (no coordinator agent); parent owns `curated.ts`. Budgets: Red Panda 0.33/0.55/0.89M; boards 0.11/0.19/0.29M; wave 0.44/0.74/1.18M. Enforce proxies (12 min/item, 4 h, ≤3 candidates, ≤2 vision, ≤1 code pass) because the runner currently records `tokens: 0`.
 
 ## Follow-ups
 - **P4 phase gate outcome (2026-10-21 — PR #34; light model).** Verdict **changes-required**, no P4 regression. 5 findings: (1) **should-fix (code)** read-only shares hide jack ticks (`src/canvas/PedalNode.tsx:394`), so the read-only tick cue is unreachable and the graph looks disconnected; (2) **should-fix (code)** selected-board export bounds omit the cubic cable curve (`src/lib/exportScene.ts:360-369`), so long outward handles can be clipped; (3) docs snap radius was wrong (real code: **18 px mouse / 44 px touch**, hit disc 28/44 px diameter) — fixed; (4) `design.md` typed `Cable.from` as item-only though an instrument endpoint is a valid source — fixed to `CableEnd`; (5) `progress.md` still said P5-01 could run parallel with P4-03 — fixed. Findings **1–2 are recorded as the follow-up task P4-05** (docs-only gate; no code expansion). Confirmation pass not required (docs-only; test suite is the re-check).
