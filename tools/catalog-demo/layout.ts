@@ -106,6 +106,9 @@ export function packItems(
 	};
 }
 
+const MAX_CUSTOM_BOARD_CM = 200;
+const CUSTOM_PACK_WIDTH_CM = 100;
+
 /** Choose the smallest catalog board that fits; fall back to a custom board. */
 export function chooseBoard(
 	items: DemoItem[],
@@ -147,14 +150,26 @@ export function chooseBoard(
 		}
 	}
 
-	// No catalog board fits: make a tightly sized custom board instead of
-	// splitting the batch across multiple boards.
-	const rough = packItems(items, { widthCm: 10_000, heightCm: 10_000 });
+	// No catalog board fits: wrap at a sensible width, then use a custom board.
+	// The share codec rejects custom boards over 200 cm on either axis, so fail
+	// clearly instead of emitting an unopenable link.
+	const rough = packItems(items, {
+		widthCm: CUSTOM_PACK_WIDTH_CM,
+		heightCm: 10_000,
+	});
 	if (!rough) throw new Error("could not lay out the batch");
 	const custom = {
 		widthCm: Math.ceil(rough.widthCm),
 		heightCm: Math.ceil(rough.heightCm),
 	};
+	if (
+		custom.widthCm > MAX_CUSTOM_BOARD_CM ||
+		custom.heightCm > MAX_CUSTOM_BOARD_CM
+	) {
+		throw new Error(
+			`custom demo board ${custom.widthCm}×${custom.heightCm} cm exceeds ${MAX_CUSTOM_BOARD_CM} cm; split the batch`,
+		);
+	}
 	const pack = packItems(items, custom);
 	if (!pack) throw new Error("could not lay out the custom board");
 	return { board: { boardRefId: null, ...custom }, pack };
@@ -202,18 +217,32 @@ export function itemSnapshots(
 	});
 }
 
-/** Chain each item's first available output to the next item's first input. */
-export function chainCables(items: DemoItem[]): DemoCable[] {
-	const connectable = items
-		.map((item) => {
-			const jacks = item.jacks ?? [];
-			return {
-				item,
-				out: jacks.findIndex((jack) => jack.kind === "out"),
-				in: jacks.findIndex((jack) => jack.kind === "in"),
-			};
-		})
-		.filter((entry) => entry.out >= 0 && entry.in >= 0);
+export type CablePlan = {
+	cables: DemoCable[];
+	/** Items with no audio in/out (supplies, interfaces, incomplete jacks). */
+	unconnected: string[];
+};
+
+/**
+ * Chain each item's first available output to the next item's first input.
+ * Catalog pedals with no jack data use the app's documented fallback pair
+ * (IN=0 / OUT=1). Items with connector data but no audio in/out (e.g. MIDI I/O)
+ * are reported as unconnected instead of being wired to a non-audio jack.
+ */
+export function cablePlan(items: DemoItem[]): CablePlan {
+	const connectable: Array<{ item: DemoItem; out: number; in: number }> = [];
+	const unconnected: string[] = [];
+	for (const item of items) {
+		const jacks = item.jacks ?? [];
+		if (jacks.length === 0 && item.category === "pedal") {
+			connectable.push({ item, out: 1, in: 0 });
+			continue;
+		}
+		const out = jacks.findIndex((jack) => jack.kind === "out");
+		const input = jacks.findIndex((jack) => jack.kind === "in");
+		if (out >= 0 && input >= 0) connectable.push({ item, out, in: input });
+		else unconnected.push(item.id);
+	}
 
 	const cables: DemoCable[] = [];
 	for (let i = 0; i < connectable.length - 1; i++) {
@@ -226,7 +255,11 @@ export function chainCables(items: DemoItem[]): DemoCable[] {
 			to: { itemUid: `demo-item-${to.item.id}`, jack: String(to.in) },
 		});
 	}
-	return cables;
+	return { cables, unconnected };
+}
+
+export function chainCables(items: DemoItem[]): DemoCable[] {
+	return cablePlan(items).cables;
 }
 
 /** Place board-batch items in a wrapping row (demo link for board batches). */

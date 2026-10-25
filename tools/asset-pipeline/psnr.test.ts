@@ -31,6 +31,14 @@ describe("psnrRgba", () => {
 		expect(psnr).toBeGreaterThan(30);
 	});
 
+	it("fails a fully transparent image instead of passing it", () => {
+		const transparent = {
+			...base,
+			data: new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0]),
+		};
+		expect(psnrRgba(transparent, transparent)).toBe(Number.NEGATIVE_INFINITY);
+	});
+
 	it("throws on a size mismatch", () => {
 		expect(() => psnrRgba(base, { ...base, width: 3 })).toThrow(
 			/size mismatch/,

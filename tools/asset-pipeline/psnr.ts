@@ -30,7 +30,7 @@ export function psnrRgba(a: Rgba, b: Rgba): number {
 			samples += 1;
 		}
 	}
-	if (samples === 0) return Number.POSITIVE_INFINITY;
+	if (samples === 0) return Number.NEGATIVE_INFINITY;
 	const mse = sum / samples;
 	return mse === 0
 		? Number.POSITIVE_INFINITY

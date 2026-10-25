@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
 	boardRowSnapshots,
+	cablePlan,
 	chainCables,
 	chooseBoard,
 	type DemoItem,
@@ -54,6 +55,21 @@ describe("chooseBoard", () => {
 		expect(chosen.board.widthCm).toBeGreaterThanOrEqual(90);
 		expect(chosen.board.heightCm).toBeGreaterThanOrEqual(40);
 	});
+
+	it("wraps a full 25-pedal batch onto a valid custom board", () => {
+		const batch = Array.from({ length: 25 }, (_, index) => ({
+			id: `p${index}`,
+			widthCm: 7,
+			heightCm: 12,
+			category: "pedal" as const,
+			jacks: [{ kind: "in" }, { kind: "out" }],
+		}));
+		const chosen = chooseBoard(batch, []);
+		expect(chosen.board.boardRefId).toBeNull();
+		expect(chosen.board.widthCm).toBeLessThanOrEqual(200);
+		expect(chosen.board.heightCm).toBeLessThanOrEqual(200);
+		expect(chosen.pack.placements).toHaveLength(25);
+	});
 });
 
 describe("chainCables", () => {
@@ -78,10 +94,20 @@ describe("chainCables", () => {
 		expect(cables[0]?.to).toEqual({ itemUid: "demo-item-b", jack: "0" });
 	});
 
-	it("returns no cables when no item has both an input and an output", () => {
-		expect(chainCables([items[0] as DemoItem, items[1] as DemoItem])).toEqual(
-			[],
-		);
+	it("uses the documented IN/OUT fallback for pedals with no jack data", () => {
+		const cables = chainCables([items[0] as DemoItem, items[1] as DemoItem]);
+		expect(cables).toHaveLength(1);
+		expect(cables[0]?.from).toEqual({ itemUid: "demo-item-a", jack: "1" });
+		expect(cables[0]?.to).toEqual({ itemUid: "demo-item-b", jack: "0" });
+	});
+
+	it("reports non-audio items instead of wiring a non-audio jack", () => {
+		const plan = cablePlan([
+			{ ...(items[0] as DemoItem), jacks: [{ kind: "in" }, { kind: "out" }] },
+			{ ...(items[2] as DemoItem), jacks: [{ kind: "midi" }] },
+		]);
+		expect(plan.cables).toEqual([]);
+		expect(plan.unconnected).toEqual([items[2]?.id]);
 	});
 });
 

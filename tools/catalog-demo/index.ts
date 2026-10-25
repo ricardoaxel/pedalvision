@@ -10,7 +10,7 @@ import { encodeDemoHash } from "./encode.ts";
 import {
 	boardRowSnapshots,
 	boardSnapshot,
-	chainCables,
+	cablePlan,
 	chooseBoard,
 	type DemoItem,
 	type DemoSnapshot,
@@ -247,12 +247,13 @@ async function main(): Promise<void> {
 		args.board,
 	);
 	const boardUid = "demo-board-1";
+	const plan = cablePlan(items);
 	const snapshot: DemoSnapshot = {
 		boards: [boardSnapshot(board, boardUid)],
 		items: itemSnapshots(items, pack, boardUid),
 		customPedals: [],
 		endpoints: [],
-		cables: chainCables(items),
+		cables: plan.cables,
 	};
 	const name = args.name ?? `Batch demo — ${ids.length} items`;
 	const hash = encodeDemoHash(name, snapshot);
@@ -267,9 +268,15 @@ async function main(): Promise<void> {
 		board: board.boardRefId ?? `custom ${board.widthCm}×${board.heightCm} cm`,
 		items: snapshot.items.length,
 		cables: snapshot.cables.length,
+		unconnected: plan.unconnected,
 		hashChars: hash.length,
 		url,
 	};
+	if (plan.unconnected.length > 0) {
+		console.error(
+			`warning: no audio in/out cable anchors for: ${plan.unconnected.join(", ")}`,
+		);
+	}
 	if (args.out)
 		await writeFile(resolve(process.cwd(), args.out), `${url}\n`, "utf8");
 	console.log(JSON.stringify(summary, null, 2));

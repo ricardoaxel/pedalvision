@@ -74,6 +74,14 @@ export async function checkJackLayoutFiles(
 	const base = join(root, "data/catalog/research/pedals");
 	const files = await walkJson(base);
 	const issues: JackLayoutIssue[] = [];
+	if (files.length === 0) {
+		issues.push({
+			file: base,
+			message:
+				"no raw pedal batch files found; refusing to report a green jack gate for an empty/missing directory",
+		});
+		return { issues, files: 0 };
+	}
 	for (const file of files) {
 		let parsed: unknown;
 		try {

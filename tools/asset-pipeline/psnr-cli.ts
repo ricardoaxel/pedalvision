@@ -68,7 +68,11 @@ async function main(): Promise<void> {
 		rgba(resolve(process.cwd(), args.avif)),
 	]);
 	const psnr = psnrRgba(reference, encoded);
-	const value = Number.isFinite(psnr) ? psnr.toFixed(2) : "Infinity";
+	const value = Number.isFinite(psnr)
+		? psnr.toFixed(2)
+		: psnr === Number.POSITIVE_INFINITY
+			? "Infinity"
+			: "-Infinity";
 	console.log(`PSNR ${value} dB (min ${args.min}) — ${args.avif}`);
 	if (psnr < args.min) {
 		console.error(

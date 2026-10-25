@@ -1,6 +1,9 @@
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import type { RawPedalRecord } from "../../src/catalog/rawSchema.ts";
-import { checkJackLayouts } from "./check-jacks.ts";
+import { checkJackLayoutFiles, checkJackLayouts } from "./check-jacks.ts";
 
 function pedal(overrides: Partial<RawPedalRecord> = {}): RawPedalRecord {
 	return {
@@ -61,5 +64,19 @@ describe("checkJackLayouts", () => {
 			}),
 		]);
 		expect(issues).toEqual([]);
+	});
+});
+
+describe("checkJackLayoutFiles", () => {
+	it("fails when the raw pedal directory is missing or empty", async () => {
+		const root = await mkdtemp(join(tmpdir(), "pedalvision-jacks-"));
+		try {
+			const result = await checkJackLayoutFiles(root);
+			expect(result.files).toBe(0);
+			expect(result.issues).toHaveLength(1);
+			expect(result.issues[0]?.message).toContain("no raw pedal batch files");
+		} finally {
+			await rm(root, { recursive: true, force: true });
+		}
 	});
 });
