@@ -1,0 +1,2950 @@
+[
+  {
+    "id": "meris-enzo",
+    "brand": "Meris",
+    "name": "Enzo",
+    "aliases": [
+      "Enzo Multi-Voice Instrument Synthesizer"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "synth",
+      "pitch",
+      "filter",
+      "ring-mod",
+      "delay",
+      "chorus",
+      "compressor"
+    ],
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris Enzo product page and manual v5: 4.25 in wide x 4.5 in long x 2 in tall = 10.80 x 11.43 x 5.08 cm (matches the provisional 10.8 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS-capable input on the right side: mono via TS or stereo via TRS (global MONO/TRS input mode). Instrument or line/synth headroom. Edge from Meris' compact layout; exact position not published, so pos is omitted."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo output on the left side; the Split option keeps the dry signal on the right output. Position not published, so pos is omitted."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Multi-function EXP jack on the rear (top) edge: expression pedal, tap switch, 4-button preset switch, or MIDI in/out over TRS with the Meris MIDI I/O."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the rear (top) edge."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 2.1 mm jack; official spec is 'current draw < 150 mA'. No battery operation documented; power supply not included."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "One TRS input jack and one TRS output jack; switchable instrument or line/synth headroom; split-output option."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "snrDb": 115,
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Digitally controlled analog dry path for the wet/dry mix; no effects loop, headphone output or DI."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 footswitches: Bypass and Tap (Hold for alt functions)",
+        "tapTempo": true,
+        "note": "Expression pedal can morph all parameters simultaneously; external tap switch also supported over the EXP jack."
+      },
+      "midi": {
+        "din5": "none",
+        "usb": false,
+        "ble": false,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "thru": true,
+        "note": "MIDI in/out over TRS through the EXP jack using the Meris MIDI I/O (conversion box not included); MIDI beat clock, CC and preset send/receive supported. TRS MIDI wiring type not stated officially."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP, 24-bit A/D and D/A",
+        "sampleRateKhz": 48,
+        "bitDepth": 24,
+        "trails": true,
+        "note": "Premium analog signal path with Analog Devices JFET input section; wet/dry mix in the analog domain."
+      },
+      "physical": {
+        "weightG": 414,
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "brushed aluminum with translucent gold coat",
+        "display": "none (LED indicators)",
+        "footswitches": 2,
+        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
+        "powerJackLocation": "rear (top) edge",
+        "batteryCompartment": false,
+        "note": "14.6 oz (414 g); 4.25 x 4.5 x 2 in enclosure."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "snrDb": 115,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "trueStereo": false,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "dryWetMix": true,
+        "trails": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "presets": 16,
+        "note": "Trails and split-output options are global settings; presets available via external 4-preset switch or MIDI."
+      },
+      "lifecycle": {
+        "year": 2018,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2018/06/Meris_Enzo_Manual_v5.pdf"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "both",
+    "color": "gold",
+    "year": 2018,
+    "status": "current",
+    "notes": "Meris Enzo: multi-voice instrument synthesizer with Poly, Mono and Arp modes, 6-mode filter, ring modulation, tap delay and a dry-mode compressor; stereo TRS in/out, 9V DC at under 150 mA.",
+    "videos": [
+      {
+        "url": "https://youtu.be/AEB-HyNV6LU",
+        "title": "Meris Enzo - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 299,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/enzo/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/06/Meris_Enzo_Manual_v5.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/06/Meris-Enzo-Front-Controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/06/Meris-Enzo-Front-Controls.png",
+        "sourcePage": "https://meris.us/product/enzo/",
+        "priority": 1,
+        "notes": "Official top-down control-map render of the complete enclosure (489x535 preview crop, near the 4.25:4.5 footprint ratio). Pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/06/Meris_enzo.jpg",
+        "sourcePage": "https://meris.us/product/enzo/",
+        "priority": 2,
+        "notes": "Official studio product photo (1500x1280 family); view/angle not verifiable from the page markup, so treat as a secondary cutout candidate."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Pitch",
+        "Filter",
+        "Mix",
+        "Filter Envelope",
+        "Modulation",
+        "Sustain"
+      ],
+      "switches": [
+        "Alt (hold)",
+        "Synth Mode select",
+        "Tap",
+        "Bypass"
+      ],
+      "synthModes": [
+        "Poly",
+        "Mono",
+        "Arp",
+        "Dry"
+      ],
+      "filterTypes": [
+        "Ladder lowpass",
+        "Ladder shelving bandpass",
+        "Ladder highpass",
+        "State-variable lowpass",
+        "State-variable bandpass",
+        "State-variable highpass"
+      ],
+      "maxDelayMs": 530,
+      "presets": 16,
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "powerSupplyIncluded": false,
+      "jackPositions": "Meris' compact enclosure places audio I/O on the sides (input right, output left) and EXP plus 9V DC on the rear/top edge; exact jack offsets are not published and were not measured, so no pos values were recorded.",
+      "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in); 414 g (14.6 oz)",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q90 800/350; PSNR 42.03 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-enzo-x",
+    "brand": "Meris",
+    "name": "Enzo X",
+    "aliases": [
+      "Enzo X Modular Instrument Synthesizer"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "synth",
+      "pitch",
+      "filter",
+      "ring-mod",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "vibrato",
+      "bitcrusher",
+      "overdrive",
+      "compressor",
+      "sequencer",
+      "tuner"
+    ],
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris Enzo X product page and manual v1.5.1: 7.25 in wide x 4.5 in long x 2 in tall = 18.42 x 11.43 x 5.08 cm (matches the provisional 18.42 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN L",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left input on the rear panel; instrument or line/synth headroom. Rear-panel jack order is not published, so pos is omitted."
+      },
+      {
+        "label": "IN R",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right input on the rear panel; stereo input uses separate L/R jacks."
+      },
+      {
+        "label": "OUT L",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left output on the rear panel."
+      },
+      {
+        "label": "OUT R",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right output on the rear panel."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Dedicated expression pedal jack on the rear panel; up to 6 expression assignments per preset."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI input on the rear panel."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI output on the rear panel."
+      },
+      {
+        "label": "USB-C",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "usb-c",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "USB-C on the rear panel for firmware updates and MIDI over USB (requires firmware 1.5 or newer); also used with the Meris prEDITOR editor/librarian."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm; at least 300 mA."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 300 mA, 2.1 mm jack (at least 300 mA required)."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "True stereo processing with separate L/R input and output jacks (the poly pitch shifter runs in mono); instrument or line/synth headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "channels": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "snrDb": 115,
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Digitally controlled analog mix bus; true stereo signal path."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "3 preset footswitches plus a Hold Modifier switch (momentary/latching/tap per preset)",
+        "tapTempo": true,
+        "note": "Front-panel LED buttons mirror the footswitches for desktop use; C1/C2/C3 encoders for editing."
+      },
+      "midi": {
+        "din5": "in-out",
+        "type": "din5",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "MIDI In and Out on standard 5-pin DIN jacks plus MIDI over USB-C (firmware 1.5+); MIDI note input drives all 6 voices with pitch and mod wheel support; beat clock sync is selectable per preset."
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "USB-C for firmware updates, MIDI over USB and prEDITOR compatibility; class compliance not stated officially."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP on an advanced ARM processor, 24-bit A/D and D/A",
+        "sampleRateKhz": 48,
+        "bitDepth": 24,
+        "trails": true,
+        "note": "Dimmable screen and logo light; selectable spillover for delay and reverb trails."
+      },
+      "physical": {
+        "weightG": 680,
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "metal, translucent gold with metallic flake",
+        "display": "full-color LCD",
+        "footswitches": 4,
+        "jackOrientation": "all connections on the rear panel",
+        "powerJackLocation": "rear panel",
+        "batteryCompartment": false,
+        "note": "24 oz (680 g); same depth and height as the compact Meris pedals."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "snrDb": 115,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "trueStereo": true,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "presets": 99,
+        "banks": 33,
+        "dryWetMix": true,
+        "trails": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "expressionAssignments": true,
+        "tuner": true,
+        "note": "99 preset locations in 33 banks, favorite bank of 3, front-panel bank up/down and 3 preset buttons; drive and modulation can run in parallel with the dry bus."
+      },
+      "lifecycle": {
+        "year": 2025,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2026/07/Enzo_X_v1.5.1.pdf",
+        "firmware": "1.5.5"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "both",
+    "color": "gold",
+    "year": 2025,
+    "status": "current",
+    "notes": "Meris Enzo X: modular polyphonic instrument synthesizer with 5 synth modes, 6 voices, ADSR envelopes, MercuryX-derived reverbs, 2.5 s stereo delay, drives and modulation, all in a double-width enclosure with DIN MIDI and USB-C.",
+    "videos": [
+      {
+        "url": "https://youtu.be/Xgb4XyF8q1U",
+        "title": "Meris Enzo X - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 599,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/enzo-x/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/Enzo_X_v1.5.1.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2025/01/Enzo-X-front-controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2025/01/Enzo-X-front-controls.png",
+        "sourcePage": "https://meris.us/product/enzo-x/",
+        "priority": 1,
+        "notes": "Official top-down control-map render (700x446 preview) whose aspect matches the 7.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2025/01/meris-enzo-back.jpg",
+        "sourcePage": "https://meris.us/product/enzo-x/",
+        "priority": 2,
+        "notes": "Official rear-panel studio photo (1500x1280 family); useful for jack/connector verification, not a top-down scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Pitch",
+        "Filter",
+        "Level",
+        "Mod",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "synthModes": [
+        "Mono",
+        "Poly",
+        "Arp",
+        "Dry Mono",
+        "Dry Poly"
+      ],
+      "voices": 6,
+      "presets": 99,
+      "factoryPresets": 75,
+      "artistPresets": 15,
+      "arpSteps": "1-16, up/down/up-down/Enzo modes",
+      "tunerReferenceHz": "425-455 (selectable)",
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "Manual labels the whole connector set as the rear panel; the app maps the rear edge to the top edge. Individual jack order/offsets are not published or measured, so no pos values were recorded.",
+      "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
+      "firmware": "1.5.5 (MIDI over USB added in 1.5)",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 41.66 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-hedra",
+    "brand": "Meris",
+    "name": "Hedra",
+    "aliases": [
+      "Hedra 3-Voice Rhythmic Pitch Shifter"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "pitch",
+      "delay"
+    ],
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris Hedra product page and manual v9: 4.25 in wide x 4.5 in long x 2 in tall = 10.80 x 11.43 x 5.08 cm (matches the provisional 10.8 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); instrument or line/synth headroom. Exact position not published, so pos is omitted."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo output on the left side; Dual modes produce a stereo image. Position not published, so pos is omitted."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Multi-function EXP jack on the rear (top) edge: expression pedal, tap switch, 4-button preset switch, or MIDI in/out over TRS with the Meris MIDI I/O."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the rear (top) edge."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 2.1 mm jack; official spec is 'current draw < 150 mA'. No battery operation documented."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "One TRS input and one TRS output jack; switchable guitar or synth/line headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Digitally controlled analog dry/mix path; no effects loop, headphones or DI."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 footswitches: Bypass and Tap (Hold for alt functions)",
+        "tapTempo": true,
+        "note": "Expression pedal can control all parameters simultaneously; external tap switch also supported over the EXP jack."
+      },
+      "midi": {
+        "din5": "none",
+        "usb": false,
+        "ble": false,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "thru": true,
+        "note": "MIDI in/out over TRS through the EXP jack using the Meris MIDI I/O (not included); MIDI beat clock, CC and preset send/receive supported."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP, 24-bit A/D and D/A",
+        "sampleRateKhz": 48,
+        "bitDepth": 24,
+        "note": "Premium analog signal path with Analog Devices JFET input."
+      },
+      "physical": {
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "brushed aluminum with clear coat",
+        "display": "none (LED indicators)",
+        "footswitches": 2,
+        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
+        "powerJackLocation": "rear (top) edge",
+        "batteryCompartment": false,
+        "note": "Weight not published in the official specs."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "trueStereo": false,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "dryWetMix": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "note": "4 delay configurations (Dual, Dual + Series, Series, Pitch Feedback); presets available via external 4-preset switch or MIDI."
+      },
+      "lifecycle": {
+        "year": 2019,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2019/03/Meris_Hedra_Manual_v9.pdf"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "silver",
+    "year": 2019,
+    "status": "current",
+    "notes": "Meris Hedra: 3-voice rhythmic pitch shifter with chromatic or key-based harmony, per-voice time divisions, 4 delay matrices and glide/pitch-correction modes; 9V DC, under 150 mA.",
+    "videos": [
+      {
+        "url": "https://youtu.be/Rt2Nh2hJ-kA",
+        "title": "Meris Hedra - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 299,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/hedra-pedal/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2019/03/Meris_Hedra_Manual_v9.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2019/03/hedra_front_controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2019/03/hedra_front_controls.png",
+        "sourcePage": "https://meris.us/product/hedra-pedal/",
+        "priority": 1,
+        "notes": "Official top-down control-map render (489x535 preview) matching the compact 4.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2019/03/meris_hedra_hori.jpg",
+        "sourcePage": "https://meris.us/product/hedra-pedal/",
+        "priority": 2,
+        "notes": "Official horizontal hero/lifestyle shot (2000x1135); angled with background, so not usable for true-scale extraction."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Key",
+        "Micro Tune",
+        "Mix",
+        "Pitch 1",
+        "Pitch 2",
+        "Pitch 3"
+      ],
+      "modes": [
+        "Dual",
+        "Dual + Series",
+        "Series",
+        "Pitch Feedback"
+      ],
+      "scaleTypes": [
+        "Major",
+        "Minor",
+        "Melodic Minor",
+        "Harmonic Minor",
+        "Double Harmonic",
+        "Eastern Pentatonic",
+        "Minor Pentatonic"
+      ],
+      "maxDelayMs": 520,
+      "maxDelayDualMs": 260,
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q90 800/350; PSNR 42.77 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-lvx",
+    "brand": "Meris",
+    "name": "LVX",
+    "aliases": [
+      "LVX Modular Delay System"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "delay",
+      "looper",
+      "pitch",
+      "filter",
+      "preamp",
+      "bitcrusher",
+      "tuner"
+    ],
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris LVX product page and manual v1.5.1: 7.25 in wide x 4.5 in long x 2 in tall = 18.42 x 11.43 x 5.08 cm (matches the provisional 18.42 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN L",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left input on the rear panel; instrument or line/synth headroom. Rear-panel jack order is not published, so pos is omitted."
+      },
+      {
+        "label": "IN R",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right input on the rear panel; stereo input uses separate L/R jacks."
+      },
+      {
+        "label": "OUT L",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left output on the rear panel."
+      },
+      {
+        "label": "OUT R",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right output on the rear panel."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Dedicated expression pedal jack on the rear panel; assignable to multiple parameters at once."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI input on the rear panel."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI output on the rear panel."
+      },
+      {
+        "label": "USB-C",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "usb-c",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "Rear USB-C for firmware updates (mounts as a USB drive) and MIDI over USB with firmware 1.5+; prEDITOR editor/librarian compatible."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm; at least 300 mA."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 300 mA, 2.1 mm jack (at least 300 mA required)."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "True stereo processing with separate L/R jacks (the poly pitch shifter operates in mono); instrument or line/synth headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "channels": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "snrDb": 115,
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Digitally controlled analog mix bus; true stereo processing elements."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "3 preset footswitches plus a Tap footswitch (tap also enters Looper mode when held)",
+        "tapTempo": true,
+        "note": "Front-panel LED buttons mirror the footswitches for desktop use; C1/C2/C3 encoders for navigation and editing."
+      },
+      "midi": {
+        "din5": "in-out",
+        "type": "din5",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "MIDI In and Out on 5-pin DIN plus MIDI over USB-C (firmware 1.5+); CC control of parameters, preset send/receive, beat clock sync with per-preset ignore, tuner and tap CCs."
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "USB-C exposes the unit as a USB drive for firmware updates and carries MIDI; prEDITOR editor/librarian support from firmware 1.2.1."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP on an advanced ARM processor, 24-bit A/D and D/A",
+        "sampleRateKhz": 48,
+        "bitDepth": 24,
+        "trails": true,
+        "note": "Dimmable screen and logo light; modular delay architecture with connectable processing elements."
+      },
+      "physical": {
+        "weightG": 680,
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "metal, white powder coat with iridescent flake",
+        "display": "full-color LCD",
+        "footswitches": 4,
+        "jackOrientation": "all connections on the rear panel",
+        "powerJackLocation": "rear panel",
+        "batteryCompartment": false,
+        "note": "24 oz (680 g); same depth and height as the compact Meris pedals."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "snrDb": 115,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "trueStereo": true,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "presets": 99,
+        "banks": 33,
+        "dryWetMix": true,
+        "trails": true,
+        "looper": true,
+        "tuner": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "expressionAssignments": true,
+        "note": "99 presets in 33 banks, favorite bank of 3, always-available 60-second true stereo looper with loop FX, deep Modifier section."
+      },
+      "lifecycle": {
+        "year": 2022,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2026/07/LVX_v1.5.1.pdf",
+        "firmware": "1.5.6"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "both",
+    "color": "white",
+    "year": 2022,
+    "status": "current",
+    "notes": "Meris LVX: modular stereo delay system with 2540 ms of configurable dual delay, a 60-second true stereo looper, modular processing elements (preamps, pitch, filter, cassette, granulize) and full DIN MIDI; 9V DC, 300 mA.",
+    "videos": [
+      {
+        "url": "https://youtu.be/0QFQ10yL3jI",
+        "title": "Meris LVX - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 599,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research; page showed 'Out of stock'."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/lvx/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/LVX_v1.5.1.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2022/05/meris-LVX-front-controls-2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2022/05/meris-LVX-front-controls-2.png",
+        "sourcePage": "https://meris.us/product/lvx/",
+        "priority": 1,
+        "notes": "Official top-down control-map render (700x446 preview) matching the 7.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2022/05/meris-LVX-back-standard.jpg",
+        "sourcePage": "https://meris.us/product/lvx/",
+        "priority": 2,
+        "notes": "Official rear-panel studio photo (1500x1280 family); useful for connector verification, not a top-down scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Time",
+        "Feedback",
+        "Mix",
+        "Mod",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "maxDelayMs": 2540,
+      "looperSeconds": 60,
+      "presets": 99,
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "Manual documents a rear-panel connector block (audio L/R, EXP, MIDI in/out, USB-C, 9V); mapped to the top edge. Jack order/offsets are not published or measured, so no pos values were recorded.",
+      "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
+      "firmware": "1.5.6 (MIDI over USB and looper quantize added in 1.5)",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 45.25 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-midi-i-o",
+    "brand": "Meris",
+    "name": "MIDI I/O",
+    "aliases": [
+      "Meris MIDI I/O",
+      "MIDI to TRS interface"
+    ],
+    "category": "pedal",
+    "deviceType": "interface",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "other"
+    ],
+    "effectTypes": [
+      "utility"
+    ],
+    "widthCm": 9.4,
+    "heightCm": 6.6,
+    "dimensionsSource": "Meris MIDI I/O product page and manual v1b: 3.7 in wide x 2.6 in deep x 1.5 in tall = 9.40 x 6.60 x 3.81 cm. The provisional 9.4 x 6.76 cm was close; official depth is 2.6 in (6.60 cm), not 6.76 cm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI input from a controller, DAW interface or Bluetooth MIDI adapter. Box-edge layout is not documented, so pos is omitted."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI output back to the controller/DAW; also carries thru data depending on each connected pedal's MIDI Thru setting."
+      },
+      {
+        "label": "PEDAL 1",
+        "kind": "midi",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "midi",
+        "note": "TRS output to one Meris pedal's EXP jack set to MIDI mode. Box-edge layout not documented, so edge/pos omitted."
+      },
+      {
+        "label": "PEDAL 2",
+        "kind": "midi",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "midi",
+        "note": "TRS output to a second Meris pedal (up to 4 supported)."
+      },
+      {
+        "label": "PEDAL 3",
+        "kind": "midi",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "midi",
+        "note": "TRS output to a third Meris pedal (up to 4 supported)."
+      },
+      {
+        "label": "PEDAL 4",
+        "kind": "midi",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "midi",
+        "note": "TRS output to a fourth Meris pedal (up to 4 supported)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm; power supply not included."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative, 10 mA, 2.1 mm jack; the official page states the power supply is not included."
+    },
+    "optional": {
+      "control": {
+        "expression": 0,
+        "footswitch": false,
+        "tapTempo": false,
+        "note": "Passive interface box: no footswitches or expression input; MIDI in/out activity LEDs on the top panel."
+      },
+      "midi": {
+        "din5": "in-out",
+        "type": "din5",
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "Converts DIN MIDI to the TRS MIDI-over-EXP format used by Meris pedals; passes CC, program change and beat clock. TRS wiring type is not stated officially."
+      },
+      "wireless": {
+        "note": "No built-in Bluetooth or Wi-Fi; the official page lists compatibility with a Yamaha MD-BT01 Bluetooth MIDI adapter (sold separately)."
+      },
+      "physical": {
+        "weightG": 181,
+        "depthCm": 6.6,
+        "heightCm": 3.81,
+        "enclosure": "metal",
+        "display": "none (MIDI activity LEDs)",
+        "footswitches": 0,
+        "batteryCompartment": false,
+        "note": "6.4 oz (181 g); compact pedalboard-friendly box, includes one flat 11 in TRS cable."
+      },
+      "lifecycle": {
+        "year": 2018,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2018/03/Meris_MIDI_IO_Full_Manual_v1b.pdf"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "unknown",
+    "year": 2018,
+    "status": "current",
+    "notes": "Meris MIDI I/O: DIN MIDI to TRS-MIDI interface that gives up to four Meris pedals full MIDI control, preset storage and bidirectional communication; 9V DC, 10 mA.",
+    "videos": [
+      {
+        "url": "https://youtu.be/3wr7KjRqvyU",
+        "title": "Meris MIDI I/O - official product video",
+        "source": "Meris",
+        "kind": "manual",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 89,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research; page showed 'Out of stock'."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/midi-i-o/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/03/Meris_MIDI_IO_Full_Manual_v1b.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/03/midi_io_FRNT.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.creamcitymusic.com/meris-midi-i-o-for-meris-pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-dks6ju/images/stencil/original/products/32322/570485/3c7d6312-e6fe-51cb-bc55-119afcae0626__72369.1719067480.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-dks6ju/images/stencil/original/products/32322/570485/3c7d6312-e6fe-51cb-bc55-119afcae0626__72369.1719067480.jpg?c=2",
+        "sourcePage": "https://www.creamcitymusic.com/meris-midi-i-o-for-meris-pedals/",
+        "priority": 1,
+        "notes": "Authorized-retailer top-down product photo (1000x1000, white background); used for the hosted asset (flood matte, trimmed to the box)."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/03/midi_io_FRNT.jpg",
+        "sourcePage": "https://meris.us/product/midi-i-o/",
+        "priority": 2,
+        "notes": "Official front product photo (700x595) on a plain background; rejected as the master because the long edge is below the 800 px analyzer minimum."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/03/midi_io_product_pg-1500x1280.jpg",
+        "sourcePage": "https://meris.us/product/midi-i-o/",
+        "priority": 3,
+        "notes": "Official 1500x1280 studio photo on a light-grey background; the trimmed product is only ~680 px wide and has more perspective than the retailer image."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "pedalSupport": "up to 4 Meris pedals",
+      "includedAccessories": [
+        "one flat 11 in TRS cable"
+      ],
+      "powerSupplyIncluded": false,
+      "midiLeds": "separate MIDI in and out activity LEDs",
+      "compatibility": "also works with Empress and Chase Bliss pedals (requires a special cable per the official page)",
+      "notAnEffect": true,
+      "jackPositions": "The official page/manual do not document which side each connector sits on, so edges/positions were left out for the box's own jacks rather than guessed.",
+      "dimensions": "9.40 x 6.60 x 3.81 cm (3.7 x 2.6 x 1.5 in); 181 g (6.4 oz)",
+      "imageProcessing": "Official Meris product photos were below the 800 px long edge or angled, so the authorized-retailer Cream City Music top-down product photo (1000x1000, white background) was used: processed with --matte flood, trimmed to the box, hosted as AVIF q80 800/350 (39.2 KB / 350 thumbnail), PSNR 45.73 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-mercury7",
+    "brand": "Meris",
+    "name": "Mercury7",
+    "aliases": [
+      "Mercury7 Reverb"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris Mercury7 product page and manual v4: 4.25 in wide x 4.5 in long x 2 in tall = 10.80 x 11.43 x 5.08 cm (matches the provisional 10.8 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo output on the left side. Position not published, so pos is omitted."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Multi-function EXP jack on the rear (top) edge: expression pedal, external switch, 4-button preset switch, or MIDI in/out over TRS with the Meris MIDI I/O."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the rear (top) edge."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 2.1 mm jack; official spec is 'current draw < 150 mA'."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "One TRS input and one TRS output jack; switchable guitar or synth/line headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "snrDb": 115,
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Wet/dry mix happens in the analog domain; no effects loop, headphones or DI."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 footswitches: Bypass/algorithm select and Swell",
+        "tapTempo": false,
+        "note": "Swell switch doubles as the alt-function modifier (hold); expression pedal can control all parameters at once."
+      },
+      "midi": {
+        "din5": "none",
+        "usb": false,
+        "ble": false,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "thru": true,
+        "note": "MIDI in/out over TRS through the EXP jack using the Meris MIDI I/O (not included); beat clock, CC and preset send/receive supported."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP, 24-bit A/D and D/A",
+        "note": "Handcrafted algorithmic reverbs (Ultraplate, Cathedra) with analog mix and analog dry path."
+      },
+      "physical": {
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "brushed aluminum with translucent deep blue coat",
+        "display": "none (LED indicators)",
+        "footswitches": 2,
+        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
+        "powerJackLocation": "rear (top) edge",
+        "batteryCompartment": false,
+        "note": "Weight not published in the official specs."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "snrDb": 115,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "trueStereo": false,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "dryWetMix": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "note": "Two algorithms (Ultraplate, Cathedra) with pitch-vector regeneration and auto swell; presets via external 4-preset switch or MIDI."
+      },
+      "lifecycle": {
+        "year": 2017,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2017/03/Meris_Mercury7_full_Manual-v4.pdf"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "blue",
+    "year": 2017,
+    "status": "current",
+    "notes": "Meris Mercury7: Blade Runner-inspired algorithmic reverb with Ultraplate and Cathedra algorithms, intra-tank pitch vector, modulation matrix and auto swell; stereo TRS I/O, 9V DC under 150 mA.",
+    "videos": [
+      {
+        "url": "https://youtu.be/qYJR-DotAbU",
+        "title": "Meris Mercury7 - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 299,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research; page showed 'Out of stock'."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/mercury7-reverb-2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Meris_Mercury7_full_Manual-v4.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/mercury7-reverb.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/mercury7-reverb.png",
+        "sourcePage": "https://meris.us/product/mercury7-reverb-2/",
+        "priority": 1,
+        "notes": "Official top-down control-map render (494x535 preview) close to the 4.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Mercury7.jpg",
+        "sourcePage": "https://meris.us/product/mercury7-reverb-2/",
+        "priority": 2,
+        "notes": "Official studio product photo; angle/background unverified from the markup, so treat as a secondary candidate."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Space Decay",
+        "Modulate",
+        "Mix",
+        "Lo Frequency",
+        "Pitch Vector",
+        "Hi Frequency"
+      ],
+      "algorithms": [
+        "Ultraplate",
+        "Cathedra"
+      ],
+      "pitchVectorIntervals": [
+        "octave down",
+        "slight pitch up",
+        "slight pitch down",
+        "5th up",
+        "octave up"
+      ],
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 40.95 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-mercuryx",
+    "brand": "Meris",
+    "name": "MercuryX",
+    "aliases": [
+      "MercuryX Modular Reverb System"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "reverb",
+      "chorus",
+      "vibrato",
+      "tremolo",
+      "tuner"
+    ],
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris MercuryX product page and manual v1.5: 7.25 in wide x 4.5 in long x 2 in tall = 18.42 x 11.43 x 5.08 cm (matches the provisional 18.42 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN L",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left input on the rear panel; instrument or line/synth headroom. Rear-panel jack order is not published, so pos is omitted."
+      },
+      {
+        "label": "IN R",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right input on the rear panel; stereo input uses separate L/R jacks."
+      },
+      {
+        "label": "OUT L",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left output on the rear panel."
+      },
+      {
+        "label": "OUT R",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right output on the rear panel."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Dedicated expression pedal jack on the rear panel; assignable to multiple parameters simultaneously."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI input on the rear panel."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI output on the rear panel."
+      },
+      {
+        "label": "USB-C",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "usb-c",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "Rear USB-C for firmware updates and MIDI over USB (firmware 1.5 or newer); prEDITOR editor/librarian compatible."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm; at least 300 mA."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 300 mA, 2.1 mm jack (at least 300 mA required)."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "True stereo signature: Prism uses discrete dual-mono processing; separate L/R jacks, instrument or line/synth headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "channels": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "snrDb": 115,
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Digitally controlled analog mix bus; true stereo processing (Prism is dual mono)."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "3 preset footswitches plus a Hold Modifier switch (momentary/latching/tap per preset)",
+        "tapTempo": true,
+        "note": "Front-panel LED buttons mirror the footswitches for desktop use; C1/C2/C3 encoders for navigation and editing."
+      },
+      "midi": {
+        "din5": "in-out",
+        "type": "din5",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "MIDI In and Out on 5-pin DIN plus MIDI over USB-C (firmware 1.5+); CC control, preset send/receive, beat clock with per-preset ignore."
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "USB-C for firmware updates, MIDI over USB and prEDITOR compatibility."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP on an advanced ARM processor, 24-bit A/D and D/A",
+        "sampleRateKhz": 48,
+        "bitDepth": 24,
+        "trails": true,
+        "note": "8 custom reverb structures with modular processing elements, independent stereo freeze and gate envelopes."
+      },
+      "physical": {
+        "weightG": 680,
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "metal, deep blue glossy coat",
+        "display": "full-color LCD",
+        "footswitches": 4,
+        "jackOrientation": "all connections on the rear panel",
+        "powerJackLocation": "rear panel",
+        "batteryCompartment": false,
+        "note": "24 oz (680 g); same depth and height as the compact Meris pedals."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "snrDb": 115,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "trueStereo": true,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "presets": 99,
+        "banks": 33,
+        "dryWetMix": true,
+        "trails": true,
+        "tuner": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "expressionAssignments": true,
+        "note": "99 presets in 33 banks, favorite bank of 3, 2.54 s stereo predelay with modular feedback routing, variable global spillover."
+      },
+      "lifecycle": {
+        "year": 2023,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2026/07/MercuryX_v1.5.pdf",
+        "firmware": "1.5.5"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "both",
+    "color": "blue",
+    "year": 2023,
+    "status": "current",
+    "notes": "Meris MercuryX: modular studio-grade reverb system with 8 custom structures (Ultraplate, Cathedra, 78 Room/Plate/Hall, Spring, Prism, Gravity), 2.54 s stereo predelay, freeze and modulation elements; DIN MIDI plus USB-C.",
+    "artistAssociation": [
+      {
+        "artist": "Yvette Young",
+        "role": "designed-with",
+        "notes": "Artist preset bank (3 presets) added in official firmware 1.1.1.",
+        "sources": [
+          {
+            "url": "https://meris.us/product/mercuryx/",
+            "kind": [
+              "info"
+            ]
+          }
+        ]
+      },
+      {
+        "artist": "Nick Reinhart",
+        "role": "designed-with",
+        "notes": "Artist bank (3 presets) added in official firmware 1.2.1.",
+        "sources": [
+          {
+            "url": "https://meris.us/product/mercuryx/",
+            "kind": [
+              "info"
+            ]
+          }
+        ]
+      },
+      {
+        "artist": "Make Up and Vanity Set",
+        "role": "designed-with",
+        "notes": "Artist bank (3 presets) added in official firmware 1.2.1.",
+        "sources": [
+          {
+            "url": "https://meris.us/product/mercuryx/",
+            "kind": [
+              "info"
+            ]
+          }
+        ]
+      }
+    ],
+    "videos": [
+      {
+        "url": "https://youtu.be/6xe-CjOciD0",
+        "title": "Meris MercuryX - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 599,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/mercuryx/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/MercuryX_v1.5.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2023/09/mercuryX-front-controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2023/09/mercuryX-front-controls.png",
+        "sourcePage": "https://meris.us/product/mercuryx/",
+        "priority": 1,
+        "notes": "Official top-down control-map render (700x446 preview) matching the 7.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2023/09/Meris-MercuryX-Back-Panel.jpg",
+        "sourcePage": "https://meris.us/product/mercuryx/",
+        "priority": 2,
+        "notes": "Official rear-panel photo; useful for connector verification, not a top-down scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Decay",
+        "Predelay",
+        "Mix",
+        "Mod",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "reverbStructures": [
+        "Ultraplate",
+        "Cathedra",
+        "78 Room",
+        "78 Plate",
+        "78 Hall",
+        "Spring",
+        "Prism",
+        "Gravity"
+      ],
+      "modulationTypes": [
+        "79 Chorus",
+        "Vibrato",
+        "Vowel Mod",
+        "Tremolo",
+        "Hazy Lo-Fi"
+      ],
+      "predelayMs": 2540,
+      "presets": 99,
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "Manual documents the connector block as the rear panel; mapped to the top edge. Jack order/offsets are not published or measured, so no pos values were recorded.",
+      "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
+      "firmware": "1.5.5",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 43.18 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-ottobit-jr",
+    "brand": "Meris",
+    "name": "Ottobit Jr.",
+    "aliases": [
+      "Ottobit Jr",
+      "Ottobit Junior"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "bitcrusher",
+      "filter",
+      "sequencer",
+      "pitch"
+    ],
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris Ottobit Jr. product page and manual v6: 4.25 in wide x 4.5 in long x 2 in tall = 10.80 x 11.43 x 5.08 cm (matches the provisional 10.8 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo output on the left side. Position not published, so pos is omitted."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Multi-function EXP jack on the rear (top) edge: expression pedal, remote tap switch, 4-button preset switch, or MIDI in/out over TRS with the Meris MIDI I/O."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the rear (top) edge."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 2.1 mm jack; official spec is 'current draw < 150 mA'."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "One TRS input and one TRS output jack; switchable guitar, synth or line headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Analog dry path when bypassed; no effects loop, headphones or DI."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 footswitches: Bypass/sequencer type and Tap (hold to freeze the stutter buffer)",
+        "tapTempo": true,
+        "note": "Tap sets sequencer and stutter timing; remote tap switch supported over the EXP jack."
+      },
+      "midi": {
+        "din5": "none",
+        "usb": false,
+        "ble": false,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "thru": true,
+        "note": "MIDI in/out over TRS through the EXP jack using the Meris MIDI I/O (not included); presets and CC control supported."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP, 24-bit A/D and D/A",
+        "note": "Variable sample-rate/bit-depth decimation plus a resonant low-pass filter and sequencer; analog dry path."
+      },
+      "physical": {
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "metal, glossy black powder coat with fine metal flake",
+        "display": "none (LED indicators)",
+        "footswitches": 2,
+        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
+        "powerJackLocation": "rear (top) edge",
+        "batteryCompartment": false,
+        "note": "Weight not published in the official specs."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "trueStereo": false,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "dryWetMix": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "presets": 16,
+        "note": "16 preset locations; 6-step sequencer assignable to pitch, filter or sample rate; sequencer play modes once/twice/4x/8x/continuous."
+      },
+      "lifecycle": {
+        "year": 2017,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2017/03/Meris_OttobitJr_FULL_Manual_v6.pdf"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "black",
+    "year": 2017,
+    "status": "current",
+    "notes": "Meris Ottobit Jr.: arcade-inspired degradation pedal combining variable sample-rate/bit-depth crushing, a resonant low-pass filter, triggered stutter and a pitch/filter/decimation step sequencer; 9V DC under 150 mA.",
+    "videos": [
+      {
+        "url": "https://youtu.be/83acwhyL9CM",
+        "title": "Meris Ottobit Jr. - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 299,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/ottobit-jr/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Meris_OttobitJr_FULL_Manual_v6.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Ottobit_front_standard.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Ottobit_front_standard.png",
+        "sourcePage": "https://meris.us/product/ottobit-jr/",
+        "priority": 1,
+        "notes": "Official top-down control render (489x535 preview) close to the 4.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Meris-Ottobit-Jr-Hero.jpg",
+        "sourcePage": "https://meris.us/product/ottobit-jr/",
+        "priority": 2,
+        "notes": "Official hero/lifestyle image (2000x1135) with background; reference only, not a scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Sample Rate",
+        "Filter",
+        "Bits",
+        "Stutter",
+        "Sequencer Play Mode",
+        "Sequencer Multiply"
+      ],
+      "sampleRateRange": "48 Hz - 48 kHz",
+      "bitDepthRange": "1 - 24 bit",
+      "sequencerSteps": 6,
+      "presets": 16,
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 40.89 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-ottobit-x",
+    "brand": "Meris",
+    "name": "Ottobit X",
+    "aliases": [
+      "Ottobit X Modular Degradation Engine"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "bitcrusher",
+      "filter",
+      "pitch",
+      "ring-mod",
+      "tremolo",
+      "delay",
+      "reverb",
+      "looper",
+      "sequencer",
+      "preamp",
+      "vibrato",
+      "tuner"
+    ],
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris Ottobit X product page and manual v1.1.1: 7.25 in wide x 4.5 in long x 2 in tall = 18.42 x 11.43 x 5.08 cm (matches the provisional 18.42 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN L",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left input on the back panel; instrument or line/synth headroom. Back-panel jack order is not published, so pos is omitted."
+      },
+      {
+        "label": "IN R",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right input on the back panel; stereo input uses separate L/R jacks."
+      },
+      {
+        "label": "OUT L",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left output on the back panel."
+      },
+      {
+        "label": "OUT R",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right output on the back panel."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Dedicated expression pedal jack on the back panel; assignable to multiple parameters simultaneously."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI input on the back panel."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "channels": 16,
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI output on the back panel."
+      },
+      {
+        "label": "USB-C",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "usb-c",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "Back-panel USB-C for firmware updates and MIDI (the official page lists MIDI In/Out over DIN 'or USB-C'); prEDITOR v4 compatible."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm; at least 300 mA."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 300 mA, 2.1 mm jack (at least 300 mA required)."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Full stereo with separate L/R jacks (the poly pitch shifter operates in mono); instrument or line/synth headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "channels": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "snrDb": 115,
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Digitally controlled analog mix bus; full stereo degradation engine."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "3 preset footswitches plus a Hold Modifier switch (momentary/latching/tap per preset)",
+        "tapTempo": true,
+        "note": "Front-panel LED buttons mirror the footswitches for desktop use; C1/C2/C3 encoders for navigation and editing."
+      },
+      "midi": {
+        "din5": "in-out",
+        "type": "din5",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "MIDI In and Out over 5-pin DIN or USB-C; CC control of parameters, preset send/receive and beat clock with per-preset listen/ignore."
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "firmware",
+          "midi",
+          "editor"
+        ],
+        "note": "USB-C for firmware updates or MIDI; prEDITOR v4 editor/librarian supported."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP on an advanced ARM processor, 24-bit A/D and D/A",
+        "sampleRateKhz": 48,
+        "bitDepth": 24,
+        "trails": true,
+        "note": "11 processing categories: preamp, crush, filter, glitch, pitch, clock, ambience, modulate, mix, modifiers, expression."
+      },
+      "physical": {
+        "weightG": 680,
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "metal, matte black (limited pink edition is a separate variant)",
+        "display": "full-color LCD",
+        "footswitches": 4,
+        "jackOrientation": "all connections on the back panel",
+        "powerJackLocation": "back panel",
+        "batteryCompartment": false,
+        "note": "24 oz (680 g); same depth and height as the compact Meris pedals."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "snrDb": 115,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "frequencyResponse": "20 Hz - 20 kHz",
+        "trueStereo": true,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "presets": 99,
+        "banks": 33,
+        "dryWetMix": true,
+        "trails": true,
+        "looper": true,
+        "tuner": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "expressionAssignments": true,
+        "note": "99 presets in 33 banks, 90 factory presets, 18 artist presets, favorite bank of 3, 16-step sequencer, selectable spillover for delay/reverb trails."
+      },
+      "lifecycle": {
+        "year": 2026,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2026/07/Ottobit_X_v1_1_1_Full_Manual.pdf",
+        "firmware": "1.1.1"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "both",
+    "color": "black",
+    "year": 2026,
+    "status": "current",
+    "notes": "Meris Ottobit X: full-stereo '80s-inspired modular degradation engine with advanced bitcrusher, six glitch types, two one-button loopers, tape stop, VHS delay/reverb, pitch, filter, mod and preamp categories; DIN MIDI plus USB-C.",
+    "videos": [
+      {
+        "url": "https://youtu.be/K460-KNHNGE",
+        "title": "Meris Ottobit X - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 599,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research (standard matte-black run)."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/ottobitx/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/Ottobit_X_v1_1_1_Full_Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/05/Ottobit-X-front-controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/05/Ottobit-X-front-controls.png",
+        "sourcePage": "https://meris.us/product/ottobitx/",
+        "priority": 1,
+        "notes": "Official top-down control-map render (700x446 preview) matching the 7.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/05/Ottobit_X_black_back.jpg",
+        "sourcePage": "https://meris.us/product/ottobitx/",
+        "priority": 2,
+        "notes": "Official back-panel photo of the standard matte-black unit; useful for connector verification, not a top-down scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Sample Rate",
+        "Bits",
+        "Level",
+        "Filter",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "sampleRateRange": "48 Hz - 48 kHz",
+      "bitDepthRange": "1 - 24 bit",
+      "glitchTypes": [
+        "Grain Freeze",
+        "Stutter",
+        "Push Loop",
+        "Wikki Wikki",
+        "Tape Stop",
+        "Stutter Step"
+      ],
+      "filterTypes": [
+        "Ladder",
+        "State Variable",
+        "Otto Tron"
+      ],
+      "ambienceTypes": [
+        "VHS Reverb",
+        "VHS Delay"
+      ],
+      "pitchTypes": [
+        "Poly Chroma",
+        "Otto Tune",
+        "Micro Tune",
+        "Mono Chroma",
+        "Lo-Fi"
+      ],
+      "modulationTypes": [
+        "Ring Mod",
+        "Div Trem",
+        "Tape Mod",
+        "Freq Shift",
+        "Otto Vibe"
+      ],
+      "preampTypes": [
+        "Volume Pedal",
+        "Tube",
+        "Vinyl",
+        "Wavefold"
+      ],
+      "presets": 99,
+      "sequencerSteps": 16,
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "The official 'Back Panel' list groups all connectors on the back panel; mapped to the top edge. Jack order/offsets are not published or measured, so no pos values were recorded.",
+      "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
+      "variants": "Standard matte black; limited 'Multidimensional Pink' run (final sale) tracked separately as a colour variant.",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 44.35 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  },
+  {
+    "id": "meris-polymoon",
+    "brand": "Meris",
+    "name": "Polymoon",
+    "aliases": [
+      "Polymoon Super-Modulated Delay"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "delay",
+      "phaser",
+      "flanger"
+    ],
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "dimensionsSource": "Meris Polymoon product page and manual v4: 4.25 in wide x 4.5 in long x 2 in tall = 10.80 x 11.43 x 5.08 cm (matches the provisional 10.8 x 11.43).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo output on the left side. Position not published, so pos is omitted."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Multi-function EXP jack on the rear (top) edge: expression pedal, tap switch, 4-button preset switch, or MIDI in/out over TRS with the Meris MIDI I/O."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the rear (top) edge."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none documented (9V DC only)",
+      "note": "9V DC center-negative, 2.1 mm jack; official spec is 'current draw < 150 mA'."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "One TRS input and one TRS output jack; switchable guitar, synth or line headroom."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "dryThrough": "analog",
+        "analogDryThrough": true,
+        "headphone": false,
+        "auxIn": false,
+        "di": false,
+        "note": "Digitally controlled analog dry path for the wet/dry mix; no effects loop, headphones or DI."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 footswitches: Bypass/phaser mode and Tap (hold for half speed)",
+        "tapTempo": true,
+        "note": "Tap sets delay and phaser timing; external tap switch supported over the EXP jack."
+      },
+      "midi": {
+        "din5": "none",
+        "usb": false,
+        "ble": false,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "thru": true,
+        "note": "MIDI in/out over TRS through the EXP jack using the Meris MIDI I/O (not included); beat clock, CC and preset send/receive supported."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "relay",
+        "switching": "selectable true bypass (relay) or analog buffered bypass",
+        "dsp": "32-bit floating point DSP, 24-bit A/D and D/A",
+        "note": "Six custom-tuned LFOs, multi-tap delay line, stereo barberpole phaser and dynamic flanger; analog dry path."
+      },
+      "physical": {
+        "depthCm": 11.43,
+        "heightCm": 5.08,
+        "enclosure": "metal, white powder coat with fine iridescent flake",
+        "display": "none (LED indicators)",
+        "footswitches": 2,
+        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
+        "powerJackLocation": "rear (top) edge",
+        "batteryCompartment": false,
+        "note": "Weight not published in the official specs."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "maxInputLevelDbu": {
+          "instrument": 9,
+          "line": 12.5
+        },
+        "trueStereo": false,
+        "analogDryThrough": true,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "routing": {
+        "dryWetMix": true,
+        "bypass": "relay",
+        "switching": "selectable relay true bypass or analog buffered",
+        "note": "Selectable quarter or dotted-eighth tap divisions; presets available via external 4-preset switch or MIDI."
+      },
+      "lifecycle": {
+        "year": 2017,
+        "madeIn": "California, USA",
+        "manualUrl": "https://meris.us/wp-content/uploads/2017/07/Meris_Polymoon_FULL_Manual_4.pdf"
+      },
+      "note": "Extra facts captured during the same official product-page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "year": 2017,
+    "status": "current",
+    "notes": "Meris Polymoon: super-modulated multi-tap delay with a 1200 ms delay line, six LFOs, tilt EQ in the feedback path, stereo barberpole phaser and dynamic flanger; 9V DC under 150 mA.",
+    "videos": [
+      {
+        "url": "https://youtu.be/MngAvFLHfhU",
+        "title": "Meris Polymoon - official product video",
+        "source": "Meris",
+        "kind": "official-demo",
+        "verified": true
+      }
+    ],
+    "priceObservations": [
+      {
+        "amount": 299,
+        "currency": "USD",
+        "condition": "new",
+        "source": "Meris product page",
+        "observedAt": "2026-10-25",
+        "notes": "Listed price at the time of research; page showed 'Out of stock'."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://meris.us/product/polymoon-pedal/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/07/Meris_Polymoon_FULL_Manual_4.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/07/polymoon_front_controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/07/polymoon_front_controls.png",
+        "sourcePage": "https://meris.us/product/polymoon-pedal/",
+        "priority": 1,
+        "notes": "Official top-down control render (489x535 preview) close to the 4.25:4.5 footprint; pipeline must confirm background/alpha and crop to the body."
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/07/polymoon_back.jpg",
+        "sourcePage": "https://meris.us/product/polymoon-pedal/",
+        "priority": 2,
+        "notes": "Official back-panel photo; useful for connector verification, not a top-down scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Time",
+        "Feedback",
+        "Mix",
+        "Multiply",
+        "Dimension",
+        "Dynamics"
+      ],
+      "maxDelayMs": 1200,
+      "lfos": 6,
+      "phaserModes": [
+        "Slow",
+        "Sync",
+        "Slow + Sync"
+      ],
+      "bypass": "Selectable true bypass (relay) or analog buffered",
+      "madeIn": "California, USA",
+      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
+      "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 43.34 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    }
+  }
+]
