@@ -1,0 +1,2545 @@
+[
+  {
+    "id": "red-panda-bitmap",
+    "brand": "Red Panda",
+    "name": "Bitmap",
+    "aliases": [
+      "Bitmap V1"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth"
+    ],
+    "effectTypes": [
+      "bitcrusher",
+      "distortion"
+    ],
+    "widthCm": 8.38,
+    "heightCm": 11.18,
+    "dimensionsSource": "Archived official Red Panda Bitmap product page (2016 capture): 4.4 in x 3.3 in x 2.4 in. Using the catalog width=short-side convention: 3.3 in = 8.38 cm wide, 4.4 in = 11.18 cm deep. Matches the provisional inventory (8.38 x 11.18).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono input; the input jack also switches power on. Edge from the Bitmap quick-start connector diagram."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono output. Edge from the Bitmap quick-start connector diagram."
+      },
+      {
+        "label": "EXP/CV",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "note": "1/4 in TRS expression/CV input controlling the freq control; 0-3.3 V CV range."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative power jack. Edge from the Bitmap quick-start connector diagram."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/content/bitmap_instructions.pdf",
+      "confidence": "verified",
+      "note": "The Bitmap quick-start diagram shows power, audio output, expression/CV and audio input grouped on the rear/top edge. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "none documented (power supply only)",
+      "note": "9 V DC center-negative, 100 mA. The audio input jack switches power; no battery operation documented."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in / mono out with an expression/CV jack."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "note": "Input impedance 1 MOhm per the archived official product listing."
+      },
+      "control": {
+        "expression": 1,
+        "cv": true,
+        "cvVoltageRange": "0-3.3 V",
+        "note": "Expression pedal (10-50 kOhm linear) or CV controls the freq parameter; the knob sets the maximum value."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "true",
+        "note": "True-bypass footswitch; 24-bit conversion."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "replacement": "Bitmap 2",
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/bitmap_instructions.pdf"
+      }
+    },
+    "status": "discontinued",
+    "notes": "Original Bitmap bitcrusher: fractional bit reduction from 24 bits down to 1 bit, sample-rate reduction and sample-rate modulation with triangle, square and random waveforms, plus a blend control and expression/CV control of the sample rate. Mono, true bypass, 9 V DC.",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20161013161002/http://www.redpandalab.com/products/bitmap",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/bitmap_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "controls": [
+        "Mix",
+        "Crush/Rate",
+        "Freq",
+        "Level",
+        "Crush/Mod switch",
+        "Lo/Hi input gain",
+        "Waveform switch"
+      ],
+      "bitDepthRange": "1-24 bits including fractional bits"
+    },
+    "imageCandidates": [
+      {
+        "url": "https://web.archive.org/web/20171103114153im_/http://cdn3.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/85/409/rpl103.main__14596.1507745417.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20161013161002/http://www.redpandalab.com/products/bitmap",
+        "priority": 1,
+        "notes": "Wayback capture of the official Bitmap V1 main product image (1000x1000, verified reachable). Original CDN asset has been removed."
+      },
+      {
+        "url": "https://web.archive.org/web/20171103113752im_/http://cdn3.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/85/410/rpl103.pt01__82556.1507745417.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20161013161002/http://www.redpandalab.com/products/bitmap",
+        "priority": 2,
+        "notes": "Alternate official Bitmap V1 product image from the same archived listing."
+      }
+    ]
+  },
+  {
+    "id": "red-panda-bitmap-2",
+    "brand": "Red Panda",
+    "name": "Bitmap 2",
+    "aliases": [
+      "Bitmap II"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth"
+    ],
+    "effectTypes": [
+      "bitcrusher",
+      "distortion",
+      "filter"
+    ],
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "dimensionsSource": "Official Red Panda Bitmap 2 product page: 3.05 in x 4.75 in x 2.5 in = 7.75 x 12.07 cm footprint (2.5 in = 6.35 cm with knobs). Provisional inventory listed 7.75 x 12.19; the 12.07 cm figure follows the official 4.75 in depth.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS input, mono (TS) or stereo (TRS), configurable in the editor; +8 dBu maximum input."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS output, mono or stereo depending on the I/O configuration."
+      },
+      {
+        "label": "CTRL",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "note": "1/4 in TRS control port: expression pedal, remote switch, tap tempo or TRS MIDI input (tip active, non-standard, no optocoupler)."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "channels": 1,
+        "signal": "usb",
+        "usbFunctions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB mini-B for MIDI, the web editor and firmware updates."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm inside / 5.5 mm outside."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/content/docs/Bitmap%202%20Owners%20Manual.pdf",
+      "confidence": "verified",
+      "note": "Owner's manual control-layout diagram groups the DC, USB, IN, CTRL and OUT connectors on the rear/top edge; the official product page also shows a top view. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm inside / 5.5 mm outside",
+      "battery": "none documented (power supply only)",
+      "note": "9 V DC center-negative, 250 mA or higher."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "One TRS input and one TRS output; mono/stereo configurations selected in the editor. Accepts instrument or line-level signals up to +8 dBu."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "maxInputLevelDbu": 8,
+        "note": "Input impedance 1 MOhm; output impedance < 1 kOhm; +8 dBu maximum input."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 soft-touch footswitches; aux footswitch assignable to tap tempo or preset selection",
+        "tapTempo": true,
+        "remote": true
+      },
+      "midi": {
+        "din5": "none",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "USB-MIDI and TRS MIDI input on the CTRL jack (tip active, no optocoupler). 16 MIDI channels, default channel 1. Program change selects presets; MIDI clock sync supported."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "device": true,
+        "note": "USB mini-B; class-compliant MIDI/editor use via Chrome Web MIDI."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Selectable analog buffered or DSP bypass; product page lists analog buffered bypass."
+      },
+      "routing": {
+        "presets": 127,
+        "note": "4 presets on the front panel, 127 via MIDI."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "powerJackLocation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/docs/Bitmap%202%20Owners%20Manual.pdf"
+      }
+    },
+    "status": "current",
+    "notes": "Bitmap 2 expands the original bitcrusher with waveshaping, wavefolding and a window comparator, fractional bit reduction from 24 bits to 1 bit, sample-rate reduction from 48 kHz to 110 Hz and sample-rate modulation. Stereo TRS I/O, presets, expression/remote control and USB/TRS MIDI.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/bitmap",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Bitmap%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/85/481/RPL_103V2_front__20398.1696650529.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/bitmap",
+        "priority": 1,
+        "notes": "Official front product image (2000x2000). Its trimmed silhouette is portrait and matches the 3.05 x 4.75 in footprint; preferred candidate."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/85/480/RPL_103V2_top__74249.1696650530.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/bitmap",
+        "priority": 2,
+        "notes": "Official top view, but the trimmed image is landscape (rotated/angled); only usable after an orientation check."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mix",
+        "Crush",
+        "Freq",
+        "Drive",
+        "Filter",
+        "Depth"
+      ],
+      "bitDepthRange": "1-24 bits including fractional bits",
+      "sampleRateRange": "110 Hz - 48 kHz",
+      "modulationWaveforms": [
+        "triangle",
+        "square",
+        "random"
+      ],
+      "priceUsd": 329
+    }
+  },
+  {
+    "id": "red-panda-buffer",
+    "brand": "Red Panda",
+    "name": "Buffer",
+    "aliases": [
+      "Bit Buffer",
+      "RPL-107"
+    ],
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "buffer",
+      "utility"
+    ],
+    "widthCm": 5.08,
+    "heightCm": 3.81,
+    "dimensionsSource": "Official Red Panda Buffer product page: 2 in x 1.5 in x 1.2 in = 5.08 x 3.81 x 3.05 cm. The 2 in side is the left-right width and 1.5 in the front-back depth for the side-jack layout. Provisional inventory listed 6.35 x 3.81, which appears to include protruding jack barrels.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono input; edge not verified from the product page."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono output; edge not verified from the product page."
+      },
+      {
+        "label": "9-18V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9-18 V DC center-negative power input; edge not verified from the product page."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official page documents the connectors and the internal power LED below the power jack, but does not state which enclosure face carries each jack."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "none documented",
+      "note": "9-18 V DC center-negative, 20 mA. Always active when power is connected."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in / mono out; high-impedance input also accepts line-level signals."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 100,
+        "frequencyResponse": "20 Hz - 40 kHz (+/- 3 dB)",
+        "note": "Burr-Brown op-amp buffer; output impedance below 100 Ohm."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "none",
+        "note": "Always-on buffer with no footswitch; internal LED indicates power."
+      },
+      "physical": {
+        "footswitches": 0,
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA"
+      }
+    },
+    "status": "current",
+    "notes": "Compact always-on buffer using a low-noise Burr-Brown op amp, intended to prevent high-frequency loss at the start of a long pedal chain or before a long cable run. Mono, 9-18 V DC, no footswitch.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/buffer.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/91/420/rpl107.main__26690.1781920352.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/buffer.html",
+        "priority": 1,
+        "notes": "Official main product photo (2000x2000). Tiny enclosure; pipeline must crop to the body and not count protruding jacks."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/91/421/rpl107.pt01__98117.1781920352.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/buffer.html",
+        "priority": 2,
+        "notes": "Official alternate product photo."
+      }
+    ],
+    "extra": {
+      "priceUsd": 79,
+      "salePriceUsd": 49,
+      "alwaysOn": true,
+      "ledLocation": "internal, below the power jack"
+    }
+  },
+  {
+    "id": "red-panda-context",
+    "brand": "Red Panda",
+    "name": "Context",
+    "aliases": [
+      "Context V1"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "reverb",
+      "delay"
+    ],
+    "widthCm": 9.4,
+    "heightCm": 11.94,
+    "dimensionsSource": "Archived official Red Panda Context product page (2018 capture): 4.7 in x 3.7 in x 2.5 in. Width=short side 3.7 in = 9.40 cm, depth 4.7 in = 11.94 cm. Matches the provisional inventory (9.40 x 11.94).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono input; edge not shown on the archived product page."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono output; edge not shown on the archived product page."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Expression/CV input; edge not shown on the archived product page."
+      },
+      {
+        "label": "9-12V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9-12 V DC center-negative power input."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The archived product page and quick-start manual do not show the connector face, so no edge is asserted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "none documented",
+      "note": "9-12 V DC center-negative, 100 mA."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in / mono out with expression/CV control."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "dryThrough": "analog",
+        "note": "100% analog dry path through Burr-Brown op amps and WIMA film capacitors."
+      },
+      "control": {
+        "expression": 1,
+        "cv": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "true",
+        "note": "Internal trails switch: true bypass with trails off; with trails on the pedal stays buffered so the tail can decay."
+      },
+      "physical": {
+        "footswitches": 2,
+        "batteryCompartment": false,
+        "note": "Trails switch is internal (remove the back cover)."
+      },
+      "lifecycle": {
+        "replacement": "Context 2",
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/context_instructions.pdf"
+      }
+    },
+    "status": "discontinued",
+    "notes": "First-generation Context reverb with six algorithms (room, hall, cathedral, gated, plate and delay-plus-reverb), separate high/low damping, pre-delay and an internal trails switch. Mono, true bypass with trails off, expression/CV control.",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20181203191321/http://www.redpandalab.com/products/context",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/context_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://web.archive.org/web/20181203191321im_/https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/77/400/rpl102.main__43766.1507745175.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20181203191321/http://www.redpandalab.com/products/context",
+        "priority": 1,
+        "notes": "Wayback capture of the official Context V1 main product image (1000x1000); verified reachable. Original CDN asset has been removed, so this is the highest-resolution official capture."
+      },
+      {
+        "url": "https://web.archive.org/web/20181203191321im_/https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/77/399/rpl102.pt01__67056.1507745175.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20181203191321/http://www.redpandalab.com/products/context",
+        "priority": 2,
+        "notes": "Alternate official Context V1 product image from the same archived listing."
+      }
+    ],
+    "extra": {
+      "algorithms": [
+        "Room",
+        "Hall",
+        "Cathedral",
+        "Gated",
+        "Plate",
+        "Delay + Reverb"
+      ],
+      "internalTrailsSwitch": true
+    }
+  },
+  {
+    "id": "red-panda-context-2",
+    "brand": "Red Panda",
+    "name": "Context 2",
+    "aliases": [
+      "Context II"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "reverb",
+      "delay",
+      "tremolo"
+    ],
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "dimensionsSource": "Official Red Panda Context 2 product page: 3.05 in x 4.75 in x 2.5 in = 7.75 x 12.07 cm footprint. Provisional inventory listed 7.75 x 12.19; 12.07 cm follows the official 4.75 in depth.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS input, mono or stereo; +8 dBu maximum input."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS output, mono or stereo."
+      },
+      {
+        "label": "CTRL",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "note": "1/4 in TRS control port: expression pedal, remote switch or TRS MIDI input (tip active, non-standard)."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "channels": 1,
+        "signal": "usb",
+        "usbFunctions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB mini-B for MIDI, web editor and firmware updates."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm inside / 5.5 mm outside."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/content/docs/Context%202%20Owners%20Manual.pdf",
+      "confidence": "verified",
+      "note": "Owner's manual explicitly states the smaller enclosure has all jacks on top; product page photos show the rear/top connector row. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm inside / 5.5 mm outside",
+      "battery": "none documented",
+      "note": "9 V DC center-negative, 250 mA or higher."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "TRS stereo I/O; default mono in / stereo out, with stereo in / stereo out and mono in / mono out configurations."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "maxInputLevelDbu": 8,
+        "note": "Analog buffered bypass; +8 dBu maximum input; separate low and high damping per algorithm."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 soft-touch footswitches; assignable expression",
+        "tapTempo": true,
+        "remote": true
+      },
+      "midi": {
+        "din5": "none",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "USB-MIDI and TRS MIDI input on CTRL (tip active, no optocoupler). 16 channels, default 1; program change and MIDI clock supported."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "device": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Analog buffered bypass; DSP bypass also selectable. Default is DSP bypass with trails on."
+      },
+      "routing": {
+        "presets": 127,
+        "trails": true,
+        "killDry": true,
+        "note": "4 presets on the front, 127 via MIDI; dry-kill available as a remote-switch mode."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "powerJackLocation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/docs/Context%202%20Owners%20Manual.pdf"
+      }
+    },
+    "status": "current",
+    "notes": "Context 2 is a stereo reverb and delay with eight algorithms including room, hall, cathedral, gated, reverse, plate, spring and granular reverb. Each algorithm has low/high damping, pre-delay, modulation, dynamics, infinite hold and a switchable delay; spring mode adds tremolo.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/context",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Context%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/77/471/RedPandaLab_Context_Front__80774.1604331453.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/context",
+        "priority": 1,
+        "notes": "Official main product image (2000x2000) of the Context 2; no separate top-view shot is published, so verify the angle and crop to the enclosure."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/77/470/RedPandaLab_Context_Left__64878.1604331453.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/context",
+        "priority": 2,
+        "notes": "Official left-side product photo; useful to check jack placement/height."
+      }
+    ],
+    "extra": {
+      "algorithms": [
+        "Room",
+        "Hall",
+        "Cathedral",
+        "Gated",
+        "Reverse",
+        "Plate",
+        "Spring",
+        "Grain"
+      ],
+      "priceUsd": 329,
+      "bypassModes": [
+        "Analog buffered",
+        "DSP"
+      ],
+      "sampleRate": "48 kHz (DSP)"
+    }
+  },
+  {
+    "id": "red-panda-mixer",
+    "brand": "Red Panda",
+    "name": "Mixer",
+    "aliases": [
+      "Bit Mixer",
+      "RPL-105"
+    ],
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "mixer",
+      "utility"
+    ],
+    "widthCm": 11.18,
+    "heightCm": 6.6,
+    "dimensionsSource": "Official Red Panda Mixer product page: 4.4 in x 2.6 in x 1.5 in = 11.18 x 6.60 x 3.81 cm; the landscape enclosure is 11.18 cm wide and 6.60 cm deep. Matches the provisional inventory (11.18 x 6.60).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT 1",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in high-impedance input with its own level knob; edge not stated on the product page."
+      },
+      {
+        "label": "INPUT 2",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Second 1/4 in input with its own level knob; edge not stated on the product page."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono output; edge not stated on the product page."
+      },
+      {
+        "label": "9-18V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9-18 V DC center-negative power input; internal LED below the power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official page documents two inputs and one output but does not state which enclosure face carries each jack."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "none documented",
+      "note": "9-18 V DC center-negative, 40 mA; always active while powered."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Two mono inputs with independent level controls summed to one mono output; high-impedance inputs also accept line level."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "frequencyResponse": "20 Hz - 40 kHz (+/- 3 dB)",
+        "snrDb": 90,
+        "note": "Low-distortion, low-noise op-amp summing mixer; each input goes from off to unity gain."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "none",
+        "note": "Always-on utility mixer with no footswitch; internal power LED."
+      },
+      "physical": {
+        "footswitches": 0,
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA"
+      }
+    },
+    "status": "current",
+    "notes": "Small always-on two-input mono mixer for pedalboards: combine instruments into one amp, sum parallel effect chains, or create a clean analog dry blend. Each input has its own level control; 9-18 V DC.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/mixer.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/92/417/rpl105.main__24542.1748172789.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/mixer.html",
+        "priority": 1,
+        "notes": "Official main product photo (2000x2000); landscape enclosure, crop to body and preserve the 11.18 x 6.60 cm aspect."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/92/416/rpl105.pt01__75276.1748172789.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/mixer.html",
+        "priority": 2,
+        "notes": "Official alternate product photo."
+      }
+    ],
+    "extra": {
+      "priceUsd": 149,
+      "alwaysOn": true,
+      "controls": [
+        "Input 1 level",
+        "Input 2 level"
+      ]
+    }
+  },
+  {
+    "id": "red-panda-particle",
+    "brand": "Red Panda",
+    "name": "Particle",
+    "aliases": [
+      "Particle V1"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "widthCm": 9.4,
+    "heightCm": 11.94,
+    "dimensionsSource": "Archived official Red Panda Particle product page (2017 capture): 4.7 in x 3.7 in x 2.5 in. Width=short side 3.7 in = 9.40 cm, depth 4.7 in = 11.94 cm. The provisional inventory (8.38 x 11.18) does not match this official listing.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono input; edge not shown on the archived product page."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono output; edge not shown on the archived product page."
+      },
+      {
+        "label": "EXPR",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Expression/CV input for delay/pitch or param; edge not shown on the archived product page."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative power input."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The archived product page and quick-start manual do not show the connector face, so no edge is asserted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "none documented",
+      "note": "9 V DC center-negative, 100 mA."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in / mono out with expression/CV control."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "dryThrough": "analog",
+        "note": "100% analog dry signal; 24-bit conversion."
+      },
+      "control": {
+        "expression": 1,
+        "cv": true,
+        "note": "Expression pedal or CV selects delay/pitch or the param control; 10-50 kOhm linear pedal."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "true",
+        "note": "True bypass with analog dry path."
+      },
+      "physical": {
+        "footswitches": 2,
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "replacement": "Particle 2",
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/particle_instructions.pdf"
+      }
+    },
+    "year": 2011,
+    "status": "discontinued",
+    "notes": "The original Particle granular delay/pitch shifter, released in 2011. It slices the input into 15-250 ms grains and rearranges or pitch-shifts them across eight modes, with freeze, expression/CV control, true bypass and a fully analog dry path.",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20171201193034/http://www.redpandalab.com/products/particle",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/particle_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/products/particle",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "releaseYearSource": "The official Particle 2 page states that the Particle V1 was released in 2011.",
+      "grainLengthMs": "15-250",
+      "modes": 8
+    },
+    "imageCandidates": [
+      {
+        "url": "https://web.archive.org/web/20170529033756im_/http://cdn3.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/76/333/particle_front__16868.1452561656.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20171201193034/http://www.redpandalab.com/products/particle",
+        "priority": 1,
+        "notes": "Wayback capture of the official Particle V1 front product image (1000x1000, verified reachable); portrait silhouette matching the 9.40 x 11.94 cm footprint."
+      },
+      {
+        "url": "https://web.archive.org/web/20170528225031im_/http://cdn3.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/76/332/particle_top__79660.1452561651.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20171201193034/http://www.redpandalab.com/products/particle",
+        "priority": 2,
+        "notes": "Wayback capture of the official Particle V1 top view (1000x1000, verified reachable); landscape trim needs an orientation check before use."
+      }
+    ]
+  },
+  {
+    "id": "red-panda-particle-v2",
+    "brand": "Red Panda",
+    "name": "Particle V2",
+    "aliases": [
+      "Particle V2",
+      "Particle II",
+      "Particle 2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "dimensionsSource": "Official Red Panda Particle 2 product page: 3.05 in x 4.75 in x 2.5 in = 7.75 x 12.07 cm footprint. Provisional inventory listed 7.75 x 12.19; 12.07 cm follows the official 4.75 in depth.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS input, mono or stereo; +8 dBu maximum input."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS output, mono or stereo."
+      },
+      {
+        "label": "CTRL",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "note": "1/4 in TRS control port: expression pedal, remote switch, remote tap or TRS MIDI input (tip active, non-standard)."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "channels": 1,
+        "signal": "usb",
+        "usbFunctions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB mini-B for MIDI, web editor and firmware updates."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm inside / 5.5 mm outside."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/products/particle",
+      "confidence": "verified",
+      "note": "The official product page describes the enclosure as pedalboard-friendly with all jacks on top; the owner's manual repeats 'all jacks on top'. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm inside / 5.5 mm outside",
+      "battery": "none documented",
+      "note": "9 V DC center-negative, 250 mA or higher."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "TRS stereo I/O; mono in / stereo out default, with mono and stereo configurations selectable. +8 dBu maximum input."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "maxInputLevelDbu": 8,
+        "note": "1 MOhm input, < 1 kOhm output, +8 dBu maximum input."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 soft-touch footswitches; tap/freeze and preset",
+        "tapTempo": true,
+        "remote": true
+      },
+      "midi": {
+        "din5": "none",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "USB-MIDI and TRS MIDI input on CTRL (tip active, no optocoupler). 16 channels, default 1; program change, CC and MIDI clock supported."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "device": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Selectable analog buffered or DSP bypass; trails on/off. Default is stereo in/out with DSP bypass and trails off."
+      },
+      "routing": {
+        "presets": 127,
+        "trails": true,
+        "note": "4 presets on the front, 127 via MIDI; delay/pitch/grain parameters can be locked to tap tempo or MIDI clock."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "powerJackLocation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/docs/Particle%202%20Owners%20Manual.pdf"
+      }
+    },
+    "status": "current",
+    "notes": "Particle 2 is a stereo granular delay and pitch shifter with five delay modes and three pitch modes, +/-1 octave shifting, 0-2.5 s delay, adjustable grain size/density, freeze, presets and full MIDI control. It adds stereo I/O, higher fidelity and a smaller enclosure over the original.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/particle",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Particle%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/76/484/Particle_2_Front__92956.1611497864.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/particle",
+        "priority": 1,
+        "notes": "Official front product image (2000x2000). Its trimmed silhouette is portrait and matches the 3.05 x 4.75 in footprint; preferred candidate."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/76/485/Particle_2_Top__45701.1611497858.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/particle",
+        "priority": 2,
+        "notes": "Official top view, but the trimmed image is landscape (rotated/angled); only usable after an orientation check."
+      }
+    ],
+    "extra": {
+      "delayModes": [
+        "random",
+        "density",
+        "LFO",
+        "random pitch",
+        "reverse"
+      ],
+      "pitchModes": [
+        "detune",
+        "density",
+        "LFO"
+      ],
+      "delayTimeMs": "0-2500",
+      "pitchRange": "+/- 1 octave",
+      "priceUsd": 329
+    }
+  },
+  {
+    "id": "red-panda-rd-1-pitch-delay",
+    "brand": "Red Panda",
+    "name": "RD-1 Pitch Delay",
+    "aliases": [
+      "RD-1"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth"
+    ],
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "widthCm": 6.1,
+    "heightCm": 11.18,
+    "dimensionsSource": "Official Red Panda RD-1 product page: 2.4 in x 4.4 in x 1.3 in (with controls) = 6.10 x 11.18 x 3.30 cm; Thomann lists 112 x 61 x 33 mm. Provisional inventory listed 7.29 x 11.43, which does not match the official 2.4 in width.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono input; +8 dBu maximum input. Edge not stated by the manufacturer."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono output. Edge not stated by the manufacturer."
+      },
+      {
+        "label": "CTRL",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS jack for an expression pedal or external tap-tempo switch; no MIDI."
+      },
+      {
+        "label": "USB-C",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware"
+        ],
+        "note": "USB-C used for firmware updates only; no USB-MIDI."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 x 5.5 mm barrel."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official product page lists no connector-face image or diagram; Thomann documents the jack types but not their faces. No edge is asserted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 125,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none documented (battery operation not supported)",
+      "note": "9 V DC center-negative, 125 mA. Retailer lists 150 mA as recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in / mono out; analog dry path; +8 dBu maximum signal level."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "maxInputLevelDbu": 8,
+        "dryThrough": "analog",
+        "note": "Analog dry signal path; accepts instrument and line-level signals up to +8 dBu."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "1 footswitch (tap tempo via hold); external tap switch on CTRL",
+        "tapTempo": true,
+        "note": "Expression defaults to shift amount; heel/toe mapping is configurable."
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "firmware"
+        ],
+        "device": true,
+        "note": "USB-C firmware updates only; no MIDI or audio interface functions."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Digital delay/pitch processing with an analog dry path. Bypass topology and trails behavior are not stated by the manufacturer."
+      },
+      "physical": {
+        "weightG": 219,
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "0.495 lb / 219 g; 112 x 61 x 33 mm."
+      },
+      "lifecycle": {
+        "year": 2026,
+        "madeIn": "USA"
+      }
+    },
+    "year": 2026,
+    "status": "current",
+    "notes": "RD-1 is a compact mono digital delay distilled from the Raster, adding three shift modes: chromatic +/-12 semitones, continuous detune from a fourth down to a major third up, and frequency shifting to +/-500 Hz. Delay runs to 1200 ms (2400 ms in reverse), with assignable expression/tap control and USB-C firmware updates. No MIDI or presets.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/rd-1-pitch-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/red_panda_rd_1_pitch_delay.htm",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/133/593/RD-1_PitchDelay_1__68577.1773342441.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/rd-1-pitch-delay",
+        "priority": 1,
+        "notes": "Official main product image (2000x2000); verify the angle and crop to the 6.10 x 11.18 cm enclosure."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/133/592/RD-1_PitchDelay_2__89972.1773342441.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/rd-1-pitch-delay",
+        "priority": 2,
+        "notes": "Official alternate product image."
+      }
+    ],
+    "extra": {
+      "priceUsd": 229,
+      "delayTimeMs": "20-1200 forward, up to 2400 in reverse",
+      "pitchRange": "+/- 12 semitones",
+      "detuneRange": "down a fourth to up a major third (continuous)",
+      "frequencyShiftRange": "+/- 500 Hz",
+      "presets": 0,
+      "midi": false,
+      "availableSince": "April 2026"
+    }
+  },
+  {
+    "id": "red-panda-radius",
+    "brand": "Red Panda",
+    "name": "Radius",
+    "aliases": [
+      "Radius Ring Mod",
+      "RPL-109"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "ring-mod",
+      "tremolo"
+    ],
+    "widthCm": 7.87,
+    "heightCm": 12.07,
+    "dimensionsSource": "Official Red Panda Radius product page: 3.1 in x 4.75 in x 2.5 in = 7.87 x 12.07 cm footprint. Provisional inventory listed 7.75 x 12.19, which uses the 3.05 in sibling width and a rounded 4.8 in depth; the Radius listing specifies 3.1 in.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo input, tip left/mono, ring right; +8 dBu maximum input."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo output, tip left/mono, ring right."
+      },
+      {
+        "label": "CTRL",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "note": "1/4 in TRS control port: expression pedal, TRS MIDI input, tap tempo or Remote 4."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "channels": 1,
+        "signal": "usb",
+        "usbFunctions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB mini-B for MIDI, web editor and firmware updates."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 200 mA or higher."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/content/docs/Radius%20Owners%20Manual.pdf",
+      "confidence": "verified",
+      "note": "The owner's manual control-layout diagram groups the USB, power, output, CTRL and input connectors on the rear/top edge; the official product page shows a top view. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm inside / 5.5 mm outside",
+      "battery": "none documented",
+      "note": "9 V DC center-negative, 200 mA or higher."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Stereo TRS in/out with analog dry path; +8 dBu maximum input; mono-in/stereo-out supported."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "maxInputLevelDbu": 8,
+        "dryThrough": "analog",
+        "note": "96 kHz internal sampling; +8 dBu maximum input; analog dry signal."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 footswitches: ON and AUX (push-to-tune, configurable)",
+        "tapTempo": true,
+        "remote": true,
+        "note": "Expression assignable to any combination of knobs; AUX configurable as tap, tune, preset or LFO control."
+      },
+      "midi": {
+        "din5": "none",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "USB-MIDI and TRS MIDI input on CTRL (tip active, no optocoupler). 16 channels, default 1; MIDI clock sync, program change, CC and a playable carrier oscillator."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "device": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Buffered analog or DSP bypass selectable; 96 kHz sampling rate."
+      },
+      "routing": {
+        "presets": 100,
+        "note": "4 presets on the panel, 100 via MIDI."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "powerJackLocation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/docs/Radius%20Owners%20Manual.pdf"
+      }
+    },
+    "status": "current",
+    "notes": "Radius is a stereo ring modulator and frequency shifter built on an eight-quadrant multiplier algorithm, with continuous blending between ring mod and frequency shifting, selectable 2x upper/lower sidebands, pitch tracking, a push-to-tune carrier and a multi-waveform LFO/step sequencer. MIDI-playable carrier, 96 kHz processing and expression/MIDI control.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/radius",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Radius%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/128/552/redpanda_radius_front__86357.1700409671.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/radius",
+        "priority": 1,
+        "notes": "Official front product image (2000x2000); portrait silhouette matching the 3.1 x 4.75 in footprint. Preferred candidate."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/128/553/redpanda_radius_top__61118.1700409663.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/radius",
+        "priority": 2,
+        "notes": "Official top view, but the trimmed image is landscape (rotated/angled); only usable after an orientation check."
+      }
+    ],
+    "extra": {
+      "priceUsd": 349,
+      "carrierRanges": [
+        "low",
+        "high",
+        "quantized"
+      ],
+      "lfoWaveforms": [
+        "triangle",
+        "square",
+        "random",
+        "intelligent random",
+        "X mod +/-"
+      ],
+      "stepSequencerSteps": "1-8",
+      "sampleRateKhz": 96,
+      "awards": [
+        "Premier Guitar Premier Gear",
+        "2024 EMMA Best Ringmod"
+      ]
+    }
+  },
+  {
+    "id": "red-panda-raster",
+    "brand": "Red Panda",
+    "name": "Raster",
+    "aliases": [
+      "Raster V1"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "widthCm": 8.38,
+    "heightCm": 11.18,
+    "dimensionsSource": "Archived official Red Panda Raster product page (2020 capture): 4.4 in x 3.3 in x 2.4 in. Width=short side 3.3 in = 8.38 cm, depth 4.4 in = 11.18 cm. Matches the provisional inventory (8.38 x 11.18).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono input; edge from the Raster quick-start connector diagram."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4 in mono output; edge from the Raster quick-start connector diagram."
+      },
+      {
+        "label": "EXP/CV",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Expression/CV input (0-3.3 V on the tip); edge from the quick-start connector diagram."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative power input; edge from the Raster quick-start connector diagram."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/content/raster_instructions.pdf",
+      "confidence": "verified",
+      "note": "The Raster quick-start connector diagram shows 9 V DC, output and input on the rear/top edge, with the expression/CV jack in the same connector row. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "none documented",
+      "note": "9 V DC center-negative, 100 mA."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in / mono out with expression/CV control; true bypass."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "note": "Mono audio path; expression overrides the shift knob."
+      },
+      "control": {
+        "expression": 1,
+        "cv": true,
+        "cvVoltageRange": "0-3.3 V",
+        "note": "Expression pedal (10-50 kOhm linear) or 0-3.3 V CV."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "true",
+        "note": "True-bypass footswitch; 750 ms maximum delay on the original Raster."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "replacement": "Raster 2",
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/raster_instructions.pdf"
+      }
+    },
+    "status": "discontinued",
+    "notes": "Original Raster: a digital delay with a pitch/phase/frequency shifter in the feedback loop, up to 750 ms delay, three shift modes and three feedback types. Mono, true bypass, expression/CV control; the later Raster 2 added stereo I/O, USB MIDI and a larger feature set.",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20201028205309/http://www.redpandalab.com/products/raster",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/raster_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "extra": {
+      "maxDelayMs": 750,
+      "shiftModes": [
+        "transpose (+/-12 semitones)",
+        "detune",
+        "phase/frequency shift"
+      ],
+      "feedbackTypes": [
+        "reverse",
+        "shifted repeats",
+        "first-repeat-only shift"
+      ]
+    },
+    "imageCandidates": [
+      {
+        "url": "https://web.archive.org/web/20210117214933im_/https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/89/414/rpl104.main__92199.1507745460.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20201028205309/http://www.redpandalab.com/products/raster",
+        "priority": 1,
+        "notes": "Wayback capture of the official Raster V1 main product image (1000x1000, verified reachable). Original CDN asset has been removed."
+      },
+      {
+        "url": "https://web.archive.org/web/20210117214910im_/https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/89/412/rpl104.pt01__62767.1507745460.jpg?c=2",
+        "sourcePage": "https://web.archive.org/web/20201028205309/http://www.redpandalab.com/products/raster",
+        "priority": 2,
+        "notes": "Alternate official Raster V1 product image from the same archived listing."
+      }
+    ]
+  },
+  {
+    "id": "red-panda-raster-2",
+    "brand": "Red Panda",
+    "name": "Raster 2",
+    "aliases": [
+      "Raster V2",
+      "Raster II"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "dimensionsSource": "Official Red Panda Raster 2 product page: 3.05 in x 4.75 in x 2.5 in = 7.75 x 12.07 cm footprint. Provisional inventory listed 7.75 x 12.19; 12.07 cm follows the official 4.75 in depth.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo input, mono or stereo."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS stereo output, mono or stereo."
+      },
+      {
+        "label": "CTRL",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "note": "1/4 in TRS control port: expression pedal, remote switch, tap tempo or TRS MIDI input (tip active, non-standard)."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "channels": 1,
+        "signal": "usb",
+        "usbFunctions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB mini-B for MIDI, web editor and firmware updates."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm inside / 5.5 mm outside."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/content/docs/Raster%202%20Owners%20Manual.pdf",
+      "confidence": "verified",
+      "note": "Owner's manual control-layout diagram lists the USB, power, output, CTRL and input connectors together on the rear/top edge; the official product page shows a top view. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm inside / 5.5 mm outside",
+      "battery": "none documented",
+      "note": "9 V DC center-negative, 250 mA or higher."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "TRS stereo I/O; mono in / stereo out default, stereo in/stereo out and mono configurations available."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "note": "1 MOhm input, < 1 kOhm output; analog buffered bypass."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 soft-touch footswitches, momentary/latching; shift footswitch can be tap tempo",
+        "tapTempo": true,
+        "remote": true
+      },
+      "midi": {
+        "din5": "none",
+        "usb": true,
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "USB-MIDI and TRS MIDI input on CTRL (tip active, no optocoupler). 16 channels, default 1; MIDI clock sync, program change and CC supported."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "device": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Analog buffered bypass; DSP/analog bypass selectable; trails on/off."
+      },
+      "routing": {
+        "presets": 127,
+        "trails": true,
+        "note": "4 presets on the panel, 127 via MIDI; bypass can mute the output while still listening."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "powerJackLocation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/docs/Raster%202%20Owners%20Manual.pdf"
+      }
+    },
+    "status": "current",
+    "notes": "Raster 2 is a stereo digital delay with pitch and frequency shifting in the feedback loop: up to 1600 ms delay (3200 ms forward via the editor), +/-12 semitone shifting, detune and phase/frequency shifting, reverse delay, seven modulation waveforms, and series/parallel/ping-pong routing. MIDI clock, presets and a web editor.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/raster",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Raster%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/89/493/redpanda_raster2_front__62080.1627923384.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/raster",
+        "priority": 1,
+        "notes": "Official front product image (2000x2000); portrait silhouette matching the 3.05 x 4.75 in footprint. Preferred candidate."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/89/492/redpanda_raster2_top__31235.1627923384.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/raster",
+        "priority": 2,
+        "notes": "Official top view, but the trimmed image is landscape (rotated/angled); only usable after an orientation check."
+      }
+    ],
+    "extra": {
+      "priceUsd": 329,
+      "maxDelayMs": 1600,
+      "editorMaxForwardDelayMs": 3200,
+      "pitchRange": "+/- 12 semitones",
+      "modulationWaveforms": 7,
+      "delayStructures": [
+        "series",
+        "parallel",
+        "ping pong"
+      ]
+    }
+  },
+  {
+    "id": "red-panda-remote-4",
+    "brand": "Red Panda",
+    "name": "Remote 4",
+    "aliases": [
+      "Remote 4 Footswitch",
+      "RPL-005"
+    ],
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "other",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth"
+    ],
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
+    "widthCm": 25.4,
+    "heightCm": 6.99,
+    "dimensionsSource": "Official Red Panda Remote 4 product page: 10 in x 2.75 in x 2.25 in high = 25.40 x 6.99 x 5.72 cm. Provisional inventory listed 25.4 x 7.49; 6.99 cm follows the official 2.75 in depth.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "REMOTE OUT",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS cable (included) connects the Remote 4 to the host pedal's CTRL jack. Edge not stated by the manufacturer."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The product page specifies a single 1/4 in TRS connection but does not show the connector face; no edge is asserted."
+    },
+    "optional": {
+      "control": {
+        "footswitch": true,
+        "footswitchType": "4 footswitches (A-D) with scribble strips; 4 modes",
+        "remote": true,
+        "note": "Mode selection is stored by the host pedal: hold the host's right footswitch while plugging in the remote, press a Remote 4 switch, then hold the host footswitch to save."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "none",
+        "note": "Passive remote switch; no audio path of its own."
+      },
+      "physical": {
+        "footswitches": 4,
+        "note": "Scribble strips above each switch can be labeled with a Sharpie and erased with isopropyl alcohol."
+      },
+      "power": {
+        "note": "The Remote 4 does not require power; it is passive and connects over a 1/4 in TRS cable."
+      }
+    },
+    "status": "current",
+    "notes": "Passive four-footswitch remote for Red Panda pedals, connected with a 1/4 in TRS cable. It provides four modes per host pedal for preset recall, bypass, tap tempo, hold/freeze and looper functions, with erasable scribble strips. No power required.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/remote-4.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Remote%204%20QuickStart.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/101/432/rpl005.main.web__37777.1604331390.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/remote-4.html",
+        "priority": 1,
+        "notes": "Official main product photo (2000x2000); long landscape strip, crop to the 25.40 x 6.99 cm footprint."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/101/433/rpl005.pt01.web__97597.1604331390.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/remote-4.html",
+        "priority": 2,
+        "notes": "Official alternate product photo."
+      }
+    ],
+    "extra": {
+      "priceUsd": 99,
+      "modes": 4,
+      "switches": 4,
+      "cableIncluded": "1/4 in TRS cable"
+    }
+  },
+  {
+    "id": "red-panda-tensor",
+    "brand": "Red Panda",
+    "name": "Tensor",
+    "aliases": [
+      "Tensor Time Warp",
+      "RPL-108"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "pitch",
+      "looper"
+    ],
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "dimensionsSource": "Official Red Panda Tensor product page: 3.05 in x 4.75 in x 2.5 in = 7.75 x 12.07 cm footprint. Provisional inventory listed 7.75 x 12.19; 12.07 cm follows the official 4.75 in depth.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS input, mono or stereo; +5.5 dBu maximum input (adjustable to +8 dBu)."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4 in TRS output, mono or stereo."
+      },
+      {
+        "label": "CTRL",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "note": "1/4 in TRS control port: expression pedal, remote switch, remote tap or TRS MIDI input (tip active, non-standard)."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "channels": 1,
+        "signal": "usb",
+        "usbFunctions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB mini-B for MIDI, web editor and firmware updates."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm inside / 5.5 mm outside."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.redpandalab.com/products/tensor",
+      "confidence": "verified",
+      "note": "The official product page describes a pedalboard-friendly enclosure with all jacks on top; the owner's manual control-layout diagram groups the connectors on the rear/top edge. Exact offsets are not published, so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm inside / 5.5 mm outside",
+      "battery": "none documented",
+      "note": "9 V DC center-negative, 250 mA or higher."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "TRS stereo I/O; stereo operation halves the maximum hold/loop time from 9.4 s to 4.7 s."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "trueStereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "maxInputLevelDbu": 5.5,
+        "note": "+5.5 dBu maximum input, adjustable to +8 dBu; analog dry path."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "footswitchType": "2 soft-touch footswitches, momentary or latching",
+        "tapTempo": true,
+        "remote": true
+      },
+      "midi": {
+        "din5": "none",
+        "usb": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "USB-MIDI and TRS MIDI input on CTRL (tip active, no optocoupler). 16 channels, default 1; program change and CC supported. No MIDI clock synchronization documented."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "device": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Analog buffered bypass; always listening so playback can jump from bypass to reverse."
+      },
+      "routing": {
+        "presets": 31,
+        "killDry": true,
+        "looper": true,
+        "note": "31 presets via MIDI or remote switch; loop/overdub/replace and one-shot sampler functions via MIDI or Remote 4."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "powerJackLocation": "top",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "madeIn": "USA",
+        "manualUrl": "https://www.redpandalab.com/content/docs/Tensor%20Owners%20Manual.pdf"
+      }
+    },
+    "status": "current",
+    "notes": "Tensor is a real-time time-warp pedal: reverse, tape stop/start, speed and pitch changes, time stretching from 1:4 to 4:1, and looping/overdub up to 9.4 s (4.7 s in stereo). It is always listening, supports momentary or latching footswitches, expression/remote control and USB/TRS MIDI.",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/tensor",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Tensor%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/99/467/RedPandaLab_Tensor_Front__47690.1604331479.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/tensor",
+        "priority": 1,
+        "notes": "Official main product image (2000x2000); no top view is published, so verify the angle and crop to the enclosure."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/99/466/RedPandaLab_Tensor_Left__94367.1604331479.jpg?c=2",
+        "sourcePage": "https://www.redpandalab.com/products/tensor",
+        "priority": 2,
+        "notes": "Official left-side product photo; useful to check jack placement/height."
+      }
+    ],
+    "extra": {
+      "priceUsd": 329,
+      "maxHoldTimeMonoSec": 9.4,
+      "maxHoldTimeStereoSec": 4.7,
+      "timeStretchRatio": "1:4 to 4:1",
+      "pitchRange": "-2 to +2 octaves",
+      "loopModes": [
+        "overdub",
+        "replace",
+        "dual buffer (next)"
+      ],
+      "loopDirections": [
+        "forward",
+        "alternate",
+        "reverse"
+      ]
+    }
+  }
+]
