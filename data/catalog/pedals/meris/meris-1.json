@@ -510,16 +510,6 @@
       "utility"
     ],
     "category": "pedal",
-    "jacks": [
-      {
-        "kind": "midi",
-        "edge": "top"
-      },
-      {
-        "kind": "midi",
-        "edge": "top"
-      }
-    ],
     "power": {
       "voltage": 9,
       "acDc": "DC",
