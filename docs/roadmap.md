@@ -2,6 +2,8 @@
 
 Task files live in `docs/tasks/`. P0–P5 have detailed task files; proposed/unscheduled tasks are one-liners — expand them when scheduled (see decisions/004).
 
+> **Process gates:** changes to `AGENTS.md`, this roadmap, `docs/phase-guide.md`, task templates, `docs/design-playbook.md`, `docs/catalog-backfill.md` process sections or `.opencode/agent/*` run the **`token-usage-reviewer`** (AGENTS.md §Agent/token review) and record its verdict before commit. **Parallel waves** require its bounded agent/model inventory, per-batch token/time budgets, reviewer caps and global stop. Per-batch task copies are exempt.
+
 ## P0 — Foundation
 | Task | Title | Status |
 |---|---|---|
