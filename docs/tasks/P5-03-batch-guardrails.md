@@ -88,6 +88,9 @@ tooling + docs.
   exempted from the review trigger, `code-reviewer` pinned to the light model,
   demo-link board support + `catalog:ci` prerequisite, context pack trimmed.
   Remaining duplication across docs is intentional cross-reader guidance.
+- **Plan-wide gate:** the token review is referenced in `AGENTS.md`, the roadmap,
+  phase guide, design playbook, batch template, pilot/backfill rules, coordinator
+  agent and this task; per-batch task copies are exempt.
 - **Code review:** `code-reviewer` pass 1 **changes-required** (blocker: custom
   demo board >200 cm; should-fix: cable fallback, PSNR zero samples, empty
   check-jacks dir, codec test) → fixed; pass 2 (same session) **approve** with 2
