@@ -6,7 +6,7 @@ import type { DemoSnapshot } from "./layout.ts";
  *
  * The app's `src/lib/shareLink.ts` is the source of truth, but its extensionless
  * imports don't resolve under `node --experimental-strip-types`. This mirrors
- * the same v2 payload shape; `encode.test.ts` decodes it with the real app codec
+ * the same v2 payload shape; `src/lib/shareLink.demo.test.ts` decodes it with the real app codec
  * so drift is caught by the test suite.
  */
 

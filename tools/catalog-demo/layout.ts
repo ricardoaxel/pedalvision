@@ -258,10 +258,6 @@ export function cablePlan(items: DemoItem[]): CablePlan {
 	return { cables, unconnected };
 }
 
-export function chainCables(items: DemoItem[]): DemoCable[] {
-	return cablePlan(items).cables;
-}
-
 /** Place board-batch items in a wrapping row (demo link for board batches). */
 export function boardRowSnapshots(
 	boards: Array<{ id: string; widthCm: number; heightCm: number }>,

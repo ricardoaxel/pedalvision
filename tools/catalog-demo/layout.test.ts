@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import {
 	boardRowSnapshots,
 	cablePlan,
-	chainCables,
 	chooseBoard,
 	type DemoItem,
 	packItems,
@@ -74,28 +73,31 @@ describe("chooseBoard", () => {
 
 describe("chainCables", () => {
 	it("connects consecutive items with an output and an input", () => {
-		const cables = chainCables([
+		const cables = cablePlan([
 			{ ...(items[0] as DemoItem), jacks: [{ kind: "in" }, { kind: "out" }] },
 			{ ...(items[1] as DemoItem), jacks: [{ kind: "in" }, { kind: "out" }] },
-		]);
+		]).cables;
 		expect(cables).toHaveLength(1);
 		expect(cables[0]?.from).toEqual({ itemUid: "demo-item-a", jack: "1" });
 		expect(cables[0]?.to).toEqual({ itemUid: "demo-item-b", jack: "0" });
 	});
 
 	it("skips a non-audio item and keeps chaining the rest", () => {
-		const cables = chainCables([
+		const cables = cablePlan([
 			{ ...(items[0] as DemoItem), jacks: [{ kind: "in" }, { kind: "out" }] },
 			{ ...(items[2] as DemoItem), jacks: [{ kind: "midi" }] },
 			{ ...(items[1] as DemoItem), jacks: [{ kind: "in" }, { kind: "out" }] },
-		]);
+		]).cables;
 		expect(cables).toHaveLength(1);
 		expect(cables[0]?.from).toEqual({ itemUid: "demo-item-a", jack: "1" });
 		expect(cables[0]?.to).toEqual({ itemUid: "demo-item-b", jack: "0" });
 	});
 
 	it("uses the documented IN/OUT fallback for pedals with no jack data", () => {
-		const cables = chainCables([items[0] as DemoItem, items[1] as DemoItem]);
+		const cables = cablePlan([
+			items[0] as DemoItem,
+			items[1] as DemoItem,
+		]).cables;
 		expect(cables).toHaveLength(1);
 		expect(cables[0]?.from).toEqual({ itemUid: "demo-item-a", jack: "1" });
 		expect(cables[0]?.to).toEqual({ itemUid: "demo-item-b", jack: "0" });
