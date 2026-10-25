@@ -9,7 +9,7 @@ Usage:
                       [--columns 5] [--cell 240]
 
 The manifest is a JSON array or {"items": [...]} of { "id", "image" }.
-20–30 images per call; the sidecar <sheet>.json maps every grid cell back to
+10–30 images per call; the sidecar <sheet>.json maps every grid cell back to
 the catalog id and source hash. Never call vision per image.`;
 
 type Args = {

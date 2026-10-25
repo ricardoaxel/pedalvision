@@ -69,6 +69,11 @@ task.
 
 ## Non-negotiables
 
+- **Token/cost gate:** before starting a UX-heavy loop (or changing this
+  playbook), run the **`token-usage-reviewer`** and fold its agent/round budget.
+  The default ~5-round cap applies only if the reviewer confirms it is within
+  budget; reuse the same reviewer session for re-checks and never review one
+  image at a time.
 - Owner approves the **direction** before any UI; owner approves the **final**
   result before merge.
 - **Never eyeball pixels with a builder model** — delegate to `design-reviewer`.

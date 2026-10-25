@@ -50,6 +50,14 @@ Export PNG + PDF · save/load + boot reconcile · capacity budgets + benchmark �
 
 Run the **`performance-expert`** agent (`.opencode/agent/performance-expert.md`) before the PR for a **performance-sensitive task**: canvas scale / many objects, share-link or URL payloads, export, IndexedDB/storage, bundle/dependency changes, or anything that raises a product cap. Also run it **before raising a capacity cap** and **before the launch gate**. It reviews client CPU/memory/bandwidth/storage, Cloudflare free-tier/hosting cost, abuse limits, and free-tier user caps, with current sources and a measurement plan. It is **not a mandatory gate** — it advises; the owner decides. Run it with `opencode run --agent performance-expert "<prompt>"` (it is not in the in-session Task list until a session restart). Record the verdict and applied/deferred findings in the task + `docs/progress.md`. Precedent: P3-03 Share links (2026-10-20) — verdict `watch`; the 32K URL cap was applied, the large-preview confirmation + bundle split were deferred.
 
+## Agent/token review (MANDATORY for plan/rule changes — owner instruction, 2026-10-25)
+
+Run the **`token-usage-reviewer`** (`.opencode/agent/token-usage-reviewer.md`) **before changing** `AGENTS.md`, this phase guide, the roadmap, task templates, `docs/catalog-backfill.md` process sections, `docs/design-playbook.md`, `.opencode/agent/*`, or **starting a parallel wave**. It returns a strict JSON verdict, agent/model inventory, per-batch token/time budget, findings, lean workflow and stop conditions; fold valid findings and record the verdict in the task/PR.
+
+- **Exempt:** per-batch task copies (`docs/tasks/P5-03-<kind>-<brand>-<batch>.md`) and routine data batches.
+- **Before a parallel wave:** max 3 batches, light models by default, per-batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave soft ≤1.2M / hard ≤2.4M; a global stop path. BOSS 209 → 6×~35 in 2 waves.
+- It is read-only. If it cannot make the plan lean/safe, **STOP** and report.
+
 ## P4 — Cables (COMPLETE — phase gate PASSED)
 Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 
@@ -66,7 +74,7 @@ P5 turns the 207-item seed into the real catalog and prepares launch. Full plan:
 |---|---|---|
 | P5-01 Policy, data contract & master inventory | Public-asset policy, attribution/takedown, pedal + **pedalboard** schema, 8,557 pedals + 263 boards inventory, brand tiers — **DONE** (PR #35) | **Yes** — approve the public-asset policy + attribution/takedown page (owner accepts responsibility) |
 | P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap — **DONE** (merged PR #36) | No |
-| P5-03 Pilot + parallel backfill | Choka pilot → **board pilot** → Meris + Red Panda + board batch → BOSS split test → waves; first 2,000 items include 150 boards — **Choka + JHS pedal pilots DONE (PRs #37/#38); board pilot (Pedaltrain Classic 2) in review (PR #39)**; stop for owner review | **Yes** — review the pedal + board pilots and first brand PRs |
+| P5-03 Pilot + parallel backfill | Choka/JHS pedal pilots + Pedaltrain/Temple board pilots **DONE**; **Meris first-10 merged (PR #42)**; **batch guardrails in review (PR #43)**; next Red Panda + one board batch → BOSS 6×~35 in 2 waves. First 2,000 items include 150 boards | **Yes** — review the pilot/brand PRs and the guardrails PR |
 | P5-04 Final QA, provenance & launch gate | Full validation, spot-checks, iOS, launch sign-off | **Yes** — launch approval |
 | P5-05 Image hosting at scale | Deferred spike only if the owner chooses to exceed Tier A / 2,000 hosted pedals | **Yes** — choose the hosting option only when triggered |
 | P5-06 Appium · P5-07 Help · P5-08 Observability | Proposed/unscheduled | Later |

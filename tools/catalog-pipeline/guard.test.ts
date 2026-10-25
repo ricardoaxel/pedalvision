@@ -25,6 +25,8 @@ describe("batch PR guard", () => {
 			"tools/asset-pipeline/index.ts",
 			"docs/design.md",
 			"e2e/picker-choka.spec.ts",
+			"AGENTS.md",
+			"src/lib/shareLink.demo.test.ts",
 		];
 		expect(guardBatchPr([...batch, ...pipeline])).toEqual(pipeline);
 		expect(
@@ -44,6 +46,21 @@ describe("batch PR guard", () => {
 			"src/catalog/data/pedals.json",
 			"data/catalog/pedals/acme/batch-1.json",
 		]);
+	});
+
+	it("allows the verified effect-type override file as batch support", () => {
+		expect(
+			guardBatchPr([
+				"data/catalog/research/pedals/acme/batch-1.json",
+				"tools/catalog-transform/curated.ts",
+			]),
+		).toEqual([]);
+		expect(
+			guardBatchPr([
+				"data/catalog/research/pedals/acme/batch-1.json",
+				"tools/catalog-transform/effects.ts",
+			]),
+		).toEqual(["tools/catalog-transform/effects.ts"]);
 	});
 
 	it("rejects mapped/runtime and feature-code edits in a batch PR", () => {

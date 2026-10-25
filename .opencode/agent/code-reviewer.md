@@ -1,6 +1,7 @@
 ---
-description: Staff-level software engineer. Reviews code, architecture, structure, security, tests, and doc/plan consistency in the code-review loop, before a task's PR is opened. Read-only. Run on a strong plan-tier model.
+description: Staff-level software engineer. Reviews code, architecture, structure, security, tests, and doc/plan consistency in the code-review loop, before a task's PR is opened. Read-only. Run on the light model (opencode-go/deepseek-v4.1-flash).
 mode: all
+model: opencode-go/deepseek-v4.1-flash
 temperature: 0.3
 permission:
   edit: deny

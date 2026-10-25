@@ -45,7 +45,7 @@ You are the image scout for one Pedalvision catalog batch.
    **AVIF quality gate:** q80 must pass **PSNR ≥ 40 dB** (RGB where alpha > 0)
    and a 1:1 original-vs-compressed review; otherwise escalate q90 → q100 or
    keep PNG for that item.
-4. Add ambiguous images to a contact sheet (20–30 per call):
+4. Add ambiguous images to a contact sheet (10–30 per call):
    `pnpm asset:contact-sheet --images <manifest.json> --out work/catalog/contact-sheets/<batch>.png`
    The sidecar JSON maps cells to ids/hashes.
 5. Build a **dedicated 2-cell identical-coordinate PNG-vs-AVIF crop** for the
@@ -59,7 +59,7 @@ You are the image scout for one Pedalvision catalog batch.
 
 - **No AI for mechanical work:** background removal, trim, resize, alpha/aspect checks are scripts.
 - **Drop shadows/reflections are not part of the pedal.** Prefer a shadow-free candidate; if the only candidate has one, remove it before trimming (alpha threshold/matte) and verify the result on the contact sheet. Never let a shadow expand the cutout or the cm footprint.
-- **Vision only on contact sheets**, 20–30 images per call. Never one call per image.
+- **Vision only on contact sheets**, 10–30 images per call. Never one call per image.
 - No bulk copying, no scraping beyond the candidate page, no real downloads in a dry run.
 - Same-origin output only; final images must be transparent AVIF (or PNG fallback) at 800/350.
 - Verify the canvas image actually decoded with the stage's `data-item-images`

@@ -234,6 +234,27 @@ export const RawJackSchema = section({
 	note: z.string().optional(),
 });
 
+export const RAW_JACK_LAYOUT_CONFIDENCES = [
+	"verified",
+	"estimated",
+	"unknown",
+] as const;
+
+/**
+ * Physical jack-layout provenance (P5 batch guardrail, 2026-10-25).
+ *
+ * An `edge` must be backed by a source that actually shows the connector face
+ * (official rear/top photo, support page, or manual diagram). Never infer an
+ * edge from a sibling model or “compact layout”. `estimated`/`unknown` batches
+ * must omit the edge (the app falls back to its assumed anchors) instead of
+ * shipping a guessed edge.
+ */
+export const RawJackLayoutSchema = section({
+	source: z.string().min(1).optional(),
+	confidence: z.enum(RAW_JACK_LAYOUT_CONFIDENCES).optional(),
+	note: z.string().min(1).optional(),
+});
+
 export const RawPowerSchema = section({
 	voltage: PositiveNumber.optional(),
 	acDc: z.enum(["DC", "AC"]).optional(),
@@ -510,6 +531,7 @@ export const RawPedalRecordSchema = z
 		/** Delivery image format for the hosted asset; default `png`. */
 		imageFormat: z.enum(IMAGE_FORMATS).optional(),
 		jacks: z.array(RawJackSchema).optional(),
+		jackLayout: RawJackLayoutSchema.optional(),
 		power: RawPowerSchema.optional(),
 		io: RawAudioSchema.optional(),
 		optional: RawOptionalSchema.optional(),
@@ -572,6 +594,7 @@ export type RawPriceObservation = z.infer<typeof RawPriceObservationSchema>;
 export type RawVideo = z.infer<typeof RawVideoSchema>;
 export type RawImageCandidate = z.infer<typeof RawImageCandidateSchema>;
 export type RawJack = z.infer<typeof RawJackSchema>;
+export type RawJackLayout = z.infer<typeof RawJackLayoutSchema>;
 export type RawPower = z.infer<typeof RawPowerSchema>;
 export type RawAudio = z.infer<typeof RawAudioSchema>;
 export type RawControl = z.infer<typeof RawControlSchema>;
