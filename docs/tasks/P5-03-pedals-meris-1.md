@@ -151,6 +151,18 @@ this batch. This is the Meris leg of the P5-03 small-brand parallel test.
   review skipped (data/assets + the owner-approved `curated.ts` override).
 - **Evidence:** branch `p5-03-pedals-meris-1-evidence` (commit `204ae68`),
   `docs/screenshots/P5-03-meris-1/`.
+- **Demo share link:** a read-only scene on the PR preview with all 10 batch
+  pedals laid out on one Aclam Smart Track L2 board (4 X-series + 5 compact +
+  MIDI I/O); verified 1 board / 10 items. URL in the PR description.
+
+## Demo share link rule
+
+Every batch PR description must include a `?share=1#s=…` demo link that opens
+one pedalboard (or several when a single board is too small) containing **every
+item added by that batch**. Verify the link loads the expected board/item counts
+before opening the PR. Codified in `docs/tasks/P5-batch-template.md`,
+`docs/tasks/P5-03-pilot-parallel-backfill.md` and
+`docs/catalog-backfill.md` (owner instruction, 2026-10-25).
 
 ## Notes
 
