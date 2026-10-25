@@ -46,6 +46,10 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 - First 2,000 catalog items = ~1,850 pedals + 150 boards; board images count toward the separate board budget.
 - Absolute minimum (≥200 pedals / ≥10 brands / ≥10 boards) and Tier A target are reported separately; launching below Tier A needs owner acceptance.
 - Each PR contains: data, images, contact sheet, coverage/reject report, Playwright evidence.
+- **Every batch PR description includes a demo share link** (`?share=1#s=…`) that opens a
+  pedalboard (or boards) with every item added by that batch, with illustrative patch cables
+  connecting the batch items (not a true audio-flow model), and the link must load the expected
+  board/item/cable counts (owner instruction, 2026-10-25).
 - `catalog:status` shows the in-flight batches; pause/stop verified on at least one real batch.
 - Cap enforcement verified (simulate near-cap or assert the check).
 - No feature-code changes in brand PRs.

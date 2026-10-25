@@ -467,6 +467,11 @@ public/pedal-assets/**                              # final assets
   same-origin; export stays untainted.
 - Playwright: picker search + brand/effect filters; canvas placement; no console
   errors; screenshot/contact sheet in the PR.
+- **Demo share link (owner instruction, 2026-10-25):** every batch PR description
+  includes a read-only `?share=1#s=…` link that opens one pedalboard (or several
+  when one is too small) containing **every item added by that batch**, with illustrative patch cables
+  connecting the batch items (a simple chain is fine; not a true audio-flow model). Verify the
+  link loads the expected board/item counts. This is a per-batch PR requirement.
 - Boards: footprint width×depth, top-down image aspect, picker board preview,
   board placement/rotation, no console errors; board images 800/350.
 - Coverage report: pedals covered, unresolved, duplicates, image pass/reject.
