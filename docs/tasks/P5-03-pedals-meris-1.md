@@ -151,8 +151,9 @@ this batch. This is the Meris leg of the P5-03 small-brand parallel test.
 - **Reviews:** `catalog-image-reviewer` pass 1 accept (q80), pass 2 flagged
   Enzo/Hedra only pending the dedicated 2× crop, pass 3 accept 20/20; code
   review skipped (data/assets + the owner-approved `curated.ts` override).
-- **Evidence:** branch `p5-03-pedals-meris-1-evidence` (commit `204ae68`),
-  `docs/screenshots/P5-03-meris-1/`.
+- **Evidence:** branch `p5-03-pedals-meris-1-evidence` (latest `7e70b6e`),
+  `docs/screenshots/P5-03-meris-1/`; the wired share scene screenshot is
+  `app-meris-wired-share.png`.
 - **Demo share link:** a read-only scene on the PR preview with all 10 batch
   pedals laid out on one Aclam Smart Track L2 board (4 X-series + 5 compact +
   MIDI I/O); the nine effects are chained with **illustrative** patch cables
