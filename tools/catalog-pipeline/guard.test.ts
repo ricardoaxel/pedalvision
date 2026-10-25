@@ -26,6 +26,7 @@ describe("batch PR guard", () => {
 			"docs/design.md",
 			"e2e/picker-choka.spec.ts",
 			"AGENTS.md",
+			"src/lib/shareLink.demo.test.ts",
 		];
 		expect(guardBatchPr([...batch, ...pipeline])).toEqual(pipeline);
 		expect(
