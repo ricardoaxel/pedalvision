@@ -1,6 +1,6 @@
 # P5-03: Temple Audio — Duo 24 board batch
 
-**Phase:** P5 · **Status:** in review — PR #41 (P5-03b fix) · **Model:** build-strong
+**Phase:** P5 · **Status:** done (merged 2026-10-25, PR #41, squash `ea628fb`; post-merge `fbd0869`) · **Model:** build-strong
 
 ## Goal
 
