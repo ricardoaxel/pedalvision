@@ -1,6 +1,6 @@
 # P5-03: Meris — pedals batch 1
 
-**Phase:** P5 · **Status:** in progress · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #42 · **Model:** build-strong
 
 ## Goal
 
@@ -129,9 +129,36 @@ this batch. This is the Meris leg of the P5-03 small-brand parallel test.
 - Contact sheet + coverage/reject report in the PR.
 - One PR; no merge.
 
+## Results (2026-10-25)
+
+- **Coverage:** 10/10 items; no unresolved duplicates. Deferred: Preset Switch +
+  4 colour variants.
+- **Raw data:** all 10 records validate against `RawPedalBatchSchema`; dimensions
+  verified against official Meris pages/manuals; every record has `sources`,
+  `confidence`, `lastVerified` and `dimensionsSource`.
+- **Images:** 20/20 AVIF files (800/350) hosted; analyzer **accept** for all 10
+  (aspect 1.31–3.29%, rotation ≤0.23°, perspective ≤0.43%, no shadow); PSNR
+  40.89–45.73 dB (Enzo/Hedra q90, rest q80); contact sheet and dedicated
+  2× PNG-vs-AVIF crop sheet vision-accepted.
+- **Pipeline:** `catalog:ci` **218 pedals / 12 boards**; `catalog:validate`
+  green (101 hosted pedals / 202 files / 12.2 MB); `catalog:guard-batch-pr
+  --allow-pipeline` clean.
+- **Checks:** lint / typecheck / test **676** / build / e2e **258 passed +
+  7 skipped**; app QA **44/44** (desktop Chromium, mobile Chromium, WebKit,
+  Firefox) with no console errors.
+- **Reviews:** `catalog-image-reviewer` pass 1 accept (q80), pass 2 flagged
+  Enzo/Hedra only pending the dedicated 2× crop, pass 3 accept 20/20; code
+  review skipped (data/assets + the owner-approved `curated.ts` override).
+- **Evidence:** branch `p5-03-pedals-meris-1-evidence` (commit `204ae68`),
+  `docs/screenshots/P5-03-meris-1/`.
+
 ## Notes
 
 - The rich official manuals are the source for audio I/O, power, MIDI/USB and
   physical facts; the hosted image is the official transparent top-down render
   (plus one authorized-retailer MIDI I/O image).
 - Deferred: Preset Switch + 4 colour variants.
+- Owner-approved deviation: verified Meris `effectTypes` live in
+  `tools/catalog-transform/curated.ts` because the no-drift test requires the
+  runtime types to equal the curated/classifier derivation. This is the only
+  non-data file in the PR; no generated/mapped/runtime file is included.
