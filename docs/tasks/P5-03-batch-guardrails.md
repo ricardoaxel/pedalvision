@@ -1,6 +1,6 @@
 # P5-03: Batch guardrails — jack provenance, demo links, small-batch QA
 
-**Phase:** P5 · **Status:** in progress · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #43 · **Model:** build-strong
 
 ## Goal
 
