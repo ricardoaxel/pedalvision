@@ -79,7 +79,7 @@ tooling + docs.
   allowed under the owner-approved tooling exception.
 - **AVIF:** `asset:psnr` passes ≥40 dB and fails below; documented in the
   template/README.
-- **Checks:** lint / typecheck / test **695** / build; `catalog:check-jacks`,
+- **Checks:** lint / typecheck / test **699** / build; `catalog:check-jacks`,
   `catalog:ci` **218 / 12**, `catalog:validate` green. E2E not run (tooling/docs
   only; no UI change).
 - **Token/cost review:** `token-usage-reviewer` verdict **adjust**; findings
@@ -88,6 +88,10 @@ tooling + docs.
   exempted from the review trigger, `code-reviewer` pinned to the light model,
   demo-link board support + `catalog:ci` prerequisite, context pack trimmed.
   Remaining duplication across docs is intentional cross-reader guidance.
+- **Code review:** `code-reviewer` pass 1 **changes-required** (blocker: custom
+  demo board >200 cm; should-fix: cable fallback, PSNR zero samples, empty
+  check-jacks dir, codec test) → fixed; pass 2 (same session) **approve** with 2
+  nits folded.
 
 ## Notes
 
