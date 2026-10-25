@@ -32,6 +32,6 @@ You coordinate the P5 catalog batches. You **do not research a batch yourself an
 
 - Raw records only from brand agents; generated mapped/runtime only from the post-merge build.
 - Optional fields are opportunistic (same base pass); no extra searches.
-- Vision only via `catalog-image-reviewer` on 20–30-image contact sheets; cache verdicts with `pnpm asset:qa`.
+- Vision only via `catalog-image-reviewer` on 10–30-image contact sheets; cache verdicts with `pnpm asset:qa`.
 - If a model/provider call fails, STOP and report the exact model, operation, error and suggested action.
 - English only.

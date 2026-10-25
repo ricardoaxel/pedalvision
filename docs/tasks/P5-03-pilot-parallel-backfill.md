@@ -32,8 +32,8 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 1. **Pilot:** TC Choka — one PR with the **raw research record + assets only**; CI runs `catalog:build` into a temp dir and an **uncommitted** app-workspace runtime for Playwright; the post-merge build commits mapped/runtime. Add the hosted 800/350 image, contact sheet, and Playwright render/filter check. Capture every verified fact found — connectors, audio I/O, electrical specs, routing/loops, control/CV, MIDI, USB, wireless/app, power/supply, circuit/bypass, physical/jack orientation, lifecycle, **artist association when already found**, **price observations (new/used) when already found**, and `extra` — not just what the UI shows today. The H90 is the stress fixture for multi-connector pedals.
 2. **Owner checkpoint.** Only continue if the pilot is approved.
 3. **Board pilot:** Pedaltrain Classic 2 (or Temple Audio Duo 24) — board facts, hosted top-down image, contact sheet, Playwright board picker/placement.
-4. **Small parallel test:** Meris (15) + Red Panda (14) + one board batch (Pedaltrain), one PR each; verify filters, image load, canvas/board placement.
-5. **Big-brand split test:** BOSS into ~5–6 batches; run 3 in parallel; one PR each; verify merge/build/QA and no conflicts.
+4. **Small parallel test:** Meris (15) + Red Panda (14) + one board batch (Pedaltrain), one PR each; verify filters, image load, canvas/board placement. **Before starting,** run the `token-usage-reviewer` on the wave plan and record the agent/model inventory, per-batch token/time budgets, reviewer caps and global stop.
+5. **Big-brand split test:** BOSS 209 → **6 batches of ~35**; run **3 in parallel in 2 waves**; one PR each; verify merge/build/QA, no conflicts, and the 4 h/batch cap.
 6. **Scale:** continuous queue, 3 batches in flight, **mixing pedal and board batches**; refill as each finishes; priority brands; update the registry after each merge. First 2,000 catalog items include 150 boards.
 7. **Stop condition:** complete the Tier A target (~1,850 pedals + 150 boards). If pedals reach 1,850 before boards reach 150, pause pedal batches and finish boards. Hard safety cap: **2,000 hosted pedals**; pedal waves stop there, boards continue to 150, then report and hand off to **P5-04**. P5-05 only if the owner chooses to exceed Tier A.
 
@@ -46,10 +46,14 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 - First 2,000 catalog items = ~1,850 pedals + 150 boards; board images count toward the separate board budget.
 - Absolute minimum (≥200 pedals / ≥10 brands / ≥10 boards) and Tier A target are reported separately; launching below Tier A needs owner acceptance.
 - Each PR contains: data, images, contact sheet, coverage/reject report, Playwright evidence.
+- **Before parallel waves:** `token-usage-reviewer` verdict `lean`/`adjust` with a bounded agent/model inventory, per-batch token/time budget and a global stop (fold its findings).
 - **Every batch PR description includes a demo share link** (`?share=1#s=…`) that opens a
   pedalboard (or boards) with every item added by that batch, with illustrative patch cables
   connecting the batch items (not a true audio-flow model), and the link must load the expected
-  board/item/cable counts (owner instruction, 2026-10-25).
+  board/item/cable counts (owner instruction, 2026-10-25). `pnpm catalog:demo-link` builds it.
+- **Jack edges are verified:** `pnpm catalog:check-jacks` is green; no `edge` without a
+  `jackLayout` verified source. `tools/catalog-transform/curated.ts` is the only allowed
+  batch-support code file (verified effect types for creative names).
 - `catalog:status` shows the in-flight batches; pause/stop verified on at least one real batch.
 - Cap enforcement verified (simulate near-cap or assert the check).
 - No feature-code changes in brand PRs.

@@ -3,12 +3,12 @@ import sharp, { type OverlayOptions } from "sharp";
 import { hashBytes } from "./qa-cache.ts";
 
 /**
- * Contact-sheet helper (P5-02). Vision QA runs on 20–30 thumbnails per call,
+ * Contact-sheet helper (P5-02). Vision QA runs on 10–30 thumbnails per call,
  * never per image. The sidecar JSON maps each grid cell back to a catalog id and
  * source hash so reviewer verdicts can be cached deterministically.
  */
 
-export const CONTACT_SHEET_MIN = 20;
+export const CONTACT_SHEET_MIN = 10;
 export const CONTACT_SHEET_MAX = 30;
 
 export type ContactSheetItem = { id: string; image: string };

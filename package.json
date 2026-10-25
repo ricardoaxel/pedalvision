@@ -22,6 +22,8 @@
 		"catalog:build": "node --experimental-strip-types tools/catalog-pipeline/index.ts build",
 		"catalog:validate": "node --experimental-strip-types tools/catalog-pipeline/index.ts validate",
 		"catalog:check": "node --experimental-strip-types tools/catalog-pipeline/index.ts check",
+		"catalog:check-jacks": "node --experimental-strip-types tools/catalog-pipeline/index.ts check-jacks",
+		"catalog:demo-link": "node --experimental-strip-types tools/catalog-demo/index.ts",
 		"catalog:ci": "node --experimental-strip-types tools/catalog-pipeline/index.ts ci",
 		"catalog:post-merge": "node --experimental-strip-types tools/catalog-pipeline/index.ts post-merge",
 		"catalog:guard-batch-pr": "node --experimental-strip-types tools/catalog-pipeline/index.ts guard-batch-pr",
@@ -40,7 +42,8 @@
 		"asset:board-color": "node --experimental-strip-types tools/asset-pipeline/board-color-cli.ts",
 		"asset:board-art": "node --experimental-strip-types tools/asset-pipeline/board-art-cli.ts",
 		"asset:contact-sheet": "node --experimental-strip-types tools/asset-pipeline/contact-sheet-cli.ts",
-		"asset:qa": "node --experimental-strip-types tools/asset-pipeline/qa-cli.ts"
+		"asset:qa": "node --experimental-strip-types tools/asset-pipeline/qa-cli.ts",
+		"asset:psnr": "node --experimental-strip-types tools/asset-pipeline/psnr-cli.ts"
 	},
 	"dependencies": {
 		"fflate": "^0.8.3",

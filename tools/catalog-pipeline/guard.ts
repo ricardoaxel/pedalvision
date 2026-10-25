@@ -11,6 +11,13 @@ const ALLOWED = [
 ];
 
 /**
+ * Batch-support files: verified effect-type overrides are shared tooling, but a
+ * batch may need to add its own creative-name entries. The no-drift test requires
+ * them, so allow only this specific file (never general `tools/` changes).
+ */
+const BATCH_SUPPORT_ALLOWED = [/^tools\/catalog-transform\/curated\.ts$/];
+
+/**
  * Owner-approved exception for the **pilot + delivery-pipeline** PR only. Normal
  * brand batches must not pass `allowPipeline`; the pilot that introduces AVIF /
  * the rendition map carries the pipeline code, docs and tests in the same PR.
@@ -26,6 +33,7 @@ const PIPELINE_ALLOWED = [
 	/^e2e\//,
 	/^\.opencode\/agent\//,
 	/^docs\//,
+	/^AGENTS\.md$/,
 	/^playwright\.config\.ts$/,
 	/^vite\.config\.ts$/,
 	/^package\.json$/,
@@ -55,9 +63,11 @@ export function guardBatchPr(
 			file.startsWith("public/pedal-assets/"),
 	);
 	if (!isBatchPr) return [];
-	const allowed = options.allowPipeline
-		? [...ALLOWED, ...PIPELINE_ALLOWED]
-		: ALLOWED;
+	const allowed = [
+		...ALLOWED,
+		...BATCH_SUPPORT_ALLOWED,
+		...(options.allowPipeline ? PIPELINE_ALLOWED : []),
+	];
 	return files.filter((file) => {
 		if (options.allowPipeline && PIPELINE_DENIED.some((p) => p.test(file))) {
 			return true;

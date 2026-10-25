@@ -77,7 +77,7 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
   10–15% flag, >15% reject), rotation >2°, shadow/perspective, board top-down
   signals. Processor adds an optional dev-only soft matte, atomic writes and an
   optional analyzer report.
-- **Vision QA:** contact sheets of 20–30 images + `catalog-image-reviewer`;
+- **Vision QA:** contact sheets of 10–30 images + `catalog-image-reviewer`;
   verdicts/reasons cached by source hash in `work/catalog/image-qa/`.
 - **Control plane:** `catalog-runner` + `work/catalog/{state,control,checkpoints,logs}`;
   `catalog:status [--watch]`, start/pause/stop/resume/finish/flag, global STOP,
@@ -242,6 +242,12 @@ need an optional additive `xCm`/`yCm` (only if a source actually requires it).
 with its position when the source exposes it; the runtime catalog keeps them for
 future features. **Only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor
 today.**
+**Jack edges need a verified source** (P5 guardrail, 2026-10-25): set `edge`
+only from an official rear/top photo, support page or manual diagram, and record
+`jackLayout: { source, confidence: "verified" }` on the record. Never infer an
+edge from a sibling model or “compact layout”. If unknown, omit the edge; the
+app uses its assumed anchors. `pnpm catalog:check-jacks` fails an unverified edge.
+
 When only the **edge count** is known (e.g. “2 jacks on top”), record two
 `jacks` entries with `kind` + `edge` and **omit `pos`**; the resolver distributes
 them evenly across that edge and marks the anchors **approximate** (hollow ticks).
@@ -249,6 +255,13 @@ Exact `pos` can be filled later from measured cm. If the order/positions are
 estimated from an official product photo (rear/top view), record `pos` +
 `approximate: true`; never claim exact cm. When no jack data exists at all,
 P4-02's fallback anchors apply (assumed IN left / OUT right).
+
+### Effect-type overrides
+
+Creatively-named pedals (Enzo, Hedra, LVX, Polymoon…) classify to `[]`; add
+**verified** types to `tools/catalog-transform/curated.ts` (keyed by base slug).
+This is the one batch-support code file the guard allows in a batch PR; the
+no-drift test keeps the runtime and curated table consistent.
 
 ### Enrichment (capture everything verified; show when present)
 `power` (`voltage`, `acDc`, `currentMa`), `usage` (`guitar|bass|both|unknown`),
@@ -373,7 +386,7 @@ Record the source URL per item; never bulk-copy descriptions.
    **Side-jack pedals:** if jack barrels/feet protrude beyond the enclosure, use
    `asset:process --body-crop` (median body edge) and analyze the processed
    output so the enclosure, not the connectors, sets the true-scale width.
-4. **Vision QA** — only ambiguous images, on **contact sheets** of 20–30; never
+4. **Vision QA** — only ambiguous images, on **contact sheets** of 10–30; never
    one call per image.
 5. **Fallback** — max 3 candidates → placeholder + `needs-new-image` flag.
 6. **Human contact sheet** per brand before PR merge.
@@ -427,7 +440,7 @@ public/pedal-assets/**                              # final assets
   `src/catalog/data/pedals.json`.
 - Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
 - **Agents write raw records only.** A batch PR contains **raw records + assets only**; CI runs `catalog:build` into a temp dir for validation **and** generates an **uncommitted** runtime into the app workspace before `pnpm build`/Playwright, so the PR's new items are actually testable. A **post-merge build** deterministically commits raw → `data/catalog/{pedals,boards}/...` (mapped) → `src/catalog/data/{pedals,boards}.json` (runtime). No agent edits the mapped/runtime files. A post-merge drift check catches stale generated files.
-- **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR.
+- **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR. Before a parallel wave, run the `token-usage-reviewer` on the wave plan and record its per-batch token/time budget, model routing, reviewer-pass caps and global stop; fold valid findings. **Default budgets:** per batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave soft ≤1.2M / hard ≤2.4M tokens. Abort/report at 2× a batch budget or the wave hard cap.
 - Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches. Boards: 10–25
   models per batch (families/sizes); the final Tier A partial batch may be
   smaller (even 1 board). A board brand batch runs alongside pedal batches in the
@@ -454,7 +467,7 @@ public/pedal-assets/**                              # final assets
    pedal pilot, not at the end.
 5. **Small parallel test:** Meris + Red Panda + one board batch (Pedaltrain) —
    one PR each, 3 in flight.
-6. **Big-brand split test:** BOSS, 3 batch PRs in parallel; verify build/merge.
+6. **Big-brand split test:** BOSS 209 → **6 batches of ~35**, run **3 at a time in 2 waves** (not 3 giant batches); verify build/merge and the 4 h/batch cap.
 7. **Scale:** 3 batches in flight continuously, mixing pedals and boards;
    refill as each finishes. First 2,000 catalog items include 150 boards.
 8. **At the Tier A target:** stop and run P5-04. Only if the owner chooses to exceed Tier A: the 2,000 hosted-pedal cap applies, then run P5-05 before scaling.
@@ -472,6 +485,8 @@ public/pedal-assets/**                              # final assets
   when one is too small) containing **every item added by that batch**, with illustrative patch cables
   connecting the batch items (a simple chain is fine; not a true audio-flow model). Verify the
   link loads the expected board/item counts. This is a per-batch PR requirement.
+  `pnpm catalog:demo-link --batch <brand>/<batch> --origin <PR-preview-origin>` builds it
+  deterministically (run `catalog:ci` first; board batches use `--kind boards`).
 - Boards: footprint width×depth, top-down image aspect, picker board preview,
   board placement/rotation, no console errors; board images 800/350.
 - Coverage report: pedals covered, unresolved, duplicates, image pass/reject.

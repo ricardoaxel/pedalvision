@@ -159,7 +159,7 @@ pnpm asset:qa --batch boss/batch-1 --id boss-ds-1 --verdict accept \
   --reason "clean top-down cutout" --image raw.png
 ```
 
-The sheet helper accepts **20–30 images per call**, writes a grid PNG plus a
+The sheet helper accepts **10–30 images per call**, writes a grid PNG plus a
 sidecar JSON mapping each cell to its id/hash. Vision runs only on contact
 sheets (`catalog-image-reviewer`), never per image.
 
@@ -193,6 +193,14 @@ sheets (`catalog-image-reviewer`), never per image.
 (`catalog-image-reviewer`). If an item fails, re-encode at q90 → q100 or keep
 `--format png` for that item. Measured on the Choka pilot: 28 KB (800) + 10 KB
 (350), PSNR 42.4 dB, visually indistinguishable at 2×.
+
+```sh
+# Generate a temporary PNG cutout, then measure the shipped AVIF:
+pnpm asset:process ... --format png --assets-dir work/catalog/png-ref ...
+pnpm asset:psnr --png work/catalog/png-ref/pedals/800/<id>.png   --avif public/pedal-assets/pedals/800/<id>.avif --min 40
+```
+
+The reference PNG is QA-only; never commit it.
 
 ## Rights & scope (ADR-003)
 

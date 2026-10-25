@@ -274,6 +274,11 @@
       "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in); 414 g (14.6 oz)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q90 800/350; PSNR 42.03 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/product/enzo/",
+      "confidence": "verified",
+      "note": "Owner-confirmed top-mounted layout; INPUT, OUTPUT, EXP and 9V DC are on the rear/top edge."
     }
   },
   {
@@ -624,6 +629,11 @@
       "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
       "firmware": "1.5.5 (MIDI over USB added in 1.5)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 41.66 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/wp-content/uploads/2025/01/meris-enzo-back.jpg",
+      "confidence": "verified",
+      "note": "Official rear-panel photo shows the L/R audio I/O, EXP, DIN MIDI, USB-C and 9V DC on the rear/top panel."
     }
   },
   {
@@ -882,6 +892,11 @@
       "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q90 800/350; PSNR 42.77 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/product/hedra-pedal/",
+      "confidence": "verified",
+      "note": "Owner-confirmed top-mounted layout; INPUT, OUTPUT, EXP and 9V DC are on the rear/top edge."
     }
   },
   {
@@ -1215,6 +1230,11 @@
       "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
       "firmware": "1.5.6 (MIDI over USB and looper quantize added in 1.5)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 45.25 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/wp-content/uploads/2022/05/meris-LVX-back-standard.jpg",
+      "confidence": "verified",
+      "note": "Official rear-panel photo shows the L/R audio I/O, EXP, DIN MIDI, USB-C and 9V DC on the rear/top panel."
     }
   },
   {
@@ -1242,7 +1262,6 @@
       {
         "label": "MIDI IN",
         "kind": "midi",
-        "edge": "top",
         "connector": "din5",
         "channels": 16,
         "signal": "midi",
@@ -1252,7 +1271,6 @@
       {
         "label": "MIDI OUT",
         "kind": "midi",
-        "edge": "top",
         "connector": "din5",
         "channels": 16,
         "signal": "midi",
@@ -1436,6 +1454,10 @@
       "jackPositions": "The official page/manual do not document which side each connector sits on, so edges/positions were left out for the box's own jacks rather than guessed.",
       "dimensions": "9.40 x 6.60 x 3.81 cm (3.7 x 2.6 x 1.5 in); 181 g (6.4 oz)",
       "imageProcessing": "Official Meris product photos were below the 800 px long edge or angled, so the authorized-retailer Cream City Music top-down product photo (1000x1000, white background) was used: processed with --matte flood, trimmed to the box, hosted as AVIF q80 800/350 (39.2 KB / 350 thumbnail), PSNR 45.73 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official page/manual do not document which box face hosts the DIN/TRS jacks, so edges are omitted; this interface has no audio cable anchors."
     }
   },
   {
@@ -1688,6 +1710,11 @@
       "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 40.95 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/product/mercury7-reverb-2/",
+      "confidence": "verified",
+      "note": "Owner-confirmed top-mounted layout; INPUT, OUTPUT, EXP and 9V DC are on the rear/top edge."
     }
   },
   {
@@ -2075,6 +2102,11 @@
       "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
       "firmware": "1.5.5",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 43.18 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/wp-content/uploads/2023/09/Meris-MercuryX-Back-Panel.jpg",
+      "confidence": "verified",
+      "note": "Official rear-panel photo shows the L/R audio I/O, EXP, DIN MIDI, USB-C and 9V DC on the rear/top panel."
     }
   },
   {
@@ -2322,6 +2354,11 @@
       "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 40.89 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/product/ottobit-jr/",
+      "confidence": "verified",
+      "note": "Owner-confirmed top-mounted layout; INPUT, OUTPUT, EXP and 9V DC are on the rear/top edge."
     }
   },
   {
@@ -2698,6 +2735,11 @@
       "dimensions": "18.42 x 11.43 x 5.08 cm (7.25 x 4.5 x 2 in); 680 g (24 oz)",
       "variants": "Standard matte black; limited 'Multidimensional Pink' run (final sale) tracked separately as a colour variant.",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 44.35 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/wp-content/uploads/2026/05/Ottobit_X_black_back.jpg",
+      "confidence": "verified",
+      "note": "Official rear-panel photo shows the L/R audio I/O, EXP, DIN MIDI, USB-C and 9V DC on the rear/top panel."
     }
   },
   {
@@ -2945,6 +2987,11 @@
       "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 43.34 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
+    },
+    "jackLayout": {
+      "source": "https://meris.us/product/polymoon-pedal/",
+      "confidence": "verified",
+      "note": "Owner-confirmed top-mounted layout; INPUT, OUTPUT, EXP and 9V DC are on the rear/top edge."
     }
   }
 ]

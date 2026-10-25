@@ -43,7 +43,7 @@ name, dimensions, effect type). Capture optional facts **opportunistically**:
 | --- | --- |
 | Identity | `id`, `brand`, `name`, `aliases`, `category` (`pedal`/`supply`), `deviceType`, `formFactor`, `instrumentTypes`, `effectTypes`, `variantOf` |
 | Geometry | `widthCm`, `heightCm` (**cm only**; inches are converted at import), `dimensionsSource`, `imageFormat?` (`avif` for P5 hosted assets; default `png`) |
-| Connectors | `jacks[]`: `label`, `kind` (in/out/send/return/exp/exp-in/exp-out/midi/ctrl/power), `edge`, `pos?`/`xCm?`/`yCm?`, `approximate?`, `connector` (TS/TRS/XLR/DIN5/TRS-MIDI A-B/USB-A-B-C/micro/mini/barrel/IEC/RCA/3.5 mm/other), `channels`, `signal`, `balanced`, `level`, `impedanceOhm`, `maxLevelDbu`, `stereo`, `midiType`, `usbFunctions`, `note` |
+| Connectors | `jacks[]`: `label`, `kind` (in/out/send/return/exp/exp-in/exp-out/midi/ctrl/power), `edge`, `pos?`/`xCm?`/`yCm?`, `approximate?`, `connector` (TS/TRS/XLR/DIN5/TRS-MIDI A-B/USB-A-B-C/micro/mini/barrel/IEC/RCA/3.5 mm/other), `channels`, `signal`, `balanced`, `level`, `impedanceOhm`, `maxLevelDbu`, `stereo`, `midiType`, `usbFunctions`, `note`; plus record-level `jackLayout: { source, confidence: verified\|estimated\|unknown, note? }` |
 | Power | `power` (top-level runtime projection) + `optional.power`: voltage, AC/DC, mA, W, polarity, connector/size, battery/life, USB bus power, isolation, inrush, recommended supply; for a power supply: outlets, isolated outputs, per-output V/mA, total mA, AC input, courtesy outlet, sag |
 | Audio I/O | `io` / `optional.audio`: inputs/outputs, channels, mono/stereo/true-stereo, balanced, level, impedance, max level, gain/headroom, SNR/THD, frequency response, dry-through, headphone, aux, DI, effects loop, 4-cable, ground lift, phase invert, phantom, pad, latency |
 | Control | `optional.control`: expression/CV count + voltage range, aux/footswitch, tap tempo, amp switching (latching/momentary, TS/TRS, relay), remote |
@@ -78,6 +78,17 @@ All optional and **captured only when already found**:
 - `artistAssociation: [{ artist, role: signature|endorsed|used-by|designed-with, notes, sources }]`.
 - `priceObservations: [{ amount, currency, condition: new|used, source, observedAt, notes }]`
   — an observation, never a canonical price.
+
+### Jack edges (P5 guardrail, 2026-10-25)
+
+An `edge` is a **physical fact** and needs a source that actually shows the
+connector face. Set `edge` only when an official rear/top photo, support page or
+manual diagram shows it; record the record-level
+`jackLayout: { source, confidence: "verified" }`. Never infer an edge from a
+sibling model or a “compact layout” (the Meris compact-pedal mistake). If the
+edge is unknown, **omit `edge`** (and set `jackLayout.confidence: "unknown"`);
+the app then uses its clearly-labelled assumed anchors. `pnpm catalog:check-jacks`
+fails a raw record with an edge but no verified `jackLayout.source`.
 
 ### Jack positions
 

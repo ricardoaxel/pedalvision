@@ -54,9 +54,9 @@ describe("contact sheet", () => {
 		expect(metadata.height).toBe(480);
 	});
 
-	it("refuses a sheet outside 20–30 images", async () => {
-		await expect(buildContactSheet(items.slice(0, 19))).rejects.toThrow(
-			/20–30 images/,
+	it("refuses a sheet outside 10–30 images", async () => {
+		await expect(buildContactSheet(items.slice(0, 9))).rejects.toThrow(
+			/10–30 images/,
 		);
 		await expect(
 			buildContactSheet([
