@@ -165,8 +165,9 @@ this batch. This is the Meris leg of the P5-03 small-brand parallel test.
 
 Every batch PR description must include a `?share=1#s=…` demo link that opens
 one pedalboard (or several when a single board is too small) containing **every
-item added by that batch**. Verify the link loads the expected board/item counts
-before opening the PR. Codified in `docs/tasks/P5-batch-template.md`,
+item added by that batch**, with **illustrative patch cables connecting the batch
+items** (a simple chain is fine; not a true audio-flow model). Verify the link
+loads the expected board/item/cable counts before opening the PR. Codified in `docs/tasks/P5-batch-template.md`,
 `docs/tasks/P5-03-pilot-parallel-backfill.md` and
 `docs/catalog-backfill.md` (owner instruction, 2026-10-25).
 

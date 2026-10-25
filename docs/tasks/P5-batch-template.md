@@ -41,7 +41,9 @@ Research and deliver one catalog batch (raw records + hosted assets) for `<brand
 7. Produce the contact sheet + coverage report (covered, unresolved, duplicates, image pass/reject).
 8. **Build the demo share link:** open the PR preview (or a local production build) and create
    a read-only share scene containing **every pedal/board added by this batch** on one board,
-   or split across multiple boards when one is too small. Copy the `?share=1#s=…` URL and
+   or split across multiple boards when one is too small. **Connect the batch items with
+   illustrative patch cables** (a simple nearest-neighbour/row chain is fine; it need not
+   model real audio flow) so the jack edges can be eyeballed. Copy the `?share=1#s=…` URL and
    verify it loads the expected board and item count.
 9. Finish the batch, then open exactly one PR; do not merge. The coordinator runs the
    post-merge build (the GitHub workflow commits mapped/runtime). **The PR description must
@@ -55,8 +57,9 @@ Research and deliver one catalog batch (raw records + hosted assets) for `<brand
 - Playwright: picker search/brand/effect, image load, canvas/board placement, no console errors.
 - Contact sheet + coverage/reject report in the PR.
 - **Demo share link in the PR description** (`?share=1#s=…`) that opens a pedalboard (or
-  boards) containing every item added by this batch, with the expected board/item counts
-  verified. This is a per-batch PR requirement (owner instruction, 2026-10-25).
+  boards) containing every item added by this batch, with the batch items connected by
+  illustrative patch cables (not a true audio-flow model) and the expected board/item
+  counts verified. This is a per-batch PR requirement (owner instruction, 2026-10-25).
 - One PR; no merge.
 
 ## Notes
