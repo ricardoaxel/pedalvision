@@ -1,0 +1,809 @@
+[
+  {
+    "id": "meris-enzo",
+    "brand": "Meris",
+    "name": "Enzo",
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "image": "meris-enzo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "pitch",
+      "filter",
+      "ring-mod",
+      "delay",
+      "chorus",
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "both",
+    "color": "gold",
+    "notes": "Meris Enzo: multi-voice instrument synthesizer with Poly, Mono and Arp modes, 6-mode filter, ring modulation, tap delay and a dry-mode compressor; stereo TRS in/out, 9V DC at under 150 mA.",
+    "year": 2018,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/enzo/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/06/Meris_Enzo_Manual_v5.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/06/Meris-Enzo-Front-Controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-enzo-x",
+    "brand": "Meris",
+    "name": "Enzo X",
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "image": "meris-enzo-x.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "pitch",
+      "filter",
+      "ring-mod",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "vibrato",
+      "bitcrusher",
+      "overdrive",
+      "compressor",
+      "sequencer",
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "color": "gold",
+    "notes": "Meris Enzo X: modular polyphonic instrument synthesizer with 5 synth modes, 6 voices, ADSR envelopes, MercuryX-derived reverbs, 2.5 s stereo delay, drives and modulation, all in a double-width enclosure with DIN MIDI and USB-C.",
+    "year": 2025,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/enzo-x/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/Enzo_X_v1.5.1.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2025/01/Enzo-X-front-controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-hedra",
+    "brand": "Meris",
+    "name": "Hedra",
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "image": "meris-hedra.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "guitar",
+    "color": "silver",
+    "notes": "Meris Hedra: 3-voice rhythmic pitch shifter with chromatic or key-based harmony, per-voice time divisions, 4 delay matrices and glide/pitch-correction modes; 9V DC, under 150 mA.",
+    "year": 2019,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/hedra-pedal/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2019/03/Meris_Hedra_Manual_v9.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2019/03/hedra_front_controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-lvx",
+    "brand": "Meris",
+    "name": "LVX",
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "image": "meris-lvx.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "looper",
+      "pitch",
+      "filter",
+      "preamp",
+      "bitcrusher",
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "color": "white",
+    "notes": "Meris LVX: modular stereo delay system with 2540 ms of configurable dual delay, a 60-second true stereo looper, modular processing elements (preamps, pitch, filter, cassette, granulize) and full DIN MIDI; 9V DC, 300 mA.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/lvx/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/LVX_v1.5.1.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2022/05/meris-LVX-front-controls-2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-mercury7",
+    "brand": "Meris",
+    "name": "Mercury7",
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "image": "meris-mercury7.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "guitar",
+    "color": "blue",
+    "notes": "Meris Mercury7: Blade Runner-inspired algorithmic reverb with Ultraplate and Cathedra algorithms, intra-tank pitch vector, modulation matrix and auto swell; stereo TRS I/O, 9V DC under 150 mA.",
+    "year": 2017,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/mercury7-reverb-2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Meris_Mercury7_full_Manual-v4.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/mercury7-reverb.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-mercuryx",
+    "brand": "Meris",
+    "name": "MercuryX",
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "image": "meris-mercuryx.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb",
+      "chorus",
+      "vibrato",
+      "tremolo",
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "color": "blue",
+    "notes": "Meris MercuryX: modular studio-grade reverb system with 8 custom structures (Ultraplate, Cathedra, 78 Room/Plate/Hall, Spring, Prism, Gravity), 2.54 s stereo predelay, freeze and modulation elements; DIN MIDI plus USB-C.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/mercuryx/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/MercuryX_v1.5.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2023/09/mercuryX-front-controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-midi-i-o",
+    "brand": "Meris",
+    "name": "MIDI I/O",
+    "widthCm": 9.4,
+    "heightCm": 6.6,
+    "image": "meris-midi-i-o.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "unknown",
+    "notes": "Meris MIDI I/O: DIN MIDI to TRS-MIDI interface that gives up to four Meris pedals full MIDI control, preset storage and bidirectional communication; 9V DC, 10 mA.",
+    "year": 2018,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/midi-i-o/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/03/Meris_MIDI_IO_Full_Manual_v1b.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2018/03/midi_io_FRNT.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.creamcitymusic.com/meris-midi-i-o-for-meris-pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-dks6ju/images/stencil/original/products/32322/570485/3c7d6312-e6fe-51cb-bc55-119afcae0626__72369.1719067480.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-ottobit-jr",
+    "brand": "Meris",
+    "name": "Ottobit Jr.",
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "image": "meris-ottobit-jr.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "bitcrusher",
+      "filter",
+      "sequencer",
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "guitar",
+    "color": "black",
+    "notes": "Meris Ottobit Jr.: arcade-inspired degradation pedal combining variable sample-rate/bit-depth crushing, a resonant low-pass filter, triggered stutter and a pitch/filter/decimation step sequencer; 9V DC under 150 mA.",
+    "year": 2017,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/ottobit-jr/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Meris_OttobitJr_FULL_Manual_v6.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/03/Ottobit_front_standard.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-ottobit-x",
+    "brand": "Meris",
+    "name": "Ottobit X",
+    "widthCm": 18.42,
+    "heightCm": 11.43,
+    "image": "meris-ottobit-x.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "bitcrusher",
+      "filter",
+      "pitch",
+      "ring-mod",
+      "tremolo",
+      "delay",
+      "reverb",
+      "looper",
+      "sequencer",
+      "preamp",
+      "vibrato",
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "color": "black",
+    "notes": "Meris Ottobit X: full-stereo '80s-inspired modular degradation engine with advanced bitcrusher, six glitch types, two one-button loopers, tape stop, VHS delay/reverb, pitch, filter, mod and preamp categories; DIN MIDI plus USB-C.",
+    "year": 2026,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/ottobitx/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/07/Ottobit_X_v1_1_1_Full_Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2026/05/Ottobit-X-front-controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meris-polymoon",
+    "brand": "Meris",
+    "name": "Polymoon",
+    "widthCm": 10.8,
+    "heightCm": 11.43,
+    "image": "meris-polymoon.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "phaser",
+      "flanger"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "Meris Polymoon: super-modulated multi-tap delay with a 1200 ms delay line, six LFOs, tilt EQ in the feedback path, stereo barberpole phaser and dynamic flanger; 9V DC under 150 mA.",
+    "year": 2017,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://meris.us/product/polymoon-pedal/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/07/Meris_Polymoon_FULL_Manual_4.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://meris.us/wp-content/uploads/2017/07/polymoon_front_controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]

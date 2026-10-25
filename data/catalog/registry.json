@@ -12,6 +12,17 @@
         }
       ]
     },
+    "meris": {
+      "brand": "Meris",
+      "batches": [
+        {
+          "batch": "meris-1",
+          "raw": "data/catalog/research/pedals/meris/meris-1.json",
+          "mapped": "data/catalog/pedals/meris/meris-1.json",
+          "items": 10
+        }
+      ]
+    },
     "tc-electronic": {
       "brand": "TC Electronic",
       "batches": [
