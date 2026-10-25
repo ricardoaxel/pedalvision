@@ -1,6 +1,6 @@
 # P5-03: Batch guardrails — jack provenance, demo links, small-batch QA
 
-**Phase:** P5 · **Status:** in review — PR #43 · **Model:** build-strong
+**Phase:** P5 · **Status:** done — merged PR #43 (squash `722505b`; post-merge `471f7c5`) · **Model:** build-strong
 
 ## Goal
 
