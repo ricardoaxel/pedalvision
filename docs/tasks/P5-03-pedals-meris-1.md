@@ -43,11 +43,13 @@ this batch. This is the Meris leg of the P5-03 small-brand parallel test.
 - **Deferred, not in this batch:** `meris-preset-switch` and the four colour
   variants (`meris-enzo-x-black`, `meris-lvx-black`, `meris-mercuryx-black`,
   `meris-ottobit-x-pink`).
-- **Cable anchors:** only audio I/O (`in`/`out`) is connectable today. Compact
-  pedals: input on the **right** edge, output on the **left** edge, EXP + 9V DC
-  on the rear/top edge. X-series: separate L/R audio I/O, EXP, DIN MIDI in/out,
-  USB-C and 9V DC all on the rear/top panel. Positions are recorded by **edge
-  only** (no invented `pos`), so the resolver uses its approximate layout.
+- **Cable anchors:** only audio I/O (`in`/`out`) is connectable today. **All
+  compact Meris pedals are top-mounted:** INPUT, OUTPUT, EXP and 9V DC are on the
+  **top/rear edge** (corrected from an initial side-edge assumption; the official
+  product image and Meris support pages confirm top-mounted jacks). X-series:
+  separate L/R audio I/O, EXP, DIN MIDI in/out, USB-C and 9V DC all on the
+  rear/top panel. Positions are recorded by **edge only** (no invented `pos`), so
+  the resolver distributes the connectors evenly and marks them approximate.
 - **Images:** the nine pedal images are official Meris transparent top-down
   renders, processed with `--matte none` (never re-keyed). The MIDI I/O's official
   photos were below the 800 px analyzer minimum or angled, so the authorized
@@ -153,7 +155,10 @@ this batch. This is the Meris leg of the P5-03 small-brand parallel test.
   `docs/screenshots/P5-03-meris-1/`.
 - **Demo share link:** a read-only scene on the PR preview with all 10 batch
   pedals laid out on one Aclam Smart Track L2 board (4 X-series + 5 compact +
-  MIDI I/O); verified 1 board / 10 items. URL in the PR description.
+  MIDI I/O); the nine effects are chained with **illustrative** patch cables
+  (10 cables + 2 endpoints) so the jacks are visible — not a true audio-routing
+  model. The MIDI I/O is on the board but not in the audio chain (it has no
+  audio I/O). Verified 1 board / 10 items / 10 cables. URL in the PR description.
 
 ## Demo share link rule
 

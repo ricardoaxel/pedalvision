@@ -31,26 +31,26 @@
       {
         "label": "INPUT",
         "kind": "in",
-        "edge": "right",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS-capable input on the right side: mono via TS or stereo via TRS (global MONO/TRS input mode). Instrument or line/synth headroom. Edge from Meris' compact layout; exact position not published, so pos is omitted."
+        "note": "1/4 in TRS-capable input on the top (rear) edge: mono via TS or stereo via TRS (global MONO/TRS input mode). Instrument or line/synth headroom. Edge from Meris' compact layout; exact position not published, so pos is omitted."
       },
       {
         "label": "OUTPUT",
         "kind": "out",
-        "edge": "left",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS stereo output on the left side; the Split option keeps the dry signal on the right output. Position not published, so pos is omitted."
+        "note": "1/4 in TRS stereo output on the top (rear) edge; the Split option keeps the dry signal on the right output. Position not published, so pos is omitted."
       },
       {
         "label": "EXP",
@@ -143,8 +143,8 @@
         "enclosure": "brushed aluminum with translucent gold coat",
         "display": "none (LED indicators)",
         "footswitches": 2,
-        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
-        "powerJackLocation": "rear (top) edge",
+        "jackOrientation": "top-mounted I/O (input, output, EXP, 9V)",
+        "powerJackLocation": "top (rear) edge",
         "batteryCompartment": false,
         "note": "14.6 oz (414 g); 4.25 x 4.5 x 2 in enclosure."
       },
@@ -271,7 +271,7 @@
       "bypass": "Selectable true bypass (relay) or analog buffered",
       "madeIn": "California, USA",
       "powerSupplyIncluded": false,
-      "jackPositions": "Meris' compact enclosure places audio I/O on the sides (input right, output left) and EXP plus 9V DC on the rear/top edge; exact jack offsets are not published and were not measured, so no pos values were recorded.",
+      "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in); 414 g (14.6 oz)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q90 800/350; PSNR 42.03 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
     }
@@ -653,26 +653,26 @@
       {
         "label": "INPUT",
         "kind": "in",
-        "edge": "right",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); instrument or line/synth headroom. Exact position not published, so pos is omitted."
+        "note": "1/4 in TRS-capable stereo input on the top (rear) edge (mono via TS); instrument or line/synth headroom. Exact position not published, so pos is omitted."
       },
       {
         "label": "OUTPUT",
         "kind": "out",
-        "edge": "left",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS stereo output on the left side; Dual modes produce a stereo image. Position not published, so pos is omitted."
+        "note": "1/4 in TRS stereo output on the top (rear) edge; Dual modes produce a stereo image. Position not published, so pos is omitted."
       },
       {
         "label": "EXP",
@@ -761,8 +761,8 @@
         "enclosure": "brushed aluminum with clear coat",
         "display": "none (LED indicators)",
         "footswitches": 2,
-        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
-        "powerJackLocation": "rear (top) edge",
+        "jackOrientation": "top-mounted I/O (input, output, EXP, 9V)",
+        "powerJackLocation": "top (rear) edge",
         "batteryCompartment": false,
         "note": "Weight not published in the official specs."
       },
@@ -879,7 +879,7 @@
       "maxDelayDualMs": 260,
       "bypass": "Selectable true bypass (relay) or analog buffered",
       "madeIn": "California, USA",
-      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q90 800/350; PSNR 42.77 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
     }
@@ -1464,26 +1464,26 @@
       {
         "label": "INPUT",
         "kind": "in",
-        "edge": "right",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
+        "note": "1/4 in TRS-capable stereo input on the top (rear) edge (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
       },
       {
         "label": "OUTPUT",
         "kind": "out",
-        "edge": "left",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS stereo output on the left side. Position not published, so pos is omitted."
+        "note": "1/4 in TRS stereo output on the top (rear) edge. Position not published, so pos is omitted."
       },
       {
         "label": "EXP",
@@ -1572,8 +1572,8 @@
         "enclosure": "brushed aluminum with translucent deep blue coat",
         "display": "none (LED indicators)",
         "footswitches": 2,
-        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
-        "powerJackLocation": "rear (top) edge",
+        "jackOrientation": "top-mounted I/O (input, output, EXP, 9V)",
+        "powerJackLocation": "top (rear) edge",
         "batteryCompartment": false,
         "note": "Weight not published in the official specs."
       },
@@ -1685,7 +1685,7 @@
       ],
       "bypass": "Selectable true bypass (relay) or analog buffered",
       "madeIn": "California, USA",
-      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 40.95 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
     }
@@ -2107,26 +2107,26 @@
       {
         "label": "INPUT",
         "kind": "in",
-        "edge": "right",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
+        "note": "1/4 in TRS-capable stereo input on the top (rear) edge (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
       },
       {
         "label": "OUTPUT",
         "kind": "out",
-        "edge": "left",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS stereo output on the left side. Position not published, so pos is omitted."
+        "note": "1/4 in TRS stereo output on the top (rear) edge. Position not published, so pos is omitted."
       },
       {
         "label": "EXP",
@@ -2213,8 +2213,8 @@
         "enclosure": "metal, glossy black powder coat with fine metal flake",
         "display": "none (LED indicators)",
         "footswitches": 2,
-        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
-        "powerJackLocation": "rear (top) edge",
+        "jackOrientation": "top-mounted I/O (input, output, EXP, 9V)",
+        "powerJackLocation": "top (rear) edge",
         "batteryCompartment": false,
         "note": "Weight not published in the official specs."
       },
@@ -2319,7 +2319,7 @@
       "presets": 16,
       "bypass": "Selectable true bypass (relay) or analog buffered",
       "madeIn": "California, USA",
-      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 40.89 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
     }
@@ -2728,26 +2728,26 @@
       {
         "label": "INPUT",
         "kind": "in",
-        "edge": "right",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS-capable stereo input on the right side (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
+        "note": "1/4 in TRS-capable stereo input on the top (rear) edge (mono via TS); guitar, synth or line headroom. Exact position not published, so pos is omitted."
       },
       {
         "label": "OUTPUT",
         "kind": "out",
-        "edge": "left",
+        "edge": "top",
         "connector": "trs",
         "channels": 2,
         "signal": "audio",
         "balanced": false,
         "level": "instrument",
         "stereo": true,
-        "note": "1/4 in TRS stereo output on the left side. Position not published, so pos is omitted."
+        "note": "1/4 in TRS stereo output on the top (rear) edge. Position not published, so pos is omitted."
       },
       {
         "label": "EXP",
@@ -2834,8 +2834,8 @@
         "enclosure": "metal, white powder coat with fine iridescent flake",
         "display": "none (LED indicators)",
         "footswitches": 2,
-        "jackOrientation": "input right, output left, EXP and 9V DC on the rear (top) edge",
-        "powerJackLocation": "rear (top) edge",
+        "jackOrientation": "top-mounted I/O (input, output, EXP, 9V)",
+        "powerJackLocation": "top (rear) edge",
         "batteryCompartment": false,
         "note": "Weight not published in the official specs."
       },
@@ -2942,7 +2942,7 @@
       ],
       "bypass": "Selectable true bypass (relay) or analog buffered",
       "madeIn": "California, USA",
-      "jackPositions": "Audio I/O on the sides (input right, output left); EXP and 9V DC on the rear/top edge. Offsets are not published and were not measured, so no pos values were recorded.",
+      "jackPositions": "All four connectors (INPUT, OUTPUT, EXP, 9V) are top-mounted on the rear/top edge; exact offsets are not published, so positions are recorded by edge only and the resolver distributes them evenly (approximate).",
       "dimensions": "10.80 x 11.43 x 5.08 cm (4.25 x 4.5 x 2 in)",
       "imageProcessing": "Official Meris transparent top-down product render, processed with --matte none (never re-keyed), trimmed and hosted as AVIF q80 800/350; PSNR 43.34 dB vs the PNG cutout; contact-sheet and identical-coordinate 2x PNG-vs-AVIF crop accepted."
     }
