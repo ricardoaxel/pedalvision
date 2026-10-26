@@ -2,6 +2,7 @@ import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import type { BatchState } from "../catalog-runner/state.ts";
 import type { JsonlSummary } from "./aggregate.ts";
+import type { BatchTokens } from "./gate.ts";
 
 /** Shared wave state (gitignored under work/catalog/waves/<id>/state.json). */
 export type WaveBatchStatus =
@@ -42,6 +43,8 @@ export type WaveBatchRun = {
 		| "endedAt"
 	>;
 	session?: JsonlSummary;
+	/** Billed non-cache (gated) + cache-inclusive JSONL floor (reported). */
+	usage?: BatchTokens;
 	pr?: WavePr;
 	error?: string;
 };

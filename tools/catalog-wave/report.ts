@@ -16,26 +16,43 @@ export function formatWaveReport(state: WaveState): string {
 	);
 	lines.push("");
 	lines.push(
-		"| Batch | Status | Items | Images | Tokens (checkpoint) | Main-session tokens (floor) | Minutes | PR | CI |",
+		"| Batch | Status | Items | Images | Billed non-cache | Cache-incl. floor | Minutes | PR | CI |",
 	);
 	lines.push("| --- | --- | --- | --- | --- | --- | --- | --- | --- |");
 	let done = 0;
 	let total = 0;
 	let accepted = 0;
 	let rejected = 0;
-	let tokens = 0;
-	let mainTokens = 0;
+	let billed = 0;
+	let billedKnown = 0;
+	let cache = 0;
+	let cacheKnown = 0;
 	for (const batch of state.batches) {
 		done += batch.runner?.done ?? 0;
 		total += batch.runner?.total ?? batch.total;
 		accepted += batch.runner?.imagesAccepted ?? 0;
 		rejected += batch.runner?.imagesRejected ?? 0;
-		tokens += batch.runner?.tokens ?? 0;
-		mainTokens += batch.session?.tokens ?? 0;
+		const batchBilled = billedTokens(batch);
+		if (batchBilled !== null) {
+			billed += batchBilled;
+			billedKnown++;
+		}
+		const batchCache = cacheInclusiveTokens(batch);
+		if (batchCache !== null) {
+			cache += batchCache;
+			cacheKnown++;
+		}
 		lines.push(formatBatchRow(batch));
 	}
+	const billedTotal =
+		billedKnown === state.batches.length
+			? formatTokens(billed)
+			: `${billedKnown > 0 ? formatTokens(billed) : "unknown"} (known only)`;
+	const cacheTotal = `${
+		cacheKnown > 0 ? formatTokens(cache) : "unknown"
+	} (floor${cacheKnown === state.batches.length ? "" : ", known only"})`;
 	lines.push(
-		`| **Total** | **${state.status}** | **${done}/${total}** | **${accepted}/${rejected}** | **${formatTokens(tokens)}** | **${formatTokens(mainTokens)} (floor, known only)** | | | |`,
+		`| **Total** | **${state.status}** | **${done}/${total}** | **${accepted}/${rejected}** | **${billedTotal}** | **${cacheTotal}** | | | |`,
 	);
 	lines.push("");
 	if (state.notes.length > 0) {
@@ -66,18 +83,39 @@ function formatBatchRow(batch: WaveBatchRun): string {
 		batch.runner?.imagesAccepted !== undefined
 			? `${batch.runner.imagesAccepted}/${batch.runner.imagesRejected}`
 			: "0/0";
-	const tokens = formatTokens(batch.runner?.tokens ?? 0);
-	const main =
-		batch.session?.tokens === null || batch.session?.tokens === undefined
-			? "unknown"
-			: formatTokens(batch.session.tokens);
+	const billed = billedTokens(batch);
+	const cache = cacheInclusiveTokens(batch);
 	const minutes = formatMinutes(batch);
 	const pr = batch.pr ? `[#${batch.pr.number}](${batch.pr.url})` : "—";
 	const ci = batch.pr?.checks ?? "—";
 	const status = batch.error
 		? `${batch.status} (${batch.error})`
 		: batch.status;
-	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${tokens} | ${main} (floor) | ${minutes} | ${pr} | ${ci} |`;
+	const billedSource =
+		batch.usage?.source ?? (batch.session ? "jsonl" : "ledger");
+	const billedLabel =
+		billed === null
+			? "unknown"
+			: `${formatTokens(billed)}${billedSource === "ledger" ? " (ledger)" : ""}`;
+	const cacheLabel = cache === null ? "unknown" : formatTokens(cache);
+	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${billedLabel} | ${cacheLabel} | ${minutes} | ${pr} | ${ci} |`;
+}
+
+function billedTokens(batch: WaveBatchRun): number | null {
+	if (batch.usage) return batch.usage.billed;
+	const session = batch.session;
+	if (session?.billedTokens !== null && session?.billedTokens !== undefined) {
+		return session.billedTokens;
+	}
+	// A cache-inclusive total is not a billed value; never conflate them. Only a
+	// ledger fallback (no session at all) may populate the billed column.
+	if (session) return null;
+	return batch.runner?.tokens ?? null;
+}
+
+function cacheInclusiveTokens(batch: WaveBatchRun): number | null {
+	if (batch.usage) return batch.usage.cacheInclusive;
+	return batch.session?.tokens ?? null;
 }
 
 function formatTokens(value: number): string {

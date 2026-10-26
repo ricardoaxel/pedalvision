@@ -74,7 +74,7 @@ describe("catalog:wave integration", () => {
 			[
 				"#!/bin/sh",
 				'echo \'{"type":"text","sessionID":"ses_fake","part":{"id":"p1","type":"text","text":"fake batch done"}}\'',
-				'echo \'{"type":"step_finish","sessionID":"ses_fake","part":{"id":"f1","type":"step-finish","tokens":{"total":1000},"cost":0.01}}\'',
+				'echo \'{"type":"step_finish","sessionID":"ses_fake","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
 				`"${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts checkpoint --batch "$CATALOG_BATCH_ID" --item fake-1 --done 1 --images-accepted 1 --tokens 1000 >/dev/null 2>&1`,
 				`"${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts finish --batch "$CATALOG_BATCH_ID" >/dev/null 2>&1`,
 			].join("\n"),
@@ -132,7 +132,8 @@ describe("catalog:wave integration", () => {
 		expect(report).toContain("Status **complete**");
 		expect(report).toContain("| acme/wave-it-");
 		expect(report).toContain("1/1");
-		expect(report).toContain("1k (floor)");
+		expect(report).toContain("| 1k | 1k |");
+		expect(report).toContain("**1k** | **1k (floor)**");
 		expect(report).toContain("fake batch done");
 		expect(report).not.toContain("not-started");
 	}, 120_000);
@@ -253,6 +254,95 @@ describe("catalog:wave stop path", () => {
 		);
 		expect(report).toContain("wave stop requested");
 	}, 60_000);
+});
+
+describe("catalog:wave hard-cap path", () => {
+	it("stops active batches and never starts the queued third at the hard cap", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-cap-"));
+		tempDirs.push(temp);
+		const waveId = `wave-cap-${process.pid}`;
+		const batches = ["a", "b", "c"].map(
+			(suffix) => `acme/cap-${suffix}-${process.pid}`,
+		);
+		const bin = join(temp, "bin");
+		await mkdir(bin, { recursive: true });
+		await writeFile(
+			join(bin, "opencode"),
+			[
+				"#!/bin/sh",
+				"trap 'exit 0' TERM",
+				'echo \'{"type":"step_finish","sessionID":"ses_cap","part":{"id":"f1","type":"step-finish","tokens":{"total":1300000,"input":1200000,"output":80000,"reasoning":20000,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+				"sleep 10",
+			].join("\n"),
+		);
+		await chmod(join(bin, "opencode"), 0o755);
+		const worktreesForCap = ["a", "b", "c"].map((suffix) =>
+			addWorktree(temp, `cap-${suffix}`),
+		);
+		const planPath = join(temp, "wave.json");
+		await writeFile(
+			planPath,
+			JSON.stringify({
+				id: waveId,
+				maxParallel: 3,
+				batches: batches.map((batch, index) => ({
+					batch,
+					kind: "pedals",
+					brand: "Acme",
+					total: 1,
+					worktree: worktreesForCap[index]?.path as string,
+					branch: worktreesForCap[index]?.branch as string,
+					prompt: "fake",
+				})),
+			}),
+		);
+		const result = spawnSync(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				planPath,
+				"--foreground",
+				"--poll-ms",
+				"50",
+			],
+			{
+				cwd: repoRoot,
+				encoding: "utf8",
+				env: {
+					...process.env,
+					PATH: `${bin}:${process.env.PATH ?? ""}`,
+					CATALOG_WORK_DIR: join(temp, "work"),
+					CATALOG_STOP_GRACE_MS: "100",
+					CATALOG_KILL_GRACE_MS: "100",
+				},
+				timeout: 90_000,
+			},
+		);
+		expect(result.status, result.stderr).toBe(0);
+		const state = JSON.parse(
+			await readFile(join(temp, "work", "waves", waveId, "state.json"), "utf8"),
+		) as {
+			status: string;
+			notes: string[];
+			batches: Array<{ batch: string; status: string }>;
+		};
+		const byId = new Map(
+			state.batches.map((batch) => [batch.batch, batch.status]),
+		);
+		expect(byId.get(batches[0] as string)).toBe("stopped");
+		expect(byId.get(batches[1] as string)).toBe("stopped");
+		expect(byId.get(batches[2] as string)).toBe("not-started");
+		expect(state.notes.join("\n")).toContain("wave hard budget reached");
+		const report = await readFile(
+			join(temp, "work", "waves", waveId, "report.md"),
+			"utf8",
+		);
+		expect(report).toContain("2.60M");
+		expect(report).toContain("wave hard budget reached");
+	}, 120_000);
 });
 
 async function waitFor(check: () => Promise<boolean>): Promise<void> {
