@@ -1,6 +1,6 @@
 # P5-03: BOSS image-provenance repair + stricter image policy
 
-**Phase:** P5 · **Status:** in review — PR #50 · **Type:** repair + policy (not a batch)
+**Phase:** P5 · **Status:** merged 2026-10-26 — PR #50, squash `83e0d08` · **Type:** repair + policy (not a batch)
 
 ## Why
 

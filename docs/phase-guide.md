@@ -55,7 +55,7 @@ Run the **`performance-expert`** agent (`.opencode/agent/performance-expert.md`)
 Run the **`token-usage-reviewer`** (`.opencode/agent/token-usage-reviewer.md`) **before changing** `AGENTS.md`, this phase guide, the roadmap, task templates, `docs/catalog-backfill.md` process sections, `docs/design-playbook.md`, `.opencode/agent/*`, or **starting a parallel wave**. It returns a strict JSON verdict, agent/model inventory, per-batch token/time budget, findings, lean workflow and stop conditions; fold valid findings and record the verdict in the task/PR.
 
 - **Exempt:** per-batch task copies (`docs/tasks/P5-03-<kind>-<brand>-<batch>.md`) and routine data batches.
-- **Before a parallel wave:** max 3 batches, light models by default, per-batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave soft ≤1.2M / hard ≤2.4M; a global stop path. BOSS 209 → 6×~35 in 2 waves.
+- **Before a parallel wave:** max 3 batches, light models by default, per-batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave soft ≤1.2M / hard ≤2.4M; a global stop path. BOSS 209 → 7–9 batches of 24–28 in 3 waves; image completion plan T-0/T-0a/T-1 (generated flat pedal art for no-official items; cleanup in each brand's first batch).
 - It is read-only. If it cannot make the plan lean/safe, **STOP** and report.
 - **Batch retro:** if a batch/QA step uncovers a process/plan gap, **propose** the change and the token review to the owner first; do not silently edit the rules.
 
@@ -68,14 +68,14 @@ Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
 
-## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 + P5-02 DONE; P5-03 Choka + JHS pedal pilots DONE; board pilot in review — PR #39)
+## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 + P5-02 DONE; P5-03 in progress — waves 1–3, BOSS repair + licensing merged; image completion plan in review)
 P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
 
 | Task | What it does | Owner action? |
 |---|---|---|
 | P5-01 Policy, data contract & master inventory | Public-asset policy, attribution/takedown, pedal + **pedalboard** schema, 8,557 pedals + 263 boards inventory, brand tiers — **DONE** (PR #35) | **Yes** — approve the public-asset policy + attribution/takedown page (owner accepts responsibility) |
 | P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap — **DONE** (merged PR #36) | No |
-| P5-03 Pilot + parallel backfill | Choka/JHS pedal pilots + Pedaltrain/Temple board pilots **DONE**; **Meris first-10 merged (PR #42)**; **batch guardrails in review (PR #43)**; next Red Panda + one board batch → BOSS 7–9 batches of 24–28 in 3 waves, launched 2-wide via `catalog:wave`. First 2,000 items include 150 boards | **Yes** — review the pilot/brand PRs and the guardrails PR |
+| P5-03 Pilot + parallel backfill | Choka/JHS/board pilots + Meris/Red Panda/two board waves **DONE**; BOSS boss-1…boss-3, the BOSS image repair (PR #50) and the licensing ledger (PR #51) **DONE**; **image completion plan T-0 in review** → T-0a true-token gate → T-1 generated pedal art + promote-legacy → BOSS wave 3/4 → cleanup waves → remaining Tier A (3-wide, one agent per batch). First 2,000 items include 150 boards | **Yes** — review the plan/PRs, approve the generated-art direction at T-1, merge, and send the brand licensing emails |
 | P5-04 Final QA, provenance & launch gate | Full validation, spot-checks, iOS, launch sign-off | **Yes** — launch approval |
 | P5-05 Image hosting at scale | Deferred spike only if the owner chooses to exceed Tier A / 2,000 hosted pedals | **Yes** — choose the hosting option only when triggered |
 | P5-06 Appium · P5-07 Help · P5-08 Observability | Proposed/unscheduled | Later |

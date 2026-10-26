@@ -1,6 +1,6 @@
 # P5-03: Image licensing ledger + attribution notice
 
-**Phase:** P5 · **Status:** in review — PR #51 · **Type:** data/licensing + small UI
+**Phase:** P5 · **Status:** merged 2026-10-26 — PR #51, squash `8826cb5` · **Type:** data/licensing + small UI
 
 ## Goal
 
