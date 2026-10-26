@@ -23,6 +23,17 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"boss-ac-3-acoustic-simulator": ["acoustic-sim"],
 	"boss-dc-2-dimension-c": ["chorus"],
 	"boss-dc-3-digital-dimension": ["chorus"],
+	"boss-eh-2-enhancer": ["utility"],
+	"boss-es-5-effects-switching-system": ["controller", "utility"],
+	"boss-es-8-effects-switching-system": ["controller", "utility"],
+	"boss-ev-1-wl-wireless-midi-expression-pedal": ["controller"],
+	"boss-ev-30-dual-expression-pedal": ["controller"],
+	"boss-ev-5-expression-pedal": ["controller"],
+	"boss-fbm-1-59-fender-bassman": ["amp-modeler"],
+	"boss-fdr-1-fender-65-deluxe-reverb": ["amp-modeler", "reverb"],
+	"boss-fv-100-guitar-volume": ["utility"],
+	"boss-fv-30-foot-volume": ["utility"],
+	"boss-fv-500-volume-pedal": ["utility"],
 
 	// Electro-Harmonix
 	"electro-harmonix-15watt-howitzer": ["preamp", "power-amp"],
