@@ -12,6 +12,7 @@ on:
       - "data/catalog/research/**"
       - "public/pedal-assets/**"
       - "data/catalog/legacy/**"
+      - "data/catalog/image-licenses.json"
 
 concurrency:
   group: catalog-post-merge
@@ -43,11 +44,14 @@ jobs:
       - name: Build, validate and drift-check catalog
         run: pnpm catalog:post-merge
 
+      - name: Regenerate image license ledger
+        run: pnpm catalog:asset-ledger
+
       - name: Commit generated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/catalog src/catalog/data
+          git add data/catalog src/catalog/data docs/catalog/asset-ledger.md docs/catalog/image-licensing.md
           if git diff --cached --quiet; then
             echo "generated catalog is already current"
             exit 0

@@ -403,6 +403,15 @@ export function InfoPanel() {
 						</dl>
 					</section>
 				) : null}
+
+				<p className="info-panel__legal" data-testid="info-legal">
+					{info.brand.trim()
+						? `Pedalvision is an independent planner and is not affiliated with or endorsed by ${info.brand}. `
+						: "Pedalvision is an independent planner. "}
+					<a href="/attribution.html" target="_blank" rel="noreferrer">
+						Image credits &amp; removal
+					</a>
+				</p>
 			</div>
 		</aside>
 	);

@@ -58,6 +58,31 @@ test("shows a selected catalog pedal's identity, tags and dimensions", async ({
 	await expect(page.getByTestId("info-effects")).toContainText("Overdrive");
 });
 
+test("shows the independent-planner notice and removal link", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expandDetails(page);
+	const legal = page.getByTestId("info-legal");
+	await expect(legal).toBeVisible();
+	await expect(legal).toContainText("not affiliated with or endorsed by BOSS");
+	await expect(
+		legal.getByRole("link", { name: "Image credits & removal" }),
+	).toHaveAttribute("href", "/attribution.html");
+});
+
+test("the attribution page offers a removal contact", async ({ page }) => {
+	await page.goto("/attribution.html");
+	await expect(
+		page.getByRole("heading", { name: "Catalog image credits & removal" }),
+	).toBeVisible();
+	await expect(
+		page.getByRole("link", { name: "ricardoaxelgd@gmail.com" }),
+	).toHaveAttribute("href", /^mailto:/);
+});
+
 test("the cm/in toggle switches the displayed dimensions", async ({ page }) => {
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");

@@ -120,7 +120,12 @@
       }
     ],
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "own",
+      "status": "chosen",
+      "note": "Generated flat art; official/retailer references only (no reference pixels)."
+    }
   },
   {
     "id": "pedaltrain-nano-plus",
@@ -245,7 +250,12 @@
       }
     ],
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "own",
+      "status": "chosen",
+      "note": "Generated flat art; official/retailer references only (no reference pixels)."
+    }
   },
   {
     "id": "pedaltrain-nano-max",
@@ -376,6 +386,11 @@
       }
     ],
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "own",
+      "status": "chosen",
+      "note": "Generated flat art; official/retailer references only (no reference pixels)."
+    }
   }
 ]
