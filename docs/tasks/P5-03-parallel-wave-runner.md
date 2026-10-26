@@ -1,6 +1,6 @@
 # P5-03: Parallel wave runner (`catalog:wave`)
 
-**Phase:** P5 · **Status:** in review — PR (pending) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #47 · **Model:** build-strong
 
 ## Goal
 
