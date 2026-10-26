@@ -33,20 +33,27 @@ test("shows a selected catalog pedal's identity, tags and dimensions", async ({
 	await expect(panel).toBeVisible();
 	await expect(page.getByTestId("info-name")).toHaveText("BD-2 Blues Driver");
 	await expect(page.getByTestId("info-brand")).toHaveText("BOSS");
-	// The catalog seed has no power yet → that section is absent (graceful
-	// omission, never empty scaffolding). Jacks now show the documented fallback
-	// pair, clearly labelled as assumed.
-	await expect(page.getByTestId("info-power")).toHaveCount(0);
-
-	// Dimensions + effects live in the expanded readout (the mobile peek shows
-	// dimensions in its status row); expand so both are visible.
+	// The BOSS batch replaces the seed BD-2 with verified specs: 9 V / 20 mA and
+	// right-input/left-output jacks (positions are edge-only, so approximate).
+	// Power + jacks live in the expanded readout on mobile; expand first.
 	await expandDetails(page);
-	await expect(page.getByTestId("info-jacks")).toBeVisible();
-	await expect(page.getByTestId("info-jacks")).toContainText("I · Left · 0.50");
-	await expect(page.getByTestId("info-jacks")).toContainText(
-		"O · Right · 0.50",
+	await expect(page.getByTestId("info-power")).toBeVisible();
+	await expect(page.getByTestId("info-power-value")).toHaveText(
+		"9 V · DC · 20 mA",
 	);
-	await expect(page.getByTestId("info-jacks")).toContainText("assumed");
+	await expect(page.getByTestId("info-jacks")).toBeVisible();
+	await expect(page.getByTestId("info-jacks")).toContainText(
+		"I · Right · ~0.50",
+	);
+	await expect(page.getByTestId("info-jacks")).toContainText(
+		"O · Left · ~0.50",
+	);
+	await expect(page.getByTestId("info-jacks")).toContainText(
+		"Power · Top · ~0.50",
+	);
+	await expect(page.getByTestId("info-jacks")).toContainText(
+		"Some jack positions are approximate.",
+	);
 	await expect(page.getByTestId("info-dims")).toContainText("cm");
 	await expect(page.getByTestId("info-effects")).toContainText("Overdrive");
 });
