@@ -31,16 +31,20 @@
       "softCaseInterior": "6 x 14.5 x 3 in (15.2 x 36.8 x 7.6 cm); accessory pouch 6 x 13 x 1.5 in (15.2 x 33 x 3.8 cm)",
       "powerMounting": "no dedicated Pedaltrain mounting kit is listed for the Nano series; the official mounting-kit collection covers Novo, Classic, XD and Terra only",
       "construction": "hand cut, hand welded and hand finished aluminum; no moving parts or screws",
-      "imageNote": "The official product page's main image is a pedal-loaded board with measurement callouts; the image scout rejected it and used the official PT-NANO-SC gallery top-down empty board instead.",
+      "imageNote": "Shipped asset is our own flat SVG (source SVG on main); the official top-down photo is reference only for proportions/color; no reference pixels.",
       "imageProcessing": {
-        "decision": "real-official",
-        "sourceUrl": "https://cdn.shopify.com/s/files/1/1849/5803/products/nano-with-soft-case-pedal-boards-pt-nano-sc-pedaltrain-4.jpg?v=1666895229",
-        "crop": "board bbox 774x303 from the 1000x562 gallery image; 20 px white canvas",
-        "matte": "pre-matted white background (tolerance 110), hidden RGB set black, asset:process --matte none",
-        "renditions": "AVIF q80 800x314 / 350x137",
-        "analyzer": "flag only (board top-down/empty reviewer); bright residual 0.01%, bright edge 0.24%, aspect 2.548 vs 2.545",
-        "psnrDb": { "800": 49.05, "350": 46.79 },
-        "reviewer": "accept"
+        "decision": "generated-flat-art",
+        "sourceSvg": "tools/asset-pipeline/board-art/pedaltrain-nano.svg",
+        "referenceUrl": "https://cdn.shopify.com/s/files/1/1849/5803/products/nano-with-soft-case-pedal-boards-pt-nano-sc-pedaltrain-4.jpg?v=1666895229",
+        "referenceNote": "Official top-down empty board used only for proportions/rail layout and color sampling; no reference pixels shipped.",
+        "sampledColor": "#0f0f11",
+        "renditions": "AVIF q90 800x314 / 350x137",
+        "analyzer": "bright residual 0.00%, bright edge 0.00%, aspect error 0.09%, no shadow",
+        "psnrDb": {
+          "350": 45.37,
+          "800": 66.63
+        },
+        "reviewer": "design-reviewer accept (dark/light/checker + 2x slot edge)"
       }
     },
     "priceObservations": [
@@ -112,7 +116,7 @@
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/nano-with-soft-case-pedal-boards-pt-nano-sc-pedaltrain-4.jpg?v=1666895229",
         "sourcePage": "https://pedaltrain.com/products/pedaltrain-nano-and-accessories-no-case",
         "priority": 2,
-        "notes": "USED by image scout: official product-gallery top-down empty board (PT-NANO-SC gallery), white background. Cropped to the board bbox, pre-matted; transparent slot; 800/350 AVIF q80, PSNR 49.05/46.79 dB; reviewer accept."
+        "notes": "REFERENCE ONLY (not shipped): official product-gallery top-down empty board (PT-NANO-SC gallery), white background. Cropped to the board bbox, pre-matted; transparent slot; 800/350 AVIF q80, PSNR 49.05/46.79 dB; reviewer accept."
       }
     ],
     "confidence": "confirmed",
@@ -152,16 +156,20 @@
       "softCaseInterior": "18 x 6 x 3 in (46 x 15 x 7.5 cm); accessory pouch 15 x 5 x 1.5 in (38 x 13 x 4 cm)",
       "powerMounting": "no dedicated Pedaltrain mounting kit is listed for the Nano series; the official mounting-kit collection covers Novo, Classic, XD and Terra only",
       "construction": "hand cut, hand welded and hand finished aluminum; no moving parts or screws",
-      "imageNote": "The official product page's main image is a pedal-loaded board with measurement callouts; the image scout rejected it and used the official PT-NPL-SC gallery top-down empty board instead.",
+      "imageNote": "Shipped asset is our own flat SVG (source SVG on main); the official top-down photo is reference only for proportions/color; no reference pixels.",
       "imageProcessing": {
-        "decision": "real-official",
-        "sourceUrl": "https://cdn.shopify.com/s/files/1/1849/5803/products/nano-with-soft-case-pedal-boards-pt-npl-sc-pedaltrain-4.jpg?v=1666895013",
-        "crop": "board-only bbox 807x229 (soft-case band excluded); 20 px white canvas",
-        "matte": "pre-matted white background (tolerance 110), hidden RGB set black, asset:process --matte none",
-        "renditions": "AVIF q80 800x227 / 350x99",
-        "analyzer": "flag only (board top-down/empty reviewer); bright residual 0.11%, bright edge 1.53%, aspect 3.524 vs 3.600 (2.1%)",
-        "psnrDb": { "800": 51.02, "350": 48.47 },
-        "reviewer": "accept"
+        "decision": "generated-flat-art",
+        "sourceSvg": "tools/asset-pipeline/board-art/pedaltrain-nano-plus.svg",
+        "referenceUrl": "https://cdn.shopify.com/s/files/1/1849/5803/products/nano-with-soft-case-pedal-boards-pt-npl-sc-pedaltrain-4.jpg?v=1666895013",
+        "referenceNote": "Official top-down empty board used only for proportions/rail layout and color sampling; no reference pixels shipped.",
+        "sampledColor": "#0f0f11",
+        "renditions": "AVIF q90 800x222 / 350x97",
+        "analyzer": "bright residual 0.00%, bright edge 0.00%, aspect error 0.10%, no shadow",
+        "psnrDb": {
+          "350": 48.42,
+          "800": 65.32
+        },
+        "reviewer": "design-reviewer accept (dark/light/checker + 2x slot edge)"
       }
     },
     "priceObservations": [
@@ -233,7 +241,7 @@
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/nano-with-soft-case-pedal-boards-pt-npl-sc-pedaltrain-4.jpg?v=1666895013",
         "sourcePage": "https://pedaltrain.com/products/pedaltrain-nano-plus-accessories-no-case",
         "priority": 2,
-        "notes": "USED by image scout: official product-gallery top-down empty board (PT-NPL-SC gallery), white background. Cropped to the board-only bbox 807x229 (soft-case band excluded), white canvas, pre-matted; 800/350 AVIF q80, PSNR 51.02/48.47 dB; reviewer accept."
+        "notes": "REFERENCE ONLY (not shipped): official product-gallery top-down empty board (PT-NPL-SC gallery), white background. Cropped to the board-only bbox 807x229 (soft-case band excluded), white canvas, pre-matted; 800/350 AVIF q80, PSNR 51.02/48.47 dB; reviewer accept."
       }
     ],
     "confidence": "confirmed",
@@ -273,16 +281,20 @@
       "softCaseInterior": "28 x 6 x 3 in (71 x 15 x 7.5 cm); accessory pouch 24 x 4 x 1.5 in (61 x 10 x 4 cm)",
       "powerMounting": "authorized retailer Guitar Center states almost all low-profile power supplies fit under the Nano MAX; Pedaltrain's mounting-kit collection does not list a Nano-series kit",
       "construction": "hand cut, hand welded and hand finished aluminum; no moving parts or screws",
-      "imageNote": "The official product page's main image is a pedal-loaded board with measurement callouts; the image scout rejected it and used the official upright top-mounting-surface top-down empty board instead.",
+      "imageNote": "Shipped asset is our own flat SVG (source SVG on main); the official top-down photo is reference only for proportions/color; no reference pixels.",
       "imageProcessing": {
-        "decision": "real-official",
-        "sourceUrl": "https://cdn.shopify.com/s/files/1/1849/5803/products/Pedaltrain_Nano_MAX_Pedal_Board_Upright_Top_Mounting_Surface_PT-NMAX-SC.jpg?v=1666894868",
-        "crop": "full 800x450 official upright top-mounting-surface image; board bbox, white background",
-        "matte": "pre-matted white background (tolerance 110), hidden RGB set black, asset:process --matte none",
-        "renditions": "AVIF q80 800x158 / 350x69",
-        "analyzer": "flag only (board top-down/empty reviewer); bright residual 0.01%, bright edge 0.29%, aspect 5.063 vs 5.091 (0.5%)",
-        "psnrDb": { "800": 50.89, "350": 49.54 },
-        "reviewer": "accept"
+        "decision": "generated-flat-art",
+        "sourceSvg": "tools/asset-pipeline/board-art/pedaltrain-nano-max.svg",
+        "referenceUrl": "https://cdn.shopify.com/s/files/1/1849/5803/products/Pedaltrain_Nano_MAX_Pedal_Board_Upright_Top_Mounting_Surface_PT-NMAX-SC.jpg?v=1666894868",
+        "referenceNote": "Official top-down empty board used only for proportions/rail layout and color sampling; no reference pixels shipped.",
+        "sampledColor": "#0f0f11",
+        "renditions": "AVIF q90 800x157 / 350x69",
+        "analyzer": "bright residual 0.00%, bright edge 0.00%, aspect error 0.09%, no shadow",
+        "psnrDb": {
+          "350": 50.77,
+          "800": 61.6
+        },
+        "reviewer": "design-reviewer accept (dark/light/checker + 2x slot edge)"
       }
     },
     "priceObservations": [
@@ -360,7 +372,7 @@
         "url": "https://cdn.shopify.com/s/files/1/1849/5803/products/Pedaltrain_Nano_MAX_Pedal_Board_Upright_Top_Mounting_Surface_PT-NMAX-SC.jpg?v=1666894868",
         "sourcePage": "https://pedaltrain.com/products/pedaltrain-nano-max-and-accessories-no-case",
         "priority": 2,
-        "notes": "USED by image scout: official upright top-mounting-surface image, top-down empty board on white. Pre-matted; transparent slot; 800/350 AVIF q80, PSNR 50.89/49.54 dB; reviewer accept."
+        "notes": "REFERENCE ONLY (not shipped): official upright top-mounting-surface image, top-down empty board on white. Pre-matted; transparent slot; 800/350 AVIF q80, PSNR 50.89/49.54 dB; reviewer accept."
       }
     ],
     "confidence": "confirmed",

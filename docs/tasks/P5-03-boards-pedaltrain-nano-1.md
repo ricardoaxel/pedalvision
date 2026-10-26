@@ -34,9 +34,10 @@ observations and top-down/empty image candidates for the scout.
   the record's `extra`). Nano MAX fits most low-profile power supplies underneath
   (authorized retailer); no dedicated Pedaltrain Nano-series mounting kit is
   listed.
-- **Image decision:** candidates only. Official top-down empty-board images with
-  measurement callouts are recorded as priority 1; scout must verify emptiness
-  and crop the callouts. No planner images used.
+- **Image decision:** **GENERATED flat art** (owner board-art policy). Official
+  top-down empty-board photos are reference only for proportions/rail layout and
+  color sampling; their pixels are not shipped. Source SVGs on `main`; family
+  color sampled `#0f0f11`.
 
 ## Read first
 
@@ -82,8 +83,8 @@ observations and top-down/empty image candidates for the scout.
 
 ## Results (wave 1 delivery)
 
-- **Assets:** 3/3 real official top-down empty-board images (no generated art), cropped to the board bbox, AVIF q80 800/350. PSNR 49.05/46.79 (Nano), 51.02/48.47 (Nano+), 50.89/49.54 (Nano MAX); bright residual <0.11%, bright edge <1.53%, aspect within 2.1%. `catalog-image-reviewer` **accept** for all three.
-- **Data:** 3 raw board records validate; Nano+ official depth is **12.7 cm** (inventory 13.97 cm provisional, noted); Nano MAX weight omitted (not published).
+- **Assets:** 3/3 **our own generated flat SVG boards** (source SVGs on `main`: `tools/asset-pipeline/board-art/pedaltrain-nano*.svg`), rendered AVIF q90 800/350. Family color sampled `#0f0f11` from the official reference; no reference pixels shipped. PSNR 66.63/45.37 (Nano), 65.32/48.42 (Nano+), 61.60/50.77 (Nano MAX); bright residual **0.00%**, bright edge **0.00%**, aspect error ≤0.10%, no shadow. `design-reviewer` **accept** for all three (dark/light/checker + 2× slot edge).
+- **Data:** 3 raw board records validate; Nano+ official depth is **12.7 cm** (inventory 13.97 cm provisional, noted); Nano MAX weight omitted (not published). Official top-down photos remain in `imageCandidates` as **reference only**.
 - **Build/QA:** `catalog:ci` **218 pedals / 15 boards**; `catalog:validate` green; guard clean; app QA **6/6** (desktop + mobile Chromium: board picker, 350 thumb, 800 specimen, placement, no console errors); full e2e **258 passed + 7 skipped**; unit tests **699**.
 - **Demo link:** 3 boards (board-only scene).
 - **PR:** one batch PR, no merge.
