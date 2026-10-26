@@ -88,3 +88,6 @@ Accounts (Google OAuth) · cloud saves · community gear submissions + moderatio
 - [ ] `pnpm audit` clean; all dependencies < 6 months old
 - [ ] iOS Safari export verified on a real device
 - [ ] **Real-device touch/interaction pass** — pinch/pan on a physical phone (automated coverage is Chromium-only; see **P5-06** proposal for local Appium E2E)
+
+## Follow-up reminders
+- **Revisit the previously merged pedalboard assets before P5-04.** After the 2026-10-25 generated-art policy, review the existing board images (Aclam, Blackbird, Creation, Fame, etc.) in the picker/canvas at 350/800 to confirm they still render OK — complete, clean alpha, no white/bg/halo/shadow. **Repair only the boards that fail; do not regenerate clean boards for style consistency.** This is the P5-03b existing-board audit, not a requirement for new board batches (new batches generate their own flat art).
