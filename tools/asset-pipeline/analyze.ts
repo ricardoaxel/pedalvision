@@ -46,6 +46,8 @@ export type AnalyzeResult = {
 	};
 	rotationDeg: number | null;
 	perspectiveError: number | null;
+	/** Pedal-only: a symmetric trapezoid enclosure (taper, not camera tilt). */
+	shapeTaper: boolean;
 	shadowRatio: number | null;
 	/** Board-only: near-white/silver interior residual and bright edge fringe. */
 	bright: { ratio: number; edgeRatio: number } | null;
@@ -111,11 +113,11 @@ function regressionSlope(
 	return numerator / denominator;
 }
 
-function skewDegrees(
+function sideSlopes(
 	alpha: Uint8Array,
 	width: number,
 	bounds: Bounds,
-): number | null {
+): { left: number | null; right: number | null } {
 	const left: Array<{ x: number; y: number }> = [];
 	const right: Array<{ x: number; y: number }> = [];
 	const startY = bounds.top + Math.round(bounds.height * 0.2);
@@ -134,12 +136,61 @@ function skewDegrees(
 			right.push({ x: last, y });
 		}
 	}
-	const slopes = [regressionSlope(left), regressionSlope(right)].filter(
+	return { left: regressionSlope(left), right: regressionSlope(right) };
+}
+
+function skewDegrees(
+	alpha: Uint8Array,
+	width: number,
+	bounds: Bounds,
+): number | null {
+	const { left, right } = sideSlopes(alpha, width, bounds);
+	const slopes = [left, right].filter(
 		(value): value is number => value !== null,
 	);
 	if (slopes.length === 0) return null;
 	const slope = slopes.reduce((sum, value) => sum + value, 0) / slopes.length;
 	return Math.abs((Math.atan(slope) * 180) / Math.PI);
+}
+
+/**
+ * A symmetric trapezoid enclosure (every BOSS compact) narrows at the jack end,
+ * so the top/bottom row widths differ exactly like a mild camera perspective.
+ * A true top-down trapezoid also has a flat top edge and mirror-symmetric side
+ * slopes; a tilted 3/4 shot has an angled top edge or asymmetric sides. Use both
+ * signals so a real perspective is still rejected.
+ */
+function topEdgeFlatness(
+	alpha: Uint8Array,
+	width: number,
+	bounds: Bounds,
+): number | null {
+	const startX = bounds.left + Math.round(bounds.width * 0.2);
+	const endX = bounds.left + Math.round(bounds.width * 0.8);
+	let minY = Number.POSITIVE_INFINITY;
+	let maxY = Number.NEGATIVE_INFINITY;
+	for (let x = startX; x < endX; x++) {
+		for (let y = bounds.top; y < bounds.top + bounds.height; y++) {
+			if (alpha[(y * width + x) * 4 + 3] > 0) {
+				if (y < minY) minY = y;
+				if (y > maxY) maxY = y;
+				break;
+			}
+		}
+	}
+	if (!Number.isFinite(minY) || !Number.isFinite(maxY)) return null;
+	return (maxY - minY) / bounds.height;
+}
+
+function isTopDownTaper(
+	flatness: number | null,
+	rotationDeg: number | null,
+	aspect: AspectVerdict,
+): boolean {
+	if (flatness === null || rotationDeg === null) return false;
+	// A flat top edge + no skew means the width change is the enclosure shape,
+	// not camera tilt. Aspect still has to agree with the cm footprint.
+	return flatness <= 0.02 && rotationDeg <= 2 && aspect !== "reject";
 }
 
 function rowWidth(
@@ -338,6 +389,7 @@ export async function analyzeImage(
 			},
 			rotationDeg: null,
 			perspectiveError: null,
+			shapeTaper: false,
 			shadowRatio: null,
 			bright: null,
 			verdict: "reject",
@@ -377,6 +429,12 @@ export async function analyzeImage(
 	}
 
 	const perspective = perspectiveError(pixels, width, bounds);
+	const shapeTaper =
+		options.kind === "pedal" &&
+		isTopDownTaper(topEdgeFlatness(pixels, width, bounds), rotation, aspect);
+	// Pedals never reject on the row-width ratio alone: a symmetric trapezoid
+	// (every BOSS compact) is a shape taper, not camera perspective. Real
+	// perspective is caught by aspect/skew plus the contact-sheet reviewer.
 	if (perspective !== null) {
 		if (
 			perspective >
@@ -384,10 +442,20 @@ export async function analyzeImage(
 				? ANALYZER_DEFAULTS.boardPerspectiveReject
 				: 0.12)
 		) {
-			reasons.push(
-				`reject:perspective distortion ${Math.round(perspective * 100)}% — re-source a top-down image`,
-			);
-		} else if (perspective > ANALYZER_DEFAULTS.perspectiveFlag) {
+			if (shapeTaper) {
+				reasons.push(
+					`note:enclosure taper ${Math.round(perspective * 100)}% (symmetric trapezoid, not perspective)`,
+				);
+			} else if (options.kind === "pedal") {
+				reasons.push(
+					`flag:possible perspective ${Math.round(perspective * 100)}% — verify on the contact sheet`,
+				);
+			} else {
+				reasons.push(
+					`reject:perspective distortion ${Math.round(perspective * 100)}% — re-source a top-down image`,
+				);
+			}
+		} else if (perspective > ANALYZER_DEFAULTS.perspectiveFlag && !shapeTaper) {
 			reasons.push(
 				`flag:possible perspective ${Math.round(perspective * 100)}%`,
 			);
@@ -440,6 +508,7 @@ export async function analyzeImage(
 		aspect: { image: imageAspect, expected, error, verdict: aspect },
 		rotationDeg: rotation,
 		perspectiveError: perspective,
+		shapeTaper,
 		shadowRatio: shadow,
 		bright,
 		verdict: rejected ? "reject" : flagged ? "flag" : "accept",
