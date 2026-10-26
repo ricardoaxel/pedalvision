@@ -19,7 +19,7 @@ You coordinate the P5 catalog batches. You **do not research a batch yourself an
    - 2,000 hosted pedals / ~4,000 files / ~300 MB
    - 150 Tier A boards / ~300 files / ~20 MB, counted independently
    If a cap would be crossed, **stop and report**; do not start another batch.
-4. Start sessions with `catalog:start` and supervise with `catalog:runner supervise --batch <id> -- <agent command>` where practical.
+4. Launch waves with `pnpm catalog:wave run --plan <wave.json>` (it starts `catalog:start`, supervises `opencode run`, applies the 2-wide + third-slot gate, and writes `work/catalog/waves/<id>/report.md`). Do not raw-launch batch sessions. Read the wave report at every checkpoint; escalate failures/caps to the owner. The wave wrapper never merges.
 5. Enforce:
    - checkpoint after **every item**
    - 15-minute status line `% · items done/total · images accepted/rejected · blockers`

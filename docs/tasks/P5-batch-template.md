@@ -36,7 +36,7 @@ Read only the sections the task file points to; do not read whole docs.
 
 1. Restate the exact batch scope and expected item count.
 2. Create/confirm the raw records under `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`.
-3. Run `pnpm catalog:start` and checkpoint after every item.
+3. Run `pnpm catalog:start` and checkpoint after every item. **When launched by `catalog:wave`, the coordinator already started the batch — skip `catalog:start`; keep the inline checkpoints and finish with `catalog:finish`.**
 4. Run the deterministic image scripts in the batch session (no separate image-scout agent required): analyzer/processor/PSNR/contact sheet; keep candidates, accepts, rejects and reasons (`pnpm asset:analyze`, `pnpm asset:process`, `pnpm asset:psnr`, `pnpm asset:contact-sheet`, `pnpm asset:qa`). One contact sheet per 10–30 flagged images, max 2 vision passes.
 5. Run `pnpm catalog:check-jacks`, `pnpm catalog:ci` (CI temp build) and the Playwright picker/render check.
 6. Run `pnpm catalog:guard-batch-pr`; the PR must contain raw records + assets + this task file only.
@@ -47,7 +47,7 @@ Read only the sections the task file points to; do not read whole docs.
    custom board), adds illustrative patch cables between consecutive items, and prints the
    read-only `?share=1#s=…` URL. Board batches use `--kind boards` and produce a board-only
    scene. Open it and verify the expected board/item/cable counts.
-9. Finish the batch, then open exactly one PR; do not merge. The coordinator runs the
+9. Finish the batch, then open exactly one PR; do not merge. When launched by `catalog:wave`, the wrapper writes the wave report; the session still owns its PR and final report. The coordinator runs the
    post-merge build (the GitHub workflow commits mapped/runtime). **The PR description must
    include the demo share link** (see acceptance).
 

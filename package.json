@@ -38,6 +38,7 @@
 		"catalog:finish": "node --experimental-strip-types tools/catalog-runner/index.ts finish",
 		"catalog:flag": "node --experimental-strip-types tools/catalog-runner/index.ts flag",
 		"catalog:runner": "node --experimental-strip-types tools/catalog-runner/index.ts",
+		"catalog:wave": "node --experimental-strip-types tools/catalog-wave/index.ts",
 		"asset:analyze": "node --experimental-strip-types tools/asset-pipeline/analyze-cli.ts",
 		"asset:board-color": "node --experimental-strip-types tools/asset-pipeline/board-color-cli.ts",
 		"asset:board-art": "node --experimental-strip-types tools/asset-pipeline/board-art-cli.ts",
