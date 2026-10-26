@@ -1,7 +1,7 @@
 # Progress
 
 **Current phase:** P5 — Catalog completion. **P4 is COMPLETE**: P4-01 (PR #30, squash `d0d79ad`), P4-02 (PR #31, squash `f001a0b`), P4-03 (PR #33, squash `c0c419b`) and the **P4 phase gate** (merged 2026-10-21, PR #34, squash `caee58d`) are **DONE**. The **P5 plan restructure** is **DONE** (merged 2026-10-21, PR #32, squash `6e7deef`).
-**Next task:** **P5-03 — BOSS split test (wave 2): 209 pedals → 6 batches of ~35, run 3 at a time in 2 waves.** Wave 1 is **DONE** — Red Panda (#44) and Pedaltrain Nano (#45) merged; post-merge build `29d1ce6` verified **232 pedals / 15 boards**. Before starting, run the `token-usage-reviewer` on the BOSS wave plan and record its verdict/budgets (per batch soft ≤400k / hard ≤800k; wave ≤1.2M/2.4M; max 3 in flight; light researchers + deterministic image scripts; ≤2 vision passes; ≤1 light code review). **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed.
+**Next task:** **P5-03 — BOSS split test (wave 2): 209 pedals → 7–9 batches of 24–28 in 3 waves, start 2-wide.** Wave 1 is **DONE** — Red Panda (#44) and Pedaltrain Nano (#45) merged; post-merge build `29d1ce6` verified **232 pedals / 15 boards**. The BOSS wave review verdict was **`adjust`**: 35-item batches break the 4 h/12 min caps; first batch is the token/time calibration; parent session coordinates (no coordinator agent for 3); `curated.ts` only if the no-drift test requires it; image scripts in the batch session, not a scout agent. Budgets: per batch soft ≤400k / hard ≤800k; wave ≤1.2M/2.4M; ≤2 vision passes; ≤1 light code review. **P2-10** remains PROPOSED; **P5-06/P5-07/P5-08** stay proposed.
 **DeepSeek opencode-go only (owner instruction, 2026-10-24):** all design/visual reviews use `opencode-go/deepseek-v4.1-flash` (vision); never free/Gemini/Claude/other.
 
 **Last updated:** 2026-10-26 (wave 1 merged — PRs #44/#45; post-merge `29d1ce6`, 232/15; next = BOSS split test)
@@ -55,7 +55,7 @@
 - [x] R5 closes: detached offscreen export Stage, endpoint margin, SVG font determinism + pinned sharp, fit-capped "all content", pan-interrupt drop-in-place
 
 ## In progress
-- No batch in flight — **next = BOSS split test (wave 2): 6 batches of ~35, 3 at a time in 2 waves.** Run the `token-usage-reviewer` on the wave plan first; then start exactly 3 BOSS batches with the 400k/800k per-batch and 1.2M/2.4M wave budgets.
+- No batch in flight — **next = BOSS split test (wave 2): 7–9 batches of 24–28 in 3 waves, start 2-wide.** BOSS wave review **`adjust`** (35-item batches break the 4 h/12 min caps); first batch is the token/time calibration; parent coordinates; no coordinator agent; `curated.ts` only if the no-drift test requires it. Record tokens/minutes per item at every checkpoint.
 
 ## Follow-ups
 - **Revisit past pedalboard assets before P5-04 (owner reminder, 2026-10-25).** The generated-art policy applies to **new** board batches; previously merged boards (Aclam, Blackbird, Creation, Fame, etc.) should be reviewed in the picker/canvas at 350/800 to confirm they still render OK. Repair only failures (P5-03b); do not regenerate clean boards for style consistency.

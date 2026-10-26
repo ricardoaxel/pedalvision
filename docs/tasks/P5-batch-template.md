@@ -16,7 +16,7 @@ Read only the sections the task file points to; do not read whole docs.
 
 ## Constraints
 
-- **Raw records + assets** in the PR; CI runs `catalog:build` to a temp dir **and an uncommitted app-workspace runtime** for Playwright; the post-merge build commits mapped/runtime. The one allowed batch-support code file is `tools/catalog-transform/curated.ts` (verified effect-type overrides for creatively-named pedals); never other `tools/` edits.
+- **Raw records + assets** in the PR; CI runs `catalog:build` to a temp dir **and an uncommitted app-workspace runtime** for Playwright; the post-merge build commits mapped/runtime. The only allowed batch-support code file is `tools/catalog-transform/curated.ts`, and only when the no-drift test actually requires a verified override; do not add it preemptively. The parent session owns at most one `curated.ts` change across a wave; never other `tools/` edits.
 - **Capture every connector with its position** (audio I/O, aux, expression/CV, MIDI, USB, power); only audio I/O (`in`/`out`/`send`/`return`) is a cable anchor today. Other connectors are future-feature data.
 - **Jack edges require a verified source:** set `edge` only when an official rear/top photo, support page or manual diagram shows the connector face; record `jackLayout: { source, confidence: "verified" }` on the record. Never infer an edge from a sibling model or “compact layout”. If unknown, omit the edge (the app uses its assumed anchors) and set `confidence: "unknown"`. Run `pnpm catalog:check-jacks`; it fails an unverified edge.
 - **Optional fields only if found in the same base research** — no extra searches/tabs/tokens for serials, videos, artist, price, jacks, MIDI/USB, board extras. For MIDI, include **MIDI channel(s)** and the **MIDI implementation chart URL** when the source already provides them.
@@ -29,7 +29,7 @@ Read only the sections the task file points to; do not read whole docs.
 - **Clean-alpha gate:** the final cutout must have crisp alpha with **no white/black/any-colour halo, fringe or jagged edge**; prefer an already-clean top-down transparent planner PNG over a glossy photo, and defringe/re-source if a photo leaves a halo.
 - **AVIF quality gate:** encode q80, then run `pnpm asset:psnr --png <reference.png> --avif <800 asset> --min 40` against a PNG cutout generated in a temporary dir. If it fails, re-encode at q90/q100 or keep PNG for that item.
 - **Cleaning generated files:** use targeted `git restore data/catalog src/catalog/data`; never `rm -rf data/catalog/pedals` (it can delete tracked mapped files from `main`).
-- **Budget:** per batch soft **≤400k tokens / hard ≤800k**, ≤2 contact-sheet vision passes, ≤1 light code-review pass, 4 h active. A wave of 3: soft **≤1.2M / hard ≤2.4M tokens**; abort and report at 2× a batch budget or the wave hard cap. BOSS 209 → **6 batches of ~35 in 2 waves of 3**. Record tokens in checkpoints when the harness reports them.
+- **Budget:** per batch soft **≤400k tokens / hard ≤800k**, ≤2 contact-sheet vision passes, ≤1 light code-review pass, 4 h active. A wave of 3: soft **≤1.2M / hard ≤2.4M tokens**; abort and report at 2× a batch budget or the wave hard cap. BOSS 209 → **7–9 batches of 24–28 in 3 waves**; start **2-wide**, add the third only after the first batch is past midpoint with ≤40% soft budget and ≥2 items/h. The first BOSS batch is the calibration; record tokens and minutes per item at every checkpoint.
 - Status every 15 min; per-item 12 min initial; per-batch 4 h; checkpoint after every item.
 
 ## Steps
@@ -37,8 +37,7 @@ Read only the sections the task file points to; do not read whole docs.
 1. Restate the exact batch scope and expected item count.
 2. Create/confirm the raw records under `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`.
 3. Run `pnpm catalog:start` and checkpoint after every item.
-4. Run the image scout/analyzer/processor/QA; keep candidates, accepts, rejects and reasons
-   (`pnpm asset:analyze`, `pnpm asset:process`, `pnpm asset:contact-sheet`, `pnpm asset:qa`).
+4. Run the deterministic image scripts in the batch session (no separate image-scout agent required): analyzer/processor/PSNR/contact sheet; keep candidates, accepts, rejects and reasons (`pnpm asset:analyze`, `pnpm asset:process`, `pnpm asset:psnr`, `pnpm asset:contact-sheet`, `pnpm asset:qa`). One contact sheet per 10–30 flagged images, max 2 vision passes.
 5. Run `pnpm catalog:check-jacks`, `pnpm catalog:ci` (CI temp build) and the Playwright picker/render check.
 6. Run `pnpm catalog:guard-batch-pr`; the PR must contain raw records + assets + this task file only.
 7. Produce the contact sheet + coverage report (covered, unresolved, duplicates, image pass/reject).

@@ -447,7 +447,7 @@ public/pedal-assets/**                              # final assets
 - Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
 - **Agents write raw records only.** A batch PR contains **raw records + assets only**; CI runs `catalog:build` into a temp dir for validation **and** generates an **uncommitted** runtime into the app workspace before `pnpm build`/Playwright, so the PR's new items are actually testable. A **post-merge build** deterministically commits raw → `data/catalog/{pedals,boards}/...` (mapped) → `src/catalog/data/{pedals,boards}.json` (runtime). No agent edits the mapped/runtime files. A post-merge drift check catches stale generated files.
 - **Max 3 batches in flight**; one brand batch = one branch/worktree = one PR. Before a parallel wave, run the `token-usage-reviewer` on the wave plan and record its per-batch token/time budget, model routing, reviewer-pass caps and global stop; fold valid findings. **Default budgets:** per batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave soft ≤1.2M / hard ≤2.4M tokens. Abort/report at 2× a batch budget or the wave hard cap.
-- Batch size 25–40 pedals; BOSS (209) splits into ~5–6 batches. Boards: 10–25
+- Batch size 24–28 pedals after the BOSS calibration; BOSS (209) splits into **7–9 batches in 3 waves**, starting 2-wide. Boards: 10–25
   models per batch (families/sizes); the final Tier A partial batch may be
   smaller (even 1 board). A board brand batch runs alongside pedal batches in the
   same 3-slot queue.
@@ -473,7 +473,7 @@ public/pedal-assets/**                              # final assets
    pedal pilot, not at the end.
 5. **Small parallel test:** Meris + Red Panda + one board batch (Pedaltrain) —
    one PR each, 3 in flight.
-6. **Big-brand split test:** BOSS 209 → **6 batches of ~35**, run **3 at a time in 2 waves** (not 3 giant batches); verify build/merge and the 4 h/batch cap.
+6. **Big-brand split test:** BOSS 209 → **7–9 batches of 24–28**, run **2-wide first, then 3** across **3 waves**; verify build/merge and the 4 h/batch cap. The first batch is the token/time calibration; parent session coordinates (no coordinator agent for 3 batches).
 7. **Scale:** 3 batches in flight continuously, mixing pedals and boards;
    refill as each finishes. First 2,000 catalog items include 150 boards.
 8. **At the Tier A target:** stop and run P5-04. Only if the owner chooses to exceed Tier A: the 2,000 hosted-pedal cap applies, then run P5-05 before scaling.
