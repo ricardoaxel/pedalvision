@@ -91,3 +91,21 @@ Verdict **changes-required**; fixed:
   an `O_EXCL` lock with stale-lock recovery; a completed/stale wave can be reused.
 
 Checks after fixes: lint / typecheck / test **718** / build green.
+
+## Review round 2 (same reviewer session)
+
+Verdict **changes-required** with two residuals; both fixed and test-covered:
+
+- **Early-halt waves reported `complete`:** a queued `not-started` batch now
+  makes the wave `stopped` (failed still wins); the stop integration test
+  asserts the report header is `stopped`, not `complete`.
+- **Lock guard untested / racy stale recovery:** the lock is now an atomic
+  `mkdir`; stale recovery removes it and retries exactly once, and a second
+  `EEXIST` refuses. Added `lock.test.ts` (live refusal, stale recovery, live
+  state) and the stop test.
+- Residual nits folded: `estimateWaveTokens` only runs when a batch is queued;
+  `gh` lookups have a 10 s timeout.
+- **≤2-pass code-review cap reached** (pass 1 + re-check); the new tests
+  (22 wave-runner tests) are the re-check for the residual fixes. No third pass.
+
+Checks: lint / typecheck / test **721** / build green.

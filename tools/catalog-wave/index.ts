@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { closeSync, mkdirSync, openSync } from "node:fs";
-import { mkdir, readFile, unlink, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { requestBatchStop } from "../catalog-runner/control.ts";
@@ -15,6 +15,7 @@ import {
 	waveBudget,
 } from "./gate.ts";
 import { batchLogPath, launchBatch } from "./launch.ts";
+import { acquireWaveLock, assertNoLiveWave, releaseWaveLock } from "./lock.ts";
 import {
 	type ResolvedBatch,
 	readWavePlan,
@@ -180,7 +181,7 @@ function printDryRun(plan: WavePlan, batches: ResolvedBatch[]): void {
 
 async function detach(plan: WavePlan, planPath: string): Promise<void> {
 	const work = workRoot(mainRoot());
-	await assertNoLiveWave(work, plan.id);
+	await assertNoLiveWave(work, plan.id, isAlive);
 	const dir = waveDirPath(work, plan.id);
 	mkdirSync(dir, { recursive: true });
 	const logPath = join(dir, "runner.log");
@@ -211,45 +212,6 @@ async function detach(plan: WavePlan, planPath: string): Promise<void> {
 	console.log(`  status: pnpm catalog:wave status --wave ${plan.id} --wait`);
 }
 
-function lockPath(work: string, id: string): string {
-	return join(waveDirPath(work, id), ".lock");
-}
-
-async function assertNoLiveWave(work: string, id: string): Promise<void> {
-	const existing = await readWaveState(work, id);
-	if (
-		existing?.status === "running" &&
-		existing.runnerPid &&
-		isAlive(existing.runnerPid)
-	) {
-		throw new Error(
-			`wave "${id}" is already running (pid ${existing.runnerPid}); use a new plan id`,
-		);
-	}
-}
-
-async function acquireWaveLock(work: string, id: string): Promise<void> {
-	await assertNoLiveWave(work, id);
-	const path = lockPath(work, id);
-	try {
-		await writeFile(path, String(process.pid), { flag: "wx" });
-	} catch (error) {
-		if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
-		const pid = Number(await readFile(path, "utf8").catch(() => ""));
-		if (Number.isFinite(pid) && pid > 0 && isAlive(pid)) {
-			throw new Error(
-				`wave "${id}" lock is held by a live runner (pid ${pid})`,
-			);
-		}
-		await unlink(path).catch(() => undefined);
-		await writeFile(path, String(process.pid), { flag: "wx" });
-	}
-}
-
-async function releaseWaveLock(work: string, id: string): Promise<void> {
-	await unlink(lockPath(work, id)).catch(() => undefined);
-}
-
 async function runWave(
 	root: string,
 	work: string,
@@ -260,7 +222,7 @@ async function runWave(
 ): Promise<void> {
 	const dir = waveDirPath(work, plan.id);
 	await mkdir(dir, { recursive: true });
-	await acquireWaveLock(work, plan.id);
+	await acquireWaveLock(work, plan.id, process.pid, isAlive);
 	const startedAt = new Date().toISOString();
 	const state: WaveState = {
 		version: 1,
@@ -317,7 +279,10 @@ async function runWave(
 
 	state.status = state.batches.some((batch) => batch.status === "failed")
 		? "failed"
-		: state.batches.some((batch) => batch.status === "stopped")
+		: state.batches.some(
+					(batch) =>
+						batch.status === "stopped" || batch.status === "not-started",
+				)
 			? "stopped"
 			: "complete";
 	state.endedAt = new Date().toISOString();
@@ -377,7 +342,7 @@ async function refresh(
 
 	const queued = state.batches.filter((batch) => batch.status === "queued");
 	const active = state.batches.filter((batch) => batch.status === "running");
-	const tokens = await estimateWaveTokens(state);
+	const tokens = queued.length > 0 ? await estimateWaveTokens(state) : 0;
 	const budget = waveBudget(tokens);
 	const decision = startDecision({
 		stopping,

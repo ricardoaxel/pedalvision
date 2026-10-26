@@ -83,6 +83,7 @@ function gh(cwd: string, args: string[]): string | undefined {
 		cwd,
 		encoding: "utf8",
 		stdio: ["ignore", "pipe", "ignore"],
+		timeout: 10_000,
 	});
 	const stdout = result.stdout?.trim();
 	return stdout ? stdout : undefined;
