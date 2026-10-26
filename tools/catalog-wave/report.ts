@@ -1,3 +1,4 @@
+import { type BatchTokens, resolveBatchTokens } from "./gate.ts";
 import type { WaveBatchRun, WaveState } from "./wave-state.ts";
 
 /**
@@ -24,33 +25,27 @@ export function formatWaveReport(state: WaveState): string {
 	let accepted = 0;
 	let rejected = 0;
 	let billed = 0;
-	let billedKnown = 0;
 	let cache = 0;
-	let cacheKnown = 0;
+	const sources = new Set<BatchTokens["source"]>();
 	for (const batch of state.batches) {
 		done += batch.runner?.done ?? 0;
 		total += batch.runner?.total ?? batch.total;
 		accepted += batch.runner?.imagesAccepted ?? 0;
 		rejected += batch.runner?.imagesRejected ?? 0;
-		const batchBilled = billedTokens(batch);
-		if (batchBilled !== null) {
-			billed += batchBilled;
-			billedKnown++;
-		}
-		const batchCache = cacheInclusiveTokens(batch);
-		if (batchCache !== null) {
-			cache += batchCache;
-			cacheKnown++;
-		}
+		const usage = usageFor(batch);
+		billed += usage.billed;
+		cache += usage.cacheInclusive;
+		sources.add(usage.source);
 		lines.push(formatBatchRow(batch));
 	}
-	const billedTotal =
-		billedKnown === state.batches.length
-			? formatTokens(billed)
-			: `${billedKnown > 0 ? formatTokens(billed) : "unknown"} (known only)`;
-	const cacheTotal = `${
-		cacheKnown > 0 ? formatTokens(cache) : "unknown"
-	} (floor${cacheKnown === state.batches.length ? "" : ", known only"})`;
+	const billedTotal = `${formatTokens(billed)}${
+		sources.has("ledger")
+			? " (includes ledger fallback)"
+			: sources.has("upper-bound")
+				? " (includes upper bound)"
+				: ""
+	}`;
+	const cacheTotal = `${formatTokens(cache)} (floor)`;
 	lines.push(
 		`| **Total** | **${state.status}** | **${done}/${total}** | **${accepted}/${rejected}** | **${billedTotal}** | **${cacheTotal}** | | | |`,
 	);
@@ -83,39 +78,26 @@ function formatBatchRow(batch: WaveBatchRun): string {
 		batch.runner?.imagesAccepted !== undefined
 			? `${batch.runner.imagesAccepted}/${batch.runner.imagesRejected}`
 			: "0/0";
-	const billed = billedTokens(batch);
-	const cache = cacheInclusiveTokens(batch);
+	const usage = usageFor(batch);
 	const minutes = formatMinutes(batch);
 	const pr = batch.pr ? `[#${batch.pr.number}](${batch.pr.url})` : "—";
 	const ci = batch.pr?.checks ?? "—";
 	const status = batch.error
 		? `${batch.status} (${batch.error})`
 		: batch.status;
-	const billedSource =
-		batch.usage?.source ?? (batch.session ? "jsonl" : "ledger");
-	const billedLabel =
-		billed === null
-			? "unknown"
-			: `${formatTokens(billed)}${billedSource === "ledger" ? " (ledger)" : ""}`;
-	const cacheLabel = cache === null ? "unknown" : formatTokens(cache);
-	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${billedLabel} | ${cacheLabel} | ${minutes} | ${pr} | ${ci} |`;
+	const sourceSuffix =
+		usage.source === "ledger"
+			? " (ledger)"
+			: usage.source === "upper-bound"
+				? " (upper bound)"
+				: "";
+	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${formatTokens(usage.billed)}${sourceSuffix} | ${formatTokens(usage.cacheInclusive)} | ${minutes} | ${pr} | ${ci} |`;
 }
 
-function billedTokens(batch: WaveBatchRun): number | null {
-	if (batch.usage) return batch.usage.billed;
-	const session = batch.session;
-	if (session?.billedTokens !== null && session?.billedTokens !== undefined) {
-		return session.billedTokens;
-	}
-	// A cache-inclusive total is not a billed value; never conflate them. Only a
-	// ledger fallback (no session at all) may populate the billed column.
-	if (session) return null;
-	return batch.runner?.tokens ?? null;
-}
-
-function cacheInclusiveTokens(batch: WaveBatchRun): number | null {
-	if (batch.usage) return batch.usage.cacheInclusive;
-	return batch.session?.tokens ?? null;
+function usageFor(batch: WaveBatchRun): BatchTokens {
+	return (
+		batch.usage ?? resolveBatchTokens(batch.runner?.tokens ?? 0, batch.session)
+	);
 }
 
 function formatTokens(value: number): string {

@@ -77,7 +77,7 @@ describe("formatWaveReport", () => {
 		).toHaveLength(1);
 	});
 
-	it("shows unknown instead of 0 when the session token totals are missing", () => {
+	it("labels a ledger-only fallback so it is never mistaken for JSONL truth", () => {
 		const report = formatWaveReport({
 			...state,
 			batches: [
@@ -96,23 +96,34 @@ describe("formatWaveReport", () => {
 				},
 			],
 		});
-		expect(report).toContain("| unknown | unknown |");
+		expect(report).toContain("| 312k (ledger) | 312k |");
 		expect(report).toContain(
-			"| **unknown (known only)** | **unknown (floor, known only)** |",
+			"| **312k (includes ledger fallback)** | **312k (floor)** |",
 		);
 	});
 
-	it("labels a ledger-only fallback so it is never mistaken for JSONL truth", () => {
+	it("marks a JSONL total used as the billed upper bound", () => {
 		const report = formatWaveReport({
 			...state,
 			batches: [
 				{
 					...firstBatch(),
 					usage: undefined,
-					session: undefined,
+					session: {
+						sessionId: "ses_x",
+						tokens: 900_000,
+						billedTokens: null,
+						costUsd: 0.2,
+						texts: [],
+						parse: "complete",
+						errors: [],
+					},
 				},
 			],
 		});
-		expect(report).toContain("| 312k (ledger) | unknown |");
+		expect(report).toContain("| 900k (upper bound) | 900k |");
+		expect(report).toContain(
+			"| **900k (includes upper bound)** | **900k (floor)** |",
+		);
 	});
 });

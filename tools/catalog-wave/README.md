@@ -79,8 +79,11 @@ validates the plan and prints what would launch.
 - **Cache-inclusive floor** = `total` (summed over steps), reported separately as
   context, never gated.
 - If a step omits `total`, the floor is derived by summing the recognised fields.
-  If the JSONL has no `step_finish` yet, the checkpoint ledger is used as a
-  temporary fallback and labelled `(ledger)` in the report.
+- If the JSONL has a total but the step omits `input`/`output`/`reasoning`, the
+  total is used as a conservative billed **upper bound** (labelled
+  `(upper bound)`) so the budget can never under-count.
+- Only when the JSONL has no token numbers at all is the checkpoint ledger used,
+  labelled `(ledger)`; totals that include either fallback say so.
 
 ## Files
 

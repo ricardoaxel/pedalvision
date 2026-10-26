@@ -367,13 +367,19 @@ async function refresh(
 		maxParallel: plan.maxParallel,
 		budget,
 	});
-	if (decision.action === "stop") {
+	if (decision.action === "stop" && queued.length > 0) {
 		for (const batch of queued) {
 			batch.status = "not-started";
 			batch.error = decision.reason;
 		}
 		const note = `stopped launching queued batches: ${decision.reason}`;
-		if (!state.notes.includes(note)) state.notes.push(note);
+		if (
+			!state.notes.some((entry) =>
+				entry.startsWith("stopped launching queued batches"),
+			)
+		) {
+			state.notes.push(note);
+		}
 	} else if (decision.action === "start" && queued.length > 0) {
 		const next = queued[0];
 		if (next) {
@@ -452,12 +458,9 @@ function billedWaveTokens(state: WaveState): number {
 }
 
 function batchBilled(batch: WaveBatchRun): number {
-	if (batch.usage) return batch.usage.billed;
-	const session = batch.session;
-	if (session?.billedTokens !== null && session?.billedTokens !== undefined) {
-		return session.billedTokens;
-	}
-	return batch.runner?.tokens ?? 0;
+	return (
+		batch.usage ?? resolveBatchTokens(batch.runner?.tokens ?? 0, batch.session)
+	).billed;
 }
 
 async function summarizeLog(path: string) {

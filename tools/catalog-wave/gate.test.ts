@@ -30,37 +30,40 @@ function state(overrides: Partial<BatchState> = {}): BatchState {
 
 const now = new Date();
 
+/** Fixture-only billed map: the gate requires resolved billed tokens. */
+function gate(states: BatchState[], at: Date = now) {
+	return canStartNext(
+		states,
+		at,
+		Object.fromEntries(states.map((entry) => [entry.batchId, entry.tokens])),
+	);
+}
+
 describe("third-slot gate", () => {
 	it("opens after midpoint, ≤40% soft budget and ≥2 items/h", () => {
-		expect(canStartNext([state()], now)).toEqual({
+		expect(gate([state()])).toEqual({
 			ok: true,
 			reason: "midpoint + budget + rate gates pass",
 		});
 	});
 
 	it("stays closed before midpoint, over budget or under rate", () => {
-		expect(canStartNext([state({ done: 12 })], now).ok).toBe(false);
-		expect(canStartNext([state({ tokens: 160_001 })], now).ok).toBe(false);
+		expect(gate([state({ done: 12 })]).ok).toBe(false);
+		expect(gate([state({ tokens: 160_001 })]).ok).toBe(false);
 		expect(
-			canStartNext(
-				[
-					state({
-						done: 13,
-						startedAt: new Date(Date.now() - 8 * 60 * 60_000).toISOString(),
-					}),
-				],
-				now,
-			).ok,
+			gate([
+				state({
+					done: 13,
+					startedAt: new Date(Date.now() - 8 * 60 * 60_000).toISOString(),
+				}),
+			]).ok,
 		).toBe(false);
 	});
 
 	it("requires an active batch and refuses a fourth slot", () => {
-		expect(canStartNext([], now).ok).toBe(false);
+		expect(gate([]).ok).toBe(false);
 		expect(
-			canStartNext(
-				[state(), state({ batchId: "b/2" }), state({ batchId: "b/3" })],
-				now,
-			).ok,
+			gate([state(), state({ batchId: "b/2" }), state({ batchId: "b/3" })]).ok,
 		).toBe(false);
 	});
 
@@ -78,6 +81,10 @@ describe("third-slot gate", () => {
 				"boss/boss-2": 100_000,
 			}).ok,
 		).toBe(true);
+		// A missing resolved value fails closed instead of using the ledger.
+		const missing = canStartNext([state()], now, {});
+		expect(missing.ok).toBe(false);
+		expect(missing.reason).toContain("no true billed tokens");
 	});
 });
 
@@ -105,13 +112,13 @@ describe("true token resolution + wave budget", () => {
 		});
 	});
 
-	it("falls back to the ledger only when the JSONL has no step_finish", () => {
+	it("uses the JSONL total as an upper bound, ledger only with no JSONL", () => {
 		expect(
 			resolveBatchTokens(12_500, { billedTokens: null, tokens: 20_000 }),
 		).toEqual({
-			billed: 12_500,
+			billed: 20_000,
 			cacheInclusive: 20_000,
-			source: "ledger",
+			source: "upper-bound",
 		});
 		expect(
 			resolveBatchTokens(12_500, { billedTokens: null, tokens: null }),

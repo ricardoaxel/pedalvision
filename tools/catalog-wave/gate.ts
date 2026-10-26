@@ -19,7 +19,12 @@ export type GateResult = { ok: boolean; reason: string };
 export type BatchTokens = {
 	billed: number;
 	cacheInclusive: number;
-	source: "jsonl" | "ledger";
+	/**
+	 * `jsonl` = exact billed fields; `upper-bound` = the JSONL total was used
+	 * because the step omitted input/output/reasoning (conservative, never
+	 * under-counts); `ledger` = no JSONL numbers at all.
+	 */
+	source: "jsonl" | "upper-bound" | "ledger";
 };
 
 /**
@@ -40,18 +45,28 @@ export function resolveBatchTokens(
 			source: "jsonl",
 		};
 	}
+	if (session?.tokens !== null && session?.tokens !== undefined) {
+		// A step_finish with a total but no input/output/reasoning is old or
+		// drifted data. Use the cache-inclusive total as a conservative billed
+		// upper bound instead of falling back to the untrusted ledger.
+		return {
+			billed: session.tokens,
+			cacheInclusive: session.tokens,
+			source: "upper-bound",
+		};
+	}
 	return {
 		billed: ledger,
-		cacheInclusive: session?.tokens ?? ledger,
+		cacheInclusive: ledger,
 		source: "ledger",
 	};
 }
 
 export function canStartNext(
 	states: BatchState[],
-	now: Date = new Date(),
-	/** True billed tokens per batch; absent entries fall back to the ledger. */
-	billedByBatch: Readonly<Record<string, number>> = {},
+	now: Date,
+	/** True billed tokens per batch, resolved before the gate is called. */
+	billedByBatch: Readonly<Record<string, number>>,
 ): GateResult {
 	const active = states.filter(
 		(state) => state.status === "running" || state.status === "paused",
@@ -71,7 +86,13 @@ export function canStartNext(
 		};
 	}
 	const softLimit = SOFT_BATCH_TOKENS * THIRD_SLOT_SOFT_FRACTION;
-	const billed = billedByBatch[first.batchId] ?? first.tokens;
+	const billed = billedByBatch[first.batchId];
+	if (billed === undefined) {
+		return {
+			ok: false,
+			reason: `no true billed tokens for ${first.batchId}`,
+		};
+	}
 	if (billed > softLimit) {
 		return {
 			ok: false,
