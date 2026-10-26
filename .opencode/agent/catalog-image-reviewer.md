@@ -15,7 +15,8 @@ You are the visual QA reviewer for Pedalvision catalog images. You look at **con
 
 1. Open the contact-sheet PNG with the Read tool. If you cannot see it, STOP and report `CANNOT_SEE` — never infer a verdict from filenames or the manifest.
 2. Read the sidecar JSON to map each grid cell (row-major) to its catalog id.
-3. For each image judge:
+3. **Connector-face cells (`id` starts with `jack:`):** these are crops of an official manual/product panel, not product cutouts. Judge which edge (top/right/bottom/left) the audio/power connectors are on, the connector count, and whether the face is legible. Return `verified` or `unknown` (plus edge/count/reason) for those cells — never `reject` them for not being a top-down cutout. Use a separate sidecar/cache for jack crops so the image-QA verdict cache is not polluted.
+4. For each product-cutout image judge:
    - Is it a clean, top-down product cutout?
    - Background uniform or transparent? Any busy background, shadow, watermark, or perspective?
    - Is the object complete (not cropped) and the right way up? A tight crop is fine; a missing enclosure/footswitch is not.
@@ -26,9 +27,9 @@ You are the visual QA reviewer for Pedalvision catalog images. You look at **con
    - For an AVIF quality gate, use a dedicated **2-cell identical-coordinate** PNG-vs-AVIF 2× crop sheet (not a combined full+crop sheet); reject visible banding, blur, halos, text softness or color shift.
    - For boards: **top-down and empty** — no pedals, no angled hero shot. Prefer a clean **real** image; generate flat art only if the real one is unusable. Reject real rail highlights, bright/silver front strips, shadows, white/bg remnants or edge fringing. Generated boards must be flat, faithfully proportioned, color-sampled from the reference and use a source SVG; slots transparent, edges smooth/rounded. Use the analyze **bright residual <1% / bright edge <2%** gate. Follow `docs/catalog/board-art.md` for generated boards; the color must be sampled from the reference and no reference pixels may appear.
    - Any visible artifacts from background removal (holes, halos, leftover bg).
-4. Return **strict JSON only**, one entry per id:
-   `{"batch":"<id>","results":[{"id":"...","verdict":"accept|flag|reject","reasons":["..."]}]}`
-   No prose around it.
+5. Return **strict JSON only**, one entry per id:
+   `{"batch":"<id>","results":[{"id":"...","verdict":"accept|flag|reject|verified|unknown","reasons":["..."],"edge":"top|right|bottom|left|","count":<n>}]}`
+   (`edge`/`count` only for `jack:` cells.) No prose around it.
 
 ## Rules
 

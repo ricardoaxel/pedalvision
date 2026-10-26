@@ -102,8 +102,10 @@ The 3 net-new ids (BD-2W, BP-1W, CE-2W) were absent from the legacy seed; the ot
 ## Jack-edge policy for this batch
 
 - Verified from each model's **official owner's manual panel diagram** (text-layer PDF): audio INPUT on the right edge and audio OUTPUT(s) on the left edge; DC IN on the top edge. Edge-only — no `pos` values are claimed.
-- 15 items carry edges + `jackLayout: { source, confidence: "verified" }`.
-- **Edges omitted (unknown)** for 11 items with no readable connector-face source: AC-2 (scanned manual), CE-1, CE-20 (scanned manual), CP-1X, DA-2 (manual not published as a readable PDF), and the 6 vintage compacts (BF-2, BF-2B, CE-2, CE-2B, CE-3, CS-2 — scanned manuals). The app uses its clearly-labelled assumed anchors for these.
+- 17 items carry edges + `jackLayout: { source, confidence: "verified" }`.
+- **CE-1 and CE-20 corrected (owner, 2026-10-25):** their jacks are on the **top/rear** edge, visible in the official (scanned) manuals. Both now carry top edges rather than being omitted.
+- **Edges omitted (unknown)** for 9 items with no readable connector-face source: AC-2 (scanned manual), CP-1X, DA-2 (manual not published as a readable PDF), and the 6 vintage compacts (BF-2, BF-2B, CE-2, CE-2B, CE-3, CS-2 — scanned manuals). The app uses its clearly-labelled assumed anchors for these.
+- **Rule improvement (owner request, 2026-10-25; token-usage-reviewer verdict `adjust`, findings folded):** the shared rule now mandates a **text-layer-first** jack check, treats image-only/scanned manuals and official photos as valid sources, requires a connector-strip crop judged in the existing contact-sheet/vision step (never per item, never a 3rd pass), and records the CE-1/CE-20 top-mounted example. Updated `AGENTS.md`, `docs/catalog/raw-research-record.md`, `docs/catalog-backfill.md`, `docs/tasks/P5-batch-template.md`, `.opencode/agent/catalog-pedal-researcher.md`, and the `jack:` branch in `.opencode/agent/catalog-image-reviewer.md`.
 - `pnpm catalog:check-jacks` green (no unverified edges).
 
 ## Image sourcing (last-resort planner art)

@@ -79,11 +79,13 @@ All optional and **captured only when already found**:
 - `priceObservations: [{ amount, currency, condition: new|used, source, observedAt, notes }]`
   — an observation, never a canonical price.
 
-### Jack edges (P5 guardrail, 2026-10-25)
+### Jack edges (P5 guardrail, 2026-10-25; refined 2026-10-25)
+
+> Normative rule and the text-layer-first / scanned-manual workflow: `AGENTS.md` §Hard constraints → “Jack edges”. The notes below add the record-level details.
 
 An `edge` is a **physical fact** and needs a source that actually shows the
 connector face. Set `edge` only when an official rear/top photo, support page or
-manual diagram shows it; record the record-level
+manual diagram — **including an image-only/scanned PDF** — shows it; record the record-level
 `jackLayout: { source, confidence: "verified" }`. Never infer an edge from a
 sibling model or a “compact layout” (the Meris compact-pedal mistake). If the
 edge is unknown, **omit `edge`** (and set `jackLayout.confidence: "unknown"`);

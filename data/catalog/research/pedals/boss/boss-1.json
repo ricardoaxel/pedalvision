@@ -1509,7 +1509,8 @@
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
-        "stereo": false
+        "stereo": false,
+        "edge": "top"
       },
       {
         "label": "OUTPUT A",
@@ -1517,7 +1518,8 @@
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
-        "stereo": false
+        "stereo": false,
+        "edge": "top"
       },
       {
         "label": "OUTPUT B",
@@ -1525,7 +1527,8 @@
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
-        "stereo": false
+        "stereo": false,
+        "edge": "top"
       },
       {
         "label": "AC CORD",
@@ -1535,8 +1538,9 @@
       }
     ],
     "jackLayout": {
-      "confidence": "unknown",
-      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+      "source": "https://static.roland.com/assets/media/pdf/CE-1_OM.pdf",
+      "confidence": "verified",
+      "note": "The official CE-1 owner\u2019s manual panel/connection diagram shows the input and both outputs on the top/rear edge (a large-format unit). Positions along the edge are not published; no pos values are claimed."
     },
     "status": "discontinued",
     "power": {
@@ -1725,7 +1729,8 @@
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
-        "stereo": false
+        "stereo": false,
+        "edge": "top"
       },
       {
         "label": "GUITAR AMP OUT",
@@ -1733,7 +1738,8 @@
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
-        "stereo": false
+        "stereo": false,
+        "edge": "top"
       },
       {
         "label": "SEND",
@@ -1741,7 +1747,8 @@
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
-        "stereo": false
+        "stereo": false,
+        "edge": "top"
       },
       {
         "label": "RETURN",
@@ -1749,18 +1756,21 @@
         "connector": "ts",
         "channels": 1,
         "signal": "audio",
-        "stereo": false
+        "stereo": false,
+        "edge": "top"
       },
       {
         "label": "DC IN",
         "kind": "power",
         "connector": "barrel",
-        "signal": "power"
+        "signal": "power",
+        "edge": "top"
       }
     ],
     "jackLayout": {
-      "confidence": "unknown",
-      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+      "source": "https://static.roland.com/assets/media/pdf/CE-20_OM.pdf",
+      "confidence": "verified",
+      "note": "The official CE-20 owner\u2019s manual panel/connection diagram shows all audio (guitar/bass in, guitar-amp out, send/return) and DC connectors on the top/rear edge. Positions along the edge are not published; no pos values are claimed."
     },
     "power": {
       "voltage": 9,
