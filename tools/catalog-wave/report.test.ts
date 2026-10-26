@@ -102,6 +102,22 @@ describe("formatWaveReport", () => {
 		);
 	});
 
+	it("shows unknown for a queued batch with no session or checkpoint tokens", () => {
+		const report = formatWaveReport({
+			...state,
+			batches: [
+				{
+					...firstBatch(),
+					usage: undefined,
+					session: undefined,
+					runner: undefined,
+				},
+			],
+		});
+		expect(report).toContain("| unknown | unknown |");
+		expect(report).toContain("| **0** | **0 (floor)** |");
+	});
+
 	it("marks a JSONL total used as the billed upper bound", () => {
 		const report = formatWaveReport({
 			...state,

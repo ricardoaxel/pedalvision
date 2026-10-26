@@ -571,6 +571,104 @@ describe("catalog:wave soft-cap path", () => {
 	}, 120_000);
 });
 
+describe("catalog:wave missing JSONL", () => {
+	it("falls back to the checkpoint ledger when the log has no valid tokens", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-missing-"));
+		tempDirs.push(temp);
+		const waveId = `wave-missing-${process.pid}`;
+		const batch = `acme/missing-${process.pid}`;
+		const bin = join(temp, "bin");
+		await mkdir(bin, { recursive: true });
+		await writeFile(
+			join(bin, "opencode"),
+			[
+				"#!/bin/sh",
+				"trap 'exit 0' TERM",
+				'echo \'{"type":"step_finish","part":\'',
+				`"${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts checkpoint --batch "$CATALOG_BATCH_ID" --item fake-1 --tokens 5000 >/dev/null 2>&1`,
+				"sleep 10",
+			].join("\n"),
+		);
+		await chmod(join(bin, "opencode"), 0o755);
+		const worktree = addWorktree(temp, "missing");
+		const planPath = join(temp, "wave.json");
+		await writeFile(
+			planPath,
+			JSON.stringify({
+				id: waveId,
+				maxParallel: 2,
+				batches: [
+					{
+						batch,
+						kind: "pedals",
+						brand: "Acme",
+						total: 1,
+						worktree: worktree.path,
+						branch: worktree.branch,
+						prompt: "fake",
+					},
+				],
+			}),
+		);
+		const child = spawn(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				planPath,
+				"--foreground",
+				"--poll-ms",
+				"50",
+			],
+			{
+				cwd: repoRoot,
+				env: {
+					...process.env,
+					PATH: `${bin}:${process.env.PATH ?? ""}`,
+					CATALOG_WORK_DIR: join(temp, "work"),
+					CATALOG_STOP_GRACE_MS: "100",
+					CATALOG_KILL_GRACE_MS: "100",
+				},
+				stdio: ["ignore", "pipe", "pipe"],
+			},
+		);
+		const statePath = join(temp, "work", "waves", waveId, "state.json");
+		try {
+			await waitFor(async () => {
+				try {
+					const state = JSON.parse(await readFile(statePath, "utf8")) as {
+						batches: Array<{
+							runner?: { tokens: number };
+							usage?: { source: string; billed: number };
+						}>;
+					};
+					const run = state.batches[0];
+					return (
+						run?.runner?.tokens === 5000 &&
+						run.usage?.source === "ledger" &&
+						run.usage.billed === 5000
+					);
+				} catch {
+					return false;
+				}
+			});
+		} catch (error) {
+			child.kill("SIGKILL");
+			throw new Error((error as Error).message);
+		}
+		const report = await readFile(
+			join(temp, "work", "waves", waveId, "report.md"),
+			"utf8",
+		);
+		expect(report).toContain("| 5k (ledger) | 5k |");
+		expect(report).toContain("5k (includes ledger fallback)");
+		child.kill("SIGTERM");
+		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
+	}, 120_000);
+});
+
 async function waitFor(check: () => Promise<boolean>): Promise<void> {
 	for (let i = 0; i < 100; i++) {
 		if (await check()) return;

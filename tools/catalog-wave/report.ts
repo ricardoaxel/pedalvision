@@ -35,7 +35,7 @@ export function formatWaveReport(state: WaveState): string {
 		const usage = usageFor(batch);
 		billed += usage.billed;
 		cache += usage.cacheInclusive;
-		sources.add(usage.source);
+		if (hasTokenData(batch)) sources.add(usage.source);
 		lines.push(formatBatchRow(batch));
 	}
 	const billedTotal = `${formatTokens(billed)}${
@@ -79,6 +79,7 @@ function formatBatchRow(batch: WaveBatchRun): string {
 			? `${batch.runner.imagesAccepted}/${batch.runner.imagesRejected}`
 			: "0/0";
 	const usage = usageFor(batch);
+	const known = hasTokenData(batch);
 	const minutes = formatMinutes(batch);
 	const pr = batch.pr ? `[#${batch.pr.number}](${batch.pr.url})` : "—";
 	const ci = batch.pr?.checks ?? "—";
@@ -91,13 +92,23 @@ function formatBatchRow(batch: WaveBatchRun): string {
 			: usage.source === "upper-bound"
 				? " (upper bound)"
 				: "";
-	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${formatTokens(usage.billed)}${sourceSuffix} | ${formatTokens(usage.cacheInclusive)} | ${minutes} | ${pr} | ${ci} |`;
+	const billedLabel = known
+		? `${formatTokens(usage.billed)}${sourceSuffix}`
+		: "unknown";
+	const cacheLabel = known ? formatTokens(usage.cacheInclusive) : "unknown";
+	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${billedLabel} | ${cacheLabel} | ${minutes} | ${pr} | ${ci} |`;
 }
 
 function usageFor(batch: WaveBatchRun): BatchTokens {
 	return (
 		batch.usage ?? resolveBatchTokens(batch.runner?.tokens ?? 0, batch.session)
 	);
+}
+
+/** No session and no checkpoint tokens means there is nothing real to report. */
+function hasTokenData(batch: WaveBatchRun): boolean {
+	if (batch.session) return true;
+	return (batch.runner?.tokens ?? 0) > 0;
 }
 
 function formatTokens(value: number): string {

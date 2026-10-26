@@ -51,9 +51,10 @@ validates the plan and prints what would launch.
   **billed non-cache** metric (`input + output + reasoning` from each session's
   JSONL), never the self-reported runner `.tokens`. Max 3 in flight, enforced by
   `catalog-runner`.
-- On every refresh the runner recomputes each active batch from its JSONL; the
-  checkpoint ledger is only a fallback when the JSONL has no `step_finish` yet.
-  At the wave **hard** cap the runner requests stop for every active batch and
+- On every refresh the runner recomputes each active batch from its JSONL. A step
+  without billed fields uses its total as an upper bound; the checkpoint ledger
+  is used only when the JSONL carries no token numbers at all. At the wave
+  **hard** cap the runner requests stop for every active batch and
   marks queued batches `not-started`; at the soft cap it stops launching, without
   killing healthy active batches.
 - Each session runs as

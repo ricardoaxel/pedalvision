@@ -410,7 +410,14 @@ async function refresh(
 			}
 		} else {
 			const note = `third slot waiting: ${gate.reason}`;
-			if (!state.notes.includes(note)) state.notes.push(note);
+			const existing = state.notes.findIndex((entry) =>
+				entry.startsWith("third slot waiting"),
+			);
+			if (existing >= 0) {
+				state.notes[existing] = note;
+			} else {
+				state.notes.push(note);
+			}
 		}
 	}
 	await writeStateAndReport(work, state);
