@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 1 (calibration)
 
-**Phase:** P5 · **Status:** in review — PR (pending) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #46 · **Model:** build-strong
 
 ## Goal
 
