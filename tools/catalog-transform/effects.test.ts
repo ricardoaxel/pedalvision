@@ -183,7 +183,14 @@ describe("committed seed effectTypes", () => {
 		]);
 		const byId = new Map(pedals.map((p) => [p.id, p]));
 		for (const pedal of pedals) {
-			if (!pedal.variantOf || reissueEnclosures.has(pedal.id)) continue;
+			if (!pedal.variantOf) continue;
+			if (reissueEnclosures.has(pedal.id)) {
+				// Pin the documented modern Waza enclosure so the exemption
+				// cannot hide a footprint typo. The `variantOf` semantics for
+				// cross-generation reissues still need a follow-up (ADR-003).
+				expect([pedal.widthCm, pedal.heightCm], pedal.id).toEqual([7.3, 12.9]);
+				continue;
+			}
 			const base = byId.get(pedal.variantOf);
 			expect(base, pedal.id).toBeDefined();
 			expect([pedal.widthCm, pedal.heightCm], pedal.id).toEqual([
