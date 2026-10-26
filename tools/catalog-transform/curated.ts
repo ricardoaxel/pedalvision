@@ -187,6 +187,22 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 		"tuner",
 	],
 	"meris-polymoon": ["delay", "phaser", "flanger"],
+
+	// Red Panda (P5-03 wave 1 — verified from official product pages/manuals)
+	"red-panda-bitmap": ["bitcrusher", "distortion"],
+	"red-panda-bitmap-2": ["bitcrusher", "distortion", "filter"],
+	"red-panda-buffer": ["buffer", "utility"],
+	"red-panda-context": ["reverb", "delay"],
+	"red-panda-context-2": ["reverb", "delay", "tremolo"],
+	"red-panda-mixer": ["mixer", "utility"],
+	"red-panda-particle": ["delay", "pitch"],
+	"red-panda-particle-v2": ["delay", "pitch"],
+	"red-panda-rd-1-pitch-delay": ["delay", "pitch"],
+	"red-panda-radius": ["ring-mod", "tremolo"],
+	"red-panda-raster": ["delay", "pitch"],
+	"red-panda-raster-2": ["delay", "pitch"],
+	"red-panda-remote-4": ["controller", "utility"],
+	"red-panda-tensor": ["pitch", "looper"],
 };
 
 /**
