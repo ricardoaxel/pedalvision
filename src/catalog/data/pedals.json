@@ -8443,6 +8443,1505 @@
     ]
   },
   {
+    "id": "boss-dsd-3-digital-sampler-delay",
+    "brand": "BOSS",
+    "name": "DSD-3 Digital Sampler/Delay",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-dsd-3-digital-sampler-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "ctrl",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45
+    },
+    "usage": "guitar",
+    "notes": "Early digital sampler/delay with a trigger input for external rhythm machines; INPUT also powers the unit.",
+    "year": 1986,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DSD-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-dsd3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-eh-2-enhancer",
+    "brand": "BOSS",
+    "name": "EH-2 Enhancer",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-eh-2-enhancer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 24
+    },
+    "usage": "both",
+    "notes": "Enhancer that adds presence and brightness without changing the core tone; part of the early compact line.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EH-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eh2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-eq-20-advanced-eq",
+    "brand": "BOSS",
+    "name": "EQ-20 Advanced EQ",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-eq-20-advanced-eq.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 120
+    },
+    "usage": "both",
+    "notes": "Twin-pedal-size 10-band programmable equalizer with four memories and guitar-amp send/return routing.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/eq-20/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EQ-20_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eq20.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-eq-200-graphic-equalizer",
+    "brand": "BOSS",
+    "name": "EQ-200 Graphic Equalizer",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-eq-200-graphic-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 170
+    },
+    "usage": "both",
+    "notes": "Dual 10-band graphic EQ with 127 memories, series/parallel/split routing, MIDI and TRS control/expression.",
+    "year": 2019,
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/eq-200/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EQ-200_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eq200.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-es-5-effects-switching-system",
+    "brand": "BOSS",
+    "name": "ES-5 Effects Switching System",
+    "widthCm": 33.7,
+    "heightCm": 9.7,
+    "image": "boss-es-5-effects-switching-system.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "send",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "send",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "send",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "send",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "send",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "return",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "return",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "return",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "return",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "return",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 125
+    },
+    "usage": "both",
+    "notes": "Five-loop effects switching system with 200 patch memories, reorderable loops, parallel routing and MIDI.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/es-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/ES-5_v2_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-es5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-es-8-effects-switching-system",
+    "brand": "BOSS",
+    "name": "ES-8 Effects Switching System",
+    "widthCm": 43.9,
+    "heightCm": 13.7,
+    "image": "boss-es-8-effects-switching-system.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 400
+    },
+    "usage": "both",
+    "notes": "Eight-loop effects switching system with a volume loop, 800 patch memories, stereo routing and MIDI.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/es-8/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/ES-8_e02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-es8.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ev-1-wl-wireless-midi-expression-pedal",
+    "brand": "BOSS",
+    "name": "EV-1-WL Wireless MIDI Expression Pedal",
+    "widthCm": 8.7,
+    "heightCm": 20,
+    "image": "boss-ev-1-wl-wireless-midi-expression-pedal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "both",
+    "notes": "Wireless MIDI expression pedal with Bluetooth MIDI, USB and TRS MIDI, plus a CTL jack for external footswitches.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ev-1-wl/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EV-1-WL_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev1wl.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ev-30-dual-expression-pedal",
+    "brand": "BOSS",
+    "name": "EV-30 Dual Expression Pedal",
+    "widthCm": 8,
+    "heightCm": 19.2,
+    "image": "boss-ev-30-dual-expression-pedal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "exp-out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp-out",
+        "edge": "top"
+      }
+    ],
+    "usage": "both",
+    "notes": "Passive dual-expression pedal that controls two devices from one pedal with independent minimum-volume knobs.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ev-30/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EV-30_eng05_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev30.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ev-5-expression-pedal",
+    "brand": "BOSS",
+    "name": "EV-5 Expression Pedal",
+    "widthCm": 8.6,
+    "heightCm": 20,
+    "image": "boss-ev-5-expression-pedal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Passive expression pedal with a minimum-volume knob and a captive 2 m TRS cable.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ev-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EV-5_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fb-2-feedbacker-booster",
+    "brand": "BOSS",
+    "name": "FB-2 Feedbacker/Booster",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-fb-2-feedbacker-booster.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45
+    },
+    "usage": "guitar",
+    "notes": "Boost with continuously variable character/tone plus a press-and-hold natural feedback function.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fb-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FB-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fb2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fbm-1-59-fender-bassman",
+    "brand": "BOSS",
+    "name": "FBM-1 '59 Fender Bassman",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-fbm-1-59-fender-bassman.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 36
+    },
+    "usage": "guitar",
+    "notes": "Legend Series Bassman amp modeler with separate BRIGHT IN input and gain/presence/EQ controls.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fbm-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FBM-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fbm1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fdr-1-fender-65-deluxe-reverb",
+    "brand": "BOSS",
+    "name": "FDR-1 Fender '65 Deluxe Reverb",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-fdr-1-fender-65-deluxe-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40
+    },
+    "usage": "guitar",
+    "notes": "Legend Series '65 Deluxe Reverb amp modeler with built-in vibrato and reverb.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fdr-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FDR-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fdr1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-frv-1-63-fender-reverb",
+    "brand": "BOSS",
+    "name": "FRV-1 '63 Fender Reverb",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-frv-1-63-fender-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 37
+    },
+    "usage": "guitar",
+    "notes": "Legend Series '63 Fender spring-reverb modeler.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/frv-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FRV-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-frv1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fs-1-wl-wireless-footswitch",
+    "brand": "BOSS",
+    "name": "FS-1-WL Wireless Footswitch",
+    "widthCm": 20.7,
+    "heightCm": 7.7,
+    "image": "boss-fs-1-wl-wireless-footswitch.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "both",
+    "notes": "Three-switch wireless footswitch with Bluetooth, TRS MIDI, USB and CTL/EXP jacks.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fs-1-wl/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-1-WL_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs1wl.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fs-5l-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-5L Foot Switch",
+    "widthCm": 9.6,
+    "heightCm": 9,
+    "image": "boss-fs-5l-foot-switch.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Latching (alternate-action) metal footswitch with a polarity switch.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/fs-5u_5l/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-5L_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs5l.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fs-5u-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-5U Foot Switch",
+    "widthCm": 9.6,
+    "heightCm": 9,
+    "image": "boss-fs-5u-foot-switch.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Momentary metal footswitch with a polarity switch.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/fs-5u_5l/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-5U_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs5u.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fs-6-dual-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-6 Dual Foot Switch",
+    "widthCm": 18.8,
+    "heightCm": 9.1,
+    "image": "boss-fs-6-dual-foot-switch.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Dual footswitch with independent mode and polarity switches per switch.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fs-6/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-6_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs6.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fs-7-dual-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-7 Dual Foot Switch",
+    "widthCm": 6.2,
+    "heightCm": 13.1,
+    "image": "boss-fs-7-dual-foot-switch.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "both",
+    "notes": "Compact dual footswitch, latching or momentary per switch, with A/B jacks and a DC IN.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fs-7/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-7_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs7.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ft-2-dynamic-filter",
+    "brand": "BOSS",
+    "name": "FT-2 Dynamic Filter",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ft-2-dynamic-filter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "filter"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "exp-in",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16
+    },
+    "usage": "guitar",
+    "notes": "Dynamic (envelope) filter with an expression-pedal input; early compact line.",
+    "year": 1986,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FT-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ft2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fv-100-guitar-volume",
+    "brand": "BOSS",
+    "name": "FV-100 Guitar Volume",
+    "widthCm": 11.2,
+    "heightCm": 33.2,
+    "image": "boss-fv-100-guitar-volume.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "1980s passive guitar volume pedal in a large die-cast housing; some units reportedly add a tuner out.",
+    "year": 1981,
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://reverb.com/p/boss-fv-100-volume-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://netmall.hardoff.co.jp/product/140654/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv100.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fv-30-foot-volume",
+    "brand": "BOSS",
+    "name": "FV-30 Foot Volume",
+    "widthCm": 8,
+    "heightCm": 19.2,
+    "image": "boss-fv-30-foot-volume.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Passive foot-volume pedal family with a compact 80 × 192 mm enclosure; the FV-30L adds stereo in/out, the FV-30H is mono with a tuner out.",
+    "year": 2015,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/fv-30h_30l/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FV-30L_ejgfispd01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv30.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fv-500-volume-pedal",
+    "brand": "BOSS",
+    "name": "FV-500 Volume Pedal",
+    "widthCm": 11,
+    "heightCm": 28.9,
+    "image": "boss-fv-500-volume-pedal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Passive volume pedal family: the FV-500H is high-impedance mono with tuner out and expression output; the FV-500L is low-impedance stereo.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fv-500h/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FV-500H_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FV-500L_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv500.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fz-1w-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-1W Fuzz",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-fz-1w-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft all-analog fuzz with Vintage and Modern modes and a buffered bypass.",
+    "year": 2021,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fz-1w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-1W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz1w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fz-2-hyper-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-2 Hyper Fuzz",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-fz-2-hyper-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16
+    },
+    "usage": "guitar",
+    "notes": "Early-90s fuzz with Fuzz I/Fuzz II modes and a gain boost; sought after for its heavy, doomy voice.",
+    "year": 1993,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://articles.boss.info/what-the-fuzz-the-origins-of-boss-fuzz-pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fz-3-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-3 Fuzz",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-fz-3-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "notes": "Late-90s compact fuzz with a simple fuzz/level control set.",
+    "year": 1997,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://articles.boss.info/what-the-fuzz-the-origins-of-boss-fuzz-pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-fz-5-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-5 Fuzz",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-fz-5-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Digital fuzz with three modeled vintage fuzz modes (Fuzz Face-style, Tone Bender-style and a modern mode).",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fz-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-5_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
     "id": "jhs-3-series-screamer",
     "brand": "JHS",
     "name": "3 Series Screamer",
