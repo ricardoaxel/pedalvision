@@ -1,0 +1,134 @@
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { describe, expect, it } from "vitest";
+import {
+	checkImageProvenance,
+	checkImageProvenanceFiles,
+	isPlannerUrl,
+} from "./check-images.ts";
+
+const planner = "https://pedalplayground.com/public/images/pedals/boss-dc2.png";
+
+describe("image provenance gate", () => {
+	it("flags a planner URL with no provenance", () => {
+		const { issues, warnings } = checkImageProvenance([
+			{ id: "x", imageCandidates: [{ url: planner }] },
+		]);
+		expect(issues).toHaveLength(1);
+		expect(warnings).toHaveLength(0);
+		expect(issues[0]?.message).toMatch(/without imageProvenance/);
+	});
+
+	it("allows a documented pending replacement as a warning", () => {
+		const { issues, warnings } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: { kind: "planner", status: "pending-replacement" },
+			},
+		]);
+		expect(issues).toHaveLength(0);
+		expect(warnings).toHaveLength(1);
+	});
+
+	it("allows an owner-approved edge case", () => {
+		const { issues, warnings } = checkImageProvenance([
+			{
+				id: "x",
+				sources: [{ url: planner, kind: ["image"] }],
+				imageProvenance: {
+					kind: "planner",
+					status: "owner-approved-edge-case",
+				},
+			},
+		]);
+		expect(issues).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	it("rejects a planner URL mislabelled as official", () => {
+		const { issues } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: { kind: "official", status: "chosen" },
+			},
+		]);
+		expect(issues).toHaveLength(1);
+		expect(issues[0]?.message).toMatch(/kind=official/);
+	});
+
+	it("passes an official source with no planner URL", () => {
+		const { issues, warnings } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: "https://static.roland.com/a.jpg" }],
+				imageProvenance: { kind: "official", status: "chosen" },
+			},
+		]);
+		expect(issues).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	it("does not flag an info-only planner reference", () => {
+		const { issues, warnings } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: "https://static.roland.com/a.jpg" }],
+				sources: [{ url: planner, kind: ["info"] }],
+				imageProvenance: { kind: "official", status: "chosen" },
+			},
+		]);
+		expect(issues).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	it("warns on a legacy pending asset and rejects a chosen legacy", () => {
+		const pending = checkImageProvenance([
+			{
+				id: "x",
+				imageProvenance: { kind: "legacy", status: "pending-replacement" },
+			},
+		]);
+		expect(pending.issues).toHaveLength(0);
+		expect(pending.warnings).toHaveLength(1);
+		const chosen = checkImageProvenance([
+			{ id: "x", imageProvenance: { kind: "legacy", status: "chosen" } },
+		]);
+		expect(chosen.issues).toHaveLength(1);
+	});
+
+	it("checks imageProvenance.sourceUrl too", () => {
+		const { issues } = checkImageProvenance([
+			{
+				id: "x",
+				imageProvenance: {
+					kind: "official",
+					status: "chosen",
+					sourceUrl: planner,
+				},
+			},
+		]);
+		expect(issues).toHaveLength(1);
+	});
+
+	it("refuses a green gate over an empty/missing research dir", async () => {
+		const root = await mkdtemp(join(tmpdir(), "pedalvision-images-"));
+		try {
+			const result = await checkImageProvenanceFiles(root);
+			expect(result.files).toBe(0);
+			expect(
+				result.issues.some((issue) => /empty\/missing/.test(issue.message)),
+			).toBe(true);
+		} finally {
+			await rm(root, { recursive: true, force: true });
+		}
+	});
+
+	it("detects the planner host case-insensitively", () => {
+		expect(isPlannerUrl("https://WWW.PedalPlayground.com/x.png")).toBe(true);
+		expect(isPlannerUrl("https://static.roland.com/x.jpg")).toBe(false);
+		expect(isPlannerUrl(undefined)).toBe(false);
+	});
+});

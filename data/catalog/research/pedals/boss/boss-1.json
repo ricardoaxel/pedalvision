@@ -87,28 +87,20 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ac2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ac2.png",
-        "sourcePage": "https://pedalplayground.com/",
-        "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
-      }
-    ],
+    "imageCandidates": [],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
-      "research": "Official BOSS AC-2 specification page and owner\u2019s manual."
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
+      "research": "Official BOSS AC-2 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset; source not recorded; replacement pending."
+    }
   },
   {
     "id": "boss-ac-3-acoustic-simulator",
@@ -167,7 +159,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/AC-3_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -209,7 +201,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ac3.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/ac_3_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -217,18 +209,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ac3.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/ac_3_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ac-3/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS AC-3 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ac_3_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-ad-2-acoustic-preamp",
@@ -287,7 +285,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/AD-2_M_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -329,7 +327,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ad2.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/ad-2_F_gal.jpg",
         "kind": [
           "image"
         ]
@@ -337,18 +335,36 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ad2.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/ad-2_F_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ad-2/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ad-2_D_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ad-2/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 0.85 vs footprint 0.56 (52% off); reject:rotation/skew 26.4° exceeds 2°"
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ad-2_S_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ad-2/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 2.29 vs footprint 0.56 (308% off); reject:rotation/skew 13.2° exceeds 2°; flag:possible perspective 33% — verify on the contact sheet"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS AD-2 specifications; LINE OUT is +4 dBu balanced."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ad-2_F_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-aw-3-dynamic-wah",
@@ -417,7 +433,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/AW-3_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -459,7 +475,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-aw3.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/aw-3_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -467,18 +483,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-aw3.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/aw-3_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/aw-3/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS AW-3 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/aw-3_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bb-1x-bass-driver",
@@ -537,7 +559,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/BB-1X_M_eng02_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -576,7 +598,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bb1x.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bb-1x_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -584,18 +606,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bb1x.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bb-1x_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bb-1x/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS BB-1X specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bb-1x_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bc-1x-bass-compressor",
@@ -645,7 +673,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/BC-1X_M_eng02_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -687,7 +715,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bc1x.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bc_1x_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -695,18 +723,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bc1x.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bc_1x_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bc-1x/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS BC-1X specifications (working voltage 18 V)."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bc_1x_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bc-2-combo-drive",
@@ -756,7 +790,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/BC-2_OM.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -795,7 +829,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bc2.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bc-2_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -803,18 +837,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bc2.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bc-2_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bc-2/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS BC-2 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bc-2_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bd-2-blues-driver",
@@ -864,7 +904,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/BD-2_eng02_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -903,7 +943,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bd-2_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -911,18 +951,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bd-2_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bd-2/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS BD-2 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bd-2_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bd-2w-blues-driver-waza-craft",
@@ -972,7 +1018,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/BD-2W_eng02_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -1011,7 +1057,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2w.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bd-2w_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1019,18 +1065,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2w.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bd-2w_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bd-2w/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS BD-2W specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bd-2w_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bf-2-flanger",
@@ -1116,7 +1168,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bf_2_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1124,18 +1176,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bf_2_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bf-2/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
-      "research": "Dimensions and current draw from the official BOSS BF-2 owner\u2019s manual."
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
+      "research": "Dimensions and current draw from the official BOSS BF-2 owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bf_2_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bf-2b-bass-flanger",
@@ -1219,28 +1277,20 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2b.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2b.png",
-        "sourcePage": "https://pedalplayground.com/",
-        "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
-      }
-    ],
+    "imageCandidates": [],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
-      "research": "Official Roland BOSS BF-2B specification article and owner\u2019s manual."
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
+      "research": "Official Roland BOSS BF-2B specification article and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset; source not recorded; replacement pending."
+    }
   },
   {
     "id": "boss-bf-3-flanger",
@@ -1309,7 +1359,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/BF-3_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -1351,7 +1401,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bf3.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bf_3_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1359,18 +1409,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bf3.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bf_3_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bf-3/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS BF-3 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bf_3_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-bp-1w-booster-preamp-waza-craft",
@@ -1421,7 +1477,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/BP-1W_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -1463,7 +1519,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bp1w.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/bp-1w_gal_01.jpg",
         "kind": [
           "image"
         ]
@@ -1471,18 +1527,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-bp1w.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/bp-1w_gal_01.jpg",
+        "sourcePage": "https://www.boss.info/us/products/bp-1w/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS BP-1W specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bp-1w_gal_01.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-ce-1-chorus-ensemble",
@@ -1540,7 +1602,7 @@
     "jackLayout": {
       "source": "https://static.roland.com/assets/media/pdf/CE-1_OM.pdf",
       "confidence": "verified",
-      "note": "The official CE-1 owner\u2019s manual panel/connection diagram shows the input and both outputs on the top/rear edge (a large-format unit). Positions along the edge are not published; no pos values are claimed."
+      "note": "The official CE-1 owner’s manual panel/connection diagram shows the input and both outputs on the top/rear edge (a large-format unit). Positions along the edge are not published; no pos values are claimed."
     },
     "status": "discontinued",
     "power": {
@@ -1576,28 +1638,20 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce1.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce1.png",
-        "sourcePage": "https://pedalplayground.com/",
-        "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
-      }
-    ],
+    "imageCandidates": [],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
       "research": "Official BOSS CE-1 technical specifications (260 x 180 x 64 mm, 3 W AC)."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset; source not recorded; replacement pending."
+    }
   },
   {
     "id": "boss-ce-2-chorus",
@@ -1681,28 +1735,20 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2.png",
-        "sourcePage": "https://pedalplayground.com/",
-        "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
-      }
-    ],
+    "imageCandidates": [],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
-      "research": "Official Roland BOSS CE-2 technical specifications and owner\u2019s manual."
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
+      "research": "Official Roland BOSS CE-2 technical specifications and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset; source not recorded; replacement pending."
+    }
   },
   {
     "id": "boss-ce-20-chorus-ensemble",
@@ -1770,7 +1816,7 @@
     "jackLayout": {
       "source": "https://static.roland.com/assets/media/pdf/CE-20_OM.pdf",
       "confidence": "verified",
-      "note": "The official CE-20 owner\u2019s manual panel/connection diagram shows all audio (guitar/bass in, guitar-amp out, send/return) and DC connectors on the top/rear edge. Positions along the edge are not published; no pos values are claimed."
+      "note": "The official CE-20 owner’s manual panel/connection diagram shows all audio (guitar/bass in, guitar-amp out, send/return) and DC connectors on the top/rear edge. Positions along the edge are not published; no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -1809,7 +1855,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce20.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/ce_20_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1817,18 +1863,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce20.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/ce_20_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ce-20/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS CE-20 specifications (173 x 158 x 57 mm, six AA batteries or AC adaptor)."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ce_20_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-ce-2b-bass-chorus",
@@ -1912,28 +1964,20 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2b.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2b.png",
-        "sourcePage": "https://pedalplayground.com/",
-        "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
-      }
-    ],
+    "imageCandidates": [],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
-      "research": "Official Roland BOSS CE-2B technical specifications and owner\u2019s manual."
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
+      "research": "Official Roland BOSS CE-2B technical specifications and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset; source not recorded; replacement pending."
+    }
   },
   {
     "id": "boss-ce-2w-chorus-waza-craft",
@@ -1992,7 +2036,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/CE-2W_eng02_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -2034,7 +2078,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2w.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/CE-2W_F_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2042,18 +2086,36 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2w.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/CE-2W_F_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ce-2w/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/CE-2W_D_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ce-2w/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 0.87 vs footprint 0.56 (55% off); reject:rotation/skew 27.4° exceeds 2°; flag:possible perspective 6%"
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/CE-2W_image1_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ce-2w/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 1.41 vs footprint 0.56 (152% off); reject:rotation/skew 33.6° exceeds 2°; flag:possible perspective 79% — verify on the contact sheet"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS CE-2W specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/CE-2W_F_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-ce-3-chorus",
@@ -2145,28 +2207,20 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce3.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce3.png",
-        "sourcePage": "https://pedalplayground.com/",
-        "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
-      }
-    ],
+    "imageCandidates": [],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
-      "research": "Official Roland BOSS CE-3 technical specifications and owner\u2019s manual."
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
+      "research": "Official Roland BOSS CE-3 technical specifications and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset; source not recorded; replacement pending."
+    }
   },
   {
     "id": "boss-ce-5-chorus-ensemble",
@@ -2225,7 +2279,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/CE-5_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -2267,7 +2321,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce5.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/ce_5_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2275,18 +2329,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ce5.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/ce_5_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ce-5/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS CE-5 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ce_5_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-ceb-3-bass-chorus",
@@ -2345,7 +2405,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/CEB-3_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -2387,7 +2447,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ceb3.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/ceb_3_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2395,18 +2455,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ceb3.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/ceb_3_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ceb-3/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS CEB-3 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ceb_3_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-ch-1-super-chorus",
@@ -2465,7 +2531,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/CH-1_eng01_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -2507,7 +2573,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ch1.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/ch_1_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2515,18 +2581,30 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-ch1.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/ch_1_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ch-1/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ch_1_D_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/ch-1/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 0.92 vs footprint 0.56 (64% off); reject:rotation/skew 30.0° exceeds 2°; flag:possible perspective 6%"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS CH-1 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ch_1_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-cp-1x-compressor",
@@ -2604,7 +2682,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-cp1x.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/cp-1x_F_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2612,18 +2690,36 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-cp1x.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/cp-1x_F_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/cp-1x/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/cp-1x_D_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/cp-1x/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 0.85 vs footprint 0.56 (52% off); reject:rotation/skew 26.4° exceeds 2°; flag:possible perspective 10%"
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/cp-1x_image_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/cp-1x/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 1.62 vs footprint 0.56 (189% off)"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS CP-1X specifications (working voltage 18 V)."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/cp-1x_F_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-cs-2-compression-sustainer",
@@ -2707,28 +2803,20 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-cs2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
-    "imageCandidates": [
-      {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-cs2.png",
-        "sourcePage": "https://pedalplayground.com/",
-        "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
-      }
-    ],
+    "imageCandidates": [],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
-      "research": "Official Roland BOSS CS-2 specifications and owner\u2019s manual."
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
+      "research": "Official Roland BOSS CS-2 specifications and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset; source not recorded; replacement pending."
+    }
   },
   {
     "id": "boss-cs-3-compression-sustainer",
@@ -2778,7 +2866,7 @@
     "jackLayout": {
       "confidence": "verified",
       "source": "https://static.roland.com/assets/media/pdf/CS-3_eng03_W.pdf",
-      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+      "note": "Audio input/output and DC IN edges taken from the official owner’s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
     },
     "power": {
       "voltage": 9,
@@ -2820,7 +2908,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-cs3.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/cs_3_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2828,18 +2916,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-cs3.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/cs_3_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/cs-3/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS CS-3 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/cs_3_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-da-2-adaptive-distortion",
@@ -2914,7 +3008,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-da2.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/da-2_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2922,17 +3016,23 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-da2.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/da-2_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/da-2/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS DA-2 specifications."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-25"
+    "lastVerified": "2026-10-25",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/da-2_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   }
 ]

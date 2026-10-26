@@ -24,6 +24,11 @@ data/catalog/research/boards/<brand>/<batch>.json   # RawBoardBatchSchema (array
   `public/pedal-assets/` by the image pipeline (P5-02/P5-03).
 - Image candidates, rejected reasons and source pages stay in the raw file so an
   image can be re-checked without re-researching the model.
+- `imageProvenance`: `{ kind: official|retailer|community|own|archive|planner,
+  sourceUrl?, status?: chosen|pending-replacement|owner-approved-edge-case,
+  note? }`. Required whenever the shipped/kept image is planner or the source is
+  otherwise exceptional; `planner` is only valid with an owner-approved edge case
+  (or a documented pending replacement). See `docs/catalog/image-source-registry.md`.
 
 ## Capture-once rule
 
@@ -57,7 +62,7 @@ name, dimensions, effect type). Capture optional facts **opportunistically**:
 | Identity/compatibility | `deviceType`, `formFactor`, `instrumentTypes` (guitar/bass/synth/keys/vocal) |
 | Lifecycle/commercial | `year`, `status`, `serial`, `artistAssociation`, `priceObservations`, `videos`, `optional.lifecycle` (discontinued year, replacement, limited edition, made in, manual URL, firmware, MIDI chart) |
 | Planner-specific | jack labels/orientation, power-jack location, plug clearance, mounting |
-| Provenance | `sources`, `confidence`, `lastVerified`, `dimensionsSource`, `imageCandidates`, `extra` |
+| Provenance | `sources`, `confidence`, `lastVerified`, `dimensionsSource`, `imageCandidates`, `imageProvenance`, `extra` |
 
 ### MIDI capture
 

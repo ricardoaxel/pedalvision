@@ -25,7 +25,7 @@
     "powerSupplySpace": "under the perforated deck",
     "cableRouting": "perforated top; offset routing holes; removable side end caps for modules and cables",
     "status": "current",
-    "notes": "Temple Audio Duo 24 gunmetal \u2014 24.5 x 12.5 in (62.23 x 31.75 cm) modular aluminum board; perforated top; two rows; two MOD + one Micro MOD slot per side; handle pulls; Quick Release plates sold separately; optional soft case; 3.4 lb; made in Canada.",
+    "notes": "Temple Audio Duo 24 gunmetal — 24.5 x 12.5 in (62.23 x 31.75 cm) modular aluminum board; perforated top; two rows; two MOD + one Micro MOD slot per side; handle pulls; Quick Release plates sold separately; optional soft case; 3.4 lb; made in Canada.",
     "extra": {
       "boardStyle": "Duo series, two rows, perforated aluminum, modular end caps",
       "dimensions": "24.5 x 12.5 x 2.5 in (62.23 x 31.75 x 6.35 cm) including handles; mountable surface 23.2 x 12.5 in (58.93 x 31.75 cm)",
@@ -35,9 +35,10 @@
       "included": "power supply mounting bracket; no Quick Release pedal plates; no case",
       "caseOptions": "Temple soft case optional",
       "madeIn": "Canada",
-      "imageProcessing": "Real Sweetwater authorized-retailer images are angled, white-background, shadowed and non-transparent; the real-first gate rejected them. P5-03b repair (2026-10-24): the first generated art (PR #40) was asymmetric \u2014 the vertical logo overlapped the right perforation/end cap and the staggered columns were clipped into the right cap. Rebuilt from the official dimensions/layout plus the PedalPlayground Duo 24 gray plan reference for proportions only (no planner pixels shipped): mirrored 22px end caps (#444643, sampled from the Sweetwater left side panel), mirrored black handle pulls, 2 mini + 1 Micro module slot per side as opaque dark recesses, and a centred, unclipped staggered perforation field (8 pill rows at 121/47.3px pitch; 49x25 small-hole grid at 15.46/15.75px pitch; 59/59px pill envelope). No logo overlay. Body #3a3c3b sampled from the Sweetwater main reference (median, 239,602 samples). Perforations and slots are opaque dark ink (#141715 pills, #242725 dots, #222423 slots) so dark/light/checker renders do not bleed white or create halos; the only transparency is the 0.5px outer cutout edge. Rendered 800x408 / 350x178 AVIF q90 (27.4 / 11.8 KB); aspect 1.9608 vs 1.96 (0.04% pass); perspective 0.02%; bright residual 0%, bright edge 0%; no shadow; no white/background/fringe; no reference pixels. Source SVG: tools/asset-pipeline/board-art/temple-audio-duo-24.svg. Design reviewer: confirmation pass approve (fixed asset + app QA).",
+      "imageProcessing": "Real Sweetwater authorized-retailer images are angled, white-background, shadowed and non-transparent; the real-first gate rejected them. P5-03b repair (2026-10-24): the first generated art (PR #40) was asymmetric — the vertical logo overlapped the right perforation/end cap and the staggered columns were clipped into the right cap. Rebuilt from the official dimensions/layout plus a third-party top-down plan reference for proportions only (no planner pixels shipped): mirrored 22px end caps (#444643, sampled from the Sweetwater left side panel), mirrored black handle pulls, 2 mini + 1 Micro module slot per side as opaque dark recesses, and a centred, unclipped staggered perforation field (8 pill rows at 121/47.3px pitch; 49x25 small-hole grid at 15.46/15.75px pitch; 59/59px pill envelope). No logo overlay. Body #3a3c3b sampled from the Sweetwater main reference (median, 239,602 samples). Perforations and slots are opaque dark ink (#141715 pills, #242725 dots, #222423 slots) so dark/light/checker renders do not bleed white or create halos; the only transparency is the 0.5px outer cutout edge. Rendered 800x408 / 350x178 AVIF q90 (27.4 / 11.8 KB); aspect 1.9608 vs 1.96 (0.04% pass); perspective 0.02%; bright residual 0%, bright edge 0%; no shadow; no white/background/fringe; no reference pixels. Source SVG: tools/asset-pipeline/board-art/temple-audio-duo-24.svg. Design reviewer: confirmation pass approve (fixed asset + app QA).",
       "surfaceType": "perforated aluminum (Quick Release plates; no velcro)",
-      "imageRepair": "P5-03b repair of PR #40 art: mirrored end caps/handles/module slots; centred unclipped staggered perforation grid; removed the vertical Temple Audio logo overlay; kept the Sweetwater-sampled #3a3c3b body and added the sampled #444643 side-cap tone; opaque dark perforations (no white/checker bleed). Evidence: docs/screenshots/P5-03-temple-audio-duo-24-fix/ (evidence branch p5-03-temple-audio-duo-24-evidence)."
+      "imageRepair": "P5-03b repair of PR #40 art: mirrored end caps/handles/module slots; centred unclipped staggered perforation grid; removed the vertical Temple Audio logo overlay; kept the Sweetwater-sampled #3a3c3b body and added the sampled #444643 side-cap tone; opaque dark perforations (no white/checker bleed). Evidence: docs/screenshots/P5-03-temple-audio-duo-24-fix/ (evidence branch p5-03-temple-audio-duo-24-evidence).",
+      "imageProvenance": "own generated flat art (references only; no planner pixels)"
     },
     "priceObservations": [
       {
@@ -87,16 +88,15 @@
         "kind": [
           "image"
         ]
-      },
-      {
-        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/public/images/pedalboards/temple-duo24-gray.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "imageCandidates": [],
     "confidence": "confirmed",
-    "lastVerified": "2026-10-24"
+    "lastVerified": "2026-10-24",
+    "imageProvenance": {
+      "kind": "own",
+      "status": "chosen",
+      "note": "Generated flat art from the official dimensions/layout; third-party plan/photo references used for proportions/color only, no reference pixels shipped."
+    }
   }
 ]

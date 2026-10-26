@@ -21,7 +21,7 @@ You are the image scout for one Pedalvision catalog batch.
 
 ## Workflow per item
 
-1. Read the raw record's `imageCandidates` (official manufacturer first, authorized retailer second, existing public catalog last).
+1. Read the raw record's `imageCandidates` and `imageProvenance`. Source order: official brand/press/**support** → authorized retailer → user/community (recorded) → our own generated flat art. **Never ship Pedalplayground/planner pixels**; consult `docs/catalog/image-source-registry.md`. If a source proves reusable, tell the coordinator to append it to the registry.
 2. Download the best candidate locally (temp), then run:
    `pnpm asset:analyze --input <file> --kind <pedal|board> --width-cm <n> --height-cm <n> --id <id> [--tolerance <n>]`
    - Verdict `reject` → try the next candidate (max 3) or flag `needs-new-image`.

@@ -303,7 +303,7 @@ hosted-pedal cap still applies to pedals; board images are a small separate
 budget (~300 files / ~20 MB at Tier A) and stay inside the same Pages/GitHub
 safety margin.
 
-PedalPlayground is **discovery only** — facts and images are re-verified.
+PedalPlayground is **discovery/reference only** — facts are re-verified and its pixels are never shipped (generated art may use it only as a documented owner-approved edge case).
 
 ## Pedalboards — data contract
 
@@ -352,11 +352,15 @@ Owner-approved self-hosted public-asset policy (ADR-003). Every shipped image is
 a **static asset** (`imageSource: "static"`) under `public/pedal-assets/`, or the
 P5-05 CDN.
 
-### Candidate sourcing
-1. Official manufacturer product/press page.
+### Candidate sourcing (owner decision, 2026-10-26)
+1. Official manufacturer product/press/**support** image (prefer flat top-down).
 2. Authorized retailer/product page.
-3. Existing public catalog image (last resort).
-Record the source URL per item; never bulk-copy descriptions.
+3. User/community image with a recorded source and passing quality gates.
+4. Our own generated flat art (real image as reference only).
+**Never ship Pedalplayground/planner pixels.** Planner art is reference-only for our
+own generated flat art, and only as a documented owner-approved edge case. Record
+`imageProvenance` per item and keep `docs/catalog/image-source-registry.md` current.
+Never bulk-copy descriptions.
 
 ### Quality gate
 1. **Analyzer (script, `sharp`)** — min 800 px long edge; background uniformity;

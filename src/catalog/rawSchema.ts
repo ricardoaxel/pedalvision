@@ -206,6 +206,30 @@ export const RawVideoSchema = section({
 	verified: z.boolean(),
 });
 
+export const RAW_IMAGE_SOURCE_KINDS = [
+	"official",
+	"retailer",
+	"community",
+	"own",
+	"archive",
+	"legacy",
+	"planner",
+] as const;
+
+export const RAW_IMAGE_PROVENANCE_STATUSES = [
+	"chosen",
+	"pending-replacement",
+	"owner-approved-edge-case",
+] as const;
+
+/** Where the shipped image actually came from (P5 image policy, 2026-10-26). */
+export const RawImageProvenanceSchema = section({
+	kind: z.enum(RAW_IMAGE_SOURCE_KINDS),
+	sourceUrl: HTTP_URL.optional(),
+	status: z.enum(RAW_IMAGE_PROVENANCE_STATUSES).optional(),
+	note: z.string().min(1).optional(),
+});
+
 export const RawImageCandidateSchema = section({
 	url: HTTP_URL,
 	sourcePage: HTTP_URL.optional(),
@@ -511,6 +535,7 @@ const provenance = {
 	confidence: z.enum(CONFIDENCE_LEVELS).optional(),
 	lastVerified: IsoDate.optional(),
 	imageCandidates: z.array(RawImageCandidateSchema).optional(),
+	imageProvenance: RawImageProvenanceSchema.optional(),
 	extra: z.record(z.string(), z.unknown()).optional(),
 };
 

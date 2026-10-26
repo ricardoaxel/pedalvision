@@ -44,6 +44,29 @@ describe("raw research archive schema", () => {
 		expect(parsed.success).toBe(true);
 	});
 
+	it("validates typed image provenance", () => {
+		const official = RawPedalRecordSchema.safeParse({
+			...h90,
+			imageProvenance: {
+				kind: "official",
+				sourceUrl: "https://static.roland.com/a.jpg",
+				status: "chosen",
+				note: "official top-down",
+			},
+		});
+		expect(official.success).toBe(true);
+		const pending = RawPedalRecordSchema.safeParse({
+			...h90,
+			imageProvenance: { kind: "planner", status: "pending-replacement" },
+		});
+		expect(pending.success).toBe(true);
+		const bad = RawPedalRecordSchema.safeParse({
+			...h90,
+			imageProvenance: { kind: "unknown-source" },
+		});
+		expect(bad.success).toBe(false);
+	});
+
 	it("rejects unknown top-level keys (facts belong in `extra`)", () => {
 		const parsed = RawPedalRecordSchema.safeParse({
 			...h90,
