@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** in review — PR #TBD · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** in review — PR #52 · **Type:** plan/index (docs-only)
 
 ## Purpose
 
