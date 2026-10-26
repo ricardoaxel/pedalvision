@@ -70,3 +70,24 @@ Verdict **`adjust`**; folded:
   defensive and reports parse drift instead of a silent success.
 - Root-session token totals do not include child reviewer sessions; the report
   labels them explicitly.
+
+## Review round (light code-reviewer, pass 1)
+
+Verdict **changes-required**; fixed:
+
+- **Blocker — stop could still start a queued batch.** `refresh` now receives
+  `stopping`, marks queued batches `not-started` before any launch, and never
+  starts after SIGINT/SIGTERM (`startDecision`). Covered by the fake-session
+  stop test (2 running → SIGTERM → third stays `not-started`).
+- **CI column blind on failure/pending** (`gh pr checks` exits 1/8): `gh` now
+  parses stdout regardless of exit code; `summarizeChecks` unit-tested.
+- **Wave budget not enforced:** `estimateWaveTokens` uses the higher of the
+  checkpoint ledger and the parsed JSONL floor per batch; `startDecision` stops
+  launching at the wave soft/hard budgets. Unit-tested.
+- **No lifecycle test:** added a fake-session integration test (happy path) and
+  a second one for the stop path; the stop test asserts the queued third batch
+  is `not-started`.
+- **Duplicate wave id clobber:** `run` refuses a live wave (state + pid) and uses
+  an `O_EXCL` lock with stale-lock recovery; a completed/stale wave can be reused.
+
+Checks after fixes: lint / typecheck / test **718** / build green.

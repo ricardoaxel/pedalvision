@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import type { BatchState } from "../catalog-runner/state.ts";
-import { canStartNext } from "./gate.ts";
+import {
+	canStartNext,
+	estimateBatchTokens,
+	startDecision,
+	waveBudget,
+} from "./gate.ts";
 
 function state(overrides: Partial<BatchState> = {}): BatchState {
 	return {
@@ -57,5 +62,44 @@ describe("third-slot gate", () => {
 				now,
 			).ok,
 		).toBe(false);
+	});
+});
+
+describe("wave budget + start decision", () => {
+	it("uses the higher of ledger and JSONL floor", () => {
+		expect(estimateBatchTokens(1_000, 5_000)).toBe(5_000);
+		expect(estimateBatchTokens(9_000, null)).toBe(9_000);
+		expect(estimateBatchTokens(0, undefined)).toBe(0);
+	});
+
+	it("flags the wave soft/hard budgets", () => {
+		expect(waveBudget(1_199_999)).toEqual({
+			tokens: 1_199_999,
+			softExceeded: false,
+			hardExceeded: false,
+		});
+		expect(waveBudget(1_200_000).softExceeded).toBe(true);
+		expect(waveBudget(2_400_000).hardExceeded).toBe(true);
+	});
+
+	it("never starts a queued batch after a stop, and stops on budget", () => {
+		const base = {
+			active: 1,
+			queued: 1,
+			maxParallel: 3,
+			budget: waveBudget(0),
+		};
+		expect(startDecision({ ...base, stopping: true }).action).toBe("stop");
+		expect(
+			startDecision({ ...base, stopping: false, budget: waveBudget(1_200_000) })
+				.action,
+		).toBe("stop");
+		expect(startDecision({ ...base, stopping: false }).action).toBe("start");
+		expect(startDecision({ ...base, stopping: false, active: 2 }).action).toBe(
+			"wait",
+		);
+		expect(startDecision({ ...base, stopping: false, queued: 0 }).action).toBe(
+			"wait",
+		);
 	});
 });

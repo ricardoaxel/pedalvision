@@ -54,3 +54,68 @@ export function canStartNext(
 	}
 	return { ok: true, reason: "midpoint + budget + rate gates pass" };
 }
+
+/** Wave budgets (AGENTS.md): soft ≤1.2M, hard ≤2.4M; 2× a batch budget aborts. */
+export const WAVE_SOFT_TOKENS = 1_200_000;
+export const WAVE_HARD_TOKENS = 2_400_000;
+
+export type WaveBudget = {
+	tokens: number;
+	softExceeded: boolean;
+	hardExceeded: boolean;
+};
+
+/** Use the higher of the checkpoint ledger and the parsed JSONL floor. */
+export function estimateBatchTokens(
+	ledgerTokens: number,
+	sessionTokens: number | null | undefined,
+): number {
+	return Math.max(ledgerTokens, sessionTokens ?? 0);
+}
+
+export function waveBudget(tokens: number): WaveBudget {
+	return {
+		tokens,
+		softExceeded: tokens >= WAVE_SOFT_TOKENS,
+		hardExceeded: tokens >= WAVE_HARD_TOKENS,
+	};
+}
+
+export type StartDecision = {
+	action: "start" | "wait" | "stop";
+	reason: string;
+};
+
+/**
+ * Pure launch decision: stop wins over everything (a queued batch must never
+ * start after SIGINT/SIGTERM), then the wave budget, then slot availability.
+ * The third-slot midpoint/rate gate is applied separately by `canStartNext`.
+ */
+export function startDecision(input: {
+	stopping: boolean;
+	active: number;
+	queued: number;
+	maxParallel: number;
+	budget: WaveBudget;
+}): StartDecision {
+	if (input.stopping && input.queued > 0) {
+		return { action: "stop", reason: "wave stop requested" };
+	}
+	if (input.budget.hardExceeded) {
+		return {
+			action: "stop",
+			reason: `wave hard budget reached (${input.budget.tokens} tokens)`,
+		};
+	}
+	if (input.budget.softExceeded) {
+		return {
+			action: "stop",
+			reason: `wave soft budget reached (${input.budget.tokens} tokens)`,
+		};
+	}
+	if (input.queued === 0) return { action: "wait", reason: "no queued batch" };
+	if (input.active < 2) return { action: "start", reason: "slot available" };
+	if (input.active >= 3) return { action: "wait", reason: "3 in flight" };
+	// 2 active: the caller applies canStartNext for the third slot.
+	return { action: "wait", reason: "third slot needs the midpoint/rate gate" };
+}

@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import type { WavePr } from "./wave-state.ts";
 
 /**
@@ -42,7 +42,7 @@ export function resolvePr(branch: string, cwd: string): WavePr | undefined {
 	};
 }
 
-function summarizeChecks(raw: string): string {
+export function summarizeChecks(raw: string): string {
 	try {
 		const checks = JSON.parse(raw) as Array<{
 			name?: string;
@@ -73,14 +73,17 @@ function summarizeChecks(raw: string): string {
 	}
 }
 
+/**
+ * `gh pr checks` exits 1 for failures and 8 for pending checks while still
+ * printing the JSON we need. Parse stdout regardless of the exit code; only a
+ * missing/empty stdout is a lookup failure.
+ */
 function gh(cwd: string, args: string[]): string | undefined {
-	try {
-		return execFileSync("gh", args, {
-			cwd,
-			encoding: "utf8",
-			stdio: ["ignore", "pipe", "ignore"],
-		}).trim();
-	} catch {
-		return undefined;
-	}
+	const result = spawnSync("gh", args, {
+		cwd,
+		encoding: "utf8",
+		stdio: ["ignore", "pipe", "ignore"],
+	});
+	const stdout = result.stdout?.trim();
+	return stdout ? stdout : undefined;
 }

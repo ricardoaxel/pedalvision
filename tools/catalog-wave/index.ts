@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { closeSync, mkdirSync, openSync } from "node:fs";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, unlink, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { requestBatchStop } from "../catalog-runner/control.ts";
@@ -8,7 +8,12 @@ import { workRoot } from "../catalog-runner/paths.ts";
 import { repoRoot } from "../catalog-runner/repo.ts";
 import { type BatchState, tryReadState } from "../catalog-runner/state.ts";
 import { summarizeJsonl } from "./aggregate.ts";
-import { canStartNext } from "./gate.ts";
+import {
+	canStartNext,
+	estimateBatchTokens,
+	startDecision,
+	waveBudget,
+} from "./gate.ts";
 import { batchLogPath, launchBatch } from "./launch.ts";
 import {
 	type ResolvedBatch,
@@ -128,7 +133,7 @@ async function main(): Promise<void> {
 			return;
 		}
 		if (!args.foreground) {
-			detach(resolved.plan, resolved.planPath);
+			await detach(resolved.plan, resolved.planPath);
 			return;
 		}
 		await runWave(
@@ -173,8 +178,9 @@ function printDryRun(plan: WavePlan, batches: ResolvedBatch[]): void {
 	console.log("dry run: nothing started");
 }
 
-function detach(plan: WavePlan, planPath: string): void {
+async function detach(plan: WavePlan, planPath: string): Promise<void> {
 	const work = workRoot(mainRoot());
+	await assertNoLiveWave(work, plan.id);
 	const dir = waveDirPath(work, plan.id);
 	mkdirSync(dir, { recursive: true });
 	const logPath = join(dir, "runner.log");
@@ -205,6 +211,45 @@ function detach(plan: WavePlan, planPath: string): void {
 	console.log(`  status: pnpm catalog:wave status --wave ${plan.id} --wait`);
 }
 
+function lockPath(work: string, id: string): string {
+	return join(waveDirPath(work, id), ".lock");
+}
+
+async function assertNoLiveWave(work: string, id: string): Promise<void> {
+	const existing = await readWaveState(work, id);
+	if (
+		existing?.status === "running" &&
+		existing.runnerPid &&
+		isAlive(existing.runnerPid)
+	) {
+		throw new Error(
+			`wave "${id}" is already running (pid ${existing.runnerPid}); use a new plan id`,
+		);
+	}
+}
+
+async function acquireWaveLock(work: string, id: string): Promise<void> {
+	await assertNoLiveWave(work, id);
+	const path = lockPath(work, id);
+	try {
+		await writeFile(path, String(process.pid), { flag: "wx" });
+	} catch (error) {
+		if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
+		const pid = Number(await readFile(path, "utf8").catch(() => ""));
+		if (Number.isFinite(pid) && pid > 0 && isAlive(pid)) {
+			throw new Error(
+				`wave "${id}" lock is held by a live runner (pid ${pid})`,
+			);
+		}
+		await unlink(path).catch(() => undefined);
+		await writeFile(path, String(process.pid), { flag: "wx" });
+	}
+}
+
+async function releaseWaveLock(work: string, id: string): Promise<void> {
+	await unlink(lockPath(work, id)).catch(() => undefined);
+}
+
 async function runWave(
 	root: string,
 	work: string,
@@ -215,6 +260,7 @@ async function runWave(
 ): Promise<void> {
 	const dir = waveDirPath(work, plan.id);
 	await mkdir(dir, { recursive: true });
+	await acquireWaveLock(work, plan.id);
 	const startedAt = new Date().toISOString();
 	const state: WaveState = {
 		version: 1,
@@ -255,7 +301,7 @@ async function runWave(
 	await writeStateAndReport(work, state);
 
 	while (true) {
-		await refresh(root, work, state, batches, plan);
+		await refresh(root, work, state, batches, plan, stopping);
 		if (
 			state.batches.every((batch) =>
 				["complete", "stopped", "failed", "not-started"].includes(batch.status),
@@ -276,6 +322,7 @@ async function runWave(
 			: "complete";
 	state.endedAt = new Date().toISOString();
 	await writeStateAndReport(work, state);
+	await releaseWaveLock(work, plan.id);
 	console.log(formatWaveReport(state));
 }
 
@@ -312,6 +359,7 @@ async function refresh(
 	state: WaveState,
 	batches: ResolvedBatch[],
 	plan: WavePlan,
+	stopping: boolean,
 ): Promise<void> {
 	for (const run of state.batches) {
 		if (run.status !== "running") continue;
@@ -329,13 +377,30 @@ async function refresh(
 
 	const queued = state.batches.filter((batch) => batch.status === "queued");
 	const active = state.batches.filter((batch) => batch.status === "running");
-	if (active.length < 2 && queued.length > 0) {
+	const tokens = await estimateWaveTokens(state);
+	const budget = waveBudget(tokens);
+	const decision = startDecision({
+		stopping,
+		active: active.length,
+		queued: queued.length,
+		maxParallel: plan.maxParallel,
+		budget,
+	});
+	if (decision.action === "stop") {
+		for (const batch of queued) {
+			batch.status = "not-started";
+			batch.error = decision.reason;
+		}
+		const note = `stopped launching queued batches: ${decision.reason}`;
+		if (!state.notes.includes(note)) state.notes.push(note);
+	} else if (decision.action === "start" && queued.length > 0) {
 		const next = queued[0];
 		if (next) {
 			const batch = batches.find((entry) => entry.batch === next.batch);
 			if (batch) await startOne(root, plan, batch, state);
 		}
 	} else if (
+		decision.action === "wait" &&
 		plan.maxParallel === 3 &&
 		active.length === 2 &&
 		queued.length > 0
@@ -369,20 +434,38 @@ async function finalizeBatch(root: string, run: WaveBatchRun): Promise<void> {
 	if (pr) run.pr = pr;
 	run.runner = run.runner ?? undefined;
 	run.endedAt = new Date().toISOString();
-	if (session.parse === "failed" || session.errors.length > 0) {
+	if (session.parse === "failed") {
 		run.status = "failed";
 		run.error = session.errors[0] ?? "session error";
 		return;
 	}
 	const status = run.runner?.status;
-	if (status === "complete") {
-		run.status = "complete";
-	} else if (status === "stopped") {
+	if (status === "stopped") {
 		run.status = "stopped";
-	} else {
-		run.status = "failed";
-		run.error = `session exited without finish (${status ?? "no runner state"})`;
+		return;
 	}
+	if (status === "complete" && session.parse === "complete") {
+		run.status = "complete";
+		return;
+	}
+	run.status = "failed";
+	run.error =
+		session.parse === "partial"
+			? "no step_finish event (format drift or early exit)"
+			: `session exited without finish (${status ?? "no runner state"})`;
+}
+
+async function estimateWaveTokens(state: WaveState): Promise<number> {
+	let total = 0;
+	for (const batch of state.batches) {
+		let floor = batch.session?.tokens ?? null;
+		if (floor === null && batch.status === "running") {
+			const source = await readFile(batch.log, "utf8").catch(() => "");
+			floor = summarizeJsonl(source).tokens;
+		}
+		total += estimateBatchTokens(batch.runner?.tokens ?? 0, floor);
+	}
+	return total;
 }
 
 function snapshot(state: BatchState): WaveBatchRun["runner"] {
