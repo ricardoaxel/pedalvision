@@ -1,0 +1,2995 @@
+[
+  {
+    "id": "boss-dsd-3-digital-sampler-delay",
+    "brand": "BOSS",
+    "name": "DSD-3 Digital Sampler/Delay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS Owner’s Manual, Specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right",
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left",
+        "note": "direct output plus a delayed/sampled output"
+      },
+      {
+        "label": "TRIG IN",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control",
+        "edge": "right",
+        "note": "external trigger input (rhythm machine etc.)"
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "BOSS DSD-3 Owner’s Manual (scanned PDF), panel-description diagram: INPUT and TRIG IN on the right, OUTPUT on the left, AC adaptor on the top edge.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "year": 1986,
+    "status": "discontinued",
+    "notes": "Early digital sampler/delay with a trigger input for external rhythm machines; INPUT also powers the unit.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DSD-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-dsd3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-dsd3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked: the official product/gallery shots are 3/4-perspective or low-resolution and fail the deterministic perspective gate."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "BOSS DSD-3 owner’s manual (scanned) via Roland support; official product page retired."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-eh-2-enhancer",
+    "brand": "BOSS",
+    "name": "EH-2 Enhancer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "utility"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS Owner’s Manual, Specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right",
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "BOSS EH-2 Owner’s Manual (scanned PDF), panel-description diagram: INPUT right, OUTPUT left, AC adaptor top.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 24,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "both",
+    "status": "discontinued",
+    "notes": "Enhancer that adds presence and brightness without changing the core tone; part of the early compact line.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EH-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eh2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eh2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official photos fail the perspective gate)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "BOSS EH-2 owner’s manual (scanned) via Roland support; official product page retired."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-eq-20-advanced-eq",
+    "brand": "BOSS",
+    "name": "EQ-20 Advanced EQ",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "dimensionsSource": "Official BOSS EQ-20 specifications: 173 (W) × 158 (D) × 57 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "GUITAR/BASS input"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "GUITAR/BASS output; GUITAR AMP SEND/RETURN also share this jack pair"
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No readable connector-face photo/diagram was verified in this batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 120,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA ×6"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      },
+      "note": "Switchable guitar/bass input and guitar-amp send/return operating modes."
+    },
+    "usage": "both",
+    "status": "discontinued",
+    "notes": "Twin-pedal-size 10-band programmable equalizer with four memories and guitar-amp send/return routing.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/eq-20/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EQ-20_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eq20.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eq20.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official main shot is 3/4 perspective)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS EQ-20 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-eq-200-graphic-equalizer",
+    "brand": "BOSS",
+    "name": "EQ-200 Graphic Equalizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "dimensionsSource": "Official BOSS EQ-200 specifications: 101 (W) × 138 (D) × 60 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A/MONO",
+        "kind": "in",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT A/MONO",
+        "kind": "out",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "CTL 1, 2/EXP",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "TRS jack: CTL 1/2 footswitch or expression pedal",
+        "edge": "top"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "note": "stereo miniature phone type (TRS MIDI)"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "note": "stereo miniature phone type (TRS MIDI)"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "Official BOSS EQ-200 rear connector photo (batch contact sheet, verified 2026-10-26): INPUT/OUTPUT A/B, CTL 1,2/EXP and DC IN on the rear face (top edge); MIDI jack edges not legible, omitted.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 170,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA ×3"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "routing": {
+        "presets": 127,
+        "banks": 4,
+        "series": true,
+        "parallel": true,
+        "split": true
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "firmware"
+        ],
+        "note": "USB micro-B, program update only."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "dsp": "32-bit floating point",
+        "sampleRateKhz": 96
+      }
+    },
+    "usage": "both",
+    "year": 2019,
+    "notes": "Dual 10-band graphic EQ with 127 memories, series/parallel/split routing, MIDI and TRS control/expression.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/eq-200/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EQ-200_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eq200.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-eq200.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are perspective)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS EQ-200 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-es-5-effects-switching-system",
+    "brand": "BOSS",
+    "name": "ES-5 Effects Switching System",
+    "category": "pedal",
+    "deviceType": "switcher",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
+    "widthCm": 33.7,
+    "heightCm": 9.7,
+    "dimensionsSource": "Official BOSS ES-5 specifications: 337 (W) × 97 (D) × 68 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "SEND 1",
+        "kind": "send",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "SEND 2",
+        "kind": "send",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "SEND 3",
+        "kind": "send",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "SEND 4",
+        "kind": "send",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "SEND 5",
+        "kind": "send",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "RETURN 1",
+        "kind": "return",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "RETURN 2",
+        "kind": "return",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "RETURN 3",
+        "kind": "return",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "RETURN 4",
+        "kind": "return",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "RETURN 5",
+        "kind": "return",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "TUNER",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "CTL 1/2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "CTL 3/4",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "EXP CTL 1/2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "expression pedal input for CTL 1/2",
+        "edge": "top"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "edge": "top"
+      },
+      {
+        "label": "MIDI OUT/THRU",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "edge": "top"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "Official BOSS ES-5 rear connector-panel photo (batch contact sheet, verified 2026-10-26): all connectors on the rear face, mapped to the top edge in top-down planner view.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 125,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor only (no battery)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "routing": {
+        "effectsLoops": 5,
+        "presets": 200,
+        "series": true,
+        "parallel": true
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Five-loop effects switching system with 200 patch memories, reorderable loops, parallel routing and MIDI.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/es-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/ES-5_v2_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-es5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-es5.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official top shot is flagged for perspective/photo background)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS ES-5 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-es-8-effects-switching-system",
+    "brand": "BOSS",
+    "name": "ES-8 Effects Switching System",
+    "category": "pedal",
+    "deviceType": "switcher",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
+    "widthCm": 43.9,
+    "heightCm": 13.7,
+    "dimensionsSource": "Official BOSS ES-8 specifications: 439 (W) × 137 (D) × 65 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN 1",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "IN 2",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 1",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 2",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 3",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 4",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 5",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 6",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 7",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 8L",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND 8R",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "SEND VOL",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "volume loop send",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 1",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 2",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 3",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 4",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 5",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 6",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 7L",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 7R",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 8L",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN 8R",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "RTN VOL",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "volume loop return",
+        "edge": "top"
+      },
+      {
+        "label": "OUT 1/L",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "OUT 2/R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "TUNER",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "edge": "top"
+      },
+      {
+        "label": "CTL 1/2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "CTL 3/4",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "CTL 5/6",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "EXP 1",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "edge": "top"
+      },
+      {
+        "label": "MIDI OUT/THRU",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "edge": "top"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "Official BOSS ES-8 rear connector-panel photo (batch contact sheet, verified 2026-10-26): all connectors on the rear face, mapped to the top edge in top-down planner view.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 400,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor only (no battery)."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "routing": {
+        "effectsLoops": 8,
+        "presets": 800,
+        "series": true,
+        "parallel": true
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Eight-loop effects switching system with a volume loop, 800 patch memories, stereo routing and MIDI.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/es-8/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/ES-8_e02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-es8.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-es8.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official top shot is flagged for perspective)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS ES-8 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-ev-1-wl-wireless-midi-expression-pedal",
+    "brand": "BOSS",
+    "name": "EV-1-WL Wireless MIDI Expression Pedal",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar",
+      "keys",
+      "synth"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 8.7,
+    "heightCm": 20,
+    "dimensionsSource": "Official BOSS EV-1-WL specifications: 87 (W) × 200 (D) × 62 (H) mm (92 mm max height).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "note": "stereo miniature phone type (TRS MIDI)",
+        "edge": "top"
+      },
+      {
+        "label": "CTL 1, 2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "TRS jack for an FS-5U/FS-6/FS-7 footswitch"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "Official BOSS product rear/connector-face photo, judged on the batch contact sheet (catalog-image-reviewer pass, 2026-10-26). EV-1-WL rear photo verifies MIDI OUT and DC IN on the rear face (top edge); the CTL 1,2 jack face was not legible, so its edge is omitted.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA ×2",
+      "batteryLifeHours": 30
+    },
+    "optional": {
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "midi": {
+        "trs": "a",
+        "ble": true,
+        "cc": true,
+        "channels": 1
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "classCompliant": true,
+        "device": true
+      }
+    },
+    "usage": "both",
+    "year": 2022,
+    "status": "current",
+    "notes": "Wireless MIDI expression pedal with Bluetooth MIDI, USB and TRS MIDI, plus a CTL jack for external footswitches.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ev-1-wl/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EV-1-WL_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev1wl.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev1wl.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official top shot is a different aspect/angle and fails the analyzer)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS EV-1-WL specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-ev-30-dual-expression-pedal",
+    "brand": "BOSS",
+    "name": "EV-30 Dual Expression Pedal",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar",
+      "keys",
+      "synth"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 8,
+    "heightCm": 19.2,
+    "dimensionsSource": "Official BOSS EV-30 specifications: 80 (W) × 192 (D) × 58 (H) mm (92 mm max height).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "EXP 1 OUT",
+        "kind": "exp-out",
+        "connector": "trs",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "EXP 2 OUT",
+        "kind": "exp-out",
+        "connector": "trs",
+        "signal": "control",
+        "note": "polarity switch for EXP 2",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "Official BOSS EV-30 rear photo (batch contact sheet, verified 2026-10-26): EXP 1 OUT and EXP 2 OUT on the rear face (top edge).",
+      "confidence": "verified"
+    },
+    "optional": {
+      "control": {
+        "expression": 2,
+        "note": "Two independent TRS expression outputs with a minimum-volume knob per output and a polarity switch for EXP 2."
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Passive dual-expression pedal that controls two devices from one pedal with independent minimum-volume knobs.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ev-30/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EV-30_eng05_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev30.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev30.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are 3/4 perspective)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS EV-30 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-ev-5-expression-pedal",
+    "brand": "BOSS",
+    "name": "EV-5 Expression Pedal",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar",
+      "keys",
+      "synth"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 8.6,
+    "heightCm": 20,
+    "dimensionsSource": "Official BOSS EV-5 specifications: 86 (W) × 200 (D) × 54 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "EXP OUT",
+        "kind": "exp-out",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Captive 2 m TRS 1/4-inch cable (no removable jack)."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The EV-5 has a captive cable; no connector-face edge was verified in this batch. Edge omitted; the app falls back to assumed anchors."
+    },
+    "optional": {
+      "control": {
+        "expression": 1
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Passive expression pedal with a minimum-volume knob and a captive 2 m TRS cable.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ev-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/EV-5_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ev5.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are angled)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS EV-5 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fb-2-feedbacker-booster",
+    "brand": "BOSS",
+    "name": "FB-2 Feedbacker/Booster",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "boost"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS compact specifications: 73 (W) × 129 (D) mm; catalog compact-family depth 130.2 mm (same convention as boss-1).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official owner’s manual panel diagram was not verified per-jack in this batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Boost with continuously variable character/tone plus a press-and-hold natural feedback function.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fb-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FB-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fb2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fb2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for 31% perspective distortion."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FB-2 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fbm-1-59-fender-bassman",
+    "brand": "BOSS",
+    "name": "FBM-1 '59 Fender Bassman",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS compact specifications: 73 (W) × 129 (D) mm; catalog compact-family depth 130.2 mm (same convention as boss-1).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "BRIGHT IN",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "bright-input voicing"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official owner’s manual panel diagram was not verified per-jack in this batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 36,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Legend Series Bassman amp modeler with separate BRIGHT IN input and gain/presence/EQ controls.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fbm-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FBM-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fbm1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fbm1.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FBM-1 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fdr-1-fender-65-deluxe-reverb",
+    "brand": "BOSS",
+    "name": "FDR-1 Fender '65 Deluxe Reverb",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "reverb"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS compact specifications: 73 (W) × 129 (D) mm; catalog compact-family depth 130.2 mm (same convention as boss-1).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official owner’s manual panel diagram was not verified per-jack in this batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Legend Series '65 Deluxe Reverb amp modeler with built-in vibrato and reverb.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fdr-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FDR-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fdr1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fdr1.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FDR-1 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-frv-1-63-fender-reverb",
+    "brand": "BOSS",
+    "name": "FRV-1 '63 Fender Reverb",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS compact specifications: 73 (W) × 129 (D) mm; catalog compact-family depth 130.2 mm (same convention as boss-1).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official owner’s manual panel diagram was not verified per-jack in this batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 37,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Legend Series '63 Fender spring-reverb modeler.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/frv-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FRV-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-frv1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-frv1.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FRV-1 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fs-1-wl-wireless-footswitch",
+    "brand": "BOSS",
+    "name": "FS-1-WL Wireless Footswitch",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "keys",
+      "synth"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 20.7,
+    "heightCm": 7.7,
+    "dimensionsSource": "Official BOSS FS-1-WL specifications: 207 (W) × 77 (D) × 32 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      },
+      {
+        "label": "CTL 1, 2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "note": "stereo miniature phone type (TRS MIDI)"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official product photos/manual do not expose the connector face clearly enough to verify per-jack edges in this batch; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AAA ×2",
+      "batteryLifeHours": 14
+    },
+    "optional": {
+      "control": {
+        "footswitch": true,
+        "expression": 1
+      },
+      "midi": {
+        "trs": "a",
+        "ble": true
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "editor",
+          "firmware"
+        ]
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Three-switch wireless footswitch with Bluetooth, TRS MIDI, USB and CTL/EXP jacks.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fs-1-wl/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-1-WL_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs1wl.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs1wl.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are angled)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FS-1-WL specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fs-5l-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-5L Foot Switch",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "other",
+    "instrumentTypes": [
+      "guitar",
+      "keys"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 9.6,
+    "heightCm": 9,
+    "dimensionsSource": "BOSS/Roland FS-5U/FS-5L product page: 96 (W) × 90 (D) × 43 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "JACK",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control",
+        "note": "Latching footswitch; polarity switch; 1/4-inch phone jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official photo/manual do not clearly show the connector face; edge omitted."
+    },
+    "optional": {
+      "physical": {
+        "footswitches": 1
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Latching (alternate-action) metal footswitch with a polarity switch.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/fs-5u_5l/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-5L_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs5l.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs5l.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "BOSS FS-5U/FS-5L product page and FS-5L owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fs-5u-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-5U Foot Switch",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "other",
+    "instrumentTypes": [
+      "guitar",
+      "keys"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 9.6,
+    "heightCm": 9,
+    "dimensionsSource": "BOSS/Roland FS-5U/FS-5L product page: 96 (W) × 90 (D) × 43 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "JACK",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control",
+        "note": "Momentary (unlatch) footswitch; polarity switch; 1/4-inch phone jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official photo/manual do not clearly show the connector face; edge omitted."
+    },
+    "optional": {
+      "physical": {
+        "footswitches": 1
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Momentary metal footswitch with a polarity switch.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/fs-5u_5l/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-5U_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs5u.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs5u.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "BOSS FS-5U/FS-5L product page and FS-5U owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fs-6-dual-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-6 Dual Foot Switch",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "keys"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 18.8,
+    "heightCm": 9.1,
+    "dimensionsSource": "Official BOSS FS-6 specifications: 188 (W) × 91 (D) × 43 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "JACK A",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control"
+      },
+      {
+        "label": "JACK B",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4-inch phone type; also accepts a TRS plug for dual control."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official top photo does not show the connector face; edge omitted."
+    },
+    "power": {
+      "battery": "9 V (6F22/6LR61) ×1",
+      "note": "Battery operation only (no DC jack)."
+    },
+    "optional": {
+      "physical": {
+        "footswitches": 2
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Dual footswitch with independent mode and polarity switches per switch.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fs-6/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-6_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs6.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs6.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked (photo background, flagged)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FS-6 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fs-7-dual-foot-switch",
+    "brand": "BOSS",
+    "name": "FS-7 Dual Foot Switch",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "other",
+    "instrumentTypes": [
+      "guitar",
+      "keys"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 6.2,
+    "heightCm": 13.1,
+    "dimensionsSource": "Official BOSS FS-7 specifications: 62 (W) × 131 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "JACK A",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control",
+        "edge": "top"
+      },
+      {
+        "label": "JACK B",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Supports a TRS plug for dual control from one cable.",
+        "edge": "top"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "Official BOSS FS-7 rear photo (batch contact sheet, verified 2026-10-26): A jack, B jack and DC IN on the rear face (top edge).",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "optional": {
+      "physical": {
+        "footswitches": 2
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Compact dual footswitch, latching or momentary per switch, with A/B jacks and a DC IN.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fs-7/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FS-7_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs7.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fs7.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (angled/photo shots)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FS-7 specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-ft-2-dynamic-filter",
+    "brand": "BOSS",
+    "name": "FT-2 Dynamic Filter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "filter"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS Owner’s Manual, Specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right",
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "EXP IN",
+        "kind": "exp-in",
+        "connector": "ts",
+        "signal": "control",
+        "edge": "right",
+        "note": "expression pedal input"
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "BOSS FT-2 Owner’s Manual (scanned PDF), panel-description diagram: INPUT and EXP IN on the right, OUTPUT on the left, AC adaptor on the top edge.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "year": 1986,
+    "status": "discontinued",
+    "notes": "Dynamic (envelope) filter with an expression-pedal input; early compact line.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FT-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ft2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ft2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official product page retired)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "BOSS FT-2 owner’s manual (scanned) via Roland support; official product page retired."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fv-100-guitar-volume",
+    "brand": "BOSS",
+    "name": "FV-100 Guitar Volume",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "utility"
+    ],
+    "widthCm": 11.2,
+    "heightCm": 33.2,
+    "dimensionsSource": "Provisional catalog footprint (no official BOSS FV-100 specification page or manual is available; product retired). Confidence: likely.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face image/manual found; edges omitted."
+    },
+    "optional": {
+      "control": {
+        "note": "Passive volume pedal with a minimum-volume knob (no power)."
+      }
+    },
+    "usage": "guitar",
+    "year": 1981,
+    "status": "discontinued",
+    "notes": "1980s passive guitar volume pedal in a large die-cast housing; some units reportedly add a tuner out.",
+    "sources": [
+      {
+        "url": "https://reverb.com/p/boss-fv-100-volume-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://netmall.hardoff.co.jp/product/140654/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv100.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv100.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after official/authorized sources were exhausted (official product page and manual are no longer published)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "No official BOSS page remains; facts cross-checked against authorized reseller listings (Reverb, Hard Off). Footprint provisional.",
+      "imageQa": "AVIF q80 passes PSNR 41.59 dB (>=40) from the clean transparent planner cutout (source variant 597px, upscaled to 800 as with the other planner art); bright edge 1.7%, no visible shadow or background residual after replacing the shadowed variant."
+    },
+    "confidence": "likely",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fv-30-foot-volume",
+    "brand": "BOSS",
+    "name": "FV-30 Foot Volume",
+    "aliases": [
+      "FV-30H",
+      "FV-30L"
+    ],
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar",
+      "keys"
+    ],
+    "effectTypes": [
+      "utility"
+    ],
+    "widthCm": 8,
+    "heightCm": 19.2,
+    "dimensionsSource": "Official BOSS FV-30H/FV-30L product page and FV-30L owner’s manual: 80 (W) × 192 (D) × 58 (H) mm (92 mm max height).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT 1",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-30L stereo input; the FV-30H is mono with INPUT/OUTPUT/TUNER OUT."
+      },
+      {
+        "label": "INPUT 2",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-30L only"
+      },
+      {
+        "label": "OUTPUT 1",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-30L stereo output"
+      },
+      {
+        "label": "OUTPUT 2",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-30L only"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Owner’s manual shows only a wiring diagram, not the physical connector face; edges omitted."
+    },
+    "optional": {
+      "control": {
+        "note": "Passive volume pedal family: FV-30H high-impedance mono (with tuner out) and FV-30L low-impedance stereo."
+      }
+    },
+    "usage": "both",
+    "year": 2015,
+    "status": "current",
+    "notes": "Passive foot-volume pedal family with a compact 80 × 192 mm enclosure; the FV-30L adds stereo in/out, the FV-30H is mono with a tuner out.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/fv-30h_30l/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FV-30L_ejgfispd01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv30.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv30.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (angled)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FV-30H/FV-30L product page and FV-30L owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fv-500-volume-pedal",
+    "brand": "BOSS",
+    "name": "FV-500 Volume Pedal",
+    "aliases": [
+      "FV-500H",
+      "FV-500L"
+    ],
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "keys"
+    ],
+    "effectTypes": [
+      "utility"
+    ],
+    "widthCm": 11,
+    "heightCm": 28.9,
+    "dimensionsSource": "BOSS FV-500H/FV-500L Owner’s Manual: 110 (W) × 289 (D) × 72 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT 1",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-500L stereo input; the FV-500H is mono INPUT/OUTPUT/TUNER OUT/EXP."
+      },
+      {
+        "label": "INPUT 2",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-500L only"
+      },
+      {
+        "label": "OUTPUT 1",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-500L stereo output"
+      },
+      {
+        "label": "OUTPUT 2",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "stereo": false,
+        "note": "FV-500L only"
+      },
+      {
+        "label": "TUNER OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "EXP",
+        "kind": "exp-out",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Expression output; the pedal can also be used as an expression pedal."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Owner’s manual describes the jacks but does not show a readable connector-face diagram in this batch; edges omitted."
+    },
+    "optional": {
+      "control": {
+        "expression": 1
+      },
+      "physical": {
+        "note": "Rugged die-cast volume pedal with a minimum-volume knob and pedal-feel adjustment screw."
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Passive volume pedal family: the FV-500H is high-impedance mono with tuner out and expression output; the FV-500L is low-impedance stereo.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fv-500h/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FV-500H_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FV-500L_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv500.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fv500.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FV-500 specifications and FV-500H/FV-500L owner’s manuals.",
+      "note": "The catalog lists the FV-500 family as one record; the FV-500H and FV-500L share the enclosure."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fz-1w-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-1W Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS compact specifications: 73 (W) × 129 (D) mm; catalog compact-family depth 130.2 mm (same convention as boss-1).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right",
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "BOSS FZ-1W Owner’s Manual, panel diagram: INPUT on the right edge, OUTPUT on the left edge, DC IN on the top edge.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61/6LF22) ×1",
+      "batteryLifeHours": 33
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      }
+    },
+    "usage": "guitar",
+    "year": 2021,
+    "status": "current",
+    "notes": "Waza Craft all-analog fuzz with Vintage and Modern modes and a buffered bypass.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fz-1w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-1W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz1w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz1w.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are 3/4 perspective)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FZ-1W specification page and owner’s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fz-2-hyper-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-2 Hyper Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS Owner’s Manual, Specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right",
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "BOSS FZ-2 Owner’s Manual (scanned PDF), panel-description diagram: INPUT right, OUTPUT left, AC adaptor top.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (S-006P) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "year": 1993,
+    "status": "discontinued",
+    "notes": "Early-90s fuzz with Fuzz I/Fuzz II modes and a gain boost; sought after for its heavy, doomy voice.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://articles.boss.info/what-the-fuzz-the-origins-of-boss-fuzz-pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official product page retired)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "BOSS FZ-2 owner’s manual (scanned) and BOSS fuzz-history article."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fz-3-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-3 Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS Owner’s Manual, Specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right",
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "BOSS FZ-3 Owner’s Manual (scanned PDF), panel-description diagram: INPUT right, OUTPUT left, AC adaptor top.",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "year": 1997,
+    "status": "discontinued",
+    "notes": "Late-90s compact fuzz with a simple fuzz/level control set.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://articles.boss.info/what-the-fuzz-the-origins-of-boss-fuzz-pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official product page retired)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "BOSS FZ-3 owner’s manual (scanned) and BOSS fuzz-history article."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  },
+  {
+    "id": "boss-fz-5-fuzz",
+    "brand": "BOSS",
+    "name": "FZ-5 Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS compact specifications: 73 (W) × 129 (D) mm; catalog compact-family depth 130.2 mm (same convention as boss-1).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "note": "also acts as the power switch"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official owner’s manual panel diagram was not verified per-jack in this batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "circuit": {
+        "bypass": "buffered"
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Digital fuzz with three modeled vintage fuzz modes (Fuzz Face-style, Tone Bender-style and a modern mode).",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/fz-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/FZ-5_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-fz5.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS FZ-5 specification page and owner’s manual.",
+      "imageQa": "AVIF q80 passes PSNR 42.28 dB (>=40) from the clean transparent planner cutout (source variant 597px, upscaled to 800 as with the other planner art); bright edge 0.1%, no visible drop shadow after replacing the shadowed variant."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-26"
+  }
+]
