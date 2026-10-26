@@ -54,9 +54,10 @@ The provisional `data/catalog/inventory.json` values were checked against offici
 
 ## Jack-edge policy for this batch
 
-- `edge` is set only where an official product page explicitly says "all jacks on top" or the official owner's-manual connector diagram shows the connector face. Record-level `jackLayout: { source, confidence: "verified" }` is present on every record that asserts an edge.
-- Items with no connector-face source omit the edge and use `jackLayout.confidence: "unknown"`: Buffer, Context (V1), Mixer, Particle (V1), RD-1 Pitch Delay, Remote 4.
-- No `pos` values were invented; edges are edge-only and the resolver distributes them as approximate.
+- `edge` is set only where an official product page/manual/rear-view image shows the connector face. Record-level `jackLayout: { source, confidence: "verified" }` is present on every record that asserts an edge.
+- **Verified from official rear/top images:** Context (V1), Mixer, Particle (V1) and Remote 4 joined the top-edge set; estimated `pos` values are marked `approximate: true`.
+- **Still omitted:** Buffer and RD-1 Pitch Delay (no official connector-face source); they use the app's assumed anchors. Remote 4 is a controller (not audio), so it has no audio cable anchor.
+- No exact `pos` values are claimed; positions estimated from the official image are marked approximate.
 
 ## Read first (context pack)
 
@@ -101,5 +102,5 @@ The provisional `data/catalog/inventory.json` values were checked against offici
 - **Data:** 14 raw records validate; `catalog:check-jacks` green; 6 utility/legacy items omit unverified edges.
 - **Curated effect types:** verified Red Panda overrides added to `tools/catalog-transform/curated.ts` (batch-support file; no-drift test green).
 - **Build/QA:** `catalog:ci` **232 pedals / 12 boards**; `catalog:validate` green; guard clean; app QA **30/30** (desktop + mobile Chromium: brand filter, 350 thumb, 800 specimen, canvas placement, no console errors); full e2e **258 passed + 7 skipped**; unit tests **699**.
-- **Demo link:** 1 board / 14 items / 13 illustrative cables, no unconnected items.
+- **Demo link:** 1 board / 14 items / 12 illustrative cables; Remote 4 is reported unconnected (controller, no audio).
 - **PR:** one batch PR, no merge.

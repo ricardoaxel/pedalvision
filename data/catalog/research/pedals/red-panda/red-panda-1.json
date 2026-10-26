@@ -555,7 +555,10 @@
         "balanced": false,
         "level": "instrument",
         "stereo": false,
-        "note": "1/4 in mono input; edge not shown on the archived product page."
+        "note": "1/4 in mono input; edge not shown on the archived product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.2,
+        "approximate": true
       },
       {
         "label": "OUTPUT",
@@ -566,7 +569,10 @@
         "balanced": false,
         "level": "instrument",
         "stereo": false,
-        "note": "1/4 in mono output; edge not shown on the archived product page."
+        "note": "1/4 in mono output; edge not shown on the archived product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.8,
+        "approximate": true
       },
       {
         "label": "EXP",
@@ -580,12 +586,16 @@
         "kind": "power",
         "connector": "barrel",
         "signal": "power",
-        "note": "9-12 V DC center-negative power input."
+        "note": "9-12 V DC center-negative power input. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
       }
     ],
     "jackLayout": {
-      "confidence": "unknown",
-      "note": "The archived product page and quick-start manual do not show the connector face, so no edge is asserted."
+      "source": "https://web.archive.org/web/20181203191321im_/https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/77/401/rpl102.pt02__86110.1507745175.jpg?c=2",
+      "confidence": "verified",
+      "note": "Official rear/top product view shows two 1/4 in audio jacks and the 9V power jack on the rear/top edge; EXP face not shown, so it is omitted."
     },
     "power": {
       "voltage": 9,
@@ -939,7 +949,10 @@
         "balanced": false,
         "level": "instrument",
         "stereo": false,
-        "note": "1/4 in high-impedance input with its own level knob; edge not stated on the product page."
+        "note": "1/4 in high-impedance input with its own level knob; edge not stated on the product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.1,
+        "approximate": true
       },
       {
         "label": "INPUT 2",
@@ -950,7 +963,10 @@
         "balanced": false,
         "level": "instrument",
         "stereo": false,
-        "note": "Second 1/4 in input with its own level knob; edge not stated on the product page."
+        "note": "Second 1/4 in input with its own level knob; edge not stated on the product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.35,
+        "approximate": true
       },
       {
         "label": "OUTPUT",
@@ -961,19 +977,26 @@
         "balanced": false,
         "level": "instrument",
         "stereo": false,
-        "note": "1/4 in mono output; edge not stated on the product page."
+        "note": "1/4 in mono output; edge not stated on the product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.6,
+        "approximate": true
       },
       {
         "label": "9-18V DC",
         "kind": "power",
         "connector": "barrel",
         "signal": "power",
-        "note": "9-18 V DC center-negative power input; internal LED below the power jack."
+        "note": "9-18 V DC center-negative power input; internal LED below the power jack. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.85,
+        "approximate": true
       }
     ],
     "jackLayout": {
-      "confidence": "unknown",
-      "note": "The official page documents two inputs and one output but does not state which enclosure face carries each jack."
+      "source": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/92/415/rpl105.pt02__07838.1748172789.jpg?c=2",
+      "confidence": "verified",
+      "note": "Official rear/top product view shows four 1/4 in jacks and the power jack on the rear/top edge. Existing 2-in/1-out records are mapped to the top edge; the fourth jack is not asserted."
     },
     "power": {
       "voltage": 9,
@@ -1088,7 +1111,10 @@
         "balanced": false,
         "level": "instrument",
         "stereo": false,
-        "note": "1/4 in mono input; edge not shown on the archived product page."
+        "note": "1/4 in mono input; edge not shown on the archived product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.15,
+        "approximate": true
       },
       {
         "label": "OUTPUT",
@@ -1099,26 +1125,36 @@
         "balanced": false,
         "level": "instrument",
         "stereo": false,
-        "note": "1/4 in mono output; edge not shown on the archived product page."
+        "note": "1/4 in mono output; edge not shown on the archived product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.85,
+        "approximate": true
       },
       {
         "label": "EXPR",
         "kind": "exp",
         "connector": "trs",
         "signal": "control",
-        "note": "Expression/CV input for delay/pitch or param; edge not shown on the archived product page."
+        "note": "Expression/CV input for delay/pitch or param; edge not shown on the archived product page. Edge/position estimated from the official product image (approximate).",
+        "edge": "left",
+        "pos": 0.5,
+        "approximate": true
       },
       {
         "label": "9V DC",
         "kind": "power",
         "connector": "barrel",
         "signal": "power",
-        "note": "9 V DC center-negative power input."
+        "note": "9 V DC center-negative power input. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
       }
     ],
     "jackLayout": {
-      "confidence": "unknown",
-      "note": "The archived product page and quick-start manual do not show the connector face, so no edge is asserted."
+      "source": "https://web.archive.org/web/20170528225031im_/http://cdn3.bigcommerce.com/s-5d662uh/images/stencil/1000x1000/products/76/332/particle_top__79660.1452561651.jpg?c=2",
+      "confidence": "verified",
+      "note": "Official top/rear product view shows INPUT, 9V DC and OUTPUT on the rear/top edge; the EXP jack is on the left side."
     },
     "power": {
       "voltage": 9,
@@ -2254,12 +2290,16 @@
         "kind": "ctrl",
         "connector": "trs",
         "signal": "control",
-        "note": "1/4 in TRS cable (included) connects the Remote 4 to the host pedal's CTRL jack. Edge not stated by the manufacturer."
+        "note": "1/4 in TRS cable (included) connects the Remote 4 to the host pedal's CTRL jack. Edge not stated by the manufacturer. Edge/position estimated from the official product image (approximate).",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
       }
     ],
     "jackLayout": {
-      "confidence": "unknown",
-      "note": "The product page specifies a single 1/4 in TRS connection but does not show the connector face; no edge is asserted."
+      "source": "https://cdn11.bigcommerce.com/s-5d662uh/images/stencil/2000x2000/products/101/434/rpl005.pt02.web__92911.1604331390.jpg?c=2",
+      "confidence": "verified",
+      "note": "Official rear/top product view shows the TRS REMOTE OUT jack on the top edge."
     },
     "optional": {
       "control": {
