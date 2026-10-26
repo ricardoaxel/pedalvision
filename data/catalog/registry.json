@@ -9,6 +9,12 @@
           "raw": "data/catalog/research/pedals/boss/boss-1.json",
           "mapped": "data/catalog/pedals/boss/boss-1.json",
           "items": 26
+        },
+        {
+          "batch": "boss-2",
+          "raw": "data/catalog/research/pedals/boss/boss-2.json",
+          "mapped": "data/catalog/pedals/boss/boss-2.json",
+          "items": 26
         }
       ]
     },

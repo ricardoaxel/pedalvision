@@ -1267,30 +1267,45 @@
     "id": "boss-dc-2-dimension-c",
     "brand": "BOSS",
     "name": "DC-2 Dimension C",
-    "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "boss-dc-2-dimension-c.png",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-dc-2-dimension-c.avif",
     "imageSource": "static",
     "effectTypes": [
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "usage": "guitar",
+    "notes": "Original Dimension C with four preset buttons and stereo outputs; the 1980s BOSS compact enclosure is 70 x 125 mm.",
+    "year": 1985,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/global/products/dc-2w/",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.tonehome.de/boss/dc-2-dimension-c/",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://usermanualandspecification.blogspot.com/2011/09/boss-dc-2-dimension-c-instructions.html",
+        "url": "https://static.roland.com/assets/media/pdf/DC-2_OM.pdf",
         "kind": [
           "info"
         ]
@@ -1298,11 +1313,12 @@
       {
         "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product02.png",
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2.png",
         "kind": [
           "image"
         ]
@@ -1313,24 +1329,50 @@
     "id": "boss-dc-3-digital-dimension",
     "brand": "BOSS",
     "name": "DC-3 Digital Dimension",
-    "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product03.png",
-    "imageSource": "url",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-dc-3-digital-dimension.avif",
+    "imageSource": "static",
     "effectTypes": [
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder",
-    "sources": [
+    "jacks": [
       {
-        "url": "https://professornigels.com/products/near-mint-boss-dc-3-digital-dimension-w-box-blue-label-vintage-mij",
-        "kind": [
-          "info"
-        ]
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
       },
       {
-        "url": "https://sugareelicks.com/pedal/boss-dc-3-digital-dimension/",
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Digital chorus with two preset modes and stereo outputs; 1980s compact enclosure (70 x 125 mm).",
+    "year": 1986,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DC-3_OM.pdf",
         "kind": [
           "info"
         ]
@@ -1338,11 +1380,12 @@
       {
         "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product03.png",
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc3.png",
         "kind": [
           "image"
         ]
@@ -1353,24 +1396,63 @@
     "id": "boss-dd-2-digital-delay",
     "brand": "BOSS",
     "name": "DD-2 Digital Delay",
-    "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product02.png",
-    "imageSource": "url",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-dd-2-digital-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "notes": "Early compact digital delay with 12.5–800 ms range and a dedicated direct output; 1980s enclosure (70 x 125 mm).",
+    "year": 1983,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
       {
         "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product02.png",
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd2.png",
         "kind": [
           "image"
         ]
@@ -1382,23 +1464,76 @@
     "brand": "BOSS",
     "name": "DD-20 Giga Delay",
     "widthCm": 17.3,
-    "heightCm": 15.49,
-    "image": "https://static.roland.com/assets/images/products/main/dd20_main.jpg",
-    "imageSource": "url",
+    "heightCm": 15.8,
+    "image": "boss-dd-20-giga-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200
+    },
+    "usage": "guitar",
+    "notes": "Twin-pedal delay with 4 memories, tap tempo and stereo I/O.",
+    "year": 2003,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-20/",
+        "url": "https://www.boss.info/global/products/dd-20/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd20_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-20_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd20.png",
         "kind": [
           "image"
         ]
@@ -1409,24 +1544,84 @@
     "id": "boss-dd-200-digital-delay",
     "brand": "BOSS",
     "name": "DD-200 Digital Delay",
-    "widthCm": 10.16,
-    "heightCm": 13.82,
-    "image": "boss-dd-200-digital-delay.png",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-dd-200-digital-delay.avif",
     "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225
+    },
+    "usage": "guitar",
+    "notes": "200-series digital delay with 12 modes, 4 memories, MIDI and stereo I/O.",
+    "year": 2019,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-200/",
+        "url": "https://www.boss.info/global/products/dd-200/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd-200_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-200_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd200.png",
         "kind": [
           "image"
         ]
@@ -1438,23 +1633,62 @@
     "brand": "BOSS",
     "name": "DD-3 Digital Delay",
     "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "boss-dd-3-digital-delay.png",
+    "heightCm": 12.9,
+    "image": "boss-dd-3-digital-delay.avif",
     "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35
+    },
+    "usage": "guitar",
+    "notes": "Long-running compact digital delay with 12.5–800 ms range and a direct output.",
+    "year": 1986,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-3/",
+        "url": "https://www.boss.info/global/products/dd-3/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd3_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd3.png",
         "kind": [
           "image"
         ]
@@ -1466,23 +1700,67 @@
     "brand": "BOSS",
     "name": "DD-3T Digital Delay",
     "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/assets/images/products/main/dd-3t_main.jpg",
-    "imageSource": "url",
+    "heightCm": 12.9,
+    "image": "boss-dd-3t-digital-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "ctrl",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "variantOf": "boss-dd-3-digital-delay",
+    "usage": "guitar",
+    "notes": "Updated DD-3 with tap tempo, direct output and a compact enclosure.",
+    "year": 2019,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-3t/",
+        "url": "https://www.boss.info/global/products/dd-3t/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd-3t_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-3T_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd3t.png",
         "kind": [
           "image"
         ]
@@ -1494,23 +1772,66 @@
     "brand": "BOSS",
     "name": "DD-5 Digital Delay",
     "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/assets/images/products/main/dd5_2_main.jpg",
-    "imageSource": "url",
+    "heightCm": 12.9,
+    "image": "boss-dd-5-digital-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "ctrl",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Compact digital delay with 11 delay modes? and a tempo jack; direct output.",
+    "year": 1992,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-5/",
+        "url": "https://www.boss.info/global/products/dd-5/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd5_2_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-5_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd5.png",
         "kind": [
           "image"
         ]
@@ -1521,24 +1842,84 @@
     "id": "boss-dd-500-digital-delay",
     "brand": "BOSS",
     "name": "DD-500 Digital Delay",
-    "widthCm": 17.15,
-    "heightCm": 13.72,
-    "image": "boss-dd-500-digital-delay.png",
+    "widthCm": 17,
+    "heightCm": 13.8,
+    "image": "boss-dd-500-digital-delay.avif",
     "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200
+    },
+    "usage": "guitar",
+    "notes": "Flagship 500-series delay with 12 modes, deep editing, MIDI and USB.",
+    "year": 2015,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-500/",
+        "url": "https://www.boss.info/global/products/dd-500/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd_500_top_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-500(B)_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd500.png",
         "kind": [
           "image"
         ]
@@ -1550,23 +1931,67 @@
     "brand": "BOSS",
     "name": "DD-6 Digital Delay",
     "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/assets/images/products/main/dd6_main.jpg",
-    "imageSource": "url",
+    "heightCm": 12.9,
+    "image": "boss-dd-6-digital-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "notes": "Stereo compact digital delay with 2.6 s max delay and hold.",
+    "year": 1997,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-6/",
+        "url": "https://www.boss.info/global/products/dd-6/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd6_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-6_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd6.png",
         "kind": [
           "image"
         ]
@@ -1578,23 +2003,71 @@
     "brand": "BOSS",
     "name": "DD-7 Digital Delay",
     "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "boss-dd-7-digital-delay.png",
+    "heightCm": 12.9,
+    "image": "boss-dd-7-digital-delay.avif",
     "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "notes": "Compact stereo delay with 6.4 s max delay, loop/hold and external tempo/expression.",
+    "year": 2008,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-7/",
+        "url": "https://www.boss.info/global/products/dd-7/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd_7_top_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-7_e01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd7.png",
         "kind": [
           "image"
         ]
@@ -1606,23 +2079,71 @@
     "brand": "BOSS",
     "name": "DD-8 Digital Delay",
     "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/assets/images/products/main/dd-8_main.jpg",
-    "imageSource": "url",
+    "heightCm": 12.9,
+    "image": "boss-dd-8-digital-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "notes": "Compact stereo delay with 11 modes, 10 s max delay and tempo/expression.",
+    "year": 2019,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dd-8/",
+        "url": "https://www.boss.info/global/products/dd-8/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd-8_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DD-8_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd8.png",
         "kind": [
           "image"
         ]
@@ -1633,24 +2154,58 @@
     "id": "boss-df-2-super-feedbacker-distortion",
     "brand": "BOSS",
     "name": "DF-2 Super Feedbacker & Distortion",
-    "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/df_product02.png",
-    "imageSource": "url",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-df-2-super-feedbacker-distortion.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "Distortion with a hold-to-feedback function; the feedback is generated internally, not a separate jack. 1980s enclosure (70 x 125 mm).",
+    "year": 1984,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DF-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
       {
         "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/df_product02.png",
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-df2.png",
         "kind": [
           "image"
         ]
@@ -1662,23 +2217,78 @@
     "brand": "BOSS",
     "name": "DM-101 Delay Machine",
     "widthCm": 19.2,
-    "heightCm": 13.28,
-    "image": "https://static.roland.com/assets/images/products/main/dm-101_main.jpg",
-    "imageSource": "url",
+    "heightCm": 13.3,
+    "image": "boss-dm-101-delay-machine.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 260
+    },
+    "usage": "guitar",
+    "notes": "Analog multi-head delay with 8 BBDs, 12 modes, MIDI and stereo I/O.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dm-101/",
+        "url": "https://www.boss.info/global/products/dm-101/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dm-101_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DM-101_reference_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm101.png",
         "kind": [
           "image"
         ]
@@ -1689,24 +2299,58 @@
     "id": "boss-dm-2-delay",
     "brand": "BOSS",
     "name": "DM-2 Delay",
-    "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "boss-dm-2-delay.png",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-dm-2-delay.avif",
     "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11
+    },
+    "usage": "guitar",
+    "notes": "Original compact analog delay with 20–300 ms range; 1980s enclosure (70 x 125 mm).",
+    "year": 1981,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DM-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
       {
         "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product02.png",
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2.png",
         "kind": [
           "image"
         ]
@@ -1717,24 +2361,63 @@
     "id": "boss-dm-3-delay",
     "brand": "BOSS",
     "name": "DM-3 Delay",
-    "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product03.png",
-    "imageSource": "url",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-dm-3-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "notes": "Analog delay with a direct output and 20–300 ms range; 1980s enclosure (70 x 125 mm).",
+    "year": 1983,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DM-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
       {
         "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product03.png",
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm3.png",
         "kind": [
           "image"
         ]
@@ -1746,23 +2429,57 @@
     "brand": "BOSS",
     "name": "DN-2 Dyna Drive",
     "widthCm": 7.3,
-    "heightCm": 13.02,
-    "image": "https://static.roland.com/assets/images/products/main/dn_2_top_main.jpg",
-    "imageSource": "url",
+    "heightCm": 12.9,
+    "image": "boss-dn-2-dyna-drive.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 36
+    },
+    "usage": "guitar",
+    "notes": "Dynamic overdrive that responds to playing intensity.",
+    "year": 2007,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.boss.info/us/products/dn-2/",
+        "url": "https://www.boss.info/global/products/dn-2/",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/main/dn_2_top_main.jpg",
+        "url": "https://static.roland.com/assets/media/pdf/DN-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dn2.png",
         "kind": [
           "image"
         ]
@@ -7119,6 +7836,606 @@
       },
       {
         "url": "https://pedalplayground.com/public/images/pedals/boss-ce2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-dc-2w-dimension-c-waza-craft",
+    "brand": "BOSS",
+    "name": "DC-2W Dimension C (Waza Craft)",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-dc-2w-dimension-c-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "variantOf": "boss-dc-2-dimension-c",
+    "usage": "guitar",
+    "notes": "Waza Craft reissue of the DC-2 with Standard/Custom modes and stereo I/O.",
+    "year": 2018,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dc-2w/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DC-2W_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-dm-2w-delay-waza-craft",
+    "brand": "BOSS",
+    "name": "DM-2W Delay (Waza Craft)",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-dm-2w-delay-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "ctrl",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35
+    },
+    "variantOf": "boss-dm-2-delay",
+    "usage": "guitar",
+    "notes": "Waza Craft analog delay with Standard/Custom modes, direct out and rate jack.",
+    "year": 2014,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dm-2w/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DM-2W_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ds-1-4a-anniversary-distortion",
+    "brand": "BOSS",
+    "name": "DS-1-4A Anniversary Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ds-1-4a-anniversary-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "variantOf": "boss-ds-1-distortion",
+    "usage": "guitar",
+    "color": "gold",
+    "notes": "Limited 40th Anniversary DS-1 with a gold finish; same circuit and controls as the standard DS-1.",
+    "year": 2017,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds14a.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ds-1-distortion",
+    "brand": "BOSS",
+    "name": "DS-1 Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ds-1-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "color": "orange",
+    "notes": "The benchmark BOSS distortion; Level, Tone and Dist knobs.",
+    "year": 1978,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ds-1-wh-distortion",
+    "brand": "BOSS",
+    "name": "DS-1-WH Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ds-1-wh-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "variantOf": "boss-ds-1-distortion",
+    "usage": "guitar",
+    "color": "pearl white",
+    "notes": "Limited-edition pearl-white DS-1 colorway; same circuit and controls as the standard DS-1.",
+    "year": 2024,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1wh.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.livesoundworks.com/product/boss-ds-1-wh-limited-edition-distortion-pedal-pearl-white",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ds-1w-distortion",
+    "brand": "BOSS",
+    "name": "DS-1W Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ds-1w-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "color": "orange",
+    "notes": "Waza Craft DS-1 with Standard/Custom modes and a premium buffer.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1w/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1W_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ds-1x-distortion",
+    "brand": "BOSS",
+    "name": "DS-1X Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ds-1x-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Special-edition distortion using BOSS X technology with Level, Tone and Dist controls.",
+    "year": 2015,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1x/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1X_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ds-2-turbo-distortion",
+    "brand": "BOSS",
+    "name": "DS-2 Turbo Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ds-2-turbo-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "ctrl",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "notes": "Turbo Distortion with Mode II and a remote jack.",
+    "year": 1987,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-2_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-dsd-2-digital-sampler-delay",
+    "brand": "BOSS",
+    "name": "DSD-2 Digital Sampler/Delay",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-dsd-2-digital-sampler-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "ctrl",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Digital sampler/delay with 200–800 ms sampling and a trigger input; 1980s enclosure (70 x 125 mm).",
+    "year": 1985,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DSD-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dsd2.png",
         "kind": [
           "image"
         ]
