@@ -1,0 +1,2938 @@
+[
+  {
+    "id": "boss-ac-2-acoustic-simulator",
+    "brand": "BOSS",
+    "name": "AC-2 Acoustic Simulator",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "acoustic-sim"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS AC-2 Acoustic Simulator specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "EXP/CTL",
+        "kind": "exp",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 440
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/AC-2_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Compact acoustic simulator with four body types and an EXP/CTL jack; runs on a 9 V battery or AC adaptor.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ac-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AC-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ac2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ac2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS AC-2 specification page and owner\u2019s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ac-3-acoustic-simulator",
+    "brand": "BOSS",
+    "name": "AC-3 Acoustic Simulator",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "acoustic-sim"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS AC-3 Acoustic Simulator specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "LINE OUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "G.AMP OUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/AC-3_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 425
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/AC-3_eng01_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Acoustic simulator with MODE/TOP/BODY/REVERB controls, separate LINE OUT and G.AMP OUT jacks, and a buffered bypass.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ac-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AC-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ac3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ac3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS AC-3 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ad-2-acoustic-preamp",
+    "brand": "BOSS",
+    "name": "AD-2 Acoustic Preamp",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "preamp"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS AD-2 Acoustic Preamp specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "LINE OUT",
+        "kind": "out",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/AD-2_M_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 420
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/AD-2_M_eng01_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Acoustic preamp with ACOUSTIC RESONANCE, AMBIENCE and NOTCH controls; the balanced TRS LINE OUT doubles as a direct out.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ad-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AD-2_M_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ad2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ad2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS AD-2 specifications; LINE OUT is +4 dBu balanced."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-aw-3-dynamic-wah",
+    "brand": "BOSS",
+    "name": "AW-3 Dynamic Wah",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "wah"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS AW-3 Dynamic Wah specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GUITAR IN",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "BASS IN",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "EXP/CTL",
+        "kind": "exp",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "control",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/AW-3_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 430
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/AW-3_eng01_W.pdf"
+      }
+    },
+    "usage": "both",
+    "notes": "Dynamic wah with separate GUITAR IN and BASS IN jacks and an EXP/CTL jack for expression pedal or footswitch control.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/aw-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AW-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-aw3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-aw3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS AW-3 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bb-1x-bass-driver",
+    "brand": "BOSS",
+    "name": "BB-1X Bass Driver",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS BB-1X Bass Driver specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "LINE OUT",
+        "kind": "out",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/BB-1X_M_eng02_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 445
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BB-1X_M_eng02_W.pdf"
+      }
+    },
+    "usage": "bass",
+    "notes": "Bass driver with LEVEL/BLEND/LOW/HIGH/DRIVE controls and a balanced TRS LINE OUT for mixer or recording use.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bb-1x/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BB-1X_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bb1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bb1x.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS BB-1X specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bc-1x-bass-compressor",
+    "brand": "BOSS",
+    "name": "BC-1X Bass Compressor",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS BC-1X Bass Compressor specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/BC-1X_M_eng02_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 90,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 440
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BC-1X_M_eng02_W.pdf"
+      }
+    },
+    "usage": "bass",
+    "notes": "Bass compressor with THRESHOLD/RATIO/RELEASE/LEVEL controls and a GAIN REDUCTION indicator; internally runs an 18 V working voltage from a 9 V supply.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bc-1x/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BC-1X_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bc1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bc1x.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS BC-1X specifications (working voltage 18 V)."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bc-2-combo-drive",
+    "brand": "BOSS",
+    "name": "BC-2 Combo Drive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS BC-2 Combo Drive specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/BC-2_OM.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 440
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BC-2_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Combo-drive overdrive voiced after a British combo amp, with a single level and drive control set.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bc-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BC-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bc2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bc2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS BC-2 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bd-2-blues-driver",
+    "brand": "BOSS",
+    "name": "BD-2 Blues Driver",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS BD-2 Blues Driver specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/BD-2_eng02_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 360
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BD-2_eng02_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Analog overdrive with GAIN/TONE/LEVEL controls, designed for amp-like touch response; the input jack doubles as the power switch.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bd-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BD-2_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS BD-2 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bd-2w-blues-driver-waza-craft",
+    "brand": "BOSS",
+    "name": "BD-2W Blues Driver (Waza Craft)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS BD-2W Blues Driver (Waza Craft) specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/BD-2W_eng02_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 430
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BD-2W_eng02_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft edition of the BD-2 with a Standard/Custom mode switch and premium analog components.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bd-2w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BD-2W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2w.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS BD-2W specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bf-2-flanger",
+    "brand": "BOSS",
+    "name": "BF-2 Flanger",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "flanger"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "Official Roland BOSS BF-2 Flanger specifications: 70 (W) x 125 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "status": "discontinued",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "9 V DC; original BOSS ACA-series adaptor (battery current draw)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BF-2_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Vintage analog flanger with MANUAL/DEPTH/RATE/RESONANCE controls; the original BOSS compact enclosure is 70 x 125 mm.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bf-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BF-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Dimensions and current draw from the official BOSS BF-2 owner\u2019s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bf-2b-bass-flanger",
+    "brand": "BOSS",
+    "name": "BF-2B Bass Flanger",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "flanger"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "Official Roland BOSS BF-2B Bass Flanger specifications: 70 (W) x 125 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "status": "discontinued",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "9 V DC; original BOSS ACA-series adaptor (battery current draw)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BF-2B_OM.pdf"
+      }
+    },
+    "usage": "bass",
+    "notes": "Bass-voiced version of the BF-2 flanger in the vintage 70 x 125 mm BOSS compact enclosure.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bf-2b/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BF-2B_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2b.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2b.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official Roland BOSS BF-2B specification article and owner\u2019s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bf-3-flanger",
+    "brand": "BOSS",
+    "name": "BF-3 Flanger",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "flanger"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS BF-3 Flanger specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GUITAR IN",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "BASS IN",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/BF-3_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 425
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BF-3_eng01_W.pdf"
+      }
+    },
+    "usage": "both",
+    "notes": "Stereo flanger with separate GUITAR IN and BASS IN jacks, OUTPUT A (mono) and OUTPUT B, and buffered bypass.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bf-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BF-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS BF-3 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-bp-1w-booster-preamp-waza-craft",
+    "brand": "BOSS",
+    "name": "BP-1W Booster/Preamp (Waza Craft)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS BP-1W Booster/Preamp (Waza Craft) specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/BP-1W_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 430
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/BP-1W_eng01_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft booster/preamp with GAIN and LEVEL controls, a MODE switch and a STD/VTG BUFFER switch.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bp-1w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BP-1W_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bp1w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bp1w.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS BP-1W specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ce-1-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-1 Chorus Ensemble",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "keys"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 26,
+    "heightCm": 18,
+    "dimensionsSource": "Official Roland BOSS CE-1 Chorus Ensemble specifications: 260 (W) x 180 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT A",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "AC CORD",
+        "kind": "power",
+        "connector": "other",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/CE-1_OM.pdf",
+      "confidence": "verified",
+      "note": "The official CE-1 owner\u2019s manual panel/connection diagram shows the input and both outputs on the top/rear edge (a large-format unit). Positions along the edge are not published; no pos values are claimed."
+    },
+    "status": "discontinued",
+    "power": {
+      "acDc": "AC",
+      "powerW": 3,
+      "note": "Mains powered through an attached AC cord; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 1800
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CE-1_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "The original 1976 BOSS chorus ensemble, with Chorus and Vibrato modes, two outputs and mains power via an attached AC cord.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce1.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CE-1 technical specifications (260 x 180 x 64 mm, 3 W AC)."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ce-2-chorus",
+    "brand": "BOSS",
+    "name": "CE-2 Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "Official Roland BOSS CE-2 Chorus specifications: 70 (W) x 125 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "status": "discontinued",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "9 V DC; original BOSS ACA-series adaptor (battery current draw)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CE-2_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "The classic analog BOSS chorus in the vintage 70 x 125 mm compact enclosure, with RATE and DEPTH controls.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official Roland BOSS CE-2 technical specifications and owner\u2019s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ce-20-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-20 Chorus Ensemble",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "dimensionsSource": "Official BOSS CE-20 Chorus Ensemble specifications: 173 (W) x 158 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GUITAR/BASS IN",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "GUITAR AMP OUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "top"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/CE-20_OM.pdf",
+      "confidence": "verified",
+      "note": "The official CE-20 owner\u2019s manual panel/connection diagram shows all audio (guitar/bass in, guitar-amp out, send/return) and DC connectors on the top/rear edge. Positions along the edge are not published; no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 160,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 1100
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CE-20_OM.pdf"
+      }
+    },
+    "usage": "both",
+    "notes": "Twin-footswitch chorus ensemble with six chorus modes, a send/return loop and separate guitar/bass input and guitar-amp output.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-20/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-20_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce20.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce20.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CE-20 specifications (173 x 158 x 57 mm, six AA batteries or AC adaptor)."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ce-2b-bass-chorus",
+    "brand": "BOSS",
+    "name": "CE-2B Bass Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "Official Roland BOSS CE-2B Bass Chorus specifications: 70 (W) x 125 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "status": "discontinued",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "9 V DC; original BOSS ACA-series adaptor (battery current draw)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CE-2B_OM.pdf"
+      }
+    },
+    "usage": "bass",
+    "notes": "Bass version of the CE-2 chorus in the vintage 70 x 125 mm compact enclosure.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-2b/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-2B_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2b.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2b.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official Roland BOSS CE-2B technical specifications and owner\u2019s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ce-2w-chorus-waza-craft",
+    "brand": "BOSS",
+    "name": "CE-2W Chorus (Waza Craft)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS CE-2W Chorus (Waza Craft) specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/CE-2W_eng02_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 450
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CE-2W_eng02_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft chorus with Standard, CE-1 Chorus and CE-1 Vibrato modes, stereo OUTPUT A/B jacks and buffered bypass.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-2w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-2W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2w.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CE-2W specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ce-3-chorus",
+    "brand": "BOSS",
+    "name": "CE-3 Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "Official Roland BOSS CE-3 Chorus specifications: 70 (W) x 125 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT A",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "status": "discontinued",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "9 V DC; original BOSS ACA-series adaptor (battery current draw)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CE-3_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Vintage chorus with RATE/DEPTH controls, a Stereo Mode switch and OUTPUT A/B jacks in the 70 x 125 mm enclosure.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official Roland BOSS CE-3 technical specifications and owner\u2019s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ce-5-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-5 Chorus Ensemble",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS CE-5 Chorus Ensemble specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT A",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/CE-5_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 425
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CE-5_eng01_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Chorus ensemble with high/low filter, depth, rate and effect-level controls, plus stereo OUTPUT A/B jacks.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-5_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce5.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CE-5 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ceb-3-bass-chorus",
+    "brand": "BOSS",
+    "name": "CEB-3 Bass Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS CEB-3 Bass Chorus specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/CEB-3_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 420
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CEB-3_eng01_W.pdf"
+      }
+    },
+    "usage": "bass",
+    "notes": "Bass chorus with DEPTH/RATE/LOW FILTER/E.LEVEL controls and stereo OUTPUT A (mono)/B jacks.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ceb-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CEB-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ceb3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ceb3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CEB-3 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-ch-1-super-chorus",
+    "brand": "BOSS",
+    "name": "CH-1 Super Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS CH-1 Super Chorus specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT A",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/CH-1_eng01_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 420
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CH-1_eng01_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Stereo chorus with DEPTH/RATE/EQ/E.LEVEL controls and OUTPUT A/B jacks for mono or stereo use.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ch-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CH-1_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ch1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ch1.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CH-1 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-cp-1x-compressor",
+    "brand": "BOSS",
+    "name": "CP-1X Compressor",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS CP-1X Compressor specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 90,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 450
+      },
+      "circuit": {
+        "bypass": "buffered"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Multi-dimensional-processing compressor with COMP/RATIO/ATTACK/LEVEL controls, a GAIN REDUCTION indicator and an 18 V internal working voltage.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/cp-1x/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cp1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cp1x.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CP-1X specifications (working voltage 18 V)."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-cs-2-compression-sustainer",
+    "brand": "BOSS",
+    "name": "CS-2 Compression Sustainer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "Official Roland BOSS CS-2 Compression Sustainer specifications: 70 (W) x 125 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "status": "discontinued",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "9 V DC; original BOSS ACA-series adaptor (battery current draw)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CS-2_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Vintage compression sustainer with SUSTAIN/LEVEL/ATTACK controls in the 70 x 125 mm BOSS compact enclosure.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/cs-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CS-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cs2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cs2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official Roland BOSS CS-2 specifications and owner\u2019s manual."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-cs-3-compression-sustainer",
+    "brand": "BOSS",
+    "name": "CS-3 Compression Sustainer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS CS-3 Compression Sustainer specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "right"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false,
+        "edge": "left"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top",
+        "note": "9 V DC power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "https://static.roland.com/assets/media/pdf/CS-3_eng03_W.pdf",
+      "note": "Audio input/output and DC IN edges taken from the official owner\u2019s manual panel diagram; positions along the edge are not published, so no pos values are claimed."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 380
+      },
+      "circuit": {
+        "bypass": "buffered"
+      },
+      "lifecycle": {
+        "manualUrl": "https://static.roland.com/assets/media/pdf/CS-3_eng03_W.pdf"
+      }
+    },
+    "usage": "guitar",
+    "notes": "Compression sustainer with SUSTAIN/ATTACK/TONE/LEVEL controls and buffered bypass.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/cs-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CS-3_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cs3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cs3.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS CS-3 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  },
+  {
+    "id": "boss-da-2-adaptive-distortion",
+    "brand": "BOSS",
+    "name": "DA-2 Adaptive Distortion",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "dimensionsSource": "Official BOSS DA-2 Adaptive Distortion specifications: 73 (W) x 130.2 (D) mm (129 mm depth for current compact pedals, 158 mm for CE-20).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face photo/diagram was available for this model during the batch; edges omitted so the app falls back to assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45,
+      "polarity": "center-negative",
+      "connector": "barrel"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 420
+      }
+    },
+    "usage": "guitar",
+    "notes": "Adaptive distortion with LEVEL/LOW/HIGH/A-DIST controls; the A-DIST knob blends the adaptive distortion character.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/da-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-da2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-da2.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Flat top-down planner cutout used as a last resort after official BOSS imagery was checked: the official top/gallery photos are 3/4-perspective and the deterministic analyzer rejects them (31-37% perspective distortion)."
+      }
+    ],
+    "extra": {
+      "imageProvenance": "public-asset planner cutout (last resort)",
+      "research": "Official BOSS DA-2 specifications."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25"
+  }
+]

@@ -40,7 +40,7 @@ You are a staff-level guitar-effects researcher working one **pedal catalog batc
 - **Optional fields are opportunistic:** serial ranges, videos, artist association, prices, jacks, MIDI/USB, board extras. Never run an extra search/tab for them; missing is valid.
 - **cm only.** Convert inches at import. Never invent a dimension, jack position, or spec.
 - Images: do **not** download or commit images. Record candidate URLs (`imageCandidates`) and source pages; the image scout/pipeline handles the rest.
-- Jacks: `pos` is optional. Record exact `edge` + `pos` when a source exposes it; edge-only is valid and will be marked approximate.
+- Jacks: `pos` is optional. Record exact `edge` + `pos` when a source exposes it; edge-only is valid and will be marked approximate. **Text-layer first:** if the official manual text does not name the connector face, render the panel/connection page (`pdftoppm`) and inspect a connector-strip crop via the shared contact-sheet step (never a separate vision call per item). Image-only/scanned manuals count; a missing PDF text layer is not an unknown edge. Large units are not side-jack by default (CE-1/CE-20 are top-mounted). Full rule: `AGENTS.md` §Hard constraints → “Jack edges”.
 - Multi-connector pedals must fit `RawPedalRecordSchema` (see the H90 fixture).
 - Provenance: every record needs the authoritative `sources` URLs actually verified; `kind` may include `info` and `image`.
 - Never copy another site's description. Write a short original factual summary.

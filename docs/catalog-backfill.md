@@ -246,7 +246,7 @@ today.**
 only from an official rear/top photo, support page or manual diagram, and record
 `jackLayout: { source, confidence: "verified" }` on the record. Never infer an
 edge from a sibling model or “compact layout”. If unknown, omit the edge; the
-app uses its assumed anchors. `pnpm catalog:check-jacks` fails an unverified edge.
+app uses its assumed anchors. **Image-only/scanned manuals and official product photos count** — render the panel page and verify the connector face visually (text-layer first when available); a missing PDF text layer is not an unknown edge, and large units are not side-jack by default (CE-1/CE-20 are top-mounted). `pnpm catalog:check-jacks` fails an unverified edge. Full rule: `AGENTS.md` §Hard constraints → “Jack edges”.
 
 When only the **edge count** is known (e.g. “2 jacks on top”), record two
 `jacks` entries with `kind` + `edge` and **omit `pos`**; the resolver distributes
