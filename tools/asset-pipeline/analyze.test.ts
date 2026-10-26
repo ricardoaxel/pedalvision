@@ -46,7 +46,6 @@ async function image(options: ImageOptions): Promise<Buffer> {
 
 /** BOSS-style compact: flat top, tapered jack end, vertical body sides. */
 async function bossTrapezoid(options?: {
-	slantedTop?: boolean;
 	unevenTop?: boolean;
 }): Promise<Buffer> {
 	const width = 1000;
@@ -62,9 +61,8 @@ async function bossTrapezoid(options?: {
 		// Taper only the top ~15%; the middle body stays vertical so skew is ~0.
 		const t = y < 250 ? (250 - y) / 100 : 0;
 		const half = 200 - 50 * t;
-		const shift = options?.slantedTop ? (y - 150) * 0.25 : 0;
-		const left = Math.round(500 - half + shift);
-		const right = Math.round(500 + half + shift);
+		const left = Math.round(500 - half);
+		const right = Math.round(500 + half);
 		for (let x = left; x < right; x++) {
 			const i = (y * width + x) * 4;
 			data[i] = 30;
@@ -257,7 +255,7 @@ describe("image analyzer", () => {
 
 	it("does not reject the committed BOSS compact asset as perspective", async () => {
 		const png = readFileSync(
-			"public/pedal-assets/pedals/800/boss-dc-2w-dimension-c-waza-craft.avif",
+			new URL("./__fixtures__/boss-compact.avif", import.meta.url),
 		);
 		const result = await analyzeImage(png, { kind: "pedal", ...footprint });
 		expect(result.shapeTaper).toBe(true);

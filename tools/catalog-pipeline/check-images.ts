@@ -25,18 +25,25 @@ export type ImageProvenanceIssue = {
 type ProvenanceRecord = {
 	id?: string;
 	imageCandidates?: Array<{ url?: string }>;
-	sources?: Array<{ url?: string }>;
+	sources?: Array<{ url?: string; kind?: string[] }>;
 	imageProvenance?: {
 		kind?: string;
 		status?: string;
+		sourceUrl?: string;
 		note?: string;
 	};
 };
 
-const PLANNER_HOST = "pedalplayground";
+const PLANNER_HOST = "pedalplayground.com";
 
 export function isPlannerUrl(url: string | undefined): boolean {
-	return Boolean(url && url.toLowerCase().includes(PLANNER_HOST));
+	if (!url) return false;
+	try {
+		const hostname = new URL(url).hostname.toLowerCase();
+		return hostname === PLANNER_HOST || hostname.endsWith(`.${PLANNER_HOST}`);
+	} catch {
+		return false;
+	}
 }
 
 export function checkImageProvenance(
@@ -48,7 +55,12 @@ export function checkImageProvenance(
 	for (const record of records) {
 		const urls = [
 			...(record.imageCandidates ?? []).map((candidate) => candidate.url),
-			...(record.sources ?? []).map((source) => source.url),
+			...(record.sources ?? [])
+				.filter((source) => (source.kind ?? []).includes("image"))
+				.map((source) => source.url),
+			...(record.imageProvenance?.sourceUrl
+				? [record.imageProvenance.sourceUrl]
+				: []),
 		];
 		const plannerUrls = [...new Set(urls.filter(isPlannerUrl))];
 		const provenance = record.imageProvenance;
@@ -151,6 +163,13 @@ export async function checkImageProvenanceFiles(root = process.cwd()): Promise<{
 			issues.push(...checked.issues);
 			warnings.push(...checked.warnings);
 		}
+	}
+	if (files === 0) {
+		issues.push({
+			file: join(root, "data/catalog/research"),
+			message:
+				"no raw batch files found; refusing to report a green image-provenance gate for an empty/missing directory",
+		});
 	}
 	return { issues, warnings, files };
 }

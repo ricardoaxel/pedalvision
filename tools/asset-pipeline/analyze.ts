@@ -156,9 +156,10 @@ function skewDegrees(
 /**
  * A symmetric trapezoid enclosure (every BOSS compact) narrows at the jack end,
  * so the top/bottom row widths differ exactly like a mild camera perspective.
- * A true top-down trapezoid also has a flat top edge and mirror-symmetric side
- * slopes; a tilted 3/4 shot has an angled top edge or asymmetric sides. Use both
- * signals so a real perspective is still rejected.
+ * A flat top edge + no average skew + an aspect that matches the footprint is
+ * strong evidence of a top-down trapezoid. A mild straight-on tilt can look the
+ * same, so the contact-sheet reviewer is the final check: pedals never hard-reject
+ * on the row-width ratio alone. Boards keep the strict perspective reject.
  */
 function topEdgeFlatness(
 	alpha: Uint8Array,

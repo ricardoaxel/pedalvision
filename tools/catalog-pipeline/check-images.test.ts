@@ -1,5 +1,12 @@
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { checkImageProvenance, isPlannerUrl } from "./check-images.ts";
+import {
+	checkImageProvenance,
+	checkImageProvenanceFiles,
+	isPlannerUrl,
+} from "./check-images.ts";
 
 const planner = "https://pedalplayground.com/public/images/pedals/boss-dc2.png";
 
@@ -29,7 +36,7 @@ describe("image provenance gate", () => {
 		const { issues, warnings } = checkImageProvenance([
 			{
 				id: "x",
-				sources: [{ url: planner }],
+				sources: [{ url: planner, kind: ["image"] }],
 				imageProvenance: {
 					kind: "planner",
 					status: "owner-approved-edge-case",
@@ -62,6 +69,46 @@ describe("image provenance gate", () => {
 		]);
 		expect(issues).toHaveLength(0);
 		expect(warnings).toHaveLength(0);
+	});
+
+	it("does not flag an info-only planner reference", () => {
+		const { issues, warnings } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: "https://static.roland.com/a.jpg" }],
+				sources: [{ url: planner, kind: ["info"] }],
+				imageProvenance: { kind: "official", status: "chosen" },
+			},
+		]);
+		expect(issues).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	it("checks imageProvenance.sourceUrl too", () => {
+		const { issues } = checkImageProvenance([
+			{
+				id: "x",
+				imageProvenance: {
+					kind: "official",
+					status: "chosen",
+					sourceUrl: planner,
+				},
+			},
+		]);
+		expect(issues).toHaveLength(1);
+	});
+
+	it("refuses a green gate over an empty/missing research dir", async () => {
+		const root = await mkdtemp(join(tmpdir(), "pedalvision-images-"));
+		try {
+			const result = await checkImageProvenanceFiles(root);
+			expect(result.files).toBe(0);
+			expect(
+				result.issues.some((issue) => /empty\/missing/.test(issue.message)),
+			).toBe(true);
+		} finally {
+			await rm(root, { recursive: true, force: true });
+		}
 	});
 
 	it("detects the planner host case-insensitively", () => {
