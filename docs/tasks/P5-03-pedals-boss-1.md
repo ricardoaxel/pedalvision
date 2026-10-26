@@ -123,6 +123,10 @@ Official BOSS imagery was checked first for every item. The official product/gal
 - **App QA:** 4/4 — BD-2W and CE-20 picker row (AVIF thumbnail loaded), placement, canvas image loaded, no console errors, desktop + mobile Chromium.
 - **Checks:** lint, typecheck, test **699**, build, e2e **258 passed + 7 skipped** (with the batch runtime).
 - **Demo link:** 1 custom board (100 × 51 cm) / 26 items / 25 illustrative cables / 0 unconnected.
-- **Owner-approved batch-support test change:** `e2e/info-panel.spec.ts` asserted the old seed state (no power, assumed I-left/O-right jacks). The batch's verified BD-2 power/jacks make that stale; the owner approved updating it in this PR on 2026-10-25. This is the one non-data file in the PR; the guard reports exactly that file.
+- **Owner-approved batch-support test changes (4 files):** replacing seed BD-2 with verified data makes old seed-state fixtures stale, and replacing a legacy static PNG with an AVIF leaves the frozen legacy PNG on disk (needed by `dry-run` for rollback). The owner approved updating the affected tests in this PR on 2026-10-25:
+  - `e2e/info-panel.spec.ts` — assert the new power + right-IN/left-OUT/top-DC jacks instead of the seed's "no power / assumed I-left/O-right".
+  - `src/lib/jackAnchor.test.ts` and `src/lib/cableSummary.test.ts` — the fallback-anchor fixture moved from BD-2 to `boss-dc-2-dimension-c` (still no jack data).
+  - `tools/catalog-transform/seed.test.ts` — allow legacy-retained PNGs for ids whose committed image is now AVIF (keeps `dry-run` validating the frozen legacy baseline).
+  - `catalog:guard-batch-pr` therefore reports exactly these 4 test files; no feature code, runtime or mapped files are touched.
 - **Budget (estimated):** ~83 min wall clock / ~3.2 min per item (under the 12 min and 4 h caps); ~312k tokens (26 × ~12k, soft ≤400k). Per-item checkpoints were written after the research/image phase rather than continuously — the runner therefore logged a spurious 33-minute per-item interval and auto-paused; the batch was resumed and finished 26/26. Honest calibration note for the next BOSS batch: checkpoint inline, immediately after each item.
 - **Process gap (owner confirmed):** the plan's "expected 258 pedals" is an arithmetic error; 235 is correct. No rule was changed in this PR.

@@ -17,6 +17,15 @@ const committedPedals = readJson<CatalogPedal[]>(
 const committedBoards = readJson<CatalogBoard[]>(
 	"src/catalog/data/boards.json",
 );
+// The frozen legacy baseline keeps its static PNGs even after a P5 batch
+// replaces the same id with an AVIF; those files stay for rollback and for the
+// pipeline dry-run, which validates the legacy baseline.
+const legacyPedals = readJson<CatalogPedal[]>(
+	"data/catalog/legacy/pedals.json",
+);
+const legacyBoards = readJson<CatalogBoard[]>(
+	"data/catalog/legacy/boards.json",
+);
 
 // Only `mock` items are generator-drawn; `url` items render a remote brand
 // image and have no committed PNG.
@@ -80,12 +89,35 @@ describe("committed mock images", () => {
 		// post-merge runtime, so they are intentionally outside this seed check.
 		const expected = new Set<string>();
 		for (const pedal of [...mockPedals, ...staticPedals]) {
-			if (!pedal.image.endsWith(".png")) continue;
+			if (!pedal.image.endsWith(".png") || pedal.image.includes("/")) continue;
 			for (const size of [800, 350])
 				expected.add(`pedals/${size}/${pedal.image}`);
 		}
 		for (const board of [...mockBoards, ...staticBoards]) {
-			if (!board.image.endsWith(".png")) continue;
+			if (!board.image.endsWith(".png") || board.image.includes("/")) continue;
+			for (const size of [800, 350])
+				expected.add(`boards/${size}/${board.image}`);
+		}
+		// A P5 batch may replace a legacy static PNG with an AVIF. The frozen
+		// legacy PNG then stays on disk for rollback + the pipeline dry-run, so
+		// count it as expected only when the committed item now points elsewhere.
+		const committedPedalById = new Map(
+			committedPedals.map((pedal) => [pedal.id, pedal]),
+		);
+		const committedBoardById = new Map(
+			committedBoards.map((board) => [board.id, board]),
+		);
+		for (const pedal of legacyPedals) {
+			if (!pedal.image.endsWith(".png") || pedal.image.includes("/")) continue;
+			const current = committedPedalById.get(pedal.id);
+			if (!current || current.image === pedal.image) continue;
+			for (const size of [800, 350])
+				expected.add(`pedals/${size}/${pedal.image}`);
+		}
+		for (const board of legacyBoards) {
+			if (!board.image.endsWith(".png") || board.image.includes("/")) continue;
+			const current = committedBoardById.get(board.id);
+			if (!current || current.image === board.image) continue;
 			for (const size of [800, 350])
 				expected.add(`boards/${size}/${board.image}`);
 		}
