@@ -2,9 +2,10 @@
 
 **Audience:** any future agent/designer adding or repairing a pedalboard image.
 **Status:** mandatory for board assets. **New board batches ship our own flat
-art** (owner instruction, 2026-10-25). Pedals do **not** use this path — pedals
-stay on the real-image pipeline (official/authorized photo → clean cutout →
-body-crop → AVIF).
+art** (owner instruction, 2026-10-25). Pedals use the real-image pipeline
+(official/authorized photo → clean cutout → body-crop → AVIF) and, only when no
+clean official/authorized image exists, the generated **pedal** flat-art path
+(`docs/catalog/pedal-art.md`). Do not use this board SOP for pedals.
 
 > **One PR per board batch/task.** Source SVGs live on `main`; the batch PR
 > contains the raw record + the two AVIFs + the task file. Never merge your own

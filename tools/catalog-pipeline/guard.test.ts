@@ -48,6 +48,22 @@ describe("batch PR guard", () => {
 		]);
 	});
 
+	it("allows per-item pedal-art specs as batch support", () => {
+		expect(
+			guardBatchPr([
+				"data/catalog/research/pedals/acme/batch-1.json",
+				"public/pedal-assets/pedals/800/acme-alpha.avif",
+				"tools/asset-pipeline/pedal-art/specs/acme-alpha.json",
+			]),
+		).toEqual([]);
+		expect(
+			guardBatchPr([
+				"data/catalog/research/pedals/acme/batch-1.json",
+				"tools/asset-pipeline/pedal-art/specs/../evil.json",
+			]),
+		).toEqual(["tools/asset-pipeline/pedal-art/specs/../evil.json"]);
+	});
+
 	it("allows the verified effect-type override file as batch support", () => {
 		expect(
 			guardBatchPr([

@@ -1,0 +1,50 @@
+{
+	"version": 1,
+	"kind": "pedal",
+	"footprintCm": {
+		"width": 7.75,
+		"height": 12.07
+	},
+	"image": {
+		"width": 514,
+		"height": 800,
+		"longEdge": 800,
+		"hasAlpha": true
+	},
+	"alpha": {
+		"transparentRatio": 0.0049392023346303505
+	},
+	"background": {
+		"color": {
+			"r": 0,
+			"g": 0,
+			"b": 0
+		},
+		"uniformity": 0.109375
+	},
+	"trim": {
+		"left": 0,
+		"top": 0,
+		"width": 514,
+		"height": 800
+	},
+	"whitespaceRatio": 0,
+	"aspect": {
+		"image": 0.6425,
+		"expected": 0.6420878210439105,
+		"error": 0.0006419354838709563,
+		"verdict": "pass"
+	},
+	"rotationDeg": 0,
+	"perspectiveError": 0.0021037000371241185,
+	"shapeTaper": true,
+	"shadowRatio": null,
+	"bright": {
+		"ratio": 0.012599513206174518,
+		"edgeRatio": 0.0023014959723820483
+	},
+	"verdict": "accept",
+	"reasons": [],
+	"id": "red-panda-tensor",
+	"sha256": "61619a31be4aeee6e6377e335a1b3d08aadc7035946dea3eb560a3e1ba354d4a"
+}
