@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 2
 
-**Phase:** P5 · **Status:** in progress (wave `boss-wave-2`) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #48 (wave `boss-wave-2`) · **Model:** build-strong
 
 > **Data reused — do NOT re-research.** The previous stopped boss-2 worktree
 > (`../pedalvision-p5-03-boss-2`) produced the 26 verified raw records and 52
@@ -95,6 +95,6 @@ single PR. No facts were re-researched.
   - `tools/catalog-transform/effects.test.ts` — the colorway-footprint assertion skips the two
     Waza Craft reissues (`dc-2w`, `dm-2w`), whose vintage-vs-modern enclosures genuinely differ
     (70 × 125 mm vs 73 × 129 mm).
-- **Budget:** ~55 min wall clock, ~2.1 min/item; token floor recorded via checkpoints. One
-  contact-sheet vision pass, no code-review pass (only owner-approved test fixtures; the test
-  suite is the re-check).
+- **Budget:** ~17 min wall clock, ~0.65 min/item (data-reuse session); 39k tokens recorded via
+  inline checkpoints (floor). One contact-sheet vision pass; no code-review pass (only
+  owner-approved test fixtures; the test suite is the re-check).
