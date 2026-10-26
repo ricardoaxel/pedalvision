@@ -1,3 +1,4 @@
+import { type BatchTokens, resolveBatchTokens } from "./gate.ts";
 import type { WaveBatchRun, WaveState } from "./wave-state.ts";
 
 /**
@@ -16,26 +17,37 @@ export function formatWaveReport(state: WaveState): string {
 	);
 	lines.push("");
 	lines.push(
-		"| Batch | Status | Items | Images | Tokens (checkpoint) | Main-session tokens (floor) | Minutes | PR | CI |",
+		"| Batch | Status | Items | Images | Billed non-cache | Cache-incl. floor | Minutes | PR | CI |",
 	);
 	lines.push("| --- | --- | --- | --- | --- | --- | --- | --- | --- |");
 	let done = 0;
 	let total = 0;
 	let accepted = 0;
 	let rejected = 0;
-	let tokens = 0;
-	let mainTokens = 0;
+	let billed = 0;
+	let cache = 0;
+	const sources = new Set<BatchTokens["source"]>();
 	for (const batch of state.batches) {
 		done += batch.runner?.done ?? 0;
 		total += batch.runner?.total ?? batch.total;
 		accepted += batch.runner?.imagesAccepted ?? 0;
 		rejected += batch.runner?.imagesRejected ?? 0;
-		tokens += batch.runner?.tokens ?? 0;
-		mainTokens += batch.session?.tokens ?? 0;
+		const usage = usageFor(batch);
+		billed += usage.billed;
+		cache += usage.cacheInclusive;
+		if (hasTokenData(batch)) sources.add(usage.source);
 		lines.push(formatBatchRow(batch));
 	}
+	const billedTotal = `${formatTokens(billed)}${
+		sources.has("ledger")
+			? " (includes ledger fallback)"
+			: sources.has("upper-bound")
+				? " (includes upper bound)"
+				: ""
+	}`;
+	const cacheTotal = `${formatTokens(cache)} (floor)`;
 	lines.push(
-		`| **Total** | **${state.status}** | **${done}/${total}** | **${accepted}/${rejected}** | **${formatTokens(tokens)}** | **${formatTokens(mainTokens)} (floor, known only)** | | | |`,
+		`| **Total** | **${state.status}** | **${done}/${total}** | **${accepted}/${rejected}** | **${billedTotal}** | **${cacheTotal}** | | | |`,
 	);
 	lines.push("");
 	if (state.notes.length > 0) {
@@ -66,18 +78,37 @@ function formatBatchRow(batch: WaveBatchRun): string {
 		batch.runner?.imagesAccepted !== undefined
 			? `${batch.runner.imagesAccepted}/${batch.runner.imagesRejected}`
 			: "0/0";
-	const tokens = formatTokens(batch.runner?.tokens ?? 0);
-	const main =
-		batch.session?.tokens === null || batch.session?.tokens === undefined
-			? "unknown"
-			: formatTokens(batch.session.tokens);
+	const usage = usageFor(batch);
+	const known = hasTokenData(batch);
 	const minutes = formatMinutes(batch);
 	const pr = batch.pr ? `[#${batch.pr.number}](${batch.pr.url})` : "—";
 	const ci = batch.pr?.checks ?? "—";
 	const status = batch.error
 		? `${batch.status} (${batch.error})`
 		: batch.status;
-	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${tokens} | ${main} (floor) | ${minutes} | ${pr} | ${ci} |`;
+	const sourceSuffix =
+		usage.source === "ledger"
+			? " (ledger)"
+			: usage.source === "upper-bound"
+				? " (upper bound)"
+				: "";
+	const billedLabel = known
+		? `${formatTokens(usage.billed)}${sourceSuffix}`
+		: "unknown";
+	const cacheLabel = known ? formatTokens(usage.cacheInclusive) : "unknown";
+	return `| ${batch.batch} | ${status} | ${items} | ${images} | ${billedLabel} | ${cacheLabel} | ${minutes} | ${pr} | ${ci} |`;
+}
+
+function usageFor(batch: WaveBatchRun): BatchTokens {
+	return (
+		batch.usage ?? resolveBatchTokens(batch.runner?.tokens ?? 0, batch.session)
+	);
+}
+
+/** No session and no checkpoint tokens means there is nothing real to report. */
+function hasTokenData(batch: WaveBatchRun): boolean {
+	if (batch.session) return true;
+	return (batch.runner?.tokens ?? 0) > 0;
 }
 
 function formatTokens(value: number): string {

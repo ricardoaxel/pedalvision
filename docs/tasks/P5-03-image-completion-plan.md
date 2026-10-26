@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** in review — PR #52 · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a in review (PR #53) · **Type:** plan/index (docs-only)
 
 ## Purpose
 
@@ -83,8 +83,8 @@ own task file — no need to re-paste the whole plan.
 
 | # | Task | Scope | Depends on |
 |---|---|---|---|
-| **T-0** | This plan (docs-only) | Plan + T-0a/T-1 task files; reconcile progress/roadmap/phase-guide/#50/#51 statuses; record token verdict. One PR. | — |
-| **T-0a** | Wave true-token gate | `catalog:wave`/runner gate + report use true tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk). | T-0 |
+| **T-0** | This plan (docs-only) | **Merged (PR #52, squash `4a6f1e7`).** Plan + T-0a/T-1 task files; reconcile progress/roadmap/phase-guide/#50/#51 statuses; record token verdict. One PR. | — |
+| **T-0a** | Wave true-token gate | **In review (PR #53).** `catalog:wave`/runner gate + report use true billed tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk) pass 1 changes-required → pass 2 approve. | T-0 |
 | **T-1** | Pedal flat-art + promote-legacy | Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Designer proposal → owner approval → ≤2 visual passes → 1 light code review. One PR. | T-0 |
 | **T-2** | BOSS wave 3 | boss-4 (26 new) + boss/legacy-repair (31 existing) + boss-5 (26 new). 2-wide start (boss-4 + repair); boss-5 third on the true gate. Split repair 16+15 only if the first 8 items exceed ~6 min or need a third sheet. Include the 1 BOSS hotlinked seed if it falls in scope; otherwise clear it in T-7. One PR per batch. | T-0a, T-1 |
 | **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). 3-wide, third on gate. Re-baseline budgets from T-2 before launching. One PR per batch. | T-2 |

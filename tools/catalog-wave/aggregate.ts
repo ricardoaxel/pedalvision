@@ -12,8 +12,18 @@ export type AggregateParse = "complete" | "partial" | "failed";
 
 export type JsonlSummary = {
 	sessionId?: string;
-	/** Root-session token total; null when no step_finish carried tokens. */
+	/**
+	 * Cache-inclusive root-session token total (input + output + reasoning +
+	 * cache read/write); null when no step_finish carried tokens. This is the
+	 * JSONL floor, not the billing metric.
+	 */
 	tokens: number | null;
+	/**
+	 * Billed non-cache root-session tokens (input + output + reasoning); null
+	 * when no step_finish carried those fields. This is the metric used by the
+	 * per-batch and wave budgets.
+	 */
+	billedTokens: number | null;
 	/** Root-session cost floor (USD); null when unavailable. */
 	costUsd: number | null;
 	/** Assistant text parts, in order, deduped by part id. */
@@ -27,6 +37,7 @@ const MAX_TEXT_CHARS = 20_000;
 export function summarizeJsonl(source: string): JsonlSummary {
 	const summary: JsonlSummary = {
 		tokens: null,
+		billedTokens: null,
 		costUsd: null,
 		texts: [],
 		parse: "partial",
@@ -77,6 +88,15 @@ export function summarizeJsonl(source: string): JsonlSummary {
 			const total = tokens?.total;
 			if (typeof total === "number") {
 				summary.tokens = (summary.tokens ?? 0) + total;
+			} else {
+				const derived = cacheInclusive(tokens);
+				if (derived !== null) {
+					summary.tokens = (summary.tokens ?? 0) + derived;
+				}
+			}
+			const billed = billedNonCache(tokens);
+			if (billed !== null) {
+				summary.billedTokens = (summary.billedTokens ?? 0) + billed;
 			}
 			const cost = part?.cost;
 			if (typeof cost === "number") {
@@ -94,6 +114,34 @@ export function summarizeJsonl(source: string): JsonlSummary {
 		summary.errors.push("no step_finish event (format drift or early exit)");
 	}
 	return summary;
+}
+
+/** Billed tokens: input + output + reasoning, excluding cache read/write. */
+function billedNonCache(
+	tokens: Record<string, unknown> | undefined,
+): number | null {
+	const values = [tokens?.input, tokens?.output, tokens?.reasoning].filter(
+		(value): value is number => typeof value === "number",
+	);
+	if (values.length === 0) return null;
+	return values.reduce((sum, value) => sum + value, 0);
+}
+
+/** Fallback for a step without `total`: sum every token field we recognise. */
+function cacheInclusive(
+	tokens: Record<string, unknown> | undefined,
+): number | null {
+	if (!tokens) return null;
+	const cache = tokens.cache as Record<string, unknown> | undefined;
+	const values = [
+		tokens.input,
+		tokens.output,
+		tokens.reasoning,
+		cache?.read,
+		cache?.write,
+	].filter((value): value is number => typeof value === "number");
+	if (values.length === 0) return null;
+	return values.reduce((sum, value) => sum + value, 0);
 }
 
 function errorMessage(value: unknown): string {

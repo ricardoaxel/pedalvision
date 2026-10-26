@@ -30,9 +30,15 @@ const state: WaveState = {
 				startedAt: "2026-10-25T20:00:00.000Z",
 				endedAt: "2026-10-25T21:20:00.000Z",
 			},
+			usage: {
+				billed: 312_000,
+				cacheInclusive: 1_180_000,
+				source: "jsonl",
+			},
 			session: {
 				sessionId: "ses_x",
-				tokens: 118_000,
+				tokens: 1_180_000,
+				billedTokens: 312_000,
 				costUsd: 0.2,
 				texts: ["26/26 done; PR #46 open."],
 				parse: "complete",
@@ -50,29 +56,90 @@ const state: WaveState = {
 	reportPath: "/w/report.md",
 };
 
+function firstBatch() {
+	const batch = state.batches.at(0);
+	if (!batch) throw new Error("missing batch fixture");
+	return batch;
+}
+
 describe("formatWaveReport", () => {
 	it("renders one line per batch plus totals, PR/CI and session text", () => {
 		const report = formatWaveReport(state);
 		expect(report).toContain(
-			"| boss/boss-1 | complete | 26/26 | 24/0 | 312k | 118k (floor) | 80 min | [#46]",
+			"| boss/boss-1 | complete | 26/26 | 24/0 | 312k | 1.18M | 80 min | [#46]",
 		);
-		expect(report).toContain("| **Total** | **complete** | **26/26**");
+		expect(report).toContain(
+			"| **Total** | **complete** | **26/26** | **24/0** | **312k** | **1.18M (floor)**",
+		);
 		expect(report).toContain("PR #46 open");
 		expect(
 			report.split("\n").filter((line) => line.startsWith("| boss/")),
 		).toHaveLength(1);
 	});
 
-	it("shows unknown instead of 0 when the session token total is missing", () => {
+	it("labels a ledger-only fallback so it is never mistaken for JSONL truth", () => {
 		const report = formatWaveReport({
 			...state,
 			batches: [
 				{
-					...state.batches[0]!,
-					session: { ...state.batches[0]!.session!, tokens: null },
+					...firstBatch(),
+					usage: undefined,
+					session: {
+						sessionId: "ses_x",
+						tokens: null,
+						billedTokens: null,
+						costUsd: 0.2,
+						texts: [],
+						parse: "complete",
+						errors: [],
+					},
 				},
 			],
 		});
-		expect(report).toContain("unknown (floor)");
+		expect(report).toContain("| 312k (ledger) | 312k |");
+		expect(report).toContain(
+			"| **312k (includes ledger fallback)** | **312k (floor)** |",
+		);
+	});
+
+	it("shows unknown for a queued batch with no session or checkpoint tokens", () => {
+		const report = formatWaveReport({
+			...state,
+			batches: [
+				{
+					...firstBatch(),
+					usage: undefined,
+					session: undefined,
+					runner: undefined,
+				},
+			],
+		});
+		expect(report).toContain("| unknown | unknown |");
+		expect(report).toContain("| **0** | **0 (floor)** |");
+	});
+
+	it("marks a JSONL total used as the billed upper bound", () => {
+		const report = formatWaveReport({
+			...state,
+			batches: [
+				{
+					...firstBatch(),
+					usage: undefined,
+					session: {
+						sessionId: "ses_x",
+						tokens: 900_000,
+						billedTokens: null,
+						costUsd: 0.2,
+						texts: [],
+						parse: "complete",
+						errors: [],
+					},
+				},
+			],
+		});
+		expect(report).toContain("| 900k (upper bound) | 900k |");
+		expect(report).toContain(
+			"| **900k (includes upper bound)** | **900k (floor)** |",
+		);
 	});
 });
