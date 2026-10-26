@@ -234,6 +234,140 @@
     ]
   },
   {
+    "id": "pedaltrain-nano",
+    "brand": "Pedaltrain",
+    "name": "Nano",
+    "widthCm": 35.56,
+    "heightCm": 13.97,
+    "image": "pedaltrain-nano.avif",
+    "imageSource": "static",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-nano-and-accessories-no-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pt-nano-sc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-nano-with-hard-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/collections/accessories/Mounting-Kit",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/cdn/shop/products/PedaltrainNanoPBPMeasurements.png?v=1666895229",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pedaltrain-nano-max",
+    "brand": "Pedaltrain",
+    "name": "Nano MAX",
+    "widthCm": 71.12,
+    "heightCm": 13.97,
+    "image": "pedaltrain-nano-max.avif",
+    "imageSource": "static",
+    "variantOf": "pedaltrain-nano",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-nano-max-and-accessories-no-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-nano-max-with-soft-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-nano-max-with-hard-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarcenter.com/Pedaltrain/Nano-MAX-28-x-55-Pedalboard-with-Soft-Case-Small-1500000324280.gc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.thomann.de/gb/pedaltrain_nano_max_sc.htm",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/cdn/shop/products/PedaltrainNanoMaxPBPMeasurements.png?v=1666894868",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pedaltrain-nano-plus",
+    "brand": "Pedaltrain",
+    "name": "Nano+",
+    "widthCm": 45.72,
+    "heightCm": 12.7,
+    "image": "pedaltrain-nano-plus.avif",
+    "imageSource": "static",
+    "variantOf": "pedaltrain-nano",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-nano-plus-accessories-no-case",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pt-npl-sc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/products/pedaltrain-nano-with-hard-case-1",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.geartree.com/product/19696198/nano-plus-pedalboard-18-x-5-w-softcase",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltrain.com/cdn/shop/products/PedaltrainNano_PBPMeasurements.png?v=1666895013",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
     "id": "temple-audio-duo-24",
     "brand": "Temple Audio",
     "name": "Duo 24",

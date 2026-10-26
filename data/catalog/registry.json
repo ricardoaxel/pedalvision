@@ -23,6 +23,17 @@
         }
       ]
     },
+    "red-panda": {
+      "brand": "Red Panda",
+      "batches": [
+        {
+          "batch": "red-panda-1",
+          "raw": "data/catalog/research/pedals/red-panda/red-panda-1.json",
+          "mapped": "data/catalog/pedals/red-panda/red-panda-1.json",
+          "items": 14
+        }
+      ]
+    },
     "tc-electronic": {
       "brand": "TC Electronic",
       "batches": [
@@ -44,6 +55,12 @@
           "raw": "data/catalog/research/boards/pedaltrain/classic-2.json",
           "mapped": "data/catalog/boards/pedaltrain/classic-2.json",
           "items": 1
+        },
+        {
+          "batch": "nano-1",
+          "raw": "data/catalog/research/boards/pedaltrain/nano-1.json",
+          "mapped": "data/catalog/boards/pedaltrain/nano-1.json",
+          "items": 3
         }
       ]
     },

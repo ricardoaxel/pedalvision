@@ -7223,5 +7223,851 @@
         ]
       }
     ]
+  },
+  {
+    "id": "red-panda-bitmap",
+    "brand": "Red Panda",
+    "name": "Bitmap",
+    "widthCm": 8.38,
+    "heightCm": 11.18,
+    "image": "red-panda-bitmap.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "bitcrusher",
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "notes": "Original Bitmap bitcrusher: fractional bit reduction from 24 bits down to 1 bit, sample-rate reduction and sample-rate modulation with triangle, square and random waveforms, plus a blend control and expression/CV control of the sample rate. Mono, true bypass, 9 V DC.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20161013161002/http://www.redpandalab.com/products/bitmap",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/bitmap_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-bitmap-2",
+    "brand": "Red Panda",
+    "name": "Bitmap 2",
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "image": "red-panda-bitmap-2.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "bitcrusher",
+      "distortion",
+      "filter"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "notes": "Bitmap 2 expands the original bitcrusher with waveshaping, wavefolding and a window comparator, fractional bit reduction from 24 bits to 1 bit, sample-rate reduction from 48 kHz to 110 Hz and sample-rate modulation. Stereo TRS I/O, presets, expression/remote control and USB/TRS MIDI.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/bitmap",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Bitmap%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-buffer",
+    "brand": "Red Panda",
+    "name": "Buffer",
+    "widthCm": 5.08,
+    "heightCm": 3.81,
+    "image": "red-panda-buffer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "buffer",
+      "utility"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "notes": "Compact always-on buffer using a low-noise Burr-Brown op amp, intended to prevent high-frequency loss at the start of a long pedal chain or before a long cable run. Mono, 9-18 V DC, no footswitch.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/buffer.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-context",
+    "brand": "Red Panda",
+    "name": "Context",
+    "widthCm": 9.4,
+    "heightCm": 11.94,
+    "image": "red-panda-context.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb",
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.2,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.8,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "notes": "First-generation Context reverb with six algorithms (room, hall, cathedral, gated, plate and delay-plus-reverb), separate high/low damping, pre-delay and an internal trails switch. Mono, true bypass with trails off, expression/CV control.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20181203191321/http://www.redpandalab.com/products/context",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/context_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-context-2",
+    "brand": "Red Panda",
+    "name": "Context 2",
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "image": "red-panda-context-2.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb",
+      "delay",
+      "tremolo"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "notes": "Context 2 is a stereo reverb and delay with eight algorithms including room, hall, cathedral, gated, reverse, plate, spring and granular reverb. Each algorithm has low/high damping, pre-delay, modulation, dynamics, infinite hold and a switchable delay; spring mode adds tremolo.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/context",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Context%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-mixer",
+    "brand": "Red Panda",
+    "name": "Mixer",
+    "widthCm": 11.18,
+    "heightCm": 6.6,
+    "image": "red-panda-mixer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "mixer",
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.1,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.35,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.6,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.85,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40
+    },
+    "notes": "Small always-on two-input mono mixer for pedalboards: combine instruments into one amp, sum parallel effect chains, or create a clean analog dry blend. Each input has its own level control; 9-18 V DC.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/mixer.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-particle",
+    "brand": "Red Panda",
+    "name": "Particle",
+    "widthCm": 9.4,
+    "heightCm": 11.94,
+    "image": "red-panda-particle.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "pos": 0.15,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "pos": 0.85,
+        "stereo": false,
+        "approximate": true
+      },
+      {
+        "kind": "exp",
+        "edge": "left",
+        "pos": 0.5,
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "notes": "The original Particle granular delay/pitch shifter, released in 2011. It slices the input into 15-250 ms grains and rearranges or pitch-shifts them across eight modes, with freeze, expression/CV control, true bypass and a fully analog dry path.",
+    "year": 2011,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20171201193034/http://www.redpandalab.com/products/particle",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/particle_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/products/particle",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-particle-v2",
+    "brand": "Red Panda",
+    "name": "Particle V2",
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "image": "red-panda-particle-v2.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "notes": "Particle 2 is a stereo granular delay and pitch shifter with five delay modes and three pitch modes, +/-1 octave shifting, 0-2.5 s delay, adjustable grain size/density, freeze, presets and full MIDI control. It adds stereo I/O, higher fidelity and a smaller enclosure over the original.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/particle",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Particle%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-radius",
+    "brand": "Red Panda",
+    "name": "Radius",
+    "widthCm": 7.87,
+    "heightCm": 12.07,
+    "image": "red-panda-radius.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "ring-mod",
+      "tremolo"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200
+    },
+    "notes": "Radius is a stereo ring modulator and frequency shifter built on an eight-quadrant multiplier algorithm, with continuous blending between ring mod and frequency shifting, selectable 2x upper/lower sidebands, pitch tracking, a push-to-tune carrier and a multi-waveform LFO/step sequencer. MIDI-playable carrier, 96 kHz processing and expression/MIDI control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/radius",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Radius%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-raster",
+    "brand": "Red Panda",
+    "name": "Raster",
+    "widthCm": 8.38,
+    "heightCm": 11.18,
+    "image": "red-panda-raster.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "notes": "Original Raster: a digital delay with a pitch/phase/frequency shifter in the feedback loop, up to 750 ms delay, three shift modes and three feedback types. Mono, true bypass, expression/CV control; the later Raster 2 added stereo I/O, USB MIDI and a larger feature set.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20201028205309/http://www.redpandalab.com/products/raster",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/raster_instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-raster-2",
+    "brand": "Red Panda",
+    "name": "Raster 2",
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "image": "red-panda-raster-2.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "notes": "Raster 2 is a stereo digital delay with pitch and frequency shifting in the feedback loop: up to 1600 ms delay (3200 ms forward via the editor), +/-12 semitone shifting, detune and phase/frequency shifting, reverse delay, seven modulation waveforms, and series/parallel/ping-pong routing. MIDI clock, presets and a web editor.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/raster",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Raster%202%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-rd-1-pitch-delay",
+    "brand": "Red Panda",
+    "name": "RD-1 Pitch Delay",
+    "widthCm": 6.1,
+    "heightCm": 11.18,
+    "image": "red-panda-rd-1-pitch-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 125
+    },
+    "notes": "RD-1 is a compact mono digital delay distilled from the Raster, adding three shift modes: chromatic +/-12 semitones, continuous detune from a fourth down to a major third up, and frequency shifting to +/-500 Hz. Delay runs to 1200 ms (2400 ms in reverse), with assignable expression/tap control and USB-C firmware updates. No MIDI or presets.",
+    "year": 2026,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/rd-1-pitch-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/red_panda_rd_1_pitch_delay.htm",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-remote-4",
+    "brand": "Red Panda",
+    "name": "Remote 4",
+    "widthCm": 25.4,
+    "heightCm": 6.99,
+    "image": "red-panda-remote-4.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "ctrl",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "notes": "Passive four-footswitch remote for Red Panda pedals, connected with a 1/4 in TRS cable. It provides four modes per host pedal for preset recall, bypass, tap tempo, hold/freeze and looper functions, with erasable scribble strips. No power required.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/remote-4.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Remote%204%20QuickStart.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red-panda-tensor",
+    "brand": "Red Panda",
+    "name": "Tensor",
+    "widthCm": 7.75,
+    "heightCm": 12.07,
+    "image": "red-panda-tensor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "looper"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "notes": "Tensor is a real-time time-warp pedal: reverse, tape stop/start, speed and pitch changes, time stretching from 1:4 to 4:1, and looping/overdub up to 9.4 s (4.7 s in stereo). It is always listening, supports momentary or latching footswitches, expression/remote control and USB/TRS MIDI.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.redpandalab.com/products/tensor",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/content/docs/Tensor%20Owners%20Manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.redpandalab.com/downloads",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
   }
 ]
