@@ -23,6 +23,7 @@
 		"catalog:validate": "node --experimental-strip-types tools/catalog-pipeline/index.ts validate",
 		"catalog:check": "node --experimental-strip-types tools/catalog-pipeline/index.ts check",
 		"catalog:check-jacks": "node --experimental-strip-types tools/catalog-pipeline/index.ts check-jacks",
+		"catalog:check-images": "node --experimental-strip-types tools/catalog-pipeline/index.ts check-images",
 		"catalog:demo-link": "node --experimental-strip-types tools/catalog-demo/index.ts",
 		"catalog:ci": "node --experimental-strip-types tools/catalog-pipeline/index.ts ci",
 		"catalog:post-merge": "node --experimental-strip-types tools/catalog-pipeline/index.ts post-merge",

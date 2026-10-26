@@ -3,6 +3,11 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { buildCatalog, buildForCi, checkDrift } from "./build.ts";
 import { formatCounts } from "./caps.ts";
+import {
+	checkImageProvenanceFiles,
+	formatImageProvenanceIssues,
+	formatImageProvenanceWarnings,
+} from "./check-images.ts";
 import { checkJackLayoutFiles, formatJackLayoutIssues } from "./check-jacks.ts";
 import { runDryRun } from "./dry-run.ts";
 import { formatGuardViolations, guardBatchPr } from "./guard.ts";
@@ -16,6 +21,7 @@ Usage:
                            [--json <file>] [--skip-assets] [--skip-caps]
   catalog-pipeline check [--root <dir>]
   catalog-pipeline check-jacks [--root <dir>]
+  catalog-pipeline check-images [--root <dir>]
   catalog-pipeline ci [--root <dir>]
   catalog-pipeline post-merge [--root <dir>]
   catalog-pipeline guard-batch-pr [--base <ref>] [--allow-pipeline]
@@ -168,15 +174,38 @@ async function runCheckJacks(args: Args): Promise<void> {
 	);
 }
 
+async function runCheckImages(args: Args): Promise<void> {
+	const result = await checkImageProvenanceFiles(args.root);
+	if (result.warnings.length > 0) {
+		console.warn(formatImageProvenanceWarnings(result.warnings));
+	}
+	if (result.issues.length > 0) {
+		console.error(formatImageProvenanceIssues(result.issues));
+		process.exitCode = 1;
+		return;
+	}
+	console.log(
+		`image provenance verified (${result.files} raw file(s), ${result.warnings.length} pending replacement(s))`,
+	);
+}
+
 async function runCi(args: Args): Promise<void> {
 	const jackCheck = await checkJackLayoutFiles(args.root);
 	if (jackCheck.issues.length > 0) {
 		throw new Error(formatJackLayoutIssues(jackCheck.issues));
 	}
+	const imageCheck = await checkImageProvenanceFiles(args.root);
+	if (imageCheck.warnings.length > 0) {
+		console.warn(formatImageProvenanceWarnings(imageCheck.warnings));
+	}
+	if (imageCheck.issues.length > 0) {
+		throw new Error(formatImageProvenanceIssues(imageCheck.issues));
+	}
 	const result = await buildForCi({ root: args.root });
 	console.log(
 		`catalog ci: validated ${result.pedals.length} pedals / ${result.boards.length} boards; ` +
 			`jack layouts verified (${jackCheck.files} raw file(s)); ` +
+			`image provenance verified (${imageCheck.warnings.length} pending); ` +
 			"uncommitted runtime updated for the app/Playwright",
 	);
 }
@@ -254,6 +283,9 @@ async function main(): Promise<void> {
 			return;
 		case "check-jacks":
 			await runCheckJacks(args);
+			return;
+		case "check-images":
+			await runCheckImages(args);
 			return;
 		case "ci":
 			await runCi(args);
