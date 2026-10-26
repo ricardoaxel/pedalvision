@@ -1,6 +1,6 @@
 # P5-03: Pedaltrain — Nano family boards batch 1 (Nano / Nano+ / Nano MAX)
 
-**Phase:** P5 · **Status:** in review — PR #45 · **Model:** build-strong
+**Phase:** P5 · **Status:** done — merged PR #45 (squash `535d972`) · **Model:** build-strong
 
 > Board research batch. This session writes the raw records + this task file only;
 > image selection/hosting is left to the image scout (no images downloaded).

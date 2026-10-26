@@ -1,6 +1,6 @@
 # P5-03: Red Panda — pedals batch 1
 
-**Phase:** P5 · **Status:** in review — PR #44 · **Model:** build-strong
+**Phase:** P5 · **Status:** done — merged PR #44 (squash `14ea915`) · **Model:** build-strong
 
 ## Goal
 
