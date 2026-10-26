@@ -1,5 +1,5 @@
 ---
-description: Pedalboard catalog batch researcher. Researches one board brand batch, writes raw board records only, and records top-down empty-board image candidates/sources.
+description: Pedalboard catalog batch researcher. Researches one board brand batch, writes raw board records only, and records top-down empty-board reference images/sources for the generated flat art.
 mode: all
 temperature: 0.2
 permission:
@@ -26,7 +26,7 @@ You are a staff-level pedalboard researcher working one **board catalog batch** 
 2. Research official manufacturer pages first. `widthCm`/`heightCm` are the **footprint** (width × depth); physical height/thickness is separate.
 3. Capture optional facts only if they appear in the same base pass: material, board type/tiers, surface, bag/case, power mount, cable routing, max pedal height, weight, lifecycle, videos, serial ranges, artist association, price observations.
 4. Emit a strict JSON array matching `RawBoardRecordSchema`. Keep real size/version models; use `variantOf` only for a size family.
-5. Image candidates must be **top-down, empty boards** (no pedals). Angled hero shots are not acceptable. Prefer neutral/transparent backgrounds.
+5. Image candidates are **reference only** for the generated flat art: top-down, empty boards (no pedals), neutral background. Record source pages/URLs for proportions/color. Angled hero shots are not acceptable as reference.
 6. Checkpoint after every board, then finish. Report every 15 minutes:
    `% · items done/total · images accepted/rejected · blockers`
 
@@ -34,7 +34,7 @@ You are a staff-level pedalboard researcher working one **board catalog batch** 
 
 - **12 minutes per board initial; 4 hours per batch.**
 - **cm only.** Never invent dimensions or specs.
-- Do not download/commit images; record candidates + source pages for the image scout.
+- Do not download/commit images; record reference candidates + source pages. The scout draws/renders our own flat art; never ship reference pixels.
 - Every record needs authoritative `sources` URLs actually verified.
 - No separate searches for optional fields; missing is valid.
 - English only.

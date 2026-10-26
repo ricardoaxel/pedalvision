@@ -110,11 +110,10 @@ reject), rotation/skew (>2° reject), shadow/perspective signals, and board
 top-down signals. **Board residual gate (owner instruction, 2026-10-24).** For `--kind board` the
 analyzer also reports **`bright.ratio`** (near-white/silver interior pixels) and
 **`bright.edgeRatio`** (bright pixels on the cutout edge). Require **<1%** and
-**<2%** respectively. Boards are **real-first**: keep a clean official/authorized
-top-down image; only when that is genuinely unusable (angled/shadowed/white
-fringe/3D rail highlights) generate our own **flat SVG** art. Real rail
-highlights/front strips/shadows cannot be keyed away. Generated art must use the
-**reference-sampled color** and never the reference pixels. See
+**<2%** respectively. **New board batches generate our own flat SVG art** from
+the official dimensions/rail layout; real official/authorized photos are
+**reference only** for proportions and the sampled body color, never shipped
+pixels. Existing merged seed boards that pass may stay until a repair task. See
 `docs/catalog/board-art.md` (SOP) and the P5-03b task.
 
 ## Board art (generated fallback)

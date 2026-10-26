@@ -1,7 +1,8 @@
 # Board art SOP (P5-03)
 
 **Audience:** any future agent/designer adding or repairing a pedalboard image.
-**Status:** mandatory for board assets. Pedals do **not** use this path — pedals
+**Status:** mandatory for board assets. **New board batches ship our own flat
+art** (owner instruction, 2026-10-25). Pedals do **not** use this path — pedals
 stay on the real-image pipeline (official/authorized photo → clean cutout →
 body-crop → AVIF).
 
@@ -9,21 +10,28 @@ body-crop → AVIF).
 > contains the raw record + the two AVIFs + the task file. Never merge your own
 > PR.
 
-## 1. Decide: real or generated
+## 1. Generate our own flat art (default for new board batches)
 
 ```
-clean real image (top-down, empty, transparent/neutral, no 3D rail highlights,
-no shadow/white/bg fringe, passes asset:analyze + design review)
-    → KEEP THE REAL IMAGE. Done.
-
-else (angled, shadowed, white-background, faded, bright rail tops, or otherwise
-      impossible to key cleanly)
-    → GENERATE our own flat board art (this SOP). Real images remain first.
+new board batch
+    → sample the reference color
+    → draw a flat SVG from the official dimensions/rail layout
+    → render 800/350 AVIF
+    → analyzer + vision + app QA
 ```
 
-**Source hierarchy:** official brand/product/press → authorized retailer →
-existing public catalog. A planner/third-party image may be used only as a
-**very last resort for proportions/color**, and its pixels are **never** shipped.
+Real official/authorized photos are **reference only**: use them to measure the
+footprint/rail layout and to sample the body color. **Their pixels are never
+shipped.** Existing merged seed boards that passed the real-image gate may stay
+until a repair task (see §7); new batches do not “keep the real image”.
+
+**Source hierarchy (reference only):** official brand/product/press →
+authorized retailer → existing public catalog. A planner/third-party image may
+be used only as a **very last resort for proportions/color**, and its pixels are
+**never** shipped.
+
+**Family batches:** keep one family template and a per-size SVG, and use one
+reference-sampled family color for consistency (record it in each raw record).
 
 ## 2. Sample the reference color
 
@@ -101,7 +109,8 @@ Then:
 
 ## 7. Existing-board repair (P5-03b)
 
-`docs/tasks/P5-03-board-image-repair.md` is the real-first audit/repair batch:
+`docs/tasks/P5-03-board-image-repair.md` is the **existing-board exception**
+(merged seed boards may keep a clean real image that passes):
 - **Keep** the seed boards that pass (Aclam, Blackbird, Creation, Fame as of the
   pilot).
 - **Repair only** the failures (BOSS, Boardmods, Caseman, D'Addario, Donner,
@@ -112,9 +121,9 @@ Then:
 
 ## Checklist
 
-- [ ] Real image checked first and rejected for a documented pixel reason.
+- [ ] Reference image used for proportions/color; **no reference pixels shipped**.
 - [ ] Color sampled with `asset:board-color`; median hex used.
-- [ ] Official footprint/layout; reference used for proportions only.
+- [ ] Official footprint/layout; reference used for proportions only; family color sampled once for consistency.
 - [ ] SVG has `<title>`, transparent openings, smooth 4–5px corners, no brand
       line unless in the reference.
 - [ ] `asset:board-art` rendered 800/350 AVIF q90 + PNG reference.

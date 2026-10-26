@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="222" viewBox="0 0 800 222">
+  <title>Pedaltrain Nano+ flat board</title>
+  <defs>
+    <mask id="boardMask">
+      <rect width="800" height="222" fill="white"/>
+      <rect x="112" y="89" width="576" height="44" rx="3" fill="black"/>
+    </mask>
+    <clipPath id="boardClip">
+      <rect width="800" height="222" rx="4"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#boardClip)">
+    <rect width="800" height="222" fill="#0f0f11" mask="url(#boardMask)"/>
+    <g fill="none" stroke="#2a2a2a" stroke-width="1">
+      <rect x="112" y="89" width="576" height="44" rx="3"/>
+      <rect x="0.5" y="0.5" width="799" height="221" rx="3.5"/>
+    </g>
+  </g>
+</svg>
