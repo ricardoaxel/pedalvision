@@ -460,6 +460,40 @@ public/pedal-assets/**                              # final assets
 - **Status message every 15 minutes**; hard per-pedal limit 12 min (initial),
   per-batch 4 h of active time (paused gaps excluded); tune after the pilot.
 
+### Parallel waves (`catalog:wave`)
+
+The coordinator launches a wave with a plan file (1–3 batches; normal max is 3):
+
+```json
+{
+  "id": "boss-wave-2",
+  "maxParallel": 3,
+  "batches": [
+    {
+      "batch": "boss/boss-2",
+      "kind": "pedals",
+      "brand": "BOSS",
+      "total": 26,
+      "worktree": "../pedalvision-p5-03-boss-2",
+      "branch": "p5-03-pedals-boss-2",
+      "promptFile": "../prompts/boss-2.md"
+    }
+  ]
+}
+```
+
+```bash
+pnpm catalog:wave run --plan work/catalog/waves/boss-wave-2.json   # detached
+pnpm catalog:wave status --wave boss-wave-2 --wait                 # blocks until done
+pnpm catalog:wave report --wave boss-wave-2
+```
+
+- The wrapper **starts the batch state** (`catalog:start`) and then runs `opencode run --auto --format json` under `catalog-runner supervise`, so the session must **not** call `catalog:start`; the plan prompt must say so.
+- It starts **2** batches; the third starts only when the first is past midpoint, has used ≤40% of the soft budget and is sustaining ≥2 items/h (`canStartNext`). Max 3 in flight.
+- Each batch's JSONL, log and the wave `report.md`/`state.json` live in `work/catalog/waves/<id>/`. The report has one line per batch (items/images/checkpoint tokens/main-session token floor/minutes/PR/CI) plus the session's final text.
+- The wrapper never merges and never opens PRs; each session owns its branch/worktree and exactly one PR. On pause/stop/cap it stops launching and reports; the supervised session honours the stop.
+- `opencode run --format json` is an external contract: the aggregator ignores unknown events, marks a run without `step_finish` as `partial`, and surfaces error events; a parse failure is never reported as success.
+
 ## Execution
 
 1. **P5-01** policy, data contract, inventory, schema, 2k cap.
