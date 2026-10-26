@@ -41,7 +41,7 @@ official `_top_gal` rear-connector strip, not the top face; the hi-res support-z
 `F` image is top-down but its light-grey card/shadow did not pass the clean-alpha
 gate, so they stay pending.
 
-### Pending (31 pedals + 1 board)
+### Pending (31 pedals; Temple is own art)
 
 - **29 vintage/current pedals** with no usable official flat top-down (retired
   product pages; the 40th-anniversary promo PNGs are only 400 px): AC-2, BF-2B,
@@ -50,12 +50,14 @@ gate, so they stay pending.
   FV-500, FZ-2, FZ-3.
 - **ES-5, ES-8**: top face exists in the hi-res support zip but the matte left a
   light-grey card/shadow; kept pending rather than shipping an unclean cutout.
-- **Temple Audio Duo 24 board**: pre-existing board-pilot planner asset; boards must
-  ship our own generated flat art. Marked `pending-replacement`; board-art follow-up.
+- **Temple Audio Duo 24 board**: already our own generated flat art (PR #41); the
+  planner/photo references are proportions/colour only. Marked `own`; no pending
+  replacement.
 
-Each pending record keeps its current asset, carries `imageProvenance: { kind:
-"planner", status: "pending-replacement", note }`, and is listed here so the next
-task can finish them with retailer/user images or generated flat art.
+Each pending record keeps its current legacy asset, carries `imageProvenance:
+{ kind: "legacy", status: "pending-replacement", note }` with no recorded source,
+and is listed here so the next task can finish them with retailer/user images or
+generated flat art.
 
 ### Policy + registry + gate
 
@@ -86,7 +88,7 @@ task can finish them with retailer/user images or generated flat art.
 | --- | --- |
 | Analyzer tests | 12/12 (shape taper + real BOSS fixture) |
 | Raw schema | 26 tests (incl. typed `imageProvenance`) |
-| `catalog:ci` | **270 pedals / 15 boards**; jacks green; **32 pending** image provenances |
+| `catalog:ci` | **270 pedals / 15 boards**; jacks green; **31 pending** legacy image provenances |
 | `catalog:validate` | green (178 items / 386 files / 21.3 MB; boards 15 / 30 / 2.0 MB) |
 | `catalog:guard-batch-pr --allow-pipeline` | clean |
 | `pnpm lint` / `typecheck` / `test` / `build` | green (4 pre-existing warnings; test 84 files) |
@@ -111,5 +113,4 @@ repair request and the source change.
 ## Follow-ups (not in this PR)
 
 - Replace the 31 pending assets (retailer/user or generated flat pedal art).
-- Repair the Temple Duo 24 board with generated flat art.
 - If a future official support zip has a clean `T`/`F` top face, re-check ES-5/ES-8.

@@ -115,7 +115,13 @@ function assertRecordFacts(batch: RawBatch): void {
 	for (const record of batch.records) {
 		const hasImageSource =
 			record.sources?.some((source) => source.kind.includes("image")) ?? false;
-		if (!hasImageSource) {
+		// A legacy asset kept as pending-replacement intentionally has no recorded
+		// source (we are not citing the third-party source). It must be replaced.
+		const legacyPending =
+			record.imageProvenance?.kind === "legacy" &&
+			(record.imageProvenance.status === "pending-replacement" ||
+				record.imageProvenance.status === "owner-approved-edge-case");
+		if (!hasImageSource && !legacyPending) {
 			throw new Error(
 				`${batch.relativePath}: "${record.id}" needs a sources[] entry with kind "image"`,
 			);

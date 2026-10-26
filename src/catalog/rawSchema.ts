@@ -212,6 +212,7 @@ export const RAW_IMAGE_SOURCE_KINDS = [
 	"community",
 	"own",
 	"archive",
+	"legacy",
 	"planner",
 ] as const;
 

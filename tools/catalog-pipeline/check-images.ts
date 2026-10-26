@@ -72,6 +72,20 @@ export function checkImageProvenance(
 					message:
 						"imageProvenance.kind=planner but no planner URL is referenced; update the provenance",
 				});
+			} else if (provenance?.kind === "legacy") {
+				if (provenance.status === "pending-replacement") {
+					warnings.push({
+						file,
+						id: record.id,
+						message: "legacy asset is pending replacement (no recorded source)",
+					});
+				} else if (provenance.status !== "owner-approved-edge-case") {
+					issues.push({
+						file,
+						id: record.id,
+						message: "legacy asset must be pending-replacement or replaced",
+					});
+				}
 			}
 			continue;
 		}

@@ -84,6 +84,21 @@ describe("image provenance gate", () => {
 		expect(warnings).toHaveLength(0);
 	});
 
+	it("warns on a legacy pending asset and rejects a chosen legacy", () => {
+		const pending = checkImageProvenance([
+			{
+				id: "x",
+				imageProvenance: { kind: "legacy", status: "pending-replacement" },
+			},
+		]);
+		expect(pending.issues).toHaveLength(0);
+		expect(pending.warnings).toHaveLength(1);
+		const chosen = checkImageProvenance([
+			{ id: "x", imageProvenance: { kind: "legacy", status: "chosen" } },
+		]);
+		expect(chosen.issues).toHaveLength(1);
+	});
+
 	it("checks imageProvenance.sourceUrl too", () => {
 		const { issues } = checkImageProvenance([
 			{

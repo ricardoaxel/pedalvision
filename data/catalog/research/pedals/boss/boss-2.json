@@ -106,23 +106,11 @@
           "info",
           "image"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -139,12 +127,12 @@
       "battery": "9 V battery",
       "jackEvidence": "Audio jacks side-mounted (left/right); DC IN top/rear.",
       "imageProcessing": "Pedalplayground transparent cutout upscaled from 350x621 to 451x800 (lanczos), --matte none, AVIF q80. Analyzer perspective flag is the BOSS silhouette false positive.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -408,23 +396,11 @@
           "info",
           "image"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc3.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc3.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product03.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -444,12 +420,12 @@
       "circuit": "Digital",
       "battery": "9 V battery",
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -559,23 +535,11 @@
           "info",
           "image"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd2.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -594,12 +558,12 @@
       "battery": "9 V battery",
       "delayTimeMs": "12.5–800 ms",
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -1465,23 +1429,11 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd5.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd5.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/assets/images/products/main/dd5_2_main.jpg",
         "sourcePage": "https://www.boss.info/global/products/dd-5/",
@@ -1500,12 +1452,12 @@
       "circuit": "Digital",
       "battery": "9 V battery",
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -2339,23 +2291,11 @@
           "info",
           "image"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-df2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-df2.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/df_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -2374,12 +2314,12 @@
       "circuit": "Analog",
       "battery": "9 V battery",
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -2685,23 +2625,11 @@
           "info",
           "image"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -2720,12 +2648,12 @@
       "battery": "9 V battery",
       "delayTimeMs": "20–300 ms",
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -2996,23 +2924,11 @@
           "info",
           "image"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm3.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm3.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product03.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -3031,12 +2947,12 @@
       "battery": "9 V battery",
       "delayTimeMs": "20–300 ms",
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -3400,23 +3316,11 @@
         "kind": [
           "info"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds14a.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds14a.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsa_product01.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -3436,12 +3340,12 @@
       "battery": "9 V battery",
       "limitedEdition": true,
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -3540,12 +3444,6 @@
         ]
       },
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1wh.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
         "url": "https://www.livesoundworks.com/product/boss-ds-1-wh-limited-edition-distortion-pedal-pearl-white",
         "kind": [
           "info",
@@ -3556,12 +3454,6 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1wh.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://media.rainpos.com/10263/DS_1_WH.jpg",
         "sourcePage": "https://www.boss.info/global/products/ds-1/",
@@ -3581,12 +3473,12 @@
       "battery": "9 V battery",
       "limitedEdition": true,
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   },
   {
@@ -4108,23 +4000,11 @@
           "info",
           "image"
         ]
-      },
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dsd2.png",
-        "kind": [
-          "image"
-        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
-      {
-        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dsd2.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
-      },
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsd_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
@@ -4144,12 +4024,12 @@
       "battery": "9 V battery",
       "samplingTimeMs": "200–800 ms",
       "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)"
+      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
     },
     "imageProvenance": {
-      "kind": "planner",
+      "kind": "legacy",
       "status": "pending-replacement",
-      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+      "note": "Legacy asset; source not recorded; replacement pending."
     }
   }
 ]
