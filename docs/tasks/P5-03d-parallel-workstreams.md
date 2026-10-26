@@ -1,6 +1,6 @@
 # P5-03d — Parallel feature + catalog workstreams (T-0b)
 
-**Phase:** P5 · **Status:** in review — PR #TBD (docs-only) · **Type:** plan/rules (docs-only) · **Depends on:** T-0a (true billed token metric)
+**Phase:** P5 · **Status:** in review — PR #54 (docs-only) · **Type:** plan/rules (docs-only) · **Depends on:** T-0a (true billed token metric)
 
 ## Purpose
 
