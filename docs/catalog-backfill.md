@@ -332,10 +332,16 @@ depth); physical thickness/height is separate.
   `extra`.
 
 ### Board images
-- **Source priority:** official brand/press page → authorized retailer → existing public catalog. **Pedalplayground/planner images are a very last resort only (owner instruction, 2026-10-24)** — try the official board-only shots and authorized-retailer product images first; never use a planner image just for a clean look.
-- Prefer **top-down, empty board** images (no pedals) so true scale is clear; a
-  transparent/neutral background is ideal. Angled hero shots are rejected or
-  re-sourced.
+- **Generated-by-default (owner instruction, 2026-10-25):** new board batches ship
+  our own flat art drawn from the official dimensions/rail layout. Official and
+  authorized-retailer top-down empty-board photos are **reference only** for
+  proportions and the sampled body color; their pixels are never shipped.
+  Existing merged seed boards that passed the real-image gate may stay until a
+  repair task. A planner/third-party reference is a very last resort for
+  proportions/color only — never pixels.
+- Prefer **top-down, empty board** reference images (no pedals) so true scale is
+  clear; a transparent/neutral background is ideal. Angled hero shots are rejected
+  as reference.
 - Aspect check uses `widthCm / heightCm` (footprint); perspective distortion is
   a reject signal.
 - Both 800/350 renditions, same as pedals.
