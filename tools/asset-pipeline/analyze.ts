@@ -189,8 +189,9 @@ function isTopDownTaper(
 	aspect: AspectVerdict,
 ): boolean {
 	if (flatness === null || rotationDeg === null) return false;
-	// A flat top edge + no skew means the width change is the enclosure shape,
-	// not camera tilt. Aspect still has to agree with the cm footprint.
+	// Flat top + no skew + an aspect that matches the footprint is strong
+	// evidence of an enclosure taper; a mild straight-on tilt can look the same,
+	// so the contact-sheet reviewer remains the final check.
 	return flatness <= 0.02 && rotationDeg <= 2 && aspect !== "reject";
 }
 

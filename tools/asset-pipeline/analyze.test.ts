@@ -278,15 +278,6 @@ describe("image analyzer", () => {
 			await bossTrapezoid({ unevenTop: true }),
 			{ kind: "pedal", ...footprint },
 		);
-		console.log(
-			"DEBUG2",
-			JSON.stringify({
-				shape: result.shapeTaper,
-				rot: result.rotationDeg,
-				p: result.perspectiveError,
-				reasons: result.reasons,
-			}),
-		);
 		expect(result.shapeTaper).toBe(false);
 		expect(result.verdict).toBe("flag");
 		expect(result.reasons.join(" ")).toMatch(/flag:possible perspective/);
