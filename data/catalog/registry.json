@@ -1,6 +1,17 @@
 {
   "version": 1,
   "pedals": {
+    "boss": {
+      "brand": "BOSS",
+      "batches": [
+        {
+          "batch": "boss-1",
+          "raw": "data/catalog/research/pedals/boss/boss-1.json",
+          "mapped": "data/catalog/pedals/boss/boss-1.json",
+          "items": 26
+        }
+      ]
+    },
     "jhs": {
       "brand": "JHS",
       "batches": [

@@ -1,0 +1,1449 @@
+[
+  {
+    "id": "boss-ac-2-acoustic-simulator",
+    "brand": "BOSS",
+    "name": "AC-2 Acoustic Simulator",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ac-2-acoustic-simulator.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "acoustic-sim"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18
+    },
+    "usage": "guitar",
+    "notes": "Compact acoustic simulator with four body types and an EXP/CTL jack; runs on a 9 V battery or AC adaptor.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ac-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AC-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ac2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ac-3-acoustic-simulator",
+    "brand": "BOSS",
+    "name": "AC-3 Acoustic Simulator",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ac-3-acoustic-simulator.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "acoustic-sim"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "notes": "Acoustic simulator with MODE/TOP/BODY/REVERB controls, separate LINE OUT and G.AMP OUT jacks, and a buffered bypass.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ac-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AC-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ac3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ad-2-acoustic-preamp",
+    "brand": "BOSS",
+    "name": "AD-2 Acoustic Preamp",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ad-2-acoustic-preamp.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "preamp"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Acoustic preamp with ACOUSTIC RESONANCE, AMBIENCE and NOTCH controls; the balanced TRS LINE OUT doubles as a direct out.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ad-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AD-2_M_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ad2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-aw-3-dynamic-wah",
+    "brand": "BOSS",
+    "name": "AW-3 Dynamic Wah",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-aw-3-dynamic-wah.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "wah"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "exp",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "both",
+    "notes": "Dynamic wah with separate GUITAR IN and BASS IN jacks and an EXP/CTL jack for expression pedal or footswitch control.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/aw-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/AW-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-aw3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bb-1x-bass-driver",
+    "brand": "BOSS",
+    "name": "BB-1X Bass Driver",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bb-1x-bass-driver.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "bass",
+    "notes": "Bass driver with LEVEL/BLEND/LOW/HIGH/DRIVE controls and a balanced TRS LINE OUT for mixer or recording use.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bb-1x/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BB-1X_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bb1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bc-1x-bass-compressor",
+    "brand": "BOSS",
+    "name": "BC-1X Bass Compressor",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bc-1x-bass-compressor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 90
+    },
+    "usage": "bass",
+    "notes": "Bass compressor with THRESHOLD/RATIO/RELEASE/LEVEL controls and a GAIN REDUCTION indicator; internally runs an 18 V working voltage from a 9 V supply.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bc-1x/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BC-1X_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bc1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bc-2-combo-drive",
+    "brand": "BOSS",
+    "name": "BC-2 Combo Drive",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bc-2-combo-drive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45
+    },
+    "usage": "guitar",
+    "notes": "Combo-drive overdrive voiced after a British combo amp, with a single level and drive control set.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bc-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BC-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bc2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bd-2-blues-driver",
+    "brand": "BOSS",
+    "name": "BD-2 Blues Driver",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bd-2-blues-driver.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Analog overdrive with GAIN/TONE/LEVEL controls, designed for amp-like touch response; the input jack doubles as the power switch.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bd-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BD-2_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bd-2w-blues-driver-waza-craft",
+    "brand": "BOSS",
+    "name": "BD-2W Blues Driver (Waza Craft)",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bd-2w-blues-driver-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft edition of the BD-2 with a Standard/Custom mode switch and premium analog components.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bd-2w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BD-2W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bd2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bf-2-flanger",
+    "brand": "BOSS",
+    "name": "BF-2 Flanger",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-bf-2-flanger.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "notes": "Vintage analog flanger with MANUAL/DEPTH/RATE/RESONANCE controls; the original BOSS compact enclosure is 70 x 125 mm.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bf-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BF-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bf-2b-bass-flanger",
+    "brand": "BOSS",
+    "name": "BF-2B Bass Flanger",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-bf-2b-bass-flanger.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14
+    },
+    "usage": "bass",
+    "notes": "Bass-voiced version of the BF-2 flanger in the vintage 70 x 125 mm BOSS compact enclosure.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bf-2b/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BF-2B_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf2b.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bf-3-flanger",
+    "brand": "BOSS",
+    "name": "BF-3 Flanger",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bf-3-flanger.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "both",
+    "notes": "Stereo flanger with separate GUITAR IN and BASS IN jacks, OUTPUT A (mono) and OUTPUT B, and buffered bypass.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bf-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BF-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bf3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-bp-1w-booster-preamp-waza-craft",
+    "brand": "BOSS",
+    "name": "BP-1W Booster/Preamp (Waza Craft)",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-bp-1w-booster-preamp-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft booster/preamp with GAIN and LEVEL controls, a MODE switch and a STD/VTG BUFFER switch.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/bp-1w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/BP-1W_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-bp1w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ce-1-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-1 Chorus Ensemble",
+    "widthCm": 26,
+    "heightCm": 18,
+    "image": "boss-ce-1-chorus-ensemble.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "usage": "guitar",
+    "notes": "The original 1976 BOSS chorus ensemble, with Chorus and Vibrato modes, two outputs and mains power via an attached AC cord.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ce-2-chorus",
+    "brand": "BOSS",
+    "name": "CE-2 Chorus",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ce-2-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9
+    },
+    "usage": "guitar",
+    "notes": "The classic analog BOSS chorus in the vintage 70 x 125 mm compact enclosure, with RATE and DEPTH controls.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ce-20-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-20 Chorus Ensemble",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-ce-20-chorus-ensemble.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "send",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "return",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 160
+    },
+    "usage": "both",
+    "notes": "Twin-footswitch chorus ensemble with six chorus modes, a send/return loop and separate guitar/bass input and guitar-amp output.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-20/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-20_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce20.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ce-2b-bass-chorus",
+    "brand": "BOSS",
+    "name": "CE-2B Bass Chorus",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ce-2b-bass-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "bass",
+    "notes": "Bass version of the CE-2 chorus in the vintage 70 x 125 mm compact enclosure.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-2b/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-2B_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2b.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ce-2w-chorus-waza-craft",
+    "brand": "BOSS",
+    "name": "CE-2W Chorus (Waza Craft)",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ce-2w-chorus-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft chorus with Standard, CE-1 Chorus and CE-1 Vibrato modes, stereo OUTPUT A/B jacks and buffered bypass.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-2w/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-2W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ce-3-chorus",
+    "brand": "BOSS",
+    "name": "CE-3 Chorus",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ce-3-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13
+    },
+    "usage": "guitar",
+    "notes": "Vintage chorus with RATE/DEPTH controls, a Stereo Mode switch and OUTPUT A/B jacks in the 70 x 125 mm enclosure.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ce-5-chorus-ensemble",
+    "brand": "BOSS",
+    "name": "CE-5 Chorus Ensemble",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ce-5-chorus-ensemble.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "notes": "Chorus ensemble with high/low filter, depth, rate and effect-level controls, plus stereo OUTPUT A/B jacks.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ce-5/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CE-5_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ce5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ceb-3-bass-chorus",
+    "brand": "BOSS",
+    "name": "CEB-3 Bass Chorus",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ceb-3-bass-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "bass",
+    "notes": "Bass chorus with DEPTH/RATE/LOW FILTER/E.LEVEL controls and stereo OUTPUT A (mono)/B jacks.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ceb-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CEB-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ceb3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ch-1-super-chorus",
+    "brand": "BOSS",
+    "name": "CH-1 Super Chorus",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-ch-1-super-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "notes": "Stereo chorus with DEPTH/RATE/EQ/E.LEVEL controls and OUTPUT A/B jacks for mono or stereo use.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ch-1/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CH-1_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-ch1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-cp-1x-compressor",
+    "brand": "BOSS",
+    "name": "CP-1X Compressor",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-cp-1x-compressor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 90
+    },
+    "usage": "guitar",
+    "notes": "Multi-dimensional-processing compressor with COMP/RATIO/ATTACK/LEVEL controls, a GAIN REDUCTION indicator and an 18 V internal working voltage.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/cp-1x/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cp1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-cs-2-compression-sustainer",
+    "brand": "BOSS",
+    "name": "CS-2 Compression Sustainer",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-cs-2-compression-sustainer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4
+    },
+    "usage": "guitar",
+    "notes": "Vintage compression sustainer with SUSTAIN/LEVEL/ATTACK controls in the 70 x 125 mm BOSS compact enclosure.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/cs-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CS-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cs2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-cs-3-compression-sustainer",
+    "brand": "BOSS",
+    "name": "CS-3 Compression Sustainer",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-cs-3-compression-sustainer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Compression sustainer with SUSTAIN/ATTACK/TONE/LEVEL controls and buffered bypass.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/cs-3/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/CS-3_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-cs3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-da-2-adaptive-distortion",
+    "brand": "BOSS",
+    "name": "DA-2 Adaptive Distortion",
+    "widthCm": 7.3,
+    "heightCm": 13.02,
+    "image": "boss-da-2-adaptive-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 45
+    },
+    "usage": "guitar",
+    "notes": "Adaptive distortion with LEVEL/LOW/HIGH/A-DIST controls; the A-DIST knob blends the adaptive distortion character.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/da-2/specifications/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/boss-da2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]
