@@ -74,9 +74,9 @@ describe("catalog:wave integration", () => {
 			[
 				"#!/bin/sh",
 				'echo \'{"type":"text","sessionID":"ses_fake","part":{"id":"p1","type":"text","text":"fake batch done"}}\'',
+				'echo \'{"type":"step_finish","sessionID":"ses_fake","part":{"id":"f1","type":"step-finish","tokens":{"total":1000},"cost":0.01}}\'',
 				`"${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts checkpoint --batch "$CATALOG_BATCH_ID" --item fake-1 --done 1 --images-accepted 1 --tokens 1000 >/dev/null 2>&1`,
 				`"${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts finish --batch "$CATALOG_BATCH_ID" >/dev/null 2>&1`,
-				'echo \'{"type":"step_finish","sessionID":"ses_fake","part":{"id":"f1","type":"step-finish","tokens":{"total":1000},"cost":0.01}}\'',
 			].join("\n"),
 		);
 		await chmod(join(bin, "opencode"), 0o755);

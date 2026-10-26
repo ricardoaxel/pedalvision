@@ -392,8 +392,15 @@ async function refresh(
 }
 
 async function finalizeBatch(root: string, run: WaveBatchRun): Promise<void> {
-	const source = await readFile(run.log, "utf8").catch(() => "");
-	const session = summarizeJsonl(source);
+	let source = await readFile(run.log, "utf8").catch(() => "");
+	let session = summarizeJsonl(source);
+	// The supervisor exits as soon as the child does; a final JSON line can race
+	// the read. A completed runner state + partial parse is worth one re-read.
+	if (session.parse !== "complete" && run.runner?.status === "complete") {
+		await sleep(200);
+		source = await readFile(run.log, "utf8").catch(() => "");
+		session = summarizeJsonl(source);
+	}
 	run.session = session;
 	const pr = resolvePr(run.branch, root);
 	if (pr) run.pr = pr;
