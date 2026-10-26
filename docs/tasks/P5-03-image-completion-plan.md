@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a in review (PR #53); T-0b in review (docs-only) · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b in review (docs-only, PR #54) · **Type:** plan/index (docs-only)
 
 ## Purpose
 
@@ -60,8 +60,8 @@ own task file — no need to re-paste the whole plan.
   needs the true-token gate **and** the PR cap). **≤2 PRs awaiting owner review across
   workstreams** (≤1 feature). Feature budgets: builder soft ≤400k / hard ≤800k, review
   allowance ≤300k, task hard ≤1.1M, 6 h; combined window soft ≤1.6M / hard ≤3.2M
-  billed non-cache. Catalog budgets unchanged. **Armed only after T-0a merges + the
-  T-2 calibration** (owner may waive the calibration). Full rules + matrix:
+  billed non-cache. Catalog budgets unchanged. **Armed after the T-2 calibration**
+  (T-0a is merged; owner may waive the calibration). Full rules + matrix:
   `docs/tasks/P5-03d-parallel-workstreams.md`.
 
 ## Parallel workstreams (T-0b) — ownership matrix
@@ -118,8 +118,8 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | # | Task | Scope | Depends on |
 |---|---|---|---|
 | **T-0** | This plan (docs-only) | **Merged (PR #52, squash `4a6f1e7`).** Plan + T-0a/T-1 task files; reconcile progress/roadmap/phase-guide/#50/#51 statuses; record token verdict. One PR. | — |
-| **T-0a** | Wave true-token gate | **In review (PR #53).** `catalog:wave`/runner gate + report use true billed tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk) pass 1 changes-required → pass 2 approve. | T-0 |
-| **T-0b** | Parallel feature + catalog workstreams (docs-only) | **In review (PR #54).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; ≤2 PRs awaiting review; feature/combined budgets; gated on T-0a + T-2 calibration. One PR. | T-0a |
+| **T-0a** | Wave true-token gate | **Merged (PR #53, squash `dee8b39`).** `catalog:wave`/runner gate + report use true billed tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk) pass 1 changes-required → pass 2 approve. | T-0 |
+| **T-0b** | Parallel feature + catalog workstreams (docs-only) | **In review (PR #54).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; ≤2 PRs awaiting review; feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
 | **T-1** | Pedal flat-art + promote-legacy | Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Designer proposal → owner approval → ≤2 visual passes → 1 light code review. One PR. | T-0 |
 | **T-2** | BOSS wave 3 | boss-4 (26 new) + boss/legacy-repair (31 existing) + boss-5 (26 new). 2-wide start (boss-4 + repair); boss-5 third on the true gate. Split repair 16+15 only if the first 8 items exceed ~6 min or need a third sheet. Include the 1 BOSS hotlinked seed if it falls in scope; otherwise clear it in T-7. One PR per batch. | T-0a, T-1 |
 | **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). 3-wide, third on gate. Re-baseline budgets from T-2 before launching. One PR per batch. | T-2 |
@@ -134,8 +134,8 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 
 ## Wave order
 
-1. **T-0** (merged) → **T-0a** (true-token gate) → **T-0b** (parallel-workstream rules,
-   armed after T-0a + the T-2 calibration) → **T-1** (pedal-art + promote-legacy).
+1. **T-0** (merged) → **T-0a** (merged) → **T-0b** (parallel-workstream rules,
+   armed after the T-2 calibration) → **T-1** (pedal-art + promote-legacy).
 2. **T-2 BOSS wave 3:** boss-4 + BOSS legacy repair start 2-wide; boss-5 third on the
    gate. The repair is the hard part; split it 16+15 if the first 8 items exceed
    ~6 min or need a third vision sheet.

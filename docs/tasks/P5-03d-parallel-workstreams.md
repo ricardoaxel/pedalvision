@@ -10,12 +10,11 @@ control. Rules only — no code, data or assets.
 
 ## Enablement gate
 
-- **Required:** **T-0a merged** (true billed token metric). Without it the budgets and
-  the third-slot gate are unenforceable.
+- **Required:** **T-0a merged** — done (PR #53, squash `dee8b39`); it supplies the true billed token metric. Without it the budgets and the third-slot gate are unenforceable.
 - **Calibration:** the first **T-2** batch (BOSS boss-4) records billed tokens and
   minutes per item; check the combined-window budgets against it. The owner may
   explicitly waive the calibration gate (accepting the uncalibrated 400k/800k baseline).
-- Until both are satisfied, stay **catalog-only** (existing rules). This file is the
+- Until the calibration gate is satisfied (or waived), stay **catalog-only** (existing rules). This file is the
   ruleset; it launches nothing by itself.
 
 ## Workstream model

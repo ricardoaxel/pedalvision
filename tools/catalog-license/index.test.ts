@@ -168,6 +168,6 @@ describe("image license ledger", () => {
 		expect(ledger.summary.items).toBe(4);
 		expect(ledger.summary.byStatus["license-pending"]).toBe(2);
 		expect(ledger.summary.byStatus["replacement-needed"]).toBe(1);
-		expect(ledger.summary.byStatus["own"]).toBe(1);
+		expect(ledger.summary.byStatus.own).toBe(1);
 	});
 });

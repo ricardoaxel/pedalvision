@@ -46,19 +46,45 @@ validates the plan and prints what would launch.
   `catalog:start`**. The prompt must checkpoint inline after every item and
   finish with `catalog:finish`.
 - Starts **2** batches. A third starts only when the first is past midpoint, has
-  used ≤40% of the 400k soft budget and is sustaining ≥2 items/h (`canStartNext`).
-  Max 3 in flight, enforced by `catalog-runner`.
+  used ≤40% of the 400k **billed** soft budget and is sustaining ≥2 items/h
+  (`canStartNext`). The gate and the 1.2M/2.4M wave budgets use the true
+  **billed non-cache** metric (`input + output + reasoning` from each session's
+  JSONL), never the self-reported runner `.tokens`. Max 3 in flight, enforced by
+  `catalog-runner`.
+- On every refresh the runner recomputes each active batch from its JSONL. A step
+  without billed fields uses its total as an upper bound; the checkpoint ledger
+  is used only when the JSONL carries no token numbers at all. At the wave
+  **hard** cap the runner requests stop for every active batch and
+  marks queued batches `not-started`; at the soft cap it stops launching, without
+  killing healthy active batches.
 - Each session runs as
   `opencode run --auto --format json` under
   `catalog-runner supervise --batch <id> -- …`, so pause/stop and SIGTERM/SIGKILL
   stay in the tested runner.
-- JSONL is captured per batch. Token/cost totals are **root-session floors**:
-  subagent sessions (image/code reviewers) are not in this stream. A run with no
-  `step_finish` is `partial`, never a success; error events are reported.
+- JSONL is captured per batch. The report shows **billed non-cache** (gated) and
+  the **cache-inclusive JSONL floor** (reported separately, not gated). Both are
+  **root-session floors**: subagent sessions (image/code reviewers) are not in
+  this stream. A run with no `step_finish` is `partial`, never a success; error
+  events are reported.
 - PR/CI lookup is best-effort via `gh`; a missing PR or unauthenticated `gh` is
   reported as unknown, never assumed.
 - The wrapper **never merges** and never opens PRs. Each session owns exactly one
   PR in its own branch/worktree.
+
+## Token metric
+
+`opencode` `step_finish` events carry `tokens.{input,output,reasoning,cache.read,cache.write,total}`.
+
+- **Billed non-cache** = `input + output + reasoning`. This is the value the
+  per-batch (400k/800k) and wave (1.2M/2.4M) budgets use.
+- **Cache-inclusive floor** = `total` (summed over steps), reported separately as
+  context, never gated.
+- If a step omits `total`, the floor is derived by summing the recognised fields.
+- If the JSONL has a total but the step omits `input`/`output`/`reasoning`, the
+  total is used as a conservative billed **upper bound** (labelled
+  `(upper bound)`) so the budget can never under-count.
+- Only when the JSONL has no token numbers at all is the checkpoint ledger used,
+  labelled `(ledger)`; totals that include either fallback say so.
 
 ## Files
 

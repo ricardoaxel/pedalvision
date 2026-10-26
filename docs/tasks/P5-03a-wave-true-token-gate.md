@@ -1,6 +1,6 @@
 # P5-03a — Wave true-token gate (T-0a)
 
-**Phase:** P5 · **Status:** todo · **Type:** tooling (high-risk) · **Depends on:** T-0
+**Phase:** P5 · **Status:** in review — PR #53 · **Type:** tooling (high-risk) · **Depends on:** T-0
 
 ## Why
 
@@ -34,6 +34,25 @@ Make the gate and report use a **true token metric**, and enforce the hard caps.
   wave 1.2M/2.4M; cache-inclusive floor reported separately). The T-2 calibration
   provides the re-baseline data; any change is an owner decision after a token
   review.
+
+## Implementation (PR #53)
+
+- `aggregate.ts` exposes `billedTokens` (input + output + reasoning) and keeps
+  `tokens` as the cache-inclusive floor; derived totals cover steps without
+  `total`.
+- `gate.ts` has one `resolveBatchTokens` path: JSONL billed → JSONL total as a
+  conservative billed upper bound → checkpoint ledger only when the JSONL has no
+  token numbers. `canStartNext` requires the resolved billed map and fails closed
+  when an entry is missing.
+- `index.ts` refreshes each active batch's JSONL every poll, stops active batches
+  at the wave hard cap, marks queued batches `not-started`, and only stops
+  launching (not active batches) at the soft cap.
+- `report.ts` shows **Billed non-cache** and **Cache-incl. floor**, labels
+  ledger/upper-bound fallbacks, and keeps `unknown` when a batch has no token
+  data. `README.md` documents the metric.
+- Tests: aggregate separation/fallbacks, true-metric gate, soft cap, hard cap,
+  third-slot wiring, missing/truncated JSONL, report labels. Checks: lint /
+  typecheck / test **754** / build.
 
 ## Acceptance
 

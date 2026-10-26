@@ -10,7 +10,7 @@ import { type BatchState, tryReadState } from "../catalog-runner/state.ts";
 import { summarizeJsonl } from "./aggregate.ts";
 import {
 	canStartNext,
-	estimateBatchTokens,
+	resolveBatchTokens,
 	startDecision,
 	waveBudget,
 } from "./gate.ts";
@@ -330,6 +330,9 @@ async function refresh(
 		if (run.status !== "running") continue;
 		const runnerState = await tryReadState(root, run.batch);
 		if (runnerState) run.runner = snapshot(runnerState);
+		const session = await summarizeLog(run.log);
+		run.session = session;
+		run.usage = resolveBatchTokens(run.runner?.tokens ?? 0, session);
 		const alive = run.pid ? isAlive(run.pid) : false;
 		const terminal =
 			runnerState &&
@@ -339,11 +342,24 @@ async function refresh(
 		if (alive && !terminal) continue;
 		await finalizeBatch(root, run);
 	}
+	for (const run of state.batches) {
+		run.usage ??= resolveBatchTokens(run.runner?.tokens ?? 0, run.session);
+	}
 
 	const queued = state.batches.filter((batch) => batch.status === "queued");
 	const active = state.batches.filter((batch) => batch.status === "running");
-	const tokens = queued.length > 0 ? await estimateWaveTokens(state) : 0;
+	const inFlight = queued.length > 0 || active.length > 0;
+	const tokens = inFlight ? billedWaveTokens(state) : 0;
 	const budget = waveBudget(tokens);
+	if (budget.hardExceeded && active.length > 0) {
+		const reason = `wave hard budget reached (${tokens} billed tokens); stopping active batches`;
+		if (!state.notes.some((note) => note.startsWith("wave hard budget"))) {
+			await Promise.all(
+				active.map((batch) => requestBatchStop(root, batch.batch, reason)),
+			);
+			state.notes.push(reason);
+		}
+	}
 	const decision = startDecision({
 		stopping,
 		active: active.length,
@@ -351,13 +367,19 @@ async function refresh(
 		maxParallel: plan.maxParallel,
 		budget,
 	});
-	if (decision.action === "stop") {
+	if (decision.action === "stop" && queued.length > 0) {
 		for (const batch of queued) {
 			batch.status = "not-started";
 			batch.error = decision.reason;
 		}
 		const note = `stopped launching queued batches: ${decision.reason}`;
-		if (!state.notes.includes(note)) state.notes.push(note);
+		if (
+			!state.notes.some((entry) =>
+				entry.startsWith("stopped launching queued batches"),
+			)
+		) {
+			state.notes.push(note);
+		}
 	} else if (decision.action === "start" && queued.length > 0) {
 		const next = queued[0];
 		if (next) {
@@ -373,7 +395,10 @@ async function refresh(
 		const activeStates = (
 			await Promise.all(active.map((batch) => tryReadState(root, batch.batch)))
 		).filter((entry): entry is BatchState => entry !== undefined);
-		const gate = canStartNext(activeStates);
+		const billedByBatch = Object.fromEntries(
+			active.map((batch) => [batch.batch, batchBilled(batch)]),
+		);
+		const gate = canStartNext(activeStates, new Date(), billedByBatch);
 		if (gate.ok) {
 			const next = queued[0];
 			if (next) {
@@ -385,7 +410,14 @@ async function refresh(
 			}
 		} else {
 			const note = `third slot waiting: ${gate.reason}`;
-			if (!state.notes.includes(note)) state.notes.push(note);
+			const existing = state.notes.findIndex((entry) =>
+				entry.startsWith("third slot waiting"),
+			);
+			if (existing >= 0) {
+				state.notes[existing] = note;
+			} else {
+				state.notes.push(note);
+			}
 		}
 	}
 	await writeStateAndReport(work, state);
@@ -402,6 +434,7 @@ async function finalizeBatch(root: string, run: WaveBatchRun): Promise<void> {
 		session = summarizeJsonl(source);
 	}
 	run.session = session;
+	run.usage = resolveBatchTokens(run.runner?.tokens ?? 0, session);
 	const pr = resolvePr(run.branch, root);
 	if (pr) run.pr = pr;
 	run.runner = run.runner ?? undefined;
@@ -427,17 +460,19 @@ async function finalizeBatch(root: string, run: WaveBatchRun): Promise<void> {
 			: `session exited without finish (${status ?? "no runner state"})`;
 }
 
-async function estimateWaveTokens(state: WaveState): Promise<number> {
-	let total = 0;
-	for (const batch of state.batches) {
-		let floor = batch.session?.tokens ?? null;
-		if (floor === null && batch.status === "running") {
-			const source = await readFile(batch.log, "utf8").catch(() => "");
-			floor = summarizeJsonl(source).tokens;
-		}
-		total += estimateBatchTokens(batch.runner?.tokens ?? 0, floor);
-	}
-	return total;
+function billedWaveTokens(state: WaveState): number {
+	return state.batches.reduce((sum, batch) => sum + batchBilled(batch), 0);
+}
+
+function batchBilled(batch: WaveBatchRun): number {
+	return (
+		batch.usage ?? resolveBatchTokens(batch.runner?.tokens ?? 0, batch.session)
+	).billed;
+}
+
+async function summarizeLog(path: string) {
+	const source = await readFile(path, "utf8").catch(() => "");
+	return summarizeJsonl(source);
 }
 
 function snapshot(state: BatchState): WaveBatchRun["runner"] {

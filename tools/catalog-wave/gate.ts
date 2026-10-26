@@ -1,4 +1,5 @@
 import type { BatchState } from "../catalog-runner/state.ts";
+import type { JsonlSummary } from "./aggregate.ts";
 
 /**
  * Owner third-slot gate (AGENTS.md, P5-03): start 2-wide, add the third only
@@ -11,9 +12,61 @@ export const THIRD_SLOT_MIN_ITEMS_PER_HOUR = 2;
 
 export type GateResult = { ok: boolean; reason: string };
 
+/**
+ * Per-batch token usage resolved from the session JSONL (authoritative) or the
+ * checkpoint ledger (fallback when the JSONL has no step_finish yet).
+ */
+export type BatchTokens = {
+	billed: number;
+	cacheInclusive: number;
+	/**
+	 * `jsonl` = exact billed fields; `upper-bound` = the JSONL total was used
+	 * because the step omitted input/output/reasoning (conservative, never
+	 * under-counts); `ledger` = no JSONL numbers at all.
+	 */
+	source: "jsonl" | "upper-bound" | "ledger";
+};
+
+/**
+ * Resolve the true billing metric. The JSONL is authoritative because the
+ * checkpoint `tokens` value is self-reported and has been both low (39k) and
+ * synthetic-high (4.21M); the ledger is only a floor when the JSONL is still
+ * empty or partial. Wave budget/gate decisions use `billed`.
+ */
+export function resolveBatchTokens(
+	ledgerTokens: number,
+	session: Pick<JsonlSummary, "billedTokens" | "tokens"> | undefined,
+): BatchTokens {
+	const ledger = Math.max(0, ledgerTokens);
+	if (session?.billedTokens !== null && session?.billedTokens !== undefined) {
+		return {
+			billed: session.billedTokens,
+			cacheInclusive: Math.max(session.tokens ?? 0, session.billedTokens),
+			source: "jsonl",
+		};
+	}
+	if (session?.tokens !== null && session?.tokens !== undefined) {
+		// A step_finish with a total but no input/output/reasoning is old or
+		// drifted data. Use the cache-inclusive total as a conservative billed
+		// upper bound instead of falling back to the untrusted ledger.
+		return {
+			billed: session.tokens,
+			cacheInclusive: session.tokens,
+			source: "upper-bound",
+		};
+	}
+	return {
+		billed: ledger,
+		cacheInclusive: ledger,
+		source: "ledger",
+	};
+}
+
 export function canStartNext(
 	states: BatchState[],
-	now: Date = new Date(),
+	now: Date,
+	/** True billed tokens per batch, resolved before the gate is called. */
+	billedByBatch: Readonly<Record<string, number>>,
 ): GateResult {
 	const active = states.filter(
 		(state) => state.status === "running" || state.status === "paused",
@@ -33,10 +86,17 @@ export function canStartNext(
 		};
 	}
 	const softLimit = SOFT_BATCH_TOKENS * THIRD_SLOT_SOFT_FRACTION;
-	if (first.tokens > softLimit) {
+	const billed = billedByBatch[first.batchId];
+	if (billed === undefined) {
 		return {
 			ok: false,
-			reason: `first batch used ${first.tokens} tokens (>${Math.round(softLimit)})`,
+			reason: `no true billed tokens for ${first.batchId}`,
+		};
+	}
+	if (billed > softLimit) {
+		return {
+			ok: false,
+			reason: `first batch used ${billed} billed tokens (>${Math.round(softLimit)})`,
 		};
 	}
 	const elapsedHours =
@@ -55,7 +115,10 @@ export function canStartNext(
 	return { ok: true, reason: "midpoint + budget + rate gates pass" };
 }
 
-/** Wave budgets (AGENTS.md): soft ≤1.2M, hard ≤2.4M; 2× a batch budget aborts. */
+/**
+ * Wave budgets (AGENTS.md): soft ≤1.2M, hard ≤2.4M **billed non-cache** tokens.
+ * The cache-inclusive JSONL floor is reported separately and is not gated.
+ */
 export const WAVE_SOFT_TOKENS = 1_200_000;
 export const WAVE_HARD_TOKENS = 2_400_000;
 
@@ -64,14 +127,6 @@ export type WaveBudget = {
 	softExceeded: boolean;
 	hardExceeded: boolean;
 };
-
-/** Use the higher of the checkpoint ledger and the parsed JSONL floor. */
-export function estimateBatchTokens(
-	ledgerTokens: number,
-	sessionTokens: number | null | undefined,
-): number {
-	return Math.max(ledgerTokens, sessionTokens ?? 0);
-}
 
 export function waveBudget(tokens: number): WaveBudget {
 	return {
