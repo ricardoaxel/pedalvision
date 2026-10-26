@@ -163,7 +163,7 @@ describe("buildCableSchedule", () => {
 		const scene = {
 			boards: [],
 			items: [
-				item("a", "boss-dc-2-dimension-c", 10, 10),
+				item("a", "red-panda-rd-1-pitch-delay", 10, 10),
 				item("b", "boss-da-2-adaptive-distortion", 40, 10),
 				item("c", "boss-ce-2-chorus", 80, 10),
 			],
