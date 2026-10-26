@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a in review (PR #53) · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b in review (docs-only, PR #54) · **Type:** plan/index (docs-only)
 
 ## Purpose
 
@@ -55,6 +55,30 @@ own task file — no need to re-paste the whole plan.
   JSONL floor** separately. T-0a makes the wave gate/report use a true metric and
   stop active batches at the hard cap. The old runner self-reported `.tokens` is not
   trustworthy (boss-3 recorded 4.21M synthetic; boss-2 39k).
+- **D8 — One parallel feature workstream (T-0b).** One feature task may run alongside
+  the catalog wave (1 feature + up to 3 catalog batches; start 1+2; the third catalog
+  needs the true-token gate **and** the PR cap). **≤2 PRs awaiting owner review across
+  workstreams** (≤1 feature). Feature budgets: builder soft ≤400k / hard ≤800k, review
+  allowance ≤300k, task hard ≤1.1M, 6 h; combined window soft ≤1.6M / hard ≤3.2M
+  billed non-cache. Catalog budgets unchanged. **Armed after the T-2 calibration**
+  (T-0a is merged; owner may waive the calibration). Full rules + matrix:
+  `docs/tasks/P5-03d-parallel-workstreams.md`.
+
+## Parallel workstreams (T-0b) — ownership matrix
+
+| Area | Owner | Paths (examples) |
+|---|---|---|
+| Catalog-only | catalog batch session | `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`, `public/pedal-assets/{pedals,boards}/**`, its batch task file, its worktree |
+| Feature-only | feature session | `src/**` feature code, `e2e/**` (except narrow catalog fixtures), `docs/tasks/<feature>.md`, `docs/screenshots/<task>/**` |
+| Generated — never hand-edited | post-merge workflow | `data/catalog/{pedals,boards}/**`, `src/catalog/data/**` |
+| Narrow catalog-test fixtures | shared coordinator only | catalog seed snapshots/fixtures + `src/catalog/**/*.test.ts` |
+| Shared schema/config/docs | shared coordinator only | `src/catalog/schema.ts`, `src/catalog/rawSchema.ts`, `tools/catalog-transform/curated.ts`, `package.json`/lockfile, `.github/**`, `playwright.config.ts`, `vite.config.ts`, `AGENTS.md`, roadmap/phase-guide/progress, templates, `docs/catalog/**` process docs |
+
+Hard: a feature session never edits `data/catalog/**`, `public/pedal-assets/**`,
+`src/catalog/**` or `tools/catalog-*`; a catalog session never edits feature code or
+`e2e/**`; shared files only the coordinator; if a feature needs one, STOP → serial
+coordinator task. Separate worktrees; owner merges serially; after a catalog merge wait
+for the verified post-merge build and never hand-resolve generated conflicts.
 
 ## Token review verdict (2026-10-26)
 
@@ -79,12 +103,23 @@ own task file — no need to re-paste the whole plan.
   batch / 12M/24M wave cache-inclusive, or 2-wide × 40 for the long tail). Any
   re-baseline is an owner decision.
 
+### T-0b parallel workstreams (2026-10-26)
+
+`token-usage-reviewer`: **`adjust`** — folded: enablement gate after T-0a + the T-2
+calibration (blocker: unvalidated billed baseline / unmerged true metric);
+class-structured feature budget; third catalog slot behind both the true-token gate
+and the PR cap; coordinator narrowed to shared files only; per-class token logging.
+Not adopted (owner-set, recorded): flat 1 feature + 2 catalog and class-split PR caps
+(owner allows up to 3 catalog on the gate and keeps ≤2 PRs across, the stricter rule).
+See `docs/tasks/P5-03d-parallel-workstreams.md`.
+
 ## Task / PR index
 
 | # | Task | Scope | Depends on |
 |---|---|---|---|
 | **T-0** | This plan (docs-only) | **Merged (PR #52, squash `4a6f1e7`).** Plan + T-0a/T-1 task files; reconcile progress/roadmap/phase-guide/#50/#51 statuses; record token verdict. One PR. | — |
-| **T-0a** | Wave true-token gate | **In review (PR #53).** `catalog:wave`/runner gate + report use true billed tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk) pass 1 changes-required → pass 2 approve. | T-0 |
+| **T-0a** | Wave true-token gate | **Merged (PR #53, squash `dee8b39`).** `catalog:wave`/runner gate + report use true billed tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk) pass 1 changes-required → pass 2 approve. | T-0 |
+| **T-0b** | Parallel feature + catalog workstreams (docs-only) | **In review (PR #54).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; ≤2 PRs awaiting review; feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
 | **T-1** | Pedal flat-art + promote-legacy | Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Designer proposal → owner approval → ≤2 visual passes → 1 light code review. One PR. | T-0 |
 | **T-2** | BOSS wave 3 | boss-4 (26 new) + boss/legacy-repair (31 existing) + boss-5 (26 new). 2-wide start (boss-4 + repair); boss-5 third on the true gate. Split repair 16+15 only if the first 8 items exceed ~6 min or need a third sheet. Include the 1 BOSS hotlinked seed if it falls in scope; otherwise clear it in T-7. One PR per batch. | T-0a, T-1 |
 | **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). 3-wide, third on gate. Re-baseline budgets from T-2 before launching. One PR per batch. | T-2 |
@@ -99,7 +134,8 @@ own task file — no need to re-paste the whole plan.
 
 ## Wave order
 
-1. **T-0** (this PR) → **T-0a** (true-token gate) → **T-1** (pedal-art + promote-legacy).
+1. **T-0** (merged) → **T-0a** (merged) → **T-0b** (parallel-workstream rules,
+   armed after the T-2 calibration) → **T-1** (pedal-art + promote-legacy).
 2. **T-2 BOSS wave 3:** boss-4 + BOSS legacy repair start 2-wide; boss-5 third on the
    gate. The repair is the hard part; split it 16+15 if the first 8 items exceed
    ~6 min or need a third vision sheet.
@@ -113,6 +149,9 @@ own task file — no need to re-paste the whole plan.
 
 - Per batch: **billed non-cache** soft ≤400k / hard ≤800k; wave soft ≤1.2M / hard
   ≤2.4M; report the cache-inclusive JSONL floor separately.
+- **Feature stream (T-0b):** builder soft ≤400k / hard ≤800k + review allowance
+  ≤300k; task hard ≤1.1M; 6 h. Combined feature + catalog window: soft ≤1.6M / hard
+  ≤3.2M billed non-cache. Log billed tokens by class.
 - ≤2 vision passes/batch; ≤1 light code review (only T-0a/T-1/`curated.ts`;
   data-only batches skip); 4 h active; 12 min/item.
 - Start 2-wide; third only on the true-token gate. Do not raw-launch sessions.
@@ -120,8 +159,10 @@ own task file — no need to re-paste the whole plan.
   error; never substitute); wave true tokens at hard cap (pause/stop active); batch
   >2× soft or >4 h; third vision pass needed; generated art fails clean-alpha/aspect/
   bright after 2 renders (mark pending); no verified jack face (omit edge, unknown);
-  >2 PRs awaiting owner review (do not start the next wave); hotlinked+mock ≠ 0 at
-  T-10; 2,000 hosted pedals before Tier A.
+  **2 PRs awaiting owner review across workstreams** (start nothing new; ≤1 feature);
+  post-merge build unverified or a generated-file conflict; a feature needs a shared/
+  generated file (stop → serial coordinator task); hotlinked+mock ≠ 0 at T-10; 2,000
+  hosted pedals before Tier A.
 - Owner merges serially; ~70 batch PRs are the real bottleneck.
 
 ## Owner actions
@@ -130,11 +171,13 @@ own task file — no need to re-paste the whole plan.
    proposal; the strategy is decided, the look is owner-approved).
 2. **Send the 13 brand permission emails** from `docs/catalog/image-licensing.md`;
    update `data/catalog/image-licenses.json`; run `pnpm catalog:asset-ledger`.
-3. **Merge** the PRs; approve any budget re-baseline after T-2.
+3. **Merge** the PRs; approve any budget re-baseline after T-2; optionally waive the
+   T-2 calibration gate for T-0b (accepting the uncalibrated feature budget).
 
 ## Acceptance
 
-- T-0 docs merged; T-0a gate green; T-1 generator + promote-legacy merged.
+- T-0 docs merged; T-0a gate green; T-0b rules + feature template merged; T-1
+  generator + promote-legacy merged.
 - BOSS complete (boss-4…boss-8 + the 31 legacy repaired).
 - All brand first batches replace their hotlinked/mock seeds; ledger
   `hotlinked + mock = 0` at T-10.
