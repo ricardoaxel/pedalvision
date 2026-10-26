@@ -175,9 +175,22 @@ describe("committed seed effectTypes", () => {
 	});
 
 	it("keeps every colorway footprint equal to its base (true-scale)", () => {
+		// Waza Craft reissues are variant links across enclosure generations
+		// (vintage 70 x 125 mm vs modern 73 x 129 mm), not colorways.
+		const reissueEnclosures = new Set([
+			"boss-dc-2w-dimension-c-waza-craft",
+			"boss-dm-2w-delay-waza-craft",
+		]);
 		const byId = new Map(pedals.map((p) => [p.id, p]));
 		for (const pedal of pedals) {
 			if (!pedal.variantOf) continue;
+			if (reissueEnclosures.has(pedal.id)) {
+				// Pin the documented modern Waza enclosure so the exemption
+				// cannot hide a footprint typo. The `variantOf` semantics for
+				// cross-generation reissues still need a follow-up (ADR-003).
+				expect([pedal.widthCm, pedal.heightCm], pedal.id).toEqual([7.3, 12.9]);
+				continue;
+			}
 			const base = byId.get(pedal.variantOf);
 			expect(base, pedal.id).toBeDefined();
 			expect([pedal.widthCm, pedal.heightCm], pedal.id).toEqual([

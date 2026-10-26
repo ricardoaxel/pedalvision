@@ -181,7 +181,7 @@ describe("jack anchors in world cm", () => {
 
 describe("fallback anchors (catalog pedals without jack data)", () => {
 	it("synthesises the documented IN/OUT pair for a catalog pedal", () => {
-		const catalogItem = item({ refId: "boss-dc-2-dimension-c" });
+		const catalogItem = item({ refId: "red-panda-rd-1-pitch-delay" });
 		const { widthCm, heightCm } = itemFootprint(catalogItem, []);
 		expect(resolveItemJacks(catalogItem, [])).toEqual([...FALLBACK_JACKS]);
 		expect(usesFallbackJacks(catalogItem, [])).toBe(true);

@@ -1,0 +1,4025 @@
+[
+  {
+    "id": "boss-dc-2-dimension-c",
+    "brand": "BOSS",
+    "name": "DC-2 Dimension C",
+    "aliases": [
+      "DC-2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; inserting a plug switches the power on. Mono input."
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A on the left side; use alone for mono."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the left side; stereo B output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DC-2_OM.pdf (panel diagram) + https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+      "confidence": "verified",
+      "note": "Audio jacks are on the left/right sides near the jack end; confirmed on the official top-down cutout and the owner's-manual panel diagram. DC IN is on the top/rear edge."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)",
+      "note": "Vintage units specify the BOSS ACA-120/220/240 adaptor; a regulated 9 V PSA-series supply is commonly used. Current draw is not machine-readable in the scanned manual."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument",
+        "note": "Mono input; stereo A/B outputs. The four preset buttons select fixed chorus modes."
+      }
+    },
+    "usage": "guitar",
+    "year": 1985,
+    "status": "discontinued",
+    "notes": "Original Dimension C with four preset buttons and stereo outputs; the 1980s BOSS compact enclosure is 70 x 125 mm.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DC-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Four preset buttons"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "jackEvidence": "Audio jacks side-mounted (left/right); DC IN top/rear.",
+      "imageProcessing": "Pedalplayground transparent cutout upscaled from 350x621 to 451x800 (lanczos), --matte none, AVIF q80. Analyzer perspective flag is the BOSS silhouette false positive."
+    }
+  },
+  {
+    "id": "boss-dc-2w-dimension-c-waza-craft",
+    "brand": "BOSS",
+    "name": "DC-2W Dimension C (Waza Craft)",
+    "aliases": [
+      "DC-2W"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A (MONO)",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT A (MONO) on the right side; switches power on."
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT B on the right side; stereo input pair with A."
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A on the left side; mono output when used alone."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DC-2W_eng03_W.pdf (panel diagram) + https://www.boss.info/global/products/dc-2w/",
+      "confidence": "verified",
+      "note": "INPUT A/B on the right side, OUTPUT A/B on the left side; DC IN on the top/rear edge. Confirmed on the top-down cutout and the official rear-panel photo."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "year": 2018,
+    "status": "current",
+    "notes": "Waza Craft reissue of the DC-2 with Standard/Custom modes and stereo I/O.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dc-2w/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DC-2W_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc2w.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dc-2w_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dc-2w/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "variantOf": "boss-dc-2-dimension-c",
+    "extra": {
+      "controls": [
+        "Four preset buttons",
+        "Standard/Custom switch"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dc-3-digital-dimension",
+    "brand": "BOSS",
+    "name": "DC-3 Digital Dimension",
+    "aliases": [
+      "DC-3"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A on the left side; mono output when used alone."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DC-3_OM.pdf (panel diagram)",
+      "confidence": "verified",
+      "note": "Audio jacks on the left/right sides; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual panel diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (006P)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "year": 1986,
+    "status": "discontinued",
+    "notes": "Digital chorus with two preset modes and stereo outputs; 1980s compact enclosure (70 x 125 mm).",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DC-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dc3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product03.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Effect level",
+        "Equalizer",
+        "Modulation rate",
+        "Modulation depth"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-2-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-2 Digital Delay",
+    "aliases": [
+      "DD-2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT (MAIN)",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Main output on the left side."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Direct (dry) output on the right side, next to the input; confirmed on the top-down cutout."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-2_OM.pdf (connections diagram)",
+      "confidence": "verified",
+      "note": "Input and direct output on the right side, main output on the left side; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "level": "instrument",
+        "dryThrough": "analog",
+        "note": "Main output can be mono or stereo depending on mode; a dedicated direct output sends the dry signal."
+      }
+    },
+    "usage": "guitar",
+    "year": 1983,
+    "status": "discontinued",
+    "notes": "Early compact digital delay with 12.5–800 ms range and a dedicated direct output; 1980s enclosure (70 x 125 mm).",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Delay time",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "delayTimeMs": "12.5–800 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-20-giga-delay",
+    "brand": "BOSS",
+    "name": "DD-20 Giga Delay",
+    "aliases": [
+      "DD-20"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A (MONO)",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT A/MONO on the rear/top edge."
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT B on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A/MONO on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the rear/top edge."
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 2,
+        "balanced": false,
+        "level": "headphone",
+        "stereo": true,
+        "note": "Stereo 1/4-inch phones jack on the rear/top edge."
+      },
+      {
+        "label": "CTL PEDAL",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "control",
+        "channels": 1,
+        "note": "CTL PEDAL jack (1/4-inch phone type) for an optional footswitch; rear/top edge."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-20_OM.pdf (Rear Panel, p.20) + https://www.boss.info/global/products/dd-20/",
+      "confidence": "verified",
+      "note": "All connectors are on the rear/top edge (manual: Rear Panel). Confirmed by the manual text and the official rear-panel photo."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "6 x AA (R6/LR6)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument",
+        "headphone": true
+      },
+      "control": {
+        "footswitch": true,
+        "tapTempo": true,
+        "note": "CTL PEDAL jack accepts an optional footswitch."
+      },
+      "routing": {
+        "presets": 4,
+        "tapTempo": true
+      }
+    },
+    "usage": "guitar",
+    "year": 2003,
+    "status": "discontinued",
+    "notes": "Twin-pedal delay with 4 memories, tap tempo and stereo I/O.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-20/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-20_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd20.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd20.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd20_rear_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-20/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Delay time",
+        "Feedback",
+        "Effect level",
+        "Tone"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "6 x AA",
+      "imageProcessing": "Pedalplayground transparent cutout (700x627) upscaled to 800x717, --matte none, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-200-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-200 Digital Delay",
+    "aliases": [
+      "DD-200"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A/MONO",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT A/MONO on the rear/top edge."
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT B on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT A/MONO",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A/MONO on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the rear/top edge."
+      },
+      {
+        "label": "CTL 1,2/EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "note": "CTL 1,2/EXP jack (1/4-inch TRS) on the rear/top edge."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "trs-midi-a",
+        "signal": "midi",
+        "midiType": "a",
+        "note": "MIDI IN via stereo miniature jack (TRS MIDI Type A); rear/top edge."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "trs-midi-a",
+        "signal": "midi",
+        "midiType": "a",
+        "note": "MIDI OUT via stereo miniature jack (TRS MIDI Type A); rear/top edge."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware"
+        ],
+        "note": "USB micro-B port (program update only); rear/top edge."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-200_eng03_W.pdf (Rear Panel, p.6) + https://www.boss.info/global/products/dd-200/",
+      "confidence": "verified",
+      "note": "All connectors are on the rear/top edge (manual: Rear Panel). Audio, CTL/EXP, MIDI and USB share the rear face."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "3 x AA (LR6)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true,
+        "expressionVoltageRange": "",
+        "note": "CTL 1,2/EXP supports footswitches or an expression pedal."
+      },
+      "midi": {
+        "trs": "a",
+        "programChange": true,
+        "cc": true,
+        "clock": true,
+        "channels": 16,
+        "note": "MIDI IN/OUT on stereo miniature jacks (TRS MIDI Type A)."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "firmware"
+        ],
+        "note": "Program update only."
+      },
+      "routing": {
+        "presets": 4,
+        "tapTempo": true
+      }
+    },
+    "usage": "guitar",
+    "year": 2019,
+    "status": "current",
+    "notes": "200-series digital delay with 12 modes, 4 memories, MIDI and stereo I/O.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-200/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-200_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd200.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd200.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd-200_back_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-200/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Time",
+        "Feedback",
+        "Level",
+        "Tone"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "3 x AA",
+      "imageProcessing": "Pedalplayground transparent cutout (400x544) upscaled to 588x800, --matte none, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-3-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-3 Digital Delay",
+    "aliases": [
+      "DD-3"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "DIRECT OUT on the right side, next to the input; confirmed on the top-down cutout."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-3_eng01_W.pdf (panel diagram) + https://www.boss.info/global/products/dd-3/",
+      "confidence": "verified",
+      "note": "Input and direct out on the right side, output on the left side; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "level": "instrument",
+        "dryThrough": "digital",
+        "note": "Main output plus a direct output for the dry signal."
+      }
+    },
+    "usage": "guitar",
+    "year": 1986,
+    "status": "discontinued",
+    "notes": "Long-running compact digital delay with 12.5–800 ms range and a direct output.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-3/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-3_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd3_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-3/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Delay time",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "delayTimeMs": "12.5–800 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-3t-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-3T Digital Delay",
+    "aliases": [
+      "DD-3T"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "DIRECT OUT on the left side, next to the output; confirmed on the top-down cutout."
+      },
+      {
+        "label": "TEMPO",
+        "kind": "ctrl",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "control",
+        "channels": 1,
+        "note": "TEMPO jack (1/4-inch phone type) on the right side for an external tap switch."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-3T_eng02_W.pdf (panel diagram) + https://www.boss.info/global/products/dd-3t/",
+      "confidence": "verified",
+      "note": "Input on the right; output and direct out on the left; TEMPO on the right; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "level": "instrument",
+        "dryThrough": "digital"
+      },
+      "control": {
+        "tapTempo": true,
+        "footswitch": true,
+        "note": "TEMPO jack accepts an external tap switch."
+      }
+    },
+    "usage": "guitar",
+    "year": 2019,
+    "status": "current",
+    "notes": "Updated DD-3 with tap tempo, direct output and a compact enclosure.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-3t/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-3T_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd3t.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd3t.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd-3t_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-3t/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "variantOf": "boss-dd-3-digital-delay",
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Delay time",
+        "Feedback",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-5-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-5 Digital Delay",
+    "aliases": [
+      "DD-5"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "DIRECT OUT on the left side; confirmed on the top-down cutout."
+      },
+      {
+        "label": "TEMPO",
+        "kind": "ctrl",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "control",
+        "channels": 1,
+        "note": "TEMPO jack (1/4-inch phone type) on the right side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-5_OM.pdf (panel/spec page) + https://www.boss.info/global/products/dd-5/",
+      "confidence": "verified",
+      "note": "Input on the right; output and direct out on the left; TEMPO on the right; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6AM6/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "level": "instrument",
+        "dryThrough": "digital"
+      },
+      "control": {
+        "tapTempo": true,
+        "note": "TEMPO jack for an external tap switch."
+      }
+    },
+    "usage": "guitar",
+    "year": 1992,
+    "status": "discontinued",
+    "notes": "Compact digital delay with 11 delay modes? and a tempo jack; direct output.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-5/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-5_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd5.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/main/dd5_2_main.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-5/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Delay time",
+        "Feedback",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-500-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-500 Digital Delay",
+    "aliases": [
+      "DD-500"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 17,
+    "heightCm": 13.8,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A/MONO",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT A/MONO on the rear/top edge."
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT B on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT A/MONO",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A/MONO on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the rear/top edge."
+      },
+      {
+        "label": "CTL 1,2/EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "note": "CTL 1,2/EXP jack (1/4-inch TRS) on the rear/top edge."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI IN on the rear/top edge."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI OUT on the rear/top edge."
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "usb-b",
+        "signal": "usb",
+        "usbFunctions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB type B port on the rear/top edge (USB-MIDI and editor/firmware)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-500(B)_eng02_W.pdf (Connecting the Equipment, p.2-3) + https://www.boss.info/global/products/dd-500/",
+      "confidence": "verified",
+      "note": "All connectors are on the rear/top edge (manual: Connecting the Equipment). Audio, CTL/EXP, MIDI DIN, USB and DC share the rear face."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "4 x AA (LR6)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true,
+        "note": "CTL 1,2/EXP supports footswitches or an expression pedal."
+      },
+      "midi": {
+        "din5": "in-out",
+        "usb": true,
+        "programChange": true,
+        "cc": true,
+        "clock": true,
+        "channels": 16,
+        "note": "5-pin DIN IN/OUT plus USB-MIDI."
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "midi",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB COMPUTER port."
+      },
+      "routing": {
+        "presets": 99,
+        "tapTempo": true
+      }
+    },
+    "usage": "guitar",
+    "year": 2015,
+    "status": "current",
+    "notes": "Flagship 500-series delay with 12 modes, deep editing, MIDI and USB.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-500/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-500(B)_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd500.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd500.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd_500_back_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-500/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Time",
+        "Feedback",
+        "Level",
+        "Tone",
+        "Mod"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "4 x AA",
+      "imageProcessing": "Pedalplayground transparent cutout (700x560) upscaled to 800x640, --matte none, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-6-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-6 Digital Delay",
+    "aliases": [
+      "DD-6"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A (MONO)",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT A/MONO on the right side; switches power on."
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT B on the right side."
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A/MONO on the left side."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-6_OM.pdf (panel diagram) + https://www.boss.info/global/products/dd-6/",
+      "confidence": "verified",
+      "note": "Input A/B on the right side, output A/B on the left side; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "year": 1997,
+    "status": "discontinued",
+    "notes": "Stereo compact digital delay with 2.6 s max delay and hold.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-6/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-6_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd6.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd6.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd6_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-6/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Delay time",
+        "Feedback",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "delayTimeMs": "1–2600 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-7-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-7 Digital Delay",
+    "aliases": [
+      "DD-7"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A (MONO)",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT A/MONO on the right side; switches power on."
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT B on the right side."
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A/MONO on the left side."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the left side."
+      },
+      {
+        "label": "TEMPO/EXP",
+        "kind": "exp",
+        "edge": "right",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "note": "TEMPO/EXP jack (1/4-inch TRS) on the right side; external tap or expression."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-7_e01_W.pdf (panel diagram) + https://www.boss.info/global/products/dd-7/",
+      "confidence": "verified",
+      "note": "Input A/B on the right, output A/B on the left, TEMPO/EXP on the right; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      },
+      "control": {
+        "tapTempo": true,
+        "expression": 1,
+        "note": "TEMPO/EXP jack for an external tap switch or expression pedal."
+      }
+    },
+    "usage": "guitar",
+    "year": 2008,
+    "status": "discontinued",
+    "notes": "Compact stereo delay with 6.4 s max delay, loop/hold and external tempo/expression.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-7/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-7_e01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd7.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd7.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd_7_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-7/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Delay time",
+        "Feedback",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "delayTimeMs": "1–6400 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dd-8-digital-delay",
+    "brand": "BOSS",
+    "name": "DD-8 Digital Delay",
+    "aliases": [
+      "DD-8"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A (MONO)",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT A/MONO on the right side; switches power on."
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT B on the right side."
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A/MONO on the left side."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the left side."
+      },
+      {
+        "label": "TEMPO/EXP",
+        "kind": "exp",
+        "edge": "right",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "note": "TEMPO/EXP jack (1/4-inch TRS) on the right side; external tap or expression."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DD-8_eng03_W.pdf (panel diagram) + https://www.boss.info/global/products/dd-8/",
+      "confidence": "verified",
+      "note": "Input A/B on the right, output A/B on the left, TEMPO/EXP on the right; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      },
+      "control": {
+        "tapTempo": true,
+        "expression": 1,
+        "note": "TEMPO/EXP jack for an external tap switch or expression pedal."
+      }
+    },
+    "usage": "guitar",
+    "year": 2019,
+    "status": "current",
+    "notes": "Compact stereo delay with 11 modes, 10 s max delay and tempo/expression.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dd-8/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DD-8_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd8.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dd8.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dd-8_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dd-8/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Time",
+        "Feedback",
+        "Level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "delayTimeMs": "1–10000 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-df-2-super-feedbacker-distortion",
+    "brand": "BOSS",
+    "name": "DF-2 Super Feedbacker & Distortion",
+    "aliases": [
+      "DF-2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DF-2_OM.pdf (panel diagram)",
+      "confidence": "verified",
+      "note": "Input on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)",
+      "note": "Vintage ACA-120/220/240 adaptor specified."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "year": 1984,
+    "status": "discontinued",
+    "notes": "Distortion with a hold-to-feedback function; the feedback is generated internally, not a separate jack. 1980s enclosure (70 x 125 mm).",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DF-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-df2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-df2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/df_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Distortion",
+        "Tone",
+        "Level",
+        "Feedback (pedal hold)"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dm-101-delay-machine",
+    "brand": "BOSS",
+    "name": "DM-101 Delay Machine",
+    "aliases": [
+      "DM-101"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 19.2,
+    "heightCm": 13.3,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT A/MONO",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT A/MONO on the rear/top edge."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT B on the rear/top edge."
+      },
+      {
+        "label": "CTL 1,2/EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "note": "CTL 1,2/EXP jack (1/4-inch TRS) on the rear/top edge."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "trs-midi-a",
+        "signal": "midi",
+        "midiType": "a",
+        "note": "MIDI IN via stereo miniature jack (TRS MIDI Type A); rear/top edge."
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "trs-midi-a",
+        "signal": "midi",
+        "midiType": "a",
+        "note": "MIDI OUT via stereo miniature jack (TRS MIDI Type A); rear/top edge."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "micro-usb",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware"
+        ],
+        "note": "USB micro-B port (program update only); rear/top edge."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DM-101_reference_eng01_W.pdf (Rear Panel, p.5) + https://www.boss.info/global/products/dm-101/",
+      "confidence": "verified",
+      "note": "All connectors are on the rear/top edge (manual: Rear Panel). Audio, CTL/EXP, MIDI, USB and DC share the rear face."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 260,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "note": "AC adaptor only; no battery operation."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "level": "instrument"
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true,
+        "note": "CTL 1,2/EXP supports footswitches or an expression pedal."
+      },
+      "midi": {
+        "trs": "a",
+        "programChange": true,
+        "cc": true,
+        "clock": true,
+        "channels": 16,
+        "note": "MIDI IN/OUT on stereo miniature jacks (TRS MIDI Type A)."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "firmware"
+        ],
+        "note": "Program update only."
+      },
+      "routing": {
+        "presets": 127,
+        "tapTempo": true
+      }
+    },
+    "usage": "guitar",
+    "year": 2023,
+    "status": "current",
+    "notes": "Analog multi-head delay with 8 BBDs, 12 modes, MIDI and stereo I/O.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dm-101/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DM-101_reference_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm101.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm101.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dm-101_gal_01.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dm-101/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Time",
+        "Feedback",
+        "Level",
+        "Tone",
+        "Mod"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog (BBD)",
+      "battery": "none",
+      "imageProcessing": "Pedalplayground transparent cutout 800x553, --matte none, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dm-2-delay",
+    "brand": "BOSS",
+    "name": "DM-2 Delay",
+    "aliases": [
+      "DM-2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DM-2_OM.pdf (panel diagram)",
+      "confidence": "verified",
+      "note": "Input on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)",
+      "note": "Vintage ACA-120/220/240 adaptor specified."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "year": 1981,
+    "status": "discontinued",
+    "notes": "Original compact analog delay with 20–300 ms range; 1980s enclosure (70 x 125 mm).",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DM-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Delay time",
+        "Feedback",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog (BBD)",
+      "battery": "9 V battery",
+      "delayTimeMs": "20–300 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dm-2w-delay-waza-craft",
+    "brand": "BOSS",
+    "name": "DM-2W Delay (Waza Craft)",
+    "aliases": [
+      "DM-2W"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "DIRECT OUT on the left side, next to the output; confirmed on the top-down cutout."
+      },
+      {
+        "label": "RATE",
+        "kind": "ctrl",
+        "edge": "right",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "note": "RATE jack (1/4-inch TRS) on the right side for an external tap/expression control."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DM-2W_eng03_W.pdf (panel diagram) + https://www.boss.info/global/products/dm-2w/",
+      "confidence": "verified",
+      "note": "Input on the right; output and direct out on the left; RATE on the right; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "level": "instrument",
+        "dryThrough": "analog",
+        "note": "Dedicated direct output for the dry signal."
+      },
+      "control": {
+        "tapTempo": true,
+        "expression": 1,
+        "note": "RATE jack for an external tap switch or expression pedal."
+      }
+    },
+    "usage": "guitar",
+    "year": 2014,
+    "status": "current",
+    "notes": "Waza Craft analog delay with Standard/Custom modes, direct out and rate jack.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dm-2w/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DM-2W_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm2w.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dm-2w_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dm-2w/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "variantOf": "boss-dm-2-delay",
+    "extra": {
+      "controls": [
+        "Delay time",
+        "Feedback",
+        "Effect level",
+        "Standard/Custom switch"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog (BBD)",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dm-3-delay",
+    "brand": "BOSS",
+    "name": "DM-3 Delay",
+    "aliases": [
+      "DM-3"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "DIRECT OUT on the right side; confirmed on the top-down cutout."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DM-3_OM.pdf (panel diagram)",
+      "confidence": "verified",
+      "note": "Input and direct out on the right side, output on the left side; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)",
+      "note": "Vintage ACA-120/220/240 adaptor specified."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "level": "instrument",
+        "dryThrough": "analog",
+        "note": "Dedicated direct output for the dry signal."
+      }
+    },
+    "usage": "guitar",
+    "year": 1983,
+    "status": "discontinued",
+    "notes": "Analog delay with a direct output and 20–300 ms range; 1980s enclosure (70 x 125 mm).",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DM-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dm3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product03.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Delay time",
+        "Feedback",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog (BBD)",
+      "battery": "9 V battery",
+      "delayTimeMs": "20–300 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dn-2-dyna-drive",
+    "brand": "BOSS",
+    "name": "DN-2 Dyna Drive",
+    "aliases": [
+      "DN-2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DN-2_OM.pdf (panel diagram) + https://www.boss.info/global/products/dn-2/",
+      "confidence": "verified",
+      "note": "Input on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 36,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "year": 2007,
+    "status": "discontinued",
+    "notes": "Dynamic overdrive that responds to playing intensity.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/dn-2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DN-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dn2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dn2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/dn_2_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/dn-2/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Drive"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-ds-1-distortion",
+    "brand": "BOSS",
+    "name": "DS-1 Distortion",
+    "aliases": [
+      "DS-1"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf (panel diagram) + https://www.boss.info/global/products/ds-1/",
+      "confidence": "verified",
+      "note": "Input on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6LR61/6F22)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "color": "orange",
+    "year": 1978,
+    "status": "current",
+    "notes": "The benchmark BOSS distortion; Level, Tone and Dist knobs.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ds1_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/ds-1/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Dist"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-ds-1-4a-anniversary-distortion",
+    "brand": "BOSS",
+    "name": "DS-1-4A Anniversary Distortion",
+    "aliases": [
+      "DS-1-4A"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf (same DS-1 circuit) + https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+      "confidence": "verified",
+      "note": "40th Anniversary DS-1: same enclosure and jack layout as the DS-1; input right, output left, DC IN top/rear."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6LR61/6F22)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "color": "gold",
+    "year": 2017,
+    "status": "discontinued",
+    "notes": "Limited 40th Anniversary DS-1 with a gold finish; same circuit and controls as the standard DS-1.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds14a.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds14a.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsa_product01.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "variantOf": "boss-ds-1-distortion",
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Dist"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "limitedEdition": true,
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-ds-1-wh-distortion",
+    "brand": "BOSS",
+    "name": "DS-1-WH Distortion",
+    "aliases": [
+      "DS-1-WH"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf (same DS-1 circuit) + https://www.boss.info/global/products/ds-1/",
+      "confidence": "verified",
+      "note": "Limited pearl-white DS-1 colorway: same enclosure and jack layout as the DS-1; input right, output left, DC IN top/rear."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6LR61/6F22)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "color": "pearl white",
+    "year": 2024,
+    "status": "current",
+    "notes": "Limited-edition pearl-white DS-1 colorway; same circuit and controls as the standard DS-1.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1wh.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.livesoundworks.com/product/boss-ds-1-wh-limited-edition-distortion-pedal-pearl-white",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1wh.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://media.rainpos.com/10263/DS_1_WH.jpg",
+        "sourcePage": "https://www.boss.info/global/products/ds-1/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "variantOf": "boss-ds-1-distortion",
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Dist"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "limitedEdition": true,
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-ds-1x-distortion",
+    "brand": "BOSS",
+    "name": "DS-1X Distortion",
+    "aliases": [
+      "DS-1X"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DS-1X_M_eng02_W.pdf (panel diagram) + https://www.boss.info/global/products/ds-1x/",
+      "confidence": "verified",
+      "note": "Input on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "year": 2015,
+    "status": "current",
+    "notes": "Special-edition distortion using BOSS X technology with Level, Tone and Dist controls.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1x/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1X_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1x.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1x.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ds-1x_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/ds-1x/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Dist"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-ds-1w-distortion",
+    "brand": "BOSS",
+    "name": "DS-1W Distortion",
+    "aliases": [
+      "DS-1W"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DS-1W_eng01_W.pdf (panel diagram) + https://www.boss.info/global/products/ds-1w/",
+      "confidence": "verified",
+      "note": "Input on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6LR61/6LF22)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      }
+    },
+    "usage": "guitar",
+    "color": "orange",
+    "year": 2022,
+    "status": "current",
+    "notes": "Waza Craft DS-1 with Standard/Custom modes and a premium buffer.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-1w/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-1W_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1w.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds1w.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ds-1w_01_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/ds-1w/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Dist",
+        "Standard/Custom switch"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-ds-2-turbo-distortion",
+    "brand": "BOSS",
+    "name": "DS-2 Turbo Distortion",
+    "aliases": [
+      "DS-2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "REMOTE",
+        "kind": "ctrl",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "control",
+        "channels": 1,
+        "note": "REMOTE jack (1/4-inch phone type) on the right side for an external footswitch."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DS-2_M_eng02_W.pdf (panel diagram) + https://www.boss.info/global/products/ds-2/",
+      "confidence": "verified",
+      "note": "Input and REMOTE on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      },
+      "control": {
+        "footswitch": true,
+        "note": "REMOTE jack for an external footswitch (Mode II switching)."
+      }
+    },
+    "usage": "guitar",
+    "year": 1987,
+    "status": "discontinued",
+    "notes": "Turbo Distortion with Mode II and a remote jack.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/ds-2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DS-2_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-ds2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ds2_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/ds-2/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Dist",
+        "Mode I/II"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Analog",
+      "battery": "9 V battery",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  },
+  {
+    "id": "boss-dsd-2-digital-sampler-delay",
+    "brand": "BOSS",
+    "name": "DSD-2 Digital Sampler/Delay",
+    "aliases": [
+      "DSD-2"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "INPUT jack on the right side; switches power on."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "OUTPUT on the left side."
+      },
+      {
+        "label": "TRIGGER IN",
+        "kind": "ctrl",
+        "edge": "right",
+        "connector": "ts",
+        "signal": "control",
+        "channels": 1,
+        "note": "TRIGGER IN jack (1/4-inch phone type) on the right side; syncs the sampler/delay to a rhythm machine."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "9 V DC center-negative, 5.5 x 2.1 mm barrel jack; not a cable anchor."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/media/pdf/DSD-2_OM.pdf (panel diagram)",
+      "confidence": "verified",
+      "note": "Input and trigger in on the right, output on the left; DC IN on the top/rear edge. Confirmed on the top-down cutout and the manual diagram."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9 V (6F22/6LR61)",
+      "note": "Manual: 45–60 mA at 9 V DC; PSA-series adaptor."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "level": "instrument"
+      },
+      "control": {
+        "footswitch": true,
+        "note": "Trigger In for external rhythm-machine sync."
+      }
+    },
+    "usage": "guitar",
+    "year": 1985,
+    "status": "discontinued",
+    "notes": "Digital sampler/delay with 200–800 ms sampling and a trigger input; 1980s enclosure (70 x 125 mm).",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/DSD-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dsd2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-25",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/boss-dsd2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Owner-approved Pedalplayground flat top-down cutout used for the hosted AVIF; already-clean transparent PNG, --matte none, --body-crop where side jacks protrude. The analyzer flags this BOSS trapezoid/rounded-footswitch silhouette as ~30% \"perspective\" (a known false positive); the processed asset passed the clean-alpha/vision check."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsd_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 2,
+        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+      }
+    ],
+    "extra": {
+      "controls": [
+        "Mode selector",
+        "Time",
+        "Feedback",
+        "Effect level"
+      ],
+      "bypass": "Buffered bypass",
+      "circuit": "Digital",
+      "battery": "9 V battery",
+      "samplingTimeMs": "200–800 ms",
+      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80."
+    }
+  }
+]
