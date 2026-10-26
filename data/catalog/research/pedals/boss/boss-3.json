@@ -98,11 +98,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "BOSS DSD-3 owner’s manual (scanned) via Roland support; official product page retired."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-eh-2-enhancer",
@@ -194,11 +199,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "BOSS EH-2 owner’s manual (scanned) via Roland support; official product page retired."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-eq-20-advanced-eq",
@@ -284,7 +294,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-eq20.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/eq20_gal.jpg",
         "kind": [
           "image"
         ]
@@ -292,18 +302,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-eq20.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/eq20_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/eq-20/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official main shot is 3/4 perspective)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS EQ-20 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/eq20_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-eq-200-graphic-equalizer",
@@ -447,7 +463,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-eq200.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/eq-200_main_gal.jpg",
         "kind": [
           "image"
         ]
@@ -455,18 +471,36 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-eq200.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/eq-200_main_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/eq-200/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are perspective)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/eq-200_angle_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/eq-200/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 0.89 vs footprint 0.73 (22% off); reject:rotation/skew 20.6° exceeds 2°"
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/eq-200_back_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/eq-200/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 1.71 vs footprint 0.73 (134% off); flag:possible perspective 12% — verify on the contact sheet"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS EQ-200 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/eq-200_main_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-es-5-effects-switching-system",
@@ -705,11 +739,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "Official BOSS ES-5 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-es-8-effects-switching-system",
@@ -1030,11 +1069,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "Official BOSS ES-8 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-ev-1-wl-wireless-midi-expression-pedal",
@@ -1147,11 +1191,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "Official BOSS EV-1-WL specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-ev-30-dual-expression-pedal",
@@ -1231,11 +1280,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "Official BOSS EV-30 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-ev-5-expression-pedal",
@@ -1306,11 +1360,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "Official BOSS EV-5 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fb-2-feedbacker-booster",
@@ -1389,7 +1448,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fb2.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fb-2_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1397,18 +1456,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fb2.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fb-2_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fb-2/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for 31% perspective distortion."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FB-2 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fb-2_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-fbm-1-59-fender-bassman",
@@ -1496,7 +1561,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fbm1.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fbm_1_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1504,18 +1569,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fbm1.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fbm_1_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fbm-1/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FBM-1 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fbm_1_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-fdr-1-fender-65-deluxe-reverb",
@@ -1595,7 +1666,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fdr1.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fdr_1_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1603,18 +1674,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fdr1.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fdr_1_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fdr-1/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FDR-1 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fdr_1_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-frv-1-63-fender-reverb",
@@ -1693,7 +1770,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-frv1.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/frv-1_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1701,18 +1778,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-frv1.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/frv-1_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/frv-1/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FRV-1 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/frv-1_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-fs-1-wl-wireless-footswitch",
@@ -1807,7 +1890,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fs1wl.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-1-wl_01_gal.jpg",
         "kind": [
           "image"
         ]
@@ -1815,18 +1898,36 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fs1wl.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-1-wl_01_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fs-1-wl/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are angled)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-1-wl_02_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fs-1-wl/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 1.91 vs footprint 2.69 (29% off); reject:rotation/skew 38.8° exceeds 2°"
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-1-wl_03_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fs-1-wl/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 5.59 vs footprint 2.69 (108% off); flag:possible perspective 9%"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FS-1-WL specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fs-1-wl_01_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-fs-5l-foot-switch",
@@ -1896,11 +1997,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "BOSS FS-5U/FS-5L product page and FS-5L owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fs-5u-foot-switch",
@@ -1970,11 +2076,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "BOSS FS-5U/FS-5L product page and FS-5U owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fs-6-dual-foot-switch",
@@ -2039,7 +2150,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fs6.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fs_6_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2047,18 +2158,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fs6.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fs_6_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fs-6/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked (photo background, flagged)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FS-6 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fs_6_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-fs-7-dual-foot-switch",
@@ -2135,7 +2252,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fs7.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-7_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2143,18 +2260,36 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fs7.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-7_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fs-7/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (angled/photo shots)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-7_angle_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fs-7/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 1.09 vs footprint 0.47 (131% off); reject:rotation/skew 38.9° exceeds 2°; flag:possible perspective 14% — verify on the contact sheet"
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/fs-7_back_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fs-7/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 1.08 vs footprint 0.47 (127% off); reject:rotation/skew 10.6° exceeds 2°; flag:possible perspective 72% — verify on the contact sheet"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FS-7 specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fs-7_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-ft-2-dynamic-filter",
@@ -2254,11 +2389,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "BOSS FT-2 owner’s manual (scanned) via Roland support; official product page retired."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fv-100-guitar-volume",
@@ -2335,12 +2475,17 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "No official BOSS page remains; facts cross-checked against authorized reseller listings (Reverb, Hard Off). Footprint provisional.",
       "imageQa": "AVIF q80 passes PSNR 41.59 dB (>=40) from the clean transparent planner cutout (source variant 597px, upscaled to 800 as with the other planner art); bright edge 1.7%, no visible shadow or background residual after replacing the shadowed variant."
     },
     "confidence": "likely",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fv-30-foot-volume",
@@ -2425,7 +2570,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fv30.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fv-30h_fv-30l_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2433,18 +2578,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fv30.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fv-30h_fv-30l_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/global/products/fv-30h_30l/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (angled)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FV-30H/FV-30L product page and FV-30L owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fv-30h_fv-30l_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-fv-500-volume-pedal",
@@ -2566,12 +2717,17 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "Official BOSS FV-500 specifications and FV-500H/FV-500L owner’s manuals.",
       "note": "The catalog lists the FV-500 family as one record; the FV-500H and FV-500L share the enclosure."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fz-1w-fuzz",
@@ -2663,7 +2819,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fz1w.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fz-1w_main_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2671,18 +2827,36 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fz1w.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fz-1w_main_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fz-1w/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS imagery was checked (official shots are 3/4 perspective)."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/fz-1w_angle_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fz-1w/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 0.84 vs footprint 0.56 (50% off); reject:rotation/skew 27.2° exceeds 2°"
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/fz-1w_image_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fz-1w/",
+        "priority": 2,
+        "notes": "Official BOSS alternative not used: reject — reject:aspect 1.60 vs footprint 0.56 (185% off); reject:rotation/skew 20.9° exceeds 2°; flag:possible perspective 6%"
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FZ-1W specification page and owner’s manual."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fz-1w_main_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   },
   {
     "id": "boss-fz-2-hyper-fuzz",
@@ -2780,11 +2954,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "BOSS FZ-2 owner’s manual (scanned) and BOSS fuzz-history article."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fz-3-fuzz",
@@ -2882,11 +3061,16 @@
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "planner cutout — pending replacement (no usable official top-down; see imageProvenance)",
       "research": "BOSS FZ-3 owner’s manual (scanned) and BOSS fuzz-history article."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "planner",
+      "status": "pending-replacement",
+      "note": "No usable official BOSS top-down found (vintage/discontinued or only 3/4/rear art). Kept temporarily; needs retailer/user image or our generated flat art."
+    }
   },
   {
     "id": "boss-fz-5-fuzz",
@@ -2970,7 +3154,7 @@
         ]
       },
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fz5.png",
+        "url": "https://static.roland.com/assets/images/products/gallery/fz_5_top_gal.jpg",
         "kind": [
           "image"
         ]
@@ -2978,18 +3162,24 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://pedalplayground.com/public/images/pedals/boss-fz5.png",
-        "sourcePage": "https://pedalplayground.com/",
+        "url": "https://static.roland.com/assets/images/products/gallery/fz_5_top_gal.jpg",
+        "sourcePage": "https://www.boss.info/us/products/fz-5/",
         "priority": 1,
-        "notes": "Flat top-down planner cutout used as the documented last resort after the official BOSS top image was checked and rejected for perspective distortion."
+        "notes": "Official BOSS top-down gallery image (static.roland.com); flood matte; clean-alpha vision SHIP; analyzer shape-taper accepted."
       }
     ],
     "extra": {
-      "imageProvenance": "public-asset planner cutout (last resort)",
+      "imageProvenance": "official BOSS top-down gallery (static.roland.com); flood matte; vision SHIP",
       "research": "Official BOSS FZ-5 specification page and owner’s manual.",
       "imageQa": "AVIF q80 passes PSNR 42.28 dB (>=40) from the clean transparent planner cutout (source variant 597px, upscaled to 800 as with the other planner art); bright edge 0.1%, no visible drop shadow after replacing the shadowed variant."
     },
     "confidence": "confirmed",
-    "lastVerified": "2026-10-26"
+    "lastVerified": "2026-10-26",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fz_5_top_gal.jpg",
+      "status": "chosen",
+      "note": "BOSS official top-down gallery; flood matte; vision SHIP."
+    }
   }
 ]
