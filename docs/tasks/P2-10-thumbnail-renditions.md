@@ -1,6 +1,6 @@
 # P2-10: Use the 350 px renditions for small UI
 
-**Phase:** P2 follow-up · **Status:** proposed (P2 phase gate, 2026-10-19) · **Model:** build-cheap
+**Phase:** P2 follow-up · **Status:** in review — PR #61 · **Model:** build-cheap
 
 ## Goal
 Make the checked-in `350/` image renditions earn their place. Today every
@@ -69,4 +69,6 @@ switch size.
   otherwise preview URL + exact steps and 1 desktop + 1 mobile screenshot.
 - **Performance:** record picker request URLs and bundle delta; no 800px thumbnail
   requests for small UI.
-- **Docs:** update the feature catalog/tutorial.
+- **Docs:** feature catalog + F-19 QA map seed in `docs/features/README.md`; the
+  F-19 map is expanded by its own task. `docs/design.md` §Assets still says the
+  info panel shares one URL — a coordinator-only doc edit for a later session.

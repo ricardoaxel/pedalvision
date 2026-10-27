@@ -1,5 +1,5 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import {
 	buildPartInfo,
 	formatDimensions,
@@ -21,6 +21,30 @@ import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
 import { PartDrawing } from "./PartDrawing";
 import { usePartImage } from "./partImage";
 import { effectLabel } from "./pickerFilter";
+
+// Mirrors the `max-width: 1023px` mobile block in index.css.
+const MOBILE_MEDIA = "(max-width: 1023px)";
+
+/**
+ * Mobile only reveals the banner when the sheet is expanded; desktop always
+ * shows it. Knowing which surface is visible lets us render only that
+ * rendition's `<img>` — a hidden image would still be fetched and would defeat
+ * the 350 sleeve / 800 banner split.
+ */
+function useIsMobile(): boolean {
+	const [isMobile, setIsMobile] = useState(
+		() =>
+			typeof window === "undefined" || window.matchMedia(MOBILE_MEDIA).matches,
+	);
+	useEffect(() => {
+		const query = window.matchMedia(MOBILE_MEDIA);
+		const update = () => setIsMobile(query.matches);
+		update();
+		query.addEventListener("change", update);
+		return () => query.removeEventListener("change", update);
+	}, []);
+	return isMobile;
+}
 
 /**
  * The pedal info panel (P2-03). Direction: **"Specimen Readout"** (owner-approved
@@ -53,6 +77,7 @@ export function InfoPanel() {
 	// collapsed (no reset effect needed).
 	const [expandedUid, setExpandedUid] = useState<string | null>(null);
 	const expanded = selectedItemUid !== null && expandedUid === selectedItemUid;
+	const isMobile = useIsMobile();
 	const toggleExpanded = () =>
 		setExpandedUid(expanded ? null : selectedItemUid);
 
@@ -60,17 +85,35 @@ export function InfoPanel() {
 		? items.find((candidate) => candidate.uid === selectedItemUid)
 		: undefined;
 	const resolved = item ? resolveItem(item, customPedals) : null;
+	// Two renditions, two elements: the mobile 64px sleeve is a true thumbnail
+	// (350), while the expanded banner / desktop plate uses the 800 master. A
+	// `url` source resolves to the same absolute URL for both (no derived
+	// rendition exists), and both run the shared CORS-first ladder.
 	const imageSrc = resolved?.definition
-		? resolveImageUrl(
+		? resolveMasterImageUrl(
 				resolved.definition.imageSource,
 				resolved.definition.image,
 				"pedal",
-				ASSET_RENDITIONS.specimen,
+			)
+		: null;
+	const sleeveSrc = resolved?.definition
+		? resolveThumbImageUrl(
+				resolved.definition.imageSource,
+				resolved.definition.image,
+				"pedal",
+				"infoSleeve",
 			)
 		: null;
 	// The CORS-first → cache-bust → no-CORS → failed ladder, shared with the
 	// picker (so a hotlinked `url` never re-poisons the canvas image cache).
 	const preview = usePartImage(imageSrc ?? "");
+	const sleevePreview = usePartImage(sleeveSrc ?? "");
+	// A `url` source has no derived rendition, so both resolve to the same URL:
+	// drive the sleeve from the master state so it shares ONE ladder (no second
+	// CORS probe on expand). If a static/mock 350 is missing, fall back to the
+	// master instead of dropping the image.
+	const thumbPreview = sleeveSrc === imageSrc ? preview : sleevePreview;
+	const sleeveState = thumbPreview.phase === "failed" ? preview : thumbPreview;
 
 	// Report the sheet's real rendered height so the action bar always clears it.
 	const asideRef = useRef<HTMLElement>(null);
@@ -142,8 +185,13 @@ export function InfoPanel() {
 		.join(" · ");
 
 	// The cover: photo (catalog) / drawing (custom) / glyph (unknown or a failed
-	// image). The category drives the caption.
-	const showImage = info.image !== null && preview.phase !== "failed";
+	// image). The category drives the caption. Only the visible surface mounts
+	// its `<img>`: desktop (banner) or mobile-expanded gets the 800 master;
+	// the mobile peek gets the 350 sleeve.
+	const hasImage = info.image !== null;
+	const showMasterImage = hasImage && preview.phase !== "failed";
+	const showBannerImage = !isMobile || expanded;
+	const showSleeveImage = isMobile && !expanded;
 	const caption = info.isCustom
 		? "Drawing"
 		: info.unknown
@@ -163,16 +211,18 @@ export function InfoPanel() {
 			jacks={info.jacks}
 			units={units}
 		/>
-	) : showImage ? (
-		<img
-			key={`${imageSrc}:${preview.phase}`}
-			className="info-panel__cover-img"
-			src={preview.url}
-			alt=""
-			loading="lazy"
-			crossOrigin={preview.crossOrigin}
-			onError={preview.onError}
-		/>
+	) : showMasterImage ? (
+		showBannerImage ? (
+			<img
+				key={`${imageSrc}:${preview.phase}`}
+				className="info-panel__cover-img"
+				src={preview.url}
+				alt=""
+				loading="lazy"
+				crossOrigin={preview.crossOrigin}
+				onError={preview.onError}
+			/>
+		) : null
 	) : (
 		<span
 			className={`info-panel__cover-glyph${
@@ -185,22 +235,23 @@ export function InfoPanel() {
 	);
 
 	// The mobile-collapsed sleeve: image when available, else the glyph (a
-	// drawing is illegible at 64px). Binds onError too: while collapsed the
-	// banner is display:none (so its lazy img isn't requested), making the
-	// sleeve the only requester — the ladder must still advance on failure.
-	const sleeve = showImage ? (
-		<img
-			key={`sleeve:${imageSrc}:${preview.phase}`}
-			className="info-panel__sleeve-img"
-			src={preview.url}
-			alt=""
-			loading="lazy"
-			crossOrigin={preview.crossOrigin}
-			onError={preview.onError}
-		/>
-	) : (
-		<PedalIcon size={24} strokeWidth={1.5} />
-	);
+	// drawing is illegible at 64px). Only the visible surface mounts its img
+	// (the collapsed banner is not rendered), so the sleeve's ladder is the
+	// only one active in the peek — it still advances on failure.
+	const sleeve =
+		showSleeveImage && hasImage && sleeveState.phase !== "failed" ? (
+			<img
+				key={`sleeve:${sleeveState.url}:${sleeveState.phase}`}
+				className="info-panel__sleeve-img"
+				src={sleeveState.url}
+				alt=""
+				loading="lazy"
+				crossOrigin={sleeveState.crossOrigin}
+				onError={sleeveState.onError}
+			/>
+		) : (
+			<PedalIcon size={24} strokeWidth={1.5} />
+		);
 
 	return (
 		<aside
