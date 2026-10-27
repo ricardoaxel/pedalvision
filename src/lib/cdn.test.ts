@@ -66,6 +66,9 @@ describe("resolveThumbImageUrl / resolveMasterImageUrl (small UI vs master)", ()
 		expect(resolveThumbImageUrl("static", "nano.png", "board")).toBe(
 			"/pedal-assets/boards/350/nano.png",
 		);
+		expect(
+			resolveThumbImageUrl("static", "choka.avif", "pedal", "infoSleeve"),
+		).toBe("/pedal-assets/pedals/350/choka.avif");
 	});
 
 	it("returns the 800 path for mock/static masters", () => {

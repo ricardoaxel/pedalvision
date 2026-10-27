@@ -1,9 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import {
-	ASSET_RENDITIONS,
-	resolveImageUrl,
-	resolveMasterImageUrl,
-} from "../lib/cdn";
+import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import {
 	buildPartInfo,
 	formatDimensions,
@@ -26,27 +22,28 @@ import { PartDrawing } from "./PartDrawing";
 import { usePartImage } from "./partImage";
 import { effectLabel } from "./pickerFilter";
 
-const DESKTOP_MEDIA = "(min-width: 1024px)";
+// Mirrors the `max-width: 1023px` mobile block in index.css.
+const MOBILE_MEDIA = "(max-width: 1023px)";
 
 /**
- * Desktop (≥1024px) has the always-visible banner; mobile only reveals it when
- * the sheet is expanded. Knowing which surface is visible lets us render only
- * that rendition's `<img>` — a hidden image would still be fetched and would
- * defeat the 350 sleeve / 800 banner split.
+ * Mobile only reveals the banner when the sheet is expanded; desktop always
+ * shows it. Knowing which surface is visible lets us render only that
+ * rendition's `<img>` — a hidden image would still be fetched and would defeat
+ * the 350 sleeve / 800 banner split.
  */
-function useIsDesktop(): boolean {
-	const [isDesktop, setIsDesktop] = useState(
+function useIsMobile(): boolean {
+	const [isMobile, setIsMobile] = useState(
 		() =>
-			typeof window === "undefined" || window.matchMedia(DESKTOP_MEDIA).matches,
+			typeof window === "undefined" || window.matchMedia(MOBILE_MEDIA).matches,
 	);
 	useEffect(() => {
-		const query = window.matchMedia(DESKTOP_MEDIA);
-		const update = () => setIsDesktop(query.matches);
+		const query = window.matchMedia(MOBILE_MEDIA);
+		const update = () => setIsMobile(query.matches);
 		update();
 		query.addEventListener("change", update);
 		return () => query.removeEventListener("change", update);
 	}, []);
-	return isDesktop;
+	return isMobile;
 }
 
 /**
@@ -80,7 +77,7 @@ export function InfoPanel() {
 	// collapsed (no reset effect needed).
 	const [expandedUid, setExpandedUid] = useState<string | null>(null);
 	const expanded = selectedItemUid !== null && expandedUid === selectedItemUid;
-	const isDesktop = useIsDesktop();
+	const isMobile = useIsMobile();
 	const toggleExpanded = () =>
 		setExpandedUid(expanded ? null : selectedItemUid);
 
@@ -100,17 +97,23 @@ export function InfoPanel() {
 			)
 		: null;
 	const sleeveSrc = resolved?.definition
-		? resolveImageUrl(
+		? resolveThumbImageUrl(
 				resolved.definition.imageSource,
 				resolved.definition.image,
 				"pedal",
-				ASSET_RENDITIONS.infoSleeve,
+				"infoSleeve",
 			)
 		: null;
 	// The CORS-first → cache-bust → no-CORS → failed ladder, shared with the
 	// picker (so a hotlinked `url` never re-poisons the canvas image cache).
 	const preview = usePartImage(imageSrc ?? "");
 	const sleevePreview = usePartImage(sleeveSrc ?? "");
+	// A `url` source has no derived rendition, so both resolve to the same URL:
+	// drive the sleeve from the master state so it shares ONE ladder (no second
+	// CORS probe on expand). If a static/mock 350 is missing, fall back to the
+	// master instead of dropping the image.
+	const thumbPreview = sleeveSrc === imageSrc ? preview : sleevePreview;
+	const sleeveState = thumbPreview.phase === "failed" ? preview : thumbPreview;
 
 	// Report the sheet's real rendered height so the action bar always clears it.
 	const asideRef = useRef<HTMLElement>(null);
@@ -187,9 +190,8 @@ export function InfoPanel() {
 	// the mobile peek gets the 350 sleeve.
 	const hasImage = info.image !== null;
 	const showMasterImage = hasImage && preview.phase !== "failed";
-	const showThumbImage = hasImage && sleevePreview.phase !== "failed";
-	const showBannerImage = isDesktop || expanded;
-	const showSleeveImage = !isDesktop && !expanded;
+	const showBannerImage = !isMobile || expanded;
+	const showSleeveImage = isMobile && !expanded;
 	const caption = info.isCustom
 		? "Drawing"
 		: info.unknown
@@ -237,15 +239,15 @@ export function InfoPanel() {
 	// (the collapsed banner is not rendered), so the sleeve's ladder is the
 	// only one active in the peek — it still advances on failure.
 	const sleeve =
-		showThumbImage && showSleeveImage ? (
+		showSleeveImage && hasImage && sleeveState.phase !== "failed" ? (
 			<img
-				key={`sleeve:${sleeveSrc}:${sleevePreview.phase}`}
+				key={`sleeve:${sleeveState.url}:${sleeveState.phase}`}
 				className="info-panel__sleeve-img"
-				src={sleevePreview.url}
+				src={sleeveState.url}
 				alt=""
 				loading="lazy"
-				crossOrigin={sleevePreview.crossOrigin}
-				onError={sleevePreview.onError}
+				crossOrigin={sleeveState.crossOrigin}
+				onError={sleeveState.onError}
 			/>
 		) : (
 			<PedalIcon size={24} strokeWidth={1.5} />

@@ -27,7 +27,7 @@ direction change.
 
 | Feature | Source modules | Affected workflows | Minimum E2E |
 |---|---|---|---|
-| F-01 / P2-10 two-rendition delivery | `src/lib/cdn.ts` (`ASSET_RENDITIONS`, `resolveThumbImageUrl`, `resolveMasterImageUrl`), `src/components/Picker.tsx`, `src/components/InfoPanel.tsx` | picker search/browse, place pedal/board, mobile info peek + expand, canvas image, export | `e2e/picker.spec.ts`, `e2e/info-panel.spec.ts` (desktop + mobile), `e2e/picker-choka.spec.ts` (350 row / 800 specimen), `e2e/export.spec.ts` when export changes |
+| F-01 / P2-10 two-rendition delivery | `src/lib/cdn.ts` (`ASSET_RENDITIONS`, `resolveThumbImageUrl`, `resolveMasterImageUrl`), `src/components/Picker.tsx`, `src/components/InfoPanel.tsx` | picker search/browse, place pedal/board, mobile info peek + expand, canvas image, export | `e2e/info-panel.spec.ts` (desktop + mobile), `e2e/picker-choka.spec.ts` (350 row / 800 specimen), `e2e/export.spec.ts` when export changes |
 | Catalog rendition pipeline (P5-03) | `tools/asset-pipeline/**` (catalog-owned) | any surface that loads an image | `e2e/picker-choka.spec.ts` |
 
 ### P2-10 verification notes

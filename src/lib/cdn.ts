@@ -21,6 +21,9 @@ export const ASSET_RENDITIONS = {
 	export: 800,
 } as const satisfies Record<string, AssetSize>;
 
+/** The small-UI surfaces that use the 350 rendition. */
+export type ThumbSurface = "pickerRow" | "infoSleeve";
+
 const ASSET_BASE = "/pedal-assets";
 
 const KIND_DIR: Record<AssetKind, string> = {
@@ -71,8 +74,9 @@ export function resolveThumbImageUrl(
 	imageSource: ImageSource,
 	image: string,
 	kind: AssetKind,
+	surface: ThumbSurface = "pickerRow",
 ): string {
-	return resolveImageUrl(imageSource, image, kind, ASSET_RENDITIONS.pickerRow);
+	return resolveImageUrl(imageSource, image, kind, ASSET_RENDITIONS[surface]);
 }
 
 /**
