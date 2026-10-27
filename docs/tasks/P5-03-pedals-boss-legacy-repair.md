@@ -1,6 +1,6 @@
 # P5-03: BOSS — legacy image repair batch (31)
 
-**Phase:** P5 · **Status:** todo — wave `boss-wave-3` (T-2) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #57 (wave `boss-wave-3`, T-2) · **Model:** build-strong
 
 > The coordinator already ran `catalog:start` for `boss/boss-legacy-repair`
 > (total 31). Do **not** run `catalog:start` again. Checkpoint inline after every
