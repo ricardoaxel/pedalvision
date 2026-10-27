@@ -68,14 +68,14 @@ Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
 
-## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 + P5-02 DONE; P5-03 in progress — waves 1–3, BOSS repair + licensing merged; image completion plan merged; T-0a + T-0b done; T-1 in review)
+## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 + P5-02 DONE; P5-03 in progress — waves 1–3, BOSS repair + licensing merged; image completion plan merged; T-0a + T-0b + T-1 done; T-1a in review (PR #56))
 P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
 
 | Task | What it does | Owner action? |
 |---|---|---|
 | P5-01 Policy, data contract & master inventory | Public-asset policy, attribution/takedown, pedal + **pedalboard** schema, 8,557 pedals + 263 boards inventory, brand tiers — **DONE** (PR #35) | **Yes** — approve the public-asset policy + attribution/takedown page (owner accepts responsibility) |
 | P5-02 Quality pipeline & control plane | Pedal/board batch files, build/validate, image analyzer/processor, status/pause/stop, 2,000 cap — **DONE** (merged PR #36) | No |
-| P5-03 Pilot + parallel backfill | Choka/JHS/board pilots + Meris/Red Panda/two board waves **DONE**; BOSS boss-1…boss-3, the BOSS image repair (PR #50) and the licensing ledger (PR #51) **DONE**; **image completion plan T-0 merged (PR #52)**, **T-0a true-token gate done (PR #53)**, **T-0b parallel feature + catalog workstreams merged (PR #54, docs-only)** and **T-1 generated pedal art + promote-legacy in review (PR #55)** → BOSS wave 3/4 → cleanup waves → remaining Tier A (3-wide, one agent per batch; one feature task in parallel once the T-2 calibration lands). First 2,000 items include 150 boards | **Yes** — review/merge the T-1 PR (direction already approved), and send the brand licensing emails |
+| P5-03 Pilot + parallel backfill | Choka/JHS/board pilots + Meris/Red Panda/two board waves **DONE**; BOSS boss-1…boss-3, the BOSS image repair (PR #50) and the licensing ledger (PR #51) **DONE**; **image completion plan T-0 merged (PR #52)**, **T-0a true-token gate done (PR #53)**, **T-0b parallel feature + catalog workstreams merged (PR #54, docs-only)** and **T-1 generated pedal art + promote-legacy merged (PR #55)** and **T-1a image source policy (planner last-resort + recorded sources) in review (PR #56)** → BOSS wave 3/4 → cleanup waves → remaining Tier A (3-wide, one agent per batch; one feature task in parallel once the T-2 calibration lands). First 2,000 items include 150 boards | **Yes** — review/merge T-1a (policy change), and send the brand licensing emails |
 | P5-04 Final QA, provenance & launch gate | Full validation, spot-checks, iOS, launch sign-off | **Yes** — launch approval |
 | P5-05 Image hosting at scale | Deferred spike only if the owner chooses to exceed Tier A / 2,000 hosted pedals | **Yes** — choose the hosting option only when triggered |
 | P5-06 Appium · P5-07 Help · P5-08 Observability | Proposed/unscheduled | Later |

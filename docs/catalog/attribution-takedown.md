@@ -11,10 +11,12 @@ the page ships before launch (P5-04). Governing decision: ADR-003
 - Every shipped catalog image is a **self-hosted static asset** under
   `public/pedal-assets/` (or the P5-05 CDN). No hotlinked images ship in the
   launched catalog.
-- Each item keeps the **source URL(s)** it was verified against in catalog
-  `sources` (`kind: ["info"]` and/or `["image"]`). Manufacturer/press pages are
-  preferred; authorized retailers second; existing public catalog images are a
-  last resort.
+- Each item keeps the **source URL(s)** it was verified against in the **private**
+  raw catalog/ledger (`sources` + `imageProvenance`), **not on the public page**.
+  Manufacturer/press pages are preferred; authorized retailers second;
+  user/community third; planner/Pedalplayground only as a recorded last-resort
+  shipped source (pedals) above generated art. This private source record is what
+  lets future batches target the remaining source gaps.
 - Catalog images are used for **identification and true-scale planning** only.
   We do not copy descriptions or imply brand endorsement; brand/model names are
   factual references.
@@ -26,18 +28,19 @@ the page ships before launch (P5-04). Governing decision: ADR-003
 > **Catalog image credits**
 >
 > Pedalvision shows product images to help you plan a pedalboard at true scale.
-> Images are sourced from manufacturer/press pages, authorized retailers, or
-> public catalog images, and are hosted by Pedalvision. Each catalog item keeps
-> a link to the source it was verified against. Brand and product names are the
-> property of their owners; Pedalvision is an independent planner and does not
-> imply endorsement.
+> Images are sourced from manufacturer/press pages, authorized retailers,
+> user/community images, or our own generated flat art, and are hosted by
+> Pedalvision. Per-item source records are kept internally for provenance and
+> improvement. Brand and product names are the property of their owners;
+> Pedalvision is an independent planner and does not imply endorsement.
 >
 > If an image or fact is yours and you would like it credited differently or
 > removed, open a removal request and we will replace or remove it.
 
-- Implementation: the page renders the source URL(s) for a catalog item (direct
-  link on the item detail) and a short explanation of the policy above.
-- Visible from the app footer/help surface; linked from the catalog picker.
+- Implementation: the page shows the generic policy/removal copy above. Per-item
+  source URLs stay in the **private** raw catalog/ledger and are **never rendered**
+  on the public page. Visible from the app footer/help surface; linked from the
+  catalog picker.
 
 ## Takedown path (v1, no backend)
 
@@ -51,8 +54,10 @@ the page ships before launch (P5-04). Governing decision: ADR-003
 
 ## Quality/rights guardrails
 
-- Candidate order: official manufacturer/press page → authorized retailer →
-  existing public catalog image (last resort). Never bulk-copy descriptions.
+- Candidate order (pedals): official manufacturer/press page → authorized
+  retailer → user/community (recorded) → planner last-resort (recorded) →
+  generated flat art. Boards: official/authorized reference → generated art;
+  planner pixels never. Never bulk-copy descriptions.
 - Rejected candidates are kept in the raw archive with the reason, so an image
   can be re-checked without re-researching the model.
 - The 2,000-hosted-pedal cap (~4,000 files, ~300 MB) applies until P5-05; board

@@ -12,420 +12,456 @@
 
 Hosting: hotlinked 92 · mock 84 · static 109
 
-Source kind: legacy 31 · official 165 · own 89
+Source kind: archive 4 · legacy 31 · official 161 · own 89
+
+Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84)
 
 ## Aclam
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `aclam-smart-track-l2-free` | Smart Track L2 (Free) | own | mock | own | Aclam batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `aclam-smart-track-l2-free` | Smart Track L2 (Free) | own | mock | own | yes | Aclam batch |
 
 ## BOSS
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `boss-bcb-1000` | BCB-1000 | own | mock | own | BOSS batch |
-| `boss-ac-2-acoustic-simulator` | AC-2 Acoustic Simulator | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ac-3-acoustic-simulator` | AC-3 Acoustic Simulator | license-pending | static | official | — |
-| `boss-ad-2-acoustic-preamp` | AD-2 Acoustic Preamp | license-pending | static | official | — |
-| `boss-aw-3-dynamic-wah` | AW-3 Dynamic Wah | license-pending | static | official | — |
-| `boss-bb-1x-bass-driver` | BB-1X Bass Driver | license-pending | static | official | — |
-| `boss-bc-1x-bass-compressor` | BC-1X Bass Compressor | license-pending | static | official | — |
-| `boss-bc-2-combo-drive` | BC-2 Combo Drive | license-pending | static | official | — |
-| `boss-bd-2-blues-driver` | BD-2 Blues Driver | license-pending | static | official | — |
-| `boss-bd-2w-blues-driver-waza-craft` | BD-2W Blues Driver (Waza Craft) | license-pending | static | official | — |
-| `boss-bf-2-flanger` | BF-2 Flanger | license-pending | static | official | — |
-| `boss-bf-2b-bass-flanger` | BF-2B Bass Flanger | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-bf-3-flanger` | BF-3 Flanger | license-pending | static | official | — |
-| `boss-bp-1w-booster-preamp-waza-craft` | BP-1W Booster/Preamp (Waza Craft) | license-pending | static | official | — |
-| `boss-ce-1-chorus-ensemble` | CE-1 Chorus Ensemble | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ce-2-chorus` | CE-2 Chorus | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ce-20-chorus-ensemble` | CE-20 Chorus Ensemble | license-pending | static | official | — |
-| `boss-ce-2b-bass-chorus` | CE-2B Bass Chorus | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ce-2w-chorus-waza-craft` | CE-2W Chorus (Waza Craft) | license-pending | static | official | — |
-| `boss-ce-3-chorus` | CE-3 Chorus | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ce-5-chorus-ensemble` | CE-5 Chorus Ensemble | license-pending | static | official | — |
-| `boss-ceb-3-bass-chorus` | CEB-3 Bass Chorus | license-pending | static | official | — |
-| `boss-ch-1-super-chorus` | CH-1 Super Chorus | license-pending | static | official | — |
-| `boss-cp-1x-compressor` | CP-1X Compressor | license-pending | static | official | — |
-| `boss-cs-2-compression-sustainer` | CS-2 Compression Sustainer | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-cs-3-compression-sustainer` | CS-3 Compression Sustainer | license-pending | static | official | — |
-| `boss-da-2-adaptive-distortion` | DA-2 Adaptive Distortion | license-pending | static | official | — |
-| `boss-dc-2-dimension-c` | DC-2 Dimension C | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dc-2w-dimension-c-waza-craft` | DC-2W Dimension C (Waza Craft) | license-pending | static | official | — |
-| `boss-dc-3-digital-dimension` | DC-3 Digital Dimension | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dd-2-digital-delay` | DD-2 Digital Delay | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dd-20-giga-delay` | DD-20 Giga Delay | license-pending | static | official | — |
-| `boss-dd-200-digital-delay` | DD-200 Digital Delay | license-pending | static | official | — |
-| `boss-dd-3-digital-delay` | DD-3 Digital Delay | license-pending | static | official | — |
-| `boss-dd-3t-digital-delay` | DD-3T Digital Delay | license-pending | static | official | — |
-| `boss-dd-5-digital-delay` | DD-5 Digital Delay | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dd-500-digital-delay` | DD-500 Digital Delay | license-pending | static | official | — |
-| `boss-dd-6-digital-delay` | DD-6 Digital Delay | license-pending | static | official | — |
-| `boss-dd-7-digital-delay` | DD-7 Digital Delay | license-pending | static | official | — |
-| `boss-dd-8-digital-delay` | DD-8 Digital Delay | license-pending | static | official | — |
-| `boss-df-2-super-feedbacker-distortion` | DF-2 Super Feedbacker & Distortion | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dm-101-delay-machine` | DM-101 Delay Machine | license-pending | static | official | — |
-| `boss-dm-2-delay` | DM-2 Delay | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dm-2w-delay-waza-craft` | DM-2W Delay (Waza Craft) | license-pending | static | official | — |
-| `boss-dm-3-delay` | DM-3 Delay | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dn-2-dyna-drive` | DN-2 Dyna Drive | license-pending | static | official | — |
-| `boss-ds-1-4a-anniversary-distortion` | DS-1-4A Anniversary Distortion | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ds-1-distortion` | DS-1 Distortion | license-pending | static | official | — |
-| `boss-ds-1-wh-distortion` | DS-1-WH Distortion | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ds-1w-distortion` | DS-1W Distortion | license-pending | static | official | — |
-| `boss-ds-1x-distortion` | DS-1X Distortion | license-pending | static | official | — |
-| `boss-ds-2-turbo-distortion` | DS-2 Turbo Distortion | license-pending | static | official | — |
-| `boss-dsd-2-digital-sampler-delay` | DSD-2 Digital Sampler/Delay | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dsd-3-digital-sampler-delay` | DSD-3 Digital Sampler/Delay | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-eh-2-enhancer` | EH-2 Enhancer | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-eq-20-advanced-eq` | EQ-20 Advanced EQ | license-pending | static | official | — |
-| `boss-eq-200-graphic-equalizer` | EQ-200 Graphic Equalizer | license-pending | static | official | — |
-| `boss-es-5-effects-switching-system` | ES-5 Effects Switching System | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-es-8-effects-switching-system` | ES-8 Effects Switching System | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ev-1-wl-wireless-midi-expression-pedal` | EV-1-WL Wireless MIDI Expression Pedal | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ev-30-dual-expression-pedal` | EV-30 Dual Expression Pedal | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ev-5-expression-pedal` | EV-5 Expression Pedal | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fb-2-feedbacker-booster` | FB-2 Feedbacker/Booster | license-pending | static | official | — |
-| `boss-fbm-1-59-fender-bassman` | FBM-1 '59 Fender Bassman | license-pending | static | official | — |
-| `boss-fdr-1-fender-65-deluxe-reverb` | FDR-1 Fender '65 Deluxe Reverb | license-pending | static | official | — |
-| `boss-frv-1-63-fender-reverb` | FRV-1 '63 Fender Reverb | license-pending | static | official | — |
-| `boss-fs-1-wl-wireless-footswitch` | FS-1-WL Wireless Footswitch | license-pending | static | official | — |
-| `boss-fs-5l-foot-switch` | FS-5L Foot Switch | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fs-5u-foot-switch` | FS-5U Foot Switch | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fs-6-dual-foot-switch` | FS-6 Dual Foot Switch | license-pending | static | official | — |
-| `boss-fs-7-dual-foot-switch` | FS-7 Dual Foot Switch | license-pending | static | official | — |
-| `boss-ft-2-dynamic-filter` | FT-2 Dynamic Filter | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fv-100-guitar-volume` | FV-100 Guitar Volume | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fv-30-foot-volume` | FV-30 Foot Volume | license-pending | static | official | — |
-| `boss-fv-500-volume-pedal` | FV-500 Volume Pedal | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fz-1w-fuzz` | FZ-1W Fuzz | license-pending | static | official | — |
-| `boss-fz-2-hyper-fuzz` | FZ-2 Hyper Fuzz | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fz-3-fuzz` | FZ-3 Fuzz | replacement-needed | static | legacy | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fz-5-fuzz` | FZ-5 Fuzz | license-pending | static | official | — |
-| `boss-psm-5-power-supply-master-switch` | PSM-5 Power Supply & Master Switch | license-pending | hotlinked | official | BOSS batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `boss-bcb-1000` | BCB-1000 | own | mock | own | yes | BOSS batch |
+| `boss-ac-2-acoustic-simulator` | AC-2 Acoustic Simulator | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ac-3-acoustic-simulator` | AC-3 Acoustic Simulator | license-pending | static | official | — | — |
+| `boss-ad-2-acoustic-preamp` | AD-2 Acoustic Preamp | license-pending | static | official | — | — |
+| `boss-aw-3-dynamic-wah` | AW-3 Dynamic Wah | license-pending | static | official | — | — |
+| `boss-bb-1x-bass-driver` | BB-1X Bass Driver | license-pending | static | official | — | — |
+| `boss-bc-1x-bass-compressor` | BC-1X Bass Compressor | license-pending | static | official | — | — |
+| `boss-bc-2-combo-drive` | BC-2 Combo Drive | license-pending | static | official | — | — |
+| `boss-bd-2-blues-driver` | BD-2 Blues Driver | license-pending | static | official | — | — |
+| `boss-bd-2w-blues-driver-waza-craft` | BD-2W Blues Driver (Waza Craft) | license-pending | static | official | — | — |
+| `boss-bf-2-flanger` | BF-2 Flanger | license-pending | static | official | — | — |
+| `boss-bf-2b-bass-flanger` | BF-2B Bass Flanger | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-bf-3-flanger` | BF-3 Flanger | license-pending | static | official | — | — |
+| `boss-bp-1w-booster-preamp-waza-craft` | BP-1W Booster/Preamp (Waza Craft) | license-pending | static | official | — | — |
+| `boss-ce-1-chorus-ensemble` | CE-1 Chorus Ensemble | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ce-2-chorus` | CE-2 Chorus | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ce-20-chorus-ensemble` | CE-20 Chorus Ensemble | license-pending | static | official | — | — |
+| `boss-ce-2b-bass-chorus` | CE-2B Bass Chorus | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ce-2w-chorus-waza-craft` | CE-2W Chorus (Waza Craft) | license-pending | static | official | — | — |
+| `boss-ce-3-chorus` | CE-3 Chorus | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ce-5-chorus-ensemble` | CE-5 Chorus Ensemble | license-pending | static | official | — | — |
+| `boss-ceb-3-bass-chorus` | CEB-3 Bass Chorus | license-pending | static | official | — | — |
+| `boss-ch-1-super-chorus` | CH-1 Super Chorus | license-pending | static | official | — | — |
+| `boss-cp-1x-compressor` | CP-1X Compressor | license-pending | static | official | — | — |
+| `boss-cs-2-compression-sustainer` | CS-2 Compression Sustainer | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-cs-3-compression-sustainer` | CS-3 Compression Sustainer | license-pending | static | official | — | — |
+| `boss-da-2-adaptive-distortion` | DA-2 Adaptive Distortion | license-pending | static | official | — | — |
+| `boss-dc-2-dimension-c` | DC-2 Dimension C | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dc-2w-dimension-c-waza-craft` | DC-2W Dimension C (Waza Craft) | license-pending | static | official | — | — |
+| `boss-dc-3-digital-dimension` | DC-3 Digital Dimension | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dd-2-digital-delay` | DD-2 Digital Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dd-20-giga-delay` | DD-20 Giga Delay | license-pending | static | official | — | — |
+| `boss-dd-200-digital-delay` | DD-200 Digital Delay | license-pending | static | official | — | — |
+| `boss-dd-3-digital-delay` | DD-3 Digital Delay | license-pending | static | official | — | — |
+| `boss-dd-3t-digital-delay` | DD-3T Digital Delay | license-pending | static | official | — | — |
+| `boss-dd-5-digital-delay` | DD-5 Digital Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dd-500-digital-delay` | DD-500 Digital Delay | license-pending | static | official | — | — |
+| `boss-dd-6-digital-delay` | DD-6 Digital Delay | license-pending | static | official | — | — |
+| `boss-dd-7-digital-delay` | DD-7 Digital Delay | license-pending | static | official | — | — |
+| `boss-dd-8-digital-delay` | DD-8 Digital Delay | license-pending | static | official | — | — |
+| `boss-df-2-super-feedbacker-distortion` | DF-2 Super Feedbacker & Distortion | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dm-101-delay-machine` | DM-101 Delay Machine | license-pending | static | official | — | — |
+| `boss-dm-2-delay` | DM-2 Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dm-2w-delay-waza-craft` | DM-2W Delay (Waza Craft) | license-pending | static | official | — | — |
+| `boss-dm-3-delay` | DM-3 Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dn-2-dyna-drive` | DN-2 Dyna Drive | license-pending | static | official | — | — |
+| `boss-ds-1-4a-anniversary-distortion` | DS-1-4A Anniversary Distortion | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ds-1-distortion` | DS-1 Distortion | license-pending | static | official | — | — |
+| `boss-ds-1-wh-distortion` | DS-1-WH Distortion | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ds-1w-distortion` | DS-1W Distortion | license-pending | static | official | — | — |
+| `boss-ds-1x-distortion` | DS-1X Distortion | license-pending | static | official | — | — |
+| `boss-ds-2-turbo-distortion` | DS-2 Turbo Distortion | license-pending | static | official | — | — |
+| `boss-dsd-2-digital-sampler-delay` | DSD-2 Digital Sampler/Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dsd-3-digital-sampler-delay` | DSD-3 Digital Sampler/Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-eh-2-enhancer` | EH-2 Enhancer | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-eq-20-advanced-eq` | EQ-20 Advanced EQ | license-pending | static | official | — | — |
+| `boss-eq-200-graphic-equalizer` | EQ-200 Graphic Equalizer | license-pending | static | official | — | — |
+| `boss-es-5-effects-switching-system` | ES-5 Effects Switching System | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-es-8-effects-switching-system` | ES-8 Effects Switching System | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ev-1-wl-wireless-midi-expression-pedal` | EV-1-WL Wireless MIDI Expression Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ev-30-dual-expression-pedal` | EV-30 Dual Expression Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ev-5-expression-pedal` | EV-5 Expression Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fb-2-feedbacker-booster` | FB-2 Feedbacker/Booster | license-pending | static | official | — | — |
+| `boss-fbm-1-59-fender-bassman` | FBM-1 '59 Fender Bassman | license-pending | static | official | — | — |
+| `boss-fdr-1-fender-65-deluxe-reverb` | FDR-1 Fender '65 Deluxe Reverb | license-pending | static | official | — | — |
+| `boss-frv-1-63-fender-reverb` | FRV-1 '63 Fender Reverb | license-pending | static | official | — | — |
+| `boss-fs-1-wl-wireless-footswitch` | FS-1-WL Wireless Footswitch | license-pending | static | official | — | — |
+| `boss-fs-5l-foot-switch` | FS-5L Foot Switch | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fs-5u-foot-switch` | FS-5U Foot Switch | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fs-6-dual-foot-switch` | FS-6 Dual Foot Switch | license-pending | static | official | — | — |
+| `boss-fs-7-dual-foot-switch` | FS-7 Dual Foot Switch | license-pending | static | official | — | — |
+| `boss-ft-2-dynamic-filter` | FT-2 Dynamic Filter | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fv-100-guitar-volume` | FV-100 Guitar Volume | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fv-30-foot-volume` | FV-30 Foot Volume | license-pending | static | official | — | — |
+| `boss-fv-500-volume-pedal` | FV-500 Volume Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fz-1w-fuzz` | FZ-1W Fuzz | license-pending | static | official | — | — |
+| `boss-fz-2-hyper-fuzz` | FZ-2 Hyper Fuzz | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fz-3-fuzz` | FZ-3 Fuzz | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fz-5-fuzz` | FZ-5 Fuzz | license-pending | static | official | — | — |
+| `boss-psm-5-power-supply-master-switch` | PSM-5 Power Supply & Master Switch | license-pending | hotlinked | official | yes | BOSS batch |
 
 ## Behringer
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `behringer-powerplay-p1` | Powerplay P1 | license-pending | hotlinked | official | Behringer batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `behringer-powerplay-p1` | Powerplay P1 | license-pending | hotlinked | official | yes | Behringer batch |
 
 ## Big Joe
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `big-joe-pb-109-power-box-li2` | PB-109 Power Box Li2 | own | mock | own | Big Joe batch |
-| `big-joe-power-box-iso4` | Power Box ISO4 | own | mock | own | Big Joe batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `big-joe-pb-109-power-box-li2` | PB-109 Power Box Li2 | own | mock | own | yes | Big Joe batch |
+| `big-joe-power-box-iso4` | Power Box ISO4 | own | mock | own | yes | Big Joe batch |
 
 ## Blackbird
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `blackbird-tolex-1224` | Tolex 1224 | own | mock | own | Blackbird batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `blackbird-tolex-1224` | Tolex 1224 | own | mock | own | yes | Blackbird batch |
 
 ## BoardMods
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `boardmods-b` | B | own | mock | own | BoardMods batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `boardmods-b` | B | own | mock | own | yes | BoardMods batch |
 
 ## Caseman
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `caseman-gentleman-medium` | Gentleman Medium | own | mock | own | Caseman batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `caseman-gentleman-medium` | Gentleman Medium | own | mock | own | yes | Caseman batch |
 
 ## Creation Music Co
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `creation-music-co-aero-17x12-5` | Aero 17x12.5 | own | mock | own | Creation Music Co batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `creation-music-co-aero-17x12-5` | Aero 17x12.5 | own | mock | own | yes | Creation Music Co batch |
 
 ## Donner
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `donner-db-3` | DB-3 | own | mock | own | Donner batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `donner-db-3` | DB-3 | own | mock | own | yes | Donner batch |
 
 ## D’Addario
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `d-addario-xpnd-1` | XPND 1 | own | mock | own | D’Addario batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `d-addario-xpnd-1` | XPND 1 | own | mock | own | yes | D’Addario batch |
 
 ## EarthQuaker
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `earthquaker-a-b-box` | A/B Box | own | mock | own | EarthQuaker batch |
-| `earthquaker-acapulco-gold` | Acapulco Gold | own | mock | own | EarthQuaker batch |
-| `earthquaker-afterneath` | Afterneath | own | mock | own | EarthQuaker batch |
-| `earthquaker-afterneath-v3` | Afterneath V3 | own | mock | own | EarthQuaker batch |
-| `earthquaker-afterneath-v3-pastel-purple` | Afterneath V3 (Pastel Purple) | own | mock | own | EarthQuaker batch |
-| `earthquaker-afterneath-v3-raw` | Afterneath V3 (Raw) | own | mock | own | EarthQuaker batch |
-| `earthquaker-aqueduct` | Aqueduct | own | mock | own | EarthQuaker batch |
-| `earthquaker-arpanoid` | Arpanoid | own | mock | own | EarthQuaker batch |
-| `earthquaker-arrows` | Arrows | own | mock | own | EarthQuaker batch |
-| `earthquaker-arrows-v2` | Arrows V2 | own | mock | own | EarthQuaker batch |
-| `earthquaker-astral-destiny` | Astral Destiny | own | mock | own | EarthQuaker batch |
-| `earthquaker-aurelius` | Aurelius | own | mock | own | EarthQuaker batch |
-| `earthquaker-avalanche-run` | Avalanche Run | own | mock | own | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2` | Avalanche Run V2 | own | mock | own | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-black` | Avalanche Run V2 (Black) | own | mock | own | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-mint` | Avalanche Run V2 (Mint) | own | mock | own | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-purple-sparkle` | Avalanche Run V2 (Purple Sparkle) | own | mock | own | EarthQuaker batch |
-| `earthquaker-barrows-fuzz` | Barrows Fuzz | own | mock | own | EarthQuaker batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `earthquaker-a-b-box` | A/B Box | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-acapulco-gold` | Acapulco Gold | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-afterneath` | Afterneath | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-afterneath-v3` | Afterneath V3 | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-afterneath-v3-pastel-purple` | Afterneath V3 (Pastel Purple) | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-afterneath-v3-raw` | Afterneath V3 (Raw) | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-aqueduct` | Aqueduct | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-arpanoid` | Arpanoid | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-arrows` | Arrows | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-arrows-v2` | Arrows V2 | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-astral-destiny` | Astral Destiny | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-aurelius` | Aurelius | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-avalanche-run` | Avalanche Run | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-avalanche-run-v2` | Avalanche Run V2 | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-avalanche-run-v2-black` | Avalanche Run V2 (Black) | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-avalanche-run-v2-mint` | Avalanche Run V2 (Mint) | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-avalanche-run-v2-purple-sparkle` | Avalanche Run V2 (Purple Sparkle) | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-barrows-fuzz` | Barrows Fuzz | own | mock | own | yes | EarthQuaker batch |
 
 ## Effects Bakery
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `effects-bakery-power-supply-hoden-sentai-donuts` | Power Supply Hoden Sentai Donuts | own | mock | own | Effects Bakery batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `effects-bakery-power-supply-hoden-sentai-donuts` | Power Supply Hoden Sentai Donuts | own | mock | own | yes | Effects Bakery batch |
 
 ## Electro-Harmonix
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `electro-harmonix-1-echo` | #1 Echo | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-1440-stereo-looper` | 1440 Stereo Looper | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-15watt-howitzer` | 15Watt Howitzer | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-2020-tuner` | 2020 Tuner | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-2020-tuner-v2` | 2020 Tuner v2 | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-22500-dual-stereo-looper` | 22500 Dual Stereo Looper | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-22500-foot-controller` | 22500 Foot Controller | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-44-magnum-power-amp` | 44 Magnum Power Amp | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-5mm-power-amp` | 5mm Power Amp | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-720-stereo-looper` | 720 Stereo Looper | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-8-step-program` | 8 Step Program | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-95000-performance-loop-laboratory` | 95000 Performance Loop Laboratory | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-analogizer` | Analogizer | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-attack-decay` | Attack Decay | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-b9-organ-machine` | B9 Organ Machine | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-bad-stone` | Bad Stone | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-bass-big-muff-pi` | Bass Big Muff Pi | license-pending | hotlinked | official | Electro-Harmonix batch |
-| `electro-harmonix-bass-big-muff-pi-2` | Bass Big Muff Pi 2 | license-pending | hotlinked | official | Electro-Harmonix batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `electro-harmonix-1-echo` | #1 Echo | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-1440-stereo-looper` | 1440 Stereo Looper | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-15watt-howitzer` | 15Watt Howitzer | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-2020-tuner` | 2020 Tuner | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-2020-tuner-v2` | 2020 Tuner v2 | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-22500-dual-stereo-looper` | 22500 Dual Stereo Looper | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-22500-foot-controller` | 22500 Foot Controller | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-44-magnum-power-amp` | 44 Magnum Power Amp | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-5mm-power-amp` | 5mm Power Amp | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-720-stereo-looper` | 720 Stereo Looper | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-8-step-program` | 8 Step Program | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-95000-performance-loop-laboratory` | 95000 Performance Loop Laboratory | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-analogizer` | Analogizer | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-attack-decay` | Attack Decay | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-b9-organ-machine` | B9 Organ Machine | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-bad-stone` | Bad Stone | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-bass-big-muff-pi` | Bass Big Muff Pi | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-bass-big-muff-pi-2` | Bass Big Muff Pi 2 | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
 
 ## Emerson Custom
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `emerson-custom-18x12` | 18x12 | own | mock | own | Emerson Custom batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `emerson-custom-18x12` | 18x12 | own | mock | own | yes | Emerson Custom batch |
 
 ## Fame
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `fame-spaceboard-40` | Spaceboard 40 | own | mock | own | Fame batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `fame-spaceboard-40` | Spaceboard 40 | own | mock | own | yes | Fame batch |
 
 ## JHS
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `jhs-1966-series-bender` | 1966 Series Bender | own | mock | own | JHS batch |
-| `jhs-1966-series-boost` | 1966 Series Boost | own | mock | own | JHS batch |
-| `jhs-1966-series-fuzz` | 1966 Series Fuzz | own | mock | own | JHS batch |
-| `jhs-1966-series-italy` | 1966 Series Italy | own | mock | own | JHS batch |
-| `jhs-3-series-bit-crusher` | 3 Series Bit Crusher | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-chorus` | 3 Series Chorus | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-compressor` | 3 Series Compressor | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-delay` | 3 Series Delay | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-distortion` | 3 Series Distortion | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-flanger` | 3 Series Flanger | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-fuzz` | 3 Series Fuzz | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-glitch-delay` | 3 Series Glitch Delay | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-hall-reverb` | 3 Series Hall Reverb | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-harmonic-trem` | 3 Series Harmonic Trem | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-octave-reverb` | 3 Series Octave Reverb | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-oil-can-delay` | 3 Series Oil Can Delay | license-pending | hotlinked | official | JHS batch |
-| `jhs-3-series-oil-can-delay-black` | 3 Series Oil Can Delay (Black) | own | mock | own | JHS batch |
-| `jhs-3-series-overdrive` | 3 Series Overdrive | own | mock | own | JHS batch |
-| `jhs-3-series-screamer` | 3 Series Screamer | license-pending | static | official | — |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `jhs-1966-series-bender` | 1966 Series Bender | own | mock | own | yes | JHS batch |
+| `jhs-1966-series-boost` | 1966 Series Boost | own | mock | own | yes | JHS batch |
+| `jhs-1966-series-fuzz` | 1966 Series Fuzz | own | mock | own | yes | JHS batch |
+| `jhs-1966-series-italy` | 1966 Series Italy | own | mock | own | yes | JHS batch |
+| `jhs-3-series-bit-crusher` | 3 Series Bit Crusher | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-chorus` | 3 Series Chorus | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-compressor` | 3 Series Compressor | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-delay` | 3 Series Delay | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-distortion` | 3 Series Distortion | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-flanger` | 3 Series Flanger | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-fuzz` | 3 Series Fuzz | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-glitch-delay` | 3 Series Glitch Delay | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-hall-reverb` | 3 Series Hall Reverb | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-harmonic-trem` | 3 Series Harmonic Trem | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-octave-reverb` | 3 Series Octave Reverb | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-oil-can-delay` | 3 Series Oil Can Delay | license-pending | hotlinked | official | yes | JHS batch |
+| `jhs-3-series-oil-can-delay-black` | 3 Series Oil Can Delay (Black) | own | mock | own | yes | JHS batch |
+| `jhs-3-series-overdrive` | 3 Series Overdrive | own | mock | own | yes | JHS batch |
+| `jhs-3-series-screamer` | 3 Series Screamer | license-pending | static | official | — | — |
 
 ## Joyo
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `joyo-d-seed` | D-Seed | own | mock | own | Joyo batch |
-| `joyo-jf-01-vintage-overdrive` | JF-01 Vintage Overdrive | own | mock | own | Joyo batch |
-| `joyo-jf-02-ultimate-drive` | JF-02 Ultimate Drive | own | mock | own | Joyo batch |
-| `joyo-jf-03-crunch-distortion` | JF-03 Crunch Distortion | own | mock | own | Joyo batch |
-| `joyo-jf-04-high-gain-distortion` | JF-04 High Gain Distortion | own | mock | own | Joyo batch |
-| `joyo-jf-05-classic-chorus` | JF-05 Classic Chorus | own | mock | own | Joyo batch |
-| `joyo-jf-06-vintage-phase` | JF-06 Vintage Phase | own | mock | own | Joyo batch |
-| `joyo-jf-07-classic-flanger` | JF-07 Classic Flanger | own | mock | own | Joyo batch |
-| `joyo-jf-08-digital-delay` | JF-08 Digital Delay | own | mock | own | Joyo batch |
-| `joyo-jf-09-tremolo` | JF-09 Tremolo | own | mock | own | Joyo batch |
-| `joyo-jf-10-dynamic-compressor` | JF-10 Dynamic Compressor | own | mock | own | Joyo batch |
-| `joyo-jf-11-6-band-eq` | JF-11 6 Band EQ | own | mock | own | Joyo batch |
-| `joyo-jf-12-voodoo-octave` | JF-12 Voodoo Octave | own | mock | own | Joyo batch |
-| `joyo-jf-13-ac-tone` | JF-13 AC Tone | license-pending | hotlinked | official | Joyo batch |
-| `joyo-jf-14-american-sound` | JF-14 American Sound | license-pending | hotlinked | official | Joyo batch |
-| `joyo-jf-15-california-sound` | JF-15 California Sound | license-pending | hotlinked | official | Joyo batch |
-| `joyo-jf-16-british-sound` | JF-16 British Sound | license-pending | hotlinked | official | Joyo batch |
-| `joyo-jf-17-extreme-metal` | JF-17 Extreme Metal | license-pending | hotlinked | official | Joyo batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `joyo-d-seed` | D-Seed | own | mock | own | yes | Joyo batch |
+| `joyo-jf-01-vintage-overdrive` | JF-01 Vintage Overdrive | own | mock | own | yes | Joyo batch |
+| `joyo-jf-02-ultimate-drive` | JF-02 Ultimate Drive | own | mock | own | yes | Joyo batch |
+| `joyo-jf-03-crunch-distortion` | JF-03 Crunch Distortion | own | mock | own | yes | Joyo batch |
+| `joyo-jf-04-high-gain-distortion` | JF-04 High Gain Distortion | own | mock | own | yes | Joyo batch |
+| `joyo-jf-05-classic-chorus` | JF-05 Classic Chorus | own | mock | own | yes | Joyo batch |
+| `joyo-jf-06-vintage-phase` | JF-06 Vintage Phase | own | mock | own | yes | Joyo batch |
+| `joyo-jf-07-classic-flanger` | JF-07 Classic Flanger | own | mock | own | yes | Joyo batch |
+| `joyo-jf-08-digital-delay` | JF-08 Digital Delay | own | mock | own | yes | Joyo batch |
+| `joyo-jf-09-tremolo` | JF-09 Tremolo | own | mock | own | yes | Joyo batch |
+| `joyo-jf-10-dynamic-compressor` | JF-10 Dynamic Compressor | own | mock | own | yes | Joyo batch |
+| `joyo-jf-11-6-band-eq` | JF-11 6 Band EQ | own | mock | own | yes | Joyo batch |
+| `joyo-jf-12-voodoo-octave` | JF-12 Voodoo Octave | own | mock | own | yes | Joyo batch |
+| `joyo-jf-13-ac-tone` | JF-13 AC Tone | license-pending | hotlinked | official | yes | Joyo batch |
+| `joyo-jf-14-american-sound` | JF-14 American Sound | license-pending | hotlinked | official | yes | Joyo batch |
+| `joyo-jf-15-california-sound` | JF-15 California Sound | license-pending | hotlinked | official | yes | Joyo batch |
+| `joyo-jf-16-british-sound` | JF-16 British Sound | license-pending | hotlinked | official | yes | Joyo batch |
+| `joyo-jf-17-extreme-metal` | JF-17 Extreme Metal | license-pending | hotlinked | official | yes | Joyo batch |
 
 ## Keeley
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `keeley-1962` | 1962 | own | mock | own | Keeley batch |
-| `keeley-1962x` | 1962x | own | mock | own | Keeley batch |
-| `keeley-30ms-double-tracker` | 30ms Double Tracker | own | mock | own | Keeley batch |
-| `keeley-abbey-chamber-verb` | Abbey Chamber Verb | own | mock | own | Keeley batch |
-| `keeley-angry-orange` | Angry Orange | own | mock | own | Keeley batch |
-| `keeley-angry-orange-signalis` | Angry Orange (Signalis) | own | mock | own | Keeley batch |
-| `keeley-angry-orange-white` | Angry Orange (White) | own | mock | own | Keeley batch |
-| `keeley-aria` | Aria | own | mock | own | Keeley batch |
-| `keeley-aurora` | Aurora | own | mock | own | Keeley batch |
-| `keeley-bassist-compressor` | Bassist Compressor | own | mock | own | Keeley batch |
-| `keeley-black-glass` | Black Glass | own | mock | own | Keeley batch |
-| `keeley-blacktop` | Blacktop | own | mock | own | Keeley batch |
-| `keeley-blues-disorder` | Blues Disorder | own | mock | own | Keeley batch |
-| `keeley-blues-disorder-signalis` | Blues Disorder (Signalis) | own | mock | own | Keeley batch |
-| `keeley-blues-disorder-white` | Blues Disorder (White) | own | mock | own | Keeley batch |
-| `keeley-bubble-tron` | Bubble Tron | own | mock | own | Keeley batch |
-| `keeley-bubble-tron-ler` | Bubble Tron (Ler) | own | mock | own | Keeley batch |
-| `keeley-california-girls` | California Girls | own | mock | own | Keeley batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `keeley-1962` | 1962 | own | mock | own | yes | Keeley batch |
+| `keeley-1962x` | 1962x | own | mock | own | yes | Keeley batch |
+| `keeley-30ms-double-tracker` | 30ms Double Tracker | own | mock | own | yes | Keeley batch |
+| `keeley-abbey-chamber-verb` | Abbey Chamber Verb | own | mock | own | yes | Keeley batch |
+| `keeley-angry-orange` | Angry Orange | own | mock | own | yes | Keeley batch |
+| `keeley-angry-orange-signalis` | Angry Orange (Signalis) | own | mock | own | yes | Keeley batch |
+| `keeley-angry-orange-white` | Angry Orange (White) | own | mock | own | yes | Keeley batch |
+| `keeley-aria` | Aria | own | mock | own | yes | Keeley batch |
+| `keeley-aurora` | Aurora | own | mock | own | yes | Keeley batch |
+| `keeley-bassist-compressor` | Bassist Compressor | own | mock | own | yes | Keeley batch |
+| `keeley-black-glass` | Black Glass | own | mock | own | yes | Keeley batch |
+| `keeley-blacktop` | Blacktop | own | mock | own | yes | Keeley batch |
+| `keeley-blues-disorder` | Blues Disorder | own | mock | own | yes | Keeley batch |
+| `keeley-blues-disorder-signalis` | Blues Disorder (Signalis) | own | mock | own | yes | Keeley batch |
+| `keeley-blues-disorder-white` | Blues Disorder (White) | own | mock | own | yes | Keeley batch |
+| `keeley-bubble-tron` | Bubble Tron | own | mock | own | yes | Keeley batch |
+| `keeley-bubble-tron-ler` | Bubble Tron (Ler) | own | mock | own | yes | Keeley batch |
+| `keeley-california-girls` | California Girls | own | mock | own | yes | Keeley batch |
 
 ## MXR
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `mxr-a-b-box` | A/B Box | license-pending | hotlinked | official | MXR batch |
-| `mxr-analog-chorus` | Analog Chorus | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-chorus-deluxe` | Bass Chorus Deluxe | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-compressor` | Bass Compressor | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-di` | Bass DI+ | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-distortion` | Bass Distortion | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-envelope-filter` | Bass Envelope Filter | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-fuzz-deluxe` | Bass Fuzz Deluxe | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-octave-deluxe` | Bass Octave Deluxe | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-overdrive` | Bass Overdrive | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-preamp` | Bass Preamp | license-pending | hotlinked | official | MXR batch |
-| `mxr-bass-synth` | Bass Synth | license-pending | hotlinked | official | MXR batch |
-| `mxr-blue-box-fuzz` | Blue Box Fuzz | license-pending | hotlinked | official | MXR batch |
-| `mxr-booster-mini` | Booster Mini | license-pending | hotlinked | official | MXR batch |
-| `mxr-cae-boost-line-driver` | CAE Boost/Line Driver | license-pending | hotlinked | official | MXR batch |
-| `mxr-cae-boost-overdrive` | CAE Boost/Overdrive | license-pending | hotlinked | official | MXR batch |
-| `mxr-cae-buffer` | CAE Buffer | license-pending | hotlinked | official | MXR batch |
-| `mxr-cae-power-system` | CAE Power System | license-pending | hotlinked | official | MXR batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `mxr-a-b-box` | A/B Box | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-analog-chorus` | Analog Chorus | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-chorus-deluxe` | Bass Chorus Deluxe | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-compressor` | Bass Compressor | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-di` | Bass DI+ | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-distortion` | Bass Distortion | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-envelope-filter` | Bass Envelope Filter | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-fuzz-deluxe` | Bass Fuzz Deluxe | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-octave-deluxe` | Bass Octave Deluxe | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-overdrive` | Bass Overdrive | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-preamp` | Bass Preamp | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-bass-synth` | Bass Synth | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-blue-box-fuzz` | Blue Box Fuzz | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-booster-mini` | Booster Mini | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-cae-boost-line-driver` | CAE Boost/Line Driver | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-cae-boost-overdrive` | CAE Boost/Overdrive | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-cae-buffer` | CAE Buffer | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-cae-power-system` | CAE Power System | license-pending | hotlinked | official | yes | MXR batch |
 
 ## Meris
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `meris-enzo` | Enzo | license-pending | static | official | — |
-| `meris-enzo-x` | Enzo X | license-pending | static | official | — |
-| `meris-hedra` | Hedra | license-pending | static | official | — |
-| `meris-lvx` | LVX | license-pending | static | official | — |
-| `meris-mercury7` | Mercury7 | license-pending | static | official | — |
-| `meris-mercuryx` | MercuryX | license-pending | static | official | — |
-| `meris-midi-i-o` | MIDI I/O | license-pending | static | official | — |
-| `meris-ottobit-jr` | Ottobit Jr. | license-pending | static | official | — |
-| `meris-ottobit-x` | Ottobit X | license-pending | static | official | — |
-| `meris-polymoon` | Polymoon | license-pending | static | official | — |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `meris-enzo` | Enzo | license-pending | static | official | — | — |
+| `meris-enzo-x` | Enzo X | license-pending | static | official | — | — |
+| `meris-hedra` | Hedra | license-pending | static | official | — | — |
+| `meris-lvx` | LVX | license-pending | static | official | — | — |
+| `meris-mercury7` | Mercury7 | license-pending | static | official | — | — |
+| `meris-mercuryx` | MercuryX | license-pending | static | official | — | — |
+| `meris-midi-i-o` | MIDI I/O | license-pending | static | official | — | — |
+| `meris-ottobit-jr` | Ottobit Jr. | license-pending | static | official | — | — |
+| `meris-ottobit-x` | Ottobit X | license-pending | static | official | — | — |
+| `meris-polymoon` | Polymoon | license-pending | static | official | — | — |
 
 ## Mooer
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `mooer-001-gas-station` | 001 Gas Station | license-pending | hotlinked | official | Mooer batch |
-| `mooer-002-uk-gold-900` | 002 UK Gold 900 | license-pending | hotlinked | official | Mooer batch |
-| `mooer-003-power-zone` | 003 Power Zone | license-pending | hotlinked | official | Mooer batch |
-| `mooer-004-day-tripper` | 004 Day Tripper | license-pending | hotlinked | official | Mooer batch |
-| `mooer-005-brown-sound-3` | 005 Brown Sound 3 | license-pending | hotlinked | official | Mooer batch |
-| `mooer-006-us-classic-deluxe` | 006 US Classic Deluxe | license-pending | hotlinked | official | Mooer batch |
-| `mooer-007-regal-tone` | 007 Regal Tone | license-pending | hotlinked | official | Mooer batch |
-| `mooer-008-cali-mk3` | 008 Cali-MK3 | license-pending | hotlinked | official | Mooer batch |
-| `mooer-009-black-knight` | 009 Black Knight | license-pending | hotlinked | official | Mooer batch |
-| `mooer-010-two-stones` | 010 Two Stones | license-pending | hotlinked | official | Mooer batch |
-| `mooer-011-cali-dual` | 011 Cali-Dual | license-pending | hotlinked | official | Mooer batch |
-| `mooer-012-us-gold-100` | 012 US Gold 100 | license-pending | hotlinked | official | Mooer batch |
-| `mooer-013-matchbox` | 013 Matchbox | license-pending | hotlinked | official | Mooer batch |
-| `mooer-014-taxidea-taxus` | 014 Taxidea Taxus | license-pending | hotlinked | official | Mooer batch |
-| `mooer-015-brown-sound` | 015 Brown Sound | license-pending | hotlinked | official | Mooer batch |
-| `mooer-016-phoenix-digital` | 016 Phoenix Digital | license-pending | hotlinked | official | Mooer batch |
-| `mooer-017-cali-mkiv` | 017 Cali MKIV | license-pending | hotlinked | official | Mooer batch |
-| `mooer-018-custom-100` | 018 Custom 100 | own | mock | own | Mooer batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `mooer-001-gas-station` | 001 Gas Station | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-002-uk-gold-900` | 002 UK Gold 900 | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-003-power-zone` | 003 Power Zone | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-004-day-tripper` | 004 Day Tripper | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-005-brown-sound-3` | 005 Brown Sound 3 | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-006-us-classic-deluxe` | 006 US Classic Deluxe | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-007-regal-tone` | 007 Regal Tone | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-008-cali-mk3` | 008 Cali-MK3 | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-009-black-knight` | 009 Black Knight | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-010-two-stones` | 010 Two Stones | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-011-cali-dual` | 011 Cali-Dual | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-012-us-gold-100` | 012 US Gold 100 | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-013-matchbox` | 013 Matchbox | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-014-taxidea-taxus` | 014 Taxidea Taxus | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-015-brown-sound` | 015 Brown Sound | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-016-phoenix-digital` | 016 Phoenix Digital | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-017-cali-mkiv` | 017 Cali MKIV | license-pending | hotlinked | official | yes | Mooer batch |
+| `mooer-018-custom-100` | 018 Custom 100 | own | mock | own | yes | Mooer batch |
 
 ## Pedaltrain
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `pedaltrain-classic-2` | Classic 2 | own | static | own | — |
-| `pedaltrain-nano` | Nano | own | static | own | — |
-| `pedaltrain-nano-max` | Nano MAX | own | static | own | — |
-| `pedaltrain-nano-plus` | Nano+ | own | static | own | — |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `pedaltrain-classic-2` | Classic 2 | own | static | own | — | — |
+| `pedaltrain-nano` | Nano | own | static | own | — | — |
+| `pedaltrain-nano-max` | Nano MAX | own | static | own | — | — |
+| `pedaltrain-nano-plus` | Nano+ | own | static | own | — | — |
 
 ## Red Panda
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `red-panda-bitmap` | Bitmap | license-pending | static | official | — |
-| `red-panda-bitmap-2` | Bitmap 2 | license-pending | static | official | — |
-| `red-panda-buffer` | Buffer | license-pending | static | official | — |
-| `red-panda-context` | Context | license-pending | static | official | — |
-| `red-panda-context-2` | Context 2 | license-pending | static | official | — |
-| `red-panda-mixer` | Mixer | license-pending | static | official | — |
-| `red-panda-particle` | Particle | license-pending | static | official | — |
-| `red-panda-particle-v2` | Particle V2 | license-pending | static | official | — |
-| `red-panda-radius` | Radius | license-pending | static | official | — |
-| `red-panda-raster` | Raster | license-pending | static | official | — |
-| `red-panda-raster-2` | Raster 2 | license-pending | static | official | — |
-| `red-panda-rd-1-pitch-delay` | RD-1 Pitch Delay | license-pending | static | official | — |
-| `red-panda-remote-4` | Remote 4 | license-pending | static | official | — |
-| `red-panda-tensor` | Tensor | license-pending | static | official | — |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `red-panda-bitmap` | Bitmap | license-pending | static | archive | — | — |
+| `red-panda-bitmap-2` | Bitmap 2 | license-pending | static | official | — | — |
+| `red-panda-buffer` | Buffer | license-pending | static | official | — | — |
+| `red-panda-context` | Context | license-pending | static | archive | — | — |
+| `red-panda-context-2` | Context 2 | license-pending | static | official | — | — |
+| `red-panda-mixer` | Mixer | license-pending | static | official | — | — |
+| `red-panda-particle` | Particle | license-pending | static | archive | — | — |
+| `red-panda-particle-v2` | Particle V2 | license-pending | static | official | — | — |
+| `red-panda-radius` | Radius | license-pending | static | official | — | — |
+| `red-panda-raster` | Raster | license-pending | static | archive | — | — |
+| `red-panda-raster-2` | Raster 2 | license-pending | static | official | — | — |
+| `red-panda-rd-1-pitch-delay` | RD-1 Pitch Delay | license-pending | static | official | — | — |
+| `red-panda-remote-4` | Remote 4 | license-pending | static | official | — | — |
+| `red-panda-tensor` | Tensor | license-pending | static | official | — | — |
 
 ## TC Electronic
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `tc-electronic-2290-p-dynamic-digital-delay` | 2290 P Dynamic Digital Delay | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-3rd-dimension-chorus` | 3rd Dimension Chorus | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-afterglow-chorus` | Afterglow Chorus | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-alter-ego-v2-vintage-echo` | Alter Ego v2 Vintage Echo | own | mock | own | TC Electronic batch |
-| `tc-electronic-alter-ego-x4-vintage-echo` | Alter Ego x4 Vintage Echo | own | mock | own | TC Electronic batch |
-| `tc-electronic-ampworx-550` | Ampworx 550 | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-ampworx-combo-deluxe-65` | Ampworx Combo Deluxe 65' | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-ampworx-dc30` | Ampworx DC30 | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-ampworx-dual-wreck` | Ampworx Dual Wreck | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-ampworx-jims-45` | Ampworx Jims 45 | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-ampworx-jims-800` | Ampworx Jims 800 | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-arena-reverb` | Arena Reverb | own | mock | own | TC Electronic batch |
-| `tc-electronic-blood-moon-phaser` | Blood Moon Phaser | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-bodyrez-acoustic-pickup-enhancer` | BodyRez Acoustic Pickup Enhancer | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-bonafide-buffer` | Bonafide Buffer | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-brainwaves-pitch-shifter` | Brainwaves Pitch Shifter | license-pending | hotlinked | official | TC Electronic batch |
-| `tc-electronic-bucket-brigade-analog-delay` | Bucket Brigade Analog Delay | own | mock | own | TC Electronic batch |
-| `tc-electronic-choka-tremolo` | Choka Tremolo | license-pending | static | official | — |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `tc-electronic-2290-p-dynamic-digital-delay` | 2290 P Dynamic Digital Delay | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-3rd-dimension-chorus` | 3rd Dimension Chorus | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-afterglow-chorus` | Afterglow Chorus | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-alter-ego-v2-vintage-echo` | Alter Ego v2 Vintage Echo | own | mock | own | yes | TC Electronic batch |
+| `tc-electronic-alter-ego-x4-vintage-echo` | Alter Ego x4 Vintage Echo | own | mock | own | yes | TC Electronic batch |
+| `tc-electronic-ampworx-550` | Ampworx 550 | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-ampworx-combo-deluxe-65` | Ampworx Combo Deluxe 65' | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-ampworx-dc30` | Ampworx DC30 | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-ampworx-dual-wreck` | Ampworx Dual Wreck | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-ampworx-jims-45` | Ampworx Jims 45 | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-ampworx-jims-800` | Ampworx Jims 800 | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-arena-reverb` | Arena Reverb | own | mock | own | yes | TC Electronic batch |
+| `tc-electronic-blood-moon-phaser` | Blood Moon Phaser | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-bodyrez-acoustic-pickup-enhancer` | BodyRez Acoustic Pickup Enhancer | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-bonafide-buffer` | Bonafide Buffer | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-brainwaves-pitch-shifter` | Brainwaves Pitch Shifter | license-pending | hotlinked | official | yes | TC Electronic batch |
+| `tc-electronic-bucket-brigade-analog-delay` | Bucket Brigade Analog Delay | own | mock | own | yes | TC Electronic batch |
+| `tc-electronic-choka-tremolo` | Choka Tremolo | license-pending | static | official | — | — |
 
 ## Temple Audio
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `temple-audio-duo-24` | Duo 24 | own | static | own | — |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `temple-audio-duo-24` | Duo 24 | own | static | own | — | — |
 
 ## Walrus Audio
 
-| Id | Name | Status | Hosting | Source | Replacement |
-| --- | --- | --- | --- | --- | --- |
-| `walrus-audio-385` | 385 | own | mock | own | Walrus Audio batch |
-| `walrus-audio-385-mkii` | 385 MKII | license-pending | hotlinked | official | Walrus Audio batch |
-| `walrus-audio-385-mkii-black` | 385 MKII (Black) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-385-nat-parks` | 385 (Nat. Parks) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-aetos` | Aetos | own | mock | own | Walrus Audio batch |
-| `walrus-audio-ages` | Ages | license-pending | hotlinked | official | Walrus Audio batch |
-| `walrus-audio-ages-kamakura` | Ages (Kamakura) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-ages-nat-parks` | Ages (Nat. Parks) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-arp-87` | ARP-87 | license-pending | hotlinked | official | Walrus Audio batch |
-| `walrus-audio-arp-87-kamakura` | ARP-87 (Kamakura) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-arp-87-nat-parks` | ARP-87 (Nat. Parks) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-arp-87-nautical` | ARP-87 (Nautical) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-arp-87-obsidian` | ARP-87 (Obsidian) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-arp-87-platinum` | ARP-87 (Platinum) | own | mock | own | Walrus Audio batch |
-| `walrus-audio-badwater` | Badwater | license-pending | hotlinked | official | Walrus Audio batch |
-| `walrus-audio-bellwether` | Bellwether | license-pending | hotlinked | official | Walrus Audio batch |
-| `walrus-audio-canvas-clock` | Canvas Clock | license-pending | hotlinked | official | Walrus Audio batch |
-| `walrus-audio-canvas-line-isolator` | Canvas Line Isolator | license-pending | hotlinked | official | Walrus Audio batch |
+| Id | Name | Status | Hosting | Source | Improve | Replacement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `walrus-audio-385` | 385 | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-385-mkii` | 385 MKII | license-pending | hotlinked | official | yes | Walrus Audio batch |
+| `walrus-audio-385-mkii-black` | 385 MKII (Black) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-385-nat-parks` | 385 (Nat. Parks) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-aetos` | Aetos | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-ages` | Ages | license-pending | hotlinked | official | yes | Walrus Audio batch |
+| `walrus-audio-ages-kamakura` | Ages (Kamakura) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-ages-nat-parks` | Ages (Nat. Parks) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-arp-87` | ARP-87 | license-pending | hotlinked | official | yes | Walrus Audio batch |
+| `walrus-audio-arp-87-kamakura` | ARP-87 (Kamakura) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-arp-87-nat-parks` | ARP-87 (Nat. Parks) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-arp-87-nautical` | ARP-87 (Nautical) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-arp-87-obsidian` | ARP-87 (Obsidian) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-arp-87-platinum` | ARP-87 (Platinum) | own | mock | own | yes | Walrus Audio batch |
+| `walrus-audio-badwater` | Badwater | license-pending | hotlinked | official | yes | Walrus Audio batch |
+| `walrus-audio-bellwether` | Bellwether | license-pending | hotlinked | official | yes | Walrus Audio batch |
+| `walrus-audio-canvas-clock` | Canvas Clock | license-pending | hotlinked | official | yes | Walrus Audio batch |
+| `walrus-audio-canvas-line-isolator` | Canvas Line Isolator | license-pending | hotlinked | official | yes | Walrus Audio batch |
+
+## Source gaps
+
+| Brand | Source | Items |
+| --- | --- | --- |
+| Aclam | own | 1 |
+| Behringer | official | 1 |
+| Big Joe | own | 2 |
+| Blackbird | own | 1 |
+| BoardMods | own | 1 |
+| BOSS | legacy | 31 |
+| BOSS | official | 1 |
+| BOSS | own | 1 |
+| Caseman | own | 1 |
+| Creation Music Co | own | 1 |
+| D’Addario | own | 1 |
+| Donner | own | 1 |
+| EarthQuaker | own | 18 |
+| Effects Bakery | own | 1 |
+| Electro-Harmonix | official | 18 |
+| Emerson Custom | own | 1 |
+| Fame | own | 1 |
+| JHS | official | 12 |
+| JHS | own | 6 |
+| Joyo | official | 5 |
+| Joyo | own | 13 |
+| Keeley | own | 18 |
+| Mooer | official | 17 |
+| Mooer | own | 1 |
+| MXR | official | 18 |
+| TC Electronic | official | 13 |
+| TC Electronic | own | 4 |
+| Walrus Audio | official | 7 |
+| Walrus Audio | own | 11 |
 

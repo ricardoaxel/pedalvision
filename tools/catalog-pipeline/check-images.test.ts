@@ -1,4 +1,4 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -17,7 +17,7 @@ describe("image provenance gate", () => {
 		]);
 		expect(issues).toHaveLength(1);
 		expect(warnings).toHaveLength(0);
-		expect(issues[0]?.message).toMatch(/without imageProvenance/);
+		expect(issues[0]?.message).toMatch(/missing imageProvenance/);
 	});
 
 	it("allows a documented pending replacement as a warning", () => {
@@ -52,23 +52,126 @@ describe("image provenance gate", () => {
 			{
 				id: "x",
 				imageCandidates: [{ url: planner }],
-				imageProvenance: { kind: "official", status: "chosen" },
+				imageProvenance: {
+					kind: "official",
+					sourceUrl: planner,
+					status: "chosen",
+				},
 			},
 		]);
 		expect(issues).toHaveLength(1);
 		expect(issues[0]?.message).toMatch(/kind=official/);
 	});
 
-	it("passes an official source with no planner URL", () => {
+	it("passes a recorded official source with no planner URL", () => {
 		const { issues, warnings } = checkImageProvenance([
 			{
 				id: "x",
 				imageCandidates: [{ url: "https://static.roland.com/a.jpg" }],
-				imageProvenance: { kind: "official", status: "chosen" },
+				imageProvenance: {
+					kind: "official",
+					sourceUrl: "https://static.roland.com/a.jpg",
+					status: "chosen",
+				},
 			},
 		]);
 		expect(issues).toHaveLength(0);
 		expect(warnings).toHaveLength(0);
+	});
+
+	it("rejects a chosen official image without a recorded source", () => {
+		const { issues } = checkImageProvenance([
+			{ id: "x", imageProvenance: { kind: "official", status: "chosen" } },
+		]);
+		expect(issues).toHaveLength(1);
+		expect(issues[0]?.message).toMatch(/sourceUrl/);
+	});
+
+	it("allows a planner last-resort with a recorded source", () => {
+		const { issues, warnings } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: {
+					kind: "planner",
+					sourceUrl: planner,
+					status: "last-resort",
+				},
+			},
+		]);
+		expect(issues).toHaveLength(0);
+		expect(warnings).toHaveLength(1);
+		expect(warnings[0]?.category).toBe("planner-last-resort");
+		expect(warnings[0]?.message).toMatch(/last resort/);
+	});
+
+	it("rejects a planner URL mislabelled as generated art", () => {
+		const { issues } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: {
+					kind: "own",
+					status: "chosen",
+					note: "generated from an official reference",
+				},
+			},
+		]);
+		expect(issues).toHaveLength(1);
+		expect(issues[0]?.message).toMatch(/kind=own/);
+	});
+
+	it("rejects a planner chosen/last-resort without a source", () => {
+		const chosen = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: { kind: "planner", status: "chosen" },
+			},
+		]);
+		expect(chosen.issues).toHaveLength(1);
+		const noSource = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: { kind: "planner", status: "last-resort" },
+			},
+		]);
+		expect(noSource.issues).toHaveLength(1);
+		expect(noSource.issues[0]?.message).toMatch(/sourceUrl/);
+		expect(noSource.warnings).toHaveLength(0);
+		const wrongHost = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: {
+					kind: "planner",
+					sourceUrl: "https://www.boss.info/a.jpg",
+					status: "last-resort",
+				},
+			},
+		]);
+		expect(wrongHost.issues).toHaveLength(1);
+		expect(wrongHost.issues[0]?.message).toMatch(/not a planner image URL/);
+	});
+
+	it("requires a note for own/generated art and ignores referenceUrl", () => {
+		const ok = checkImageProvenance([
+			{
+				id: "x",
+				imageProvenance: {
+					kind: "own",
+					status: "chosen",
+					referenceUrl: "https://www.boss.info/us/products/ds-1/",
+					note: "generated from the official reference",
+				},
+			},
+		]);
+		expect(ok.issues).toHaveLength(0);
+		const missing = checkImageProvenance([
+			{ id: "x", imageProvenance: { kind: "own", status: "chosen" } },
+		]);
+		expect(missing.issues).toHaveLength(1);
 	});
 
 	it("does not flag an info-only planner reference", () => {
@@ -77,7 +180,11 @@ describe("image provenance gate", () => {
 				id: "x",
 				imageCandidates: [{ url: "https://static.roland.com/a.jpg" }],
 				sources: [{ url: planner, kind: ["info"] }],
-				imageProvenance: { kind: "official", status: "chosen" },
+				imageProvenance: {
+					kind: "official",
+					sourceUrl: "https://static.roland.com/a.jpg",
+					status: "chosen",
+				},
 			},
 		]);
 		expect(issues).toHaveLength(0);
@@ -111,6 +218,36 @@ describe("image provenance gate", () => {
 			},
 		]);
 		expect(issues).toHaveLength(1);
+	});
+
+	it("merges legacy/planner gaps into one warning per category", async () => {
+		const root = await mkdtemp(join(tmpdir(), "pedalvision-images-"));
+		try {
+			const dir = join(root, "data/catalog/research/pedals/acme");
+			await mkdir(dir, { recursive: true });
+			const record = (id: string) => ({
+				id,
+				brand: "Acme",
+				name: id,
+				category: "pedal",
+				widthCm: 7,
+				heightCm: 12,
+				effectTypes: [],
+				imageProvenance: {
+					kind: "legacy",
+					status: "pending-replacement",
+				},
+			});
+			await writeFile(join(dir, "a.json"), JSON.stringify([record("acme-a")]));
+			await writeFile(join(dir, "b.json"), JSON.stringify([record("acme-b")]));
+			const result = await checkImageProvenanceFiles(root);
+			expect(result.issues).toHaveLength(0);
+			expect(result.warnings).toHaveLength(1);
+			expect(result.warnings[0]?.category).toBe("legacy-pending");
+			expect(result.warnings[0]?.count).toBe(2);
+		} finally {
+			await rm(root, { recursive: true, force: true });
+		}
 	});
 
 	it("refuses a green gate over an empty/missing research dir", async () => {

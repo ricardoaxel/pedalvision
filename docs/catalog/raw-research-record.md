@@ -24,11 +24,17 @@ data/catalog/research/boards/<brand>/<batch>.json   # RawBoardBatchSchema (array
   `public/pedal-assets/` by the image pipeline (P5-02/P5-03).
 - Image candidates, rejected reasons and source pages stay in the raw file so an
   image can be re-checked without re-researching the model.
-- `imageProvenance`: `{ kind: official|retailer|community|own|archive|planner,
-  sourceUrl?, status?: chosen|pending-replacement|owner-approved-edge-case,
-  note? }`. Required whenever the shipped/kept image is planner or the source is
-  otherwise exceptional; `planner` is only valid with an owner-approved edge case
-  (or a documented pending replacement). See `docs/catalog/image-source-registry.md`.
+- `imageProvenance`: `{ kind: official|retailer|community|archive|planner|own|
+  legacy, sourceUrl?, referenceUrl?, status?: chosen|last-resort|
+  pending-replacement|owner-approved-edge-case, note? }`. **Record where every
+  shipped image came from** in this private raw catalog (never on the public
+  page). Official/retailer/community/archive require `sourceUrl`. `planner` is
+  allowed only as a recorded **last-resort shipped source** (`status:
+  "last-resort"` + `sourceUrl`) above generated art; it is counted as a source
+  gap to improve. `own` generated art records a `note` (and `referenceUrl` when a
+  reference exists); `referenceUrl` is metadata only, never a shipped source.
+  `legacy` remains `pending-replacement` until repaired. See
+  `docs/catalog/image-source-registry.md` and `docs/decisions/003-catalog-data.md`.
 
 ## Capture-once rule
 

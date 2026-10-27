@@ -3,12 +3,18 @@
     "id": "tc-electronic-choka-tremolo",
     "brand": "TC Electronic",
     "name": "Choka Tremolo",
-    "aliases": ["Choka"],
+    "aliases": [
+      "Choka"
+    ],
     "category": "pedal",
     "deviceType": "stompbox",
     "formFactor": "standard",
-    "instrumentTypes": ["guitar"],
-    "effectTypes": ["tremolo"],
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "tremolo"
+    ],
     "widthCm": 7.4,
     "heightCm": 13.2,
     "dimensionsSource": "TC Electronic product page and Quick Start Guide (58 H x 74 W x 132 D mm)",
@@ -114,7 +120,11 @@
     "status": "current",
     "notes": "Vintage-flavored all-analog tremolo with Speed, Depth and LFO controls; the LFO knob morphs between triangle and square waveforms. True bypass with top-mounted I/O.",
     "extra": {
-      "controls": ["Speed", "Depth", "LFO"],
+      "controls": [
+        "Speed",
+        "Depth",
+        "LFO"
+      ],
       "lfoWaveforms": "Seamless morph from triangle (soft) to square (hard/chop)",
       "led": "Effect on",
       "bypass": "True bypass",
@@ -132,19 +142,29 @@
     "sources": [
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AHZ",
-        "kind": ["info", "image"]
+        "kind": [
+          "info",
+          "image"
+        ]
       },
       {
         "url": "https://cdn-media.empowertribe.com/f74c2d5aa50c49aeb0cc9745bc951289/QSG_TE_0709-AHZ_CHOKA-TREMOLO_WW.pdf",
-        "kind": ["info"]
+        "kind": [
+          "info"
+        ]
       },
       {
         "url": "https://cdn-media.empowertribe.com/b09497da0ed74f48ab325ac0ff75feae/Image_TE_0709-AHZ_CHOKA-TREMOLO_Top_XL.png",
-        "kind": ["image"]
+        "kind": [
+          "image"
+        ]
       },
       {
         "url": "https://cdn-media.empowertribe.com/e08b590261824d898e752d7596ee278f/Image_TE_0709-AHZ_CHOKA-TREMOLO_Rear_XL.png",
-        "kind": ["info", "image"]
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -179,6 +199,12 @@
       "source": "https://cdn-media.empowertribe.com/e08b590261824d898e752d7596ee278f/Image_TE_0709-AHZ_CHOKA-TREMOLO_Rear_XL.png",
       "confidence": "verified",
       "note": "Official rear/top images show INPUT, 9V DC and OUTPUT on the top edge; positions are estimated, the edge is verified."
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHZ",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   }
 ]

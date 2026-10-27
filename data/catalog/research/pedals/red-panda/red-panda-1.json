@@ -163,7 +163,13 @@
         "priority": 2,
         "notes": "Alternate official Bitmap V1 product image from the same archived listing."
       }
-    ]
+    ],
+    "imageProvenance": {
+      "kind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20161013161002/http://www.redpandalab.com/products/bitmap",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
+    }
   },
   {
     "id": "red-panda-bitmap-2",
@@ -383,6 +389,12 @@
         "random"
       ],
       "priceUsd": 329
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/bitmap",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -519,6 +531,12 @@
       "salePriceUsd": 49,
       "alwaysOn": true,
       "ledLocation": "internal, below the power jack"
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/buffer.html",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -689,6 +707,12 @@
         "Delay + Reverb"
       ],
       "internalTrailsSwitch": true
+    },
+    "imageProvenance": {
+      "kind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20181203191321/http://www.redpandalab.com/products/context",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -912,6 +936,12 @@
         "DSP"
       ],
       "sampleRate": "48 kHz (DSP)"
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/context",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -1075,6 +1105,12 @@
         "Input 1 level",
         "Input 2 level"
       ]
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/mixer.html",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -1248,7 +1284,13 @@
         "priority": 2,
         "notes": "Wayback capture of the official Particle V1 top view (1000x1000, verified reachable); landscape trim needs an orientation check before use."
       }
-    ]
+    ],
+    "imageProvenance": {
+      "kind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20171201193034/http://www.redpandalab.com/products/particle",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
+    }
   },
   {
     "id": "red-panda-particle-v2",
@@ -1470,6 +1512,12 @@
       "delayTimeMs": "0-2500",
       "pitchRange": "+/- 1 octave",
       "priceUsd": 329
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/particle",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -1649,6 +1697,12 @@
       "presets": 0,
       "midi": false,
       "availableSince": "April 2026"
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/rd-1-pitch-delay",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -1875,6 +1929,12 @@
         "Premier Guitar Premier Gear",
         "2024 EMMA Best Ringmod"
       ]
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/radius",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -2043,7 +2103,13 @@
         "priority": 2,
         "notes": "Alternate official Raster V1 product image from the same archived listing."
       }
-    ]
+    ],
+    "imageProvenance": {
+      "kind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20201028205309/http://www.redpandalab.com/products/raster",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
+    }
   },
   {
     "id": "red-panda-raster-2",
@@ -2258,6 +2324,12 @@
         "parallel",
         "ping pong"
       ]
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/raster",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -2359,6 +2431,12 @@
       "modes": 4,
       "switches": 4,
       "cableIncluded": "1/4 in TRS cable"
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/remote-4.html",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   },
   {
@@ -2580,6 +2658,12 @@
         "alternate",
         "reverse"
       ]
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/tensor",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   }
 ]

@@ -11,14 +11,20 @@ no per-batch designer loop.
 
 ## 1. When to use this path
 
-Official/authorized top-down images **stay first**. Use generated flat art only
-for a pedal with **no clean official/authorized image** (the 31 BOSS legacy items,
-vintage items in new batches, and any future gap).
+Use generated flat art **only when no usable image exists at all**: official,
+authorized retailer, user/community and **planner last-resort** have all been
+checked and none passes the quality gate (the 31 BOSS legacy repair set is the
+exception — it must be repaired to official/retailer/community, or generated if
+none, and never keeps its old planner asset).
 
-- **Reference hierarchy:** official brand/press/product-support → authorized
-  retailer → user/community image with a recorded source. **No planner pixels,
-  ever.** A planner image may only be a geometric/colour reference for **our own**
-  generated art, and only as a documented, owner-approved edge case.
+- **Pedal source hierarchy:** official brand/press/product-support → authorized
+  retailer → user/community with a recorded source → **planner/Pedalplayground
+  last-resort (recorded + quality-gated)** → **generated flat art last**. Planner
+  last-resort is a shipped image; you do not generate over it for a normal gap.
+  It is counted in the source-gap ledger so it can be improved later.
+- **Generated-art references:** official/authorized/community only; **no planner
+  pixels**. If no reference exists, use the official manual/spec dimensions and
+  record that in the spec note. Boards never use planner pixels.
 - The reference is **reference only**: measure proportions and sample the body
   colour; do not trace or ship its pixels.
 - Generated art is `own` provenance. Record the reference URL in the spec's
@@ -200,7 +206,9 @@ catalog items.
 
 ## Checklist
 
-- [ ] Official/authorized/user reference only; **no planner pixels**.
+- [ ] Generated-art reference is official/authorized/community only; **no planner
+      pixels** (planner is a separate last-resort shipped source, not a generator
+      reference).
 - [ ] Body median sampled; record hex + `sourceRef`; chroma ≤0.18.
 - [ ] Spec validated; `jacks[]` copied from the raw record.
 - [ ] Style freeze: 12 o'clock pointers, centred toggles, low-contrast tread

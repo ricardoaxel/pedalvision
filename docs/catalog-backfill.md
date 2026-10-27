@@ -303,7 +303,7 @@ hosted-pedal cap still applies to pedals; board images are a small separate
 budget (~300 files / ~20 MB at Tier A) and stay inside the same Pages/GitHub
 safety margin.
 
-PedalPlayground is **discovery/reference only** — facts are re-verified and its pixels are never shipped (generated art may use it only as a documented owner-approved edge case).
+PedalPlayground/planner is a **recorded last-resort shipped source for pedals** (owner decision 2026-10-27), after official/retailer/community and **before** generated flat art; it is quality-gated, recorded in the private `imageProvenance`, and counted as a source gap to improve. It is **never** used for boards. Generated flat pedal art is only for items where none of those sources exists/passes; facts are always re-verified.
 
 ## Pedalboards — data contract
 

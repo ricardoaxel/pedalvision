@@ -1,6 +1,6 @@
 # P5-03c — Pedal flat-art generator + promote-legacy (T-1)
 
-**Phase:** P5 · **Status:** in review — PR #55 · **Type:** tooling + design · **Depends on:** T-0
+**Phase:** P5 · **Status:** merged — PR #55 (squash `66222d4`) · **Type:** tooling + design · **Depends on:** T-0
 
 ## Goal
 
@@ -22,15 +22,18 @@ art, not a photo, not a planner copy. Official/authorized/user photos are **refe
 only**; no reference pixels ship. `designer` proposal → owner approval →
 `design-reviewer` ≤2 passes → style freeze.
 
-**Outcome (2026-10-26):** the designer proposed **“Catalog Specimen”**; the owner
+**Outcome (2026-10-27):** the designer proposed **“Catalog Specimen”**; the owner
 approved it (including type + ≤2 solid bands, and clipping to the enclosure
 instead of drawing jack protrusions) before implementation. Two design-reviewer
 passes ran on the rendered pilots: pass 1 found the DS-1 pad/duplicates + cheap
 knob/switch rings + random pointers + 350 smudges; pass 2 approved Enzo and fixed
 the rest, but still flagged the DS-1 face as too empty at the cap. The pass-2
 findings were folded after the cap (low-contrast tread field restored, Tensor
-HOLD legend, 350 LED/button LOD, pointer tick); no third reviewer pass. The
-owner reviews the final pilots in the PR. Code review **2/2** (pass-1 blocker + should-fixes; pass-2 should-fixes/nit); no third pass (2-pass cap), tests are the re-check.
+HOLD legend, 350 LED/button LOD, pointer tick); no third reviewer pass. Code
+review **2/2** (pass-1 blocker + should-fixes; pass-2 should-fixes/nit); no third
+pass (2-pass cap), tests are the re-check. **Merged PR #55 (`66222d4`).** The
+2026-10-27 source-policy change (T-1a) keeps generated art **last**, after a
+recorded planner last-resort; see `docs/catalog/pedal-art.md`.
 
 ## Scope
 

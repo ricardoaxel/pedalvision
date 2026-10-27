@@ -218,6 +218,7 @@ export const RAW_IMAGE_SOURCE_KINDS = [
 
 export const RAW_IMAGE_PROVENANCE_STATUSES = [
 	"chosen",
+	"last-resort",
 	"pending-replacement",
 	"owner-approved-edge-case",
 ] as const;
@@ -225,7 +226,10 @@ export const RAW_IMAGE_PROVENANCE_STATUSES = [
 /** Where the shipped image actually came from (P5 image policy, 2026-10-26). */
 export const RawImageProvenanceSchema = section({
 	kind: z.enum(RAW_IMAGE_SOURCE_KINDS),
+	/** Where the shipped image itself came from (private provenance). */
 	sourceUrl: HTTP_URL.optional(),
+	/** Own generated art only: the reference used for proportions/colour. */
+	referenceUrl: HTTP_URL.optional(),
 	status: z.enum(RAW_IMAGE_PROVENANCE_STATUSES).optional(),
 	note: z.string().min(1).optional(),
 });
