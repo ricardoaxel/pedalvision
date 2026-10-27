@@ -1,15 +1,57 @@
 # Feature catalog & QA impact map
 
-> Seed for **F-19** (the full feature/E2E impact map). Every feature PR adds or
-> updates its row here and names the E2E it ran. Internal source of truth for
-> “what the feature is” + “what it can break”; the public tutorial/catalog will
-> live in the F-41 docs hub.
+> **F-19 guardrail.** This is the durable inventory of what the app does, which
+> code/data paths each feature owns, and which E2E proves it still works. The
+> mapping is deliberately **stable, not exhaustive**: use it to decide which
+> workflows a change can break, then run the named specs.
+>
+> **Every feature PR updates this file** (feature row + impact row when the area
+> is new) and names the E2E it ran. This is already required by
+> `docs/tasks/feature-template.md` → Constraints ("Docs update"). The public
+> tutorial/catalog will live in the F-41 docs hub.
+>
+> **Ownership:** feature sessions own `docs/features/**`; the roadmap link,
+> `docs/progress.md` and process rules remain coordinator-only.
 
-## Feature catalog
+## How to use this map
+
+1. Find the **feature area** you are changing in the inventory or impact table.
+2. Follow the **affected workflows** — those are the regression surfaces.
+3. Run the **minimum E2E** (desktop + mobile where the area is responsive).
+4. If you add a **new object type**, complete the checklist below before opening
+   the PR.
+5. If a gap is intentional/deferred, record it under **Known gaps** instead of
+   silently leaving it untested.
+
+---
+
+## Feature inventory
+
+Status: **v1 shipped** unless marked future/deferred. "Modules" are the primary
+source files; tests are the unit specs that guard the logic.
+
+| ID | Feature | User outcome | Primary modules | Unit tests | E2E |
+|---|---|---|---|---|---|
+| F1 | Infinite canvas, pan, zoom-to-pointer | Free workspace; viewport never moves objects | `canvas/Stage.tsx`, `useViewportGestures.ts`, `state/viewport.ts`, `lib/geometry.ts` | `viewport.test.ts`, `geometry.test.ts`, `gestures.test.ts` | `smoke.spec.ts`, `touch.spec.ts` |
+| F2 | True scale (cm source of truth) | What you lay out is what you build | `lib/geometry.ts`, `state/scene.ts`, `canvas/*` | `geometry.test.ts`, `rotation.test.ts`, `scene.test.ts` | `smoke.spec.ts`, `selection.spec.ts`, `export.spec.ts` |
+| F3 | Boards: catalog place/move/rotate/remove + custom size/finish | Choose a real board or any W×D | `state/scene.ts`, `components/Picker.tsx`, `components/CustomBoardForm.tsx`, `canvas/BoardNode.tsx`, `lib/customBoard.ts` | `scene.test.ts`, `customBoard.test.ts`, `items.test.ts` | `picker.spec.ts`, `smoke.spec.ts`, `board-creator.spec.ts` |
+| F4 | Pedals: picker → place → drag/rotate/duplicate/delete | Build a signal chain with real parts | `components/Picker.tsx`, `state/scene.ts`, `canvas/useItemDrag.ts`, `canvas/ItemTransformer.tsx` | `items.test.ts`, `rotation.test.ts`, `customPedal.test.ts` | `picker.spec.ts`, `selection.spec.ts`, `smoke.spec.ts` |
+| F5 | Layers: per-container z-order | Overlap reads correctly; order persists | `state/scene.ts` (`reorderItems`, `normalizeContainerZ`), `canvas/ItemActionBar.tsx` | `zorder.test.ts`, `history.test.ts` | `z-order.spec.ts`, `history.spec.ts` |
+| F6 | Selection + action bar + keyboard/touch | Clear, non-modal editing controls | `state/selection.ts`, `canvas/SelectionLayer.tsx`, `canvas/ItemActionBar.tsx`, `canvas/BoardActionBar.tsx`, `useSelectionShortcuts.ts` | `selection.test.ts`, `itemNodeRegistry.test.ts` | `selection.spec.ts`, `touch.spec.ts` |
+| F7 | Custom pedal/supply creator + edit | Add gear the catalog does not carry | `components/CustomPedalForm.tsx`, `lib/customPedal.ts`, `state/scene.ts` | `customPedal.test.ts` | `custom.spec.ts`, `history.spec.ts` |
+| F8 | Save/load/scenes/autosave/undo/storage fallback | Work survives reload; never silently lose it | `state/sceneDocument.ts`, `state/library.ts`, `state/autosave.ts`, `lib/sceneIndex.ts`, `lib/idb.ts`, `lib/storageHealth.ts`, `lib/sceneBackup.ts`, `state/history.ts` | `sceneDocument.test.ts`, `library.test.ts`, `autosave.test.ts`, `sceneIndex.test.ts`, `storageHealth.test.ts`, `sceneBackup.test.ts`, `history.test.ts` | `scenes.spec.ts`, `history.spec.ts`, `storage-fallback.spec.ts`, `z-order.spec.ts` |
+| F9 | Export PNG + PDF (selected board / all content) | Print or share a true-scale artifact | `lib/exportScene.ts`, `canvas/exportStage.ts`, `lib/pdf.ts`, `components/ExportPanel.tsx`, `lib/download.ts` | `exportScene.test.ts`, `pdf.test.ts`, `capacity.test.ts` | `export.spec.ts`, `picker-choka.spec.ts` |
+| F10 | Share links + read-only preview + save a copy | Send a layout without an account | `lib/shareLink.ts`, `state/share.ts`, `state/readOnly.ts`, `state/library.ts`, `components/SharePanel.tsx`, `components/ShareView.tsx` | `shareLink.test.ts`, `shareLink.demo.test.ts`, `readOnly.test.ts`, `library.test.ts` | `share.spec.ts`, `cables.spec.ts`, `history.spec.ts`, `storage-fallback.spec.ts` |
+| F11 | Responsive desktop/mobile chrome | Full function on phone and desktop | `App.tsx`, `components/Picker.tsx`, panels/trays, `styles/tokens.css` | `toolbarNav.test.ts` | `picker.spec.ts`, `touch.spec.ts`, mobile cases in `export`/`cable-schedule`/`info-panel`/`scenes` |
+| F12 | Cables: drag-connect, endpoints, schedule | Plan the patch, not just the parts | `state/scene.ts` (cables), `state/cableDrag.ts`, `state/endpointDrag.ts`, `state/endpointPlacement.ts`, `canvas/CableLayer.tsx`, `canvas/EndpointLayer.tsx`, `lib/jackAnchor.ts`, `lib/cablePath.ts`, `lib/cableLength.ts`, `lib/cableSummary.ts`, `components/CableSchedulePanel.tsx` | `cables.test.ts`, `cableDrag.test.ts`, `jackAnchor.test.ts`, `cablePath.test.ts`, `cableLength.test.ts`, `cableSummary.test.ts`, `exportScene.test.ts` | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| — | Info panel + asset renditions | Right details and imagery at each size | `components/InfoPanel.tsx`, `components/PartDrawing.tsx`, `components/partImage.ts`, `lib/partInfo.ts`, `lib/cdn.ts`, `canvas/loadImage.ts`, `canvas/useImage.ts` | `partInfo.test.ts`, `cdn.test.ts`, `loadImage.test.ts`, `imageStatus.test.ts` | `info-panel.spec.ts`, `picker.spec.ts`, `picker-choka.spec.ts` |
+| — | Capacity budgets | Honest limits, never a silent failure | `lib/capacity.ts`, `components/CapacityAnnouncer.tsx`, `scene.ts` caps | `capacity.test.ts`, `capacity.images.test.ts`, `capacityGuards.test.ts` | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| — | First-run guidance | Empty scene tells you where to start | `components/FirstRunHint.tsx`, `lib/firstRun.ts`, `lib/focus.ts` | `firstRun.test.ts` | `first-run.spec.ts` |
+| — | Power-supply planner | **Future (v2 / non-goal N3)** — schema reserves power; custom supplies carry it today | `state/scene.ts` (`power`), info panel readout | `customPedal.test.ts`, `partInfo.test.ts` | none yet (readout only in `info-panel.spec.ts`) |
 
 ### F-01 — Two-rendition image delivery (P2-10)
 
-Small UI now uses the **350 px** rendition instead of the 800 px master:
+Small UI uses the **350 px** rendition instead of the 800 px master:
 
 - **Picker ledger rows** — `PickerEntry.thumbSrc` (`resolveThumbImageUrl`).
 - **Mobile info-panel sleeve** — the 64 px peek (`ASSET_RENDITIONS.infoSleeve`).
@@ -44,33 +86,171 @@ graph cap, the share payload/version or the "Patch Drafting" direction.
   The 4 cm padding and the 16.7 MP / 8192 px clamps are unchanged; cable
   geometry, share payload/version and the graph cap are untouched.
 
-## QA impact map
+### F-19 — This map
 
-| Feature | Source modules | Affected workflows | Minimum E2E |
+The feature inventory, workflow → module → E2E table, change-impact table,
+object-type checklist and known-gap ledger. Kept current by every feature PR.
+
+---
+
+## Workflow → code → data → E2E
+
+| Workflow | Code path | Persisted / transported path | E2E coverage |
 |---|---|---|---|
-| F-01 / P2-10 two-rendition delivery | `src/lib/cdn.ts` (`ASSET_RENDITIONS`, `resolveThumbImageUrl`, `resolveMasterImageUrl`), `src/components/Picker.tsx`, `src/components/InfoPanel.tsx` | picker search/browse, place pedal/board, mobile info peek + expand, canvas image, export | `e2e/info-panel.spec.ts` (desktop + mobile), `e2e/picker-choka.spec.ts` (350 row / 800 specimen), `e2e/export.spec.ts` when export changes |
-| Catalog rendition pipeline (P5-03) | `tools/asset-pipeline/**` (catalog-owned) | any surface that loads an image | `e2e/picker-choka.spec.ts` |
-| F-02 / P4-05 read-only jack ticks + cable-aware export bounds | `src/canvas/PedalNode.tsx`, `src/lib/exportScene.ts`, `src/lib/cablePath.ts` | shared read-only preview (ticks + cue), pan/zoom/selection in share, selected-board and all-content PNG/PDF export, normal editor canvas | `e2e/cables.spec.ts` (read-only tick press + cue, desktop + mobile), `e2e/export.spec.ts` (scope/clamp), `src/lib/exportScene.test.ts` (long outward cable bounds) |
+| **Boot, pan, zoom, resize** | `App.tsx` → `Stage.tsx` → `useViewportGestures.ts` / `state/viewport.ts` | Viewport is not persisted (scene geometry is world cm) | `smoke.spec.ts` (wheel/pan/drag guards), `touch.spec.ts` (pinch/pan), `picker.spec.ts` (short viewports) |
+| **Picker search/filter/place** | `Picker.tsx` + `pickerFilter.ts` → `addItem` / `addBoard` | `items` / `boards` in the scene document | `picker.spec.ts` (desktop + mobile), `picker-choka.spec.ts` |
+| **Place / move / rotate / re-parent** | `state/scene.ts`, `useItemDrag.ts`, `ItemTransformer.tsx` | Board-local cm for attached items; world cm loose; rotation per item; z re-normalised | `smoke.spec.ts` (cross-board, pan interrupt), `selection.spec.ts` (rotate on rotated board), `touch.spec.ts` |
+| **Select / duplicate / delete / reorder** | `state/selection.ts`, `ItemActionBar.tsx`, `BoardActionBar.tsx` | Selection is ephemeral; the mutation is persisted | `selection.spec.ts`, `z-order.spec.ts`, `history.spec.ts` |
+| **Custom pedal/supply** | `CustomPedalForm.tsx`, `lib/customPedal.ts`, `state/scene.ts` | `customPedals` **inline** in the scene document and share payload | `custom.spec.ts` (desktop + mobile), `history.spec.ts`, `share.spec.ts` |
+| **Custom board** | `CustomBoardForm.tsx`, `lib/customBoard.ts`, `boardTexture.ts` | `boards[].customSize` + `texture` + `name`/`brand` inline | `board-creator.spec.ts` (desktop + mobile), `history.spec.ts`, `share.spec.ts` (custom board round-trip) |
+| **Cables + endpoints** | `state/scene.ts`, `cableDrag.ts`, `endpointDrag.ts`, `endpointPlacement.ts`, `jackAnchor.ts`, `CableLayer.tsx`, `EndpointLayer.tsx` | `cables` + `endpoints` in the scene document, share v2 payload, export bounds/capacity | `cables.spec.ts`, `cables-touch.spec.ts`, `share.spec.ts`, `export.spec.ts`, `capacity.spec.ts` |
+| **Cable schedule** | `lib/cableLength.ts`, `lib/cableSummary.ts`, `CableSchedulePanel.tsx` | Derived only — never stored/exported; read-only recipients derive locally | `cable-schedule.spec.ts` (desktop + mobile + read-only) |
+| **Save/load/autosave/boot reconcile** | `sceneDocument.ts`, `library.ts`, `autosave.ts`, `sceneIndex.ts`, `idb.ts` | IndexedDB document + localStorage index/settings; additive `version: 1` document | `scenes.spec.ts` (A4, isolation, rename/delete, cap, reconcile), `cables.spec.ts` (graph reload) |
+| **Undo/redo** | `state/history.ts`, `HistoryControls.tsx`, `useHistoryShortcuts.ts` | In-memory only; every `SceneSnapshot` key is compile-forced | `history.spec.ts` (desktop + mobile), `cables.spec.ts` (one cable = one step) |
+| **Share / read-only / save a copy** | `shareLink.ts`, `state/share.ts`, `readOnly.ts`, `library.ts`, `SharePanel.tsx`, `ShareView.tsx` | `#s=v2:` deflate → base64url; v1 still decodes; recipient never writes their document | `share.spec.ts` (desktop + mobile), `cables.spec.ts` (v2/v1), `history.spec.ts`, `storage-fallback.spec.ts` |
+| **Export PNG/PDF** | `exportScene.ts`, `exportStage.ts`, `pdf.ts`, `ExportPanel.tsx` | Reads the live snapshot; selected-board vs all-content; detached stage | `export.spec.ts` (desktop + mobile), `picker-choka.spec.ts`, `capacity.spec.ts` (warnings) |
+| **Capacity** | `capacity.ts`, `scene.ts` guards, `CapacityAnnouncer.tsx`, picker/export/scene UI | Scene-wide counts + distinct images + graph (cables + endpoints) | `capacity.spec.ts` (desktop + mobile), `share.spec.ts` (over-cap hydration), `export.spec.ts` (large-export notice) |
+| **Storage failure/backup** | `storageHealth.ts`, `sceneBackup.ts`, `StorageNotice.tsx`, `library.ts` | Live scene → `SceneDocument` v1 JSON download; no writes | `storage-fallback.spec.ts` (desktop + mobile) |
+| **Info panel / asset loading** | `InfoPanel.tsx`, `partInfo.ts`, `partImage.ts`, `cdn.ts`, `loadImage.ts`, `useImage.ts` | Image URLs are derived from the catalog entry, not stored | `info-panel.spec.ts` (desktop + mobile), `picker.spec.ts` (CORS/cache self-heal), `picker-choka.spec.ts` (AVIF) |
+| **First-run** | `FirstRunHint.tsx`, `firstRun.ts`, `focus.ts` | One-way localStorage `pedalvision.firstRun.v1` | `first-run.spec.ts` (desktop + mobile) |
+| **Mobile/touch chrome** | `App.tsx`, responsive CSS, bottom tabs/trays, 44 px targets | Same scene/document | `touch.spec.ts`, `cables-touch.spec.ts`, mobile project runs listed above |
 
-### P4-05 verification notes
+---
 
-- Unit: `exportScene.test.ts` covers a 15.75 cm outward handle that extends the
-  selected-board content top to −9.81 cm (board top is 0) and the same curve on
-  the all-content path.
-- E2E: the read-only test loads a share with the recipient's patch preference
-  hidden, presses **10 screen px outside** a socket (inside the tick hit disc,
-  outside the pedal) and asserts the item's read-only cue; 30 px outside the
-  socket stays empty canvas, proving the tick disc is what caught the press.
-- Performance (2026-10-27): bundle **+0.59 kB gzip** (295.12 → 295.71 kB);
-  read-only canvas frame time p50/p95 **16.70 ms** (60 fps) unchanged vs main;
-  a 60-cable selected-board export plan resolves in **0.18 ms** vs **0.06 ms**
-  on main (one-off export action, +0.12 ms).
+## Change-impact table
 
-### P2-10 verification notes
+Use this as the **minimum** regression set. Add the area's own E2E when the
+change is user-visible.
 
-- `pnpm test` covers the URL split for mock/static (`800` master, `350` thumb)
-  and `url` (unchanged at both sizes).
-- Playwright desktop: the Choka ledger row asserts `/350/` and the specimen
-  asserts `/800/`; `info-panel.spec.ts` asserts the banner is `/800/`.
-- Playwright mobile: the Choka ledger row asserts `/350/`; the info-panel sleeve
-  asserts `/350/` and the expanded banner asserts `/800/`.
+| If you change… | Affected workflows | Minimum E2E (plus the area's own) |
+|---|---|---|
+| **Geometry, transforms, board-relative cm** | every canvas workflow, A1, export bounds | `smoke.spec.ts`, `selection.spec.ts`, `export.spec.ts` |
+| **Scene model / store mutators / z-order** | place, move, rotate, duplicate/delete, save/load, history, share | `selection.spec.ts`, `z-order.spec.ts`, `scenes.spec.ts`, `history.spec.ts` |
+| **New object type / new scene array** | codec, guards, persistence, backup, history, share, export, capacity, UI | Complete the **new object type checklist**; run the checklist's named specs |
+| **Codec / `SceneDocument` / `library.ts`** | save/load, autosave, boot reconcile, backup, share save-copy | `scenes.spec.ts`, `storage-fallback.spec.ts`, `share.spec.ts`, `cables.spec.ts` |
+| **Share codec / payload / version** | sender → recipient, read-only, save-a-copy, legacy links | `share.spec.ts`, `cables.spec.ts` (v2/v1), `history.spec.ts`, `storage-fallback.spec.ts` |
+| **Export plan / renderer / PDF** | selected-board/all-content, clamps, image failure, mobile tray | `export.spec.ts`, `picker-choka.spec.ts` |
+| **Cables / cables geometry / anchors** | editor, touch connect, schedule, share, export, capacity | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| **Capacity constants / guards** | add, duplicate, board add, over-cap load, export warning | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| **Picker / filtering / catalog loading** | every place workflow, asset renditions | `picker.spec.ts`, `picker-choka.spec.ts` |
+| **Info panel / part info / image loading** | selection readout, asset sizes, CORS fallback | `info-panel.spec.ts`, `picker.spec.ts` |
+| **First-run / boot chrome** | empty scene, storage notice precedence | `first-run.spec.ts`, `storage-fallback.spec.ts` |
+| **Responsive CSS / mobile chrome** | picker, trays, action bars, touch targets | mobile project of `picker`/`export`/`cable-schedule`/`info-panel`/`scenes`; `touch.spec.ts` |
+| **Catalog data/images** (catalog session) | picker, canvas, info, export, share | `picker-choka.spec.ts`, `info-panel.spec.ts` (+ `catalog:ci`) |
+| **Annotations/legal/attribution copy** | info panel, attribution page | `info-panel.spec.ts` |
+
+---
+
+## New object type checklist
+
+A "new object type" is any new persisted/transported scene concept (the last
+ones were **endpoints** and **cables** in P4). Do all of these in the same PR;
+missing one is how P4-01/P4-02 broke standalone endpoints on load.
+
+1. **Model + store** — `src/state/scene.ts`: type, array in `Scene`, add/update/
+   remove mutators, cascades, z/container rules, capacity accounting,
+   `prune*` helpers, selection handling. Add unit tests beside the existing
+   `items`/`cables` suites.
+2. **Codec + guards** — `src/state/sceneDocument.ts`: add to `SceneDocument` and
+   `SceneSnapshot`, `createSceneDocument`, the structural guard, `parseSceneDocument`,
+   `normalizeSceneContent`, `sceneFromDocument`. Keep the **additive v1 document**
+   rule (older docs without the array stay valid).
+3. **Persistence** — `src/state/library.ts`: `applyScene` must copy **every**
+   snapshot key; `saveActive` builds from the full snapshot; the autosave
+   subscriber compares the new array; legacy migration, preview, save-a-copy and
+   boot all use the same codec.
+4. **History** — `src/state/history.ts`: add the key to the compile-time-exhaustive
+   `HISTORY_SCENE_KEYS` map; decide whether one user action is one step; ensure
+   undo/redo are no-ops read-only and clear on scene switch.
+5. **Backup** — `src/lib/sceneBackup.ts`: inherits the codec (no separate
+   serialiser). Assert the new field is in the downloaded JSON.
+6. **Share** — `src/lib/shareLink.ts`: encode the array **and** extend the zod
+   `payloadSchema` (zod strips unknown keys, so the decoder silently drops it
+   otherwise). Decide/keep the version policy (`v2` rejected cleanly by old
+   clients; `v1` still decodes). Update `SharePanel`/review copy (counts), the
+   read-only no-op guards, and add a round-trip + legacy test.
+7. **Export** — `src/lib/exportScene.ts`: include the object in the correct
+   scope(s), union its bounds/curve, and render it in `canvas/exportStage.ts`;
+   verify both selected-board and all-content, the 4 cm padding and the 16.7 MP
+   / 8192 px clamps. Update `ExportPanel` copy if the scope rule needs an
+   explanation.
+8. **Capacity** — `src/lib/capacity.ts`: count it in `sceneObjectCounts`, add the
+   refusal/add guard, thread the **full scene** through every consumer
+   (picker strip, scene register, export spec, share view), and extend the
+   benchmark if the load profile changes.
+9. **UI entry + read-only** — picker/action bar/toolbar entry, Escape/focus
+   behavior, mobile tray, and the read-only cue/no-op path. No new toast (N8).
+10. **Tests** — codec round-trip that fails if a snapshot key is missed, history,
+    capacity, share round-trip + legacy, export, and E2E on the real workflow
+    (desktop + mobile), including **A4** reload and **A5** share where the object
+    can be persisted/shared.
+11. **Docs** — add/update the feature row here, the impact row if workflows
+    changed, and the public feature/tutorial entry.
+
+---
+
+## E2E suite map
+
+| Spec | Covers | Projects |
+|---|---|---|
+| `smoke.spec.ts` | boot, pan/zoom, board place/rotate, cross-board drag, pan interrupt, short viewports | chromium |
+| `picker.spec.ts` | search/filter/place, specimen, keyboard, tabs, de-stack, thumbs, CORS/cache self-heal | chromium + mobile |
+| `picker-choka.spec.ts` | AVIF 350/800, canvas decodes, PNG/PDF, share, console-clean | chromium + mobile |
+| `selection.spec.ts` | action bar, rotate handles, rotated board, hover, narrow viewport | chromium |
+| `z-order.spec.ts` | layer reorder persistence | chromium |
+| `custom.spec.ts` | custom pedal/supply create/edit, TRS, drafts, units, validation | chromium + mobile |
+| `board-creator.spec.ts` | custom board create/edit/delete/finish/units/persist | chromium + mobile |
+| `info-panel.spec.ts` | identity/tags/dims/power/jacks, legal, renditions, overlap, mobile peek | chromium + mobile |
+| `cables.spec.ts` | connect/direction/capacity/endpoints/toggle/read-only/share v2+v1/over-graph | chromium + mobile |
+| `cables-touch.spec.ts` | trusted touch jack→jack | mobile |
+| `cable-schedule.spec.ts` | derived schedule, empty state, read-only, mobile tray, no mutation | chromium + mobile |
+| `scenes.spec.ts` | A4, scene isolation, rename/delete, 10-scene cap, boot reconcile | chromium + mobile |
+| `history.spec.ts` | undo/redo controls+keys, one-step actions, scene isolation, read-only | chromium + mobile |
+| `share.spec.ts` | sender→recipient, save a copy, unknown ref, over-cap, read-only cue, damaged link | chromium + mobile |
+| `export.spec.ts` | selected/all, clamps, far-off content, zoom/pan independence, HD PNG+PDF, mobile tray, cable endpoint in scope | chromium + mobile |
+| `capacity.spec.ts` | soft/hard warnings, add refusals, over-cap load, export notice | chromium + mobile |
+| `storage-fallback.spec.ts` | blocked IDB/localStorage, write failure, quota advisories, backup | chromium + mobile |
+| `first-run.spec.ts` | note geometry, CTA, dismiss/focus, retire on first object | chromium + mobile |
+| `touch.spec.ts` | pinch/pan, board-drag interrupt | mobile |
+| `benchmark.spec.ts` | report-only capacity table (`pnpm bench:capacity`) | excluded from `pnpm e2e` |
+
+Helpers: `e2e/picker.ts` (open/place), `e2e/stage.ts` (item screen centre),
+`e2e/persistence.ts` (read IndexedDB document), `e2e/share.ts` (build `#s=v2:`).
+
+---
+
+## Known gaps (intentional / unit-only / deferred)
+
+These are **not** silent holes: each is covered by unit tests or tracked here.
+
+| Gap | Current coverage | Decision |
+|---|---|---|
+| Selected-board export with an in-scope cable/endpoint | `exportScene.test.ts` (curve + endpoint bounds); **E2E added in F-19** (`export.spec.ts`) | Closed in F-19 |
+| Inline custom board through share + save-a-copy | `shareLink`/`library` unit tests; **E2E added in F-19** (`share.spec.ts`) | Closed in F-19 |
+| Standalone endpoint (no cable) survives reload (A4) | `library.test.ts` + `sceneDocument` guards | Unit-only; integration path is the same codec as cabled endpoints (covered by `cables.spec.ts`) |
+| Removing a board releases attached items loose with visible geometry | `items.test.ts` (rotated + rotated-attached cases) | Unit-only; low UI risk (no new code path) |
+| Shrinking a custom board nudges attached pedals back inside | `clampItemsToBoard` unit tests | Unit-only; add E2E only if the creator gets a resize-preview UI |
+| Z-order **within a board** container | `zorder.test.ts` (unit); E2E covers a loose-item reorder (`z-order.spec.ts`) | Unit + loose E2E; same `reorderItems` path. Add when a per-board layer UI lands |
+| Undo/redo of a cable create/delete | `cables.spec.ts` asserts the cable commit adds one undo step; other mutations in `history.spec.ts` | Partial E2E; full graph undo/redo is unit-covered (`history.test.ts`) |
+| PDF page pixels/raster fidelity | `pdf.test.ts` + header/MediaBox/`DCTDecode` assertions; owner iOS PNG check; P3-01 used `pdftoppm` manually | No automated pixel diff; keep as a visual/manual launch check |
+| Real iOS Safari export (A3) | Owner-confirmed PNG on iPhone (2026-10-20) | Manual; PDF not separately re-tested; P5-04 launch gate |
+| Non-Chromium browsers | Playwright chromium only (owner scope) | Out of scope; real-device pass is P5-06 |
+| Power-supply planner | Not implemented (non-goal N3); custom supply power shows in the info panel | Future feature; no E2E by design |
+| Scene list accessibility mirror | Deferred in `docs/design.md` (no owning task) | Deferred |
+| Capacity timing thresholds | `benchmark.spec.ts` is report-only; no ms gate | Intentional (avoid flaky CI) |
+
+---
+
+## Per-feature-PR requirement
+
+When a feature PR changes behaviour:
+
+- Add/update the **feature inventory** row and, if a new area, the **workflow**
+  and **impact** rows.
+- Name the E2E you ran (spec + desktop/mobile) in the PR.
+- If you added an object type, link the checklist items you completed.
+- Move any resolved gap out of **Known gaps**; add a new row for intentional
+  deferrals.
+- Do not assert catalog totals in E2E; filter a stable item/brand.
+- Process/rule changes (this file's rules, `AGENTS.md`, templates, roadmap,
+  progress) are coordinator-only: propose the exact text instead of editing.

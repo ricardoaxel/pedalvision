@@ -355,6 +355,51 @@ test("an over-cap shared scene can be saved as an editable copy", async ({
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
 });
 
+test("share round-trips an inline custom board (size + finish) read-only", async ({
+	page,
+}) => {
+	// Custom boards have no catalog ref: the definition (size + texture)
+	// travels inline in the payload and must survive the recipient's save-copy.
+	await openShare(
+		page,
+		shareHash({
+			name: "Custom board",
+			boards: [
+				board("cb-1", {
+					boardRefId: null,
+					customSize: { widthCm: 80, heightCm: 40 },
+					texture: "tolex",
+					x: 10,
+					y: 10,
+				}),
+			],
+			items: [item("i-1", { boardUid: "cb-1", x: 5, y: 5 })],
+		}),
+	);
+	const stage = page.getByTestId("stage");
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-boards", "1");
+	await expect(stage).toHaveAttribute("data-custom-boards", "1");
+	await expect(stage).toHaveAttribute("data-board-sizes", "80x40");
+	await expect(stage).toHaveAttribute("data-board-textures", "tolex");
+	await expect(stage).toHaveAttribute("data-item-parents", "0");
+
+	// Read-only chrome, but "Save a copy" keeps the inline definition editable.
+	await expect(page.getByTestId("picker-open")).toHaveCount(0);
+	await page.getByTestId("share-save-copy").click();
+	await expect(page.getByTestId("share-saved")).toBeVisible();
+	await expect(page.getByTestId("scene-open")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-custom-boards", "1");
+	await expect(stage).toHaveAttribute("data-board-sizes", "80x40");
+	await expect(stage).toHaveAttribute("data-board-textures", "tolex");
+
+	// The copy went through IndexedDB: reload preserves the inline definition.
+	await page.reload();
+	await expect(stage).toHaveAttribute("data-custom-boards", "1");
+	await expect(stage).toHaveAttribute("data-board-sizes", "80x40");
+	await expect(stage).toHaveAttribute("data-board-textures", "tolex");
+});
+
 test("shared scenes keep multiple boards, rotations, loose items and pan/zoom", async ({
 	page,
 }) => {
