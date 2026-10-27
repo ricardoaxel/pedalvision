@@ -159,7 +159,7 @@ picker thumb stays clean; the 800 master carries the full control set.
 ```sh
 pnpm asset:analyze --input public/pedal-assets/pedals/800/<id>.avif \
   --kind pedal --width-cm <w> --height-cm <h> --id <id> \
-  --out work/catalog/analyze/<id>.json
+  --out work/catalog/analyze/<id>.json --source generated
 ```
 
 Require:

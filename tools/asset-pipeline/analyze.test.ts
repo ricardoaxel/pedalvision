@@ -135,6 +135,72 @@ async function cardImage(): Promise<Buffer> {
 		.toBuffer();
 }
 
+/** A gallery card with a transparent margin and the correct footprint aspect:
+ * the card is the opaque content, the pedal is dark, and a caption sits at the
+ * bottom. The opaque-bounds frame must catch it without the outer image frame. */
+async function marginCard(): Promise<Buffer> {
+	const width = 730;
+	const height = 1290;
+	const data = Buffer.alloc(width * height * 4);
+	for (let y = 20; y < 1270; y++) {
+		for (let x = 20; x < 710; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 238;
+			data[i + 1] = 238;
+			data[i + 2] = 238;
+			data[i + 3] = 255;
+		}
+	}
+	for (let y = 100; y < 900; y++) {
+		for (let x = 80; x < 650; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 30;
+			data[i + 1] = 50;
+			data[i + 2] = 70;
+			data[i + 3] = 255;
+		}
+	}
+	for (let g = 0; g < 10; g++) {
+		for (let y = 1100; y < 1130; y++) {
+			for (let x = 150 + g * 35; x < 165 + g * 35; x++) {
+				const i = (y * width + x) * 4;
+				data[i] = 20;
+				data[i + 1] = 20;
+				data[i + 2] = 20;
+				data[i + 3] = 255;
+			}
+		}
+	}
+	return sharp(data, { raw: { width, height, channels: 4 } })
+		.png()
+		.toBuffer();
+}
+
+/** A full-bleed bright cream cutout (no card, one interior hole): the same
+ * frame/interior tone must not be mistaken for a background card. */
+async function fullBleedBrightCutout(): Promise<Buffer> {
+	const width = 730;
+	const height = 1290;
+	const data = Buffer.alloc(width * height * 4);
+	for (let y = 0; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 215;
+			data[i + 1] = 210;
+			data[i + 2] = 184;
+			data[i + 3] = 255;
+		}
+	}
+	for (let y = 600; y < 700; y++) {
+		for (let x = 315; x < 415; x++) {
+			data[(y * width + x) * 4 + 3] = 0;
+		}
+	}
+	return sharp(data, { raw: { width, height, channels: 4 } })
+		.png()
+		.toBuffer();
+}
+
 /** A transparent cutout with a bright cream body (planner-style tight crop):
  * the product touches the top/bottom, the margins stay transparent. */
 async function brightCutout(): Promise<Buffer> {
@@ -354,6 +420,32 @@ describe("image analyzer", () => {
 		});
 		expect(result.backgroundCard?.suspected).toBe(false);
 		expect(result.reasons.join(" ")).not.toMatch(/background card/);
+	});
+
+	it("flags a margin card with the correct footprint aspect", async () => {
+		const result = await analyzeImage(await marginCard(), {
+			kind: "pedal",
+			...footprint,
+		});
+		expect(result.backgroundCard?.suspected).toBe(true);
+		expect(result.reasons.join(" ")).toMatch(/background card/);
+	});
+
+	it("does not flag a full-bleed bright cutout", async () => {
+		const result = await analyzeImage(await fullBleedBrightCutout(), {
+			kind: "pedal",
+			...footprint,
+		});
+		expect(result.backgroundCard?.suspected).toBe(false);
+	});
+
+	it("does not apply the photo card flag to planner/generated cutouts", async () => {
+		const result = await analyzeImage(await cardImage(), {
+			kind: "pedal",
+			...footprint,
+			sourceKind: "planner",
+		});
+		expect(result.backgroundCard).toBeNull();
 	});
 
 	it("flags a product card/caption instead of passing it", async () => {

@@ -32,6 +32,7 @@ const PIPELINE_ALLOWED = [
 	// Tooling-only codec drift test for catalog:demo-link (P5 guardrails).
 	/^src\/lib\/shareLink\.demo\.test\.ts$/,
 	/^src\/catalog\/(schema|schema\.test|rawSchema|rawSchema\.test)\.ts$/,
+	/^src\/catalog\/plannerUrl(\.test)?\.ts$/,
 	/^src\/state\/scene\.ts$/,
 	/^src\/components\/(Picker|InfoPanel)\.tsx$/,
 	/^src\/canvas\/(PedalNode|BoardNode|exportStage)\.tsx?$/,

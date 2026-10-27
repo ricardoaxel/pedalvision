@@ -1,6 +1,7 @@
 import type { Dirent } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { isPlannerUrl } from "../../src/catalog/plannerUrl.ts";
 import {
 	RawBoardBatchSchema,
 	RawPedalBatchSchema,
@@ -39,28 +40,7 @@ type ProvenanceRecord = {
 	};
 };
 
-const PLANNER_HOST = "pedalplayground.com";
-
-export function isPlannerUrl(url: string | undefined): boolean {
-	if (!url) return false;
-	try {
-		const parsed = new URL(url);
-		const hostname = parsed.hostname.toLowerCase();
-		if (hostname === PLANNER_HOST || hostname.endsWith(`.${PLANNER_HOST}`)) {
-			return true;
-		}
-		// The planner's assets are also mirrored on GitHub raw.
-		if (
-			(hostname === "github.com" || hostname === "raw.githubusercontent.com") &&
-			/\/pedalplayground\//i.test(parsed.pathname)
-		) {
-			return true;
-		}
-		return false;
-	} catch {
-		return false;
-	}
-}
+export { isPlannerUrl };
 
 export function checkImageProvenance(
 	records: ProvenanceRecord[],

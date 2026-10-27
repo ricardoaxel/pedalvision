@@ -2,6 +2,7 @@ import type { Dirent } from "node:fs";
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 
+import { isPlannerUrl } from "../../src/catalog/plannerUrl.ts";
 /**
  * Image licensing ledger (P5-03, owner decision 2026-10-26).
  *
@@ -115,28 +116,7 @@ export type Ledger = {
 	items: LedgerRow[];
 };
 
-const PLANNER_HOST = "pedalplayground.com";
-
-export function isPlannerUrl(url: string | undefined): boolean {
-	if (!url) return false;
-	try {
-		const parsed = new URL(url);
-		const hostname = parsed.hostname.toLowerCase();
-		if (hostname === PLANNER_HOST || hostname.endsWith(`.${PLANNER_HOST}`)) {
-			return true;
-		}
-		// The repo also carries the project via GitHub raw URLs.
-		if (
-			(hostname === "github.com" || hostname === "raw.githubusercontent.com") &&
-			/\/pedalplayground\//i.test(parsed.pathname)
-		) {
-			return true;
-		}
-		return false;
-	} catch {
-		return false;
-	}
-}
+export { isPlannerUrl };
 
 function rawUrls(record: RawRecord | undefined): string[] {
 	return [

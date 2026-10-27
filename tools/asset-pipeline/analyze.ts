@@ -24,6 +24,12 @@ export type AnalyzeOptions = {
 	/** Per-channel background tolerance. */
 	tolerance?: number;
 	minLongEdge?: number;
+	/**
+	 * Source class for the background-card check. Planner and generated assets
+	 * are already clean transparent cutouts, so the photo-only card/caption flag
+	 * is not applied to them (the contact-sheet reviewer still checks pixels).
+	 */
+	sourceKind?: "photo" | "planner" | "generated";
 };
 
 export type AnalyzeResult = {
@@ -57,6 +63,12 @@ export type AnalyzeResult = {
 		borderOpaque: number;
 		uniformity: number;
 		brightRatio: number;
+		frameLuma: number;
+		frameSat: number;
+		interiorLuma: number;
+		interiorSat: number;
+		captionBand: boolean;
+		bandNonCardRatio: number;
 		suspected: boolean;
 	} | null;
 	verdict: "accept" | "flag" | "reject";
@@ -82,6 +94,83 @@ function borderPixels(width: number, height: number): Array<[number, number]> {
 		points.push([0, y], [width - 1, y]);
 	}
 	return points;
+}
+
+function opaqueBounds(
+	data: Uint8Array,
+	width: number,
+	height: number,
+): Bounds | null {
+	let left = width;
+	let top = height;
+	let right = -1;
+	let bottom = -1;
+	for (let y = 0; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+			if (data[(y * width + x) * 4 + 3] < 250) continue;
+			if (x < left) left = x;
+			if (x > right) right = x;
+			if (y < top) top = y;
+			if (y > bottom) bottom = y;
+		}
+	}
+	if (right < left || bottom < top) return null;
+	return { left, top, width: right - left + 1, height: bottom - top + 1 };
+}
+
+function dominantColor(
+	data: Uint8Array,
+	width: number,
+	rects: Array<[number, number, number, number]>,
+): { color: { r: number; g: number; b: number }; coverage: number } | null {
+	const counts = new Map<
+		string,
+		{ n: number; r: number; g: number; b: number }
+	>();
+	let visible = 0;
+	for (const [x0, y0, x1, y1] of rects) {
+		for (let y = y0; y <= y1; y++) {
+			for (let x = x0; x <= x1; x++) {
+				const i = (y * width + x) * 4;
+				if (data[i + 3] < 250) continue;
+				visible++;
+				const r = data[i];
+				const g = data[i + 1];
+				const b = data[i + 2];
+				const key = `${r >> 4},${g >> 4},${b >> 4}`;
+				const entry = counts.get(key) ?? { n: 0, r: 0, g: 0, b: 0 };
+				entry.n++;
+				entry.r += r;
+				entry.g += g;
+				entry.b += b;
+				counts.set(key, entry);
+			}
+		}
+	}
+	if (visible === 0) return null;
+	let best: { n: number; r: number; g: number; b: number } | null = null;
+	for (const entry of counts.values()) {
+		if (!best || entry.n > best.n) best = entry;
+	}
+	if (!best) return null;
+	return {
+		color: {
+			r: Math.round(best.r / best.n),
+			g: Math.round(best.g / best.n),
+			b: Math.round(best.b / best.n),
+		},
+		coverage: best.n / visible,
+	};
+}
+
+function luma(color: { r: number; g: number; b: number }): number {
+	return (0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b) / 255;
+}
+
+function saturation(color: { r: number; g: number; b: number }): number {
+	const max = Math.max(color.r, color.g, color.b);
+	const min = Math.min(color.r, color.g, color.b);
+	return max === 0 ? 0 : (max - min) / max;
 }
 
 function backgroundUniformity(
@@ -502,27 +591,133 @@ export async function analyzeImage(
 	}
 
 	let backgroundCard: AnalyzeResult["backgroundCard"] = null;
-	if (options.kind === "pedal") {
-		// A tight, clean cutout may be almost fully opaque (e.g. generated art), so
-		// opacity alone is not a defect. A product card leaves an opaque, bright
-		// border strip; a clean tight cutout's opaque border is the (dark) product.
-		// For an already-transparent cutout with a bright body the border-uniformity
-		// signal is meaningless, so only a card that fills the frame is suspected.
-		const suspected = isCutout
-			? bright.ratio >= 0.2 && borderOpaqueRatio >= 0.6
-			: (bright.ratio >= 0.25 && uniformity <= 0.85) ||
-				(bright.ratio >= 0.2 && borderOpaqueRatio >= 0.6);
-		backgroundCard = {
-			opaqueRatio: effectiveOpaqueRatio,
-			borderOpaque: borderOpaqueRatio,
-			uniformity,
-			brightRatio: bright.ratio,
-			suspected,
-		};
-		if (suspected) {
-			reasons.push(
-				`flag:possible background card/caption (opaque border ${Math.round(borderOpaqueRatio * 100)}%, bright ${Math.round(bright.ratio * 100)}%, opaque ${Math.round(effectiveOpaqueRatio * 100)}%) — reject if a background/caption is visible`,
-			);
+	const sourceKind = options.sourceKind ?? "photo";
+	const opaque = opaqueBounds(pixels, width, height);
+	if (options.kind === "pedal" && opaque && sourceKind === "photo") {
+		// Measure the card on the *opaque* content, not the image frame: a card
+		// with a transparent margin would otherwise be invisible to the check.
+		const ring = Math.max(
+			2,
+			Math.round(Math.min(opaque.width, opaque.height) * 0.02),
+		);
+		const frame = dominantColor(pixels, width, [
+			[
+				opaque.left,
+				opaque.top,
+				opaque.left + opaque.width - 1,
+				opaque.top + ring - 1,
+			],
+			[
+				opaque.left,
+				opaque.top + opaque.height - ring,
+				opaque.left + opaque.width - 1,
+				opaque.top + opaque.height - 1,
+			],
+			[
+				opaque.left,
+				opaque.top,
+				opaque.left + ring - 1,
+				opaque.top + opaque.height - 1,
+			],
+			[
+				opaque.left + opaque.width - ring,
+				opaque.top,
+				opaque.left + opaque.width - 1,
+				opaque.top + opaque.height - 1,
+			],
+		]);
+		const insetX = Math.round(opaque.width * 0.25);
+		const insetY = Math.round(opaque.height * 0.25);
+		const interior = dominantColor(pixels, width, [
+			[
+				opaque.left + insetX,
+				opaque.top + insetY,
+				opaque.left + opaque.width - 1 - insetX,
+				opaque.top + opaque.height - 1 - insetY,
+			],
+		]);
+		if (frame && interior) {
+			const frameLuma = luma(frame.color);
+			const frameSat = saturation(frame.color);
+			const interiorLuma = luma(interior.color);
+			const interiorSat = saturation(interior.color);
+			const isCard = (r: number, g: number, b: number) =>
+				Math.max(
+					Math.abs(r - frame.color.r),
+					Math.abs(g - frame.color.g),
+					Math.abs(b - frame.color.b),
+				) <= 40;
+			// The caption band is the card area below the product's bottom edge:
+			// a wide product row ends, then a band of card + small dark glyphs.
+			let productBottom = opaque.top - 1;
+			for (let y = opaque.top; y <= opaque.top + opaque.height - 1; y++) {
+				let nonCard = 0;
+				let visible = 0;
+				for (let x = opaque.left; x <= opaque.left + opaque.width - 1; x++) {
+					const i = (y * width + x) * 4;
+					if (pixels[i + 3] < 250) continue;
+					visible++;
+					if (!isCard(pixels[i], pixels[i + 1], pixels[i + 2])) nonCard++;
+				}
+				// Use the opaque-content width, not just the visible pixels: a narrow
+				// caption glyph row must not become the product's bottom edge.
+				if (opaque.width > 0 && nonCard / opaque.width >= 0.5) {
+					productBottom = y;
+				}
+			}
+			const bandStart = productBottom + 1;
+			const bandRows = opaque.top + opaque.height - bandStart;
+			let bandNonCardRatio = 0;
+			let captionBand = false;
+			if (
+				bandStart > opaque.top &&
+				bandRows >= 4 &&
+				bandRows <= Math.max(12, Math.round(opaque.height * 0.2))
+			) {
+				let nonCard = 0;
+				let visible = 0;
+				for (let y = bandStart; y <= opaque.top + opaque.height - 1; y++) {
+					for (let x = opaque.left; x <= opaque.left + opaque.width - 1; x++) {
+						const i = (y * width + x) * 4;
+						if (pixels[i + 3] < 250) continue;
+						visible++;
+						if (!isCard(pixels[i], pixels[i + 1], pixels[i + 2])) nonCard++;
+					}
+				}
+				const bandArea = opaque.width * bandRows;
+				bandNonCardRatio = bandArea > 0 ? nonCard / bandArea : 0;
+				captionBand =
+					frameLuma >= 0.5 &&
+					frameSat <= 0.3 &&
+					bandNonCardRatio >= 0.005 &&
+					bandNonCardRatio <= 0.35;
+			}
+			// A product card is a bright, low-saturation frame around a darker or
+			// more saturated product, or a caption band below the product. A clean
+			// bright cutout has the same frame and interior tone, so it is not flagged.
+			const frameCard =
+				frameLuma >= 0.55 &&
+				frameSat <= 0.25 &&
+				(interiorLuma <= 0.4 || interiorSat >= frameSat + 0.2);
+			const suspected = frameCard || captionBand;
+			backgroundCard = {
+				opaqueRatio: effectiveOpaqueRatio,
+				borderOpaque: borderOpaqueRatio,
+				uniformity,
+				brightRatio: bright.ratio,
+				frameLuma,
+				frameSat,
+				interiorLuma,
+				interiorSat,
+				captionBand,
+				bandNonCardRatio,
+				suspected,
+			};
+			if (suspected) {
+				reasons.push(
+					`flag:possible background card/caption (frame luma ${Math.round(frameLuma * 100)}%, sat ${Math.round(frameSat * 100)}%, interior luma ${Math.round(interiorLuma * 100)}%, sat ${Math.round(interiorSat * 100)}%, caption ${captionBand ? "yes" : "no"}) — reject if a background/caption is visible`,
+				);
+			}
 		}
 	}
 
