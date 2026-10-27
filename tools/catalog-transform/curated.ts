@@ -230,6 +230,16 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"boss-od-20-drive-zone": ["overdrive", "distortion"],
 	"boss-od-200-hybrid-drive": ["overdrive", "distortion", "boost", "fuzz"],
 	"boss-od-2r-turbo-overdrive": ["overdrive", "distortion"],
+	"boss-re-2-space-echo": ["delay", "reverb"],
+	"boss-re-20-space-echo": ["delay", "reverb"],
+	"boss-re-202-space-echo": ["delay", "reverb"],
+	"boss-rt-2-rotary-ensemble": ["rotary"],
+	"boss-rt-20-rotary": ["rotary"],
+	"boss-sg-1-slow-gear": ["envelope"],
+	"boss-sl-2-slicer": ["filter"],
+	"boss-sl-20-slicer": ["filter"],
+	"boss-sp-1-spectrum": ["eq"],
+	"boss-st-2-power-stack": ["distortion"],
 
 	// Electro-Harmonix
 	"electro-harmonix-15watt-howitzer": ["preamp", "power-amp"],
