@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { detachArgs } from "./launch.ts";
 
 describe("detached wave args", () => {
-	it("propagates the explicit 3-wide and resume flags to the child", () => {
+	it("keeps the deprecated --allow-third and propagates resume to the child", () => {
 		expect(detachArgs("index.ts", "plan.json", true, true)).toEqual([
 			"--experimental-strip-types",
 			"index.ts",

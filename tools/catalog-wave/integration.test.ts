@@ -168,7 +168,7 @@ describe("catalog:wave stop path", () => {
 			planPath,
 			JSON.stringify({
 				id: waveId,
-				maxParallel: 3,
+				maxParallel: 2,
 				batches: batches.map((batch, index) => ({
 					batch,
 					kind: "pedals",
@@ -285,7 +285,7 @@ describe("catalog:wave hard-cap path", () => {
 			planPath,
 			JSON.stringify({
 				id: waveId,
-				maxParallel: 3,
+				maxParallel: 2,
 				batches: batches.map((batch, index) => ({
 					batch,
 					kind: "pedals",
@@ -350,7 +350,7 @@ describe("catalog:wave hard-cap path", () => {
 });
 
 describe("catalog:wave 3-wide explicit start", () => {
-	it("starts all three batches only with --allow-third and logs the start", async () => {
+	it("starts all three batches by default and logs the start", async () => {
 		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-3wide-"));
 		tempDirs.push(temp);
 		const waveId = `wave-3wide-${process.pid}`;
@@ -378,7 +378,6 @@ describe("catalog:wave 3-wide explicit start", () => {
 			planPath,
 			JSON.stringify({
 				id: waveId,
-				maxParallel: 3,
 				batches: batches.map((batch, index) => ({
 					batch,
 					kind: "pedals",
@@ -398,7 +397,6 @@ describe("catalog:wave 3-wide explicit start", () => {
 				"run",
 				"--plan",
 				planPath,
-				"--allow-third",
 				"--foreground",
 				"--poll-ms",
 				"50",
@@ -498,7 +496,7 @@ describe("catalog:wave freed-slot regression", () => {
 			planPath,
 			JSON.stringify({
 				id: waveId,
-				maxParallel: 3,
+				maxParallel: 2,
 				batches: batches.map((batch, index) => ({
 					batch,
 					kind: "pedals",
@@ -591,7 +589,7 @@ describe("catalog:wave freed-slot regression", () => {
 			batches: Array<{ batch: string; status: string }>;
 		};
 		expect(ended.notes.join("\n")).toContain(
-			"no active batch; queued batches need an explicit --allow-third start",
+			"no active batch; queued batches need a maxParallel=3 plan (or --resume refill)",
 		);
 		expect(
 			ended.batches.find((batch) => batch.batch === (batches[2] as string))
@@ -855,7 +853,6 @@ describe("catalog:wave explicit resume path", () => {
 				"run",
 				"--plan",
 				planPath,
-				"--allow-third",
 				"--resume",
 				"--foreground",
 				"--poll-ms",
@@ -927,6 +924,280 @@ describe("catalog:wave explicit resume path", () => {
 		child.kill("SIGTERM");
 		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
 	}, 120_000);
+});
+
+describe("catalog:wave default start width", () => {
+	it("starts 2 for a 2-batch plan even with maxParallel 3", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-two-"));
+		tempDirs.push(temp);
+		const waveId = `wave-two-${process.pid}`;
+		const batches = ["a", "b"].map(
+			(suffix) => `acme/two-${suffix}-${process.pid}`,
+		);
+		const bin = join(temp, "bin");
+		await mkdir(bin, { recursive: true });
+		await writeFile(
+			join(bin, "opencode"),
+			[
+				"#!/bin/sh",
+				"trap 'exit 0' TERM",
+				'echo \'{"type":"text","sessionID":"ses_two","part":{"id":"p1","type":"text","text":"two running"}}\'',
+				'echo \'{"type":"step_finish","sessionID":"ses_two","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+				"sleep 10",
+			].join("\n"),
+		);
+		await chmod(join(bin, "opencode"), 0o755);
+		const worktrees = ["a", "b"].map((suffix) =>
+			addWorktree(temp, `two-${suffix}`),
+		);
+		const planPath = join(temp, "wave.json");
+		await writeFile(
+			planPath,
+			JSON.stringify({
+				id: waveId,
+				maxParallel: 3,
+				batches: batches.map((batch, index) => ({
+					batch,
+					kind: "pedals",
+					brand: "Acme",
+					total: 1,
+					worktree: worktrees[index]?.path as string,
+					branch: worktrees[index]?.branch as string,
+					prompt: "fake",
+				})),
+			}),
+		);
+		const child = spawn(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				planPath,
+				"--foreground",
+				"--poll-ms",
+				"50",
+			],
+			{
+				cwd: repoRoot,
+				env: {
+					...process.env,
+					PATH: `${bin}:${process.env.PATH ?? ""}`,
+					CATALOG_WORK_DIR: join(temp, "work"),
+					CATALOG_STOP_GRACE_MS: "100",
+					CATALOG_KILL_GRACE_MS: "100",
+				},
+				stdio: ["ignore", "pipe", "pipe"],
+			},
+		);
+		const statePath = join(temp, "work", "waves", waveId, "state.json");
+		try {
+			await waitFor(async () => {
+				try {
+					const state = JSON.parse(await readFile(statePath, "utf8")) as {
+						batches: Array<{ status: string }>;
+					};
+					return (
+						state.batches.filter((batch) => batch.status === "running")
+							.length === 2
+					);
+				} catch {
+					return false;
+				}
+			});
+		} catch (error) {
+			child.kill("SIGKILL");
+			throw new Error((error as Error).message);
+		}
+		const state = JSON.parse(await readFile(statePath, "utf8")) as {
+			batches: Array<{ status: string }>;
+			notes: string[];
+		};
+		expect(state.batches).toHaveLength(2);
+		expect(state.batches.every((batch) => batch.status === "running")).toBe(
+			true,
+		);
+		expect(state.notes.join("\n")).not.toContain("3-wide start");
+		child.kill("SIGTERM");
+		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
+	}, 120_000);
+});
+
+describe("catalog:wave deprecated --allow-third", () => {
+	it("is accepted as a no-op that does not widen a maxParallel-2 wave", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-deprecated-"));
+		tempDirs.push(temp);
+		const batches = ["a", "b", "c"].map(
+			(suffix) => `acme/deprecated-${suffix}-${process.pid}`,
+		);
+		const worktrees = ["a", "b", "c"].map((suffix) =>
+			addWorktree(temp, `deprecated-${suffix}`),
+		);
+		const planPath = join(temp, "wave.json");
+		await writeFile(
+			planPath,
+			JSON.stringify({
+				id: `wave-deprecated-${process.pid}`,
+				maxParallel: 2,
+				batches: batches.map((batch, index) => ({
+					batch,
+					kind: "pedals",
+					brand: "Acme",
+					total: 1,
+					worktree: worktrees[index]?.path as string,
+					branch: worktrees[index]?.branch as string,
+					prompt: "fake",
+				})),
+			}),
+		);
+		const result = spawnSync(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				planPath,
+				"--dry-run",
+				"--allow-third",
+			],
+			{
+				cwd: repoRoot,
+				encoding: "utf8",
+				env: {
+					...process.env,
+					CATALOG_WORK_DIR: join(temp, "work"),
+				},
+			},
+		);
+		expect(result.status, result.stderr).toBe(0);
+		expect(result.stdout).toContain("--allow-third is deprecated");
+		expect(result.stdout).toContain("starts up to 2/3");
+		expect(result.stdout).toContain("nothing started");
+	}, 60_000);
+});
+
+describe("catalog:wave pre-start budget guard", () => {
+	it("starts 3 over the soft budget (owner accepts over-soft)", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-soft-start-"));
+		tempDirs.push(temp);
+		const waveId = `wave-soft-start-${process.pid}`;
+		const setup = await setupPriorResumeWave({
+			temp,
+			waveId,
+			prefix: `softstart-${process.pid}`,
+			billedPerBatch: 600_000,
+		});
+		const child = spawn(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				setup.planPath,
+				"--resume",
+				"--foreground",
+				"--poll-ms",
+				"50",
+			],
+			{
+				cwd: repoRoot,
+				env: {
+					...process.env,
+					PATH: `${setup.bin}:${process.env.PATH ?? ""}`,
+					CATALOG_WORK_DIR: setup.work,
+					CATALOG_STOP_GRACE_MS: "100",
+					CATALOG_KILL_GRACE_MS: "100",
+				},
+				stdio: ["ignore", "pipe", "pipe"],
+			},
+		);
+		try {
+			await waitFor(async () => {
+				try {
+					const state = JSON.parse(await readFile(setup.statePath, "utf8")) as {
+						batches: Array<{ status: string }>;
+						notes: string[];
+					};
+					return (
+						state.batches.filter((batch) => batch.status === "running")
+							.length === 3 &&
+						state.notes.some((note) =>
+							note.startsWith("wave soft budget already reached"),
+						)
+					);
+				} catch {
+					return false;
+				}
+			});
+		} catch (error) {
+			child.kill("SIGKILL");
+			throw new Error((error as Error).message);
+		}
+		const state = JSON.parse(await readFile(setup.statePath, "utf8")) as {
+			batches: Array<{ status: string }>;
+			notes: string[];
+		};
+		expect(
+			state.batches.filter((batch) => batch.status === "running"),
+		).toHaveLength(3);
+		expect(state.notes.join("\n")).toContain("starting at the planned width");
+		expect(state.notes.join("\n")).not.toContain("starting 1-wide");
+		child.kill("SIGTERM");
+		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
+	}, 120_000);
+
+	it("refuses to start at the hard budget", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-hard-start-"));
+		tempDirs.push(temp);
+		const waveId = `wave-hard-start-${process.pid}`;
+		const setup = await setupPriorResumeWave({
+			temp,
+			waveId,
+			prefix: `hardstart-${process.pid}`,
+			billedPerBatch: 900_000,
+		});
+		const result = spawnSync(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				setup.planPath,
+				"--resume",
+				"--foreground",
+				"--poll-ms",
+				"50",
+			],
+			{
+				cwd: repoRoot,
+				encoding: "utf8",
+				env: {
+					...process.env,
+					PATH: `${setup.bin}:${process.env.PATH ?? ""}`,
+					CATALOG_WORK_DIR: setup.work,
+				},
+				timeout: 30_000,
+			},
+		);
+		expect(result.status, result.stderr).toBe(0);
+		const state = JSON.parse(await readFile(setup.statePath, "utf8")) as {
+			status: string;
+			batches: Array<{ status: string }>;
+			notes: string[];
+		};
+		expect(state.status).toBe("stopped");
+		expect(state.batches.every((batch) => batch.status === "not-started")).toBe(
+			true,
+		);
+		expect(state.notes.join("\n")).toContain(
+			"wave hard budget already reached",
+		);
+		expect(state.notes.join("\n")).toContain("refusing to start");
+	}, 60_000);
 });
 
 describe("catalog:wave missing JSONL", () => {
@@ -1026,6 +1297,120 @@ describe("catalog:wave missing JSONL", () => {
 		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
 	}, 120_000);
 });
+
+async function setupPriorResumeWave(options: {
+	temp: string;
+	waveId: string;
+	prefix: string;
+	billedPerBatch: number;
+}): Promise<{
+	planPath: string;
+	work: string;
+	statePath: string;
+	bin: string;
+}> {
+	const { temp, waveId, prefix, billedPerBatch } = options;
+	const work = join(temp, "work");
+	const stateDir = join(work, "state");
+	const controlDir = join(work, "control");
+	const waveDir = join(work, "waves", waveId);
+	await mkdir(stateDir, { recursive: true });
+	await mkdir(controlDir, { recursive: true });
+	await mkdir(waveDir, { recursive: true });
+	const batches = ["a", "b", "c"].map((suffix) => `acme/${prefix}-${suffix}`);
+	const worktrees = ["a", "b", "c"].map((suffix) =>
+		addWorktree(temp, `${prefix}-${suffix}`),
+	);
+	const startedAt = new Date(Date.now() - 60_000).toISOString();
+	await writeFile(
+		join(waveDir, "state.json"),
+		JSON.stringify({
+			version: 1,
+			id: waveId,
+			status: "stopped",
+			startedAt,
+			planPath: join(temp, "prior-wave.json"),
+			batches: [],
+			notes: [],
+			reportPath: join(waveDir, "report.md"),
+		}),
+	);
+	const input = Math.max(0, billedPerBatch - 1000);
+	for (const [index, batch] of batches.entries()) {
+		await writeFile(
+			join(stateDir, `${batch.replaceAll("/", "__")}.json`),
+			JSON.stringify({
+				version: 1,
+				batchId: batch,
+				kind: "pedals",
+				brand: "Acme",
+				worktree: worktrees[index]?.path as string,
+				status: "stopped",
+				total: 1,
+				done: 1,
+				imagesAccepted: 1,
+				imagesRejected: 0,
+				tokens: 0,
+				startedAt,
+				updatedAt: startedAt,
+				heartbeatAt: startedAt,
+				endedAt: startedAt,
+				blockers: [],
+				stopRequested: true,
+			}),
+		);
+		await writeFile(
+			join(waveDir, `${batch.replaceAll("/", "__")}.jsonl`),
+			`${JSON.stringify({
+				type: "step_finish",
+				sessionID: "ses_prior",
+				part: {
+					id: `f${index}`,
+					type: "step-finish",
+					tokens: {
+						total: billedPerBatch,
+						input,
+						output: 700,
+						reasoning: 300,
+						cache: { read: 0, write: 0 },
+					},
+					cost: 0.01,
+				},
+			})}\n`,
+		);
+	}
+	const bin = join(temp, "bin");
+	await mkdir(bin, { recursive: true });
+	await writeFile(
+		join(bin, "opencode"),
+		[
+			"#!/bin/sh",
+			"trap 'exit 0' TERM",
+			'echo \'{"type":"text","sessionID":"ses_prior","part":{"id":"p1","type":"text","text":"prior resume running"}}\'',
+			'echo \'{"type":"step_finish","sessionID":"ses_prior","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+			"sleep 10",
+		].join("\n"),
+	);
+	await chmod(join(bin, "opencode"), 0o755);
+	const planPath = join(temp, "wave.json");
+	await writeFile(
+		planPath,
+		JSON.stringify({
+			id: waveId,
+			maxParallel: 3,
+			batches: batches.map((batch, index) => ({
+				batch,
+				kind: "pedals",
+				brand: "Acme",
+				total: 1,
+				worktree: worktrees[index]?.path as string,
+				branch: worktrees[index]?.branch as string,
+				prompt: "fake",
+			})),
+		}),
+	);
+	return { planPath, work, statePath: join(waveDir, "state.json"), bin };
+}
 
 async function waitFor(check: () => Promise<boolean>): Promise<void> {
 	for (let i = 0; i < 100; i++) {

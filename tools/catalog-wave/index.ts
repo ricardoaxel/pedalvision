@@ -36,7 +36,7 @@ import {
 const USAGE = `catalog-wave — launch and supervise up to 3 independent batch sessions
 
 Usage:
-  catalog-wave run --plan <wave.json> [--allow-third] [--resume]
+  catalog-wave run --plan <wave.json> [--resume]
                    [--foreground] [--dry-run] [--poll-ms <n>]
   catalog-wave status --wave <id> [--wait]
   catalog-wave report --wave <id>
@@ -44,14 +44,15 @@ Usage:
 
 Run is detached by default: it starts the wave runner in the background and
 prints the wave id, log and report paths. "status --wait" blocks until the wave
-finishes. The runner starts 2 batches up front; a third starts only with the
-explicit, logged --allow-third 3-wide start (owner override 2026-10-27). It
-never starts a queued batch later when a slot frees. --resume explicitly resumes
-the plan's existing stopped/paused batches (clears stale stop/pause markers)
-instead of recreating their state. The true billed-token metric still enforces
-the wave budgets/stops. It starts each batch through catalog-runner (state +
-supervise) and captures the session's JSONL + final text; the report is written
-to work/catalog/waves/<id>/report.md.
+finishes. Waves start 3-wide by default: min(3, maxParallel, batchCount); an
+explicit 1/2-batch plan stays 1/2. --allow-third is deprecated and has no effect.
+It never starts a queued batch later when a slot frees. --resume explicitly
+resumes the plan's existing stopped/paused batches (clears stale stop/pause
+markers) instead of recreating their state. The true billed-token metric still
+enforces the wave budgets/stops; soft over-spend is logged, the hard 2.4M cap
+refuses. It starts each batch through catalog-runner (state + supervise) and
+captures the session's JSONL + final text; the report is written to
+work/catalog/waves/<id>/report.md.
 
 The plan prompt must NOT call catalog:start/resume: the wrapper already does it.
 It must checkpoint after every item and finish with catalog:finish.
@@ -140,8 +141,10 @@ async function main(): Promise<void> {
 	if (args.command === "run") {
 		if (!args.plan) throw new Error("run requires --plan <wave.json>");
 		const resolved = readWavePlan(args.plan);
-		if (args.allowThird && resolved.plan.maxParallel !== 3) {
-			throw new Error("--allow-third requires maxParallel=3 in the wave plan");
+		if (args.allowThird) {
+			console.log(
+				"note: --allow-third is deprecated and has no effect; waves start up to 3 by default",
+			);
 		}
 		if (args.resume && !(await readWaveState(work, resolved.plan.id))) {
 			throw new Error(
@@ -156,12 +159,7 @@ async function main(): Promise<void> {
 			throw new Error(`invalid wave plan:\n- ${check.errors.join("\n- ")}`);
 		}
 		if (args.dryRun) {
-			printDryRun(
-				resolved.plan,
-				resolved.batches,
-				args.allowThird,
-				args.resume,
-			);
+			printDryRun(resolved.plan, resolved.batches, args.resume);
 			return;
 		}
 		if (!args.foreground) {
@@ -180,7 +178,6 @@ async function main(): Promise<void> {
 			resolved.batches,
 			resolved.planPath,
 			args.pollMs,
-			args.allowThird,
 			args.resume,
 		);
 		return;
@@ -208,17 +205,15 @@ async function main(): Promise<void> {
 function printDryRun(
 	plan: WavePlan,
 	batches: ResolvedBatch[],
-	allowThird: boolean,
 	resume: boolean,
 ): void {
 	const initial = initialStartCount({
 		batchCount: batches.length,
 		maxParallel: plan.maxParallel,
-		allowThird,
 	});
-	const width = initial === 3 && allowThird ? " (3-wide start, logged)" : "";
+	const width = initial === 3 ? " (3-wide start when all are started)" : "";
 	console.log(
-		`wave ${plan.id}: maxParallel=${plan.maxParallel}${width} · starts ${initial}/${batches.length} up front${resume ? " · resume" : ""}`,
+		`wave ${plan.id}: maxParallel=${plan.maxParallel}${width} · starts up to ${initial}/${batches.length} up front${resume ? " · resume (completed siblings are adopted)" : ""}`,
 	);
 	for (const [index, batch] of batches.entries()) {
 		const action = index < initial ? (resume ? "resume" : "start") : "queue";
@@ -230,7 +225,7 @@ function printDryRun(
 	}
 	if (initial < batches.length) {
 		console.log(
-			"  queued batches do not start later; rerun with --allow-third --resume (maxParallel=3) for an explicit 3-wide start/refill",
+			"  queued batches do not start later; use maxParallel=3 (the default wave width) or --resume to refill",
 		);
 	}
 	console.log("dry run: nothing started");
@@ -274,7 +269,6 @@ async function runWave(
 	batches: ResolvedBatch[],
 	planPath: string,
 	pollMs: number,
-	allowThird: boolean,
 	resume: boolean,
 ): Promise<void> {
 	const dir = waveDirPath(work, plan.id);
@@ -338,11 +332,10 @@ async function runWave(
 	const baseWidth = initialStartCount({
 		batchCount: batches.length,
 		maxParallel: plan.maxParallel,
-		allowThird,
 	});
 	const priorBilled = await priorWaveBilled(root, state);
 	const preStart = preStartBudget(baseWidth, waveBudget(priorBilled));
-	let initial = preStart.width;
+	const initial = preStart.width;
 	if (preStart.stopReason) {
 		markQueuedNotStarted(state, preStart.stopReason);
 		state.status = "stopped";
@@ -353,17 +346,17 @@ async function runWave(
 		console.log(formatWaveReport(state));
 		return;
 	}
-	if (preStart.note) {
-		state.notes.push(preStart.note);
-		initial = Math.min(initial, 1);
-	}
-	if (initial === 3 && allowThird) {
+	if (preStart.note) state.notes.push(preStart.note);
+	const willStart = state.batches
+		.filter((batch) => batch.status === "queued")
+		.slice(0, initial).length;
+	if (willStart === 3) {
 		state.notes.push(
-			"3-wide start: starting 3 batches (--allow-third; owner override 2026-10-27)",
+			"3-wide start: starting 3 batches (default; owner override 2026-10-27)",
 		);
 	} else if (baseWidth < batches.length) {
 		state.notes.push(
-			"third batch queued: pass --allow-third --resume (maxParallel=3) for an explicit 3-wide start/refill; a queued batch never starts when a slot frees",
+			"third batch queued: plan maxParallel < 3; a queued batch never starts when a slot frees (use --resume to refill)",
 		);
 	}
 	await writeStateAndReport(work, state);
@@ -515,11 +508,11 @@ async function refresh(
 		// wave cannot make progress, so record why the queue is left unstarted.
 		markQueuedNotStarted(
 			state,
-			"no active batch; queued batches need an explicit --allow-third start",
+			"no active batch; queued batches need a maxParallel=3 plan (or --resume refill)",
 		);
 	}
 	// No batch is ever started here: a freed slot must not auto-start a queued
-	// batch. The third slot is started only by the explicit `--allow-third` start.
+	// batch. Only the explicit wave start (up to 3 by default) starts batches.
 	await writeStateAndReport(work, state);
 }
 

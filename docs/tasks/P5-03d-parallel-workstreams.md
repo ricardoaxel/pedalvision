@@ -10,7 +10,7 @@ control. Rules only — no code, data or assets.
 
 ## Enablement gate
 
-- **Required:** **T-0a merged** — done (PR #53, squash `dee8b39`); it supplies the true billed token metric. **T-2c (3-wide wrapper fix) is required before any 3-wide wave.** The true-token metric is the budget/stop guard; the third-slot start gate is retired by owner decision.
+- **Required:** **T-0a merged** — done (PR #53, squash `dee8b39`); it supplies the true billed token metric. **T-2c/T-2d (wrapper fix, PR #62) is required before any 3-wide wave.** Waves start 3-wide by default (T-2d, no flag; `--allow-third` is a deprecated no-op). The true-token metric is the budget/stop guard; the third-slot start gate is retired; soft over-usage is logged, hard 2.4M refuses.
 - **Calibration:** the first **T-2** batch (BOSS boss-4) records billed tokens and
   minutes per item; check the combined-window budgets against it. The owner may
   explicitly waive the calibration gate (accepting the uncalibrated 400k/800k baseline).
@@ -20,10 +20,12 @@ control. Rules only — no code, data or assets.
 ## Workstream model
 
 - **In flight:** 1 feature + **up to 3** catalog batches.
-- **Start:** **3 catalog by default after T-2c**; with a feature PR open, 1 feature +
-  2 catalog (the third catalog waits for a slot).
-- **3-wide** is owner-approved and logged; T-2c must merge first. The true-token
-  metric remains for budgets/stops.
+- **Start:** **3 catalog by default after T-2c/T-2d (no flag)**; with a feature PR
+  open, plan `maxParallel: 2` (1 feature + 2 catalog; the third waits for a slot).
+  At **≥2.0M billed** at a checkpoint, start no new wave; active batches finish.
+- **3-wide** is the default and logged; T-2c/T-2d must merge first. The true-token
+  metric remains for budgets/stops; soft is logged without shrinking, hard 2.4M
+  refuses.
 - The feature stream never counts toward catalog width, and the catalog never blocks
   an already-started feature task (except the PR cap below).
 - **Owner-set PR cap:** **≤3 PRs awaiting owner review across workstreams**, and at
@@ -80,7 +82,10 @@ cache-inclusive JSONL floor separately.
 
 **Combined in-flight window**
 
-- Soft **≤2.2M** / hard **≤3.4M** billed non-cache (whichever cap binds first).
+- Soft **≤2.2M** / hard **≤3.4M** billed non-cache (whichever cap binds first). The
+  combined **3.4M hard** is a coordinator-side check on top of the wrapper’s fixed
+  2.4M catalog cap: with a feature active, subtract feature billed spend from 3.4M
+  to get the wave’s remaining catalog allowance.
 - Log billed tokens **by class** (feature builder / vision / code review; each catalog
   batch) at every checkpoint.
 
@@ -115,8 +120,8 @@ Before launching any catalog wave: read `catalog:status`, the latest `catalog:wa
 report/state, `docs/progress.md`, open PRs and the post-merge build. Classify batches
 as merged / in review / running / failed-stopped / queued; never redo merged, resume
 failed-stopped once, never duplicate. Select the next uncompleted batches from
-`docs/tasks/P5-03-image-completion-plan.md`; start 3-wide (after T-2c) via
-`catalog:wave`; one PR per batch; coordinator opens no PR. After every merge verify
+`docs/tasks/P5-03-image-completion-plan.md`; start 3-wide by default (after
+T-2c/T-2d) via `catalog:wave`; one PR per batch; coordinator opens no PR. After every merge verify
 the post-merge build, update progress, rebase and refill. Do not re-read raw logs.
 
 ## Workstream note (one line, in `docs/progress.md`)
@@ -153,8 +158,9 @@ Report: branch, PR, billed tokens by class, checks, blockers.
   baseline / unmerged true metric).
 - **Class-structured feature budget** (builder + review allowance + task hard cap) so a
   design loop does not trip false stops.
-- **3-wide owner override (2026-10-27):** all catalog waves start 3-wide after T-2c;
-  true-token metric remains the budget/stop guard; ≤3 PRs (max 1 feature).
+- **3-wide owner override (2026-10-27), default after T-2d:** all catalog waves start
+  3-wide with no flag (soft logged, hard 2.4M stop); true-token metric remains the
+  budget/stop guard; ≤3 PRs (max 1 feature).
 - **Coordinator narrowed to shared files only**; feature sessions stop instead of
   coordinating ad hoc.
 - **Per-class token logging** in the wave report / checkpoints.

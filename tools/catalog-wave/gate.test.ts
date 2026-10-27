@@ -8,25 +8,15 @@ import {
 } from "./gate.ts";
 
 describe("initial start width", () => {
-	it("starts 2 by default and 3 only with the explicit --allow-third", () => {
-		expect(
-			initialStartCount({ batchCount: 3, maxParallel: 3, allowThird: false }),
-		).toBe(2);
-		expect(
-			initialStartCount({ batchCount: 3, maxParallel: 3, allowThird: true }),
-		).toBe(3);
+	it("starts 3 by default for a 3-batch / maxParallel 3 plan", () => {
+		expect(initialStartCount({ batchCount: 3, maxParallel: 3 })).toBe(3);
 	});
 
-	it("never exceeds the plan width or batch count", () => {
-		expect(
-			initialStartCount({ batchCount: 3, maxParallel: 2, allowThird: true }),
-		).toBe(2);
-		expect(
-			initialStartCount({ batchCount: 1, maxParallel: 3, allowThird: true }),
-		).toBe(1);
-		expect(
-			initialStartCount({ batchCount: 3, maxParallel: 3, allowThird: false }),
-		).toBe(2);
+	it("honours explicit 1/2-batch plans and maxParallel 2", () => {
+		expect(initialStartCount({ batchCount: 2, maxParallel: 3 })).toBe(2);
+		expect(initialStartCount({ batchCount: 1, maxParallel: 3 })).toBe(1);
+		expect(initialStartCount({ batchCount: 3, maxParallel: 2 })).toBe(2);
+		expect(initialStartCount({ batchCount: 2, maxParallel: 2 })).toBe(2);
 	});
 });
 
@@ -87,11 +77,15 @@ describe("true token resolution + wave budget", () => {
 		expect(waveBudget(2_400_000).hardExceeded).toBe(true);
 	});
 
-	it("guards an already-over-budget resume before launching", () => {
+	it("logs over-soft without shrinking, and refuses at hard", () => {
 		expect(preStartBudget(3, waveBudget(0))).toEqual({ width: 3 });
 		expect(preStartBudget(3, waveBudget(1_600_000))).toEqual({
-			width: 1,
-			note: "wave soft budget already reached (1600000 billed tokens); starting 1-wide",
+			width: 3,
+			note: "wave soft budget already reached (1600000 billed tokens); starting at the planned width (owner accepts over-soft)",
+		});
+		expect(preStartBudget(2, waveBudget(1_700_000))).toEqual({
+			width: 2,
+			note: "wave soft budget already reached (1700000 billed tokens); starting at the planned width (owner accepts over-soft)",
 		});
 		expect(preStartBudget(3, waveBudget(2_400_000))).toEqual({
 			width: 0,

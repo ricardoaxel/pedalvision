@@ -9,9 +9,10 @@
 ## 1. Operating rules
 
 - **Catalog lane:** 3 batches in flight by default, via `catalog:wave` only.
-  **T-2c** (wrapper true-token bypass/start/resume fix) must merge before T-3.
-  The true billed-token metric remains for budgets/stops; the third-slot **start**
-  gate is retired by owner decision. Every wave has a logged 3-wide start.
+  **T-2c/T-2d** (wrapper safety fix + 3-wide default, PR #62) must merge before
+  T-3. The true billed-token metric remains for budgets/stops; the third-slot
+  **start** gate is retired by owner decision. Every wave has a logged 3-wide
+  start (no flag); soft is logged, hard 2.4M stops.
 - **Feature lane:** one feature at a time, after #59; separate worktree; feature
   code/e2e/task/screenshots only. Never edit catalog data/assets/runtime/tools or
   shared docs/config/deps.

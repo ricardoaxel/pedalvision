@@ -82,7 +82,7 @@ export function batchLogPath(waveDir: string, batchId: string): string {
 	return join(waveDir, `${batchId.replace("/", "__")}.jsonl`);
 }
 
-/** Detached-child argv; the explicit 3-wide/resume flags must survive re-exec. */
+/** Detached-child argv; the deprecated 3-wide flag + resume must survive re-exec. */
 export function detachArgs(
 	self: string,
 	planPath: string,

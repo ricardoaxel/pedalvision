@@ -50,6 +50,14 @@ describe("wave plan schema", () => {
 		expect(plan.maxParallel).toBe(3);
 	});
 
+	it("defaults maxParallel to 3 when omitted", () => {
+		const plan = WavePlanSchema.parse({
+			id: "wave-1",
+			batches: [batch(), batch({ batch: "acme/test-2", branch: "p5-test-2" })],
+		});
+		expect(plan.maxParallel).toBe(3);
+	});
+
 	it("rejects >3, duplicate ids/branches and both prompt fields", () => {
 		expect(() =>
 			WavePlanSchema.parse({

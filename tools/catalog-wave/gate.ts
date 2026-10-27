@@ -51,20 +51,15 @@ export function resolveBatchTokens(
 }
 
 /**
- * How many batches a wave starts up front. The third slot is **explicit**:
- * `--allow-third` is required to start 3-wide, and a wave never starts a batch
- * later when a slot frees. Max 3 in flight.
+ * How many batches a wave starts up front: min(3, maxParallel, batchCount).
+ * Waves are 3-wide by default (T-2d, owner override 2026-10-27); explicit 1/2
+ * batch plans stay 1/2. A wave never starts a batch later when a slot frees.
  */
 export function initialStartCount(input: {
 	batchCount: number;
 	maxParallel: number;
-	allowThird: boolean;
 }): number {
-	const width = Math.min(Math.max(1, input.maxParallel), 3);
-	if (width >= 3 && !input.allowThird) {
-		return Math.min(2, input.batchCount);
-	}
-	return Math.min(width, input.batchCount);
+	return Math.min(Math.max(1, input.maxParallel), 3, input.batchCount);
 }
 
 /**
@@ -91,7 +86,8 @@ export function waveBudget(tokens: number): WaveBudget {
 
 /**
  * Pre-start budget guard (resume waves can already be over budget from the
- * previous session): refuse at the hard cap, degrade to 1-wide at the soft cap.
+ * previous session): refuse at the hard cap. Soft is **logged but does not
+ * reduce the width** — the owner accepts 3-wide over-soft risk.
  */
 export function preStartBudget(
 	baseWidth: number,
@@ -105,8 +101,8 @@ export function preStartBudget(
 	}
 	if (budget.softExceeded) {
 		return {
-			width: Math.min(1, baseWidth),
-			note: `wave soft budget already reached (${budget.tokens} billed tokens); starting 1-wide`,
+			width: baseWidth,
+			note: `wave soft budget already reached (${budget.tokens} billed tokens); starting at the planned width (owner accepts over-soft)`,
 		};
 	}
 	return { width: baseWidth };

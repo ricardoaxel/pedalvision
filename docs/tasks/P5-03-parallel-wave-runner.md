@@ -2,11 +2,11 @@
 
 **Phase:** P5 · **Status:** in review — PR #47 · **Model:** build-strong
 
-> **Superseded in part by T-2c (2026-10-27).** The 2-wide + `canStartNext` third
-> slot below is retired. Waves start 2 up front; a 3-wide start requires the
-> explicit, logged `--allow-third` (`maxParallel: 3`), and a queued batch never
-> starts when a slot frees. See `docs/tasks/T-2c-wrapper-3-wide.md` and
-> `tools/catalog-wave/README.md`.
+> **Superseded in part by T-2c/T-2d (2026-10-27).** The 2-wide + `canStartNext`
+> third slot below is retired. Waves start 3-wide by default (T-2d, no flag);
+> `--allow-third` is a deprecated no-op, and a queued batch never starts when a
+> slot frees. See `docs/tasks/T-2c-wrapper-3-wide.md`,
+> `docs/tasks/T-2d-default-3-wide.md` and `tools/catalog-wave/README.md`.
 
 ## Goal
 
@@ -29,7 +29,7 @@ cannot report into a finished session.
   - validates max 3, unique ids/branches, worktree + branch, no active batch,
   - `run` (detached by default) starts `catalog:start` + `opencode run --auto
     --format json` under `catalog-runner supervise`; JSONL per batch,
-  - starts **2-wide**; the third only when `canStartNext` passes (midpoint,
+  - **Historical (pre-T-2c):** starts **2-wide**; the third only when `canStartNext` passes (midpoint,
     ≤40% soft budget, ≥2 items/h); max 3 enforced by the runner,
   - `status --wait` / `report`; one-line-per-batch `report.md` + `state.json`
     with items/images/checkpoint tokens/main-session token floor/minutes/PR/CI

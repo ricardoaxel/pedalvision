@@ -6,9 +6,8 @@ import { tryReadState } from "../catalog-runner/state.ts";
 
 /**
  * Wave plan (P5 parallel mechanism). A plan names 1–3 independent batches that
- * each run in their own worktree/branch/session. The wrapper starts up front and
- * never starts a batch later when a slot frees; a third batch needs the explicit
- * `--allow-third` 3-wide start.
+ * each run in their own worktree/branch/session. The wrapper starts up front
+ * (3-wide by default, no flag) and never starts a batch later when a slot frees.
  *
  * Every batch prompt is supplied by the plan author (normally the coordinator);
  * the wrapper prepends the "already started" contract so the session does not
@@ -33,7 +32,7 @@ export const WaveBatchSchema = z
 export const WavePlanSchema = z
 	.object({
 		id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
-		maxParallel: z.union([z.literal(2), z.literal(3)]).default(2),
+		maxParallel: z.union([z.literal(2), z.literal(3)]).default(3),
 		batches: z.array(WaveBatchSchema).min(1).max(3),
 	})
 	.superRefine((plan, ctx) => {
