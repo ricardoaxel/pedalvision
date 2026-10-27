@@ -35,6 +35,10 @@ Read only the pointed sections; do not read whole docs.
 - **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review allowance
   ≤300k; task hard cap ≤1.1M; 6 h active.
 - If the task needs catalog data or a shared file, split it out — do not widen scope.
+- **Performance guardrail:** record bundle delta, picker/canvas frame time, memory and
+  share/export size; run the relevant benchmark; no regression beyond thresholds.
+- **Docs update:** update the public feature catalog/tutorial and the F-19 QA impact map.
+- **No total-count E2E assertions:** filter a stable item/brand.
 
 ## Steps
 
@@ -44,13 +48,17 @@ Read only the pointed sections; do not read whole docs.
 4. Add/keep tests; run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
 5. Run the touched E2E flow on desktop + mobile when the UI changed.
 6. Rebase onto the verified post-merge `main`; re-run the affected checks.
-7. Open exactly one PR with the seven standard sections; do not merge.
+7. Open exactly one PR with the standard sections, including the **feature demo link**; do not merge.
 
 ## Acceptance (executable)
 
 - <Task-specific criteria; one line each, verifiable by a command or a screenshot.>
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build` green.
 - Touched E2E flows green (desktop + mobile for UI changes).
+- **Feature demo link** opens the final PR preview with the feature applied
+  (`?share=1#s=…` where representable; video/steps otherwise), desktop + mobile.
+- Performance numbers recorded; no regression beyond thresholds; docs/feature
+  catalog updated.
 - No edits to `data/catalog/**`, `public/pedal-assets/**`, `src/catalog/**`,
   `tools/catalog-*` or other shared/coordinator-only files.
 - One PR; no merge.
@@ -60,5 +68,6 @@ Read only the pointed sections; do not read whole docs.
 - **Process/rule gaps:** propose the change + the `token-usage-reviewer` to the owner
   first; do not edit the rules in this PR.
 - Record billed tokens **by class** (builder / vision / code review) in the PR/session
-  summary.
+  summary. Demo links are required; screenshots alone are not enough for interaction
+  features.
 - This template is feature-only; catalog batches use `docs/tasks/P5-batch-template.md`.

@@ -10,7 +10,7 @@ control. Rules only — no code, data or assets.
 
 ## Enablement gate
 
-- **Required:** **T-0a merged** — done (PR #53, squash `dee8b39`); it supplies the true billed token metric. Without it the budgets and the third-slot gate are unenforceable.
+- **Required:** **T-0a merged** — done (PR #53, squash `dee8b39`); it supplies the true billed token metric. **T-2c (3-wide wrapper fix) is required before any 3-wide wave.** The true-token metric is the budget/stop guard; the third-slot start gate is retired by owner decision.
 - **Calibration:** the first **T-2** batch (BOSS boss-4) records billed tokens and
   minutes per item; check the combined-window budgets against it. The owner may
   explicitly waive the calibration gate (accepting the uncalibrated 400k/800k baseline).
@@ -20,18 +20,15 @@ control. Rules only — no code, data or assets.
 ## Workstream model
 
 - **In flight:** 1 feature + **up to 3** catalog batches.
-- **Start:** 1 feature + 2 catalog.
-- **Third catalog slot** only when **all** are true:
-  1. the existing `catalog:wave` true-token third-slot gate passes (first batch past
-     midpoint, ≤40% of the soft budget, ≥2 items/h);
-  2. **≤2 PRs are awaiting owner review across workstreams** (owner-set cap);
-  3. the catalog wave has not exceeded its soft budget.
-- The feature stream never counts toward the catalog 2/3-wide gate, and the catalog
-  never blocks an already-started feature task (except the PR cap below).
-- **Owner-set PR cap:** **≤2 PRs awaiting owner review across workstreams**, and at
-  most **1** of those may be a feature PR. At the cap, start nothing new (no new
-  feature task, no new catalog wave). A PR counts as "awaiting review" from push
-  until merge.
+- **Start:** **3 catalog by default after T-2c**; with a feature PR open, 1 feature +
+  2 catalog (the third catalog waits for a slot).
+- **3-wide** is owner-approved and logged; T-2c must merge first. The true-token
+  metric remains for budgets/stops.
+- The feature stream never counts toward catalog width, and the catalog never blocks
+  an already-started feature task (except the PR cap below).
+- **Owner-set PR cap:** **≤3 PRs awaiting owner review across workstreams**, and at
+  most **1** of those may be a feature PR. At the cap, start nothing new. A PR counts
+  as "awaiting review" from push until merge.
 - **Default remains serial.** Use the feature slot only for a task with a frozen /
   approved direction and zero catalog overlap. When in doubt, run it after the wave.
 
@@ -69,7 +66,8 @@ cache-inclusive JSONL floor separately.
 
 **Catalog — unchanged**
 
-- Per batch: soft ≤400k / hard ≤800k; wave soft ≤1.2M / hard ≤2.4M.
+- Per batch: soft ≤400k / hard ≤800k; wave **soft 1.6M / hard 2.4M**; 3-wide
+  owner override, log over-soft.
 - ≤2 vision passes, ≤1 light code review, 4 h active, 12 min/item.
 
 **Feature — new**
@@ -82,7 +80,7 @@ cache-inclusive JSONL floor separately.
 
 **Combined in-flight window**
 
-- Soft **≤1.6M** / hard **≤3.2M** billed non-cache (whichever cap binds first).
+- Soft **≤2.2M** / hard **≤3.4M** billed non-cache (whichever cap binds first).
 - Log billed tokens **by class** (feature builder / vision / code review; each catalog
   batch) at every checkpoint.
 
@@ -106,10 +104,20 @@ cache-inclusive JSONL floor separately.
   --wave <id>` for the wave.
 - **One `docs/progress.md` workstream note per checkpoint** (format below).
 - **Stop immediately and report** on: a feature task needing a shared/generated file;
-  2 PRs awaiting review (start nothing new); post-merge build unverified or a
+  3 PRs awaiting review (start nothing new); post-merge build unverified or a
   generated-file conflict; the combined hard cap or any class hard cap; a feature task
   >6 h or >2× class soft; any model/provider failure (429/401/quota/timeout/empty) —
   report model + operation + exact error, never substitute.
+
+## Next-wave protocol
+
+Before launching any catalog wave: read `catalog:status`, the latest `catalog:wave`
+report/state, `docs/progress.md`, open PRs and the post-merge build. Classify batches
+as merged / in review / running / failed-stopped / queued; never redo merged, resume
+failed-stopped once, never duplicate. Select the next uncompleted batches from
+`docs/tasks/P5-03-image-completion-plan.md`; start 3-wide (after T-2c) via
+`catalog:wave`; one PR per batch; coordinator opens no PR. After every merge verify
+the post-merge build, update progress, rebase and refill. Do not re-read raw logs.
 
 ## Workstream note (one line, in `docs/progress.md`)
 
@@ -145,14 +153,13 @@ Report: branch, PR, billed tokens by class, checks, blockers.
   baseline / unmerged true metric).
 - **Class-structured feature budget** (builder + review allowance + task hard cap) so a
   design loop does not trip false stops.
-- **Third catalog slot behind both the true-token gate and the PR cap** (owner allows
-  up to 3 catalog batches).
+- **3-wide owner override (2026-10-27):** all catalog waves start 3-wide after T-2c;
+  true-token metric remains the budget/stop guard; ≤3 PRs (max 1 feature).
 - **Coordinator narrowed to shared files only**; feature sessions stop instead of
   coordinating ad hoc.
 - **Per-class token logging** in the wave report / checkpoints.
 - Not adopted (owner-set, recorded for transparency): flat 1 feature + 2 catalog
-  (owner allows up to 3 on the gate); class-split PR caps of 2 catalog + 1 feature
-  (owner keeps ≤2 across, which is stricter).
+  (owner override 2026-10-27: 3-wide, ≤3 PRs, max 1 feature).
 
 ## Acceptance
 
