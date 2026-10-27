@@ -450,8 +450,8 @@ public/pedal-assets/**                              # final assets
   `src/catalog/data/pedals.json`.
 - Feature agents write `src/**` / `e2e/**` only. No shared-file conflicts.
 - **Agents write raw records only.** A batch PR contains **raw records + assets only**; CI runs `catalog:build` into a temp dir for validation **and** generates an **uncommitted** runtime into the app workspace before `pnpm build`/Playwright, so the PR's new items are actually testable. A **post-merge build** deterministically commits raw → `data/catalog/{pedals,boards}/...` (mapped) → `src/catalog/data/{pedals,boards}.json` (runtime). No agent edits the mapped/runtime files. A post-merge drift check catches stale generated files.
-- **3 batches in flight by default** after **T-2c** (wrapper 3-wide fix); one brand batch = one branch/worktree = one PR. Before a parallel wave, run the `token-usage-reviewer` on the wave plan and record its per-batch token/time budget, model routing, reviewer-pass caps and global stop; fold valid findings. **Default budgets:** per batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave **soft 1.6M / hard 2.4M** tokens; combined feature window **soft 2.2M / hard 3.4M**. Abort/report at 2× a batch budget or the wave hard cap. The third-slot start gate is retired by owner decision; the true-token metric remains the budget/stop guard.
-- Batch size 24–28 pedals after the BOSS calibration; BOSS (209) splits into **7–9 batches in 3 waves**; after T-2c, 3-wide. Boards: 10–25
+- **3 batches in flight by default** after **T-2c/T-2d** (wrapper 3-wide default); one brand batch = one branch/worktree = one PR. Before a parallel wave, run the `token-usage-reviewer` on the wave plan and record its per-batch token/time budget, model routing, reviewer-pass caps and global stop; fold valid findings. **Default budgets:** per batch soft ≤400k / hard ≤800k tokens, ≤2 vision passes, ≤1 light code-review pass, 4 h active; wave **soft 1.6M / hard 2.4M** tokens; combined feature window **soft 2.2M / hard 3.4M**. Abort/report at 2× a batch budget or the wave hard cap. The third-slot start gate is retired by owner decision; the true-token metric remains the budget/stop guard, soft over-usage is logged, hard 2.4M stops.
+- Batch size 24–28 pedals after the BOSS calibration; BOSS (209) splits into **7–9 batches in 3 waves**; after T-2c/T-2d, 3-wide by default. Boards: 10–25
   models per batch (families/sizes); the final Tier A partial batch may be
   smaller (even 1 board). A board brand batch runs alongside pedal batches in the
   same 3-slot queue.
@@ -487,21 +487,23 @@ The coordinator launches a wave with a plan file (1–3 batches; normal max is 3
 ```
 
 ```bash
-pnpm catalog:wave run --plan work/catalog/waves/boss-wave-2.json   # detached
-pnpm catalog:wave status --wave boss-wave-2 --wait                 # blocks until done
-pnpm catalog:wave report --wave boss-wave-2
+pnpm catalog:wave run --plan work/catalog/waves/boss-wave-4.json   # 3-wide by default
+pnpm catalog:wave status --wave boss-wave-4 --wait                                # blocks until done
+pnpm catalog:wave report --wave boss-wave-4
+pnpm catalog:wave run --plan <resume-plan>.json --resume                          # explicit resume
 ```
 
-- The wrapper **starts the batch state** (`catalog:start`) and then runs `opencode run --auto --format json` under `catalog-runner supervise`, so the session must **not** call `catalog:start`; the plan prompt must say so.
-- **After T-2c it starts 3 batches explicitly and logs the start.** The true-token metric remains the budget/stop guard; do not silently auto-start a third batch when a slot frees. Max 3 in flight.
-- Each batch's JSONL, log and the wave `report.md`/`state.json` live in `work/catalog/waves/<id>/`. The report has one line per batch (items/images/checkpoint tokens/main-session token floor/minutes/PR/CI) plus the session's final text.
+- The wrapper **starts the batch state** (`catalog:start`, or an explicit `--resume`) and then runs `opencode run --auto --format json` under `catalog-runner supervise`, so the session must **not** call `catalog:start`/`catalog:resume`; the plan prompt must say so.
+- **Waves start 3-wide by default** (`min(3, maxParallel, batchCount)`) and log the start; explicit 1/2-batch plans stay 1/2. `--allow-third` is a deprecated no-op. The wrapper **never** starts a queued batch when a slot frees. The true-token metric remains the budget/stop guard; soft over-usage is logged, hard 2.4M refuses. Max 3 in flight.
+- **Resume is explicit.** `--resume` reuses the **original wave id** (its state/JSONL are the true-token source), clears stale `.stop`/`.pause` markers, keeps the batch's `done`/`tokens`/`startedAt`, adopts completed siblings, and starts plan batches that have no state (refill). It refuses a live-pid/finalizing batch. A fresh start refuses existing state instead of silently recreating it.
+- Each batch's JSONL, log and the wave `report.md`/`state.json` live in `work/catalog/waves/<id>/`. The report has one line per batch (items/images/billed non-cache tokens/cache-inclusive floor/minutes/PR/CI) plus the session's final text.
 - The wrapper never merges and never opens PRs; each session owns its branch/worktree and exactly one PR. On pause/stop/cap it stops launching and reports; the supervised session honours the stop.
 
 **Next-wave coordinator protocol:** before a wave, read `catalog:status`, the latest
 `catalog:wave` report/state, `docs/progress.md`, open PRs and the post-merge build.
 Classify batches (merged / in review / running / failed-stopped / queued); never
 redo merged, resume failed-stopped once, never duplicate. Pick the next uncompleted
-batches; start 3-wide after T-2c; one PR/batch; coordinator no PR. After every merge
+batches; start 3-wide by default after T-2c/T-2d; one PR/batch; coordinator no PR. After every merge
 verify the post-merge build, update progress, rebase and refill. No raw-log reads.
 - `opencode run --format json` is an external contract: the aggregator ignores unknown events, marks a run without `step_finish` as `partial`, and surfaces error events; a parse failure is never reported as success.
 
@@ -518,7 +520,7 @@ verify the post-merge build, update progress, rebase and refill. No raw-log read
    pedal pilot, not at the end.
 5. **Small parallel test:** Meris + Red Panda + one board batch (Pedaltrain) —
    one PR each, 3 in flight.
-6. **Big-brand split test:** BOSS 209 → **7–9 batches of 24–28**, run **3-wide** across **3 waves** after T-2c; verify build/merge and the 4 h/batch cap. The first batch is the token/time calibration; parent session coordinates (no coordinator agent for 3 batches).
+6. **Big-brand split test:** BOSS 209 → **7–9 batches of 24–28**, run **3-wide** across **3 waves** after T-2c/T-2d; verify build/merge and the 4 h/batch cap. The first batch is the token/time calibration; parent session coordinates (no coordinator agent for 3 batches).
 7. **Scale:** 3 batches in flight continuously, mixing pedals and boards;
    refill as each finishes. First 2,000 catalog items include 150 boards.
 8. **At the Tier A target:** stop and run P5-04. Only if the owner chooses to exceed Tier A: the 2,000 hosted-pedal cap applies, then run P5-05 before scaling.

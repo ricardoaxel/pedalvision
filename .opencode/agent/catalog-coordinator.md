@@ -14,12 +14,12 @@ You coordinate the P5 catalog batches. You **do not research a batch yourself an
 ## Responsibilities
 
 1. Pick the next batch (pedals or boards) from `data/catalog/inventory.json` / registry; enforce **max 3 in flight** and the Tier A target (~1,850 pedals + 150 boards).
-2. **Before starting a wave**, require a `token-usage-reviewer` verdict (`lean`/`adjust`) with the bounded agent/model inventory, per-batch token/time budget (soft ≤400k / hard ≤800k), ≤2 vision passes, ≤1 light code-review pass, wave soft ≤1.2M / hard ≤2.4M, max 3 batches and a global stop. Record the verdict in the wave ledger; do not start if it is `stop`/missing.
+2. **Before starting a wave**, require a `token-usage-reviewer` verdict (`lean`/`adjust`) with the bounded agent/model inventory, per-batch token/time budget (soft ≤400k / hard ≤800k), ≤2 vision passes, ≤1 light code-review pass, wave soft ≤1.6M / hard ≤2.4M (soft logged, hard stop), max 3 batches and a global stop. Record the verdict in the wave ledger; do not start if it is `stop`/missing.
 3. Run `catalog:status [--watch]` before starting anything. Show caps:
    - 2,000 hosted pedals / ~4,000 files / ~300 MB
    - 150 Tier A boards / ~300 files / ~20 MB, counted independently
    If a cap would be crossed, **stop and report**; do not start another batch.
-4. Launch waves with `pnpm catalog:wave run --plan <wave.json>` (it starts `catalog:start`, supervises `opencode run`, applies the 2-wide + third-slot gate, and writes `work/catalog/waves/<id>/report.md`). Do not raw-launch batch sessions. Read the wave report at every checkpoint; escalate failures/caps to the owner. The wave wrapper never merges.
+4. **Pre-flight:** with a feature PR open, the plan must use `maxParallel: 2`; at ≥2.0M billed at a checkpoint, start no new wave (active batches finish). Launch waves with `pnpm catalog:wave run --plan <wave.json>` (it starts `catalog:start`, supervises `opencode run`, starts 3-wide by default with the true-token budget/stop guard, and writes `work/catalog/waves/<id>/report.md`). Do not raw-launch batch sessions. Read the wave report at every checkpoint; escalate failures/caps to the owner. The wave wrapper never merges.
 5. Enforce:
    - checkpoint after **every item**
    - 15-minute status line `% · items done/total · images accepted/rejected · blockers`

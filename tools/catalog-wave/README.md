@@ -14,9 +14,9 @@ wraps that missing glue, while `catalog-runner` remains the single control plane
 
 ```bash
 # 1. Write a plan (1–3 batches; prompt xor promptFile)
-cat > work/catalog/waves/boss-wave-2.json <<'JSON'
+cat > work/catalog/waves/boss-wave-4.json <<'JSON'
 {
-  "id": "boss-wave-2",
+  "id": "boss-wave-4",
   "maxParallel": 3,
   "batches": [
     {
@@ -32,31 +32,41 @@ cat > work/catalog/waves/boss-wave-2.json <<'JSON'
 }
 JSON
 
-pnpm catalog:wave run --plan work/catalog/waves/boss-wave-2.json   # detached
-pnpm catalog:wave status --wave boss-wave-2 --wait
-pnpm catalog:wave report --wave boss-wave-2
+pnpm catalog:wave run --plan work/catalog/waves/boss-wave-4.json   # 3-wide by default
+pnpm catalog:wave status --wave boss-wave-4 --wait
+pnpm catalog:wave report --wave boss-wave-4
 ```
 
 `--foreground` keeps the runner attached (useful in tests/CI); `--dry-run`
-validates the plan and prints what would launch.
+validates the plan and prints what would launch. **Omitting `maxParallel` means 3**
+(the schema default); set `maxParallel: 2` only for an intentional 2-wide wave.
 
 ## Contract
 
-- The wrapper runs `catalog:start` for each batch, so the **prompt must not call
-  `catalog:start`**. The prompt must checkpoint inline after every item and
-  finish with `catalog:finish`.
-- Starts **2** batches. A third starts only when the first is past midpoint, has
-  used ≤40% of the 400k **billed** soft budget and is sustaining ≥2 items/h
-  (`canStartNext`). The gate and the 1.2M/2.4M wave budgets use the true
-  **billed non-cache** metric (`input + output + reasoning` from each session's
-  JSONL), never the self-reported runner `.tokens`. Max 3 in flight, enforced by
-  `catalog-runner`.
+- The wrapper runs `catalog:start` (or an explicit resume) for each batch, so the
+  **prompt must not call `catalog:start`/`catalog:resume`**. The prompt must
+  checkpoint inline after every item and finish with `catalog:finish`.
+- Starts **min(3, maxParallel, batchCount)** batches up front — 3-wide by
+  default (T-2d, owner override 2026-10-27); an explicit 1/2-batch plan stays
+  1/2. `--allow-third` is **deprecated and has no effect** (accepted for
+  compatibility). The wrapper **never** starts a queued batch when a slot frees.
+  Max 3 in flight, enforced by `catalog-runner`.
+- `--resume` explicitly resumes stopped/paused batches and starts plan batches
+  with no state (partial-wave refill). It clears stale `.stop`/`.pause` markers
+  and keeps `done`/`tokens`/`startedAt`; completed siblings are adopted and
+  `cap-reached` ones are skipped. Resume **requires the original wave id** (its
+  `work/catalog/waves/<id>/state.json` + JSONL are the true-token source) and
+  refuses a still-supervised/finalizing batch. Without `--resume`, a fresh start
+  refuses existing state instead of silently recreating it.
+- The 1.6M/2.4M wave budgets use the true **billed non-cache** metric
+  (`input + output + reasoning` from each session's JSONL), never the
+  self-reported runner `.tokens`.
 - On every refresh the runner recomputes each active batch from its JSONL. A step
   without billed fields uses its total as an upper bound; the checkpoint ledger
-  is used only when the JSONL carries no token numbers at all. At the wave
-  **hard** cap the runner requests stop for every active batch and
-  marks queued batches `not-started`; at the soft cap it stops launching, without
-  killing healthy active batches.
+  is used only when the JSONL carries no token numbers at all. The **soft** cap
+  is logged and does not shrink the wave (owner accepts over-soft); at the
+  **hard** cap the runner requests stop for every active batch and marks queued
+  batches `not-started`.
 - Each session runs as
   `opencode run --auto --format json` under
   `catalog-runner supervise --batch <id> -- …`, so pause/stop and SIGTERM/SIGKILL
@@ -76,7 +86,7 @@ validates the plan and prints what would launch.
 `opencode` `step_finish` events carry `tokens.{input,output,reasoning,cache.read,cache.write,total}`.
 
 - **Billed non-cache** = `input + output + reasoning`. This is the value the
-  per-batch (400k/800k) and wave (1.2M/2.4M) budgets use.
+  per-batch (400k/800k) and wave (1.6M/2.4M) budgets use.
 - **Cache-inclusive floor** = `total` (summed over steps), reported separately as
   context, never gated.
 - If a step omits `total`, the floor is derived by summing the recognised fields.

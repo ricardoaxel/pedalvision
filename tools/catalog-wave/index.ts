@@ -9,12 +9,12 @@ import { repoRoot } from "../catalog-runner/repo.ts";
 import { type BatchState, tryReadState } from "../catalog-runner/state.ts";
 import { summarizeJsonl } from "./aggregate.ts";
 import {
-	canStartNext,
+	initialStartCount,
+	preStartBudget,
 	resolveBatchTokens,
-	startDecision,
 	waveBudget,
 } from "./gate.ts";
-import { batchLogPath, launchBatch } from "./launch.ts";
+import { batchLogPath, detachArgs, launchBatch } from "./launch.ts";
 import { acquireWaveLock, assertNoLiveWave, releaseWaveLock } from "./lock.ts";
 import {
 	type ResolvedBatch,
@@ -36,20 +36,26 @@ import {
 const USAGE = `catalog-wave — launch and supervise up to 3 independent batch sessions
 
 Usage:
-  catalog-wave run --plan <wave.json> [--foreground] [--dry-run] [--poll-ms <n>]
+  catalog-wave run --plan <wave.json> [--resume]
+                   [--foreground] [--dry-run] [--poll-ms <n>]
   catalog-wave status --wave <id> [--wait]
   catalog-wave report --wave <id>
   --help
 
 Run is detached by default: it starts the wave runner in the background and
 prints the wave id, log and report paths. "status --wait" blocks until the wave
-finishes. The runner starts 2 batches, and a third only when the owner gate
-passes (midpoint, ≤40% soft budget, ≥2 items/h). It starts each batch through
-catalog-runner (state + supervise) and captures the session's JSONL + final
-text; the report is written to work/catalog/waves/<id>/report.md.
+finishes. Waves start 3-wide by default: min(3, maxParallel, batchCount); an
+explicit 1/2-batch plan stays 1/2. --allow-third is deprecated and has no effect.
+It never starts a queued batch later when a slot frees. --resume explicitly
+resumes the plan's existing stopped/paused batches (clears stale stop/pause
+markers) instead of recreating their state. The true billed-token metric still
+enforces the wave budgets/stops; soft over-spend is logged, the hard 2.4M cap
+refuses. It starts each batch through catalog-runner (state + supervise) and
+captures the session's JSONL + final text; the report is written to
+work/catalog/waves/<id>/report.md.
 
-The plan prompt must NOT call catalog:start: the wrapper already starts the
-batch. It must checkpoint after every item and finish with catalog:finish.
+The plan prompt must NOT call catalog:start/resume: the wrapper already does it.
+It must checkpoint after every item and finish with catalog:finish.
 `;
 
 type Args = {
@@ -59,6 +65,8 @@ type Args = {
 	foreground: boolean;
 	dryRun: boolean;
 	wait: boolean;
+	allowThird: boolean;
+	resume: boolean;
 	pollMs: number;
 };
 
@@ -68,6 +76,8 @@ function parseArgs(argv: string[]): Args {
 		foreground: false,
 		dryRun: false,
 		wait: false,
+		allowThird: false,
+		resume: false,
 		pollMs: Number(process.env.CATALOG_WAVE_POLL_MS ?? 5000),
 	};
 	for (let i = 1; i < argv.length; i++) {
@@ -86,6 +96,12 @@ function parseArgs(argv: string[]): Args {
 				break;
 			case "--wait":
 				args.wait = true;
+				break;
+			case "--allow-third":
+				args.allowThird = true;
+				break;
+			case "--resume":
+				args.resume = true;
 				break;
 			case "--poll-ms": {
 				const value = Number(argv[++i]);
@@ -125,16 +141,34 @@ async function main(): Promise<void> {
 	if (args.command === "run") {
 		if (!args.plan) throw new Error("run requires --plan <wave.json>");
 		const resolved = readWavePlan(args.plan);
-		const check = await validatePlan(resolved.batches, root);
+		if (args.allowThird) {
+			console.log(
+				"note: --allow-third is deprecated and has no effect; waves start up to 3 by default",
+			);
+		}
+		if (args.resume && !(await readWaveState(work, resolved.plan.id))) {
+			throw new Error(
+				`--resume requires the existing wave state at work/catalog/waves/${resolved.plan.id}/state.json; reuse the original wave id so the prior JSONL continues`,
+			);
+		}
+		const check = await validatePlan(resolved.batches, root, {
+			resume: args.resume,
+			alive: isAlive,
+		});
 		if (!check.ok) {
 			throw new Error(`invalid wave plan:\n- ${check.errors.join("\n- ")}`);
 		}
 		if (args.dryRun) {
-			printDryRun(resolved.plan, resolved.batches);
+			printDryRun(resolved.plan, resolved.batches, args.resume);
 			return;
 		}
 		if (!args.foreground) {
-			await detach(resolved.plan, resolved.planPath);
+			await detach(
+				resolved.plan,
+				resolved.planPath,
+				args.allowThird,
+				args.resume,
+			);
 			return;
 		}
 		await runWave(
@@ -144,6 +178,7 @@ async function main(): Promise<void> {
 			resolved.batches,
 			resolved.planPath,
 			args.pollMs,
+			args.resume,
 		);
 		return;
 	}
@@ -167,19 +202,41 @@ async function main(): Promise<void> {
 	throw new Error(`unknown command "${args.command}"`);
 }
 
-function printDryRun(plan: WavePlan, batches: ResolvedBatch[]): void {
-	console.log(`wave ${plan.id}: maxParallel=${plan.maxParallel}`);
-	for (const batch of batches) {
+function printDryRun(
+	plan: WavePlan,
+	batches: ResolvedBatch[],
+	resume: boolean,
+): void {
+	const initial = initialStartCount({
+		batchCount: batches.length,
+		maxParallel: plan.maxParallel,
+	});
+	const width = initial === 3 ? " (3-wide start when all are started)" : "";
+	console.log(
+		`wave ${plan.id}: maxParallel=${plan.maxParallel}${width} · starts up to ${initial}/${batches.length} up front${resume ? " · resume (completed siblings are adopted)" : ""}`,
+	);
+	for (const [index, batch] of batches.entries()) {
+		const action = index < initial ? (resume ? "resume" : "start") : "queue";
 		console.log(
-			`  ${batch.batch}: start state + opencode run --auto --format json --dir ${resolve(
+			`  ${batch.batch}: ${action} state + opencode run --auto --format json --dir ${resolve(
 				batch.worktree,
 			)} (branch ${batch.branch}, ${batch.total} items)`,
+		);
+	}
+	if (initial < batches.length) {
+		console.log(
+			"  queued batches do not start later; use maxParallel=3 (the default wave width) or --resume to refill",
 		);
 	}
 	console.log("dry run: nothing started");
 }
 
-async function detach(plan: WavePlan, planPath: string): Promise<void> {
+async function detach(
+	plan: WavePlan,
+	planPath: string,
+	allowThird: boolean,
+	resume: boolean,
+): Promise<void> {
 	const work = workRoot(mainRoot());
 	await assertNoLiveWave(work, plan.id, isAlive);
 	const dir = waveDirPath(work, plan.id);
@@ -189,14 +246,7 @@ async function detach(plan: WavePlan, planPath: string): Promise<void> {
 	const self = fileURLToPath(import.meta.url);
 	const child = spawn(
 		process.execPath,
-		[
-			"--experimental-strip-types",
-			self,
-			"run",
-			"--plan",
-			planPath,
-			"--foreground",
-		],
+		detachArgs(self, planPath, allowThird, resume),
 		{
 			cwd: process.cwd(),
 			detached: true,
@@ -219,6 +269,7 @@ async function runWave(
 	batches: ResolvedBatch[],
 	planPath: string,
 	pollMs: number,
+	resume: boolean,
 ): Promise<void> {
 	const dir = waveDirPath(work, plan.id);
 	await mkdir(dir, { recursive: true });
@@ -255,15 +306,74 @@ async function runWave(
 	process.on("SIGINT", onSignal);
 	process.on("SIGTERM", onSignal);
 
+	if (resume) {
+		state.notes.push("resume launch: reusing existing batch state");
+		for (const run of state.batches) {
+			const existing = await tryReadState(root, run.batch);
+			if (!existing) continue;
+			if (existing.status === "complete") {
+				run.status = "complete";
+				run.runner = snapshot(existing);
+				run.usage = resolveBatchTokens(
+					existing.tokens,
+					await summarizeLog(run.log),
+				);
+				run.startedAt = existing.startedAt;
+				run.endedAt = existing.endedAt;
+				state.notes.push(`adopted completed ${run.batch}`);
+			} else if (existing.status === "cap-reached") {
+				run.status = "failed";
+				run.error = "cap-reached; not resumable";
+				state.notes.push(`skipped cap-reached ${run.batch}`);
+			}
+		}
+	}
+
+	const baseWidth = initialStartCount({
+		batchCount: batches.length,
+		maxParallel: plan.maxParallel,
+	});
+	const priorBilled = await priorWaveBilled(root, state);
+	const preStart = preStartBudget(baseWidth, waveBudget(priorBilled));
+	const initial = preStart.width;
+	if (preStart.stopReason) {
+		markQueuedNotStarted(state, preStart.stopReason);
+		state.status = "stopped";
+		state.notes.push(preStart.stopReason);
+		state.endedAt = new Date().toISOString();
+		await writeStateAndReport(work, state);
+		await releaseWaveLock(work, plan.id);
+		console.log(formatWaveReport(state));
+		return;
+	}
+	if (preStart.note) state.notes.push(preStart.note);
+	const willStart = state.batches
+		.filter((batch) => batch.status === "queued")
+		.slice(0, initial).length;
+	if (willStart === 3) {
+		state.notes.push(
+			"3-wide start: starting 3 batches (default; owner override 2026-10-27)",
+		);
+	} else if (baseWidth < batches.length) {
+		state.notes.push(
+			"third batch queued: plan maxParallel < 3; a queued batch never starts when a slot frees (use --resume to refill)",
+		);
+	}
 	await writeStateAndReport(work, state);
-	const initial = Math.min(2, plan.maxParallel, batches.length);
-	for (let i = 0; i < initial; i++) {
-		await startOne(root, plan, batches[i] as ResolvedBatch, state);
+	let started = 0;
+	for (const run of state.batches) {
+		if (run.status !== "queued") continue;
+		if (started >= initial) break;
+		const batch = batches.find((entry) => entry.batch === run.batch);
+		if (!batch) continue;
+		const existing = resume ? await tryReadState(root, run.batch) : undefined;
+		await startOne(root, plan, batch, state, Boolean(existing));
+		started++;
 	}
 	await writeStateAndReport(work, state);
 
 	while (true) {
-		await refresh(root, work, state, batches, plan, stopping);
+		await refresh(root, work, state, stopping);
 		if (
 			state.batches.every((batch) =>
 				["complete", "stopped", "failed", "not-started"].includes(batch.status),
@@ -291,11 +401,28 @@ async function runWave(
 	console.log(formatWaveReport(state));
 }
 
+/** Resume budget guard input: prior session JSONL + checkpoint ledger per batch. */
+async function priorWaveBilled(
+	root: string,
+	state: WaveState,
+): Promise<number> {
+	let total = 0;
+	for (const run of state.batches) {
+		const existing = await tryReadState(root, run.batch);
+		total += resolveBatchTokens(
+			existing?.tokens ?? 0,
+			await summarizeLog(run.log),
+		).billed;
+	}
+	return total;
+}
+
 async function startOne(
 	root: string,
 	plan: WavePlan,
 	batch: ResolvedBatch,
 	state: WaveState,
+	resume: boolean,
 ): Promise<void> {
 	const run = state.batches.find((entry) => entry.batch === batch.batch);
 	if (!run) throw new Error(`unknown batch ${batch.batch}`);
@@ -306,15 +433,20 @@ async function startOne(
 			batch,
 			prompt: batch.prompt,
 			logPath: run.log,
+			resume,
 		});
 		run.status = "running";
 		run.pid = launched.pid;
-		run.startedAt = new Date().toISOString();
-		state.notes.push(`started ${batch.batch} (pid ${launched.pid})`);
+		run.startedAt ??= new Date().toISOString();
+		state.notes.push(
+			`${resume ? "resumed" : "started"} ${batch.batch} (pid ${launched.pid})`,
+		);
 	} catch (error) {
 		run.status = "failed";
 		run.error = error instanceof Error ? error.message : String(error);
-		state.notes.push(`failed to start ${batch.batch}: ${run.error}`);
+		state.notes.push(
+			`failed to ${resume ? "resume" : "start"} ${batch.batch}: ${run.error}`,
+		);
 	}
 }
 
@@ -322,8 +454,6 @@ async function refresh(
 	root: string,
 	work: string,
 	state: WaveState,
-	batches: ResolvedBatch[],
-	plan: WavePlan,
 	stopping: boolean,
 ): Promise<void> {
 	for (const run of state.batches) {
@@ -351,6 +481,9 @@ async function refresh(
 	const inFlight = queued.length > 0 || active.length > 0;
 	const tokens = inFlight ? billedWaveTokens(state) : 0;
 	const budget = waveBudget(tokens);
+	if (stopping && queued.length > 0) {
+		markQueuedNotStarted(state, "wave stop requested");
+	}
 	if (budget.hardExceeded && active.length > 0) {
 		const reason = `wave hard budget reached (${tokens} billed tokens); stopping active batches`;
 		if (!state.notes.some((note) => note.startsWith("wave hard budget"))) {
@@ -360,67 +493,44 @@ async function refresh(
 			state.notes.push(reason);
 		}
 	}
-	const decision = startDecision({
-		stopping,
-		active: active.length,
-		queued: queued.length,
-		maxParallel: plan.maxParallel,
-		budget,
-	});
-	if (decision.action === "stop" && queued.length > 0) {
-		for (const batch of queued) {
-			batch.status = "not-started";
-			batch.error = decision.reason;
-		}
-		const note = `stopped launching queued batches: ${decision.reason}`;
-		if (
-			!state.notes.some((entry) =>
-				entry.startsWith("stopped launching queued batches"),
-			)
-		) {
-			state.notes.push(note);
-		}
-	} else if (decision.action === "start" && queued.length > 0) {
-		const next = queued[0];
-		if (next) {
-			const batch = batches.find((entry) => entry.batch === next.batch);
-			if (batch) await startOne(root, plan, batch, state);
-		}
-	} else if (
-		decision.action === "wait" &&
-		plan.maxParallel === 3 &&
-		active.length === 2 &&
-		queued.length > 0
-	) {
-		const activeStates = (
-			await Promise.all(active.map((batch) => tryReadState(root, batch.batch)))
-		).filter((entry): entry is BatchState => entry !== undefined);
-		const billedByBatch = Object.fromEntries(
-			active.map((batch) => [batch.batch, batchBilled(batch)]),
+	if (budget.hardExceeded) {
+		markQueuedNotStarted(
+			state,
+			`wave hard budget reached (${tokens} billed tokens)`,
 		);
-		const gate = canStartNext(activeStates, new Date(), billedByBatch);
-		if (gate.ok) {
-			const next = queued[0];
-			if (next) {
-				const batch = batches.find((entry) => entry.batch === next.batch);
-				if (batch) {
-					state.notes.push(`third slot gate passed: ${gate.reason}`);
-					await startOne(root, plan, batch, state);
-				}
-			}
-		} else {
-			const note = `third slot waiting: ${gate.reason}`;
-			const existing = state.notes.findIndex((entry) =>
-				entry.startsWith("third slot waiting"),
-			);
-			if (existing >= 0) {
-				state.notes[existing] = note;
-			} else {
-				state.notes.push(note);
-			}
-		}
+	} else if (budget.softExceeded) {
+		markQueuedNotStarted(
+			state,
+			`wave soft budget reached (${tokens} billed tokens)`,
+		);
+	} else if (active.length === 0 && queued.length > 0) {
+		// A freed slot never starts a queued batch; with no active batch left the
+		// wave cannot make progress, so record why the queue is left unstarted.
+		markQueuedNotStarted(
+			state,
+			"no active batch; queued batches need a maxParallel=3 plan (or --resume refill)",
+		);
 	}
+	// No batch is ever started here: a freed slot must not auto-start a queued
+	// batch. Only the explicit wave start (up to 3 by default) starts batches.
 	await writeStateAndReport(work, state);
+}
+
+function markQueuedNotStarted(state: WaveState, reason: string): void {
+	const queued = state.batches.filter((batch) => batch.status === "queued");
+	if (queued.length === 0) return;
+	for (const batch of queued) {
+		batch.status = "not-started";
+		batch.error = reason;
+	}
+	const note = `stopped launching queued batches: ${reason}`;
+	if (
+		!state.notes.some((entry) =>
+			entry.startsWith("stopped launching queued batches"),
+		)
+	) {
+		state.notes.push(note);
+	}
 }
 
 async function finalizeBatch(root: string, run: WaveBatchRun): Promise<void> {

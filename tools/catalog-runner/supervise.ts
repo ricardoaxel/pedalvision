@@ -59,6 +59,7 @@ export async function supervise(options: SuperviseOptions): Promise<number> {
 		},
 	});
 	state.pid = child.pid;
+	state.supervisorPid = process.pid;
 	state.updatedAt = new Date().toISOString();
 	await writeState(options.root, state);
 
@@ -133,6 +134,7 @@ export async function supervise(options: SuperviseOptions): Promise<number> {
 
 	const finalState = await readState(options.root, options.batchId);
 	finalState.pid = undefined;
+	finalState.supervisorPid = undefined;
 	if (isActive(finalState)) {
 		const stopped =
 			stopRequested ||

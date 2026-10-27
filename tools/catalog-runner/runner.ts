@@ -104,6 +104,15 @@ async function assertWorktree(path: string): Promise<void> {
 	}
 }
 
+function isProcessAlive(pid: number): boolean {
+	try {
+		process.kill(pid, 0);
+		return true;
+	} catch {
+		return false;
+	}
+}
+
 export async function startBatch(options: StartOptions): Promise<BatchState> {
 	if (!/^[a-z0-9][a-z0-9-]*\/[a-z0-9][a-z0-9-]*$/.test(options.batchId)) {
 		throw new Error(
@@ -120,9 +129,10 @@ export async function startBatch(options: StartOptions): Promise<BatchState> {
 	await assertWorktree(worktree);
 	return withStartLock(options.root, async () => {
 		const existing = await tryReadState(options.root, options.batchId);
-		if (existing && isActive(existing)) {
+		if (existing) {
 			throw new Error(
-				`batch "${options.batchId}" is already ${existing.status}`,
+				`batch "${options.batchId}" already exists (${existing.status}); ` +
+					"resume it explicitly (`catalog:resume` / wave `--resume`) or use a new batch id",
 			);
 		}
 		const states = await listStates(options.root);
@@ -319,20 +329,39 @@ export async function resumeBatch(
 			"global STOP is active; clear it with `catalog:resume --all`",
 		);
 	}
-	await clearBatchStop(root, batchId);
-	await clearBatchPause(root, batchId);
-	const state = await readState(root, batchId);
-	state.status = "running";
-	state.endedAt = undefined;
-	state.pauseRequested = false;
-	state.stopRequested = false;
-	state.updatedAt = new Date().toISOString();
-	state.heartbeatAt = state.updatedAt;
-	state.lastItemStartedAt = state.updatedAt;
-	state.activeSince = state.updatedAt;
-	await writeState(root, state);
-	await appendLog(root, batchId, `resumed ${state.batchId}`);
-	return state;
+	return withStartLock(root, async () => {
+		const state = await readState(root, batchId);
+		if (state.status === "complete" || state.status === "cap-reached") {
+			throw new Error(
+				`batch "${batchId}" is ${state.status}; it cannot be resumed`,
+			);
+		}
+		if (state.pid && isProcessAlive(state.pid)) {
+			throw new Error(
+				`batch "${batchId}" is still supervised (pid ${state.pid}); stop it before resuming`,
+			);
+		}
+		if (state.supervisorPid && isProcessAlive(state.supervisorPid)) {
+			throw new Error(
+				`batch "${batchId}" supervisor is still finalizing (pid ${state.supervisorPid}); retry after it exits`,
+			);
+		}
+		await clearBatchStop(root, batchId);
+		await clearBatchPause(root, batchId);
+		state.status = "running";
+		state.pid = undefined;
+		state.supervisorPid = undefined;
+		state.endedAt = undefined;
+		state.pauseRequested = false;
+		state.stopRequested = false;
+		state.updatedAt = new Date().toISOString();
+		state.heartbeatAt = state.updatedAt;
+		state.lastItemStartedAt = state.updatedAt;
+		state.activeSince = state.updatedAt;
+		await writeState(root, state);
+		await appendLog(root, batchId, `resumed ${state.batchId}`);
+		return state;
+	});
 }
 
 export async function stopAll(
@@ -360,9 +389,13 @@ export async function resumeAll(root: string): Promise<BatchState[]> {
 		) {
 			continue;
 		}
+		if (state.pid && isProcessAlive(state.pid)) continue;
+		if (state.supervisorPid && isProcessAlive(state.supervisorPid)) continue;
 		await clearBatchStop(root, state.batchId);
 		await clearBatchPause(root, state.batchId);
 		state.status = "running";
+		state.pid = undefined;
+		state.supervisorPid = undefined;
 		state.endedAt = undefined;
 		state.pauseRequested = false;
 		state.stopRequested = false;

@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58); boss-5 merged (PR #59, `424bc2c`; post-merge `123df52`, 322/15); **T-2c next; 3-wide owner override** · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58); boss-5 merged (PR #59, `424bc2c`; post-merge `123df52`, 322/15); **T-2c/T-2d in review (PR #62); 3-wide default (no flag)** · **Type:** plan/index (docs-only)
 
 ## Purpose
 
@@ -46,9 +46,11 @@ own task file — no need to re-paste the whole plan.
   includes all of that brand's existing seed items (hotlinked/mock) **plus** new
   Tier A items to 24–28. No separate rehost PR.
 - **D4 — 3-wide batches, one agent each.** One batch = branch/worktree/session/PR.
-  **Owner override: every catalog wave starts 3-wide after T-2c**; the start is
-  logged. The true-token metric remains the budget/stop guard. Same-brand BOSS waves
-  are fine (different files); the coordinator serializes shared `curated.ts`/test edits.
+  **Owner override: catalog waves start 3-wide by default (T-2d)**; the start is
+  logged. `--allow-third` is a deprecated no-op. The true-token metric remains the
+  budget/stop guard; soft over-usage is logged, hard 2.4M refuses. Same-brand BOSS
+  waves are fine (different files); the coordinator serializes shared
+  `curated.ts`/test edits.
 - **D5 — Licensing.** Official/retailer/community/archive images stay
   `license-pending`; planner last-resort is also `license-pending` and counted as a
   source gap. The owner sends the 13 brand emails and records responses in
@@ -58,14 +60,14 @@ own task file — no need to re-paste the whole plan.
   `pnpm catalog:asset-ledger` after status changes.
 - **D6 — Boards.** Audit/repair the existing 15 boards (10 placeholders + the 5
   generated) and add new boards to 150, all with our generated flat board art.
-  Boards run 3-wide after T-2c.
+  Boards run 3-wide by default after T-2c/T-2d.
 - **D7 — Token metric.** Report **billed non-cache tokens** (input + output +
   reasoning) for the 400k/800k and **1.6M/2.4M** budgets, and the **cache-inclusive
   JSONL floor** separately. T-0a makes the wave gate/report use a true metric and
   stop active batches at the hard cap. The old runner self-reported `.tokens` is not
   trustworthy (boss-3 recorded 4.21M synthetic; boss-2 39k).
 - **D8 — One parallel feature workstream (T-0b).** One feature task may run alongside
-  the catalog wave (1 feature + up to 3 catalog batches; **3-wide default after T-2c**).
+  the catalog wave (1 feature + up to 3 catalog batches; **3-wide default after T-2c/T-2d**).
   **≤3 PRs awaiting owner review across workstreams** (≤1 feature); with a feature
   open: 1 feature + 2 catalog, third waits. Feature budgets: builder soft ≤400k /
   hard ≤800k, review allowance ≤300k, task hard ≤1.1M, 6 h; combined window **soft
@@ -119,7 +121,7 @@ calibration (blocker: unvalidated billed baseline / unmerged true metric);
 class-structured feature budget; third catalog slot behind both the true-token gate
 and the PR cap; coordinator narrowed to shared files only; per-class token logging.
 Not adopted (owner-set, recorded): flat 1 feature + 2 catalog and class-split PR caps
-(owner later overrode this on 2026-10-27: 3-wide default after T-2c, ≤3 PRs; true-token metric remains the budget/stop guard).
+(owner later overrode this on 2026-10-27: 3-wide default after T-2c/T-2d, no flag; ≤3 PRs; true-token metric remains the budget/stop guard).
 See `docs/tasks/P5-03d-parallel-workstreams.md`.
 
 ## Task / PR index
@@ -131,30 +133,31 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-0b** | Parallel feature + catalog workstreams (docs-only) | **Merged (PR #54, squash `89c6a38`).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; **owner override 2026-10-27: 3-wide default, ≤3 PRs awaiting review (max 1 feature)**. Feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
 | **T-1** | Pedal flat-art + promote-legacy | **Merged (PR #55, squash `66222d4`).** Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Owner-approved "Catalog Specimen"; design-reviewer 2/2; code review 2/2. | T-0 |
 | **T-1a** | Image source policy (planner last-resort + recorded sources) | **Merged (PR #56, squash `ea20b02`).** Reverse the planner ban: official → retailer → community → planner **last-resort** → generated art only if none; 31 BOSS legacy remain repair-set. Always record source in the private raw catalog/ledger; ledger source-gap report. Docs/AGENTS/ADR-003/schema/gate/ledger + 26-record provenance backfill. One PR; token-reviewed. | T-1 |
-| **T-2** | BOSS wave 3 | **COMPLETE — boss-4 + legacy repair + boss-5 merged.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) merged; boss-5 (26 new, `md-2`…`od-3`) merged as PR #59 (`424bc2c`; post-merge `123df52`, 322/15; 52 AVIFs = 18 official + 8 planner + 0 generated; billed ≈579k / 42 min). T-2 calibration: boss-4 ≈724k/66 min. **T-3 starts only after T-2c.** | T-0a, T-1, T-1a |
-| **T-2c** | [Wrapper 3-wide true-token fix](T-2c-wrapper-3-wide.md) | Fix `catalog:wave` so 3-wide starts are explicit and logged, not auto-started when a slot frees; fix the stopped-batch/`.stop`/resume collision. Keep the true-token metric for budgets/stops; no silent bypass. Add tests. **Required before T-3.** Token review; high-risk code review; one PR. | T-0a |
-| **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). **3-wide after T-2c**; logged 3-wide start; true-token budgets/stops. Re-baseline budgets from T-2. One PR per batch. | T-2, T-2c |
-| **T-4** | Cleanup wave 1 | EHX-1 (18 existing + 8 new) + MXR-1 (18 + 8) + Mooer-1 (18 [17 hotlinked + 1 mock] + 8) = 78 items; 54 existing (53 hotlinked + 1 mock). **3-wide; one PR per batch.** | T-1, T-2c |
-| **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). **3-wide; one PR per batch.** | T-1, T-2c |
-| **T-6** | Cleanup wave 3 | Joyo-1 (18 + 8) + Keeley-1 (18 + 8) + EQD-1 (18 + 8) = 78; 54 existing (5 hotlinked + 49 mock/static). **3-wide; one PR per batch.** | T-1, T-2c |
-| **T-7** | Cleanup wave 4 | Behringer-1 (1 hotlinked + new) + Big Joe-1 (2 mock + new) + Effects Bakery-1 (1 mock + new). Small batches; fill from their own Tier A; never force 26 if the brand has fewer. **3-wide; one PR per batch.** | T-1, T-2c |
-| **T-8** | Remaining Tier A | Continuous waves of the remaining brands (Catalinbread, Dunlop, Fender, Strymon, Wampler, DigiTech, etc.) to **1,850 pedals**. Measured cost/item go/no-go first; **3-wide default after T-2c**; 26 items (consider 40 after calibration). Token review each new wave. | T-3…T-7, T-2c |
-| **T-9** | Boards | Audit/repair the existing 15 boards (10 placeholders) + new board batches to **150**; generated flat board art; **3-wide after T-2c**. | T-1, T-2c |
+| **T-2** | BOSS wave 3 | **COMPLETE — boss-4 + legacy repair + boss-5 merged.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) merged; boss-5 (26 new, `md-2`…`od-3`) merged as PR #59 (`424bc2c`; post-merge `123df52`, 322/15; 52 AVIFs = 18 official + 8 planner + 0 generated; billed ≈579k / 42 min). T-2 calibration: boss-4 ≈724k/66 min. **T-3 starts only after T-2c/T-2d (PR #62).** | T-0a, T-1, T-1a |
+| **T-2c** | [Wrapper 3-wide true-token fix](T-2c-wrapper-3-wide.md) | **In review (PR #62).** Fixed the free-slot auto-start and stopped-batch/`.stop`/resume collision; explicit `--resume` (original wave id) clears stale markers and preserves progress; fresh start refuses existing state; supervisor-finalize guard; true-token budgets/stops preserved. Tests added. **Required before T-3.** Token review `adjust` folded; high-risk code review 2/2. | T-0a |
+| **T-2d** | [Catalog waves start 3-wide by default](T-2d-default-3-wide.md) | **In review — folded into PR #62.** Default `min(3, maxParallel, batchCount)` with no flag; `--allow-third` deprecated no-op; soft budget logged without shrinking (owner accepts over-soft), hard 2.4M still refuses; docs/tests updated. **Required before T-3.** Token review; high-risk code review. | T-2c |
+| **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). **3-wide by default (T-2d, no flag)**; logged start; true-token budgets/stops. Re-baseline budgets from T-2. One PR per batch. | T-2, T-2c, T-2d |
+| **T-4** | Cleanup wave 1 | EHX-1 (18 existing + 8 new) + MXR-1 (18 + 8) + Mooer-1 (18 [17 hotlinked + 1 mock] + 8) = 78 items; 54 existing (53 hotlinked + 1 mock). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
+| **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
+| **T-6** | Cleanup wave 3 | Joyo-1 (18 + 8) + Keeley-1 (18 + 8) + EQD-1 (18 + 8) = 78; 54 existing (5 hotlinked + 49 mock/static). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
+| **T-7** | Cleanup wave 4 | Behringer-1 (1 hotlinked + new) + Big Joe-1 (2 mock + new) + Effects Bakery-1 (1 mock + new). Small batches; fill from their own Tier A; never force 26 if the brand has fewer. **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
+| **T-8** | Remaining Tier A | Continuous waves of the remaining brands (Catalinbread, Dunlop, Fender, Strymon, Wampler, DigiTech, etc.) to **1,850 pedals**. Measured cost/item go/no-go first; **3-wide default (T-2d)**; 26 items (consider 40 after calibration). Token review each new wave. | T-3…T-7, T-2c, T-2d |
+| **T-9** | Boards | Audit/repair the existing 15 boards (10 placeholders) + new board batches to **150**; generated flat board art; **3-wide by default (T-2d)**. | T-1, T-2c, T-2d |
 | **T-10** | P5-04 final QA / launch | Full validation, provenance, attribution, caps, demo links, licensing; launch gate `hotlinked + mock = 0`, planner last-resort counted as a source gap (owner may waive it), 31 BOSS legacy repaired. | T-8, T-9 |
 | — | Licensing ops (owner) | Send the 13 brand emails; update `image-licenses.json`; run `pnpm catalog:asset-ledger`; `licensed` only with written permission. No PR unless statuses change docs. | — |
 
-**T-2c gate:** T-3 and every later 3-wide wave starts only after T-2c merges. The true-token metric remains the budget/stop metric; the third-slot start gate is retired by owner decision. Log every 3-wide start and any budget over-soft.
+**T-2c/T-2d gate:** T-3 and every later 3-wide wave starts only after PR #62 merges. Waves start 3-wide by default (no flag); the true-token metric remains the budget/stop metric; the third-slot start gate is retired. Log every 3-wide start and any budget over-soft (soft does not shrink the wave; hard 2.4M refuses).
 
 ## Wave launch matrix
 
 | Wave | Width | Gate |
 |---|---|---|
 | **T-2b boss-5** | 1 (done) | PR #59 merged |
-| **T-2c wrapper fix** | code task | token review + high-risk code review; required before T-3 |
-| **T-3 BOSS wave 4** | **3-wide** | after T-2c; logged 3-wide start; ≤3 PRs |
-| **T-4…T-7 cleanup** | **3-wide** | after T-2c; one PR per batch |
-| **T-8 Tier A** | **3-wide** | after T-2c; wave budgets/stops |
-| **T-9 boards** | **3-wide** | after T-2c; board budget |
+| **T-2c/T-2d wrapper fix** | code task | token review + high-risk code review; required before T-3 |
+| **T-3 BOSS wave 4** | **3-wide (default, no flag)** | after T-2c/T-2d; logged 3-wide start; ≤3 PRs |
+| **T-4…T-7 cleanup** | **3-wide (default)** | after T-2c/T-2d; one PR per batch |
+| **T-8 Tier A** | **3-wide (default)** | after T-2c/T-2d; wave budgets/stops |
+| **T-9 boards** | **3-wide (default)** | after T-2c/T-2d; board budget |
 | **Feature lane** | **1 feature** | 1 feature + 2 catalog max at 3 PRs |
 
 **Launch rules:** `catalog:wave` only; no raw background sessions; one PR per batch; coordinator opens no PR; owner merges serially. With a feature PR open: 1 feature + 2 catalog; the third catalog waits for a PR slot. After every merge: verify post-merge build, update progress, rebase, refill.
@@ -169,8 +172,8 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
    Never redo merged; resume/repair failed-stopped once; never duplicate.
 4. Select the next **uncompleted** batches from the plan order (T-3 boss-6/7/8 →
    T-4…T-7 → T-8 → T-9), no overlap.
-5. Start the next wave **3-wide** (after T-2c) via `catalog:wave`; the start is
-   logged. Do not start a batch unless a PR slot will exist at completion.
+5. Start the next wave **3-wide by default (no flag; after T-2c/T-2d)** via
+   `catalog:wave`; the start is logged. Do not start a batch unless a PR slot will exist at completion.
 6. Token-review a new wave; one PR per batch; coordinator opens no PR.
 7. After any merge: verify the post-merge build, update progress, rebase open
    branches, then refill. Max 3 refills per wave; one WS line per checkpoint.
@@ -195,14 +198,18 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 ## Budgets / guards
 
 - Per batch: **billed non-cache** soft ≤400k / hard ≤800k; wave **soft 1.6M / hard
-  2.4M**; 3-wide owner override; log over-soft; report the cache-inclusive JSONL floor.
+  2.4M**; 3-wide default (T-2d); log over-soft without shrinking; report the
+  cache-inclusive JSONL floor.
 - **Feature stream (T-0b):** builder soft ≤400k / hard ≤800k + review allowance
   ≤300k; task hard ≤1.1M; 6 h. Combined feature + catalog window: **soft 2.2M / hard
-  3.4M** billed non-cache. Log billed tokens by class.
+  3.4M** billed non-cache; the combined hard is a coordinator-side check (with a
+  feature active, subtract feature spend from the wave’s fixed 2.4M cap). Log billed
+  tokens by class.
 - ≤2 vision passes/batch; ≤1 light code review (only T-0a/T-1/`curated.ts`;
   data-only batches skip); 4 h active; 12 min/item.
-- **3-wide by default after T-2c**; the start is logged. The true-token metric is
-  the budget/stop guard, not a third-slot start gate. Do not raw-launch sessions.
+- **3-wide by default (T-2d, no flag)**; the start is logged. Soft is logged and
+  does not shrink the wave; hard 2.4M refuses. The true-token metric is the
+  budget/stop guard, not a third-slot start gate. Do not raw-launch sessions.
   With a feature PR open: 1 feature + 2 catalog; the third catalog waits.
 - **Source gap gate:** planner last-resort and legacy/mock/hotlinked items are
   counted by `catalog:license-report`; target 0 at T-10, but the owner may waive

@@ -47,6 +47,8 @@ export type BatchState = {
 	activeSince?: string;
 	endedAt?: string;
 	pid?: number;
+	/** The supervisor process, which keeps finalizing after the child exits. */
+	supervisorPid?: number;
 	pauseRequested?: boolean;
 	stopRequested?: boolean;
 	blockers: string[];
