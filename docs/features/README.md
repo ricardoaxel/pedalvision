@@ -5,19 +5,26 @@
 > mapping is deliberately **stable, not exhaustive**: use it to decide which
 > workflows a change can break, then run the named specs.
 >
-> **Every feature PR updates this file** (feature row + impact row when the area
-> is new) and names the E2E it ran. This is already required by
-> `docs/tasks/feature-template.md` → Constraints ("Docs update"). The public
-> tutorial/catalog will live in the F-41 docs hub.
+> **Map updates are required only for changes worth recording** — behaviour-
+> changing, user-visible, or touching a persisted/transported/contract path
+> (codec/`SceneDocument`, share payload, capacity, export scope, history, catalog
+> schema). Refactors, test-only, dependency and docs-only PRs make **no** map edit
+> and state `Map: n/a — <reason>` in the PR. The binding rule is
+> `docs/tasks/feature-template.md` → Constraints ("Docs update"); this file defines
+> *what* to record and how to pick the E2E. The public tutorial/catalog will live
+> in the F-41 docs hub.
 >
-> **Ownership:** feature sessions own `docs/features/**`; the roadmap link,
-> `docs/progress.md` and process rules remain coordinator-only.
+> **Ownership:** a feature session may edit the inventory, workflow, impact and
+> Known-gaps rows. The prose rules in this file (How to use, Per-feature-PR
+> requirement, this header), the roadmap link, `docs/progress.md`, templates and
+> `AGENTS.md` stay **coordinator-only**: propose the exact text instead of editing.
 
 ## How to use this map
 
 1. Find the **feature area** you are changing in the inventory or impact table.
 2. Follow the **affected workflows** — those are the regression surfaces.
-3. Run the **minimum E2E** (desktop + mobile where the area is responsive).
+3. Run the **minimum E2E** (desktop + mobile where the area is responsive),
+   deduped and capped as described under the change-impact table.
 4. If you add a **new object type**, complete the checklist below before opening
    the PR.
 5. If a gap is intentional/deferred, record it under **Known gaps** instead of
@@ -89,7 +96,8 @@ graph cap, the share payload/version or the "Patch Drafting" direction.
 ### F-19 — This map
 
 The feature inventory, workflow → module → E2E table, change-impact table,
-object-type checklist and known-gap ledger. Kept current by every feature PR.
+object-type checklist and known-gap ledger. Kept current by behaviour-changing
+feature PRs.
 
 ---
 
@@ -122,22 +130,33 @@ object-type checklist and known-gap ledger. Kept current by every feature PR.
 Use this as the **minimum** regression set. Add the area's own E2E when the
 change is user-visible.
 
-| If you change… | Affected workflows | Minimum E2E (plus the area's own) |
-|---|---|---|
-| **Geometry, transforms, board-relative cm** | every canvas workflow, A1, export bounds | `smoke.spec.ts`, `selection.spec.ts`, `export.spec.ts` |
-| **Scene model / store mutators / z-order** | place, move, rotate, duplicate/delete, save/load, history, share | `selection.spec.ts`, `z-order.spec.ts`, `scenes.spec.ts`, `history.spec.ts` |
-| **New object type / new scene array** | codec, guards, persistence, backup, history, share, export, capacity, UI | Complete the **new object type checklist**; run the checklist's named specs |
-| **Codec / `SceneDocument` / `library.ts`** | save/load, autosave, boot reconcile, backup, share save-copy | `scenes.spec.ts`, `storage-fallback.spec.ts`, `share.spec.ts`, `cables.spec.ts` |
-| **Share codec / payload / version** | sender → recipient, read-only, save-a-copy, legacy links | `share.spec.ts`, `cables.spec.ts` (v2/v1), `history.spec.ts`, `storage-fallback.spec.ts` |
-| **Export plan / renderer / PDF** | selected-board/all-content, clamps, image failure, mobile tray | `export.spec.ts`, `picker-choka.spec.ts` |
-| **Cables / cables geometry / anchors** | editor, touch connect, schedule, share, export, capacity | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
-| **Capacity constants / guards** | add, duplicate, board add, over-cap load, export warning | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
-| **Picker / filtering / catalog loading** | every place workflow, asset renditions | `picker.spec.ts`, `picker-choka.spec.ts` |
-| **Info panel / part info / image loading** | selection readout, asset sizes, CORS fallback | `info-panel.spec.ts`, `picker.spec.ts` |
-| **First-run / boot chrome** | empty scene, storage notice precedence | `first-run.spec.ts`, `storage-fallback.spec.ts` |
-| **Responsive CSS / mobile chrome** | picker, trays, action bars, touch targets | mobile project of `picker`/`export`/`cable-schedule`/`info-panel`/`scenes`; `touch.spec.ts` |
-| **Catalog data/images** (catalog session) | picker, canvas, info, export, share | `picker-choka.spec.ts`, `info-panel.spec.ts` (+ `catalog:ci`) |
-| **Annotations/legal/attribution copy** | info panel, attribution page | `info-panel.spec.ts` |
+| If you change… | Touches (paths) | Affected workflows | Minimum E2E (plus the area's own) |
+|---|---|---|---|
+| **Geometry, transforms, board-relative cm** | `src/lib/geometry.ts`, `src/state/scene.ts`, `src/canvas/Stage.tsx`, `src/canvas/useItemDrag.ts`, `src/canvas/ItemTransformer.tsx` | every canvas workflow, A1, export bounds | `smoke.spec.ts`, `selection.spec.ts`, `export.spec.ts` |
+| **Scene model / store mutators / z-order** | `src/state/scene.ts`, `src/state/selection.ts`, `src/canvas/ItemActionBar.tsx`, `src/canvas/BoardActionBar.tsx` | place, move, rotate, duplicate/delete, save/load, history, share | `selection.spec.ts`, `z-order.spec.ts`, `scenes.spec.ts`, `history.spec.ts` |
+| **New object type / new scene array** | `src/state/scene.ts`, `src/state/sceneDocument.ts`, `src/state/library.ts`, `src/lib/shareLink.ts`, `src/lib/exportScene.ts`, `src/lib/capacity.ts` | codec, guards, persistence, backup, history, share, export, capacity, UI | Complete the **new object type checklist**; run the checklist's named specs |
+| **Codec / `SceneDocument` / `library.ts`** | `src/state/sceneDocument.ts`, `src/state/library.ts`, `src/state/autosave.ts`, `src/lib/sceneIndex.ts` | save/load, autosave, boot reconcile, backup, share save-copy | `scenes.spec.ts`, `storage-fallback.spec.ts`, `share.spec.ts`, `cables.spec.ts` |
+| **Share codec / payload / version** | `src/lib/shareLink.ts`, `src/state/share.ts`, `src/state/readOnly.ts`, `src/components/SharePanel.tsx`, `src/components/ShareView.tsx` | sender → recipient, read-only, save-a-copy, legacy links | `share.spec.ts`, `cables.spec.ts` (v2/v1), `history.spec.ts`, `storage-fallback.spec.ts` |
+| **Export plan / renderer / PDF** | `src/lib/exportScene.ts`, `src/canvas/exportStage.ts`, `src/lib/pdf.ts`, `src/components/ExportPanel.tsx` | selected-board/all-content, clamps, image failure, mobile tray | `export.spec.ts`, `picker-choka.spec.ts` |
+| **Cables / cable geometry / anchors** | `src/state/scene.ts`, `src/state/cableDrag.ts`, `src/state/endpointDrag.ts`, `src/state/endpointPlacement.ts`, `src/canvas/CableLayer.tsx`, `src/canvas/EndpointLayer.tsx`, `src/lib/jackAnchor.ts`, `src/lib/cablePath.ts`, `src/lib/cableLength.ts`, `src/lib/cableSummary.ts` | editor, touch connect, schedule, share, export, capacity | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| **Capacity constants / guards** | `src/lib/capacity.ts`, `src/state/scene.ts`, `src/components/CapacityAnnouncer.tsx` | add, duplicate, board add, over-cap load, export warning | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| **Picker / filtering / catalog loading** | `src/components/Picker.tsx`, `src/components/pickerFilter.ts`, `src/catalog/load.ts`, `src/lib/cdn.ts`, `src/canvas/loadImage.ts` | every place workflow, asset renditions | `picker.spec.ts`, `picker-choka.spec.ts` |
+| **Info panel / part info / image loading** | `src/components/InfoPanel.tsx`, `src/lib/partInfo.ts`, `src/components/partImage.ts`, `src/canvas/useImage.ts` | selection readout, asset sizes, CORS fallback | `info-panel.spec.ts`, `picker.spec.ts` |
+| **First-run / boot chrome** | `src/components/FirstRunHint.tsx`, `src/lib/firstRun.ts`, `src/lib/focus.ts` | empty scene, storage notice precedence | `first-run.spec.ts`, `storage-fallback.spec.ts` |
+| **Responsive CSS / mobile chrome** | `src/App.tsx`, `src/styles/**`, responsive cases in `src/components/**` | picker, trays, action bars, touch targets | mobile project of `picker`/`export`/`cable-schedule`/`info-panel`/`scenes`; `touch.spec.ts` |
+| **Catalog data/images** — **catalog sessions only** (a feature PR never edits catalog data) | `data/catalog/**`, `public/pedal-assets/**`, `tools/catalog-*` | catalog picker/canvas/info/export/share | `picker-choka.spec.ts`, `info-panel.spec.ts` (+ `catalog:ci`); a feature PR that only *consumes* an entry runs `picker.spec.ts` for one stable filtered item/brand |
+| **Annotations/legal/attribution copy** | `src/components/InfoPanel.tsx`, `public/attribution.html` | info panel, attribution page | `info-panel.spec.ts` |
+
+**Selecting the E2E (cost guard).** Take the union of the rows your diff matches,
+dedupe, and **cap at 6 spec files per PR**. If the union exceeds 6, run the 6
+highest-risk and list the rest as `deferred to post-merge` in the PR. Use the
+mobile project only for responsive/UI changes.
+
+- **Per PR:** `pnpm test` (full) + `pnpm exec playwright test <union files>`.
+- **Per merge:** the touched-area specs + `smoke.spec.ts` on the verified build.
+- **Nightly / phase gate:** full `pnpm e2e` + `pnpm bench:capacity`.
+
+Never run the full suite per PR.
 
 ---
 
@@ -243,14 +262,23 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 
 ## Per-feature-PR requirement
 
-When a feature PR changes behaviour:
+The binding rule is `docs/tasks/feature-template.md` → Constraints ("Docs
+update"). This file defines *what* to record and how to pick the E2E.
 
-- Add/update the **feature inventory** row and, if a new area, the **workflow**
-  and **impact** rows.
-- Name the E2E you ran (spec + desktop/mobile) in the PR.
+**Worth recording?** Behaviour-changing, user-visible, or touching a
+persisted/transported/contract path (codec/`SceneDocument`, share payload,
+capacity, export scope, history, catalog schema) → **yes**. Pure refactor,
+test-only, dependency bump, typo or docs-only → **no**; write
+`Map: n/a — <reason>` in the PR.
+
+When recording:
+
+- Add/update only the **feature inventory** row, the matched **workflow** and
+  **change-impact** rows, and any resolved **Known gaps** row (1–3 table rows,
+  no prose).
+- Name the E2E you ran (spec + desktop/mobile) and the map rows touched in the PR.
 - If you added an object type, link the checklist items you completed.
-- Move any resolved gap out of **Known gaps**; add a new row for intentional
-  deferrals.
 - Do not assert catalog totals in E2E; filter a stable item/brand.
-- Process/rule changes (this file's rules, `AGENTS.md`, templates, roadmap,
-  progress) are coordinator-only: propose the exact text instead of editing.
+- **Editable by a feature session:** those table rows. **Coordinator-only:** the
+  prose rules above, `AGENTS.md`, templates, roadmap, progress — propose exact
+  text instead of editing.
