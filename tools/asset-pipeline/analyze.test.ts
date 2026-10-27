@@ -91,6 +91,50 @@ const footprint = { widthCm: 7.3, heightCm: 12.9 };
 const white = { r: 255, g: 255, b: 255, a: 255 };
 const transparent = { r: 0, g: 0, b: 0, a: 0 };
 
+/** A product card: transparent margin, an opaque white card, a dark pedal and a
+ * bottom caption — the failure mode the reviewer/analyzer must catch. */
+async function cardImage(): Promise<Buffer> {
+	const width = 1000;
+	const height = 1000;
+	const data = Buffer.alloc(width * height * 4);
+	for (let i = 0; i < data.length; i += 4) data[i + 3] = 0;
+	// A card that touches the frame on three sides (transparent top margin), like
+	// the official gallery cards that left a caption band behind.
+	for (let y = 50; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 238;
+			data[i + 1] = 238;
+			data[i + 2] = 238;
+			data[i + 3] = 255;
+		}
+	}
+	for (let y = 110; y < 860; y++) {
+		for (let x = 100; x < 900; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 30;
+			data[i + 1] = 50;
+			data[i + 2] = 70;
+			data[i + 3] = 255;
+		}
+	}
+	// Caption glyphs in the card's bottom band.
+	for (let g = 0; g < 10; g++) {
+		for (let y = 920; y < 940; y++) {
+			for (let x = 300 + g * 30; x < 310 + g * 30; x++) {
+				const i = (y * width + x) * 4;
+				data[i] = 20;
+				data[i + 1] = 20;
+				data[i + 2] = 20;
+				data[i + 3] = 255;
+			}
+		}
+	}
+	return sharp(data, { raw: { width, height, channels: 4 } })
+		.png()
+		.toBuffer();
+}
+
 describe("image analyzer", () => {
 	it("accepts a top-down cutout on a white background", async () => {
 		const result = await analyzeImage(
@@ -118,6 +162,7 @@ describe("image analyzer", () => {
 			}),
 			{ kind: "pedal", ...footprint },
 		);
+		expect(result.backgroundCard?.suspected).toBe(false);
 		expect(result.verdict).toBe("accept");
 		expect(result.alpha.transparentRatio).toBeGreaterThan(0.7);
 	});
@@ -281,5 +326,17 @@ describe("image analyzer", () => {
 		expect(result.shapeTaper).toBe(false);
 		expect(result.verdict).toBe("flag");
 		expect(result.reasons.join(" ")).toMatch(/flag:possible perspective/);
+	});
+	it("flags a product card/caption instead of passing it", async () => {
+		const result = await analyzeImage(await cardImage(), {
+			kind: "pedal",
+			...footprint,
+		});
+		expect(result.backgroundCard?.suspected).toBe(true);
+		expect(
+			result.reasons.some((reason) =>
+				reason.includes("possible background card/caption"),
+			),
+		).toBe(true);
 	});
 });

@@ -12,9 +12,10 @@ flat art. Record it (`kind: "planner"`, `status: "last-resort"`, `sourceUrl`),
 quality-gate it, and count it as a source gap to improve. It is **never** used for
 boards. Generated flat pedal art is used only when none of the above exists/passes.
 
-The **31 BOSS legacy** items remain `pending-replacement`; T-2 repairs them to
-official/retailer/community (or generated art if none), never by keeping the old
-planner asset.
+The **31 BOSS legacy** items use the **same hierarchy**: official → retailer →
+community → **recorded planner last-resort** → generated art only if none. They
+remain `pending-replacement` until repaired; **never keep the old unrecorded
+planner asset** — re-source it and record the exact URL.
 
 ## How to use
 

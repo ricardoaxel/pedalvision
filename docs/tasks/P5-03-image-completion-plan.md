@@ -33,8 +33,9 @@ own task file — no need to re-paste the whole plan.
   Pedalplayground last-resort (recorded + quality-gated)** → **generated flat art
   only when none of the above exists/passes**. Generated art is `own`; planner
   last-resort is a recorded source gap to improve. The **31 BOSS legacy** stay
-  `pending-replacement` and must be repaired (official/retailer/community, or
-  generated if none) — never keep their old planner asset. Boards keep generated
+  `pending-replacement` and use the **same order** (official → retailer →
+  community → **recorded planner last-resort** → generated only if none) — never
+  keep their old unrecorded planner asset. Boards keep generated
   flat art by default; planner pixels are never used for boards.
 - **D2 — BOSS first.** T-0a gate fix → T-1 pedal-art + promote-legacy → T-2 BOSS
   wave 3 (boss-4 + legacy repair + boss-5) → T-3 BOSS wave 4 (boss-6/7/8) → BOSS

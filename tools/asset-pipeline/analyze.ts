@@ -51,6 +51,14 @@ export type AnalyzeResult = {
 	shadowRatio: number | null;
 	/** Board-only: near-white/silver interior residual and bright edge fringe. */
 	bright: { ratio: number; edgeRatio: number } | null;
+	/** Pedal-only: opaque/bright background signal (possible card/caption). */
+	backgroundCard: {
+		opaqueRatio: number;
+		borderOpaque: number;
+		uniformity: number;
+		brightRatio: number;
+		suspected: boolean;
+	} | null;
 	verdict: "accept" | "flag" | "reject";
 	reasons: string[];
 };
@@ -360,6 +368,22 @@ export async function analyzeImage(
 		removeBackground(pixels, width, height, background, tolerance);
 	}
 
+	// Effective opacity after the background step: an alpha cutout is not keyed
+	// (the card would be erased with it), so a residual opaque card remains and
+	// must be caught by the reviewer.
+	let effectiveTransparent = 0;
+	for (let i = 3; i < pixels.length; i += 4) {
+		if (pixels[i] < 250) effectiveTransparent++;
+	}
+	const effectiveOpaqueRatio = 1 - effectiveTransparent / (width * height);
+	const border = borderPixels(width, height);
+	let borderOpaque = 0;
+	for (const [x, y] of border) {
+		if (pixels[(y * width + x) * 4 + 3] >= 250) borderOpaque++;
+	}
+	const borderOpaqueRatio =
+		border.length > 0 ? borderOpaque / border.length : 0;
+
 	const bounds = trimBounds(pixels, width, height);
 	const reasons: string[] = [];
 
@@ -394,6 +418,7 @@ export async function analyzeImage(
 			shapeTaper: false,
 			shadowRatio: null,
 			bright: null,
+			backgroundCard: null,
 			verdict: "reject",
 			reasons: [...reasons, "reject:no visible foreground after trim"],
 		};
@@ -476,6 +501,28 @@ export async function analyzeImage(
 		);
 	}
 
+	let backgroundCard: AnalyzeResult["backgroundCard"] = null;
+	if (options.kind === "pedal") {
+		// A tight, clean cutout may be almost fully opaque (e.g. generated art), so
+		// opacity alone is not a defect. A product card leaves an opaque, bright
+		// border strip; a clean tight cutout's opaque border is the (dark) product.
+		const suspected =
+			(bright.ratio >= 0.25 && uniformity <= 0.85) ||
+			(bright.ratio >= 0.2 && borderOpaqueRatio >= 0.6);
+		backgroundCard = {
+			opaqueRatio: effectiveOpaqueRatio,
+			borderOpaque: borderOpaqueRatio,
+			uniformity,
+			brightRatio: bright.ratio,
+			suspected,
+		};
+		if (suspected) {
+			reasons.push(
+				`flag:possible background card/caption (opaque border ${Math.round(borderOpaqueRatio * 100)}%, bright ${Math.round(bright.ratio * 100)}%, opaque ${Math.round(effectiveOpaqueRatio * 100)}%) — reject if a background/caption is visible`,
+			);
+		}
+	}
+
 	const shadow = shadowRatio(pixels, width, height, bounds, background);
 	if (shadow !== null && shadow > 0.15) {
 		reasons.push(
@@ -513,6 +560,7 @@ export async function analyzeImage(
 		shapeTaper,
 		shadowRatio: shadow,
 		bright,
+		backgroundCard,
 		verdict: rejected ? "reject" : flagged ? "flag" : "accept",
 		reasons,
 	};
