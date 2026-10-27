@@ -34,6 +34,130 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"boss-fv-100-guitar-volume": ["utility"],
 	"boss-fv-30-foot-volume": ["utility"],
 	"boss-fv-500-volume-pedal": ["utility"],
+	"boss-gigmaster-5": ["mixer", "utility"],
+	"boss-gigmaster-8": ["mixer", "utility"],
+	"boss-gp-10-guitar-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"synth",
+		"pitch",
+		"delay",
+		"reverb",
+	],
+	"boss-gp-20-amp-factory": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+	],
+	"boss-gt-1-guitar-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+	],
+	"boss-gt-1000-guitar-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+		"synth",
+	],
+	"boss-gt-1000core-guitar-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+		"synth",
+	],
+	"boss-gt-8-guitar-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+	],
+	"boss-gx-1-guitar-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+	],
+	"boss-gx-10-guitar-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+	],
+	"boss-gx-100-guitar-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+	],
+	"boss-gx-1b-bass-effects-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"compressor",
+		"overdrive",
+		"distortion",
+		"delay",
+		"reverb",
+		"chorus",
+		"flanger",
+		"phaser",
+		"pitch",
+	],
+	"boss-ir-2-amp-cabinet": ["cab-sim", "amp-modeler"],
+	"boss-ir-200-amp-ir-cabinet": ["amp-modeler", "cab-sim"],
+	"boss-jb-2-angry-driver": ["overdrive", "distortion"],
+	"boss-lm-2-limiter": ["compressor"],
+	"boss-lmb-3-bass-limiter-enhancer": ["compressor", "utility"],
+	"boss-ls-2-line-selector": ["utility", "ab-box"],
 
 	// Electro-Harmonix
 	"electro-harmonix-15watt-howitzer": ["preamp", "power-amp"],
@@ -229,8 +353,21 @@ const SUPPLY_HINT =
 
 type DeviceInput = { brand: string; name: string; variantOf?: string };
 
+/**
+ * Inventory-id aliases for models whose official name slugifies differently from
+ * the inventory id (the BOSS inventory lists the Gigcaster 5/8 as "Gigmaster").
+ * The canonical id stays the inventory id; this only lets the verified override
+ * resolve by the official name.
+ */
+const CURATED_ID_ALIASES: Record<string, string> = {
+	"boss-gigcaster-5": "boss-gigmaster-5",
+	"boss-gigcaster-8": "boss-gigmaster-8",
+};
+
 const primaryKey = (input: DeviceInput): string =>
-	input.variantOf ?? baseSlug(input.brand, input.name);
+	CURATED_ID_ALIASES[input.variantOf ?? baseSlug(input.brand, input.name)] ??
+	input.variantOf ??
+	baseSlug(input.brand, input.name);
 
 /** The pre-P5-01 slug (a trailing "+" collapsed into the previous word). */
 function legacyKey(input: DeviceInput): string {

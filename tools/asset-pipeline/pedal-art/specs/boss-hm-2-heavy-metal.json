@@ -1,0 +1,95 @@
+{
+	"id": "boss-hm-2-heavy-metal",
+	"family": "compact",
+	"widthCm": 7.0,
+	"heightCm": 12.5,
+	"sourceRef": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hm_product02.png",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#222729",
+		"radiusCm": 0.35,
+		"sideCm": 0.35,
+		"knobFinish": "black",
+		"footswitchFinish": "black"
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "knob",
+			"u": 0.2,
+			"v": 0.34,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "LEVEL",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.4,
+			"v": 0.34,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "COLOR MIX L",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.6,
+			"v": 0.34,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "COLOR MIX H",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.8,
+			"v": 0.34,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "DIST",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "led",
+			"u": 0.5,
+			"v": 0.18,
+			"diameterCm": 0.5,
+			"color": "#C0392B",
+			"label": "CHECK",
+			"labelPlacement": "above"
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.5,
+			"v": 0.82,
+			"diameterCm": 1.6
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.055,
+			"sizeMm": 2.4,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "model",
+			"value": "HM-2",
+			"u": 0.5,
+			"v": 0.105,
+			"sizeMm": 3.6
+		},
+		{
+			"role": "free",
+			"value": "HEAVY METAL",
+			"u": 0.5,
+			"v": 0.55,
+			"sizeMm": 2.8
+		}
+	],
+	"jacks": [],
+	"note": "Generated from the official 40th-anniversary transparent product render (reference only); body colour sampled from the reference; no reference pixels shipped."
+}
