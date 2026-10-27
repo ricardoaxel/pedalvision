@@ -764,12 +764,10 @@ export async function analyzeImage(
 				}
 				const nonFrameArea = 1 - frameArea;
 				const largestNonFrame = opaqueCount > 0 ? largest / opaqueCount : 0;
-				const cardLike =
-					frameArea >= 0.3 &&
-					nonFrameArea <= 0.7 &&
-					largestNonFrame >= 0.2 &&
-					frameLuma >= 0.5 &&
-					frameSat <= 0.3;
+				// The frame brightness/saturation is already required by frameCard and
+				// captionBand; only the card area and the connected product region add
+				// signal here. nonFrameArea is exactly 1 - frameArea.
+				const cardLike = frameArea >= 0.3 && largestNonFrame >= 0.2;
 				// A product card is a bright, low-saturation frame around a darker or
 				// more saturated product, or a caption band below the product. A clean
 				// bright cutout has the same frame and interior tone, so it is not flagged.
@@ -787,7 +785,7 @@ export async function analyzeImage(
 					frameSat,
 					interiorLuma,
 					interiorSat,
-					captionBand,
+					captionBand: captionBand && cardLike,
 					bandNonCardRatio,
 					frameArea,
 					nonFrameArea,
@@ -796,7 +794,7 @@ export async function analyzeImage(
 				};
 				if (suspected) {
 					reasons.push(
-						`flag:possible background card/caption (frame luma ${Math.round(frameLuma * 100)}%, sat ${Math.round(frameSat * 100)}%, interior luma ${Math.round(interiorLuma * 100)}%, sat ${Math.round(interiorSat * 100)}%, frame ${Math.round(frameArea * 100)}%, product ${Math.round(largestNonFrame * 100)}%, caption ${captionBand ? "yes" : "no"}) — reject if a background/caption is visible`,
+						`flag:possible background card/caption (frame luma ${Math.round(frameLuma * 100)}%, sat ${Math.round(frameSat * 100)}%, interior luma ${Math.round(interiorLuma * 100)}%, sat ${Math.round(interiorSat * 100)}%, frame ${Math.round(frameArea * 100)}%, product ${Math.round(largestNonFrame * 100)}%, caption ${captionBand && cardLike ? "yes" : "no"}) — reject if a background/caption is visible`,
 					);
 				}
 			}

@@ -217,7 +217,7 @@ async function brightPedalCaptionCard(): Promise<Buffer> {
 		}
 	}
 	for (let y = 100; y < 1150; y++) {
-		for (let x = 80; x < 650; x++) {
+		for (let x = 100; x < 630; x++) {
 			const i = (y * width + x) * 4;
 			data[i] = 215;
 			data[i + 1] = 210;
@@ -247,8 +247,8 @@ async function printedLogoBrightPedal(): Promise<Buffer> {
 	const width = 730;
 	const height = 1290;
 	const data = Buffer.alloc(width * height * 4);
-	for (let y = 0; y < height; y++) {
-		for (let x = 0; x < width; x++) {
+	for (let y = 20; y < height - 20; y++) {
+		for (let x = 20; x < width - 20; x++) {
 			const i = (y * width + x) * 4;
 			data[i] = 216;
 			data[i + 1] = 215;
