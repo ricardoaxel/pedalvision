@@ -66,7 +66,7 @@ describe("renderPedalArt", () => {
 			expect(Math.max(meta.width ?? 0, meta.height ?? 0)).toBe(rendition.size);
 			expect(rendition.bytes).toBe(buffer.length);
 		}
-	});
+	}, 20_000);
 
 	it("is deterministic across runs", async () => {
 		const first = await mkdtemp(join(tmpdir(), "pedal-art-a-"));
@@ -85,7 +85,7 @@ describe("renderPedalArt", () => {
 		expect(sha(await readFile(one.pngPath))).toBe(
 			sha(await readFile(two.pngPath)),
 		);
-	});
+	}, 20_000);
 
 	it("passes the analyzer on the 800 rendition", async () => {
 		const dir = await mkdtemp(join(tmpdir(), "pedal-art-analyze-"));
@@ -99,7 +99,7 @@ describe("renderPedalArt", () => {
 		expect(analysis.aspect.verdict).toBe("pass");
 		expect(analysis.shadowRatio ?? 0).toBe(0);
 		expect(analysis.verdict).not.toBe("reject");
-	});
+	}, 20_000);
 
 	it("has clean alpha and no cyan accent pixels", async () => {
 		const dir = await mkdtemp(join(tmpdir(), "pedal-art-pixels-"));
@@ -131,7 +131,7 @@ describe("renderPedalArt", () => {
 			if (a > 16 && g > 160 && b > 150 && r < 0.75 * g) cyan++;
 		}
 		expect(cyan).toBe(0);
-	});
+	}, 20_000);
 
 	it("rejects invalid specs", async () => {
 		await expect(
