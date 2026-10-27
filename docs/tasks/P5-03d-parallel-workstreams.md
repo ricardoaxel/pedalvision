@@ -20,17 +20,18 @@ control. Rules only — no code, data or assets.
 ## Workstream model
 
 - **In flight:** 1 feature + **up to 3** catalog batches.
-- **Start:** **3 catalog by default after T-2c/T-2d (no flag)**; with a feature PR
-  open, plan `maxParallel: 2` (1 feature + 2 catalog; the third waits for a slot).
-  At **≥2.0M billed** at a checkpoint, start no new wave; active batches finish.
+- **Start:** **3 catalog by default after T-2c/T-2d (no flag)**. The feature PR is a
+  separate 1-PR lane and does not reduce catalog width. At **≥2.0M billed** at a
+  checkpoint, start no new catalog wave; active batches finish.
 - **3-wide** is the default and logged; T-2c/T-2d must merge first. The true-token
   metric remains for budgets/stops; soft is logged without shrinking, hard 2.4M
   refuses.
 - The feature stream never counts toward catalog width, and the catalog never blocks
   an already-started feature task (except the PR cap below).
-- **Owner-set PR cap:** **≤3 PRs awaiting owner review across workstreams**, and at
-  most **1** of those may be a feature PR. At the cap, start nothing new. A PR counts
-  as "awaiting review" from push until merge.
+- **Catalog PR cap:** **≤3 catalog PRs awaiting owner review** (one per batch).
+  **Feature PR cap:** **≤1 feature PR**, separate; it does not count toward the
+  catalog cap. At the catalog cap, start no new catalog wave; at the feature cap,
+  start no new feature. A PR counts as "awaiting review" from push until merge.
 - **Default remains serial.** Use the feature slot only for a task with a frozen /
   approved direction and zero catalog overlap. When in doubt, run it after the wave.
 
@@ -109,7 +110,7 @@ cache-inclusive JSONL floor separately.
   --wave <id>` for the wave.
 - **One `docs/progress.md` workstream note per checkpoint** (format below).
 - **Stop immediately and report** on: a feature task needing a shared/generated file;
-  3 PRs awaiting review (start nothing new); post-merge build unverified or a
+  3 catalog PRs or 1 feature PR awaiting review (start nothing new); post-merge build unverified or a
   generated-file conflict; the combined hard cap or any class hard cap; a feature task
   >6 h or >2× class soft; any model/provider failure (429/401/quota/timeout/empty) —
   report model + operation + exact error, never substitute.
@@ -160,12 +161,12 @@ Report: branch, PR, billed tokens by class, checks, blockers.
   design loop does not trip false stops.
 - **3-wide owner override (2026-10-27), default after T-2d:** all catalog waves start
   3-wide with no flag (soft logged, hard 2.4M stop); true-token metric remains the
-  budget/stop guard; ≤3 PRs (max 1 feature).
+  budget/stop guard; **catalog ≤3 PRs + feature ≤1 PR (separate)**.
 - **Coordinator narrowed to shared files only**; feature sessions stop instead of
   coordinating ad hoc.
 - **Per-class token logging** in the wave report / checkpoints.
-- Not adopted (owner-set, recorded for transparency): flat 1 feature + 2 catalog
-  (owner override 2026-10-27: 3-wide, ≤3 PRs, max 1 feature).
+- Historical note: flat 1 feature + 2 catalog was not adopted. Current owner rule
+  (2026-10-27): 3-wide; catalog ≤3 PRs + feature ≤1 PR (separate).
 
 ## Acceptance
 

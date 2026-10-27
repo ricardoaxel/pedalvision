@@ -23,8 +23,8 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
 
 - #62 (T-2c/T-2d) and #63 (F-02) are merged; main at/after `61d944d`; **322/15**; **0 PRs**.
 - Waves start **3-wide by default**; no `--allow-third`.
-- If a feature PR is open, use `maxParallel: 2`; do not start 3-wide with a feature
-  PR open. PR cap **≤3** (max 1 feature).
+- 3-wide even with a feature PR open; the feature is a separate 1-PR lane.
+  Catalog cap **≤3 PRs**; feature cap **≤1 PR**, separate.
 - T-2 calibration: boss-4 ≈724k/66 min; boss-5 ≈579k/42 min.
 
 ## Scope
@@ -32,8 +32,7 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
 - `boss/boss-6`, `boss/boss-7`, `boss/boss-8` (77 total; inventory slices to be
   confirmed by the coordinator from the BOSS inventory).
 - Create each task/worktree from `P5-batch-template.md`.
-- Wave plan `work/catalog/waves/boss-wave-4.json` with `maxParallel: 3` (or 2 if a
-  feature PR is open).
+- Wave plan `work/catalog/waves/boss-wave-4.json` with `maxParallel: 3`; a feature PR is a separate 1-PR lane.
 - No feature work; no T-4; no merge.
 
 ## Steps
@@ -62,7 +61,7 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
 
 - 400k/800k per batch; wave soft 1.6M / hard 2.4M billed non-cache; 4 h active;
   12 min/item; ≤2 vision; ≤1 light code review.
-- Stop on 3 PRs awaiting, hard cap, 2 failed resumes, generated conflict, or any
+- Stop on 3 catalog PRs or 1 feature PR awaiting, hard cap, 2 failed resumes, generated conflict, or any
   429/401/quota/timeout/empty (report model + operation + exact error).
 
 ## Acceptance

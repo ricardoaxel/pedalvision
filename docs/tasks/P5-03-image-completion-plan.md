@@ -68,8 +68,8 @@ own task file — no need to re-paste the whole plan.
   trustworthy (boss-3 recorded 4.21M synthetic; boss-2 39k).
 - **D8 — One parallel feature workstream (T-0b).** One feature task may run alongside
   the catalog wave (1 feature + up to 3 catalog batches; **3-wide default after T-2c/T-2d**).
-  **≤3 PRs awaiting owner review across workstreams** (≤1 feature); with a feature
-  open: 1 feature + 2 catalog, third waits. Feature budgets: builder soft ≤400k /
+  **Catalog cap ≤3 PRs; feature cap ≤1 PR, separate** — 3 catalog + 1 feature is
+  allowed. Feature budgets: builder soft ≤400k /
   hard ≤800k, review allowance ≤300k, task hard ≤1.1M, 6 h; combined window **soft
   2.2M / hard 3.4M** billed non-cache. Catalog budgets: 400k/800k per batch; wave
   1.6M/2.4M. **Armed after the T-2 calibration** (T-0a merged; owner may waive).
@@ -120,8 +120,7 @@ for the verified post-merge build and never hand-resolve generated conflicts.
 calibration (blocker: unvalidated billed baseline / unmerged true metric);
 class-structured feature budget; third catalog slot behind both the true-token gate
 and the PR cap; coordinator narrowed to shared files only; per-class token logging.
-Not adopted (owner-set, recorded): flat 1 feature + 2 catalog and class-split PR caps
-(owner later overrode this on 2026-10-27: 3-wide default after T-2c/T-2d, no flag; ≤3 PRs; true-token metric remains the budget/stop guard).
+Historical token-verdict note; the owner later adopted separate caps (catalog ≤3 PRs + feature ≤1 PR) and the true-token metric remains the budget/stop guard.
 See `docs/tasks/P5-03d-parallel-workstreams.md`.
 
 ## Task / PR index
@@ -130,7 +129,7 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 |---|---|---|---|
 | **T-0** | This plan (docs-only) | **Merged (PR #52, squash `4a6f1e7`).** Plan + T-0a/T-1 task files; reconcile progress/roadmap/phase-guide/#50/#51 statuses; record token verdict. One PR. | — |
 | **T-0a** | Wave true-token gate | **Merged (PR #53, squash `dee8b39`).** `catalog:wave`/runner gate + report use true billed tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk) pass 1 changes-required → pass 2 approve. | T-0 |
-| **T-0b** | Parallel feature + catalog workstreams (docs-only) | **Merged (PR #54, squash `89c6a38`).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; **owner override 2026-10-27: 3-wide default, ≤3 PRs awaiting review (max 1 feature)**. Feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
+| **T-0b** | Parallel feature + catalog workstreams (docs-only) | **Merged (PR #54, squash `89c6a38`).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; **owner override 2026-10-27: 3-wide default; catalog ≤3 PRs + feature ≤1 PR (separate)**. Feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
 | **T-1** | Pedal flat-art + promote-legacy | **Merged (PR #55, squash `66222d4`).** Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Owner-approved "Catalog Specimen"; design-reviewer 2/2; code review 2/2. | T-0 |
 | **T-1a** | Image source policy (planner last-resort + recorded sources) | **Merged (PR #56, squash `ea20b02`).** Reverse the planner ban: official → retailer → community → planner **last-resort** → generated art only if none; 31 BOSS legacy remain repair-set. Always record source in the private raw catalog/ledger; ledger source-gap report. Docs/AGENTS/ADR-003/schema/gate/ledger + 26-record provenance backfill. One PR; token-reviewed. | T-1 |
 | **T-2** | BOSS wave 3 | **COMPLETE — boss-4 + legacy repair + boss-5 merged.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) merged; boss-5 (26 new, `md-2`…`od-3`) merged as PR #59 (`424bc2c`; post-merge `123df52`, 322/15; 52 AVIFs = 18 official + 8 planner + 0 generated; billed ≈579k / 42 min). T-2 calibration: boss-4 ≈724k/66 min. **T-3 next; T-2c/T-2d merged.** | T-0a, T-1, T-1a |
@@ -158,9 +157,9 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-4…T-7 cleanup** | **3-wide (default)** | after T-2c/T-2d; one PR per batch |
 | **T-8 Tier A** | **3-wide (default)** | after T-2c/T-2d; wave budgets/stops |
 | **T-9 boards** | **3-wide (default)** | after T-2c/T-2d; board budget |
-| **Feature lane** | **1 feature** | 1 feature + 2 catalog max at 3 PRs |
+| **Feature lane** | **1 feature** | separate 1-PR lane; 3 catalog + 1 feature allowed |
 
-**Launch rules:** `catalog:wave` only; no raw background sessions; one PR per batch; coordinator opens no PR; owner merges serially. With a feature PR open: 1 feature + 2 catalog; the third catalog waits for a PR slot. After every merge: verify post-merge build, update progress, rebase, refill.
+**Launch rules:** `catalog:wave` only; no raw background sessions; one PR per batch; coordinator opens no PR; owner merges serially. Catalog cap 3 + feature cap 1 (separate); 3 catalog + 1 feature allowed. After every merge: verify post-merge build, update progress, rebase, refill.
 
 ## Next-wave coordinator protocol (mandatory)
 
@@ -177,7 +176,7 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 6. Token-review a new wave; one PR per batch; coordinator opens no PR.
 7. After any merge: verify the post-merge build, update progress, rebase open
    branches, then refill. Max 3 refills per wave; one WS line per checkpoint.
-8. Stop on 3 PRs awaiting, wrapper-bypass risk, generated conflict, 2 failed resumes,
+8. Stop on 3 catalog PRs or 1 feature PR awaiting, wrapper-bypass risk, generated conflict, 2 failed resumes,
    hard budget, or any model/provider failure.
 
 ## Wave order
@@ -210,7 +209,7 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 - **3-wide by default (T-2d, no flag)**; the start is logged. Soft is logged and
   does not shrink the wave; hard 2.4M refuses. The true-token metric is the
   budget/stop guard, not a third-slot start gate. Do not raw-launch sessions.
-  With a feature PR open: 1 feature + 2 catalog; the third catalog waits.
+  Catalog cap 3 + feature cap 1 (separate); 3 catalog + 1 feature allowed.
 - **Source gap gate:** planner last-resort and legacy/mock/hotlinked items are
   counted by `catalog:license-report`; target 0 at T-10, but the owner may waive
   planner last-resort items (they are recorded + quality-gated).
@@ -218,7 +217,7 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
   error; never substitute); wave true tokens at hard cap (pause/stop active); batch
   >2× soft or >4 h; third vision pass needed; generated art fails clean-alpha/aspect/
   bright after 2 renders (mark pending); no verified jack face (omit edge, unknown);
-  **3 PRs awaiting owner review across workstreams** (start nothing new; ≤1 feature);
+  **3 catalog PRs or 1 feature PR awaiting owner review** (start nothing new);
   post-merge build unverified or a generated-file conflict; a feature needs a shared/
   generated file (stop → serial coordinator task); hotlinked+mock ≠ 0 at T-10; 2,000
   hosted pedals before Tier A.

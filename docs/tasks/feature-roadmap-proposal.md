@@ -16,9 +16,9 @@
 - **Feature lane:** one feature at a time, after #59; separate worktree; feature
   code/e2e/task/screenshots only. Never edit catalog data/assets/runtime/tools or
   shared docs/config/deps.
-- **Parallel cap:** **3 PRs awaiting owner review** (at most one feature).
-  With a feature PR open: 1 feature + 2 catalog; the third catalog waits for a
-  merge slot. With no feature: 3 catalog.
+- **Catalog cap:** **3 PRs awaiting owner review** (one per batch). **Feature cap:**
+  **1 PR**, separate. 3 catalog + 1 feature = 4 PRs is allowed. At the catalog cap,
+  start no new catalog wave; at the feature cap, start no new feature.
 - **Budgets:** catalog 400k/800k per batch; wave soft 1.6M / hard 2.4M;
   feature 400k/800k + review ≤300k, task hard 1.1M; combined soft 2.2M / hard
   3.4M billed non-cache. 3-wide is owner-accepted risk; log over-soft.
