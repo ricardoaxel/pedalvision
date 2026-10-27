@@ -7,7 +7,11 @@ import {
 	shade,
 } from "./color.ts";
 import { applyCase, glyphFont, layoutText, textHeightPx } from "./glyphs.ts";
-import type { PedalArtControl, PedalArtSpec } from "./spec.ts";
+import {
+	boxInsideRoundedRect,
+	type PedalArtControl,
+	type PedalArtSpec,
+} from "./spec.ts";
 
 /**
  * Pure spec → SVG renderer for "Catalog Specimen" pedal art.
@@ -138,22 +142,6 @@ function renderTextRun(
 	};
 }
 
-function textFits(
-	centerX: number,
-	centerY: number,
-	width: number,
-	height: number,
-	bodyWidth: number,
-	bodyHeight: number,
-): boolean {
-	return (
-		centerX - width / 2 >= 1 &&
-		centerX + width / 2 <= bodyWidth - 1 &&
-		centerY - height / 2 >= 1 &&
-		centerY + height / 2 <= bodyHeight - 1
-	);
-}
-
 function renderControlLabel(
 	control: PedalArtControl,
 	cx: number,
@@ -161,8 +149,13 @@ function renderControlLabel(
 	pxPerCm: number,
 	ink: string,
 	inkMeets: boolean,
-	width: number,
-	height: number,
+	topFace: {
+		x: number;
+		y: number;
+		width: number;
+		height: number;
+		radius: number;
+	},
 ): string {
 	if (!control.label || !inkMeets) return "";
 	const { halfWidth, halfHeight } = controlHalfSize(control, pxPerCm);
@@ -197,7 +190,17 @@ function renderControlLabel(
 	}
 
 	if (
-		!textFits(textCenterX, textCenterY, run.widthPx, textHeight, width, height)
+		!boxInsideRoundedRect(
+			topFace.x,
+			topFace.y,
+			topFace.width,
+			topFace.height,
+			topFace.radius,
+			textCenterX,
+			textCenterY,
+			run.widthPx / 2,
+			textHeight / 2,
+		)
 	) {
 		return "";
 	}
@@ -550,8 +553,13 @@ export function buildPedalArtSvg(
 					pxPerCm,
 					inkChoice.hex,
 					inkChoice.meets,
-					width,
-					height,
+					{
+						x: sidePx,
+						y: sidePx,
+						width: width - sidePx * 2,
+						height: height - sidePx * 2,
+						radius: topRadius,
+					},
 				),
 			);
 		}

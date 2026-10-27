@@ -91,6 +91,40 @@ describe("buildPedalArtSvg", () => {
 		expect((art.svg.match(/<path /g) ?? []).length).toBeGreaterThan(5);
 	});
 
+	it("omits a control label that would be clipped by the top face", () => {
+		const base = {
+			id: "label-clip",
+			family: "compact" as const,
+			widthCm: 7.4,
+			heightCm: 12.6,
+			style: "catalog-specimen/1" as const,
+			body: { fill: "#EEF1F4" },
+			controls: [
+				{
+					kind: "knob" as const,
+					u: 0.5,
+					v: 0.075,
+					diameterCm: 1.2,
+					label: "LEVEL",
+					labelPlacement: "above" as const,
+				},
+			],
+			text: [
+				{ role: "brand" as const, value: "ACME", u: 0.5, v: 0.06, sizeMm: 2.4 },
+				{ role: "model" as const, value: "M-1", u: 0.5, v: 0.12, sizeMm: 3.6 },
+			],
+		};
+		const withLabel = buildPedalArtSvg(parsePedalArtSpec(base));
+		const withoutLabel = buildPedalArtSvg(
+			parsePedalArtSpec({
+				...base,
+				controls: [{ ...base.controls[0], label: undefined }],
+			}),
+		);
+		const count = (svg: string) => (svg.match(/<path /g) ?? []).length;
+		expect(count(withLabel.svg)).toBe(count(withoutLabel.svg));
+	});
+
 	it("clips body content to the rounded top face", () => {
 		expect(buildPedalArtSvg(DS1).svg).toContain('clip-path="url(#topFace)"');
 	});

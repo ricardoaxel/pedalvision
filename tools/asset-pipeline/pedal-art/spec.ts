@@ -186,7 +186,7 @@ export const PedalArtJackSchema = z
 	})
 	.strict();
 
-function insideRoundedRect(
+export function insideRoundedRect(
 	x: number,
 	y: number,
 	width: number,
@@ -210,7 +210,7 @@ function insideRoundedRect(
 	return true;
 }
 
-function boxInsideRoundedRect(
+export function boxInsideRoundedRect(
 	x: number,
 	y: number,
 	width: number,

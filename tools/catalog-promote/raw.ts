@@ -26,8 +26,9 @@ export async function existingRawIds(
 		let files: string[];
 		try {
 			files = await readdir(dir);
-		} catch {
-			continue;
+		} catch (error) {
+			if ((error as NodeJS.ErrnoException).code === "ENOENT") continue;
+			throw error;
 		}
 		for (const file of files) {
 			if (!file.endsWith(".json")) continue;
@@ -36,9 +37,12 @@ export async function existingRawIds(
 			const parsed = RawPedalBatchSchema.safeParse(
 				JSON.parse(await readFile(path, "utf8")),
 			);
-			if (parsed.success) {
-				ids.push(...parsed.data.map((record) => record.id));
+			if (!parsed.success) {
+				throw new Error(
+					`${path}: invalid raw batch — ${parsed.error.issues[0]?.message ?? "unknown error"}`,
+				);
 			}
+			ids.push(...parsed.data.map((record) => record.id));
 		}
 	}
 	return ids;

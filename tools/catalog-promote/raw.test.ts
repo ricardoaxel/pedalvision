@@ -45,6 +45,15 @@ describe("existingRawIds", () => {
 		expect(await existingRawIds(root, batch)).toEqual([]);
 	});
 
+	it("throws on a schema-invalid raw batch instead of skipping ids", async () => {
+		const { root } = await fixture();
+		await writeFile(
+			join(root, "data/catalog/research/pedals/acme/bad.json"),
+			JSON.stringify([{ id: "bad" }]),
+		);
+		await expect(existingRawIds(root)).rejects.toThrow(/invalid raw batch/);
+	});
+
 	it("returns [] when there is no research directory", async () => {
 		const root = await mkdtemp(join(tmpdir(), "promote-raw-empty-"));
 		dirs.push(root);
