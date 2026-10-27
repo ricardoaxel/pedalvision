@@ -1,6 +1,6 @@
 # T-2c — Wrapper 3-wide true-token fix
 
-**Phase:** P5 · **Status:** in review — PR pending · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-0a
+**Phase:** P5 · **Status:** in review — PR #62 · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-0a
 
 ## Goal
 
