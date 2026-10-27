@@ -166,6 +166,7 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 		"tremolo",
 		"rotary",
 		"wah",
+		"filter",
 	],
 	"boss-md-500-modulation": [
 		"chorus",
@@ -176,6 +177,7 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 		"rotary",
 		"filter",
 		"ring-mod",
+		"wah",
 	],
 	"boss-me-90-guitar-multiple-effects": [
 		"amp-modeler",
