@@ -39,7 +39,7 @@ Read only the sections the task file points to; do not read whole docs.
 
 1. Restate the exact batch scope and expected item count.
 2. Create/confirm the raw records under `data/catalog/research/{pedals,boards}/<brand>/<batch>.json`.
-3. Run `pnpm catalog:start` and checkpoint after every item. **When launched by `catalog:wave`, the coordinator already started the batch — skip `catalog:start`; keep the inline checkpoints and finish with `catalog:finish`.**
+3. Run `pnpm catalog:start` and checkpoint after every item. **When launched by `catalog:wave`, the coordinator already started/resumed the batch — skip `catalog:start`/`catalog:resume`; keep the inline checkpoints and finish with `catalog:finish`.** If state already exists (stopped/failed), use `pnpm catalog:resume --batch <id>` — never re-`start` (it refuses existing state).
 4. Run the deterministic image scripts in the batch session (no separate image-scout agent required): analyzer/processor/PSNR/contact sheet; keep candidates, accepts, rejects and reasons (`pnpm asset:analyze`, `pnpm asset:process`, `pnpm asset:psnr`, `pnpm asset:contact-sheet`, `pnpm asset:qa`). One contact sheet per 10–30 flagged images, max 2 vision passes.
 4a. **Connector-face check (jack edges):** grep the official manual text for the panel/jacks; for items still unknown, render the panel/connection page (`pdftoppm`) and add connector-strip crops to the existing contact sheet (or one dedicated sheet at `--cell 600+` when >30 cells) — this stays inside the 2-pass cap. If the face is not visible, omit the edge with `confidence: "unknown"`; do not loop or infer from form factor.
 5. Run `pnpm catalog:check-jacks`, `pnpm catalog:ci` (CI temp build) and the Playwright picker/render check.

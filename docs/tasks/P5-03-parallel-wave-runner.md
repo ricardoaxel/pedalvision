@@ -2,6 +2,12 @@
 
 **Phase:** P5 · **Status:** in review — PR #47 · **Model:** build-strong
 
+> **Superseded in part by T-2c (2026-10-27).** The 2-wide + `canStartNext` third
+> slot below is retired. Waves start 2 up front; a 3-wide start requires the
+> explicit, logged `--allow-third` (`maxParallel: 3`), and a queued batch never
+> starts when a slot frees. See `docs/tasks/T-2c-wrapper-3-wide.md` and
+> `tools/catalog-wave/README.md`.
+
 ## Goal
 
 Add the missing glue for the P5 parallel mechanism: launch **2–3 independent

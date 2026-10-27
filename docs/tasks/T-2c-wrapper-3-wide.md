@@ -1,6 +1,6 @@
 # T-2c — Wrapper 3-wide true-token fix
 
-**Phase:** P5 · **Status:** next · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-0a
+**Phase:** P5 · **Status:** in review — PR pending · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-0a
 
 ## Goal
 
@@ -44,6 +44,46 @@ as the budget/stop guard. This is **not** a catalog batch and opens no catalog P
 - Code review: high-risk, ≤2 light-model passes; tests are the re-check.
 - Run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
 - One PR; no merge; owner merges.
+
+## Implementation
+
+- **Explicit 3-wide start.** `initialStartCount` starts 2 up front; the third
+  starts only with `--allow-third` + `maxParallel: 3`, and the wave logs
+  `3-wide start: starting 3 batches`. Without it the third stays `queued`.
+- **No free-slot start.** `refresh` never starts a queued batch; it only marks
+  queued batches `not-started` on stop/soft/hard budget or when no active batch
+  remains. The retired `canStartNext`/`startDecision` gate code is removed.
+- **Safe explicit resume.** `--resume` reuses the **original wave id** (its
+  state + JSONL are the true-token source), keeps `done`/`tokens`/`startedAt`,
+  clears stale `.stop`/`.pause` markers, adopts completed siblings, skips
+  `cap-reached` ones and starts plan batches with no state (partial-wave refill).
+  `startBatch` now refuses any existing state instead of silently recreating it;
+  `resumeBatch` refuses a live child **and a supervisor that is still finalizing**
+  (`supervisorPid`) and takes the start lock.
+- **Budget guard.** `WAVE_SOFT_TOKENS` is aligned to the owner-approved **1.6M**
+  (hard 2.4M). Before launching/resuming, `preStartBudget` refuses at the hard
+  cap and degrades to 1-wide at the soft cap, using the original wave's prior
+  JSONL (why resume keeps the wave id). The true billed metric still stops
+  active batches.
+- **One PR per batch / no merge** unchanged; the wrapper still never opens or
+  merges PRs.
+- **Tests:** `initialStartCount`, `preStartBudget`, soft/hard budget, plan
+  fresh-start/resume validation, runner start/resume collision guards, plus
+  integration tests for the logged 3-wide start, the freed-slot regression and
+  the stale-`.stop` resume path.
+- **Docs:** wrapper README, `docs/catalog-backfill.md` §Parallel waves,
+  superseded notes in P5-03/P5-03a and a resume note in the batch template.
+
+## Token review (2026-10-27)
+
+Verdict **`adjust`**; folded: wave soft budget constant aligned to **1.6M**
+(was 1.2M); resume waves may include completed batches (adopted, not an error);
+pre-start hard/soft budget guard; superseded-gate notes in the old task files;
+batch-template resume note. No new agents/dependencies. Residual: resume must reuse the
+original wave id (enforced) so the pre-start guard reads the real prior JSONL;
+the phase guide was reconciled to 1.6M/2.4M, `--allow-third` and the 2.2M/3.4M
+combined window. Detached flag propagation and the freed-slot terminal state are
+tested.
 
 ## Acceptance
 

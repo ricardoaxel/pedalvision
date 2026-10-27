@@ -487,14 +487,16 @@ The coordinator launches a wave with a plan file (1–3 batches; normal max is 3
 ```
 
 ```bash
-pnpm catalog:wave run --plan work/catalog/waves/boss-wave-2.json   # detached
-pnpm catalog:wave status --wave boss-wave-2 --wait                 # blocks until done
-pnpm catalog:wave report --wave boss-wave-2
+pnpm catalog:wave run --plan work/catalog/waves/boss-wave-4.json --allow-third  # 3-wide, logged
+pnpm catalog:wave status --wave boss-wave-4 --wait                                # blocks until done
+pnpm catalog:wave report --wave boss-wave-4
+pnpm catalog:wave run --plan <resume-plan>.json --resume                          # explicit resume
 ```
 
-- The wrapper **starts the batch state** (`catalog:start`) and then runs `opencode run --auto --format json` under `catalog-runner supervise`, so the session must **not** call `catalog:start`; the plan prompt must say so.
-- **After T-2c it starts 3 batches explicitly and logs the start.** The true-token metric remains the budget/stop guard; do not silently auto-start a third batch when a slot frees. Max 3 in flight.
-- Each batch's JSONL, log and the wave `report.md`/`state.json` live in `work/catalog/waves/<id>/`. The report has one line per batch (items/images/checkpoint tokens/main-session token floor/minutes/PR/CI) plus the session's final text.
+- The wrapper **starts the batch state** (`catalog:start`, or an explicit `--resume`) and then runs `opencode run --auto --format json` under `catalog-runner supervise`, so the session must **not** call `catalog:start`/`catalog:resume`; the plan prompt must say so.
+- **After T-2c it starts 3 batches explicitly and logs the start** (`--allow-third`, `maxParallel: 3`). Without the flag only 2 start and the third stays `queued`; the wrapper **never** starts a queued batch when a slot frees. The true-token metric remains the budget/stop guard. Max 3 in flight.
+- **Resume is explicit.** `--resume` reuses the **original wave id** (its state/JSONL are the true-token source), clears stale `.stop`/`.pause` markers, keeps the batch's `done`/`tokens`/`startedAt`, adopts completed siblings, and starts plan batches that have no state (refill). It refuses a live-pid/finalizing batch. A fresh start refuses existing state instead of silently recreating it.
+- Each batch's JSONL, log and the wave `report.md`/`state.json` live in `work/catalog/waves/<id>/`. The report has one line per batch (items/images/billed non-cache tokens/cache-inclusive floor/minutes/PR/CI) plus the session's final text.
 - The wrapper never merges and never opens PRs; each session owns its branch/worktree and exactly one PR. On pause/stop/cap it stops launching and reports; the supervised session honours the stop.
 
 **Next-wave coordinator protocol:** before a wave, read `catalog:status`, the latest

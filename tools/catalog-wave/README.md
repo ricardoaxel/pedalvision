@@ -32,9 +32,9 @@ cat > work/catalog/waves/boss-wave-2.json <<'JSON'
 }
 JSON
 
-pnpm catalog:wave run --plan work/catalog/waves/boss-wave-2.json   # detached
-pnpm catalog:wave status --wave boss-wave-2 --wait
-pnpm catalog:wave report --wave boss-wave-2
+pnpm catalog:wave run --plan work/catalog/waves/boss-wave-3.json --allow-third  # 3-wide
+pnpm catalog:wave status --wave boss-wave-3 --wait
+pnpm catalog:wave report --wave boss-wave-3
 ```
 
 `--foreground` keeps the runner attached (useful in tests/CI); `--dry-run`
@@ -42,15 +42,25 @@ validates the plan and prints what would launch.
 
 ## Contract
 
-- The wrapper runs `catalog:start` for each batch, so the **prompt must not call
-  `catalog:start`**. The prompt must checkpoint inline after every item and
-  finish with `catalog:finish`.
-- Starts **2** batches. A third starts only when the first is past midpoint, has
-  used ≤40% of the 400k **billed** soft budget and is sustaining ≥2 items/h
-  (`canStartNext`). The gate and the 1.2M/2.4M wave budgets use the true
-  **billed non-cache** metric (`input + output + reasoning` from each session's
-  JSONL), never the self-reported runner `.tokens`. Max 3 in flight, enforced by
+- The wrapper runs `catalog:start` (or an explicit resume) for each batch, so the
+  **prompt must not call `catalog:start`/`catalog:resume`**. The prompt must
+  checkpoint inline after every item and finish with `catalog:finish`.
+- Starts **2** batches up front. A **3-wide** start requires the explicit,
+  logged `--allow-third` flag and `maxParallel: 3` in the plan (owner override
+  2026-10-27). Without it, a third batch stays `queued`; the wrapper **never**
+  starts a queued batch when a slot frees. Max 3 in flight, enforced by
   `catalog-runner`.
+- `--resume` explicitly resumes stopped/paused batches and starts plan batches
+  with no state (so a partial wave can be refilled with `--allow-third`). It
+  clears stale `.stop`/`.pause` markers and keeps `done`/`tokens`/`startedAt`;
+  completed siblings are adopted and `cap-reached` ones are skipped. Resume
+  **requires the original wave id** (its `work/catalog/waves/<id>/state.json` +
+  JSONL are the true-token source) and refuses a still-supervised/finalizing
+  batch. Without `--resume`, a fresh start refuses existing state instead of
+  silently recreating it.
+- The 1.6M/2.4M wave budgets use the true **billed non-cache** metric
+  (`input + output + reasoning` from each session's JSONL), never the
+  self-reported runner `.tokens`.
 - On every refresh the runner recomputes each active batch from its JSONL. A step
   without billed fields uses its total as an upper bound; the checkpoint ledger
   is used only when the JSONL carries no token numbers at all. At the wave
@@ -76,7 +86,7 @@ validates the plan and prints what would launch.
 `opencode` `step_finish` events carry `tokens.{input,output,reasoning,cache.read,cache.write,total}`.
 
 - **Billed non-cache** = `input + output + reasoning`. This is the value the
-  per-batch (400k/800k) and wave (1.2M/2.4M) budgets use.
+  per-batch (400k/800k) and wave (1.6M/2.4M) budgets use.
 - **Cache-inclusive floor** = `total` (summed over steps), reported separately as
   context, never gated.
 - If a step omits `total`, the floor is derived by summing the recognised fields.

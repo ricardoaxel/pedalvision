@@ -1,90 +1,32 @@
 import { describe, expect, it } from "vitest";
-import type { BatchState } from "../catalog-runner/state.ts";
 import {
-	canStartNext,
+	initialStartCount,
+	preStartBudget,
 	resolveBatchTokens,
-	startDecision,
+	WAVE_SOFT_TOKENS,
 	waveBudget,
 } from "./gate.ts";
 
-function state(overrides: Partial<BatchState> = {}): BatchState {
-	return {
-		version: 1,
-		batchId: "boss/boss-2",
-		kind: "pedals",
-		brand: "BOSS",
-		worktree: "/tmp",
-		status: "running",
-		total: 26,
-		done: 13,
-		imagesAccepted: 0,
-		imagesRejected: 0,
-		tokens: 100_000,
-		startedAt: new Date(Date.now() - 60 * 60_000).toISOString(),
-		updatedAt: new Date().toISOString(),
-		heartbeatAt: new Date().toISOString(),
-		blockers: [],
-		...overrides,
-	};
-}
-
-const now = new Date();
-
-/** Fixture-only billed map: the gate requires resolved billed tokens. */
-function gate(states: BatchState[], at: Date = now) {
-	return canStartNext(
-		states,
-		at,
-		Object.fromEntries(states.map((entry) => [entry.batchId, entry.tokens])),
-	);
-}
-
-describe("third-slot gate", () => {
-	it("opens after midpoint, ≤40% soft budget and ≥2 items/h", () => {
-		expect(gate([state()])).toEqual({
-			ok: true,
-			reason: "midpoint + budget + rate gates pass",
-		});
+describe("initial start width", () => {
+	it("starts 2 by default and 3 only with the explicit --allow-third", () => {
+		expect(
+			initialStartCount({ batchCount: 3, maxParallel: 3, allowThird: false }),
+		).toBe(2);
+		expect(
+			initialStartCount({ batchCount: 3, maxParallel: 3, allowThird: true }),
+		).toBe(3);
 	});
 
-	it("stays closed before midpoint, over budget or under rate", () => {
-		expect(gate([state({ done: 12 })]).ok).toBe(false);
-		expect(gate([state({ tokens: 160_001 })]).ok).toBe(false);
+	it("never exceeds the plan width or batch count", () => {
 		expect(
-			gate([
-				state({
-					done: 13,
-					startedAt: new Date(Date.now() - 8 * 60 * 60_000).toISOString(),
-				}),
-			]).ok,
-		).toBe(false);
-	});
-
-	it("requires an active batch and refuses a fourth slot", () => {
-		expect(gate([]).ok).toBe(false);
+			initialStartCount({ batchCount: 3, maxParallel: 2, allowThird: true }),
+		).toBe(2);
 		expect(
-			gate([state(), state({ batchId: "b/2" }), state({ batchId: "b/3" })]).ok,
-		).toBe(false);
-	});
-
-	it("uses the true billed metric, not the self-reported runner tokens", () => {
-		// Low checkpoint ledger but the JSONL billed count is over the gate.
+			initialStartCount({ batchCount: 1, maxParallel: 3, allowThird: true }),
+		).toBe(1);
 		expect(
-			canStartNext([state({ tokens: 1_000 })], now, {
-				"boss/boss-2": 160_001,
-			}).ok,
-		).toBe(false);
-		// Synthetic-high checkpoint ledger must not close the gate when the
-		// true billed count is under the limit.
-		expect(
-			canStartNext([state({ tokens: 4_210_000 })], now, {
-				"boss/boss-2": 100_000,
-			}).ok,
-		).toBe(true);
-		// A missing resolved value fails closed instead of using the ledger.
-		const missing = canStartNext([state()], now, {});
-		expect(missing.ok).toBe(false);
-		expect(missing.reason).toContain("no true billed tokens");
+			initialStartCount({ batchCount: 3, maxParallel: 3, allowThird: false }),
+		).toBe(2);
 	});
 });
 
@@ -135,33 +77,26 @@ describe("true token resolution + wave budget", () => {
 	});
 
 	it("flags the wave soft/hard budgets", () => {
-		expect(waveBudget(1_199_999)).toEqual({
-			tokens: 1_199_999,
+		expect(WAVE_SOFT_TOKENS).toBe(1_600_000);
+		expect(waveBudget(1_599_999)).toEqual({
+			tokens: 1_599_999,
 			softExceeded: false,
 			hardExceeded: false,
 		});
-		expect(waveBudget(1_200_000).softExceeded).toBe(true);
+		expect(waveBudget(1_600_000).softExceeded).toBe(true);
 		expect(waveBudget(2_400_000).hardExceeded).toBe(true);
 	});
 
-	it("never starts a queued batch after a stop, and stops on budget", () => {
-		const base = {
-			active: 1,
-			queued: 1,
-			maxParallel: 3,
-			budget: waveBudget(0),
-		};
-		expect(startDecision({ ...base, stopping: true }).action).toBe("stop");
-		expect(
-			startDecision({ ...base, stopping: false, budget: waveBudget(1_200_000) })
-				.action,
-		).toBe("stop");
-		expect(startDecision({ ...base, stopping: false }).action).toBe("start");
-		expect(startDecision({ ...base, stopping: false, active: 2 }).action).toBe(
-			"wait",
-		);
-		expect(startDecision({ ...base, stopping: false, queued: 0 }).action).toBe(
-			"wait",
-		);
+	it("guards an already-over-budget resume before launching", () => {
+		expect(preStartBudget(3, waveBudget(0))).toEqual({ width: 3 });
+		expect(preStartBudget(3, waveBudget(1_600_000))).toEqual({
+			width: 1,
+			note: "wave soft budget already reached (1600000 billed tokens); starting 1-wide",
+		});
+		expect(preStartBudget(3, waveBudget(2_400_000))).toEqual({
+			width: 0,
+			stopReason:
+				"wave hard budget already reached (2400000 billed tokens); refusing to start",
+		});
 	});
 });

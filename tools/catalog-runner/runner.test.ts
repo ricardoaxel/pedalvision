@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, describe, expect, it } from "vitest";
+import { isBatchPause, isBatchStop } from "./control.ts";
 import {
 	checkpoint,
 	finishBatch,
@@ -180,6 +181,85 @@ describe("catalog runner", () => {
 			itemId: "acme-beta",
 		});
 		expect(resumed.exitCode).toBe(0);
+	});
+
+	it("refuses to recreate an existing stopped batch", async () => {
+		const dir = await root();
+		await start(dir, "acme/pedals-1");
+		await checkpoint({
+			root: dir,
+			batchId: "acme/pedals-1",
+			itemId: "acme-alpha",
+		});
+		await stopBatch(dir, "acme/pedals-1");
+		const stopped = await checkpoint({
+			root: dir,
+			batchId: "acme/pedals-1",
+			itemId: "acme-beta",
+		});
+		expect(stopped.state.status).toBe("stopped");
+
+		await expect(start(dir, "acme/pedals-1")).rejects.toThrow(
+			/already exists \(stopped\); .*resume it explicitly/,
+		);
+		const state = await readState(dir, "acme/pedals-1");
+		expect(state.status).toBe("stopped");
+		expect(state.done).toBe(2);
+	});
+
+	it("resumes stopped state explicitly, clears markers and keeps progress", async () => {
+		const dir = await root();
+		await start(dir, "acme/pedals-1");
+		await checkpoint({
+			root: dir,
+			batchId: "acme/pedals-1",
+			itemId: "acme-alpha",
+		});
+		await stopBatch(dir, "acme/pedals-1");
+		const stopped = await checkpoint({
+			root: dir,
+			batchId: "acme/pedals-1",
+			itemId: "acme-beta",
+		});
+		expect(stopped.state.status).toBe("stopped");
+		expect(await isBatchStop(dir, "acme/pedals-1")).toBe(true);
+		const startedAt = stopped.state.startedAt;
+
+		const resumed = await resumeBatch(dir, "acme/pedals-1");
+		expect(resumed.status).toBe("running");
+		expect(resumed.done).toBe(2);
+		expect(resumed.startedAt).toBe(startedAt);
+		expect(resumed.stopRequested).toBe(false);
+		expect(await isBatchStop(dir, "acme/pedals-1")).toBe(false);
+		expect(await isBatchPause(dir, "acme/pedals-1")).toBe(false);
+	});
+
+	it("refuses to resume a still-supervised or completed batch", async () => {
+		const dir = await root();
+		await start(dir, "acme/pedals-1");
+		const live = await readState(dir, "acme/pedals-1");
+		live.pid = process.pid;
+		await writeState(dir, live);
+		await expect(resumeBatch(dir, "acme/pedals-1")).rejects.toThrow(
+			/still supervised/,
+		);
+
+		const finalizing = await readState(dir, "acme/pedals-1");
+		finalizing.pid = undefined;
+		finalizing.supervisorPid = process.pid;
+		await writeState(dir, finalizing);
+		await expect(resumeBatch(dir, "acme/pedals-1")).rejects.toThrow(
+			/still finalizing/,
+		);
+
+		const done = await readState(dir, "acme/pedals-1");
+		done.pid = undefined;
+		done.supervisorPid = undefined;
+		done.status = "complete";
+		await writeState(dir, done);
+		await expect(resumeBatch(dir, "acme/pedals-1")).rejects.toThrow(
+			/cannot be resumed/,
+		);
 	});
 
 	it("does not complete an incomplete batch", async () => {

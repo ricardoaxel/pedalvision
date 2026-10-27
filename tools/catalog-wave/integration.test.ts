@@ -87,7 +87,7 @@ describe("catalog:wave integration", () => {
 			planPath,
 			JSON.stringify({
 				id: waveId,
-				maxParallel: 2,
+				maxParallel: 3,
 				batches: [
 					{
 						batch,
@@ -349,13 +349,13 @@ describe("catalog:wave hard-cap path", () => {
 	}, 120_000);
 });
 
-describe("catalog:wave third-slot true-token wiring", () => {
-	it("keeps the third slot closed when billed tokens pass the gate", async () => {
-		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-third-"));
+describe("catalog:wave 3-wide explicit start", () => {
+	it("starts all three batches only with --allow-third and logs the start", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-3wide-"));
 		tempDirs.push(temp);
-		const waveId = `wave-third-${process.pid}`;
+		const waveId = `wave-3wide-${process.pid}`;
 		const batches = ["a", "b", "c"].map(
-			(suffix) => `acme/third-${suffix}-${process.pid}`,
+			(suffix) => `acme/wide-${suffix}-${process.pid}`,
 		);
 		const bin = join(temp, "bin");
 		await mkdir(bin, { recursive: true });
@@ -364,14 +364,14 @@ describe("catalog:wave third-slot true-token wiring", () => {
 			[
 				"#!/bin/sh",
 				"trap 'exit 0' TERM",
-				'echo \'{"type":"step_finish","sessionID":"ses_third","part":{"id":"f1","type":"step-finish","tokens":{"total":200000,"input":180000,"output":15000,"reasoning":5000,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
-				`"${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts checkpoint --batch "$CATALOG_BATCH_ID" --item fake-1 --done 1 --images-accepted 1 --tokens 1000 >/dev/null 2>&1`,
+				'echo \'{"type":"text","sessionID":"ses_wide","part":{"id":"p1","type":"text","text":"wide running"}}\'',
+				'echo \'{"type":"step_finish","sessionID":"ses_wide","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
 				"sleep 10",
 			].join("\n"),
 		);
 		await chmod(join(bin, "opencode"), 0o755);
-		const worktreesForThird = ["a", "b", "c"].map((suffix) =>
-			addWorktree(temp, `third-${suffix}`),
+		const worktreesForWide = ["a", "b", "c"].map((suffix) =>
+			addWorktree(temp, `wide-${suffix}`),
 		);
 		const planPath = join(temp, "wave.json");
 		await writeFile(
@@ -384,8 +384,128 @@ describe("catalog:wave third-slot true-token wiring", () => {
 					kind: "pedals",
 					brand: "Acme",
 					total: 1,
-					worktree: worktreesForThird[index]?.path as string,
-					branch: worktreesForThird[index]?.branch as string,
+					worktree: worktreesForWide[index]?.path as string,
+					branch: worktreesForWide[index]?.branch as string,
+					prompt: "fake",
+				})),
+			}),
+		);
+		const child = spawn(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				planPath,
+				"--allow-third",
+				"--foreground",
+				"--poll-ms",
+				"50",
+			],
+			{
+				cwd: repoRoot,
+				env: {
+					...process.env,
+					PATH: `${bin}:${process.env.PATH ?? ""}`,
+					CATALOG_WORK_DIR: join(temp, "work"),
+					CATALOG_STOP_GRACE_MS: "100",
+					CATALOG_KILL_GRACE_MS: "100",
+				},
+				stdio: ["ignore", "pipe", "pipe"],
+			},
+		);
+		const statePath = join(temp, "work", "waves", waveId, "state.json");
+		try {
+			await waitFor(async () => {
+				try {
+					const state = JSON.parse(await readFile(statePath, "utf8")) as {
+						batches: Array<{ status: string }>;
+					};
+					return (
+						state.batches.filter((batch) => batch.status === "running")
+							.length === 3
+					);
+				} catch {
+					return false;
+				}
+			});
+		} catch (error) {
+			child.kill("SIGKILL");
+			throw new Error((error as Error).message);
+		}
+		const state = JSON.parse(await readFile(statePath, "utf8")) as {
+			batches: Array<{ batch: string; status: string }>;
+			notes: string[];
+		};
+		expect(state.notes.join("\n")).toContain(
+			"3-wide start: starting 3 batches",
+		);
+		expect(state.batches.every((batch) => batch.status === "running")).toBe(
+			true,
+		);
+		expect(state.batches.every((batch) => batches.includes(batch.batch))).toBe(
+			true,
+		);
+		child.kill("SIGTERM");
+		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
+	}, 120_000);
+});
+
+describe("catalog:wave freed-slot regression", () => {
+	it("never starts the queued third batch when a slot frees", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-freeslot-"));
+		tempDirs.push(temp);
+		const waveId = `wave-freeslot-${process.pid}`;
+		const batches = ["a", "b", "c"].map(
+			(suffix) => `acme/free-${suffix}-${process.pid}`,
+		);
+		const bin = join(temp, "bin");
+		await mkdir(bin, { recursive: true });
+		await writeFile(
+			join(bin, "opencode"),
+			[
+				"#!/bin/sh",
+				"trap 'exit 0' TERM",
+				'case "$CATALOG_BATCH_ID" in',
+				"  *-a-*)",
+				'    echo \'{"type":"text","sessionID":"ses_free","part":{"id":"p1","type":"text","text":"first batch done"}}\'',
+				'    echo \'{"type":"step_finish","sessionID":"ses_free","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+				`    "${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts checkpoint --batch "$CATALOG_BATCH_ID" --item fake-1 --done 1 --images-accepted 1 --tokens 1000 >/dev/null 2>&1`,
+				`    "${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts finish --batch "$CATALOG_BATCH_ID" >/dev/null 2>&1`,
+				"    ;;",
+				"  *-b-*)",
+				'    echo \'{"type":"text","sessionID":"ses_free","part":{"id":"p1","type":"text","text":"second batch done"}}\'',
+				'    echo \'{"type":"step_finish","sessionID":"ses_free","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+				"    sleep 2",
+				`    "${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts checkpoint --batch "$CATALOG_BATCH_ID" --item fake-1 --done 1 --images-accepted 1 --tokens 1000 >/dev/null 2>&1`,
+				`    "${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts finish --batch "$CATALOG_BATCH_ID" >/dev/null 2>&1`,
+				"    ;;",
+				"  *)",
+				'    echo \'{"type":"text","sessionID":"ses_free","part":{"id":"p1","type":"text","text":"still running"}}\'',
+				'    echo \'{"type":"step_finish","sessionID":"ses_free","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+				"    sleep 10",
+				"    ;;",
+				"esac",
+			].join("\n"),
+		);
+		await chmod(join(bin, "opencode"), 0o755);
+		const worktreesForFree = ["a", "b", "c"].map((suffix) =>
+			addWorktree(temp, `free-${suffix}`),
+		);
+		const planPath = join(temp, "wave.json");
+		await writeFile(
+			planPath,
+			JSON.stringify({
+				id: waveId,
+				maxParallel: 3,
+				batches: batches.map((batch, index) => ({
+					batch,
+					kind: "pedals",
+					brand: "Acme",
+					total: 1,
+					worktree: worktreesForFree[index]?.path as string,
+					branch: worktreesForFree[index]?.branch as string,
 					prompt: "fake",
 				})),
 			}),
@@ -419,24 +539,15 @@ describe("catalog:wave third-slot true-token wiring", () => {
 			await waitFor(async () => {
 				try {
 					const state = JSON.parse(await readFile(statePath, "utf8")) as {
-						batches: Array<{
-							batch: string;
-							status: string;
-							runner?: { done: number };
-						}>;
-						notes: string[];
+						batches: Array<{ batch: string; status: string }>;
 					};
-					const active = state.batches.filter(
-						(batch) => batch.status === "running",
+					const byId = new Map(
+						state.batches.map((batch) => [batch.batch, batch.status]),
 					);
 					return (
-						active.length === 2 &&
-						active.every((batch) => (batch.runner?.done ?? 0) >= 1) &&
-						state.notes.some((note) =>
-							note.includes(
-								"third slot waiting: first batch used 200000 billed tokens",
-							),
-						)
+						byId.get(batches[0] as string) === "complete" &&
+						byId.get(batches[1] as string) === "running" &&
+						byId.get(batches[2] as string) === "queued"
 					);
 				} catch {
 					return false;
@@ -446,6 +557,7 @@ describe("catalog:wave third-slot true-token wiring", () => {
 			child.kill("SIGKILL");
 			throw new Error((error as Error).message);
 		}
+		await new Promise((resolve) => setTimeout(resolve, 400));
 		const state = JSON.parse(await readFile(statePath, "utf8")) as {
 			batches: Array<{ batch: string; status: string }>;
 			notes: string[];
@@ -454,9 +566,52 @@ describe("catalog:wave third-slot true-token wiring", () => {
 			state.batches.map((batch) => [batch.batch, batch.status]),
 		);
 		expect(byId.get(batches[2] as string)).toBe("queued");
-		expect(state.notes.join("\n")).toContain("200000 billed tokens");
-		child.kill("SIGTERM");
-		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
+		expect(state.notes.join("\n")).toContain("third batch queued");
+		expect(state.notes.join("\n")).not.toContain(`started ${batches[2]}`);
+
+		await waitFor(async () => {
+			try {
+				const ended = JSON.parse(await readFile(statePath, "utf8")) as {
+					status: string;
+					batches: Array<{ batch: string; status: string }>;
+				};
+				const endedById = new Map(
+					ended.batches.map((batch) => [batch.batch, batch.status]),
+				);
+				return (
+					ended.status === "stopped" &&
+					endedById.get(batches[2] as string) === "not-started"
+				);
+			} catch {
+				return false;
+			}
+		});
+		const ended = JSON.parse(await readFile(statePath, "utf8")) as {
+			notes: string[];
+			batches: Array<{ batch: string; status: string }>;
+		};
+		expect(ended.notes.join("\n")).toContain(
+			"no active batch; queued batches need an explicit --allow-third start",
+		);
+		expect(
+			ended.batches.find((batch) => batch.batch === (batches[2] as string))
+				?.status,
+		).toBe("not-started");
+		const exited = await new Promise<boolean>((resolve) => {
+			if (child.exitCode !== null) {
+				resolve(true);
+				return;
+			}
+			const timer = setTimeout(() => resolve(false), 15_000);
+			child.once("exit", () => {
+				clearTimeout(timer);
+				resolve(true);
+			});
+		});
+		if (!exited) {
+			child.kill("SIGKILL");
+			throw new Error("wave did not exit after the queued batch");
+		}
 	}, 120_000);
 });
 
@@ -475,7 +630,7 @@ describe("catalog:wave soft-cap path", () => {
 			[
 				"#!/bin/sh",
 				"trap 'exit 0' TERM",
-				'echo \'{"type":"step_finish","sessionID":"ses_soft","part":{"id":"f1","type":"step-finish","tokens":{"total":700000,"input":620000,"output":50000,"reasoning":30000,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+				'echo \'{"type":"step_finish","sessionID":"ses_soft","part":{"id":"f1","type":"step-finish","tokens":{"total":900000,"input":800000,"output":70000,"reasoning":30000,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
 				"sleep 10",
 			].join("\n"),
 		);
@@ -566,6 +721,209 @@ describe("catalog:wave soft-cap path", () => {
 		const controlDir = join(temp, "work", "control");
 		const controlFiles = await readdir(controlDir).catch(() => []);
 		expect(controlFiles.filter((name) => name.endsWith(".stop"))).toEqual([]);
+		child.kill("SIGTERM");
+		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
+	}, 120_000);
+});
+
+describe("catalog:wave explicit resume path", () => {
+	it("resumes stopped state, adopts a completed sibling, refills a stateless batch and clears the stale .stop", async () => {
+		const temp = await mkdtemp(join(tmpdir(), "catalog-wave-resume-"));
+		tempDirs.push(temp);
+		const waveId = `wave-resume-${process.pid}`;
+		const doneBatch = `acme/resume-done-${process.pid}`;
+		const stoppedBatch = `acme/resume-${process.pid}`;
+		const newBatch = `acme/resume-new-${process.pid}`;
+		const doneWorktree = addWorktree(temp, "resume-done");
+		const stoppedWorktree = addWorktree(temp, "resume-stopped");
+		const newWorktree = addWorktree(temp, "resume-new");
+		const work = join(temp, "work");
+		const stateDir = join(work, "state");
+		const controlDir = join(work, "control");
+		await mkdir(stateDir, { recursive: true });
+		await mkdir(controlDir, { recursive: true });
+		const waveDir = join(work, "waves", waveId);
+		await mkdir(waveDir, { recursive: true });
+		const idFile = stoppedBatch.replaceAll("/", "__");
+		const startedAt = new Date(Date.now() - 60_000).toISOString();
+		await writeFile(
+			join(waveDir, "state.json"),
+			JSON.stringify({
+				version: 1,
+				id: waveId,
+				status: "stopped",
+				startedAt,
+				planPath: join(temp, "prior-wave.json"),
+				batches: [],
+				notes: [],
+				reportPath: join(waveDir, "report.md"),
+			}),
+		);
+		const base = {
+			version: 1,
+			kind: "pedals",
+			brand: "Acme",
+			total: 2,
+			done: 2,
+			imagesAccepted: 2,
+			imagesRejected: 0,
+			startedAt,
+			updatedAt: startedAt,
+			heartbeatAt: startedAt,
+			endedAt: startedAt,
+			blockers: [],
+		};
+		await writeFile(
+			join(stateDir, `${doneBatch.replaceAll("/", "__")}.json`),
+			JSON.stringify({
+				...base,
+				batchId: doneBatch,
+				worktree: doneWorktree.path,
+				status: "complete",
+				tokens: 500,
+			}),
+		);
+		const stoppedPath = join(stateDir, `${idFile}.json`);
+		await writeFile(
+			stoppedPath,
+			JSON.stringify({
+				...base,
+				batchId: stoppedBatch,
+				worktree: stoppedWorktree.path,
+				status: "stopped",
+				tokens: 1234,
+				stopRequested: true,
+			}),
+		);
+		await writeFile(join(controlDir, `${idFile}.stop`), "stale stop\n");
+
+		const bin = join(temp, "bin");
+		await mkdir(bin, { recursive: true });
+		await writeFile(
+			join(bin, "opencode"),
+			[
+				"#!/bin/sh",
+				"trap 'exit 0' TERM",
+				'echo \'{"type":"text","sessionID":"ses_resume","part":{"id":"p1","type":"text","text":"resumed running"}}\'',
+				'echo \'{"type":"step_finish","sessionID":"ses_resume","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
+				"sleep 10",
+			].join("\n"),
+		);
+		await chmod(join(bin, "opencode"), 0o755);
+		const planPath = join(temp, "wave.json");
+		await writeFile(
+			planPath,
+			JSON.stringify({
+				id: waveId,
+				maxParallel: 3,
+				batches: [
+					{
+						batch: doneBatch,
+						kind: "pedals",
+						brand: "Acme",
+						total: 2,
+						worktree: doneWorktree.path,
+						branch: doneWorktree.branch,
+						prompt: "fake",
+					},
+					{
+						batch: stoppedBatch,
+						kind: "pedals",
+						brand: "Acme",
+						total: 2,
+						worktree: stoppedWorktree.path,
+						branch: stoppedWorktree.branch,
+						prompt: "fake",
+					},
+					{
+						batch: newBatch,
+						kind: "pedals",
+						brand: "Acme",
+						total: 1,
+						worktree: newWorktree.path,
+						branch: newWorktree.branch,
+						prompt: "fake",
+					},
+				],
+			}),
+		);
+		const child = spawn(
+			process.execPath,
+			[
+				"--experimental-strip-types",
+				join(repoRoot, "tools/catalog-wave/index.ts"),
+				"run",
+				"--plan",
+				planPath,
+				"--allow-third",
+				"--resume",
+				"--foreground",
+				"--poll-ms",
+				"50",
+			],
+			{
+				cwd: repoRoot,
+				env: {
+					...process.env,
+					PATH: `${bin}:${process.env.PATH ?? ""}`,
+					CATALOG_WORK_DIR: work,
+					CATALOG_STOP_GRACE_MS: "100",
+					CATALOG_KILL_GRACE_MS: "100",
+				},
+				stdio: ["ignore", "pipe", "pipe"],
+			},
+		);
+		const waveStatePath = join(work, "waves", waveId, "state.json");
+		try {
+			await waitFor(async () => {
+				try {
+					const wave = JSON.parse(await readFile(waveStatePath, "utf8")) as {
+						batches: Array<{
+							batch: string;
+							status: string;
+							runner?: { done: number };
+						}>;
+					};
+					const byId = new Map(
+						wave.batches.map((batch) => [batch.batch, batch]),
+					);
+					const done = byId.get(doneBatch);
+					const stopped = byId.get(stoppedBatch);
+					const fresh = byId.get(newBatch);
+					return (
+						done?.status === "complete" &&
+						stopped?.status === "running" &&
+						stopped.runner?.done === 2 &&
+						fresh?.status === "running"
+					);
+				} catch {
+					return false;
+				}
+			});
+		} catch (error) {
+			child.kill("SIGKILL");
+			throw new Error((error as Error).message);
+		}
+		const resumed = JSON.parse(await readFile(stoppedPath, "utf8")) as {
+			status: string;
+			done: number;
+			tokens: number;
+			startedAt: string;
+		};
+		expect(resumed.status).toBe("running");
+		expect(resumed.done).toBe(2);
+		expect(resumed.tokens).toBe(1234);
+		expect(resumed.startedAt).toBe(startedAt);
+		const controlFiles = await readdir(controlDir).catch(() => []);
+		expect(controlFiles.filter((name) => name.endsWith(".stop"))).toEqual([]);
+		const wave = JSON.parse(await readFile(waveStatePath, "utf8")) as {
+			notes: string[];
+			batches: Array<{ batch: string; status: string }>;
+		};
+		expect(wave.notes.join("\n")).toContain(`resumed ${stoppedBatch}`);
+		expect(wave.notes.join("\n")).toContain(`adopted completed ${doneBatch}`);
+		expect(wave.notes.join("\n")).toContain(`started ${newBatch}`);
+		expect(wave.notes.join("\n")).not.toContain("failed to resume");
 		child.kill("SIGTERM");
 		await new Promise<void>((resolve) => child.on("exit", () => resolve()));
 	}, 120_000);

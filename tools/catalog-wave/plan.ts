@@ -2,12 +2,13 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, isAbsolute, resolve } from "node:path";
 import { z } from "zod";
-import { isActive, tryReadState } from "../catalog-runner/state.ts";
+import { tryReadState } from "../catalog-runner/state.ts";
 
 /**
  * Wave plan (P5 parallel mechanism). A plan names 1–3 independent batches that
- * each run in their own worktree/branch/session. The wrapper starts at most 2
- * and only starts a third when the owner gate passes (`canStartNext`).
+ * each run in their own worktree/branch/session. The wrapper starts up front and
+ * never starts a batch later when a slot frees; a third batch needs the explicit
+ * `--allow-third` 3-wide start.
  *
  * Every batch prompt is supplied by the plan author (normally the coordinator);
  * the wrapper prepends the "already started" contract so the session does not
@@ -98,7 +99,11 @@ export function readWavePlan(planPath: string): {
 export async function validatePlan(
 	batches: ResolvedBatch[],
 	root: string,
-	options: { branch?: (worktree: string) => string } = {},
+	options: {
+		branch?: (worktree: string) => string;
+		resume?: boolean;
+		alive?: (pid: number) => boolean;
+	} = {},
 ): Promise<PlanCheck> {
 	const errors: string[] = [];
 	for (const batch of batches) {
@@ -120,8 +125,20 @@ export async function validatePlan(
 			);
 		}
 		const state = await tryReadState(root, batch.batch);
-		if (state && isActive(state)) {
-			errors.push(`${batch.batch}: already ${state.status}`);
+		if (options.resume) {
+			if (state?.pid && options.alive?.(state.pid)) {
+				errors.push(
+					`${batch.batch}: is still supervised (pid ${state.pid}); stop it before resuming`,
+				);
+			} else if (state?.supervisorPid && options.alive?.(state.supervisorPid)) {
+				errors.push(
+					`${batch.batch}: supervisor is still finalizing (pid ${state.supervisorPid})`,
+				);
+			}
+		} else if (state) {
+			errors.push(
+				`${batch.batch}: already exists (${state.status}); use --resume or a new batch id`,
+			);
 		}
 	}
 	return { ok: errors.length === 0, errors };

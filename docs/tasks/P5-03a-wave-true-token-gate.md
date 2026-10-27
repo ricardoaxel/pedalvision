@@ -2,6 +2,12 @@
 
 **Phase:** P5 · **Status:** in review — PR #53 · **Type:** tooling (high-risk) · **Depends on:** T-0
 
+> **Updated by T-2c (2026-10-27).** The true billed-token metric and wave
+> budgets/stops remain authoritative; the **third-slot gate is retired**. Waves
+> start 2 up front and a third only with the explicit, logged `--allow-third`
+> (`maxParallel: 3`); a freed slot never auto-starts a queued batch. See
+> `docs/tasks/T-2c-wrapper-3-wide.md`.
+
 ## Why
 
 The wave runner/report currently mixes two token sources: the runner checkpoint
