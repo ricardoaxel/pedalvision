@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 5
 
-**Phase:** P5 · **Status:** todo — T-2 last batch, **solo single-batch wave** · **Model:** build-strong
+**Phase:** P5 · **Status:** in progress — batch delivered; PR pending — T-2 last batch, **solo single-batch wave** · **Model:** build-strong
 
 > The coordinator ran `catalog:start` for `boss/boss-5` and **stopped** it at 0/26 on
 > the third-slot gate. For this solo run the coordinator **must resume** it
@@ -152,3 +152,30 @@ Read only the sections the task file points to; do not read whole docs.
   index 143) is **out of scope**; it is cleared in T-7/T-3. Do not add it here.
 - If this batch uncovers a process/rule gap, do not edit the rules in the PR;
   propose the change + token review to the owner first.
+
+## Delivery (2026-10-27)
+
+- **26 raw records / 52 AVIFs** (800/350), all with `imageProvenance`: **18 official
+  BOSS + 8 planner last-resort + 0 generated**. Planner last-resort is counted as a
+  source gap (not gap-closed): MT-2-3A, MZ-2, NF-1, OC-2, OC-20G, OD-1, OD-2, OD-2R.
+- **Status mix:** 16 current / 10 discontinued. Non-stompbox types verified against
+  official pages: MD-200/MD-500 `multi-fx`/`desktop`, ME-90/ME-90B `multi-fx`/
+  `standard`, MS-3 `switcher`/`standard`, OC-20G `double`, OD-20/OD-200 `standard`.
+- **Jack edges:** verified rear-panel photos for MD-200, MD-500 and OD-200 (all on
+  the `top`/rear edge); MS-3 rear face was not legible → unknown. All other edges
+  omitted with `jackLayout.confidence: "unknown"` (app uses assumed anchors).
+- **Image QA:** deterministic analyzer accept **26/26**; contact sheet **30 cells**
+  (26 cutouts + 4 rear-panel connector crops) reviewed in one `catalog-image-reviewer`
+  pass → **26/26 cutouts accept**, jack faces verified **3/4**. AVIF q80 for 18,
+  q90 escalation for 7, q92 for MD-200; minimum PSNR **40.12 dB** (MD-200).
+- **Connector-face process note:** the first 30-cell reviewer call hit the model’s
+  reasoning limit and returned empty; the same session was resumed with an
+  output-only instruction and returned the full JSON. No model substitution.
+- **Checks:** `catalog:ci` **322 pedals / 15 boards**; `catalog:validate` green
+  (296/15 committed); `check-jacks`, `check-images` and `guard-batch-pr` green;
+  lint / typecheck / test **832** / build / e2e **264 passed + 7 skipped** (desktop
+  and mobile Chromium). Demo link: **26 items / 25 illustrative cables**.
+- **Batch-support code:** `tools/catalog-transform/curated.ts` verified effect-type
+  overrides for the 12 creative/multi-effect names (required by the no-drift test),
+  plus aliases for the ME-90B/ MS-3 inventory-vs-official name mismatch. No mapped
+  or runtime files in the PR.
