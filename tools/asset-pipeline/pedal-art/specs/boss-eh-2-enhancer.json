@@ -1,0 +1,87 @@
+{
+	"id": "boss-eh-2-enhancer",
+	"family": "compact",
+	"widthCm": 7,
+	"heightCm": 12.5,
+	"sourceRef": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/eh_product02.png",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#8A9184",
+		"radiusCm": 0.35,
+		"sideCm": 0.34,
+		"knobFinish": "black",
+		"footswitchFinish": "black",
+		"bands": []
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "knob",
+			"u": 0.25,
+			"v": 0.3,
+			"diameterCm": 1.7,
+			"rotationDeg": 0,
+			"label": "SENS",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.5,
+			"v": 0.3,
+			"diameterCm": 1.7,
+			"rotationDeg": 0,
+			"label": "MIX",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.75,
+			"v": 0.3,
+			"diameterCm": 1.7,
+			"rotationDeg": 0,
+			"label": "EFFECT",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "led",
+			"u": 0.5,
+			"v": 0.17,
+			"diameterCm": 0.5,
+			"color": "#C0392B"
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.5,
+			"v": 0.82,
+			"diameterCm": 1.6
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.055,
+			"sizeMm": 2.4,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "model",
+			"value": "EH-2",
+			"u": 0.5,
+			"v": 0.108,
+			"sizeMm": 3.4,
+			"trackingEm": 0.02
+		},
+		{
+			"role": "free",
+			"value": "ENHANCER",
+			"u": 0.5,
+			"v": 0.53,
+			"sizeMm": 3.2,
+			"trackingEm": 0.02
+		}
+	],
+	"jacks": [],
+	"note": "Generated Catalog Specimen flat art; footprint and panels from the official BOSS 40th-anniversary product reference."
+}

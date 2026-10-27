@@ -1,0 +1,45 @@
+{
+	"id": "boss-fs-5l-foot-switch",
+	"family": "footswitch",
+	"widthCm": 9.6,
+	"heightCm": 9,
+	"sourceRef": "https://static.roland.com/assets/images/products/gallery/fs5l_gal.jpg",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#1E2022",
+		"radiusCm": 0.7,
+		"sideCm": 0.5,
+		"knobFinish": "black",
+		"footswitchFinish": "black",
+		"bands": []
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "footswitch",
+			"u": 0.5,
+			"v": 0.6,
+			"diameterCm": 3
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.07,
+			"sizeMm": 2.4,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "model",
+			"value": "FS-5L",
+			"u": 0.5,
+			"v": 0.17,
+			"sizeMm": 3.4,
+			"trackingEm": 0.02
+		}
+	],
+	"jacks": [],
+	"note": "Generated Catalog Specimen flat art; single-unit enclosure and switch pad from the official BOSS reference."
+}

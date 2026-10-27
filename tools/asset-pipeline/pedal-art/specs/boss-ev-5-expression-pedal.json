@@ -1,0 +1,62 @@
+{
+	"id": "boss-ev-5-expression-pedal",
+	"family": "expression",
+	"widthCm": 8.6,
+	"heightCm": 20,
+	"sourceRef": "https://static.roland.com/assets/images/products/gallery/ev-5_angle_gal.jpg",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#2E3136",
+		"radiusCm": 0.7,
+		"sideCm": 0.5,
+		"knobFinish": "black",
+		"footswitchFinish": "metal",
+		"bands": []
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "treadle",
+			"u": 0.5,
+			"v": 0.55,
+			"widthCm": 7.4,
+			"heightCm": 15
+		},
+		{
+			"kind": "knob",
+			"u": 0.11,
+			"v": 0.62,
+			"diameterCm": 0.8,
+			"rotationDeg": 0,
+			"label": "MIN",
+			"labelPlacement": "right"
+		},
+		{
+			"kind": "led",
+			"u": 0.5,
+			"v": 0.16,
+			"diameterCm": 0.4,
+			"color": "#C0392B"
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.045,
+			"sizeMm": 2.4,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "model",
+			"value": "EV-5",
+			"u": 0.5,
+			"v": 0.085,
+			"sizeMm": 3.4,
+			"trackingEm": 0.02
+		}
+	],
+	"jacks": [],
+	"note": "Generated Catalog Specimen flat art; treadle/body from the official BOSS product reference; footprint from official dimensions."
+}

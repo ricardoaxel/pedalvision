@@ -1,0 +1,55 @@
+{
+	"id": "boss-fv-500-volume-pedal",
+	"family": "expression",
+	"widthCm": 11,
+	"heightCm": 28.9,
+	"sourceRef": "https://static.roland.com/assets/images/products/gallery/fv_500h_gal.jpg",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#C3C6C9",
+		"radiusCm": 0.7,
+		"sideCm": 0.5,
+		"knobFinish": "black",
+		"footswitchFinish": "metal",
+		"bands": []
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "treadle",
+			"u": 0.5,
+			"v": 0.55,
+			"widthCm": 9.6,
+			"heightCm": 22.6
+		},
+		{
+			"kind": "knob",
+			"u": 0.1,
+			"v": 0.62,
+			"diameterCm": 0.8,
+			"rotationDeg": 0,
+			"label": "MIN",
+			"labelPlacement": "right"
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.045,
+			"sizeMm": 2.4,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "model",
+			"value": "FV-500",
+			"u": 0.5,
+			"v": 0.085,
+			"sizeMm": 3.4,
+			"trackingEm": 0.02
+		}
+	],
+	"jacks": [],
+	"note": "Generated Catalog Specimen flat art; treadle/body from the official BOSS product reference; footprint from official dimensions."
+}

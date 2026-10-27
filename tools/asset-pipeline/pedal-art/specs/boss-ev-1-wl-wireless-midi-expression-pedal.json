@@ -1,0 +1,60 @@
+{
+	"id": "boss-ev-1-wl-wireless-midi-expression-pedal",
+	"family": "expression",
+	"widthCm": 8.7,
+	"heightCm": 20,
+	"sourceRef": "https://static.roland.com/assets/images/products/gallery/ev-1-wl_angle_gal.jpg",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#3A3E44",
+		"radiusCm": 0.7,
+		"sideCm": 0.5,
+		"knobFinish": "black",
+		"footswitchFinish": "metal",
+		"bands": []
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "treadle",
+			"u": 0.5,
+			"v": 0.55,
+			"widthCm": 7.4,
+			"heightCm": 15.2
+		},
+		{
+			"kind": "led",
+			"u": 0.12,
+			"v": 0.2,
+			"diameterCm": 0.45,
+			"color": "#2ECC71"
+		},
+		{
+			"kind": "toggle",
+			"u": 0.86,
+			"v": 0.22,
+			"leverCm": 0.7,
+			"angleDeg": 0
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.045,
+			"sizeMm": 2.4,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "model",
+			"value": "EV-1-WL",
+			"u": 0.5,
+			"v": 0.085,
+			"sizeMm": 3.4,
+			"trackingEm": 0.02
+		}
+	],
+	"jacks": [],
+	"note": "Generated Catalog Specimen flat art; treadle/body from the official BOSS product reference; footprint from official dimensions."
+}

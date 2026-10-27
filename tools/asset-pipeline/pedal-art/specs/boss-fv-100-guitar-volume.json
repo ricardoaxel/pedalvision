@@ -1,0 +1,55 @@
+{
+	"id": "boss-fv-100-guitar-volume",
+	"family": "expression",
+	"widthCm": 11.2,
+	"heightCm": 33.2,
+	"sourceRef": "https://p1-d9ebd2ee.imageflux.jp/c!/w=1280,h=1280,a=0,u=1,q=75/101019/e10e1231245279b02daab6ea162767de.jpg",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#1B1D1F",
+		"radiusCm": 0.7,
+		"sideCm": 0.5,
+		"knobFinish": "black",
+		"footswitchFinish": "metal",
+		"bands": []
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "treadle",
+			"u": 0.5,
+			"v": 0.55,
+			"widthCm": 9.8,
+			"heightCm": 27
+		},
+		{
+			"kind": "knob",
+			"u": 0.1,
+			"v": 0.62,
+			"diameterCm": 0.8,
+			"rotationDeg": 0,
+			"label": "MIN",
+			"labelPlacement": "right"
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.045,
+			"sizeMm": 2.4,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "model",
+			"value": "FV-100",
+			"u": 0.5,
+			"v": 0.085,
+			"sizeMm": 3.4,
+			"trackingEm": 0.02
+		}
+	],
+	"jacks": [],
+	"note": "Generated Catalog Specimen flat art; black volume-pedal family and MIN control from a recorded reseller listing; footprint from catalog dimensions."
+}

@@ -87,19 +87,35 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ac_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
-    "imageCandidates": [],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ac_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      }
+    ],
     "extra": {
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
-      "research": "Official BOSS AC-2 specification page and owner’s manual."
+      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "research": "Official BOSS AC-2 specification page and owner’s manual.",
+      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "own",
+      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ac_product02.png",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
     }
   },
   {
@@ -1277,19 +1293,35 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/bfb_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
-    "imageCandidates": [],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/bfb_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      }
+    ],
     "extra": {
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
-      "research": "Official Roland BOSS BF-2B specification article and owner’s manual."
+      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "research": "Official Roland BOSS BF-2B specification article and owner’s manual.",
+      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "own",
+      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/bfb_product02.png",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
     }
   },
   {
@@ -1638,19 +1670,35 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://www.chicagomusicexchange.com/cdn/shop/files/boss-effects-and-pedals-chorus-and-vibrato-boss-ce-1-chorus-ensemble-1977-boss-ce-1-chorus-ensemble-1977-u7165331003-1184236035.jpg",
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
-    "imageCandidates": [],
+    "imageCandidates": [
+      {
+        "url": "https://www.chicagomusicexchange.com/cdn/shop/files/boss-effects-and-pedals-chorus-and-vibrato-boss-ce-1-chorus-ensemble-1977-boss-ce-1-chorus-ensemble-1977-u7165331003-1184236035.jpg",
+        "sourcePage": "https://www.chicagomusicexchange.com/en-ca/products/boss-ce-1-chorus-ensemble-1977-2347847",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official spec 260 x 180 mm plus a recorded retailer photo; no official top-down remains)."
+      }
+    ],
     "extra": {
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
-      "research": "Official BOSS CE-1 technical specifications (260 x 180 x 64 mm, 3 W AC)."
+      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "research": "Official BOSS CE-1 technical specifications (260 x 180 x 64 mm, 3 W AC).",
+      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "own",
+      "referenceUrl": "https://www.chicagomusicexchange.com/cdn/shop/files/boss-effects-and-pedals-chorus-and-vibrato-boss-ce-1-chorus-ensemble-1977-boss-ce-1-chorus-ensemble-1977-u7165331003-1184236035.jpg",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official spec 260 x 180 mm plus a recorded retailer photo; no official top-down remains."
     }
   },
   {
@@ -1735,19 +1783,35 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
-    "imageCandidates": [],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      }
+    ],
     "extra": {
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
-      "research": "Official Roland BOSS CE-2 technical specifications and owner’s manual."
+      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "research": "Official Roland BOSS CE-2 technical specifications and owner’s manual.",
+      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "own",
+      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product02.png",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
     }
   },
   {
@@ -1964,19 +2028,35 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ceb_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
-    "imageCandidates": [],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ceb_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      }
+    ],
     "extra": {
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
-      "research": "Official Roland BOSS CE-2B technical specifications and owner’s manual."
+      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "research": "Official Roland BOSS CE-2B technical specifications and owner’s manual.",
+      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "own",
+      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ceb_product02.png",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
     }
   },
   {
@@ -2207,19 +2287,35 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product03.png",
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
-    "imageCandidates": [],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product03.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      }
+    ],
     "extra": {
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
-      "research": "Official Roland BOSS CE-3 technical specifications and owner’s manual."
+      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "research": "Official Roland BOSS CE-3 technical specifications and owner’s manual.",
+      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "own",
+      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product03.png",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
     }
   },
   {
@@ -2803,19 +2899,35 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/cs_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
       }
     ],
-    "imageCandidates": [],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/cs_product02.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      }
+    ],
     "extra": {
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)",
-      "research": "Official Roland BOSS CS-2 specifications and owner’s manual."
+      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "research": "Official Roland BOSS CS-2 specifications and owner’s manual.",
+      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "own",
+      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/cs_product02.png",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
     }
   },
   {
