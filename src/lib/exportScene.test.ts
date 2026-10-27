@@ -54,6 +54,18 @@ const CUSTOM_PEDAL: CustomPedal = {
 
 const CUSTOM_PEDAL_2: CustomPedal = { ...CUSTOM_PEDAL, refId: "custom-2" };
 
+/** A custom pedal with explicit top jacks (outward normal = -y). */
+const JACKED_PEDAL: CustomPedal = {
+	...CUSTOM_PEDAL,
+	refId: "jacked-1",
+	widthCm: 10,
+	heightCm: 6,
+	jacks: [
+		{ kind: "in", edge: "top", pos: 0.5 },
+		{ kind: "out", edge: "top", pos: 0.5 },
+	],
+};
+
 function scene(overrides: Partial<ExportSceneInput> = {}): ExportSceneInput {
 	return {
 		boards: [board()],
@@ -202,6 +214,38 @@ describe("resolveExportPlan — selected board", () => {
 		);
 	});
 
+	it("includes a long outward cable curve in the selected-board bounds", () => {
+		// Both top jacks leave along -y with a 15.75 cm handle, so the cubic
+		// bulges ~9.81 cm above the board (y=0). Bounds that stopped at the
+		// board/items (content y=0) would clip the curve.
+		const plan = resolveExportPlan(
+			scene({
+				items: [
+					item({ uid: "a", refId: "jacked-1", x: 5, y: 2 }),
+					item({ uid: "b", refId: "jacked-1", x: 40, y: 2 }),
+				],
+				customPedals: [JACKED_PEDAL],
+				cables: [
+					{
+						uid: "long",
+						from: { itemUid: "a", jack: "1" },
+						to: { itemUid: "b", jack: "0" },
+					},
+				],
+			}),
+			{ scope: "board", boardUid: "board-1" },
+		);
+
+		expect(plan.cables.map((cable) => cable.uid)).toEqual(["long"]);
+		expect(plan.contentBoundsCm.y).toBeCloseTo(-9.8125, 4);
+		expect(plan.boundsCm.y).toBeCloseTo(-9.8125 - EXPORT_PADDING_CM, 4);
+		// The curve stays within the board's horizontal extent.
+		expect(plan.boundsCm.x).toBeCloseTo(-EXPORT_PADDING_CM);
+		expect(plan.boundsCm.x + plan.boundsCm.widthCm).toBeCloseTo(
+			60 + EXPORT_PADDING_CM,
+		);
+	});
+
 	it("drops a cable to an endpoint outside the margin", () => {
 		const far = endpoint("amp-1", 60 + ENDPOINT_MARGIN_CM + 1);
 		const plan = resolveExportPlan(
@@ -321,6 +365,29 @@ describe("resolveExportPlan — all content", () => {
 			"near-cable",
 			"far-cable",
 		]);
+	});
+
+	it("includes an outward cable curve in the all-content bounds", () => {
+		const plan = resolveExportPlan(
+			scene({
+				items: [
+					item({ uid: "a", refId: "jacked-1", x: 5, y: 2 }),
+					item({ uid: "b", refId: "jacked-1", x: 40, y: 2 }),
+				],
+				customPedals: [JACKED_PEDAL],
+				cables: [
+					{
+						uid: "long",
+						from: { itemUid: "a", jack: "1" },
+						to: { itemUid: "b", jack: "0" },
+					},
+				],
+			}),
+			{ scope: "all" },
+		);
+
+		expect(plan.contentBoundsCm.y).toBeCloseTo(-9.8125, 4);
+		expect(plan.boundsCm.y).toBeCloseTo(-9.8125 - EXPORT_PADDING_CM, 4);
 	});
 });
 

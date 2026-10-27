@@ -5,8 +5,14 @@ import {
 	type PlacedBoard,
 	type PlacedItem,
 } from "../state/scene";
+import { cableCurveBoundsCm, cableCurveCm } from "./cablePath";
 import { distinctImageUrls } from "./capacity";
 import { boardToWorld, type Point, type RectCm } from "./geometry";
+import {
+	type AnchorIndex,
+	buildAnchorIndex,
+	cableEndAnchorFromIndex,
+} from "./jackAnchor";
 
 /**
  * Pure export model for P3-01 (design.md §Canvas architecture → Export).
@@ -206,6 +212,26 @@ function itemAabbCm(
 	return rectFromPoints(itemWorldCorners(item, boards, customPedals)) as RectCm;
 }
 
+/**
+ * Union of the actual cubic curve bounds for every in-scope cable. The export
+ * draws the same `cableCurveCm` path as the live canvas; handles leave a jack
+ * along its outward normal (up to 24 cm), so the curve can bulge past the
+ * board/items/endpoints and would otherwise be clipped by the margin.
+ */
+function cableBoundsCm(
+	cables: ExportCable[],
+	index: AnchorIndex,
+): RectCm | null {
+	let bounds: RectCm | null = null;
+	for (const cable of cables) {
+		const from = cableEndAnchorFromIndex(cable.from, index);
+		const to = cableEndAnchorFromIndex(cable.to, index);
+		if (!from || !to) continue;
+		bounds = unionRects(bounds, cableCurveBoundsCm(cableCurveCm(from, to)));
+	}
+	return bounds;
+}
+
 function endpointRect(endpoint: ExportEndpoint): RectCm {
 	// The exported AMP/INSTR chip is ~1.4–1.7 cm wide × 0.6 cm tall; include its
 	// footprint in the content bounds so the tag is never cropped (design review).
@@ -367,6 +393,15 @@ function selectedBoardPlan(
 	for (const endpoint of includedEndpoints.values()) {
 		content = unionRects(content, endpointRect(endpoint));
 	}
+	// Include the exported cubic path (same anchors/handles as exportStage), not
+	// just its endpoints, so a long outward handle is never clipped.
+	const boardAnchorIndex = buildAnchorIndex({
+		boards: [board],
+		items: attachedItems,
+		customPedals: scene.customPedals,
+		endpoints: [...includedEndpoints.values()],
+	});
+	content = unionRects(content, cableBoundsCm(cables, boardAnchorIndex));
 
 	return buildPlan(
 		"board",
@@ -404,6 +439,17 @@ function allContentPlan(
 	if (!allContent) {
 		throw new ExportError("empty", "There is nothing to export yet.");
 	}
+	// "All content" must include the whole exported curve too, not only the
+	// boards/items/endpoints it connects (same reasoning as the board scope).
+	const sceneAnchorIndex = buildAnchorIndex({
+		boards,
+		items,
+		customPedals,
+		endpoints,
+	});
+	allContent =
+		unionRects(allContent, cableBoundsCm(cables, sceneAnchorIndex)) ??
+		allContent;
 
 	return buildPlan(
 		"all",
