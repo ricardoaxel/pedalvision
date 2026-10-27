@@ -94,6 +94,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ac2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ac2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -102,20 +114,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ac2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 42.30 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official BOSS AC-2 specification page and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 42.30 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ac_product02.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ac2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -1300,6 +1318,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-bf2b.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-bf2b.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -1308,20 +1338,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-bf2b.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 43.27 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official Roland BOSS BF-2B specification article and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 43.27 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/bfb_product02.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-bf2b.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -1677,6 +1713,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce1.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ce1.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -1685,20 +1733,26 @@
         "sourcePage": "https://www.chicagomusicexchange.com/en-ca/products/boss-ce-1-chorus-ensemble-1977-2347847",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official spec 260 x 180 mm plus a recorded retailer photo; no official top-down remains)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce1.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 40.87 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official BOSS CE-1 technical specifications (260 x 180 x 64 mm, 3 W AC).",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 40.87 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://www.chicagomusicexchange.com/cdn/shop/files/boss-effects-and-pedals-chorus-and-vibrato-boss-ce-1-chorus-ensemble-1977-boss-ce-1-chorus-ensemble-1977-u7165331003-1184236035.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official spec 260 x 180 mm plus a recorded retailer photo; no official top-down remains."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ce1.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -1790,6 +1844,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ce2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -1798,20 +1864,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 42.82 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official Roland BOSS CE-2 technical specifications and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 42.82 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product02.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ce2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2035,6 +2107,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce2b.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ce2b.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2043,20 +2127,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce2b.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.84 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official Roland BOSS CE-2B technical specifications and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.84 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ceb_product02.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ce2b.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2294,6 +2384,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce3.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ce3.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2302,20 +2404,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ce3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q90; PSNR 42.14 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official Roland BOSS CE-3 technical specifications and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q90; PSNR 42.14 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ce_product03.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ce3.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2906,6 +3014,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-cs2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-cs2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2914,20 +3034,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-cs2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 43.97 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official Roland BOSS CS-2 specifications and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 43.97 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/cs_product02.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-cs2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {

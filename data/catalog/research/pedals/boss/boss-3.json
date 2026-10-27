@@ -88,6 +88,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dsd3.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dsd3.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -96,20 +108,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dsd3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.90 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "BOSS DSD-3 owner’s manual (scanned) via Roland support; official product page retired.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.90 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsd_product03.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dsd3.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -192,6 +210,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-eh2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-eh2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -200,20 +230,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-eh2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 43.19 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "BOSS EH-2 owner’s manual (scanned) via Roland support; official product page retired.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 43.19 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/eh_product02.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-eh2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -1203,6 +1239,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ev1wl.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ev1wl.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -1211,20 +1259,26 @@
         "sourcePage": "https://www.boss.info/us/products/ev-1-wl/specifications/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official BOSS hero shot is angled, not a shippable top-down cutout; used for the charcoal treadle and side controls)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ev1wl.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 42.72 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official BOSS EV-1-WL specification page and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 42.72 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/assets/images/products/gallery/ev-1-wl_angle_gal.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official BOSS hero shot is angled, not a shippable top-down cutout; used for the charcoal treadle and side controls."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ev1wl.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -1295,6 +1349,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ev30.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ev30.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -1303,20 +1369,26 @@
         "sourcePage": "https://www.boss.info/us/products/ev-30/specifications/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official BOSS panel shot is angled; used for the slate body and wide treadle)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ev30.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 40.71 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official BOSS EV-30 specification page and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 40.71 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/assets/images/products/gallery/ev-30_PANEL_gal.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official BOSS panel shot is angled; used for the slate body and wide treadle."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ev30.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -1378,6 +1450,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ev5.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ev5.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -1386,20 +1470,26 @@
         "sourcePage": "https://www.boss.info/us/products/ev-5/specifications/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official BOSS hero shot is angled; used for the black treadle body and MIN control)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ev5.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 45.07 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official BOSS EV-5 specification page and owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 45.07 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/assets/images/products/gallery/ev-5_angle_gal.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official BOSS hero shot is angled; used for the black treadle body and MIN control."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ev5.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2018,6 +2108,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fs5l.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-fs5l.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2026,20 +2128,26 @@
         "sourcePage": "https://www.boss.info/global/products/fs-5u_5l/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official BOSS single-unit photo; used for the black FS-5L enclosure and switch pad)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fs5l.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 43.96 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "BOSS FS-5U/FS-5L product page and FS-5L owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 43.96 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/assets/images/products/gallery/fs5l_gal.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official BOSS single-unit photo; used for the black FS-5L enclosure and switch pad."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-fs5l.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2100,6 +2208,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fs5u.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-fs5u.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2108,20 +2228,26 @@
         "sourcePage": "https://www.boss.info/global/products/fs-5u_5l/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official BOSS single-unit photo; used for the silver FS-5U enclosure and switch pad)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fs5u.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 44.10 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "BOSS FS-5U/FS-5L product page and FS-5U owner’s manual.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 44.10 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/assets/images/products/gallery/fs-5u_angle_gal.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official BOSS single-unit photo; used for the silver FS-5U enclosure and switch pad."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-fs5u.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2421,6 +2547,18 @@
         "kind": [
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ft2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ft2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2429,20 +2567,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT: official hi-res support image; matte + AVIF + PSNR + vision accept."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ft2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 42.73 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Official BOSS hi-res support image; source recorded.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "BOSS FT-2 owner’s manual (scanned) via Roland support; official product page retired.",
-      "imageProcessing": "Official BOSS hi-res support image FT-2_T_600_FNL.jpg; components matte; AVIF q90; PSNR 40.35 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 42.73 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://static.roland.com/assets/media/zip/ft-2.zip",
-      "status": "chosen",
-      "note": "Official BOSS hi-res support image FT-2_T_600_FNL.jpg; components matte; AVIF q90; PSNR 40.35 dB; vision accept."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ft2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2510,6 +2654,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fv100.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-fv100.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2518,20 +2674,26 @@
         "sourcePage": "https://netmall.hardoff.co.jp/product/140654/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (no official BOSS page remains; recorded reseller photo used for the black volume-pedal family; footprint from catalog dimensions)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fv100.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.58 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "No official BOSS page remains; facts cross-checked against authorized reseller listings (Reverb, Hard Off). Footprint provisional.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.58 dB; analyzer accept; vision accept."
     },
     "confidence": "likely",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://p1-d9ebd2ee.imageflux.jp/c!/w=1280,h=1280,a=0,u=1,q=75/101019/e10e1231245279b02daab6ea162767de.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; no official BOSS page remains; recorded reseller photo used for the black volume-pedal family; footprint from catalog dimensions."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-fv100.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2754,6 +2916,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fv500.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-fv500.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -2762,21 +2936,27 @@
         "sourcePage": "https://www.boss.info/us/products/fv-500h/specifications/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official BOSS hero shot is angled; used for the silver wide treadle and MIN control)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fv500.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 45.79 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "Official BOSS FV-500 specifications and FV-500H/FV-500L owner’s manuals.",
       "note": "The catalog lists the FV-500 family as one record; the FV-500H and FV-500L share the enclosure.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 45.79 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/assets/images/products/gallery/fv_500h_gal.jpg",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official BOSS hero shot is angled; used for the silver wide treadle and MIN control."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-fv500.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2994,6 +3174,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fz2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-fz2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -3002,20 +3194,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fz2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 42.90 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "BOSS FZ-2 owner’s manual (scanned) and BOSS fuzz-history article.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 42.90 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/fz_product02.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-fz2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -3104,6 +3302,18 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fz3.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-fz3.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "imageCandidates": [
@@ -3112,20 +3322,26 @@
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
         "priority": 1,
         "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-fz3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.50 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
-      "imageProvenance": "Generated Catalog Specimen flat art (own); reference recorded in imageProvenance.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap.",
       "research": "BOSS FZ-3 owner’s manual (scanned) and BOSS fuzz-history article.",
-      "imageProcessing": "asset:pedal-art spec + deterministic 800/350 AVIF q90; analyzer accept; PSNR >=49 dB; vision accept."
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.50 dB; analyzer accept; vision accept."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-26",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/fz_product03.png",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (asset:pedal-art, q90); reference pixels not shipped; official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-fz3.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
