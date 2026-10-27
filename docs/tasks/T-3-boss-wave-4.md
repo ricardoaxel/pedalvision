@@ -64,8 +64,28 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
 - Stop on 3 catalog PRs or 1 feature PR awaiting, hard cap, 2 failed resumes, generated conflict, or any
   429/401/quota/timeout/empty (report model + operation + exact error).
 
+## Token review (2026-10-27)
+
+`token-usage-reviewer`: **`adjust`**. Folded:
+
+- **boss-6 total consistency:** wave plan total = **26** net-new; the `psm-5`
+  repair is extra work and is not a runner item.
+- **Combined-window polling:** the coordinator logs F-19 billed spend at every
+  checkpoint; at catalog **≥2.2M** or combined ≥**3.0M**, active batches finish at
+  the next item boundary and open their PRs (no new work). The 2.0M "start no new
+  wave" rule is inert with an all-at-once 3-wide start, so the wrap-up signal is
+  explicit.
+- **Budget headroom (not adopted as a rule change):** the reviewer flagged that
+  3×800k equals the 2.4M wave hard. The owner's per-batch 400k/800k and wave
+  1.6M/2.4M budgets are unchanged; the coordinator monitors the true billed metric
+  and uses the wrap-up checkpoint above so one batch cannot silently consume the
+  whole wave.
+- **12 min/item** clarified as a per-item stall threshold, not a batch multiplier.
+- Stale "2-wide with a feature open" acceptance line fixed: F-19 is a separate
+  1-PR lane; catalog stays 3-wide.
+
 ## Acceptance
 
-- boss-6/7/8 launched 3-wide (or 2-wide with a feature open).
+- boss-6/7/8 launched 3-wide with F-19 open (separate 1-PR lane).
 - One PR per batch; coordinator PR none; no raw sessions.
 - Post-merge build verified after each merge; **create the T-4 coordinator task** from `catalog-coordinator-template.md`, link it in `progress.md`, and hand off.

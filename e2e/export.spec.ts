@@ -9,6 +9,8 @@ interface SceneFixture {
 	boards: Array<Record<string, unknown>>;
 	items: Array<Record<string, unknown>>;
 	customPedals: Array<Record<string, unknown>>;
+	endpoints?: Array<Record<string, unknown>>;
+	cables?: Array<Record<string, unknown>>;
 }
 
 function customPedal(
@@ -111,6 +113,8 @@ async function seedScene(page: Page, scene: SceneFixture): Promise<void> {
 					boards: fixture.boards,
 					items: fixture.items,
 					customPedals: fixture.customPedals,
+					endpoints: fixture.endpoints ?? [],
+					cables: fixture.cables ?? [],
 					updatedAt,
 				});
 				tx.oncomplete = () => resolve();
@@ -313,6 +317,92 @@ test("exports the selected board as an opaque, non-blank PNG", async ({
 	await expect(
 		page.getByText(/^pedalvision-rig-board-1-\d{4}-\d{2}-\d{2}\.png$/),
 	).toBeVisible();
+});
+
+test("selected board includes an in-scope cable endpoint (no mid-air drop)", async ({
+	page,
+}) => {
+	// The amp endpoint sits 22 cm right of the 60 cm board — inside the 30 cm
+	// endpoint margin, so the selected-board export must include the cable and
+	// the terminal chip. Board only would be 68 × 38 cm → 2,176 × 1,216 px;
+	// the included endpoint extends the right edge to 82 + 1.5 (chip) + 4
+	// (padding), i.e. 91.5 cm → 2,928 px.
+	//
+	// A second endpoint at x=200 is outside the margin; its cable must be
+	// dropped (not clipped mid-air). The exact width proves both halves of the
+	// F9 scope rule, and also proves the out-of-scope board at x=80..140 does
+	// not leak into the selected-board frame.
+	await seedScene(page, {
+		...sceneTwoBoards(),
+		items: [
+			{
+				uid: "pedal-1",
+				refId: "boss-bd-2-blues-driver",
+				kind: "pedal",
+				boardUid: "board-1",
+				x: 10,
+				y: 8,
+				rotationDeg: 0,
+				z: 0,
+			},
+			{
+				uid: "pedal-2",
+				refId: "boss-bd-2-blues-driver",
+				kind: "pedal",
+				boardUid: "board-1",
+				x: 45,
+				y: 8,
+				rotationDeg: 0,
+				z: 1,
+			},
+		],
+		customPedals: [],
+		endpoints: [
+			{ uid: "amp-1", kind: "amp", x: 82, y: 14 },
+			{ uid: "far-1", kind: "amp", x: 200, y: 14 },
+		],
+		cables: [
+			{
+				uid: "cable-1",
+				from: { itemUid: "pedal-1", jack: "1" },
+				to: { endpointUid: "amp-1" },
+			},
+			{
+				uid: "cable-far",
+				from: { itemUid: "pedal-2", jack: "1" },
+				to: { endpointUid: "far-1" },
+			},
+		],
+	});
+	const stage = page.getByTestId("stage");
+	await expect(stage).toHaveAttribute("data-cables", "2");
+	await expect(stage).toHaveAttribute("data-endpoints", "2");
+	await selectFirstBoard(page);
+	await openExport(page);
+	await page.getByRole("radio", { name: "Selected board" }).click();
+
+	const size = await readOutputSize(page);
+	expect(size.width).toBe(2928);
+	expect(size.height).toBe(1216);
+	expect(size.width * size.height).toBeLessThanOrEqual(16_777_216);
+
+	const buffer = await downloadPng(page);
+	const stats = await inspectPng(page, buffer);
+	expect(stats.width).toBe(size.width);
+	expect(stats.height).toBe(size.height);
+	expect(stats.transparent).toBe(0);
+	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
+	// The in-scope cable is actually painted at its mid-air run (world ~70 cm).
+	const [cableInk] = await samplePixels(page, buffer, [{ x: 2368, y: 576 }]);
+	const background = [0x19, 0x1a, 0x1c];
+	const delta = (cableInk ?? [])
+		.slice(0, 3)
+		.reduce(
+			(sum, channel, index) =>
+				sum + Math.abs(channel - (background[index] ?? 0)),
+			0,
+		);
+	expect(delta).toBeGreaterThan(12);
 });
 
 test("all content includes the other board and stays within the pixel clamp", async ({
