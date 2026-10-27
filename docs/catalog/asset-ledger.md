@@ -6,15 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 165 |
+| license-pending | 196 |
 | own | 89 |
-| replacement-needed | 31 |
 
 Hosting: hotlinked 92 · mock 84 · static 109
 
-Source kind: archive 4 · legacy 31 · official 161 · own 89
+Source kind: archive 4 · official 164 · own 89 · planner 28
 
-Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84)
+Needs improvement: 204 (hotlinked 92 · mock 84 · planner 28)
 
 ## Aclam
 
@@ -27,7 +26,7 @@ Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84)
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
 | `boss-bcb-1000` | BCB-1000 | own | mock | own | yes | BOSS batch |
-| `boss-ac-2-acoustic-simulator` | AC-2 Acoustic Simulator | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ac-2-acoustic-simulator` | AC-2 Acoustic Simulator | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-ac-3-acoustic-simulator` | AC-3 Acoustic Simulator | license-pending | static | official | — | — |
 | `boss-ad-2-acoustic-preamp` | AD-2 Acoustic Preamp | license-pending | static | official | — | — |
 | `boss-aw-3-dynamic-wah` | AW-3 Dynamic Wah | license-pending | static | official | — | — |
@@ -37,73 +36,73 @@ Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84)
 | `boss-bd-2-blues-driver` | BD-2 Blues Driver | license-pending | static | official | — | — |
 | `boss-bd-2w-blues-driver-waza-craft` | BD-2W Blues Driver (Waza Craft) | license-pending | static | official | — | — |
 | `boss-bf-2-flanger` | BF-2 Flanger | license-pending | static | official | — | — |
-| `boss-bf-2b-bass-flanger` | BF-2B Bass Flanger | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-bf-2b-bass-flanger` | BF-2B Bass Flanger | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-bf-3-flanger` | BF-3 Flanger | license-pending | static | official | — | — |
 | `boss-bp-1w-booster-preamp-waza-craft` | BP-1W Booster/Preamp (Waza Craft) | license-pending | static | official | — | — |
-| `boss-ce-1-chorus-ensemble` | CE-1 Chorus Ensemble | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ce-2-chorus` | CE-2 Chorus | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ce-1-chorus-ensemble` | CE-1 Chorus Ensemble | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ce-2-chorus` | CE-2 Chorus | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-ce-20-chorus-ensemble` | CE-20 Chorus Ensemble | license-pending | static | official | — | — |
-| `boss-ce-2b-bass-chorus` | CE-2B Bass Chorus | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ce-2b-bass-chorus` | CE-2B Bass Chorus | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-ce-2w-chorus-waza-craft` | CE-2W Chorus (Waza Craft) | license-pending | static | official | — | — |
-| `boss-ce-3-chorus` | CE-3 Chorus | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ce-3-chorus` | CE-3 Chorus | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-ce-5-chorus-ensemble` | CE-5 Chorus Ensemble | license-pending | static | official | — | — |
 | `boss-ceb-3-bass-chorus` | CEB-3 Bass Chorus | license-pending | static | official | — | — |
 | `boss-ch-1-super-chorus` | CH-1 Super Chorus | license-pending | static | official | — | — |
 | `boss-cp-1x-compressor` | CP-1X Compressor | license-pending | static | official | — | — |
-| `boss-cs-2-compression-sustainer` | CS-2 Compression Sustainer | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-cs-2-compression-sustainer` | CS-2 Compression Sustainer | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-cs-3-compression-sustainer` | CS-3 Compression Sustainer | license-pending | static | official | — | — |
 | `boss-da-2-adaptive-distortion` | DA-2 Adaptive Distortion | license-pending | static | official | — | — |
-| `boss-dc-2-dimension-c` | DC-2 Dimension C | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dc-2-dimension-c` | DC-2 Dimension C | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-dc-2w-dimension-c-waza-craft` | DC-2W Dimension C (Waza Craft) | license-pending | static | official | — | — |
-| `boss-dc-3-digital-dimension` | DC-3 Digital Dimension | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dd-2-digital-delay` | DD-2 Digital Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dc-3-digital-dimension` | DC-3 Digital Dimension | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-dd-2-digital-delay` | DD-2 Digital Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-dd-20-giga-delay` | DD-20 Giga Delay | license-pending | static | official | — | — |
 | `boss-dd-200-digital-delay` | DD-200 Digital Delay | license-pending | static | official | — | — |
 | `boss-dd-3-digital-delay` | DD-3 Digital Delay | license-pending | static | official | — | — |
 | `boss-dd-3t-digital-delay` | DD-3T Digital Delay | license-pending | static | official | — | — |
-| `boss-dd-5-digital-delay` | DD-5 Digital Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dd-5-digital-delay` | DD-5 Digital Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-dd-500-digital-delay` | DD-500 Digital Delay | license-pending | static | official | — | — |
 | `boss-dd-6-digital-delay` | DD-6 Digital Delay | license-pending | static | official | — | — |
 | `boss-dd-7-digital-delay` | DD-7 Digital Delay | license-pending | static | official | — | — |
 | `boss-dd-8-digital-delay` | DD-8 Digital Delay | license-pending | static | official | — | — |
-| `boss-df-2-super-feedbacker-distortion` | DF-2 Super Feedbacker & Distortion | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-df-2-super-feedbacker-distortion` | DF-2 Super Feedbacker & Distortion | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-dm-101-delay-machine` | DM-101 Delay Machine | license-pending | static | official | — | — |
-| `boss-dm-2-delay` | DM-2 Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dm-2-delay` | DM-2 Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-dm-2w-delay-waza-craft` | DM-2W Delay (Waza Craft) | license-pending | static | official | — | — |
-| `boss-dm-3-delay` | DM-3 Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dm-3-delay` | DM-3 Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-dn-2-dyna-drive` | DN-2 Dyna Drive | license-pending | static | official | — | — |
-| `boss-ds-1-4a-anniversary-distortion` | DS-1-4A Anniversary Distortion | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ds-1-4a-anniversary-distortion` | DS-1-4A Anniversary Distortion | license-pending | static | official | — | — |
 | `boss-ds-1-distortion` | DS-1 Distortion | license-pending | static | official | — | — |
-| `boss-ds-1-wh-distortion` | DS-1-WH Distortion | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ds-1-wh-distortion` | DS-1-WH Distortion | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-ds-1w-distortion` | DS-1W Distortion | license-pending | static | official | — | — |
 | `boss-ds-1x-distortion` | DS-1X Distortion | license-pending | static | official | — | — |
 | `boss-ds-2-turbo-distortion` | DS-2 Turbo Distortion | license-pending | static | official | — | — |
-| `boss-dsd-2-digital-sampler-delay` | DSD-2 Digital Sampler/Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-dsd-3-digital-sampler-delay` | DSD-3 Digital Sampler/Delay | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-eh-2-enhancer` | EH-2 Enhancer | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-dsd-2-digital-sampler-delay` | DSD-2 Digital Sampler/Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-dsd-3-digital-sampler-delay` | DSD-3 Digital Sampler/Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-eh-2-enhancer` | EH-2 Enhancer | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-eq-20-advanced-eq` | EQ-20 Advanced EQ | license-pending | static | official | — | — |
 | `boss-eq-200-graphic-equalizer` | EQ-200 Graphic Equalizer | license-pending | static | official | — | — |
-| `boss-es-5-effects-switching-system` | ES-5 Effects Switching System | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-es-8-effects-switching-system` | ES-8 Effects Switching System | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ev-1-wl-wireless-midi-expression-pedal` | EV-1-WL Wireless MIDI Expression Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ev-30-dual-expression-pedal` | EV-30 Dual Expression Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-ev-5-expression-pedal` | EV-5 Expression Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-es-5-effects-switching-system` | ES-5 Effects Switching System | license-pending | static | official | — | — |
+| `boss-es-8-effects-switching-system` | ES-8 Effects Switching System | license-pending | static | official | — | — |
+| `boss-ev-1-wl-wireless-midi-expression-pedal` | EV-1-WL Wireless MIDI Expression Pedal | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ev-30-dual-expression-pedal` | EV-30 Dual Expression Pedal | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ev-5-expression-pedal` | EV-5 Expression Pedal | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-fb-2-feedbacker-booster` | FB-2 Feedbacker/Booster | license-pending | static | official | — | — |
 | `boss-fbm-1-59-fender-bassman` | FBM-1 '59 Fender Bassman | license-pending | static | official | — | — |
 | `boss-fdr-1-fender-65-deluxe-reverb` | FDR-1 Fender '65 Deluxe Reverb | license-pending | static | official | — | — |
 | `boss-frv-1-63-fender-reverb` | FRV-1 '63 Fender Reverb | license-pending | static | official | — | — |
 | `boss-fs-1-wl-wireless-footswitch` | FS-1-WL Wireless Footswitch | license-pending | static | official | — | — |
-| `boss-fs-5l-foot-switch` | FS-5L Foot Switch | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fs-5u-foot-switch` | FS-5U Foot Switch | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fs-5l-foot-switch` | FS-5L Foot Switch | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-fs-5u-foot-switch` | FS-5U Foot Switch | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-fs-6-dual-foot-switch` | FS-6 Dual Foot Switch | license-pending | static | official | — | — |
 | `boss-fs-7-dual-foot-switch` | FS-7 Dual Foot Switch | license-pending | static | official | — | — |
-| `boss-ft-2-dynamic-filter` | FT-2 Dynamic Filter | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fv-100-guitar-volume` | FV-100 Guitar Volume | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-ft-2-dynamic-filter` | FT-2 Dynamic Filter | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-fv-100-guitar-volume` | FV-100 Guitar Volume | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-fv-30-foot-volume` | FV-30 Foot Volume | license-pending | static | official | — | — |
-| `boss-fv-500-volume-pedal` | FV-500 Volume Pedal | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fv-500-volume-pedal` | FV-500 Volume Pedal | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-fz-1w-fuzz` | FZ-1W Fuzz | license-pending | static | official | — | — |
-| `boss-fz-2-hyper-fuzz` | FZ-2 Hyper Fuzz | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
-| `boss-fz-3-fuzz` | FZ-3 Fuzz | replacement-needed | static | legacy | yes | BOSS remaining batches (boss-4..boss-8) |
+| `boss-fz-2-hyper-fuzz` | FZ-2 Hyper Fuzz | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-fz-3-fuzz` | FZ-3 Fuzz | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-fz-5-fuzz` | FZ-5 Fuzz | license-pending | static | official | — | — |
 | `boss-psm-5-power-supply-master-switch` | PSM-5 Power Supply & Master Switch | license-pending | hotlinked | official | yes | BOSS batch |
 
@@ -440,9 +439,9 @@ Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84)
 | Big Joe | own | 2 |
 | Blackbird | own | 1 |
 | BoardMods | own | 1 |
-| BOSS | legacy | 31 |
 | BOSS | official | 1 |
 | BOSS | own | 1 |
+| BOSS | planner | 28 |
 | Caseman | own | 1 |
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |

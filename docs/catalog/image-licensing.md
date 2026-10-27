@@ -16,16 +16,16 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 4 · legacy 31 · official 161 · own 89
+Sources: archive 4 · official 164 · own 89 · planner 28
 
-Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 204 (hotlinked 92 · mock 84 · planner 28; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
 | Brand | Request | Official | Replace | Own | Contact | Press email | Terms |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Behringer | not-requested | 1 | 0 | 0 | [contact](https://www.behringer.com/support) | — | — |
-| BOSS | not-requested | 48 | 31 | 1 | [contact](https://www.boss.info/us/support/) | Rebecca.Genel@roland.com | [terms](https://www.boss.info/us/terms_of_use) |
+| BOSS | not-requested | 51 | 0 | 1 | [contact](https://www.boss.info/us/support/) | Rebecca.Genel@roland.com | [terms](https://www.boss.info/us/terms_of_use) |
 | Electro-Harmonix | not-requested | 18 | 0 | 0 | [contact](https://www.ehx.com/support/) | — | — |
 | JHS | not-requested | 13 | 0 | 6 | [contact](https://www.jhspedals.info/pages/contact) | — | — |
 | Joyo | not-requested | 5 | 0 | 13 | [contact](https://www.joyoaudio.com/about.html) | info@joyoaudio.com | — |
