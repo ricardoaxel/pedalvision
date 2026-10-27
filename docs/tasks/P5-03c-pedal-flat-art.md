@@ -1,6 +1,6 @@
 # P5-03c — Pedal flat-art generator + promote-legacy (T-1)
 
-**Phase:** P5 · **Status:** in review — PR #TBD · **Type:** tooling + design · **Depends on:** T-0
+**Phase:** P5 · **Status:** in review — PR #55 · **Type:** tooling + design · **Depends on:** T-0
 
 ## Goal
 
@@ -30,7 +30,7 @@ knob/switch rings + random pointers + 350 smudges; pass 2 approved Enzo and fixe
 the rest, but still flagged the DS-1 face as too empty at the cap. The pass-2
 findings were folded after the cap (low-contrast tread field restored, Tensor
 HOLD legend, 350 LED/button LOD, pointer tick); no third reviewer pass. The
-owner reviews the final pilots in the PR.
+owner reviews the final pilots in the PR. Code review **2/2** (pass-1 blocker + should-fixes; pass-2 should-fixes/nit); no third pass (2-pass cap), tests are the re-check.
 
 ## Scope
 
@@ -91,6 +91,6 @@ owner reviews the final pilots in the PR.
 - Generator + specs + promote-legacy deterministic and tested.
 - Pilots pass the clean-alpha/aspect/analyzer gates and the design review; owner
   approved the direction.
-- `pnpm lint && pnpm typecheck && pnpm test && pnpm build`; code review (1 light
-  pass); one PR; no merge.
+- `pnpm lint && pnpm typecheck && pnpm test && pnpm build`; code review (2 light
+  passes — pass 1 blocker + pass 2 should-fixes; no third pass); one PR; no merge.
 - Record the design approval + the pilot references in the PR/task.
