@@ -111,7 +111,7 @@ feature → workflow → E2E matrix, kept current by behaviour-changing feature 
 and update the WS line to:
 
 ```md
-**WS 2026-10-27:** feature F-19 — in review (PR #64) · catalog T-3 — next (3-wide) · awaiting review 1 (feature 1/catalog 0) · billed feature ≈390k (builder 290k + review 90k) · gate: 1 feature PR (cap 1), 0 catalog PRs.
+**WS 2026-10-27:** feature F-19 — in review (PR #64) · catalog T-3 — next (3-wide) · awaiting review 1 (feature 1/catalog 0) · billed feature ≈460k (builder 340k + code review 90k + token review 30k) · gate: 1 feature PR (cap 1), 0 catalog PRs.
 ```
 
 ## Notes
