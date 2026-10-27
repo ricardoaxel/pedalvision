@@ -58,3 +58,15 @@ switch size.
 - Surfaced by the P2 post-phase review (2026-10-19): the 350 renditions are
   generated but never requested. The reviewer recommended shipping this before
   P3-01; it is a small, self-contained follow-up, not a P2 architectural defect.
+
+## Workstream / boundaries (T-0b)
+
+- Feature-safe: own `src/lib/cdn.ts`, `src/components/Picker.tsx`,
+  `src/components/InfoPanel.tsx`, tests and this task file.
+- Never edit catalog data/assets/runtime/tools or shared docs/config/deps.
+- One PR; no merge; no total-count E2E; filter a stable item/brand.
+- **Demo link:** full PR-preview URL + `?share=1#s=…` if the picker state can be shown;
+  otherwise preview URL + exact steps and 1 desktop + 1 mobile screenshot.
+- **Performance:** record picker request URLs and bundle delta; no 800px thumbnail
+  requests for small UI.
+- **Docs:** update the feature catalog/tutorial.

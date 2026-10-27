@@ -44,3 +44,14 @@ Close the two real code gaps found by the P4 post-phase review without expanding
 
 - Found by the P4 phase gate review (2026-10-21): `src/canvas/PedalNode.tsx:394` and `src/lib/exportScene.ts:360-369`; the docs were corrected in the gate PR (snap radius 18/44 px, `Cable.from` typed as `CableEnd`).
 - Not a P5 blocker; schedule before the launch gate or when cable exports/read-only previews are next touched.
+
+## Workstream / boundaries (T-0b)
+
+- Feature-safe: own `src/canvas/PedalNode.tsx`, `src/lib/exportScene.ts`, tests and
+  this task file.
+- Never edit catalog data/assets/runtime/tools or shared docs/config/deps.
+- One PR; no merge; no total-count E2E; rebase after catalog merges.
+- **Demo link:** full PR-preview read-only `?share=1#s=…` scene showing jack ticks and
+  the long cable; 1 desktop + 1 mobile screenshot; export bounds unit proof.
+- **Performance:** record bundle delta and export bounds; no regression.
+- **Docs:** update the feature catalog/tutorial.
