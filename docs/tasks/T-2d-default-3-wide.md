@@ -1,6 +1,6 @@
 # T-2d — Catalog waves start 3-wide by default
 
-**Phase:** P5 · **Status:** in review — PR #62 (folded into T-2c) · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-2c
+**Phase:** P5 · **Status:** merged — PR #62 (squash `50025c8`, folded into T-2c) · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-2c
 
 ## Goal
 

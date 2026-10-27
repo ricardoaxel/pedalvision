@@ -1,6 +1,6 @@
 # P4-05: Cable phase-gate follow-ups (read-only jack ticks + export cable bounds)
 
-**Phase:** P4 · **Status:** in review — PR #63 (feature lane, 2026-10-27) · **Model:** light
+**Phase:** P4 · **Status:** merged — PR #63 (squash `a43cb2d`, feature lane, 2026-10-27) · **Model:** light
 
 ## Goal
 

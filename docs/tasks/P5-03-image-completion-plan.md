@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58); boss-5 merged (PR #59, `424bc2c`; post-merge `123df52`, 322/15); **T-2c/T-2d in review (PR #62); 3-wide default (no flag)** · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58); boss-5 merged (PR #59, `424bc2c`; post-merge `123df52`, 322/15); **T-2c/T-2d merged (PR #62); 3-wide default (no flag); T-3 next** · **Type:** plan/index (docs-only)
 
 ## Purpose
 
@@ -133,9 +133,9 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-0b** | Parallel feature + catalog workstreams (docs-only) | **Merged (PR #54, squash `89c6a38`).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; **owner override 2026-10-27: 3-wide default, ≤3 PRs awaiting review (max 1 feature)**. Feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
 | **T-1** | Pedal flat-art + promote-legacy | **Merged (PR #55, squash `66222d4`).** Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Owner-approved "Catalog Specimen"; design-reviewer 2/2; code review 2/2. | T-0 |
 | **T-1a** | Image source policy (planner last-resort + recorded sources) | **Merged (PR #56, squash `ea20b02`).** Reverse the planner ban: official → retailer → community → planner **last-resort** → generated art only if none; 31 BOSS legacy remain repair-set. Always record source in the private raw catalog/ledger; ledger source-gap report. Docs/AGENTS/ADR-003/schema/gate/ledger + 26-record provenance backfill. One PR; token-reviewed. | T-1 |
-| **T-2** | BOSS wave 3 | **COMPLETE — boss-4 + legacy repair + boss-5 merged.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) merged; boss-5 (26 new, `md-2`…`od-3`) merged as PR #59 (`424bc2c`; post-merge `123df52`, 322/15; 52 AVIFs = 18 official + 8 planner + 0 generated; billed ≈579k / 42 min). T-2 calibration: boss-4 ≈724k/66 min. **T-3 starts only after T-2c/T-2d (PR #62).** | T-0a, T-1, T-1a |
-| **T-2c** | [Wrapper 3-wide true-token fix](T-2c-wrapper-3-wide.md) | **In review (PR #62).** Fixed the free-slot auto-start and stopped-batch/`.stop`/resume collision; explicit `--resume` (original wave id) clears stale markers and preserves progress; fresh start refuses existing state; supervisor-finalize guard; true-token budgets/stops preserved. Tests added. **Required before T-3.** Token review `adjust` folded; high-risk code review 2/2. | T-0a |
-| **T-2d** | [Catalog waves start 3-wide by default](T-2d-default-3-wide.md) | **In review — folded into PR #62.** Default `min(3, maxParallel, batchCount)` with no flag; `--allow-third` deprecated no-op; soft budget logged without shrinking (owner accepts over-soft), hard 2.4M still refuses; docs/tests updated. **Required before T-3.** Token review; high-risk code review. | T-2c |
+| **T-2** | BOSS wave 3 | **COMPLETE — boss-4 + legacy repair + boss-5 merged.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) merged; boss-5 (26 new, `md-2`…`od-3`) merged as PR #59 (`424bc2c`; post-merge `123df52`, 322/15; 52 AVIFs = 18 official + 8 planner + 0 generated; billed ≈579k / 42 min). T-2 calibration: boss-4 ≈724k/66 min. **T-3 next; T-2c/T-2d merged.** | T-0a, T-1, T-1a |
+| **T-2c** | [Wrapper 3-wide true-token fix](T-2c-wrapper-3-wide.md) | **Merged (PR #62, squash `50025c8`).** Fixed the free-slot auto-start and stopped-batch/`.stop`/resume collision; explicit `--resume` (original wave id) clears stale markers and preserves progress; fresh start refuses existing state; supervisor-finalize guard; true-token budgets/stops preserved. Tests added. **Required before T-3.** Token review `adjust` folded; high-risk code review 2/2. | T-0a |
+| **T-2d** | [Catalog waves start 3-wide by default](T-2d-default-3-wide.md) | **Merged (PR #62, squash `50025c8`; folded into T-2c).** Default `min(3, maxParallel, batchCount)` with no flag; `--allow-third` deprecated no-op; soft budget logged without shrinking (owner accepts over-soft), hard 2.4M still refuses; docs/tests updated. **Required before T-3.** Token review; high-risk code review. | T-2c |
 | **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). **3-wide by default (T-2d, no flag)**; logged start; true-token budgets/stops. Re-baseline budgets from T-2. One PR per batch. | T-2, T-2c, T-2d |
 | **T-4** | Cleanup wave 1 | EHX-1 (18 existing + 8 new) + MXR-1 (18 + 8) + Mooer-1 (18 [17 hotlinked + 1 mock] + 8) = 78 items; 54 existing (53 hotlinked + 1 mock). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
 | **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
@@ -146,15 +146,15 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-10** | P5-04 final QA / launch | Full validation, provenance, attribution, caps, demo links, licensing; launch gate `hotlinked + mock = 0`, planner last-resort counted as a source gap (owner may waive it), 31 BOSS legacy repaired. | T-8, T-9 |
 | — | Licensing ops (owner) | Send the 13 brand emails; update `image-licenses.json`; run `pnpm catalog:asset-ledger`; `licensed` only with written permission. No PR unless statuses change docs. | — |
 
-**T-2c/T-2d gate:** T-3 and every later 3-wide wave starts only after PR #62 merges. Waves start 3-wide by default (no flag); the true-token metric remains the budget/stop metric; the third-slot start gate is retired. Log every 3-wide start and any budget over-soft (soft does not shrink the wave; hard 2.4M refuses).
+**T-2c/T-2d gate:** merged; T-3 and later 3-wide waves can start now. Waves start 3-wide by default (no flag); the true-token metric remains the budget/stop metric; the third-slot start gate is retired. Log every 3-wide start and any budget over-soft (soft does not shrink the wave; hard 2.4M refuses).
 
 ## Wave launch matrix
 
 | Wave | Width | Gate |
 |---|---|---|
 | **T-2b boss-5** | 1 (done) | PR #59 merged |
-| **T-2c/T-2d wrapper fix** | code task | token review + high-risk code review; required before T-3 |
-| **T-3 BOSS wave 4** | **3-wide (default, no flag)** | after T-2c/T-2d; logged 3-wide start; ≤3 PRs |
+| **T-2c/T-2d wrapper fix** | merged | PR #62 (`50025c8`); 3-wide default |
+| **T-3 BOSS wave 4** | **3-wide (default, no flag)** | after T-2c/T-2d (merged); 3-wide default; ≤3 PRs |
 | **T-4…T-7 cleanup** | **3-wide (default)** | after T-2c/T-2d; one PR per batch |
 | **T-8 Tier A** | **3-wide (default)** | after T-2c/T-2d; wave budgets/stops |
 | **T-9 boards** | **3-wide (default)** | after T-2c/T-2d; board budget |

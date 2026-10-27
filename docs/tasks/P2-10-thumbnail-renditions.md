@@ -1,6 +1,6 @@
 # P2-10: Use the 350 px renditions for small UI
 
-**Phase:** P2 follow-up · **Status:** in review — PR #61 · **Model:** build-cheap
+**Phase:** P2 follow-up · **Status:** merged — PR #61 (squash `c3e0a7d`) · **Model:** build-cheap
 
 ## Goal
 Make the checked-in `350/` image renditions earn their place. Today every

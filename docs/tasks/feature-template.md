@@ -57,6 +57,10 @@ Read only the pointed sections; do not read whole docs.
 - Touched E2E flows green (desktop + mobile for UI changes).
 - **Feature demo link** opens the final PR preview with the feature applied
   (`?share=1#s=…` where representable; video/steps otherwise), desktop + mobile.
+- **Before/after screenshots** are embedded for every visually visible change:
+  same viewport/theme/state on base `main` and the PR preview, desktop + mobile;
+  video/GIF for interaction-only states. If there is no prior UI, show the closest
+  baseline and say why.
 - Performance numbers recorded; no regression beyond thresholds; docs/feature
   catalog updated.
 - No edits to `data/catalog/**`, `public/pedal-assets/**`, `src/catalog/**`,
