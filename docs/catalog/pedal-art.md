@@ -115,10 +115,12 @@ reference; the renderer owns geometry/palette/type/primitives. Pilots live in
 `multi-fx`, `desktop-rack`. Use the real form factor; family ranges are guidance,
 not a hard layout.
 
-**Constraints enforced by the schema:** `u,v` 0.05–0.95; controls inside the
-enclosure (0.15 cm inset); body/band geometry inside the body; text `v ≤0.84`
-(bottom 16 % is hardware-only, no essential print); jack `protrusionCm: 0` (v1
-clips to the enclosure); no planner URL in `sourceRef`; unknown keys rejected.
+**Constraints enforced by the schema:** `u,v` 0.05–0.95; controls, bands and
+text must fit the **rounded top face** (the renderer also clips body content to
+it); controls inside the enclosure (0.15 cm inset); text `v ≤0.84` (bottom 16 %
+is hardware-only, no essential print) and must fit its measured outline width/
+height; jack `protrusionCm: 0` (v1 clips to the enclosure); no planner URL in
+`sourceRef`; unknown keys rejected.
 
 ## 4. Sample the body colour
 
@@ -177,8 +179,11 @@ Then:
   `public/pedal-assets/pedals/`. The raw record sets `imageProvenance`
   `{ kind: "own", status: "chosen", note }` and `sources` to the reference URL.
 - The raw record's `jacks[]` is copied into the spec so app ticks align.
-- `catalog:promote-legacy` prepares the raw record for cleanup batches; it never
-  writes an asset slot and never invents facts.
+- `catalog:promote-legacy --brand <brand> --ids <file>` prepares the raw record
+  for cleanup batches; it never writes an asset slot and never invents facts.
+  For re-sourced official images use `--provenance official` with
+  `--source-url <url>` (one id) or `--source-urls <map.json>`
+  (`{ "<id>": "<url>" }`); planner URLs are rejected in the library.
 
 ## 8. Pilots (evidence only, not catalog items)
 

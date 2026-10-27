@@ -120,7 +120,10 @@ describe("promoteLegacy", () => {
 			legacy: LEGACY,
 			provenance: {
 				kind: "official",
-				sourceUrl: "https://www.ehx.com/products/small-stone/",
+				sourceUrls: {
+					"electro-harmonix-small-stone":
+						"https://www.ehx.com/products/small-stone/",
+				},
 			},
 		});
 		expect(records[0].imageProvenance).toMatchObject({
@@ -128,6 +131,43 @@ describe("promoteLegacy", () => {
 			sourceUrl: "https://www.ehx.com/products/small-stone/",
 			status: "chosen",
 		});
+	});
+
+	it("rejects a planner/unsafe official source URL", () => {
+		expect(() =>
+			promoteLegacy({
+				brand: "Electro-Harmonix",
+				ids: ["electro-harmonix-small-stone"],
+				batch: "ehx-1",
+				runtime: RUNTIME,
+				legacy: LEGACY,
+				provenance: {
+					kind: "official",
+					sourceUrls: {
+						"electro-harmonix-small-stone":
+							"https://www.pedalplayground.com/gear/ehx.png",
+					},
+				},
+			}),
+		).toThrow(/planner/i);
+	});
+
+	it("requires an official URL for every id", () => {
+		expect(() =>
+			promoteLegacy({
+				brand: "Electro-Harmonix",
+				ids: ["electro-harmonix-big-muff", "electro-harmonix-small-stone"],
+				batch: "ehx-1",
+				runtime: RUNTIME,
+				legacy: LEGACY,
+				provenance: {
+					kind: "official",
+					sourceUrls: {
+						"electro-harmonix-big-muff": "https://www.ehx.com/big-muff/",
+					},
+				},
+			}),
+		).toThrow(/needs an official source URL/);
 	});
 
 	it("fails on unknown ids without writing a partial batch", () => {

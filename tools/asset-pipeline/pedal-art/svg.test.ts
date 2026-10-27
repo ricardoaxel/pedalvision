@@ -72,6 +72,29 @@ describe("buildPedalArtSvg", () => {
 		expect(svg).not.toContain('fill="#000000"');
 	});
 
+	it("keeps brand/model text at the 3:1 large-text floor", () => {
+		const mid = parsePedalArtSpec({
+			id: "mid-gray",
+			family: "compact",
+			widthCm: 7.4,
+			heightCm: 12.6,
+			style: "catalog-specimen/1",
+			body: { fill: "#7A7F86" },
+			text: [
+				{ role: "brand", value: "ACME", u: 0.5, v: 0.06, sizeMm: 2.4 },
+				{ role: "model", value: "M-1", u: 0.5, v: 0.12, sizeMm: 3.6 },
+			],
+		});
+		const art = buildPedalArtSvg(mid);
+		expect(art.inkContrast).toBeLessThan(4.5);
+		expect(art.inkContrast).toBeGreaterThanOrEqual(3);
+		expect((art.svg.match(/<path /g) ?? []).length).toBeGreaterThan(5);
+	});
+
+	it("clips body content to the rounded top face", () => {
+		expect(buildPedalArtSvg(DS1).svg).toContain('clip-path="url(#topFace)"');
+	});
+
 	it("is deterministic", () => {
 		expect(buildPedalArtSvg(DS1).svg).toBe(buildPedalArtSvg(DS1).svg);
 	});

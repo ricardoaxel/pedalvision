@@ -1,27 +1,30 @@
-import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, join, resolve } from "node:path";
-import { RawPedalBatchSchema } from "../../src/catalog/rawSchema.ts";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 import { toSlug } from "../catalog-transform/slug.ts";
 import {
 	type PromoteProvenance,
 	promoteLegacy,
 	type RuntimePedalLike,
 } from "./promote.ts";
+import { existingRawIds } from "./raw.ts";
 
 const USAGE = `catalog-promote-legacy — legacy seed → raw-research scaffold (T-1)
 
 Usage:
   catalog-promote-legacy --brand <brand> --ids <file> [--batch <slug>]
                          [--id <id> ...] [--out <file>] [--root <dir>]
-                         [--provenance legacy|official] [--source-url <url>]
+                         [--provenance legacy|official]
+                         [--source-url <url> | --source-urls <map.json>]
                          [--force] [--dry-run]
 
 Copies existing legacy/runtime facts by id into a raw batch file under
 data/catalog/research/pedals/<brand>/<batch>.json. No research, no image slot,
 no planner URLs. Default provenance: legacy/pending-replacement.
 
-The ids file is a JSON array of ids, {"ids": [...]}, or a newline/comma list.
-The batch session still re-sources the asset (official or generated flat art).
+--source-url is for exactly one id; --source-urls is a JSON map { id: url } for
+a multi-item cleanup batch. The ids file is a JSON id array, {"ids": [...]}, or
+a newline/comma list. The batch session still re-sources the asset (official or
+generated flat art).
 `;
 
 type Args = {
@@ -33,6 +36,7 @@ type Args = {
 	root: string;
 	provenance: "legacy" | "official";
 	sourceUrl?: string;
+	sourceUrls?: string;
 	force: boolean;
 	dryRun: boolean;
 	help: boolean;
@@ -78,6 +82,9 @@ function parseArgs(argv: string[]): Args {
 			}
 			case "--source-url":
 				args.sourceUrl = argv[++i];
+				break;
+			case "--source-urls":
+				args.sourceUrls = argv[++i];
 				break;
 			case "--force":
 				args.force = true;
@@ -129,35 +136,19 @@ async function readJsonArray(path: string): Promise<unknown[]> {
 	return parsed;
 }
 
-async function existingRawIds(root: string): Promise<string[]> {
-	const researchRoot = resolve(root, "data/catalog/research/pedals");
-	let brands: string[];
-	try {
-		brands = await readdir(researchRoot);
-	} catch (error) {
-		if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
-		throw error;
+async function readSourceUrls(path: string): Promise<Record<string, string>> {
+	const parsed = JSON.parse(await readFile(path, "utf8")) as unknown;
+	if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+		throw new Error(`${path}: --source-urls must be an object { id: url }`);
 	}
-	const ids: string[] = [];
-	for (const brand of brands) {
-		const dir = join(researchRoot, brand);
-		let files: string[];
-		try {
-			files = await readdir(dir);
-		} catch {
-			continue;
+	const urls: Record<string, string> = {};
+	for (const [id, url] of Object.entries(parsed)) {
+		if (typeof url !== "string") {
+			throw new Error(`${path}: --source-urls[${id}] must be a URL string`);
 		}
-		for (const file of files) {
-			if (!file.endsWith(".json")) continue;
-			const parsed = RawPedalBatchSchema.safeParse(
-				JSON.parse(await readFile(join(dir, file), "utf8")),
-			);
-			if (parsed.success) {
-				ids.push(...parsed.data.map((record) => record.id));
-			}
-		}
+		urls[id] = url;
 	}
-	return ids;
+	return urls;
 }
 
 async function fileExists(path: string): Promise<boolean> {
@@ -180,29 +171,51 @@ async function main(): Promise<void> {
 		throw new Error("--ids <file> or at least one --id is required");
 	}
 
-	const sourceUrl = args.sourceUrl;
-	if (args.provenance === "official") {
-		if (!sourceUrl) {
-			throw new Error("--provenance official requires --source-url");
-		}
-		if (/pedalplayground/i.test(sourceUrl)) {
-			throw new Error("planner source URLs are never allowed");
-		}
-	}
-	const provenance: PromoteProvenance =
-		args.provenance === "official"
-			? { kind: "official", sourceUrl: sourceUrl ?? "" }
-			: { kind: "legacy" };
-
 	const ids = [
 		...(args.ids ? await readIds(resolve(args.ids)) : []),
 		...args.idsList,
 	];
+	const uniqueIds = [...new Set(ids)];
 	const brandKey = toSlug(args.brand);
 	const batch = args.batch ?? `${brandKey}-cleanup-1`;
 	if (!/^[a-z0-9][a-z0-9-]*$/.test(batch)) {
 		throw new Error("--batch must be a lowercase hyphenated slug");
 	}
+
+	const outPath = args.out
+		? resolve(process.cwd(), args.out)
+		: resolve(
+				args.root,
+				"data/catalog/research/pedals",
+				brandKey,
+				`${batch}.json`,
+			);
+
+	const sourceUrls = args.sourceUrls
+		? await readSourceUrls(resolve(process.cwd(), args.sourceUrls))
+		: {};
+	if (args.sourceUrl) {
+		if (uniqueIds.length !== 1) {
+			throw new Error(
+				"--source-url requires exactly one id; use --source-urls <map.json> for a batch",
+			);
+		}
+		sourceUrls[uniqueIds[0] as string] = args.sourceUrl;
+	}
+	if (args.provenance === "official" && Object.keys(sourceUrls).length === 0) {
+		throw new Error(
+			"--provenance official requires --source-url (one id) or --source-urls (map)",
+		);
+	}
+	if (args.provenance === "legacy" && Object.keys(sourceUrls).length > 0) {
+		throw new Error(
+			"--source-url/--source-urls only apply to official provenance",
+		);
+	}
+	const provenance: PromoteProvenance =
+		args.provenance === "official"
+			? { kind: "official", sourceUrls }
+			: { kind: "legacy" };
 
 	const runtime = (await readJsonArray(
 		resolve(args.root, "src/catalog/data/pedals.json"),
@@ -218,17 +231,9 @@ async function main(): Promise<void> {
 		runtime,
 		legacy,
 		provenance,
-		existingRawIds: await existingRawIds(args.root),
+		// Skip the batch being rewritten so --force can regenerate it.
+		existingRawIds: await existingRawIds(args.root, outPath),
 	});
-
-	const outPath = args.out
-		? resolve(process.cwd(), args.out)
-		: resolve(
-				args.root,
-				"data/catalog/research/pedals",
-				brandKey,
-				`${batch}.json`,
-			);
 
 	if (args.dryRun) {
 		console.log(JSON.stringify(result.records, null, 2));

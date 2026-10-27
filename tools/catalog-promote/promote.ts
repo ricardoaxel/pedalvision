@@ -49,7 +49,7 @@ export type RuntimePedalLike = {
 
 export type PromoteProvenance =
 	| { kind: "legacy" }
-	| { kind: "official"; sourceUrl: string };
+	| { kind: "official"; sourceUrls: Record<string, string> };
 
 export type PromoteLegacyInput = {
 	brand: string;
@@ -84,13 +84,36 @@ export function filterSources(sources: SourceRef[] | undefined): SourceRef[] {
 	return filtered;
 }
 
+function assertOfficialUrl(url: string, id: string): void {
+	let parsed: URL;
+	try {
+		parsed = new URL(url);
+	} catch {
+		throw new Error(`"${id}" official source is not a valid URL`);
+	}
+	if (parsed.protocol !== "https:" && parsed.protocol !== "http:") {
+		throw new Error(`"${id}" official source must be http(s)`);
+	}
+	if (isPlannerUrl(url)) {
+		throw new Error(`"${id}" official source is a planner URL (never allowed)`);
+	}
+}
+
 function provenanceFor(
 	provenance: PromoteProvenance,
+	id: string,
 ): RawPedalRecord["imageProvenance"] {
 	if (provenance.kind === "official") {
+		const sourceUrl = provenance.sourceUrls[id];
+		if (!sourceUrl) {
+			throw new Error(
+				`"${id}" needs an official source URL (per-id map or a single id)`,
+			);
+		}
+		assertOfficialUrl(sourceUrl, id);
 		return {
 			kind: "official",
-			sourceUrl: provenance.sourceUrl,
+			sourceUrl,
 			status: "chosen",
 			note: "Re-sourced official reference; asset pending in this batch.",
 		};
@@ -116,7 +139,7 @@ function toRawRecord(
 		heightCm: record.heightCm,
 		category: record.category,
 		effectTypes: [...record.effectTypes] as RawPedalRecord["effectTypes"],
-		imageProvenance: provenanceFor(provenance),
+		imageProvenance: provenanceFor(provenance, record.id),
 		extra: { promotedFrom: "legacy", promotedBatch: batch },
 	};
 

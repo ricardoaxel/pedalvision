@@ -445,6 +445,7 @@ export function buildPedalArtSvg(
 					hex: spec.ink,
 					contrast: contrastRatio(bodyFill, spec.ink),
 					meets: contrastRatio(bodyFill, spec.ink) >= 4.5,
+					largeMeets: contrastRatio(bodyFill, spec.ink) >= 3,
 				};
 
 	const sidePx = spec.body.sideCm * pxPerCm;
@@ -463,8 +464,11 @@ export function buildPedalArtSvg(
 	const parts: string[] = [
 		`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,
 		`<title>${spec.id} — Catalog Specimen flat pedal art</title>`,
+		`<defs><clipPath id="topFace"><rect x="${fmt(sidePx)}" y="${fmt(sidePx)}" width="${fmt(width - sidePx * 2)}" height="${fmt(height - sidePx * 2)}" rx="${fmt(topRadius)}"/></clipPath></defs>`,
 		`<rect x="${fmt(Math.min(1, width / 2))}" y="${fmt(Math.min(1, height / 2))}" width="${fmt(width - 2 * Math.min(1, width / 2))}" height="${fmt(height - 2 * Math.min(1, height / 2))}" rx="${fmt(Math.max(0, baseRadius - 1))}" fill="${sideFill}"/>`,
 		`<rect x="${fmt(sidePx)}" y="${fmt(sidePx)}" width="${fmt(width - sidePx * 2)}" height="${fmt(height - sidePx * 2)}" rx="${fmt(topRadius)}" fill="${bodyFill}"/>`,
+		`<rect x="${fmt(Math.min(1, width / 2))}" y="${fmt(Math.min(1, height / 2))}" width="${fmt(width - 2 * Math.min(1, width / 2))}" height="${fmt(height - 2 * Math.min(1, height / 2))}" rx="${fmt(Math.max(0, baseRadius - 1))}" fill="none" stroke="${ART_PALETTE.cutline}" stroke-width="${fmt(cutline)}"/>`,
+		'<g clip-path="url(#topFace)">',
 	];
 
 	for (const band of spec.body.bands) {
@@ -489,10 +493,6 @@ export function buildPedalArtSvg(
 			),
 		);
 	}
-
-	parts.push(
-		`<rect x="${fmt(Math.min(1, width / 2))}" y="${fmt(Math.min(1, height / 2))}" width="${fmt(width - 2 * Math.min(1, width / 2))}" height="${fmt(height - 2 * Math.min(1, height / 2))}" rx="${fmt(Math.max(0, baseRadius - 1))}" fill="none" stroke="${ART_PALETTE.cutline}" stroke-width="${fmt(cutline)}"/>`,
-	);
 
 	const controls = spec.controls
 		.filter(
@@ -521,7 +521,9 @@ export function buildPedalArtSvg(
 	}
 
 	for (const text of spec.text) {
-		if (text.role !== "free" && !inkChoice.meets) continue;
+		const allowed =
+			text.role === "free" ? inkChoice.meets : inkChoice.largeMeets;
+		if (!allowed) continue;
 		const rendered = renderTextRun(
 			text.value,
 			text.u * width,
@@ -555,7 +557,7 @@ export function buildPedalArtSvg(
 		}
 	}
 
-	parts.push("</svg>");
+	parts.push("</g>", "</svg>");
 	return {
 		svg: parts.join(""),
 		width,

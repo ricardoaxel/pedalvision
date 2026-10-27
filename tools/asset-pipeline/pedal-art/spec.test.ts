@@ -91,6 +91,37 @@ describe("PedalArtSpecSchema", () => {
 		).toThrow();
 	});
 
+	it("rejects text that does not fit the top face", () => {
+		expect(() =>
+			parsePedalArtSpec({
+				...MINIMAL,
+				text: [
+					{
+						role: "brand",
+						value: "SUPER LONG BRAND MODEL X",
+						u: 0.5,
+						v: 0.1,
+						sizeMm: 12,
+					},
+				],
+			}),
+		).toThrow(/does not fit/);
+	});
+
+	it("rejects a band/control escaping a rounded corner", () => {
+		expect(() =>
+			parsePedalArtSpec({
+				...MINIMAL,
+				body: {
+					fill: "#7A7F86",
+					radiusCm: 1.2,
+					sideCm: 0.3,
+					bands: [{ u: 0.1, v: 0.1, wCm: 3, hCm: 2, fill: "#7A7F86" }],
+				},
+			}),
+		).toThrow(/rounded top face/);
+	});
+
 	it("rejects a neon sampled body fill", () => {
 		expect(() =>
 			parsePedalArtSpec({

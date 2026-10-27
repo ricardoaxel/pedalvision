@@ -158,19 +158,23 @@ export function shade(hex: string, factor: number): string {
 
 /**
  * Pick the higher-contrast house ink. `meets` is false when even the better ink
- * cannot reach 4.5:1 — the renderer then omits control legends (brand/model
- * text is allowed at the 3:1 large-text floor).
+ * cannot reach 4.5:1 — the renderer then omits control legends. Brand/model
+ * text may use the WCAG large-text 3:1 floor (`largeMeets`).
  */
 export function pickInk(
 	body: string,
 	light: string = ART_PALETTE.printLight,
 	dark: string = ART_PALETTE.printDark,
-): { hex: string; contrast: number; meets: boolean } {
+): { hex: string; contrast: number; meets: boolean; largeMeets: boolean } {
 	const lightContrast = contrastRatio(body, light);
 	const darkContrast = contrastRatio(body, dark);
 	const chosen =
 		lightContrast >= darkContrast
 			? { hex: light, contrast: lightContrast }
 			: { hex: dark, contrast: darkContrast };
-	return { ...chosen, meets: chosen.contrast >= 4.5 };
+	return {
+		...chosen,
+		meets: chosen.contrast >= 4.5,
+		largeMeets: chosen.contrast >= 3,
+	};
 }

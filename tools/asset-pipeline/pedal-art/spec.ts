@@ -11,6 +11,7 @@ import {
 	isHex,
 	PRINT_MAX_CHROMA,
 } from "./color.ts";
+import { applyCase, glyphFont, layoutText } from "./glyphs.ts";
 
 /**
  * Per-item flat-pedal-art spec ("Catalog Specimen").
@@ -185,6 +186,52 @@ export const PedalArtJackSchema = z
 	})
 	.strict();
 
+function insideRoundedRect(
+	x: number,
+	y: number,
+	width: number,
+	height: number,
+	radius: number,
+	px: number,
+	py: number,
+): boolean {
+	if (px < x || px > x + width || py < y || py > y + height) return false;
+	const r = Math.min(radius, width / 2, height / 2);
+	if (r <= 0) return true;
+	const nearLeft = px < x + r;
+	const nearRight = px > x + width - r;
+	const nearTop = py < y + r;
+	const nearBottom = py > y + height - r;
+	if ((nearLeft || nearRight) && (nearTop || nearBottom)) {
+		const cx = nearLeft ? x + r : x + width - r;
+		const cy = nearTop ? y + r : y + height - r;
+		return (px - cx) ** 2 + (py - cy) ** 2 <= r * r + 1e-9;
+	}
+	return true;
+}
+
+function boxInsideRoundedRect(
+	x: number,
+	y: number,
+	width: number,
+	height: number,
+	radius: number,
+	cx: number,
+	cy: number,
+	halfWidth: number,
+	halfHeight: number,
+): boolean {
+	const corners: Array<[number, number]> = [
+		[cx - halfWidth, cy - halfHeight],
+		[cx + halfWidth, cy - halfHeight],
+		[cx - halfWidth, cy + halfHeight],
+		[cx + halfWidth, cy + halfHeight],
+	];
+	return corners.every(([px, py]) =>
+		insideRoundedRect(x, y, width, height, radius, px, py),
+	);
+}
+
 export const PedalArtSpecSchema = z
 	.object({
 		id: z.string().regex(ID_PATTERN, "id must be a lowercase-hyphenated slug"),
@@ -233,6 +280,18 @@ export const PedalArtSpecSchema = z
 			issue(["body", "sideCm"], "sideCm leaves no top face");
 		}
 
+		const topX = spec.body.sideCm;
+		const topY = spec.body.sideCm;
+		const topWidth = widthCm - spec.body.sideCm * 2;
+		const topHeight = heightCm - spec.body.sideCm * 2;
+		const topRadius = Math.max(
+			0,
+			Math.min(
+				spec.body.radiusCm,
+				0.18 * Math.min(widthCm, heightCm) - spec.body.sideCm,
+			),
+		);
+
 		for (const [index, band] of spec.body.bands.entries()) {
 			const maxChroma =
 				band.role === "field" ? BODY_MAX_CHROMA : PRINT_MAX_CHROMA;
@@ -242,15 +301,23 @@ export const PedalArtSpecSchema = z
 					`band fill chroma must be ≤ ${maxChroma}`,
 				);
 			}
-			const x = band.u * widthCm;
-			const y = band.v * heightCm;
 			if (
-				x - band.wCm / 2 < 0 ||
-				x + band.wCm / 2 > widthCm ||
-				y - band.hCm / 2 < 0 ||
-				y + band.hCm / 2 > heightCm
+				!boxInsideRoundedRect(
+					topX,
+					topY,
+					topWidth,
+					topHeight,
+					topRadius,
+					band.u * widthCm,
+					band.v * heightCm,
+					band.wCm / 2,
+					band.hCm / 2,
+				)
 			) {
-				issue(["body", "bands", index], "band extends outside the body");
+				issue(
+					["body", "bands", index],
+					"band extends outside the rounded top face",
+				);
 			}
 		}
 
@@ -288,6 +355,24 @@ export const PedalArtSpecSchema = z
 					"control extends outside the enclosure (0.15 cm min inset)",
 				);
 			}
+			if (
+				!boxInsideRoundedRect(
+					topX,
+					topY,
+					topWidth,
+					topHeight,
+					topRadius,
+					x,
+					y,
+					halfWidth,
+					halfHeight,
+				)
+			) {
+				issue(
+					["controls", index],
+					"control extends outside the rounded top face (move it inward)",
+				);
+			}
 		}
 
 		for (const [index, text] of spec.text.entries()) {
@@ -296,6 +381,41 @@ export const PedalArtSpecSchema = z
 				issue(
 					["text", index, "sizeMm"],
 					`${text.role} text must be ≥ ${minimum} mm`,
+				);
+			}
+			try {
+				const font = glyphFont(text.weight);
+				const run = layoutText(
+					font,
+					applyCase(text.value, text.case),
+					1000,
+					text.trackingEm,
+				);
+				const physicalWidth = (run.widthPx / 1000) * (text.sizeMm / 10);
+				const physicalHeight =
+					((run.maxY - run.minY) / font.upm) * (text.sizeMm / 10);
+				if (
+					!boxInsideRoundedRect(
+						topX,
+						topY,
+						topWidth,
+						topHeight,
+						topRadius,
+						text.u * widthCm,
+						text.v * heightCm,
+						physicalWidth / 2,
+						physicalHeight / 2,
+					)
+				) {
+					issue(
+						["text", index],
+						"text does not fit inside the rounded top face (omit or shorten it)",
+					);
+				}
+			} catch (error) {
+				issue(
+					["text", index],
+					error instanceof Error ? error.message : "unsupported text",
 				);
 			}
 		}
