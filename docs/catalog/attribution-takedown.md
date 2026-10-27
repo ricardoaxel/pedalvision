@@ -29,11 +29,10 @@ the page ships before launch (P5-04). Governing decision: ADR-003
 >
 > Pedalvision shows product images to help you plan a pedalboard at true scale.
 > Images are sourced from manufacturer/press pages, authorized retailers,
-> user/community images, planner/Pedalplayground last-resort images (pedals), or
-> our own generated flat art, and are hosted by Pedalvision. Per-item source
-> records are kept internally for provenance and improvement. Brand and product
-> names are the property of their owners; Pedalvision is an independent planner
-> and does not imply endorsement.
+> user/community images, or our own generated flat art, and are hosted by
+> Pedalvision. Per-item source records are kept internally for provenance and
+> improvement. Brand and product names are the property of their owners;
+> Pedalvision is an independent planner and does not imply endorsement.
 >
 > If an image or fact is yours and you would like it credited differently or
 > removed, open a removal request and we will replace or remove it.
