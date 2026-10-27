@@ -1,5 +1,5 @@
 import { CABLE } from "../styles/theme";
-import type { Point } from "./geometry";
+import type { Point, RectCm } from "./geometry";
 import { cmToPx } from "./geometry";
 import type { AnchorPoint } from "./jackAnchor";
 
@@ -178,6 +178,63 @@ export function cableCurveCm(from: AnchorPoint, to: AnchorPoint): CableCurve {
 		pathEnd: end,
 		arrow: [tip, left, right],
 	};
+}
+
+function cubicExtrema(
+	a0: number,
+	a1: number,
+	a2: number,
+	a3: number,
+): number[] {
+	// B'(t) = 0 as a quadratic at² + bt + c (3 is factored out).
+	const a = -a0 + 3 * a1 - 3 * a2 + a3;
+	const b = 2 * (a0 - 2 * a1 + a2);
+	const c = a1 - a0;
+	if (Math.abs(a) < 1e-9) {
+		if (Math.abs(b) < 1e-9) return [];
+		const t = -c / b;
+		return t > 0 && t < 1 ? [t] : [];
+	}
+	const discriminant = b * b - 4 * a * c;
+	if (discriminant < 0) return [];
+	const root = Math.sqrt(discriminant);
+	return [(-b + root) / (2 * a), (-b - root) / (2 * a)].filter(
+		(t) => t > 0 && t < 1,
+	);
+}
+
+/**
+ * The exact world-cm bounds of a cubic cable curve (control-point extrema,
+ * endpoints and arrowhead). Export unions these into the content rect so a long
+ * outward handle can never be clipped by the 4 cm padding.
+ */
+export function cableCurveBoundsCm(curve: CableCurve): RectCm {
+	const xs = cubicExtrema(
+		curve.start.x,
+		curve.control1.x,
+		curve.control2.x,
+		curve.end.x,
+	);
+	const ys = cubicExtrema(
+		curve.start.y,
+		curve.control1.y,
+		curve.control2.y,
+		curve.end.y,
+	);
+	const points: Point[] = [curve.start, curve.end, ...curve.arrow];
+	for (const t of xs) points.push(cablePointAt(curve, t));
+	for (const t of ys) points.push(cablePointAt(curve, t));
+	let minX = Number.POSITIVE_INFINITY;
+	let minY = Number.POSITIVE_INFINITY;
+	let maxX = Number.NEGATIVE_INFINITY;
+	let maxY = Number.NEGATIVE_INFINITY;
+	for (const point of points) {
+		if (point.x < minX) minX = point.x;
+		if (point.y < minY) minY = point.y;
+		if (point.x > maxX) maxX = point.x;
+		if (point.y > maxY) maxY = point.y;
+	}
+	return { x: minX, y: minY, widthCm: maxX - minX, heightCm: maxY - minY };
 }
 
 /**

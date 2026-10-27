@@ -402,6 +402,102 @@ test("a read-only share always shows the graph even if the recipient hid it", as
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-cables", "1");
 });
 
+test("a read-only share renders jack ticks even when patch is hidden", async ({
+	page,
+}) => {
+	// Loose (board-less) pedals keep the board's own read-only cue out of the
+	// assertion: outside the tick hit disc there is only empty canvas. Explicit
+	// left/right jacks keep the press direction independent of catalog data.
+	const hash = shareHash({
+		name: "Read only ticks",
+		boards: [],
+		items: [
+			item("i1", { refId: "tick-test", x: 10, y: 80 }),
+			item("i2", { refId: "tick-test", x: 30, y: 80 }),
+		],
+		customPedals: [
+			{
+				refId: "tick-test",
+				brand: "Test",
+				name: "Tick Test",
+				widthCm: 7.3,
+				heightCm: 13.02,
+				category: "pedal",
+				effectTypes: [],
+				jacks: [
+					{ kind: "in", edge: "left", pos: 0.5 },
+					{ kind: "out", edge: "right", pos: 0.5 },
+				],
+			},
+		],
+		cables: [
+			{
+				uid: "c1",
+				from: { itemUid: "i1", jack: "1" },
+				to: { itemUid: "i2", jack: "0" },
+			},
+		],
+	});
+	await page.goto(`/?share=1${hash}`);
+	const stage = page.getByTestId("stage");
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	// Recipient preference is hidden, but a share always shows the graph.
+	await expect(stage).toHaveAttribute("data-show-cables", "false");
+	await expect(stage).toHaveAttribute("data-graph-visible", "true");
+	await expect(stage).toHaveAttribute("data-cables", "1");
+
+	// Press 10 screen px outside the IN edge: within the outward-biased hit
+	// disc, but outside the pedal. Before ticks rendered this was empty canvas
+	// (no cue); now the jack attempt raises the item's read-only cue.
+	const anchor = await anchorScreenPoint(page, "item:i1:0");
+	await page.mouse.move(anchor.x - 10, anchor.y);
+	await page.mouse.down();
+	await page.mouse.move(anchor.x - 50, anchor.y + 24, { steps: 6 });
+	await page.mouse.up();
+	await expect(page.getByTestId("share-edit-cue")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-readonly-cue", "item:i1");
+	// Read-only: no mutation from the socket attempt.
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
+});
+
+test("a read-only share shows hollow fallback ticks and the cue", async ({
+	page,
+}) => {
+	// A catalog pedal with no jack data gets the documented fallback pair
+	// (hollow diamond IN left / OUT right) — the other half of the tick gate.
+	const hash = shareHash({
+		name: "Fallback ticks",
+		boards: [],
+		items: [
+			item("i1", { refId: "boss-da-2-adaptive-distortion", x: 10, y: 80 }),
+			item("i2", { refId: "boss-da-2-adaptive-distortion", x: 30, y: 80 }),
+		],
+		cables: [
+			{
+				uid: "c1",
+				from: { itemUid: "i1", jack: "1" },
+				to: { itemUid: "i2", jack: "0" },
+			},
+		],
+	});
+	await page.goto(`/?share=1${hash}`);
+	const stage = page.getByTestId("stage");
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-graph-visible", "true");
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(stage).toHaveAttribute("data-cable-arrows", "1");
+
+	const anchor = await anchorScreenPoint(page, "item:i1:0");
+	await page.mouse.move(anchor.x - 10, anchor.y);
+	await page.mouse.down();
+	await page.mouse.move(anchor.x - 50, anchor.y + 24, { steps: 6 });
+	await page.mouse.up();
+	await expect(stage).toHaveAttribute("data-readonly-cue", "item:i1");
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(stage).toHaveAttribute("data-cable-arrows", "1");
+});
+
 test("share v2 round-trips cables and endpoints read-only", async ({
 	page,
 }) => {

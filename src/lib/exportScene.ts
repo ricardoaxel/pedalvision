@@ -5,8 +5,14 @@ import {
 	type PlacedBoard,
 	type PlacedItem,
 } from "../state/scene";
+import { cableCurveBoundsCm, cableCurveCm } from "./cablePath";
 import { distinctImageUrls } from "./capacity";
 import { boardToWorld, type Point, type RectCm } from "./geometry";
+import {
+	type AnchorIndex,
+	buildAnchorIndex,
+	cableEndAnchorFromIndex,
+} from "./jackAnchor";
 
 /**
  * Pure export model for P3-01 (design.md §Canvas architecture → Export).
@@ -206,6 +212,26 @@ function itemAabbCm(
 	return rectFromPoints(itemWorldCorners(item, boards, customPedals)) as RectCm;
 }
 
+/**
+ * Union of the actual cubic curve bounds for every in-scope cable. The export
+ * draws the same `cableCurveCm` path as the live canvas; handles leave a jack
+ * along its outward normal (up to 24 cm), so the curve can bulge past the
+ * board/items/endpoints and would otherwise be clipped by the margin.
+ */
+function cableBoundsCm(
+	cables: ExportCable[],
+	index: AnchorIndex,
+): RectCm | null {
+	let bounds: RectCm | null = null;
+	for (const cable of cables) {
+		const from = cableEndAnchorFromIndex(cable.from, index);
+		const to = cableEndAnchorFromIndex(cable.to, index);
+		if (!from || !to) continue;
+		bounds = unionRects(bounds, cableCurveBoundsCm(cableCurveCm(from, to)));
+	}
+	return bounds;
+}
+
 function endpointRect(endpoint: ExportEndpoint): RectCm {
 	// The exported AMP/INSTR chip is ~1.4–1.7 cm wide × 0.6 cm tall; include its
 	// footprint in the content bounds so the tag is never cropped (design review).
@@ -367,6 +393,18 @@ function selectedBoardPlan(
 	for (const endpoint of includedEndpoints.values()) {
 		content = unionRects(content, endpointRect(endpoint));
 	}
+	// Include the exported cubic path (same anchors/handles as exportStage), not
+	// just its endpoints, so a long outward handle is never clipped. Building
+	// the anchor index is the costly part, so skip it for cable-less scenes.
+	if (cables.length > 0) {
+		const boardAnchorIndex = buildAnchorIndex({
+			boards: [board],
+			items: attachedItems,
+			customPedals: scene.customPedals,
+			endpoints: [...includedEndpoints.values()],
+		});
+		content = unionRects(content, cableBoundsCm(cables, boardAnchorIndex));
+	}
 
 	return buildPlan(
 		"board",
@@ -404,6 +442,21 @@ function allContentPlan(
 	if (!allContent) {
 		throw new ExportError("empty", "There is nothing to export yet.");
 	}
+	// "All content" must include the whole exported curve too, not only the
+	// boards/items/endpoints it connects (same reasoning as the board scope).
+	// Skip the anchor index when there is nothing to anchor.
+	if (cables.length > 0) {
+		const sceneAnchorIndex = buildAnchorIndex({
+			boards,
+			items,
+			customPedals,
+			endpoints,
+		});
+		allContent = unionRects(
+			allContent,
+			cableBoundsCm(cables, sceneAnchorIndex),
+		);
+	}
 
 	return buildPlan(
 		"all",
@@ -412,7 +465,7 @@ function allContentPlan(
 		customPedals,
 		endpoints,
 		cables,
-		allContent,
+		allContent as RectCm,
 		quality,
 	);
 }
@@ -458,32 +511,4 @@ export function exportFileName(
 	const day = String(now.getDate()).padStart(2, "0");
 	const scope = plan.scope === "board" && boardLabel ? boardLabel : "plan";
 	return `pedalvision-${exportFileSlug(scope)}-${year}-${month}-${day}.${format}`;
-}
-
-/** World-cm point for a cable end (item centre / endpoint); P4 refines jacks. */
-export function cableEndPointCm(
-	end: ExportCableEnd,
-	scene: ExportSceneInput,
-): Point | null {
-	if ("endpointUid" in end) {
-		const endpoint = (scene.endpoints ?? []).find(
-			(candidate) => candidate.uid === end.endpointUid,
-		);
-		return endpoint ? { x: endpoint.x, y: endpoint.y } : null;
-	}
-	const item = scene.items.find((candidate) => candidate.uid === end.itemUid);
-	if (!item) return null;
-	const corners = itemWorldCorners(item, scene.boards, scene.customPedals);
-	if (corners.length === 0) return null;
-	let minX = Number.POSITIVE_INFINITY;
-	let minY = Number.POSITIVE_INFINITY;
-	let maxX = Number.NEGATIVE_INFINITY;
-	let maxY = Number.NEGATIVE_INFINITY;
-	for (const point of corners) {
-		if (point.x < minX) minX = point.x;
-		if (point.y < minY) minY = point.y;
-		if (point.x > maxX) maxX = point.x;
-		if (point.y > maxY) maxY = point.y;
-	}
-	return { x: (minX + maxX) / 2, y: (minY + maxY) / 2 };
 }

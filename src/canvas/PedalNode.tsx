@@ -389,10 +389,12 @@ export function PedalNode({
 		) : null;
 
 	// Jack ticks (P4-02 "Patch Drafting"): quiet sockets on the footprint edge.
-	// Real jacks show a ring + centre dot; the documented fallback pair shows a
-	// hollow diamond + "assumed" so it never reads as manufacturer data.
+	// Read-only previews always show the graph (design.md §Canvas architecture),
+	// so the recipient sees the sockets even when their hidden-patch preference
+	// is off. Real jacks show a ring + centre dot; the documented fallback pair
+	// shows a hollow diamond + "assumed" so it never reads as manufacturer data.
 	const jacks =
-		readOnly || !showCables ? [] : resolveItemJacks(item, customPedals);
+		showCables || readOnly ? resolveItemJacks(item, customPedals) : [];
 	const assumedJacks = usesFallbackJacks(item, customPedals);
 	const showSecondaryJacks =
 		hoveredItemUid === item.uid ||
