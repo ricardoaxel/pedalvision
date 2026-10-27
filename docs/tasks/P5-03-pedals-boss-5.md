@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 5
 
-**Phase:** P5 · **Status:** in progress — batch delivered; PR pending — T-2 last batch, **solo single-batch wave** · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #59 — T-2 last batch, **solo single-batch wave** · **Model:** build-strong
 
 > The coordinator ran `catalog:start` for `boss/boss-5` and **stopped** it at 0/26 on
 > the third-slot gate. For this solo run the coordinator **must resume** it
@@ -179,3 +179,5 @@ Read only the sections the task file points to; do not read whole docs.
   overrides for the 12 creative/multi-effect names (required by the no-drift test),
   plus aliases for the ME-90B/ MS-3 inventory-vs-official name mismatch. No mapped
   or runtime files in the PR.
+
+**PR:** https://github.com/ricardoaxel/pedalvision/pull/59
