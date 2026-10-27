@@ -1,0 +1,3553 @@
+[
+  {
+    "id": "boss-md-2-mega-distortion",
+    "brand": "BOSS",
+    "name": "MD-2 Mega Distortion",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 395,
+        "footswitches": 1
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "frequencyResponse": "20 Hz–20 kHz"
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.boss.info/us/products/md-2/"
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Extreme high-gain distortion with a gain-boost switch, three-band tone stack and level control.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/md-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md_2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md_2_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/md_2_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; white studio background removed with flood matte; AVIF q80 PSNR 40.5 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-md-200-modulation",
+    "brand": "BOSS",
+    "name": "MD-200 Modulation",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus",
+      "flanger",
+      "phaser",
+      "vibrato",
+      "tremolo",
+      "rotary",
+      "wah",
+      "filter"
+    ],
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "dimensionsSource": "BOSS official specifications: 101 (W) × 138 (D) × 63 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A/MONO",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT A/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "CTL 1, 2 / EXP",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "trs",
+        "signal": "midi",
+        "channels": 1,
+        "edge": "top",
+        "note": "Stereo miniature phone jack"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "trs",
+        "signal": "midi",
+        "channels": 1,
+        "edge": "top",
+        "note": "Stereo miniature phone jack"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "micro-usb",
+        "signal": "usb",
+        "edge": "top",
+        "note": "Program update only"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/images/products/gallery/md-200_back_gal.jpg",
+      "confidence": "verified",
+      "note": "Official rear-panel gallery photo shows all connectors on the rear edge; positions approximate (edge-only)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×3",
+      "recommendedSupply": "PSA-S series"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "level": "instrument",
+      "inputImpedanceOhm": 2000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": 7,
+      "maxOutputLevelDbu": 7
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "sampleRateKhz": 96,
+        "bitDepth": 32
+      },
+      "routing": {
+        "presets": 127,
+        "banks": 1,
+        "expressionAssignments": true,
+        "tapTempo": true
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true
+      },
+      "midi": {
+        "trs": "a",
+        "usb": false,
+        "programChange": true,
+        "cc": true,
+        "note": "MIDI IN/OUT via stereo miniature phone jacks (BMIDI cables)."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "firmware"
+        ],
+        "note": "USB micro B (program update only)."
+      },
+      "physical": {
+        "weightG": 610,
+        "footswitches": 2,
+        "display": "7-segment, 3 characters (LED)"
+      },
+      "lifecycle": {
+        "app": "BOSS Tone Studio"
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Twelve modulation modes with 127 memories, stereo I/O, MIDI and expression control.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/md-200/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md-200_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md-200_main_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/md-200_main_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q92 PSNR 40.1 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-md-500-modulation",
+    "brand": "BOSS",
+    "name": "MD-500 Modulation",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus",
+      "flanger",
+      "phaser",
+      "vibrato",
+      "tremolo",
+      "rotary",
+      "filter",
+      "ring-mod",
+      "wah"
+    ],
+    "widthCm": 17.0,
+    "heightCm": 13.8,
+    "dimensionsSource": "BOSS official specifications: 170 (W) × 138 (D) × 62 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT A/MONO",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "INPUT B",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT A/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "CTL 1, 2 / EXP",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-b",
+        "signal": "usb",
+        "edge": "top"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/images/products/gallery/md-500_back_gal.jpg",
+      "confidence": "verified",
+      "note": "Official rear-panel gallery photo shows all connectors on the rear edge; positions approximate (edge-only)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×4",
+      "recommendedSupply": "PSA-S series"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 2000,
+      "maxInputLevelDbu": 8,
+      "maxOutputLevelDbu": 8
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "sampleRateKhz": 96,
+        "bitDepth": 32
+      },
+      "routing": {
+        "presets": 297,
+        "banks": 99,
+        "expressionAssignments": true,
+        "tapTempo": true,
+        "note": "198 memories (99 banks × 2) or 297 (99 banks × 3); buffered or true bypass (relays)."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true
+      },
+      "midi": {
+        "din5": "in-out",
+        "usb": false,
+        "programChange": true,
+        "cc": true
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "editor",
+          "firmware"
+        ]
+      },
+      "physical": {
+        "weightG": 1000,
+        "footswitches": 3,
+        "display": "Graphic LCD 128×64 (backlit)"
+      },
+      "lifecycle": {
+        "app": "BOSS Tone Studio"
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Flagship modulation processor with 12 modes, 297 memories, stereo I/O, 5-pin MIDI and USB.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/md-500/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md-500_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md-500_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/md-500_top_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q90 PSNR 40.9 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-me-90-guitar-multiple-effects",
+    "brand": "BOSS",
+    "name": "ME-90 Guitar Multiple Effects",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "compressor",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "wah",
+      "tremolo"
+    ],
+    "widthCm": 44.3,
+    "heightCm": 22.0,
+    "dimensionsSource": "BOSS official specifications: 443 (W) × 220 (D) × 67 (H) mm (93 mm maximum height).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "channels": 2,
+        "level": "headphone",
+        "stereo": true
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "Bluetooth adaptor",
+        "kind": "ctrl",
+        "connector": "other",
+        "signal": "control",
+        "note": "Dedicated connector for optional BT-DUAL adaptor"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 190,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×4",
+      "recommendedSupply": "PSA-S series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "sampleRateKhz": 48,
+        "bitDepth": 32
+      },
+      "routing": {
+        "presets": 72,
+        "banks": 36,
+        "tuner": true,
+        "looper": true,
+        "ampModeling": true,
+        "cabModeling": true,
+        "expressionAssignments": true,
+        "note": "36 user + 36 preset memories; 38-second phrase loop."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "wireless": {
+        "bluetoothAudio": true,
+        "bluetoothControl": true,
+        "bleMidi": true,
+        "app": "BOSS Tone Studio",
+        "note": "Bluetooth requires the optional BT-DUAL adaptor."
+      },
+      "physical": {
+        "weightG": 2900,
+        "footswitches": 8,
+        "expressionPedal": true,
+        "display": "7-segment, 2 characters (LED)"
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "97 effects, amp/cab modeling, 36+36 memories, a 38-second looper and a built-in expression pedal.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/me-90/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/me-90_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/me-90_gal_01.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/me-90_gal_01.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 41.0 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-me-90b-guitar-multiple-effects",
+    "brand": "BOSS",
+    "name": "ME-90B Bass Multiple Effects",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "compressor",
+      "overdrive",
+      "distortion",
+      "filter",
+      "synth",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "wah"
+    ],
+    "widthCm": 44.3,
+    "heightCm": 22.0,
+    "dimensionsSource": "BOSS official specifications: 443 (W) × 220 (D) × 67 (H) mm (93 mm maximum height).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "BALANCED OUTPUT",
+        "kind": "out",
+        "connector": "xlr",
+        "signal": "audio",
+        "channels": 1,
+        "level": "line",
+        "balanced": true
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "channels": 2,
+        "level": "headphone",
+        "stereo": true
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "Bluetooth adaptor",
+        "kind": "ctrl",
+        "connector": "other",
+        "signal": "control",
+        "note": "Dedicated connector for optional BT-DUAL adaptor"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 195,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×4",
+      "recommendedSupply": "PSA-S series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 3,
+      "stereo": true,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "sampleRateKhz": 48,
+        "bitDepth": 32
+      },
+      "routing": {
+        "presets": 72,
+        "banks": 36,
+        "tuner": true,
+        "looper": true,
+        "ampModeling": true,
+        "cabModeling": true,
+        "expressionAssignments": true,
+        "note": "36 user + 36 preset memories; 38-second phrase loop."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "wireless": {
+        "bluetoothAudio": true,
+        "bluetoothControl": true,
+        "bleMidi": true,
+        "app": "BOSS Tone Studio",
+        "note": "Bluetooth requires the optional BT-DUAL adaptor."
+      },
+      "physical": {
+        "weightG": 2900,
+        "footswitches": 8,
+        "expressionPedal": true,
+        "display": "7-segment, 2 characters (LED)"
+      }
+    },
+    "usage": "bass",
+    "status": "current",
+    "notes": "Bass multi-effects with 93 effects, XLR balanced output, 36+36 memories and a built-in expression pedal.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/me-90b/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/me-90b_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/me-90b_gal_01.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/me-90b_gal_01.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q90 PSNR 41.7 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-ml-2-metal-core",
+    "brand": "BOSS",
+    "name": "ML-2 Metal Core",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 420,
+        "footswitches": 1
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "High-gain metal distortion with low/high shelving EQ and a wide gain range.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ml-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ml_2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ml_2_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ml_2_top_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 41.2 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-mo-2-multi-overtone",
+    "brand": "BOSS",
+    "name": "MO-2 Multi Overtone",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "octave",
+      "pitch"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT-A (MONO)",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT-B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "physical": {
+        "weightG": 415,
+        "footswitches": 1
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Multi-overtone/octave generator with detune, tone and balance controls plus two outputs.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/mo-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mo-2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mo-2_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/mo-2_top_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 40.2 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-ms-3-multieffects-switcher",
+    "brand": "BOSS",
+    "name": "MS-3 Multi Effects Switcher",
+    "category": "pedal",
+    "deviceType": "switcher",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "controller",
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "widthCm": 27.5,
+    "heightCm": 9.7,
+    "dimensionsSource": "BOSS official specifications: 275 (W) × 97 (D) × 68 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "LOOP 1 SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "LOOP 1 RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "LOOP 2 SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "LOOP 2 RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "LOOP 3 SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "LOOP 3 RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "CTL OUT CTL1/2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1
+      },
+      {
+        "label": "CTL IN EXP1 CTL1/2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1
+      },
+      {
+        "label": "CTL IN EXP2 CTL3/4",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-b",
+        "signal": "usb"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 280,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "recommendedSupply": "AC adaptor"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "effectsLoop": {
+        "send": 3,
+        "return": 3
+      }
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "sampleRateKhz": 44.1,
+        "bitDepth": 24
+      },
+      "routing": {
+        "presets": 200,
+        "effectsLoops": 3,
+        "tuner": true,
+        "ampModeling": true,
+        "cabModeling": true,
+        "expressionAssignments": true,
+        "note": "Memory/manual modes; three built-in effects loops."
+      },
+      "control": {
+        "expression": 2,
+        "footswitch": true,
+        "tapTempo": true
+      },
+      "midi": {
+        "din5": "out",
+        "usb": false,
+        "programChange": true,
+        "cc": true
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "editor",
+          "firmware"
+        ]
+      },
+      "physical": {
+        "weightG": 1100,
+        "footswitches": 5,
+        "display": "Graphic LCD 132×32 (backlit)"
+      },
+      "lifecycle": {
+        "app": "BOSS Tone Studio"
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Combines a 112-effect multi-effects engine with a three-loop pedal switcher and 200 patches.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ms-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ms-3_F_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ms-3_F_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ms-3_F_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 40.3 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-mt-2-3a-metal-zone-anniversary",
+    "brand": "BOSS",
+    "name": "MT-2-3A Metal Zone (30th Anniversary)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official press release/specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 385,
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "year": 2021,
+        "limitedEdition": true,
+        "note": "Limited 30th-anniversary edition with black body and grey lettering."
+      }
+    },
+    "usage": "guitar",
+    "year": 2021,
+    "status": "discontinued",
+    "notes": "Limited 30th-anniversary Metal Zone with black body, grey lettering and a vintage silver battery thumbscrew.",
+    "sources": [
+      {
+        "url": "https://www.roland.com/RolandComSite/media/global/release/pdf/2021/20210520_1_SD-1-4A_MT-2-3A.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mt23a.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mt23a.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 43.6 dB."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mt23a.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-mt-2-metal-zone",
+    "brand": "BOSS",
+    "name": "MT-2 Metal Zone",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 385,
+        "footswitches": 1
+      }
+    },
+    "usage": "guitar",
+    "year": 1991,
+    "status": "current",
+    "notes": "Iconic high-gain distortion with a three-band active EQ and semi-parametric midrange.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/mt-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mt-2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mt-2_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/mt-2_top_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 40.6 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-mt-2w-metal-zone-waza-craft",
+    "brand": "BOSS",
+    "name": "MT-2W Metal Zone Waza Craft",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 440,
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "limitedEdition": false
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Waza Craft Metal Zone with a Standard/Custom mode switch and premium analog components.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/mt-2w/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mt-2w_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mt-2w_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/mt-2w_top_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q90 PSNR 43.0 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-mz-2-digital-metalizer",
+    "brand": "BOSS",
+    "name": "MZ-2 Digital Metalizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion",
+      "delay",
+      "chorus"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS official support specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT A",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (006P) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 10000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital"
+      },
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 450,
+        "footswitches": 2
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "note": "Equivalent input noise less than -120 dBm (IHF-A)."
+      },
+      "lifecycle": {
+        "year": 1987,
+        "discontinuedYear": 1992,
+        "manualUrl": "https://cdn.roland.com/assets/media/pdf/MZ-2_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "year": 1987,
+    "status": "discontinued",
+    "notes": "Vintage digital distortion with six modes plus doubling/chorus and two outputs.",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201929189-MZ-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/MZ-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mz2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mz2.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 41.4 dB."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mz2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-nf-1-noise-gate",
+    "brand": "BOSS",
+    "name": "NF-1 Noise Gate",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "gate"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS official support specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 3.9,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V ×1",
+      "recommendedSupply": "ACA-120"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 220000,
+      "outputImpedanceOhm": 10000,
+      "maxOutputLevelDbu": 9
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 400,
+        "footswitches": 1
+      },
+      "electrical": {
+        "inputImpedanceOhm": 220000,
+        "note": "Maximum output +9 dBm (unity gain); output load over 10 kΩ."
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.roland.com/assets/media/pdf/NF-1_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Vintage noise gate with SENS and DECAY controls and FET switching.",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201967429-NF-1-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/NF-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-nf1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-nf1.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 45.9 dB."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-nf1.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-ns-1x-noise-suppressor",
+    "brand": "BOSS",
+    "name": "NS-1X Noise Suppressor",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "gate"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      },
+      {
+        "label": "DC OUT",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": 7,
+      "maxOutputLevelDbu": 7,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "sampleRateKhz": 48,
+        "bitDepth": 32
+      },
+      "routing": {
+        "bypass": "buffered",
+        "effectsLoops": 1,
+        "note": "GATE, REDUCTION and MUTE modes."
+      },
+      "physical": {
+        "weightG": 460,
+        "footswitches": 1,
+        "display": "CHECK and REDUCTION indicators"
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Modern noise suppressor with three modes, decay/damp controls and a send/return loop.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ns-1x/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ns-1x_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ns-1x_gal_01.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ns-1x_gal_01.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 40.3 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-ns-2-noise-suppressor",
+    "brand": "BOSS",
+    "name": "NS-2 Noise Suppressor",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "gate"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      },
+      {
+        "label": "9V DC OUT",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered",
+        "effectsLoops": 1
+      },
+      "physical": {
+        "weightG": 415,
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "note": "9V DC OUT jack can daisy-chain power to another pedal."
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Classic noise suppressor with a send/return loop, mode switch and decay/threshold controls.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ns-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ns2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ns2_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ns2_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 40.8 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-oc-2-octave",
+    "brand": "BOSS",
+    "name": "OC-2 Octave",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "octave"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS official support specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V ×1",
+      "recommendedSupply": "ACA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 10000
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 400,
+        "footswitches": 1
+      },
+      "electrical": {
+        "note": "Residual noise -100 dBm (IHF-A); maximum input -5 dBm; maximum output 0 dBm."
+      },
+      "lifecycle": {
+        "year": 1982
+      }
+    },
+    "usage": "guitar",
+    "year": 1982,
+    "status": "discontinued",
+    "notes": "Legendary mono octave with independent −1 and −2 octave levels plus direct level.",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201967419-OC-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc2.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 41.6 dB."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-oc-20g-poly-octave",
+    "brand": "BOSS",
+    "name": "OC-20G Poly Octave",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "octave",
+      "distortion"
+    ],
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "dimensionsSource": "BOSS official specifications: 173 (W) × 158 (D) × 57 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GK IN",
+        "kind": "in",
+        "connector": "other",
+        "signal": "audio",
+        "note": "13-pin GK divided-pickup input"
+      },
+      {
+        "label": "GUITAR OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "GUITAR RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×6",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 3,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 1100,
+        "footswitches": 2,
+        "note": "Dual-pedal design: MASTER on/off and DISTORTION on/off."
+      },
+      "lifecycle": {
+        "discontinuedYear": 2003,
+        "note": "Requires a Roland GK-2A/GK-2AH divided pickup or equivalent."
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "World’s first polyphonic octave pedal for GK-equipped guitars, with per-string octave assignment, guitar simulations and distortion.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/oc-20g/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.manualslib.com/manual/19669/Boss-Poly-Octave-Oc-20g.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc20g.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc20g.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 40.5 dB."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc20g.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-oc-3-super-octave",
+    "brand": "BOSS",
+    "name": "OC-3 Super Octave",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "octave"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GUITAR IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "BASS IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT (MONO)",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 440,
+        "footswitches": 1
+      },
+      "electrical": {
+        "note": "Residual noise -96 dBu (IHF-A, typical, all knobs centered)."
+      }
+    },
+    "usage": "both",
+    "status": "discontinued",
+    "notes": "Polyphonic octave with guitar/bass inputs, DIRECT OUT and a four-mode control.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/oc-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/oc_3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/oc_3_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/oc_3_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q90 PSNR 42.0 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-oc-5-octave",
+    "brand": "BOSS",
+    "name": "OC-5 Octave",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "octave"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61/6LF22) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered",
+        "note": "Vintage/Poly modes, GUITAR/BASS switch, octave-up and two octaves down."
+      },
+      "physical": {
+        "weightG": 440,
+        "footswitches": 1
+      }
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Modern octave with vintage OC-2 and polyphonic modes, octave-up and a direct output.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/oc-5/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/oc-5_f_gal_1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/oc-5_f_gal_1.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/oc-5_f_gal_1.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q90 PSNR 41.1 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-od-1-overdrive",
+    "brand": "BOSS",
+    "name": "OD-1 Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS official support specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 3.5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V ×1",
+      "recommendedSupply": "ACA-120"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 200000,
+      "outputImpedanceOhm": 600
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 400,
+        "footswitches": 1
+      },
+      "electrical": {
+        "inputImpedanceOhm": 200000,
+        "note": "S/N ratio over 80 dB; output load over 600 Ω."
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.roland.com/assets/media/pdf/OD-1_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "The original BOSS overdrive: asymmetric clipping, LEVEL and OVER DRIVE controls.",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201948019-OD-1-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/global/products/box-40/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/OD-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od1.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 43.8 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/od_product01.png",
+        "priority": 2,
+        "notes": "Official reference only; below the 800 px shipping gate; not shipped."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od1.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-od-1x-overdrive",
+    "brand": "BOSS",
+    "name": "OD-1X Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital"
+      },
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 440,
+        "footswitches": 1
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Digital MDP overdrive with LEVEL, LOW, HIGH and DRIVE controls and wide dynamic range.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-1x/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od-1x_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od-1x_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/od-1x_top_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 40.6 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-od-2-turbo-overdrive",
+    "brand": "BOSS",
+    "name": "OD-2 Turbo Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS official support specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V ×1",
+      "recommendedSupply": "ACA-120"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 10000
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 410,
+        "footswitches": 1
+      },
+      "electrical": {
+        "inputImpedanceOhm": 1000000,
+        "note": "Equivalent input noise under -118 dBm (IHF-A, tone flat, input short)."
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.roland.com/assets/media/pdf/OD-2_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Mid-1980s overdrive with a TURBO switch that adds a higher-gain distortion voice.",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201932439-OD-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/OD-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 42.4 dB."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-od-20-drive-zone",
+    "brand": "BOSS",
+    "name": "OD-20 Drive Zone",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "dimensionsSource": "BOSS official specifications: 173 (W) × 158 (D) × 57 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AMP CTRL",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control",
+        "channels": 1,
+        "note": "Amp channel switching"
+      },
+      {
+        "label": "LINE OUT/PHONES",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "channels": 2,
+        "level": "headphone",
+        "stereo": true
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 85,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA ×6",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "presets": 4,
+        "bypass": "buffered",
+        "note": "Manual mode plus four memories."
+      },
+      "control": {
+        "footswitch": true,
+        "ampSwitch": true
+      },
+      "physical": {
+        "weightG": 1100,
+        "footswitches": 2
+      },
+      "electrical": {
+        "note": "Dynamic range 102 dB (IHF-A typical)."
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Twin-footswitch drive workstation with 22 overdrive/distortion models, four memories and amp control.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-20/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od20_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od20_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/od20_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q80 PSNR 40.6 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-od-200-hybrid-drive",
+    "brand": "BOSS",
+    "name": "OD-200 Hybrid Drive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive",
+      "distortion",
+      "boost",
+      "fuzz"
+    ],
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "dimensionsSource": "BOSS official specifications: 101 (W) × 138 (D) × 63 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "CTL 1, 2 / EXP",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1,
+        "edge": "top"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "trs",
+        "signal": "midi",
+        "channels": 1,
+        "edge": "top",
+        "note": "Stereo miniature phone jack"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "trs",
+        "signal": "midi",
+        "channels": 1,
+        "edge": "top",
+        "note": "Stereo miniature phone jack"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "edge": "top"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "micro-usb",
+        "signal": "usb",
+        "edge": "top",
+        "note": "Program update only"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://static.roland.com/assets/images/products/gallery/od-200_back_gal.jpg",
+      "confidence": "verified",
+      "note": "Official rear-panel gallery photo shows all connectors on the rear edge; positions approximate (edge-only)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 220,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×3",
+      "recommendedSupply": "PSA-S series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": 7,
+      "maxOutputLevelDbu": 7
+    },
+    "optional": {
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "buffered",
+        "sampleRateKhz": 96,
+        "bitDepth": 32
+      },
+      "routing": {
+        "presets": 127,
+        "banks": 1,
+        "expressionAssignments": true,
+        "tapTempo": true,
+        "note": "Analog + digital drive circuit; 12 modes with 127 memories + manual."
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true,
+        "tapTempo": true
+      },
+      "midi": {
+        "trs": "a",
+        "usb": false,
+        "programChange": true,
+        "cc": true,
+        "note": "MIDI IN/OUT via stereo miniature phone jacks (BMIDI cables)."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "firmware"
+        ],
+        "note": "USB micro B (program update only)."
+      },
+      "physical": {
+        "weightG": 600,
+        "footswitches": 2,
+        "display": "7-segment, 3 characters (LED)"
+      },
+      "lifecycle": {
+        "app": "BOSS Tone Studio"
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Hybrid analog/digital drive with 12 modes, 127 memories, MIDI and expression control.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-200/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od-200_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od-200_main_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/od-200_main_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q90 PSNR 42.1 dB; analyzer and contact-sheet accept."
+    }
+  },
+  {
+    "id": "boss-od-2r-turbo-overdrive",
+    "brand": "BOSS",
+    "name": "OD-2R Turbo Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS official support specifications: 70 (W) × 125 (D) × 55 (H) mm (OD-2R service/manual).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "REMOTE",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control",
+        "channels": 1,
+        "note": "Turbo on/off via optional FS-5L"
+      },
+      {
+        "label": "AC adaptor",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "control": {
+        "remote": true,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 440,
+        "footswitches": 1
+      },
+      "electrical": {
+        "note": "Residual noise -110 dBm (IHF-A, typical)."
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.roland.com/assets/media/pdf/OD-2R_OM.pdf"
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "OD-2 variant with a REMOTE jack for external turbo switching and a PSA-compatible power section.",
+    "sources": [
+      {
+        "url": "https://fr.audiofanzine.com/overdrive-guitare/boss/od-2r/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/OD-2R_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2r.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2r.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout; aspect pass; AVIF q80 PSNR 42.3 dB."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2r.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-od-3-overdrive",
+    "brand": "BOSS",
+    "name": "OD-3 Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No verified connector-face view was included in the batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1",
+      "recommendedSupply": "PSA series"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "maxInputLevelDbu": -20,
+      "maxOutputLevelDbu": -20
+    },
+    "optional": {
+      "routing": {
+        "bypass": "buffered"
+      },
+      "physical": {
+        "weightG": 370,
+        "footswitches": 1
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Smooth, natural overdrive with DRIVE, TONE and LEVEL controls and a wide gain range.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od_3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od_3_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source: official BOSS gallery top-down photo; matte flood; analyzer accept; contact-sheet accept."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/od_3_gal.jpg",
+      "status": "chosen",
+      "note": "Official BOSS gallery top-down photo; background removed with flood matte; AVIF q90 PSNR 42.1 dB; analyzer and contact-sheet accept."
+    }
+  }
+]
