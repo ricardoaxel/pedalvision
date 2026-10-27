@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58) — boss-5 next, solo · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58); boss-5 complete 26/26 — PR #59 in review · **Type:** plan/index (docs-only)
 
 ## Purpose
 
@@ -131,7 +131,7 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-0b** | Parallel feature + catalog workstreams (docs-only) | **Merged (PR #54, squash `89c6a38`).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; ≤2 PRs awaiting review; feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
 | **T-1** | Pedal flat-art + promote-legacy | **Merged (PR #55, squash `66222d4`).** Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Owner-approved "Catalog Specimen"; design-reviewer 2/2; code review 2/2. | T-0 |
 | **T-1a** | Image source policy (planner last-resort + recorded sources) | **Merged (PR #56, squash `ea20b02`).** Reverse the planner ban: official → retailer → community → planner **last-resort** → generated art only if none; 31 BOSS legacy remain repair-set. Always record source in the private raw catalog/ledger; ledger source-gap report. Docs/AGENTS/ADR-003/schema/gate/ledger + 26-record provenance backfill. One PR; token-reviewed. | T-1 |
-| **T-2** | BOSS wave 3 | **boss-4 + legacy repair MERGED (#58/#57); boss-5 NEXT — solo.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and the legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) are merged; post-merge `1c93cf5` verified 296/15; ledger 311 (89 own + 222 license-pending; 33 planner; 0 legacy). **boss-5 (26 new, `md-2`…`od-3`) runs solo as a single-batch wave** — budget **600k soft / 800k hard**, 4 h / 12 min, ≤2 vision, ≤1 light review; no third slot, no feature stream. One PR; owner merges. T-3 starts only after boss-5 merges. | T-0a, T-1, T-1a |
+| **T-2** | BOSS wave 3 | **boss-4 + legacy repair MERGED (#58/#57); boss-5 NEXT — solo.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and the legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) are merged; post-merge `1c93cf5` verified 296/15; ledger 311 (89 own + 222 license-pending; 33 planner; 0 legacy). **boss-5 (26 new, `md-2`…`od-3`) completed solo 26/26 in PR #59** (CI green; 52 AVIFs = 18 official + 8 planner last-resort + 0 generated; `catalog:ci` 322/15) — budget **600k soft / 800k hard**, 4 h / 12 min, ≤2 vision, ≤1 light review; no third slot, no feature stream. Owner merges. T-3 starts only after boss-5 merges. | T-0a, T-1, T-1a |
 | **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). 3-wide, third on gate. Re-baseline budgets from T-2 before launching. One PR per batch. | T-2 |
 | **T-4** | Cleanup wave 1 | EHX-1 (18 existing + 8 new) + MXR-1 (18 + 8) + Mooer-1 (18 [17 hotlinked + 1 mock] + 8) = 78 items; 54 existing (53 hotlinked + 1 mock). One PR per batch. | T-1 |
 | **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). One PR per batch. | T-1 |
@@ -146,9 +146,9 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 
 1. **T-0** (merged) → **T-0a** (merged) → **T-0b** (merged) → **T-1** (merged) →
    **T-1a** (planner last-resort + recorded sources) → **T-2**.
-2. **T-2 BOSS wave 3:** boss-4 + BOSS legacy repair **merged**. **boss-5 runs solo**
-   as a single-batch wave (600k soft/800k hard); it never needs the third-slot gate
-   and no feature stream runs alongside it.
+2. **T-2 BOSS wave 3:** boss-4 + BOSS legacy repair **merged**. **boss-5 completed
+   solo 26/26 in PR #59** (CI green); it never needed the third-slot gate and no
+   feature stream ran alongside it. Owner merges.
 3. **T-3 BOSS wave 4:** boss-6/7/8; BOSS complete.
 4. **T-4…T-7 cleanup waves:** each brand's first batch includes all its existing
    seed items + new; the 92 hotlinked and 74 mock are cleared.
