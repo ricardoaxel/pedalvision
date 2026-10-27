@@ -461,6 +461,43 @@ test("a read-only share renders jack ticks even when patch is hidden", async ({
 	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
 });
 
+test("a read-only share shows hollow fallback ticks and the cue", async ({
+	page,
+}) => {
+	// A catalog pedal with no jack data gets the documented fallback pair
+	// (hollow diamond IN left / OUT right) — the other half of the tick gate.
+	const hash = shareHash({
+		name: "Fallback ticks",
+		boards: [],
+		items: [
+			item("i1", { refId: "boss-da-2-adaptive-distortion", x: 10, y: 80 }),
+			item("i2", { refId: "boss-da-2-adaptive-distortion", x: 30, y: 80 }),
+		],
+		cables: [
+			{
+				uid: "c1",
+				from: { itemUid: "i1", jack: "1" },
+				to: { itemUid: "i2", jack: "0" },
+			},
+		],
+	});
+	await page.goto(`/?share=1${hash}`);
+	const stage = page.getByTestId("stage");
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-graph-visible", "true");
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(stage).toHaveAttribute("data-cable-arrows", "1");
+
+	const anchor = await anchorScreenPoint(page, "item:i1:0");
+	await page.mouse.move(anchor.x - 10, anchor.y);
+	await page.mouse.down();
+	await page.mouse.move(anchor.x - 50, anchor.y + 24, { steps: 6 });
+	await page.mouse.up();
+	await expect(stage).toHaveAttribute("data-readonly-cue", "item:i1");
+	await expect(stage).toHaveAttribute("data-cables", "1");
+	await expect(stage).toHaveAttribute("data-cable-arrows", "1");
+});
+
 test("share v2 round-trips cables and endpoints read-only", async ({
 	page,
 }) => {

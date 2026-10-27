@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
 	cableCurve,
+	cableCurveBoundsCm,
 	cableCurveCm,
 	cablePathData,
 	cablePathDataCm,
@@ -90,6 +91,56 @@ describe("cable curve", () => {
 			(curve.arrow[1].y - curve.arrow[2].y) * 32,
 		);
 		expect(arrowWidthPx).toBeCloseTo(EXPORT_CABLE.arrowWidthCm * 32);
+	});
+
+	it("bounds the exact curve, including an outward x extremum", () => {
+		// Both left-facing normals push the handles left of both anchors, so the
+		// curve bulges past the endpoints (an x extremum, not a control point).
+		const curve = cableCurveCm(
+			{ point: { x: 10, y: 0 }, normal: { x: -1, y: 0 }, assumed: false },
+			{ point: { x: 0, y: 0 }, normal: { x: -1, y: 0 }, assumed: false },
+		);
+		const bounds = cableCurveBoundsCm(curve);
+		expect(bounds.x).toBeLessThan(-1);
+		expect(bounds.x).toBeCloseTo(-1.85, 1);
+		expect(bounds.x + bounds.widthCm).toBeCloseTo(10, 5);
+		// The arrow's half-width is on the curve end, so the box stays finite.
+		expect(bounds.heightCm).toBeCloseTo(EXPORT_CABLE.arrowWidthCm, 5);
+	});
+
+	it("bounds a short chord without NaN or a runaway box", () => {
+		const curve = cableCurveCm(
+			{ point: { x: 0, y: 0 }, normal: { x: 1, y: 0 }, assumed: false },
+			{ point: { x: 0.2, y: 0 }, normal: { x: -1, y: 0 }, assumed: false },
+		);
+		const bounds = cableCurveBoundsCm(curve);
+		expect(Number.isFinite(bounds.x)).toBe(true);
+		expect(Number.isFinite(bounds.y)).toBe(true);
+		// The 6 cm minimum export handle still bulges, but the box stays bounded.
+		expect(bounds.widthCm).toBeGreaterThan(0.2);
+		expect(bounds.widthCm).toBeLessThan(5);
+	});
+
+	it("handles a degenerate control-point curve", () => {
+		const curve = {
+			start: { x: 0, y: 0 },
+			control1: { x: 0, y: 0 },
+			control2: { x: 5, y: 5 },
+			end: { x: 5, y: 5 },
+			pathStart: { x: 0, y: 0 },
+			pathEnd: { x: 5, y: 5 },
+			arrow: [
+				{ x: 5, y: 5 },
+				{ x: 5, y: 5 },
+				{ x: 5, y: 5 },
+			] as [
+				{ x: number; y: number },
+				{ x: number; y: number },
+				{ x: number; y: number },
+			],
+		};
+		const bounds = cableCurveBoundsCm(curve);
+		expect(bounds).toEqual({ x: 0, y: 0, widthCm: 5, heightCm: 5 });
 	});
 
 	it("shrinks the arrow into a short patch run", () => {

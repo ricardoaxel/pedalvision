@@ -61,7 +61,7 @@ graph cap, the share payload/version or the "Patch Drafting" direction.
   hidden, presses **10 screen px outside** a socket (inside the tick hit disc,
   outside the pedal) and asserts the item's read-only cue; 30 px outside the
   socket stays empty canvas, proving the tick disc is what caught the press.
-- Performance (2026-10-27): bundle **+0.58 kB gzip** (295.12 → 295.70 kB);
+- Performance (2026-10-27): bundle **+0.59 kB gzip** (295.12 → 295.71 kB);
   read-only canvas frame time p50/p95 **16.70 ms** (60 fps) unchanged vs main;
   a 60-cable selected-board export plan resolves in **0.18 ms** vs **0.06 ms**
   on main (one-off export action, +0.12 ms).
