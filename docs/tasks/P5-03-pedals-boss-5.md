@@ -179,5 +179,11 @@ Read only the sections the task file points to; do not read whole docs.
   overrides for the 12 creative/multi-effect names (required by the no-drift test),
   plus aliases for the ME-90B/ MS-3 inventory-vs-official name mismatch. No mapped
   or runtime files in the PR.
+- **Budget:** billed non-cache **378.8k root + 82.8k vision + 109.3k code review =
+  571k total** (soft 600k / hard 800k); cache-inclusive JSONL floor ~27.7M
+  (cache reads). Active session **42 min** (~1.6 min/item). The runner’s 26
+  per-item-limit blockers are a logging artifact of the retroactive catch-up
+  checkpoints written after the coordinator’s 3.5 h start/stop gap; the batch is
+  complete (`catalog:finish`).
 
 **PR:** https://github.com/ricardoaxel/pedalvision/pull/59
