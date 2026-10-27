@@ -6,7 +6,7 @@ import {
 	boardAddRefusal,
 	capacityStatus,
 } from "../lib/capacity";
-import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
+import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import {
 	draftFromCustomBoard,
 	emptyCustomBoardDraft,
@@ -382,17 +382,11 @@ export function Picker({
 				name: board.name,
 				widthCm: board.widthCm,
 				heightCm: board.heightCm,
-				thumbSrc: resolveImageUrl(
+				thumbSrc: resolveThumbImageUrl(board.imageSource, board.image, "board"),
+				specimenSrc: resolveMasterImageUrl(
 					board.imageSource,
 					board.image,
 					"board",
-					ASSET_RENDITIONS.pickerRow,
-				),
-				specimenSrc: resolveImageUrl(
-					board.imageSource,
-					board.image,
-					"board",
-					ASSET_RENDITIONS.specimen,
 				),
 				meta: "",
 			}));
@@ -410,17 +404,11 @@ export function Picker({
 				name: pedal.name,
 				widthCm: pedal.widthCm,
 				heightCm: pedal.heightCm,
-				thumbSrc: resolveImageUrl(
+				thumbSrc: resolveThumbImageUrl(pedal.imageSource, pedal.image, "pedal"),
+				specimenSrc: resolveMasterImageUrl(
 					pedal.imageSource,
 					pedal.image,
 					"pedal",
-					ASSET_RENDITIONS.pickerRow,
-				),
-				specimenSrc: resolveImageUrl(
-					pedal.imageSource,
-					pedal.image,
-					"pedal",
-					ASSET_RENDITIONS.specimen,
 				),
 				meta,
 			};
