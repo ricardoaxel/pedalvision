@@ -10329,6 +10329,1068 @@
     ]
   },
   {
+    "id": "boss-ga-fc-foot-controller",
+    "brand": "BOSS",
+    "name": "GA-FC Foot Controller",
+    "widthCm": 39.2,
+    "heightCm": 8.1,
+    "image": "boss-ga-fc-foot-controller.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Six-button foot controller for compatible BOSS amplifiers; connects to the amp’s FOOT CONTROL jack and provides two expression-pedal inputs.",
+    "year": 2014,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ga-fc/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/support/by_product/ga-fc/product_images/",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ge-6-graphic-equalizer",
+    "brand": "BOSS",
+    "name": "GE-6 Graphic Equalizer",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ge-6-graphic-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7
+    },
+    "usage": "guitar",
+    "color": "cream",
+    "notes": "Six-band analog graphic equalizer (100 Hz–3.2 kHz) with ±15 dB per band and no master level control.",
+    "year": 1978,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.tonehome.de/boss/ge-6-graphic-eq/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ge6.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ge-7-graphic-equalizer",
+    "brand": "BOSS",
+    "name": "GE-7 Graphic Equalizer",
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "image": "boss-ge-7-graphic-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "guitar",
+    "color": "grey",
+    "notes": "Seven-band graphic equalizer with LEVEL control, ±15 dB per band and a wide 100 Hz–6.4 kHz range.",
+    "year": 1981,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ge-7/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ge_7_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-geb-7-bass-equalizer",
+    "brand": "BOSS",
+    "name": "GEB-7 Bass Equalizer",
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "image": "boss-geb-7-bass-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "bass",
+    "color": "brown",
+    "notes": "Seven-band bass equalizer with ±15 dB per band and a LEVEL control, voiced for bass frequencies.",
+    "year": 1992,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/geb-7/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/geb_7_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gigmaster-5",
+    "brand": "BOSS",
+    "name": "Gigcaster 5",
+    "widthCm": 17.7,
+    "heightCm": 21.6,
+    "image": "boss-gigmaster-5.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "mixer",
+      "utility"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Desktop audio streaming mixer for musicians with guitar/mic/instrument inputs, onboard GT-derived effects and USB-C streaming.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gigcaster_5/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gigcaster_5_gal_top.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gigmaster-8",
+    "brand": "BOSS",
+    "name": "Gigcaster 8",
+    "widthCm": 21.7,
+    "heightCm": 26.7,
+    "image": "boss-gigmaster-8.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "mixer",
+      "utility"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Eight-channel desktop streaming mixer with four combo inputs, guitar/bass effects, vocal processing, sound pads and microSD recording.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gigcaster_8/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gigcaster_8_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gm-800-guitar-synthesizer",
+    "brand": "BOSS",
+    "name": "GM-800 Guitar Synthesizer",
+    "widthCm": 24.6,
+    "heightCm": 13.4,
+    "image": "boss-gm-800-guitar-synthesizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Desktop guitar synthesizer with GK serial pickup input, 128-voice polyphony and deep synthesis/effects processing.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gm-800/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gm-800_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gp-10-guitar-processor",
+    "brand": "BOSS",
+    "name": "GP-10 Guitar Processor",
+    "widthCm": 25.1,
+    "heightCm": 20.7,
+    "image": "boss-gp-10-guitar-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "synth",
+      "pitch",
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "GK-compatible guitar processor with COSM amp models, guitar synth, alternate tuning, poly effects and a built-in expression pedal.",
+    "year": 2014,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gp-10/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gp-10_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gp-20-amp-factory",
+    "brand": "BOSS",
+    "name": "GP-20 Amp Factory",
+    "widthCm": 17.3,
+    "heightCm": 15.5,
+    "image": "boss-gp-20-amp-factory.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Early BOSS amp-modeling multi-effect with 16 amp types, effects and stereo outputs.",
+    "year": 1996,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gp-20/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gp_20_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gt-1-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-1 Guitar Effects Processor",
+    "widthCm": 30.5,
+    "heightCm": 15.2,
+    "image": "boss-gt-1-guitar-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200
+    },
+    "usage": "guitar",
+    "notes": "Compact floor multi-effects with 108 effects, amp models, 99 user patches, four AA batteries or AC power.",
+    "year": 2017,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gt-1_F_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gt-1000-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-1000 Guitar Effects Processor",
+    "widthCm": 46.2,
+    "heightCm": 24.8,
+    "image": "boss-gt-1000-guitar-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "synth"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Flagship floor guitar processor with AIRD amp modeling, dual effects loops, XLR sub outputs, MIDI and USB audio.",
+    "year": 2018,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-1000/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/products/gt-1000/images/gt-1000_front_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gt-1000core-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-1000CORE Guitar Effects Processor",
+    "widthCm": 17.3,
+    "heightCm": 13.5,
+    "image": "boss-gt-1000core-guitar-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "synth"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Compact GT-1000 engine with dual effects loops, stereo I/O, IR loading, MIDI and USB audio; three footswitches plus an expression input.",
+    "year": 2020,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-1000core/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarchalk.com/boss-gt-1000core-multi-effects-settings/",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gt-8-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-8 Guitar Effects Processor",
+    "widthCm": 51.5,
+    "heightCm": 26.1,
+    "image": "boss-gt-8-guitar-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 14,
+      "acDc": "AC",
+      "currentMa": 650
+    },
+    "usage": "guitar",
+    "notes": "Flagship floor processor of the mid-2000s with COSM amp models, 44-bit DSP, dual foot controllers and digital out.",
+    "year": 2005,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-8/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gt_8_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gx-1-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-1 Guitar Effects Processor",
+    "widthCm": 30.7,
+    "heightCm": 14.9,
+    "image": "boss-gx-1-guitar-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "usage": "guitar",
+    "notes": "Compact floor multi-effects with AIRD amp models, colour display, four AA batteries or USB bus power.",
+    "year": 2024,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-1_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gx-10-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-10 Guitar Effects Processor",
+    "widthCm": 30,
+    "heightCm": 18.3,
+    "image": "boss-gx-10-guitar-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Mid-size GX floor processor with colour display, AIRD amp models, effects loop, USB-C and Bluetooth adaptor support.",
+    "year": 2024,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-10/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-10_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gx-100-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-100 Guitar Effects Processor",
+    "widthCm": 46,
+    "heightCm": 19.3,
+    "image": "boss-gx-100-guitar-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Large-format GX floor processor with touchscreen, AIRD amp models, effects loop, MIDI and Bluetooth adaptor support.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-100/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-100_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-gx-1b-bass-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-1B Bass Effects Processor",
+    "widthCm": 30.7,
+    "heightCm": 14.9,
+    "image": "boss-gx-1b-bass-effects-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "compressor",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "usage": "bass",
+    "notes": "Bass version of the GX-1 compact floor processor with AIRD bass amps, colour display, four AA batteries or USB bus power.",
+    "year": 2024,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-1b/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-1b_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-hf-2-hi-band-flanger",
+    "brand": "BOSS",
+    "name": "HF-2 Hi Band Flanger",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-hf-2-hi-band-flanger.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18
+    },
+    "usage": "guitar",
+    "color": "light purple",
+    "notes": "Flanger voiced an octave above the standard band, with MANUAL, DEPTH, RATE and RESONANCE controls.",
+    "year": 1985,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/HF-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hf2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-hm-2-heavy-metal",
+    "brand": "BOSS",
+    "name": "HM-2 Heavy Metal",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-hm-2-heavy-metal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "color": "black",
+    "notes": "Legendary high-gain distortion with DIST, LEVEL and separate COLOR MIX L/H tone controls; the basis of the “chainsaw” death-metal tone.",
+    "year": 1983,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/HM-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hm2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-hm-2w-heavy-metal-waza-craft",
+    "brand": "BOSS",
+    "name": "HM-2W Heavy Metal (Waza Craft)",
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "image": "boss-hm-2w-heavy-metal-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "guitar",
+    "color": "black",
+    "notes": "Waza Craft reissue of the HM-2 with Standard/Custom mode and the original DIST, COLOR MIX L/H and LEVEL controls.",
+    "year": 2021,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/hm-2w/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/hm-2w_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ir-2-amp-cabinet",
+    "brand": "BOSS",
+    "name": "IR-2 Amp & Cabinet",
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "image": "boss-ir-2-amp-cabinet.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "cab-sim",
+      "amp-modeler"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 160
+    },
+    "usage": "guitar",
+    "notes": "Compact amp/cab simulator with 11 onboard amp types, Celestion IRs, stereo outputs and USB-C for IR loading.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ir-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/products/ir-2/image/ir-2_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ir-200-amp-ir-cabinet",
+    "brand": "BOSS",
+    "name": "IR-200 Amp & IR Cabinet",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-ir-200-amp-ir-cabinet.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Desktop amp/IR cabinet processor with 128 IR slots, stereo outputs, effects loop, MIDI and USB audio.",
+    "year": 2021,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ir-200/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/products/ir-200/images/ir-200_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-jb-2-angry-driver",
+    "brand": "BOSS",
+    "name": "JB-2 Angry Driver",
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "image": "boss-jb-2-angry-driver.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "color": "red/white",
+    "notes": "BOSS/JHS collaboration pairing a BD-2 Blues Driver circuit with a JHS Angry Charlie, selectable and stackable via the mode switch.",
+    "year": 2017,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/jb-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-jb2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-lm-2-limiter",
+    "brand": "BOSS",
+    "name": "LM-2 Limiter",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-lm-2-limiter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12
+    },
+    "usage": "both",
+    "color": "blue",
+    "notes": "Analog VCA limiter with LEVEL, TONE, RELEASE and THRESHOLD controls; popular with bass players for transparent peak control.",
+    "year": 1987,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/LM-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-lm2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-lmb-3-bass-limiter-enhancer",
+    "brand": "BOSS",
+    "name": "LMB-3 Bass Limiter Enhancer",
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "image": "boss-lmb-3-bass-limiter-enhancer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor",
+      "utility"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "bass",
+    "color": "black",
+    "notes": "Bass limiter/enhancer with THRESHOLD, RATIO, ENHANCE and LEVEL controls for transparent dynamics control.",
+    "year": 1996,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/lmb-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/lmb3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ls-2-line-selector",
+    "brand": "BOSS",
+    "name": "LS-2 Line Selector",
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "image": "boss-ls-2-line-selector.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility",
+      "ab-box"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "both",
+    "color": "white",
+    "notes": "Two-loop line selector for A/B switching, bypassing or blending two effects chains; can also daisy-chain power.",
+    "year": 1991,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ls-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ls2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
     "id": "jhs-3-series-screamer",
     "brand": "JHS",
     "name": "3 Series Screamer",

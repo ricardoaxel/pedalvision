@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 196 |
+| license-pending | 222 |
 | own | 89 |
 
-Hosting: hotlinked 92 · mock 84 · static 109
+Hosting: hotlinked 92 · mock 84 · static 135
 
-Source kind: archive 4 · official 164 · own 89 · planner 28
+Source kind: archive 4 · community 1 · official 184 · own 89 · planner 33
 
-Needs improvement: 204 (hotlinked 92 · mock 84 · planner 28)
+Needs improvement: 209 (hotlinked 92 · mock 84 · planner 33)
 
 ## Aclam
 
@@ -104,6 +104,32 @@ Needs improvement: 204 (hotlinked 92 · mock 84 · planner 28)
 | `boss-fz-2-hyper-fuzz` | FZ-2 Hyper Fuzz | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-fz-3-fuzz` | FZ-3 Fuzz | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-fz-5-fuzz` | FZ-5 Fuzz | license-pending | static | official | — | — |
+| `boss-ga-fc-foot-controller` | GA-FC Foot Controller | license-pending | static | official | — | — |
+| `boss-ge-6-graphic-equalizer` | GE-6 Graphic Equalizer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ge-7-graphic-equalizer` | GE-7 Graphic Equalizer | license-pending | static | official | — | — |
+| `boss-geb-7-bass-equalizer` | GEB-7 Bass Equalizer | license-pending | static | official | — | — |
+| `boss-gigmaster-5` | Gigcaster 5 | license-pending | static | official | — | — |
+| `boss-gigmaster-8` | Gigcaster 8 | license-pending | static | official | — | — |
+| `boss-gm-800-guitar-synthesizer` | GM-800 Guitar Synthesizer | license-pending | static | official | — | — |
+| `boss-gp-10-guitar-processor` | GP-10 Guitar Processor | license-pending | static | official | — | — |
+| `boss-gp-20-amp-factory` | GP-20 Amp Factory | license-pending | static | official | — | — |
+| `boss-gt-1-guitar-effects-processor` | GT-1 Guitar Effects Processor | license-pending | static | official | — | — |
+| `boss-gt-1000-guitar-effects-processor` | GT-1000 Guitar Effects Processor | license-pending | static | official | — | — |
+| `boss-gt-1000core-guitar-effects-processor` | GT-1000CORE Guitar Effects Processor | license-pending | static | community | — | — |
+| `boss-gt-8-guitar-effects-processor` | GT-8 Guitar Effects Processor | license-pending | static | official | — | — |
+| `boss-gx-1-guitar-effects-processor` | GX-1 Guitar Effects Processor | license-pending | static | official | — | — |
+| `boss-gx-10-guitar-effects-processor` | GX-10 Guitar Effects Processor | license-pending | static | official | — | — |
+| `boss-gx-100-guitar-effects-processor` | GX-100 Guitar Effects Processor | license-pending | static | official | — | — |
+| `boss-gx-1b-bass-effects-processor` | GX-1B Bass Effects Processor | license-pending | static | official | — | — |
+| `boss-hf-2-hi-band-flanger` | HF-2 Hi Band Flanger | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-hm-2-heavy-metal` | HM-2 Heavy Metal | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-hm-2w-heavy-metal-waza-craft` | HM-2W Heavy Metal (Waza Craft) | license-pending | static | official | — | — |
+| `boss-ir-2-amp-cabinet` | IR-2 Amp & Cabinet | license-pending | static | official | — | — |
+| `boss-ir-200-amp-ir-cabinet` | IR-200 Amp & IR Cabinet | license-pending | static | official | — | — |
+| `boss-jb-2-angry-driver` | JB-2 Angry Driver | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-lm-2-limiter` | LM-2 Limiter | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-lmb-3-bass-limiter-enhancer` | LMB-3 Bass Limiter Enhancer | license-pending | static | official | — | — |
+| `boss-ls-2-line-selector` | LS-2 Line Selector | license-pending | static | official | — | — |
 | `boss-psm-5-power-supply-master-switch` | PSM-5 Power Supply & Master Switch | license-pending | hotlinked | official | yes | BOSS batch |
 
 ## Behringer
@@ -441,7 +467,7 @@ Needs improvement: 204 (hotlinked 92 · mock 84 · planner 28)
 | BoardMods | own | 1 |
 | BOSS | official | 1 |
 | BOSS | own | 1 |
-| BOSS | planner | 28 |
+| BOSS | planner | 33 |
 | Caseman | own | 1 |
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |
