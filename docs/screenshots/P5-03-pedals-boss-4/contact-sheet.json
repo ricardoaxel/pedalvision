@@ -1,0 +1,190 @@
+{
+	"version": 1,
+	"columns": 6,
+	"rows": 5,
+	"cell": 240,
+	"items": [
+		{
+			"id": "boss-ga-fc-foot-controller",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-ga-fc-foot-controller.avif",
+			"row": 0,
+			"column": 0,
+			"sha256": "46e5a868eaf0869cb98e3f764151e3a8f6e8f53b8560466b8de430cc5f53b205"
+		},
+		{
+			"id": "boss-ge-6-graphic-equalizer",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-ge-6-graphic-equalizer.avif",
+			"row": 0,
+			"column": 1,
+			"sha256": "c58832d431116584eff3e25bf10cd050b062c89d47b803c14137b816d290f13a"
+		},
+		{
+			"id": "boss-ge-7-graphic-equalizer",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-ge-7-graphic-equalizer.avif",
+			"row": 0,
+			"column": 2,
+			"sha256": "672e3b60f938cfd31ce9c81118c2f0ba7e9808bcceab2ebef940d98b353ec775"
+		},
+		{
+			"id": "boss-geb-7-bass-equalizer",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-geb-7-bass-equalizer.avif",
+			"row": 0,
+			"column": 3,
+			"sha256": "15ea5ff8cf408cce13578f928a2fe3be560c7e3d66757507f10375c6a47a0b73"
+		},
+		{
+			"id": "boss-gigmaster-5",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gigmaster-5.avif",
+			"row": 0,
+			"column": 4,
+			"sha256": "eb7696d7ee29edac7f076a054609b28acc03390f326d94a8ded330171f1405e8"
+		},
+		{
+			"id": "boss-gigmaster-8",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gigmaster-8.avif",
+			"row": 0,
+			"column": 5,
+			"sha256": "65acef34b5ac68964ef6aeb3c804719d0bb2245a369be6bd0ba8f3c9a1b25ae7"
+		},
+		{
+			"id": "boss-gm-800-guitar-synthesizer",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gm-800-guitar-synthesizer.avif",
+			"row": 1,
+			"column": 0,
+			"sha256": "08940373f81848f726cdfd1fbbbad5f30824ad0bbe929dea2da2a3a84961b280"
+		},
+		{
+			"id": "boss-gp-10-guitar-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gp-10-guitar-processor.avif",
+			"row": 1,
+			"column": 1,
+			"sha256": "a51854e051f0f79d8a88ed0a22af31a357f9a54e00f67633e4a7e65a4ee96d37"
+		},
+		{
+			"id": "boss-gp-20-amp-factory",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gp-20-amp-factory.avif",
+			"row": 1,
+			"column": 2,
+			"sha256": "316acedef17048ac13f2658e660d787e2fcb9ae8e673d941d0a1035656e75233"
+		},
+		{
+			"id": "boss-gt-1-guitar-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gt-1-guitar-effects-processor.avif",
+			"row": 1,
+			"column": 3,
+			"sha256": "94aa8d2be9e578a67f828a1987d3501b6b092e7ebdc4326128bd3d2184950b82"
+		},
+		{
+			"id": "boss-gt-1000-guitar-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gt-1000-guitar-effects-processor.avif",
+			"row": 1,
+			"column": 4,
+			"sha256": "b47de28cf7b919cda5b215c3762c5ac21487256850910df8cf4e82b04fcb48ee"
+		},
+		{
+			"id": "boss-gt-1000core-guitar-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gt-1000core-guitar-effects-processor.avif",
+			"row": 1,
+			"column": 5,
+			"sha256": "2de9f59f99d61e28bef84b3b4346e4a89dc04d4bab72d1fd4e8259cfaa2f724f"
+		},
+		{
+			"id": "boss-gt-8-guitar-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gt-8-guitar-effects-processor.avif",
+			"row": 2,
+			"column": 0,
+			"sha256": "4e0d3d5d8112d52b2c121edc298f341943a3685283d7d1d05dbf48336e409f0a"
+		},
+		{
+			"id": "boss-gx-1-guitar-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gx-1-guitar-effects-processor.avif",
+			"row": 2,
+			"column": 1,
+			"sha256": "d4ae7bee254ae6eb30c4e62dd65c040320dd5c4860aa629004430f7146b07d77"
+		},
+		{
+			"id": "boss-gx-10-guitar-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gx-10-guitar-effects-processor.avif",
+			"row": 2,
+			"column": 2,
+			"sha256": "611a1294dbc577853cb9c85fc8b9f26ff72df6992f415c7e05ece5ff665dbbfd"
+		},
+		{
+			"id": "boss-gx-100-guitar-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gx-100-guitar-effects-processor.avif",
+			"row": 2,
+			"column": 3,
+			"sha256": "c89ac70f6605e55f22f77e1e996884387e7edea58488948d0a7a822c8ec7c7fb"
+		},
+		{
+			"id": "boss-gx-1b-bass-effects-processor",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-gx-1b-bass-effects-processor.avif",
+			"row": 2,
+			"column": 4,
+			"sha256": "a5225586efdb6b7115597e7f2e299489fc7064ba2310cad885aab4aeda512a8e"
+		},
+		{
+			"id": "boss-hf-2-hi-band-flanger",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-hf-2-hi-band-flanger.avif",
+			"row": 2,
+			"column": 5,
+			"sha256": "db963350a4a1296967f7fa65643c3f0b679850c23810b76bf96316d32b9a5235"
+		},
+		{
+			"id": "boss-hm-2-heavy-metal",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-hm-2-heavy-metal.avif",
+			"row": 3,
+			"column": 0,
+			"sha256": "830ed019c317db37c530bffa6844e84fcf72f8f9e72c9acb49905620a28f6962"
+		},
+		{
+			"id": "boss-hm-2w-heavy-metal-waza-craft",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-hm-2w-heavy-metal-waza-craft.avif",
+			"row": 3,
+			"column": 1,
+			"sha256": "619b0a95e62b26ea5d899516d22896568f090f29b25b09762592d1f281800737"
+		},
+		{
+			"id": "boss-ir-2-amp-cabinet",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-ir-2-amp-cabinet.avif",
+			"row": 3,
+			"column": 2,
+			"sha256": "78514b65d0edd0812f5a5fb0c6381b13831d3748e50485646de2f0c44384a7ae"
+		},
+		{
+			"id": "boss-ir-200-amp-ir-cabinet",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-ir-200-amp-ir-cabinet.avif",
+			"row": 3,
+			"column": 3,
+			"sha256": "6f203582bf616c174b77c9c7b8c1142dc8c5503fae43ea93d9f1eac15296345c"
+		},
+		{
+			"id": "boss-jb-2-angry-driver",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-jb-2-angry-driver.avif",
+			"row": 3,
+			"column": 4,
+			"sha256": "3fb9e3aa00870e5c024c3a209818b4d80b69b4c8d81c0d688f696009aa710f79"
+		},
+		{
+			"id": "boss-lm-2-limiter",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-lm-2-limiter.avif",
+			"row": 3,
+			"column": 5,
+			"sha256": "4f1ddd35fd05544f9b7ee32e936349968dc63faf8ee432c256cc7287232ec12e"
+		},
+		{
+			"id": "boss-lmb-3-bass-limiter-enhancer",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-lmb-3-bass-limiter-enhancer.avif",
+			"row": 4,
+			"column": 0,
+			"sha256": "38897508319c7561a155b7638bfd0a653bac338e453471aed45aee3cb56899aa"
+		},
+		{
+			"id": "boss-ls-2-line-selector",
+			"image": "/Users/ashel/Documents/Programming/pedalvision-p5-03-boss-4/public/pedal-assets/pedals/800/boss-ls-2-line-selector.avif",
+			"row": 4,
+			"column": 1,
+			"sha256": "d7e0a54ccded0dd06bff83fd8d64458a767a64180b5d8889e41a2fc81750af23"
+		}
+	]
+}
