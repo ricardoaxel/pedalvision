@@ -2,10 +2,11 @@
 
 **Phase:** P5 · **Status:** todo — T-2 last batch, **solo single-batch wave** · **Model:** build-strong
 
-> The coordinator already ran `catalog:start` for `boss/boss-5` and **stopped** it at
-> 0/26 on the third-slot gate; it was then **resumed** for this solo run. Do **not**
-> run `catalog:start` again. Checkpoint inline after every item, finish with
-> `catalog:finish`.
+> The coordinator ran `catalog:start` for `boss/boss-5` and **stopped** it at 0/26 on
+> the third-slot gate. For this solo run the coordinator **must resume** it
+> (`catalog:resume --batch boss/boss-5`, which clears the stop marker) before the
+> session starts. Do **not** run `catalog:start` again. Checkpoint inline after
+> every item, finish with `catalog:finish`.
 
 ## Goal
 
@@ -86,18 +87,26 @@ Read only the sections the task file points to; do not read whole docs.
   only when none exists. Record `imageProvenance` for every item; never put a
   planner/community URL on the public page. Planner last-resort is a counted
   source gap (current ledger: 311 items = 89 own + 222 license-pending; 33 planner
-  gaps; 0 legacy).
+  gaps; 0 legacy). **Planner-repeat guard (boss-4 correction cost 192k):** check
+  `docs/catalog/image-source-registry.md` first; run the deterministic gate
+  (alpha/aspect/bright/PSNR) **before** a candidate enters the contact sheet; after
+  one rejected planner image go straight to generated art instead of re-sourcing;
+  hard cap 2 vision passes.
 - **Clean-alpha + AVIF gate:** 800/350 AVIF, aspect/alpha/bg pass, PSNR ≥40 dB
   (q90 escalation), `--matte none` for already-transparent sources, flood/
   components/global per the template. Defringe/re-source if a halo appears.
 - **Generated art:** `docs/catalog/pedal-art.md`; one spec per item, body median
   sampled, no planner pixels as reference, no logo/shadow/gradient.
 - **Budget (boss-5 solo lane):** billed non-cache soft **≤600k / hard ≤800k**
-  within the 2.4M wave hard and the **3.2M combined feature+catalog hard stop**;
-  ≤2 contact-sheet vision passes; ≤1 light code review (data-only: normally skip
-  unless `curated.ts` changed); **4 h active hard**; 12 min/item first-8 heuristic.
-  At 80% soft, log the projection; at the hard cap, pause/stop and report — do not
-  open a partial PR. Boss-5 runs **solo**: no third slot, no feature stream.
+  (owner-set; the token reviewer suggested 900k but that was **not adopted**). The
+  600/800 lines are **not enforced by tooling** for a solo run, so the coordinator
+  checks billed tokens every 15 min and stops manually at 800k. The **3.2M
+  combined hard stop** is non-binding with 0 feature streams; the **≤2 PRs awaiting
+  review** cap still applies. ≤2 contact-sheet vision passes; ≤1 light code review
+  (data-only: normally skip unless `curated.ts` changed); **4 h active hard**; 12
+  min/item first-8 heuristic. At 80% soft (480k), log the projection; at the hard
+  cap, pause/stop and report — do not open a partial PR. Boss-5 runs **solo**: no
+  third slot, no feature stream.
 - Status every 15 min; checkpoint after every item.
 - If any model/provider call fails (429/401/quota/timeout/empty), STOP and report
   the model, operation and exact error — never substitute another model.
