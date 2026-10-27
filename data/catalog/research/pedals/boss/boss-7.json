@@ -600,7 +600,7 @@
   ],
   "jackLayout": {
    "confidence": "unknown",
-   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+   "note": "Official gallery has only a front three-quarter shot; the 600 dpi support image is top-down but does not show the side jack faces, so edges are omitted (assumed anchors)."
   },
   "power": {
    "voltage": 9,
@@ -854,7 +854,7 @@
   ],
   "jackLayout": {
    "confidence": "unknown",
-   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+   "note": "No official rear/connector-face image was included in the gallery set captured for this batch; edges omitted (assumed anchors)."
   },
   "power": {
    "voltage": 9,

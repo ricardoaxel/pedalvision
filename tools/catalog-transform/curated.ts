@@ -230,6 +230,7 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"boss-od-20-drive-zone": ["overdrive", "distortion"],
 	"boss-od-200-hybrid-drive": ["overdrive", "distortion", "boost", "fuzz"],
 	"boss-od-2r-turbo-overdrive": ["overdrive", "distortion"],
+	// Mirrors the research-record effectTypes; keep in sync (boss/boss-7).
 	"boss-re-2-space-echo": ["delay", "reverb"],
 	"boss-re-20-space-echo": ["delay", "reverb"],
 	"boss-re-202-space-echo": ["delay", "reverb"],
