@@ -106,6 +106,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dc2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dc2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -114,8 +133,14 @@
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dc2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 42.92 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -126,13 +151,14 @@
       "circuit": "Analog",
       "battery": "9 V battery",
       "jackEvidence": "Audio jacks side-mounted (left/right); DC IN top/rear.",
-      "imageProcessing": "Pedalplayground transparent cutout upscaled from 350x621 to 451x800 (lanczos), --matte none, AVIF q80. Analyzer perspective flag is the BOSS silhouette false positive.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 42.92 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dc2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -396,6 +422,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product03.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dc3.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dc3.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -404,8 +449,14 @@
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dc_product03.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dc3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.67 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -419,13 +470,14 @@
       "bypass": "Buffered bypass",
       "circuit": "Digital",
       "battery": "9 V battery",
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.67 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dc3.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -535,6 +587,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dd2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dd2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -543,8 +614,14 @@
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dd2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.23 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -557,13 +634,14 @@
       "circuit": "Digital",
       "battery": "9 V battery",
       "delayTimeMs": "12.5–800 ms",
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.23 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dd2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -1429,16 +1507,41 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product05.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dd5.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dd5.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
       {
-        "url": "https://static.roland.com/assets/images/products/main/dd5_2_main.jpg",
-        "sourcePage": "https://www.boss.info/global/products/dd-5/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dd_product05.png",
+        "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dd5.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.56 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -1451,13 +1554,14 @@
       "bypass": "Buffered bypass",
       "circuit": "Digital",
       "battery": "9 V battery",
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.56 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dd5.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2291,6 +2395,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/df_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-df2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-df2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -2299,8 +2422,14 @@
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/df_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-df2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.71 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -2313,13 +2442,14 @@
       "bypass": "Buffered bypass",
       "circuit": "Analog",
       "battery": "9 V battery",
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.71 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-df2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2625,6 +2755,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dm2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dm2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -2633,8 +2782,14 @@
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dm2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 40.72 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -2647,13 +2802,14 @@
       "circuit": "Analog (BBD)",
       "battery": "9 V battery",
       "delayTimeMs": "20–300 ms",
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 40.72 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dm2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2924,6 +3080,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product03.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dm3.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dm3.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -2932,8 +3107,14 @@
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dm_product03.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dm3.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q90; PSNR 40.83 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -2946,13 +3127,14 @@
       "circuit": "Analog (BBD)",
       "battery": "9 V battery",
       "delayTimeMs": "20–300 ms",
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q90; PSNR 40.83 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dm3.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -3316,16 +3498,28 @@
         "kind": [
           "info"
         ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/zip/ds-1-4a.zip",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsa_product01.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-25",
     "imageCandidates": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsa_product01.png",
+        "url": "https://static.roland.com/assets/media/zip/ds-1-4a.zip",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT: official hi-res support image; matte + AVIF + PSNR + vision accept."
       }
     ],
     "variantOf": "boss-ds-1-distortion",
@@ -3339,13 +3533,14 @@
       "circuit": "Analog",
       "battery": "9 V battery",
       "limitedEdition": true,
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Official BOSS hi-res support image ds-1-4a_F.jpg; flood matte; AVIF q90; PSNR 41.96 dB; vision accept.",
+      "imageProvenance": "Official BOSS hi-res support image; source recorded."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/media/zip/ds-1-4a.zip",
+      "status": "chosen",
+      "note": "Official BOSS hi-res support image ds-1-4a_F.jpg; flood matte; AVIF q90; PSNR 41.96 dB; vision accept."
     }
   },
   {
@@ -3449,6 +3644,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://media.rainpos.com/10263/DS_1_WH.jpg",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ds1wh.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-ds1wh.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -3456,9 +3670,15 @@
     "imageCandidates": [
       {
         "url": "https://media.rainpos.com/10263/DS_1_WH.jpg",
-        "sourcePage": "https://www.boss.info/global/products/ds-1/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "sourcePage": "https://www.livesoundworks.com/product/boss-ds-1-wh-limited-edition-distortion-pedal-pearl-white",
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (recorded retailer photo of the pearl-white finish; DS-1 layout from the official DS-1 reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ds1wh.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.76 dB; analyzer accept; vision accept."
       }
     ],
     "variantOf": "boss-ds-1-distortion",
@@ -3472,13 +3692,14 @@
       "circuit": "Analog",
       "battery": "9 V battery",
       "limitedEdition": true,
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.76 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-ds1wh.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -4000,6 +4221,25 @@
           "info",
           "image"
         ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsd_product02.png",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dsd2.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/boss-dsd2.png",
+        "kind": [
+          "image"
+        ]
       }
     ],
     "confidence": "confirmed",
@@ -4008,8 +4248,14 @@
       {
         "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/dsd_product02.png",
         "sourcePage": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
-        "priority": 2,
-        "notes": "Official BOSS product image; 3/4 perspective, rejected by the analyzer (and below 800 px for some legacy models), so not used as the cutout."
+        "priority": 1,
+        "notes": "ACCEPT as generated-art reference; REJECT as a shipped image (official 400 px 40th-anniversary product PNG is below the 800 px shipping gate, so it was used only as the generated-art reference)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dsd2.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "ACCEPT: recorded Pedalplayground planner cutout (transparent PNG, matte none); AVIF q80; PSNR 41.88 dB; analyzer accept; vision accept."
       }
     ],
     "extra": {
@@ -4023,13 +4269,14 @@
       "circuit": "Digital",
       "battery": "9 V battery",
       "samplingTimeMs": "200–800 ms",
-      "imageProcessing": "Pedalplayground transparent cutout, --matte none --body-crop, AVIF q80.",
-      "imageProvenance": "legacy asset — pending replacement (no recorded source)"
+      "imageProcessing": "Planner PNG; --matte none; AVIF 800/350 q80; PSNR 41.88 dB; analyzer accept; vision accept.",
+      "imageProvenance": "Recorded Pedalplayground planner cutout (last-resort, canonical planner host; the raw GitHub 800 mirror is recorded in sources); counted as a source gap."
     },
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset; source not recorded; replacement pending."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-dsd2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   }
 ]
