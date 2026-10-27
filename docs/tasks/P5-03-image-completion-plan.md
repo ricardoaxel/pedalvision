@@ -28,11 +28,14 @@ own task file — no need to re-paste the whole plan.
 
 ## Decisions
 
-- **D1 — Generated flat pedal art for no-official sources.** Official/authorized
-  top-down photos stay first. For the 31 BOSS legacy, BOSS vintage items in the new
-  batches, and any future gap: generate a faithful flat top-down from official/
-  authorized/user **reference** photos. Reference only; no reference pixels; no
-  planner. Generated art is `own`.
+- **D1 — Source hierarchy (amended 2026-10-27).** For pedals: official/authorized
+  top-down → authorized retailer → user/community (recorded) → **planner/
+  Pedalplayground last-resort (recorded + quality-gated)** → **generated flat art
+  only when none of the above exists/passes**. Generated art is `own`; planner
+  last-resort is a recorded source gap to improve. The **31 BOSS legacy** stay
+  `pending-replacement` and must be repaired (official/retailer/community, or
+  generated if none) — never keep their old planner asset. Boards keep generated
+  flat art by default; planner pixels are never used for boards.
 - **D2 — BOSS first.** T-0a gate fix → T-1 pedal-art + promote-legacy → T-2 BOSS
   wave 3 (boss-4 + legacy repair + boss-5) → T-3 BOSS wave 4 (boss-6/7/8) → BOSS
   complete.
@@ -43,10 +46,13 @@ own task file — no need to re-paste the whole plan.
   The wrapper starts 2; the third starts only on the true-token gate (past midpoint,
   ≤40% soft budget, ≥2 items/h). Same-brand BOSS waves are fine (different files);
   the coordinator serializes shared `curated.ts`/test edits.
-- **D5 — Licensing.** Official images stay `license-pending`; the owner sends the
-  13 brand emails and records responses in `image-licenses.json`. Generated art is
-  `own`. `licensed` only with written permission. Run `pnpm catalog:asset-ledger`
-  after status changes.
+- **D5 — Licensing.** Official/retailer/community/archive images stay
+  `license-pending`; planner last-resort is also `license-pending` and counted as a
+  source gap. The owner sends the 13 brand emails and records responses in
+  `image-licenses.json`. Generated art is `own`. `licensed` only with written
+  permission. **Always record the source in the private raw catalog/ledger**
+  (`imageProvenance` + `sourceUrl`/`referenceUrl`), never on the public page; run
+  `pnpm catalog:asset-ledger` after status changes.
 - **D6 — Boards.** Audit/repair the existing 15 boards (10 placeholders + the 5
   generated) and add new boards to 150, all with our generated flat board art.
   Boards can use the third slot.
@@ -120,8 +126,9 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-0** | This plan (docs-only) | **Merged (PR #52, squash `4a6f1e7`).** Plan + T-0a/T-1 task files; reconcile progress/roadmap/phase-guide/#50/#51 statuses; record token verdict. One PR. | — |
 | **T-0a** | Wave true-token gate | **Merged (PR #53, squash `dee8b39`).** `catalog:wave`/runner gate + report use true billed tokens; stop active batches at hard caps; third-slot gate on the true metric; tests; README. One PR. Code review (high-risk) pass 1 changes-required → pass 2 approve. | T-0 |
 | **T-0b** | Parallel feature + catalog workstreams (docs-only) | **Merged (PR #54, squash `89c6a38`).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; ≤2 PRs awaiting review; feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
-| **T-1** | Pedal flat-art + promote-legacy | **In review (PR #55).** Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Designer proposal → owner approval → ≤2 visual passes → 1 light code review. One PR. | T-0 |
-| **T-2** | BOSS wave 3 | boss-4 (26 new) + boss/legacy-repair (31 existing) + boss-5 (26 new). 2-wide start (boss-4 + repair); boss-5 third on the true gate. Split repair 16+15 only if the first 8 items exceed ~6 min or need a third sheet. Include the 1 BOSS hotlinked seed if it falls in scope; otherwise clear it in T-7. One PR per batch. | T-0a, T-1 |
+| **T-1** | Pedal flat-art + promote-legacy | **Merged (PR #55, squash `66222d4`).** Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Owner-approved "Catalog Specimen"; design-reviewer 2/2; code review 2/2. | T-0 |
+| **T-1a** | Image source policy (planner last-resort + recorded sources) | **In progress.** Reverse the planner ban: official → retailer → community → planner **last-resort** → generated art only if none; 31 BOSS legacy remain repair-set. Always record source in the private raw catalog/ledger; ledger source-gap report. Docs/AGENTS/ADR-003/schema/gate/ledger + 26-record provenance backfill. One PR; token-reviewed. | T-1 |
+| **T-2** | BOSS wave 3 | boss-4 (26 new) + boss/legacy-repair (31 existing) + boss-5 (26 new). 2-wide start (boss-4 + repair); boss-5 third on the true gate. Split repair 16+15 only if the first 8 items exceed ~6 min or need a third sheet. Include the 1 BOSS hotlinked seed if it falls in scope; otherwise clear it in T-7. **Starts only after T-1a merges.** One PR per batch. | T-0a, T-1, T-1a |
 | **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). 3-wide, third on gate. Re-baseline budgets from T-2 before launching. One PR per batch. | T-2 |
 | **T-4** | Cleanup wave 1 | EHX-1 (18 existing + 8 new) + MXR-1 (18 + 8) + Mooer-1 (18 [17 hotlinked + 1 mock] + 8) = 78 items; 54 existing (53 hotlinked + 1 mock). One PR per batch. | T-1 |
 | **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). One PR per batch. | T-1 |
@@ -129,13 +136,13 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-7** | Cleanup wave 4 | Behringer-1 (1 hotlinked + new) + Big Joe-1 (2 mock + new) + Effects Bakery-1 (1 mock + new). Small batches; fill from their own Tier A; never force 26 if the brand has fewer. One PR per batch (or a smaller final batch). | T-1 |
 | **T-8** | Remaining Tier A | Continuous waves of the remaining brands (Catalinbread, Dunlop, Fender, Strymon, Wampler, DigiTech, etc.) to **1,850 pedals**. Measured cost/item go/no-go first; 2-wide default; 3-wide only on the true gate; 26 items (consider 40 after calibration). Token review each new wave. | T-3…T-7 |
 | **T-9** | Boards | Audit/repair the existing 15 boards (10 placeholders) + new board batches to **150**; generated flat board art; third slot. | T-1 (pedal-art not required) |
-| **T-10** | P5-04 final QA / launch | Full validation, provenance, attribution, caps, demo links, licensing; launch gate `hotlinked + mock = 0`. | T-8, T-9 |
+| **T-10** | P5-04 final QA / launch | Full validation, provenance, attribution, caps, demo links, licensing; launch gate `hotlinked + mock = 0`, planner last-resort counted as a source gap (owner may waive it), 31 BOSS legacy repaired. | T-8, T-9 |
 | — | Licensing ops (owner) | Send the 13 brand emails; update `image-licenses.json`; run `pnpm catalog:asset-ledger`; `licensed` only with written permission. No PR unless statuses change docs. | — |
 
 ## Wave order
 
-1. **T-0** (merged) → **T-0a** (merged) → **T-0b** (parallel-workstream rules,
-   armed after the T-2 calibration) → **T-1** (pedal-art + promote-legacy).
+1. **T-0** (merged) → **T-0a** (merged) → **T-0b** (merged) → **T-1** (merged) →
+   **T-1a** (planner last-resort + recorded sources) → **T-2**.
 2. **T-2 BOSS wave 3:** boss-4 + BOSS legacy repair start 2-wide; boss-5 third on the
    gate. The repair is the hard part; split it 16+15 if the first 8 items exceed
    ~6 min or need a third vision sheet.
@@ -155,6 +162,9 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 - ≤2 vision passes/batch; ≤1 light code review (only T-0a/T-1/`curated.ts`;
   data-only batches skip); 4 h active; 12 min/item.
 - Start 2-wide; third only on the true-token gate. Do not raw-launch sessions.
+- **Source gap gate:** planner last-resort and legacy/mock/hotlinked items are
+  counted by `catalog:license-report`; target 0 at T-10, but the owner may waive
+  planner last-resort items (they are recorded + quality-gated).
 - Stop: any 429/401/quota/timeout/empty response (report model + operation + exact
   error; never substitute); wave true tokens at hard cap (pause/stop active); batch
   >2× soft or >4 h; third vision pass needed; generated art fails clean-alpha/aspect/
@@ -182,6 +192,8 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 - All brand first batches replace their hotlinked/mock seeds; ledger
   `hotlinked + mock = 0` at T-10.
 - Tier A: 1,850 pedals + 150 boards; caps respected.
-- No Pedalplayground pixels; generated art is `own`; official images tracked
-  `license-pending` until written permission.
+- Planner only as a recorded last-resort (pedals) above generated art; the 31
+  BOSS legacy repaired; generated art is `own`; official/retailer/community/
+  archive images tracked `license-pending` until written permission; every
+  shipped image has a private `imageProvenance` source record.
 - One PR per task/batch; no merge by agents.

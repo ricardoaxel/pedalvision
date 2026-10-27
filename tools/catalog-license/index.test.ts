@@ -33,6 +33,68 @@ describe("image license ledger", () => {
 		expect(row.sourceKind).toBe("official");
 	});
 
+	it("records the private source URL and does not flag an official image", () => {
+		const row = classifyItem(
+			pedal("a"),
+			"pedal",
+			{
+				id: "a",
+				imageProvenance: {
+					kind: "official",
+					sourceUrl: "https://static.roland.com/a.jpg",
+					status: "chosen",
+				},
+			},
+			brands,
+		);
+		expect(row.sourceKind).toBe("official");
+		expect(row.sourceUrl).toBe("https://static.roland.com/a.jpg");
+		expect(row.improve).toBe(false);
+	});
+
+	it("classifies retailer/community/archive sources", () => {
+		for (const kind of ["retailer", "community", "archive"] as const) {
+			const row = classifyItem(
+				pedal(kind),
+				"pedal",
+				{
+					id: kind,
+					imageProvenance: {
+						kind,
+						sourceUrl: "https://example.com/x.jpg",
+						status: "chosen",
+					},
+				},
+				brands,
+			);
+			expect(row.sourceKind).toBe(kind);
+			expect(row.licenseStatus).toBe("license-pending");
+			expect(row.improve).toBe(false);
+		}
+	});
+
+	it("classifies planner last-resort as a recorded source gap", () => {
+		const row = classifyItem(
+			pedal("p"),
+			"pedal",
+			{
+				id: "p",
+				imageProvenance: {
+					kind: "planner",
+					sourceUrl: "https://www.pedalplayground.com/x.png",
+					status: "last-resort",
+				},
+			},
+			brands,
+		);
+		expect(row.sourceKind).toBe("planner");
+		expect(row.licenseStatus).toBe("license-pending");
+		expect(row.improve).toBe(true);
+		expect(row.replacementTarget).toMatch(/better source/);
+		expect(row.sourceUrl).toBe("https://www.pedalplayground.com/x.png");
+		expect(row.gapReason).toBe("planner");
+	});
+
 	it("classifies a legacy provenance as replacement-needed", () => {
 		const raw = new Map<string, RawRecord>([
 			[
@@ -61,6 +123,30 @@ describe("image license ledger", () => {
 		]);
 		const row = classifyItem(pedal("c"), "pedal", raw.get("c"), brands);
 		expect(row.licenseStatus).toBe("replacement-needed");
+	});
+
+	it("flags hotlinked and mock images as improve, and records hotlink URLs", () => {
+		const hot = classifyItem(
+			pedal("h", {
+				imageSource: "url",
+				source: "placeholder",
+				image: "https://example.com/h.jpg",
+			}),
+			"pedal",
+			undefined,
+			brands,
+		);
+		expect(hot.improve).toBe(true);
+		expect(hot.gapReason).toBe("hotlinked");
+		expect(hot.sourceUrl).toBe("https://example.com/h.jpg");
+		const mock = classifyItem(
+			pedal("m", { imageSource: "mock", source: "placeholder" }),
+			"pedal",
+			undefined,
+			brands,
+		);
+		expect(mock.improve).toBe(true);
+		expect(mock.gapReason).toBe("mock");
 	});
 
 	it("classifies hotlinked official images and mock art", () => {
@@ -169,5 +255,8 @@ describe("image license ledger", () => {
 		expect(ledger.summary.byStatus["license-pending"]).toBe(2);
 		expect(ledger.summary.byStatus["replacement-needed"]).toBe(1);
 		expect(ledger.summary.byStatus.own).toBe(1);
+		expect(ledger.summary.needsImprovement).toBe(3);
+		expect(ledger.summary.byGapReason.legacy).toBe(1);
+		expect(ledger.summary.byGapReason["missing-source"]).toBe(2);
 	});
 });

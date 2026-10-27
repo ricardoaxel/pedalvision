@@ -3,12 +3,19 @@
     "id": "jhs-3-series-screamer",
     "brand": "JHS",
     "name": "3 Series Screamer",
-    "aliases": ["Screamer", "3-Series Screamer"],
+    "aliases": [
+      "Screamer",
+      "3-Series Screamer"
+    ],
     "category": "pedal",
     "deviceType": "stompbox",
     "formFactor": "compact",
-    "instrumentTypes": ["guitar"],
-    "effectTypes": ["overdrive"],
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
     "widthCm": 6.05,
     "heightCm": 11.23,
     "imageFormat": "avif",
@@ -111,7 +118,11 @@
     "status": "current",
     "notes": "JHS 3 Series Screamer — Tube Screamer-style overdrive with the JHS Strong Mod; Volume, Tone and Drive controls plus a +/- clipping toggle; true bypass; 9V DC, 12 mA.",
     "extra": {
-      "controls": ["Volume", "Tone", "Drive"],
+      "controls": [
+        "Volume",
+        "Tone",
+        "Drive"
+      ],
       "toggle": "+/- clipping: up = asymmetrical (JHS Strong Mod), down = symmetrical (TS9/TS808 style)",
       "bypass": "True bypass",
       "circuit": "Analog Tube Screamer-style with JHS Strong Mod",
@@ -135,19 +146,28 @@
     "sources": [
       {
         "url": "https://jhspedals.info/products/3-series-screamer",
-        "kind": ["info", "image"]
+        "kind": [
+          "info",
+          "image"
+        ]
       },
       {
         "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_SCREAMER_Manual_EN.pdf",
-        "kind": ["info"]
+        "kind": [
+          "info"
+        ]
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Screamer-Front.png?v=1698427823",
-        "kind": ["image"]
+        "kind": [
+          "image"
+        ]
       },
       {
         "url": "https://www.thomannmusic.com/jhs_pedals_3_series_screamer_overdrive.htm",
-        "kind": ["info"]
+        "kind": [
+          "info"
+        ]
       }
     ],
     "imageCandidates": [
@@ -170,6 +190,12 @@
       "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_SCREAMER_Manual_EN.pdf",
       "confidence": "verified",
       "note": "Official manual and top-down image: INPUT on the right side, OUTPUT on the left side, POWER on the top edge."
+    },
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-screamer",
+      "status": "chosen",
+      "note": "Backfilled from the recorded image source (2026-10-27 source policy)."
     }
   }
 ]

@@ -14,7 +14,14 @@
     },
     "bySourceKind": {
       "own": 89,
-      "official": 165,
+      "official": 161,
+      "legacy": 31,
+      "archive": 4
+    },
+    "needsImprovement": 207,
+    "byGapReason": {
+      "mock": 84,
+      "hotlinked": 92,
       "legacy": 31
     }
   },
@@ -28,9 +35,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Aclam batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -42,9 +53,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Blackbird batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -56,9 +71,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "BoardMods batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -70,9 +89,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "BOSS batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -84,9 +107,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Caseman batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -98,9 +125,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Creation Music Co batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -112,9 +143,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "D’Addario batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -126,9 +161,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Donner batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -140,9 +179,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Emerson Custom batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -154,9 +197,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Fame batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -168,9 +215,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": null,
+      "improve": false,
+      "gapReason": null,
       "note": "generated flat art; references only (no reference pixels)"
     },
     {
@@ -182,9 +233,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": null,
+      "improve": false,
+      "gapReason": null,
       "note": "generated flat art; references only (no reference pixels)"
     },
     {
@@ -196,9 +251,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": null,
+      "improve": false,
+      "gapReason": null,
       "note": "generated flat art; references only (no reference pixels)"
     },
     {
@@ -210,9 +269,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": null,
+      "improve": false,
+      "gapReason": null,
       "note": "generated flat art; references only (no reference pixels)"
     },
     {
@@ -224,9 +287,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": null,
+      "improve": false,
+      "gapReason": null,
       "note": "generated flat art; references only (no reference pixels)"
     },
     {
@@ -238,9 +305,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/de5db7f7796c447e841aa1c6b0b2ea59/Image_BE_0609-AAE_P1_Front_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Behringer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -252,9 +323,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Big Joe batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -266,9 +341,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Big Joe batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -280,9 +359,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -294,10 +377,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ac_3_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ad-2-acoustic-preamp",
@@ -308,10 +395,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ad-2_F_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-aw-3-dynamic-wah",
@@ -322,10 +413,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/aw-3_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bb-1x-bass-driver",
@@ -336,10 +431,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bb-1x_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bc-1x-bass-compressor",
@@ -350,10 +449,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bc_1x_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bc-2-combo-drive",
@@ -364,10 +467,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bc-2_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bd-2-blues-driver",
@@ -378,10 +485,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bd-2_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bd-2w-blues-driver-waza-craft",
@@ -392,10 +503,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bd-2w_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bf-2-flanger",
@@ -406,10 +521,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bf_2_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bf-2b-bass-flanger",
@@ -420,9 +539,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -434,10 +557,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bf_3_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-bp-1w-booster-preamp-waza-craft",
@@ -448,10 +575,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/bp-1w_gal_01.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ce-1-chorus-ensemble",
@@ -462,9 +593,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -476,9 +611,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -490,10 +629,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ce_20_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ce-2b-bass-chorus",
@@ -504,9 +647,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -518,10 +665,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/CE-2W_F_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ce-3-chorus",
@@ -532,9 +683,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -546,10 +701,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ce_5_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ceb-3-bass-chorus",
@@ -560,10 +719,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ceb_3_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ch-1-super-chorus",
@@ -574,10 +737,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ch_1_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-cp-1x-compressor",
@@ -588,10 +755,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/cp-1x_F_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-cs-2-compression-sustainer",
@@ -602,9 +773,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -616,10 +791,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/cs_3_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-da-2-adaptive-distortion",
@@ -630,10 +809,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/da-2_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dc-2-dimension-c",
@@ -644,9 +827,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -658,10 +845,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dc-2w_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dc-3-digital-dimension",
@@ -672,9 +863,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -686,9 +881,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -700,10 +899,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd20_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dd-200-digital-delay",
@@ -714,10 +917,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd-200_main_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dd-3-digital-delay",
@@ -728,10 +935,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd3_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dd-3t-digital-delay",
@@ -742,10 +953,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd-3t_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dd-5-digital-delay",
@@ -756,9 +971,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -770,10 +989,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd_500_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dd-6-digital-delay",
@@ -784,10 +1007,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd6_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dd-7-digital-delay",
@@ -798,10 +1025,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd_7_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dd-8-digital-delay",
@@ -812,10 +1043,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dd-8_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-df-2-super-feedbacker-distortion",
@@ -826,9 +1061,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -840,10 +1079,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dm-101_gal_01.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dm-2-delay",
@@ -854,9 +1097,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -868,10 +1115,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dm-2w_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dm-3-delay",
@@ -882,9 +1133,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -896,10 +1151,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/dn_2_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ds-1-4a-anniversary-distortion",
@@ -910,9 +1169,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -924,10 +1187,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ds1_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ds-1-wh-distortion",
@@ -938,9 +1205,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -952,10 +1223,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ds-1w_01_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ds-1x-distortion",
@@ -966,10 +1241,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ds-1x_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ds-2-turbo-distortion",
@@ -980,10 +1259,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ds2_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-dsd-2-digital-sampler-delay",
@@ -994,9 +1277,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1008,9 +1295,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1022,9 +1313,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1036,10 +1331,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/eq20_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-eq-200-graphic-equalizer",
@@ -1050,10 +1349,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/eq-200_main_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-es-5-effects-switching-system",
@@ -1064,9 +1367,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1078,9 +1385,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1092,9 +1403,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1106,9 +1421,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1120,9 +1439,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1134,10 +1457,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fb-2_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-fbm-1-59-fender-bassman",
@@ -1148,10 +1475,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fbm_1_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-fdr-1-fender-65-deluxe-reverb",
@@ -1162,10 +1493,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fdr_1_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-frv-1-63-fender-reverb",
@@ -1176,10 +1511,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/frv-1_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-fs-1-wl-wireless-footswitch",
@@ -1190,10 +1529,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fs-1-wl_01_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-fs-5l-foot-switch",
@@ -1204,9 +1547,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1218,9 +1565,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1232,10 +1583,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fs_6_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-fs-7-dual-foot-switch",
@@ -1246,10 +1601,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fs-7_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-ft-2-dynamic-filter",
@@ -1260,9 +1619,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1274,9 +1637,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1288,10 +1655,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fv-30h_fv-30l_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-fv-500-volume-pedal",
@@ -1302,9 +1673,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1316,10 +1691,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fz-1w_main_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-fz-2-hyper-fuzz",
@@ -1330,9 +1709,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1344,9 +1727,13 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "legacy",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "replacement-needed",
       "licenseRef": null,
       "replacementTarget": "BOSS remaining batches (boss-4..boss-8)",
+      "improve": true,
+      "gapReason": "legacy",
       "note": "legacy asset; source not recorded; replacement pending"
     },
     {
@@ -1358,10 +1745,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/fz_5_top_gal.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "boss-psm-5-power-supply-master-switch",
@@ -1372,9 +1763,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/psm_product05.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "BOSS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1386,9 +1781,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1400,9 +1799,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1414,9 +1817,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1428,9 +1835,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1442,9 +1853,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1456,9 +1871,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1470,9 +1889,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1484,9 +1907,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1498,9 +1925,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1512,9 +1943,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1526,9 +1961,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1540,9 +1979,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1554,9 +1997,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1568,9 +2015,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1582,9 +2033,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1596,9 +2051,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1610,9 +2069,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1624,9 +2087,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "EarthQuaker batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1638,9 +2105,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Effects Bakery batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1652,9 +2123,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/echo1-v.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1666,9 +2141,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1680,9 +2159,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2021/03/15w-howitzer-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1694,9 +2177,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1708,9 +2195,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2024/12/20202.jpeg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1722,9 +2213,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1736,9 +2231,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1750,9 +2249,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1764,9 +2267,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1778,9 +2285,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1792,9 +2303,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1806,9 +2321,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/95000-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1820,9 +2339,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1834,9 +2357,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1848,9 +2375,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1862,9 +2393,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1876,9 +2411,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bassbm-v-1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1890,9 +2429,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2026/02/bbm2-0-2.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Electro-Harmonix batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1904,9 +2447,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1918,9 +2465,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1932,9 +2483,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1946,9 +2501,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -1960,9 +2519,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-BitCrusher-Front.png?v=1779893287",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1974,9 +2537,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Chorus-front.png?v=1698427083",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -1988,9 +2555,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Compressor-front.png?v=1698427156",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2002,9 +2573,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Delay-front.png?v=1698427313",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2016,9 +2591,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Distortion-front.png?v=1698427388",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2030,9 +2609,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Serires-Flanger-Front.png?v=1698426709",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2044,9 +2627,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-Fuzz-front.png?v=1698427447",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2058,9 +2645,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Series-GlitchDelay-Front.png?v=1779893315",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2072,9 +2663,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3-Serires-HallReverb-Front.png?v=1698426814",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2086,9 +2681,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3Series-Harmonic-Trem-Front.png?v=1698426927",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2100,9 +2699,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3Series-Octave-Reverb-Front.png?v=1698427649",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2114,9 +2717,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/cdn/shop/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2128,9 +2735,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2142,9 +2753,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "JHS batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2156,10 +2771,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-screamer",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "joyo-d-seed",
@@ -2170,9 +2789,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2184,9 +2807,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2198,9 +2825,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2212,9 +2843,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2226,9 +2861,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2240,9 +2879,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2254,9 +2897,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2268,9 +2915,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2282,9 +2933,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2296,9 +2951,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2310,9 +2969,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2324,9 +2987,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2338,9 +3005,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2352,9 +3023,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://img201.yun300.cn/repository/image/u-H6X1dpRhK2rZrkNuxqow.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2366,9 +3041,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://img201.yun300.cn/repository/image/X1MU4TU3QLeJjEQLZoJpBg.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2380,9 +3059,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://img201.yun300.cn/repository/image/uxeWh1TiRoSZKPRpjFbUiQ.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2394,9 +3077,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://img201.yun300.cn/repository/image/UG_TqZDpSrOFutgI_UKb7A.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2408,9 +3095,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://img201.yun300.cn/repository/image/yn_dN5mKT4GKFIGhcm-JGw.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Joyo batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2422,9 +3113,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2436,9 +3131,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2450,9 +3149,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2464,9 +3167,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2478,9 +3185,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2492,9 +3203,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2506,9 +3221,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2520,9 +3239,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2534,9 +3257,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2548,9 +3275,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2562,9 +3293,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2576,9 +3311,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2590,9 +3329,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2604,9 +3347,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2618,9 +3365,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2632,9 +3383,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2646,9 +3401,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2660,9 +3419,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Keeley batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -2674,10 +3437,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/enzo/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-enzo-x",
@@ -2688,10 +3455,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/enzo-x/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-hedra",
@@ -2702,10 +3473,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/hedra-pedal/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-lvx",
@@ -2716,10 +3491,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/lvx/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-mercury7",
@@ -2730,10 +3509,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/mercury7-reverb-2/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-mercuryx",
@@ -2744,10 +3527,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/mercuryx/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-midi-i-o",
@@ -2758,10 +3545,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/midi-i-o/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-ottobit-jr",
@@ -2772,10 +3563,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/ottobit-jr/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-ottobit-x",
@@ -2786,10 +3581,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/ottobitx/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "meris-polymoon",
@@ -2800,10 +3599,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://meris.us/product/polymoon-pedal/",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "mooer-001-gas-station",
@@ -2814,9 +3617,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2828,9 +3635,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2842,9 +3653,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2856,9 +3671,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2870,9 +3689,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2884,9 +3707,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2898,9 +3725,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2912,9 +3743,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2926,9 +3761,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2940,9 +3779,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2954,9 +3797,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2968,9 +3815,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2982,9 +3833,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -2996,9 +3851,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3010,9 +3869,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3024,9 +3887,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3038,9 +3905,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3052,9 +3923,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Mooer batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3066,9 +3941,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/680/images/6691/13196000001.MAIN__61231.1663874799.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3080,9 +3959,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/629/images/6423/11234000001.MAIN__89220.1663874795.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3094,9 +3977,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/572/images/6097/11083000001.MAIN__53416.1663874792.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3108,9 +3995,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/575/images/10108/M87.MAIN__61433.1676394506.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3122,9 +4013,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/610/images/6317/11180000001.MAIN__98491.1663874794.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3136,9 +4031,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/574/images/6109/11085000001.MAIN__35105.1663874792.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3150,9 +4049,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/571/images/10098/M82.MAIN__91817.1676394282.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3164,9 +4067,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/573/images/6103/11084000001.MAIN__93896.1663874792.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3178,9 +4085,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/642/images/6499/11288000001.MAIN__08504.1663874796.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3192,9 +4103,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/576/images/6121/11089000001.MAIN__87674.1663874792.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3206,9 +4121,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/570/images/6085/11081000001.MAIN__33843.1663874792.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3220,9 +4139,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2325/images/11620/M301.MAIN__82591.1746129775.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3234,9 +4157,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/592/images/6211/11103000001.MAIN__02046.1663874793.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3248,9 +4175,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/646/images/6521/11293000001.MAIN__23166.1663874797.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3262,9 +4193,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/651/images/6550/11401000001.MAIN__73157.1663874797.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3276,9 +4211,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/652/images/6556/11402000001.MAIN__49202.1663874797.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3290,9 +4229,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/655/images/6574/11406000001.MAIN__77746.1663874797.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3304,9 +4247,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2112/images/10778/MC403.MAIN__04016.1702502300.386.513.jpg?c=2",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "MXR batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3317,11 +4264,15 @@
       "asset": "red-panda-bitmap.avif",
       "imageSource": "static",
       "imageHosting": "static",
-      "sourceKind": "official",
+      "sourceKind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20161013161002/http://www.redpandalab.com/products/bitmap",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "archive image; source recorded"
     },
     {
       "id": "red-panda-bitmap-2",
@@ -3332,10 +4283,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/bitmap",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-buffer",
@@ -3346,10 +4301,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/buffer.html",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-context",
@@ -3359,11 +4318,15 @@
       "asset": "red-panda-context.avif",
       "imageSource": "static",
       "imageHosting": "static",
-      "sourceKind": "official",
+      "sourceKind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20181203191321/http://www.redpandalab.com/products/context",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "archive image; source recorded"
     },
     {
       "id": "red-panda-context-2",
@@ -3374,10 +4337,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/context",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-mixer",
@@ -3388,10 +4355,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/mixer.html",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-particle",
@@ -3401,11 +4372,15 @@
       "asset": "red-panda-particle.avif",
       "imageSource": "static",
       "imageHosting": "static",
-      "sourceKind": "official",
+      "sourceKind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20171201193034/http://www.redpandalab.com/products/particle",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "archive image; source recorded"
     },
     {
       "id": "red-panda-particle-v2",
@@ -3416,10 +4391,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/particle",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-radius",
@@ -3430,10 +4409,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/radius",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-raster",
@@ -3443,11 +4426,15 @@
       "asset": "red-panda-raster.avif",
       "imageSource": "static",
       "imageHosting": "static",
-      "sourceKind": "official",
+      "sourceKind": "archive",
+      "sourceUrl": "https://web.archive.org/web/20201028205309/http://www.redpandalab.com/products/raster",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "archive image; source recorded"
     },
     {
       "id": "red-panda-raster-2",
@@ -3458,10 +4445,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/raster",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-rd-1-pitch-delay",
@@ -3472,10 +4463,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/rd-1-pitch-delay",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-remote-4",
@@ -3486,10 +4481,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/remote-4.html",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "red-panda-tensor",
@@ -3500,10 +4499,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.redpandalab.com/products/tensor",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "tc-electronic-2290-p-dynamic-digital-delay",
@@ -3514,9 +4517,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/107b2da708d14304a35dfe02361e8dc3/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Mailchimp_2023-10-20_Rev.0.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3528,9 +4535,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/2b92db787a0a4ccc81317060876e3622/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3542,9 +4553,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/b77c59931cff470c9bac4cfd11732047/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3556,9 +4571,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3570,9 +4589,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3584,9 +4607,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/53481ac78b9b4dd9ba5455449121a80b/Image_TE_0709-AJX_V550-PREAMP_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3598,9 +4625,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/930cad4f3eda4d67a69894c125b98c44/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Catalog_B.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3612,9 +4643,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/605cb69ebae6447894f633b54c9796b7/Image_TE_0709-AJR_DC30-PREAMP_Catalog_B.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3626,9 +4661,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/e6103ee8e62548ec8420f3a73d3236d6/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Catalog_B.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3640,9 +4679,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/7fb3bdfd0af542e1ba80baa36f012e4f/Image_TE_0709-AJM_JIMS-45-PREAMP_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3654,9 +4697,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/b71b271dc6b4472fb069cae0777c7c0c/Image_TE_0709-AJV_JIMS-800-PREAMP_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3668,9 +4715,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3682,9 +4733,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/33ff48a85ebf4aa5b7e1c19572ea2c8f/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3696,9 +4751,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/7fed2fbde7e8427681e564c49b7c618e/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3710,9 +4769,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/6bf34328b06747de8e10277649dbc5ca/Image_TE_0709-AHC_BONAFIDE-BUFFER_Catalog%20B.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3724,9 +4787,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn-media.empowertribe.com/9cb5114af4cf4089a3b7db746d30877a/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Left_XL.png",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3738,9 +4805,13 @@
       "imageSource": "static",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "TC Electronic batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3752,10 +4823,14 @@
       "imageSource": "static",
       "imageHosting": "static",
       "sourceKind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHZ",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": null,
-      "note": "self-hosted official/authorized image"
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "walrus-audio-385",
@@ -3766,9 +4841,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3780,9 +4859,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/front_7c1776bd-7969-47b7-81e1-c0c13a6ea7b0.jpg?v=1748875993",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3794,9 +4877,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3808,9 +4895,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3822,9 +4913,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3836,9 +4931,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-front_600.jpg?v=1755865561",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3850,9 +4949,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3864,9 +4967,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3878,9 +4985,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Arp87_500x5002_c1dea1bc-8f92-4683-8b00-4d5ac08b5dc9.jpg?v=1757697333",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3892,9 +5003,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3906,9 +5021,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3920,9 +5039,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3934,9 +5057,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3948,9 +5075,13 @@
       "imageSource": "mock",
       "imageHosting": "mock",
       "sourceKind": "own",
+      "sourceUrl": null,
+      "referenceUrl": null,
       "licenseStatus": "own",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "mock",
       "note": "mock art; no real product image yet"
     },
     {
@@ -3962,9 +5093,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Badwater-front.jpg?v=1748977127",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3976,9 +5111,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/products/Bellwether_Front.jpg?v=1748874975",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -3990,9 +5129,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Clock-Front_c5a01252-50c3-45d5-ae14-1e50e79f7dfb.jpg?v=1749761660",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     },
     {
@@ -4004,9 +5147,13 @@
       "imageSource": "url",
       "imageHosting": "hotlinked",
       "sourceKind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Mono-front-left-updated_8d2f43bf-e0be-46cd-bc98-ad5bc96ad3a9.jpg?v=1748956498",
+      "referenceUrl": null,
       "licenseStatus": "license-pending",
       "licenseRef": null,
       "replacementTarget": "Walrus Audio batch",
+      "improve": true,
+      "gapReason": "hotlinked",
       "note": "hotlinked legacy seed; replace with self-hosted in the brand batch"
     }
   ]

@@ -7,13 +7,14 @@ import {
 } from "../../src/catalog/rawSchema.ts";
 
 /**
- * Image-provenance gate (P5, owner decision 2026-10-26).
+ * Image-provenance gate (P5; owner decision 2026-10-27).
  *
- * Planner/Pedalplayground pixels are never shipped. A raw record that still
- * references planner art must carry `imageProvenance.kind: "planner"` plus a
- * deliberate status: `pending-replacement` (a known, temporary gap) or
- * `owner-approved-edge-case`. Anything else is a hard error, so a future batch
- * cannot quietly fall back to planner art.
+ * Every shipped image records its source in the private raw catalog. Planner is
+ * allowed only as an explicit `last-resort` source above generated art, with a
+ * recorded sourceUrl; the ledger counts it as a source gap. Legacy remains
+ * `pending-replacement` until repaired. Official/retailer/community/archive
+ * images require a recorded sourceUrl; own art requires a note. Anything else
+ * is a hard error, so a future batch cannot quietly ship an unrecorded image.
  */
 
 export type ImageProvenanceIssue = {
@@ -30,6 +31,7 @@ type ProvenanceRecord = {
 		kind?: string;
 		status?: string;
 		sourceUrl?: string;
+		referenceUrl?: string;
 		note?: string;
 	};
 };
@@ -64,62 +66,109 @@ export function checkImageProvenance(
 		];
 		const plannerUrls = [...new Set(urls.filter(isPlannerUrl))];
 		const provenance = record.imageProvenance;
-		if (plannerUrls.length === 0) {
-			if (provenance?.kind === "planner") {
-				warnings.push({
-					file,
-					id: record.id,
-					message:
-						"imageProvenance.kind=planner but no planner URL is referenced; update the provenance",
-				});
-			} else if (provenance?.kind === "legacy") {
-				if (provenance.status === "pending-replacement") {
-					warnings.push({
-						file,
-						id: record.id,
-						message: "legacy asset is pending replacement (no recorded source)",
-					});
-				} else if (provenance.status !== "owner-approved-edge-case") {
-					issues.push({
-						file,
-						id: record.id,
-						message: "legacy asset must be pending-replacement or replaced",
-					});
-				}
-			}
-			continue;
-		}
+		const kind = provenance?.kind;
+		const status = provenance?.status;
+
 		if (!provenance) {
 			issues.push({
 				file,
 				id: record.id,
 				message:
-					"planner image URL without imageProvenance; declare kind=planner + a status (pending-replacement or owner-approved-edge-case)",
+					"missing imageProvenance; record the image source (kind + sourceUrl, or an own-art note) in the private raw catalog",
 			});
 			continue;
 		}
-		if (provenance.kind !== "planner") {
-			issues.push({
-				file,
-				id: record.id,
-				message: `planner image URL but imageProvenance.kind=${provenance.kind ?? "missing"}`,
-			});
+
+		if (kind === "own") {
+			// Generated/mock art is ours; the reference is metadata and is never
+			// treated as the shipped image source.
+			if (!provenance.note) {
+				issues.push({
+					file,
+					id: record.id,
+					message:
+						"own/generated image must record a note (generator + reference)",
+				});
+			}
 			continue;
 		}
-		if (provenance.status === "owner-approved-edge-case") continue;
-		if (provenance.status === "pending-replacement") {
-			warnings.push({
-				file,
-				id: record.id,
-				message:
-					"planner image is pending replacement (no usable official/authorized/user top-down yet)",
-			});
+
+		if (kind === "legacy") {
+			if (status === "pending-replacement") {
+				warnings.push({
+					file,
+					id: record.id,
+					message: "legacy asset is pending replacement (no recorded source)",
+				});
+			} else if (status !== "owner-approved-edge-case") {
+				issues.push({
+					file,
+					id: record.id,
+					message: "legacy asset must be pending-replacement or replaced",
+				});
+			}
 			continue;
 		}
+
+		if (kind === "planner") {
+			if (status === "pending-replacement") {
+				warnings.push({
+					file,
+					id: record.id,
+					message:
+						"planner image is pending replacement (better source not found yet)",
+				});
+				continue;
+			}
+			if (status === "owner-approved-edge-case") continue;
+			if (status !== "last-resort") {
+				issues.push({
+					file,
+					id: record.id,
+					message: `planner image must be status=last-resort (got ${status ?? "missing"}); improve the source or mark it pending-replacement`,
+				});
+				continue;
+			}
+			if (!provenance.sourceUrl) {
+				issues.push({
+					file,
+					id: record.id,
+					message:
+						"planner last-resort image must record imageProvenance.sourceUrl",
+				});
+			}
+			// Accepted last-resort: silent here; the ledger counts it as a source
+			// gap (`sourceKind: planner`, `improve: true`).
+			continue;
+		}
+
+		if (
+			kind === "official" ||
+			kind === "retailer" ||
+			kind === "community" ||
+			kind === "archive"
+		) {
+			if (!provenance.sourceUrl) {
+				issues.push({
+					file,
+					id: record.id,
+					message: `${kind} image must record imageProvenance.sourceUrl in the private raw catalog`,
+				});
+			}
+			if (plannerUrls.length > 0) {
+				issues.push({
+					file,
+					id: record.id,
+					message: `planner image URL but imageProvenance.kind=${kind}`,
+				});
+			}
+			continue;
+		}
+
 		issues.push({
 			file,
 			id: record.id,
-			message: `planner image is not an approved edge case (status=${provenance.status ?? "missing"}); replace it or mark it pending-replacement`,
+			message: `unknown imageProvenance.kind ${kind ?? "missing"}`,
 		});
 	}
 	return { issues, warnings };

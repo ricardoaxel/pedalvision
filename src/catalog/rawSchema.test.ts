@@ -60,6 +60,26 @@ describe("raw research archive schema", () => {
 			imageProvenance: { kind: "planner", status: "pending-replacement" },
 		});
 		expect(pending.success).toBe(true);
+		const lastResort = RawPedalRecordSchema.safeParse({
+			...h90,
+			imageProvenance: {
+				kind: "planner",
+				sourceUrl: "https://www.pedalplayground.com/x.png",
+				status: "last-resort",
+				note: "last-resort shipped source",
+			},
+		});
+		expect(lastResort.success).toBe(true);
+		const ownReference = RawPedalRecordSchema.safeParse({
+			...h90,
+			imageProvenance: {
+				kind: "own",
+				status: "chosen",
+				referenceUrl: "https://www.boss.info/us/products/ds-1/",
+				note: "generated from the official reference",
+			},
+		});
+		expect(ownReference.success).toBe(true);
 		const bad = RawPedalRecordSchema.safeParse({
 			...h90,
 			imageProvenance: { kind: "unknown-source" },

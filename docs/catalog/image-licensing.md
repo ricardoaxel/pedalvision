@@ -10,9 +10,15 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 - **own** — our generated flat art / mock art (no third-party image licence needed).
 - **licensed** — written permission recorded (`licenseRef`).
-- **license-pending** — official/authorized image in use while permission is requested.
-- **replacement-needed** — legacy asset with no recorded source; replace with a permitted/generated image.
+- **license-pending** — official/retailer/community/archive or planner **last-resort** image in use while permission is requested.
+- **replacement-needed** — legacy asset, or planner pending a better source; replace it.
 - **none** — no image asset yet.
+
+Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
+
+Sources: archive 4 · legacy 31 · official 161 · own 89
+
+Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
@@ -27,7 +33,7 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 | Mooer | not-requested | 17 | 0 | 1 | [contact](https://www.mooeraudio.com/CONTACT.html) | support@mooeraudio.com | — |
 | MXR | not-requested | 18 | 0 | 0 | [contact](https://www.jimdunlop.com/contact-us/) | — | — |
 | Pedaltrain | not-requested | 0 | 0 | 4 | [contact](https://help.pedaltrain.com/hc/en-us/requests/new) | help@pedaltrain.com | — |
-| Red Panda | not-requested | 14 | 0 | 0 | [contact](https://www.redpandalab.com/contact) | — | — |
+| Red Panda | not-requested | 10 | 0 | 0 | [contact](https://www.redpandalab.com/contact) | — | — |
 | TC Electronic | not-requested | 14 | 0 | 4 | [contact](https://www.tcelectronic.com/support) | — | — |
 | Temple Audio | not-requested | 0 | 0 | 1 | [contact](https://www.templeaudio.com/contact) | — | — |
 | Walrus Audio | not-requested | 7 | 0 | 11 | [contact](https://www.walrusaudio.com/pages/contact) | — | — |
