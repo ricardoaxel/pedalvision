@@ -201,6 +201,77 @@ async function fullBleedBrightCutout(): Promise<Buffer> {
 		.toBuffer();
 }
 
+/** A bright pedal on a bright card with a caption: frameCard is false, but the
+ * caption band + spatial card signals must flag it. */
+async function brightPedalCaptionCard(): Promise<Buffer> {
+	const width = 730;
+	const height = 1290;
+	const data = Buffer.alloc(width * height * 4);
+	for (let y = 20; y < 1270; y++) {
+		for (let x = 20; x < 710; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 238;
+			data[i + 1] = 238;
+			data[i + 2] = 238;
+			data[i + 3] = 255;
+		}
+	}
+	for (let y = 100; y < 1150; y++) {
+		for (let x = 80; x < 650; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 215;
+			data[i + 1] = 210;
+			data[i + 2] = 184;
+			data[i + 3] = 255;
+		}
+	}
+	for (let g = 0; g < 10; g++) {
+		for (let y = 1190; y < 1220; y++) {
+			for (let x = 150 + g * 35; x < 165 + g * 35; x++) {
+				const i = (y * width + x) * 4;
+				data[i] = 20;
+				data[i + 1] = 20;
+				data[i + 2] = 20;
+				data[i + 3] = 255;
+			}
+		}
+	}
+	return sharp(data, { raw: { width, height, channels: 4 } })
+		.png()
+		.toBuffer();
+}
+
+/** A bright silver pedal body with printed text: a caption-like band on the
+ * product itself must NOT be mistaken for a card. */
+async function printedLogoBrightPedal(): Promise<Buffer> {
+	const width = 730;
+	const height = 1290;
+	const data = Buffer.alloc(width * height * 4);
+	for (let y = 0; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 216;
+			data[i + 1] = 215;
+			data[i + 2] = 218;
+			data[i + 3] = 255;
+		}
+	}
+	for (let g = 0; g < 8; g++) {
+		for (let y = 1000; y < 1030; y++) {
+			for (let x = 200 + g * 25; x < 215 + g * 25; x++) {
+				const i = (y * width + x) * 4;
+				data[i] = 20;
+				data[i + 1] = 20;
+				data[i + 2] = 20;
+				data[i + 3] = 255;
+			}
+		}
+	}
+	return sharp(data, { raw: { width, height, channels: 4 } })
+		.png()
+		.toBuffer();
+}
+
 /** A transparent cutout with a bright cream body (planner-style tight crop):
  * the product touches the top/bottom, the margins stay transparent. */
 async function brightCutout(): Promise<Buffer> {
@@ -439,6 +510,24 @@ describe("image analyzer", () => {
 		expect(result.backgroundCard?.suspected).toBe(false);
 	});
 
+	it("flags a bright pedal with a caption band", async () => {
+		const result = await analyzeImage(await brightPedalCaptionCard(), {
+			kind: "pedal",
+			...footprint,
+		});
+		expect(result.backgroundCard?.captionBand).toBe(true);
+		expect(result.backgroundCard?.suspected).toBe(true);
+	});
+
+	it("does not flag printed text on a bright pedal body", async () => {
+		const result = await analyzeImage(await printedLogoBrightPedal(), {
+			kind: "pedal",
+			...footprint,
+		});
+		expect(result.backgroundCard?.captionBand).toBe(false);
+		expect(result.backgroundCard?.suspected).toBe(false);
+	});
+
 	it("does not apply the photo card flag to planner/generated cutouts", async () => {
 		const result = await analyzeImage(await cardImage(), {
 			kind: "pedal",
@@ -446,6 +535,12 @@ describe("image analyzer", () => {
 			sourceKind: "planner",
 		});
 		expect(result.backgroundCard).toBeNull();
+		const generated = await analyzeImage(await cardImage(), {
+			kind: "pedal",
+			...footprint,
+			sourceKind: "generated",
+		});
+		expect(generated.backgroundCard).toBeNull();
 	});
 
 	it("flags a product card/caption instead of passing it", async () => {

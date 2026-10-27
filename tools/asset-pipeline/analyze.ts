@@ -35,6 +35,7 @@ export type AnalyzeOptions = {
 export type AnalyzeResult = {
 	version: 1;
 	kind: AnalyzeKind;
+	sourceKind: "photo" | "planner" | "generated";
 	footprintCm: { width: number; height: number };
 	image: { width: number; height: number; longEdge: number; hasAlpha: boolean };
 	alpha: { transparentRatio: number };
@@ -69,6 +70,9 @@ export type AnalyzeResult = {
 		interiorSat: number;
 		captionBand: boolean;
 		bandNonCardRatio: number;
+		frameArea: number;
+		nonFrameArea: number;
+		largestNonFrame: number;
 		suspected: boolean;
 	} | null;
 	verdict: "accept" | "flag" | "reject";
@@ -485,6 +489,7 @@ export async function analyzeImage(
 		return {
 			version: 1,
 			kind: options.kind,
+			sourceKind: options.sourceKind ?? "photo",
 			footprintCm: { width: options.widthCm, height: options.heightCm },
 			image: {
 				width,
@@ -592,131 +597,208 @@ export async function analyzeImage(
 
 	let backgroundCard: AnalyzeResult["backgroundCard"] = null;
 	const sourceKind = options.sourceKind ?? "photo";
-	const opaque = opaqueBounds(pixels, width, height);
-	if (options.kind === "pedal" && opaque && sourceKind === "photo") {
-		// Measure the card on the *opaque* content, not the image frame: a card
-		// with a transparent margin would otherwise be invisible to the check.
-		const ring = Math.max(
-			2,
-			Math.round(Math.min(opaque.width, opaque.height) * 0.02),
-		);
-		const frame = dominantColor(pixels, width, [
-			[
-				opaque.left,
-				opaque.top,
-				opaque.left + opaque.width - 1,
-				opaque.top + ring - 1,
-			],
-			[
-				opaque.left,
-				opaque.top + opaque.height - ring,
-				opaque.left + opaque.width - 1,
-				opaque.top + opaque.height - 1,
-			],
-			[
-				opaque.left,
-				opaque.top,
-				opaque.left + ring - 1,
-				opaque.top + opaque.height - 1,
-			],
-			[
-				opaque.left + opaque.width - ring,
-				opaque.top,
-				opaque.left + opaque.width - 1,
-				opaque.top + opaque.height - 1,
-			],
-		]);
-		const insetX = Math.round(opaque.width * 0.25);
-		const insetY = Math.round(opaque.height * 0.25);
-		const interior = dominantColor(pixels, width, [
-			[
-				opaque.left + insetX,
-				opaque.top + insetY,
-				opaque.left + opaque.width - 1 - insetX,
-				opaque.top + opaque.height - 1 - insetY,
-			],
-		]);
-		if (frame && interior) {
-			const frameLuma = luma(frame.color);
-			const frameSat = saturation(frame.color);
-			const interiorLuma = luma(interior.color);
-			const interiorSat = saturation(interior.color);
-			const isCard = (r: number, g: number, b: number) =>
-				Math.max(
-					Math.abs(r - frame.color.r),
-					Math.abs(g - frame.color.g),
-					Math.abs(b - frame.color.b),
-				) <= 40;
-			// The caption band is the card area below the product's bottom edge:
-			// a wide product row ends, then a band of card + small dark glyphs.
-			let productBottom = opaque.top - 1;
-			for (let y = opaque.top; y <= opaque.top + opaque.height - 1; y++) {
-				let nonCard = 0;
-				let visible = 0;
-				for (let x = opaque.left; x <= opaque.left + opaque.width - 1; x++) {
-					const i = (y * width + x) * 4;
-					if (pixels[i + 3] < 250) continue;
-					visible++;
-					if (!isCard(pixels[i], pixels[i + 1], pixels[i + 2])) nonCard++;
-				}
-				// Use the opaque-content width, not just the visible pixels: a narrow
-				// caption glyph row must not become the product's bottom edge.
-				if (opaque.width > 0 && nonCard / opaque.width >= 0.5) {
-					productBottom = y;
-				}
-			}
-			const bandStart = productBottom + 1;
-			const bandRows = opaque.top + opaque.height - bandStart;
-			let bandNonCardRatio = 0;
-			let captionBand = false;
-			if (
-				bandStart > opaque.top &&
-				bandRows >= 4 &&
-				bandRows <= Math.max(12, Math.round(opaque.height * 0.2))
-			) {
-				let nonCard = 0;
-				let visible = 0;
-				for (let y = bandStart; y <= opaque.top + opaque.height - 1; y++) {
+	if (options.kind === "pedal" && sourceKind === "photo") {
+		const opaque = opaqueBounds(pixels, width, height);
+		if (opaque) {
+			// Measure the card on the *opaque* content, not the image frame: a card
+			// with a transparent margin would otherwise be invisible to the check.
+			const ring = Math.max(
+				2,
+				Math.round(Math.min(opaque.width, opaque.height) * 0.02),
+			);
+			const frame = dominantColor(pixels, width, [
+				[
+					opaque.left,
+					opaque.top,
+					opaque.left + opaque.width - 1,
+					opaque.top + ring - 1,
+				],
+				[
+					opaque.left,
+					opaque.top + opaque.height - ring,
+					opaque.left + opaque.width - 1,
+					opaque.top + opaque.height - 1,
+				],
+				[
+					opaque.left,
+					opaque.top,
+					opaque.left + ring - 1,
+					opaque.top + opaque.height - 1,
+				],
+				[
+					opaque.left + opaque.width - ring,
+					opaque.top,
+					opaque.left + opaque.width - 1,
+					opaque.top + opaque.height - 1,
+				],
+			]);
+			const insetX = Math.round(opaque.width * 0.25);
+			const insetY = Math.round(opaque.height * 0.25);
+			const interior = dominantColor(pixels, width, [
+				[
+					opaque.left + insetX,
+					opaque.top + insetY,
+					opaque.left + opaque.width - 1 - insetX,
+					opaque.top + opaque.height - 1 - insetY,
+				],
+			]);
+			if (frame && interior) {
+				const frameLuma = luma(frame.color);
+				const frameSat = saturation(frame.color);
+				const interiorLuma = luma(interior.color);
+				const interiorSat = saturation(interior.color);
+				const isCard = (r: number, g: number, b: number) =>
+					Math.max(
+						Math.abs(r - frame.color.r),
+						Math.abs(g - frame.color.g),
+						Math.abs(b - frame.color.b),
+					) <= 40;
+				// The caption band is the card area below the product's bottom edge:
+				// a wide product row ends, then a band of card + small dark glyphs.
+				let productBottom = opaque.top - 1;
+				for (let y = opaque.top; y <= opaque.top + opaque.height - 1; y++) {
+					let nonCard = 0;
+					let visible = 0;
 					for (let x = opaque.left; x <= opaque.left + opaque.width - 1; x++) {
 						const i = (y * width + x) * 4;
 						if (pixels[i + 3] < 250) continue;
 						visible++;
 						if (!isCard(pixels[i], pixels[i + 1], pixels[i + 2])) nonCard++;
 					}
+					// Use the opaque-content width, not just the visible pixels: a narrow
+					// caption glyph row must not become the product's bottom edge.
+					if (opaque.width > 0 && nonCard / opaque.width >= 0.5) {
+						productBottom = y;
+					}
 				}
-				const bandArea = opaque.width * bandRows;
-				bandNonCardRatio = bandArea > 0 ? nonCard / bandArea : 0;
-				captionBand =
+				const bandStart = productBottom + 1;
+				const bandRows = opaque.top + opaque.height - bandStart;
+				let bandNonCardRatio = 0;
+				let captionBand = false;
+				if (
+					bandStart > opaque.top &&
+					bandRows >= 4 &&
+					bandRows <= Math.max(12, Math.round(opaque.height * 0.2))
+				) {
+					let nonCard = 0;
+					let visible = 0;
+					for (let y = bandStart; y <= opaque.top + opaque.height - 1; y++) {
+						for (
+							let x = opaque.left;
+							x <= opaque.left + opaque.width - 1;
+							x++
+						) {
+							const i = (y * width + x) * 4;
+							if (pixels[i + 3] < 250) continue;
+							visible++;
+							if (!isCard(pixels[i], pixels[i + 1], pixels[i + 2])) nonCard++;
+						}
+					}
+					const bandArea = opaque.width * bandRows;
+					bandNonCardRatio = bandArea > 0 ? nonCard / bandArea : 0;
+					captionBand =
+						frameLuma >= 0.5 &&
+						frameSat <= 0.3 &&
+						bandNonCardRatio >= 0.005 &&
+						bandNonCardRatio <= 0.35;
+				}
+				// Spatial discriminator: a card has a large uniform frame AND a large
+				// connected product region; a bright pedal with printed text (GEB-7) or a
+				// thin bright bezel (IR-2) does not.
+				const cardColor = frame.color;
+				const mask = new Uint8Array(opaque.width * opaque.height);
+				const visited = new Uint8Array(mask.length);
+				let opaqueCount = 0;
+				let frameAreaCount = 0;
+				for (let y = 0; y < opaque.height; y++) {
+					for (let x = 0; x < opaque.width; x++) {
+						const i = ((opaque.top + y) * width + opaque.left + x) * 4;
+						if (pixels[i + 3] < 250) continue;
+						opaqueCount++;
+						const near =
+							Math.max(
+								Math.abs(pixels[i] - cardColor.r),
+								Math.abs(pixels[i + 1] - cardColor.g),
+								Math.abs(pixels[i + 2] - cardColor.b),
+							) <= 40;
+						if (near) frameAreaCount++;
+						else mask[y * opaque.width + x] = 1;
+					}
+				}
+				const frameArea = opaqueCount > 0 ? frameAreaCount / opaqueCount : 0;
+				let largest = 0;
+				for (let y = 0; y < opaque.height; y++) {
+					for (let x = 0; x < opaque.width; x++) {
+						const start = y * opaque.width + x;
+						if (!mask[start] || visited[start]) continue;
+						let size = 0;
+						const stack = [start];
+						visited[start] = 1;
+						while (stack.length > 0) {
+							const p = stack.pop() as number;
+							size++;
+							const px = p % opaque.width;
+							const py = Math.floor(p / opaque.width);
+							for (let dy = -1; dy <= 1; dy++) {
+								for (let dx = -1; dx <= 1; dx++) {
+									if (dx === 0 && dy === 0) continue;
+									const nx = px + dx;
+									const ny = py + dy;
+									if (
+										nx < 0 ||
+										nx >= opaque.width ||
+										ny < 0 ||
+										ny >= opaque.height
+									) {
+										continue;
+									}
+									const n = ny * opaque.width + nx;
+									if (!mask[n] || visited[n]) continue;
+									visited[n] = 1;
+									stack.push(n);
+								}
+							}
+						}
+						if (size > largest) largest = size;
+					}
+				}
+				const nonFrameArea = 1 - frameArea;
+				const largestNonFrame = opaqueCount > 0 ? largest / opaqueCount : 0;
+				const cardLike =
+					frameArea >= 0.3 &&
+					nonFrameArea <= 0.7 &&
+					largestNonFrame >= 0.2 &&
 					frameLuma >= 0.5 &&
-					frameSat <= 0.3 &&
-					bandNonCardRatio >= 0.005 &&
-					bandNonCardRatio <= 0.35;
-			}
-			// A product card is a bright, low-saturation frame around a darker or
-			// more saturated product, or a caption band below the product. A clean
-			// bright cutout has the same frame and interior tone, so it is not flagged.
-			const frameCard =
-				frameLuma >= 0.55 &&
-				frameSat <= 0.25 &&
-				(interiorLuma <= 0.4 || interiorSat >= frameSat + 0.2);
-			const suspected = frameCard || captionBand;
-			backgroundCard = {
-				opaqueRatio: effectiveOpaqueRatio,
-				borderOpaque: borderOpaqueRatio,
-				uniformity,
-				brightRatio: bright.ratio,
-				frameLuma,
-				frameSat,
-				interiorLuma,
-				interiorSat,
-				captionBand,
-				bandNonCardRatio,
-				suspected,
-			};
-			if (suspected) {
-				reasons.push(
-					`flag:possible background card/caption (frame luma ${Math.round(frameLuma * 100)}%, sat ${Math.round(frameSat * 100)}%, interior luma ${Math.round(interiorLuma * 100)}%, sat ${Math.round(interiorSat * 100)}%, caption ${captionBand ? "yes" : "no"}) — reject if a background/caption is visible`,
-				);
+					frameSat <= 0.3;
+				// A product card is a bright, low-saturation frame around a darker or
+				// more saturated product, or a caption band below the product. A clean
+				// bright cutout has the same frame and interior tone, so it is not flagged.
+				const frameCard =
+					frameLuma >= 0.55 &&
+					frameSat <= 0.25 &&
+					(interiorLuma <= 0.4 || interiorSat >= frameSat + 0.2);
+				const suspected = cardLike && (frameCard || captionBand);
+				backgroundCard = {
+					opaqueRatio: effectiveOpaqueRatio,
+					borderOpaque: borderOpaqueRatio,
+					uniformity,
+					brightRatio: bright.ratio,
+					frameLuma,
+					frameSat,
+					interiorLuma,
+					interiorSat,
+					captionBand,
+					bandNonCardRatio,
+					frameArea,
+					nonFrameArea,
+					largestNonFrame,
+					suspected,
+				};
+				if (suspected) {
+					reasons.push(
+						`flag:possible background card/caption (frame luma ${Math.round(frameLuma * 100)}%, sat ${Math.round(frameSat * 100)}%, interior luma ${Math.round(interiorLuma * 100)}%, sat ${Math.round(interiorSat * 100)}%, frame ${Math.round(frameArea * 100)}%, product ${Math.round(largestNonFrame * 100)}%, caption ${captionBand ? "yes" : "no"}) — reject if a background/caption is visible`,
+					);
+				}
 			}
 		}
 	}
@@ -746,6 +828,7 @@ export async function analyzeImage(
 	return {
 		version: 1,
 		kind: options.kind,
+		sourceKind: options.sourceKind ?? "photo",
 		footprintCm: { width: options.widthCm, height: options.heightCm },
 		image: { width, height, longEdge, hasAlpha: metadata.hasAlpha ?? false },
 		alpha: { transparentRatio },
