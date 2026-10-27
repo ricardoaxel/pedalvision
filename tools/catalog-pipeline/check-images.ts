@@ -140,6 +140,15 @@ export function checkImageProvenance(
 					message:
 						"planner last-resort image must record imageProvenance.sourceUrl",
 				});
+				continue;
+			}
+			if (!isPlannerUrl(provenance.sourceUrl)) {
+				issues.push({
+					file,
+					id: record.id,
+					message: "planner last-resort sourceUrl is not a planner image URL",
+				});
+				continue;
 			}
 			plannerLastResort++;
 			continue;

@@ -139,6 +139,20 @@ describe("image provenance gate", () => {
 		]);
 		expect(noSource.issues).toHaveLength(1);
 		expect(noSource.issues[0]?.message).toMatch(/sourceUrl/);
+		expect(noSource.warnings).toHaveLength(0);
+		const wrongHost = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: {
+					kind: "planner",
+					sourceUrl: "https://www.boss.info/a.jpg",
+					status: "last-resort",
+				},
+			},
+		]);
+		expect(wrongHost.issues).toHaveLength(1);
+		expect(wrongHost.issues[0]?.message).toMatch(/not a planner image URL/);
 	});
 
 	it("requires a note for own/generated art and ignores referenceUrl", () => {
