@@ -1,6 +1,6 @@
 # P5-03e — Image source policy: planner last-resort + recorded sources (T-1a)
 
-**Phase:** P5 · **Status:** in progress · **Type:** policy + gate + ledger (docs/tools) · **Depends on:** T-1 (merged)
+**Phase:** P5 · **Status:** in review — PR #56 · **Type:** policy + gate + ledger (docs/tools) · **Depends on:** T-1 (merged)
 
 ## Purpose
 
@@ -106,4 +106,8 @@ is the only PR awaiting review. No catalog wave runs in parallel.
 - Ledger shows source totals + needs-improvement gaps; regenerated files match.
 - 26 backfilled raw records validate; 31 BOSS remain `pending-replacement`.
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build` + `catalog:ci`;
-  one light code review; one PR; no merge.
+  one light code review (2/2: pass 1 changes-required → pass 2 approve with 2 nits fixed); one PR; no merge.
+
+## Review outcome
+
+Token reviewer **`adjust`** (mapping table, one PR, aggregate warnings, no 31-legacy migration, `referenceUrl` metadata only) → folded. Code reviewer **pass 1 changes-required** (own+planner URL gate, recorded hotlink ledger, source-gap hosting, aggregate gap warnings, dead field) → fixed; **pass 2 approve** with 2 nits (planner warning count, planner host) → fixed. No designer/vision pass (no visual-direction change; one public policy-copy update). PR #56; not merged.
