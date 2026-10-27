@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 7
 
-**Phase:** P5 · **Status:** todo — T-3 wave 4 (3-wide) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #65 (T-3 wave 4, 3-wide) · **Model:** build-strong
 
 > The `boss-wave-4` coordinator already ran `catalog:start` for `boss/boss-7`.
 > **Do not run `catalog:start`/`catalog:resume`.** Checkpoint inline after every
