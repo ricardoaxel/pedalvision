@@ -21,6 +21,9 @@ export type ImageProvenanceIssue = {
 	file: string;
 	id?: string;
 	message: string;
+	/** Aggregate gap categories (counted once per run, not per item). */
+	category?: "legacy-pending" | "planner-last-resort" | "planner-pending";
+	count?: number;
 };
 
 type ProvenanceRecord = {
@@ -54,6 +57,9 @@ export function checkImageProvenance(
 ): { issues: ImageProvenanceIssue[]; warnings: ImageProvenanceIssue[] } {
 	const issues: ImageProvenanceIssue[] = [];
 	const warnings: ImageProvenanceIssue[] = [];
+	let legacyPending = 0;
+	let plannerLastResort = 0;
+	let plannerPending = 0;
 	for (const record of records) {
 		const urls = [
 			...(record.imageCandidates ?? []).map((candidate) => candidate.url),
@@ -90,16 +96,19 @@ export function checkImageProvenance(
 						"own/generated image must record a note (generator + reference)",
 				});
 			}
+			if (plannerUrls.length > 0) {
+				issues.push({
+					file,
+					id: record.id,
+					message: "planner image URL but imageProvenance.kind=own",
+				});
+			}
 			continue;
 		}
 
 		if (kind === "legacy") {
 			if (status === "pending-replacement") {
-				warnings.push({
-					file,
-					id: record.id,
-					message: "legacy asset is pending replacement (no recorded source)",
-				});
+				legacyPending++;
 			} else if (status !== "owner-approved-edge-case") {
 				issues.push({
 					file,
@@ -112,12 +121,7 @@ export function checkImageProvenance(
 
 		if (kind === "planner") {
 			if (status === "pending-replacement") {
-				warnings.push({
-					file,
-					id: record.id,
-					message:
-						"planner image is pending replacement (better source not found yet)",
-				});
+				plannerPending++;
 				continue;
 			}
 			if (status === "owner-approved-edge-case") continue;
@@ -137,8 +141,7 @@ export function checkImageProvenance(
 						"planner last-resort image must record imageProvenance.sourceUrl",
 				});
 			}
-			// Accepted last-resort: silent here; the ledger counts it as a source
-			// gap (`sourceKind: planner`, `improve: true`).
+			plannerLastResort++;
 			continue;
 		}
 
@@ -171,6 +174,21 @@ export function checkImageProvenance(
 			message: `unknown imageProvenance.kind ${kind ?? "missing"}`,
 		});
 	}
+	const addGap = (
+		category: NonNullable<ImageProvenanceIssue["category"]>,
+		count: number,
+	) => {
+		if (count === 0) return;
+		warnings.push({
+			file,
+			category,
+			count,
+			message: `${count} ${category === "legacy-pending" ? "legacy image(s) pending replacement" : category === "planner-last-resort" ? "planner image(s) in use as a recorded last resort; improve when a better source exists" : "planner image(s) pending a better source"}`,
+		});
+	};
+	addGap("legacy-pending", legacyPending);
+	addGap("planner-last-resort", plannerLastResort);
+	addGap("planner-pending", plannerPending);
 	return { issues, warnings };
 }
 
@@ -227,6 +245,28 @@ export async function checkImageProvenanceFiles(root = process.cwd()): Promise<{
 			warnings.push(...checked.warnings);
 		}
 	}
+	// Aggregate accepted last-resort/legacy gaps into one line per category.
+	const counts = new Map<string, number>();
+	const perItem: ImageProvenanceIssue[] = [];
+	for (const warning of warnings) {
+		if (warning.category && warning.count) {
+			counts.set(
+				warning.category,
+				(counts.get(warning.category) ?? 0) + warning.count,
+			);
+		} else {
+			perItem.push(warning);
+		}
+	}
+	const merged: ImageProvenanceIssue[] = [...perItem];
+	for (const [category, count] of counts) {
+		merged.push({
+			file: "<all>",
+			category: category as ImageProvenanceIssue["category"],
+			count,
+			message: `${count} ${category === "legacy-pending" ? "legacy image(s) pending replacement" : category === "planner-last-resort" ? "planner image(s) in use as a recorded last resort; improve when a better source exists" : "planner image(s) pending a better source"}`,
+		});
+	}
 	if (files === 0) {
 		issues.push({
 			file: join(root, "data/catalog/research"),
@@ -234,7 +274,7 @@ export async function checkImageProvenanceFiles(root = process.cwd()): Promise<{
 				"no raw batch files found; refusing to report a green image-provenance gate for an empty/missing directory",
 		});
 	}
-	return { issues, warnings, files };
+	return { issues, warnings: merged, files };
 }
 
 export function formatImageProvenanceIssues(

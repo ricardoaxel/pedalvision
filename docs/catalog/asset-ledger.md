@@ -433,35 +433,35 @@ Needs improvement: 207 (hotlinked 92 · legacy 31 · mock 84)
 
 ## Source gaps
 
-| Brand | Source | Hosting | Items |
-| --- | --- | --- | --- |
-| Aclam | own | mock | 1 |
-| Behringer | official | hotlinked | 1 |
-| Big Joe | own | mock | 2 |
-| Blackbird | own | mock | 1 |
-| BoardMods | own | mock | 1 |
-| BOSS | legacy | static | 31 |
-| BOSS | official | static | 1 |
-| BOSS | own | mock | 1 |
-| Caseman | own | mock | 1 |
-| Creation Music Co | own | mock | 1 |
-| D’Addario | own | mock | 1 |
-| Donner | own | mock | 1 |
-| EarthQuaker | own | mock | 18 |
-| Effects Bakery | own | mock | 1 |
-| Electro-Harmonix | official | hotlinked | 18 |
-| Emerson Custom | own | mock | 1 |
-| Fame | own | mock | 1 |
-| JHS | official | hotlinked | 12 |
-| JHS | own | mock | 6 |
-| Joyo | official | hotlinked | 5 |
-| Joyo | own | mock | 13 |
-| Keeley | own | mock | 18 |
-| Mooer | official | hotlinked | 17 |
-| Mooer | own | mock | 1 |
-| MXR | official | hotlinked | 18 |
-| TC Electronic | official | hotlinked | 13 |
-| TC Electronic | own | mock | 4 |
-| Walrus Audio | official | hotlinked | 7 |
-| Walrus Audio | own | mock | 11 |
+| Brand | Source | Items |
+| --- | --- | --- |
+| Aclam | own | 1 |
+| Behringer | official | 1 |
+| Big Joe | own | 2 |
+| Blackbird | own | 1 |
+| BoardMods | own | 1 |
+| BOSS | legacy | 31 |
+| BOSS | official | 1 |
+| BOSS | own | 1 |
+| Caseman | own | 1 |
+| Creation Music Co | own | 1 |
+| D’Addario | own | 1 |
+| Donner | own | 1 |
+| EarthQuaker | own | 18 |
+| Effects Bakery | own | 1 |
+| Electro-Harmonix | official | 18 |
+| Emerson Custom | own | 1 |
+| Fame | own | 1 |
+| JHS | official | 12 |
+| JHS | own | 6 |
+| Joyo | official | 5 |
+| Joyo | own | 13 |
+| Keeley | own | 18 |
+| Mooer | official | 17 |
+| Mooer | own | 1 |
+| MXR | official | 18 |
+| TC Electronic | official | 13 |
+| TC Electronic | own | 4 |
+| Walrus Audio | official | 7 |
+| Walrus Audio | own | 11 |
 

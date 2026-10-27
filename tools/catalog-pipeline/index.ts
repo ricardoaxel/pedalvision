@@ -184,8 +184,12 @@ async function runCheckImages(args: Args): Promise<void> {
 		process.exitCode = 1;
 		return;
 	}
+	const gaps = result.warnings.reduce(
+		(sum, warning) => sum + (warning.count ?? 1),
+		0,
+	);
 	console.log(
-		`image provenance verified (${result.files} raw file(s), ${result.warnings.length} pending replacement(s))`,
+		`image provenance verified (${result.files} raw file(s), ${gaps} source gap(s))`,
 	);
 }
 
@@ -202,10 +206,14 @@ async function runCi(args: Args): Promise<void> {
 		throw new Error(formatImageProvenanceIssues(imageCheck.issues));
 	}
 	const result = await buildForCi({ root: args.root });
+	const gaps = imageCheck.warnings.reduce(
+		(sum, warning) => sum + (warning.count ?? 1),
+		0,
+	);
 	console.log(
 		`catalog ci: validated ${result.pedals.length} pedals / ${result.boards.length} boards; ` +
 			`jack layouts verified (${jackCheck.files} raw file(s)); ` +
-			`image provenance verified (${imageCheck.warnings.length} pending); ` +
+			`image provenance verified (${gaps} source gap(s)); ` +
 			"uncommitted runtime updated for the app/Playwright",
 	);
 }

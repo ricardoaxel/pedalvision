@@ -37,8 +37,6 @@ export type RuntimeItem = {
 	image: string;
 	imageSource: "static" | "url" | "mock";
 	source: string;
-	/** Recorded source links (raw projection); used for hotlinked seed URLs. */
-	sources?: Array<{ url: string; kind: string[] }>;
 };
 
 export type RawRecord = {
@@ -222,10 +220,16 @@ export function classifyItem(
 		provenanceKind === "community" ||
 		provenanceKind === "archive"
 	) {
-		imageHosting = "static";
+		const hotlinked = item.imageSource === "url";
+		imageHosting = hotlinked ? "hotlinked" : "static";
 		sourceKind = provenanceKind;
 		licenseStatus = granted ? "licensed" : "license-pending";
-		note = `${provenanceKind} image; source recorded`;
+		if (hotlinked) {
+			replacementTarget = `${item.brand} batch`;
+			improve = true;
+			gapReason = "hotlinked";
+		}
+		note = `${provenanceKind} image; source recorded${hotlinked ? " (hotlinked; replace with self-hosted)" : ""}`;
 	} else if (mock) {
 		imageHosting = "mock";
 		sourceKind = "own";
@@ -405,20 +409,13 @@ export function renderLedgerDoc(ledger: Ledger): string {
 		lines.push("## Source gaps", "");
 		lines.push(
 			...table(
-				["Brand", "Source", "Hosting", "Items"],
+				["Brand", "Source", "Items"],
 				[...gaps.entries()]
 					.sort(([a], [b]) => a.localeCompare(b))
 					.flatMap(([brand, bySource]) =>
 						[...bySource.entries()]
 							.sort(([a], [b]) => a.localeCompare(b))
-							.map(([source, count]) => [
-								brand,
-								source,
-								ledger.items.find(
-									(item) => item.brand === brand && item.sourceKind === source,
-								)?.imageHosting ?? "—",
-								String(count),
-							]),
+							.map(([source, count]) => [brand, source, String(count)]),
 					),
 			),
 		);

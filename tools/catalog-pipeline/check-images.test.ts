@@ -1,4 +1,4 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -100,7 +100,25 @@ describe("image provenance gate", () => {
 			},
 		]);
 		expect(issues).toHaveLength(0);
-		expect(warnings).toHaveLength(0);
+		expect(warnings).toHaveLength(1);
+		expect(warnings[0]?.category).toBe("planner-last-resort");
+		expect(warnings[0]?.message).toMatch(/last resort/);
+	});
+
+	it("rejects a planner URL mislabelled as generated art", () => {
+		const { issues } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: planner }],
+				imageProvenance: {
+					kind: "own",
+					status: "chosen",
+					note: "generated from an official reference",
+				},
+			},
+		]);
+		expect(issues).toHaveLength(1);
+		expect(issues[0]?.message).toMatch(/kind=own/);
 	});
 
 	it("rejects a planner chosen/last-resort without a source", () => {
@@ -186,6 +204,36 @@ describe("image provenance gate", () => {
 			},
 		]);
 		expect(issues).toHaveLength(1);
+	});
+
+	it("merges legacy/planner gaps into one warning per category", async () => {
+		const root = await mkdtemp(join(tmpdir(), "pedalvision-images-"));
+		try {
+			const dir = join(root, "data/catalog/research/pedals/acme");
+			await mkdir(dir, { recursive: true });
+			const record = (id: string) => ({
+				id,
+				brand: "Acme",
+				name: id,
+				category: "pedal",
+				widthCm: 7,
+				heightCm: 12,
+				effectTypes: [],
+				imageProvenance: {
+					kind: "legacy",
+					status: "pending-replacement",
+				},
+			});
+			await writeFile(join(dir, "a.json"), JSON.stringify([record("acme-a")]));
+			await writeFile(join(dir, "b.json"), JSON.stringify([record("acme-b")]));
+			const result = await checkImageProvenanceFiles(root);
+			expect(result.issues).toHaveLength(0);
+			expect(result.warnings).toHaveLength(1);
+			expect(result.warnings[0]?.category).toBe("legacy-pending");
+			expect(result.warnings[0]?.count).toBe(2);
+		} finally {
+			await rm(root, { recursive: true, force: true });
+		}
 	});
 
 	it("refuses a green gate over an empty/missing research dir", async () => {

@@ -34,13 +34,14 @@ other reference exists.
 
 | Provenance / state | `sourceKind` | `imageHosting` | `licenseStatus` | `replacementTarget` | `improve` |
 | --- | --- | --- | --- | --- | --- |
-| official chosen | `official` | static/hotlinked | `license-pending` (or `licensed` with written permission) | brand batch only if hotlinked | no |
-| retailer chosen | `retailer` | static/hotlinked | `license-pending` | brand batch only if hotlinked | no |
-| community chosen | `community` | static/hotlinked | `license-pending` | brand batch only if hotlinked | no |
+| official chosen | `official` | static/hotlinked | `license-pending` (or `licensed` with written permission) | brand batch if hotlinked | yes if hotlinked |
+| retailer chosen | `retailer` | static/hotlinked | `license-pending` | brand batch if hotlinked | yes if hotlinked |
+| community chosen | `community` | static/hotlinked | `license-pending` | brand batch if hotlinked | yes if hotlinked |
 | archive chosen (Wayback) | `archive` | static | `license-pending` | — | no |
 | planner **last-resort** | `planner` | static | `license-pending` | `better source (official/retailer/community)` | **yes** |
 | legacy (no source) | `legacy` | static | `replacement-needed` | brand batch (T-2 for BOSS) | **yes** |
-| own generated/mock | `own` | static/mock | `own` | — | no |
+| own generated | `own` | static | `own` | — | no |
+| own mock/placeholder | `own` | mock | `own` | brand batch | **yes** |
 
 `referenceUrl` (own generated art) is **metadata only** — never treated as a
 shipped image source and never used for planner detection.

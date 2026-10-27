@@ -6,6 +6,7 @@ import {
 	type LicenseFile,
 	type RawRecord,
 	type RuntimeItem,
+	renderLedgerDoc,
 } from "./index.ts";
 
 const brands: LicenseFile["brands"] = {
@@ -93,6 +94,63 @@ describe("image license ledger", () => {
 		expect(row.replacementTarget).toMatch(/better source/);
 		expect(row.sourceUrl).toBe("https://www.pedalplayground.com/x.png");
 		expect(row.gapReason).toBe("planner");
+	});
+
+	it("classifies a recorded but hotlinked official image as a gap", () => {
+		const row = classifyItem(
+			pedal("h", {
+				imageSource: "url",
+				source: "public-asset",
+				image: "https://example.com/h.jpg",
+			}),
+			"pedal",
+			{
+				id: "h",
+				imageProvenance: {
+					kind: "official",
+					sourceUrl: "https://example.com/h.jpg",
+					status: "chosen",
+				},
+			},
+			brands,
+		);
+		expect(row.imageHosting).toBe("hotlinked");
+		expect(row.improve).toBe(true);
+		expect(row.gapReason).toBe("hotlinked");
+		expect(row.replacementTarget).toMatch(/BOSS/);
+	});
+
+	it("renders source-gap rows without a misleading hosting column", () => {
+		const ledger = buildLedger(
+			{
+				pedals: [
+					pedal("a"),
+					pedal("b"),
+					pedal("c", { imageSource: "mock", source: "placeholder" }),
+				],
+				boards: [],
+			},
+			new Map<string, RawRecord>([
+				["a", { id: "a", imageProvenance: { kind: "legacy" } }],
+				[
+					"b",
+					{
+						id: "b",
+						imageProvenance: {
+							kind: "planner",
+							sourceUrl: "https://www.pedalplayground.com/x.png",
+							status: "last-resort",
+						},
+					},
+				],
+			]),
+			brands,
+		);
+		const doc = renderLedgerDoc(ledger);
+		expect(doc).toContain("## Source gaps");
+		expect(doc).toMatch(/\| BOSS \| legacy \| 1 \|/);
+		expect(doc).toMatch(/\| BOSS \| planner \| 1 \|/);
+		expect(doc).not.toContain("| Brand | Source | Hosting | Items |");
 	});
 
 	it("classifies a legacy provenance as replacement-needed", () => {
