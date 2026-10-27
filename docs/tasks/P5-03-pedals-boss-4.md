@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 4
 
-**Phase:** P5 · **Status:** in review — PR pending (wave `boss-wave-3`, T-2 calibration) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #58 (wave `boss-wave-3`, T-2 calibration) · **Model:** build-strong
 
 > The coordinator already ran `catalog:start` for `boss/boss-4` (total 26). Do
 > **not** run `catalog:start` again. Checkpoint inline after every item, finish
