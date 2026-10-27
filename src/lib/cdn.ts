@@ -8,12 +8,14 @@ export type AssetSize = 800 | 350;
  * hardcode 800/350 at a call site — import this map instead, so the 350 thumb
  * is actually used and a future canvas rendition (e.g. 512) has one home.
  *
- * - `pickerRow`: the 350 thumbnail (ledger rows).
- * - `specimen` / `canvas` / `export`: the 800 master (the canvas is currently
- *   the master too; a 512 canvas LOD can be added here later).
+ * - `pickerRow` / `infoSleeve`: the 350 thumbnail (ledger rows, mobile sleeve).
+ * - `specimen` / `canvas` / `export`: the 800 master (the specimen plate, the
+ *   info-panel banner, the canvas and export; a 512 canvas LOD can be added
+ *   here later).
  */
 export const ASSET_RENDITIONS = {
 	pickerRow: 350,
+	infoSleeve: 350,
 	specimen: 800,
 	canvas: 800,
 	export: 800,
@@ -58,6 +60,31 @@ export function resolveImageUrl(
 	size: AssetSize,
 ): string {
 	return imageSource === "url" ? image : assetUrl(kind, size, image);
+}
+
+/**
+ * The `350` rendition for small UI (picker ledger rows, mobile info-panel
+ * sleeve). A `url` source has no derived rendition, so it is returned
+ * unchanged.
+ */
+export function resolveThumbImageUrl(
+	imageSource: ImageSource,
+	image: string,
+	kind: AssetKind,
+): string {
+	return resolveImageUrl(imageSource, image, kind, ASSET_RENDITIONS.pickerRow);
+}
+
+/**
+ * The `800` master for large UI (specimen plate, info-panel banner, canvas and
+ * export). A `url` source is returned unchanged.
+ */
+export function resolveMasterImageUrl(
+	imageSource: ImageSource,
+	image: string,
+	kind: AssetKind,
+): string {
+	return resolveImageUrl(imageSource, image, kind, ASSET_RENDITIONS.specimen);
 }
 
 /**

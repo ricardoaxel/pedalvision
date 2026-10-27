@@ -1,5 +1,9 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+	ASSET_RENDITIONS,
+	resolveImageUrl,
+	resolveMasterImageUrl,
+} from "../lib/cdn";
 import {
 	buildPartInfo,
 	formatDimensions,
@@ -21,6 +25,29 @@ import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
 import { PartDrawing } from "./PartDrawing";
 import { usePartImage } from "./partImage";
 import { effectLabel } from "./pickerFilter";
+
+const DESKTOP_MEDIA = "(min-width: 1024px)";
+
+/**
+ * Desktop (≥1024px) has the always-visible banner; mobile only reveals it when
+ * the sheet is expanded. Knowing which surface is visible lets us render only
+ * that rendition's `<img>` — a hidden image would still be fetched and would
+ * defeat the 350 sleeve / 800 banner split.
+ */
+function useIsDesktop(): boolean {
+	const [isDesktop, setIsDesktop] = useState(
+		() =>
+			typeof window === "undefined" || window.matchMedia(DESKTOP_MEDIA).matches,
+	);
+	useEffect(() => {
+		const query = window.matchMedia(DESKTOP_MEDIA);
+		const update = () => setIsDesktop(query.matches);
+		update();
+		query.addEventListener("change", update);
+		return () => query.removeEventListener("change", update);
+	}, []);
+	return isDesktop;
+}
 
 /**
  * The pedal info panel (P2-03). Direction: **"Specimen Readout"** (owner-approved
@@ -53,6 +80,7 @@ export function InfoPanel() {
 	// collapsed (no reset effect needed).
 	const [expandedUid, setExpandedUid] = useState<string | null>(null);
 	const expanded = selectedItemUid !== null && expandedUid === selectedItemUid;
+	const isDesktop = useIsDesktop();
 	const toggleExpanded = () =>
 		setExpandedUid(expanded ? null : selectedItemUid);
 
@@ -60,17 +88,29 @@ export function InfoPanel() {
 		? items.find((candidate) => candidate.uid === selectedItemUid)
 		: undefined;
 	const resolved = item ? resolveItem(item, customPedals) : null;
+	// Two renditions, two elements: the mobile 64px sleeve is a true thumbnail
+	// (350), while the expanded banner / desktop plate uses the 800 master. A
+	// `url` source resolves to the same absolute URL for both (no derived
+	// rendition exists), and both run the shared CORS-first ladder.
 	const imageSrc = resolved?.definition
+		? resolveMasterImageUrl(
+				resolved.definition.imageSource,
+				resolved.definition.image,
+				"pedal",
+			)
+		: null;
+	const sleeveSrc = resolved?.definition
 		? resolveImageUrl(
 				resolved.definition.imageSource,
 				resolved.definition.image,
 				"pedal",
-				ASSET_RENDITIONS.specimen,
+				ASSET_RENDITIONS.infoSleeve,
 			)
 		: null;
 	// The CORS-first → cache-bust → no-CORS → failed ladder, shared with the
 	// picker (so a hotlinked `url` never re-poisons the canvas image cache).
 	const preview = usePartImage(imageSrc ?? "");
+	const sleevePreview = usePartImage(sleeveSrc ?? "");
 
 	// Report the sheet's real rendered height so the action bar always clears it.
 	const asideRef = useRef<HTMLElement>(null);
@@ -142,8 +182,14 @@ export function InfoPanel() {
 		.join(" · ");
 
 	// The cover: photo (catalog) / drawing (custom) / glyph (unknown or a failed
-	// image). The category drives the caption.
-	const showImage = info.image !== null && preview.phase !== "failed";
+	// image). The category drives the caption. Only the visible surface mounts
+	// its `<img>`: desktop (banner) or mobile-expanded gets the 800 master;
+	// the mobile peek gets the 350 sleeve.
+	const hasImage = info.image !== null;
+	const showMasterImage = hasImage && preview.phase !== "failed";
+	const showThumbImage = hasImage && sleevePreview.phase !== "failed";
+	const showBannerImage = isDesktop || expanded;
+	const showSleeveImage = !isDesktop && !expanded;
 	const caption = info.isCustom
 		? "Drawing"
 		: info.unknown
@@ -163,16 +209,18 @@ export function InfoPanel() {
 			jacks={info.jacks}
 			units={units}
 		/>
-	) : showImage ? (
-		<img
-			key={`${imageSrc}:${preview.phase}`}
-			className="info-panel__cover-img"
-			src={preview.url}
-			alt=""
-			loading="lazy"
-			crossOrigin={preview.crossOrigin}
-			onError={preview.onError}
-		/>
+	) : showMasterImage ? (
+		showBannerImage ? (
+			<img
+				key={`${imageSrc}:${preview.phase}`}
+				className="info-panel__cover-img"
+				src={preview.url}
+				alt=""
+				loading="lazy"
+				crossOrigin={preview.crossOrigin}
+				onError={preview.onError}
+			/>
+		) : null
 	) : (
 		<span
 			className={`info-panel__cover-glyph${
@@ -185,22 +233,23 @@ export function InfoPanel() {
 	);
 
 	// The mobile-collapsed sleeve: image when available, else the glyph (a
-	// drawing is illegible at 64px). Binds onError too: while collapsed the
-	// banner is display:none (so its lazy img isn't requested), making the
-	// sleeve the only requester — the ladder must still advance on failure.
-	const sleeve = showImage ? (
-		<img
-			key={`sleeve:${imageSrc}:${preview.phase}`}
-			className="info-panel__sleeve-img"
-			src={preview.url}
-			alt=""
-			loading="lazy"
-			crossOrigin={preview.crossOrigin}
-			onError={preview.onError}
-		/>
-	) : (
-		<PedalIcon size={24} strokeWidth={1.5} />
-	);
+	// drawing is illegible at 64px). Only the visible surface mounts its img
+	// (the collapsed banner is not rendered), so the sleeve's ladder is the
+	// only one active in the peek — it still advances on failure.
+	const sleeve =
+		showThumbImage && showSleeveImage ? (
+			<img
+				key={`sleeve:${sleeveSrc}:${sleevePreview.phase}`}
+				className="info-panel__sleeve-img"
+				src={sleevePreview.url}
+				alt=""
+				loading="lazy"
+				crossOrigin={sleevePreview.crossOrigin}
+				onError={sleevePreview.onError}
+			/>
+		) : (
+			<PedalIcon size={24} strokeWidth={1.5} />
+		);
 
 	return (
 		<aside

@@ -111,7 +111,14 @@ test("shows the selected catalog pedal's image in the specimen preview", async (
 	const preview = page.getByTestId("info-preview");
 	await expect(preview).toBeVisible();
 	await expect(preview.locator("img")).toBeVisible();
+	// The specimen/banner is a master surface — always the 800 rendition.
+	await expect(preview.locator("img")).toHaveAttribute(
+		"src",
+		"/pedal-assets/pedals/800/boss-bd-2-blues-driver.avif",
+	);
 	await expect(preview).toContainText("Specimen");
+	// The hidden mobile sleeve does not mount its 350 img outside the peek.
+	await expect(page.getByTestId("info-cover").locator("img")).toHaveCount(0);
 });
 
 test("shows a drawing (no image) as a custom part's preview", async ({
@@ -187,15 +194,36 @@ test("the mobile peek shows the cover sleeve and warning chip, then expands to t
 	page,
 }, testInfo) => {
 	test.skip(testInfo.project.name !== "mobile-chromium", "mobile-only layout");
+	const assetRequests: string[] = [];
+	page.on("request", (request) => {
+		const path = new URL(request.url()).pathname;
+		if (path.startsWith("/pedal-assets/")) assetRequests.push(path);
+	});
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(page.getByTestId("info-panel")).toBeVisible();
 
 	// Collapsed peek: sleeve + dimensions in the status row, no banner.
-	await expect(page.getByTestId("info-cover")).toBeVisible();
+	const sleeve = page.getByTestId("info-cover");
+	await expect(sleeve).toBeVisible();
+	const sleeveImg = sleeve.locator("img");
+	await expect(sleeveImg).toHaveAttribute(
+		"src",
+		"/pedal-assets/pedals/350/boss-bd-2-blues-driver.avif",
+	);
+	await expect
+		.poll(() =>
+			sleeveImg.evaluate((element: HTMLImageElement) => element.naturalWidth),
+		)
+		.toBeGreaterThan(0);
+	expect(assetRequests).toContain(
+		"/pedal-assets/pedals/350/boss-bd-2-blues-driver.avif",
+	);
 	await expect(page.getByTestId("info-peek-dims")).toBeVisible();
 	await expect(page.getByTestId("info-preview")).toBeHidden();
+	// Only the sleeve's 350 is mounted while collapsed (no hidden 800 fetch).
+	await expect(page.getByTestId("info-preview").locator("img")).toHaveCount(0);
 
 	// An overlap surfaces the compact chip in the peek (and NOT the full band,
 	// which is the expanded/desktop form) — exactly one live region is shown.
@@ -203,9 +231,23 @@ test("the mobile peek shows the cover sleeve and warning chip, then expands to t
 	await expect(page.getByTestId("info-warning-chip")).toBeVisible();
 	await expect(page.getByTestId("info-warning")).toBeHidden();
 
-	// Expand: the banner (hero) replaces the sleeve + status row.
+	// Expand: the banner (hero, 800 master) replaces the sleeve (350).
 	await page.getByTestId("info-expand").click();
-	await expect(page.getByTestId("info-preview")).toBeVisible();
+	const banner = page.getByTestId("info-preview");
+	await expect(banner).toBeVisible();
+	const bannerImg = banner.locator("img");
+	await expect(bannerImg).toHaveAttribute(
+		"src",
+		"/pedal-assets/pedals/800/boss-bd-2-blues-driver.avif",
+	);
+	await expect
+		.poll(() =>
+			bannerImg.evaluate((element: HTMLImageElement) => element.naturalWidth),
+		)
+		.toBeGreaterThan(0);
+	expect(assetRequests).toContain(
+		"/pedal-assets/pedals/800/boss-bd-2-blues-driver.avif",
+	);
 	await expect(page.getByTestId("info-cover")).toBeHidden();
 	await expect(page.getByTestId("info-units")).toBeVisible();
 	await expect(page.getByTestId("info-warning")).toBeVisible();

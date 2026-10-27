@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { assetUrl, bustCache, resolveImageUrl } from "./cdn";
+import {
+	ASSET_RENDITIONS,
+	assetUrl,
+	bustCache,
+	resolveImageUrl,
+	resolveMasterImageUrl,
+	resolveThumbImageUrl,
+} from "./cdn";
 
 describe("assetUrl", () => {
 	it("builds pedal paths for both renditions", () => {
@@ -21,6 +28,16 @@ describe("assetUrl", () => {
 	});
 });
 
+describe("ASSET_RENDITIONS (surface → rendition map)", () => {
+	it("keeps small UI on the 350 thumb and large surfaces on the 800 master", () => {
+		expect(ASSET_RENDITIONS.pickerRow).toBe(350);
+		expect(ASSET_RENDITIONS.infoSleeve).toBe(350);
+		expect(ASSET_RENDITIONS.specimen).toBe(800);
+		expect(ASSET_RENDITIONS.canvas).toBe(800);
+		expect(ASSET_RENDITIONS.export).toBe(800);
+	});
+});
+
 describe("resolveImageUrl (image-resolution contract)", () => {
 	it("routes mock/static sources to the same-origin asset URL", () => {
 		expect(resolveImageUrl("mock", "boss-bcb-1000.png", "board", 800)).toBe(
@@ -31,9 +48,42 @@ describe("resolveImageUrl (image-resolution contract)", () => {
 		);
 	});
 
-	it("passes an absolute url source through untouched", () => {
+	it("passes an absolute url source through untouched at either rendition", () => {
 		const url = "https://cdn.example.com/board.png";
 		expect(resolveImageUrl("url", url, "board", 800)).toBe(url);
+		expect(resolveImageUrl("url", url, "board", 350)).toBe(url);
+	});
+});
+
+describe("resolveThumbImageUrl / resolveMasterImageUrl (small UI vs master)", () => {
+	it("returns the 350 path for mock/static thumbs", () => {
+		expect(resolveThumbImageUrl("mock", "boss-bd-2.png", "pedal")).toBe(
+			"/pedal-assets/pedals/350/boss-bd-2.png",
+		);
+		expect(resolveThumbImageUrl("static", "choka.avif", "pedal")).toBe(
+			"/pedal-assets/pedals/350/choka.avif",
+		);
+		expect(resolveThumbImageUrl("static", "nano.png", "board")).toBe(
+			"/pedal-assets/boards/350/nano.png",
+		);
+	});
+
+	it("returns the 800 path for mock/static masters", () => {
+		expect(resolveMasterImageUrl("mock", "boss-bd-2.png", "pedal")).toBe(
+			"/pedal-assets/pedals/800/boss-bd-2.png",
+		);
+		expect(resolveMasterImageUrl("static", "choka.avif", "pedal")).toBe(
+			"/pedal-assets/pedals/800/choka.avif",
+		);
+		expect(resolveMasterImageUrl("static", "nano.png", "board")).toBe(
+			"/pedal-assets/boards/800/nano.png",
+		);
+	});
+
+	it("returns the recorded absolute URL unchanged for url entries", () => {
+		const url = "https://cdn.example.com/pedal.png";
+		expect(resolveThumbImageUrl("url", url, "pedal")).toBe(url);
+		expect(resolveMasterImageUrl("url", url, "pedal")).toBe(url);
 	});
 });
 
