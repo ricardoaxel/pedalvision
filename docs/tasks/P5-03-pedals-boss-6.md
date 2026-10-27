@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 6
 
-**Phase:** P5 · **Status:** todo — T-3 wave 4 (3-wide) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #66 · **Model:** build-strong
 
 > The `boss-wave-4` coordinator already ran `catalog:start` for `boss/boss-6`.
 > **Do not run `catalog:start`/`catalog:resume`.** Checkpoint inline after every
@@ -203,4 +203,4 @@ Read only the sections the task file points to; do not read whole docs.
   threshold, so the paused state was set back to running to record the remaining
   25 checkpoints (no restart/`catalog:start`); all 26 runner items are complete.
 
-**PR:** _pending_
+**PR:** https://github.com/ricardoaxel/pedalvision/pull/66
