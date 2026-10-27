@@ -1,6 +1,6 @@
 # P5-03e — Image source policy: planner last-resort + recorded sources (T-1a)
 
-**Phase:** P5 · **Status:** in review — PR #56 · **Type:** policy + gate + ledger (docs/tools) · **Depends on:** T-1 (merged)
+**Phase:** P5 · **Status:** merged — PR #56 (squash `ea20b02`) · **Type:** policy + gate + ledger (docs/tools) · **Depends on:** T-1 (merged)
 
 ## Purpose
 
@@ -110,4 +110,4 @@ is the only PR awaiting review. No catalog wave runs in parallel.
 
 ## Review outcome
 
-Token reviewer **`adjust`** (mapping table, one PR, aggregate warnings, no 31-legacy migration, `referenceUrl` metadata only) → folded. Code reviewer **pass 1 changes-required** (own+planner URL gate, recorded hotlink ledger, source-gap hosting, aggregate gap warnings, dead field) → fixed; **pass 2 approve** with 2 nits (planner warning count, planner host) → fixed. No designer/vision pass (no visual-direction change; one public policy-copy update). PR #56; not merged.
+Token reviewer **`adjust`** (mapping table, one PR, aggregate warnings, no 31-legacy migration, `referenceUrl` metadata only) → folded. Code reviewer **pass 1 changes-required** (own+planner URL gate, recorded hotlink ledger, source-gap hosting, aggregate gap warnings, dead field) → fixed; **pass 2 approve** with 2 nits (planner warning count, planner host) → fixed. No designer/vision pass (no visual-direction change; one public policy-copy update). PR #56 merged (`ea20b02`).
