@@ -15,7 +15,11 @@ const ALLOWED = [
  * batch may need to add its own creative-name entries. The no-drift test requires
  * them, so allow only this specific file (never general `tools/` changes).
  */
-const BATCH_SUPPORT_ALLOWED = [/^tools\/catalog-transform\/curated\.ts$/];
+const BATCH_SUPPORT_ALLOWED = [
+	/^tools\/catalog-transform\/curated\.ts$/,
+	// Per-item generated flat-art specs travel with their AVIFs (T-1).
+	/^tools\/asset-pipeline\/pedal-art\/specs\/[a-z0-9][a-z0-9-]*\.json$/,
+];
 
 /**
  * Owner-approved exception for the **pilot + delivery-pipeline** PR only. Normal

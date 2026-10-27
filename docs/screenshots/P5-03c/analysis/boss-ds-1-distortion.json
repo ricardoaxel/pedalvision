@@ -1,0 +1,50 @@
+{
+	"version": 1,
+	"kind": "pedal",
+	"footprintCm": {
+		"width": 7.3,
+		"height": 12.9
+	},
+	"image": {
+		"width": 453,
+		"height": 800,
+		"longEdge": 800,
+		"hasAlpha": true
+	},
+	"alpha": {
+		"transparentRatio": 0.0049199779249448124
+	},
+	"background": {
+		"color": {
+			"r": 0,
+			"g": 0,
+			"b": 0
+		},
+		"uniformity": 0.10711430855315747
+	},
+	"trim": {
+		"left": 0,
+		"top": 0,
+		"width": 453,
+		"height": 800
+	},
+	"whitespaceRatio": 0,
+	"aspect": {
+		"image": 0.56625,
+		"expected": 0.5658914728682171,
+		"error": 0.0006335616438356607,
+		"verdict": "pass"
+	},
+	"rotationDeg": 0,
+	"perspectiveError": 0.00011245431543438036,
+	"shapeTaper": true,
+	"shadowRatio": null,
+	"bright": {
+		"ratio": 0.0006537088281161275,
+		"edgeRatio": 0.0004078303425774878
+	},
+	"verdict": "accept",
+	"reasons": [],
+	"id": "boss-ds-1-distortion",
+	"sha256": "6b7dcf976e0188800a0e3c73d063a813202383f4de81beeca9d75d7305530e87"
+}

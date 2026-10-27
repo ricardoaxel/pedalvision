@@ -1,0 +1,50 @@
+{
+	"version": 1,
+	"kind": "pedal",
+	"footprintCm": {
+		"width": 10.8,
+		"height": 11.43
+	},
+	"image": {
+		"width": 756,
+		"height": 800,
+		"longEdge": 800,
+		"hasAlpha": true
+	},
+	"alpha": {
+		"transparentRatio": 0.0019576719576719576
+	},
+	"background": {
+		"color": {
+			"r": 0,
+			"g": 0,
+			"b": 0
+		},
+		"uniformity": 0.06724581724581724
+	},
+	"trim": {
+		"left": 0,
+		"top": 0,
+		"width": 756,
+		"height": 800
+	},
+	"whitespaceRatio": 0,
+	"aspect": {
+		"image": 0.945,
+		"expected": 0.9448818897637796,
+		"error": 0.00012499999999984466,
+		"verdict": "pass"
+	},
+	"rotationDeg": 0,
+	"perspectiveError": 0.00039942748726833966,
+	"shapeTaper": true,
+	"shadowRatio": null,
+	"bright": {
+		"ratio": 0.004028552552492884,
+		"edgeRatio": 0.0019448946515397082
+	},
+	"verdict": "accept",
+	"reasons": [],
+	"id": "meris-enzo",
+	"sha256": "d2357a7382f85cfd879261baa00d8e1cd0f89866ca39e8465d61568df0fd0203"
+}
