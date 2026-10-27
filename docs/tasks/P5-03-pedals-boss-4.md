@@ -1,6 +1,6 @@
 # P5-03: BOSS — pedals batch 4
 
-**Phase:** P5 · **Status:** in review — PR #58 (wave `boss-wave-3`, T-2 calibration) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #58 (wave `boss-wave-3`, T-2 calibration; image correction 2026-10-27) · **Model:** build-strong
 
 > The coordinator already ran `catalog:start` for `boss/boss-4` (total 26). Do
 > **not** run `catalog:start` again. Checkpoint inline after every item, finish
@@ -156,3 +156,27 @@ Read only the sections the task file points to; do not read whole docs.
   index 143) is **out of scope** for this batch; it is cleared in T-7/T-3.
 - If this batch uncovers a process/rule gap, do not edit the rules in the PR;
   propose the change + token review to the owner first.
+
+## Image correction (owner-directed, 2026-10-27)
+
+Policy: planner is a **recorded last-resort shipped source above generated art**;
+generated art is last. Replaced 5 images with the mapped Pedalplayground 800 PNGs:
+
+| id | before | after |
+| --- | --- | --- |
+| `boss-ge-6-graphic-equalizer` | generated | planner last-resort |
+| `boss-hf-2-hi-band-flanger` | generated | planner last-resort |
+| `boss-hm-2-heavy-metal` | generated | planner last-resort |
+| `boss-lm-2-limiter` | generated | planner last-resort |
+| `boss-jb-2-angry-driver` | official gallery card/caption | planner last-resort |
+
+- `--matte none` (transparent source), no body crop; AVIF q80 PSNR **40.62–43.96 dB**;
+  analyzer **accept**, `backgroundCard.suspected=false` for all 5.
+- Raw records: `kind: planner`, `status: last-resort`, recorded `sourceUrl`; the
+  last-resort gaps are counted (not gap-closed). Facts unchanged.
+- Deleted the 4 now-unused generated specs (JB-2 had no spec).
+- Gate fixes: `check-images` now accepts the planner's GitHub-raw mirror (same
+  rule already used by `catalog:license`), and the `backgroundCard` heuristic is
+  cutout-aware so bright-bodied transparent cutouts are not false-flagged.
+- Final source mix: **21 official + 1 community + 5 planner last-resort + 0 generated**;
+  52 AVIFs.

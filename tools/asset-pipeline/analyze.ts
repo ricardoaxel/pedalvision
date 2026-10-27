@@ -506,9 +506,12 @@ export async function analyzeImage(
 		// A tight, clean cutout may be almost fully opaque (e.g. generated art), so
 		// opacity alone is not a defect. A product card leaves an opaque, bright
 		// border strip; a clean tight cutout's opaque border is the (dark) product.
-		const suspected =
-			(bright.ratio >= 0.25 && uniformity <= 0.85) ||
-			(bright.ratio >= 0.2 && borderOpaqueRatio >= 0.6);
+		// For an already-transparent cutout with a bright body the border-uniformity
+		// signal is meaningless, so only a card that fills the frame is suspected.
+		const suspected = isCutout
+			? bright.ratio >= 0.2 && borderOpaqueRatio >= 0.6
+			: (bright.ratio >= 0.25 && uniformity <= 0.85) ||
+				(bright.ratio >= 0.2 && borderOpaqueRatio >= 0.6);
 		backgroundCard = {
 			opaqueRatio: effectiveOpaqueRatio,
 			borderOpaque: borderOpaqueRatio,

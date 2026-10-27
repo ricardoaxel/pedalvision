@@ -135,6 +135,26 @@ async function cardImage(): Promise<Buffer> {
 		.toBuffer();
 }
 
+/** A transparent cutout with a bright cream body (planner-style tight crop):
+ * the product touches the top/bottom, the margins stay transparent. */
+async function brightCutout(): Promise<Buffer> {
+	const width = 1000;
+	const height = 1000;
+	const data = Buffer.alloc(width * height * 4);
+	for (let y = 0; y < height; y++) {
+		for (let x = 217; x < 783; x++) {
+			const i = (y * width + x) * 4;
+			data[i] = 215;
+			data[i + 1] = 210;
+			data[i + 2] = 184;
+			data[i + 3] = 255;
+		}
+	}
+	return sharp(data, { raw: { width, height, channels: 4 } })
+		.png()
+		.toBuffer();
+}
+
 describe("image analyzer", () => {
 	it("accepts a top-down cutout on a white background", async () => {
 		const result = await analyzeImage(
@@ -327,6 +347,15 @@ describe("image analyzer", () => {
 		expect(result.verdict).toBe("flag");
 		expect(result.reasons.join(" ")).toMatch(/flag:possible perspective/);
 	});
+	it("does not mistake a bright transparent cutout for a background card", async () => {
+		const result = await analyzeImage(await brightCutout(), {
+			kind: "pedal",
+			...footprint,
+		});
+		expect(result.backgroundCard?.suspected).toBe(false);
+		expect(result.reasons.join(" ")).not.toMatch(/background card/);
+	});
+
 	it("flags a product card/caption instead of passing it", async () => {
 		const result = await analyzeImage(await cardImage(), {
 			kind: "pedal",

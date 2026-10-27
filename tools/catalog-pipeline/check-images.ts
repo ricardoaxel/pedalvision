@@ -44,8 +44,19 @@ const PLANNER_HOST = "pedalplayground.com";
 export function isPlannerUrl(url: string | undefined): boolean {
 	if (!url) return false;
 	try {
-		const hostname = new URL(url).hostname.toLowerCase();
-		return hostname === PLANNER_HOST || hostname.endsWith(`.${PLANNER_HOST}`);
+		const parsed = new URL(url);
+		const hostname = parsed.hostname.toLowerCase();
+		if (hostname === PLANNER_HOST || hostname.endsWith(`.${PLANNER_HOST}`)) {
+			return true;
+		}
+		// The planner's assets are also mirrored on GitHub raw.
+		if (
+			(hostname === "github.com" || hostname === "raw.githubusercontent.com") &&
+			/\/pedalplayground\//i.test(parsed.pathname)
+		) {
+			return true;
+		}
+		return false;
 	} catch {
 		return false;
 	}

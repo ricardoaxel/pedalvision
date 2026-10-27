@@ -153,32 +153,37 @@
     "notes": "Six-band analog graphic equalizer (100 Hz–3.2 kHz) with ±15 dB per band and no master level control.",
     "sources": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ge_product06.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
         "url": "https://www.tonehome.de/boss/ge-6-graphic-eq/",
         "kind": [
           "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ge6.png",
+        "kind": [
+          "image"
         ]
       }
     ],
     "imageCandidates": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ge_product06.png",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ge6.png",
         "priority": 1,
-        "notes": "Reference only (official 40th-anniversary render); not shipped."
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ge_product06.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "own",
-      "status": "chosen",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ge_product06.png",
-      "note": "Generated Catalog Specimen flat art; the official 40th-anniversary transparent product render was used only as a proportions/colour reference. Its 400 px source is below the 800 px image gate, so generated art is shipped; reference pixels were not shipped."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ge6.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2630,32 +2635,37 @@
     "notes": "Flanger voiced an octave above the standard band, with MANUAL, DEPTH, RATE and RESONANCE controls.",
     "sources": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hf_product02.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
         "url": "https://static.roland.com/assets/media/pdf/HF-2_OM.pdf",
         "kind": [
           "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hf2.png",
+        "kind": [
+          "image"
         ]
       }
     ],
     "imageCandidates": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hf_product02.png",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hf2.png",
         "priority": 1,
-        "notes": "Reference only (official 40th-anniversary render); not shipped."
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hf_product02.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "own",
-      "status": "chosen",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hf_product02.png",
-      "note": "Generated Catalog Specimen flat art; the official 40th-anniversary transparent product render was used only as a proportions/colour reference. Its 400 px source is below the 800 px image gate, so generated art is shipped; reference pixels were not shipped."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hf2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -2724,32 +2734,37 @@
     "notes": "Legendary high-gain distortion with DIST, LEVEL and separate COLOR MIX L/H tone controls; the basis of the “chainsaw” death-metal tone.",
     "sources": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hm_product02.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
         "url": "https://static.roland.com/assets/media/pdf/HM-2_OM.pdf",
         "kind": [
           "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hm2.png",
+        "kind": [
+          "image"
         ]
       }
     ],
     "imageCandidates": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hm_product02.png",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hm2.png",
         "priority": 1,
-        "notes": "Reference only (official 40th-anniversary render); not shipped."
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hm_product02.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "own",
-      "status": "chosen",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hm_product02.png",
-      "note": "Generated Catalog Specimen flat art; the official 40th-anniversary transparent product render was used only as a proportions/colour reference. Its 400 px source is below the 800 px image gate, so generated art is shipped; reference pixels were not shipped."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hm2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -3262,7 +3277,7 @@
         ]
       },
       {
-        "url": "https://static.roland.com/assets/images/products/gallery/jb-2_main_gal.jpg",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-jb2.png",
         "kind": [
           "image"
         ]
@@ -3270,17 +3285,23 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://static.roland.com/assets/images/products/gallery/jb-2_main_gal.jpg",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-jb2.png",
         "priority": 1,
-        "notes": "Shipped source."
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/jb-2_main_gal.jpg",
+        "priority": 2,
+        "notes": "Reference only (official gallery card with caption); not shipped."
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/jb-2_main_gal.jpg",
-      "status": "chosen"
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-jb2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
@@ -3350,32 +3371,37 @@
     "notes": "Analog VCA limiter with LEVEL, TONE, RELEASE and THRESHOLD controls; popular with bass players for transparent peak control.",
     "sources": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/lm_product02.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
         "url": "https://static.roland.com/assets/media/pdf/LM-2_OM.pdf",
         "kind": [
           "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-lm2.png",
+        "kind": [
+          "image"
         ]
       }
     ],
     "imageCandidates": [
       {
-        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/lm_product02.png",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-lm2.png",
         "priority": 1,
-        "notes": "Reference only (official 40th-anniversary render); not shipped."
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/lm_product02.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "own",
-      "status": "chosen",
-      "referenceUrl": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/lm_product02.png",
-      "note": "Generated Catalog Specimen flat art; the official 40th-anniversary transparent product render was used only as a proportions/colour reference. Its 400 px source is below the 800 px image gate, so generated art is shipped; reference pixels were not shipped."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-lm2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
     }
   },
   {
