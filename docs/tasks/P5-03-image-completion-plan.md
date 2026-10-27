@@ -1,6 +1,6 @@
 # P5-03 — Image completion plan (T-0)
 
-**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 in review (PR #55) · **Type:** plan/index (docs-only)
+**Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58) — boss-5 next, solo · **Type:** plan/index (docs-only)
 
 ## Purpose
 
@@ -9,17 +9,19 @@ completing BOSS, clearing the legacy hotlinked/mock images, and continuing the
 remaining brands. Every later session reads this file, `docs/progress.md`, and its
 own task file — no need to re-paste the whole plan.
 
-## Current state (2026-10-26)
+## Current state (2026-10-27)
 
-- `#50` (BOSS image repair) and `#51` (image licensing ledger) are merged; post-merge
-  build is current: **270 pedals / 15 boards**.
-- Ledger (`data/catalog/asset-ledger.json`): **285 items**
-  - **165 license-pending** = 73 self-hosted official + **92 hotlinked legacy**
-  - **31 replacement-needed** = BOSS legacy (no recorded source)
-  - **89 own** = 74 mock/static placeholder pedals + 15 boards (5 generated, 10 placeholder)
+- `#50` (BOSS image repair) and `#51` (image licensing ledger) are merged; **T-2 boss-4
+  (#58) and the 31-item BOSS legacy repair (#57) are merged**; post-merge build
+  `1c93cf5` verified: **296 pedals / 15 boards**.
+- Ledger (`data/catalog/asset-ledger.json`): **311 items**
+  - **222 license-pending** = 184 official + 33 planner last-resort + 1 community +
+    4 archive
+  - **89 own** = 74 mock/static placeholder pedals + 15 boards
+  - **0 replacement-needed / 0 legacy** (all 31 BOSS legacy repaired)
   - 0 licensed · 0 none
-- BOSS: **79/208 covered, 129 remaining** (5 batches of 24–28). The 31 legacy BOSS
-  items are the `replacement-needed` set.
+- BOSS: **105/208 covered, 103 remaining** (boss-5 = 26, then boss-6/7/8 ≈ 77). The
+  31 legacy BOSS items are repaired; **boss-5 is the next and last T-2 batch**.
 - Hotlinked by brand: EHX 18, MXR 18, Mooer 17 (+1 mock), TC 13 (+4 mock/static),
   JHS 12 (+6 mock/static), Walrus 7 (+11 mock), Joyo 5 (+13 mock), BOSS 1,
   Behringer 1.
@@ -129,7 +131,7 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-0b** | Parallel feature + catalog workstreams (docs-only) | **Merged (PR #54, squash `89c6a38`).** Rules + ownership matrix + `docs/tasks/feature-template.md`; 1 feature + up to 3 catalog batches; ≤2 PRs awaiting review; feature/combined budgets; gated on the T-2 calibration (T-0a merged). One PR. | T-0a |
 | **T-1** | Pedal flat-art + promote-legacy | **Merged (PR #55, squash `66222d4`).** Template family + art-spec schema + `asset:pedal-art` + `catalog:promote-legacy` + tests + `docs/catalog/pedal-art.md`; 2–3 pilots. Owner-approved "Catalog Specimen"; design-reviewer 2/2; code review 2/2. | T-0 |
 | **T-1a** | Image source policy (planner last-resort + recorded sources) | **Merged (PR #56, squash `ea20b02`).** Reverse the planner ban: official → retailer → community → planner **last-resort** → generated art only if none; 31 BOSS legacy remain repair-set. Always record source in the private raw catalog/ledger; ledger source-gap report. Docs/AGENTS/ADR-003/schema/gate/ledger + 26-record provenance backfill. One PR; token-reviewed. | T-1 |
-| **T-2** | BOSS wave 3 | **Next — unblocked (T-1a merged).** boss-4 (26 new) + boss/legacy-repair (31 existing) + boss-5 (26 new). 2-wide start (boss-4 + repair); boss-5 third on the true gate. Split repair 16+15 only if the first 8 items exceed ~6 min or need a third sheet. Include the 1 BOSS hotlinked seed if it falls in scope; otherwise clear it in T-7. **Starts only after T-1a merges.** One PR per batch. | T-0a, T-1, T-1a |
+| **T-2** | BOSS wave 3 | **boss-4 + legacy repair MERGED (#58/#57); boss-5 NEXT — solo.** boss-4 (26 new, 52 AVIFs: 20 official + 1 community + 5 planner + 0 generated; `catalog:ci` 296/15) and the legacy repair (31/31: 3 official + 28 planner + 0 generated/legacy) are merged; post-merge `1c93cf5` verified 296/15; ledger 311 (89 own + 222 license-pending; 33 planner; 0 legacy). **boss-5 (26 new, `md-2`…`od-3`) runs solo as a single-batch wave** — budget **600k soft / 800k hard**, 4 h / 12 min, ≤2 vision, ≤1 light review; no third slot, no feature stream. One PR; owner merges. T-3 starts only after boss-5 merges. | T-0a, T-1, T-1a |
 | **T-3** | BOSS wave 4 | boss-6 + boss-7 + boss-8 (77 items). 3-wide, third on gate. Re-baseline budgets from T-2 before launching. One PR per batch. | T-2 |
 | **T-4** | Cleanup wave 1 | EHX-1 (18 existing + 8 new) + MXR-1 (18 + 8) + Mooer-1 (18 [17 hotlinked + 1 mock] + 8) = 78 items; 54 existing (53 hotlinked + 1 mock). One PR per batch. | T-1 |
 | **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). One PR per batch. | T-1 |
@@ -144,9 +146,9 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 
 1. **T-0** (merged) → **T-0a** (merged) → **T-0b** (merged) → **T-1** (merged) →
    **T-1a** (planner last-resort + recorded sources) → **T-2**.
-2. **T-2 BOSS wave 3:** boss-4 + BOSS legacy repair start 2-wide; boss-5 third on the
-   gate. The repair is the hard part; split it 16+15 if the first 8 items exceed
-   ~6 min or need a third vision sheet.
+2. **T-2 BOSS wave 3:** boss-4 + BOSS legacy repair **merged**. **boss-5 runs solo**
+   as a single-batch wave (600k soft/800k hard); it never needs the third-slot gate
+   and no feature stream runs alongside it.
 3. **T-3 BOSS wave 4:** boss-6/7/8; BOSS complete.
 4. **T-4…T-7 cleanup waves:** each brand's first batch includes all its existing
    seed items + new; the 92 hotlinked and 74 mock are cleared.
@@ -162,7 +164,8 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
   ≤3.2M billed non-cache. Log billed tokens by class.
 - ≤2 vision passes/batch; ≤1 light code review (only T-0a/T-1/`curated.ts`;
   data-only batches skip); 4 h active; 12 min/item.
-- Start 2-wide; third only on the true-token gate. Do not raw-launch sessions.
+- Start 2-wide; third only on the true-token gate. boss-5 runs **solo** (no third slot).
+  Do not raw-launch sessions.
 - **Source gap gate:** planner last-resort and legacy/mock/hotlinked items are
   counted by `catalog:license-report`; target 0 at T-10, but the owner may waive
   planner last-resort items (they are recorded + quality-gated).
