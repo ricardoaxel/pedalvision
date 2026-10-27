@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "boss-md-2-mega-distortion",
+    "brand": "BOSS",
+    "name": "MD-2 Mega Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-md-2-mega-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Extreme high-gain distortion with a gain-boost switch, three-band tone stack and level control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/md-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md_2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-md-200-modulation",
+    "brand": "BOSS",
+    "name": "MD-200 Modulation",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-md-200-modulation.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus",
+      "flanger",
+      "phaser",
+      "vibrato",
+      "tremolo",
+      "rotary",
+      "wah",
+      "filter"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225
+    },
+    "usage": "guitar",
+    "notes": "Twelve modulation modes with 127 memories, stereo I/O, MIDI and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/md-200/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md-200_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-md-500-modulation",
+    "brand": "BOSS",
+    "name": "MD-500 Modulation",
+    "widthCm": 17,
+    "heightCm": 13.8,
+    "image": "boss-md-500-modulation.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus",
+      "flanger",
+      "phaser",
+      "vibrato",
+      "tremolo",
+      "rotary",
+      "filter",
+      "ring-mod",
+      "wah"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225
+    },
+    "usage": "guitar",
+    "notes": "Flagship modulation processor with 12 modes, 297 memories, stereo I/O, 5-pin MIDI and USB.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/md-500/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/md-500_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-me-90-guitar-multiple-effects",
+    "brand": "BOSS",
+    "name": "ME-90 Guitar Multiple Effects",
+    "widthCm": 44.3,
+    "heightCm": 22,
+    "image": "boss-me-90-guitar-multiple-effects.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "compressor",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "wah",
+      "tremolo"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 190
+    },
+    "usage": "guitar",
+    "notes": "97 effects, amp/cab modeling, 36+36 memories, a 38-second looper and a built-in expression pedal.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/me-90/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/me-90_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-me-90b-guitar-multiple-effects",
+    "brand": "BOSS",
+    "name": "ME-90B Bass Multiple Effects",
+    "widthCm": 44.3,
+    "heightCm": 22,
+    "image": "boss-me-90b-guitar-multiple-effects.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "compressor",
+      "overdrive",
+      "distortion",
+      "filter",
+      "synth",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "wah"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 195
+    },
+    "usage": "bass",
+    "notes": "Bass multi-effects with 93 effects, XLR balanced output, 36+36 memories and a built-in expression pedal.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/me-90b/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/me-90b_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ml-2-metal-core",
+    "brand": "BOSS",
+    "name": "ML-2 Metal Core",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ml-2-metal-core.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "High-gain metal distortion with low/high shelving EQ and a wide gain range.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ml-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ml_2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-mo-2-multi-overtone",
+    "brand": "BOSS",
+    "name": "MO-2 Multi Overtone",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-mo-2-multi-overtone.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave",
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Multi-overtone/octave generator with detune, tone and balance controls plus two outputs.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/mo-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mo-2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ms-3-multieffects-switcher",
+    "brand": "BOSS",
+    "name": "MS-3 Multi Effects Switcher",
+    "widthCm": 27.5,
+    "heightCm": 9.7,
+    "image": "boss-ms-3-multieffects-switcher.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller",
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 280
+    },
+    "usage": "guitar",
+    "notes": "Combines a 112-effect multi-effects engine with a three-loop pedal switcher and 200 patches.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ms-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ms-3_F_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-mt-2-3a-metal-zone-anniversary",
+    "brand": "BOSS",
+    "name": "MT-2-3A Metal Zone (30th Anniversary)",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-mt-2-3a-metal-zone-anniversary.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "guitar",
+    "notes": "Limited 30th-anniversary Metal Zone with black body, grey lettering and a vintage silver battery thumbscrew.",
+    "year": 2021,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.roland.com/RolandComSite/media/global/release/pdf/2021/20210520_1_SD-1-4A_MT-2-3A.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mt23a.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-mt-2-metal-zone",
+    "brand": "BOSS",
+    "name": "MT-2 Metal Zone",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-mt-2-metal-zone.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "guitar",
+    "notes": "Iconic high-gain distortion with a three-band active EQ and semi-parametric midrange.",
+    "year": 1991,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/mt-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mt-2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-mt-2w-metal-zone-waza-craft",
+    "brand": "BOSS",
+    "name": "MT-2W Metal Zone Waza Craft",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-mt-2w-metal-zone-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft Metal Zone with a Standard/Custom mode switch and premium analog components.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/mt-2w/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/mt-2w_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-mz-2-digital-metalizer",
+    "brand": "BOSS",
+    "name": "MZ-2 Digital Metalizer",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-mz-2-digital-metalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion",
+      "delay",
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "notes": "Vintage digital distortion with six modes plus doubling/chorus and two outputs.",
+    "year": 1987,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201929189-MZ-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/MZ-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-mz2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-nf-1-noise-gate",
+    "brand": "BOSS",
+    "name": "NF-1 Noise Gate",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-nf-1-noise-gate.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "gate"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 3.9
+    },
+    "usage": "guitar",
+    "notes": "Vintage noise gate with SENS and DECAY controls and FET switching.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201967429-NF-1-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/NF-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-nf1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ns-1x-noise-suppressor",
+    "brand": "BOSS",
+    "name": "NS-1X Noise Suppressor",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ns-1x-noise-suppressor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "gate"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Modern noise suppressor with three modes, decay/damp controls and a send/return loop.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ns-1x/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ns-1x_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ns-2-noise-suppressor",
+    "brand": "BOSS",
+    "name": "NS-2 Noise Suppressor",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ns-2-noise-suppressor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "gate"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Classic noise suppressor with a send/return loop, mode switch and decay/threshold controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ns-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ns2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-oc-2-octave",
+    "brand": "BOSS",
+    "name": "OC-2 Octave",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-oc-2-octave.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4
+    },
+    "usage": "guitar",
+    "notes": "Legendary mono octave with independent −1 and −2 octave levels plus direct level.",
+    "year": 1982,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201967419-OC-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-oc-20g-poly-octave",
+    "brand": "BOSS",
+    "name": "OC-20G Poly Octave",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-oc-20g-poly-octave.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave",
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "guitar",
+    "notes": "World’s first polyphonic octave pedal for GK-equipped guitars, with per-string octave assignment, guitar simulations and distortion.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/oc-20g/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.manualslib.com/manual/19669/Boss-Poly-Octave-Oc-20g.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-oc20g.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-oc-3-super-octave",
+    "brand": "BOSS",
+    "name": "OC-3 Super Octave",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-oc-3-super-octave.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "both",
+    "notes": "Polyphonic octave with guitar/bass inputs, DIRECT OUT and a four-mode control.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/oc-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/oc_3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-oc-5-octave",
+    "brand": "BOSS",
+    "name": "OC-5 Octave",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-oc-5-octave.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "both",
+    "notes": "Modern octave with vintage OC-2 and polyphonic modes, octave-up and a direct output.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/oc-5/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/oc-5_f_gal_1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-od-1-overdrive",
+    "brand": "BOSS",
+    "name": "OD-1 Overdrive",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-od-1-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 3.5
+    },
+    "usage": "guitar",
+    "notes": "The original BOSS overdrive: asymmetric clipping, LEVEL and OVER DRIVE controls.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201948019-OD-1-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/global/products/box-40/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/OD-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-od-1x-overdrive",
+    "brand": "BOSS",
+    "name": "OD-1X Overdrive",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-od-1x-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Digital MDP overdrive with LEVEL, LOW, HIGH and DRIVE controls and wide dynamic range.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-1x/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od-1x_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-od-2-turbo-overdrive",
+    "brand": "BOSS",
+    "name": "OD-2 Turbo Overdrive",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-od-2-turbo-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "Mid-1980s overdrive with a TURBO switch that adds a higher-gain distortion voice.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201932439-OD-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/OD-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-od-20-drive-zone",
+    "brand": "BOSS",
+    "name": "OD-20 Drive Zone",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-od-20-drive-zone.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 85
+    },
+    "usage": "guitar",
+    "notes": "Twin-footswitch drive workstation with 22 overdrive/distortion models, four memories and amp control.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-20/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od20_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-od-200-hybrid-drive",
+    "brand": "BOSS",
+    "name": "OD-200 Hybrid Drive",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-od-200-hybrid-drive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion",
+      "boost",
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 220
+    },
+    "usage": "guitar",
+    "notes": "Hybrid analog/digital drive with 12 modes, 127 memories, MIDI and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-200/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od-200_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-od-2r-turbo-overdrive",
+    "brand": "BOSS",
+    "name": "OD-2R Turbo Overdrive",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-od-2r-turbo-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 16
+    },
+    "usage": "guitar",
+    "notes": "OD-2 variant with a REMOTE jack for external turbo switching and a PSA-compatible power section.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://fr.audiofanzine.com/overdrive-guitare/boss/od-2r/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/OD-2R_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-od2r.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-od-3-overdrive",
+    "brand": "BOSS",
+    "name": "OD-3 Overdrive",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-od-3-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "notes": "Smooth, natural overdrive with DRIVE, TONE and LEVEL controls and a wide gain range.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/od-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/od_3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]

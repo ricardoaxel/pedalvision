@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 222 |
+| license-pending | 248 |
 | own | 89 |
 
-Hosting: hotlinked 92 · mock 84 · static 135
+Hosting: hotlinked 92 · mock 84 · static 161
 
-Source kind: archive 4 · community 1 · official 184 · own 89 · planner 33
+Source kind: archive 4 · community 1 · official 202 · own 89 · planner 41
 
-Needs improvement: 209 (hotlinked 92 · mock 84 · planner 33)
+Needs improvement: 217 (hotlinked 92 · mock 84 · planner 41)
 
 ## Aclam
 
@@ -130,6 +130,32 @@ Needs improvement: 209 (hotlinked 92 · mock 84 · planner 33)
 | `boss-lm-2-limiter` | LM-2 Limiter | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-lmb-3-bass-limiter-enhancer` | LMB-3 Bass Limiter Enhancer | license-pending | static | official | — | — |
 | `boss-ls-2-line-selector` | LS-2 Line Selector | license-pending | static | official | — | — |
+| `boss-md-2-mega-distortion` | MD-2 Mega Distortion | license-pending | static | official | — | — |
+| `boss-md-200-modulation` | MD-200 Modulation | license-pending | static | official | — | — |
+| `boss-md-500-modulation` | MD-500 Modulation | license-pending | static | official | — | — |
+| `boss-me-90-guitar-multiple-effects` | ME-90 Guitar Multiple Effects | license-pending | static | official | — | — |
+| `boss-me-90b-guitar-multiple-effects` | ME-90B Bass Multiple Effects | license-pending | static | official | — | — |
+| `boss-ml-2-metal-core` | ML-2 Metal Core | license-pending | static | official | — | — |
+| `boss-mo-2-multi-overtone` | MO-2 Multi Overtone | license-pending | static | official | — | — |
+| `boss-ms-3-multieffects-switcher` | MS-3 Multi Effects Switcher | license-pending | static | official | — | — |
+| `boss-mt-2-3a-metal-zone-anniversary` | MT-2-3A Metal Zone (30th Anniversary) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-mt-2-metal-zone` | MT-2 Metal Zone | license-pending | static | official | — | — |
+| `boss-mt-2w-metal-zone-waza-craft` | MT-2W Metal Zone Waza Craft | license-pending | static | official | — | — |
+| `boss-mz-2-digital-metalizer` | MZ-2 Digital Metalizer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-nf-1-noise-gate` | NF-1 Noise Gate | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ns-1x-noise-suppressor` | NS-1X Noise Suppressor | license-pending | static | official | — | — |
+| `boss-ns-2-noise-suppressor` | NS-2 Noise Suppressor | license-pending | static | official | — | — |
+| `boss-oc-2-octave` | OC-2 Octave | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-oc-20g-poly-octave` | OC-20G Poly Octave | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-oc-3-super-octave` | OC-3 Super Octave | license-pending | static | official | — | — |
+| `boss-oc-5-octave` | OC-5 Octave | license-pending | static | official | — | — |
+| `boss-od-1-overdrive` | OD-1 Overdrive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-od-1x-overdrive` | OD-1X Overdrive | license-pending | static | official | — | — |
+| `boss-od-2-turbo-overdrive` | OD-2 Turbo Overdrive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-od-20-drive-zone` | OD-20 Drive Zone | license-pending | static | official | — | — |
+| `boss-od-200-hybrid-drive` | OD-200 Hybrid Drive | license-pending | static | official | — | — |
+| `boss-od-2r-turbo-overdrive` | OD-2R Turbo Overdrive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-od-3-overdrive` | OD-3 Overdrive | license-pending | static | official | — | — |
 | `boss-psm-5-power-supply-master-switch` | PSM-5 Power Supply & Master Switch | license-pending | hotlinked | official | yes | BOSS batch |
 
 ## Behringer
@@ -467,7 +493,7 @@ Needs improvement: 209 (hotlinked 92 · mock 84 · planner 33)
 | BoardMods | own | 1 |
 | BOSS | official | 1 |
 | BOSS | own | 1 |
-| BOSS | planner | 33 |
+| BOSS | planner | 41 |
 | Caseman | own | 1 |
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |
