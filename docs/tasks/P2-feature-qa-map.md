@@ -1,6 +1,6 @@
 # P2 — Feature inventory + E2E impact map
 
-**Phase:** P2 follow-up · **Status:** in progress · **Model:** light · **Feature:** F-19
+**Phase:** P2 follow-up · **Status:** in review — PR #64 · **Model:** light · **Feature:** F-19
 
 ## Goal
 
@@ -85,13 +85,13 @@ feature → workflow → E2E matrix, kept current by every feature PR.
 **`docs/progress.md`** — when the PR opens:
 
 ```md
-- **F-19 — Feature inventory + E2E impact map — in review — PR #N.** Added `docs/features/README.md` (feature inventory, workflow → code → data → E2E, change-impact table, new-object-type checklist, known-gap ledger, E2E suite map); added 2 targeted E2E gaps (cable-aware selected-board export; inline custom-board share/save-copy). No catalog/shared-doc edits. Checks: lint / typecheck / test / build; e2e export + share green.
+- **F-19 — Feature inventory + E2E impact map — in review — PR #64.** Added `docs/features/README.md` (feature inventory, workflow → code → data → E2E, change-impact table, new-object-type checklist, known-gap ledger, E2E suite map); added 2 targeted E2E gaps (cable-aware selected-board export; inline custom-board share/save-copy). No catalog/shared-doc edits. Checks: lint / typecheck / test / build; e2e export + share green.
 ```
 
 and update the WS line to:
 
 ```md
-**WS 2026-10-27:** feature F-19 — in review (PR #N) · catalog T-3 — next (3-wide) · awaiting review 1 (feature 1/catalog 0) · billed feature ≈<tokens> · gate: 1 feature PR (cap 1), 0 catalog PRs.
+**WS 2026-10-27:** feature F-19 — in review (PR #64) · catalog T-3 — next (3-wide) · awaiting review 1 (feature 1/catalog 0) · billed feature ≈370k (builder 280k + review 90k) · gate: 1 feature PR (cap 1), 0 catalog PRs.
 ```
 
 ## Notes
