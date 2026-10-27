@@ -8,7 +8,7 @@ const USAGE = `asset-analyze — deterministic image quality report (P5-02)
 Usage:
   asset-analyze --input <image> --width-cm <n> --height-cm <n>
                 [--kind pedal|board] [--id <catalog-id>] [--tolerance <0-255>]
-                [--out <report.json>]
+                [--source photo|planner|generated] [--out <report.json>]
 
 Checks: min 800px long edge, background uniformity, alpha, trim bbox,
 aspect vs the cm footprint (<=10% pass, 10-15% flag, >15% reject),
@@ -22,6 +22,7 @@ type Args = {
 	kind: "pedal" | "board";
 	id?: string;
 	tolerance?: number;
+	sourceKind: "photo" | "planner" | "generated";
 	out?: string;
 	help: boolean;
 };
@@ -36,7 +37,7 @@ function readNumber(argv: string[], index: number, flag: string): number {
 }
 
 function parseArgs(argv: string[]): Args {
-	const args: Args = { kind: "pedal", help: false };
+	const args: Args = { kind: "pedal", sourceKind: "photo", help: false };
 	for (let i = 0; i < argv.length; i++) {
 		const arg = argv[i];
 		switch (arg) {
@@ -68,6 +69,16 @@ function parseArgs(argv: string[]): Args {
 					throw new Error("--tolerance must be an integer 0-255");
 				}
 				args.tolerance = value;
+				break;
+			}
+			case "--source": {
+				const value = argv[++i];
+				if (value !== "photo" && value !== "planner" && value !== "generated") {
+					throw new Error(
+						`--source must be photo|planner|generated (got "${value}")`,
+					);
+				}
+				args.sourceKind = value;
 				break;
 			}
 			case "--out":
@@ -108,6 +119,7 @@ async function main(): Promise<void> {
 		widthCm: args.widthCm,
 		heightCm: args.heightCm,
 		tolerance: args.tolerance,
+		sourceKind: args.sourceKind,
 	});
 	const output = { ...report, id, sha256 };
 

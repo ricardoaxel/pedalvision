@@ -24,11 +24,11 @@ This is a **pedal** policy. Board batches keep their generated-flat-art default.
 5. **Generated flat pedal art** (`Catalog Specimen`) — only when none of 1–4
    exists or passes the quality gate.
 
-**Repair set exception:** the **31 BOSS legacy** items stay
-`pending-replacement`; T-2 repairs them to official/retailer/community, or
-generated art if none. The existing planner asset is **never kept** for those
-31. Planner may only be a documented reference for their generated art if no
-other reference exists.
+**Repair set (same hierarchy, no exception):** the **31 BOSS legacy** items stay
+`pending-replacement`; T-2 repairs them with the normal order — official →
+retailer → community → **recorded planner last-resort** → generated art only if
+none. The existing unrecorded planner asset is **never kept**; re-source it and
+record the exact URL. Generated art is last for these items too.
 
 ## Ledger mapping (decided before coding)
 

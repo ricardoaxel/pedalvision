@@ -105,6 +105,48 @@ describe("image provenance gate", () => {
 		expect(warnings[0]?.message).toMatch(/last resort/);
 	});
 
+	it("allows a planner last-resort recorded via the GitHub raw mirror", () => {
+		const mirror =
+			"https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dc2.png";
+		const { issues, warnings } = checkImageProvenance([
+			{
+				id: "x",
+				imageCandidates: [{ url: mirror }],
+				sources: [{ url: mirror, kind: ["image"] }],
+				imageProvenance: {
+					kind: "planner",
+					sourceUrl: mirror,
+					status: "last-resort",
+				},
+			},
+		]);
+		expect(issues).toHaveLength(0);
+		expect(warnings[0]?.category).toBe("planner-last-resort");
+	});
+
+	it("rejects a planner mirror recorded as official/community", () => {
+		const mirror =
+			"https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-dc2.png";
+		const { issues } = checkImageProvenance([
+			{
+				id: "x",
+				imageProvenance: {
+					kind: "official",
+					sourceUrl: mirror,
+					status: "chosen",
+				},
+				sources: [{ url: mirror, kind: ["image"] }],
+			},
+		]);
+		expect(
+			issues.some((issue) =>
+				issue.message.includes(
+					"planner image URL but imageProvenance.kind=official",
+				),
+			),
+		).toBe(true);
+	});
+
 	it("rejects a planner URL mislabelled as generated art", () => {
 		const { issues } = checkImageProvenance([
 			{

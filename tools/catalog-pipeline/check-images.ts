@@ -1,6 +1,7 @@
 import type { Dirent } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { isPlannerUrl } from "../../src/catalog/plannerUrl.ts";
 import {
 	RawBoardBatchSchema,
 	RawPedalBatchSchema,
@@ -39,17 +40,7 @@ type ProvenanceRecord = {
 	};
 };
 
-const PLANNER_HOST = "pedalplayground.com";
-
-export function isPlannerUrl(url: string | undefined): boolean {
-	if (!url) return false;
-	try {
-		const hostname = new URL(url).hostname.toLowerCase();
-		return hostname === PLANNER_HOST || hostname.endsWith(`.${PLANNER_HOST}`);
-	} catch {
-		return false;
-	}
-}
+export { isPlannerUrl };
 
 export function checkImageProvenance(
 	records: ProvenanceRecord[],

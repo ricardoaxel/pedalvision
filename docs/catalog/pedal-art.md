@@ -13,9 +13,10 @@ no per-batch designer loop.
 
 Use generated flat art **only when no usable image exists at all**: official,
 authorized retailer, user/community and **planner last-resort** have all been
-checked and none passes the quality gate (the 31 BOSS legacy repair set is the
-exception — it must be repaired to official/retailer/community, or generated if
-none, and never keeps its old planner asset).
+checked and none passes the quality gate. The **31 BOSS legacy repair set uses
+the same hierarchy** (official → retailer → community → recorded planner
+last-resort → generated only if none); never keep its old unrecorded planner
+asset.
 
 - **Pedal source hierarchy:** official brand/press/product-support → authorized
   retailer → user/community with a recorded source → **planner/Pedalplayground
@@ -158,7 +159,7 @@ picker thumb stays clean; the 800 master carries the full control set.
 ```sh
 pnpm asset:analyze --input public/pedal-assets/pedals/800/<id>.avif \
   --kind pedal --width-cm <w> --height-cm <h> --id <id> \
-  --out work/catalog/analyze/<id>.json
+  --out work/catalog/analyze/<id>.json --source generated
 ```
 
 Require:

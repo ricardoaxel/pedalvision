@@ -1,0 +1,3636 @@
+[
+  {
+    "id": "boss-ga-fc-foot-controller",
+    "brand": "BOSS",
+    "name": "GA-FC Foot Controller",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 39.2,
+    "heightCm": 8.1,
+    "dimensionsSource": "BOSS official specifications: 392 (W) × 81 (D) × 49 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "EXP PEDAL FX",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1
+      },
+      {
+        "label": "EXP PEDAL VOLUME",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1
+      },
+      {
+        "label": "FOOT CONTROL",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "channels": 1
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "optional": {
+      "control": {
+        "expression": 2,
+        "footswitch": true,
+        "footswitchType": "6 footswitches (CH1–CH4, FX, VOLUME)"
+      },
+      "physical": {
+        "weightG": 1000
+      }
+    },
+    "usage": "guitar",
+    "year": 2014,
+    "status": "current",
+    "notes": "Six-button foot controller for compatible BOSS amplifiers; connects to the amp’s FOOT CONTROL jack and provides two expression-pedal inputs.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ga-fc/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/support/by_product/ga-fc/product_images/",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/media/zip/ga-fc.zip",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/media/zip/ga-fc.zip",
+      "status": "chosen",
+      "note": "Hi-res 600 dpi official BOSS support image (GA-FC_F_600_TMP.jpg); light-grey card/shadow removed with component matte."
+    }
+  },
+  {
+    "id": "boss-ge-6-graphic-equalizer",
+    "brand": "BOSS",
+    "name": "GE-6 Graphic Equalizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS original compact enclosure: 70 (W) × 125 (D) × 55 (H) mm (owner’s manual).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "color": "cream",
+    "year": 1978,
+    "status": "discontinued",
+    "notes": "Six-band analog graphic equalizer (100 Hz–3.2 kHz) with ±15 dB per band and no master level control.",
+    "sources": [
+      {
+        "url": "https://www.tonehome.de/boss/ge-6-graphic-eq/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ge6.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ge6.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/ge_product06.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ge6.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-ge-7-graphic-equalizer",
+    "brand": "BOSS",
+    "name": "GE-7 Graphic Equalizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      }
+    },
+    "usage": "guitar",
+    "color": "grey",
+    "year": 1981,
+    "status": "current",
+    "notes": "Seven-band graphic equalizer with LEVEL control, ±15 dB per band and a wide 100 Hz–6.4 kHz range.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ge-7/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ge_7_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ge_7_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ge_7_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-geb-7-bass-equalizer",
+    "brand": "BOSS",
+    "name": "GEB-7 Bass Equalizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000
+    },
+    "optional": {
+      "physical": {
+        "weightG": 400
+      }
+    },
+    "usage": "bass",
+    "color": "brown",
+    "year": 1992,
+    "status": "current",
+    "notes": "Seven-band bass equalizer with ±15 dB per band and a LEVEL control, voiced for bass frequencies.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/geb-7/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/geb_7_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/geb_7_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/geb_7_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gigmaster-5",
+    "brand": "BOSS",
+    "name": "Gigcaster 5",
+    "category": "pedal",
+    "deviceType": "interface",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "vocal"
+    ],
+    "effectTypes": [
+      "mixer",
+      "utility"
+    ],
+    "widthCm": 17.7,
+    "heightCm": 21.6,
+    "dimensionsSource": "BOSS official specifications: 177 (W) × 216 (D) × 78 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GUITAR",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "MIC 1",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": true
+      },
+      {
+        "label": "MIC 2",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "channels": 1,
+        "balanced": true
+      },
+      {
+        "label": "INST L",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "INST R",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MAIN OUT L",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MAIN OUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES 1",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "PHONES 2",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "FOOT SW",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 1600,
+      "connector": "barrel",
+      "usbBusPower": true,
+      "note": "1.6 A with phantom power; 1.5 A without; PSD-series AC adaptor or USB bus power."
+    },
+    "io": {
+      "inputs": 4,
+      "outputs": 2,
+      "stereo": true,
+      "level": "line",
+      "headphone": true,
+      "auxIn": true,
+      "phantomPower": true
+    },
+    "optional": {
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "wireless": {
+        "bluetoothAudio": true,
+        "app": "Gigcaster App"
+      },
+      "control": {
+        "footswitch": true
+      }
+    },
+    "usage": "guitar",
+    "year": 2023,
+    "status": "current",
+    "notes": "Desktop audio streaming mixer for musicians with guitar/mic/instrument inputs, onboard GT-derived effects and USB-C streaming.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gigcaster_5/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gigcaster_5_gal_top.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gigcaster_5_gal_top.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "aliases": [
+      "Gigmaster 5"
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gigcaster_5_gal_top.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gigmaster-8",
+    "brand": "BOSS",
+    "name": "Gigcaster 8",
+    "category": "pedal",
+    "deviceType": "interface",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "vocal"
+    ],
+    "effectTypes": [
+      "mixer",
+      "utility"
+    ],
+    "widthCm": 21.7,
+    "heightCm": 26.7,
+    "dimensionsSource": "BOSS official specifications: 217 (W) × 267 (D) × 80 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GUITAR",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "CH 1",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "combo XLR/TRS"
+      },
+      {
+        "label": "CH 2",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "combo XLR/TRS"
+      },
+      {
+        "label": "CH 3",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "combo XLR/TRS"
+      },
+      {
+        "label": "CH 4",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "combo XLR/TRS"
+      },
+      {
+        "label": "MOBILE",
+        "kind": "in",
+        "connector": "3.5mm",
+        "signal": "audio"
+      },
+      {
+        "label": "MAIN OUT L",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MAIN OUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES 1",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "PHONES 2",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "PHONES 3",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "PHONES 4",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "FOOT SW",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 1800,
+      "connector": "barrel",
+      "usbBusPower": true,
+      "note": "1.8 A with phantom power; 1.6 A without; PSD-series AC adaptor or USB bus power."
+    },
+    "io": {
+      "inputs": 6,
+      "outputs": 2,
+      "stereo": true,
+      "level": "line",
+      "headphone": true,
+      "auxIn": true,
+      "phantomPower": true
+    },
+    "optional": {
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "wireless": {
+        "bluetoothAudio": true,
+        "app": "Gigcaster App"
+      },
+      "physical": {
+        "display": "Colour graphic LCD touchscreen (480 × 272)"
+      }
+    },
+    "usage": "guitar",
+    "year": 2023,
+    "status": "current",
+    "notes": "Eight-channel desktop streaming mixer with four combo inputs, guitar/bass effects, vocal processing, sound pads and microSD recording.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gigcaster_8/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gigcaster_8_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gigcaster_8_gal_01.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "aliases": [
+      "Gigmaster 8"
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gigcaster_8_gal_01.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gm-800-guitar-synthesizer",
+    "brand": "BOSS",
+    "name": "GM-800 Guitar Synthesizer",
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "synth"
+    ],
+    "widthCm": 24.6,
+    "heightCm": 13.4,
+    "dimensionsSource": "BOSS official specifications: 246 (W) × 134 (D) × 63 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GK IN",
+        "kind": "in",
+        "connector": "trs",
+        "signal": "audio",
+        "note": "for BGK cable only"
+      },
+      {
+        "label": "GK OUT",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "note": "for BGK cable only"
+      },
+      {
+        "label": "OUTPUT L/PHONES",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "OUTPUT R/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "CTL 3, 4/EXP 1",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "CTL 5, 6/EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-b",
+        "signal": "usb"
+      },
+      {
+        "label": "USB MEMORY",
+        "kind": "ctrl",
+        "connector": "usb-a",
+        "signal": "usb"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 840,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "line"
+    },
+    "optional": {
+      "midi": {
+        "din5": "in-out",
+        "din": true,
+        "usb": true,
+        "programChange": true,
+        "cc": true
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 2,
+        "footswitch": true
+      },
+      "wireless": {
+        "app": "BOSS Tone Studio"
+      }
+    },
+    "usage": "guitar",
+    "year": 2023,
+    "status": "current",
+    "notes": "Desktop guitar synthesizer with GK serial pickup input, 128-voice polyphony and deep synthesis/effects processing.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gm-800/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gm-800_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gm-800_gal_01.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gm-800_gal_01.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gp-10-guitar-processor",
+    "brand": "BOSS",
+    "name": "GP-10 Guitar Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "synth",
+      "pitch",
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 25.1,
+    "heightCm": 20.7,
+    "dimensionsSource": "BOSS official specifications: 251 (W) × 207 (D) × 93 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "GK IN",
+        "kind": "in",
+        "connector": "other",
+        "signal": "audio",
+        "note": "13-pin DIN GK connector"
+      },
+      {
+        "label": "GUITAR IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "GUITAR OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "AUX IN",
+        "kind": "in",
+        "connector": "3.5mm",
+        "signal": "audio"
+      },
+      {
+        "label": "EXP 2/CTL 3, 4",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "usb-b",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 350,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "auxIn": true
+    },
+    "optional": {
+      "midi": {
+        "usb": true,
+        "programChange": true,
+        "cc": true
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 1900
+      }
+    },
+    "usage": "guitar",
+    "year": 2014,
+    "status": "discontinued",
+    "notes": "GK-compatible guitar processor with COSM amp models, guitar synth, alternate tuning, poly effects and a built-in expression pedal.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gp-10/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gp-10_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gp-10_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gp-10_top_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gp-20-amp-factory",
+    "brand": "BOSS",
+    "name": "GP-20 Amp Factory",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus"
+    ],
+    "widthCm": 17.3,
+    "heightCm": 15.5,
+    "dimensionsSource": "Catalog inventory footprint for the GP-20 (173 × 155 mm); official product page is retired.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true
+    },
+    "optional": {
+      "note": "Older half-rack-style desktop/floor guitar amp factory; detailed power and MIDI data were not on the retired official page."
+    },
+    "usage": "guitar",
+    "year": 1996,
+    "status": "discontinued",
+    "notes": "Early BOSS amp-modeling multi-effect with 16 amp types, effects and stereo outputs.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gp-20/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gp_20_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gp_20_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gp_20_top_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gt-1-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-1 Guitar Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "widthCm": 30.5,
+    "heightCm": 15.2,
+    "dimensionsSource": "BOSS official specifications: 305 (W) × 152 (D) × 56 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "CTL2, 3/EXP2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "AUX IN",
+        "kind": "in",
+        "connector": "3.5mm",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-b",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×4"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "auxIn": true
+    },
+    "optional": {
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 1300
+      }
+    },
+    "usage": "guitar",
+    "year": 2017,
+    "status": "current",
+    "notes": "Compact floor multi-effects with 108 effects, amp models, 99 user patches, four AA batteries or AC power.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gt-1_F_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gt-1_F_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gt-1_F_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gt-1000-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-1000 Guitar Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "synth"
+    ],
+    "widthCm": 46.2,
+    "heightCm": 24.8,
+    "dimensionsSource": "BOSS official specifications: 462 (W) × 248 (D) × 70 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MAIN OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MAIN OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SUB OUTPUT L",
+        "kind": "out",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true
+      },
+      {
+        "label": "SUB OUTPUT R",
+        "kind": "out",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true
+      },
+      {
+        "label": "SEND 1",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN 1",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND 2",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN 2",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "CTL 4, 5/EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "CTL 6, 7/EXP 3",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "AMP CTL 1, 2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-b",
+        "signal": "usb"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 1200,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 4,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "effectsLoop": {
+        "send": 2,
+        "return": 2
+      },
+      "fourCableMethod": true
+    },
+    "optional": {
+      "midi": {
+        "din5": "in-out",
+        "din": true,
+        "usb": true,
+        "programChange": true,
+        "cc": true
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 3,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 3600,
+        "display": "Graphic LCD"
+      },
+      "routing": {
+        "ampModeling": true,
+        "cabModeling": true,
+        "irSlots": 16
+      }
+    },
+    "usage": "guitar",
+    "year": 2018,
+    "status": "current",
+    "notes": "Flagship floor guitar processor with AIRD amp modeling, dual effects loops, XLR sub outputs, MIDI and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-1000/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/products/gt-1000/images/gt-1000_front_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/products/gt-1000/images/gt-1000_front_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/products/gt-1000/images/gt-1000_front_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gt-1000core-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-1000CORE Guitar Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch",
+      "synth"
+    ],
+    "widthCm": 17.3,
+    "heightCm": 13.5,
+    "dimensionsSource": "BOSS official specifications: 173 (W) × 135 (D) × 65 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT L/MONO",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "INPUT R",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L/PHONES",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "SEND 1",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN 1",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND 2",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN 2",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "CTL 2, 3/EXP 1",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "CTL 4, 5/EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "midiType": "a"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "midiType": "a"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "micro-usb",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 670,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "effectsLoop": {
+        "send": 2,
+        "return": 2
+      },
+      "fourCableMethod": true
+    },
+    "optional": {
+      "midi": {
+        "trs": "a",
+        "din": false,
+        "usb": false,
+        "programChange": true,
+        "cc": true,
+        "note": "Stereo-mini TRS MIDI IN/OUT (Type A)."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 2,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 920,
+        "display": "Graphic LCD 256 × 80"
+      },
+      "routing": {
+        "ampModeling": true,
+        "cabModeling": true,
+        "irSlots": 16
+      }
+    },
+    "usage": "guitar",
+    "year": 2020,
+    "status": "current",
+    "notes": "Compact GT-1000 engine with dual effects loops, stereo I/O, IR loading, MIDI and USB audio; three footswitches plus an expression input.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-1000core/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarchalk.com/boss-gt-1000core-multi-effects-settings/",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.guitarchalk.com/wp-content/uploads/2024/08/Boss-GT-1000CORE.png",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "community",
+      "status": "chosen",
+      "sourceUrl": "https://www.guitarchalk.com/wp-content/uploads/2024/08/Boss-GT-1000CORE.png",
+      "note": "Community top-down product image (659 px long edge) upscaled 1.21× to the 800 master; no official flat top-down exists for this model."
+    }
+  },
+  {
+    "id": "boss-gt-8-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GT-8 Guitar Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "widthCm": 51.5,
+    "heightCm": 26.1,
+    "dimensionsSource": "BOSS official specifications: 515 (W) × 261 (D) × 75 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DIGITAL OUT",
+        "kind": "out",
+        "connector": "rca",
+        "signal": "digital-audio"
+      },
+      {
+        "label": "AMP CONTROL",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "SUB EXP PEDAL/SUB CTL 1, 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 14,
+      "acDc": "AC",
+      "currentMa": 650,
+      "connector": "barrel",
+      "note": "BOSS BRC-series AC adaptor."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "midi": {
+        "din5": "in-out",
+        "din": true,
+        "programChange": true,
+        "cc": true
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 4800
+      }
+    },
+    "usage": "guitar",
+    "year": 2005,
+    "status": "discontinued",
+    "notes": "Flagship floor processor of the mid-2000s with COSM amp models, 44-bit DSP, dual foot controllers and digital out.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gt-8/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gt_8_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gt_8_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gt_8_top_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gx-1-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-1 Guitar Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "widthCm": 30.7,
+    "heightCm": 14.9,
+    "dimensionsSource": "BOSS official specifications: 307 (W) × 149 (D) × 56 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "CTL 2, 3/EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×4",
+      "usbBusPower": true,
+      "note": "250 mA on AC/battery; 400 mA on USB bus power."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true
+    },
+    "optional": {
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 1200
+      }
+    },
+    "usage": "guitar",
+    "year": 2024,
+    "status": "current",
+    "notes": "Compact floor multi-effects with AIRD amp models, colour display, four AA batteries or USB bus power.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-1_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-1_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gx-1_top_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gx-10-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-10 Guitar Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "widthCm": 30,
+    "heightCm": 18.3,
+    "dimensionsSource": "BOSS official specifications: 300 (W) × 183 (D) × 74 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "CTL 2, 3/EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "BLUETOOTH ADAPTOR",
+        "kind": "ctrl",
+        "connector": "other",
+        "signal": "control"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 600,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "wireless": {
+        "bluetoothAudio": true,
+        "app": "BOSS Tone Studio"
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 2200
+      }
+    },
+    "usage": "guitar",
+    "year": 2024,
+    "status": "current",
+    "notes": "Mid-size GX floor processor with colour display, AIRD amp models, effects loop, USB-C and Bluetooth adaptor support.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-10/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-10_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-10_main_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gx-10_main_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gx-100-guitar-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-100 Guitar Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "widthCm": 46,
+    "heightCm": 19.3,
+    "dimensionsSource": "BOSS official specifications: 460 (W) × 193 (D) × 73 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "CTL 3, 4/EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "AMP CTL 1, 2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-b",
+        "signal": "usb"
+      },
+      {
+        "label": "BLUETOOTH ADAPTOR",
+        "kind": "ctrl",
+        "connector": "other",
+        "signal": "control"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 1200,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "midi": {
+        "din5": "in-out",
+        "din": true,
+        "programChange": true,
+        "cc": true
+      },
+      "usb": {
+        "connector": "usb-b",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "wireless": {
+        "bluetoothAudio": true,
+        "app": "BOSS Tone Studio"
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 3500
+      }
+    },
+    "usage": "guitar",
+    "year": 2022,
+    "status": "current",
+    "notes": "Large-format GX floor processor with touchscreen, AIRD amp models, effects loop, MIDI and Bluetooth adaptor support.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-100/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-100_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-100_main_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gx-100_main_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-gx-1b-bass-effects-processor",
+    "brand": "BOSS",
+    "name": "GX-1B Bass Effects Processor",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "compressor",
+      "overdrive",
+      "distortion",
+      "delay",
+      "reverb",
+      "chorus",
+      "flanger",
+      "phaser",
+      "pitch"
+    ],
+    "widthCm": 30.7,
+    "heightCm": 14.9,
+    "dimensionsSource": "BOSS official specifications: 307 (W) × 149 (D) × 56 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "CTL 2, 3/EXP 2",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "AA (LR6) ×4",
+      "usbBusPower": true,
+      "note": "250 mA on AC/battery; 400 mA on USB bus power."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true
+    },
+    "optional": {
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "midi",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "physical": {
+        "weightG": 1200
+      }
+    },
+    "usage": "bass",
+    "year": 2024,
+    "status": "current",
+    "notes": "Bass version of the GX-1 compact floor processor with AIRD bass amps, colour display, four AA batteries or USB bus power.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/gx-1b/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-1b_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/gx-1b_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/gx-1b_top_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-hf-2-hi-band-flanger",
+    "brand": "BOSS",
+    "name": "HF-2 Hi Band Flanger",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "flanger"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS original compact enclosure: 70 (W) × 125 (D) × 55 (H) mm (owner’s manual).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "color": "light purple",
+    "year": 1985,
+    "status": "discontinued",
+    "notes": "Flanger voiced an octave above the standard band, with MANUAL, DEPTH, RATE and RESONANCE controls.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/HF-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hf2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hf2.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hf_product02.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hf2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-hm-2-heavy-metal",
+    "brand": "BOSS",
+    "name": "HM-2 Heavy Metal",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS original compact enclosure: 70 (W) × 125 (D) × 55 (H) mm (owner’s manual).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "guitar",
+    "color": "black",
+    "year": 1983,
+    "status": "discontinued",
+    "notes": "Legendary high-gain distortion with DIST, LEVEL and separate COLOR MIX L/H tone controls; the basis of the “chainsaw” death-metal tone.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/HM-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hm2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hm2.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/hm_product02.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-hm2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-hm-2w-heavy-metal-waza-craft",
+    "brand": "BOSS",
+    "name": "HM-2W Heavy Metal (Waza Craft)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "circuit": {
+        "bypass": "buffered",
+        "type": "analog"
+      },
+      "physical": {
+        "weightG": 440
+      }
+    },
+    "usage": "guitar",
+    "color": "black",
+    "year": 2021,
+    "status": "current",
+    "notes": "Waza Craft reissue of the HM-2 with Standard/Custom mode and the original DIST, COLOR MIX L/H and LEVEL controls.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/hm-2w/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/hm-2w_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/hm-2w_top_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/hm-2w_top_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-ir-2-amp-cabinet",
+    "brand": "BOSS",
+    "name": "IR-2 Amp & Cabinet",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "cab-sim",
+      "amp-modeler"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "trs",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT A (MONO)",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "CH SEL",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "headphone"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 160,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6LR61/6LF22) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "headphone": true,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      "routing": {
+        "ampModeling": true,
+        "cabModeling": true,
+        "irSlots": 11
+      },
+      "physical": {
+        "weightG": 450
+      }
+    },
+    "usage": "guitar",
+    "year": 2023,
+    "status": "current",
+    "notes": "Compact amp/cab simulator with 11 onboard amp types, Celestion IRs, stereo outputs and USB-C for IR loading.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ir-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/products/ir-2/image/ir-2_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/products/ir-2/image/ir-2_gal_01.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/products/ir-2/image/ir-2_gal_01.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-ir-200-amp-ir-cabinet",
+    "brand": "BOSS",
+    "name": "IR-200 Amp & IR Cabinet",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "dimensionsSource": "BOSS official specifications: 101 (W) × 138 (D) × 63 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "trs",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT A/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "AUX IN",
+        "kind": "in",
+        "connector": "3.5mm",
+        "signal": "audio"
+      },
+      {
+        "label": "CTL 1, 2/EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "midiType": "a"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "midiType": "a"
+      },
+      {
+        "label": "USB COMPUTER",
+        "kind": "ctrl",
+        "connector": "micro-usb",
+        "signal": "usb"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "currentMa": 335,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "note": "AC adaptor."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "level": "instrument",
+      "auxIn": true,
+      "effectsLoop": {
+        "send": 1,
+        "return": 1
+      }
+    },
+    "optional": {
+      "midi": {
+        "trs": "a",
+        "din": false,
+        "programChange": true,
+        "cc": true,
+        "note": "Stereo-mini TRS MIDI IN/OUT (Type A)."
+      },
+      "usb": {
+        "connector": "micro-usb",
+        "functions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      "control": {
+        "expression": 1,
+        "footswitch": true
+      },
+      "routing": {
+        "ampModeling": true,
+        "cabModeling": true,
+        "irSlots": 128
+      },
+      "physical": {
+        "weightG": 660,
+        "display": "Graphic LCD"
+      }
+    },
+    "usage": "guitar",
+    "year": 2021,
+    "status": "current",
+    "notes": "Desktop amp/IR cabinet processor with 128 IR slots, stereo outputs, effects loop, MIDI and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ir-200/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/products/ir-200/images/ir-200_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/products/ir-200/images/ir-200_main_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/products/ir-200/images/ir-200_main_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-jb-2-angry-driver",
+    "brand": "BOSS",
+    "name": "JB-2 Angry Driver",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "REMOTE",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 445
+      },
+      "control": {
+        "remote": true
+      }
+    },
+    "usage": "guitar",
+    "color": "red/white",
+    "year": 2017,
+    "status": "current",
+    "notes": "BOSS/JHS collaboration pairing a BD-2 Blues Driver circuit with a JHS Angry Charlie, selectable and stackable via the mode switch.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/jb-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-jb2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-jb2.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/jb-2_main_gal.jpg",
+        "priority": 2,
+        "notes": "Reference only (official gallery card with caption); not shipped."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-jb2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-lm-2-limiter",
+    "brand": "BOSS",
+    "name": "LM-2 Limiter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "dimensionsSource": "BOSS original compact enclosure: 70 (W) × 125 (D) × 55 (H) mm (owner’s manual).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "AC ADAPTOR",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "usage": "both",
+    "color": "blue",
+    "year": 1987,
+    "status": "discontinued",
+    "notes": "Analog VCA limiter with LEVEL, TONE, RELEASE and THRESHOLD controls; popular with bass players for transparent peak control.",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/LM-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-lm2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-lm2.png",
+        "priority": 1,
+        "notes": "Accepted: clean transparent Pedalplayground planner cutout (596×1057); aspect pass, clean alpha, AVIF PSNR ≥40 dB."
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/lm_product02.png",
+        "priority": 2,
+        "notes": "Reference only (official 40th-anniversary render, below the 800 px gate); not shipped."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-lm2.png",
+      "status": "last-resort",
+      "note": "Recorded Pedalplayground planner cutout; quality-gated; counted as a source gap (not gap-closed)."
+    }
+  },
+  {
+    "id": "boss-lmb-3-bass-limiter-enhancer",
+    "brand": "BOSS",
+    "name": "LMB-3 Bass Limiter Enhancer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor",
+      "utility"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "channels": 1,
+        "stereo": false
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "physical": {
+        "weightG": 380
+      }
+    },
+    "usage": "bass",
+    "color": "black",
+    "year": 1996,
+    "status": "current",
+    "notes": "Bass limiter/enhancer with THRESHOLD, RATIO, ENHANCE and LEVEL controls for transparent dynamics control.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/lmb-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/lmb3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/lmb3_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/lmb3_gal.jpg",
+      "status": "chosen"
+    }
+  },
+  {
+    "id": "boss-ls-2-line-selector",
+    "brand": "BOSS",
+    "name": "LS-2 Line Selector",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "utility",
+      "ab-box"
+    ],
+    "widthCm": 7.3,
+    "heightCm": 13,
+    "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND A",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN A",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND B",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN B",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DC IN/OUT",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official rear/panel view showing the connector face was captured in this batch; edges omitted so the app uses its clearly-labelled assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "battery": "9 V (6F22/6LR61) ×1",
+      "note": "DC IN/OUT can also daisy-chain power to another pedal."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "level": "instrument",
+      "effectsLoop": {
+        "send": 2,
+        "return": 2
+      }
+    },
+    "optional": {
+      "physical": {
+        "weightG": 430
+      },
+      "routing": {
+        "effectsLoops": 2,
+        "series": true,
+        "parallel": true
+      }
+    },
+    "usage": "both",
+    "color": "white",
+    "year": 1991,
+    "status": "current",
+    "notes": "Two-loop line selector for A/B switching, bypassing or blending two effects chains; can also daisy-chain power.",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ls-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ls2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ls2_gal.jpg",
+        "priority": 1,
+        "notes": "Shipped source."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ls2_gal.jpg",
+      "status": "chosen"
+    }
+  }
+]
