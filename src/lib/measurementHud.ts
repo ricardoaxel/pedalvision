@@ -18,9 +18,6 @@ export const SCALE_BAR_CANDIDATES = [
 /** Prefer the largest candidate whose screen length fits this budget. */
 export const SCALE_BAR_MAX_PX = 120;
 
-/** Below this, the bar is too short to read; step up one candidate. */
-export const SCALE_BAR_MIN_PX = 48;
-
 export interface ScaleBarReading {
 	/** Exact stored length in cm (source of truth). */
 	lengthCm: number;
@@ -59,20 +56,9 @@ export function chooseScaleBar(
 		chosenPx = px;
 	}
 
-	// Guard: if the winner is still tiny, step up one candidate so the rule
-	// stays readable. (With the candidate set above this never triggers across
-	// the app's 0.1×–8× zoom range, but the helper stays defensive.)
-	if (chosenPx < SCALE_BAR_MIN_PX) {
-		const index = SCALE_BAR_CANDIDATES.indexOf(
-			chosen as (typeof SCALE_BAR_CANDIDATES)[number],
-		);
-		const next = SCALE_BAR_CANDIDATES[index + 1];
-		if (next !== undefined) {
-			chosen = next;
-			chosenPx = pxFor(chosen);
-		}
-	}
-
+	// The app's 0.1×–8× range always fits a candidate. Beyond it, keep the
+	// smallest round length rather than inventing a larger label — the bar is
+	// still drawn truthfully at its true length.
 	return {
 		lengthCm: displayToCm(chosen, units),
 		lengthLabel: chosen,

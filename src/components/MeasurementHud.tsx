@@ -46,9 +46,11 @@ export function MeasurementHud() {
 	const style = { "--hud-peek-lift": `${sheetHeight}px` } as CSSProperties;
 
 	return (
-		<fieldset
+		// biome-ignore lint/a11y/useSemanticElements: a measurement group is not a form
+		<div
 			className="measurement-hud"
 			data-testid="measurement-hud"
+			role="group"
 			aria-label="Measurement"
 			data-zoom={zoom}
 			data-unit={units}
@@ -62,7 +64,7 @@ export function MeasurementHud() {
 					aria-hidden="true"
 					style={{ width: `${bar.barPx}px` }}
 				/>
-				<span className="measurement-hud__length" aria-hidden="true">
+				<span className="measurement-hud__length">
 					{bar.lengthLabel} {bar.units}
 				</span>
 				<span className="measurement-hud__zoom">
@@ -76,6 +78,6 @@ export function MeasurementHud() {
 					{dimensions}
 				</div>
 			) : null}
-		</fieldset>
+		</div>
 	);
 }

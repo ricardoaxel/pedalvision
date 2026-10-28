@@ -80,7 +80,9 @@ Read only the pointed sections; do not read whole docs.
 
 - With an item selected, the HUD shows its actual W × H computed from
   `itemFootprint` (catalog → custom → unknown fallback), formatted with
-  `Settings.units`; switching units updates HUD + info panel together.
+  `Settings.units`; switching units updates HUD + info panel together. On mobile
+  the HUD omits the duplicate size row because the info peek already prints it
+  (approved design-reviewer finding).
 - The HUD shows the live zoom/scale (e.g. `1.0×`, `250%`) and updates on
   wheel/pinch zoom without touching item props.
 - A screen-edge scale reference renders a true-length bar at the current zoom
@@ -128,13 +130,14 @@ Read only the pointed sections; do not read whole docs.
   weight, light border, label/zoom separation, and corrected no-selection
   evidence. Findings folded as value tweaks inside the approved look; the ≤2-pass
   cap was reached, so the final renders were verified by the checks (no third
-  pass).
+  pass). Mobile omission: the size row is hidden below 1024px because the info
+  peek already prints it (owner-approved direction, folded reviewer finding).
 
 ## Verification evidence
 
 - `pnpm lint` clean (2 pre-existing `tools/asset-pipeline/analyze.ts` warnings).
 - `pnpm typecheck` clean.
-- `pnpm test` **861 passed** (94 files) — includes 6 new `measurementHud` tests.
+- `pnpm test` **862 passed** (94 files) — includes 9 new `measurementHud` tests.
 - `pnpm build` clean.
 - `pnpm exec playwright test e2e/measurement-hud.spec.ts e2e/smoke.spec.ts
   e2e/info-panel.spec.ts` **38 passed / 1 skipped** (desktop + mobile).

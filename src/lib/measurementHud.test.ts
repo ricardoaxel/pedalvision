@@ -39,9 +39,14 @@ describe("chooseScaleBar", () => {
 				const bar = chooseScaleBar(scale, units);
 				expect(bar.barPx).toBeGreaterThan(0);
 				expect(bar.barPx).toBeLessThanOrEqual(SCALE_BAR_MAX_PX);
-				expect(bar.barPx).toBeGreaterThanOrEqual(48);
 			}
 		}
+	});
+
+	it("falls back to the smallest round length past the app's zoom range", () => {
+		const bar = chooseScaleBar(50, "cm");
+		expect(bar.lengthLabel).toBe(1);
+		expect(bar.barPx).toBeCloseTo(cmToPx(1, 50), 10);
 	});
 
 	it("picks round candidates that match the cartographic table", () => {

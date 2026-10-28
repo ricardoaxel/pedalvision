@@ -36,6 +36,7 @@ test("reads the selected part's real size and follows the cm/in setting", async 
 
 	// The HUD shares the app-wide unit setting with the info panel.
 	await expandDetails(page);
+	if (mobile) await expect(hud).toBeHidden();
 	await page.getByTestId("info-units-in").click();
 	await expect(hud).toHaveAttribute("data-unit", "in");
 	await expect(page.getByTestId("info-dims")).toContainText("2.87 × 5.13 in");
@@ -44,6 +45,11 @@ test("reads the selected part's real size and follows the cm/in setting", async 
 	await page.getByTestId("info-units-cm").click();
 	await expect(page.getByTestId("info-dims")).toContainText("7.3 × 13.02 cm");
 	if (!mobile) await expect(size).toContainText("7.3 × 13.02 cm");
+
+	if (mobile) {
+		await page.getByTestId("info-expand").click();
+		await expect(hud).toBeVisible();
+	}
 });
 
 test("draws a true-length rule and reports the live zoom", async ({ page }) => {
