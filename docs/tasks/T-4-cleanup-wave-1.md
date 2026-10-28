@@ -22,11 +22,12 @@ PRs to the owner. The coordinator opens **no PR** and never merges.
 
 ## State (at handoff)
 
-- T-3 BOSS wave 4 is **in review** (boss-6/7/8 PRs; owner merges serially). After
-  all three merge: **399 pedals / 15 boards**, BOSS complete at 208, BOSS hotlinked
-  + mock = 0.
+- **T-3 is COMPLETE:** #65/#66/#68 + rule #69 merged; post-merge build
+  `7ee3585` verified **399 pedals / 15 boards**; BOSS complete at 208; BOSS
+  hotlinked + mock = 0.
 - Waves start **3-wide by default** (T-2d); no `--allow-third`.
-- Catalog cap **≤3 PRs**; feature cap **≤1 PR, separate** (F-19 merged; F-03 may still be open).
+- Catalog cap **≤3 PRs** (0 open); feature cap **≤1 PR, separate** (F-19 merged;
+  F-03 #67 is the 1 open feature PR).
 - Budgets: catalog 400k/800k per batch; wave soft **1.6M** / hard **2.4M** billed
   non-cache; 4 h active; 12 min/item (per-item stall threshold); ≤2 vision passes;
   ≤1 light code review (data-only skip unless `curated.ts` changed).
