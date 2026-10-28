@@ -5447,8 +5447,8 @@ body {
 }
 
 .scale-readout__chevron {
-	font-size: var(--font-size-2xs);
-	line-height: 1;
+	display: inline-flex;
+	flex: 0 0 auto;
 	color: var(--color-ink-muted);
 }
 

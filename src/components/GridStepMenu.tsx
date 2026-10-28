@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { cmToDisplay } from "../lib/geometry";
 import { GRID_STEPS, type GridStepCm } from "../lib/grid";
 import { useSettings } from "../state/settings";
+import { ChevronIcon } from "./icons";
 
 interface GridStepMenuProps {
 	/** The pitch currently drawn (after the 16 px floor), in cm. */
@@ -71,9 +72,11 @@ export function GridStepMenu({ visibleCm, units }: GridStepMenuProps) {
 				onClick={() => setOpen((value) => !value)}
 			>
 				grid {display} {units}
-				<span className="scale-readout__chevron" aria-hidden="true">
-					⌄
-				</span>
+				<ChevronIcon
+					size={10}
+					strokeWidth={2}
+					className="scale-readout__chevron"
+				/>
 			</button>
 			{open ? (
 				<div
