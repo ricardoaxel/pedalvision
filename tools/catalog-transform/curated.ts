@@ -350,6 +350,13 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"mooer-016-phoenix-digital": ["preamp", "cab-sim"],
 	"mooer-017-cali-mkiv": ["preamp", "cab-sim"],
 	"mooer-018-custom-100": ["preamp", "cab-sim"],
+	"mooer-019-uk-gold-plx": ["preamp", "cab-sim"],
+	"mooer-020-blueno": ["preamp", "cab-sim"],
+	"mooer-wah": ["wah", "filter"],
+	"mooer-a7": ["reverb"],
+	"mooer-acoustikar": ["acoustic-sim"],
+	"mooer-audiofile": ["buffer", "cab-sim", "utility"],
+	"mooer-baby-bomb": ["power-amp"],
 
 	// MXR
 	"mxr-a-b-box": ["ab-box"],
