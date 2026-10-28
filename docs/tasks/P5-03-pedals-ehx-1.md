@@ -1,6 +1,6 @@
 # P5-03: Electro-Harmonix — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** todo — T-4 cleanup wave 1 (3-wide) · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #70 (T-4 cleanup wave 1, 3-wide) · **Model:** build-strong
 
 > The `cleanup-wave-1` coordinator created this worktree and wrote the 18
 > existing-item raw scaffolds. The `catalog:wave` wrapper starts `ehx/ehx-1`
