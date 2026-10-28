@@ -3788,7 +3788,7 @@
     "widthCm": 6.6,
     "heightCm": 12.19,
     "imageFormat": "avif",
-    "dimensionsSource": "JHS 125B-standard enclosure proportions (2.6 x 4.8 in; 66 x 122 mm), verified against the reference cutout body ratio; the limited-run official 1966 page is retired.",
+    "dimensionsSource": "JHS 125B-standard enclosure body (2.6 x 4.8 in; 66 x 122 mm); Pedalplayground's 2.99 x 4.98 in footprint includes side-jack protrusions, so the image is body-cropped to the enclosure. The limited-run official 1966 page is retired.",
     "jacks": [
       {
         "label": "INPUT",
@@ -3877,7 +3877,7 @@
       "note": "Optional facts from the PedalFilter aggregator page and press coverage; official JHS page retired."
     },
     "usage": "guitar",
-    "color": "white",
+    "color": "light blue",
     "status": "discontinued",
     "notes": "JHS 1966 Series Fuzz — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
     "extra": {
@@ -3893,12 +3893,11 @@
       {
         "url": "https://pedalfilter.com/jhs/1966-series-fuzz",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://images.pedalfilter.com/jhs-1966seriesfuzz.png",
+        "url": "https://pedalplayground.com/app/images/pedals/jhs-1966-fuzz.png",
         "kind": [
           "image"
         ]
@@ -3906,14 +3905,20 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://images.pedalfilter.com/jhs-1966seriesfuzz.png",
-        "sourcePage": "https://pedalfilter.com/jhs/1966-series-fuzz",
+        "url": "https://pedalplayground.com/app/images/pedals/jhs-1966-fuzz.png",
+        "sourcePage": "https://pedalplayground.com/",
         "priority": 1,
-        "notes": "PedalFilter aggregator transparent cutout (350x577); body-cropped and upscaled 1.39x to the 800 master; license-pending, counted source gap."
+        "notes": "Pedalplayground transparent cutout (235x392); body-cropped and upscaled 2.04x to the 800 master; planner last-resort, counted source gap. Owner-requested 2026-10-28 because the previous asset showed the wrong model (3 Series Fuzz)."
       },
       {
-        "url": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
-        "sourcePage": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "url": "https://images.pedalfilter.com/jhs-1966seriesfuzz.png",
+        "sourcePage": "https://pedalfilter.com/jhs/1966-series-fuzz",
+        "priority": 2,
+        "notes": "Rejected: this cutout is a 3 Series Fuzz (VOLUME/BIAS/FUZZ + FAT), not the 1966 Series Fuzz. Keep as a documented reject."
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/1966Fuzz--jhs-1966-fuzz-face-pedal",
+        "sourcePage": "https://www.sweetwater.com/store/detail/1966Fuzz--jhs-1966-fuzz-face-pedal",
         "priority": 3,
         "notes": "Sweetwater product media checked; angled/opaque with visible side walls, rejected."
       }
@@ -3921,10 +3926,10 @@
     "confidence": "likely",
     "lastVerified": "2026-10-28",
     "imageProvenance": {
-      "kind": "community",
-      "sourceUrl": "https://images.pedalfilter.com/jhs-1966seriesfuzz.png",
-      "status": "chosen",
-      "note": "PedalFilter aggregator cutout (350x577); body-cropped; upscaled 1.39x to 800/350 AVIF q90; license-pending, counted source gap; upscale accepted by the single contact-sheet reviewer pass."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/jhs-1966-fuzz.png",
+      "status": "last-resort",
+      "note": "Pedalplayground cutout (235x392, transparent); body-cropped, upscaled 2.04x to 800/350 AVIF q90; PSNR >=48 dB; planner last-resort, counted source gap; owner requested 2026-10-28 after the PedalFilter image showed the wrong model (3 Series Fuzz)."
     }
   },
   {
@@ -4102,7 +4107,7 @@
     "heightCm": 11.23,
     "imageFormat": "avif",
     "variantOf": "jhs-3-series-oil-can-delay",
-    "dimensionsSource": "JHS 3 Series product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "dimensionsSource": "JHS 3 Series product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm). Pedalplayground's 2.68 x 4.42 in footprint includes side-jack protrusions; the image is body-cropped to the enclosure.",
     "jacks": [
       {
         "label": "INPUT",
@@ -4200,12 +4205,11 @@
       {
         "url": "https://jhspedals.info/products/3-series-oil-can-delay",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+        "url": "https://pedalplayground.com/app/images/pedals/jhs-3-series-oil.png",
         "kind": [
           "image"
         ]
@@ -4213,19 +4217,25 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://jhspedals.info/products/3-series-oil-can-delay",
-        "sourcePage": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "url": "https://pedalplayground.com/app/images/pedals/jhs-3-series-oil.png",
+        "sourcePage": "https://pedalplayground.com/",
         "priority": 1,
-        "notes": "No official black-finish photo found; generated from the official Oil Can Delay reference (geometry/controls) with a black body fill."
+        "notes": "Pedalplayground transparent cutout (460x758); body-cropped, 1.06x upscale to the 800 master; planner last-resort, counted source gap. Owner-requested 2026-10-28 to replace the generated black art."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+        "sourcePage": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "priority": 2,
+        "notes": "Official standard cream/white render, used only as the geometry/control reference for the black finish."
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-28",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
-      "status": "chosen",
-      "note": "Generated Catalog Specimen flat art (spec tools/asset-pipeline/pedal-art/specs/jhs-3-series-oil-can-delay-black.json) because no official black-finish photo exists; reference used only for geometry/controls."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/jhs-3-series-oil.png",
+      "status": "last-resort",
+      "note": "Pedalplayground cutout (460x758, transparent); body-cropped, 1.06x upscale to 800/350 AVIF q90; PSNR 45.25 dB; planner last-resort, counted source gap; owner requested 2026-10-28 to replace the generated flat art."
     }
   }
 ]
