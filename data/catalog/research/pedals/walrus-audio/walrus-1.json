@@ -1,0 +1,4103 @@
+[
+  {
+    "id": "walrus-audio-385",
+    "brand": "Walrus Audio",
+    "name": "385",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio 385 launch page/blog and Guitar Center spec: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Matte black with yellow/red vintage projector artwork",
+    "notes": "Original 385 overdrive inspired by the Bell and Howell Filmosound 385 projector; internally runs at 18 V, with separate bass and treble controls.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 1,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Matte black with yellow/red vintage projector artwork",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.walrusaudio.com/blogs/news/385-overdrive-now-shipping",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/385-overdrive-now-shipping",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarcenter.com/Walrus-Audio/385-Overdrive-Effects-Pedal-1500000030656.gc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-385.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-385.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent cutout, 350×589 px; last-resort source after official/retailer flatness checks; upscaled 1.36× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-385.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (350×589 px) upscaled 1.36× to the 800/350 AVIF master; recorded last-resort source and counted source gap. Official product page is discontinued."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-385-mkii",
+    "brand": "Walrus Audio",
+    "name": "385 MKII",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio 385 MKII product page: 4.77 × 2.6 × 1.39 in including knobs; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Textured black with projector artwork (yellow/red ink)",
+    "notes": "MKII version of the 385 overdrive with A/B volume/gain sets and a 385+ gain switch; internally runs at 18 V.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "relay"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Textured black with projector artwork (yellow/red ink)",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + A/B)"
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/385_MKII_Digital_Manual.pdf?v=1695840392",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/385-overdrive-mkii",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/385_MKII_Digital_Manual.pdf?v=1695840392",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/front_7c1776bd-7969-47b7-81e1-c0c13a6ea7b0.jpg?v=1748875993",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/front_7c1776bd-7969-47b7-81e1-c0c13a6ea7b0.jpg?v=1748875993",
+        "sourcePage": "https://www.walrusaudio.com/products/385-overdrive-mkii",
+        "priority": 1,
+        "notes": "Official Walrus Audio front/top product image, 3000×3000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/front_7c1776bd-7969-47b7-81e1-c0c13a6ea7b0.jpg?v=1748875993",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (3000×3000 px); downscaled 3.75× to the 800/350 AVIF master."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-385-mkii-black",
+    "brand": "Walrus Audio",
+    "name": "385 MKII (Black)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Same enclosure as the 385 MKII: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm. Finish-only variant.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Flat black with amp-tube artwork (cream ink)",
+    "notes": "Black-finish 385 MKII overdrive; same circuit and enclosure as the standard MKII.",
+    "variantOf": "walrus-audio-385-mkii",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "relay"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Flat black with amp-tube artwork (cream ink)",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + A/B)"
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/385_MKII_Digital_Manual.pdf?v=1695840392",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/385-overdrive-mkii",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Front_76a56ee8-f9c9-4d1d-9d23-9e545239d691.jpg?v=1748875993",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Front_76a56ee8-f9c9-4d1d-9d23-9e545239d691.jpg?v=1748875993",
+        "sourcePage": "https://www.walrusaudio.com/products/385-overdrive-mkii",
+        "priority": 1,
+        "notes": "Official Walrus Audio black-finish front/top product image, 3000×3000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Front_76a56ee8-f9c9-4d1d-9d23-9e545239d691.jpg?v=1748875993",
+      "status": "chosen",
+      "note": "Official Walrus Audio black-finish product image (3000×3000 px); downscaled 3.75× to the 800/350 AVIF master."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-385-nat-parks",
+    "brand": "Walrus Audio",
+    "name": "385 (Nat. Parks)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio 385 National Parks listing/CME spec: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm. Finish-only variant.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Matte black with Great Sand Dunes National Park artwork",
+    "notes": "Limited 2021 National Parks Series 385 overdrive; same circuit and enclosure as the original 385.",
+    "variantOf": "walrus-audio-385",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 1,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Matte black with Great Sand Dunes National Park artwork",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.walrusaudio.com/blogs/news/385-overdrive-now-shipping",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/385-overdrive-now-shipping",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-385-overdrive-1313888",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-385-overdrive-900-1002bf21-28759774789767.jpg?v=1645436119",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-385-overdrive-900-1002bf21-28759774789767.jpg?v=1645436119",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-385-overdrive-1313888",
+        "priority": 1,
+        "notes": "Authorized retailer (Chicago Music Exchange) manufacturer product image, 2000×2000 px; body-cropped to the enclosure and downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-385-overdrive-900-1002bf21-28759774789767.jpg?v=1645436119",
+      "status": "chosen",
+      "note": "Chicago Music Exchange (authorized retailer) product image, 2000×2000 px; body-cropped and downscaled 2.5× to the 800/350 AVIF master; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-aetos",
+    "brand": "Walrus Audio",
+    "name": "Aetos",
+    "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [],
+    "widthCm": 11.94,
+    "heightCm": 9.4,
+    "dimensionsSource": "Walrus Audio Aetos official walkthrough/manual: 4.7 × 3.7 × 1.2 in; catalog footprint 11.94 × 9.4 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black die-cast enclosure",
+    "notes": "8-output isolated power supply with a custom toroidal transformer: six 9 V 100 mA outputs and two high-current 9 V outputs, plus a 120 V AC courtesy outlet.",
+    "jacks": [
+      {
+        "label": "9V 100mA outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 6,
+        "note": "Six isolated 9 V DC 100 mA outputs (2.1 mm)."
+      },
+      {
+        "label": "9V high-current outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 2,
+        "note": "Two isolated high-current 9 V DC outputs (250–300 mA)."
+      },
+      {
+        "label": "120V AC input",
+        "kind": "power",
+        "connector": "iec",
+        "signal": "power",
+        "note": "Detachable 120 V AC IEC input."
+      },
+      {
+        "label": "120V AC courtesy outlet",
+        "kind": "power",
+        "connector": "iec",
+        "signal": "power",
+        "note": "120 V AC courtesy output."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Connector edges not inferred; no single official connector-face layout diagram was verified in this batch."
+    },
+    "optional": {
+      "power": {
+        "outlets": 8,
+        "isolatedOutputs": 8,
+        "perOutput": [
+          {
+            "voltage": 9,
+            "currentMa": 100,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 100,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 100,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 100,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 100,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 100,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 300,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 300,
+            "isolated": true
+          }
+        ],
+        "totalMa": 1200,
+        "acInput": "120 V AC (detachable IEC)",
+        "courtesyOutlet": true,
+        "note": "Six 9 V 100 mA outputs + two 9 V 250–300 mA high-current outputs; internal toroidal transformer."
+      },
+      "physical": {
+        "weightG": 1361,
+        "heightCm": 3.05,
+        "depthCm": 9.4,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Black",
+        "mounting": "Fits under most pedalboards"
+      },
+      "lifecycle": {
+        "manualUrl": "https://d1aeri3ty3izns.cloudfront.net/media/22/223623/download_223623_1.pdf",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/blogs/videos/84410883-walrus-audio-aetos-clean-power-supply-walkthrough",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://d1aeri3ty3izns.cloudfront.net/media/22/223623/download_223623_1.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-aetos.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-aetos.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent cutout, 350×265 px; last-resort after GC/retailer photos showed the blank underside; upscaled 2.29× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-aetos.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (350×265 px) upscaled 2.29× to the 800/350 AVIF master (above the 2× soft ceiling; explicitly accepted by the single vision pass and recorded as a source gap)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; 2.29× upscale accepted by the single vision pass; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-ages",
+    "brand": "Walrus Audio",
+    "name": "Ages",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.65,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio Ages product page: 2.62 × 4.77 × 2.25 in including knobs; catalog footprint 6.65 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Olive green with white/cream/black ink",
+    "notes": "Five-state overdrive with a five-position gain/clipping rotary, dry blend, and boost/cut bass and treble.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "heightCm": 5.72,
+        "depthCm": 12.12,
+        "footswitches": 1,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Olive green with white/cream/black ink",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "1 footswitch (bypass); 5-position gain-state rotary"
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages_manual_booklet_web_2790c512-1cfc-45ba-bbe4-873b5e9ae02a.pdf?v=1590505496",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/ages-five-state-overdrive",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages_manual_booklet_web_2790c512-1cfc-45ba-bbe4-873b5e9ae02a.pdf?v=1590505496",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-Minimal-front.jpg?v=1770676460",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-Minimal-front.jpg?v=1770676460",
+        "sourcePage": "https://www.walrusaudio.com/products/ages-five-state-overdrive",
+        "priority": 1,
+        "notes": "Official Walrus Audio Ages front/top product image, 3000×3000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-Minimal-front.jpg?v=1770676460",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (3000×3000 px); downscaled 3.75× to the 800/350 AVIF master."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-ages-kamakura",
+    "brand": "Walrus Audio",
+    "name": "Ages (Kamakura)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.65,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio Ages product page: 2.62 × 4.77 × 2.25 in including knobs; catalog footprint 6.65 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Warm white Kamakura Series artwork",
+    "notes": "Limited 2022 Kamakura Series Ages overdrive; same circuit and enclosure as the standard Ages.",
+    "variantOf": "walrus-audio-ages",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "heightCm": 5.72,
+        "depthCm": 12.12,
+        "footswitches": 1,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Warm white Kamakura Series artwork",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "1 footswitch (bypass); 5-position gain-state rotary"
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages_manual_booklet_web_2790c512-1cfc-45ba-bbe4-873b5e9ae02a.pdf?v=1590505496",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/collections/kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/limited-edition-black-friday-kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-ages-kamakura.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-ages-kamakura.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent Kamakura cutout, 350×666 px; upscaled 1.20× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-ages-kamakura.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (350×666 px) upscaled 1.20× to the 800/350 AVIF master; recorded last-resort source and counted source gap."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-ages-nat-parks",
+    "brand": "Walrus Audio",
+    "name": "Ages (Nat. Parks)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.65,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio Ages product page: 2.62 × 4.77 × 2.25 in including knobs; catalog footprint 6.65 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "National Parks Series artwork",
+    "notes": "Limited 2021 National Parks Series Ages overdrive; same circuit and enclosure as the standard Ages.",
+    "variantOf": "walrus-audio-ages",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "heightCm": 5.72,
+        "depthCm": 12.12,
+        "footswitches": 1,
+        "enclosure": "Die-cast aluminium",
+        "finish": "National Parks Series artwork",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "1 footswitch (bypass); 5-position gain-state rotary"
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages_manual_booklet_web_2790c512-1cfc-45ba-bbe4-873b5e9ae02a.pdf?v=1590505496",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-ages-five-state-1313895",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-ages-five-state-overdrive-900-1052bf21-28759884071047.jpg?v=1645427650",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-ages-five-state-overdrive-900-1052bf21-28759884071047.jpg?v=1645427650",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-ages-five-state-1313895",
+        "priority": 1,
+        "notes": "Authorized retailer (CME) manufacturer product image, 2000×2000 px; body-cropped and downscaled to the 800 master; accepted on flatness in the single vision pass."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-ages-five-state-overdrive-900-1052bf21-28759884071047.jpg?v=1645427650",
+      "status": "chosen",
+      "note": "CME (authorized retailer) product image, 2000×2000 px; body-cropped and downscaled 2.5× to the 800/350 AVIF master; vision pass accepted the flatness; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-arp-87",
+    "brand": "Walrus Audio",
+    "name": "ARP-87",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio ARP-87 product page: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Frosted charcoal with cream/seafoam ink",
+    "notes": "Compact multi-function delay with digital, analog, lo-fi, and slapback algorithms, tap tempo, and momentary knob ramp.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Frosted charcoal with cream/seafoam ink",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + tap tempo)",
+        "tapTempo": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-1",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Arp87_500x5002_c1dea1bc-8f92-4683-8b00-4d5ac08b5dc9.jpg?v=1757697333",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Arp87_500x5002_c1dea1bc-8f92-4683-8b00-4d5ac08b5dc9.jpg?v=1757697333",
+        "sourcePage": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-1",
+        "priority": 1,
+        "notes": "Official Walrus Audio ARP-87 front/top product image, 3000×3000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Arp87_500x5002_c1dea1bc-8f92-4683-8b00-4d5ac08b5dc9.jpg?v=1757697333",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (3000×3000 px); downscaled 3.75× to the 800/350 AVIF master (AVIF q100 for PSNR ≥40 dB)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-arp-87-kamakura",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Kamakura)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio ARP-87 product page: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Kamakura Series artwork",
+    "notes": "Limited 2022 Kamakura Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "variantOf": "walrus-audio-arp-87",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Kamakura Series artwork",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + tap tempo)",
+        "tapTempo": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/collections/kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/limited-edition-black-friday-kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-arp87-kamakura.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-arp87-kamakura.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent Kamakura cutout, 350×636 px; upscaled 1.26× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-arp87-kamakura.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (350×636 px) upscaled 1.26× to the 800/350 AVIF master; recorded last-resort source and counted source gap."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-arp-87-nat-parks",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Nat. Parks)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio ARP-87 product page: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "National Parks Series artwork",
+    "notes": "Limited 2021 National Parks Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "variantOf": "walrus-audio-arp-87",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "National Parks Series artwork",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + tap tempo)",
+        "tapTempo": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-arp-87-multi-function-1313892",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-audio-national-park-edition-arp-87-multi-function-delay-900-1039bf21-28759775215751.jpg?v=1645436478",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-audio-national-park-edition-arp-87-multi-function-delay-900-1039bf21-28759775215751.jpg?v=1645436478",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-arp-87-multi-function-1313892",
+        "priority": 1,
+        "notes": "Authorized retailer (CME) manufacturer product image, 2000×2000 px; body-cropped and downscaled to the 800 master; accepted on flatness in the single vision pass."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-audio-national-park-edition-arp-87-multi-function-delay-900-1039bf21-28759775215751.jpg?v=1645436478",
+      "status": "chosen",
+      "note": "CME (authorized retailer) product image, 2000×2000 px; body-cropped and downscaled 2.5× to the 800/350 AVIF master; vision pass accepted the flatness; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-arp-87-nautical",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Nautical)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio ARP-87 product page: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Nautical Series artwork",
+    "notes": "CME-exclusive Nautical Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "variantOf": "walrus-audio-arp-87",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Nautical Series artwork",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + tap tempo)",
+        "tapTempo": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-arp-87-multi-function-delay-nautical-edition-1187865",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-arp-87-multi-function-delay-nautical-edition-900-1039ne-28493797228679.jpg?v=1647613579",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-arp-87-multi-function-delay-nautical-edition-900-1039ne-28493797228679.jpg?v=1647613579",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/walrus-arp-87-multi-function-delay-nautical-edition-1187865",
+        "priority": 1,
+        "notes": "Authorized retailer (CME) manufacturer product image, 2000×2000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-arp-87-multi-function-delay-nautical-edition-900-1039ne-28493797228679.jpg?v=1647613579",
+      "status": "chosen",
+      "note": "CME (authorized retailer) product image, 2000×2000 px; downscaled 2.5× to the 800/350 AVIF master; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-arp-87-obsidian",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Obsidian)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio ARP-87 product page: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Obsidian black",
+    "notes": "Obsidian Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "variantOf": "walrus-audio-arp-87",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Obsidian black",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + tap tempo)",
+        "tapTempo": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.guitarcenter.com/Walrus-Audio/ARP-87-Multi-Function-Delay-Obsidian-Series-Effects-Pedal.gc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.guitarcenter.com/is/image/MMGS7/L92307000001000-00-2000x2000.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://media.guitarcenter.com/is/image/MMGS7/L92307000001000-00-2000x2000.jpg",
+        "sourcePage": "https://www.guitarcenter.com/Walrus-Audio/ARP-87-Multi-Function-Delay-Obsidian-Series-Effects-Pedal.gc",
+        "priority": 1,
+        "notes": "Guitar Center (authorized retailer) product image, 2000×2000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://media.guitarcenter.com/is/image/MMGS7/L92307000001000-00-2000x2000.jpg",
+      "status": "chosen",
+      "note": "Guitar Center (authorized retailer) product image, 2000×2000 px; downscaled 2.5× to the 800/350 AVIF master; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-arp-87-platinum",
+    "brand": "Walrus Audio",
+    "name": "ARP-87 (Platinum)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio ARP-87 product page: 4.77 × 2.6 × 1.39 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Platinum Edition finish",
+    "notes": "Platinum Edition ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "variantOf": "walrus-audio-arp-87",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred. Official gallery images show the enclosure; no per-item connector-face layout was individually verified in the single vision pass, so the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "heightCm": 3.53,
+        "depthCm": 12.12,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Platinum Edition finish",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + tap tempo)",
+        "tapTempo": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
+        "madeIn": "USA",
+        "limitedEdition": true
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-platinum-edition",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Platinum-Series-ARP87_front.jpg?v=1762183985",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Platinum-Series-ARP87_front.jpg?v=1762183985",
+        "sourcePage": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-platinum-edition",
+        "priority": 1,
+        "notes": "Official Walrus Audio Platinum Edition front/top product image, 3000×2169 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Platinum-Series-ARP87_front.jpg?v=1762183985",
+      "status": "chosen",
+      "note": "Official Walrus Audio Platinum Edition product image (3000×2169 px); downscaled to the 800/350 AVIF master."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-badwater",
+    "brand": "Walrus Audio",
+    "name": "Badwater",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "preamp",
+      "di",
+      "compressor",
+      "overdrive",
+      "eq"
+    ],
+    "widthCm": 12.17,
+    "heightCm": 9.19,
+    "dimensionsSource": "Walrus Audio Badwater product page: 3.62 × 4.79 × 2.25 in including knobs; catalog footprint 12.17 × 9.19 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "bass",
+    "color": "Matte black with dark green/light blue ink",
+    "notes": "All-in-one bass preamp and D.I. with internal optical compression, blendable drive, four-band EQ, 1/4 in and XLR outputs.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono instrument input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono output; runs simultaneously with the XLR output."
+      },
+      {
+        "label": "XLR OUT",
+        "kind": "out",
+        "connector": "xlr",
+        "channels": 1,
+        "signal": "audio",
+        "level": "line",
+        "balanced": true,
+        "note": "Transformer/balanced XLR line output for front-of-house or interface."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred; official gallery shows the XLR face but no single per-edge layout was verified in this batch."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 300 mA minimum; isolated supply recommended. Phantom power is blocked, not used."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "balanced": true,
+      "level": "instrument",
+      "di": true
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "balanced": true,
+        "level": "instrument",
+        "di": true,
+        "groundLift": true,
+        "note": "1/4 in instrument input; simultaneous 1/4 in and XLR outputs; ground lift on the XLR."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Internal optical compressor is always on with adjustable sustain; analog drive/EQ section."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "Bypass footswitch"
+      },
+      "physical": {
+        "heightCm": 5.72,
+        "depthCm": 9.19,
+        "footswitches": 1,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Matte black",
+        "jackOrientation": "Top-mounted jacks and XLR output (official product gallery).",
+        "batteryCompartment": false
+      },
+      "routing": {
+        "fourCableMethod": false,
+        "note": "Use the XLR direct to FOH and the 1/4 in output to an amp simultaneously."
+      },
+      "electrical": {
+        "groundLift": true,
+        "phantomPower": false,
+        "note": "Phantom power is blocked; do not rely on it for power."
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/BadwaterManual_web.pdf?v=1651259325",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/badwater-bass-pre-amp-with-d-i",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/BadwaterManual_web.pdf?v=1651259325",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Badwater-front.jpg?v=1748977127",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Badwater-front.jpg?v=1748977127",
+        "sourcePage": "https://www.walrusaudio.com/products/badwater-bass-pre-amp-with-d-i",
+        "priority": 1,
+        "notes": "Official Walrus Audio front/top product image, 3000×3000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Badwater-front.jpg?v=1748977127",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (3000×3000 px); downscaled 3.75× to the 800/350 AVIF master."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-bellwether",
+    "brand": "Walrus Audio",
+    "name": "Bellwether",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay",
+      "chorus"
+    ],
+    "widthCm": 14.3,
+    "heightCm": 11.7,
+    "dimensionsSource": "Walrus Audio Bellwether manual/retailer spec: 5.6 × 4.6 × 1.6 in (14.3 × 11.7 × 4.0 cm); catalog footprint 14.3 × 11.7 cm.",
+    "imageFormat": "avif",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Black with analog delay artwork",
+    "notes": "Bucket-brigade analog delay with tap tempo, subdivisions, an analog chorus engine, effects loop, expression control, and dual outputs.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono input on the top edge."
+      },
+      {
+        "label": "OUT 1",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono output 1."
+      },
+      {
+        "label": "OUT 2",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono output 2 (dual-mono/stereo destinations)."
+      },
+      {
+        "label": "FX LOOP",
+        "kind": "send",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "instrument",
+        "note": "TRS insert for effects in the wet delay path (send + return on one jack)."
+      },
+      {
+        "label": "EXPRESSION",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "TRS expression input; controls Time or Repeats via the front toggle."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "verified",
+      "source": "Official Bellwether product description/manual: five 1/4 in jacks on the top side (input, two outputs, effects loop, expression).",
+      "note": "Five top-mounted 1/4 in jacks; power jack also top-mounted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "effectsLoop": {
+        "send": 1,
+        "return": 1,
+        "trsInsert": true
+      }
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "effectsLoop": {
+          "send": 1,
+          "return": 1,
+          "trsInsert": true
+        },
+        "note": "Mono input; two mono outputs; TRS insert effects loop; dry-through analog delay."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "100% analog bucket-brigade delay with analog chorus engine; max delay 1000 ms."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (bypass + tap tempo)",
+        "tapTempo": true,
+        "expression": 1,
+        "note": "Tap divisions: quarter, eighth, dotted eighth, triplet; expression controls Time or Repeats."
+      },
+      "physical": {
+        "heightCm": 4,
+        "depthCm": 11.7,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Black",
+        "jackOrientation": "Five top-mounted 1/4 in jacks (input, out 1, out 2, FX loop, expression) plus top-mounted power.",
+        "batteryCompartment": false
+      },
+      "routing": {
+        "effectsLoops": 1,
+        "fourCableMethod": false,
+        "trails": true,
+        "dryWetMix": true,
+        "note": "Wet-path TRS insert for effects on the delay trails only; dual outputs."
+      },
+      "lifecycle": {
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/bellwether-analog-delay",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/83805379-bellwether-analog-delay",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/products/Bellwether_Front.jpg?v=1748874975",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/products/Bellwether_Front.jpg?v=1748874975",
+        "sourcePage": "https://www.walrusaudio.com/products/bellwether-analog-delay",
+        "priority": 1,
+        "notes": "Official Walrus Audio front/top product image, 600×600 px; upscaled 1.33× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/products/Bellwether_Front.jpg?v=1748874975",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (600×600 px) upscaled 1.33× to the 800/350 AVIF master; below the 2× soft ceiling."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-clock",
+    "brand": "Walrus Audio",
+    "name": "Canvas Clock",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "controller",
+      "utility"
+    ],
+    "widthCm": 7.52,
+    "heightCm": 12.29,
+    "dimensionsSource": "Walrus Audio Canvas Clock product page: 2.96 × 4.84 × 2.3 in including jacks/knobs; catalog footprint 7.52 × 12.29 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black",
+    "notes": "MIDI/analog clock and setlist controller with four configurable 1/4 in jacks, 5-pin and 1/8 in MIDI, sync and metronome outputs, USB-C editor/firmware, and preset songs/setlists.",
+    "jacks": [
+      {
+        "label": "JACK 1",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Configurable: Tempo Out, CV Out, Switch Input, or Expression In."
+      },
+      {
+        "label": "JACK 2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Configurable: Tempo Out, CV Out, Switch Input, or Expression In."
+      },
+      {
+        "label": "JACK 3",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Configurable: Tempo Out, CV Out, Switch Input, or Expression In."
+      },
+      {
+        "label": "JACK 4",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Configurable: Tempo Out, CV Out, Switch Input, or Expression In."
+      },
+      {
+        "label": "MIDI IN/OUT",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5",
+        "note": "5-pin DIN MIDI in/out."
+      },
+      {
+        "label": "MIDI 1/8",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "midiType": "a",
+        "note": "1/8 in TRS MIDI (Type A)."
+      },
+      {
+        "label": "SYNC",
+        "kind": "ctrl",
+        "connector": "3.5mm",
+        "signal": "control",
+        "note": "1/8 in TRS sync input/output (BPM source or external sync)."
+      },
+      {
+        "label": "MET OUT",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "level": "line",
+        "note": "1/8 in metronome click output; not intended for headphones."
+      },
+      {
+        "label": "USB-C",
+        "kind": "power",
+        "connector": "usb-c",
+        "signal": "usb",
+        "usbFunctions": [
+          "power",
+          "editor",
+          "firmware"
+        ],
+        "note": "USB-C for power and the walrusaudio.io editor/firmware."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official gallery shows jacks-left/right/top faces but no single per-edge layout was verified in the single vision pass; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "usbBusPower": true,
+      "note": "9 V DC center-negative, 300 mA, or USB-C power; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 0,
+      "outputs": 0,
+      "stereo": false,
+      "note": "No audio signal path; clock/CV/switch/expression controller."
+    },
+    "optional": {
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (A/B) assignable",
+        "tapTempo": true,
+        "expression": 1,
+        "remote": true,
+        "note": "A/B footswitches assignable to song/setlist advance, metronome start/stop, and global tap tempo."
+      },
+      "midi": {
+        "din5": "in-out",
+        "trs": "a",
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "Sends MIDI clock and MIDI macros; 5-pin DIN and 1/8 in TRS Type A MIDI."
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "power",
+          "editor",
+          "firmware"
+        ],
+        "device": true,
+        "busPower": true,
+        "note": "Chrome-based walrusaudio.io editor and firmware updates."
+      },
+      "physical": {
+        "heightCm": 5.84,
+        "depthCm": 12.29,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Black",
+        "jackOrientation": "Four 1/4 in side jacks; MIDI/sync/met/USB-C on the top edge.",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_clock_Digital_Manual.pdf?v=1741102702",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-clock",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_clock_Digital_Manual.pdf?v=1741102702",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Clock-Front_c5a01252-50c3-45d5-ae14-1e50e79f7dfb.jpg?v=1749761660",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Clock-Front_c5a01252-50c3-45d5-ae14-1e50e79f7dfb.jpg?v=1749761660",
+        "sourcePage": "https://www.walrusaudio.com/products/canvas-clock",
+        "priority": 1,
+        "notes": "Official Walrus Audio front/top product image, 3000×3000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Clock-Front_c5a01252-50c3-45d5-ae14-1e50e79f7dfb.jpg?v=1749761660",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (3000×3000 px); downscaled 3.75× to the 800/350 AVIF master."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-line-isolator",
+    "brand": "Walrus Audio",
+    "name": "Canvas Line Isolator",
+    "category": "pedal",
+    "deviceType": "di",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "di",
+      "utility"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "dimensionsSource": "Walrus Audio Canvas Mono/Line Isolator product page: 4.77 × 2.6 × 1.64 in; catalog footprint 6.6 × 12.12 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black with painter's-palette artwork",
+    "notes": "Passive line isolator / direct box (Canvas Mono) converting unbalanced 1/4 in signals to a transformer-isolated balanced XLR output; DI/LI, pad and ground-lift switching.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in unbalanced input."
+      },
+      {
+        "label": "THRU / SUM",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in thru; the sum switch turns it into a second input for stereo-to-mono summing."
+      },
+      {
+        "label": "XLR OUT",
+        "kind": "out",
+        "connector": "xlr",
+        "channels": 1,
+        "signal": "audio",
+        "level": "line",
+        "balanced": true,
+        "note": "Transformer-isolated balanced XLR output."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official gallery shows the connector faces (back/XLR/side) but no single per-edge layout was verified in this batch; edges omitted."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "balanced": true,
+      "level": "instrument",
+      "di": true,
+      "groundLift": true,
+      "pad": true
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "balanced": true,
+        "level": "instrument",
+        "di": true,
+        "groundLift": true,
+        "pad": true,
+        "note": "Passive transformer isolation; DI mode -20 dB (-35 dB with pad), LI mode unity; 20 Hz–20 kHz."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "none",
+        "note": "Passive transformer-isolated circuit; no power required."
+      },
+      "physical": {
+        "heightCm": 4.17,
+        "depthCm": 12.12,
+        "footswitches": 0,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Black",
+        "jackOrientation": "1/4 in and XLR connectors; passive DI/LI switches on the face.",
+        "batteryCompartment": false
+      },
+      "power": {
+        "note": "Passive; no power supply required."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 10000,
+        "outputImpedanceOhm": 600,
+        "balanced": true,
+        "groundLift": true,
+        "note": "DI: 10 kΩ input / 600 Ω output; LI: 600 Ω input / 600 Ω output; pad -15 dB (DI mode)."
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Mono_manual_web.pdf?v=1646259181",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-line-isolator-d-i",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Mono_manual_web.pdf?v=1646259181",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-canvas-line-isolator-di-1452855",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-pro-audio-di-boxes-walrus-canvas-line-isolator-d-i-900-1064-29157669175431.jpg?v=1649360120",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-pro-audio-di-boxes-walrus-canvas-line-isolator-d-i-900-1064-29157669175431.jpg?v=1649360120",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/walrus-canvas-line-isolator-di-1452855",
+        "priority": 1,
+        "notes": "CME manufacturer product image, 2000×2000 px; rotated 90° to portrait and downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-pro-audio-di-boxes-walrus-canvas-line-isolator-d-i-900-1064-29157669175431.jpg?v=1649360120",
+      "status": "chosen",
+      "note": "CME (authorized retailer) product image, 2000×2000 px; rotated 90° to the correct portrait orientation and downscaled 2.5× to the 800/350 AVIF master; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-eb-10",
+    "brand": "Walrus Audio",
+    "name": "EB-10 Preamp // EQ // Boost",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "boost",
+      "eq",
+      "preamp"
+    ],
+    "widthCm": 9.35,
+    "heightCm": 11.86,
+    "dimensionsSource": "Walrus Audio EB-10 product page: 3.68 × 4.67 × 1.547 in; catalog footprint 9.35 × 11.86 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "guitar",
+    "color": "Matte black (also available in cream)",
+    "notes": "Preamp/EQ/boost with three presets, 12 dB boost/cut low/mid/high bands, and a 10 dB MOSFET boost.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Edge not inferred; official gallery shows the enclosure but no per-edge connector layout was verified in this batch."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "isolationRequired": true,
+      "note": "9 V DC center-negative, 100 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "heightCm": 3.93,
+        "depthCm": 11.86,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Matte black",
+        "jackOrientation": "Top-mounted I/O and power (official product gallery).",
+        "batteryCompartment": false
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "2 footswitches (preset + boost)",
+        "note": "Three presets; boost switch adds +10 dB MOSFET boost."
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.walrusaudio.com/products/eb-10-preamp-eq-boost",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/eb-10-preamp-eq-boost",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/EB10_cutout_BLACK_front_650.jpg?v=1755867862",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/EB10_cutout_BLACK_front_650.jpg?v=1755867862",
+        "sourcePage": "https://www.walrusaudio.com/products/eb-10-preamp-eq-boost",
+        "priority": 1,
+        "notes": "Official Walrus Audio black front/top product image, 650×650 px; upscaled 1.23× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/EB10_cutout_BLACK_front_650.jpg?v=1755867862",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (650×650 px) upscaled 1.23× to the 800/350 AVIF master; below the 2× soft ceiling."
+    },
+    "extra": {
+      "substitution": {
+        "for": "walrus-audio-canvas-mono",
+        "reason": "Canvas Mono is the Walrus marketing name for the Canvas Line Isolator / D.I. already in scope as walrus-audio-canvas-line-isolator, so it is not a distinct standalone unit. Contraband has no live official product page; Deep Six V3's available official/retailer photos show the enclosure bottom or a background card. EB-10 is the next verifiable Tier A pedal with a clean official top-face image."
+      }
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-power-15",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 15",
+    "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [],
+    "widthCm": 31.2,
+    "heightCm": 5.4,
+    "dimensionsSource": "Walrus Audio Canvas Power 15 product page: 312 × 54 × 25.5 mm (12.28 × 2.12 × 1 in); catalog footprint 31.2 × 5.4 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black",
+    "notes": "15-output isolated power supply: 13 × 9 V 500 mA + 2 variable 9/12/18 V outputs + USB-C 5 V 1.5 A charging; 96 W 24 V brick.",
+    "jacks": [
+      {
+        "label": "9V 500mA outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 13,
+        "note": "13 isolated 9 V DC 500 mA outputs (2.1 mm)."
+      },
+      {
+        "label": "Variable outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 2,
+        "note": "2 isolated selectable 9/12/18 V outputs (2.1 mm); 500 mA max."
+      },
+      {
+        "label": "USB-C",
+        "kind": "power",
+        "connector": "usb-c",
+        "signal": "usb",
+        "note": "5 V 1.5 A USB-C charging output."
+      },
+      {
+        "label": "24V input",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "24 V DC input from the included 96 W brick."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Output/input edges not inferred; official gallery images show the enclosure but no single per-edge layout was verified in this batch."
+    },
+    "optional": {
+      "power": {
+        "outlets": 15,
+        "isolatedOutputs": 15,
+        "perOutput": [
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 500,
+            "isolated": true
+          }
+        ],
+        "totalMa": 7500,
+        "acInput": "96 W 24 V DC 4 A external brick",
+        "note": "13 × 9 V 500 mA + 2 × 9/12/18 V 500 mA + USB-C 5 V 1.5 A."
+      },
+      "physical": {
+        "heightCm": 2.55,
+        "depthCm": 5.4,
+        "enclosure": "Metal",
+        "finish": "Black",
+        "mounting": "Universal mounting brackets",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "madeIn": "USA"
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "power",
+          "charging"
+        ],
+        "note": "5 V 1.5 A USB-C charging output."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-15",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-15.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-15.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent cutout, 1111×200 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-15.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (1111×200 px) downscaled to the 800/350 AVIF master; recorded last-resort source and counted source gap (official gallery only has angled quarter views)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-power-22",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 22",
+    "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [],
+    "widthCm": 41.7,
+    "heightCm": 5.4,
+    "dimensionsSource": "Walrus Audio Canvas Power 22 product page: 417 × 54 × 25.5 mm (16.41 × 2.12 × 1 in); catalog footprint 41.7 × 5.4 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black",
+    "notes": "22-output isolated power supply: 20 × 9 V 500 mA + 2 variable 9/12/18 V outputs + USB-C 5 V 1.5 A charging; 96 W 24 V brick.",
+    "jacks": [
+      {
+        "label": "9V 500mA outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 20,
+        "note": "20 isolated 9 V DC 500 mA outputs (2.1 mm)."
+      },
+      {
+        "label": "Variable outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 2,
+        "note": "2 isolated selectable 9/12/18 V outputs (2.1 mm); 500 mA max."
+      },
+      {
+        "label": "USB-C",
+        "kind": "power",
+        "connector": "usb-c",
+        "signal": "usb",
+        "note": "5 V 1.5 A USB-C charging output."
+      },
+      {
+        "label": "24V input",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "24 V DC input from the included 96 W brick."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Output/input edges not inferred; official gallery images show the enclosure but no single per-edge layout was verified in this batch."
+    },
+    "optional": {
+      "power": {
+        "outlets": 22,
+        "isolatedOutputs": 22,
+        "perOutput": [
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 500,
+            "isolated": true
+          }
+        ],
+        "totalMa": 11000,
+        "acInput": "96 W 24 V DC 4 A external brick",
+        "note": "20 × 9 V 500 mA + 2 × 9/12/18 V 500 mA + USB-C 5 V 1.5 A."
+      },
+      "physical": {
+        "heightCm": 2.55,
+        "depthCm": 5.4,
+        "enclosure": "Metal",
+        "finish": "Black",
+        "mounting": "Universal mounting brackets",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "madeIn": "USA"
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "power",
+          "charging"
+        ],
+        "note": "5 V 1.5 A USB-C charging output."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-22",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-22.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-22.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent cutout, 1486×200 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-22.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (1486×200 px) downscaled to the 800/350 AVIF master; recorded last-resort source and counted source gap (official gallery only has angled quarter views)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-power-5",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 5",
+    "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [],
+    "widthCm": 13.3,
+    "heightCm": 5.4,
+    "dimensionsSource": "Walrus Audio Canvas Power 5 product page: 133 × 54 × 25.5 mm (5.23 × 2.12 × 1 in); catalog footprint 13.3 × 5.4 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black",
+    "notes": "5-output isolated power supply: 4 × 9 V 500 mA + 1 variable 9/12/18 V output; 48 W 24 V brick.",
+    "jacks": [
+      {
+        "label": "9V 500mA outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 4,
+        "note": "4 isolated 9 V DC 500 mA outputs (2.1 mm)."
+      },
+      {
+        "label": "Variable output",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "1 isolated selectable 9/12/18 V output (2.1 mm); 500 mA max."
+      },
+      {
+        "label": "24V input",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "24 V DC input from the included 48 W brick."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Output/input edges not inferred; official gallery images show the enclosure but no single per-edge layout was verified in this batch."
+    },
+    "optional": {
+      "power": {
+        "outlets": 5,
+        "isolatedOutputs": 5,
+        "perOutput": [
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 500,
+            "isolated": true
+          }
+        ],
+        "totalMa": 2500,
+        "acInput": "48 W 24 V DC 2 A external brick",
+        "note": "4 × 9 V 500 mA + 1 × 9/12/18 V 500 mA."
+      },
+      "physical": {
+        "heightCm": 2.55,
+        "depthCm": 5.4,
+        "enclosure": "Metal",
+        "finish": "Black",
+        "mounting": "Universal mounting brackets",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-5",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-5.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent cutout, 474×200 px; upscaled 1.69× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-5.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (474×200 px) upscaled 1.69× to the 800/350 AVIF master; recorded last-resort source and counted source gap (official gallery only has angled quarter views)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-power-8",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 8",
+    "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [],
+    "widthCm": 20.7,
+    "heightCm": 5.4,
+    "dimensionsSource": "Walrus Audio Canvas Power 8 product page: 207 × 54 × 25.5 mm (8.14 × 2.12 × 1 in); catalog footprint 20.7 × 5.4 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black",
+    "notes": "8-output isolated power supply: 6 × 9 V 500 mA + 2 variable 9/12/18 V outputs + USB-C 5 V 1.5 A charging; 48 W 24 V brick.",
+    "jacks": [
+      {
+        "label": "9V 500mA outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 6,
+        "note": "6 isolated 9 V DC 500 mA outputs (2.1 mm)."
+      },
+      {
+        "label": "Variable outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 2,
+        "note": "2 isolated selectable 9/12/18 V outputs (2.1 mm); 500 mA max."
+      },
+      {
+        "label": "USB-C",
+        "kind": "power",
+        "connector": "usb-c",
+        "signal": "usb",
+        "note": "5 V 1.5 A USB-C charging output."
+      },
+      {
+        "label": "24V input",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "24 V DC input from the included 48 W brick."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Output/input edges not inferred; official gallery images show the enclosure but no single per-edge layout was verified in this batch."
+    },
+    "optional": {
+      "power": {
+        "outlets": 8,
+        "isolatedOutputs": 8,
+        "perOutput": [
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 500,
+            "isolated": true
+          }
+        ],
+        "totalMa": 4000,
+        "acInput": "48 W 24 V DC 2 A external brick",
+        "note": "6 × 9 V 500 mA + 2 × 9/12/18 V 500 mA + USB-C 5 V 1.5 A."
+      },
+      "physical": {
+        "heightCm": 2.55,
+        "depthCm": 5.4,
+        "enclosure": "Metal",
+        "finish": "Black",
+        "mounting": "Universal mounting brackets",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "madeIn": "USA"
+      },
+      "usb": {
+        "connector": "usb-c",
+        "functions": [
+          "power",
+          "charging"
+        ],
+        "note": "5 V 1.5 A USB-C charging output."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-8",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-8.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-8.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground flat transparent cutout, 737×200 px; upscaled 1.09× to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-8.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat cutout (737×200 px) upscaled 1.09× to the 800/350 AVIF master; recorded last-resort source and counted source gap (official gallery only has angled quarter views)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "sourceGap": "planner last-resort; counted"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-power-hp",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power HP",
+    "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [],
+    "widthCm": 13.3,
+    "heightCm": 5.4,
+    "dimensionsSource": "Walrus Audio Canvas Power HP product page: 133 × 54 × 25.5 mm (5.23 × 2.12 × 1 in); catalog footprint 13.3 × 5.4 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black",
+    "notes": "Hybrid power supply with one 3 A 9/12 V output for modelers and three 9 V 500 mA isolated outputs; 48 W 24 V brick.",
+    "jacks": [
+      {
+        "label": "9V 500mA outputs",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 3,
+        "note": "3 isolated 9 V DC 500 mA outputs (2.1 mm)."
+      },
+      {
+        "label": "3A output",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "channels": 1,
+        "note": "1 isolated 3 A output, selectable 9 V or 12 V (2.1/2.5 mm cables included)."
+      },
+      {
+        "label": "24V input",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "24 V DC input from the included 48 W brick."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Output/input edges not inferred; official gallery images show the enclosure but no single per-edge layout was verified in this batch."
+    },
+    "optional": {
+      "power": {
+        "outlets": 4,
+        "isolatedOutputs": 4,
+        "perOutput": [
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 500,
+            "isolated": true
+          },
+          {
+            "voltage": 12,
+            "currentMa": 3000,
+            "isolated": true
+          }
+        ],
+        "totalMa": 4500,
+        "acInput": "48 W 24 V DC 2 A external brick",
+        "note": "3 × 9 V 500 mA + 1 × 9/12 V 3 A."
+      },
+      "physical": {
+        "heightCm": 2.55,
+        "depthCm": 5.4,
+        "enclosure": "Metal",
+        "finish": "Black",
+        "mounting": "Universal mounting brackets",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_HP_Digital_Manual.pdf?v=1722894708",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-hp",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_HP_Digital_Manual.pdf?v=1722894708",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarcenter.com/Walrus-Audio/Canvas-Power-HP-Power-Supply-1500000438796.gc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.guitarcenter.com/is/image/MMGS7/M14952000000000-00-2000x2000.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://media.guitarcenter.com/is/image/MMGS7/M14952000000000-00-2000x2000.jpg",
+        "sourcePage": "https://www.guitarcenter.com/Walrus-Audio/Canvas-Power-HP-Power-Supply-1500000438796.gc",
+        "priority": 1,
+        "notes": "Guitar Center (authorized retailer) product image, 2000×2000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://media.guitarcenter.com/is/image/MMGS7/M14952000000000-00-2000x2000.jpg",
+      "status": "chosen",
+      "note": "Guitar Center (authorized retailer) product image, 2000×2000 px; downscaled 2.5× to the 800/350 AVIF master; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-re-amp",
+    "brand": "Walrus Audio",
+    "name": "Canvas Re-Amp",
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "utility"
+    ],
+    "widthCm": 7.77,
+    "heightCm": 12.19,
+    "dimensionsSource": "Walrus Audio Canvas Re-Amp / Premier Guitar spec: 4.8 × 3.06 × 1.6 in; catalog footprint 7.77 × 12.19 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Powder-coated black",
+    "notes": "Passive transformer-isolated re-amp box for sending line-level DAW tracks back through pedals and amps; XLR and 1/4 in inputs, 1/4 in output, ground lift, phase invert, mute, and high-pass filter.",
+    "jacks": [
+      {
+        "label": "XLR INPUT",
+        "kind": "in",
+        "connector": "xlr",
+        "channels": 1,
+        "signal": "audio",
+        "level": "line",
+        "balanced": true,
+        "note": "Balanced line-level XLR input."
+      },
+      {
+        "label": "1/4 INPUT",
+        "kind": "in",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "level": "line",
+        "balanced": true,
+        "note": "Balanced line-level 1/4 in input in parallel with the XLR."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "Unbalanced instrument-level output to pedals/amp."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official gallery shows side XLR/1/4 in connectors but no single per-edge layout was verified in this batch; edges omitted."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": true,
+      "level": "line"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": true,
+        "level": "line",
+        "groundLift": true,
+        "phaseInvert": true,
+        "note": "Balanced line input (XLR or 1/4 in) to unbalanced instrument output; 20 Hz–20 kHz; +21 dBu max input."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "none",
+        "note": "Passive transformer-isolated circuit; no power required."
+      },
+      "physical": {
+        "heightCm": 4.06,
+        "depthCm": 12.19,
+        "footswitches": 0,
+        "enclosure": "Powder-coated aluminium",
+        "finish": "Black",
+        "jackOrientation": "Side XLR/1/4 in connectors; top switches and volume.",
+        "batteryCompartment": false
+      },
+      "power": {
+        "note": "Passive; no power supply required."
+      },
+      "electrical": {
+        "inputImpedanceOhm": 3000,
+        "outputImpedanceOhm": 2500,
+        "maxInputLevelDbu": 21,
+        "snrDb": 114,
+        "thdPercent": 0.07,
+        "groundLift": true,
+        "phaseInvert": true,
+        "balanced": true,
+        "level": "line",
+        "note": "Input 3 kΩ balanced; output 2.5 kΩ unbalanced; THD+N 0.07% @ 20 Hz / +4 dBu; SNR 114 dB."
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Re_Amp_Digital_Manual.pdf?v=1685647665",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-passive-re-amp",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Re_Amp_Digital_Manual.pdf?v=1685647665",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-canvas-passive-re-amp-1792463",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/files/walrus-effects-and-pedals-controllers-volume-and-expression-walrus-audio-canvas-passive-re-amp-900-1081-30479029502087.jpg?v=1686603357",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/files/walrus-effects-and-pedals-controllers-volume-and-expression-walrus-audio-canvas-passive-re-amp-900-1081-30479029502087.jpg?v=1686603357",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/walrus-audio-canvas-passive-re-amp-1792463",
+        "priority": 1,
+        "notes": "CME manufacturer product image, 1000×1000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/files/walrus-effects-and-pedals-controllers-volume-and-expression-walrus-audio-canvas-passive-re-amp-900-1081-30479029502087.jpg?v=1686603357",
+      "status": "chosen",
+      "note": "CME (authorized retailer) product image, 1000×1000 px; downscaled 1.25× to the 800/350 AVIF master; license-pending (retailer pixels, self-hosted)."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1",
+      "license": "license-pending (retailer product image; self-hosted)"
+    }
+  },
+  {
+    "id": "walrus-audio-canvas-rehearsal",
+    "brand": "Walrus Audio",
+    "name": "Canvas Rehearsal",
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "utility"
+    ],
+    "widthCm": 7.44,
+    "heightCm": 12.19,
+    "dimensionsSource": "Walrus Audio Canvas Rehearsal product page: 2.25 × 2.93 × 4.8 in including jacks; catalog footprint 7.44 × 12.19 cm.",
+    "imageFormat": "avif",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "usage": "both",
+    "color": "Black",
+    "notes": "All-in-one practice tool: headphone amp, Bluetooth/1/8 in aux playback, metronome (40–250 BPM), and MIDI In/Thru control.",
+    "jacks": [
+      {
+        "label": "INPUT 1",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in unbalanced instrument input."
+      },
+      {
+        "label": "INPUT 2",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in unbalanced instrument input."
+      },
+      {
+        "label": "OUTPUT 1",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in unbalanced output."
+      },
+      {
+        "label": "OUTPUT 2",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in unbalanced output."
+      },
+      {
+        "label": "AUX IN",
+        "kind": "in",
+        "connector": "3.5mm",
+        "channels": 2,
+        "signal": "audio",
+        "level": "line",
+        "stereo": true,
+        "note": "1/8 in TRS stereo auxiliary input."
+      },
+      {
+        "label": "HEADPHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "channels": 2,
+        "signal": "audio",
+        "level": "headphone",
+        "stereo": true,
+        "note": "1/8 in TRS stereo headphone output."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "midiType": "a",
+        "note": "1/8 in TRS MIDI Type A input."
+      },
+      {
+        "label": "MIDI THRU",
+        "kind": "midi",
+        "connector": "3.5mm",
+        "signal": "midi",
+        "midiType": "a",
+        "note": "1/8 in TRS MIDI Type A thru."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC center-negative, 2.1 mm barrel; top-mounted power jack."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Official gallery shows inputs/outputs/MIDI faces but no single per-edge layout was verified in this batch; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "note": "9 V DC center-negative, 300 mA minimum; isolated supply recommended."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "headphone": true,
+      "auxIn": true
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "headphone": true,
+        "auxIn": true,
+        "note": "Two 1/4 in inputs/outputs; 1/8 in aux and headphone; 20 Hz–20 kHz."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "Start/Stop + Tap Tempo switches",
+        "tapTempo": true,
+        "note": "Metronome 40–250 BPM; tap tempo and encoder control."
+      },
+      "midi": {
+        "trs": "a",
+        "clock": true,
+        "programChange": true,
+        "cc": true,
+        "channels": 16,
+        "note": "1/8 in TRS MIDI Type A In/Thru; MIDI-controlled metronome/presets."
+      },
+      "wireless": {
+        "bluetoothAudio": true,
+        "bluetoothVersion": "4.2",
+        "proprietary": "A2DP audio",
+        "note": "Bluetooth 4.2 A2DP audio playback."
+      },
+      "physical": {
+        "heightCm": 5.72,
+        "depthCm": 12.19,
+        "footswitches": 2,
+        "enclosure": "Die-cast aluminium",
+        "finish": "Black",
+        "jackOrientation": "Top-mounted I/O, MIDI and headphones (official product gallery).",
+        "batteryCompartment": false
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Rehearsal_Digital_Manual_739efc9e-1b80-44d7-afe2-c83667b56914.pdf?v=1738941327",
+        "madeIn": "USA"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-rehearsal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Rehearsal_Digital_Manual_739efc9e-1b80-44d7-afe2-c83667b56914.pdf?v=1738941327",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Rehearsal-front.jpg?v=1748873868",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Rehearsal-front.jpg?v=1748873868",
+        "sourcePage": "https://www.walrusaudio.com/products/canvas-rehearsal",
+        "priority": 1,
+        "notes": "Official Walrus Audio front/top product image, 3000×3000 px; downscaled to the 800 master."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Rehearsal-front.jpg?v=1748873868",
+      "status": "chosen",
+      "note": "Official Walrus Audio product image (3000×3000 px); downscaled 3.75× to the 800/350 AVIF master."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "walrus-1"
+    }
+  }
+]
