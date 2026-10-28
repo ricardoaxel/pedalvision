@@ -1,6 +1,6 @@
 # P5-03: JHS — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** in progress — batch complete, PR pending · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #75 · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-2` coordinator created this worktree and wrote the 18
 > existing-item raw scaffolds (`jhs-3-series-screamer` already has a merged raw
