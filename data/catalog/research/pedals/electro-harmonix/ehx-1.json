@@ -94,6 +94,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-1-echo.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/number-1-echo-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -102,10 +108,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/number-1-echo-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-1-echo.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -256,6 +262,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-1440.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://m.media-amazon.com/images/I/81enTUibOcL._AC_SL1500_.jpg",
         "sourcePage": "https://www.amazon.com.mx/Electro-Harmonix-efectos-guitarra-est%C3%A9reo/dp/B08F5GS8CY",
         "priority": 1,
@@ -270,11 +282,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "retailer",
-      "sourceUrl": "https://m.media-amazon.com/images/I/81enTUibOcL._AC_SL1500_.jpg",
-      "referenceUrl": "https://www.amazon.com.mx/Electro-Harmonix-efectos-guitarra-est%C3%A9reo/dp/B08F5GS8CY",
-      "status": "chosen",
-      "note": "TEST/REFERENCE: owner-proposed Amazon product-gallery image (1301x1500, soft matte tol40, AVIF q90). Not for merge."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-1440.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -502,6 +513,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -510,10 +527,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -772,6 +789,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-22500.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -780,10 +803,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-22500.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -962,6 +985,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-44magnum.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -970,10 +999,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-44magnum.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -1202,6 +1231,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-720.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-720-stereo-looper_1.jpg?v=1614190947",
         "sourcePage": "https://russomusic.com/products/electro-harmonix-720-stereo-looper?_pos=3&_psq=Electro-Harmonix+720+Stereo+Looper&_psid=c24c1a0e5&_ss=e",
         "priority": 1,
@@ -1216,11 +1251,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "retailer",
-      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-720-stereo-looper_1.jpg?v=1614190947",
-      "referenceUrl": "https://russomusic.com/products/electro-harmonix-720-stereo-looper?_pos=3&_psq=Electro-Harmonix+720+Stereo+Looper&_psid=c24c1a0e5&_ss=e",
-      "status": "chosen",
-      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-720.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -1326,6 +1360,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-8-step-program.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1334,10 +1374,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-8-step-program.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -1645,6 +1685,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-analogizer.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1653,10 +1699,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-analogizer.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -1902,6 +1948,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-b9.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1910,10 +1962,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-b9.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -2008,6 +2060,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bad-stone.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2016,10 +2074,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bad-stone.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -2925,6 +2983,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass9.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2933,10 +2997,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass9.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
@@ -3032,6 +3096,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bassballs.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/nbassballs-f.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -3040,10 +3110,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/nbassballs-f.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bassballs.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
     }
   },
   {
