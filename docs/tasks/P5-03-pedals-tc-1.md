@@ -263,16 +263,3 @@ shear by the measured source slope, trim, 800/350 AVIF q90. Result: analyzer
 rotation **0.02–0.18°**, aspect **0.4–1.1 %**, PSNR **41.75–47.09 dB**; the
 `catalog-image-reviewer` deskew pass confirmed all three straight, clean-alpha and
 shippable. Only these three `imageProvenance` notes and their AVIFs changed.
-
-## Owner correction — second pass (planner), 2026-10-28
-
-The shear re-render still looked rotated to the owner. The official TC renders and
-the Pedalplayground cutouts are geometrically equivalent (both mildly sheared), so
-per the owner's request the three items now use the **Pedalplayground cutouts**
-(`tc-bondyrez.png`, `tc-coronamini.png`, `tc-bonafide.png`), shear-corrected by
-**+2.37°**, body-trimmed, 800/350 AVIF q90. Analyzer rotation **0.03–0.07°**,
-aspect **1.07%**, PSNR **41.84–47.07 dB**; `imageProvenance` is now
-`kind: planner` / `status: last-resort` and the 3 are counted source gaps.
-Planner share **3/23 = 13%**. The `catalog-image-reviewer` confirms the planner art
-is correct/shippable and notes the residual visual lean is the diagonal artwork
-(gold arcs / arrow), shared by both sources.
