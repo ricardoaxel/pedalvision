@@ -170,8 +170,10 @@ Read only the sections the task file points to; do not read whole docs.
   generated art).
 - **Checks:** `catalog:ci` **347 pedals / 15 boards** on this branch (main 322 +
   25; final 399/15 after boss-6/7 merge); `catalog:validate`, `check-jacks`,
-  `check-images`, `guard-batch-pr` green; lint/typecheck/test/build/e2e recorded
-  in the PR.
+  `check-images` (46 planner source gaps catalog-wide), `guard-batch-pr` **clean**
+  (raw + assets + task only; evidence on `p5-03-pedals-boss-8-evidence`); lint
+  (2 pre-existing warnings), typecheck green, **test 853**, build green, **e2e
+  266 passed + 7 skipped**. Demo link: **25 items / 24 cables**.
 
 ## Notes
 
