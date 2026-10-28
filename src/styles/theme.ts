@@ -69,7 +69,7 @@ export const CANVAS_FONTS = {
  * `--grid-dot-radius`). `GRID_PITCH` is the base dot spacing in screen px at
  * zoom 1; theme.test.ts asserts the mirror stays in sync with the tokens.
  */
-export const GRID_PITCH = 24;
+export const GRID_PITCH = 20;
 export const GRID_DOT_RADIUS = 1;
 
 /**

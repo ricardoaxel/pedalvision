@@ -108,9 +108,22 @@ describe("settings", () => {
 			units: "in",
 			activeSceneId: "scene-2",
 			showCables: false,
+			gridStepCm: 5,
 		});
 		expect(writeSettings({ showCables: false }, storage)).toBe(true);
 		expect(parseSettings(storage.getItem(SETTINGS_KEY)).showCables).toBe(false);
+	});
+
+	it("persists only a supported grid step", () => {
+		const storage = fakeStorage();
+		expect(writeSettings({ gridStepCm: 10 }, storage)).toBe(true);
+		expect(parseSettings(storage.getItem(SETTINGS_KEY)).gridStepCm).toBe(10);
+		expect(
+			parseSettings(JSON.stringify({ version: 1, gridStepCm: 3 })).gridStepCm,
+		).toBe(5);
+		expect(
+			parseSettings(JSON.stringify({ version: 1, gridStepCm: "1" })).gridStepCm,
+		).toBe(5);
 	});
 });
 

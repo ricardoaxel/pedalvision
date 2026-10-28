@@ -232,7 +232,8 @@ export function ChevronIcon({
 	size = 18,
 	strokeWidth = 2,
 	className,
-}: IconProps) {
+	path = "M6 9l6 6 6-6",
+}: IconProps & { path?: string }) {
 	return (
 		<svg
 			className={className}
@@ -246,7 +247,7 @@ export function ChevronIcon({
 			strokeLinejoin="round"
 			aria-hidden="true"
 		>
-			<path d="M6 9l6 6 6-6" />
+			<path d={path} />
 		</svg>
 	);
 }
@@ -466,6 +467,30 @@ export function MoonIcon({
 			aria-hidden="true"
 		>
 			<path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2Z" />
+		</svg>
+	);
+}
+
+export function RulerIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M3.5 16.5 16.5 3.5l4 4L7.5 20.5z" />
+			<path d="M7 13l2 2M10 10l2 2M13 7l2 2" />
 		</svg>
 	);
 }

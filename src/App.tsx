@@ -4,6 +4,7 @@ import { GraphActionBar } from "./canvas/GraphActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
 import { useHistoryShortcuts } from "./canvas/useHistoryShortcuts";
+import { useMeasureShortcuts } from "./canvas/useMeasureShortcuts";
 import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CableSchedulePanel } from "./components/CableSchedulePanel";
@@ -24,7 +25,10 @@ import {
 	PlusIcon,
 	SunIcon,
 } from "./components/icons";
+import { MeasureControl } from "./components/MeasureControl";
+import { MeasureOverlay } from "./components/MeasureOverlay";
 import { Picker, type PickerTab } from "./components/Picker";
+import { ScaleReadout } from "./components/ScaleReadout";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
 import {
@@ -39,6 +43,7 @@ import { capacityStatus } from "./lib/capacity";
 import { useCableDrag } from "./state/cableDrag";
 import { useEndpointPlacement } from "./state/endpointPlacement";
 import { useSceneLibrary } from "./state/library";
+import { useMeasure } from "./state/measure";
 import { useReadOnly } from "./state/readOnly";
 import { useScene } from "./state/scene";
 import { selectSelectedItemUid, useSelection } from "./state/selection";
@@ -142,6 +147,36 @@ function App() {
 	useSelectionShortcuts();
 	// Undo/redo shortcuts (P3-04): Cmd/Ctrl+Z / Cmd/Ctrl+Shift+Z.
 	useHistoryShortcuts();
+	// Measure tool shortcuts: M toggles, Esc clears/disarms.
+	useMeasureShortcuts();
+	const measureActive = useMeasure((state) => state.active);
+	// Measuring is a canvas mode; drop the selection chrome so the line/chip
+	// never sit under the transformer handles.
+	useEffect(() => {
+		if (measureActive) useSelection.getState().clearSelection();
+	}, [measureActive]);
+	// Opening any modal/tray leaves the transient measure mode.
+	useEffect(() => {
+		if (
+			pickerOpen ||
+			exportOpen ||
+			scenesOpen ||
+			shareOpen ||
+			scheduleOpen ||
+			editingCustomRefId !== null ||
+			editingBoardUid !== null
+		) {
+			useMeasure.getState().setActive(false);
+		}
+	}, [
+		pickerOpen,
+		exportOpen,
+		scenesOpen,
+		shareOpen,
+		scheduleOpen,
+		editingCustomRefId,
+		editingBoardUid,
+	]);
 	// Explain read-only drag attempts on a shared scene (P3-03).
 	useReadOnlyEditCue();
 	// Hiding the graph is a view-only preference: drop cable/endpoint edit state.
@@ -301,6 +336,10 @@ function App() {
 			<StorageAnnouncer readOnly={readOnly} />
 			<div className="app-canvas">
 				<Stage />
+				{/* Transient measure mode: drag A→B on the canvas. */}
+				<MeasureOverlay />
+				{/* Ambient scale (F-03): visible canvas + dot-cell readout. */}
+				<ScaleReadout />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
 				 * so its presses never reach the canvas gesture handler. Read-only
 				 * shares keep selection + the info panel, but remove every edit affordance. */}
@@ -357,6 +396,7 @@ function App() {
 								</span>
 								<span className="schedule-trigger__label">Cables</span>
 							</button>
+							<MeasureControl />
 							<ShareActions />
 						</>
 					) : (
@@ -388,6 +428,7 @@ function App() {
 								<PlusIcon />
 							</button>
 							<EndpointControl onOpenSchedule={openSchedule} />
+							<MeasureControl />
 							<button
 								ref={shareTriggerRef}
 								type="button"

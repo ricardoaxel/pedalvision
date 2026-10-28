@@ -311,7 +311,12 @@ body {
 	.first-run {
 		top: auto;
 		right: auto;
-		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-2));
+		bottom: calc(
+			56px +
+			env(safe-area-inset-bottom) +
+			var(--space-6) +
+			var(--space-6)
+		);
 		left: var(--space-3);
 		width: max-content;
 		max-width: calc(100% - var(--space-3) * 2);
@@ -5361,5 +5366,465 @@ body {
 		left: auto;
 		width: min(360px, calc(100% - 24px));
 		max-height: calc(100dvh - 68px - 56px);
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Viewport + grid readout (F-03). Explicit real-world scale: how much canvas
+ * is visible and how large one dot cell is — no bar length to mistake for the
+ * dot pitch. Always visible; the measure tool handles local distances.
+ * ------------------------------------------------------------------------- */
+
+.app-canvas {
+	background-color: var(--color-canvas-bg);
+}
+
+.scale-strip {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	align-items: end;
+	height: var(--sheet-margin-y);
+	padding: 0 var(--space-4) 4px;
+	font-family: var(--font-mono);
+	font-variant-numeric: tabular-nums;
+	pointer-events: none;
+}
+
+.scale-readout {
+	justify-self: start;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: 18px;
+	pointer-events: none;
+}
+
+.scale-readout__view {
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	letter-spacing: 0;
+	color: var(--color-ink);
+	white-space: nowrap;
+}
+
+.scale-readout__sep {
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink-muted);
+}
+
+.scale-readout__grid {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 0 3px 0 0;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	color: var(--color-ink);
+	white-space: nowrap;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.scale-readout__grid:hover {
+	color: var(--color-accent-ink);
+}
+
+.scale-readout__grid:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+.scale-readout__chevron {
+	display: inline-flex;
+	flex: 0 0 auto;
+	width: 1.15em;
+	height: 1.15em;
+	margin-bottom: 2px;
+	color: var(--color-ink-muted);
+}
+
+.scale-readout__units {
+	display: inline-flex;
+	align-items: center;
+	gap: 0;
+	padding: 1px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-pill);
+}
+
+.scale-readout__unit-slot {
+	display: inline-flex;
+	align-items: center;
+}
+
+.scale-readout__unit-sep {
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink-muted);
+}
+
+.scale-readout__unit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 20px;
+	min-height: 18px;
+	padding: 0 4px;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	color: var(--color-ink-muted);
+	background: none;
+	border: 0;
+	border-radius: var(--radius-pill);
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.scale-readout__unit:hover {
+	color: var(--color-ink);
+}
+
+.scale-readout__unit[aria-pressed="true"] {
+	color: var(--color-ink);
+	background-color: var(--color-surface-raised);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.scale-readout__unit:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: -2px;
+}
+
+/* The true-length reference: one rule, two caps, value + condition. */
+.scale-bar {
+	justify-self: center;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: 18px;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.scale-bar__rule {
+	position: relative;
+	flex: 0 0 auto;
+	height: 1px;
+	background-color: var(--color-ink-muted);
+	filter: drop-shadow(0 0 2px var(--color-canvas-bg));
+}
+
+.scale-bar__rule::before,
+.scale-bar__rule::after {
+	position: absolute;
+	top: -3px;
+	width: 1px;
+	height: 7px;
+	background-color: var(--color-ink-muted);
+	content: "";
+}
+
+.scale-bar__rule::before {
+	left: 0;
+}
+
+.scale-bar__rule::after {
+	right: 0;
+}
+
+.scale-bar__label {
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	color: var(--color-ink);
+}
+
+.scale-bar__legend {
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink-muted);
+}
+
+/* Grid-step popover: opens upward from the `grid N` trigger. */
+.grid-step {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+.grid-step__menu {
+	position: absolute;
+	bottom: calc(100% + 6px);
+	left: 50%;
+	z-index: 3;
+	width: 196px;
+	padding: var(--space-2);
+	transform: translateX(-50%);
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
+	pointer-events: auto;
+}
+
+.grid-step__header {
+	padding: 2px var(--space-2) var(--space-1);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.grid-step__options {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.grid-step__option {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: 32px;
+	padding: 0 var(--space-2);
+	border-radius: var(--radius-row);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	cursor: pointer;
+}
+
+.grid-step__option:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.grid-step__option:has(input:checked) {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+}
+
+.grid-step__option input {
+	accent-color: var(--color-accent);
+}
+
+.grid-step__option input:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.grid-step__foot {
+	margin: var(--space-1) var(--space-2) 0;
+	padding-top: var(--space-1);
+	border-top: 1px solid var(--color-border);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: 1.3;
+	color: var(--color-ink-muted);
+}
+
+@media (min-width: 1024px) {
+	/* The caption strip is outside the drawing; the stage keeps its full width. */
+	.stage {
+		top: 0;
+		right: 0;
+		bottom: var(--sheet-margin-y);
+		left: 0;
+		/* A faint sheet edge makes the caption strip legible without a band. */
+		box-shadow: inset 0 -1px 0 var(--color-border);
+	}
+
+	.endpoint-placement {
+		top: 0;
+		right: 0;
+		bottom: var(--sheet-margin-y);
+		left: 0;
+	}
+
+	.graph-status,
+	.share-edit-cue {
+		bottom: calc(var(--sheet-margin-y) + var(--space-3));
+	}
+}
+
+@media (max-width: 1023px) {
+	.scale-strip {
+		bottom: calc(
+			56px +
+			env(safe-area-inset-bottom) +
+			var(--space-4) +
+			var(--scale-peek-lift, 0px)
+		);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+		height: auto;
+		padding: 0 var(--space-4);
+		text-shadow: 0 0 2px var(--color-canvas-bg);
+	}
+
+	.scale-bar {
+		order: -1;
+	}
+
+	.scale-readout {
+		justify-self: auto;
+		gap: 6px;
+	}
+
+	.scale-readout__unit {
+		min-width: 44px;
+		min-height: 36px;
+		padding: 0 var(--space-2);
+	}
+
+	.scale-readout__grid {
+		min-width: 44px;
+		min-height: 36px;
+		justify-content: center;
+	}
+
+	.grid-step__menu {
+		width: min(220px, calc(100vw - 32px));
+	}
+
+	.grid-step__option {
+		min-height: 44px;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Measure mode (F-03). A transient drag-to-measure line + live cm/in chip;
+ * endpoints snap to board/item corners & centres, jacks, endpoints, then the
+ * current 5 cm grid cell. Never persisted, shared or exported.
+ * ------------------------------------------------------------------------- */
+
+.measure-trigger[data-active="true"] {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border-color: var(--color-accent-border);
+}
+
+.measure-trigger__label {
+	font-size: var(--font-size-xs);
+}
+
+.measure-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: var(--sheet-margin-y);
+	left: 0;
+	z-index: 1;
+	cursor: crosshair;
+	touch-action: none;
+}
+
+.measure-overlay__svg {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.measure-status {
+	position: absolute;
+	top: calc(var(--space-4) + 44px + var(--space-2));
+	left: 50%;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	width: max-content;
+	max-width: calc(100% - var(--space-4) * 2);
+	padding: var(--space-1) var(--space-2);
+	transform: translateX(-50%);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: 1.3;
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
+	pointer-events: auto;
+}
+
+.measure-status__clear {
+	min-height: 24px;
+	margin-left: var(--space-1);
+	border-left: 1px solid var(--color-border);
+	padding: 0 var(--space-2);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink);
+	background: none;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-row);
+	cursor: pointer;
+}
+
+.measure-status__clear:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.measure-chip {
+	position: absolute;
+	z-index: 2;
+	padding: 2px 6px;
+	transform: translate(-50%, calc(-100% - 12px));
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1.2;
+	color: var(--color-ink);
+	white-space: nowrap;
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-row);
+	box-shadow: var(--shadow-raised);
+	pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+	.measure-trigger__label {
+		display: none;
+	}
+
+	.measure-overlay {
+		bottom: 0;
+	}
+
+	.measure-status {
+		right: var(--space-3);
+		left: var(--space-3);
+		width: auto;
+		max-width: none;
+		transform: none;
+		justify-content: space-between;
+	}
+
+	.measure-status__clear {
+		min-height: 44px;
 	}
 }

@@ -25,7 +25,7 @@ function extractVars(css: string, selector: string): Record<string, string> {
 	if (!block) {
 		throw new Error(`Selector "${selector}" not found in tokens.css`);
 	}
-	const body = block[1].replace(/\/\*.*?\*\//g, "");
+	const body = block[1].replace(/\/\*[\s\S]*?\*\//g, "");
 	const vars: Record<string, string> = {};
 	for (const declaration of body.split(";")) {
 		const separator = declaration.indexOf(":");

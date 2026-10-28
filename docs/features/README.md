@@ -51,6 +51,7 @@ source files; tests are the unit specs that guard the logic.
 | F10 | Share links + read-only preview + save a copy | Send a layout without an account | `lib/shareLink.ts`, `state/share.ts`, `state/readOnly.ts`, `state/library.ts`, `components/SharePanel.tsx`, `components/ShareView.tsx` | `shareLink.test.ts`, `shareLink.demo.test.ts`, `readOnly.test.ts`, `library.test.ts` | `share.spec.ts`, `cables.spec.ts`, `history.spec.ts`, `storage-fallback.spec.ts` |
 | F11 | Responsive desktop/mobile chrome | Full function on phone and desktop | `App.tsx`, `components/Picker.tsx`, panels/trays, `styles/tokens.css` | `toolbarNav.test.ts` | `picker.spec.ts`, `touch.spec.ts`, mobile cases in `export`/`cable-schedule`/`info-panel`/`scenes` |
 | F12 | Cables: drag-connect, endpoints, schedule | Plan the patch, not just the parts | `state/scene.ts` (cables), `state/cableDrag.ts`, `state/endpointDrag.ts`, `state/endpointPlacement.ts`, `canvas/CableLayer.tsx`, `canvas/EndpointLayer.tsx`, `lib/jackAnchor.ts`, `lib/cablePath.ts`, `lib/cableLength.ts`, `lib/cableSummary.ts`, `components/CableSchedulePanel.tsx` | `cables.test.ts`, `cableDrag.test.ts`, `jackAnchor.test.ts`, `cablePath.test.ts`, `cableLength.test.ts`, `cableSummary.test.ts`, `exportScene.test.ts` | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| F-03 | Margin Rule — viewport/grid readout + centered reference bar + selectable grid step + measure tool | Judge the visible extent and true scale, choose the grid precision, and measure the actual gap, without permanent clutter | `components/ScaleReadout.tsx`, `components/ScaleBar.tsx`, `components/GridStepMenu.tsx`, `components/MeasureOverlay.tsx`, `components/MeasureControl.tsx`, `state/measure.ts`, `state/settings.ts`, `lib/measure.ts`, `lib/measurementHud.ts`, `lib/grid.ts`, `canvas/useMeasureShortcuts.ts` | `measurementHud.test.ts`, `measure.test.ts`, `grid.test.ts`, `sceneIndex.test.ts` | `measurement-hud.spec.ts` |
 | — | Info panel + asset renditions | Right details and imagery at each size | `components/InfoPanel.tsx`, `components/PartDrawing.tsx`, `components/partImage.ts`, `lib/partInfo.ts`, `lib/cdn.ts`, `canvas/loadImage.ts`, `canvas/useImage.ts` | `partInfo.test.ts`, `cdn.test.ts`, `loadImage.test.ts`, `imageStatus.test.ts` | `info-panel.spec.ts`, `picker.spec.ts`, `picker-choka.spec.ts` |
 | — | Capacity budgets | Honest limits, never a silent failure | `lib/capacity.ts`, `components/CapacityAnnouncer.tsx`, `scene.ts` caps | `capacity.test.ts`, `capacity.images.test.ts`, `capacityGuards.test.ts` | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | — | First-run guidance | Empty scene tells you where to start | `components/FirstRunHint.tsx`, `lib/firstRun.ts`, `lib/focus.ts` | `firstRun.test.ts` | `first-run.spec.ts` |
@@ -93,6 +94,22 @@ graph cap, the share payload/version or the "Patch Drafting" direction.
   The 4 cm padding and the 16.7 MP / 8192 px clamps are unchanged; cable
   geometry, share payload/version and the graph cap are untouched.
 
+### F-03 — Margin Rule (P2-03)
+
+An **always-visible `view W × H · grid N` readout** with a compact **`cm | in`**
+toggle, a **centered true-length reference** (`20 cm at this zoom`; re-steps with
+zoom) and a **grid-step popover** (`1/2/5/10/20 cm`) in the bottom caption strip.
+The step is a precision ceiling: dots/snap use the coarsest visible pitch
+(≥16 px), so 1 cm at 1× reads `grid 4 cm` with an explicit “Too fine here” note.
+Mobile stacks rule above readout (above dock/peek); the mobile view subtracts
+the dock + peek. Plus a **transient measure tool** (`M`/toolbar): drag A→B, snap
+to board/item corners & centres, jacks, endpoints and the visible grid;
+true-length dashed line + live cm/in chip (1 dp); Clear line; Esc exits;
+read-only shares can measure. No axis/world labels/zoom %/fill/card; pan changes
+nothing; zoom re-steps the values; empty sheets and read-only shares keep it.
+`cm` stays canonical; the grid step is the only new persisted app-wide setting;
+nothing else is exported/shared.
+
 ### F-19 — This map
 
 The feature inventory, workflow → module → E2E table, change-impact table,
@@ -120,6 +137,7 @@ feature PRs.
 | **Capacity** | `capacity.ts`, `scene.ts` guards, `CapacityAnnouncer.tsx`, picker/export/scene UI | Scene-wide counts + distinct images + graph (cables + endpoints) | `capacity.spec.ts` (desktop + mobile), `share.spec.ts` (over-cap hydration), `export.spec.ts` (large-export notice) |
 | **Storage failure/backup** | `storageHealth.ts`, `sceneBackup.ts`, `StorageNotice.tsx`, `library.ts` | Live scene → `SceneDocument` v1 JSON download; no writes | `storage-fallback.spec.ts` (desktop + mobile) |
 | **Info panel / asset loading** | `InfoPanel.tsx`, `partInfo.ts`, `partImage.ts`, `cdn.ts`, `loadImage.ts`, `useImage.ts` | Image URLs are derived from the catalog entry, not stored | `info-panel.spec.ts` (desktop + mobile), `picker.spec.ts` (CORS/cache self-heal), `picker-choka.spec.ts` (AVIF) |
+| **Margin Rule readout + bar + grid step + measure** | `ScaleReadout.tsx`, `ScaleBar.tsx`, `GridStepMenu.tsx`, `MeasureOverlay.tsx`, `MeasureControl.tsx`, `state/measure.ts`, `state/settings.ts`, `lib/measure.ts`, `lib/measurementHud.ts`, `lib/grid.ts`, `canvas/useMeasureShortcuts.ts` | Grid step persisted in `Settings`; readout/bar/measure derived only — not exported/shared | `measurement-hud.spec.ts` (desktop + mobile) |
 | **First-run** | `FirstRunHint.tsx`, `firstRun.ts`, `focus.ts` | One-way localStorage `pedalvision.firstRun.v1` | `first-run.spec.ts` (desktop + mobile) |
 | **Mobile/touch chrome** | `App.tsx`, responsive CSS, bottom tabs/trays, 44 px targets | Same scene/document | `touch.spec.ts`, `cables-touch.spec.ts`, mobile project runs listed above |
 
@@ -142,6 +160,7 @@ change is user-visible.
 | **Capacity constants / guards** | `src/lib/capacity.ts`, `src/state/scene.ts`, `src/components/CapacityAnnouncer.tsx` | add, duplicate, board add, over-cap load, export warning | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | **Picker / filtering / catalog loading** | `src/components/Picker.tsx`, `src/components/pickerFilter.ts`, `src/catalog/load.ts`, `src/lib/cdn.ts`, `src/canvas/loadImage.ts` | every place workflow, asset renditions | `picker.spec.ts`, `picker-choka.spec.ts` |
 | **Info panel / part info / image loading** | `src/components/InfoPanel.tsx`, `src/lib/partInfo.ts`, `src/components/partImage.ts`, `src/canvas/useImage.ts` | selection readout, asset sizes, CORS fallback | `info-panel.spec.ts`, `picker.spec.ts` |
+| **Margin Rule readout / bar / grid step / measure / units** | `src/components/ScaleReadout.tsx`, `src/components/ScaleBar.tsx`, `src/components/GridStepMenu.tsx`, `src/components/MeasureOverlay.tsx`, `src/components/MeasureControl.tsx`, `src/state/measure.ts`, `src/state/settings.ts`, `src/lib/sceneIndex.ts`, `src/lib/measure.ts`, `src/lib/measurementHud.ts`, `src/lib/grid.ts`, `src/App.tsx`, `src/index.css`, `src/styles/tokens.css` | canvas zoom/measure, units, grid step, read-only shares, mobile peek, grid LOD | `measurement-hud.spec.ts`, `info-panel.spec.ts` |
 | **First-run / boot chrome** | `src/components/FirstRunHint.tsx`, `src/lib/firstRun.ts`, `src/lib/focus.ts` | empty scene, storage notice precedence | `first-run.spec.ts`, `storage-fallback.spec.ts` |
 | **Responsive CSS / mobile chrome** | `src/App.tsx`, `src/styles/**`, responsive cases in `src/components/**` | picker, trays, action bars, touch targets | mobile project of `picker`/`export`/`cable-schedule`/`info-panel`/`scenes`; `touch.spec.ts` |
 | **Catalog data/images** — **catalog sessions only** (a feature PR never edits catalog data) | `data/catalog/**`, `public/pedal-assets/**`, `tools/catalog-*` | catalog picker/canvas/info/export/share | `picker-choka.spec.ts`, `info-panel.spec.ts` (+ `catalog:ci`); a feature PR that only *consumes* an entry runs `picker.spec.ts` for one stable filtered item/brand |
@@ -230,6 +249,7 @@ missing one is how P4-01/P4-02 broke standalone endpoints on load.
 | `capacity.spec.ts` | soft/hard warnings, add refusals, over-cap load, export notice | chromium + mobile |
 | `storage-fallback.spec.ts` | blocked IDB/localStorage, write failure, quota advisories, backup | chromium + mobile |
 | `first-run.spec.ts` | note geometry, CTA, dismiss/focus, retire on first object | chromium + mobile |
+| `measurement-hud.spec.ts` | Margin Rule readout + bar, grid step, units, zoom, empty, measure/snap/grid, read-only, mobile | chromium + mobile |
 | `touch.spec.ts` | pinch/pan, board-drag interrupt | mobile |
 | `benchmark.spec.ts` | report-only capacity table (`pnpm bench:capacity`) | excluded from `pnpm e2e` |
 
@@ -255,6 +275,7 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 | Real iOS Safari export (A3) | Owner-confirmed PNG on iPhone (2026-10-20) | Manual; PDF not separately re-tested; P5-04 launch gate |
 | Non-Chromium browsers | Playwright chromium only (owner scope) | Out of scope; real-device pass is P5-06 |
 | Power-supply planner | Not implemented (non-goal N3); custom supply power shows in the info panel | Future feature; no E2E by design |
+
 | Scene list accessibility mirror | Deferred in `docs/design.md` (no owning task) | Deferred |
 | Capacity timing thresholds | `benchmark.spec.ts` is report-only; no ms gate | Intentional (avoid flaky CI) |
 

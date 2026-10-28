@@ -6,7 +6,6 @@ import {
 	useEndpointPlacement,
 } from "../state/endpointPlacement";
 import { resolveItemJacks, useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
 import { useSettings } from "../state/settings";
 import { pxToWorldCm, useViewport } from "../state/viewport";
 
@@ -190,13 +189,13 @@ export function EndpointControl({
 }
 
 /**
- * Full-canvas capture layer while placement is armed. It lives above the stage
- * and below the chrome, so a tap places the endpoint without starting a pan.
+ * Stage-sized capture layer (full canvas on mobile) while placement is armed.
+ * It lives above the stage and below the chrome, so a tap places the endpoint
+ * without starting a pan.
  */
 export function EndpointPlacementOverlay() {
 	const kind = useEndpointPlacement((state) => state.kind);
 	const addEndpoint = useScene((state) => state.addEndpoint);
-	const selectEndpoint = useSelection((state) => state.selectEndpoint);
 
 	useEffect(() => {
 		if (!kind) return;
@@ -227,7 +226,8 @@ export function EndpointPlacementOverlay() {
 				);
 				const uid = addEndpoint(kind, world);
 				if (uid) {
-					selectEndpoint(uid);
+					// Do not auto-select: the delete bar would land over a nearby
+					// pedal's jack. The user selects the tag when they want it.
 					useEndpointPlacement.getState().disarm();
 				}
 			}}

@@ -74,6 +74,7 @@ export function Stage() {
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
 	const showCables = useSettings((state) => state.showCables);
+	const gridStepCm = useSettings((state) => state.gridStepCm);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const readOnlyCue = useReadOnly((state) => state.cue);
 	// Undo/redo depth (P3-04) mirrored for deterministic e2e assertions.
@@ -340,6 +341,7 @@ export function Stage() {
 						scale={scale}
 						x={x}
 						y={y}
+						stepCm={gridStepCm}
 					/>
 					<BoardLayer theme={theme} />
 					<LooseItemLayer theme={theme} />

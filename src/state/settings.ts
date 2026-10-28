@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { DisplayUnits } from "../lib/geometry";
+import { DEFAULT_GRID_STEP_CM, type GridStepCm } from "../lib/grid";
 import { readSettings, writeSettings } from "../lib/sceneIndex";
 
 /**
@@ -12,6 +13,9 @@ interface SettingsStore {
 	/** Canvas view preference: show cables, jack ticks and endpoints. */
 	showCables: boolean;
 	setShowCables: (showCables: boolean) => void;
+	/** Fixed dot-grid step (cm); the visible pitch respects the 16 px floor. */
+	gridStepCm: GridStepCm;
+	setGridStepCm: (gridStepCm: GridStepCm) => void;
 }
 
 export const useSettings = create<SettingsStore>((set) => ({
@@ -25,6 +29,11 @@ export const useSettings = create<SettingsStore>((set) => ({
 		set({ showCables });
 		writeSettings({ showCables });
 	},
+	gridStepCm: DEFAULT_GRID_STEP_CM,
+	setGridStepCm: (gridStepCm) => {
+		set({ gridStepCm });
+		writeSettings({ gridStepCm });
+	},
 }));
 
 /** Load persisted settings before the first render. */
@@ -33,5 +42,6 @@ export function hydrateSettings(): void {
 	useSettings.setState({
 		units: settings.units,
 		showCables: settings.showCables,
+		gridStepCm: settings.gridStepCm,
 	});
 }

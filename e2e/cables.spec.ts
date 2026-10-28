@@ -260,7 +260,11 @@ test("places an amp endpoint, connects to it, then deletes both", async ({
 
 	const box = await stage.boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
-	await page.mouse.click(box.x + box.width * 0.7, box.y + box.height * 0.4);
+	const endpointTap = {
+		x: box.x + box.width * 0.7,
+		y: box.y + box.height * 0.4,
+	};
+	await page.mouse.click(endpointTap.x, endpointTap.y);
 
 	await expect(stage).toHaveAttribute("data-endpoints", "1");
 	await expect(stage).toHaveAttribute("data-endpoint-kinds", "amp");
@@ -272,6 +276,10 @@ test("places an amp endpoint, connects to it, then deletes both", async ({
 		.map((entry) => entry.split("@")[0])
 		.find((key) => key.startsWith("endpoint:"));
 	if (!endpointKey) throw new Error("endpoint anchor missing");
+	const placedEndpoint = await anchorScreenPoint(page, endpointKey);
+	expect(Math.abs(placedEndpoint.x - endpointTap.x)).toBeLessThan(2);
+	expect(Math.abs(placedEndpoint.y - endpointTap.y)).toBeLessThan(2);
+	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
 	await showPatch(page);
 	const { outA } = await firstItemJacks(page);
 	await dragBetween(

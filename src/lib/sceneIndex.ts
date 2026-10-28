@@ -1,4 +1,5 @@
 import type { DisplayUnits } from "./geometry";
+import { DEFAULT_GRID_STEP_CM, type GridStepCm, isGridStepCm } from "./grid";
 import { resolveStorage } from "./storage";
 
 /**
@@ -31,6 +32,8 @@ export interface SceneSettings {
 	activeSceneId: string | null;
 	/** Canvas view preference: show cables, jack ticks and endpoints. */
 	showCables: boolean;
+	/** Fixed dot-grid step (cm). The visible pitch coarsens to the 16 px floor. */
+	gridStepCm: GridStepCm;
 }
 
 /** The smallest document shape the reconcile needs. */
@@ -56,6 +59,7 @@ export const DEFAULT_SETTINGS: SceneSettings = {
 	// Owner decision 2026-10-21: connections start hidden (quiet canvas);
 	// the Patch popover's "Show patch" toggle opts in and persists.
 	showCables: false,
+	gridStepCm: DEFAULT_GRID_STEP_CM,
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -159,6 +163,9 @@ export function parseSettings(raw: string | null): SceneSettings {
 			typeof parsed.activeSceneId === "string" ? parsed.activeSceneId : null,
 		// Absent = the new quiet default (off).
 		showCables: parsed.showCables === true,
+		gridStepCm: isGridStepCm(parsed.gridStepCm)
+			? parsed.gridStepCm
+			: DEFAULT_GRID_STEP_CM,
 	};
 }
 
@@ -173,7 +180,9 @@ export function readSettings(storage?: Storage | null): SceneSettings {
  * write is unavailable.
  */
 export function writeSettings(
-	patch: Partial<Pick<SceneSettings, "units" | "activeSceneId" | "showCables">>,
+	patch: Partial<
+		Pick<SceneSettings, "units" | "activeSceneId" | "showCables" | "gridStepCm">
+	>,
 	storage?: Storage | null,
 ): boolean {
 	const target = resolveStorage(storage);
