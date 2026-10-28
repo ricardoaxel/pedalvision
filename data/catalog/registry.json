@@ -54,6 +54,17 @@
         }
       ]
     },
+    "electro-harmonix": {
+      "brand": "Electro-Harmonix",
+      "batches": [
+        {
+          "batch": "ehx-1",
+          "raw": "data/catalog/research/pedals/electro-harmonix/ehx-1.json",
+          "mapped": "data/catalog/pedals/electro-harmonix/ehx-1.json",
+          "items": 26
+        }
+      ]
+    },
     "jhs": {
       "brand": "JHS",
       "batches": [

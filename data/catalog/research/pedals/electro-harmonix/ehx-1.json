@@ -1,0 +1,3261 @@
+[
+  {
+    "id": "electro-harmonix-1-echo",
+    "brand": "Electro-Harmonix",
+    "name": "#1 Echo",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4 x 2.25 in; planner footprint 10.16 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 2000000
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 185,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/1-echo-manual.pdf",
+        "discontinuedYear": 2024
+      }
+    },
+    "usage": "both",
+    "year": 2007,
+    "status": "discontinued",
+    "notes": "Digital echo/delay with up to 2 seconds of delay and true bypass.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/1-echo/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/1-echo-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/number-1-echo-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-1-echo.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/number-1-echo-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-1-echo.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-1440-stereo-looper",
+    "brand": "Electro-Harmonix",
+    "name": "1440 Stereo Looper",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "looper"
+    ],
+    "widthCm": 10.49,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4.13 x 2.25 in; planner footprint 10.49 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "MONO/L INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "R INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MONO/L OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "R OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "USB PORT",
+        "kind": "ctrl",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "FC",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2020/10/1440_manual_web_v3.pdf",
+      "confidence": "verified",
+      "note": "Manual \"Top Panel Connections\" places the 9V power, MIDI IN and USB on the top edge; audio/FC faces are not named."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "midi": {
+        "din5": "in",
+        "din": true,
+        "clock": true
+      },
+      "usb": {
+        "functions": [
+          "editor",
+          "firmware"
+        ],
+        "device": true
+      },
+      "physical": {
+        "footswitches": 2
+      },
+      "routing": {
+        "presets": 20,
+        "looper": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2020/10/1440_manual_web_v3.pdf",
+        "discontinuedYear": 2025
+      }
+    },
+    "usage": "both",
+    "year": 2020,
+    "status": "discontinued",
+    "notes": "Stereo looper with 20 loop banks, 12 minutes of recording, MIDI clock and USB backup.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/1440/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/1440_manual_web_v3.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-1440.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://m.media-amazon.com/images/I/81enTUibOcL._AC_SL1500_.jpg",
+        "sourcePage": "https://www.amazon.com.mx/Electro-Harmonix-efectos-guitarra-est%C3%A9reo/dp/B08F5GS8CY",
+        "priority": 1,
+        "notes": "Owner-proposed Amazon image; test/reference only."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-1440.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-15watt-howitzer",
+    "brand": "Electro-Harmonix",
+    "name": "15Watt Howitzer",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "preamp",
+      "power-amp"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4 x 2.25 in; planner footprint 10.16 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 1000000
+      },
+      {
+        "label": "SEND/LINE OUT",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 1000000
+      },
+      {
+        "label": "OUTPUT 8-16 OHM",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "level": "speaker"
+      },
+      {
+        "label": "24VDC POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/03/15watt-howitzer-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the 24V power jack at the top of the unit; audio/loop faces are not named."
+    },
+    "power": {
+      "voltage": 24,
+      "acDc": "DC",
+      "currentMa": 1000,
+      "connector": "barrel",
+      "polarity": "center-positive",
+      "recommendedSupply": "EHX 24VDC/1A"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog"
+      },
+      "audio": {
+        "effectsLoop": {
+          "send": 1,
+          "return": 1
+        }
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/03/15watt-howitzer-manual.pdf",
+        "discontinuedYear": 2025
+      }
+    },
+    "usage": "both",
+    "year": 2021,
+    "status": "discontinued",
+    "notes": "15-watt power amp in a pedal with a preamp, FX loop and 8-16 ohm speaker output.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/15watt-howitzer/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/03/15watt-howitzer-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/03/15w-howitzer-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/03/15w-howitzer-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2021/03/15w-howitzer-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+    }
+  },
+  {
+    "id": "electro-harmonix-2020-tuner",
+    "brand": "Electro-Harmonix",
+    "name": "2020 Tuner",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "tuner"
+    ],
+    "widthCm": 4.62,
+    "heightCm": 9.53,
+    "dimensionsSource": "EHX official specifications: 3.75 x 1.5 x 1.25 in enclosure; planner footprint 4.62 x 9.530 cm is the jack-inclusive silhouette measured from the official EHX product photo (the 1.5 in enclosure plus side jack nuts).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DC 9V IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "connectorSize": "5.5 x 2.1 mm"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "connectorSize": "5.5 x 2.1 mm"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "true"
+      },
+      "physical": {
+        "display": "LCD"
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/ehx-2020-manual.pdf",
+        "discontinuedYear": 2024
+      }
+    },
+    "usage": "both",
+    "year": 2019,
+    "status": "discontinued",
+    "notes": "Compact chromatic tuner with true bypass, pitch reference and flat tuning modes.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/2020/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/ehx-2020-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-2020-tuner-v2",
+    "brand": "Electro-Harmonix",
+    "name": "2020 Tuner v2",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "tuner"
+    ],
+    "widthCm": 4.62,
+    "heightCm": 9.525,
+    "dimensionsSource": "EHX official specifications: 3.75 x 1.5 x 1.25 in enclosure; planner footprint 4.62 x 9.525 cm is the jack-inclusive silhouette measured from the official EHX product photo (the 1.5 in enclosure plus side jack nuts).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DC 9V IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "connectorSize": "5.5 x 2.1 mm"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "connectorSize": "5.5 x 2.1 mm"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "true"
+      },
+      "physical": {
+        "display": "LCD"
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2024/12/ehx-2020-2-tuner-manual.pdf"
+      }
+    },
+    "usage": "both",
+    "year": 2024,
+    "status": "current",
+    "notes": "Second-generation 2020 mini tuner with an updated display and true bypass.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/2020-v2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2024/12/ehx-2020-2-tuner-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2024/12/20202.jpeg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/files/EHXTUNERV2-electro-harmonix-2020-v2-chromatic-tuner-pedal-01.png?v=1754334287",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-2020-v2-chromatic-tuner-pedal",
+        "priority": 1,
+        "notes": "Chosen: Russo Music 2000px high-res, strong matte; clean alpha on dark."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2024/12/20202.jpeg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/files/EHXTUNERV2-electro-harmonix-2020-v2-chromatic-tuner-pedal-01.png?v=1754334287",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-2020-v2-chromatic-tuner-pedal",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: Russo Music 2000x2000 product image; strong matte (border flood tol70 + 2px alpha erode), clean on dark, flat top-down; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-22500-dual-stereo-looper",
+    "brand": "Electro-Harmonix",
+    "name": "22500 Dual Stereo Looper",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "looper"
+    ],
+    "widthCm": 14.605,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 5.75 x 4.75 x 2.5 in; planner footprint 14.605 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "L/MONO INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "R INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MIC INPUT",
+        "kind": "in",
+        "edge": "top",
+        "connector": "xlr",
+        "signal": "audio"
+      },
+      {
+        "label": "L OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "R OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "FC",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "audio"
+      },
+      {
+        "label": "USB PORT",
+        "kind": "ctrl",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "editor"
+        ]
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/08/22500-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the XLR MIC input, USB port and 9V power jack on the rear panel; other jack faces are not named."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 235,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6VDC-500mA"
+    },
+    "io": {
+      "inputs": 3,
+      "outputs": 2,
+      "stereo": true
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "usb": {
+        "functions": [
+          "editor"
+        ],
+        "device": true
+      },
+      "physical": {
+        "footswitches": 3
+      },
+      "routing": {
+        "looper": true,
+        "presets": 99
+      },
+      "audio": {
+        "phantomPower": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/08/22500-manual.pdf"
+      }
+    },
+    "usage": "both",
+    "year": 2015,
+    "status": "current",
+    "notes": "Dual stereo looper with two independent loops, 99 loop memories, XLR mic input and USB backup.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/22500/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/08/22500-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-22500.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-22500.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-22500-foot-controller",
+    "brand": "Electro-Harmonix",
+    "name": "22500 Foot Controller",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 11.43,
+    "heightCm": 6.985,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 11.43 x 6.985 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "OUTPUT",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "control"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/22500-foot-controller-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the foot-controller jack at the top of the unit."
+    },
+    "optional": {
+      "physical": {
+        "footswitches": 3
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/22500-foot-controller-manual.pdf"
+      }
+    },
+    "usage": "both",
+    "year": 2015,
+    "status": "current",
+    "notes": "Three-button foot controller for the 22500 looper; powered through the connection.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/22500-foot-controller/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/22500-foot-controller-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-22500-foot-controller.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-22500-foot-controller.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-44-magnum-power-amp",
+    "brand": "Electro-Harmonix",
+    "name": "44 Magnum Power Amp",
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "power-amp"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 2000000
+      },
+      {
+        "label": "OUTPUT 8-16 OHM",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "level": "speaker"
+      },
+      {
+        "label": "24VDC POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/44-magnum-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the power jack at the top of the unit; audio/speaker faces are not named."
+    },
+    "power": {
+      "voltage": 24,
+      "acDc": "DC",
+      "currentMa": 2000,
+      "connector": "barrel",
+      "polarity": "center-positive",
+      "recommendedSupply": "EHX 24VDC/3000mA"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog"
+      },
+      "extra": {
+        "deviceTypeNote": "Power amp; the raw deviceType enum has no power-amp value."
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/44-magnum-manual.pdf"
+      }
+    },
+    "usage": "both",
+    "year": 2010,
+    "status": "current",
+    "notes": "44-watt power amp in a compact pedal with an 8-16 ohm speaker output.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/44-magnum/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/44-magnum-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-44magnum.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-44magnum.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-5mm-power-amp",
+    "brand": "Electro-Harmonix",
+    "name": "5mm Power Amp",
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "power-amp"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 2000000
+      },
+      {
+        "label": "OUTPUT 8-16 OHM",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "level": "speaker"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/5mm-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the power jack at the top of the unit; audio/speaker faces are not named."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 500,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6VDC-500mA"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog"
+      },
+      "extra": {
+        "deviceTypeNote": "Power amp; the raw deviceType enum has no power-amp value."
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/5mm-manual.pdf",
+        "discontinuedYear": 2025
+      }
+    },
+    "usage": "both",
+    "year": 2019,
+    "status": "discontinued",
+    "notes": "5-watt power amp in a compact pedal with an 8-16 ohm speaker output.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/5mm/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/5mm-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-5mm-power-amp_1.jpg?v=1572899886",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-5mm-power-amp?_pos=9&_psq=Electro-Harmonix+5mm+Power+Amp&_psid=3db3d819b&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-5mm-power-amp_1.jpg?v=1572899886",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-5mm-power-amp?_pos=9&_psq=Electro-Harmonix+5mm+Power+Amp&_psid=3db3d819b&_ss=e",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-720-stereo-looper",
+    "brand": "Electro-Harmonix",
+    "name": "720 Stereo Looper",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "looper"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4 x 2.25 in; planner footprint 10.16 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "MONO/L INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "R INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MONO/L OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "R OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 2
+      },
+      "routing": {
+        "looper": true
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/720-manual.pdf"
+      }
+    },
+    "usage": "both",
+    "year": 2015,
+    "status": "current",
+    "notes": "Stereo looper with 12 minutes of recording, 10 loop banks and true stereo I/O.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/720/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/720-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-720.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-720-stereo-looper_1.jpg?v=1614190947",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-720-stereo-looper?_pos=3&_psq=Electro-Harmonix+720+Stereo+Looper&_psid=c24c1a0e5&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-720.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-8-step-program",
+    "brand": "Electro-Harmonix",
+    "name": "8 Step Program",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
+    "effectTypes": [
+      "sequencer",
+      "controller"
+    ],
+    "widthCm": 14.605,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 5.75 x 4.75 x 2.5 in; planner footprint 14.605 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "EXP/CV OUT",
+        "kind": "exp-out",
+        "edge": "left",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "EXP IN",
+        "kind": "exp-in",
+        "edge": "right",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/8-step-program-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places EXP/CV OUT on the left, EXP IN on the right and the 9V jack at the top."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital"
+      },
+      "control": {
+        "expression": 1,
+        "cv": true,
+        "cvVoltageRange": "0-5V"
+      },
+      "physical": {
+        "footswitches": 3
+      },
+      "extra": {
+        "audioJacks": "none; CV/expression sequencer"
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/8-step-program-manual.pdf",
+        "discontinuedYear": 2026
+      }
+    },
+    "usage": "both",
+    "year": 2013,
+    "status": "discontinued",
+    "notes": "Eight-step analog-style sequencer for CV/expression control; no audio jacks.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/8-step-program/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/8-step-program-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-8-step-program.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-8-step-program.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-95000-performance-loop-laboratory",
+    "brand": "Electro-Harmonix",
+    "name": "95000 Performance Loop Laboratory",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "looper"
+    ],
+    "widthCm": 32.385,
+    "heightCm": 15.24,
+    "dimensionsSource": "EHX official specifications: 12.75 x 6 x 2.75 in; planner footprint 32.385 x 15.24 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT L (COMBO)",
+        "kind": "in",
+        "edge": "top",
+        "connector": "xlr",
+        "signal": "audio"
+      },
+      {
+        "label": "INPUT R (COMBO)",
+        "kind": "in",
+        "edge": "top",
+        "connector": "xlr",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "MONITOR OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "HEADPHONE",
+        "kind": "out",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "audio",
+        "level": "headphone",
+        "stereo": true
+      },
+      {
+        "label": "AUX IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "3.5mm",
+        "signal": "audio"
+      },
+      {
+        "label": "EXPRESSION PEDAL",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "MIDI OUT",
+        "kind": "midi",
+        "edge": "top",
+        "connector": "din5",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "editor"
+        ]
+      },
+      {
+        "label": "9VDC POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/95000-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual \"Rear Connections and Controls\" lists all connectors on the rear panel, mapped to the top edge in the planner."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 320,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6VDC-500mA"
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 4,
+      "stereo": true,
+      "trueStereo": true
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "audio": {
+        "headphone": true,
+        "auxIn": true,
+        "phantomPower": true
+      },
+      "midi": {
+        "din5": "in-out",
+        "din": true,
+        "clock": true
+      },
+      "usb": {
+        "functions": [
+          "editor"
+        ],
+        "device": true
+      },
+      "control": {
+        "expression": 1
+      },
+      "physical": {
+        "footswitches": 4
+      },
+      "routing": {
+        "looper": true,
+        "presets": 100
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/95000-manual.pdf",
+        "discontinuedYear": 2026
+      }
+    },
+    "usage": "both",
+    "year": 2018,
+    "status": "discontinued",
+    "notes": "Six-track desktop looper with 375 minutes of recording, XLR/TRS combo inputs and MIDI.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/95000/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/95000-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.sweetwater.com/api/i/version-66d70660d115359a3306306b381fc4c232321778__q-82__w-750__hmac-3a4f826545e22836820725b08cf83908fdeba124/images/items/750/95000-large.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-95000-performance-loop-laboratory_1.jpg?v=1618001410",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-95000-performance-loop-laboratory?_pos=1&_psq=Electro-Harmonix+95000+Performance+Loop+Laboratory&_psid=074a3b1c1&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
+        "url": "https://media.sweetwater.com/api/i/version-66d70660d115359a3306306b381fc4c232321778__q-82__w-750__hmac-3a4f826545e22836820725b08cf83908fdeba124/images/items/750/95000-large.jpg",
+        "priority": 2,
+        "notes": "Rejected: retailer image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-95000-performance-loop-laboratory_1.jpg?v=1618001410",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-95000-performance-loop-laboratory?_pos=1&_psq=Electro-Harmonix+95000+Performance+Loop+Laboratory&_psid=074a3b1c1&_ss=e",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-analogizer",
+    "brand": "Electro-Harmonix",
+    "name": "Analogizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "boost"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 1000000
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "battery": "9V battery included"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/analogizer-manual.pdf",
+        "discontinuedYear": 2024
+      }
+    },
+    "usage": "guitar",
+    "year": 2011,
+    "status": "discontinued",
+    "notes": "Analog tone shaper/booster that adds warmth and up to +26 dB of gain.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/analogizer/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/analogizer-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-analogizer.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-analogizer.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-attack-decay",
+    "brand": "Electro-Harmonix",
+    "name": "Attack Decay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "envelope",
+      "fuzz"
+    ],
+    "widthCm": 10.49,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4.13 x 2.25 in; planner footprint 10.49 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 1000000
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SEND",
+        "kind": "send",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "RETURN",
+        "kind": "return",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 2000000
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 140,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "audio": {
+        "effectsLoop": {
+          "send": 1,
+          "return": 1
+        }
+      },
+      "control": {
+        "expression": 1
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "routing": {
+        "presets": 3
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/attack-decay-manual.pdf"
+      }
+    },
+    "usage": "both",
+    "year": 2019,
+    "status": "current",
+    "notes": "Polyphonic attack/decay envelope pedal with fuzz, FX loop, expression control and presets.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/attack-decay/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/attack-decay-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-attack-decay-tape-reverse-simulator_1.jpg?v=1613752180",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-attack-decay-tape-reverse-simulator?_pos=1&_psq=Electro-Harmonix+Attack+Decay&_psid=3ca61b384&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-attack-decay-tape-reverse-simulator_1.jpg?v=1613752180",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-attack-decay-tape-reverse-simulator?_pos=1&_psq=Electro-Harmonix+Attack+Decay&_psid=3ca61b384&_ss=e",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-b9-organ-machine",
+    "brand": "Electro-Harmonix",
+    "name": "B9 Organ Machine",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "organ-sim"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4 x 2.25 in; planner footprint 10.16 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "ORGAN OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DRY OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/b9-manual.pdf"
+      }
+    },
+    "usage": "guitar",
+    "year": 2014,
+    "status": "current",
+    "notes": "Organ machine with nine organ voices, dry output and buffered bypass.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/b9/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/b9-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-b9.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-b9.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bad-stone",
+    "brand": "Electro-Harmonix",
+    "name": "Bad Stone",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "phaser"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "battery": "9V battery included"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/07/bad-stone-manual.pdf"
+      }
+    },
+    "usage": "both",
+    "year": 2015,
+    "status": "current",
+    "notes": "Analog six-stage phase shifter with a manual/feedback mode and true bypass.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bad-stone/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/07/bad-stone-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bad-stone.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bad-stone.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass-big-muff-pi",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Big Muff Pi",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4 x 2.25 in; planner footprint 10.16 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 100000
+      },
+      {
+        "label": "EFFECT OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "battery": "9V battery included"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/07/bass-big-muff-pi-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2008,
+    "status": "current",
+    "notes": "Bass fuzz with a dry/direct output and a bass-boost toggle.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass-big-muff-pi/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/07/bass-big-muff-pi-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.sweetwater.com/api/i/version-d62917b28974cac29d3f86a00ed3b331d9171f6d__q-82__w-750__hmac-9b7c470120f0a6b002c40f3d9a48256c43869f8d/images/items/750/BassBigMuff-large.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://media.sweetwater.com/api/i/version-d62917b28974cac29d3f86a00ed3b331d9171f6d__q-82__w-750__hmac-9b7c470120f0a6b002c40f3d9a48256c43869f8d/images/items/750/BassBigMuff-large.jpg",
+        "priority": 2,
+        "notes": "Rejected: retailer image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://media.sweetwater.com/api/i/version-d62917b28974cac29d3f86a00ed3b331d9171f6d__q-82__w-750__hmac-9b7c470120f0a6b002c40f3d9a48256c43869f8d/images/items/750/BassBigMuff-large.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass-big-muff-pi-2",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Big Muff Pi 2",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 2200000
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "battery": "9V battery included"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2026/02/bass-big-muff-pi-2-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2026,
+    "status": "current",
+    "notes": "Second-generation compact Bass Big Muff Pi fuzz.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass-big-muff-pi-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2026/02/bass-big-muff-pi-2-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2026/02/bbm2-0-2.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2026/02/bbm2-0-2.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2026/02/bbm2-0-2.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass-clone",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Clone",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 2200000
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/bass-clone-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the 9V power jack at the top of the Bass Clone; audio jack faces are not named."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "battery": "9V battery included",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/bass-clone-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2016,
+    "status": "current",
+    "notes": "Compact bass chorus with depth, rate, bass/treble EQ and a low-end crossover switch.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass-clone/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/bass-clone-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassclone-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://m.media-amazon.com/images/I/71PTfQwGS3L._AC_SL1500_.jpg",
+        "sourcePage": "https://www.amazon.com/clp/B01LZT7ZLC",
+        "priority": 1,
+        "notes": "Chosen: Amazon main image, flat top-down."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassclone-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://m.media-amazon.com/images/I/71PTfQwGS3L._AC_SL1500_.jpg",
+      "referenceUrl": "https://www.amazon.com/clp/B01LZT7ZLC",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: owner-proposed Amazon Bass Clone main image, flood matte, no crop; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass-micro-synth",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Micro Synth",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "synth",
+      "octave",
+      "filter",
+      "envelope"
+    ],
+    "widthCm": 14.605,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 5.75 x 4.75 x 2.5 in; planner footprint 14.605 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/07/bass-micro-synth-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2008,
+    "status": "current",
+    "notes": "Analog bass micro synth with sub-octave, octave, square wave, filter and trigger controls.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass-micro-synth/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/07/bass-micro-synth-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmicro-f.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-bass-micro-synth_1.jpg?v=1613836667",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-bass-micro-synth?_pos=1&_psq=Electro-Harmonix+Bass+Micro+Synth&_psid=b0bf80702&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmicro-f.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-bass-micro-synth_1.jpg?v=1613836667",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-bass-micro-synth?_pos=1&_psq=Electro-Harmonix+Bass+Micro+Synth&_psid=b0bf80702&_ss=e",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass-mono-synth",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Mono Synth",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "synth",
+      "octave"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4 x 2.25 in; planner footprint 10.16 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DRY OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "SYNTH OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 125,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "control": {
+        "expression": 1
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/bass-mono-synth-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2019,
+    "status": "current",
+    "notes": "Monophonic bass synth with eleven synth voices, dry output and expression control.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass-mono-synth/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/bass-mono-synth-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmonosyn-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-bass-pedals-electro-harmonix-bass-mono-synth-ehxbassmonosynth-28525010092167.jpg?v=1651133303",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-mono-synth-620175?_pos=1&_psq=Electro-Harmonix+Bass+Mono+Synth&_psid=9d30fd169&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmonosyn-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-bass-pedals-electro-harmonix-bass-mono-synth-ehxbassmonosynth-28525010092167.jpg?v=1651133303",
+      "referenceUrl": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-mono-synth-620175?_pos=1&_psq=Electro-Harmonix+Bass+Mono+Synth&_psid=9d30fd169&_ss=e",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass-preacher",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Preacher",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 450000
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/bass-preacher-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the 9V power jack at the top of the Bass Preacher; audio jack faces are not named."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 33,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "battery": "9V battery included",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/bass-preacher-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2016,
+    "status": "current",
+    "notes": "Compact bass compressor with sensitivity, attack, sustain and volume controls.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass-preacher/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/bass-preacher-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/Bass-Preacher.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-preacher.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen fallback: flat planner cutout; real candidate rejected as angled."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/Bass-Preacher.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-preacher.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: planner fallback. The only real candidate is angled (visible right side wall + cast shadow) per the 1:1 vision audit; no truly flat real source found. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass-soul-food",
+    "brand": "Electro-Harmonix",
+    "name": "Bass Soul Food",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/bass-soul-food-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the 9V power jack at the top of the Bass Soul Food; audio jack faces are not named."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/bass-soul-food-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2015,
+    "status": "current",
+    "notes": "Bass overdrive with a clean blend, pad switch and selectable true/buffered bypass.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass-soul-food/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/bass-soul-food-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/basssoulfood-f-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-overdrive-and-boost-electro-harmonix-bass-soul-food-overdrive-soulfoodbass-28286798037127.jpg?v=1647047478",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-soul-food-overdrive-11639?_pos=1&_psq=Electro-Harmonix+Bass+Soul+Food&_psid=cfc406977&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/basssoulfood-f-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-overdrive-and-boost-electro-harmonix-bass-soul-food-overdrive-soulfoodbass-28286798037127.jpg?v=1647047478",
+      "referenceUrl": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-soul-food-overdrive-11639?_pos=1&_psq=Electro-Harmonix+Bass+Soul+Food&_psid=cfc406977&_ss=e",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte; AVIF q90. Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bass9-bass-machine",
+    "brand": "Electro-Harmonix",
+    "name": "Bass9 Bass Machine",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "synth",
+      "octave"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 4.75 x 4 x 2.25 in; planner footprint 10.16 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DRY OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "EFFECT OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-manual.pdf"
+      }
+    },
+    "usage": "guitar",
+    "year": 2019,
+    "status": "current",
+    "notes": "Bass machine that turns a guitar into nine bass instrument voices with dry and effect outputs.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bass9/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass9.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass9.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-bassballs",
+    "brand": "Electro-Harmonix",
+    "name": "Bassballs",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "envelope",
+      "filter"
+    ],
+    "widthCm": 6.985,
+    "heightCm": 11.43,
+    "dimensionsSource": "EHX official specifications: 4.5 x 2.75 x 2.1 in; planner footprint 6.985 x 11.43 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "impedanceOhm": 200000
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official manual names the jacks but not the connector face; edges are omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 3,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "battery": "9V battery included"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/07/bassballs-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2006,
+    "status": "current",
+    "notes": "Twin dynamic envelope filters for bass with a fuzz switch and true bypass.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/bassballs/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/07/bassballs-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/nbassballs-f.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bassballs.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/nbassballs-f.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bassballs.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement (real candidate angled or badly cropped). Not for merge."
+    }
+  },
+  {
+    "id": "electro-harmonix-battalion",
+    "brand": "Electro-Harmonix",
+    "name": "Battalion",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "preamp",
+      "distortion",
+      "di"
+    ],
+    "widthCm": 14.605,
+    "heightCm": 12.065,
+    "dimensionsSource": "EHX official specifications: 5.75 x 4.75 x 2.5 in; planner footprint 14.605 x 12.065 cm (top-down orientation).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "DRY OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio"
+      },
+      {
+        "label": "XLR DI OUTPUT",
+        "kind": "out",
+        "connector": "xlr",
+        "signal": "audio"
+      },
+      {
+        "label": "9V POWER",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.ehx.com/wp-content/uploads/2021/01/battalion-manual.pdf",
+      "confidence": "verified",
+      "note": "Manual places the 9VDC power jack on the top of the Battalion; audio/DI faces are not named."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "connector": "barrel",
+      "polarity": "center-negative",
+      "recommendedSupply": "EHX 9.6DC-200"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 3,
+      "balanced": true
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "audio": {
+        "di": true
+      },
+      "electrical": {
+        "balanced": true,
+        "pad": true
+      },
+      "physical": {
+        "footswitches": 2
+      },
+      "lifecycle": {
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/battalion-manual.pdf"
+      }
+    },
+    "usage": "bass",
+    "year": 2017,
+    "status": "current",
+    "notes": "All-analog bass preamp and DI with four-band EQ, compressor, noise gate and MOSFET distortion.",
+    "sources": [
+      {
+        "url": "https://www.ehx.com/products/battalion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2021/01/battalion-manual.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/battalion-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-eq-electro-harmonix-battalion-bass-preamp-and-di-battalion-28174661419143.jpg?v=1647685216",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/electro-harmonix-battalion-bass-preamp-and-di-82070?_pos=1&_psq=Electro-Harmonix+Battalion&_psid=6c5166b67&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
+        "url": "https://www.ehx.com/wp-content/uploads/2020/10/battalion-1.jpg",
+        "priority": 2,
+        "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-eq-electro-harmonix-battalion-bass-preamp-and-di-battalion-28174661419143.jpg?v=1647685216",
+      "referenceUrl": "https://www.chicagomusicexchange.com/products/electro-harmonix-battalion-bass-preamp-and-di-82070?_pos=1&_psq=Electro-Harmonix+Battalion&_psid=6c5166b67&_ss=e",
+      "status": "chosen",
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
+    }
+  }
+]
