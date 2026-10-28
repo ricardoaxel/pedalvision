@@ -1,6 +1,6 @@
 # F-03 / P2-03: Measurement HUD — Margin Rule (readout + reference bar + grid step)
 
-**Phase:** 1 · **Status:** in review — PR #67 · **Model:** light
+**Phase:** 1 · **Status:** merged — PR #67 (squash `67631c3`) · **Model:** light
 
 ## Goal
 
