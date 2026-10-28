@@ -134,7 +134,7 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
   (the skips are the deliberate desktop/mobile `test.skip` branches). The wider
   affected set (`+ export`, `selection`, `picker-choka`): **67 passed / 6 skipped**.
 - **Performance** (same scene, base `83ef9b0` → this branch): main JS
-  **303.16 → 305.06 kB gzip** (+1.90), CSS **12.07 → 12.71 kB gzip** (+0.64);
+  **303.16 → 305.04 kB gzip** (+1.88), CSS **12.07 → 12.73 kB gzip** (+0.66);
   canvas wheel-zoom **62 → 62 fps**; JS heap **12.8 → 9.5 MB** (lower; GC
   variance); picker open median **57 → 59 ms** (5 samples); share link
   **358 → 359 B**; the frame adds **102 tick nodes / 25 labels**. Export is
@@ -149,6 +149,9 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
   pure helper.
 - The grid cell stays world-cm (6 cm at 1×); in inch mode the tag shows the
   equivalent (e.g. `2.36 in`) without changing the geometry.
+- **Endpoint placement no longer auto-selects** the new endpoint: with the frame
+  inset, the delete bar could land over a nearby pedal's out jack and swallow the
+  first patch drag. The user still selects the tag to delete it.
 - **Process/rule gaps:** propose to the owner + `token-usage-reviewer` first; do
   not edit shared rules in this PR.
 - Record billed tokens by class (builder / design+vision / code review).
