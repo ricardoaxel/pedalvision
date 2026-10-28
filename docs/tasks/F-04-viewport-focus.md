@@ -1,6 +1,6 @@
 # F-04 — Viewport focus (frame a board, the used area, and every loaded scene)
 
-**Phase:** 1 · **Status:** in progress — implementation + checks complete; PR pending · **Model:** light
+**Phase:** 1 · **Status:** in review — PR #76 · **Model:** light
 
 ## Goal
 
