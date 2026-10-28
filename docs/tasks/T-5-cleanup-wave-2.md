@@ -54,6 +54,21 @@ and never merges.
 - Expected final after T-5 merges: **446 pedals / 15 boards** (423 + 23); each
   branch from `main` adds its own net-new (26-item batch, 8 or 7 net-new).
 
+## Source discovery (T-4b — mandatory)
+
+Follow the T-4b source-discovery pass in every batch: registry-first → official
+brand/press/support → **one opportunistic Google/Bing Images attempt per batch**
+(open the source page; record the underlying URL, never the search URL) →
+Amazon `hiRes` / Andertons / Sweetwater / Thomann / Guitar Sanctuary / retailers /
+community → planner last resort → generated last. Caps: ≤2 search pages + ≤20
+source-page fetches per batch (≤3/item); deterministic curl+regex extraction;
+403/429/consent/captcha/empty = `zero-yield` once, no retry/engine swap. Marketplace
+pixels are `kind: "retailer"` + `license-pending` + counted gaps. **Planner share
+target ≤30%; >50% after one documented round needs a waiver line in the PR.**
+Use **one dual-tone contact sheet** (split white/dark or checkerboard) for the
+halo/fringe gate. Append new reusable sources to
+`docs/catalog/image-source-registry.md`.
+
 ## Steps
 
 1. **Read state:** `pnpm catalog:status`; `pnpm catalog:wave report --wave cleanup-wave-1`

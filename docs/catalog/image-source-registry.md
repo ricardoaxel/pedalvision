@@ -52,9 +52,34 @@ Hit rate = usable flat top-down images / images sampled so far (not exhaustive).
 | JHS Shopify CDN | `https://cdn.shopify.com/s/files/.../JHS-...-Front.png` | Official | JHS (sampled 1) | **1/1** | Official front render; clean. |
 | TC Electronic / empowertribe CDN | `https://cdn-media.empowertribe.com/.../*_Top_XL.png` | Official | TC Electronic (sampled 1) | **1/1** | Official top render. |
 | Cream City Music | retailer product photos (`cdn11.bigcommerce.com/...`) | Authorized retailer | Meris MIDI I/O (1) | **1/1** | Use when the official photo is angled/unavailable or lower quality; <800 px is fine after upscale if the final cutout passes; `--matte flood`. |
-| Andertons | `https://www.andertons.co.uk/...` | Authorized retailer | Pedaltrain boards (1) | **1/1** | Board reference only; generate our own art. Search endpoints sometimes 404/403. |
+| Amazon product gallery (`hiRes`) | product page → `m.media-amazon.com/images/I/..._AC_SL1500_.jpg` (extract the `"hiRes"` JSON) | Marketplace / manufacturer render | any | **1 candidate sampled (EHX 1440), 0 flat** | Treat as a **candidate locator**, not a licence: trace the identical render to the official press/support asset first. Ship marketplace pixels only when no official asset exists, as `kind: "retailer"` + `license-pending`, counted as a source gap; record the product page + resolved CDN URL; self-host, never hotlink. 1440 sample was high-angle (rejected). |
+| Sweetwater | `https://media.sweetwater.com/...` product photos | Authorized retailer | EHX/MXR (2 sampled) | **2/2 product, gate each** | Product photos can be angled or shadowed; use only the flat top-down variant and gate the final 800. `--matte flood`/`soft`; record the product page. |
+| Andertons | `https://www.andertons.co.uk/...` product pages | Authorized retailer | pedals + Pedaltrain boards | **1/1** | Pedal + board product pages; search endpoints sometimes 404/403. For boards use only as reference and generate our own art. |
+| Guitar Sanctuary | `https://cdn11.bigcommerce.com/s-bfprvr7x1v/...` (1280×1280 WebP/PNG) | Authorized retailer | EHX 1440 sample | **1/1 found, not directly usable** | BigCommerce product images often on a **black** background with no alpha; matte carefully or trace to a white-bg/official asset. Record the product page + resolved URL. |
+| Google / Bing Images | search page → open the source page (record the underlying URL, **never** the search URL) | **Discovery only** | any | **n/a** | One opportunistic attempt per batch; if 403/429/consent/captcha/empty, log `zero-yield` once and fall through. Do not bulk-scrape; do not ship search-engine thumbnails. |
 | User/community listings | Reverb/eBay seller photos (record URL) | Community | any | **untested** | Allowed only with a recorded source + the same clean-alpha gate. Search endpoints often block (403/429); no bulk scraping. |
 | Pedalplayground / planner | `https://www.pedalplayground.com/...` / GitHub raw | **Last resort (pedals only)** | any | **n/a** | Only when official/retailer/community has no usable image; record `kind: planner`, `status: last-resort`, `sourceUrl`, quality-gate it, count it as a gap. **Never for boards.** |
+
+## Discovery protocol (T-4b)
+
+1. **Registry first** — reuse a known-good source before searching.
+2. **Official** brand product/manual/press/support (`_top`, `_front`, transparent
+   PNG, support zips).
+3. **One opportunistic Google/Bing Images attempt per batch** (not per item).
+   Open the source page; record the underlying image URL, never the search URL.
+   A 403/429/consent/captcha/empty is `zero-yield` once — no retry, no engine swap.
+4. **Amazon/Andertons/Sweetwater/Thomann/Guitar Sanctuary/Mercado Libre/Reverb**
+   product pages. Extract image URLs with a deterministic helper (curl + regex),
+   not by dumping HTML into context. Bounds: ≤2 search pages + ≤20 source-page
+   fetches per batch (≤3 per item).
+5. **Marketplace pixels** are `kind: "retailer"` + `license-pending` + counted
+   as a source gap; record product page + resolved CDN URL; self-host.
+6. **Planner last resort**; count it. Target ≤30% planner per batch; if >50%
+   after one documented discovery round, record the share + waiver line for the
+   owner.
+7. **One dual-tone contact sheet** (split white/dark or checkerboard) for the
+   halo/fringe gate; one vision pass. High resolution is not flatness — reject a
+   high-res angled image.
 
 ## Known gaps
 

@@ -512,6 +512,21 @@ pnpm catalog:wave run --plan <resume-plan>.json --resume                        
 - Each batch's JSONL, log and the wave `report.md`/`state.json` live in `work/catalog/waves/<id>/`. The report has one line per batch (items/images/billed non-cache tokens/cache-inclusive floor/minutes/PR/CI) plus the session's final text.
 - The wrapper never merges and never opens PRs; each session owns its branch/worktree and exactly one PR. On pause/stop/cap it stops launching and reports; the supervised session honours the stop.
 
+**Source discovery (T-4b, owner request 2026-10-28):** every batch runs a bounded
+discovery pass for items with no usable official flat image: registry-first →
+official brand/press/support → **one opportunistic Google/Bing Images attempt per
+batch** (open the source page; record the underlying image URL, never the search
+URL) → Amazon `hiRes` / Andertons / Sweetwater / Thomann / Guitar Sanctuary /
+retailers / community (record the product page + resolved URL) → planner last
+resort → generated last. Cap ≤2 search pages + ≤20 source-page fetches per batch
+(≤3/item); use a deterministic curl + regex helper, not HTML in context; log
+`zero-yield` once on 403/429/consent/captcha/empty and fall through. Marketplace
+pixels are `kind: "retailer"` + `license-pending` + counted gaps. **Planner share
+target ≤30%; >50% after one documented round requires a waiver line in the PR
+(owner decides).** Use **one dual-tone contact sheet** (split white/dark or
+checkerboard) for the halo/fringe gate; high resolution is not flatness. New
+reusable sources go in `docs/catalog/image-source-registry.md`.
+
 **Next-wave coordinator protocol:** before a wave, read `catalog:status`, the latest
 `catalog:wave` report/state, `docs/progress.md`, open PRs and the post-merge build.
 Classify batches (merged / in review / running / failed-stopped / queued); never
