@@ -1,6 +1,6 @@
 # F-03 / P2-03: Measurement HUD (live dimensions + scale reference)
 
-**Phase:** 1 · **Status:** in review — PR pending · **Model:** light
+**Phase:** 1 · **Status:** in review — PR #67 · **Model:** light
 
 ## Goal
 
