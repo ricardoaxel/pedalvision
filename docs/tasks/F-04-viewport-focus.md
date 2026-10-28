@@ -1,6 +1,6 @@
 # F-04 — Viewport focus (frame a board, the used area, and every loaded scene)
 
-**Phase:** 1 · **Status:** in review — PR #76 (owner-authorized dock amendment) · **Model:** light
+**Phase:** 1 · **Status:** merged — PR #76 (squash `74964f3`; owner-authorized dock amendment) · **Model:** light
 
 ## Goal
 
