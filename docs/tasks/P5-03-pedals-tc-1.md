@@ -1,6 +1,6 @@
 # P5-03: TC Electronic — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** in review (PR opened) · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #77 · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-2` coordinator created this worktree and wrote the 17
 > existing-item raw scaffolds (Choka already has a merged raw record). The
