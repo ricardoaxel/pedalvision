@@ -2017,7 +2017,7 @@
       "kind": "official",
       "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHB",
       "status": "chosen",
-      "note": "Official TC Electronic Top_XL render 1029x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-28",
@@ -2138,7 +2138,7 @@
       "kind": "official",
       "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHC",
       "status": "chosen",
-      "note": "Official TC Electronic Top_XL render 1029x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-28",
@@ -2799,7 +2799,7 @@
       "kind": "official",
       "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHD",
       "status": "chosen",
-      "note": "Official TC Electronic Top_XL render 1029x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-28",
