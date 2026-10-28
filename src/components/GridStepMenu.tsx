@@ -73,8 +73,9 @@ export function GridStepMenu({ visibleCm, units }: GridStepMenuProps) {
 			>
 				grid {display} {units}
 				<ChevronIcon
-					size={10}
-					strokeWidth={2}
+					size={12}
+					strokeWidth={2.25}
+					path="M5 9l7 7 7-7"
 					className="scale-readout__chevron"
 				/>
 			</button>

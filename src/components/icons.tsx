@@ -232,7 +232,8 @@ export function ChevronIcon({
 	size = 18,
 	strokeWidth = 2,
 	className,
-}: IconProps) {
+	path = "M6 9l6 6 6-6",
+}: IconProps & { path?: string }) {
 	return (
 		<svg
 			className={className}
@@ -246,7 +247,7 @@ export function ChevronIcon({
 			strokeLinejoin="round"
 			aria-hidden="true"
 		>
-			<path d="M6 9l6 6 6-6" />
+			<path d={path} />
 		</svg>
 	);
 }
