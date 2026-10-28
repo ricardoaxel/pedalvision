@@ -8,7 +8,6 @@ import {
 	GRID_DOT_RADIUS,
 	GRID_PITCH,
 	lightCanvasTheme,
-	RULER_GUTTER,
 } from "./theme";
 
 const tokensCss = readFileSync(
@@ -70,11 +69,6 @@ describe("canvas theme map", () => {
 	it("grid metrics mirror the dot-grid tokens", () => {
 		expect(`${GRID_PITCH}px`).toBe(darkVars["--grid-pitch"]);
 		expect(`${GRID_DOT_RADIUS}px`).toBe(darkVars["--grid-dot-radius"]);
-	});
-
-	it("ruler gutters mirror the sheet-margin tokens", () => {
-		expect(`${RULER_GUTTER.x}px`).toBe(darkVars["--ruler-gutter-x"]);
-		expect(`${RULER_GUTTER.y}px`).toBe(darkVars["--ruler-gutter-y"]);
 	});
 
 	it("canvas font stacks mirror --font-sans / --font-mono", () => {

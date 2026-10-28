@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import {
 	buildPartInfo,
@@ -6,6 +6,7 @@ import {
 	formatJack,
 	formatPower,
 } from "../lib/partInfo";
+import { useIsMobile } from "../lib/useMobile";
 import { useDrag } from "../state/drag";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
@@ -21,30 +22,6 @@ import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
 import { PartDrawing } from "./PartDrawing";
 import { usePartImage } from "./partImage";
 import { effectLabel } from "./pickerFilter";
-
-// Mirrors the `max-width: 1023px` mobile block in index.css.
-const MOBILE_MEDIA = "(max-width: 1023px)";
-
-/**
- * Mobile only reveals the banner when the sheet is expanded; desktop always
- * shows it. Knowing which surface is visible lets us render only that
- * rendition's `<img>` — a hidden image would still be fetched and would defeat
- * the 350 sleeve / 800 banner split.
- */
-function useIsMobile(): boolean {
-	const [isMobile, setIsMobile] = useState(
-		() =>
-			typeof window === "undefined" || window.matchMedia(MOBILE_MEDIA).matches,
-	);
-	useEffect(() => {
-		const query = window.matchMedia(MOBILE_MEDIA);
-		const update = () => setIsMobile(query.matches);
-		update();
-		query.addEventListener("change", update);
-		return () => query.removeEventListener("change", update);
-	}, []);
-	return isMobile;
-}
 
 /**
  * The pedal info panel (P2-03). Direction: **"Specimen Readout"** (owner-approved

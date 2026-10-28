@@ -279,6 +279,7 @@ test("places an amp endpoint, connects to it, then deletes both", async ({
 	const placedEndpoint = await anchorScreenPoint(page, endpointKey);
 	expect(Math.abs(placedEndpoint.x - endpointTap.x)).toBeLessThan(2);
 	expect(Math.abs(placedEndpoint.y - endpointTap.y)).toBeLessThan(2);
+	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
 	await showPatch(page);
 	const { outA } = await firstItemJacks(page);
 	await dragBetween(

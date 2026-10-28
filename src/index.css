@@ -5365,181 +5365,117 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Pencil Margin (F-03), owner-approved 2026-10-27.
- * A 10/22 px outside margin (same canvas colour), one faint bottom axis with
- * sparse world labels and a single unit at its end, and a tiny mobile
- * `[bar] 10 cm` readout. No left hairline, fills, cards, bars or unit pair.
- * DOM/SVG only; never exported.
+ * Drafting Scale (F-03), owner-approved 2026-10-27.
+ * One true-length bar in the caption strip — the same artifact as the export
+ * scale bar. No axis, ticks, world labels, grid/zoom/unit chrome, fill or card.
+ * Desktop bottom-left; mobile bottom-right above the dock. DOM only.
  * ------------------------------------------------------------------------- */
 
 .app-canvas {
 	background-color: var(--color-canvas-bg);
 }
 
-.edge-rules {
+.scale-bar {
 	position: absolute;
-	inset: 0;
-	z-index: 1;
-	pointer-events: none;
-}
-
-.edge-rules__svg {
-	display: block;
-}
-
-.edge-rules__edge {
-	stroke: var(--color-sheet-rule);
-	stroke-width: 1;
-	shape-rendering: crispEdges;
-}
-
-.edge-rules__tick {
-	stroke: var(--color-sheet-rule);
-	stroke-width: 1;
-	shape-rendering: crispEdges;
-}
-
-.edge-rules__tick--major,
-.edge-rules__tick--origin {
-	stroke: var(--color-sheet-ink);
-}
-
-.edge-rules__label {
-	fill: var(--color-sheet-ink);
-	font-family: var(--font-mono);
-	font-size: var(--font-size-2xs);
-	font-weight: var(--font-weight-medium);
-	font-variant-numeric: tabular-nums;
-}
-
-.edge-rules__unit {
-	fill: var(--color-sheet-ink);
-	font-family: var(--font-mono);
-	font-size: var(--font-size-2xs);
-	font-weight: var(--font-weight-medium);
-	font-variant-numeric: tabular-nums;
-}
-
-/* One-line pencil annotation — no fill, border, radius or shadow. */
-.scale-tag {
-	position: absolute;
-	right: 0;
+	left: var(--space-4);
 	bottom: 0;
 	z-index: 1;
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	gap: 6px;
-	height: var(--ruler-gutter-y);
-	padding: 2px 10px 0;
+	height: var(--sheet-margin-y);
+	padding: 0;
 	font-family: var(--font-mono);
 	font-variant-numeric: tabular-nums;
-	background: none;
 	pointer-events: none;
 }
 
-.scale-tag__bar {
+.scale-bar__track {
 	position: relative;
 	display: block;
 	flex: 0 0 auto;
-	height: 4px;
-	border-bottom: 1px solid var(--color-sheet-ink);
-	transform: translateY(-1px);
+	height: 1.5px;
+	background-color: var(--color-ink-muted);
 }
 
-.scale-tag__bar::before,
-.scale-tag__bar::after {
+.scale-bar__track::before,
+.scale-bar__track::after {
 	content: "";
 	position: absolute;
-	bottom: 0;
+	top: 50%;
 	width: 1px;
-	height: 3px;
-	background-color: var(--color-sheet-ink);
+	height: 8px;
+	background-color: var(--color-ink-muted);
+	transform: translateY(-50%);
 }
 
-.scale-tag__bar::before {
+.scale-bar__track::before {
 	left: 0;
 }
 
-.scale-tag__bar::after {
+.scale-bar__track::after {
 	right: 0;
 }
 
-.scale-tag__length,
-.scale-tag__unit {
+.scale-bar__label {
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
 	line-height: 1;
-	color: var(--color-sheet-ink);
+	letter-spacing: 0;
+	color: var(--color-ink-muted);
+	white-space: nowrap;
 }
 
 @media (min-width: 1024px) {
-	/* The margins are part of the sheet: the stage is inset, nothing overlaps it. */
+	/* The caption strip is outside the drawing; the stage keeps its full width. */
 	.stage {
 		top: 0;
 		right: 0;
-		bottom: var(--ruler-gutter-y);
-		left: var(--ruler-gutter-x);
-	}
-
-	/* Stage-local action bars and the endpoint overlay follow the inset. */
-	.item-action-bar {
-		transform: translateX(-50%) translateX(var(--ruler-gutter-x));
+		bottom: var(--sheet-margin-y);
+		left: 0;
+		/* A faint sheet edge makes the caption strip legible without a band. */
+		box-shadow: inset 0 -1px 0 var(--color-border);
 	}
 
 	.endpoint-placement {
 		top: 0;
 		right: 0;
-		bottom: var(--ruler-gutter-y);
-		left: var(--ruler-gutter-x);
+		bottom: var(--sheet-margin-y);
+		left: 0;
 	}
 
-	/* Bottom-centred notices sit above the sheet margin. */
 	.graph-status,
 	.share-edit-cue {
-		bottom: calc(var(--ruler-gutter-y) + var(--space-3));
+		bottom: calc(var(--sheet-margin-y) + var(--space-3));
 	}
 }
 
 @media (max-width: 1023px) {
-	/* Full-bleed canvas; only the tiny bottom-right annotation remains. */
-	.edge-rules {
-		display: none;
-	}
-
-	.scale-tag {
-		right: calc(var(--space-3) + env(safe-area-inset-right));
-		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-3));
+	.scale-bar {
+		right: calc(var(--space-4) + env(safe-area-inset-right));
+		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-4));
+		left: auto;
 		align-items: center;
 		height: auto;
-		padding: 0;
-		gap: 6px;
+		padding-top: 0;
 		text-shadow: 0 0 2px var(--color-canvas-bg);
 	}
 
-	.scale-tag__length,
-	.scale-tag__unit {
-		font-size: var(--font-size-2xs);
+	.scale-bar__track::before,
+	.scale-bar__track::after {
+		height: 5px;
 	}
 
-	.scale-tag__bar {
-		height: 4px;
-	}
-
-	.scale-tag__bar::before,
-	.scale-tag__bar::after {
-		height: 3px;
-	}
-
-	.app:has(.info-panel) .scale-tag,
-	.app-canvas:has(.item-action-bar) .scale-tag,
-	.app-canvas:has(.first-run) .scale-tag,
-	.app-canvas:has(.graph-status) .scale-tag,
-	.app-canvas:has(.share-edit-cue) .scale-tag,
-	.app[data-export="open"] .scale-tag,
-	.app[data-scenes="open"] .scale-tag,
-	.app[data-schedule="open"] .scale-tag,
-	.app-canvas:has(.share-panel) .scale-tag,
-	.app:has(.picker) .scale-tag {
+	.app:has(.info-panel) .scale-bar,
+	.app-canvas:has(.item-action-bar) .scale-bar,
+	.app-canvas:has(.first-run) .scale-bar,
+	.app-canvas:has(.graph-status) .scale-bar,
+	.app-canvas:has(.share-edit-cue) .scale-bar,
+	.app[data-export="open"] .scale-bar,
+	.app[data-scenes="open"] .scale-bar,
+	.app[data-schedule="open"] .scale-bar,
+	.app-canvas:has(.share-panel) .scale-bar,
+	.app:has(.picker) .scale-bar {
 		display: none;
 	}
 }
