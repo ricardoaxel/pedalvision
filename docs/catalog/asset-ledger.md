@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 300 |
+| license-pending | 325 |
 | own | 89 |
 
-Hosting: hotlinked 91 · mock 84 · static 214
+Hosting: hotlinked 91 · mock 84 · static 239
 
-Source kind: archive 4 · community 1 · official 237 · own 89 · planner 58
+Source kind: archive 4 · community 1 · official 257 · own 89 · planner 63
 
-Needs improvement: 233 (hotlinked 91 · mock 84 · planner 58)
+Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63)
 
 ## Aclam
 
@@ -209,6 +209,31 @@ Needs improvement: 233 (hotlinked 91 · mock 84 · planner 58)
 | `boss-sy-1-synthesizer` | SY-1 Synthesizer | license-pending | static | official | — | — |
 | `boss-sy-1000-guitar-synthesizer` | SY-1000 Guitar Synthesizer | license-pending | static | official | — | — |
 | `boss-sy-200-synthesizer` | SY-200 Synthesizer | license-pending | static | official | — | — |
+| `boss-sy-300-guitar-synthesizer` | SY-300 Guitar Synthesizer | license-pending | static | official | — | — |
+| `boss-syb-3-bass-synthesizer` | SYB-3 Bass Synthesizer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-syb-5-bass-synthesizer` | SYB-5 Bass Synthesizer | license-pending | static | official | — | — |
+| `boss-tb-2w-tone-bender-waza-craft` | TB-2W Tone Bender | license-pending | static | official | — | — |
+| `boss-te-2-tera-echo` | TE-2 Tera Echo | license-pending | static | official | — | — |
+| `boss-tr-2-tremolo` | TR-2 Tremolo | license-pending | static | official | — | — |
+| `boss-tu-12ex-chromatic-tuner` | TU-12EX Chromatic Tuner | license-pending | static | official | — | — |
+| `boss-tu-12h-chromatic-tuner` | TU-12H High Range Chromatic Tuner | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-tu-3-chromatic-tuner` | TU-3 Chromatic Tuner | license-pending | static | official | — | — |
+| `boss-tu-3s-chromatic-tuner` | TU-3S Chromatic Tuner | license-pending | static | official | — | — |
+| `boss-tu-3w-chromatic-tuner-waza-craft` | TU-3W Chromatic Tuner | license-pending | static | official | — | — |
+| `boss-tw-1-t-wah` | TW-1 T-Wah | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-vb-2-vibrato` | VB-2 Vibrato | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-vb-2w-vibrato-waza-craft` | VB-2W Vibrato | license-pending | static | official | — | — |
+| `boss-ve-20-vocal-processor` | VE-20 Vocal Performer | license-pending | static | official | — | — |
+| `boss-ve-22-vocal-performer` | VE-22 Vocal Performer | license-pending | static | official | — | — |
+| `boss-ve-500-vocal-performer` | VE-500 Vocal Performer | license-pending | static | official | — | — |
+| `boss-ve-8-acoustic-singer` | VE-8 Acoustic Singer | license-pending | static | official | — | — |
+| `boss-vg-800-v-guitar-processor` | VG-800 V-Guitar Processor | license-pending | static | official | — | — |
+| `boss-vo-1-vocoder` | VO-1 Vocoder | license-pending | static | official | — | — |
+| `boss-wl-50-wireless-system` | WL-50 Wireless System | license-pending | static | official | — | — |
+| `boss-wl-60-wireless-system` | WL-60 Wireless System | license-pending | static | official | — | — |
+| `boss-wp-20g-wave-processor` | WP-20G Wave Processor | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-xs-1-pitch-shifter` | XS-1 Poly Shifter | license-pending | static | official | — | — |
+| `boss-xs-100-poly-shifter` | XS-100 Poly Shifter | license-pending | static | official | — | — |
 
 ## Behringer
 
@@ -544,7 +569,7 @@ Needs improvement: 233 (hotlinked 91 · mock 84 · planner 58)
 | Blackbird | own | 1 |
 | BoardMods | own | 1 |
 | BOSS | own | 1 |
-| BOSS | planner | 58 |
+| BOSS | planner | 63 |
 | Caseman | own | 1 |
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |
