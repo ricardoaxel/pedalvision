@@ -25,11 +25,17 @@ planner asset** — re-source it and record the exact URL.
 3. If none of those passes, a **planner/Pedalplayground** image may be shipped
    **for a pedal as a recorded last-resort** (`kind: "planner"`,
    `status: "last-resort"`, `sourceUrl`); it is counted as a gap to improve.
-4. Only when no usable image exists at all, generate our own flat pedal art
+4. **Resolution is not a rejection reason by itself.** Prefer the
+   highest-resolution real source; process it to the 800/350 master (upscaling
+   allowed; soft ceiling ≤2×) and gate the **final 800 rendition**, not the
+   source. Record source dimensions + upscale factor. Above 2×, generate flat
+   art unless the single reviewer pass accepts the upscale (recorded; still a
+   source gap).
+5. Only when no usable image exists/passes, generate our own flat pedal art
    (`docs/catalog/pedal-art.md`).
-5. For boards, use the real image only as a **reference** and generate our own flat
+6. For boards, use the real image only as a **reference** and generate our own flat
    art (`docs/catalog/board-art.md`); never ship the reference pixels.
-6. Record `imageProvenance` in the private raw catalog (kind / sourceUrl /
+7. Record `imageProvenance` in the private raw catalog (kind / sourceUrl /
    referenceUrl / status / note) and add a new row here if the source is
    reusable. Keep one row per domain/pattern, not per product.
 
@@ -45,7 +51,7 @@ Hit rate = usable flat top-down images / images sampled so far (not exhaustive).
 | Red Panda store / archive | `https://cdn11.bigcommerce.com/s-5d662uh/...` (+ Wayback copies) | Official / archive | Red Panda (14) | **14/14** | Official front/top studio photos; use the top/front variant, matte the background. |
 | JHS Shopify CDN | `https://cdn.shopify.com/s/files/.../JHS-...-Front.png` | Official | JHS (sampled 1) | **1/1** | Official front render; clean. |
 | TC Electronic / empowertribe CDN | `https://cdn-media.empowertribe.com/.../*_Top_XL.png` | Official | TC Electronic (sampled 1) | **1/1** | Official top render. |
-| Cream City Music | retailer product photos (`cdn11.bigcommerce.com/...`) | Authorized retailer | Meris MIDI I/O (1) | **1/1** | Use when the official photo is <800 px or angled; `--matte flood`. |
+| Cream City Music | retailer product photos (`cdn11.bigcommerce.com/...`) | Authorized retailer | Meris MIDI I/O (1) | **1/1** | Use when the official photo is angled/unavailable or lower quality; <800 px is fine after upscale if the final cutout passes; `--matte flood`. |
 | Andertons | `https://www.andertons.co.uk/...` | Authorized retailer | Pedaltrain boards (1) | **1/1** | Board reference only; generate our own art. Search endpoints sometimes 404/403. |
 | User/community listings | Reverb/eBay seller photos (record URL) | Community | any | **untested** | Allowed only with a recorded source + the same clean-alpha gate. Search endpoints often block (403/429); no bulk scraping. |
 | Pedalplayground / planner | `https://www.pedalplayground.com/...` / GitHub raw | **Last resort (pedals only)** | any | **n/a** | Only when official/retailer/community has no usable image; record `kind: planner`, `status: last-resort`, `sourceUrl`, quality-gate it, count it as a gap. **Never for boards.** |
@@ -54,9 +60,11 @@ Hit rate = usable flat top-down images / images sampled so far (not exhaustive).
 
 - **Vintage BOSS compacts** (AC-2, DC-2/3, DD-2/5, DF-2, DM-2/3, DSD-2, CE-1/2/2B/3,
   CS-2, BF-2B) have no official flat top-down: current product pages are retired and
-  the 40th-anniversary promo PNGs are only 400 px long edge (below the 800 px gate).
-  They need an authorized-retailer/community image or our generated flat art; the
-  **31 BOSS legacy** are the repair set and do not keep their old planner asset.
+  the 40th-anniversary promo PNGs are only 400 px long edge. That is **not** a
+  rejection by itself: prefer a higher-resolution retailer/community/planner
+  cutout; the 400 px promo can still be upscaled (2× soft ceiling) if the final
+  800 cutout passes. The **31 BOSS legacy** are the repair set and do not keep
+  their old planner asset.
 - **Some current units** (EV-30, EV-5, EV-1-WL, FS-5L/U, FV-100, FZ-2/3, DSD-3, EH-2,
   FT-2, DS-1WH, DS-1-4A, FV-500) are not in the support-image list or only have 3/4
   art; same fallback.

@@ -11,12 +11,15 @@ no per-batch designer loop.
 
 ## 1. When to use this path
 
-Use generated flat art **only when no usable image exists at all**: official,
+Use generated flat art **only when no usable real image passes**: official,
 authorized retailer, user/community and **planner last-resort** have all been
-checked and none passes the quality gate. The **31 BOSS legacy repair set uses
-the same hierarchy** (official → retailer → community → recorded planner
-last-resort → generated only if none); never keep its old unrecorded planner
-asset.
+checked and processed. **Resolution is not a rejection reason by itself:** a
+sub-800 px real source is processed/upscaled to the 800 master and gated on the
+**final rendition** (soft ceiling ≤2×; above that, generated art unless the
+single reviewer pass accepts the upscale, recorded). The **31 BOSS legacy repair
+set uses the same hierarchy** (official → retailer → community → recorded
+planner last-resort → generated only if none); never keep its old unrecorded
+planner asset.
 
 - **Pedal source hierarchy:** official brand/press/product-support → authorized
   retailer → user/community with a recorded source → **planner/Pedalplayground
@@ -161,6 +164,10 @@ pnpm asset:analyze --input public/pedal-assets/pedals/800/<id>.avif \
   --kind pedal --width-cm <w> --height-cm <h> --id <id> \
   --out work/catalog/analyze/<id>.json --source generated
 ```
+
+The analyzer always runs on the **final 800 rendition**; its 800 px minimum
+guards that rendition, not the source. PSNR ≥40 dB is codec fidelity only —
+judge upscale/softness/halo in the contact-sheet vision pass.
 
 Require:
 - aspect **pass** (≤10 %; aim <1 %), rotation ≤2°, no shadow flag, alpha present;
