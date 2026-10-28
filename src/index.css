@@ -5478,9 +5478,14 @@ body {
 }
 
 .scale-tag__unit {
-	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	/* Negative margins keep the 44 px target without growing the tag row. */
+	margin: -15px -10px;
 	padding: 0;
-	margin: 0;
 	font-family: inherit;
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
@@ -5489,14 +5494,6 @@ body {
 	background: none;
 	border: 0;
 	cursor: pointer;
-}
-
-/* A quiet secondary action: the visible text stays small, the hit area is
- * still comfortable. It never adds a visible control or shifts the layout. */
-.scale-tag__unit::after {
-	content: "";
-	position: absolute;
-	inset: -10px -8px;
 }
 
 .scale-tag__unit:hover {
@@ -5587,6 +5584,7 @@ body {
 	/* The peek / action bar own the bottom band; the tag returns when the
 	 * selection is cleared. One actionable surface at a time. */
 	.app:has(.info-panel) .scale-tag,
+	.app-canvas:has(.item-action-bar) .scale-tag,
 	.app-canvas:has(.first-run) .scale-tag,
 	.app-canvas:has(.graph-status) .scale-tag,
 	.app-canvas:has(.share-edit-cue) .scale-tag,

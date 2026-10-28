@@ -116,8 +116,10 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 - Pass 2 (full-width/no-selection, pan/origin, zoom, first-run, read-only,
   mobile selected): **approve-with-changes, no blockers** — trailing label
   clipping, left-axis optical weight, light minor ticks, tag inset, high-zoom
-  corner content. The ≤2-pass cap was reached; the objective fixes were folded
-  and the remaining nits are disclosed in PR #67 (no third pass).
+  corner content. The ≤2-pass cap was reached; the objective fixes (label
+  visibility in the tick model, ink labels, tick hierarchy, 44 px unit target,
+  action-bar yield) were folded and the remaining nits are disclosed in PR #67
+  (no third pass).
 - **Mobile omission:** the tag hides while a part is selected because the info
   peek already owns the bottom band (owner-approved).
 
@@ -125,12 +127,17 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
 - `pnpm lint` clean (2 pre-existing `tools/asset-pipeline/analyze.ts` warnings).
 - `pnpm typecheck` clean.
-- `pnpm test` **879 passed** (96 files).
+- `pnpm test` **879 passed** (96 files) — 26 new ruler/grid/scale-bar tests.
 - `pnpm build` clean.
 - `pnpm exec playwright test e2e/measurement-hud.spec.ts e2e/smoke.spec.ts
-  e2e/info-panel.spec.ts`: to record after the final run.
-- Performance: to record after the final run (bundle delta, canvas frame time,
-  heap, picker latency, share link).
+  e2e/info-panel.spec.ts` (desktop + mobile): **38 passed / 5 skipped**
+  (the skips are the deliberate desktop/mobile `test.skip` branches).
+- **Performance** (same scene, base `83ef9b0` → this branch): main JS
+  **303.16 → 305.03 kB gzip** (+1.87), CSS **12.07 → 12.69 kB gzip** (+0.62);
+  canvas wheel-zoom **62 → 62 fps**; JS heap **12.8 → 9.5 MB** (lower; GC
+  variance); picker open median **57 → 59 ms** (5 samples); share link
+  **358 → 359 B**; the frame adds **102 tick nodes / 25 labels**. Export is
+  unchanged (the frame is not on the export stage).
 - Screenshots: desktop selected + full-width, dark/light; pan/origin; zoom;
   first-run; read-only; mobile no-selection + selected.
 

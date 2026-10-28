@@ -1,4 +1,5 @@
-import { buildRulerTicks, RULER_LABEL_INSET_PX } from "../lib/ruler";
+import { buildRulerTicks } from "../lib/ruler";
+import { useIsMobile } from "../lib/useMobile";
 import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 
@@ -16,6 +17,14 @@ const BAND = 22;
  * boards (the rules never rotate).
  */
 export function EdgeRules() {
+	const isMobile = useIsMobile();
+	// The rules are CSS-hidden on mobile; return before mounting the viewport
+	// subscribers so a pan/pinch never rebuilds tens of SVG nodes off-screen.
+	if (isMobile) return null;
+	return <DesktopEdgeRules />;
+}
+
+function DesktopEdgeRules() {
 	const scale = useViewport((state) => state.scale);
 	const x = useViewport((state) => state.x);
 	const y = useViewport((state) => state.y);
@@ -95,12 +104,7 @@ export function EdgeRules() {
 				})}
 
 				{top
-					.filter(
-						(tick) =>
-							tick.major &&
-							tick.px >= RULER_LABEL_INSET_PX &&
-							tick.px <= size.width - RULER_LABEL_INSET_PX,
-					)
+					.filter((tick) => tick.showLabel)
 					.map((tick, index) => (
 						<text
 							// biome-ignore lint/suspicious/noArrayIndexKey: ruler labels are read-only rows
@@ -131,12 +135,7 @@ export function EdgeRules() {
 				})}
 
 				{left
-					.filter(
-						(tick) =>
-							tick.major &&
-							tick.px >= RULER_LABEL_INSET_PX &&
-							tick.px <= size.height - RULER_LABEL_INSET_PX,
-					)
+					.filter((tick) => tick.showLabel)
 					.map((tick, index) => (
 						<text
 							// biome-ignore lint/suspicious/noArrayIndexKey: ruler labels are read-only rows

@@ -51,6 +51,8 @@ export interface RulerTick {
 	label: string;
 	major: boolean;
 	origin: boolean;
+	/** True when this major label fits inside the band (rendered exactly once). */
+	showLabel: boolean;
 }
 
 export interface RulerTicks {
@@ -139,12 +141,18 @@ function buildAxisTicks(
 		if (ticks.length >= RULER_MAX_TICKS) break;
 		const value = index * step.minorLabel;
 		const cm = displayToCm(value, units);
+		const px = cm * PX_PER_CM * scale + safeOffset;
+		const major = isMajorValue(value, step.majorLabel);
 		ticks.push({
 			value,
-			px: cm * PX_PER_CM * scale + safeOffset,
+			px,
 			label: formatRulerLabel(value),
-			major: isMajorValue(value, step.majorLabel),
+			major,
 			origin: Math.abs(value) < 1e-9,
+			showLabel:
+				major &&
+				px >= RULER_LABEL_INSET_PX &&
+				px <= safeLength - RULER_LABEL_INSET_PX,
 		});
 	}
 	return ticks;
@@ -164,20 +172,12 @@ export function buildRulerTicks(
 	const step = chooseRulerStep(safeScale, units);
 	const top = buildAxisTicks(safeScale, units, size.width, viewport.x, step);
 	const left = buildAxisTicks(safeScale, units, size.height, viewport.y, step);
-	const labelVisible = (tick: RulerTick, length: number) =>
-		tick.major &&
-		tick.px >= RULER_LABEL_INSET_PX &&
-		tick.px <= length - RULER_LABEL_INSET_PX;
 	return {
 		...step,
 		units,
 		top,
 		left,
-		topLabels: top
-			.filter((tick) => labelVisible(tick, size.width))
-			.map((tick) => tick.label),
-		leftLabels: left
-			.filter((tick) => labelVisible(tick, size.height))
-			.map((tick) => tick.label),
+		topLabels: top.filter((tick) => tick.showLabel).map((tick) => tick.label),
+		leftLabels: left.filter((tick) => tick.showLabel).map((tick) => tick.label),
 	};
 }

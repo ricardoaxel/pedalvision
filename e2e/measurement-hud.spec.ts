@@ -1,5 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
-import { addBoard, addPedal } from "./picker.ts";
+import { addBoard, addPedal, openPicker } from "./picker.ts";
 import { board, item, shareHash } from "./share.ts";
 
 /**
@@ -28,6 +28,13 @@ test("desktop rulers show world cm and follow pan + zoom", async ({
 	await expect(rules).toHaveAttribute("data-major-label", "20");
 	await expect(rules).toHaveAttribute("data-minor-label", "5");
 	await expect(rules).toHaveAttribute("data-major-cm", "20");
+
+	// The rendered labels use the same visibility list the data hook exposes.
+	const topLabels = ((await rules.getAttribute("data-top-labels")) ?? "")
+		.split(",")
+		.filter(Boolean);
+	const domLabels = await rules.locator(".edge-rules__label").allTextContents();
+	for (const label of topLabels) expect(domLabels).toContain(label);
 
 	// Pan on empty canvas: labels are world coordinates, so they move.
 	const before = await rules.getAttribute("data-top-labels");
@@ -110,6 +117,29 @@ test("mobile is corner-only: rulers hidden, tag yields to the info peek", async 
 
 	await page.getByTestId("info-close").click();
 	await expect(tag).toBeVisible();
+
+	// The quiet cm/in toggle still has a comfortable touch target.
+	const unitBox = await page.getByTestId("scale-tag-units").boundingBox();
+	expect(unitBox?.width ?? 0).toBeGreaterThanOrEqual(44);
+	expect(unitBox?.height ?? 0).toBeGreaterThanOrEqual(44);
+});
+
+test("mobile tag yields to a custom board action bar", async ({
+	page,
+}, testInfo) => {
+	test.skip(!testInfo.project.name.startsWith("mobile"));
+	await page.goto("/");
+	await openPicker(page, "custom");
+	await page.getByTestId("custom-category-board").click();
+	await page.getByTestId("board-name").fill("HUD board");
+	await page.getByTestId("board-width").fill("60");
+	await page.getByTestId("board-depth").fill("40");
+	await page.getByTestId("board-submit").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	const box = await stageBox(page);
+	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+	await expect(page.getByTestId("board-action-bar")).toBeVisible();
+	await expect(page.getByTestId("scale-tag")).toBeHidden();
 });
 
 test("read-only shares keep the scale frame and the quiet unit toggle", async ({
