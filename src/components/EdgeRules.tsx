@@ -33,7 +33,17 @@ function DesktopEdgeRules() {
 
 	if (size.width <= 0 || size.height <= 0) return null;
 
-	const ticks = buildRulerTicks(scale, units, size, { x, y });
+	// The stage is inset by the band on desktop, so the frame lives in the
+	// `.app-canvas` margin and never occludes world (0,0). The ruler's screen
+	// origin is the canvas pane; add the band offset to the stage transform.
+	const width = size.width + BAND;
+	const height = size.height + BAND;
+	const ticks = buildRulerTicks(
+		scale,
+		units,
+		{ width, height },
+		{ x: x + BAND, y: y + BAND },
+	);
 	const top = ticks.top;
 	const left = ticks.left;
 
@@ -53,8 +63,8 @@ function DesktopEdgeRules() {
 		>
 			<svg
 				className="edge-rules__svg"
-				width={size.width}
-				height={size.height}
+				width={width}
+				height={height}
 				aria-hidden="true"
 				focusable="false"
 			>
@@ -62,7 +72,7 @@ function DesktopEdgeRules() {
 					className="edge-rules__band"
 					x={0}
 					y={0}
-					width={size.width}
+					width={width}
 					height={BAND}
 				/>
 				<rect
@@ -70,13 +80,13 @@ function DesktopEdgeRules() {
 					x={0}
 					y={BAND}
 					width={BAND}
-					height={Math.max(0, size.height - BAND)}
+					height={Math.max(0, height - BAND)}
 				/>
 				<line
 					className="edge-rules__edge"
 					x1={0}
 					y1={BAND - 0.5}
-					x2={size.width}
+					x2={width}
 					y2={BAND - 0.5}
 				/>
 				<line
@@ -84,7 +94,7 @@ function DesktopEdgeRules() {
 					x1={BAND - 0.5}
 					y1={BAND}
 					x2={BAND - 0.5}
-					y2={size.height}
+					y2={height}
 				/>
 
 				{top.map((tick, index) => {
@@ -110,6 +120,7 @@ function DesktopEdgeRules() {
 							// biome-ignore lint/suspicious/noArrayIndexKey: ruler labels are read-only rows
 							key={`top-label-${index}`}
 							className="edge-rules__label"
+							data-axis="top"
 							x={Math.round(tick.px)}
 							y={BAND - 9}
 							textAnchor="middle"
@@ -141,6 +152,7 @@ function DesktopEdgeRules() {
 							// biome-ignore lint/suspicious/noArrayIndexKey: ruler labels are read-only rows
 							key={`left-label-${index}`}
 							className="edge-rules__label"
+							data-axis="left"
 							x={BAND - 10}
 							y={Math.round(tick.px)}
 							textAnchor="middle"

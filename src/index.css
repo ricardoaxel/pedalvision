@@ -5424,6 +5424,9 @@ body {
 	right: 0;
 	bottom: 0;
 	z-index: 1;
+	/* Readout chrome only: the unit toggle re-enables itself. Canvas pan and
+	 * deselect must still reach the stage under the bottom-right corner. */
+	pointer-events: none;
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
@@ -5483,6 +5486,7 @@ body {
 	justify-content: center;
 	min-width: 44px;
 	min-height: 44px;
+	pointer-events: auto;
 	/* Negative margins keep the 44 px target without growing the tag row. */
 	margin: -15px -10px;
 	padding: 0;
@@ -5529,6 +5533,13 @@ body {
 
 /* Desktop chrome clears the frame: rules are 22 px, then an 8 px gutter. */
 @media (min-width: 1024px) {
+	/* The frame is a border, not an overlay: the stage starts after the band so
+	 * a board/item at world (0,0) is never hidden under opaque ruler chrome. */
+	.stage {
+		top: var(--ruler-size);
+		left: var(--ruler-size);
+	}
+
 	.app-toolbar {
 		top: var(--chrome-top);
 	}

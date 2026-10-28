@@ -33,8 +33,11 @@ test("desktop rulers show world cm and follow pan + zoom", async ({
 	const topLabels = ((await rules.getAttribute("data-top-labels")) ?? "")
 		.split(",")
 		.filter(Boolean);
-	const domLabels = await rules.locator(".edge-rules__label").allTextContents();
-	for (const label of topLabels) expect(domLabels).toContain(label);
+	const leftLabels = ((await rules.getAttribute("data-left-labels")) ?? "")
+		.split(",")
+		.filter(Boolean);
+	await expect(rules.locator('[data-axis="top"]')).toHaveText(topLabels);
+	await expect(rules.locator('[data-axis="left"]')).toHaveText(leftLabels);
 
 	// Pan on empty canvas: labels are world coordinates, so they move.
 	const before = await rules.getAttribute("data-top-labels");
