@@ -2007,6 +2007,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://pedalplayground.com/app/images/pedals/tc-bondyrez.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground transparent cutout; shear-corrected and used for the hosted asset (owner-requested 2026-10-28)."
+      },
+      {
         "url": "https://cdn-media.empowertribe.com/9ba64f84606a4077bd389eda587c1e98/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Top_XL.png",
         "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHB",
         "priority": 1,
@@ -2014,10 +2020,10 @@
       }
     ],
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHB",
-      "status": "chosen",
-      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/tc-bondyrez.png",
+      "status": "last-resort",
+      "note": "Pedalplayground cutout (795x1460, transparent); shear-corrected +2.37 deg (the shared TC compact render is mildly sheared; the official Top_XL was equivalent), body-trimmed, 800/350 AVIF q90; PSNR 42.67 dB; planner last-resort, counted source gap; owner requested 2026-10-28."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-28",
@@ -2128,6 +2134,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://pedalplayground.com/app/images/pedals/tc-bonafide.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground transparent cutout; shear-corrected and used for the hosted asset (owner-requested 2026-10-28)."
+      },
+      {
         "url": "https://cdn-media.empowertribe.com/32695f9291944939b1c30f3c3e270378/Image_TE_0709-AHC_BONAFIDE-BUFFER_Top_XL.png",
         "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHC",
         "priority": 1,
@@ -2135,10 +2147,10 @@
       }
     ],
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHC",
-      "status": "chosen",
-      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/tc-bonafide.png",
+      "status": "last-resort",
+      "note": "Pedalplayground cutout (795x1460, transparent); shear-corrected +2.37 deg (the shared TC compact render is mildly sheared; the official Top_XL was equivalent), body-trimmed, 800/350 AVIF q90; PSNR 47.07 dB; planner last-resort, counted source gap; owner requested 2026-10-28."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-28",
@@ -2789,6 +2801,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://pedalplayground.com/app/images/pedals/tc-coronamini.png",
+        "sourcePage": "https://pedalplayground.com/",
+        "priority": 1,
+        "notes": "Pedalplayground transparent cutout; shear-corrected and used for the hosted asset (owner-requested 2026-10-28)."
+      },
+      {
         "url": "https://cdn-media.empowertribe.com/fd96434e65a649ca9c0fb357d1282328/Image_TE_0709-AHD_CORONA-MINI-CHORUS_Top_XL.png",
         "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHD",
         "priority": 1,
@@ -2796,10 +2814,10 @@
       }
     ],
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHD",
-      "status": "chosen",
-      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/tc-coronamini.png",
+      "status": "last-resort",
+      "note": "Pedalplayground cutout (795x1460, transparent); shear-corrected +2.37 deg (the shared TC compact render is mildly sheared; the official Top_XL was equivalent), body-trimmed, 800/350 AVIF q90; PSNR 41.84 dB; planner last-resort, counted source gap; owner requested 2026-10-28."
     },
     "confidence": "confirmed",
     "lastVerified": "2026-10-28",
