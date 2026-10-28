@@ -355,7 +355,6 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"mooer-wah": ["wah", "filter"],
 	"mooer-a7": ["reverb"],
 	"mooer-acoustikar": ["acoustic-sim"],
-	"mooer-ana-echo": ["delay"],
 	"mooer-audiofile": ["buffer", "cab-sim", "utility"],
 	"mooer-baby-bomb": ["power-amp"],
 
