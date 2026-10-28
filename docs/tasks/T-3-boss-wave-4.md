@@ -1,6 +1,6 @@
 # T-3 — BOSS wave 4 coordinator
 
-**Phase:** P5 · **Status:** next · **Type:** catalog wave coordinator · **Depends on:** T-2c/T-2d
+**Phase:** P5 · **Status:** in review — PRs #65 (boss-7), #66 (boss-6), #68 (boss-8) · **Type:** catalog wave coordinator · **Depends on:** T-2c/T-2d
 
 ## Goal
 
@@ -63,6 +63,30 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
   12 min/item; ≤2 vision; ≤1 light code review.
 - Stop on 3 catalog PRs or 1 feature PR awaiting, hard cap, 2 failed resumes, generated conflict, or any
   429/401/quota/timeout/empty (report model + operation + exact error).
+
+## Delivery (2026-10-27)
+
+- **PRs:** #65 boss-7 (26), #66 boss-6 (26 + `psm-5` repair), #68 boss-8 (25).
+  Coordinator opened **no PR**. Catalog cap reached (3).
+- **Items/images:** 77 net-new + 1 repair; **154 AVIF pairs** (130+2 batch images,
+  plus boss-8 generated-art specs where needed). BOSS completes at **208**;
+  BOSS hotlinked+mock = **0**.
+- **Root billed non-cache:** **1.32M** (boss-6 434k, boss-7 328k, boss-8 554k;
+  cache-inclusive floor ~114M). boss-6/boss-8 are over the 400k per-batch soft,
+  under the 800k hard; wave under the 1.6M soft. Subagent vision/code-review
+  sessions are separate.
+- **CI:** #65/#66/#68 **pass**.
+- **Coordinator ops:** a stale out-of-plan `acme/pedals-1` test batch (0/3, >8h)
+  held the third slot; it was cleared to `blocked` and boss-8 launched as
+  `boss-wave-4-fill` (same plan/branch) so 3-wide held. No raw sessions; no
+  `--allow-third`.
+- **Merge risk:** all three PRs touch `tools/catalog-transform/curated.ts`; merge
+  serially and rebase the remaining PRs, re-running effects/no-drift + `catalog:ci`.
+  Never hand-resolve generated mapped/runtime files. Post-merge build expected
+  **399 pedals / 15 boards**.
+- **Feature lane:** #64 (F-19) + #67 (F-03) are open — **2 feature PRs, over the
+  ≤1 cap**. Not opened by this coordinator; no new feature/catalog wave until the
+  caps clear.
 
 ## Token review (2026-10-27)
 
