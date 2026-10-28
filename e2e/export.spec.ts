@@ -151,12 +151,35 @@ async function seedScene(page: Page, scene: SceneFixture): Promise<void> {
 	);
 }
 
-async function selectFirstBoard(page: Page): Promise<void> {
-	const box = await page.getByTestId("stage").boundingBox();
+/**
+ * The first seeded board's visible centre. Viewport-independent: a scene load
+ * auto-frames (F-04), so the old hardcoded default-view centre is no longer
+ * valid.
+ */
+async function firstBoardCentre(page: Page): Promise<{ x: number; y: number }> {
+	const stage = page.getByTestId("stage");
+	const box = await stage.boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
-	// Board-1 is a 60 × 30 cm custom board seeded at world (0, 0) → its centre
-	// is 120 × 60 stage px (PX_PER_CM = 4, default viewport at 1×/0,0).
-	await page.mouse.click(box.x + 120, box.y + 60);
+	const scale = Number(await stage.getAttribute("data-scale")) || 1;
+	const vx = Number(await stage.getAttribute("data-x")) || 0;
+	const vy = Number(await stage.getAttribute("data-y")) || 0;
+	const [bx, by] = ((await stage.getAttribute("data-positions")) ?? "")
+		.split(";")[0]
+		.split(",")
+		.map(Number);
+	const [w, h] = ((await stage.getAttribute("data-board-sizes")) ?? "")
+		.split(",")[0]
+		.split("x")
+		.map(Number);
+	return {
+		x: box.x + (bx + w / 2) * 4 * scale + vx,
+		y: box.y + (by + h / 2) * 4 * scale + vy,
+	};
+}
+
+async function selectFirstBoard(page: Page): Promise<void> {
+	const centre = await firstBoardCentre(page);
+	await page.mouse.click(centre.x, centre.y);
 	await expect(page.getByTestId("stage")).not.toHaveAttribute(
 		"data-selected-board",
 		"",
@@ -475,19 +498,21 @@ test("export ignores the live zoom and pan (never the viewport)", async ({
 	await page.getByTestId("export-close").click();
 	await expect(page.getByTestId("export-open")).toBeFocused();
 
-	// Zoom to a high level, then pan the board far off-screen.
+	// Move the view far away, then zoom. Pan from the empty left gutter above
+	// the (auto-framed) content so the gesture can never grab a board.
 	const stage = page.getByTestId("stage");
 	const box = await stage.boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
+	const scaleBefore = Number(await stage.getAttribute("data-scale")) || 1;
+	await page.mouse.move(box.x + 4, box.y + 110);
+	await page.mouse.down();
+	await page.mouse.move(box.x + 220, box.y + 240, { steps: 8 });
+	await page.mouse.up();
 	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 	await page.mouse.wheel(0, -1200);
 	await expect
 		.poll(async () => Number(await stage.getAttribute("data-scale")))
-		.toBeGreaterThan(1.5);
-	await page.mouse.move(box.x + box.width - 30, box.y + box.height - 30);
-	await page.mouse.down();
-	await page.mouse.move(box.x + 30, box.y + 30, { steps: 12 });
-	await page.mouse.up();
+		.toBeGreaterThan(scaleBefore * 1.5);
 
 	await openExport(page);
 	await page.getByRole("radio", { name: "All content" }).click();
@@ -527,9 +552,15 @@ test("empty and no-board-selection states are honest", async ({ page }) => {
 	await expect(selectedBoard).toBeDisabled();
 	await expect(page.getByRole("radio", { name: "All content" })).toBeChecked();
 
-	const box = await page.getByTestId("stage").boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	await page.mouse.click(box.x + 120, box.y + 60);
+	// The mobile export tray covers the centred board; close it before selecting.
+	await page.getByTestId("export-close").click();
+	const centre = await firstBoardCentre(page);
+	await page.mouse.click(centre.x, centre.y);
+	await expect(page.getByTestId("stage")).not.toHaveAttribute(
+		"data-selected-board",
+		"",
+	);
+	await openExport(page);
 	await expect(selectedBoard).toBeEnabled();
 	await selectedBoard.click();
 	await expect(selectedBoard).toBeChecked();

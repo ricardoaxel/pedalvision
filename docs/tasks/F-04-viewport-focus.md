@@ -235,10 +235,12 @@ Read only these pointed files/sections; do not read whole docs.
   **13.05 → 13.16 kB gzip** (**+0.11 kB**); within the ≤ +2 kB target.
 - **E2E:** `viewport-focus.spec.ts` **14/14** (desktop + mobile); the six-spec
   touched suite (`measurement-hud`, `scenes`, `smoke`, `share`, `first-run`)
-  **89 passed / 4 skipped** (1 worker). A single `smoke` case flaked once under
-  4-worker parallelism and passed alone + in the serial run (no product change).
-  Deferred to post-merge (6-spec cap): `selection.spec.ts`, `touch.spec.ts`,
-  `info-panel.spec.ts`.
+  **89 passed / 4 skipped** (1 worker); `export.spec.ts` **21 passed / 1
+  skipped** (it hard-coded the default boot viewport, which load framing
+  changes; the helper is now transform-derived). A single `smoke` case flaked
+  once under 4-worker parallelism and passed alone + in the serial run (no
+  product change). Deferred to post-merge: `selection.spec.ts`,
+  `touch.spec.ts`, `info-panel.spec.ts`.
 - **Performance (1440×900, fixed board + pedal, base vs branch):** 1 s
   wheel-zoom **61–62 fps both**; JS heap **10.1 MB both**; share link
   **358–360 chars** (same range); all-content Standard PNG **2,771,550 bytes**
