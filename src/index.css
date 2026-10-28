@@ -311,12 +311,7 @@ body {
 	.first-run {
 		top: auto;
 		right: auto;
-		bottom: calc(
-			56px +
-			env(safe-area-inset-bottom) +
-			var(--space-6) +
-			var(--space-6)
-		);
+		bottom: calc(56px + env(safe-area-inset-bottom) + 104px);
 		left: var(--space-3);
 		width: max-content;
 		max-width: calc(100% - var(--space-3) * 2);
@@ -5509,12 +5504,11 @@ body {
 
 /* The true-length reference: one rule, two caps, value + condition. */
 .scale-bar {
+	position: relative;
 	justify-self: center;
 	display: flex;
 	align-items: center;
-	gap: var(--space-2);
 	min-height: 18px;
-	white-space: nowrap;
 	pointer-events: none;
 }
 
@@ -5544,6 +5538,18 @@ body {
 	right: 0;
 }
 
+.scale-bar__caption {
+	position: absolute;
+	top: 50%;
+	left: calc(100% + var(--space-2));
+	display: inline-flex;
+	align-items: baseline;
+	gap: 4px;
+	white-space: nowrap;
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+
 .scale-bar__label {
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
@@ -5551,6 +5557,7 @@ body {
 	color: var(--color-ink);
 }
 
+.scale-bar__dot,
 .scale-bar__legend {
 	font-size: var(--font-size-2xs);
 	line-height: 1;
