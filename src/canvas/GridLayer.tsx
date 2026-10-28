@@ -1,5 +1,5 @@
 import { Layer, Shape } from "react-konva";
-import { gridLevels } from "../lib/grid";
+import { type GridStepCm, gridLevels } from "../lib/grid";
 import { GRID_DOT_RADIUS } from "../styles/theme";
 
 interface GridDotsProps {
@@ -52,6 +52,8 @@ interface GridLayerProps {
 	scale: number;
 	x: number;
 	y: number;
+	/** Fixed grid step in cm; the visible pitch coarsens to the 16 px floor. */
+	stepCm: GridStepCm;
 }
 
 /**
@@ -81,9 +83,10 @@ export function GridLayer({
 	scale,
 	x,
 	y,
+	stepCm,
 }: GridLayerProps) {
 	// Continuous LOD from the shared pure helper (lib/grid.ts).
-	const { fineStepPx: fineStep, frac } = gridLevels(scale);
+	const { fineStepPx: fineStep, frac } = gridLevels(scale, stepCm);
 
 	return (
 		<Layer

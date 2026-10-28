@@ -20,6 +20,17 @@ describe("gridLevels", () => {
 		expect(gridCellCm(Number.NaN)).toBe(5);
 	});
 
+	it("coarsens a finer selected step to the 16 px floor", () => {
+		// 1 cm at 1× is 4 px: the drawn/readout pitch is 4 cm, not a 4 px dot field.
+		expect(gridCellCm(1, 1)).toBe(4);
+		expect(gridCellCm(1, 2)).toBe(4);
+		expect(gridCellCm(1, 5)).toBe(5);
+		expect(gridCellCm(1, 10)).toBe(10);
+		expect(gridCellCm(2, 1)).toBe(2);
+		expect(gridCellCm(4, 1)).toBe(1);
+		expect(gridLevels(1, 1).fineStepPx).toBe(16);
+	});
+
 	it("is defensive about a non-finite or non-positive scale", () => {
 		expect(gridLevels(Number.NaN)).toEqual(gridLevels(1));
 		expect(gridLevels(0)).toEqual(gridLevels(1));

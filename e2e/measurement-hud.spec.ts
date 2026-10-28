@@ -60,6 +60,50 @@ test("an empty sheet already shows the view/dots readout", async ({ page }) => {
 	await expect(readout).toHaveAttribute("data-grid-cm", "5");
 });
 
+test("centered reference bar is visible on an empty sheet", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const bar = page.getByTestId("scale-bar");
+	await expect(bar).toBeVisible();
+	await expect(bar).toContainText(/\d+ (cm|in)/);
+	await expect(bar).toContainText("at this zoom");
+
+	const stage = await stageBox(page);
+	const box = await bar.boundingBox();
+	expect(box).not.toBeNull();
+	expect(
+		Math.abs(
+			(box?.x ?? 0) + (box?.width ?? 0) / 2 - (stage.x + stage.width / 2),
+		),
+	).toBeLessThan(2);
+});
+
+test("grid-step popover changes the drawn pitch and persists", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const readout = page.getByTestId("scale-readout");
+	await expect(readout).toHaveAttribute("data-grid-step-cm", "5");
+	await expect(readout).toContainText("grid 5 cm");
+
+	await page.getByTestId("grid-step-trigger").click();
+	const menu = page.getByRole("dialog", { name: "Grid step" });
+	await expect(menu).toBeVisible();
+	await page.getByTestId("grid-step-1").click();
+	await expect(readout).toHaveAttribute("data-grid-step-cm", "1");
+	await expect(readout).toHaveAttribute("data-grid-cm", "4");
+	await expect(readout).toContainText("grid 4 cm");
+	await expect(menu).toContainText("Too fine here — dots at 4 cm.");
+	await page.keyboard.press("Escape");
+	await expect(menu).toHaveCount(0);
+
+	await page.reload();
+	const reloaded = page.getByTestId("scale-readout");
+	await expect(reloaded).toHaveAttribute("data-grid-step-cm", "1");
+	await expect(reloaded).toContainText("grid 4 cm");
+});
+
 test("desktop readout reports the visible cm and dot pitch, and follows zoom", async ({
 	page,
 }, testInfo) => {
@@ -81,7 +125,7 @@ test("desktop readout reports the visible cm and dot pitch, and follows zoom", a
 	const readoutBox = await readout.boundingBox();
 	expect(readoutBox?.x ?? 0).toBeCloseTo(16, 0);
 	expect((readoutBox?.y ?? 0) + (readoutBox?.height ?? 0)).toBeCloseTo(
-		viewport?.height ?? 720,
+		(viewport?.height ?? 720) - 4,
 		0,
 	);
 

@@ -30,6 +30,7 @@ export function MeasureOverlay() {
 	const vy = useViewport((state) => state.y);
 	const size = useViewport((state) => state.size);
 	const units = useSettings((state) => state.units);
+	const gridStepCm = useSettings((state) => state.gridStepCm);
 	const isMobile = useIsMobile();
 	const dragging = useRef(false);
 
@@ -59,6 +60,7 @@ export function MeasureOverlay() {
 			scale,
 			event.pointerType === "touch" ? 24 : 12,
 			{ boards, items, customPedals, endpoints },
+			gridStepCm,
 		);
 	};
 

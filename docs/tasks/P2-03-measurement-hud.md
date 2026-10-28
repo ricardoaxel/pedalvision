@@ -1,32 +1,43 @@
-# F-03 / P2-03: Measurement HUD — viewport + grid readout
+# F-03 / P2-03: Measurement HUD — Margin Rule (readout + reference bar + grid step)
 
 **Phase:** 1 · **Status:** in review — PR #67 · **Model:** light
 
 ## Goal
 
 Give the board a scale at a glance **without adding permanent chrome**. The
-owner-approved final is a **viewport + grid readout**; the earlier “Drafting
-Scale” bar was dropped because its length read as the dot pitch.
+owner-approved final is the **Margin Rule**: viewport/grid readout + centered
+true-length reference + selectable grid step. The earlier bar was briefly
+dropped because its length read as the dot pitch; it is restored centered with
+the honest `at this zoom` condition.
 
 - **Always-visible readout**: `view W × H · grid N` + a compact **`cm | in`**
   toggle. It states how much real-world canvas is visible and the current dot
-  cell (5 cm at 1×). View and grid both follow the active unit (`5 cm` / `2 in`);
-  never a bar length, never a bare “5 dots”.
-- **26 px bottom caption strip**: desktop bottom-left (16 px gutter); mobile
-  bottom-right above the dock, kept visible while editing (lifted above the
-  info peek). The mobile `view` subtracts the dock + peek, so it reports the
-  actually visible canvas.
+  cell (5 cm at 1×). View and grid both follow the active unit (`5 cm` / `2 in`).
+- **Centered true-length reference bar**: one 1 px rule + caps, `20 cm at this
+  zoom` (the honest condition; the bar’s px length changes with zoom), centered
+  on the drawing area; it re-steps 1/2/5/10/20/50/100/200 in the active unit.
+  No axis, ticks, card, plate or accent; the legend is the label itself.
+- **Selectable grid step**: `grid 5 cm ⌄` opens a popover with `1/2/5/10/20 cm`.
+  The step is a precision **ceiling**; dots and snapping use the coarsest visible
+  pitch (≥16 px), so 1 cm at 1× shows `grid 4 cm` plus “Too fine here — dots at
+  4 cm.” The readout shows the pitch actually drawn (`data-grid-cm`) and the
+  setting separately (`data-grid-step-cm`); the setting persists.
+- **26 px bottom caption strip**: desktop readout left (16 px gutter) + rule
+  centered on the drawing area; mobile two centered rows (rule above readout)
+  above the dock, kept visible while editing (lifted above the info peek). The
+  mobile `view` subtracts the dock + peek, so it reports the visible canvas.
 - **Always visible**, including an empty sheet and read-only shares; the mobile
   first-run note is lifted above it so it cannot occlude the readout.
 - **The distance answer: a transient measure tool** (`M`/toolbar). Drag A→B;
   true-length dashed line + live cm/in chip (1 dp); snap to board/item corners &
-  centres, jacks, endpoints, then the 5 cm grid; **Clear line**; Esc exits;
+  centres, jacks, endpoints, then the visible grid pitch; **Clear line**; Esc exits;
   read-only shares can measure; never persisted.
-- **5 cm dot grid** at 1× (LOD 10/20/40).
+- **Dot grid**: default 5 cm at 1×; the fixed step drives the LOD (≥16 px).
 - **No axis, ticks, world-coordinate labels, zoom %, fill, card or shadow.**
   Pan changes nothing; zoom re-steps the view/grid values.
-- **Units** use the shared `Settings.units`; readout, chip and info panel follow.
-  `cm` stays canonical; derived/view-only; never persisted/exported/shared.
+- **Units** use the shared `Settings.units`; readout, bar, chip and info panel
+  follow. `cm` stays canonical; derived/view-only; never exported/shared. The
+  grid step is persisted app-wide (`Settings.gridStepCm`).
 - Endpoint placement stays stage-aligned; a placed endpoint does not auto-select.
 
 Roadmap item **F-03** (Phase 1 — core correctness and polish).
@@ -93,9 +104,15 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
 - Desktop and mobile show one **`scale-readout`** with
   `view {W} × {H} {units} · grid {N} {units}`; `data-view-width-cm`,
-  `data-view-height-cm`, `data-grid-cm` are present; grid is `5 cm` / `2 in`
-  at 1× and LODs to 10/20/40 cm; **no** `scale-bar`, edge/axis/ticks/world
-  labels.
+  `data-view-height-cm`, `data-grid-cm`, `data-grid-step-cm` are present.
+- A centered **`scale-bar`** shows `{round length} {units} at this zoom`; its
+  rule is the true length at the current zoom and re-steps; no `0 —`, axis,
+  ticks, plate, card or accent. Mobile stacks rule above readout.
+- `grid N ⌄` opens the step popover; 1/2/5/10/20 cm persist; the drawn pitch
+  coarsens to the 16 px floor and the readout + snap use that pitch; 1 cm at 1×
+  reads `grid 4 cm` and the menu explains “Too fine here — dots at 4 cm.”
+- **No** edge/axis/ticks/world labels; no static `scale-bar` length without the
+  `at this zoom` condition.
 - The readout is visible on an empty sheet; mobile keeps it above the peek and
   it is not occluded by the first-run note; read-only shares keep it.
 - Panning does **not** change the view values; zooming re-steps them.
@@ -132,6 +149,18 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
   renderings; (4) Clear line target/surface parity; (5) measure chip 2 dp and
   micro-type. **Folded (1), (4), (5); (2) and (3) deferred to the owner.**
   No third visual pass (hard cap); owner approval still required.
+- **Owner follow-up (2026-10-28): approved “Margin Rule”** — restore the bar
+  centered with the honest legend, and add the 1/2/5/10/20 cm grid step; same
+  PR #67; one extra visual pass explicitly allowed.
+- **Margin Rule R3** (design-reviewer, actual pixels): **approve-with-changes**;
+  open findings handed to the owner (no further pass): (1) mobile empty shows
+  no rule row; (2) desktop strip reads as small debug metadata (4 px edge,
+  10 px type, bar not the centered element; wants a subtle strip surface);
+  (3) light-theme readout/caret/toggle too faint; (4) `grid N ⌄` has no control
+  affordance and the desktop popover is left of its trigger; (5) the cap is
+  explained only while the menu is open, the footer wraps on mobile, and the
+  selected row is weaker than hover. **Not folded; owner to accept or request
+  a fix.**
 - Reviewer’s “what is good”: subtle/calm readout, legible in both themes,
   visible and un-occluded on mobile empty, re-anchors above the peek, and the
   readout tracks the real visible area (`view 103 × 162` → `103 × 196`).
@@ -142,16 +171,18 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
 - `pnpm lint` clean (2 pre-existing `tools/asset-pipeline/analyze.ts` warnings).
 - `pnpm typecheck` clean.
-- `pnpm test` **870 passed** (96 files).
+- `pnpm test` **872 passed** (96 files).
 - `pnpm build` clean.
-- Full E2E (clean preview, desktop + mobile): **286 passed / 11 skipped**.
+- Full E2E (clean preview, desktop + mobile): **290 passed / 11 skipped**.
 - **Performance** (base `origin/main` 2bbc70b → this branch): main JS
   **304.71 → 306.65 kB gzip** (+1.94), CSS **12.07 → 12.61 kB gzip** (+0.54);
   wheel-zoom 61–62 fps; JS heap 12.8 MB; picker 54–67 ms; share **359 B**; the
   readout is one DOM line + two buttons; the measure overlay exists only while
   armed; export unchanged. Grid is 5 cm at 1× (LOD 10/20/40).
-- Screenshots: desktop empty/full/selected/measure/inches, dark/light; mobile
-  empty/full/selected/measure/inches, dark/light; base before shots.
+- Screenshots: desktop empty/full/selected/measure/inches/grid-menu/1 cm,
+  dark/light; mobile the same (selected light too); base before shots.
+- **Open R3 findings** are listed in the design gate; no further visual pass
+  (cap), owner decision pending.
 - **Known open review findings:** desktop toolbar scene label squeeze at 1280
   with the inspector open; the readout pill and inspector segmented unit
   toggles use different visual languages (same shared setting). Owner to

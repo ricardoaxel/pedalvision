@@ -7,7 +7,7 @@ import {
 	type PlacedItem,
 } from "../state/scene";
 import { type DisplayUnits, type Point, PX_PER_CM } from "./geometry";
-import { gridCellCm } from "./grid";
+import { DEFAULT_GRID_STEP_CM, type GridStepCm, gridCellCm } from "./grid";
 import { type AnchorIndex, anchorIndexFor } from "./jackAnchor";
 
 /**
@@ -75,6 +75,7 @@ export function snapMeasurePoint(
 	scale: number,
 	radiusPx: number,
 	scene: MeasureScene,
+	gridStepCm: GridStepCm = DEFAULT_GRID_STEP_CM,
 ): { point: Point; kind: MeasureSnap } {
 	const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
 	const radiusCm = radiusPx / (PX_PER_CM * safeScale);
@@ -92,7 +93,7 @@ export function snapMeasurePoint(
 	}
 	if (best) return { point: best.point, kind: best.kind };
 
-	const step = gridCellCm(safeScale);
+	const step = gridCellCm(safeScale, gridStepCm);
 	return {
 		point: {
 			x: Math.round(point.x / step) * step,
