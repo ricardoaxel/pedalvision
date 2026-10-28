@@ -1,6 +1,6 @@
 # T-4 — Cleanup wave 1 coordinator (EHX-1 + MXR-1 + Mooer-1)
 
-**Phase:** P5 · **Status:** in review — #71 (Mooer-1) merged; #70 (EHX-1) + #72 (MXR-1) open with flat-image corrections · **Type:** catalog wave coordinator · **Depends on:** T-3
+**Phase:** P5 · **Status:** COMPLETE — #71 (Mooer), #74 (EHX), #72 (MXR) merged; post-merge `3a7fd8f` 423/15, ledger 438 · **Type:** catalog wave coordinator · **Depends on:** T-3
 
 ## Goal
 
