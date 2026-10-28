@@ -36,6 +36,10 @@ PRs to the owner. The coordinator opens **no PR** and never merges.
 
 ## Scope (confirm counts from the ledger before launch)
 
+> **First:** run `pnpm catalog:asset-ledger` — the ledger file is stale at 311
+> items; the catalog is now 399 (BOSS complete). Use the regenerated ledger for
+> the EHX/MXR/Mooer hotlinked/mock counts.
+
 - `ehx/ehx-1` — **18 existing hotlinked + 8 new = 26**. Re-host every existing EHX
   seed item; never keep a hotlinked/mock asset; record `imageProvenance`.
 - `mxr/mxr-1` — **18 existing hotlinked + 8 new = 26**. Same replacement rule.
