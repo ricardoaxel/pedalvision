@@ -1,6 +1,6 @@
 # P5-03: MXR — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** in review — PR pending · **Model:** build-strong
+**Phase:** P5 · **Status:** in review — PR #72 · **Model:** build-strong
 
 > The `cleanup-wave-1` coordinator created this worktree and wrote the 18
 > existing-item raw scaffolds. The `catalog:wave` wrapper starts `mxr/mxr-1`
