@@ -250,3 +250,16 @@ Two of the 8 planned new items are recorded gaps (not invented, not forced):
 - `lint`, `typecheck`, `test` (872), `build` green; targeted Playwright
   `picker` + `picker-choka` desktop + mobile green (32 passed, 5 skipped).
 - Demo link: 23 items / 22 illustrative cables / 0 unconnected.
+
+## Owner correction — 2026-10-28 (deskew)
+
+The owner reported that **BodyRez**, **Corona Mini** and **Bonafide Buffer** looked
+slightly rotated clockwise. The official top renders are mildly **sheared** (the
+sides lean while the top edge stays level), and the earlier batch rendering had
+rotated them to force the analyzer's side-slope metric, which tilted the top edge.
+They were re-rendered from the same official TC `Top_XL` source with a
+**horizontal shear** (not a rotation): alpha threshold to remove the drop shadow,
+shear by the measured source slope, trim, 800/350 AVIF q90. Result: analyzer
+rotation **0.02–0.18°**, aspect **0.4–1.1 %**, PSNR **41.75–47.09 dB**; the
+`catalog-image-reviewer` deskew pass confirmed all three straight, clean-alpha and
+shippable. Only these three `imageProvenance` notes and their AVIFs changed.
