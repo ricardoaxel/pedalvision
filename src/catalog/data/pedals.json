@@ -14860,6 +14860,1826 @@
     ]
   },
   {
+    "id": "boss-sy-300-guitar-synthesizer",
+    "brand": "BOSS",
+    "name": "SY-300 Guitar Synthesizer",
+    "widthCm": 25.5,
+    "heightCm": 19.1,
+    "image": "boss-sy-300-guitar-synthesizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "filter",
+      "delay",
+      "reverb",
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 400
+    },
+    "usage": "guitar",
+    "notes": "Guitar synthesizer with three oscillators, four simultaneous FX blocks, 24-bit/44.1 kHz processing and 99 user + 70 preset patches.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/sy-300/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/SY-300_e01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sy_300_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sy_300_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-syb-3-bass-synthesizer",
+    "brand": "BOSS",
+    "name": "SYB-3 Bass Synthesizer",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-syb-3-bass-synthesizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "exp",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 80
+    },
+    "usage": "bass",
+    "notes": "Compact bass synthesizer with two synth methods and a T-wah; 11 modes, stereo effect/direct outputs and an EXP jack.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/syb-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/SYB-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/main/syb3_main.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-syb-5-bass-synthesizer",
+    "brand": "BOSS",
+    "name": "SYB-5 Bass Synthesizer",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-syb-5-bass-synthesizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "exp",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "bass",
+    "notes": "Compact bass synthesizer with four knobs, stereo effect/direct outputs and an EXP jack for expression control.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/syb-5/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/SYB-5_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/syb5_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tb-2w-tone-bender-waza-craft",
+    "brand": "BOSS",
+    "name": "TB-2W Tone Bender",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-tb-2w-tone-bender-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft limited-edition Tone Bender fuzz with ATTACK and LEVEL knobs, battery switch and switchable buffered/true bypass.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/tb-2w/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TB-2W_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/products/tb-2w/images/tb-2w_05_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-te-2-tera-echo",
+    "brand": "BOSS",
+    "name": "TE-2 Tera Echo",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-te-2-tera-echo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 90
+    },
+    "usage": "guitar",
+    "notes": "Stereo delay with E. LEVEL, TONE, FEEDBACK and S-TIME controls and BOSS MDP processing.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/te-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TE-2_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/te-2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tr-2-tremolo",
+    "brand": "BOSS",
+    "name": "TR-2 Tremolo",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-tr-2-tremolo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Compact tremolo with DEPTH, RATE and WAVE controls and buffered bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/tr-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TR-2_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tr2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tu-12ex-chromatic-tuner",
+    "brand": "BOSS",
+    "name": "TU-12EX Chromatic Tuner",
+    "widthCm": 14.8,
+    "heightCm": 5.4,
+    "image": "boss-tu-12ex-chromatic-tuner.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "right"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12
+    },
+    "usage": "both",
+    "notes": "Desktop chromatic tuner with needle meter, Accu-Pitch, built-in mic and guitar/bass modes.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/tu-12ex/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TU-12EX_ejgfispd2.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tu_12ex_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tu-12h-chromatic-tuner",
+    "brand": "BOSS",
+    "name": "TU-12H High Range Chromatic Tuner",
+    "widthCm": 14.5,
+    "heightCm": 5.3,
+    "image": "boss-tu-12h-chromatic-tuner.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "right"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "both",
+    "notes": "Desktop high-range chromatic tuner with meter, built-in microphone and guitar/bass modes.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/tu-12h/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TU-12H_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/main/tu_12h_main.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tu-3-chromatic-tuner",
+    "brand": "BOSS",
+    "name": "TU-3 Chromatic Tuner",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-tu-3-chromatic-tuner.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "both",
+    "notes": "Compact chromatic tuner with high-brightness display, bypass output and DC OUT for powering another pedal.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/tu-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TU-3_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tu-3_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tu-3_rear_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tu-3s-chromatic-tuner",
+    "brand": "BOSS",
+    "name": "TU-3S Chromatic Tuner",
+    "widthCm": 7.3,
+    "heightCm": 8.4,
+    "image": "boss-tu-3s-chromatic-tuner.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "both",
+    "notes": "Space-saving chromatic tuner with a shortened footprint, high-brightness display and DC OUT.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/tu-3s/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TU-3S_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tu-3s_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tu-3s_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tu-3w-chromatic-tuner-waza-craft",
+    "brand": "BOSS",
+    "name": "TU-3W Chromatic Tuner",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-tu-3w-chromatic-tuner-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "both",
+    "notes": "Waza Craft chromatic tuner with switchable buffered/true bypass, bypass output and DC OUT.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/tu-3w/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/TU-3W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tu-3w_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/tu-3w_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-tw-1-t-wah",
+    "brand": "BOSS",
+    "name": "TW-1 T-Wah",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-tw-1-t-wah.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "wah"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "notes": "Envelope-controlled T-wah with SENS and PEAK knobs and a DRIVE up/down switch; usable with guitar, bass and electronic piano.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/TW-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/tw_product01.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-vb-2-vibrato",
+    "brand": "BOSS",
+    "name": "VB-2 Vibrato",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-vb-2-vibrato.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "vibrato"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8.5
+    },
+    "usage": "guitar",
+    "notes": "Vintage BBD vibrato with RATE, DEPTH, RISE TIME and MODE (LATCH/BYPASS/UNLATCH) controls.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201967789-VB-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VB-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/vb_product02.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-vb-2w-vibrato-waza-craft",
+    "brand": "BOSS",
+    "name": "VB-2W Vibrato",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-vb-2w-vibrato-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "vibrato"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "exp",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 35
+    },
+    "usage": "guitar",
+    "notes": "Waza Craft BBD vibrato with RATE, DEPTH, RISE TIME and MODE knobs, Standard/Custom switch and DEPTH expression jack.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/vb-2w/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VB-2W_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/vb_2w_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ve-20-vocal-processor",
+    "brand": "BOSS",
+    "name": "VE-20 Vocal Performer",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-ve-20-vocal-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "reverb",
+      "distortion",
+      "eq",
+      "looper"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 190
+    },
+    "usage": "unknown",
+    "notes": "Vocal performer with harmony/pitch correction, reverb, 3-band EQ, distortion and a 38-second phrase loop.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ve-20/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VE-20_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-20_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-20_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ve-22-vocal-performer",
+    "brand": "BOSS",
+    "name": "VE-22 Vocal Performer",
+    "widthCm": 21.8,
+    "heightCm": 14.3,
+    "image": "boss-ve-22-vocal-performer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "reverb",
+      "delay",
+      "eq",
+      "looper"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 260
+    },
+    "usage": "unknown",
+    "notes": "Vocal performer with 39 effect types, harmony, pitch correction, color LCD, 37-second loop and USB audio/MIDI.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ve-22/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VE-22_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-22_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-22_gal_03.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ve-500-vocal-performer",
+    "brand": "BOSS",
+    "name": "VE-500 Vocal Performer",
+    "widthCm": 17,
+    "heightCm": 13.8,
+    "image": "boss-ve-500-vocal-performer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "reverb",
+      "delay",
+      "eq",
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 310
+    },
+    "usage": "unknown",
+    "notes": "Vocal performer with harmony, pitch correction, reverb, delay, EQ, compressor, MIDI and USB audio/MIDI.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ve-500/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VE-500_eng04_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-500_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-500_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ve-8-acoustic-singer",
+    "brand": "BOSS",
+    "name": "VE-8 Acoustic Singer",
+    "widthCm": 21.7,
+    "heightCm": 16.1,
+    "image": "boss-ve-8-acoustic-singer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "reverb",
+      "chorus",
+      "acoustic-sim",
+      "eq",
+      "looper"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 360
+    },
+    "usage": "unknown",
+    "notes": "Acoustic singer processor for voice and guitar with harmony, acoustic resonance, effects, 80-second loop and USB audio/MIDI.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ve-8/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VE-8_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-8_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ve-8_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-vg-800-v-guitar-processor",
+    "brand": "BOSS",
+    "name": "VG-800 V-Guitar Processor",
+    "widthCm": 17.3,
+    "heightCm": 13.5,
+    "image": "boss-vg-800-v-guitar-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim",
+      "synth",
+      "pitch",
+      "delay",
+      "reverb",
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": true
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 690
+    },
+    "usage": "both",
+    "notes": "V-Guitar processor with GK input, amp/cab modeling, synth and 150 guitar + 150 bass memories; over 150 effect types.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/vg-800/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VG-800_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/vg-800_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/vg-800_rear_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-vo-1-vocoder",
+    "brand": "BOSS",
+    "name": "VO-1 Vocoder",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-vo-1-vocoder.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "send",
+        "edge": "left"
+      },
+      {
+        "kind": "return",
+        "edge": "left"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "both",
+    "notes": "Compact vocoder with four modes (Advanced, Vintage, Talk Box, Choir), XLR mic input and SEND/RETURN loop.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/vo-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/VO-1_M_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/vo_1_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-wl-50-wireless-system",
+    "brand": "BOSS",
+    "name": "WL-50 Wireless System",
+    "widthCm": 7.2,
+    "heightCm": 12.1,
+    "image": "boss-wl-50-wireless-system.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "both",
+    "notes": "Pedalboard wireless system: 7.2 x 12.1 cm receiver, WL-T transmitter, cable-tone simulation and 2.3 ms latency.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/wl-50/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/WL-50_eng03_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/wl-50_top_2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/wl-50_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-wl-60-wireless-system",
+    "brand": "BOSS",
+    "name": "WL-60 Wireless System",
+    "widthCm": 7,
+    "heightCm": 12,
+    "image": "boss-wl-60-wireless-system.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 110
+    },
+    "usage": "both",
+    "notes": "Wireless system with a pedalboard receiver, graphic LCD, automatic channel scan and WL-60T transmitter.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/wl-60/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/WL-60_eng02_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/wl-60_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/wl-60_rear_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-wp-20g-wave-processor",
+    "brand": "BOSS",
+    "name": "WP-20G Wave Processor",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-wp-20g-wave-processor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "ring-mod",
+      "delay",
+      "chorus",
+      "filter"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "guitar",
+    "notes": "GK-effect wave processor with six synth waves (Saw Lead, Square, Ring Mod, Slow Gear, Sitar, Acoustic) and 11 chorus/delay effects.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/wp-20g/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/WP-20G_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/main/wp20g_main.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-xs-1-pitch-shifter",
+    "brand": "BOSS",
+    "name": "XS-1 Poly Shifter",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-xs-1-pitch-shifter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "exp",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 120
+    },
+    "usage": "both",
+    "notes": "Compact polyphonic pitch shifter with BALANCE and SHIFT knobs, pedal-mode/direction switches and CTL/EXP jack.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/xs-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/XS-1_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/xs-1_01_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-xs-100-poly-shifter",
+    "brand": "BOSS",
+    "name": "XS-100 Poly Shifter",
+    "widthCm": 14.7,
+    "heightCm": 23,
+    "image": "boss-xs-100-poly-shifter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 160
+    },
+    "usage": "both",
+    "notes": "Poly shifters with onboard EXP pedal, 30 memories, stereo outputs, MIDI and USB; 24-bit/48 kHz processing.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/xs-100/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/XS-100_eng01_W.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/xs-100_01_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/xs-100_03_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
     "id": "jhs-3-series-screamer",
     "brand": "JHS",
     "name": "3 Series Screamer",
