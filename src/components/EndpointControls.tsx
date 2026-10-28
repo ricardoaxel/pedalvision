@@ -189,8 +189,9 @@ export function EndpointControl({
 }
 
 /**
- * Full-canvas capture layer while placement is armed. It lives above the stage
- * and below the chrome, so a tap places the endpoint without starting a pan.
+ * Stage-sized capture layer (full canvas on mobile) while placement is armed.
+ * It lives above the stage and below the chrome, so a tap places the endpoint
+ * without starting a pan.
  */
 export function EndpointPlacementOverlay() {
 	const kind = useEndpointPlacement((state) => state.kind);
