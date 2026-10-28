@@ -44,6 +44,18 @@ own task file — no need to re-paste the whole plan.
   (official → retailer → community → **recorded planner last-resort** → generated
   only if none) — never keep their old unrecorded planner asset. Boards keep
   generated flat art by default; planner pixels are never used for boards.
+- **D1a — Source discovery pass (T-4b, owner request 2026-10-28).** Every batch
+  runs a **bounded discovery pass** before settling for planner: registry-first →
+  official brand/press/support → **aggregators (Pedalbro / PedalFinder / Pedalfilter / All The Pedals)** → **one opportunistic Google/Bing Images attempt
+  per batch** (open the source page; record the underlying URL, never the search
+  URL) → Amazon `hiRes` / Andertons / Sweetwater / Thomann / Guitar Sanctuary /
+  retailers / community → planner last resort → generated last. Caps: ≤2 search
+  pages + ≤20 source-page fetches per batch (≤3/item); deterministic curl+regex
+  extraction; 403/429/consent/captcha/empty = `zero-yield` once, no retry or
+  engine swap. **Planner share target ≤30%; >50% after one documented round
+  requires a waiver line in the PR (owner decides).** One **dual-tone contact
+  sheet** for the halo/fringe gate; high resolution is not flatness. New
+  reusable sources go in `docs/catalog/image-source-registry.md`.
 - **D2 — BOSS first.** T-0a gate fix → T-1 pedal-art + promote-legacy → T-2 BOSS
   wave 3 (boss-4 + legacy repair + boss-5) → T-3 BOSS wave 4 (boss-6/7/8) → BOSS
   complete.
@@ -142,7 +154,7 @@ See `docs/tasks/P5-03d-parallel-workstreams.md`.
 | **T-2d** | [Catalog waves start 3-wide by default](T-2d-default-3-wide.md) | **Merged (PR #62, squash `50025c8`; folded into T-2c).** Default `min(3, maxParallel, batchCount)` with no flag; `--allow-third` deprecated no-op; soft budget logged without shrinking (owner accepts over-soft), hard 2.4M still refuses; docs/tests updated. **Required before T-3.** Token review; high-risk code review. | T-2c |
 | **T-3** | [BOSS wave 4](T-3-boss-wave-4.md) | boss-6 + boss-7 + boss-8 (77 items). **3-wide by default (T-2d, no flag)**; logged start; true-token budgets/stops. Re-baseline budgets from T-2. One PR per batch. | T-2, T-2c, T-2d |
 | **T-4** | Cleanup wave 1 | EHX-1 (18 existing + 8 new) + MXR-1 (18 + 8) + Mooer-1 (18 [17 hotlinked + 1 mock] + 8) = 78 items; 54 existing (53 hotlinked + 1 mock). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
-| **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
+| **T-5** | Cleanup wave 2 | TC-1 (18 + 8) + JHS-1 (19 + 7) + Walrus-1 (18 + 8) = 78; 55 existing (32 hotlinked + 2 official static + 21 mock/static). **3-wide (default); one PR per batch.** Carries the **T-4b discovery pass** + dual-tone sheet + planner-share guard. | T-1, T-2c, T-2d, T-4b |
 | **T-6** | Cleanup wave 3 | Joyo-1 (18 + 8) + Keeley-1 (18 + 8) + EQD-1 (18 + 8) = 78; 54 existing (5 hotlinked + 49 mock/static). **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
 | **T-7** | Cleanup wave 4 | Behringer-1 (1 hotlinked + new) + Big Joe-1 (2 mock + new) + Effects Bakery-1 (1 mock + new). Small batches; fill from their own Tier A; never force 26 if the brand has fewer. **3-wide (default); one PR per batch.** | T-1, T-2c, T-2d |
 | **T-8** | Remaining Tier A | Continuous waves of the remaining brands (Catalinbread, Dunlop, Fender, Strymon, Wampler, DigiTech, etc.) to **1,850 pedals**. Measured cost/item go/no-go first; **3-wide default (T-2d)**; 26 items (consider 40 after calibration). Token review each new wave. | T-3…T-7, T-2c, T-2d |
