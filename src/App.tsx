@@ -24,6 +24,7 @@ import {
 	PlusIcon,
 	SunIcon,
 } from "./components/icons";
+import { MeasurementHud } from "./components/MeasurementHud";
 import { Picker, type PickerTab } from "./components/Picker";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
@@ -301,6 +302,8 @@ function App() {
 			<StorageAnnouncer readOnly={readOnly} />
 			<div className="app-canvas">
 				<Stage />
+				{/* Ambient scale reference + selected size (F-03 "Scale Rule"). */}
+				<MeasurementHud />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
 				 * so its presses never reach the canvas gesture handler. Read-only
 				 * shares keep selection + the info panel, but remove every edit affordance. */}
