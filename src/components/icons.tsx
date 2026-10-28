@@ -469,3 +469,27 @@ export function MoonIcon({
 		</svg>
 	);
 }
+
+export function RulerIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M3.5 16.5 16.5 3.5l4 4L7.5 20.5z" />
+			<path d="M7 13l2 2M10 10l2 2M13 7l2 2" />
+		</svg>
+	);
+}

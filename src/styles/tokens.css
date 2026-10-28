@@ -115,7 +115,7 @@
 
 	/* Canvas caption strip (F-03 "Drafting Scale"): the stage is inset by this
 	 * and the scale bar lives in the margin. */
-	--sheet-margin-y: 22px;
+	--sheet-margin-y: 26px;
 
 	/* Radii — deliberate 2-step scale: controls 8 / cards 12 */
 	--radius-control: 8px;
@@ -152,7 +152,7 @@
 	--leading-normal: 1.4;
 
 	/* Dot grid — clearly visible, still the calmest layer (~1.9:1 vs canvas) */
-	--grid-pitch: 24px;
+	--grid-pitch: 20px;
 	--grid-dot-radius: 1px;
 
 	/* Info panel (P2-03 "Readout") — desktop trailing push rail width. */

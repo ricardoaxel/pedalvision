@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { gridLevels, MIN_GRID_SCREEN_PITCH } from "./grid";
+import { gridCellCm, gridLevels, MIN_GRID_SCREEN_PITCH } from "./grid";
 
 describe("gridLevels", () => {
 	it("keeps the dominant level at the 16 px floor", () => {
@@ -11,6 +11,13 @@ describe("gridLevels", () => {
 			expect(levels.fineStepPx).toBeGreaterThanOrEqual(8 - 1e-9);
 			expect(levels.coarseStepPx).toBeCloseTo(levels.fineStepPx * 2, 10);
 		}
+	});
+
+	it("reports whole-centimetre grid cells (5 cm base)", () => {
+		expect(gridCellCm(1)).toBe(5);
+		expect(gridCellCm(2)).toBe(5);
+		expect(gridCellCm(0.25)).toBe(20);
+		expect(gridCellCm(Number.NaN)).toBe(5);
 	});
 
 	it("is defensive about a non-finite or non-positive scale", () => {

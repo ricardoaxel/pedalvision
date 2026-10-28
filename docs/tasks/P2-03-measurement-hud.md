@@ -9,19 +9,23 @@ rejected “Scale Rule” chip, “Edge Rule” frame, “Sheet Margin” and �
 axis, the owner-approved final is **“Drafting Scale”**: the app’s own **export
 scale bar**, used as the only on-canvas measurement.
 
-- **One true-length bar**: line + 8 px end caps + one explicit `= 20 cm` label, 11 px mono,
-  `--color-ink-muted` — the same geometry/ink/font/label as the PNG/PDF export.
-- **22 px bottom caption strip outside the stage**: desktop **bottom-left**
-  (16 px gutter); mobile **bottom-right** above the dock (16 px inset), and it
-  stays visible while editing (lifted above the info peek).
-- **No axis, ticks, world-coordinate labels, grid readout, zoom %, unit glyph,
-  left gutter, fill, card or shadow.** Pan changes nothing; zoom re-steps the
-  label/bar. The bar is hidden on an empty scene (nothing to measure).
-- **Units** live in the info panel; the bar follows `Settings.units`. `cm` stays
-  canonical; derived/view-only; never persisted, exported or shared.
+- **One true-length scale bar**: `0 — 20 cm` end labels, 1 px line + 8 px caps,
+  11 px mono, with a segmented **`cm | in`** control — the app’s export language.
+- **26 px bottom caption strip outside the stage**: desktop **bottom-left**
+  (16 px gutter); mobile **bottom-right** above the dock, kept visible while
+  editing (lifted above the info peek).
+- **The actual distance answer: a transient measure tool** (`M`/toolbar). Drag
+  A→B; true-length dashed line + live cm/in chip; snap to board/item corners &
+  centres, jacks, endpoints, then the current grid cell; **Clear line**; Esc
+  exits; read-only shares can measure; never persisted.
+- **5 cm dot grid** at 1× (LOD 10/20/40); the measure status carries the live
+  grid key.
+- **No axis, ticks, world-coordinate labels, zoom %, fill, card or shadow.**
+  Pan changes nothing; zoom re-steps the bar/labels. The bar hides on an empty
+  scene; mobile hides it only for picker/trays/first-run/graph cues.
+- **Units** use the shared `Settings.units`; the bar, chip and info panel follow.
+  `cm` stays canonical; derived/view-only; never persisted/exported/shared.
 - Endpoint placement stays stage-aligned; a placed endpoint does not auto-select.
-- Mobile hides the bar only for the picker/trays/first-run/graph cues; the scale
-  stays visible while a part is selected.
 
 Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
@@ -54,8 +58,8 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 - **Reuse `Settings.units`** (one app-wide setting); no second unit state.
 - **No new dependencies.** DOM + CSS + existing React/Konva only.
 - **Read-only shares** keep the bar; no edit affordances.
-- **Design gate:** designer “Drafting Scale”; owner approved; 2 review rounds
-  (R1/R2) folded; no third.
+- **Design gate:** designer “Drafting Scale”; owner approved; bar R1/R2 and
+  measure-UI R1/R2 folded; no third.
 - **Code review:** ≤1 light pass; tests are the re-check.
 - **Budget:** the owner explicitly approved proceeding despite the task being far
   over its 1.1M hard cap after multiple direction changes.
@@ -118,12 +122,15 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
   right inset; the 22 px strip invisible; unit parity; mobile hide vs desktop.
   Folded: bar lifted within the strip, faint stage-bottom edge to define it,
   label tracking normalized. **No third round.**
-- **Post-R2 product review:** the `pedal-user` and `designer` agents reviewed the
-  concept. Both agree the bar is a **scale/trust cue**, not the answer to “how
-  much gap/distance?”. The real next feature is an on-demand **measure tool**
-  (snap edge/centre/jack, live cm/in, ephemeral) plus a readable 5 cm grid key;
-  that is a **new feature task**, not this PR. The bar is kept as an explicit
-  `= 20 cm` scale key and stays visible while editing on mobile.
+- **Post-R2 product review:** the `pedal-user` and `designer` agents agreed the
+  bar is a **scale/trust cue**, not the answer to “how much gap/distance?”. The
+  owner then **included the measure tool + 5 cm grid + cm/in control in this
+  PR**. The bar is a `0 — 20 cm` scale key; the measure tool answers the actual
+  distance question.
+- **Measure UI reviews:** R1 (status under toolbar, selection overlap, unit
+  control, mobile Esc, line weight) and R2 (bar meaning, edge inset, copy/clear,
+  mobile wrap) were folded. The bar/measure stay subtle; the line/chip are the
+  only active-tool chrome.
 - The owner’s rule applies: **subtle so it helps, never another purposeless
   element.**
 
@@ -131,14 +138,14 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
 - `pnpm lint` clean (2 pre-existing `tools/asset-pipeline/analyze.ts` warnings).
 - `pnpm typecheck` clean.
-- `pnpm test` **863 passed** (95 files).
+- `pnpm test` **871 passed** (96 files).
 - `pnpm build` clean.
-- Full E2E (clean preview, desktop + mobile): **276 passed / 11 skipped**.
-- **Performance** (base `a5c63aa` → this branch): main JS **303.16 → 303.57 kB
-  gzip** (+0.41), CSS **12.07 → 12.39 kB gzip** (+0.32); wheel-zoom 61–62 fps;
-  JS heap 12.8 MB; picker median 67 ms this run (58–75 samples; prior 54–57;
-  the bar is outside the picker path); share **359 B**; the bar is a single DOM
-  track + label (no SVG axis); export unchanged.
+- Full E2E (clean preview, desktop + mobile): **286 passed / 11 skipped**.
+- **Performance** (base `a5c63aa` → this branch): main JS **303.16 → 305.23 kB
+  gzip** (+2.07), CSS **12.07 → 12.70 kB gzip** (+0.63); wheel-zoom 61–62 fps;
+  JS heap 12.8 MB; picker 54–67 ms across runs; share **359 B**; the bar is one
+  DOM track + labels; the measure overlay exists only while armed; export
+  unchanged. Grid is 5 cm at 1× (LOD 10/20/40).
 - Screenshots: desktop full-width + selected, dark/light; pan/zoom; first-run;
   read-only; mobile idle + selected (dark/light).
 
@@ -148,11 +155,12 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
   remains the canvas surface. The bar is the key that makes the grid legible.
 - Units change in the info panel; the bar follows. The mobile bar is the only
   scale cue on a phone and hides while editing.
-- The old axis/ruler logic and sheet tokens were deleted; the grid LOD helper
-  stays only for `GridLayer`.
-- **Next feature (recommended):** a temporary measure tool + 5 cm grid key. It
-  answers the actual “does it fit / how much gap?” question the bar cannot; the
-  bar remains a cheap “roughly life-size” key. Do not add it to this PR.
+- The old axis/ruler logic and sheet tokens were deleted; the 5 cm grid is the
+  canvas surface and the measure tool snaps to it. The bar is a cheap
+  “roughly life-size” key; the measure line/chip answer the distance question.
+- The measure mode is transient and pointer-led; `M`/toolbar arms, Esc exits,
+  Clear line clears; read-only shares can measure; no scene/codec/share/export
+  changes.
 - **Process/rule gaps:** propose to the owner + `token-usage-reviewer` first; do
   not edit shared rules in this PR.
 - Billed tokens by class are recorded in PR #67.

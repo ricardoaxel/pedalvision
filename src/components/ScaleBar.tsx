@@ -20,6 +20,7 @@ const MOBILE_BAR_MAX_PX = 40;
 export function ScaleBar() {
 	const scale = useViewport((state) => state.scale);
 	const units = useSettings((state) => state.units);
+	const setUnits = useSettings((state) => state.setUnits);
 	const isMobile = useIsMobile();
 	const content = useScene((state) => state.boards.length + state.items.length);
 	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
@@ -50,9 +51,33 @@ export function ScaleBar() {
 			data-bar-px={bar.barPx}
 			style={liftStyle}
 		>
+			<span className="scale-bar__zero" aria-hidden="true">
+				0
+			</span>
 			<span className="scale-bar__track" aria-hidden="true" style={barStyle} />
 			<span className="scale-bar__label">
-				= {bar.lengthLabel} {bar.units}
+				{bar.lengthLabel} {bar.units}
+			</span>
+			<span className="scale-bar__units">
+				{(["cm", "in"] as const).map((unit, index) => (
+					<span key={unit} className="scale-bar__unit-slot">
+						{index > 0 ? (
+							<span className="scale-bar__unit-sep" aria-hidden="true">
+								·
+							</span>
+						) : null}
+						<button
+							type="button"
+							className="scale-bar__unit"
+							data-testid={`scale-bar-unit-${unit}`}
+							aria-pressed={units === unit}
+							aria-label={`${unit === "cm" ? "Centimetres" : "Inches"}${units === unit ? ", selected" : ""}`}
+							onClick={() => setUnits(unit)}
+						>
+							{unit}
+						</button>
+					</span>
+				))}
 			</span>
 		</div>
 	);

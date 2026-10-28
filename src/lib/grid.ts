@@ -1,4 +1,5 @@
 import { GRID_PITCH } from "../styles/theme";
+import { PX_PER_CM } from "./geometry";
 
 /**
  * The dot grid's level-of-detail math, kept pure so the canvas has one source
@@ -17,6 +18,15 @@ export interface GridLevels {
 	fineStepPx: number;
 	/** Coarse-level dot spacing in screen px at the current zoom. */
 	coarseStepPx: number;
+}
+
+/** The cell size the eye reads as "the grid" (the more opaque level), in cm. */
+export function gridCellCm(scale: number): number {
+	const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
+	const { frac, fineStepPx, coarseStepPx } = gridLevels(safeScale);
+	const fineCellCm = fineStepPx / (PX_PER_CM * safeScale);
+	const coarseCellCm = coarseStepPx / (PX_PER_CM * safeScale);
+	return frac > 0.5 ? coarseCellCm : fineCellCm;
 }
 
 /** Resolve the two crossfaded dot-grid levels at `scale`. */

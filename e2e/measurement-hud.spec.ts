@@ -1,6 +1,7 @@
 import { expect, type Page, test } from "@playwright/test";
 import { addBoard, addPedal, openPicker } from "./picker.ts";
 import { board, item, shareHash } from "./share.ts";
+import { firstItemScreenCentre } from "./stage.ts";
 
 /**
  * F-03 — "Drafting Scale": one true-length bar in the caption strip, the same
@@ -13,6 +14,26 @@ async function stageBox(page: Page) {
 	const box = await page.getByTestId("stage").boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
 	return box;
+}
+
+async function firstBoardScreen(page: Page) {
+	const stage = page.getByTestId("stage");
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const scale = Number(await stage.getAttribute("data-scale")) || 1;
+	const vx = Number(await stage.getAttribute("data-x")) || 0;
+	const vy = Number(await stage.getAttribute("data-y")) || 0;
+	const [widthCm] = ((await stage.getAttribute("data-board-sizes")) ?? "")
+		.split(",")[0]
+		.split("x")
+		.map(Number);
+	const [x, y] = ((await stage.getAttribute("data-positions")) ?? "")
+		.split(";")[0]
+		.split(",")
+		.map(Number);
+	const left = box.x + x * PX_PER_CM * scale + vx;
+	const top = box.y + y * PX_PER_CM * scale + vy;
+	return { left, top, widthPx: widthCm * PX_PER_CM * scale, widthCm };
 }
 
 async function expandDetails(page: Page): Promise<void> {
@@ -58,7 +79,7 @@ test("desktop drawing scale is true-length, ignores pan, and re-steps on zoom", 
 	expect(trackWidth).toBeCloseTo(barPx, 0);
 	const viewport = page.viewportSize();
 	const barBox = await tag.boundingBox();
-	expect(box.height).toBeCloseTo((viewport?.height ?? 720) - 22, 0);
+	expect(box.height).toBeCloseTo((viewport?.height ?? 720) - 26, 0);
 	expect(barBox?.x ?? 0).toBeCloseTo(16, 0);
 	expect((barBox?.y ?? 0) + (barBox?.height ?? 0)).toBeCloseTo(
 		viewport?.height ?? 720,
@@ -102,13 +123,13 @@ test("desktop drawing scale follows the info-panel units", async ({
 	const tag = page.getByTestId("scale-bar");
 	await expect(tag).toBeVisible();
 	await expect(tag).toHaveAttribute("data-units", "cm");
-	await expect(tag).toContainText("= 20 cm");
+	await expect(tag).toContainText("20 cm");
 
 	await expandDetails(page);
 	await page.getByTestId("info-units-in").click();
 	await expect(tag).toHaveAttribute("data-units", "in");
 	await expect(tag).toHaveAttribute("data-length-label", "10");
-	await expect(tag).toContainText("= 10 in");
+	await expect(tag).toContainText("10 in");
 	await page.getByTestId("info-units-cm").click();
 	await expect(tag).toHaveAttribute("data-units", "cm");
 });
@@ -161,7 +182,7 @@ test("mobile drawing scale sits bottom-right and hides while editing", async ({
 	await expandDetails(page);
 	await page.getByTestId("info-units-in").click();
 	await expect(tag).toHaveAttribute("data-units", "in");
-	await expect(tag).toContainText("= 2 in");
+	await expect(tag).toContainText("2 in");
 	await page.getByTestId("info-close").click();
 	await expect(tag).toBeVisible();
 
@@ -188,6 +209,104 @@ test("mobile drawing scale yields to a custom board action bar", async ({
 	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
 	await expect(page.getByTestId("board-action-bar")).toBeVisible();
 	await expect(page.getByTestId("scale-bar")).toBeVisible();
+});
+
+test("measure mode snaps a board edge and switches units", async ({ page }) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	const rect = await firstBoardScreen(page);
+
+	await page.getByTestId("measure-toggle").click();
+	await expect(page.getByTestId("measure-overlay")).toBeVisible();
+	await expect(page.getByTestId("measure-status")).toContainText("5 cm grid");
+
+	await page.mouse.move(rect.left + 2, rect.top + 2);
+	await page.mouse.down();
+	await page.mouse.move(rect.left + 30, rect.top + 10, { steps: 4 });
+	await page.mouse.move(rect.left + rect.widthPx, rect.top, { steps: 8 });
+	await page.mouse.up();
+	await expect(page.getByTestId("measure-chip")).toHaveText(
+		`${rect.widthCm} cm`,
+	);
+	await expect(page.getByTestId("measure-chip")).toContainText("cm");
+
+	await page.getByTestId("scale-bar-unit-in").click();
+	await expect(page.getByTestId("scale-bar")).toHaveAttribute(
+		"data-units",
+		"in",
+	);
+	await expect(page.getByTestId("measure-chip")).toContainText("in");
+
+	await page.getByTestId("measure-clear").click();
+	await expect(page.getByTestId("measure-chip")).toHaveCount(0);
+	await expect(page.getByTestId("measure-overlay")).toBeVisible();
+	await page.getByTestId("measure-toggle").click();
+	await expect(page.getByTestId("measure-overlay")).toHaveCount(0);
+});
+
+test("measure snaps a pedal corner and Esc exits", async ({ page }) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await page.getByTestId("measure-toggle").click();
+	await expect(page.getByTestId("measure-overlay")).toBeVisible();
+	// Measuring clears the selection/rail, so the pedal screen point is stable.
+	const centre = await firstItemScreenCentre(page, {
+		widthCm: 7.3,
+		heightCm: 13.02,
+	});
+	const halfW = (7.3 * PX_PER_CM) / 2;
+	const halfH = (13.02 * PX_PER_CM) / 2;
+	await page.mouse.move(centre.x - halfW + 2, centre.y - halfH + 2);
+	await page.mouse.down();
+	await page.mouse.move(centre.x + halfW, centre.y - halfH, { steps: 8 });
+	await page.mouse.up();
+	await expect(page.getByTestId("measure-chip")).toHaveText("7.3 cm");
+	await page.keyboard.press("Escape");
+	await expect(page.getByTestId("measure-overlay")).toHaveCount(0);
+});
+
+test("measure grid key follows the zoom LOD", async ({ page }) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await page.getByTestId("measure-toggle").click();
+	await expect(page.getByTestId("measure-status")).toContainText("5 cm grid");
+	await page.getByTestId("measure-toggle").click();
+	const box = await stageBox(page);
+	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+	for (let index = 0; index < 8; index++) {
+		const current = Number(
+			await page.getByTestId("stage").getAttribute("data-scale"),
+		);
+		if (current < 0.3) break;
+		await page.mouse.wheel(0, 900);
+		await page.waitForTimeout(80);
+	}
+	await expect
+		.poll(async () =>
+			Number(await page.getByTestId("stage").getAttribute("data-scale")),
+		)
+		.toBeLessThan(0.3);
+	await page.getByTestId("measure-toggle").click();
+	await expect(page.getByTestId("measure-status")).toContainText("20 cm grid");
+});
+
+test("read-only shares can measure without mutating the scene", async ({
+	page,
+}) => {
+	const hash = shareHash({ boards: [board("b1")], items: [] });
+	await page.goto(`/?share=1${hash}`);
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	const rect = await firstBoardScreen(page);
+	await page.getByTestId("measure-toggle").click();
+	await page.mouse.move(rect.left + 2, rect.top + 2);
+	await page.mouse.down();
+	await page.mouse.move(rect.left + rect.widthPx, rect.top, { steps: 8 });
+	await page.mouse.up();
+	await expect(page.getByTestId("measure-chip")).toHaveText(
+		`${rect.widthCm} cm`,
+	);
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-boards", "1");
 });
 
 test("read-only shares keep the drawing scale", async ({ page }, testInfo) => {

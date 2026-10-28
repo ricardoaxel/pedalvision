@@ -5384,7 +5384,7 @@ body {
 	align-items: center;
 	gap: 6px;
 	height: var(--sheet-margin-y);
-	padding: 0;
+	padding: 0 0 4px;
 	font-family: var(--font-mono);
 	font-variant-numeric: tabular-nums;
 	pointer-events: none;
@@ -5417,6 +5417,14 @@ body {
 	right: 0;
 }
 
+.scale-bar__zero {
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	letter-spacing: 0;
+	color: var(--color-ink-muted);
+}
+
 .scale-bar__label {
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
@@ -5424,6 +5432,53 @@ body {
 	letter-spacing: 0;
 	color: var(--color-ink-muted);
 	white-space: nowrap;
+}
+
+.scale-bar__units {
+	display: inline-flex;
+	align-items: center;
+	gap: 0;
+	padding: 1px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-pill);
+}
+
+.scale-bar__unit-slot {
+	display: inline-flex;
+	align-items: center;
+}
+
+.scale-bar__unit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 20px;
+	min-height: 18px;
+	padding: 0 4px;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	color: var(--color-ink-muted);
+	background: none;
+	border: 0;
+	border-radius: var(--radius-pill);
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.scale-bar__unit:hover {
+	color: var(--color-ink);
+}
+
+.scale-bar__unit[aria-pressed="true"] {
+	color: var(--color-ink);
+	background-color: var(--color-surface-raised);
+}
+
+.scale-bar__unit:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: -2px;
 }
 
 @media (min-width: 1024px) {
@@ -5480,5 +5535,115 @@ body {
 	.app-canvas:has(.share-panel) .scale-bar,
 	.app:has(.picker) .scale-bar {
 		display: none;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Measure mode (F-03). A transient drag-to-measure line + live cm/in chip;
+ * endpoints snap to board/item corners & centres, jacks, endpoints, then the
+ * current 5 cm grid cell. Never persisted, shared or exported.
+ * ------------------------------------------------------------------------- */
+
+.measure-trigger[data-active="true"] {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border-color: var(--color-accent-border);
+}
+
+.measure-trigger__label {
+	font-size: var(--font-size-xs);
+}
+
+.measure-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: var(--sheet-margin-y);
+	left: 0;
+	z-index: 1;
+	cursor: crosshair;
+	touch-action: none;
+}
+
+.measure-overlay__svg {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.measure-status {
+	position: absolute;
+	top: calc(var(--space-4) + 44px + var(--space-2));
+	left: 50%;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	width: max-content;
+	max-width: calc(100% - var(--space-4) * 2);
+	padding: var(--space-1) var(--space-2);
+	transform: translateX(-50%);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: 1.3;
+	color: var(--color-ink);
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
+	pointer-events: auto;
+}
+
+.measure-status__clear {
+	min-height: 24px;
+	padding: 0 var(--space-2);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink);
+	background: none;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-row);
+	cursor: pointer;
+}
+
+.measure-status__clear:hover {
+	background-color: var(--color-surface-raised);
+}
+
+.measure-chip {
+	position: absolute;
+	z-index: 2;
+	padding: 2px 6px;
+	transform: translate(-50%, calc(-100% - 8px));
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1.2;
+	color: var(--color-ink);
+	white-space: nowrap;
+	background-color: var(--color-surface-elevated);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-row);
+	box-shadow: var(--shadow-raised);
+	pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+	.measure-trigger__label {
+		display: none;
+	}
+
+	.measure-overlay {
+		bottom: 0;
+	}
+
+	.measure-status {
+		right: var(--space-3);
+		left: var(--space-3);
+		width: auto;
+		max-width: none;
+		transform: none;
+		justify-content: space-between;
 	}
 }
