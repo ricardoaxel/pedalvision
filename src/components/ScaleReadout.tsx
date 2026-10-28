@@ -1,10 +1,12 @@
-import type { CSSProperties } from "react";
+import { type CSSProperties, useLayoutEffect, useRef } from "react";
 import { cmToDisplay, PX_PER_CM } from "../lib/geometry";
 import { gridCellCm } from "../lib/grid";
 import { useIsMobile } from "../lib/useMobile";
 import { usePanelMetrics } from "../state/panel";
 import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
+import { BoardViewDock } from "./BoardViewDock";
+import { FrameControl } from "./FrameControl";
 import { GridStepMenu } from "./GridStepMenu";
 import { ScaleBar } from "./ScaleBar";
 
@@ -26,6 +28,24 @@ export function ScaleReadout() {
 	const gridStepCm = useSettings((state) => state.gridStepCm);
 	const isMobile = useIsMobile();
 	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
+	const setScaleStripHeight = usePanelMetrics(
+		(state) => state.setScaleStripHeight,
+	);
+	const stripRef = useRef<HTMLDivElement>(null);
+
+	// The strip mounts only after the stage has a measured size; re-run the
+	// measurement on that render (size is not otherwise a dependency).
+	// biome-ignore lint/correctness/useExhaustiveDependencies: measure after the strip mounts
+	useLayoutEffect(() => {
+		const element = stripRef.current;
+		if (!element) return;
+		const update = () =>
+			setScaleStripHeight(Math.round(element.getBoundingClientRect().height));
+		update();
+		const observer = new ResizeObserver(update);
+		observer.observe(element);
+		return () => observer.disconnect();
+	}, [setScaleStripHeight, size.height, size.width]);
 
 	if (size.width <= 0 || size.height <= 0) return null;
 
@@ -41,6 +61,7 @@ export function ScaleReadout() {
 
 	return (
 		<div
+			ref={stripRef}
 			className="scale-strip"
 			data-mobile={isMobile ? "true" : "false"}
 			style={liftStyle}
@@ -62,6 +83,7 @@ export function ScaleReadout() {
 					view {Math.round(cmToDisplay(viewWidthCm, units))} ×{" "}
 					{Math.round(cmToDisplay(viewHeightCm, units))} {units}
 				</span>
+				<FrameControl />
 				<span className="scale-readout__sep" aria-hidden="true">
 					·
 				</span>
@@ -89,6 +111,7 @@ export function ScaleReadout() {
 				</span>
 			</div>
 			<ScaleBar />
+			<BoardViewDock />
 		</div>
 	);
 }

@@ -57,6 +57,33 @@ export function BoardIcon({
 	);
 }
 
+/** Four corner brackets — "frame this view" (F-04 viewport focus). */
+export function FrameIcon({
+	size = 20,
+	strokeWidth = 1.8,
+	className,
+}: IconProps) {
+	return (
+		<svg
+			className={className}
+			width={size}
+			height={size}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={strokeWidth}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M4 9V5a1 1 0 0 1 1-1h4" />
+			<path d="M15 4h4a1 1 0 0 1 1 1v4" />
+			<path d="M20 15v4a1 1 0 0 1-1 1h-4" />
+			<path d="M9 20H5a1 1 0 0 1-1-1v-4" />
+		</svg>
+	);
+}
+
 export function PlusIcon({
 	size = 12,
 	strokeWidth = 2.4,

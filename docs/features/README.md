@@ -52,6 +52,7 @@ source files; tests are the unit specs that guard the logic.
 | F11 | Responsive desktop/mobile chrome | Full function on phone and desktop | `App.tsx`, `components/Picker.tsx`, panels/trays, `styles/tokens.css` | `toolbarNav.test.ts` | `picker.spec.ts`, `touch.spec.ts`, mobile cases in `export`/`cable-schedule`/`info-panel`/`scenes` |
 | F12 | Cables: drag-connect, endpoints, schedule | Plan the patch, not just the parts | `state/scene.ts` (cables), `state/cableDrag.ts`, `state/endpointDrag.ts`, `state/endpointPlacement.ts`, `canvas/CableLayer.tsx`, `canvas/EndpointLayer.tsx`, `lib/jackAnchor.ts`, `lib/cablePath.ts`, `lib/cableLength.ts`, `lib/cableSummary.ts`, `components/CableSchedulePanel.tsx` | `cables.test.ts`, `cableDrag.test.ts`, `jackAnchor.test.ts`, `cablePath.test.ts`, `cableLength.test.ts`, `cableSummary.test.ts`, `exportScene.test.ts` | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | F-03 | Margin Rule — viewport/grid readout + centered reference bar + selectable grid step + measure tool | Judge the visible extent and true scale, choose the grid precision, and measure the actual gap, without permanent clutter | `components/ScaleReadout.tsx`, `components/ScaleBar.tsx`, `components/GridStepMenu.tsx`, `components/MeasureOverlay.tsx`, `components/MeasureControl.tsx`, `state/measure.ts`, `state/settings.ts`, `lib/measure.ts`, `lib/measurementHud.ts`, `lib/grid.ts`, `canvas/useMeasureShortcuts.ts` | `measurementHud.test.ts`, `measure.test.ts`, `grid.test.ts`, `sceneIndex.test.ts` | `measurement-hud.spec.ts` |
+| F-04 | Viewport focus — frame a board / the used area / every loaded scene; Scope Frame dock (double-click toggle, camera lock, board paginator) | Find the drawing again; a scene never opens off-screen; move through boards without panning | `lib/viewportFocus.ts`, `state/focus.ts`, `components/FrameControl.tsx`, `components/BoardViewDock.tsx`, `components/boardView.ts`, `canvas/BoardNode.tsx`, `canvas/PedalNode.tsx`, `canvas/useSceneAutoFrame.ts`, `canvas/useFocusShortcuts.ts`, `canvas/useViewportGestures.ts`, `components/ScaleReadout.tsx`, `state/viewport.ts` | `viewportFocus.test.ts`, `focus.test.ts` | `viewport-focus.spec.ts` |
 | — | Info panel + asset renditions | Right details and imagery at each size | `components/InfoPanel.tsx`, `components/PartDrawing.tsx`, `components/partImage.ts`, `lib/partInfo.ts`, `lib/cdn.ts`, `canvas/loadImage.ts`, `canvas/useImage.ts` | `partInfo.test.ts`, `cdn.test.ts`, `loadImage.test.ts`, `imageStatus.test.ts` | `info-panel.spec.ts`, `picker.spec.ts`, `picker-choka.spec.ts` |
 | — | Capacity budgets | Honest limits, never a silent failure | `lib/capacity.ts`, `components/CapacityAnnouncer.tsx`, `scene.ts` caps | `capacity.test.ts`, `capacity.images.test.ts`, `capacityGuards.test.ts` | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | — | First-run guidance | Empty scene tells you where to start | `components/FirstRunHint.tsx`, `lib/firstRun.ts`, `lib/focus.ts` | `firstRun.test.ts` | `first-run.spec.ts` |
@@ -110,6 +111,34 @@ nothing; zoom re-steps the values; empty sheets and read-only shares keep it.
 `cm` stays canonical; the grid step is the only new persisted app-wide setting;
 nothing else is exported/shared.
 
+### F-04 — Viewport focus (Scope Frame)
+
+One contextual **`frame board` / `frame all`** instrument in the Margin Rule
+strip (desktop text; mobile `board` / `all`), keyboard `F`, a framed-tint chip
+while the view matches the last focus, and a disabled state on an empty sheet.
+It frames the **selected board** (+ its attached pedals/connectors) or the
+**used area** of the current scene, then applies one stage transform; no
+animation (F-05 owns motion), no scene/codec/share/export change. Every scene
+load — boot, switch/new, share-preview enter/exit, save-a-copy — frames the
+incoming document; **load framing caps at 1×** (owner decision), so a small
+scene is re-centred rather than magnified, while explicit focus may magnify.
+Bounds reuse the export content scopes. When the desktop strip is narrower than
+1000 px (the info rail is open at 1024/1280), the F-03 bar is hidden so the
+readout and control never collide; mobile keeps the bar above the readout and
+the frame control is a 44 px target.
+
+**Scope Frame dock (owner amendment, 2026-10-28).** The Margin Rule's right
+column (desktop) / third row (mobile) carries `‹ n / total ›` + a camera lock:
+double-click a board toggles board focus ↔ all; the paginator selects + frames
+the previous/next board (wraps; `all / total` in the all view, `n / total` in
+board focus, `0 / 0` with none; disabled at 0/1); `L` locks the camera to the
+pinned board (wheel/pinch/empty-pan disabled, object edits still work; unlock on
+empty canvas / `frame all` / scene load; the lock follows paginator/double-click
+and re-fits when the stage/rail/peek/strip changes). Works read-only. Mobile
+strip is 114 px (44 px dock row) and the camera safe rect is measured from the
+strip; the first-run note sits above it. No visible double-tap hint by owner
+choice (hidden description + titles).
+
 ### F-19 — This map
 
 The feature inventory, workflow → module → E2E table, change-impact table,
@@ -123,6 +152,7 @@ feature PRs.
 | Workflow | Code path | Persisted / transported path | E2E coverage |
 |---|---|---|---|
 | **Boot, pan, zoom, resize** | `App.tsx` → `Stage.tsx` → `useViewportGestures.ts` / `state/viewport.ts` | Viewport is not persisted (scene geometry is world cm) | `smoke.spec.ts` (wheel/pan/drag guards), `touch.spec.ts` (pinch/pan), `picker.spec.ts` (short viewports) |
+| **Viewport focus / scene-load framing / board dock** | `viewportFocus.ts`, `state/focus.ts`, `FrameControl.tsx`, `BoardViewDock.tsx`, `BoardNode.tsx`, `PedalNode.tsx`, `useSceneAutoFrame.ts`, `useFocusShortcuts.ts`, `useViewportGestures.ts`, `ScaleReadout.tsx` | Viewport + camera lock are not persisted; bounds reuse the export scopes; no scene/codec/share/export change | `viewport-focus.spec.ts` (desktop + mobile), `scenes.spec.ts`, `measurement-hud.spec.ts`, `share.spec.ts` |
 | **Picker search/filter/place** | `Picker.tsx` + `pickerFilter.ts` → `addItem` / `addBoard` | `items` / `boards` in the scene document | `picker.spec.ts` (desktop + mobile), `picker-choka.spec.ts` |
 | **Place / move / rotate / re-parent** | `state/scene.ts`, `useItemDrag.ts`, `ItemTransformer.tsx` | Board-local cm for attached items; world cm loose; rotation per item; z re-normalised | `smoke.spec.ts` (cross-board, pan interrupt), `selection.spec.ts` (rotate on rotated board), `touch.spec.ts` |
 | **Select / duplicate / delete / reorder** | `state/selection.ts`, `ItemActionBar.tsx`, `BoardActionBar.tsx` | Selection is ephemeral; the mutation is persisted | `selection.spec.ts`, `z-order.spec.ts`, `history.spec.ts` |
@@ -151,6 +181,7 @@ change is user-visible.
 | If you change… | Touches (paths) | Affected workflows | Minimum E2E (plus the area's own) |
 |---|---|---|---|
 | **Geometry, transforms, board-relative cm** | `src/lib/geometry.ts`, `src/state/scene.ts`, `src/canvas/Stage.tsx`, `src/canvas/useItemDrag.ts`, `src/canvas/ItemTransformer.tsx` | every canvas workflow, A1, export bounds | `smoke.spec.ts`, `selection.spec.ts`, `export.spec.ts` |
+| **Viewport focus / scene-load framing / board dock** | `src/lib/viewportFocus.ts`, `src/state/focus.ts`, `src/components/FrameControl.tsx`, `src/components/BoardViewDock.tsx`, `src/canvas/BoardNode.tsx`, `src/canvas/PedalNode.tsx`, `src/canvas/useSceneAutoFrame.ts`, `src/canvas/useFocusShortcuts.ts`, `src/canvas/useViewportGestures.ts`, `src/components/ScaleReadout.tsx`, `src/index.css` | boot/pan/zoom, scene switch, share preview, camera lock/paginator, export-bounds reuse, Margin Rule strip | `viewport-focus.spec.ts`, `scenes.spec.ts`, `measurement-hud.spec.ts`, `smoke.spec.ts`, `share.spec.ts`, `first-run.spec.ts`, `export.spec.ts` |
 | **Scene model / store mutators / z-order** | `src/state/scene.ts`, `src/state/selection.ts`, `src/canvas/ItemActionBar.tsx`, `src/canvas/BoardActionBar.tsx` | place, move, rotate, duplicate/delete, save/load, history, share | `selection.spec.ts`, `z-order.spec.ts`, `scenes.spec.ts`, `history.spec.ts` |
 | **New object type / new scene array** | `src/state/scene.ts`, `src/state/sceneDocument.ts`, `src/state/library.ts`, `src/lib/shareLink.ts`, `src/lib/exportScene.ts`, `src/lib/capacity.ts` | codec, guards, persistence, backup, history, share, export, capacity, UI | Complete the **new object type checklist**; run the checklist's named specs |
 | **Codec / `SceneDocument` / `library.ts`** | `src/state/sceneDocument.ts`, `src/state/library.ts`, `src/state/autosave.ts`, `src/lib/sceneIndex.ts` | save/load, autosave, boot reconcile, backup, share save-copy | `scenes.spec.ts`, `storage-fallback.spec.ts`, `share.spec.ts`, `cables.spec.ts` |
@@ -250,6 +281,7 @@ missing one is how P4-01/P4-02 broke standalone endpoints on load.
 | `storage-fallback.spec.ts` | blocked IDB/localStorage, write failure, quota advisories, backup | chromium + mobile |
 | `first-run.spec.ts` | note geometry, CTA, dismiss/focus, retire on first object | chromium + mobile |
 | `measurement-hud.spec.ts` | Margin Rule readout + bar, grid step, units, zoom, empty, measure/snap/grid, read-only, mobile | chromium + mobile |
+| `viewport-focus.spec.ts` | frame board / used area, F shortcut, empty/disabled, scene-switch framing, share preview, double-click toggle, camera lock, board paginator, desktop + mobile | chromium + mobile |
 | `touch.spec.ts` | pinch/pan, board-drag interrupt | mobile |
 | `benchmark.spec.ts` | report-only capacity table (`pnpm bench:capacity`) | excluded from `pnpm e2e` |
 
@@ -271,6 +303,8 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 | Shrinking a custom board nudges attached pedals back inside | `clampItemsToBoard` unit tests | Unit-only; add E2E only if the creator gets a resize-preview UI |
 | Z-order **within a board** container | `zorder.test.ts` (unit); E2E covers a loose-item reorder (`z-order.spec.ts`) | Unit + loose E2E; same `reorderItems` path. Add when a per-board layer UI lands |
 | Undo/redo of a cable create/delete | `cables.spec.ts` asserts the cable commit adds one undo step; other mutations in `history.spec.ts` | Partial E2E; full graph undo/redo is unit-covered (`history.test.ts`) |
+| Small-scene **load** framing is centred at 1× (never magnified) | `viewportFocus.test.ts` + `viewport-focus.spec.ts` centre assertions; large-scene fit stills | Intentional owner decision (2026-10-28); F-05 owns motion |
+| No visible touch hint for double-tap / camera lock | Dock `aria-label`/titles + hidden description; E2E covers the interactions | Owner chose no visible hint (2026-10-28); record as a known discovery limit |
 | PDF page pixels/raster fidelity | `pdf.test.ts` + header/MediaBox/`DCTDecode` assertions; owner iOS PNG check; P3-01 used `pdftoppm` manually | No automated pixel diff; keep as a visual/manual launch check |
 | Real iOS Safari export (A3) | Owner-confirmed PNG on iPhone (2026-10-20) | Manual; PDF not separately re-tested; P5-04 launch gate |
 | Non-Chromium browsers | Playwright chromium only (owner scope) | Out of scope; real-device pass is P5-06 |

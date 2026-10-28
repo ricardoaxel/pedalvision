@@ -655,6 +655,14 @@ export function PedalNode({
 				handlePointerDown(event, clientPoint(event.evt));
 			}}
 			onTouchStart={(event) => handlePointerDown(event, clientPoint(event.evt))}
+			// A double-click on a pedal must never bubble to its board and toggle
+			// the board view (F-04); it is a pedal gesture, not a view command.
+			onDblClick={(event) => {
+				event.cancelBubble = true;
+			}}
+			onDblTap={(event) => {
+				event.cancelBubble = true;
+			}}
 			// Desktop hover outline (touch has no hover). Konva `mouseenter`
 			// bubbles to this Group from its child shape.
 			onMouseEnter={() => setHoveredItem(item.uid)}

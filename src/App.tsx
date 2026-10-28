@@ -3,9 +3,11 @@ import { BoardActionBar } from "./canvas/BoardActionBar";
 import { GraphActionBar } from "./canvas/GraphActionBar";
 import { ItemActionBar } from "./canvas/ItemActionBar";
 import { Stage } from "./canvas/Stage";
+import { useFocusShortcuts } from "./canvas/useFocusShortcuts";
 import { useHistoryShortcuts } from "./canvas/useHistoryShortcuts";
 import { useMeasureShortcuts } from "./canvas/useMeasureShortcuts";
 import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
+import { useSceneAutoFrame } from "./canvas/useSceneAutoFrame";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CableSchedulePanel } from "./components/CableSchedulePanel";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
@@ -42,6 +44,7 @@ import { StorageAnnouncer, StorageNotice } from "./components/StorageNotice";
 import { capacityStatus } from "./lib/capacity";
 import { useCableDrag } from "./state/cableDrag";
 import { useEndpointPlacement } from "./state/endpointPlacement";
+import { useCameraLockRefit } from "./state/focus";
 import { useSceneLibrary } from "./state/library";
 import { useMeasure } from "./state/measure";
 import { useReadOnly } from "./state/readOnly";
@@ -149,6 +152,12 @@ function App() {
 	useHistoryShortcuts();
 	// Measure tool shortcuts: M toggles, Esc clears/disarms.
 	useMeasureShortcuts();
+	// Viewport focus (F-04): `F` frames the board / used area, and every scene
+	// load frames the incoming document instead of inheriting a stale transform.
+	useFocusShortcuts();
+	useSceneAutoFrame();
+	// Keep a pinned board framed when the info rail / peek / window resizes.
+	useCameraLockRefit();
 	const measureActive = useMeasure((state) => state.active);
 	// Measuring is a canvas mode; drop the selection chrome so the line/chip
 	// never sit under the transformer handles.

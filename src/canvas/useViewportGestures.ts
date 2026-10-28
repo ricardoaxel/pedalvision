@@ -1,5 +1,6 @@
 import type { RefObject } from "react";
 import { useEffect } from "react";
+import { isCameraLocked } from "../state/focus";
 import { useGesture } from "../state/gesture";
 import { type Point, useViewport, type Viewport } from "../state/viewport";
 import {
@@ -75,6 +76,9 @@ export function useViewportGestures(
 
 		const onPointerDown = (event: PointerEvent) => {
 			if (event.pointerType === "mouse" && event.button !== 0) return;
+			// Camera lock (F-04): the pinned board view must not be lost to a
+			// stray pan, pinch or wheel. Object drags still reach their nodes.
+			if (isCameraLocked()) return;
 			const point = localPoint(event.clientX, event.clientY);
 			dispatch({
 				type: "down",
@@ -85,6 +89,10 @@ export function useViewportGestures(
 		};
 
 		const onPointerMove = (event: PointerEvent) => {
+			if (isCameraLocked()) {
+				dispatch({ type: "cancel" });
+				return;
+			}
 			dispatch({
 				type: "move",
 				pointerId: event.pointerId,
@@ -95,6 +103,10 @@ export function useViewportGestures(
 		};
 
 		const onPointerUp = (event: PointerEvent) => {
+			if (isCameraLocked()) {
+				dispatch({ type: "cancel" });
+				return;
+			}
 			dispatch({ type: "up", pointerId: event.pointerId });
 		};
 
@@ -106,6 +118,7 @@ export function useViewportGestures(
 
 		const onWheel = (event: WheelEvent) => {
 			event.preventDefault();
+			if (isCameraLocked()) return;
 			// Never zoom mid-gesture: it would invalidate the pan/pinch baseline.
 			if (!wheelZoomAllowed(machine)) return;
 			const unit =

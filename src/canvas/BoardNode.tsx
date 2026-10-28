@@ -5,6 +5,7 @@ import { type BoardTexture, DEFAULT_BOARD_TEXTURE } from "../lib/boardTexture";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useBoardDrag } from "../state/boardDrag";
+import { focusAfterLayout } from "../state/focus";
 import { useGesture } from "../state/gesture";
 import { spaceWarning } from "../state/overlap";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
@@ -33,6 +34,9 @@ import { finishBaseColor, finishPatternTile } from "./boardFinish";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
+
+/** Konva's default double-click window; shared by mouse and touch seeds. */
+const DOUBLE_CLICK_WINDOW_MS = 400;
 
 function clientPoint(evt: MouseEvent | TouchEvent): { x: number; y: number } {
 	if ("touches" in evt) {
@@ -106,6 +110,41 @@ export function BoardNode({
 
 	const groupRef = useRef<Konva.Group>(null);
 	const draggingRef = useRef(false);
+	// The pre-gesture selection is captured on the FIRST pointerdown of a
+	// double-click; the first click itself selects the board, which would
+	// otherwise make every double-click look like "already focused".
+	const doubleClickSeed = useRef<{ at: number; wasFocused: boolean } | null>(
+		null,
+	);
+	// A browser may deliver the `dblclick` on a click that is followed by one
+	// more click (single-click first, then a quick double-click). Suppress that
+	// trailing click's selection so "toggle to all" leaves the board unselected.
+	const suppressSelectionUntil = useRef(0);
+
+	const isSoleBoardSelection = () => {
+		const selection = useSelection.getState().selection;
+		return selection?.kind === "board" && selection.uid === board.uid;
+	};
+
+	const handleDoubleClick = () => {
+		const wasFocused = doubleClickSeed.current?.wasFocused ?? false;
+		doubleClickSeed.current = null;
+		if (wasFocused) {
+			// Focused board → frame all and drop the selection (the chip becomes
+			// `frame all`; the lock is released by the scene target). Suppress the
+			// trailing click so the blue border cannot come back.
+			suppressSelectionUntil.current = Date.now() + 350;
+			useSelection.getState().clearSelection();
+			focusAfterLayout({ target: "scene", announce: true });
+		} else {
+			selectBoard(board.uid);
+			focusAfterLayout({
+				target: "board",
+				boardUid: board.uid,
+				announce: true,
+			});
+		}
+	};
 	useEffect(() => {
 		registerNode(board.uid, groupRef.current);
 		return () => registerNode(board.uid, null);
@@ -267,6 +306,22 @@ export function BoardNode({
 			draggable={!navigating && !isReadOnly()}
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
+				if (Date.now() < suppressSelectionUntil.current) return;
+				const now = Date.now();
+				const seed = doubleClickSeed.current;
+				// detail === 1 is the first click; some environments report 0.
+				// Keep the pre-first-click selection for the second click inside
+				// the double-click window; a later press starts a fresh seed.
+				if (
+					event.evt.detail === 1 ||
+					!seed ||
+					now - seed.at > DOUBLE_CLICK_WINDOW_MS
+				) {
+					doubleClickSeed.current = {
+						at: now,
+						wasFocused: isSoleBoardSelection(),
+					};
+				}
 				selectBoard(board.uid);
 				if (readOnly && event.evt.button === 0) {
 					beginReadOnlyAttempt({
@@ -278,6 +333,16 @@ export function BoardNode({
 			}}
 			onTouchStart={(event) => {
 				event.cancelBubble = true;
+				const now = Date.now();
+				const seed = doubleClickSeed.current;
+				if (!seed || now - seed.at > DOUBLE_CLICK_WINDOW_MS) {
+					doubleClickSeed.current = {
+						at: now,
+						wasFocused: isSoleBoardSelection(),
+					};
+				} else {
+					doubleClickSeed.current = { ...seed, at: now };
+				}
 				selectBoard(board.uid);
 				if (readOnly) {
 					beginReadOnlyAttempt({
@@ -287,7 +352,16 @@ export function BoardNode({
 					});
 				}
 			}}
+			onDblClick={(event) => {
+				event.cancelBubble = true;
+				handleDoubleClick();
+			}}
+			onDblTap={(event) => {
+				event.cancelBubble = true;
+				handleDoubleClick();
+			}}
 			onDragStart={() => {
+				doubleClickSeed.current = null;
 				draggingRef.current = true;
 				useBoardDrag.getState().begin({
 					uid: board.uid,
