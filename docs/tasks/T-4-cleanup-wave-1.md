@@ -1,6 +1,6 @@
 # T-4 — Cleanup wave 1 coordinator (EHX-1 + MXR-1 + Mooer-1)
 
-**Phase:** P5 · **Status:** next · **Type:** catalog wave coordinator · **Depends on:** T-3
+**Phase:** P5 · **Status:** in review — PR #70 (EHX-1), #71 (Mooer-1), #72 (MXR-1) · **Type:** catalog wave coordinator · **Depends on:** T-3
 
 ## Goal
 

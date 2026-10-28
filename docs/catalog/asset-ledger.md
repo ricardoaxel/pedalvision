@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 325 |
+| license-pending | 333 |
 | own | 89 |
 
-Hosting: hotlinked 91 · mock 84 · static 239
+Hosting: hotlinked 74 · mock 83 · static 265
 
-Source kind: archive 4 · community 1 · official 257 · own 89 · planner 63
+Source kind: archive 4 · community 1 · official 265 · own 89 · planner 63
 
-Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63)
+Needs improvement: 220 (hotlinked 74 · mock 83 · planner 63)
 
 ## Aclam
 
@@ -460,24 +460,32 @@ Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `mooer-001-gas-station` | 001 Gas Station | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-002-uk-gold-900` | 002 UK Gold 900 | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-003-power-zone` | 003 Power Zone | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-004-day-tripper` | 004 Day Tripper | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-005-brown-sound-3` | 005 Brown Sound 3 | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-006-us-classic-deluxe` | 006 US Classic Deluxe | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-007-regal-tone` | 007 Regal Tone | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-008-cali-mk3` | 008 Cali-MK3 | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-009-black-knight` | 009 Black Knight | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-010-two-stones` | 010 Two Stones | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-011-cali-dual` | 011 Cali-Dual | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-012-us-gold-100` | 012 US Gold 100 | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-013-matchbox` | 013 Matchbox | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-014-taxidea-taxus` | 014 Taxidea Taxus | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-015-brown-sound` | 015 Brown Sound | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-016-phoenix-digital` | 016 Phoenix Digital | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-017-cali-mkiv` | 017 Cali MKIV | license-pending | hotlinked | official | yes | Mooer batch |
-| `mooer-018-custom-100` | 018 Custom 100 | own | mock | own | yes | Mooer batch |
+| `mooer-001-gas-station` | 001 Gas Station | license-pending | static | official | — | — |
+| `mooer-002-uk-gold-900` | 002 UK Gold 900 | license-pending | static | official | — | — |
+| `mooer-003-power-zone` | 003 Power Zone | license-pending | static | official | — | — |
+| `mooer-004-day-tripper` | 004 Day Tripper | license-pending | static | official | — | — |
+| `mooer-005-brown-sound-3` | 005 Brown Sound 3 | license-pending | static | official | — | — |
+| `mooer-006-us-classic-deluxe` | 006 US Classic Deluxe | license-pending | static | official | — | — |
+| `mooer-007-regal-tone` | 007 Regal Tone | license-pending | static | official | — | — |
+| `mooer-008-cali-mk3` | 008 Cali-MK3 | license-pending | static | official | — | — |
+| `mooer-009-black-knight` | 009 Black Knight | license-pending | static | official | — | — |
+| `mooer-010-two-stones` | 010 Two Stones | license-pending | static | official | — | — |
+| `mooer-011-cali-dual` | 011 Cali-Dual | license-pending | static | official | — | — |
+| `mooer-012-us-gold-100` | 012 US Gold 100 | license-pending | static | official | — | — |
+| `mooer-013-matchbox` | 013 Matchbox | license-pending | static | official | — | — |
+| `mooer-014-taxidea-taxus` | 014 Taxidea Taxus | license-pending | static | official | — | — |
+| `mooer-015-brown-sound` | 015 Brown Sound | license-pending | static | official | — | — |
+| `mooer-016-phoenix-digital` | 016 Phoenix Digital | license-pending | static | official | — | — |
+| `mooer-017-cali-mkiv` | 017 Cali MKIV | license-pending | static | official | — | — |
+| `mooer-018-custom-100` | 018 Custom 100 | license-pending | static | official | — | — |
+| `mooer-019-uk-gold-plx` | 019 UK Gold PLX | own | static | own | — | — |
+| `mooer-020-blueno` | 020 Blueno | license-pending | static | official | — | — |
+| `mooer-a7` | A7 | license-pending | static | official | — | — |
+| `mooer-acoustikar` | Acoustikar | license-pending | static | official | — | — |
+| `mooer-ana-echo` | Ana Echo | license-pending | static | official | — | — |
+| `mooer-audiofile` | Audiofile | license-pending | static | official | — | — |
+| `mooer-baby-bomb` | Baby Bomb | license-pending | static | official | — | — |
+| `mooer-wah` | @Wah | license-pending | static | official | — | — |
 
 ## Pedaltrain
 
@@ -584,8 +592,6 @@ Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63)
 | Joyo | official | 5 |
 | Joyo | own | 13 |
 | Keeley | own | 18 |
-| Mooer | official | 17 |
-| Mooer | own | 1 |
 | MXR | official | 18 |
 | TC Electronic | official | 13 |
 | TC Electronic | own | 4 |
