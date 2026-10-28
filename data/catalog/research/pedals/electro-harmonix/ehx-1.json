@@ -94,12 +94,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-1-echo.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.88 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/number-1-echo-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -108,10 +102,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-1-echo.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.88 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/number-1-echo-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -262,12 +256,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-1440.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 44.90 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -282,10 +270,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-1440.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort). Source 350x397px, upscaled 2.02x; AVIF q90, PSNR 44.90 dB. The Amazon 1500px product-gallery render found via Google Images was evaluated and rejected (high-angle side walls + matte residue), so the flat planner cutout was retained. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -405,12 +393,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-15watt-howitzer.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.44 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2021/03/15w-howitzer-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -419,10 +401,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-15watt-howitzer.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.44 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2021/03/15w-howitzer-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -519,12 +501,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout; source 350x720px, upscaled 1.11x; deskewed -1.2° (vision-confirmed upright); analyzer rotation metric false-positive, recorded override."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -533,10 +509,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; official EHX gallery image is an angled hero shot). Source 350x720px, upscaled 1.11x; deskewed -1.2° after owner review (vision-confirmed upright). AVIF q90, PSNR 45.70 dB. The analyzer rotation metric false-positives (3.2°) on this narrow tapered cutout; the owner-directed visual correction is recorded. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -632,12 +608,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner-v2.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout; source 350x733px, upscaled 1.09x; deskewed -0.5° (vision-confirmed upright); analyzer rotation metric false-positive, recorded override."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2024/12/20202.jpeg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -646,10 +616,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner-v2.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; official EHX gallery image is an angled hero shot). Source 350x733px, upscaled 1.09x; deskewed -0.5° after owner review (vision-confirmed upright). AVIF q90, PSNR 45.85 dB. The analyzer rotation metric false-positives (3.4°) on this narrow tapered cutout; the owner-directed visual correction is recorded. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2024/12/20202.jpeg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -794,12 +764,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-22500.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 500x415px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 46.25 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -808,10 +772,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-22500.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 500x415px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 46.25 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/22500-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -880,12 +844,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-22500-foot-controller.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x214px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 46.52 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -894,10 +852,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-22500-foot-controller.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x214px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 46.52 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -996,12 +954,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-44magnum.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.87 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1010,10 +962,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-44magnum.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.87 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/12/44-mag-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -1113,12 +1065,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-5mm.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.75 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1127,10 +1073,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-5mm.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.75 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -1241,12 +1187,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-720.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.48 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1255,10 +1195,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-720.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.48 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -1364,12 +1304,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-8-step-program.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 500x392px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 45.95 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1378,10 +1312,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-8-step-program.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 500x392px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 45.95 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/8-step-program-zoom.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -1575,12 +1509,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-95000.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 1200x556px, downscaled to the 800 master; AVIF q90, PSNR 44.78 dB."
-      },
-      {
         "url": "https://media.sweetwater.com/api/i/version-66d70660d115359a3306306b381fc4c232321778__q-82__w-750__hmac-3a4f826545e22836820725b08cf83908fdeba124/images/items/750/95000-large.jpg",
         "priority": 2,
         "notes": "Rejected: retailer image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1589,10 +1517,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-95000.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 1200x556px, downscaled to the 800 master; AVIF q90, PSNR 44.78 dB. Counted as a source gap."
+      "kind": "retailer",
+      "sourceUrl": "https://media.sweetwater.com/api/i/version-66d70660d115359a3306306b381fc4c232321778__q-82__w-750__hmac-3a4f826545e22836820725b08cf83908fdeba124/images/items/750/95000-large.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -1688,12 +1616,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-analogizer.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 44.66 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1702,10 +1624,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-analogizer.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 44.66 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/analogizer-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -1833,12 +1755,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-attack-decay.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 45.88 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1847,10 +1763,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-attack-decay.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 45.88 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -1950,12 +1866,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-b9.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.71 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1964,10 +1874,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-b9.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.71 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/11/B9-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2062,12 +1972,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bad-stone.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 44.28 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2076,10 +1980,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bad-stone.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 44.28 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/badstone-f-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2180,12 +2084,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-big-muff-pi.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 45.31 dB."
-      },
-      {
         "url": "https://media.sweetwater.com/api/i/version-d62917b28974cac29d3f86a00ed3b331d9171f6d__q-82__w-750__hmac-9b7c470120f0a6b002c40f3d9a48256c43869f8d/images/items/750/BassBigMuff-large.jpg",
         "priority": 2,
         "notes": "Rejected: retailer image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2194,10 +2092,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-big-muff-pi.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 45.31 dB. Counted as a source gap."
+      "kind": "retailer",
+      "sourceUrl": "https://media.sweetwater.com/api/i/version-d62917b28974cac29d3f86a00ed3b331d9171f6d__q-82__w-750__hmac-9b7c470120f0a6b002c40f3d9a48256c43869f8d/images/items/750/BassBigMuff-large.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2291,12 +2189,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-big-muff-pi-2.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 42.76 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2026/02/bbm2-0-2.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2305,10 +2197,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-big-muff-pi-2.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 42.76 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2026/02/bbm2-0-2.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2406,12 +2298,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-clone.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.89 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassclone-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2420,10 +2306,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-clone.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.89 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bassclone-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2520,12 +2406,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-micro-synth.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 600x470px, upscaled 1.33x to the 800 master; AVIF q90, PSNR 44.69 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmicro-f.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2534,10 +2414,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-micro-synth.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 600x470px, upscaled 1.33x to the 800 master; AVIF q90, PSNR 44.69 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bassmicro-f.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2647,12 +2527,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-mono-synth.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.27 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmonosyn-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2661,10 +2535,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-mono-synth.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.27 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bassmonosyn-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2762,12 +2636,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-preacher.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.56 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/Bass-Preacher.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2776,10 +2644,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-preacher.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 45.56 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/Bass-Preacher.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2875,12 +2743,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-soul-food.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 44.96 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/basssoulfood-f-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2889,10 +2751,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-soul-food.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 44.96 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/basssoulfood-f-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -2993,12 +2855,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass9.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.49 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -3007,10 +2863,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass9.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 46.49 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bass9-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -3106,12 +2962,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bassballs.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 43.69 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/nbassballs-f.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -3120,10 +2970,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bassballs.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x558px, upscaled 1.43x to the 800 master; AVIF q90, PSNR 43.69 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/nbassballs-f.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   },
   {
@@ -3241,12 +3091,6 @@
     ],
     "imageCandidates": [
       {
-        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-battalion.png",
-        "sourcePage": "https://www.pedalplayground.com/",
-        "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 500x386px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 44.66 dB."
-      },
-      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/battalion-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -3255,10 +3099,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "planner",
-      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-battalion.png",
-      "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 500x386px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 44.66 dB. Counted as a source gap."
+      "kind": "official",
+      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/battalion-1.jpg",
+      "status": "chosen",
+      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
     }
   }
 ]
