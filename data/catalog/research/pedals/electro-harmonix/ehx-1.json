@@ -875,6 +875,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-22500-foot-controller.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner list: flat planner cutout."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -883,10 +889,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/22500FC-1.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-22500-foot-controller.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: owner-requested planner replacement. Not for merge."
     }
   },
   {
