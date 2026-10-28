@@ -168,8 +168,8 @@ Read only the sections the task file points to; do not read whole docs.
 - **Rule:** the resolution policy is in docs-only PR #69 (real sub-800 images
   are processed and gated on the final 800 rendition; planner remains above
   generated art).
-- **Checks:** `catalog:ci` **347 pedals / 15 boards** on this branch (main 322 +
-  25; final 399/15 after boss-6/7 merge); `catalog:validate`, `check-jacks`,
+- **Checks:** `catalog:ci` **399 pedals / 15 boards** on this branch (merged main
+  374 + 25); `catalog:validate`, `check-jacks`,
   `check-images` (46 planner source gaps catalog-wide), `guard-batch-pr` **clean**
   (raw + assets + task only; evidence on `p5-03-pedals-boss-8-evidence`); lint
   (2 pre-existing warnings), typecheck green, **test 853**, build green, **e2e
