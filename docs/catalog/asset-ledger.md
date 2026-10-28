@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 248 |
+| license-pending | 274 |
 | own | 89 |
 
-Hosting: hotlinked 92 · mock 84 · static 161
+Hosting: hotlinked 91 · mock 84 · static 188
 
-Source kind: archive 4 · community 1 · official 202 · own 89 · planner 41
+Source kind: archive 4 · community 1 · official 217 · own 89 · planner 52
 
-Needs improvement: 217 (hotlinked 92 · mock 84 · planner 41)
+Needs improvement: 227 (hotlinked 91 · mock 84 · planner 52)
 
 ## Aclam
 
@@ -156,7 +156,33 @@ Needs improvement: 217 (hotlinked 92 · mock 84 · planner 41)
 | `boss-od-200-hybrid-drive` | OD-200 Hybrid Drive | license-pending | static | official | — | — |
 | `boss-od-2r-turbo-overdrive` | OD-2R Turbo Overdrive | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-od-3-overdrive` | OD-3 Overdrive | license-pending | static | official | — | — |
-| `boss-psm-5-power-supply-master-switch` | PSM-5 Power Supply & Master Switch | license-pending | hotlinked | official | yes | BOSS batch |
+| `boss-odb-3-bass-overdrive` | ODB-3 Bass Overdrive | license-pending | static | official | — | — |
+| `boss-os-2-overdrive-distortion` | OS-2 Overdrive/Distortion | license-pending | static | official | — | — |
+| `boss-ph-1-phaser` | PH-1 Phaser | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ph-1r-phaser` | PH-1R Phaser | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ph-2-super-phase` | PH-2 Super Phase | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ph-3-phase-shifter` | PH-3 Phase Shifter | license-pending | static | official | — | — |
+| `boss-pn-2-tremolo-pan` | PN-2 Tremolo/Pan | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-pq-3b-bass-parametric-equalizer` | PQ-3B Bass Parametric Equalizer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-pq-4-parametric-equalizer` | PQ-4 Parametric Equalizer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ps-2-pitch-shifter-delay` | PS-2 Pitch Shifter/Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ps-3-pitch-shifter-delay` | PS-3 Pitch Shifter/Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-ps-5-super-shifter` | PS-5 Super Shifter | license-pending | static | official | — | — |
+| `boss-ps-6-harmonist` | PS-6 Harmonist | license-pending | static | official | — | — |
+| `boss-psm-5-power-supply-master-switch` | PSM-5 Power Supply & Master Switch | license-pending | static | official | — | — |
+| `boss-pw-2-power-driver` | PW-2 Power Driver | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-pw-3-wah-pedal` | PW-3 Wah Pedal | license-pending | static | official | — | — |
+| `boss-px-1-plugout-fx` | PX-1 Plugout FX | license-pending | static | official | — | — |
+| `boss-rc-1-bk-loop-station` | RC-1-BK Loop Station | license-pending | static | official | — | — |
+| `boss-rc-10r-rhythm-loop-station` | RC-10R Rhythm Loop Station | license-pending | static | official | — | — |
+| `boss-rc-2-loop-station` | RC-2 Loop Station | license-pending | static | official | — | — |
+| `boss-rc-20xl-loop-station` | RC-20XL Loop Station | license-pending | static | official | — | — |
+| `boss-rc-3-loop-station` | RC-3 Loop Station | license-pending | static | official | — | — |
+| `boss-rc-30-loop-station` | RC-30 Loop Station | license-pending | static | official | — | — |
+| `boss-rc-300-loop-station` | RC-300 Loop Station | license-pending | static | official | — | — |
+| `boss-rc-5-loop-station` | RC-5 Loop Station | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-rc-500-loop-station` | RC-500 Loop Station | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-rc-600-loop-station` | RC-600 Loop Station | license-pending | static | official | — | — |
 
 ## Behringer
 
@@ -491,9 +517,8 @@ Needs improvement: 217 (hotlinked 92 · mock 84 · planner 41)
 | Big Joe | own | 2 |
 | Blackbird | own | 1 |
 | BoardMods | own | 1 |
-| BOSS | official | 1 |
 | BOSS | own | 1 |
-| BOSS | planner | 41 |
+| BOSS | planner | 52 |
 | Caseman | own | 1 |
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |

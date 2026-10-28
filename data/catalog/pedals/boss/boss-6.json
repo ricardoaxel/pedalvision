@@ -1,0 +1,1125 @@
+[
+  {
+    "id": "boss-odb-3-bass-overdrive",
+    "brand": "BOSS",
+    "name": "ODB-3 Bass Overdrive",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-odb-3-bass-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "bass",
+    "notes": "Bass overdrive with a two-band EQ, balance and level controls; designed for bass but usable on guitar.",
+    "year": 1994,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/odb-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/odb_3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-os-2-overdrive-distortion",
+    "brand": "BOSS",
+    "name": "OS-2 Overdrive/Distortion",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-os-2-overdrive-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion",
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12
+    },
+    "usage": "guitar",
+    "notes": "Overdrive/distortion with a COLOR blend control that sweeps between overdrive and distortion voicings.",
+    "year": 1990,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/os-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/os2_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ph-1-phaser",
+    "brand": "BOSS",
+    "name": "PH-1 Phaser",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ph-1-phaser.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7
+    },
+    "usage": "guitar",
+    "notes": "First BOSS phaser (1977), four-stage analog phaser with a broad LFO range and a natural, mild voice.",
+    "year": 1977,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PH-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ph1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ph-1r-phaser",
+    "brand": "BOSS",
+    "name": "PH-1R Phaser",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ph-1r-phaser.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11
+    },
+    "usage": "guitar",
+    "notes": "Updated PH-1 with a RESONANCE (feedback) control for a wider range of phaser tones.",
+    "year": 1980,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PH-1R_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ph1r.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ph-2-super-phase",
+    "brand": "BOSS",
+    "name": "PH-2 Super Phase",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ph-2-super-phase.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Twelve-stage analog super phaser with deeper, more resonant sweep than the PH-1/PH-1R.",
+    "year": 1985,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PH-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ph2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ph-3-phase-shifter",
+    "brand": "BOSS",
+    "name": "PH-3 Phase Shifter",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ph-3-phase-shifter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "Digital phase shifter with four, eight, ten and twelve-stage modes, tap tempo and expression control.",
+    "year": 2008,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ph-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ph3_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-pn-2-tremolo-pan",
+    "brand": "BOSS",
+    "name": "PN-2 Tremolo/Pan",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-pn-2-tremolo-pan.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Stereo tremolo/pan pedal with independent depth and rate controls; pan mode moves the signal between A and B outputs.",
+    "year": 1991,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/support/manual_archive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PN-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-pn2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-pq-3b-bass-parametric-equalizer",
+    "brand": "BOSS",
+    "name": "PQ-3B Bass Parametric Equalizer",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-pq-3b-bass-parametric-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "bass",
+    "notes": "Three-band bass parametric EQ with variable frequency centres for each band.",
+    "year": 1991,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201948119-PQ-3B-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PQ-3B_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-pq3b.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-pq-4-parametric-equalizer",
+    "brand": "BOSS",
+    "name": "PQ-4 Parametric Equalizer",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-pq-4-parametric-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 23
+    },
+    "usage": "guitar",
+    "notes": "Three-band parametric equalizer for guitar with variable frequency centres.",
+    "year": 1994,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/support/manual_archive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PQ-4_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-pq4.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ps-2-pitch-shifter-delay",
+    "brand": "BOSS",
+    "name": "PS-2 Pitch Shifter/Delay",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ps-2-pitch-shifter-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Early digital pitch shifter/delay with pitch-shift, delay and combined modes; 12-bit digital processing.",
+    "year": 1987,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/support/manual_archive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PS-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ps2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ps-3-pitch-shifter-delay",
+    "brand": "BOSS",
+    "name": "PS-3 Pitch Shifter/Delay",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-ps-3-pitch-shifter-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch",
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "notes": "Digital pitch shifter/delay with stereo A/B outputs and expression control; offers pitch shift, delay and harmonizer modes.",
+    "year": 1993,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/support/manual_archive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PS-3_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-ps3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ps-5-super-shifter",
+    "brand": "BOSS",
+    "name": "PS-5 Super Shifter",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ps-5-super-shifter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "Intelligent pitch shifter with pitch shift, harmony, detune and tremolo-arm modes; stereo outputs.",
+    "year": 2001,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ps-5/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ps5_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-ps-6-harmonist",
+    "brand": "BOSS",
+    "name": "PS-6 Harmonist",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-ps-6-harmonist.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Harmonist with intelligent key-specific pitch shifting, detune and tremolo-arm modes; stereo outputs.",
+    "year": 2010,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/ps-6/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/ps-6_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-psm-5-power-supply-master-switch",
+    "brand": "BOSS",
+    "name": "PSM-5 Power Supply & Master Switch",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-psm-5-power-supply-master-switch.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "supply",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13
+    },
+    "usage": "guitar",
+    "notes": "Compact power supply and master switch that powers up to seven 9 V BOSS effects and switches the whole set on or off.",
+    "year": 1984,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PSM-5_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/psm_product05.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-pw-2-power-driver",
+    "brand": "BOSS",
+    "name": "PW-2 Power Driver",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-pw-2-power-driver.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "notes": "High-gain distortion voiced for powerful chord work, with BOTTOM and TONE controls.",
+    "year": 1995,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/support/manual_archive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/media/pdf/PW-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-pw2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-pw-3-wah-pedal",
+    "brand": "BOSS",
+    "name": "PW-3 Wah Pedal",
+    "widthCm": 8,
+    "heightCm": 19.2,
+    "image": "boss-pw-3-wah-pedal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "wah"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Classic wah pedal with a tone switch for a darker or brighter sweep.",
+    "year": 2011,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/pw-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/pw_3_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-px-1-plugout-fx",
+    "brand": "BOSS",
+    "name": "PX-1 Plugout FX",
+    "widthCm": 7.3,
+    "heightCm": 12.5,
+    "image": "boss-px-1-plugout-fx.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion",
+      "fuzz",
+      "compressor",
+      "wah",
+      "chorus",
+      "flanger",
+      "phaser",
+      "tremolo",
+      "vibrato",
+      "octave",
+      "pitch",
+      "delay",
+      "filter"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 260
+    },
+    "usage": "guitar",
+    "notes": "Compact single-effect hardware platform that loads authentic BOSS compact-pedal models; comes with 16 effects and supports Model Pass purchases.",
+    "year": 2026,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/px-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/px-1_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-1-bk-loop-station",
+    "brand": "BOSS",
+    "name": "RC-1-BK Loop Station",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rc-1-bk-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 95
+    },
+    "usage": "guitar",
+    "notes": "Black-finish RC-1 Loop Station: compact stereo looper with 12 minutes of recording and undo/redo.",
+    "year": 2014,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-1/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/support/by_product/rc-1-bk/product_images/",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-10r-rhythm-loop-station",
+    "brand": "BOSS",
+    "name": "RC-10R Rhythm Loop Station",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-rc-10r-rhythm-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "usage": "guitar",
+    "notes": "Two-track rhythm loop station with 280+ built-in rhythm patterns, 6 hours of stereo recording and MIDI.",
+    "year": 2019,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-10r/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/support/by_product/rc-10r/product_images/",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-2-loop-station",
+    "brand": "BOSS",
+    "name": "RC-2 Loop Station",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rc-2-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "Compact loop station with 16 minutes of recording, 11 phrase memories, rhythm guide and tap tempo.",
+    "year": 2006,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-2/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rc_2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-20xl-loop-station",
+    "brand": "BOSS",
+    "name": "RC-20XL Loop Station",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-rc-20xl-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 120
+    },
+    "usage": "guitar",
+    "notes": "Twin-pedal loop station with 16 minutes of recording, 11 phrases, mic input and phrase-shift/reverse controls.",
+    "year": 2007,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-20xl/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rc20xl_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-3-loop-station",
+    "brand": "BOSS",
+    "name": "RC-3 Loop Station",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rc-3-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "notes": "Stereo loop station with 3 hours of recording, 99 phrase memories, rhythm guide and USB audio.",
+    "year": 2011,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rc-3_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-30-loop-station",
+    "brand": "BOSS",
+    "name": "RC-30 Loop Station",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-rc-30-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 195
+    },
+    "usage": "guitar",
+    "notes": "Two-track twin-pedal loop station with XLR mic input, 3 hours of recording and five loop FX.",
+    "year": 2011,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-30/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rc-30_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-300-loop-station",
+    "brand": "BOSS",
+    "name": "RC-300 Loop Station",
+    "widthCm": 53.6,
+    "heightCm": 23.1,
+    "image": "boss-rc-300-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 320
+    },
+    "usage": "guitar",
+    "notes": "Three-track flagship loop station with eight footswitches, an expression pedal, 16 loop effects and MIDI sync.",
+    "year": 2011,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-300/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rc-300_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-5-loop-station",
+    "brand": "BOSS",
+    "name": "RC-5 Loop Station",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rc-5-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 170
+    },
+    "usage": "guitar",
+    "notes": "Compact stereo loop station with 13 hours of total recording, 99 memories, 57 rhythm patterns and MIDI.",
+    "year": 2020,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-5/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rc5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-500-loop-station",
+    "brand": "BOSS",
+    "name": "RC-500 Loop Station",
+    "widthCm": 17,
+    "heightCm": 13.8,
+    "image": "boss-rc-500-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 240
+    },
+    "usage": "guitar",
+    "notes": "Two-track loop station with XLR mic input, 13 hours of total recording, loop FX and MIDI.",
+    "year": 2020,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-500/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rc500.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rc-600-loop-station",
+    "brand": "BOSS",
+    "name": "RC-600 Loop Station",
+    "widthCm": 43.5,
+    "heightCm": 16.3,
+    "image": "boss-rc-600-loop-station.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1100
+    },
+    "usage": "guitar",
+    "notes": "Six-track flagship loop station with two XLR mic inputs, 200+ rhythms, extensive input/track FX and 5-pin MIDI.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rc-600/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rc-600_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]
