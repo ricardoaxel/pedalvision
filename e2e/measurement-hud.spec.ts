@@ -67,7 +67,7 @@ test("centered reference bar is visible on an empty sheet", async ({
 	const bar = page.getByTestId("scale-bar");
 	await expect(bar).toBeVisible();
 	await expect(bar).toContainText(/\d+ (cm|in)/);
-	await expect(bar).toContainText("layout scale");
+	await expect(bar).toContainText("at this zoom");
 
 	const stage = await stageBox(page);
 	const box = await bar.boundingBox();

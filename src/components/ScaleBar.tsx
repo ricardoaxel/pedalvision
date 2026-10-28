@@ -10,8 +10,8 @@ const DESKTOP_BAR_MAX_PX = 96;
 
 /**
  * The centered true-length reference (F-03 "Margin Rule"): one rule, two caps,
- * a round value and the honest qualifier `layout scale`. The rule is centred on
- * the drawing area; the caption hangs off its right edge without moving it.
+ * a round value and the honest condition `at this zoom`. It is drawn at its
+ * real length, so it confirms the dot grid instead of competing with it.
  *
  * No axis, ticks, plate, card or unit control; units live in the readout.
  */
@@ -34,20 +34,15 @@ export function ScaleBar() {
 			data-testid="scale-bar"
 			data-mobile={isMobile ? "true" : "false"}
 			role="group"
-			aria-label={`Scale reference: ${label}, layout scale at the current zoom`}
+			aria-label={`Scale reference: ${label} at this zoom`}
 			data-units={units}
 			data-length-label={bar.lengthLabel}
 			data-length-cm={bar.lengthCm}
 			data-bar-px={bar.barPx}
 		>
 			<span className="scale-bar__rule" aria-hidden="true" style={ruleStyle} />
-			<span className="scale-bar__caption">
-				<span className="scale-bar__label">{label}</span>
-				<span className="scale-bar__dot" aria-hidden="true">
-					·
-				</span>
-				<span className="scale-bar__legend">layout scale</span>
-			</span>
+			<span className="scale-bar__label">{label}</span>
+			<span className="scale-bar__legend">at this zoom</span>
 		</div>
 	);
 }

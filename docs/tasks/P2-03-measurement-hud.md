@@ -8,7 +8,7 @@ Give the board a scale at a glance **without adding permanent chrome**. The
 owner-approved final is the **Margin Rule**: viewport/grid readout + centered
 true-length reference + selectable grid step. The earlier bar was briefly
 dropped because its length read as the dot pitch; it is restored centered with
-the honest `layout scale` qualifier.
+the honest `at this zoom` condition.
 
 - **Always-visible readout**: `view W × H · grid N` + a compact **`cm | in`**
   toggle. It states how much real-world canvas is visible and the current dot
@@ -105,14 +105,14 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 - Desktop and mobile show one **`scale-readout`** with
   `view {W} × {H} {units} · grid {N} {units}`; `data-view-width-cm`,
   `data-view-height-cm`, `data-grid-cm`, `data-grid-step-cm` are present.
-- A centered **`scale-bar`** shows `{round length} {units} · layout scale`; its
+- A centered **`scale-bar`** shows `{round length} {units} at this zoom`; its
   rule is the true length at the current zoom and re-steps; no `0 —`, axis,
   ticks, plate, card or accent. Mobile stacks rule above readout.
 - `grid N ⌄` opens the step popover; 1/2/5/10/20 cm persist; the drawn pitch
   coarsens to the 16 px floor and the readout + snap use that pitch; 1 cm at 1×
   reads `grid 4 cm` and the menu explains “Too fine here — dots at 4 cm.”
 - **No** edge/axis/ticks/world labels; no static `scale-bar` length without the
-  `layout scale` qualifier.
+  `at this zoom` condition.
 - The readout is visible on an empty sheet; mobile keeps it above the peek and
   it is not occluded by the first-run note; read-only shares keep it.
 - Panning does **not** change the view values; zooming re-steps them.
