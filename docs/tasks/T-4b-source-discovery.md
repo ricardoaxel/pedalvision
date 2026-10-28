@@ -1,6 +1,6 @@
 # T-4b — Image source discovery upgrade (researcher + scout + rules)
 
-**Phase:** P5 · **Status:** todo · **Type:** process/agent rules (docs-only) · **Depends on:** T-4 (owner request 2026-10-28)
+**Phase:** P5 · **Status:** in review — PR #73 · **Type:** process/agent rules (docs-only) · **Depends on:** T-4 (owner request 2026-10-28)
 
 ## Goal
 
