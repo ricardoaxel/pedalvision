@@ -1,0 +1,3831 @@
+[
+ {
+  "id": "boss-sy-300-guitar-synthesizer",
+  "brand": "BOSS",
+  "name": "SY-300 Guitar Synthesizer",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "synth",
+   "filter",
+   "delay",
+   "reverb",
+   "chorus"
+  ],
+  "widthCm": 25.5,
+  "heightCm": 19.1,
+  "dimensionsSource": "BOSS official specifications: 255 (W) x 191 (D) x 70 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "impedanceOhm": 2200000
+   },
+   {
+    "label": "THRU",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "RETURN",
+    "kind": "return",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "impedanceOhm": 220000
+   },
+   {
+    "label": "MAIN OUTPUT R (MONO)",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "MAIN OUTPUT L (PHONES)",
+    "kind": "out",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "audio",
+    "channels": 2,
+    "stereo": true,
+    "level": "headphone"
+   },
+   {
+    "label": "SUB OUTPUT R (MONO)",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "SUB OUTPUT L",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "din5",
+    "signal": "midi",
+    "midiType": "din5"
+   },
+   {
+    "label": "MIDI OUT/THRU",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "din5",
+    "signal": "midi",
+    "midiType": "din5"
+   },
+   {
+    "label": "EXP/CTL 4, 5",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "USB COMPUTER",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "usb-b",
+    "signal": "usb",
+    "usbFunctions": [
+     "audio",
+     "midi",
+     "editor"
+    ]
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/sy_300_back_gal.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "All connectors sit on the rear face, mapped to the top edge in top-down planner view."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 400,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 4,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 2200000,
+   "outputImpedanceOhm": 2000,
+   "nominalLevelDbu": -10
+  },
+  "optional": {
+   "audio": {
+    "effectsLoop": {
+     "return": 1
+    },
+    "headphone": true
+   },
+   "midi": {
+    "din5": "in-out",
+    "din": true,
+    "usb": true,
+    "programChange": true,
+    "cc": true,
+    "channels": 16
+   },
+   "usb": {
+    "connector": "usb-b",
+    "functions": [
+     "audio",
+     "midi",
+     "editor"
+    ],
+    "device": true
+   },
+   "control": {
+    "expression": 1,
+    "footswitch": true
+   },
+   "circuit": {
+    "type": "digital",
+    "dsp": "Three oscillators, four simultaneous FX blocks",
+    "sampleRateKhz": 44.1,
+    "bitDepth": 24
+   },
+   "physical": {
+    "weightG": 1750,
+    "footswitches": 4
+   },
+   "routing": {
+    "presets": 169
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/SY-300_e01_W.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "current",
+  "notes": "Guitar synthesizer with three oscillators, four simultaneous FX blocks, 24-bit/44.1 kHz processing and 99 user + 70 preset patches.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/sy-300/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/SY-300_e01_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy_300_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy_300_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy_300_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; analyzer accept; PSNR 40.18 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sy_300_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; light-grey studio background flood-matted; AVIF q80; PSNR 40.18 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-syb-3-bass-synthesizer",
+  "brand": "BOSS",
+  "name": "SYB-3 Bass Synthesizer",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "bass",
+   "guitar"
+  ],
+  "effectTypes": [
+   "synth"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio",
+    "note": "Direct sound only when OUTPUT B is connected."
+   },
+   {
+    "label": "EXP",
+    "kind": "exp",
+    "edge": "right",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/SYB-3_OM.pdf (Panel Descriptions, p.6-7) + official SYB-3 product photo for the EXP label",
+   "confidence": "verified",
+   "note": "Manual diagram: INPUT on the right, OUTPUT A/B on the left, AC adaptor on the top edge; EXP label visible on the official top-down photo."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 80,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 2,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "control": {
+    "expression": 1
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered",
+    "dsp": "Two bass-synth methods plus T-wah; 11 modes"
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 430,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/SYB-3_OM.pdf"
+   }
+  },
+  "usage": "bass",
+  "status": "discontinued",
+  "notes": "Compact bass synthesizer with two synth methods and a T-wah; 11 modes, stereo effect/direct outputs and an EXP jack.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/syb-3/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/SYB-3_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/main/syb3_main.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/main/syb3_main.jpg",
+    "priority": 1,
+    "notes": "Official reference only: lower-resolution than the planner cutout; used for the body colour; not shipped."
+   },
+   {
+    "url": "https://pedalplayground.com/app/images/pedals/boss-syb3.png",
+    "priority": 2,
+    "notes": "Planner last-resort chosen: 596x1057 transparent cutout -> 800 (downscale to 800); reviewer accept; source gap."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-syb3.png",
+   "status": "last-resort",
+   "note": "Planner last-resort cutout from the planner host (596x1057 -> 800, downscale to 800), transparent; reviewer accept. Source gap: recorded planner last-resort."
+  }
+ },
+ {
+  "id": "boss-syb-5-bass-synthesizer",
+  "brand": "BOSS",
+  "name": "SYB-5 Bass Synthesizer",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "bass"
+  ],
+  "effectTypes": [
+   "synth"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "EXP",
+    "kind": "exp",
+    "edge": "right",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/SYB-5_eng01_W.pdf (Panel Descriptions, p.2)",
+   "confidence": "verified",
+   "note": "Manual diagram: INPUT on the right, OUTPUT A/B on the left, EXP on the right, DC IN on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 50,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61/6F22) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 2,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "control": {
+    "expression": 1
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered"
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 440,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/SYB-5_eng01_W.pdf"
+   }
+  },
+  "usage": "bass",
+  "status": "discontinued",
+  "notes": "Compact bass synthesizer with four knobs, stereo effect/direct outputs and an EXP jack for expression control.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/syb-5/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/SYB-5_eng01_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/syb5_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/syb5_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.83 dB; analyzer flag (uneven studio background) verified on the contact sheet."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/syb5_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.83 dB; clean alpha checked on the contact sheet."
+  }
+ },
+ {
+  "id": "boss-tb-2w-tone-bender-waza-craft",
+  "brand": "BOSS",
+  "name": "TB-2W Tone Bender",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "fuzz"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/TB-2W_eng03_W.pdf (Panel Descriptions, p.1)",
+   "confidence": "verified",
+   "note": "Manual diagram: INPUT on the right, OUTPUT on the left, DC IN on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 60,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61/6LF22) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "circuit": {
+    "type": "analog",
+    "bypass": "buffered",
+    "note": "Switchable buffered bypass / true bypass (BUF/THRU switch)."
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 430,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TB-2W_eng03_W.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "discontinued",
+  "notes": "Waza Craft limited-edition Tone Bender fuzz with ATTACK and LEVEL knobs, battery switch and switchable buffered/true bypass.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/tb-2w/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TB-2W_eng03_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/products/tb-2w/images/tb-2w_05_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/products/tb-2w/images/tb-2w_05_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS TB-2W gallery top-down on white; flood matte; AVIF q90; PSNR 42.05 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/products/tb-2w/images/tb-2w_05_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS TB-2W gallery top-down; white background flood-matted; AVIF q90; PSNR 42.05 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-te-2-tera-echo",
+  "brand": "BOSS",
+  "name": "TE-2 Tera Echo",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/TE-2_M_eng02_W.pdf (Panel Descriptions, p.1)",
+   "confidence": "verified",
+   "note": "Manual diagram: INPUT A/B on the right, OUTPUT A/B on the left, AC adaptor on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 90,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered",
+    "dsp": "BOSS MDP multi-dimensional processing"
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 435,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TE-2_M_eng02_W.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "current",
+  "notes": "Stereo delay with E. LEVEL, TONE, FEEDBACK and S-TIME controls and BOSS MDP processing.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/te-2/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TE-2_M_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/te-2_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/te-2_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.64 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/te-2_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.64 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-tr-2-tremolo",
+  "brand": "BOSS",
+  "name": "TR-2 Tremolo",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "tremolo"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/TR-2_M_eng02_W.pdf (Panel Descriptions, p.1)",
+   "confidence": "verified",
+   "note": "Manual diagram: INPUT on the right, OUTPUT on the left, DC IN on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 25,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22/6LR61) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "circuit": {
+    "type": "analog",
+    "bypass": "buffered"
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 385,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TR-2_M_eng02_W.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "current",
+  "notes": "Compact tremolo with DEPTH, RATE and WAVE controls and buffered bypass.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/tr-2/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TR-2_M_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tr2_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tr2_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 40.25 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/tr2_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 40.25 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-tu-12ex-chromatic-tuner",
+  "brand": "BOSS",
+  "name": "TU-12EX Chromatic Tuner",
+  "category": "pedal",
+  "deviceType": "other",
+  "formFactor": "desktop",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "tuner"
+  ],
+  "widthCm": 14.8,
+  "heightCm": 5.4,
+  "dimensionsSource": "BOSS official specifications: 148 (W) x 54 (D) x 24 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "right",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/TU-12EX_ejgfispd2.pdf (panel diagram, p.1)",
+   "confidence": "verified",
+   "note": "Manual diagram shows DC IN, OUTPUT and INPUT on the right end of the desktop tuner."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 12,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "AAA (R03/LR03) x2",
+   "recommendedSupply": "BOSS PSA series",
+   "note": "Runs on 3 V from 2x AAA or 9 V DC via the PSA adaptor."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument"
+  },
+  "optional": {
+   "routing": {
+    "tuner": true
+   },
+   "physical": {
+    "weightG": 100,
+    "footswitches": 0,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TU-12EX_ejgfispd2.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "discontinued",
+  "notes": "Desktop chromatic tuner with needle meter, Accu-Pitch, built-in mic and guitar/bass modes.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/tu-12ex/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TU-12EX_ejgfispd2.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu_12ex_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu_12ex_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; gradient studio background needed a global matte with a deliberate manual override; post-process analyzer accept; AVIF q90; PSNR 41.15 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/tu_12ex_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; global matte (deliberate manual override for the gradient background); post-process analyzer accept; AVIF q90; PSNR 41.15 dB."
+  }
+ },
+ {
+  "id": "boss-tu-12h-chromatic-tuner",
+  "brand": "BOSS",
+  "name": "TU-12H High Range Chromatic Tuner",
+  "category": "pedal",
+  "deviceType": "other",
+  "formFactor": "desktop",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "tuner"
+  ],
+  "widthCm": 14.5,
+  "heightCm": 5.3,
+  "dimensionsSource": "BOSS official specifications: 145 (W) x 53 (D) x 35 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "edge": "right",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/TU-12H_OM.pdf (Front Panel Description, p.2)",
+   "confidence": "verified",
+   "note": "Manual diagram shows AC Adaptor Jack, Output Jack and Input Jack on the right end of the desktop tuner."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 20,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument"
+  },
+  "optional": {
+   "routing": {
+    "tuner": true
+   },
+   "physical": {
+    "weightG": 170,
+    "footswitches": 0,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TU-12H_OM.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "discontinued",
+  "notes": "Desktop high-range chromatic tuner with meter, built-in microphone and guitar/bass modes.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/tu-12h/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TU-12H_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/main/tu_12h_main.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/main/tu_12h_main.jpg",
+    "priority": 1,
+    "notes": "Official reference only: 600x220 px, angled/skewed (rotation reject); not shipped. Used for the body colour."
+   },
+   {
+    "url": "https://pedalplayground.com/app/images/pedals/boss-tu12h.png",
+    "priority": 2,
+    "notes": "Planner last-resort chosen: 1272x451 transparent cutout -> 800 (downscale to 800); reviewer accept; source gap."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-tu12h.png",
+   "status": "last-resort",
+   "note": "Planner last-resort cutout from the planner host (1272x451 -> 800, downscale to 800), transparent; reviewer accept. Source gap: recorded planner last-resort."
+  }
+ },
+ {
+  "id": "boss-tu-3-chromatic-tuner",
+  "brand": "BOSS",
+  "name": "TU-3 Chromatic Tuner",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "tuner"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "BYPASS",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   },
+   {
+    "label": "DC OUT",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power",
+    "note": "Parallel DC output for powering another pedal."
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/tu-3_rear_gal.jpg (official rear photo) for DC IN/DC OUT + manual panel diagram for the side jacks",
+   "confidence": "verified",
+   "note": "Audio input/output/bypass on the left/right sides per the panel diagram; DC IN/DC OUT on the top edge per the rear photo."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 20,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22/6LR61) x1",
+   "recommendedSupply": "BOSS PSA series",
+   "note": "80 mA with High Brightness mode on."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 2,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "routing": {
+    "tuner": true,
+    "bypass": "buffered"
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 390,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TU-3_M_eng02_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Compact chromatic tuner with high-brightness display, bypass output and DC OUT for powering another pedal.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/tu-3/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TU-3_M_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3_rear_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.60 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/tu-3_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.60 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-tu-3s-chromatic-tuner",
+  "brand": "BOSS",
+  "name": "TU-3S Chromatic Tuner",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "mini",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "tuner"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 8.4,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 84 (D) x 56 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   },
+   {
+    "label": "DC OUT",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power",
+    "note": "Parallel DC output for powering another pedal."
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/tu-3s_back_gal.jpg (official rear photo) + manual panel diagram",
+   "confidence": "verified",
+   "note": "Audio input/output on the sides; DC IN/DC OUT on the top edge per the rear photo."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 30,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "recommendedSupply": "BOSS PSA series",
+   "note": "AC adaptor only; no battery. 85 mA with High Brightness mode on."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "routing": {
+    "tuner": true,
+    "bypass": "buffered"
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 220,
+    "footswitches": 1,
+    "batteryCompartment": false
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TU-3S_M_eng02_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Space-saving chromatic tuner with a shortened footprint, high-brightness display and DC OUT.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/tu-3s/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TU-3S_M_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3s_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3s_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3s_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 43.20 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/tu-3s_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 43.20 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-tu-3w-chromatic-tuner-waza-craft",
+  "brand": "BOSS",
+  "name": "TU-3W Chromatic Tuner",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "tuner"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "BYPASS",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   },
+   {
+    "label": "DC OUT",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power",
+    "note": "Parallel DC output for powering another pedal."
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/tu-3w_back_gal.jpg (official rear photo) + manual panel diagram",
+   "confidence": "verified",
+   "note": "Audio input/output/bypass on the sides; DC IN/DC OUT on the top edge per the rear photo."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 50,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22/6LR61) x1",
+   "recommendedSupply": "BOSS PSA series",
+   "note": "110 mA with High Brightness mode on."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 2,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "routing": {
+    "tuner": true,
+    "bypass": "buffered"
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered",
+    "note": "Switchable buffered bypass / true bypass (BUF/THRU switch)."
+   },
+   "physical": {
+    "weightG": 460,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/TU-3W_eng02_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Waza Craft chromatic tuner with switchable buffered/true bypass, bypass output and DC OUT.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/tu-3w/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/TU-3W_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3w_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3w_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/tu-3w_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 40.47 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/tu-3w_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 40.47 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-tw-1-t-wah",
+  "brand": "BOSS",
+  "name": "TW-1 T-Wah",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar",
+   "bass",
+   "keys"
+  ],
+  "effectTypes": [
+   "wah"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS TW-1 Owner's Manual specifications: 73 x 55 x 129 mm (W x H x D).",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://cdn.roland.com/assets/media/pdf/TW-1_OM.pdf (scanned panel diagram)",
+   "confidence": "verified",
+   "note": "Scanned owner's manual diagram: INPUT on the right, OUTPUT on the left, AC adaptor jack on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 6,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22) x1",
+   "recommendedSupply": "BOSS ACA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 220000
+  },
+  "optional": {
+   "circuit": {
+    "type": "analog",
+    "bypass": "buffered"
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 400,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "year": 1978,
+    "discontinuedYear": 1988,
+    "manualUrl": "https://cdn.roland.com/assets/media/pdf/TW-1_OM.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "discontinued",
+  "notes": "Envelope-controlled T-wah with SENS and PEAK knobs and a DRIVE up/down switch; usable with guitar, bass and electronic piano.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/promos/40th_anniversary_compact_pedals/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://cdn.roland.com/assets/media/pdf/TW-1_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/tw_product01.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/tw_product01.png",
+    "priority": 1,
+    "notes": "Official reference only: lower-resolution than the planner cutout; used for the body colour; not shipped."
+   },
+   {
+    "url": "https://pedalplayground.com/app/images/pedals/boss-tw1.png",
+    "priority": 2,
+    "notes": "Planner last-resort chosen: 596x1057 transparent cutout -> 800 (downscale to 800); reviewer accept; source gap."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-tw1.png",
+   "status": "last-resort",
+   "note": "Planner last-resort cutout from the planner host (596x1057 -> 800, downscale to 800), transparent; reviewer accept. Source gap: recorded planner last-resort."
+  }
+ },
+ {
+  "id": "boss-vb-2-vibrato",
+  "brand": "BOSS",
+  "name": "VB-2 Vibrato",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "vibrato"
+  ],
+  "widthCm": 7.0,
+  "heightCm": 12.5,
+  "dimensionsSource": "Roland official VB-2 specifications: 70 (W) x 55 (H) x 125 (D) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/VB-2_OM.pdf (scanned panel diagram)",
+   "confidence": "verified",
+   "note": "Scanned owner's manual diagram: INPUT on the right, OUTPUT on the left, AC adaptor jack on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 8.5,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22) x1",
+   "recommendedSupply": "BOSS ACA-120"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument"
+  },
+  "optional": {
+   "circuit": {
+    "type": "analog",
+    "bypass": "buffered",
+    "note": "BBD vibrato with LATCH/BYPASS/UNLATCH modes."
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "year": 1982,
+    "discontinuedYear": 1986,
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VB-2_OM.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "discontinued",
+  "notes": "Vintage BBD vibrato with RATE, DEPTH, RISE TIME and MODE (LATCH/BYPASS/UNLATCH) controls.",
+  "sources": [
+   {
+    "url": "https://support.roland.com/hc/en-us/articles/201967789-VB-2-Specifications",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VB-2_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/vb_product02.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/promos/40th_anniversary_compact_pedals/img/products/vb_product02.png",
+    "priority": 1,
+    "notes": "Official reference only: lower-resolution than the planner cutout; used for the body colour; not shipped."
+   },
+   {
+    "url": "https://pedalplayground.com/app/images/pedals/boss-vb2.png",
+    "priority": 2,
+    "notes": "Planner last-resort chosen: 596x1057 transparent cutout -> 800 (downscale to 800); reviewer accept; source gap."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-vb2.png",
+   "status": "last-resort",
+   "note": "Planner last-resort cutout from the planner host (596x1057 -> 800, downscale to 800), transparent; reviewer accept. Source gap: recorded planner last-resort."
+  }
+ },
+ {
+  "id": "boss-vb-2w-vibrato-waza-craft",
+  "brand": "BOSS",
+  "name": "VB-2W Vibrato",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "vibrato"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DEPTH",
+    "kind": "exp",
+    "edge": "right",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/VB-2W_eng02_W.pdf (Panel Descriptions, p.1)",
+   "confidence": "verified",
+   "note": "Manual diagram: INPUT and DEPTH on the right, OUTPUT on the left, DC IN on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 35,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61/6F22) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "control": {
+    "expression": 1
+   },
+   "circuit": {
+    "type": "analog",
+    "bypass": "buffered",
+    "dsp": "Waza Craft BBD vibrato with Standard/Custom modes"
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VB-2W_eng02_W.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "current",
+  "notes": "Waza Craft BBD vibrato with RATE, DEPTH, RISE TIME and MODE knobs, Standard/Custom switch and DEPTH expression jack.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/vb-2w/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VB-2W_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/vb_2w_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/vb_2w_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 41.10 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/vb_2w_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 41.10 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-ve-20-vocal-processor",
+  "brand": "BOSS",
+  "name": "VE-20 Vocal Performer",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "double",
+  "instrumentTypes": [
+   "vocal"
+  ],
+  "effectTypes": [
+   "pitch",
+   "reverb",
+   "distortion",
+   "eq",
+   "looper"
+  ],
+  "widthCm": 17.3,
+  "heightCm": 15.8,
+  "dimensionsSource": "BOSS official specifications: 173 (W) x 158 (D) x 57 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "channels": 1,
+    "note": "Combo XLR / 1/4-inch TRS input with +48 V phantom power.",
+    "balanced": true
+   },
+   {
+    "label": "OUTPUT L/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "OUTPUT R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "PHONES/LINE",
+    "kind": "out",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "audio",
+    "channels": 2,
+    "stereo": true,
+    "level": "headphone"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/ve-20_back_gal.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "All connectors on the rear face, mapped to the top edge in top-down planner view."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 190,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "AA (LR6/R6) x6",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 3,
+   "stereo": true,
+   "balanced": true,
+   "level": "instrument"
+  },
+  "optional": {
+   "audio": {
+    "headphone": true,
+    "phantomPower": true,
+    "balanced": true
+   },
+   "circuit": {
+    "type": "digital"
+   },
+   "routing": {
+    "presets": 80,
+    "looper": true
+   },
+   "physical": {
+    "weightG": 1100,
+    "footswitches": 2,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VE-20_OM.pdf"
+   }
+  },
+  "usage": "unknown",
+  "status": "discontinued",
+  "notes": "Vocal performer with harmony/pitch correction, reverb, 3-band EQ, distortion and a 38-second phrase loop.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/ve-20/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VE-20_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-20_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-20_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-20_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 42.60 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ve-20_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 42.60 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-ve-22-vocal-performer",
+  "brand": "BOSS",
+  "name": "VE-22 Vocal Performer",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "vocal"
+  ],
+  "effectTypes": [
+   "pitch",
+   "reverb",
+   "delay",
+   "eq",
+   "looper"
+  ],
+  "widthCm": 21.8,
+  "heightCm": 14.3,
+  "dimensionsSource": "BOSS official specifications: 218 (W) x 143 (D) x 64 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "channels": 1,
+    "note": "XLR input with +48 V phantom power.",
+    "balanced": true
+   },
+   {
+    "label": "OUTPUT L/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "OUTPUT R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "PHONES/LINE OUT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "audio",
+    "channels": 2,
+    "stereo": true,
+    "level": "headphone"
+   },
+   {
+    "label": "AUX IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "audio",
+    "channels": 2,
+    "stereo": true
+   },
+   {
+    "label": "CTL 1,2 / EXP",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "USB COMPUTER",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "usb-c",
+    "signal": "usb",
+    "usbFunctions": [
+     "audio",
+     "midi",
+     "editor"
+    ]
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/ve-22_gal_03.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "All connectors on the rear face, mapped to the top edge in top-down planner view."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 260,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "AA (LR6) x4",
+   "recommendedSupply": "BOSS PSA-S series",
+   "note": "260 mA with phantom power; 180 mA without."
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 3,
+   "stereo": true,
+   "balanced": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 4000
+  },
+  "optional": {
+   "audio": {
+    "headphone": true,
+    "auxIn": true,
+    "phantomPower": true,
+    "balanced": true
+   },
+   "control": {
+    "expression": 1,
+    "footswitch": true
+   },
+   "usb": {
+    "connector": "usb-c",
+    "functions": [
+     "audio",
+     "midi",
+     "editor"
+    ],
+    "device": true
+   },
+   "circuit": {
+    "type": "digital",
+    "sampleRateKhz": 48,
+    "bitDepth": 24,
+    "note": "AD 24-bit + AF, DA 32-bit, 32-bit float processing."
+   },
+   "routing": {
+    "presets": 149,
+    "looper": true
+   },
+   "physical": {
+    "weightG": 910,
+    "footswitches": 3,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VE-22_eng02_W.pdf"
+   }
+  },
+  "usage": "unknown",
+  "status": "current",
+  "notes": "Vocal performer with 39 effect types, harmony, pitch correction, color LCD, 37-second loop and USB audio/MIDI.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/ve-22/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VE-22_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-22_gal_01.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-22_gal_03.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-22_gal_01.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; global matte (deliberate manual override for the gradient background); post-process analyzer accept; AVIF q90; PSNR 40.71 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ve-22_gal_01.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; global matte (deliberate manual override for the gradient background); post-process analyzer accept; AVIF q90; PSNR 40.71 dB."
+  }
+ },
+ {
+  "id": "boss-ve-500-vocal-performer",
+  "brand": "BOSS",
+  "name": "VE-500 Vocal Performer",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "vocal"
+  ],
+  "effectTypes": [
+   "pitch",
+   "reverb",
+   "delay",
+   "eq",
+   "compressor"
+  ],
+  "widthCm": 17.0,
+  "heightCm": 13.8,
+  "dimensionsSource": "BOSS official specifications: 170 (W) x 138 (D) x 62 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "MIC IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "channels": 1,
+    "note": "XLR input with +48 V phantom power.",
+    "balanced": true
+   },
+   {
+    "label": "INST IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "XLR OUT L",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "XLR OUT R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "INST THRU",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "CTL 1,2 / EXP",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "din5",
+    "signal": "midi",
+    "midiType": "din5"
+   },
+   {
+    "label": "USB COMPUTER",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "micro-usb",
+    "signal": "usb",
+    "usbFunctions": [
+     "audio",
+     "midi",
+     "editor"
+    ]
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/ve-500_back_gal.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "All connectors on the rear face, mapped to the top edge in top-down planner view."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 310,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "recommendedSupply": "BOSS PSA series",
+   "note": "310 mA with phantom power; 210 mA without."
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 3,
+   "stereo": true,
+   "balanced": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 4000
+  },
+  "optional": {
+   "audio": {
+    "phantomPower": true,
+    "balanced": true,
+    "groundLift": true
+   },
+   "control": {
+    "expression": 1,
+    "footswitch": true
+   },
+   "midi": {
+    "din5": "in",
+    "din": true,
+    "programChange": true,
+    "cc": true
+   },
+   "usb": {
+    "connector": "micro-usb",
+    "functions": [
+     "audio",
+     "midi",
+     "editor"
+    ],
+    "device": true
+   },
+   "circuit": {
+    "type": "digital",
+    "sampleRateKhz": 48,
+    "bitDepth": 32,
+    "note": "AD 32-bit + AF, DA 32-bit, 32-bit float processing."
+   },
+   "routing": {
+    "presets": 149
+   },
+   "physical": {
+    "weightG": 860,
+    "footswitches": 3,
+    "batteryCompartment": false
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VE-500_eng04_W.pdf"
+   }
+  },
+  "usage": "unknown",
+  "status": "current",
+  "notes": "Vocal performer with harmony, pitch correction, reverb, delay, EQ, compressor, MIDI and USB audio/MIDI.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/ve-500/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VE-500_eng04_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-500_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-500_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-500_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q90; PSNR 43.81 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ve-500_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q90; PSNR 43.81 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-ve-8-acoustic-singer",
+  "brand": "BOSS",
+  "name": "VE-8 Acoustic Singer",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "vocal",
+   "guitar"
+  ],
+  "effectTypes": [
+   "pitch",
+   "reverb",
+   "chorus",
+   "acoustic-sim",
+   "eq",
+   "looper"
+  ],
+  "widthCm": 21.7,
+  "heightCm": 16.1,
+  "dimensionsSource": "BOSS official specifications: 217 (W) x 161 (D) x 65 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "MIC IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "channels": 1,
+    "note": "XLR input with +48 V phantom power.",
+    "balanced": true
+   },
+   {
+    "label": "GUITAR IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "AUX IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "audio",
+    "channels": 2,
+    "stereo": true
+   },
+   {
+    "label": "XLR OUT L",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "XLR OUT R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "balanced": true
+   },
+   {
+    "label": "LINE OUT L/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "LINE OUT R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "PHONES",
+    "kind": "out",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "audio",
+    "channels": 2,
+    "stereo": true,
+    "level": "headphone"
+   },
+   {
+    "label": "MEMORY INC/DEC",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "USB COMPUTER",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "usb-b",
+    "signal": "usb",
+    "usbFunctions": [
+     "audio",
+     "midi",
+     "editor"
+    ]
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/ve-8_back_gal.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "All connectors on the rear face, mapped to the top edge in top-down planner view."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 360,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "AA (LR6) x6",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 3,
+   "outputs": 5,
+   "stereo": true,
+   "balanced": true,
+   "level": "instrument"
+  },
+  "optional": {
+   "audio": {
+    "headphone": true,
+    "auxIn": true,
+    "phantomPower": true,
+    "balanced": true
+   },
+   "control": {
+    "footswitch": true
+   },
+   "usb": {
+    "connector": "usb-b",
+    "functions": [
+     "audio",
+     "midi",
+     "editor"
+    ],
+    "device": true
+   },
+   "circuit": {
+    "type": "digital"
+   },
+   "routing": {
+    "presets": 50,
+    "looper": true
+   },
+   "physical": {
+    "weightG": 1300,
+    "footswitches": 2,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VE-8_eng03_W.pdf"
+   }
+  },
+  "usage": "unknown",
+  "status": "current",
+  "notes": "Acoustic singer processor for voice and guitar with harmony, acoustic resonance, effects, 80-second loop and USB audio/MIDI.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/ve-8/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VE-8_eng03_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-8_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-8_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/ve-8_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.68 dB; perspective flag verified on the contact sheet."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/ve-8_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.68 dB; clean alpha and perspective checked on the contact sheet."
+  }
+ },
+ {
+  "id": "boss-vg-800-v-guitar-processor",
+  "brand": "BOSS",
+  "name": "VG-800 V-Guitar Processor",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "amp-modeler",
+   "cab-sim",
+   "synth",
+   "pitch",
+   "delay",
+   "reverb",
+   "chorus"
+  ],
+  "widthCm": 17.3,
+  "heightCm": 13.5,
+  "dimensionsSource": "BOSS official specifications: 173 (W) x 135 (D) x 65 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "GK IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "audio",
+    "note": "1/4-inch TRS serial GK input for a BGK cable."
+   },
+   {
+    "label": "GK OUT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "audio",
+    "note": "1/4-inch TRS serial GK output for a BGK cable."
+   },
+   {
+    "label": "GUITAR INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT R/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT L/PHONES",
+    "kind": "out",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "audio",
+    "channels": 2,
+    "stereo": true,
+    "level": "headphone"
+   },
+   {
+    "label": "SEND",
+    "kind": "send",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "audio"
+   },
+   {
+    "label": "RETURN",
+    "kind": "return",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "audio"
+   },
+   {
+    "label": "CTL 2,3 / EXP 1",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "CTL 4,5 / EXP 2",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "midi",
+    "note": "Stereo miniature phone type."
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "midi",
+    "note": "Stereo miniature phone type."
+   },
+   {
+    "label": "USB COMPUTER",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "usb-c",
+    "signal": "usb",
+    "usbFunctions": [
+     "audio",
+     "midi",
+     "editor"
+    ]
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/vg-800_rear_gal.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "All connectors on the rear face, mapped to the top edge in top-down planner view."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 690,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "recommendedSupply": "BOSS PSB-1U + AC cord"
+  },
+  "io": {
+   "inputs": 3,
+   "outputs": 4,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000
+  },
+  "optional": {
+   "audio": {
+    "effectsLoop": {
+     "send": 1,
+     "return": 1
+    },
+    "headphone": true
+   },
+   "control": {
+    "expression": 2,
+    "footswitch": true
+   },
+   "midi": {
+    "usb": true,
+    "programChange": true,
+    "cc": true,
+    "note": "MIDI IN/OUT on stereo miniature phone (TRS) connectors; USB-MIDI."
+   },
+   "usb": {
+    "connector": "usb-c",
+    "functions": [
+     "audio",
+     "midi",
+     "editor"
+    ],
+    "device": true
+   },
+   "circuit": {
+    "type": "digital",
+    "sampleRateKhz": 48,
+    "bitDepth": 32,
+    "note": "32-bit float processing."
+   },
+   "routing": {
+    "presets": 300,
+    "ampModeling": true,
+    "cabModeling": true
+   },
+   "physical": {
+    "weightG": 920,
+    "footswitches": 3,
+    "batteryCompartment": false
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VG-800_eng02_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "V-Guitar processor with GK input, amp/cab modeling, synth and 150 guitar + 150 bass memories; over 150 effect types.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/vg-800/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VG-800_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/vg-800_main_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/vg-800_rear_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/vg-800_main_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 41.47 dB; uneven-background flag verified on the contact sheet."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/vg-800_main_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 41.47 dB; clean alpha checked on the contact sheet."
+  }
+ },
+ {
+  "id": "boss-vo-1-vocoder",
+  "brand": "BOSS",
+  "name": "VO-1 Vocoder",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "synth"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "SEND",
+    "kind": "send",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "RETURN",
+    "kind": "return",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "MIC",
+    "kind": "in",
+    "edge": "top",
+    "connector": "xlr",
+    "signal": "audio",
+    "channels": 1,
+    "balanced": true
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/VO-1_M_eng02_W.pdf (Panel Descriptions, p.1)",
+   "confidence": "verified",
+   "note": "Manual diagram: OUTPUT and SEND/RETURN on the left, INPUT on the right, MIC and DC IN on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 70,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 3,
+   "outputs": 2,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "audio": {
+    "effectsLoop": {
+     "send": 1,
+     "return": 1
+    }
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered"
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 430,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/VO-1_M_eng02_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Compact vocoder with four modes (Advanced, Vintage, Talk Box, Choir), XLR mic input and SEND/RETURN loop.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/vo-1/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/VO-1_M_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/vo_1_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/vo_1_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 42.10 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/vo_1_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 42.10 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-wl-50-wireless-system",
+  "brand": "BOSS",
+  "name": "WL-50 Wireless System",
+  "category": "pedal",
+  "deviceType": "interface",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "utility"
+  ],
+  "widthCm": 7.2,
+  "heightCm": 12.1,
+  "dimensionsSource": "BOSS official specifications (receiver): 72 (W) x 121 (D) x 56 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   },
+   {
+    "label": "DC OUT",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://www.boss.info/global/products/wl-50/support/ (official connectors) + https://static.roland.com/assets/images/products/gallery/wl-50_back_gal.jpg (rear photo)",
+   "confidence": "verified",
+   "note": "Official receiver: INPUT/OUTPUT audio and DC IN/DC OUT power on the rear (mapped to the top edge). The TRANSMITTER TRS jack is on the top face for the WL-T dock, not an edge, so it is omitted from the edge map; the WL-T charges from its own DC IN 5 V micro-USB."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 60,
+   "connector": "barrel",
+   "battery": "Alkaline AA x2 (receiver)",
+   "usbBusPower": false,
+   "note": "Receiver: 2x AA or PSA-S 9 V AC adaptor; 60 mA wireless, 320 mA while charging the WL-T. The WL-T transmitter is Li-ion and charges from its DC IN 5 V micro-USB (350 mA)."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "optional": {
+   "usb": {
+    "connector": "micro-usb",
+    "functions": [
+     "power"
+    ],
+    "busPower": true
+   },
+   "wireless": {
+    "proprietary": "BOSS proprietary digital audio (2.4 GHz)",
+    "presets": 0,
+    "note": "2.3 ms latency, 14 channels, 65 ft line-of-sight."
+   },
+   "physical": {
+    "weightG": 220,
+    "footswitches": 0,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/WL-50_eng03_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Pedalboard wireless system: 7.2 x 12.1 cm receiver, WL-T transmitter, cable-tone simulation and 2.3 ms latency.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/wl-50/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/WL-50_eng03_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/wl-50_top_2_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/wl-50_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/wl-50_top_2_gal.jpg",
+    "priority": 1,
+    "notes": "Chosen: official receiver top-down 626x1050 -> 800 (downscale); reviewer accept; matches the 7.2x12.1 cm receiver footprint."
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/wl-50_back_gal.jpg",
+    "priority": 2,
+    "notes": "Official rear connector photo used for jack-edge verification only."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/wl-50_top_2_gal.jpg",
+   "status": "chosen",
+   "note": "Official receiver top-down 626x1050 -> 800 (downscaled), matte flood; reviewer accept. Receiver footprint 7.2x12.1 cm (official spec). A planner-host 625x1046 receiver cutout was also checked (comparable); the official source is chosen by the source hierarchy and is not listed as a shipped candidate."
+  }
+ },
+ {
+  "id": "boss-wl-60-wireless-system",
+  "brand": "BOSS",
+  "name": "WL-60 Wireless System",
+  "category": "pedal",
+  "deviceType": "interface",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "utility"
+  ],
+  "widthCm": 7.0,
+  "heightCm": 12.0,
+  "dimensionsSource": "BOSS WL-60 Owner's Manual (receiver): 70 (W) x 120 (D) x 57 (H) mm including batteries.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/wl-60_rear_gal.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "Official rear photo shows IN, OUT and DC IN on the rear face, mapped to the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 110,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "AA (LR6) x2",
+   "recommendedSupply": "BOSS PSA-S series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "optional": {
+   "wireless": {
+    "proprietary": "BOSS proprietary digital audio (2.4 GHz)",
+    "presets": 0,
+    "note": "2.3 ms latency, 14 channels, 65 ft line-of-sight."
+   },
+   "physical": {
+    "weightG": 180,
+    "footswitches": 0,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/WL-60_eng02_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Wireless system with a pedalboard receiver, graphic LCD, automatic channel scan and WL-60T transmitter.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/wl-60/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/WL-60_eng02_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/wl-60_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/wl-60_rear_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/wl-60_top_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q80; PSNR 42.71 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/wl-60_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q80; PSNR 42.71 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-wp-20g-wave-processor",
+  "brand": "BOSS",
+  "name": "WP-20G Wave Processor",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "double",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "synth",
+   "ring-mod",
+   "delay",
+   "chorus",
+   "filter"
+  ],
+  "widthCm": 17.3,
+  "heightCm": 15.8,
+  "dimensionsSource": "BOSS WP-20G Owner's Manual specifications: 173 (W) x 158 (D) x 57 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "GUITAR OUT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "GUITAR RETURN",
+    "kind": "return",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "GK IN",
+    "kind": "in",
+    "edge": "top",
+    "connector": "other",
+    "signal": "audio",
+    "note": "13-pin GK divided-pickup connector."
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/WP-20G_OM.pdf (Rear Panel, p.10)",
+   "confidence": "verified",
+   "note": "Manual rear-panel diagram: GUITAR OUT, GK IN, GUITAR RETURN, AC ADAPTOR and OUTPUT all on the rear face, mapped to the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 150,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "AA (LR6) x6",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20
+  },
+  "optional": {
+   "circuit": {
+    "type": "digital",
+    "note": "GK synth engine with 6 waves and 11 chorus/delay effects."
+   },
+   "physical": {
+    "weightG": 1100,
+    "footswitches": 2,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/WP-20G_OM.pdf"
+   }
+  },
+  "usage": "guitar",
+  "status": "discontinued",
+  "notes": "GK-effect wave processor with six synth waves (Saw Lead, Square, Ring Mod, Slow Gear, Sitar, Acoustic) and 11 chorus/delay effects.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/global/products/wp-20g/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/WP-20G_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/main/wp20g_main.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/main/wp20g_main.jpg",
+    "priority": 1,
+    "notes": "Official reference only: lower-resolution than the planner cutout; used for the body colour; not shipped."
+   },
+   {
+    "url": "https://pedalplayground.com/app/images/pedals/boss-wp20g.png",
+    "priority": 2,
+    "notes": "Planner last-resort chosen: 1000x896 transparent cutout -> 800 (downscale to 800); reviewer accept; source gap."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://pedalplayground.com/app/images/pedals/boss-wp20g.png",
+   "status": "last-resort",
+   "note": "Planner last-resort cutout from the planner host (1000x896 -> 800, downscale to 800), transparent; reviewer accept. Source gap: recorded planner last-resort."
+  }
+ },
+ {
+  "id": "boss-xs-1-pitch-shifter",
+  "brand": "BOSS",
+  "name": "XS-1 Poly Shifter",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "pitch"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) x 129 (D) x 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "right",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "left",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "CTL/EXP",
+    "kind": "exp",
+    "edge": "right",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/media/pdf/XS-1_eng01_W.pdf (Panel descriptions, p.3)",
+   "confidence": "verified",
+   "note": "Manual diagram: INPUT and CTL/EXP on the right, OUTPUT on the left, DC IN on the top edge."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 120,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61/6LF22) x1",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -20,
+   "maxInputLevelDbu": 7,
+   "maxOutputLevelDbu": 7
+  },
+  "optional": {
+   "control": {
+    "expression": 1,
+    "footswitch": true
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered",
+    "sampleRateKhz": 48,
+    "bitDepth": 24
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 410,
+    "footswitches": 1,
+    "batteryCompartment": true
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/XS-1_eng01_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Compact polyphonic pitch shifter with BALANCE and SHIFT knobs, pedal-mode/direction switches and CTL/EXP jack.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/xs-1/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/XS-1_eng01_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/xs-1_01_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/xs-1_01_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.03 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/xs-1_01_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; flood matte; AVIF q90; PSNR 42.03 dB; contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-xs-100-poly-shifter",
+  "brand": "BOSS",
+  "name": "XS-100 Poly Shifter",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar",
+   "bass"
+  ],
+  "effectTypes": [
+   "pitch"
+  ],
+  "widthCm": 14.7,
+  "heightCm": 23.0,
+  "dimensionsSource": "BOSS official specifications: 147 (W) x 230 (D) x 96 (H) mm (maximum height).",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "THRU",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT A",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio"
+   },
+   {
+    "label": "CTL 1,2 / EXP 2",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control"
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "midi",
+    "note": "Stereo miniature phone type."
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "3.5mm",
+    "signal": "midi",
+    "note": "Stereo miniature phone type."
+   },
+   {
+    "label": "USB COMPUTER",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "usb-c",
+    "signal": "usb",
+    "usbFunctions": [
+     "midi",
+     "editor",
+     "firmware"
+    ]
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "edge": "top",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/xs-100_03_gal.jpg (official rear connector photo)",
+   "confidence": "verified",
+   "note": "All connectors on the rear face, mapped to the top edge in top-down planner view."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 160,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "recommendedSupply": "BOSS PSA series"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 3,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 2200000,
+   "outputImpedanceOhm": 1000,
+   "nominalLevelDbu": -10,
+   "maxInputLevelDbu": 7,
+   "maxOutputLevelDbu": 7
+  },
+  "optional": {
+   "audio": {
+    "headphone": false
+   },
+   "control": {
+    "expression": 2,
+    "footswitch": true
+   },
+   "midi": {
+    "usb": true,
+    "programChange": true,
+    "cc": true,
+    "note": "MIDI IN/OUT on stereo miniature phone (TRS) connectors; USB-MIDI."
+   },
+   "usb": {
+    "connector": "usb-c",
+    "functions": [
+     "midi",
+     "editor",
+     "firmware"
+    ],
+    "device": true
+   },
+   "circuit": {
+    "type": "digital",
+    "bypass": "buffered",
+    "sampleRateKhz": 48,
+    "bitDepth": 24
+   },
+   "routing": {
+    "presets": 30,
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 1700,
+    "footswitches": 2,
+    "batteryCompartment": false
+   },
+   "lifecycle": {
+    "manualUrl": "https://static.roland.com/assets/media/pdf/XS-100_eng01_W.pdf"
+   }
+  },
+  "usage": "both",
+  "status": "current",
+  "notes": "Poly shifters with onboard EXP pedal, 30 memories, stereo outputs, MIDI and USB; 24-bit/48 kHz processing.",
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/xs-100/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/media/pdf/XS-100_eng01_W.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/xs-100_01_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/xs-100_03_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/xs-100_01_gal.jpg",
+    "priority": 1,
+    "notes": "Shipped source: official BOSS gallery top-down; global matte (deliberate manual override for the gradient background); post-process analyzer flag (possible perspective 12%) verified on the contact sheet; AVIF q90; PSNR 41.19 dB."
+   }
+  ],
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/xs-100_01_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down; global matte (deliberate manual override for the gradient background); post-process analyzer flag (possible perspective) verified on the contact sheet; AVIF q90; PSNR 41.19 dB."
+  }
+ }
+]

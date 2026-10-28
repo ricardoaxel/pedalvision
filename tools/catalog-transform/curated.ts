@@ -440,6 +440,60 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"red-panda-raster-2": ["delay", "pitch"],
 	"red-panda-remote-4": ["controller", "utility"],
 	"red-panda-tensor": ["pitch", "looper"],
+
+	// BOSS batch 8 (T-3, verified against official pages/manuals)
+	"boss-sy-300-guitar-synthesizer": [
+		"synth",
+		"filter",
+		"delay",
+		"reverb",
+		"chorus",
+	],
+	"boss-tb-2w-tone-bender-waza-craft": ["fuzz"],
+	"boss-ve-20-vocal-processor": [
+		"pitch",
+		"reverb",
+		"distortion",
+		"eq",
+		"looper",
+	],
+	"boss-ve-22-vocal-performer": ["pitch", "reverb", "delay", "eq", "looper"],
+	"boss-ve-500-vocal-performer": [
+		"pitch",
+		"reverb",
+		"delay",
+		"eq",
+		"compressor",
+	],
+	"boss-ve-8-acoustic-singer": [
+		"pitch",
+		"reverb",
+		"chorus",
+		"acoustic-sim",
+		"eq",
+		"looper",
+	],
+	"boss-vg-800-v-guitar-processor": [
+		"amp-modeler",
+		"cab-sim",
+		"synth",
+		"pitch",
+		"delay",
+		"reverb",
+		"chorus",
+	],
+	"boss-vo-1-vocoder": ["synth"],
+	"boss-wl-50-wireless-system": ["utility"],
+	"boss-wl-60-wireless-system": ["utility"],
+	"boss-wp-20g-wave-processor": [
+		"synth",
+		"ring-mod",
+		"delay",
+		"chorus",
+		"filter",
+	],
+	"boss-xs-1-pitch-shifter": ["pitch"],
+	"boss-xs-100-poly-shifter": ["pitch"],
 };
 
 /**
@@ -467,6 +521,12 @@ const CURATED_ID_ALIASES: Record<string, string> = {
 	// Inventory id says "guitar", but the official model name is Bass.
 	"boss-me-90b-bass-multiple-effects": "boss-me-90b-guitar-multiple-effects",
 	"boss-ms-3-multi-effects-switcher": "boss-ms-3-multieffects-switcher",
+	// Official name slug lacks the Waza Craft suffix carried by the catalog id.
+	"boss-tb-2w-tone-bender": "boss-tb-2w-tone-bender-waza-craft",
+	// Official name is "Vocal Performer"; the catalog id uses "Vocal Processor".
+	"boss-ve-20-vocal-performer": "boss-ve-20-vocal-processor",
+	// Official name is "Poly Shifter"; the catalog id uses "Pitch Shifter".
+	"boss-xs-1-poly-shifter": "boss-xs-1-pitch-shifter",
 };
 
 const primaryKey = (input: DeviceInput): string =>
