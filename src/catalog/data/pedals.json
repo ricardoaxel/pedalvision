@@ -5980,16 +5980,40 @@
     "id": "mooer-001-gas-station",
     "brand": "Mooer",
     "name": "001 Gas Station",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-001-gas-station.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Dual-channel digital preamp modelled on a boutique modern high-gain German 100 W head, with cab sim.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
@@ -5999,13 +6023,7 @@
         ]
       },
       {
-        "url": "https://www.premierguitar.com/mooer-releases-the-taxidea-taxus-and-the-brown-sound-preamps",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
         "kind": [
           "image"
         ]
@@ -6016,37 +6034,50 @@
     "id": "mooer-002-uk-gold-900",
     "brand": "Mooer",
     "name": "002 UK Gold 900",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-002-uk-gold-900.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "British JCM900-style crunch preamp with dual channels and cab sim.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://pedal.ly/product/mooer-uk-gold-900-jcm900-amp-sim-pedal",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.mooeraudio.com/product/002---UK-Gold-900-64.html",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
         "kind": [
           "image"
         ]
@@ -6057,16 +6088,40 @@
     "id": "mooer-003-power-zone",
     "brand": "Mooer",
     "name": "003 Power Zone",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-003-power-zone.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Versatile session/metal preamp covering cleans, blues grit, classic rock crunch and high-gain leads.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/003---Power-Zone--63.html",
@@ -6076,13 +6131,7 @@
         ]
       },
       {
-        "url": "https://nodetone.com/gear/mooer-m003",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
         "kind": [
           "image"
         ]
@@ -6093,37 +6142,50 @@
     "id": "mooer-004-day-tripper",
     "brand": "Mooer",
     "name": "004 Day Tripper",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-004-day-tripper.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Vox AC30-style 30 W British combo preamp with dual channels and cab sim.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomannmusic.com/mooer_micro_preamp_004_day_tripper.htm",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.mooeraudio.com/product/004---Day-Tripper-185.html",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
         "kind": [
           "image"
         ]
@@ -6134,16 +6196,40 @@
     "id": "mooer-005-brown-sound-3",
     "brand": "Mooer",
     "name": "005 Brown Sound 3",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-005-brown-sound-3.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Third-generation brown-sound signature preamp with a lush clean channel and high-gain drive channel.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/005---Brown-Sound-3--62.html",
@@ -6153,13 +6239,7 @@
         ]
       },
       {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
         "kind": [
           "image"
         ]
@@ -6170,16 +6250,40 @@
     "id": "mooer-006-us-classic-deluxe",
     "brand": "Mooer",
     "name": "006 US Classic Deluxe",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-006-us-classic-deluxe.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Classic American 40 W blues-combo preamp with dual channels and cab sim.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/006---US-Classic-Deluxe--61.html",
@@ -6189,13 +6293,7 @@
         ]
       },
       {
-        "url": "https://lazermusic.com.ph/products/mooer-006-us-classic-delux-micro-preamp-effects-pedal",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
         "kind": [
           "image"
         ]
@@ -6206,16 +6304,40 @@
     "id": "mooer-007-regal-tone",
     "brand": "Mooer",
     "name": "007 Regal Tone",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-007-regal-tone.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Boutique hand-built American vintage-style combo preamp with warm mids and a punchy drive channel.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/products/19.html",
@@ -6225,13 +6347,7 @@
         ]
       },
       {
-        "url": "https://nodetone.com/gear/mooer-m007",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
         "kind": [
           "image"
         ]
@@ -6242,16 +6358,40 @@
     "id": "mooer-008-cali-mk3",
     "brand": "Mooer",
     "name": "008 Cali-MK3",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-008-cali-mk3.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Modern Californian high-gain preamp, from pure cleans to ultra-high-gain leads.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/products/18.html",
@@ -6261,13 +6401,7 @@
         ]
       },
       {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
         "kind": [
           "image"
         ]
@@ -6278,16 +6412,40 @@
     "id": "mooer-009-black-knight",
     "brand": "Mooer",
     "name": "009 Black Knight",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-009-black-knight.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Modern 100 W signature high-gain head preamp with a two-channel layout.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/009---Black-Night--58.html",
@@ -6297,13 +6455,7 @@
         ]
       },
       {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
         "kind": [
           "image"
         ]
@@ -6314,16 +6466,40 @@
     "id": "mooer-010-two-stones",
     "brand": "Mooer",
     "name": "010 Two Stones",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-010-two-stones.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Dual-channel American cascading-gain preamp with pristine cleans and searing leads.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/010---Two-Stone--57.html",
@@ -6333,13 +6509,7 @@
         ]
       },
       {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
         "kind": [
           "image"
         ]
@@ -6350,16 +6520,40 @@
     "id": "mooer-011-cali-dual",
     "brand": "Mooer",
     "name": "011 Cali-Dual",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-011-cali-dual.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Californian dual-rectifier 100 W high-gain preamp sampled from a first-run specimen.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/011---Cali-Dual--46.html",
@@ -6369,13 +6563,7 @@
         ]
       },
       {
-        "url": "https://lazermusic.com.ph/products/mooer-011-cali-dual-micro-preamp-effects-pedal",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
         "kind": [
           "image"
         ]
@@ -6386,37 +6574,50 @@
     "id": "mooer-012-us-gold-100",
     "brand": "Mooer",
     "name": "012 US Gold 100",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-012-us-gold-100.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Hot-rodded British Plexi-style 100 W preamp with a tight low end and rich harmonics.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://reverb.com/p/mooer-012-fried-mien-micro-preamp",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.mooeraudio.com/product/012---US-GOLD-100--45.html",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
         "kind": [
           "image"
         ]
@@ -6427,16 +6628,40 @@
     "id": "mooer-013-matchbox",
     "brand": "Mooer",
     "name": "013 Matchbox",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-013-matchbox.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Hand-built modified American 30 W combo preamp with fat cleans and vintage overdrive.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/013---Matchbox--44.html",
@@ -6446,13 +6671,7 @@
         ]
       },
       {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
         "kind": [
           "image"
         ]
@@ -6463,16 +6682,40 @@
     "id": "mooer-014-taxidea-taxus",
     "brand": "Mooer",
     "name": "014 Taxidea Taxus",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-014-taxidea-taxus.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Modern-classic preamp with a wide tonal range, from sultry blues to vintage high gain.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.mooeraudio.com/product/014---Taxidea-Taxus--43.html",
@@ -6482,13 +6725,7 @@
         ]
       },
       {
-        "url": "https://www.premierguitar.com/mooer-releases-the-taxidea-taxus-and-the-brown-sound-preamps",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
         "kind": [
           "image"
         ]
@@ -6499,19 +6736,205 @@
     "id": "mooer-015-brown-sound",
     "brand": "Mooer",
     "name": "015 Brown Sound",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
-    "imageSource": "url",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-015-brown-sound.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Original MKI brown-sound signature preamp recreating early-90s high-gain tones.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.mooeraudio.com/product/-015---Brown-Sound-42.html",
+        "url": "https://www.mooeraudio.com/-015---Brown-Sound-42.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-016-phoenix-digital",
+    "brand": "Mooer",
+    "name": "016 Phoenix Digital",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-016-phoenix-digital.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Modern German-style metal preamp with punchy lower mids and a tight low end.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/016---PHOENIX-214.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-017-cali-mkiv",
+    "brand": "Mooer",
+    "name": "017 Cali MKIV",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-017-cali-mkiv.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Versatile modern Californian combo preamp, shimmering cleans through soaring leads.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/017---CALI-MK-IV-215.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-018-custom-100",
+    "brand": "Mooer",
+    "name": "018 Custom 100",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-018-custom-100.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Plexi-based boutique 100 W signature-amp preamp with wide EQ and gain range.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/018---CUSTOM-100-216.html",
         "kind": [
           "info",
           "image"
@@ -6524,116 +6947,9 @@
         ]
       },
       {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/233f9cfa-f51f-4d25-b5e0-07b913dcdc2e.jpg",
         "kind": [
           "image"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "mooer-016-phoenix-digital",
-    "brand": "Mooer",
-    "name": "016 Phoenix Digital",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
-    "imageSource": "url",
-    "effectTypes": [
-      "preamp",
-      "cab-sim"
-    ],
-    "category": "pedal",
-    "source": "placeholder",
-    "sources": [
-      {
-        "url": "https://www.mooeraudio.com/product/016---PHOENIX-214.html",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
-        "kind": [
-          "image"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "mooer-017-cali-mkiv",
-    "brand": "Mooer",
-    "name": "017 Cali MKIV",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
-    "imageSource": "url",
-    "effectTypes": [
-      "preamp",
-      "cab-sim"
-    ],
-    "category": "pedal",
-    "source": "placeholder",
-    "sources": [
-      {
-        "url": "https://www.mooeraudio.com/product/PREAMP-LIVE-220.html",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.gearnews.com/mooer-adds-three-new-preamp-pedals-phoenix-cali-mkiv-custom-100",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.mooeraudio.com/product/017---CALI-MK-IV-215.html",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://omo-oss-image1.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
-        "kind": [
-          "image"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "mooer-018-custom-100",
-    "brand": "Mooer",
-    "name": "018 Custom 100",
-    "widthCm": 4.24,
-    "heightCm": 9.53,
-    "image": "mooer-018-custom-100.png",
-    "imageSource": "mock",
-    "effectTypes": [
-      "preamp",
-      "cab-sim"
-    ],
-    "category": "pedal",
-    "source": "placeholder",
-    "sources": [
-      {
-        "url": "https://www.mooeraudio.com/product/018---CUSTOM-100-216.html",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://www.guitarpedalx.com/news/gpx-blog/which-are-the-best-of-the-mooer-micro-preamp-pedals",
-        "kind": [
-          "info"
         ]
       }
     ]
@@ -17544,6 +17860,429 @@
       },
       {
         "url": "https://meris.us/wp-content/uploads/2017/07/polymoon_front_controls.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-019-uk-gold-plx",
+    "brand": "Mooer",
+    "name": "019 UK Gold PLX",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-019-uk-gold-plx.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Faithful recreation of a 1967 50 W British Plexi with dual channels and cab sim.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/products/143.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.bonedo.de/artikel/mooer-micro-preamp-019-uk-gold-plx-test/",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-020-blueno",
+    "brand": "Mooer",
+    "name": "020 Blueno",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-020-blueno.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "preamp",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Dual-channel preamp sampled from a hand-built 36 W Class A boutique amp.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/products/14.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/eda14e55-1504-442b-b332-56db2777a250.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-a7",
+    "brand": "Mooer",
+    "name": "A7",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-a7.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 200
+    },
+    "usage": "guitar",
+    "notes": "New Micro ambience reverb with seven algorithms, infinite trail, per-mode presets and USB firmware updates.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/products/12.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/bfd24d3c-ccff-4684-b753-f2f3a21f5f77.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-acoustikar",
+    "brand": "Mooer",
+    "name": "Acoustikar",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-acoustikar.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "acoustic-sim"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 17
+    },
+    "usage": "guitar",
+    "notes": "Acoustic-guitar simulator with Piezo, Standard and Jumbo modes, level and body controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/Acoustikar--122.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/78d509a1-ab11-493e-b777-91fcbc46db92.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-ana-echo",
+    "brand": "Mooer",
+    "name": "Ana Echo",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-ana-echo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "usage": "guitar",
+    "notes": "Fully analog delay with 20–300 ms delay time, echo/intense/rate controls and true bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/Ana-Echo--147.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/f9e258f2-9360-49bf-9559-a22ccd2cf9b4.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-audiofile",
+    "brand": "Mooer",
+    "name": "Audiofile",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-audiofile.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "buffer",
+      "cab-sim",
+      "utility"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": true
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "Analog Class A pedalboard headphone amplifier and buffer with stereo/mono output and cab sim.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/products/16.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/e6157c51-009a-42b5-a5e8-18beb4644f44.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-baby-bomb",
+    "brand": "Mooer",
+    "name": "Baby Bomb",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-baby-bomb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "power-amp"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 24,
+      "acDc": "DC",
+      "currentMa": 2000
+    },
+    "usage": "guitar",
+    "notes": "30 W micro power-amp pedal for 8–16 Ω cabinets with master and warm/bright controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/product/Baby-Bomb--54.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/683ebcaa-0b20-4301-8834-485574b9c8cf.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mooer-wah",
+    "brand": "Mooer",
+    "name": "@Wah",
+    "widthCm": 4.2,
+    "heightCm": 9.35,
+    "image": "mooer-wah.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "wah",
+      "filter"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 120
+    },
+    "usage": "guitar",
+    "notes": "Auto/Touch wah with LP, BP, HP, SP and Talk modes plus Range and Speed/Gain controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.mooeraudio.com/products/23.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ec674c93-5500-4328-a2ee-b2b5552ba450.jpg",
         "kind": [
           "image"
         ]

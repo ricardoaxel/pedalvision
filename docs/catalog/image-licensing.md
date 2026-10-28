@@ -16,9 +16,9 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 4 · community 1 · official 257 · own 89 · planner 63
+Sources: archive 4 · community 1 · official 265 · own 89 · planner 63
 
-Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 220 (hotlinked 74 · mock 83 · planner 63; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
@@ -30,7 +30,7 @@ Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63; see the source-ga
 | JHS | not-requested | 13 | 0 | 6 | [contact](https://www.jhspedals.info/pages/contact) | — | — |
 | Joyo | not-requested | 5 | 0 | 13 | [contact](https://www.joyoaudio.com/about.html) | info@joyoaudio.com | — |
 | Meris | not-requested | 10 | 0 | 0 | [contact](https://meris.us/contact/) | — | — |
-| Mooer | not-requested | 17 | 0 | 1 | [contact](https://www.mooeraudio.com/CONTACT.html) | support@mooeraudio.com | — |
+| Mooer | not-requested | 25 | 0 | 1 | [contact](https://www.mooeraudio.com/CONTACT.html) | support@mooeraudio.com | — |
 | MXR | not-requested | 18 | 0 | 0 | [contact](https://www.jimdunlop.com/contact-us/) | — | — |
 | Pedaltrain | not-requested | 0 | 0 | 4 | [contact](https://help.pedaltrain.com/hc/en-us/requests/new) | help@pedaltrain.com | — |
 | Red Panda | not-requested | 10 | 0 | 0 | [contact](https://www.redpandalab.com/contact) | — | — |
