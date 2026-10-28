@@ -64,12 +64,13 @@
         "footswitches": 1
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/1-echo-manual.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/1-echo-manual.pdf",
+        "discontinuedYear": 2024
       }
     },
     "usage": "both",
     "year": 2007,
-    "status": "current",
+    "status": "discontinued",
     "notes": "Digital echo/delay with up to 2 seconds of delay and true bypass.",
     "sources": [
       {
@@ -225,12 +226,13 @@
         "looper": true
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2020/10/1440_manual_web_v3.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2020/10/1440_manual_web_v3.pdf",
+        "discontinuedYear": 2025
       }
     },
     "usage": "both",
     "year": 2020,
-    "status": "current",
+    "status": "discontinued",
     "notes": "Stereo looper with 20 loop banks, 12 minutes of recording, MIDI clock and USB backup.",
     "sources": [
       {
@@ -331,7 +333,7 @@
     "power": {
       "voltage": 24,
       "acDc": "DC",
-      "currentMa": 100,
+      "currentMa": 1000,
       "connector": "barrel",
       "polarity": "center-positive",
       "recommendedSupply": "EHX 24VDC/1A"
@@ -355,12 +357,13 @@
         "footswitches": 1
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/03/15watt-howitzer-manual.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/03/15watt-howitzer-manual.pdf",
+        "discontinuedYear": 2025
       }
     },
     "usage": "both",
     "year": 2021,
-    "status": "current",
+    "status": "discontinued",
     "notes": "15-watt power amp in a pedal with a preamp, FX loop and 8-16 ohm speaker output.",
     "sources": [
       {
@@ -414,7 +417,7 @@
     ],
     "widthCm": 4.62,
     "heightCm": 9.53,
-    "dimensionsSource": "EHX official specifications: 3.75 x 1.5 x 1.25 in; planner footprint 4.62 x 9.53 cm (top-down orientation).",
+    "dimensionsSource": "EHX official specifications: 3.75 x 1.5 x 1.25 in enclosure; planner footprint 4.62 x 9.530 cm is the jack-inclusive silhouette measured from the official EHX product photo (the 1.5 in enclosure plus side jack nuts).",
     "imageFormat": "avif",
     "jacks": [
       {
@@ -462,12 +465,13 @@
         "display": "LCD"
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/ehx-2020-manual.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/ehx-2020-manual.pdf",
+        "discontinuedYear": 2024
       }
     },
     "usage": "both",
     "year": 2019,
-    "status": "current",
+    "status": "discontinued",
     "notes": "Compact chromatic tuner with true bypass, pitch reference and flat tuning modes.",
     "sources": [
       {
@@ -520,8 +524,8 @@
       "tuner"
     ],
     "widthCm": 4.62,
-    "heightCm": 9.68,
-    "dimensionsSource": "EHX official specifications: 3.75 x 1.5 x 1.25 in; planner footprint 4.62 x 9.68 cm (top-down orientation).",
+    "heightCm": 9.525,
+    "dimensionsSource": "EHX official specifications: 3.75 x 1.5 x 1.25 in enclosure; planner footprint 4.62 x 9.525 cm is the jack-inclusive silhouette measured from the official EHX product photo (the 1.5 in enclosure plus side jack nuts).",
     "imageFormat": "avif",
     "jacks": [
       {
@@ -699,7 +703,7 @@
       "recommendedSupply": "EHX 9.6VDC-500mA"
     },
     "io": {
-      "inputs": 2,
+      "inputs": 3,
       "outputs": 2,
       "stereo": true
     },
@@ -1025,12 +1029,13 @@
         "deviceTypeNote": "Power amp; the raw deviceType enum has no power-amp value."
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/5mm-manual.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/5mm-manual.pdf",
+        "discontinuedYear": 2025
       }
     },
     "usage": "both",
     "year": 2019,
-    "status": "current",
+    "status": "discontinued",
     "notes": "5-watt power amp in a compact pedal with an 8-16 ohm speaker output.",
     "sources": [
       {
@@ -1263,12 +1268,13 @@
         "audioJacks": "none; CV/expression sequencer"
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/8-step-program-manual.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/8-step-program-manual.pdf",
+        "discontinuedYear": 2026
       }
     },
     "usage": "both",
     "year": 2013,
-    "status": "current",
+    "status": "discontinued",
     "notes": "Eight-step analog-style sequencer for CV/expression control; no audio jacks.",
     "sources": [
       {
@@ -1431,7 +1437,7 @@
     },
     "io": {
       "inputs": 2,
-      "outputs": 3,
+      "outputs": 4,
       "stereo": true,
       "trueStereo": true
     },
@@ -1467,12 +1473,13 @@
         "presets": 100
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/95000-manual.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/95000-manual.pdf",
+        "discontinuedYear": 2026
       }
     },
     "usage": "both",
     "year": 2018,
-    "status": "current",
+    "status": "discontinued",
     "notes": "Six-track desktop looper with 375 minutes of recording, XLR/TRS combo inputs and MIDI.",
     "sources": [
       {
@@ -1573,12 +1580,13 @@
         "footswitches": 1
       },
       "lifecycle": {
-        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/analogizer-manual.pdf"
+        "manualUrl": "https://www.ehx.com/wp-content/uploads/2021/01/analogizer-manual.pdf",
+        "discontinuedYear": 2024
       }
     },
     "usage": "guitar",
     "year": 2011,
-    "status": "current",
+    "status": "discontinued",
     "notes": "Analog tone shaper/booster that adds warmth and up to +26 dB of gain.",
     "sources": [
       {
@@ -3029,7 +3037,7 @@
     },
     "io": {
       "inputs": 1,
-      "outputs": 2,
+      "outputs": 3,
       "balanced": true
     },
     "optional": {
