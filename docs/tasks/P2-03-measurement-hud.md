@@ -1,38 +1,34 @@
-# F-03 / P2-03: Measurement HUD (live dimensions + scale reference)
+# F-03 / P2-03: Measurement HUD — “Edge Rule”
 
 **Phase:** 1 · **Status:** in review — PR #67 · **Model:** light
 
 ## Goal
 
-Make true scale legible while working. Today the selected part's real W×H only
-appears in the info panel, and nothing on the canvas says what the current zoom
-means in centimetres. This task adds a small, non-modal **measurement HUD**:
+Make true scale legible while working. The original bottom-left “Scale Rule”
+chip was **rejected by the owner** as low-value; this direction replaces it with
+a drafting-mat frame:
 
-1. a **live readout** of the selected item's actual footprint (W × H) and the
-   current zoom/scale, following `Settings.units` (cm default, in optional);
-2. a **screen-edge scale reference** (a drafted length bar / unit indicator) so
-   the user can judge approximate size at the current zoom without leaving the
-   canvas.
+1. **Reactive top + left rulers** that show the viewport's cm/in span and update
+   live with pan and zoom (1-2-5 cadence, world coordinates, origin + negatives).
+2. A **bottom-right Scale Tag** (flush title block) with a true-length rule, the
+   round length, a quiet **cm/in toggle**, the live zoom, and the current
+   **grid-cell size** (“Grid 6 cm”) so the dot grid relates to real scale.
+3. Mobile is **corner-only**; the tag hides while the info peek/action bar/trays
+   are up. Read-only shares keep the frame. `Settings.units` is reused; cm stays
+   canonical; nothing is persisted, exported or shared.
 
-It delivers roadmap item **F-03** (Phase 1 — core correctness and polish).
+Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
 ## Read first (context pack)
 
 - `docs/progress.md`
 - `docs/tasks/P5-03d-parallel-workstreams.md` (parallel-workstream rules)
 - `docs/requirements.md` — F2 (true scale), Settings unit toggle
-- `docs/design.md` — §Canvas architecture (cm→px mapping, zoom bounds) and
-  §Data model (`Settings.units`)
-- `src/lib/geometry.ts` (`PX_PER_CM`, `cmToPx`, `cmToDisplay`),
-  `src/state/viewport.ts` (`MIN_SCALE`/`MAX_SCALE`, `scale`),
-  `src/state/settings.ts` (`units`), `src/state/selection.ts`,
-  `src/state/scene.ts` (`resolveItem`, `itemFootprint`),
-  `src/canvas/Stage.tsx` (HUD overlay sibling), `src/components/InfoPanel.tsx`
-  (existing dimension formatting + units toggle), `src/lib/partInfo.ts`
-  (`formatDimensions`), `src/canvas/exportStage.ts` (`drawScaleBar`, the existing
-  drafting scale-bar reference).
-
-Read only the pointed sections; do not read whole docs.
+- `docs/design.md` — §Canvas architecture (cm→px, zoom bounds 0.1×–8×)
+- `src/lib/geometry.ts`, `src/state/viewport.ts`, `src/state/settings.ts`,
+  `src/canvas/Stage.tsx`, `src/canvas/GridLayer.tsx`, `src/lib/grid.ts`,
+  `src/lib/ruler.ts`, `src/lib/measurementHud.ts`,
+  `src/components/EdgeRules.tsx`, `src/components/ScaleTag.tsx`
 
 ## Workstream / boundaries
 
@@ -41,108 +37,110 @@ Read only the pointed sections; do not read whole docs.
   `docs/features/README.md`.
 - **Never edit** `data/catalog/**`, `public/pedal-assets/**`, `src/catalog/**` or
   `tools/catalog-*`.
-- Shared schema/config/docs are **coordinator-only**: if this task needs one,
-  **STOP** and report — it becomes a serial coordinator task.
-- Separate branch/worktree; **one PR**; no merge.
+- Shared schema/config/docs are **coordinator-only**; if this task needs one,
+  **STOP** and report.
+- Separate branch/worktree; **one PR (#67)**; no merge.
 
 ## Constraints
 
-- **cm is the source of truth.** The HUD mirrors `cmToDisplay`; it never stores
-  or mutates geometry. Zoom/pan stay on the stage transform only.
-- **Reuse `Settings.units`** (single app-wide toggle); do not add a second unit
-  state. A unit change updates the info panel and the HUD together.
-- **No new dependencies.** CSS + existing React/Konva only.
-- **Read-only shares** keep the HUD (measurement is useful on a shared layout);
-  it must not imply editability.
+- **cm is the source of truth.** Rulers/tag mirror `cmToDisplay`; geometry and
+  scene data are untouched. Zoom/pan stay on the stage transform only.
+- **Reuse `Settings.units`** (one app-wide setting); no second unit state.
+- **No new dependencies.** DOM/SVG + existing React/Konva only.
+- **Read-only shares** keep the frame; no edit affordances are added.
 - **Design gate:** designer proposal → owner approval → implement →
-  ≤2 `design-reviewer` passes on desktop + mobile (dark + light) → fold findings.
-- **Code review:** ≤1 light pass (≤2 only for high-risk / a blocker); reuse the
-  reviewer session; the test suite is the re-check.
-- **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review allowance
-  ≤300k; task hard cap ≤1.1M; 6 h active.
+  ≤2 `design-reviewer` passes (desktop + mobile, dark + light) → fold findings.
+- **Code review:** ≤1 light pass; reuse the reviewer session; tests are the
+  re-check.
+- **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review ≤300k;
+  task hard ≤1.1M; 6 h active.
 - **Performance guardrail:** record bundle delta, picker/canvas frame time,
-  memory and share/export size; no regression beyond thresholds.
-- **Docs update:** public feature catalog/tutorial entry + the F-19 QA impact map.
+  memory and share/export size; no regression.
+- **Docs update:** public feature catalog + the F-19 QA impact map.
 - **No total-count E2E assertions:** filter a stable item/brand.
 
 ## Steps
 
-1. Restate the scope and executable acceptance criteria.
-2. Run the designer proposal; **STOP for owner approval** before code.
-3. Implement in the feature worktree (canvas HUD overlay + pure formatting helper).
-4. Add/keep tests; run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
-5. Run the touched E2E flow on desktop + mobile.
-6. Rebase onto the verified post-merge `main`; re-run the affected checks.
-7. Open exactly one PR with the standard sections, including the **feature demo
-   link**; do not merge.
+1. Restate scope + executable acceptance criteria.
+2. Run the designer proposal; **owner approved “Edge Rule”** (mobile hide-when-
+   selected; quiet cm/in toggle) before implementation.
+3. Implement: `lib/grid.ts`, `lib/ruler.ts`, `EdgeRules`, `ScaleTag`; refactor
+   `GridLayer` to share the grid-cell math; replace the old chip; shift desktop
+   chrome clear of the frame.
+4. Add tests; run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
+5. Run the touched E2E on desktop + mobile.
+6. Run the ≤2 `design-reviewer` passes on rendered desktop + mobile, dark +
+   light; fold findings.
+7. Rebase onto the verified post-merge `main`; re-run checks.
+8. Keep **one PR (#67)** with the standard sections + feature demo link; no merge.
 
 ## Acceptance (executable)
 
-- With an item selected, the HUD shows its actual W × H computed from
-  `itemFootprint` (catalog → custom → unknown fallback), formatted with
-  `Settings.units`; switching units updates HUD + info panel together. On mobile
-  the HUD omits the duplicate size row because the info peek already prints it
-  (approved design-reviewer finding).
-- The HUD shows the live zoom/scale (e.g. `1.0×`, `250%`) and updates on
-  wheel/pinch zoom without touching item props.
-- A screen-edge scale reference renders a true-length bar at the current zoom
-  (bar screen length = `cm × PX_PER_CM × scale`) and is readable in both themes
-  and at both viewports; it does not overlap the toolbar, info panel, or mobile
-  dock.
-- Read-only share previews show the HUD; no edit affordances are added.
+- **Rulers** render on the top + left desktop edges and update on pan and zoom;
+  `data-major-label`/`data-minor-label` follow the 1-2-5 cadence (e.g. 20/5 cm at
+  1×, 10/2 cm at ~2×, 200/50 cm at 0.1×); labels are world coordinates, include
+  `0` and negatives (U+2212), and step with the active unit.
+- **Scale Tag** shows a true-length rule (`barPx = lengthCm × PX_PER_CM × scale`),
+  a round length, a quiet cm/in toggle, the live zoom, and the grid-cell size.
+  At 1× cm it reads **20 cm / 100% / Grid 6 cm**.
+- **Grid relationship:** the tag's grid value is derived from the same
+  level-of-detail math as `GridLayer` (`lib/grid.ts`), so the readout and the
+  dots cannot disagree.
+- **Mobile:** rulers hidden; compact tag above the dock; hidden while the info
+  peek/action bar/trays/first-run are present; returns when nothing is selected.
+- **Read-only shares:** rulers (desktop) + tag remain; no edit affordances.
 - No geometry, scene document, share payload, export output or capacity path
-  changes (HUD is derived, view-only).
-- Unit tests cover the formatter/scale math; E2E covers select + units + zoom on
-  desktop + mobile, filtering one stable item/brand.
+  changes (the frame is derived, view-only).
+- Unit tests cover ruler cadence/ticks/grid math and scale-bar truth; E2E covers
+  rulers, tag, units, pan/zoom, mobile yield and read-only on desktop + mobile,
+  filtering one stable item/brand.
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build` green.
-- Touched E2E flows green (desktop + mobile).
-- **Feature demo link** opens the final PR preview with the feature applied
-  (preview URL + exact steps; the HUD state is not shareable), desktop + mobile.
-- **Before/after screenshots** embedded for the visible change: same
+- **Feature demo link** opens the final PR preview with exact steps (the frame
+  reflects transient zoom/selection, so it is not shareable), desktop + mobile.
+- **Before/after screenshots** embedded for every visible change: same
   viewport/theme/state on base `main` and the PR preview, desktop + mobile;
-  video/GIF for the zoom/units interaction.
-- Performance numbers recorded; no regression beyond thresholds; feature catalog
-  + F-19 map updated.
-- No edits to `data/catalog/**`, `public/pedal-assets/**`, `src/catalog/**`,
-  `tools/catalog-*` or other shared/coordinator-only files.
+  video/GIF for the pan/zoom/units interaction.
+- Performance numbers recorded; no regression; docs/feature map updated.
 - One PR; no merge.
-
-## Notes
-
-- **Design direction is owner-approved before implementation.** The designer owns
-  the HUD's placement, typography (mono instrument voice), scale-bar form, and
-  how it coexists with the toolbar/info panel/mobile dock.
-- **Process/rule gaps:** propose the change + the `token-usage-reviewer` to the
-  owner first; do not edit the rules in this PR.
-- Record billed tokens **by class** (builder / vision / code review) in the
-  PR/session summary. Demo links are required; screenshots alone are not enough
-  for interaction features.
 
 ## Design gate
 
-- Designer direction **"Scale Rule"** proposed 2026-10-27; **owner approved before
-  implementation** (item-only v1, integer-percent zoom).
-- `design-reviewer` pass 1 (desktop + mobile, dark + light): **approve-with-changes**
-  — mobile duplicate size line, inverted hierarchy, mobile balance, dark edge,
-  unlabelled mid tick.
-- Pass 2 (same four + zoomed / no-selection / expanded-yield evidence):
-  **approve-with-changes, no blockers** — mobile chip-to-peek gap, desktop bar
-  weight, light border, label/zoom separation, and corrected no-selection
-  evidence. Findings folded as value tweaks inside the approved look; the ≤2-pass
-  cap was reached, so the final renders were verified by the checks (no third
-  pass). Mobile omission: the size row is hidden below 1024px because the info
-  peek already prints it (owner-approved direction, folded reviewer finding).
+- The owner **rejected the first “Scale Rule” chip** and asked for reactive edge
+  rulers + a bottom-right scale corner, using a UX/UI proposal.
+- Designer proposed **“Edge Rule”**; **owner approved** (top+left rulers, corner
+  tag, drop the duplicate W×H, mobile hides the tag when a part is selected,
+  cm/in as a quiet secondary toggle).
+- `design-reviewer` pass 1 (rendered desktop + mobile, dark + light):
+  **approve-with-changes** — ruler/tag measurement agreement, trailing-label
+  clipping, light-theme contrast, tag padding.
+- Pass 2 (full-width/no-selection, pan/origin, zoom, first-run, read-only,
+  mobile selected): **approve-with-changes, no blockers** — trailing label
+  clipping, left-axis optical weight, light minor ticks, tag inset, high-zoom
+  corner content. The ≤2-pass cap was reached; the objective fixes were folded
+  and the remaining nits are disclosed in PR #67 (no third pass).
+- **Mobile omission:** the tag hides while a part is selected because the info
+  peek already owns the bottom band (owner-approved).
 
 ## Verification evidence
 
 - `pnpm lint` clean (2 pre-existing `tools/asset-pipeline/analyze.ts` warnings).
 - `pnpm typecheck` clean.
-- `pnpm test` **862 passed** (94 files) — includes 9 new `measurementHud` tests.
+- `pnpm test` **879 passed** (96 files).
 - `pnpm build` clean.
 - `pnpm exec playwright test e2e/measurement-hud.spec.ts e2e/smoke.spec.ts
-  e2e/info-panel.spec.ts` **38 passed / 1 skipped** (desktop + mobile).
-- Performance (same scene, 1 board + 1 pedal): JS gzip **295.71 → 296.15 kB**
-  (+0.44), CSS gzip **12.07 → 12.38 kB** (+0.31); canvas wheel-zoom **62 → 62 fps**;
-  JS heap **13.6 → 13.6 MB**; picker open median **56 → 59 ms** (5 samples);
-  share link **360 → 358 bytes** (codec untouched). HUD is not on the export
-  stage, so export output is unchanged.
+  e2e/info-panel.spec.ts`: to record after the final run.
+- Performance: to record after the final run (bundle delta, canvas frame time,
+  heap, picker latency, share link).
+- Screenshots: desktop selected + full-width, dark/light; pan/origin; zoom;
+  first-run; read-only; mobile no-selection + selected.
+
+## Notes
+
+- The frame is DOM/SVG screen chrome, **not** Konva and **not** exported; the
+  grid remains the canvas layer and the tag reads its cell size from the shared
+  pure helper.
+- The grid cell stays world-cm (6 cm at 1×); in inch mode the tag shows the
+  equivalent (e.g. `2.36 in`) without changing the geometry.
+- **Process/rule gaps:** propose to the owner + `token-usage-reviewer` first; do
+  not edit shared rules in this PR.
+- Record billed tokens by class (builder / design+vision / code review).

@@ -54,7 +54,7 @@ describe("chooseScaleBar", () => {
 		expect(cm(0.1)).toBe(200);
 		expect(cm(0.25)).toBe(100);
 		expect(cm(0.5)).toBe(50);
-		expect(cm(1)).toBe(25);
+		expect(cm(1)).toBe(20);
 		expect(cm(2)).toBe(10);
 		expect(cm(4)).toBe(5);
 		expect(cm(8)).toBe(2);
@@ -70,6 +70,13 @@ describe("chooseScaleBar", () => {
 		expect(inches.lengthLabel).toBe(10);
 		expect(inches.lengthCm).toBeCloseTo(25.4, 10);
 		expect(inches.units).toBe("in");
+	});
+
+	it("honours the compact mobile budget without lying about the length", () => {
+		const bar = chooseScaleBar(1, "cm", 44);
+		expect(bar.lengthLabel).toBe(10);
+		expect(bar.barPx).toBe(40);
+		expect(bar.barPx).toBeLessThanOrEqual(44);
 	});
 
 	it("is defensive about a non-finite or non-positive scale", () => {

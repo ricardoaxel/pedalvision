@@ -113,6 +113,12 @@
 	--space-5: 24px;
 	--space-6: 32px;
 
+	/* Canvas frame (F-03 "Edge Rule"): top/left ruler thickness and the
+	 * clearance desktop chrome keeps from the frame. Mobile hides the rules, so
+	 * its chrome keeps the base offsets. */
+	--ruler-size: 22px;
+	--chrome-top: calc(var(--ruler-size) + var(--space-2));
+
 	/* Radii — deliberate 2-step scale: controls 8 / cards 12 */
 	--radius-control: 8px;
 	--radius-card: 12px;

@@ -1,97 +1,136 @@
 import { expect, type Page, test } from "@playwright/test";
 import { addBoard, addPedal } from "./picker.ts";
-import { item, shareHash } from "./share.ts";
+import { board, item, shareHash } from "./share.ts";
 
 /**
- * F-03 — Measurement HUD ("Scale Rule"). Runs on the desktop project and the
- * `mobile-chromium` project: the rule is anchored bottom-left on both, rides the
- * mobile info peek, and must stay true-length at every zoom.
+ * F-03 — "Edge Rule": reactive top/left rulers + the bottom-right Scale Tag.
+ * Desktop runs the full frame; mobile runs the corner-only simplification.
  */
 
 const PX_PER_CM = 4;
 
-async function expandDetails(page: Page): Promise<void> {
-	const expand = page.getByTestId("info-expand");
-	if (await expand.isVisible()) await expand.click();
+async function stageBox(page: Page) {
+	const box = await page.getByTestId("stage").boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	return box;
 }
 
-test("reads the selected part's real size and follows the cm/in setting", async ({
+test("desktop rulers show world cm and follow pan + zoom", async ({
 	page,
 }, testInfo) => {
-	const mobile = testInfo.project.name.startsWith("mobile");
+	test.skip(testInfo.project.name.startsWith("mobile"));
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");
-	await addPedal(page, "boss-bd-2-blues-driver");
 
-	const hud = page.getByTestId("measurement-hud");
-	const size = page.getByTestId("measurement-size");
-	await expect(hud).toBeVisible();
-	if (mobile) {
-		// The mobile info peek already prints the size right below the rule; the
-		// HUD deliberately drops the duplicate row.
-		await expect(size).toBeHidden();
-	} else {
-		await expect(size).toContainText("7.3 × 13.02 cm");
-	}
+	const rules = page.getByTestId("edge-rules");
+	await expect(rules).toBeVisible();
+	await expect(rules).toHaveAttribute("data-units", "cm");
+	await expect(rules).toHaveAttribute("data-major-label", "20");
+	await expect(rules).toHaveAttribute("data-minor-label", "5");
+	await expect(rules).toHaveAttribute("data-major-cm", "20");
 
-	// The HUD shares the app-wide unit setting with the info panel.
-	await expandDetails(page);
-	if (mobile) await expect(hud).toBeHidden();
-	await page.getByTestId("info-units-in").click();
-	await expect(hud).toHaveAttribute("data-unit", "in");
-	await expect(page.getByTestId("info-dims")).toContainText("2.87 × 5.13 in");
-	if (!mobile) await expect(size).toContainText("2.87 × 5.13 in");
+	// Pan on empty canvas: labels are world coordinates, so they move.
+	const before = await rules.getAttribute("data-top-labels");
+	const box = await stageBox(page);
+	await page.mouse.move(box.x + box.width * 0.2, box.y + box.height * 0.7);
+	await page.mouse.down();
+	await page.mouse.move(
+		box.x + box.width * 0.2 + 140,
+		box.y + box.height * 0.7 + 90,
+		{ steps: 5 },
+	);
+	await page.mouse.up();
+	await expect
+		.poll(async () => rules.getAttribute("data-top-labels"))
+		.not.toBe(before);
 
-	await page.getByTestId("info-units-cm").click();
-	await expect(page.getByTestId("info-dims")).toContainText("7.3 × 13.02 cm");
-	if (!mobile) await expect(size).toContainText("7.3 × 13.02 cm");
-
-	if (mobile) {
-		await page.getByTestId("info-expand").click();
-		await expect(hud).toBeVisible();
-	}
-});
-
-test("draws a true-length rule and reports the live zoom", async ({ page }) => {
-	await page.goto("/");
-	// An empty mobile scene shows the first-run note, which deliberately
-	// outranks the HUD; add a board so the ambient rule is visible.
-	await addBoard(page, "boss-bcb-1000");
-	const stage = page.getByTestId("stage");
-	const hud = page.getByTestId("measurement-hud");
-	await expect(stage.locator("canvas").first()).toBeVisible();
-	await expect(hud).toBeVisible();
-
-	const zoomBefore = Number(await hud.getAttribute("data-zoom"));
-	expect(zoomBefore).toBe(100);
-
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
+	// Zoom in: the 1-2-5 cadence steps 20 cm → 10 cm.
 	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 	await page.mouse.wheel(0, -400);
-
 	await expect
-		.poll(async () => Number(await hud.getAttribute("data-zoom")))
-		.toBeGreaterThan(zoomBefore);
-
-	const scale = Number(await stage.getAttribute("data-scale"));
-	const zoom = Number(await hud.getAttribute("data-zoom"));
-	const barCm = Number(await hud.getAttribute("data-bar-cm"));
-	const barPx = Number(await hud.getAttribute("data-bar-px"));
-
-	expect(zoom).toBe(Math.round(scale * 100));
-	// The rule is always drawn at its true length: cm × PX_PER_CM × scale.
-	expect(barPx).toBeCloseTo(barCm * PX_PER_CM * scale, 1);
-	expect(barPx).toBeGreaterThan(0);
-	expect(barPx).toBeLessThanOrEqual(120);
+		.poll(async () => Number(await rules.getAttribute("data-major-label")))
+		.toBeLessThan(20);
+	await expect
+		.poll(async () => Number(await rules.getAttribute("data-minor-label")))
+		.toBe(2);
 });
 
-test("read-only shares keep the measurement readout", async ({ page }) => {
-	await page.goto(`/?share=1${shareHash({ boards: [], items: [item("i1")] })}`);
+test("desktop Scale Tag is true-length and the unit toggle is quiet", async ({
+	page,
+}, testInfo) => {
+	test.skip(testInfo.project.name.startsWith("mobile"));
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+
+	const tag = page.getByTestId("scale-tag");
+	await expect(tag).toBeVisible();
+	await expect(tag).toHaveAttribute("data-zoom", "100");
+	await expect(tag).toHaveAttribute("data-units", "cm");
+	await expect(tag).toHaveAttribute("data-length-label", "20");
+	await expect(tag).toHaveAttribute("data-length-cm", "20");
+	await expect(tag).toHaveAttribute("data-bar-px", "80");
+	await expect(tag).toHaveAttribute("data-grid-cm", "6");
+	await expect(page.getByTestId("scale-tag-grid")).toContainText("Grid 6 cm");
+
+	// The drawn rule never lies about the scale.
+	const scale = Number(
+		await page.getByTestId("stage").getAttribute("data-scale"),
+	);
+	const barCm = Number(await tag.getAttribute("data-length-cm"));
+	const barPx = Number(await tag.getAttribute("data-bar-px"));
+	expect(barPx).toBeCloseTo(barCm * PX_PER_CM * scale, 5);
+
+	await page.getByTestId("scale-tag-units").click();
+	await expect(tag).toHaveAttribute("data-units", "in");
+	await expect(tag).toHaveAttribute("data-length-label", "10");
+	await expect(tag).toHaveAttribute("data-length-cm", "25.4");
+	await expect(tag).toHaveAttribute("data-grid-cm", "6");
+	await expect(page.getByTestId("scale-tag-grid")).toContainText(
+		"Grid 2.36 in",
+	);
+
+	await page.getByTestId("scale-tag-units").click();
+	await expect(tag).toHaveAttribute("data-units", "cm");
+});
+
+test("mobile is corner-only: rulers hidden, tag yields to the info peek", async ({
+	page,
+}, testInfo) => {
+	test.skip(!testInfo.project.name.startsWith("mobile"));
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+
+	await expect(page.getByTestId("edge-rules")).toBeHidden();
+	const tag = page.getByTestId("scale-tag");
+	await expect(tag).toBeVisible();
+
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(page.getByTestId("info-panel")).toBeVisible();
+	await expect(tag).toBeHidden();
+
+	await page.getByTestId("info-close").click();
+	await expect(tag).toBeVisible();
+});
+
+test("read-only shares keep the scale frame and the quiet unit toggle", async ({
+	page,
+}, testInfo) => {
+	const hash = shareHash({
+		boards: [board("b1")],
+		items: [item("i1", { boardUid: "b1" })],
+	});
+	await page.goto(`/?share=1${hash}`);
 	await expect(page.getByTestId("share-stamp")).toBeVisible();
-	const hud = page.getByTestId("measurement-hud");
-	await expect(hud).toBeVisible();
-	await expect(hud).toHaveAttribute("data-zoom", "100");
-	// A read-only share measures exactly the same way; no edit controls appear.
-	await expect(hud.locator("button")).toHaveCount(0);
+
+	const rules = page.getByTestId("edge-rules");
+	const tag = page.getByTestId("scale-tag");
+	if (testInfo.project.name.startsWith("mobile")) {
+		await expect(rules).toBeHidden();
+	} else {
+		await expect(rules).toBeVisible();
+	}
+	await expect(tag).toBeVisible();
+	await expect(tag).toHaveAttribute("data-zoom", "100");
+	await page.getByTestId("scale-tag-units").click();
+	await expect(tag).toHaveAttribute("data-units", "in");
 });

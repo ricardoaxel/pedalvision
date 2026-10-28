@@ -1,12 +1,6 @@
 import { Layer, Shape } from "react-konva";
-import { GRID_DOT_RADIUS, GRID_PITCH } from "../styles/theme";
-
-/**
- * The coarser (replacement) grid level is always at or above this on-screen
- * pitch; mid-crossfade the fading finer level dips to half this before it
- * disappears.
- */
-const MIN_GRID_SCREEN_PITCH = 16;
+import { gridLevels } from "../lib/grid";
+import { GRID_DOT_RADIUS } from "../styles/theme";
 
 interface GridDotsProps {
 	step: number;
@@ -65,11 +59,11 @@ interface GridLayerProps {
  *
  * A true-scale, world-anchored grid: the dot spacing is `GRID_PITCH × zoom`
  * screen px, so dots spread/tighten with zoom and stay aligned to the world
- * origin (screen `x`/`y`). When the spacing falls below
- * {@link MIN_GRID_SCREEN_PITCH}, the period doubles (level-of-detail) and the
- * two adjacent levels are **cross-faded** across the transition, so zooming
- * through a threshold ramps the finer level out instead of popping. Dot size
- * stays constant in screen px.
+ * origin (screen `x`/`y`). When the spacing falls below the 16 px floor
+ * (`lib/grid.ts`), the period doubles (level-of-detail) and the two adjacent
+ * levels are **cross-faded** across the transition, so zooming through a
+ * threshold ramps the finer level out instead of popping. Dot size stays
+ * constant in screen px.
  *
  * Drawn imperatively — one `Shape`, one `fill()` per level, no node per dot. To
  * draw in screen coordinates while the stage carries the pan/zoom transform,
@@ -77,8 +71,9 @@ interface GridLayerProps {
  * the layer's coordinate system equal screen px. Dots are recomputed every
  * render from the transform.
  *
- * (A round-metric cell — 24 px = 6 cm at PX_PER_CM 4 — and a finer sub-level
- * when zoomed in are deferred to the snapping/measure task P1-06+.)
+ * The cell size is exposed by `gridCellCm` (lib/grid.ts) so the F-03 Scale Tag
+ * can say how large one grid cell is at the current zoom; the canvas and the
+ * readout share the same math.
  */
 export function GridLayer({
 	color,
@@ -88,12 +83,8 @@ export function GridLayer({
 	x,
 	y,
 }: GridLayerProps) {
-	// Continuous LOD: the number of doublings needed to reach MIN_GRID_SCREEN_PITCH.
-	const raw = GRID_PITCH * scale;
-	const k = Math.max(0, Math.log2(MIN_GRID_SCREEN_PITCH / raw));
-	const level = Math.floor(k);
-	const frac = k - level;
-	const fineStep = raw * 2 ** level;
+	// Continuous LOD shared with the Scale Tag's grid readout (lib/grid.ts).
+	const { fineStepPx: fineStep, frac } = gridLevels(scale);
 
 	return (
 		<Layer

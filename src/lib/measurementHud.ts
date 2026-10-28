@@ -1,19 +1,17 @@
 import { cmToPx, type DisplayUnits, displayToCm } from "./geometry";
 
 /**
- * The measurement HUD's derived values (F-03 "Scale Rule"). Pure so the scale
- * bar's true-length behaviour and the zoom readout are unit-tested without a
- * DOM. cm remains the source of truth: the round bar label is a display-unit
- * candidate, converted back to exact cm with `displayToCm`.
+ * The Scale Tag's derived values (F-03 "Edge Rule"). Pure so the true-length
+ * bar and the zoom readout are unit-tested without a DOM. cm remains the source
+ * of truth: the round bar label is a display-unit candidate, converted back to
+ * exact cm with `displayToCm`.
  */
 
 /**
  * Round lengths offered to the scale rule, in the **active display unit**. The
  * same numbers read as cm or inches; the chosen value is converted to cm.
  */
-export const SCALE_BAR_CANDIDATES = [
-	1, 2, 5, 10, 20, 25, 50, 100, 200,
-] as const;
+export const SCALE_BAR_CANDIDATES = [1, 2, 5, 10, 20, 50, 100, 200] as const;
 
 /** Prefer the largest candidate whose screen length fits this budget. */
 export const SCALE_BAR_MAX_PX = 120;
@@ -43,15 +41,17 @@ export function zoomPercent(scale: number): number {
 export function chooseScaleBar(
 	scale: number,
 	units: DisplayUnits,
+	maxPx = SCALE_BAR_MAX_PX,
 ): ScaleBarReading {
 	const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
+	const budget = Number.isFinite(maxPx) && maxPx > 0 ? maxPx : SCALE_BAR_MAX_PX;
 	const pxFor = (label: number) => cmToPx(displayToCm(label, units), safeScale);
 
 	let chosen: number = SCALE_BAR_CANDIDATES[0];
 	let chosenPx = pxFor(chosen);
 	for (const candidate of SCALE_BAR_CANDIDATES) {
 		const px = pxFor(candidate);
-		if (px > SCALE_BAR_MAX_PX) break;
+		if (px > budget) break;
 		chosen = candidate;
 		chosenPx = px;
 	}

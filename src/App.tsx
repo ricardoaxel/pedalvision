@@ -8,6 +8,7 @@ import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CableSchedulePanel } from "./components/CableSchedulePanel";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
+import { EdgeRules } from "./components/EdgeRules";
 import {
 	EndpointControl,
 	EndpointPlacementOverlay,
@@ -24,8 +25,8 @@ import {
 	PlusIcon,
 	SunIcon,
 } from "./components/icons";
-import { MeasurementHud } from "./components/MeasurementHud";
 import { Picker, type PickerTab } from "./components/Picker";
+import { ScaleTag } from "./components/ScaleTag";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
 import {
@@ -302,8 +303,9 @@ function App() {
 			<StorageAnnouncer readOnly={readOnly} />
 			<div className="app-canvas">
 				<Stage />
-				{/* Ambient scale reference + selected size (F-03 "Scale Rule"). */}
-				<MeasurementHud />
+				{/* Ambient scale frame (F-03 "Edge Rule"): rulers + corner tag. */}
+				<EdgeRules />
+				<ScaleTag />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
 				 * so its presses never reach the canvas gesture handler. Read-only
 				 * shares keep selection + the info panel, but remove every edit affordance. */}
