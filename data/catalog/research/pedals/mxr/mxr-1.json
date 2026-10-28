@@ -142,16 +142,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/680/6691/13196000001.MAIN__61231.1663874799.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m196.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x269px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 47.63 dB. Counted as a source gap."
     },
     "usage": "both",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m196.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x269px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 47.63 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/680/6691/13196000001.MAIN__61231.1663874799.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-analog-chorus",
@@ -278,16 +291,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/629/6423/11234000001.MAIN__89220.1663874795.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m234.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 40.12 dB. Counted as a source gap."
     },
     "usage": "guitar",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m234.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 40.12 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/629/6423/11234000001.MAIN__89220.1663874795.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-chorus-deluxe",
@@ -407,16 +433,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/572/6097/11083000001.MAIN__53416.1663874792.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m83.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.99 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m83.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.99 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/572/6097/11083000001.MAIN__53416.1663874792.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-compressor",
@@ -530,16 +569,24 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/575/10108/M87.MAIN__61433.1676394506.jpg?c=2",
-      "status": "chosen",
-      "note": "Generated flat art (official reference: 1280x1280 gallery image). The official photo has an inseparable white-on-white drop shadow that failed the clean-alpha gate; body colour/control layout measured from the reference. No upscale."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m87.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 47.35 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m87.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 47.35 dB."
+      }
+    ]
   },
   {
     "id": "mxr-bass-di",
@@ -687,16 +734,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/610/6317/11180000001.MAIN__98491.1663874794.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m80.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x251px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 45.97 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m80.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x251px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 45.97 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/610/6317/11180000001.MAIN__98491.1663874794.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-distortion",
@@ -812,16 +872,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/574/6109/11085000001.MAIN__35105.1663874792.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m85.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 43.18 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m85.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 43.18 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/574/6109/11085000001.MAIN__35105.1663874792.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-envelope-filter",
@@ -938,16 +1011,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/571/10098/M82.MAIN__91817.1676394282.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m82.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.91 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m82.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.91 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/571/10098/M82.MAIN__91817.1676394282.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-fuzz-deluxe",
@@ -1063,16 +1149,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/573/6103/11084000001.MAIN__93896.1663874792.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m84.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.81 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m84.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.81 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/573/6103/11084000001.MAIN__93896.1663874792.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-octave-deluxe",
@@ -1188,16 +1287,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/642/6499/11288000001.MAIN__08504.1663874796.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m288.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 41.42 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m288.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 41.42 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/642/6499/11288000001.MAIN__08504.1663874796.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-overdrive",
@@ -1313,16 +1425,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/576/6121/11089000001.MAIN__87674.1663874792.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m89.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 45.14 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m89.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 45.14 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/576/6121/11089000001.MAIN__87674.1663874792.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-preamp",
@@ -1457,16 +1582,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/570/6085/11081000001.MAIN__33843.1663874792.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m81.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 45.84 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m81.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 45.84 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/570/6085/11081000001.MAIN__33843.1663874792.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-bass-synth",
@@ -1603,16 +1741,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2325/11620/M301.MAIN__82591.1746129775.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-mb301.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 43.03 dB. Counted as a source gap."
     },
     "usage": "bass",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-mb301.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 43.03 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2325/11620/M301.MAIN__82591.1746129775.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-blue-box-fuzz",
@@ -1729,16 +1880,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/592/6211/11103000001.MAIN__02046.1663874793.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m103.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.14 dB. Counted as a source gap."
     },
     "usage": "guitar",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m103.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.14 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/592/6211/11103000001.MAIN__02046.1663874793.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-booster-mini",
@@ -1854,16 +2018,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/646/6521/11293000001.MAIN__23166.1663874797.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m293.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x746px, upscaled 1.07x to the 800 master; AVIF q90, PSNR 45.15 dB. Counted as a source gap."
     },
     "usage": "guitar",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m293.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x746px, upscaled 1.07x to the 800 master; AVIF q90, PSNR 45.15 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/646/6521/11293000001.MAIN__23166.1663874797.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-cae-boost-line-driver",
@@ -1980,16 +2157,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/651/6550/11401000001.MAIN__73157.1663874797.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-mc401.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 45.70 dB. Counted as a source gap."
     },
     "usage": "both",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-mc401.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 45.70 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/651/6550/11401000001.MAIN__73157.1663874797.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-cae-boost-overdrive",
@@ -2107,16 +2297,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/652/6556/11402000001.MAIN__49202.1663874797.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-mc402.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x251px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 46.74 dB. Counted as a source gap."
     },
     "usage": "both",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-mc402.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x251px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 46.74 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/652/6556/11402000001.MAIN__49202.1663874797.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-cae-buffer",
@@ -2252,16 +2455,29 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/655/6574/11406000001.MAIN__77746.1663874797.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-mc406.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 451x500px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 44.59 dB. Counted as a source gap."
     },
     "usage": "both",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-mc406.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 451x500px, upscaled 1.60x to the 800 master; AVIF q90, PSNR 44.59 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/655/6574/11406000001.MAIN__77746.1663874797.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-cae-power-system",
@@ -2579,16 +2795,24 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "own",
-      "referenceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2112/10778/MC403.MAIN__04016.1702502300.jpg?c=2",
-      "status": "chosen",
-      "note": "Generated flat art: the official gallery image is a front-panel-only photo (aspect 5.88 vs the 3.38 footprint) and failed the aspect gate; official MC403 dimensions (343 x 102 x 44 mm) and the manual front-panel layout were used. Reference 1280x1280, no upscale."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-mc403.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 600x193px, upscaled 1.33x to the 800 master; AVIF q90, PSNR 44.51 dB. Counted as a source gap."
     },
     "usage": "both",
     "extra": {
       "promotedFrom": "legacy",
       "promotedBatch": "mxr-1"
-    }
+    },
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-mc403.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 600x193px, upscaled 1.33x to the 800 master; AVIF q90, PSNR 44.51 dB."
+      }
+    ]
   },
   {
     "id": "mxr-carbon-copy",
@@ -2704,12 +2928,25 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/607/6299/11169000001.MAIN__89194.1663874794.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m169.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 41.02 dB. Counted as a source gap."
     },
-    "usage": "guitar"
+    "usage": "guitar",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m169.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 41.02 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/607/6299/11169000001.MAIN__89194.1663874794.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-carbon-copy-analog-10th-anniversary",
@@ -2825,13 +3062,26 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/608/6305/11169010001.MAIN__54524.1663874794.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m169a.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.45 dB. Counted as a source gap."
     },
     "usage": "guitar",
-    "variantOf": "mxr-carbon-copy"
+    "variantOf": "mxr-carbon-copy",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m169a.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 42.45 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/608/6305/11169010001.MAIN__54524.1663874794.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-carbon-copy-bright",
@@ -2945,13 +3195,26 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "retailer",
-      "sourceUrl": "https://images.musicstore.de/images/0960/mxr-m269se-carbon-copy-bright_1_GIT0036167-000.jpg",
-      "status": "chosen",
-      "note": "Music Store authorized-retailer product photo, source 960x960; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m169se.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 44.34 dB. Counted as a source gap."
     },
     "status": "discontinued",
-    "usage": "guitar"
+    "usage": "guitar",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m169se.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x590px, upscaled 1.36x to the 800 master; AVIF q90, PSNR 44.34 dB."
+      },
+      {
+        "url": "https://images.musicstore.de/images/0960/mxr-m269se-carbon-copy-bright_1_GIT0036167-000.jpg",
+        "priority": 2,
+        "notes": "Rejected: retailer image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-carbon-copy-deluxe",
@@ -3082,12 +3345,25 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/645/6515/11292000001.MAIN__47804.1663874797.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m292.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x269px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 44.36 dB. Counted as a source gap."
     },
-    "usage": "guitar"
+    "usage": "guitar",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m292.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x269px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 44.36 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/645/6515/11292000001.MAIN__47804.1663874797.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-carbon-copy-mini",
@@ -3203,12 +3479,25 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/649/6538/11299000001.MAIN__13219.1663874797.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m299.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x746px, upscaled 1.07x to the 800 master; AVIF q90, PSNR 40.97 dB. Counted as a source gap."
     },
-    "usage": "guitar"
+    "usage": "guitar",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m299.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x746px, upscaled 1.07x to the 800 master; AVIF q90, PSNR 40.97 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/649/6538/11299000001.MAIN__13219.1663874797.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-classic-108-fuzz",
@@ -3333,12 +3622,25 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "retailer",
-      "sourceUrl": "https://media.sweetwater.com/m/products/image/6a6ea00207Qvn9VFYeBNXdxJHvjROhazk7fberhp.jpg",
-      "status": "chosen",
-      "note": "Sweetwater authorized-retailer product photo, source 2278x3000; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m173.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x483px, upscaled 1.66x to the 800 master; AVIF q95, PSNR 42.74 dB. Counted as a source gap."
     },
-    "usage": "guitar"
+    "usage": "guitar",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m173.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x483px, upscaled 1.66x to the 800 master; AVIF q95, PSNR 42.74 dB."
+      },
+      {
+        "url": "https://media.sweetwater.com/m/products/image/6a6ea00207Qvn9VFYeBNXdxJHvjROhazk7fberhp.jpg",
+        "priority": 2,
+        "notes": "Rejected: retailer image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-classic-108-fuzz-mini",
@@ -3454,12 +3756,25 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/648/6532/11296000001.MAIN__96327.1663874797.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m296.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x746px, upscaled 1.07x to the 800 master; AVIF q95, PSNR 42.07 dB. Counted as a source gap."
     },
-    "usage": "guitar"
+    "usage": "guitar",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m296.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x746px, upscaled 1.07x to the 800 master; AVIF q95, PSNR 42.07 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/648/6532/11296000001.MAIN__96327.1663874797.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   },
   {
     "id": "mxr-clone-looper",
@@ -3599,11 +3914,24 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/1565/8637/11303000001.MAIN__11561.1663874800.jpg?c=2",
-      "status": "chosen",
-      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-303.png",
+      "status": "last-resort",
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official/retailer image had visible matte/edge artefacts the owner rejected). Source 350x199px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 47.66 dB. Counted as a source gap."
     },
-    "usage": "both"
+    "usage": "both",
+    "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-303.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 350x199px, upscaled 2.29x to the 800 master; AVIF q90, PSNR 47.66 dB."
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/1565/8637/11303000001.MAIN__11561.1663874800.jpg?c=2",
+        "priority": 2,
+        "notes": "Rejected: official image had matte/edge artefacts (owner correction)."
+      }
+    ]
   }
 ]
