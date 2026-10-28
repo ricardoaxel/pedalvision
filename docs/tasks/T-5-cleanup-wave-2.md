@@ -1,6 +1,6 @@
 # T-5 — Cleanup wave 2 coordinator (TC-1 + JHS-1 + Walrus-1)
 
-**Phase:** P5 · **Status:** next · **Type:** catalog wave coordinator · **Depends on:** T-4
+**Phase:** P5 · **Status:** in review — PRs #75 (JHS, 26), #77 (TC Electronic, 23), #78 (Walrus Audio, 26); no merges yet; T-6 queued · **Type:** catalog wave coordinator · **Depends on:** T-4
 
 ## Goal
 
