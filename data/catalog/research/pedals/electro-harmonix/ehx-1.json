@@ -2693,6 +2693,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-preacher.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen fallback: flat planner cutout; real candidate rejected as angled."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/Bass-Preacher.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2701,10 +2707,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/Bass-Preacher.jpg",
-      "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-bass-preacher.png",
+      "status": "last-resort",
+      "note": "TEST/REFERENCE: planner fallback. The only real candidate is angled (visible right side wall + cast shadow) per the 1:1 vision audit; no truly flat real source found. Not for merge."
     }
   },
   {
