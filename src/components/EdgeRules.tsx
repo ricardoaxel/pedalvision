@@ -11,7 +11,7 @@ const UNIT_FONT_PX = 11;
 
 /**
  * The left + bottom sheet-margin rulers (F-03 "Sheet Margin"). They live in the
- * 16 px left / 24 px bottom gutters **outside** the stage: same canvas colour,
+ * 24 px left / 24 px bottom gutters **outside** the stage: same canvas colour,
  * one hairline L, short ticks and sparse world-coordinate labels. No fill, no
  * card, no top ruler, no chrome shift.
  *

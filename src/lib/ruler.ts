@@ -32,7 +32,7 @@ export const RULER_LEFT_END_INSET_PX = 40;
 export const RULER_BOTTOM_START_INSET_PX = 28;
 
 /** Bottom labels stop before the bottom-right scale block. */
-export const RULER_TITLE_BLOCK_RESERVE_PX = 320;
+export const RULER_TITLE_BLOCK_RESERVE_PX = 400;
 
 /** Hard guard against pathological viewport/scale combinations. */
 export const RULER_MAX_TICKS = 400;

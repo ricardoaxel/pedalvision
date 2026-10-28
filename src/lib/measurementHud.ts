@@ -1,7 +1,7 @@
 import { cmToPx, type DisplayUnits, displayToCm } from "./geometry";
 
 /**
- * The Scale Tag's derived values (F-03 "Edge Rule"). Pure so the true-length
+ * The Scale Tag's derived values (F-03 "Sheet Margin"). Pure so the true-length
  * bar and the zoom readout are unit-tested without a DOM. cm remains the source
  * of truth: the round bar label is a display-unit candidate, converted back to
  * exact cm with `displayToCm`.

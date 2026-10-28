@@ -5366,7 +5366,7 @@ body {
 
 /* ---------------------------------------------------------------------------
  * Sheet Margin (F-03), owner-approved 2026-10-27.
- * The canvas is a sheet: left + bottom 16/24 px gutters live OUTSIDE the stage,
+ * The canvas is a sheet: left + bottom 24/24 px gutters live OUTSIDE the stage,
  * same canvas colour, one hairline L + short ticks + sparse world coordinates.
  * A flat bottom-right title block carries the true-length scale. No fill, no
  * card, no top ruler, no desktop chrome shift. DOM/SVG only; never exported.
@@ -5560,6 +5560,15 @@ body {
 	/* Stage-local action bars follow the inset; no vertical shift (top stays 0). */
 	.item-action-bar {
 		transform: translateX(-50%) translateX(var(--ruler-gutter-x));
+	}
+
+	/* The endpoint placement capture layer must mirror the stage box, not the
+	 * full canvas pane, or taps land 24 px off the sheet. */
+	.endpoint-placement {
+		top: 0;
+		right: 0;
+		bottom: var(--ruler-gutter-y);
+		left: var(--ruler-gutter-x);
 	}
 
 	/* Bottom-centred notices sit above the sheet margin. */

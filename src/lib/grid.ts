@@ -2,7 +2,7 @@ import { GRID_PITCH } from "../styles/theme";
 import { PX_PER_CM } from "./geometry";
 
 /**
- * The dot grid's level-of-detail math (F-03 "Edge Rule"). Kept pure so the
+ * The dot grid's level-of-detail math (F-03 "Sheet Margin"). Kept pure so the
  * canvas and the Scale Tag's "grid N cm" readout can never disagree.
  */
 

@@ -133,7 +133,7 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 - `pnpm build` clean.
 - Full E2E (clean preview, desktop + mobile): **276 passed / 11 skipped**.
 - **Performance** (same scene, base `a5c63aa` → this branch): main JS
-  **303.16 → 305.15 kB gzip** (+1.99), CSS **12.07 → 12.74 kB gzip** (+0.67);
+  **303.16 → 305.14 kB gzip** (+1.98), CSS **12.07 → 12.75 kB gzip** (+0.68);
   canvas wheel-zoom **62 → 62 fps**; JS heap **12.8 → 13.6 MB** (GC variance);
   picker open median **57 → 54 ms**; share **358 → 359 B**; the frame is
   **21 tick nodes / 8 labels** (sparse 1-2-5). Export unchanged.
