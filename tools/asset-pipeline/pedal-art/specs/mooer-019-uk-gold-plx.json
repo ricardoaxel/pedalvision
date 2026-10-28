@@ -1,0 +1,123 @@
+{
+	"id": "mooer-019-uk-gold-plx",
+	"family": "compact",
+	"widthCm": 4.24,
+	"heightCm": 9.53,
+	"sourceRef": "https://www.mooeraudio.com/products/143.html",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#633892",
+		"radiusCm": 0.25,
+		"sideCm": 0.25,
+		"knobFinish": "black",
+		"footswitchFinish": "metal"
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "knob",
+			"u": 0.32,
+			"v": 0.2,
+			"diameterCm": 1.35,
+			"rotationDeg": 0,
+			"label": "VOL",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.68,
+			"v": 0.2,
+			"diameterCm": 1.35,
+			"rotationDeg": 0,
+			"label": "TREBLE",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.32,
+			"v": 0.34,
+			"diameterCm": 1.35,
+			"rotationDeg": 0,
+			"label": "GAIN",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.68,
+			"v": 0.34,
+			"diameterCm": 1.35,
+			"rotationDeg": 0,
+			"label": "MIDDLE",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.32,
+			"v": 0.48,
+			"diameterCm": 1.35,
+			"rotationDeg": 0,
+			"label": "BASS",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "button",
+			"u": 0.68,
+			"v": 0.48,
+			"diameterCm": 0.6,
+			"label": "CH/CAB",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "led",
+			"u": 0.5,
+			"v": 0.6,
+			"diameterCm": 0.45,
+			"color": "#2F6FD0"
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.5,
+			"v": 0.74,
+			"diameterCm": 1.7
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "MOOER",
+			"u": 0.5,
+			"v": 0.055,
+			"sizeMm": 2.0,
+			"trackingEm": 0.08,
+			"weight": "semibold"
+		},
+		{
+			"role": "model",
+			"value": "019",
+			"u": 0.5,
+			"v": 0.115,
+			"sizeMm": 2.8
+		},
+		{
+			"role": "free",
+			"value": "UK GOLD PLX",
+			"u": 0.5,
+			"v": 0.155,
+			"sizeMm": 1.8
+		}
+	],
+	"jacks": [
+		{
+			"kind": "in",
+			"edge": "right"
+		},
+		{
+			"kind": "out",
+			"edge": "left"
+		},
+		{
+			"kind": "power",
+			"edge": "top"
+		}
+	]
+}

@@ -1,0 +1,3734 @@
+[
+	{
+		"id": "mooer-001-gas-station",
+		"brand": "Mooer",
+		"name": "001 Gas Station",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Dual-channel digital preamp modelled on a boutique modern high-gain German 100 W head, with cab sim.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/001---Gas-Station--65.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/4d329d2b-cb91-4991-a752-2379362505ca.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-002-uk-gold-900",
+		"brand": "Mooer",
+		"name": "002 UK Gold 900",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "British JCM900-style crunch preamp with dual channels and cab sim.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/002---UK-Gold-900-64.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/002---UK-Gold-900-64.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/7d5932a2-9a26-4e44-989b-4fb48fadb918.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-003-power-zone",
+		"brand": "Mooer",
+		"name": "003 Power Zone",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Versatile session/metal preamp covering cleans, blues grit, classic rock crunch and high-gain leads.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/003---Power-Zone--63.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/003---Power-Zone--63.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/8e1842ea-10ba-4bdc-811a-3f6526a8fa2c.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-004-day-tripper",
+		"brand": "Mooer",
+		"name": "004 Day Tripper",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Vox AC30-style 30 W British combo preamp with dual channels and cab sim.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/004---Day-Tripper-185.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/004---Day-Tripper-185.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3df1c85c-740f-4dd0-8494-a63ae14b14c1.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-005-brown-sound-3",
+		"brand": "Mooer",
+		"name": "005 Brown Sound 3",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Third-generation brown-sound signature preamp with a lush clean channel and high-gain drive channel.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/005---Brown-Sound-3--62.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/005---Brown-Sound-3--62.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/0decd9b9-3c2a-4309-8622-c9b67d045a99.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-006-us-classic-deluxe",
+		"brand": "Mooer",
+		"name": "006 US Classic Deluxe",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Classic American 40 W blues-combo preamp with dual channels and cab sim.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/006---US-Classic-Deluxe--61.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/006---US-Classic-Deluxe--61.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/aea9d1fd-ed22-4e16-9eb5-cbe7c51a5923.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-007-regal-tone",
+		"brand": "Mooer",
+		"name": "007 Regal Tone",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Boutique hand-built American vintage-style combo preamp with warm mids and a punchy drive channel.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/products/19.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/19.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/9cc25d62-1078-4aeb-819f-13d467043c98.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-008-cali-mk3",
+		"brand": "Mooer",
+		"name": "008 Cali-MK3",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Modern Californian high-gain preamp, from pure cleans to ultra-high-gain leads.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/products/18.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/18.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/b3bac819-7803-40eb-abb1-f0700524a0dd.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-009-black-knight",
+		"brand": "Mooer",
+		"name": "009 Black Knight",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Modern 100 W signature high-gain head preamp with a two-channel layout.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/009---Black-Night--58.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/009---Black-Night--58.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cbd774a0-adcd-4e83-a0bb-119785133a9a.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-010-two-stones",
+		"brand": "Mooer",
+		"name": "010 Two Stones",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Dual-channel American cascading-gain preamp with pristine cleans and searing leads.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/010---Two-Stone--57.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/010---Two-Stone--57.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/3316e17a-6adc-43b9-8671-831e2f73bf2c.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-011-cali-dual",
+		"brand": "Mooer",
+		"name": "011 Cali-Dual",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Californian dual-rectifier 100 W high-gain preamp sampled from a first-run specimen.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/011---Cali-Dual--46.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/011---Cali-Dual--46.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/461f4bfd-a0da-4205-bf46-c2fe4554345a.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-012-us-gold-100",
+		"brand": "Mooer",
+		"name": "012 US Gold 100",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Hot-rodded British Plexi-style 100 W preamp with a tight low end and rich harmonics.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/012---US-GOLD-100--45.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/012---US-GOLD-100--45.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a0df8434-a4c6-4607-8c7a-e526e135978d.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-013-matchbox",
+		"brand": "Mooer",
+		"name": "013 Matchbox",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Hand-built modified American 30 W combo preamp with fat cleans and vintage overdrive.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/013---Matchbox--44.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/013---Matchbox--44.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/99c98c78-80a3-4097-bc3b-8b43dc22d05b.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-014-taxidea-taxus",
+		"brand": "Mooer",
+		"name": "014 Taxidea Taxus",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Modern-classic preamp with a wide tonal range, from sultry blues to vintage high gain.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/014---Taxidea-Taxus--43.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/014---Taxidea-Taxus--43.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/18a1a454-3e29-4ef2-871c-8c5eae919c5d.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-015-brown-sound",
+		"brand": "Mooer",
+		"name": "015 Brown Sound",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Original MKI brown-sound signature preamp recreating early-90s high-gain tones.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/-015---Brown-Sound-42.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
+				"sourcePage": "https://www.mooeraudio.com/-015---Brown-Sound-42.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/cd5c5788-1a35-49fb-8b71-9d5eadf344de.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-016-phoenix-digital",
+		"brand": "Mooer",
+		"name": "016 Phoenix Digital",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Modern German-style metal preamp with punchy lower mids and a tight low end.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/016---PHOENIX-214.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/016---PHOENIX-214.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ab05ed1d-42c2-4ef9-bd3d-50d72c4dae2e.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-017-cali-mkiv",
+		"brand": "Mooer",
+		"name": "017 Cali MKIV",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Versatile modern Californian combo preamp, shimmering cleans through soaring leads.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/017---CALI-MK-IV-215.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/017---CALI-MK-IV-215.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/a8344f92-6eb5-4a39-a07b-426b5201ee0a.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-018-custom-100",
+		"brand": "Mooer",
+		"name": "018 Custom 100",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Plexi-based boutique 100 W signature-amp preamp with wide EQ and gain range.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/018---CUSTOM-100-216.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://www.premierguitar.com/mooer-releases-the-taxidea-taxus-and-the-brown-sound-preamps",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/233f9cfa-f51f-4d25-b5e0-07b913dcdc2e.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/233f9cfa-f51f-4d25-b5e0-07b913dcdc2e.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/018---CUSTOM-100-216.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/233f9cfa-f51f-4d25-b5e0-07b913dcdc2e.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1",
+			"mockReplaced": "The 018 mock had no image; resolved from the official 018 product gallery."
+		}
+	},
+	{
+		"id": "mooer-019-uk-gold-plx",
+		"brand": "Mooer",
+		"name": "019 UK Gold PLX",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Faithful recreation of a 1967 50 W British Plexi with dual channels and cab sim.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://www.mooeraudio.com/products/143.html + https://www.bonedo.de/artikel/mooer-micro-preamp-019-uk-gold-plx-test/",
+			"confidence": "verified",
+			"note": "Official product photos show side jacks and the top DC jack; the Bonedo review states the input is on the right side and the output on the left."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/products/143.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://www.bonedo.de/artikel/mooer-micro-preamp-019-uk-gold-plx-test/",
+				"kind": [
+					"info"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/05bb8869-2f13-4b5e-8629-8357b721a9ad.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/143.html",
+				"priority": 1,
+				"notes": "Official angled 3/4 product photo (rejected: not top-down)."
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/49543a25-dfe3-429d-af4e-99f6bf3fd22b.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/143.html",
+				"priority": 2,
+				"notes": "Official angled 3/4 product photo (rejected: not top-down)."
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/e4f0f904-be3c-43c0-aa65-536f6aa0c222.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/143.html",
+				"priority": 3,
+				"notes": "Official side/front photo (rejected: not top-down)."
+			},
+			{
+				"url": "https://cdn-image.bonedo.de/wp-media-folder-bonedo//var/www/html/web/app/uploads/2019/04/Mooer_Micro_Preamp_019_UK_Gold_PLX_007FIN.jpg",
+				"sourcePage": "https://www.bonedo.de/artikel/mooer-micro-preamp-019-uk-gold-plx-test/",
+				"priority": 4,
+				"notes": "High-resolution review photo (rejected: angled). No flat top-down real image found; generated art used."
+			}
+		],
+		"imageProvenance": {
+			"kind": "own",
+			"status": "chosen",
+			"referenceUrl": "https://www.mooeraudio.com/products/143.html",
+			"note": "Generated Catalog Specimen flat art from the official 019 product photos (body #633892 sampled from the official image); no usable top-down real image existed, so generated art is the recorded last resort."
+		},
+		"extra": {
+			"generatedArt": "tools/asset-pipeline/pedal-art/specs/mooer-019-uk-gold-plx.json",
+			"promotedFrom": "new",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-020-blueno",
+		"brand": "Mooer",
+		"name": "020 Blueno",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"cab-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Dual-channel preamp sampled from a hand-built 36 W Class A boutique amp.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (official Micro Preamp manual layout)."
+			},
+			{
+				"label": "DCIN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf",
+			"confidence": "verified",
+			"note": "Official Micro Preamp manual layout: input (02) on the right edge, output (03) on the left edge, DCIN on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 300,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 300 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono instrument input and output; dual channels with independent 3-band EQ, gain and volume; cab sim on/off."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off or channel A/B",
+				"note": "CH/CAB button toggles channel and cab sim; footswitch mode selected by holding for 2 s."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital preamp modelling with switchable speaker-cab simulation."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/2c422174-90e8-49b6-ae54-effb3579af9c.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/products/14.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/eda14e55-1504-442b-b332-56db2777a250.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/eda14e55-1504-442b-b332-56db2777a250.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/14.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/eda14e55-1504-442b-b332-56db2777a250.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-wah",
+		"brand": "Mooer",
+		"name": "@Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"wah",
+			"filter"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Auto/Touch wah with LP, BP, HP, SP and Talk modes plus Range and Speed/Gain controls.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 470000,
+				"note": "1/4 in mono input; official photo shows one side jack per edge but does not label IN/OUT, so the edge is omitted."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output; edge not labelled in the official source, so omitted."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official product photo)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://www.mooeraudio.com/products/23.html",
+			"confidence": "verified",
+			"note": "Official product photo shows the top DC jack and one side jack on each edge; the IN/OUT labels are not legible, so the audio edges are omitted."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 120,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 120 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 470000,
+				"outputImpedanceOhm": 100,
+				"note": "Mono audio I/O; Auto/Touch wah modes with LP/BP/HP/SP/Talk filter modes."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch (bypass) + mode toggle + mode select",
+				"note": "Auto/Touch switch, 5-position MODE control, RANGE and SPEED/GAIN knobs."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "Digital auto-wah with 4 wah voices and a Talk effect."
+			},
+			"physical": {
+				"weightG": 140,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "one side jack per edge and top DC (IN/OUT not labelled)",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/products/23.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ec674c93-5500-4328-a2ee-b2b5552ba450.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ec674c93-5500-4328-a2ee-b2b5552ba450.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/23.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ec674c93-5500-4328-a2ee-b2b5552ba450.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-a7",
+		"brand": "Mooer",
+		"name": "A7",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "New Micro ambience reverb with seven algorithms, infinite trail, per-mode presets and USB firmware updates.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 2200000,
+				"note": "1/4 in mono input on the right edge (A7 official manual)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100,
+				"note": "1/4 in mono output on the left edge (A7 official manual)."
+			},
+			{
+				"label": "DC 9V",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (A7 official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://v1.cecdn.yun300.cn/fsite_1804040321/A7%20AMBIANCE_%E5%AE%8C%E6%95%B4%E7%89%88%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf",
+			"confidence": "verified",
+			"note": "A7 official manual panel diagram: input on the right edge, output on the left, DC 9V on the top edge."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 200,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 200 mA; Mooer Micro Power recommended."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 2200000,
+				"outputImpedanceOhm": 100,
+				"dryThrough": "analog",
+				"note": "Mono I/O; seven ambience reverb algorithms, infinite trail and trail-on."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch (bypass) + SAVE button",
+				"tapTempo": false,
+				"note": "SAVE button selects/stores presets; INFINITE trail via footswitch hold."
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "buffered",
+				"note": "Buffer bypass or true bypass (user selectable); firmware updatable via USB."
+			},
+			"usb": {
+				"functions": [
+					"firmware"
+				],
+				"note": "USB port on the bottom edge for firmware updates (connector type not stated)."
+			},
+			"physical": {
+				"weightG": 155,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://v1.cecdn.yun300.cn/fsite_1804040321/A7%20AMBIANCE_%E5%AE%8C%E6%95%B4%E7%89%88%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/products/12.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/bfd24d3c-ccff-4684-b753-f2f3a21f5f77.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/bfd24d3c-ccff-4684-b753-f2f3a21f5f77.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/12.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/bfd24d3c-ccff-4684-b753-f2f3a21f5f77.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-acoustikar",
+		"brand": "Mooer",
+		"name": "Acoustikar",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"acoustic-sim"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Acoustic-guitar simulator with Piezo, Standard and Jumbo modes, level and body controls.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000,
+				"note": "1/4 in mono input on the right edge (official manual)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000,
+				"note": "1/4 in mono output on the left edge (official manual)."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/079caf4a-f54d-42d2-b7cf-751b77d96e2d.pdf",
+			"confidence": "verified",
+			"note": "Acoustikar official manual panel diagram: input right, output left, DC IN top."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 17,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 17 mA."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Three acoustic-simulator modes: Piezo, Standard and Jumbo; Level, Body and Top controls."
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "true",
+				"note": "Digital acoustic-guitar simulator with true bypass."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/079caf4a-f54d-42d2-b7cf-751b77d96e2d.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/Acoustikar--122.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/78d509a1-ab11-493e-b777-91fcbc46db92.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/78d509a1-ab11-493e-b777-91fcbc46db92.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/Acoustikar--122.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/78d509a1-ab11-493e-b777-91fcbc46db92.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-ana-echo",
+		"brand": "Mooer",
+		"name": "Ana Echo",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Fully analog delay with 20–300 ms delay time, echo/intense/rate controls and true bypass.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 470000,
+				"note": "1/4 in mono input on the right edge (official manual)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 470,
+				"note": "1/4 in mono output on the left edge (official manual)."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/4602be4d-8eec-430a-9007-631dfaf996d5.pdf",
+			"confidence": "verified",
+			"note": "Ana Echo official manual panel diagram: input right, output left, DC IN top."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 26,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 26 mA."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument",
+			"note": "One 1/4 in mono input and one 1/4 in mono output."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 470000,
+				"outputImpedanceOhm": 470,
+				"note": "Fully analog delay, 20–300 ms, with Echo, Intense and Rate controls."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Full analog delay circuit with true bypass."
+			},
+			"physical": {
+				"weightG": 160,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/4602be4d-8eec-430a-9007-631dfaf996d5.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/Ana-Echo--147.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/f9e258f2-9360-49bf-9559-a22ccd2cf9b4.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/f9e258f2-9360-49bf-9559-a22ccd2cf9b4.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/Ana-Echo--147.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/f9e258f2-9360-49bf-9559-a22ccd2cf9b4.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-audiofile",
+		"brand": "Mooer",
+		"name": "Audiofile",
+		"category": "pedal",
+		"deviceType": "interface",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"buffer",
+			"cab-sim",
+			"utility"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "Analog Class A pedalboard headphone amplifier and buffer with stereo/mono output and cab sim.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "trs",
+				"channels": 2,
+				"signal": "audio",
+				"level": "instrument",
+				"stereo": true,
+				"impedanceOhm": 2200000,
+				"note": "1/4 in stereo or mono input on the right edge (official manual)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "trs",
+				"channels": 2,
+				"signal": "audio",
+				"level": "instrument",
+				"stereo": true,
+				"impedanceOhm": 24,
+				"note": "1/4 in stereo/mono output on the left edge; 1/8 in stereo headphones via the same output (official manual)."
+			},
+			{
+				"label": "DC 9V",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/7d808f75-ad87-47bf-9060-65c32e6672a1.pdf",
+			"confidence": "verified",
+			"note": "Audiofile official manual panel diagram: input right, output left, DC 9V top."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 50,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9 V DC center-negative, 50 mA; supply not included."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": true,
+			"balanced": false,
+			"level": "instrument",
+			"note": "Stereo or mono 1/4 in input and output; 1/8 in stereo headphone output via the same jack."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": true,
+				"trueStereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 2200000,
+				"outputImpedanceOhm": 24,
+				"headphone": true,
+				"dryThrough": "analog",
+				"note": "Class A analog headphone amp/buffer; stereo or mono input, stereo/mono 1/4 in output, 1/8 in stereo headphones."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Class A analog circuit; 100% true bypass."
+			},
+			"physical": {
+				"weightG": 150,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, output left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/7d808f75-ad87-47bf-9060-65c32e6672a1.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/products/16.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/e6157c51-009a-42b5-a5e8-18beb4644f44.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/e6157c51-009a-42b5-a5e8-18beb4644f44.jpg",
+				"sourcePage": "https://www.mooeraudio.com/products/16.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/e6157c51-009a-42b5-a5e8-18beb4644f44.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	},
+	{
+		"id": "mooer-baby-bomb",
+		"brand": "Mooer",
+		"name": "Baby Bomb",
+		"category": "pedal",
+		"deviceType": "other",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"power-amp"
+		],
+		"widthCm": 4.2,
+		"heightCm": 9.35,
+		"dimensionsSource": "Mooer official product page: 93.5 mm (D) × 42 mm (W) × 52 mm (H); catalog footprint 4.2 × 9.35 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-27",
+		"usage": "guitar",
+		"notes": "30 W micro power-amp pedal for 8–16 Ω cabinets with master and warm/bright controls.",
+		"jacks": [
+			{
+				"label": "IN",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in unbalanced instrument input on the right edge (official manual)."
+			},
+			{
+				"label": "SPEAKER OUT",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "speaker",
+				"note": "1/4 in speaker output for 8–16 Ω cabinets on the left edge (official manual)."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "24 V DC 2 A center-negative input on the top edge (official manual)."
+			}
+		],
+		"jackLayout": {
+			"source": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/7bc74083-b4a0-47c4-816f-dcc937924164.pdf",
+			"confidence": "verified",
+			"note": "Baby Bomb official manual layout: input right, speaker output left, DC IN top."
+		},
+		"power": {
+			"voltage": 24,
+			"acDc": "DC",
+			"currentMa": 2000,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "24 V DC 2 A center-negative supply; 30 W output into 8–16 Ω cabinets. Supply not included.",
+			"powerW": 30
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "speaker",
+			"note": "Unbalanced 1/4 in instrument input and a 1/4 in speaker output for 8–16 Ω cabinets."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "speaker",
+				"note": "30 W maximum output into 8–16 Ω; built-in overcurrent protection."
+			},
+			"circuit": {
+				"type": "digital",
+				"note": "30 W digital micro power amp (Class D-style) with overcurrent protection."
+			},
+			"physical": {
+				"weightG": 144,
+				"depthCm": 9.35,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"jackOrientation": "input right, speaker out left, DC top",
+				"powerJackLocation": "top edge",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://omo-oss-file110.thefastfile.com/portal-saas/new2022113010221252588/cms/file/7bc74083-b4a0-47c4-816f-dcc937924164.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.mooeraudio.com/product/Baby-Bomb--54.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/683ebcaa-0b20-4301-8834-485574b9c8cf.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/683ebcaa-0b20-4301-8834-485574b9c8cf.jpg",
+				"sourcePage": "https://www.mooeraudio.com/product/Baby-Bomb--54.html",
+				"priority": 1,
+				"notes": "Official Mooer product photo, 500×500 JPEG. Body trim ≈159×355 px; upscaled ≈2.25× to the 800 master and gated on the final rendition."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/683ebcaa-0b20-4301-8834-485574b9c8cf.jpg",
+			"status": "chosen",
+			"note": "Official Mooer product image (500×500); upscaled ≈2.25× to the 800/350 AVIF master (above the 2× soft ceiling, explicitly accepted in the single contact-sheet pass and recorded as a source gap)."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "mooer-1"
+		}
+	}
+]
