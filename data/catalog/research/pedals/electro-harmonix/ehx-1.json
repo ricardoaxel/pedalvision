@@ -256,24 +256,25 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://m.media-amazon.com/images/I/81enTUibOcL._AC_SL1500_.jpg",
+        "sourcePage": "https://www.amazon.com.mx/Electro-Harmonix-efectos-guitarra-est%C3%A9reo/dp/B08F5GS8CY",
+        "priority": 1,
+        "notes": "Owner-proposed Amazon image; test/reference only."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
-      },
-      {
-        "url": "https://m.media-amazon.com/images/I/81enTUibOcL._AC_SL1500_.jpg",
-        "sourcePage": "https://www.amazon.com/ELECTRO-HARMONIX-Stereo-Looper-Guitar-Effector/dp/B08F5GS8CY",
-        "priority": 2,
-        "notes": "Evaluated 2026-10-28 (Google Images discovery): 1301x1500 product-gallery render, but high-angle (visible side walls) and matte residue; rejected for the flat top-down gate. Source pattern recorded in the registry."
       }
     ],
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://m.media-amazon.com/images/I/81enTUibOcL._AC_SL1500_.jpg",
+      "referenceUrl": "https://www.amazon.com.mx/Electro-Harmonix-efectos-guitarra-est%C3%A9reo/dp/B08F5GS8CY",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: owner-proposed Amazon product-gallery image (1301x1500, soft matte tol40, AVIF q90). Not for merge."
     }
   },
   {
