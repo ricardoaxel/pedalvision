@@ -1,17 +1,14 @@
-import {
-	type DisplayUnits,
-	displayToCm,
-	type Point,
-	PX_PER_CM,
-} from "./geometry";
+import { RULER_GUTTER } from "../styles/theme";
+import { type DisplayUnits, displayToCm, PX_PER_CM } from "./geometry";
 
 /**
- * The canvas-edge rulers (F-03 "Edge Rule"). Pure 1-2-5 cadence + tick math so
- * the top/left rules and the Scale Tag are deterministic and unit-tested.
+ * The left + bottom sheet-margin rulers (F-03 "Sheet Margin"). Pure 1-2-5
+ * cadence + tick math so the margins and the bottom-right scale block are
+ * deterministic and unit-tested.
  *
- * Labels are **world coordinates** in the active display unit; the tick
- * positions are exact (`cm × PX_PER_CM × scale + stage offset`). The rules are
- * screen chrome: they never rotate with the content and are not exported.
+ * Labels are **world coordinates** in the active display unit; tick positions
+ * are exact (`cm × PX_PER_CM × scale + stage offset`). The rulers are screen
+ * chrome: they never rotate with content and are not exported.
  */
 
 /** 1-2-5 major lengths, in the active display unit. */
@@ -19,11 +16,23 @@ export const RULER_MAJOR_STEPS = [
 	1, 2, 5, 10, 20, 50, 100, 200, 500, 1000,
 ] as const;
 
-/** The chosen major step must be at least this wide on screen. */
-export const RULER_MAJOR_MIN_PX = 64;
+/** Sparse drafting cadence: a major step is at least this wide on screen. */
+export const RULER_MAJOR_MIN_PX = 120;
 
-/** Labels this close to an edge would clip; the tick still draws. */
-export const RULER_LABEL_INSET_PX = 24;
+/** Half-major minor ticks (no minor labels). */
+export const RULER_SUBDIVISIONS = 2;
+
+/** Labels this close to the top/left edge would clip; the tick still draws. */
+export const RULER_LABEL_INSET_PX = 20;
+
+/** The left axis stops labelling this close to the bottom corner cell. */
+export const RULER_LEFT_END_INSET_PX = 40;
+
+/** Bottom labels start after the corner unit cell. */
+export const RULER_BOTTOM_START_INSET_PX = 28;
+
+/** Bottom labels stop before the bottom-right scale block. */
+export const RULER_TITLE_BLOCK_RESERVE_PX = 320;
 
 /** Hard guard against pathological viewport/scale combinations. */
 export const RULER_MAX_TICKS = 400;
@@ -37,7 +46,6 @@ export interface RulerStep {
 	minorLabel: number;
 	/** Minor length in cm. */
 	minorCm: number;
-	/** Minor ticks per major (4 for mantissa 2, 5 otherwise). */
 	subdivisions: number;
 	majorPx: number;
 	minorPx: number;
@@ -51,7 +59,7 @@ export interface RulerTick {
 	label: string;
 	major: boolean;
 	origin: boolean;
-	/** True when this major label fits inside the band (rendered exactly once). */
+	/** True when this major label fits inside the strip (rendered once). */
 	showLabel: boolean;
 }
 
@@ -62,24 +70,26 @@ export interface RulerTicks {
 	minorCm: number;
 	subdivisions: number;
 	units: DisplayUnits;
-	top: RulerTick[];
 	left: RulerTick[];
-	/** Labels that are actually rendered (edge-clipped labels excluded). */
-	topLabels: string[];
+	bottom: RulerTick[];
 	leftLabels: string[];
+	bottomLabels: string[];
 }
 
-/** The leading 1/2/5 mantissa of a step (20 → 2, 500 → 5). */
-function mantissa(value: number): number {
-	const exponent = Math.floor(Math.log10(Math.abs(value)));
-	const normalized = value / 10 ** exponent;
-	return Math.round(normalized);
+export interface RulerInput {
+	/** Stage width (the canvas minus the left gutter). */
+	stageWidth: number;
+	/** Stage height (the canvas minus the bottom gutter). */
+	stageHeight: number;
+	/** Stage transform offsets (screen px). */
+	offsetX: number;
+	offsetY: number;
 }
 
 /**
  * Pick the smallest 1-2-5 major step whose screen length is at least
- * {@link RULER_MAJOR_MIN_PX}. Subdivide 4× for mantissa 2, 5× otherwise, which
- * keeps minor ticks ~16–32 px across the app's 0.1×–8× zoom range.
+ * {@link RULER_MAJOR_MIN_PX}, then subdivide in half. At 1× this is 50/25 cm;
+ * at 0.1× 500/250 cm; at 8× 5/2.5 cm.
  */
 export function chooseRulerStep(scale: number, units: DisplayUnits): RulerStep {
 	const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
@@ -91,14 +101,13 @@ export function chooseRulerStep(scale: number, units: DisplayUnits): RulerStep {
 			break;
 		}
 	}
-	const subdivisions = mantissa(major) === 2 ? 4 : 5;
-	const minor = major / subdivisions;
+	const minor = major / RULER_SUBDIVISIONS;
 	return {
 		majorLabel: major,
 		majorCm: displayToCm(major, units),
 		minorLabel: minor,
 		minorCm: displayToCm(minor, units),
-		subdivisions,
+		subdivisions: RULER_SUBDIVISIONS,
 		majorPx: displayToCm(major, units) * PX_PER_CM * safeScale,
 		minorPx: displayToCm(minor, units) * PX_PER_CM * safeScale,
 	};
@@ -127,6 +136,8 @@ function buildAxisTicks(
 	lengthPx: number,
 	offsetPx: number,
 	step: RulerStep,
+	startInset: number,
+	endInset: number,
 ): RulerTick[] {
 	const pxPerDisplay =
 		(units === "in" ? displayToCm(1, units) : 1) * PX_PER_CM * scale;
@@ -149,35 +160,51 @@ function buildAxisTicks(
 			label: formatRulerLabel(value),
 			major,
 			origin: Math.abs(value) < 1e-9,
-			showLabel:
-				major &&
-				px >= RULER_LABEL_INSET_PX &&
-				px <= safeLength - RULER_LABEL_INSET_PX,
+			showLabel: major && px >= startInset && px <= safeLength - endInset,
 		});
 	}
 	return ticks;
 }
 
 /**
- * Build the top and left ruler ticks for a viewport. `viewport` is the stage
- * transform (screen offset in px); `size` is the canvas pane size.
+ * Build the left and bottom ticks for a desktop stage. `stageWidth`/
+ * `stageHeight` are the inset stage size; the bottom strip spans the full
+ * canvas (stage + left gutter), and the bottom labels reserve the scale block.
  */
 export function buildRulerTicks(
 	scale: number,
 	units: DisplayUnits,
-	size: { width: number; height: number },
-	viewport: Point,
+	input: RulerInput,
 ): RulerTicks {
 	const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
 	const step = chooseRulerStep(safeScale, units);
-	const top = buildAxisTicks(safeScale, units, size.width, viewport.x, step);
-	const left = buildAxisTicks(safeScale, units, size.height, viewport.y, step);
+	const left = buildAxisTicks(
+		safeScale,
+		units,
+		input.stageHeight,
+		input.offsetY,
+		step,
+		RULER_LABEL_INSET_PX,
+		RULER_LEFT_END_INSET_PX,
+	);
+	const bottomLength = input.stageWidth + RULER_GUTTER.x;
+	const bottom = buildAxisTicks(
+		safeScale,
+		units,
+		bottomLength,
+		input.offsetX + RULER_GUTTER.x,
+		step,
+		RULER_BOTTOM_START_INSET_PX,
+		RULER_TITLE_BLOCK_RESERVE_PX,
+	);
 	return {
 		...step,
 		units,
-		top,
 		left,
-		topLabels: top.filter((tick) => tick.showLabel).map((tick) => tick.label),
+		bottom,
 		leftLabels: left.filter((tick) => tick.showLabel).map((tick) => tick.label),
+		bottomLabels: bottom
+			.filter((tick) => tick.showLabel)
+			.map((tick) => tick.label),
 	};
 }

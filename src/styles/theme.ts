@@ -72,6 +72,9 @@ export const CANVAS_FONTS = {
 export const GRID_PITCH = 24;
 export const GRID_DOT_RADIUS = 1;
 
+/** Left/bottom sheet-margin gutters for the F-03 rulers (screen px). */
+export const RULER_GUTTER = { x: 24, y: 24 } as const;
+
 /**
  * Canvas pedal name-label metrics (screen px — counter-scaled at render so the
  * label stays a constant size at any zoom). The chip is hidden below

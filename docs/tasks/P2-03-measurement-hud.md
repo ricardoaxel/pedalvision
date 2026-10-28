@@ -1,21 +1,26 @@
-# F-03 / P2-03: Measurement HUD — “Edge Rule”
+# F-03 / P2-03: Measurement HUD — “Sheet Margin”
 
 **Phase:** 1 · **Status:** in review — PR #67 · **Model:** light
 
 ## Goal
 
-Make true scale legible while working. The original bottom-left “Scale Rule”
-chip was **rejected by the owner** as low-value; this direction replaces it with
-a drafting-mat frame:
+Make true scale legible without putting chrome on the drawing. The owner rejected
+the first “Scale Rule” chip and then the heavier “Edge Rule” frame; this is the
+owner-approved **“Sheet Margin”**:
 
-1. **Reactive top + left rulers** that show the viewport's cm/in span and update
-   live with pan and zoom (1-2-5 cadence, world coordinates, origin + negatives).
-2. A **bottom-right Scale Tag** (flush title block) with a true-length rule, the
-   round length, a quiet **cm/in toggle**, the live zoom, and the current
-   **grid-cell size** (“Grid 6 cm”) so the dot grid relates to real scale.
-3. Mobile is **corner-only**; the tag hides while the info peek/action bar/trays
-   are up. Read-only shares keep the frame. `Settings.units` is reused; cm stays
-   canonical; nothing is persisted, exported or shared.
+1. **Left + bottom rulers only**, in a **24 px left / 24 px bottom gutter outside
+   the stage** (same canvas colour, no filled band). One 1 px L hairline, short
+   ticks and sparse 1-2-5 world-coordinate labels; unit `cm` once in the
+   bottom-left corner.
+2. A flat **bottom-right scale block** flush in the bottom margin: true-length
+   bar → round length → quiet `cm · in` pair → zoom → grid cell. No fill, radius
+   or shadow; it is a title block, not a card.
+3. **No desktop chrome shift** (only left-anchored chrome aligns to the wider
+   margin); the canvas keeps its base chrome offsets.
+4. Mobile: no margins/rulers; a tiny **bottom-right one-line readout** above the
+   dock, hidden while the info peek/action bar/trays are up.
+5. Reuse `Settings.units`; cm stays canonical; derived/view-only; read-only
+   shares keep the sheet; nothing is persisted, exported or shared.
 
 Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
@@ -28,7 +33,8 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 - `src/lib/geometry.ts`, `src/state/viewport.ts`, `src/state/settings.ts`,
   `src/canvas/Stage.tsx`, `src/canvas/GridLayer.tsx`, `src/lib/grid.ts`,
   `src/lib/ruler.ts`, `src/lib/measurementHud.ts`,
-  `src/components/EdgeRules.tsx`, `src/components/ScaleTag.tsx`
+  `src/components/EdgeRules.tsx`, `src/components/ScaleTag.tsx`,
+  `src/styles/tokens.css`, `src/styles/theme.ts`
 
 ## Workstream / boundaries
 
@@ -43,115 +49,106 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 
 ## Constraints
 
-- **cm is the source of truth.** Rulers/tag mirror `cmToDisplay`; geometry and
-  scene data are untouched. Zoom/pan stay on the stage transform only.
+- **cm is the source of truth.** The margins/tag mirror `cmToDisplay`; geometry
+  and scene data are untouched. Zoom/pan stay on the stage transform only.
 - **Reuse `Settings.units`** (one app-wide setting); no second unit state.
 - **No new dependencies.** DOM/SVG + existing React/Konva only.
-- **Read-only shares** keep the frame; no edit affordances are added.
+- **Read-only shares** keep the sheet; no edit affordances are added.
 - **Design gate:** designer proposal → owner approval → implement →
   ≤2 `design-reviewer` passes (desktop + mobile, dark + light) → fold findings.
 - **Code review:** ≤1 light pass; reuse the reviewer session; tests are the
   re-check.
-- **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review ≤300k;
-  task hard ≤1.1M; 6 h active.
-- **Performance guardrail:** record bundle delta, picker/canvas frame time,
-  memory and share/export size; no regression.
+- **Budget:** the owner explicitly approved proceeding despite the task being
+  over its 1.1M hard cap after two direction changes.
+- **Performance guardrail:** record bundle delta, canvas frame time, memory and
+  share size; no regression.
 - **Docs update:** public feature catalog + the F-19 QA impact map.
 - **No total-count E2E assertions:** filter a stable item/brand.
 
 ## Steps
 
-1. Restate scope + executable acceptance criteria.
-2. Run the designer proposal; **owner approved “Edge Rule”** (mobile hide-when-
-   selected; quiet cm/in toggle) before implementation.
-3. Implement: `lib/grid.ts`, `lib/ruler.ts`, `EdgeRules`, `ScaleTag`; refactor
-   `GridLayer` to share the grid-cell math; replace the old chip; shift desktop
-   chrome clear of the frame.
-4. Add tests; run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
-5. Run the touched E2E on desktop + mobile.
-6. Run the ≤2 `design-reviewer` passes on rendered desktop + mobile, dark +
-   light; fold findings.
-7. Rebase onto the verified post-merge `main`; re-run checks.
-8. Keep **one PR (#67)** with the standard sections + feature demo link; no merge.
+1. Designer “Sheet Margin” proposal; **owner approved** (left+bottom 16/24 →
+   execution review widened the left to 24; corner label + block toggle;
+   bottom-right mobile readout).
+2. Implement: `lib/ruler.ts` left/bottom, `EdgeRules`, `ScaleTag`, stage inset,
+   base chrome offsets, tokens/theme, tests.
+3. Run `pnpm lint && pnpm typecheck && pnpm test && pnpm build`.
+4. Run the full E2E on a clean preview (desktop + mobile).
+5. Run the ≤2 `design-reviewer` passes; fold findings.
+6. Run one light code-review pass; re-run the checks + full E2E.
+7. Keep **one PR (#67)** with the standard sections + feature demo link; no merge.
 
 ## Acceptance (executable)
 
-- **Rulers** render on the top + left desktop edges and update on pan and zoom;
-  `data-major-label`/`data-minor-label` follow the 1-2-5 cadence (e.g. 20/5 cm at
-  1×, 10/2 cm at ~2×, 200/50 cm at 0.1×); labels are world coordinates, include
-  `0` and negatives (U+2212), and step with the active unit.
-- **Scale Tag** shows a true-length rule (`barPx = lengthCm × PX_PER_CM × scale`),
-  a round length, a quiet cm/in toggle, the live zoom, and the grid-cell size.
-  At 1× cm it reads **20 cm / 100% / Grid 6 cm**.
-- **Grid relationship:** the tag's grid value is derived from the same
-  level-of-detail math as `GridLayer` (`lib/grid.ts`), so the readout and the
-  dots cannot disagree.
-- **Mobile:** rulers hidden; compact tag above the dock; hidden while the info
-  peek/action bar/trays/first-run are present; returns when nothing is selected.
-- **Read-only shares:** rulers (desktop) + tag remain; no edit affordances.
-- No geometry, scene document, share payload, export output or capacity path
-  changes (the frame is derived, view-only).
-- Unit tests cover ruler cadence/ticks/grid math and scale-bar truth; E2E covers
-  rulers, tag, units, pan/zoom, mobile yield and read-only on desktop + mobile,
-  filtering one stable item/brand.
+- **Left + bottom rulers** render outside the stage; `data-gutter-x/y = 24`,
+  `data-major-label = 50` / `data-minor-label = 25` at 1× cm; labels are world
+  coordinates (pan with content, `0` + U+2212 negatives); no top ruler.
+- **No canvas occlusion:** the stage is inset by the gutters; a board/item at
+  world (0,0) is fully visible.
+- **Sparse cadence:** major 1-2-5 labels ≥120 px apart; minors at half; labels
+  step with zoom and units.
+- **Flat scale block:** true-length bar (`barPx = lengthCm × PX_PER_CM × scale`),
+  round length, quiet `cm · in` pair, zoom, grid cell; no fill/radius/shadow;
+  at 1× cm it reads **20 / cm · in / 100% / grid 6 cm**.
+- **Grid relationship:** the block reads the same LOD math as `GridLayer`
+  (`lib/grid.ts`), so the dots and the readout cannot disagree.
+- **No desktop chrome shift:** scene plate/toolbar/first-run/panels keep their
+  base top offsets; only left-anchored chrome aligns to the 24 px margin.
+- **Mobile:** no rulers; compact bottom-right readout with the unit pair; hidden
+  while the info peek/action bar/trays/first-run/picker are up.
+- **Read-only shares:** desktop sheet + block, mobile readout; no edit
+  affordances.
+- Unit tests cover cadence/ticks/grid/scale-bar truth; E2E covers rulers,
+  pan/zoom, units, mobile yield, read-only on desktop + mobile, filtering one
+  stable item/brand.
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build` green.
-- **Feature demo link** opens the final PR preview with exact steps (the frame
-  reflects transient zoom/selection, so it is not shareable), desktop + mobile.
-- **Before/after screenshots** embedded for every visible change: same
-  viewport/theme/state on base `main` and the PR preview, desktop + mobile;
-  video/GIF for the pan/zoom/units interaction.
-- Performance numbers recorded; no regression; docs/feature map updated.
+- **Feature demo link** opens the final PR preview with exact steps (the sheet
+  reflects transient zoom/selection, so it is not shareable).
+- **Before/after screenshots** embedded for the desktop + mobile, dark + light,
+  plus pan/origin, zoom, first-run and read-only.
+- Performance recorded; no regression; feature map updated.
 - One PR; no merge.
 
 ## Design gate
 
-- The owner **rejected the first “Scale Rule” chip** and asked for reactive edge
-  rulers + a bottom-right scale corner, using a UX/UI proposal.
-- Designer proposed **“Edge Rule”**; **owner approved** (top+left rulers, corner
-  tag, drop the duplicate W×H, mobile hides the tag when a part is selected,
-  cm/in as a quiet secondary toggle).
-- `design-reviewer` pass 1 (rendered desktop + mobile, dark + light):
-  **approve-with-changes** — ruler/tag measurement agreement, trailing-label
-  clipping, light-theme contrast, tag padding.
-- Pass 2 (full-width/no-selection, pan/origin, zoom, first-run, read-only,
-  mobile selected): **approve-with-changes, no blockers** — trailing label
-  clipping, left-axis optical weight, light minor ticks, tag inset, high-zoom
-  corner content. The ≤2-pass cap was reached; the objective fixes (label
-  visibility in the tick model, ink labels, tick hierarchy, 44 px unit target,
-  action-bar yield) were folded and the remaining nits are disclosed in PR #67
-  (no third pass).
-- **Mobile omission:** the tag hides while a part is selected because the info
-  peek already owns the bottom band (owner-approved).
+- Owner rejected the first **“Scale Rule”** chip and then the **“Edge Rule”**
+  frame; approved **“Sheet Margin”** (left + bottom, outside the canvas,
+  discreet, no chrome shift).
+- `design-reviewer` pass 1 (desktop + mobile, dark + light):
+  **approve-with-changes** — left gutter too tight, light frame too faint, title
+  bar heavy/off-baseline, unit toggle undiscoverable, mobile flush-right.
+- Pass 2: **desktop dark approve**; **light / mobile approve-with-changes** —
+  axis labels too faint, unit toggle absent on mobile, corner `cm` hugging the
+  edge, two duplicate unit toggles with the info rail. Folded: left gutter
+  24 px, light labels to ink, `cm · in` pair on mobile, corner unit aligned,
+  static unit in the block when the info panel owns the toggle. The ≤2-pass cap
+  was reached; no third pass. Remaining nits (title-block bar/axis near-double
+  line; intentional L-shape) are disclosed in PR #67.
 
 ## Verification evidence
 
 - `pnpm lint` clean (2 pre-existing `tools/asset-pipeline/analyze.ts` warnings).
 - `pnpm typecheck` clean.
-- `pnpm test` **879 passed** (96 files) — 26 new ruler/grid/scale-bar tests.
+- `pnpm test` **880 passed** (96 files).
 - `pnpm build` clean.
-- `pnpm exec playwright test e2e/measurement-hud.spec.ts e2e/smoke.spec.ts
-  e2e/info-panel.spec.ts` (desktop + mobile): **38 passed / 5 skipped**
-  (the skips are the deliberate desktop/mobile `test.skip` branches). The wider
-  affected set (`+ export`, `selection`, `picker-choka`): **67 passed / 6 skipped**.
-- **Performance** (same scene, base `83ef9b0` → this branch): main JS
-  **303.16 → 305.04 kB gzip** (+1.88), CSS **12.07 → 12.73 kB gzip** (+0.66);
-  canvas wheel-zoom **62 → 62 fps**; JS heap **12.8 → 9.5 MB** (lower; GC
-  variance); picker open median **57 → 59 ms** (5 samples); share link
-  **358 → 359 B**; the frame adds **102 tick nodes / 25 labels**. Export is
-  unchanged (the frame is not on the export stage).
-- Screenshots: desktop selected + full-width, dark/light; pan/origin; zoom;
+- Full E2E (clean preview, desktop + mobile): **276 passed / 11 skipped**.
+- **Performance** (same scene, base `a5c63aa` → this branch): main JS
+  **303.16 → 305.15 kB gzip** (+1.99), CSS **12.07 → 12.74 kB gzip** (+0.67);
+  canvas wheel-zoom **62 → 62 fps**; JS heap **12.8 → 13.6 MB** (GC variance);
+  picker open median **57 → 54 ms**; share **358 → 359 B**; the frame is
+  **21 tick nodes / 8 labels** (sparse 1-2-5). Export unchanged.
+- Screenshots: desktop full-width + selected, dark/light; pan/origin; zoom;
   first-run; read-only; mobile no-selection + selected.
 
 ## Notes
 
-- The frame is DOM/SVG screen chrome, **not** Konva and **not** exported; the
-  grid remains the canvas layer and the tag reads its cell size from the shared
-  pure helper.
-- The grid cell stays world-cm (6 cm at 1×); in inch mode the tag shows the
-  equivalent (e.g. `2.36 in`) without changing the geometry.
-- **Endpoint placement no longer auto-selects** the new endpoint: with the frame
-  inset, the delete bar could land over a nearby pedal's out jack and swallow the
-  first patch drag. The user still selects the tag to delete it.
+- The sheet margins are DOM/SVG screen chrome, **not** Konva and **not**
+  exported. The dot grid stays the canvas layer; the block reads its cell size
+  from the shared pure helper.
+- The grid cell stays world-cm (6 cm at 1×); in inch mode the block shows the
+  equivalent (`2.36 in`) without changing the geometry.
+- Endpoint placement no longer auto-selects the new endpoint (the delete bar
+  could cover a nearby jack with the frame inset); select the tag to delete it.
 - **Process/rule gaps:** propose to the owner + `token-usage-reviewer` first; do
   not edit shared rules in this PR.
-- Record billed tokens by class (builder / design+vision / code review).
+- Billed tokens by class are recorded in PR #67.

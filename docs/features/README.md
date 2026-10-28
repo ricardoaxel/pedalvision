@@ -51,7 +51,7 @@ source files; tests are the unit specs that guard the logic.
 | F10 | Share links + read-only preview + save a copy | Send a layout without an account | `lib/shareLink.ts`, `state/share.ts`, `state/readOnly.ts`, `state/library.ts`, `components/SharePanel.tsx`, `components/ShareView.tsx` | `shareLink.test.ts`, `shareLink.demo.test.ts`, `readOnly.test.ts`, `library.test.ts` | `share.spec.ts`, `cables.spec.ts`, `history.spec.ts`, `storage-fallback.spec.ts` |
 | F11 | Responsive desktop/mobile chrome | Full function on phone and desktop | `App.tsx`, `components/Picker.tsx`, panels/trays, `styles/tokens.css` | `toolbarNav.test.ts` | `picker.spec.ts`, `touch.spec.ts`, mobile cases in `export`/`cable-schedule`/`info-panel`/`scenes` |
 | F12 | Cables: drag-connect, endpoints, schedule | Plan the patch, not just the parts | `state/scene.ts` (cables), `state/cableDrag.ts`, `state/endpointDrag.ts`, `state/endpointPlacement.ts`, `canvas/CableLayer.tsx`, `canvas/EndpointLayer.tsx`, `lib/jackAnchor.ts`, `lib/cablePath.ts`, `lib/cableLength.ts`, `lib/cableSummary.ts`, `components/CableSchedulePanel.tsx` | `cables.test.ts`, `cableDrag.test.ts`, `jackAnchor.test.ts`, `cablePath.test.ts`, `cableLength.test.ts`, `cableSummary.test.ts`, `exportScene.test.ts` | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
-| F-03 | Edge Rule: reactive rulers + Scale Tag | Reads real cm at any zoom; the sheet stays true to scale | `components/EdgeRules.tsx`, `components/ScaleTag.tsx`, `lib/ruler.ts`, `lib/grid.ts`, `lib/measurementHud.ts` | `ruler.test.ts`, `grid.test.ts`, `measurementHud.test.ts` | `measurement-hud.spec.ts` |
+| F-03 | Sheet Margin: outside left+bottom rulers + flat scale block | Reads real cm at any zoom; the drawing sheet stays true to scale | `components/EdgeRules.tsx`, `components/ScaleTag.tsx`, `lib/ruler.ts`, `lib/grid.ts`, `lib/measurementHud.ts` | `ruler.test.ts`, `grid.test.ts`, `measurementHud.test.ts` | `measurement-hud.spec.ts` |
 | — | Info panel + asset renditions | Right details and imagery at each size | `components/InfoPanel.tsx`, `components/PartDrawing.tsx`, `components/partImage.ts`, `lib/partInfo.ts`, `lib/cdn.ts`, `canvas/loadImage.ts`, `canvas/useImage.ts` | `partInfo.test.ts`, `cdn.test.ts`, `loadImage.test.ts`, `imageStatus.test.ts` | `info-panel.spec.ts`, `picker.spec.ts`, `picker-choka.spec.ts` |
 | — | Capacity budgets | Honest limits, never a silent failure | `lib/capacity.ts`, `components/CapacityAnnouncer.tsx`, `scene.ts` caps | `capacity.test.ts`, `capacity.images.test.ts`, `capacityGuards.test.ts` | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | — | First-run guidance | Empty scene tells you where to start | `components/FirstRunHint.tsx`, `lib/firstRun.ts`, `lib/focus.ts` | `firstRun.test.ts` | `first-run.spec.ts` |
@@ -94,18 +94,18 @@ graph cap, the share payload/version or the "Patch Drafting" direction.
   The 4 cm padding and the 16.7 MP / 8192 px clamps are unchanged; cable
   geometry, share payload/version and the graph cap are untouched.
 
-### F-03 — Edge Rule (P2-03)
+### F-03 — Sheet Margin (P2-03)
 
-A drafting-mat frame, not a floating chip. **Top + left rulers** show the
-viewport's cm/in span with a 1-2-5 cadence and **world coordinates** (they pan
-with content, including `0` and negatives). A flush **bottom-right Scale Tag**
-carries a true-length rule, the round length, a quiet cm/in toggle, the live
-zoom, and the **grid-cell size** (“Grid 6 cm”) so the dot grid relates to real
-scale. Derived and view-only — `cm` stays canonical, the labels follow
-`Settings.units`, and nothing is persisted, exported or shared. Mobile is
-corner-only; the tag yields to the info peek, action bar, trays and first-run.
-The old selected-W×H chip was rejected by the owner; part size lives in the info
-panel.
+A drawing-sheet margin, not a HUD. **Left + bottom rulers** live in 24 px
+gutters **outside the stage** (same canvas colour, no filled band): one 1 px L
+hairline, short ticks and sparse 1-2-5 **world coordinates** (`0` + negatives,
+pan with content). A flat **bottom-right scale block** carries a true-length
+bar, round length, a quiet `cm · in` pair, zoom and the **grid-cell size**
+(“grid 6 cm”). No desktop chrome shift. Derived and view-only — `cm` stays
+canonical, labels follow `Settings.units`, nothing is persisted, exported or
+shared. Mobile is full-bleed with a tiny bottom-right readout, hidden while the
+info peek/action bar/trays are up. The selected-W×H chip was rejected by the
+owner; part size lives in the info panel.
 
 ### F-19 — This map
 
@@ -134,7 +134,7 @@ feature PRs.
 | **Capacity** | `capacity.ts`, `scene.ts` guards, `CapacityAnnouncer.tsx`, picker/export/scene UI | Scene-wide counts + distinct images + graph (cables + endpoints) | `capacity.spec.ts` (desktop + mobile), `share.spec.ts` (over-cap hydration), `export.spec.ts` (large-export notice) |
 | **Storage failure/backup** | `storageHealth.ts`, `sceneBackup.ts`, `StorageNotice.tsx`, `library.ts` | Live scene → `SceneDocument` v1 JSON download; no writes | `storage-fallback.spec.ts` (desktop + mobile) |
 | **Info panel / asset loading** | `InfoPanel.tsx`, `partInfo.ts`, `partImage.ts`, `cdn.ts`, `loadImage.ts`, `useImage.ts` | Image URLs are derived from the catalog entry, not stored | `info-panel.spec.ts` (desktop + mobile), `picker.spec.ts` (CORS/cache self-heal), `picker-choka.spec.ts` (AVIF) |
-| **Edge Rule / rulers + Scale Tag** | `EdgeRules.tsx`, `ScaleTag.tsx`, `lib/ruler.ts`, `lib/grid.ts`, `lib/measurementHud.ts` → `useViewport` / `useSettings` | Derived only — never stored, exported or shared | `measurement-hud.spec.ts` (desktop + mobile), `smoke.spec.ts` |
+| **Sheet Margin / rulers + scale block** | `EdgeRules.tsx`, `ScaleTag.tsx`, `lib/ruler.ts`, `lib/grid.ts`, `lib/measurementHud.ts` → `useViewport` / `useSettings` | Derived only — never stored, exported or shared | `measurement-hud.spec.ts` (desktop + mobile), `smoke.spec.ts` |
 | **First-run** | `FirstRunHint.tsx`, `firstRun.ts`, `focus.ts` | One-way localStorage `pedalvision.firstRun.v1` | `first-run.spec.ts` (desktop + mobile) |
 | **Mobile/touch chrome** | `App.tsx`, responsive CSS, bottom tabs/trays, 44 px targets | Same scene/document | `touch.spec.ts`, `cables-touch.spec.ts`, mobile project runs listed above |
 
@@ -157,7 +157,7 @@ change is user-visible.
 | **Capacity constants / guards** | `src/lib/capacity.ts`, `src/state/scene.ts`, `src/components/CapacityAnnouncer.tsx` | add, duplicate, board add, over-cap load, export warning | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | **Picker / filtering / catalog loading** | `src/components/Picker.tsx`, `src/components/pickerFilter.ts`, `src/catalog/load.ts`, `src/lib/cdn.ts`, `src/canvas/loadImage.ts` | every place workflow, asset renditions | `picker.spec.ts`, `picker-choka.spec.ts` |
 | **Info panel / part info / image loading** | `src/components/InfoPanel.tsx`, `src/lib/partInfo.ts`, `src/components/partImage.ts`, `src/canvas/useImage.ts` | selection readout, asset sizes, CORS fallback | `info-panel.spec.ts`, `picker.spec.ts` |
-| **Edge Rule / rulers / units / zoom readout** | `src/components/EdgeRules.tsx`, `src/components/ScaleTag.tsx`, `src/lib/ruler.ts`, `src/lib/grid.ts`, `src/lib/measurementHud.ts`, `src/canvas/GridLayer.tsx`, `src/App.tsx`, `src/index.css`, `src/styles/tokens.css` | canvas pan/zoom, units, read-only shares, mobile peek, grid LOD | `measurement-hud.spec.ts`, `smoke.spec.ts`, `info-panel.spec.ts` |
+| **Sheet Margin / rulers / units / zoom readout** | `src/components/EdgeRules.tsx`, `src/components/ScaleTag.tsx`, `src/lib/ruler.ts`, `src/lib/grid.ts`, `src/lib/measurementHud.ts`, `src/canvas/GridLayer.tsx`, `src/App.tsx`, `src/index.css`, `src/styles/tokens.css` | canvas pan/zoom, units, read-only shares, mobile peek, grid LOD | `measurement-hud.spec.ts`, `smoke.spec.ts`, `info-panel.spec.ts` |
 | **First-run / boot chrome** | `src/components/FirstRunHint.tsx`, `src/lib/firstRun.ts`, `src/lib/focus.ts` | empty scene, storage notice precedence | `first-run.spec.ts`, `storage-fallback.spec.ts` |
 | **Responsive CSS / mobile chrome** | `src/App.tsx`, `src/styles/**`, responsive cases in `src/components/**` | picker, trays, action bars, touch targets | mobile project of `picker`/`export`/`cable-schedule`/`info-panel`/`scenes`; `touch.spec.ts` |
 | **Catalog data/images** — **catalog sessions only** (a feature PR never edits catalog data) | `data/catalog/**`, `public/pedal-assets/**`, `tools/catalog-*` | catalog picker/canvas/info/export/share | `picker-choka.spec.ts`, `info-panel.spec.ts` (+ `catalog:ci`); a feature PR that only *consumes* an entry runs `picker.spec.ts` for one stable filtered item/brand |

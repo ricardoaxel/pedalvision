@@ -5365,11 +5365,16 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Canvas frame (F-03) — "Edge Rule", owner-approved 2026-10-27.
- * Top/left true-scale coordinate rules + a flush bottom-right Scale Tag.
- * DOM/SVG screen chrome only: never Konva, never exported. The rules are
- * decorative to assistive tech; the tag carries the readable scale.
+ * Sheet Margin (F-03), owner-approved 2026-10-27.
+ * The canvas is a sheet: left + bottom 16/24 px gutters live OUTSIDE the stage,
+ * same canvas colour, one hairline L + short ticks + sparse world coordinates.
+ * A flat bottom-right title block carries the true-length scale. No fill, no
+ * card, no top ruler, no desktop chrome shift. DOM/SVG only; never exported.
  * ------------------------------------------------------------------------- */
+
+.app-canvas {
+	background-color: var(--color-canvas-bg);
+}
 
 .edge-rules {
 	position: absolute;
@@ -5382,13 +5387,8 @@ body {
 	display: block;
 }
 
-.edge-rules__band,
-.edge-rules__corner {
-	fill: var(--color-surface);
-}
-
 .edge-rules__edge {
-	stroke: var(--color-border-strong);
+	stroke: var(--color-ruler-line);
 	stroke-width: 1;
 	shape-rendering: crispEdges;
 }
@@ -5399,60 +5399,55 @@ body {
 	shape-rendering: crispEdges;
 }
 
-.edge-rules__tick--major,
 .edge-rules__tick--origin {
 	stroke: var(--color-ink);
 }
 
 .edge-rules__label {
-	fill: var(--color-ink);
+	fill: var(--color-ink-muted);
 	font-family: var(--font-mono);
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
 	font-variant-numeric: tabular-nums;
 }
 
+/* Light labels carry the only functional reading of the margin; full ink keeps
+ * them legible without changing the hairline/ticks. */
+[data-theme="light"] .edge-rules__label {
+	fill: var(--color-ink);
+}
+
 .edge-rules__unit {
 	fill: var(--color-ink-muted);
 	font-family: var(--font-mono);
-	font-size: 9px;
 	letter-spacing: var(--tracking-caps);
 }
 
+/* Flat title block inside the bottom margin — no fill, radius, shadow or card. */
 .scale-tag {
 	position: absolute;
 	right: 0;
 	bottom: 0;
 	z-index: 1;
-	/* Readout chrome only: the unit toggle re-enables itself. Canvas pan and
-	 * deselect must still reach the stage under the bottom-right corner. */
-	pointer-events: none;
 	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	min-width: 206px;
-	padding: 6px var(--space-3) 8px;
-	color: var(--color-ink);
-	background-color: var(--color-surface);
-	border-top: 1px solid var(--color-border);
-	border-left: 1px solid var(--color-border);
-	border-radius: var(--radius-control) 0 0 0;
+	align-items: center;
+	gap: var(--space-2);
+	height: var(--ruler-gutter-y);
+	padding: 0 var(--space-3);
 	font-family: var(--font-mono);
 	font-variant-numeric: tabular-nums;
-}
-
-.scale-tag__main {
-	display: flex;
-	align-items: flex-end;
-	gap: var(--space-2);
+	background: none;
+	border-left: 1px solid var(--color-ruler-line);
+	pointer-events: none;
 }
 
 .scale-tag__bar {
 	position: relative;
 	display: block;
 	flex: 0 0 auto;
-	height: 8px;
-	border-bottom: 1px solid var(--color-ink);
+	height: 4px;
+	border-bottom: 1px solid var(--color-ink-muted);
+	transform: translateY(-2px);
 }
 
 .scale-tag__bar::before,
@@ -5461,8 +5456,8 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 1px;
-	height: 8px;
-	background-color: var(--color-ink);
+	height: 4px;
+	background-color: var(--color-ink-muted);
 }
 
 .scale-tag__bar::before {
@@ -5480,15 +5475,29 @@ body {
 	color: var(--color-ink);
 }
 
+.scale-tag__units {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.scale-tag__unit-slot {
+	display: inline-flex;
+	align-items: center;
+}
+
+.scale-tag__unit-sep {
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink-muted);
+}
+
 .scale-tag__unit {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-width: 44px;
-	min-height: 44px;
-	pointer-events: auto;
-	/* Negative margins keep the 44 px target without growing the tag row. */
-	margin: -15px -10px;
+	min-width: 24px;
+	min-height: 24px;
 	padding: 0;
 	font-family: inherit;
 	font-size: var(--font-size-2xs);
@@ -5498,21 +5507,32 @@ body {
 	background: none;
 	border: 0;
 	cursor: pointer;
+	pointer-events: auto;
 }
 
 .scale-tag__unit:hover {
 	color: var(--color-ink);
 }
 
+.scale-tag__unit[aria-pressed="true"] {
+	color: var(--color-ink);
+}
+
 .scale-tag__unit:focus-visible {
 	outline: 2px solid var(--color-accent-strong);
-	outline-offset: 2px;
+	outline-offset: -2px;
+}
+
+.scale-tag__unit-label {
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	color: var(--color-ink-muted);
 }
 
 .scale-tag__zoom {
-	margin-left: auto;
 	padding-left: var(--space-2);
-	border-left: 1px solid var(--color-border);
+	border-left: 1px solid var(--color-ruler-line);
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
 	line-height: 1;
@@ -5520,80 +5540,91 @@ body {
 }
 
 .scale-tag__grid {
+	padding-left: var(--space-2);
+	border-left: 1px solid var(--color-ruler-line);
 	font-size: var(--font-size-2xs);
 	line-height: 1;
 	color: var(--color-ink-muted);
+	white-space: nowrap;
 }
 
-/* Actionable bottom-band notices outrank the ambient tag. */
-.app-canvas:has(.graph-status) .scale-tag,
-.app-canvas:has(.share-edit-cue) .scale-tag {
-	display: none;
-}
-
-/* Desktop chrome clears the frame: rules are 22 px, then an 8 px gutter. */
 @media (min-width: 1024px) {
-	/* The frame is a border, not an overlay: the stage starts after the band so
-	 * a board/item at world (0,0) is never hidden under opaque ruler chrome. */
+	/* The margins are part of the sheet: the stage is inset, nothing overlaps it. */
 	.stage {
-		top: var(--ruler-size);
-		left: var(--ruler-size);
+		top: 0;
+		right: 0;
+		bottom: var(--ruler-gutter-y);
+		left: var(--ruler-gutter-x);
 	}
 
-	.app-toolbar {
-		top: var(--chrome-top);
+	/* Stage-local action bars follow the inset; no vertical shift (top stays 0). */
+	.item-action-bar {
+		transform: translateX(-50%) translateX(var(--ruler-gutter-x));
 	}
 
-	.scene-trigger {
-		top: var(--chrome-top);
-		left: var(--chrome-top);
+	/* Bottom-centred notices sit above the sheet margin. */
+	.graph-status,
+	.share-edit-cue {
+		bottom: calc(var(--ruler-gutter-y) + var(--space-3));
 	}
 
-	.first-run {
-		top: calc(var(--chrome-top) + 44px + var(--space-2));
-	}
-
-	.storage-note {
-		top: calc(var(--chrome-top) + 44px + var(--space-2));
-		left: var(--chrome-top);
-	}
-
+	/* Left-anchored chrome aligns to the wider left margin; top/right chrome
+	 * keeps its base offsets (no vertical shift). */
+	.scene-trigger,
 	.share-stamp {
-		top: var(--chrome-top);
-		left: var(--chrome-top);
+		left: var(--ruler-gutter-x);
 	}
 
-	.export-panel,
-	.scene-panel,
-	.share-panel,
-	.share-saved,
-	.share-error,
-	.cable-schedule {
-		top: calc(var(--chrome-top) + 44px + var(--space-2));
-	}
-
+	.storage-note,
 	.scene-panel,
 	.share-saved,
 	.share-error {
-		left: var(--chrome-top);
+		left: var(--ruler-gutter-x);
+	}
+}
+
+@media (max-width: 1199px) {
+	/* Keep the title block from crowding the ruler when the pane is narrow. */
+	.scale-tag__grid {
+		display: none;
 	}
 }
 
 @media (max-width: 1023px) {
-	/* No rulers on a 390–412 px canvas — the tag alone carries the scale. */
+	/* Full-bleed canvas, no margins. A tiny bottom-right readout above the dock. */
 	.edge-rules {
 		display: none;
 	}
 
 	.scale-tag {
-		right: 0;
-		bottom: calc(56px + env(safe-area-inset-bottom));
-		min-width: 0;
-		padding: 5px var(--space-3);
+		right: calc(var(--space-4) + env(safe-area-inset-right));
+		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-4));
+		height: auto;
+		padding: 0;
+		gap: 6px;
+		border-left: 0;
+		background: none;
+		text-shadow: 0 0 3px var(--color-canvas-bg);
 	}
 
-	/* The peek / action bar own the bottom band; the tag returns when the
-	 * selection is cleared. One actionable surface at a time. */
+	.scale-tag__bar {
+		height: 5px;
+	}
+
+	.scale-tag__bar::before,
+	.scale-tag__bar::after {
+		height: 5px;
+	}
+
+	.scale-tag__zoom {
+		padding-left: 0;
+		border-left: 0;
+	}
+
+	.scale-tag__grid {
+		display: none;
+	}
+
 	.app:has(.info-panel) .scale-tag,
 	.app-canvas:has(.item-action-bar) .scale-tag,
 	.app-canvas:has(.first-run) .scale-tag,
@@ -5602,7 +5633,8 @@ body {
 	.app[data-export="open"] .scale-tag,
 	.app[data-scenes="open"] .scale-tag,
 	.app[data-schedule="open"] .scale-tag,
-	.app-canvas:has(.share-panel) .scale-tag {
+	.app-canvas:has(.share-panel) .scale-tag,
+	.app:has(.picker) .scale-tag {
 		display: none;
 	}
 }

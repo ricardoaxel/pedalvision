@@ -2,24 +2,26 @@ import { buildRulerTicks } from "../lib/ruler";
 import { useIsMobile } from "../lib/useMobile";
 import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
+import { RULER_GUTTER } from "../styles/theme";
 
-/** Band thickness in px; mirrored by `--ruler-size` in tokens.css. */
-const BAND = 22;
+const MAJOR_TICK_PX = 5;
+const MINOR_TICK_PX = 3;
+const ORIGIN_TICK_PX = 7;
+const UNIT_FONT_PX = 11;
 
 /**
- * The canvas-edge rulers (F-03 "Edge Rule"). Two true-scale coordinate rules
- * (top + left) with a shared cm/in corner block. They are pure screen chrome:
- * DOM/SVG, not Konva, never exported, and decorative to assistive tech (the
- * Scale Tag carries the readable scale; zoom must not spam a live region).
+ * The left + bottom sheet-margin rulers (F-03 "Sheet Margin"). They live in the
+ * 16 px left / 24 px bottom gutters **outside** the stage: same canvas colour,
+ * one hairline L, short ticks and sparse world-coordinate labels. No fill, no
+ * card, no top ruler, no chrome shift.
  *
- * Labels are world coordinates in the active display unit, so they pan with the
- * content and stay meaningful for off-origin boards, loose pedals and rotated
- * boards (the rules never rotate).
+ * DOM/SVG only, decorative to assistive tech (the Scale Tag carries the
+ * readable scale). Desktop-only: mobile removes the margins entirely and uses
+ * the compact bottom-right readout.
  */
 export function EdgeRules() {
 	const isMobile = useIsMobile();
-	// The rules are CSS-hidden on mobile; return before mounting the viewport
-	// subscribers so a pan/pinch never rebuilds tens of SVG nodes off-screen.
+	// No off-screen SVG work on mobile; the margins do not exist there.
 	if (isMobile) return null;
 	return <DesktopEdgeRules />;
 }
@@ -33,19 +35,15 @@ function DesktopEdgeRules() {
 
 	if (size.width <= 0 || size.height <= 0) return null;
 
-	// The stage is inset by the band on desktop, so the frame lives in the
-	// `.app-canvas` margin and never occludes world (0,0). The ruler's screen
-	// origin is the canvas pane; add the band offset to the stage transform.
-	const width = size.width + BAND;
-	const height = size.height + BAND;
-	const ticks = buildRulerTicks(
-		scale,
-		units,
-		{ width, height },
-		{ x: x + BAND, y: y + BAND },
-	);
-	const top = ticks.top;
-	const left = ticks.left;
+	const width = size.width + RULER_GUTTER.x;
+	const height = size.height + RULER_GUTTER.y;
+	const ticks = buildRulerTicks(scale, units, {
+		stageWidth: size.width,
+		stageHeight: size.height,
+		offsetX: x,
+		offsetY: y,
+	});
+	const frameY = height - RULER_GUTTER.y;
 
 	return (
 		<div
@@ -54,12 +52,14 @@ function DesktopEdgeRules() {
 			aria-hidden="true"
 			data-scale={scale}
 			data-units={units}
+			data-gutter-x={RULER_GUTTER.x}
+			data-gutter-y={RULER_GUTTER.y}
 			data-major-label={ticks.majorLabel}
 			data-minor-label={ticks.minorLabel}
 			data-major-cm={ticks.majorCm}
 			data-minor-cm={ticks.minorCm}
-			data-top-labels={ticks.topLabels.join(",")}
 			data-left-labels={ticks.leftLabels.join(",")}
+			data-bottom-labels={ticks.bottomLabels.join(",")}
 		>
 			<svg
 				className="edge-rules__svg"
@@ -68,84 +68,43 @@ function DesktopEdgeRules() {
 				aria-hidden="true"
 				focusable="false"
 			>
-				<rect
-					className="edge-rules__band"
-					x={0}
-					y={0}
-					width={width}
-					height={BAND}
-				/>
-				<rect
-					className="edge-rules__band"
-					x={0}
-					y={BAND}
-					width={BAND}
-					height={Math.max(0, height - BAND)}
+				{/* The L: vertical at the stage's left edge, horizontal at its bottom. */}
+				<line
+					className="edge-rules__edge"
+					x1={RULER_GUTTER.x - 0.5}
+					y1={0}
+					x2={RULER_GUTTER.x - 0.5}
+					y2={frameY}
 				/>
 				<line
 					className="edge-rules__edge"
 					x1={0}
-					y1={BAND - 0.5}
+					y1={frameY - 0.5}
 					x2={width}
-					y2={BAND - 0.5}
-				/>
-				<line
-					className="edge-rules__edge"
-					x1={BAND - 0.5}
-					y1={BAND}
-					x2={BAND - 0.5}
-					y2={height}
+					y2={frameY - 0.5}
 				/>
 
-				{top.map((tick, index) => {
+				{ticks.left.map((tick, index) => {
 					const kind = tick.origin ? "origin" : tick.major ? "major" : "minor";
-					const length = tick.origin ? 11 : tick.major ? 8 : 4;
-					return (
-						<line
-							// biome-ignore lint/suspicious/noArrayIndexKey: ruler ticks are read-only rows
-							key={`top-${index}`}
-							className={`edge-rules__tick edge-rules__tick--${kind}`}
-							x1={Math.round(tick.px) + 0.5}
-							y1={BAND - length}
-							x2={Math.round(tick.px) + 0.5}
-							y2={BAND}
-						/>
-					);
-				})}
-
-				{top
-					.filter((tick) => tick.showLabel)
-					.map((tick, index) => (
-						<text
-							// biome-ignore lint/suspicious/noArrayIndexKey: ruler labels are read-only rows
-							key={`top-label-${index}`}
-							className="edge-rules__label"
-							data-axis="top"
-							x={Math.round(tick.px)}
-							y={BAND - 9}
-							textAnchor="middle"
-						>
-							{tick.label}
-						</text>
-					))}
-
-				{left.map((tick, index) => {
-					const kind = tick.origin ? "origin" : tick.major ? "major" : "minor";
-					const length = tick.origin ? 11 : tick.major ? 8 : 4;
+					const length = tick.origin
+						? ORIGIN_TICK_PX
+						: tick.major
+							? MAJOR_TICK_PX
+							: MINOR_TICK_PX;
 					return (
 						<line
 							// biome-ignore lint/suspicious/noArrayIndexKey: ruler ticks are read-only rows
 							key={`left-${index}`}
 							className={`edge-rules__tick edge-rules__tick--${kind}`}
-							x1={BAND - length}
+							x1={RULER_GUTTER.x - length}
 							y1={Math.round(tick.px) + 0.5}
-							x2={BAND}
+							x2={RULER_GUTTER.x}
 							y2={Math.round(tick.px) + 0.5}
 						/>
 					);
 				})}
 
-				{left
+				{ticks.left
 					.filter((tick) => tick.showLabel)
 					.map((tick, index) => (
 						<text
@@ -153,27 +112,57 @@ function DesktopEdgeRules() {
 							key={`left-label-${index}`}
 							className="edge-rules__label"
 							data-axis="left"
-							x={BAND - 10}
+							x={11}
 							y={Math.round(tick.px)}
 							textAnchor="middle"
-							transform={`rotate(-90 ${BAND - 10} ${Math.round(tick.px)})`}
+							transform={`rotate(-90 11 ${Math.round(tick.px)})`}
 						>
 							{tick.label}
 						</text>
 					))}
 
-				<rect
-					className="edge-rules__corner"
-					x={0}
-					y={0}
-					width={BAND}
-					height={BAND}
-				/>
+				{ticks.bottom.map((tick, index) => {
+					const kind = tick.origin ? "origin" : tick.major ? "major" : "minor";
+					const length = tick.origin
+						? ORIGIN_TICK_PX
+						: tick.major
+							? MAJOR_TICK_PX
+							: MINOR_TICK_PX;
+					return (
+						<line
+							// biome-ignore lint/suspicious/noArrayIndexKey: ruler ticks are read-only rows
+							key={`bottom-${index}`}
+							className={`edge-rules__tick edge-rules__tick--${kind}`}
+							x1={Math.round(tick.px) + 0.5}
+							y1={frameY}
+							x2={Math.round(tick.px) + 0.5}
+							y2={frameY + length}
+						/>
+					);
+				})}
+
+				{ticks.bottom
+					.filter((tick) => tick.showLabel)
+					.map((tick, index) => (
+						<text
+							// biome-ignore lint/suspicious/noArrayIndexKey: ruler labels are read-only rows
+							key={`bottom-label-${index}`}
+							className="edge-rules__label"
+							data-axis="bottom"
+							x={Math.round(tick.px)}
+							y={height - 7}
+							textAnchor="middle"
+						>
+							{tick.label}
+						</text>
+					))}
+
 				<text
 					className="edge-rules__unit"
-					x={BAND / 2}
-					y={BAND / 2 + 3}
+					x={RULER_GUTTER.x / 2 + 2}
+					y={height - 7}
 					textAnchor="middle"
+					style={{ fontSize: `${UNIT_FONT_PX}px` }}
 				>
 					{units}
 				</text>
