@@ -2,13 +2,13 @@ import { RULER_GUTTER } from "../styles/theme";
 import { type DisplayUnits, displayToCm, PX_PER_CM } from "./geometry";
 
 /**
- * The left + bottom sheet-margin rulers (F-03 "Sheet Margin"). Pure 1-2-5
- * cadence + tick math so the margins and the bottom-right scale block are
- * deterministic and unit-tested.
+ * The bottom pencil-axis (F-03 "Pencil Margin"). Pure 1-2-5 cadence + tick math,
+ * deliberately sparse: the sheet is passive scale reassurance, not a measuring
+ * tool. There is a single bottom axis; it carries `0` and a few bare world
+ * labels, with one unit at the line's end.
  *
- * Labels are **world coordinates** in the active display unit; tick positions
- * are exact (`cm × PX_PER_CM × scale + stage offset`). The rulers are screen
- * chrome: they never rotate with content and are not exported.
+ * Labels are world coordinates in the active display unit; tick positions are
+ * exact (`cm × PX_PER_CM × scale + stage offset`). DOM/SVG only; never exported.
  */
 
 /** 1-2-5 major lengths, in the active display unit. */
@@ -16,35 +16,25 @@ export const RULER_MAJOR_STEPS = [
 	1, 2, 5, 10, 20, 50, 100, 200, 500, 1000,
 ] as const;
 
-/** Sparse drafting cadence: a major step is at least this wide on screen. */
-export const RULER_MAJOR_MIN_PX = 120;
+/** Pencil cadence: a major label is at least this wide on screen. */
+export const RULER_MAJOR_MIN_PX = 280;
 
 /** Half-major minor ticks (no minor labels). */
 export const RULER_SUBDIVISIONS = 2;
 
-/** Labels this close to the top/left edge would clip; the tick still draws. */
-export const RULER_LABEL_INSET_PX = 20;
+/** The origin sits at the stage's left edge; this is label-air only. */
+export const RULER_AXIS_START_INSET_PX = 16;
 
-/** The left axis stops labelling this close to the bottom corner cell. */
-export const RULER_LEFT_END_INSET_PX = 40;
-
-/** Bottom labels start after the corner unit cell. */
-export const RULER_BOTTOM_START_INSET_PX = 28;
-
-/** Bottom labels stop before the bottom-right scale block. */
-export const RULER_TITLE_BLOCK_RESERVE_PX = 400;
+/** Keep the last label clear of the right edge/unit mark. */
+export const RULER_BOTTOM_END_INSET_PX = 20;
 
 /** Hard guard against pathological viewport/scale combinations. */
 export const RULER_MAX_TICKS = 400;
 
 export interface RulerStep {
-	/** Major length in the active display unit. */
 	majorLabel: number;
-	/** Major length in cm (source of truth). */
 	majorCm: number;
-	/** Minor length in the active display unit. */
 	minorLabel: number;
-	/** Minor length in cm. */
 	minorCm: number;
 	subdivisions: number;
 	majorPx: number;
@@ -59,7 +49,7 @@ export interface RulerTick {
 	label: string;
 	major: boolean;
 	origin: boolean;
-	/** True when this major label fits inside the strip (rendered once). */
+	/** True when this major label (or the origin) is rendered. */
 	showLabel: boolean;
 }
 
@@ -70,26 +60,19 @@ export interface RulerTicks {
 	minorCm: number;
 	subdivisions: number;
 	units: DisplayUnits;
-	left: RulerTick[];
 	bottom: RulerTick[];
-	leftLabels: string[];
+	/** Rendered bare label text (the unit is a separate axis-end mark). */
 	bottomLabels: string[];
 }
 
 export interface RulerInput {
-	/** Stage width (the canvas minus the left gutter). */
 	stageWidth: number;
-	/** Stage height (the canvas minus the bottom gutter). */
-	stageHeight: number;
-	/** Stage transform offsets (screen px). */
 	offsetX: number;
-	offsetY: number;
 }
 
 /**
  * Pick the smallest 1-2-5 major step whose screen length is at least
- * {@link RULER_MAJOR_MIN_PX}, then subdivide in half. At 1× this is 50/25 cm;
- * at 0.1× 500/250 cm; at 8× 5/2.5 cm.
+ * {@link RULER_MAJOR_MIN_PX}, then subdivide in half. At 1× this is 100/50 cm.
  */
 export function chooseRulerStep(scale: number, units: DisplayUnits): RulerStep {
 	const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
@@ -136,8 +119,6 @@ function buildAxisTicks(
 	lengthPx: number,
 	offsetPx: number,
 	step: RulerStep,
-	startInset: number,
-	endInset: number,
 ): RulerTick[] {
 	const pxPerDisplay =
 		(units === "in" ? displayToCm(1, units) : 1) * PX_PER_CM * scale;
@@ -154,22 +135,26 @@ function buildAxisTicks(
 		const cm = displayToCm(value, units);
 		const px = cm * PX_PER_CM * scale + safeOffset;
 		const major = isMajorValue(value, step.majorLabel);
+		const origin = Math.abs(value) < 1e-9;
 		ticks.push({
 			value,
 			px,
 			label: formatRulerLabel(value),
 			major,
-			origin: Math.abs(value) < 1e-9,
-			showLabel: major && px >= startInset && px <= safeLength - endInset,
+			origin,
+			showLabel:
+				origin ||
+				(major &&
+					px >= RULER_AXIS_START_INSET_PX &&
+					px <= safeLength - RULER_BOTTOM_END_INSET_PX),
 		});
 	}
 	return ticks;
 }
 
 /**
- * Build the left and bottom ticks for a desktop stage. `stageWidth`/
- * `stageHeight` are the inset stage size; the bottom strip spans the full
- * canvas (stage + left gutter), and the bottom labels reserve the scale block.
+ * Build the bottom axis for a desktop stage. The line spans the full canvas
+ * width; labels are bare and the unit is rendered at the axis end.
  */
 export function buildRulerTicks(
 	scale: number,
@@ -178,15 +163,6 @@ export function buildRulerTicks(
 ): RulerTicks {
 	const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
 	const step = chooseRulerStep(safeScale, units);
-	const left = buildAxisTicks(
-		safeScale,
-		units,
-		input.stageHeight,
-		input.offsetY,
-		step,
-		RULER_LABEL_INSET_PX,
-		RULER_LEFT_END_INSET_PX,
-	);
 	const bottomLength = input.stageWidth + RULER_GUTTER.x;
 	const bottom = buildAxisTicks(
 		safeScale,
@@ -194,17 +170,14 @@ export function buildRulerTicks(
 		bottomLength,
 		input.offsetX + RULER_GUTTER.x,
 		step,
-		RULER_BOTTOM_START_INSET_PX,
-		RULER_TITLE_BLOCK_RESERVE_PX,
 	);
+	const bottomLabels = bottom
+		.filter((tick) => tick.showLabel)
+		.map((tick) => (tick.origin ? "0" : tick.label));
 	return {
 		...step,
 		units,
-		left,
 		bottom,
-		leftLabels: left.filter((tick) => tick.showLabel).map((tick) => tick.label),
-		bottomLabels: bottom
-			.filter((tick) => tick.showLabel)
-			.map((tick) => tick.label),
+		bottomLabels,
 	};
 }

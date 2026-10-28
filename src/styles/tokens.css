@@ -45,9 +45,10 @@
 	/* Interactive-control boundary on an elevated surface (search field/chips),
 	 * clears 3:1 non-text contrast (P2-01). */
 	--color-border-strong: #7c868f;
-	/* Ruler hairline (F-03 "Sheet Margin") — tuned per theme so the L-frame
-	 * has equal non-text presence on the canvas in dark and light. */
-	--color-ruler-line: #7c868f;
+	/* Sheet-margin ink (F-03 "Pencil Margin") — graphite for the rulers and
+	 * the tiny scale block; equal presence in both themes. */
+	--color-sheet-ink: #828a93;
+	--color-sheet-rule: #5f6a76;
 	/* Recessed field fill — reads as an input, not a panel (P2-01). */
 	--color-input-bg: #2b3036;
 	/* Native <select> chevron (cannot inherit currentColor in a data-URI
@@ -118,8 +119,8 @@
 
 	/* Canvas sheet margins (F-03 "Sheet Margin"): left + bottom ruler gutters.
 	 * The stage is inset by these; the canvas keeps its base chrome offsets. */
-	--ruler-gutter-x: 24px;
-	--ruler-gutter-y: 24px;
+	--ruler-gutter-x: 10px;
+	--ruler-gutter-y: 22px;
 
 	/* Radii — deliberate 2-step scale: controls 8 / cards 12 */
 	--radius-control: 8px;
@@ -188,7 +189,8 @@
 	--color-surface-raised: #ffffff;
 	--color-border: #d5dae0;
 	--color-border-strong: #7c868f;
-	--color-ruler-line: #565d66;
+	--color-sheet-ink: #3f464e;
+	--color-sheet-rule: #6b7580;
 	--color-input-bg: #f1f3f5;
 	--icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23565d66' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 	--color-specimen-bg: #d5dade;

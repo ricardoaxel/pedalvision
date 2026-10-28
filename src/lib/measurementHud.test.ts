@@ -4,23 +4,7 @@ import {
 	chooseScaleBar,
 	SCALE_BAR_CANDIDATES,
 	SCALE_BAR_MAX_PX,
-	zoomPercent,
 } from "./measurementHud";
-
-describe("zoomPercent", () => {
-	it("renders the stage scale as an integer percentage", () => {
-		expect(zoomPercent(0.1)).toBe(10);
-		expect(zoomPercent(1)).toBe(100);
-		expect(zoomPercent(2.5)).toBe(250);
-		expect(zoomPercent(8)).toBe(800);
-	});
-
-	it("rounds and never leaks non-finite values into the readout", () => {
-		expect(zoomPercent(1.234)).toBe(123);
-		expect(zoomPercent(Number.NaN)).toBe(100);
-		expect(zoomPercent(Number.POSITIVE_INFINITY)).toBe(100);
-	});
-});
 
 describe("chooseScaleBar", () => {
 	it("draws a true-length bar at every zoom (barPx = cm × PX_PER_CM × scale)", () => {
@@ -73,10 +57,10 @@ describe("chooseScaleBar", () => {
 	});
 
 	it("honours the compact mobile budget without lying about the length", () => {
-		const bar = chooseScaleBar(1, "cm", 44);
+		const bar = chooseScaleBar(1, "cm", 40);
 		expect(bar.lengthLabel).toBe(10);
 		expect(bar.barPx).toBe(40);
-		expect(bar.barPx).toBeLessThanOrEqual(44);
+		expect(bar.barPx).toBeLessThanOrEqual(40);
 	});
 
 	it("is defensive about a non-finite or non-positive scale", () => {

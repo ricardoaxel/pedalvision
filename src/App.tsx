@@ -303,7 +303,7 @@ function App() {
 			<StorageAnnouncer readOnly={readOnly} />
 			<div className="app-canvas">
 				<Stage />
-				{/* Ambient scale frame (F-03 "Sheet Margin"): rulers + corner tag. */}
+				{/* Ambient scale frame (F-03 "Pencil Margin"): bottom axis + mobile readout. */}
 				<EdgeRules />
 				<ScaleTag />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage

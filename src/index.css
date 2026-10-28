@@ -5365,11 +5365,11 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Sheet Margin (F-03), owner-approved 2026-10-27.
- * The canvas is a sheet: left + bottom 24/24 px gutters live OUTSIDE the stage,
- * same canvas colour, one hairline L + short ticks + sparse world coordinates.
- * A flat bottom-right title block carries the true-length scale. No fill, no
- * card, no top ruler, no desktop chrome shift. DOM/SVG only; never exported.
+ * Pencil Margin (F-03), owner-approved 2026-10-27.
+ * A 10/22 px outside margin (same canvas colour), one faint bottom axis with
+ * sparse world labels and a single unit at its end, and a tiny mobile
+ * `[bar] 10 cm` readout. No left hairline, fills, cards, bars or unit pair.
+ * DOM/SVG only; never exported.
  * ------------------------------------------------------------------------- */
 
 .app-canvas {
@@ -5388,56 +5388,52 @@ body {
 }
 
 .edge-rules__edge {
-	stroke: var(--color-ruler-line);
+	stroke: var(--color-sheet-rule);
 	stroke-width: 1;
 	shape-rendering: crispEdges;
 }
 
 .edge-rules__tick {
-	stroke: var(--color-ink-muted);
+	stroke: var(--color-sheet-rule);
 	stroke-width: 1;
 	shape-rendering: crispEdges;
 }
 
+.edge-rules__tick--major,
 .edge-rules__tick--origin {
-	stroke: var(--color-ink);
+	stroke: var(--color-sheet-ink);
 }
 
 .edge-rules__label {
-	fill: var(--color-ink-muted);
+	fill: var(--color-sheet-ink);
 	font-family: var(--font-mono);
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
 	font-variant-numeric: tabular-nums;
 }
 
-/* Light labels carry the only functional reading of the margin; full ink keeps
- * them legible without changing the hairline/ticks. */
-[data-theme="light"] .edge-rules__label {
-	fill: var(--color-ink);
-}
-
 .edge-rules__unit {
-	fill: var(--color-ink-muted);
+	fill: var(--color-sheet-ink);
 	font-family: var(--font-mono);
-	letter-spacing: var(--tracking-caps);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	font-variant-numeric: tabular-nums;
 }
 
-/* Flat title block inside the bottom margin — no fill, radius, shadow or card. */
+/* One-line pencil annotation — no fill, border, radius or shadow. */
 .scale-tag {
 	position: absolute;
 	right: 0;
 	bottom: 0;
 	z-index: 1;
 	display: flex;
-	align-items: center;
-	gap: var(--space-2);
+	align-items: flex-start;
+	gap: 6px;
 	height: var(--ruler-gutter-y);
-	padding: 0 var(--space-3);
+	padding: 2px 10px 0;
 	font-family: var(--font-mono);
 	font-variant-numeric: tabular-nums;
 	background: none;
-	border-left: 1px solid var(--color-ruler-line);
 	pointer-events: none;
 }
 
@@ -5446,8 +5442,8 @@ body {
 	display: block;
 	flex: 0 0 auto;
 	height: 4px;
-	border-bottom: 1px solid var(--color-ink-muted);
-	transform: translateY(-2px);
+	border-bottom: 1px solid var(--color-sheet-ink);
+	transform: translateY(-1px);
 }
 
 .scale-tag__bar::before,
@@ -5456,8 +5452,8 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 1px;
-	height: 4px;
-	background-color: var(--color-ink-muted);
+	height: 3px;
+	background-color: var(--color-sheet-ink);
 }
 
 .scale-tag__bar::before {
@@ -5468,84 +5464,12 @@ body {
 	right: 0;
 }
 
-.scale-tag__length {
-	font-size: var(--font-size-2xs);
-	font-weight: var(--font-weight-medium);
-	line-height: 1;
-	color: var(--color-ink);
-}
-
-.scale-tag__units {
-	display: inline-flex;
-	align-items: center;
-	gap: 2px;
-}
-
-.scale-tag__unit-slot {
-	display: inline-flex;
-	align-items: center;
-}
-
-.scale-tag__unit-sep {
-	font-size: var(--font-size-2xs);
-	line-height: 1;
-	color: var(--color-ink-muted);
-}
-
+.scale-tag__length,
 .scale-tag__unit {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	min-width: 24px;
-	min-height: 24px;
-	padding: 0;
-	font-family: inherit;
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
 	line-height: 1;
-	color: var(--color-ink-muted);
-	background: none;
-	border: 0;
-	cursor: pointer;
-	pointer-events: auto;
-}
-
-.scale-tag__unit:hover {
-	color: var(--color-ink);
-}
-
-.scale-tag__unit[aria-pressed="true"] {
-	color: var(--color-ink);
-}
-
-.scale-tag__unit:focus-visible {
-	outline: 2px solid var(--color-accent-strong);
-	outline-offset: -2px;
-}
-
-.scale-tag__unit-label {
-	font-size: var(--font-size-2xs);
-	font-weight: var(--font-weight-medium);
-	line-height: 1;
-	color: var(--color-ink-muted);
-}
-
-.scale-tag__zoom {
-	padding-left: var(--space-2);
-	border-left: 1px solid var(--color-ruler-line);
-	font-size: var(--font-size-2xs);
-	font-weight: var(--font-weight-medium);
-	line-height: 1;
-	color: var(--color-ink-muted);
-}
-
-.scale-tag__grid {
-	padding-left: var(--space-2);
-	border-left: 1px solid var(--color-ruler-line);
-	font-size: var(--font-size-2xs);
-	line-height: 1;
-	color: var(--color-ink-muted);
-	white-space: nowrap;
+	color: var(--color-sheet-ink);
 }
 
 @media (min-width: 1024px) {
@@ -5557,13 +5481,11 @@ body {
 		left: var(--ruler-gutter-x);
 	}
 
-	/* Stage-local action bars follow the inset; no vertical shift (top stays 0). */
+	/* Stage-local action bars and the endpoint overlay follow the inset. */
 	.item-action-bar {
 		transform: translateX(-50%) translateX(var(--ruler-gutter-x));
 	}
 
-	/* The endpoint placement capture layer must mirror the stage box, not the
-	 * full canvas pane, or taps land 24 px off the sheet. */
 	.endpoint-placement {
 		top: 0;
 		right: 0;
@@ -5576,62 +5498,36 @@ body {
 	.share-edit-cue {
 		bottom: calc(var(--ruler-gutter-y) + var(--space-3));
 	}
-
-	/* Left-anchored chrome aligns to the wider left margin; top/right chrome
-	 * keeps its base offsets (no vertical shift). */
-	.scene-trigger,
-	.share-stamp {
-		left: var(--ruler-gutter-x);
-	}
-
-	.storage-note,
-	.scene-panel,
-	.share-saved,
-	.share-error {
-		left: var(--ruler-gutter-x);
-	}
-}
-
-@media (max-width: 1199px) {
-	/* Keep the title block from crowding the ruler when the pane is narrow. */
-	.scale-tag__grid {
-		display: none;
-	}
 }
 
 @media (max-width: 1023px) {
-	/* Full-bleed canvas, no margins. A tiny bottom-right readout above the dock. */
+	/* Full-bleed canvas; only the tiny bottom-right annotation remains. */
 	.edge-rules {
 		display: none;
 	}
 
 	.scale-tag {
-		right: calc(var(--space-4) + env(safe-area-inset-right));
-		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-4));
+		right: calc(var(--space-3) + env(safe-area-inset-right));
+		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-3));
+		align-items: center;
 		height: auto;
 		padding: 0;
 		gap: 6px;
-		border-left: 0;
-		background: none;
-		text-shadow: 0 0 3px var(--color-canvas-bg);
+		text-shadow: 0 0 2px var(--color-canvas-bg);
+	}
+
+	.scale-tag__length,
+	.scale-tag__unit {
+		font-size: var(--font-size-2xs);
 	}
 
 	.scale-tag__bar {
-		height: 5px;
+		height: 4px;
 	}
 
 	.scale-tag__bar::before,
 	.scale-tag__bar::after {
-		height: 5px;
-	}
-
-	.scale-tag__zoom {
-		padding-left: 0;
-		border-left: 0;
-	}
-
-	.scale-tag__grid {
-		display: none;
+		height: 3px;
 	}
 
 	.app:has(.info-panel) .scale-tag,
@@ -5644,12 +5540,6 @@ body {
 	.app[data-schedule="open"] .scale-tag,
 	.app-canvas:has(.share-panel) .scale-tag,
 	.app:has(.picker) .scale-tag {
-		display: none;
-	}
-}
-
-@media (max-width: 1023px) and (max-height: 560px) {
-	.scale-tag {
 		display: none;
 	}
 }

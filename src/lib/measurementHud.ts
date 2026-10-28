@@ -1,7 +1,7 @@
 import { cmToPx, type DisplayUnits, displayToCm } from "./geometry";
 
 /**
- * The Scale Tag's derived values (F-03 "Sheet Margin"). Pure so the true-length
+ * The bottom-axis/mobile readout values (F-03 "Pencil Margin"). Pure so the
  * bar and the zoom readout are unit-tested without a DOM. cm remains the source
  * of truth: the round bar label is a display-unit candidate, converted back to
  * exact cm with `displayToCm`.
@@ -25,12 +25,6 @@ export interface ScaleBarReading {
 	units: DisplayUnits;
 	/** Drawn screen length at the current zoom (`cm × PX_PER_CM × scale`). */
 	barPx: number;
-}
-
-/** The zoom readout as an integer percentage (`0.1 → 10`). Non-finite → 100. */
-export function zoomPercent(scale: number): number {
-	if (!Number.isFinite(scale)) return 100;
-	return Math.round(scale * 100);
 }
 
 /**

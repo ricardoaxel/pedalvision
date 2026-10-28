@@ -71,9 +71,8 @@ interface GridLayerProps {
  * the layer's coordinate system equal screen px. Dots are recomputed every
  * render from the transform.
  *
- * The cell size is exposed by `gridCellCm` (lib/grid.ts) so the F-03 Scale Tag
- * can say how large one grid cell is at the current zoom; the canvas and the
- * readout share the same math.
+ * The level math lives in `lib/grid.ts` so the grid stays the single consumer
+ * of its own LOD.
  */
 export function GridLayer({
 	color,
@@ -83,7 +82,7 @@ export function GridLayer({
 	x,
 	y,
 }: GridLayerProps) {
-	// Continuous LOD shared with the Scale Tag's grid readout (lib/grid.ts).
+	// Continuous LOD from the shared pure helper (lib/grid.ts).
 	const { fineStepPx: fineStep, frac } = gridLevels(scale);
 
 	return (
