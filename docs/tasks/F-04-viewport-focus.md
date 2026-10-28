@@ -304,6 +304,12 @@ Read only these pointed files/sections; do not read whole docs.
   and `{scene-switch,board-view}-frames.png`.
 - **Feature demo link:** the deployed PR-preview URL + exact steps are added to
   the PR (viewport state is not shareable).
+- **Billed tokens (non-cache):** builder **1,125,504** (input 761,787 + output
+  127,732 + reasoning 235,985); designer **111,777** (55,029 + 56,748);
+  design-reviewer **215,391** (60,054 + 70,441 + 84,896); code review
+  **425,610** (one session, two passes); **total 1,878,282**. The task hard cap
+  (1.1M) was exceeded; the owner explicitly accepted continuing in PR #76.
+  Cache-inclusive floor ≈ **126M**.
 - **Checks run on this branch:** `pnpm lint && pnpm typecheck && pnpm test &&
   pnpm build`; `pnpm exec playwright test` for the six named specs.
 - **Code review (light, one pass):** **changes-required** with 5 findings, all
