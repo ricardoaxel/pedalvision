@@ -272,6 +272,19 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"electro-harmonix-attack-decay": ["envelope", "fuzz"],
 	"electro-harmonix-b9-organ-machine": ["organ-sim"],
 	"electro-harmonix-bad-stone": ["phaser"],
+	"electro-harmonix-bass-clone": ["chorus"],
+	"electro-harmonix-bass-micro-synth": [
+		"synth",
+		"octave",
+		"filter",
+		"envelope",
+	],
+	"electro-harmonix-bass-mono-synth": ["synth", "octave"],
+	"electro-harmonix-bass-preacher": ["compressor"],
+	"electro-harmonix-bass-soul-food": ["overdrive"],
+	"electro-harmonix-bass9-bass-machine": ["synth", "octave"],
+	"electro-harmonix-bassballs": ["envelope", "filter"],
+	"electro-harmonix-battalion": ["preamp", "distortion", "di"],
 
 	// Walrus Audio
 	"walrus-audio-385": ["overdrive"],
