@@ -34,11 +34,16 @@ own task file — no need to re-paste the whole plan.
   top-down → authorized retailer → user/community (recorded) → **planner/
   Pedalplayground last-resort (recorded + quality-gated)** → **generated flat art
   only when none of the above exists/passes**. Generated art is `own`; planner
-  last-resort is a recorded source gap to improve. The **31 BOSS legacy** stay
-  `pending-replacement` and use the **same order** (official → retailer →
-  community → **recorded planner last-resort** → generated only if none) — never
-  keep their old unrecorded planner asset. Boards keep generated
-  flat art by default; planner pixels are never used for boards.
+  last-resort is a recorded source gap to improve. **Resolution is not a rejection
+  reason by itself:** prefer the highest-resolution real source, process it to the
+  800/350 master (upscaling allowed; soft ceiling ≤2×; above that generated art
+  unless the single reviewer pass accepts the upscale, recorded), and gate the
+  **final 800 rendition**; record source dimensions/upscale. **Footprint
+  dimensions come from the official unit/receiver spec, never an accessory.** The
+  **31 BOSS legacy** stay `pending-replacement` and use the **same order**
+  (official → retailer → community → **recorded planner last-resort** → generated
+  only if none) — never keep their old unrecorded planner asset. Boards keep
+  generated flat art by default; planner pixels are never used for boards.
 - **D2 — BOSS first.** T-0a gate fix → T-1 pedal-art + promote-legacy → T-2 BOSS
   wave 3 (boss-4 + legacy repair + boss-5) → T-3 BOSS wave 4 (boss-6/7/8) → BOSS
   complete.

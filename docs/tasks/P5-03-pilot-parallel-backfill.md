@@ -46,6 +46,7 @@ Prove the full pipeline on one pedal and one **pedalboard**, then on two small p
 - First 2,000 catalog items = ~1,850 pedals + 150 boards; board images count toward the separate board budget.
 - Absolute minimum (≥200 pedals / ≥10 brands / ≥10 boards) and Tier A target are reported separately; launching below Tier A needs owner acceptance.
 - Each PR contains: data, images, contact sheet, coverage/reject report, Playwright evidence.
+- Image QA order: process each real candidate to 800/350, then analyze the **final 800 rendition**; source resolution is recorded, not a rejection reason (real-image resolution policy, 2026-10-27).
 - **Before parallel waves:** `token-usage-reviewer` verdict `lean`/`adjust` with a bounded agent/model inventory, per-batch token/time budget and a global stop (fold its findings).
 - **Every batch PR description includes a demo share link** (`?share=1#s=…`) that opens a
   pedalboard (or boards) with every item added by that batch, with illustrative patch cables

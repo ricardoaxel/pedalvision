@@ -72,11 +72,14 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
 - **Validation:** schema/mandatory fields, catalog-wide duplicate ids, pedal/board
   variant links (missing/self/cycle), board footprint, static 800/350 assets and
   caps.
-- **Images:** deterministic analyzer (`asset:analyze`) — 800 px long edge,
-  background uniformity/alpha/trim, aspect vs the cm footprint (≤10% pass,
+- **Images:** process to the 800/350 master first, then run the deterministic
+  analyzer (`asset:analyze`) on the **final 800 rendition** — 800 px long-edge
+  guard, background uniformity/alpha/trim, aspect vs the cm footprint (≤10% pass,
   10–15% flag, >15% reject), rotation >2°, shadow/perspective, board top-down
-  signals. Processor adds an optional dev-only soft matte, atomic writes and an
-  optional analyzer report.
+  signals. **Source resolution is recorded, not a rejection reason** (see the
+  real-image resolution policy); upscales above 2× need the single reviewer pass
+  to accept, otherwise use generated art. Processor adds an optional dev-only
+  soft matte, atomic writes and an optional analyzer report.
 - **Vision QA:** contact sheets of 10–30 images + `catalog-image-reviewer`;
   verdicts/reasons cached by source hash in `work/catalog/image-qa/`.
 - **Control plane:** `catalog-runner` + `work/catalog/{state,control,checkpoints,logs}`;
@@ -305,6 +308,8 @@ safety margin.
 
 PedalPlayground/planner is a **recorded last-resort shipped source for pedals** (owner decision 2026-10-27), after official/retailer/community and **before** generated flat art; it is quality-gated, recorded in the private `imageProvenance`, and counted as a source gap to improve. It is **never** used for boards. Generated flat pedal art is only for items where none of those sources exists/passes; facts are always re-verified.
 
+**Real-image resolution policy (owner decision 2026-10-27):** resolution is not a rejection reason by itself. Prefer the highest-resolution real source and process it to the 800/350 master (upscaling allowed; default soft ceiling ≤2×). Analyze the **final 800 rendition**, not the raw source; `minLongEdge 800` guards the rendition. Record the source URL, source dimensions and upscale factor in `imageProvenance`. Above 2×, use generated art unless the single contact-sheet pass explicitly accepts the upscale (recorded; the item stays a counted source gap). PSNR ≥40 dB is codec fidelity only — visible softness/halo is a vision check. Footprint dimensions must come from the official unit/receiver spec, never an accessory.
+
 ## Pedalboards — data contract
 
 Boards use the same capture-once raw archive and image pipeline, with a board-
@@ -352,21 +357,29 @@ Owner-approved self-hosted public-asset policy (ADR-003). Every shipped image is
 a **static asset** (`imageSource: "static"`) under `public/pedal-assets/`, or the
 P5-05 CDN.
 
-### Candidate sourcing (owner decision, 2026-10-26)
+### Candidate sourcing (owner decision, 2026-10-27)
 1. Official manufacturer product/press/**support** image (prefer flat top-down).
 2. Authorized retailer/product page.
 3. User/community image with a recorded source and passing quality gates.
-4. Our own generated flat art (real image as reference only).
-**Never ship Pedalplayground/planner pixels.** Planner art is reference-only for our
-own generated flat art, and only as a documented owner-approved edge case. Record
-`imageProvenance` per item and keep `docs/catalog/image-source-registry.md` current.
-Never bulk-copy descriptions.
+4. **Pedalplayground/planner as a recorded last-resort shipped source** (pedals
+   only; `kind: planner`, `status: last-resort`, exact `sourceUrl`; quality-gated
+   and counted as a source gap).
+5. Our own generated flat art (real image as reference only) **only when none of
+   the above exists/passes**.
+
+Resolution is not a rejection reason by itself: prefer the highest-resolution real
+source, upscale to the 800 master (soft ceiling ≤2×) and gate the **final 800
+rendition**; record source dimensions and upscale factor. Never use planner pixels
+for boards. Record `imageProvenance` per item and keep
+`docs/catalog/image-source-registry.md` current. Never bulk-copy descriptions.
 
 ### Quality gate
-1. **Analyzer (script, `sharp`)** — min 800 px long edge; background uniformity;
-   alpha; trim bbox/whitespace; aspect ratio vs `widthCm/heightCm` (accept ~≤10%,
-   flag 10–15%, reject >15%); rotation/skew ≤2°; shadow/perspective/watermark
-   signals.
+1. **Analyzer (script, `sharp`)** — run it on the **final 800 rendition** (not the
+   raw source): 800 px long-edge guard; background uniformity; alpha; trim
+   bbox/whitespace; aspect ratio vs `widthCm/heightCm` (accept ~≤10%, flag
+   10–15%, reject >15%); rotation/skew ≤2°; shadow/perspective/watermark signals.
+   Source resolution is recorded, not rejected before processing (real-image
+   resolution policy); >2× upscales need reviewer acceptance or generated art.
 2. **Processor (script)** — background removal (extend the existing flood fill;
    dev-only ML fallback for gradients/shadows), trim, transparent **AVIF**
    (q80 default, q90 escalation; PNG is the per-item fallback), 800/350.
