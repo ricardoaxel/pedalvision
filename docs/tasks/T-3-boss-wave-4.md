@@ -66,16 +66,30 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
 
 ## Delivery (2026-10-27)
 
-- **PRs:** #65 boss-7 (26), #66 boss-6 (26 + `psm-5` repair), #68 boss-8 (25).
-  Coordinator opened **no PR**. Catalog cap reached (3).
+- **PRs:** #65 boss-7 (26), #66 boss-6 (26 + `psm-5` repair), #68 boss-8 (25,
+  **corrected**). Coordinator opened **no PR**; docs-only rule **PR #69**.
+  Catalog cap reached (3).
 - **Items/images:** 77 net-new + 1 repair; **156 AVIF pairs** (boss-6 54 =
   26 new + `psm-5`; boss-7 52; boss-8 50). BOSS completes at **208**; BOSS
   hotlinked+mock = **0**.
+- **#68 correction (owner request, 2026-10-27):** the 6 generated assets were
+  replaced with real images → **20 official + 5 planner last-resort + 0
+  generated**; planner-host 2× sources are downscaled to 800. WL-50 footprint
+  fixed to **7.2×12.1 cm** (official receiver spec; 2.2 was the transmitter
+  depth), with receiver power/jacks corrected. One owner-approved correction
+  vision pass: 6/6 product accept (WL-50 official chosen), 4/4 connector crops.
+  PSNR 42.96–46.88 dB. The PR is **guard-clean** (52 files: raw + 50 assets +
+  task); evidence lives on `p5-03-pedals-boss-8-evidence`.
 - **Root billed non-cache:** **1.32M** (boss-6 434k, boss-7 328k, boss-8 554k;
   cache-inclusive floor ~114M). boss-6/boss-8 are over the 400k per-batch soft,
   under the 800k hard; wave under the 1.6M soft. Subagent vision/code-review
   sessions are separate.
-- **CI:** #65/#66/#68 **pass**.
+- **CI:** #65/#66 pass; **#68 pending after the correction force-push** (the
+  corrected branch passed `catalog:ci` + guard locally and will be re-run by CI).
+- **Rules:** **PR #69** codifies “resolution is not a rejection reason; process
+  to the 800 master and gate the final rendition”; planner last-resort stays
+  above generated art; footprint from the official unit spec. Token review
+  `adjust` folded; docs-only.
 - **Coordinator ops:** a stale out-of-plan `acme/pedals-1` test batch (0/3, >8h)
   held the third slot; it was cleared to `blocked` and boss-8 launched as
   `boss-wave-4-fill` (same plan/branch) so 3-wide held. No raw sessions; no
@@ -84,9 +98,8 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
   serially and rebase the remaining PRs, re-running effects/no-drift + `catalog:ci`.
   Never hand-resolve generated mapped/runtime files. Post-merge build expected
   **399 pedals / 15 boards**.
-- **Feature lane:** #64 (F-19) + #67 (F-03) are open — **2 feature PRs, over the
-  ≤1 cap**. Not opened by this coordinator; no new feature/catalog wave until the
-  caps clear.
+- **Feature lane:** F-19 merged (#64); **#67 (F-03) is the 1 open feature PR,
+  within the ≤1 cap**. No new feature/catalog wave until the caps clear.
 
 ## Token review (2026-10-27)
 
