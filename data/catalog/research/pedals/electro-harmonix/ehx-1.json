@@ -1073,6 +1073,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-5mm-power-amp_1.jpg?v=1572899886",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-5mm-power-amp?_pos=9&_psq=Electro-Harmonix+5mm+Power+Amp&_psid=3db3d819b&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1081,10 +1087,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/5mmamp-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-5mm-power-amp_1.jpg?v=1572899886",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-5mm-power-amp?_pos=9&_psq=Electro-Harmonix+5mm+Power+Amp&_psid=3db3d819b&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte; AVIF q90. Not for merge."
     }
   },
   {
@@ -1195,6 +1202,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-720-stereo-looper_1.jpg?v=1614190947",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-720-stereo-looper?_pos=3&_psq=Electro-Harmonix+720+Stereo+Looper&_psid=c24c1a0e5&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1203,10 +1216,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/720-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-720-stereo-looper_1.jpg?v=1614190947",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-720-stereo-looper?_pos=3&_psq=Electro-Harmonix+720+Stereo+Looper&_psid=c24c1a0e5&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
     }
   },
   {
@@ -1517,6 +1531,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-95000-performance-loop-laboratory_1.jpg?v=1618001410",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-95000-performance-loop-laboratory?_pos=1&_psq=Electro-Harmonix+95000+Performance+Loop+Laboratory&_psid=074a3b1c1&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
         "url": "https://media.sweetwater.com/api/i/version-66d70660d115359a3306306b381fc4c232321778__q-82__w-750__hmac-3a4f826545e22836820725b08cf83908fdeba124/images/items/750/95000-large.jpg",
         "priority": 2,
         "notes": "Rejected: retailer image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1526,9 +1546,10 @@
     "lastVerified": "2026-10-27",
     "imageProvenance": {
       "kind": "retailer",
-      "sourceUrl": "https://media.sweetwater.com/api/i/version-66d70660d115359a3306306b381fc4c232321778__q-82__w-750__hmac-3a4f826545e22836820725b08cf83908fdeba124/images/items/750/95000-large.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-95000-performance-loop-laboratory_1.jpg?v=1618001410",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-95000-performance-loop-laboratory?_pos=1&_psq=Electro-Harmonix+95000+Performance+Loop+Laboratory&_psid=074a3b1c1&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
     }
   },
   {
@@ -1763,6 +1784,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-attack-decay-tape-reverse-simulator_1.jpg?v=1613752180",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-attack-decay-tape-reverse-simulator?_pos=1&_psq=Electro-Harmonix+Attack+Decay&_psid=3ca61b384&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -1771,10 +1798,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/attackdecay-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-attack-decay-tape-reverse-simulator_1.jpg?v=1613752180",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-attack-decay-tape-reverse-simulator?_pos=1&_psq=Electro-Harmonix+Attack+Decay&_psid=3ca61b384&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte; AVIF q90. Not for merge."
     }
   },
   {
@@ -2306,6 +2334,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://m.media-amazon.com/images/I/71PTfQwGS3L._AC_SL1500_.jpg",
+        "sourcePage": "https://www.amazon.com/clp/B01LZT7ZLC",
+        "priority": 1,
+        "notes": "Chosen: Amazon main image, flat top-down."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassclone-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2314,10 +2348,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bassclone-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://m.media-amazon.com/images/I/71PTfQwGS3L._AC_SL1500_.jpg",
+      "referenceUrl": "https://www.amazon.com/clp/B01LZT7ZLC",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: owner-proposed Amazon Bass Clone main image, flood matte, no crop; AVIF q90. Not for merge."
     }
   },
   {
@@ -2414,6 +2449,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-bass-micro-synth_1.jpg?v=1613836667",
+        "sourcePage": "https://russomusic.com/products/electro-harmonix-bass-micro-synth?_pos=1&_psq=Electro-Harmonix+Bass+Micro+Synth&_psid=b0bf80702&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmicro-f.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2422,10 +2463,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bassmicro-f.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/1210/3886/products/electro-harmonix-bass-micro-synth_1.jpg?v=1613836667",
+      "referenceUrl": "https://russomusic.com/products/electro-harmonix-bass-micro-synth?_pos=1&_psq=Electro-Harmonix+Bass+Micro+Synth&_psid=b0bf80702&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
     }
   },
   {
@@ -2535,6 +2577,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-bass-pedals-electro-harmonix-bass-mono-synth-ehxbassmonosynth-28525010092167.jpg?v=1651133303",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-mono-synth-620175?_pos=1&_psq=Electro-Harmonix+Bass+Mono+Synth&_psid=9d30fd169&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/bassmonosyn-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2543,10 +2591,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/bassmonosyn-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-bass-pedals-electro-harmonix-bass-mono-synth-ehxbassmonosynth-28525010092167.jpg?v=1651133303",
+      "referenceUrl": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-mono-synth-620175?_pos=1&_psq=Electro-Harmonix+Bass+Mono+Synth&_psid=9d30fd169&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
     }
   },
   {
@@ -2751,6 +2800,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-overdrive-and-boost-electro-harmonix-bass-soul-food-overdrive-soulfoodbass-28286798037127.jpg?v=1647047478",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-soul-food-overdrive-11639?_pos=1&_psq=Electro-Harmonix+Bass+Soul+Food&_psid=cfc406977&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/basssoulfood-f-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -2759,10 +2814,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/basssoulfood-f-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-overdrive-and-boost-electro-harmonix-bass-soul-food-overdrive-soulfoodbass-28286798037127.jpg?v=1647047478",
+      "referenceUrl": "https://www.chicagomusicexchange.com/products/electro-harmonix-bass-soul-food-overdrive-11639?_pos=1&_psq=Electro-Harmonix+Bass+Soul+Food&_psid=cfc406977&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte; AVIF q90. Not for merge."
     }
   },
   {
@@ -3099,6 +3155,12 @@
     ],
     "imageCandidates": [
       {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-eq-electro-harmonix-battalion-bass-preamp-and-di-battalion-28174661419143.jpg?v=1647685216",
+        "sourcePage": "https://www.chicagomusicexchange.com/products/electro-harmonix-battalion-bass-preamp-and-di-82070?_pos=1&_psq=Electro-Harmonix+Battalion&_psid=6c5166b67&_ss=e",
+        "priority": 1,
+        "notes": "Chosen: flat top-down retailer image; test/reference."
+      },
+      {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/battalion-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
@@ -3107,10 +3169,11 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://www.ehx.com/wp-content/uploads/2020/10/battalion-1.jpg",
+      "kind": "retailer",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/electro-harmonix-effects-and-pedals-eq-electro-harmonix-battalion-bass-preamp-and-di-battalion-28174661419143.jpg?v=1647685216",
+      "referenceUrl": "https://www.chicagomusicexchange.com/products/electro-harmonix-battalion-bass-preamp-and-di-82070?_pos=1&_psq=Electro-Harmonix+Battalion&_psid=6c5166b67&_ss=e",
       "status": "chosen",
-      "note": "TEST/REFERENCE ONLY: original 3/4 perspective real image restored for owner visual comparison (not for merge); processed with flood matte, AVIF q90."
+      "note": "TEST/REFERENCE: flat top-down retailer image (Russo/CME), flood matte + body-crop; AVIF q90. Not for merge."
     }
   }
 ]
