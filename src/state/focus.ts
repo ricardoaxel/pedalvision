@@ -3,7 +3,6 @@ import type { RectCm } from "../lib/geometry";
 import { MOBILE_MEDIA } from "../lib/useMobile";
 import {
 	boardFocusBounds,
-	FOCUS_LOAD_MAX_SCALE,
 	fitBoundsToViewport,
 	focusInsets,
 	sceneFocusBounds,
@@ -12,6 +11,7 @@ import { usePanelMetrics } from "./panel";
 import {
 	boardDefinition,
 	type Cable,
+	type CustomPedal,
 	type Endpoint,
 	type PlacedBoard,
 	type PlacedItem,
@@ -46,6 +46,7 @@ export interface FocusSnapshot {
 	/** Scene array references at focus time (any edit clears the framed tint). */
 	boards: PlacedBoard[];
 	items: PlacedItem[];
+	customPedals: CustomPedal[];
 	endpoints: Endpoint[];
 	cables: Cable[];
 	/** The stage + mobile sheet geometry used to compute the fit. */
@@ -58,6 +59,8 @@ interface FocusStore {
 	/** Polite status text for an explicit focus (never for automatic load frames). */
 	announcement: string;
 	announceSeq: number;
+	/** Every applied focus increments; used by E2E to prove load dedup. */
+	epoch: number;
 	mark: (snapshot: FocusSnapshot, announcement?: string) => void;
 	reset: () => void;
 }
@@ -66,19 +69,22 @@ export const useFocus = create<FocusStore>((set) => ({
 	last: null,
 	announcement: "",
 	announceSeq: 0,
+	epoch: 0,
 	mark: (last, announcement) =>
-		set((state) =>
-			announcement
-				? { last, announcement, announceSeq: state.announceSeq + 1 }
-				: { last },
-		),
+		set((state) => ({
+			last,
+			epoch: state.epoch + 1,
+			...(announcement
+				? { announcement, announceSeq: state.announceSeq + 1 }
+				: null),
+		})),
 	reset: () => set({ last: null }),
 }));
 
 export interface FocusViewportOptions {
 	/** `auto` = board when a board is selected, otherwise the used area. */
 	target?: FocusTarget | "auto";
-	/** Zoom ceiling; load framing passes {@link FOCUS_LOAD_MAX_SCALE}. */
+	/** Zoom ceiling; load framing passes 1. */
 	maxScale?: number;
 	/** A document load with no content should reset the viewport, not stay lost. */
 	resetOnEmpty?: boolean;
@@ -149,6 +155,7 @@ export function focusViewport(
 		viewport,
 		boards: scene.boards,
 		items: scene.items,
+		customPedals: scene.customPedals,
 		endpoints: scene.endpoints,
 		cables: scene.cables,
 		size: { width: size.width, height: size.height },
@@ -178,7 +185,8 @@ function sameViewport(a: Viewport, b: Viewport): boolean {
 /**
  * Is the viewport still exactly where the last focus put it, with the same
  * target and an unchanged scene? Used for the trigger's framed tint. Any pan,
- * zoom, edit, undo or selection change clears it.
+ * zoom, board-selection change, resize/info-sheet change, scene edit or undo
+ * clears it.
  */
 export function useIsFramed(): boolean {
 	const last = useFocus((state) => state.last);
@@ -187,6 +195,7 @@ export function useIsFramed(): boolean {
 	const y = useViewport((state) => state.y);
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
+	const customPedals = useScene((state) => state.customPedals);
 	const endpoints = useScene((state) => state.endpoints);
 	const cables = useScene((state) => state.cables);
 	const size = useViewport((state) => state.size);
@@ -200,6 +209,7 @@ export function useIsFramed(): boolean {
 	if (
 		last.boards !== boards ||
 		last.items !== items ||
+		last.customPedals !== customPedals ||
 		last.endpoints !== endpoints ||
 		last.cables !== cables
 	) {

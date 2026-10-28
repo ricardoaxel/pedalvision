@@ -231,12 +231,14 @@ Read only these pointed files/sections; do not read whole docs.
   unused-variable warnings).
 - `pnpm typecheck` clean.
 - `pnpm test` **888 passed** (97 files), including 16 new `viewportFocus` tests.
-- `pnpm build` clean. Main JS **309.59 → 311.52 kB gzip** (**+1.93 kB**), CSS
-  **13.05 → 13.12 kB gzip** (**+0.07 kB**); within the ≤ +2 kB target.
-- **E2E:** `viewport-focus.spec.ts` **10/10** (desktop + mobile); touched suite
-  (`measurement-hud`, `scenes`, `smoke`, `share`, `first-run`) **85 passed /
-  4 skipped**. Deferred to post-merge (6-spec cap): `selection.spec.ts`,
-  `touch.spec.ts`, `info-panel.spec.ts`.
+- `pnpm build` clean. Main JS **309.59 → 311.56 kB gzip** (**+1.97 kB**), CSS
+  **13.05 → 13.16 kB gzip** (**+0.11 kB**); within the ≤ +2 kB target.
+- **E2E:** `viewport-focus.spec.ts` **14/14** (desktop + mobile); the six-spec
+  touched suite (`measurement-hud`, `scenes`, `smoke`, `share`, `first-run`)
+  **89 passed / 4 skipped** (1 worker). A single `smoke` case flaked once under
+  4-worker parallelism and passed alone + in the serial run (no product change).
+  Deferred to post-merge (6-spec cap): `selection.spec.ts`, `touch.spec.ts`,
+  `info-panel.spec.ts`.
 - **Performance (1440×900, fixed board + pedal, base vs branch):** 1 s
   wheel-zoom **61–62 fps both**; JS heap **10.1 MB both**; share link
   **358–360 chars** (same range); all-content Standard PNG **2,771,550 bytes**
@@ -251,6 +253,14 @@ Read only these pointed files/sections; do not read whole docs.
   the PR (viewport state is not shareable).
 - **Checks run on this branch:** `pnpm lint && pnpm typecheck && pnpm test &&
   pnpm build`; `pnpm exec playwright test` for the six named specs.
+- **Code review (light, one pass):** **changes-required** with 5 findings, all
+  fixed in a second commit: (1) direct E2E coverage for save-copy, preview
+  enter/exit and no-frame-on-edit, plus a `data-focus-epoch` dedup counter;
+  (2) removed the unused `minScale` option; (3) custom-pedal edits now clear
+  the framed tint; (4) removed the dead `FOCUS_LOAD_MAX_SCALE` import; (5)
+  tightened the centre tolerance to <1 px and anchored the safe rect to the
+  real `.app-toolbar`/`.scale-strip` DOM. No second review pass (low-risk
+  feature; the green test suite is the re-check).
 
 ## Notes
 

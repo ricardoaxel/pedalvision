@@ -85,6 +85,7 @@ export function Stage() {
 	const framed = useIsFramed();
 	const focusTarget = useFocus((state) => state.last?.target ?? "");
 	const focusBounds = useFocus((state) => state.last?.bounds ?? null);
+	const focusEpoch = useFocus((state) => state.epoch);
 
 	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
 	// the DOM so Playwright can assert store-level outcomes without pixels.
@@ -319,6 +320,7 @@ export function Stage() {
 			data-cable-target={cableTargetKey}
 			data-jack-anchors={jackAnchors}
 			data-framed={framed ? "true" : "false"}
+			data-focus-epoch={focusEpoch}
 			data-focus-target={focusTarget}
 			data-focus-bounds={
 				focusBounds

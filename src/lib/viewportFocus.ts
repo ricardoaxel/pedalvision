@@ -45,7 +45,6 @@ export interface FitBoundsOptions {
 	paddingPx: number;
 	/** Zoom ceiling (load framing passes 1 so a small sheet is never magnified). */
 	maxScale?: number;
-	minScale?: number;
 }
 
 /** The scene fields the focus bounds need (a subset of the scene store). */
@@ -132,10 +131,9 @@ export function fitBoundsToViewport(
 	);
 	if (!Number.isFinite(rawScale) || rawScale <= 0) return null;
 
-	const minScale = options.minScale ?? MIN_SCALE;
 	const maxScale = Math.min(
 		MAX_SCALE,
-		Math.max(minScale, options.maxScale ?? MAX_SCALE),
+		Math.max(MIN_SCALE, options.maxScale ?? MAX_SCALE),
 	);
 	const scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, rawScale));
 	const cappedScale = Math.min(scale, maxScale);

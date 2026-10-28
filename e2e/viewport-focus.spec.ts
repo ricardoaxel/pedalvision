@@ -1,4 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
+import { waitForSavedScene } from "./persistence.ts";
 import { addBoard, addPedal } from "./picker.ts";
 import { board, shareHash } from "./share.ts";
 
@@ -111,8 +112,8 @@ async function expectFocusedInsideSafeArea(page: Page) {
 
 async function expectAtSafeCentre(page: Page, point: { x: number; y: number }) {
 	const safe = await expectedSafeCenter(page);
-	expect(Math.abs(point.x - safe.x)).toBeLessThan(2);
-	expect(Math.abs(point.y - safe.y)).toBeLessThan(2);
+	expect(Math.abs(point.x - safe.x)).toBeLessThan(1);
+	expect(Math.abs(point.y - safe.y)).toBeLessThan(1);
 }
 
 /** Drag empty canvas (away from the scene plate and centre content). */
@@ -138,6 +139,13 @@ async function stageSnapshot(page: Page) {
 		redo: await stage.getAttribute("data-redo-depth"),
 		hash: await page.evaluate(() => window.location.hash),
 	};
+}
+
+async function focusEpoch(page: Page): Promise<number> {
+	return (
+		Number(await page.getByTestId("stage").getAttribute("data-focus-epoch")) ||
+		0
+	);
 }
 
 async function clickEmpty(page: Page) {
@@ -211,6 +219,14 @@ test("frames the used area after a pan/zoom, via the control and F", async ({
 	await expectFocusedInsideSafeArea(page);
 	// View-only: focus never changes the scene, undo history or share hash.
 	expect(await stageSnapshot(page)).toEqual(beforeFocus);
+
+	// An ordinary edit must NOT re-frame or move the camera.
+	const epochAfterFocus = await focusEpoch(page);
+	const transformAfterFocus = await stageTransform(page);
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(stage).toHaveAttribute("data-framed", "false");
+	expect(await stageTransform(page)).toEqual(transformAfterFocus);
+	expect(await focusEpoch(page)).toBe(epochAfterFocus);
 
 	// Any pan clears the framed tint; `F` re-frames the same used area.
 	await panBy(page, -80, -60);
@@ -315,4 +331,65 @@ test("a read-only share opens framed and can be re-framed", async ({
 	await trigger.click();
 	await expect(stage).toHaveAttribute("data-framed", "true");
 	await expectAtSafeCentre(page, await focusBoundsCentreScreen(page));
+});
+
+test("saving a share copy frames the new document", async ({ page }) => {
+	const hash = shareHash({
+		boards: [board("shared-board", { x: 300, y: 220 })],
+		items: [],
+	});
+	await page.goto(`/?share=1${hash}`);
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await expect(stage).toHaveAttribute("data-framed", "true");
+
+	// Move away from the preview frame, then save a copy.
+	await panBy(page, 180, 120);
+	await page.mouse.wheel(0, 240);
+	await expect(stage).toHaveAttribute("data-framed", "false");
+	const epochBefore = await focusEpoch(page);
+
+	await page.getByTestId("share-save-copy").click();
+	await expect(page.getByTestId("share-saved")).toBeVisible();
+	await expect(page.getByTestId("share-stamp")).toHaveCount(0);
+	await expect(page.locator("main")).not.toHaveAttribute(
+		"data-readonly",
+		"true",
+	);
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	expect(await focusEpoch(page)).toBe(epochBefore + 1);
+	await expectAtSafeCentre(page, await boardCentreScreen(page));
+	await expectFocusedInsideSafeArea(page);
+});
+
+test("leaving a shared preview frames the recipient scene again", async ({
+	page,
+}) => {
+	// The recipient starts with a board of their own; the share link carries a
+	// different board far away.
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-boards", "1");
+	await waitForSavedScene(page, (document) => document.boards.length === 1);
+
+	const hash = shareHash({
+		boards: [board("shared-board", { x: 300, y: 220 })],
+		items: [],
+	});
+	await page.goto(`/?share=1${hash}`);
+	const stage = page.getByTestId("stage");
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	const epochBefore = await focusEpoch(page);
+
+	await page.getByTestId("share-exit").click();
+	await expect(page.getByTestId("share-stamp")).toHaveCount(0);
+	await expect(page.locator("main")).not.toHaveAttribute(
+		"data-readonly",
+		"true",
+	);
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	expect(await focusEpoch(page)).toBe(epochBefore + 1);
+	await expectAtSafeCentre(page, await boardCentreScreen(page));
+	await expectFocusedInsideSafeArea(page);
 });
