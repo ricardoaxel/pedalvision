@@ -296,6 +296,9 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"walrus-audio-bellwether": ["delay", "chorus"],
 	"walrus-audio-canvas-clock": ["controller", "utility"],
 	"walrus-audio-canvas-line-isolator": ["di", "utility"],
+	"walrus-audio-canvas-re-amp": ["utility"],
+	"walrus-audio-canvas-rehearsal": ["utility"],
+	"walrus-audio-eb-10": ["preamp", "eq", "boost"],
 
 	// Keeley
 	"keeley-1962": ["overdrive"],
@@ -529,7 +532,16 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
  * hint (e.g. "Aetos"), so record their base slugs here. Colorway variants
  * inherit their base.
  */
-export const CURATED_SUPPLIES = new Set<string>(["walrus-audio-aetos"]);
+export const CURATED_SUPPLIES = new Set<string>([
+	"walrus-audio-aetos",
+	// Canvas Power 5/8/15/22/HP: the model names do not contain the SUPPLY_HINT
+	// wording, so the verified category is recorded here.
+	"walrus-audio-canvas-power-5",
+	"walrus-audio-canvas-power-8",
+	"walrus-audio-canvas-power-15",
+	"walrus-audio-canvas-power-22",
+	"walrus-audio-canvas-power-hp",
+]);
 
 /** Names that denote a power supply rather than an effect pedal. */
 const SUPPLY_HINT =
