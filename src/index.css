@@ -311,7 +311,12 @@ body {
 	.first-run {
 		top: auto;
 		right: auto;
-		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-2));
+		bottom: calc(
+			56px +
+			env(safe-area-inset-bottom) +
+			var(--space-6) +
+			var(--space-4)
+		);
 		left: var(--space-3);
 		width: max-content;
 		max-width: calc(100% - var(--space-3) * 2);
@@ -5365,24 +5370,23 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Drafting Scale (F-03), owner-approved 2026-10-27.
- * One true-length bar in the caption strip — the same artifact as the export
- * scale bar. No axis, ticks, world labels, grid/zoom/unit chrome, fill or card.
- * Desktop bottom-left; mobile bottom-right above the dock. DOM only.
+ * Viewport + grid readout (F-03). Explicit real-world scale: how much canvas
+ * is visible and how large one dot cell is — no bar length to mistake for the
+ * dot pitch. Always visible; the measure tool handles local distances.
  * ------------------------------------------------------------------------- */
 
 .app-canvas {
 	background-color: var(--color-canvas-bg);
 }
 
-.scale-bar {
+.scale-readout {
 	position: absolute;
 	left: var(--space-4);
 	bottom: 0;
 	z-index: 1;
 	display: flex;
 	align-items: center;
-	gap: 6px;
+	gap: var(--space-2);
 	height: var(--sheet-margin-y);
 	padding: 0 0 4px;
 	font-family: var(--font-mono);
@@ -5390,51 +5394,23 @@ body {
 	pointer-events: none;
 }
 
-.scale-bar__track {
-	position: relative;
-	display: block;
-	flex: 0 0 auto;
-	height: 1.5px;
-	background-color: var(--color-ink-muted);
-}
-
-.scale-bar__track::before,
-.scale-bar__track::after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	width: 1px;
-	height: 8px;
-	background-color: var(--color-ink-muted);
-	transform: translateY(-50%);
-}
-
-.scale-bar__track::before {
-	left: 0;
-}
-
-.scale-bar__track::after {
-	right: 0;
-}
-
-.scale-bar__zero {
+.scale-readout__view,
+.scale-readout__dots {
 	font-size: var(--font-size-2xs);
 	font-weight: var(--font-weight-medium);
 	line-height: 1;
 	letter-spacing: 0;
-	color: var(--color-ink-muted);
-}
-
-.scale-bar__label {
-	font-size: var(--font-size-2xs);
-	font-weight: var(--font-weight-medium);
-	line-height: 1;
-	letter-spacing: 0;
-	color: var(--color-ink-muted);
+	color: var(--color-ink);
 	white-space: nowrap;
 }
 
-.scale-bar__units {
+.scale-readout__sep {
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink-muted);
+}
+
+.scale-readout__units {
 	display: inline-flex;
 	align-items: center;
 	gap: 0;
@@ -5443,12 +5419,18 @@ body {
 	border-radius: var(--radius-pill);
 }
 
-.scale-bar__unit-slot {
+.scale-readout__unit-slot {
 	display: inline-flex;
 	align-items: center;
 }
 
-.scale-bar__unit {
+.scale-readout__unit-sep {
+	font-size: var(--font-size-2xs);
+	line-height: 1;
+	color: var(--color-ink-muted);
+}
+
+.scale-readout__unit {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -5467,16 +5449,18 @@ body {
 	pointer-events: auto;
 }
 
-.scale-bar__unit:hover {
+.scale-readout__unit:hover {
 	color: var(--color-ink);
 }
 
-.scale-bar__unit[aria-pressed="true"] {
+.scale-readout__unit[aria-pressed="true"] {
 	color: var(--color-ink);
 	background-color: var(--color-surface-raised);
+	text-decoration: underline;
+	text-underline-offset: 2px;
 }
 
-.scale-bar__unit:focus-visible {
+.scale-readout__unit:focus-visible {
 	outline: 2px solid var(--color-accent-strong);
 	outline-offset: -2px;
 }
@@ -5506,7 +5490,7 @@ body {
 }
 
 @media (max-width: 1023px) {
-	.scale-bar {
+	.scale-readout {
 		right: calc(var(--space-4) + env(safe-area-inset-right));
 		bottom: calc(
 			56px +
@@ -5515,26 +5499,10 @@ body {
 			var(--scale-peek-lift, 0px)
 		);
 		left: auto;
-		align-items: center;
 		height: auto;
-		padding-top: 0;
+		padding: 0;
+		gap: 6px;
 		text-shadow: 0 0 2px var(--color-canvas-bg);
-	}
-
-	.scale-bar__track::before,
-	.scale-bar__track::after {
-		height: 5px;
-	}
-
-	.app-canvas:has(.first-run) .scale-bar,
-	.app-canvas:has(.graph-status) .scale-bar,
-	.app-canvas:has(.share-edit-cue) .scale-bar,
-	.app[data-export="open"] .scale-bar,
-	.app[data-scenes="open"] .scale-bar,
-	.app[data-schedule="open"] .scale-bar,
-	.app-canvas:has(.share-panel) .scale-bar,
-	.app:has(.picker) .scale-bar {
-		display: none;
 	}
 }
 
@@ -5596,6 +5564,8 @@ body {
 
 .measure-status__clear {
 	min-height: 24px;
+	margin-left: var(--space-1);
+	border-left: 1px solid var(--color-border);
 	padding: 0 var(--space-2);
 	font-family: var(--font-mono);
 	font-size: var(--font-size-2xs);
@@ -5615,9 +5585,9 @@ body {
 	position: absolute;
 	z-index: 2;
 	padding: 2px 6px;
-	transform: translate(-50%, calc(-100% - 8px));
+	transform: translate(-50%, calc(-100% - 12px));
 	font-family: var(--font-mono);
-	font-size: var(--font-size-2xs);
+	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-medium);
 	line-height: 1.2;
 	color: var(--color-ink);
@@ -5645,5 +5615,9 @@ body {
 		max-width: none;
 		transform: none;
 		justify-content: space-between;
+	}
+
+	.measure-status__clear {
+		min-height: 44px;
 	}
 }

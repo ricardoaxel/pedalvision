@@ -6,12 +6,7 @@ import {
 	type PlacedBoard,
 	type PlacedItem,
 } from "../state/scene";
-import {
-	cmToDisplay,
-	type DisplayUnits,
-	type Point,
-	PX_PER_CM,
-} from "./geometry";
+import { type DisplayUnits, type Point, PX_PER_CM } from "./geometry";
 import { gridCellCm } from "./grid";
 import { type AnchorIndex, anchorIndexFor } from "./jackAnchor";
 
@@ -112,12 +107,8 @@ export function distanceCm(a: Point, b: Point): number {
 	return Math.hypot(b.x - a.x, b.y - a.y);
 }
 
-/** Display a measured distance in the active unit (2 dp). */
+/** Display a measured distance in the active unit (1 dp; the grid is 5 cm). */
 export function formatMeasureDistance(cm: number, units: DisplayUnits): string {
-	return `${cmToDisplay(cm, units)} ${units}`;
-}
-
-/** Short grid-key value (`5`, `10`, …) for the active zoom. */
-export function formatGridCell(scale: number): string {
-	return String(Number(gridCellCm(scale).toFixed(2)));
+	const value = units === "in" ? cm / 2.54 : cm;
+	return `${Math.round(value * 10) / 10} ${units}`;
 }

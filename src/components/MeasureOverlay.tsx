@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { PX_PER_CM } from "../lib/geometry";
 import {
 	distanceCm,
-	formatGridCell,
 	formatMeasureDistance,
 	snapMeasurePoint,
 } from "../lib/measure";
@@ -48,7 +47,6 @@ export function MeasureOverlay() {
 		begin && finish
 			? { x: (begin.x + finish.x) / 2, y: (begin.y + finish.y) / 2 }
 			: null;
-	const grid = formatGridCell(scale);
 
 	const snapAt = (event: ReactPointerEvent<HTMLDivElement>) => {
 		const rect = event.currentTarget.getBoundingClientRect();
@@ -105,10 +103,7 @@ export function MeasureOverlay() {
 				data-testid="measure-status"
 				onPointerDown={(event) => event.stopPropagation()}
 			>
-				<span>
-					Drag to measure · {grid} cm grid
-					{isMobile ? "" : " · Esc to exit"}
-				</span>
+				<span>Drag to measure{isMobile ? "" : " · Esc to exit"}</span>
 				<button
 					type="button"
 					className="measure-status__clear"

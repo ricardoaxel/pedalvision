@@ -4,8 +4,8 @@ import { board, item, shareHash } from "./share.ts";
 import { firstItemScreenCentre } from "./stage.ts";
 
 /**
- * F-03 — "Drafting Scale": one true-length bar in the caption strip, the same
- * artifact as the export scale bar. Desktop bottom-left, mobile bottom-right.
+ * F-03 — viewport + grid readout and the transient measure tool.
+ * "view W × H · grid N cm" says how much canvas is visible and the dot pitch.
  */
 
 const PX_PER_CM = 4;
@@ -14,6 +14,16 @@ async function stageBox(page: Page) {
 	const box = await page.getByTestId("stage").boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
 	return box;
+}
+
+async function readView(page: Page) {
+	const readout = page.getByTestId("scale-readout");
+	return {
+		readout,
+		width: Number(await readout.getAttribute("data-view-width-cm")),
+		height: Number(await readout.getAttribute("data-view-height-cm")),
+		grid: Number(await readout.getAttribute("data-grid-cm")),
+	};
 }
 
 async function firstBoardScreen(page: Page) {
@@ -41,53 +51,41 @@ async function expandDetails(page: Page): Promise<void> {
 	if (await expand.isVisible()) await expand.click();
 }
 
-test("an empty sheet has no scale bar", async ({ page }) => {
+test("an empty sheet already shows the view/dots readout", async ({ page }) => {
 	await page.goto("/");
-	await expect(page.getByTestId("scale-bar")).toHaveCount(0);
+	const readout = page.getByTestId("scale-readout");
+	await expect(readout).toBeVisible();
+	await expect(readout).toContainText("view");
+	await expect(readout).toContainText("grid");
+	await expect(readout).toHaveAttribute("data-grid-cm", "5");
 });
 
-test("desktop drawing scale is true-length, ignores pan, and re-steps on zoom", async ({
+test("desktop readout reports the visible cm and dot pitch, and follows zoom", async ({
 	page,
 }, testInfo) => {
 	test.skip(testInfo.project.name.startsWith("mobile"));
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");
 
-	const tag = page.getByTestId("scale-bar");
-	const rules = page.getByTestId("edge-rules");
-	await expect(tag).toBeVisible();
-	await expect(rules).toHaveCount(0);
-	await expect(tag).toHaveAttribute("data-units", "cm");
-	await expect(tag).toHaveAttribute("data-length-label", "20");
-	await expect(tag).toHaveAttribute("data-length-cm", "20");
-	await expect(tag).toHaveAttribute("data-bar-px", "80");
-
+	const { readout, width, height, grid } = await readView(page);
+	await expect(readout).toBeVisible();
 	const box = await stageBox(page);
-	expect(box.x).toBe(0);
-	expect(box.y).toBeCloseTo(0, 0);
-	expect(box.height).toBeLessThan(700);
-
 	const scale = Number(
 		await page.getByTestId("stage").getAttribute("data-scale"),
 	);
-	const barCm = Number(await tag.getAttribute("data-length-cm"));
-	const barPx = Number(await tag.getAttribute("data-bar-px"));
-	expect(barPx).toBeCloseTo(barCm * PX_PER_CM * scale, 5);
-	const trackWidth = await page
-		.locator(".scale-bar__track")
-		.evaluate((el) => el.getBoundingClientRect().width);
-	expect(trackWidth).toBeCloseTo(barPx, 0);
+	expect(width).toBeCloseTo(box.width / (PX_PER_CM * scale), 1);
+	expect(height).toBeCloseTo(box.height / (PX_PER_CM * scale), 1);
+	expect(grid).toBe(5);
 	const viewport = page.viewportSize();
-	const barBox = await tag.boundingBox();
 	expect(box.height).toBeCloseTo((viewport?.height ?? 720) - 26, 0);
-	expect(barBox?.x ?? 0).toBeCloseTo(16, 0);
-	expect((barBox?.y ?? 0) + (barBox?.height ?? 0)).toBeCloseTo(
+	const readoutBox = await readout.boundingBox();
+	expect(readoutBox?.x ?? 0).toBeCloseTo(16, 0);
+	expect((readoutBox?.y ?? 0) + (readoutBox?.height ?? 0)).toBeCloseTo(
 		viewport?.height ?? 720,
 		0,
 	);
 
-	// Pan must not touch the measurement chrome (no world-origin readout).
-	const beforePan = await tag.getAttribute("data-bar-px");
+	// Pan doesn't change the viewport area.
 	await page.mouse.move(box.x + box.width * 0.2, box.y + box.height * 0.7);
 	await page.mouse.down();
 	await page.mouse.move(
@@ -96,104 +94,71 @@ test("desktop drawing scale is true-length, ignores pan, and re-steps on zoom", 
 		{ steps: 6 },
 	);
 	await page.mouse.up();
-	await expect(tag).toHaveAttribute("data-bar-px", beforePan ?? "");
+	await expect(readout).toHaveAttribute("data-view-width-cm", String(width));
 
-	// Zoom re-steps the round label/bar, still true length.
+	// Zooming in shows less cm; the dot pitch re-steps on the LOD.
 	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 	await page.mouse.wheel(0, -400);
 	await expect
-		.poll(async () => Number(await tag.getAttribute("data-bar-px")))
-		.not.toBe(Number(beforePan));
-	const zoomedScale = Number(
-		await page.getByTestId("stage").getAttribute("data-scale"),
-	);
-	const zoomedCm = Number(await tag.getAttribute("data-length-cm"));
-	const zoomedPx = Number(await tag.getAttribute("data-bar-px"));
-	expect(zoomedPx).toBeCloseTo(zoomedCm * PX_PER_CM * zoomedScale, 5);
+		.poll(async () => Number(await readout.getAttribute("data-view-width-cm")))
+		.toBeLessThan(width);
+	const zoomed = await readView(page);
+	expect(zoomed.width).toBeGreaterThan(0);
+	expect(zoomed.grid).toBeGreaterThanOrEqual(5);
 });
 
-test("desktop drawing scale follows the info-panel units", async ({
+test("desktop readout units and the info rail update the view", async ({
 	page,
 }, testInfo) => {
 	test.skip(testInfo.project.name.startsWith("mobile"));
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");
+	const before = await readView(page);
 	await addPedal(page, "boss-bd-2-blues-driver");
+	const after = await readView(page);
+	await expect(after.readout).toBeVisible();
+	expect(after.width).toBeLessThan(before.width);
+	await expect(after.readout).toHaveAttribute("data-units", "cm");
 
-	const tag = page.getByTestId("scale-bar");
-	await expect(tag).toBeVisible();
-	await expect(tag).toHaveAttribute("data-units", "cm");
-	await expect(tag).toContainText("20 cm");
-
-	await expandDetails(page);
-	await page.getByTestId("info-units-in").click();
-	await expect(tag).toHaveAttribute("data-units", "in");
-	await expect(tag).toHaveAttribute("data-length-label", "10");
-	await expect(tag).toContainText("10 in");
-	await page.getByTestId("info-units-cm").click();
-	await expect(tag).toHaveAttribute("data-units", "cm");
+	await page.getByTestId("scale-readout-unit-in").click();
+	await expect(after.readout).toHaveAttribute("data-units", "in");
+	await expect(after.readout).toContainText("grid");
+	await expect(after.readout).toContainText("grid 2 in");
+	await page.getByTestId("scale-readout-unit-cm").click();
+	await expect(after.readout).toHaveAttribute("data-units", "cm");
 });
 
-test("mobile drawing scale sits bottom-right and hides while editing", async ({
+test("mobile readout sits above the info peek and stays while editing", async ({
 	page,
 }, testInfo) => {
 	test.skip(!testInfo.project.name.startsWith("mobile"));
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");
-
-	await expect(page.getByTestId("edge-rules")).toHaveCount(0);
-	const tag = page.getByTestId("scale-bar");
-	await expect(tag).toBeVisible();
-	await expect(tag).toHaveAttribute("data-mobile", "true");
-	await expect(tag).toHaveAttribute("data-length-label", "10");
-	const scale = Number(
-		await page.getByTestId("stage").getAttribute("data-scale"),
-	);
-	const barCm = Number(await tag.getAttribute("data-length-cm"));
-	const barPx = Number(await tag.getAttribute("data-bar-px"));
-	expect(barPx).toBeCloseTo(barCm * PX_PER_CM * scale, 5);
-	const trackWidth = await page
-		.locator(".scale-bar__track")
-		.evaluate((el) => el.getBoundingClientRect().width);
-	expect(trackWidth).toBeCloseTo(barPx, 0);
-	const viewport = page.viewportSize();
-	const barBox = await tag.boundingBox();
-	expect((barBox?.x ?? 0) + (barBox?.width ?? 0)).toBeCloseTo(
-		(viewport?.width ?? 412) - 16,
-		0,
-	);
-	expect((barBox?.y ?? 0) + (barBox?.height ?? 0)).toBeCloseTo(
-		(viewport?.height ?? 839) - 72,
-		0,
-	);
-
+	const { readout } = await readView(page);
+	await expect(readout).toBeVisible();
+	await expect(readout).toHaveAttribute("data-mobile", "true");
 	await addPedal(page, "boss-bd-2-blues-driver");
 	const panel = page.getByTestId("info-panel");
 	await expect(panel).toBeVisible();
-	// The scale stays visible while editing, lifted above the info peek.
-	await expect(tag).toBeVisible();
+	await expect(readout).toBeVisible();
 	const peek = await panel.boundingBox();
-	const floating = await tag.boundingBox();
+	const floating = await readout.boundingBox();
 	expect((floating?.y ?? 0) + (floating?.height ?? 0)).toBeLessThanOrEqual(
 		(peek?.y ?? 0) - 12,
 	);
-
-	// Units change in the info panel; the bar follows without hiding.
 	await expandDetails(page);
 	await page.getByTestId("info-units-in").click();
-	await expect(tag).toHaveAttribute("data-units", "in");
-	await expect(tag).toContainText("2 in");
+	await expect(readout).toHaveAttribute("data-units", "in");
 	await page.getByTestId("info-close").click();
-	await expect(tag).toBeVisible();
-
-	// The picker/tray still yields; editing does not.
+	await expect(readout).toBeVisible();
+	// Modals cover it but do not remove the readout.
 	await openPicker(page, "pedals");
-	await expect(tag).toBeHidden();
+	await expect(readout).toHaveCount(1);
 	await page.getByTestId("picker-close").click();
-	await expect(tag).toBeVisible();
+	await expect(readout).toBeVisible();
 });
 
-test("mobile drawing scale yields to a custom board action bar", async ({
+test("mobile readout stays with a custom board action bar", async ({
 	page,
 }, testInfo) => {
 	test.skip(!testInfo.project.name.startsWith("mobile"));
@@ -208,7 +173,7 @@ test("mobile drawing scale yields to a custom board action bar", async ({
 	const box = await stageBox(page);
 	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
 	await expect(page.getByTestId("board-action-bar")).toBeVisible();
-	await expect(page.getByTestId("scale-bar")).toBeVisible();
+	await expect(page.getByTestId("scale-readout")).toBeVisible();
 });
 
 test("measure mode snaps a board edge and switches units", async ({ page }) => {
@@ -218,7 +183,9 @@ test("measure mode snaps a board edge and switches units", async ({ page }) => {
 
 	await page.getByTestId("measure-toggle").click();
 	await expect(page.getByTestId("measure-overlay")).toBeVisible();
-	await expect(page.getByTestId("measure-status")).toContainText("5 cm grid");
+	await expect(page.getByTestId("measure-status")).toContainText(
+		"Drag to measure",
+	);
 
 	await page.mouse.move(rect.left + 2, rect.top + 2);
 	await page.mouse.down();
@@ -226,12 +193,11 @@ test("measure mode snaps a board edge and switches units", async ({ page }) => {
 	await page.mouse.move(rect.left + rect.widthPx, rect.top, { steps: 8 });
 	await page.mouse.up();
 	await expect(page.getByTestId("measure-chip")).toHaveText(
-		`${rect.widthCm} cm`,
+		`${Math.round(rect.widthCm * 10) / 10} cm`,
 	);
-	await expect(page.getByTestId("measure-chip")).toContainText("cm");
 
-	await page.getByTestId("scale-bar-unit-in").click();
-	await expect(page.getByTestId("scale-bar")).toHaveAttribute(
+	await page.getByTestId("scale-readout-unit-in").click();
+	await expect(page.getByTestId("scale-readout")).toHaveAttribute(
 		"data-units",
 		"in",
 	);
@@ -250,7 +216,6 @@ test("measure snaps a pedal corner and Esc exits", async ({ page }) => {
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await page.getByTestId("measure-toggle").click();
 	await expect(page.getByTestId("measure-overlay")).toBeVisible();
-	// Measuring clears the selection/rail, so the pedal screen point is stable.
 	const centre = await firstItemScreenCentre(page, {
 		widthCm: 7.3,
 		heightCm: 13.02,
@@ -266,12 +231,11 @@ test("measure snaps a pedal corner and Esc exits", async ({ page }) => {
 	await expect(page.getByTestId("measure-overlay")).toHaveCount(0);
 });
 
-test("measure grid key follows the zoom LOD", async ({ page }) => {
+test("readout dot pitch follows the zoom LOD", async ({ page }) => {
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");
-	await page.getByTestId("measure-toggle").click();
-	await expect(page.getByTestId("measure-status")).toContainText("5 cm grid");
-	await page.getByTestId("measure-toggle").click();
+	const { readout } = await readView(page);
+	await expect(readout).toHaveAttribute("data-grid-cm", "5");
 	const box = await stageBox(page);
 	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 	for (let index = 0; index < 8; index++) {
@@ -287,8 +251,8 @@ test("measure grid key follows the zoom LOD", async ({ page }) => {
 			Number(await page.getByTestId("stage").getAttribute("data-scale")),
 		)
 		.toBeLessThan(0.3);
-	await page.getByTestId("measure-toggle").click();
-	await expect(page.getByTestId("measure-status")).toContainText("20 cm grid");
+	await expect(readout).toHaveAttribute("data-grid-cm", "20");
+	await expect(readout).toContainText("grid");
 });
 
 test("read-only shares can measure without mutating the scene", async ({
@@ -304,23 +268,22 @@ test("read-only shares can measure without mutating the scene", async ({
 	await page.mouse.move(rect.left + rect.widthPx, rect.top, { steps: 8 });
 	await page.mouse.up();
 	await expect(page.getByTestId("measure-chip")).toHaveText(
-		`${rect.widthCm} cm`,
+		`${Math.round(rect.widthCm * 10) / 10} cm`,
 	);
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-boards", "1");
 });
 
-test("read-only shares keep the drawing scale", async ({ page }, testInfo) => {
+test("read-only shares keep the view readout", async ({ page }, testInfo) => {
 	const hash = shareHash({
 		boards: [board("b1")],
 		items: [item("i1", { boardUid: "b1" })],
 	});
 	await page.goto(`/?share=1${hash}`);
 	await expect(page.getByTestId("share-stamp")).toBeVisible();
-
-	const tag = page.getByTestId("scale-bar");
-	await expect(tag).toBeVisible();
-	await expect(tag).toHaveAttribute("data-units", "cm");
+	const readout = page.getByTestId("scale-readout");
+	await expect(readout).toBeVisible();
+	await expect(readout).toHaveAttribute("data-units", "cm");
 	if (testInfo.project.name.startsWith("mobile")) {
-		await expect(tag).toHaveAttribute("data-mobile", "true");
+		await expect(readout).toHaveAttribute("data-mobile", "true");
 	}
 });

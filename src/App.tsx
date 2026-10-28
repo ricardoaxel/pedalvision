@@ -28,7 +28,7 @@ import {
 import { MeasureControl } from "./components/MeasureControl";
 import { MeasureOverlay } from "./components/MeasureOverlay";
 import { Picker, type PickerTab } from "./components/Picker";
-import { ScaleBar } from "./components/ScaleBar";
+import { ScaleReadout } from "./components/ScaleReadout";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
 import {
@@ -338,8 +338,8 @@ function App() {
 				<Stage />
 				{/* Transient measure mode: drag A→B on the canvas. */}
 				<MeasureOverlay />
-				{/* Ambient scale (F-03 "Drafting Scale"): one tiny export-style bar. */}
-				<ScaleBar />
+				{/* Ambient scale (F-03): visible canvas + dot-cell readout. */}
+				<ScaleReadout />
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
 				 * so its presses never reach the canvas gesture handler. Read-only
 				 * shares keep selection + the info panel, but remove every edit affordance. */}

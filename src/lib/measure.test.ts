@@ -5,12 +5,7 @@ import type {
 	PlacedBoard,
 	PlacedItem,
 } from "../state/scene";
-import {
-	distanceCm,
-	formatGridCell,
-	formatMeasureDistance,
-	snapMeasurePoint,
-} from "./measure";
+import { distanceCm, formatMeasureDistance, snapMeasurePoint } from "./measure";
 
 const board: PlacedBoard = {
 	uid: "b1",
@@ -105,11 +100,6 @@ describe("measure formatting", () => {
 		expect(distanceCm({ x: 0, y: 0 }, { x: 3, y: 4 })).toBe(5);
 		expect(formatMeasureDistance(5, "cm")).toBe("5 cm");
 		expect(formatMeasureDistance(5.08, "in")).toBe("2 in");
-		expect(formatMeasureDistance(7.3, "in")).toBe("2.87 in");
-	});
-
-	it("reports the current 5 cm grid cell", () => {
-		expect(formatGridCell(1)).toBe("5");
-		expect(formatGridCell(0.25)).toBe("20");
+		expect(formatMeasureDistance(7.3, "in")).toBe("2.9 in");
 	});
 });
