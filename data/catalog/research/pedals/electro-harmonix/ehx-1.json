@@ -271,6 +271,12 @@
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/1440looper-1.jpg",
         "priority": 2,
         "notes": "Rejected: official image is an angled perspective/3D hero shot, not a flat top-down."
+      },
+      {
+        "url": "https://m.media-amazon.com/images/I/81enTUibOcL._AC_SL1500_.jpg",
+        "sourcePage": "https://www.amazon.com/ELECTRO-HARMONIX-Stereo-Looper-Guitar-Effector/dp/B08F5GS8CY",
+        "priority": 2,
+        "notes": "Evaluated 2026-10-28 (Google Images discovery): 1301x1500 product-gallery render, but high-angle (visible side walls) and matte residue; rejected for the flat top-down gate. Source pattern recorded in the registry."
       }
     ],
     "confidence": "confirmed",
@@ -279,7 +285,7 @@
       "kind": "planner",
       "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-1440.png",
       "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 350x397px, upscaled 2.02x to the 800 master; AVIF q90, PSNR 44.90 dB. Counted as a source gap."
+      "note": "Pedalplayground flat top-down cutout (recorded last resort). Source 350x397px, upscaled 2.02x; AVIF q90, PSNR 44.90 dB. The Amazon 1500px product-gallery render found via Google Images was evaluated and rejected (high-angle side walls + matte residue), so the flat planner cutout was retained. Counted as a source gap."
     }
   },
   {
@@ -516,7 +522,7 @@
         "url": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
         "sourcePage": "https://www.pedalplayground.com/",
         "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 376x732px, upscaled 1.09x to the 800 master; AVIF q90, PSNR 45.64 dB. Deskewed 2.1° before processing."
+        "notes": "Chosen flat top-down Pedalplayground cutout; source 350x720px, upscaled 1.11x; deskewed -1.2° (vision-confirmed upright); analyzer rotation metric false-positive, recorded override."
       },
       {
         "url": "https://www.ehx.com/wp-content/uploads/2020/10/ehxminituner-1.jpg",
@@ -530,7 +536,7 @@
       "kind": "planner",
       "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner.png",
       "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 376x732px, upscaled 1.09x to the 800 master; AVIF q90, PSNR 45.64 dB. Deskewed 2.1° before processing. Counted as a source gap."
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; official EHX gallery image is an angled hero shot). Source 350x720px, upscaled 1.11x; deskewed -1.2° after owner review (vision-confirmed upright). AVIF q90, PSNR 45.70 dB. The analyzer rotation metric false-positives (3.2°) on this narrow tapered cutout; the owner-directed visual correction is recorded. Counted as a source gap."
     }
   },
   {
@@ -629,7 +635,7 @@
         "url": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner-v2.png",
         "sourcePage": "https://www.pedalplayground.com/",
         "priority": 1,
-        "notes": "Chosen flat top-down Pedalplayground cutout (recorded last resort); source 377x745px, upscaled 1.07x to the 800 master; AVIF q90, PSNR 45.85 dB. Deskewed 2.1° before processing."
+        "notes": "Chosen flat top-down Pedalplayground cutout; source 350x733px, upscaled 1.09x; deskewed -0.5° (vision-confirmed upright); analyzer rotation metric false-positive, recorded override."
       },
       {
         "url": "https://www.ehx.com/wp-content/uploads/2024/12/20202.jpeg",
@@ -643,7 +649,7 @@
       "kind": "planner",
       "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/ehx-2020-tuner-v2.png",
       "status": "last-resort",
-      "note": "Pedalplayground flat top-down cutout (recorded last resort; the official EHX gallery image is an angled 3D hero shot, so no flat top-down existed). Source 377x745px, upscaled 1.07x to the 800 master; AVIF q90, PSNR 45.85 dB. Deskewed 2.1° before processing. Counted as a source gap."
+      "note": "Pedalplayground flat top-down cutout (recorded last resort; official EHX gallery image is an angled hero shot). Source 350x733px, upscaled 1.09x; deskewed -0.5° after owner review (vision-confirmed upright). AVIF q90, PSNR 45.85 dB. The analyzer rotation metric false-positives (3.4°) on this narrow tapered cutout; the owner-directed visual correction is recorded. Counted as a source gap."
     }
   },
   {
