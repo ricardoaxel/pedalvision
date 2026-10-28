@@ -1,6 +1,6 @@
 # T-3 — BOSS wave 4 coordinator
 
-**Phase:** P5 · **Status:** in review — PRs #65 (boss-7), #66 (boss-6), #68 (boss-8) · **Type:** catalog wave coordinator · **Depends on:** T-2c/T-2d
+**Phase:** P5 · **Status:** in review — #68 (boss-8, corrected); #65 (boss-7) + #66 (boss-6) merged · **Type:** catalog wave coordinator · **Depends on:** T-2c/T-2d
 
 ## Goal
 
@@ -66,8 +66,9 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
 
 ## Delivery (2026-10-27)
 
-- **PRs:** #65 boss-7 (26), #66 boss-6 (26 + `psm-5` repair), #68 boss-8 (25,
-  **corrected**). Coordinator opened **no PR**; docs-only rule **PR #69**.
+- **PRs:** #65 boss-7 (26) and #66 boss-6 (26 + `psm-5` repair) are **merged**
+  (`9aae331` / `f0ef57b`; post-merge builds `61af93c` / `75492b0`, **374/15**);
+  #68 boss-8 (25, **corrected**) is the last catalog PR in review. Coordinator opened **no PR**; docs-only rule **PR #69**.
   Catalog cap reached (3).
 - **Items/images:** 77 net-new + 1 repair; **156 AVIF pairs** (boss-6 54 =
   26 new + `psm-5`; boss-7 52; boss-8 50). BOSS completes at **208**; BOSS
@@ -84,8 +85,10 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
   cache-inclusive floor ~114M). boss-6/boss-8 are over the 400k per-batch soft,
   under the 800k hard; wave under the 1.6M soft. Subagent vision/code-review
   sessions are separate.
-- **CI:** #65/#66 pass; **#68 pending after the correction force-push** (the
-  corrected branch passed `catalog:ci` + guard locally and will be re-run by CI).
+- **CI:** #65/#66 merged and green; **#68 was rebased onto the merged main and
+  is now 399/15 on the branch** (the boss-8 curated overrides were restored);
+  its CI re-runs. The branch passed `catalog:ci` (399/15), test **853** and
+  `guard-batch-pr` locally.
 - **Rules:** **PR #69** codifies “resolution is not a rejection reason; process
   to the 800 master and gate the final rendition”; planner last-resort stays
   above generated art; footprint from the official unit spec. Token review
