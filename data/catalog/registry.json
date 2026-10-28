@@ -76,6 +76,17 @@
         }
       ]
     },
+    "mooer": {
+      "brand": "Mooer",
+      "batches": [
+        {
+          "batch": "mooer-1",
+          "raw": "data/catalog/research/pedals/mooer/mooer-1.json",
+          "mapped": "data/catalog/pedals/mooer/mooer-1.json",
+          "items": 26
+        }
+      ]
+    },
     "red-panda": {
       "brand": "Red Panda",
       "batches": [
