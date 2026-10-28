@@ -208,3 +208,16 @@ Read only the sections the task file points to; do not read whole docs.
   errors; desktop + mobile before/after screenshots in the PR.
 - Contact sheet + coverage/reject report in the PR; demo share link verified.
 - One PR; no merge.
+
+## Owner correction — 2026-10-28 (planner images)
+
+The owner reviewed the batch and reported the 1966 Series image was the wrong pedal.
+`jhs-1966-series-fuzz` was showing a 3 Series Fuzz; it now uses the Pedalplayground
+cutout (`https://pedalplayground.com/app/images/pedals/jhs-1966-fuzz.png`, 235×392,
+body-cropped, 2.04× upscale, planner last-resort). The black Oil Can Delay
+(`jhs-3-series-oil-can-delay-black`) now uses the planner cutout
+(`https://pedalplayground.com/app/images/pedals/jhs-3-series-oil.png`, 460×758,
+1.06×) instead of generated art, and its generated spec is removed. Bender/Boost/
+Italy keep their PedalFilter community art (the planner art is identical; community
+is higher in the hierarchy). Planner share **2/26 = 7.7 %**. `catalog:ci` **430/15**;
+guard clean; tests **872**.
