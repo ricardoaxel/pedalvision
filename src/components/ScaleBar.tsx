@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { chooseScaleBar } from "../lib/measurementHud";
 import { useIsMobile } from "../lib/useMobile";
+import { usePanelMetrics } from "../state/panel";
 import { useScene } from "../state/scene";
 import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
@@ -21,12 +22,16 @@ export function ScaleBar() {
 	const units = useSettings((state) => state.units);
 	const isMobile = useIsMobile();
 	const content = useScene((state) => state.boards.length + state.items.length);
+	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
 	const bar = chooseScaleBar(
 		scale,
 		units,
 		isMobile ? MOBILE_BAR_MAX_PX : undefined,
 	);
 	const barStyle = { width: `${bar.barPx}px` } as CSSProperties;
+	const liftStyle = {
+		"--scale-peek-lift": `${sheetHeight}px`,
+	} as CSSProperties;
 
 	// An empty sheet has nothing to measure; don't add a first-run ornament.
 	if (content === 0) return null;
@@ -43,10 +48,11 @@ export function ScaleBar() {
 			data-length-label={bar.lengthLabel}
 			data-length-cm={bar.lengthCm}
 			data-bar-px={bar.barPx}
+			style={liftStyle}
 		>
 			<span className="scale-bar__track" aria-hidden="true" style={barStyle} />
 			<span className="scale-bar__label">
-				{bar.lengthLabel} {bar.units}
+				= {bar.lengthLabel} {bar.units}
 			</span>
 		</div>
 	);

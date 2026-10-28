@@ -5453,7 +5453,12 @@ body {
 @media (max-width: 1023px) {
 	.scale-bar {
 		right: calc(var(--space-4) + env(safe-area-inset-right));
-		bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-4));
+		bottom: calc(
+			56px +
+			env(safe-area-inset-bottom) +
+			var(--space-4) +
+			var(--scale-peek-lift, 0px)
+		);
 		left: auto;
 		align-items: center;
 		height: auto;
@@ -5466,8 +5471,6 @@ body {
 		height: 5px;
 	}
 
-	.app:has(.info-panel) .scale-bar,
-	.app-canvas:has(.item-action-bar) .scale-bar,
 	.app-canvas:has(.first-run) .scale-bar,
 	.app-canvas:has(.graph-status) .scale-bar,
 	.app-canvas:has(.share-edit-cue) .scale-bar,

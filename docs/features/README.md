@@ -51,7 +51,7 @@ source files; tests are the unit specs that guard the logic.
 | F10 | Share links + read-only preview + save a copy | Send a layout without an account | `lib/shareLink.ts`, `state/share.ts`, `state/readOnly.ts`, `state/library.ts`, `components/SharePanel.tsx`, `components/ShareView.tsx` | `shareLink.test.ts`, `shareLink.demo.test.ts`, `readOnly.test.ts`, `library.test.ts` | `share.spec.ts`, `cables.spec.ts`, `history.spec.ts`, `storage-fallback.spec.ts` |
 | F11 | Responsive desktop/mobile chrome | Full function on phone and desktop | `App.tsx`, `components/Picker.tsx`, panels/trays, `styles/tokens.css` | `toolbarNav.test.ts` | `picker.spec.ts`, `touch.spec.ts`, mobile cases in `export`/`cable-schedule`/`info-panel`/`scenes` |
 | F12 | Cables: drag-connect, endpoints, schedule | Plan the patch, not just the parts | `state/scene.ts` (cables), `state/cableDrag.ts`, `state/endpointDrag.ts`, `state/endpointPlacement.ts`, `canvas/CableLayer.tsx`, `canvas/EndpointLayer.tsx`, `lib/jackAnchor.ts`, `lib/cablePath.ts`, `lib/cableLength.ts`, `lib/cableSummary.ts`, `components/CableSchedulePanel.tsx` | `cables.test.ts`, `cableDrag.test.ts`, `jackAnchor.test.ts`, `cablePath.test.ts`, `cableLength.test.ts`, `cableSummary.test.ts`, `exportScene.test.ts` | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
-| F-03 | Drafting Scale: one true-length export-style bar | Judges size at a glance without adding a screen element | `components/ScaleBar.tsx`, `lib/measurementHud.ts` | `measurementHud.test.ts` | `measurement-hud.spec.ts` |
+| F-03 | Drafting Scale: one true-length export-style bar (`= 20 cm`) | A scale/trust cue; the gap question is a planned measure tool | `components/ScaleBar.tsx`, `lib/measurementHud.ts` | `measurementHud.test.ts` | `measurement-hud.spec.ts` |
 | — | Info panel + asset renditions | Right details and imagery at each size | `components/InfoPanel.tsx`, `components/PartDrawing.tsx`, `components/partImage.ts`, `lib/partInfo.ts`, `lib/cdn.ts`, `canvas/loadImage.ts`, `canvas/useImage.ts` | `partInfo.test.ts`, `cdn.test.ts`, `loadImage.test.ts`, `imageStatus.test.ts` | `info-panel.spec.ts`, `picker.spec.ts`, `picker-choka.spec.ts` |
 | — | Capacity budgets | Honest limits, never a silent failure | `lib/capacity.ts`, `components/CapacityAnnouncer.tsx`, `scene.ts` caps | `capacity.test.ts`, `capacity.images.test.ts`, `capacityGuards.test.ts` | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | — | First-run guidance | Empty scene tells you where to start | `components/FirstRunHint.tsx`, `lib/firstRun.ts`, `lib/focus.ts` | `firstRun.test.ts` | `first-run.spec.ts` |
@@ -97,13 +97,14 @@ graph cap, the share payload/version or the "Patch Drafting" direction.
 ### F-03 — Drafting Scale (P2-03)
 
 The app’s **export scale bar**, used as the only on-canvas measurement: one
-true-length line + 8 px end caps + a `20 cm` label in a 22 px bottom caption
-strip (desktop bottom-left, 16 px gutter; mobile bottom-right, 16 px above the
-dock). No axis, ticks, world labels, grid/zoom/unit chrome, fill or card. Pan
-changes nothing; zoom re-steps the label/bar; the bar hides on an empty scene.
-Units live in the info panel and the bar follows them; `cm` stays canonical;
-nothing is persisted, exported or shared. The ruler/axis and selected-W×H chip
-were deleted because they did not earn their place.
+true-length line + 8 px end caps + an explicit `= 20 cm` label in a 22 px bottom
+caption strip (desktop bottom-left, 16 px gutter; mobile bottom-right, 16 px
+above the dock and lifted above the info peek while editing). No axis, ticks,
+world labels, grid/zoom/unit chrome, fill or card. Pan changes nothing; zoom
+re-steps the label/bar; the bar hides on an empty scene and for picker/trays.
+Units live in the info panel and the bar follows. It is a **scale/trust cue**;
+the real “how much gap?” question is the planned **measure tool + 5 cm grid**
+feature, not this bar. `cm` stays canonical; nothing is persisted/exported.
 
 ### F-19 — This map
 
@@ -270,7 +271,7 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 | Real iOS Safari export (A3) | Owner-confirmed PNG on iPhone (2026-10-20) | Manual; PDF not separately re-tested; P5-04 launch gate |
 | Non-Chromium browsers | Playwright chromium only (owner scope) | Out of scope; real-device pass is P5-06 |
 | Power-supply planner | Not implemented (non-goal N3); custom supply power shows in the info panel | Future feature; no E2E by design |
-| Selected W×H in the measurement frame | The info panel is the size readout; the bar is scale-only | Intentional (owner rejected the duplicate chip) |
+| Gap/distance measurement (measure tool) | Bar is a scale cue only; info panel shows selected W×H | Planned as its own feature (measure tool + 5 cm grid) — do not widen F-03 |
 | Scene list accessibility mirror | Deferred in `docs/design.md` (no owning task) | Deferred |
 | Capacity timing thresholds | `benchmark.spec.ts` is report-only; no ms gate | Intentional (avoid flaky CI) |
 

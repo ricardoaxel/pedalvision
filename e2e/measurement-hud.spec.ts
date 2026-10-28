@@ -102,13 +102,13 @@ test("desktop drawing scale follows the info-panel units", async ({
 	const tag = page.getByTestId("scale-bar");
 	await expect(tag).toBeVisible();
 	await expect(tag).toHaveAttribute("data-units", "cm");
-	await expect(tag).toContainText("20 cm");
+	await expect(tag).toContainText("= 20 cm");
 
 	await expandDetails(page);
 	await page.getByTestId("info-units-in").click();
 	await expect(tag).toHaveAttribute("data-units", "in");
 	await expect(tag).toHaveAttribute("data-length-label", "10");
-	await expect(tag).toContainText("10 in");
+	await expect(tag).toContainText("= 10 in");
 	await page.getByTestId("info-units-cm").click();
 	await expect(tag).toHaveAttribute("data-units", "cm");
 });
@@ -147,15 +147,29 @@ test("mobile drawing scale sits bottom-right and hides while editing", async ({
 	);
 
 	await addPedal(page, "boss-bd-2-blues-driver");
-	await expect(page.getByTestId("info-panel")).toBeVisible();
-	await expect(tag).toBeHidden();
+	const panel = page.getByTestId("info-panel");
+	await expect(panel).toBeVisible();
+	// The scale stays visible while editing, lifted above the info peek.
+	await expect(tag).toBeVisible();
+	const peek = await panel.boundingBox();
+	const floating = await tag.boundingBox();
+	expect((floating?.y ?? 0) + (floating?.height ?? 0)).toBeLessThanOrEqual(
+		(peek?.y ?? 0) - 12,
+	);
 
-	// Units change in the info panel; the bar follows on clear.
+	// Units change in the info panel; the bar follows without hiding.
 	await expandDetails(page);
 	await page.getByTestId("info-units-in").click();
+	await expect(tag).toHaveAttribute("data-units", "in");
+	await expect(tag).toContainText("= 2 in");
 	await page.getByTestId("info-close").click();
 	await expect(tag).toBeVisible();
-	await expect(tag).toHaveAttribute("data-units", "in");
+
+	// The picker/tray still yields; editing does not.
+	await openPicker(page, "pedals");
+	await expect(tag).toBeHidden();
+	await page.getByTestId("picker-close").click();
+	await expect(tag).toBeVisible();
 });
 
 test("mobile drawing scale yields to a custom board action bar", async ({
@@ -173,7 +187,7 @@ test("mobile drawing scale yields to a custom board action bar", async ({
 	const box = await stageBox(page);
 	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
 	await expect(page.getByTestId("board-action-bar")).toBeVisible();
-	await expect(page.getByTestId("scale-bar")).toBeHidden();
+	await expect(page.getByTestId("scale-bar")).toBeVisible();
 });
 
 test("read-only shares keep the drawing scale", async ({ page }, testInfo) => {
