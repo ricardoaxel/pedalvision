@@ -3597,26 +3597,43 @@
     "id": "walrus-audio-385",
     "brand": "Walrus Audio",
     "name": "385",
-    "widthCm": 7.32,
-    "heightCm": 12.29,
-    "image": "walrus-audio-385.png",
-    "imageSource": "mock",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-385.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "color": "Matte black with yellow/red vintage projector artwork",
+    "notes": "Original 385 overdrive inspired by the Bell and Howell Filmosound 385 projector; internally runs at 18 V, with separate bass and treble controls.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.walrusaudio.com/products/385-overdrive-mkii",
+        "url": "https://www.walrusaudio.com/blogs/news/385-overdrive-now-shipping",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/news/walrus-audio-385-mkii",
+        "url": "https://www.guitarcenter.com/Walrus-Audio/385-Overdrive-Effects-Pedal-1500000030656.gc",
         "kind": [
           "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-385.png",
+        "kind": [
+          "image"
         ]
       }
     ]
@@ -3625,40 +3642,81 @@
     "id": "walrus-audio-385-nat-parks",
     "brand": "Walrus Audio",
     "name": "385 (Nat. Parks)",
-    "widthCm": 7.32,
-    "heightCm": 12.29,
-    "image": "walrus-audio-385-nat-parks.png",
-    "imageSource": "mock",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-385-nat-parks.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-385",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "Matte black with Great Sand Dunes National Park artwork",
+    "notes": "Limited 2021 National Parks Series 385 overdrive; same circuit and enclosure as the original 385.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/385-overdrive-now-shipping",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-385-overdrive-1313888",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-385-overdrive-900-1002bf21-28759774789767.jpg?v=1645436119",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-385-mkii",
     "brand": "Walrus Audio",
     "name": "385 MKII",
     "widthCm": 6.6,
-    "heightCm": 12.57,
-    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/front_7c1776bd-7969-47b7-81e1-c0c13a6ea7b0.jpg?v=1748875993",
-    "imageSource": "url",
+    "heightCm": 12.12,
+    "image": "walrus-audio-385-mkii.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "color": "Textured black with projector artwork (yellow/red ink)",
+    "notes": "MKII version of the 385 overdrive with A/B volume/gain sets and a 385+ gain switch; internally runs at 18 V.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.walrusaudio.com/products/385-overdrive-mkii",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/news/walrus-audio-385-mkii",
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/385_MKII_Digital_Manual.pdf?v=1695840392",
         "kind": [
           "info"
         ]
@@ -3676,45 +3734,74 @@
     "brand": "Walrus Audio",
     "name": "385 MKII (Black)",
     "widthCm": 6.6,
-    "heightCm": 12.57,
-    "image": "walrus-audio-385-mkii-black.png",
-    "imageSource": "mock",
+    "heightCm": 12.12,
+    "image": "walrus-audio-385-mkii-black.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-385-mkii",
-    "source": "placeholder"
-  },
-  {
-    "id": "walrus-audio-arp-87",
-    "brand": "Walrus Audio",
-    "name": "ARP-87",
-    "widthCm": 6.91,
-    "heightCm": 12.57,
-    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Arp87_500x5002_c1dea1bc-8f92-4683-8b00-4d5ac08b5dc9.jpg?v=1757697333",
-    "imageSource": "url",
-    "effectTypes": [
-      "delay"
-    ],
-    "category": "pedal",
-    "source": "placeholder",
+    "usage": "guitar",
+    "color": "Flat black with amp-tube artwork (cream ink)",
+    "notes": "Black-finish 385 MKII overdrive; same circuit and enclosure as the standard MKII.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-1",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://www.thomann.co.uk/walrus_audio_arp_87.htm",
+        "url": "https://www.walrusaudio.com/products/385-overdrive-mkii",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/walrus-audio-introduces-the-arp-87-multi-function-delay",
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Front_76a56ee8-f9c9-4d1d-9d23-9e545239d691.jpg?v=1748875993",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-arp-87",
+    "brand": "Walrus Audio",
+    "name": "ARP-87",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-arp-87.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "color": "Frosted charcoal with cream/seafoam ink",
+    "notes": "Compact multi-function delay with digital, analog, lo-fi, and slapback algorithms, tap tempo, and momentary knob ramp.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-1",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/ARP-87_Booklet_manual_web.pdf?v=1595435103",
         "kind": [
           "info"
         ]
@@ -3731,76 +3818,207 @@
     "id": "walrus-audio-arp-87-kamakura",
     "brand": "Walrus Audio",
     "name": "ARP-87 (Kamakura)",
-    "widthCm": 6.91,
-    "heightCm": 12.57,
-    "image": "walrus-audio-arp-87-kamakura.png",
-    "imageSource": "mock",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-arp-87-kamakura.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-arp-87",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "Kamakura Series artwork",
+    "notes": "Limited 2022 Kamakura Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/collections/kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/limited-edition-black-friday-kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-arp87-kamakura.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-arp-87-nat-parks",
     "brand": "Walrus Audio",
     "name": "ARP-87 (Nat. Parks)",
-    "widthCm": 6.91,
-    "heightCm": 12.57,
-    "image": "walrus-audio-arp-87-nat-parks.png",
-    "imageSource": "mock",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-arp-87-nat-parks.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-arp-87",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "National Parks Series artwork",
+    "notes": "Limited 2021 National Parks Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-arp-87-multi-function-1313892",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-audio-national-park-edition-arp-87-multi-function-delay-900-1039bf21-28759775215751.jpg?v=1645436478",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-arp-87-nautical",
     "brand": "Walrus Audio",
     "name": "ARP-87 (Nautical)",
-    "widthCm": 6.91,
-    "heightCm": 12.57,
-    "image": "walrus-audio-arp-87-nautical.png",
-    "imageSource": "mock",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-arp-87-nautical.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-arp-87",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "Nautical Series artwork",
+    "notes": "CME-exclusive Nautical Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-arp-87-multi-function-delay-nautical-edition-1187865",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-delay-walrus-arp-87-multi-function-delay-nautical-edition-900-1039ne-28493797228679.jpg?v=1647613579",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-arp-87-obsidian",
     "brand": "Walrus Audio",
     "name": "ARP-87 (Obsidian)",
-    "widthCm": 6.91,
-    "heightCm": 12.57,
-    "image": "walrus-audio-arp-87-obsidian.png",
-    "imageSource": "mock",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-arp-87-obsidian.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-arp-87",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "Obsidian black",
+    "notes": "Obsidian Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.guitarcenter.com/Walrus-Audio/ARP-87-Multi-Function-Delay-Obsidian-Series-Effects-Pedal.gc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.guitarcenter.com/is/image/MMGS7/L92307000001000-00-2000x2000.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-arp-87-platinum",
     "brand": "Walrus Audio",
     "name": "ARP-87 (Platinum)",
-    "widthCm": 6.91,
-    "heightCm": 12.57,
-    "image": "walrus-audio-arp-87-platinum.png",
-    "imageSource": "mock",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-arp-87-platinum.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-arp-87",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "Platinum Edition finish",
+    "notes": "Platinum Edition ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/arp-87-multi-function-delay-platinum-edition",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Platinum-Series-ARP87_front.jpg?v=1762183985",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-aetos",
@@ -3808,11 +4026,17 @@
     "name": "Aetos",
     "widthCm": 11.94,
     "heightCm": 9.4,
-    "image": "walrus-audio-aetos.png",
-    "imageSource": "mock",
+    "image": "walrus-audio-aetos.avif",
+    "imageSource": "static",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder",
+    "usage": "both",
+    "color": "Black die-cast enclosure",
+    "notes": "8-output isolated power supply with a custom toroidal transformer: six 9 V 100 mA outputs and two high-current 9 V outputs, plus a 120 V AC courtesy outlet.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.walrusaudio.com/blogs/videos/84410883-walrus-audio-aetos-clean-power-supply-walkthrough",
@@ -3821,15 +4045,15 @@
         ]
       },
       {
-        "url": "https://www.premierguitar.com/walrus-audio-announces-the-aetos-power-supply",
+        "url": "https://d1aeri3ty3izns.cloudfront.net/media/22/223623/download_223623_1.pdf",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://www.manualslib.com/manual/1984671/Walrus-Audio-Aetos.html",
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-aetos.png",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -3838,37 +4062,41 @@
     "id": "walrus-audio-ages",
     "brand": "Walrus Audio",
     "name": "Ages",
-    "widthCm": 6.6,
-    "heightCm": 12.57,
-    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-front_600.jpg?v=1755865561",
-    "imageSource": "url",
+    "widthCm": 6.65,
+    "heightCm": 12.12,
+    "image": "walrus-audio-ages.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "color": "Olive green with white/cream/black ink",
+    "notes": "Five-state overdrive with a five-position gain/clipping rotary, dry blend, and boost/cut bass and treble.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.walrusaudio.com/products/ages-five-state-overdrive",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/walrus-audio-introduces-the-ages-five-state-overdrive",
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages_manual_booklet_web_2790c512-1cfc-45ba-bbe4-873b5e9ae02a.pdf?v=1590505496",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://www.thomannmusic.com/walrus_audio_ages_overdrive.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-front_600.jpg?v=1755865561",
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Ages-Minimal-front.jpg?v=1770676460",
         "kind": [
           "image"
         ]
@@ -3879,40 +4107,96 @@
     "id": "walrus-audio-ages-kamakura",
     "brand": "Walrus Audio",
     "name": "Ages (Kamakura)",
-    "widthCm": 6.6,
-    "heightCm": 12.57,
-    "image": "walrus-audio-ages-kamakura.png",
-    "imageSource": "mock",
+    "widthCm": 6.65,
+    "heightCm": 12.12,
+    "image": "walrus-audio-ages-kamakura.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-ages",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "Warm white Kamakura Series artwork",
+    "notes": "Limited 2022 Kamakura Series Ages overdrive; same circuit and enclosure as the standard Ages.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/collections/kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.walrusaudio.com/blogs/news/limited-edition-black-friday-kamakura-series",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-ages-kamakura.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-ages-nat-parks",
     "brand": "Walrus Audio",
     "name": "Ages (Nat. Parks)",
-    "widthCm": 6.6,
-    "heightCm": 12.57,
-    "image": "walrus-audio-ages-nat-parks.png",
-    "imageSource": "mock",
+    "widthCm": 6.65,
+    "heightCm": 12.12,
+    "image": "walrus-audio-ages-nat-parks.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "walrus-audio-ages",
-    "source": "placeholder"
+    "usage": "guitar",
+    "color": "National Parks Series artwork",
+    "notes": "Limited 2021 National Parks Series Ages overdrive; same circuit and enclosure as the standard Ages.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-national-park-edition-ages-five-state-1313895",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-effects-and-pedals-overdrive-and-boost-walrus-audio-national-park-edition-ages-five-state-overdrive-900-1052bf21-28759884071047.jpg?v=1645427650",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "walrus-audio-badwater",
     "brand": "Walrus Audio",
     "name": "Badwater",
-    "widthCm": 12.34,
-    "heightCm": 9.7,
-    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Badwater-front.jpg?v=1748977127",
-    "imageSource": "url",
+    "widthCm": 12.17,
+    "heightCm": 9.19,
+    "image": "walrus-audio-badwater.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "di",
@@ -3921,23 +4205,27 @@
       "eq"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "bass",
+    "color": "Matte black with dark green/light blue ink",
+    "notes": "All-in-one bass preamp and D.I. with internal optical compression, blendable drive, four-band EQ, 1/4 in and XLR outputs.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.walrusaudio.com/products/badwater-bass-pre-amp-with-d-i",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://xlrmag.com/story/introducing-the-badwater-bass-pre-amp-and-d-i-bc961a/",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://www.sweetwater.com/store/detail/Badwater--walrus-audio-badwater-bass-preamp-pedal",
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/BadwaterManual_web.pdf?v=1651259325",
         "kind": [
           "info"
         ]
@@ -3954,26 +4242,36 @@
     "id": "walrus-audio-bellwether",
     "brand": "Walrus Audio",
     "name": "Bellwether",
-    "widthCm": 14.45,
-    "heightCm": 12.07,
-    "image": "https://cdn.shopify.com/s/files/1/0906/8480/products/Bellwether_Front.jpg?v=1748874975",
-    "imageSource": "url",
+    "widthCm": 14.3,
+    "heightCm": 11.7,
+    "image": "walrus-audio-bellwether.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay",
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "color": "Black with analog delay artwork",
+    "notes": "Bucket-brigade analog delay with tap tempo, subdivisions, an analog chorus engine, effects loop, expression control, and dual outputs.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.walrusaudio.com/products/bellwether-analog-delay",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.walrusaudio.com/blogs/videos/84381123-walrus-audio-bellwether-analog-delay-tech-demo",
+        "url": "https://www.walrusaudio.com/blogs/news/83805379-bellwether-analog-delay",
         "kind": [
           "info"
         ]
@@ -3990,32 +4288,36 @@
     "id": "walrus-audio-canvas-clock",
     "brand": "Walrus Audio",
     "name": "Canvas Clock",
-    "widthCm": 7.16,
-    "heightCm": 12.19,
-    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Clock-Front_c5a01252-50c3-45d5-ae14-1e50e79f7dfb.jpg?v=1749761660",
-    "imageSource": "url",
+    "widthCm": 7.52,
+    "heightCm": 12.29,
+    "image": "walrus-audio-canvas-clock.avif",
+    "imageSource": "static",
     "effectTypes": [
       "controller",
       "utility"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "color": "Black",
+    "notes": "MIDI/analog clock and setlist controller with four configurable 1/4 in jacks, 5-pin and 1/8 in MIDI, sync and metronome outputs, USB-C editor/firmware, and preset songs/setlists.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.walrusaudio.com/products/canvas-clock",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://www.manualslib.com/manual/3731154/Walrus-Audio-Canvas-Clock.html",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://reverb.com/uk/p/walrus-audio-canvas-clock",
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_clock_Digital_Manual.pdf?v=1741102702",
         "kind": [
           "info"
         ]
@@ -4032,32 +4334,43 @@
     "id": "walrus-audio-canvas-line-isolator",
     "brand": "Walrus Audio",
     "name": "Canvas Line Isolator",
-    "widthCm": 4.75,
-    "heightCm": 9.4,
-    "image": "https://cdn.shopify.com/s/files/1/0906/8480/files/Mono-front-left-updated_8d2f43bf-e0be-46cd-bc98-ad5bc96ad3a9.jpg?v=1748956498",
-    "imageSource": "url",
+    "widthCm": 6.6,
+    "heightCm": 12.12,
+    "image": "walrus-audio-canvas-line-isolator.avif",
+    "imageSource": "static",
     "effectTypes": [
       "di",
       "utility"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "usage": "both",
+    "color": "Black with painter's-palette artwork",
+    "notes": "Passive line isolator / direct box (Canvas Mono) converting unbalanced 1/4 in signals to a transformer-isolated balanced XLR output; DI/LI, pad and ground-lift switching.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.walrusaudio.com/products/canvas-line-isolator-d-i",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://imagescdn.juno.co.uk/manual/887108-01U.pdf",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Mono-front-left-updated_8d2f43bf-e0be-46cd-bc98-ad5bc96ad3a9.jpg?v=1748956498",
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Mono_manual_web.pdf?v=1646259181",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-canvas-line-isolator-di-1452855",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/products/walrus-pro-audio-di-boxes-walrus-canvas-line-isolator-d-i-900-1064-29157669175431.jpg?v=1649360120",
         "kind": [
           "image"
         ]
@@ -21568,6 +21881,334 @@
         "url": "https://www.redpandalab.com/downloads",
         "kind": [
           "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-canvas-power-15",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 15",
+    "widthCm": 31.2,
+    "heightCm": 5.4,
+    "image": "walrus-audio-canvas-power-15.avif",
+    "imageSource": "static",
+    "effectTypes": [],
+    "category": "supply",
+    "usage": "both",
+    "color": "Black",
+    "notes": "15-output isolated power supply: 13 × 9 V 500 mA + 2 variable 9/12/18 V outputs + USB-C 5 V 1.5 A charging; 96 W 24 V brick.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-15",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-15.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-canvas-power-22",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 22",
+    "widthCm": 41.7,
+    "heightCm": 5.4,
+    "image": "walrus-audio-canvas-power-22.avif",
+    "imageSource": "static",
+    "effectTypes": [],
+    "category": "supply",
+    "usage": "both",
+    "color": "Black",
+    "notes": "22-output isolated power supply: 20 × 9 V 500 mA + 2 variable 9/12/18 V outputs + USB-C 5 V 1.5 A charging; 96 W 24 V brick.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-22",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-22.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-canvas-power-5",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 5",
+    "widthCm": 13.3,
+    "heightCm": 5.4,
+    "image": "walrus-audio-canvas-power-5.avif",
+    "imageSource": "static",
+    "effectTypes": [],
+    "category": "supply",
+    "usage": "both",
+    "color": "Black",
+    "notes": "5-output isolated power supply: 4 × 9 V 500 mA + 1 variable 9/12/18 V output; 48 W 24 V brick.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-5",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-canvas-power-8",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power 8",
+    "widthCm": 20.7,
+    "heightCm": 5.4,
+    "image": "walrus-audio-canvas-power-8.avif",
+    "imageSource": "static",
+    "effectTypes": [],
+    "category": "supply",
+    "usage": "both",
+    "color": "Black",
+    "notes": "8-output isolated power supply: 6 × 9 V 500 mA + 2 variable 9/12/18 V outputs + USB-C 5 V 1.5 A charging; 48 W 24 V brick.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-8",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_Digital_Manual_6de5341c-5168-4b50-b223-f78f78f8edc1.pdf?v=1781099777",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/public/images/pedals/walrus-canvas-power-8.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-canvas-power-hp",
+    "brand": "Walrus Audio",
+    "name": "Canvas Power HP",
+    "widthCm": 13.3,
+    "heightCm": 5.4,
+    "image": "walrus-audio-canvas-power-hp.avif",
+    "imageSource": "static",
+    "effectTypes": [],
+    "category": "supply",
+    "usage": "both",
+    "color": "Black",
+    "notes": "Hybrid power supply with one 3 A 9/12 V output for modelers and three 9 V 500 mA isolated outputs; 48 W 24 V brick.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-power-hp",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Power_HP_Digital_Manual.pdf?v=1722894708",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarcenter.com/Walrus-Audio/Canvas-Power-HP-Power-Supply-1500000438796.gc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.guitarcenter.com/is/image/MMGS7/M14952000000000-00-2000x2000.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-canvas-re-amp",
+    "brand": "Walrus Audio",
+    "name": "Canvas Re-Amp",
+    "widthCm": 7.77,
+    "heightCm": 12.19,
+    "image": "walrus-audio-canvas-re-amp.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "color": "Powder-coated black",
+    "notes": "Passive transformer-isolated re-amp box for sending line-level DAW tracks back through pedals and amps; XLR and 1/4 in inputs, 1/4 in output, ground lift, phase invert, mute, and high-pass filter.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-passive-re-amp",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Re_Amp_Digital_Manual.pdf?v=1685647665",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.chicagomusicexchange.com/products/walrus-audio-canvas-passive-re-amp-1792463",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0343/4368/2183/files/walrus-effects-and-pedals-controllers-volume-and-expression-walrus-audio-canvas-passive-re-amp-900-1081-30479029502087.jpg?v=1686603357",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-canvas-rehearsal",
+    "brand": "Walrus Audio",
+    "name": "Canvas Rehearsal",
+    "widthCm": 7.44,
+    "heightCm": 12.19,
+    "image": "walrus-audio-canvas-rehearsal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "utility"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "color": "Black",
+    "notes": "All-in-one practice tool: headphone amp, Bluetooth/1/8 in aux playback, metronome (40–250 BPM), and MIDI In/Thru control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/canvas-rehearsal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas_Rehearsal_Digital_Manual_739efc9e-1b80-44d7-afe2-c83667b56914.pdf?v=1738941327",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/Canvas-Rehearsal-front.jpg?v=1748873868",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "walrus-audio-eb-10",
+    "brand": "Walrus Audio",
+    "name": "EB-10 Preamp // EQ // Boost",
+    "widthCm": 9.35,
+    "heightCm": 11.86,
+    "image": "walrus-audio-eb-10.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost",
+      "eq",
+      "preamp"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "color": "Matte black (also available in cream)",
+    "notes": "Preamp/EQ/boost with three presets, 12 dB boost/cut low/mid/high bands, and a 10 dB MOSFET boost.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.walrusaudio.com/products/eb-10-preamp-eq-boost",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0906/8480/files/EB10_cutout_BLACK_front_650.jpg?v=1755867862",
+        "kind": [
+          "image"
         ]
       }
     ]

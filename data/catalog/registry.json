@@ -136,6 +136,17 @@
           "items": 1
         }
       ]
+    },
+    "walrus-audio": {
+      "brand": "Walrus Audio",
+      "batches": [
+        {
+          "batch": "walrus-1",
+          "raw": "data/catalog/research/pedals/walrus-audio/walrus-1.json",
+          "mapped": "data/catalog/pedals/walrus-audio/walrus-1.json",
+          "items": 26
+        }
+      ]
     }
   },
   "boards": {

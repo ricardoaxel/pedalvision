@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 362 |
-| own | 83 |
+| license-pending | 381 |
+| own | 72 |
 
-Hosting: hotlinked 26 · mock 77 · static 342
+Hosting: hotlinked 19 · mock 66 · static 368
 
-Source kind: archive 4 · community 4 · official 250 · own 83 · planner 94 · retailer 10
+Source kind: archive 4 · community 4 · official 253 · own 72 · planner 102 · retailer 18
 
-Needs improvement: 197 (hotlinked 26 · mock 77 · planner 94)
+Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 
 ## Aclam
 
@@ -571,24 +571,32 @@ Needs improvement: 197 (hotlinked 26 · mock 77 · planner 94)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `walrus-audio-385` | 385 | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-385-mkii` | 385 MKII | license-pending | hotlinked | official | yes | Walrus Audio batch |
-| `walrus-audio-385-mkii-black` | 385 MKII (Black) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-385-nat-parks` | 385 (Nat. Parks) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-aetos` | Aetos | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-ages` | Ages | license-pending | hotlinked | official | yes | Walrus Audio batch |
-| `walrus-audio-ages-kamakura` | Ages (Kamakura) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-ages-nat-parks` | Ages (Nat. Parks) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-arp-87` | ARP-87 | license-pending | hotlinked | official | yes | Walrus Audio batch |
-| `walrus-audio-arp-87-kamakura` | ARP-87 (Kamakura) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-arp-87-nat-parks` | ARP-87 (Nat. Parks) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-arp-87-nautical` | ARP-87 (Nautical) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-arp-87-obsidian` | ARP-87 (Obsidian) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-arp-87-platinum` | ARP-87 (Platinum) | own | mock | own | yes | Walrus Audio batch |
-| `walrus-audio-badwater` | Badwater | license-pending | hotlinked | official | yes | Walrus Audio batch |
-| `walrus-audio-bellwether` | Bellwether | license-pending | hotlinked | official | yes | Walrus Audio batch |
-| `walrus-audio-canvas-clock` | Canvas Clock | license-pending | hotlinked | official | yes | Walrus Audio batch |
-| `walrus-audio-canvas-line-isolator` | Canvas Line Isolator | license-pending | hotlinked | official | yes | Walrus Audio batch |
+| `walrus-audio-385` | 385 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-385-mkii` | 385 MKII | license-pending | static | official | — | — |
+| `walrus-audio-385-mkii-black` | 385 MKII (Black) | license-pending | static | official | — | — |
+| `walrus-audio-385-nat-parks` | 385 (Nat. Parks) | license-pending | static | retailer | — | — |
+| `walrus-audio-aetos` | Aetos | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-ages` | Ages | license-pending | static | official | — | — |
+| `walrus-audio-ages-kamakura` | Ages (Kamakura) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-ages-nat-parks` | Ages (Nat. Parks) | license-pending | static | retailer | — | — |
+| `walrus-audio-arp-87` | ARP-87 | license-pending | static | official | — | — |
+| `walrus-audio-arp-87-kamakura` | ARP-87 (Kamakura) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-arp-87-nat-parks` | ARP-87 (Nat. Parks) | license-pending | static | retailer | — | — |
+| `walrus-audio-arp-87-nautical` | ARP-87 (Nautical) | license-pending | static | retailer | — | — |
+| `walrus-audio-arp-87-obsidian` | ARP-87 (Obsidian) | license-pending | static | retailer | — | — |
+| `walrus-audio-arp-87-platinum` | ARP-87 (Platinum) | license-pending | static | official | — | — |
+| `walrus-audio-badwater` | Badwater | license-pending | static | official | — | — |
+| `walrus-audio-bellwether` | Bellwether | license-pending | static | official | — | — |
+| `walrus-audio-canvas-clock` | Canvas Clock | license-pending | static | official | — | — |
+| `walrus-audio-canvas-line-isolator` | Canvas Line Isolator | license-pending | static | retailer | — | — |
+| `walrus-audio-canvas-power-15` | Canvas Power 15 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-canvas-power-22` | Canvas Power 22 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-canvas-power-5` | Canvas Power 5 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-canvas-power-8` | Canvas Power 8 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `walrus-audio-canvas-power-hp` | Canvas Power HP | license-pending | static | retailer | — | — |
+| `walrus-audio-canvas-re-amp` | Canvas Re-Amp | license-pending | static | retailer | — | — |
+| `walrus-audio-canvas-rehearsal` | Canvas Rehearsal | license-pending | static | official | — | — |
+| `walrus-audio-eb-10` | EB-10 Preamp // EQ // Boost | license-pending | static | official | — | — |
 
 ## Source gaps
 
@@ -617,6 +625,5 @@ Needs improvement: 197 (hotlinked 26 · mock 77 · planner 94)
 | MXR | planner | 15 |
 | TC Electronic | official | 13 |
 | TC Electronic | own | 4 |
-| Walrus Audio | official | 7 |
-| Walrus Audio | own | 11 |
+| Walrus Audio | planner | 8 |
 
