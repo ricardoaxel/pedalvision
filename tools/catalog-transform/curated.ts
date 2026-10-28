@@ -374,6 +374,14 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	// MXR
 	"mxr-a-b-box": ["ab-box"],
 	"mxr-bass-di": ["preamp", "di", "distortion"],
+	"mxr-bass-chorus-deluxe": ["chorus", "flanger"],
+	"mxr-bass-preamp": ["preamp", "eq"],
+	"mxr-bass-synth": ["synth", "octave", "envelope", "filter"],
+	"mxr-blue-box-fuzz": ["fuzz", "octave"],
+	"mxr-carbon-copy": ["delay"],
+	"mxr-carbon-copy-bright": ["delay"],
+	"mxr-carbon-copy-deluxe": ["delay"],
+	"mxr-carbon-copy-mini": ["delay"],
 	"mxr-cae-buffer": ["buffer"],
 	"mxr-cae-power-system": [],
 
