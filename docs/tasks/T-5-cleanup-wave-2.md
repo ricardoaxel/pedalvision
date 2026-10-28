@@ -1,6 +1,6 @@
 # T-5 — Cleanup wave 2 coordinator (TC-1 + JHS-1 + Walrus-1)
 
-**Phase:** P5 · **Status:** 2/3 merged — #75 JHS (26) and #78 Walrus (26) merged; #77 TC Electronic (23) in review with the owner-requested planner replacement; T-6 queued · **Type:** catalog wave coordinator · **Depends on:** T-4
+**Phase:** P5 · **Status:** 2/3 merged — #75 JHS (26) and #78 Walrus (26) merged; #77 TC Electronic (23) in review with the deskewed official renders; T-6 queued · **Type:** catalog wave coordinator · **Depends on:** T-4
 
 ## Goal
 
