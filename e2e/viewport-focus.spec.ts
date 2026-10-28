@@ -424,6 +424,31 @@ test("double-click a board toggles board focus ↔ all", async ({ page }) => {
 	await expect(stage).toHaveAttribute("data-focus-target", "scene");
 });
 
+test("double-click after a first select toggles the board off", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await clickEmpty(page);
+	const stage = page.getByTestId("stage");
+	const uid = ((await stage.getAttribute("data-board-uids")) ?? "").split(
+		",",
+	)[0];
+
+	// First click selects the board (blue border) but does not frame it.
+	const board = await boardCentreScreen(page, 0);
+	await page.mouse.click(board.x, board.y);
+	await expect(stage).toHaveAttribute("data-selected-board", uid ?? "");
+
+	// The following quick double-click must toggle board focus ↔ all and leave
+	// the board unselected (no trailing click re-selects it).
+	await page.mouse.dblclick(board.x, board.y);
+	await waitForDockIndex(page, -1);
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+	await expect(stage).toHaveAttribute("data-selected-board", "");
+	await expect(stage).toHaveAttribute("data-framed", "true");
+});
+
 test("the board dock paginator selects and frames every board, with wrap", async ({
 	page,
 }) => {

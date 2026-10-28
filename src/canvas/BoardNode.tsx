@@ -116,6 +116,10 @@ export function BoardNode({
 	const doubleClickSeed = useRef<{ at: number; wasFocused: boolean } | null>(
 		null,
 	);
+	// A browser may deliver the `dblclick` on a click that is followed by one
+	// more click (single-click first, then a quick double-click). Suppress that
+	// trailing click's selection so "toggle to all" leaves the board unselected.
+	const suppressSelectionUntil = useRef(0);
 
 	const isSoleBoardSelection = () => {
 		const selection = useSelection.getState().selection;
@@ -127,7 +131,9 @@ export function BoardNode({
 		doubleClickSeed.current = null;
 		if (wasFocused) {
 			// Focused board → frame all and drop the selection (the chip becomes
-			// `frame all`; the lock is released by the scene target).
+			// `frame all`; the lock is released by the scene target). Suppress the
+			// trailing click so the blue border cannot come back.
+			suppressSelectionUntil.current = Date.now() + 350;
 			useSelection.getState().clearSelection();
 			focusAfterLayout({ target: "scene", announce: true });
 		} else {
@@ -300,6 +306,7 @@ export function BoardNode({
 			draggable={!navigating && !isReadOnly()}
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
+				if (Date.now() < suppressSelectionUntil.current) return;
 				const now = Date.now();
 				const seed = doubleClickSeed.current;
 				// detail === 1 is the first click; some environments report 0.

@@ -281,16 +281,17 @@ Read only these pointed files/sections; do not read whole docs.
 - `pnpm typecheck` clean.
 - `pnpm test` **893 passed** (98 files), including 16 `viewportFocus` + 5
   `focus` camera-resolver tests.
-- `pnpm build` clean. Main JS **309.59 → 313.23 kB gzip** (**+3.64 kB**), CSS
+- `pnpm build` clean. Main JS **309.59 → 313.27 kB gzip** (**+3.68 kB**), CSS
   **13.05 → 13.37 kB gzip** (**+0.32 kB**). The dock amendment adds ~1.5 kB
   gzip over the original F-04; the owner accepted the feature over the soft
   budget.
-- **E2E:** `viewport-focus.spec.ts` **26/26** (desktop + mobile); the seven-spec
+- **E2E:** `viewport-focus.spec.ts` **28/28** (desktop + mobile); the seven-spec
   touched suite (`measurement-hud`, `scenes`, `smoke`, `share`, `first-run`,
-  `export`) **121 passed / 5 skipped** (1 worker); one `share` damaged-link test
-  flaked and passed 2/2 alone (no product change). A single `smoke` case flaked
-  once under 4-worker parallelism and passed alone + serial. Deferred to
-  post-merge: `selection.spec.ts`, `touch.spec.ts`, `info-panel.spec.ts`.
+  `export`) **123 passed / 5 skipped** (1 worker); a `scenes` switch test and a
+  `share` damaged-link test flaked and passed alone (2/2), no product change. A
+  single `smoke` case flaked once under 4-worker parallelism and passed alone +
+  serial. Deferred to post-merge: `selection.spec.ts`, `touch.spec.ts`,
+  `info-panel.spec.ts`.
 - **Performance (1440×900, fixed board + pedal, base vs branch):** 1 s
   wheel-zoom **61–62 fps → 62 fps**; JS heap **10.1 → 10.7 MB** (+0.6 MB for the
   dock/state); share link **358–360 → 359 chars**; all-content Standard PNG
@@ -330,6 +331,12 @@ Read only these pointed files/sections; do not read whole docs.
   arrows and attached-pedal double-click. The test insight also split an empty
   click (unlock) from an empty drag (keep the lock) in `Stage`. No third pass
   (cap 2; the green suite is the re-check).
+- **Owner-reported follow-up (2026-10-28):** a quick double-click after first
+  selecting the board (blue border) could toggle the view but a trailing click
+  re-selected the board. `BoardNode` now suppresses that trailing click for
+  350 ms after a toggle-to-all; Playwright test
+  `double-click after a first select toggles the board off` (desktop + mobile)
+  confirms the board is left unselected and the dock reads `all / n`.
 
 ## Notes
 
