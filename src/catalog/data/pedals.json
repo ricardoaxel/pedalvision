@@ -7152,19 +7152,53 @@
     "name": "A/B Box",
     "widthCm": 12.07,
     "heightCm": 9.27,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/680/images/6691/13196000001.MAIN__61231.1663874799.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-a-b-box.avif",
+    "imageSource": "static",
     "effectTypes": [
       "ab-box"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1.4
+    },
+    "usage": "both",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-a-b-box/",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
@@ -7174,25 +7208,7 @@
         ]
       },
       {
-        "url": "https://www.sweetwater.com/store/detail/M196--mxr-m196-a-b-box",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.midlothianmusic.com/products/dunlop-mxr-m196-a-b-box-switcher-pedal",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.earthquakerdevices.com/ab-box",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/680/images/6691/13196000001.MAIN__61231.1663874799.386.513.jpg?c=2",
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/680/6691/13196000001.MAIN__61231.1663874799.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7205,22 +7221,55 @@
     "name": "Analog Chorus",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/629/images/6423/11234000001.MAIN__89220.1663874795.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-analog-chorus.avif",
+    "imageSource": "static",
     "effectTypes": [
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-analog-chorus/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/629/images/6423/11234000001.MAIN__89220.1663874795.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M234.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/629/6423/11234000001.MAIN__89220.1663874795.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7233,22 +7282,52 @@
     "name": "Bass Chorus Deluxe",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/572/images/6097/11083000001.MAIN__53416.1663874792.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-chorus-deluxe.avif",
+    "imageSource": "static",
     "effectTypes": [
-      "chorus"
+      "chorus",
+      "flanger"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-chorus-deluxe/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/572/images/6097/11083000001.MAIN__53416.1663874792.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M83.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/572/6097/11083000001.MAIN__53416.1663874792.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7261,22 +7340,50 @@
     "name": "Bass Compressor",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/575/images/10108/M87.MAIN__61433.1676394506.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-compressor.avif",
+    "imageSource": "static",
     "effectTypes": [
       "compressor"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 19
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-compressor/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/575/images/10108/M87.MAIN__61433.1676394506.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M87.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/575/10108/M87.MAIN__61433.1676394506.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7289,16 +7396,54 @@
     "name": "Bass DI+",
     "widthCm": 12.57,
     "heightCm": 8.99,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/610/images/6317/11180000001.MAIN__98491.1663874794.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-di.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "di",
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "approximate": true
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-di/",
+        "kind": [
+          "info"
+        ]
+      },
       {
         "url": "https://www.jimdunlop.com/content/manuals/M80.pdf",
         "kind": [
@@ -7306,26 +7451,7 @@
         ]
       },
       {
-        "url": "https://www.jimdunlop.com/mxr-bass-di/",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://www.thomann.co.uk/mxr_m80_bass_di_plus.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.andertons.co.uk/mxr-m80-bass-d-i-distortion/",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/610/images/6317/11180000001.MAIN__98491.1663874794.386.513.jpg?c=2",
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/610/6317/11180000001.MAIN__98491.1663874794.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7338,22 +7464,50 @@
     "name": "Bass Distortion",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/574/images/6109/11085000001.MAIN__35105.1663874792.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-distortion.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-distortion/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/574/images/6109/11085000001.MAIN__35105.1663874792.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M85.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/574/6109/11085000001.MAIN__35105.1663874792.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7366,23 +7520,51 @@
     "name": "Bass Envelope Filter",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/571/images/10098/M82.MAIN__91817.1676394282.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-envelope-filter.avif",
+    "imageSource": "static",
     "effectTypes": [
       "envelope",
       "filter"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-envelope-filter/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/571/images/10098/M82.MAIN__91817.1676394282.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M82.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/571/10098/M82.MAIN__91817.1676394282.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7395,22 +7577,50 @@
     "name": "Bass Fuzz Deluxe",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/573/images/6103/11084000001.MAIN__93896.1663874792.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-fuzz-deluxe.avif",
+    "imageSource": "static",
     "effectTypes": [
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-fuzz-deluxe/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/573/images/6103/11084000001.MAIN__93896.1663874792.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M84.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/573/6103/11084000001.MAIN__93896.1663874792.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7423,22 +7633,50 @@
     "name": "Bass Octave Deluxe",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/642/images/6499/11288000001.MAIN__08504.1663874796.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-octave-deluxe.avif",
+    "imageSource": "static",
     "effectTypes": [
       "octave"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-octave-deluxe/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/642/images/6499/11288000001.MAIN__08504.1663874796.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M288.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/642/6499/11288000001.MAIN__08504.1663874796.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7451,22 +7689,50 @@
     "name": "Bass Overdrive",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/576/images/6121/11089000001.MAIN__87674.1663874792.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-overdrive.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 19
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-overdrive/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/576/images/6121/11089000001.MAIN__87674.1663874792.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M89.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/576/6121/11089000001.MAIN__87674.1663874792.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7479,22 +7745,56 @@
     "name": "Bass Preamp",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/570/images/6085/11081000001.MAIN__33843.1663874792.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-preamp.avif",
+    "imageSource": "static",
     "effectTypes": [
-      "preamp"
+      "preamp",
+      "eq"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8.5
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-preamp/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/570/images/6085/11081000001.MAIN__33843.1663874792.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M81.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/570/6085/11081000001.MAIN__33843.1663874792.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7507,22 +7807,54 @@
     "name": "Bass Synth",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2325/images/11620/M301.MAIN__82591.1746129775.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-bass-synth.avif",
+    "imageSource": "static",
     "effectTypes": [
-      "synth"
+      "synth",
+      "octave",
+      "envelope",
+      "filter"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 330
+    },
+    "usage": "bass",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-bass-synth/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2325/images/11620/M301.MAIN__82591.1746129775.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/MB301.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2325/11620/M301.MAIN__82591.1746129775.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7535,22 +7867,51 @@
     "name": "Blue Box Fuzz",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/592/images/6211/11103000001.MAIN__02046.1663874793.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-blue-box-fuzz.avif",
+    "imageSource": "static",
     "effectTypes": [
-      "fuzz"
+      "fuzz",
+      "octave"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-blue-box-fuzz/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/592/images/6211/11103000001.MAIN__02046.1663874793.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M103.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/592/6211/11103000001.MAIN__02046.1663874793.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7561,24 +7922,52 @@
     "id": "mxr-booster-mini",
     "brand": "MXR",
     "name": "Booster Mini",
-    "widthCm": 4.42,
-    "heightCm": 9.4,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/646/images/6521/11293000001.MAIN__23166.1663874797.386.513.jpg?c=2",
-    "imageSource": "url",
+    "widthCm": 4.5,
+    "heightCm": 9.2,
+    "image": "mxr-booster-mini.avif",
+    "imageSource": "static",
     "effectTypes": [
       "boost"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12.5
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-booster-mini/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/646/images/6521/11293000001.MAIN__23166.1663874797.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/M293.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/646/6521/11293000001.MAIN__23166.1663874797.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7591,22 +7980,50 @@
     "name": "CAE Boost/Line Driver",
     "widthCm": 6.78,
     "heightCm": 11.43,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/651/images/6550/11401000001.MAIN__73157.1663874797.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-cae-boost-line-driver.avif",
+    "imageSource": "static",
     "effectTypes": [
       "boost"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1.5
+    },
+    "usage": "both",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-cae-boost-line-driver/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/651/images/6550/11401000001.MAIN__73157.1663874797.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/MC401.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/651/6550/11401000001.MAIN__73157.1663874797.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7619,23 +8036,51 @@
     "name": "CAE Boost/Overdrive",
     "widthCm": 12.57,
     "heightCm": 8.99,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/652/images/6556/11402000001.MAIN__49202.1663874797.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-cae-boost-overdrive.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive",
       "boost"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5.5
+    },
+    "usage": "both",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-cae-boost-overdrive/",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/652/images/6556/11402000001.MAIN__49202.1663874797.386.513.jpg?c=2",
+        "url": "https://www.jimdunlop.com/content/manuals/MC402.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/652/6556/11402000001.MAIN__49202.1663874797.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7648,19 +8093,50 @@
     "name": "CAE Buffer",
     "widthCm": 6.96,
     "heightCm": 7.29,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/655/images/6574/11406000001.MAIN__77746.1663874797.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-cae-buffer.avif",
+    "imageSource": "static",
     "effectTypes": [
       "buffer"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "left",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 43
+    },
+    "usage": "both",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.jimdunlop.com/mxr-cae-buffer/",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
@@ -7670,19 +8146,7 @@
         ]
       },
       {
-        "url": "https://global.ikebe-gakki.com/products/241057",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.andertons.co.uk/mxr-mc406-cae-buffer/",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/655/images/6574/11406000001.MAIN__77746.1663874797.386.513.jpg?c=2",
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/655/6574/11406000001.MAIN__77746.1663874797.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -7695,12 +8159,111 @@
     "name": "CAE Power System",
     "widthCm": 34.29,
     "heightCm": 10.16,
-    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2112/images/10778/MC403.MAIN__04016.1702502300.386.513.jpg?c=2",
-    "imageSource": "url",
+    "image": "mxr-cae-power-system.avif",
+    "imageSource": "static",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "power",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "right"
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "bottom",
+        "approximate": true
+      }
+    ],
+    "usage": "both",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
     "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-cae-power-system-parts/",
+        "kind": [
+          "info"
+        ]
+      },
       {
         "url": "https://www.jimdunlop.com/content/manuals/MC403.pdf",
         "kind": [
@@ -7708,31 +8271,7 @@
         ]
       },
       {
-        "url": "https://www.soundonsound.com/reviews/mxr-custom-audio-electronics-mc403",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.long-mcquade.com/24961/Guitars/Cables-Power-Supplies/Dunlop/MC403-C-A-E-Power-Supply-System.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.jimdunlop.com/mxr-cae-power-system-parts/",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/2112/images/10778/MC403.MAIN__04016.1702502300.386.513.jpg?c=2",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://www.customaudioelectronics.com/products?prod_id=39&view=product",
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2112/10778/MC403.MAIN__04016.1702502300.jpg?c=2",
         "kind": [
           "image"
         ]
@@ -18867,6 +19406,461 @@
       },
       {
         "url": "https://omo-oss-image.thefastimg.com/portal-saas/new2022113010221252588/cms/image/ec674c93-5500-4328-a2ee-b2b5552ba450.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-carbon-copy",
+    "brand": "MXR",
+    "name": "Carbon Copy",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-carbon-copy.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-analog-delay/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M169.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/607/6299/11169000001.MAIN__89194.1663874794.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-carbon-copy-analog-10th-anniversary",
+    "brand": "MXR",
+    "name": "Carbon Copy Analog (10th Anniversary)",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-carbon-copy-analog-10th-anniversary.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "variantOf": "mxr-carbon-copy",
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-analog-delay-10th-anniversary-edition/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M169A.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/608/6305/11169010001.MAIN__54524.1663874794.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-carbon-copy-bright",
+    "brand": "MXR",
+    "name": "Carbon Copy Bright",
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "image": "mxr-carbon-copy-bright.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.musicstore.com/en_ES/EUR/MXR-M269SE-Carbon-Copy-Bright/art-GIT0036167-000",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M269SE.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.musicstore.de/images/0960/mxr-m269se-carbon-copy-bright_1_GIT0036167-000.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-carbon-copy-deluxe",
+    "brand": "MXR",
+    "name": "Carbon Copy Deluxe",
+    "widthCm": 12.7,
+    "heightCm": 9.53,
+    "image": "mxr-carbon-copy-deluxe.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "exp",
+        "edge": "right",
+        "approximate": true
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 44
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-deluxe-analog-delay/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M292.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/645/6515/11292000001.MAIN__47804.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-carbon-copy-mini",
+    "brand": "MXR",
+    "name": "Carbon Copy Mini",
+    "widthCm": 4.42,
+    "heightCm": 9.4,
+    "image": "mxr-carbon-copy-mini.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-mini-analog-delay/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M299.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/649/6538/11299000001.MAIN__13219.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-classic-108-fuzz",
+    "brand": "MXR",
+    "name": "Classic 108 Fuzz",
+    "widthCm": 8.15,
+    "heightCm": 11.1,
+    "image": "mxr-classic-108-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2.2
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-classic-108-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M173.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/ClassicFuzz--mxr-m173-classic-108-fuzz-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.sweetwater.com/m/products/image/6a6ea00207Qvn9VFYeBNXdxJHvjROhazk7fberhp.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-classic-108-fuzz-mini",
+    "brand": "MXR",
+    "name": "Classic 108 Fuzz Mini",
+    "widthCm": 4.42,
+    "heightCm": 9.4,
+    "image": "mxr-classic-108-fuzz-mini.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right"
+      },
+      {
+        "kind": "out",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2.5
+    },
+    "usage": "guitar",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-classic-108-fuzz-mini/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M296.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/648/6532/11296000001.MAIN__96327.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mxr-clone-looper",
+    "brand": "MXR",
+    "name": "Clone Looper",
+    "widthCm": 11.1,
+    "heightCm": 6.35,
+    "image": "mxr-clone-looper.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225
+    },
+    "usage": "both",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-clone-looper-pedal/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M303.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/1565/8637/11303000001.MAIN__11561.1663874800.jpg?c=2",
         "kind": [
           "image"
         ]

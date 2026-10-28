@@ -98,6 +98,17 @@
         }
       ]
     },
+    "mxr": {
+      "brand": "MXR",
+      "batches": [
+        {
+          "batch": "mxr-1",
+          "raw": "data/catalog/research/pedals/mxr/mxr-1.json",
+          "mapped": "data/catalog/pedals/mxr/mxr-1.json",
+          "items": 26
+        }
+      ]
+    },
     "red-panda": {
       "brand": "Red Panda",
       "batches": [

@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 341 |
+| license-pending | 349 |
 | own | 89 |
 
-Hosting: hotlinked 56 · mock 83 · static 291
+Hosting: hotlinked 38 · mock 83 · static 317
 
-Source kind: archive 4 · community 1 · official 249 · own 89 · planner 77 · retailer 10
+Source kind: archive 4 · community 1 · official 242 · own 89 · planner 92 · retailer 10
 
-Needs improvement: 216 (hotlinked 56 · mock 83 · planner 77)
+Needs improvement: 213 (hotlinked 38 · mock 83 · planner 92)
 
 ## Aclam
 
@@ -430,24 +430,32 @@ Needs improvement: 216 (hotlinked 56 · mock 83 · planner 77)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `mxr-a-b-box` | A/B Box | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-analog-chorus` | Analog Chorus | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-chorus-deluxe` | Bass Chorus Deluxe | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-compressor` | Bass Compressor | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-di` | Bass DI+ | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-distortion` | Bass Distortion | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-envelope-filter` | Bass Envelope Filter | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-fuzz-deluxe` | Bass Fuzz Deluxe | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-octave-deluxe` | Bass Octave Deluxe | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-overdrive` | Bass Overdrive | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-preamp` | Bass Preamp | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-bass-synth` | Bass Synth | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-blue-box-fuzz` | Blue Box Fuzz | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-booster-mini` | Booster Mini | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-cae-boost-line-driver` | CAE Boost/Line Driver | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-cae-boost-overdrive` | CAE Boost/Overdrive | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-cae-buffer` | CAE Buffer | license-pending | hotlinked | official | yes | MXR batch |
-| `mxr-cae-power-system` | CAE Power System | license-pending | hotlinked | official | yes | MXR batch |
+| `mxr-a-b-box` | A/B Box | license-pending | static | official | — | — |
+| `mxr-analog-chorus` | Analog Chorus | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-bass-chorus-deluxe` | Bass Chorus Deluxe | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-bass-compressor` | Bass Compressor | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-bass-di` | Bass DI+ | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-bass-distortion` | Bass Distortion | license-pending | static | official | — | — |
+| `mxr-bass-envelope-filter` | Bass Envelope Filter | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-bass-fuzz-deluxe` | Bass Fuzz Deluxe | license-pending | static | official | — | — |
+| `mxr-bass-octave-deluxe` | Bass Octave Deluxe | license-pending | static | official | — | — |
+| `mxr-bass-overdrive` | Bass Overdrive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-bass-preamp` | Bass Preamp | license-pending | static | official | — | — |
+| `mxr-bass-synth` | Bass Synth | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-blue-box-fuzz` | Blue Box Fuzz | license-pending | static | official | — | — |
+| `mxr-booster-mini` | Booster Mini | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-cae-boost-line-driver` | CAE Boost/Line Driver | license-pending | static | official | — | — |
+| `mxr-cae-boost-overdrive` | CAE Boost/Overdrive | license-pending | static | official | — | — |
+| `mxr-cae-buffer` | CAE Buffer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-cae-power-system` | CAE Power System | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-carbon-copy` | Carbon Copy | license-pending | static | official | — | — |
+| `mxr-carbon-copy-analog-10th-anniversary` | Carbon Copy Analog (10th Anniversary) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-carbon-copy-bright` | Carbon Copy Bright | license-pending | static | official | — | — |
+| `mxr-carbon-copy-deluxe` | Carbon Copy Deluxe | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-carbon-copy-mini` | Carbon Copy Mini | license-pending | static | official | — | — |
+| `mxr-classic-108-fuzz` | Classic 108 Fuzz | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-classic-108-fuzz-mini` | Classic 108 Fuzz Mini | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `mxr-clone-looper` | Clone Looper | license-pending | static | planner | yes | better source (official/retailer/community) |
 
 ## Meris
 
@@ -600,7 +608,7 @@ Needs improvement: 216 (hotlinked 56 · mock 83 · planner 77)
 | Joyo | official | 5 |
 | Joyo | own | 13 |
 | Keeley | own | 18 |
-| MXR | official | 18 |
+| MXR | planner | 15 |
 | TC Electronic | official | 13 |
 | TC Electronic | own | 4 |
 | Walrus Audio | official | 7 |
