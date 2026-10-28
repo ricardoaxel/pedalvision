@@ -141,11 +141,11 @@ Roadmap item **F-03** (Phase 1 — core correctness and polish).
 - `pnpm test` **871 passed** (96 files).
 - `pnpm build` clean.
 - Full E2E (clean preview, desktop + mobile): **286 passed / 11 skipped**.
-- **Performance** (base `a5c63aa` → this branch): main JS **303.16 → 305.23 kB
-  gzip** (+2.07), CSS **12.07 → 12.70 kB gzip** (+0.63); wheel-zoom 61–62 fps;
-  JS heap 12.8 MB; picker 54–67 ms across runs; share **359 B**; the bar is one
-  DOM track + labels; the measure overlay exists only while armed; export
-  unchanged. Grid is 5 cm at 1× (LOD 10/20/40).
+- **Performance** (base `origin/main` 2bbc70b → this branch): main JS
+  **304.71 → 306.77 kB gzip** (+2.06), CSS **12.07 → 12.70 kB gzip** (+0.63);
+  wheel-zoom 61–62 fps; JS heap 12.8 MB; picker 54–67 ms across runs; share
+  **359 B**; the bar is one DOM track + labels; the measure overlay exists only
+  while armed; export unchanged. Grid is 5 cm at 1× (LOD 10/20/40).
 - Screenshots: desktop full-width + selected, dark/light; pan/zoom; first-run;
   read-only; mobile idle + selected (dark/light).
 
