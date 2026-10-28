@@ -96,6 +96,31 @@ semi-last source but not that all our batches have a majority of them.”
    - Keep the existing budgets: 400k/800k per batch, 1.6M/2.4M wave, one vision
      pass + one fix pass, ≤1 light code review.
 
+## Validation on the EHX/MXR batches (2026-10-28)
+
+Tried the proposed approach on the whole EHX batch (and representative MXR items)
+before landing this PR:
+
+- **Search engines:** Google Images blocks this network with “unusual traffic”
+  (captcha). DuckDuckGo Images worked for the first ~5 queries, then returned a
+  bot challenge; a multi-source pass has to cache/back off, not hammer one engine.
+- **Sources tried:** DuckDuckGo Images → Sweetwater, Andertons, Chicago Music
+  Exchange (Shopify), Amazon product galleries (`hiRes`), Jim Dunlop/MXR official
+  multi-view images, official EHX gallery.
+- **Candidates found:** high-res real images (e.g. Sweetwater transparent PNG for
+  #1 Echo 2521×3000; Amazon 1500 px 1440 and Carbon Copy; Andertons/Sweetwater
+  Bad Stone; official 2020 Tuner/v2 1000 px).
+- **Gate result:** every candidate failed the flat/clean-alpha gate for a concrete
+  reason — 3/4 perspective renders with visible side walls (Sweetwater #1 Echo,
+  Amazon 1440, official tuners), background/shadow strips (Sweetwater/Andertons/
+  MXR official), or a right-side backdrop mass (Amazon Carbon Copy). The
+  Pedalplayground cutout remained the only **orthographic flat** asset.
+- **Conclusion:** the workflow works as a discovery + provenance + gate, but it
+  cannot make 3/4 product renders orthographic. For these two batches the planner
+  is still the best flat source. This PR stays a **draft** until the owner decides
+  whether to accept near-top-down real renders (which would reverse the earlier
+  “inclined” rejection) or keep planner for the remaining items.
+
 ## Bounded workflow (for the token review)
 
 1. Official pass first (existing).
