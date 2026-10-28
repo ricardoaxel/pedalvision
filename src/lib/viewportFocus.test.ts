@@ -189,7 +189,7 @@ describe("focusInsets", () => {
 				{ width: 400, height: 800 },
 				{ mobile: true, sheetHeight: 0 },
 			),
-		).toEqual({ top: 72, right: 16, bottom: 150, left: 16 });
+		).toEqual({ top: 72, right: 16, bottom: 198, left: 16 });
 		expect(
 			focusInsets(
 				{ width: 400, height: 800 },

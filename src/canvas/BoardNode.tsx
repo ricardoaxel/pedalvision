@@ -5,6 +5,7 @@ import { type BoardTexture, DEFAULT_BOARD_TEXTURE } from "../lib/boardTexture";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { useBoardDrag } from "../state/boardDrag";
+import { focusAfterLayout } from "../state/focus";
 import { useGesture } from "../state/gesture";
 import { spaceWarning } from "../state/overlap";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
@@ -106,6 +107,35 @@ export function BoardNode({
 
 	const groupRef = useRef<Konva.Group>(null);
 	const draggingRef = useRef(false);
+	// The pre-gesture selection is captured on the FIRST pointerdown of a
+	// double-click; the first click itself selects the board, which would
+	// otherwise make every double-click look like "already focused".
+	const doubleClickSeed = useRef<{ at: number; wasFocused: boolean } | null>(
+		null,
+	);
+
+	const isSoleBoardSelection = () => {
+		const selection = useSelection.getState().selection;
+		return selection?.kind === "board" && selection.uid === board.uid;
+	};
+
+	const handleDoubleClick = () => {
+		const wasFocused = doubleClickSeed.current?.wasFocused ?? false;
+		doubleClickSeed.current = null;
+		if (wasFocused) {
+			// Focused board → frame all and drop the selection (the chip becomes
+			// `frame all`; the lock is released by the scene target).
+			useSelection.getState().clearSelection();
+			focusAfterLayout({ target: "scene", announce: true });
+		} else {
+			selectBoard(board.uid);
+			focusAfterLayout({
+				target: "board",
+				boardUid: board.uid,
+				announce: true,
+			});
+		}
+	};
 	useEffect(() => {
 		registerNode(board.uid, groupRef.current);
 		return () => registerNode(board.uid, null);
@@ -267,6 +297,12 @@ export function BoardNode({
 			draggable={!navigating && !isReadOnly()}
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
+				if (event.evt.detail === 1) {
+					doubleClickSeed.current = {
+						at: Date.now(),
+						wasFocused: isSoleBoardSelection(),
+					};
+				}
 				selectBoard(board.uid);
 				if (readOnly && event.evt.button === 0) {
 					beginReadOnlyAttempt({
@@ -278,6 +314,16 @@ export function BoardNode({
 			}}
 			onTouchStart={(event) => {
 				event.cancelBubble = true;
+				const now = Date.now();
+				const seed = doubleClickSeed.current;
+				if (!seed || now - seed.at > 500) {
+					doubleClickSeed.current = {
+						at: now,
+						wasFocused: isSoleBoardSelection(),
+					};
+				} else {
+					doubleClickSeed.current = { ...seed, at: now };
+				}
 				selectBoard(board.uid);
 				if (readOnly) {
 					beginReadOnlyAttempt({
@@ -287,7 +333,16 @@ export function BoardNode({
 					});
 				}
 			}}
+			onDblClick={(event) => {
+				event.cancelBubble = true;
+				handleDoubleClick();
+			}}
+			onDblTap={(event) => {
+				event.cancelBubble = true;
+				handleDoubleClick();
+			}}
 			onDragStart={() => {
+				doubleClickSeed.current = null;
 				draggingRef.current = true;
 				useBoardDrag.getState().begin({
 					uid: board.uid,

@@ -1,6 +1,6 @@
 # F-04 — Viewport focus (frame a board, the used area, and every loaded scene)
 
-**Phase:** 1 · **Status:** in review — PR #76 · **Model:** light
+**Phase:** 1 · **Status:** in review — PR #76 (owner-authorized dock amendment) · **Model:** light
 
 ## Goal
 
@@ -18,6 +18,13 @@ changes on its own, so a scene can load off-screen or at a stale pan/zoom (the
 
 Animations are deliberately **out of scope** (F-05): every focus is an instant
 stage-transform jump. No scene, catalog, codec, share or export data changes.
+
+**Owner-requested amendment (2026-10-28, same PR #76):** a **Scope Frame Dock**
+adds (a) **double-click a board** to toggle board focus ↔ all, (b) a **camera
+lock** that pins the board view and disables pan/zoom, and (c) a **board
+paginator** `‹ n / total ›` that selects + frames every board (wraps). Mobile
+gets a third strip row; the camera safe rect is measured from the strip, not
+hardcoded.
 
 Roadmap item **F-04** (Phase 1 — core correctness and polish).
 
@@ -56,6 +63,24 @@ Read only these pointed files/sections; do not read whole docs.
   **board** selection targets a board; an item/cable/endpoint selection frames
   the used area (owner-approved contextual rule: deselect the board to get
   `frame all`).
+- **Scope Frame Dock (amendment):**
+  - **Double-click** a board: if it was the sole selected board at the gesture's
+    **first pointerdown** → clear the selection + frame all; otherwise select +
+    frame that board. A drag cancels the gesture; double-click on a pedal/empty
+    canvas does nothing (PedalNode stops the dbl-click bubble).
+  - **Paginator** `‹ n / total ›`: previous/next by **placed-board array order**,
+    wraps, selects + frames; from the all view next starts at board 1, prev at
+    the last. Counter `all / total` in the all view, `n / total` in board focus,
+    `0 / 0` with no boards. Disabled (never hidden) with 0/1 board. 44 px mobile
+    targets; arrow keys act only while a dock button owns focus.
+  - **Camera lock** (`L`): pins the **board id**, disables wheel/pinch/drag-empty
+    pan; object edits still work. Selecting a pedal on the pinned board keeps
+    the lock. Unlock via empty-canvas click, `frame all`/scene target, board
+    deletion or any scene load. Paginator/double-click on another board
+    re-frames it and the lock follows. Locked refit runs when the stage, info
+    rail, mobile peek or strip height changes (not on board moves).
+  - The dock lives in the Margin Rule strip's right column (desktop) / third
+    row (mobile); no new palette. It works in read-only shares.
 - **Focus transform:** fit `contentBoundsCm` inside the **usable canvas area**
   (stage size minus safe insets for the scene plate/toolbar, scale strip, mobile
   dock + info peek, and the bottom sheet), with a screen-space breathing margin;
@@ -159,6 +184,19 @@ Read only these pointed files/sections; do not read whole docs.
   Open findings handed to the owner: mobile strip height (66 px, the cost of the
   44 px target), light active-chip weight, the 1280-with-rail bar hidden/void,
   the mobile short labels (`all`/`board`), and disabled vs neutral affordance.
+- **Amendment — “Scope Frame Dock”** (owner-approved 2026-10-28): right-column
+  desktop dock / third mobile row, `‹ n / total ›` + hairline + lock; double-click
+  toggle; pinned-board camera lock; no new palette; mobile strip 66 → 114 px
+  (owner accepted). Selected actions re-focus after the layout commits so an
+  info-rail/sheet close cannot centre against the stale stage width.
+- **Design-reviewer pass 3 (owner-authorized; normal cap was 2)** ·
+  **approve-with-changes** · folded: desktop lock 22 px accent chip, enabled vs
+  disabled chevrons, 1024 dock moved to grid column 3 (was covering the unit
+  toggle), counter `all / n` instead of `— / n`, first-run note lifted above the
+  114 px mobile strip, light-theme recapture. Open for the owner: no visible
+  touch hint for double-tap/lock (owner chose none), neighbour-board crop in
+  board focus, the 1280-with-rail bar hidden (F-03) and the mobile strip height.
+  **No fourth pass.**
 - The reviewer gate is limited to the rendered result; the designer remains the
   design authority.
 
@@ -221,8 +259,19 @@ Read only these pointed files/sections; do not read whole docs.
   shareable), desktop + mobile.
 - **Before/after screenshots:** same viewport/theme/state on base `main` and the
   PR preview; desktop + mobile; video/GIF of the scene-switch framing.
+- **Amendment:** double-click a board focuses it; a second double-click returns
+  to all; a different board focuses that one; pedals/empty canvas do nothing.
+- **Amendment:** the dock shows `all / n` / `n / n` / `0 / 0`, disables at 0/1
+  board, wraps prev/next, selects + frames, and works in read-only shares.
+- **Amendment:** the camera lock disables wheel/pinch/empty-pan, survives pedal
+  selection, follows the paginator, and releases on empty canvas / frame all /
+  scene load; `L` works with the same guards as `F`.
+- **Amendment:** the mobile strip is 114 px and the first-run note is above it;
+  the camera safe rect is derived from the measured strip; no overlap with the
+  tab dock/peek; 44 px dock targets.
 - `docs/features/README.md`: feature inventory row (F-04), workflow row
-  (boot/pan/zoom/scene load), change-impact row and E2E suite-map row updated.
+  (boot/pan/zoom/scene load + board dock), change-impact row and E2E suite-map
+  row updated.
 - No catalog/shared edits; one PR; no merge.
 
 ## Verification evidence
@@ -230,27 +279,29 @@ Read only these pointed files/sections; do not read whole docs.
 - `pnpm lint` clean (only the 2 pre-existing `tools/asset-pipeline/analyze.ts`
   unused-variable warnings).
 - `pnpm typecheck` clean.
-- `pnpm test` **888 passed** (97 files), including 16 new `viewportFocus` tests.
-- `pnpm build` clean. Main JS **309.59 → 311.56 kB gzip** (**+1.97 kB**), CSS
-  **13.05 → 13.16 kB gzip** (**+0.11 kB**); within the ≤ +2 kB target.
-- **E2E:** `viewport-focus.spec.ts` **14/14** (desktop + mobile); the six-spec
-  touched suite (`measurement-hud`, `scenes`, `smoke`, `share`, `first-run`)
-  **89 passed / 4 skipped** (1 worker); `export.spec.ts` **21 passed / 1
-  skipped** (it hard-coded the default boot viewport, which load framing
-  changes; the helper is now transform-derived). A single `smoke` case flaked
+- `pnpm test` **893 passed** (98 files), including 16 `viewportFocus` + 5
+  `focus` camera-resolver tests.
+- `pnpm build` clean. Main JS **309.59 → 313.02 kB gzip** (**+3.43 kB**), CSS
+  **13.05 → 13.37 kB gzip** (**+0.32 kB**). The dock amendment adds ~1.5 kB
+  gzip over the original F-04; the owner accepted the feature over the soft
+  budget.
+- **E2E:** `viewport-focus.spec.ts` **22/22** (desktop + mobile); the seven-spec
+  touched suite (`measurement-hud`, `scenes`, `smoke`, `share`, `first-run`,
+  `export`) **118 passed / 5 skipped** (1 worker). A single `smoke` case flaked
   once under 4-worker parallelism and passed alone + in the serial run (no
   product change). Deferred to post-merge: `selection.spec.ts`,
   `touch.spec.ts`, `info-panel.spec.ts`.
 - **Performance (1440×900, fixed board + pedal, base vs branch):** 1 s
-  wheel-zoom **61–62 fps both**; JS heap **10.1 MB both**; share link
-  **358–360 chars** (same range); all-content Standard PNG **2,771,550 bytes**
-  on both. Focus math runs only on command / document load (never per frame);
+  wheel-zoom **61–62 fps → 62 fps**; JS heap **10.1 → 10.7 MB** (+0.6 MB for the
+  dock/state); share link **358–360 → 359 chars**; all-content Standard PNG
+  **2,771,550 bytes** unchanged. Focus math and dock re-renders run only on
+  command / document load / viewport changes already re-rendering the stage;
   the large scene-switch fit took one bounds pass at scale **0.868**.
 - **Screenshots:** `docs/screenshots/F-04/before/**` and
   `docs/screenshots/F-04/after/**` (desktop 1440/1280/1024 + mobile 390, dark +
   light, empty / panned / framed all / framed board / scene-switched /
-  info-rail), `docs/screenshots/F-04/scene-switch.gif` and
-  `scene-switch-frames.png`.
+  info-rail / dock all-board-locked / 0-1-board), `docs/screenshots/F-04/{scene-switch,board-view}.gif`
+  and `{scene-switch,board-view}-frames.png`.
 - **Feature demo link:** the deployed PR-preview URL + exact steps are added to
   the PR (viewport state is not shareable).
 - **Checks run on this branch:** `pnpm lint && pnpm typecheck && pnpm test &&

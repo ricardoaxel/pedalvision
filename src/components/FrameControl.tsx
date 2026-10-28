@@ -8,6 +8,7 @@ import {
 import { useScene } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
+import { BOARD_VIEW_HINT_ID } from "./boardView";
 import { FrameIcon } from "./icons";
 
 /**
@@ -61,6 +62,7 @@ export function FrameControl() {
 				data-framed={framed ? "true" : "false"}
 				aria-label={ariaLabel}
 				aria-keyshortcuts="F"
+				aria-describedby={BOARD_VIEW_HINT_ID}
 				aria-disabled={disabled || undefined}
 				title={title}
 				onClick={() => {

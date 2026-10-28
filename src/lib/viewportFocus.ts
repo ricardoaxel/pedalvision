@@ -37,6 +37,8 @@ export interface FocusChrome {
 	mobile: boolean;
 	/** The mobile info sheet's rendered height in px (0 when closed). */
 	sheetHeight: number;
+	/** The measured Margin Rule strip height (mobile); falls back to 114. */
+	scaleStripHeight?: number;
 }
 
 export interface FitBoundsOptions {
@@ -72,9 +74,13 @@ export function focusInsets(
 ): FocusInsets {
 	const top = Math.min(72, Math.max(0, size.height * 0.15));
 	if (!chrome.mobile) return { top, right: 24, bottom: 24, left: 24 };
-	// dock 56 + gap 16 + Margin Rule strip 66 (44 px row + bar) + breathing
-	// 12 + info peek.
-	const reserve = 56 + 16 + 66 + 12 + Math.max(0, chrome.sheetHeight);
+	// dock 56 + gap 16 + the measured Margin Rule strip (bar + readout + dock;
+	// 114 px when the board dock is present) + breathing 12 + info peek.
+	const stripHeight =
+		chrome.scaleStripHeight && chrome.scaleStripHeight > 0
+			? chrome.scaleStripHeight
+			: 114;
+	const reserve = 56 + 16 + stripHeight + 12 + Math.max(0, chrome.sheetHeight);
 	return {
 		top,
 		right: 16,

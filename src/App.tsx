@@ -44,6 +44,7 @@ import { StorageAnnouncer, StorageNotice } from "./components/StorageNotice";
 import { capacityStatus } from "./lib/capacity";
 import { useCableDrag } from "./state/cableDrag";
 import { useEndpointPlacement } from "./state/endpointPlacement";
+import { useCameraLockRefit } from "./state/focus";
 import { useSceneLibrary } from "./state/library";
 import { useMeasure } from "./state/measure";
 import { useReadOnly } from "./state/readOnly";
@@ -155,6 +156,8 @@ function App() {
 	// load frames the incoming document instead of inheriting a stale transform.
 	useFocusShortcuts();
 	useSceneAutoFrame();
+	// Keep a pinned board framed when the info rail / peek / window resizes.
+	useCameraLockRefit();
 	const measureActive = useMeasure((state) => state.active);
 	// Measuring is a canvas mode; drop the selection chrome so the line/chip
 	// never sit under the transformer handles.

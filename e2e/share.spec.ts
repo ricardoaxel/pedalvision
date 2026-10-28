@@ -509,9 +509,9 @@ test("read-only drag attempts explain why editing is disabled", async ({
 	const beforeX = await stage.getAttribute("data-x");
 	const box = await stage.boundingBox();
 	if (!box) throw new Error("stage has no bounding box");
-	await page.mouse.move(box.x + box.width - 40, box.y + box.height - 140);
+	await page.mouse.move(box.x + 4, box.y + box.height / 2);
 	await page.mouse.down();
-	await page.mouse.move(box.x + box.width - 100, box.y + box.height - 100, {
+	await page.mouse.move(box.x + 64, box.y + box.height / 2 - 40, {
 		steps: 6,
 	});
 	await page.mouse.up();

@@ -340,10 +340,16 @@ export function Stage() {
 					// Tapping empty space clears the selection (Konva target ===
 					// stage means no node was hit).
 					onMouseDown={(event) => {
-						if (event.target === event.target.getStage()) clearSelection();
+						if (event.target === event.target.getStage()) {
+							clearSelection();
+							useFocus.getState().unlockCamera();
+						}
 					}}
 					onTouchStart={(event) => {
-						if (event.target === event.target.getStage()) clearSelection();
+						if (event.target === event.target.getStage()) {
+							clearSelection();
+							useFocus.getState().unlockCamera();
+						}
 					}}
 					// A pointer leaving the whole canvas must drop the hover ring.
 					onMouseLeave={() => setHoveredItem(null)}

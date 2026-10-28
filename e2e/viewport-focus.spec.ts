@@ -2,6 +2,7 @@ import { expect, type Page, test } from "@playwright/test";
 import { waitForSavedScene } from "./persistence.ts";
 import { addBoard, addPedal } from "./picker.ts";
 import { board, shareHash } from "./share.ts";
+import { firstItemScreenCentre } from "./stage.ts";
 
 /**
  * F-04 — viewport focus ("Scope Frame").
@@ -36,7 +37,11 @@ async function expectedSafeCenter(page: Page) {
 	const mobile = (page.viewportSize()?.width ?? 1280) < 1024;
 	const top = Math.min(72, Math.max(0, box.height * 0.15));
 	const side = mobile ? 16 : 24;
-	const bottom = mobile ? Math.max(0, Math.min(150, box.height * 0.45)) : 24;
+	const strip = await page.locator(".scale-strip").boundingBox();
+	const stripHeight = strip?.height ?? 114;
+	const bottom = mobile
+		? Math.max(0, Math.min(56 + 16 + stripHeight + 12, box.height * 0.45))
+		: 24;
 	return {
 		x: box.x + side + (box.width - side * 2) / 2,
 		y: box.y + top + (box.height - top - bottom) / 2,
@@ -96,7 +101,11 @@ async function expectFocusedInsideSafeArea(page: Page) {
 	const mobile = (page.viewportSize()?.width ?? 1280) < 1024;
 	const top = Math.min(72, Math.max(0, box.height * 0.15));
 	const side = mobile ? 16 : 24;
-	const bottom = mobile ? Math.max(0, Math.min(150, box.height * 0.45)) : 24;
+	const strip = await page.locator(".scale-strip").boundingBox();
+	const stripHeight = strip?.height ?? 114;
+	const bottom = mobile
+		? Math.max(0, Math.min(56 + 16 + stripHeight + 12, box.height * 0.45))
+		: 24;
 	const { scale, x: vx, y: vy } = await stageTransform(page);
 	const bounds = await focusBounds(page);
 	const left = box.x + bounds.x * PX_PER_CM * scale + vx;
@@ -108,6 +117,13 @@ async function expectFocusedInsideSafeArea(page: Page) {
 	expect(right).toBeLessThanOrEqual(box.x + box.width - side + 2);
 	expect(topPx).toBeGreaterThanOrEqual(box.y + top - 2);
 	expect(bottomPx).toBeLessThanOrEqual(box.y + box.height - bottom + 2);
+
+	// Anchor the insets to the real chrome (not just the copied formula).
+	const toolbar = await page.locator(".app-toolbar").boundingBox();
+	if (strip) expect(bottomPx).toBeLessThanOrEqual(strip.y - 4);
+	if (toolbar) {
+		expect(topPx).toBeGreaterThanOrEqual(toolbar.y + toolbar.height + 4);
+	}
 }
 
 async function expectAtSafeCentre(page: Page, point: { x: number; y: number }) {
@@ -148,11 +164,45 @@ async function focusEpoch(page: Page): Promise<number> {
 	);
 }
 
+async function dockSnapshot(page: Page) {
+	const dock = page.getByTestId("board-view-dock");
+	return {
+		index: Number(await dock.getAttribute("data-index")),
+		total: Number(await dock.getAttribute("data-total")),
+		locked: (await dock.getAttribute("data-locked")) === "true",
+		counter: (await page.getByTestId("board-counter").innerText()).trim(),
+		lockPressed: await page
+			.getByTestId("board-lock")
+			.getAttribute("aria-pressed"),
+		prevDisabled: await page.getByTestId("board-prev").isDisabled(),
+		nextDisabled: await page.getByTestId("board-next").isDisabled(),
+	};
+}
+
+/** Two distinct boards, both visible, none camera-framed. */
+async function twoBoards(page: Page) {
+	await addBoard(page, "boss-bcb-1000");
+	await panBy(page, 200, 0);
+	await addBoard(page, "boss-bcb-1000");
+}
+
+async function doubleClickBoard(page: Page, index: number) {
+	const centre = await boardCentreScreen(page, index);
+	await page.mouse.dblclick(centre.x, centre.y);
+}
+
 async function clickEmpty(page: Page) {
 	const box = await stageBox(page);
-	// The left gutter is outside the focus safe rect and every top chrome
-	// cluster, so it stays empty even after a board fills the drawing area.
-	await page.mouse.click(box.x + 4, box.y + box.height / 2);
+	// Above the focus safe rect and left of the scene plate. The left gutter at
+	// mid-height can be covered by another board once one board fills the view.
+	await page.mouse.click(box.x + 4, box.y + 40);
+}
+
+async function waitForDockIndex(page: Page, index: number) {
+	await expect(page.getByTestId("board-view-dock")).toHaveAttribute(
+		"data-index",
+		String(index),
+	);
 }
 
 async function openScenes(page: Page) {
@@ -194,6 +244,20 @@ test("an empty sheet has a disabled Scope Frame control and does not move", asyn
 	const after = await stageTransform(page);
 	expect(after).toEqual(before);
 	await expect(stage).toHaveAttribute("data-framed", "false");
+
+	const dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({
+		index: -1,
+		total: 0,
+		counter: "0 / 0",
+		locked: false,
+		prevDisabled: true,
+		nextDisabled: true,
+	});
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-disabled",
+		"true",
+	);
 });
 
 test("frames the used area after a pan/zoom, via the control and F", async ({
@@ -309,6 +373,197 @@ test("switching scenes frames each incoming document (no stale x/y)", async ({
 	).toBeGreaterThan(20);
 });
 
+test("double-click a board toggles board focus ↔ all", async ({ page }) => {
+	await page.goto("/");
+	await twoBoards(page);
+	const stage = page.getByTestId("stage");
+	const uids = ((await stage.getAttribute("data-board-uids")) ?? "").split(",");
+
+	await doubleClickBoard(page, 0);
+	await waitForDockIndex(page, 0);
+	await expect(stage).toHaveAttribute("data-focus-target", "board");
+	await expect(stage).toHaveAttribute("data-selected-board", uids[0] ?? "");
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	let dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: 0, total: 2, counter: "1 / 2" });
+
+	// Second double-click on the same board → frame all.
+	await doubleClickBoard(page, 0);
+	await waitForDockIndex(page, -1);
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+	await expect(stage).toHaveAttribute("data-selected-board", "");
+	dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: -1, total: 2, counter: "all / 2" });
+
+	// Double-clicking another board focuses that one.
+	await doubleClickBoard(page, 1);
+	await waitForDockIndex(page, 1);
+	await expect(stage).toHaveAttribute("data-focus-target", "board");
+	await expect(stage).toHaveAttribute("data-selected-board", uids[1] ?? "");
+	dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: 1, total: 2, counter: "2 / 2" });
+
+	// Back to all, then double-click a pedal and empty canvas: no view action.
+	await doubleClickBoard(page, 1);
+	await waitForDockIndex(page, -1);
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	const pedal = await firstItemScreenCentre(page, {
+		widthCm: 7.3,
+		heightCm: 13.02,
+	});
+	const beforePedal = await stageTransform(page);
+	await page.mouse.dblclick(pedal.x, pedal.y);
+	expect(await stageTransform(page)).toEqual(beforePedal);
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+
+	const beforeEmpty = await stageTransform(page);
+	const emptyBox = await stageBox(page);
+	await page.mouse.dblclick(emptyBox.x + 4, emptyBox.y + 40);
+	expect(await stageTransform(page)).toEqual(beforeEmpty);
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+});
+
+test("the board dock paginator selects and frames every board, with wrap", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await twoBoards(page);
+	const stage = page.getByTestId("stage");
+	const uids = ((await stage.getAttribute("data-board-uids")) ?? "").split(",");
+	let dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({
+		index: -1,
+		total: 2,
+		counter: "all / 2",
+		prevDisabled: false,
+		nextDisabled: false,
+	});
+
+	// From all view, next starts at board 1.
+	await page.getByTestId("board-next").click();
+	await waitForDockIndex(page, 0);
+	await expect(stage).toHaveAttribute("data-selected-board", uids[0] ?? "");
+	await expect(stage).toHaveAttribute("data-focus-target", "board");
+	dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: 0, counter: "1 / 2" });
+	await expectAtSafeCentre(page, await boardCentreScreen(page, 0));
+
+	await page.getByTestId("board-next").click();
+	await waitForDockIndex(page, 1);
+	await expect(stage).toHaveAttribute("data-selected-board", uids[1] ?? "");
+	dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: 1, counter: "2 / 2" });
+	await expectAtSafeCentre(page, await boardCentreScreen(page, 1));
+
+	// Wrap forward and backward.
+	await page.getByTestId("board-next").click();
+	await waitForDockIndex(page, 0);
+	dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: 0, counter: "1 / 2" });
+	await page.getByTestId("board-prev").click();
+	await waitForDockIndex(page, 1);
+	dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: 1, counter: "2 / 2" });
+});
+
+test("one board disables the paginator but still focuses", async ({ page }) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await clickEmpty(page);
+	let dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({
+		total: 1,
+		index: -1,
+		prevDisabled: true,
+		nextDisabled: true,
+		counter: "all / 1",
+	});
+	await doubleClickBoard(page, 0);
+	await waitForDockIndex(page, 0);
+	dock = await dockSnapshot(page);
+	expect(dock).toMatchObject({ index: 0, counter: "1 / 1" });
+	await expect(page.getByTestId("board-lock")).not.toHaveAttribute(
+		"aria-disabled",
+		"true",
+	);
+});
+
+test("the camera lock blocks pan/zoom, survives pedal selection, and unlocks on exit", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await twoBoards(page);
+	const stage = page.getByTestId("stage");
+	await page.getByTestId("board-next").click();
+	await waitForDockIndex(page, 0);
+	await page.getByTestId("board-lock").click();
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	const locked = await stageTransform(page);
+
+	// Wheel + empty-drag pan are ignored while the camera is pinned.
+	await page.mouse.move(640, 300);
+	await page.mouse.wheel(0, -300);
+	await panBy(page, 140, 90);
+	expect(await stageTransform(page)).toEqual(locked);
+
+	// Selecting a pedal on the pinned board keeps the lock and the board view.
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	expect((await dockSnapshot(page)).locked).toBe(true);
+	expect((await dockSnapshot(page)).index).toBe(0);
+
+	// `frame all` (chip target scene while a pedal is selected) releases it.
+	await expect(page.getByTestId("frame-trigger")).toHaveAttribute(
+		"data-target",
+		"scene",
+	);
+	await page.getByTestId("frame-trigger").click();
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+	await waitForDockIndex(page, -1);
+
+	// Empty-canvas click also releases the lock. Drop the pedal selection first
+	// so the paginator starts from a clean all view.
+	await clickEmpty(page);
+	await page.getByTestId("board-next").click();
+	await waitForDockIndex(page, 0);
+	await page.getByTestId("board-lock").click();
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	await clickEmpty(page);
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+
+	// A scene load resets the ephemeral lock. The camera is still on the board
+	// after the empty click, so next moves to the other board.
+	await page.getByTestId("board-next").click();
+	await waitForDockIndex(page, 1);
+	await page.getByTestId("board-lock").click();
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	await newScene(page);
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+});
+
 test("a read-only share opens framed and can be re-framed", async ({
 	page,
 }) => {
@@ -331,6 +586,25 @@ test("a read-only share opens framed and can be re-framed", async ({
 	await trigger.click();
 	await expect(stage).toHaveAttribute("data-framed", "true");
 	await expectAtSafeCentre(page, await focusBoundsCentreScreen(page));
+
+	// Read-only shares get the same dock: double-click frames the board and
+	// the camera lock disables wheel zoom.
+	await doubleClickBoard(page, 0);
+	await waitForDockIndex(page, 0);
+	await expect(stage).toHaveAttribute("data-focus-target", "board");
+	await expect(page.getByTestId("board-lock")).not.toHaveAttribute(
+		"aria-disabled",
+		"true",
+	);
+	await page.getByTestId("board-lock").click();
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	const locked = await stageTransform(page);
+	await page.mouse.move(640, 300);
+	await page.mouse.wheel(0, -300);
+	expect(await stageTransform(page)).toEqual(locked);
 });
 
 test("saving a share copy frames the new document", async ({ page }) => {

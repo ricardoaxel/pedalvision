@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { focusViewport } from "../state/focus";
+import { focusViewport, toggleCameraLock } from "../state/focus";
 
 /** Ignore shortcuts while typing in a field or composing (same guard as M). */
 function isTypingTarget(target: EventTarget | null): boolean {
@@ -28,6 +28,11 @@ export function useFocusShortcuts(): void {
 				return;
 			}
 			if (document.querySelector('[role="dialog"]')) return;
+			if (event.key.toLowerCase() === "l") {
+				event.preventDefault();
+				toggleCameraLock();
+				return;
+			}
 			if (event.key.toLowerCase() !== "f") return;
 			event.preventDefault();
 			focusViewport({ target: "auto", announce: true });
