@@ -1,0 +1,3609 @@
+[
+  {
+    "id": "mxr-a-b-box",
+    "brand": "MXR",
+    "name": "A/B Box",
+    "category": "pedal",
+    "deviceType": "switcher",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "ab-box"
+    ],
+    "widthCm": 12.07,
+    "heightCm": 9.27,
+    "dimensionsSource": "MXR A/B Box official product page/manual M196; seed footprint 12.07 x 9.27 cm confirmed by the official unit photo and switch layout (receiver, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "approximate": true,
+        "note": "1/4 in input on the top/rear edge; the official TOPP view labels it INPUT."
+      },
+      {
+        "label": "OUTPUT A",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "approximate": true,
+        "note": "1/4 in output A on the top/rear edge; official TOPP view labels it OUTPUT A."
+      },
+      {
+        "label": "OUTPUT B",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "approximate": true,
+        "note": "1/4 in output B on the top/rear edge; official TOPP view labels it OUTPUT B."
+      },
+      {
+        "label": "THRU",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "approximate": true,
+        "note": "1/4 in thru output on the top/rear edge; official TOPP view labels it THRU."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge (official TOPP view)."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official TOPP view (top/rear connector face)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1.4,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 3,
+      "level": "instrument",
+      "note": "One input routed to output A, output B or both; a thru jack carries a constant signal to a tuner."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 3,
+        "level": "instrument",
+        "dryThrough": "analog"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "all jacks on the top/rear edge",
+        "powerJackLocation": "top/rear edge"
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 1.4,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-a-b-box/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M196.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/680/6691/13196000001.MAIN__61231.1663874799.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/680/6691/13196000001.MAIN__61231.1663874799.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "both",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-analog-chorus",
+    "brand": "MXR",
+    "name": "Analog Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in mono output on the left side (official side view)."
+      },
+      {
+        "label": "THRU",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "approximate": true,
+        "note": "Buffered thru output on the left side; official manual and side view."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "level": "instrument",
+      "note": "Mono output plus a buffered thru output for a second amp."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "level": "instrument"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 13,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-analog-chorus/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M234.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/629/6423/11234000001.MAIN__89220.1663874795.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/629/6423/11234000001.MAIN__89220.1663874795.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-chorus-deluxe",
+    "brand": "MXR",
+    "name": "Bass Chorus Deluxe",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus",
+      "flanger"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "stereo": true,
+        "level": "instrument",
+        "note": "TRS output on the left side; ring carries the stereo right channel (manual lists 3.3 kOhm ring)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "channels": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "channels": 2,
+        "stereo": true
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 30,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-chorus-deluxe/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M83.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/572/6097/11083000001.MAIN__53416.1663874792.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/572/6097/11083000001.MAIN__53416.1663874792.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-compressor",
+    "brand": "MXR",
+    "name": "Bass Compressor",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 19,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 14 mA with LEDs off, 19 mA with LEDs on; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 19,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 14 mA with LEDs off, 19 mA with LEDs on; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-compressor/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M87.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/575/10108/M87.MAIN__61433.1676394506.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "own",
+      "referenceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/575/10108/M87.MAIN__61433.1676394506.jpg?c=2",
+      "status": "chosen",
+      "note": "Generated flat art (official reference: 1280x1280 gallery image). The official photo has an inseparable white-on-white drop shadow that failed the clean-alpha gate; body colour/control layout measured from the reference. No upscale."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-di",
+    "brand": "MXR",
+    "name": "Bass DI+",
+    "category": "pedal",
+    "deviceType": "di",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "preamp",
+      "di",
+      "distortion"
+    ],
+    "widthCm": 12.57,
+    "heightCm": 8.99,
+    "dimensionsSource": "MXR Bass DI+ official product page/manual M80; larger M80 enclosure 12.57 x 8.99 cm (official unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the right side."
+      },
+      {
+        "label": "1/4 OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in output on the left side."
+      },
+      {
+        "label": "PARALLEL OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "approximate": true,
+        "note": "Parallel output on the left side (manual)."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "xlr",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": true,
+        "level": "line",
+        "approximate": true,
+        "note": "Balanced XLR direct output; can be phantom powered and has a ground-lift switch (manual M80)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views and the model manual connector descriptions",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 3,
+      "level": "instrument",
+      "di": true,
+      "balanced": true,
+      "groundLift": true,
+      "phantomPower": true,
+      "note": "1/4 in output, parallel output and balanced XLR direct out; ground lift and phantom-power capable."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 3,
+        "di": true,
+        "balanced": true,
+        "groundLift": true,
+        "phantomPower": true
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 2
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 9,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-di/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M80.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/610/6317/11180000001.MAIN__98491.1663874794.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/610/6317/11180000001.MAIN__98491.1663874794.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-distortion",
+    "brand": "MXR",
+    "name": "Bass Distortion",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 11,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M85.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/574/6109/11085000001.MAIN__35105.1663874792.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/574/6109/11085000001.MAIN__35105.1663874792.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-envelope-filter",
+    "brand": "MXR",
+    "name": "Bass Envelope Filter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "envelope",
+      "filter"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 6,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-envelope-filter/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M82.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/571/10098/M82.MAIN__91817.1676394282.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/571/10098/M82.MAIN__91817.1676394282.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-fuzz-deluxe",
+    "brand": "MXR",
+    "name": "Bass Fuzz Deluxe",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 11,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-fuzz-deluxe/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M84.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/573/6103/11084000001.MAIN__93896.1663874792.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/573/6103/11084000001.MAIN__93896.1663874792.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-octave-deluxe",
+    "brand": "MXR",
+    "name": "Bass Octave Deluxe",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "octave"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 14,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-octave-deluxe/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M288.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/642/6499/11288000001.MAIN__08504.1663874796.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/642/6499/11288000001.MAIN__08504.1663874796.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-overdrive",
+    "brand": "MXR",
+    "name": "Bass Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 19,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 19,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-overdrive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M89.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/576/6121/11089000001.MAIN__87674.1663874792.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/576/6121/11089000001.MAIN__87674.1663874792.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-preamp",
+    "brand": "MXR",
+    "name": "Bass Preamp",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "preamp",
+      "eq"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the right side."
+      },
+      {
+        "label": "1/4 OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in output on the left side."
+      },
+      {
+        "label": "DIRECT OUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "xlr",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": true,
+        "level": "line",
+        "approximate": true,
+        "note": "Balanced XLR direct output with ground lift and phantom-power capability (manual M81)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views and the model manual connector descriptions",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8.5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 8.5 mA, plus 5 mA when phantom power is used; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "level": "instrument",
+      "di": true,
+      "balanced": true,
+      "groundLift": true,
+      "phantomPower": true
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "di": true,
+        "balanced": true,
+        "groundLift": true,
+        "phantomPower": true
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 8.5,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 8.5 mA, plus 5 mA when phantom power is used; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-preamp/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M81.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/570/6085/11081000001.MAIN__33843.1663874792.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/570/6085/11081000001.MAIN__33843.1663874792.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-bass-synth",
+    "brand": "MXR",
+    "name": "Bass Synth",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "synth",
+      "octave",
+      "envelope",
+      "filter"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "Mono 1/4 in input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "stereo": true,
+        "level": "instrument",
+        "note": "TRS output on the left side; allows stereo output (manual MB301)."
+      },
+      {
+        "label": "CTR",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Expression/tap input or right-channel output (manual MB301); exact edge not shown in the reviewed gallery, so edge omitted."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge; 330 mA."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 330,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none",
+      "note": "9V DC center-negative, 2.1 mm; none."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "channels": 2,
+      "stereo": true,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "channels": 2,
+        "stereo": true
+      },
+      "control": {
+        "expression": 1,
+        "tapTempo": true,
+        "footswitch": true
+      },
+      "circuit": {
+        "type": "hybrid"
+      },
+      "physical": {
+        "footswitches": 1,
+        "powerJackLocation": "top/rear edge"
+      },
+      "routing": {
+        "presets": 8
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 330,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "none",
+        "note": "9V DC center-negative, 2.1 mm; none."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-bass-synth/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/MB301.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2325/11620/M301.MAIN__82591.1746129775.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2325/11620/M301.MAIN__82591.1746129775.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "bass",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-blue-box-fuzz",
+    "brand": "MXR",
+    "name": "Blue Box Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz",
+      "octave"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 4 mA effect on, 1.5 mA off; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 4,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 4 mA effect on, 1.5 mA off; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-blue-box-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M103.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/592/6211/11103000001.MAIN__02046.1663874793.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/592/6211/11103000001.MAIN__02046.1663874793.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-booster-mini",
+    "brand": "MXR",
+    "name": "Booster Mini",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "boost"
+    ],
+    "widthCm": 4.5,
+    "heightCm": 9.2,
+    "dimensionsSource": "Official MXR/Moridaira M293 spec: 45 mm (W) x 92 mm (D) x 55 mm (H) = 4.5 x 9.2 cm mini housing.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12.5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none",
+      "note": "9V DC center-negative, 2.1 mm; none."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 12.5,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "none",
+        "note": "9V DC center-negative, 2.1 mm; none."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-booster-mini/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M293.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/646/6521/11293000001.MAIN__23166.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/646/6521/11293000001.MAIN__23166.1663874797.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-cae-boost-line-driver",
+    "brand": "MXR",
+    "name": "CAE Boost/Line Driver",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "boost"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR CAE Boost/Line Driver official product page/manual MC401; standard MXR enclosure 6.78 x 11.43 cm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1.5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 1.5,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-cae-boost-line-driver/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/MC401.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/651/6550/11401000001.MAIN__73157.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/651/6550/11401000001.MAIN__73157.1663874797.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "both",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-cae-boost-overdrive",
+    "brand": "MXR",
+    "name": "CAE Boost/Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "overdrive",
+      "boost"
+    ],
+    "widthCm": 12.57,
+    "heightCm": 8.99,
+    "dimensionsSource": "MXR CAE Boost/Overdrive official product page/manual MC402; larger dual-footswitch MC402 enclosure 12.57 x 8.99 cm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5.5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 2
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 5.5,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-cae-boost-overdrive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/MC402.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/652/6556/11402000001.MAIN__49202.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/652/6556/11402000001.MAIN__49202.1663874797.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "both",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-cae-buffer",
+    "brand": "MXR",
+    "name": "CAE Buffer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "buffer"
+    ],
+    "widthCm": 6.96,
+    "heightCm": 7.29,
+    "dimensionsSource": "MXR CAE Buffer official product page/manual MC406; compact 6.96 x 7.29 cm enclosure.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the right side."
+      },
+      {
+        "label": "OUTPUT 1",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in output 1 on the left side (manual MC406)."
+      },
+      {
+        "label": "OUTPUT 2",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "approximate": true,
+        "note": "1/4 in output 2 on the left side."
+      },
+      {
+        "label": "9V DC OUT",
+        "kind": "power",
+        "edge": "left",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "9VDC output jack provides power for another pedal (manual MC406)."
+      },
+      {
+        "label": "9V DC IN",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views and the MC406 manual",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 43,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none",
+      "note": "9V DC center-negative, 2.1 mm; 43 mA; no battery. A 9VDC output jack can power another pedal."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "relay"
+      },
+      "physical": {
+        "footswitches": 1,
+        "powerJackLocation": "top/rear edge"
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 43,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "none",
+        "note": "9V DC center-negative, 2.1 mm; 43 mA; no battery. A 9VDC output jack can power another pedal."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-cae-buffer/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/MC406.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/655/6574/11406000001.MAIN__77746.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/655/6574/11406000001.MAIN__77746.1663874797.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "both",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-cae-power-system",
+    "brand": "MXR",
+    "name": "CAE Power System",
+    "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "rack",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [],
+    "widthCm": 34.29,
+    "heightCm": 10.16,
+    "dimensionsSource": "Official MC403 manual dimensions 343 (W) x 102 (D) x 44 (H) mm = 34.29 x 10.16 x 4.4 cm (rack/unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "AC IN",
+        "kind": "power",
+        "edge": "left",
+        "connector": "iec",
+        "signal": "power",
+        "note": "IEC 60320 C13 AC mains inlet on one end (manual MC403)."
+      },
+      {
+        "label": "AC THRU",
+        "kind": "power",
+        "edge": "right",
+        "connector": "iec",
+        "signal": "power",
+        "note": "AC thru outlet, 200 W max, next to the AC inlet (manual MC403)."
+      },
+      {
+        "label": "1",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "2",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "3",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "4",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "5",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "6",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "7",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "8",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "9",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "10",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "11",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "12",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "13",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "14",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "15",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      },
+      {
+        "label": "16",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "signal": "power",
+        "approximate": true,
+        "note": "Front-panel isolated output; see power.perOutput for voltage/current."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official MC403 manual front-panel and AC inlet/outlet layout",
+      "confidence": "verified"
+    },
+    "power": {
+      "acDc": "AC",
+      "connector": "iec",
+      "outlets": 16,
+      "isolatedOutputs": 16,
+      "acInput": "115/230 V AC, 50/60 Hz, 300 W",
+      "courtesyOutlet": true,
+      "note": "16 isolated pedal outputs: 2 x 9 VAC 800 mA, 4 x 18 VDC 125 mA, 8 x 9 VDC 80 mA, 2 x adjustable 6.5-15 VDC 200 mA. AC thru 200 W max."
+    },
+    "io": {
+      "inputs": 0,
+      "outputs": 0
+    },
+    "optional": {
+      "power": {
+        "acDc": "AC",
+        "outlets": 16,
+        "isolatedOutputs": 16,
+        "perOutput": [
+          {
+            "voltage": 9,
+            "currentMa": 800,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 800,
+            "isolated": true
+          },
+          {
+            "voltage": 18,
+            "currentMa": 125,
+            "isolated": true
+          },
+          {
+            "voltage": 18,
+            "currentMa": 125,
+            "isolated": true
+          },
+          {
+            "voltage": 18,
+            "currentMa": 125,
+            "isolated": true
+          },
+          {
+            "voltage": 18,
+            "currentMa": 125,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 80,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 200,
+            "isolated": true
+          },
+          {
+            "voltage": 9,
+            "currentMa": 200,
+            "isolated": true
+          }
+        ],
+        "acInput": "115/230 V AC, 50/60 Hz, 300 W",
+        "courtesyOutlet": true,
+        "note": "2 x 9 VAC 800 mA, 4 x 18 VDC 125 mA, 8 x 9 VDC 80 mA, 2 x adjustable 6.5-15 VDC 200 mA; all isolated. AC thru 200 W max."
+      },
+      "circuit": {
+        "type": "analog"
+      },
+      "physical": {
+        "powerJackLocation": "front panel outputs; IEC inlet on the end"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-cae-power-system-parts/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/MC403.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2112/10778/MC403.MAIN__04016.1702502300.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "own",
+      "referenceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/2112/10778/MC403.MAIN__04016.1702502300.jpg?c=2",
+      "status": "chosen",
+      "note": "Generated flat art: the official gallery image is a front-panel-only photo (aspect 5.88 vs the 3.38 footprint) and failed the aspect gate; official MC403 dimensions (343 x 102 x 44 mm) and the manual front-panel layout were used. Reference 1280x1280, no upscale."
+    },
+    "usage": "both",
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "mxr-1"
+    }
+  },
+  {
+    "id": "mxr-carbon-copy",
+    "brand": "MXR",
+    "name": "Carbon Copy",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; official MXR product page and owner manual; 6.78 x 11.43 cm (unit, not an accessory).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 26,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-analog-delay/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M169.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/607/6299/11169000001.MAIN__89194.1663874794.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/607/6299/11169000001.MAIN__89194.1663874794.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar"
+  },
+  {
+    "id": "mxr-carbon-copy-analog-10th-anniversary",
+    "brand": "MXR",
+    "name": "Carbon Copy Analog (10th Anniversary)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard aluminum enclosure; official top-down photo and M169A manual confirm the standard 6.78 x 11.43 cm footprint.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 26,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-analog-delay-10th-anniversary-edition/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M169A.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/608/6305/11169010001.MAIN__54524.1663874794.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/608/6305/11169010001.MAIN__54524.1663874794.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar",
+    "variantOf": "mxr-carbon-copy"
+  },
+  {
+    "id": "mxr-carbon-copy-bright",
+    "brand": "MXR",
+    "name": "Carbon Copy Bright",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.78,
+    "heightCm": 11.43,
+    "dimensionsSource": "MXR standard enclosure; Music Store lists 70 x 121 x 32 mm including knobs. Catalog footprint uses the MXR standard 6.78 x 11.43 cm (same housing as the Carbon Copy).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in jack documented in the M269SE manual; exact connector face not verified, so edge omitted."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in jack documented in the M269SE manual; exact connector face not verified, so edge omitted."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative power jack documented in the M269SE manual; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Only a retailer top-down photo and the M269SE manual were available; no official connector-face view was found, so audio/power edges are omitted (assumed anchors)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 26,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.musicstore.com/en_ES/EUR/MXR-M269SE-Carbon-Copy-Bright/art-GIT0036167-000",
+        "kind": [
+          "info"
+        ],
+        "note": "discontinued model; retailer listing"
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M269SE.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.musicstore.de/images/0960/mxr-m269se-carbon-copy-bright_1_GIT0036167-000.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://images.musicstore.de/images/0960/mxr-m269se-carbon-copy-bright_1_GIT0036167-000.jpg",
+      "status": "chosen",
+      "note": "Music Store authorized-retailer product photo, source 960x960; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "status": "discontinued",
+    "usage": "guitar"
+  },
+  {
+    "id": "mxr-carbon-copy-deluxe",
+    "brand": "MXR",
+    "name": "Carbon Copy Deluxe",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 12.7,
+    "heightCm": 9.53,
+    "dimensionsSource": "Official M292 manual/product page; Perfect Circuit/Sweetwater listed 3.75 x 5 in; photo confirms the wide dual-footswitch body. Footprint 12.7 x 9.53 cm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in output on the left side."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "right",
+        "connector": "trs",
+        "signal": "control",
+        "approximate": true,
+        "note": "Expression jack for external control (manual M292). Exact side shown in the official gallery; edge from that view."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 44,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 22 mA with LEDs off, 44 mA max with LEDs on; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "control": {
+        "expression": 1,
+        "tapTempo": true
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 2,
+        "powerJackLocation": "top/rear edge"
+      },
+      "routing": {
+        "presets": 8
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 44,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 22 mA with LEDs off, 44 mA max with LEDs on; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-deluxe-analog-delay/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M292.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/645/6515/11292000001.MAIN__47804.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/645/6515/11292000001.MAIN__47804.1663874797.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar"
+  },
+  {
+    "id": "mxr-carbon-copy-mini",
+    "brand": "MXR",
+    "name": "Carbon Copy Mini",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 4.42,
+    "heightCm": 9.4,
+    "dimensionsSource": "MXR mini housing, official M299 manual; footprint 4.42 x 9.4 cm (matches the mini family).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none",
+      "note": "9V DC center-negative, 2.1 mm; none."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 26,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "none",
+        "note": "9V DC center-negative, 2.1 mm; none."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-carbon-copy-mini-analog-delay/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M299.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/649/6538/11299000001.MAIN__13219.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/649/6538/11299000001.MAIN__13219.1663874797.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar"
+  },
+  {
+    "id": "mxr-classic-108-fuzz",
+    "brand": "MXR",
+    "name": "Classic 108 Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 8.15,
+    "heightCm": 11.1,
+    "dimensionsSource": "MXR M173 is officially described as a Phase 100-sized housing; the M173 spec sheet does not list a footprint. Catalog uses the wider Phase 100-class body 8.15 x 11.1 cm (the standard MXR 6.65 x 11.1 cm Sweetwater figure conflicts with the official unit photo).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views and the M173 manual",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2.2,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "9V battery",
+      "note": "9V DC center-negative, 2.1 mm; 9V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "control": {
+        "footswitch": true
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 2.2,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "9V battery",
+        "note": "9V DC center-negative, 2.1 mm; 9V battery."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-classic-108-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M173.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/ClassicFuzz--mxr-m173-classic-108-fuzz-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://media.sweetwater.com/m/products/image/6a6ea00207Qvn9VFYeBNXdxJHvjROhazk7fberhp.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "retailer",
+      "sourceUrl": "https://media.sweetwater.com/m/products/image/6a6ea00207Qvn9VFYeBNXdxJHvjROhazk7fberhp.jpg",
+      "status": "chosen",
+      "note": "Sweetwater authorized-retailer product photo, source 2278x3000; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar"
+  },
+  {
+    "id": "mxr-classic-108-fuzz-mini",
+    "brand": "MXR",
+    "name": "Classic 108 Fuzz Mini",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 4.42,
+    "heightCm": 9.4,
+    "dimensionsSource": "MXR mini housing, official M296 manual; footprint 4.42 x 9.4 cm (matches the mini family).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS input on the right side (official side view)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4 in TS output on the left side (official side view)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, on the top/rear edge."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official LEFT/RGHT/TOPP views (side/rear connector faces)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2.5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none",
+      "note": "9V DC center-negative, 2.1 mm; none."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true"
+      },
+      "physical": {
+        "footswitches": 1
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 2.5,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "none",
+        "note": "9V DC center-negative, 2.1 mm; none."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-classic-108-fuzz-mini/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M296.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/648/6532/11296000001.MAIN__96327.1663874797.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/648/6532/11296000001.MAIN__96327.1663874797.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "guitar"
+  },
+  {
+    "id": "mxr-clone-looper",
+    "brand": "MXR",
+    "name": "Clone Looper",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "looper"
+    ],
+    "widthCm": 11.1,
+    "heightCm": 6.35,
+    "dimensionsSource": "Official M303 manual/product page; Firehouse/Sweetwater listed 4.37 W x 2.5 D in. Wide dual-footswitch body; footprint 11.1 x 6.35 cm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in input on the top/rear edge (official TOPP view labels IN)."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "level": "instrument",
+        "note": "1/4 in output on the top/rear edge (official TOPP view labels OUT)."
+      },
+      {
+        "label": "CTR",
+        "kind": "ctrl",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Tap/control jack on the top/rear edge (official TOPP view labels CTR)."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "edge": "top",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Expression jack on the top/rear edge (official TOPP view labels EXP)."
+      },
+      {
+        "label": "+9V DC",
+        "kind": "power",
+        "edge": "top",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 mm, top/rear edge (official TOPP view)."
+      }
+    ],
+    "jackLayout": {
+      "source": "Official TOPP view (top/rear connector face)",
+      "confidence": "verified"
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 mm",
+      "battery": "none",
+      "note": "9V DC center-negative, 2.1 mm; none."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "level": "instrument"
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1
+      },
+      "control": {
+        "expression": 1,
+        "tapTempo": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 2,
+        "powerJackLocation": "top/rear edge"
+      },
+      "routing": {
+        "looper": true,
+        "presets": 0
+      },
+      "power": {
+        "voltage": 9,
+        "acDc": "DC",
+        "currentMa": 225,
+        "polarity": "center-negative",
+        "connector": "barrel",
+        "connectorSize": "2.1 mm",
+        "battery": "none",
+        "note": "9V DC center-negative, 2.1 mm; none."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.jimdunlop.com/mxr-clone-looper-pedal/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.jimdunlop.com/content/manuals/M303.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/1565/8637/11303000001.MAIN__11561.1663874800.jpg?c=2",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/1565/8637/11303000001.MAIN__11561.1663874800.jpg?c=2",
+      "status": "chosen",
+      "note": "Official MXR product gallery MAIN image, source 1280x1280; downscaled to the 800/350 AVIF master (no upscale)."
+    },
+    "usage": "both"
+  }
+]

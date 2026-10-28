@@ -1,0 +1,128 @@
+{
+	"id": "mxr-bass-compressor",
+	"family": "standard",
+	"widthCm": 6.78,
+	"heightCm": 11.43,
+	"sourceRef": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1280x1280/products/575/10108/M87.MAIN__61433.1676394506.jpg?c=2",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#F2F1EF",
+		"radiusCm": 0.3,
+		"sideCm": 0.25,
+		"knobFinish": "black",
+		"footswitchFinish": "metal",
+		"bands": [
+			{
+				"u": 0.5,
+				"v": 0.075,
+				"wCm": 3.6,
+				"hCm": 0.7,
+				"fill": "#3A4048",
+				"rCm": 0.2,
+				"role": "print",
+				"edge": "hairline"
+			}
+		]
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "knob",
+			"u": 0.22,
+			"v": 0.16,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "RELEASE",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.78,
+			"v": 0.16,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "ATTACK",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.22,
+			"v": 0.35,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "OUTPUT",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.5,
+			"v": 0.31,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "RATIO",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.78,
+			"v": 0.35,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "INPUT",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "led",
+			"u": 0.5,
+			"v": 0.47,
+			"diameterCm": 0.6,
+			"color": "#2E86C1"
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.5,
+			"v": 0.72,
+			"diameterCm": 1.7
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "MXR",
+			"u": 0.5,
+			"v": 0.41,
+			"sizeMm": 3.2,
+			"trackingEm": 0.08
+		},
+		{
+			"role": "free",
+			"value": "BASS INNOVATIONS",
+			"u": 0.5,
+			"v": 0.455,
+			"sizeMm": 1.8
+		},
+		{
+			"role": "model",
+			"value": "BASS COMPRESSOR",
+			"u": 0.5,
+			"v": 0.84,
+			"sizeMm": 2.2,
+			"trackingEm": 0.04
+		}
+	],
+	"jacks": [
+		{
+			"kind": "in",
+			"edge": "right"
+		},
+		{
+			"kind": "out",
+			"edge": "left"
+		},
+		{
+			"kind": "power",
+			"edge": "top"
+		}
+	],
+	"note": "Generated flat art: the official gallery photo has an inseparable white-on-white drop shadow; body colour and control layout measured from the official reference, dimensions from the MXR standard enclosure."
+}
