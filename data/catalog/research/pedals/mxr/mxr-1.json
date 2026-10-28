@@ -290,10 +290,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/original/products/629/6423/11234000001.MAIN__89220.1663874795.jpg?c=2",
-      "status": "chosen",
-      "note": "Official Jim Dunlop MAIN 1400 source; strong matte (border flood tol70 + 2px erode), clean alpha on dark; AVIF q90/q95 per PSNR gate."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m234.png",
+      "status": "last-resort",
+      "note": "Owner-requested planner fallback: the official cutout has left-edge grey chopping; planner is the clean flat source."
     },
     "usage": "guitar",
     "extra": {
@@ -301,6 +301,12 @@
       "promotedBatch": "mxr-1"
     },
     "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m234.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner: flat planner cutout."
+      },
       {
         "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/original/products/629/6423/11234000001.MAIN__89220.1663874795.jpg?c=2",
         "priority": 1,
@@ -431,10 +437,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/original/products/572/6097/11083000001.MAIN__53416.1663874792.jpg?c=2",
-      "status": "chosen",
-      "note": "Official Jim Dunlop MAIN 1400 source; strong matte (border flood tol70 + 2px erode), clean alpha on dark; AVIF q90/q95 per PSNR gate."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-m83.png",
+      "status": "last-resort",
+      "note": "Owner-requested planner fallback: the official cutout has left-edge grey chopping; planner is the clean flat source."
     },
     "usage": "bass",
     "extra": {
@@ -442,6 +448,12 @@
       "promotedBatch": "mxr-1"
     },
     "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-m83.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner: flat planner cutout."
+      },
       {
         "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/original/products/572/6097/11083000001.MAIN__53416.1663874792.jpg?c=2",
         "priority": 1,
@@ -1734,10 +1746,10 @@
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/original/products/2325/11620/M301.MAIN__82591.1746129775.jpg?c=2",
-      "status": "chosen",
-      "note": "Official Jim Dunlop MAIN 1400 source; strong matte (border flood tol70 + 2px erode), clean alpha on dark; AVIF q90/q95 per PSNR gate."
+      "kind": "planner",
+      "sourceUrl": "https://www.pedalplayground.com/public/images/pedals/mxr-mb301.png",
+      "status": "last-resort",
+      "note": "Owner-requested planner fallback: the official cutout has left-edge grey chopping; planner is the clean flat source."
     },
     "usage": "bass",
     "extra": {
@@ -1745,6 +1757,12 @@
       "promotedBatch": "mxr-1"
     },
     "imageCandidates": [
+      {
+        "url": "https://www.pedalplayground.com/public/images/pedals/mxr-mb301.png",
+        "sourcePage": "https://www.pedalplayground.com/",
+        "priority": 1,
+        "notes": "Chosen per owner: flat planner cutout."
+      },
       {
         "url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/original/products/2325/11620/M301.MAIN__82591.1746129775.jpg?c=2",
         "priority": 1,
