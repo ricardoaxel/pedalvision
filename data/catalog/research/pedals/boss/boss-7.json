@@ -1,0 +1,3471 @@
+[
+ {
+  "id": "boss-re-2-space-echo",
+  "brand": "BOSS",
+  "name": "RE-2 Space Echo",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay",
+   "reverb"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL/EXP",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 75,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61) ×1"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2022,
+  "status": "current",
+  "notes": "Compact recreation of the RE-201 Space Echo with 11 modes, wow/flutter, tape saturation and a carryover switch.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/re-2/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/re-2_main_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/re-2_main_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q80 AVIF PSNR 40.2 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/re-2_main_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q80 AVIF PSNR 40.2 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-re-20-space-echo",
+  "brand": "BOSS",
+  "name": "RE-20 Space Echo",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "double",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay",
+   "reverb"
+  ],
+  "widthCm": 17.3,
+  "heightCm": 15.8,
+  "dimensionsSource": "BOSS official specifications: 173 (W) × 158 (D) × 57 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "EXP PEDAL",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/re_20_back_gal.jpg",
+   "confidence": "verified"
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 75,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "6 × AA (LR6/R6)"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2007,
+  "status": "discontinued",
+  "notes": "Twin-pedal digital recreation of the RE-201 with a virtual tape display, tap tempo and expression control.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 1200,
+    "footswitches": 2
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/re-20/",
+    "discontinuedYear": 2022,
+    "replacement": "RE-202 Space Echo"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/re_20_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/re_20_top_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 3.5%; q80 AVIF PSNR 41.2 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/re_20_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 3.5%; q80 AVIF PSNR 41.2 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-re-202-space-echo",
+  "brand": "BOSS",
+  "name": "RE-202 Space Echo",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay",
+   "reverb"
+  ],
+  "widthCm": 19.2,
+  "heightCm": 13.3,
+  "dimensionsSource": "BOSS official specifications: 192 (W) × 133 (D) × 52 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A/MONO",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL 1, 2/EXP",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/re-202_rear_gal.jpg",
+   "confidence": "verified"
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 140,
+   "polarity": "center-negative",
+   "connector": "barrel"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2022,
+  "status": "current",
+  "notes": "Modern Space Echo with 12 modes, 127 memories, MIDI, USB firmware updates and 48 kHz/32-bit float processing.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "trs": "a",
+    "type": "a",
+    "programChange": true,
+    "cc": true,
+    "thru": false
+   },
+   "usb": {
+    "connector": "micro-usb",
+    "functions": [
+     "firmware"
+    ]
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 860,
+    "footswitches": 3
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/re-202/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/re-202_main_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/re-202_rear_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/re-202_main_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.2%; q80 AVIF PSNR 40.4 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/re-202_main_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.2%; q80 AVIF PSNR 40.4 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-rt-2-rotary-ensemble",
+  "brand": "BOSS",
+  "name": "RT-2 Rotary Ensemble",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "rotary"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL/EXP",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 115,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61/6LF22) ×1"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2020,
+  "status": "current",
+  "notes": "Compact rotary-speaker simulator with slow/fast speeds, rise/fall time, drive and a virtual rotor display.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/rt-2/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rt-2_gal_01.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rt-2_gal_01.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 1.5%; q90 AVIF PSNR 42.3 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/rt-2_gal_01.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 1.5%; q90 AVIF PSNR 42.3 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-rt-20-rotary",
+  "brand": "BOSS",
+  "name": "RT-20 Rotary",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "double",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "rotary"
+  ],
+  "widthCm": 17.3,
+  "heightCm": 15.8,
+  "dimensionsSource": "BOSS official specifications: 173 (W) × 158 (D) × 57 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "PHONES",
+    "kind": "out",
+    "connector": "trs",
+    "signal": "audio",
+    "channels": 1,
+    "level": "headphone"
+   },
+   {
+    "label": "SPEED (EXP PEDAL)",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "Official gallery has only a front three-quarter shot; the 600 dpi support image is top-down but does not show the side jack faces, so edges are omitted (assumed anchors)."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "6 × AA (LR6/R6)"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2007,
+  "status": "discontinued",
+  "notes": "Twin-pedal rotary sound processor with a virtual rotor display, overdrive, direct level and expression speed control.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 1100,
+    "footswitches": 2
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/rt-20/",
+    "discontinuedYear": 2020,
+    "replacement": "RT-2 Rotary Ensemble"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/rt-20/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://www.boss.info/us/support/by_product/rt-20/product_images/",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/media/zip/rt-20.zip",
+    "priority": 1,
+    "notes": "Official BOSS 600 dpi support image (RT-20_T_600_TMP.jpg); components matte; aspect 7.3%; q90 AVIF PSNR 42.2 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/media/zip/rt-20.zip",
+   "status": "chosen",
+   "note": "Official BOSS 600 dpi support image (RT-20_T_600_TMP.jpg); components matte; aspect 7.3%; q90 AVIF PSNR 42.2 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-rv-2-digital-reverb",
+  "brand": "BOSS",
+  "name": "RV-2 Digital Reverb",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "reverb"
+  ],
+  "widthCm": 7.0,
+  "heightCm": 12.5,
+  "dimensionsSource": "BOSS RV-2 owner's manual: 70 (W) × 125 (D) × 55 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 130,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "note": "AC adaptor only (PSA series); no battery operation."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument"
+  },
+  "usage": "guitar",
+  "year": 1987,
+  "status": "discontinued",
+  "notes": "Early digital reverb with six modes and continuously variable reverb/gate time.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 420,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://cdn.roland.com/assets/media/pdf/RV-2_OM.pdf",
+    "discontinuedYear": 1994
+   }
+  },
+  "sources": [
+   {
+    "url": "https://cdn.roland.com/assets/media/pdf/RV-2_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv2.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv2.png",
+    "priority": 1,
+    "notes": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.1%, clean alpha, AVIF q80 PSNR 41.4 dB); last-resort source gap."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv2.png",
+   "status": "last-resort",
+   "note": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.1%, clean alpha, AVIF q80 PSNR 41.4 dB); last-resort source gap."
+  }
+ },
+ {
+  "id": "boss-rv-200-reverb",
+  "brand": "BOSS",
+  "name": "RV-200 Reverb",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "reverb"
+  ],
+  "widthCm": 10.1,
+  "heightCm": 13.8,
+  "dimensionsSource": "BOSS official specifications: 101 (W) × 138 (D) × 63 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A/MONO",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A/MONO",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL 1, 2/EXP",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official rear/connector-face image was included in the gallery set captured for this batch; edges omitted (assumed anchors)."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 260,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "3 × AA (LR6)"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 2000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2023,
+  "status": "current",
+  "notes": "200-series reverb with 12 modes, 127 memories, MIDI, stereo I/O and 96 kHz processing.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "trs": "a",
+    "type": "a",
+    "programChange": true,
+    "cc": true
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 610,
+    "footswitches": 2
+   },
+   "usb": {
+    "connector": "micro-usb",
+    "functions": [
+     "firmware"
+    ]
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/rv-200/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv-200_gal_01.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv-200_gal_01.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.3%; q90 AVIF PSNR 40.7 dB; analyzer accept (11% perspective false positive verified on contact sheet)."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/rv-200_gal_01.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.3%; q90 AVIF PSNR 40.7 dB; analyzer accept (11% perspective false positive verified on contact sheet)."
+  }
+ },
+ {
+  "id": "boss-rv-3-digital-reverb-delay",
+  "brand": "BOSS",
+  "name": "RV-3 Digital Reverb/Delay",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay",
+   "reverb"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS compact enclosure, same 73 × 129 × 59 mm footprint as the current compact series.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22/6LR61) ×1"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument"
+  },
+  "usage": "guitar",
+  "year": 1994,
+  "status": "discontinued",
+  "notes": "Compact digital reverb and delay with 11 modes including hall, room, plate, spring and delay.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/rv-3/",
+    "discontinuedYear": 2001
+   }
+  },
+  "sources": [
+   {
+    "url": "https://www.boss.info/us/products/rv-3/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv3.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv3.png",
+    "priority": 1,
+    "notes": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.1%, clean alpha, AVIF q80 PSNR 41.0 dB); last-resort source gap."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv3.png",
+   "status": "last-resort",
+   "note": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.1%, clean alpha, AVIF q80 PSNR 41.0 dB); last-resort source gap."
+  }
+ },
+ {
+  "id": "boss-rv-5-digital-reverb",
+  "brand": "BOSS",
+  "name": "RV-5 Digital Reverb",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "reverb"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 50,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22) ×1"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2002,
+  "status": "discontinued",
+  "notes": "Six-mode digital reverb with a modulate setting and stereo outputs.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 440,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/rv-5/",
+    "discontinuedYear": 2015
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv5_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv5_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q80 AVIF PSNR 40.3 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/rv5_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q80 AVIF PSNR 40.3 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-rv-500-reverb",
+  "brand": "BOSS",
+  "name": "RV-500 Reverb",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "double",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "reverb"
+  ],
+  "widthCm": 17.0,
+  "heightCm": 13.8,
+  "dimensionsSource": "BOSS official specifications: 170 (W) × 138 (D) × 62 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A/MONO",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL 1, 2/EXP",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "din5",
+    "signal": "midi",
+    "channels": 1
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "din5",
+    "signal": "midi",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/rv-500_back_gal.jpg",
+   "confidence": "verified"
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 225,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "4 × AA (LR6)"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 2000
+  },
+  "usage": "guitar",
+  "year": 2017,
+  "status": "current",
+  "notes": "Flagship reverb with 12 modes, dual engines, 297 memories, MIDI, USB and 96 kHz processing.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "din5": "in-out",
+    "programChange": true,
+    "cc": true
+   },
+   "usb": {
+    "connector": "usb-b",
+    "functions": [
+     "editor",
+     "firmware"
+    ]
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 1000,
+    "footswitches": 3
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/rv-500/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv-500_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv-500_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv-500_top_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 2.0%; q80 AVIF PSNR 41.5 dB; analyzer accept (18% perspective false positive verified on contact sheet)."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/rv-500_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 2.0%; q80 AVIF PSNR 41.5 dB; analyzer accept (18% perspective false positive verified on contact sheet)."
+  }
+ },
+ {
+  "id": "boss-rv-6-reverb",
+  "brand": "BOSS",
+  "name": "RV-6 Reverb",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "reverb"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "EXP",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 95,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61) ×1"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2015,
+  "status": "current",
+  "notes": "Eight-mode compact reverb with stereo outputs, expression control and a +DELAY mode.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/rv-6/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv_6_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/rv_6_top_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 1.0%; q80 AVIF PSNR 40.8 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/rv_6_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 1.0%; q80 AVIF PSNR 40.8 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sd-1-4a-anniversary-super-overdrive",
+  "brand": "BOSS",
+  "name": "SD-1-4A Anniversary Super Overdrive",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "overdrive"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS SD-1 official specifications (same enclosure and circuit as the limited-edition SD-1-4A): 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 10,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22/6LR61) ×1"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2021,
+  "status": "discontinued",
+  "notes": "Limited 2021 40th-anniversary SD-1 with a black body and gold lettering; same overdrive circuit as the standard SD-1.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "color": "black",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 360,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sd-1/",
+    "discontinuedYear": 2021,
+    "limitedEdition": true
+   }
+  },
+  "sources": [
+   {
+    "url": "https://www.boss.info/global/products/sd-1",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://www.guitarcenter.com/BOSS/40th-Anniversary-SD-1-4A-Super-OverDrive-Effects-Pedal-Black-1500000349034.gc",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd14a.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd14a.png",
+    "priority": 1,
+    "notes": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.5%, clean alpha, AVIF q80 PSNR 42.3 dB); last-resort source gap."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd14a.png",
+   "status": "last-resort",
+   "note": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.5%, clean alpha, AVIF q80 PSNR 42.3 dB); last-resort source gap."
+  }
+ },
+ {
+  "id": "boss-sd-1-super-overdrive",
+  "brand": "BOSS",
+  "name": "SD-1 Super Overdrive",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "overdrive"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "Official product photo shows only printed INPUT/OUTPUT labels on the top face, not the connector face; edges omitted (assumed anchors)."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 10,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22/6LR61) ×1"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 1981,
+  "status": "current",
+  "notes": "Long-running asymmetrical-clipping overdrive with DRIVE, TONE and LEVEL controls.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "color": "yellow",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 360,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sd-1/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sd1_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sd1_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 1.3%; q80 AVIF PSNR 41.9 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sd1_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 1.3%; q80 AVIF PSNR 41.9 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sd-1w-super-overdrive-waza-craft",
+  "brand": "BOSS",
+  "name": "SD-1W Super Overdrive (Waza Craft)",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "overdrive"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "Official rear photo shows the DC jack only; side audio jack faces are not visible, so edges are omitted (assumed anchors)."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 15,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22/6LR61) ×1"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2014,
+  "status": "current",
+  "notes": "Waza Craft SD-1 with a Standard/Custom mode switch, improved components and a discrete all-analog signal path.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 430,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sd-1w/"
+   }
+  },
+  "variantOf": "boss-sd-1-super-overdrive",
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sd-1w_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sd-1w_top_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 1.5%; q80 AVIF PSNR 41.4 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sd-1w_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 1.5%; q80 AVIF PSNR 41.4 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sd-2-dual-overdrive",
+  "brand": "BOSS",
+  "name": "SD-2 Dual Overdrive",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "overdrive"
+  ],
+  "widthCm": 7.0,
+  "heightCm": 12.5,
+  "dimensionsSource": "BOSS SD-2 specifications: 70 (W) × 125 (D) × 55 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "REMOTE",
+    "kind": "ctrl",
+    "connector": "ts",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 21,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6F22) ×1"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 1993,
+  "status": "discontinued",
+  "notes": "Dual-overdrive compact with separate crunch and lead modes, a mode selector and a remote jack.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "control": {
+    "remote": true
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 420,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://cdn.roland.com/assets/media/pdf/SD-2_OM.pdf",
+    "discontinuedYear": 1998
+   }
+  },
+  "sources": [
+   {
+    "url": "https://support.roland.com/hc/en-us/articles/201930149-SD-2-Specifications",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd2.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd2.png",
+    "priority": 1,
+    "notes": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.3%, clean alpha, AVIF q80 PSNR 44.3 dB); last-resort source gap."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd2.png",
+   "status": "last-resort",
+   "note": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.3%, clean alpha, AVIF q80 PSNR 44.3 dB); last-resort source gap."
+  }
+ },
+ {
+  "id": "boss-sde-3-dual-digital-delay",
+  "brand": "BOSS",
+  "name": "SDE-3 Dual Digital Delay",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL/EXP",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 75,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61/6LF22) ×1"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2024,
+  "status": "current",
+  "notes": "Compact dual digital delay derived from the SDE-3000, with offset, hi-cut and MIDI clock support.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "trs": "a",
+    "type": "a",
+    "clock": true,
+    "programChange": true
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sde-3/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3_gal_01.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3_gal_01.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q90 AVIF PSNR 42.4 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sde-3_gal_01.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q90 AVIF PSNR 42.4 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sde-3000d-dual-digital-delay",
+  "brand": "BOSS",
+  "name": "SDE-3000D Dual Digital Delay",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay"
+  ],
+  "widthCm": 19.9,
+  "heightCm": 13.5,
+  "dimensionsSource": "BOSS official specifications: 199 (W) × 135 (D) × 54 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT (L/MONO, R) L",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT (L/MONO, R) R",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT (L/MONO, R) L",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT (L/MONO, R) R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL2, 3/EXP1",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "CTL4, 5/EXP2/GA-FC",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/sde-3000d_gal_03.jpg",
+   "confidence": "verified"
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 450,
+   "polarity": "center-negative",
+   "connector": "barrel"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2023,
+  "status": "current",
+  "notes": "Modern dual digital delay based on the SDE-3000 with 100 memories, MIDI, USB-C and two independent delay engines.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "trs": "a",
+    "type": "a",
+    "programChange": true,
+    "cc": true
+   },
+   "usb": {
+    "connector": "usb-c",
+    "functions": [
+     "editor",
+     "firmware"
+    ]
+   },
+   "control": {
+    "expression": 2,
+    "footswitch": true
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 1100,
+    "footswitches": 3
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sde-3000d/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3000d_gal_01.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3000d_gal_03.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3000d_gal_01.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 1.3%; q80 AVIF PSNR 41.6 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sde-3000d_gal_01.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 1.3%; q80 AVIF PSNR 41.6 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sde-3000evh-dual-digital-delay",
+  "brand": "BOSS",
+  "name": "SDE-3000EVH Dual Digital Delay",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "delay"
+  ],
+  "widthCm": 19.9,
+  "heightCm": 13.5,
+  "dimensionsSource": "BOSS official specifications: 199 (W) × 135 (D) × 54 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT MONO",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT L/MONO",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "RETURN/INPUT R",
+    "kind": "return",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "SEND",
+    "kind": "send",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT DIRECT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT EFX L",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT EFX R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT L/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT R",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL2, 3/EXP1",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "CTL4, 5/EXP2/GA-FC",
+    "kind": "ctrl",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/sde-3000evh_gal_03.jpg",
+   "confidence": "verified"
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 450,
+   "polarity": "center-negative",
+   "connector": "barrel"
+  },
+  "io": {
+   "inputs": 3,
+   "outputs": 5,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2023,
+  "status": "current",
+  "notes": "EVH-signature dual digital delay with the SDE-3000, noise suppressor and foot-volume effects, stereo routing and a 4-cable EVH setup.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "trs": "a",
+    "type": "a",
+    "programChange": true,
+    "cc": true
+   },
+   "usb": {
+    "connector": "usb-c",
+    "functions": [
+     "editor",
+     "firmware"
+    ]
+   },
+   "control": {
+    "expression": 2,
+    "footswitch": true
+   },
+   "routing": {
+    "bypass": "buffered",
+    "loops": 1,
+    "fourCable": true
+   },
+   "physical": {
+    "weightG": 1100,
+    "footswitches": 3,
+    "finish": "EVH striped"
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sde-3000evh/"
+   }
+  },
+  "variantOf": "boss-sde-3000d-dual-digital-delay",
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3000evh_gal_01.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3000evh_gal_03.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sde-3000evh_gal_01.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 1.6%; q80 AVIF PSNR 40.4 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sde-3000evh_gal_01.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 1.6%; q80 AVIF PSNR 40.4 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sg-1-slow-gear",
+  "brand": "BOSS",
+  "name": "SG-1 Slow Gear",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "envelope"
+  ],
+  "widthCm": 7.0,
+  "heightCm": 12.5,
+  "dimensionsSource": "BOSS compact enclosure: 70 (W) × 125 (D) × 55 (H) mm (official manual/vintage references).",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 12,
+   "acDc": "DC",
+   "currentMa": 4,
+   "connector": "barrel",
+   "battery": "9 V (6F22) ×1",
+   "note": "ACA-series 12 V adaptor; battery is 9 V."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument"
+  },
+  "usage": "guitar",
+  "year": 1979,
+  "status": "discontinued",
+  "notes": "Automatic volume-swell effect that removes the pick attack and fades notes in; an early BOSS compact.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "color": "black",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 400,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.tonehome.de/boss/sg-1-slow-gear",
+    "discontinuedYear": 1982
+   }
+  },
+  "sources": [
+   {
+    "url": "https://www.tonehome.de/boss/sg-1-slow-gear",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://www.craveguitars.co.uk/home/features/effects/feature-1979-boss-sg-1-slow-gear/",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sg1.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sg1.png",
+    "priority": 1,
+    "notes": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.5%, clean alpha, AVIF q80 PSNR 45.1 dB); last-resort source gap."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sg1.png",
+   "status": "last-resort",
+   "note": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.5%, clean alpha, AVIF q80 PSNR 45.1 dB); last-resort source gap."
+  }
+ },
+ {
+  "id": "boss-sl-2-slicer",
+  "brand": "BOSS",
+  "name": "SL-2 Slicer",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "filter"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT A (MONO)",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT B",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT A (MONO)",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT B",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL/EXP",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "Official rear photo shows MIDI IN, DC IN and USB only; side audio jack faces are not visible, so edges are omitted (assumed anchors)."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 95,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61/6LF22) ×1"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2022,
+  "status": "current",
+  "notes": "Compact rhythmic slicer with 88 patterns, stereo I/O, MIDI and USB pattern editing.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "color": "teal",
+  "optional": {
+   "midi": {
+    "trs": "a",
+    "type": "a",
+    "clock": true
+   },
+   "usb": {
+    "connector": "usb-b",
+    "functions": [
+     "editor",
+     "firmware"
+    ]
+   },
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sl-2/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sl-2_01_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sl-2_01_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.8%; q90 AVIF PSNR 40.9 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sl-2_01_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.8%; q90 AVIF PSNR 40.9 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sl-20-slicer",
+  "brand": "BOSS",
+  "name": "SL-20 Slicer",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "double",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "filter"
+  ],
+  "widthCm": 17.3,
+  "heightCm": 15.8,
+  "dimensionsSource": "BOSS official specifications: 173 (W) × 158 (D) × 57 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT R/MONO",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "INPUT L",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT R/MONO",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT L",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "EXP PEDAL",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "din5",
+    "signal": "midi",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/sl_20_back_gal.jpg",
+   "confidence": "verified"
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 110,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "6 × AA (LR6/R6)"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 2,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2009,
+  "status": "discontinued",
+  "notes": "Twin-pedal slicer with 50 patterns, tap tempo, MIDI input and a 40-second looper.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "din5": "in",
+    "programChange": true
+   },
+   "routing": {
+    "bypass": "buffered",
+    "looper": true
+   },
+   "physical": {
+    "weightG": 1100,
+    "footswitches": 2
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sl-20/",
+    "discontinuedYear": 2022,
+    "replacement": "SL-2 Slicer"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sl_20_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sl_20_back_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sl_20_top_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 4.1%; q80 AVIF PSNR 40.8 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sl_20_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 4.1%; q80 AVIF PSNR 40.8 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sp-1-spectrum",
+  "brand": "BOSS",
+  "name": "SP-1 Spectrum",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "eq"
+  ],
+  "widthCm": 7.0,
+  "heightCm": 12.5,
+  "dimensionsSource": "BOSS SP-1 owner's manual: 70 (W) × 125 (D) × 55 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "AC ADAPTOR",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 12,
+   "acDc": "DC",
+   "connector": "barrel",
+   "battery": "9 V (6F22) ×1",
+   "note": "ACA-series 12 V adaptor; battery is 9 V."
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 220000
+  },
+  "usage": "guitar",
+  "year": 1977,
+  "status": "discontinued",
+  "notes": "Single-band parametric equalizer/boost with a sweepable 500 Hz–5 kHz spectrum control and a dry/wet balance.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "color": "red",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 400,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://cdn.roland.com/assets/media/pdf/SP-1_OM.pdf",
+    "discontinuedYear": 1981
+   }
+  },
+  "sources": [
+   {
+    "url": "https://cdn.roland.com/assets/media/pdf/SP-1_OM.pdf",
+    "kind": [
+     "info"
+    ]
+   },
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sp1.png",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sp1.png",
+    "priority": 1,
+    "notes": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.5%, clean alpha, AVIF q80 PSNR 42.8 dB); last-resort source gap."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "planner",
+   "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sp1.png",
+   "status": "last-resort",
+   "note": "Recorded Pedalplayground planner cutout, quality-gated (aspect 1.5%, clean alpha, AVIF q80 PSNR 42.8 dB); last-resort source gap."
+  }
+ },
+ {
+  "id": "boss-st-2-power-stack",
+  "brand": "BOSS",
+  "name": "ST-2 Power Stack",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "distortion"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "No official connector-face view was captured in this batch QA pass; edges omitted so the app uses its clearly-labelled assumed anchors."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 65,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61) ×1"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2008,
+  "status": "discontinued",
+  "notes": "Amp-stack-style distortion with SOURCE, TREBLE, BASS and LEVEL controls.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "color": "black",
+  "optional": {
+   "routing": {
+    "bypass": "buffered"
+   },
+   "physical": {
+    "weightG": 410,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/st-2/",
+    "discontinuedYear": 2022
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/st-2_top_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/st-2_top_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 1.5%; q90 AVIF PSNR 42.8 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/st-2_top_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 1.5%; q90 AVIF PSNR 42.8 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sy-1-synthesizer",
+  "brand": "BOSS",
+  "name": "SY-1 Synthesizer",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "compact",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "synth"
+  ],
+  "widthCm": 7.3,
+  "heightCm": 12.9,
+  "dimensionsSource": "BOSS official specifications: 73 (W) × 129 (D) × 59 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "SEND",
+    "kind": "send",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "RETURN",
+    "kind": "return",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "EXP/CTL",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "Official product photo shows printed SEND/RETURN/EXP/CTL labels on the top face, not the connector face; edges omitted (assumed anchors)."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 115,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "9 V (6LR61) ×1"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 2200000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2019,
+  "status": "current",
+  "notes": "Compact guitar synthesizer with 121 sound types, an effects loop, and no special pickup required.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "color": "blue",
+  "optional": {
+   "control": {
+    "expression": 1
+   },
+   "routing": {
+    "bypass": "buffered",
+    "loops": 1
+   },
+   "physical": {
+    "weightG": 450,
+    "footswitches": 1
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sy-1/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy-1_main_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy-1_main_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q90 AVIF PSNR 41.8 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sy-1_main_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q90 AVIF PSNR 41.8 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sy-1000-guitar-synthesizer",
+  "brand": "BOSS",
+  "name": "SY-1000 Guitar Synthesizer",
+  "category": "pedal",
+  "deviceType": "multi-fx",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "synth"
+  ],
+  "widthCm": 34.5,
+  "heightCm": 24.5,
+  "dimensionsSource": "BOSS official specifications: 345 (W) × 245 (D) × 67 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "GK IN",
+    "kind": "in",
+    "connector": "other",
+    "signal": "audio",
+    "channels": 6,
+    "note": "13-pin DIN divided-pickup input."
+   },
+   {
+    "label": "GUITAR INPUT",
+    "kind": "in",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "SEND",
+    "kind": "send",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "RETURN",
+    "kind": "return",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "MAIN OUTPUT L/PHONES",
+    "kind": "out",
+    "connector": "trs",
+    "signal": "audio",
+    "channels": 1,
+    "level": "headphone"
+   },
+   {
+    "label": "MAIN OUTPUT R/MONO",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "SUB OUTPUT L",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "SUB OUTPUT R/MONO",
+    "kind": "out",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL3, 4/EXP1",
+    "kind": "exp",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "CTL5, 6/EXP2",
+    "kind": "ctrl",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "connector": "din5",
+    "signal": "midi",
+    "channels": 1
+   },
+   {
+    "label": "MIDI OUT/THRU",
+    "kind": "midi",
+    "connector": "din5",
+    "signal": "midi",
+    "channels": 1
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "confidence": "unknown",
+   "note": "Official rear photo is legible only as a blue panel in the gallery; connector-edge labels could not be read, so edges are omitted (assumed anchors)."
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 800,
+   "polarity": "center-negative",
+   "connector": "barrel"
+  },
+  "io": {
+   "inputs": 2,
+   "outputs": 4,
+   "stereo": true,
+   "level": "instrument",
+   "inputImpedanceOhm": 1000000,
+   "outputImpedanceOhm": 44000
+  },
+  "usage": "guitar",
+  "year": 2020,
+  "status": "current",
+  "notes": "GK-compatible guitar/bass synthesizer and amp-modeling processor with three instrument parts, over 150 effects and 200 user patches.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "din5": "in-out-thru",
+    "programChange": true,
+    "cc": true,
+    "thru": true
+   },
+   "usb": {
+    "connector": "usb-b",
+    "functions": [
+     "audio",
+     "midi",
+     "editor",
+     "firmware"
+    ]
+   },
+   "control": {
+    "expression": 2,
+    "footswitch": true
+   },
+   "routing": {
+    "bypass": "buffered",
+    "ampModeler": true,
+    "ir": true,
+    "loops": 1
+   },
+   "physical": {
+    "weightG": 2500,
+    "footswitches": 8,
+    "display": "Graphic LCD 512×160"
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sy-1000/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy-1000_main_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy-1000_main_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q80 AVIF PSNR 42.2 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sy-1000_main_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.6%; q80 AVIF PSNR 42.2 dB; analyzer + contact-sheet accept."
+  }
+ },
+ {
+  "id": "boss-sy-200-synthesizer",
+  "brand": "BOSS",
+  "name": "SY-200 Synthesizer",
+  "category": "pedal",
+  "deviceType": "stompbox",
+  "formFactor": "standard",
+  "instrumentTypes": [
+   "guitar"
+  ],
+  "effectTypes": [
+   "synth"
+  ],
+  "widthCm": 10.1,
+  "heightCm": 13.8,
+  "dimensionsSource": "BOSS official specifications: 101 (W) × 138 (D) × 63 (H) mm.",
+  "imageFormat": "avif",
+  "jacks": [
+   {
+    "label": "INPUT",
+    "kind": "in",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "OUTPUT",
+    "kind": "out",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "SEND",
+    "kind": "send",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "RETURN",
+    "kind": "return",
+    "edge": "top",
+    "connector": "ts",
+    "signal": "audio",
+    "channels": 1
+   },
+   {
+    "label": "CTL 2, 3/EXP",
+    "kind": "exp",
+    "edge": "top",
+    "connector": "trs",
+    "signal": "control",
+    "channels": 1
+   },
+   {
+    "label": "MIDI IN",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "MIDI OUT",
+    "kind": "midi",
+    "edge": "top",
+    "connector": "trs-midi-a",
+    "signal": "midi",
+    "channels": 1,
+    "midiType": "a"
+   },
+   {
+    "label": "DC IN",
+    "kind": "power",
+    "connector": "barrel",
+    "signal": "power"
+   }
+  ],
+  "jackLayout": {
+   "source": "https://static.roland.com/assets/images/products/gallery/sy-200_rear_gal.jpg",
+   "confidence": "verified"
+  },
+  "power": {
+   "voltage": 9,
+   "acDc": "DC",
+   "currentMa": 230,
+   "polarity": "center-negative",
+   "connector": "barrel",
+   "battery": "3 × AA (LR6)"
+  },
+  "io": {
+   "inputs": 1,
+   "outputs": 1,
+   "stereo": false,
+   "level": "instrument",
+   "inputImpedanceOhm": 2000000,
+   "outputImpedanceOhm": 1000
+  },
+  "usage": "guitar",
+  "year": 2021,
+  "status": "current",
+  "notes": "200-series guitar synthesizer with 12 modes, 128 memories, MIDI and an effects loop, no special pickup required.",
+  "confidence": "confirmed",
+  "lastVerified": "2026-10-27",
+  "optional": {
+   "midi": {
+    "trs": "a",
+    "type": "a",
+    "programChange": true,
+    "cc": true
+   },
+   "usb": {
+    "connector": "micro-usb",
+    "functions": [
+     "firmware"
+    ]
+   },
+   "control": {
+    "expression": 1
+   },
+   "routing": {
+    "bypass": "buffered",
+    "loops": 1
+   },
+   "physical": {
+    "weightG": 630,
+    "footswitches": 2
+   },
+   "lifecycle": {
+    "manualUrl": "https://www.boss.info/us/products/sy-200/"
+   }
+  },
+  "sources": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy-200_main_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   },
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy-200_rear_gal.jpg",
+    "kind": [
+     "image"
+    ]
+   }
+  ],
+  "imageCandidates": [
+   {
+    "url": "https://static.roland.com/assets/images/products/gallery/sy-200_main_gal.jpg",
+    "priority": 1,
+    "notes": "Official BOSS gallery top-down photo; flood matte; aspect 0.4%; q100 AVIF PSNR 53.6 dB; analyzer + contact-sheet accept."
+   }
+  ],
+  "imageProvenance": {
+   "kind": "official",
+   "sourceUrl": "https://static.roland.com/assets/images/products/gallery/sy-200_main_gal.jpg",
+   "status": "chosen",
+   "note": "Official BOSS gallery top-down photo; flood matte; aspect 0.4%; q92 AVIF PSNR 41.3 dB; analyzer + contact-sheet accept."
+  }
+ }
+]
