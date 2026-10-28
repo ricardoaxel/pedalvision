@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 274 |
+| license-pending | 300 |
 | own | 89 |
 
-Hosting: hotlinked 91 · mock 84 · static 188
+Hosting: hotlinked 91 · mock 84 · static 214
 
-Source kind: archive 4 · community 1 · official 217 · own 89 · planner 52
+Source kind: archive 4 · community 1 · official 237 · own 89 · planner 58
 
-Needs improvement: 227 (hotlinked 91 · mock 84 · planner 52)
+Needs improvement: 233 (hotlinked 91 · mock 84 · planner 58)
 
 ## Aclam
 
@@ -183,6 +183,32 @@ Needs improvement: 227 (hotlinked 91 · mock 84 · planner 52)
 | `boss-rc-5-loop-station` | RC-5 Loop Station | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-rc-500-loop-station` | RC-500 Loop Station | license-pending | static | planner | yes | better source (official/retailer/community) |
 | `boss-rc-600-loop-station` | RC-600 Loop Station | license-pending | static | official | — | — |
+| `boss-re-2-space-echo` | RE-2 Space Echo | license-pending | static | official | — | — |
+| `boss-re-20-space-echo` | RE-20 Space Echo | license-pending | static | official | — | — |
+| `boss-re-202-space-echo` | RE-202 Space Echo | license-pending | static | official | — | — |
+| `boss-rt-2-rotary-ensemble` | RT-2 Rotary Ensemble | license-pending | static | official | — | — |
+| `boss-rt-20-rotary` | RT-20 Rotary | license-pending | static | official | — | — |
+| `boss-rv-2-digital-reverb` | RV-2 Digital Reverb | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-rv-200-reverb` | RV-200 Reverb | license-pending | static | official | — | — |
+| `boss-rv-3-digital-reverb-delay` | RV-3 Digital Reverb/Delay | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-rv-5-digital-reverb` | RV-5 Digital Reverb | license-pending | static | official | — | — |
+| `boss-rv-500-reverb` | RV-500 Reverb | license-pending | static | official | — | — |
+| `boss-rv-6-reverb` | RV-6 Reverb | license-pending | static | official | — | — |
+| `boss-sd-1-4a-anniversary-super-overdrive` | SD-1-4A Anniversary Super Overdrive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-sd-1-super-overdrive` | SD-1 Super Overdrive | license-pending | static | official | — | — |
+| `boss-sd-1w-super-overdrive-waza-craft` | SD-1W Super Overdrive (Waza Craft) | license-pending | static | official | — | — |
+| `boss-sd-2-dual-overdrive` | SD-2 Dual Overdrive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-sde-3-dual-digital-delay` | SDE-3 Dual Digital Delay | license-pending | static | official | — | — |
+| `boss-sde-3000d-dual-digital-delay` | SDE-3000D Dual Digital Delay | license-pending | static | official | — | — |
+| `boss-sde-3000evh-dual-digital-delay` | SDE-3000EVH Dual Digital Delay | license-pending | static | official | — | — |
+| `boss-sg-1-slow-gear` | SG-1 Slow Gear | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-sl-2-slicer` | SL-2 Slicer | license-pending | static | official | — | — |
+| `boss-sl-20-slicer` | SL-20 Slicer | license-pending | static | official | — | — |
+| `boss-sp-1-spectrum` | SP-1 Spectrum | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `boss-st-2-power-stack` | ST-2 Power Stack | license-pending | static | official | — | — |
+| `boss-sy-1-synthesizer` | SY-1 Synthesizer | license-pending | static | official | — | — |
+| `boss-sy-1000-guitar-synthesizer` | SY-1000 Guitar Synthesizer | license-pending | static | official | — | — |
+| `boss-sy-200-synthesizer` | SY-200 Synthesizer | license-pending | static | official | — | — |
 
 ## Behringer
 
@@ -518,7 +544,7 @@ Needs improvement: 227 (hotlinked 91 · mock 84 · planner 52)
 | Blackbird | own | 1 |
 | BoardMods | own | 1 |
 | BOSS | own | 1 |
-| BOSS | planner | 52 |
+| BOSS | planner | 58 |
 | Caseman | own | 1 |
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |

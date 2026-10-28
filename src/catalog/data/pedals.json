@@ -13688,6 +13688,1178 @@
     ]
   },
   {
+    "id": "boss-re-2-space-echo",
+    "brand": "BOSS",
+    "name": "RE-2 Space Echo",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-re-2-space-echo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Compact recreation of the RE-201 Space Echo with 11 modes, wow/flutter, tape saturation and a carryover switch.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/re-2_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-re-20-space-echo",
+    "brand": "BOSS",
+    "name": "RE-20 Space Echo",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-re-20-space-echo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Twin-pedal digital recreation of the RE-201 with a virtual tape display, tap tempo and expression control.",
+    "year": 2007,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/re_20_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-re-202-space-echo",
+    "brand": "BOSS",
+    "name": "RE-202 Space Echo",
+    "widthCm": 19.2,
+    "heightCm": 13.3,
+    "image": "boss-re-202-space-echo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 140
+    },
+    "usage": "guitar",
+    "notes": "Modern Space Echo with 12 modes, 127 memories, MIDI, USB firmware updates and 48 kHz/32-bit float processing.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/re-202_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/re-202_rear_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rt-2-rotary-ensemble",
+    "brand": "BOSS",
+    "name": "RT-2 Rotary Ensemble",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rt-2-rotary-ensemble.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "rotary"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 115
+    },
+    "usage": "guitar",
+    "notes": "Compact rotary-speaker simulator with slow/fast speeds, rise/fall time, drive and a virtual rotor display.",
+    "year": 2020,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rt-2_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rt-20-rotary",
+    "brand": "BOSS",
+    "name": "RT-20 Rotary",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-rt-20-rotary.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "rotary"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Twin-pedal rotary sound processor with a virtual rotor display, overdrive, direct level and expression speed control.",
+    "year": 2007,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rt-20/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.boss.info/us/support/by_product/rt-20/product_images/",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rv-2-digital-reverb",
+    "brand": "BOSS",
+    "name": "RV-2 Digital Reverb",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-rv-2-digital-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 130
+    },
+    "usage": "guitar",
+    "notes": "Early digital reverb with six modes and continuously variable reverb/gate time.",
+    "year": 1987,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/RV-2_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rv-200-reverb",
+    "brand": "BOSS",
+    "name": "RV-200 Reverb",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-rv-200-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 260
+    },
+    "usage": "guitar",
+    "notes": "200-series reverb with 12 modes, 127 memories, MIDI, stereo I/O and 96 kHz processing.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rv-200_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rv-3-digital-reverb-delay",
+    "brand": "BOSS",
+    "name": "RV-3 Digital Reverb/Delay",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rv-3-digital-reverb-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "Compact digital reverb and delay with 11 modes including hall, room, plate, spring and delay.",
+    "year": 1994,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/us/products/rv-3/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-rv3.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rv-5-digital-reverb",
+    "brand": "BOSS",
+    "name": "RV-5 Digital Reverb",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rv-5-digital-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "Six-mode digital reverb with a modulate setting and stereo outputs.",
+    "year": 2002,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rv5_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rv-500-reverb",
+    "brand": "BOSS",
+    "name": "RV-500 Reverb",
+    "widthCm": 17,
+    "heightCm": 13.8,
+    "image": "boss-rv-500-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 225
+    },
+    "usage": "guitar",
+    "notes": "Flagship reverb with 12 modes, dual engines, 297 memories, MIDI, USB and 96 kHz processing.",
+    "year": 2017,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rv-500_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rv-500_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-rv-6-reverb",
+    "brand": "BOSS",
+    "name": "RV-6 Reverb",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-rv-6-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 95
+    },
+    "usage": "guitar",
+    "notes": "Eight-mode compact reverb with stereo outputs, expression control and a +DELAY mode.",
+    "year": 2015,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/rv_6_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sd-1-4a-anniversary-super-overdrive",
+    "brand": "BOSS",
+    "name": "SD-1-4A Anniversary Super Overdrive",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-sd-1-4a-anniversary-super-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "color": "black",
+    "notes": "Limited 2021 40th-anniversary SD-1 with a black body and gold lettering; same overdrive circuit as the standard SD-1.",
+    "year": 2021,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.boss.info/global/products/sd-1",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarcenter.com/BOSS/40th-Anniversary-SD-1-4A-Super-OverDrive-Effects-Pedal-Black-1500000349034.gc",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd14a.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sd-1-super-overdrive",
+    "brand": "BOSS",
+    "name": "SD-1 Super Overdrive",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-sd-1-super-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "color": "yellow",
+    "notes": "Long-running asymmetrical-clipping overdrive with DRIVE, TONE and LEVEL controls.",
+    "year": 1981,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sd1_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sd-1w-super-overdrive-waza-craft",
+    "brand": "BOSS",
+    "name": "SD-1W Super Overdrive (Waza Craft)",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-sd-1w-super-overdrive-waza-craft.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "variantOf": "boss-sd-1-super-overdrive",
+    "usage": "guitar",
+    "notes": "Waza Craft SD-1 with a Standard/Custom mode switch, improved components and a discrete all-analog signal path.",
+    "year": 2014,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sd-1w_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sd-2-dual-overdrive",
+    "brand": "BOSS",
+    "name": "SD-2 Dual Overdrive",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-sd-2-dual-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 21
+    },
+    "usage": "guitar",
+    "notes": "Dual-overdrive compact with separate crunch and lead modes, a mode selector and a remote jack.",
+    "year": 1993,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://support.roland.com/hc/en-us/articles/201930149-SD-2-Specifications",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sd2.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sde-3-dual-digital-delay",
+    "brand": "BOSS",
+    "name": "SDE-3 Dual Digital Delay",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-sde-3-dual-digital-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Compact dual digital delay derived from the SDE-3000, with offset, hi-cut and MIDI clock support.",
+    "year": 2024,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sde-3_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sde-3000d-dual-digital-delay",
+    "brand": "BOSS",
+    "name": "SDE-3000D Dual Digital Delay",
+    "widthCm": 19.9,
+    "heightCm": 13.5,
+    "image": "boss-sde-3000d-dual-digital-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 450
+    },
+    "usage": "guitar",
+    "notes": "Modern dual digital delay based on the SDE-3000 with 100 memories, MIDI, USB-C and two independent delay engines.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sde-3000d_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sde-3000d_gal_03.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sde-3000evh-dual-digital-delay",
+    "brand": "BOSS",
+    "name": "SDE-3000EVH Dual Digital Delay",
+    "widthCm": 19.9,
+    "heightCm": 13.5,
+    "image": "boss-sde-3000evh-dual-digital-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 450
+    },
+    "variantOf": "boss-sde-3000d-dual-digital-delay",
+    "usage": "guitar",
+    "notes": "EVH-signature dual digital delay with the SDE-3000, noise suppressor and foot-volume effects, stereo routing and a 4-cable EVH setup.",
+    "year": 2023,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sde-3000evh_gal_01.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sde-3000evh_gal_03.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sg-1-slow-gear",
+    "brand": "BOSS",
+    "name": "SG-1 Slow Gear",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-sg-1-slow-gear.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "envelope"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 12,
+      "acDc": "DC",
+      "currentMa": 4
+    },
+    "usage": "guitar",
+    "color": "black",
+    "notes": "Automatic volume-swell effect that removes the pick attack and fades notes in; an early BOSS compact.",
+    "year": 1979,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.tonehome.de/boss/sg-1-slow-gear",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.craveguitars.co.uk/home/features/effects/feature-1979-boss-sg-1-slow-gear/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sg1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sl-2-slicer",
+    "brand": "BOSS",
+    "name": "SL-2 Slicer",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-sl-2-slicer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "filter"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 95
+    },
+    "usage": "guitar",
+    "color": "teal",
+    "notes": "Compact rhythmic slicer with 88 patterns, stereo I/O, MIDI and USB pattern editing.",
+    "year": 2022,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sl-2_01_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sl-20-slicer",
+    "brand": "BOSS",
+    "name": "SL-20 Slicer",
+    "widthCm": 17.3,
+    "heightCm": 15.8,
+    "image": "boss-sl-20-slicer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "filter"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 110
+    },
+    "usage": "guitar",
+    "notes": "Twin-pedal slicer with 50 patterns, tap tempo, MIDI input and a 40-second looper.",
+    "year": 2009,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sl_20_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sl_20_back_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sp-1-spectrum",
+    "brand": "BOSS",
+    "name": "SP-1 Spectrum",
+    "widthCm": 7,
+    "heightCm": 12.5,
+    "image": "boss-sp-1-spectrum.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "color": "red",
+    "notes": "Single-band parametric equalizer/boost with a sweepable 500 Hz–5 kHz spectrum control and a dry/wet balance.",
+    "year": 1977,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://cdn.roland.com/assets/media/pdf/SP-1_OM.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/app/images/pedals/boss-sp1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-st-2-power-stack",
+    "brand": "BOSS",
+    "name": "ST-2 Power Stack",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-st-2-power-stack.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "black",
+    "notes": "Amp-stack-style distortion with SOURCE, TREBLE, BASS and LEVEL controls.",
+    "year": 2008,
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/st-2_top_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sy-1-synthesizer",
+    "brand": "BOSS",
+    "name": "SY-1 Synthesizer",
+    "widthCm": 7.3,
+    "heightCm": 12.9,
+    "image": "boss-sy-1-synthesizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 115
+    },
+    "usage": "guitar",
+    "color": "blue",
+    "notes": "Compact guitar synthesizer with 121 sound types, an effects loop, and no special pickup required.",
+    "year": 2019,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sy-1_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sy-1000-guitar-synthesizer",
+    "brand": "BOSS",
+    "name": "SY-1000 Guitar Synthesizer",
+    "widthCm": 34.5,
+    "heightCm": 24.5,
+    "image": "boss-sy-1000-guitar-synthesizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 800
+    },
+    "usage": "guitar",
+    "notes": "GK-compatible guitar/bass synthesizer and amp-modeling processor with three instrument parts, over 150 effects and 200 user patches.",
+    "year": 2020,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sy-1000_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "boss-sy-200-synthesizer",
+    "brand": "BOSS",
+    "name": "SY-200 Synthesizer",
+    "widthCm": 10.1,
+    "heightCm": 13.8,
+    "image": "boss-sy-200-synthesizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "send",
+        "edge": "top"
+      },
+      {
+        "kind": "return",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 230
+    },
+    "usage": "guitar",
+    "notes": "200-series guitar synthesizer with 12 modes, 128 memories, MIDI and an effects loop, no special pickup required.",
+    "year": 2021,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-27",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sy-200_main_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://static.roland.com/assets/images/products/gallery/sy-200_rear_gal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
     "id": "jhs-3-series-screamer",
     "brand": "JHS",
     "name": "3 Series Screamer",
