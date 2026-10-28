@@ -514,9 +514,10 @@ pnpm catalog:wave run --plan <resume-plan>.json --resume                        
 
 **Source discovery (T-4b, owner request 2026-10-28):** every batch runs a bounded
 discovery pass for items with no usable official flat image: registry-first →
-official brand/press/support → **one opportunistic Google/Bing Images attempt per
-batch** (open the source page; record the underlying image URL, never the search
-URL) → Amazon `hiRes` / Andertons / Sweetwater / Thomann / Guitar Sanctuary /
+official brand/press/support → **aggregator discovery (Pedalbro / PedalFinder /
+Pedalfilter / All The Pedals)** → **one opportunistic Google/Bing Images attempt
+per batch** (open the source page; record the underlying image URL, never the
+search URL) → Amazon `hiRes` / Andertons / Sweetwater / Thomann / Guitar Sanctuary /
 retailers / community (record the product page + resolved URL) → planner last
 resort → generated last. Cap ≤2 search pages + ≤20 source-page fetches per batch
 (≤3/item); use a deterministic curl + regex helper, not HTML in context; log

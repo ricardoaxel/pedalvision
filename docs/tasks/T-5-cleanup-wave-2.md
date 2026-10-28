@@ -57,7 +57,7 @@ and never merges.
 ## Source discovery (T-4b — mandatory)
 
 Follow the T-4b source-discovery pass in every batch: registry-first → official
-brand/press/support → **one opportunistic Google/Bing Images attempt per batch**
+brand/press/support → **aggregators (Pedalbro / PedalFinder / Pedalfilter / All The Pedals)** → **one opportunistic Google/Bing Images attempt per batch**
 (open the source page; record the underlying URL, never the search URL) →
 Amazon `hiRes` / Andertons / Sweetwater / Thomann / Guitar Sanctuary / retailers /
 community → planner last resort → generated last. Caps: ≤2 search pages + ≤20
