@@ -1,6 +1,6 @@
 # T-4b — Image source discovery upgrade (researcher + scout + rules)
 
-**Phase:** P5 · **Status:** draft — validation pending owner (PR #73) · **Type:** process/agent rules (docs-only) · **Depends on:** T-4 (owner request 2026-10-28)
+**Phase:** P5 · **Status:** in review — PR #73 · **Type:** process/agent rules (docs-only) · **Depends on:** T-4 (owner request 2026-10-28)
 
 ## Goal
 
@@ -96,7 +96,7 @@ semi-last source but not that all our batches have a majority of them.”
    - Keep the existing budgets: 400k/800k per batch, 1.6M/2.4M wave, one vision
      pass + one fix pass, ≤1 light code review.
 
-## Validation on the EHX/MXR batches (2026-10-28)
+## Validation on the EHX/MXR batches (2026-10-28 — completed)
 
 Tried the proposed approach on the whole EHX batch (and representative MXR items)
 before landing this PR:
@@ -117,9 +117,7 @@ before landing this PR:
   Pedalplayground cutout remained the only **orthographic flat** asset.
 - **Conclusion:** the workflow works as a discovery + provenance + gate, but it
   cannot make 3/4 product renders orthographic. For these two batches the planner
-  is still the best flat source. This PR stays a **draft** until the owner decides
-  whether to accept near-top-down real renders (which would reverse the earlier
-  “inclined” rejection) or keep planner for the remaining items.
+  is still the best flat source. **Result after the owner review:** EHX merged as #74 with 9 flat real sources + 14 planner per the owner’s list + 3 original real; MXR #72 uses **14 official Dunlop `MAIN` 1400 + strong matte** and **12 planner fallbacks**. The 1:1 audit corrected the contact-sheet over-flagging (bezels are not side walls) and the owner’s explicit list overrides the agent. The workflow is validated; this PR carries the rules.
 
 ## Bounded workflow (for the token review)
 

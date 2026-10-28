@@ -25,6 +25,7 @@ You are the image scout for one Pedalvision catalog batch.
 
    **Discovery is owned by the researcher**; the scout consumes `imageCandidates` and must not re-search per item. When the raw record has no usable candidate, run the bounded discovery pass in `catalog-pedal-researcher.md` (one opportunistic search-engine attempt per batch, ≤20 source-page fetches, Amazon `hiRes` extraction) and record the URLs.
    - **Verified shortcuts (2026-10-28):** MXR official `MAIN` 1400² (not `TOPP`); EHX official `_Front`/`-0` only (legacy `-1` is 3/4); Russo Music / Chicago Music Exchange / Musician's Friend / Andertons / Guitar Village JSON/CDN; Amazon/Walmart/Mercado Libre CDN; Bing Images (browser) for discovery. Google/DDG are blocked. Sweetwater/Thomann/Guitar Center/zZounds/Gear4music/GuitarGear MX are blocked or rate-limited.
+   - **Flatness audit:** judge at **1:1**, not on a 300 px contact sheet. A bezel / inset faceplate / stepped chassis is not a side wall; only a foreshortened top face or a visible vertical side plane is `angled`. The owner’s explicit list of items to replace overrides the agent. MXR official `MAIN` needs the strong matte (border flood tol70 + 2px erode) for dark bodies; use planner fallback for silver/white bodies that fail.
 2. Download the best candidate locally (temp), then run:
    `pnpm asset:analyze --input <file> --kind <pedal|board> --width-cm <n> --height-cm <n> --id <id> [--tolerance <n>]`
    - Verdict `reject` → try the next candidate (max 3) or flag `needs-new-image`.
