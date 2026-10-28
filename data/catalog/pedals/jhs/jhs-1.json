@@ -1,0 +1,1325 @@
+[
+  {
+    "id": "jhs-1966-series-bender",
+    "brand": "JHS",
+    "name": "1966 Series Bender",
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "image": "jhs-1966-series-bender.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4
+    },
+    "usage": "guitar",
+    "color": "yellow",
+    "notes": "JHS 1966 Series Bender — handwired limited-run (20 units) recreation; 9V DC center-negative, 4 mA; isolated supply required.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-bender",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesbender.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-1966-series-boost",
+    "brand": "JHS",
+    "name": "1966 Series Boost",
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "image": "jhs-1966-series-boost.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "color": "grey",
+    "notes": "JHS 1966 Series Boost — handwired limited-run (20 units) recreation; 9V DC center-negative, 25 mA; isolated supply required.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-boost",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesboost.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-1966-series-fuzz",
+    "brand": "JHS",
+    "name": "1966 Series Fuzz",
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "image": "jhs-1966-series-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5
+    },
+    "usage": "guitar",
+    "color": "light blue",
+    "notes": "JHS 1966 Series Fuzz — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-fuzz",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/jhs-1966-fuzz.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-1966-series-italy",
+    "brand": "JHS",
+    "name": "1966 Series Italy",
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "image": "jhs-1966-series-italy.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5
+    },
+    "usage": "guitar",
+    "color": "light blue",
+    "notes": "JHS 1966 Series Italy — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-italy",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesitaly.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-bit-crusher",
+    "brand": "JHS",
+    "name": "3 Series Bit Crusher",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-bit-crusher.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "bitcrusher"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Bit Crusher — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-bit-crusher",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-BitCrusher-Front.png?v=1779893287",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-chorus",
+    "brand": "JHS",
+    "name": "3 Series Chorus",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Chorus — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-chorus",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_CHORUS_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Chorus-front.png?v=1698427083",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-compressor",
+    "brand": "JHS",
+    "name": "3 Series Compressor",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-compressor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Compressor — three controls and one toggle; 9V DC center-negative, 8 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-compressor",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_COMPRESSOR_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Compressor-front.png?v=1698427156",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-delay",
+    "brand": "JHS",
+    "name": "3 Series Delay",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 71
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Delay — three controls and one toggle; 9V DC center-negative, 71 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_DELAY_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Delay-front.png?v=1698427313",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-distortion",
+    "brand": "JHS",
+    "name": "3 Series Distortion",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Distortion — three controls and one toggle; 9V DC center-negative, 9 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-distortion",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_DISTORTION_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Distortion-front.png?v=1698427388",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-flanger",
+    "brand": "JHS",
+    "name": "3 Series Flanger",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-flanger.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Flanger — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-flanger",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_FLANGER_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Flanger-Front.png?v=1698426709",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-fuzz",
+    "brand": "JHS",
+    "name": "3 Series Fuzz",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Fuzz — three controls and one toggle; 9V DC center-negative, 9 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-fuzz",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_FUZZ_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Fuzz-front.png?v=1698427447",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-glitch-delay",
+    "brand": "JHS",
+    "name": "3 Series Glitch Delay",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-glitch-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Glitch Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-glitch-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-GlitchDelay-Front.png?v=1779893315",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-hall-reverb",
+    "brand": "JHS",
+    "name": "3 Series Hall Reverb",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-hall-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Hall Reverb — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-hall-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_HALL_REVERB_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-HallReverb-Front.png?v=1698426814",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-harmonic-trem",
+    "brand": "JHS",
+    "name": "3 Series Harmonic Trem",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-harmonic-trem.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Harmonic Trem — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-harmonic-trem",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Harmonic-Trem-Front.png?v=1698426927",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-octave-reverb",
+    "brand": "JHS",
+    "name": "3 Series Octave Reverb",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-octave-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Octave Reverb — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-octave-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Octave-Reverb-Front.png?v=1698427649",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-oil-can-delay",
+    "brand": "JHS",
+    "name": "3 Series Oil Can Delay",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-oil-can-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Oil Can Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_OIL_CAN_DELAY_EN_DE_FR.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-oil-can-delay-black",
+    "brand": "JHS",
+    "name": "3 Series Oil Can Delay (Black)",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-oil-can-delay-black.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "variantOf": "jhs-3-series-oil-can-delay",
+    "usage": "guitar",
+    "color": "black",
+    "notes": "JHS 3 Series Oil Can Delay (Black) — black-finish variant of the oil-can delay; Mix, Speed, Feedback + toggle; 9V DC, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalplayground.com/app/images/pedals/jhs-3-series-oil.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-overdrive",
+    "brand": "JHS",
+    "name": "3 Series Overdrive",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Overdrive — three controls and one toggle; 9V DC center-negative, 12 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-overdrive",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_OVERDRIVE_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Overdrive-front.png?v=1698427542",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-phaser",
+    "brand": "JHS",
+    "name": "3 Series Phaser",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-phaser.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Phaser — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-phaser",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_PHASER_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Phaser-Front.png?v=1698427894",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-reverb",
+    "brand": "JHS",
+    "name": "3 Series Reverb",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 74
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Reverb — three controls and one toggle; 9V DC center-negative, 74 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_REVERB_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Reverb-front.png?v=1698427738",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-ring-modulator",
+    "brand": "JHS",
+    "name": "3 Series Ring Modulator",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-ring-modulator.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "ring-mod"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Ring Modulator — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-ring-modulator",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-RingModulator-Front.png?v=1779893250",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-rotary-chorus",
+    "brand": "JHS",
+    "name": "3 Series Rotary Chorus",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-rotary-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Rotary Chorus — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-rotary-chorus",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_ROTARY_CHORUS_EN_DE_FR.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Rotary-Chorus-Front.png?v=1739461411",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-3-series-tape-delay",
+    "brand": "JHS",
+    "name": "3 Series Tape Delay",
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "image": "jhs-3-series-tape-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "right",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      },
+      {
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "color": "white",
+    "notes": "JHS 3 Series Tape Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-tape-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_TAPE_DELAY_EN_DE_FR.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Tape-Delay-Front.png?v=1739461500",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-424-gain-stage",
+    "brand": "JHS",
+    "name": "424 Gain Stage",
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "image": "jhs-424-gain-stage.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "preamp",
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "left",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "JHS 424 Gain Stage — recreation of the 424 MKI multi-track recorder preamp; 1/4-inch and balanced XLR DI outputs; 9V DC, 50 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/424-gain-stage",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/424-TopDown-2-Edit.png?v=1765894243",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jhs-808",
+    "brand": "JHS",
+    "name": "808",
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "image": "jhs-808.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "usage": "guitar",
+    "notes": "JHS 808 — TS808-style overdrive with a three-way gain toggle (stock/boost/crunch); runs at 9V or 18V DC center-negative.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/jhs-808",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/jhs-808-top.jpg?v=1711718589",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]

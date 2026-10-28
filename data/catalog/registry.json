@@ -73,6 +73,12 @@
           "raw": "data/catalog/research/pedals/jhs/3-series-screamer-1.json",
           "mapped": "data/catalog/pedals/jhs/3-series-screamer-1.json",
           "items": 1
+        },
+        {
+          "batch": "jhs-1",
+          "raw": "data/catalog/research/pedals/jhs/jhs-1.json",
+          "mapped": "data/catalog/pedals/jhs/jhs-1.json",
+          "items": 25
         }
       ]
     },

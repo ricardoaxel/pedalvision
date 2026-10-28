@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 349 |
-| own | 89 |
+| license-pending | 362 |
+| own | 83 |
 
-Hosting: hotlinked 38 · mock 83 · static 317
+Hosting: hotlinked 26 · mock 77 · static 342
 
-Source kind: archive 4 · community 1 · official 242 · own 89 · planner 92 · retailer 10
+Source kind: archive 4 · community 4 · official 250 · own 83 · planner 94 · retailer 10
 
-Needs improvement: 213 (hotlinked 38 · mock 83 · planner 92)
+Needs improvement: 197 (hotlinked 26 · mock 77 · planner 94)
 
 ## Aclam
 
@@ -360,25 +360,32 @@ Needs improvement: 213 (hotlinked 38 · mock 83 · planner 92)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `jhs-1966-series-bender` | 1966 Series Bender | own | mock | own | yes | JHS batch |
-| `jhs-1966-series-boost` | 1966 Series Boost | own | mock | own | yes | JHS batch |
-| `jhs-1966-series-fuzz` | 1966 Series Fuzz | own | mock | own | yes | JHS batch |
-| `jhs-1966-series-italy` | 1966 Series Italy | own | mock | own | yes | JHS batch |
-| `jhs-3-series-bit-crusher` | 3 Series Bit Crusher | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-chorus` | 3 Series Chorus | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-compressor` | 3 Series Compressor | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-delay` | 3 Series Delay | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-distortion` | 3 Series Distortion | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-flanger` | 3 Series Flanger | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-fuzz` | 3 Series Fuzz | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-glitch-delay` | 3 Series Glitch Delay | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-hall-reverb` | 3 Series Hall Reverb | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-harmonic-trem` | 3 Series Harmonic Trem | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-octave-reverb` | 3 Series Octave Reverb | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-oil-can-delay` | 3 Series Oil Can Delay | license-pending | hotlinked | official | yes | JHS batch |
-| `jhs-3-series-oil-can-delay-black` | 3 Series Oil Can Delay (Black) | own | mock | own | yes | JHS batch |
-| `jhs-3-series-overdrive` | 3 Series Overdrive | own | mock | own | yes | JHS batch |
+| `jhs-1966-series-bender` | 1966 Series Bender | license-pending | static | community | — | — |
+| `jhs-1966-series-boost` | 1966 Series Boost | license-pending | static | community | — | — |
+| `jhs-1966-series-fuzz` | 1966 Series Fuzz | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `jhs-1966-series-italy` | 1966 Series Italy | license-pending | static | community | — | — |
+| `jhs-3-series-bit-crusher` | 3 Series Bit Crusher | license-pending | static | official | — | — |
+| `jhs-3-series-chorus` | 3 Series Chorus | license-pending | static | official | — | — |
+| `jhs-3-series-compressor` | 3 Series Compressor | license-pending | static | official | — | — |
+| `jhs-3-series-delay` | 3 Series Delay | license-pending | static | official | — | — |
+| `jhs-3-series-distortion` | 3 Series Distortion | license-pending | static | official | — | — |
+| `jhs-3-series-flanger` | 3 Series Flanger | license-pending | static | official | — | — |
+| `jhs-3-series-fuzz` | 3 Series Fuzz | license-pending | static | official | — | — |
+| `jhs-3-series-glitch-delay` | 3 Series Glitch Delay | license-pending | static | official | — | — |
+| `jhs-3-series-hall-reverb` | 3 Series Hall Reverb | license-pending | static | official | — | — |
+| `jhs-3-series-harmonic-trem` | 3 Series Harmonic Trem | license-pending | static | official | — | — |
+| `jhs-3-series-octave-reverb` | 3 Series Octave Reverb | license-pending | static | official | — | — |
+| `jhs-3-series-oil-can-delay` | 3 Series Oil Can Delay | license-pending | static | official | — | — |
+| `jhs-3-series-oil-can-delay-black` | 3 Series Oil Can Delay (Black) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `jhs-3-series-overdrive` | 3 Series Overdrive | license-pending | static | official | — | — |
+| `jhs-3-series-phaser` | 3 Series Phaser | license-pending | static | official | — | — |
+| `jhs-3-series-reverb` | 3 Series Reverb | license-pending | static | official | — | — |
+| `jhs-3-series-ring-modulator` | 3 Series Ring Modulator | license-pending | static | official | — | — |
+| `jhs-3-series-rotary-chorus` | 3 Series Rotary Chorus | license-pending | static | official | — | — |
 | `jhs-3-series-screamer` | 3 Series Screamer | license-pending | static | official | — | — |
+| `jhs-3-series-tape-delay` | 3 Series Tape Delay | license-pending | static | official | — | — |
+| `jhs-424-gain-stage` | 424 Gain Stage | license-pending | static | official | — | — |
+| `jhs-808` | 808 | license-pending | static | official | — | — |
 
 ## Joyo
 
@@ -603,8 +610,7 @@ Needs improvement: 213 (hotlinked 38 · mock 83 · planner 92)
 | Electro-Harmonix | planner | 14 |
 | Emerson Custom | own | 1 |
 | Fame | own | 1 |
-| JHS | official | 12 |
-| JHS | own | 6 |
+| JHS | planner | 2 |
 | Joyo | official | 5 |
 | Joyo | own | 13 |
 | Keeley | own | 18 |
