@@ -68,9 +68,9 @@ tasks/worktrees, runs the token review, launches via `catalog:wave`, and opens
 
 - **PRs:** #65 boss-7 (26), #66 boss-6 (26 + `psm-5` repair), #68 boss-8 (25).
   Coordinator opened **no PR**. Catalog cap reached (3).
-- **Items/images:** 77 net-new + 1 repair; **154 AVIF pairs** (130+2 batch images,
-  plus boss-8 generated-art specs where needed). BOSS completes at **208**;
-  BOSS hotlinked+mock = **0**.
+- **Items/images:** 77 net-new + 1 repair; **156 AVIF pairs** (boss-6 54 =
+  26 new + `psm-5`; boss-7 52; boss-8 50). BOSS completes at **208**; BOSS
+  hotlinked+mock = **0**.
 - **Root billed non-cache:** **1.32M** (boss-6 434k, boss-7 328k, boss-8 554k;
   cache-inclusive floor ~114M). boss-6/boss-8 are over the 400k per-batch soft,
   under the 800k hard; wave under the 1.6M soft. Subagent vision/code-review
