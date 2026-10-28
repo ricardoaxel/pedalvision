@@ -81,6 +81,39 @@ Hit rate = usable flat top-down images / images sampled so far (not exhaustive).
    halo/fringe gate; one vision pass. High resolution is not flatness — reject a
    high-res angled image.
 
+## Deep source audit (2026-10-28, EHX/MXR)
+
+Added after a multi-source research pass (official assets, music retailers, marketplaces, image search). Re-test each source on the specific item; the source list is not a guarantee of flatness.
+
+| Source | URL pattern / access | Type | Flatness / background (sampled) | Resolution | Feasibility |
+| --- | --- | --- | --- | --- | --- |
+| **MXR / Jim Dunlop official gallery** | product page → `cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/{original,1280x1280}/<pid>/<iid>/<sku>.{MAIN,LEFT,RGHT,TOPP,BOTT,BACK}__<h>.<ts>.jpg` | Official | **`MAIN` = near-top-down face, white bg + soft shadow (5/5 sampled)**; `TOPP` is a front-edge view, not top-down; LEFT/RGHT/BACK are side/rear evidence | **1400×1400** (`original`) | Open CDN, no challenge; page robots disallows many AI/bulk UAs (crawl-delay 10) |
+| **EHX official galleries** | product page → `ehx.com/wp-content/uploads/YYYY/MM/<slug>_Front.jpg` (NYC DSP 5-view set) or `<slug>-0.jpg` (2024–26 set); legacy `-1…-4`, `-f`, `-h`, `-v` | Official | `_Front` and `-0` = flat face, white bg; `-1` = 3/4 hero (reject for footprint); `-2/-3/-4` = rear/sides (jack evidence); `-f/-h/-v` = lifestyle (reject) | 1000×1000 (some 2048) | Open, Cloudflare but plain GET 200 |
+| **EHX WordPress media API** | `ehx.com/wp-json/wp/v2/media?search=<token>&per_page=60&_fields=source_url` | Official inventory | Enumerates every asset for a product; use as a pre-flight “does a flat asset exist?” check | — | 200; some queries 500 (retry/shorten) |
+| **EHX press library** | `ehx.com/product-images/` → Dropbox `Product Images.zip` | Official press | 3.58 GB zip, unlisted; contents unverified; one owner download could index hi-res art | — | Page yes; listing needs JS; no Range |
+| **Russo Music (Shopify)** | `russomusic.com/products.json?limit=250`, `/search/suggest.json`; images `cdn.shopify.com/s/files/1/1210/3886/...` | Retailer | White-bg manufacturer images; near-top-down (sample 1440/2020/M169/M234); some opaque white PNGs (no alpha) | **2000×2000** | Open JSON/CDN |
+| **Chicago Music Exchange (Shopify)** | `chicagomusicexchange.com/products.json?limit=250&page=N`, `/search/suggest.json`; `cdn.shopify.com/s/files/1/0343/4368/2183/...` | Retailer | New stock = manufacturer top-down/white; used = 3/4/wood (reject); Bad Stone sample 1600² orthographic | 500–2000×2000 | Open; use limit=250 |
+| **Musician's Friend** | `media.musiciansfriend.com/is/image/MMGS7/<slug>/<sku>-00-2000x2000.jpg` | Retailer | M234 = flat top-down; M169 = 3/4; white bg | 2000×2000 | HTML 200; image server open (`fmt=png-alpha` gives no alpha) |
+| **Andertons** | `cdn11.bigcommerce.com/s-4hc0jwsnnq/images/stencil/{original,1280x1280}/<pid>/<iid>/<name>.jpg`; sitemap `xmlsitemap.php?type=products&page=N` | Retailer | Some flat/top-down; some 3/4; named `-Top-1` variants for some; background white | 400–2500 (varies) | Search JS-rendered; sitemap works; some 404 |
+| **Guitar Village (WooCommerce)** | `guitarvillage.co.uk/wp-json/wc/store/v1/products?search=<q>&per_page=50`; `wp-content/uploads/...` | Retailer | Top-down slight perspective, white | 1080×1080 | Open; MXR only |
+| **ProAudioStar (Magento)** | `proaudiostar.com/pub/media/catalog/product/cache/<hash>/<x>/<y>/<hash>_<name>.jpg`; sitemap | Retailer | Slight-perspective top-down, light grey, faint shadow; Bad Stone 1215×984 | ~1215×984 | Open; hashed filenames |
+| **Guitar Sanctuary** | `cdn11.bigcommerce.com/s-bfprvr7x1v/...` | Retailer | Top-down but **opaque black bg** (alpha channel present, min α=255) | 386×386 | Open; low-res |
+| **Pedal Empire (Shopify)** | `pedalempire.com.au/products.json` | Retailer | Genuine transparent PNG/WebP but **angled** and low-res | 400–640 | Open; poor |
+| **Amazon (US/MX)** | product page → `m.media-amazon.com/images/I/<id>._AC_SL1500_.jpg`; bare `<id>.jpg` for larger | Marketplace | 1440/Carbon Copy main = flat-ish on white (owner-approved reference); not guaranteed; some high-angle | 1500–2500 | Open CDN; pages may block |
+| **Walmart** | `i5.walmartimages.com/seo/<slug>_<uuid>.<hash>.jpeg` | Marketplace | 1440 = flat top-down, near-white; limited pedal coverage | 1150×1280 (server upscale) | CDN 200; pages 307 blocked |
+| **Mercado Libre** | `http2.mlstatic.com/D_NQ_NP_<id>-<site><n>_<date>-O.webp` | Marketplace | 1440 = flat top-down, near-white; often ~500 px; pages/API blocked | 441×500 sample | CDN 200; pages account-verification |
+| **Reverb** | signed `rvb-img.reverb.com/.../quality=medium-high,height=1600,width=1600,fit=contain/<id>.jpg` | Community/marketplace | Mostly used-gear 3/4/scene; high coverage; signed URLs | up to 1600 | CDN 200; pages/API 403 |
+| **eBay** | `i.ebayimg.com/images/g/<hash>/s-l1600.jpg` | Community/marketplace | Mostly seller 3/4/scene; some near-top-down | 1500–1600 | CDN 200; listing/search pages 403 |
+| **Google Images** | `google.com/search?tbm=isch&q=...` | Discovery only | Blocked with “unusual traffic”/captcha from this network | — | Not usable without a browser/session |
+| **Bing Images** | `bing.com/images/search?q=...` in a real browser | Discovery only | Works in Playwright (~120 results); `a.iusc` `m` JSON has `murl`/`purl`; curl fallback is unreliable | — | Browser/pacing only |
+| **DuckDuckGo Images** | `duckduckgo.com/i.js?...&vqd=...` | Discovery only | Worked for ~5 queries, then returns a bot challenge; no reliable stable access | — | Rate-limited |
+
+**Blocked / unusable for now:** Sweetwater (403), Thomann (429), Guitar Center (403), zZounds (403), Gear4music (403), GuitarGear.com.mx (Cloudflare 403), Rich Tone (connection failure), Promenade (Store API disabled), Wayback (temporarily offline).
+
+**Revised discovery order:** MXR official `MAIN` → EHX official `_Front`/`-0` → Russo Music / Chicago Music Exchange / Musician's Friend / Andertons / Guitar Village (JSON/CDN) → Amazon/Walmart/Mercado Libre (marketplace candidates) → Reverb/eBay (community/coverage) → Bing Images (discovery only) → planner last resort → generated last.
+
+**Key conclusion:** MXR has a strong official flat-ish source (`MAIN` 1400); EHX official flat art exists for only ~36/266 products. For EHX 1440, Bad Stone and 2020 Tuner v1 the official galleries have no flat face view; use Russo/CME/retailer or planner. Marketplace images are candidates, not guaranteed flat; always gate the final 800 on the flatness/clean-alpha/dual-tone sheet and record the source page.
+
 ## Known gaps
 
 - **Vintage BOSS compacts** (AC-2, DC-2/3, DD-2/5, DF-2, DM-2/3, DSD-2, CE-1/2/2B/3,
