@@ -4,6 +4,7 @@ import { Stage as KonvaStage } from "react-konva";
 import { anchorIndexFor, cableEndKey } from "../lib/jackAnchor";
 import { useCableDrag as useCableDragState } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
+import { useFocus, useIsFramed } from "../state/focus";
 import { useHistory } from "../state/history";
 import { useReadOnly } from "../state/readOnly";
 import {
@@ -80,6 +81,10 @@ export function Stage() {
 	// Undo/redo depth (P3-04) mirrored for deterministic e2e assertions.
 	const undoDepth = useHistory((state) => state.past.length);
 	const redoDepth = useHistory((state) => state.future.length);
+	// Viewport focus (F-04) mirrored for deterministic e2e assertions.
+	const framed = useIsFramed();
+	const focusTarget = useFocus((state) => state.last?.target ?? "");
+	const focusBounds = useFocus((state) => state.last?.bounds ?? null);
 
 	// Debug/assertion hooks (like data-scale): board + item state mirrored onto
 	// the DOM so Playwright can assert store-level outcomes without pixels.
@@ -313,6 +318,13 @@ export function Stage() {
 			data-cable-preview={cablePreviewKey}
 			data-cable-target={cableTargetKey}
 			data-jack-anchors={jackAnchors}
+			data-framed={framed ? "true" : "false"}
+			data-focus-target={focusTarget}
+			data-focus-bounds={
+				focusBounds
+					? `${focusBounds.x.toFixed(2)},${focusBounds.y.toFixed(2)},${focusBounds.widthCm.toFixed(2)},${focusBounds.heightCm.toFixed(2)}`
+					: ""
+			}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage

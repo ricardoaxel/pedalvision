@@ -5,6 +5,7 @@ import { useIsMobile } from "../lib/useMobile";
 import { usePanelMetrics } from "../state/panel";
 import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
+import { FrameControl } from "./FrameControl";
 import { GridStepMenu } from "./GridStepMenu";
 import { ScaleBar } from "./ScaleBar";
 
@@ -62,6 +63,7 @@ export function ScaleReadout() {
 					view {Math.round(cmToDisplay(viewWidthCm, units))} ×{" "}
 					{Math.round(cmToDisplay(viewHeightCm, units))} {units}
 				</span>
+				<FrameControl />
 				<span className="scale-readout__sep" aria-hidden="true">
 					·
 				</span>

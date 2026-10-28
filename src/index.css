@@ -5419,6 +5419,58 @@ body {
 	color: var(--color-ink-muted);
 }
 
+/*
+ * F-04 "Scope Frame" (owner-approved 2026-10-28): one contextual view
+ * instrument in the Margin Rule strip. The framed tint is the witness for an
+ * instant jump (motion is F-05); no new tokens.
+ */
+.scale-readout__frame {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	min-height: 18px;
+	padding: 0 4px;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	color: var(--color-ink);
+	white-space: nowrap;
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.scale-readout__frame:hover {
+	color: var(--color-accent-ink);
+}
+
+.scale-readout__frame:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.scale-readout__frame[data-framed="true"] {
+	color: var(--color-accent-ink);
+	background-color: var(--color-accent-surface);
+	border-color: var(--color-accent-border);
+}
+
+.scale-readout__frame[aria-disabled="true"] {
+	color: var(--color-ink-muted);
+	cursor: default;
+}
+
+.scale-readout__frame[aria-disabled="true"]:hover {
+	color: var(--color-ink-muted);
+}
+
+.scale-readout__frame-label {
+	line-height: 1;
+}
+
 .scale-readout__grid {
 	display: inline-flex;
 	align-items: center;
@@ -5666,6 +5718,22 @@ body {
 	}
 }
 
+/* F-04: when the info rail narrows the desktop strip, the readout + frame
+ * control would collide with the centered true-length bar. Drop the bar at
+ * that width (the view/grid readout remains); the bar is still shown at the
+ * normal desktop widths and in the mobile two-row layout. */
+@media (min-width: 1024px) {
+	.scale-strip {
+		container-type: inline-size;
+	}
+
+	@container (max-width: 999px) {
+		.scale-bar {
+			display: none;
+		}
+	}
+}
+
 @media (max-width: 1023px) {
 	.scale-strip {
 		bottom: calc(
@@ -5702,6 +5770,13 @@ body {
 		min-width: 44px;
 		min-height: 36px;
 		justify-content: center;
+	}
+
+	.scale-readout__frame {
+		justify-content: center;
+		min-width: 44px;
+		min-height: 44px;
+		padding: 0 10px;
 	}
 
 	.grid-step__menu {

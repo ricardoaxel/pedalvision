@@ -1,0 +1,318 @@
+import { expect, type Page, test } from "@playwright/test";
+import { addBoard, addPedal } from "./picker.ts";
+import { board, shareHash } from "./share.ts";
+
+/**
+ * F-04 — viewport focus ("Scope Frame").
+ *
+ * Viewport state is deliberately not persisted, so the assertions read the
+ * stage transform (`data-scale` / `data-x` / `data-y`) and the focus bounds
+ * (`data-focus-bounds`, world cm) rather than pixels. Sheet content is placed
+ * through the real picker flows; the board focus path is asserted against the
+ * board's own footprint, and the used-area path against the full scene bounds.
+ */
+
+const PX_PER_CM = 4;
+
+async function stageBox(page: Page) {
+	const box = await page.getByTestId("stage").boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	return box;
+}
+
+async function stageTransform(page: Page) {
+	const stage = page.getByTestId("stage");
+	return {
+		scale: Number(await stage.getAttribute("data-scale")) || 1,
+		x: Number(await stage.getAttribute("data-x")) || 0,
+		y: Number(await stage.getAttribute("data-y")) || 0,
+	};
+}
+
+/** Mirror of `focusInsets` for a no-info-sheet state. */
+async function expectedSafeCenter(page: Page) {
+	const box = await stageBox(page);
+	const mobile = (page.viewportSize()?.width ?? 1280) < 1024;
+	const top = Math.min(72, Math.max(0, box.height * 0.15));
+	const side = mobile ? 16 : 24;
+	const bottom = mobile ? Math.max(0, Math.min(150, box.height * 0.45)) : 24;
+	return {
+		x: box.x + side + (box.width - side * 2) / 2,
+		y: box.y + top + (box.height - top - bottom) / 2,
+	};
+}
+
+/** The first/only board's visible centre in screen px (rotation-aware). */
+async function boardCentreScreen(page: Page, index = 0) {
+	const stage = page.getByTestId("stage");
+	const box = await stageBox(page);
+	const { scale, x: vx, y: vy } = await stageTransform(page);
+	const [widthCm, heightCm] = (
+		((await stage.getAttribute("data-board-sizes")) ?? "").split(",")[index] ??
+		""
+	)
+		.split("x")
+		.map(Number);
+	const [x, y] = (
+		((await stage.getAttribute("data-positions")) ?? "").split(";")[index] ?? ""
+	)
+		.split(",")
+		.map(Number);
+	const rotationDeg =
+		Number(
+			((await stage.getAttribute("data-rotations")) ?? "").split(",")[index],
+		) || 0;
+	const rad = (rotationDeg * Math.PI) / 180;
+	const centreX =
+		x + Math.cos(rad) * (widthCm / 2) - Math.sin(rad) * (heightCm / 2);
+	const centreY =
+		y + Math.sin(rad) * (widthCm / 2) + Math.cos(rad) * (heightCm / 2);
+	return {
+		x: box.x + centreX * PX_PER_CM * scale + vx,
+		y: box.y + centreY * PX_PER_CM * scale + vy,
+	};
+}
+
+async function focusBounds(page: Page) {
+	const raw = await page.getByTestId("stage").getAttribute("data-focus-bounds");
+	if (!raw) throw new Error("no focus bounds");
+	const [x, y, widthCm, heightCm] = raw.split(",").map(Number);
+	return { x, y, widthCm, heightCm };
+}
+
+async function focusBoundsCentreScreen(page: Page) {
+	const box = await stageBox(page);
+	const { scale, x: vx, y: vy } = await stageTransform(page);
+	const bounds = await focusBounds(page);
+	return {
+		x: box.x + (bounds.x + bounds.widthCm / 2) * PX_PER_CM * scale + vx,
+		y: box.y + (bounds.y + bounds.heightCm / 2) * PX_PER_CM * scale + vy,
+	};
+}
+
+async function expectFocusedInsideSafeArea(page: Page) {
+	const box = await stageBox(page);
+	const mobile = (page.viewportSize()?.width ?? 1280) < 1024;
+	const top = Math.min(72, Math.max(0, box.height * 0.15));
+	const side = mobile ? 16 : 24;
+	const bottom = mobile ? Math.max(0, Math.min(150, box.height * 0.45)) : 24;
+	const { scale, x: vx, y: vy } = await stageTransform(page);
+	const bounds = await focusBounds(page);
+	const left = box.x + bounds.x * PX_PER_CM * scale + vx;
+	const right = box.x + (bounds.x + bounds.widthCm) * PX_PER_CM * scale + vx;
+	const topPx = box.y + bounds.y * PX_PER_CM * scale + vy;
+	const bottomPx =
+		box.y + (bounds.y + bounds.heightCm) * PX_PER_CM * scale + vy;
+	expect(left).toBeGreaterThanOrEqual(box.x + side - 2);
+	expect(right).toBeLessThanOrEqual(box.x + box.width - side + 2);
+	expect(topPx).toBeGreaterThanOrEqual(box.y + top - 2);
+	expect(bottomPx).toBeLessThanOrEqual(box.y + box.height - bottom + 2);
+}
+
+async function expectAtSafeCentre(page: Page, point: { x: number; y: number }) {
+	const safe = await expectedSafeCenter(page);
+	expect(Math.abs(point.x - safe.x)).toBeLessThan(2);
+	expect(Math.abs(point.y - safe.y)).toBeLessThan(2);
+}
+
+/** Drag empty canvas (away from the scene plate and centre content). */
+async function panBy(page: Page, dx: number, dy: number) {
+	const box = await stageBox(page);
+	// The left gutter is outside the focus safe rect and every top chrome
+	// cluster (scene plate top-left, toolbar top-right).
+	const startX = box.x + 4;
+	const startY = box.y + box.height / 2;
+	await page.mouse.move(startX, startY);
+	await page.mouse.down();
+	await page.mouse.move(startX + dx, startY + dy, { steps: 6 });
+	await page.mouse.up();
+}
+
+async function stageSnapshot(page: Page) {
+	const stage = page.getByTestId("stage");
+	return {
+		boards: await stage.getAttribute("data-boards"),
+		items: await stage.getAttribute("data-items"),
+		cables: await stage.getAttribute("data-cables"),
+		undo: await stage.getAttribute("data-undo-depth"),
+		redo: await stage.getAttribute("data-redo-depth"),
+		hash: await page.evaluate(() => window.location.hash),
+	};
+}
+
+async function clickEmpty(page: Page) {
+	const box = await stageBox(page);
+	// The left gutter is outside the focus safe rect and every top chrome
+	// cluster, so it stays empty even after a board fills the drawing area.
+	await page.mouse.click(box.x + 4, box.y + box.height / 2);
+}
+
+async function openScenes(page: Page) {
+	await page.getByTestId("scene-open").click();
+	await expect(page.getByTestId("scene-panel")).toBeVisible();
+}
+
+async function closeScenes(page: Page) {
+	await page.getByTestId("scene-close").click();
+	await expect(page.getByTestId("scene-panel")).toHaveCount(0);
+}
+
+async function newScene(page: Page) {
+	await openScenes(page);
+	await page.getByTestId("scene-new").click();
+	await closeScenes(page);
+}
+
+async function switchSceneAt(page: Page, index: number) {
+	await openScenes(page);
+	await page.locator("[data-scene-open]").nth(index).click();
+	await closeScenes(page);
+}
+
+test("an empty sheet has a disabled Scope Frame control and does not move", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	const trigger = page.getByTestId("frame-trigger");
+	await expect(trigger).toBeVisible();
+	await expect(trigger).toHaveAttribute("data-target", "scene");
+	await expect(trigger).toHaveAttribute("aria-disabled", "true");
+	await expect(trigger).toHaveAttribute("title", "Nothing to frame yet");
+
+	const before = await stageTransform(page);
+	await trigger.click({ force: true });
+	const after = await stageTransform(page);
+	expect(after).toEqual(before);
+	await expect(stage).toHaveAttribute("data-framed", "false");
+});
+
+test("frames the used area after a pan/zoom, via the control and F", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await clickEmpty(page);
+
+	await panBy(page, 140, 90);
+	await page.mouse.wheel(0, 300);
+	const stage = page.getByTestId("stage");
+	await expect(stage).toHaveAttribute("data-framed", "false");
+
+	const trigger = page.getByTestId("frame-trigger");
+	await expect(trigger).toHaveAttribute("data-target", "scene");
+	const beforeFocus = await stageSnapshot(page);
+	await trigger.click();
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+	await expectAtSafeCentre(page, await focusBoundsCentreScreen(page));
+	await expectFocusedInsideSafeArea(page);
+	// View-only: focus never changes the scene, undo history or share hash.
+	expect(await stageSnapshot(page)).toEqual(beforeFocus);
+
+	// Any pan clears the framed tint; `F` re-frames the same used area.
+	await panBy(page, -80, -60);
+	await expect(stage).toHaveAttribute("data-framed", "false");
+	await page.keyboard.press("f");
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	await expectAtSafeCentre(page, await focusBoundsCentreScreen(page));
+});
+
+test("frames only the selected board, not the whole used area", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	// A loose pedal is placed away from the board, so board focus and used-area
+	// focus have visibly different bounds.
+	await clickEmpty(page);
+	await panBy(page, 160, 120);
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await clickEmpty(page);
+
+	const stage = page.getByTestId("stage");
+	const boardPoint = await boardCentreScreen(page);
+	await page.mouse.click(boardPoint.x, boardPoint.y);
+	await expect(stage).toHaveAttribute("data-selected-kind", "board");
+
+	const trigger = page.getByTestId("frame-trigger");
+	await expect(trigger).toHaveAttribute("data-target", "board");
+	await trigger.click();
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	await expect(stage).toHaveAttribute("data-focus-target", "board");
+
+	// Board focus must use the board's own footprint, not the loose pedal.
+	const bounds = await focusBounds(page);
+	const [widthCm, heightCm] = (
+		((await stage.getAttribute("data-board-sizes")) ?? "").split(",")[0] ?? ""
+	)
+		.split("x")
+		.map(Number);
+	expect(bounds.widthCm).toBeCloseTo(widthCm, 1);
+	expect(bounds.heightCm).toBeCloseTo(heightCm, 1);
+	await expectAtSafeCentre(page, await focusBoundsCentreScreen(page));
+	await expectFocusedInsideSafeArea(page);
+
+	// Deselecting returns the same control to the used area.
+	await clickEmpty(page);
+	await expect(trigger).toHaveAttribute("data-target", "scene");
+});
+
+test("switching scenes frames each incoming document (no stale x/y)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+
+	await addBoard(page, "boss-bcb-1000");
+	await panBy(page, 150, 100);
+
+	await newScene(page);
+	await panBy(page, -200, -150);
+	await addBoard(page, "boss-bcb-1000");
+
+	await switchSceneAt(page, 0);
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+	await expectAtSafeCentre(page, await boardCentreScreen(page));
+	await expectFocusedInsideSafeArea(page);
+	const first = await stageTransform(page);
+
+	await switchSceneAt(page, 1);
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	await expectAtSafeCentre(page, await boardCentreScreen(page));
+	await expectFocusedInsideSafeArea(page);
+	const second = await stageTransform(page);
+
+	// Different world positions must produce different stage x/y offsets.
+	expect(
+		Math.abs(second.x - first.x) + Math.abs(second.y - first.y),
+	).toBeGreaterThan(20);
+});
+
+test("a read-only share opens framed and can be re-framed", async ({
+	page,
+}) => {
+	const hash = shareHash({
+		boards: [board("shared-board", { x: 300, y: 220 })],
+		items: [],
+	});
+	await page.goto(`/?share=1${hash}`);
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await expect(page.locator("main")).toHaveAttribute("data-readonly", "true");
+
+	const trigger = page.getByTestId("frame-trigger");
+	await expect(trigger).not.toHaveAttribute("aria-disabled", "true");
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	await expect(stage).toHaveAttribute("data-focus-target", "scene");
+	await expectAtSafeCentre(page, await boardCentreScreen(page));
+	await expectFocusedInsideSafeArea(page);
+
+	await trigger.click();
+	await expect(stage).toHaveAttribute("data-framed", "true");
+	await expectAtSafeCentre(page, await focusBoundsCentreScreen(page));
+});
