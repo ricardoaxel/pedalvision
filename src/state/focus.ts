@@ -152,9 +152,6 @@ export function focusViewport(
 	options: FocusViewportOptions = {},
 ): FocusSnapshot | null {
 	const scene = useScene.getState();
-	const size = currentStageSize();
-	if (size.width <= 0 || size.height <= 0) return null;
-
 	const selectedBoardUid = selectSelectedBoardUid(useSelection.getState());
 	const requested = options.target ?? "auto";
 	const explicitBoardUid = options.boardUid ?? null;
@@ -170,11 +167,16 @@ export function focusViewport(
 	if (target === "board" && !targetUid) return null;
 
 	// A scene target unlocks; a board target re-pins a held lock to that board.
+	// Do this before the size guard: a document load must always release a pin,
+	// even if the stage has not been measured yet.
 	const focusStore = useFocus.getState();
 	if (target === "scene") focusStore.unlockCamera();
 	else if (targetUid && focusStore.lockedBoardUid) {
 		focusStore.lockCamera(targetUid);
 	}
+
+	const size = currentStageSize();
+	if (size.width <= 0 || size.height <= 0) return null;
 
 	const bounds =
 		target === "board" && targetUid
@@ -273,9 +275,9 @@ export function useIsFramed(): boolean {
 	const customPedals = useScene((state) => state.customPedals);
 	const endpoints = useScene((state) => state.endpoints);
 	const cables = useScene((state) => state.cables);
-	// Subscribe to the stage size so a rail push re-evaluates the tint.
-	useViewport((state) => state.size);
+	const size = useViewport((state) => state.size);
 	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
+	const scaleStripHeight = usePanelMetrics((state) => state.scaleStripHeight);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 
 	if (!last) return false;
@@ -293,11 +295,10 @@ export function useIsFramed(): boolean {
 	}
 	// A resize / info-rail push / strip or mobile peek change moves the safe
 	// rect; the old focus is no longer the fit the user asked for.
-	const size = currentStageSize();
 	if (last.size.width !== size.width || last.size.height !== size.height) {
 		return false;
 	}
-	if (Math.abs(last.scaleStripHeight - currentScaleStripHeight()) > 0.5) {
+	if (Math.abs(last.scaleStripHeight - scaleStripHeight) > 0.5) {
 		return false;
 	}
 	if (Math.abs(last.sheetHeight - sheetHeight) > 0.5) return false;
@@ -384,22 +385,21 @@ export function useCameraBoardUid(): string | null {
 	const scale = useViewport((state) => state.scale);
 	const x = useViewport((state) => state.x);
 	const y = useViewport((state) => state.y);
-	useViewport((state) => state.size);
+	const size = useViewport((state) => state.size);
 	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
+	const scaleStripHeight = usePanelMetrics((state) => state.scaleStripHeight);
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
 	const endpoints = useScene((state) => state.endpoints);
 	const cables = useScene((state) => state.cables);
-	const strip = currentScaleStripHeight();
-	const mobile = isMobileViewport();
 
 	return resolveCameraBoardUid({
 		last,
 		lockedBoardUid,
 		viewport: { scale, x, y },
-		size: currentStageSize(),
-		scaleStripHeight: strip > 0 ? strip : mobile ? 114 : 0,
+		size,
+		scaleStripHeight,
 		sheetHeight,
 		scene: { boards, items, customPedals, endpoints, cables },
 	});
@@ -439,10 +439,11 @@ export function useCameraLockRefit(): void {
 	);
 	const size = useViewport((state) => state.size);
 	const sheetHeight = usePanelMetrics((state) => state.sheetHeight);
+	const scaleStripHeight = usePanelMetrics((state) => state.scaleStripHeight);
 
-	// The sheet height changes the safe rect; focusViewport reads it from the
-	// store, so the linter cannot see the dependency.
-	// biome-ignore lint/correctness/useExhaustiveDependencies: re-fit on a mobile peek/rail layout change
+	// The sheet/strip heights change the safe rect; focusViewport reads them
+	// from the store, so the linter cannot see the dependencies.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: re-fit on a mobile peek/strip/rail layout change
 	useLayoutEffect(() => {
 		if (!lockedBoardUid) return;
 		if (!lockedBoardExists) {
@@ -451,5 +452,12 @@ export function useCameraLockRefit(): void {
 		}
 		if (size.width <= 0 || size.height <= 0) return;
 		focusViewport({ target: "board", boardUid: lockedBoardUid });
-	}, [lockedBoardUid, lockedBoardExists, sheetHeight, size.height, size.width]);
+	}, [
+		lockedBoardUid,
+		lockedBoardExists,
+		scaleStripHeight,
+		sheetHeight,
+		size.height,
+		size.width,
+	]);
 }

@@ -135,10 +135,10 @@ async function expectAtSafeCentre(page: Page, point: { x: number; y: number }) {
 /** Drag empty canvas (away from the scene plate and centre content). */
 async function panBy(page: Page, dx: number, dy: number) {
 	const box = await stageBox(page);
-	// The left gutter is outside the focus safe rect and every top chrome
-	// cluster (scene plate top-left, toolbar top-right).
+	// Above the focus safe rect and left of the scene plate, so a framed
+	// neighbour board can never be the drag target.
 	const startX = box.x + 4;
-	const startY = box.y + box.height / 2;
+	const startY = box.y + 40;
 	await page.mouse.move(startX, startY);
 	await page.mouse.down();
 	await page.mouse.move(startX + dx, startY + dy, { steps: 6 });
@@ -503,12 +503,16 @@ test("the camera lock blocks pan/zoom, survives pedal selection, and unlocks on 
 		"true",
 	);
 	const locked = await stageTransform(page);
+	const positionsBefore = await stage.getAttribute("data-positions");
 
-	// Wheel + empty-drag pan are ignored while the camera is pinned.
+	// Wheel + empty-drag pan are ignored while the camera is pinned; the drag
+	// must not land on a neighbour board either.
 	await page.mouse.move(640, 300);
 	await page.mouse.wheel(0, -300);
 	await panBy(page, 140, 90);
 	expect(await stageTransform(page)).toEqual(locked);
+	expect(await stage.getAttribute("data-positions")).toBe(positionsBefore);
+	await expect(stage).toHaveAttribute("data-lifted-item", "");
 
 	// Selecting a pedal on the pinned board keeps the lock and the board view.
 	await addPedal(page, "boss-bd-2-blues-driver");
@@ -562,6 +566,49 @@ test("the camera lock blocks pan/zoom, survives pedal selection, and unlocks on 
 		"aria-pressed",
 		"false",
 	);
+});
+
+test("L toggles the camera lock and dock arrow keys page", async ({ page }) => {
+	await page.goto("/");
+	await twoBoards(page);
+	await doubleClickBoard(page, 0);
+	await waitForDockIndex(page, 0);
+
+	await page.keyboard.press("l");
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	await page.keyboard.press("l");
+	await expect(page.getByTestId("board-lock")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+
+	await page.getByTestId("board-next").focus();
+	await page.keyboard.press("ArrowRight");
+	await waitForDockIndex(page, 1);
+	await page.keyboard.press("ArrowLeft");
+	await waitForDockIndex(page, 0);
+});
+
+test("double-click an attached pedal never toggles its board", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await clickEmpty(page);
+	const stage = page.getByTestId("stage");
+	const pedal = await firstItemScreenCentre(page, {
+		widthCm: 7.3,
+		heightCm: 13.02,
+	});
+	const before = await stageTransform(page);
+	await page.mouse.dblclick(pedal.x, pedal.y);
+	expect(await stageTransform(page)).toEqual(before);
+	await expect(stage).toHaveAttribute("data-focus-target", "");
+	await expect(stage).toHaveAttribute("data-selected-board", "");
 });
 
 test("a read-only share opens framed and can be re-framed", async ({

@@ -4,7 +4,7 @@ import { Stage as KonvaStage } from "react-konva";
 import { anchorIndexFor, cableEndKey } from "../lib/jackAnchor";
 import { useCableDrag as useCableDragState } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
-import { useFocus, useIsFramed } from "../state/focus";
+import { isCameraLocked, useFocus, useIsFramed } from "../state/focus";
 import { useHistory } from "../state/history";
 import { useReadOnly } from "../state/readOnly";
 import {
@@ -42,6 +42,15 @@ interface Size {
 	height: number;
 }
 
+/** Event client point for the Stage's empty-click unlock. */
+function eventClientPoint(evt: MouseEvent | TouchEvent): Point {
+	if ("changedTouches" in evt) {
+		const touch = evt.changedTouches[0] ?? evt.touches[0];
+		return touch ? { x: touch.clientX, y: touch.clientY } : { x: 0, y: 0 };
+	}
+	return { x: evt.clientX, y: evt.clientY };
+}
+
 /**
  * The canvas host: a Konva `Stage` that fills its container and owns the
  * viewport (pan/zoom) as a stage transform (design.md §Canvas architecture).
@@ -54,6 +63,9 @@ interface Size {
 export function Stage() {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const stageRef = useRef<Konva.Stage>(null);
+	// A locked camera only releases on a genuine empty-canvas *click*; a drag
+	// must not silently unlock it (F-04).
+	const lockClickStart = useRef<Point | null>(null);
 	const [size, setSize] = useState<Size>({ width: 0, height: 0 });
 
 	const scale = useViewport((state) => state.scale);
@@ -338,15 +350,42 @@ export function Stage() {
 					scaleX={scale}
 					scaleY={scale}
 					// Tapping empty space clears the selection (Konva target ===
-					// stage means no node was hit).
+					// stage means no node was hit). While the camera is locked an
+					// empty drag keeps the pin; only a click (no movement) releases it.
 					onMouseDown={(event) => {
-						if (event.target === event.target.getStage()) {
+						if (event.target !== event.target.getStage()) return;
+						if (isCameraLocked()) {
+							lockClickStart.current = eventClientPoint(event.evt);
+							return;
+						}
+						clearSelection();
+					}}
+					onTouchStart={(event) => {
+						if (event.target !== event.target.getStage()) return;
+						if (isCameraLocked()) {
+							lockClickStart.current = eventClientPoint(event.evt);
+							return;
+						}
+						clearSelection();
+					}}
+					onMouseUp={(event) => {
+						if (event.target !== event.target.getStage()) return;
+						const start = lockClickStart.current;
+						lockClickStart.current = null;
+						if (!start) return;
+						const end = eventClientPoint(event.evt);
+						if (Math.hypot(end.x - start.x, end.y - start.y) < 4) {
 							clearSelection();
 							useFocus.getState().unlockCamera();
 						}
 					}}
-					onTouchStart={(event) => {
-						if (event.target === event.target.getStage()) {
+					onTouchEnd={(event) => {
+						if (event.target !== event.target.getStage()) return;
+						const start = lockClickStart.current;
+						lockClickStart.current = null;
+						if (!start) return;
+						const end = eventClientPoint(event.evt);
+						if (Math.hypot(end.x - start.x, end.y - start.y) < 4) {
 							clearSelection();
 							useFocus.getState().unlockCamera();
 						}

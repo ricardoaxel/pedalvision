@@ -281,16 +281,16 @@ Read only these pointed files/sections; do not read whole docs.
 - `pnpm typecheck` clean.
 - `pnpm test` **893 passed** (98 files), including 16 `viewportFocus` + 5
   `focus` camera-resolver tests.
-- `pnpm build` clean. Main JS **309.59 → 313.02 kB gzip** (**+3.43 kB**), CSS
+- `pnpm build` clean. Main JS **309.59 → 313.23 kB gzip** (**+3.64 kB**), CSS
   **13.05 → 13.37 kB gzip** (**+0.32 kB**). The dock amendment adds ~1.5 kB
   gzip over the original F-04; the owner accepted the feature over the soft
   budget.
-- **E2E:** `viewport-focus.spec.ts` **22/22** (desktop + mobile); the seven-spec
+- **E2E:** `viewport-focus.spec.ts` **26/26** (desktop + mobile); the seven-spec
   touched suite (`measurement-hud`, `scenes`, `smoke`, `share`, `first-run`,
-  `export`) **118 passed / 5 skipped** (1 worker). A single `smoke` case flaked
-  once under 4-worker parallelism and passed alone + in the serial run (no
-  product change). Deferred to post-merge: `selection.spec.ts`,
-  `touch.spec.ts`, `info-panel.spec.ts`.
+  `export`) **121 passed / 5 skipped** (1 worker); one `share` damaged-link test
+  flaked and passed 2/2 alone (no product change). A single `smoke` case flaked
+  once under 4-worker parallelism and passed alone + serial. Deferred to
+  post-merge: `selection.spec.ts`, `touch.spec.ts`, `info-panel.spec.ts`.
 - **Performance (1440×900, fixed board + pedal, base vs branch):** 1 s
   wheel-zoom **61–62 fps → 62 fps**; JS heap **10.1 → 10.7 MB** (+0.6 MB for the
   dock/state); share link **358–360 → 359 chars**; all-content Standard PNG
@@ -312,8 +312,18 @@ Read only these pointed files/sections; do not read whole docs.
   (2) removed the unused `minScale` option; (3) custom-pedal edits now clear
   the framed tint; (4) removed the dead `FOCUS_LOAD_MAX_SCALE` import; (5)
   tightened the centre tolerance to <1 px and anchored the safe rect to the
-  real `.app-toolbar`/`.scale-strip` DOM. No second review pass (low-risk
-  feature; the green test suite is the re-check).
+  real `.app-toolbar`/`.scale-strip` DOM.
+- **Code review pass 2 (same reviewer session, light, dock amendment):**
+  **changes-required** with 5 findings, all fixed: (1) the lock’s pan E2E was
+  actually dragging a neighbour board — now drags the top-left gutter and
+  asserts positions/lift unchanged; (2) render-path `getBoundingClientRect`
+  reads replaced with the measured `scaleStripHeight` panel metric + store
+  size; (3) double-click seed uses Konva’s 400 ms window and handles missing
+  mouse `detail`; (4) scene-load unlock moved above the size guard and the
+  locked refit depends on the strip height; (5) tests added for `L`, dock
+  arrows and attached-pedal double-click. The test insight also split an empty
+  click (unlock) from an empty drag (keep the lock) in `Stage`. No third pass
+  (cap 2; the green suite is the re-check).
 
 ## Notes
 

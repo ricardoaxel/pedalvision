@@ -35,6 +35,9 @@ import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useImage } from "./useImage";
 
+/** Konva's default double-click window; shared by mouse and touch seeds. */
+const DOUBLE_CLICK_WINDOW_MS = 400;
+
 function clientPoint(evt: MouseEvent | TouchEvent): { x: number; y: number } {
 	if ("touches" in evt) {
 		const touch = evt.changedTouches[0] ?? evt.touches[0];
@@ -297,9 +300,18 @@ export function BoardNode({
 			draggable={!navigating && !isReadOnly()}
 			onMouseDown={(event) => {
 				event.cancelBubble = true;
-				if (event.evt.detail === 1) {
+				const now = Date.now();
+				const seed = doubleClickSeed.current;
+				// detail === 1 is the first click; some environments report 0.
+				// Keep the pre-first-click selection for the second click inside
+				// the double-click window; a later press starts a fresh seed.
+				if (
+					event.evt.detail === 1 ||
+					!seed ||
+					now - seed.at > DOUBLE_CLICK_WINDOW_MS
+				) {
 					doubleClickSeed.current = {
-						at: Date.now(),
+						at: now,
 						wasFocused: isSoleBoardSelection(),
 					};
 				}
@@ -316,7 +328,7 @@ export function BoardNode({
 				event.cancelBubble = true;
 				const now = Date.now();
 				const seed = doubleClickSeed.current;
-				if (!seed || now - seed.at > 500) {
+				if (!seed || now - seed.at > DOUBLE_CLICK_WINDOW_MS) {
 					doubleClickSeed.current = {
 						at: now,
 						wasFocused: isSoleBoardSelection(),
