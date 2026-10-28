@@ -328,6 +328,10 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	// JHS
 	"jhs-1966-series-bender": ["fuzz"],
 	"jhs-1966-series-italy": ["fuzz"],
+	// JHS 424 Gain Stage: official page "PREAMP / DISTORTION / OVERDRIVE";
+	// JHS 808: official page describes it as a TS808-style overdrive.
+	"jhs-424-gain-stage": ["preamp", "overdrive"],
+	"jhs-808": ["overdrive"],
 
 	// TC Electronic
 	"tc-electronic-ampworx-550": ["preamp", "amp-modeler", "cab-sim"],

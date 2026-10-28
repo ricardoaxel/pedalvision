@@ -1,0 +1,4231 @@
+[
+  {
+    "id": "jhs-3-series-bit-crusher",
+    "brand": "JHS",
+    "name": "3 Series Bit Crusher",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "bitcrusher"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official manual/product text shows the connector face for this model; edges omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Crush, Sample Rate, Filter plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Bit Crusher — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Crush",
+        "Sample Rate",
+        "Filter"
+      ],
+      "toggle": "Type: down = 2nd-order low-pass, up = swept high-pass + low-pass",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-bit-crusher",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-BitCrusher-Front.png?v=1779893287",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-BitCrusher-Front.png?v=1779893287",
+        "sourcePage": "https://jhspedals.info/products/3-series-bit-crusher",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-BitCrusher-Angle.png?v=1779893287",
+        "sourcePage": "https://jhspedals.info/products/3-series-bit-crusher",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-bit-crusher",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-chorus",
+    "brand": "JHS",
+    "name": "3 Series Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_CHORUS_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 70 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Rate, Depth plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Chorus — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Rate",
+        "Depth"
+      ],
+      "toggle": "Vibe: up removes the dry signal for true pitch vibrato",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-chorus",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_CHORUS_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Chorus-front.png?v=1698427083",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Chorus-front.png?v=1698427083",
+        "sourcePage": "https://jhspedals.info/products/3-series-chorus",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Chorus-Angle.png?v=1698427083",
+        "sourcePage": "https://jhspedals.info/products/3-series-chorus",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-chorus",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-compressor",
+    "brand": "JHS",
+    "name": "3 Series Compressor",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_COMPRESSOR_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 8 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Attack, Sustain plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Compressor — three controls and one toggle; 9V DC center-negative, 8 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Attack",
+        "Sustain"
+      ],
+      "toggle": "Bright: up increases overall brightness",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-compressor",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_COMPRESSOR_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Compressor-front.png?v=1698427156",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Compressor-front.png?v=1698427156",
+        "sourcePage": "https://jhspedals.info/products/3-series-compressor",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Compressor-Angle.png?v=1698427156",
+        "sourcePage": "https://jhspedals.info/products/3-series-compressor",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-compressor",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-delay",
+    "brand": "JHS",
+    "name": "3 Series Delay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_DELAY_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 71,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 71 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Mix, Time, Repeats plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Delay — three controls and one toggle; 9V DC center-negative, 71 mA.",
+    "extra": {
+      "controls": [
+        "Mix",
+        "Time",
+        "Repeats"
+      ],
+      "toggle": "Type: down = analog-voiced, up = digital/clean",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_DELAY_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Delay-front.png?v=1698427313",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Delay-front.png?v=1698427313",
+        "sourcePage": "https://jhspedals.info/products/3-series-delay",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Delay-Angle.png?v=1698427313",
+        "sourcePage": "https://jhspedals.info/products/3-series-delay",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-delay",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-distortion",
+    "brand": "JHS",
+    "name": "3 Series Distortion",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_DISTORTION_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 9 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Filter, Distort plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Distortion — three controls and one toggle; 9V DC center-negative, 9 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Filter",
+        "Distort"
+      ],
+      "toggle": "Gain: down/up selects two gain/clipping types",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-distortion",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_DISTORTION_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Distortion-front.png?v=1698427388",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Distortion-front.png?v=1698427388",
+        "sourcePage": "https://jhspedals.info/products/3-series-distortion",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Distortion-Angle.png?v=1698427388",
+        "sourcePage": "https://jhspedals.info/products/3-series-distortion",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-distortion",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-flanger",
+    "brand": "JHS",
+    "name": "3 Series Flanger",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "flanger"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_FLANGER_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 70 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Blend, Intensity, Rate plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Flanger — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "extra": {
+      "controls": [
+        "Blend",
+        "Intensity",
+        "Rate"
+      ],
+      "toggle": "Tape: up adds tape-like zero-through flanging",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-flanger",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_FLANGER_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Flanger-Front.png?v=1698426709",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Flanger-Front.png?v=1698426709",
+        "sourcePage": "https://jhspedals.info/products/3-series-flanger",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Flanger-Angle.png?v=1698426709",
+        "sourcePage": "https://jhspedals.info/products/3-series-flanger",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-flanger",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-fuzz",
+    "brand": "JHS",
+    "name": "3 Series Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_FUZZ_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 9 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Bias, Fuzz plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Fuzz — three controls and one toggle; 9V DC center-negative, 9 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Bias",
+        "Fuzz"
+      ],
+      "toggle": "Fat: up adds a bass boost",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-fuzz",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_FUZZ_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Fuzz-front.png?v=1698427447",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Fuzz-front.png?v=1698427447",
+        "sourcePage": "https://jhspedals.info/products/3-series-fuzz",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Fuzz-Angle.png?v=1698427447",
+        "sourcePage": "https://jhspedals.info/products/3-series-fuzz",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-fuzz",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-glitch-delay",
+    "brand": "JHS",
+    "name": "3 Series Glitch Delay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official manual/product text shows the connector face for this model; edges omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Glitch, Time, Repeats plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Glitch Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Glitch",
+        "Time",
+        "Repeats"
+      ],
+      "toggle": "Mix: down = 35%, up = 80% delay level",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-glitch-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-GlitchDelay-Front.png?v=1779893315",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-GlitchDelay-Front.png?v=1779893315",
+        "sourcePage": "https://jhspedals.info/products/3-series-glitch-delay",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-GlitchDelay-Angle.png?v=1779893315",
+        "sourcePage": "https://jhspedals.info/products/3-series-glitch-delay",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-glitch-delay",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-hall-reverb",
+    "brand": "JHS",
+    "name": "3 Series Hall Reverb",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_HALL_REVERB_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 70 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Verb, Decay, Pre-Delay plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Hall Reverb — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "extra": {
+      "controls": [
+        "Verb",
+        "Decay",
+        "Pre-Delay"
+      ],
+      "toggle": "Modulate: up adds movement to the reverb decay",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-hall-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_HALL_REVERB_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-HallReverb-Front.png?v=1698426814",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-HallReverb-Front.png?v=1698426814",
+        "sourcePage": "https://jhspedals.info/products/3-series-hall-reverb",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-HallReverb-Angle.png?v=1698426814",
+        "sourcePage": "https://jhspedals.info/products/3-series-hall-reverb",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-hall-reverb",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-harmonic-trem",
+    "brand": "JHS",
+    "name": "3 Series Harmonic Trem",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "tremolo"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official manual/product text shows the connector face for this model; edges omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Speed, Depth plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Harmonic Trem — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Speed",
+        "Depth"
+      ],
+      "toggle": "Mode: up = amp-style tremolo, down = harmonic tremolo",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-harmonic-trem",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Harmonic-Trem-Front.png?v=1698426927",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Harmonic-Trem-Front.png?v=1698426927",
+        "sourcePage": "https://jhspedals.info/products/3-series-harmonic-trem",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Harmonic-Trem-Angle.png?v=1698426927",
+        "sourcePage": "https://jhspedals.info/products/3-series-harmonic-trem",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-harmonic-trem",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-octave-reverb",
+    "brand": "JHS",
+    "name": "3 Series Octave Reverb",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "octave",
+      "reverb"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official manual/product text shows the connector face for this model; edges omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Verb, Octave, Decay plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Octave Reverb — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Verb",
+        "Octave",
+        "Decay"
+      ],
+      "toggle": "Octave: up layers upper octave, down layers lower octave",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-octave-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Octave-Reverb-Front.png?v=1698427649",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Octave-Reverb-Front.png?v=1698427649",
+        "sourcePage": "https://jhspedals.info/products/3-series-octave-reverb",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Octave-Reverb-Angle.png?v=1698427649",
+        "sourcePage": "https://jhspedals.info/products/3-series-octave-reverb",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-octave-reverb",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-oil-can-delay",
+    "brand": "JHS",
+    "name": "3 Series Oil Can Delay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_OIL_CAN_DELAY_EN_DE_FR.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Mix, Speed, Feedback plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Oil Can Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Mix",
+        "Speed",
+        "Feedback"
+      ],
+      "toggle": "+/-: selects modulation intensity",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_OIL_CAN_DELAY_EN_DE_FR.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+        "sourcePage": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+        "sourcePage": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-oil-can-delay",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-overdrive",
+    "brand": "JHS",
+    "name": "3 Series Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_OVERDRIVE_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 12,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 12 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Body, Drive plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Overdrive — three controls and one toggle; 9V DC center-negative, 12 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Body",
+        "Drive"
+      ],
+      "toggle": "Gain: down/up selects two gain/clipping types",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-overdrive",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_OVERDRIVE_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Overdrive-front.png?v=1698427542",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Overdrive-front.png?v=1698427542",
+        "sourcePage": "https://jhspedals.info/products/3-series-overdrive",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Overdrive-Angle.png?v=1698427542",
+        "sourcePage": "https://jhspedals.info/products/3-series-overdrive",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-overdrive",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-phaser",
+    "brand": "JHS",
+    "name": "3 Series Phaser",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "phaser"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_PHASER_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 70 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Blend, Rate, Width plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Phaser — three controls and one toggle; 9V DC center-negative, 70 mA.",
+    "extra": {
+      "controls": [
+        "Blend",
+        "Rate",
+        "Width"
+      ],
+      "toggle": "Feedback: up adds resonance/feedback",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-phaser",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_PHASER_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Phaser-Front.png?v=1698427894",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Phaser-Front.png?v=1698427894",
+        "sourcePage": "https://jhspedals.info/products/3-series-phaser",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Serires-Phaser-Angle.png?v=1698427894",
+        "sourcePage": "https://jhspedals.info/products/3-series-phaser",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-phaser",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-reverb",
+    "brand": "JHS",
+    "name": "3 Series Reverb",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_REVERB_Manual_EN.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 74,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 74 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Verb, EQ, Decay plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Reverb — three controls and one toggle; 9V DC center-negative, 74 mA.",
+    "extra": {
+      "controls": [
+        "Verb",
+        "EQ",
+        "Decay"
+      ],
+      "toggle": "Pre-Delay: up adds a short delay before the reverb",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/EN/JHS_3S_REVERB_Manual_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Reverb-front.png?v=1698427738",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Reverb-front.png?v=1698427738",
+        "sourcePage": "https://jhspedals.info/products/3-series-reverb",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-Reverb-Angle.png?v=1698427738",
+        "sourcePage": "https://jhspedals.info/products/3-series-reverb",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-reverb",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-ring-modulator",
+    "brand": "JHS",
+    "name": "3 Series Ring Modulator",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "ring-mod"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified (no official manual or product text shows the connector face)."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official manual/product text shows the connector face for this model; edges omitted and the app uses assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Blend, Frequency, Tweak plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Ring Modulator — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Blend",
+        "Frequency",
+        "Tweak"
+      ],
+      "toggle": "Mode: down = Earworm, up = Green Lantern octave/ring",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-ring-modulator",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-RingModulator-Front.png?v=1779893250",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-RingModulator-Front.png?v=1779893250",
+        "sourcePage": "https://jhspedals.info/products/3-series-ring-modulator",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3-Series-RingModulator-Angle.png?v=1779893250",
+        "sourcePage": "https://jhspedals.info/products/3-series-ring-modulator",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-ring-modulator",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-rotary-chorus",
+    "brand": "JHS",
+    "name": "3 Series Rotary Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_ROTARY_CHORUS_EN_DE_FR.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Intensity, Speed plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Rotary Chorus — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Intensity",
+        "Speed"
+      ],
+      "toggle": "Room: up adds roomy reverb ambiance",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation",
+      "effectNote": "Rotary/chorus modulation; tagged chorus in the shared taxonomy to avoid a curated classifier override."
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-rotary-chorus",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_ROTARY_CHORUS_EN_DE_FR.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Rotary-Chorus-Front.png?v=1739461411",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Rotary-Chorus-Front.png?v=1739461411",
+        "sourcePage": "https://jhspedals.info/products/3-series-rotary-chorus",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Rotary-Chorus-Angle.png?v=1739461411",
+        "sourcePage": "https://jhspedals.info/products/3-series-rotary-chorus",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-rotary-chorus",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-3-series-tape-delay",
+    "brand": "JHS",
+    "name": "3 Series Tape Delay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "right",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input on the right side."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output on the left side."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "edge": "top",
+        "pos": 0.5,
+        "approximate": true,
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; top edge; no battery operation. Position assumed centered."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_TAPE_DELAY_EN_DE_FR.pdf",
+      "confidence": "verified",
+      "note": "Official JHS manual: INPUT right side, OUTPUT left side; POWER on the top edge (position assumed centered)."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none (no battery operation)",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out; no effects loop, headphones or DI."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Mix, Tape Speed, Repeats plus one toggle."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Analog circuit; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "note": "112 x 60 x 31 mm (L x W x H); metal housing; no battery."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product page/manual pass."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "current",
+    "notes": "JHS 3 Series Tape Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
+    "extra": {
+      "controls": [
+        "Mix",
+        "Tape Speed",
+        "Repeats"
+      ],
+      "toggle": "Flutter: up adds tape flutter/warble",
+      "bypass": "True bypass",
+      "dimensions": "112 x 60 x 31 mm (4.42 x 2.38 x 1.22 in)",
+      "battery": "No battery operation"
+    },
+    "priceObservations": [
+      {
+        "amount": 99,
+        "currency": "USD",
+        "condition": "new",
+        "source": "JHS product page",
+        "observedAt": "2026-10-28"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-tape-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/Artikell_PDF/Manual_PDF/JHS/JHS_3S_TAPE_DELAY_EN_DE_FR.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Tape-Delay-Front.png?v=1739461500",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Tape-Delay-Front.png?v=1739461500",
+        "sourcePage": "https://jhspedals.info/products/3-series-tape-delay",
+        "priority": 1,
+        "notes": "Official JHS top-down transparent PNG (2500x2500); body-cropped so side jack barrels do not inflate the footprint; hosted as AVIF q80."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Tape-Delay-Angle.png?v=1739461500",
+        "sourcePage": "https://jhspedals.info/products/3-series-tape-delay",
+        "priority": 2,
+        "notes": "Official 3/4 angle view; not used for the true-scale cutout."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/3-series-tape-delay",
+      "status": "chosen",
+      "note": "Official JHS transparent front render (2500x2500), body-cropped, 800/350 AVIF q80; PSNR >=44 dB. No upscale."
+    }
+  },
+  {
+    "id": "jhs-424-gain-stage",
+    "brand": "JHS",
+    "name": "424 Gain Stage",
+    "aliases": [
+      "424"
+    ],
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS product page: 2.6 x 4.8 x 1.6 in (66 x 122 x 41 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Top 1/4-inch right jack (official product page)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "edge": "top",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Top 1/4-inch left jack (official product page)."
+      },
+      {
+        "label": "XLR OUTPUT",
+        "kind": "out",
+        "edge": "left",
+        "connector": "xlr",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": true,
+        "level": "line",
+        "stereo": false,
+        "note": "Balanced XLR DI output on the left side; can be used simultaneously with the 1/4-inch output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative, 2.1 x 5.5 mm; connector face not shown on the official page, edge omitted."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://jhspedals.info/products/424-gain-stage",
+      "confidence": "verified",
+      "note": "Official product page: INPUT top right, OUTPUT top left, XLR output left side, ground-lift dip switch left side. Power-jack edge not stated, so omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none",
+      "note": "9V DC center-negative; 50 mA; do not exceed 9V."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "balanced": true,
+      "level": "instrument",
+      "di": true,
+      "note": "One 1/4-inch input, one 1/4-inch output and one balanced XLR DI output (usable simultaneously)."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "balanced": true,
+        "level": "instrument",
+        "di": true,
+        "note": "1/4-inch out plus balanced XLR DI out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "soft-touch on/bypass",
+        "tapTempo": false,
+        "note": "Volume, Gain 1 (Trim), Gain 2 (Channel), Bass, Treble; ground-lift dip switch on the left side."
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "buffered",
+        "note": "Historically accurate 424 MKI recreation using original UPC4570 and NJM4565 op-amps; silent soft-touch switching with buffered bypass."
+      },
+      "physical": {
+        "depthCm": 12.19,
+        "heightCm": 4.06,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "2.6 x 4.8 x 1.6 in (66 x 122 x 41 mm)."
+      },
+      "electrical": {
+        "balanced": true
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts captured from the same official product-page pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "JHS 424 Gain Stage — recreation of the 424 MKI multi-track recorder preamp; 1/4-inch and balanced XLR DI outputs; 9V DC, 50 mA.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Gain 1 (Trim)",
+        "Gain 2 (Channel)",
+        "Bass",
+        "Treble"
+      ],
+      "bypass": "Buffered (silent soft-touch)",
+      "dimensions": "66 x 122 x 41 mm (2.6 x 4.8 x 1.6 in)",
+      "outputs": "1/4-inch TS + balanced XLR DI"
+    },
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/424-gain-stage",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/424-TopDown-2-Edit.png?v=1765894243",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/424-TopDown-2-Edit.png?v=1765894243",
+        "sourcePage": "https://jhspedals.info/products/424-gain-stage",
+        "priority": 1,
+        "notes": "Official top-down transparent PNG (2000x2000); body-cropped; hosted as AVIF q85."
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/424Update.png?v=1765894243",
+        "sourcePage": "https://jhspedals.info/products/424-gain-stage",
+        "priority": 2,
+        "notes": "Official hero render; not used for true scale."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/424-gain-stage",
+      "status": "chosen",
+      "note": "Official JHS 424 top-down PNG (2000x2000), body-cropped, 800/350 AVIF q85; PSNR 43.3 dB. No upscale."
+    },
+    "effectTypes": [
+      "preamp",
+      "overdrive"
+    ]
+  },
+  {
+    "id": "jhs-808",
+    "brand": "JHS",
+    "name": "808",
+    "aliases": [
+      "JHS 808"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS standard 125B enclosure proportions (2.6 x 4.8 in; 66 x 122 mm), verified against the official JHS 808 top-down image body ratio (0.530 vs 0.542). Official 808 spec page is retired.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual or connector-face source found)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official JHS 808 page is retired and no manual/connector-face source was found; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none",
+      "note": "Runs on 9V DC center-negative (can run at 18V per the JHS description); current draw not published."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "note": "Volume, Tone and Drive knobs plus a three-way gain toggle (stock/boost/crunch)."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "TS808-style analog overdrive with a 4558 chipset and a three-way gain toggle; true bypass."
+      },
+      "physical": {
+        "depthCm": 12.19,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "JHS standard enclosure; dimensions from the 125B footprint and official image proportions."
+      },
+      "lifecycle": {
+        "status": "discontinued"
+      },
+      "note": "Optional facts captured from the same JHS product-page pass."
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "JHS 808 — TS808-style overdrive with a three-way gain toggle (stock/boost/crunch); runs at 9V or 18V DC center-negative.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Tone",
+        "Drive"
+      ],
+      "toggle": "Gain: down = stock, middle = boost, up = crunch",
+      "bypass": "True bypass",
+      "circuit": "4558-based TS808 replica",
+      "dimensions": "JHS 125B-style enclosure"
+    },
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/jhs-808",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/jhs-808-top.jpg?v=1711718589",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/jhs-808-top.jpg?v=1711718589",
+        "sourcePage": "https://jhspedals.info/products/jhs-808",
+        "priority": 1,
+        "notes": "Official JHS 808 top-down JPEG (487x390), trimmed/body-cropped; 800 rendition is a 2.25x upscale accepted in the single reviewer pass and recorded as a source gap."
+      }
+    ],
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://jhspedals.info/products/jhs-808",
+      "status": "chosen",
+      "note": "Official JHS 808 top JPEG (487x390, opaque white background), matte-flood + body-cropped, 800/350 AVIF q85; 2.25x upscale (above the 2x soft ceiling) accepted by the single contact-sheet reviewer pass; counted source gap."
+    },
+    "effectTypes": [
+      "overdrive"
+    ]
+  },
+  {
+    "id": "jhs-1966-series-bender",
+    "brand": "JHS",
+    "name": "1966 Series Bender",
+    "aliases": [
+      "1966 Bender"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS 125B-standard enclosure proportions (2.6 x 4.8 in; 66 x 122 mm), verified against the reference cutout body ratio; the limited-run official 1966 page is retired.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual/connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative; isolated supply required (positive-ground circuit); edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official 1966 Series page is retired and no official manual/connector-face source was found; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 4,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none",
+      "isolationRequired": true,
+      "note": "9V DC center-negative; positive-ground circuit needs an isolated supply (no daisy chaining)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out; place first in the signal chain."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "note": "Volume, Attack, Tone."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Handwired analog recreation with NOS components; true bypass; positive-ground circuit."
+      },
+      "physical": {
+        "depthCm": 12.19,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "JHS 125B-style enclosure; limited run of 20 units."
+      },
+      "lifecycle": {
+        "year": 2019,
+        "limitedEdition": true,
+        "status": "discontinued",
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts from the PedalFilter aggregator page and press coverage; official JHS page retired."
+    },
+    "usage": "guitar",
+    "color": "yellow",
+    "status": "discontinued",
+    "notes": "JHS 1966 Series Bender — handwired limited-run (20 units) recreation; 9V DC center-negative, 4 mA; isolated supply required.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Attack",
+        "Tone"
+      ],
+      "bypass": "True bypass",
+      "limitedRun": "20 units (2019)",
+      "powerNote": "Positive-ground circuit; use an isolated supply and place first in the chain."
+    },
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-bender",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesbender.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesbender.png",
+        "sourcePage": "https://pedalfilter.com/jhs/1966-series-bender",
+        "priority": 1,
+        "notes": "PedalFilter aggregator transparent cutout (235x392); body-cropped and upscaled 2.04x to the 800 master; license-pending, counted source gap."
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "sourcePage": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "priority": 3,
+        "notes": "Sweetwater product media checked; angled/opaque with visible side walls, rejected."
+      }
+    ],
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://images.pedalfilter.com/jhs-1966seriesbender.png",
+      "status": "chosen",
+      "note": "PedalFilter aggregator cutout (235x392); body-cropped; upscaled 2.04x to 800/350 AVIF q90; license-pending, counted source gap; upscale accepted by the single contact-sheet reviewer pass."
+    }
+  },
+  {
+    "id": "jhs-1966-series-boost",
+    "brand": "JHS",
+    "name": "1966 Series Boost",
+    "aliases": [
+      "1966 Boost"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "boost"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS 125B-standard enclosure proportions (2.6 x 4.8 in; 66 x 122 mm), verified against the reference cutout body ratio; the limited-run official 1966 page is retired.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual/connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative; isolated supply required (positive-ground circuit); edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official 1966 Series page is retired and no official manual/connector-face source was found; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none",
+      "isolationRequired": true,
+      "note": "9V DC center-negative; positive-ground circuit needs an isolated supply (no daisy chaining)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out; place first in the signal chain."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "note": "Level."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Handwired analog recreation with NOS components; true bypass; positive-ground circuit."
+      },
+      "physical": {
+        "depthCm": 12.19,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "JHS 125B-style enclosure; limited run of 20 units."
+      },
+      "lifecycle": {
+        "year": 2019,
+        "limitedEdition": true,
+        "status": "discontinued",
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts from the PedalFilter aggregator page and press coverage; official JHS page retired."
+    },
+    "usage": "guitar",
+    "color": "grey",
+    "status": "discontinued",
+    "notes": "JHS 1966 Series Boost — handwired limited-run (20 units) recreation; 9V DC center-negative, 25 mA; isolated supply required.",
+    "extra": {
+      "controls": [
+        "Level"
+      ],
+      "bypass": "True bypass",
+      "limitedRun": "20 units (2019)",
+      "powerNote": "Positive-ground circuit; use an isolated supply and place first in the chain."
+    },
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-boost",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesboost.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesboost.png",
+        "sourcePage": "https://pedalfilter.com/jhs/1966-series-boost",
+        "priority": 1,
+        "notes": "PedalFilter aggregator transparent cutout (235x392); body-cropped and upscaled 2.04x to the 800 master; license-pending, counted source gap."
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "sourcePage": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "priority": 3,
+        "notes": "Sweetwater product media checked; angled/opaque with visible side walls, rejected."
+      }
+    ],
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://images.pedalfilter.com/jhs-1966seriesboost.png",
+      "status": "chosen",
+      "note": "PedalFilter aggregator cutout (235x392); body-cropped; upscaled 2.04x to 800/350 AVIF q90; license-pending, counted source gap; upscale accepted by the single contact-sheet reviewer pass."
+    }
+  },
+  {
+    "id": "jhs-1966-series-fuzz",
+    "brand": "JHS",
+    "name": "1966 Series Fuzz",
+    "aliases": [
+      "1966 Fuzz"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS 125B-standard enclosure proportions (2.6 x 4.8 in; 66 x 122 mm), verified against the reference cutout body ratio; the limited-run official 1966 page is retired.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual/connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative; isolated supply required (positive-ground circuit); edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official 1966 Series page is retired and no official manual/connector-face source was found; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none",
+      "isolationRequired": true,
+      "note": "9V DC center-negative; positive-ground circuit needs an isolated supply (no daisy chaining)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out; place first in the signal chain."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "note": "Volume, Fuzz."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Handwired analog recreation with NOS components; true bypass; positive-ground circuit."
+      },
+      "physical": {
+        "depthCm": 12.19,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "JHS 125B-style enclosure; limited run of 20 units."
+      },
+      "lifecycle": {
+        "year": 2019,
+        "limitedEdition": true,
+        "status": "discontinued",
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts from the PedalFilter aggregator page and press coverage; official JHS page retired."
+    },
+    "usage": "guitar",
+    "color": "white",
+    "status": "discontinued",
+    "notes": "JHS 1966 Series Fuzz — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Fuzz"
+      ],
+      "bypass": "True bypass",
+      "limitedRun": "20 units (2019)",
+      "powerNote": "Positive-ground circuit; use an isolated supply and place first in the chain."
+    },
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-fuzz",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesfuzz.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesfuzz.png",
+        "sourcePage": "https://pedalfilter.com/jhs/1966-series-fuzz",
+        "priority": 1,
+        "notes": "PedalFilter aggregator transparent cutout (350x577); body-cropped and upscaled 1.39x to the 800 master; license-pending, counted source gap."
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "sourcePage": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "priority": 3,
+        "notes": "Sweetwater product media checked; angled/opaque with visible side walls, rejected."
+      }
+    ],
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://images.pedalfilter.com/jhs-1966seriesfuzz.png",
+      "status": "chosen",
+      "note": "PedalFilter aggregator cutout (350x577); body-cropped; upscaled 1.39x to 800/350 AVIF q90; license-pending, counted source gap; upscale accepted by the single contact-sheet reviewer pass."
+    }
+  },
+  {
+    "id": "jhs-1966-series-italy",
+    "brand": "JHS",
+    "name": "1966 Series Italy",
+    "aliases": [
+      "1966 Italy"
+    ],
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.19,
+    "imageFormat": "avif",
+    "dimensionsSource": "JHS 125B-standard enclosure proportions (2.6 x 4.8 in; 66 x 122 mm), verified against the reference cutout body ratio; the limited-run official 1966 page is retired.",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official manual/connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative; isolated supply required (positive-ground circuit); edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "The official 1966 Series page is retired and no official manual/connector-face source was found; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none",
+      "isolationRequired": true,
+      "note": "9V DC center-negative; positive-ground circuit needs an isolated supply (no daisy chaining)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out; place first in the signal chain."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "note": "Volume, Fuzz."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "Handwired analog recreation with NOS components; true bypass; positive-ground circuit."
+      },
+      "physical": {
+        "depthCm": 12.19,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "JHS 125B-style enclosure; limited run of 20 units."
+      },
+      "lifecycle": {
+        "year": 2019,
+        "limitedEdition": true,
+        "status": "discontinued",
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Optional facts from the PedalFilter aggregator page and press coverage; official JHS page retired."
+    },
+    "usage": "guitar",
+    "color": "light blue",
+    "status": "discontinued",
+    "notes": "JHS 1966 Series Italy — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
+    "extra": {
+      "controls": [
+        "Volume",
+        "Fuzz"
+      ],
+      "bypass": "True bypass",
+      "limitedRun": "20 units (2019)",
+      "powerNote": "Positive-ground circuit; use an isolated supply and place first in the chain."
+    },
+    "sources": [
+      {
+        "url": "https://pedalfilter.com/jhs/1966-series-italy",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesitaly.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://images.pedalfilter.com/jhs-1966seriesitaly.png",
+        "sourcePage": "https://pedalfilter.com/jhs/1966-series-italy",
+        "priority": 1,
+        "notes": "PedalFilter aggregator transparent cutout (235x392); body-cropped and upscaled 2.04x to the 800 master; license-pending, counted source gap."
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "sourcePage": "https://www.sweetwater.com/store/detail/1966Italy--jhs-1966-italy-tone-bender-pedal",
+        "priority": 3,
+        "notes": "Sweetwater product media checked; angled/opaque with visible side walls, rejected."
+      }
+    ],
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://images.pedalfilter.com/jhs-1966seriesitaly.png",
+      "status": "chosen",
+      "note": "PedalFilter aggregator cutout (235x392); body-cropped; upscaled 2.04x to 800/350 AVIF q90; license-pending, counted source gap; upscale accepted by the single contact-sheet reviewer pass."
+    }
+  },
+  {
+    "id": "jhs-3-series-oil-can-delay-black",
+    "brand": "JHS",
+    "name": "3 Series Oil Can Delay (Black)",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.05,
+    "heightCm": 11.23,
+    "imageFormat": "avif",
+    "variantOf": "jhs-3-series-oil-can-delay",
+    "dimensionsSource": "JHS 3 Series product page: LENGTH 4.42 in x WIDTH 2.38 in x HEIGHT 1.22 in (112 x 60 x 31 mm).",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9V DC center-negative; edge not verified."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official black-finish connector-face source; edges omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "battery": "none",
+      "note": "9V DC center-negative; 65 mA; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "note": "Mix, Speed, Feedback plus the +/- toggle."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "true",
+        "note": "Digital oil-can simulation; true bypass."
+      },
+      "physical": {
+        "depthCm": 11.23,
+        "heightCm": 3.1,
+        "footswitches": 1,
+        "note": "112 x 60 x 31 mm."
+      },
+      "lifecycle": {
+        "madeIn": "Kansas City, MO, USA"
+      },
+      "note": "Black-finish variant; same circuit as the standard Oil Can Delay."
+    },
+    "usage": "guitar",
+    "color": "black",
+    "status": "current",
+    "notes": "JHS 3 Series Oil Can Delay (Black) — black-finish variant of the oil-can delay; Mix, Speed, Feedback + toggle; 9V DC, 65 mA.",
+    "extra": {
+      "controls": [
+        "Mix",
+        "Speed",
+        "Feedback"
+      ],
+      "toggle": "+/- modulation intensity",
+      "variantOf": "jhs-3-series-oil-can-delay",
+      "finish": "black"
+    },
+    "sources": [
+      {
+        "url": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "sourcePage": "https://jhspedals.info/products/3-series-oil-can-delay",
+        "priority": 1,
+        "notes": "No official black-finish photo found; generated from the official Oil Can Delay reference (geometry/controls) with a black body fill."
+      }
+    ],
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "imageProvenance": {
+      "kind": "own",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/JHS-Pedals-3Series-Oil-Can-Delay.png?v=1739461127",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (spec tools/asset-pipeline/pedal-art/specs/jhs-3-series-oil-can-delay-black.json) because no official black-finish photo exists; reference used only for geometry/controls."
+    }
+  }
+]
