@@ -9,11 +9,11 @@
 | license-pending | 325 |
 | own | 89 |
 
-Hosting: hotlinked 91 · mock 84 · static 239
+Hosting: hotlinked 73 · mock 84 · static 257
 
-Source kind: archive 4 · community 1 · official 257 · own 89 · planner 63
+Source kind: archive 4 · community 1 · official 239 · own 89 · planner 81
 
-Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63)
+Needs improvement: 238 (hotlinked 73 · mock 84 · planner 81)
 
 ## Aclam
 
@@ -317,24 +317,24 @@ Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `electro-harmonix-1-echo` | #1 Echo | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-1440-stereo-looper` | 1440 Stereo Looper | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-15watt-howitzer` | 15Watt Howitzer | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-2020-tuner` | 2020 Tuner | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-2020-tuner-v2` | 2020 Tuner v2 | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-22500-dual-stereo-looper` | 22500 Dual Stereo Looper | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-22500-foot-controller` | 22500 Foot Controller | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-44-magnum-power-amp` | 44 Magnum Power Amp | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-5mm-power-amp` | 5mm Power Amp | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-720-stereo-looper` | 720 Stereo Looper | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-8-step-program` | 8 Step Program | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-95000-performance-loop-laboratory` | 95000 Performance Loop Laboratory | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-analogizer` | Analogizer | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-attack-decay` | Attack Decay | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-b9-organ-machine` | B9 Organ Machine | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-bad-stone` | Bad Stone | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-bass-big-muff-pi` | Bass Big Muff Pi | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
-| `electro-harmonix-bass-big-muff-pi-2` | Bass Big Muff Pi 2 | license-pending | hotlinked | official | yes | Electro-Harmonix batch |
+| `electro-harmonix-1-echo` | #1 Echo | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-1440-stereo-looper` | 1440 Stereo Looper | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-15watt-howitzer` | 15Watt Howitzer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-2020-tuner` | 2020 Tuner | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-2020-tuner-v2` | 2020 Tuner v2 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-22500-dual-stereo-looper` | 22500 Dual Stereo Looper | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-22500-foot-controller` | 22500 Foot Controller | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-44-magnum-power-amp` | 44 Magnum Power Amp | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-5mm-power-amp` | 5mm Power Amp | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-720-stereo-looper` | 720 Stereo Looper | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-8-step-program` | 8 Step Program | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-95000-performance-loop-laboratory` | 95000 Performance Loop Laboratory | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-analogizer` | Analogizer | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-attack-decay` | Attack Decay | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-b9-organ-machine` | B9 Organ Machine | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-bad-stone` | Bad Stone | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-bass-big-muff-pi` | Bass Big Muff Pi | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `electro-harmonix-bass-big-muff-pi-2` | Bass Big Muff Pi 2 | license-pending | static | planner | yes | better source (official/retailer/community) |
 
 ## Emerson Custom
 
@@ -576,7 +576,7 @@ Needs improvement: 238 (hotlinked 91 · mock 84 · planner 63)
 | Donner | own | 1 |
 | EarthQuaker | own | 18 |
 | Effects Bakery | own | 1 |
-| Electro-Harmonix | official | 18 |
+| Electro-Harmonix | planner | 18 |
 | Emerson Custom | own | 1 |
 | Fame | own | 1 |
 | JHS | official | 12 |
