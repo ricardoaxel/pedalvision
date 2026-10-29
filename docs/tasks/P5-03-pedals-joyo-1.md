@@ -1,6 +1,6 @@
 # P5-03: Joyo — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** in review — PR #TBD · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #80 · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-3` coordinator created this worktree and wrote the 18
 > existing-item raw scaffolds (`data/catalog/research/pedals/joyo/joyo-1.json`).
