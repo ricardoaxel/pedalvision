@@ -14,6 +14,8 @@ describe("motion tokens", () => {
 		expect(tokensCss).toContain(`--motion-slow: ${MOTION.slow}ms;`);
 		expect(tokensCss).toContain(`--motion-distance: ${MOTION.distance}px;`);
 		expect(tokensCss).toContain(`--motion-scale-in: ${MOTION.scaleIn};`);
+		expect(tokensCss).toContain(`--motion-exit: ${MOTION.exit}ms;`);
+		expect(tokensCss).toContain(`--motion-scale-out: ${MOTION.scaleOut};`);
 	});
 
 	it("zeroes every duration token under reduced motion", () => {
@@ -24,6 +26,7 @@ describe("motion tokens", () => {
 		expect(reduced).toContain("--motion-fast: 0ms;");
 		expect(reduced).toContain("--motion-base: 0ms;");
 		expect(reduced).toContain("--motion-slow: 0ms;");
+		expect(reduced).toContain("--motion-exit: 0ms;");
 	});
 });
 

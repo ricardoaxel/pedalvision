@@ -3,8 +3,10 @@ import { MOTION, usePrefersReducedMotion } from "../lib/motion";
 
 interface MotionPresenceProps {
 	open: boolean;
-	/** Exit duration; defaults to one token down from the enter duration. */
+	/** Exit duration; defaults to the close token. */
 	exitMs?: number;
+	/** Called after the exiting node unmounts (never on a re-open). */
+	onExited?: () => void;
 	children: ReactNode;
 }
 
@@ -20,7 +22,8 @@ interface MotionPresenceProps {
  */
 export function MotionPresence({
 	open,
-	exitMs = MOTION.fast,
+	exitMs = MOTION.exit,
+	onExited,
 	children,
 }: MotionPresenceProps) {
 	const reduced = usePrefersReducedMotion();
@@ -29,6 +32,8 @@ export function MotionPresence({
 	const [cycle, setCycle] = useState(0);
 	const timer = useRef<number | null>(null);
 	const lastChild = useRef<ReactNode>(children);
+	const onExitedRef = useRef(onExited);
+	onExitedRef.current = onExited;
 
 	if (children !== null && children !== undefined) {
 		lastChild.current = children;
@@ -55,6 +60,7 @@ export function MotionPresence({
 		if (duration <= 0) {
 			setRendered(false);
 			setExiting(false);
+			onExitedRef.current?.();
 			return;
 		}
 		setExiting(true);
@@ -62,6 +68,7 @@ export function MotionPresence({
 			timer.current = null;
 			setRendered(false);
 			setExiting(false);
+			onExitedRef.current?.();
 		}, duration);
 	}, [open, exitMs, reduced, rendered, exiting]);
 

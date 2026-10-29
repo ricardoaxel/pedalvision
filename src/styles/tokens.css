@@ -157,6 +157,8 @@
 
 	/* Info panel (P2-03 "Readout") — desktop trailing push rail width. */
 	--panel-width: 360px;
+	/* Mobile dock: reserve the history pair's width so the tabs never reflow. */
+	--picker-dock-history-width: 89px;
 
 	/*
 	 * Motion — "Straightedge Settle" (F-05, owner-approved 2026-10-28).
@@ -168,9 +170,11 @@
 	--motion-base: 180ms;
 	--motion-slow: 240ms;
 	--ease-standard: cubic-bezier(0.2, 0, 0, 1);
-	--ease-exit: cubic-bezier(0.4, 0, 1, 1);
+	--ease-exit: cubic-bezier(0.16, 1, 0.3, 1);
 	--motion-distance: 18px;
 	--motion-scale-in: 0.985;
+	--motion-exit: 180ms;
+	--motion-scale-out: 0.992;
 }
 
 /* Reduced motion is a hard off switch: every duration token resolves to 0. */
@@ -179,6 +183,7 @@
 		--motion-fast: 0ms;
 		--motion-base: 0ms;
 		--motion-slow: 0ms;
+		--motion-exit: 0ms;
 	}
 }
 

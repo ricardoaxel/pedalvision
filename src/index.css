@@ -2807,7 +2807,7 @@ body {
 	}
 
 	.info-panel__expand svg {
-		transition: transform var(--motion-fast) var(--ease-standard);
+		transition: transform var(--motion-base) var(--ease-standard);
 	}
 
 	.info-panel[data-expanded="true"] .info-panel__expand svg {
@@ -5991,6 +5991,24 @@ body {
 	}
 }
 
+/* Mobile dock handoff: the history pair reserves its width throughout, so the
+ * three tabs never move when the sheet closes; it fades in after the sheet has
+ * unmounted. The in-sheet bar reserves the same width. */
+.picker-dock__history {
+	display: flex;
+	flex: 0 0 var(--picker-dock-history-width);
+	opacity: 0;
+	transition: opacity var(--motion-fast) var(--ease-standard);
+}
+
+.picker-dock__history[data-visible="true"] {
+	opacity: 1;
+}
+
+.picker-bar--modal .picker-bar__reserve {
+	flex: 0 0 var(--picker-dock-history-width);
+}
+
 /* ---------------------------------------------------------------------------
  * Motion system (F-05) — "Straightedge Settle" (owner-approved 2026-10-28).
  * Fixed short travel, arrives and stops; no overshoot/spring/loop. Enters are
@@ -6023,7 +6041,17 @@ body {
 	}
 	to {
 		transform: translateY(calc(-1 * var(--motion-distance)))
-			scale(var(--motion-scale-in));
+			scale(var(--motion-scale-out));
+	}
+}
+
+/* The close ends at rest: a short late opacity release, never at speed. */
+@keyframes motion-dissolve {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
 	}
 }
 
@@ -6072,7 +6100,9 @@ body {
 
 .motion-presence[data-motion-state="exiting"]
 	:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
-	animation: motion-panel-out var(--motion-fast) var(--ease-exit) forwards;
+	animation:
+		motion-panel-out var(--motion-exit) var(--ease-exit) forwards,
+		motion-dissolve 40ms var(--ease-standard) 140ms forwards;
 	pointer-events: none;
 }
 
@@ -6082,7 +6112,9 @@ body {
 }
 
 .motion-presence[data-motion-state="exiting"] .picker__panel {
-	animation: motion-panel-out var(--motion-fast) var(--ease-exit) forwards;
+	animation:
+		motion-panel-out var(--motion-exit) var(--ease-exit) forwards,
+		motion-dissolve 80ms var(--ease-standard) 100ms forwards;
 }
 
 .motion-presence[data-motion-state="entering"] .picker__scrim {
@@ -6090,7 +6122,8 @@ body {
 }
 
 .motion-presence[data-motion-state="exiting"] .picker__scrim {
-	animation: motion-fade-out var(--motion-fast) var(--ease-exit) forwards;
+	animation: motion-fade-out var(--motion-fast) var(--ease-standard)
+		var(--motion-exit) forwards;
 }
 
 .motion-presence[data-motion-state="exiting"] .picker {
@@ -6109,12 +6142,19 @@ body {
 	 * bottom sheet would slide over the action bar). Fade the content instead;
 	 * the persistent tab bar is excluded so it never leaves the screen. */
 	.motion-presence[data-motion-state="entering"] .picker__panel,
-	.motion-presence[data-motion-state="exiting"] .picker__panel,
+	.motion-presence[data-motion-state="entering"] .picker__panel,
 	.motion-presence[data-motion-state="entering"]
-		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule),
-	.motion-presence[data-motion-state="exiting"]
 		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
 		animation: none;
+	}
+
+	.motion-presence[data-motion-state="exiting"] .picker__panel {
+		animation: motion-dissolve 80ms var(--ease-standard) 100ms forwards;
+	}
+
+	.motion-presence[data-motion-state="exiting"]
+		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
+		animation: motion-dissolve 40ms var(--ease-standard) 140ms forwards;
 	}
 
 	.motion-presence[data-motion-state="entering"]
@@ -6129,11 +6169,14 @@ body {
 
 	.motion-presence[data-motion-state="exiting"]
 		.picker__panel
-		> :not(.picker-bar),
+		> :not(.picker-bar) {
+		animation: motion-fade-out 80ms var(--ease-standard) 100ms forwards;
+	}
+
 	.motion-presence[data-motion-state="exiting"]
 		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule)
 		> * {
-		animation: motion-fade-out var(--motion-fast) var(--ease-exit) forwards;
+		animation: motion-fade-out var(--motion-exit) var(--ease-standard) forwards;
 	}
 
 	/* The info sheet's *shell* never animates height (the F-04 safe rect reads
@@ -6147,7 +6190,7 @@ body {
 	),
 	.info-panel[data-expanded="false"]
 		:is(.info-panel__sleeve, .info-panel__status) {
-		animation: motion-fade-in var(--motion-fast) var(--ease-standard) both;
+		animation: motion-fade-in var(--motion-base) var(--ease-standard) both;
 	}
 }
 
@@ -6158,6 +6201,7 @@ body {
 	*::before,
 	*::after {
 		animation-duration: 0.01ms !important;
+		animation-delay: 0ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;

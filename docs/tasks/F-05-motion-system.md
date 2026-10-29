@@ -168,6 +168,33 @@ Read only these pointed files/sections; do not read whole docs.
 - The reviewer gate is limited to the rendered result; the designer remains the
   design authority.
 
+### Close revision — “Sheet Lift” (owner feedback, 2026-10-28)
+
+Owner feedback on the first implementation: the close read **abrupt/harsh**.
+Root cause: the old 120 ms exit used an accelerating ease and deleted the card
+on its fastest frame; the scrim unmounted with the sheet (a one-frame brightness
+jump); mobile content and surface used different windows (a blank-card beat);
+and docked surfaces faded against the raw canvas.
+
+**Owner-approved revision “Sheet Lift”:** the card lifts, stops, then the ink
+releases. `--motion-exit: 180ms`, decelerating `--ease-exit` (`cubic-bezier(0.16,
+1, 0.3, 1)`), `--motion-scale-out: 0.992`; transform 180 ms plus a late dissolve
+(80 ms after 100 ms for the picker, 40 ms after 140 ms for docked panels). The
+picker scrim holds full dim for the sheet exit, then releases over 120 ms; the
+picker overlay stays mounted 300 ms so the canvas never jumps brighter at
+unmount. Mobile picker content and surface share the 100–180 ms window; mobile
+docked content fades 180 ms while the opaque surface holds until 140 ms, then
+drops in 40 ms. The dock handoff reserves the history width in both bars
+(measured tab centers 54/161/269) and reveals the history pair after the sheet
+unmounts. Reduced motion adds `--motion-exit: 0ms` and zeroes animation delays.
+
+- Design-reviewer close pass 1: **approve-with-changes** (scrim cut, blank card,
+  docked dot bleed, tab-nudge evidence) → all fixed.
+- Design-reviewer close pass 2: **APPROVE** (direction shipped; mid-exit frame
+  dump added; no third pass). Residual notes are pre-existing/optional (the
+  undimmed dock band, a 12 px dot strip under the mobile Scenes card, and the
+  docked mobile sheet has no translation).
+
 ## Steps
 
 1. Restate the scope + executable acceptance criteria; record the design
@@ -229,12 +256,12 @@ Read only these pointed files/sections; do not read whole docs.
 - `pnpm lint` clean (only the 6 pre-existing warnings); `pnpm typecheck` clean.
 - `pnpm test` **906 passed** (101 files), including new `motion`, `viewportMotion`
   (cancel/finish invariants) and transient-motion store tests.
-- `pnpm build` clean. Main JS **316.83 → 318.63 kB gzip** (**+1.80 kB**, under
-  the +2 kB target); CSS **13.43 → 13.90 kB gzip** (**+0.47 kB**).
+- `pnpm build` clean. Main JS **316.83 → 318.76 kB gzip** (**+1.93 kB**, under
+  the +2 kB target); CSS **13.43 → 14.07 kB gzip** (**+0.64 kB**).
 - **E2E:** six touched specs (`picker`, `viewport-focus`, `scenes`, `history`,
   `selection`, `cable-schedule`) **114 passed / 5 skipped** (desktop + mobile,
   1 worker); the eight-spec touched set incl. `smoke` + `first-run` **137 passed
-  / 5 skipped**. CI full suite **324 passed / 11 skipped**. New motion cases
+  / 5 skipped**. CI full suite is re-run on the final head. New motion cases
   cover panel presence + add/duplicate/delete events, reduced motion, the scene
   camera tween, and a pan during the tween that settles the frame instead of
   freezing it. CI initially caught a duplicate `picker-bar-*` during the exit;
@@ -248,7 +275,9 @@ Read only these pointed files/sections; do not read whole docs.
 - **Screenshots/GIFs:** `docs/screenshots/F-05/{before,after}/` (settled picker
   and scenes, desktop 1440 + mobile 412, dark + light; aligned t0/t60/t120
   frames; dark add/duplicate/delete stills; before/after panel + scene-switch
-  GIFs, desktop + mobile).
+  GIFs, desktop + mobile) and `docs/screenshots/F-05/close/{before,after}/`
+  (old vs new close GIFs, close frame strips, mid-exit contact sheets, the
+  412 px band-handoff composite, and reduced-motion stills).
 - **Feature demo link:** added to the PR (deployed preview + exact steps; motion
   state is not shareable).
 - **Code review (light, one pass):** **changes-required** with 5 findings, all
@@ -261,16 +290,17 @@ Read only these pointed files/sections; do not read whole docs.
   (5) removed the dead `data-motion-viewport` writes and
   `isViewportTweening`. No second pass (UI-only; the unit + touched E2E suite
   is the re-check).
-- **Billed tokens (non-cache, final):** builder `1,148,688` (input 935,586 +
-  output 78,815 + reasoning 134,287; cache-inclusive floor 57,910,544; cost
-  $0.4385); designer `75,199` (67,438 + 2,998 + 4,763; $0.0161);
-  design-reviewer `122,369` (90,289 + 6,174 + 25,906; $0.0370);
-  code review `114,776` (83,122 + 4,487 + 27,167; $0.0342). **Total
-  `1,461,032`** non-cache (cache-inclusive floor `59,499,520`; ~$0.5257).
-  **Budget overrun:** the builder exceeded the 400k soft / 800k hard, the review
-  classes exceeded the 300k allowance by ~12k (312,344), and the task hard cap
-  (1.1M) by ~361k. The owner is asked to accept the overrun (F-04 precedent) or
-  ask for a trim before merge.
+- **Billed tokens (non-cache, final cumulative):** builder `2,763,974` (input
+  2,483,854 + output 100,347 + reasoning 179,773; cache-inclusive floor
+  80,817,734; $0.7748); designer original `75,199`; designer close revision
+  `48,679`; design-reviewer original `122,369`; design-reviewer close pass 1
+  `54,239`; close pass 2 `46,034`; code review `114,776`. **Total `3,225,270`**
+  non-cache (cache-inclusive floor `84,006,982`; ~$0.9084). The owner explicitly
+  requested the close revision + UX/UI review; that added **~1,615k builder +
+  ~149k design/vision** over the original 1,461k. **Budget overrun:** builder
+  over the 400k soft / 800k hard, review/design over the 300k allowance, and the
+  1.1M task hard cap. The owner is asked to accept the overrun or ask for a trim
+  before merge.
 
 ## Notes
 

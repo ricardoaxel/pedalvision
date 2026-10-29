@@ -10,8 +10,10 @@ export const MOTION = {
 	fast: 120,
 	base: 180,
 	slow: 240,
+	exit: 180,
 	distance: 18,
 	scaleIn: 0.985,
+	scaleOut: 0.992,
 } as const;
 
 /** The single reduced-motion switch (matches the CSS media query). */
