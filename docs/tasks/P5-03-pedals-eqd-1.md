@@ -105,8 +105,9 @@ Read only the sections the task file points to; do not read whole docs.
 - **Feature lane:** F-05 is a separate dirty WIP feature branch (0 catalog overlap).
   Log feature spend at each checkpoint; start no new wave if feature + wave billed
   reaches 3.4M; the wave hard cap stays 2.4M.
-- **`curated.ts`:** batches never edit `tools/`. If the no-drift test needs a verified
-  override, stop and hand it to the coordinator serially.
+- **`curated.ts`:** this is the one batch-support file allowed in a batch PR, and only
+  when the no-drift test actually requires a verified, official-source override (see
+  `docs/catalog-backfill.md`); no other `tools/` edits.
 - **Baseline:** take the before screenshots from YOUR OWN clean detached worktree
   `/Users/ashel/Documents/Programming/pedalvision-t6-baseline-eqd` at `origin/main`
   (`bf083ed`), never from a dirty feature checkout or a shared baseline dir.

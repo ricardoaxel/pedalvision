@@ -335,7 +335,7 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"earthquaker-blumes": ["overdrive"],
 	"earthquaker-bows": ["boost", "preamp"],
 	"earthquaker-cloven-hoof": ["fuzz"],
-	"earthquaker-data-corrupter": ["synth", "pitch"],
+	"earthquaker-data-corrupter": ["synth", "pitch", "octave"],
 	"earthquaker-plumes": ["overdrive"],
 
 	// JHS
