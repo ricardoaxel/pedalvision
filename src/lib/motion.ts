@@ -11,6 +11,7 @@ export const MOTION = {
 	base: 180,
 	slow: 240,
 	exit: 180,
+	close: 160,
 	distance: 18,
 	scaleIn: 0.985,
 	scaleOut: 0.992,

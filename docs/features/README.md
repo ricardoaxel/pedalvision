@@ -146,12 +146,12 @@ One restrained motion language (**“Straightedge Settle”**, owner-approved
 2026-10-28): short fixed travel, arrives and stops; no overshoot/spring/loop.
 Durations/easings/distances live in `tokens.css` (mirrored in `lib/motion.ts`);
 `prefers-reduced-motion: reduce` zeroes them and the JS canvas helpers, and
-`MotionPresence` unmounts synchronously. Desktop panels enter at 180 ms
-(picker 240 ms) and exit at 180 ms from their trigger corner with a late
-dissolve (the card stops before it fades; the picker scrim holds dim for the
-sheet exit, then releases over 120 ms). Docked surfaces hold opaque until the
-final 40 ms; mobile picker content and surface share one fade window; the mobile
-dock handoff reserves the history width and reveals it after the sheet unmounts.
+`MotionPresence` unmounts synchronously. Desktop panels enter at 180 ms (picker 240 ms). Docked panels
+(Scenes/Export/Share/Cable) close with **one 160 ms fade + 2 % scale**, no lift
+and no content/surface split; the picker modal keeps its scrim hold/release
+close (180 ms sheet + 120 ms scrim release). Mobile picker content and surface
+share one fade window; the mobile dock handoff reserves the history width and
+reveals it after the sheet unmounts.
 The mobile picker sheet fades rather than translating (its fixed tab bar would
 otherwise follow a panel transform); the
 mobile info sheet never animates height (the F-04 safe rect reads it). A placed
@@ -337,7 +337,7 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 | Non-Chromium browsers | Playwright chromium only (owner scope) | Out of scope; real-device pass is P5-06 |
 | Power-supply planner | Not implemented (non-goal N3); custom supply power shows in the info panel | Future feature; no E2E by design |
 
-| Mobile picker sheet uses a fade, not a rise | `MotionPresence` + mobile CSS; the tab bar is a fixed descendant of the panel, so a panel transform would lift it over the status strip | Intentional technical deviation from the proposed rise (2026-10-28); desktop keeps a transform-only opaque enter, and the mobile content+surface share one close window |
+| Mobile picker sheet uses a fade, not a rise | `MotionPresence` + mobile CSS; the tab bar is a fixed descendant of the panel, so a panel transform would lift it over the status strip | Intentional technical deviation from the proposed rise (2026-10-28); desktop keeps a transform-only opaque enter, and docked panels use one 160 ms fade+2% scale close |
 | Scene list accessibility mirror | Deferred in `docs/design.md` (no owning task) | Deferred |
 | Capacity timing thresholds | `benchmark.spec.ts` is report-only; no ms gate | Intentional (avoid flaky CI) |
 

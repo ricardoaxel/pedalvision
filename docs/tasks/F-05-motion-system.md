@@ -124,25 +124,27 @@ Read only these pointed files/sections; do not read whole docs.
   no spring, no loop. Enters are longer than exits (the user is still deciding
   on the way in, already decided on the way out).
 - **Final tokens (tokens.css + `src/lib/motion.ts`):** `--motion-fast: 120ms`,
-  `--motion-base: 180ms`, `--motion-slow: 240ms`; `--ease-standard:
-  cubic-bezier(0.2, 0, 0, 1)`, `--ease-exit: cubic-bezier(0.4, 0, 1, 1)`;
-  `--motion-distance: 18px`, `--motion-scale-in: 0.985`. Exit = one token down
-  (floor 120ms). The original 6/12px `--motion-distance-sm/md` and
-  `--ease-enter` were dropped after the visual review (6px was imperceptible on
-  a 1076px panel; one travel value is now used everywhere). Reduced motion
-  zeroes the durations + JS mirror, and presence unmounts synchronously.
-- **Per surface (final):** desktop picker 240ms enter / 120ms exit
-  (transform-only, opaque surface; scrim fades 120ms); mobile picker **content
-  fade 120ms** (surface opaque; the persistent tab bar is excluded so it never
-  leaves the screen); desktop docked panels 180/120ms, 18px from the trigger
-  corner; mobile docked panels content fade; mobile info sheet **no shell
-  motion** (chevron + swapped content 120ms — never height, protecting the F-04
-  safe rect); canvas add 240ms opacity (ease-in, so it remains visible after the
-  picker's 120ms exit); duplicate 120ms + 240ms accent halo at 0.5 opacity, zero
-  travel; explicit remove 120ms presentation-only ghost; scene switch 240ms
-  stage-transform tween + 120ms content fade; a user wheel/pan finishes the
-  tween at its **target** (never half-framed), **boot = 0ms**, explicit focus
-  stays instant.
+  `--motion-base: 180ms`, `--motion-slow: 240ms`, `--motion-exit: 180ms`,
+  `--motion-close: 160ms`; `--ease-standard: cubic-bezier(0.2, 0, 0, 1)`,
+  `--ease-exit: cubic-bezier(0.16, 1, 0.3, 1)`; `--motion-distance: 18px`,
+  `--motion-scale-in: 0.985`, `--motion-scale-out: 0.992`. The original 6/12px
+  distances and `--ease-enter` were dropped after the visual review (6px was
+  imperceptible on a 1076px panel; one travel value is used everywhere).
+  Reduced motion zeroes the durations + JS mirror (exit/close included) and
+  presence unmounts synchronously.
+- **Per surface (final):** desktop picker 240ms enter; close = 180ms transform
+  + late 80ms dissolve over the dimmed scrim (scrim holds full dim then
+  releases 120ms; overlay unmounts at 300ms). Desktop docked panels 180ms
+  enter; close = **one 160ms fade + `translateY(3px) scale(0.98)`**, no lift,
+  no content/surface split. Mobile picker content 120ms enter; close content +
+  surface share 100–180ms, scrim release as above; the tab bar is excluded and
+  the dock handoff reserves the history width. Mobile docked sheets 120ms
+  content enter; close = the same single 160ms panel fade + 2% scale
+  (bottom-center origin). Mobile info sheet: no shell motion; chevron/content
+  swap 180ms, never height. Canvas add 240ms ease-in opacity; duplicate 120ms +
+  240ms accent halo at 0.5; explicit remove 120ms ghost; scene switch 240ms
+  stage tween + 120ms content fade; a user wheel/pan finishes the tween at its
+  target, **boot = 0ms**, explicit focus stays instant.
 - **Exit strategy:** full open+close via `MotionPresence` (semantic close, focus
   return and re-open use the live value; the node lingers inert for the exit;
   reduced motion unmounts immediately).
@@ -194,6 +196,20 @@ unmounts. Reduced motion adds `--motion-exit: 0ms` and zeroes animation delays.
   dump added; no third pass). Residual notes are pre-existing/optional (the
   undimmed dock band, a 12 px dot strip under the mobile Scenes card, and the
   docked mobile sheet has no translation).
+
+- **Video follow-up (owner, 2026-10-28):** the owner's recording showed the
+  **docked** close lifting toward its trigger and a two-rate content/surface
+  fade leaving an empty-card ghost. Docked panels (Scenes/Export/Share/Cable)
+  now close with a **single 160 ms `cubic-bezier(0.2, 0, 0, 1)` panel timeline**:
+  opacity 1→0 + `translateY(3px) scale(0.98)`, **no lift, no content/surface
+  split**; mobile bottom sheets use a bottom-center origin. `--motion-close:
+  160ms`; the picker modal close is unchanged (its scrim hold/release). The
+  video was split into 60 frames and reviewed by the vision agent, which
+  confirmed the new close is **APPROVE** (no empty-card ghost, no upward bump,
+  one smooth settle). Optional nits: a ~30 ms fade hang (could use
+  `cubic-bezier(0.3, 0, 0.35, 1)` only if still felt), the surface slab
+  out-reading thin text at ≤10 % alpha, and a 1:1 desktop crop — the crop was
+  added (`scene-close-after-desktop-crop-frames.png`).
 
 ## Steps
 
@@ -268,16 +284,19 @@ unmounts. Reduced motion adds `--motion-exit: 0ms` and zeroes animation delays.
   the exiting sheet now omits its tab bar so only the persistent dock exists.
 - **Preview:** https://feat-f-05-motion-system.pedalvision.pages.dev (verified
   desktop + mobile; commit `f98fa50`).
-- **Performance (1440×900, desktop, branch):** panels 60.0 fps (mean 16.67 ms,
-  p95 16.70 ms, max 16.80 ms); scene switch 60.0 fps (same); JS heap 11.3 →
-  11.3 MB; share link **359 chars**; all-content Standard PNG **2,771,550
-  bytes** — the last two are untouched by F-05.
+- **Performance (1440×900, desktop, branch):** panels 60.0 fps; the new scene
+  close **60.0 fps** (mean 16.67 / p95 16.70 / max 16.80 ms, 43 frames); scene
+  switch 60.0 fps; JS heap 9.5–11.3 MB (no material change); share link
+  **358–359 chars**; all-content Standard PNG **2,771,550 bytes** — the last
+  two are untouched by F-05.
 - **Screenshots/GIFs:** `docs/screenshots/F-05/{before,after}/` (settled picker
   and scenes, desktop 1440 + mobile 412, dark + light; aligned t0/t60/t120
   frames; dark add/duplicate/delete stills; before/after panel + scene-switch
   GIFs, desktop + mobile) and `docs/screenshots/F-05/close/{before,after}/`
   (old vs new close GIFs, close frame strips, mid-exit contact sheets, the
-  412 px band-handoff composite, and reduced-motion stills).
+  412 px band-handoff composite, and reduced-motion stills) plus
+  `docs/screenshots/F-05/issue/` (the owner's video contact sheet, old vs new
+  scene-close GIFs/frames, and the 1:1 desktop close crop).
 - **Feature demo link:** added to the PR (deployed preview + exact steps; motion
   state is not shareable).
 - **Code review (light, one pass):** **changes-required** with 5 findings, all

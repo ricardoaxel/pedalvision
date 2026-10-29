@@ -6045,7 +6045,20 @@ body {
 	}
 }
 
-/* The close ends at rest: a short late opacity release, never at speed. */
+/* Docked panels: one fade+settle timeline, no lift toward the trigger and no
+ * split between content and surface (that split was the empty-card ghost). */
+@keyframes motion-panel-close {
+	from {
+		opacity: 1;
+		transform: none;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(3px) scale(0.98);
+	}
+}
+
+/* The picker close ends at rest: a short late opacity release, never at speed. */
 @keyframes motion-dissolve {
 	from {
 		opacity: 1;
@@ -6100,9 +6113,8 @@ body {
 
 .motion-presence[data-motion-state="exiting"]
 	:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
-	animation:
-		motion-panel-out var(--motion-exit) var(--ease-exit) forwards,
-		motion-dissolve 40ms var(--ease-standard) 140ms forwards;
+	animation: motion-panel-close var(--motion-close) var(--ease-standard)
+		forwards;
 	pointer-events: none;
 }
 
@@ -6152,9 +6164,9 @@ body {
 		animation: motion-dissolve 80ms var(--ease-standard) 100ms forwards;
 	}
 
-	.motion-presence[data-motion-state="exiting"]
+	.motion-presence
 		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
-		animation: motion-dissolve 40ms var(--ease-standard) 140ms forwards;
+		transform-origin: center bottom;
 	}
 
 	.motion-presence[data-motion-state="entering"]
@@ -6171,12 +6183,6 @@ body {
 		.picker__panel
 		> :not(.picker-bar) {
 		animation: motion-fade-out 80ms var(--ease-standard) 100ms forwards;
-	}
-
-	.motion-presence[data-motion-state="exiting"]
-		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule)
-		> * {
-		animation: motion-fade-out var(--motion-exit) var(--ease-standard) forwards;
 	}
 
 	/* The info sheet's *shell* never animates height (the F-04 safe rect reads

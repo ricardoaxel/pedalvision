@@ -22,7 +22,7 @@ interface MotionPresenceProps {
  */
 export function MotionPresence({
 	open,
-	exitMs = MOTION.exit,
+	exitMs = MOTION.close,
 	onExited,
 	children,
 }: MotionPresenceProps) {
