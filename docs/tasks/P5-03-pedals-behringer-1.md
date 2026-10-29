@@ -1,6 +1,6 @@
 # P5-03: Behringer — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** in progress — cleanup-wave-4 · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #85 · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-4` coordinator created this worktree, wrote the existing-item
 > raw scaffold (`data/catalog/research/pedals/behringer/behringer-1.json`) and
