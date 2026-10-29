@@ -95,6 +95,41 @@ The likely production path is a **hybrid**: use this reference-derived vector to
 read exact positions/colours, then author a clean spec (no logos, no reference
 pixels) from it.
 
+
+## Deterministic filter sweep (no agentic generation)
+
+All variants below are classical CPU filters applied to the **official transparent
+top** (`ds-1_top.png`), not per-image LLM/agent calls. One script processes the
+whole catalog; there is no per-item token cost. Every output keeps the official
+layout/text but is **reference-derived** (not shippable without permission).
+
+**Comparison grid:** `docs/screenshots/pedal-art-quality-test/filter-comparison.png`
+(3 × 4: official top + 11 filters).
+
+| Variant | Core algorithm | Look | Text/logo fidelity | Main issue | Verdict |
+|---|---|---|---|---|---|
+| Bilateral + adaptive | bilateral + k-means + adaptive threshold | clean cartoon, flat colours | good | thick/noisy edges | solid baseline |
+| Bilateral + XDoG | bilateral + k-means + XDoG | strong ink lines | good | texture noise | good cartoon |
+| Mean-shift + XDoG | pyramid mean shift + k-means + XDoG | flatter, smoother | soft | BOSS text smears | not best |
+| Kuwahara + adaptive | Kuwahara + k-means + adaptive | painterly, soft regions | soft | BOSS text soft | good painterly |
+| Kuwahara + XDoG | Kuwahara + k-means + XDoG | painterly + ink | good | texture noise | good |
+| Domain transform + XDoG | domain-transform edge-preserving + k-means + XDoG | smooth, washed | good | low contrast | meh |
+| Stylization | OpenCV `stylization` | watercolour | poor | knobs/text distort | reject for product |
+| Pencil colour | OpenCV `pencilSketch` colour | sketch | poor | washed out / illegible | reject |
+| **Bilateral + Canny** | bilateral + k-means + Canny | clean flat + thin ink | **very good** | edges can be thin | **best clean raster** |
+| **VTracer flat** | bilateral + k-means + VTracer | exact vector, crisp | **excellent** | orange shading halos | **best exact vector** |
+| **VTracer + lines** | k-means + XDoG + VTracer | bold cartoon vector | excellent | body texture noise | **best bold cartoon** |
+
+**Recommendation:** if the goal is a clean, shippable-from-licensed-source look,
+start with **Bilateral + Canny** or **Kuwahara + adaptive**. If the goal is an
+exact vector replica, use **VTracer flat**; for stronger cartoon lines, use
+**VTracer + lines**. Reject `stylization` and `pencilSketch` for product art —
+they lose the knobs/text.
+
+**Cost:** these are CPU seconds per item (roughly 0.05–5 s depending on the
+filter at 1200 px), so 8,549 items is hours of compute, not months. The real
+cost is source rights + QA, not the filter.
+
 ## Decision points
 
 1. **Policy:** keep real-photo-first (generated art fills gaps) or switch to
