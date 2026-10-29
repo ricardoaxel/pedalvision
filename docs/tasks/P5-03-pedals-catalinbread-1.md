@@ -1,6 +1,6 @@
 # P5-03: Catalinbread — pedals batch 1 (Tier A)
 
-**Phase:** P5 · **Status:** in review — PR pending (blocked on coordinator-only `curated.ts` effect overrides) · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #88 (blocked on coordinator-only `curated.ts` effect overrides) · **Model:** deepseek-v4.1-flash
 
 > The `tier-a-wave-1` coordinator created this worktree and will start
 > `catalinbread/catalinbread-1` (total 26) via `catalog:wave`. **Never run
