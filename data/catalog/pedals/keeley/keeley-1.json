@@ -1,0 +1,1151 @@
+[
+  {
+    "id": "keeley-1962",
+    "brand": "Keeley",
+    "name": "1962",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-1962.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "British Bluesbreaker-style overdrive (Katana JFET boost around a Bluesbreaker circuit).",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/keeley-1962/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962_Overdrive_Face_Keeley-scaled.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-1962x",
+    "brand": "Keeley",
+    "name": "1962x",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-1962x.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "variantOf": "keeley-1962",
+    "usage": "guitar",
+    "notes": "Limited two-mode version of the 1962; adds a KT88 high-headroom MOSFET clipping mode.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/1962x-ltd-british-overdrive/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962xNewLogoFrontHiRes-e1524686788841.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-30ms-double-tracker",
+    "brand": "Keeley",
+    "name": "30ms Double Tracker",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-30ms-double-tracker.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "chorus",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Automatic double tracker / short delay / static chorus / reverb; TRS stereo output.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/30ms-automatic-double-tracker/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/30MSFaceNewLogo-e1524687207610.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-abbey-chamber-verb",
+    "brand": "Keeley",
+    "name": "Abbey Chamber Verb",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-abbey-chamber-verb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Abbey Road chamber-style reverb with RS106 filtering; archived official product page.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://web.archive.org/web/20191014072044/https://robertkeeley.com/product/Abbey+Chamber+Reverb/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/woo/wp-content/uploads/2015/09/AbbeyChamberVerbNewLogoFaceHiRes-e1524687136250.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-angry-orange",
+    "brand": "Keeley",
+    "name": "Angry Orange",
+    "widthCm": 6.6,
+    "heightCm": 12.1,
+    "image": "keeley-angry-orange.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "usage": "guitar",
+    "notes": "Dual distortion/fuzz: 78 Japanese orange distortion + 91 Soviet civil-war fuzz.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Angry-Orange-Distortion-and-Fuzz-Effect-Pedal-000-Transparent-Background.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-angry-orange-signalis",
+    "brand": "Keeley",
+    "name": "Angry Orange (Signalis)",
+    "widthCm": 6.6,
+    "heightCm": 12.1,
+    "image": "keeley-angry-orange-signalis.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "variantOf": "keeley-angry-orange",
+    "usage": "guitar",
+    "notes": "Finish variant of the Angry Orange; no official finish photo published.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-angry-orange-white",
+    "brand": "Keeley",
+    "name": "Angry Orange (White)",
+    "widthCm": 6.6,
+    "heightCm": 12.1,
+    "image": "keeley-angry-orange-white.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "variantOf": "keeley-angry-orange",
+    "usage": "guitar",
+    "notes": "White finish variant of the Angry Orange; planner last-resort cutout.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange-white.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-aria",
+    "brand": "Keeley",
+    "name": "Aria",
+    "widthCm": 9.5,
+    "heightCm": 12,
+    "image": "keeley-aria.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor",
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "Compressor + overdrive dual stomp with TRS insert and switchable order.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/aria-compressor-overdrive/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Keeley-Electronics-Aria-Compressor-Drive-V2-Front-Effects-Pedal-scaled-1.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-aurora",
+    "brand": "Keeley",
+    "name": "Aurora",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-aurora.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Digital reverb pedal.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/aurora-digital-reverb-shirt-namm-special/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Aurora-Reverb-Front-10-2017-e1524686581797.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-bassist-compressor",
+    "brand": "Keeley",
+    "name": "Bassist Compressor",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-bassist-compressor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "bass",
+    "notes": "Bass compressor/limiting amplifier.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/bassist-compressor/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BassistCompressorFaceNewLogo-e1524687184538.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-black-glass",
+    "brand": "Keeley",
+    "name": "Black Glass",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-black-glass.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "British fuzz with OC44 germanium transistor.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/black-glass-british-fuzz/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Black-Glass-OC44-Red-Face-Keeley-e1524692161529.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-blacktop",
+    "brand": "Keeley",
+    "name": "Blacktop",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-blacktop.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Vintage-silicon fuzz.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/cole-test/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BlacktopFuzzFaceKeeley1-scaled.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-blues-disorder",
+    "brand": "Keeley",
+    "name": "Blues Disorder",
+    "widthCm": 6.6,
+    "heightCm": 12.1,
+    "image": "keeley-blues-disorder.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29
+    },
+    "usage": "guitar",
+    "notes": "Bluesbreaker-style overdrive + OCD-style distortion, 4-in-1 toggles.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Blues-Disorder-Overdrive-and-Distortion-Effect-Pedal-001-Front-Transparent-Background.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-blues-disorder-signalis",
+    "brand": "Keeley",
+    "name": "Blues Disorder (Signalis)",
+    "widthCm": 6.6,
+    "heightCm": 12.1,
+    "image": "keeley-blues-disorder-signalis.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29
+    },
+    "variantOf": "keeley-blues-disorder",
+    "usage": "guitar",
+    "notes": "Finish variant; no official finish photo published.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-blues-disorder-white",
+    "brand": "Keeley",
+    "name": "Blues Disorder (White)",
+    "widthCm": 6.6,
+    "heightCm": 12.1,
+    "image": "keeley-blues-disorder-white.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29
+    },
+    "variantOf": "keeley-blues-disorder",
+    "usage": "guitar",
+    "notes": "White finish variant; planner last-resort cutout.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder-white.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-bubble-tron",
+    "brand": "Keeley",
+    "name": "Bubble Tron",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-bubble-tron.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger",
+      "phaser",
+      "envelope",
+      "filter"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Dynamic envelope flanger/phaser/filter.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/bubble-tron-dynamic-flanger-phaser/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Bubble_Tron_Filter_Flanger_Phase_Face_Keeley-e1524777844761.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-bubble-tron-ler",
+    "brand": "Keeley",
+    "name": "Bubble Tron (Ler)",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-bubble-tron-ler.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger",
+      "phaser",
+      "envelope",
+      "filter"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "variantOf": "keeley-bubble-tron",
+    "usage": "guitar",
+    "notes": "Larry \"Ler\" LaLonde artist-series Bubble Tron.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/ler-bubble-tron-envelope-filter-flanger-phaser/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-bubble-tron-ler.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-california-girls",
+    "brand": "Keeley",
+    "name": "California Girls",
+    "widthCm": 10.16,
+    "heightCm": 12.8,
+    "image": "keeley-california-girls.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave",
+      "chorus",
+      "delay"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 130
+    },
+    "usage": "both",
+    "notes": "Beach Boys 12-string simulator with octave, chorus and 66 ms slapback echo; stereo in/out.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/beach-boys-california-girls-12-string-simulator/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-Beach-Boys-California-Girls-12-String-Simulator-001-Front-1-scaled.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-caverns",
+    "brand": "Keeley",
+    "name": "Caverns",
+    "widthCm": 9.5,
+    "heightCm": 12,
+    "image": "keeley-caverns.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 110
+    },
+    "usage": "guitar",
+    "notes": "Delay + reverb; top-mounted jacks; true bypass or trails.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/caverns-delay-reverb-v2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/07/Caverns-Delay-Reverb-v2-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-compressor-plus",
+    "brand": "Keeley",
+    "name": "Compressor Plus",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-compressor-plus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "both",
+    "notes": "Four-knob compressor with blend, tone and single-coil/humbucker release switch.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/keeley-compressor-plus/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/06/Keeley-Compressor-Plus-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-d-m-drive",
+    "brand": "Keeley",
+    "name": "D&M Drive",
+    "widthCm": 9.4,
+    "heightCm": 12.45,
+    "image": "keeley-d-m-drive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "boost"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "notes": "That Pedal Show signature boost + overdrive dual pedal.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/dm-drive/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/DM-Orange-Face-e1524683530786.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-dark-side",
+    "brand": "Keeley",
+    "name": "Dark Side",
+    "widthCm": 12,
+    "heightCm": 9.9,
+    "image": "keeley-dark-side.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "delay",
+      "phaser",
+      "flanger",
+      "rotary",
+      "vibrato"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Fuzz + multi-head tape delay + flanger/rotary/U-Vibe/phaser workstation.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/dark-side/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2016/09/Dark-Side-Guitar-Pedal-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-delay-workstation",
+    "brand": "Keeley",
+    "name": "Delay Workstation",
+    "widthCm": 12,
+    "heightCm": 9.7,
+    "image": "keeley-delay-workstation.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 170
+    },
+    "usage": "guitar",
+    "notes": "Dual DSP delay + reverb workstation; tap tempo and expression.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/delay-workstation/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Delay-Workstation-Front-e1524682787320.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-dynatrem",
+    "brand": "Keeley",
+    "name": "Dynatrem",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-dynatrem.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tremolo",
+      "vibrato",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Dynamic wavetable tremolo/vibrato.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/wavetable-tremolo-shirt-namm-special-copy-copy/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Dyna-Trem-New-Logo-Straight-HR-e1524685231797.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-eccos",
+    "brand": "Keeley",
+    "name": "Eccos",
+    "widthCm": 6.7,
+    "heightCm": 12.2,
+    "image": "keeley-eccos.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 115
+    },
+    "usage": "guitar",
+    "notes": "True-stereo tape-flanged delay + looper; expression and remote tap.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/eccos-delay-looper/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2019/10/ECCOS-Delay-Looper-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-el-rey-dorado",
+    "brand": "Keeley",
+    "name": "El Rey Dorado",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-el-rey-dorado.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "British-voiced overdrive (Marshall-in-a-box style).",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/el-ray-dorado/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/El-Rey-Dorado-Front-e1524681406543.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]

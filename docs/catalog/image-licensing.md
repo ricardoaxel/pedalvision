@@ -16,9 +16,9 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 4 · community 4 · official 253 · own 72 · planner 102 · retailer 18
+Sources: archive 5 · community 9 · official 315 · own 16 · planner 120 · retailer 18
 
-Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 131 (hotlinked 1 · mock 10 · planner 120; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
@@ -28,13 +28,13 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102; see the source-g
 | BOSS | not-requested | 144 | 0 | 1 | [contact](https://www.boss.info/us/support/) | Rebecca.Genel@roland.com | [terms](https://www.boss.info/us/terms_of_use) |
 | Electro-Harmonix | not-requested | 2 | 0 | 0 | [contact](https://www.ehx.com/support/) | — | — |
 | JHS | not-requested | 21 | 0 | 0 | [contact](https://www.jhspedals.info/pages/contact) | — | — |
-| Joyo | not-requested | 5 | 0 | 13 | [contact](https://www.joyoaudio.com/about.html) | info@joyoaudio.com | — |
+| Joyo | not-requested | 24 | 0 | 0 | [contact](https://www.joyoaudio.com/about.html) | info@joyoaudio.com | — |
 | Meris | not-requested | 10 | 0 | 0 | [contact](https://meris.us/contact/) | — | — |
 | Mooer | not-requested | 25 | 0 | 1 | [contact](https://www.mooeraudio.com/CONTACT.html) | support@mooeraudio.com | — |
 | MXR | not-requested | 11 | 0 | 0 | [contact](https://www.jimdunlop.com/contact-us/) | — | — |
 | Pedaltrain | not-requested | 0 | 0 | 4 | [contact](https://help.pedaltrain.com/hc/en-us/requests/new) | help@pedaltrain.com | — |
 | Red Panda | not-requested | 10 | 0 | 0 | [contact](https://www.redpandalab.com/contact) | — | — |
-| TC Electronic | not-requested | 14 | 0 | 4 | [contact](https://www.tcelectronic.com/support) | — | — |
+| TC Electronic | not-requested | 19 | 0 | 0 | [contact](https://www.tcelectronic.com/support) | — | — |
 | Temple Audio | not-requested | 0 | 0 | 1 | [contact](https://www.templeaudio.com/contact) | — | — |
 | Walrus Audio | not-requested | 10 | 0 | 0 | [contact](https://www.walrusaudio.com/pages/contact) | — | — |
 
@@ -110,9 +110,9 @@ These brands currently use our own mock art; no image permission is needed until
 - Creation Music Co (1)
 - Donner (1)
 - D’Addario (1)
-- EarthQuaker (18)
+- EarthQuaker (26)
 - Effects Bakery (1)
 - Emerson Custom (1)
 - Fame (1)
-- Keeley (18)
+- Keeley (26)
 

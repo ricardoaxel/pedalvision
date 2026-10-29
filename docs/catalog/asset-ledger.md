@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 381 |
-| own | 72 |
+| license-pending | 467 |
+| own | 16 |
 
-Hosting: hotlinked 19 · mock 66 · static 368
+Hosting: hotlinked 1 · mock 10 · static 472
 
-Source kind: archive 4 · community 4 · official 253 · own 72 · planner 102 · retailer 18
+Source kind: archive 5 · community 9 · official 315 · own 16 · planner 120 · retailer 18
 
-Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
+Needs improvement: 131 (hotlinked 1 · mock 10 · planner 120)
 
 ## Aclam
 
@@ -245,8 +245,8 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `big-joe-pb-109-power-box-li2` | PB-109 Power Box Li2 | own | mock | own | yes | Big Joe batch |
-| `big-joe-power-box-iso4` | Power Box ISO4 | own | mock | own | yes | Big Joe batch |
+| `big-joe-pb-109-power-box-li2` | PB-109 Power Box Li2 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `big-joe-power-box-iso4` | Power Box ISO4 | license-pending | static | planner | yes | better source (official/retailer/community) |
 
 ## Blackbird
 
@@ -288,30 +288,38 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `earthquaker-a-b-box` | A/B Box | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-acapulco-gold` | Acapulco Gold | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath` | Afterneath | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath-v3` | Afterneath V3 | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath-v3-pastel-purple` | Afterneath V3 (Pastel Purple) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath-v3-raw` | Afterneath V3 (Raw) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-aqueduct` | Aqueduct | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-arpanoid` | Arpanoid | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-arrows` | Arrows | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-arrows-v2` | Arrows V2 | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-astral-destiny` | Astral Destiny | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-aurelius` | Aurelius | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run` | Avalanche Run | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2` | Avalanche Run V2 | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-black` | Avalanche Run V2 (Black) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-mint` | Avalanche Run V2 (Mint) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-purple-sparkle` | Avalanche Run V2 (Purple Sparkle) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-barrows-fuzz` | Barrows Fuzz | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-a-b-box` | A/B Box | license-pending | static | official | — | — |
+| `earthquaker-acapulco-gold` | Acapulco Gold | license-pending | static | official | — | — |
+| `earthquaker-afterneath` | Afterneath | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-afterneath-v3` | Afterneath V3 | license-pending | static | official | — | — |
+| `earthquaker-afterneath-v3-pastel-purple` | Afterneath V3 (Pastel Purple) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-afterneath-v3-raw` | Afterneath V3 (Raw) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-aqueduct` | Aqueduct | license-pending | static | official | — | — |
+| `earthquaker-arpanoid` | Arpanoid | license-pending | static | official | — | — |
+| `earthquaker-arrows` | Arrows | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-arrows-v2` | Arrows V2 | license-pending | static | official | — | — |
+| `earthquaker-astral-destiny` | Astral Destiny | license-pending | static | official | — | — |
+| `earthquaker-aurelius` | Aurelius | license-pending | static | official | — | — |
+| `earthquaker-avalanche-run` | Avalanche Run | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-avalanche-run-v2` | Avalanche Run V2 | license-pending | static | official | — | — |
+| `earthquaker-avalanche-run-v2-black` | Avalanche Run V2 (Black) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-avalanche-run-v2-mint` | Avalanche Run V2 (Mint) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-avalanche-run-v2-purple-sparkle` | Avalanche Run V2 (Purple Sparkle) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-barrows-fuzz` | Barrows Fuzz | license-pending | static | official | — | — |
+| `earthquaker-bellows` | Bellows | license-pending | static | official | — | — |
+| `earthquaker-bit-commander` | Bit Commander | license-pending | static | official | — | — |
+| `earthquaker-black-ash` | Black Ash | license-pending | static | official | — | — |
+| `earthquaker-blumes` | Blumes | license-pending | static | official | — | — |
+| `earthquaker-bows` | Bows | license-pending | static | official | — | — |
+| `earthquaker-cloven-hoof` | Cloven Hoof | license-pending | static | official | — | — |
+| `earthquaker-data-corrupter` | Data Corrupter | license-pending | static | official | — | — |
+| `earthquaker-plumes` | Plumes | license-pending | static | official | — | — |
 
 ## Effects Bakery
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `effects-bakery-power-supply-hoden-sentai-donuts` | Power Supply Hoden Sentai Donuts | own | mock | own | yes | Effects Bakery batch |
+| `effects-bakery-power-supply-hoden-sentai-donuts` | Power Supply Hoden Sentai Donuts | license-pending | static | official | — | — |
 
 ## Electro-Harmonix
 
@@ -391,47 +399,63 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `joyo-d-seed` | D-Seed | own | mock | own | yes | Joyo batch |
-| `joyo-jf-01-vintage-overdrive` | JF-01 Vintage Overdrive | own | mock | own | yes | Joyo batch |
-| `joyo-jf-02-ultimate-drive` | JF-02 Ultimate Drive | own | mock | own | yes | Joyo batch |
-| `joyo-jf-03-crunch-distortion` | JF-03 Crunch Distortion | own | mock | own | yes | Joyo batch |
-| `joyo-jf-04-high-gain-distortion` | JF-04 High Gain Distortion | own | mock | own | yes | Joyo batch |
-| `joyo-jf-05-classic-chorus` | JF-05 Classic Chorus | own | mock | own | yes | Joyo batch |
-| `joyo-jf-06-vintage-phase` | JF-06 Vintage Phase | own | mock | own | yes | Joyo batch |
-| `joyo-jf-07-classic-flanger` | JF-07 Classic Flanger | own | mock | own | yes | Joyo batch |
-| `joyo-jf-08-digital-delay` | JF-08 Digital Delay | own | mock | own | yes | Joyo batch |
-| `joyo-jf-09-tremolo` | JF-09 Tremolo | own | mock | own | yes | Joyo batch |
-| `joyo-jf-10-dynamic-compressor` | JF-10 Dynamic Compressor | own | mock | own | yes | Joyo batch |
-| `joyo-jf-11-6-band-eq` | JF-11 6 Band EQ | own | mock | own | yes | Joyo batch |
-| `joyo-jf-12-voodoo-octave` | JF-12 Voodoo Octave | own | mock | own | yes | Joyo batch |
-| `joyo-jf-13-ac-tone` | JF-13 AC Tone | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-14-american-sound` | JF-14 American Sound | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-15-california-sound` | JF-15 California Sound | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-16-british-sound` | JF-16 British Sound | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-17-extreme-metal` | JF-17 Extreme Metal | license-pending | hotlinked | official | yes | Joyo batch |
+| `joyo-d-seed` | D-Seed | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `joyo-jf-01-vintage-overdrive` | JF-01 Vintage Overdrive | license-pending | static | official | — | — |
+| `joyo-jf-02-ultimate-drive` | JF-02 Ultimate Drive | license-pending | static | official | — | — |
+| `joyo-jf-03-crunch-distortion` | JF-03 Crunch Distortion | license-pending | static | official | — | — |
+| `joyo-jf-04-high-gain-distortion` | JF-04 High Gain Distortion | license-pending | static | official | — | — |
+| `joyo-jf-05-classic-chorus` | JF-05 Classic Chorus | license-pending | static | official | — | — |
+| `joyo-jf-06-vintage-phase` | JF-06 Vintage Phase | license-pending | static | official | — | — |
+| `joyo-jf-07-classic-flanger` | JF-07 Classic Flanger | license-pending | static | official | — | — |
+| `joyo-jf-08-digital-delay` | JF-08 Digital Delay | license-pending | static | official | — | — |
+| `joyo-jf-09-tremolo` | JF-09 Tremolo | license-pending | static | official | — | — |
+| `joyo-jf-10-dynamic-compressor` | JF-10 Dynamic Compressor | license-pending | static | official | — | — |
+| `joyo-jf-11-6-band-eq` | JF-11 6 Band EQ | license-pending | static | official | — | — |
+| `joyo-jf-12-voodoo-octave` | JF-12 Voodoo Octave | license-pending | static | official | — | — |
+| `joyo-jf-13-ac-tone` | JF-13 AC Tone | license-pending | static | official | — | — |
+| `joyo-jf-14-american-sound` | JF-14 American Sound | license-pending | static | official | — | — |
+| `joyo-jf-15-california-sound` | JF-15 California Sound | license-pending | static | official | — | — |
+| `joyo-jf-16-british-sound` | JF-16 British Sound | license-pending | static | official | — | — |
+| `joyo-jf-17-extreme-metal` | JF-17 Extreme Metal | license-pending | static | official | — | — |
+| `joyo-jf-18r-power-tune` | JF-18R Power Tune Tuner | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `joyo-jf-19-buffer-tuner` | JF-19 Buffer Tuner | license-pending | static | official | — | — |
+| `joyo-jf-20-moist-reverb` | JF-20 Moist Reverb | license-pending | static | official | — | — |
+| `joyo-jf-21-splinter` | JF-21 Splinter Fuzz Distortion | license-pending | static | official | — | — |
+| `joyo-jf-22-oxford-sound` | JF-22 Oxford Sound Amp Modeler | license-pending | static | official | — | — |
+| `joyo-jf-23-argos-overdrive` | JF-23 Argos Overdrive | license-pending | static | official | — | — |
+| `joyo-jf-24-orthros-selector` | JF-24 Orthros Selector A/B | license-pending | static | official | — | — |
+| `joyo-jf-25-bright-day-overdrive` | JF-25 Bright Day Overdrive | license-pending | static | official | — | — |
 
 ## Keeley
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `keeley-1962` | 1962 | own | mock | own | yes | Keeley batch |
-| `keeley-1962x` | 1962x | own | mock | own | yes | Keeley batch |
-| `keeley-30ms-double-tracker` | 30ms Double Tracker | own | mock | own | yes | Keeley batch |
-| `keeley-abbey-chamber-verb` | Abbey Chamber Verb | own | mock | own | yes | Keeley batch |
-| `keeley-angry-orange` | Angry Orange | own | mock | own | yes | Keeley batch |
-| `keeley-angry-orange-signalis` | Angry Orange (Signalis) | own | mock | own | yes | Keeley batch |
-| `keeley-angry-orange-white` | Angry Orange (White) | own | mock | own | yes | Keeley batch |
-| `keeley-aria` | Aria | own | mock | own | yes | Keeley batch |
-| `keeley-aurora` | Aurora | own | mock | own | yes | Keeley batch |
-| `keeley-bassist-compressor` | Bassist Compressor | own | mock | own | yes | Keeley batch |
-| `keeley-black-glass` | Black Glass | own | mock | own | yes | Keeley batch |
-| `keeley-blacktop` | Blacktop | own | mock | own | yes | Keeley batch |
-| `keeley-blues-disorder` | Blues Disorder | own | mock | own | yes | Keeley batch |
-| `keeley-blues-disorder-signalis` | Blues Disorder (Signalis) | own | mock | own | yes | Keeley batch |
-| `keeley-blues-disorder-white` | Blues Disorder (White) | own | mock | own | yes | Keeley batch |
-| `keeley-bubble-tron` | Bubble Tron | own | mock | own | yes | Keeley batch |
-| `keeley-bubble-tron-ler` | Bubble Tron (Ler) | own | mock | own | yes | Keeley batch |
-| `keeley-california-girls` | California Girls | own | mock | own | yes | Keeley batch |
+| `keeley-1962` | 1962 | license-pending | static | official | — | — |
+| `keeley-1962x` | 1962x | license-pending | static | official | — | — |
+| `keeley-30ms-double-tracker` | 30ms Double Tracker | license-pending | static | official | — | — |
+| `keeley-abbey-chamber-verb` | Abbey Chamber Verb | license-pending | static | archive | — | — |
+| `keeley-angry-orange` | Angry Orange | license-pending | static | official | — | — |
+| `keeley-angry-orange-signalis` | Angry Orange (Signalis) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-angry-orange-white` | Angry Orange (White) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-aria` | Aria | license-pending | static | official | — | — |
+| `keeley-aurora` | Aurora | license-pending | static | official | — | — |
+| `keeley-bassist-compressor` | Bassist Compressor | license-pending | static | official | — | — |
+| `keeley-black-glass` | Black Glass | license-pending | static | official | — | — |
+| `keeley-blacktop` | Blacktop | license-pending | static | official | — | — |
+| `keeley-blues-disorder` | Blues Disorder | license-pending | static | official | — | — |
+| `keeley-blues-disorder-signalis` | Blues Disorder (Signalis) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-blues-disorder-white` | Blues Disorder (White) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-bubble-tron` | Bubble Tron | license-pending | static | official | — | — |
+| `keeley-bubble-tron-ler` | Bubble Tron (Ler) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-california-girls` | California Girls | license-pending | static | official | — | — |
+| `keeley-caverns` | Caverns | license-pending | static | official | — | — |
+| `keeley-compressor-plus` | Compressor Plus | license-pending | static | official | — | — |
+| `keeley-d-m-drive` | D&M Drive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-dark-side` | Dark Side | license-pending | static | official | — | — |
+| `keeley-delay-workstation` | Delay Workstation | license-pending | static | official | — | — |
+| `keeley-dynatrem` | Dynatrem | license-pending | static | official | — | — |
+| `keeley-eccos` | Eccos | license-pending | static | official | — | — |
+| `keeley-el-rey-dorado` | El Rey Dorado | license-pending | static | official | — | — |
 
 ## MXR
 
@@ -542,24 +566,30 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `tc-electronic-2290-p-dynamic-digital-delay` | 2290 P Dynamic Digital Delay | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-3rd-dimension-chorus` | 3rd Dimension Chorus | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-afterglow-chorus` | Afterglow Chorus | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-alter-ego-v2-vintage-echo` | Alter Ego v2 Vintage Echo | own | mock | own | yes | TC Electronic batch |
-| `tc-electronic-alter-ego-x4-vintage-echo` | Alter Ego x4 Vintage Echo | own | mock | own | yes | TC Electronic batch |
-| `tc-electronic-ampworx-550` | Ampworx 550 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-combo-deluxe-65` | Ampworx Combo Deluxe 65' | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-dc30` | Ampworx DC30 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-dual-wreck` | Ampworx Dual Wreck | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-jims-45` | Ampworx Jims 45 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-jims-800` | Ampworx Jims 800 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-arena-reverb` | Arena Reverb | own | mock | own | yes | TC Electronic batch |
-| `tc-electronic-blood-moon-phaser` | Blood Moon Phaser | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-bodyrez-acoustic-pickup-enhancer` | BodyRez Acoustic Pickup Enhancer | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-bonafide-buffer` | Bonafide Buffer | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-brainwaves-pitch-shifter` | Brainwaves Pitch Shifter | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-bucket-brigade-analog-delay` | Bucket Brigade Analog Delay | own | mock | own | yes | TC Electronic batch |
+| `tc-electronic-2290-p-dynamic-digital-delay` | 2290 P Dynamic Digital Delay | license-pending | static | official | — | — |
+| `tc-electronic-3rd-dimension-chorus` | 3rd Dimension Chorus | license-pending | static | official | — | — |
+| `tc-electronic-afterglow-chorus` | Afterglow Chorus | license-pending | static | official | — | — |
+| `tc-electronic-alter-ego-v2-vintage-echo` | Alter Ego v2 Vintage Echo | license-pending | static | community | — | — |
+| `tc-electronic-alter-ego-x4-vintage-echo` | Alter Ego x4 Vintage Echo | license-pending | static | community | — | — |
+| `tc-electronic-ampworx-550` | Ampworx 550 | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-combo-deluxe-65` | Ampworx Combo Deluxe 65' | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-dc30` | Ampworx DC30 | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-dual-wreck` | Ampworx Dual Wreck | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-jims-45` | Ampworx Jims 45 | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-jims-800` | Ampworx Jims 800 | license-pending | static | official | — | — |
+| `tc-electronic-arena-reverb` | Arena Reverb | license-pending | static | community | — | — |
+| `tc-electronic-blood-moon-phaser` | Blood Moon Phaser | license-pending | static | official | — | — |
+| `tc-electronic-bodyrez-acoustic-pickup-enhancer` | BodyRez Acoustic Pickup Enhancer | license-pending | static | official | — | — |
+| `tc-electronic-bonafide-buffer` | Bonafide Buffer | license-pending | static | official | — | — |
+| `tc-electronic-brainwaves-pitch-shifter` | Brainwaves Pitch Shifter | license-pending | static | official | — | — |
+| `tc-electronic-bucket-brigade-analog-delay` | Bucket Brigade Analog Delay | license-pending | static | official | — | — |
 | `tc-electronic-choka-tremolo` | Choka Tremolo | license-pending | static | official | — | — |
+| `tc-electronic-cinders-overdrive` | Cinders Overdrive | license-pending | static | official | — | — |
+| `tc-electronic-corona-chorus` | Corona Chorus | license-pending | static | community | — | — |
+| `tc-electronic-corona-mini-chorus` | Corona Mini Chorus | license-pending | static | official | — | — |
+| `tc-electronic-dark-matter-distortion` | Dark Matter Distortion | license-pending | static | official | — | — |
+| `tc-electronic-ditto-2-looper` | Ditto 2 Looper | license-pending | static | official | — | — |
+| `tc-electronic-ditto-jam-x2-looper` | Ditto Jam X2 Looper | license-pending | static | community | — | — |
 
 ## Temple Audio
 
@@ -604,7 +634,7 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 | --- | --- | --- |
 | Aclam | own | 1 |
 | Behringer | official | 1 |
-| Big Joe | own | 2 |
+| Big Joe | planner | 2 |
 | Blackbird | own | 1 |
 | BoardMods | own | 1 |
 | BOSS | own | 1 |
@@ -613,17 +643,13 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |
 | Donner | own | 1 |
-| EarthQuaker | own | 18 |
-| Effects Bakery | own | 1 |
+| EarthQuaker | planner | 8 |
 | Electro-Harmonix | planner | 14 |
 | Emerson Custom | own | 1 |
 | Fame | own | 1 |
 | JHS | planner | 2 |
-| Joyo | official | 5 |
-| Joyo | own | 13 |
-| Keeley | own | 18 |
+| Joyo | planner | 2 |
+| Keeley | planner | 6 |
 | MXR | planner | 15 |
-| TC Electronic | official | 13 |
-| TC Electronic | own | 4 |
 | Walrus Audio | planner | 8 |
 

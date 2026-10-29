@@ -28,11 +28,14 @@ export function useSceneAutoFrame(): void {
 		if (!ready || width <= 0 || height <= 0) return;
 		const key = `${activeId ?? "none"}|${readOnly ? "ro" : "rw"}`;
 		if (lastKey.current === key) return;
+		// F-05: the first document (boot) snaps; later loads ease the camera.
+		const animate = lastKey.current !== null;
 		lastKey.current = key;
 		focusViewport({
 			target: "scene",
 			maxScale: FOCUS_LOAD_MAX_SCALE,
 			resetOnEmpty: true,
+			animate,
 		});
 	}, [activeId, height, readOnly, ready, width]);
 }

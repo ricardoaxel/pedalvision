@@ -346,6 +346,10 @@ test("switching scenes frames each incoming document (no stale x/y)", async ({
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
 	await expect(stage).toBeVisible();
+	// Boot snaps: no camera tween has run yet.
+	expect(
+		Number((await stage.getAttribute("data-motion-viewport-seq")) ?? "0"),
+	).toBe(0);
 
 	await addBoard(page, "boss-bcb-1000");
 	await panBy(page, 150, 100);
@@ -354,7 +358,16 @@ test("switching scenes frames each incoming document (no stale x/y)", async ({
 	await panBy(page, -200, -150);
 	await addBoard(page, "boss-bcb-1000");
 
+	// A scene switch runs the 240 ms camera tween before marking the frame.
+	const tweenBefore = Number(
+		(await stage.getAttribute("data-motion-viewport-seq")) ?? "0",
+	);
 	await switchSceneAt(page, 0);
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-viewport-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(tweenBefore);
 	await expect(stage).toHaveAttribute("data-framed", "true");
 	await expect(stage).toHaveAttribute("data-focus-target", "scene");
 	await expectAtSafeCentre(page, await boardCentreScreen(page));
@@ -371,6 +384,41 @@ test("switching scenes frames each incoming document (no stale x/y)", async ({
 	expect(
 		Math.abs(second.x - first.x) + Math.abs(second.y - first.y),
 	).toBeGreaterThan(20);
+});
+
+test("a pan during a scene-load tween settles the frame instead of freezing it", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await addBoard(page, "boss-bcb-1000");
+	await newScene(page);
+	await addBoard(page, "boss-bcb-1000");
+
+	await openScenes(page);
+	const beforeEpoch = await focusEpoch(page);
+	const before = await stageTransform(page);
+	await page.locator("[data-scene-open]").nth(0).click();
+
+	// The scene sheet is still open; the left gutter at mid-height is empty.
+	// A press there must finish the running camera tween at its target, then pan.
+	const box = await page.getByTestId("stage").boundingBox();
+	if (!box) throw new Error("stage has no floor");
+	const startX = box.x + 12;
+	const startY = box.y + box.height / 2;
+	await page.mouse.move(startX, startY);
+	await page.mouse.down();
+	await page.mouse.move(startX + 50, startY + 30, { steps: 6 });
+	await page.mouse.up();
+
+	// The tween marked the F-04 frame (epoch) instead of freezing half-way, and
+	// the deliberate pan then moved the camera from that settled transform.
+	await expect.poll(() => focusEpoch(page)).toBeGreaterThan(beforeEpoch);
+	const after = await stageTransform(page);
+	expect(
+		Math.abs(after.x - before.x) + Math.abs(after.y - before.y),
+	).toBeGreaterThan(5);
 });
 
 test("double-click a board toggles board focus ↔ all", async ({ page }) => {

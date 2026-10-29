@@ -1,0 +1,1107 @@
+[
+  {
+    "id": "joyo-d-seed",
+    "brand": "Joyo",
+    "name": "D-Seed",
+    "widthCm": 9.96,
+    "heightCm": 10.49,
+    "image": "joyo-d-seed.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Dual-channel digital delay with 4 delay modes, 2 presets and tap tempo; D-SEED II is the later stereo successor but the original remains listed.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/79.html",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-guitar-effect-pedals/jf-30-series-pedals/JOYO-d-seed-dual-channel-digital-delay-guitar-effect-pedal",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-01-vintage-overdrive",
+    "brand": "Joyo",
+    "name": "JF-01 Vintage Overdrive",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-01-vintage-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/50.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF01.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/qZcrKlYMSIugegRqqyvW9A.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-02-ultimate-drive",
+    "brand": "Joyo",
+    "name": "JF-02 Ultimate Drive",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-02-ultimate-drive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/51.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF02.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/d9h5XzFbTy-vxrtsftpwVA.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-03-crunch-distortion",
+    "brand": "Joyo",
+    "name": "JF-03 Crunch Distortion",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-03-crunch-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/52.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF03.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/0HamBgRFTEyP3Vfg_Yd5Bw.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-04-high-gain-distortion",
+    "brand": "Joyo",
+    "name": "JF-04 High Gain Distortion",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-04-high-gain-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/53.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF04.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/ecunIatCRGuQKvM5UsRhEw.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-05-classic-chorus",
+    "brand": "Joyo",
+    "name": "JF-05 Classic Chorus",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-05-classic-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/54.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF05.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/lsRNJrfPQ0GCVI5J5tKOtw.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-06-vintage-phase",
+    "brand": "Joyo",
+    "name": "JF-06 Vintage Phase",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-06-vintage-phase.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/55.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF06.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/GXh07aGoRbKkp_z4hWBWCQ.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-07-classic-flanger",
+    "brand": "Joyo",
+    "name": "JF-07 Classic Flanger",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-07-classic-flanger.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "flanger"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/56.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF07.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/lXRNhqV_QE6oYURne1Ij9Q.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-08-digital-delay",
+    "brand": "Joyo",
+    "name": "JF-08 Digital Delay",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-08-digital-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/57.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF08.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/dtoHdkhcQN2GBKPGP8TrNA.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-09-tremolo",
+    "brand": "Joyo",
+    "name": "JF-09 Tremolo",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-09-tremolo.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/58.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF09.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/XfQv-HQ9Q3m1e2TJR4Zn5g.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-10-dynamic-compressor",
+    "brand": "Joyo",
+    "name": "JF-10 Dynamic Compressor",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-10-dynamic-compressor.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/59.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF10.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/AP1r6hlLTXunPaLAMwkIHQ.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-11-6-band-eq",
+    "brand": "Joyo",
+    "name": "JF-11 6 Band EQ",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-11-6-band-eq.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/60.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF11.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/RvbvlU7rSOiuXU2CciS-cA.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-12-voodoo-octave",
+    "brand": "Joyo",
+    "name": "JF-12 Voodoo Octave",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-12-voodoo-octave.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "octave"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "notes": "Octave-up pedal with a fuzz blend and a mid-cut switch; classified as octave (the official page describes adding fuzz and taking the tone up an octave).",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/61.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF12.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/l5L-w5CUTFmgAdsl1rdjTQ.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-13-ac-tone",
+    "brand": "Joyo",
+    "name": "JF-13 AC Tone",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-13-ac-tone.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/62.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF13.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/RlzNuXr4RV2BZLeoLqrYkg.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-14-american-sound",
+    "brand": "Joyo",
+    "name": "JF-14 American Sound",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-14-american-sound.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/63.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF14.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/7xJSR7b_TPCy7S4Gi1xZOg.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-15-california-sound",
+    "brand": "Joyo",
+    "name": "JF-15 California Sound",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-15-california-sound.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/64.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF15.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/O9dYTrYtR2CvAi3VMlmhSw.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-16-british-sound",
+    "brand": "Joyo",
+    "name": "JF-16 British Sound",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-16-british-sound.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/65.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF16.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/aRvlJHfnRFO8M8kLznduKQ.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-17-extreme-metal",
+    "brand": "Joyo",
+    "name": "JF-17 Extreme Metal",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-17-extreme-metal.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/66.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF17.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/FYCB60rMRj2fBPbIuf3_og.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-18r-power-tune",
+    "brand": "Joyo",
+    "name": "JF-18R Power Tune Tuner",
+    "widthCm": 7.04,
+    "heightCm": 12.01,
+    "image": "joyo-jf-18r-power-tune.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 120
+    },
+    "usage": "both",
+    "notes": "Combined chromatic tuner and 8-output isolated DC 9 V power supply with a large LED display and true-bypass tuner.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/67.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-guitar-effect-pedals/jf-30-series-pedals/joyo-jf-18-power-tune-multi-power-supply-chromatic-pedal-tuner",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF18.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/76jt8g_lSXqTg10K21hZlA.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-19-buffer-tuner",
+    "brand": "Joyo",
+    "name": "JF-19 Buffer Tuner",
+    "widthCm": 7.1,
+    "heightCm": 12.2,
+    "image": "joyo-jf-19-buffer-tuner.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner",
+      "buffer"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 160
+    },
+    "usage": "both",
+    "notes": "Combined chromatic tuner and buffer with true-bypass/true-buffer selector and a DC 9 V output jack.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/244.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/e24aca27-74c4-4e6b-bb45-e79db3ccb923.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-20-moist-reverb",
+    "brand": "Joyo",
+    "name": "JF-20 Moist Reverb",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-20-moist-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 140
+    },
+    "usage": "guitar",
+    "notes": "Digital reverb with studio, church and plate modes, 32-bit DSP, MIX/TONE/DECAY controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/223.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/7f3ea98b-59fb-4476-bb6c-5b70610d065c.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-21-splinter",
+    "brand": "Joyo",
+    "name": "JF-21 Splinter Fuzz Distortion",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-21-splinter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Classic-voiced distortion blending fuzz and distortion character, with DISTORTION/FILTER/VOLUME controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/224.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/e7c9e144-90e1-4fcf-ab61-e1cc35254406.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-22-oxford-sound",
+    "brand": "Joyo",
+    "name": "JF-22 Oxford Sound Amp Modeler",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-22-oxford-sound.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "notes": "Amp-sim pedal recreating an Orange-style British amp voice for clean through distortion; cab-sim voiced.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/225.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/41538dd4-5cb1-4b1e-a5a0-c62f9f8116e1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-23-argos-overdrive",
+    "brand": "Joyo",
+    "name": "JF-23 Argos Overdrive",
+    "widthCm": 7.2,
+    "heightCm": 12.2,
+    "image": "joyo-jf-23-argos-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18
+    },
+    "usage": "guitar",
+    "notes": "Six-mode overdrive with a built-in noise gate and an ATTACK control; also usable as a boost.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/245.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/e2e9c983-b656-4bf1-a88a-3f08a66bbe0e.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-24-orthros-selector",
+    "brand": "Joyo",
+    "name": "JF-24 Orthros Selector A/B",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-24-orthros-selector.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "ab-box"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "usage": "guitar",
+    "notes": "Two-loop effects selector with 6 routing modes and independent level controls for A/B loops.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/278.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-jf-24-orthros-effect-loop-control-switch-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/8ab99016-6de7-4c29-8423-0e2486e4c7ee.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-25-bright-day-overdrive",
+    "brand": "Joyo",
+    "name": "JF-25 Bright Day Overdrive",
+    "widthCm": 7.2,
+    "heightCm": 12.2,
+    "image": "joyo-jf-25-bright-day-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "usage": "guitar",
+    "notes": "Blues overdrive with switchable vintage/modern voicing and LEVEL/GAIN/TONE controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/283.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-jf-25-bright-day-blues-overdrive-guitar-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/177229b3-5f8d-4460-9e43-0d562ed33900.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]

@@ -4381,15 +4381,25 @@
     "id": "keeley-1962",
     "brand": "Keeley",
     "name": "1962",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-1962.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-1962.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "British Bluesbreaker-style overdrive (Katana JFET boost around a Bluesbreaker circuit).",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/keeley-1962/",
@@ -4399,9 +4409,9 @@
         ]
       },
       {
-        "url": "https://pedalfilter.com/keeley/1962",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962_Overdrive_Face_Keeley-scaled.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4410,15 +4420,26 @@
     "id": "keeley-1962x",
     "brand": "Keeley",
     "name": "1962x",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-1962x.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-1962x.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "variantOf": "keeley-1962",
+    "usage": "guitar",
+    "notes": "Limited two-mode version of the 1962; adds a KT88 high-headroom MOSFET clipping mode.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/1962x-ltd-british-overdrive/",
@@ -4428,9 +4449,9 @@
         ]
       },
       {
-        "url": "https://pedaltown.nl/en/product/keeley-1962x-2-mode-limited-british",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962xNewLogoFrontHiRes-e1524686788841.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4439,17 +4460,27 @@
     "id": "keeley-30ms-double-tracker",
     "brand": "Keeley",
     "name": "30ms Double Tracker",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-30ms-double-tracker.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-30ms-double-tracker.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay",
       "chorus",
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Automatic double tracker / short delay / static chorus / reverb; TRS stereo output.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/30ms-automatic-double-tracker/",
@@ -4459,15 +4490,9 @@
         ]
       },
       {
-        "url": "https://cdn.rockboard.de/nos/data/erp/erp_article/Product-Pictures/Keeley/30ms%20DOUBLE%20TRACKER/30MSDoubleTracker_EN.pdf",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/30MSFaceNewLogo-e1524687207610.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://guitar.com/reviews/keeley-electronics-30ms-double-tracker-abbey-chamber-verb-memphis-sun-reverb/",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4476,26 +4501,37 @@
     "id": "keeley-abbey-chamber-verb",
     "brand": "Keeley",
     "name": "Abbey Chamber Verb",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-abbey-chamber-verb.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-abbey-chamber-verb.avif",
+    "imageSource": "static",
     "effectTypes": [
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Abbey Road chamber-style reverb with RS106 filtering; archived official product page.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.musicstorelive.com/keeley-abbey-chamber-verb-vintage-reverb-guitar-effects-pedal.html",
+        "url": "https://web.archive.org/web/20191014072044/https://robertkeeley.com/product/Abbey+Chamber+Reverb/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.gear4music.com/G4M/Keeley-Abbey-Chamber-Verb/6O0S",
+        "url": "https://robertkeeley.com/woo/wp-content/uploads/2015/09/AbbeyChamberVerbNewLogoFaceHiRes-e1524687136250.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4505,15 +4541,37 @@
     "brand": "Keeley",
     "name": "Angry Orange",
     "widthCm": 6.6,
-    "heightCm": 12.09,
-    "image": "keeley-angry-orange.png",
-    "imageSource": "mock",
+    "heightCm": 12.1,
+    "image": "keeley-angry-orange.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion",
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "usage": "guitar",
+    "notes": "Dual distortion/fuzz: 78 Japanese orange distortion + 91 Soviet civil-war fuzz.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
@@ -4523,15 +4581,9 @@
         ]
       },
       {
-        "url": "https://gcrockboard.com/keeley-electronics-angry-orange-distortion-and-fuzz",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Angry-Orange-Distortion-and-Fuzz-Effect-Pedal-000-Transparent-Background.png",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.premierguitar.com/news/keeley-angry-orange-blues-disorder-super-rodent",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4541,47 +4593,129 @@
     "brand": "Keeley",
     "name": "Angry Orange (Signalis)",
     "widthCm": 6.6,
-    "heightCm": 12.09,
-    "image": "keeley-angry-orange-signalis.png",
-    "imageSource": "mock",
+    "heightCm": 12.1,
+    "image": "keeley-angry-orange-signalis.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion",
       "fuzz"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
     "variantOf": "keeley-angry-orange",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Finish variant of the Angry Orange; no official finish photo published.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "keeley-angry-orange-white",
     "brand": "Keeley",
     "name": "Angry Orange (White)",
     "widthCm": 6.6,
-    "heightCm": 12.09,
-    "image": "keeley-angry-orange-white.png",
-    "imageSource": "mock",
+    "heightCm": 12.1,
+    "image": "keeley-angry-orange-white.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion",
       "fuzz"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
     "variantOf": "keeley-angry-orange",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "White finish variant of the Angry Orange; planner last-resort cutout.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange-white.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "keeley-aria",
     "brand": "Keeley",
     "name": "Aria",
-    "widthCm": 9.4,
-    "heightCm": 12.45,
-    "image": "keeley-aria.png",
-    "imageSource": "mock",
+    "widthCm": 9.5,
+    "heightCm": 12,
+    "image": "keeley-aria.avif",
+    "imageSource": "static",
     "effectTypes": [
       "compressor",
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50
+    },
+    "usage": "guitar",
+    "notes": "Compressor + overdrive dual stomp with TRS insert and switchable order.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/aria-compressor-overdrive/",
@@ -4591,15 +4725,9 @@
         ]
       },
       {
-        "url": "https://www.premierguitar.com/keeley-electronics-unveils-the-aria-compressor-overdrive",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Keeley-Electronics-Aria-Compressor-Drive-V2-Front-Effects-Pedal-scaled-1.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomannmusic.com/keeley_aria.htm",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4608,15 +4736,25 @@
     "id": "keeley-aurora",
     "brand": "Keeley",
     "name": "Aurora",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-aurora.png",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-aurora.avif",
     "imageSource": "static",
     "effectTypes": [
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Digital reverb pedal.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/aurora-digital-reverb-shirt-namm-special/",
@@ -4626,15 +4764,9 @@
         ]
       },
       {
-        "url": "https://www.scan.co.uk/products/keeley-aurora-digital-reverb-pedal",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Aurora-Reverb-Front-10-2017-e1524686581797.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.musiciansfriend.com/amplifiers-effects/keeley-aurora-digital-reverb-guitar-effects-pedal/j21560000000000",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4643,18 +4775,35 @@
     "id": "keeley-bassist-compressor",
     "brand": "Keeley",
     "name": "Bassist Compressor",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-bassist-compressor.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-bassist-compressor.avif",
+    "imageSource": "static",
     "effectTypes": [
       "compressor"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "bass",
+    "notes": "Bass compressor/limiting amplifier.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/bassist-compressor/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BassistCompressorFaceNewLogo-e1524687184538.jpg",
         "kind": [
           "image"
         ]
@@ -4665,15 +4814,25 @@
     "id": "keeley-black-glass",
     "brand": "Keeley",
     "name": "Black Glass",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-black-glass.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-black-glass.avif",
+    "imageSource": "static",
     "effectTypes": [
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "British fuzz with OC44 germanium transistor.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/black-glass-british-fuzz/",
@@ -4683,9 +4842,9 @@
         ]
       },
       {
-        "url": "https://www.premierguitar.com/keeley-electronics-announces-black-glass-british-fuzz",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Black-Glass-OC44-Red-Face-Keeley-e1524692161529.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4694,15 +4853,25 @@
     "id": "keeley-blacktop",
     "brand": "Keeley",
     "name": "Blacktop",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-blacktop.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-blacktop.avif",
+    "imageSource": "static",
     "effectTypes": [
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Vintage-silicon fuzz.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/cole-test/",
@@ -4712,9 +4881,9 @@
         ]
       },
       {
-        "url": "https://www.amazon.com/Keeley-Electronics-Blacktop-Vintage-Silicon/dp/B016H05JCA",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BlacktopFuzzFaceKeeley1-scaled.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4724,15 +4893,37 @@
     "brand": "Keeley",
     "name": "Blues Disorder",
     "widthCm": 6.6,
-    "heightCm": 12.09,
-    "image": "keeley-blues-disorder.png",
-    "imageSource": "mock",
+    "heightCm": 12.1,
+    "image": "keeley-blues-disorder.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive",
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29
+    },
+    "usage": "guitar",
+    "notes": "Bluesbreaker-style overdrive + OCD-style distortion, 4-in-1 toggles.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
@@ -4742,15 +4933,9 @@
         ]
       },
       {
-        "url": "https://www.thomannmusic.com/keeley_blues_disorder_overdrive_dist.htm",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Blues-Disorder-Overdrive-and-Distortion-Effect-Pedal-001-Front-Transparent-Background.png",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.musicradar.com/news/keeley-electronics-4-in-1-series-angry-orange-blues-disorder-super-rodent",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4760,41 +4945,113 @@
     "brand": "Keeley",
     "name": "Blues Disorder (Signalis)",
     "widthCm": 6.6,
-    "heightCm": 12.09,
-    "image": "keeley-blues-disorder-signalis.png",
-    "imageSource": "mock",
+    "heightCm": 12.1,
+    "image": "keeley-blues-disorder-signalis.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive",
       "distortion"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29
+    },
     "variantOf": "keeley-blues-disorder",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Finish variant; no official finish photo published.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "keeley-blues-disorder-white",
     "brand": "Keeley",
     "name": "Blues Disorder (White)",
     "widthCm": 6.6,
-    "heightCm": 12.09,
-    "image": "keeley-blues-disorder-white.png",
-    "imageSource": "mock",
+    "heightCm": 12.1,
+    "image": "keeley-blues-disorder-white.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive",
       "distortion"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29
+    },
     "variantOf": "keeley-blues-disorder",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "White finish variant; planner last-resort cutout.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder-white.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "keeley-bubble-tron",
     "brand": "Keeley",
     "name": "Bubble Tron",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-bubble-tron.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-bubble-tron.avif",
+    "imageSource": "static",
     "effectTypes": [
       "flanger",
       "phaser",
@@ -4802,7 +5059,17 @@
       "filter"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Dynamic envelope flanger/phaser/filter.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/bubble-tron-dynamic-flanger-phaser/",
@@ -4812,15 +5079,9 @@
         ]
       },
       {
-        "url": "https://www.thomann.co.uk/keeley_bubble_tron.htm",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Bubble_Tron_Filter_Flanger_Phase_Face_Keeley-e1524777844761.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.musicradar.com/news/guitars/keeley-electronics-bubble-tron-pedal-assembles-the-vintage-effect-classics-that-never-were-640529",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4829,10 +5090,10 @@
     "id": "keeley-bubble-tron-ler",
     "brand": "Keeley",
     "name": "Bubble Tron (Ler)",
-    "widthCm": 6.93,
-    "heightCm": 11.43,
-    "image": "keeley-bubble-tron-ler.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-bubble-tron-ler.avif",
+    "imageSource": "static",
     "effectTypes": [
       "flanger",
       "phaser",
@@ -4840,8 +5101,32 @@
       "filter"
     ],
     "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
     "variantOf": "keeley-bubble-tron",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Larry \"Ler\" LaLonde artist-series Bubble Tron.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/ler-bubble-tron-envelope-filter-flanger-phaser/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-bubble-tron-ler.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "keeley-california-girls",
@@ -4849,15 +5134,47 @@
     "name": "California Girls",
     "widthCm": 10.16,
     "heightCm": 12.8,
-    "image": "keeley-california-girls.png",
-    "imageSource": "mock",
+    "image": "keeley-california-girls.avif",
+    "imageSource": "static",
     "effectTypes": [
       "octave",
       "chorus",
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 130
+    },
+    "usage": "both",
+    "notes": "Beach Boys 12-string simulator with octave, chorus and 66 ms slapback echo; stereo in/out.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://robertkeeley.com/product/beach-boys-california-girls-12-string-simulator/",
@@ -4867,21 +5184,9 @@
         ]
       },
       {
-        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-The-Beach-Boys-California-Girls-Twelve-String-Simulator-Instructions.pdf",
+        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-Beach-Boys-California-Girls-12-String-Simulator-001-Front-1-scaled.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.sweetwater.com/store/detail/CaliGirls--keeley-california-girls-twelve-string-simulator-pedal-sweetwater-exclusive",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.premierguitar.com/news/keeley-beach-boys-pedals",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4890,15 +5195,43 @@
     "id": "earthquaker-a-b-box",
     "brand": "EarthQuaker",
     "name": "A/B Box",
-    "widthCm": 4.52,
+    "widthCm": 4.6,
     "heightCm": 9.4,
-    "image": "earthquaker-a-b-box.png",
-    "imageSource": "mock",
+    "image": "earthquaker-a-b-box.avif",
+    "imageSource": "static",
     "effectTypes": [
       "ab-box"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "Passive A/B selector; requires 9 V DC for the status LED only.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/ab-box",
@@ -4907,9 +5240,9 @@
         ]
       },
       {
-        "url": "https://www.long-mcquade.com/406797/Guitars/Pedals-Effects/EarthQuaker-Devices/A-B-Box.htm",
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/56773e43-6c1c-46bd-86f8-9951d3bbac63/AB-Box.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4918,27 +5251,50 @@
     "id": "earthquaker-acapulco-gold",
     "brand": "EarthQuaker",
     "name": "Acapulco Gold",
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "image": "earthquaker-acapulco-gold.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-acapulco-gold.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18
+    },
+    "usage": "guitar",
+    "notes": "Modeled after a cranked Sunn Model T power amp.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/acapulco-gold",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.guitarworld.com/gear/review-earthquaker-devices-acapulco-gold-pedal",
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548689758783-RGV59SB0NUNWAU7DHAJ6/Acapulco-Gold.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -4947,30 +5303,43 @@
     "id": "earthquaker-afterneath",
     "brand": "EarthQuaker",
     "name": "Afterneath",
-    "widthCm": 6.6,
-    "heightCm": 12.75,
-    "image": "earthquaker-afterneath.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath.avif",
+    "imageSource": "static",
     "effectTypes": [
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "usage": "guitar",
+    "notes": "Original Afterneath (V1); replaced by Afterneath V3.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.earthquakerdevices.com/blog-posts/afterneath-for-noodlers",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/3963",
-        "kind": [
-          "info"
-        ]
-      },
-      {
         "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath.png",
         "kind": [
           "image"
         ]
@@ -4981,27 +5350,54 @@
     "id": "earthquaker-afterneath-v3",
     "brand": "EarthQuaker",
     "name": "Afterneath V3",
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "image": "earthquaker-afterneath-v3.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath-v3.avif",
+    "imageSource": "static",
     "effectTypes": [
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "notes": "Enhanced Otherworldly Reverberator with 9 modes and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/afterneath",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.gearnews.com/earthquaker-devices-afterneath-v3-features-9-new-modes",
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1578601522386-1W1CJO7DG64FYM7KAICL/Afterneath.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -5010,57 +5406,164 @@
     "id": "earthquaker-afterneath-v3-pastel-purple",
     "brand": "EarthQuaker",
     "name": "Afterneath V3 (Pastel Purple)",
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "image": "earthquaker-afterneath-v3-pastel-purple.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath-v3-pastel-purple.avif",
+    "imageSource": "static",
     "effectTypes": [
       "reverb"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "earthquaker-afterneath-v3",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Pastel Purple finish variant of Afterneath V3.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-pastel-purple.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "earthquaker-afterneath-v3-raw",
     "brand": "EarthQuaker",
     "name": "Afterneath V3 (Raw)",
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "image": "earthquaker-afterneath-v3-raw.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath-v3-raw.avif",
+    "imageSource": "static",
     "effectTypes": [
       "reverb"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
     "variantOf": "earthquaker-afterneath-v3",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Raw finish variant of Afterneath V3.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-raw.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "earthquaker-aqueduct",
     "brand": "EarthQuaker",
     "name": "Aqueduct",
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "image": "earthquaker-aqueduct.png",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-aqueduct.avif",
     "imageSource": "static",
     "effectTypes": [
       "vibrato"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 68
+    },
+    "usage": "guitar",
+    "notes": "Vibrato with modes and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/aqueduct",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/gear/earthquaker-devices-aqueduct-review",
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1557945381231-CRL4Y5SAU2AS13EYMMCZ/Aqueduct.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -5069,20 +5572,49 @@
     "id": "earthquaker-arpanoid",
     "brand": "EarthQuaker",
     "name": "Arpanoid",
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "image": "earthquaker-arpanoid.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-arpanoid.avif",
+    "imageSource": "static",
     "effectTypes": [
       "pitch"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Polyphonic pitch arpeggiator.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/arpanoid",
         "kind": [
-          "info",
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548953571222-KSS5T3MGPE4GR3MJ8PRZ/Arpanoid-Main.jpg",
+        "kind": [
           "image"
         ]
       }
@@ -5094,26 +5626,49 @@
     "name": "Arrows",
     "widthCm": 7.21,
     "heightCm": 11.43,
-    "image": "earthquaker-arrows.png",
-    "imageSource": "mock",
+    "image": "earthquaker-arrows.avif",
+    "imageSource": "static",
     "effectTypes": [
       "boost",
       "preamp"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "notes": "Original Arrows pre-amp booster (wedge enclosure); replaced by Arrows V2.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/arrows",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.woodsysmusic.com/products/earthquaker-devices-arrows-preamp-booster",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-arrows.png",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -5122,31 +5677,49 @@
     "id": "earthquaker-arrows-v2",
     "brand": "EarthQuaker",
     "name": "Arrows V2",
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "image": "earthquaker-arrows-v2.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-arrows-v2.avif",
+    "imageSource": "static",
     "effectTypes": [
       "boost",
       "preamp"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "notes": "Pre-amp booster in the compact 121 x 64 mm enclosure.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.audiodistributiongroup.com/earthquaker-devices-launch-5-additional-v2-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.sweetwater.com/store/detail/ArrowsV2--earthquaker-devices-arrows-v2-preamp-booster-pedal",
-        "kind": [
-          "info"
-        ]
-      },
-      {
         "url": "https://www.earthquakerdevices.com/arrows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1519222854353-50LNIJ54IUVWQQ0HPRHV/Arrows.jpg",
         "kind": [
           "image"
         ]
@@ -5157,28 +5730,55 @@
     "id": "earthquaker-astral-destiny",
     "brand": "EarthQuaker",
     "name": "Astral Destiny",
-    "widthCm": 9.68,
-    "heightCm": 12.22,
-    "image": "earthquaker-astral-destiny.png",
-    "imageSource": "mock",
+    "widthCm": 9.3,
+    "heightCm": 11.8,
+    "image": "earthquaker-astral-destiny.avif",
+    "imageSource": "static",
     "effectTypes": [
       "reverb",
       "octave"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 85
+    },
+    "usage": "guitar",
+    "notes": "Octal octave reverberation with 8 modes and 8 presets.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/astral-destiny",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.guitarworld.com/news/earthquaker-devices-takes-shimmer-reverb-to-the-next-level-with-the-astral-destiny",
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1607352703063-P5HJWHKFJZGCO4BVMD9E/Astral-Destiny.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -5187,29 +5787,56 @@
     "id": "earthquaker-aurelius",
     "brand": "EarthQuaker",
     "name": "Aurelius",
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "image": "earthquaker-aurelius.png",
-    "imageSource": "mock",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-aurelius.avif",
+    "imageSource": "static",
     "effectTypes": [
       "chorus",
       "vibrato",
       "rotary"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Tri-voice chorus with 6 presets and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/aurelius",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/news/earthquaker-devices-aurelius",
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/3dd96242-054b-46c5-ad40-8f27fa6f8d89/Aurelius.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -5218,28 +5845,59 @@
     "id": "earthquaker-avalanche-run",
     "brand": "EarthQuaker",
     "name": "Avalanche Run",
-    "widthCm": 9.68,
-    "heightCm": 12.22,
-    "image": "earthquaker-avalanche-run.png",
-    "imageSource": "mock",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay",
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
+    "usage": "guitar",
+    "notes": "Original Avalanche Run stereo reverb and delay; replaced by V2.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/avalanche-run",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://stinkfoot.se/archives/3963",
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run.png",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -5248,28 +5906,59 @@
     "id": "earthquaker-avalanche-run-v2",
     "brand": "EarthQuaker",
     "name": "Avalanche Run V2",
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "image": "earthquaker-avalanche-run-v2.png",
-    "imageSource": "mock",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay",
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
+    "usage": "guitar",
+    "notes": "Stereo reverb and delay with tap tempo and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/avalanche-run",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://www.thomannmusic.com/earthquaker_devices_avalanche_run_v2.htm",
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1544033064540-9DLWD9Y81ZUENBFL62IW/Avalanche-Run.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ]
@@ -5278,66 +5967,210 @@
     "id": "earthquaker-avalanche-run-v2-black",
     "brand": "EarthQuaker",
     "name": "Avalanche Run V2 (Black)",
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "image": "earthquaker-avalanche-run-v2-black.png",
-    "imageSource": "mock",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2-black.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay",
       "reverb"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
     "variantOf": "earthquaker-avalanche-run-v2",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Black finish variant of Avalanche Run V2.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-black.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "earthquaker-avalanche-run-v2-mint",
     "brand": "EarthQuaker",
     "name": "Avalanche Run V2 (Mint)",
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "image": "earthquaker-avalanche-run-v2-mint.png",
-    "imageSource": "mock",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2-mint.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay",
       "reverb"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
     "variantOf": "earthquaker-avalanche-run-v2",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Mint finish variant of Avalanche Run V2.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-mint.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "earthquaker-avalanche-run-v2-purple-sparkle",
     "brand": "EarthQuaker",
     "name": "Avalanche Run V2 (Purple Sparkle)",
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "image": "earthquaker-avalanche-run-v2-purple-sparkle.png",
-    "imageSource": "mock",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2-purple-sparkle.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay",
       "reverb"
     ],
     "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
     "variantOf": "earthquaker-avalanche-run-v2",
-    "source": "placeholder"
+    "usage": "guitar",
+    "notes": "Purple Sparkle finish variant of Avalanche Run V2.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-purple.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "earthquaker-barrows-fuzz",
     "brand": "EarthQuaker",
     "name": "Barrows Fuzz",
-    "widthCm": 4.52,
-    "heightCm": 9.4,
-    "image": "earthquaker-barrows-fuzz.png",
-    "imageSource": "mock",
+    "widthCm": 3.8,
+    "heightCm": 9.5,
+    "image": "earthquaker-barrows-fuzz.avif",
+    "imageSource": "static",
     "effectTypes": [
       "fuzz"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "Fuzz Attacker; three-transistor TB MkII-inspired circuit.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.earthquakerdevices.com/barrows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/a352fd54-4472-45f7-8439-73b3c8b12d39/Barrows-Fuzz-Attacker.jpg",
         "kind": [
           "image"
         ]
@@ -6286,24 +7119,79 @@
     "name": "2290 P Dynamic Digital Delay",
     "widthCm": 22.35,
     "heightCm": 13.72,
-    "image": "https://cdn-media.empowertribe.com/107b2da708d14304a35dfe02361e8dc3/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Mailchimp_2023-10-20_Rev.0.png",
-    "imageSource": "url",
+    "image": "tc-electronic-2290-p-dynamic-digital-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "midi",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250
+    },
+    "usage": "guitar",
+    "notes": "Desktop 2290 P reissue: stereo dynamic digital delay with presets, MIDI IN and OUT/THRU, USB-C editor, expression control and an amp send/return loop; 9 V DC 250 mA.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AJO",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/881f96e7ff8040f1842dedfe3ebdb3a6/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Top_XL.png",
         "kind": [
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/107b2da708d14304a35dfe02361e8dc3/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Mailchimp_2023-10-20_Rev.0.png",
+        "url": "https://cdn-media.empowertribe.com/9683b62d25f44d1c8f53dea9010e1a4a/QSG_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_CN.pdf",
         "kind": [
-          "image"
+          "info"
         ]
       }
     ]
@@ -6312,24 +7200,49 @@
     "id": "tc-electronic-3rd-dimension-chorus",
     "brand": "TC Electronic",
     "name": "3rd Dimension Chorus",
-    "widthCm": 7.37,
-    "heightCm": 13.08,
-    "image": "https://cdn-media.empowertribe.com/2b92db787a0a4ccc81317060876e3622/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Left_XL.png",
-    "imageSource": "url",
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "image": "tc-electronic-3rd-dimension-chorus.avif",
+    "imageSource": "static",
     "effectTypes": [
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Analog BBD recreation of an 80s chorus with a 4-button preset system (up to 16 combinations) instead of knobs; true bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AHN",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/2b92db787a0a4ccc81317060876e3622/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/9230fe9366f549d3b840683b32ff5d8f/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Top_XL.png",
         "kind": [
           "image"
         ]
@@ -6340,26 +7253,57 @@
     "id": "tc-electronic-afterglow-chorus",
     "brand": "TC Electronic",
     "name": "Afterglow Chorus",
-    "widthCm": 7.37,
-    "heightCm": 13.08,
-    "image": "https://cdn-media.empowertribe.com/b77c59931cff470c9bac4cfd11732047/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Left_XL.png",
-    "imageSource": "url",
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "image": "tc-electronic-afterglow-chorus.avif",
+    "imageSource": "static",
     "effectTypes": [
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Analog BBD chorus with Speed, Depth, Delay Time and Mix controls; true bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AFD",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c70dbdfb11ff4cc9b60df90d27c2a90d/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Top_XL.png",
         "kind": [
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/b77c59931cff470c9bac4cfd11732047/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/598ee260fb3044acb835ce28d1038d8a/QSG_TE_0709-AFD_AFTERGLOW-CHORUS_WW.pdf",
         "kind": [
-          "image"
+          "info"
         ]
       }
     ]
@@ -6370,13 +7314,38 @@
     "name": "Alter Ego v2 Vintage Echo",
     "widthCm": 7.26,
     "heightCm": 12.19,
-    "image": "tc-electronic-alter-ego-v2-vintage-echo.png",
-    "imageSource": "mock",
+    "image": "tc-electronic-alter-ego-v2-vintage-echo.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "notes": "TonePrint vintage-echo delay with tap tempo and stereo outputs.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-alter-ego-v2-vintage-echo",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/d8180de6a6de020490eae1e6972258c989a6e0f75f0144256ddc6b455f191fed.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "tc-electronic-alter-ego-x4-vintage-echo",
@@ -6384,64 +7353,104 @@
     "name": "Alter Ego x4 Vintage Echo",
     "widthCm": 23.62,
     "heightCm": 14.35,
-    "image": "tc-electronic-alter-ego-x4-vintage-echo.png",
-    "imageSource": "mock",
+    "image": "tc-electronic-alter-ego-x4-vintage-echo.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Large-format TonePrint vintage echo with four presets, tap tempo and stereo I/O.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-alter-ego-x4-vintage-echo",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/5040871279686b7f226b696a13453723e7e446378c18bc4a550fc7667488bdc5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "tc-electronic-ampworx-550",
     "brand": "TC Electronic",
     "name": "Ampworx 550",
-    "widthCm": 10.67,
-    "heightCm": 12.78,
-    "image": "https://cdn-media.empowertribe.com/53481ac78b9b4dd9ba5455449121a80b/Image_TE_0709-AJX_V550-PREAMP_Left_XL.png",
-    "imageSource": "url",
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "image": "tc-electronic-ampworx-550.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Ampworx high-gain V550 preamp: component-based amp modelling with cab simulation, DI/headphone output and USB audio.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.tcelectronic.com/en/products",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.soundonsound.com/news/ampworx-high-gain-pedals-tc-electronic",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.sweetwater.com/store/detail/V550--tc-electronic-ampworx-v550-preamp-pedal",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.andertons.co.uk/tc-electronic-ampworx-high-gain-v550-preamp-pedal/",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AJX",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/53481ac78b9b4dd9ba5455449121a80b/Image_TE_0709-AJX_V550-PREAMP_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/8c6bbb7ae0f0478dbaf8f350b4e22b06/Image_TE_0709-AJX_V550-PREAMP_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4daf18de961540eeb6f0461ed96e896f/QSG_TE_0709-AJX_V550-PREAMP_A6_JP.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6450,10 +7459,10 @@
     "id": "tc-electronic-ampworx-combo-deluxe-65",
     "brand": "TC Electronic",
     "name": "Ampworx Combo Deluxe 65'",
-    "widthCm": 10.67,
-    "heightCm": 12.78,
-    "image": "https://cdn-media.empowertribe.com/930cad4f3eda4d67a69894c125b98c44/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Catalog_B.png",
-    "imageSource": "url",
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "image": "tc-electronic-ampworx-combo-deluxe-65.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "amp-modeler",
@@ -6461,36 +7470,57 @@
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Ampworx Fender-style blackface combo preamp with spring reverb, cab simulation, DI/headphone output and USB audio.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.tcelectronic.com/en/products",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomannmusic.com/tc_electronic_combo_deluxe_65_preamp.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-Combo-Deluxe-65-Preamp-Pedal-Black-1500000421071.gc",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AJQ",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/930cad4f3eda4d67a69894c125b98c44/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Catalog_B.png",
+        "url": "https://cdn-media.empowertribe.com/fb385b8bed5a4085938c8adfa3ba8fad/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/1aadfc0ae2724f57bef647833a830ed0/QSG_TE_0709-AJQ_COMBO-DELUXE-65&#x27;-PREAMP_A6_CN.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6499,46 +7529,67 @@
     "id": "tc-electronic-ampworx-dc30",
     "brand": "TC Electronic",
     "name": "Ampworx DC30",
-    "widthCm": 10.67,
-    "heightCm": 12.78,
-    "image": "https://cdn-media.empowertribe.com/605cb69ebae6447894f633b54c9796b7/Image_TE_0709-AJR_DC30-PREAMP_Catalog_B.png",
-    "imageSource": "url",
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "image": "tc-electronic-ampworx-dc30.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Ampworx Vox-style DC30 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.tcelectronic.com/en/products",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomannmusic.com/tc_electronic_combo_deluxe_65_preamp.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-DC30-Preamp-Pedal-Blue-1500000421063.gc",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AJR",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/605cb69ebae6447894f633b54c9796b7/Image_TE_0709-AJR_DC30-PREAMP_Catalog_B.png",
+        "url": "https://cdn-media.empowertribe.com/afcba0e324df405fada64dbbd69a2531/Image_TE_0709-AJR_DC30-PREAMP_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2d2229509c3943dea80c7b1a2e821d6a/QSG_TE_0709-AJR_DC30-PREAMP_CN.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6547,46 +7598,67 @@
     "id": "tc-electronic-ampworx-dual-wreck",
     "brand": "TC Electronic",
     "name": "Ampworx Dual Wreck",
-    "widthCm": 10.67,
-    "heightCm": 12.78,
-    "image": "https://cdn-media.empowertribe.com/e6103ee8e62548ec8420f3a73d3236d6/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Catalog_B.png",
-    "imageSource": "url",
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "image": "tc-electronic-ampworx-dual-wreck.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Ampworx high-gain Dual Wreck preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.soundonsound.com/news/ampworx-high-gain-pedals-tc-electronic",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomannmusic.com/tc_electronic_dual_wreck_preamp.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-Dual-Wreck-Preamp-Pedal-Black-1500000421067.gc",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AJS",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/e6103ee8e62548ec8420f3a73d3236d6/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Catalog_B.png",
+        "url": "https://cdn-media.empowertribe.com/a75f8aef252449a087fd413c7bcfaf0e/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/0a1e3e03cb354184961b204332635d4e/QSG_TE_0709-AJS_DUAL-WRECK-PREAMP_A6_JP.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6595,46 +7667,67 @@
     "id": "tc-electronic-ampworx-jims-45",
     "brand": "TC Electronic",
     "name": "Ampworx Jims 45",
-    "widthCm": 10.67,
-    "heightCm": 12.78,
-    "image": "https://cdn-media.empowertribe.com/7fb3bdfd0af542e1ba80baa36f012e4f/Image_TE_0709-AJM_JIMS-45-PREAMP_Left_XL.png",
-    "imageSource": "url",
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "image": "tc-electronic-ampworx-jims-45.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Ampworx Marshall-style Jims 45 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.musicradar.com/reviews/tc-electronic-ampworx-vintage-series-combo-deluxe-65-dc30-and-jims-45-preamp-pedals-review",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-JIMS-45-Preamp-Pedal-Black-1500000421070.gc",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.musicstore.com/en_US/USD/TC-Electronic-Ampworx-Jims-45-Preamp/art-GIT0060752-000",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AJM",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/7fb3bdfd0af542e1ba80baa36f012e4f/Image_TE_0709-AJM_JIMS-45-PREAMP_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/b7092f5942a04da6b832a08326bb4270/Image_TE_0709-AJM_JIMS-45-PREAMP_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/887a2515dd3a45b788c78117fda5a563/QSG_TE_0709-AJM_JIMS-45-PREAMP_JP.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6643,46 +7736,67 @@
     "id": "tc-electronic-ampworx-jims-800",
     "brand": "TC Electronic",
     "name": "Ampworx Jims 800",
-    "widthCm": 10.67,
-    "heightCm": 12.78,
-    "image": "https://cdn-media.empowertribe.com/b71b271dc6b4472fb069cae0777c7c0c/Image_TE_0709-AJV_JIMS-800-PREAMP_Left_XL.png",
-    "imageSource": "url",
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "image": "tc-electronic-ampworx-jims-800.avif",
+    "imageSource": "static",
     "effectTypes": [
       "preamp",
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "guitar",
+    "notes": "Ampworx high-gain Jims 800 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.thomannmusic.com/tc_electronic_jims_800_preamp.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.sweetwater.com/store/detail/JIMS800--tc-electronic-ampworx-jims-800-preamp-pedal",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.guitarcenter.com/TC-Electronic/Ampworx-JIMS-800-Preamp-Pedal-Black-1500000421068.gc",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AJV",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/b71b271dc6b4472fb069cae0777c7c0c/Image_TE_0709-AJV_JIMS-800-PREAMP_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/68c86bcb7991463686ea01961915adaa/Image_TE_0709-AJV_JIMS-800-PREAMP_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/35053abc784d4424b83230e6b8a63b9b/QSG_TE_0709-AJV_JIMS-800-PREAMP_JP.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6693,38 +7807,94 @@
     "name": "Arena Reverb",
     "widthCm": 7.26,
     "heightCm": 12.19,
-    "image": "tc-electronic-arena-reverb.png",
-    "imageSource": "mock",
+    "image": "tc-electronic-arena-reverb.avif",
+    "imageSource": "static",
     "effectTypes": [
       "reverb"
     ],
     "category": "pedal",
-    "source": "placeholder"
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "notes": "TonePrint stereo reverb with four Arena-specific modes, spillover, analog dry-through and switchable kill-dry.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-arena-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/29a430722432a7bf1efcca50b1b46a89b4dcf8318eeec0609b4b43fa8f596365.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
   },
   {
     "id": "tc-electronic-blood-moon-phaser",
     "brand": "TC Electronic",
     "name": "Blood Moon Phaser",
-    "widthCm": 7.37,
-    "heightCm": 13.08,
-    "image": "https://cdn-media.empowertribe.com/33ff48a85ebf4aa5b7e1c19572ea2c8f/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Left_XL.png",
-    "imageSource": "url",
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "image": "tc-electronic-blood-moon-phaser.avif",
+    "imageSource": "static",
     "effectTypes": [
       "phaser"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Analog four-stage phaser with Rate, Depth and Feedback controls; true bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AFE",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9ec601f3874243939ef5de635dd32ade/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Top_XL.png",
         "kind": [
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/33ff48a85ebf4aa5b7e1c19572ea2c8f/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/c195e6ab19fb4c6699d17252aa868fa3/QSG_TE_0709-AFE_BLOOD%20MOON%20PHASER_WW.pdf",
         "kind": [
-          "image"
+          "info"
         ]
       }
     ]
@@ -6735,43 +7905,42 @@
     "name": "BodyRez Acoustic Pickup Enhancer",
     "widthCm": 5.08,
     "heightCm": 9.53,
-    "image": "https://cdn-media.empowertribe.com/7fed2fbde7e8427681e564c49b7c618e/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Left_XL.png",
-    "imageSource": "url",
+    "image": "tc-electronic-bodyrez-acoustic-pickup-enhancer.avif",
+    "imageSource": "static",
     "effectTypes": [
       "eq",
       "compressor"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "notes": "Acoustic pickup enhancer that restores body/resonance and controls feedback for piezo-equipped acoustics.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://cf3.zzounds.com/media/tc-electronic-bodyrez-manual-english-433fa54fa60d51a2088eb137d0d13170.pdf",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.premierguitar.com/tc-electronic-unveils-the-bodyrez-acoustic-pickup-enhancer",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomann.co.uk/tc_electronic_bodyrez_b_stock.htm",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AHB",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/7fed2fbde7e8427681e564c49b7c618e/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/9ba64f84606a4077bd389eda587c1e98/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5b50110cea064268a8bc219e2ad57944/QSG_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_JP.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6782,42 +7951,41 @@
     "name": "Bonafide Buffer",
     "widthCm": 5.08,
     "heightCm": 9.53,
-    "image": "https://cdn-media.empowertribe.com/6bf34328b06747de8e10277649dbc5ca/Image_TE_0709-AHC_BONAFIDE-BUFFER_Catalog%20B.png",
-    "imageSource": "url",
+    "image": "tc-electronic-bonafide-buffer.avif",
+    "imageSource": "static",
     "effectTypes": [
       "buffer"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40
+    },
+    "usage": "guitar",
+    "notes": "Compact always-on analog buffer that preserves signal integrity through long cable runs and true-bypass pedalboards.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
-      {
-        "url": "https://www.omikron.gr/wp-content/uploads/productfiles/EngineeringFiles/E008354.pdf",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomann.co.uk/tc_electronic_bonafide_buffer.htm",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/1171",
-        "kind": [
-          "info"
-        ]
-      },
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AHC",
         "kind": [
+          "info",
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/6bf34328b06747de8e10277649dbc5ca/Image_TE_0709-AHC_BONAFIDE-BUFFER_Catalog%20B.png",
+        "url": "https://cdn-media.empowertribe.com/32695f9291944939b1c30f3c3e270378/Image_TE_0709-AHC_BONAFIDE-BUFFER_Top_XL.png",
         "kind": [
           "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5d4256679452441ea9a0ed035430f7b1/QSG_TE_0709-AHC_BONAFIDE-BUFFER_WW.pdf",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -6826,26 +7994,69 @@
     "id": "tc-electronic-brainwaves-pitch-shifter",
     "brand": "TC Electronic",
     "name": "Brainwaves Pitch Shifter",
-    "widthCm": 7.26,
-    "heightCm": 12.19,
-    "image": "https://cdn-media.empowertribe.com/9cb5114af4cf4089a3b7db746d30877a/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Left_XL.png",
-    "imageSource": "url",
+    "widthCm": 7.4,
+    "heightCm": 12.2,
+    "image": "tc-electronic-brainwaves-pitch-shifter.avif",
+    "imageSource": "static",
     "effectTypes": [
       "pitch"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "ctrl",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 85
+    },
+    "usage": "guitar",
+    "notes": "Pitch shifter with two independent voices, up to two octaves each, TonePrint and MASH expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AIR",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2c45936d9dfa4c2589b87dee031b399b/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Top_XL.png",
         "kind": [
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/9cb5114af4cf4089a3b7db746d30877a/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Left_XL.png",
+        "url": "https://cdn-media.empowertribe.com/6c08710089694eb3856910f7f18bbcd2/QSG_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_WW.pdf",
         "kind": [
-          "image"
+          "info"
         ]
       }
     ]
@@ -6856,24 +8067,55 @@
     "name": "Bucket Brigade Analog Delay",
     "widthCm": 6.1,
     "heightCm": 10.03,
-    "image": "tc-electronic-bucket-brigade-analog-delay.png",
+    "image": "tc-electronic-bucket-brigade-analog-delay.avif",
     "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40
+    },
+    "usage": "guitar",
+    "notes": "Compact all-analog BBD delay (up to 600 ms) with Delay, Feedback, Vol, Depth and Mod controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.tcelectronic.com/en/products/0709-AKE",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/883f62967a6a460faf016c6b3afe11e2/Image_TE_0709-AKE_BUCKET-BRIGADE-ANALOG-DELAY_Top_XL.png",
         "kind": [
           "image"
         ]
       },
       {
-        "url": "https://cdn-media.empowertribe.com/4cd6620e9f484a6292ed992f88255452/Image_TE_0709-AKE_BUCKET-BRIGADE-ANALOG-DELAY_Left_B.png",
+        "url": "https://cdn-media.empowertribe.com/5ad4cfffcd974652a1bb18ed8c16c8f3/QSG_TE_0709-AKE_BUCKET-BRIGADE_WW.pdf",
         "kind": [
-          "image"
+          "info"
         ]
       }
     ]
@@ -9069,19 +10311,35 @@
     "name": "D-Seed",
     "widthCm": 9.96,
     "heightCm": 10.49,
-    "image": "joyo-d-seed.png",
-    "imageSource": "mock",
+    "image": "joyo-d-seed.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Dual-channel digital delay with 4 delay modes, 2 presets and tap tempo; D-SEED II is the later stereo successor but the original remains listed.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/79.html",
         "kind": [
           "info",
           "image"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-guitar-effect-pedals/jf-30-series-pedals/JOYO-d-seed-dual-channel-digital-delay-guitar-effect-pedal",
+        "kind": [
+          "info"
         ]
       }
     ]
@@ -9090,18 +10348,39 @@
     "id": "joyo-jf-01-vintage-overdrive",
     "brand": "Joyo",
     "name": "JF-01 Vintage Overdrive",
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "image": "joyo-jf-01-vintage-overdrive.png",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-01-vintage-overdrive.avif",
     "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/50.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF01.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/qZcrKlYMSIugegRqqyvW9A.jpg",
         "kind": [
           "image"
         ]
@@ -9112,18 +10391,39 @@
     "id": "joyo-jf-02-ultimate-drive",
     "brand": "Joyo",
     "name": "JF-02 Ultimate Drive",
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "image": "joyo-jf-02-ultimate-drive.png",
-    "imageSource": "mock",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-02-ultimate-drive.avif",
+    "imageSource": "static",
     "effectTypes": [
       "overdrive"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/51.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF02.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/d9h5XzFbTy-vxrtsftpwVA.jpg",
         "kind": [
           "image"
         ]
@@ -9134,18 +10434,39 @@
     "id": "joyo-jf-03-crunch-distortion",
     "brand": "Joyo",
     "name": "JF-03 Crunch Distortion",
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "image": "joyo-jf-03-crunch-distortion.png",
-    "imageSource": "mock",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-03-crunch-distortion.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/52.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF03.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/0HamBgRFTEyP3Vfg_Yd5Bw.jpg",
         "kind": [
           "image"
         ]
@@ -9156,18 +10477,39 @@
     "id": "joyo-jf-04-high-gain-distortion",
     "brand": "Joyo",
     "name": "JF-04 High Gain Distortion",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "joyo-jf-04-high-gain-distortion.png",
-    "imageSource": "mock",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-04-high-gain-distortion.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 11
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/53.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF04.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/ecunIatCRGuQKvM5UsRhEw.jpg",
         "kind": [
           "image"
         ]
@@ -9178,18 +10520,39 @@
     "id": "joyo-jf-05-classic-chorus",
     "brand": "Joyo",
     "name": "JF-05 Classic Chorus",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "joyo-jf-05-classic-chorus.png",
-    "imageSource": "mock",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-05-classic-chorus.avif",
+    "imageSource": "static",
     "effectTypes": [
       "chorus"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/54.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF05.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/lsRNJrfPQ0GCVI5J5tKOtw.jpg",
         "kind": [
           "image"
         ]
@@ -9200,27 +10563,41 @@
     "id": "joyo-jf-06-vintage-phase",
     "brand": "Joyo",
     "name": "JF-06 Vintage Phase",
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "image": "joyo-jf-06-vintage-phase.png",
-    "imageSource": "mock",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-06-vintage-phase.avif",
+    "imageSource": "static",
     "effectTypes": [
       "phaser"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/55.html",
         "kind": [
-          "info",
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://stinkfoot.se/archives/2343",
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF06.pdf",
         "kind": [
           "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/GXh07aGoRbKkp_z4hWBWCQ.jpg",
+        "kind": [
+          "image"
         ]
       }
     ]
@@ -9229,18 +10606,39 @@
     "id": "joyo-jf-07-classic-flanger",
     "brand": "Joyo",
     "name": "JF-07 Classic Flanger",
-    "widthCm": 9.07,
-    "heightCm": 11.79,
-    "image": "joyo-jf-07-classic-flanger.png",
-    "imageSource": "mock",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-07-classic-flanger.avif",
+    "imageSource": "static",
     "effectTypes": [
       "flanger"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/56.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF07.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/lXRNhqV_QE6oYURne1Ij9Q.jpg",
         "kind": [
           "image"
         ]
@@ -9251,18 +10649,39 @@
     "id": "joyo-jf-08-digital-delay",
     "brand": "Joyo",
     "name": "JF-08 Digital Delay",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "joyo-jf-08-digital-delay.png",
-    "imageSource": "mock",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-08-digital-delay.avif",
+    "imageSource": "static",
     "effectTypes": [
       "delay"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/57.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF08.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/dtoHdkhcQN2GBKPGP8TrNA.jpg",
         "kind": [
           "image"
         ]
@@ -9273,18 +10692,39 @@
     "id": "joyo-jf-09-tremolo",
     "brand": "Joyo",
     "name": "JF-09 Tremolo",
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "image": "joyo-jf-09-tremolo.png",
-    "imageSource": "mock",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-09-tremolo.avif",
+    "imageSource": "static",
     "effectTypes": [
       "tremolo"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 7
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/58.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF09.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/XfQv-HQ9Q3m1e2TJR4Zn5g.jpg",
         "kind": [
           "image"
         ]
@@ -9295,18 +10735,39 @@
     "id": "joyo-jf-10-dynamic-compressor",
     "brand": "Joyo",
     "name": "JF-10 Dynamic Compressor",
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "image": "joyo-jf-10-dynamic-compressor.png",
-    "imageSource": "mock",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-10-dynamic-compressor.avif",
+    "imageSource": "static",
     "effectTypes": [
       "compressor"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/59.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF10.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/AP1r6hlLTXunPaLAMwkIHQ.jpg",
         "kind": [
           "image"
         ]
@@ -9317,18 +10778,39 @@
     "id": "joyo-jf-11-6-band-eq",
     "brand": "Joyo",
     "name": "JF-11 6 Band EQ",
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "image": "joyo-jf-11-6-band-eq.png",
-    "imageSource": "mock",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-11-6-band-eq.avif",
+    "imageSource": "static",
     "effectTypes": [
       "eq"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/60.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF11.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/RvbvlU7rSOiuXU2CciS-cA.jpg",
         "kind": [
           "image"
         ]
@@ -9339,18 +10821,40 @@
     "id": "joyo-jf-12-voodoo-octave",
     "brand": "Joyo",
     "name": "JF-12 Voodoo Octave",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "joyo-jf-12-voodoo-octave.png",
-    "imageSource": "mock",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-12-voodoo-octave.avif",
+    "imageSource": "static",
     "effectTypes": [
       "octave"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "notes": "Octave-up pedal with a fuzz blend and a mid-cut switch; classified as octave (the official page describes adding fuzz and taking the tone up an octave).",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/61.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF12.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/l5L-w5CUTFmgAdsl1rdjTQ.jpg",
         "kind": [
           "image"
         ]
@@ -9361,32 +10865,40 @@
     "id": "joyo-jf-13-ac-tone",
     "brand": "Joyo",
     "name": "JF-13 AC Tone",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "https://img201.yun300.cn/repository/image/u-H6X1dpRhK2rZrkNuxqow.jpg",
-    "imageSource": "url",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-13-ac-tone.avif",
+    "imageSource": "static",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/62.html",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://img201.yun300.cn/repository/image/u-H6X1dpRhK2rZrkNuxqow.jpg",
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF13.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/RlzNuXr4RV2BZLeoLqrYkg.jpg",
         "kind": [
           "image"
         ]
@@ -9397,32 +10909,40 @@
     "id": "joyo-jf-14-american-sound",
     "brand": "Joyo",
     "name": "JF-14 American Sound",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "https://img201.yun300.cn/repository/image/X1MU4TU3QLeJjEQLZoJpBg.jpg",
-    "imageSource": "url",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-14-american-sound.avif",
+    "imageSource": "static",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/63.html",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://img201.yun300.cn/repository/image/X1MU4TU3QLeJjEQLZoJpBg.jpg",
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF14.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/7xJSR7b_TPCy7S4Gi1xZOg.jpg",
         "kind": [
           "image"
         ]
@@ -9433,32 +10953,40 @@
     "id": "joyo-jf-15-california-sound",
     "brand": "Joyo",
     "name": "JF-15 California Sound",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "https://img201.yun300.cn/repository/image/uxeWh1TiRoSZKPRpjFbUiQ.jpg",
-    "imageSource": "url",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-15-california-sound.avif",
+    "imageSource": "static",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/64.html",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://img201.yun300.cn/repository/image/uxeWh1TiRoSZKPRpjFbUiQ.jpg",
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF15.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/O9dYTrYtR2CvAi3VMlmhSw.jpg",
         "kind": [
           "image"
         ]
@@ -9469,32 +10997,40 @@
     "id": "joyo-jf-16-british-sound",
     "brand": "Joyo",
     "name": "JF-16 British Sound",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "https://img201.yun300.cn/repository/image/UG_TqZDpSrOFutgI_UKb7A.jpg",
-    "imageSource": "url",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-16-british-sound.avif",
+    "imageSource": "static",
     "effectTypes": [
       "amp-modeler",
       "cab-sim"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/65.html",
-        "kind": [
-          "info",
-          "image"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
         "kind": [
           "info"
         ]
       },
       {
-        "url": "https://img201.yun300.cn/repository/image/UG_TqZDpSrOFutgI_UKb7A.jpg",
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF16.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/aRvlJHfnRFO8M8kLznduKQ.jpg",
         "kind": [
           "image"
         ]
@@ -9505,24 +11041,39 @@
     "id": "joyo-jf-17-extreme-metal",
     "brand": "Joyo",
     "name": "JF-17 Extreme Metal",
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "image": "https://img201.yun300.cn/repository/image/yn_dN5mKT4GKFIGhcm-JGw.jpg",
-    "imageSource": "url",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-17-extreme-metal.avif",
+    "imageSource": "static",
     "effectTypes": [
       "distortion"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.joyoaudio.com/product/66.html",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://img201.yun300.cn/repository/image/yn_dN5mKT4GKFIGhcm-JGw.jpg",
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF17.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/FYCB60rMRj2fBPbIuf3_og.jpg",
         "kind": [
           "image"
         ]
@@ -9624,16 +11175,41 @@
     "id": "big-joe-pb-109-power-box-li2",
     "brand": "Big Joe",
     "name": "PB-109 Power Box Li2",
-    "widthCm": 4.17,
-    "heightCm": 8.53,
-    "image": "big-joe-pb-109-power-box-li2.png",
-    "imageSource": "mock",
+    "widthCm": 4.1275,
+    "heightCm": 8.255,
+    "image": "big-joe-pb-109-power-box-li2.avif",
+    "imageSource": "static",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1000
+    },
+    "usage": "both",
+    "color": "Black anodized aluminum case",
+    "notes": "Rechargeable lithium-polymer battery power box with two tip-negative 9 V DC 2.1 mm outputs (up to 1.0 A total), a 3-digit blue LED status display, USB-C charging and a 500 mA courtesy USB output.",
+    "year": 2020,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://bigjoestompbox.com/products/lithium-li2",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://drive.google.com/file/d/1WNZikkLE1Hv4fAvVIcyHwouXKlggJcUR/view?usp=sharing",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://bigjoestompbox.com/cdn/shop/products/Li2_Web_1024x1024.jpg",
         "kind": [
           "image"
         ]
@@ -9644,16 +11220,40 @@
     "id": "big-joe-power-box-iso4",
     "brand": "Big Joe",
     "name": "Power Box ISO4",
-    "widthCm": 4.17,
-    "heightCm": 8.53,
-    "image": "big-joe-power-box-iso4.png",
-    "imageSource": "mock",
+    "widthCm": 4.2164,
+    "heightCm": 8.509,
+    "image": "big-joe-power-box-iso4.avif",
+    "imageSource": "static",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 750
+    },
+    "usage": "both",
+    "color": "Dark grey enclosure",
+    "notes": "Rechargeable lithium-ion isolated power supply with four 9 V DC BiWire isolated outputs (750 mA total at 9 V), a 3-digit blue LED status display, USB-C charging and a courtesy USB output.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://bigjoestompbox.com/products/power-box-iso4",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://drive.google.com/file/d/1HPLXBjFkq5l7f74mSp1hnO46TwURO_9x/view?usp=sharing",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://bigjoestompbox.com/cdn/shop/files/QDS9524_Web.png",
         "kind": [
           "image"
         ]
@@ -9665,21 +11265,60 @@
     "brand": "Effects Bakery",
     "name": "Power Supply Hoden Sentai Donuts",
     "widthCm": 9.4,
-    "heightCm": 3.86,
-    "image": "effects-bakery-power-supply-hoden-sentai-donuts.png",
-    "imageSource": "mock",
+    "heightCm": 3.9,
+    "image": "effects-bakery-power-supply-hoden-sentai-donuts.avif",
+    "imageSource": "static",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "power",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "bottom"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2000
+    },
+    "color": "Light blue with printed Power Station Donuts character artwork",
+    "notes": "Ten-output center-negative 9 V DC power supply in a mini-pedal-size enclosure, powered by the included 9 V DC 2 A adapter. Ships with ten DC cables (1 × 15 cm, 3 × 30 cm, 3 × 50 cm, 3 × 70 cm).",
+    "year": 2022,
+    "status": "unknown",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.effectsbakery.jp/products/effects-bakery-pshd",
+        "url": "https://effectsbakery.us/products/effects-bakery-pshd",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "url": "https://www.effectsbakery.jp/products/effects-bakery-pshd",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0432/3871/9653/files/EB-Manual_08ad75db-5bed-46f1-99af-53414d22795b.pdf?v=1725719128",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://discover.chuya-online.com/20220728/20803/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg",
         "kind": [
           "image"
         ]
@@ -18512,6 +20151,428 @@
     ]
   },
   {
+    "id": "earthquaker-bellows",
+    "brand": "EarthQuaker",
+    "name": "Bellows",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-bellows.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13
+    },
+    "usage": "guitar",
+    "notes": "Fuzz driver / amp-like overdrive; 9 V battery or DC.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/bellows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1479772620651-Y0IKY30P5QAVNWMILZ7O/Bellows.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-bit-commander",
+    "brand": "EarthQuaker",
+    "name": "Bit Commander",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-bit-commander.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "octave"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Analog octave synth.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/bit-commander",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548784501746-TMYDT35UAD1BCVZCE5L2/Bit-Commander.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-black-ash",
+    "brand": "EarthQuaker",
+    "name": "Black Ash",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-black-ash.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Limited run (1500 units worldwide) fuzz/overdrive inspired by the three-knob Bender.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/black-ash",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1540221783025-YU7XSWZQ00OZ7K1VNP2F/Black-Ash.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-blumes",
+    "brand": "EarthQuaker",
+    "name": "Blumes",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-blumes.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Low signal shredder / bass overdrive.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/blumes",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/9cecbcd7-55c3-46ed-90f8-366c8deafeb3/Blumes-Bass-Overdrive-Pedal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-bows",
+    "brand": "EarthQuaker",
+    "name": "Bows",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-bows.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9
+    },
+    "usage": "guitar",
+    "notes": "Germanium preamp built around a NOS OC139 transistor; 9 V battery or DC.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/bows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1480099332293-GONW2PRPMRSAUVA0GYLP/Bows.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-cloven-hoof",
+    "brand": "EarthQuaker",
+    "name": "Cloven Hoof",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-cloven-hoof.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14
+    },
+    "usage": "guitar",
+    "notes": "Fuzz grinder; 9 V battery or DC.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/cloven-hoof",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548685716431-D65LL2PC71KEY7CV7BV0/Cloven-Hoof.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-data-corrupter",
+    "brand": "EarthQuaker",
+    "name": "Data Corrupter",
+    "widthCm": 12.1,
+    "heightCm": 14.4,
+    "image": "earthquaker-data-corrupter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "pitch",
+      "octave"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "usage": "guitar",
+    "notes": "Modulated monophonic harmonizing PLL.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/data-corrupter",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548680095800-DYW9159XSP8FTBTAXRLR/Data-Corrupter.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-plumes",
+    "brand": "EarthQuaker",
+    "name": "Plumes",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-plumes.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Small signal shredder; substitutes Black Eye (no verifiable official spec page).",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/plumes",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1571927470947-5PV5WIFSR7SB40P6MB93/Plumes.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
     "id": "electro-harmonix-bass-clone",
     "brand": "Electro-Harmonix",
     "name": "Bass Clone",
@@ -19358,6 +21419,671 @@
       },
       {
         "url": "https://cdn.shopify.com/s/files/1/0610/7122/9028/files/jhs-808-top.jpg?v=1711718589",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-18r-power-tune",
+    "brand": "Joyo",
+    "name": "JF-18R Power Tune Tuner",
+    "widthCm": 7.04,
+    "heightCm": 12.01,
+    "image": "joyo-jf-18r-power-tune.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 120
+    },
+    "usage": "both",
+    "notes": "Combined chromatic tuner and 8-output isolated DC 9 V power supply with a large LED display and true-bypass tuner.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/67.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-guitar-effect-pedals/jf-30-series-pedals/joyo-jf-18-power-tune-multi-power-supply-chromatic-pedal-tuner",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF18.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/76jt8g_lSXqTg10K21hZlA.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-19-buffer-tuner",
+    "brand": "Joyo",
+    "name": "JF-19 Buffer Tuner",
+    "widthCm": 7.1,
+    "heightCm": 12.2,
+    "image": "joyo-jf-19-buffer-tuner.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tuner",
+      "buffer"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 160
+    },
+    "usage": "both",
+    "notes": "Combined chromatic tuner and buffer with true-bypass/true-buffer selector and a DC 9 V output jack.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/244.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/e24aca27-74c4-4e6b-bb45-e79db3ccb923.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-20-moist-reverb",
+    "brand": "Joyo",
+    "name": "JF-20 Moist Reverb",
+    "widthCm": 7.2,
+    "heightCm": 12,
+    "image": "joyo-jf-20-moist-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 140
+    },
+    "usage": "guitar",
+    "notes": "Digital reverb with studio, church and plate modes, 32-bit DSP, MIX/TONE/DECAY controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/223.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/7f3ea98b-59fb-4476-bb6c-5b70610d065c.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-21-splinter",
+    "brand": "Joyo",
+    "name": "JF-21 Splinter Fuzz Distortion",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-21-splinter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Classic-voiced distortion blending fuzz and distortion character, with DISTORTION/FILTER/VOLUME controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/224.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/e7c9e144-90e1-4fcf-ab61-e1cc35254406.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-22-oxford-sound",
+    "brand": "Joyo",
+    "name": "JF-22 Oxford Sound Amp Modeler",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-22-oxford-sound.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "amp-modeler"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 6
+    },
+    "usage": "guitar",
+    "notes": "Amp-sim pedal recreating an Orange-style British amp voice for clean through distortion; cab-sim voiced.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/225.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/41538dd4-5cb1-4b1e-a5a0-c62f9f8116e1.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-23-argos-overdrive",
+    "brand": "Joyo",
+    "name": "JF-23 Argos Overdrive",
+    "widthCm": 7.2,
+    "heightCm": 12.2,
+    "image": "joyo-jf-23-argos-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18
+    },
+    "usage": "guitar",
+    "notes": "Six-mode overdrive with a built-in noise gate and an ATTACK control; also usable as a boost.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/245.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/e2e9c983-b656-4bf1-a88a-3f08a66bbe0e.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-24-orthros-selector",
+    "brand": "Joyo",
+    "name": "JF-24 Orthros Selector A/B",
+    "widthCm": 9.7,
+    "heightCm": 12,
+    "image": "joyo-jf-24-orthros-selector.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "ab-box"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "usage": "guitar",
+    "notes": "Two-loop effects selector with 6 routing modes and independent level controls for A/B loops.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/278.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-jf-24-orthros-effect-loop-control-switch-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/8ab99016-6de7-4c29-8423-0e2486e4c7ee.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "joyo-jf-25-bright-day-overdrive",
+    "brand": "Joyo",
+    "name": "JF-25 Bright Day Overdrive",
+    "widthCm": 7.2,
+    "heightCm": 12.2,
+    "image": "joyo-jf-25-bright-day-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22
+    },
+    "usage": "guitar",
+    "notes": "Blues overdrive with switchable vintage/modern voicing and LEVEL/GAIN/TONE controls.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/283.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.co.uk/joyo-jf-25-bright-day-blues-overdrive-guitar-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.joyoaudio.com/repository/image/177229b3-5f8d-4460-9e43-0d562ed33900.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-caverns",
+    "brand": "Keeley",
+    "name": "Caverns",
+    "widthCm": 9.5,
+    "heightCm": 12,
+    "image": "keeley-caverns.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top",
+        "stereo": false
+      },
+      {
+        "kind": "out",
+        "edge": "top",
+        "stereo": false
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 110
+    },
+    "usage": "guitar",
+    "notes": "Delay + reverb; top-mounted jacks; true bypass or trails.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/caverns-delay-reverb-v2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/07/Caverns-Delay-Reverb-v2-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-compressor-plus",
+    "brand": "Keeley",
+    "name": "Compressor Plus",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-compressor-plus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "both",
+    "notes": "Four-knob compressor with blend, tone and single-coil/humbucker release switch.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/keeley-compressor-plus/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/06/Keeley-Compressor-Plus-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-d-m-drive",
+    "brand": "Keeley",
+    "name": "D&M Drive",
+    "widthCm": 9.4,
+    "heightCm": 12.45,
+    "image": "keeley-d-m-drive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive",
+      "boost"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55
+    },
+    "usage": "guitar",
+    "notes": "That Pedal Show signature boost + overdrive dual pedal.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/dm-drive/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/DM-Orange-Face-e1524683530786.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-dark-side",
+    "brand": "Keeley",
+    "name": "Dark Side",
+    "widthCm": 12,
+    "heightCm": 9.9,
+    "image": "keeley-dark-side.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "delay",
+      "phaser",
+      "flanger",
+      "rotary",
+      "vibrato"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Fuzz + multi-head tape delay + flanger/rotary/U-Vibe/phaser workstation.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/dark-side/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2016/09/Dark-Side-Guitar-Pedal-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-delay-workstation",
+    "brand": "Keeley",
+    "name": "Delay Workstation",
+    "widthCm": 12,
+    "heightCm": 9.7,
+    "image": "keeley-delay-workstation.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 170
+    },
+    "usage": "guitar",
+    "notes": "Dual DSP delay + reverb workstation; tap tempo and expression.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/delay-workstation/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Delay-Workstation-Front-e1524682787320.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-dynatrem",
+    "brand": "Keeley",
+    "name": "Dynatrem",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-dynatrem.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "tremolo",
+      "vibrato",
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60
+    },
+    "usage": "guitar",
+    "notes": "Dynamic wavetable tremolo/vibrato.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/wavetable-tremolo-shirt-namm-special-copy-copy/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Dyna-Trem-New-Logo-Straight-HR-e1524685231797.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-eccos",
+    "brand": "Keeley",
+    "name": "Eccos",
+    "widthCm": 6.7,
+    "heightCm": 12.2,
+    "image": "keeley-eccos.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 115
+    },
+    "usage": "guitar",
+    "notes": "True-stereo tape-flanged delay + looper; expression and remote tap.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/eccos-delay-looper/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2019/10/ECCOS-Delay-Looper-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keeley-el-rey-dorado",
+    "brand": "Keeley",
+    "name": "El Rey Dorado",
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "image": "keeley-el-rey-dorado.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "British-voiced overdrive (Marshall-in-a-box style).",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/el-ray-dorado/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/El-Rey-Dorado-Front-e1524681406543.jpg",
         "kind": [
           "image"
         ]
@@ -21881,6 +24607,286 @@
         "url": "https://www.redpandalab.com/downloads",
         "kind": [
           "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tc-electronic-cinders-overdrive",
+    "brand": "TC Electronic",
+    "name": "Cinders Overdrive",
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "image": "tc-electronic-cinders-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Analog transparent overdrive with Drive, Level, Bass and Treble controls; true bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AFF",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2a094fa0c45d47e19b359256ffe2547e/Image_TE_0709-AFF_CINDERS-OVERDRIVE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9732d2234fbc45ffba10ee12334b25e7/QSG_TE_0709-AFF_CINDERS-OVERDRIVE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tc-electronic-corona-chorus",
+    "brand": "TC Electronic",
+    "name": "Corona Chorus",
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "image": "tc-electronic-corona-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "TonePrint stereo chorus with SCF and Tri-Chorus modes and custom artist TonePrints.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-corona-chorus",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/dede5a84088fedddaa0a440aefe6385a403200855df34f2559e65d33c7bceb9d.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tc-electronic-corona-mini-chorus",
+    "brand": "TC Electronic",
+    "name": "Corona Mini Chorus",
+    "widthCm": 5.08,
+    "heightCm": 9.53,
+    "image": "tc-electronic-corona-mini-chorus.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 68
+    },
+    "usage": "guitar",
+    "notes": "Mini TonePrint chorus with Speed, Depth and Level controls; true bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHD",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/fd96434e65a649ca9c0fb357d1282328/Image_TE_0709-AHD_CORONA-MINI-CHORUS_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tc-electronic-dark-matter-distortion",
+    "brand": "TC Electronic",
+    "name": "Dark Matter Distortion",
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "image": "tc-electronic-dark-matter-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5
+    },
+    "usage": "guitar",
+    "notes": "Analog distortion with Gain, Level, Voice and Treble controls; true bypass.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHE",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/d51b5902c4d542e4bd847f9f3766dfac/Image_TE_0709-AHE_DARK-MATTER-DISTORTION_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/0f558f7d6a144294a6d17c2e96f92526/QSG_TE_0709-AHE_DARK-MATTER-DISTORTION_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tc-electronic-ditto-2-looper",
+    "brand": "TC Electronic",
+    "name": "Ditto 2 Looper",
+    "widthCm": 5.08,
+    "heightCm": 9.3,
+    "image": "tc-electronic-ditto-2-looper.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "notes": "Compact looper with the Ditto app (loop storage/management) over USB-C, loop level knob and Pair/User/Ditto side switch.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-ALV",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ebae7a8adcd3419d9f5d3e1d3612680b/Image_TE_0709-ALV_DITTO-2-LOOPER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ac2b8987f2494d329e6bd5d415a121d4/QSG_TE_0709-ALV_DITTO-2-LOOPER_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tc-electronic-ditto-jam-x2-looper",
+    "brand": "TC Electronic",
+    "name": "Ditto Jam X2 Looper",
+    "widthCm": 11.18,
+    "heightCm": 13.34,
+    "image": "tc-electronic-ditto-jam-x2-looper.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "looper"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150
+    },
+    "usage": "guitar",
+    "notes": "Two-track looper with BeatSense automatic BPM detection that keeps loops in time with a live band or backing track.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-ditto-jam-x2-looper",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/096c4d17abacf0b6873f458d4607b15f4e0dcc860b1d7a75b6e2bca26d26f715.png",
+        "kind": [
+          "image"
         ]
       }
     ]

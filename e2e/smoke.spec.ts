@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { waitForSavedScene } from "./persistence.ts";
 import {
 	addBoard,
 	addPedal,
@@ -466,6 +467,11 @@ test("the picker stays usable on short/narrow viewports", async ({ page }) => {
 		await expect(stage).toHaveAttribute("data-boards", "1");
 		await removeSelectedBoard(page);
 		await expect(stage).toHaveAttribute("data-boards", "0");
+		// Let autosave land before the next viewport reloads the same document.
+		await waitForSavedScene(
+			page,
+			(document) => (document.boards?.length ?? 0) === 0,
+		);
 
 		// The pedal results list has a real scrollable height.
 		await openPicker(page, "pedals");

@@ -1,6 +1,17 @@
 {
   "version": 1,
   "pedals": {
+    "big-joe": {
+      "brand": "Big Joe",
+      "batches": [
+        {
+          "batch": "big-joe-1",
+          "raw": "data/catalog/research/pedals/big-joe/big-joe-1.json",
+          "mapped": "data/catalog/pedals/big-joe/big-joe-1.json",
+          "items": 2
+        }
+      ]
+    },
     "boss": {
       "brand": "BOSS",
       "batches": [
@@ -54,6 +65,28 @@
         }
       ]
     },
+    "earthquaker": {
+      "brand": "EarthQuaker",
+      "batches": [
+        {
+          "batch": "eqd-1",
+          "raw": "data/catalog/research/pedals/earthquaker/eqd-1.json",
+          "mapped": "data/catalog/pedals/earthquaker/eqd-1.json",
+          "items": 26
+        }
+      ]
+    },
+    "effects-bakery": {
+      "brand": "Effects Bakery",
+      "batches": [
+        {
+          "batch": "effects-bakery-1",
+          "raw": "data/catalog/research/pedals/effects-bakery/effects-bakery-1.json",
+          "mapped": "data/catalog/pedals/effects-bakery/effects-bakery-1.json",
+          "items": 1
+        }
+      ]
+    },
     "electro-harmonix": {
       "brand": "Electro-Harmonix",
       "batches": [
@@ -79,6 +112,28 @@
           "raw": "data/catalog/research/pedals/jhs/jhs-1.json",
           "mapped": "data/catalog/pedals/jhs/jhs-1.json",
           "items": 25
+        }
+      ]
+    },
+    "joyo": {
+      "brand": "Joyo",
+      "batches": [
+        {
+          "batch": "joyo-1",
+          "raw": "data/catalog/research/pedals/joyo/joyo-1.json",
+          "mapped": "data/catalog/pedals/joyo/joyo-1.json",
+          "items": 26
+        }
+      ]
+    },
+    "keeley": {
+      "brand": "Keeley",
+      "batches": [
+        {
+          "batch": "keeley-1",
+          "raw": "data/catalog/research/pedals/keeley/keeley-1.json",
+          "mapped": "data/catalog/pedals/keeley/keeley-1.json",
+          "items": 26
         }
       ]
     },
@@ -134,6 +189,12 @@
           "raw": "data/catalog/research/pedals/tc-electronic/choka-1.json",
           "mapped": "data/catalog/pedals/tc-electronic/choka-1.json",
           "items": 1
+        },
+        {
+          "batch": "tc-1",
+          "raw": "data/catalog/research/pedals/tc-electronic/tc-1.json",
+          "mapped": "data/catalog/pedals/tc-electronic/tc-1.json",
+          "items": 23
         }
       ]
     },

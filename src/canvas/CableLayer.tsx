@@ -1,5 +1,6 @@
-import { useMemo } from "react";
-import { Layer, Line, Path } from "react-konva";
+import type Konva from "konva";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Group, Layer, Line, Path } from "react-konva";
 import { type CableCurve, cableCurve, cablePathData } from "../lib/cablePath";
 import { rotatePoint } from "../lib/geometry";
 import {
@@ -11,6 +12,7 @@ import {
 	jackNormalLocal,
 	liftedJackAnchor,
 } from "../lib/jackAnchor";
+import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useBoardDrag } from "../state/boardDrag";
 import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
@@ -29,10 +31,10 @@ import {
 	selectSelectedItemUid,
 	useSelection,
 } from "../state/selection";
-import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 import { CABLE, type CanvasTheme } from "../styles/theme";
 import { useCoarsePointer } from "./useCoarsePointer";
+import { useGraphPresence } from "./useGraphPresence";
 
 interface CableLayerProps {
 	theme: CanvasTheme;
@@ -186,7 +188,6 @@ export function CableLayer({ theme }: CableLayerProps) {
 	const endpoints = useScene((state) => state.endpoints);
 	const cables = useScene((state) => state.cables);
 	const readOnly = useReadOnly((state) => state.readOnly);
-	const showCables = useSettings((state) => state.showCables);
 	const scale = useViewport((state) => state.scale);
 	const selectedCableUid = useSelection(selectSelectedCableUid);
 	const selectedItemUid = useSelection(selectSelectedItemUid);
@@ -200,8 +201,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
 	const dimFocus =
 		selectedItemUid ?? hoveredItemUid ?? selectedEndpointUid ?? null;
-	// A read-only share must never inherit a recipient's hidden-patch preference.
-	const graphVisible = showCables || readOnly;
+	const { mounted, exiting, reduced } = useGraphPresence();
 
 	const hidden = useMemo(() => {
 		const set = new Set<string>();
@@ -232,7 +232,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 
 	const rendered = useMemo(
 		() =>
-			graphVisible
+			mounted
 				? renderCables({
 						cables: cables.filter((cable) => !hidden.has(cable.uid)),
 						index,
@@ -254,7 +254,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 					})
 				: [],
 		[
-			graphVisible,
+			mounted,
 			cables,
 			hidden,
 			index,
@@ -267,17 +267,115 @@ export function CableLayer({ theme }: CableLayerProps) {
 		],
 	);
 
-	if (!graphVisible) return null;
+	const groupRef = useRef<Konva.Group>(null);
+	const nodeMap = useRef(new Map<string, Konva.Path | Konva.Line>());
+	const [entering, setEntering] = useState(mounted && !readOnly && !reduced);
+	const renderedRef = useRef(rendered);
+	renderedRef.current = rendered;
+
+	const registerNode = (key: string, node: Konva.Path | Konva.Line | null) => {
+		if (node) nodeMap.current.set(key, node);
+		else nodeMap.current.delete(key);
+	};
+
+	// One imperative reveal: individual ink draws for a small patch, a single
+	// group fade once the graph is dense (> 40 cables). No React state per frame.
+	useEffect(() => {
+		const group = groupRef.current;
+		if (!mounted || !group) return;
+		if (exiting) {
+			setEntering(false);
+			group.opacity(1);
+			const durationMs = motionMs(MOTION.fast, reduced);
+			if (durationMs <= 0) return;
+			const tween = group.to({
+				opacity: 0,
+				duration: durationMs / 1000,
+				easing: easeOutCubic,
+			});
+			return () => {
+				tween.destroy();
+			};
+		}
+		if (reduced || readOnly) {
+			group.opacity(1);
+			setEntering(false);
+			return;
+		}
+		const cables = renderedRef.current;
+		if (cables.length === 0) {
+			group.opacity(1);
+			setEntering(false);
+			return;
+		}
+		setEntering(true);
+		if (cables.length > 40) {
+			group.opacity(0);
+			const tween = group.to({
+				opacity: 1,
+				duration: MOTION.base / 1000,
+				easing: easeOutCubic,
+			});
+			const timer = window.setTimeout(
+				() => setEntering(false),
+				MOTION.base + 40,
+			);
+			return () => {
+				window.clearTimeout(timer);
+				tween.destroy();
+			};
+		}
+		group.opacity(1);
+		const frame = requestAnimationFrame(() => {
+			for (const { uid } of cables) {
+				for (const key of [`halo:${uid}`, `line:${uid}`]) {
+					const path = nodeMap.current.get(key) as Konva.Path | undefined;
+					if (!path) continue;
+					const length = path.getLength();
+					if (length <= 0) continue;
+					path.dash([length, length]);
+					path.dashOffset(length);
+					path.to({
+						dashOffset: 0,
+						duration: MOTION.slow / 1000,
+						easing: easeOutCubic,
+						onFinish: () => path.dash([]),
+					});
+				}
+				const arrow = nodeMap.current.get(`arrow:${uid}`);
+				if (!arrow) continue;
+				const target = arrow.opacity();
+				arrow.opacity(0);
+				window.setTimeout(() => {
+					arrow.to({
+						opacity: target,
+						duration: MOTION.fast / 1000,
+						easing: easeOutCubic,
+					});
+				}, 96);
+			}
+		});
+		const timer = window.setTimeout(() => setEntering(false), MOTION.slow + 40);
+		return () => {
+			cancelAnimationFrame(frame);
+			window.clearTimeout(timer);
+		};
+	}, [mounted, exiting, reduced, readOnly]);
+
+	if (!mounted) return null;
 	return (
 		<Layer>
-			<CableShapes
-				rendered={rendered}
-				theme={theme}
-				scale={scale}
-				readOnly={readOnly}
-			/>
-			<LiveCables theme={theme} hidden={hidden} />
-			<CablePreview theme={theme} />
+			<Group ref={groupRef} listening={!entering && !exiting}>
+				<CableShapes
+					rendered={rendered}
+					theme={theme}
+					scale={scale}
+					readOnly={readOnly}
+					registerNode={registerNode}
+				/>
+				<LiveCables theme={theme} hidden={hidden} />
+				<CablePreview theme={theme} />
+			</Group>
 		</Layer>
 	);
 }
@@ -350,11 +448,13 @@ function CableShapes({
 	theme,
 	scale,
 	readOnly,
+	registerNode,
 }: {
 	rendered: RenderedCable[];
 	theme: CanvasTheme;
 	scale: number;
 	readOnly: boolean;
+	registerNode?: (key: string, node: Konva.Path | Konva.Line | null) => void;
 }) {
 	const safeScale = Math.max(scale, 0.0001);
 	const coarsePointer = useCoarsePointer();
@@ -371,6 +471,7 @@ function CableShapes({
 				return (
 					<Path
 						key={`cable-halo-${uid}`}
+						ref={(node) => registerNode?.(`halo:${uid}`, node)}
 						data={cablePathData(curve)}
 						stroke={color.halo}
 						strokeWidth={color.haloWidth}
@@ -387,6 +488,7 @@ function CableShapes({
 				return (
 					<Path
 						key={`cable-line-${uid}`}
+						ref={(node) => registerNode?.(`line:${uid}`, node)}
 						data={cablePathData(curve)}
 						stroke={color.line}
 						strokeWidth={color.lineWidth}
@@ -415,6 +517,7 @@ function CableShapes({
 				return (
 					<Line
 						key={`cable-arrow-${uid}`}
+						ref={(node) => registerNode?.(`arrow:${uid}`, node)}
 						points={curve.arrow.flatMap((point) => [point.x, point.y])}
 						closed
 						fill={color.line}

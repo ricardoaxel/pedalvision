@@ -313,6 +313,21 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"keeley-blues-disorder": ["overdrive", "distortion"],
 	"keeley-bubble-tron": ["flanger", "phaser", "envelope", "filter"],
 	"keeley-california-girls": ["octave", "chorus", "delay"],
+	"keeley-caverns": ["delay", "reverb"],
+	"keeley-compressor-plus": ["compressor"],
+	"keeley-d-m-drive": ["overdrive", "boost"],
+	"keeley-dark-side": [
+		"fuzz",
+		"delay",
+		"phaser",
+		"flanger",
+		"rotary",
+		"vibrato",
+	],
+	"keeley-delay-workstation": ["delay", "reverb"],
+	"keeley-dynatrem": ["tremolo", "vibrato", "reverb"],
+	"keeley-eccos": ["delay", "looper"],
+	"keeley-el-rey-dorado": ["overdrive"],
 
 	// EarthQuaker Devices
 	"earthquaker-a-b-box": ["ab-box"],
@@ -327,6 +342,16 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"earthquaker-aurelius": ["chorus", "vibrato", "rotary"],
 	"earthquaker-avalanche-run": ["delay", "reverb"],
 	"earthquaker-avalanche-run-v2": ["delay", "reverb"],
+	// New in the eqd-1 cleanup batch; types verified from the official page wording
+	// (the names are creative, so the keyword classifier cannot derive them).
+	"earthquaker-bellows": ["fuzz", "overdrive"],
+	"earthquaker-bit-commander": ["synth", "octave"],
+	"earthquaker-black-ash": ["fuzz", "overdrive"],
+	"earthquaker-blumes": ["overdrive"],
+	"earthquaker-bows": ["boost", "preamp"],
+	"earthquaker-cloven-hoof": ["fuzz"],
+	"earthquaker-data-corrupter": ["synth", "pitch", "octave"],
+	"earthquaker-plumes": ["overdrive"],
 
 	// JHS
 	"jhs-1966-series-bender": ["fuzz"],

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { hasActiveDialog } from "../lib/dialog";
 import { focusViewport, toggleCameraLock } from "../state/focus";
 
 /** Ignore shortcuts while typing in a field or composing (same guard as M). */
@@ -27,7 +28,7 @@ export function useFocusShortcuts(): void {
 			if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
 				return;
 			}
-			if (document.querySelector('[role="dialog"]')) return;
+			if (hasActiveDialog()) return;
 			if (event.key.toLowerCase() === "l") {
 				event.preventDefault();
 				toggleCameraLock();

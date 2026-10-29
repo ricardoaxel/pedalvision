@@ -1,6 +1,6 @@
 # T-6 — Cleanup wave 3 coordinator (Joyo-1 + Keeley-1 + EQD-1)
 
-**Phase:** P5 · **Status:** queued (start only after T-5 merges) · **Type:** catalog wave coordinator · **Depends on:** T-5
+**Phase:** P5 · **Status:** next · **Type:** catalog wave coordinator · **Depends on:** T-5 (complete)
 
 ## Goal
 
@@ -23,17 +23,15 @@ and never merges.
 
 ## State at T-5 handoff (verify before launch)
 
-- **T-5 cleanup wave 2 is 2/3 MERGED** — **#75 JHS (26)** and **#78 Walrus (26)**
-  merged; post-merge `41be827` verified **438/15**, ledger **453**. **#77 TC
-  Electronic (23)** is the only open PR (owner-requested deskew correction). Wait
-  for #77 to merge and verify the post-merge build before starting T-6.
+- **T-5 cleanup wave 2 is COMPLETE** — #75 JHS (26), #77 TC Electronic (23) and
+  #78 Walrus (26) merged; post-merge `a8f7643` verified **444/15**, ledger **459**.
+  **0 open catalog PRs**; catalog + feature caps free. T-6 can start.
 - Expected after the T-5 merges: **444 pedals / 15 boards** (423 + 6 TC + 7 JHS +
   8 Walrus; TC documented 2 scope gaps — Corona Chorus+ is not a standalone unit
   and Crescendo Auto Swell needs a coordinator-only `curated.ts` override, so it
   held back 2 planned new items). Ledger expected **459** (438 + 21 new). Verify
   the actual post-merge numbers; do not trust this estimate.
-- Currently open: **1 catalog PR** (#77) + **1 feature PR** (#76 F-04, separate
-  lane). **At the feature cap, start no new feature.** T-6 waits for #77's merge.
+- Currently open: **0 PRs**. F-04 #76 merged; feature lane free.
 - Catalog cap **≤3 PRs**; feature cap **≤1 PR, separate**.
 - Budgets: catalog 400k/800k per batch; wave soft **1.6M** / hard **2.4M** billed
   non-cache; 4 h active; 12 min/item (stall threshold); ≤2 vision passes; ≤1 light

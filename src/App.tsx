@@ -29,6 +29,7 @@ import {
 } from "./components/icons";
 import { MeasureControl } from "./components/MeasureControl";
 import { MeasureOverlay } from "./components/MeasureOverlay";
+import { MotionPresence } from "./components/MotionPresence";
 import { Picker, type PickerTab } from "./components/Picker";
 import { ScaleReadout } from "./components/ScaleReadout";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
@@ -42,6 +43,7 @@ import {
 } from "./components/ShareView";
 import { StorageAnnouncer, StorageNotice } from "./components/StorageNotice";
 import { capacityStatus } from "./lib/capacity";
+import { MOTION } from "./lib/motion";
 import { useCableDrag } from "./state/cableDrag";
 import { useEndpointPlacement } from "./state/endpointPlacement";
 import { useCameraLockRefit } from "./state/focus";
@@ -83,6 +85,17 @@ function PatchHiddenCue() {
 				Show
 			</button>
 		</div>
+	);
+}
+
+function InfoPanelSlot({ itemUid }: { itemUid: string | null }) {
+	const lastUid = useRef<string | null>(itemUid);
+	if (itemUid) lastUid.current = itemUid;
+	const uid = itemUid ?? lastUid.current;
+	return (
+		<MotionPresence open={itemUid !== null} exitMs={MOTION.close}>
+			<InfoPanel itemUid={uid} />
+		</MotionPresence>
 	);
 }
 
@@ -381,7 +394,9 @@ function App() {
 						>
 							<SceneTriggerContent />
 						</button>
-						{scenesOpen ? <ScenePanel onClose={closeScenes} /> : null}
+						<MotionPresence open={scenesOpen}>
+							{scenesOpen ? <ScenePanel onClose={closeScenes} /> : null}
+						</MotionPresence>
 					</>
 				)}
 				<div className="app-toolbar">
@@ -491,30 +506,38 @@ function App() {
 						</span>
 					</button>
 				</div>
-				{exportOpen ? (
-					<ExportPanel
-						onClose={closeExport}
-						onAddBoard={() => openPicker("boards")}
-						onBusyChange={setExportBusy}
-					/>
-				) : null}
+				<MotionPresence open={exportOpen}>
+					{exportOpen ? (
+						<ExportPanel
+							onClose={closeExport}
+							onAddBoard={() => openPicker("boards")}
+							onBusyChange={setExportBusy}
+						/>
+					) : null}
+				</MotionPresence>
 				<EndpointPlacementOverlay />
 				<GraphStatusChip />
-				{scheduleOpen ? <CableSchedulePanel onClose={closeSchedule} /> : null}
+				<MotionPresence open={scheduleOpen}>
+					{scheduleOpen ? <CableSchedulePanel onClose={closeSchedule} /> : null}
+				</MotionPresence>
 				<PatchHiddenCue />
 				<ShareEditCue />
-				{shareOpen && !readOnly ? (
-					<SharePanel
-						onClose={closeShare}
-						onAddBoard={() => {
-							setShareOpen(false);
-							openPicker("boards");
-						}}
-					/>
-				) : null}
+				<MotionPresence open={shareOpen && !readOnly}>
+					{shareOpen && !readOnly ? (
+						<SharePanel
+							onClose={closeShare}
+							onAddBoard={() => {
+								setShareOpen(false);
+								openPicker("boards");
+							}}
+						/>
+					) : null}
+				</MotionPresence>
 			</div>
-			{/* The selected part's readout + the space warning (P2-03). */}
-			<InfoPanel />
+			{/* The selected part's readout + the space warning (P2-03). The
+			 * presence slot keeps the rail mounted for its close, then releases
+			 * the canvas width once. */}
+			<InfoPanelSlot itemUid={selectedItemUid} />
 			{!readOnly ? (
 				<Picker
 					open={pickerOpen}

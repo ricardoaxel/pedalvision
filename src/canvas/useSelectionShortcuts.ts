@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useMotion } from "../state/motion";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import { useScene } from "../state/scene";
 import {
@@ -51,8 +52,10 @@ export function useSelectionShortcuts(): void {
 			if (!deletable) return;
 			if (event.key === "Delete" || event.key === "Backspace") {
 				event.preventDefault();
-				if (selected) useScene.getState().removeItem(selected);
-				else if (selectedEndpoint)
+				if (selected) {
+					useMotion.getState().departItem(selected);
+					useScene.getState().removeItem(selected);
+				} else if (selectedEndpoint)
 					useScene.getState().removeEndpoint(selectedEndpoint);
 				else if (selectedCable) useScene.getState().removeCable(selectedCable);
 				selection.clearSelection();
@@ -66,7 +69,10 @@ export function useSelectionShortcuts(): void {
 			) {
 				event.preventDefault();
 				const uid = useScene.getState().duplicateItem(selected);
-				if (uid) useSelection.getState().selectItem(uid);
+				if (uid) {
+					useMotion.getState().pulseItem(uid, "duplicate");
+					useSelection.getState().selectItem(uid);
+				}
 			}
 		};
 		window.addEventListener("keydown", onKeyDown);

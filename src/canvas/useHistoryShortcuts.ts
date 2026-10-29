@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { hasActiveDialog } from "../lib/dialog";
 import { redo, undo } from "../state/history";
 import { isReadOnly } from "../state/readOnly";
 
@@ -19,8 +20,7 @@ function isTypingTarget(target: EventTarget | null): boolean {
  * pull the scene out from under a draft.
  */
 function isModalOpen(): boolean {
-	if (typeof document === "undefined") return false;
-	return document.querySelector('[aria-modal="true"]') !== null;
+	return hasActiveDialog('[aria-modal="true"]');
 }
 
 /**

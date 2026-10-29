@@ -1,6 +1,7 @@
 import { useLayoutEffect } from "react";
 import { create } from "zustand";
 import type { RectCm } from "../lib/geometry";
+import { MOTION } from "../lib/motion";
 import { MOBILE_MEDIA } from "../lib/useMobile";
 import {
 	boardFocusBounds,
@@ -8,6 +9,7 @@ import {
 	focusInsets,
 	sceneFocusBounds,
 } from "../lib/viewportFocus";
+import { animateViewport, cancelViewportTween } from "../lib/viewportMotion";
 import { usePanelMetrics } from "./panel";
 import {
 	boardDefinition,
@@ -102,6 +104,8 @@ export interface FocusViewportOptions {
 	resetOnEmpty?: boolean;
 	/** Explicit commands announce politely; automatic load frames stay silent. */
 	announce?: boolean;
+	/** Ease the camera to the target (F-05 scene loads); boot stays instant. */
+	animate?: boolean;
 }
 
 function isMobileViewport(): boolean {
@@ -148,9 +152,40 @@ function boardLabel(board: PlacedBoard | undefined): string {
  *
  * Call this only from a user command or a document-load effect; never per frame.
  */
+let focusRetrySeq = 0;
+
+/** The info rail/sheet is still playing its close (the canvas width/safe rect
+ * will change when it unmounts). */
+function infoPanelExiting(): boolean {
+	if (typeof document === "undefined") return false;
+	return (
+		document.querySelector(
+			'.motion-presence[data-motion-state="exiting"] .info-panel',
+		) !== null
+	);
+}
+
 export function focusViewport(
 	options: FocusViewportOptions = {},
 ): FocusSnapshot | null {
+	// Wait for the rail/sheet close before measuring the stage/safe rect: the
+	// presence keeps the desktop rail slot for 160 ms (one width reflow at the
+	// end). A focus measured mid-exit would settle against the wrong width.
+	if (infoPanelExiting() && typeof window !== "undefined") {
+		const token = ++focusRetrySeq;
+		const started = Date.now();
+		const retry = () => {
+			if (token !== focusRetrySeq) return;
+			if (infoPanelExiting() && Date.now() - started < 600) {
+				requestAnimationFrame(retry);
+				return;
+			}
+			focusViewport(options);
+		};
+		requestAnimationFrame(retry);
+		return null;
+	}
+	focusRetrySeq += 1;
 	const scene = useScene.getState();
 	const selectedBoardUid = selectSelectedBoardUid(useSelection.getState());
 	const requested = options.target ?? "auto";
@@ -207,7 +242,6 @@ export function focusViewport(
 	});
 	if (!viewport) return null;
 
-	useViewport.getState().setViewport(viewport);
 	const snapshot: FocusSnapshot = {
 		target,
 		targetUid,
@@ -230,7 +264,27 @@ export function focusViewport(
 					)}`
 				: "Framed all content"
 			: undefined;
-	useFocus.getState().mark(snapshot, announcement);
+	const apply = () => {
+		// An explicit focus / lock refit overrides any running scene tween.
+		cancelViewportTween(false);
+		useViewport.getState().setViewport(viewport);
+		useFocus.getState().mark(snapshot, announcement);
+	};
+
+	// F-05: scene loads ease to the F-04 target and mark the focus only when the
+	// camera settles, so the "framed" chip is never shown mid-move. Boot stays a
+	// snap (the owner decision); explicit focus and camera-lock refits stay
+	// instant and cancel any running tween. A user gesture finishes the tween at
+	// its target (the viewportMotion controller handles that and marks).
+	if (options.animate && !sameViewport(viewport, useViewport.getState())) {
+		animateViewport(viewport, {
+			durationMs: MOTION.slow,
+			onDone: apply,
+		});
+		return snapshot;
+	}
+
+	apply();
 	return snapshot;
 }
 

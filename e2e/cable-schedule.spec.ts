@@ -230,6 +230,8 @@ test("mobile tray stays above the tab bar and leaves the canvas usable", async (
 	await openSchedule(page);
 
 	const panel = page.getByTestId("cable-schedule");
+	// Let the F-05 6px settle finish before measuring the final tray geometry.
+	await expect(panel).toHaveCSS("transform", "none");
 	const box = await panel.boundingBox();
 	if (!box) throw new Error("schedule has no box");
 	expect(box.x).toBeGreaterThanOrEqual(8);
