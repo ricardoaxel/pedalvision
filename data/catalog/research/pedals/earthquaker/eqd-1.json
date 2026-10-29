@@ -23,33 +23,38 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS input; passive, bidirectional."
+				"note": "1/4 in TS input; passive, bidirectional.",
+				"edge": "top"
 			},
 			{
 				"label": "OUT A",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS output A."
+				"note": "1/4 in TS output A.",
+				"edge": "top"
 			},
 			{
 				"label": "OUT B",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS output B."
+				"note": "1/4 in TS output B.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -146,26 +151,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -260,26 +269,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -378,33 +391,38 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "EXP",
 				"kind": "exp",
 				"connector": "trs",
 				"signal": "control",
-				"note": "TRS expression/CV jack (official page)."
+				"note": "TRS expression/CV jack (official page).",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -505,33 +523,38 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "EXP",
 				"kind": "exp",
 				"connector": "trs",
 				"signal": "control",
-				"note": "TRS expression/CV jack (official page)."
+				"note": "TRS expression/CV jack (official page).",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -633,33 +656,38 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "EXP",
 				"kind": "exp",
 				"connector": "trs",
 				"signal": "control",
-				"note": "TRS expression/CV jack (official page)."
+				"note": "TRS expression/CV jack (official page).",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -761,26 +789,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -879,26 +911,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -997,26 +1033,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -1112,26 +1152,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -1227,33 +1271,38 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "EXP",
 				"kind": "exp",
 				"connector": "trs",
 				"signal": "control",
-				"note": "TRS expression/CV jack (official page)."
+				"note": "TRS expression/CV jack (official page).",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -1357,33 +1406,38 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "EXP",
 				"kind": "exp",
 				"connector": "trs",
 				"signal": "control",
-				"note": "TRS expression/CV jack (official page)."
+				"note": "TRS expression/CV jack (official page).",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -1484,40 +1538,46 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "Mono 1/4 in TS input."
+				"note": "Mono 1/4 in TS input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT L",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "Left 1/4 in TS output; stereo pair."
+				"note": "Left 1/4 in TS output; stereo pair.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT R",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "Right 1/4 in TS output; stereo pair."
+				"note": "Right 1/4 in TS output; stereo pair.",
+				"edge": "top"
 			},
 			{
 				"label": "EXP",
 				"kind": "exp",
 				"connector": "trs",
 				"signal": "control",
-				"note": "TRS expression jack located on the west side of the pedal (official page)."
+				"note": "TRS expression jack located on the west side of the pedal (official page).",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -1622,40 +1682,46 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "Mono 1/4 in TS input."
+				"note": "Mono 1/4 in TS input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT L",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "Left 1/4 in TS output; stereo pair."
+				"note": "Left 1/4 in TS output; stereo pair.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT R",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "Right 1/4 in TS output; stereo pair."
+				"note": "Right 1/4 in TS output; stereo pair.",
+				"edge": "top"
 			},
 			{
 				"label": "EXP",
 				"kind": "exp",
 				"connector": "trs",
 				"signal": "control",
-				"note": "TRS expression jack located on the west side of the pedal (official page)."
+				"note": "TRS expression jack located on the west side of the pedal (official page).",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -1760,26 +1826,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -1885,26 +1955,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2010,26 +2084,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2134,26 +2212,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2251,26 +2333,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2368,26 +2454,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2488,26 +2578,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2606,26 +2700,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2724,26 +2822,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2841,26 +2943,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -2961,26 +3067,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
@@ -3081,26 +3191,30 @@
 				"kind": "in",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono input."
+				"note": "1/4 in TS mono input.",
+				"edge": "top"
 			},
 			{
 				"label": "OUTPUT",
 				"kind": "out",
 				"connector": "ts",
 				"signal": "audio",
-				"note": "1/4 in TS mono output."
+				"note": "1/4 in TS mono output.",
+				"edge": "top"
 			},
 			{
 				"label": "9V DC",
 				"kind": "power",
 				"connector": "barrel",
 				"signal": "power",
-				"note": "2.1 mm center-negative 9 V DC input."
+				"note": "2.1 mm center-negative 9 V DC input.",
+				"edge": "top"
 			}
 		],
 		"jackLayout": {
-			"confidence": "unknown",
-			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+			"source": "Owner instruction 2026-10-29 — assume top-mounted jacks for EarthQuaker",
+			"confidence": "verified",
+			"note": "Owner-directed assumption (2026-10-29), not a per-item photo/manual verification: the majority of EarthQuaker pedals are assumed top-mounted. Audio I/O, expression and power edges are set to top; confirm an individual enclosure if it differs."
 		},
 		"power": {
 			"voltage": 9,
