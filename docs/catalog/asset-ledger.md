@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 412 |
-| own | 55 |
+| license-pending | 438 |
+| own | 37 |
 
-Hosting: hotlinked 1 · mock 49 · static 417
+Hosting: hotlinked 1 · mock 31 · static 443
 
-Source kind: archive 4 · community 9 · official 277 · own 55 · planner 104 · retailer 18
+Source kind: archive 5 · community 9 · official 296 · own 37 · planner 110 · retailer 18
 
-Needs improvement: 154 (hotlinked 1 · mock 49 · planner 104)
+Needs improvement: 142 (hotlinked 1 · mock 31 · planner 110)
 
 ## Aclam
 
@@ -422,24 +422,32 @@ Needs improvement: 154 (hotlinked 1 · mock 49 · planner 104)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `keeley-1962` | 1962 | own | mock | own | yes | Keeley batch |
-| `keeley-1962x` | 1962x | own | mock | own | yes | Keeley batch |
-| `keeley-30ms-double-tracker` | 30ms Double Tracker | own | mock | own | yes | Keeley batch |
-| `keeley-abbey-chamber-verb` | Abbey Chamber Verb | own | mock | own | yes | Keeley batch |
-| `keeley-angry-orange` | Angry Orange | own | mock | own | yes | Keeley batch |
-| `keeley-angry-orange-signalis` | Angry Orange (Signalis) | own | mock | own | yes | Keeley batch |
-| `keeley-angry-orange-white` | Angry Orange (White) | own | mock | own | yes | Keeley batch |
-| `keeley-aria` | Aria | own | mock | own | yes | Keeley batch |
-| `keeley-aurora` | Aurora | own | mock | own | yes | Keeley batch |
-| `keeley-bassist-compressor` | Bassist Compressor | own | mock | own | yes | Keeley batch |
-| `keeley-black-glass` | Black Glass | own | mock | own | yes | Keeley batch |
-| `keeley-blacktop` | Blacktop | own | mock | own | yes | Keeley batch |
-| `keeley-blues-disorder` | Blues Disorder | own | mock | own | yes | Keeley batch |
-| `keeley-blues-disorder-signalis` | Blues Disorder (Signalis) | own | mock | own | yes | Keeley batch |
-| `keeley-blues-disorder-white` | Blues Disorder (White) | own | mock | own | yes | Keeley batch |
-| `keeley-bubble-tron` | Bubble Tron | own | mock | own | yes | Keeley batch |
-| `keeley-bubble-tron-ler` | Bubble Tron (Ler) | own | mock | own | yes | Keeley batch |
-| `keeley-california-girls` | California Girls | own | mock | own | yes | Keeley batch |
+| `keeley-1962` | 1962 | license-pending | static | official | — | — |
+| `keeley-1962x` | 1962x | license-pending | static | official | — | — |
+| `keeley-30ms-double-tracker` | 30ms Double Tracker | license-pending | static | official | — | — |
+| `keeley-abbey-chamber-verb` | Abbey Chamber Verb | license-pending | static | archive | — | — |
+| `keeley-angry-orange` | Angry Orange | license-pending | static | official | — | — |
+| `keeley-angry-orange-signalis` | Angry Orange (Signalis) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-angry-orange-white` | Angry Orange (White) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-aria` | Aria | license-pending | static | official | — | — |
+| `keeley-aurora` | Aurora | license-pending | static | official | — | — |
+| `keeley-bassist-compressor` | Bassist Compressor | license-pending | static | official | — | — |
+| `keeley-black-glass` | Black Glass | license-pending | static | official | — | — |
+| `keeley-blacktop` | Blacktop | license-pending | static | official | — | — |
+| `keeley-blues-disorder` | Blues Disorder | license-pending | static | official | — | — |
+| `keeley-blues-disorder-signalis` | Blues Disorder (Signalis) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-blues-disorder-white` | Blues Disorder (White) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-bubble-tron` | Bubble Tron | license-pending | static | official | — | — |
+| `keeley-bubble-tron-ler` | Bubble Tron (Ler) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-california-girls` | California Girls | license-pending | static | official | — | — |
+| `keeley-caverns` | Caverns | license-pending | static | official | — | — |
+| `keeley-compressor-plus` | Compressor Plus | license-pending | static | official | — | — |
+| `keeley-d-m-drive` | D&M Drive | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `keeley-dark-side` | Dark Side | license-pending | static | official | — | — |
+| `keeley-delay-workstation` | Delay Workstation | license-pending | static | official | — | — |
+| `keeley-dynatrem` | Dynatrem | license-pending | static | official | — | — |
+| `keeley-eccos` | Eccos | license-pending | static | official | — | — |
+| `keeley-el-rey-dorado` | El Rey Dorado | license-pending | static | official | — | — |
 
 ## MXR
 
@@ -634,7 +642,7 @@ Needs improvement: 154 (hotlinked 1 · mock 49 · planner 104)
 | Fame | own | 1 |
 | JHS | planner | 2 |
 | Joyo | planner | 2 |
-| Keeley | own | 18 |
+| Keeley | planner | 6 |
 | MXR | planner | 15 |
 | Walrus Audio | planner | 8 |
 

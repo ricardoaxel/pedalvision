@@ -93,6 +93,17 @@
         }
       ]
     },
+    "keeley": {
+      "brand": "Keeley",
+      "batches": [
+        {
+          "batch": "keeley-1",
+          "raw": "data/catalog/research/pedals/keeley/keeley-1.json",
+          "mapped": "data/catalog/pedals/keeley/keeley-1.json",
+          "items": 26
+        }
+      ]
+    },
     "meris": {
       "brand": "Meris",
       "batches": [

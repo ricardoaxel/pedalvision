@@ -16,9 +16,9 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 4 · community 9 · official 277 · own 55 · planner 104 · retailer 18
+Sources: archive 5 · community 9 · official 296 · own 37 · planner 110 · retailer 18
 
-Needs improvement: 154 (hotlinked 1 · mock 49 · planner 104; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 142 (hotlinked 1 · mock 31 · planner 110; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
@@ -114,5 +114,5 @@ These brands currently use our own mock art; no image permission is needed until
 - Effects Bakery (1)
 - Emerson Custom (1)
 - Fame (1)
-- Keeley (18)
+- Keeley (26)
 
