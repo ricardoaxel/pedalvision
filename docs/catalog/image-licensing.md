@@ -16,9 +16,9 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 5 · community 9 · official 296 · own 37 · planner 110 · retailer 18
+Sources: archive 5 · community 9 · official 314 · own 19 · planner 118 · retailer 18
 
-Needs improvement: 142 (hotlinked 1 · mock 31 · planner 110; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 132 (hotlinked 1 · mock 13 · planner 118; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
@@ -110,7 +110,7 @@ These brands currently use our own mock art; no image permission is needed until
 - Creation Music Co (1)
 - Donner (1)
 - D’Addario (1)
-- EarthQuaker (18)
+- EarthQuaker (26)
 - Effects Bakery (1)
 - Emerson Custom (1)
 - Fame (1)

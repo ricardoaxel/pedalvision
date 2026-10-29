@@ -54,6 +54,17 @@
         }
       ]
     },
+    "earthquaker": {
+      "brand": "EarthQuaker",
+      "batches": [
+        {
+          "batch": "eqd-1",
+          "raw": "data/catalog/research/pedals/earthquaker/eqd-1.json",
+          "mapped": "data/catalog/pedals/earthquaker/eqd-1.json",
+          "items": 26
+        }
+      ]
+    },
     "electro-harmonix": {
       "brand": "Electro-Harmonix",
       "batches": [

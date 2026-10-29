@@ -1,0 +1,1410 @@
+[
+  {
+    "id": "earthquaker-a-b-box",
+    "brand": "EarthQuaker",
+    "name": "A/B Box",
+    "widthCm": 4.6,
+    "heightCm": 9.4,
+    "image": "earthquaker-a-b-box.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "ab-box"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "Passive A/B selector; requires 9 V DC for the status LED only.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/ab-box",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/56773e43-6c1c-46bd-86f8-9951d3bbac63/AB-Box.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-acapulco-gold",
+    "brand": "EarthQuaker",
+    "name": "Acapulco Gold",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-acapulco-gold.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 18
+    },
+    "usage": "guitar",
+    "notes": "Modeled after a cranked Sunn Model T power amp.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/acapulco-gold",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548689758783-RGV59SB0NUNWAU7DHAJ6/Acapulco-Gold.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-afterneath",
+    "brand": "EarthQuaker",
+    "name": "Afterneath",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "usage": "guitar",
+    "notes": "Original Afterneath (V1); replaced by Afterneath V3.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-afterneath-v3",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath-v3.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "guitar",
+    "notes": "Enhanced Otherworldly Reverberator with 9 modes and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1578601522386-1W1CJO7DG64FYM7KAICL/Afterneath.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-afterneath-v3-pastel-purple",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3 (Pastel Purple)",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath-v3-pastel-purple.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "variantOf": "earthquaker-afterneath-v3",
+    "usage": "guitar",
+    "notes": "Pastel Purple finish variant of Afterneath V3.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-pastel-purple.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-afterneath-v3-raw",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3 (Raw)",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-afterneath-v3-raw.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "variantOf": "earthquaker-afterneath-v3",
+    "usage": "guitar",
+    "notes": "Raw finish variant of Afterneath V3.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-raw.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-aqueduct",
+    "brand": "EarthQuaker",
+    "name": "Aqueduct",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-aqueduct.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "vibrato"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 68
+    },
+    "usage": "guitar",
+    "notes": "Vibrato with modes and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/aqueduct",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1557945381231-CRL4Y5SAU2AS13EYMMCZ/Aqueduct.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-arpanoid",
+    "brand": "EarthQuaker",
+    "name": "Arpanoid",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-arpanoid.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "pitch"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65
+    },
+    "usage": "guitar",
+    "notes": "Polyphonic pitch arpeggiator.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/arpanoid",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548953571222-KSS5T3MGPE4GR3MJ8PRZ/Arpanoid-Main.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-arrows",
+    "brand": "EarthQuaker",
+    "name": "Arrows",
+    "widthCm": 7.21,
+    "heightCm": 11.43,
+    "image": "earthquaker-arrows.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "notes": "Original Arrows pre-amp booster (wedge enclosure); replaced by Arrows V2.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/arrows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-arrows.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-arrows-v2",
+    "brand": "EarthQuaker",
+    "name": "Arrows V2",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-arrows-v2.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 8
+    },
+    "usage": "guitar",
+    "notes": "Pre-amp booster in the compact 121 x 64 mm enclosure.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/arrows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1519222854353-50LNIJ54IUVWQQ0HPRHV/Arrows.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-astral-destiny",
+    "brand": "EarthQuaker",
+    "name": "Astral Destiny",
+    "widthCm": 9.3,
+    "heightCm": 11.8,
+    "image": "earthquaker-astral-destiny.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb",
+      "octave"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 85
+    },
+    "usage": "guitar",
+    "notes": "Octal octave reverberation with 8 modes and 8 presets.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/astral-destiny",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1607352703063-P5HJWHKFJZGCO4BVMD9E/Astral-Destiny.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-aurelius",
+    "brand": "EarthQuaker",
+    "name": "Aurelius",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-aurelius.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus",
+      "vibrato",
+      "rotary"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75
+    },
+    "usage": "guitar",
+    "notes": "Tri-voice chorus with 6 presets and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/aurelius",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/3dd96242-054b-46c5-ad40-8f27fa6f8d89/Aurelius.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-avalanche-run",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
+    "usage": "guitar",
+    "notes": "Original Avalanche Run stereo reverb and delay; replaced by V2.",
+    "status": "discontinued",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "exp",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
+    "usage": "guitar",
+    "notes": "Stereo reverb and delay with tap tempo and expression control.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1544033064540-9DLWD9Y81ZUENBFL62IW/Avalanche-Run.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-black",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Black)",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2-black.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "usage": "guitar",
+    "notes": "Black finish variant of Avalanche Run V2.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-black.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-mint",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Mint)",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2-mint.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "usage": "guitar",
+    "notes": "Mint finish variant of Avalanche Run V2.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-mint.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-purple-sparkle",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Purple Sparkle)",
+    "widthCm": 10.5,
+    "heightCm": 11.8,
+    "image": "earthquaker-avalanche-run-v2-purple-sparkle.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 410
+    },
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "usage": "guitar",
+    "notes": "Purple Sparkle finish variant of Avalanche Run V2.",
+    "status": "current",
+    "confidence": "likely",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-purple.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-barrows-fuzz",
+    "brand": "EarthQuaker",
+    "name": "Barrows Fuzz",
+    "widthCm": 3.8,
+    "heightCm": 9.5,
+    "image": "earthquaker-barrows-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "guitar",
+    "notes": "Fuzz Attacker; three-transistor TB MkII-inspired circuit.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/barrows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/a352fd54-4472-45f7-8439-73b3c8b12d39/Barrows-Fuzz-Attacker.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-bellows",
+    "brand": "EarthQuaker",
+    "name": "Bellows",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-bellows.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 13
+    },
+    "usage": "guitar",
+    "notes": "Fuzz driver / amp-like overdrive; 9 V battery or DC.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/bellows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1479772620651-Y0IKY30P5QAVNWMILZ7O/Bellows.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-bit-commander",
+    "brand": "EarthQuaker",
+    "name": "Bit Commander",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-bit-commander.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "octave"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Analog octave synth.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/bit-commander",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548784501746-TMYDT35UAD1BCVZCE5L2/Bit-Commander.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-black-ash",
+    "brand": "EarthQuaker",
+    "name": "Black Ash",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-black-ash.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz",
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20
+    },
+    "usage": "guitar",
+    "notes": "Limited run (1500 units worldwide) fuzz/overdrive inspired by the three-knob Bender.",
+    "status": "discontinued",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/black-ash",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1540221783025-YU7XSWZQ00OZ7K1VNP2F/Black-Ash.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-blumes",
+    "brand": "EarthQuaker",
+    "name": "Blumes",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-blumes.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Low signal shredder / bass overdrive.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/blumes",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/9cecbcd7-55c3-46ed-90f8-366c8deafeb3/Blumes-Bass-Overdrive-Pedal.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-bows",
+    "brand": "EarthQuaker",
+    "name": "Bows",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-bows.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 9
+    },
+    "usage": "guitar",
+    "notes": "Germanium preamp built around a NOS OC139 transistor; 9 V battery or DC.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/bows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1480099332293-GONW2PRPMRSAUVA0GYLP/Bows.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-cloven-hoof",
+    "brand": "EarthQuaker",
+    "name": "Cloven Hoof",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-cloven-hoof.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 14
+    },
+    "usage": "guitar",
+    "notes": "Fuzz grinder; 9 V battery or DC.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/cloven-hoof",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548685716431-D65LL2PC71KEY7CV7BV0/Cloven-Hoof.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-data-corrupter",
+    "brand": "EarthQuaker",
+    "name": "Data Corrupter",
+    "widthCm": 12.1,
+    "heightCm": 14.4,
+    "image": "earthquaker-data-corrupter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "synth",
+      "pitch",
+      "octave"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 26
+    },
+    "usage": "guitar",
+    "notes": "Modulated monophonic harmonizing PLL.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/data-corrupter",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548680095800-DYW9159XSP8FTBTAXRLR/Data-Corrupter.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "earthquaker-plumes",
+    "brand": "EarthQuaker",
+    "name": "Plumes",
+    "widthCm": 6.4,
+    "heightCm": 12.1,
+    "image": "earthquaker-plumes.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "jacks": [
+      {
+        "kind": "in",
+        "edge": "top"
+      },
+      {
+        "kind": "out",
+        "edge": "top"
+      },
+      {
+        "kind": "power",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "guitar",
+    "notes": "Small signal shredder; substitutes Black Eye (no verifiable official spec page).",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/plumes",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1571927470947-5PV5WIFSR7SB40P6MB93/Plumes.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]

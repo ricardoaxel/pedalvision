@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 438 |
-| own | 37 |
+| license-pending | 464 |
+| own | 19 |
 
-Hosting: hotlinked 1 · mock 31 · static 443
+Hosting: hotlinked 1 · mock 13 · static 469
 
-Source kind: archive 5 · community 9 · official 296 · own 37 · planner 110 · retailer 18
+Source kind: archive 5 · community 9 · official 314 · own 19 · planner 118 · retailer 18
 
-Needs improvement: 142 (hotlinked 1 · mock 31 · planner 110)
+Needs improvement: 132 (hotlinked 1 · mock 13 · planner 118)
 
 ## Aclam
 
@@ -288,24 +288,32 @@ Needs improvement: 142 (hotlinked 1 · mock 31 · planner 110)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `earthquaker-a-b-box` | A/B Box | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-acapulco-gold` | Acapulco Gold | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath` | Afterneath | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath-v3` | Afterneath V3 | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath-v3-pastel-purple` | Afterneath V3 (Pastel Purple) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-afterneath-v3-raw` | Afterneath V3 (Raw) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-aqueduct` | Aqueduct | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-arpanoid` | Arpanoid | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-arrows` | Arrows | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-arrows-v2` | Arrows V2 | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-astral-destiny` | Astral Destiny | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-aurelius` | Aurelius | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run` | Avalanche Run | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2` | Avalanche Run V2 | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-black` | Avalanche Run V2 (Black) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-mint` | Avalanche Run V2 (Mint) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-avalanche-run-v2-purple-sparkle` | Avalanche Run V2 (Purple Sparkle) | own | mock | own | yes | EarthQuaker batch |
-| `earthquaker-barrows-fuzz` | Barrows Fuzz | own | mock | own | yes | EarthQuaker batch |
+| `earthquaker-a-b-box` | A/B Box | license-pending | static | official | — | — |
+| `earthquaker-acapulco-gold` | Acapulco Gold | license-pending | static | official | — | — |
+| `earthquaker-afterneath` | Afterneath | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-afterneath-v3` | Afterneath V3 | license-pending | static | official | — | — |
+| `earthquaker-afterneath-v3-pastel-purple` | Afterneath V3 (Pastel Purple) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-afterneath-v3-raw` | Afterneath V3 (Raw) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-aqueduct` | Aqueduct | license-pending | static | official | — | — |
+| `earthquaker-arpanoid` | Arpanoid | license-pending | static | official | — | — |
+| `earthquaker-arrows` | Arrows | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-arrows-v2` | Arrows V2 | license-pending | static | official | — | — |
+| `earthquaker-astral-destiny` | Astral Destiny | license-pending | static | official | — | — |
+| `earthquaker-aurelius` | Aurelius | license-pending | static | official | — | — |
+| `earthquaker-avalanche-run` | Avalanche Run | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-avalanche-run-v2` | Avalanche Run V2 | license-pending | static | official | — | — |
+| `earthquaker-avalanche-run-v2-black` | Avalanche Run V2 (Black) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-avalanche-run-v2-mint` | Avalanche Run V2 (Mint) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-avalanche-run-v2-purple-sparkle` | Avalanche Run V2 (Purple Sparkle) | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `earthquaker-barrows-fuzz` | Barrows Fuzz | license-pending | static | official | — | — |
+| `earthquaker-bellows` | Bellows | license-pending | static | official | — | — |
+| `earthquaker-bit-commander` | Bit Commander | license-pending | static | official | — | — |
+| `earthquaker-black-ash` | Black Ash | license-pending | static | official | — | — |
+| `earthquaker-blumes` | Blumes | license-pending | static | official | — | — |
+| `earthquaker-bows` | Bows | license-pending | static | official | — | — |
+| `earthquaker-cloven-hoof` | Cloven Hoof | license-pending | static | official | — | — |
+| `earthquaker-data-corrupter` | Data Corrupter | license-pending | static | official | — | — |
+| `earthquaker-plumes` | Plumes | license-pending | static | official | — | — |
 
 ## Effects Bakery
 
@@ -635,7 +643,7 @@ Needs improvement: 142 (hotlinked 1 · mock 31 · planner 110)
 | Creation Music Co | own | 1 |
 | D’Addario | own | 1 |
 | Donner | own | 1 |
-| EarthQuaker | own | 18 |
+| EarthQuaker | planner | 8 |
 | Effects Bakery | own | 1 |
 | Electro-Harmonix | planner | 14 |
 | Emerson Custom | own | 1 |
