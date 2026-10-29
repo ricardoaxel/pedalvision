@@ -1,38 +1,390 @@
 [
-  {
-    "id": "big-joe-pb-109-power-box-li2",
-    "brand": "Big Joe",
-    "name": "PB-109 Power Box Li2",
-    "category": "supply",
-    "effectTypes": [],
-    "widthCm": 4.17,
-    "heightCm": 8.53,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "big-joe-1"
-    }
-  },
-  {
-    "id": "big-joe-power-box-iso4",
-    "brand": "Big Joe",
-    "name": "Power Box ISO4",
-    "category": "supply",
-    "effectTypes": [],
-    "widthCm": 4.17,
-    "heightCm": 8.53,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "big-joe-1"
-    }
-  }
+	{
+		"id": "big-joe-pb-109-power-box-li2",
+		"brand": "Big Joe",
+		"name": "PB-109 Power Box Li2",
+		"category": "supply",
+		"deviceType": "power-supply",
+		"formFactor": "desktop",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [],
+		"widthCm": 8.255,
+		"heightCm": 4.1275,
+		"dimensionsSource": "Big Joe PB-109 Power Box Li2 official user manual, Specifications: 3.25 x 1.625 x 1.25 in \u2192 8.255 x 4.1275 x 3.175 cm footprint (unit, not an accessory).",
+		"imageFormat": "avif",
+		"year": 2020,
+		"status": "current",
+		"usage": "both",
+		"color": "Black anodized aluminum case",
+		"notes": "Rechargeable lithium-polymer battery power box with two tip-negative 9 V DC 2.1 mm outputs (up to 1.0 A total), a 3-digit blue LED status display, USB-C charging and a 500 mA courtesy USB output.",
+		"jacks": [
+			{
+				"label": "9V DC output",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"channels": 2,
+				"note": "Two tip-negative 2.1 mm output jacks; either one can deliver the unit's 1.0 A capability."
+			},
+			{
+				"label": "USB-C charge input",
+				"kind": "power",
+				"connector": "usb-c",
+				"signal": "usb",
+				"usbFunctions": [
+					"charging",
+					"power"
+				],
+				"note": "USB-C charging input; charge cube included."
+			},
+			{
+				"label": "USB output",
+				"kind": "power",
+				"signal": "usb",
+				"usbFunctions": [
+					"power"
+				],
+				"note": "500 mA courtesy USB output."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Connector edges not verified: the official manual figure shows the output/charge connectors but cannot be tied to a physical enclosure edge in the available crop; edges omitted rather than inferred."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 1000,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "Lithium polymer; rechargeable via USB-C",
+			"outlets": 2,
+			"isolatedOutputs": 0,
+			"totalMa": 1000,
+			"note": "Two single-point-ground 9 V DC outputs; either can deliver the unit's 1.0 A capability. Battery life approx. 2.5 h at 1 A, 5 h at 500 mA, 25 h at 100 mA; charge 2-3 h via USB-C."
+		},
+		"optional": {
+			"power": {
+				"outlets": 2,
+				"isolatedOutputs": 0,
+				"perOutput": [
+					{
+						"voltage": 9,
+						"isolated": false
+					},
+					{
+						"voltage": 9,
+						"isolated": false
+					}
+				],
+				"totalMa": 1000,
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "Lithium polymer; USB-C rechargeable",
+				"batteryLifeHours": 2.5,
+				"acInput": "USB-C (USB charger cube included)",
+				"usbBusPower": false,
+				"courtesyOutlet": false,
+				"sag": false,
+				"note": "Rated 1.0 A output. Included: USB-C charging cable, USB power cube, two 5.5 x 2.1 mm male/male pedal cables, one 8-output daisy-chain cable, Velcro strip and manual."
+			},
+			"physical": {
+				"weightG": 108,
+				"depthCm": 4.1275,
+				"heightCm": 3.175,
+				"enclosure": "Black anodized aluminum",
+				"finish": "Black",
+				"display": "3-digit blue LED display (battery %, time remaining, current draw)",
+				"mounting": "Pedalboard-friendly; Velcro strip included"
+			},
+			"lifecycle": {
+				"year": 2020,
+				"manualUrl": "https://drive.google.com/file/d/1WNZikkLE1Hv4fAvVIcyHwouXKlggJcUR/view?usp=sharing"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://bigjoestompbox.com/products/lithium-li2",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://drive.google.com/file/d/1WNZikkLE1Hv4fAvVIcyHwouXKlggJcUR/view?usp=sharing",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://bigjoestompbox.com/cdn/shop/products/Li2_Web_1024x1024.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://bigjoestompbox.com/cdn/shop/products/Li2_Web_1024x1024.jpg",
+				"sourcePage": "https://bigjoestompbox.com/products/lithium-li2",
+				"priority": 1,
+				"notes": "Official 484x620 JPEG on white; vertical hero shot, 10.3\u00b0 skew and an award badge overlay \u2014 rejected as angled, not a top-down cutout."
+			},
+			{
+				"url": "https://guitarpedalshoppe.com/image/cache/catalog/productimage/Big%20Joe-%20Li2%20Lithium-1-500x500.jpg",
+				"sourcePage": "https://guitarpedalshoppe.com/big-joe-stompbox-company/big-joe-power-box-lithium-li2-supply-battery",
+				"priority": 2,
+				"notes": "Authorized-retailer 500x500 JPEG; 31.4\u00b0 skew, below the 800 px floor \u2014 rejected."
+			},
+			{
+				"url": "https://guitarpedalshoppe.com/image/cache/catalog/productimage/Big%20Joe-%20Li2%20Lithium-2-500x500.jpg",
+				"sourcePage": "https://guitarpedalshoppe.com/big-joe-stompbox-company/big-joe-power-box-lithium-li2-supply-battery",
+				"priority": 2,
+				"notes": "Authorized-retailer 500x500 JPEG; 16.1\u00b0 skew, below the 800 px floor \u2014 rejected."
+			}
+		],
+		"imageProvenance": {
+			"kind": "own",
+			"referenceUrl": "https://bigjoestompbox.com/products/lithium-li2",
+			"status": "chosen",
+			"note": "Generated Catalog Specimen flat art from the official product page and PB-109 manual (dimensions, controls, connector count); official and retailer photos were angled/hero shots and failed the flatness gate. Spec: tools/asset-pipeline/pedal-art/specs/big-joe-pb-109-power-box-li2.json. Planner share: 0."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "big-joe-1",
+			"included": [
+				"Power Box Li2",
+				"USB-C charging cable",
+				"USB power cube",
+				"2 x 5.5 mm x 2.1 mm male/male pedal connector cables",
+				"1 x 8-output daisy-chain cable (5.5 mm x 2.1 mm)",
+				"Velcro strip",
+				"User manual"
+			],
+			"controls": [
+				"3-digit blue LED display",
+				"Display selector button (hours / mA / %)",
+				"On/off power switch"
+			],
+			"sourceDiscovery": {
+				"official": [
+					"https://bigjoestompbox.com/products/lithium-li2 (HTTP 429 on the product HTML; CDN image and the official manual PDF were retrieved)"
+				],
+				"retailer": [
+					"https://guitarpedalshoppe.com/big-joe-stompbox-company/big-joe-power-box-lithium-li2-supply-battery (2 images, both angled/low-res, rejected)"
+				],
+				"searchEngineImagesAttempt": "One Bing Images attempt for \"Big Joe\" \"Power Box Li2\" returned zero relevant results (zero-yield); no retry, no engine swap.",
+				"planner": "Pedalplayground slug probes for Big Joe returned the same placeholder image (no usable planner asset).",
+				"zeroYield": [
+					"Big Joe product HTML returned local_rate_limited (HTTP 429) after the first fetch",
+					"Bing Images returned zero relevant results",
+					"Pedalplayground had no Big Joe asset"
+				]
+			},
+			"imageReview": "Single catalog-image-reviewer pass: generated 800/350 and 3x crops accepted; official photo rejected (vertical hero + badge + white background); generated art has clean alpha, no halo/fringe, flat aspect."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28"
+	},
+	{
+		"id": "big-joe-power-box-iso4",
+		"brand": "Big Joe",
+		"name": "Power Box ISO4",
+		"category": "supply",
+		"deviceType": "power-supply",
+		"formFactor": "desktop",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [],
+		"widthCm": 8.509,
+		"heightCm": 4.2164,
+		"dimensionsSource": "Big Joe Power Box iSO4 official product page, Specifications: 3.35 x 1.66 x 1.38 in \u2192 8.509 x 4.2164 x 3.5052 cm footprint (unit, not an accessory).",
+		"imageFormat": "avif",
+		"status": "current",
+		"usage": "both",
+		"color": "Dark grey enclosure",
+		"notes": "Rechargeable lithium-ion isolated power supply with four 9 V DC BiWire isolated outputs (750 mA total at 9 V), a 3-digit blue LED status display, USB-C charging and a courtesy USB output.",
+		"jacks": [
+			{
+				"label": "9V DC isolated output",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"channels": 4,
+				"note": "Four 9 V DC BiWire isolated outputs; 750 mA total at 9 V."
+			},
+			{
+				"label": "USB-C charge input",
+				"kind": "power",
+				"connector": "usb-c",
+				"signal": "usb",
+				"usbFunctions": [
+					"charging",
+					"power"
+				],
+				"note": "USB-C charging input; charge cube included."
+			},
+			{
+				"label": "USB output",
+				"kind": "power",
+				"signal": "usb",
+				"usbFunctions": [
+					"power"
+				],
+				"note": "Courtesy USB output."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Connector edges not verified: no official connector-face photo/manual crop tied the outputs to a specific enclosure edge; edges omitted rather than inferred."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 750,
+			"connector": "barrel",
+			"battery": "Lithium-ion, 26.6 Wh; rechargeable via USB-C",
+			"outlets": 4,
+			"isolatedOutputs": 4,
+			"totalMa": 750,
+			"note": "Four fully isolated 9 V DC outputs (BiWire); 750 mA total at 9 V; battery capacity 26.6 Wh."
+		},
+		"optional": {
+			"power": {
+				"outlets": 4,
+				"isolatedOutputs": 4,
+				"perOutput": [
+					{
+						"voltage": 9,
+						"isolated": true
+					},
+					{
+						"voltage": 9,
+						"isolated": true
+					},
+					{
+						"voltage": 9,
+						"isolated": true
+					},
+					{
+						"voltage": 9,
+						"isolated": true
+					}
+				],
+				"totalMa": 750,
+				"voltage": 9,
+				"acDc": "DC",
+				"connector": "barrel",
+				"battery": "Lithium-ion, 26.6 Wh; USB-C rechargeable",
+				"acInput": "USB-C (USB charger cube included)",
+				"usbBusPower": false,
+				"courtesyOutlet": false,
+				"sag": false,
+				"note": "Patented BiWire isolation: each output is effectively an individual 9 V battery and all outputs last the same time regardless of individual pedal draw. Shared 750 mA total at 9 V; battery 26.6 Wh."
+			},
+			"physical": {
+				"depthCm": 4.2164,
+				"heightCm": 3.5052,
+				"enclosure": "Dark grey enclosure",
+				"display": "3-digit blue LED display (battery %, time remaining, current draw)",
+				"mounting": "Pedalboard-friendly"
+			},
+			"lifecycle": {
+				"manualUrl": "https://drive.google.com/file/d/1HPLXBjFkq5l7f74mSp1hnO46TwURO_9x/view?usp=sharing"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://bigjoestompbox.com/products/power-box-iso4",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://drive.google.com/file/d/1HPLXBjFkq5l7f74mSp1hnO46TwURO_9x/view?usp=sharing",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://bigjoestompbox.com/cdn/shop/files/QDS9524_Web.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://bigjoestompbox.com/cdn/shop/files/QDS9500_Web_025d848f-4a9f-4c6e-9e78-81d7fed27aae.png",
+				"sourcePage": "https://bigjoestompbox.com/products/power-box-iso4",
+				"priority": 1,
+				"notes": "Official 1682x1121 transparent PNG; angled hero shot (not top-down) \u2014 rejected."
+			},
+			{
+				"url": "https://bigjoestompbox.com/cdn/shop/files/QDS9501_Web_d57b5032-55c6-4ed9-a621-29b80f8da752.png",
+				"sourcePage": "https://bigjoestompbox.com/products/power-box-iso4",
+				"priority": 1,
+				"notes": "Official 1682x1121 transparent PNG; 3/4 perspective with visible top+front faces \u2014 rejected."
+			},
+			{
+				"url": "https://bigjoestompbox.com/cdn/shop/files/QDS9502_Web.png",
+				"sourcePage": "https://bigjoestompbox.com/products/power-box-iso4",
+				"priority": 1,
+				"notes": "Official 1682x1121 transparent PNG; angled 3/4 hero shot \u2014 rejected."
+			},
+			{
+				"url": "https://bigjoestompbox.com/cdn/shop/files/QDS9524_Web.png",
+				"sourcePage": "https://bigjoestompbox.com/products/power-box-iso4",
+				"priority": 1,
+				"notes": "Official 1682x1121 transparent PNG; multi-unit family lineup, angled \u2014 rejected."
+			}
+		],
+		"imageProvenance": {
+			"kind": "own",
+			"referenceUrl": "https://bigjoestompbox.com/products/power-box-iso4",
+			"status": "chosen",
+			"note": "Generated Catalog Specimen flat art from the official product page (dimensions, four isolated outputs, display, USB-C charge in/out); all four official photos are angled hero/lineup shots and failed the flatness gate. Spec: tools/asset-pipeline/pedal-art/specs/big-joe-power-box-iso4.json. Planner share: 0."
+		},
+		"extra": {
+			"promotedFrom": "legacy",
+			"promotedBatch": "big-joe-1",
+			"included": [
+				"Power Box iSO4",
+				"USB-C charging cube included (official product page); full accessory list not stated"
+			],
+			"controls": [
+				"3-digit blue LED display",
+				"On/off power switch"
+			],
+			"sourceDiscovery": {
+				"official": [
+					"https://bigjoestompbox.com/products/power-box-iso4 (four transparent PNG product photos; all angled/lineup)"
+				],
+				"retailer": [
+					"https://crazydavesmusic.com/products/big-joe-power-box-iso4-rechargeable-lithium-ion-power-supply (bot-blocked, zero-yield)"
+				],
+				"searchEngineImagesAttempt": "Same single Bing Images attempt as the batch; no ISO4 top-down surfaced.",
+				"planner": "Pedalplayground slug probes for Big Joe returned the same placeholder image (no usable planner asset).",
+				"zeroYield": [
+					"Big Joe product HTML returned local_rate_limited (HTTP 429) after the first fetch",
+					"Crazy Dave's retailer page returned a bot block",
+					"Bing Images returned zero relevant results",
+					"Pedalplayground had no Big Joe asset"
+				]
+			},
+			"imageReview": "Single catalog-image-reviewer pass: generated 800/350 and 3x crops accepted; four official photos rejected as angled/lineup shots; generated art has clean alpha, no halo/fringe, flat aspect."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28"
+	}
 ]
