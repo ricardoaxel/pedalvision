@@ -2865,10 +2865,10 @@
       "overdrive",
       "boost"
     ],
-    "widthCm": 9.5,
-    "heightCm": 12.0,
+    "widthCm": 9.40,
+    "heightCm": 12.45,
+    "dimensionsSource": "Pedalplayground (owner instruction 2026-10-29): 3.7 x 4.9 in = 9.40 x 12.45 cm (W x H); planner entry https://pedalplayground.com/app/images/pedals/keeley-dm-drive.png.",
     "imageFormat": "avif",
-    "dimensionsSource": "Keeley D&M Drive, 120 x 95 x 50 mm / 4.7 x 3.7 x 2 in (Andertons + Musician's Friend official spec).",
     "jackLayout": {
       "confidence": "unknown",
       "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
@@ -2982,10 +2982,10 @@
       }
     ],
     "imageProvenance": {
-      "kind": "official",
-      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/DM-Orange-Face-e1524683530786.jpg",
-      "status": "chosen",
-      "note": "Official Keeley product image. Source 1000x1000 (trim 614x799); final 800 rendition; upscale 1x."
+      "kind": "planner",
+      "sourceUrl": "https://pedalplayground.com/app/images/pedals/keeley-dm-drive.png",
+      "status": "last-resort",
+      "note": "Pedalplayground cutout (800x1059, transparent); owner requested 2026-10-29; processed with --matte none to 800/350 AVIF q90; PSNR 40.23 dB; planner last-resort, counted source gap. Footprint from the same Pedalplayground entry."
     },
     "extra": {
       "controls": [
@@ -2997,7 +2997,9 @@
         "Drive Level",
         "Order switch"
       ],
-      "dimensions": "9.5 x 12.0 cm",
+      "dimensions": "9.40 x 12.45 cm",
+      "imageSourceDimensions": "800x1059 (planner PNG)",
+      "upscaleFactor": 1,
       "power": "9V DC, 55 mA, center-negative"
     }
   },
