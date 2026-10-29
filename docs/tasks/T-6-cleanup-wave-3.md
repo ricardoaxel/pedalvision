@@ -1,6 +1,6 @@
 # T-6 — Cleanup wave 3 coordinator (Joyo-1 + Keeley-1 + EQD-1)
 
-**Phase:** P5 · **Status:** in review — PRs #79 (Keeley), #80 (Joyo), #82 (EarthQuaker); 0 merged · **Type:** catalog wave coordinator · **Depends on:** T-5 (complete)
+**Phase:** P5 · **Status:** COMPLETE — #79 Keeley, #80 Joyo, #82 EarthQuaker merged; post-merge `46c03b5` 468/15, ledger 483 · **Type:** catalog wave coordinator · **Depends on:** T-5 (complete)
 
 ## Goal
 

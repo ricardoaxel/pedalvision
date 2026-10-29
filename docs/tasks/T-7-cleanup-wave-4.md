@@ -1,6 +1,6 @@
 # T-7 — Cleanup wave 4 coordinator (Behringer-1 + Big Joe-1 + Effects Bakery-1)
 
-**Phase:** P5 · **Status:** queued (start only after T-6 PRs merge + post-merge build) · **Type:** catalog wave coordinator · **Depends on:** T-6
+**Phase:** P5 · **Status:** next (T-6 merged; post-merge `46c03b5` verified 468/15, ledger 483) · **Type:** catalog wave coordinator · **Depends on:** T-6
 
 ## Goal
 
