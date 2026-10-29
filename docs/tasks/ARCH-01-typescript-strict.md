@@ -1,6 +1,6 @@
 # ARCH-01 — TypeScript strict mode + empty-barrel cleanup
 
-**Phase:** Architecture (cross-cutting) · **Status:** next — config-only; start in the next free slot · **Model:** light
+**Phase:** Architecture (cross-cutting) · **Status:** in review — PR #87 (checks green; pending owner merge) · **Model:** light
 
 ## Goal
 
