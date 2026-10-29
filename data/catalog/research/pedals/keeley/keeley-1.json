@@ -1,0 +1,600 @@
+[
+  {
+    "id": "keeley-1962",
+    "brand": "Keeley",
+    "name": "1962",
+    "category": "pedal",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/keeley-1962/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedalfilter.com/keeley/1962",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-1962x",
+    "brand": "Keeley",
+    "name": "1962x",
+    "category": "pedal",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/1962x-ltd-british-overdrive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://pedaltown.nl/en/product/keeley-1962x-2-mode-limited-british",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-30ms-double-tracker",
+    "brand": "Keeley",
+    "name": "30ms Double Tracker",
+    "category": "pedal",
+    "effectTypes": [
+      "delay",
+      "chorus",
+      "reverb"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/30ms-automatic-double-tracker/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.rockboard.de/nos/data/erp/erp_article/Product-Pictures/Keeley/30ms%20DOUBLE%20TRACKER/30MSDoubleTracker_EN.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://guitar.com/reviews/keeley-electronics-30ms-double-tracker-abbey-chamber-verb-memphis-sun-reverb/",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-abbey-chamber-verb",
+    "brand": "Keeley",
+    "name": "Abbey Chamber Verb",
+    "category": "pedal",
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://www.musicstorelive.com/keeley-abbey-chamber-verb-vintage-reverb-guitar-effects-pedal.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.gear4music.com/G4M/Keeley-Abbey-Chamber-Verb/6O0S",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-angry-orange",
+    "brand": "Keeley",
+    "name": "Angry Orange",
+    "category": "pedal",
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://gcrockboard.com/keeley-electronics-angry-orange-distortion-and-fuzz",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.premierguitar.com/news/keeley-angry-orange-blues-disorder-super-rodent",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-angry-orange-signalis",
+    "brand": "Keeley",
+    "name": "Angry Orange (Signalis)",
+    "category": "pedal",
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "variantOf": "keeley-angry-orange",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-angry-orange-white",
+    "brand": "Keeley",
+    "name": "Angry Orange (White)",
+    "category": "pedal",
+    "effectTypes": [
+      "distortion",
+      "fuzz"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "variantOf": "keeley-angry-orange",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-aria",
+    "brand": "Keeley",
+    "name": "Aria",
+    "category": "pedal",
+    "effectTypes": [
+      "compressor",
+      "overdrive"
+    ],
+    "widthCm": 9.4,
+    "heightCm": 12.45,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/aria-compressor-overdrive/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.premierguitar.com/keeley-electronics-unveils-the-aria-compressor-overdrive",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/keeley_aria.htm",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-aurora",
+    "brand": "Keeley",
+    "name": "Aurora",
+    "category": "pedal",
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/aurora-digital-reverb-shirt-namm-special/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.scan.co.uk/products/keeley-aurora-digital-reverb-pedal",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.musiciansfriend.com/amplifiers-effects/keeley-aurora-digital-reverb-guitar-effects-pedal/j21560000000000",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-bassist-compressor",
+    "brand": "Keeley",
+    "name": "Bassist Compressor",
+    "category": "pedal",
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-black-glass",
+    "brand": "Keeley",
+    "name": "Black Glass",
+    "category": "pedal",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/black-glass-british-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.premierguitar.com/keeley-electronics-announces-black-glass-british-fuzz",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-blacktop",
+    "brand": "Keeley",
+    "name": "Blacktop",
+    "category": "pedal",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/cole-test/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.amazon.com/Keeley-Electronics-Blacktop-Vintage-Silicon/dp/B016H05JCA",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-blues-disorder",
+    "brand": "Keeley",
+    "name": "Blues Disorder",
+    "category": "pedal",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/keeley_blues_disorder_overdrive_dist.htm",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.musicradar.com/news/keeley-electronics-4-in-1-series-angry-orange-blues-disorder-super-rodent",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-blues-disorder-signalis",
+    "brand": "Keeley",
+    "name": "Blues Disorder (Signalis)",
+    "category": "pedal",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "variantOf": "keeley-blues-disorder",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-blues-disorder-white",
+    "brand": "Keeley",
+    "name": "Blues Disorder (White)",
+    "category": "pedal",
+    "effectTypes": [
+      "overdrive",
+      "distortion"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.09,
+    "variantOf": "keeley-blues-disorder",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-bubble-tron",
+    "brand": "Keeley",
+    "name": "Bubble Tron",
+    "category": "pedal",
+    "effectTypes": [
+      "flanger",
+      "phaser",
+      "envelope",
+      "filter"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/bubble-tron-dynamic-flanger-phaser/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.thomann.co.uk/keeley_bubble_tron.htm",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.musicradar.com/news/guitars/keeley-electronics-bubble-tron-pedal-assembles-the-vintage-effect-classics-that-never-were-640529",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-bubble-tron-ler",
+    "brand": "Keeley",
+    "name": "Bubble Tron (Ler)",
+    "category": "pedal",
+    "effectTypes": [
+      "flanger",
+      "phaser",
+      "envelope",
+      "filter"
+    ],
+    "widthCm": 6.93,
+    "heightCm": 11.43,
+    "variantOf": "keeley-bubble-tron",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  },
+  {
+    "id": "keeley-california-girls",
+    "brand": "Keeley",
+    "name": "California Girls",
+    "category": "pedal",
+    "effectTypes": [
+      "octave",
+      "chorus",
+      "delay"
+    ],
+    "widthCm": 10.16,
+    "heightCm": 12.8,
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/beach-boys-california-girls-12-string-simulator/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-The-Beach-Boys-California-Girls-Twelve-String-Simulator-Instructions.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/CaliGirls--keeley-california-girls-twelve-string-simulator-pedal-sweetwater-exclusive",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.premierguitar.com/news/keeley-beach-boys-pedals",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "keeley-1"
+    }
+  }
+]
