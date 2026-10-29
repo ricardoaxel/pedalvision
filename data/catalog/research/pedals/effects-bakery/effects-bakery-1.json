@@ -3,18 +3,212 @@
     "id": "effects-bakery-power-supply-hoden-sentai-donuts",
     "brand": "Effects Bakery",
     "name": "Power Supply Hoden Sentai Donuts",
+    "aliases": [
+      "補電戦隊ドーナッツ",
+      "Hoden Sentai Doughnut Power Supply"
+    ],
     "category": "supply",
+    "deviceType": "power-supply",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar",
+      "bass",
+      "synth",
+      "keys"
+    ],
     "effectTypes": [],
     "widthCm": 9.4,
-    "heightCm": 3.86,
+    "heightCm": 3.9,
+    "dimensionsSource": "Effects Bakery USA product page (official): 94 W × 39 D × 35 H mm including projections; catalog footprint 9.4 × 3.9 cm.",
+    "imageFormat": "avif",
+    "year": 2022,
+    "status": "unknown",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "color": "Light blue with printed Power Station Donuts character artwork",
+    "notes": "Ten-output center-negative 9 V DC power supply in a mini-pedal-size enclosure, powered by the included 9 V DC 2 A adapter. Ships with ten DC cables (1 × 15 cm, 3 × 30 cm, 3 × 50 cm, 3 × 70 cm).",
+    "jacks": [
+      {
+        "label": "DC 9V 2A input",
+        "kind": "power",
+        "edge": "left",
+        "connector": "barrel",
+        "channels": 1,
+        "signal": "power",
+        "note": "Single center-negative 9 V DC 2 A input on the left short end; use the included Effects Bakery 9 V DC 2 A adapter."
+      },
+      {
+        "label": "DC OUT (front)",
+        "kind": "power",
+        "edge": "bottom",
+        "connector": "barrel",
+        "channels": 5,
+        "signal": "power",
+        "note": "Five center-negative 9 V DC 200 mA outputs on the front long face (manual page 1 and official JP product image 00.png)."
+      },
+      {
+        "label": "DC OUT (opposite face)",
+        "kind": "power",
+        "connector": "barrel",
+        "channels": 5,
+        "signal": "power",
+        "note": "The remaining five of the ten outputs are on the opposite long face; no official photo of that face was found, so its edge is omitted rather than inferred."
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn.shopify.com/s/files/1/0432/3871/9653/files/EB-Manual_08ad75db-5bed-46f1-99af-53414d22795b.pdf?v=1725719128",
+      "confidence": "verified",
+      "note": "Official Effects Bakery manual: the DC 9 V input is on the left side (page 1, label 1) and the DC OUT jacks are on a long side face (page 1, label 2). The manual and the official JP image 00.png show five outputs on the front face; the opposite five are not shown, so that edge is omitted."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2000,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "recommendedSupply": "Effects Bakery 9VDC adapter (2A), included",
+      "note": "DC 9 V 2 A center-negative input via the included adapter."
+    },
+    "optional": {
+      "power": {
+        "outlets": 10,
+        "perOutput": [
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 },
+          { "voltage": 9, "currentMa": 200 }
+        ],
+        "totalMa": 2000,
+        "acInput": "DC 9 V 2 A center-negative (included Effects Bakery 9VDC adapter)",
+        "note": "Ten center-negative 9 V DC outputs at up to 200 mA each. The official product page and manual do not state whether the outputs are isolated; isolation is left unknown and is not claimed."
+      },
+      "physical": {
+        "weightG": 115,
+        "depthCm": 3.9,
+        "heightCm": 3.5,
+        "enclosure": "Mini pedal-size enclosure",
+        "finish": "Light blue with printed artwork",
+        "jackOrientation": "DC input on the left short end; DC outputs on the long side faces.",
+        "powerJackLocation": "Left short end",
+        "mounting": "Mini pedal footprint; mounts on a pedalboard"
+      },
+      "lifecycle": {
+        "manualUrl": "https://cdn.shopify.com/s/files/1/0432/3871/9653/files/EB-Manual_08ad75db-5bed-46f1-99af-53414d22795b.pdf?v=1725719128"
+      }
+    },
+    "sources": [
+      {
+        "url": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://www.effectsbakery.jp/products/effects-bakery-pshd",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0432/3871/9653/files/EB-Manual_08ad75db-5bed-46f1-99af-53414d22795b.pdf?v=1725719128",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://discover.chuya-online.com/20220728/20803/",
+        "kind": ["info"]
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg",
+        "kind": ["image"]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg",
+        "sourcePage": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "priority": 1,
+        "notes": "Official Effects Bakery US store product photo, 2000×2000 px. Branded top face; chosen. Trimmed to 1837×812 px and downscaled 2.3× to the 800×354 AVIF master."
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/02_2bfba182-a6b6-4d01-9e12-5d7874405ff0.jpg",
+        "sourcePage": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "priority": 2,
+        "notes": "Official connector-face elevation (five DC jacks in a row); rejected as a cutout source — it is a side face, not the top. Kept as connector evidence."
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/03_56fa48df-d2a5-4b21-bd47-445d38e6c7da.jpg",
+        "sourcePage": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "priority": 3,
+        "notes": "Official 3/4 angled hero (top plus near side face); rejected — perspective."
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/04_cce537bd-e136-4072-98a0-46797e3c9bbe.jpg",
+        "sourcePage": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "priority": 4,
+        "notes": "Official second straight-on connector/side-face crop; rejected as a cutout — kept as jack evidence."
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/05_8500dad3-0043-4aa3-9134-53251b3f986b.jpg",
+        "sourcePage": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "priority": 5,
+        "notes": "Official unit-with-adapter shot; rejected — accessory included and angled."
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/06.jpg",
+        "sourcePage": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "priority": 6,
+        "notes": "Official lifestyle shot on a populated pedalboard; rejected — busy background."
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/DSC09514.jpg",
+        "sourcePage": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "priority": 7,
+        "notes": "Official hero shot with donuts on a tabletop; rejected — lifestyle and perspective."
+      },
+      {
+        "url": "https://www.effectsbakery.jp/cdn/shop/files/00.png",
+        "sourcePage": "https://www.effectsbakery.jp/products/effects-bakery-pshd",
+        "priority": 8,
+        "notes": "Official JP product image, 2000×2000 px; used as connector evidence (five outputs on the front long face). Not a top-down cutout."
+      }
+    ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://effectsbakery.us/cdn/shop/products/01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg",
+      "status": "chosen",
+      "note": "Official Effects Bakery (US store) product photo, 2000×2000 px; trimmed to the enclosure (1837×812 px) and downscaled 2.3× to the 800×354 AVIF master (no upscale). The branded top face was confirmed in the single vision pass; the 02_… connector-face photo was rejected as a side elevation."
     },
     "extra": {
       "promotedFrom": "legacy",
-      "promotedBatch": "effects-bakery-1"
+      "promotedBatch": "effects-bakery-1",
+      "modelNumber": "EB-PSHDn",
+      "jan": "4562459896789",
+      "includedAccessories": [
+        "Effects Bakery 9VDC Adapter (2A) ×1",
+        "DC Cable 15 cm L/S ×1",
+        "DC Cable 30 cm L/S ×3",
+        "DC Cable 50 cm L/S ×3",
+        "DC Cable 70 cm L/S ×3"
+      ],
+      "input": "DC 9 V / 2 A, center-negative",
+      "outputs": "10 × DC 9 V / 200 mA, center-negative",
+      "isolation": "Not stated by the manufacturer on the official product page or in the manual; the unit is fed by one 9 V 2 A adapter. Isolation is recorded as unknown, not claimed.",
+      "weightG": 115,
+      "license": "brand-asset (official Effects Bakery product image; self-hosted)",
+      "sourceDiscovery": {
+        "registryFirst": "No Effects Bakery row in the image-source registry; official brand store was checked first.",
+        "official": [
+          "https://effectsbakery.us/products/effects-bakery-pshd (7 gallery images)",
+          "https://www.effectsbakery.jp/products/effects-bakery-pshd (9 gallery images + manual PDF)"
+        ],
+        "searchEngine": "Not used — the official gallery yielded a usable flat top face.",
+        "sourcePagesFetched": 2,
+        "accepted": "01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg (branded top face, 2000×2000)",
+        "rejected": "02_… and 04_… connector-face elevations; 03_… and DSC09514 angled; 05_… accessory; 06_… lifestyle; JP 00.png jack evidence only.",
+        "plannerShare": "0% (0 of 1 item; no planner image used)"
+      }
     }
   }
 ]
