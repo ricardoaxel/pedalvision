@@ -52,16 +52,18 @@ Dunlop Tier A inventory = **65**, existing seeds = **0**. This batch takes the f
 Do not force 26: if an item has no verifiable official source, record the gap and
 state it in the PR; do not invent facts. Substitute only with a recorded reason.
 
-### Session outcome (2026-10-29) — 25 items shipped
+### Session outcome (2026-10-29) — 26 items shipped
 
-- **Item 22 `dunlop-cry-baby-q-zone-auto-wah` dropped with a recorded reason.**
-  No official Dunlop product by that name exists: the official product sitemap,
-  the official product data (GraphQL) and one web search all resolve “Q Zone” to
-  the `QZ1` **Fixed** Wah only (shipped as item 23). No facts were invented and no
-  substitute was forced.
-- **Images:** 24 official Jim Dunlop views (MAIN/TOPP) + **1 generated Catalog
+- **Item 22 `dunlop-cry-baby-q-zone-auto-wah` has no official product, so it
+  was substituted with a recorded reason.** The official product sitemap, the
+  official product data (GraphQL) and one web search all resolve “Q Zone” to the
+  `QZ1` **Fixed** Wah only (shipped as item 23). The substitute is
+  `dunlop-cry-baby-classic-wah` (GCB95F, Cry Baby Classic Wah), a distinct
+  current Dunlop Tier A wah with an official product page, manual and gallery.
+  No facts were invented for item 22 and no duplicate was shipped.
+- **Images:** 25 official Jim Dunlop views (MAIN/TOPP) + **1 generated Catalog
   Specimen** (`dunlop-cry-baby-mini-bass-wah`: the white-on-white official photos
-  fail the clean-alpha gate). Planner share **0/25 (0%)**, retailer/marketplace
+  fail the clean-alpha gate). Planner share **0/26 (0%)**, retailer/marketplace
   **0**. Provenance is recorded per item in the raw file.
 - **Discovery:** official product gallery + product data only; two generic web
   searches (one to confirm the missing Q Zone Auto Wah, one to confirm unit

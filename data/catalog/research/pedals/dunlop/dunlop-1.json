@@ -2407,32 +2407,33 @@
 				]
 			},
 			{
-				"url": "https://www.jimdunlop.com/content/manuals/CBM105Q.pdf",
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
 				"kind": [
-					"info"
+					"info",
+					"image"
 				]
 			},
 			{
-				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
+				"url": "https://www.jimdunlop.com/content/manuals/CBM105Q.pdf",
 				"kind": [
-					"image"
+					"info"
 				]
 			}
 		],
 		"confidence": "confirmed",
 		"lastVerified": "2026-10-29",
 		"imageProvenance": {
-			"kind": "official",
-			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
+			"kind": "own",
 			"status": "chosen",
-			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+			"referenceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
+			"note": "Generated Catalog Specimen flat art (docs/catalog/pedal-art.md). The official mini-wah photos are white-on-white and failed the clean-alpha gate; the official TOPP view is the reference only (proportions/colour), no reference pixels shipped. Spec: tools/asset-pipeline/pedal-art/specs/dunlop-cry-baby-mini-bass-wah.json."
 		},
 		"imageCandidates": [
 			{
 				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
-				"priority": 1,
+				"priority": 2,
 				"sourcePage": "https://www.jimdunlop.com/cry-baby-mini-bass-wah/",
-				"notes": "Chosen: official TOPP view, clean top-down face."
+				"notes": "Official TOPP: white enclosure merged into the white background; clean-alpha gate failed (reviewer rejected)."
 			}
 		],
 		"extra": {
@@ -3261,6 +3262,134 @@
 			},
 			"lifecycle": {
 				"manualUrl": "https://www.jimdunlop.com/content/manuals/DVP3.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-classic-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Classic Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-classic-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/GCB95F.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/581/6148/11094000001.TOPP__99532.1663874792.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/581/6148/11094000001.TOPP__99532.1663874792.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/581/6148/11094000001.TOPP__99532.1663874792.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-classic-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "GCB95F",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/GCB95F.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/GCB95F.pdf"
 			}
 		}
 	}
