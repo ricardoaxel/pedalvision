@@ -80,6 +80,38 @@ Task files live in `docs/tasks/`. P0–P5 have detailed task files; proposed/uns
 - **P5-07 User help / how-to content — PROPOSED (not scheduled).** Old P5-06. Short end-user help ("how layering works", cables, save/share/export); pairs with P2-08.
 - **P5-08 Observability — RUM + error monitoring — PROPOSED (not scheduled; owner decision).** Old P5-07. **No analytics/telemetry in v1** (no PostHog); compare privacy-first options if wanted. Requires an ADR/dependency note + privacy review; **not a launch gate.**
 
+## ARCH — Frontend architecture rework (post-P5 feature lane; **not a release gate**)
+
+Decisions in **ADR-008**. These are maintainability tasks, not product features:
+they do **not** block the P5 catalog program or the launch gate, and they touch
+**no** catalog data/assets/tools. Only **ARCH-01** gates feature work.
+
+**Deferred policy:** every item below ARCH-01 is **opportunistic**. Do it when a
+feature already touches that area (or in a deliberate quiet window). **Before
+starting any deferred item, re-check and redefine its task file against the
+latest codebase** — the 2026-10-29 plan will age. One task / one PR; behaviour
+preserving; before/after screenshots if any UI is touched.
+
+| Task | Scope | Status |
+|---|---|---|
+| **ARCH-01** | TypeScript `strict` in `tsconfig.app.json` + delete the 4 empty barrels. **Measured 2026-10-29: 0 strict errors** — config-only, no migration; fix only a real bug the flag reveals | **next — start in the next free slot; independent of F-05; must land before the next feature** (`docs/tasks/ARCH-01-typescript-strict.md`) |
+| ARCH-02 | Zero-dep import-boundary checker (`domain ← state ← UI`) wired into CI | **deferred; not a feature gate.** The task file is **intent only — rewrite before execution**; pick it up only after ARCH-03b, otherwise re-scope and re-run the token review (`docs/tasks/ARCH-02-import-boundaries.md`) |
+| ARCH-03a | Extract `domain/scene/{types,boards,items,zorder}.ts` from `state/scene.ts` | deferred / opportunistic |
+| ARCH-03b | Extract `domain/scene/{jacks,cables}.ts`; move `sceneDocument`/`shareLink`; remove every `lib → state` import | deferred / opportunistic (unblocks ARCH-02) |
+| ARCH-04 | Split the scene store into slices composed into one `useScene`; add `sceneSelectors` + `useShallow` | deferred |
+| ARCH-05 | Replace the five panel booleans + two edit ids with one `activePanel` state machine; split the App shell | deferred |
+| ARCH-06 | Shared `useDialogLayer` / `useRovingFocus` + UI primitives; replace duplicated dialog plumbing | deferred |
+| ARCH-07 | Split `index.css` into layered per-feature CSS (`@layer` order declared before Vite CSS) | deferred |
+| ARCH-08 | Split `Picker.tsx` (1,353 lines) into shell / ledger / specimen / filters / hooks | deferred |
+| ARCH-09 | Split `ExportPanel.tsx` around an export view model | deferred |
+| ARCH-10 | Split `CustomPedalForm` / `CustomBoardForm` + shared field primitives | deferred |
+| ARCH-11 | Shared formatting/error helpers (`formatCm`, `formatDimensions`, `plural`, …) | deferred |
+| ARCH-12 | CSS Modules pilot on the picker only (optional, after ARCH-07/08) | optional |
+
+> **Not adopted:** Tailwind, vanilla-extract, runtime CSS-in-JS, a full
+> Feature-Sliced Design migration, store-per-component, path aliases as a
+> standalone rewrite. See ADR-008 §Alternatives.
+
 ## v2 backlog (not scheduled)
 Accounts (Google OAuth) · cloud saves · community gear submissions + moderation + attribution · **community jack-map suggestions + review** · power-supply planner · explore/trending/famous boards · themes · locale-aware affiliate links · favorites · **tiered/riser boards (deferred from v1, S4)** · **board-to-board stacking/z-order (deferred from v1, S6)**
 
