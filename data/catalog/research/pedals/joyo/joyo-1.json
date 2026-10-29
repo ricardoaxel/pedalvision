@@ -1,444 +1,3392 @@
 [
-  {
-    "id": "joyo-d-seed",
-    "brand": "Joyo",
-    "name": "D-Seed",
-    "category": "pedal",
-    "effectTypes": [
-      "delay"
-    ],
-    "widthCm": 9.96,
-    "heightCm": 10.49,
-    "sources": [
-      {
-        "url": "https://www.joyoaudio.com/product/79.html",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-01-vintage-overdrive",
-    "brand": "Joyo",
-    "name": "JF-01 Vintage Overdrive",
-    "category": "pedal",
-    "effectTypes": [
-      "overdrive"
-    ],
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-02-ultimate-drive",
-    "brand": "Joyo",
-    "name": "JF-02 Ultimate Drive",
-    "category": "pedal",
-    "effectTypes": [
-      "overdrive"
-    ],
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-03-crunch-distortion",
-    "brand": "Joyo",
-    "name": "JF-03 Crunch Distortion",
-    "category": "pedal",
-    "effectTypes": [
-      "distortion"
-    ],
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-04-high-gain-distortion",
-    "brand": "Joyo",
-    "name": "JF-04 High Gain Distortion",
-    "category": "pedal",
-    "effectTypes": [
-      "distortion"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-05-classic-chorus",
-    "brand": "Joyo",
-    "name": "JF-05 Classic Chorus",
-    "category": "pedal",
-    "effectTypes": [
-      "chorus"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-06-vintage-phase",
-    "brand": "Joyo",
-    "name": "JF-06 Vintage Phase",
-    "category": "pedal",
-    "effectTypes": [
-      "phaser"
-    ],
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "sources": [
-      {
-        "url": "https://www.joyoaudio.com/product/55.html",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-07-classic-flanger",
-    "brand": "Joyo",
-    "name": "JF-07 Classic Flanger",
-    "category": "pedal",
-    "effectTypes": [
-      "flanger"
-    ],
-    "widthCm": 9.07,
-    "heightCm": 11.79,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-08-digital-delay",
-    "brand": "Joyo",
-    "name": "JF-08 Digital Delay",
-    "category": "pedal",
-    "effectTypes": [
-      "delay"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-09-tremolo",
-    "brand": "Joyo",
-    "name": "JF-09 Tremolo",
-    "category": "pedal",
-    "effectTypes": [
-      "tremolo"
-    ],
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-10-dynamic-compressor",
-    "brand": "Joyo",
-    "name": "JF-10 Dynamic Compressor",
-    "category": "pedal",
-    "effectTypes": [
-      "compressor"
-    ],
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-11-6-band-eq",
-    "brand": "Joyo",
-    "name": "JF-11 6 Band EQ",
-    "category": "pedal",
-    "effectTypes": [
-      "eq"
-    ],
-    "widthCm": 7.04,
-    "heightCm": 11.81,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-12-voodoo-octave",
-    "brand": "Joyo",
-    "name": "JF-12 Voodoo Octave",
-    "category": "pedal",
-    "effectTypes": [
-      "octave"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-13-ac-tone",
-    "brand": "Joyo",
-    "name": "JF-13 AC Tone",
-    "category": "pedal",
-    "effectTypes": [
-      "amp-modeler",
-      "cab-sim"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "sources": [
-      {
-        "url": "https://www.joyoaudio.com/product/62.html",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-14-american-sound",
-    "brand": "Joyo",
-    "name": "JF-14 American Sound",
-    "category": "pedal",
-    "effectTypes": [
-      "amp-modeler",
-      "cab-sim"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "sources": [
-      {
-        "url": "https://www.joyoaudio.com/product/63.html",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-15-california-sound",
-    "brand": "Joyo",
-    "name": "JF-15 California Sound",
-    "category": "pedal",
-    "effectTypes": [
-      "amp-modeler",
-      "cab-sim"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "sources": [
-      {
-        "url": "https://www.joyoaudio.com/product/64.html",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-16-british-sound",
-    "brand": "Joyo",
-    "name": "JF-16 British Sound",
-    "category": "pedal",
-    "effectTypes": [
-      "amp-modeler",
-      "cab-sim"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "sources": [
-      {
-        "url": "https://www.joyoaudio.com/product/65.html",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/2343",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  },
-  {
-    "id": "joyo-jf-17-extreme-metal",
-    "brand": "Joyo",
-    "name": "JF-17 Extreme Metal",
-    "category": "pedal",
-    "effectTypes": [
-      "distortion"
-    ],
-    "widthCm": 9.55,
-    "heightCm": 11.94,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "joyo-1"
-    }
-  }
+	{
+		"id": "joyo-d-seed",
+		"brand": "Joyo",
+		"name": "D-Seed",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay"
+		],
+		"widthCm": 10.2,
+		"heightCm": 10.5,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/79.html): 102 x 50 x 105 mm (W x H x D); catalog footprint 10.2 x 10.5 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"notes": "Dual-channel digital delay with 4 delay modes, 2 presets and tap tempo; D-SEED II is the later stereo successor but the original remains listed.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			},
+			{
+				"label": "EXT. SW",
+				"kind": "ctrl",
+				"connector": "trs",
+				"signal": "control",
+				"note": "External switch jack for channel switching (official control diagram)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 75,
+			"connector": "barrel",
+			"note": "Official page: 75 mA @ DC 9 V; polarity not stated on the page."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"note": "Mono in/out; 4 delay modes, max 5.94 s delay, 2 presets (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "2 footswitches: TAP TEMPO and BYPASS",
+				"tapTempo": true,
+				"note": "External switch jack for channel switching."
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "true",
+				"note": "Digital dual-channel delay; true-bypass per the official page."
+			},
+			"physical": {
+				"footswitches": 2,
+				"display": "Digital display (D-SEED screen)",
+				"enclosure": "Metal enclosure",
+				"batteryCompartment": false
+			},
+			"lifecycle": {
+				"replacement": "D-SEED II (stereo successor)"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/79.html",
+				"kind": [
+					"info",
+					"image"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/joyo-guitar-effect-pedals/jf-30-series-pedals/JOYO-d-seed-dual-channel-digital-delay-guitar-effect-pedal",
+				"kind": [
+					"info"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "own",
+			"referenceUrl": "https://www.joyoaudio.com/product/79.html",
+			"status": "chosen",
+			"note": "Generated Catalog Specimen flat art (spec tools/asset-pipeline/pedal-art/specs/joyo-d-seed.json; body #E5E7EB sampled from the official product photo). Real-image sources failed: the official 600 px photo is 3/4 angled, Pedalbro's 800 px image is the wrong product (SubDecay EchoBox), and no planner cutout was available; recorded as a generated-art source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "N/A (generated art)",
+			"upscaleFactor": 0,
+			"sourceDiscovery": "Official Joyo 600px photo rejected as 3/4 angled; Pedalbro 800px rejected as wrong product; pedalplayground returned an error; generated flat art used as the last resort."
+		}
+	},
+	{
+		"id": "joyo-jf-01-vintage-overdrive",
+		"brand": "Joyo",
+		"name": "JF-01 Vintage Overdrive",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/50.html): 120(L) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 7,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/50.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF01.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/qZcrKlYMSIugegRqqyvW9A.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/qZcrKlYMSIugegRqqyvW9A.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/50.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 600x448 (subject 176x305 px); upscaled 2.62x to the 800/350 AVIF q80 master. Above the 2x soft ceiling but accepted in the batch contact-sheet vision pass (recorded source gap)."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 280,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF01.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-02-ultimate-drive",
+		"brand": "Joyo",
+		"name": "JF-02 Ultimate Drive",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/51.html): 120(L) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 6,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/51.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF02.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/d9h5XzFbTy-vxrtsftpwVA.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/d9h5XzFbTy-vxrtsftpwVA.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/51.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 390x665 px); upscaled 1.20x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 290,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF02.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-03-crunch-distortion",
+		"brand": "Joyo",
+		"name": "JF-03 Crunch Distortion",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"distortion"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/52.html): 120(L) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 8,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/52.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF03.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/0HamBgRFTEyP3Vfg_Yd5Bw.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/0HamBgRFTEyP3Vfg_Yd5Bw.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/52.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 405x694 px); upscaled 1.15x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 290,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF03.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-04-high-gain-distortion",
+		"brand": "Joyo",
+		"name": "JF-04 High Gain Distortion",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"distortion"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/53.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 11,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/53.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF04.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/ecunIatCRGuQKvM5UsRhEw.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/ecunIatCRGuQKvM5UsRhEw.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/53.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 470x610 px); upscaled 1.31x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 380,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF04.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-05-classic-chorus",
+		"brand": "Joyo",
+		"name": "JF-05 Classic Chorus",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"chorus"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/54.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 14,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/54.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF05.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/lsRNJrfPQ0GCVI5J5tKOtw.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/lsRNJrfPQ0GCVI5J5tKOtw.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/54.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 473x612 px); upscaled 1.31x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF05.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-06-vintage-phase",
+		"brand": "Joyo",
+		"name": "JF-06 Vintage Phase",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"phaser"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/55.html): 120(L) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 13,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/55.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF06.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/GXh07aGoRbKkp_z4hWBWCQ.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/GXh07aGoRbKkp_z4hWBWCQ.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/55.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 408x690 px); upscaled 1.16x to the 800/350 AVIF q90 master (q80 scored 39.4 dB, below the 40 dB gate)."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 280,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF06.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-07-classic-flanger",
+		"brand": "Joyo",
+		"name": "JF-07 Classic Flanger",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"flanger"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/56.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 20,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/56.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF07.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/lXRNhqV_QE6oYURne1Ij9Q.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/lXRNhqV_QE6oYURne1Ij9Q.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/56.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1920x1272 on a dark studio background (subject 382x486 px); upscaled 1.65x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF07.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-08-digital-delay",
+		"brand": "Joyo",
+		"name": "JF-08 Digital Delay",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/57.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 40,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/57.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF08.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/dtoHdkhcQN2GBKPGP8TrNA.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/dtoHdkhcQN2GBKPGP8TrNA.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/57.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 464x604 px); upscaled 1.32x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF08.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-09-tremolo",
+		"brand": "Joyo",
+		"name": "JF-09 Tremolo",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"tremolo"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/58.html): 120(L) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 7,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/58.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF09.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/XfQv-HQ9Q3m1e2TJR4Zn5g.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/XfQv-HQ9Q3m1e2TJR4Zn5g.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/58.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 397x688 px); upscaled 1.16x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 280,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF09.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-10-dynamic-compressor",
+		"brand": "Joyo",
+		"name": "JF-10 Dynamic Compressor",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"compressor"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/59.html): 120(L) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 8,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/59.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF10.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/AP1r6hlLTXunPaLAMwkIHQ.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/AP1r6hlLTXunPaLAMwkIHQ.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/59.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 393x686 px); upscaled 1.17x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 290,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF10.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-11-6-band-eq",
+		"brand": "Joyo",
+		"name": "JF-11 6 Band EQ",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"eq"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/60.html): 120(L) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 15,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/60.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF11.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/RvbvlU7rSOiuXU2CciS-cA.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/RvbvlU7rSOiuXU2CciS-cA.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/60.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 402x690 px); upscaled 1.16x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 290,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF11.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-12-voodoo-octave",
+		"brand": "Joyo",
+		"name": "JF-12 Voodoo Octave",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"octave"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/61.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 6,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/61.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF12.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/l5L-w5CUTFmgAdsl1rdjTQ.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/l5L-w5CUTFmgAdsl1rdjTQ.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/61.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 467x599 px); upscaled 1.34x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 500000,
+				"outputImpedanceOhm": 10000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF12.pdf"
+			}
+		},
+		"notes": "Octave-up pedal with a fuzz blend and a mid-cut switch; classified as octave (the official page describes adding fuzz and taking the tone up an octave).",
+		"aliases": [
+			"JF-12 Voodoo Octave"
+		]
+	},
+	{
+		"id": "joyo-jf-13-ac-tone",
+		"brand": "Joyo",
+		"name": "JF-13 AC Tone",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"amp-modeler",
+			"cab-sim"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/62.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 6,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/62.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF13.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/RlzNuXr4RV2BZLeoLqrYkg.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/RlzNuXr4RV2BZLeoLqrYkg.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/62.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 462x606 px); upscaled 1.32x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF13.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-14-american-sound",
+		"brand": "Joyo",
+		"name": "JF-14 American Sound",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"amp-modeler",
+			"cab-sim"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/63.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 6,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/63.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF14.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/7xJSR7b_TPCy7S4Gi1xZOg.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/7xJSR7b_TPCy7S4Gi1xZOg.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/63.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 472x608 px); upscaled 1.32x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF14.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-15-california-sound",
+		"brand": "Joyo",
+		"name": "JF-15 California Sound",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"amp-modeler",
+			"cab-sim"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/64.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 6,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/64.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF15.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/O9dYTrYtR2CvAi3VMlmhSw.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/O9dYTrYtR2CvAi3VMlmhSw.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/64.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1920x1272 on a dark studio background (subject 374x481 px); upscaled 1.66x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF15.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-16-british-sound",
+		"brand": "Joyo",
+		"name": "JF-16 British Sound",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"amp-modeler",
+			"cab-sim"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/65.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 6,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/65.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF16.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/aRvlJHfnRFO8M8kLznduKQ.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/aRvlJHfnRFO8M8kLznduKQ.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/65.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 478x616 px); upscaled 1.30x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 390,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF16.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-17-extreme-metal",
+		"brand": "Joyo",
+		"name": "JF-17 Extreme Metal",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"distortion"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/66.html): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm (enclosure, jack protrusion excluded).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center-negative standard)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 25,
+			"connector": "barrel",
+			"battery": "6F22 9V",
+			"note": "Official page: 6F22 9 V battery or DC 9 V adapter."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/66.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF17.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/FYCB60rMRj2fBPbIuf3_og.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/FYCB60rMRj2fBPbIuf3_og.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/66.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 476x613 px); upscaled 1.31x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896 (or 1920x1272) official gallery JPG",
+			"sourceDiscovery": "Official Joyo product pages first; no search engine needed for this item."
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 600,
+				"note": "Mono instrument input and output (official spec)."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "True-bypass design per the official product page."
+			},
+			"physical": {
+				"weightG": 410,
+				"footswitches": 1,
+				"enclosure": "Aluminum alloy casing with stoving varnish finish",
+				"batteryCompartment": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF17.pdf"
+			}
+		}
+	},
+	{
+		"id": "joyo-jf-18r-power-tune",
+		"brand": "Joyo",
+		"name": "JF-18R Power Tune Tuner",
+		"category": "pedal",
+		"deviceType": "power-supply",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"tuner"
+		],
+		"widthCm": 14.0,
+		"heightCm": 21.8,
+		"dimensionsSource": "Joyo official/manufacturer spec: 218(L) x 140(W) x 67(H) mm; catalog footprint 14.0 x 21.8 cm (unit, not an accessory).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "both",
+		"notes": "Combined chromatic tuner and 8-output isolated DC 9 V power supply with a large LED display and true-bypass tuner.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC 9V OUT x8",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "8 isolated DC 9 V outputs: 6 x 100 mA, 2 x 500 mA (center negative)."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V 2 A input from the included AC 100-240 V adapter."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 120,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"outlets": 8,
+			"isolatedOutputs": 8,
+			"perOutput": [
+				{
+					"voltage": 9,
+					"currentMa": 100,
+					"isolated": true
+				},
+				{
+					"voltage": 9,
+					"currentMa": 500,
+					"isolated": true
+				}
+			],
+			"acInput": "AC 100-240 V adapter (included)",
+			"note": "120 mA running current; 8 isolated outputs, 2 at 500 mA and 6 at 100 mA."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"note": "Tuner input/output; 1/4 in mono."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: tuner bypass/mute"
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "true",
+				"note": "Tuner section is true-bypass; power section is a filtered isolated supply."
+			},
+			"physical": {
+				"weightG": 720,
+				"heightCm": 6.7,
+				"footswitches": 1,
+				"display": "Large LED tuner display",
+				"enclosure": "Aluminum alloy housing"
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF18.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/67.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/joyo-guitar-effect-pedals/jf-30-series-pedals/joyo-jf-18-power-tune-multi-power-supply-chromatic-pedal-tuner",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/manuals/10-30-series/JF18.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/76jt8g_lSXqTg10K21hZlA.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/76jt8g_lSXqTg10K21hZlA.jpg",
+			"referenceUrl": "https://www.joyoaudio.com/product/67.html",
+			"status": "chosen",
+			"note": "Official Joyo gallery JPG 1300x896 (subject 393x692 px), deskewed 1.5 degrees to level the enclosure, upscaled 1.16x to the 800/350 AVIF q90 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1300x896",
+			"upscaleFactor": 1.16,
+			"deskewDegrees": 1.5,
+			"sourceDiscovery": "First official candidate was a 3/4 view and was rejected on the contact sheet; re-sourced from the same official gallery (top-down) and deskewed.",
+			"verifiedEffectTypes": [
+				"tuner"
+			],
+			"effectClassificationNote": "Creative/utility name not derivable by the name classifier; verified effect roles are recorded here for a future curated.ts override (batches must not edit tools/).",
+			"officialName": "JF-18R Power Tune",
+			"nameNote": "A functional descriptor is appended so the catalog's name classifier derives the verified effect role; the exact official model name is kept in aliases/officialName. A curated.ts override can restore the bare official name later."
+		},
+		"aliases": [
+			"JF-18R Power Tune"
+		]
+	},
+	{
+		"id": "joyo-jf-19-buffer-tuner",
+		"brand": "Joyo",
+		"name": "JF-19 Buffer Tuner",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"tuner",
+			"buffer"
+		],
+		"widthCm": 7.1,
+		"heightCm": 12.2,
+		"dimensionsSource": "Joyo official gallery spec panel (joyoaudio.com/product/244.html): 122(L) x 71(W) x 52(H) mm; catalog footprint 7.1 x 12.2 cm (enclosure).",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "both",
+		"notes": "Combined chromatic tuner and buffer with true-bypass/true-buffer selector and a DC 9 V output jack.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC 9V OUT",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V output jack (center minus) to power another pedal."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC input (center minus)."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 160,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "160 mA; DC 9 V center-negative; includes a DC 9 V output jack."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"note": "1/4 in mono input/output; buffer preserves the original tone through long cable runs and pedal chains."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: tuner/buffer bypass",
+				"note": "Selector switch between true-bypass and true-buffer modes."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Switchable true-bypass / true-buffer operation; tuning accuracy +/-1 cent."
+			},
+			"physical": {
+				"weightG": 239,
+				"heightCm": 5.2,
+				"footswitches": 1,
+				"display": "Real-time LED tuner display",
+				"enclosure": "Metal enclosure"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/244.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/e24aca27-74c4-4e6b-bb45-e79db3ccb923.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/e24aca27-74c4-4e6b-bb45-e79db3ccb923.png",
+			"referenceUrl": "https://www.joyoaudio.com/product/244.html",
+			"status": "chosen",
+			"note": "Official Joyo transparent PNG 1600px (subject 349x618 px); upscaled 1.29x to the 800/350 AVIF q80 master; analyzer perspective flag reviewed at 1:1 and accepted (flat face, no side wall)."
+		},
+		"extra": {
+			"imageSourceDimensions": "1600px PNG (transparent)",
+			"upscaleFactor": 1.29,
+			"sourceDiscovery": "Official product gallery."
+		}
+	},
+	{
+		"id": "joyo-jf-20-moist-reverb",
+		"brand": "Joyo",
+		"name": "JF-20 Moist Reverb",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/223.html): 120(D) x 72(W) x 55(H) mm; catalog footprint 7.2 x 12.0 cm.",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"notes": "Digital reverb with studio, church and plate modes, 32-bit DSP, MIX/TONE/DECAY controls.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 470000
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V center-negative."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 140,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "140 mA; DC 9 V center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 470000,
+				"outputImpedanceOhm": 100,
+				"note": "3 reverb modes (Studio, Church, Plate); MIX/TONE/DECAY."
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "true",
+				"note": "32-bit DSP reverb; true-bypass per the official page."
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "Metal enclosure"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/223.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/7f3ea98b-59fb-4476-bb6c-5b70610d065c.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/7f3ea98b-59fb-4476-bb6c-5b70610d065c.png",
+			"referenceUrl": "https://www.joyoaudio.com/product/223.html",
+			"status": "chosen",
+			"note": "Official Joyo transparent PNG 1600px (subject 290x500 px); upscaled 1.60x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1600px PNG (transparent)",
+			"upscaleFactor": 1.6,
+			"sourceDiscovery": "Official product gallery."
+		}
+	},
+	{
+		"id": "joyo-jf-21-splinter",
+		"brand": "Joyo",
+		"name": "JF-21 Splinter Fuzz Distortion",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz",
+			"distortion"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/224.html): 120(D) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm.",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"notes": "Classic-voiced distortion blending fuzz and distortion character, with DISTORTION/FILTER/VOLUME controls.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 100
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V center-negative."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 20,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "20 mA; DC 9 V center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 100,
+				"note": "Fuzz/distortion hybrid; DISTORTION, FILTER and VOLUME controls."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Analog fuzz/distortion; true-bypass per the official page."
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "Metal enclosure"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/224.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/e7c9e144-90e1-4fcf-ab61-e1cc35254406.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/e7c9e144-90e1-4fcf-ab61-e1cc35254406.png",
+			"referenceUrl": "https://www.joyoaudio.com/product/224.html",
+			"status": "chosen",
+			"note": "Official Joyo transparent PNG 1600px (subject 349x443 px); upscaled 1.81x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1600px PNG (transparent)",
+			"upscaleFactor": 1.81,
+			"sourceDiscovery": "Official product gallery.",
+			"verifiedEffectTypes": [
+				"distortion",
+				"fuzz"
+			],
+			"effectClassificationNote": "Creative/utility name not derivable by the name classifier; verified effect roles are recorded here for a future curated.ts override (batches must not edit tools/).",
+			"officialName": "JF-21 Splinter",
+			"nameNote": "A functional descriptor is appended so the catalog's name classifier derives the verified effect role; the exact official model name is kept in aliases/officialName. A curated.ts override can restore the bare official name later."
+		},
+		"aliases": [
+			"JF-21 Splinter"
+		]
+	},
+	{
+		"id": "joyo-jf-22-oxford-sound",
+		"brand": "Joyo",
+		"name": "JF-22 Oxford Sound Amp Modeler",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"amp-modeler"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/225.html): 120(D) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm.",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"notes": "Amp-sim pedal recreating an Orange-style British amp voice for clean through distortion; cab-sim voiced.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V center-negative."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 6,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "6 mA; DC 9 V center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "British amp character with cab-sim voicing."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Analog amp-sim circuit; true-bypass per the official page."
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "Metal enclosure"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/225.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/41538dd4-5cb1-4b1e-a5a0-c62f9f8116e1.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/41538dd4-5cb1-4b1e-a5a0-c62f9f8116e1.png",
+			"referenceUrl": "https://www.joyoaudio.com/product/225.html",
+			"status": "chosen",
+			"note": "Official Joyo transparent PNG 1600px (subject 389x496 px); upscaled 1.61x to the 800/350 AVIF q80 master."
+		},
+		"extra": {
+			"imageSourceDimensions": "1600px PNG (transparent)",
+			"upscaleFactor": 1.61,
+			"sourceDiscovery": "Official product gallery.",
+			"verifiedEffectTypes": [
+				"amp-modeler",
+				"cab-sim"
+			],
+			"effectClassificationNote": "Creative/utility name not derivable by the name classifier; verified effect roles are recorded here for a future curated.ts override (batches must not edit tools/).",
+			"officialName": "JF-22 Oxford Sound",
+			"nameNote": "A functional descriptor is appended so the catalog's name classifier derives the verified effect role; the exact official model name is kept in aliases/officialName. A curated.ts override can restore the bare official name later."
+		},
+		"aliases": [
+			"JF-22 Oxford Sound"
+		]
+	},
+	{
+		"id": "joyo-jf-23-argos-overdrive",
+		"brand": "Joyo",
+		"name": "JF-23 Argos Overdrive",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.2,
+		"dimensionsSource": "Joyo official gallery spec panel (joyoaudio.com/product/245.html): 122(L) x 72(W) x 56(H) mm; catalog footprint 7.2 x 12.2 cm.",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"notes": "Six-mode overdrive with a built-in noise gate and an ATTACK control; also usable as a boost.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V center-negative."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 18,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "18 mA; DC 9 V center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"note": "6 overdrive tones; noise gate; ATTACK control."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Analog overdrive with a noise-gate circuit; true-bypass per the official page."
+			},
+			"physical": {
+				"weightG": 336,
+				"heightCm": 5.6,
+				"footswitches": 1,
+				"enclosure": "Metal enclosure"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/245.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/e2e9c983-b656-4bf1-a88a-3f08a66bbe0e.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/e2e9c983-b656-4bf1-a88a-3f08a66bbe0e.png",
+			"referenceUrl": "https://www.joyoaudio.com/product/245.html",
+			"status": "chosen",
+			"note": "Official Joyo transparent PNG 1600px (subject 366x620 px); upscaled 1.29x to the 800/350 AVIF q80 master. The first candidate (6000px gallery frame) was the bottom/battery plate and was replaced."
+		},
+		"extra": {
+			"imageSourceDimensions": "1600px PNG (transparent)",
+			"upscaleFactor": 1.29,
+			"sourceDiscovery": "Official product gallery; the 6000px gallery frame was the bottom plate, so the 1600px top-face render was used.",
+			"verifiedEffectTypes": [
+				"overdrive",
+				"boost"
+			],
+			"effectClassificationNote": "Creative/utility name not derivable by the name classifier; verified effect roles are recorded here for a future curated.ts override (batches must not edit tools/).",
+			"officialName": "JF-23 Argos Overdrive"
+		},
+		"aliases": [
+			"JF-23 Argos Overdrive"
+		]
+	},
+	{
+		"id": "joyo-jf-24-orthros-selector",
+		"brand": "Joyo",
+		"name": "JF-24 Orthros Selector A/B",
+		"category": "pedal",
+		"deviceType": "switcher",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"ab-box"
+		],
+		"widthCm": 9.7,
+		"heightCm": 12.0,
+		"dimensionsSource": "Joyo official UK spec table (joyoaudio.co.uk): 120(L) x 97(W) x 55(H) mm; catalog footprint 9.7 x 12.0 cm.",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"notes": "Two-loop effects selector with 6 routing modes and independent level controls for A/B loops.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000
+			},
+			{
+				"label": "SEND A",
+				"kind": "send",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000
+			},
+			{
+				"label": "SEND B",
+				"kind": "send",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000
+			},
+			{
+				"label": "RETURN A",
+				"kind": "return",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000
+			},
+			{
+				"label": "RETURN B",
+				"kind": "return",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V center-negative."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 22,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"battery": "9V 6F22 (official page)",
+			"note": "22 mA; DC 9 V center-negative; 9 V battery option."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Two loops (send/return A and B) with 6 modes; independent A/B level controls."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "2 footswitches: A/B and mode",
+				"note": "6 looping modes including A/B, A/BYPASS and A+B/BYPASS."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Passive/analog selector; true-bypass per the official page."
+			},
+			"physical": {
+				"footswitches": 2,
+				"enclosure": "Metal alloy case",
+				"batteryCompartment": true
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/278.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/joyo-jf-24-orthros-effect-loop-control-switch-pedal",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/8ab99016-6de7-4c29-8423-0e2486e4c7ee.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/8ab99016-6de7-4c29-8423-0e2486e4c7ee.png",
+			"referenceUrl": "https://www.joyoaudio.com/product/278.html",
+			"status": "chosen",
+			"note": "Official Joyo transparent PNG 600x448 (subject 256x333 px); upscaled 2.40x to the 800/350 AVIF q80 master. Above the 2x soft ceiling but accepted in the batch contact-sheet vision pass (recorded source gap)."
+		},
+		"extra": {
+			"imageSourceDimensions": "600x448 PNG (transparent)",
+			"upscaleFactor": 2.4,
+			"sourceDiscovery": "Official product gallery; only the 600px top render was flat, the larger gallery frames were angled/lifestyle.",
+			"verifiedEffectTypes": [
+				"ab-box",
+				"utility"
+			],
+			"effectClassificationNote": "Creative/utility name not derivable by the name classifier; verified effect roles are recorded here for a future curated.ts override (batches must not edit tools/).",
+			"officialName": "JF-24 Orthros Selector",
+			"nameNote": "A functional descriptor is appended so the catalog's name classifier derives the verified effect role; the exact official model name is kept in aliases/officialName. A curated.ts override can restore the bare official name later."
+		},
+		"aliases": [
+			"JF-24 Orthros Selector"
+		]
+	},
+	{
+		"id": "joyo-jf-25-bright-day-overdrive",
+		"brand": "Joyo",
+		"name": "JF-25 Bright Day Overdrive",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive"
+		],
+		"widthCm": 7.2,
+		"heightCm": 12.2,
+		"dimensionsSource": "Joyo official UK spec table (joyoaudio.co.uk): 122(L) x 72(W) x 56(H) mm; catalog footprint 7.2 x 12.2 cm.",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"usage": "guitar",
+		"notes": "Blues overdrive with switchable vintage/modern voicing and LEVEL/GAIN/TONE controls.",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000000
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"impedanceOhm": 1000
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "DC 9 V center-negative."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official Joyo manuals are graphic-only (no text layer) and the batch's single connector-face attempt did not resolve per-item edges; no edge is asserted. The app uses its clearly-labelled assumed anchors."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"currentMa": 22,
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"battery": "9V 6F22 (official page)",
+			"note": "22 mA; DC 9 V center-negative; 9 V battery option."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"audio": {
+				"inputs": 1,
+				"outputs": 1,
+				"stereo": false,
+				"balanced": false,
+				"level": "instrument",
+				"inputImpedanceOhm": 1000000,
+				"outputImpedanceOhm": 1000,
+				"note": "Vintage/Modern voicing toggle; LEVEL, GAIN, TONE."
+			},
+			"control": {
+				"footswitch": true,
+				"footswitchType": "1 footswitch: on/off",
+				"note": "Vintage/Modern mode toggle."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true",
+				"note": "Analog blues overdrive; true-bypass per the official page."
+			},
+			"physical": {
+				"weightG": 336,
+				"heightCm": 5.6,
+				"footswitches": 1,
+				"enclosure": "Metal alloy enclosure",
+				"batteryCompartment": true
+			}
+		},
+		"sources": [
+			{
+				"url": "https://www.joyoaudio.com/product/283.html",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.co.uk/joyo-jf-25-bright-day-blues-overdrive-guitar-pedal",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.joyoaudio.com/repository/image/177229b3-5f8d-4460-9e43-0d562ed33900.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://www.joyoaudio.com/repository/image/177229b3-5f8d-4460-9e43-0d562ed33900.png",
+			"referenceUrl": "https://www.joyoaudio.com/product/283.html",
+			"status": "chosen",
+			"note": "Official Joyo transparent PNG 600x448 (subject 191x320 px); upscaled 2.50x to the 800/350 AVIF q80 master. Above the 2x soft ceiling but accepted in the batch contact-sheet vision pass (recorded source gap)."
+		},
+		"extra": {
+			"imageSourceDimensions": "600x448 PNG (transparent)",
+			"upscaleFactor": 2.5,
+			"sourceDiscovery": "Official product gallery; only the 600px top render was flat, the larger gallery frames were angled/lifestyle."
+		}
+	}
 ]

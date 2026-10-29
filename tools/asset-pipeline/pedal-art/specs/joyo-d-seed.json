@@ -1,0 +1,105 @@
+{
+	"id": "joyo-d-seed",
+	"family": "double",
+	"widthCm": 10.2,
+	"heightCm": 10.5,
+	"sourceRef": "https://www.joyoaudio.com/product/79.html",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#E5E7EB",
+		"radiusCm": 0.4,
+		"sideCm": 0.35,
+		"knobFinish": "black",
+		"footswitchFinish": "metal"
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "display",
+			"u": 0.5,
+			"v": 0.2,
+			"widthCm": 4.2,
+			"heightCm": 1.4
+		},
+		{
+			"kind": "knob",
+			"u": 0.16,
+			"v": 0.42,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "MIX",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.38,
+			"v": 0.42,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "MODE",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.62,
+			"v": 0.42,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "TIME",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.84,
+			"v": 0.42,
+			"diameterCm": 1.5,
+			"rotationDeg": 0,
+			"label": "F.BACK",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "led",
+			"u": 0.3,
+			"v": 0.64,
+			"diameterCm": 0.5,
+			"color": "#C0392B"
+		},
+		{
+			"kind": "led",
+			"u": 0.7,
+			"v": 0.64,
+			"diameterCm": 0.5,
+			"color": "#C0392B"
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.3,
+			"v": 0.8,
+			"diameterCm": 1.6
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.7,
+			"v": 0.8,
+			"diameterCm": 1.6
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "JOYO",
+			"u": 0.5,
+			"v": 0.06,
+			"sizeMm": 2.2,
+			"trackingEm": 0.08,
+			"weight": "semibold"
+		},
+		{
+			"role": "model",
+			"value": "D-SEED",
+			"u": 0.5,
+			"v": 0.11,
+			"sizeMm": 3.2
+		}
+	]
+}

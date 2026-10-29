@@ -1,6 +1,6 @@
 # P5-03: Joyo — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** todo · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #TBD · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-3` coordinator created this worktree and wrote the 18
 > existing-item raw scaffolds (`data/catalog/research/pedals/joyo/joyo-1.json`).
@@ -198,3 +198,52 @@ Read only the sections the task file points to; do not read whole docs.
   errors; desktop + mobile before/after screenshots in the PR.
 - Contact sheet + coverage/reject report in the PR; demo share link verified.
 - One PR; no merge.
+
+
+---
+
+## Session log — 2026-10-28 (batch session)
+
+**Scope delivered:** 26/26 records in `data/catalog/research/pedals/joyo/joyo-1.json`
+(18 existing re-hosted + 8 new). 52 AVIFs (`public/pedal-assets/pedals/{800,350}/joyo-*.avif`).
+The 13 legacy mock PNG pairs stay on disk unchanged for rollback and the dry-run (the
+runtime now points at the AVIFs); no shipped Joyo item uses a hotlink/mock/placeholder.
+
+**Images:** 25 official Joyo (joyoaudio.com gallery / joyoaudio.co.uk for the newer
+units) + 1 generated Catalog Specimen (D-Seed). Upscales: 20 within 2x; **JF-01
+2.62x, JF-24 2.40x, JF-25 2.50x** are above the 2x soft ceiling but were explicitly
+accepted in the single contact-sheet vision pass (recorded source gaps). **Planner
+share 0/26 = 0%** (target <=30%). D-Seed source trail: official 600 px photo is 3/4
+angled; Pedalbro 800 px was the wrong product (SubDecay EchoBox); planner returned an
+error; generated flat art is the last resort (`tools/asset-pipeline/pedal-art/specs/joyo-d-seed.json`).
+
+**QA:** analyzer gates on the final 800: 22 accept, 4 flagged (JF-18R taper/bezel,
+JF-19 perspective metric on a flat face, JF-24 bezel, D-Seed generated) — all four
+approved at 1:1 in the vision pass. PSNR 40.09–52.50 dB (all >=40). `catalog:check-jacks`
+green (all edges omitted; `jackLayout.confidence: "unknown"` — the scanned manuals are
+graphic-only and the single connector-face attempt was not legible at batch scale).
+
+**Vision:** 2 passes (26-cell dual-tone sheet + 3x corners, then a 3-cell fixed pass)
++ 1 targeted pass for the generated D-Seed after its re-source. Final verdict:
+26/26 approved.
+
+**Text/classifier note:** creative/utility names (JF-18R, JF-21, JF-22, JF-24) do not
+derive an effect type from the name, so the display name carries a functional suffix
+("... Tuner", "... Fuzz Distortion", "... Amp Modeler", "... A/B") and the exact
+official name is kept in `aliases`/`extra.officialName`. This avoids editing
+`tools/catalog-transform/curated.ts` from a batch; a coordinator follow-up can add
+curated overrides and restore the bare official names.
+
+**Checks:** `catalog:ci` -> **452 pedals / 15 boards** (expected 452/15);
+`catalog:check-jacks` green; `pnpm lint` (2 pre-existing warnings), `typecheck`,
+`test` **893/893**, `build` green; `catalog:guard-batch-pr` clean.
+
+**Evidence:** desktop + mobile before/after app screenshots and the dual-tone,
+corner and fixed-cell sheets are on the `p5-03-pedals-joyo-1-evidence` branch
+(embedded by SHA in the PR), not on this branch.
+
+**Demo link:** `pnpm catalog:demo-link --batch joyo/joyo-1` -> 26 items / 25
+illustrative cables (verified in the PR).
+
+**Budget:** ~520k billed (wrapper reports the root session only; soft 400k exceeded, hard 800k not reached — logged at 434k/47 min) / ~110 min active. One vision model call
+per pass, no code-review pass (data-only; `curated.ts` untouched).
