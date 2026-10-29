@@ -1,6 +1,6 @@
 # P5-03: EarthQuaker Devices — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** in review — PR pending · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #82 · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-3` coordinator created this worktree and wrote the 18
 > existing-item raw scaffolds (`data/catalog/research/pedals/earthquaker/eqd-1.json`).
