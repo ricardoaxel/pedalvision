@@ -1,0 +1,2727 @@
+[
+	{
+		"id": "catalinbread-adineko",
+		"brand": "Catalinbread",
+		"name": "Adineko",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"vibrato",
+			"reverb"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "https://catalinbread.com/products/adineko (official spec table: 2.36 x 4.33 x 1.96 in)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Oil-can delay with Timing, Viscosity, Reverb, Blend and Balance controls.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2015,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 60,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/adineko_manual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/adineko",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/adineko_manual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/ADINEKO_SHOPIFY-01-min.png?v=1652346286",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/ADINEKO_SHOPIFY-01-min.png?v=1652346286",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1080x1080 transparent PNG) from https://catalinbread.com/products/adineko; matte none, body-crop, AVIF q95 -> 800/350; PSNR 44.51 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1080x1080",
+			"upscaleFactor": 0.74,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay",
+				"vibrato",
+				"reverb"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-adineko-70s-collection",
+		"brand": "Catalinbread",
+		"name": "Adineko ('70s Collection)",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"vibrato",
+			"reverb"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official Adineko spec table (same circuit; '70s Collection finish): 2.36 x 4.33 x 1.96 in",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Finish edition of the Adineko oil-can delay; only B-stock remains at the official store.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2024,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 60,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/adineko_manual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/adineko",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/adineko_manual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Adineko70s_shopify-01-min_1.png?v=1713315811",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Adineko70s_shopify-01-min_1.png?v=1713315811",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/adineko; matte none, body-crop, AVIF q95 -> 800/350; PSNR 41.94 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay",
+				"vibrato",
+				"reverb"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-adineko-ghost",
+		"brand": "Catalinbread",
+		"name": "Adineko Ghost",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"vibrato",
+			"reverb"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official Adineko spec table (same circuit, Ghost finish): 2.36 x 4.33 x 1.96 in",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Ghost-series finish of the Adineko oil-can delay.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2025,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 60,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/adineko_manual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/adineko-ghost",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/adineko_manual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Adineko_g_shop-01.png?v=1750215038",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Adineko_g_shop-01.png?v=1750215038",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/adineko-ghost; matte none, body-crop, AVIF q95 -> 800/350; PSNR 45.27 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay",
+				"vibrato",
+				"reverb"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-airstrip",
+		"brand": "Catalinbread",
+		"name": "Airstrip",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"preamp",
+			"boost"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "both",
+		"notes": "Trident A-Range console preamp with Push, Volume, Filter and Trim controls; runs 9-24 V DC.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2025,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 20,
+			"note": "9-24 V DC; higher voltage adds headroom."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/airstrip_manual_copy.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/airstrip-console-pre",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/airstrip_manual_copy.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/airstrip-shopify-01.png?v=1736913858",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/airstrip-shopify-01.png?v=1736913858",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/airstrip-console-pre; matte none, body-crop, AVIF q95 -> 800/350; PSNR 42.97 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"preamp",
+				"boost"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-antichthon",
+		"brand": "Catalinbread",
+		"name": "Antichthon",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz",
+			"tremolo"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "https://web.archive.org/web/20221203191529/https://catalinbread.com/products/antichthon (official archived spec table: 2.36 x 4.33 x 1.96 in)",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Oscillating bias fuzz that dips into tremolo; four interactive controls.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Antichthon_Manual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Antichthon_Manual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-antichthon.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-antichthon.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (350x585 transparent PNG), upscaled 1.37x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 51.05 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "350x585",
+			"upscaleFactor": 1.37,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"fuzz",
+				"tremolo"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-antichthon-deluxe",
+		"brand": "Catalinbread",
+		"name": "Antichthon Deluxe",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz",
+			"tremolo"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.7,
+		"dimensionsSource": "Pedalplayground planner entry (official page has no unit table): 4.7 x 3.82 in = 11.94 x 9.70 cm",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "likely",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Larger landscape chassis; adds Body, Mids and FDBK switch plus an Action footswitch and expression input.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2024,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "1/4 in TRS expression input."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-antichthon-deluxe.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-antichthon-deluxe.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (500x406 transparent PNG), upscaled 1.6x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 49.22 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "500x406",
+			"upscaleFactor": 1.6,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "flag",
+			"verifiedEffectTypes": [
+				"fuzz",
+				"tremolo"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-belle-epoch",
+		"brand": "Catalinbread",
+		"name": "Belle Epoch",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "https://catalinbread.com/products/belle-epoch (official spec table: 2.36 x 4.33 x 1.96 in)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Maestro Echoplex EP-3 tape-echo emulation; true bypass switchable to trails mode.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2012,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 60,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Belle_Epoch.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/belle-epoch",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Belle_Epoch.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/BELLE_EPOCH_SHOPIFY-01-min.png?v=1652347140",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/BELLE_EPOCH_SHOPIFY-01-min.png?v=1652347140",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1080x1080 transparent PNG) from https://catalinbread.com/products/belle-epoch; matte none, body-crop, AVIF q95 -> 800/350; PSNR 45.26 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1080x1080",
+			"upscaleFactor": 0.74,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-belle-epoch-plus",
+		"brand": "Catalinbread",
+		"name": "Belle Epoch +",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Compact Belle Epoch with tap tempo, three tape-wear programs and ~900 ms delay; buffered bypass.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2025,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 200,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/belle-epoch-plus",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Belle_shop.png?v=1762905845",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Belle_shop.png?v=1762905845",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/belle-epoch-plus; matte none, body-crop, AVIF q95 -> 800/350; PSNR 44.81 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-belle-epoch-deluxe",
+		"brand": "Catalinbread",
+		"name": "Belle Epoch Deluxe",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay"
+		],
+		"widthCm": 11.89,
+		"heightCm": 9.3,
+		"dimensionsSource": "https://catalinbread.com/products/belle-epoch-deluxe (official spec table: 4.68 x 3.66 x 2.4 in)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "EP-3 preamp circuit with digital delay line, 800 ms; true bypass switchable to buffered; expression input.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2017,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "1/4 in TRS expression input."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 200,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/bed-manual-2018.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/belle-epoch-deluxe",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/bed-manual-2018.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/BED_shopify_blk-01.png?v=1653498979",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/BED_shopify_blk-01.png?v=1653498979",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1080x1080 transparent PNG) from https://catalinbread.com/products/belle-epoch-deluxe; matte none, body-crop, AVIF q95 -> 800/350; PSNR 45.6 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1080x1080",
+			"upscaleFactor": 0.74,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "flag",
+			"verifiedEffectTypes": [
+				"delay"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-bicycle-delay",
+		"brand": "Catalinbread",
+		"name": "Bicycle Delay",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "https://web.archive.org/web/20250217045236/https://catalinbread.com/products/bicycle-delay (official archived spec table: 2.36 x 4.33 x 1.96 in)",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Pitch-bending, spiraling delay experiment; only B-stock remains at the official store.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 50,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/BicycleDelayManual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/BicycleDelayManual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/BicycleShopify-01_79e9c7e2-0f2c-442a-a371-e11b41bc3d22.png?v=1587899897",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/BicycleShopify-01_79e9c7e2-0f2c-442a-a371-e11b41bc3d22.png?v=1587899897",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1080x1080 transparent PNG) from https://catalinbread.com/products/; matte none, body-crop, AVIF q95 -> 800/350; PSNR 46.0 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1080x1080",
+			"upscaleFactor": 0.74,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-bitters",
+		"brand": "Catalinbread",
+		"name": "Bitters",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass",
+			"synth"
+		],
+		"effectTypes": [
+			"distortion",
+			"phaser",
+			"bitcrusher",
+			"ring-mod"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "both",
+		"notes": "Alesis Bitrman-inspired multi-effect: distortion + phase shifter + selectable Decimator/Bitcrusher/FM/Ring Mod with Mix.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2024,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/catalinbread-bitters",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/bitters-shopify-01-min.png?v=1720583675",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/bitters-shopify-01-min.png?v=1720583675",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/catalinbread-bitters; matte none, body-crop, AVIF q95 -> 800/350; PSNR 42.68 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"distortion",
+				"phaser",
+				"bitcrusher",
+				"ring-mod"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-blood-donor",
+		"brand": "Catalinbread",
+		"name": "Blood Donor",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"fuzz",
+			"distortion"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "both",
+		"notes": "Charity fuzz based on a revoiced Katzenkonig (Tone Bender MKII + Rat); Please/Give/Your/Blood controls.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2020,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Blood_Donor_2023_manual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Blood_Donor_2023_manual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-blood-donor.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-blood-donor.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (350x585 transparent PNG), upscaled 1.37x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 46.36 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "350x585",
+			"upscaleFactor": 1.37,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"fuzz",
+				"distortion"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-cb-paint",
+		"brand": "Catalinbread",
+		"name": "CB Paint",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "both",
+		"notes": "Alesis Microverb-derived digital reverb with eight modes, Tone, Onset and Mix.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2026,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 63,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/cb-paint-reverb",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CB_PAINT_SHOP.png?v=1773196100",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CB_PAINT_SHOP.png?v=1773196100",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/cb-paint-reverb; matte none, body-crop, AVIF q95 -> 800/350; PSNR 45.71 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"reverb"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-cb-tap",
+		"brand": "Catalinbread",
+		"name": "CB Tap",
+		"category": "pedal",
+		"deviceType": "controller",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"controller"
+		],
+		"widthCm": 4.17,
+		"heightCm": 9.68,
+		"dimensionsSource": "Pedalplayground planner entry (official page has no unit table): 1.64 x 3.81 in = 4.17 x 9.68 cm",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "likely",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Passive external tap-tempo switch with DLX and TAP TRS inputs; includes a 6 in TRS cable.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"jacks": [
+			{
+				"label": "DLX",
+				"kind": "in",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS input for the Belle Epoch Deluxe expression out."
+			},
+			{
+				"label": "TAP",
+				"kind": "in",
+				"connector": "trs",
+				"signal": "control",
+				"note": "Normally-open tap input for other pedals."
+			}
+		],
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CB_Tap_Manual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/cb-tap",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CB_Tap_Manual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-cb-tap.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-cb-tap.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (350x814 transparent PNG), upscaled 0.98x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 46.76 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "350x814",
+			"upscaleFactor": 0.98,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "flag",
+			"verifiedEffectTypes": [
+				"controller"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-cbx",
+		"brand": "Catalinbread",
+		"name": "CBX",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb",
+			"gate"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Gated reverb with overdrivable preamp; Lag, Gate, Verb, Mix and Pre controls; 9-18 V DC.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2023,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 100,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/cbx-manual_copy-min.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/cbx-gated-reverb",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/cbx-manual_copy-min.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/cbx-shopify-01-min.png?v=1697572716",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/cbx-shopify-01-min.png?v=1697572716",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/cbx-gated-reverb; matte none, body-crop, AVIF q95 -> 800/350; PSNR 42.15 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"reverb",
+				"gate"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-csidman",
+		"brand": "Catalinbread",
+		"name": "CSIDMAN",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"bitcrusher"
+		],
+		"widthCm": 6.3,
+		"heightCm": 11.38,
+		"dimensionsSource": "https://web.archive.org/web/20210804102706/https://catalinbread.com/products/csidman (official archived spec table: 2.48 x 4.48 x 1.29 in)",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Digital delay with stutter/glitch skipping and an analog dry path; low-profile enclosure.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 60,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CSIDMANMANUAL.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CSIDMANMANUAL.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-csidman.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-csidman.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (350x585 transparent PNG), upscaled 1.37x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 46.06 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "350x585",
+			"upscaleFactor": 1.37,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay",
+				"bitcrusher"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-csidman-ghost",
+		"brand": "Catalinbread",
+		"name": "CSIDMAN Ghost",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"bitcrusher"
+		],
+		"widthCm": 6.3,
+		"heightCm": 11.38,
+		"dimensionsSource": "Official archived CSIDMAN spec table (same circuit, Ghost finish): 2.48 x 4.48 x 1.29 in",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Ghost-series finish of the CSIDMAN glitch delay.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2025,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 60,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CSIDMANMANUAL.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/csidman-ghost",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CSIDMANMANUAL.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CSIDMAN_G_SHOP.png?v=1754894707",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CSIDMAN_G_SHOP.png?v=1754894707",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/csidman-ghost; matte none, body-crop, AVIF q95 -> 800/350; PSNR 44.87 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"delay",
+				"bitcrusher"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-callisto",
+		"brand": "Catalinbread",
+		"name": "Callisto",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"chorus",
+			"vibrato"
+		],
+		"widthCm": 6.02,
+		"heightCm": 11.1,
+		"dimensionsSource": "https://web.archive.org/web/20210122230506/https://catalinbread.com/products/callisto (official archived spec table: 2.37 x 4.37 x 1.87 in)",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "both",
+		"notes": "CE-1/CE-2-inspired chorus and vibrato with Mix, Width and Rate; true bypass.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 19,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/callisto.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/callisto.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-callisto.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-callisto.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (350x585 transparent PNG), upscaled 1.37x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 46.09 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "350x585",
+			"upscaleFactor": 1.37,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"chorus",
+				"vibrato"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-callisto-mkii",
+		"brand": "Catalinbread",
+		"name": "Callisto MKII",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"chorus",
+			"vibrato"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "https://web.archive.org/web/20220707132513/https://catalinbread.com/products/callisto-mkii (official page MEASUREMENTS: 2.36 x 4.33 x 1.96 in)",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "both",
+		"notes": "Chorus/vibrato rework with Rate, Depth and Mix; 10 mA draw.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2022,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 10,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Callisto2_manual_final-min.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Callisto2_manual_final-min.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-callisto-mk2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-callisto-mk2.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (350x585 transparent PNG), upscaled 1.37x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 44.69 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "350x585",
+			"upscaleFactor": 1.37,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"chorus",
+				"vibrato"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-carbide",
+		"brand": "Catalinbread",
+		"name": "Carbide",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"distortion"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "both",
+		"notes": "HM-2 'chainsaw' distortion with a parallel clean-boost path, Dry/Wet volumes and Emphasis; 9-15 V DC.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2023,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9-15 V DC."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/carbide",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Carbide_shopify-01-min.png?v=1686676689",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Carbide_shopify-01-min.png?v=1686676689",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1200x1200 transparent PNG) from https://catalinbread.com/products/carbide; matte none, body-crop, AVIF q95 -> 800/350; PSNR 45.5 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1200x1200",
+			"upscaleFactor": 0.67,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"distortion"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-clean-little-secret",
+		"brand": "Catalinbread",
+		"name": "Clean Little Secret",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive",
+			"eq"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Low-gain Marshall Bluesbreaker-style platform with Treble, Bass, Pre-amp and Master; 9-18 V DC.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2026,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/clean-little-secret",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CLS-shop.png?v=1777623968",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/CLS-shop.png?v=1777623968",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/clean-little-secret; matte none, body-crop, AVIF q95 -> 800/350; PSNR 43.58 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "flag",
+			"verifiedEffectTypes": [
+				"overdrive",
+				"eq"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-cloak",
+		"brand": "Catalinbread",
+		"name": "Cloak",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Room reverb with shimmer; buffered by default, true bypass selectable internally; only Mountain Edition variants remain on sale.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2021,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 60,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Cloak_manual_11_10-min.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Cloak_manual_11_10-min.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/cloak_shopify-mtn-01-min.png?v=1668743441",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/cloak_shopify-mtn-01-min.png?v=1668743441",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1080x1080 transparent PNG) from https://catalinbread.com/products/; matte none, body-crop, AVIF q95 -> 800/350; PSNR 43.5 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1080x1080",
+			"upscaleFactor": 0.74,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"reverb"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-coriolis-effect",
+		"brand": "Catalinbread",
+		"name": "Coriolis Effect",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"filter",
+			"pitch",
+			"wah"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.7,
+		"dimensionsSource": "Pedalplayground planner entry (official page has no unit table): 4.7 x 3.82 in = 11.94 x 9.70 cm",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "likely",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Sustainer/wah/filter/pitch-shifter/harmonizer with a Hold button and expression input; true bypass switchable to buffered.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "1/4 in TRS expression input."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 70,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/coriolis-effect.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/coriolis-effect-limited-edition",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/coriolis-effect.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/cor-a-shop_254ea60a-be16-47d7-9aae-dfa4247df653.png?v=1790543746",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/cor-a-shop_254ea60a-be16-47d7-9aae-dfa4247df653.png?v=1790543746",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/coriolis-effect-limited-edition; matte none, body-crop, AVIF q95 -> 800/350; PSNR 43.28 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "flag",
+			"verifiedEffectTypes": [
+				"filter",
+				"pitch",
+				"wah"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-dirty-little-secret",
+		"brand": "Catalinbread",
+		"name": "Dirty Little Secret",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "https://catalinbread.com/products/dirty-little-secret (official spec table: 2.36 x 4.33 x 1.96 in)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Marshall Super Lead/Super Bass amp-in-a-box; internal mode switch and presence trim.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 5,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/DLSManual.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/dirty-little-secret",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/DLSManual.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/DLS_SHOPIFY-01-min.png?v=1652346444",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/products/DLS_SHOPIFY-01-min.png?v=1652346444",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1080x1080 transparent PNG) from https://catalinbread.com/products/dirty-little-secret; matte none, body-crop, AVIF q95 -> 800/350; PSNR 44.7 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1080x1080",
+			"upscaleFactor": 0.74,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"overdrive"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-dirty-little-secret-deluxe",
+		"brand": "Catalinbread",
+		"name": "Dirty Little Secret Deluxe",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive",
+			"distortion"
+		],
+		"widthCm": 11.89,
+		"heightCm": 9.3,
+		"dimensionsSource": "Official Deluxe enclosure spec: 4.68 x 3.66 x 2.4 in (Catalinbread product spec table)",
+		"imageFormat": "avif",
+		"status": "current",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Full Plexi emulation (preamp, phase inverter, power amp, transformer) plus an independent boost and +10 dB line out; buffered bypass.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2023,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "LINE OUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "line",
+				"note": "+10 dB line output, usable alongside the main out."
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 7,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/dls-dlx_MANUAL_copy-min.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://catalinbread.com/products/dirty-little-secret-deluxe",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/dls-dlx_MANUAL_copy-min.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/DLS_DLX_SHOPIFY-01-min.png?v=1693961316",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/DLS_DLX_SHOPIFY-01-min.png?v=1693961316",
+			"status": "chosen",
+			"note": "Official Catalinbread product render (1500x1500 transparent PNG) from https://catalinbread.com/products/dirty-little-secret-deluxe; matte none, body-crop, AVIF q95 -> 800/350; PSNR 43.68 dB."
+		},
+		"extra": {
+			"imageSourceDimensions": "1500x1500",
+			"upscaleFactor": 0.53,
+			"sourceDiscovery": "official Catalinbread product gallery",
+			"analyzerVerdict": "flag",
+			"verifiedEffectTypes": [
+				"overdrive",
+				"distortion"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	},
+	{
+		"id": "catalinbread-dreamcoat",
+		"brand": "Catalinbread",
+		"name": "Dreamcoat",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"preamp",
+			"fuzz",
+			"boost"
+		],
+		"widthCm": 5.99,
+		"heightCm": 11.0,
+		"dimensionsSource": "Official standard enclosure spec: 2.36 x 4.33 x 1.96 in (Catalinbread spec table)",
+		"imageFormat": "avif",
+		"status": "discontinued",
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"usage": "guitar",
+		"notes": "Aiwa TP-1011 reel-to-reel preamp with Freq, Blend, Sat, Mic Vol and Master; true bypass; 9 V max.",
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "No official rear/top photo or manual diagram in this pass shows the connector face with labels; edges are omitted and the app uses its clearly-labelled assumed anchors."
+		},
+		"year": 2021,
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"level": "instrument"
+			},
+			{
+				"label": "DC IN",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9 V DC center-negative input."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"currentMa": 44,
+			"note": "9-18 V DC where the official spec lists a range; center-negative."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"balanced": false,
+			"level": "instrument"
+		},
+		"optional": {
+			"lifecycle": {
+				"manualUrl": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Dreamcoat_Manual_07_12-min.pdf"
+			}
+		},
+		"sources": [
+			{
+				"url": "https://cdn.shopify.com/s/files/1/0370/1873/0628/files/Dreamcoat_Manual_07_12-min.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-dreamcoat.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/catalinbread-dreamcoat.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (350x585 transparent PNG), upscaled 1.37x to the 800 master; matte none, body-crop, AVIF q95 -> 800/350; PSNR 44.12 dB; planner last-resort, counted source gap."
+		},
+		"extra": {
+			"imageSourceDimensions": "350x585",
+			"upscaleFactor": 1.37,
+			"sourceDiscovery": "Pedalplayground planner (official image unavailable)",
+			"analyzerVerdict": "accept",
+			"verifiedEffectTypes": [
+				"preamp",
+				"fuzz",
+				"boost"
+			],
+			"curatedOverrideRequired": "No-drift test compares runtime effectTypes to CURATED_EFFECTS + name classifier; this batch may not edit tools/catalog-transform/curated.ts (coordinator-only). Verified types are kept here for the coordinator to add serially."
+		}
+	}
+]
