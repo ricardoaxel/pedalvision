@@ -107,12 +107,20 @@ Read only the sections the task file points to; do not read whole docs.
   reaches 3.4M; the wave hard cap stays 2.4M.
 - **`curated.ts`:** batches never edit `tools/`. If the no-drift test needs a verified
   override, stop and hand it to the coordinator serially.
-- **Baseline:** take the before screenshots and verify the post-merge build from the
-  clean detached worktree `/Users/ashel/Documents/Programming/pedalvision-t6-baseline`
-  at `origin/main` (`bf083ed`), never from a dirty feature checkout.
+- **Baseline:** take the before screenshots from YOUR OWN clean detached worktree
+  `/Users/ashel/Documents/Programming/pedalvision-t6-baseline-eqd` at `origin/main`
+  (`bf083ed`), never from a dirty feature checkout or a shared baseline dir.
 - **Checkpoint-first (T-5 lesson):** all three T-5 batches tripped the 12-min per-item
   stall threshold by researching before the first checkpoint. Checkpoint item 1
-  **immediately after setup**, then checkpoint inline after every item.
+  **immediately after setup**, then checkpoint inline after every item. This wave
+  launches with `CATALOG_ITEM_LIMIT_MS=1800000`; an `exit 75` /
+  `per-item limit exceeded` result is **advisory** — keep going, do not stop or
+  `catalog:resume`.
+- **Finish variants** (`Afterneath V3 (Pastel Purple/Raw)`,
+  `Avalanche Run V2 (Black/Mint/Purple Sparkle)`) usually have no official finish
+  photo: skip the official/retailer discovery rounds and take one recorded planner
+  last-resort image (`kind: "planner"`, `status: "last-resort"`, license-pending,
+  counted gap). Planner share ~5/26 = 19%, under the 30% target.
 
 ## Constraints
 
