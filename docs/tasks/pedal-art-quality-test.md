@@ -20,9 +20,9 @@ does not run the full catalog pipeline or the full test suite (owner request).
 | **Fully faithful** | Reference-matched colour, knob scale/placement, CHECK lamp, output/input legends, separator line, tread pad | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-faithful.json` |
 | **Exact replica** | Adds per-text ink (light BOSS on the dark pad), centre-capped knobs, arrow-like output/input legends and the closest reference layout the renderer can express | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-exact.json` |
 
-All three use the existing `asset:pedal-art` renderer and the frozen
+All four spec levels use the existing `asset:pedal-art` renderer and the frozen
 “Catalog Specimen” style. Reference pixels are **not shipped**; the official
-reference is included in the comparison sheet only for QA.
+reference is included in the comparison sheets only for QA.
 
 ## Artifacts
 
@@ -31,6 +31,9 @@ reference is included in the comparison sheet only for QA.
 - `docs/screenshots/pedal-art-quality-test/comparison-350.png` — the same at
   picker/thumb size.
 - Individual 800 PNGs: `boss-ds-1-{template,reference,faithful,exact}.png`.
+- Research pass: `comparison-cartoon-800.png` / `comparison-cartoon-350.png`
+  (official top, exact spec, reference-derived cartoon) and
+  `cartoon-candidates.png` (the tested pipelines).
 
 Rendered AVIF sizes (800 / 350):
 
@@ -40,6 +43,7 @@ Rendered AVIF sizes (800 / 350):
 | Reference-driven | 14,677 B | 5,843 B |
 | Fully faithful | 15,219 B | 6,298 B |
 | Exact replica | 16,680 B | 6,832 B |
+| Reference-derived cartoon (VTracer) | 24,914 B | 10,650 B |
 
 ## Observations
 
@@ -56,6 +60,34 @@ Rendered AVIF sizes (800 / 350):
   text (not the BOSS wordmark), and it required two small optional renderer
   fields (`text.ink`, `knob.cap`).
 
+## Reference-derived cartoon (research pass)
+
+After the four spec levels, I tested a **photo-derived** pipeline on the official
+**transparent top-down** DS-1 image (`ds-1_top.png`, 980×700), not the small
+gallery JPG:
+
+1. crop to alpha and upscale to 1400 px;
+2. bilateral filter (9 / 80 / 80);
+3. k-means colour quantization (10 colours);
+4. **VTracer** (color, stacked, spline, 8-bit precision, layer difference 12);
+5. render at 800, apply the alpha mask and a 2 px silhouette keyline.
+
+Why VTracer: it is a linear-time, colour-aware raster→vector tracer (unlike
+Potrace, which is binary), so it keeps the exact text, BOSS mark, knob caps,
+arrows and layout while flattening the photo into vector regions. The high-res
+transparent top fixed the noisy results from the 514 px gallery JPG.
+
+Result: **the closest visual replica** of the real pedal — exact text/logo
+layout, flat vector colours, 24.9 KB (800) / 10.7 KB (350). It is still
+**reference-derived**: the BOSS wordmark is the trademark of BOSS, the output is
+a derivative of their official image, and there are orange shading halos around
+the knobs from the source. It is **not shippable** without permission; the clean,
+logo-free spec remains the shippable path.
+
+The likely production path is a **hybrid**: use this reference-derived vector to
+read exact positions/colours, then author a clean spec (no logos, no reference
+pixels) from it.
+
 ## Decision points
 
 1. **Policy:** keep real-photo-first (generated art fills gaps) or switch to
@@ -66,9 +98,12 @@ Rendered AVIF sizes (800 / 350):
    inventory (8,549)?
 4. **Jacks/power:** accept disclosed assumed fallbacks, or require research per
    item?
+5. **Source path:** spec-driven (shippable, clean, approximate), reference-derived
+   cartoon (exact, derivative, halos), or hybrid (use the cartoon as a tracing
+   reference for a clean spec)?
 
 ## Not run
 
-Full `catalog:ci`, guard, lint, typecheck, unit tests and E2E — intentionally
-skipped for this visual calibration. Specs render deterministically; the PNGs
-above are the evidence.
+Full `catalog:ci`, guard and E2E — intentionally skipped for this visual
+calibration. The two optional renderer fields were checked with `pnpm typecheck`,
+the 37 art-pipeline unit tests and `pnpm lint`; the PNGs above are the evidence.
