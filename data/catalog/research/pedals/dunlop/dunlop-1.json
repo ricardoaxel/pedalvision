@@ -1,0 +1,3267 @@
+[
+	{
+		"id": "dunlop-akira-takasaki-cry-baby-fuzz-wah",
+		"brand": "Dunlop",
+		"name": "Akira Takasaki Cry Baby Fuzz Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"fuzz",
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/akira-takasaki-cry-baby-fuzz-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/AT95.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1795/10177/AT95.TOPP__35830.1688081859.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1795/10177/AT95.TOPP__35830.1688081859.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1795/10177/AT95.TOPP__35830.1688081859.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/akira-takasaki-cry-baby-fuzz-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "AT95",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/AT95.pdf"
+		},
+		"artistAssociation": [
+			{
+				"artist": "Akira Takasaki",
+				"role": "signature",
+				"notes": "Signature Cry Baby Fuzz Wah."
+			}
+		],
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/AT95.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-authentic-hendrix-68-shrine-series-band-of-gypsys",
+		"brand": "Dunlop",
+		"name": "Authentic Hendrix '68 Shrine Series Band of Gypsys",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz"
+		],
+		"widthCm": 4.42,
+		"heightCm": 9.4,
+		"dimensionsSource": "Official Dunlop JHMS4 manual: MXR mini housing 1.74 x 3.7 in (4.42 x 9.4 cm), confirmed by the official MAIN top-down.",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-band-of-gypsys-fuzz/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/JHMS4.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1783/10074/JHMS4.MAIN__94430.1672848479.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1783/10074/JHMS4.MAIN__94430.1672848479.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop MAIN gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1783/10074/JHMS4.MAIN__94430.1672848479.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-band-of-gypsys-fuzz/",
+				"notes": "Chosen: official MAIN view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "JHMS4",
+			"imageSourceView": "MAIN",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS4.pdf"
+		},
+		"status": "discontinued",
+		"artistAssociation": [
+			{
+				"artist": "Jimi Hendrix",
+				"role": "used-by",
+				"notes": "Authentic Hendrix '68 Shrine Series finish."
+			}
+		],
+		"usage": "guitar",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, on the rear end face (official BACK photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "none",
+			"currentMa": 4.3
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "none",
+				"currentMa": 4.3
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": false,
+				"note": "MXR mini housing; no battery compartment."
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS4.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-authentic-hendrix-68-shrine-series-fuzz-face",
+		"brand": "Dunlop",
+		"name": "Authentic Hendrix '68 Shrine Series Fuzz Face",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz"
+		],
+		"widthCm": 4.42,
+		"heightCm": 9.4,
+		"dimensionsSource": "Official Dunlop JHMS1 manual: MXR mini housing 1.74 x 3.7 in (4.42 x 9.4 cm), confirmed by the official MAIN top-down.",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-fuzz-face-distortion/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/JHMS1.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1780/10071/JHMS1.MAIN__89701.1672848405.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1780/10071/JHMS1.MAIN__89701.1672848405.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop MAIN gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1780/10071/JHMS1.MAIN__89701.1672848405.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-fuzz-face-distortion/",
+				"notes": "Chosen: official MAIN view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "JHMS1",
+			"imageSourceView": "MAIN",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS1.pdf"
+		},
+		"status": "discontinued",
+		"artistAssociation": [
+			{
+				"artist": "Jimi Hendrix",
+				"role": "used-by",
+				"notes": "Authentic Hendrix '68 Shrine Series finish."
+			}
+		],
+		"usage": "guitar",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, on the rear end face (official BACK photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "none",
+			"currentMa": 6.8
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "none",
+				"currentMa": 6.8
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": false,
+				"note": "MXR mini housing; no battery compartment."
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS1.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-authentic-hendrix-68-shrine-series-octavio",
+		"brand": "Dunlop",
+		"name": "Authentic Hendrix '68 Shrine Series Octavio",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"octave",
+			"fuzz"
+		],
+		"widthCm": 4.42,
+		"heightCm": 9.4,
+		"dimensionsSource": "Official Dunlop JHMS2 manual: MXR mini housing 1.74 x 3.7 in (4.42 x 9.4 cm), confirmed by the official MAIN top-down.",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-octavio-fuzz/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/JHMS2.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1781/10072/JHMS2.MAIN__64567.1672848423.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1781/10072/JHMS2.MAIN__64567.1672848423.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop MAIN gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1781/10072/JHMS2.MAIN__64567.1672848423.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-octavio-fuzz/",
+				"notes": "Chosen: official MAIN view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "JHMS2",
+			"imageSourceView": "MAIN",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS2.pdf"
+		},
+		"status": "discontinued",
+		"artistAssociation": [
+			{
+				"artist": "Jimi Hendrix",
+				"role": "used-by",
+				"notes": "Authentic Hendrix '68 Shrine Series finish."
+			}
+		],
+		"usage": "guitar",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, on the rear end face (official BACK photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "none",
+			"currentMa": 5.0
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "none",
+				"currentMa": 5.0
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": false,
+				"note": "MXR mini housing; no battery compartment."
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS2.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-authentic-hendrix-68-shrine-series-uni-vibe",
+		"brand": "Dunlop",
+		"name": "Authentic Hendrix '68 Shrine Series Uni-Vibe",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"chorus",
+			"vibrato"
+		],
+		"widthCm": 4.42,
+		"heightCm": 9.4,
+		"dimensionsSource": "Official Dunlop JHMS3 manual: MXR mini housing 1.74 x 3.7 in (4.42 x 9.4 cm), confirmed by the official MAIN top-down.",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-uni-vibe-chorus/vibrato/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/JHMS3.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1782/10073/JHMS3.MAIN__24513.1672848385.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1782/10073/JHMS3.MAIN__24513.1672848385.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop MAIN gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1782/10073/JHMS3.MAIN__24513.1672848385.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/authentic-hendrix-68-shrine-series-uni-vibe-chorus/vibrato/",
+				"notes": "Chosen: official MAIN view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "JHMS3",
+			"imageSourceView": "MAIN",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS3.pdf"
+		},
+		"artistAssociation": [
+			{
+				"artist": "Jimi Hendrix",
+				"role": "used-by",
+				"notes": "Authentic Hendrix '68 Shrine Series finish."
+			}
+		],
+		"usage": "guitar",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, on the rear end face (official BACK photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "none"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "none"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": false,
+				"note": "MXR mini housing; no battery compartment."
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/JHMS3.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-band-of-gypsys-fuzz-face",
+		"brand": "Dunlop",
+		"name": "Band of Gypsys Fuzz Face",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz"
+		],
+		"widthCm": 11.43,
+		"heightCm": 11.43,
+		"dimensionsSource": "Official Dunlop FFM6 Fuzz Face Mini round enclosure, 4.5 in diameter (11.43 x 11.43 cm), confirmed by the official MAIN top-down.",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/band-of-gypsys-fuzz-face-mini-distortion/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/FFM6.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/666/6634/11611060001.MAIN__92014.1663874798.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/666/6634/11611060001.MAIN__92014.1663874798.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop MAIN gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/666/6634/11611060001.MAIN__92014.1663874798.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/band-of-gypsys-fuzz-face-mini-distortion/",
+				"notes": "Chosen: official MAIN view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "FFM6",
+			"imageSourceView": "MAIN",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/FFM6.pdf"
+		},
+		"artistAssociation": [
+			{
+				"artist": "Jimi Hendrix",
+				"role": "used-by",
+				"notes": "Band of Gypsys Fuzz Face Mini."
+			}
+		],
+		"usage": "guitar",
+		"jackLayout": {
+			"source": "Official Jim Dunlop MAIN and BACK product photos show the rear connector face with IN/OUT and the DC jack.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "IN",
+				"kind": "in",
+				"edge": "top",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in input on the rear/top edge (official MAIN/BACK photos)."
+			},
+			{
+				"label": "OUT",
+				"kind": "out",
+				"edge": "top",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in output on the rear/top edge."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "top",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, rear/top edge."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/FFM6.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-buddy-guy-cry-baby-signature",
+		"brand": "Dunlop",
+		"name": "Buddy Guy Cry Baby Signature",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/buddy-guy-cry-baby-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/BG95.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/586/6178/11097000001.TOPP__14881.1663874793.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/586/6178/11097000001.TOPP__14881.1663874793.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/586/6178/11097000001.TOPP__14881.1663874793.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/buddy-guy-cry-baby-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "BG95",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/BG95.pdf"
+		},
+		"artistAssociation": [
+			{
+				"artist": "Buddy Guy",
+				"role": "signature",
+				"notes": "Signature Cry Baby Wah."
+			}
+		],
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/BG95.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cae-wah",
+		"brand": "Dunlop",
+		"name": "CAE Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cae-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/MC404.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/654/9731/MC404.TOPP__60756.1663874797.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/654/9731/MC404.TOPP__60756.1663874797.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/654/9731/MC404.TOPP__60756.1663874797.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cae-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "MC404",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/MC404.pdf"
+		},
+		"artistAssociation": [
+			{
+				"artist": "Custom Audio Electronics",
+				"role": "designed-with",
+				"notes": "MC404 CAE Wah."
+			}
+		],
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/MC404.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-clyde-mccoy-cry-baby-wah",
+		"brand": "Dunlop",
+		"name": "Clyde McCoy Cry Baby Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/clyde-mccoy-cry-baby-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/CM95.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/587/6184/11098000001.TOPP__34942.1783456153.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/587/6184/11098000001.TOPP__34942.1783456153.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/587/6184/11098000001.TOPP__34942.1783456153.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/clyde-mccoy-cry-baby-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "CM95",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/CM95.pdf"
+		},
+		"artistAssociation": [
+			{
+				"artist": "Clyde McCoy",
+				"role": "signature",
+				"notes": "Clyde McCoy Cry Baby Wah."
+			}
+		],
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/CM95.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-535q-multi-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby 535Q Multi-Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-535q-multi-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/535Q.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/657/6589/11537002001.TOPP__99402.1663874797.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/657/6589/11537002001.TOPP__99402.1663874797.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/657/6589/11537002001.TOPP__99402.1663874797.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-535q-multi-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "535Q",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/535Q.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/535Q.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-95q-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby 95Q Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-95q-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/95Q.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/612/6332/11195000001.TOPP__59982.1663874794.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/612/6332/11195000001.TOPP__59982.1663874794.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/612/6332/11195000001.TOPP__59982.1663874794.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-95q-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "95Q",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/95Q.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery",
+			"currentMa": 1.8
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery",
+				"currentMa": 1.8
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "buffered"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/95Q.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-bb535-wah-reissue",
+		"brand": "Dunlop",
+		"name": "Cry Baby BB535 Wah Reissue",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-bb535-wah-reissue/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/BB535R.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/2388/11921/BB535R.TOPP__90975.1765902339.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/2388/11921/BB535R.TOPP__90975.1765902339.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/2388/11921/BB535R.TOPP__90975.1765902339.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-bb535-wah-reissue/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "BB535R",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/BB535R.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/BB535R.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-bass-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Bass Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"bass"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-bass-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/105Q.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/594/6226/11105062001.TOPP__27515.1663874793.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/594/6226/11105062001.TOPP__27515.1663874793.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/594/6226/11105062001.TOPP__27515.1663874793.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-bass-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "105Q",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/105Q.pdf"
+		},
+		"usage": "bass",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery",
+			"currentMa": 3.5
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery",
+				"currentMa": 3.5
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "buffered"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/105Q.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-custom-badass-dual-inductor-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Custom Badass Dual-Inductor Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-custom-badass-dual-inductor-edition-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/GCB65.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1654/12071/GCB65.TOPP__01357.1769618667.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1654/12071/GCB65.TOPP__01357.1769618667.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1654/12071/GCB65.TOPP__01357.1769618667.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-custom-badass-dual-inductor-edition-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "GCB65",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/GCB65.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/GCB65.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-daredevil-fuzz-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Daredevil Fuzz Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz",
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-daredevil-fuzz-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/DD95FW.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1787/10110/DD95FW.TOPP__45243.1792426087.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1787/10110/DD95FW.TOPP__45243.1792426087.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1787/10110/DD95FW.TOPP__45243.1792426087.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-daredevil-fuzz-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "DD95FW",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/DD95FW.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/DD95FW.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-evh-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby EVH Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-evh-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/EVH95.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/582/6154/11094072001.TOPP__12556.1663874792.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/582/6154/11094072001.TOPP__12556.1663874792.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/582/6154/11094072001.TOPP__12556.1663874792.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-evh-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "EVH95",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/EVH95.pdf"
+		},
+		"artistAssociation": [
+			{
+				"artist": "Eddie Van Halen",
+				"role": "signature",
+				"notes": "EVH signature Cry Baby Wah."
+			}
+		],
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/EVH95.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-junior-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Junior Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 9.53,
+		"heightCm": 20.32,
+		"dimensionsSource": "Official Dunlop Junior Wah spec: 8 in length with standard-width rocker (3.75 x 8.0 in = 9.53 x 20.32 cm); official Dunlop 'Sizing up your pedalboard' article.",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-junior-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/CBJ95.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1653/9185/CBJ95.TOPP__43272.1663874802.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1653/9185/CBJ95.TOPP__43272.1663874802.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1653/9185/CBJ95.TOPP__43272.1663874802.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-junior-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "CBJ95",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/CBJ95.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery",
+			"currentMa": 3.0
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery",
+				"currentMa": 3.0
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/CBJ95.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-mini-535q-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Mini 535Q Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 8.89,
+		"heightCm": 15.24,
+		"dimensionsSource": "Official Dunlop unit spec (mini Cry Baby enclosure) 3.5 x 6.0 in = 8.89 x 15.24 cm (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-mini-535q-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/CBM535Q.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/673/6674/11900500001.TOPP__33284.1663874798.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/673/6674/11900500001.TOPP__33284.1663874798.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/673/6674/11900500001.TOPP__33284.1663874798.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-mini-535q-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "CBM535Q",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM535Q.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM535Q.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-mini-bass-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Mini Bass Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"bass"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 8.89,
+		"heightCm": 15.24,
+		"dimensionsSource": "Official Dunlop unit spec (mini Cry Baby enclosure) 3.5 x 6.0 in = 8.89 x 15.24 cm (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-mini-bass-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/CBM105Q.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-mini-bass-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "CBM105Q",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM105Q.pdf"
+		},
+		"usage": "bass",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery",
+			"currentMa": 6.7
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery",
+				"currentMa": 6.7
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "buffered"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM105Q.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-mini-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Mini Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 8.89,
+		"heightCm": 15.24,
+		"dimensionsSource": "Official Dunlop unit spec (mini Cry Baby enclosure) 3.5 x 6.0 in = 8.89 x 15.24 cm (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-mini-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/CBM95.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/670/6655/11900100001.TOPP__99577.1663874798.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/670/6655/11900100001.TOPP__99577.1663874798.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/670/6655/11900100001.TOPP__99577.1663874798.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-mini-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "CBM95",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM95.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery",
+			"currentMa": 0.9
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery",
+				"currentMa": 0.9
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM95.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-q-mini-535q-auto-return-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Q Mini 535Q Auto-Return Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "mini",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 8.89,
+		"heightCm": 15.24,
+		"dimensionsSource": "Official Dunlop unit spec (mini Cry Baby enclosure) 3.5 x 6.0 in = 8.89 x 15.24 cm (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/crybaby-q-mini-535q-auto-return-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/CBM535AR.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1626/9014/CBM535AR.TOPP__89602.1706898059.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1626/9014/CBM535AR.TOPP__89602.1706898059.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1626/9014/CBM535AR.TOPP__89602.1706898059.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/crybaby-q-mini-535q-auto-return-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "CBM535AR",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM535AR.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/CBM535AR.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-cry-baby-q-zone-fixed-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Q Zone Fixed Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"wah",
+			"filter"
+		],
+		"widthCm": 6.78,
+		"heightCm": 11.43,
+		"dimensionsSource": "Official Dunlop QZ1 standard MXR pedal box 2.67 x 4.5 in (6.78 x 11.43 cm), confirmed by the official MAIN top-down.",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-q-zone-fixed-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/QZ1.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1608/8917/QZ1.MAIN__42547.1663874801.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1608/8917/QZ1.MAIN__42547.1663874801.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop MAIN gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/1608/8917/QZ1.MAIN__42547.1663874801.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-q-zone-fixed-wah/",
+				"notes": "Chosen: official MAIN view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "QZ1",
+			"imageSourceView": "MAIN",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/QZ1.pdf"
+		},
+		"status": "discontinued",
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery",
+			"currentMa": 4.0
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery",
+				"currentMa": 4.0
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": false
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/QZ1.pdf"
+			}
+		},
+		"notes": "Fixed-position wah in a standard MXR pedal box; legacy product, no longer in production."
+	},
+	{
+		"id": "dunlop-cry-baby-rack-foot-controller",
+		"brand": "Dunlop",
+		"name": "Cry Baby Rack Foot Controller",
+		"category": "pedal",
+		"deviceType": "controller",
+		"formFactor": "expression",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"controller"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-rack-foot-controller/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/682/6706/13301000001.TOPP__72810.1663874799.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/682/6706/13301000001.TOPP__72810.1663874799.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/682/6706/13301000001.TOPP__72810.1663874799.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-rack-foot-controller/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "DCR1FC",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item."
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT photos: CONTROL CABLE JACK on the left, 9V DC on the right; no audio jacks.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "CONTROL CABLE",
+				"kind": "ctrl",
+				"edge": "left",
+				"connector": "trs",
+				"signal": "control",
+				"note": "Single 1/4 in TRS control-cable jack to the DCR-2SR rack module (official LEFT photo); not an audio jack."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC adapter jack on the right side (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "none"
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "none"
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 0,
+				"expressionPedal": true,
+				"jackOrientation": "control-cable jack left, DC right"
+			}
+		},
+		"notes": "Treadle foot controller for the DCR-2SR Cry Baby Rack Module; not a standalone audio effect."
+	},
+	{
+		"id": "dunlop-cry-baby-standard-wah",
+		"brand": "Dunlop",
+		"name": "Cry Baby Standard Wah",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "standard",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"wah"
+		],
+		"widthCm": 10.16,
+		"heightCm": 25.4,
+		"dimensionsSource": "Official Dunlop unit spec 10 x 4 x 2.5 in (25.4 x 10.16 x 6.35 cm): width x depth 10.16 x 25.4 cm for the standard Cry Baby rocker enclosure (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/cry-baby-standard-wah/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/GCB95.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/583/6160/11095000001.TOPP__06867.1663874792.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/583/6160/11095000001.TOPP__06867.1663874792.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/583/6160/11095000001.TOPP__06867.1663874792.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/cry-baby-standard-wah/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "GCB95",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/GCB95.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Jim Dunlop LEFT/RGHT/BACK product photos show the connector faces; reviewed 2026-10-29.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INSTRUMENT",
+				"kind": "in",
+				"edge": "right",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in instrument input on the right side (official RGHT photo)."
+			},
+			{
+				"label": "AMPLIFIER",
+				"kind": "out",
+				"edge": "left",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in amplifier output on the left side (official LEFT photo)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"edge": "right",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "9V DC center-negative, 2.1 mm, right side next to the input (official RGHT photo)."
+			}
+		],
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"battery": "9V battery",
+			"currentMa": 0.9
+		},
+		"optional": {
+			"power": {
+				"voltage": 9,
+				"acDc": "DC",
+				"polarity": "center-negative",
+				"connector": "barrel",
+				"connectorSize": "2.1 mm",
+				"battery": "9V battery",
+				"currentMa": 0.9
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 1,
+				"expressionPedal": true
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/GCB95.pdf"
+			}
+		}
+	},
+	{
+		"id": "dunlop-dvp3-volume-x",
+		"brand": "Dunlop",
+		"name": "DVP3 Volume X",
+		"category": "pedal",
+		"deviceType": "other",
+		"formFactor": "expression",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"attenuator",
+			"utility"
+		],
+		"widthCm": 9.8,
+		"heightCm": 25.38,
+		"dimensionsSource": "Official Dunlop DVP3 manual: width 3.858 in (9.80 cm) x length 10.000 in (25.38 cm), height 2.575 in (6.54 cm) (unit, not packaging).",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://www.jimdunlop.com/volume-x-pedal/",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://www.jimdunlop.com/content/manuals/DVP3.pdf",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/558/6028/11033000001.TOPP__12954.1663874633.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-29",
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/558/6028/11033000001.TOPP__12954.1663874633.jpg",
+			"status": "chosen",
+			"note": "Official Jim Dunlop TOPP gallery image (1400x1400 source, downscaled to the 800 master; no upscale). Soft studio shadow removed by border-flood matte; clean alpha on the checkerboard contact sheet."
+		},
+		"imageCandidates": [
+			{
+				"url": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/558/6028/11033000001.TOPP__12954.1663874633.jpg",
+				"priority": 1,
+				"sourcePage": "https://www.jimdunlop.com/volume-x-pedal/",
+				"notes": "Chosen: official TOPP view, clean top-down face."
+			}
+		],
+		"extra": {
+			"sku": "DVP3",
+			"imageSourceView": "TOPP",
+			"imageSourceDims": "1400x1400",
+			"upscaleFactor": 1.0,
+			"discovery": "Official Jim Dunlop product gallery + product data (GraphQL) only; no retailer/marketplace pages fetched for this item.",
+			"manualUrl": "https://www.jimdunlop.com/content/manuals/DVP3.pdf"
+		},
+		"usage": "both",
+		"jackLayout": {
+			"source": "Official Dunlop DVP3 manual (INPUT/OUTPUT/TUNER/FX jacks) + official BACK photo showing the rear jack panel.",
+			"confidence": "verified"
+		},
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"edge": "top",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in input on the rear panel (DVP3 manual + BACK photo)."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"edge": "top",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "1/4 in output on the rear panel."
+			},
+			{
+				"label": "TUNER",
+				"kind": "out",
+				"edge": "top",
+				"connector": "ts",
+				"channels": 1,
+				"signal": "audio",
+				"level": "instrument",
+				"note": "Constant-signal tuner output on the rear panel."
+			},
+			{
+				"label": "FX",
+				"kind": "exp-out",
+				"edge": "top",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS FX/expression output for effect-parameter control on the rear panel."
+			}
+		],
+		"optional": {
+			"power": {
+				"note": "Passive unit; no power source required (official DVP3 manual)."
+			},
+			"circuit": {
+				"type": "analog",
+				"bypass": "none"
+			},
+			"physical": {
+				"enclosure": "die-cast",
+				"footswitches": 0,
+				"expressionPedal": true,
+				"jackOrientation": "rear jack panel"
+			},
+			"lifecycle": {
+				"manualUrl": "https://www.jimdunlop.com/content/manuals/DVP3.pdf"
+			}
+		}
+	}
+]

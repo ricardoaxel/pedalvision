@@ -1,0 +1,101 @@
+{
+	"id": "dunlop-cry-baby-mini-bass-wah",
+	"family": "expression",
+	"widthCm": 8.89,
+	"heightCm": 15.24,
+	"sourceRef": "https://cdn11.bigcommerce.com/s-n26aknlnlm/images/stencil/1400w/products/671/6661/11900200001.TOPP__24265.1663874798.jpg",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#232122",
+		"radiusCm": 0.45,
+		"sideCm": 0.35,
+		"knobFinish": "black",
+		"footswitchFinish": "metal",
+		"bands": [
+			{
+				"u": 0.5,
+				"v": 0.52,
+				"wCm": 7.2,
+				"hCm": 11.5,
+				"rCm": 0.5,
+				"role": "field",
+				"edge": "hairline",
+				"fill": "#202020"
+			}
+		]
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "treadle",
+			"u": 0.5,
+			"v": 0.52,
+			"widthCm": 7.2,
+			"heightCm": 11.5
+		},
+		{
+			"kind": "knob",
+			"u": 0.2,
+			"v": 0.86,
+			"diameterCm": 1.1,
+			"rotationDeg": 0,
+			"label": "VOL",
+			"labelPlacement": "above"
+		},
+		{
+			"kind": "knob",
+			"u": 0.8,
+			"v": 0.86,
+			"diameterCm": 1.1,
+			"rotationDeg": 0,
+			"label": "Q",
+			"labelPlacement": "above"
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.5,
+			"v": 0.78,
+			"diameterCm": 1.2
+		},
+		{
+			"kind": "led",
+			"u": 0.5,
+			"v": 0.095,
+			"diameterCm": 0.4,
+			"color": "#C0392B"
+		}
+	],
+	"text": [
+		{
+			"role": "brand",
+			"value": "DUNLOP",
+			"u": 0.5,
+			"v": 0.04,
+			"sizeMm": 2.2,
+			"trackingEm": 0.08,
+			"weight": "semibold"
+		},
+		{
+			"role": "model",
+			"value": "CRY BABY BASS MINI",
+			"u": 0.5,
+			"v": 0.08,
+			"sizeMm": 2.2
+		}
+	],
+	"jacks": [
+		{
+			"kind": "in",
+			"edge": "right"
+		},
+		{
+			"kind": "out",
+			"edge": "left"
+		},
+		{
+			"kind": "power",
+			"edge": "right"
+		}
+	],
+	"note": "Generated Catalog Specimen flat art: the official mini-wah photos are white-on-white and fail the clean-alpha gate; the official TOPP view is the reference only."
+}
