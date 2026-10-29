@@ -1,6 +1,6 @@
 # T-7 — Cleanup wave 4 coordinator (Behringer-1 + Big Joe-1 + Effects Bakery-1)
 
-**Phase:** P5 · **Status:** next (T-6 merged; post-merge `46c03b5` verified 468/15, ledger 483) · **Type:** catalog wave coordinator · **Depends on:** T-6
+**Phase:** P5 · **Status:** in review — PRs #83 Effects Bakery (1), #84 Big Joe (2), #85 Behringer (26); CI green; 0 merged · **Type:** catalog wave coordinator · **Depends on:** T-6
 
 ## Goal
 
@@ -74,3 +74,13 @@ Run `pnpm catalog:asset-ledger` and re-check `data/catalog/inventory.json` befor
 - One PR per batch; coordinator PR none.
 - Every existing hotlinked/mock seed in the three brands is replaced and recorded; no batch is padded to 26.
 - Post-merge build verified after each merge; next wave (T-8) selected and linked.
+
+## Session log — 2026-10-29 (coordinator)
+
+- **Launched 3-wide** via `catalog:wave` (`cleanup-wave-4`): Behringer-1 **26** (1 re-host + 25 new Tier A), Big Joe-1 **2** (re-host; 0 net-new), Effects Bakery-1 **1** (re-host; 0 net-new) = **29/29 items**. Baseline `46c03b5` (468/15, ledger 483); expected post-merge **493/15, ledger 508**.
+- **PRs:** **#85** Behringer (26), **#84** Big Joe (2), **#83** Effects Bakery (1). **CI green on all three**; catalog cap **3/3** — no refill. Owner merges serially.
+- **Images:** Behringer 24 official + 1 retailer (CC300) + 1 generated (P1); Big Joe both generated Catalog Specimen (official photos angled); Effects Bakery official top face. **Planner share 0% on all three.** Jack edges omitted/`unknown` where no verified connector face.
+- **CI fix (coordinator-owned shared file):** Behringer's no-drift test needed **11 verified effect/role overrides** in `tools/catalog-transform/curated.ts`; the batch correctly stopped and did not edit it. Added them, then `catalog:ci` **493/15**, tests **893/893**, lint/typecheck/build + guard clean, pushed `8fc6091`; CI green and preview deployed.
+- **Billed (billed non-cache, wave report):** Behringer **767k/46m**, Big Joe **583k/31m**, Effects Bakery **455k/22m** → **1.81M** (over the 1.6M soft, under the 2.4M hard; each over its 400k soft, under 800k hard). Cache-incl. floor **91.80M**. Effective combined cap ≥2.3M (3.4M − feature hard ≤1.1M), so 1.81M is safe.
+- **Verification:** every PR has before/after desktop + mobile screenshots on its evidence branch, a demo share link on the **PR preview** (verified: Behringer preview 26 items, 0 console errors, AVIF 200), and the review digest. No merges; post-merge verification is the owner's merge step.
+- **Next:** **T-8 — Tier A wave 1** (`docs/tasks/T-8-tier-a-wave-1.md`), then T-8b/T-9/T-10.
