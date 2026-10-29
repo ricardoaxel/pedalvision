@@ -399,6 +399,9 @@ export function Picker({
 		() => filteredPedals.slice(0, visiblePedals),
 		[filteredPedals, visiblePedals],
 	);
+	const showPlannerTag =
+		pedals.some((pedal) => !isPlannerPedal(pedal.id)) &&
+		pedals.some((pedal) => isPlannerPedal(pedal.id));
 	const filteredBoards = useMemo(
 		() => filterBoards(catalog.boards, { query, brand }),
 		[query, brand],
@@ -660,8 +663,12 @@ export function Picker({
 			];
 	const brands = tab === "boards" ? boardBrands : pedalBrandOptions;
 	const count = entries.length;
-	const totalCount =
+	const matchingCount =
 		tab === "boards" ? filteredBoards.length : filteredPedals.length;
+	const totalCount =
+		tab === "boards"
+			? matchingCount
+			: allPedals.filter((pedal) => pedal.category === "pedal").length;
 	const isBoards = tab === "boards";
 	const isCustom = tab === "custom";
 	const copy = TAB_COPY[tab];
@@ -1028,15 +1035,6 @@ export function Picker({
 													</svg>
 												</button>
 											) : null}
-											<span
-												className="picker__search-count"
-												data-testid="picker-count"
-												aria-live="polite"
-											>
-												{count < totalCount
-													? `${count} of ${totalCount} ${copy.count}`
-													: `${count} ${copy.count}`}
-											</span>
 										</div>
 
 										<div className="picker__filters">
@@ -1166,6 +1164,11 @@ export function Picker({
 															</span>
 															<span className="picker-item__brand">
 																{entry.brand}
+																{showPlannerTag && isPlannerPedal(entry.id) ? (
+																	<span className="picker-item__planner">
+																		Planner
+																	</span>
+																) : null}
 															</span>
 														</span>
 														<span className="picker-item__dims">
@@ -1175,7 +1178,19 @@ export function Picker({
 												);
 											})
 										)}
-										{count < totalCount ? (
+									</div>
+
+									<div className="picker__result-footer">
+										<span
+											className="picker__result-count"
+											data-testid="picker-count"
+											aria-live="polite"
+										>
+											{count < totalCount
+												? `${count.toLocaleString()} of ${totalCount.toLocaleString()} ${copy.count}`
+												: `${count.toLocaleString()} ${copy.count}`}
+										</span>
+										{count < matchingCount ? (
 											<button
 												type="button"
 												className="picker__load-more"
@@ -1186,11 +1201,10 @@ export function Picker({
 													})
 												}
 											>
-												Show more
+												Show {PICKER_PAGE} more
 											</button>
 										) : null}
 									</div>
-
 									<div className="picker__status">
 										<span className="picker__keys" aria-hidden="true">
 											<kbd className="picker__key">↑</kbd>
