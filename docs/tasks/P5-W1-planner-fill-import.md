@@ -1,6 +1,6 @@
 # P5-W1 — Planner fallback catalog fill (non-commercial)
 
-**Status:** in progress · **Date:** 2026-10-29 · **Owner-approved waiver**
+**Status:** implemented locally · **Date:** 2026-10-29 · **Owner-approved waiver** · no PR/push yet
 
 ## Goal
 
