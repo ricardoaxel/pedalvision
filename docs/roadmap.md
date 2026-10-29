@@ -94,7 +94,7 @@ preserving; before/after screenshots if any UI is touched.
 
 | Task | Scope | Status |
 |---|---|---|
-| **ARCH-01** | TypeScript `strict` in `tsconfig.app.json` + delete the 4 empty barrels. **Measured 2026-10-29: 0 strict errors** — config-only, no migration; fix only a real bug the flag reveals | **next — start in the next free slot; independent of F-05; must land before the next feature** (`docs/tasks/ARCH-01-typescript-strict.md`) |
+| **ARCH-01** | TypeScript `strict` in `tsconfig.app.json` + delete the 4 empty barrels. **Measured 2026-10-29: 0 strict errors** — config-only, no migration; fix only a real bug the flag reveals | **in review — PR #87** (checks green; pending owner merge; must land before the next feature) (`docs/tasks/ARCH-01-typescript-strict.md`) |
 | ARCH-02 | Zero-dep import-boundary checker (`domain ← state ← UI`) wired into CI | **deferred; not a feature gate.** The task file is **intent only — rewrite before execution**; pick it up only after ARCH-03b, otherwise re-scope and re-run the token review (`docs/tasks/ARCH-02-import-boundaries.md`) |
 | ARCH-03a | Extract `domain/scene/{types,boards,items,zorder}.ts` from `state/scene.ts` | deferred / opportunistic |
 | ARCH-03b | Extract `domain/scene/{jacks,cables}.ts`; move `sceneDocument`/`shareLink`; remove every `lib → state` import | deferred / opportunistic (unblocks ARCH-02) |
