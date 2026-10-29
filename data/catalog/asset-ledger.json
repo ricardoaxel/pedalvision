@@ -3,25 +3,25 @@
   "summary": {
     "items": 483,
     "byStatus": {
-      "own": 19,
-      "license-pending": 464
+      "own": 18,
+      "license-pending": 465
     },
     "byHosting": {
-      "mock": 13,
-      "static": 469,
+      "mock": 12,
+      "static": 470,
       "hotlinked": 1
     },
     "bySourceKind": {
-      "own": 19,
-      "official": 314,
+      "own": 18,
+      "official": 315,
       "planner": 118,
       "community": 9,
       "retailer": 18,
       "archive": 5
     },
-    "needsImprovement": 132,
+    "needsImprovement": 131,
     "byGapReason": {
-      "mock": 13,
+      "mock": 12,
       "hotlinked": 1,
       "planner": 118
     }
@@ -4568,18 +4568,18 @@
       "kind": "pedal",
       "brand": "Effects Bakery",
       "name": "Power Supply Hoden Sentai Donuts",
-      "asset": "effects-bakery-power-supply-hoden-sentai-donuts.png",
-      "imageSource": "mock",
-      "imageHosting": "mock",
-      "sourceKind": "own",
-      "sourceUrl": null,
+      "asset": "effects-bakery-power-supply-hoden-sentai-donuts.avif",
+      "imageSource": "static",
+      "imageHosting": "static",
+      "sourceKind": "official",
+      "sourceUrl": "https://effectsbakery.us/cdn/shop/products/01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg",
       "referenceUrl": null,
-      "licenseStatus": "own",
+      "licenseStatus": "license-pending",
       "licenseRef": null,
-      "replacementTarget": "Effects Bakery batch",
-      "improve": true,
-      "gapReason": "mock",
-      "note": "mock art; no real product image yet"
+      "replacementTarget": null,
+      "improve": false,
+      "gapReason": null,
+      "note": "official image; source recorded"
     },
     {
       "id": "electro-harmonix-1-echo",

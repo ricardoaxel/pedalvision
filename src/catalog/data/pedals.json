@@ -11216,21 +11216,60 @@
     "brand": "Effects Bakery",
     "name": "Power Supply Hoden Sentai Donuts",
     "widthCm": 9.4,
-    "heightCm": 3.86,
-    "image": "effects-bakery-power-supply-hoden-sentai-donuts.png",
-    "imageSource": "mock",
+    "heightCm": 3.9,
+    "image": "effects-bakery-power-supply-hoden-sentai-donuts.avif",
+    "imageSource": "static",
     "effectTypes": [],
     "category": "supply",
-    "source": "placeholder",
+    "jacks": [
+      {
+        "kind": "power",
+        "edge": "left"
+      },
+      {
+        "kind": "power",
+        "edge": "bottom"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 2000
+    },
+    "color": "Light blue with printed Power Station Donuts character artwork",
+    "notes": "Ten-output center-negative 9 V DC power supply in a mini-pedal-size enclosure, powered by the included 9 V DC 2 A adapter. Ships with ten DC cables (1 × 15 cm, 3 × 30 cm, 3 × 50 cm, 3 × 70 cm).",
+    "year": 2022,
+    "status": "unknown",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
-        "url": "https://www.effectsbakery.jp/products/effects-bakery-pshd",
+        "url": "https://effectsbakery.us/products/effects-bakery-pshd",
         "kind": [
-          "image"
+          "info"
         ]
       },
       {
-        "url": "https://effectsbakery.us/products/effects-bakery-pshd",
+        "url": "https://www.effectsbakery.jp/products/effects-bakery-pshd",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0432/3871/9653/files/EB-Manual_08ad75db-5bed-46f1-99af-53414d22795b.pdf?v=1725719128",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://discover.chuya-online.com/20220728/20803/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://effectsbakery.us/cdn/shop/products/01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg",
         "kind": [
           "image"
         ]

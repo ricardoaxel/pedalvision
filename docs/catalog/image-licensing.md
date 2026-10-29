@@ -16,9 +16,9 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 5 · community 9 · official 314 · own 19 · planner 118 · retailer 18
+Sources: archive 5 · community 9 · official 315 · own 18 · planner 118 · retailer 18
 
-Needs improvement: 132 (hotlinked 1 · mock 13 · planner 118; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 131 (hotlinked 1 · mock 12 · planner 118; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 

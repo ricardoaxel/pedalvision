@@ -65,6 +65,17 @@
         }
       ]
     },
+    "effects-bakery": {
+      "brand": "Effects Bakery",
+      "batches": [
+        {
+          "batch": "effects-bakery-1",
+          "raw": "data/catalog/research/pedals/effects-bakery/effects-bakery-1.json",
+          "mapped": "data/catalog/pedals/effects-bakery/effects-bakery-1.json",
+          "items": 1
+        }
+      ]
+    },
     "electro-harmonix": {
       "brand": "Electro-Harmonix",
       "batches": [

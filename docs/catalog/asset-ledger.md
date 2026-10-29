@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 464 |
-| own | 19 |
+| license-pending | 465 |
+| own | 18 |
 
-Hosting: hotlinked 1 · mock 13 · static 469
+Hosting: hotlinked 1 · mock 12 · static 470
 
-Source kind: archive 5 · community 9 · official 314 · own 19 · planner 118 · retailer 18
+Source kind: archive 5 · community 9 · official 315 · own 18 · planner 118 · retailer 18
 
-Needs improvement: 132 (hotlinked 1 · mock 13 · planner 118)
+Needs improvement: 131 (hotlinked 1 · mock 12 · planner 118)
 
 ## Aclam
 
@@ -319,7 +319,7 @@ Needs improvement: 132 (hotlinked 1 · mock 13 · planner 118)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `effects-bakery-power-supply-hoden-sentai-donuts` | Power Supply Hoden Sentai Donuts | own | mock | own | yes | Effects Bakery batch |
+| `effects-bakery-power-supply-hoden-sentai-donuts` | Power Supply Hoden Sentai Donuts | license-pending | static | official | — | — |
 
 ## Electro-Harmonix
 
@@ -644,7 +644,6 @@ Needs improvement: 132 (hotlinked 1 · mock 13 · planner 118)
 | D’Addario | own | 1 |
 | Donner | own | 1 |
 | EarthQuaker | planner | 8 |
-| Effects Bakery | own | 1 |
 | Electro-Harmonix | planner | 14 |
 | Emerson Custom | own | 1 |
 | Fame | own | 1 |
