@@ -19,9 +19,11 @@ export const CATALOG_LIMITS = {
 	tierAPedals: 1850,
 	/** Exactly 150 Tier A boards, in priority-brand order. */
 	tierABoards: 150,
+	/** Hosted board cap; owner waiver 2026-10-29 (ADR-009). */
+	hostedBoards: 400,
 	/** Board image budget: ~2 renditions per Tier A board. */
-	boardImageFiles: 300,
-	boardImageMb: 20,
+	boardImageFiles: 800,
+	boardImageMb: 40,
 	/** Absolute minimum launch bar (ADR-003): below this, launch needs owner sign-off. */
 	minLaunchPedals: 200,
 	minLaunchBrands: 10,

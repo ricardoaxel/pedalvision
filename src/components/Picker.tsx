@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
-import { isPlannerPedal } from "../catalog/planner";
+import { isPlannerBoard, isPlannerPedal } from "../catalog/planner";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
 import {
 	addItemRefusal,
@@ -389,7 +389,8 @@ export function Picker({
 	// biome-ignore lint/correctness/useExhaustiveDependencies: plannerVersion invalidates after the lazy overlay merges
 	const allPedals = useMemo(() => catalog.pedals.slice(), [plannerVersion]);
 	const pedalBrandOptions = useMemo(() => pedalBrands(allPedals), [allPedals]);
-	const boardBrands = useMemo(() => brandsOf(catalog.boards), []);
+	const allBoards = catalog.boards.slice();
+	const boardBrands = useMemo(() => brandsOf(allBoards), [allBoards]);
 
 	const filteredPedals = useMemo(
 		() => filterPedals(allPedals, { query, brand, effectTypes }),
@@ -403,8 +404,8 @@ export function Picker({
 		pedals.some((pedal) => !isPlannerPedal(pedal.id)) &&
 		pedals.some((pedal) => isPlannerPedal(pedal.id));
 	const filteredBoards = useMemo(
-		() => filterBoards(catalog.boards, { query, brand }),
-		[query, brand],
+		() => filterBoards(allBoards, { query, brand }),
+		[allBoards, query, brand],
 	);
 
 	// One uniform entry list for the ledger rows + the specimen pane.
@@ -422,7 +423,7 @@ export function Picker({
 					board.image,
 					"board",
 				),
-				meta: "",
+				meta: isPlannerBoard(board.id) ? "Planner" : "",
 			}));
 		}
 		return pedals.map((pedal) => {

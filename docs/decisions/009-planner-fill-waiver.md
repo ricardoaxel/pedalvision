@@ -22,7 +22,10 @@ This conflicts with the earlier P5 policy:
 For this non-commercial build only:
 
 1. Import **missing** items from the external planner dataset; keep all existing
-   curated records and assets unchanged.
+   curated records and assets unchanged. The owner extended this to the
+   **pedalboards** dataset as well (248 missing boards): use the planner board
+   images as pending placeholders, overriding the generated-board-art rule for
+   this non-commercial build.
 2. Use the **800 px** source images, converted to our **AVIF 800 + 350**
    renditions (quality 70).
 3. Mark every imported item:
@@ -31,7 +34,7 @@ For this non-commercial build only:
    - per-item `sources[]` with the image URL;
    - `confidence: "unsure"` and an explicit unverified note.
 4. Raise the hosted-image caps to fit the fill (9,000 pedals / 18,000 files /
-   1,200 MB). Boards keep their separate budget.
+   1,200 MB; boards 400 / 800 files / 40 MB).
 5. Do not present these as verified catalog facts. Specs are planner
    footprints only; effect type is the generic `utility`; the images are
    placeholders and are counted as source gaps.

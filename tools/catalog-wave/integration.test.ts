@@ -47,10 +47,14 @@ function addWorktree(
 ): { path: string; branch: string } {
 	const branch = `p5-wave-it-${process.pid}-${suffix}-${Date.now()}`;
 	const path = join(temp, `wt-${suffix}`);
-	execSync(`git worktree add -b "${branch}" "${path}" HEAD`, {
+	execSync(`git worktree add --no-checkout -b "${branch}" "${path}" HEAD`, {
 		cwd: repoRoot,
 		stdio: "ignore",
 	});
+	execSync(
+		`git -C "${path}" checkout HEAD -- tools src package.json pnpm-lock.yaml tsconfig.json tsconfig.tools.json`,
+		{ cwd: repoRoot, stdio: "ignore" },
+	);
 	worktrees.push({ path, branch });
 	return { path, branch };
 }
@@ -475,7 +479,7 @@ describe("catalog:wave freed-slot regression", () => {
 				"  *-b-*)",
 				'    echo \'{"type":"text","sessionID":"ses_free","part":{"id":"p1","type":"text","text":"second batch done"}}\'',
 				'    echo \'{"type":"step_finish","sessionID":"ses_free","part":{"id":"f1","type":"step-finish","tokens":{"total":1000,"input":700,"output":200,"reasoning":100,"cache":{"read":0,"write":0}},"cost":0.01}}\'',
-				"    sleep 2",
+				"    sleep 10",
 				`    "${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts checkpoint --batch "$CATALOG_BATCH_ID" --item fake-1 --done 1 --images-accepted 1 --tokens 1000 >/dev/null 2>&1`,
 				`    "${process.execPath}" --experimental-strip-types tools/catalog-runner/index.ts finish --batch "$CATALOG_BATCH_ID" >/dev/null 2>&1`,
 				"    ;;",

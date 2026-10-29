@@ -160,6 +160,11 @@ export function registerCatalogPedals(pedals: CatalogPedal[]): void {
 	for (const pedal of pedals) PEDAL_BY_ID.set(pedal.id, pedal);
 }
 
+/** Register lazily-loaded catalog boards so placed items resolve their footprint. */
+export function registerCatalogBoards(boards: CatalogBoard[]): void {
+	for (const board of boards) BOARD_BY_ID.set(board.id, board);
+}
+
 /** Used only when a board has neither a known ref nor a custom size. */
 export const FALLBACK_BOARD_CM = { widthCm: 40, heightCm: 20 };
 

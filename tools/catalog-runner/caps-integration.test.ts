@@ -20,7 +20,7 @@ async function fill(kind: "pedals" | "boards", count: number): Promise<void> {
 beforeAll(async () => {
 	root = await mkdtemp(join(tmpdir(), "pedalvision-caps-"));
 	await fill("pedals", CATALOG_LIMITS.hostedPedals);
-	await fill("boards", CATALOG_LIMITS.tierABoards);
+	await fill("boards", CATALOG_LIMITS.hostedBoards);
 }, 60_000);
 
 afterAll(async () => {
@@ -61,6 +61,6 @@ describe("runner cap enforcement", () => {
 			module.scanAssetCounts(join(root, "assets")),
 		);
 		expect(counts.pedals.items).toBe(CATALOG_LIMITS.hostedPedals);
-		expect(counts.boards.items).toBe(CATALOG_LIMITS.tierABoards);
+		expect(counts.boards.items).toBe(CATALOG_LIMITS.hostedBoards);
 	});
 });

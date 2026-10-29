@@ -12,9 +12,10 @@ See `docs/decisions/009-planner-fill-waiver.md`.
 
 ## Scope
 
-- Input: the external planner JSON (kept out of the repo) with brand, name,
+- Input: the external planner JSON (pedals + boards) (kept out of the repo) with brand, name,
   width/height in inches, and an 800 px image filename.
 - Add only items not already matched by id or normalized brand + name.
+- Boards: 248 missing, 800→AVIF 800/350, same pending provenance; board caps 400/800/40 MB.
 - Sources: 800 px transparent cutouts → AVIF 800 + 350 (quality 70).
 - Raw record: planner image provenance, `pending-replacement`, `confidence:
   "unsure"`, `effectTypes: ["utility"]`, dimensions converted to cm.

@@ -141,9 +141,9 @@ export function capIssues(counts: AssetCounts): CapIssue[] {
 	}
 
 	const board = counts.boards;
-	if (board.items > CATALOG_LIMITS.tierABoards) {
+	if (board.items > CATALOG_LIMITS.hostedBoards) {
 		issues.push(
-			issue("board", CATALOG_LIMITS.tierABoards, board.items, "items"),
+			issue("board", CATALOG_LIMITS.hostedBoards, board.items, "items"),
 		);
 	}
 	if (board.files > CATALOG_LIMITS.boardImageFiles) {
@@ -177,7 +177,7 @@ export function canStartBatch(
 	const itemLimit =
 		kind === "pedals"
 			? CATALOG_LIMITS.hostedPedals
-			: CATALOG_LIMITS.tierABoards;
+			: CATALOG_LIMITS.hostedBoards;
 	const fileLimit =
 		kind === "pedals"
 			? CATALOG_LIMITS.hostedPedalImageFiles
