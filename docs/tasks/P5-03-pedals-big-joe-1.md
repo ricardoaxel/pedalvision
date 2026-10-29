@@ -163,3 +163,25 @@ Read only the sections the task file points to; do not read whole docs.
   desktop + mobile before/after screenshots in the PR.
 - Contact sheet + coverage report in the PR; demo share link verified.
 - One PR; no merge.
+
+## Session log — 2026-10-29 (coordinator owner correction)
+
+- **Owner instruction:** use the PedalPlayground production assets for Big Joe
+  (`https://github.com/PedalPlayground/pedalplayground/tree/production/public`):
+  `public/images/pedals/big-joe-li2.png` and `big-joe-iso4.png`.
+- Replaced both generated Catalog Specimen AVIFs with the PedalPlayground cutouts
+  (258×529 RGBA → **1.51×** upscale to the 800 master; 350 rendition regenerated).
+  The two generated-art specs were removed.
+- **Orientation:** the planner art is portrait, so the footprint is stored portrait
+  (**Li2 4.1275 × 8.255 cm**; **ISO4 4.2164 × 8.509 cm**). The physical rectangle is
+  unchanged (official spec); only the canonical orientation matches the art.
+- **Provenance:** `kind: planner`, `status: last-resort`, exact GitHub raw
+  `sourceUrl`, repo tree `referenceUrl`, owner instruction + **planner share 2/2 =
+  100%** (owner override) recorded.
+- **Gates:** analyzer on the final 800 — **accept** both (aspect 2.5%/1.6%, rotation
+  0°, bright edge 0, no background card); PSNR **47.81 / 46.25 dB**; one
+  `catalog-image-reviewer` pass — **FLAG** both (faint left-edge rim + soft small
+  lettering from the 1.51× upscale; no reject-level halo/shadow/background card),
+  accepted as a recorded planner **source gap**.
+- **Checks:** `catalog:ci` **468/15** (120 planner source gaps, +2); tests
+  **893/893**; lint/typecheck/build + `catalog:guard-batch-pr` clean.
