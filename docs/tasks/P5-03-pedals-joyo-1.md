@@ -105,12 +105,15 @@ Read only the sections the task file points to; do not read whole docs.
   reaches 3.4M; the wave hard cap stays 2.4M.
 - **`curated.ts`:** batches never edit `tools/`. If the no-drift test needs a
   verified override, stop and hand it to the coordinator serially.
-- **Baseline:** take the before screenshots and verify the post-merge build from the
-  clean detached worktree `/Users/ashel/Documents/Programming/pedalvision-t6-baseline`
-  at `origin/main` (`bf083ed`), never from a dirty feature checkout.
+- **Baseline:** take the before screenshots from YOUR OWN clean detached worktree
+  `/Users/ashel/Documents/Programming/pedalvision-t6-baseline-joyo` at `origin/main`
+  (`bf083ed`), never from a dirty feature checkout or a shared baseline dir.
 - **Checkpoint-first (T-5 lesson):** all three T-5 batches tripped the 12-min
   per-item stall threshold by researching before the first checkpoint. Checkpoint
-  item 1 **immediately after setup**, then checkpoint inline after every item.
+  item 1 **immediately after setup**, then checkpoint inline after every item. This
+  wave launches with `CATALOG_ITEM_LIMIT_MS=1800000`; an `exit 75` /
+  `per-item limit exceeded` result is **advisory** — keep going, do not stop or
+  `catalog:resume`.
 
 ## Constraints
 
