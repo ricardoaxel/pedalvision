@@ -327,6 +327,16 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"earthquaker-aurelius": ["chorus", "vibrato", "rotary"],
 	"earthquaker-avalanche-run": ["delay", "reverb"],
 	"earthquaker-avalanche-run-v2": ["delay", "reverb"],
+	// New in the eqd-1 cleanup batch; types verified from the official page wording
+	// (the names are creative, so the keyword classifier cannot derive them).
+	"earthquaker-bellows": ["fuzz", "overdrive"],
+	"earthquaker-bit-commander": ["synth", "octave"],
+	"earthquaker-black-ash": ["fuzz", "overdrive"],
+	"earthquaker-blumes": ["overdrive"],
+	"earthquaker-bows": ["boost", "preamp"],
+	"earthquaker-cloven-hoof": ["fuzz"],
+	"earthquaker-data-corrupter": ["synth", "pitch"],
+	"earthquaker-plumes": ["overdrive"],
 
 	// JHS
 	"jhs-1966-series-bender": ["fuzz"],

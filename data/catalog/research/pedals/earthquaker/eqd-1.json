@@ -1,539 +1,3177 @@
 [
-  {
-    "id": "earthquaker-a-b-box",
-    "brand": "EarthQuaker",
-    "name": "A/B Box",
-    "category": "pedal",
-    "effectTypes": [
-      "ab-box"
-    ],
-    "widthCm": 4.52,
-    "heightCm": 9.4,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/ab-box",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.long-mcquade.com/406797/Guitars/Pedals-Effects/EarthQuaker-Devices/A-B-Box.htm",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-acapulco-gold",
-    "brand": "EarthQuaker",
-    "name": "Acapulco Gold",
-    "category": "pedal",
-    "effectTypes": [
-      "distortion"
-    ],
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/acapulco-gold",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.guitarworld.com/gear/review-earthquaker-devices-acapulco-gold-pedal",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-afterneath",
-    "brand": "EarthQuaker",
-    "name": "Afterneath",
-    "category": "pedal",
-    "effectTypes": [
-      "reverb"
-    ],
-    "widthCm": 6.6,
-    "heightCm": 12.75,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/blog-posts/afterneath-for-noodlers",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/3963",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-afterneath-v3",
-    "brand": "EarthQuaker",
-    "name": "Afterneath V3",
-    "category": "pedal",
-    "effectTypes": [
-      "reverb"
-    ],
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/afterneath",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.gearnews.com/earthquaker-devices-afterneath-v3-features-9-new-modes",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-afterneath-v3-pastel-purple",
-    "brand": "EarthQuaker",
-    "name": "Afterneath V3 (Pastel Purple)",
-    "category": "pedal",
-    "effectTypes": [
-      "reverb"
-    ],
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "variantOf": "earthquaker-afterneath-v3",
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-afterneath-v3-raw",
-    "brand": "EarthQuaker",
-    "name": "Afterneath V3 (Raw)",
-    "category": "pedal",
-    "effectTypes": [
-      "reverb"
-    ],
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "variantOf": "earthquaker-afterneath-v3",
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-aqueduct",
-    "brand": "EarthQuaker",
-    "name": "Aqueduct",
-    "category": "pedal",
-    "effectTypes": [
-      "vibrato"
-    ],
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/aqueduct",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.premierguitar.com/gear/earthquaker-devices-aqueduct-review",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-arpanoid",
-    "brand": "EarthQuaker",
-    "name": "Arpanoid",
-    "category": "pedal",
-    "effectTypes": [
-      "pitch"
-    ],
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/arpanoid",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-arrows",
-    "brand": "EarthQuaker",
-    "name": "Arrows",
-    "category": "pedal",
-    "effectTypes": [
-      "boost",
-      "preamp"
-    ],
-    "widthCm": 7.21,
-    "heightCm": 11.43,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/arrows",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.woodsysmusic.com/products/earthquaker-devices-arrows-preamp-booster",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-arrows-v2",
-    "brand": "EarthQuaker",
-    "name": "Arrows V2",
-    "category": "pedal",
-    "effectTypes": [
-      "boost",
-      "preamp"
-    ],
-    "widthCm": 6.6,
-    "heightCm": 12.55,
-    "sources": [
-      {
-        "url": "https://www.audiodistributiongroup.com/earthquaker-devices-launch-5-additional-v2-pedals",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.sweetwater.com/store/detail/ArrowsV2--earthquaker-devices-arrows-v2-preamp-booster-pedal",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-astral-destiny",
-    "brand": "EarthQuaker",
-    "name": "Astral Destiny",
-    "category": "pedal",
-    "effectTypes": [
-      "reverb",
-      "octave"
-    ],
-    "widthCm": 9.68,
-    "heightCm": 12.22,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/astral-destiny",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.guitarworld.com/news/earthquaker-devices-takes-shimmer-reverb-to-the-next-level-with-the-astral-destiny",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-aurelius",
-    "brand": "EarthQuaker",
-    "name": "Aurelius",
-    "category": "pedal",
-    "effectTypes": [
-      "chorus",
-      "vibrato",
-      "rotary"
-    ],
-    "widthCm": 6.86,
-    "heightCm": 12.55,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/aurelius",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.premierguitar.com/news/earthquaker-devices-aurelius",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-avalanche-run",
-    "brand": "EarthQuaker",
-    "name": "Avalanche Run",
-    "category": "pedal",
-    "effectTypes": [
-      "delay",
-      "reverb"
-    ],
-    "widthCm": 9.68,
-    "heightCm": 12.22,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/avalanche-run",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://stinkfoot.se/archives/3963",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-avalanche-run-v2",
-    "brand": "EarthQuaker",
-    "name": "Avalanche Run V2",
-    "category": "pedal",
-    "effectTypes": [
-      "delay",
-      "reverb"
-    ],
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "sources": [
-      {
-        "url": "https://www.earthquakerdevices.com/avalanche-run",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomannmusic.com/earthquaker_devices_avalanche_run_v2.htm",
-        "kind": [
-          "info"
-        ]
-      }
-    ],
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-avalanche-run-v2-black",
-    "brand": "EarthQuaker",
-    "name": "Avalanche Run V2 (Black)",
-    "category": "pedal",
-    "effectTypes": [
-      "delay",
-      "reverb"
-    ],
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "variantOf": "earthquaker-avalanche-run-v2",
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-avalanche-run-v2-mint",
-    "brand": "EarthQuaker",
-    "name": "Avalanche Run V2 (Mint)",
-    "category": "pedal",
-    "effectTypes": [
-      "delay",
-      "reverb"
-    ],
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "variantOf": "earthquaker-avalanche-run-v2",
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-avalanche-run-v2-purple-sparkle",
-    "brand": "EarthQuaker",
-    "name": "Avalanche Run V2 (Purple Sparkle)",
-    "category": "pedal",
-    "effectTypes": [
-      "delay",
-      "reverb"
-    ],
-    "widthCm": 11.02,
-    "heightCm": 12.37,
-    "variantOf": "earthquaker-avalanche-run-v2",
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  },
-  {
-    "id": "earthquaker-barrows-fuzz",
-    "brand": "EarthQuaker",
-    "name": "Barrows Fuzz",
-    "category": "pedal",
-    "effectTypes": [
-      "fuzz"
-    ],
-    "widthCm": 4.52,
-    "heightCm": 9.4,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
-    },
-    "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "eqd-1"
-    }
-  }
+	{
+		"id": "earthquaker-a-b-box",
+		"brand": "EarthQuaker",
+		"name": "A/B Box",
+		"category": "pedal",
+		"deviceType": "switcher",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"ab-box"
+		],
+		"widthCm": 4.6,
+		"heightCm": 9.4,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/ab-box): 94 x 46 x 46 mm (3.6875 x 1.8125 x 1.8125 in).",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "IN",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS input; passive, bidirectional."
+			},
+			{
+				"label": "OUT A",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS output A."
+			},
+			{
+				"label": "OUT B",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS output B."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 10,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 2,
+			"stereo": false,
+			"note": "Passive A/B: one input to either output (or two inputs to one output)."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "none",
+				"note": "Fully passive signal path."
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA",
+				"note": "Passive A/B utility in a compact enclosure; powered only for the status LED."
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Passive A/B selector; requires 9 V DC for the status LED only.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/ab-box",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/56773e43-6c1c-46bd-86f8-9951d3bbac63/AB-Box.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/56773e43-6c1c-46bd-86f8-9951d3bbac63/AB-Box.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/ab-box",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/56773e43-6c1c-46bd-86f8-9951d3bbac63/AB-Box.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 2000x2000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 2000x2000; downscaled to the 800 long edge (0.40x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "94 x 46 x 46 mm (3.6875 x 1.8125 x 1.8125 in)",
+			"controls": [
+				"A/B select"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-acapulco-gold",
+		"brand": "EarthQuaker",
+		"name": "Acapulco Gold",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"distortion"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/acapulco-gold): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 18,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Modeled after a cranked Sunn Model T power amp.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/acapulco-gold",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548689758783-RGV59SB0NUNWAU7DHAJ6/Acapulco-Gold.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548689758783-RGV59SB0NUNWAU7DHAJ6/Acapulco-Gold.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/acapulco-gold",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548689758783-RGV59SB0NUNWAU7DHAJ6/Acapulco-Gold.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1000x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 1000x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-afterneath",
+		"brand": "EarthQuaker",
+		"name": "Afterneath",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Afterneath series enclosure spec (121 x 64 x 57 mm); the V1 product page is retired and no independent V1 spec sheet was found.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "discontinued",
+		"notes": "Original Afterneath (V1); replaced by Afterneath V3.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/afterneath",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath.png",
+				"sourcePage": "https://www.earthquakerdevices.com/afterneath",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 409x790; upscaled 1.01x to the 800 long edge."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "EQD Afterneath series enclosure 121 x 64 x 57 mm; V1 product page retired",
+			"controls": [
+				"Length",
+				"Diffuse",
+				"Dampen",
+				"Drag",
+				"Reflect",
+				"Mix"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-afterneath-v3",
+		"brand": "EarthQuaker",
+		"name": "Afterneath V3",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/afterneath): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS expression/CV jack (official page)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 100,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Enhanced Otherworldly Reverberator with 9 modes and expression control.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/afterneath",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1578601522386-1W1CJO7DG64FYM7KAICL/Afterneath.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1578601522386-1W1CJO7DG64FYM7KAICL/Afterneath.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/afterneath",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1578601522386-1W1CJO7DG64FYM7KAICL/Afterneath.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1000x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 1000x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Length",
+				"Diffuse",
+				"Dampen",
+				"Drag",
+				"Reflect",
+				"Mix",
+				"Mode"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-afterneath-v3-pastel-purple",
+		"brand": "EarthQuaker",
+		"name": "Afterneath V3 (Pastel Purple)",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/afterneath): Same enclosure as Afterneath V3: 121 x 64 x 57 mm.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS expression/CV jack (official page)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 100,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Pastel Purple finish variant of Afterneath V3.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/afterneath",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-pastel-purple.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-pastel-purple.png",
+				"sourcePage": "https://www.earthquakerdevices.com/afterneath",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-pastel-purple.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 526x963; downscaled to the 800 long edge (0.83x)."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "Same enclosure as Afterneath V3: 121 x 64 x 57 mm",
+			"controls": [
+				"Length",
+				"Diffuse",
+				"Dampen",
+				"Drag",
+				"Reflect",
+				"Mix",
+				"Mode"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		},
+		"variantOf": "earthquaker-afterneath-v3"
+	},
+	{
+		"id": "earthquaker-afterneath-v3-raw",
+		"brand": "EarthQuaker",
+		"name": "Afterneath V3 (Raw)",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/afterneath): Same enclosure as Afterneath V3: 121 x 64 x 57 mm.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS expression/CV jack (official page)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 100,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Raw finish variant of Afterneath V3.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/afterneath",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-raw.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-raw.png",
+				"sourcePage": "https://www.earthquakerdevices.com/afterneath",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-afterneath-v3-raw.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 526x963; downscaled to the 800 long edge (0.83x)."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "Same enclosure as Afterneath V3: 121 x 64 x 57 mm",
+			"controls": [
+				"Length",
+				"Diffuse",
+				"Dampen",
+				"Drag",
+				"Reflect",
+				"Mix",
+				"Mode"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		},
+		"variantOf": "earthquaker-afterneath-v3"
+	},
+	{
+		"id": "earthquaker-aqueduct",
+		"brand": "EarthQuaker",
+		"name": "Aqueduct",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"vibrato"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/aqueduct): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 68,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Vibrato with modes and expression control.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/aqueduct",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1557945381231-CRL4Y5SAU2AS13EYMMCZ/Aqueduct.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1557945381231-CRL4Y5SAU2AS13EYMMCZ/Aqueduct.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/aqueduct",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1557945381231-CRL4Y5SAU2AS13EYMMCZ/Aqueduct.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 534x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 534x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Rate",
+				"Depth",
+				"Length",
+				"Mix",
+				"Mode"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-arpanoid",
+		"brand": "EarthQuaker",
+		"name": "Arpanoid",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"pitch"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/arpanoid): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 65,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Polyphonic pitch arpeggiator.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/arpanoid",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548953571222-KSS5T3MGPE4GR3MJ8PRZ/Arpanoid-Main.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548953571222-KSS5T3MGPE4GR3MJ8PRZ/Arpanoid-Main.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/arpanoid",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548953571222-KSS5T3MGPE4GR3MJ8PRZ/Arpanoid-Main.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1000x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 1000x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Rate",
+				"Arpeggio mode",
+				"Octave",
+				"Pattern"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-arrows",
+		"brand": "EarthQuaker",
+		"name": "Arrows",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"boost",
+			"preamp"
+		],
+		"widthCm": 7.21,
+		"heightCm": 11.43,
+		"dimensionsSource": "EQD Arrows V1 wedge enclosure (72 x 114 mm) retained from the seed/planner footprint; the V1 product page is retired (the V2 page specifies 121 x 64 mm).",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 8,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "discontinued",
+		"notes": "Original Arrows pre-amp booster (wedge enclosure); replaced by Arrows V2.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/arrows",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-arrows.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-arrows.png",
+				"sourcePage": "https://www.earthquakerdevices.com/arrows",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-arrows.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 400x633; upscaled 1.26x to the 800 long edge."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "EQD Arrows V1 wedge enclosure 72 x 114 mm; V1 page retired",
+			"controls": [
+				"Level"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-arrows-v2",
+		"brand": "EarthQuaker",
+		"name": "Arrows V2",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"boost",
+			"preamp"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/arrows): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 8,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Pre-amp booster in the compact 121 x 64 mm enclosure.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/arrows",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1519222854353-50LNIJ54IUVWQQ0HPRHV/Arrows.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1519222854353-50LNIJ54IUVWQQ0HPRHV/Arrows.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/arrows",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1519222854353-50LNIJ54IUVWQQ0HPRHV/Arrows.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 561x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 561x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-astral-destiny",
+		"brand": "EarthQuaker",
+		"name": "Astral Destiny",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"reverb",
+			"octave"
+		],
+		"widthCm": 9.3,
+		"heightCm": 11.8,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/astral-destiny): 118 x 93 x 57 mm (4.65 x 3.65 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS expression/CV jack (official page)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 85,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Octal octave reverberation with 8 modes and 8 presets.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/astral-destiny",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1607352703063-P5HJWHKFJZGCO4BVMD9E/Astral-Destiny.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1607352703063-P5HJWHKFJZGCO4BVMD9E/Astral-Destiny.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/astral-destiny",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1607352703063-P5HJWHKFJZGCO4BVMD9E/Astral-Destiny.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1200x1200 after trim; white studio background keyed with flood matte; AVIF q92 800/350 (high-detail artwork). Source 1200x1200; downscaled to the 800 long edge (0.67x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "118 x 93 x 57 mm (4.65 x 3.65 x 2.25 in) with knobs",
+			"controls": [
+				"Length",
+				"Depth",
+				"Rate",
+				"Tone",
+				"Mix",
+				"Mode",
+				"Stretch",
+				"Preset"
+			],
+			"imageProcessing": "Hosted as AVIF q92 (800/350; high-detail starfield artwork)."
+		}
+	},
+	{
+		"id": "earthquaker-aurelius",
+		"brand": "EarthQuaker",
+		"name": "Aurelius",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"chorus",
+			"vibrato",
+			"rotary"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/aurelius): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS expression/CV jack (official page)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 75,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Tri-voice chorus with 6 presets and expression control.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/aurelius",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/3dd96242-054b-46c5-ad40-8f27fa6f8d89/Aurelius.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/3dd96242-054b-46c5-ad40-8f27fa6f8d89/Aurelius.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/aurelius",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/3dd96242-054b-46c5-ad40-8f27fa6f8d89/Aurelius.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 2000x2000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 2000x2000; downscaled to the 800 long edge (0.40x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Rate",
+				"Depth",
+				"Tone",
+				"Mix",
+				"Mode",
+				"Save/Recall"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-avalanche-run",
+		"brand": "EarthQuaker",
+		"name": "Avalanche Run",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"reverb"
+		],
+		"widthCm": 10.5,
+		"heightCm": 11.8,
+		"dimensionsSource": "EQD Avalanche Run series enclosure spec (118 x 105 x 57 mm); the V1 product page is retired and the V2 page carries the series dimensions.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "Mono 1/4 in TS input."
+			},
+			{
+				"label": "OUTPUT L",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "Left 1/4 in TS output; stereo pair."
+			},
+			{
+				"label": "OUTPUT R",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "Right 1/4 in TS output; stereo pair."
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS expression jack located on the west side of the pedal (official page)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 410,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 2,
+			"stereo": true,
+			"note": "Mono in / stereo out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "discontinued",
+		"notes": "Original Avalanche Run stereo reverb and delay; replaced by V2.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/avalanche-run",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run.png",
+				"sourcePage": "https://www.earthquakerdevices.com/avalanche-run",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 587x741; upscaled 1.08x to the 800 long edge."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "EQD Avalanche Run series 118 x 105 x 57 mm; V1 page retired",
+			"controls": [
+				"Time",
+				"Repeats",
+				"Tone",
+				"Mix",
+				"Reverb",
+				"Decay",
+				"Tone",
+				"Mix",
+				"Tap",
+				"Expression assign"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-avalanche-run-v2",
+		"brand": "EarthQuaker",
+		"name": "Avalanche Run V2",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"reverb"
+		],
+		"widthCm": 10.5,
+		"heightCm": 11.8,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/avalanche-run): 118 x 105 x 57 mm (4.65 x 4.15 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "Mono 1/4 in TS input."
+			},
+			{
+				"label": "OUTPUT L",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "Left 1/4 in TS output; stereo pair."
+			},
+			{
+				"label": "OUTPUT R",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "Right 1/4 in TS output; stereo pair."
+			},
+			{
+				"label": "EXP",
+				"kind": "exp",
+				"connector": "trs",
+				"signal": "control",
+				"note": "TRS expression jack located on the west side of the pedal (official page)."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 410,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 2,
+			"stereo": true,
+			"note": "Mono in / stereo out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Stereo reverb and delay with tap tempo and expression control.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/avalanche-run",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1544033064540-9DLWD9Y81ZUENBFL62IW/Avalanche-Run.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1544033064540-9DLWD9Y81ZUENBFL62IW/Avalanche-Run.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/avalanche-run",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1544033064540-9DLWD9Y81ZUENBFL62IW/Avalanche-Run.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 898x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 898x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "118 x 105 x 57 mm (4.65 x 4.15 x 2.25 in) with knobs",
+			"controls": [
+				"Time",
+				"Repeats",
+				"Tone",
+				"Mix",
+				"Reverb",
+				"Decay",
+				"Tone",
+				"Mix",
+				"Tap",
+				"Expression assign"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-avalanche-run-v2-black",
+		"brand": "EarthQuaker",
+		"name": "Avalanche Run V2 (Black)",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"reverb"
+		],
+		"widthCm": 10.5,
+		"heightCm": 11.8,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/avalanche-run): Same enclosure as Avalanche Run V2: 118 x 105 x 57 mm.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 410,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Black finish variant of Avalanche Run V2.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/avalanche-run",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-black.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-black.png",
+				"sourcePage": "https://www.earthquakerdevices.com/avalanche-run",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-black.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 800x897; downscaled to the 800 long edge (0.89x)."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "Same enclosure as Avalanche Run V2: 118 x 105 x 57 mm",
+			"controls": [
+				"Time",
+				"Repeats",
+				"Tone",
+				"Mix",
+				"Reverb",
+				"Decay",
+				"Tone",
+				"Mix",
+				"Tap",
+				"Expression assign"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		},
+		"variantOf": "earthquaker-avalanche-run-v2"
+	},
+	{
+		"id": "earthquaker-avalanche-run-v2-mint",
+		"brand": "EarthQuaker",
+		"name": "Avalanche Run V2 (Mint)",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"reverb"
+		],
+		"widthCm": 10.5,
+		"heightCm": 11.8,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/avalanche-run): Same enclosure as Avalanche Run V2: 118 x 105 x 57 mm.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 410,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Mint finish variant of Avalanche Run V2.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/avalanche-run",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-mint.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-mint.png",
+				"sourcePage": "https://www.earthquakerdevices.com/avalanche-run",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-mint.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 800x897; downscaled to the 800 long edge (0.89x)."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "Same enclosure as Avalanche Run V2: 118 x 105 x 57 mm",
+			"controls": [
+				"Time",
+				"Repeats",
+				"Tone",
+				"Mix",
+				"Reverb",
+				"Decay",
+				"Tone",
+				"Mix",
+				"Tap",
+				"Expression assign"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		},
+		"variantOf": "earthquaker-avalanche-run-v2"
+	},
+	{
+		"id": "earthquaker-avalanche-run-v2-purple-sparkle",
+		"brand": "EarthQuaker",
+		"name": "Avalanche Run V2 (Purple Sparkle)",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"delay",
+			"reverb"
+		],
+		"widthCm": 10.5,
+		"heightCm": 11.8,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/avalanche-run): Same enclosure as Avalanche Run V2: 118 x 105 x 57 mm.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 410,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Purple Sparkle finish variant of Avalanche Run V2.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/avalanche-run",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-purple.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-purple.png",
+				"sourcePage": "https://www.earthquakerdevices.com/avalanche-run",
+				"priority": 1,
+				"notes": "Planner last-resort cutout."
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/earthquaker-avalanche-run-v2-purple.png",
+			"status": "last-resort",
+			"note": "Pedalplayground/planner cutout used as a recorded last-resort (no official flat photo for this finish/version); counted source gap. Source 800x897; downscaled to the 800 long edge (0.89x)."
+		},
+		"confidence": "likely",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "Same enclosure as Avalanche Run V2: 118 x 105 x 57 mm",
+			"controls": [
+				"Time",
+				"Repeats",
+				"Tone",
+				"Mix",
+				"Reverb",
+				"Decay",
+				"Tone",
+				"Mix",
+				"Tap",
+				"Expression assign"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		},
+		"variantOf": "earthquaker-avalanche-run-v2"
+	},
+	{
+		"id": "earthquaker-barrows-fuzz",
+		"brand": "EarthQuaker",
+		"name": "Barrows Fuzz",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz"
+		],
+		"widthCm": 3.8,
+		"heightCm": 9.5,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/barrows): 38 x 95 x 51 mm (1.50 x 3.75 x 2.00 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 10,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "true"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Fuzz Attacker; three-transistor TB MkII-inspired circuit.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/barrows",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/a352fd54-4472-45f7-8439-73b3c8b12d39/Barrows-Fuzz-Attacker.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/a352fd54-4472-45f7-8439-73b3c8b12d39/Barrows-Fuzz-Attacker.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/barrows",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/a352fd54-4472-45f7-8439-73b3c8b12d39/Barrows-Fuzz-Attacker.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 2000x2000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 2000x2000; downscaled to the 800 long edge (0.40x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "38 x 95 x 51 mm (1.50 x 3.75 x 2.00 in) with knobs",
+			"controls": [
+				"Level",
+				"Attack"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-bellows",
+		"brand": "EarthQuaker",
+		"name": "Bellows",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"fuzz",
+			"overdrive"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/bellows): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 13,
+			"battery": "9 V battery supported",
+			"note": "9 V DC center-negative; 9 V battery supported. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Fuzz driver / amp-like overdrive; 9 V battery or DC.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/bellows",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1479772620651-Y0IKY30P5QAVNWMILZ7O/Bellows.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1479772620651-Y0IKY30P5QAVNWMILZ7O/Bellows.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/bellows",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1479772620651-Y0IKY30P5QAVNWMILZ7O/Bellows.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 562x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 562x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level",
+				"Gain"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-bit-commander",
+		"brand": "EarthQuaker",
+		"name": "Bit Commander",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"synth",
+			"octave"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/bit-commander): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 25,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Analog octave synth.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/bit-commander",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548784501746-TMYDT35UAD1BCVZCE5L2/Bit-Commander.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548784501746-TMYDT35UAD1BCVZCE5L2/Bit-Commander.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/bit-commander",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548784501746-TMYDT35UAD1BCVZCE5L2/Bit-Commander.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1000x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 1000x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Base",
+				"Sub",
+				"Up 1",
+				"Up 2",
+				"Filter",
+				"Level"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-black-ash",
+		"brand": "EarthQuaker",
+		"name": "Black Ash",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"fuzz",
+			"overdrive"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/black-ash): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 20,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA",
+				"limitedEdition": true
+			}
+		},
+		"usage": "guitar",
+		"status": "discontinued",
+		"notes": "Limited run (1500 units worldwide) fuzz/overdrive inspired by the three-knob Bender.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/black-ash",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1540221783025-YU7XSWZQ00OZ7K1VNP2F/Black-Ash.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1540221783025-YU7XSWZQ00OZ7K1VNP2F/Black-Ash.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/black-ash",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1540221783025-YU7XSWZQ00OZ7K1VNP2F/Black-Ash.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 526x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 526x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level",
+				"Gain",
+				"Tone"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-blumes",
+		"brand": "EarthQuaker",
+		"name": "Blumes",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"overdrive"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/blumes): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 25,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Low signal shredder / bass overdrive.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/blumes",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/9cecbcd7-55c3-46ed-90f8-366c8deafeb3/Blumes-Bass-Overdrive-Pedal.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/9cecbcd7-55c3-46ed-90f8-366c8deafeb3/Blumes-Bass-Overdrive-Pedal.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/blumes",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/9cecbcd7-55c3-46ed-90f8-366c8deafeb3/Blumes-Bass-Overdrive-Pedal.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 2000x2000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 2000x2000; downscaled to the 800 long edge (0.40x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level",
+				"Gain",
+				"Tone",
+				"Clip"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-bows",
+		"brand": "EarthQuaker",
+		"name": "Bows",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"boost",
+			"preamp"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/bows): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 9,
+			"battery": "9 V battery supported",
+			"note": "9 V DC center-negative; 9 V battery supported. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Germanium preamp built around a NOS OC139 transistor; 9 V battery or DC.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/bows",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1480099332293-GONW2PRPMRSAUVA0GYLP/Bows.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1480099332293-GONW2PRPMRSAUVA0GYLP/Bows.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/bows",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1480099332293-GONW2PRPMRSAUVA0GYLP/Bows.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1600x870 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 1600x870; downscaled to the 800 long edge (0.50x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level",
+				"Tone toggle"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-cloven-hoof",
+		"brand": "EarthQuaker",
+		"name": "Cloven Hoof",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar",
+			"bass"
+		],
+		"effectTypes": [
+			"fuzz"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/cloven-hoof): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 14,
+			"battery": "9 V battery supported",
+			"note": "9 V DC center-negative; 9 V battery supported. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Fuzz grinder; 9 V battery or DC.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/cloven-hoof",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548685716431-D65LL2PC71KEY7CV7BV0/Cloven-Hoof.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548685716431-D65LL2PC71KEY7CV7BV0/Cloven-Hoof.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/cloven-hoof",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548685716431-D65LL2PC71KEY7CV7BV0/Cloven-Hoof.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 540x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 540x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level",
+				"Tone",
+				"Shift",
+				"Fuzz"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-data-corrupter",
+		"brand": "EarthQuaker",
+		"name": "Data Corrupter",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "double",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"synth",
+			"pitch"
+		],
+		"widthCm": 12.1,
+		"heightCm": 14.4,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/data-corrupter): 144 x 121 x 57 mm (5.65 x 4.75 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 26,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "digital",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Modulated monophonic harmonizing PLL.",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/data-corrupter",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548680095800-DYW9159XSP8FTBTAXRLR/Data-Corrupter.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548680095800-DYW9159XSP8FTBTAXRLR/Data-Corrupter.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/data-corrupter",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1548680095800-DYW9159XSP8FTBTAXRLR/Data-Corrupter.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1000x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 1000x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "144 x 121 x 57 mm (5.65 x 4.75 x 2.25 in) with knobs",
+			"controls": [
+				"Master",
+				"Oscillator",
+				"Subharmonic",
+				"Square",
+				"Frequency",
+				"Glide",
+				"Mix"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	},
+	{
+		"id": "earthquaker-plumes",
+		"brand": "EarthQuaker",
+		"name": "Plumes",
+		"category": "pedal",
+		"deviceType": "stompbox",
+		"formFactor": "compact",
+		"instrumentTypes": [
+			"guitar"
+		],
+		"effectTypes": [
+			"overdrive"
+		],
+		"widthCm": 6.4,
+		"heightCm": 12.1,
+		"dimensionsSource": "EarthQuaker Devices official product page (https://www.earthquakerdevices.com/plumes): 121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs.",
+		"imageFormat": "avif",
+		"jacks": [
+			{
+				"label": "INPUT",
+				"kind": "in",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono input."
+			},
+			{
+				"label": "OUTPUT",
+				"kind": "out",
+				"connector": "ts",
+				"signal": "audio",
+				"note": "1/4 in TS mono output."
+			},
+			{
+				"label": "9V DC",
+				"kind": "power",
+				"connector": "barrel",
+				"signal": "power",
+				"note": "2.1 mm center-negative 9 V DC input."
+			}
+		],
+		"jackLayout": {
+			"confidence": "unknown",
+			"note": "Official product page and manual text do not show the connector face; edges omitted (the app uses its assumed anchors)."
+		},
+		"power": {
+			"voltage": 9,
+			"acDc": "DC",
+			"polarity": "center-negative",
+			"connector": "barrel",
+			"connectorSize": "2.1 mm",
+			"currentMa": 25,
+			"note": "9 V DC center-negative power supply only. Standard 2.1 mm barrel."
+		},
+		"io": {
+			"inputs": 1,
+			"outputs": 1,
+			"stereo": false,
+			"note": "Mono in / mono out."
+		},
+		"optional": {
+			"circuit": {
+				"type": "analog",
+				"bypass": "relay"
+			},
+			"physical": {
+				"footswitches": 1,
+				"enclosure": "metal",
+				"madeIn": "Akron, Ohio, USA"
+			},
+			"lifecycle": {
+				"madeIn": "Akron, Ohio, USA"
+			}
+		},
+		"usage": "guitar",
+		"status": "current",
+		"notes": "Small signal shredder; substitutes Black Eye (no verifiable official spec page).",
+		"sources": [
+			{
+				"url": "https://www.earthquakerdevices.com/plumes",
+				"kind": [
+					"info"
+				]
+			},
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1571927470947-5PV5WIFSR7SB40P6MB93/Plumes.jpg",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageCandidates": [
+			{
+				"url": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1571927470947-5PV5WIFSR7SB40P6MB93/Plumes.jpg?format=2500w",
+				"sourcePage": "https://www.earthquakerdevices.com/plumes",
+				"priority": 1,
+				"notes": "Official EarthQuaker product image; used for the hosted asset."
+			}
+		],
+		"imageProvenance": {
+			"kind": "official",
+			"sourceUrl": "https://images.squarespace-cdn.com/content/v1/57cebe2c03596e075fca5f24/1571927470947-5PV5WIFSR7SB40P6MB93/Plumes.jpg?format=2500w",
+			"status": "chosen",
+			"note": "Official EarthQuaker Devices product image, 1000x1000 after trim; white studio background keyed with flood matte; AVIF q90 800/350. Source 1000x1000; downscaled to the 800 long edge (0.80x)."
+		},
+		"confidence": "confirmed",
+		"lastVerified": "2026-10-28",
+		"extra": {
+			"dimensions": "121 x 64 x 57 mm (4.75 x 2.50 x 2.25 in) with knobs",
+			"controls": [
+				"Level",
+				"Gain",
+				"Tone",
+				"Clip"
+			],
+			"imageProcessing": "Hosted as AVIF q90 (800/350)."
+		}
+	}
 ]

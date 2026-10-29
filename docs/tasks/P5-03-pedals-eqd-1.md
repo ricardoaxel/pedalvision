@@ -1,6 +1,6 @@
 # P5-03: EarthQuaker Devices — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** todo · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR pending · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-3` coordinator created this worktree and wrote the 18
 > existing-item raw scaffolds (`data/catalog/research/pedals/earthquaker/eqd-1.json`).
@@ -204,3 +204,25 @@ Read only the sections the task file points to; do not read whole docs.
   errors; desktop + mobile before/after screenshots in the PR.
 - Contact sheet + coverage/reject report in the PR; demo share link verified.
 - One PR; no merge.
+
+
+## Batch outcome (2026-10-28)
+
+- **26/26 items** shipped: the 18 existing EarthQuaker seeds (all re-hosted, no mock/legacy PNG left) + 8 net-new (Bellows, Bit Commander, Black Ash, Blumes, Bows, Cloven Hoof, Data Corrupter, **Plumes**). `catalog:ci` validated **452 pedals / 15 boards** (base 444/15 + 8 net-new).
+- **Substitution:** `earthquaker-black-eye` was replaced by `earthquaker-plumes`. Black Eye is a retired clean boost with **no official product/spec page and no official dimensions** (the EQD page 404s; the one Wayback attempt returned HTTP 429 "suspected abusive bot traffic", logged zero-yield; retailer pages were blocked). Rather than invent a footprint, the slot was filled with Plumes, which has a full official spec page. Recorded here as the required substitution reason.
+- **Images:** 18 official EarthQuaker product images + **8 planner last-resort** cutouts (Afterneath V1, Arrows V1, Avalanche Run V1, and the five finish variants) → **planner share 8/26 = 30.8%** (above the 30% target but far below the 50% waiver line; all 8 are recorded `kind: "planner"`, `status: "last-resort"` and counted gaps). One place where a flat official finish photo does not exist.
+- **Upscales:** all within the 2× soft ceiling. planner sources: Afterneath 409×790 (1.01×), Arrows 400×633 (1.26×), Avalanche Run 587×741 (1.08×), finish variants 526×963/800×897 (≤1.52×). Official sources are 1000–2000 px and downscaled. Source dimensions + scale are recorded in every `imageProvenance.note`.
+- **Dimensions:** verified from the official EQD TECH SPECS for every model with a live page. EQD lists **height × width × depth**; the records use width × height (e.g. compact = 6.4 × 12.1 cm, Astral Destiny = 9.3 × 11.8 cm, Avalanche Run = 10.5 × 11.8 cm, Data Corrupter = 12.1 × 14.4 cm, Barrows = 3.8 × 9.5 cm, A/B Box = 4.6 × 9.4 cm). Retired V1 models (Afterneath, Arrows, Avalanche Run) inherit the series enclosure and record the gap in `dimensionsSource`.
+- **Effect tags:** verified per official wording (e.g. Data Corrupter = synth/pitch, Bit Commander = synth/octave, Cloven Hoof = fuzz, Bows = boost/preamp, A/B Box = ab-box). The 8 net-new creative names needed verified `curated.ts` overrides (the no-drift test requires them); the 18 existing models already had seeds.
+- **Jack edges:** **none claimed**. The official EQD product pages and manual text do not show the connector face, so all records omit `edge` with `jackLayout.confidence: "unknown"` (the app uses its assumed anchors). `catalog:check-jacks` is green.
+- **Checks:** `catalog:check-jacks`, `catalog:check-images`, `catalog:ci`, `catalog:guard-batch-pr`, `lint`, `typecheck`, `test`, `build` green; Playwright desktop 1280×900 + mobile 390×844 with 0 console errors. Analyzer: every final 800 rendition processed + analyzed, no rejects; PSNR ≥40 dB for all (Astral Destiny re-encoded at q92 for 40.9 dB because its starfield artwork compresses poorly).
+- **Vision:** one `catalog-image-reviewer` call (26-cell dual-tone sheet + 3× corner crops for the 12 analyzer-flagged cells) → **26/26 accept**.
+
+## Source-discovery log (T-4b)
+
+- **Registry first:** no EarthQuaker row existed; the official brand site was the target.
+- **Official:** `earthquakerdevices.com/<slug>` product pages (Squarespace) supplied the TECH SPECS and the flat top-down `<Product>.jpg` gallery image for 18 items, fetched deterministically (HTML parsed with a local script, never dumped into context). No retailer/aggregator image was needed.
+- **Search-engine attempt:** none needed — the official pass covered every non-finish item. No Google/Bing page fetched.
+- **Archive attempt:** one Wayback availability API call for the retired Black Eye page returned HTTP 429 (suspected bot traffic) → logged zero-yield; no retry, no engine swap.
+- **Planner last-resort:** PedalPlayground GitHub mirror (`app/images/pedals/earthquaker-*.png`) for the three retired V1 models and the five finish variants (the Purple Sparkle file is `earthquaker-avalanche-run-v2-purple.png`; the `-purple-sparkle` name 404s). Recorded `kind: "planner"`, `status: "last-resort"`, counted gaps.
+- **Rejected:** the Barrows official hero is angled; the gallery main image was reprocessed with `--body-crop` to recover a flat cutout. No image was rejected by the analyzer at the final 800 gate.
