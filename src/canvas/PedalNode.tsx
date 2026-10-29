@@ -1,6 +1,12 @@
 import type Konva from "konva";
 import type { KonvaEventObject } from "konva/lib/Node";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from "react";
 import {
 	Circle,
 	Group,
@@ -13,8 +19,10 @@ import { isCableJack } from "../catalog/schema";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { jackLocalPoint, jackNormalLocal } from "../lib/jackAnchor";
+import { easeInCubic, easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
+import { useMotion } from "../state/motion";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import {
 	cableEndCapacityNotice,
@@ -170,6 +178,47 @@ export function PedalNode({
 		registerItemNode(item.uid, node);
 		return () => unregisterItemNode(item.uid, node);
 	}, [item.uid]);
+
+	// F-05: a newly added/duplicated item settles in with a 120 ms opacity fade.
+	// Presentation only — its stored cm position/rotation/z are already final.
+	const pulse = useMotion((state) =>
+		state.pulse?.uid === item.uid ? state.pulse : null,
+	);
+	const clearPulse = useMotion((state) => state.clearPulse);
+	const lastPulse = useRef(0);
+	useLayoutEffect(() => {
+		if (!pulse || pulse.nonce === lastPulse.current) return;
+		lastPulse.current = pulse.nonce;
+		const node = groupRef.current;
+		// An add is placed under the closing picker: give it the slow token so the
+		// fade is still visible once the sheet has left. Duplicate is emphasised by
+		// its halo, so the node settles on the fast token.
+		const durationMs = motionMs(
+			pulse.kind === "add" ? MOTION.slow : MOTION.fast,
+		);
+		if (!node || durationMs <= 0) return;
+		node.opacity(0);
+		const tween = node.to({
+			opacity: 1,
+			duration: durationMs / 1000,
+			// Add fades in gently after the picker leaves; duplicate is already
+			// emphasised by its halo, so its node settles faster.
+			easing: pulse.kind === "add" ? easeInCubic : easeOutCubic,
+		});
+		// An add pulse has no other consumer; a duplicate pulse is cleared by its
+		// 240 ms halo, so only the add clears from the node.
+		const timer =
+			pulse.kind === "add"
+				? window.setTimeout(() => clearPulse(pulse.nonce), durationMs + 40)
+				: null;
+		return () => {
+			if (timer !== null) window.clearTimeout(timer);
+			// A replaced/cleared pulse can destroy this tween mid-fade; never leave
+			// the node permanently semi-transparent.
+			node.opacity(1);
+			tween.destroy();
+		};
+	}, [clearPulse, pulse]);
 
 	const handlePointerDown = useCallback(
 		(event: KonvaEventObject<MouseEvent | TouchEvent>, client: Point) => {

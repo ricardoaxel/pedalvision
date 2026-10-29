@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { hasActiveDialog } from "../lib/dialog";
 import { useMeasure } from "../state/measure";
 
 /** Ignore shortcuts while typing in a field or composing. */
@@ -24,7 +25,7 @@ export function useMeasureShortcuts(): void {
 			if (event.isComposing || isTypingTarget(event.target)) return;
 			if (event.metaKey || event.ctrlKey || event.altKey) return;
 			// A modal owns its keys; the measure mode is disarmed by App anyway.
-			if (document.querySelector('[role="dialog"]')) return;
+			if (hasActiveDialog()) return;
 			if (event.key.toLowerCase() === "m") {
 				event.preventDefault();
 				useMeasure.getState().toggle();

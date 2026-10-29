@@ -358,7 +358,7 @@ body {
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-card);
 	box-shadow: var(--shadow-raised);
-	animation: storage-note-in 140ms ease-out;
+	animation: motion-fade-in var(--motion-fast) var(--ease-standard);
 }
 
 .storage-note[data-state="unavailable"] {
@@ -468,15 +468,6 @@ body {
 @media (min-width: 1024px) {
 	.app[data-scenes="open"] .storage-note {
 		left: calc(var(--space-4) + 320px + var(--space-4));
-	}
-}
-
-@keyframes storage-note-in {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
 	}
 }
 
@@ -2816,7 +2807,7 @@ body {
 	}
 
 	.info-panel__expand svg {
-		transition: transform 0.15s ease;
+		transition: transform var(--motion-fast) var(--ease-standard);
 	}
 
 	.info-panel[data-expanded="true"] .info-panel__expand svg {
@@ -4530,7 +4521,7 @@ body {
 	z-index: 1;
 	border: 2px solid var(--color-danger);
 	pointer-events: none;
-	animation: share-cue-fade-in 140ms ease-out;
+	animation: share-cue-fade-in var(--motion-fast) var(--ease-standard);
 }
 
 .share-hold-frame::after {
@@ -4559,7 +4550,7 @@ body {
 	box-shadow: var(--shadow-raised);
 	transform: translateX(-50%);
 	pointer-events: none;
-	animation: share-cue-in 140ms ease-out;
+	animation: share-cue-in var(--motion-fast) var(--ease-standard);
 }
 
 .share-edit-cue__label {
@@ -5997,5 +5988,178 @@ body {
 
 	.measure-status__clear {
 		min-height: 44px;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion system (F-05) — "Straightedge Settle" (owner-approved 2026-10-28).
+ * Fixed short travel, arrives and stops; no overshoot/spring/loop. Enters are
+ * longer than exits. Every value comes from tokens.css; reduced motion zeroes
+ * the duration tokens and motion-preference overrides below.
+ *
+ * `MotionPresence` wraps a panel in a `display: contents` node, so the panel
+ * keeps its absolute/fixed position and nothing reflows.
+ * ------------------------------------------------------------------------- */
+
+.motion-presence {
+	display: contents;
+}
+
+/* Surface opacity stays 1: animating a translucent card double-exposes the
+ * canvas/inspector through the panel. Only the transform moves. */
+@keyframes motion-panel-in {
+	from {
+		transform: translateY(calc(-1 * var(--motion-distance)))
+			scale(var(--motion-scale-in));
+	}
+	to {
+		transform: none;
+	}
+}
+
+@keyframes motion-panel-out {
+	from {
+		transform: none;
+	}
+	to {
+		transform: translateY(calc(-1 * var(--motion-distance)))
+			scale(var(--motion-scale-in));
+	}
+}
+
+@keyframes motion-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes motion-fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+/* Mobile sheets keep their surface opaque; the content starts readable (0.4)
+ * so a phone never flashes an empty card. */
+@keyframes motion-content-in {
+	from {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Docked panels: a short settle from the trigger corner. */
+.motion-presence .scene-panel {
+	transform-origin: top left;
+}
+
+.motion-presence :is(.export-panel, .share-panel, .cable-schedule) {
+	transform-origin: top right;
+}
+
+.motion-presence[data-motion-state="entering"]
+	:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
+	animation: motion-panel-in var(--motion-base) var(--ease-standard) backwards;
+}
+
+.motion-presence[data-motion-state="exiting"]
+	:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
+	animation: motion-panel-out var(--motion-fast) var(--ease-exit) forwards;
+	pointer-events: none;
+}
+
+/* Picker modal: longer enter (the user is deciding), shorter exit. */
+.motion-presence[data-motion-state="entering"] .picker__panel {
+	animation: motion-panel-in var(--motion-slow) var(--ease-standard) backwards;
+}
+
+.motion-presence[data-motion-state="exiting"] .picker__panel {
+	animation: motion-panel-out var(--motion-fast) var(--ease-exit) forwards;
+}
+
+.motion-presence[data-motion-state="entering"] .picker__scrim {
+	animation: motion-fade-in var(--motion-fast) var(--ease-standard) backwards;
+}
+
+.motion-presence[data-motion-state="exiting"] .picker__scrim {
+	animation: motion-fade-out var(--motion-fast) var(--ease-exit) forwards;
+}
+
+.motion-presence[data-motion-state="exiting"] .picker {
+	pointer-events: none;
+}
+
+/* The incoming scene sheet settles in while the camera eases. */
+.stage.stage--scene-in {
+	animation: motion-fade-in var(--motion-fast) var(--ease-standard);
+}
+
+/* Mobile pickup sheet: fade only — its fixed tab bar stays put. */
+@media (max-width: 1023px) {
+	/* Mobile sheets keep their surface opaque and do not translate (a transform
+	 * would make the sheet's fixed tab bar its containing block, and a tall
+	 * bottom sheet would slide over the action bar). Fade the content instead;
+	 * the persistent tab bar is excluded so it never leaves the screen. */
+	.motion-presence[data-motion-state="entering"] .picker__panel,
+	.motion-presence[data-motion-state="exiting"] .picker__panel,
+	.motion-presence[data-motion-state="entering"]
+		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule),
+	.motion-presence[data-motion-state="exiting"]
+		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule) {
+		animation: none;
+	}
+
+	.motion-presence[data-motion-state="entering"]
+		.picker__panel
+		> :not(.picker-bar),
+	.motion-presence[data-motion-state="entering"]
+		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule)
+		> * {
+		animation: motion-content-in var(--motion-fast) var(--ease-standard)
+			backwards;
+	}
+
+	.motion-presence[data-motion-state="exiting"]
+		.picker__panel
+		> :not(.picker-bar),
+	.motion-presence[data-motion-state="exiting"]
+		:is(.scene-panel, .export-panel, .share-panel, .cable-schedule)
+		> * {
+		animation: motion-fade-out var(--motion-fast) var(--ease-exit) forwards;
+	}
+
+	/* The info sheet's *shell* never animates height (the F-04 safe rect reads
+	 * it); only the swapped content and the chevron move. */
+	.info-panel[data-expanded="true"]
+	:is(
+		.info-panel__banner,
+		.info-panel__measure,
+		.info-panel__warning,
+		.info-panel__detail
+	),
+	.info-panel[data-expanded="false"]
+		:is(.info-panel__sleeve, .info-panel__status) {
+		animation: motion-fade-in var(--motion-fast) var(--ease-standard) both;
+	}
+}
+
+/* Reduced motion: a hard off switch for anything that slipped past the token
+ * override (and for the presence exit, which unmounts synchronously). */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
 }

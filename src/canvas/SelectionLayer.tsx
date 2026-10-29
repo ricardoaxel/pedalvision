@@ -1,6 +1,10 @@
-import { Group, Layer, Line } from "react-konva";
+import type Konva from "konva";
+import { useEffect, useRef } from "react";
+import { Group, Image as KonvaImage, Layer, Line, Rect } from "react-konva";
 import { cmToPx } from "../lib/geometry";
+import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useDrag } from "../state/drag";
+import { type DepartingGhost, useMotion } from "../state/motion";
 import { useReadOnly } from "../state/readOnly";
 import {
 	type CustomPedal,
@@ -15,6 +19,7 @@ import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
 import { ItemTransformer } from "./ItemTransformer";
+import { useImage } from "./useImage";
 
 /** Hover brackets in **screen** px (counter-scaled for zoom). */
 const HOVER_ARM = 11;
@@ -66,8 +71,190 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 				theme={theme}
 				scale={scale}
 			/>
+			<MotionOverlays
+				items={items}
+				boards={boards}
+				customPedals={customPedals}
+				theme={theme}
+			/>
 			<ItemTransformer selectedUid={attachUid} theme={theme} />
 		</Layer>
+	);
+}
+
+/**
+ * F-05 transient canvas motion: the duplicate accent halo and the explicit-
+ * delete ghost. Both are presentation-only, mutate nothing, and never receive
+ * pointer events. Reduced motion never creates them (the store drops the
+ * request), and the tweens clear their own transient entry.
+ */
+function MotionOverlays({
+	items,
+	boards,
+	customPedals,
+	theme,
+}: {
+	items: PlacedItem[];
+	boards: PlacedBoard[];
+	customPedals: CustomPedal[];
+	theme: CanvasTheme;
+}) {
+	const pulse = useMotion((state) => state.pulse);
+	const ghost = useMotion((state) => state.ghost);
+	const pulseItem =
+		pulse?.kind === "duplicate"
+			? items.find((candidate) => candidate.uid === pulse.uid)
+			: undefined;
+
+	return (
+		<>
+			{pulse && pulseItem ? (
+				<DuplicateHalo
+					key={pulse.nonce}
+					nonce={pulse.nonce}
+					item={pulseItem}
+					boards={boards}
+					customPedals={customPedals}
+					theme={theme}
+				/>
+			) : null}
+			{ghost ? (
+				<DepartingGhostView key={ghost.nonce} ghost={ghost} theme={theme} />
+			) : null}
+		</>
+	);
+}
+
+/** One 240 ms accent halo around the new duplicate, then it clears itself. */
+function DuplicateHalo({
+	nonce,
+	item,
+	boards,
+	customPedals,
+	theme,
+}: {
+	nonce: number;
+	item: PlacedItem;
+	boards: PlacedBoard[];
+	customPedals: CustomPedal[];
+	theme: CanvasTheme;
+}) {
+	const ref = useRef<Konva.Group>(null);
+	const clearPulse = useMotion((state) => state.clearPulse);
+	const origin = itemWorldOrigin(item, boards);
+	const rotation = itemVisualRotationDeg(item, boards);
+	const footprint = itemFootprint(item, customPedals);
+	const widthPx = cmToPx(footprint.widthCm);
+	const heightPx = cmToPx(footprint.heightCm);
+
+	useEffect(() => {
+		const node = ref.current;
+		const durationMs = motionMs(MOTION.slow);
+		if (!node || durationMs <= 0) {
+			clearPulse(nonce);
+			return;
+		}
+		// Restrained: the halo is a quiet accent ring, not a flash.
+		node.opacity(0.5);
+		const tween = node.to({
+			opacity: 0,
+			duration: durationMs / 1000,
+			easing: easeOutCubic,
+		});
+		const timer = window.setTimeout(() => clearPulse(nonce), durationMs + 40);
+		return () => {
+			window.clearTimeout(timer);
+			tween.destroy();
+		};
+	}, [clearPulse, nonce]);
+
+	return (
+		<Group
+			ref={ref}
+			x={cmToPx(origin.x)}
+			y={cmToPx(origin.y)}
+			rotation={rotation}
+			listening={false}
+		>
+			<Rect
+				x={-3}
+				y={-3}
+				width={widthPx + 6}
+				height={heightPx + 6}
+				stroke={theme.selectionStrong}
+				strokeWidth={2}
+				cornerRadius={4}
+				listening={false}
+				perfectDrawEnabled={false}
+			/>
+		</Group>
+	);
+}
+
+/** A deleted item's final image, fading in place over 120 ms. */
+function DepartingGhostView({
+	ghost,
+	theme,
+}: {
+	ghost: DepartingGhost;
+	theme: CanvasTheme;
+}) {
+	const ref = useRef<Konva.Group>(null);
+	const clearGhost = useMotion((state) => state.clearGhost);
+	const { image } = useImage(ghost.imageSrc, `ghost-${ghost.uid}`);
+	const widthPx = cmToPx(ghost.widthCm);
+	const heightPx = cmToPx(ghost.heightCm);
+
+	useEffect(() => {
+		const node = ref.current;
+		const durationMs = motionMs(MOTION.fast);
+		if (!node || durationMs <= 0) {
+			clearGhost(ghost.uid);
+			return;
+		}
+		// Restrained: the halo is a quiet accent ring, not a flash.
+		node.opacity(0.5);
+		const tween = node.to({
+			opacity: 0,
+			duration: durationMs / 1000,
+			easing: easeOutCubic,
+		});
+		const timer = window.setTimeout(
+			() => clearGhost(ghost.uid),
+			durationMs + 40,
+		);
+		return () => {
+			window.clearTimeout(timer);
+			tween.destroy();
+		};
+	}, [clearGhost, ghost.uid]);
+
+	return (
+		<Group
+			ref={ref}
+			x={cmToPx(ghost.xCm)}
+			y={cmToPx(ghost.yCm)}
+			rotation={ghost.rotationDeg}
+			listening={false}
+		>
+			{image ? (
+				<KonvaImage
+					image={image}
+					width={widthPx}
+					height={heightPx}
+					listening={false}
+				/>
+			) : (
+				<Rect
+					width={widthPx}
+					height={heightPx}
+					fill={theme.customFill}
+					stroke={theme.customStroke}
+					cornerRadius={2}
+					listening={false}
+				/>
+			)}
+		</Group>
 	);
 }
 

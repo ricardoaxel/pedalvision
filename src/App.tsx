@@ -29,6 +29,7 @@ import {
 } from "./components/icons";
 import { MeasureControl } from "./components/MeasureControl";
 import { MeasureOverlay } from "./components/MeasureOverlay";
+import { MotionPresence } from "./components/MotionPresence";
 import { Picker, type PickerTab } from "./components/Picker";
 import { ScaleReadout } from "./components/ScaleReadout";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
@@ -381,7 +382,9 @@ function App() {
 						>
 							<SceneTriggerContent />
 						</button>
-						{scenesOpen ? <ScenePanel onClose={closeScenes} /> : null}
+						<MotionPresence open={scenesOpen}>
+							{scenesOpen ? <ScenePanel onClose={closeScenes} /> : null}
+						</MotionPresence>
 					</>
 				)}
 				<div className="app-toolbar">
@@ -491,27 +494,33 @@ function App() {
 						</span>
 					</button>
 				</div>
-				{exportOpen ? (
-					<ExportPanel
-						onClose={closeExport}
-						onAddBoard={() => openPicker("boards")}
-						onBusyChange={setExportBusy}
-					/>
-				) : null}
+				<MotionPresence open={exportOpen}>
+					{exportOpen ? (
+						<ExportPanel
+							onClose={closeExport}
+							onAddBoard={() => openPicker("boards")}
+							onBusyChange={setExportBusy}
+						/>
+					) : null}
+				</MotionPresence>
 				<EndpointPlacementOverlay />
 				<GraphStatusChip />
-				{scheduleOpen ? <CableSchedulePanel onClose={closeSchedule} /> : null}
+				<MotionPresence open={scheduleOpen}>
+					{scheduleOpen ? <CableSchedulePanel onClose={closeSchedule} /> : null}
+				</MotionPresence>
 				<PatchHiddenCue />
 				<ShareEditCue />
-				{shareOpen && !readOnly ? (
-					<SharePanel
-						onClose={closeShare}
-						onAddBoard={() => {
-							setShareOpen(false);
-							openPicker("boards");
-						}}
-					/>
-				) : null}
+				<MotionPresence open={shareOpen && !readOnly}>
+					{shareOpen && !readOnly ? (
+						<SharePanel
+							onClose={closeShare}
+							onAddBoard={() => {
+								setShareOpen(false);
+								openPicker("boards");
+							}}
+						/>
+					) : null}
+				</MotionPresence>
 			</div>
 			{/* The selected part's readout + the space warning (P2-03). */}
 			<InfoPanel />

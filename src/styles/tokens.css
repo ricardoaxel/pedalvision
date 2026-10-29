@@ -157,6 +157,29 @@
 
 	/* Info panel (P2-03 "Readout") — desktop trailing push rail width. */
 	--panel-width: 360px;
+
+	/*
+	 * Motion — "Straightedge Settle" (F-05, owner-approved 2026-10-28).
+	 * A drafting instrument travels a fixed short distance, arrives and stops:
+	 * no overshoot, no spring, no loop. Enters are longer than exits (deciding
+	 * on the way in, already decided on the way out). Mirror of src/lib/motion.ts.
+	 */
+	--motion-fast: 120ms;
+	--motion-base: 180ms;
+	--motion-slow: 240ms;
+	--ease-standard: cubic-bezier(0.2, 0, 0, 1);
+	--ease-exit: cubic-bezier(0.4, 0, 1, 1);
+	--motion-distance: 18px;
+	--motion-scale-in: 0.985;
+}
+
+/* Reduced motion is a hard off switch: every duration token resolves to 0. */
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--motion-fast: 0ms;
+		--motion-base: 0ms;
+		--motion-slow: 0ms;
+	}
 }
 
 [data-theme="light"] {

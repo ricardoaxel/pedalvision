@@ -1,5 +1,6 @@
 import type { RefObject } from "react";
 import { useEffect } from "react";
+import { finishViewportTween } from "../lib/viewportMotion";
 import { isCameraLocked } from "../state/focus";
 import { useGesture } from "../state/gesture";
 import { type Point, useViewport, type Viewport } from "../state/viewport";
@@ -79,6 +80,9 @@ export function useViewportGestures(
 			// Camera lock (F-04): the pinned board view must not be lost to a
 			// stray pan, pinch or wheel. Object drags still reach their nodes.
 			if (isCameraLocked()) return;
+			// F-05: a press during a scene tween finishes it at the target, so the
+			// camera can never be left half-framed by a click that does not pan.
+			finishViewportTween();
 			const point = localPoint(event.clientX, event.clientY);
 			dispatch({
 				type: "down",
@@ -121,6 +125,8 @@ export function useViewportGestures(
 			if (isCameraLocked()) return;
 			// Never zoom mid-gesture: it would invalidate the pan/pinch baseline.
 			if (!wheelZoomAllowed(machine)) return;
+			// F-05: only a wheel that actually zooms finishes a scene tween.
+			finishViewportTween();
 			const unit =
 				event.deltaMode === 1
 					? LINE_HEIGHT_PX

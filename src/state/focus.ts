@@ -1,6 +1,7 @@
 import { useLayoutEffect } from "react";
 import { create } from "zustand";
 import type { RectCm } from "../lib/geometry";
+import { MOTION } from "../lib/motion";
 import { MOBILE_MEDIA } from "../lib/useMobile";
 import {
 	boardFocusBounds,
@@ -8,6 +9,7 @@ import {
 	focusInsets,
 	sceneFocusBounds,
 } from "../lib/viewportFocus";
+import { animateViewport, cancelViewportTween } from "../lib/viewportMotion";
 import { usePanelMetrics } from "./panel";
 import {
 	boardDefinition,
@@ -102,6 +104,8 @@ export interface FocusViewportOptions {
 	resetOnEmpty?: boolean;
 	/** Explicit commands announce politely; automatic load frames stay silent. */
 	announce?: boolean;
+	/** Ease the camera to the target (F-05 scene loads); boot stays instant. */
+	animate?: boolean;
 }
 
 function isMobileViewport(): boolean {
@@ -207,7 +211,6 @@ export function focusViewport(
 	});
 	if (!viewport) return null;
 
-	useViewport.getState().setViewport(viewport);
 	const snapshot: FocusSnapshot = {
 		target,
 		targetUid,
@@ -230,7 +233,27 @@ export function focusViewport(
 					)}`
 				: "Framed all content"
 			: undefined;
-	useFocus.getState().mark(snapshot, announcement);
+	const apply = () => {
+		// An explicit focus / lock refit overrides any running scene tween.
+		cancelViewportTween(false);
+		useViewport.getState().setViewport(viewport);
+		useFocus.getState().mark(snapshot, announcement);
+	};
+
+	// F-05: scene loads ease to the F-04 target and mark the focus only when the
+	// camera settles, so the "framed" chip is never shown mid-move. Boot stays a
+	// snap (the owner decision); explicit focus and camera-lock refits stay
+	// instant and cancel any running tween. A user gesture finishes the tween at
+	// its target (the viewportMotion controller handles that and marks).
+	if (options.animate && !sameViewport(viewport, useViewport.getState())) {
+		animateViewport(viewport, {
+			durationMs: MOTION.slow,
+			onDone: apply,
+		});
+		return snapshot;
+	}
+
+	apply();
 	return snapshot;
 }
 

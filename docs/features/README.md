@@ -53,6 +53,7 @@ source files; tests are the unit specs that guard the logic.
 | F12 | Cables: drag-connect, endpoints, schedule | Plan the patch, not just the parts | `state/scene.ts` (cables), `state/cableDrag.ts`, `state/endpointDrag.ts`, `state/endpointPlacement.ts`, `canvas/CableLayer.tsx`, `canvas/EndpointLayer.tsx`, `lib/jackAnchor.ts`, `lib/cablePath.ts`, `lib/cableLength.ts`, `lib/cableSummary.ts`, `components/CableSchedulePanel.tsx` | `cables.test.ts`, `cableDrag.test.ts`, `jackAnchor.test.ts`, `cablePath.test.ts`, `cableLength.test.ts`, `cableSummary.test.ts`, `exportScene.test.ts` | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | F-03 | Margin Rule — viewport/grid readout + centered reference bar + selectable grid step + measure tool | Judge the visible extent and true scale, choose the grid precision, and measure the actual gap, without permanent clutter | `components/ScaleReadout.tsx`, `components/ScaleBar.tsx`, `components/GridStepMenu.tsx`, `components/MeasureOverlay.tsx`, `components/MeasureControl.tsx`, `state/measure.ts`, `state/settings.ts`, `lib/measure.ts`, `lib/measurementHud.ts`, `lib/grid.ts`, `canvas/useMeasureShortcuts.ts` | `measurementHud.test.ts`, `measure.test.ts`, `grid.test.ts`, `sceneIndex.test.ts` | `measurement-hud.spec.ts` |
 | F-04 | Viewport focus — frame a board / the used area / every loaded scene; Scope Frame dock (double-click toggle, camera lock, board paginator) | Find the drawing again; a scene never opens off-screen; move through boards without panning | `lib/viewportFocus.ts`, `state/focus.ts`, `components/FrameControl.tsx`, `components/BoardViewDock.tsx`, `components/boardView.ts`, `canvas/BoardNode.tsx`, `canvas/PedalNode.tsx`, `canvas/useSceneAutoFrame.ts`, `canvas/useFocusShortcuts.ts`, `canvas/useViewportGestures.ts`, `components/ScaleReadout.tsx`, `state/viewport.ts` | `viewportFocus.test.ts`, `focus.test.ts` | `viewport-focus.spec.ts` |
+| F-05 | Motion system — panel/modal open-close, item add/remove/duplicate, scene switch | State changes read as movement, not teleporting; reduced motion is instant | `lib/motion.ts`, `lib/viewportMotion.ts`, `components/MotionPresence.tsx`, `state/motion.ts`, `canvas/Stage.tsx`, `canvas/PedalNode.tsx`, `canvas/SelectionLayer.tsx`, `canvas/useSceneAutoFrame.ts`, `styles/tokens.css`, `index.css` | `lib/motion.test.ts`, `lib/viewportMotion.test.ts`, `state/motion.test.ts` | `picker.spec.ts`, `viewport-focus.spec.ts` (motion + reduced-motion cases) |
 | — | Info panel + asset renditions | Right details and imagery at each size | `components/InfoPanel.tsx`, `components/PartDrawing.tsx`, `components/partImage.ts`, `lib/partInfo.ts`, `lib/cdn.ts`, `canvas/loadImage.ts`, `canvas/useImage.ts` | `partInfo.test.ts`, `cdn.test.ts`, `loadImage.test.ts`, `imageStatus.test.ts` | `info-panel.spec.ts`, `picker.spec.ts`, `picker-choka.spec.ts` |
 | — | Capacity budgets | Honest limits, never a silent failure | `lib/capacity.ts`, `components/CapacityAnnouncer.tsx`, `scene.ts` caps | `capacity.test.ts`, `capacity.images.test.ts`, `capacityGuards.test.ts` | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | — | First-run guidance | Empty scene tells you where to start | `components/FirstRunHint.tsx`, `lib/firstRun.ts`, `lib/focus.ts` | `firstRun.test.ts` | `first-run.spec.ts` |
@@ -139,6 +140,26 @@ strip is 114 px (44 px dock row) and the camera safe rect is measured from the
 strip; the first-run note sits above it. No visible double-tap hint by owner
 choice (hidden description + titles).
 
+### F-05 — Motion system
+
+One restrained motion language (**“Straightedge Settle”**, owner-approved
+2026-10-28): short fixed travel, arrives and stops; no overshoot/spring/loop.
+Durations/easings/distances live in `tokens.css` (mirrored in `lib/motion.ts`);
+`prefers-reduced-motion: reduce` zeroes them and the JS canvas helpers, and
+`MotionPresence` unmounts synchronously. Desktop panels enter at 180 ms
+(picker 240 ms) and exit at 120 ms from their trigger corner (18px transform,
+opaque surface — the surface never fades); the mobile picker
+sheet fades (its fixed tab bar would otherwise follow a panel transform); the
+mobile info sheet never animates height (the F-04 safe rect reads it). A placed
+or duplicated item gets one 120 ms settle (duplicate adds a 240 ms accent halo);
+an explicit delete leaves a 120 ms presentation-only ghost, while data, history
+and autosave mutate synchronously. Scene loads ease the camera to the F-04
+target over 240 ms (boot snaps; an explicit focus stays instant) and suppress
+the framed chip until the camera settles; a user wheel/pan finishes the tween at
+its target so the scene is never left half-framed. The existing storage/share fades and chevron
+transition now use the same tokens. No layout shift, no stored geometry change,
+no new dependency.
+
 ### F-19 — This map
 
 The feature inventory, workflow → module → E2E table, change-impact table,
@@ -168,6 +189,7 @@ feature PRs.
 | **Storage failure/backup** | `storageHealth.ts`, `sceneBackup.ts`, `StorageNotice.tsx`, `library.ts` | Live scene → `SceneDocument` v1 JSON download; no writes | `storage-fallback.spec.ts` (desktop + mobile) |
 | **Info panel / asset loading** | `InfoPanel.tsx`, `partInfo.ts`, `partImage.ts`, `cdn.ts`, `loadImage.ts`, `useImage.ts` | Image URLs are derived from the catalog entry, not stored | `info-panel.spec.ts` (desktop + mobile), `picker.spec.ts` (CORS/cache self-heal), `picker-choka.spec.ts` (AVIF) |
 | **Margin Rule readout + bar + grid step + measure** | `ScaleReadout.tsx`, `ScaleBar.tsx`, `GridStepMenu.tsx`, `MeasureOverlay.tsx`, `MeasureControl.tsx`, `state/measure.ts`, `state/settings.ts`, `lib/measure.ts`, `lib/measurementHud.ts`, `lib/grid.ts`, `canvas/useMeasureShortcuts.ts` | Grid step persisted in `Settings`; readout/bar/measure derived only — not exported/shared | `measurement-hud.spec.ts` (desktop + mobile) |
+| **Motion / panels / scene switch** | `MotionPresence.tsx`, `lib/motion.ts`, `lib/viewportMotion.ts`, `canvas/Stage.tsx` tween driver, `canvas/PedalNode.tsx` pulse, `canvas/SelectionLayer.tsx` halo/ghost, `state/motion.ts` | Transient only — never persisted/transported; the camera tween lands exactly on the F-04 viewport | `picker.spec.ts` (motion + reduced), `viewport-focus.spec.ts` (scene tween), `history.spec.ts`, `cable-schedule.spec.ts` |
 | **First-run** | `FirstRunHint.tsx`, `firstRun.ts`, `focus.ts` | One-way localStorage `pedalvision.firstRun.v1` | `first-run.spec.ts` (desktop + mobile) |
 | **Mobile/touch chrome** | `App.tsx`, responsive CSS, bottom tabs/trays, 44 px targets | Same scene/document | `touch.spec.ts`, `cables-touch.spec.ts`, mobile project runs listed above |
 
@@ -192,6 +214,7 @@ change is user-visible.
 | **Picker / filtering / catalog loading** | `src/components/Picker.tsx`, `src/components/pickerFilter.ts`, `src/catalog/load.ts`, `src/lib/cdn.ts`, `src/canvas/loadImage.ts` | every place workflow, asset renditions | `picker.spec.ts`, `picker-choka.spec.ts` |
 | **Info panel / part info / image loading** | `src/components/InfoPanel.tsx`, `src/lib/partInfo.ts`, `src/components/partImage.ts`, `src/canvas/useImage.ts` | selection readout, asset sizes, CORS fallback | `info-panel.spec.ts`, `picker.spec.ts` |
 | **Margin Rule readout / bar / grid step / measure / units** | `src/components/ScaleReadout.tsx`, `src/components/ScaleBar.tsx`, `src/components/GridStepMenu.tsx`, `src/components/MeasureOverlay.tsx`, `src/components/MeasureControl.tsx`, `src/state/measure.ts`, `src/state/settings.ts`, `src/lib/sceneIndex.ts`, `src/lib/measure.ts`, `src/lib/measurementHud.ts`, `src/lib/grid.ts`, `src/App.tsx`, `src/index.css`, `src/styles/tokens.css` | canvas zoom/measure, units, grid step, read-only shares, mobile peek, grid LOD | `measurement-hud.spec.ts`, `info-panel.spec.ts` |
+| **Motion tokens / presence / camera tween** | `src/lib/motion.ts`, `src/lib/viewportMotion.ts`, `src/components/MotionPresence.tsx`, `src/state/motion.ts`, `src/canvas/Stage.tsx`, `src/canvas/PedalNode.tsx`, `src/canvas/SelectionLayer.tsx`, `src/canvas/useSceneAutoFrame.ts`, `src/styles/tokens.css`, `src/index.css` | panel/modal open-close, item add/duplicate/delete, scene switch, focus chip suppression, mobile sheet/tab bar, shortcut guards | `picker.spec.ts`, `viewport-focus.spec.ts`, `scenes.spec.ts`, `history.spec.ts`, `cable-schedule.spec.ts` |
 | **First-run / boot chrome** | `src/components/FirstRunHint.tsx`, `src/lib/firstRun.ts`, `src/lib/focus.ts` | empty scene, storage notice precedence | `first-run.spec.ts`, `storage-fallback.spec.ts` |
 | **Responsive CSS / mobile chrome** | `src/App.tsx`, `src/styles/**`, responsive cases in `src/components/**` | picker, trays, action bars, touch targets | mobile project of `picker`/`export`/`cable-schedule`/`info-panel`/`scenes`; `touch.spec.ts` |
 | **Catalog data/images** — **catalog sessions only** (a feature PR never edits catalog data) | `data/catalog/**`, `public/pedal-assets/**`, `tools/catalog-*` | catalog picker/canvas/info/export/share | `picker-choka.spec.ts`, `info-panel.spec.ts` (+ `catalog:ci`); a feature PR that only *consumes* an entry runs `picker.spec.ts` for one stable filtered item/brand |
@@ -263,7 +286,7 @@ missing one is how P4-01/P4-02 broke standalone endpoints on load.
 | Spec | Covers | Projects |
 |---|---|---|
 | `smoke.spec.ts` | boot, pan/zoom, board place/rotate, cross-board drag, pan interrupt, short viewports | chromium |
-| `picker.spec.ts` | search/filter/place, specimen, keyboard, tabs, de-stack, thumbs, CORS/cache self-heal | chromium + mobile |
+| `picker.spec.ts` | search/filter/place, specimen, keyboard, tabs, de-stack, thumbs, CORS/cache self-heal, F-05 panel/item motion + reduced motion | chromium + mobile |
 | `picker-choka.spec.ts` | AVIF 350/800, canvas decodes, PNG/PDF, share, console-clean | chromium + mobile |
 | `selection.spec.ts` | action bar, rotate handles, rotated board, hover, narrow viewport | chromium |
 | `z-order.spec.ts` | layer reorder persistence | chromium |
@@ -281,7 +304,7 @@ missing one is how P4-01/P4-02 broke standalone endpoints on load.
 | `storage-fallback.spec.ts` | blocked IDB/localStorage, write failure, quota advisories, backup | chromium + mobile |
 | `first-run.spec.ts` | note geometry, CTA, dismiss/focus, retire on first object | chromium + mobile |
 | `measurement-hud.spec.ts` | Margin Rule readout + bar, grid step, units, zoom, empty, measure/snap/grid, read-only, mobile | chromium + mobile |
-| `viewport-focus.spec.ts` | frame board / used area, F shortcut, empty/disabled, scene-switch framing, share preview, double-click toggle, camera lock, board paginator, desktop + mobile | chromium + mobile |
+| `viewport-focus.spec.ts` | frame board / used area, F shortcut, empty/disabled, scene-switch framing + F-05 camera tween, share preview, double-click toggle, camera lock, board paginator, desktop + mobile | chromium + mobile |
 | `touch.spec.ts` | pinch/pan, board-drag interrupt | mobile |
 | `benchmark.spec.ts` | report-only capacity table (`pnpm bench:capacity`) | excluded from `pnpm e2e` |
 
@@ -310,6 +333,7 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 | Non-Chromium browsers | Playwright chromium only (owner scope) | Out of scope; real-device pass is P5-06 |
 | Power-supply planner | Not implemented (non-goal N3); custom supply power shows in the info panel | Future feature; no E2E by design |
 
+| Mobile picker sheet uses a fade, not a rise | `MotionPresence` + mobile CSS; the tab bar is a fixed descendant of the panel, so a panel transform would lift it over the status strip | Intentional technical deviation from the proposed rise (2026-10-28); desktop keeps a transform-only opaque enter |
 | Scene list accessibility mirror | Deferred in `docs/design.md` (no owning task) | Deferred |
 | Capacity timing thresholds | `benchmark.spec.ts` is report-only; no ms gate | Intentional (avoid flaky CI) |
 
