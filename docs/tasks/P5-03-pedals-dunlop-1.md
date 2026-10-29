@@ -1,6 +1,6 @@
 # P5-03: Dunlop — pedals batch 1 (Tier A)
 
-**Phase:** P5 · **Status:** in review — PR pending · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #89 · **Model:** deepseek-v4.1-flash
 
 > The `tier-a-wave-1` coordinator created this worktree and will start
 > `dunlop/dunlop-1` (total 26) via `catalog:wave`. **Never run
