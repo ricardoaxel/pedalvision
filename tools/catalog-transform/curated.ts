@@ -316,9 +316,16 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"keeley-caverns": ["delay", "reverb"],
 	"keeley-compressor-plus": ["compressor"],
 	"keeley-d-m-drive": ["overdrive", "boost"],
-	"keeley-dark-side": ["fuzz", "delay", "phaser", "flanger", "rotary"],
+	"keeley-dark-side": [
+		"fuzz",
+		"delay",
+		"phaser",
+		"flanger",
+		"rotary",
+		"vibrato",
+	],
 	"keeley-delay-workstation": ["delay", "reverb"],
-	"keeley-dynatrem": ["tremolo", "vibrato"],
+	"keeley-dynatrem": ["tremolo", "vibrato", "reverb"],
 	"keeley-eccos": ["delay", "looper"],
 	"keeley-el-rey-dorado": ["overdrive"],
 
