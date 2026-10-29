@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "kind": "pedal",
+  "sourceKind": "photo",
+  "footprintCm": {
+    "width": 9.4,
+    "height": 3.9
+  },
+  "image": {
+    "width": 800,
+    "height": 354,
+    "longEdge": 800,
+    "hasAlpha": true
+  },
+  "alpha": {
+    "transparentRatio": 0.08852754237288135
+  },
+  "background": {
+    "color": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    },
+    "uniformity": 0.4470486111111111
+  },
+  "trim": {
+    "left": 0,
+    "top": 0,
+    "width": 800,
+    "height": 354
+  },
+  "whitespaceRatio": 0,
+  "aspect": {
+    "image": 2.2598870056497176,
+    "expected": 2.4102564102564106,
+    "error": 0.06238730616660667,
+    "verdict": "pass"
+  },
+  "rotationDeg": 0,
+  "perspectiveError": 0.4982112871431701,
+  "shapeTaper": true,
+  "shadowRatio": null,
+  "bright": {
+    "ratio": 0.6935618059000878,
+    "edgeRatio": 0.8979172777940745
+  },
+  "backgroundCard": {
+    "opaqueRatio": 0.9114724576271187,
+    "borderOpaque": 0.22960069444444445,
+    "uniformity": 0.4470486111111111,
+    "brightRatio": 0.6935618059000878,
+    "frameLuma": 0.8276988235294117,
+    "frameSat": 0.5238095238095238,
+    "interiorLuma": 0.8488815686274509,
+    "interiorSat": 0.4566929133858268,
+    "captionBand": false,
+    "bandNonCardRatio": 0.00046875,
+    "frameArea": 0.6030279433926448,
+    "nonFrameArea": 0.39697205660735524,
+    "largestNonFrame": 0.27922860275288713,
+    "suspected": false
+  },
+  "verdict": "accept",
+  "reasons": [
+    "note:enclosure taper 50% (symmetric trapezoid, not perspective)"
+  ],
+  "id": "effects-bakery-power-supply-hoden-sentai-donuts",
+  "sha256": "ff5008279737c24fa481e46bf97c5fec3da555f2ee836967675c88d864c27edc"
+}
