@@ -1,6 +1,6 @@
 # P5-03: Big Joe — pedals batch 1 (cleanup)
 
-**Phase:** P5 · **Status:** in progress — cleanup-wave-4 · **Model:** deepseek-v4.1-flash
+**Phase:** P5 · **Status:** in review — PR #84 · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-4` coordinator created this worktree, wrote the existing-item
 > raw scaffolds (`data/catalog/research/pedals/big-joe/big-joe-1.json`) and will
