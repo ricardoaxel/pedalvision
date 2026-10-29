@@ -805,408 +805,390 @@ export function Picker({
 			{open ? null : tabDock}
 
 			<MotionPresence open={open}>
-				{open ? (
-					<div className="picker" data-testid="picker">
-						<button
-							type="button"
-							className="picker__scrim"
-							data-testid="picker-scrim"
-							aria-label="Close picker"
-							onClick={closePicker}
-						/>
-						<div
-							ref={panelRef}
-							className="picker__panel"
-							data-testid="picker-panel"
-							role="dialog"
-							aria-modal="true"
-							aria-label={dialog}
-							onKeyDown={handlePanelKeyDown}
-						>
-							<div className="picker__handle" aria-hidden="true" />
-							<header className="picker__header">
-								<div className="picker__heading">
-									<span className="picker__eyebrow">{copy.eyebrow}</span>
-									<h2 className="picker__title">{title}</h2>
-									<span
-										className="picker__header-hint"
-										data-testid="picker-hint"
-									>
-										{hint}
-									</span>
-								</div>
-								<div className="picker__header-aside">
-									<div className="picker__segmented">
-										<button
-											type="button"
-											className="picker__segment"
-											data-testid="picker-tab-pedals"
-											aria-pressed={tab === "pedals"}
-											onClick={() => changeTab("pedals")}
-										>
-											<PedalIcon size={16} />
-											Pedals
-										</button>
-										<button
-											type="button"
-											className="picker__segment"
-											data-testid="picker-tab-boards"
-											aria-pressed={tab === "boards"}
-											onClick={() => changeTab("boards")}
-										>
-											<BoardIcon size={16} />
-											Boards
-										</button>
-										<button
-											type="button"
-											className="picker__segment"
-											data-testid="picker-tab-custom"
-											aria-pressed={tab === "custom"}
-											onClick={() => changeTab("custom")}
-										>
-											<CustomIcon size={16} />
-											Custom
-										</button>
-									</div>
+				<div className="picker" data-testid="picker">
+					<button
+						type="button"
+						className="picker__scrim"
+						data-testid="picker-scrim"
+						aria-label="Close picker"
+						onClick={closePicker}
+					/>
+					<div
+						ref={panelRef}
+						className="picker__panel"
+						data-testid="picker-panel"
+						role="dialog"
+						aria-modal="true"
+						aria-label={dialog}
+						onKeyDown={handlePanelKeyDown}
+					>
+						<div className="picker__handle" aria-hidden="true" />
+						<header className="picker__header">
+							<div className="picker__heading">
+								<span className="picker__eyebrow">{copy.eyebrow}</span>
+								<h2 className="picker__title">{title}</h2>
+								<span className="picker__header-hint" data-testid="picker-hint">
+									{hint}
+								</span>
+							</div>
+							<div className="picker__header-aside">
+								<div className="picker__segmented">
 									<button
 										type="button"
-										className="picker__close"
-										data-testid="picker-close"
-										aria-label="Close"
-										onClick={closePicker}
+										className="picker__segment"
+										data-testid="picker-tab-pedals"
+										aria-pressed={tab === "pedals"}
+										onClick={() => changeTab("pedals")}
 									>
-										<svg
-											width="18"
-											height="18"
-											viewBox="0 0 24 24"
-											fill="none"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											aria-hidden="true"
-										>
-											<path d="M6 6l12 12M18 6L6 18" />
-										</svg>
+										<PedalIcon size={16} />
+										Pedals
+									</button>
+									<button
+										type="button"
+										className="picker__segment"
+										data-testid="picker-tab-boards"
+										aria-pressed={tab === "boards"}
+										onClick={() => changeTab("boards")}
+									>
+										<BoardIcon size={16} />
+										Boards
+									</button>
+									<button
+										type="button"
+										className="picker__segment"
+										data-testid="picker-tab-custom"
+										aria-pressed={tab === "custom"}
+										onClick={() => changeTab("custom")}
+									>
+										<CustomIcon size={16} />
+										Custom
 									</button>
 								</div>
-							</header>
-
-							{/* Load Chart (P3-06): hidden at ok; soft is advisory, hard refuses
-							 * the affected action. Never a toast (N8). */}
-							{capacity.level !== "ok" && stripRefusal ? (
-								<div
-									className="picker__capacity"
-									data-testid="picker-capacity"
-									data-level={capacity.level}
-									role="status"
+								<button
+									type="button"
+									className="picker__close"
+									data-testid="picker-close"
+									aria-label="Close"
+									onClick={closePicker}
 								>
-									<span className="picker__capacity-label">Capacity</span>
-									<p
-										id="picker-capacity-text"
-										className="picker__capacity-text"
+									<svg
+										width="18"
+										height="18"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										strokeLinecap="round"
+										aria-hidden="true"
 									>
-										{stripRefusal}
-									</p>
-								</div>
-							) : null}
+										<path d="M6 6l12 12M18 6L6 18" />
+									</svg>
+								</button>
+							</div>
+						</header>
 
-							{isCustom ? (
-								isBoard ? (
-									<CustomBoardForm
-										draft={boardDraft}
-										onChange={setBoardDraft}
-										editing={isEditingBoard}
-										limitReason={isEditingBoard ? null : customBoardRefusal}
-										headerSlot={kindSegment}
-										onSubmit={
-											isEditingBoard ? handleSaveBoard : handleCreateBoard
-										}
-									/>
-								) : (
-									<CustomPedalForm
-										draft={customDraft}
-										onChange={setCustomDraft}
-										targetBoard={targetBoard}
-										editing={isEditingPedal}
-										limitReason={isEditingPedal ? null : customPedalRefusal}
-										headerSlot={kindSegment}
-										onSubmit={isEditingPedal ? handleSave : handleCreate}
-									/>
-								)
+						{/* Load Chart (P3-06): hidden at ok; soft is advisory, hard refuses
+						 * the affected action. Never a toast (N8). */}
+						{capacity.level !== "ok" && stripRefusal ? (
+							<div
+								className="picker__capacity"
+								data-testid="picker-capacity"
+								data-level={capacity.level}
+								role="status"
+							>
+								<span className="picker__capacity-label">Capacity</span>
+								<p id="picker-capacity-text" className="picker__capacity-text">
+									{stripRefusal}
+								</p>
+							</div>
+						) : null}
+
+						{isCustom ? (
+							isBoard ? (
+								<CustomBoardForm
+									draft={boardDraft}
+									onChange={setBoardDraft}
+									editing={isEditingBoard}
+									limitReason={isEditingBoard ? null : customBoardRefusal}
+									headerSlot={kindSegment}
+									onSubmit={
+										isEditingBoard ? handleSaveBoard : handleCreateBoard
+									}
+								/>
 							) : (
-								<div className="picker__body">
-									<div className="picker__ledger">
-										<div className="picker__tools">
-											<div className="picker__search">
-												<svg
-													className="picker__search-icon"
-													width="16"
-													height="16"
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													strokeWidth="2"
-													strokeLinecap="round"
-													aria-hidden="true"
-												>
-													<circle cx="11" cy="11" r="7" />
-													<path d="M20 20l-3.2-3.2" />
-												</svg>
-												<label
-													className="visually-hidden"
-													htmlFor="picker-search"
-												>
-													Search the catalog
-												</label>
-												<input
-													id="picker-search"
-													ref={searchRef}
-													className="picker__search-input"
-													data-testid="picker-search"
-													type="search"
-													placeholder={copy.search}
-													value={query}
-													onChange={(event) => setQuery(event.target.value)}
-												/>
-												{query ? (
-													<button
-														type="button"
-														className="picker__search-clear"
-														aria-label="Clear search"
-														onClick={() => setQuery("")}
-													>
-														<svg
-															width="14"
-															height="14"
-															viewBox="0 0 24 24"
-															fill="none"
-															stroke="currentColor"
-															strokeWidth="2"
-															strokeLinecap="round"
-															aria-hidden="true"
-														>
-															<path d="M6 6l12 12M18 6L6 18" />
-														</svg>
-													</button>
-												) : null}
-												<span
-													className="picker__search-count"
-													data-testid="picker-count"
-													aria-live="polite"
-												>
-													{count} {copy.count}
-												</span>
-											</div>
-
-											<div className="picker__filters">
-												<label
-													className="visually-hidden"
-													htmlFor="picker-brand"
-												>
-													Brand
-												</label>
-												<select
-													id="picker-brand"
-													className="picker__brand"
-													data-testid="picker-brand"
-													value={brand ?? ""}
-													onChange={(event) =>
-														setBrand(event.target.value || null)
-													}
-												>
-													<option value="">All brands</option>
-													{brands.map((option) => (
-														<option key={option} value={option}>
-															{option}
-														</option>
-													))}
-												</select>
-
-												{isBoards ? null : (
-													<fieldset className="picker__chips">
-														<legend className="visually-hidden">
-															Effect type
-														</legend>
-														{visibleEffects.map((type) => (
-															<button
-																key={type}
-																type="button"
-																className="picker__chip"
-																data-testid={`picker-effect-${type}`}
-																aria-pressed={effectTypes.includes(type)}
-																onClick={() =>
-																	setEffectTypes((current) =>
-																		toggleEffectType(current, type),
-																	)
-																}
-															>
-																{effectLabel(type)}
-															</button>
-														))}
-														<button
-															type="button"
-															className="picker__chip picker__chip--more"
-															data-testid="picker-effects-toggle"
-															aria-expanded={showAllEffects}
-															onClick={() =>
-																setShowAllEffects((value) => !value)
-															}
-														>
-															{showAllEffects ? "Fewer" : "All types"}
-														</button>
-													</fieldset>
-												)}
-											</div>
-										</div>
-
-										<div className="picker__custom-line">
-											<span className="picker__custom-prompt">Not listed?</span>
-											<button
-												type="button"
-												className="picker__custom-link"
-												data-testid="picker-custom-shortcut"
-												onClick={() => openCustom(isBoards ? "board" : "pedal")}
+								<CustomPedalForm
+									draft={customDraft}
+									onChange={setCustomDraft}
+									targetBoard={targetBoard}
+									editing={isEditingPedal}
+									limitReason={isEditingPedal ? null : customPedalRefusal}
+									headerSlot={kindSegment}
+									onSubmit={isEditingPedal ? handleSave : handleCreate}
+								/>
+							)
+						) : (
+							<div className="picker__body">
+								<div className="picker__ledger">
+									<div className="picker__tools">
+										<div className="picker__search">
+											<svg
+												className="picker__search-icon"
+												width="16"
+												height="16"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth="2"
+												strokeLinecap="round"
+												aria-hidden="true"
 											>
-												{isBoards
-													? "Create a custom-size board"
-													: "Create a custom-size pedal"}
-											</button>
-										</div>
-
-										<div
-											className="picker__results"
-											data-testid="picker-results"
-										>
-											{count === 0 ? (
-												<p className="picker__empty" data-testid="picker-empty">
-													{copy.empty}
-													<button
-														type="button"
-														className="picker__clear-inline"
-														onClick={() => {
-															setQuery("");
-															setBrand(null);
-															setEffectTypes([]);
-														}}
-													>
-														Clear filters
-													</button>
-												</p>
-											) : (
-												entries.map((entry) => {
-													const isActive = entry.id === activeEntry?.id;
-													const blocked = isBoards
-														? boardRefusal !== null
-														: itemRefusalFor(entry) !== null;
-													return (
-														<button
-															key={entry.id}
-															ref={(node) => {
-																if (node) rowRefs.current.set(entry.id, node);
-																else rowRefs.current.delete(entry.id);
-															}}
-															type="button"
-															aria-current={isActive ? "true" : undefined}
-															aria-disabled={blocked ? "true" : undefined}
-															aria-describedby={
-																capacity.level !== "ok"
-																	? "picker-capacity-text"
-																	: undefined
-															}
-															className="picker-item"
-															data-active={isActive ? "true" : undefined}
-															data-blocked={blocked ? "true" : undefined}
-															data-testid={`${isBoards ? "add-board" : "add-pedal"}-${entry.id}`}
-															onMouseEnter={() => setActiveId(entry.id)}
-															onFocus={() => setActiveId(entry.id)}
-															onClick={() => {
-																if (!blocked) handlePlace(entry);
-															}}
-														>
-															<PickerThumb
-																src={entry.thumbSrc}
-																kind={isBoards ? "board" : "pedal"}
-															/>
-															<span className="picker-item__text">
-																<span className="picker-item__name">
-																	{entry.name}
-																</span>
-																<span className="picker-item__brand">
-																	{entry.brand}
-																</span>
-															</span>
-															<span className="picker-item__dims">
-																{entry.widthCm} × {entry.heightCm} cm
-															</span>
-														</button>
-													);
-												})
-											)}
-										</div>
-
-										<div className="picker__status">
-											<span className="picker__keys" aria-hidden="true">
-												<kbd className="picker__key">↑</kbd>
-												<kbd className="picker__key">↓</kbd> browse
-												<span className="picker__key-sep">·</span>
-												<kbd className="picker__key">↵</kbd> place
-											</span>
-											{isBoards && selectedBoardUid ? (
+												<circle cx="11" cy="11" r="7" />
+												<path d="M20 20l-3.2-3.2" />
+											</svg>
+											<label
+												className="visually-hidden"
+												htmlFor="picker-search"
+											>
+												Search the catalog
+											</label>
+											<input
+												id="picker-search"
+												ref={searchRef}
+												className="picker__search-input"
+												data-testid="picker-search"
+												type="search"
+												placeholder={copy.search}
+												value={query}
+												onChange={(event) => setQuery(event.target.value)}
+											/>
+											{query ? (
 												<button
 													type="button"
-													className="picker__remove"
-													data-testid="remove-board"
-													onClick={() => {
-														removeBoard(selectedBoardUid);
-														selectBoard(null);
-														onClose();
-													}}
+													className="picker__search-clear"
+													aria-label="Clear search"
+													onClick={() => setQuery("")}
 												>
-													Remove selected board
+													<svg
+														width="14"
+														height="14"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+														strokeWidth="2"
+														strokeLinecap="round"
+														aria-hidden="true"
+													>
+														<path d="M6 6l12 12M18 6L6 18" />
+													</svg>
 												</button>
 											) : null}
+											<span
+												className="picker__search-count"
+												data-testid="picker-count"
+												aria-live="polite"
+											>
+												{count} {copy.count}
+											</span>
+										</div>
+
+										<div className="picker__filters">
+											<label className="visually-hidden" htmlFor="picker-brand">
+												Brand
+											</label>
+											<select
+												id="picker-brand"
+												className="picker__brand"
+												data-testid="picker-brand"
+												value={brand ?? ""}
+												onChange={(event) =>
+													setBrand(event.target.value || null)
+												}
+											>
+												<option value="">All brands</option>
+												{brands.map((option) => (
+													<option key={option} value={option}>
+														{option}
+													</option>
+												))}
+											</select>
+
+											{isBoards ? null : (
+												<fieldset className="picker__chips">
+													<legend className="visually-hidden">
+														Effect type
+													</legend>
+													{visibleEffects.map((type) => (
+														<button
+															key={type}
+															type="button"
+															className="picker__chip"
+															data-testid={`picker-effect-${type}`}
+															aria-pressed={effectTypes.includes(type)}
+															onClick={() =>
+																setEffectTypes((current) =>
+																	toggleEffectType(current, type),
+																)
+															}
+														>
+															{effectLabel(type)}
+														</button>
+													))}
+													<button
+														type="button"
+														className="picker__chip picker__chip--more"
+														data-testid="picker-effects-toggle"
+														aria-expanded={showAllEffects}
+														onClick={() => setShowAllEffects((value) => !value)}
+													>
+														{showAllEffects ? "Fewer" : "All types"}
+													</button>
+												</fieldset>
+											)}
 										</div>
 									</div>
 
-									<aside
-										className="picker__specimen"
-										data-testid="picker-specimen"
-									>
-										{activeEntry ? (
-											<Specimen
-												key={activeEntry.id}
-												entry={activeEntry}
-												kind={isBoards ? "board" : "pedal"}
-												targetLabel={targetLabel}
-												ctaLabel={
-													isBoards
-														? "Place at centre"
-														: targetBoard
-															? "Place on board"
-															: "Place at centre"
-												}
-												refusal={activeRefusal}
-												describedBy={
-													capacity.level !== "ok"
-														? "picker-capacity-text"
-														: null
-												}
-												onPlace={() => handlePlace(activeEntry)}
-											/>
+									<div className="picker__custom-line">
+										<span className="picker__custom-prompt">Not listed?</span>
+										<button
+											type="button"
+											className="picker__custom-link"
+											data-testid="picker-custom-shortcut"
+											onClick={() => openCustom(isBoards ? "board" : "pedal")}
+										>
+											{isBoards
+												? "Create a custom-size board"
+												: "Create a custom-size pedal"}
+										</button>
+									</div>
+
+									<div className="picker__results" data-testid="picker-results">
+										{count === 0 ? (
+											<p className="picker__empty" data-testid="picker-empty">
+												{copy.empty}
+												<button
+													type="button"
+													className="picker__clear-inline"
+													onClick={() => {
+														setQuery("");
+														setBrand(null);
+														setEffectTypes([]);
+													}}
+												>
+													Clear filters
+												</button>
+											</p>
 										) : (
-											<div className="picker__specimen-empty">
-												<p className="picker__specimen-hint">
-													Nothing to inspect — adjust the search or filters.
-												</p>
-											</div>
+											entries.map((entry) => {
+												const isActive = entry.id === activeEntry?.id;
+												const blocked = isBoards
+													? boardRefusal !== null
+													: itemRefusalFor(entry) !== null;
+												return (
+													<button
+														key={entry.id}
+														ref={(node) => {
+															if (node) rowRefs.current.set(entry.id, node);
+															else rowRefs.current.delete(entry.id);
+														}}
+														type="button"
+														aria-current={isActive ? "true" : undefined}
+														aria-disabled={blocked ? "true" : undefined}
+														aria-describedby={
+															capacity.level !== "ok"
+																? "picker-capacity-text"
+																: undefined
+														}
+														className="picker-item"
+														data-active={isActive ? "true" : undefined}
+														data-blocked={blocked ? "true" : undefined}
+														data-testid={`${isBoards ? "add-board" : "add-pedal"}-${entry.id}`}
+														onMouseEnter={() => setActiveId(entry.id)}
+														onFocus={() => setActiveId(entry.id)}
+														onClick={() => {
+															if (!blocked) handlePlace(entry);
+														}}
+													>
+														<PickerThumb
+															src={entry.thumbSrc}
+															kind={isBoards ? "board" : "pedal"}
+														/>
+														<span className="picker-item__text">
+															<span className="picker-item__name">
+																{entry.name}
+															</span>
+															<span className="picker-item__brand">
+																{entry.brand}
+															</span>
+														</span>
+														<span className="picker-item__dims">
+															{entry.widthCm} × {entry.heightCm} cm
+														</span>
+													</button>
+												);
+											})
 										)}
-									</aside>
+									</div>
+
+									<div className="picker__status">
+										<span className="picker__keys" aria-hidden="true">
+											<kbd className="picker__key">↑</kbd>
+											<kbd className="picker__key">↓</kbd> browse
+											<span className="picker__key-sep">·</span>
+											<kbd className="picker__key">↵</kbd> place
+										</span>
+										{isBoards && selectedBoardUid ? (
+											<button
+												type="button"
+												className="picker__remove"
+												data-testid="remove-board"
+												onClick={() => {
+													removeBoard(selectedBoardUid);
+													selectBoard(null);
+													onClose();
+												}}
+											>
+												Remove selected board
+											</button>
+										) : null}
+									</div>
 								</div>
-							)}
-							{tabBar}
-						</div>
+
+								<aside
+									className="picker__specimen"
+									data-testid="picker-specimen"
+								>
+									{activeEntry ? (
+										<Specimen
+											key={activeEntry.id}
+											entry={activeEntry}
+											kind={isBoards ? "board" : "pedal"}
+											targetLabel={targetLabel}
+											ctaLabel={
+												isBoards
+													? "Place at centre"
+													: targetBoard
+														? "Place on board"
+														: "Place at centre"
+											}
+											refusal={activeRefusal}
+											describedBy={
+												capacity.level !== "ok" ? "picker-capacity-text" : null
+											}
+											onPlace={() => handlePlace(activeEntry)}
+										/>
+									) : (
+										<div className="picker__specimen-empty">
+											<p className="picker__specimen-hint">
+												Nothing to inspect — adjust the search or filters.
+											</p>
+										</div>
+									)}
+								</aside>
+							</div>
+						)}
+						{open ? tabBar : null}
 					</div>
-				) : null}
+				</div>
 			</MotionPresence>
 		</>
 	);
