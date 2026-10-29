@@ -1,6 +1,6 @@
 # P5-W1 — Planner fallback catalog fill (non-commercial)
 
-**Status:** implemented locally + reviewed · **Date:** 2026-10-29 · **Owner-approved waiver** · no PR/push yet
+**Status:** in review — PR #91 · **Date:** 2026-10-29 · **Owner-approved waiver**
 
 ## Goal
 
@@ -29,8 +29,8 @@ See `docs/decisions/009-planner-fill-waiver.md`.
 - [x] `catalog:build` / `catalog:validate` pass with the owner-approved raised caps.
 - [x] Curated ledger remains unchanged; planner pending count is recorded in the raw provenance, `public/catalog/planner-pedals.json` notes and `docs/catalog/image-licensing.md` (the ledger tool is curated-only).
 - [x] Temp raw downloads removed; report kept at `work/catalog/planner-fill/report.json` (gitignored).
-- [ ] PR states the planner-majority/rights waiver, file count, repo-size impact
-      and the pending-replacement status (no PR yet).
+- [x] PR #91 states the planner-majority/rights waiver, file count, repo-size impact
+      and the pending-replacement status.
 
 ## Reproduce
 
