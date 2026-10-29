@@ -43,6 +43,7 @@ import {
 } from "./components/ShareView";
 import { StorageAnnouncer, StorageNotice } from "./components/StorageNotice";
 import { capacityStatus } from "./lib/capacity";
+import { MOTION } from "./lib/motion";
 import { useCableDrag } from "./state/cableDrag";
 import { useEndpointPlacement } from "./state/endpointPlacement";
 import { useCameraLockRefit } from "./state/focus";
@@ -84,6 +85,17 @@ function PatchHiddenCue() {
 				Show
 			</button>
 		</div>
+	);
+}
+
+function InfoPanelSlot({ itemUid }: { itemUid: string | null }) {
+	const lastUid = useRef<string | null>(itemUid);
+	if (itemUid) lastUid.current = itemUid;
+	const uid = itemUid ?? lastUid.current;
+	return (
+		<MotionPresence open={itemUid !== null} exitMs={MOTION.close}>
+			<InfoPanel itemUid={uid} />
+		</MotionPresence>
 	);
 }
 
@@ -522,8 +534,10 @@ function App() {
 					) : null}
 				</MotionPresence>
 			</div>
-			{/* The selected part's readout + the space warning (P2-03). */}
-			<InfoPanel />
+			{/* The selected part's readout + the space warning (P2-03). The
+			 * presence slot keeps the rail mounted for its close, then releases
+			 * the canvas width once. */}
+			<InfoPanelSlot itemUid={selectedItemUid} />
 			{!readOnly ? (
 				<Picker
 					open={pickerOpen}

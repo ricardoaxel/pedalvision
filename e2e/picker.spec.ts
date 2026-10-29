@@ -482,3 +482,31 @@ test("reduced motion turns panel and item motion into an instant state change", 
 		Number((await stage.getAttribute("data-motion-pulse-seq")) ?? "0"),
 	).toBe(beforePulse);
 });
+
+test("board add and delete each get one transient motion event", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	const beforePulse = Number(
+		(await stage.getAttribute("data-motion-board-pulse-seq")) ?? "0",
+	);
+	await addBoard(page, "boss-bcb-1000");
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-board-pulse-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(beforePulse);
+
+	const beforeGhost = Number(
+		(await stage.getAttribute("data-motion-board-ghost-seq")) ?? "0",
+	);
+	await openPicker(page, "boards");
+	await page.getByTestId("remove-board").click();
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-board-ghost-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(beforeGhost);
+	await expect(stage).toHaveAttribute("data-boards", "0");
+});

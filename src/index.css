@@ -1283,6 +1283,9 @@ body {
 	min-height: 200px;
 	padding: var(--space-5);
 	background-color: var(--color-thumb-bg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 	border: 1px solid var(--color-border-strong);
 	border-radius: var(--radius-control);
 	box-shadow: var(--shadow-plate);
@@ -6009,6 +6012,52 @@ body {
 	flex: 0 0 var(--picker-dock-history-width);
 }
 
+/* F-05 "Press Fit": the selected-part rail keeps its 360 px slot (one reflow on
+ * mount/unmount); only the content slides/fades. Never animate the width. */
+@keyframes info-panel-in {
+	from {
+		opacity: 0.9;
+		transform: translateX(18px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes info-panel-out {
+	from {
+		opacity: 1;
+		transform: none;
+	}
+	to {
+		opacity: 0;
+		transform: translateX(12px);
+	}
+}
+
+@keyframes info-panel-in-mobile {
+	from {
+		opacity: 0.9;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes info-panel-out-mobile {
+	from {
+		opacity: 1;
+		transform: none;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+}
+
 /* ---------------------------------------------------------------------------
  * Motion system (F-05) — "Straightedge Settle" (owner-approved 2026-10-28).
  * Fixed short travel, arrives and stops; no overshoot/spring/loop. Enters are
@@ -6142,6 +6191,15 @@ body {
 	pointer-events: none;
 }
 
+.motion-presence[data-motion-state="entering"] .info-panel {
+	animation: info-panel-in var(--motion-base) var(--ease-standard) backwards;
+}
+
+.motion-presence[data-motion-state="exiting"] .info-panel {
+	animation: info-panel-out var(--motion-close) var(--ease-standard) forwards;
+	pointer-events: none;
+}
+
 /* The incoming scene sheet settles in while the camera eases. */
 .stage.stage--scene-in {
 	animation: motion-fade-in var(--motion-fast) var(--ease-standard);
@@ -6183,6 +6241,17 @@ body {
 		.picker__panel
 		> :not(.picker-bar) {
 		animation: motion-fade-out 80ms var(--ease-standard) 100ms forwards;
+	}
+
+	.motion-presence[data-motion-state="entering"] .info-panel {
+		animation: info-panel-in-mobile var(--motion-base) var(--ease-standard)
+			var(--motion-prime) backwards;
+	}
+
+	.motion-presence[data-motion-state="exiting"] .info-panel {
+		animation: info-panel-out-mobile var(--motion-close) var(--ease-standard)
+			forwards;
+		pointer-events: none;
 	}
 
 	/* The info sheet's *shell* never animates height (the F-04 safe rect reads

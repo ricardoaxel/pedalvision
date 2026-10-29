@@ -16,6 +16,7 @@ describe("motion tokens", () => {
 		expect(tokensCss).toContain(`--motion-scale-in: ${MOTION.scaleIn};`);
 		expect(tokensCss).toContain(`--motion-exit: ${MOTION.exit}ms;`);
 		expect(tokensCss).toContain(`--motion-close: ${MOTION.close}ms;`);
+		expect(tokensCss).toContain(`--motion-prime: ${MOTION.prime}ms;`);
 		expect(tokensCss).toContain(`--motion-scale-out: ${MOTION.scaleOut};`);
 	});
 
@@ -29,6 +30,7 @@ describe("motion tokens", () => {
 		expect(reduced).toContain("--motion-slow: 0ms;");
 		expect(reduced).toContain("--motion-exit: 0ms;");
 		expect(reduced).toContain("--motion-close: 0ms;");
+		expect(reduced).toContain("--motion-prime: 0ms;");
 	});
 });
 

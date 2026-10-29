@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { prefersReducedMotion } from "../lib/motion";
 import {
+	boardDefinition,
+	boardFootprint,
 	itemFootprint,
 	itemVisualRotationDeg,
 	itemWorldOrigin,
@@ -17,6 +19,26 @@ import {
  */
 
 export type ItemPulseKind = "add" | "duplicate";
+
+export interface BoardPulse {
+	uid: string;
+	nonce: number;
+}
+
+export interface DepartingBoard {
+	uid: string;
+	nonce: number;
+	/** World cm of the board's unrotated top-left. */
+	xCm: number;
+	yCm: number;
+	rotationDeg: number;
+	widthCm: number;
+	heightCm: number;
+	imageSrc: string | null;
+	custom: boolean;
+	/** Presentation delay (ms) before the fade starts. */
+	delayMs: number;
+}
 
 export interface ItemPulse {
 	uid: string;
@@ -40,20 +62,32 @@ export interface DepartingGhost {
 interface MotionStore {
 	pulse: ItemPulse | null;
 	ghost: DepartingGhost | null;
+	boardPulse: BoardPulse | null;
+	boardGhost: DepartingBoard | null;
 	/** Monotonic counters exposed to E2E (survive the transient clearing). */
 	pulseSeq: number;
 	ghostSeq: number;
+	boardPulseSeq: number;
+	boardGhostSeq: number;
 	pulseItem: (uid: string, kind: ItemPulseKind) => void;
 	clearPulse: (nonce: number) => void;
 	departItem: (uid: string) => void;
 	clearGhost: (uid: string) => void;
+	pulseBoard: (uid: string) => void;
+	clearBoardPulse: (nonce: number) => void;
+	departBoard: (uid: string, delayMs?: number) => void;
+	clearBoardGhost: (uid: string) => void;
 }
 
 export const useMotion = create<MotionStore>((set) => ({
 	pulse: null,
 	ghost: null,
+	boardPulse: null,
+	boardGhost: null,
 	pulseSeq: 0,
 	ghostSeq: 0,
+	boardPulseSeq: 0,
+	boardGhostSeq: 0,
 	pulseItem: (uid, kind) => {
 		if (prefersReducedMotion()) return;
 		set((state) => {
@@ -101,4 +135,53 @@ export const useMotion = create<MotionStore>((set) => ({
 	},
 	clearGhost: (uid) =>
 		set((state) => (state.ghost?.uid === uid ? { ghost: null } : state)),
+	pulseBoard: (uid) => {
+		if (prefersReducedMotion()) return;
+		set((state) => {
+			const nonce = state.boardPulseSeq + 1;
+			return { boardPulseSeq: nonce, boardPulse: { uid, nonce } };
+		});
+	},
+	clearBoardPulse: (nonce) =>
+		set((state) =>
+			state.boardPulse?.nonce === nonce ? { boardPulse: null } : state,
+		),
+	departBoard: (uid, delayMs = 0) => {
+		if (prefersReducedMotion()) return;
+		const scene = useScene.getState();
+		const board = scene.boards.find((candidate) => candidate.uid === uid);
+		if (!board) return;
+		const footprint = boardFootprint(board);
+		const definition = boardDefinition(board);
+		const imageSrc = definition
+			? resolveImageUrl(
+					definition.imageSource,
+					definition.image,
+					"board",
+					ASSET_RENDITIONS.canvas,
+				)
+			: null;
+		set((state) => {
+			const nonce = state.boardGhostSeq + 1;
+			return {
+				boardGhostSeq: nonce,
+				boardGhost: {
+					uid,
+					nonce,
+					xCm: board.x,
+					yCm: board.y,
+					rotationDeg: board.rotationDeg,
+					widthCm: footprint.widthCm,
+					heightCm: footprint.heightCm,
+					imageSrc,
+					custom: definition === null,
+					delayMs,
+				},
+			};
+		});
+	},
+	clearBoardGhost: (uid) =>
+		set((state) =>
+			state.boardGhost?.uid === uid ? { boardGhost: null } : state,
+		),
 }));

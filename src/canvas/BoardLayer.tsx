@@ -1,10 +1,18 @@
 import type Konva from "konva";
-import { useCallback, useEffect, useRef } from "react";
-import { Layer, Transformer } from "react-konva";
-import { pxToCm } from "../lib/geometry";
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+	Group,
+	Image as KonvaImage,
+	Layer,
+	Rect,
+	Transformer,
+} from "react-konva";
+import { cmToPx, pxToCm } from "../lib/geometry";
+import { MOTION, motionMs } from "../lib/motion";
 import { useBoardDrag } from "../state/boardDrag";
 import { useDrag } from "../state/drag";
 import { useGesture } from "../state/gesture";
+import { type DepartingBoard, useMotion } from "../state/motion";
 import { useReadOnly } from "../state/readOnly";
 import { itemsByZ, useScene } from "../state/scene";
 import {
@@ -14,6 +22,7 @@ import {
 } from "../state/selection";
 import type { CanvasTheme } from "../styles/theme";
 import { BoardNode } from "./BoardNode";
+import { useImage } from "./useImage";
 
 interface BoardLayerProps {
 	theme: CanvasTheme;
@@ -131,6 +140,7 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 					registerNode={registerNode}
 				/>
 			))}
+			<BoardGhostLayer theme={theme} />
 			<Transformer
 				ref={transformerRef}
 				enabledAnchors={[]}
@@ -169,5 +179,94 @@ export function BoardLayer({ theme }: BoardLayerProps) {
 				ignoreStroke
 			/>
 		</Layer>
+	);
+}
+
+/**
+ * F-05 "Press Fit" — a removed board leaves only a short silhouette ghost. The
+ * attached pedals are freed to the loose layer by `removeBoard` and are NOT
+ * duplicated here (that would double-expose them). The board image is already
+ * in the module image cache; `useImage` reuses it. Data removal is synchronous.
+ */
+function BoardGhostLayer({ theme }: { theme: CanvasTheme }) {
+	const ghost = useMotion((state) => state.boardGhost);
+	const clearBoardGhost = useMotion((state) => state.clearBoardGhost);
+	if (!ghost) return null;
+	return (
+		<BoardGhostView
+			key={ghost.nonce}
+			ghost={ghost}
+			theme={theme}
+			clearBoardGhost={clearBoardGhost}
+		/>
+	);
+}
+
+function BoardGhostView({
+	ghost,
+	theme,
+	clearBoardGhost,
+}: {
+	ghost: DepartingBoard;
+	theme: CanvasTheme;
+	clearBoardGhost: (uid: string) => void;
+}) {
+	const [opacity, setOpacity] = useState(1);
+	const timers = useRef<number[]>([]);
+	const { image } = useImage(ghost.imageSrc, `board-ghost-${ghost.uid}`);
+	const widthPx = cmToPx(ghost.widthCm);
+	const heightPx = cmToPx(ghost.heightCm);
+
+	useEffect(() => {
+		const durationMs = motionMs(MOTION.slow);
+		const delayMs = motionMs(ghost.delayMs);
+		if (durationMs <= 0) {
+			clearBoardGhost(ghost.uid);
+			return;
+		}
+		// React-driven steps: the ghost is one transient node, and explicit
+		// opacity updates are immune to a tween being torn down by a re-render.
+		const steps = 8;
+		const stepMs = durationMs / steps;
+		const schedule = (fn: () => void, ms: number) => {
+			timers.current.push(window.setTimeout(fn, ms));
+		};
+		for (let step = 1; step <= steps; step += 1) {
+			schedule(() => setOpacity(1 - step / steps), delayMs + step * stepMs);
+		}
+		schedule(() => clearBoardGhost(ghost.uid), delayMs + durationMs + 40);
+		return () => {
+			for (const timer of timers.current) window.clearTimeout(timer);
+			timers.current = [];
+		};
+	}, [clearBoardGhost, ghost.uid, ghost.delayMs]);
+
+	return (
+		<Group
+			opacity={opacity}
+			x={cmToPx(ghost.xCm)}
+			y={cmToPx(ghost.yCm)}
+			rotation={ghost.rotationDeg}
+			listening={false}
+		>
+			{image ? (
+				<KonvaImage
+					image={image}
+					width={widthPx}
+					height={heightPx}
+					listening={false}
+				/>
+			) : (
+				<Rect
+					width={widthPx}
+					height={heightPx}
+					fill={ghost.custom ? theme.customFill : theme.boardDraftFill}
+					stroke={ghost.custom ? theme.customStroke : theme.boardStroke}
+					strokeWidth={1}
+					cornerRadius={2}
+					listening={false}
+				/>
+			)}
+		</Group>
 	);
 }

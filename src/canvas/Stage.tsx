@@ -107,6 +107,8 @@ export function Stage() {
 	const readOnlyCue = useReadOnly((state) => state.cue);
 	const motionPulseSeq = useMotion((state) => state.pulseSeq);
 	const motionGhostSeq = useMotion((state) => state.ghostSeq);
+	const motionBoardPulseSeq = useMotion((state) => state.boardPulseSeq);
+	const motionBoardGhostSeq = useMotion((state) => state.boardGhostSeq);
 	// Undo/redo depth (P3-04) mirrored for deterministic e2e assertions.
 	const undoDepth = useHistory((state) => state.past.length);
 	const redoDepth = useHistory((state) => state.future.length);
@@ -422,6 +424,8 @@ export function Stage() {
 			}
 			data-motion-pulse-seq={motionPulseSeq}
 			data-motion-ghost-seq={motionGhostSeq}
+			data-motion-board-pulse-seq={motionBoardPulseSeq}
+			data-motion-board-ghost-seq={motionBoardGhostSeq}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage

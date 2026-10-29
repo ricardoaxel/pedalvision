@@ -12,6 +12,7 @@ export const MOTION = {
 	slow: 240,
 	exit: 180,
 	close: 160,
+	prime: 16,
 	distance: 18,
 	scaleIn: 0.985,
 	scaleOut: 0.992,

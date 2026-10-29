@@ -211,6 +211,57 @@ unmounts. Reduced motion adds `--motion-exit: 0ms` and zeroes animation delays.
   out-reading thin text at ≤10 % alpha, and a 1:1 desktop crop — the crop was
   added (`scene-close-after-desktop-crop-frames.png`).
 
+### Press Fit extension — patch reveal, info rail, board changes (owner request, 2026-10-28)
+
+Owner request: “If we enable patch cables it should animate smoothly; if we
+select a pedal it should open the lateral menu animated; every time we add a
+pedal/pedalboard it should pop in (out if delete) animated smoothly.”
+
+**Direction: “Press Fit”** (designer; extends Straightedge Settle): parts press
+onto the sheet, cables are drawn as ink, panels slide from their edge.
+
+- **Patch reveal:** `showCables`/read-only mounts the cable + endpoint layers.
+  Small graphs (≤40 cables) draw each cable from its jack over **240 ms**
+  (`--motion-slow`, `--ease-standard`); the arrowhead follows at 96 ms and
+  endpoints fade 180 ms. Dense graphs (>40) use one **180 ms** group fade.
+  Hiding fades **120 ms** (`--motion-fast`), never rewinds. Read-only has no
+  draw-in (the scene content fade covers it). Cable selection is cleared when
+  the patch hides.
+- **Info rail:** the desktop **360 px slot is never width-animated** (that
+  would fire the stage ResizeObserver and re-render/reallocate the canvas every
+  frame). The slot mounts/unmounts once; content slides/fades from the right
+  **180 ms** (`--motion-base`) and closes **160 ms** (`--motion-close`), with a
+  **16 ms `--motion-prime`** before the enter animation so the 350 sleeve/800
+  image rasterizes with the header. Mobile sheet rises 8 px/fades; `sheetHeight`
+  is untouched. A→B selection is the same panel.
+- **Board/pedal add/delete:** pedal add **180 ms** opacity (replaces the old
+  ease-in stall), board add **240 ms** opacity (no scale — true-scale
+  footprints). Explicit deletes are presentation-only ghosts: pedal **120 ms**,
+  board **240 ms** silhouette only (attached pedals are freed in place, never
+  double-drawn; no image snapshot). The catalog-board ghost is delayed **340 ms**
+  (picker overlay 300 + margin) so it fades after the closing scrim; custom
+  boards (action bar, no picker) start immediately. Data/history/autosave stay
+  synchronous.
+- **Performance agent:** verdict **adjust → proceed**. Hard edits adopted: no
+  width animation, no per-cable draw-in above 40, no snapshot ghost. Rail +
+  cable reveal measured **60.0 fps** (mean 16.66–16.67 ms, p95 16.80, max
+  16.80). Bundle: **318.77 → 320.14 kB gzip JS (+1.37 kB)**, **14.09 → 14.20 kB
+  CSS (+0.11 kB)** for the extension (over the agent's +0.5 kB soft, under its
+  +2 kB hard). Cumulative vs main: +3.31 kB JS / +0.77 kB CSS.
+- **Design-reviewer (Press Fit):** pass 1 **approve-with-changes** (rail
+  thumbnail timing, board scrim/ghost). Fixes: one-frame `--motion-prime`,
+  0.9 enter opacity, 340 ms picker-delay, explicit 8-step 240 ms ghost fade, and
+  a custom-board delete evidence clip. The final confirmation was
+  **evidence-limited** (~20–25 fps headless capture) and could not resolve the
+  160/240 ms fades from the frame dividers; the reviewer asked for a true 60 fps
+  burst. Open nits: desktop patch ink is thin when jacks align, the
+  “Patch hidden · 1 cable · 0 endpoints” chip next to `0 / 0`, and dark mobile
+  sheet separation. These are deferred nits, not code blockers. **Owner should
+  verify the preview** before merge.
+
+Evidence: `docs/screenshots/F-05/press-fit/` (cable on/off, rail open/close dark
++ light, board add/delete dark + light, custom-board ghost, frame dividers).
+
 ## Steps
 
 1. Restate the scope + executable acceptance criteria; record the design
@@ -272,23 +323,25 @@ unmounts. Reduced motion adds `--motion-exit: 0ms` and zeroes animation delays.
 - `pnpm lint` clean (only the 6 pre-existing warnings); `pnpm typecheck` clean.
 - `pnpm test` **906 passed** (101 files), including new `motion`, `viewportMotion`
   (cancel/finish invariants) and transient-motion store tests.
-- `pnpm build` clean. Main JS **316.83 → 318.76 kB gzip** (**+1.93 kB**, under
-  the +2 kB target); CSS **13.43 → 14.07 kB gzip** (**+0.64 kB**).
-- **E2E:** six touched specs (`picker`, `viewport-focus`, `scenes`, `history`,
-  `selection`, `cable-schedule`) **114 passed / 5 skipped** (desktop + mobile,
-  1 worker); the eight-spec touched set incl. `smoke` + `first-run` **137 passed
-  / 5 skipped**. CI full suite is re-run on the final head. New motion cases
+- `pnpm build` clean. Main JS **316.83 → 320.14 kB gzip** (**+3.31 kB**); CSS
+  **13.43 → 14.20 kB gzip** (**+0.77 kB**). The F-05 close extension was +1.94
+  kB JS; Press Fit added +1.37 kB JS / +0.11 kB CSS (over the agent's +0.5 kB
+  soft, under +2 kB hard).
+- **E2E:** the Press Fit touched set (`info-panel`, `cables`, `picker`,
+  `selection`, `smoke`, `first-run`, `cable-schedule`, `scenes`,
+  `board-creator`) **156 passed / 6 skipped** (desktop + mobile, 1 worker).
+  CI full suite re-runs on the final head. New motion cases
   cover panel presence + add/duplicate/delete events, reduced motion, the scene
   camera tween, and a pan during the tween that settles the frame instead of
   freezing it. CI initially caught a duplicate `picker-bar-*` during the exit;
   the exiting sheet now omits its tab bar so only the persistent dock exists.
 - **Preview:** https://feat-f-05-motion-system.pedalvision.pages.dev (verified
   desktop + mobile; commit `f98fa50`).
-- **Performance (1440×900, desktop, branch):** panels 60.0 fps; the new scene
-  close **60.0 fps** (mean 16.67 / p95 16.70 / max 16.80 ms, 43 frames); scene
-  switch 60.0 fps; JS heap 9.5–11.3 MB (no material change); share link
-  **358–359 chars**; all-content Standard PNG **2,771,550 bytes** — the last
-  two are untouched by F-05.
+- **Performance (1440×900, desktop, branch):** rail open/close **60.0 fps**
+  (mean 16.66 / p95 16.80 / max 16.80, 43 frames); cable reveal **60.0 fps**
+  (mean 16.67 / p95 16.80 / max 16.80, 55 frames); scene close 60.0 fps; JS
+  heap 9.5–11.3 MB; share link **358–359 chars**; all-content Standard PNG
+  **2,771,550 bytes** — the last two are untouched by F-05.
 - **Screenshots/GIFs:** `docs/screenshots/F-05/{before,after}/` (settled picker
   and scenes, desktop 1440 + mobile 412, dark + light; aligned t0/t60/t120
   frames; dark add/duplicate/delete stills; before/after panel + scene-switch

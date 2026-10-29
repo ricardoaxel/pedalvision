@@ -6,6 +6,7 @@ import {
 	useState,
 } from "react";
 import { cmToPx } from "../lib/geometry";
+import { useMotion } from "../state/motion";
 import { boardWorldCorners, isCustomBoard, useScene } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
@@ -85,6 +86,7 @@ export function BoardActionBar({
 			text: "Delete",
 			danger: true,
 			onClick: () => {
+				useMotion.getState().departBoard(board.uid);
 				removeBoard(board.uid);
 				clearSelection();
 				// The bar unmounts with the selection — move focus to the first

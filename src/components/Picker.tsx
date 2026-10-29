@@ -471,6 +471,7 @@ export function Picker({
 				entry.id,
 				viewportCenterCm(viewportSize, { scale, x, y }),
 			);
+			if (uid) useMotion.getState().pulseBoard(uid);
 			selectBoard(uid);
 		} else if (targetBoard) {
 			const footprint = boardFootprint(targetBoard);
@@ -555,6 +556,7 @@ export function Picker({
 			definition,
 			viewportCenterCm(viewportSize, { scale, x, y }),
 		);
+		if (uid) useMotion.getState().pulseBoard(uid);
 		selectBoard(uid);
 		setBoardDraft((current) => emptyCustomBoardDraft(current.units));
 		onClose();
@@ -1164,6 +1166,12 @@ export function Picker({
 												className="picker__remove"
 												data-testid="remove-board"
 												onClick={() => {
+													useMotion
+														.getState()
+														.departBoard(
+															selectedBoardUid,
+															MOTION.exit + MOTION.fast + 40,
+														);
 													removeBoard(selectedBoardUid);
 													selectBoard(null);
 													onClose();

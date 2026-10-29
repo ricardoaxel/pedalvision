@@ -175,6 +175,7 @@
 	--motion-scale-in: 0.985;
 	--motion-exit: 180ms;
 	--motion-close: 160ms;
+	--motion-prime: 16ms;
 	--motion-scale-out: 0.992;
 }
 
@@ -186,6 +187,7 @@
 		--motion-slow: 0ms;
 		--motion-exit: 0ms;
 		--motion-close: 0ms;
+		--motion-prime: 0ms;
 	}
 }
 
