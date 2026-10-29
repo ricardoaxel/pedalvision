@@ -27,7 +27,7 @@ See `docs/decisions/009-planner-fill-waiver.md`.
 - [x] 800 and 350 AVIF exist for every imported item (17,892 files, 0 missing).
 - [x] No duplicate id or normalized brand+name introduced.
 - [x] `catalog:build` / `catalog:validate` pass with the owner-approved raised caps.
-- [ ] Asset ledger/license report show the planner pending count (raw provenance + public notes carry it; tools not yet adapted).
+- [x] Curated ledger remains unchanged; planner pending count is recorded in the raw provenance, `public/catalog/planner-pedals.json` notes and `docs/catalog/image-licensing.md` (the ledger tool is curated-only).
 - [x] Temp raw downloads removed; report kept at `work/catalog/planner-fill/report.json` (gitignored).
 - [ ] PR states the planner-majority/rights waiver, file count, repo-size impact
       and the pending-replacement status (no PR yet).
