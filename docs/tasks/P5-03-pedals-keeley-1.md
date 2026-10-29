@@ -204,3 +204,24 @@ Read only the sections the task file points to; do not read whole docs.
   errors; desktop + mobile before/after screenshots in the PR.
 - Contact sheet + coverage/reject report in the PR; demo share link verified.
 - One PR; no merge.
+
+## Batch outcome (2026-10-28)
+
+- **26/26 items** shipped: the 18 existing Keeley seeds (all re-hosted) + 8 net-new (Caverns, Compressor Plus, D&M Drive, Dark Side, Delay Workstation, Dynatrem, Eccos, El Rey Dorado). `catalog:ci` validated **452 pedals / 15 boards** (expected 452/15).
+- **Images:** 20 official Keeley product renders + 1 archived official (Abbey Chamber Verb, Wayback copy of the retired official page) + **5 planner last-resort** (Angry Orange Signalis/White, Blues Disorder Signalis/White, Bubble Tron Ler). **Planner share 5/26 = 19.2%**, under the 30% target; 21/26 = 80.8% official/archive.
+- **Upscales:** all within the 2× soft ceiling. Largest are Bubble Tron 1.71× (official 600 px source) and the two white planner variants 1.25× (350 px planner source); the rest are 1.0× or downscaled. Source dimensions/trim/upscale are recorded in every `imageProvenance.note`.
+- **Jack edges:** verified **top/crown** for the Angry Orange / Blues Disorder 4-in-1 family (official JACK FACE + INPUT/OUTPUT side photos) and California Girls (official CG JACKS + LEFT/RIGHT photos), and for Caverns (official product text "Top-Mounted Jacks"). All other models omit the edge with `jackLayout.confidence: "unknown"` — no official connector-face source was found in the batch pass.
+- **Effect tags:** 8 verified `curated.ts` overrides added for the creatively named new models (Caverns, Compressor Plus, D&M Drive, Dark Side, Delay Workstation, Dynatrem, Eccos, El Rey Dorado) because the name classifier cannot derive them from the official wording. Finish variants link to their base via `variantOf` so they inherit the base effect types.
+- **Checks:** `catalog:check-jacks`, `catalog:check-images`, `catalog:ci`, `catalog:guard-batch-pr`, `lint`, `typecheck`, `test` (98 files / 893 tests), `build` all green. `test` must run with `env -u CATALOG_WORK_DIR -u CATALOG_BATCH_ID` inside a live wave.
+- **Playwright (desktop + mobile):** Keeley search = 26 pedals, brand filter = 26, reverb effect filter = 5, Caverns places on the canvas, no console errors.
+- **Vision:** one `catalog-image-reviewer` call (26-cell dual-tone sheet + connector-strip sheet + 3× corner crops for the six analyzer-flagged cells) → 25 accept, 1 reject (Bubble Tron Ler official photo carries a separate white "Artist Series" caption card). Fixed by re-sourcing the clean planner cutout and confirmed with a same-session second pass on that cell → accept.
+
+## Source-discovery log (T-4b)
+
+- **Registry first:** the Keeley WooCommerce Store API (`/wp-json/wc/store/v1/products?per_page=100&page=N`, 322 products) enumerated official names, product pages and image galleries in four deterministic JSON fetches (no HTML dumped into context). Official product galleries supplied 21 of 26 images.
+- **Official:** `robertkeeley.com/product/<slug>/` for the 20 current/retired-but-present products; `_Face`/`Front`/`-Keeley-Electronics.png` renders (mostly 800–2560 px). D&M Drive is retired from the store but its official page (`/product/dm-drive/`) still serves the official face image.
+- **Archive:** Abbey Chamber Verb is retired and its official page 404s; Wayback CDX + a 2019 snapshot supplied the official 1000×1000 Face image (recorded `kind: "archive"`).
+- **Search-engine attempt:** none needed — the registry/brand-site pass covered every non-finish item. No Google/Bing page was fetched.
+- **Planner last-resort:** PedalPlayground GitHub mirror (`app/images/pedals/keeley-*.png`) for the four finish variants with no official finish photo and for Bubble Tron Ler after its official photo failed the clean-alpha gate. Recorded `kind: "planner"`, `status: "last-resort"`, counted gaps.
+- **Rejected:** the Bubble Tron Ler official front (white Artist Series caption card outside the product); the Caverns/Abbey tester photos/CG side profiles were used as connector evidence only, never shipped.
+- **Spec research:** official product pages + retailer/official spec listings (B&H, Macdaddy, Warwick, Musik Produktiv, Pedaltown, Andertons, Musician's Friend, PedalBro) for dimensions; PedalFilter for power draw. Official unit dimensions are not published for California Girls (limited Sweetwater run), so its footprint is recorded as estimated from the official render.

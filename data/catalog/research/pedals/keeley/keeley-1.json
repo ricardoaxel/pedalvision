@@ -7,31 +7,134 @@
     "effectTypes": [
       "overdrive"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/keeley-1962/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://pedalfilter.com/keeley/1962",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962_Overdrive_Face_Keeley-scaled.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/1962_Overdrive_Face_Keeley-scaled.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 2560x2560 (trim 1164x1964); final 800 rendition; upscale 0.41x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Tone",
+        "Drive"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 10 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in (61-66 x 112 mm); B&H official spec list + official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 10 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "British Bluesbreaker-style overdrive (Katana JFET boost around a Bluesbreaker circuit)."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "British Bluesbreaker-style overdrive (Katana JFET boost around a Bluesbreaker circuit).",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962_Overdrive_Face_Keeley-scaled.jpg",
+        "sourcePage": "https://robertkeeley.com/product/keeley-1962/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-1962x",
@@ -41,31 +144,136 @@
     "effectTypes": [
       "overdrive"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/1962x-ltd-british-overdrive/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://pedaltown.nl/en/product/keeley-1962x-2-mode-limited-british",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962xNewLogoFrontHiRes-e1524686788841.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/1962xNewLogoFrontHiRes-e1524686788841.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 502x822); final 800 rendition; upscale 0.97x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Tone",
+        "Drive",
+        "KT66/KT88 mode"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 10 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in (61-66 x 112 mm); official top-down render aspect + retailer spec.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 10 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Limited two-mode version of the 1962; adds a KT88 high-headroom MOSFET clipping mode."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Limited two-mode version of the 1962; adds a KT88 high-headroom MOSFET clipping mode.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/1962xNewLogoFrontHiRes-e1524686788841.jpg",
+        "sourcePage": "https://robertkeeley.com/product/1962x-ltd-british-overdrive/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "variantOf": "keeley-1962"
   },
   {
     "id": "keeley-30ms-double-tracker",
@@ -77,37 +285,136 @@
       "chorus",
       "reverb"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/30ms-automatic-double-tracker/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://cdn.rockboard.de/nos/data/erp/erp_article/Product-Pictures/Keeley/30ms%20DOUBLE%20TRACKER/30MSDoubleTracker_EN.pdf",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/30MSFaceNewLogo-e1524687207610.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://guitar.com/reviews/keeley-electronics-30ms-double-tracker-abbey-chamber-verb-memphis-sun-reverb/",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/30MSFaceNewLogo-e1524687207610.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 460x774); final 800 rendition; upscale 1.03x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Reverb",
+        "Mode Select",
+        "Tuning",
+        "Time"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 65 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in (61-66 x 112 mm); official top-down render aspect + official manual.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "trs",
+        "channels": 2,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": true,
+        "note": "1/4-inch TRS stereo output; stereo when a TRS cable is used. edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 65 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in, stereo/mono out (TRS)."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in, stereo/mono out (TRS)."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Automatic double tracker / short delay / static chorus / reverb; TRS stereo output."
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Automatic double tracker / short delay / static chorus / reverb; TRS stereo output.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/30MSFaceNewLogo-e1524687207610.jpg",
+        "sourcePage": "https://robertkeeley.com/product/30ms-automatic-double-tracker/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-abbey-chamber-verb",
@@ -117,31 +424,137 @@
     "effectTypes": [
       "reverb"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
-        "url": "https://www.musicstorelive.com/keeley-abbey-chamber-verb-vintage-reverb-guitar-effects-pedal.html",
+        "url": "https://web.archive.org/web/20191014072044/https://robertkeeley.com/product/Abbey+Chamber+Reverb/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.gear4music.com/G4M/Keeley-Abbey-Chamber-Verb/6O0S",
+        "url": "https://robertkeeley.com/woo/wp-content/uploads/2015/09/AbbeyChamberVerbNewLogoFaceHiRes-e1524687136250.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "archive",
+      "sourceUrl": "https://robertkeeley.com/woo/wp-content/uploads/2015/09/AbbeyChamberVerbNewLogoFaceHiRes-e1524687136250.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image (archived copy). Source 1000x1000 (trim 520x863); final 800 rendition; upscale 0.93x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Decay",
+        "Brilliance",
+        "Predelay",
+        "Blend",
+        "Mid switch"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 65 mA, center-negative",
+      "archivedPage": "https://web.archive.org/web/20191014072044/https://robertkeeley.com/product/Abbey+Chamber+Reverb/"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.35 x 4.41 in (60 x 112 mm); Macdaddy/B&H official dimension listing (face forward, not counting jacks).",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 65 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Abbey Road chamber-style reverb with RS106 filtering; archived official product page."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Abbey Road chamber-style reverb with RS106 filtering; archived official product page.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/woo/wp-content/uploads/2015/09/AbbeyChamberVerbNewLogoFaceHiRes-e1524687136250.jpg",
+        "sourcePage": "https://web.archive.org/web/20191014072044/https://robertkeeley.com/product/Abbey+Chamber+Reverb/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-angry-orange",
@@ -153,36 +566,137 @@
       "fuzz"
     ],
     "widthCm": 6.6,
-    "heightCm": 12.09,
+    "heightCm": 12.1,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://gcrockboard.com/keeley-electronics-angry-orange-distortion-and-fuzz",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Angry-Orange-Distortion-and-Fuzz-Effect-Pedal-000-Transparent-Background.png",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.premierguitar.com/news/keeley-angry-orange-blues-disorder-super-rodent",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Angry-Orange-Distortion-and-Fuzz-Effect-Pedal-000-Transparent-Background.png",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 2718x2718 (trim 1138x2126); final 800 rendition; upscale 0.38x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Tone",
+        "Drive",
+        "Level",
+        "Tone toggle",
+        "Drive toggle"
+      ],
+      "dimensions": "6.6 x 12.1 cm",
+      "power": "9-18V DC, 22 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley 4-in-1 enclosure, 66 x 120.9 mm (2.6 x 4.76 in); PedalBro/retailer spec + official top-down render aspect.",
+    "jackLayout": {
+      "source": "Official Keeley Angry Orange / Blues Disorder gallery: JACK FACE + INPUT side + OUTPUT side photos show INPUT (left), 9VDC (centre) and OUTPUT (right) on the crown/top end face; the long sides show no jacks.",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; connector on the crown/top end face (verified from official gallery side/jack photos).",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9-18V DC center-negative, 22-29 mA; 2.1 x 5.5 mm barrel; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Dual distortion/fuzz: 78 Japanese orange distortion + 91 Soviet civil-war fuzz."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass or buffered/trails, switchable."
+      },
+      "physical": {
+        "depthCm": 12.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.6 x 12.1 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Dual distortion/fuzz: 78 Japanese orange distortion + 91 Soviet civil-war fuzz.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Angry-Orange-Distortion-and-Fuzz-Effect-Pedal-000-Transparent-Background.png",
+        "sourcePage": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-angry-orange-signalis",
@@ -194,17 +708,137 @@
       "fuzz"
     ],
     "widthCm": 6.6,
-    "heightCm": 12.09,
+    "heightCm": 12.1,
     "variantOf": "keeley-angry-orange",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange.png",
+      "status": "last-resort",
+      "note": "Pedalplayground/planner cutout used as a last resort for a finish variant with no official finish photo; counted source gap. Source 800x1463 (trim 800x1463); final 800 rendition; upscale 0.55x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Tone",
+        "Drive",
+        "Level",
+        "Tone toggle",
+        "Drive toggle"
+      ],
+      "dimensions": "6.6 x 12.1 cm",
+      "power": "9-18V DC, 22 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Same Keeley 4-in-1 enclosure as Angry Orange, 66 x 120.9 mm.",
+    "jackLayout": {
+      "source": "Official Keeley Angry Orange / Blues Disorder gallery: JACK FACE + INPUT side + OUTPUT side photos show INPUT (left), 9VDC (centre) and OUTPUT (right) on the crown/top end face; the long sides show no jacks.",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; connector on the crown/top end face (verified from official gallery side/jack photos).",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9-18V DC center-negative, 22-29 mA; 2.1 x 5.5 mm barrel; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Finish variant of the Angry Orange; no official finish photo published."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass or buffered/trails, switchable."
+      },
+      "physical": {
+        "depthCm": 12.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.6 x 12.1 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Finish variant of the Angry Orange; no official finish photo published.",
+    "lastVerified": "2026-10-28",
+    "confidence": "likely",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange.png",
+        "sourcePage": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "priority": 1,
+        "notes": "Planner last-resort cutout for a finish variant."
+      }
+    ]
   },
   {
     "id": "keeley-angry-orange-white",
@@ -216,17 +850,137 @@
       "fuzz"
     ],
     "widthCm": 6.6,
-    "heightCm": 12.09,
+    "heightCm": 12.1,
     "variantOf": "keeley-angry-orange",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange-white.png",
+      "status": "last-resort",
+      "note": "Pedalplayground/planner cutout used as a last resort for a finish variant with no official finish photo; counted source gap. Source 350x640 (trim 350x640); final 800 rendition; upscale 1.25x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Tone",
+        "Drive",
+        "Level",
+        "Tone toggle",
+        "Drive toggle"
+      ],
+      "dimensions": "6.6 x 12.1 cm",
+      "power": "9-18V DC, 22 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Same Keeley 4-in-1 enclosure as Angry Orange, 66 x 120.9 mm.",
+    "jackLayout": {
+      "source": "Official Keeley Angry Orange / Blues Disorder gallery: JACK FACE + INPUT side + OUTPUT side photos show INPUT (left), 9VDC (centre) and OUTPUT (right) on the crown/top end face; the long sides show no jacks.",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; connector on the crown/top end face (verified from official gallery side/jack photos).",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 22,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9-18V DC center-negative, 22-29 mA; 2.1 x 5.5 mm barrel; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "White finish variant of the Angry Orange; planner last-resort cutout."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass or buffered/trails, switchable."
+      },
+      "physical": {
+        "depthCm": 12.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.6 x 12.1 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "White finish variant of the Angry Orange; planner last-resort cutout.",
+    "lastVerified": "2026-10-28",
+    "confidence": "likely",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange-white.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-angry-orange-white.png",
+        "sourcePage": "https://robertkeeley.com/product/angry-orange-distortion-and-fuzz/",
+        "priority": 1,
+        "notes": "Planner last-resort cutout for a finish variant."
+      }
+    ]
   },
   {
     "id": "keeley-aria",
@@ -237,37 +991,147 @@
       "compressor",
       "overdrive"
     ],
-    "widthCm": 9.4,
-    "heightCm": 12.45,
+    "widthCm": 9.5,
+    "heightCm": 12.0,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/aria-compressor-overdrive/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/keeley-electronics-unveils-the-aria-compressor-overdrive",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Keeley-Electronics-Aria-Compressor-Drive-V2-Front-Effects-Pedal-scaled-1.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.thomannmusic.com/keeley_aria.htm",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/Keeley-Electronics-Aria-Compressor-Drive-V2-Front-Effects-Pedal-scaled-1.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 2560x2560 (trim 1507x2002); final 800 rendition; upscale 0.4x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Blend",
+        "Sustain",
+        "Tone",
+        "Drive",
+        "Gain",
+        "FX order switch",
+        "Low/High switch"
+      ],
+      "dimensions": "9.5 x 12.0 cm",
+      "power": "9V DC, 50 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley Aria dual-stomp enclosure, 120 x 95 x 50 mm (Warwick official spec).",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "INSERT",
+        "kind": "send",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "note": "1/4-inch TRS insert to split the two circuits; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 50,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 50 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "dual on/bypass",
+        "tapTempo": false,
+        "note": "Compressor + overdrive dual stomp with TRS insert and switchable order."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 12.0,
+        "enclosure": "metal",
+        "footswitches": 2,
+        "note": "Footprint 9.5 x 12.0 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Compressor + overdrive dual stomp with TRS insert and switchable order.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Keeley-Electronics-Aria-Compressor-Drive-V2-Front-Effects-Pedal-scaled-1.jpg",
+        "sourcePage": "https://robertkeeley.com/product/aria-compressor-overdrive/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-aurora",
@@ -277,37 +1141,135 @@
     "effectTypes": [
       "reverb"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/aurora-digital-reverb-shirt-namm-special/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.scan.co.uk/products/keeley-aurora-digital-reverb-pedal",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Aurora-Reverb-Front-10-2017-e1524686581797.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.musiciansfriend.com/amplifiers-effects/keeley-aurora-digital-reverb-guitar-effects-pedal/j21560000000000",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/Aurora-Reverb-Front-10-2017-e1524686581797.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 462x781); final 800 rendition; upscale 1.02x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Decay",
+        "Mix",
+        "Tone",
+        "Reverb mode"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 65 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 65 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Digital reverb pedal."
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Digital reverb pedal.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Aurora-Reverb-Front-10-2017-e1524686581797.jpg",
+        "sourcePage": "https://robertkeeley.com/product/aurora-digital-reverb-shirt-namm-special/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-bassist-compressor",
@@ -317,17 +1279,135 @@
     "effectTypes": [
       "compressor"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/BassistCompressorFaceNewLogo-e1524687184538.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 460x789); final 800 rendition; upscale 1.01x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Blend",
+        "Sustain",
+        "Tone"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 15 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 15,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 15 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Bass compressor/limiting amplifier."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "bass",
+    "status": "current",
+    "notes": "Bass compressor/limiting amplifier.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/bassist-compressor/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BassistCompressorFaceNewLogo-e1524687184538.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BassistCompressorFaceNewLogo-e1524687184538.jpg",
+        "sourcePage": "https://robertkeeley.com/product/bassist-compressor/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-black-glass",
@@ -337,31 +1417,134 @@
     "effectTypes": [
       "fuzz"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/black-glass-british-fuzz/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.premierguitar.com/keeley-electronics-announces-black-glass-british-fuzz",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Black-Glass-OC44-Red-Face-Keeley-e1524692161529.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/Black-Glass-OC44-Red-Face-Keeley-e1524692161529.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 452x770); final 800 rendition; upscale 1.04x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Bias",
+        "Fuzz"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 20 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 20 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "British fuzz with OC44 germanium transistor."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "British fuzz with OC44 germanium transistor.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Black-Glass-OC44-Red-Face-Keeley-e1524692161529.jpg",
+        "sourcePage": "https://robertkeeley.com/product/black-glass-british-fuzz/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-blacktop",
@@ -371,31 +1554,134 @@
     "effectTypes": [
       "fuzz"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/cole-test/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.amazon.com/Keeley-Electronics-Blacktop-Vintage-Silicon/dp/B016H05JCA",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BlacktopFuzzFaceKeeley1-scaled.jpg",
         "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/BlacktopFuzzFaceKeeley1-scaled.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 2560x2560 (trim 1159x1972); final 800 rendition; upscale 0.41x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Bias",
+        "Fuzz"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 20 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 20 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Vintage-silicon fuzz."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Vintage-silicon fuzz.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/BlacktopFuzzFaceKeeley1-scaled.jpg",
+        "sourcePage": "https://robertkeeley.com/product/cole-test/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-blues-disorder",
@@ -407,36 +1693,137 @@
       "distortion"
     ],
     "widthCm": 6.6,
-    "heightCm": 12.09,
+    "heightCm": 12.1,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.thomannmusic.com/keeley_blues_disorder_overdrive_dist.htm",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Blues-Disorder-Overdrive-and-Distortion-Effect-Pedal-001-Front-Transparent-Background.png",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.musicradar.com/news/keeley-electronics-4-in-1-series-angry-orange-blues-disorder-super-rodent",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Blues-Disorder-Overdrive-and-Distortion-Effect-Pedal-001-Front-Transparent-Background.png",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 2718x2718 (trim 1150x2113); final 800 rendition; upscale 0.38x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Tone",
+        "Drive",
+        "Level",
+        "Tone toggle",
+        "Drive toggle"
+      ],
+      "dimensions": "6.6 x 12.1 cm",
+      "power": "9-18V DC, 29 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley 4-in-1 enclosure, 66 x 120.9 mm (2.6 x 4.76 in); official top-down render aspect.",
+    "jackLayout": {
+      "source": "Official Keeley Angry Orange / Blues Disorder gallery: JACK FACE + INPUT side + OUTPUT side photos show INPUT (left), 9VDC (centre) and OUTPUT (right) on the crown/top end face; the long sides show no jacks.",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; connector on the crown/top end face (verified from official gallery side/jack photos).",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9-18V DC center-negative, 22-29 mA; 2.1 x 5.5 mm barrel; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Bluesbreaker-style overdrive + OCD-style distortion, 4-in-1 toggles."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass or buffered/trails, switchable."
+      },
+      "physical": {
+        "depthCm": 12.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.6 x 12.1 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Bluesbreaker-style overdrive + OCD-style distortion, 4-in-1 toggles.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/10/Keeley-Electronics-Blues-Disorder-Overdrive-and-Distortion-Effect-Pedal-001-Front-Transparent-Background.png",
+        "sourcePage": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-blues-disorder-signalis",
@@ -448,17 +1835,137 @@
       "distortion"
     ],
     "widthCm": 6.6,
-    "heightCm": 12.09,
+    "heightCm": 12.1,
     "variantOf": "keeley-blues-disorder",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder.png",
+      "status": "last-resort",
+      "note": "Pedalplayground/planner cutout used as a last resort for a finish variant with no official finish photo; counted source gap. Source 800x1463 (trim 800x1463); final 800 rendition; upscale 0.55x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Tone",
+        "Drive",
+        "Level",
+        "Tone toggle",
+        "Drive toggle"
+      ],
+      "dimensions": "6.6 x 12.1 cm",
+      "power": "9-18V DC, 29 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Same Keeley 4-in-1 enclosure as Blues Disorder, 66 x 120.9 mm.",
+    "jackLayout": {
+      "source": "Official Keeley Angry Orange / Blues Disorder gallery: JACK FACE + INPUT side + OUTPUT side photos show INPUT (left), 9VDC (centre) and OUTPUT (right) on the crown/top end face; the long sides show no jacks.",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; connector on the crown/top end face (verified from official gallery side/jack photos).",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9-18V DC center-negative, 22-29 mA; 2.1 x 5.5 mm barrel; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Finish variant; no official finish photo published."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass or buffered/trails, switchable."
+      },
+      "physical": {
+        "depthCm": 12.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.6 x 12.1 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Finish variant; no official finish photo published.",
+    "lastVerified": "2026-10-28",
+    "confidence": "likely",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder.png",
+        "sourcePage": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "priority": 1,
+        "notes": "Planner last-resort cutout for a finish variant."
+      }
+    ]
   },
   {
     "id": "keeley-blues-disorder-white",
@@ -470,17 +1977,137 @@
       "distortion"
     ],
     "widthCm": 6.6,
-    "heightCm": 12.09,
+    "heightCm": 12.1,
     "variantOf": "keeley-blues-disorder",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder-white.png",
+      "status": "last-resort",
+      "note": "Pedalplayground/planner cutout used as a last resort for a finish variant with no official finish photo; counted source gap. Source 350x640 (trim 350x640); final 800 rendition; upscale 1.25x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Tone",
+        "Drive",
+        "Level",
+        "Tone toggle",
+        "Drive toggle"
+      ],
+      "dimensions": "6.6 x 12.1 cm",
+      "power": "9-18V DC, 29 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Same Keeley 4-in-1 enclosure as Blues Disorder, 66 x 120.9 mm.",
+    "jackLayout": {
+      "source": "Official Keeley Angry Orange / Blues Disorder gallery: JACK FACE + INPUT side + OUTPUT side photos show INPUT (left), 9VDC (centre) and OUTPUT (right) on the crown/top end face; the long sides show no jacks.",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; connector on the crown/top end face (verified from official gallery side/jack photos).",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 29,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9-18V DC center-negative, 22-29 mA; 2.1 x 5.5 mm barrel; no battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "White finish variant; planner last-resort cutout."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass or buffered/trails, switchable."
+      },
+      "physical": {
+        "depthCm": 12.1,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.6 x 12.1 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "White finish variant; planner last-resort cutout.",
+    "lastVerified": "2026-10-28",
+    "confidence": "likely",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder-white.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-blues-disorder-white.png",
+        "sourcePage": "https://robertkeeley.com/product/blues-disorder-overdrive-and-distortion/",
+        "priority": 1,
+        "notes": "Planner last-resort cutout for a finish variant."
+      }
+    ]
   },
   {
     "id": "keeley-bubble-tron",
@@ -493,37 +2120,136 @@
       "envelope",
       "filter"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "sources": [
       {
         "url": "https://robertkeeley.com/product/bubble-tron-dynamic-flanger-phaser/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://www.thomann.co.uk/keeley_bubble_tron.htm",
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Bubble_Tron_Filter_Flanger_Phase_Face_Keeley-e1524777844761.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.musicradar.com/news/guitars/keeley-electronics-bubble-tron-pedal-assembles-the-vintage-effect-classics-that-never-were-640529",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/Bubble_Tron_Filter_Flanger_Phase_Face_Keeley-e1524777844761.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 600x600 (trim 271x467); final 800 rendition; upscale 1.71x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Rate",
+        "Depth",
+        "Sensitivity",
+        "Mode"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 65 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 65 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Dynamic envelope flanger/phaser/filter."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Dynamic envelope flanger/phaser/filter.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Bubble_Tron_Filter_Flanger_Phase_Face_Keeley-e1524777844761.jpg",
+        "sourcePage": "https://robertkeeley.com/product/bubble-tron-dynamic-flanger-phaser/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
   },
   {
     "id": "keeley-bubble-tron-ler",
@@ -536,18 +2262,136 @@
       "envelope",
       "filter"
     ],
-    "widthCm": 6.93,
-    "heightCm": 11.43,
+    "widthCm": 6.4,
+    "heightCm": 11.4,
     "variantOf": "keeley-bubble-tron",
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-bubble-tron-ler.png",
+      "status": "last-resort",
+      "note": "Official front photo includes a white Artist Series caption card (fails the clean-alpha gate); planner cutout used as a recorded last resort and counted as a source gap. Source 463x763 (trim 461x763); final 800 rendition; upscale 1.05x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
-    }
+      "controls": [
+        "Level",
+        "Rate",
+        "Depth",
+        "Sensitivity",
+        "Mode"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 65 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 65,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 65 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Larry \"Ler\" LaLonde artist-series Bubble Tron."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Larry \"Ler\" LaLonde artist-series Bubble Tron.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/ler-bubble-tron-envelope-filter-flanger-phaser/",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-bubble-tron-ler.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://raw.githubusercontent.com/PedalPlayground/PedalPlayground/master/app/images/pedals/keeley-bubble-tron-ler.png",
+        "sourcePage": "https://robertkeeley.com/product/ler-bubble-tron-envelope-filter-flanger-phaser/",
+        "priority": 1,
+        "notes": "Planner last-resort cutout; the official front photo carries a separate white Artist Series caption card that fails the clean-alpha gate."
+      }
+    ]
   },
   {
     "id": "keeley-california-girls",
@@ -565,36 +2409,1364 @@
       {
         "url": "https://robertkeeley.com/product/beach-boys-california-girls-12-string-simulator/",
         "kind": [
-          "info"
+          "info",
+          "image"
         ]
       },
       {
-        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-The-Beach-Boys-California-Girls-Twelve-String-Simulator-Instructions.pdf",
+        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-Beach-Boys-California-Girls-12-String-Simulator-001-Front-1-scaled.jpg",
         "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.sweetwater.com/store/detail/CaliGirls--keeley-california-girls-twelve-string-simulator-pedal-sweetwater-exclusive",
-        "kind": [
-          "info"
-        ]
-      },
-      {
-        "url": "https://www.premierguitar.com/news/keeley-beach-boys-pedals",
-        "kind": [
-          "info"
+          "image"
         ]
       }
     ],
     "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-Beach-Boys-California-Girls-12-String-Simulator-001-Front-1-scaled.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 2560x2560 (trim 1683x1998); final 800 rendition; upscale 0.4x."
     },
     "extra": {
-      "promotedFrom": "legacy",
-      "promotedBatch": "keeley-1"
+      "controls": [
+        "Blend",
+        "Chorus",
+        "Rate",
+        "Echo switch",
+        "Echo Level",
+        "Octave Tone",
+        "On footswitch",
+        "X2 footswitch"
+      ],
+      "dimensions": "10.16 x 12.8 cm",
+      "power": "9V DC, 130 mA, center-negative"
+    },
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "imageFormat": "avif",
+    "dimensionsSource": "Footprint estimated from the official product render (4.0 x 5.04 in); manufacturer/Sweetwater do not publish unit dimensions (limited run, discontinued).",
+    "jackLayout": {
+      "source": "Official Keeley California Girls gallery: CG JACKS + LEFT side + RIGHT side photos show L Input, R Input, 9VDC, L Output, R Output all on the crown/top end face.",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT L",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left/mono 1/4-inch input; use left when running mono; on the crown/top end face (verified from the official CG JACKS + LEFT/RIGHT side photos).",
+        "edge": "top"
+      },
+      {
+        "label": "INPUT R",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right 1/4-inch input (stereo); on the crown/top end face (verified from the official CG JACKS + LEFT/RIGHT side photos).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Left/mono 1/4-inch output; on the crown/top end face (verified from the official CG JACKS + LEFT/RIGHT side photos).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "Right 1/4-inch output (stereo); on the crown/top end face (verified from the official CG JACKS + LEFT/RIGHT side photos).",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 130,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 130 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Stereo 1/4-inch in and out; use left for mono."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Stereo 1/4-inch in and out; use left for mono."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Beach Boys 12-string simulator with octave, chorus and 66 ms slapback echo; stereo in/out."
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass or buffered/trails, switchable."
+      },
+      "physical": {
+        "depthCm": 12.8,
+        "enclosure": "metal",
+        "footswitches": 2,
+        "note": "Footprint 10.16 x 12.8 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "both",
+    "status": "discontinued",
+    "notes": "Beach Boys 12-string simulator with octave, chorus and 66 ms slapback echo; stereo in/out.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2024/04/Keeley-Electronics-Beach-Boys-California-Girls-12-String-Simulator-001-Front-1-scaled.jpg",
+        "sourcePage": "https://robertkeeley.com/product/beach-boys-california-girls-12-string-simulator/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ]
+  },
+  {
+    "id": "keeley-caverns",
+    "brand": "Keeley",
+    "name": "Caverns",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 9.5,
+    "heightCm": 12.0,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley Caverns V2, 95 x 120 x 50 mm (Musik Produktiv official spec).",
+    "jackLayout": {
+      "source": "Official Keeley Caverns V2 product page: \"Top-Mounted Jacks allow for a compact pedalboard layout.\"",
+      "confidence": "verified"
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source).",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified.",
+        "edge": "top"
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 110,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 110 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Delay + reverb; top-mounted jacks; true bypass or trails."
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 12.0,
+        "enclosure": "metal",
+        "footswitches": 2,
+        "note": "Footprint 9.5 x 12.0 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Delay + reverb; top-mounted jacks; true bypass or trails.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/caverns-delay-reverb-v2/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/07/Caverns-Delay-Reverb-v2-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/07/Caverns-Delay-Reverb-v2-Keeley-Electronics.png",
+        "sourcePage": "https://robertkeeley.com/product/caverns-delay-reverb-v2/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2017/07/Caverns-Delay-Reverb-v2-Keeley-Electronics.png",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 800x800 (trim 467x617); final 800 rendition; upscale 1.3x."
+    },
+    "extra": {
+      "controls": [
+        "Delay Time",
+        "Blend",
+        "Repeat",
+        "Rate",
+        "Reverb Blend",
+        "Warmth",
+        "Decay",
+        "Rate",
+        "Reverb mode",
+        "Delay mod mode"
+      ],
+      "dimensions": "9.5 x 12.0 cm",
+      "power": "9V DC, 110 mA, center-negative"
+    }
+  },
+  {
+    "id": "keeley-compressor-plus",
+    "brand": "Keeley",
+    "name": "Compressor Plus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.35 x 4.41 in (60 x 112 mm); official Keeley spec + retailer dimensions.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 10,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 10 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Four-knob compressor with blend, tone and single-coil/humbucker release switch."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "both",
+    "status": "current",
+    "notes": "Four-knob compressor with blend, tone and single-coil/humbucker release switch.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/keeley-compressor-plus/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/06/Keeley-Compressor-Plus-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2017/06/Keeley-Compressor-Plus-Keeley-Electronics.png",
+        "sourcePage": "https://robertkeeley.com/product/keeley-compressor-plus/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2017/06/Keeley-Compressor-Plus-Keeley-Electronics.png",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 800x800 (trim 335x558); final 800 rendition; upscale 1.43x."
+    },
+    "extra": {
+      "controls": [
+        "Sustain",
+        "Level",
+        "Blend",
+        "Tone",
+        "Attack/Release toggle"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 10 mA, center-negative"
+    }
+  },
+  {
+    "id": "keeley-d-m-drive",
+    "brand": "Keeley",
+    "name": "D&M Drive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive",
+      "boost"
+    ],
+    "widthCm": 9.5,
+    "heightCm": 12.0,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley D&M Drive, 120 x 95 x 50 mm / 4.7 x 3.7 x 2 in (Andertons + Musician's Friend official spec).",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "INSERT",
+        "kind": "send",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "note": "1/4-inch TRS insert to split the two circuits; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 55,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 55 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "dual on/bypass",
+        "tapTempo": false,
+        "note": "That Pedal Show signature boost + overdrive dual pedal."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 12.0,
+        "enclosure": "metal",
+        "footswitches": 2,
+        "note": "Footprint 9.5 x 12.0 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "That Pedal Show signature boost + overdrive dual pedal.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/dm-drive/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/DM-Orange-Face-e1524683530786.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/DM-Orange-Face-e1524683530786.jpg",
+        "sourcePage": "https://robertkeeley.com/product/dm-drive/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/DM-Orange-Face-e1524683530786.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 614x799); final 800 rendition; upscale 1x."
+    },
+    "extra": {
+      "controls": [
+        "Boost Level",
+        "Boost Tone",
+        "Boost Mid",
+        "Drive Gain",
+        "Drive Tone",
+        "Drive Level",
+        "Order switch"
+      ],
+      "dimensions": "9.5 x 12.0 cm",
+      "power": "9V DC, 55 mA, center-negative"
+    }
+  },
+  {
+    "id": "keeley-dark-side",
+    "brand": "Keeley",
+    "name": "Dark Side",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "fuzz",
+      "delay",
+      "phaser",
+      "flanger",
+      "rotary"
+    ],
+    "widthCm": 12.0,
+    "heightCm": 9.9,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley Dark Side Workstation, 4.72 x 3.9 x 2.09 in / 120 x 99 x 53 mm (Musician's Friend + Warwick official spec).",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "INSERT",
+        "kind": "send",
+        "connector": "trs",
+        "channels": 1,
+        "signal": "audio",
+        "note": "1/4-inch TRS insert to split the two circuits; edge not verified."
+      },
+      {
+        "label": "EXPRESSION",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4-inch TRS expression input; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 75 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "dual on/bypass",
+        "tapTempo": false,
+        "note": "Fuzz + multi-head tape delay + flanger/rotary/U-Vibe/phaser workstation.",
+        "expression": 1
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 9.9,
+        "enclosure": "metal",
+        "footswitches": 2,
+        "note": "Footprint 12.0 x 9.9 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Fuzz + multi-head tape delay + flanger/rotary/U-Vibe/phaser workstation.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/dark-side/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2016/09/Dark-Side-Guitar-Pedal-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2016/09/Dark-Side-Guitar-Pedal-Keeley-Electronics.png",
+        "sourcePage": "https://robertkeeley.com/product/dark-side/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2016/09/Dark-Side-Guitar-Pedal-Keeley-Electronics.png",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 800x800 (trim 651x529); final 800 rendition; upscale 1.23x."
+    },
+    "extra": {
+      "controls": [
+        "Fuzz Level",
+        "Filter",
+        "Fuzz mode",
+        "Blend",
+        "Depth/Time",
+        "Rate/Feedback",
+        "Delay/mod select",
+        "Order switch"
+      ],
+      "dimensions": "12.0 x 9.9 cm",
+      "power": "9V DC, 75 mA, center-negative"
+    }
+  },
+  {
+    "id": "keeley-delay-workstation",
+    "brand": "Keeley",
+    "name": "Delay Workstation",
+    "category": "pedal",
+    "deviceType": "multi-fx",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 12.0,
+    "heightCm": 9.7,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley Delay Workstation, 119.4 x 97 mm / 121 x 94 x 34 mm (PedalBro + retailer official spec).",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      },
+      {
+        "label": "EXPRESSION",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4-inch TRS expression input; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 170,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 170 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": true,
+        "note": "Dual DSP delay + reverb workstation; tap tempo and expression.",
+        "expression": 1
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 9.7,
+        "enclosure": "metal",
+        "footswitches": 2,
+        "note": "Footprint 12.0 x 9.7 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Dual DSP delay + reverb workstation; tap tempo and expression.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/delay-workstation/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Delay-Workstation-Front-e1524682787320.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Delay-Workstation-Front-e1524682787320.jpg",
+        "sourcePage": "https://robertkeeley.com/product/delay-workstation/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/Delay-Workstation-Front-e1524682787320.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 826x690); final 800 rendition; upscale 0.97x."
+    },
+    "extra": {
+      "controls": [
+        "Blend",
+        "Decay",
+        "Tone",
+        "Morph",
+        "Blend",
+        "Time",
+        "Regen",
+        "Depth"
+      ],
+      "dimensions": "12.0 x 9.7 cm",
+      "power": "9V DC, 170 mA, center-negative"
+    }
+  },
+  {
+    "id": "keeley-dynatrem",
+    "brand": "Keeley",
+    "name": "Dynatrem",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "tremolo",
+      "vibrato"
+    ],
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 60,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 60 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "Dynamic wavetable tremolo/vibrato."
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Dynamic wavetable tremolo/vibrato.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/wavetable-tremolo-shirt-namm-special-copy-copy/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Dyna-Trem-New-Logo-Straight-HR-e1524685231797.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/Dyna-Trem-New-Logo-Straight-HR-e1524685231797.jpg",
+        "sourcePage": "https://robertkeeley.com/product/wavetable-tremolo-shirt-namm-special-copy-copy/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/Dyna-Trem-New-Logo-Straight-HR-e1524685231797.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 463x775); final 800 rendition; upscale 1.03x."
+    },
+    "extra": {
+      "controls": [
+        "Rate",
+        "Depth",
+        "Shape",
+        "Level",
+        "Mode"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 60 mA, center-negative"
+    }
+  },
+  {
+    "id": "keeley-eccos",
+    "brand": "Keeley",
+    "name": "Eccos",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay",
+      "looper"
+    ],
+    "widthCm": 6.7,
+    "heightCm": 12.2,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley ECCOS, 2.63 x 4.8 x 1.96 in (67 x 122 mm); official manual + retailer spec.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT L/MONO",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4-inch mono/left input; edge not verified."
+      },
+      {
+        "label": "INPUT R",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4-inch right input (true stereo); edge not verified."
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4-inch mono/left output; edge not verified."
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "note": "1/4-inch right output (true stereo); edge not verified."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4-inch TRS expression input; edge not verified."
+      },
+      {
+        "label": "REMOTE/TAP",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4-inch TRS remote tap/looper control; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 115,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 115 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "balanced": false,
+      "level": "instrument",
+      "note": "True-stereo 1/4-inch in/out; analog dry path."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "balanced": false,
+        "level": "instrument",
+        "note": "True-stereo 1/4-inch in/out; analog dry path."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": true,
+        "note": "True-stereo tape-flanged delay + looper; expression and remote tap.",
+        "expression": 1
+      },
+      "circuit": {
+        "type": "hybrid",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 12.2,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.7 x 12.2 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "True-stereo tape-flanged delay + looper; expression and remote tap.",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/eccos-delay-looper/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2019/10/ECCOS-Delay-Looper-Keeley-Electronics.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2019/10/ECCOS-Delay-Looper-Keeley-Electronics.png",
+        "sourcePage": "https://robertkeeley.com/product/eccos-delay-looper/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2019/10/ECCOS-Delay-Looper-Keeley-Electronics.png",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 800x800 (trim 382x635); final 800 rendition; upscale 1.26x."
+    },
+    "extra": {
+      "controls": [
+        "Time",
+        "Blend",
+        "Depth",
+        "Feedback",
+        "Rate",
+        "Mod",
+        "Tone",
+        "Level",
+        "Mode"
+      ],
+      "dimensions": "6.7 x 12.2 cm",
+      "power": "9V DC, 115 mA, center-negative"
+    }
+  },
+  {
+    "id": "keeley-el-rey-dorado",
+    "brand": "Keeley",
+    "name": "El Rey Dorado",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 6.4,
+    "heightCm": 11.4,
+    "imageFormat": "avif",
+    "dimensionsSource": "Keeley standard compact enclosure, 2.4-2.6 in x 4.4 in; official top-down render aspect.",
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "No official connector-face source found for this model in the batch pass; edges omitted and the app uses assumed anchors."
+    },
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono input; edge not verified (no official connector-face source)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "channels": 1,
+        "signal": "audio",
+        "balanced": false,
+        "level": "instrument",
+        "stereo": false,
+        "note": "1/4-inch TS mono output; edge not verified."
+      }
+    ],
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2.1 x 5.5 mm",
+      "note": "9V DC center-negative, 20 mA; 2.1 x 5.5 mm barrel."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "balanced": false,
+      "level": "instrument",
+      "note": "Mono in/out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "balanced": false,
+        "level": "instrument",
+        "note": "Mono in/out."
+      },
+      "control": {
+        "footswitch": true,
+        "footswitchType": "on/bypass",
+        "tapTempo": false,
+        "note": "British-voiced overdrive (Marshall-in-a-box style)."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "True bypass."
+      },
+      "physical": {
+        "depthCm": 11.4,
+        "enclosure": "metal",
+        "footswitches": 1,
+        "note": "Footprint 6.4 x 11.4 cm."
+      },
+      "lifecycle": {
+        "madeIn": "Edmond, OK, USA"
+      },
+      "note": "Optional facts captured from the same official product/spec pass."
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "British-voiced overdrive (Marshall-in-a-box style).",
+    "lastVerified": "2026-10-28",
+    "confidence": "confirmed",
+    "sources": [
+      {
+        "url": "https://robertkeeley.com/product/el-ray-dorado/",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/El-Rey-Dorado-Front-e1524681406543.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://robertkeeley.com/wp-content/uploads/2023/05/El-Rey-Dorado-Front-e1524681406543.jpg",
+        "sourcePage": "https://robertkeeley.com/product/el-ray-dorado/",
+        "priority": 1,
+        "notes": "Final shipped asset source."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://robertkeeley.com/wp-content/uploads/2023/05/El-Rey-Dorado-Front-e1524681406543.jpg",
+      "status": "chosen",
+      "note": "Official Keeley product image. Source 1000x1000 (trim 460x778); final 800 rendition; upscale 1.03x."
+    },
+    "extra": {
+      "controls": [
+        "Level",
+        "Tone",
+        "Drive"
+      ],
+      "dimensions": "6.4 x 11.4 cm",
+      "power": "9V DC, 20 mA, center-negative"
     }
   }
 ]

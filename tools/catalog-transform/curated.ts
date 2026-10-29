@@ -313,6 +313,14 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 	"keeley-blues-disorder": ["overdrive", "distortion"],
 	"keeley-bubble-tron": ["flanger", "phaser", "envelope", "filter"],
 	"keeley-california-girls": ["octave", "chorus", "delay"],
+	"keeley-caverns": ["delay", "reverb"],
+	"keeley-compressor-plus": ["compressor"],
+	"keeley-d-m-drive": ["overdrive", "boost"],
+	"keeley-dark-side": ["fuzz", "delay", "phaser", "flanger", "rotary"],
+	"keeley-delay-workstation": ["delay", "reverb"],
+	"keeley-dynatrem": ["tremolo", "vibrato"],
+	"keeley-eccos": ["delay", "looper"],
+	"keeley-el-rey-dorado": ["overdrive"],
 
 	// EarthQuaker Devices
 	"earthquaker-a-b-box": ["ab-box"],
