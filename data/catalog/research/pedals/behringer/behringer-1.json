@@ -4,19 +4,3165 @@
     "brand": "Behringer",
     "name": "Powerplay P1",
     "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "other",
+    "instrumentTypes": [
+      "other"
+    ],
     "effectTypes": [
       "utility"
     ],
-    "widthCm": 8.38,
-    "heightCm": 12.4,
-    "imageProvenance": {
-      "kind": "legacy",
-      "status": "pending-replacement",
-      "note": "Legacy asset cleared for replacement; source not recorded."
+    "widthCm": 12.5,
+    "heightCm": 8.5,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/c1817b2601b74395a239210b97f32b59/QSG_BE_0609-AAE_P1_WW.pdf): Dimensions (H x W x D) 45 x 125 x 85 mm; footprint 12.5 x 8.5 cm (W x D).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT L",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "XLR input L/1; balanced, 20 kOhm."
+      },
+      {
+        "label": "INPUT R",
+        "kind": "in",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "XLR input R/2; balanced, 20 kOhm."
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "signal": "audio",
+        "note": "3.5 mm TRS headphone output; 10 Ohm per channel, max 9.5 dBu."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC input."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
     },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "barrel",
+      "battery": "9 V block alkaline or 8.4 V NiMH rechargeable; up to 12 h",
+      "note": "9 V DC external adapter (pin negative, ring positive) or 9 V battery; battery-life LEDs."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 1,
+      "balanced": true,
+      "level": "headphone",
+      "headphone": true,
+      "inputImpedanceOhm": 20000,
+      "outputImpedanceOhm": 10,
+      "maxOutputLevelDbu": 9.5,
+      "note": "Two balanced XLR inputs (mono or stereo), one 3.5 mm headphone output; volume and balance controls."
+    },
+    "optional": {
+      "physical": {
+        "footswitches": 0,
+        "enclosure": "metal",
+        "jackOrientation": "XLR inputs on the sides; 3.5 mm phones and DC on the front/end",
+        "note": "Belt-pack personal in-ear monitor amplifier; mic-stand/drum-stand mountable."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "none",
+        "note": "Headphone amplifier; no bypass."
+      }
+    },
+    "notes": "Personal in-ear monitor (IEM) headphone amplifier in a belt-pack form factor; two XLR inputs, volume/balance, mono or stereo mode.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0609-AAE",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c1817b2601b74395a239210b97f32b59/QSG_BE_0609-AAE_P1_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/de5db7f7796c447e841aa1c6b0b2ea59/Image_BE_0609-AAE_P1_Front_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/105ee7b153f148ef9b1bf1d3eae193f6/Image_BE_0609-AAE_P1_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0609-AAE",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/de5db7f7796c447e841aa1c6b0b2ea59/Image_BE_0609-AAE_P1_Front_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0609-AAE",
+        "priority": 3,
+        "notes": "Official front elevation; not a top-down (rejected for the footprint)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/adb086b6a234408699b94557d5a97e22/Image_BE_0609-AAE_P1_Other_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0609-AAE",
+        "priority": 4,
+        "notes": "Official 3/4 render; rejected as angled."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "own",
+      "status": "chosen",
+      "note": "Generated Catalog Specimen flat art (own). Official Behringer renders are front/rear/side only (no flat top-down); reference used for proportions/colour only. Official dimensions 45 x 125 x 85 mm -> 12.5 x 8.5 cm footprint. Source pixels are not traced.",
+      "referenceUrl": "https://www.behringer.com/en/products/0609-AAE"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
     "extra": {
       "promotedFrom": "legacy",
-      "promotedBatch": "behringer-1"
+      "promotedBatch": "behringer-1",
+      "formFactorNote": "Belt-pack IEM amplifier; no flat top-down official render. Generated Catalog Specimen art used for the catalog image."
+    }
+  },
+  {
+    "id": "behringer-69-vibe",
+    "brand": "Behringer",
+    "name": "69 Vibe",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus",
+      "vibrato"
+    ],
+    "widthCm": 12.002,
+    "heightCm": 10.626,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/94fc825c57124552a00f171fd4590dc3/QSG_BE_0709-ALE_UNI-VIBE_WW.pdf): Dimensions (H x W x D) 120.02 x 106.26 x 56.50 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INST",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 47 kOhm."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 100 kOhm; max +2.0 dBu."
+      },
+      {
+        "label": "FOOT CONTROL",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS expression input for SPEED; 0-5 V control range."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 300,
+      "powerW": 0.9,
+      "battery": "9 V (6LR61)",
+      "note": "Standard 9 V DC, centre negative, >300 mA; 0.9 W."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono in/out; expression pedal control of SPEED."
+    },
+    "optional": {
+      "control": {
+        "expression": 1,
+        "expressionVoltageRange": "0 V to +5 V",
+        "footswitch": true,
+        "footswitchType": "effect on/off + chorus/vibrato mode"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered",
+        "note": "All-analog Uni-Vibe style chorus/vibrato; buffered bypass."
+      },
+      "physical": {
+        "footswitches": 2,
+        "enclosure": "metal",
+        "note": "Two footswitches: effect on/off and chorus/vibrato mode."
+      }
+    },
+    "notes": "All-analog recreation of the Shin-Ei Uni-Vibe with footswitchable chorus and vibrato modes, speed control and expression input.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALE",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/6b55b201263641888f58adca07a844a9/Image_BE_0709-ALE_69-VIBE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/94fc825c57124552a00f171fd4590dc3/QSG_BE_0709-ALE_UNI-VIBE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/6b55b201263641888f58adca07a844a9/Image_BE_0709-ALE_69-VIBE_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALE",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/f853408985894f1ea830f1461bfcf627/Image_BE_0709-ALE_69-VIBE_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALE",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (2000x1993); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/6b55b201263641888f58adca07a844a9/Image_BE_0709-ALE_69-VIBE_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-adi21-acoustic-di-box",
+    "brand": "Behringer",
+    "name": "ADI21 Acoustic DI Box",
+    "category": "pedal",
+    "deviceType": "di",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "di",
+      "acoustic-sim"
+    ],
+    "widthCm": 10.0,
+    "heightCm": 12.7,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/03d5e25720d14d4ba0f26891435bcc71/M_BE_0709-AAK_ADI21_WW.pdf): Dimensions (H x W x D) approx. 127 x 100 x 50 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS instrument input."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS unbalanced output, 1 kOhm."
+      },
+      {
+        "label": "BAL OUT",
+        "kind": "out",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "XLR balanced mic-level output, 200 Ohm; -20 dB pad."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 25,
+      "battery": "9 V (6LR61)",
+      "note": "9 V, >50 mA DC regulated; 25 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "balanced": true,
+      "di": true,
+      "groundLift": true,
+      "pad": true,
+      "note": "Acoustic amp modeler / DI: 1/4 in input, 1/4 in out and balanced XLR out; GND LIFT and -20 dB PAD."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "note": "Analog acoustic amp modeler/DI."
+      },
+      "physical": {
+        "footswitches": 0,
+        "note": "DI box with GND LIFT and PAD switches."
+      }
+    },
+    "notes": "Acoustic amp modeler / direct recording preamp / DI box with balanced XLR output, ground lift and -20 dB pad.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAK",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/cb723865dc654cdf955900bd9c23c364/Image_BE_0709-AAK_ADI21_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/03d5e25720d14d4ba0f26891435bcc71/M_BE_0709-AAK_ADI21_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/cb723865dc654cdf955900bd9c23c364/Image_BE_0709-AAK_ADI21_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AAK",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b9a75205f62f4415b2f031aef9bace9f/Image_BE_0709-AAK_ADI21_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AAK",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1475x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/cb723865dc654cdf955900bd9c23c364/Image_BE_0709-AAK_ADI21_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-b-tron-iii-envelope-filter",
+    "brand": "Behringer",
+    "name": "B-Tron III Envelope Filter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "envelope",
+      "filter"
+    ],
+    "widthCm": 10.0,
+    "heightCm": 17.1,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/502fd012c7514b66b15137d3f0a43037/QSG_BE_0709-ALB_B-TRON III ENVELOPE FILTER.pdf): Dimensions (H x W x D) 61 x 100 x 171 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INST",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 MOhm; max +30 dBu."
+      },
+      {
+        "label": "AMP",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, <600 Ohm; max +13 dBu."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 100,
+      "powerW": 0.25,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA adapter; 0.25 W; battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono envelope filter; instrument input and amp output."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered",
+        "note": "Analog envelope filter with two direction modes."
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "metal"
+      }
+    },
+    "notes": "Analog envelope filter with two direction modes and a versatile input range; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALB",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4e7bc3f3144d82351eb4ed749cbc5097/BE_0709-ALB_B-TRON-III-ENVELOPE-FILTER_Top.webp",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/502fd012c7514b66b15137d3f0a43037/QSG_BE_0709-ALB_B-TRON III ENVELOPE FILTER.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/4e7bc3f3144d82351eb4ed749cbc5097/BE_0709-ALB_B-TRON-III-ENVELOPE-FILTER_Top.webp",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALB",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (2270x4230 WebP); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/4e7bc3f3144d82351eb4ed749cbc5097/BE_0709-ALB_B-TRON-III-ENVELOPE-FILTER_Top.webp"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-bdi21-bass-di-box",
+    "brand": "Behringer",
+    "name": "BDI21 Bass DI Box",
+    "category": "pedal",
+    "deviceType": "di",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "di",
+      "preamp"
+    ],
+    "widthCm": 10.0,
+    "heightCm": 12.7,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/fb537fe25b524c71b6bb77df33a330f6/8849705566238.pdf): Dimensions (H x W x D) approx. 127 x 100 x 50 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS instrument input, 1 MOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS unbalanced output, 1 kOhm."
+      },
+      {
+        "label": "BAL OUT",
+        "kind": "out",
+        "connector": "xlr",
+        "signal": "audio",
+        "balanced": true,
+        "note": "XLR balanced mic-level output, 200 Ohm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "bass",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 25,
+      "battery": "9 V (6LR61)",
+      "note": "9 V, >50 mA DC regulated; 25 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "balanced": true,
+      "di": true,
+      "groundLift": true,
+      "note": "Bass amp modeler / DI: 1/4 in input, 1/4 in out and balanced XLR out; GND LIFT."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "note": "Analog bass amp modeler/DI."
+      },
+      "physical": {
+        "footswitches": 0,
+        "note": "DI box with GND LIFT."
+      }
+    },
+    "notes": "Bass amp modeler / direct recording preamp / DI box with balanced XLR output and ground lift.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAL",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/f0a42610cf584de38ed8260a10ce84e1/Image_BE_0709-AAL_BDI21_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/fb537fe25b524c71b6bb77df33a330f6/8849705566238.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/f0a42610cf584de38ed8260a10ce84e1/Image_BE_0709-AAL_BDI21_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AAL",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/731a8a43990d4423b4466acd5c93f97a/Image_BE_0709-AAL_BDI21_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AAL",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1475x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/f0a42610cf584de38ed8260a10ce84e1/Image_BE_0709-AAL_BDI21_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-beq700-bass-graphic-equalizer",
+    "brand": "Behringer",
+    "name": "BEQ700 Bass Graphic Equalizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/76fde6bb19ab4c3498ed6bc9190d0835/M_BE_0709-ABB_BEQ700_WW.pdf): Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "bass",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono 7-band bass graphic equalizer."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "7-band bass graphic equalizer with level fader; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ABB",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/6e3b26d7ade441f19715398f534dded2/Image_BE_0709-ABB_BEQ700_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/76fde6bb19ab4c3498ed6bc9190d0835/M_BE_0709-ABB_BEQ700_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/6e3b26d7ade441f19715398f534dded2/Image_BE_0709-ABB_BEQ700_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ABB",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1013x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/6e3b26d7ade441f19715398f534dded2/Image_BE_0709-ABB_BEQ700_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-ble400-bass-limiter-enhancer",
+    "brand": "Behringer",
+    "name": "BLE400 Bass Limiter Enhancer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official user manual (Ultimate Dynamics Effects Pedal BLE400, docs on cdn-media.empowertribe.com): Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "bass",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono bass limiter/enhancer."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "Bass limiter/enhancer for smoothing volume peaks; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADI",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b145dee7a79844aeb9996226d3399f5b/Image_BE_0709-ADI_BLE400_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/b145dee7a79844aeb9996226d3399f5b/Image_BE_0709-ADI_BLE400_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ADI",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1065x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/b145dee7a79844aeb9996226d3399f5b/Image_BE_0709-ADI_BLE400_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "manualNote": "No manual link on the current product page; dimensions/current from the official BLE400 user manual (54 x 70 x 123 mm, 30 mA)."
+    }
+  },
+  {
+    "id": "behringer-bm-11m-low-pass-filter",
+    "brand": "Behringer",
+    "name": "BM-11M Low Pass Filter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "synth",
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "filter",
+      "envelope"
+    ],
+    "widthCm": 14.76,
+    "heightCm": 19.69,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/36ecd29ce1a0401ca4288a0787fbe525/QSG_BE_0709-ALM_BM-11M-LOW-PASS-FILTER.pdf): Dimensions (H x W x D) 85.9 x 147.6 x 196.9 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "AUDIO IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 MOhm."
+      },
+      {
+        "label": "AUDIO OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 680 Ohm."
+      },
+      {
+        "label": "ENVELOPE OUT",
+        "kind": "exp-out",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS envelope CV output, +/-2.8 V."
+      },
+      {
+        "label": "CUTOFF CV",
+        "kind": "exp-in",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS CV input, 0-10 V."
+      },
+      {
+        "label": "MIX CV",
+        "kind": "exp-in",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS CV input, 0-5 V."
+      },
+      {
+        "label": "RESONANCE CV",
+        "kind": "exp-in",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS CV input, 0-5 V."
+      },
+      {
+        "label": "AMOUNT CV",
+        "kind": "exp-in",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS CV input, 0-5 V."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "note": "5-pin DIN MIDI input, 16 channels."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 400,
+      "powerW": 3.6,
+      "note": "Standard 9 V DC, centre negative, >400 mA; 3.6 W."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono audio in/out plus multiple CV inputs and envelope CV output."
+    },
+    "optional": {
+      "control": {
+        "cv": true,
+        "cvVoltageRange": "0 V to +10 V (cutoff); 0 V to +5 V (mix/resonance/amount)"
+      },
+      "midi": {
+        "din5": "in",
+        "channels": 16,
+        "note": "5-pin DIN MIDI input."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "metal",
+        "note": "Modular-synth-style stompbox with wood end cheeks."
+      }
+    },
+    "notes": "Modular-synth-style low-pass filter stompbox with envelope follower, multiple CV inputs, envelope CV output and MIDI input.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALM",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/02ea3a428ded4752804626880b6a417f/Image_BE_0709-ALM_BM-11M-LOW-PASS-FILTER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/36ecd29ce1a0401ca4288a0787fbe525/QSG_BE_0709-ALM_BM-11M-LOW-PASS-FILTER.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/02ea3a428ded4752804626880b6a417f/Image_BE_0709-ALM_BM-11M-LOW-PASS-FILTER_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALM",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/49ba44eda2d045b8a21409a48d717b66/Image_BE_0709-ALM_BM-11M-LOW-PASS-FILTER_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALM",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1340x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/02ea3a428ded4752804626880b6a417f/Image_BE_0709-ALM_BM-11M-LOW-PASS-FILTER_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-bm-12-ring-modulator",
+    "brand": "Behringer",
+    "name": "BM-12 Ring Modulator",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "synth",
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "ring-mod"
+    ],
+    "widthCm": 14.76,
+    "heightCm": 19.69,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/a76ae9bbb7d74dbfbaf4d1cc02148c5c/QSG_BE_0709-ALN_BM-12-RING-MODULATOR.pdf): Dimensions (H x W x D) 85.9 x 147.6 x 196.9 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "AUDIO IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 MOhm."
+      },
+      {
+        "label": "AUDIO OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 330 Ohm."
+      },
+      {
+        "label": "CARRIER IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS external carrier input."
+      },
+      {
+        "label": "CV IN",
+        "kind": "exp-in",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS CV input, 0-5 V."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 400,
+      "powerW": 0.7,
+      "note": "Standard 9 V DC, centre negative, >400 mA; 0.7 W."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 1,
+      "note": "Audio input plus external carrier input; mono audio out."
+    },
+    "optional": {
+      "control": {
+        "cv": true,
+        "cvVoltageRange": "0 V to +5 V"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "metal",
+        "note": "Modular-synth-style stompbox with wood end cheeks."
+      }
+    },
+    "notes": "Analog ring modulator with internal LFO and external carrier input; CV input for modulation.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALN",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5f88758d49364ad09ef641b385bf7edf/Image_BE_0709-ALN_BM-12-RING-MODULATOR_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/a76ae9bbb7d74dbfbaf4d1cc02148c5c/QSG_BE_0709-ALN_BM-12-RING-MODULATOR.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/5f88758d49364ad09ef641b385bf7edf/Image_BE_0709-ALN_BM-12-RING-MODULATOR_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALN",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/12f7ac3ade3b4ebe9820b7f0d1cb53c3/Image_BE_0709-ALN_BM-12-RING-MODULATOR_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALN",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1336x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/5f88758d49364ad09ef641b385bf7edf/Image_BE_0709-ALN_BM-12-RING-MODULATOR_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-bm-15m-resonance-filter",
+    "brand": "Behringer",
+    "name": "BM-15M Resonance Filter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "synth",
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "filter",
+      "envelope"
+    ],
+    "widthCm": 14.76,
+    "heightCm": 19.69,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/055dd8005acf4e7a93cbf6f15d473a2e/QSG_BE_0709-ALP_BM-15M-MURF-BOX.pdf): Dimensions (H x W x D) 85.9 x 147.6 x 196.9 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "AUDIO IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 238 kOhm."
+      },
+      {
+        "label": "L/MONO OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "R OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm; stereo pair with L/MONO."
+      },
+      {
+        "label": "CV IN",
+        "kind": "exp-in",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS CV input, 0-5 V."
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "signal": "midi",
+        "note": "5-pin DIN MIDI input; spec lists 2 x 5-pin DIN, 16 channels."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 400,
+      "powerW": 1.8,
+      "note": "Standard 9 V DC, centre negative, >400 mA; 1.8 W."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "note": "Mono audio in; L/MONO and R outputs (stereo pair)."
+    },
+    "optional": {
+      "control": {
+        "cv": true,
+        "cvVoltageRange": "0 V to +5 V"
+      },
+      "midi": {
+        "din5": "in",
+        "channels": 16,
+        "note": "Spec lists 2 x 5-pin DIN, 16 channels."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "metal",
+        "note": "Modular-synth-style stompbox with wood end cheeks."
+      }
+    },
+    "notes": "Modular-synth-style resonance filter with envelope follower, CV input, stereo outputs and MIDI input.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALP",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c5a813480b30467194002af9c24bcb6c/Image_BE_0709-ALP_BM-15M-RESONANCE-FILTER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/055dd8005acf4e7a93cbf6f15d473a2e/QSG_BE_0709-ALP_BM-15M-MURF-BOX.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/c5a813480b30467194002af9c24bcb6c/Image_BE_0709-ALP_BM-15M-RESONANCE-FILTER_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALP",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/3073fc0c6bb94451a382078fc81d79ec/Image_BE_0709-ALP_BM-15M-RESONANCE-FILTER_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ALP",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1338x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/c5a813480b30467194002af9c24bcb6c/Image_BE_0709-ALP_BM-15M-RESONANCE-FILTER_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-bod400-bass-overdrive",
+    "brand": "Behringer",
+    "name": "BOD400 Bass Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official product page (https://www.behringer.com/en/products/0709-ADJ): 54 x 70 x 123 mm; official BOD400 manual confirms approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "bass",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono bass overdrive."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "Bass overdrive with LEVEL, HIGH, LOW and GAIN controls; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADJ",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e095abf9d2e64b65a49db38b045f5b6a/Image_BE_0709-ADJ_BOD400_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/e095abf9d2e64b65a49db38b045f5b6a/Image_BE_0709-ADJ_BOD400_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ADJ",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1020x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/e095abf9d2e64b65a49db38b045f5b6a/Image_BE_0709-ADJ_BOD400_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "manualNote": "No manual link on the current product page; dimensions/current from the official BOD400 user manual (54 x 70 x 123 mm, 30 mA)."
+    }
+  },
+  {
+    "id": "behringer-bass-brassmaster-fuzz",
+    "brand": "Behringer",
+    "name": "Bass Brassmaster Fuzz",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "bass"
+    ],
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 12.0,
+    "heightCm": 10.62,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/4a6c80e360f4482e8fb72b92efdf6169/QSG_BE_0709-AKU_BASS BRASSMASTER FUZZ_WW.pdf): Dimensions (H x W x D) 56.5 x 120.0 x 106.2 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INST",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 10 kOhm."
+      },
+      {
+        "label": "AMP OUT",
+        "kind": "out",
+        "connector": "xlr",
+        "signal": "audio",
+        "note": "XLR output, 800 Ohm unbalanced (per official QSG spec table)."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "bass",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 100,
+      "powerW": 0.2,
+      "battery": "9 V (6LR61)",
+      "note": "Standard 9 V DC, centre negative, >100 mA; 0.2 W; battery operation."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono bass fuzz; official QSG lists an XLR amp output."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "metal",
+        "note": "Two brass sliders, two harmonic switches, bass volume and sensitivity controls."
+      }
+    },
+    "notes": "Analog bass fuzz inspired by the Maestro Bass Brassmaster; two brass/harmonic modes and an XLR amp output.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKU",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/7f613b1e9f69483b9e493d52649ca403/Image_BE_0709-AKU_BASS-BRASSMASTER-FUZZ_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4a6c80e360f4482e8fb72b92efdf6169/QSG_BE_0709-AKU_BASS BRASSMASTER FUZZ_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/7f613b1e9f69483b9e493d52649ca403/Image_BE_0709-AKU_BASS-BRASSMASTER-FUZZ_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKU",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/f782225832df46e3a63d62dd6fc21e37/Image_BE_0709-AKU_BASS-BRASSMASTER-FUZZ_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKU",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1984x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/7f613b1e9f69483b9e493d52649ca403/Image_BE_0709-AKU_BASS-BRASSMASTER-FUZZ_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-cc300-chorus-space-c",
+    "brand": "Behringer",
+    "name": "CC300 Chorus Space-C",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official CC300 user manual (Farnell datasheet 1518566 / official manual text): Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT A",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "OUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm; stereo pair."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "note": "Mono in; OUT A and OUT B for stereo chorus."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic",
+        "note": "Four preset buttons, combinable for 16 chorus variants."
+      }
+    },
+    "notes": "Analog 3-dimensional stereo chorus with four combinable space presets (BOSS Dimension C style).",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ABZ",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.musiciansfriend.com/amplifiers-effects/behringer-cc300-chorus-space-c-guitar-effects-pedal",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://media.musiciansfriend.com/is/image/MMGS7/CC300-Chorus-Space-C-Guitar-Effects-Pedal/H85853000000000-00-2000x2000.jpg",
+        "sourcePage": "https://www.musiciansfriend.com/amplifiers-effects/behringer-cc300-chorus-space-c-guitar-effects-pedal",
+        "priority": 1,
+        "notes": "Retailer product image; flat top-down rectangle, white background."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "retailer",
+      "status": "chosen",
+      "note": "Retailer product image (Musician's Friend product gallery), white background matted with flood; license-pending and counted as a source gap. Source 2000x2000 (pedal 596x1052); no upscale (downscaled 0.76x to 800).",
+      "sourceUrl": "https://media.musiciansfriend.com/is/image/MMGS7/CC300-Chorus-Space-C-Guitar-Effects-Pedal/H85853000000000-00-2000x2000.jpg",
+      "referenceUrl": "https://www.musiciansfriend.com/amplifiers-effects/behringer-cc300-chorus-space-c-guitar-effects-pedal"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "manualNote": "Current Behringer product page 0709-ABZ is retired (404); dimensions/current from the official CC300 user manual. Official product images no longer published."
+    }
+  },
+  {
+    "id": "behringer-cl9-compressor-limiter",
+    "brand": "Behringer",
+    "name": "CL9 Compressor/Limiter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/bd777dd8981a4c9f9410686a584e516b/8849560043550.pdf): Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono compressor/limiter."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "Analog compressor/limiter with attack, level and sustain controls; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADD",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/108290817b264c6ab5737ed6e7d10712/Image_BE_0709-ADD_CL9_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/bd777dd8981a4c9f9410686a584e516b/8849560043550.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/108290817b264c6ab5737ed6e7d10712/Image_BE_0709-ADD_CL9_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ADD",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1014x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/108290817b264c6ab5737ed6e7d10712/Image_BE_0709-ADD_CL9_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-cs400-compressor-sustainer",
+    "brand": "Behringer",
+    "name": "CS400 Compressor Sustainer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official CS400 user manual (official manual text): Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono compressor/sustainer."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "Analog compressor/sustainer with attack, level, sustain and tone controls; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADU",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e153bc437c1f4faea657e35bf05499ea/Image_BE_0709-ADU_CS400_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/e153bc437c1f4faea657e35bf05499ea/Image_BE_0709-ADU_CS400_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ADU",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1021x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/e153bc437c1f4faea657e35bf05499ea/Image_BE_0709-ADU_CS400_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "manualNote": "No manual link on the current product page; dimensions/current from the official CS400 user manual (54 x 70 x 123 mm, 30 mA)."
+    }
+  },
+  {
+    "id": "behringer-centaur-overdrive",
+    "brand": "Behringer",
+    "name": "Zentara Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 12.05,
+    "heightCm": 10.43,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/4a618404d5904a5097e60e66d33da1b9/QSG_BE_0709-AKP_CENTARA-OVERDRIVE_WW.pdf): Dimensions (H x W x D) 65.4 x 120.5 x 104.3 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1300 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 0.56 kOhm; max output gain 41 dB."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 100,
+      "powerW": 0.18,
+      "note": "Standard 9 V DC, centre negative, >100 mA; 0.18 W."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono transparent overdrive."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered",
+        "note": "All-analog Klon-style overdrive with germanium diodes; buffered bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "metal",
+        "finish": "gold"
+      }
+    },
+    "notes": "All-analog transparent overdrive inspired by the Klon Centaur; dual-potentiometer gain, treble and output. Marketed as Centaur Overdrive, then Centara, now Zentara Overdrive.",
+    "status": "current",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKP",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/fb20eb5807b04a2cae9961a387b13877/Image_BE_0709-AKP_ZENTARA-OVERDRIVE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4a618404d5904a5097e60e66d33da1b9/QSG_BE_0709-AKP_CENTARA-OVERDRIVE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/fb20eb5807b04a2cae9961a387b13877/Image_BE_0709-AKP_ZENTARA-OVERDRIVE_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKP",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/d60fcac6d0134070a359a8eda6faea1a/Image_BE_0709-AKP_ZENTARA-OVERDRIVE_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKP",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (2000x1966); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/fb20eb5807b04a2cae9961a387b13877/Image_BE_0709-AKP_ZENTARA-OVERDRIVE_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "aliases": [
+        "Centaur Overdrive",
+        "Centara Overdrive"
+      ],
+      "namingNote": "Behringer originally announced this pedal as CENTAUR OVERDRIVE, later renamed CENTARA and then ZENTARA OVERDRIVE; the catalog id keeps the inventory id behringer-centaur-overdrive."
+    }
+  },
+  {
+    "id": "behringer-chorus-symphony",
+    "brand": "Behringer",
+    "name": "Chorus Symphony",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus",
+      "vibrato"
+    ],
+    "widthCm": 20.003,
+    "heightCm": 14.818,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/52391a3f59574372a33091af7b62ad55/QSG_BE_0709-AKV_CHORUS SYMPHONY_WW.pdf): Dimensions (H x W x D) 200.03 x 148.18 x 59.03 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 480 kOhm."
+      },
+      {
+        "label": "OUTPUT L/MONO",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, <3 kOhm."
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, <3 kOhm; stereo pair."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 300,
+      "powerW": 2,
+      "note": "Standard 9 V DC, centre negative, 300 mA; 2 W."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "note": "Mono in; mono/stereo outputs."
+    },
+    "optional": {
+      "control": {
+        "footswitch": true,
+        "footswitchType": "effect on/off + vibrato/chorus mode"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered",
+        "note": "Vintage 70s BBD chorus and vibrato; wide 3D stereo effect."
+      },
+      "physical": {
+        "footswitches": 2,
+        "enclosure": "metal"
+      }
+    },
+    "notes": "Vintage 70s-style BBD chorus and vibrato with variable input range and wide stereo output.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKV",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/3832e8f827c240288cef4503e1811894/Image_BE_0709-AKV_CHORUS-SYMPHONY_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/52391a3f59574372a33091af7b62ad55/QSG_BE_0709-AKV_CHORUS SYMPHONY_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/3832e8f827c240288cef4503e1811894/Image_BE_0709-AKV_CHORUS-SYMPHONY_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKV",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/7b25b1dcf5d44018a412e08a6f8a41ae/Image_BE_0709-AKV_CHORUS-SYMPHONY_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKV",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (2000x1640); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/3832e8f827c240288cef4503e1811894/Image_BE_0709-AKV_CHORUS-SYMPHONY_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-dd600-digital-delay",
+    "brand": "Behringer",
+    "name": "DD600 Digital Delay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official DD600 user manual (Full Compass copy of the official manual): Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "TEMPO",
+        "kind": "ctrl",
+        "connector": "ts",
+        "signal": "control",
+        "note": "1/4 in TS tap-tempo footswitch input."
+      },
+      {
+        "label": "OUT A",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "PAN OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 70,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 70 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "note": "Mono in; OUT A and PAN OUT; tap-tempo input."
+    },
+    "optional": {
+      "control": {
+        "tapTempo": true,
+        "footswitch": true
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "24-bit digital stereo delay."
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "24-bit digital stereo delay with tap tempo and pan output; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ACS",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/112ac0f7bd5018ad92b1457c654fbf73/Image_BE_0709-ACS_DD600_Media-Top.webp",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/112ac0f7bd5018ad92b1457c654fbf73/Image_BE_0709-ACS_DD600_Media-Top.webp",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ACS",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1067x2048 WebP); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/112ac0f7bd5018ad92b1457c654fbf73/Image_BE_0709-ACS_DD600_Media-Top.webp"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "manualNote": "No manual link on the current product page; dimensions/current from the official DD600 user manual (54 x 70 x 123 mm, 70 mA)."
+    }
+  },
+  {
+    "id": "behringer-dr600-digital-reverb",
+    "brand": "Behringer",
+    "name": "DR600 Digital Reverb",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official product page (https://www.behringer.com/en/products/0709-ADM) and DR600 manual: Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN A",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "IN B",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm; stereo input."
+      },
+      {
+        "label": "OUT A",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "OUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm; stereo output."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 90,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 90 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "note": "Stereo in/out (mono via IN A/OUT A)."
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "24-bit digital stereo reverb."
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "24-bit digital stereo reverb with hall, plate, spring, gate, room and modulate modes; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADM",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ef2f308468ec48578f8c7f95e64b631f/Image_BE_0709-ADM_DR600_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/452d713e84404242ad5024ae6316c3b3/M_BE_0709-ADM_DR600_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/ef2f308468ec48578f8c7f95e64b631f/Image_BE_0709-ADM_DR600_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ADM",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1022x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/ef2f308468ec48578f8c7f95e64b631f/Image_BE_0709-ADM_DR600_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-dual-phase",
+    "brand": "Behringer",
+    "name": "Dual-Phase",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "phaser"
+    ],
+    "widthCm": 20.0,
+    "heightCm": 17.46,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/672bdb264ccd4052a42273466831a9fe/QSG_BE_0709-AJH_DUAL-PHASE_WW.pdf): Dimensions (H x W x D) 62.9 x 200 x 174.6 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN A",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 30 kOhm; max +20 dBu."
+      },
+      {
+        "label": "IN B",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 30 kOhm."
+      },
+      {
+        "label": "OUT A",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, <470 Ohm; max +19.5 dBu."
+      },
+      {
+        "label": "OUT B",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, <470 Ohm."
+      },
+      {
+        "label": "CV IN",
+        "kind": "exp-in",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS CV input, 1 V/oct, 0-5 V."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "9-12 V DC, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 700,
+      "powerW": 6,
+      "note": "Standard 9-12 V DC, centre negative, >700 mA; 6 W. 9 V shown for the catalog; 12 V is also supported."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "note": "Dual phaser with IN/OUT A and B; CV input for sweep control."
+    },
+    "optional": {
+      "control": {
+        "cv": true,
+        "cvVoltageRange": "0 V to +5 V (1 V/oct)",
+        "footswitch": true,
+        "footswitchType": "two independent phasor footswitches"
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered",
+        "note": "Dual analog phaser with sweep generator 1/2."
+      },
+      "physical": {
+        "footswitches": 2,
+        "enclosure": "metal"
+      }
+    },
+    "notes": "Dual analog phaser with two independent phasor sections, sweep generators, CV input and IN/OUT A-B routing.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AJH",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/babc2affa3f44c88b849234249526557/Image_BE_0709-AJH_DUAL-PHASE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/672bdb264ccd4052a42273466831a9fe/QSG_BE_0709-AJH_DUAL-PHASE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/babc2affa3f44c88b849234249526557/Image_BE_0709-AJH_DUAL-PHASE_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AJH",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/aa9ce1da15494a0bb70c5ecf44a61e05/Image_BE_0709-AJH_DUAL-PHASE_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AJH",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (2000x1975); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/babc2affa3f44c88b849234249526557/Image_BE_0709-AJH_DUAL-PHASE_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-eq700-graphic-equalizer",
+    "brand": "Behringer",
+    "name": "EQ700 Graphic Equalizer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official Quick Start Guide (https://cdn-media.empowertribe.com/2e81b8f1303b4bb0864c85fc1ce72c12/M_BE_0709-AAT_EQ700_JP.pdf) / official manual: Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono 7-band graphic equalizer."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "7-band graphic equalizer with level control; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAT",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/74ce320e10e349d4a022061a6cf1faf9/Image_BE_0709-AAT_EQ700_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2e81b8f1303b4bb0864c85fc1ce72c12/M_BE_0709-AAT_EQ700_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/74ce320e10e349d4a022061a6cf1faf9/Image_BE_0709-AAT_EQ700_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AAT",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1009x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/74ce320e10e349d4a022061a6cf1faf9/Image_BE_0709-AAT_EQ700_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-fc600",
+    "brand": "Behringer",
+    "name": "FC600",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 11.2,
+    "heightCm": 29.8,
+    "dimensionsSource": "Behringer official FC600 Quick Start Guide (https://cdn-media.empowertribe.com/20e86927a7384b62b5c64e13f9c11819/8849762779166.pdf): Dimensions (max) 112 x 298 x 130 mm; (min) 112 x 298 x 70 mm. Footprint uses the max depth 29.8 cm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS input."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS output."
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "signal": "control",
+        "note": "1/4 in TRS expression output."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Passive volume/expression foot pedal; no audio processing."
+    },
+    "optional": {
+      "control": {
+        "expression": 1,
+        "footswitch": false
+      },
+      "physical": {
+        "footswitches": 0,
+        "expressionPedal": true,
+        "enclosure": "metal",
+        "note": "Heavy-duty foot pedal with adjustable torque."
+      }
+    },
+    "notes": "Heavy-duty passive foot pedal for volume and expression control; 1/4 in TS input/output and 1/4 in TRS expression output.",
+    "status": "current",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AEY",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ecf61161b11747ecbefc40bd31462cd7/Image_BE_0709-AEY_FC600_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/20e86927a7384b62b5c64e13f9c11819/8849762779166.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/ecf61161b11747ecbefc40bd31462cd7/Image_BE_0709-AEY_FC600_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AEY",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/42f63b34a22046aabd173bc52fd35f1f/Image_BE_0709-AEY_FC600_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AEY",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (732x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/ecf61161b11747ecbefc40bd31462cd7/Image_BE_0709-AEY_FC600_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-fcv100",
+    "brand": "Behringer",
+    "name": "FCV100",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "expression",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 11.7,
+    "heightCm": 24.8,
+    "dimensionsSource": "Behringer official FCV100 Quick Start Guide (https://cdn-media.empowertribe.com/8590db26c5674ca39b4ff96af70d5354/FCV100_QSG_WW.pdf): Dimensions (H x W x D) 113 x 117 x 248 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT 1",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 300 kOhm."
+      },
+      {
+        "label": "INPUT 2",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 300 kOhm."
+      },
+      {
+        "label": "OUTPUT 1",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 560 Ohm."
+      },
+      {
+        "label": "OUTPUT 2",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 560 Ohm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "12 V DC input."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 12,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 10,
+      "battery": "9 V (6LR91)",
+      "note": "12 V DC adapter (>10 mA) or 9 V battery; 7 mA consumption."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "note": "Dual-mode volume pedal: two inputs/two outputs in NORM mode, or CV controller mode."
+    },
+    "optional": {
+      "control": {
+        "expression": 1,
+        "cv": true,
+        "footswitch": false
+      },
+      "physical": {
+        "footswitches": 0,
+        "expressionPedal": true,
+        "enclosure": "metal",
+        "note": "Expression polarity switch TRS/RTS."
+      }
+    },
+    "notes": "Ultra-flexible dual-mode foot pedal for volume and CV/expression control; two inputs and two outputs.",
+    "status": "current",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAI",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5a407c91a6964882ace2ca8aa71c64b9/Image_BE_0709-AAI_FCV100_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/8590db26c5674ca39b4ff96af70d5354/FCV100_QSG_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/5a407c91a6964882ace2ca8aa71c64b9/Image_BE_0709-AAI_FCV100_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AAI",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/3f13e3186e7646f485ec5899aa3908f5/Image_BE_0709-AAI_FCV100_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AAI",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (878x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/5a407c91a6964882ace2ca8aa71c64b9/Image_BE_0709-AAI_FCV100_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "behringer-fd300-ultra-feedback-distortion",
+    "brand": "Behringer",
+    "name": "FD300 Ultra Feedback/Distortion",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official FD300 user manual (Farnell datasheet 1518574 / official manual text): Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "currentMa": 30,
+      "battery": "9 V (6LR61)",
+      "note": "9 V / 100 mA regulated; 30 mA consumption; 9 V battery."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono feedback/distortion."
+    },
+    "optional": {
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered"
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "Ultra feedback/distortion pedal producing endless feedback and sustain; 9 V battery or adapter.",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ACC",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/56a17c63e01e4a5c910e0c987f175524/Image_BE_0709-ACC_FD300_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/56a17c63e01e4a5c910e0c987f175524/Image_BE_0709-ACC_FD300_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ACC",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (994x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/56a17c63e01e4a5c910e0c987f175524/Image_BE_0709-ACC_FD300_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "manualNote": "No manual link on the current product page; dimensions/current from the official FD300 user manual (54 x 70 x 123 mm, 30 mA)."
+    }
+  },
+  {
+    "id": "behringer-fs112bv-dual-footswitch",
+    "brand": "Behringer",
+    "name": "FS112BV Dual Footswitch",
+    "category": "pedal",
+    "deviceType": "controller",
+    "formFactor": "other",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "controller"
+    ],
+    "widthCm": 13.41,
+    "heightCm": 11.33,
+    "dimensionsSource": "Behringer official product page (https://www.behringer.com/en/products/0709-AKY) publishes no dimension table; Tier A inventory dimensions 13.41 x 11.33 cm used; official top-view image aspect 1.182 vs 1.184 (0.1%).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "FOOTSWITCH 1",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Hardwired 1/4 in TRS cable; two-button footswitch (no separate jacks)."
+      },
+      {
+        "label": "FOOTSWITCH 2",
+        "kind": "ctrl",
+        "connector": "trs",
+        "signal": "control",
+        "note": "Second button on the same hardwired 1/4 in TRS cable."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "optional": {
+      "control": {
+        "footswitch": true,
+        "footswitchType": "dual latching/momentary (amp-dependent)",
+        "note": "Two-button footswitch with hardwired 1/4 in TRS cable."
+      },
+      "physical": {
+        "footswitches": 2,
+        "enclosure": "steel",
+        "note": "Heavy-duty steel chassis; 16.4 ft / 5 m hardwired 1/4 in TRS cable."
+      }
+    },
+    "notes": "Dual footswitch with a hardwired 16.4 ft / 5 m 1/4 in TRS cable for amp channel/FX switching; passive.",
+    "status": "current",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKY",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/847edc5099ea47c39fb5cf787a47a28f/Image_BE_0709-AKY_FS112BV_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/847edc5099ea47c39fb5cf787a47a28f/Image_BE_0709-AKY_FS112BV_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKY",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b33f505293f248f182536b594b0e1948/Image_BE_0709-AKY_FS112BV_Rear_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-AKY",
+        "priority": 2,
+        "notes": "Official Behringer rear/side render (connector face evidence)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (2000x1908); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/847edc5099ea47c39fb5cf787a47a28f/Image_BE_0709-AKY_FS112BV_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionGap": "No official dimension table found for FS112BV; inventory dimensions used and cross-checked against the official top-view image aspect. Recorded as a minor source gap."
+    }
+  },
+  {
+    "id": "behringer-fx600-digital-multi-fx",
+    "brand": "Behringer",
+    "name": "FX600 Digital Multi-FX",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "compact",
+    "instrumentTypes": [
+      "guitar",
+      "bass"
+    ],
+    "effectTypes": [
+      "chorus",
+      "flanger",
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 7.0,
+    "heightCm": 12.3,
+    "dimensionsSource": "Behringer official product page (https://www.behringer.com/en/products/0709-ADL) / FX600 manual: Dimensions (H x W x D) approx. 54 x 70 x 123 mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "IN",
+        "kind": "in",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 500 kOhm."
+      },
+      {
+        "label": "OUT",
+        "kind": "out",
+        "connector": "ts",
+        "signal": "audio",
+        "note": "1/4 in TS, 1 kOhm."
+      },
+      {
+        "label": "DC IN",
+        "kind": "power",
+        "connector": "barrel",
+        "signal": "power",
+        "note": "2 mm DC jack, centre negative."
+      }
+    ],
+    "jackLayout": {
+      "confidence": "unknown",
+      "note": "Per-item connector-face edges were not verified from a labelled official connector-face photo in the downloaded sources; edges are omitted and the app uses its clearly-labelled assumed anchors. Rear/left/right official renders are kept in imageCandidates for a future verification pass."
+    },
+    "usage": "both",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "2 mm",
+      "battery": "9 V (6LR61)",
+      "note": "9 V DC, centre negative; 9 V battery or PSU-SB adapter (current not captured)."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "note": "Mono digital multi-FX (chorus, flanger, delay, reverb)."
+    },
+    "optional": {
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Digital multi-FX with four effect families."
+      },
+      "physical": {
+        "footswitches": 1,
+        "enclosure": "plastic"
+      }
+    },
+    "notes": "Digital multi-FX pedal with chorus, flanger, delay and reverb; 9 V battery or adapter. Included as the recorded substitute for the duplicate Centara/Centaur entry.",
+    "status": "current",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADL",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/a188b1bb71f6426db6fe2efe858638cd/Image_BE_0709-ADL_FX600_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/a188b1bb71f6426db6fe2efe858638cd/Image_BE_0709-ADL_FX600_Top_XL.png",
+        "sourcePage": "https://www.behringer.com/en/products/0709-ADL",
+        "priority": 1,
+        "notes": "Official Behringer top-down render."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "status": "chosen",
+      "note": "Official Behringer top-down render (1019x2000); processed to 800/350 AVIF; no upscale (downscaled).",
+      "sourceUrl": "https://cdn-media.empowertribe.com/a188b1bb71f6426db6fe2efe858638cd/Image_BE_0709-ADL_FX600_Top_XL.png"
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "substitutedFor": "behringer-centara-overdrive",
+      "substitutionReason": "Centara is a renamed variant of the same Centaur/Zentara pedal (one product); adding both would duplicate the catalog item. FX600 Digital Multi-FX is the next Tier A Behringer inventory item."
     }
   }
 ]
