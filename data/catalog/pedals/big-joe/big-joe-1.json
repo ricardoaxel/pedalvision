@@ -1,0 +1,91 @@
+[
+  {
+    "id": "big-joe-pb-109-power-box-li2",
+    "brand": "Big Joe",
+    "name": "PB-109 Power Box Li2",
+    "widthCm": 4.1275,
+    "heightCm": 8.255,
+    "image": "big-joe-pb-109-power-box-li2.avif",
+    "imageSource": "static",
+    "effectTypes": [],
+    "category": "supply",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 1000
+    },
+    "usage": "both",
+    "color": "Black anodized aluminum case",
+    "notes": "Rechargeable lithium-polymer battery power box with two tip-negative 9 V DC 2.1 mm outputs (up to 1.0 A total), a 3-digit blue LED status display, USB-C charging and a 500 mA courtesy USB output.",
+    "year": 2020,
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://bigjoestompbox.com/products/lithium-li2",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://drive.google.com/file/d/1WNZikkLE1Hv4fAvVIcyHwouXKlggJcUR/view?usp=sharing",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://bigjoestompbox.com/cdn/shop/products/Li2_Web_1024x1024.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "big-joe-power-box-iso4",
+    "brand": "Big Joe",
+    "name": "Power Box ISO4",
+    "widthCm": 4.2164,
+    "heightCm": 8.509,
+    "image": "big-joe-power-box-iso4.avif",
+    "imageSource": "static",
+    "effectTypes": [],
+    "category": "supply",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 750
+    },
+    "usage": "both",
+    "color": "Dark grey enclosure",
+    "notes": "Rechargeable lithium-ion isolated power supply with four 9 V DC BiWire isolated outputs (750 mA total at 9 V), a 3-digit blue LED status display, USB-C charging and a courtesy USB output.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://bigjoestompbox.com/products/power-box-iso4",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://drive.google.com/file/d/1HPLXBjFkq5l7f74mSp1hnO46TwURO_9x/view?usp=sharing",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://bigjoestompbox.com/cdn/shop/files/QDS9524_Web.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  }
+]

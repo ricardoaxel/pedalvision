@@ -1,6 +1,17 @@
 {
   "version": 1,
   "pedals": {
+    "big-joe": {
+      "brand": "Big Joe",
+      "batches": [
+        {
+          "batch": "big-joe-1",
+          "raw": "data/catalog/research/pedals/big-joe/big-joe-1.json",
+          "mapped": "data/catalog/pedals/big-joe/big-joe-1.json",
+          "items": 2
+        }
+      ]
+    },
     "boss": {
       "brand": "BOSS",
       "batches": [

@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 465 |
-| own | 18 |
+| license-pending | 467 |
+| own | 16 |
 
-Hosting: hotlinked 1 · mock 12 · static 470
+Hosting: hotlinked 1 · mock 10 · static 472
 
-Source kind: archive 5 · community 9 · official 315 · own 18 · planner 118 · retailer 18
+Source kind: archive 5 · community 9 · official 315 · own 16 · planner 120 · retailer 18
 
-Needs improvement: 131 (hotlinked 1 · mock 12 · planner 118)
+Needs improvement: 131 (hotlinked 1 · mock 10 · planner 120)
 
 ## Aclam
 
@@ -245,8 +245,8 @@ Needs improvement: 131 (hotlinked 1 · mock 12 · planner 118)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `big-joe-pb-109-power-box-li2` | PB-109 Power Box Li2 | own | mock | own | yes | Big Joe batch |
-| `big-joe-power-box-iso4` | Power Box ISO4 | own | mock | own | yes | Big Joe batch |
+| `big-joe-pb-109-power-box-li2` | PB-109 Power Box Li2 | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `big-joe-power-box-iso4` | Power Box ISO4 | license-pending | static | planner | yes | better source (official/retailer/community) |
 
 ## Blackbird
 
@@ -634,7 +634,7 @@ Needs improvement: 131 (hotlinked 1 · mock 12 · planner 118)
 | --- | --- | --- |
 | Aclam | own | 1 |
 | Behringer | official | 1 |
-| Big Joe | own | 2 |
+| Big Joe | planner | 2 |
 | Blackbird | own | 1 |
 | BoardMods | own | 1 |
 | BOSS | own | 1 |

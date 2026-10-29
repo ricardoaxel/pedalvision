@@ -3,27 +3,27 @@
   "summary": {
     "items": 483,
     "byStatus": {
-      "own": 18,
-      "license-pending": 465
+      "own": 16,
+      "license-pending": 467
     },
     "byHosting": {
-      "mock": 12,
-      "static": 470,
+      "mock": 10,
+      "static": 472,
       "hotlinked": 1
     },
     "bySourceKind": {
-      "own": 18,
+      "own": 16,
       "official": 315,
-      "planner": 118,
+      "planner": 120,
       "community": 9,
       "retailer": 18,
       "archive": 5
     },
     "needsImprovement": 131,
     "byGapReason": {
-      "mock": 12,
+      "mock": 10,
       "hotlinked": 1,
-      "planner": 118
+      "planner": 120
     }
   },
   "items": [
@@ -320,36 +320,36 @@
       "kind": "pedal",
       "brand": "Big Joe",
       "name": "PB-109 Power Box Li2",
-      "asset": "big-joe-pb-109-power-box-li2.png",
-      "imageSource": "mock",
-      "imageHosting": "mock",
-      "sourceKind": "own",
-      "sourceUrl": null,
-      "referenceUrl": null,
-      "licenseStatus": "own",
+      "asset": "big-joe-pb-109-power-box-li2.avif",
+      "imageSource": "static",
+      "imageHosting": "static",
+      "sourceKind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/big-joe-li2.png",
+      "referenceUrl": "https://github.com/PedalPlayground/pedalplayground/tree/production/public/images/pedals",
+      "licenseStatus": "license-pending",
       "licenseRef": null,
-      "replacementTarget": "Big Joe batch",
+      "replacementTarget": "better source (official/retailer/community)",
       "improve": true,
-      "gapReason": "mock",
-      "note": "mock art; no real product image yet"
+      "gapReason": "planner",
+      "note": "planner last-resort; improve when a better source exists"
     },
     {
       "id": "big-joe-power-box-iso4",
       "kind": "pedal",
       "brand": "Big Joe",
       "name": "Power Box ISO4",
-      "asset": "big-joe-power-box-iso4.png",
-      "imageSource": "mock",
-      "imageHosting": "mock",
-      "sourceKind": "own",
-      "sourceUrl": null,
-      "referenceUrl": null,
-      "licenseStatus": "own",
+      "asset": "big-joe-power-box-iso4.avif",
+      "imageSource": "static",
+      "imageHosting": "static",
+      "sourceKind": "planner",
+      "sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/production/public/images/pedals/big-joe-iso4.png",
+      "referenceUrl": "https://github.com/PedalPlayground/pedalplayground/tree/production/public/images/pedals",
+      "licenseStatus": "license-pending",
       "licenseRef": null,
-      "replacementTarget": "Big Joe batch",
+      "replacementTarget": "better source (official/retailer/community)",
       "improve": true,
-      "gapReason": "mock",
-      "note": "mock art; no real product image yet"
+      "gapReason": "planner",
+      "note": "planner last-resort; improve when a better source exists"
     },
     {
       "id": "boss-ac-2-acoustic-simulator",
