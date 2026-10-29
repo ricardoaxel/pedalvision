@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { basename, extname, join } from "node:path";
-import { renderRenditions } from "../asset-pipeline/render.ts";
 import { imageFilename, outputPath } from "../asset-pipeline/naming.ts";
+import { renderRenditions } from "../asset-pipeline/render.ts";
 import { toSlug } from "../catalog-transform/slug.ts";
 
 type Row = {
@@ -107,9 +107,10 @@ async function existingIds(catalogFile: string): Promise<{
 	ids: Set<string>;
 	names: Set<string>;
 }> {
-	const rows = await readJson<Array<{ id: string; brand: string; name: string }>>(
-		catalogFile,
-	);
+	const rows =
+		await readJson<Array<{ id: string; brand: string; name: string }>>(
+			catalogFile,
+		);
 	return {
 		ids: new Set(rows.map((row) => row.id)),
 		names: new Set(rows.map((row) => `${norm(row.brand)}|${norm(row.name)}`)),
@@ -161,7 +162,8 @@ function makeRecord(row: Row, sourceUrl: string, id: string): RawRecord {
 		},
 		confidence: "unsure",
 		lastVerified: "2026-10-29",
-		notes: "Planner fallback import; specs unverified; image pending replacement.",
+		notes:
+			"Planner fallback import; specs unverified; image pending replacement.",
 		extra: { plannerFill: true },
 	};
 }
@@ -181,13 +183,16 @@ async function main(): Promise<void> {
 	const seenIds = new Set<string>();
 	const seenNames = new Set<string>();
 	for (const row of rows) {
-		const rawId = toSlug(basename(String(row.Image), extname(String(row.Image))));
+		const rawId = toSlug(
+			basename(String(row.Image), extname(String(row.Image))),
+		);
 		if (!rawId || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(rawId)) continue;
 		if (existing.ids.has(rawId) || seenIds.has(rawId)) continue;
 		const nameKey = `${norm(row.Brand)}|${norm(row.Name)}`;
 		if (existing.names.has(nameKey) || seenNames.has(nameKey)) continue;
 		if (!Number.isFinite(Number(row.Width)) || Number(row.Width) <= 0) continue;
-		if (!Number.isFinite(Number(row.Height)) || Number(row.Height) <= 0) continue;
+		if (!Number.isFinite(Number(row.Height)) || Number(row.Height) <= 0)
+			continue;
 		seenIds.add(rawId);
 		seenNames.add(nameKey);
 		selected.push({
@@ -212,7 +217,10 @@ async function main(): Promise<void> {
 				const item = queue.shift();
 				if (!item) return;
 				try {
-					const downloadPath = join(options.downloadDir, String(item.row.Image));
+					const downloadPath = join(
+						options.downloadDir,
+						String(item.row.Image),
+					);
 					let source: Buffer;
 					try {
 						source = await readFile(downloadPath);
@@ -279,7 +287,10 @@ async function main(): Promise<void> {
 			const output = [...merged.values()].sort((a, b) =>
 				a.id.localeCompare(b.id),
 			);
-			await writeBytes(path, Buffer.from(`${JSON.stringify(output, null, "\t")}\n`));
+			await writeBytes(
+				path,
+				Buffer.from(`${JSON.stringify(output, null, "\t")}\n`),
+			);
 		}
 	}
 
@@ -296,7 +307,10 @@ async function main(): Promise<void> {
 		elapsedMs: Date.now() - started,
 		failures,
 	};
-	await writeBytes(options.reportFile, Buffer.from(`${JSON.stringify(report, null, 2)}\n`));
+	await writeBytes(
+		options.reportFile,
+		Buffer.from(`${JSON.stringify(report, null, 2)}\n`),
+	);
 	console.log(JSON.stringify(report, null, 2));
 }
 

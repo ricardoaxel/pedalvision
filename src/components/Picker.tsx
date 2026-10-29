@@ -40,6 +40,7 @@ import { MotionPresence } from "./MotionPresence";
 import { usePartImage } from "./partImage";
 
 const MAX_PICKER_PEDALS = 300;
+
 import {
 	brandsOf,
 	effectLabel,

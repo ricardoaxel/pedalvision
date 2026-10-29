@@ -2,8 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { bootScenePersistence } from "./state/persist";
 import { loadPlannerCatalog } from "./catalog/planner";
+import { bootScenePersistence } from "./state/persist";
 import { hydrateSettings } from "./state/settings";
 import { initSharePreview } from "./state/share";
 

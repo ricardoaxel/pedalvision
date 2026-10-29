@@ -1,6 +1,6 @@
+import { registerCatalogPedals } from "../state/scene";
 import { catalog } from "./load";
 import type { CatalogPedal } from "./schema";
-import { registerCatalogPedals } from "../state/scene";
 
 const DATA_URL = `${import.meta.env.BASE_URL}catalog/planner-pedals.json`;
 
