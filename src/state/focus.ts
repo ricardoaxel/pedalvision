@@ -152,9 +152,40 @@ function boardLabel(board: PlacedBoard | undefined): string {
  *
  * Call this only from a user command or a document-load effect; never per frame.
  */
+let focusRetrySeq = 0;
+
+/** The info rail/sheet is still playing its close (the canvas width/safe rect
+ * will change when it unmounts). */
+function infoPanelExiting(): boolean {
+	if (typeof document === "undefined") return false;
+	return (
+		document.querySelector(
+			'.motion-presence[data-motion-state="exiting"] .info-panel',
+		) !== null
+	);
+}
+
 export function focusViewport(
 	options: FocusViewportOptions = {},
 ): FocusSnapshot | null {
+	// Wait for the rail/sheet close before measuring the stage/safe rect: the
+	// presence keeps the desktop rail slot for 160 ms (one width reflow at the
+	// end). A focus measured mid-exit would settle against the wrong width.
+	if (infoPanelExiting() && typeof window !== "undefined") {
+		const token = ++focusRetrySeq;
+		const started = Date.now();
+		const retry = () => {
+			if (token !== focusRetrySeq) return;
+			if (infoPanelExiting() && Date.now() - started < 600) {
+				requestAnimationFrame(retry);
+				return;
+			}
+			focusViewport(options);
+		};
+		requestAnimationFrame(retry);
+		return null;
+	}
+	focusRetrySeq += 1;
 	const scene = useScene.getState();
 	const selectedBoardUid = selectSelectedBoardUid(useSelection.getState());
 	const requested = options.target ?? "auto";

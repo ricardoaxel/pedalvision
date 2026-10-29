@@ -57,6 +57,8 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	// collapsed (no reset effect needed).
 	const [expandedUid, setExpandedUid] = useState<string | null>(null);
 	const expanded = activeUid !== null && expandedUid === activeUid;
+	const isCurrentSelection =
+		activeUid !== null && activeUid === selectedItemUid;
 	const isMobile = useIsMobile();
 	const toggleExpanded = () => setExpandedUid(expanded ? null : activeUid);
 
@@ -99,7 +101,11 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	const setSheetHeight = usePanelMetrics((state) => state.setSheetHeight);
 	useLayoutEffect(() => {
 		const element = asideRef.current;
-		if (!item || !element) {
+		// During the exit the cached item is still rendered for the motion, but the
+		// F-04 safe rect must consider the sheet gone immediately (the visual exit
+		// is an overlay on mobile); otherwise a focus mid-exit is centred for the
+		// old inset and jumps when the panel unmounts.
+		if (!item || !isCurrentSelection || !element) {
 			setSheetHeight(0);
 			return;
 		}
@@ -108,7 +114,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 		const observer = new ResizeObserver(update);
 		observer.observe(element);
 		return () => observer.disconnect();
-	}, [item, setSheetHeight]);
+	}, [item, isCurrentSelection, setSheetHeight]);
 
 	if (!item || !resolved) return null;
 

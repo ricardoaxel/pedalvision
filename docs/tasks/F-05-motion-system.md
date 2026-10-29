@@ -242,6 +242,7 @@ onto the sheet, cables are drawn as ink, panels slide from their edge.
   (picker overlay 300 + margin) so it fades after the closing scrim; custom
   boards (action bar, no picker) start immediately. Data/history/autosave stay
   synchronous.
+- **F-04 interaction:** the info sheet reports `sheetHeight: 0` as soon as the selection clears (the cached exit item is visual only), and an explicit focus defers until the exiting rail unmounts. Without this, a focus measured mid-exit settles against the old safe rect and jumps when the rail unmounts.
 - **Performance agent:** verdict **adjust → proceed**. Hard edits adopted: no
   width animation, no per-cable draw-in above 40, no snapshot ghost. Rail +
   cable reveal measured **60.0 fps** (mean 16.66–16.67 ms, p95 16.80, max
