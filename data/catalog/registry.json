@@ -134,6 +134,12 @@
           "raw": "data/catalog/research/pedals/tc-electronic/choka-1.json",
           "mapped": "data/catalog/pedals/tc-electronic/choka-1.json",
           "items": 1
+        },
+        {
+          "batch": "tc-1",
+          "raw": "data/catalog/research/pedals/tc-electronic/tc-1.json",
+          "mapped": "data/catalog/pedals/tc-electronic/tc-1.json",
+          "items": 23
         }
       ]
     },

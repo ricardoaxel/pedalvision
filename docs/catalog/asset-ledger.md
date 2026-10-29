@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 381 |
-| own | 72 |
+| license-pending | 391 |
+| own | 68 |
 
-Hosting: hotlinked 19 · mock 66 · static 368
+Hosting: hotlinked 6 · mock 62 · static 391
 
-Source kind: archive 4 · community 4 · official 253 · own 72 · planner 102 · retailer 18
+Source kind: archive 4 · community 9 · official 258 · own 68 · planner 102 · retailer 18
 
-Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
+Needs improvement: 170 (hotlinked 6 · mock 62 · planner 102)
 
 ## Aclam
 
@@ -542,24 +542,30 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `tc-electronic-2290-p-dynamic-digital-delay` | 2290 P Dynamic Digital Delay | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-3rd-dimension-chorus` | 3rd Dimension Chorus | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-afterglow-chorus` | Afterglow Chorus | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-alter-ego-v2-vintage-echo` | Alter Ego v2 Vintage Echo | own | mock | own | yes | TC Electronic batch |
-| `tc-electronic-alter-ego-x4-vintage-echo` | Alter Ego x4 Vintage Echo | own | mock | own | yes | TC Electronic batch |
-| `tc-electronic-ampworx-550` | Ampworx 550 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-combo-deluxe-65` | Ampworx Combo Deluxe 65' | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-dc30` | Ampworx DC30 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-dual-wreck` | Ampworx Dual Wreck | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-jims-45` | Ampworx Jims 45 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-ampworx-jims-800` | Ampworx Jims 800 | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-arena-reverb` | Arena Reverb | own | mock | own | yes | TC Electronic batch |
-| `tc-electronic-blood-moon-phaser` | Blood Moon Phaser | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-bodyrez-acoustic-pickup-enhancer` | BodyRez Acoustic Pickup Enhancer | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-bonafide-buffer` | Bonafide Buffer | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-brainwaves-pitch-shifter` | Brainwaves Pitch Shifter | license-pending | hotlinked | official | yes | TC Electronic batch |
-| `tc-electronic-bucket-brigade-analog-delay` | Bucket Brigade Analog Delay | own | mock | own | yes | TC Electronic batch |
+| `tc-electronic-2290-p-dynamic-digital-delay` | 2290 P Dynamic Digital Delay | license-pending | static | official | — | — |
+| `tc-electronic-3rd-dimension-chorus` | 3rd Dimension Chorus | license-pending | static | official | — | — |
+| `tc-electronic-afterglow-chorus` | Afterglow Chorus | license-pending | static | official | — | — |
+| `tc-electronic-alter-ego-v2-vintage-echo` | Alter Ego v2 Vintage Echo | license-pending | static | community | — | — |
+| `tc-electronic-alter-ego-x4-vintage-echo` | Alter Ego x4 Vintage Echo | license-pending | static | community | — | — |
+| `tc-electronic-ampworx-550` | Ampworx 550 | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-combo-deluxe-65` | Ampworx Combo Deluxe 65' | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-dc30` | Ampworx DC30 | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-dual-wreck` | Ampworx Dual Wreck | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-jims-45` | Ampworx Jims 45 | license-pending | static | official | — | — |
+| `tc-electronic-ampworx-jims-800` | Ampworx Jims 800 | license-pending | static | official | — | — |
+| `tc-electronic-arena-reverb` | Arena Reverb | license-pending | static | community | — | — |
+| `tc-electronic-blood-moon-phaser` | Blood Moon Phaser | license-pending | static | official | — | — |
+| `tc-electronic-bodyrez-acoustic-pickup-enhancer` | BodyRez Acoustic Pickup Enhancer | license-pending | static | official | — | — |
+| `tc-electronic-bonafide-buffer` | Bonafide Buffer | license-pending | static | official | — | — |
+| `tc-electronic-brainwaves-pitch-shifter` | Brainwaves Pitch Shifter | license-pending | static | official | — | — |
+| `tc-electronic-bucket-brigade-analog-delay` | Bucket Brigade Analog Delay | license-pending | static | official | — | — |
 | `tc-electronic-choka-tremolo` | Choka Tremolo | license-pending | static | official | — | — |
+| `tc-electronic-cinders-overdrive` | Cinders Overdrive | license-pending | static | official | — | — |
+| `tc-electronic-corona-chorus` | Corona Chorus | license-pending | static | community | — | — |
+| `tc-electronic-corona-mini-chorus` | Corona Mini Chorus | license-pending | static | official | — | — |
+| `tc-electronic-dark-matter-distortion` | Dark Matter Distortion | license-pending | static | official | — | — |
+| `tc-electronic-ditto-2-looper` | Ditto 2 Looper | license-pending | static | official | — | — |
+| `tc-electronic-ditto-jam-x2-looper` | Ditto Jam X2 Looper | license-pending | static | community | — | — |
 
 ## Temple Audio
 
@@ -623,7 +629,5 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102)
 | Joyo | own | 13 |
 | Keeley | own | 18 |
 | MXR | planner | 15 |
-| TC Electronic | official | 13 |
-| TC Electronic | own | 4 |
 | Walrus Audio | planner | 8 |
 

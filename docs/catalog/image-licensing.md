@@ -16,9 +16,9 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 4 · community 4 · official 253 · own 72 · planner 102 · retailer 18
+Sources: archive 4 · community 9 · official 258 · own 68 · planner 102 · retailer 18
 
-Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 170 (hotlinked 6 · mock 62 · planner 102; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
@@ -34,7 +34,7 @@ Needs improvement: 187 (hotlinked 19 · mock 66 · planner 102; see the source-g
 | MXR | not-requested | 11 | 0 | 0 | [contact](https://www.jimdunlop.com/contact-us/) | — | — |
 | Pedaltrain | not-requested | 0 | 0 | 4 | [contact](https://help.pedaltrain.com/hc/en-us/requests/new) | help@pedaltrain.com | — |
 | Red Panda | not-requested | 10 | 0 | 0 | [contact](https://www.redpandalab.com/contact) | — | — |
-| TC Electronic | not-requested | 14 | 0 | 4 | [contact](https://www.tcelectronic.com/support) | — | — |
+| TC Electronic | not-requested | 19 | 0 | 0 | [contact](https://www.tcelectronic.com/support) | — | — |
 | Temple Audio | not-requested | 0 | 0 | 1 | [contact](https://www.templeaudio.com/contact) | — | — |
 | Walrus Audio | not-requested | 10 | 0 | 0 | [contact](https://www.walrusaudio.com/pages/contact) | — | — |
 
