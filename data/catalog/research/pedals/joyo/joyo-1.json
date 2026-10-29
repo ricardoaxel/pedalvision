@@ -12,9 +12,9 @@
 		"effectTypes": [
 			"delay"
 		],
-		"widthCm": 10.2,
-		"heightCm": 10.5,
-		"dimensionsSource": "Joyo official product page (joyoaudio.com/product/79.html): 102 x 50 x 105 mm (W x H x D); catalog footprint 10.2 x 10.5 cm (enclosure, jack protrusion excluded).",
+		"widthCm": 9.96,
+		"heightCm": 10.49,
+		"dimensionsSource": "Pedalplayground (owner instruction 2026-10-29): 3.92 x 4.13 in = 9.96 x 10.49 cm (W x H); planner entry https://pedalplayground.com/app/images/pedals/joyo-d-seed.png.",
 		"imageFormat": "avif",
 		"status": "current",
 		"confidence": "confirmed",
@@ -117,15 +117,15 @@
 			}
 		],
 		"imageProvenance": {
-			"kind": "own",
-			"referenceUrl": "https://www.joyoaudio.com/product/79.html",
-			"status": "chosen",
-			"note": "Generated Catalog Specimen flat art (spec tools/asset-pipeline/pedal-art/specs/joyo-d-seed.json; body #E5E7EB sampled from the official product photo). Real-image sources failed: the official 600 px photo is 3/4 angled, Pedalbro's 800 px image is the wrong product (SubDecay EchoBox), and no planner cutout was available; recorded as a generated-art source gap."
+			"kind": "planner",
+			"sourceUrl": "https://pedalplayground.com/app/images/pedals/joyo-d-seed.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (800x840, transparent); owner requested 2026-10-29 after generated art; processed with --matte none to 800/350 AVIF q90; PSNR 47.62 dB; planner last-resort, counted source gap. Footprint from the same Pedalplayground entry."
 		},
 		"extra": {
-			"imageSourceDimensions": "N/A (generated art)",
-			"upscaleFactor": 0,
-			"sourceDiscovery": "Official Joyo 600px photo rejected as 3/4 angled; Pedalbro 800px rejected as wrong product; pedalplayground returned an error; generated flat art used as the last resort."
+			"imageSourceDimensions": "800x840 (planner PNG)",
+			"upscaleFactor": 1,
+			"sourceDiscovery": "Owner instruction 2026-10-29: use the Pedalplayground dimensions and image for D-Seed (replaces the generated Catalog Specimen)."
 		}
 	},
 	{
@@ -2300,7 +2300,7 @@
 		"brand": "Joyo",
 		"name": "JF-18R Power Tune Tuner",
 		"category": "pedal",
-		"deviceType": "power-supply",
+		"deviceType": "stompbox",
 		"formFactor": "standard",
 		"instrumentTypes": [
 			"guitar",
@@ -2309,9 +2309,9 @@
 		"effectTypes": [
 			"tuner"
 		],
-		"widthCm": 14.0,
-		"heightCm": 21.8,
-		"dimensionsSource": "Joyo official/manufacturer spec: 218(L) x 140(W) x 67(H) mm; catalog footprint 14.0 x 21.8 cm (unit, not an accessory).",
+		"widthCm": 7.04,
+		"heightCm": 12.01,
+		"dimensionsSource": "Pedalplayground (owner instruction 2026-10-29): 2.77 x 4.73 in = 7.04 x 12.01 cm (W x H); planner entry https://pedalplayground.com/app/images/pedals/joyo-jf18r.png.",
 		"imageFormat": "avif",
 		"status": "current",
 		"confidence": "confirmed",
@@ -2440,17 +2440,15 @@
 			}
 		],
 		"imageProvenance": {
-			"kind": "official",
-			"sourceUrl": "https://www.joyoaudio.com/repository/image/76jt8g_lSXqTg10K21hZlA.jpg",
-			"referenceUrl": "https://www.joyoaudio.com/product/67.html",
-			"status": "chosen",
-			"note": "Official Joyo gallery JPG 1300x896 (subject 393x692 px), deskewed 1.5 degrees to level the enclosure, upscaled 1.16x to the 800/350 AVIF q90 master."
+			"kind": "planner",
+			"sourceUrl": "https://pedalplayground.com/app/images/pedals/joyo-jf18r.png",
+			"status": "last-resort",
+			"note": "Pedalplayground cutout (411x702, transparent); owner requested 2026-10-29; processed with --matte none to 800/350 AVIF q90; PSNR 44.75 dB; upscaled 1.14x; planner last-resort, counted source gap. Footprint from the same Pedalplayground entry."
 		},
 		"extra": {
-			"imageSourceDimensions": "1300x896",
-			"upscaleFactor": 1.16,
-			"deskewDegrees": 1.5,
-			"sourceDiscovery": "First official candidate was a 3/4 view and was rejected on the contact sheet; re-sourced from the same official gallery (top-down) and deskewed.",
+			"imageSourceDimensions": "411x702 (planner PNG)",
+			"upscaleFactor": 1.14,
+			"sourceDiscovery": "Owner instruction 2026-10-29: use the Pedalplayground dimensions and image for the JF-18R Power Tune (replaces the official gallery render).",
 			"verifiedEffectTypes": [
 				"tuner"
 			],
