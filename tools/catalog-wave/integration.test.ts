@@ -1413,7 +1413,8 @@ async function setupPriorResumeWave(options: {
 }
 
 async function waitFor(check: () => Promise<boolean>): Promise<void> {
-	for (let i = 0; i < 100; i++) {
+	// Large catalog worktrees take longer than the old 5 s window to check out.
+	for (let i = 0; i < 1200; i++) {
 		if (await check()) return;
 		await new Promise((resolve) => setTimeout(resolve, 50));
 	}
