@@ -1,6 +1,6 @@
 # F-05 — Motion system (panels, item add/remove/duplicate, scene switch)
 
-**Phase:** 2 · **Status:** in progress (owner-approved design) · **Model:** light
+**Phase:** 2 · **Status:** in review — PR #81 (CI green) · **Model:** light
 
 ## Goal
 
@@ -233,9 +233,14 @@ Read only these pointed files/sections; do not read whole docs.
   the +2 kB target); CSS **13.43 → 13.90 kB gzip** (**+0.47 kB**).
 - **E2E:** six touched specs (`picker`, `viewport-focus`, `scenes`, `history`,
   `selection`, `cable-schedule`) **114 passed / 5 skipped** (desktop + mobile,
-  1 worker). New motion cases cover panel presence + add/duplicate/delete
-  events, reduced motion, the scene camera tween, and a pan during the tween
-  that settles the frame instead of freezing it.
+  1 worker); the eight-spec touched set incl. `smoke` + `first-run` **137 passed
+  / 5 skipped**. CI full suite **324 passed / 11 skipped**. New motion cases
+  cover panel presence + add/duplicate/delete events, reduced motion, the scene
+  camera tween, and a pan during the tween that settles the frame instead of
+  freezing it. CI initially caught a duplicate `picker-bar-*` during the exit;
+  the exiting sheet now omits its tab bar so only the persistent dock exists.
+- **Preview:** https://feat-f-05-motion-system.pedalvision.pages.dev (verified
+  desktop + mobile; commit `f98fa50`).
 - **Performance (1440×900, desktop, branch):** panels 60.0 fps (mean 16.67 ms,
   p95 16.70 ms, max 16.80 ms); scene switch 60.0 fps (same); JS heap 11.3 →
   11.3 MB; share link **359 chars**; all-content Standard PNG **2,771,550
@@ -256,15 +261,16 @@ Read only these pointed files/sections; do not read whole docs.
   (5) removed the dead `data-motion-viewport` writes and
   `isViewportTweening`. No second pass (UI-only; the unit + touched E2E suite
   is the re-check).
-- **Billed tokens (non-cache):** builder `1,082,415` (input 890,729 + output
-  68,605 + reasoning 123,081; cache-inclusive floor 42,909,615; cost
-  $0.3741); designer `75,199` (67,438 + 2,998 + 4,763; $0.0161);
+- **Billed tokens (non-cache, final):** builder `1,148,688` (input 935,586 +
+  output 78,815 + reasoning 134,287; cache-inclusive floor 57,910,544; cost
+  $0.4385); designer `75,199` (67,438 + 2,998 + 4,763; $0.0161);
   design-reviewer `122,369` (90,289 + 6,174 + 25,906; $0.0370);
   code review `114,776` (83,122 + 4,487 + 27,167; $0.0342). **Total
-  1,394,759** non-cache. **Budget overrun:** the builder exceeded the 400k
-  soft / 800k hard, the 300k review allowance by ~12k, and the 1.1M task hard
-  cap (1.395M total). The owner is asked to accept the overrun (F-04 precedent)
-  or ask for a trim before merge.
+  `1,461,032`** non-cache (cache-inclusive floor `59,499,520`; ~$0.5257).
+  **Budget overrun:** the builder exceeded the 400k soft / 800k hard, the review
+  classes exceeded the 300k allowance by ~12k (312,344), and the task hard cap
+  (1.1M) by ~361k. The owner is asked to accept the overrun (F-04 precedent) or
+  ask for a trim before merge.
 
 ## Notes
 
