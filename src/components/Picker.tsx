@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
+import { isPlannerPedal } from "../catalog/planner";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
 import {
 	addItemRefusal,
@@ -20,6 +21,7 @@ import { centerOffset, placeItem } from "../lib/geometry";
 import { MOTION } from "../lib/motion";
 import { useMotion } from "../state/motion";
 import { PATCH_CABLE_GAP_CM } from "../state/overlap";
+import { usePlannerCatalog } from "../state/plannerCatalog";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -38,9 +40,6 @@ import { HistoryControls } from "./HistoryControls";
 import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
 import { MotionPresence } from "./MotionPresence";
 import { usePartImage } from "./partImage";
-
-const MAX_PICKER_PEDALS = 300;
-
 import {
 	brandsOf,
 	effectLabel,
@@ -49,6 +48,7 @@ import {
 	pedalBrands,
 	toggleEffectType,
 } from "./pickerFilter";
+import { nextPageCount, PICKER_PAGE, visibleCountFor } from "./pickerPaging";
 import { Section } from "./SheetSection";
 
 export type PickerTab = "pedals" | "boards" | "custom";
@@ -379,16 +379,25 @@ export function Picker({
 		return () => window.removeEventListener("keydown", onKey);
 	}, [open, onClose]);
 
-	const pedalBrandOptions = useMemo(() => pedalBrands(catalog.pedals), []);
+	const plannerVersion = usePlannerCatalog((state) => state.version);
+	const filterKey = `${tab}|${query}|${brand ?? ""}|${effectTypes.join(",")}`;
+	const [visible, setVisible] = useState({
+		key: filterKey,
+		count: PICKER_PAGE,
+	});
+	const visiblePedals = visibleCountFor(filterKey, visible);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: plannerVersion invalidates after the lazy overlay merges
+	const allPedals = useMemo(() => catalog.pedals.slice(), [plannerVersion]);
+	const pedalBrandOptions = useMemo(() => pedalBrands(allPedals), [allPedals]);
 	const boardBrands = useMemo(() => brandsOf(catalog.boards), []);
 
 	const filteredPedals = useMemo(
-		() => filterPedals(catalog.pedals, { query, brand, effectTypes }),
-		[query, brand, effectTypes],
+		() => filterPedals(allPedals, { query, brand, effectTypes }),
+		[allPedals, query, brand, effectTypes],
 	);
 	const pedals = useMemo(
-		() => filteredPedals.slice(0, MAX_PICKER_PEDALS),
-		[filteredPedals],
+		() => filteredPedals.slice(0, visiblePedals),
+		[filteredPedals, visiblePedals],
 	);
 	const filteredBoards = useMemo(
 		() => filterBoards(catalog.boards, { query, brand }),
@@ -416,7 +425,7 @@ export function Picker({
 		return pedals.map((pedal) => {
 			const labels = pedal.effectTypes.map(effectLabel);
 			const parts = [
-				...(pedal.notes?.startsWith("Planner placeholder") ? ["Planner"] : []),
+				...(isPlannerPedal(pedal.id) ? ["Planner"] : []),
 				...labels,
 			];
 			const meta =
@@ -1166,6 +1175,20 @@ export function Picker({
 												);
 											})
 										)}
+										{count < totalCount ? (
+											<button
+												type="button"
+												className="picker__load-more"
+												onClick={() =>
+													setVisible({
+														key: filterKey,
+														count: nextPageCount(visiblePedals),
+													})
+												}
+											>
+												Show more
+											</button>
+										) : null}
 									</div>
 
 									<div className="picker__status">

@@ -23,6 +23,7 @@ import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { useMotion } from "../state/motion";
+import { usePlannerCatalog } from "../state/plannerCatalog";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import {
 	cableEndCapacityNotice,
@@ -125,6 +126,7 @@ export function PedalNode({
 	lifted = false,
 	warning = false,
 }: PedalNodeProps) {
+	usePlannerCatalog((state) => state.version);
 	const customPedals = useScene((state) => state.customPedals);
 	const resolved = resolveItem(item, customPedals);
 	const widthPx = cmToPx(resolved.widthCm);

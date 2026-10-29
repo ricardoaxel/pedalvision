@@ -27,6 +27,8 @@
 		"catalog:asset-ledger": "node --experimental-strip-types tools/catalog-license/index.ts generate",
 		"catalog:check-licenses": "node --experimental-strip-types tools/catalog-license/index.ts check",
 		"catalog:license-report": "node --experimental-strip-types tools/catalog-license/index.ts report",
+		"catalog:planner-fill": "node --experimental-strip-types tools/catalog-planner-fill/index.ts",
+		"catalog:planner-public": "node --experimental-strip-types tools/catalog-planner-fill/public.ts",
 		"catalog:demo-link": "node --experimental-strip-types tools/catalog-demo/index.ts",
 		"catalog:ci": "node --experimental-strip-types tools/catalog-pipeline/index.ts ci",
 		"catalog:post-merge": "node --experimental-strip-types tools/catalog-pipeline/index.ts post-merge",

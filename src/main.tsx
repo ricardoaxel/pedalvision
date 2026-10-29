@@ -14,7 +14,9 @@ if (!root) {
 
 async function start() {
 	hydrateSettings();
-	await loadPlannerCatalog();
+	// Start the bulk overlay without blocking first paint. The picker reacts
+	// through the planner store when it arrives; the curated catalog is local.
+	const plannerLoad = loadPlannerCatalog();
 	// P3-02: open IndexedDB, reconcile the multi-scene index, migrate the legacy
 	// mirror once, then hydrate the active scene before the first render.
 	// Boot never throws; a blocked store leaves the app running in memory.
@@ -27,6 +29,7 @@ async function start() {
 			<App />
 		</StrictMode>,
 	);
+	void plannerLoad;
 }
 
 void start();

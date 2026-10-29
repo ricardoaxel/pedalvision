@@ -30,7 +30,7 @@ function parseArgs(argv: string[]): Options {
 		input: "",
 		sourceBaseUrl: "",
 		assetsDir: "public/pedal-assets",
-		researchDir: "data/catalog/research/pedals",
+		researchDir: "data/catalog/planner-fill/pedals",
 		catalogFile: "src/catalog/data/pedals.json",
 		downloadDir: "work/catalog/planner-fill/raw",
 		reportFile: "work/catalog/planner-fill/report.json",
@@ -275,7 +275,7 @@ async function main(): Promise<void> {
 			byBrand.set(folder, list);
 		}
 		for (const [folder, list] of byBrand) {
-			const path = join(options.researchDir, folder, "planner-fill.json");
+			const path = join(options.researchDir, `${folder}.json`);
 			let existingRows: RawRecord[] = [];
 			try {
 				existingRows = await readJson<RawRecord[]>(path);

@@ -1,6 +1,6 @@
 # P5-W1 — Planner fallback catalog fill (non-commercial)
 
-**Status:** implemented locally · **Date:** 2026-10-29 · **Owner-approved waiver** · no PR/push yet
+**Status:** implemented locally + reviewed · **Date:** 2026-10-29 · **Owner-approved waiver** · no PR/push yet
 
 ## Goal
 
@@ -23,14 +23,14 @@ See `docs/decisions/009-planner-fill-waiver.md`.
 
 ## Acceptance
 
-- [ ] Missing items imported: ~8,373 (exact count from the dedupe report).
-- [ ] 800 and 350 AVIF exist for every imported item.
-- [ ] No duplicate id or normalized brand+name introduced.
-- [ ] `catalog:build` / `catalog:validate` pass with the owner-approved raised caps.
-- [ ] Asset ledger/license report show the planner pending count.
-- [ ] Temp raw downloads removed after the run; report committed under `work/`.
+- [x] 8,364 planner records imported (18 source failures: 9 recovered from 350px, 9 missing/blank).
+- [x] 800 and 350 AVIF exist for every imported item (17,892 files, 0 missing).
+- [x] No duplicate id or normalized brand+name introduced.
+- [x] `catalog:build` / `catalog:validate` pass with the owner-approved raised caps.
+- [ ] Asset ledger/license report show the planner pending count (raw provenance + public notes carry it; tools not yet adapted).
+- [x] Temp raw downloads removed; report kept at `work/catalog/planner-fill/report.json` (gitignored).
 - [ ] PR states the planner-majority/rights waiver, file count, repo-size impact
-      and the pending-replacement status.
+      and the pending-replacement status (no PR yet).
 
 ## Reproduce
 
@@ -39,6 +39,7 @@ node --experimental-strip-types tools/catalog-planner-fill/index.ts \
   --input <external-planner.json> \
   --source-base-url <image-base-url> \
   --concurrency 4 --write
+pnpm catalog:planner-public data/catalog/planner-fill/pedals public/catalog/planner-pedals.json
 pnpm catalog:build
 pnpm catalog:validate
 pnpm catalog:asset-ledger
