@@ -1,10 +1,10 @@
-# Pedal-art quality test — template vs reference vs faithful
+# Pedal-art quality test — four fidelity levels
 
 **Status:** test / in review · **Date:** 2026-10-29 · **Scope:** visual calibration only
 
 ## Goal
 
-Compare three generated-art fidelity levels on the **same pedal** (BOSS DS-1,
+Compare four generated-art fidelity levels on the **same pedal** (BOSS DS-1,
 7.3 × 12.9 cm) so the owner can decide how much per-item work the catalog art is
 worth before committing to a production plan.
 
@@ -18,6 +18,7 @@ does not run the full catalog pipeline or the full test suite (owner request).
 | **Template-only** | Catalog facts + effect-type heuristics; neutral body colour; no reference image | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-template.json` |
 | **Reference-driven** | Official DS-1 reference for body colour, band, control layout/labels; typeset text | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-reference.json` |
 | **Fully faithful** | Reference-matched colour, knob scale/placement, CHECK lamp, output/input legends, separator line, tread pad | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-faithful.json` |
+| **Exact replica** | Adds per-text ink (light BOSS on the dark pad), centre-capped knobs, arrow-like output/input legends and the closest reference layout the renderer can express | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-exact.json` |
 
 All three use the existing `asset:pedal-art` renderer and the frozen
 “Catalog Specimen” style. Reference pixels are **not shipped**; the official
@@ -29,7 +30,7 @@ reference is included in the comparison sheet only for QA.
   three levels at 800 (full detail).
 - `docs/screenshots/pedal-art-quality-test/comparison-350.png` — the same at
   picker/thumb size.
-- Individual 800 PNGs: `boss-ds-1-{template,reference,faithful}.png`.
+- Individual 800 PNGs: `boss-ds-1-{template,reference,faithful,exact}.png`.
 
 Rendered AVIF sizes (800 / 350):
 
@@ -38,6 +39,7 @@ Rendered AVIF sizes (800 / 350):
 | Template-only | 9,077 B | 3,786 B |
 | Reference-driven | 14,677 B | 5,843 B |
 | Fully faithful | 15,219 B | 6,298 B |
+| Exact replica | 16,680 B | 6,832 B |
 
 ## Observations
 
@@ -48,13 +50,18 @@ Rendered AVIF sizes (800 / 350):
 - **Fully faithful** adds the separator line, OUTPUT/INPUT legends, larger
   corner knobs, smaller center LEVEL knob and the dark tread pad. It is closest
   to the real object while staying a flat, typeset illustration.
+- **Exact replica** adds the white knob caps, light BOSS mark on the tread pad
+  and arrow-like output/input legends. It is the closest flat-art representation
+  we can render today without logos or reference pixels. It still uses typeset
+  text (not the BOSS wordmark), and it required two small optional renderer
+  fields (`text.ink`, `knob.cap`).
 
 ## Decision points
 
 1. **Policy:** keep real-photo-first (generated art fills gaps) or switch to
    “illustrated by default”?
 2. **Fidelity:** template-only (fast, generic), reference-driven (recognizable),
-   or faithful (closest, slowest)?
+   faithful (closest), or exact replica (closest flat-art ceiling, slowest)?
 3. **Scope:** Tier A launch catalog (~1,850 pedals + 150 boards) or the full
    inventory (8,549)?
 4. **Jacks/power:** accept disclosed assumed fallbacks, or require research per

@@ -236,9 +236,13 @@ function renderControl(
 		case "knob": {
 			const radius = (control.diameterCm * pxPerCm) / 2;
 			const capFill = FINISH_FILL[knobFinish] ?? FINISH_FILL.black;
-			const pointerColor =
-				knobFinish === "black" ? ART_PALETTE.metalHi : ART_PALETTE.hardwareInk;
-			const pointerLength = radius * 0.5;
+			const centerCap = control.cap === "center";
+			const pointerColor = centerCap
+				? ART_PALETTE.hardwareInk
+				: knobFinish === "black"
+					? ART_PALETTE.metalHi
+					: ART_PALETTE.hardwareInk;
+			const pointerLength = radius * (centerCap ? 0.72 : 0.5);
 			const radians = ((control.rotationDeg - 90) * Math.PI) / 180;
 			const pointerX = cx + Math.cos(radians) * pointerLength;
 			const pointerY = cy + Math.sin(radians) * pointerLength;
@@ -260,6 +264,20 @@ function renderControl(
 					ART_PALETTE.hardwareInk,
 					hairline,
 				),
+			);
+			if (centerCap) {
+				parts.push(
+					circle(
+						cx,
+						cy,
+						radius * 0.6,
+						ART_PALETTE.printLight,
+						ART_PALETTE.hardwareInk,
+						hairline,
+					),
+				);
+			}
+			parts.push(
 				`<line x1="${fmt(cx)}" y1="${fmt(cy)}" x2="${fmt(pointerX)}" y2="${fmt(pointerY)}" stroke="${pointerColor}" stroke-width="${fmt(hairline * 1.5)}" stroke-linecap="round"/>`,
 				circle(cx, cy, radius * 0.08, pointerColor),
 			);
@@ -524,8 +542,12 @@ export function buildPedalArtSvg(
 	}
 
 	for (const text of spec.text) {
-		const allowed =
-			text.role === "free" ? inkChoice.meets : inkChoice.largeMeets;
+		const customInk = text.ink !== "auto" ? text.ink : null;
+		const allowed = customInk
+			? true
+			: text.role === "free"
+				? inkChoice.meets
+				: inkChoice.largeMeets;
 		if (!allowed) continue;
 		const rendered = renderTextRun(
 			text.value,
@@ -535,7 +557,7 @@ export function buildPedalArtSvg(
 			text.trackingEm,
 			text.weight,
 			text.case,
-			inkChoice.hex,
+			customInk ?? inkChoice.hex,
 			pxPerCm,
 		);
 		parts.push(rendered.markup);

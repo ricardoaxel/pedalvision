@@ -79,6 +79,8 @@ export const KnobSchema = z
 		diameterCm: z.number().min(0.8).max(4),
 		/** Pointer angle; 0 = up. */
 		rotationDeg: z.number().min(-180).max(360).default(0),
+		/** Optional light centre cap, e.g. the DS-1's white-capped knobs. */
+		cap: z.enum(["none", "center"]).default("none"),
 		...controlBase,
 	})
 	.strict();
@@ -170,6 +172,8 @@ export const PedalArtTextSchema = z
 		case: z.enum(["upper", "title", "as-is"]).default("upper"),
 		trackingEm: z.number().min(-0.05).max(0.2).default(0.02),
 		weight: z.enum(["medium", "semibold"]).default("semibold"),
+		/** Per-text ink override; `auto` follows the body's contrast choice. */
+		ink: z.union([z.literal("auto"), Hex]).default("auto"),
 	})
 	.strict();
 
