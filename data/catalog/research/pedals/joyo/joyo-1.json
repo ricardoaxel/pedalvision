@@ -1,0 +1,444 @@
+[
+  {
+    "id": "joyo-d-seed",
+    "brand": "Joyo",
+    "name": "D-Seed",
+    "category": "pedal",
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 9.96,
+    "heightCm": 10.49,
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/79.html",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-01-vintage-overdrive",
+    "brand": "Joyo",
+    "name": "JF-01 Vintage Overdrive",
+    "category": "pedal",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-02-ultimate-drive",
+    "brand": "Joyo",
+    "name": "JF-02 Ultimate Drive",
+    "category": "pedal",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-03-crunch-distortion",
+    "brand": "Joyo",
+    "name": "JF-03 Crunch Distortion",
+    "category": "pedal",
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-04-high-gain-distortion",
+    "brand": "Joyo",
+    "name": "JF-04 High Gain Distortion",
+    "category": "pedal",
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-05-classic-chorus",
+    "brand": "Joyo",
+    "name": "JF-05 Classic Chorus",
+    "category": "pedal",
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-06-vintage-phase",
+    "brand": "Joyo",
+    "name": "JF-06 Vintage Phase",
+    "category": "pedal",
+    "effectTypes": [
+      "phaser"
+    ],
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/55.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-07-classic-flanger",
+    "brand": "Joyo",
+    "name": "JF-07 Classic Flanger",
+    "category": "pedal",
+    "effectTypes": [
+      "flanger"
+    ],
+    "widthCm": 9.07,
+    "heightCm": 11.79,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-08-digital-delay",
+    "brand": "Joyo",
+    "name": "JF-08 Digital Delay",
+    "category": "pedal",
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-09-tremolo",
+    "brand": "Joyo",
+    "name": "JF-09 Tremolo",
+    "category": "pedal",
+    "effectTypes": [
+      "tremolo"
+    ],
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-10-dynamic-compressor",
+    "brand": "Joyo",
+    "name": "JF-10 Dynamic Compressor",
+    "category": "pedal",
+    "effectTypes": [
+      "compressor"
+    ],
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-11-6-band-eq",
+    "brand": "Joyo",
+    "name": "JF-11 6 Band EQ",
+    "category": "pedal",
+    "effectTypes": [
+      "eq"
+    ],
+    "widthCm": 7.04,
+    "heightCm": 11.81,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-12-voodoo-octave",
+    "brand": "Joyo",
+    "name": "JF-12 Voodoo Octave",
+    "category": "pedal",
+    "effectTypes": [
+      "octave"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-13-ac-tone",
+    "brand": "Joyo",
+    "name": "JF-13 AC Tone",
+    "category": "pedal",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/62.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-14-american-sound",
+    "brand": "Joyo",
+    "name": "JF-14 American Sound",
+    "category": "pedal",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/63.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-15-california-sound",
+    "brand": "Joyo",
+    "name": "JF-15 California Sound",
+    "category": "pedal",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/64.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-16-british-sound",
+    "brand": "Joyo",
+    "name": "JF-16 British Sound",
+    "category": "pedal",
+    "effectTypes": [
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "sources": [
+      {
+        "url": "https://www.joyoaudio.com/product/65.html",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://stinkfoot.se/archives/2343",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  },
+  {
+    "id": "joyo-jf-17-extreme-metal",
+    "brand": "Joyo",
+    "name": "JF-17 Extreme Metal",
+    "category": "pedal",
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 9.55,
+    "heightCm": 11.94,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "joyo-1"
+    }
+  }
+]
