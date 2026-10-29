@@ -1,0 +1,38 @@
+[
+  {
+    "id": "big-joe-pb-109-power-box-li2",
+    "brand": "Big Joe",
+    "name": "PB-109 Power Box Li2",
+    "category": "supply",
+    "effectTypes": [],
+    "widthCm": 4.17,
+    "heightCm": 8.53,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "big-joe-1"
+    }
+  },
+  {
+    "id": "big-joe-power-box-iso4",
+    "brand": "Big Joe",
+    "name": "Power Box ISO4",
+    "category": "supply",
+    "effectTypes": [],
+    "widthCm": 4.17,
+    "heightCm": 8.53,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "big-joe-1"
+    }
+  }
+]
