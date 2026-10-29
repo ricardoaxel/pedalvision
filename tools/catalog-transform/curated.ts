@@ -419,6 +419,19 @@ export const CURATED_EFFECTS: Record<string, EffectType[]> = {
 
 	// Behringer (personal in-ear-monitor amp — a pedal/utility, NOT a supply)
 	"behringer-powerplay-p1": ["utility"],
+	// Behringer batch 1 — verified types for creatively-named units (coordinator
+	// no-drift overrides; the raw records carry the same verified sets).
+	"behringer-69-vibe": ["chorus", "vibrato"],
+	"behringer-adi21-acoustic-di-box": ["di", "acoustic-sim"],
+	"behringer-bdi21-bass-di-box": ["di", "preamp"],
+	"behringer-ble400-bass-limiter-enhancer": ["compressor"],
+	"behringer-bm-11m-low-pass-filter": ["filter", "envelope"],
+	"behringer-bm-15m-resonance-filter": ["filter", "envelope"],
+	"behringer-chorus-symphony": ["chorus", "vibrato"],
+	"behringer-dual-phase": ["phaser"],
+	"behringer-fc600": ["controller"],
+	"behringer-fcv100": ["controller"],
+	"behringer-fx600-digital-multi-fx": ["chorus", "flanger", "delay", "reverb"],
 
 	// Joyo
 	"joyo-d-seed": ["delay"],
