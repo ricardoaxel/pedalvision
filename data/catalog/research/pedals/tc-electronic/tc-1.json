@@ -1,0 +1,3192 @@
+[
+  {
+    "id": "tc-electronic-2290-p-dynamic-digital-delay",
+    "brand": "TC Electronic",
+    "name": "2290 P Dynamic Digital Delay",
+    "category": "pedal",
+    "deviceType": "other",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 22.35,
+    "heightCm": 13.72,
+    "dimensionsSource": "Retailer product spec (PedalBro) 223.5 x 137.2 mm; the official QSG has no measured spec table. The official Top image trimmed aspect (1.63) matches 22.35/13.72.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT L",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS mono left input.",
+        "edge": "top"
+      },
+      {
+        "label": "INPUT R",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS right input; stereo input pair.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS left output.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS right output; true stereo delay.",
+        "edge": "top"
+      },
+      {
+        "label": "EXP",
+        "kind": "exp",
+        "connector": "trs",
+        "note": "1/4 in TRS expression-pedal input.",
+        "edge": "top",
+        "signal": "control"
+      },
+      {
+        "label": "MIDI IN",
+        "kind": "midi",
+        "connector": "din5",
+        "note": "5-pin DIN MIDI input.",
+        "edge": "top",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "MIDI OUT/THRU",
+        "kind": "midi",
+        "connector": "din5",
+        "note": "5-pin DIN MIDI output/thru.",
+        "edge": "top",
+        "signal": "midi",
+        "midiType": "din5"
+      },
+      {
+        "label": "USB-C",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "note": "USB-C to a computer for firmware and the 2290 P editor app.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware",
+          "editor"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC center-negative input; no battery.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/0a029d5f13724968990b35a4bc7cc12f/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 250,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 250 mA rated."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "note": "Stereo in / stereo out; 2290 P delay with MIDI clock and expression control."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "note": "Stereo in / stereo out; 2290 P delay with MIDI clock and expression control."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Digital 2290 P delay engine; switchable true/buffered bypass reported by the retailer spec."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "rear panel",
+        "batteryCompartment": false,
+        "weightG": 550
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Desktop 2290 P reissue: stereo dynamic digital delay with presets, MIDI IN and OUT/THRU, USB-C editor, expression control and an amp send/return loop; 9 V DC 250 mA.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AJO",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/881f96e7ff8040f1842dedfe3ebdb3a6/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9683b62d25f44d1c8f53dea9010e1a4a/QSG_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_CN.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/881f96e7ff8040f1842dedfe3ebdb3a6/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJO",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/0a029d5f13724968990b35a4bc7cc12f/Image_TE_0709-AJO_2290-P-DYNAMIC-DIGITAL-DELAY_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJO",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AJO",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 2000x1358px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 223.5 x 137.2 mm; the official QSG has no measured spec table. The official Top image trimmed aspect (1.63) matches 22.35/13.72.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-3rd-dimension-chorus",
+    "brand": "TC Electronic",
+    "name": "3rd Dimension Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced; 1 MOhm input impedance.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced; 1 kOhm output impedance.",
+        "edge": "top"
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative, >100 mA supply; internal 9 V battery connector.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/9ff9addfdafa465ba6b019cfe92e12fb/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 25 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 1000,
+      "note": "Mono in / mono out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 1000,
+        "note": "Mono in / mono out."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "All-analog BBD chorus recreation; true bypass; 4-button preset selection."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": true,
+        "weightG": 500
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Analog BBD recreation of an 80s chorus with a 4-button preset system (up to 16 combinations) instead of knobs; true bypass.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHN",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9230fe9366f549d3b840683b32ff5d8f/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/9230fe9366f549d3b840683b32ff5d8f/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHN",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9ff9addfdafa465ba6b019cfe92e12fb/Image_TE_0709-AHN_3RD-DIMENSION-CHORUS_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHN",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHN",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1029x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-afterglow-chorus",
+    "brand": "TC Electronic",
+    "name": "Afterglow Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced; >450 kOhm input impedance.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced; 1 kOhm output impedance.",
+        "edge": "top"
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative, >100 mA supply; internal 9 V battery connector.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/2084585303144c08aba2a4a3f06091c3/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 20 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "inputImpedanceOhm": 450000,
+      "outputImpedanceOhm": 1000,
+      "note": "Mono in / mono out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "inputImpedanceOhm": 450000,
+        "outputImpedanceOhm": 1000,
+        "note": "Mono in / mono out."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "All-analog BBD chorus; true bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": true,
+        "weightG": 300
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Analog BBD chorus with Speed, Depth, Delay Time and Mix controls; true bypass.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AFD",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c70dbdfb11ff4cc9b60df90d27c2a90d/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/598ee260fb3044acb835ce28d1038d8a/QSG_TE_0709-AFD_AFTERGLOW-CHORUS_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/c70dbdfb11ff4cc9b60df90d27c2a90d/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AFD",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2084585303144c08aba2a4a3f06091c3/Image_TE_0709-AFD_AFTERGLOW-CHORUS_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AFD",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AFD",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1030x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-alter-ego-v2-vintage-echo",
+    "brand": "TC Electronic",
+    "name": "Alter Ego v2 Vintage Echo",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "dimensionsSource": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; official product page retired. Official Top image unavailable, trimmed interim image aspect 0.59 matches.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input (edge not documented on the available sources)."
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS left/mono output."
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS right output; stereo output pair."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative input.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://pedalbro.com/pedals/tc-electronic-alter-ego-v2-vintage-echo",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 100 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "note": "Mono in / stereo out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "note": "Mono in / stereo out."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "TonePrint digital delay; switchable true/buffered bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "batteryCompartment": true
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "TonePrint vintage-echo delay with tap tempo and stereo outputs.",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-alter-ego-v2-vintage-echo",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/d8180de6a6de020490eae1e6972258c989a6e0f75f0144256ddc6b455f191fed.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/d8180de6a6de020490eae1e6972258c989a6e0f75f0144256ddc6b455f191fed.png",
+        "sourcePage": "https://pedalbro.com/pedals/tc-electronic-alter-ego-v2-vintage-echo",
+        "priority": 1,
+        "notes": "Aggregator (PedalBro) product image; official TC product page retired. Recorded as a license-pending source gap."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://pedalbro.com/pedals/tc-electronic-alter-ego-v2-vintage-echo",
+      "status": "chosen",
+      "note": "PedalBro aggregator image 298x500px, upscaled x1.6 to the 800 master (license-pending, counted source gap); product page https://pedalbro.com/pedals/tc-electronic-alter-ego-v2-vintage-echo."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; official product page retired. Official Top image unavailable, trimmed interim image aspect 0.59 matches.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-alter-ego-x4-vintage-echo",
+    "brand": "TC Electronic",
+    "name": "Alter Ego x4 Vintage Echo",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "desktop",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 23.62,
+    "heightCm": 14.35,
+    "dimensionsSource": "Retailer product spec (PedalBro) 236.2 x 143.5 mm; official product page retired.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT L",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS left input."
+      },
+      {
+        "label": "INPUT R",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS right input; stereo input pair."
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS left output."
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS right output."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-USB for TonePrint editing and firmware.",
+        "signal": "usb",
+        "usbFunctions": [
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative input.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://pedalbro.com/pedals/tc-electronic-alter-ego-x4-vintage-echo",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 300 mA rated."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "trueStereo": true,
+      "note": "Stereo in / stereo out desktop delay."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "trueStereo": true,
+        "note": "Stereo in / stereo out desktop delay."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "TonePrint digital delay with four presets and tap tempo."
+      },
+      "physical": {
+        "footswitches": 2,
+        "batteryCompartment": false,
+        "weightG": 330
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Large-format TonePrint vintage echo with four presets, tap tempo and stereo I/O.",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-alter-ego-x4-vintage-echo",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/5040871279686b7f226b696a13453723e7e446378c18bc4a550fc7667488bdc5.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/5040871279686b7f226b696a13453723e7e446378c18bc4a550fc7667488bdc5.png",
+        "sourcePage": "https://pedalbro.com/pedals/tc-electronic-alter-ego-x4-vintage-echo",
+        "priority": 1,
+        "notes": "Aggregator (PedalBro) product image; official TC product page retired. Recorded as a license-pending source gap."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://pedalbro.com/pedals/tc-electronic-alter-ego-x4-vintage-echo",
+      "status": "chosen",
+      "note": "PedalBro aggregator image 600x365px, upscaled x1.33 to the 800 master (license-pending, counted source gap); product page https://pedalbro.com/pedals/tc-electronic-alter-ego-x4-vintage-echo."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 236.2 x 143.5 mm; official product page retired.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-ampworx-550",
+    "brand": "TC Electronic",
+    "name": "Ampworx 550",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 50 (H) x 113 (W) x 136 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS instrument input.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output to amp / DI.",
+        "edge": "top"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "note": "1/8 in (3.5 mm) headphone output.",
+        "edge": "top",
+        "level": "headphone"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-B USB for USB audio, firmware and the Ampworx app.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC / >=300 mA center-negative input; no battery.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/89d4648246db4ad582d98c38d870b7b0/Image_TE_0709-AJX_V550-PREAMP_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 300 mA; USB bus/audio also available.",
+      "battery": "none documented"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Component-based analog-modelling preamp with cab simulation."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "batteryCompartment": false,
+        "note": "Two footswitches (channel/boost); metal chassis."
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Ampworx high-gain V550 preamp: component-based amp modelling with cab simulation, DI/headphone output and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AJX",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/8c6bbb7ae0f0478dbaf8f350b4e22b06/Image_TE_0709-AJX_V550-PREAMP_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4daf18de961540eeb6f0461ed96e896f/QSG_TE_0709-AJX_V550-PREAMP_A6_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/8c6bbb7ae0f0478dbaf8f350b4e22b06/Image_TE_0709-AJX_V550-PREAMP_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJX",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/89d4648246db4ad582d98c38d870b7b0/Image_TE_0709-AJX_V550-PREAMP_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJX",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AJX",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1517x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 50 (H) x 113 (W) x 136 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350).",
+      "ampWorx": "Component-based amp modelling preamp; see the official QSG for the channel/boost footswitch assignment."
+    }
+  },
+  {
+    "id": "tc-electronic-ampworx-combo-deluxe-65",
+    "brand": "TC Electronic",
+    "name": "Ampworx Combo Deluxe 65'",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim",
+      "reverb"
+    ],
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 113 (W) x 136 (D) mm (height not measured here).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS instrument input.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output to amp / DI.",
+        "edge": "top"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "note": "1/8 in (3.5 mm) headphone output.",
+        "edge": "top",
+        "level": "headphone"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-B USB for USB audio, firmware and the Ampworx app.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC / >=300 mA center-negative input; no battery.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/595904a7e0874be6be6e9c6b68005137/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 300 mA; USB bus/audio also available.",
+      "battery": "none documented"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Component-based analog-modelling preamp with cab simulation."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "batteryCompartment": false,
+        "note": "Two footswitches (channel/boost); metal chassis."
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Ampworx Fender-style blackface combo preamp with spring reverb, cab simulation, DI/headphone output and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AJQ",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/fb385b8bed5a4085938c8adfa3ba8fad/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/1aadfc0ae2724f57bef647833a830ed0/QSG_TE_0709-AJQ_COMBO-DELUXE-65&#x27;-PREAMP_A6_CN.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/fb385b8bed5a4085938c8adfa3ba8fad/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJQ",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/595904a7e0874be6be6e9c6b68005137/Image_TE_0709-AJQ_COMBO-DELUXE-65-PREAMP_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJQ",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AJQ",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1517x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 113 (W) x 136 (D) mm (height not measured here).",
+      "imageProcessing": "Hosted as AVIF q90 (800/350).",
+      "ampWorx": "Component-based amp modelling preamp; see the official QSG for the channel/boost footswitch assignment."
+    }
+  },
+  {
+    "id": "tc-electronic-ampworx-dc30",
+    "brand": "TC Electronic",
+    "name": "Ampworx DC30",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 51 (H) x 113 (W) x 136 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS instrument input.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output to amp / DI.",
+        "edge": "top"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "note": "1/8 in (3.5 mm) headphone output.",
+        "edge": "top",
+        "level": "headphone"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-B USB for USB audio, firmware and the Ampworx app.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC / >=300 mA center-negative input; no battery.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/74db29f0c38f49478d46026a4655834e/Image_TE_0709-AJR_DC30-PREAMP_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 300 mA; USB bus/audio also available.",
+      "battery": "none documented"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Component-based analog-modelling preamp with cab simulation."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "batteryCompartment": false,
+        "note": "Two footswitches (channel/boost); metal chassis."
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Ampworx Vox-style DC30 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AJR",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/afcba0e324df405fada64dbbd69a2531/Image_TE_0709-AJR_DC30-PREAMP_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2d2229509c3943dea80c7b1a2e821d6a/QSG_TE_0709-AJR_DC30-PREAMP_CN.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/afcba0e324df405fada64dbbd69a2531/Image_TE_0709-AJR_DC30-PREAMP_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJR",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/74db29f0c38f49478d46026a4655834e/Image_TE_0709-AJR_DC30-PREAMP_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJR",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AJR",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1517x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 51 (H) x 113 (W) x 136 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350).",
+      "ampWorx": "Component-based amp modelling preamp; see the official QSG for the channel/boost footswitch assignment."
+    }
+  },
+  {
+    "id": "tc-electronic-ampworx-dual-wreck",
+    "brand": "TC Electronic",
+    "name": "Ampworx Dual Wreck",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 54 (H) x 113 (W) x 136 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS instrument input.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output to amp / DI.",
+        "edge": "top"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "note": "1/8 in (3.5 mm) headphone output.",
+        "edge": "top",
+        "level": "headphone"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-B USB for USB audio, firmware and the Ampworx app.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC / >=300 mA center-negative input; no battery.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/cdn-cgi/image/trim=border,width=1200,height=1200,fit=scale-down,background=white,format=webp,quality=82/e54c9197d01d450aa4c8644f4abbfeca/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 300 mA; USB bus/audio also available.",
+      "battery": "none documented"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Component-based analog-modelling preamp with cab simulation."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "batteryCompartment": false,
+        "note": "Two footswitches (channel/boost); metal chassis."
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Ampworx high-gain Dual Wreck preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AJS",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/a75f8aef252449a087fd413c7bcfaf0e/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/0a1e3e03cb354184961b204332635d4e/QSG_TE_0709-AJS_DUAL-WRECK-PREAMP_A6_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/a75f8aef252449a087fd413c7bcfaf0e/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJS",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/cdn-cgi/image/trim=border,width=1200,height=1200,fit=scale-down,background=white,format=webp,quality=82/e54c9197d01d450aa4c8644f4abbfeca/Image_TE_0709-AJS_DUAL-WRECK-PREAMP_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJS",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AJS",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1517x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 54 (H) x 113 (W) x 136 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350).",
+      "ampWorx": "Component-based amp modelling preamp; see the official QSG for the channel/boost footswitch assignment."
+    }
+  },
+  {
+    "id": "tc-electronic-ampworx-jims-45",
+    "brand": "TC Electronic",
+    "name": "Ampworx Jims 45",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 51 (H) x 113 (W) x 136 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS instrument input.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output to amp / DI.",
+        "edge": "top"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "note": "1/8 in (3.5 mm) headphone output.",
+        "edge": "top",
+        "level": "headphone"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-B USB for USB audio, firmware and the Ampworx app.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC / >=300 mA center-negative input; no battery.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/b9a9915270d444d4b955dd89dea984df/Image_TE_0709-AJM_JIMS-45-PREAMP_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 300 mA; USB bus/audio also available.",
+      "battery": "none documented"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Component-based analog-modelling preamp with cab simulation."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "batteryCompartment": false,
+        "note": "Two footswitches (channel/boost); metal chassis."
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Ampworx Marshall-style Jims 45 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AJM",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b7092f5942a04da6b832a08326bb4270/Image_TE_0709-AJM_JIMS-45-PREAMP_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/887a2515dd3a45b788c78117fda5a563/QSG_TE_0709-AJM_JIMS-45-PREAMP_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/b7092f5942a04da6b832a08326bb4270/Image_TE_0709-AJM_JIMS-45-PREAMP_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJM",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b9a9915270d444d4b955dd89dea984df/Image_TE_0709-AJM_JIMS-45-PREAMP_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJM",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AJM",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1517x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 51 (H) x 113 (W) x 136 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350).",
+      "ampWorx": "Component-based amp modelling preamp; see the official QSG for the channel/boost footswitch assignment."
+    }
+  },
+  {
+    "id": "tc-electronic-ampworx-jims-800",
+    "brand": "TC Electronic",
+    "name": "Ampworx Jims 800",
+    "category": "pedal",
+    "deviceType": "preamp",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "preamp",
+      "amp-modeler",
+      "cab-sim"
+    ],
+    "widthCm": 11.3,
+    "heightCm": 13.6,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 51 (H) x 113 (W) x 136 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS instrument input.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output to amp / DI.",
+        "edge": "top"
+      },
+      {
+        "label": "PHONES",
+        "kind": "out",
+        "connector": "3.5mm",
+        "note": "1/8 in (3.5 mm) headphone output.",
+        "edge": "top",
+        "level": "headphone"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-B USB for USB audio, firmware and the Ampworx app.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "audio",
+          "editor",
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC / >=300 mA center-negative input; no battery.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/92121da2b0b14c3f9fefd1c5af944307/Image_TE_0709-AJV_JIMS-800-PREAMP_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 300 mA; USB bus/audio also available.",
+      "battery": "none documented"
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": false,
+      "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": false,
+        "note": "Mono instrument in; output to amp plus a headphone output; USB audio interface."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Component-based analog-modelling preamp with cab simulation."
+      },
+      "physical": {
+        "footswitches": 2,
+        "jackOrientation": "top",
+        "batteryCompartment": false,
+        "note": "Two footswitches (channel/boost); metal chassis."
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Ampworx high-gain Jims 800 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AJV",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/68c86bcb7991463686ea01961915adaa/Image_TE_0709-AJV_JIMS-800-PREAMP_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/35053abc784d4424b83230e6b8a63b9b/QSG_TE_0709-AJV_JIMS-800-PREAMP_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/68c86bcb7991463686ea01961915adaa/Image_TE_0709-AJV_JIMS-800-PREAMP_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJV",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/92121da2b0b14c3f9fefd1c5af944307/Image_TE_0709-AJV_JIMS-800-PREAMP_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AJV",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AJV",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1517x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 51 (H) x 113 (W) x 136 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350).",
+      "ampWorx": "Component-based amp modelling preamp; see the official QSG for the channel/boost footswitch assignment."
+    }
+  },
+  {
+    "id": "tc-electronic-arena-reverb",
+    "brand": "TC Electronic",
+    "name": "Arena Reverb",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "dimensionsSource": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; official product page retired.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input (edge not documented on the available sources)."
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS left/mono output."
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS right output; stereo output pair."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative input; internal 9 V battery option.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://pedalbro.com/pedals/tc-electronic-arena-reverb",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 100 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "analogDryThrough": true,
+      "note": "Mono in / stereo out with analog dry-through and switchable kill-dry."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "analogDryThrough": true,
+        "note": "Mono in / stereo out with analog dry-through and switchable kill-dry."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "TonePrint stereo reverb based on the Hall of Fame with four extra modes; spillover."
+      },
+      "physical": {
+        "footswitches": 1,
+        "batteryCompartment": true,
+        "weightG": 340
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "TonePrint stereo reverb with four Arena-specific modes, spillover, analog dry-through and switchable kill-dry.",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-arena-reverb",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/29a430722432a7bf1efcca50b1b46a89b4dcf8318eeec0609b4b43fa8f596365.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/29a430722432a7bf1efcca50b1b46a89b4dcf8318eeec0609b4b43fa8f596365.png",
+        "sourcePage": "https://pedalbro.com/pedals/tc-electronic-arena-reverb",
+        "priority": 1,
+        "notes": "Aggregator (PedalBro) product image; official TC product page retired. Recorded as a license-pending source gap."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://pedalbro.com/pedals/tc-electronic-arena-reverb",
+      "status": "chosen",
+      "note": "PedalBro aggregator image 350x588px, upscaled x1.36 to the 800 master (license-pending, counted source gap); product page https://pedalbro.com/pedals/tc-electronic-arena-reverb."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; official product page retired.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-blood-moon-phaser",
+    "brand": "TC Electronic",
+    "name": "Blood Moon Phaser",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "phaser"
+    ],
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "¼ in TS unbalanced.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "¼ in TS unbalanced; 1 kOhm output impedance.",
+        "edge": "top"
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative, >100 mA supply; internal 9 V battery connector.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/a6015062cf9148279a27d6e12af5f333/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 25 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "outputImpedanceOhm": 1000,
+      "note": "Mono in / mono out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "outputImpedanceOhm": 1000,
+        "note": "Mono in / mono out."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "All-analog four-stage phaser; true bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": true,
+        "weightG": 285
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Analog four-stage phaser with Rate, Depth and Feedback controls; true bypass.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AFE",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9ec601f3874243939ef5de635dd32ade/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c195e6ab19fb4c6699d17252aa868fa3/QSG_TE_0709-AFE_BLOOD%20MOON%20PHASER_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/9ec601f3874243939ef5de635dd32ade/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AFE",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/a6015062cf9148279a27d6e12af5f333/Image_TE_0709-AFE_BLOOD-MOON-PHASER_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AFE",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AFE",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1029x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-bodyrez-acoustic-pickup-enhancer",
+    "brand": "TC Electronic",
+    "name": "BodyRez Acoustic Pickup Enhancer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "eq",
+      "compressor"
+    ],
+    "widthCm": 5.08,
+    "heightCm": 9.53,
+    "dimensionsSource": "Retailer product spec (PedalBro) 50.8 x 95.3 mm; the official QSG has no measured dimension table.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input (edge not documented on the available sources)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output."
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-USB for firmware updates.",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC, >100 mA center-negative input.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.tcelectronic.com/en/products/0709-AHB",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 100 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "note": "Mono in / mono out acoustic pickup enhancer."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "note": "Mono in / mono out acoustic pickup enhancer."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Digital acoustic enhancement (EQ/compression/feedback control) for piezo pickups."
+      },
+      "physical": {
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "weightG": 160
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Acoustic pickup enhancer that restores body/resonance and controls feedback for piezo-equipped acoustics.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHB",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9ba64f84606a4077bd389eda587c1e98/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5b50110cea064268a8bc219e2ad57944/QSG_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/9ba64f84606a4077bd389eda587c1e98/Image_TE_0709-AHB_BODYREZ-ACOUSTIC-PICKUP-ENHANCER_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHB",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHB",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 50.8 x 95.3 mm; the official QSG has no measured dimension table.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-bonafide-buffer",
+    "brand": "TC Electronic",
+    "name": "Bonafide Buffer",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "buffer"
+    ],
+    "widthCm": 5.08,
+    "heightCm": 9.53,
+    "dimensionsSource": "Retailer product spec (PedalBro) 50.8 x 95.3 mm; the official QSG has no measured dimension table.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input (edge not documented on the available sources)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC, >100 mA center-negative input.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.tcelectronic.com/en/products/0709-AHC",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 40 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "note": "Mono in / mono out buffer."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "note": "Mono in / mono out buffer."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "buffered",
+        "note": "Always-on analog buffer; no footswitch."
+      },
+      "physical": {
+        "footswitches": 0,
+        "batteryCompartment": false,
+        "weightG": 90
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Compact always-on analog buffer that preserves signal integrity through long cable runs and true-bypass pedalboards.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHC",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/32695f9291944939b1c30f3c3e270378/Image_TE_0709-AHC_BONAFIDE-BUFFER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5d4256679452441ea9a0ed035430f7b1/QSG_TE_0709-AHC_BONAFIDE-BUFFER_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/32695f9291944939b1c30f3c3e270378/Image_TE_0709-AHC_BONAFIDE-BUFFER_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHC",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHC",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 50.8 x 95.3 mm; the official QSG has no measured dimension table.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-brainwaves-pitch-shifter",
+    "brand": "TC Electronic",
+    "name": "Brainwaves Pitch Shifter",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "pitch"
+    ],
+    "widthCm": 7.4,
+    "heightCm": 12.2,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 50 (H) x 74 (W) x 122 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT 1",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced mono input 1; 1 MOhm.",
+        "edge": "top"
+      },
+      {
+        "label": "INPUT 2",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced mono input 2; 1 MOhm.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT 1",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced mono output 1; 100 Ohm.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT 2",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced mono output 2; 100 Ohm.",
+        "edge": "top"
+      },
+      {
+        "label": "USB",
+        "kind": "ctrl",
+        "connector": "mini-usb",
+        "note": "Mini-USB for firmware updates and TonePrint editing.",
+        "edge": "top",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware",
+          "editor"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative, >100 mA supply; internal 9 V battery option.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/a2f9e9d288914bb0b1860c95d1ccd256/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 85,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 85 mA rated."
+    },
+    "io": {
+      "inputs": 2,
+      "outputs": 2,
+      "stereo": true,
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 100,
+      "note": "Stereo in / stereo out with dual voice pitch shifting and MASH."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 2,
+        "outputs": 2,
+        "stereo": true,
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 100,
+        "note": "Stereo in / stereo out with dual voice pitch shifting and MASH."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "true",
+        "note": "True bypass (buffered bypass optional); TonePrint and MASH footswitch control."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": true,
+        "weightG": 340
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Pitch shifter with two independent voices, up to two octaves each, TonePrint and MASH expression control.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AIR",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2c45936d9dfa4c2589b87dee031b399b/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/6c08710089694eb3856910f7f18bbcd2/QSG_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/2c45936d9dfa4c2589b87dee031b399b/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AIR",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/a2f9e9d288914bb0b1860c95d1ccd256/Image_TE_0709-AIR_BRAINWAVES-PITCH-SHIFTER_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AIR",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AIR",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1179x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 50 (H) x 74 (W) x 122 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-bucket-brigade-analog-delay",
+    "brand": "TC Electronic",
+    "name": "Bucket Brigade Analog Delay",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "delay"
+    ],
+    "widthCm": 6.1,
+    "heightCm": 10.03,
+    "dimensionsSource": "Retailer product spec (PedalBro) 61 x 100.3 mm; the official QSG dimension line is not a footprint reading, so the retailer unit spec and the official Top image aspect (0.61) are used.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output.",
+        "edge": "top"
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC center-negative input.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/90f76f0e53244e618f098a69da8be196/Image_TE_0709-AKE_BUCKET-BRIGADE-ANALOG-DELAY_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 40,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 40 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "note": "Mono in / mono out analog BBD delay."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "note": "Mono in / mono out analog BBD delay."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "All-analog bucket-brigade delay with modulation (internal speed trim)."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": false,
+        "weightG": 300
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Compact all-analog BBD delay (up to 600 ms) with Delay, Feedback, Vol, Depth and Mod controls.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AKE",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/883f62967a6a460faf016c6b3afe11e2/Image_TE_0709-AKE_BUCKET-BRIGADE-ANALOG-DELAY_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5ad4cfffcd974652a1bb18ed8c16c8f3/QSG_TE_0709-AKE_BUCKET-BRIGADE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/883f62967a6a460faf016c6b3afe11e2/Image_TE_0709-AKE_BUCKET-BRIGADE-ANALOG-DELAY_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AKE",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/90f76f0e53244e618f098a69da8be196/Image_TE_0709-AKE_BUCKET-BRIGADE-ANALOG-DELAY_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AKE",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AKE",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1159x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 61 x 100.3 mm; the official QSG dimension line is not a footprint reading, so the retailer unit spec and the official Top image aspect (0.61) are used.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-cinders-overdrive",
+    "brand": "TC Electronic",
+    "name": "Cinders Overdrive",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "overdrive"
+    ],
+    "widthCm": 7.4,
+    "heightCm": 13.2,
+    "dimensionsSource": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced.",
+        "edge": "top"
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative supply; internal 9 V battery option.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/782ef1cc5c044c4996ad3b0f0fb9325c/Image_TE_0709-AFF_CINDERS-OVERDRIVE_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 20,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 20 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "note": "Mono in / mono out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "note": "Mono in / mono out."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "All-analog overdrive; true bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": true,
+        "weightG": 260
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Analog transparent overdrive with Drive, Level, Bass and Treble controls; true bypass.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AFF",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2a094fa0c45d47e19b359256ffe2547e/Image_TE_0709-AFF_CINDERS-OVERDRIVE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/9732d2234fbc45ffba10ee12334b25e7/QSG_TE_0709-AFF_CINDERS-OVERDRIVE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/2a094fa0c45d47e19b359256ffe2547e/Image_TE_0709-AFF_CINDERS-OVERDRIVE_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AFF",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/782ef1cc5c044c4996ad3b0f0fb9325c/Image_TE_0709-AFF_CINDERS-OVERDRIVE_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AFF",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AFF",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1029x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Official TC Electronic QSG specification table: 58 (H) x 74 (W) x 132 (D) mm.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-corona-chorus",
+    "brand": "TC Electronic",
+    "name": "Corona Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "dimensionsSource": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; official product page retired.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input (edge not documented on the available sources)."
+      },
+      {
+        "label": "OUTPUT L",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS left/mono output."
+      },
+      {
+        "label": "OUTPUT R",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS right output; stereo output pair."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative input; internal 9 V battery option.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://pedalbro.com/pedals/tc-electronic-corona-chorus",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 75,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 75 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 2,
+      "stereo": true,
+      "analogDryThrough": true,
+      "note": "Mono in / stereo out with analog dry-through and spillover."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 2,
+        "stereo": true,
+        "analogDryThrough": true,
+        "note": "Mono in / stereo out with analog dry-through and spillover."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "TonePrint chorus with SCF and Tri-Chorus modes; switchable true/buffered bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "batteryCompartment": true,
+        "weightG": 260
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "TonePrint stereo chorus with SCF and Tri-Chorus modes and custom artist TonePrints.",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-corona-chorus",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/dede5a84088fedddaa0a440aefe6385a403200855df34f2559e65d33c7bceb9d.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/dede5a84088fedddaa0a440aefe6385a403200855df34f2559e65d33c7bceb9d.png",
+        "sourcePage": "https://pedalbro.com/pedals/tc-electronic-corona-chorus",
+        "priority": 1,
+        "notes": "Aggregator (PedalBro) product image; official TC product page retired. Recorded as a license-pending source gap."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://pedalbro.com/pedals/tc-electronic-corona-chorus",
+      "status": "chosen",
+      "note": "PedalBro aggregator image 481x800px, upscaled x1.0 to the 800 master (license-pending, counted source gap); product page https://pedalbro.com/pedals/tc-electronic-corona-chorus."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; official product page retired.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-corona-mini-chorus",
+    "brand": "TC Electronic",
+    "name": "Corona Mini Chorus",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "chorus"
+    ],
+    "widthCm": 5.08,
+    "heightCm": 9.53,
+    "dimensionsSource": "Retailer product spec (PedalBro) 50.8 x 95.3 mm; the official QSG has no measured dimension table.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input (edge not documented on the available sources)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative input.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.tcelectronic.com/en/products/0709-AHD",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 68,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 68 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "note": "Mono in / mono out mini chorus."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "note": "Mono in / mono out mini chorus."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "true",
+        "note": "TonePrint mini chorus; true bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "weightG": 160
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Mini TonePrint chorus with Speed, Depth and Level controls; true bypass.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHD",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/fd96434e65a649ca9c0fb357d1282328/Image_TE_0709-AHD_CORONA-MINI-CHORUS_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/fd96434e65a649ca9c0fb357d1282328/Image_TE_0709-AHD_CORONA-MINI-CHORUS_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHD",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHD",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render; re-rendered 2026-10-28 with a horizontal shear to correct the owner-reported clockwise lean (shadow removed by an alpha threshold, no rotation). The source is unchanged; the shear keeps the top edge level and the sides vertical."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 50.8 x 95.3 mm; the official QSG has no measured dimension table.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-dark-matter-distortion",
+    "brand": "TC Electronic",
+    "name": "Dark Matter Distortion",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "standard",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 7.26,
+    "heightCm": 12.19,
+    "dimensionsSource": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; the official QSG has no measured dimension table.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced.",
+        "edge": "top"
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS unbalanced.",
+        "edge": "top"
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "9 V DC, >100 mA center-negative input; internal 9 V battery option.",
+        "edge": "top",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://cdn-media.empowertribe.com/4a18ea97087042d5bf2684217c34eeea/Image_TE_0709-AHE_DARK-MATTER-DISTORTION_Rear_XL.png",
+      "confidence": "verified",
+      "note": "Official TC Electronic rear-panel image shows the connector face; edges are recorded, exact offsets are not published so positions are edge-only."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 5,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 5 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "note": "Mono in / mono out."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "note": "Mono in / mono out."
+      },
+      "circuit": {
+        "type": "analog",
+        "bypass": "true",
+        "note": "All-analog distortion; true bypass."
+      },
+      "physical": {
+        "footswitches": 1,
+        "jackOrientation": "top",
+        "batteryCompartment": true,
+        "weightG": 310
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Analog distortion with Gain, Level, Voice and Treble controls; true bypass.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-AHE",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/d51b5902c4d542e4bd847f9f3766dfac/Image_TE_0709-AHE_DARK-MATTER-DISTORTION_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/0f558f7d6a144294a6d17c2e96f92526/QSG_TE_0709-AHE_DARK-MATTER-DISTORTION_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/d51b5902c4d542e4bd847f9f3766dfac/Image_TE_0709-AHE_DARK-MATTER-DISTORTION_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHE",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4a18ea97087042d5bf2684217c34eeea/Image_TE_0709-AHE_DARK-MATTER-DISTORTION_Rear_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-AHE",
+        "priority": 2,
+        "notes": "Official rear-panel view used as connector-face evidence; not a cutout."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-AHE",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1179x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 72.6 x 121.9 mm; the official QSG has no measured dimension table.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-ditto-2-looper",
+    "brand": "TC Electronic",
+    "name": "Ditto 2 Looper",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "mini",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "looper"
+    ],
+    "widthCm": 5.08,
+    "heightCm": 9.3,
+    "dimensionsSource": "Retailer product spec (PedalBro) 50.8 x 93 mm; the official QSG lists 51.05 x 42.87 x 92.87 mm, whose width does not match the official Top image aspect (0.55).",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1 x 1/4 in TS unbalanced, >=1 MOhm."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1 x 1/4 in TS unbalanced, 100 Ohm."
+      },
+      {
+        "label": "USB-C",
+        "kind": "ctrl",
+        "connector": "usb-c",
+        "note": "USB Type-C, data only (no power delivery), for the Ditto app.",
+        "signal": "usb",
+        "usbFunctions": [
+          "firmware",
+          "editor"
+        ]
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative, >=100 mA.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://www.tcelectronic.com/en/products/0709-ALV",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 100 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": false,
+      "inputImpedanceOhm": 1000000,
+      "outputImpedanceOhm": 100,
+      "note": "Mono in / mono out looper."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": false,
+        "inputImpedanceOhm": 1000000,
+        "outputImpedanceOhm": 100,
+        "note": "Mono in / mono out looper."
+      },
+      "circuit": {
+        "type": "digital",
+        "bypass": "buffered",
+        "note": "Buffered bypass by default (true bypass optional in the app)."
+      },
+      "physical": {
+        "footswitches": 1,
+        "batteryCompartment": false,
+        "weightG": 190
+      }
+    },
+    "usage": "guitar",
+    "status": "current",
+    "notes": "Compact looper with the Ditto app (loop storage/management) over USB-C, loop level knob and Pair/User/Ditto side switch.",
+    "sources": [
+      {
+        "url": "https://www.tcelectronic.com/en/products/0709-ALV",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ebae7a8adcd3419d9f5d3e1d3612680b/Image_TE_0709-ALV_DITTO-2-LOOPER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ac2b8987f2494d329e6bd5d415a121d4/QSG_TE_0709-ALV_DITTO-2-LOOPER_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://cdn-media.empowertribe.com/ebae7a8adcd3419d9f5d3e1d3612680b/Image_TE_0709-ALV_DITTO-2-LOOPER_Top_XL.png",
+        "sourcePage": "https://www.tcelectronic.com/en/products/0709-ALV",
+        "priority": 1,
+        "notes": "Official TC Electronic top-down render; used for the hosted asset (drop shadow removed by alpha threshold before trim)."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "official",
+      "sourceUrl": "https://www.tcelectronic.com/en/products/0709-ALV",
+      "status": "chosen",
+      "note": "Official TC Electronic Top_XL render 1029x2000px, downscaled to the 800 master; bottom drop shadow removed with an alpha threshold before trimming."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 50.8 x 93 mm; the official QSG lists 51.05 x 42.87 x 92.87 mm, whose width does not match the official Top image aspect (0.55).",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  },
+  {
+    "id": "tc-electronic-ditto-jam-x2-looper",
+    "brand": "TC Electronic",
+    "name": "Ditto Jam X2 Looper",
+    "category": "pedal",
+    "deviceType": "stompbox",
+    "formFactor": "double",
+    "instrumentTypes": [
+      "guitar"
+    ],
+    "effectTypes": [
+      "looper"
+    ],
+    "widthCm": 11.18,
+    "heightCm": 13.34,
+    "dimensionsSource": "Retailer product spec (PedalBro) 111.8 x 133.4 mm; official product page retired.",
+    "imageFormat": "avif",
+    "jacks": [
+      {
+        "label": "INPUT",
+        "kind": "in",
+        "connector": "ts",
+        "note": "1/4 in TS input (edge not documented on the available sources)."
+      },
+      {
+        "label": "OUTPUT",
+        "kind": "out",
+        "connector": "ts",
+        "note": "1/4 in TS stereo output."
+      },
+      {
+        "label": "9V DC",
+        "kind": "power",
+        "connector": "barrel",
+        "note": "Standard 9 V DC center-negative, 150 mA input.",
+        "signal": "power"
+      }
+    ],
+    "jackLayout": {
+      "source": "https://pedalbro.com/pedals/tc-electronic-ditto-jam-x2-looper",
+      "confidence": "unknown",
+      "note": "No source shows the connector face; edges are omitted and the app uses its assumed anchors."
+    },
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 150,
+      "polarity": "center-negative",
+      "connector": "barrel",
+      "connectorSize": "5.5 x 2.1 mm",
+      "note": "9 V DC center-negative, 150 mA rated."
+    },
+    "io": {
+      "inputs": 1,
+      "outputs": 1,
+      "stereo": true,
+      "note": "Stereo-capable output; two independent loop tracks."
+    },
+    "optional": {
+      "audio": {
+        "inputs": 1,
+        "outputs": 1,
+        "stereo": true,
+        "note": "Stereo-capable output; two independent loop tracks."
+      },
+      "circuit": {
+        "type": "digital",
+        "note": "Digital looper with BeatSense automatic BPM detection syncing loops to a band."
+      },
+      "physical": {
+        "footswitches": 2,
+        "batteryCompartment": false,
+        "weightG": 460
+      }
+    },
+    "usage": "guitar",
+    "status": "discontinued",
+    "notes": "Two-track looper with BeatSense automatic BPM detection that keeps loops in time with a live band or backing track.",
+    "sources": [
+      {
+        "url": "https://pedalbro.com/pedals/tc-electronic-ditto-jam-x2-looper",
+        "kind": [
+          "info",
+          "image"
+        ]
+      },
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/096c4d17abacf0b6873f458d4607b15f4e0dcc860b1d7a75b6e2bca26d26f715.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ],
+    "imageCandidates": [
+      {
+        "url": "https://assets.pedalbro.com/cdn-cgi/image/width=1200,quality=80,format=auto,fit=scale-down/pedals/096c4d17abacf0b6873f458d4607b15f4e0dcc860b1d7a75b6e2bca26d26f715.png",
+        "sourcePage": "https://pedalbro.com/pedals/tc-electronic-ditto-jam-x2-looper",
+        "priority": 1,
+        "notes": "Aggregator (PedalBro) product image; official TC product page retired. Recorded as a license-pending source gap."
+      }
+    ],
+    "imageProvenance": {
+      "kind": "community",
+      "sourceUrl": "https://pedalbro.com/pedals/tc-electronic-ditto-jam-x2-looper",
+      "status": "chosen",
+      "note": "PedalBro aggregator image 670x800px, upscaled x1.0 to the 800 master (license-pending, counted source gap); product page https://pedalbro.com/pedals/tc-electronic-ditto-jam-x2-looper."
+    },
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "extra": {
+      "dimensionsSourceNote": "Retailer product spec (PedalBro) 111.8 x 133.4 mm; official product page retired.",
+      "imageProcessing": "Hosted as AVIF q90 (800/350)."
+    }
+  }
+]
