@@ -38,6 +38,8 @@ import { HistoryControls } from "./HistoryControls";
 import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
 import { MotionPresence } from "./MotionPresence";
 import { usePartImage } from "./partImage";
+
+const MAX_PICKER_PEDALS = 300;
 import {
 	brandsOf,
 	effectLabel,
@@ -379,9 +381,13 @@ export function Picker({
 	const pedalBrandOptions = useMemo(() => pedalBrands(catalog.pedals), []);
 	const boardBrands = useMemo(() => brandsOf(catalog.boards), []);
 
-	const pedals = useMemo(
+	const filteredPedals = useMemo(
 		() => filterPedals(catalog.pedals, { query, brand, effectTypes }),
 		[query, brand, effectTypes],
+	);
+	const pedals = useMemo(
+		() => filteredPedals.slice(0, MAX_PICKER_PEDALS),
+		[filteredPedals],
 	);
 	const filteredBoards = useMemo(
 		() => filterBoards(catalog.boards, { query, brand }),
@@ -408,10 +414,14 @@ export function Picker({
 		}
 		return pedals.map((pedal) => {
 			const labels = pedal.effectTypes.map(effectLabel);
+			const parts = [
+				...(pedal.notes?.startsWith("Planner placeholder") ? ["Planner"] : []),
+				...labels,
+			];
 			const meta =
-				labels.length > 0
-					? labels.slice(0, 3).join(" · ") +
-						(labels.length > 3 ? ` +${labels.length - 3}` : "")
+				parts.length > 0
+					? parts.slice(0, 3).join(" · ") +
+						(parts.length > 3 ? ` +${parts.length - 3}` : "")
 					: "";
 			return {
 				id: pedal.id,
@@ -640,6 +650,8 @@ export function Picker({
 			];
 	const brands = tab === "boards" ? boardBrands : pedalBrandOptions;
 	const count = entries.length;
+	const totalCount =
+		tab === "boards" ? filteredBoards.length : filteredPedals.length;
 	const isBoards = tab === "boards";
 	const isCustom = tab === "custom";
 	const copy = TAB_COPY[tab];
@@ -1011,7 +1023,9 @@ export function Picker({
 												data-testid="picker-count"
 												aria-live="polite"
 											>
-												{count} {copy.count}
+												{count < totalCount
+													? `${count} of ${totalCount} ${copy.count}`
+													: `${count} ${copy.count}`}
 											</span>
 										</div>
 
