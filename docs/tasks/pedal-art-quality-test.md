@@ -1,10 +1,10 @@
-# Pedal-art quality test — four fidelity levels
+# Pedal-art quality test — spec levels + cartoon research
 
 **Status:** test / in review · **Date:** 2026-10-29 · **Scope:** visual calibration only
 
 ## Goal
 
-Compare four generated-art fidelity levels on the **same pedal** (BOSS DS-1,
+Compare generated-art fidelity levels on the **same pedal** (BOSS DS-1,
 7.3 × 12.9 cm) so the owner can decide how much per-item work the catalog art is
 worth before committing to a production plan.
 
@@ -19,8 +19,9 @@ does not run the full catalog pipeline or the full test suite (owner request).
 | **Reference-driven** | Official DS-1 reference for body colour, band, control layout/labels; typeset text | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-reference.json` |
 | **Fully faithful** | Reference-matched colour, knob scale/placement, CHECK lamp, output/input legends, separator line, tread pad | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-faithful.json` |
 | **Exact replica** | Adds per-text ink (light BOSS on the dark pad), centre-capped knobs, arrow-like output/input legends and the closest reference layout the renderer can express | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-exact.json` |
+| **Studio replica v2** | Geometry measured from the official transparent top: knob centres/scale, pad bounds, knurled knobs, centre caps, real arrow primitives, marker dots, CHECK label | `tools/asset-pipeline/pedal-art/pilots/quality-test/boss-ds-1-studio.json` |
 
-All four spec levels use the existing `asset:pedal-art` renderer and the frozen
+All five spec levels use the existing `asset:pedal-art` renderer and the frozen
 “Catalog Specimen” style. Reference pixels are **not shipped**; the official
 reference is included in the comparison sheets only for QA.
 
@@ -30,7 +31,10 @@ reference is included in the comparison sheets only for QA.
   three levels at 800 (full detail).
 - `docs/screenshots/pedal-art-quality-test/comparison-350.png` — the same at
   picker/thumb size.
-- Individual 800 PNGs: `boss-ds-1-{template,reference,faithful,exact}.png`.
+- Individual 800 PNGs: `boss-ds-1-{template,reference,faithful,exact,studio}.png`.
+- Studio v2 comparison: `comparison-studio-800.png` / `comparison-studio-350.png`
+  (official top, exact v1, studio v2) and a picker-context mock:
+  `studio-ui-card.png`.
 - Research pass: `comparison-cartoon-800.png` / `comparison-cartoon-350.png`
   (official top, exact spec, reference-derived cartoon) and
   `cartoon-candidates.png` (the tested pipelines).
@@ -43,6 +47,7 @@ Rendered AVIF sizes (800 / 350):
 | Reference-driven | 14,677 B | 5,843 B |
 | Fully faithful | 15,219 B | 6,298 B |
 | Exact replica | 16,680 B | 6,832 B |
+| Studio replica v2 | 17,553 B | 7,187 B |
 | Reference-derived cartoon (VTracer) | 24,914 B | 10,650 B |
 
 ## Observations
@@ -59,6 +64,8 @@ Rendered AVIF sizes (800 / 350):
   we can render today without logos or reference pixels. It still uses typeset
   text (not the BOSS wordmark), and it required two small optional renderer
   fields (`text.ink`, `knob.cap`).
+- **Studio replica v2** is the strongest **own** version: measured knob positions/sizes and pad bounds from the high-res official top, knurled knobs with centre caps, real arrow primitives, marker dots, CHECK label and a black footswitch. It is still typeset (no BOSS wordmark) and slightly stylised, but it reads much closer to the real unit than exact v1. The picker-context mock (`studio-ui-card.png`) shows it in the actual catalog UI.
+- **Renderer additions for v2:** optional `knob.style: "knurled"`, `dot` and `arrow` control kinds, and measured geometry. These are backwards-compatible; existing specs are unchanged.
 
 ## Reference-derived cartoon (research pass)
 
@@ -101,9 +108,12 @@ pixels) from it.
 5. **Source path:** spec-driven (shippable, clean, approximate), reference-derived
    cartoon (exact, derivative, halos), or hybrid (use the cartoon as a tracing
    reference for a clean spec)?
+6. **Studio v2 adoption:** is this the new exact-replica standard, a hero-only
+   tier, or should it stay a test?
 
 ## Not run
 
 Full `catalog:ci`, guard and E2E — intentionally skipped for this visual
-calibration. The two optional renderer fields were checked with `pnpm typecheck`,
-the 37 art-pipeline unit tests and `pnpm lint`; the PNGs above are the evidence.
+calibration. The optional renderer fields (`text.ink`, `knob.cap`, `knob.style`, `dot`, `arrow`)
+were checked with `pnpm typecheck`, the 37 art-pipeline unit tests and
+`pnpm lint`; the PNGs above are the evidence.

@@ -81,6 +81,8 @@ export const KnobSchema = z
 		rotationDeg: z.number().min(-180).max(360).default(0),
 		/** Optional light centre cap, e.g. the DS-1's white-capped knobs. */
 		cap: z.enum(["none", "center"]).default("none"),
+		/** Knurled skirt for a machined control. */
+		style: z.enum(["standard", "knurled"]).default("standard"),
 		...controlBase,
 	})
 	.strict();
@@ -137,6 +139,26 @@ export const TreadleSchema = z
 	})
 	.strict();
 
+export const DotSchema = z
+	.object({
+		kind: z.literal("dot"),
+		diameterCm: z.number().min(0.2).max(1.2),
+		color: Hex.default("#1E1E1E"),
+		...controlBase,
+	})
+	.strict();
+
+export const ArrowSchema = z
+	.object({
+		kind: z.literal("arrow"),
+		direction: z.enum(["left", "right"]),
+		lengthCm: z.number().min(0.4).max(4),
+		thicknessCm: z.number().min(0.06).max(0.4).default(0.12),
+		color: Hex.default("#2B3036"),
+		...controlBase,
+	})
+	.strict();
+
 export const PedalArtControlSchema = z.discriminatedUnion("kind", [
 	KnobSchema,
 	FootswitchSchema,
@@ -145,6 +167,8 @@ export const PedalArtControlSchema = z.discriminatedUnion("kind", [
 	ButtonSchema,
 	DisplaySchema,
 	TreadleSchema,
+	DotSchema,
+	ArrowSchema,
 ]);
 
 export const PedalArtBandSchema = z
@@ -341,13 +365,17 @@ export const PedalArtSpecSchema = z
 					? control.widthCm / 2
 					: control.kind === "toggle"
 						? control.leverCm * 0.8
-						: control.diameterCm / 2;
+						: control.kind === "arrow"
+							? control.lengthCm / 2
+							: control.diameterCm / 2;
 			const halfHeight =
 				control.kind === "display" || control.kind === "treadle"
 					? control.heightCm / 2
 					: control.kind === "toggle"
 						? control.leverCm * 0.65
-						: control.diameterCm / 2;
+						: control.kind === "arrow"
+							? control.thicknessCm / 2
+							: control.diameterCm / 2;
 			if (
 				x - halfWidth < 0.15 ||
 				x + halfWidth > widthCm - 0.15 ||

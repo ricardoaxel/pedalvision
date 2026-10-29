@@ -43,11 +43,13 @@ export type PedalArtSvg = {
 const CONTROL_ORDER: Record<PedalArtControl["kind"], number> = {
 	treadle: 0,
 	display: 1,
-	button: 2,
-	toggle: 3,
-	knob: 4,
-	led: 5,
-	footswitch: 6,
+	arrow: 2,
+	button: 3,
+	toggle: 4,
+	knob: 5,
+	led: 6,
+	footswitch: 7,
+	dot: 8,
 };
 
 const FINISH_FILL: Record<string, string> = {
@@ -106,6 +108,12 @@ function controlHalfSize(
 		return {
 			halfWidth: control.leverCm * 0.8 * pxPerCm,
 			halfHeight: control.leverCm * 0.65 * pxPerCm,
+		};
+	}
+	if (control.kind === "arrow") {
+		return {
+			halfWidth: (control.lengthCm * pxPerCm) / 2,
+			halfHeight: (control.thicknessCm * pxPerCm) / 2,
 		};
 	}
 	const radius = (control.diameterCm * pxPerCm) / 2;
@@ -265,6 +273,15 @@ function renderControl(
 					hairline,
 				),
 			);
+			if (control.style === "knurled") {
+				const ridges = 18;
+				for (let i = 0; i < ridges; i++) {
+					const a = (i / ridges) * Math.PI * 2;
+					parts.push(
+						`<line x1="${fmt(cx + Math.cos(a) * radius * 0.87)}" y1="${fmt(cy + Math.sin(a) * radius * 0.87)}" x2="${fmt(cx + Math.cos(a) * radius * 0.97)}" y2="${fmt(cy + Math.sin(a) * radius * 0.97)}" stroke="${ART_PALETTE.metalLo}" stroke-width="${fmt(hairline * 0.6)}" stroke-linecap="round"/>`,
+					);
+				}
+			}
 			if (centerCap) {
 				parts.push(
 					circle(
@@ -427,6 +444,26 @@ function renderControl(
 			const inset = Math.max(2, 0.3 * pxPerCm);
 			parts.push(
 				`<line x1="${fmt(cx - treadleWidth / 2 + inset)}" y1="${fmt(cy)}" x2="${fmt(cx + treadleWidth / 2 - inset)}" y2="${fmt(cy)}" stroke="${ART_PALETTE.hardwareInk}" stroke-width="${fmt(hairline)}"/>`,
+			);
+			break;
+		}
+		case "dot": {
+			parts.push(
+				circle(cx, cy, (control.diameterCm * pxPerCm) / 2, control.color),
+			);
+			break;
+		}
+		case "arrow": {
+			const length = control.lengthCm * pxPerCm;
+			const thickness = control.thicknessCm * pxPerCm;
+			const head = Math.max(thickness * 2.4, 5);
+			const dir = control.direction === "left" ? -1 : 1;
+			const tipX = cx + (dir * length) / 2;
+			const tailX = cx - (dir * length) / 2;
+			const shaftEnd = tipX - dir * head * 0.75;
+			parts.push(
+				`<line x1="${fmt(tailX)}" y1="${fmt(cy)}" x2="${fmt(shaftEnd)}" y2="${fmt(cy)}" stroke="${control.color}" stroke-width="${fmt(thickness)}" stroke-linecap="round"/>`,
+				`<polygon points="${fmt(tipX)},${fmt(cy)} ${fmt(tipX - dir * head)},${fmt(cy - head / 2)} ${fmt(tipX - dir * head)},${fmt(cy + head / 2)}" fill="${control.color}"/>`,
 			);
 			break;
 		}

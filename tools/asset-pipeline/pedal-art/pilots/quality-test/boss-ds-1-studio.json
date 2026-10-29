@@ -1,0 +1,199 @@
+{
+	"id": "boss-ds-1-studio",
+	"family": "compact",
+	"widthCm": 7.3,
+	"heightCm": 12.9,
+	"sourceRef": "https://static.roland.com/products/ds-1/images/ds-1_top.png",
+	"style": "catalog-specimen/1",
+	"body": {
+		"fill": "#E8722F",
+		"radiusCm": 0.35,
+		"sideCm": 0.35,
+		"knobFinish": "black",
+		"footswitchFinish": "black",
+		"bands": [
+			{
+				"u": 0.5,
+				"v": 0.38,
+				"wCm": 6.55,
+				"hCm": 0.06,
+				"fill": "#1E1E1E",
+				"rCm": 0,
+				"role": "print",
+				"edge": "none"
+			},
+			{
+				"u": 0.5,
+				"v": 0.752,
+				"wCm": 5.95,
+				"hCm": 3.7,
+				"fill": "#2E2E2E",
+				"rCm": 0.12,
+				"role": "print",
+				"edge": "hairline"
+			}
+		]
+	},
+	"ink": "auto",
+	"controls": [
+		{
+			"kind": "knob",
+			"u": 0.279,
+			"v": 0.122,
+			"diameterCm": 1.95,
+			"rotationDeg": 0,
+			"cap": "center",
+			"style": "knurled",
+			"label": "TONE",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.735,
+			"v": 0.123,
+			"diameterCm": 1.95,
+			"rotationDeg": 0,
+			"cap": "center",
+			"style": "knurled",
+			"label": "DIST",
+			"labelPlacement": "below"
+		},
+		{
+			"kind": "knob",
+			"u": 0.496,
+			"v": 0.21,
+			"diameterCm": 1.3,
+			"rotationDeg": 0,
+			"cap": "center",
+			"style": "knurled",
+			"label": "LEVEL",
+			"labelPlacement": "above"
+		},
+		{
+			"kind": "led",
+			"u": 0.503,
+			"v": 0.07,
+			"diameterCm": 0.45,
+			"color": "#C0392B"
+		},
+		{
+			"kind": "dot",
+			"u": 0.13,
+			"v": 0.19,
+			"diameterCm": 0.28,
+			"color": "#1E1E1E"
+		},
+		{
+			"kind": "dot",
+			"u": 0.4,
+			"v": 0.19,
+			"diameterCm": 0.28,
+			"color": "#1E1E1E"
+		},
+		{
+			"kind": "dot",
+			"u": 0.6,
+			"v": 0.19,
+			"diameterCm": 0.28,
+			"color": "#1E1E1E"
+		},
+		{
+			"kind": "dot",
+			"u": 0.87,
+			"v": 0.19,
+			"diameterCm": 0.28,
+			"color": "#1E1E1E"
+		},
+		{
+			"kind": "arrow",
+			"u": 0.1,
+			"v": 0.335,
+			"direction": "left",
+			"lengthCm": 0.55,
+			"thicknessCm": 0.1,
+			"color": "#1E1E1E"
+		},
+		{
+			"kind": "arrow",
+			"u": 0.92,
+			"v": 0.335,
+			"direction": "left",
+			"lengthCm": 0.55,
+			"thicknessCm": 0.1,
+			"color": "#1E1E1E"
+		},
+		{
+			"kind": "footswitch",
+			"u": 0.5,
+			"v": 0.9,
+			"diameterCm": 1.55
+		}
+	],
+	"text": [
+		{
+			"role": "free",
+			"value": "OUTPUT",
+			"u": 0.22,
+			"v": 0.335,
+			"sizeMm": 2.6,
+			"trackingEm": 0.01
+		},
+		{
+			"role": "free",
+			"value": "INPUT",
+			"u": 0.78,
+			"v": 0.335,
+			"sizeMm": 2.6,
+			"trackingEm": 0.01
+		},
+		{
+			"role": "free",
+			"value": "Distortion",
+			"u": 0.5,
+			"v": 0.46,
+			"sizeMm": 4.6,
+			"trackingEm": 0.01,
+			"case": "title"
+		},
+		{
+			"role": "model",
+			"value": "DS-1",
+			"u": 0.64,
+			"v": 0.53,
+			"sizeMm": 3.2,
+			"trackingEm": 0.02
+		},
+		{
+			"role": "brand",
+			"value": "BOSS",
+			"u": 0.5,
+			"v": 0.75,
+			"sizeMm": 3.8,
+			"trackingEm": 0.06,
+			"ink": "#EEF1F4"
+		},
+		{
+			"role": "free",
+			"value": "CHECK",
+			"u": 0.5,
+			"v": 0.035,
+			"sizeMm": 1.8,
+			"trackingEm": 0.02
+		}
+	],
+	"jacks": [
+		{
+			"kind": "in",
+			"edge": "right"
+		},
+		{
+			"kind": "out",
+			"edge": "left"
+		},
+		{
+			"kind": "power",
+			"edge": "top"
+		}
+	],
+	"note": "Studio-replica test: measured knob centres/scale, pad bounds, knurled knobs, centre caps, arrow primitives, marker dots. Typeset text, no logo, no reference pixels."
+}
