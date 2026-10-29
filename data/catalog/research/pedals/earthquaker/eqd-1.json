@@ -1,0 +1,539 @@
+[
+  {
+    "id": "earthquaker-a-b-box",
+    "brand": "EarthQuaker",
+    "name": "A/B Box",
+    "category": "pedal",
+    "effectTypes": [
+      "ab-box"
+    ],
+    "widthCm": 4.52,
+    "heightCm": 9.4,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/ab-box",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.long-mcquade.com/406797/Guitars/Pedals-Effects/EarthQuaker-Devices/A-B-Box.htm",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-acapulco-gold",
+    "brand": "EarthQuaker",
+    "name": "Acapulco Gold",
+    "category": "pedal",
+    "effectTypes": [
+      "distortion"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/acapulco-gold",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarworld.com/gear/review-earthquaker-devices-acapulco-gold-pedal",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-afterneath",
+    "brand": "EarthQuaker",
+    "name": "Afterneath",
+    "category": "pedal",
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.75,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/blog-posts/afterneath-for-noodlers",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://stinkfoot.se/archives/3963",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-afterneath-v3",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3",
+    "category": "pedal",
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/afterneath",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.gearnews.com/earthquaker-devices-afterneath-v3-features-9-new-modes",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-afterneath-v3-pastel-purple",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3 (Pastel Purple)",
+    "category": "pedal",
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "variantOf": "earthquaker-afterneath-v3",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-afterneath-v3-raw",
+    "brand": "EarthQuaker",
+    "name": "Afterneath V3 (Raw)",
+    "category": "pedal",
+    "effectTypes": [
+      "reverb"
+    ],
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "variantOf": "earthquaker-afterneath-v3",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-aqueduct",
+    "brand": "EarthQuaker",
+    "name": "Aqueduct",
+    "category": "pedal",
+    "effectTypes": [
+      "vibrato"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/aqueduct",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.premierguitar.com/gear/earthquaker-devices-aqueduct-review",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-arpanoid",
+    "brand": "EarthQuaker",
+    "name": "Arpanoid",
+    "category": "pedal",
+    "effectTypes": [
+      "pitch"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/arpanoid",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-arrows",
+    "brand": "EarthQuaker",
+    "name": "Arrows",
+    "category": "pedal",
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "widthCm": 7.21,
+    "heightCm": 11.43,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/arrows",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.woodsysmusic.com/products/earthquaker-devices-arrows-preamp-booster",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-arrows-v2",
+    "brand": "EarthQuaker",
+    "name": "Arrows V2",
+    "category": "pedal",
+    "effectTypes": [
+      "boost",
+      "preamp"
+    ],
+    "widthCm": 6.6,
+    "heightCm": 12.55,
+    "sources": [
+      {
+        "url": "https://www.audiodistributiongroup.com/earthquaker-devices-launch-5-additional-v2-pedals",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.sweetwater.com/store/detail/ArrowsV2--earthquaker-devices-arrows-v2-preamp-booster-pedal",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-astral-destiny",
+    "brand": "EarthQuaker",
+    "name": "Astral Destiny",
+    "category": "pedal",
+    "effectTypes": [
+      "reverb",
+      "octave"
+    ],
+    "widthCm": 9.68,
+    "heightCm": 12.22,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/astral-destiny",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.guitarworld.com/news/earthquaker-devices-takes-shimmer-reverb-to-the-next-level-with-the-astral-destiny",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-aurelius",
+    "brand": "EarthQuaker",
+    "name": "Aurelius",
+    "category": "pedal",
+    "effectTypes": [
+      "chorus",
+      "vibrato",
+      "rotary"
+    ],
+    "widthCm": 6.86,
+    "heightCm": 12.55,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/aurelius",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.premierguitar.com/news/earthquaker-devices-aurelius",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-avalanche-run",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run",
+    "category": "pedal",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 9.68,
+    "heightCm": 12.22,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://stinkfoot.se/archives/3963",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2",
+    "category": "pedal",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "sources": [
+      {
+        "url": "https://www.earthquakerdevices.com/avalanche-run",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.thomannmusic.com/earthquaker_devices_avalanche_run_v2.htm",
+        "kind": [
+          "info"
+        ]
+      }
+    ],
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-black",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Black)",
+    "category": "pedal",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-mint",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Mint)",
+    "category": "pedal",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-avalanche-run-v2-purple-sparkle",
+    "brand": "EarthQuaker",
+    "name": "Avalanche Run V2 (Purple Sparkle)",
+    "category": "pedal",
+    "effectTypes": [
+      "delay",
+      "reverb"
+    ],
+    "widthCm": 11.02,
+    "heightCm": 12.37,
+    "variantOf": "earthquaker-avalanche-run-v2",
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  },
+  {
+    "id": "earthquaker-barrows-fuzz",
+    "brand": "EarthQuaker",
+    "name": "Barrows Fuzz",
+    "category": "pedal",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "widthCm": 4.52,
+    "heightCm": 9.4,
+    "imageProvenance": {
+      "kind": "legacy",
+      "status": "pending-replacement",
+      "note": "Legacy asset cleared for replacement; source not recorded."
+    },
+    "extra": {
+      "promotedFrom": "legacy",
+      "promotedBatch": "eqd-1"
+    }
+  }
+]
