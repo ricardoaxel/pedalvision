@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 391 |
-| own | 68 |
+| license-pending | 412 |
+| own | 55 |
 
-Hosting: hotlinked 6 · mock 62 · static 391
+Hosting: hotlinked 1 · mock 49 · static 417
 
-Source kind: archive 4 · community 9 · official 258 · own 68 · planner 102 · retailer 18
+Source kind: archive 4 · community 9 · official 277 · own 55 · planner 104 · retailer 18
 
-Needs improvement: 170 (hotlinked 6 · mock 62 · planner 102)
+Needs improvement: 154 (hotlinked 1 · mock 49 · planner 104)
 
 ## Aclam
 
@@ -391,24 +391,32 @@ Needs improvement: 170 (hotlinked 6 · mock 62 · planner 102)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `joyo-d-seed` | D-Seed | own | mock | own | yes | Joyo batch |
-| `joyo-jf-01-vintage-overdrive` | JF-01 Vintage Overdrive | own | mock | own | yes | Joyo batch |
-| `joyo-jf-02-ultimate-drive` | JF-02 Ultimate Drive | own | mock | own | yes | Joyo batch |
-| `joyo-jf-03-crunch-distortion` | JF-03 Crunch Distortion | own | mock | own | yes | Joyo batch |
-| `joyo-jf-04-high-gain-distortion` | JF-04 High Gain Distortion | own | mock | own | yes | Joyo batch |
-| `joyo-jf-05-classic-chorus` | JF-05 Classic Chorus | own | mock | own | yes | Joyo batch |
-| `joyo-jf-06-vintage-phase` | JF-06 Vintage Phase | own | mock | own | yes | Joyo batch |
-| `joyo-jf-07-classic-flanger` | JF-07 Classic Flanger | own | mock | own | yes | Joyo batch |
-| `joyo-jf-08-digital-delay` | JF-08 Digital Delay | own | mock | own | yes | Joyo batch |
-| `joyo-jf-09-tremolo` | JF-09 Tremolo | own | mock | own | yes | Joyo batch |
-| `joyo-jf-10-dynamic-compressor` | JF-10 Dynamic Compressor | own | mock | own | yes | Joyo batch |
-| `joyo-jf-11-6-band-eq` | JF-11 6 Band EQ | own | mock | own | yes | Joyo batch |
-| `joyo-jf-12-voodoo-octave` | JF-12 Voodoo Octave | own | mock | own | yes | Joyo batch |
-| `joyo-jf-13-ac-tone` | JF-13 AC Tone | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-14-american-sound` | JF-14 American Sound | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-15-california-sound` | JF-15 California Sound | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-16-british-sound` | JF-16 British Sound | license-pending | hotlinked | official | yes | Joyo batch |
-| `joyo-jf-17-extreme-metal` | JF-17 Extreme Metal | license-pending | hotlinked | official | yes | Joyo batch |
+| `joyo-d-seed` | D-Seed | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `joyo-jf-01-vintage-overdrive` | JF-01 Vintage Overdrive | license-pending | static | official | — | — |
+| `joyo-jf-02-ultimate-drive` | JF-02 Ultimate Drive | license-pending | static | official | — | — |
+| `joyo-jf-03-crunch-distortion` | JF-03 Crunch Distortion | license-pending | static | official | — | — |
+| `joyo-jf-04-high-gain-distortion` | JF-04 High Gain Distortion | license-pending | static | official | — | — |
+| `joyo-jf-05-classic-chorus` | JF-05 Classic Chorus | license-pending | static | official | — | — |
+| `joyo-jf-06-vintage-phase` | JF-06 Vintage Phase | license-pending | static | official | — | — |
+| `joyo-jf-07-classic-flanger` | JF-07 Classic Flanger | license-pending | static | official | — | — |
+| `joyo-jf-08-digital-delay` | JF-08 Digital Delay | license-pending | static | official | — | — |
+| `joyo-jf-09-tremolo` | JF-09 Tremolo | license-pending | static | official | — | — |
+| `joyo-jf-10-dynamic-compressor` | JF-10 Dynamic Compressor | license-pending | static | official | — | — |
+| `joyo-jf-11-6-band-eq` | JF-11 6 Band EQ | license-pending | static | official | — | — |
+| `joyo-jf-12-voodoo-octave` | JF-12 Voodoo Octave | license-pending | static | official | — | — |
+| `joyo-jf-13-ac-tone` | JF-13 AC Tone | license-pending | static | official | — | — |
+| `joyo-jf-14-american-sound` | JF-14 American Sound | license-pending | static | official | — | — |
+| `joyo-jf-15-california-sound` | JF-15 California Sound | license-pending | static | official | — | — |
+| `joyo-jf-16-british-sound` | JF-16 British Sound | license-pending | static | official | — | — |
+| `joyo-jf-17-extreme-metal` | JF-17 Extreme Metal | license-pending | static | official | — | — |
+| `joyo-jf-18r-power-tune` | JF-18R Power Tune Tuner | license-pending | static | planner | yes | better source (official/retailer/community) |
+| `joyo-jf-19-buffer-tuner` | JF-19 Buffer Tuner | license-pending | static | official | — | — |
+| `joyo-jf-20-moist-reverb` | JF-20 Moist Reverb | license-pending | static | official | — | — |
+| `joyo-jf-21-splinter` | JF-21 Splinter Fuzz Distortion | license-pending | static | official | — | — |
+| `joyo-jf-22-oxford-sound` | JF-22 Oxford Sound Amp Modeler | license-pending | static | official | — | — |
+| `joyo-jf-23-argos-overdrive` | JF-23 Argos Overdrive | license-pending | static | official | — | — |
+| `joyo-jf-24-orthros-selector` | JF-24 Orthros Selector A/B | license-pending | static | official | — | — |
+| `joyo-jf-25-bright-day-overdrive` | JF-25 Bright Day Overdrive | license-pending | static | official | — | — |
 
 ## Keeley
 
@@ -625,8 +633,7 @@ Needs improvement: 170 (hotlinked 6 · mock 62 · planner 102)
 | Emerson Custom | own | 1 |
 | Fame | own | 1 |
 | JHS | planner | 2 |
-| Joyo | official | 5 |
-| Joyo | own | 13 |
+| Joyo | planner | 2 |
 | Keeley | own | 18 |
 | MXR | planner | 15 |
 | Walrus Audio | planner | 8 |

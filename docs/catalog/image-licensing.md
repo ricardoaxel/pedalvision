@@ -16,9 +16,9 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 4 · community 9 · official 258 · own 68 · planner 102 · retailer 18
+Sources: archive 4 · community 9 · official 277 · own 55 · planner 104 · retailer 18
 
-Needs improvement: 170 (hotlinked 6 · mock 62 · planner 102; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 154 (hotlinked 1 · mock 49 · planner 104; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
@@ -28,7 +28,7 @@ Needs improvement: 170 (hotlinked 6 · mock 62 · planner 102; see the source-ga
 | BOSS | not-requested | 144 | 0 | 1 | [contact](https://www.boss.info/us/support/) | Rebecca.Genel@roland.com | [terms](https://www.boss.info/us/terms_of_use) |
 | Electro-Harmonix | not-requested | 2 | 0 | 0 | [contact](https://www.ehx.com/support/) | — | — |
 | JHS | not-requested | 21 | 0 | 0 | [contact](https://www.jhspedals.info/pages/contact) | — | — |
-| Joyo | not-requested | 5 | 0 | 13 | [contact](https://www.joyoaudio.com/about.html) | info@joyoaudio.com | — |
+| Joyo | not-requested | 24 | 0 | 0 | [contact](https://www.joyoaudio.com/about.html) | info@joyoaudio.com | — |
 | Meris | not-requested | 10 | 0 | 0 | [contact](https://meris.us/contact/) | — | — |
 | Mooer | not-requested | 25 | 0 | 1 | [contact](https://www.mooeraudio.com/CONTACT.html) | support@mooeraudio.com | — |
 | MXR | not-requested | 11 | 0 | 0 | [contact](https://www.jimdunlop.com/contact-us/) | — | — |

@@ -82,6 +82,17 @@
         }
       ]
     },
+    "joyo": {
+      "brand": "Joyo",
+      "batches": [
+        {
+          "batch": "joyo-1",
+          "raw": "data/catalog/research/pedals/joyo/joyo-1.json",
+          "mapped": "data/catalog/pedals/joyo/joyo-1.json",
+          "items": 26
+        }
+      ]
+    },
     "meris": {
       "brand": "Meris",
       "batches": [
