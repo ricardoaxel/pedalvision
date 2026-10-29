@@ -401,3 +401,112 @@ test("the canvas self-heals a poisoned image cache (offline simulation)", async 
 		})
 		.toBe("loaded:1 failed:0");
 });
+
+test("the picker uses the motion system and item changes get one transient motion event", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await openPicker(page, "pedals");
+	const panel = page.getByTestId("picker-panel");
+	const animationName = await panel.evaluate((element) => {
+		// Desktop animates the panel; mobile keeps the surface still and fades
+		// its content children instead.
+		const own = getComputedStyle(element).animationName;
+		if (own !== "none") return own;
+		const child = element.querySelector(".picker__header");
+		return child ? getComputedStyle(child).animationName : "none";
+	});
+	expect(animationName).not.toBe("none");
+
+	// Place a stable catalog pedal: one add pulse, at its final geometry.
+	const beforePulse = Number(
+		(await stage.getAttribute("data-motion-pulse-seq")) ?? "0",
+	);
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-pulse-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(beforePulse);
+
+	// Duplicate and explicit delete each emit one event; the data is already final.
+	const beforeDuplicate = Number(
+		(await stage.getAttribute("data-motion-pulse-seq")) ?? "0",
+	);
+	await page.keyboard.press("Control+d");
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-pulse-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(beforeDuplicate);
+
+	const beforeGhost = Number(
+		(await stage.getAttribute("data-motion-ghost-seq")) ?? "0",
+	);
+	await page.keyboard.press("Delete");
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-ghost-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(beforeGhost);
+});
+
+test("reduced motion turns panel and item motion into an instant state change", async ({
+	page,
+}) => {
+	await page.emulateMedia({ reducedMotion: "reduce" });
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	const slowToken = await page.evaluate(() =>
+		getComputedStyle(document.documentElement)
+			.getPropertyValue("--motion-slow")
+			.trim(),
+	);
+	expect(["0ms", "0s"]).toContain(slowToken);
+
+	await openPicker(page, "pedals");
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	await page.getByTestId("picker-close").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	// The canvas motion also stays off (no pulse events).
+	const beforePulse = Number(
+		(await stage.getAttribute("data-motion-pulse-seq")) ?? "0",
+	);
+	await openPicker(page, "pedals");
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	expect(
+		Number((await stage.getAttribute("data-motion-pulse-seq")) ?? "0"),
+	).toBe(beforePulse);
+});
+
+test("board add and delete each get one transient motion event", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	const beforePulse = Number(
+		(await stage.getAttribute("data-motion-board-pulse-seq")) ?? "0",
+	);
+	await addBoard(page, "boss-bcb-1000");
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-board-pulse-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(beforePulse);
+
+	const beforeGhost = Number(
+		(await stage.getAttribute("data-motion-board-ghost-seq")) ?? "0",
+	);
+	await openPicker(page, "boards");
+	await page.getByTestId("remove-board").click();
+	await expect
+		.poll(async () =>
+			Number((await stage.getAttribute("data-motion-board-ghost-seq")) ?? "0"),
+		)
+		.toBeGreaterThan(beforeGhost);
+	await expect(stage).toHaveAttribute("data-boards", "0");
+});

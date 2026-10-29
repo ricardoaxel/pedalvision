@@ -17,6 +17,8 @@ import {
 } from "../lib/customPedal";
 import { focusAddBoardTrigger } from "../lib/focus";
 import { centerOffset, placeItem } from "../lib/geometry";
+import { MOTION } from "../lib/motion";
+import { useMotion } from "../state/motion";
 import { PATCH_CABLE_GAP_CM } from "../state/overlap";
 import {
 	boardDefinition,
@@ -34,6 +36,7 @@ import { CustomBoardForm } from "./CustomBoardForm";
 import { CustomPedalForm } from "./CustomPedalForm";
 import { HistoryControls } from "./HistoryControls";
 import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
+import { MotionPresence } from "./MotionPresence";
 import { usePartImage } from "./partImage";
 import {
 	brandsOf,
@@ -168,6 +171,12 @@ export function Picker({
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	const selectItem = useSelection((state) => state.selectItem);
+	// F-05: select + one short settle pulse for a newly placed part.
+	const placeAddedItem = (uid: string | null) => {
+		if (!uid) return;
+		useMotion.getState().pulseItem(uid, "add");
+		selectItem(uid);
+	};
 
 	const [query, setQuery] = useState("");
 	const [brand, setBrand] = useState<string | null>(null);
@@ -185,6 +194,12 @@ export function Picker({
 	);
 	/** Which user-defined kind the Custom tab is showing (pedal/supply/board). */
 	const [customKind, setCustomKind] = useState<CustomKind>("pedal");
+	// The dock's history pair is hidden while the sheet hands off, then fades in
+	// after the sheet has unmounted (the tabs never reflow).
+	const [dockHistoryReady, setDockHistoryReady] = useState(true);
+	useEffect(() => {
+		if (open) setDockHistoryReady(false);
+	}, [open]);
 
 	const panelRef = useRef<HTMLDivElement>(null);
 	const searchRef = useRef<HTMLInputElement>(null);
@@ -456,6 +471,7 @@ export function Picker({
 				entry.id,
 				viewportCenterCm(viewportSize, { scale, x, y }),
 			);
+			if (uid) useMotion.getState().pulseBoard(uid);
 			selectBoard(uid);
 		} else if (targetBoard) {
 			const footprint = boardFootprint(targetBoard);
@@ -469,7 +485,7 @@ export function Picker({
 				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 				bounds: footprint,
 			});
-			selectItem(addItem(entry.id, "pedal", targetBoard.uid, pos));
+			placeAddedItem(addItem(entry.id, "pedal", targetBoard.uid, pos));
 		} else {
 			const { scale, x, y, size: viewportSize } = useViewport.getState();
 			const center = viewportCenterCm(viewportSize, { scale, x, y });
@@ -480,7 +496,7 @@ export function Picker({
 			const pos = placeItem(base, size, occupied(null), {
 				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 			});
-			selectItem(addItem(entry.id, "pedal", null, pos));
+			placeAddedItem(addItem(entry.id, "pedal", null, pos));
 		}
 		onClose();
 	};
@@ -506,7 +522,7 @@ export function Picker({
 				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 				bounds: footprint,
 			});
-			selectItem(addItem(refId, definition.category, targetBoard.uid, pos));
+			placeAddedItem(addItem(refId, definition.category, targetBoard.uid, pos));
 		} else {
 			const { scale, x, y, size: viewportSize } = useViewport.getState();
 			const center = viewportCenterCm(viewportSize, { scale, x, y });
@@ -517,7 +533,7 @@ export function Picker({
 			const pos = placeItem(base, size, occupied(null), {
 				gapCm: PATCH_CABLE_GAP_CM + 0.1,
 			});
-			selectItem(addItem(refId, definition.category, null, pos));
+			placeAddedItem(addItem(refId, definition.category, null, pos));
 		}
 		setCustomDraft(emptyCustomPedalDraft(customDraft.units));
 		onClose();
@@ -540,6 +556,7 @@ export function Picker({
 			definition,
 			viewportCenterCm(viewportSize, { scale, x, y }),
 		);
+		if (uid) useMotion.getState().pulseBoard(uid);
 		selectBoard(uid);
 		setBoardDraft((current) => emptyCustomBoardDraft(current.units));
 		onClose();
@@ -736,13 +753,15 @@ export function Picker({
 	// The mobile bottom tab bar. Rendered inside the dialog while open (so the
 	// modal's switcher is in the AT/focus scope) and standalone while closed.
 	// The standalone dock also carries the P3-04 history pair; the in-sheet
-	// switcher stays tabs-only (the modal owns the keyboard).
-	const tabButtons = (
+	// switcher stays tabs-only (the modal owns the keyboard). During the exit
+	// the sheet bar is decorative (no test ids/ids, aria-hidden): the persistent
+	// dock underneath is the real control, and both tabs sit on the same grid.
+	const renderTabButtons = (decorative: boolean) => (
 		<>
 			<button
 				type="button"
 				className="picker-bar__tab"
-				data-testid="picker-bar-pedals"
+				data-testid={decorative ? undefined : "picker-bar-pedals"}
 				aria-current={tab === "pedals" ? "true" : undefined}
 				onClick={() => openTab("pedals")}
 			>
@@ -751,9 +770,9 @@ export function Picker({
 			</button>
 			<button
 				type="button"
-				id="tab-bar-boards"
+				id={decorative ? undefined : "tab-bar-boards"}
 				className="picker-bar__tab"
-				data-testid="picker-bar-boards"
+				data-testid={decorative ? undefined : "picker-bar-boards"}
 				aria-current={tab === "boards" ? "true" : undefined}
 				onClick={() => openTab("boards")}
 			>
@@ -763,7 +782,7 @@ export function Picker({
 			<button
 				type="button"
 				className="picker-bar__tab"
-				data-testid="picker-bar-custom"
+				data-testid={decorative ? undefined : "picker-bar-custom"}
 				aria-current={tab === "custom" ? "true" : undefined}
 				onClick={() => openTab("custom")}
 			>
@@ -776,9 +795,14 @@ export function Picker({
 	const tabDock = (
 		<div className="picker-dock" data-testid="picker-dock">
 			<nav className="picker-bar" aria-label="Catalog">
-				{tabButtons}
+				{renderTabButtons(false)}
 			</nav>
-			<HistoryControls variant="dock" />
+			<div
+				className="picker-dock__history"
+				data-visible={dockHistoryReady ? "true" : "false"}
+			>
+				<HistoryControls variant="dock" />
+			</div>
 		</div>
 	);
 
@@ -786,9 +810,11 @@ export function Picker({
 		<nav
 			className="picker-bar picker-bar--modal"
 			aria-label="Catalog"
-			data-testid="picker-bar-modal"
+			aria-hidden={open ? undefined : true}
+			data-testid={open ? "picker-bar-modal" : undefined}
 		>
-			{tabButtons}
+			{renderTabButtons(!open)}
+			<span className="picker-bar__reserve" aria-hidden="true" />
 		</nav>
 	);
 
@@ -796,7 +822,13 @@ export function Picker({
 		<>
 			{open ? null : tabDock}
 
-			{open ? (
+			<MotionPresence
+				open={open}
+				// The sheet is visually gone at 180 ms; keep the scrim mounted for
+				// its 120 ms release so the canvas does not jump brighter at unmount.
+				exitMs={MOTION.exit + MOTION.fast}
+				onExited={() => setDockHistoryReady(true)}
+			>
 				<div className="picker" data-testid="picker">
 					<button
 						type="button"
@@ -1134,6 +1166,12 @@ export function Picker({
 												className="picker__remove"
 												data-testid="remove-board"
 												onClick={() => {
+													useMotion
+														.getState()
+														.departBoard(
+															selectedBoardUid,
+															MOTION.exit + MOTION.fast + 40,
+														);
 													removeBoard(selectedBoardUid);
 													selectBoard(null);
 													onClose();
@@ -1181,7 +1219,7 @@ export function Picker({
 						{tabBar}
 					</div>
 				</div>
-			) : null}
+			</MotionPresence>
 		</>
 	);
 }

@@ -1,16 +1,17 @@
 import type Konva from "konva";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Circle, Group, Layer, Line, Rect, Text } from "react-konva";
 import { cmToPx, pxToCm } from "../lib/geometry";
+import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useCableDrag } from "../state/cableDrag";
 import { useEndpointDrag } from "../state/endpointDrag";
 import { useGesture } from "../state/gesture";
 import { useReadOnly } from "../state/readOnly";
 import { type Endpoint, useScene } from "../state/scene";
 import { useSelection } from "../state/selection";
-import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 import { CANVAS_FONTS, type CanvasTheme, ENDPOINT } from "../styles/theme";
+import { useGraphPresence } from "./useGraphPresence";
 
 interface EndpointLayerProps {
 	theme: CanvasTheme;
@@ -27,8 +28,8 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 	const endpoints = useScene((state) => state.endpoints);
 	const moveEndpoint = useScene((state) => state.moveEndpoint);
 	const readOnly = useReadOnly((state) => state.readOnly);
-	const showCables = useSettings((state) => state.showCables);
 	const navigating = useGesture((state) => state.navigating);
+	const { mounted, exiting, reduced } = useGraphPresence();
 	const scale = useViewport((state) => state.scale);
 	const selectedUid = useSelection((state) =>
 		state.selection?.kind === "endpoint" ? state.selection.uid : null,
@@ -36,6 +37,44 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 	const cableTarget = useCableDrag((state) => state.target);
 	const safeScale = Math.max(scale, 0.0001);
 	const draggingRef = useRef<string | null>(null);
+	const groupRef = useRef<Konva.Group>(null);
+	const [entering, setEntering] = useState(mounted && !readOnly && !reduced);
+
+	useEffect(() => {
+		const group = groupRef.current;
+		if (!mounted || !group) return;
+		if (exiting) {
+			setEntering(false);
+			group.opacity(1);
+			const durationMs = motionMs(MOTION.fast, reduced);
+			if (durationMs <= 0) return;
+			const tween = group.to({
+				opacity: 0,
+				duration: durationMs / 1000,
+				easing: easeOutCubic,
+			});
+			return () => {
+				tween.destroy();
+			};
+		}
+		if (reduced || readOnly) {
+			group.opacity(1);
+			setEntering(false);
+			return;
+		}
+		group.opacity(0);
+		setEntering(true);
+		const tween = group.to({
+			opacity: 1,
+			duration: MOTION.base / 1000,
+			easing: easeOutCubic,
+		});
+		const timer = window.setTimeout(() => setEntering(false), MOTION.base + 40);
+		return () => {
+			window.clearTimeout(timer);
+			tween.destroy();
+		};
+	}, [mounted, exiting, reduced, readOnly]);
 
 	// Pan/pinch takes the gesture over: commit the endpoint where it currently
 	// floats (same "drop in place" contract as a lifted pedal).
@@ -49,45 +88,50 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 		useEndpointDrag.getState().clear();
 	}, [navigating, moveEndpoint]);
 
-	if (!showCables && !readOnly) return null;
+	if (!mounted) return null;
 	return (
 		<Layer>
-			{endpoints.map((endpoint) => (
-				<EndpointTag
-					key={endpoint.uid}
-					endpoint={endpoint}
-					theme={theme}
-					scale={safeScale}
-					selected={selectedUid === endpoint.uid}
-					readOnly={readOnly}
-					draggable={!readOnly && !navigating}
-					connectTarget={
-						cableTarget?.kind === "endpoint" && cableTarget.uid === endpoint.uid
-					}
-					onSelect={() => useSelection.getState().selectEndpoint(endpoint.uid)}
-					onDragStart={(node) => {
-						draggingRef.current = endpoint.uid;
-						useEndpointDrag.getState().begin(endpoint.uid, {
-							x: pxToCm(node.x()),
-							y: pxToCm(node.y()),
-						});
-					}}
-					onDragMove={(node) =>
-						useEndpointDrag.getState().setWorldCm({
-							x: pxToCm(node.x()),
-							y: pxToCm(node.y()),
-						})
-					}
-					onDragEnd={(node) => {
-						draggingRef.current = null;
-						moveEndpoint(endpoint.uid, {
-							x: pxToCm(node.x()),
-							y: pxToCm(node.y()),
-						});
-						useEndpointDrag.getState().clear();
-					}}
-				/>
-			))}
+			<Group ref={groupRef} listening={!entering && !exiting}>
+				{endpoints.map((endpoint) => (
+					<EndpointTag
+						key={endpoint.uid}
+						endpoint={endpoint}
+						theme={theme}
+						scale={safeScale}
+						selected={selectedUid === endpoint.uid}
+						readOnly={readOnly}
+						draggable={!readOnly && !navigating}
+						connectTarget={
+							cableTarget?.kind === "endpoint" &&
+							cableTarget.uid === endpoint.uid
+						}
+						onSelect={() =>
+							useSelection.getState().selectEndpoint(endpoint.uid)
+						}
+						onDragStart={(node) => {
+							draggingRef.current = endpoint.uid;
+							useEndpointDrag.getState().begin(endpoint.uid, {
+								x: pxToCm(node.x()),
+								y: pxToCm(node.y()),
+							});
+						}}
+						onDragMove={(node) =>
+							useEndpointDrag.getState().setWorldCm({
+								x: pxToCm(node.x()),
+								y: pxToCm(node.y()),
+							})
+						}
+						onDragEnd={(node) => {
+							draggingRef.current = null;
+							moveEndpoint(endpoint.uid, {
+								x: pxToCm(node.x()),
+								y: pxToCm(node.y()),
+							});
+							useEndpointDrag.getState().clear();
+						}}
+					/>
+				))}
+			</Group>
 		</Layer>
 	);
 }

@@ -1,11 +1,25 @@
 import Konva from "konva";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import { Stage as KonvaStage } from "react-konva";
 import { anchorIndexFor, cableEndKey } from "../lib/jackAnchor";
+import { MOTION, motionMs } from "../lib/motion";
+import {
+	registerViewportTweenDriver,
+	type ViewportTweenDriver,
+} from "../lib/viewportMotion";
 import { useCableDrag as useCableDragState } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { isCameraLocked, useFocus, useIsFramed } from "../state/focus";
 import { useHistory } from "../state/history";
+import { useSceneLibrary } from "../state/library";
+import { useMotion } from "../state/motion";
 import { useReadOnly } from "../state/readOnly";
 import {
 	boardFootprint,
@@ -19,7 +33,7 @@ import {
 	useSelection,
 } from "../state/selection";
 import { useSettings } from "../state/settings";
-import { type Point, useViewport } from "../state/viewport";
+import { type Point, useViewport, type Viewport } from "../state/viewport";
 import { BoardLayer } from "./BoardLayer";
 import { CableLayer } from "./CableLayer";
 import { DragLayer } from "./DragLayer";
@@ -72,6 +86,7 @@ export function Stage() {
 	const x = useViewport((state) => state.x);
 	const y = useViewport((state) => state.y);
 	const setSizeInStore = useViewport((state) => state.setSize);
+	const activeSceneId = useSceneLibrary((state) => state.activeId);
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
@@ -90,9 +105,72 @@ export function Stage() {
 	const gridStepCm = useSettings((state) => state.gridStepCm);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const readOnlyCue = useReadOnly((state) => state.cue);
+	const motionPulseSeq = useMotion((state) => state.pulseSeq);
+	const motionGhostSeq = useMotion((state) => state.ghostSeq);
+	const motionBoardPulseSeq = useMotion((state) => state.boardPulseSeq);
+	const motionBoardGhostSeq = useMotion((state) => state.boardGhostSeq);
 	// Undo/redo depth (P3-04) mirrored for deterministic e2e assertions.
 	const undoDepth = useHistory((state) => state.past.length);
 	const redoDepth = useHistory((state) => state.future.length);
+
+	// F-05 camera tween. The driver writes the Konva transform imperatively so a
+	// 240 ms scene switch does not re-render the React tree per frame; a render
+	// that happens mid-tween reads the live transform instead of jumping back.
+	const liveViewport = useRef<Viewport | null>(null);
+	const tweenDriver = useMemo<ViewportTweenDriver>(
+		() => ({
+			write: (next) => {
+				liveViewport.current = next;
+				const stage = stageRef.current;
+				if (!stage) return;
+				stage.scale({ x: next.scale, y: next.scale });
+				stage.position({ x: next.x, y: next.y });
+			},
+			read: () => {
+				const stage = stageRef.current;
+				if (stage) {
+					return { scale: stage.scaleX(), x: stage.x(), y: stage.y() };
+				}
+				return liveViewport.current ?? useViewport.getState();
+			},
+			commit: (next) => {
+				liveViewport.current = null;
+				useViewport.getState().setViewport(next);
+			},
+			start: () => {
+				const element = containerRef.current;
+				if (!element) return;
+				const seq = Number(element.dataset.motionViewportSeq ?? "0") + 1;
+				element.dataset.motionViewportSeq = String(seq);
+			},
+		}),
+		[],
+	);
+	useEffect(() => registerViewportTweenDriver(tweenDriver), [tweenDriver]);
+
+	// F-05 scene-switch content fade. The camera tween carries the movement;
+	// this 120 ms opacity settle makes the incoming document read as a new sheet.
+	const sceneMotionKey = `${activeSceneId ?? "none"}|${readOnly ? "ro" : "rw"}`;
+	const lastSceneMotionKey = useRef<string | null>(null);
+	useLayoutEffect(() => {
+		if (lastSceneMotionKey.current === null) {
+			lastSceneMotionKey.current = sceneMotionKey;
+			return;
+		}
+		if (lastSceneMotionKey.current === sceneMotionKey) return;
+		lastSceneMotionKey.current = sceneMotionKey;
+		const element = containerRef.current;
+		if (!element || motionMs(MOTION.fast) <= 0) return;
+		element.classList.remove("stage--scene-in");
+		// Restart the CSS animation even when the class was already removed.
+		void element.offsetWidth;
+		element.classList.add("stage--scene-in");
+		const timer = window.setTimeout(
+			() => element.classList.remove("stage--scene-in"),
+			MOTION.fast,
+		);
+		return () => window.clearTimeout(timer);
+	}, [sceneMotionKey]);
 	// Viewport focus (F-04) mirrored for deterministic e2e assertions.
 	const framed = useIsFramed();
 	const focusTarget = useFocus((state) => state.last?.target ?? "");
@@ -289,6 +367,11 @@ export function Stage() {
 		return subscribeImageStatus(apply);
 	}, []);
 
+	// Mid-tween a normal render must use the live transform, not the store's
+	// outgoing one (otherwise React-Konva would snap the stage back each time
+	// chrome state changes during a scene switch).
+	const stageTransform = liveViewport.current;
+
 	return (
 		<div
 			ref={containerRef}
@@ -339,16 +422,20 @@ export function Stage() {
 					? `${focusBounds.x.toFixed(2)},${focusBounds.y.toFixed(2)},${focusBounds.widthCm.toFixed(2)},${focusBounds.heightCm.toFixed(2)}`
 					: ""
 			}
+			data-motion-pulse-seq={motionPulseSeq}
+			data-motion-ghost-seq={motionGhostSeq}
+			data-motion-board-pulse-seq={motionBoardPulseSeq}
+			data-motion-board-ghost-seq={motionBoardGhostSeq}
 		>
 			{size.width > 0 && size.height > 0 ? (
 				<KonvaStage
 					ref={stageRef}
 					width={size.width}
 					height={size.height}
-					x={x}
-					y={y}
-					scaleX={scale}
-					scaleY={scale}
+					x={stageTransform?.x ?? x}
+					y={stageTransform?.y ?? y}
+					scaleX={stageTransform?.scale ?? scale}
+					scaleY={stageTransform?.scale ?? scale}
 					// Tapping empty space clears the selection (Konva target ===
 					// stage means no node was hit). While the camera is locked an
 					// empty drag keeps the pin; only a click (no movement) releases it.

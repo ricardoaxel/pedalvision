@@ -36,8 +36,11 @@ import { effectLabel } from "./pickerFilter";
  * measure row + readout sections. Power/jacks render **only when present** (the
  * seed has no power/jacks for catalog pedals; that backfill is P5-01).
  */
-export function InfoPanel() {
+export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
+	// While the presence wrapper is exiting it passes the last selected uid, so
+	// the panel can keep rendering the item after selection is cleared.
+	const activeUid = itemUid ?? selectedItemUid;
 	const items = useScene((state) => state.items);
 	const boards = useScene((state) => state.boards);
 	const customPedals = useScene((state) => state.customPedals);
@@ -53,13 +56,14 @@ export function InfoPanel() {
 	// Mobile expand state, scoped to the selected uid so a new selection opens
 	// collapsed (no reset effect needed).
 	const [expandedUid, setExpandedUid] = useState<string | null>(null);
-	const expanded = selectedItemUid !== null && expandedUid === selectedItemUid;
+	const expanded = activeUid !== null && expandedUid === activeUid;
+	const isCurrentSelection =
+		activeUid !== null && activeUid === selectedItemUid;
 	const isMobile = useIsMobile();
-	const toggleExpanded = () =>
-		setExpandedUid(expanded ? null : selectedItemUid);
+	const toggleExpanded = () => setExpandedUid(expanded ? null : activeUid);
 
-	const item = selectedItemUid
-		? items.find((candidate) => candidate.uid === selectedItemUid)
+	const item = activeUid
+		? items.find((candidate) => candidate.uid === activeUid)
 		: undefined;
 	const resolved = item ? resolveItem(item, customPedals) : null;
 	// Two renditions, two elements: the mobile 64px sleeve is a true thumbnail
@@ -97,7 +101,11 @@ export function InfoPanel() {
 	const setSheetHeight = usePanelMetrics((state) => state.setSheetHeight);
 	useLayoutEffect(() => {
 		const element = asideRef.current;
-		if (!item || !element) {
+		// During the exit the cached item is still rendered for the motion, but the
+		// F-04 safe rect must consider the sheet gone immediately (the visual exit
+		// is an overlay on mobile); otherwise a focus mid-exit is centred for the
+		// old inset and jumps when the panel unmounts.
+		if (!item || !isCurrentSelection || !element) {
 			setSheetHeight(0);
 			return;
 		}
@@ -106,7 +114,7 @@ export function InfoPanel() {
 		const observer = new ResizeObserver(update);
 		observer.observe(element);
 		return () => observer.disconnect();
-	}, [item, setSheetHeight]);
+	}, [item, isCurrentSelection, setSheetHeight]);
 
 	if (!item || !resolved) return null;
 
@@ -222,7 +230,9 @@ export function InfoPanel() {
 				className="info-panel__sleeve-img"
 				src={sleeveState.url}
 				alt=""
-				loading="lazy"
+				loading="eager"
+				decoding="sync"
+				fetchPriority="high"
 				crossOrigin={sleeveState.crossOrigin}
 				onError={sleeveState.onError}
 			/>
@@ -243,6 +253,13 @@ export function InfoPanel() {
 					className="info-panel__sleeve"
 					data-testid="info-cover"
 					aria-hidden="true"
+					/* The already-decoded 800 canvas image paints immediately; the
+					 * 350 sleeve replaces it when it decodes (F-01 still uses 350). */
+					style={
+						showSleeveImage && imageSrc
+							? { backgroundImage: `url("${imageSrc}")` }
+							: undefined
+					}
 				>
 					{sleeve}
 				</span>

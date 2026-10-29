@@ -9,6 +9,7 @@ import {
 import { duplicateRefusal } from "../lib/capacity";
 import { cmToPx } from "../lib/geometry";
 import { useDrag } from "../state/drag";
+import { useMotion } from "../state/motion";
 import { usePanelMetrics } from "../state/panel";
 import {
 	containerItemsByZ,
@@ -369,7 +370,10 @@ function buildActions(
 			onClick: () => {
 				if (handlers.duplicateBlocked) return;
 				const uid = handlers.duplicateItem(item.uid);
-				if (uid) handlers.selectItem(uid);
+				if (uid) {
+					useMotion.getState().pulseItem(uid, "duplicate");
+					handlers.selectItem(uid);
+				}
 			},
 		},
 		{
@@ -378,6 +382,8 @@ function buildActions(
 			text: "Delete",
 			danger: true,
 			onClick: () => {
+				// Capture the presentation-only ghost before the data goes.
+				useMotion.getState().departItem(item.uid);
 				handlers.removeItem(item.uid);
 				handlers.clearSelection();
 			},

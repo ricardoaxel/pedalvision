@@ -1,12 +1,14 @@
 import type Konva from "konva";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Group, Image as KonvaImage, Line, Rect, Text } from "react-konva";
 import { type BoardTexture, DEFAULT_BOARD_TEXTURE } from "../lib/boardTexture";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
+import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useBoardDrag } from "../state/boardDrag";
 import { focusAfterLayout } from "../state/focus";
 import { useGesture } from "../state/gesture";
+import { useMotion } from "../state/motion";
 import { spaceWarning } from "../state/overlap";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import {
@@ -149,6 +151,36 @@ export function BoardNode({
 		registerNode(board.uid, groupRef.current);
 		return () => registerNode(board.uid, null);
 	}, [board.uid, registerNode]);
+
+	// F-05 "Press Fit": a newly placed board develops in place (opacity only;
+	// never scale a true-scale footprint). Presentation only.
+	const boardPulse = useMotion((state) =>
+		state.boardPulse?.uid === board.uid ? state.boardPulse : null,
+	);
+	const clearBoardPulse = useMotion((state) => state.clearBoardPulse);
+	const lastBoardPulse = useRef(0);
+	useLayoutEffect(() => {
+		if (!boardPulse || boardPulse.nonce === lastBoardPulse.current) return;
+		lastBoardPulse.current = boardPulse.nonce;
+		const node = groupRef.current;
+		const durationMs = motionMs(MOTION.slow);
+		if (!node || durationMs <= 0) return;
+		node.opacity(0);
+		const tween = node.to({
+			opacity: 1,
+			duration: durationMs / 1000,
+			easing: easeOutCubic,
+		});
+		const timer = window.setTimeout(
+			() => clearBoardPulse(boardPulse.nonce),
+			durationMs + 40,
+		);
+		return () => {
+			window.clearTimeout(timer);
+			node.opacity(1);
+			tween.destroy();
+		};
+	}, [boardPulse, clearBoardPulse]);
 
 	// The selected pedal's halo is drawn here (inheriting the board transform);
 	// its rotate Transformer lives in the top-level SelectionLayer and attaches
