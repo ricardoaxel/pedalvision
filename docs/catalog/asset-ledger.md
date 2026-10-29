@@ -6,14 +6,14 @@
 
 | Status | Items |
 | --- | --- |
-| license-pending | 467 |
-| own | 16 |
+| license-pending | 491 |
+| own | 17 |
 
-Hosting: hotlinked 1 · mock 10 · static 472
+Hosting: mock 10 · static 498
 
-Source kind: archive 5 · community 9 · official 315 · own 16 · planner 120 · retailer 18
+Source kind: archive 5 · community 9 · official 338 · own 17 · planner 120 · retailer 19
 
-Needs improvement: 131 (hotlinked 1 · mock 10 · planner 120)
+Needs improvement: 130 (mock 10 · planner 120)
 
 ## Aclam
 
@@ -239,7 +239,32 @@ Needs improvement: 131 (hotlinked 1 · mock 10 · planner 120)
 
 | Id | Name | Status | Hosting | Source | Improve | Replacement |
 | --- | --- | --- | --- | --- | --- | --- |
-| `behringer-powerplay-p1` | Powerplay P1 | license-pending | hotlinked | official | yes | Behringer batch |
+| `behringer-69-vibe` | 69 Vibe | license-pending | static | official | — | — |
+| `behringer-adi21-acoustic-di-box` | ADI21 Acoustic DI Box | license-pending | static | official | — | — |
+| `behringer-b-tron-iii-envelope-filter` | B-Tron III Envelope Filter | license-pending | static | official | — | — |
+| `behringer-bass-brassmaster-fuzz` | Bass Brassmaster Fuzz | license-pending | static | official | — | — |
+| `behringer-bdi21-bass-di-box` | BDI21 Bass DI Box | license-pending | static | official | — | — |
+| `behringer-beq700-bass-graphic-equalizer` | BEQ700 Bass Graphic Equalizer | license-pending | static | official | — | — |
+| `behringer-ble400-bass-limiter-enhancer` | BLE400 Bass Limiter Enhancer | license-pending | static | official | — | — |
+| `behringer-bm-11m-low-pass-filter` | BM-11M Low Pass Filter | license-pending | static | official | — | — |
+| `behringer-bm-12-ring-modulator` | BM-12 Ring Modulator | license-pending | static | official | — | — |
+| `behringer-bm-15m-resonance-filter` | BM-15M Resonance Filter | license-pending | static | official | — | — |
+| `behringer-bod400-bass-overdrive` | BOD400 Bass Overdrive | license-pending | static | official | — | — |
+| `behringer-cc300-chorus-space-c` | CC300 Chorus Space-C | license-pending | static | retailer | — | — |
+| `behringer-centaur-overdrive` | Zentara Overdrive | license-pending | static | official | — | — |
+| `behringer-chorus-symphony` | Chorus Symphony | license-pending | static | official | — | — |
+| `behringer-cl9-compressor-limiter` | CL9 Compressor/Limiter | license-pending | static | official | — | — |
+| `behringer-cs400-compressor-sustainer` | CS400 Compressor Sustainer | license-pending | static | official | — | — |
+| `behringer-dd600-digital-delay` | DD600 Digital Delay | license-pending | static | official | — | — |
+| `behringer-dr600-digital-reverb` | DR600 Digital Reverb | license-pending | static | official | — | — |
+| `behringer-dual-phase` | Dual-Phase | license-pending | static | official | — | — |
+| `behringer-eq700-graphic-equalizer` | EQ700 Graphic Equalizer | license-pending | static | official | — | — |
+| `behringer-fc600` | FC600 | license-pending | static | official | — | — |
+| `behringer-fcv100` | FCV100 | license-pending | static | official | — | — |
+| `behringer-fd300-ultra-feedback-distortion` | FD300 Ultra Feedback/Distortion | license-pending | static | official | — | — |
+| `behringer-fs112bv-dual-footswitch` | FS112BV Dual Footswitch | license-pending | static | official | — | — |
+| `behringer-fx600-digital-multi-fx` | FX600 Digital Multi-FX | license-pending | static | official | — | — |
+| `behringer-powerplay-p1` | Powerplay P1 | own | static | own | — | — |
 
 ## Big Joe
 
@@ -633,7 +658,6 @@ Needs improvement: 131 (hotlinked 1 · mock 10 · planner 120)
 | Brand | Source | Items |
 | --- | --- | --- |
 | Aclam | own | 1 |
-| Behringer | official | 1 |
 | Big Joe | planner | 2 |
 | Blackbird | own | 1 |
 | BoardMods | own | 1 |

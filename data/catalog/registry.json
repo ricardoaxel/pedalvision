@@ -1,6 +1,17 @@
 {
   "version": 1,
   "pedals": {
+    "behringer": {
+      "brand": "Behringer",
+      "batches": [
+        {
+          "batch": "behringer-1",
+          "raw": "data/catalog/research/pedals/behringer/behringer-1.json",
+          "mapped": "data/catalog/pedals/behringer/behringer-1.json",
+          "items": 26
+        }
+      ]
+    },
     "big-joe": {
       "brand": "Big Joe",
       "batches": [

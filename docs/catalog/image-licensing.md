@@ -16,15 +16,15 @@ Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages
 
 Source priority: official → authorized retailer → user/community (recorded) → planner **last-resort** → generated flat art only if none exists. Per-item source URLs are recorded in the private raw catalog/ledger, never on the public page.
 
-Sources: archive 5 · community 9 · official 315 · own 16 · planner 120 · retailer 18
+Sources: archive 5 · community 9 · official 338 · own 17 · planner 120 · retailer 19
 
-Needs improvement: 131 (hotlinked 1 · mock 10 · planner 120; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
+Needs improvement: 130 (mock 10 · planner 120; see the source-gap table in [asset-ledger.md](./asset-ledger.md)).
 
 ## Brands with official images
 
 | Brand | Request | Official | Replace | Own | Contact | Press email | Terms |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Behringer | not-requested | 1 | 0 | 0 | [contact](https://www.behringer.com/support) | — | — |
+| Behringer | not-requested | 24 | 0 | 1 | [contact](https://www.behringer.com/support) | — | — |
 | BOSS | not-requested | 144 | 0 | 1 | [contact](https://www.boss.info/us/support/) | Rebecca.Genel@roland.com | [terms](https://www.boss.info/us/terms_of_use) |
 | Electro-Harmonix | not-requested | 2 | 0 | 0 | [contact](https://www.ehx.com/support/) | — | — |
 | JHS | not-requested | 21 | 0 | 0 | [contact](https://www.jhspedals.info/pages/contact) | — | — |

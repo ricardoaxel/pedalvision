@@ -11123,48 +11123,34 @@
     "id": "behringer-powerplay-p1",
     "brand": "Behringer",
     "name": "Powerplay P1",
-    "widthCm": 8.38,
-    "heightCm": 12.4,
-    "image": "https://cdn-media.empowertribe.com/de5db7f7796c447e841aa1c6b0b2ea59/Image_BE_0609-AAE_P1_Front_XL.png",
-    "imageSource": "url",
+    "widthCm": 12.5,
+    "heightCm": 8.5,
+    "image": "behringer-powerplay-p1.avif",
+    "imageSource": "static",
     "effectTypes": [
       "utility"
     ],
     "category": "pedal",
-    "source": "placeholder",
+    "usage": "both",
+    "notes": "Personal in-ear monitor (IEM) headphone amplifier in a belt-pack form factor; two XLR inputs, volume/balance, mono or stereo mode.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
     "sources": [
       {
         "url": "https://www.behringer.com/en/products/0609-AAE",
         "kind": [
-          "image"
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c1817b2601b74395a239210b97f32b59/QSG_BE_0609-AAE_P1_WW.pdf",
+        "kind": [
+          "info"
         ]
       },
       {
         "url": "https://cdn-media.empowertribe.com/de5db7f7796c447e841aa1c6b0b2ea59/Image_BE_0609-AAE_P1_Front_XL.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn-media.empowertribe.com/1af3d02d6bfe4e26aae4c95c44a93f07/Image_BE_0609-AAE_P1_Left_XL.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn-media.empowertribe.com/adb086b6a234408699b94557d5a97e22/Image_BE_0609-AAE_P1_Other_XL.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn-media.empowertribe.com/105ee7b153f148ef9b1bf1d3eae193f6/Image_BE_0609-AAE_P1_Rear_XL.png",
-        "kind": [
-          "image"
-        ]
-      },
-      {
-        "url": "https://cdn-media.empowertribe.com/19d702352f0042978c961d5d38b8c40d/Image_BE_0609-AAE_P1_Right_XL.png",
         "kind": [
           "image"
         ]
@@ -11319,6 +11305,1034 @@
       },
       {
         "url": "https://effectsbakery.us/cdn/shop/products/01_93556d8b-c68f-4c15-9cde-6faed77ba3ad.jpg",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-69-vibe",
+    "brand": "Behringer",
+    "name": "69 Vibe",
+    "widthCm": 12.002,
+    "heightCm": 10.626,
+    "image": "behringer-69-vibe.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus",
+      "vibrato"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "notes": "All-analog recreation of the Shin-Ei Uni-Vibe with footswitchable chorus and vibrato modes, speed control and expression input.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALE",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/6b55b201263641888f58adca07a844a9/Image_BE_0709-ALE_69-VIBE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/94fc825c57124552a00f171fd4590dc3/QSG_BE_0709-ALE_UNI-VIBE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-adi21-acoustic-di-box",
+    "brand": "Behringer",
+    "name": "ADI21 Acoustic DI Box",
+    "widthCm": 10,
+    "heightCm": 12.7,
+    "image": "behringer-adi21-acoustic-di-box.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "di",
+      "acoustic-sim"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "both",
+    "notes": "Acoustic amp modeler / direct recording preamp / DI box with balanced XLR output, ground lift and -20 dB pad.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAK",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/cb723865dc654cdf955900bd9c23c364/Image_BE_0709-AAK_ADI21_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/03d5e25720d14d4ba0f26891435bcc71/M_BE_0709-AAK_ADI21_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-b-tron-iii-envelope-filter",
+    "brand": "Behringer",
+    "name": "B-Tron III Envelope Filter",
+    "widthCm": 10,
+    "heightCm": 17.1,
+    "image": "behringer-b-tron-iii-envelope-filter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "envelope",
+      "filter"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "both",
+    "notes": "Analog envelope filter with two direction modes and a versatile input range; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALB",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4e7bc3f3144d82351eb4ed749cbc5097/BE_0709-ALB_B-TRON-III-ENVELOPE-FILTER_Top.webp",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/502fd012c7514b66b15137d3f0a43037/QSG_BE_0709-ALB_B-TRON III ENVELOPE FILTER.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-bass-brassmaster-fuzz",
+    "brand": "Behringer",
+    "name": "Bass Brassmaster Fuzz",
+    "widthCm": 12,
+    "heightCm": 10.62,
+    "image": "behringer-bass-brassmaster-fuzz.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "fuzz"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "bass",
+    "notes": "Analog bass fuzz inspired by the Maestro Bass Brassmaster; two brass/harmonic modes and an XLR amp output.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKU",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/7f613b1e9f69483b9e493d52649ca403/Image_BE_0709-AKU_BASS-BRASSMASTER-FUZZ_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4a6c80e360f4482e8fb72b92efdf6169/QSG_BE_0709-AKU_BASS BRASSMASTER FUZZ_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-bdi21-bass-di-box",
+    "brand": "Behringer",
+    "name": "BDI21 Bass DI Box",
+    "widthCm": 10,
+    "heightCm": 12.7,
+    "image": "behringer-bdi21-bass-di-box.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "di",
+      "preamp"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 25
+    },
+    "usage": "bass",
+    "notes": "Bass amp modeler / direct recording preamp / DI box with balanced XLR output and ground lift.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAL",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/f0a42610cf584de38ed8260a10ce84e1/Image_BE_0709-AAL_BDI21_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/fb537fe25b524c71b6bb77df33a330f6/8849705566238.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-beq700-bass-graphic-equalizer",
+    "brand": "Behringer",
+    "name": "BEQ700 Bass Graphic Equalizer",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-beq700-bass-graphic-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "bass",
+    "notes": "7-band bass graphic equalizer with level fader; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ABB",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/6e3b26d7ade441f19715398f534dded2/Image_BE_0709-ABB_BEQ700_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/76fde6bb19ab4c3498ed6bc9190d0835/M_BE_0709-ABB_BEQ700_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-ble400-bass-limiter-enhancer",
+    "brand": "Behringer",
+    "name": "BLE400 Bass Limiter Enhancer",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-ble400-bass-limiter-enhancer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "bass",
+    "notes": "Bass limiter/enhancer for smoothing volume peaks; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADI",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/b145dee7a79844aeb9996226d3399f5b/Image_BE_0709-ADI_BLE400_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-bm-11m-low-pass-filter",
+    "brand": "Behringer",
+    "name": "BM-11M Low Pass Filter",
+    "widthCm": 14.76,
+    "heightCm": 19.69,
+    "image": "behringer-bm-11m-low-pass-filter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "filter",
+      "envelope"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 400
+    },
+    "usage": "both",
+    "notes": "Modular-synth-style low-pass filter stompbox with envelope follower, multiple CV inputs, envelope CV output and MIDI input.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALM",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/02ea3a428ded4752804626880b6a417f/Image_BE_0709-ALM_BM-11M-LOW-PASS-FILTER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/36ecd29ce1a0401ca4288a0787fbe525/QSG_BE_0709-ALM_BM-11M-LOW-PASS-FILTER.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-bm-12-ring-modulator",
+    "brand": "Behringer",
+    "name": "BM-12 Ring Modulator",
+    "widthCm": 14.76,
+    "heightCm": 19.69,
+    "image": "behringer-bm-12-ring-modulator.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "ring-mod"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 400
+    },
+    "usage": "both",
+    "notes": "Analog ring modulator with internal LFO and external carrier input; CV input for modulation.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALN",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5f88758d49364ad09ef641b385bf7edf/Image_BE_0709-ALN_BM-12-RING-MODULATOR_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/a76ae9bbb7d74dbfbaf4d1cc02148c5c/QSG_BE_0709-ALN_BM-12-RING-MODULATOR.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-bm-15m-resonance-filter",
+    "brand": "Behringer",
+    "name": "BM-15M Resonance Filter",
+    "widthCm": 14.76,
+    "heightCm": 19.69,
+    "image": "behringer-bm-15m-resonance-filter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "filter",
+      "envelope"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 400
+    },
+    "usage": "both",
+    "notes": "Modular-synth-style resonance filter with envelope follower, CV input, stereo outputs and MIDI input.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ALP",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/c5a813480b30467194002af9c24bcb6c/Image_BE_0709-ALP_BM-15M-RESONANCE-FILTER_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/055dd8005acf4e7a93cbf6f15d473a2e/QSG_BE_0709-ALP_BM-15M-MURF-BOX.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-bod400-bass-overdrive",
+    "brand": "Behringer",
+    "name": "BOD400 Bass Overdrive",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-bod400-bass-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "bass",
+    "notes": "Bass overdrive with LEVEL, HIGH, LOW and GAIN controls; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADJ",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e095abf9d2e64b65a49db38b045f5b6a/Image_BE_0709-ADJ_BOD400_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-cc300-chorus-space-c",
+    "brand": "Behringer",
+    "name": "CC300 Chorus Space-C",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-cc300-chorus-space-c.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "both",
+    "notes": "Analog 3-dimensional stereo chorus with four combinable space presets (BOSS Dimension C style).",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ABZ",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://www.musiciansfriend.com/amplifiers-effects/behringer-cc300-chorus-space-c-guitar-effects-pedal",
+        "kind": [
+          "info",
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-centaur-overdrive",
+    "brand": "Behringer",
+    "name": "Zentara Overdrive",
+    "widthCm": 12.05,
+    "heightCm": 10.43,
+    "image": "behringer-centaur-overdrive.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "overdrive"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 100
+    },
+    "usage": "both",
+    "notes": "All-analog transparent overdrive inspired by the Klon Centaur; dual-potentiometer gain, treble and output. Marketed as Centaur Overdrive, then Centara, now Zentara Overdrive.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKP",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/fb20eb5807b04a2cae9961a387b13877/Image_BE_0709-AKP_ZENTARA-OVERDRIVE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/4a618404d5904a5097e60e66d33da1b9/QSG_BE_0709-AKP_CENTARA-OVERDRIVE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-chorus-symphony",
+    "brand": "Behringer",
+    "name": "Chorus Symphony",
+    "widthCm": 20.003,
+    "heightCm": 14.818,
+    "image": "behringer-chorus-symphony.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus",
+      "vibrato"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 300
+    },
+    "usage": "both",
+    "notes": "Vintage 70s-style BBD chorus and vibrato with variable input range and wide stereo output.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKV",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/3832e8f827c240288cef4503e1811894/Image_BE_0709-AKV_CHORUS-SYMPHONY_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/52391a3f59574372a33091af7b62ad55/QSG_BE_0709-AKV_CHORUS SYMPHONY_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-cl9-compressor-limiter",
+    "brand": "Behringer",
+    "name": "CL9 Compressor/Limiter",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-cl9-compressor-limiter.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "both",
+    "notes": "Analog compressor/limiter with attack, level and sustain controls; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADD",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/108290817b264c6ab5737ed6e7d10712/Image_BE_0709-ADD_CL9_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/bd777dd8981a4c9f9410686a584e516b/8849560043550.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-cs400-compressor-sustainer",
+    "brand": "Behringer",
+    "name": "CS400 Compressor Sustainer",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-cs400-compressor-sustainer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "compressor"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "both",
+    "notes": "Analog compressor/sustainer with attack, level, sustain and tone controls; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADU",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/e153bc437c1f4faea657e35bf05499ea/Image_BE_0709-ADU_CS400_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-dd600-digital-delay",
+    "brand": "Behringer",
+    "name": "DD600 Digital Delay",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-dd600-digital-delay.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "delay"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 70
+    },
+    "usage": "both",
+    "notes": "24-bit digital stereo delay with tap tempo and pan output; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ACS",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/112ac0f7bd5018ad92b1457c654fbf73/Image_BE_0709-ACS_DD600_Media-Top.webp",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-dr600-digital-reverb",
+    "brand": "Behringer",
+    "name": "DR600 Digital Reverb",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-dr600-digital-reverb.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "reverb"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 90
+    },
+    "usage": "both",
+    "notes": "24-bit digital stereo reverb with hall, plate, spring, gate, room and modulate modes; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADM",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ef2f308468ec48578f8c7f95e64b631f/Image_BE_0709-ADM_DR600_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/452d713e84404242ad5024ae6316c3b3/M_BE_0709-ADM_DR600_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-dual-phase",
+    "brand": "Behringer",
+    "name": "Dual-Phase",
+    "widthCm": 20,
+    "heightCm": 17.46,
+    "image": "behringer-dual-phase.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "phaser"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 700
+    },
+    "usage": "both",
+    "notes": "Dual analog phaser with two independent phasor sections, sweep generators, CV input and IN/OUT A-B routing.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AJH",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/babc2affa3f44c88b849234249526557/Image_BE_0709-AJH_DUAL-PHASE_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/672bdb264ccd4052a42273466831a9fe/QSG_BE_0709-AJH_DUAL-PHASE_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-eq700-graphic-equalizer",
+    "brand": "Behringer",
+    "name": "EQ700 Graphic Equalizer",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-eq700-graphic-equalizer.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "eq"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "both",
+    "notes": "7-band graphic equalizer with level control; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAT",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/74ce320e10e349d4a022061a6cf1faf9/Image_BE_0709-AAT_EQ700_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/2e81b8f1303b4bb0864c85fc1ce72c12/M_BE_0709-AAT_EQ700_JP.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-fc600",
+    "brand": "Behringer",
+    "name": "FC600",
+    "widthCm": 11.2,
+    "heightCm": 29.8,
+    "image": "behringer-fc600.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Heavy-duty passive foot pedal for volume and expression control; 1/4 in TS input/output and 1/4 in TRS expression output.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AEY",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/ecf61161b11747ecbefc40bd31462cd7/Image_BE_0709-AEY_FC600_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/20e86927a7384b62b5c64e13f9c11819/8849762779166.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-fcv100",
+    "brand": "Behringer",
+    "name": "FCV100",
+    "widthCm": 11.7,
+    "heightCm": 24.8,
+    "image": "behringer-fcv100.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 12,
+      "acDc": "DC",
+      "currentMa": 10
+    },
+    "usage": "both",
+    "notes": "Ultra-flexible dual-mode foot pedal for volume and CV/expression control; two inputs and two outputs.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AAI",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/5a407c91a6964882ace2ca8aa71c64b9/Image_BE_0709-AAI_FCV100_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/8590db26c5674ca39b4ff96af70d5354/FCV100_QSG_WW.pdf",
+        "kind": [
+          "info"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-fd300-ultra-feedback-distortion",
+    "brand": "Behringer",
+    "name": "FD300 Ultra Feedback/Distortion",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-fd300-ultra-feedback-distortion.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "distortion"
+    ],
+    "category": "pedal",
+    "power": {
+      "voltage": 9,
+      "acDc": "DC",
+      "currentMa": 30
+    },
+    "usage": "both",
+    "notes": "Ultra feedback/distortion pedal producing endless feedback and sustain; 9 V battery or adapter.",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ACC",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/56a17c63e01e4a5c910e0c987f175524/Image_BE_0709-ACC_FD300_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-fs112bv-dual-footswitch",
+    "brand": "Behringer",
+    "name": "FS112BV Dual Footswitch",
+    "widthCm": 13.41,
+    "heightCm": 11.33,
+    "image": "behringer-fs112bv-dual-footswitch.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "controller"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Dual footswitch with a hardwired 16.4 ft / 5 m 1/4 in TRS cable for amp channel/FX switching; passive.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-AKY",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/847edc5099ea47c39fb5cf787a47a28f/Image_BE_0709-AKY_FS112BV_Top_XL.png",
+        "kind": [
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "behringer-fx600-digital-multi-fx",
+    "brand": "Behringer",
+    "name": "FX600 Digital Multi-FX",
+    "widthCm": 7,
+    "heightCm": 12.3,
+    "image": "behringer-fx600-digital-multi-fx.avif",
+    "imageSource": "static",
+    "effectTypes": [
+      "chorus",
+      "flanger",
+      "delay",
+      "reverb"
+    ],
+    "category": "pedal",
+    "usage": "both",
+    "notes": "Digital multi-FX pedal with chorus, flanger, delay and reverb; 9 V battery or adapter. Included as the recorded substitute for the duplicate Centara/Centaur entry.",
+    "status": "current",
+    "confidence": "confirmed",
+    "lastVerified": "2026-10-28",
+    "source": "public-asset",
+    "sources": [
+      {
+        "url": "https://www.behringer.com/en/products/0709-ADL",
+        "kind": [
+          "info"
+        ]
+      },
+      {
+        "url": "https://cdn-media.empowertribe.com/a188b1bb71f6426db6fe2efe858638cd/Image_BE_0709-ADL_FX600_Top_XL.png",
         "kind": [
           "image"
         ]
