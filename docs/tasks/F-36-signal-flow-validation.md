@@ -1,6 +1,7 @@
 # F-36 — Signal-flow validation
 
-**Phase:** 1 (feature lane) · **Status:** in progress — **direction approved 2026-10-29** · **Model:** light
+**Phase:** 1 (feature lane) · **Status:** **in review — PR #92** (open, not merged) · **Model:** light
+**Direction:** "Continuity Check" (owner-approved 2026-10-29).
 **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review ≤300k; task hard ≤1.1M; 6 h active.
 
 ## Goal
@@ -268,3 +269,28 @@ Record in the PR (against existing thresholds):
   and session summary.
 - Findings are **derived**, so no `SceneDocument`/share/codec/backup change and
   no schema migration.
+
+## Outcome (2026-10-30)
+
+- **PR #92** (`feat/f-36-signal-flow-validation`, commit `bb984ff`), one PR, not merged.
+- **Checks:** `pnpm lint` (0 errors, 10 pre-existing warnings) · `pnpm typecheck` ·
+  `pnpm test` **937** · `pnpm build` · `pnpm e2e` **332 passed + 11 skipped**
+  (`signal-flow.spec.ts` 6/6 desktop + mobile).
+- **Design:** designer "Continuity Check" → owner approved; `design-reviewer` 2/2
+  (R1 mobile strip/vocabulary/secondary/chevron; R2 tray/toolbar seam, amber
+  warning, light secondary). The R2 fixes were applied after the ≤2 cap and are
+  handed to the owner — no third pass.
+- **Code review:** light pass 1 changes-required (non-audio catalog-jack blocker,
+  endpoint gating, lone-pedal rule, test gaps, docs) → fixed; pass 2 (same
+  session) **approve** (nits: dead `realJacks`, EHX 22500 incomplete catalog
+  OUT recorded as a catalog-repair gap, order test) → fixed.
+- **Performance:** JS +4.26 kB gzip (336.02), CSS +0.59 kB; 400+300 graph 39 fps,
+  heap 18.4 MB, doc 73.5 KB, export 873 ms / 16.92 MB (unchanged); report
+  **3.24 ms** per 400/300 build, memoized per scene mutation.
+- **Demo:** deployed preview + read-only `?share=1#s=…` with a deliberate direct
+  feedback loop (2 pedals, fallback jacks) in the PR body.
+- **Boundary:** `docs/progress.md` / `docs/roadmap.md` not edited (feature lane;
+  shared docs are coordinator-only). One PR; owner merges.
+- **Known gap:** an item-level viewport auto-frame does not exist; rows select
+  the offender (selection chrome + info panel locate it). EHX 22500's catalog
+  OUT omission is recorded for the catalog-repair lane.
