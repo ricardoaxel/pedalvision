@@ -103,7 +103,22 @@ export interface ShareEncodeTooLarge {
 	message: string;
 }
 
-export type ShareEncodeResult = ShareEncodeOk | ShareEncodeTooLarge;
+/**
+ * A scene that the current wire schema cannot represent. Encode-time
+ * self-validation guarantees the sender never gets a link the recipient must
+ * reject. The document guard is deliberately more permissive than the
+ * untrusted-input wire schema; this is the boundary that keeps them honest.
+ */
+export interface ShareEncodeInvalid {
+	ok: false;
+	reason: "invalid";
+	message: string;
+}
+
+export type ShareEncodeResult =
+	| ShareEncodeOk
+	| ShareEncodeTooLarge
+	| ShareEncodeInvalid;
 
 export interface ShareDecodeOk {
 	ok: true;
@@ -234,8 +249,13 @@ const customPedalSchema = z.object({
 	widthCm: z.number().finite().positive().max(MAX_DIMENSION_CM),
 	heightCm: z.number().finite().positive().max(MAX_DIMENSION_CM),
 	category: z.enum(["pedal", "supply"]),
-	effectTypes: z.array(z.enum(EFFECT_TYPES)).max(32),
-	jacks: z.array(jackSchema).max(32).optional(),
+	// Bounded by the enum itself (39 today), not an arbitrary 32 — the custom
+	// form lets a user select every type, and that document must stay shareable.
+	effectTypes: z.array(z.enum(EFFECT_TYPES)),
+	// Generous untrusted-input bound; the custom form is realistically far
+	// below it. Encode self-validation catches anything above it with a clear
+	// inline error instead of emitting a dead link.
+	jacks: z.array(jackSchema).max(5_000).optional(),
 	power: powerSchema.optional(),
 });
 
@@ -261,23 +281,30 @@ const cableSchema = z.object({
 	color: optionalString(40),
 });
 
-const legacyPayloadSchema = z.object({
-	version: z.literal(1),
-	name: optionalString(200),
-	boards: z.array(boardSchema).max(5_000),
-	items: z.array(itemSchema).max(5_000),
-	customPedals: z.array(customPedalSchema).max(5_000),
-});
+// Frozen wire shapes are strict: an unknown key means the sender used a newer
+// version, and silently stripping it would be a partial decode. A v1 link must
+// not carry graph keys; a future field must bump the version.
+const legacyPayloadSchema = z
+	.object({
+		version: z.literal(1),
+		name: optionalString(200),
+		boards: z.array(boardSchema).max(5_000),
+		items: z.array(itemSchema).max(5_000),
+		customPedals: z.array(customPedalSchema).max(5_000),
+	})
+	.strict();
 
-const currentPayloadSchema = z.object({
-	version: z.literal(2),
-	name: optionalString(200),
-	boards: z.array(boardSchema).max(5_000),
-	items: z.array(itemSchema).max(5_000),
-	customPedals: z.array(customPedalSchema).max(5_000),
-	endpoints: z.array(endpointSchema).max(5_000),
-	cables: z.array(cableSchema).max(5_000),
-});
+const currentPayloadSchema = z
+	.object({
+		version: z.literal(2),
+		name: optionalString(200),
+		boards: z.array(boardSchema).max(5_000),
+		items: z.array(itemSchema).max(5_000),
+		customPedals: z.array(customPedalSchema).max(5_000),
+		endpoints: z.array(endpointSchema).max(5_000),
+		cables: z.array(cableSchema).max(5_000),
+	})
+	.strict();
 
 const payloadSchema = z.discriminatedUnion("version", [
 	legacyPayloadSchema,
@@ -382,6 +409,19 @@ export function encodeShareLink(
 		endpoints: snapshot.endpoints,
 		cables: snapshot.cables,
 	};
+	// Self-validate before producing a link: the document guard is intentionally
+	// more permissive than the untrusted-input wire schema, so a document with
+	// an extreme custom part must fail here with a clear reason rather than
+	// producing a link every recipient rejects.
+	const valid = currentPayloadSchema.safeParse(payload);
+	if (!valid.success) {
+		return {
+			ok: false,
+			reason: "invalid",
+			message:
+				"This scene has a custom part outside the share limits. Edit or duplicate the part, or split the scene into two.",
+		};
+	}
 	const json = JSON.stringify(payload);
 	const decoded = strToU8(json);
 	if (decoded.length > SHARE_DECODED_LIMIT_BYTES) {

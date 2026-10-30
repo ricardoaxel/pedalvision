@@ -233,10 +233,11 @@ document and share round-trip, so a future field cannot be half-wired.
 | Metric | Result | Budget |
 |---|---|---|
 | Document JSON | **101,257 bytes (98.9 KB)** | 200 KB share ceiling |
-| parse → migrate → normalize | **1.34 ms** median (20 runs) | no CI ms gate |
+| parse → migrate → normalize | **1.27 ms** mean (20 runs) | no CI ms gate |
+| Share encode incl. self-validation | **3.92 ms** mean (20 runs, max graph) | no CI ms gate |
 | Max-graph share (same fixture, short ids) | **13,808 chars**, encodes | 32,000-char hard cap |
 | Valid share (200 items + 75 + 75) | **8,105 chars** / 63,157 decoded / 6,074 compressed | 32,000 chars / 200 KB |
-| Heap (rough, no forced GC) | scene **+0.2 MB**, parse+normalize **+3.1 MB** | no threshold change |
+| Heap | scene graph **+0.2 MB**; decode working set is transient/GC-dependent (no new retained structures) | no threshold change |
 
 Compare P4-02 (doc 71.8 KB; 400+200+100 with random UUIDs measured 38,184
 chars → **refused**) and P3-06 (max scene well under 200 KB). F-37 adds no
@@ -247,7 +248,7 @@ check and the identity/empty-array migration.
 
 | Gap | Why it stays | Where recorded |
 |---|---|---|
-| Document guards do not share every **size bound** with the share zod schema (e.g. a custom-pedal brand/name >200 chars, >32 effect types or >32 jacks). Only the app's custom form writes documents, so this needs a hand-edited/foreign document to trigger; the next write still persists, but that one payload cannot be shared. | Tightening the document guard would drop existing data; aligning it needs a deliberate data policy. | `docs/features/README.md` → Known gaps |
+| The document guard is intentionally more permissive than the wire schema (e.g. a custom-pedal name >200 chars). The old arbitrary `32` caps on effect types/jacks were wrong for the form (all 39 effect types, unbounded rows), so they are removed; `encodeShareLink` now self-validates and returns an inline `invalid` refusal instead of emitting a dead link. | Tightening the document guard itself would drop existing data; the encode boundary keeps the user safe without a data policy. | This task file + `docs/features/README.md` → Known gaps |
 | A build that predates a document version cannot list that document in its register. The IDB record is preserved and re-surfaces in a supporting build (now unit + E2E tested). | Showing an unreadable scene would be new UI (design-gated) for a rare downgrade case. | `docs/features/README.md` → Known gaps |
 | Backup is one-way (no import/restore). | Pre-existing P3-05 scope; unchanged by versioning. | `docs/features/README.md` → Known gaps |
 | There is no pre-`v1` stored document shape; the only legacy form is the P1-06 `localStorage` mirror, migrated by `library.ts`. | Historical fact; the mirror path is already unit-tested. | This task file |

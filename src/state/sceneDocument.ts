@@ -81,10 +81,9 @@ export function migrateSceneDocument(raw: unknown): unknown {
 	if (!isRecord(raw) || !isSupportedSceneDocumentVersion(raw.version)) {
 		return raw;
 	}
-	const value: Record<string, unknown> = { ...raw };
-	// v1 is current. A future step would look like:
-	// if (raw.version === 1) return { ...value, version: 2, newField: ... };
-	return value;
+	// v1 is current, so the identity step does no work and allocates nothing.
+	// A future step would upgrade and return the next version here.
+	return raw;
 }
 
 /**
@@ -286,44 +285,39 @@ export function parseSceneDocument(raw: unknown): SceneDocument | null {
 	}
 	const migrated = migrateSceneDocument(value);
 	if (!isRecord(migrated)) return null;
-	const document = migrated;
-	if (typeof document.id !== "string" || document.id.length === 0) return null;
-	if (typeof document.name !== "string") return null;
-	if (typeof document.updatedAt !== "string") return null;
-	if (!Array.isArray(document.boards) || !Array.isArray(document.items)) {
+	const doc = migrated;
+	if (typeof doc.id !== "string" || doc.id.length === 0) return null;
+	if (typeof doc.name !== "string") return null;
+	if (typeof doc.updatedAt !== "string") return null;
+	if (!Array.isArray(doc.boards) || !Array.isArray(doc.items)) {
 		return null;
 	}
 	// `customPedals`, `endpoints` and `cables` are additive — older documents
 	// without them stay valid (the additive v1 rule).
 	const customPedals = uniqueBy(
-		Array.isArray(document.customPedals)
-			? document.customPedals.filter(isCustomPedal)
+		Array.isArray(doc.customPedals)
+			? doc.customPedals.filter(isCustomPedal)
 			: [],
 		(custom) => custom.refId,
 	);
 	const endpoints = uniqueBy(
-		Array.isArray(document.endpoints)
-			? document.endpoints.filter(isEndpoint)
-			: [],
+		Array.isArray(doc.endpoints) ? doc.endpoints.filter(isEndpoint) : [],
 		(endpoint) => endpoint.uid,
 	);
 	const cables = uniqueBy(
-		Array.isArray(document.cables) ? document.cables.filter(isCable) : [],
+		Array.isArray(doc.cables) ? doc.cables.filter(isCable) : [],
 		(cable) => cable.uid,
 	);
 	return {
-		id: document.id,
+		id: doc.id,
 		version: SCENE_DOCUMENT_VERSION,
-		name: document.name,
-		boards: uniqueBy(
-			document.boards.filter(isPlacedBoard),
-			(board) => board.uid,
-		),
-		items: uniqueBy(document.items.filter(isPlacedItem), (item) => item.uid),
+		name: doc.name,
+		boards: uniqueBy(doc.boards.filter(isPlacedBoard), (board) => board.uid),
+		items: uniqueBy(doc.items.filter(isPlacedItem), (item) => item.uid),
 		customPedals,
 		endpoints,
 		cables,
-		updatedAt: document.updatedAt,
+		updatedAt: doc.updatedAt,
 	};
 }
 

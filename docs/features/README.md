@@ -385,7 +385,7 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 | Scene list accessibility mirror | Deferred in `docs/design.md` (no owning task) | Deferred |
 | Capacity timing thresholds | `benchmark.spec.ts` is report-only; no ms gate | Intentional (avoid flaky CI) |
 | Newer document version opened by an older build | `library.test.ts` + `scenes.spec.ts`: the IDB record is preserved, never deleted; a supporting build re-surfaces it | Intentional: listing an unreadable scene needs new UI (design-gated) for a rare downgrade case |
-| Document vs share size bounds | Jack guard parity is closed (`sceneDocument.test.ts`, `shareLink.test.ts`); custom-pedal string/array maxima are still share-only | Recorded; the custom form is the only document writer. Tighten the document guard only with a data-replacement policy (not a silent drop) |
+| Document vs share size bounds | Jack/effect parity is closed and `encodeShareLink` self-validates (`sceneDocument.test.ts`, `shareLink.test.ts`): an out-of-schema custom part gets an inline `invalid` refusal, never a dead link | Recorded; the document guard stays more permissive on purpose. Tighten it only with a data-replacement policy (not a silent drop) |
 | Backup is one-way (no import/restore) | `sceneBackup.test.ts` + `storage-fallback.spec.ts` (version + full arrays) | Pre-existing P3-05 scope; import UI deferred |
 
 ---

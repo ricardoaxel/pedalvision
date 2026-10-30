@@ -1,5 +1,6 @@
 import { deflateSync, strToU8 } from "fflate";
 import { describe, expect, it } from "vitest";
+import { EFFECT_TYPES } from "../catalog/schema";
 import type {
 	Cable,
 	CustomPedal,
@@ -228,6 +229,63 @@ describe("share links (P3-03)", () => {
 		expect(decoded.snapshot.customPedals).toEqual([edgeOnly]);
 	});
 
+	it("keeps every effect type and a large jack list shareable", () => {
+		// The custom form allows all effect types and unbounded jack rows; a
+		// document-valid part must not become an unopenable link.
+		const jacks = Array.from({ length: 33 }, (_, index) => ({
+			kind: index % 2 === 0 ? ("in" as const) : ("out" as const),
+			edge: "top" as const,
+			pos: (index % 10) / 10,
+		}));
+		const part = custom("custom-all", {
+			effectTypes: [...EFFECT_TYPES],
+			jacks,
+		});
+		const encoded = encodeShareLink("All effects", {
+			boards: [],
+			items: [item("item-1", { refId: "custom-all", boardUid: null })],
+			customPedals: [part],
+			endpoints: [],
+			cables: [],
+		});
+		if (!encoded.ok) throw new Error(encoded.message);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.customPedals).toEqual([part]);
+	});
+
+	it("refuses to encode a custom part outside the wire limits", () => {
+		const tooLong = custom("custom-long", { name: "X".repeat(201) });
+		const encoded = encodeShareLink("Out of schema", {
+			boards: [],
+			items: [item("item-1", { refId: "custom-long", boardUid: null })],
+			customPedals: [tooLong],
+			endpoints: [],
+			cables: [],
+		});
+		expect(encoded).toMatchObject({ ok: false, reason: "invalid" });
+		if (encoded.ok) throw new Error("expected a refusal");
+		expect(encoded.message).toContain("custom part");
+	});
+
+	it("rejects a v1 payload that carries graph keys (no silent strip)", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 1,
+					name: "Contradiction",
+					boards: [board("board-1")],
+					items: [item("item-1")],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				1,
+			),
+		);
+		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
+	});
+
 	it("uses the #s=v2: prefix and base64url without padding", () => {
 		const encoded = encodeShareLink("Main board", snapshot());
 		if (!encoded.ok) throw new Error("expected an encodable scene");
@@ -324,7 +382,9 @@ describe("share links (P3-03)", () => {
 			cables: [],
 		});
 		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
-		if (encoded.ok) throw new Error("expected a refusal");
+		if (encoded.ok || encoded.reason !== "too-large") {
+			throw new Error("expected a too-large refusal");
+		}
 		expect(encoded.limitBytes).toBe(SHARE_DECODED_LIMIT_BYTES);
 	});
 
@@ -382,6 +442,7 @@ describe("share links (P3-03)", () => {
 			);
 		} else {
 			expect(maxGraph.reason).toBe("too-large");
+			if (maxGraph.reason !== "too-large") throw new Error("unexpected reason");
 			expect(maxGraph.hashLength).toBeGreaterThan(SHARE_URL_HARD_LIMIT_CHARS);
 		}
 	});
@@ -472,7 +533,9 @@ describe("share links (P3-03)", () => {
 			cables: [],
 		});
 		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
-		if (encoded.ok) throw new Error("expected a refusal");
+		if (encoded.ok || encoded.reason !== "too-large") {
+			throw new Error("expected a too-large refusal");
+		}
 		expect(encoded.hashLength).toBeGreaterThan(SHARE_URL_HARD_LIMIT_CHARS);
 		expect(encoded.message).toContain("too long");
 	});
