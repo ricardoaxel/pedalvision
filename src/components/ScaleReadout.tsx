@@ -6,6 +6,7 @@ import { usePanelMetrics } from "../state/panel";
 import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 import { BoardViewDock } from "./BoardViewDock";
+import { ContinuityChip } from "./ContinuityCheck";
 import { FrameControl } from "./FrameControl";
 import { GridStepMenu } from "./GridStepMenu";
 import { ScaleBar } from "./ScaleBar";
@@ -20,7 +21,13 @@ import { ScaleBar } from "./ScaleBar";
  * (rule above readout) lifted above the info peek. Always visible, including
  * an empty sheet; never persisted/exported.
  */
-export function ScaleReadout() {
+export function ScaleReadout({
+	continuityOpen = false,
+	onToggleContinuity,
+}: {
+	continuityOpen?: boolean;
+	onToggleContinuity?: () => void;
+} = {}) {
 	const scale = useViewport((state) => state.scale);
 	const size = useViewport((state) => state.size);
 	const units = useSettings((state) => state.units);
@@ -79,6 +86,9 @@ export function ScaleReadout() {
 				data-grid-cm={gridCm}
 				data-grid-step-cm={gridStepCm}
 			>
+				{onToggleContinuity ? (
+					<ContinuityChip open={continuityOpen} onToggle={onToggleContinuity} />
+				) : null}
 				<span className="scale-readout__view">
 					view {Math.round(cmToDisplay(viewWidthCm, units))} ×{" "}
 					{Math.round(cmToDisplay(viewHeightCm, units))} {units}
