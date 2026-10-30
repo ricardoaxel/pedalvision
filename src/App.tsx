@@ -12,6 +12,10 @@ import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import { CableSchedulePanel } from "./components/CableSchedulePanel";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import {
+	ContinuityAnnouncer,
+	ContinuityPanel,
+} from "./components/ContinuityCheck";
+import {
 	EndpointControl,
 	EndpointPlacementOverlay,
 	GraphStatusChip,
@@ -125,6 +129,8 @@ function App() {
 	const shareTriggerRef = useRef<HTMLButtonElement>(null);
 	// P4-03: the derived cable schedule is opened deliberately, never auto-shown.
 	const [scheduleOpen, setScheduleOpen] = useState(false);
+	// F-36: the derived signal-flow report uses the same one-surface-at-a-time slot.
+	const [continuityOpen, setContinuityOpen] = useState(false);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const shareStatus = useShare((state) => state.status);
 	const showCables = useSettings((state) => state.showCables);
@@ -136,9 +142,12 @@ function App() {
 		}
 		previousReadOnly.current = readOnly;
 	}, [readOnly]);
-	// A read-only preview is a different document: never keep a sender schedule open.
+	// A read-only preview is a different document: never keep a sender surface open.
 	useEffect(() => {
-		if (readOnly) setScheduleOpen(false);
+		if (readOnly) {
+			setScheduleOpen(false);
+			setContinuityOpen(false);
+		}
 	}, [readOnly]);
 	const activeSceneName = useSceneLibrary((state) => {
 		const active = state.scenes.find((entry) => entry.id === state.activeId);
@@ -185,6 +194,7 @@ function App() {
 			scenesOpen ||
 			shareOpen ||
 			scheduleOpen ||
+			continuityOpen ||
 			editingCustomRefId !== null ||
 			editingBoardUid !== null
 		) {
@@ -196,6 +206,7 @@ function App() {
 		scenesOpen,
 		shareOpen,
 		scheduleOpen,
+		continuityOpen,
 		editingCustomRefId,
 		editingBoardUid,
 	]);
@@ -235,6 +246,7 @@ function App() {
 		setPickerTab(tab);
 		setPickerOpen(true);
 		setScheduleOpen(false);
+		setContinuityOpen(false);
 	};
 
 	const openExport = () => {
@@ -249,6 +261,7 @@ function App() {
 		setShareOpen(false);
 		setExportOpen(true);
 		setScheduleOpen(false);
+		setContinuityOpen(false);
 	};
 
 	const openScenes = () => {
@@ -263,6 +276,7 @@ function App() {
 		setShareOpen(false);
 		setScenesOpen(true);
 		setScheduleOpen(false);
+		setContinuityOpen(false);
 	};
 
 	const openShare = () => {
@@ -276,6 +290,7 @@ function App() {
 		setScenesOpen(false);
 		setShareOpen(true);
 		setScheduleOpen(false);
+		setContinuityOpen(false);
 	};
 
 	const closeShare = () => {
@@ -295,6 +310,7 @@ function App() {
 		setScenesOpen(false);
 		setShareOpen(false);
 		setScheduleOpen(true);
+		setContinuityOpen(false);
 	};
 
 	const closeSchedule = () => {
@@ -305,6 +321,36 @@ function App() {
 			);
 			trigger?.focus();
 		});
+	};
+
+	const openContinuity = () => {
+		useShare.getState().dismissSaved();
+		useEndpointPlacement.getState().disarm();
+		useCableDrag.getState().cancel();
+		setPickerOpen(false);
+		setEditingCustomRefId(null);
+		setEditingBoardUid(null);
+		setExportOpen(false);
+		setExportBusy(false);
+		setScenesOpen(false);
+		setShareOpen(false);
+		setScheduleOpen(false);
+		setContinuityOpen(true);
+	};
+
+	const closeContinuity = () => {
+		setContinuityOpen(false);
+		requestAnimationFrame(() => {
+			const trigger = document.querySelector<HTMLElement>(
+				"[data-continuity-return]",
+			);
+			trigger?.focus();
+		});
+	};
+
+	const toggleContinuity = () => {
+		if (continuityOpen) closeContinuity();
+		else openContinuity();
 	};
 
 	// Close + return focus to the trigger (the non-modal dialog's contract).
@@ -326,6 +372,7 @@ function App() {
 		setPickerTab("custom");
 		setPickerOpen(true);
 		setScheduleOpen(false);
+		setContinuityOpen(false);
 	};
 
 	const openBoardEdit = (uid: string) => {
@@ -334,6 +381,7 @@ function App() {
 		setPickerTab("custom");
 		setPickerOpen(true);
 		setScheduleOpen(false);
+		setContinuityOpen(false);
 	};
 
 	const closePicker = () => {
@@ -350,18 +398,23 @@ function App() {
 			data-scenes={scenesOpen ? "open" : undefined}
 			data-share={shareStatus === "none" ? undefined : shareStatus}
 			data-schedule={scheduleOpen ? "open" : undefined}
+			data-continuity={continuityOpen ? "open" : undefined}
 			data-readonly={readOnly ? "true" : undefined}
 			data-storage={storageLevel}
 		>
 			<h1 className="visually-hidden">Pedalvision</h1>
 			<CapacityAnnouncer />
+			<ContinuityAnnouncer />
 			<StorageAnnouncer readOnly={readOnly} />
 			<div className="app-canvas">
 				<Stage />
 				{/* Transient measure mode: drag A→B on the canvas. */}
 				<MeasureOverlay />
 				{/* Ambient scale (F-03): visible canvas + dot-cell readout. */}
-				<ScaleReadout />
+				<ScaleReadout
+					continuityOpen={continuityOpen}
+					onToggleContinuity={toggleContinuity}
+				/>
 				{/* HTML selection chrome (Konva can't host DOM). A sibling of the stage
 				 * so its presses never reach the canvas gesture handler. Read-only
 				 * shares keep selection + the info panel, but remove every edit affordance. */}
@@ -519,6 +572,11 @@ function App() {
 				<GraphStatusChip />
 				<MotionPresence open={scheduleOpen}>
 					{scheduleOpen ? <CableSchedulePanel onClose={closeSchedule} /> : null}
+				</MotionPresence>
+				<MotionPresence open={continuityOpen}>
+					{continuityOpen ? (
+						<ContinuityPanel onClose={closeContinuity} />
+					) : null}
 				</MotionPresence>
 				<PatchHiddenCue />
 				<ShareEditCue />

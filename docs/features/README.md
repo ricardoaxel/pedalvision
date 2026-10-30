@@ -54,6 +54,7 @@ source files; tests are the unit specs that guard the logic.
 | F-03 | Margin Rule — viewport/grid readout + centered reference bar + selectable grid step + measure tool | Judge the visible extent and true scale, choose the grid precision, and measure the actual gap, without permanent clutter | `components/ScaleReadout.tsx`, `components/ScaleBar.tsx`, `components/GridStepMenu.tsx`, `components/MeasureOverlay.tsx`, `components/MeasureControl.tsx`, `state/measure.ts`, `state/settings.ts`, `lib/measure.ts`, `lib/measurementHud.ts`, `lib/grid.ts`, `canvas/useMeasureShortcuts.ts` | `measurementHud.test.ts`, `measure.test.ts`, `grid.test.ts`, `sceneIndex.test.ts` | `measurement-hud.spec.ts` |
 | F-04 | Viewport focus — frame a board / the used area / every loaded scene; Scope Frame dock (double-click toggle, camera lock, board paginator) | Find the drawing again; a scene never opens off-screen; move through boards without panning | `lib/viewportFocus.ts`, `state/focus.ts`, `components/FrameControl.tsx`, `components/BoardViewDock.tsx`, `components/boardView.ts`, `canvas/BoardNode.tsx`, `canvas/PedalNode.tsx`, `canvas/useSceneAutoFrame.ts`, `canvas/useFocusShortcuts.ts`, `canvas/useViewportGestures.ts`, `components/ScaleReadout.tsx`, `state/viewport.ts` | `viewportFocus.test.ts`, `focus.test.ts` | `viewport-focus.spec.ts` |
 | F-05 | Motion system — panel/modal open-close, item/board add-remove-duplicate, patch reveal, lateral info rail, scene switch | State changes read as movement, not teleporting; reduced motion is instant | `lib/motion.ts`, `lib/viewportMotion.ts`, `components/MotionPresence.tsx`, `state/motion.ts`, `canvas/Stage.tsx`, `canvas/PedalNode.tsx`, `canvas/SelectionLayer.tsx`, `canvas/useSceneAutoFrame.ts`, `canvas/CableLayer.tsx`, `canvas/EndpointLayer.tsx`, `canvas/useGraphPresence.ts`, `canvas/BoardNode.tsx`, `canvas/BoardLayer.tsx`, `components/InfoPanel.tsx`, `styles/tokens.css`, `index.css` | `lib/motion.test.ts`, `lib/viewportMotion.test.ts`, `state/motion.test.ts` | `picker.spec.ts`, `viewport-focus.spec.ts`, `cables.spec.ts`, `info-panel.spec.ts`, `board-creator.spec.ts` (motion + reduced-motion cases) |
+| F-36 | Continuity Check — derived signal-flow warnings (direction, missing IN/OUT, endpoints, dangling ends, chains, feedback/effects loops, TRS↔mono) with assumed-jack disclosure | Catch a broken patch before printing/sharing; warnings never block | `lib/signalFlow.ts`, `components/ContinuityCheck.tsx`, `components/ScaleReadout.tsx`, `App.tsx`, `index.css` | `signalFlow.test.ts` | `signal-flow.spec.ts` (desktop + mobile) |
 | — | Info panel + asset renditions | Right details and imagery at each size | `components/InfoPanel.tsx`, `components/PartDrawing.tsx`, `components/partImage.ts`, `lib/partInfo.ts`, `lib/cdn.ts`, `canvas/loadImage.ts`, `canvas/useImage.ts` | `partInfo.test.ts`, `cdn.test.ts`, `loadImage.test.ts`, `imageStatus.test.ts` | `info-panel.spec.ts`, `picker.spec.ts`, `picker-choka.spec.ts` |
 | — | Capacity budgets | Honest limits, never a silent failure | `lib/capacity.ts`, `components/CapacityAnnouncer.tsx`, `scene.ts` caps | `capacity.test.ts`, `capacity.images.test.ts`, `capacityGuards.test.ts` | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | — | First-run guidance | Empty scene tells you where to start | `components/FirstRunHint.tsx`, `lib/firstRun.ts`, `lib/focus.ts` | `firstRun.test.ts` | `first-run.spec.ts` |
@@ -179,6 +180,28 @@ ghost. Design-reviewer pass 1 approved with changes (rail thumbnail timing,
 board scrim/ghost); prime/step fixes are in, and the final evidence pass was
 limited by the ~20–25 fps headless capture. Owner can verify the preview.
 
+### F-36 — Continuity Check (signal-flow validation)
+
+A **derived, read-only** report over the scene graph (items, endpoints, cables,
+resolved jacks, fallback anchors, TRS) in `lib/signalFlow.ts`. It warns — never
+blocks — on output→output / input→input, an instrument not feeding an input,
+amp/endpoint misuse, a pedal with real jack data lacking IN or OUT, dangling
+cable ends, unconnected pedals/chains, direct/indirect feedback loops, and
+TRS↔mono pairs. SEND/RETURN cycles are disclosed as intentional effects loops
+(info), custom pedals with no jacks are info, and non-audio connectors are info
+only. Catalog pedals with no jack data use the documented fallback pair: they
+never produce missing-jack/dangling errors, and every affected finding carries
+the "assumed" flag plus an aggregate "N cable ends use assumed jack positions"
+line. End-to-end rules stay silent until both an instrument and an amp exist.
+
+**Surface (owner-approved 2026-10-29, "Continuity Check"):** a compact chip in
+the Margin Rule strip (`No patch yet` / `Clear` / `! N warnings`) opens the same
+non-modal 360 px dock (desktop) / 46dvh tray (mobile) slot as the Cable
+Schedule, one surface at a time. Rows select the offending item,
+endpoint or cable; the dock stays open and focus stays in the list. Read-only
+shares derive it locally. No toast, modal, dependency, stored field, codec,
+share-payload or export change.
+
 ### F-19 — This map
 
 The feature inventory, workflow → module → E2E table, change-impact table,
@@ -200,6 +223,7 @@ feature PRs.
 | **Custom board** | `CustomBoardForm.tsx`, `lib/customBoard.ts`, `boardTexture.ts` | `boards[].customSize` + `texture` + `name`/`brand` inline | `board-creator.spec.ts` (desktop + mobile), `history.spec.ts`, `share.spec.ts` (custom board round-trip) |
 | **Cables + endpoints** | `state/scene.ts`, `cableDrag.ts`, `endpointDrag.ts`, `endpointPlacement.ts`, `jackAnchor.ts`, `CableLayer.tsx`, `EndpointLayer.tsx` | `cables` + `endpoints` in the scene document, share v2 payload, export bounds/capacity | `cables.spec.ts`, `cables-touch.spec.ts`, `share.spec.ts`, `export.spec.ts`, `capacity.spec.ts` |
 | **Cable schedule** | `lib/cableLength.ts`, `lib/cableSummary.ts`, `CableSchedulePanel.tsx` | Derived only — never stored/exported; read-only recipients derive locally | `cable-schedule.spec.ts` (desktop + mobile + read-only) |
+| **Continuity check** | `lib/signalFlow.ts`, `components/ContinuityCheck.tsx`, `components/ScaleReadout.tsx` | Derived only — never stored/exported; read-only recipients derive locally | `signal-flow.spec.ts` (desktop + mobile), `cables.spec.ts` |
 | **Save/load/autosave/boot reconcile** | `sceneDocument.ts`, `library.ts`, `autosave.ts`, `sceneIndex.ts`, `idb.ts` | IndexedDB document + localStorage index/settings; additive `version: 1` document | `scenes.spec.ts` (A4, isolation, rename/delete, cap, reconcile), `cables.spec.ts` (graph reload) |
 | **Undo/redo** | `state/history.ts`, `HistoryControls.tsx`, `useHistoryShortcuts.ts` | In-memory only; every `SceneSnapshot` key is compile-forced | `history.spec.ts` (desktop + mobile), `cables.spec.ts` (one cable = one step) |
 | **Share / read-only / save a copy** | `shareLink.ts`, `state/share.ts`, `readOnly.ts`, `library.ts`, `SharePanel.tsx`, `ShareView.tsx` | `#s=v2:` deflate → base64url; v1 still decodes; recipient never writes their document | `share.spec.ts` (desktop + mobile), `cables.spec.ts` (v2/v1), `history.spec.ts`, `storage-fallback.spec.ts` |
@@ -229,6 +253,7 @@ change is user-visible.
 | **Share codec / payload / version** | `src/lib/shareLink.ts`, `src/state/share.ts`, `src/state/readOnly.ts`, `src/components/SharePanel.tsx`, `src/components/ShareView.tsx` | sender → recipient, read-only, save-a-copy, legacy links | `share.spec.ts`, `cables.spec.ts` (v2/v1), `history.spec.ts`, `storage-fallback.spec.ts` |
 | **Export plan / renderer / PDF** | `src/lib/exportScene.ts`, `src/canvas/exportStage.ts`, `src/lib/pdf.ts`, `src/components/ExportPanel.tsx` | selected-board/all-content, clamps, image failure, mobile tray | `export.spec.ts`, `picker-choka.spec.ts` |
 | **Cables / cable geometry / anchors** | `src/state/scene.ts`, `src/state/cableDrag.ts`, `src/state/endpointDrag.ts`, `src/state/endpointPlacement.ts`, `src/canvas/CableLayer.tsx`, `src/canvas/EndpointLayer.tsx`, `src/lib/jackAnchor.ts`, `src/lib/cablePath.ts`, `src/lib/cableLength.ts`, `src/lib/cableSummary.ts` | editor, touch connect, schedule, share, export, capacity | `cables.spec.ts`, `cables-touch.spec.ts`, `cable-schedule.spec.ts`, `share.spec.ts`, `export.spec.ts` |
+| **Signal-flow validation** | `src/lib/signalFlow.ts`, `src/components/ContinuityCheck.tsx`, `src/components/ScaleReadout.tsx`, `src/App.tsx`, `src/index.css` | patch graph, assumed anchors, status chip/dock, read-only derivation | `signal-flow.spec.ts`, `cables.spec.ts`, `cable-schedule.spec.ts` |
 | **Capacity constants / guards** | `src/lib/capacity.ts`, `src/state/scene.ts`, `src/components/CapacityAnnouncer.tsx` | add, duplicate, board add, over-cap load, export warning | `capacity.spec.ts`, `share.spec.ts`, `export.spec.ts` |
 | **Picker / filtering / catalog loading** | `src/components/Picker.tsx`, `src/components/pickerFilter.ts`, `src/catalog/load.ts`, `src/lib/cdn.ts`, `src/canvas/loadImage.ts` | every place workflow, asset renditions | `picker.spec.ts`, `picker-choka.spec.ts` |
 | **Info panel / part info / image loading** | `src/components/InfoPanel.tsx`, `src/lib/partInfo.ts`, `src/components/partImage.ts`, `src/canvas/useImage.ts` | selection readout, asset sizes, CORS fallback | `info-panel.spec.ts`, `picker.spec.ts` |
@@ -349,6 +374,9 @@ These are **not** silent holes: each is covered by unit tests or tracked here.
 | No visible touch hint for double-tap / camera lock | Dock `aria-label`/titles + hidden description; E2E covers the interactions | Owner chose no visible hint (2026-10-28); record as a known discovery limit |
 | PDF page pixels/raster fidelity | `pdf.test.ts` + header/MediaBox/`DCTDecode` assertions; owner iOS PNG check; P3-01 used `pdftoppm` manually | No automated pixel diff; keep as a visual/manual launch check |
 | Real iOS Safari export (A3) | Owner-confirmed PNG on iPhone (2026-10-20) | Manual; PDF not separately re-tested; P5-04 launch gate |
+| Continuity every-rule E2E | `signalFlow.test.ts` covers all 17 rules + no-false-positive cases; `signal-flow.spec.ts` covers warning visibility, selection, assumed disclosure, clear/empty, and non-blocking | Unit-first by design; E2E stays small and stable |
+| Continuity row auto-framing | Rows select the offending item/endpoint/cable and the existing selection chrome + info panel locate it; `focusViewport` has no item target yet | Intentional v1 limit; revisit if an item-focus primitive lands |
+| Continuity + incomplete catalog jacks | `electro-harmonix-22500-dual-stereo-looper` ships with an omitted OUT jack, so it can still report `pedal-missing-output`; the model is correct, the catalog row is incomplete | Recorded for the catalog repair lane (catalog is paused; no catalog edit in this feature) |
 | Non-Chromium browsers | Playwright chromium only (owner scope) | Out of scope; real-device pass is P5-06 |
 | Power-supply planner | Not implemented (non-goal N3); custom supply power shows in the info panel | Future feature; no E2E by design |
 
