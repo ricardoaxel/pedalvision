@@ -1,0 +1,200 @@
+[
+	{
+		"id": "pirate-midi-aero",
+		"brand": "Pirate Midi",
+		"name": "Aero",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 17.53,
+		"heightCm": 3.58,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-aero.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-aero.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pirate-midi-bridge4",
+		"brand": "Pirate Midi",
+		"name": "Bridge4",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.18,
+		"heightCm": 9.5,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-bridge4.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-bridge4.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pirate-midi-bridge6",
+		"brand": "Pirate Midi",
+		"name": "Bridge6",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 16,
+		"heightCm": 9.5,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-bridge6.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-bridge6.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pirate-midi-scribble-black",
+		"brand": "Pirate Midi",
+		"name": "Scribble (Black)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.3,
+		"heightCm": 2.49,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-scribble-black.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-scribble-black.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pirate-midi-scribble-white",
+		"brand": "Pirate Midi",
+		"name": "Scribble (White)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.3,
+		"heightCm": 2.49,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-scribble-white.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-scribble-white.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pirate-midi-uloop",
+		"brand": "Pirate Midi",
+		"name": "uLoop",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.9,
+		"heightCm": 6.5,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-uloop.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/pirate-midi-uloop.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

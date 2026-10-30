@@ -1,0 +1,3995 @@
+[
+	{
+		"id": "obne-aby-switcher",
+		"brand": "OBNE",
+		"name": "AB/Y Switcher",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.43,
+		"heightCm": 6.55,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-aby-switcher.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-aby-switcher.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-aby-switcher-betablue",
+		"brand": "OBNE",
+		"name": "AB/Y Switcher (Beta Blue)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.43,
+		"heightCm": 6.55,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-aby-switcher-betablue.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-aby-switcher-betablue.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-alpha-haunt",
+		"brand": "OBNE",
+		"name": "Alpha Haunt",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 14.48,
+		"heightCm": 12.32,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-alpha-haunt.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-alpha-haunt.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-alpha-haunt-v2",
+		"brand": "OBNE",
+		"name": "Alpha Haunt V2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.8,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-alpha-haunt-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-alpha-haunt-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bathing-algae",
+		"brand": "OBNE",
+		"name": "Bathing (Algae)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bathing-algae.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bathing-algae.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bathing-black",
+		"brand": "OBNE",
+		"name": "Bathing (Ink)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bathing-black.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bathing-black.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bathing-orchid",
+		"brand": "OBNE",
+		"name": "Bathing (Orchid)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bathing-orchid.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bathing-orchid.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-beam-splitter",
+		"brand": "OBNE",
+		"name": "Beam Splitter",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 14.71,
+		"heightCm": 12.4,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-beam-splitter-v2-cool",
+		"brand": "OBNE",
+		"name": "Beam Splitter V2 (Cool)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 13.72,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter-v2-cool.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter-v2-cool.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-beam-splitter-v2-shadow",
+		"brand": "OBNE",
+		"name": "Beam Splitter V2 (Shadow)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 13.72,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter-v2-shadow.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter-v2-shadow.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-beam-splitter-v2-warm",
+		"brand": "OBNE",
+		"name": "Beam Splitter V2 (Warm)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 13.72,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter-v2-warm.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-beam-splitter-v2-warm.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bl-13",
+		"brand": "OBNE",
+		"name": "BL-13",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.88,
+		"heightCm": 11.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-13.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-13.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bl-37",
+		"brand": "OBNE",
+		"name": "BL-37",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.96,
+		"heightCm": 11.43,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-37.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-37.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bl-44",
+		"brand": "OBNE",
+		"name": "BL-44",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.96,
+		"heightCm": 11.43,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-44.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-44.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bl-52",
+		"brand": "OBNE",
+		"name": "BL-52",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.96,
+		"heightCm": 11.43,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-52.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-52.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-bl-82",
+		"brand": "OBNE",
+		"name": "BL-82",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.96,
+		"heightCm": 11.43,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-82.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-bl-82.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-stereo",
+		"brand": "OBNE",
+		"name": "Black Fountain Stereo (Slate)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-stereo-cream",
+		"brand": "OBNE",
+		"name": "Black Fountain Stereo (Cream)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-cream.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-cream.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-stereo-terra",
+		"brand": "OBNE",
+		"name": "Black Fountain Stereo (Terracotta)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-terra.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-terra.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-stereo-white",
+		"brand": "OBNE",
+		"name": "Black Fountain Stereo (Revolver-esque)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-white.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-white.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-stereo-wildberry",
+		"brand": "OBNE",
+		"name": "Black Fountain Stereo (Wildberry)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-wildberry.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-stereo-wildberry.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-v2",
+		"brand": "OBNE",
+		"name": "Black Fountain v2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-v2-reverse",
+		"brand": "OBNE",
+		"name": "Black Fountain v2 (Reverse)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v2-reverse.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v2-reverse.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-v3",
+		"brand": "OBNE",
+		"name": "Black Fountain v3",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v3.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v3.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-v3-chicago",
+		"brand": "OBNE",
+		"name": "Black Fountain v3 (Chicago Blue)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v3-chicago.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v3-chicago.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-black-fountain-v3-sage",
+		"brand": "OBNE",
+		"name": "Black Fountain v3 (Sage)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v3-sage.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-black-fountain-v3-sage.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-blackcap",
+		"brand": "OBNE",
+		"name": "Blackcap",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 10.46,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-blackcap.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-blackcap.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-blackfountain",
+		"brand": "OBNE",
+		"name": "Black Fountain",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-blackfountain.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-blackfountain.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-light",
+		"brand": "OBNE",
+		"name": "Dark Light",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 14.48,
+		"heightCm": 9.65,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-light.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-light.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-light-blueberry",
+		"brand": "OBNE",
+		"name": "Dark Light (Blueberry Dusk)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 14.48,
+		"heightCm": 9.65,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-light-blueberry.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-light-blueberry.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-paw",
+		"brand": "OBNE",
+		"name": "Dark Paw",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-paw.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-paw.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star",
+		"brand": "OBNE",
+		"name": "Dark Star",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-stereo",
+		"brand": "OBNE",
+		"name": "Dark Star Stereo (Blue)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-stereo-black",
+		"brand": "OBNE",
+		"name": "Dark Star Stereo (Black)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-black.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-black.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-stereo-blue-raspberry",
+		"brand": "OBNE",
+		"name": "Dark Star Stereo (Blue Raspberry)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-blue-raspberry.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-blue-raspberry.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-stereo-green-galaxy",
+		"brand": "OBNE",
+		"name": "Dark Star Stereo (Green Galaxy)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-green-galaxy.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-green-galaxy.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-stereo-pink",
+		"brand": "OBNE",
+		"name": "Dark Star Stereo (Pink)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-pink.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-pink.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-stereo-white",
+		"brand": "OBNE",
+		"name": "Dark Star Stereo (Revolver-esque)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-white.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-stereo-white.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-v2",
+		"brand": "OBNE",
+		"name": "Dark Star v2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-v2-sage",
+		"brand": "OBNE",
+		"name": "Dark Star v2 (Sage)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-v2-sage.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-v2-sage.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dark-star-v2-white",
+		"brand": "OBNE",
+		"name": "Dark Star v2 (White)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-v2-white.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dark-star-v2-white.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-dweller-phase-repeater",
+		"brand": "OBNE",
+		"name": "Dweller",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dweller-phase-repeater.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-dweller-phase-repeater.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-eq-buffer",
+		"brand": "OBNE",
+		"name": "EQ + Buffer",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.83,
+		"heightCm": 11.43,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-eq-buffer.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-eq-buffer.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-excess",
+		"brand": "OBNE",
+		"name": "Excess",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 10.46,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-excess.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-excess.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-excess-v2",
+		"brand": "OBNE",
+		"name": "Excess v2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-excess-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-excess-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-farting",
+		"brand": "OBNE",
+		"name": "Farting",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-farting.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-farting.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-fault",
+		"brand": "OBNE",
+		"name": "Fault",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.8,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-fault.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-fault.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-fault-v2",
+		"brand": "OBNE",
+		"name": "Fault v2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.78,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-fault-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-fault-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-flat-light",
+		"brand": "OBNE",
+		"name": "Flat Light",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-flat-light.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-flat-light.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-float",
+		"brand": "OBNE",
+		"name": "Float",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.29,
+		"heightCm": 9.8,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-float.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-float.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-haunt",
+		"brand": "OBNE",
+		"name": "Haunt",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-haunt.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-haunt.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-headphone-amp",
+		"brand": "OBNE",
+		"name": "Headphone Amp",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.83,
+		"heightCm": 11.43,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-headphone-amp.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-headphone-amp.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-maw-xlr",
+		"brand": "OBNE",
+		"name": "MAW XLR Pedal",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 15.11,
+		"heightCm": 12.4,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-maw-xlr.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-maw-xlr.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-meowdy-pardner-fuzz",
+		"brand": "OBNE",
+		"name": "Meowdy Pardner Fuzz",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-meowdy-pardner-fuzz.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-meowdy-pardner-fuzz.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-minim",
+		"brand": "OBNE",
+		"name": "Minim",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 10.46,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-minim.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-minim.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-minim-betablue",
+		"brand": "OBNE",
+		"name": "Minim (Beta Blue)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 10.46,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-minim-betablue.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-minim-betablue.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-mondegreen",
+		"brand": "OBNE",
+		"name": "Mondegreen",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-mondegreen.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-mondegreen.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-mtet",
+		"brand": "OBNE",
+		"name": "MTET",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.43,
+		"heightCm": 6.93,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-mtet.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-mtet.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-pardner-fuzz-blue",
+		"brand": "OBNE",
+		"name": "Pardner Fuzz (Blue)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-blue.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-blue.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-pardner-fuzz-blue-bonanza",
+		"brand": "OBNE",
+		"name": "Pardner Fuzz (Blue Bonanza)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-blue-bonanza.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-blue-bonanza.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-pardner-fuzz-purple",
+		"brand": "OBNE",
+		"name": "Pardner Fuzz (Purple)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-purple.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-purple.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-pardner-fuzz-tan",
+		"brand": "OBNE",
+		"name": "Pardner Fuzz (Tan)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-tan.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-tan.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-pardner-fuzz-white",
+		"brand": "OBNE",
+		"name": "Pardner Fuzz (Revolver-eque)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-white.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-pardner-fuzz-white.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-parting-green",
+		"brand": "OBNE",
+		"name": "Parting (Green)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-parting-green.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-parting-green.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-parting-purple",
+		"brand": "OBNE",
+		"name": "Parting (Purple)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-parting-purple.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-parting-purple.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-parting-stone",
+		"brand": "OBNE",
+		"name": "Parting (Stone)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-parting-stone.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-parting-stone.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-procession",
+		"brand": "OBNE",
+		"name": "Procession",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-procession.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-procession.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-procession-v2",
+		"brand": "OBNE",
+		"name": "Procession v2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-procession-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-procession-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-purr-ting",
+		"brand": "OBNE",
+		"name": "Purr-ting",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-purr-ting.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-purr-ting.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-purrcession",
+		"brand": "OBNE",
+		"name": "Purrcession",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-purrcession.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-purrcession.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper",
+		"brand": "OBNE",
+		"name": "Expression Ramper",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-beam-splitter",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Beam Splitter)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-beam-splitter.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-beam-splitter.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-black-fountain",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Black Fountain)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-black-fountain.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-black-fountain.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-dark-light",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Dark Light)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-light.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-light.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-dark-light-blueberry",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Dark Light Blueberry Dusk)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-light-blueberry.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-light-blueberry.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-dark-light-charcoal",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Dark Light Charcoal)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-light-charcoal.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-light-charcoal.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-dark-star-v3",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Dark Star V3)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-star-v3.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-dark-star-v3.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-excess",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Excess Pink)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-excess.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-excess.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-float",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Float)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-float.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-float.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-folded",
+		"brand": "OBNE",
+		"name": "Expression Ramper Folded",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 5.08,
+		"heightCm": 9.88,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-folded.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-folded.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-folded-hk",
+		"brand": "OBNE",
+		"name": "Expression Ramper Folded (HK)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 5.08,
+		"heightCm": 9.88,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-folded-hk.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-folded-hk.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-folded-setback",
+		"brand": "OBNE",
+		"name": "Expression Ramper Folded (Setback)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 5.08,
+		"heightCm": 9.88,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-folded-setback.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-folded-setback.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-hk",
+		"brand": "OBNE",
+		"name": "Expression Ramper (HK)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-hk.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-hk.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-neon-blue",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Neon Blue)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-blue.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-blue.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-neon-green",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Neon Green)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-green.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-green.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-neon-parting",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Parting)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-parting.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-parting.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-neon-pink",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Neon Pink)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-pink.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-neon-pink.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-screen-violence",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Screen Violence)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-screen-violence.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-screen-violence.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-sunlight",
+		"brand": "OBNE",
+		"name": "Expression Ramper (Sunlight)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 4.29,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-sunlight.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-sunlight.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-ramper-x3",
+		"brand": "OBNE",
+		"name": "Expression Ramper X3",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 13.08,
+		"heightCm": 10.46,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-x3.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-ramper-x3.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-reflector",
+		"brand": "OBNE",
+		"name": "Reflector",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-reflector.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-reflector.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-reflector-v2",
+		"brand": "OBNE",
+		"name": "Reflector v2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-reflector-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-reflector-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-reflector-v3",
+		"brand": "OBNE",
+		"name": "Reflector v3",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-reflector-v3.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-reflector-v3.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-rever",
+		"brand": "OBNE",
+		"name": "Rever",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 10.46,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-rever.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-rever.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-scooch",
+		"brand": "OBNE",
+		"name": "Scooch",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 3.81,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-scooch.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-scooch.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-screenviolence",
+		"brand": "OBNE",
+		"name": "Screen Violence",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.32,
+		"heightCm": 15.04,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-screenviolence.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-screenviolence.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-screenviolence-cream",
+		"brand": "OBNE",
+		"name": "Screen Violence (Cream)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.32,
+		"heightCm": 15.04,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-screenviolence-cream.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-screenviolence-cream.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-screenviolence-pinkblue",
+		"brand": "OBNE",
+		"name": "Screen Violence (Pink/Blue)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.32,
+		"heightCm": 15.04,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-screenviolence-pinkblue.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-screenviolence-pinkblue.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-setback-reverse-begonia",
+		"brand": "OBNE",
+		"name": "Setback Reverse (Begonia)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 8.41,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-setback-reverse-begonia.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-setback-reverse-begonia.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-setback-reverse-hydrangea",
+		"brand": "OBNE",
+		"name": "Setback Reverse (Hydrangea)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 8.41,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-setback-reverse-hydrangea.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-setback-reverse-hydrangea.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-setback-reverse-petunia",
+		"brand": "OBNE",
+		"name": "Setback Reverse (Petunia)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 8.41,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-setback-reverse-petunia.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-setback-reverse-petunia.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-signalblender",
+		"brand": "OBNE",
+		"name": "Signal Blender",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.8,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-signalblender.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-signalblender.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-signalblender-stereo",
+		"brand": "OBNE",
+		"name": "Signal Blender Stereo",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 13.72,
+		"heightCm": 12.55,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-signalblender-stereo.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-signalblender-stereo.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-signalblender-stereo-basic",
+		"brand": "OBNE",
+		"name": "Signal Blender Stereo (Basic)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 13.72,
+		"heightCm": 12.55,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-signalblender-stereo-basic.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-signalblender-stereo-basic.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-slider",
+		"brand": "OBNE",
+		"name": "Expression Slider",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 3.81,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-slider-float",
+		"brand": "OBNE",
+		"name": "Expression Slider (Float)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 3.81,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-float.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-float.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-slider-folded",
+		"brand": "OBNE",
+		"name": "Expression Slider Folded",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 5.08,
+		"heightCm": 9.88,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-folded.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-folded.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-slider-folded-hk",
+		"brand": "OBNE",
+		"name": "Expression Slider Folded (HK)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 5.08,
+		"heightCm": 9.88,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-folded-hk.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-folded-hk.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-slider-folded-setback",
+		"brand": "OBNE",
+		"name": "Expression Slider Folded (Setback)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 5.08,
+		"heightCm": 9.88,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-folded-setback.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-folded-setback.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-slider-hk",
+		"brand": "OBNE",
+		"name": "Expression Slider (HK)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 3.81,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-hk.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-slider-hk.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-split-meld",
+		"brand": "OBNE",
+		"name": "Split | Meld",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.43,
+		"heightCm": 6.83,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-split-meld.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-split-meld.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-split-meld-v2",
+		"brand": "OBNE",
+		"name": "Split | Meld v2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 9.4,
+		"heightCm": 4.37,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-split-meld-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-split-meld-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-split-meld-v2-hk",
+		"brand": "OBNE",
+		"name": "Split | Meld v2 (HK)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 9.4,
+		"heightCm": 4.37,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-split-meld-v2-hk.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-split-meld-v2-hk.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-sunlight",
+		"brand": "OBNE",
+		"name": "Sunlight",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-sunlight-olive",
+		"brand": "OBNE",
+		"name": "Sunlight (Olive)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-olive.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-olive.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-sunlight-stereo-black",
+		"brand": "OBNE",
+		"name": "Sunlight Stereo (Black)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-stereo-black.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-stereo-black.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-sunlight-stereo-maroon",
+		"brand": "OBNE",
+		"name": "Sunlight Stereo (Maroon)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-stereo-maroon.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-stereo-maroon.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-sunlight-stereo-yellow",
+		"brand": "OBNE",
+		"name": "Sunlight Stereo (Yellow)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 10.8,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-stereo-yellow.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-sunlight-stereo-yellow.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-triple-expression-ramper",
+		"brand": "OBNE",
+		"name": "Triple Expression Ramper",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.8,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-triple-expression-ramper.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-triple-expression-ramper.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-visitor",
+		"brand": "OBNE",
+		"name": "Visitor",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.29,
+		"heightCm": 12.6,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-visitor.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-visitor.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "obne-whitecap",
+		"brand": "OBNE",
+		"name": "Whitecap",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 10.46,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-whitecap.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/obne-whitecap.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

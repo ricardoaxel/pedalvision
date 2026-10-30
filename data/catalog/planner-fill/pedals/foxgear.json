@@ -1,0 +1,266 @@
+[
+	{
+		"id": "foxgear-anubi-ambient-box",
+		"brand": "Foxgear",
+		"name": "Anubi Ambient Box",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.7,
+		"heightCm": 9.35,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-anubi-ambient-box.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-anubi-ambient-box.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "foxgear-anubi-modulation-box",
+		"brand": "Foxgear",
+		"name": "Anubi Modulation Box",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.7,
+		"heightCm": 9.35,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-anubi-modulation-box.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-anubi-modulation-box.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "foxgear-hw-103",
+		"brand": "Foxgear",
+		"name": "HW-103",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.7,
+		"heightCm": 9.35,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-hw-103.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-hw-103.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "foxgear-m-1959",
+		"brand": "Foxgear",
+		"name": "M-1959",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.7,
+		"heightCm": 9.35,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-m-1959.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-m-1959.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "foxgear-qboost",
+		"brand": "Foxgear",
+		"name": "Qboost",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 5.99,
+		"heightCm": 12.29,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-qboost.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-qboost.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "foxgear-t7e-baby",
+		"brand": "Foxgear",
+		"name": "T7E Baby",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.7,
+		"heightCm": 9.35,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-t7e-baby.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-t7e-baby.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "foxgear-tw-100",
+		"brand": "Foxgear",
+		"name": "TW-100",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.7,
+		"heightCm": 9.35,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-tw-100.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-tw-100.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "foxgear-v-100",
+		"brand": "Foxgear",
+		"name": "V-100",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.7,
+		"heightCm": 9.35,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-v-100.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/foxgear-v-100.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

@@ -1,0 +1,200 @@
+[
+	{
+		"id": "altero-kaede",
+		"brand": "Altero",
+		"name": "Kaede",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.01,
+		"heightCm": 11.99,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-kaede.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-kaede.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "altero-kaede-hw",
+		"brand": "Altero",
+		"name": "Kaede (Handwired)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.01,
+		"heightCm": 11.99,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-kaede-hw.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-kaede-hw.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "altero-mag",
+		"brand": "Altero",
+		"name": "Mag",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.01,
+		"heightCm": 11.99,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-mag.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-mag.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "altero-mag-hw",
+		"brand": "Altero",
+		"name": "Mag (Handwired)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.01,
+		"heightCm": 11.99,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-mag-hw.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-mag-hw.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "altero-wal",
+		"brand": "Altero",
+		"name": "Wal",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.01,
+		"heightCm": 11.99,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-wal.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-wal.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "altero-wal-hw",
+		"brand": "Altero",
+		"name": "Wal (Handwired)",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 7.01,
+		"heightCm": 11.99,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-wal-hw.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/altero-wal-hw.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

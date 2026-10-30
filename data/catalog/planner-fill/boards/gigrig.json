@@ -1,0 +1,602 @@
+[
+	{
+		"id": "gigrig-large-double-tier",
+		"brand": "GigRig",
+		"name": "Large Double Tier Pedalboard",
+		"category": "board",
+		"widthCm": 59.28,
+		"heightCm": 48.51,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-double-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-double-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-large-double-tier-wl",
+		"brand": "GigRig",
+		"name": "Large Double Tier Pedalboard (Wah L)",
+		"category": "board",
+		"widthCm": 59.28,
+		"heightCm": 48.51,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-double-tier-wl.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-double-tier-wl.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-large-double-tier-wr",
+		"brand": "GigRig",
+		"name": "Large Double Tier Pedalboard (Wah R)",
+		"category": "board",
+		"widthCm": 59.28,
+		"heightCm": 48.51,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-double-tier-wr.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-double-tier-wr.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-large-narrow-tier",
+		"brand": "GigRig",
+		"name": "Large Narrow Tier",
+		"category": "board",
+		"widthCm": 54.86,
+		"heightCm": 11.94,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-narrow-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-narrow-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-large-single-tier",
+		"brand": "GigRig",
+		"name": "Large Single Tier Pedalboard",
+		"category": "board",
+		"widthCm": 59.28,
+		"heightCm": 33.48,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-single-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-single-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-large-single-tier-wl",
+		"brand": "GigRig",
+		"name": "Large Single Tier Pedalboard (Wah L)",
+		"category": "board",
+		"widthCm": 59.28,
+		"heightCm": 33.48,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-single-tier-wl.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-single-tier-wl.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-large-single-tier-wr",
+		"brand": "GigRig",
+		"name": "Large Single Tier Pedalboard (Wah R)",
+		"category": "board",
+		"widthCm": 59.28,
+		"heightCm": 33.48,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-single-tier-wr.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-single-tier-wr.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-large-wide-tier",
+		"brand": "GigRig",
+		"name": "Large Wide Tier",
+		"category": "board",
+		"widthCm": 54.86,
+		"heightCm": 15.75,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-wide-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-large-wide-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-double-tier",
+		"brand": "GigRig",
+		"name": "Medium Double Tier Pedalboard",
+		"category": "board",
+		"widthCm": 46,
+		"heightCm": 48.51,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-double-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-double-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-double-tier-wl",
+		"brand": "GigRig",
+		"name": "Medium Double Tier Pedalboard (Wah L)",
+		"category": "board",
+		"widthCm": 46,
+		"heightCm": 48.51,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-double-tier-wl.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-double-tier-wl.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-double-tier-wr",
+		"brand": "GigRig",
+		"name": "Medium Double Tier Pedalboard (Wah R)",
+		"category": "board",
+		"widthCm": 46,
+		"heightCm": 48.51,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-double-tier-wr.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-double-tier-wr.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-narrow-tier",
+		"brand": "GigRig",
+		"name": "Medium Narrow Tier",
+		"category": "board",
+		"widthCm": 41.91,
+		"heightCm": 11.94,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-narrow-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-narrow-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-single-tier",
+		"brand": "GigRig",
+		"name": "Medium Single Tier Pedalboard",
+		"category": "board",
+		"widthCm": 46,
+		"heightCm": 33.48,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-single-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-single-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-single-tier-wl",
+		"brand": "GigRig",
+		"name": "Medium Single Tier Pedalboard (Wah L)",
+		"category": "board",
+		"widthCm": 46,
+		"heightCm": 33.48,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-single-tier-wl.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-single-tier-wl.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-single-tier-wr",
+		"brand": "GigRig",
+		"name": "Medium Single Tier Pedalboard (Wah R)",
+		"category": "board",
+		"widthCm": 46,
+		"heightCm": 33.48,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-single-tier-wr.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-single-tier-wr.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-medium-wide-tier",
+		"brand": "GigRig",
+		"name": "Medium Wide Tier",
+		"category": "board",
+		"widthCm": 41.91,
+		"heightCm": 15.75,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-wide-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-medium-wide-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-small-narrow-tier",
+		"brand": "GigRig",
+		"name": "Small Narrow Tier",
+		"category": "board",
+		"widthCm": 28.96,
+		"heightCm": 11.94,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-small-narrow-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-small-narrow-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-small-single-tier",
+		"brand": "GigRig",
+		"name": "Small Single Tier Pedalboard",
+		"category": "board",
+		"widthCm": 33.1,
+		"heightCm": 33.48,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-small-single-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-small-single-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-small-wide-tier",
+		"brand": "GigRig",
+		"name": "Small Wide Tier",
+		"category": "board",
+		"widthCm": 28.96,
+		"heightCm": 15.75,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-small-wide-tier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-small-wide-tier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "gigrig-wah-riser",
+		"brand": "GigRig",
+		"name": "Wah Riser",
+		"category": "board",
+		"widthCm": 11.28,
+		"heightCm": 25.86,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-wah-riser.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/gigrig-wah-riser.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

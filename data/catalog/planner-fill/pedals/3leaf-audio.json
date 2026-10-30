@@ -1,0 +1,167 @@
+[
+	{
+		"id": "3leaf-audio-chromatron",
+		"brand": "3Leaf Audio",
+		"name": "Chromatron",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 11.94,
+		"heightCm": 9.83,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-chromatron.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-chromatron.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "3leaf-audio-doom2",
+		"brand": "3Leaf Audio",
+		"name": "Doom 2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.35,
+		"heightCm": 11.58,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-doom2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-doom2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "3leaf-audio-octabvre",
+		"brand": "3Leaf Audio",
+		"name": "Octabvre",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.35,
+		"heightCm": 11.58,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-octabvre.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-octabvre.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "3leaf-audio-proton",
+		"brand": "3Leaf Audio",
+		"name": "Proton",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 6.35,
+		"heightCm": 11.58,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-proton.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-proton.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "3leaf-audio-wonderlove-v2",
+		"brand": "3Leaf Audio",
+		"name": "Wonderlove V2",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 12.29,
+		"heightCm": 10.01,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-wonderlove-v2.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/3leaf-audio-wonderlove-v2.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

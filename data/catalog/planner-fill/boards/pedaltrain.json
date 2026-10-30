@@ -1,0 +1,572 @@
+[
+	{
+		"id": "pedaltrain-classic1",
+		"brand": "Pedaltrain",
+		"name": "Classic 1",
+		"category": "board",
+		"widthCm": 55.88,
+		"heightCm": 31.75,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-classic1.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-classic1.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-classic3",
+		"brand": "Pedaltrain",
+		"name": "Classic 3",
+		"category": "board",
+		"widthCm": 60.96,
+		"heightCm": 40.64,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-classic3.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-classic3.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-fly",
+		"brand": "Pedaltrain",
+		"name": "Fly",
+		"category": "board",
+		"widthCm": 55.88,
+		"heightCm": 36.83,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-fly.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-fly.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-grande",
+		"brand": "Pedaltrain",
+		"name": "Grande",
+		"category": "board",
+		"widthCm": 106.68,
+		"heightCm": 40.64,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-grande.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-grande.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-jr",
+		"brand": "Pedaltrain",
+		"name": "Classic JR",
+		"category": "board",
+		"widthCm": 45.72,
+		"heightCm": 31.75,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-jr.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-jr.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-jr-max",
+		"brand": "Pedaltrain",
+		"name": "JR MAX",
+		"category": "board",
+		"widthCm": 71.12,
+		"heightCm": 31.75,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-jr-max.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-jr-max.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-metro-max",
+		"brand": "Pedaltrain",
+		"name": "Metro MAX",
+		"category": "board",
+		"widthCm": 71.12,
+		"heightCm": 20.32,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro-max.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro-max.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-metro16",
+		"brand": "Pedaltrain",
+		"name": "Metro 16",
+		"category": "board",
+		"widthCm": 40.64,
+		"heightCm": 20.32,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro16.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro16.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-metro20",
+		"brand": "Pedaltrain",
+		"name": "Metro 20",
+		"category": "board",
+		"widthCm": 50.8,
+		"heightCm": 20.32,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro20.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro20.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-metro24",
+		"brand": "Pedaltrain",
+		"name": "Metro 24",
+		"category": "board",
+		"widthCm": 60.96,
+		"heightCm": 20.32,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro24.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-metro24.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-mini",
+		"brand": "Pedaltrain",
+		"name": "Mini",
+		"category": "board",
+		"widthCm": 50.8,
+		"heightCm": 17.78,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-mini.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-mini.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-novo18",
+		"brand": "Pedaltrain",
+		"name": "Novo 18",
+		"category": "board",
+		"widthCm": 45.72,
+		"heightCm": 36.83,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-novo18.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-novo18.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-novo24",
+		"brand": "Pedaltrain",
+		"name": "Novo 24",
+		"category": "board",
+		"widthCm": 60.96,
+		"heightCm": 36.83,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-novo24.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-novo24.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-novo32",
+		"brand": "Pedaltrain",
+		"name": "Novo 32",
+		"category": "board",
+		"widthCm": 81.28,
+		"heightCm": 36.83,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-novo32.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-novo32.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-pro",
+		"brand": "Pedaltrain",
+		"name": "Classic Pro",
+		"category": "board",
+		"widthCm": 81.28,
+		"heightCm": 40.64,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-pro.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-pro.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-pro-fx",
+		"brand": "Pedaltrain",
+		"name": "Pro FX",
+		"category": "board",
+		"widthCm": 81.28,
+		"heightCm": 40.64,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-pro-fx.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-pro-fx.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-terra42",
+		"brand": "Pedaltrain",
+		"name": "Terra 42",
+		"category": "board",
+		"widthCm": 106.68,
+		"heightCm": 36.83,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-terra42.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-terra42.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-xd-18",
+		"brand": "Pedaltrain",
+		"name": "XD-18",
+		"category": "board",
+		"widthCm": 45.72,
+		"heightCm": 44.45,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-xd-18.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-xd-18.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "pedaltrain-xd-24",
+		"brand": "Pedaltrain",
+		"name": "XD-24",
+		"category": "board",
+		"widthCm": 60.96,
+		"heightCm": 44.45,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-xd-24.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/pedaltrain-xd-24.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

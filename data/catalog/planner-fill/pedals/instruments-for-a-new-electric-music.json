@@ -1,0 +1,35 @@
+[
+	{
+		"id": "ifanem-second-voice",
+		"brand": "Instruments For A New Electric Music",
+		"name": "Second Voice",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 9.35,
+		"heightCm": 12.52,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/ifanem-second-voice.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/ifanem-second-voice.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

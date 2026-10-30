@@ -1,0 +1,92 @@
+[
+	{
+		"id": "boss-bcb-30x",
+		"brand": "BOSS",
+		"name": "BCB-30X",
+		"category": "board",
+		"widthCm": 33.83,
+		"heightCm": 30.8,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/boss-bcb-30x.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/boss-bcb-30x.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "boss-bcb-60",
+		"brand": "BOSS",
+		"name": "BCB-60",
+		"category": "board",
+		"widthCm": 67.16,
+		"heightCm": 38,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/boss-bcb-60.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/boss-bcb-60.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "boss-bcb-90x",
+		"brand": "BOSS",
+		"name": "BCB-90X",
+		"category": "board",
+		"widthCm": 68.07,
+		"heightCm": 38.42,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/boss-bcb-90x.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/boss-bcb-90x.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

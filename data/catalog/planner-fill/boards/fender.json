@@ -1,0 +1,92 @@
+[
+	{
+		"id": "fender-pro-large",
+		"brand": "Fender",
+		"name": "Professional (Large)",
+		"category": "board",
+		"widthCm": 81.28,
+		"heightCm": 40.67,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/fender-pro-large.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/fender-pro-large.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "fender-pro-medium",
+		"brand": "Fender",
+		"name": "Professional (Medium)",
+		"category": "board",
+		"widthCm": 60.96,
+		"heightCm": 33.17,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/fender-pro-medium.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/fender-pro-medium.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	},
+	{
+		"id": "fender-pro-small",
+		"brand": "Fender",
+		"name": "Professional (Small)",
+		"category": "board",
+		"widthCm": 45.72,
+		"heightCm": 32.56,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/fender-pro-small.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/fender-pro-small.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

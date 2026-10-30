@@ -1,0 +1,32 @@
+[
+	{
+		"id": "nyccases-riser20",
+		"brand": "NYC Cases",
+		"name": "2nd Level Riser (20 inches)",
+		"category": "board",
+		"widthCm": 50.8,
+		"heightCm": 16.51,
+		"dimensionsSource": "planner footprint (includes protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/nyccases-riser20.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/public/images/pedalboards/nyccases-riser20.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized board image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; board specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

@@ -1,0 +1,35 @@
+[
+	{
+		"id": "positive-grid-spark-pedal",
+		"brand": "Positive Grid",
+		"name": "Spark Pedal",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 17.5,
+		"heightCm": 10.62,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/positive-grid-spark-pedal.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/positive-grid-spark-pedal.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

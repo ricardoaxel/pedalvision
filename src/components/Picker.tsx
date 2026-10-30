@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { catalog } from "../catalog/load";
+import { isPlannerBoard, isPlannerPedal } from "../catalog/planner";
 import { EFFECT_TYPES, type EffectType } from "../catalog/schema";
 import {
 	addItemRefusal,
@@ -20,6 +21,7 @@ import { centerOffset, placeItem } from "../lib/geometry";
 import { MOTION } from "../lib/motion";
 import { useMotion } from "../state/motion";
 import { PATCH_CABLE_GAP_CM } from "../state/overlap";
+import { usePlannerCatalog } from "../state/plannerCatalog";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -46,6 +48,7 @@ import {
 	pedalBrands,
 	toggleEffectType,
 } from "./pickerFilter";
+import { nextPageCount, PICKER_PAGE, visibleCountFor } from "./pickerPaging";
 import { Section } from "./SheetSection";
 
 export type PickerTab = "pedals" | "boards" | "custom";
@@ -376,16 +379,33 @@ export function Picker({
 		return () => window.removeEventListener("keydown", onKey);
 	}, [open, onClose]);
 
-	const pedalBrandOptions = useMemo(() => pedalBrands(catalog.pedals), []);
-	const boardBrands = useMemo(() => brandsOf(catalog.boards), []);
+	const plannerVersion = usePlannerCatalog((state) => state.version);
+	const filterKey = `${tab}|${query}|${brand ?? ""}|${effectTypes.join(",")}`;
+	const [visible, setVisible] = useState({
+		key: filterKey,
+		count: PICKER_PAGE,
+	});
+	const visiblePedals = visibleCountFor(filterKey, visible);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: plannerVersion invalidates after the lazy overlay merges
+	const allPedals = useMemo(() => catalog.pedals.slice(), [plannerVersion]);
+	const pedalBrandOptions = useMemo(() => pedalBrands(allPedals), [allPedals]);
+	const allBoards = catalog.boards.slice();
+	const boardBrands = useMemo(() => brandsOf(allBoards), [allBoards]);
 
-	const pedals = useMemo(
-		() => filterPedals(catalog.pedals, { query, brand, effectTypes }),
-		[query, brand, effectTypes],
+	const filteredPedals = useMemo(
+		() => filterPedals(allPedals, { query, brand, effectTypes }),
+		[allPedals, query, brand, effectTypes],
 	);
+	const pedals = useMemo(
+		() => filteredPedals.slice(0, visiblePedals),
+		[filteredPedals, visiblePedals],
+	);
+	const showPlannerTag =
+		pedals.some((pedal) => !isPlannerPedal(pedal.id)) &&
+		pedals.some((pedal) => isPlannerPedal(pedal.id));
 	const filteredBoards = useMemo(
-		() => filterBoards(catalog.boards, { query, brand }),
-		[query, brand],
+		() => filterBoards(allBoards, { query, brand }),
+		[allBoards, query, brand],
 	);
 
 	// One uniform entry list for the ledger rows + the specimen pane.
@@ -403,15 +423,19 @@ export function Picker({
 					board.image,
 					"board",
 				),
-				meta: "",
+				meta: isPlannerBoard(board.id) ? "Planner" : "",
 			}));
 		}
 		return pedals.map((pedal) => {
 			const labels = pedal.effectTypes.map(effectLabel);
+			const parts = [
+				...(isPlannerPedal(pedal.id) ? ["Planner"] : []),
+				...labels,
+			];
 			const meta =
-				labels.length > 0
-					? labels.slice(0, 3).join(" · ") +
-						(labels.length > 3 ? ` +${labels.length - 3}` : "")
+				parts.length > 0
+					? parts.slice(0, 3).join(" · ") +
+						(parts.length > 3 ? ` +${parts.length - 3}` : "")
 					: "";
 			return {
 				id: pedal.id,
@@ -640,6 +664,12 @@ export function Picker({
 			];
 	const brands = tab === "boards" ? boardBrands : pedalBrandOptions;
 	const count = entries.length;
+	const matchingCount =
+		tab === "boards" ? filteredBoards.length : filteredPedals.length;
+	const totalCount =
+		tab === "boards"
+			? matchingCount
+			: allPedals.filter((pedal) => pedal.category === "pedal").length;
 	const isBoards = tab === "boards";
 	const isCustom = tab === "custom";
 	const copy = TAB_COPY[tab];
@@ -1006,13 +1036,6 @@ export function Picker({
 													</svg>
 												</button>
 											) : null}
-											<span
-												className="picker__search-count"
-												data-testid="picker-count"
-												aria-live="polite"
-											>
-												{count} {copy.count}
-											</span>
 										</div>
 
 										<div className="picker__filters">
@@ -1142,6 +1165,11 @@ export function Picker({
 															</span>
 															<span className="picker-item__brand">
 																{entry.brand}
+																{showPlannerTag && isPlannerPedal(entry.id) ? (
+																	<span className="picker-item__planner">
+																		Planner
+																	</span>
+																) : null}
 															</span>
 														</span>
 														<span className="picker-item__dims">
@@ -1153,6 +1181,31 @@ export function Picker({
 										)}
 									</div>
 
+									<div className="picker__result-footer">
+										<span
+											className="picker__result-count"
+											data-testid="picker-count"
+											aria-live="polite"
+										>
+											{count < totalCount
+												? `${count.toLocaleString()} of ${totalCount.toLocaleString()} ${copy.count}`
+												: `${count.toLocaleString()} ${copy.count}`}
+										</span>
+										{count < matchingCount ? (
+											<button
+												type="button"
+												className="picker__load-more"
+												onClick={() =>
+													setVisible({
+														key: filterKey,
+														count: nextPageCount(visiblePedals),
+													})
+												}
+											>
+												Show {PICKER_PAGE} more
+											</button>
+										) : null}
+									</div>
 									<div className="picker__status">
 										<span className="picker__keys" aria-hidden="true">
 											<kbd className="picker__key">↑</kbd>

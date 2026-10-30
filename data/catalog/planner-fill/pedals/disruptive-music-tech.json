@@ -1,0 +1,35 @@
+[
+	{
+		"id": "disruptive-music-tech-enhancifier",
+		"brand": "Disruptive Music Tech",
+		"name": "Enhancifier",
+		"category": "pedal",
+		"effectTypes": [
+			"utility"
+		],
+		"widthCm": 20.32,
+		"heightCm": 15.57,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/disruptive-music-tech-enhancifier.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/disruptive-music-tech-enhancifier.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		}
+	}
+]

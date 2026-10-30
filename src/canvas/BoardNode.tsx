@@ -10,6 +10,7 @@ import { focusAfterLayout } from "../state/focus";
 import { useGesture } from "../state/gesture";
 import { useMotion } from "../state/motion";
 import { spaceWarning } from "../state/overlap";
+import { usePlannerCatalog } from "../state/plannerCatalog";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import {
 	boardDefinition,
@@ -96,6 +97,7 @@ export function BoardNode({
 	const moveBoard = useScene((state) => state.moveBoard);
 	const customPedals = useScene((state) => state.customPedals);
 	const allItems = useScene((state) => state.items);
+	usePlannerCatalog((state) => state.version);
 	const boards = useScene((state) => state.boards);
 	const selectBoard = useSelection((state) => state.selectBoard);
 	// While the viewport owns the gesture (pan/pinch), the board must not drag:

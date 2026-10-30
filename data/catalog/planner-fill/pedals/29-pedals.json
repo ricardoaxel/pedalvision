@@ -1,0 +1,167 @@
+[
+	{
+		"id": "29pedals-euna",
+		"brand": "29 Pedals",
+		"name": "EUNA",
+		"category": "pedal",
+		"widthCm": 12.4,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-euna.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		},
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-euna.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"effectTypes": [
+			"utility"
+		]
+	},
+	{
+		"id": "29pedals-flwr",
+		"brand": "29 Pedals",
+		"name": "FLWR",
+		"category": "pedal",
+		"widthCm": 8.66,
+		"heightCm": 9.96,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-flwr.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		},
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-flwr.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"effectTypes": [
+			"utility"
+		]
+	},
+	{
+		"id": "29pedals-jfet",
+		"brand": "29 Pedals",
+		"name": "JFET",
+		"category": "pedal",
+		"widthCm": 8.66,
+		"heightCm": 9.96,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-jfet.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		},
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-jfet.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"effectTypes": [
+			"utility"
+		]
+	},
+	{
+		"id": "29pedals-oamp",
+		"brand": "29 Pedals",
+		"name": "OAMP",
+		"category": "pedal",
+		"widthCm": 12.4,
+		"heightCm": 9.86,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-oamp.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		},
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-oamp.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"effectTypes": [
+			"utility"
+		]
+	},
+	{
+		"id": "29pedals-toki",
+		"brand": "29 Pedals",
+		"name": "TOKI",
+		"category": "pedal",
+		"widthCm": 8.66,
+		"heightCm": 9.96,
+		"dimensionsSource": "planner footprint (includes jacks/protrusions)",
+		"imageFormat": "avif",
+		"imageProvenance": {
+			"kind": "planner",
+			"sourceUrl": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-toki.png",
+			"status": "pending-replacement",
+			"note": "Planner placeholder; replace with an official/authorized image."
+		},
+		"confidence": "unsure",
+		"lastVerified": "2026-10-29",
+		"notes": "Planner fallback import; specs unverified; image pending replacement.",
+		"extra": {
+			"plannerFill": true
+		},
+		"sources": [
+			{
+				"url": "https://raw.githubusercontent.com/PedalPlayground/pedalplayground/beta/app/images/pedals/29pedals-toki.png",
+				"kind": [
+					"image"
+				]
+			}
+		],
+		"effectTypes": [
+			"utility"
+		]
+	}
+]

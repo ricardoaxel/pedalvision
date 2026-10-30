@@ -2,6 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { CATALOG_LIMITS } from "../catalog-transform/limits.ts";
 import { startBatch } from "./runner.ts";
 
 let root: string;
@@ -18,8 +19,8 @@ async function fill(kind: "pedals" | "boards", count: number): Promise<void> {
 
 beforeAll(async () => {
 	root = await mkdtemp(join(tmpdir(), "pedalvision-caps-"));
-	await fill("pedals", 2000);
-	await fill("boards", 150);
+	await fill("pedals", CATALOG_LIMITS.hostedPedals);
+	await fill("boards", CATALOG_LIMITS.hostedBoards);
 }, 60_000);
 
 afterAll(async () => {
@@ -27,7 +28,7 @@ afterAll(async () => {
 });
 
 describe("runner cap enforcement", () => {
-	it("refuses a pedal batch at the 2,000 hosted-pedal cap", async () => {
+	it("refuses a pedal batch at the hosted-pedal cap", async () => {
 		await expect(
 			startBatch({
 				root,
@@ -59,7 +60,7 @@ describe("runner cap enforcement", () => {
 		const counts = await import("../catalog-pipeline/caps.ts").then((module) =>
 			module.scanAssetCounts(join(root, "assets")),
 		);
-		expect(counts.pedals.items).toBe(2000);
-		expect(counts.boards.items).toBe(150);
+		expect(counts.pedals.items).toBe(CATALOG_LIMITS.hostedPedals);
+		expect(counts.boards.items).toBe(CATALOG_LIMITS.hostedBoards);
 	});
 });

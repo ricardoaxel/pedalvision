@@ -54,8 +54,7 @@ per item; do not wipe. Freeze a `legacy` snapshot for rollback.
   board `variantOf`; optional jack `pos` with approximate edge-only layout).
   Attribution/takedown content: `docs/catalog/attribution-takedown.md`.
   Community jack maps: `docs/catalog/jack-map-record.md`.
-- **Caps:** 2,000 hosted pedals / ~4,000 files / ~300 MB; boards 150 Tier A /
-  ~300 files / ~20 MB (`tools/catalog-transform/limits.ts`).
+- **Caps:** 2,000 hosted pedals / ~4,000 files / ~300 MB; boards 150 Tier A / ~300 files / ~20 MB (`tools/catalog-transform/limits.ts`). **Owner waiver (2026-10-29, ADR-009):** the non-commercial planner fill may exceed the pedal cap and is lazy-loaded; commercial launch still requires replacement.
 
 ### P5-02 tooling (2026-10-22)
 

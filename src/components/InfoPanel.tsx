@@ -10,6 +10,7 @@ import { useIsMobile } from "../lib/useMobile";
 import { useDrag } from "../state/drag";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
+import { usePlannerCatalog } from "../state/plannerCatalog";
 import {
 	resolveItem,
 	resolveItemJacks,
@@ -43,6 +44,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	const activeUid = itemUid ?? selectedItemUid;
 	const items = useScene((state) => state.items);
 	const boards = useScene((state) => state.boards);
+	usePlannerCatalog((state) => state.version);
 	const customPedals = useScene((state) => state.customPedals);
 	const clearSelection = useSelection((state) => state.clearSelection);
 	const liftedUid = useDrag((state) => state.liftedUid);

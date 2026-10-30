@@ -62,7 +62,7 @@ describe("catalog caps", () => {
 		const result = canStartBatch(
 			"boards",
 			1,
-			counts(0, CATALOG_LIMITS.tierABoards),
+			counts(0, CATALOG_LIMITS.hostedBoards),
 		);
 		expect(result.ok).toBe(false);
 		expect(result.reason).toContain("board items cap");
