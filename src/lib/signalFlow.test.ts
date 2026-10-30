@@ -479,6 +479,69 @@ describe("buildSignalReport", () => {
 		expect(report.issues).toEqual([]);
 	});
 
+	it("accepts a multi-I/O stereo pedal with both channels patched", () => {
+		const stereoJacks = [
+			{ kind: "in", edge: "left", pos: 0.3 },
+			{ kind: "in", edge: "left", pos: 0.7 },
+			{ kind: "out", edge: "right", pos: 0.3 },
+			{ kind: "out", edge: "right", pos: 0.7 },
+		] as unknown as CustomPedal["jacks"];
+		const report = buildSignalReport(
+			scene({
+				items: [item("s", "s", 40, 10)],
+				customPedals: [pedal("s", stereoJacks)],
+				endpoints: [
+					endpoint("i1", "instrument", 0, 0),
+					endpoint("i2", "instrument", 20, 0),
+					endpoint("a1", "amp", 80, 0),
+					endpoint("a2", "amp", 100, 0),
+				],
+				cables: [
+					cable("1", { endpointUid: "i1" }, { itemUid: "s", jack: "0" }),
+					cable("2", { endpointUid: "i2" }, { itemUid: "s", jack: "1" }),
+					cable("3", { itemUid: "s", jack: "2" }, { endpointUid: "a1" }),
+					cable("4", { itemUid: "s", jack: "3" }, { endpointUid: "a2" }),
+				],
+			}),
+		);
+		expect(report.issues).toEqual([]);
+	});
+
+	it("treats multiple SEND/RETURN loops on a switcher as effects loops", () => {
+		const switcher = [
+			{ kind: "in", edge: "left", pos: 0.5 },
+			{ kind: "out", edge: "right", pos: 0.5 },
+			{ kind: "send", edge: "top", pos: 0.2 },
+			{ kind: "return", edge: "top", pos: 0.4 },
+			{ kind: "send", edge: "top", pos: 0.6 },
+			{ kind: "return", edge: "top", pos: 0.8 },
+		] as unknown as CustomPedal["jacks"];
+		const report = buildSignalReport(
+			scene({
+				items: [
+					item("sw", "sw", 10, 10),
+					item("a", "a", 40, 10),
+					item("b", "b", 70, 10),
+				],
+				customPedals: [pedal("sw", switcher), pedal("a"), pedal("b")],
+				endpoints: [
+					endpoint("i", "instrument", 0, 0),
+					endpoint("amp", "amp", 100, 0),
+				],
+				cables: [
+					cable("1", { endpointUid: "i" }, { itemUid: "sw", jack: "0" }),
+					cable("2", { itemUid: "sw", jack: "2" }, { itemUid: "a", jack: "0" }),
+					cable("3", { itemUid: "a", jack: "1" }, { itemUid: "sw", jack: "3" }),
+					cable("4", { itemUid: "sw", jack: "4" }, { itemUid: "b", jack: "0" }),
+					cable("5", { itemUid: "b", jack: "1" }, { itemUid: "sw", jack: "5" }),
+					cable("6", { itemUid: "sw", jack: "1" }, { endpointUid: "amp" }),
+				],
+			}),
+		);
+		expect(codes(report)).toContain("effects-loop");
+		expect(report.warningCount).toBe(0);
+	});
+
 	it("memoizes per scene mutation and rebuilds on a new array", () => {
 		const sceneValue = scene({
 			items: [item("a", "a", 10, 10)],

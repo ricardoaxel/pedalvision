@@ -274,7 +274,7 @@ Record in the PR (against existing thresholds):
 
 - **PR #92** (`feat/f-36-signal-flow-validation`, commit `bb984ff`), one PR, not merged.
 - **Checks:** `pnpm lint` (0 errors, 10 pre-existing warnings) · `pnpm typecheck` ·
-  `pnpm test` **937** · `pnpm build` · `pnpm e2e` **332 passed + 11 skipped**
+  `pnpm test` **940** · `pnpm build` · `pnpm e2e` **332 passed + 11 skipped**
   (`signal-flow.spec.ts` 6/6 desktop + mobile).
 - **Design:** designer "Continuity Check" → owner approved; `design-reviewer` 2/2
   (R1 mobile strip/vocabulary/secondary/chevron; R2 tray/toolbar seam, amber
@@ -291,6 +291,11 @@ Record in the PR (against existing thresholds):
   feedback loop (2 pedals, fallback jacks) in the PR body.
 - **Boundary:** `docs/progress.md` / `docs/roadmap.md` not edited (feature lane;
   shared docs are coordinator-only). One PR; owner merges.
+- **Multi-I/O coverage:** a 4-audio-jack stereo pedal with both channels patched
+  is clean; a loop switcher with two SEND/RETURN loops reports one
+  `effects-loop` info and zero warnings.
 - **Known gap:** an item-level viewport auto-frame does not exist; rows select
-  the offender (selection chrome + info panel locate it). EHX 22500's catalog
-  OUT omission is recorded for the catalog-repair lane.
+  the offender (selection chrome + info panel locate it). The model treats each
+  pedal as one graph node, so it does **not** flag an unused second input/output
+  when another of that kind is patched, nor validate per-channel routing. EHX
+  22500's catalog OUT omission is recorded for the catalog-repair lane.
