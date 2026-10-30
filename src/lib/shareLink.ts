@@ -419,7 +419,7 @@ export function encodeShareLink(
 			ok: false,
 			reason: "invalid",
 			message:
-				"This scene has a custom part outside the share limits. Edit or duplicate the part, or split the scene into two.",
+				"This scene contains content outside the share limits. Edit or duplicate the part, or split the scene into two.",
 		};
 	}
 	const json = JSON.stringify(payload);

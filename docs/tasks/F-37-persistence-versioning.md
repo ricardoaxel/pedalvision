@@ -115,12 +115,14 @@ wire contract have different rules.
   never partially decode it).
 - **Prefix ↔ payload agreement is mandatory:** `#s=vN:` must carry
   `payload.version === N`; a mismatch is `invalid` (no silent legacy decode).
-- **Any new transported key bumps the share version**, because the zod schemas
-  strip unknown keys and an old decoder would otherwise drop data silently.
-  Additive-within-version applies to the document, **not** to the wire.
-- Migration: `migrateSharePayload` upgrades supported older payloads to the
-  current shape before guards run. Today the only step is **v1 → v2**
-  (`endpoints: []`, `cables: []`); v2 is identity.
+- **Any new transported key bumps the share version.** The frozen per-version
+  schemas are **strict**, so an old decoder rejects an unknown key rather than
+  silently stripping it. Additive-within-version applies to the document,
+  **not** to the wire.
+- Migration order: each payload is validated against **its own frozen version
+  schema first**, then `migrateSharePayload` upgrades it to the current shape.
+  Today the only step is **v1 → v2** (`endpoints: []`, `cables: []`); v2 is
+  identity.
 - Malformed/unknown-ref policy: the whole untrusted payload is rejected when it
   fails zod; unknown refs are data and are preserved.
 
@@ -240,9 +242,10 @@ document and share round-trip, so a future field cannot be half-wired.
 | Heap | scene graph **+0.2 MB**; decode working set is transient/GC-dependent (no new retained structures) | no threshold change |
 
 Compare P4-02 (doc 71.8 KB; 400+200+100 with random UUIDs measured 38,184
-chars → **refused**) and P3-06 (max scene well under 200 KB). F-37 adds no
-bytes or work to the encode/decode path: the only new work is a version-set
-check and the identity/empty-array migration.
+chars → **refused**) and P3-06 (max scene well under 200 KB). F-37 changes no
+payload bytes: decode adds a version-set check and the identity/empty-array
+migration, while encode adds one zod self-validation pass (~3.92 ms at the max
+graph) so a document-valid scene can never produce a dead link.
 
 ## Remaining gaps (recorded, not fixed here)
 

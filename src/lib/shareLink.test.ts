@@ -265,7 +265,7 @@ describe("share links (P3-03)", () => {
 		});
 		expect(encoded).toMatchObject({ ok: false, reason: "invalid" });
 		if (encoded.ok) throw new Error("expected a refusal");
-		expect(encoded.message).toContain("custom part");
+		expect(encoded.message).toContain("share limits");
 	});
 
 	it("rejects a v1 payload that carries graph keys (no silent strip)", () => {
