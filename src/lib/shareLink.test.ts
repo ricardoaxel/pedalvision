@@ -12,10 +12,12 @@ import { capacityStatus } from "./capacity";
 import {
 	decodeShareHash,
 	encodeShareLink,
+	migrateSharePayload,
 	SHARE_BASE64_LIMIT_LENGTH,
 	SHARE_DECODED_LIMIT_BYTES,
 	SHARE_URL_HARD_LIMIT_CHARS,
 	type SharePayload,
+	SUPPORTED_SHARE_VERSIONS,
 } from "./shareLink";
 
 const board = (uid: string, extra: Partial<PlacedBoard> = {}): PlacedBoard => ({
@@ -168,6 +170,62 @@ describe("share links (P3-03)", () => {
 		expect(legacy.name).toBe("Legacy");
 		expect(legacy.snapshot.endpoints).toEqual([]);
 		expect(legacy.snapshot.cables).toEqual([]);
+	});
+
+	it("migrates a legacy v1 payload to the current shape explicitly", () => {
+		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2]);
+		const legacy = {
+			version: 1 as const,
+			name: "Old",
+			boards: [board("board-1")],
+			items: [item("item-1")],
+			customPedals: [] as CustomPedal[],
+		};
+		expect(migrateSharePayload(legacy)).toEqual({
+			...legacy,
+			version: 2,
+			endpoints: [],
+			cables: [],
+		});
+	});
+
+	it("rejects a hash prefix that disagrees with the payload version", () => {
+		const v1 = {
+			version: 1,
+			name: "Mismatch",
+			boards: [board("board-1")],
+			items: [item("item-1")],
+			customPedals: [],
+		};
+		expect(decodeShareHash(hashOf(v1, 2))).toMatchObject({
+			ok: false,
+			reason: "invalid",
+		});
+		const v2 = { ...v1, version: 2, endpoints: [], cables: [] };
+		expect(decodeShareHash(hashOf(v2, 1))).toMatchObject({
+			ok: false,
+			reason: "invalid",
+		});
+	});
+
+	it("preserves optional jack pos and approximate on a custom pedal", () => {
+		const edgeOnly = custom("custom-edge", {
+			jacks: [
+				{ kind: "in", edge: "top" },
+				{ kind: "out", edge: "bottom", pos: 0.25, approximate: true },
+			],
+		});
+		const encoded = encodeShareLink("Jack parity", {
+			boards: [],
+			items: [item("item-1", { refId: "custom-edge", boardUid: null })],
+			customPedals: [edgeOnly],
+			endpoints: [],
+			cables: [],
+		});
+		if (!encoded.ok) throw new Error(encoded.message);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.customPedals).toEqual([edgeOnly]);
 	});
 
 	it("uses the #s=v2: prefix and base64url without padding", () => {
@@ -449,16 +507,19 @@ describe("share links (P3-03)", () => {
 
 	it("de-duplicates repeated uids instead of producing colliding entries", () => {
 		const decoded = decodeShareHash(
-			hashOf({
-				version: 1,
-				name: "Dupes",
-				boards: [board("board-1"), board("board-1", { x: 99 })],
-				items: [
-					item("item-1", { refId: "custom-a" }),
-					item("item-1", { refId: "custom-a", z: 1 }),
-				],
-				customPedals: [custom("custom-a"), custom("custom-a")],
-			}),
+			hashOf(
+				{
+					version: 1,
+					name: "Dupes",
+					boards: [board("board-1"), board("board-1", { x: 99 })],
+					items: [
+						item("item-1", { refId: "custom-a" }),
+						item("item-1", { refId: "custom-a", z: 1 }),
+					],
+					customPedals: [custom("custom-a"), custom("custom-a")],
+				},
+				1,
+			),
 		);
 		if (!decoded.ok) throw new Error(decoded.message);
 		expect(decoded.snapshot.boards).toHaveLength(1);

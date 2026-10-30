@@ -239,6 +239,41 @@ describe("scene library", () => {
 		expect(useScene.getState().boards).toEqual([]);
 	});
 
+	it("preserves a newer-version document instead of deleting it (forward compatibility)", async () => {
+		const repo = new MemoryRepository();
+		const future = {
+			...documentOf("future", "Future", "2026-10-19T11:00:00.000Z"),
+			version: 2,
+		} as unknown as SceneDocument;
+		repo.docs.set(future.id, future);
+		const storage = fakeStorage({
+			[SCENE_INDEX_KEY]: JSON.stringify({
+				version: 1,
+				scenes: [
+					{
+						id: "future",
+						name: "Future",
+						updatedAt: future.updatedAt,
+					},
+				],
+			}),
+			[SETTINGS_KEY]: JSON.stringify({
+				version: 1,
+				units: "cm",
+				activeSceneId: "future",
+			}),
+		});
+		const { runtime, store } = setup({ repo, storage });
+		await runtime.boot();
+		// This build cannot read it, so it never becomes the active scene…
+		expect(store.getState().activeId).toBe("scene-1");
+		expect(store.getState().scenes.map((scene) => scene.id)).not.toContain(
+			"future",
+		);
+		// …but the stored record is untouched so a newer build re-surfaces it.
+		expect(repo.docs.get("future")).toEqual(future);
+	});
+
 	it("migrates the legacy localStorage mirror once", async () => {
 		const repo = new MemoryRepository();
 		const storage = fakeStorage({

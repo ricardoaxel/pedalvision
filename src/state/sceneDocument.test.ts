@@ -9,9 +9,12 @@ import type {
 } from "./scene";
 import {
 	createSceneDocument,
+	migrateSceneDocument,
 	normalizeSceneContent,
 	parseSceneDocument,
+	SCENE_DOCUMENT_VERSION,
 	type SceneSnapshot,
+	SUPPORTED_SCENE_DOCUMENT_VERSIONS,
 	sceneFromDocument,
 } from "./sceneDocument";
 
@@ -93,6 +96,89 @@ describe("scene documents", () => {
 		expect(parseSceneDocument({ ...document, updatedAt: 4 })).toBeNull();
 		expect(parseSceneDocument({ ...document, boards: {} })).toBeNull();
 		expect(parseSceneDocument({ ...document, items: {} })).toBeNull();
+	});
+
+	it("exposes a current version and a pure migration chain", () => {
+		expect(SCENE_DOCUMENT_VERSION).toBe(1);
+		expect(SUPPORTED_SCENE_DOCUMENT_VERSIONS).toEqual([1]);
+		const document = documentOf({
+			boards: [board],
+			items: [item()],
+			customPedals: [customPedal],
+		});
+		// v1 is current, so migration is the identity today.
+		expect(migrateSceneDocument(document)).toEqual(document);
+		// Unsupported/newer is returned untouched (the caller rejects safely).
+		expect(migrateSceneDocument({ ...document, version: 2 })).toEqual({
+			...document,
+			version: 2,
+		});
+		expect(parseSceneDocument({ ...document, version: 2 })).toBeNull();
+	});
+
+	it("loads the oldest additive shape (no customPedals/endpoints/cables)", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [item()],
+			customPedals: [],
+		});
+		const {
+			customPedals: _customPedals,
+			endpoints: _endpoints,
+			cables: _cables,
+			...legacy
+		} = document;
+		expect(parseSceneDocument(legacy)).toMatchObject({
+			version: 1,
+			customPedals: [],
+			endpoints: [],
+			cables: [],
+			boards: [board],
+			items: [item()],
+		});
+	});
+
+	it("de-duplicates repeated uids instead of producing colliding entries", () => {
+		const raw = {
+			...documentOf({
+				boards: [board],
+				items: [item()],
+				customPedals: [customPedal],
+			}),
+			boards: [board, { ...board, x: 99 }],
+			items: [item(), { ...item(), z: 3 }],
+			customPedals: [customPedal, { ...customPedal, name: "Later" }],
+			endpoints: [
+				{ uid: "amp", kind: "amp", x: 0, y: 0 },
+				{ uid: "amp", kind: "amp", x: 9, y: 9 },
+			],
+			cables: [
+				{
+					uid: "c1",
+					from: { itemUid: "i1", jack: "0" },
+					to: { endpointUid: "amp" },
+				},
+				{
+					uid: "c1",
+					from: { itemUid: "i1", jack: "1" },
+					to: { endpointUid: "amp" },
+				},
+			],
+		};
+		const parsed = parseSceneDocument(raw);
+		expect(parsed?.boards).toHaveLength(1);
+		expect(parsed?.boards[0]?.x).toBe(1);
+		expect(parsed?.items).toHaveLength(1);
+		expect(parsed?.items[0]?.z).toBe(0);
+		expect(parsed?.customPedals).toHaveLength(1);
+		expect(parsed?.customPedals[0]?.name).toBe("My Fuzz");
+		expect(parsed?.endpoints).toHaveLength(1);
+		expect(parsed?.endpoints[0]?.x).toBe(0);
+		expect(parsed?.cables).toHaveLength(1);
+		expect(parsed?.cables[0]?.from).toEqual({
+			itemUid: "i1",
+			jack: "0",
+		});
 	});
 
 	it("drops malformed entries instead of failing the whole document", () => {
