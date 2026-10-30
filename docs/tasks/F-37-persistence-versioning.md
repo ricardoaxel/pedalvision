@@ -1,6 +1,6 @@
 # F-37 — Scene/share persistence versioning
 
-**Phase:** 1 (feature lane) · **Status:** in progress · **Model:** light
+**Phase:** 1 (feature lane) · **Status:** **in review — PR #93** · **Model:** light
 (high-risk serialization: ≤2 light code-review passes only if a blocker needs
 re-check)
 **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review ≤300k;
@@ -172,48 +172,48 @@ document and share round-trip, so a future field cannot be half-wired.
 
 ## Acceptance (executable)
 
-- [ ] `SceneDocument` keeps **additive v1**: documents missing
+- [x] `SceneDocument` keeps **additive v1**: documents missing
       `customPedals`/`endpoints`/`cables` load with empty arrays and no data
       loss (`sceneDocument.test.ts`).
-- [ ] `parseSceneDocument` accepts every supported version through the migration
+- [x] `parseSceneDocument` accepts every supported version through the migration
       chain and returns `null` for newer/corrupt input without throwing
       (`sceneDocument.test.ts`).
-- [ ] A newer-version document in the repository is **not** deleted or
+- [x] A newer-version document in the repository is **not** deleted or
       overwritten by boot, and re-surfaces when supported
       (`library.test.ts`).
-- [ ] Share decode accepts v1 + v2, migrates v1 → v2, and rejects any other
+- [x] Share decode accepts v1 + v2, migrates v1 → v2, and rejects any other
       version with `unsupported-version`; **no silent partial decode**
       (`shareLink.test.ts`).
-- [ ] A `#s=v2:` prefix with a `version: 1` payload (and vice versa) is rejected
+- [x] A `#s=v2:` prefix with a `version: 1` payload (and vice versa) is rejected
       as `invalid` (`shareLink.test.ts`).
-- [ ] Document/share guard parity: every document-valid `CustomPedal` jack
+- [x] Document/share guard parity: every document-valid `CustomPedal` jack
       survives a share round-trip, including omitted `pos` and `approximate`
       (`sceneDocument.test.ts`, `shareLink.test.ts`).
-- [ ] Duplicate uids in a stored document are de-duplicated (first wins) and
+- [x] Duplicate uids in a stored document are de-duplicated (first wins) and
       never reach React as colliding keys (`sceneDocument.test.ts`).
-- [ ] A round-trip invariant covers **every** `SceneSnapshot` key (boards,
+- [x] A round-trip invariant covers **every** `SceneSnapshot` key (boards,
       items, customPedals, endpoints, cables) through the document codec, the
       share codec and the backup; missing a key fails the test.
-- [ ] Malformed/fuzz inputs (wrong types, NaN/Infinity, mixed cable ends, bad
+- [x] Malformed/fuzz inputs (wrong types, NaN/Infinity, mixed cable ends, bad
       jack index, wrong version, truncation) never throw and never partially
       apply to the store.
-- [ ] E2E: inject a legacy (graph-less) document into IndexedDB and reload →
+- [x] E2E: inject a legacy (graph-less) document into IndexedDB and reload →
       the scene loads, `data-boards`/`data-items` match, graph is empty
       (`scenes.spec.ts`, desktop + mobile).
-- [ ] E2E: open a legacy `#s=v1:` link → read-only scene renders
+- [x] E2E: open a legacy `#s=v1:` link → read-only scene renders
       (`share.spec.ts` or `cables.spec.ts`, desktop + mobile).
-- [ ] E2E: backup JSON is `version: 1` and contains every current array
+- [x] E2E: backup JSON is `version: 1` and contains every current array
       (`storage-fallback.spec.ts`).
-- [ ] No new dependency; no catalog/shared-doc edits; no visible UI change
+- [x] No new dependency; no catalog/shared-doc edits; no visible UI change
       (no design gate).
-- [ ] `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm e2e`
+- [x] `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm e2e`
       green.
-- [ ] Performance recorded with no regression: max-graph document bytes,
+- [x] Performance recorded with no regression: max-graph document bytes,
       parse+migrate ms, share URL length, memory; within the existing budgets
       (200 KB decoded / 32,000-char URL / 150/300 graph cap).
-- [ ] `docs/features/README.md` updated (F8/F10 inventory, workflow/impact
+- [x] `docs/features/README.md` updated (F8/F10 inventory, workflow/impact
       rows, Known gaps).
-- [ ] One PR; **do not merge**. Feature demo link: deployed PR-preview URL +
+- [x] One PR; **do not merge**. Feature demo link: deployed PR-preview URL +
       a read-only `?share=1#s=v1:…` link (legacy payload) that migrates and
       renders. No screenshots required (no visible UI change).
 
@@ -246,6 +246,18 @@ chars → **refused**) and P3-06 (max scene well under 200 KB). F-37 changes no
 payload bytes: decode adds a version-set check and the identity/empty-array
 migration, while encode adds one zod self-validation pass (~3.92 ms at the max
 graph) so a document-valid scene can never produce a dead link.
+
+## Review rounds
+
+- **code-reviewer pass 1** (light, high-risk): `changes-required` — 2 should-fix
+  (a document-valid custom part could emit an unopenable link; a `v1:` payload
+  carrying graph keys was silently stripped) + 1 nit (identity migration copied
+  the document and shadowed a global). Fixed in `b855542e`.
+- **code-reviewer pass 2** (same session, reused context): `approve` — 3 nits
+  (stale performance sentence, migration-order wording vs decoder order, generic
+  refusal copy). Fixed in `93bda4e3`.
+- **designer / design-reviewer**: not run — no visible UI/pixel change (no
+  design gate). **Copilot**: no review.
 
 ## Remaining gaps (recorded, not fixed here)
 
