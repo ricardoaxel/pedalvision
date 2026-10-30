@@ -293,7 +293,7 @@ Record in the PR (against existing thresholds):
   shared docs are coordinator-only). One PR; owner merges.
 - **Multi-I/O coverage:** a 4-audio-jack stereo pedal with both channels patched
   is clean; a loop switcher with two SEND/RETURN loops reports one
-  `effects-loop` info and zero warnings.
+  `effects-loop` info and zero warnings. (30 signal-flow unit cases.)
 - **Known gap:** an item-level viewport auto-frame does not exist; rows select
   the offender (selection chrome + info panel locate it). The model treats each
   pedal as one graph node, so it does **not** flag an unused second input/output
