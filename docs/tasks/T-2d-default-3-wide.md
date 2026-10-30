@@ -1,5 +1,7 @@
 # T-2d — Catalog waves start 3-wide by default
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** merged — PR #62 (squash `50025c8`, folded into T-2c) · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-2c
 
 ## Goal

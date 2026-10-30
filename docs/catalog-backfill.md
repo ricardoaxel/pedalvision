@@ -1,5 +1,8 @@
 # Catalog backfill plan (P5)
 
+> **PAUSED/CLOSED for now (2026-10-29).** Catalog backfill is stopped while feature work continues. All catalog tasks carry a pause banner; PR #91 (bulk planner fill, pedals + boards) merged before the pause; no new catalog work will run. See `docs/tasks/CATALOG-PAUSED.md`.
+
+
 Plan for turning the committed 207-item seed into the real, quality-gated
 catalog. Governed by **ADR-003**; roadmap tasks **P5-01…P5-05**.
 Owner decisions: **2026-10-21** (self-hosted public assets + 2,000-pedal cap).

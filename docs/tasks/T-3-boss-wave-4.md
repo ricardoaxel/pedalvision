@@ -1,5 +1,7 @@
 # T-3 — BOSS wave 4 coordinator
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** **done — merged** #65 (boss-7), #66 (boss-6), #68 (boss-8), #69 (rule); post-merge `7ee3585`, **399/15** · **Type:** catalog wave coordinator · **Depends on:** T-2c/T-2d
 
 ## Goal

@@ -1,5 +1,7 @@
 # T-4b — Image source discovery upgrade (researcher + scout + rules)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** COMPLETE — PR #73 merged (`a2b4787`) · **Type:** process/agent rules (docs-only) · **Depends on:** T-4 (owner request 2026-10-28)
 
 ## Goal

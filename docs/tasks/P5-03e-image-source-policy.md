@@ -1,5 +1,7 @@
 # P5-03e — Image source policy: planner last-resort + recorded sources (T-1a)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** merged — PR #56 (squash `ea20b02`) · **Type:** policy + gate + ledger (docs/tools) · **Depends on:** T-1 (merged)
 
 ## Purpose

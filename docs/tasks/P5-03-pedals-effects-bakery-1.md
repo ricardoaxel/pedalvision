@@ -1,5 +1,7 @@
 # P5-03: Effects Bakery — pedals batch 1 (cleanup)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** in progress — cleanup-wave-4 · **Model:** deepseek-v4.1-flash
 
 > The `cleanup-wave-4` coordinator created this worktree, wrote the existing-item

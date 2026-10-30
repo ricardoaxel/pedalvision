@@ -1,5 +1,7 @@
 # P5-03: Mooer — pedals batch 1 (cleanup)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** in review — PR #71 · **Model:** build-strong
 
 > The `cleanup-wave-1` coordinator created this worktree and wrote the 18

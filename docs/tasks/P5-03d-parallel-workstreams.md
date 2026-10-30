@@ -1,5 +1,7 @@
 # P5-03d — Parallel feature + catalog workstreams (T-0b)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** merged — PR #54 (squash `89c6a38`, docs-only) · **Type:** plan/rules (docs-only) · **Depends on:** T-0a (true billed token metric)
 
 ## Purpose

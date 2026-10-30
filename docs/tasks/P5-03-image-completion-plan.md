@@ -1,5 +1,7 @@
 # P5-03 — Image completion plan (T-0)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** merged — PR #52 (squash `4a6f1e7`); T-0a merged (PR #53, `dee8b39`); T-0b merged (docs-only, PR #54); T-1 merged (PR #55); T-1a merged (PR #56); T-2 wave 3 merged (#57/#58); boss-5 merged (PR #59, `424bc2c`; post-merge `123df52`, 322/15); **T-2c/T-2d merged (PR #62); 3-wide default (no flag); T-3 next** · **Type:** plan/index (docs-only)
 
 ## Purpose

@@ -1,5 +1,7 @@
 # P5-03c — Pedal flat-art generator + promote-legacy (T-1)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** merged — PR #55 (squash `66222d4`) · **Type:** tooling + design · **Depends on:** T-0
 
 ## Goal

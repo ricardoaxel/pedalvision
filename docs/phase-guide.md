@@ -68,7 +68,11 @@ Cable model + jack anchors · drag-connect + endpoints · auto length calc.
 |---|---|---|
 | P4-01…P4-03 Cables | Model, drag-connect, length calc | No |
 
-## P5 — Catalog completion (plan approved 2026-10-21; PR #32 merged; P5-01 + P5-02 DONE; P5-03 in progress — waves 1–3, BOSS repair + licensing merged; image completion plan merged; T-0a + T-0b + T-1 done; T-1a done; T-2 wave 3 merged; boss-5 merged #59; T-2c/T-2d merged #62; T-3 next)
+## P5 — Catalog completion (PAUSED 2026-10-29)
+
+> **PAUSED/CLOSED for now.** Feature work continues instead. All catalog tasks carry a pause banner; PR #91 (bulk planner fill) merged before the pause; no new catalog work will run. See `docs/tasks/CATALOG-PAUSED.md`.
+
+Historical status: P5-01/P5-02 done; P5-03 waves, BOSS repair, licensing, T-0a/b, T-1/T-1a, T-2/T-2c/T-2d, T-3, T-4/T-4b, T-5 done; T-6 was next.
 P5 turns the 207-item seed into the real catalog and prepares launch. Full plan: `docs/catalog-backfill.md`.
 
 | Task | What it does | Owner action? |

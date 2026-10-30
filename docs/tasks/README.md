@@ -1,5 +1,8 @@
 # Task files
 
+> **Catalog program PAUSED (2026-10-29).** All `P5-*` and `T-*` catalog tasks carry a pause banner; feature work continues. See `CATALOG-PAUSED.md` and `docs/progress.md`. PR #91 is held for a future refill, not for merge.
+
+
 One file per task. A fresh agent session must be able to execute it reading **only** this file + the files it points to. See decisions/004 for the strategy.
 
 ## Format

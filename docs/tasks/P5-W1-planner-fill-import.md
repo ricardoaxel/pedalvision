@@ -1,6 +1,9 @@
 # P5-W1 — Planner fallback catalog fill (non-commercial)
 
-**Status:** in review — PR #91 · **Date:** 2026-10-29 · **Owner-approved waiver**
+> **Catalog program paused (2026-10-29).** This task is merged in PR #91 and is not active; the catalog is paused while feature work continues. See `docs/tasks/CATALOG-PAUSED.md`.
+
+
+**Status:** merged 2026-10-29 — PR #91 (`1368a479`) · catalog paused · **Owner-approved waiver**
 
 ## Goal
 

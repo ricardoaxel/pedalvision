@@ -1,5 +1,7 @@
 # P5-03: Batch guardrails — jack provenance, demo links, small-batch QA
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** done — merged PR #43 (squash `722505b`; post-merge `471f7c5`) · **Model:** build-strong
 
 ## Goal

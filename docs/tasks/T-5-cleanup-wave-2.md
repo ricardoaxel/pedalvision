@@ -1,5 +1,7 @@
 # T-5 — Cleanup wave 2 coordinator (TC-1 + JHS-1 + Walrus-1)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** COMPLETE — #75 JHS, #77 TC Electronic and #78 Walrus merged; post-merge `a8f7643` 444/15, ledger 459 · **Type:** catalog wave coordinator · **Depends on:** T-4
 
 ## Goal

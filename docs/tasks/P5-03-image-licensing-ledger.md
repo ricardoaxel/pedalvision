@@ -1,5 +1,7 @@
 # P5-03: Image licensing ledger + attribution notice
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** merged 2026-10-26 — PR #51, squash `8826cb5` · **Type:** data/licensing + small UI
 
 ## Goal

@@ -1,5 +1,7 @@
 # P5-05: Image hosting at scale — DEFERRED SPIKE
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** deferred (trigger: 2,000 hosted pedals / ~4,000 images / ~300 MB) · **Model:** plan
 
 ## Goal

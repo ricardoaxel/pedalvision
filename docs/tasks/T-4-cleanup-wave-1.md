@@ -1,5 +1,7 @@
 # T-4 — Cleanup wave 1 coordinator (EHX-1 + MXR-1 + Mooer-1)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** COMPLETE — #71 (Mooer), #74 (EHX), #72 (MXR) merged; post-merge `3a7fd8f` 423/15, ledger 438 · **Type:** catalog wave coordinator · **Depends on:** T-3
 
 ## Goal

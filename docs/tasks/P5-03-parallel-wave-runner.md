@@ -1,5 +1,7 @@
 # P5-03: Parallel wave runner (`catalog:wave`)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** in review — PR #47 · **Model:** build-strong
 
 > **Superseded in part by T-2c/T-2d (2026-10-27).** The 2-wide + `canStartNext`

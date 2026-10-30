@@ -1,5 +1,7 @@
 # T-2c — Wrapper 3-wide true-token fix
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** merged — PR #62 (squash `50025c8`, with T-2d) · **Model:** strong (high-risk tooling/CI) · **Depends on:** T-0a
 
 ## Goal

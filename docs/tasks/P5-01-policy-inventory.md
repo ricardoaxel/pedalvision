@@ -1,5 +1,7 @@
 # P5-01: Catalog policy, data contract & master inventory
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** done — merged PR #35 · **Model:** build-strong
 
 ## Goal

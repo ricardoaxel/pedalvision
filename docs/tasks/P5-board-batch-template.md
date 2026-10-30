@@ -1,5 +1,7 @@
 # P5-03: <Brand> — <Board> board batch (TEMPLATE)
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** in progress — PR pending · **Model:** build-strong
 
 > Copy this file to `docs/tasks/P5-03-boards-<brand>-<board>.md` and replace the

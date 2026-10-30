@@ -1,5 +1,7 @@
 # P5-03: BOSS — pedals batch 5
 
+> **Catalog program paused (2026-10-29).** Catalog backfill is closed/paused for now while we continue feature work. This task is not active; it may be resumed later for refilling. See `docs/tasks/CATALOG-PAUSED.md` and `docs/progress.md`.
+
 **Phase:** P5 · **Status:** in review — PR #59 — T-2 last batch, **solo single-batch wave** · **Model:** build-strong
 
 > The coordinator ran `catalog:start` for `boss/boss-5` and **stopped** it at 0/26 on
