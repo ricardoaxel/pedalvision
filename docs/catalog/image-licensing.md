@@ -4,8 +4,6 @@ Internal working file for the owner. Catalog images are self-hosted and used for
 product identification / true-scale planning only. Pedalvision is independent and
 does not imply endorsement; removal requests are honoured (see `public/attribution.html`).
 
-> **Planner fallback fill (ADR-009, 2026-10-29):** the non-commercial bulk fill adds **8,364** lazy-loaded planner placeholders (`public/catalog/planner-pedals.json`) outside this curated ledger. They are `pending-replacement`/`license-pending`, with per-item provenance in `data/catalog/planner-fill/`; this ledger count remains the curated set only.
-
 Contact: **Pedalvision** · ricardoaxelgd@gmail.com · https://pedalvision.pages.dev
 
 ## Status meanings
