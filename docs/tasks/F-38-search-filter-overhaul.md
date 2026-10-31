@@ -64,10 +64,21 @@ Read only the pointed sections; do not read whole docs.
 `queryTerms(query)` splits the **raw** query on whitespace first, then normalizes
 each chunk, so `DD-2` stays one term (`dd 2`) instead of `dd` + `2`.
 
-`termPattern(term)` builds `\b<group>\s*<group>…\b` from the term's alphanumeric
-groups (escaped). This is the key rule: `dd2`/`dd-2`/`DD 2` all match `DD-2`
-(`dd 2`) but **not** `DD-20` (`dd 20`), because `2\b` cannot match before `0`.
-All terms must match (AND); multi-word queries no longer require contiguity.
+Matching is **separator-free and boundary-aware** (`compactMatch`), not a raw
+substring:
+
+- Each item stores `nameKey`/`brandKey`/`effectsKey` (spaced) and a compact form
+  with spaces removed, so `b7kultra` matches `Microtubes B7K Ultra` and
+  `polytun` matches `Polytune`.
+- A term ending in a **digit** must not continue into a longer number:
+  `dd2` matches `DD-2`/`dd2`/`DD 2`/`DD-2W` but **not** `DD-20`/`DD-200`;
+  `dd20` does not match `DD-200`.
+- Alphabetic terms are **prefix** matches (`hydr` → `Hydra`, `polytun` →
+  `Polytune`, `tubescream` → `Tube Screamer`); compact matching also covers
+  internal substrings (`tune` → `Polytune`).
+- A combined brand+name compact field also matches `bossdd2`, `mxrphase90` and
+  `strymonbigsky` without a space.
+- All terms must match (AND); multi-word queries no longer require contiguity.
 
 ### 2. Searchable fields
 
@@ -77,9 +88,9 @@ Per item, memoized once per catalog version:
 - `effects` (normalized `effectLabel()` strings),
 - `aliases` (normalized alias targets, see §3).
 
-A term is satisfied if its pattern matches any field (or an alias target).
-Effect labels are searchable, so `fuzz` finds `Keeley Angry Orange` even though
-its name lacks “fuzz”.
+A term is satisfied if its compact/boundary match hits any field (or an alias
+target). Effect labels are searchable, so `fuzz` finds `Keeley Angry Orange`
+even though its name lacks “fuzz”.
 
 ### 3. Alias layer (`src/lib/searchAliases.ts`)
 
@@ -99,10 +110,12 @@ normalized keys.
 
 ### 4. Sort (`pickerFilter.ts` + a control in `Picker.tsx`)
 
-- **Relevance** (default): query terms scored per field — name at start >
-  name inside > brand > effect > alias; score desc, then brand, name, id.
-  **Empty query keeps catalog order (curated first)** — owner decision
-  2026-10-30, so the resting picker and existing placement flow are unchanged.
+- **Relevance** (default): name exact (60) > brand exact (55) > name start
+  (50) > name word (30) > brand start (25) > name compact (20) > brand word (15)
+  > effect exact (12) > effect start (10) > effect word (8) > effect compact
+  (5). Ties break on shortest name, then brand, name, id. **Empty query keeps
+  catalog order (curated first)** — owner decision 2026-10-30, so the resting
+  picker and existing placement flow are unchanged.
 - **Brand A–Z**: brand, name, id.
 - **Name A–Z**: name, brand, id.
 
@@ -165,6 +178,11 @@ other filters).
 
 - `dd2`, `DD-2`, `dd-2`, `DD 2` all surface `boss-dd-2-digital-delay` and do
   **not** surface `boss-dd-20-giga-delay` (unit + E2E).
+- `polytun` surfaces `tc-polytune`, `hydr` surfaces `keeley-hydra`, and
+  progressive `b7k`/`b7ku`/`b7kult`/`b7kultra` surfaces
+  `darkglass-microtubes-b7k-ultra` (unit + E2E).
+- Brand queries rank the brand's own pedals first (`strymon`, `line6`, `eqd`)
+  (unit/report + E2E spot check).
 - `ehx` surfaces an Electro-Harmonix pedal (unit + E2E).
 - A text query for an effect (`fuzz`) surfaces a pedal whose name lacks the word
   (unit + E2E).
@@ -191,5 +209,14 @@ other filters).
 
 - Budget: builder soft ≤400k / hard ≤800k billed non-cache; review ≤300k; task
   hard ≤1.1M; 6 h active. Record billed tokens by class.
+- **Catalog gap found during the real-world audit:** `goldenreverberator` has no
+  matching catalog item (the catalog has Universal Audio `Golden`, not
+  `Golden Reverberator`). That is data, not matcher logic; catalog is paused, so
+  it is recorded for the catalog repair lane, not edited here.
+- **Alias gap (not shipped):** `dod250` does not match `DOD Overdrive Preamp 250`
+  because the model is not adjacent to the brand in the name; multi-word brand
+  shorthands like `walrusjulia` have the same shape. A space (`dod 250`,
+  `walrus julia`) works. Adding model synonyms was not owner-approved, so this
+  is recorded rather than guessed.
 - Process/rule gaps: propose + run `token-usage-reviewer` with the owner first;
   do not edit rules in this PR.

@@ -283,8 +283,8 @@ describe("search matching", () => {
 
 	it("requires every term (AND), not a contiguous substring", () => {
 		expect(search("boss delay")).toEqual([
-			"boss-dd-2-digital-delay",
 			"boss-dd-20-giga-delay",
+			"boss-dd-2-digital-delay",
 			"boss-dd-200-digital-delay",
 		]);
 		expect(search("keeley fuzz")).toEqual(["keeley-angry-orange"]);
@@ -392,5 +392,131 @@ describe("search aliases", () => {
 			for (const target of targets)
 				expect(target).toBe(normalizeSearch(target));
 		}
+	});
+});
+
+describe("progressive and prefix matching", () => {
+	const items: CatalogPedal[] = [
+		pedal({
+			id: "darkglass-b7k-ultra",
+			brand: "Darkglass",
+			name: "Microtubes B7K Ultra",
+			effectTypes: ["distortion"],
+		}),
+		pedal({
+			id: "tc-polytune",
+			brand: "TC Electronic",
+			name: "Polytune",
+			effectTypes: ["tuner"],
+		}),
+		pedal({
+			id: "keeley-hydra",
+			brand: "Keeley",
+			name: "Hydra",
+			effectTypes: ["reverb"],
+		}),
+		pedal({
+			id: "boss-dd-2",
+			name: "DD-2 Digital Delay",
+			effectTypes: ["delay"],
+		}),
+		pedal({
+			id: "boss-dd-20",
+			name: "DD-20 Giga Delay",
+			effectTypes: ["delay"],
+		}),
+		pedal({
+			id: "boss-dd-200",
+			name: "DD-200 Digital Delay",
+			effectTypes: ["delay"],
+		}),
+		pedal({
+			id: "fender-fbm-1",
+			brand: "Fender",
+			name: "FBM-1 '59 Fender Bassman",
+			effectTypes: ["amp-modeler"],
+		}),
+		pedal({
+			id: "moog-mf-103",
+			brand: "Moog",
+			name: "MF-103 12-Stage Phaser",
+			effectTypes: ["phaser"],
+		}),
+		pedal({
+			id: "boss-jf-11",
+			brand: "BOSS",
+			name: "JF-11 6 Band EQ",
+			effectTypes: ["eq"],
+		}),
+		pedal({
+			id: "dod-250",
+			brand: "DOD",
+			name: "DOD 250 (50th Anniversary)",
+			effectTypes: ["overdrive"],
+		}),
+		pedal({
+			id: "mxr-phase-90",
+			brand: "MXR",
+			name: "Phase 90",
+			effectTypes: ["phaser"],
+		}),
+		pedal({
+			id: "strymon-bigsky",
+			brand: "Strymon",
+			name: "BigSky",
+			effectTypes: ["reverb"],
+		}),
+	];
+	const index = buildPedalIndex(items);
+	const search = (query: string) =>
+		filterPedalIndex(index, {
+			query,
+			brand: null,
+			effectTypes: [],
+			sort: "relevance",
+		}).map((p) => p.id);
+
+	it("matches a concatenated model + word", () => {
+		expect(search("b7kultra")).toEqual(["darkglass-b7k-ultra"]);
+	});
+
+	it("matches every progressive prefix while typing b7kultra", () => {
+		for (const query of [
+			"b7k",
+			"b7ku",
+			"b7kul",
+			"b7kult",
+			"b7kultr",
+			"b7kultra",
+		]) {
+			expect(search(query)).toContain("darkglass-b7k-ultra");
+		}
+	});
+
+	it("matches alphabetic prefixes", () => {
+		expect(search("polytun")).toEqual(["tc-polytune"]);
+		expect(search("hydr")).toEqual(["keeley-hydra"]);
+	});
+
+	it("matches an internal substring for alphabetic terms", () => {
+		expect(search("tune")).toEqual(["tc-polytune"]);
+	});
+
+	it("still separates dd2 from dd20 and dd200", () => {
+		expect(search("dd2")).toEqual(["boss-dd-2"]);
+		expect(search("dd20")).toEqual(["boss-dd-20"]);
+		expect(search("dd200")).toEqual(["boss-dd-200"]);
+	});
+
+	it("does not treat a following numeric token as the same number", () => {
+		expect(search("fbm1")).toContain("fender-fbm-1");
+		expect(search("mf103")).toContain("moog-mf-103");
+		expect(search("jf11")).toContain("boss-jf-11");
+	});
+
+	it("matches a concatenated brand + model", () => {
+		expect(search("bossdd2")).toContain("boss-dd-2");
+		expect(search("mxrphase90")).toContain("mxr-phase-90");
+		expect(search("strymonbigsky")).toContain("strymon-bigsky");
 	});
 });

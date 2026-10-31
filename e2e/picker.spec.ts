@@ -633,3 +633,33 @@ test("a punctuation-only query shows the echoed empty state", async ({
 	await expect(empty).toContainText("!!!");
 	await expect(empty).not.toContainText("Filtered by");
 });
+
+test("progressive and prefix search finds real pedals", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	const search = page.getByTestId("picker-search");
+
+	// Progressive typing of a concatenated model + word: B7K → B7K Ultra.
+	for (const query of ["b7k", "b7ku", "b7kult", "b7kultra"]) {
+		await search.fill(query);
+		await expect(
+			page.getByTestId("add-pedal-darkglass-microtubes-b7k-ultra"),
+		).toBeVisible({ timeout: 15_000 });
+	}
+
+	// Prefix and compact matches for planner catalog items.
+	await search.fill("polytun");
+	await expect(page.getByTestId("add-pedal-tc-polytune")).toBeVisible({
+		timeout: 15_000,
+	});
+	await search.fill("hydr");
+	await expect(page.getByTestId("add-pedal-keeley-hydra")).toBeVisible({
+		timeout: 15_000,
+	});
+
+	// A brand query ranks the brand's own pedals above name mentions.
+	await search.fill("strymon");
+	await expect(page.locator(".picker-item__brand").first()).toContainText(
+		"Strymon",
+	);
+});

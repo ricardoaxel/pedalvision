@@ -36,6 +36,14 @@ interface IndexedItem<T> {
 	brandKey: string;
 	nameKey: string;
 	effectsKey: string;
+	brandCompact: string;
+	nameCompact: string;
+	effectsCompact: string;
+	brandEnd: Uint8Array;
+	nameEnd: Uint8Array;
+	effectsEnd: Uint8Array;
+	fullCompact: string;
+	fullEnd: Uint8Array;
 }
 
 export interface SearchIndex<T> {
@@ -67,29 +75,48 @@ export function queryTerms(query: string): string[] {
 }
 
 /**
- * Boundary-aware term pattern. Alphanumeric runs become separator-tolerant
- * groups: `dd2` and `dd-2` both build `\bdd\s*2\b`, which matches `DD-2`,
- * `dd2` and `DD 2`, but not `DD-20` (`2\b` cannot match before `0`).
+ * Separator-free form plus a per-character token-end mask. The mask lets the
+ * trailing-digit guard reject `dd2` inside `dd 20` while still accepting
+ * `fbm1` in `FBM-1 '59` (the next digit starts a NEW token).
  */
-function termPattern(term: string): RegExp | null {
-	const groups = term.match(/[\p{L}]+|\p{N}+/gu);
-	if (!groups || groups.length === 0) return null;
-	const source = groups
-		.map((group) => group.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-		.join("\\s*");
-	return new RegExp(`\\b${source}\\b`, "i");
+function compactField(value: string): { compact: string; ends: Uint8Array } {
+	const compact = value.replace(/\s+/g, "");
+	const ends = new Uint8Array(compact.length);
+	let compactIndex = 0;
+	for (let index = 0; index < value.length; index++) {
+		if (value[index] === " ") continue;
+		const next = value[index + 1];
+		ends[compactIndex] = next === undefined || next === " " ? 1 : 0;
+		compactIndex++;
+	}
+	return { compact, ends };
 }
 
 function indexItem<T extends { id: string; brand: string; name: string }>(
 	item: T,
 	extraText: string,
 ): IndexedItem<T> {
+	const brandKey = normalizeSearch(item.brand);
+	const nameKey = normalizeSearch(item.name);
+	const effectsKey = normalizeSearch(extraText);
+	const brand = compactField(brandKey);
+	const name = compactField(nameKey);
+	const effects = compactField(effectsKey);
+	const full = compactField(`${brandKey} ${nameKey}`);
 	return {
 		item,
 		idKey: normalizeSearch(item.id),
-		brandKey: normalizeSearch(item.brand),
-		nameKey: normalizeSearch(item.name),
-		effectsKey: normalizeSearch(extraText),
+		brandKey,
+		nameKey,
+		effectsKey,
+		brandCompact: brand.compact,
+		nameCompact: name.compact,
+		effectsCompact: effects.compact,
+		brandEnd: brand.ends,
+		nameEnd: name.ends,
+		effectsEnd: effects.ends,
+		fullCompact: full.compact,
+		fullEnd: full.ends,
 	};
 }
 
@@ -114,40 +141,144 @@ export function buildBoardIndex(
 	return { records: boards.map((board) => indexItem(board, "")) };
 }
 
+interface TermVariant {
+	/** Normalized term (may contain internal spaces). */
+	term: string;
+	/** Separator-free form, so `b7kultra` matches `b7k ultra`. */
+	compact: string;
+	/** A trailing digit must not continue into a longer number (dd2 ≠ dd20). */
+	endsWithDigit: boolean;
+}
+
 interface TermMatcher {
-	patterns: RegExp[];
+	variants: TermVariant[];
+}
+
+function toVariant(term: string): TermVariant {
+	return {
+		term,
+		compact: term.replace(/\s+/g, ""),
+		endsWithDigit: /\p{N}$/u.test(term),
+	};
 }
 
 /** Compile each term (and its alias targets) once per filter change. */
 function compileTerms(terms: string[]): TermMatcher[] {
 	return terms.map((term) => ({
-		patterns: [term, ...aliasesFor(term)]
-			.map((variant) => termPattern(variant))
-			.filter((pattern): pattern is RegExp => pattern !== null),
+		variants: [term, ...aliasesFor(term)].map(toVariant),
 	}));
 }
 
 /**
- * Best score for one term against an item: name start > name inside > brand >
- * effect/alias. `null` means the term does not match at all.
+ * First separator-free occurrence that respects the trailing-digit rule.
+ * `dd2` rejects `dd20` (same token continues with a digit) but accepts
+ * `dd2`/`dd 2`/`dd2w` and `fbm1` in `FBM-1 '59` (the next digit is a new token).
+ */
+function compactMatch(
+	field: string,
+	ends: Uint8Array,
+	variant: TermVariant,
+): number {
+	let from = 0;
+	while (true) {
+		const index = field.indexOf(variant.compact, from);
+		if (index === -1) return -1;
+		const end = index + variant.compact.length - 1;
+		const next = field[end + 1];
+		const continuesNumber =
+			ends[end] === 0 && next !== undefined && /\p{N}/u.test(next);
+		if (!(variant.endsWithDigit && continuesNumber)) return index;
+		from = index + 1;
+	}
+}
+
+interface FieldScores {
+	exact: number;
+	start: number;
+	word: number;
+	compact: number;
+}
+
+function fieldScore(
+	field: string,
+	compactField: string,
+	fieldEnds: Uint8Array,
+	variant: TermVariant,
+	scores: FieldScores,
+): number | null {
+	const index = compactMatch(compactField, fieldEnds, variant);
+	if (index === -1) return null;
+	if (field === variant.term || compactField === variant.compact) {
+		return scores.exact;
+	}
+	if (index === 0) return scores.start;
+	if (variant.term.includes(" ")) return scores.compact;
+	if (field.includes(` ${variant.term}`)) return scores.word;
+	return scores.compact;
+}
+
+const NAME_SCORES: FieldScores = {
+	exact: 60,
+	start: 50,
+	word: 30,
+	compact: 20,
+};
+const BRAND_SCORES: FieldScores = {
+	exact: 55,
+	start: 25,
+	word: 15,
+	compact: 10,
+};
+const EFFECT_SCORES: FieldScores = {
+	exact: 12,
+	start: 10,
+	word: 8,
+	compact: 5,
+};
+
+/**
+ * Best score for one term against an item: name exact 60 > brand exact 55 >
+ * name start 50 > name word 30 > brand start 25 > name compact 20 > brand word
+ * 15 > effect exact 12 > effect start 10 > effect word 8 > effect compact 5.
+ * `null` means no match at all.
  */
 function bestTermScore(
 	record: IndexedItem<unknown>,
 	matcher: TermMatcher,
 ): number | null {
 	let best: number | null = null;
-	for (const pattern of matcher.patterns) {
-		const nameMatch = pattern.exec(record.nameKey);
-		const score = nameMatch
-			? nameMatch.index === 0
-				? 50
-				: 30
-			: pattern.test(record.brandKey)
-				? 20
-				: pattern.test(record.effectsKey)
-					? 10
-					: null;
-		if (score !== null && (best === null || score > best)) best = score;
+	for (const variant of matcher.variants) {
+		const scores = [
+			fieldScore(
+				record.nameKey,
+				record.nameCompact,
+				record.nameEnd,
+				variant,
+				NAME_SCORES,
+			),
+			fieldScore(
+				record.brandKey,
+				record.brandCompact,
+				record.brandEnd,
+				variant,
+				BRAND_SCORES,
+			),
+			fieldScore(
+				record.effectsKey,
+				record.effectsCompact,
+				record.effectsEnd,
+				variant,
+				EFFECT_SCORES,
+			),
+		];
+		for (const score of scores) {
+			if (score !== null && (best === null || score > best)) best = score;
+		}
+		// Brand + model concatenations (`bossdd2`, `mxrphase90`) get a modest
+		// score; the individual fields still outrank them when they match.
+		if (compactMatch(record.fullCompact, record.fullEnd, variant) !== -1) {
+			best = Math.max(best ?? 0, 18);
+		}
 	}
 	return best;
 }
@@ -205,7 +336,10 @@ function sortScored<T>(
 	// first) so the resting picker is unchanged.
 	if (!hasQuery) return scored;
 	return scored.sort(
-		(a, b) => b.score - a.score || byBrand(a.record, b.record),
+		(a, b) =>
+			b.score - a.score ||
+			a.record.nameCompact.length - b.record.nameCompact.length ||
+			byBrand(a.record, b.record),
 	);
 }
 
