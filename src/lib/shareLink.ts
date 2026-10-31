@@ -11,6 +11,7 @@ import type {
 import {
 	normalizeSceneContent,
 	type SceneSnapshot,
+	uniqueBy,
 } from "../state/sceneDocument";
 import { BOARD_TEXTURES } from "./boardTexture";
 import { MAX_BOARD_DIMENSION_CM } from "./customBoard";
@@ -36,6 +37,20 @@ import { MAX_DIMENSION_CM } from "./customPedal";
 
 export const SHARE_HASH_PREFIX = "#s=";
 export const SHARE_VERSION = 2;
+/**
+ * Every wire version this build can decode. The encoder always writes
+ * `SHARE_VERSION`; older versions are migrated on read. Any other version is a
+ * typed `unsupported-version` rejection (never a silent partial decode).
+ */
+export const SUPPORTED_SHARE_VERSIONS = [1, SHARE_VERSION] as const;
+
+export type SupportedShareVersion = (typeof SUPPORTED_SHARE_VERSIONS)[number];
+
+function isSupportedShareVersion(
+	value: number,
+): value is SupportedShareVersion {
+	return (SUPPORTED_SHARE_VERSIONS as readonly number[]).includes(value);
+}
 export const SHARE_DECODED_LIMIT_BYTES = 200 * 1024;
 /**
  * Delivery limit (owner-facing): a URL that is too long is silently truncated
@@ -88,7 +103,22 @@ export interface ShareEncodeTooLarge {
 	message: string;
 }
 
-export type ShareEncodeResult = ShareEncodeOk | ShareEncodeTooLarge;
+/**
+ * A scene that the current wire schema cannot represent. Encode-time
+ * self-validation guarantees the sender never gets a link the recipient must
+ * reject. The document guard is deliberately more permissive than the
+ * untrusted-input wire schema; this is the boundary that keeps them honest.
+ */
+export interface ShareEncodeInvalid {
+	ok: false;
+	reason: "invalid";
+	message: string;
+}
+
+export type ShareEncodeResult =
+	| ShareEncodeOk
+	| ShareEncodeTooLarge
+	| ShareEncodeInvalid;
 
 export interface ShareDecodeOk {
 	ok: true;
@@ -100,14 +130,45 @@ export interface ShareDecodeOk {
 
 export type ShareDecodeResult = ShareDecodeOk | ShareError;
 
-export interface SharePayload {
+/** P3-era graph-less wire payload (`#s=v1:`). */
+export interface SharePayloadV1 {
+	version: 1;
+	name?: string;
+	boards: PlacedBoard[];
+	items: PlacedItem[];
+	customPedals: CustomPedal[];
+}
+
+/** Current wire payload (`#s=v2:`): v1 plus endpoints + cables. */
+export interface SharePayloadV2 {
 	version: 2;
-	name: string;
+	name?: string;
 	boards: PlacedBoard[];
 	items: PlacedItem[];
 	customPedals: CustomPedal[];
 	endpoints: Endpoint[];
 	cables: Cable[];
+}
+
+export type SharePayload = SharePayloadV2;
+export type SharePayloadAny = SharePayloadV1 | SharePayloadV2;
+
+/**
+ * Upgrade a supported wire payload to the current shape. Pure: it only fills
+ * the additive graph arrays for v1; it never invents catalog data. Future
+ * versions add one step here (and bump `SHARE_VERSION`).
+ */
+export function migrateSharePayload(payload: SharePayloadAny): SharePayloadV2 {
+	if (payload.version === 2) return payload;
+	return {
+		version: 2,
+		name: payload.name,
+		boards: payload.boards,
+		items: payload.items,
+		customPedals: payload.customPedals,
+		endpoints: [],
+		cables: [],
+	};
 }
 
 const COORD_LIMIT_CM = 1_000_000;
@@ -166,8 +227,13 @@ const itemSchema = z.object({
 const jackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
 	edge: z.enum(JACK_EDGES),
-	pos: z.number().finite().min(0).max(1),
+	// Mirrors sceneDocument.isJack: `pos` is optional (the resolver distributes
+	// edge-only jacks) and `approximate` is preserved. Requiring `pos` here
+	// would make a document-valid custom pedal an invalid share link; stripping
+	// `approximate` would silently lose it on a round-trip.
+	pos: z.number().finite().min(0).max(1).optional(),
 	stereo: z.boolean().optional(),
+	approximate: z.boolean().optional(),
 });
 
 const powerSchema = z.object({
@@ -183,8 +249,13 @@ const customPedalSchema = z.object({
 	widthCm: z.number().finite().positive().max(MAX_DIMENSION_CM),
 	heightCm: z.number().finite().positive().max(MAX_DIMENSION_CM),
 	category: z.enum(["pedal", "supply"]),
-	effectTypes: z.array(z.enum(EFFECT_TYPES)).max(32),
-	jacks: z.array(jackSchema).max(32).optional(),
+	// Bounded by the enum itself (39 today), not an arbitrary 32 — the custom
+	// form lets a user select every type, and that document must stay shareable.
+	effectTypes: z.array(z.enum(EFFECT_TYPES)),
+	// Generous untrusted-input bound; the custom form is realistically far
+	// below it. Encode self-validation catches anything above it with a clear
+	// inline error instead of emitting a dead link.
+	jacks: z.array(jackSchema).max(5_000).optional(),
 	power: powerSchema.optional(),
 });
 
@@ -210,23 +281,30 @@ const cableSchema = z.object({
 	color: optionalString(40),
 });
 
-const legacyPayloadSchema = z.object({
-	version: z.literal(1),
-	name: optionalString(200),
-	boards: z.array(boardSchema).max(5_000),
-	items: z.array(itemSchema).max(5_000),
-	customPedals: z.array(customPedalSchema).max(5_000),
-});
+// Frozen wire shapes are strict: an unknown key means the sender used a newer
+// version, and silently stripping it would be a partial decode. A v1 link must
+// not carry graph keys; a future field must bump the version.
+const legacyPayloadSchema = z
+	.object({
+		version: z.literal(1),
+		name: optionalString(200),
+		boards: z.array(boardSchema).max(5_000),
+		items: z.array(itemSchema).max(5_000),
+		customPedals: z.array(customPedalSchema).max(5_000),
+	})
+	.strict();
 
-const currentPayloadSchema = z.object({
-	version: z.literal(2),
-	name: optionalString(200),
-	boards: z.array(boardSchema).max(5_000),
-	items: z.array(itemSchema).max(5_000),
-	customPedals: z.array(customPedalSchema).max(5_000),
-	endpoints: z.array(endpointSchema).max(5_000),
-	cables: z.array(cableSchema).max(5_000),
-});
+const currentPayloadSchema = z
+	.object({
+		version: z.literal(2),
+		name: optionalString(200),
+		boards: z.array(boardSchema).max(5_000),
+		items: z.array(itemSchema).max(5_000),
+		customPedals: z.array(customPedalSchema).max(5_000),
+		endpoints: z.array(endpointSchema).max(5_000),
+		cables: z.array(cableSchema).max(5_000),
+	})
+	.strict();
 
 const payloadSchema = z.discriminatedUnion("version", [
 	legacyPayloadSchema,
@@ -312,24 +390,6 @@ function normalizeShareName(name: string | undefined): string {
 }
 
 /**
- * Keep the first entry per key. Untrusted payloads can repeat uids/refIds;
- * duplicates would collide in React and in the reference graph. Keeping the
- * first is resilient (the scene still opens) without letting a later entry
- * overwrite a valid one.
- */
-function uniqueBy<T>(values: T[], key: (value: T) => string): T[] {
-	const seen = new Set<string>();
-	const result: T[] = [];
-	for (const value of values) {
-		const id = key(value);
-		if (seen.has(id)) continue;
-		seen.add(id);
-		result.push(value);
-	}
-	return result;
-}
-
-/**
  * Build the share hash for a scene snapshot. Returns an inline-safe result;
  * an over-ceiling scene is refused (never truncated) so the sender can remove
  * parts and try again.
@@ -349,6 +409,19 @@ export function encodeShareLink(
 		endpoints: snapshot.endpoints,
 		cables: snapshot.cables,
 	};
+	// Self-validate before producing a link: the document guard is intentionally
+	// more permissive than the untrusted-input wire schema, so a document with
+	// an extreme custom part must fail here with a clear reason rather than
+	// producing a link every recipient rejects.
+	const valid = currentPayloadSchema.safeParse(payload);
+	if (!valid.success) {
+		return {
+			ok: false,
+			reason: "invalid",
+			message:
+				"This scene contains content outside the share limits. Edit or duplicate the part, or split the scene into two.",
+		};
+	}
 	const json = JSON.stringify(payload);
 	const decoded = strToU8(json);
 	if (decoded.length > SHARE_DECODED_LIMIT_BYTES) {
@@ -406,9 +479,9 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 		};
 	}
 	const version = Number(versionMatch[1]);
-	// Decode the current version and the legacy graph-less v1. Anything else
+	// Decode every supported version via the migration chain. Anything else
 	// (older/newer) is rejected with a precise reason — never silently dropped.
-	if (version !== 1 && version !== SHARE_VERSION) {
+	if (!isSupportedShareVersion(version)) {
 		return {
 			ok: false,
 			reason: "unsupported-version",
@@ -501,21 +574,23 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 			message: "This share link didn’t contain a valid scene.",
 		};
 	}
+	// The hash prefix and the payload version are one contract. A mismatched
+	// pair (`#s=v2:` carrying `version: 1`, or the reverse) must not silently
+	// downgrade/upgrade — reject it as malformed.
+	if (parsed.data.version !== version) {
+		return {
+			ok: false,
+			reason: "invalid",
+			message: "This share link didn’t contain a valid scene.",
+		};
+	}
 
-	const boards = uniqueBy(parsed.data.boards, (board) => board.uid);
-	const items = uniqueBy(parsed.data.items, (item) => item.uid);
-	const customPedals = uniqueBy(
-		parsed.data.customPedals,
-		(custom) => custom.refId,
-	);
-	// v1 is graph-less by construction; v2 carries both arrays. Read them off the
-	// discriminated union so the legacy path can't accidentally read undefined.
-	const endpoints =
-		parsed.data.version === 2
-			? uniqueBy(parsed.data.endpoints, (e) => e.uid)
-			: [];
-	const cables =
-		parsed.data.version === 2 ? uniqueBy(parsed.data.cables, (c) => c.uid) : [];
+	const payload = migrateSharePayload(parsed.data);
+	const boards = uniqueBy(payload.boards, (board) => board.uid);
+	const items = uniqueBy(payload.items, (item) => item.uid);
+	const customPedals = uniqueBy(payload.customPedals, (custom) => custom.refId);
+	const endpoints = uniqueBy(payload.endpoints, (endpoint) => endpoint.uid);
+	const cables = uniqueBy(payload.cables, (cable) => cable.uid);
 	// Orphan items, dense z, unreferenced custom definitions and dead cable
 	// references get the same normalization every stored document gets.
 	const snapshot = normalizeSceneContent({
@@ -527,7 +602,7 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 	});
 	return {
 		ok: true,
-		name: normalizeShareName(parsed.data.name),
+		name: normalizeShareName(payload.name),
 		snapshot,
 		decodedBytes: inflated.length,
 		compressedBytes: compressed.length,

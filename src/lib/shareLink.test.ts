@@ -1,5 +1,6 @@
 import { deflateSync, strToU8 } from "fflate";
 import { describe, expect, it } from "vitest";
+import { EFFECT_TYPES } from "../catalog/schema";
 import type {
 	Cable,
 	CustomPedal,
@@ -12,10 +13,12 @@ import { capacityStatus } from "./capacity";
 import {
 	decodeShareHash,
 	encodeShareLink,
+	migrateSharePayload,
 	SHARE_BASE64_LIMIT_LENGTH,
 	SHARE_DECODED_LIMIT_BYTES,
 	SHARE_URL_HARD_LIMIT_CHARS,
 	type SharePayload,
+	SUPPORTED_SHARE_VERSIONS,
 } from "./shareLink";
 
 const board = (uid: string, extra: Partial<PlacedBoard> = {}): PlacedBoard => ({
@@ -170,6 +173,119 @@ describe("share links (P3-03)", () => {
 		expect(legacy.snapshot.cables).toEqual([]);
 	});
 
+	it("migrates a legacy v1 payload to the current shape explicitly", () => {
+		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2]);
+		const legacy = {
+			version: 1 as const,
+			name: "Old",
+			boards: [board("board-1")],
+			items: [item("item-1")],
+			customPedals: [] as CustomPedal[],
+		};
+		expect(migrateSharePayload(legacy)).toEqual({
+			...legacy,
+			version: 2,
+			endpoints: [],
+			cables: [],
+		});
+	});
+
+	it("rejects a hash prefix that disagrees with the payload version", () => {
+		const v1 = {
+			version: 1,
+			name: "Mismatch",
+			boards: [board("board-1")],
+			items: [item("item-1")],
+			customPedals: [],
+		};
+		expect(decodeShareHash(hashOf(v1, 2))).toMatchObject({
+			ok: false,
+			reason: "invalid",
+		});
+		const v2 = { ...v1, version: 2, endpoints: [], cables: [] };
+		expect(decodeShareHash(hashOf(v2, 1))).toMatchObject({
+			ok: false,
+			reason: "invalid",
+		});
+	});
+
+	it("preserves optional jack pos and approximate on a custom pedal", () => {
+		const edgeOnly = custom("custom-edge", {
+			jacks: [
+				{ kind: "in", edge: "top" },
+				{ kind: "out", edge: "bottom", pos: 0.25, approximate: true },
+			],
+		});
+		const encoded = encodeShareLink("Jack parity", {
+			boards: [],
+			items: [item("item-1", { refId: "custom-edge", boardUid: null })],
+			customPedals: [edgeOnly],
+			endpoints: [],
+			cables: [],
+		});
+		if (!encoded.ok) throw new Error(encoded.message);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.customPedals).toEqual([edgeOnly]);
+	});
+
+	it("keeps every effect type and a large jack list shareable", () => {
+		// The custom form allows all effect types and unbounded jack rows; a
+		// document-valid part must not become an unopenable link.
+		const jacks = Array.from({ length: 33 }, (_, index) => ({
+			kind: index % 2 === 0 ? ("in" as const) : ("out" as const),
+			edge: "top" as const,
+			pos: (index % 10) / 10,
+		}));
+		const part = custom("custom-all", {
+			effectTypes: [...EFFECT_TYPES],
+			jacks,
+		});
+		const encoded = encodeShareLink("All effects", {
+			boards: [],
+			items: [item("item-1", { refId: "custom-all", boardUid: null })],
+			customPedals: [part],
+			endpoints: [],
+			cables: [],
+		});
+		if (!encoded.ok) throw new Error(encoded.message);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.customPedals).toEqual([part]);
+	});
+
+	it("refuses to encode a custom part outside the wire limits", () => {
+		const tooLong = custom("custom-long", { name: "X".repeat(201) });
+		const encoded = encodeShareLink("Out of schema", {
+			boards: [],
+			items: [item("item-1", { refId: "custom-long", boardUid: null })],
+			customPedals: [tooLong],
+			endpoints: [],
+			cables: [],
+		});
+		expect(encoded).toMatchObject({ ok: false, reason: "invalid" });
+		if (encoded.ok) throw new Error("expected a refusal");
+		expect(encoded.message).toContain("share limits");
+	});
+
+	it("rejects a v1 payload that carries graph keys (no silent strip)", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 1,
+					name: "Contradiction",
+					boards: [board("board-1")],
+					items: [item("item-1")],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				1,
+			),
+		);
+		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
+	});
+
 	it("uses the #s=v2: prefix and base64url without padding", () => {
 		const encoded = encodeShareLink("Main board", snapshot());
 		if (!encoded.ok) throw new Error("expected an encodable scene");
@@ -266,7 +382,9 @@ describe("share links (P3-03)", () => {
 			cables: [],
 		});
 		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
-		if (encoded.ok) throw new Error("expected a refusal");
+		if (encoded.ok || encoded.reason !== "too-large") {
+			throw new Error("expected a too-large refusal");
+		}
 		expect(encoded.limitBytes).toBe(SHARE_DECODED_LIMIT_BYTES);
 	});
 
@@ -324,6 +442,7 @@ describe("share links (P3-03)", () => {
 			);
 		} else {
 			expect(maxGraph.reason).toBe("too-large");
+			if (maxGraph.reason !== "too-large") throw new Error("unexpected reason");
 			expect(maxGraph.hashLength).toBeGreaterThan(SHARE_URL_HARD_LIMIT_CHARS);
 		}
 	});
@@ -414,7 +533,9 @@ describe("share links (P3-03)", () => {
 			cables: [],
 		});
 		expect(encoded).toMatchObject({ ok: false, reason: "too-large" });
-		if (encoded.ok) throw new Error("expected a refusal");
+		if (encoded.ok || encoded.reason !== "too-large") {
+			throw new Error("expected a too-large refusal");
+		}
 		expect(encoded.hashLength).toBeGreaterThan(SHARE_URL_HARD_LIMIT_CHARS);
 		expect(encoded.message).toContain("too long");
 	});
@@ -449,16 +570,19 @@ describe("share links (P3-03)", () => {
 
 	it("de-duplicates repeated uids instead of producing colliding entries", () => {
 		const decoded = decodeShareHash(
-			hashOf({
-				version: 1,
-				name: "Dupes",
-				boards: [board("board-1"), board("board-1", { x: 99 })],
-				items: [
-					item("item-1", { refId: "custom-a" }),
-					item("item-1", { refId: "custom-a", z: 1 }),
-				],
-				customPedals: [custom("custom-a"), custom("custom-a")],
-			}),
+			hashOf(
+				{
+					version: 1,
+					name: "Dupes",
+					boards: [board("board-1"), board("board-1", { x: 99 })],
+					items: [
+						item("item-1", { refId: "custom-a" }),
+						item("item-1", { refId: "custom-a", z: 1 }),
+					],
+					customPedals: [custom("custom-a"), custom("custom-a")],
+				},
+				1,
+			),
 		);
 		if (!decoded.ok) throw new Error(decoded.message);
 		expect(decoded.snapshot.boards).toHaveLength(1);

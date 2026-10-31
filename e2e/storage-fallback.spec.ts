@@ -77,6 +77,10 @@ test("blocked IndexedDB: the app stays editable, warns, and exports a backup", a
 	expect(json.id).toBe("session-backup");
 	expect(json.boards).toHaveLength(1);
 	expect(json.items).toHaveLength(1);
+	// The backup inherits the full versioned document shape (single writer).
+	expect(json.customPedals).toEqual([]);
+	expect(json.endpoints).toEqual([]);
+	expect(json.cables).toEqual([]);
 	await expect(page.getByTestId("storage-receipt")).toContainText("Downloaded");
 
 	// Nothing was persisted: a reload still shows the warning and an empty sheet.

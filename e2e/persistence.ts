@@ -3,6 +3,7 @@ import { expect, type Page } from "@playwright/test";
 /** The persisted fields a test cares about (IndexedDB scene document). */
 export interface SavedDocument {
 	id: string;
+	version?: number;
 	name: string;
 	boards: Array<{ uid: string }>;
 	items: Array<{

@@ -559,6 +559,21 @@ test("save a copy at the 10-scene cap shows an inline reason", async ({
 	await expect(page.locator("[data-scene-open]")).toHaveCount(10);
 });
 
+test("a link whose prefix and payload versions disagree is rejected", async ({
+	page,
+}) => {
+	const legacy = shareHash({
+		name: "Mismatch",
+		boards: [board("b-1")],
+		items: [item("i-1", { boardUid: "b-1", x: 5, y: 5 })],
+		version: 1,
+	});
+	// The body is a valid v1 payload; only the prefix claims v2.
+	await openShare(page, legacy.replace("#s=v1:", "#s=v2:"));
+	await expect(page.getByTestId("share-error")).toBeVisible();
+	await expect(page.getByTestId("share-stamp")).toHaveCount(0);
+});
+
 test("a damaged link shows an inline error and leaves the scene untouched", async ({
 	page,
 }) => {
