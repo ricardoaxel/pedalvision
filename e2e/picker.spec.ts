@@ -245,20 +245,34 @@ test("loose pedals cascade instead of stacking at the viewport centre", async ({
 	expect(new Set(spots).size).toBe(3);
 });
 
-test("no filter chip is clipped (wrap, not a cut-off scroll strip)", async ({
+test("filter chips stay inside the panel (wrap on desktop, scroll on mobile)", async ({
 	page,
 }) => {
 	await page.goto("/");
 	await openPicker(page, "pedals");
 	const panel = await page.getByTestId("picker-panel").boundingBox();
 	if (!panel) throw new Error("no panel");
-	// The visible chips must all sit inside the panel's horizontal bounds.
+	const mobile = (page.viewportSize()?.width ?? 1280) < 1024;
 	const chips = page.locator(".picker__chip");
 	const count = await chips.count();
 	for (let index = 0; index < count; index++) {
 		const box = await chips.nth(index).boundingBox();
 		if (!box) continue;
-		expect(box.x + box.width).toBeLessThanOrEqual(panel.x + panel.width + 1);
+		// Desktop wraps: every chip stays inside the panel horizontally.
+		if (!mobile) {
+			expect(box.x + box.width).toBeLessThanOrEqual(panel.x + panel.width + 1);
+		}
+		// Both layouts must never clip a chip vertically.
+		expect(box.y).toBeGreaterThanOrEqual(panel.y - 1);
+		expect(box.y + box.height).toBeLessThanOrEqual(panel.y + panel.height + 1);
+	}
+	if (mobile) {
+		// Mobile uses one horizontally scrollable row so the results stay visible.
+		const band = page.locator(".picker__chips");
+		const bandBox = await band.boundingBox();
+		if (!bandBox) throw new Error("no chip band");
+		const scrollWidth = await band.evaluate((element) => element.scrollWidth);
+		expect(scrollWidth).toBeGreaterThan(bandBox.width);
 	}
 });
 
@@ -509,4 +523,143 @@ test("board add and delete each get one transient motion event", async ({
 		)
 		.toBeGreaterThan(beforeGhost);
 	await expect(stage).toHaveAttribute("data-boards", "0");
+});
+
+/** Mirror the picker's normalization for sort-order assertions. */
+function normalizeName(value: string): string {
+	return value
+		.normalize("NFKD")
+		.replace(/\p{M}/gu, "")
+		.toLowerCase()
+		.replace(/&/g, " and ")
+		.replace(/[^\p{L}\p{N}]+/gu, " ")
+		.trim()
+		.replace(/\s+/g, " ");
+}
+
+test("search finds DD-2 from model shorthand and punctuation", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	const search = page.getByTestId("picker-search");
+	for (const query of ["dd2", "DD-2", "dd-2", "DD 2"]) {
+		await search.fill(query);
+		await expect(
+			page.getByTestId("add-pedal-boss-dd-2-digital-delay"),
+		).toBeVisible();
+		// The boundary-aware match must not drag in DD-20/DD-200.
+		await expect(
+			page.getByTestId("add-pedal-boss-dd-20-giga-delay"),
+		).toHaveCount(0);
+	}
+});
+
+test("brand aliases resolve (ehx)", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("ehx");
+	await expect(
+		page.getByTestId("add-pedal-electro-harmonix-1-echo"),
+	).toBeVisible();
+});
+
+test("effect labels are searchable (keeley fuzz)", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("keeley fuzz");
+	// Angry Orange is a fuzz whose name does not contain "fuzz".
+	await expect(page.getByTestId("add-pedal-keeley-angry-orange")).toBeVisible();
+});
+
+test("Name A–Z orders the visible results deterministically", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-brand").selectOption("Meris");
+	await page.getByTestId("picker-sort").selectOption("name");
+	const names = page.locator(".picker-item__name");
+	await expect(names.first()).toBeVisible();
+	const texts = (await names.allTextContents()).slice(0, 8).map(normalizeName);
+	expect(texts.length).toBeGreaterThan(1);
+	const sorted = [...texts].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+	expect(texts).toEqual(sorted);
+});
+
+test("search, filter and sort then place a pedal", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("dd");
+	await page.getByTestId("picker-brand").selectOption("BOSS");
+	await page.getByTestId("picker-effects-toggle").click();
+	await page.getByTestId("picker-effect-delay").click();
+	await page.getByTestId("picker-sort").selectOption("name");
+	await expect(
+		page.getByTestId("add-pedal-boss-dd-2-digital-delay"),
+	).toBeVisible();
+	await page.getByTestId("add-pedal-boss-dd-2-digital-delay").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
+});
+
+test("the empty state echoes the query and active filters", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-brand").selectOption("BOSS");
+	await page.getByTestId("picker-search").fill("zzzzzzzz");
+	const empty = page.getByTestId("picker-empty");
+	await expect(empty).toContainText("No pedals match");
+	await expect(empty).toContainText("zzzzzzzz");
+	await expect(empty).toContainText("Filtered by BOSS");
+	await page.getByRole("button", { name: "Clear filters" }).click();
+	await expect(page.getByTestId("picker-search")).toHaveValue("");
+	await expect(page.getByTestId("picker-brand")).toHaveValue("");
+	await expect(page.getByTestId("picker-search")).toBeFocused();
+	await expect(empty).toHaveCount(0);
+});
+
+test("a punctuation-only query shows the echoed empty state", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("!!!");
+	const empty = page.getByTestId("picker-empty");
+	await expect(empty).toBeVisible();
+	await expect(empty).toContainText("No pedals match");
+	await expect(empty).toContainText("!!!");
+	await expect(empty).not.toContainText("Filtered by");
+});
+
+test("progressive and prefix search finds real pedals", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	const search = page.getByTestId("picker-search");
+
+	// Progressive typing of a concatenated model + word: B7K → B7K Ultra.
+	for (const query of ["b7k", "b7ku", "b7kult", "b7kultra"]) {
+		await search.fill(query);
+		await expect(
+			page.getByTestId("add-pedal-darkglass-microtubes-b7k-ultra"),
+		).toBeVisible({ timeout: 15_000 });
+	}
+
+	// Prefix and compact matches for planner catalog items.
+	await search.fill("polytun");
+	await expect(page.getByTestId("add-pedal-tc-polytune")).toBeVisible({
+		timeout: 15_000,
+	});
+	await search.fill("hydr");
+	await expect(page.getByTestId("add-pedal-keeley-hydra")).toBeVisible({
+		timeout: 15_000,
+	});
+
+	// A brand query ranks the brand's own pedals above name mentions.
+	await search.fill("strymon");
+	await expect(page.locator(".picker-item__brand").first()).toContainText(
+		"Strymon",
+	);
 });

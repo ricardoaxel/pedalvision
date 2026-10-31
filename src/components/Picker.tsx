@@ -42,9 +42,12 @@ import { MotionPresence } from "./MotionPresence";
 import { usePartImage } from "./partImage";
 import {
 	brandsOf,
+	buildBoardIndex,
+	buildPedalIndex,
 	effectLabel,
-	filterBoards,
-	filterPedals,
+	filterBoardIndex,
+	filterPedalIndex,
+	type PickerSort,
 	pedalBrands,
 	toggleEffectType,
 } from "./pickerFilter";
@@ -74,7 +77,7 @@ const TAB_COPY: Record<
 		dialog: "Add a pedal",
 		search: "Search pedals…",
 		count: "pedals",
-		empty: "No pedals match. ",
+		empty: "No pedals match",
 	},
 	boards: {
 		eyebrow: "Catalog — Boards",
@@ -82,7 +85,7 @@ const TAB_COPY: Record<
 		dialog: "Add a board",
 		search: "Search boards…",
 		count: "boards",
-		empty: "No boards match. ",
+		empty: "No boards match",
 	},
 	custom: {
 		eyebrow: "Catalog — Custom",
@@ -90,7 +93,7 @@ const TAB_COPY: Record<
 		dialog: "Create a custom part",
 		search: "",
 		count: "parts",
-		empty: "No parts match. ",
+		empty: "No parts match",
 	},
 };
 
@@ -184,6 +187,7 @@ export function Picker({
 	const [query, setQuery] = useState("");
 	const [brand, setBrand] = useState<string | null>(null);
 	const [effectTypes, setEffectTypes] = useState<EffectType[]>([]);
+	const [sort, setSort] = useState<PickerSort>("relevance");
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	/** The item shown in the specimen pane (hover/keyboard-active). */
 	const [activeId, setActiveId] = useState<string | null>(null);
@@ -288,6 +292,7 @@ export function Picker({
 		setQuery("");
 		setBrand(null);
 		setEffectTypes([]);
+		setSort("relevance");
 		setShowAllEffects(false);
 		setActiveId(null);
 	};
@@ -380,7 +385,7 @@ export function Picker({
 	}, [open, onClose]);
 
 	const plannerVersion = usePlannerCatalog((state) => state.version);
-	const filterKey = `${tab}|${query}|${brand ?? ""}|${effectTypes.join(",")}`;
+	const filterKey = `${tab}|${query}|${brand ?? ""}|${effectTypes.join(",")}|${sort}`;
 	const [visible, setVisible] = useState({
 		key: filterKey,
 		count: PICKER_PAGE,
@@ -389,12 +394,17 @@ export function Picker({
 	// biome-ignore lint/correctness/useExhaustiveDependencies: plannerVersion invalidates after the lazy overlay merges
 	const allPedals = useMemo(() => catalog.pedals.slice(), [plannerVersion]);
 	const pedalBrandOptions = useMemo(() => pedalBrands(allPedals), [allPedals]);
-	const allBoards = catalog.boards.slice();
+	// biome-ignore lint/correctness/useExhaustiveDependencies: plannerVersion invalidates after the lazy overlay merges
+	const allBoards = useMemo(() => catalog.boards.slice(), [plannerVersion]);
 	const boardBrands = useMemo(() => brandsOf(allBoards), [allBoards]);
 
+	// Normalize once per catalog version; filter + rank once per filter change.
+	const pedalIndex = useMemo(() => buildPedalIndex(allPedals), [allPedals]);
+	const boardIndex = useMemo(() => buildBoardIndex(allBoards), [allBoards]);
+
 	const filteredPedals = useMemo(
-		() => filterPedals(allPedals, { query, brand, effectTypes }),
-		[allPedals, query, brand, effectTypes],
+		() => filterPedalIndex(pedalIndex, { query, brand, effectTypes, sort }),
+		[pedalIndex, query, brand, effectTypes, sort],
 	);
 	const pedals = useMemo(
 		() => filteredPedals.slice(0, visiblePedals),
@@ -404,8 +414,8 @@ export function Picker({
 		pedals.some((pedal) => !isPlannerPedal(pedal.id)) &&
 		pedals.some((pedal) => isPlannerPedal(pedal.id));
 	const filteredBoards = useMemo(
-		() => filterBoards(allBoards, { query, brand }),
-		[allBoards, query, brand],
+		() => filterBoardIndex(boardIndex, { query, brand, sort }),
+		[boardIndex, query, brand, sort],
 	);
 
 	// One uniform entry list for the ledger rows + the specimen pane.
@@ -673,6 +683,24 @@ export function Picker({
 	const isBoards = tab === "boards";
 	const isCustom = tab === "custom";
 	const copy = TAB_COPY[tab];
+	const queryEcho = query.trim();
+	const filterSummary = [
+		brand,
+		effectTypes.length > 0
+			? effectTypes.map((type) => effectLabel(type)).join(", ")
+			: null,
+	]
+		.filter((value): value is string => Boolean(value))
+		.join(" · ");
+	const emptyHeadline =
+		queryEcho.length > 0
+			? `${copy.empty} “${
+					queryEcho.length > 40 ? `${queryEcho.slice(0, 40)}…` : queryEcho
+				}”.`
+			: filterSummary
+				? `${copy.empty} these filters.`
+				: `${copy.empty}.`;
+	const emptyFilters = filterSummary ? `Filtered by ${filterSummary}` : null;
 
 	// Load Chart (P3-06): hard caps are evaluated per action. Item-cap refuses
 	// every add; image-cap refuses only a NEW image (repeats add no decode);
@@ -1059,6 +1087,28 @@ export function Picker({
 												))}
 											</select>
 
+											<div className="picker__sort">
+												<label
+													className="picker__sort-label"
+													htmlFor="picker-sort"
+												>
+													Sort
+												</label>
+												<select
+													id="picker-sort"
+													className="picker__sorter"
+													data-testid="picker-sort"
+													value={sort}
+													onChange={(event) =>
+														setSort(event.target.value as PickerSort)
+													}
+												>
+													<option value="relevance">Relevance</option>
+													<option value="brand">Brand A–Z</option>
+													<option value="name">Name A–Z</option>
+												</select>
+											</div>
+
 											{isBoards ? null : (
 												<fieldset className="picker__chips">
 													<legend className="visually-hidden">
@@ -1110,8 +1160,15 @@ export function Picker({
 
 									<div className="picker__results" data-testid="picker-results">
 										{count === 0 ? (
-											<p className="picker__empty" data-testid="picker-empty">
-												{copy.empty}
+											<div className="picker__empty" data-testid="picker-empty">
+												<div className="picker__empty-status" role="status">
+													<p className="picker__empty-title">{emptyHeadline}</p>
+													{emptyFilters ? (
+														<p className="picker__empty-detail">
+															{emptyFilters}
+														</p>
+													) : null}
+												</div>
 												<button
 													type="button"
 													className="picker__clear-inline"
@@ -1119,11 +1176,14 @@ export function Picker({
 														setQuery("");
 														setBrand(null);
 														setEffectTypes([]);
+														requestAnimationFrame(() =>
+															searchRef.current?.focus(),
+														);
 													}}
 												>
 													Clear filters
 												</button>
-											</p>
+											</div>
 										) : (
 											entries.map((entry) => {
 												const isActive = entry.id === activeEntry?.id;
