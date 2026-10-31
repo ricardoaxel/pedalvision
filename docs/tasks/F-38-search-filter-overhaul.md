@@ -1,6 +1,6 @@
 # F-38 — Search/filter overhaul (punctuation/model aliases, tags, sort)
 
-**Phase:** 1 · **Status:** todo · **Model:** light (design gate required)
+**Phase:** 1 · **Status:** in review — PR #94 · **Model:** light (design gate required)
 **Roadmap:** `docs/tasks/feature-roadmap-proposal.md` → Phase 1 / F-38 + Q-03
 (“DD-2 search” quick fix). **Baseline:** F-37 merged (#93, `ae0fe84d`).
 
