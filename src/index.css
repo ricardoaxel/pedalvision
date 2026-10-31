@@ -974,9 +974,55 @@ body {
 	outline-offset: 2px;
 }
 
+/* Sort sits opposite the brand filter; the effect chips take their own band. */
+.picker__sort {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3);
+	flex: 0 0 auto;
+	margin-left: auto;
+}
+
+.picker__sort-label {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	color: var(--color-ink-muted);
+	text-transform: uppercase;
+}
+
+.picker__sorter {
+	flex: 0 0 auto;
+	min-height: 36px;
+	min-width: 120px;
+	/* Chevron rail = 8px inset + 16px glyph + 4px text gap. */
+	padding: var(--space-1) calc(var(--space-4) + var(--space-3)) var(--space-1)
+		var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+	background-image: var(--icon-chevron);
+	background-repeat: no-repeat;
+	background-position: right var(--space-2) center;
+	background-size: 16px 16px;
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-control);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+}
+
+.picker__sorter:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
 .picker__chips {
 	display: flex;
-	flex: 1 1 auto;
+	flex: 1 1 100%;
 	flex-wrap: wrap;
 	min-width: 0;
 	gap: var(--space-2);
@@ -1158,13 +1204,15 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	gap: var(--space-3);
-	padding: var(--space-2) var(--space-4) 0;
+	padding: var(--space-2) var(--space-4) var(--space-2);
+	background-color: var(--color-surface-elevated);
+	border-top: 1px solid var(--color-border);
 }
 
 .picker__result-count {
 	font-family: var(--font-sans);
 	font-size: var(--font-size-xs);
-	color: var(--color-ink-muted);
+	color: var(--color-ink-eyebrow);
 	font-variant-numeric: tabular-nums;
 }
 
@@ -1205,11 +1253,35 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 .picker__empty {
-	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-2);
+	max-width: 36ch;
+	/* Center the block in the empty results region (both axes). */
+	margin: auto;
 	padding: var(--space-5) var(--space-3);
-	font-size: var(--font-size-sm);
 	text-align: center;
-	color: var(--color-ink-muted);
+}
+
+.picker__empty-status {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.picker__empty-title {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink);
+}
+
+.picker__empty-detail {
+	margin: 0;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-eyebrow);
 }
 
 .picker__clear-inline {
@@ -1220,6 +1292,11 @@ input[type="search"]::-webkit-search-decoration {
 	border: 0;
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+.picker__clear-inline:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
 }
 
 /* ---- Ledger: status strip -------------------------------------------------- */
@@ -2230,8 +2307,51 @@ input[type="search"]::-webkit-search-decoration {
 		min-height: 32px;
 	}
 
-	/* Touch target (the desktop field is 36px). */
+	/* Touch target (the desktop field is 36px). The brand select grows so the
+	 * brand + sort row fills the sheet width instead of leaving dead space. */
 	.picker__brand {
+		flex: 1 1 auto;
+		max-width: none;
+		min-height: 44px;
+	}
+
+	.picker__sorter {
+		min-height: 44px;
+		min-width: 132px;
+	}
+
+	/* One scrollable chip row keeps the result list (and the empty state) in
+	 * the first viewport on a phone; the old wrap ate the whole sheet. */
+	.picker__chips {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding-block: 2px;
+		margin-block: -2px;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+		/* Fade the right edge so a truncated chip reads as overflow, not a cut. */
+		-webkit-mask-image: linear-gradient(
+			to right,
+			#000 0,
+			#000 calc(100% - 24px),
+			transparent 100%
+		);
+		mask-image: linear-gradient(
+			to right,
+			#000 0,
+			#000 calc(100% - 24px),
+			transparent 100%
+		);
+	}
+
+	.picker__chips::-webkit-scrollbar {
+		display: none;
+	}
+
+	.picker__clear-inline {
+		display: inline-flex;
+		align-items: center;
 		min-height: 44px;
 	}
 
@@ -2376,12 +2496,21 @@ input[type="search"]::-webkit-search-decoration {
 	}
 
 	.picker__brand,
+	.picker__sorter,
 	.picker__chips {
 		flex: 0 0 auto;
 	}
 
+	.picker__sort {
+		flex: 0 0 auto;
+		margin-left: 0;
+	}
+
 	.picker__chips {
 		flex-wrap: nowrap;
+		overflow: visible;
+		padding-block: 0;
+		margin-block: 0;
 	}
 }
 
