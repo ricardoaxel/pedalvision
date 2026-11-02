@@ -47,11 +47,15 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const scale = useViewport((state) => state.scale);
 	const readOnly = useReadOnly((state) => state.readOnly);
-	const proofActive = useJackProof((state) => state.activeUid !== null);
+	const proofUid = useJackProof((state) => state.activeUid);
+	const proofActive = proofUid !== null;
 
-	// The selected item already shows its halo; hide the hover ring for it.
+	// The selected item already shows its halo; hide the hover ring for it. The
+	// proofed item keeps only the proof frame + pin, never a second selection frame.
 	const item =
-		hoveredItemUid && hoveredItemUid !== selectedItemUid
+		hoveredItemUid &&
+		hoveredItemUid !== selectedItemUid &&
+		hoveredItemUid !== proofUid
 			? items.find((candidate) => candidate.uid === hoveredItemUid)
 			: undefined;
 	// The Transformer stays mounted (so a rotation interrupted by a selection

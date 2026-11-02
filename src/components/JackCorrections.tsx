@@ -5,6 +5,7 @@ import type { DisplayUnits } from "../lib/geometry";
 import {
 	formatJackPosition,
 	JACK_EDGE_NAMES,
+	jackKindLabelAt,
 	jackProvenance,
 } from "../lib/partInfo";
 import { useJackProof } from "../state/jackProof";
@@ -125,7 +126,9 @@ export function JackCorrections({
 					{canCorrect ? (
 						<button
 							type="button"
-							className="jack-correction__mode"
+							className={`jack-correction__mode${
+								correcting ? " jack-correction__mode--done" : ""
+							}`}
 							data-testid="jack-correct-toggle"
 							aria-pressed={correcting}
 							onClick={toggleMode}
@@ -137,9 +140,14 @@ export function JackCorrections({
 			</div>
 
 			{correcting ? (
-				<p className="jack-correction__hint" data-testid="jack-proof-hint">
-					Drag a socket on the pedal — anywhere on its face.
-				</p>
+				<>
+					<p className="jack-correction__hint" data-testid="jack-proof-hint">
+						Drag a pin on the face · arrows nudge.
+					</p>
+					<p className="jack-correction__legend" aria-hidden="true">
+						◇ assumed / approx · ◎ corrected
+					</p>
+				</>
 			) : null}
 
 			<ul className="jack-correction__rows">
@@ -149,9 +157,24 @@ export function JackCorrections({
 					const rowPanelId = `${panelIdBase}-jack-${index}`;
 					const summary = (
 						<span className="jack-correction__summary">
-							{formatJackRow(jack, widthCm, heightCm, units)}
+							<span className="jack-correction__kind">
+								{jackKindLabelAt(jacks, index)}
+							</span>
+							<span className="jack-correction__sep" aria-hidden="true">
+								{" · "}
+							</span>
+							<span className="jack-correction__position">
+								{formatJackPosition(jack, widthCm, heightCm, units) ||
+									`${JACK_EDGE_NAMES[jack.edge]} · ${(jack.pos ?? 0.5).toFixed(2)}`}
+							</span>
 						</span>
 					);
+					const ariaLabel = `${jackKindLabelAt(jacks, index)}, ${
+						provenance ?? "catalog"
+					}, ${
+						formatJackPosition(jack, widthCm, heightCm, units) ||
+						`${JACK_EDGE_NAMES[jack.edge]} ${(jack.pos ?? 0.5).toFixed(2)}`
+					}`;
 					const marker = <JackMarker provenance={provenance} />;
 					return (
 						<li
@@ -164,6 +187,7 @@ export function JackCorrections({
 								<button
 									type="button"
 									className="jack-correction__trigger"
+									aria-label={ariaLabel}
 									aria-expanded={isOpen}
 									aria-controls={rowPanelId}
 									data-testid={`jack-row-${index}`}
@@ -253,12 +277,31 @@ export function JackCorrections({
 											Reset to catalog
 										</button>
 									) : null}
+									{notice ? (
+										<p
+											className="jack-correction__refusal"
+											data-testid="jack-proof-notice"
+											role="alert"
+										>
+											{notice}
+										</p>
+									) : null}
 								</div>
 							) : null}
 						</li>
 					);
 				})}
 			</ul>
+
+			{notice && openIndex === null ? (
+				<p
+					className="jack-correction__refusal"
+					data-testid="jack-proof-notice"
+					role="alert"
+				>
+					{notice}
+				</p>
+			) : null}
 
 			{isCustom ? (
 				<p className="info-panel__assumed">
@@ -268,17 +311,7 @@ export function JackCorrections({
 
 			{correctedCount > 0 ? (
 				<p className="info-panel__assumed" data-testid="jack-corrected-note">
-					Corrections apply to this scene only.
-				</p>
-			) : null}
-
-			{notice ? (
-				<p
-					className="jack-correction__refusal"
-					data-testid="jack-proof-notice"
-					role="alert"
-				>
-					{notice}
+					Corrected positions apply to this scene only.
 				</p>
 			) : null}
 

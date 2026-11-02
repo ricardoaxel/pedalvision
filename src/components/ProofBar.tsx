@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { JACK_KINDS, type JackKind } from "../catalog/schema";
 import { jackKindLabel } from "../lib/customPedal";
 import {
-	formatJack,
 	formatJackPosition,
+	JACK_EDGE_NAMES,
+	jackKindLabelAt,
 	jackProvenance,
 } from "../lib/partInfo";
 import { useIsMobile } from "../lib/useMobile";
@@ -17,9 +18,9 @@ import {
 import { useSettings } from "../state/settings";
 
 /**
- * Mobile “Press Proof” chrome (F-33). The full InfoPanel sheet hides while
- * proofing so the pedal is visible; this bar above the tab bar always keeps
- * Done + the selected jack, and opens a compact inspector for kind/TRS/reset.
+ * Mobile “Press Proof — Register” chrome. The full InfoPanel sheet hides while
+ * proofing so the pedal is visible; the bar keeps Done + prev/next + the selected
+ * jack, and the chip opens a compact inspector with a direct jack list.
  */
 function ProofFallback({ onDone }: { onDone: () => void }) {
 	return (
@@ -46,6 +47,8 @@ export function ProofBar() {
 	const selectedJack = useJackProof((state) => state.selectedJack);
 	const notice = useJackProof((state) => state.notice);
 	const exit = useJackProof((state) => state.exit);
+	const select = useJackProof((state) => state.select);
+	const requestRefit = useJackProof((state) => state.requestRefit);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
 	const setJackOverride = useScene((state) => state.setJackOverride);
@@ -68,6 +71,13 @@ export function ProofBar() {
 			setResetArmed(false);
 		}
 	}, [activeUid]);
+	const adjustRef = useRef(adjustOpen);
+	// Only a real open/close toggle refits, and only on mobile (the bar exists there).
+	useEffect(() => {
+		if (adjustRef.current === adjustOpen) return;
+		adjustRef.current = adjustOpen;
+		if (isMobile && activeUid) requestRefit();
+	}, [adjustOpen, activeUid, isMobile, requestRefit]);
 
 	if (!isMobile || !activeUid) return null;
 	const item = items.find((candidate) => candidate.uid === activeUid);
@@ -98,7 +108,12 @@ export function ProofBar() {
 					: null;
 	const position =
 		formatJackPosition(jack, resolved.widthCm, resolved.heightCm, units) ||
-		formatJack(jack);
+		`${JACK_EDGE_NAMES[jack.edge]} · ${(jack.pos ?? 0.5).toFixed(2)}`;
+	const canStep = jacks.length > 1;
+	const step = (delta: number) => {
+		setAdjustOpen(false);
+		select((index + delta + jacks.length) % jacks.length);
+	};
 	const commit = (patch: { kind?: JackKind; stereo?: boolean }) => {
 		const result = setJackOverride(activeUid, index, patch);
 		useJackProof
@@ -136,7 +151,22 @@ export function ProofBar() {
 					Done
 				</button>
 			</div>
+			{correctedCount > 0 && !adjustOpen ? (
+				<p className="proof-bar__scene-note">
+					Corrected positions apply to this scene only.
+				</p>
+			) : null}
 			<div className="proof-bar__row proof-bar__row--jack">
+				<button
+					type="button"
+					className="proof-bar__step"
+					data-testid="proof-prev"
+					aria-label="Previous jack"
+					disabled={!canStep}
+					onClick={() => step(-1)}
+				>
+					‹
+				</button>
 				<button
 					type="button"
 					className="proof-bar__chip"
@@ -144,7 +174,9 @@ export function ProofBar() {
 					aria-expanded={adjustOpen}
 					onClick={() => setAdjustOpen((value) => !value)}
 				>
-					<span className="proof-bar__kind">{jackKindLabel(jack.kind)}</span>
+					<span className="proof-bar__kind">
+						{jackKindLabelAt(jacks, index)}
+					</span>
 					<span className="proof-bar__position" data-testid="proof-position">
 						{position}
 					</span>
@@ -156,20 +188,52 @@ export function ProofBar() {
 							{provenanceLabel}
 						</span>
 					) : null}
+					<span className="proof-bar__chevron" aria-hidden="true">
+						{adjustOpen ? "▴" : "▾"}
+					</span>
 				</button>
 				<button
 					type="button"
-					className="proof-bar__adjust"
-					data-testid="proof-adjust"
-					aria-expanded={adjustOpen}
-					onClick={() => setAdjustOpen((value) => !value)}
+					className="proof-bar__step"
+					data-testid="proof-next"
+					aria-label="Next jack"
+					disabled={!canStep}
+					onClick={() => step(1)}
 				>
-					Adjust
+					›
 				</button>
 			</div>
 
+			{notice ? (
+				<p
+					className="jack-correction__refusal proof-bar__notice"
+					data-testid="proof-notice"
+					role="alert"
+				>
+					{notice}
+				</p>
+			) : null}
+
 			{adjustOpen ? (
 				<div className="proof-inspector" data-testid="proof-inspector">
+					<fieldset
+						className="proof-inspector__jacks"
+						data-testid="proof-jack-list"
+					>
+						<legend className="visually-hidden">Jacks</legend>
+						{jacks.map((entry, jackIndex) => (
+							<button
+								// biome-ignore lint/suspicious/noArrayIndexKey: jacks carry no id; the index is the cable reference
+								key={`${entry.kind}-${jackIndex}`}
+								type="button"
+								className="proof-inspector__jack"
+								aria-pressed={jackIndex === index}
+								onClick={() => select(jackIndex)}
+							>
+								{jackIndex + 1} {jackKindLabelAt(jacks, jackIndex)}
+							</button>
+						))}
+					</fieldset>
 					<label className="jack-correction__field">
 						<span className="jack-correction__label">Kind</span>
 						<select
@@ -198,7 +262,8 @@ export function ProofBar() {
 					</label>
 					{base ? (
 						<p className="jack-correction__baseline">
-							Catalog {formatJack(base)}
+							Catalog {jackKindLabelAt(jacks, index)} ·{" "}
+							{JACK_EDGE_NAMES[base.edge]} · {(base.pos ?? 0.5).toFixed(2)}
 						</p>
 					) : null}
 					{jack.corrected ? (
@@ -210,6 +275,11 @@ export function ProofBar() {
 						>
 							Reset to catalog
 						</button>
+					) : null}
+					{correctedCount > 0 ? (
+						<p className="proof-inspector__note">
+							Corrected positions apply to this scene only.
+						</p>
 					) : null}
 					{correctedCount > 0 ? (
 						resetArmed ? (
@@ -245,11 +315,6 @@ export function ProofBar() {
 								Reset all jacks
 							</button>
 						)
-					) : null}
-					{notice ? (
-						<p className="jack-correction__refusal" role="alert">
-							{notice}
-						</p>
 					) : null}
 				</div>
 			) : null}

@@ -21,6 +21,8 @@ export const CANVAS_THEME_VARS = {
 	cableHalo: "--color-cable-halo",
 	// Jack socket rings / fallback diamonds / endpoint borders — P4-02.
 	jack: "--color-jack",
+	// Press Proof registration ticks (F-33) — neutral instrument ink.
+	proofFrame: "--color-ink-muted",
 	// Board fallback (image missing/failed) + dimension labels — P1-03.
 	boardStroke: "--color-board-outline",
 	boardDraftFill: "--color-board-draft-fill",
@@ -125,13 +127,25 @@ export const JACK_TICK = {
 
 /** On-pedal proof pins + crop marks (F-33 “Press Proof”, screen px). */
 export const JACK_PROOF = {
-	pinPx: 16,
-	selectedPinPx: 18,
-	hitPx: 32,
+	pinPx: 20,
+	hoverPinPx: 22,
+	selectedPinPx: 24,
+	hitPx: 36,
 	hitTouchPx: 44,
-	cropArmPx: 10,
-	cropOffsetPx: 6,
-	cropStrokePx: 1.5,
+	ringPx: 1.5,
+	selectedRingPx: 2,
+	haloPx: 6,
+	dimOpacity: 0.45,
+	tagHeightPx: 24,
+	tagGapPx: 12,
+	tagMaxWidthPx: 160,
+	tagFontPx: 10,
+	tagPadPx: 8,
+	cropArmPx: 12,
+	cropOffsetPx: 8,
+	cropGapPx: 4,
+	cropStrokePx: 1,
+	frameInsetMobileBottomPx: 176,
 } as const;
 
 /** Cable trace metrics (screen px, counter-scaled at render). */
@@ -189,6 +203,7 @@ export const canvasTheme: CanvasTheme = {
 	cable: "#b9c2cc",
 	cableHalo: "rgb(25 26 28 / 0.9)",
 	jack: "#8e99a5",
+	proofFrame: "#a8b0b8",
 	boardStroke: "#5f6a76",
 	boardDraftFill: "#202327",
 	boardLabel: "#a8b0b8",
@@ -219,6 +234,7 @@ export const lightCanvasTheme: CanvasTheme = {
 	cable: "#4d565f",
 	cableHalo: "rgb(228 231 234 / 0.95)",
 	jack: "#5f6973",
+	proofFrame: "#565d66",
 	boardStroke: "#6b7580",
 	boardDraftFill: "#eceff1",
 	boardLabel: "#565d66",

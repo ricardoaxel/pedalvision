@@ -364,8 +364,16 @@ below 240/200 px; never restores the camera on exit.
   round.
 - **Code review:** new pass `changes-required` — blocker (proof mode could outlive
   its item/scene on mobile), should-fix (live cables not rendering during drag;
-  rotated-frame test/duplication) + nits. Fixed; confirmation **approve** (remaining
-  nits folded: nudge guard, ProofBar fallback, cable helper reuse).
+  rotated-frame test/duplication) + nits. Fixed; confirmation **approve**.
+- **Register polish (owner-approved 2026-11-02):** registration ticks (not resize
+  brackets), 20/22/24 px socket pins with hit circles + hover/nearest + grab
+  cursors, one hover/drag tag outside the pedal AABB, dimmed non-held pins,
+  duplicate-kind ordinals, solid Done, proof legend, notice under the selected
+  row, mobile prev/next stepper + jack list + bar notice, inspector refit.
+  **Design-review:** round 1 `approve-with-changes`, round 2 `approve-with-changes`
+  with no merge blocker; final fixes folded (inspector refit, mobile notice, full
+  jack names). **Code-review:** Register delta `changes-required` → fixed →
+  **approve** (refit loop, units in tag, cancel hover, fallback).
 
 ## Design gate (recorded)
 
@@ -392,12 +400,11 @@ below 240/200 px; never restores the camera on exit.
 
 ## Measured results (2026-10-31)
 
-- **Build:** `dist` JS **344.45 kB gzip** vs F-38 baseline **337.54 kB gzip**
-  (**+6.91 kB**, +2.05%); CSS **16.09 kB gzip**. No new dependency.
+- **Build:** `dist` JS **345.90 kB gzip** vs F-38 baseline **337.54 kB gzip**
+  (**+8.36 kB**, +2.48%); CSS **16.25 kB gzip**. No new dependency.
 - **Unit:** **1002 tests** (baseline 977; +25), all green.
-- **E2E touched:** `info-panel-jack-cables` 4 tests × desktop + mobile,
-  `info-panel`, `cables`, `share` all green (**81 passed + 1 skipped** in the
-  final touched run; the only skip is the desktop `it` case for the mobile peek).
+- **E2E:** full suite **366 passed + 11 skipped**; the touched `info-panel-jack-cables`,
+  `info-panel` and `picker-choka` runs are green (30 passed + 1 skipped).
 - **Share size** (v3 x/y payload): 10 corrected parts = **2,250 B decoded / 286 B
   compressed / 388 chars**; 400 parts × 8 overrides = **140,960 B / 3,773 B /
   5,037 chars** — under the 200 KB decoded and 32,000-char caps. Demo link: 412

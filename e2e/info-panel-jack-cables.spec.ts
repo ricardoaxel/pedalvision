@@ -94,7 +94,7 @@ async function isMobileProof(page: Page): Promise<boolean> {
 
 async function openAdjust(page: Page): Promise<void> {
 	if (await isMobileProof(page)) {
-		await page.getByTestId("proof-adjust").click();
+		await page.getByTestId("proof-jack-chip").click();
 		await expect(page.getByTestId("proof-inspector")).toBeVisible();
 	}
 }
@@ -197,6 +197,34 @@ test("drags a jack on the real pedal, persists it, and resets it", async ({
 	} else {
 		await expect(page.getByTestId("jack-marker-corrected")).toHaveCount(0);
 	}
+});
+
+test("proof affordances: desktop hover feedback and mobile stepper/jack list", async ({
+	page,
+}) => {
+	await placeChoka(page);
+	const uid = await firstItemUid(page);
+	await enterProof(page);
+	if (await isMobileProof(page)) {
+		await page.getByTestId("proof-next").click();
+		await expect(page.getByTestId("proof-position")).not.toBeEmpty();
+		await page.getByTestId("proof-jack-chip").click();
+		const list = page.getByTestId("proof-jack-list");
+		await expect(list).toBeVisible();
+		await expect(list.getByRole("button")).toHaveCount(3);
+		await list.getByRole("button").nth(2).click();
+		await expect(page.getByTestId("proof-jack-chip")).toContainText("Power");
+		return;
+	}
+	const stage = page.getByTestId("stage");
+	const from = await anchorScreenPoint(page, `item:${uid}:0`);
+	await page.mouse.move(from.x, from.y);
+	await expect(stage).toHaveAttribute("data-proof-hover", "true");
+	await page.mouse.move(4, 4);
+	await expect(stage).toHaveAttribute("data-proof-hover", "false");
+	await expect(
+		page.locator('[aria-label="Selected pedal actions"]'),
+	).toHaveCount(0);
 });
 
 test("reset all uses a two-step confirm and keeps the rest of the scene", async ({

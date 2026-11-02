@@ -22,29 +22,38 @@ interface JackProofState {
 	activeUid: string | null;
 	/** Row/pin selected for kind/TRS/reset/keyboard nudge. */
 	selectedJack: number | null;
+	/** Nearest pin under the pointer (hover feedback only). */
+	hoverJack: number | null;
 	drag: JackProofDrag | null;
 	/** Inline refusal from a failed commit (ledger, never a toast). */
 	notice: string | null;
+	/** Bumped when the mobile inspector opens/closes so the canvas refits. */
+	refitNonce: number;
 	begin: (uid: string) => void;
 	exit: () => void;
 	select: (jack: number | null) => void;
+	setHover: (jack: number | null) => void;
 	beginDrag: (uid: string, jack: number, x: number, y: number) => void;
 	/** One store update per pointermove; keeps the drag object stable. */
 	setDrag: (x: number, y: number, moved: boolean) => void;
 	cancelDrag: () => void;
 	endDrag: () => void;
 	setNotice: (notice: string | null) => void;
+	requestRefit: () => void;
 }
 
 export const useJackProof = create<JackProofState>((set, get) => ({
 	activeUid: null,
 	selectedJack: null,
+	hoverJack: null,
 	drag: null,
 	notice: null,
+	refitNonce: 0,
 	begin: (uid) =>
 		set((state) => ({
 			activeUid: uid,
 			selectedJack: state.activeUid === uid ? state.selectedJack : 0,
+			hoverJack: null,
 			drag: null,
 			notice: null,
 		})),
@@ -52,14 +61,19 @@ export const useJackProof = create<JackProofState>((set, get) => ({
 		set({
 			activeUid: null,
 			selectedJack: null,
+			hoverJack: null,
 			drag: null,
 			notice: null,
+			refitNonce: 0,
 		}),
 	select: (jack) => set({ selectedJack: jack, notice: null }),
+	setHover: (jack) =>
+		set((state) => (state.hoverJack === jack ? state : { hoverJack: jack })),
 	beginDrag: (uid, jack, x, y) =>
 		set({
 			activeUid: uid,
 			selectedJack: jack,
+			hoverJack: jack,
 			drag: { uid, jack, x, y, startX: x, startY: y, moved: false },
 			notice: null,
 		}),
@@ -70,7 +84,11 @@ export const useJackProof = create<JackProofState>((set, get) => ({
 		set({ drag: { ...drag, x, y, moved } });
 	},
 	cancelDrag: () =>
-		set((state) => (state.drag ? { drag: null, notice: null } : state)),
-	endDrag: () => set((state) => (state.drag ? { drag: null } : state)),
+		set((state) =>
+			state.drag ? { drag: null, hoverJack: null, notice: null } : state,
+		),
+	endDrag: () =>
+		set((state) => (state.drag ? { drag: null, hoverJack: null } : state)),
 	setNotice: (notice) => set({ notice }),
+	requestRefit: () => set((state) => ({ refitNonce: state.refitNonce + 1 })),
 }));

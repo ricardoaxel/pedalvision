@@ -3,6 +3,7 @@ import type {
 	ImageSource,
 	Jack,
 	JackEdge,
+	JackKind,
 	Power,
 } from "../catalog/schema";
 import type { ResolvedItem, ResolvedJack } from "../state/scene";
@@ -102,6 +103,21 @@ export function formatDimensions(
 	units: DisplayUnits,
 ): string {
 	return `${cmToDisplay(widthCm, units)} × ${cmToDisplay(heightCm, units)} ${units}`;
+}
+
+/** Kind label with a stable ordinal when the item has duplicate kinds. */
+export function jackKindLabelAt(
+	jacks: readonly { kind: JackKind }[],
+	index: number,
+): string {
+	const kind = jacks[index]?.kind;
+	if (!kind) return "";
+	const same = jacks
+		.map((jack, jackIndex) => (jack.kind === kind ? jackIndex : -1))
+		.filter((jackIndex) => jackIndex >= 0);
+	return same.length > 1
+		? `${jackKindLabel(kind)} ${same.indexOf(index) + 1}`
+		: jackKindLabel(kind);
 }
 
 /** "9 V · DC · 100 mA". */
