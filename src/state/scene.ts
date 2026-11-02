@@ -5,7 +5,6 @@ import {
 	type CatalogPedal,
 	type EffectType,
 	isCableJack,
-	JACK_EDGES,
 	JACK_KINDS,
 	type Jack,
 	type JackEdge,
@@ -25,6 +24,7 @@ import {
 	rotatePoint,
 	worldToBoard,
 } from "../lib/geometry";
+import { clamp01, deriveEdgePos, jackPointNormalized } from "../lib/jackProof";
 import { isReadOnly } from "./readOnly";
 
 /**
@@ -101,9 +101,10 @@ export interface PlacedItem {
  */
 export interface JackOverride {
 	jack: number;
+	/** Free normalized position on the pedal face (0..1); always supplied as a pair. */
+	x?: number;
+	y?: number;
 	kind?: JackKind;
-	edge?: JackEdge;
-	pos?: number;
 	stereo?: boolean;
 }
 
@@ -319,6 +320,9 @@ export type ResolvedJack = Jack & {
 	approximate?: boolean;
 	assumed?: boolean;
 	corrected?: boolean;
+	/** Free normalized point on the face (present only on corrected jacks). */
+	xNorm?: number;
+	yNorm?: number;
 };
 
 /**
@@ -407,13 +411,6 @@ function isJackKind(value: unknown): value is JackKind {
 	);
 }
 
-function isJackEdge(value: unknown): value is JackEdge {
-	return (
-		typeof value === "string" &&
-		(JACK_EDGES as readonly string[]).includes(value)
-	);
-}
-
 /**
  * The item's **base** jacks before local corrections: catalog jacks, then the
  * inline custom definition, then the documented fallback pair for a catalog
@@ -448,6 +445,7 @@ function applyJackOverrides(
 	if (base.length === 0 || !item.jackOverrides?.length) return base;
 	const resolved = resolveItem(item, customPedals);
 	if (resolved.definition === null) return base;
+	const footprint = itemFootprint(item, customPedals);
 	const byIndex = new Map<number, JackOverride>();
 	for (const override of item.jackOverrides) {
 		if (!override || typeof override !== "object") continue;
@@ -463,16 +461,20 @@ function applyJackOverrides(
 		if (override.kind !== undefined && isJackKind(override.kind)) {
 			next.kind = override.kind;
 		}
-		if (override.edge !== undefined && isJackEdge(override.edge)) {
-			next.edge = override.edge;
-		}
 		if (
-			override.pos !== undefined &&
-			Number.isFinite(override.pos) &&
-			override.pos >= 0 &&
-			override.pos <= 1
+			override.x !== undefined &&
+			override.y !== undefined &&
+			Number.isFinite(override.x) &&
+			Number.isFinite(override.y)
 		) {
-			next.pos = override.pos;
+			const point = { x: clamp01(override.x), y: clamp01(override.y) };
+			const derived = deriveEdgePos(point, footprint);
+			next.xNorm = point.x;
+			next.yNorm = point.y;
+			// Keep edge/pos populated for display/legacy consumers; the anchor
+			// point itself comes from xNorm/yNorm.
+			next.edge = derived.edge;
+			next.pos = derived.pos;
 		}
 		if (override.stereo !== undefined) next.stereo = override.stereo;
 		next.approximate = false;
@@ -504,6 +506,7 @@ export function normalizeJackOverrides(
 	// `applyJackOverrides` ignores them until the base jacks are known.
 	const base =
 		resolved.definition === null ? null : baseItemJacks(item, customPedals);
+	const footprint = itemFootprint(item, customPedals);
 	const seen = new Set<number>();
 	const result: JackOverride[] = [];
 	for (const raw of item.jackOverrides) {
@@ -521,21 +524,31 @@ export function normalizeJackOverrides(
 				changed = true;
 			}
 		}
-		if (raw.edge !== undefined && isJackEdge(raw.edge)) {
-			if (!jack || raw.edge !== jack.edge) {
-				next.edge = raw.edge;
+		if (
+			raw.x !== undefined &&
+			raw.y !== undefined &&
+			Number.isFinite(raw.x) &&
+			Number.isFinite(raw.y) &&
+			raw.x >= 0 &&
+			raw.x <= 1 &&
+			raw.y >= 0 &&
+			raw.y <= 1
+		) {
+			const point = {
+				x: Math.round(clamp01(raw.x) * 1000) / 1000,
+				y: Math.round(clamp01(raw.y) * 1000) / 1000,
+			};
+			const basePoint = jack
+				? jackPointNormalized(jack, footprint)
+				: { x: -1, y: -1 };
+			if (
+				Math.abs(point.x - basePoint.x) > 1e-9 ||
+				Math.abs(point.y - basePoint.y) > 1e-9
+			) {
+				next.x = point.x;
+				next.y = point.y;
 				changed = true;
 			}
-		}
-		if (
-			raw.pos !== undefined &&
-			Number.isFinite(raw.pos) &&
-			raw.pos >= 0 &&
-			raw.pos <= 1 &&
-			(!jack || Math.abs(raw.pos - jack.pos) > 1e-9)
-		) {
-			next.pos = raw.pos;
-			changed = true;
 		}
 		if (
 			raw.stereo !== undefined &&

@@ -268,7 +268,7 @@ test("save a copy preserves local jack corrections", async ({ page }) => {
 			item("i1", {
 				refId: "tc-electronic-choka-tremolo",
 				boardUid: "b1",
-				jackOverrides: [{ jack: 1, edge: "bottom", pos: 0.25 }],
+				jackOverrides: [{ jack: 1, x: 0.25, y: 1 }],
 			}),
 		],
 	});
@@ -279,8 +279,7 @@ test("save a copy preserves local jack corrections", async ({ page }) => {
 	await waitForSavedScene(page, (document) => {
 		const item = document.items[0];
 		return (
-			item?.jackOverrides?.[0]?.jack === 1 &&
-			item.jackOverrides[0]?.edge === "bottom"
+			item?.jackOverrides?.[0]?.jack === 1 && item.jackOverrides[0]?.y === 1
 		);
 	});
 });

@@ -24,9 +24,9 @@ export interface ShareFixture {
 		z: number;
 		jackOverrides?: Array<{
 			jack: number;
+			x?: number;
+			y?: number;
 			kind?: string;
-			edge?: string;
-			pos?: number;
 			stereo?: boolean;
 		}>;
 	}>;

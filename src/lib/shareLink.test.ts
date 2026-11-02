@@ -200,7 +200,7 @@ describe("share links (P3-03)", () => {
 	it("round-trips scene-local jack overrides (v3)", () => {
 		const overridden = item("item-1", {
 			boardUid: null,
-			jackOverrides: [{ jack: 0, edge: "bottom", pos: 0.25, stereo: true }],
+			jackOverrides: [{ jack: 0, x: 0.2, y: 0.8, stereo: true }],
 		});
 		const encoded = encodeShareLink("Corrected", {
 			boards: [],
@@ -214,7 +214,7 @@ describe("share links (P3-03)", () => {
 		const decoded = decodeShareHash(encoded.hash);
 		if (!decoded.ok) throw new Error(decoded.message);
 		expect(decoded.snapshot.items[0].jackOverrides).toEqual([
-			{ jack: 0, edge: "bottom", pos: 0.25, stereo: true },
+			{ jack: 0, x: 0.2, y: 0.8, stereo: true },
 		]);
 	});
 
@@ -247,8 +247,8 @@ describe("share links (P3-03)", () => {
 					items: [
 						item("item-1", {
 							jackOverrides: [
-								{ jack: 0, pos: 0.2 },
-								{ jack: 0, pos: 0.3 },
+								{ jack: 0, x: 0.2, y: 0.2 },
+								{ jack: 0, x: 0.3, y: 0.3 },
 							],
 						}),
 					],

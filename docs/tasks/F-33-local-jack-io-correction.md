@@ -1,8 +1,12 @@
 # F-33 — Local jack/IO correction (“Patch Corrector”)
 
-**Phase:** 1 (feature lane) · **Status:** implementation complete — final checks + PR
-(one PR, no merge) · **Model:** light but **high-risk** (scene/share codec): ≤2 light
-code-review passes only if a blocker needs a re-check.
+**Phase:** 1 (feature lane) · **Status:** implementation complete — PR #95 updated
+(one PR, no merge) · **Model:** light but **high-risk** (scene/share codec).
+**Owner revision 2026-11-02:** the correction is **canvas-first** — drag a jack pin
+anywhere on the real pedal (free 2D face position, **not** edge-constrained; top-face
+jacks included) — and the side-panel schematic/edge/slider were removed. The
+override now stores normalized `{x, y}` instead of `edge/pos`; the share v3 schema
+was redefined in place before its first release. See “Press Proof” below.
 **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review ≤300k; task hard ≤1.1M; 6 h active.
 **Branch/worktree:** `feat/f-33-local-jack-correction` off verified `main` `a217cba7` (F-38 merged, PR #94).
 
@@ -335,6 +339,34 @@ carries the field; add an item-level round-trip assertion for `jackOverrides`.
   / 32,000 chars; no measurable canvas regression (target 60 fps class); report
   numbers in the task file and PR.
 
+## Press Proof (owner revision, 2026-11-02)
+
+- **Direction:** **“Press Proof”** supersedes the panel-schematic “Proof Marks”
+execution. The real pedal is the proof sheet: `Correct` enters a mode where every
+effective jack (including PWR/EXP/MIDI/CTRL) becomes a screen-constant pin on the
+item; drag it anywhere inside the footprint (free normalized x/y), with live cable
+re-anchoring and routing (interior radial normal + chord guard). Release commits one
+override; Esc/pointercancel cancels. The panel is a proof ledger: rows, provenance,
+kind/TRS, position readout, per-jack reset, reset-all. Mobile hides the sheet and uses
+a fixed Proof Bar + inspector. Auto-frames the pedal only when its screen long edge is
+below 240/200 px; never restores the camera on exit.
+- **Model change:** `JackOverride = { jack, x?, y?, kind?, stereo? }` (x/y pair,
+  0..1 face position); `edge/pos` are derived for display/cable compatibility.
+  `normalizedToWorld`/`worldToNormalized` are shared by the drag hook, canvas layer
+  and cable overlay; interior anchors use a radial normal with a chord tangent guard.
+- **Code:** `lib/jackProof.ts`, `state/jackProof.ts`, `canvas/useJackProofDrag.ts`,
+  `canvas/JackProofLayer.tsx`, `components/ProofBar.tsx`; reworked
+  `JackCorrections`, `InfoPanel`, `PedalNode`, `Stage`, `SelectionLayer`,
+  `CableLayer`, `cablePath`, `sceneDocument`, `shareLink`.
+- **Design review:** pass 1 `approve-with-changes`; fixes folded (readout, ledger
+  visibility, mobile action bars/Done hierarchy); confirmation `approve-with-changes`
+  with no merge blockers; final chip/ledger fixes applied and re-shot. No further
+  round.
+- **Code review:** new pass `changes-required` — blocker (proof mode could outlive
+  its item/scene on mobile), should-fix (live cables not rendering during drag;
+  rotated-frame test/duplication) + nits. Fixed; confirmation **approve** (remaining
+  nits folded: nudge guard, ProofBar fallback, cable helper reuse).
+
 ## Design gate (recorded)
 
 - **Direction approved by the owner:** **“Proof Marks”** (inline accordion in the
@@ -360,16 +392,16 @@ carries the field; add an item-level round-trip assertion for `jackOverrides`.
 
 ## Measured results (2026-10-31)
 
-- **Build:** `dist` JS **340.46 kB gzip** vs F-38 baseline **337.54 kB gzip**
-  (**+2.92 kB**, +0.87%); CSS **16.00 kB gzip**. No new dependency.
-- **Unit:** **996 tests** (baseline 977; +19), all green.
-- **E2E touched:** `info-panel-jack-corrections` 4 tests × desktop + mobile,
-  `info-panel`, `cables`, `share` all green (**77 passed + 1 skipped** in the
+- **Build:** `dist` JS **344.45 kB gzip** vs F-38 baseline **337.54 kB gzip**
+  (**+6.91 kB**, +2.05%); CSS **16.09 kB gzip**. No new dependency.
+- **Unit:** **1002 tests** (baseline 977; +25), all green.
+- **E2E touched:** `info-panel-jack-cables` 4 tests × desktop + mobile,
+  `info-panel`, `cables`, `share` all green (**81 passed + 1 skipped** in the
   final touched run; the only skip is the desktop `it` case for the mobile peek).
-- **Share size** (v3 payload, overrides only): 10 corrected parts = **2,360 B
-  decoded / 293 B compressed / 397 chars**; 200 parts × 8 overrides = **84,760 B /
-  2,265 B / 3,026 chars**; 400 parts × 8 overrides = **169,760 B / 4,243 B /
-  5,664 chars** — under the 200 KB decoded and 32,000-char caps.
+- **Share size** (v3 x/y payload): 10 corrected parts = **2,250 B decoded / 286 B
+  compressed / 388 chars**; 400 parts × 8 overrides = **140,960 B / 3,773 B /
+  5,037 chars** — under the 200 KB decoded and 32,000-char caps. Demo link: 412
+  chars.
 - **Canvas:** 60 fps class with the correction editor open (avg 16.667 ms, p95
   16.8 ms over 90 rAF frames); heap **34.40 → 34.69 MB** (+0.29 MB) with the
   editor open. No threshold regression.

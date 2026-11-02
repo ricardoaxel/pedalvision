@@ -123,6 +123,17 @@ export const JACK_TICK = {
 	hitPx: 44,
 } as const;
 
+/** On-pedal proof pins + crop marks (F-33 “Press Proof”, screen px). */
+export const JACK_PROOF = {
+	pinPx: 16,
+	selectedPinPx: 18,
+	hitPx: 32,
+	hitTouchPx: 44,
+	cropArmPx: 10,
+	cropOffsetPx: 6,
+	cropStrokePx: 1.5,
+} as const;
+
 /** Cable trace metrics (screen px, counter-scaled at render). */
 export const CABLE = {
 	strokePx: 2,

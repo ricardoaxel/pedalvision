@@ -14,9 +14,9 @@ export interface SavedDocument {
 		boardUid?: string | null;
 		jackOverrides?: Array<{
 			jack: number;
+			x?: number;
+			y?: number;
 			kind?: string;
-			edge?: string;
-			pos?: number;
 			stereo?: boolean;
 		}>;
 	}>;

@@ -4,6 +4,7 @@ import { Group, Image as KonvaImage, Layer, Line, Rect } from "react-konva";
 import { cmToPx } from "../lib/geometry";
 import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useDrag } from "../state/drag";
+import { useJackProof } from "../state/jackProof";
 import { type DepartingGhost, useMotion } from "../state/motion";
 import { useReadOnly } from "../state/readOnly";
 import {
@@ -46,6 +47,7 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const scale = useViewport((state) => state.scale);
 	const readOnly = useReadOnly((state) => state.readOnly);
+	const proofActive = useJackProof((state) => state.activeUid !== null);
 
 	// The selected item already shows its halo; hide the hover ring for it.
 	const item =
@@ -56,7 +58,10 @@ export function SelectionLayer({ theme }: { theme: CanvasTheme }) {
 	// change still commits); it just detaches while the item is lifted mid-drag
 	// (the drag owns the position).
 	const attachUid =
-		!readOnly && selectedItemUid !== null && selectedItemUid !== liftedUid
+		!readOnly &&
+		!proofActive &&
+		selectedItemUid !== null &&
+		selectedItemUid !== liftedUid
 			? selectedItemUid
 			: null;
 

@@ -249,19 +249,20 @@ const itemSchema = z
 const jackOverrideSchema = z
 	.object({
 		jack: z.number().int().min(0).max(63),
+		// Free normalized position on the pedal face; always a pair.
+		x: z.number().finite().min(0).max(1).optional(),
+		y: z.number().finite().min(0).max(1).optional(),
 		kind: z.enum(JACK_KINDS).optional(),
-		edge: z.enum(JACK_EDGES).optional(),
-		pos: z.number().finite().min(0).max(1).optional(),
 		stereo: z.boolean().optional(),
 	})
 	.strict()
 	.refine(
 		(value) =>
-			value.kind !== undefined ||
-			value.edge !== undefined ||
-			value.pos !== undefined ||
-			value.stereo !== undefined,
-		{ message: "A jack correction must change at least one property" },
+			(value.x === undefined) === (value.y === undefined) &&
+			(value.kind !== undefined ||
+				value.x !== undefined ||
+				value.stereo !== undefined),
+		{ message: "A jack correction must change a position, kind or TRS state" },
 	);
 
 /** v3 placed item: v1/v2 item plus optional local corrections. */

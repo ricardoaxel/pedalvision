@@ -3,6 +3,7 @@ import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import { buildPartInfo, formatDimensions, formatPower } from "../lib/partInfo";
 import { useIsMobile } from "../lib/useMobile";
 import { useDrag } from "../state/drag";
+import { useJackProof } from "../state/jackProof";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
 import { usePlannerCatalog } from "../state/plannerCatalog";
@@ -60,6 +61,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	const isCurrentSelection =
 		activeUid !== null && activeUid === selectedItemUid;
 	const isMobile = useIsMobile();
+	const proofActive = useJackProof((state) => state.activeUid !== null);
 	const toggleExpanded = () => setExpandedUid(expanded ? null : activeUid);
 
 	const item = activeUid
@@ -105,7 +107,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 		// F-04 safe rect must consider the sheet gone immediately (the visual exit
 		// is an overlay on mobile); otherwise a focus mid-exit is centred for the
 		// old inset and jumps when the panel unmounts.
-		if (!item || !isCurrentSelection || !element) {
+		if (!item || !isCurrentSelection || !element || (isMobile && proofActive)) {
 			setSheetHeight(0);
 			return;
 		}
@@ -114,8 +116,9 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 		const observer = new ResizeObserver(update);
 		observer.observe(element);
 		return () => observer.disconnect();
-	}, [item, isCurrentSelection, setSheetHeight]);
+	}, [item, isCurrentSelection, isMobile, proofActive, setSheetHeight]);
 
+	if (isMobile && proofActive) return null;
 	if (!item || !resolved) return null;
 
 	const jacks = resolveItemJacks(item, customPedals);
@@ -240,6 +243,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 			className="info-panel"
 			data-testid="info-panel"
 			data-expanded={expanded ? "true" : "false"}
+			data-proofing={proofActive ? "true" : "false"}
 			aria-label="Selected part details"
 		>
 			<header className="info-panel__header">

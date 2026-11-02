@@ -99,7 +99,7 @@ describe("buildCableSchedule", () => {
 			boards: [],
 			items: [
 				item("a", "boss-ac-2-acoustic-simulator", 10, 10, {
-					jackOverrides: [{ jack: 0, edge: "top", pos: 0.3 }],
+					jackOverrides: [{ jack: 0, x: 0.3, y: 0 }],
 				}),
 			],
 			customPedals: [],

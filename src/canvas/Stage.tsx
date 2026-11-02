@@ -18,6 +18,7 @@ import { useCableDrag as useCableDragState } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { isCameraLocked, useFocus, useIsFramed } from "../state/focus";
 import { useHistory } from "../state/history";
+import { useJackProof } from "../state/jackProof";
 import { useSceneLibrary } from "../state/library";
 import { useMotion } from "../state/motion";
 import { useReadOnly } from "../state/readOnly";
@@ -40,11 +41,13 @@ import { DragLayer } from "./DragLayer";
 import { EndpointLayer } from "./EndpointLayer";
 import { GridLayer } from "./GridLayer";
 import { imageStatusSummary, subscribeImageStatus } from "./imageStatus";
+import { JackProofLayer } from "./JackProofLayer";
 import { LooseItemLayer } from "./LooseItemLayer";
 import { SelectionLayer } from "./SelectionLayer";
 import { useCableDrag } from "./useCableDrag";
 import { useCanvasTheme } from "./useCanvasTheme";
 import { useItemDrag } from "./useItemDrag";
+import { useJackProofDrag } from "./useJackProofDrag";
 import { useViewportGestures } from "./useViewportGestures";
 
 // Enable hit detection while dragging (task note). Harmless with no draggable
@@ -105,6 +108,7 @@ export function Stage() {
 	const gridStepCm = useSettings((state) => state.gridStepCm);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const readOnlyCue = useReadOnly((state) => state.cue);
+	const proofActive = useJackProof((state) => state.activeUid !== null);
 	const motionPulseSeq = useMotion((state) => state.pulseSeq);
 	const motionGhostSeq = useMotion((state) => state.ghostSeq);
 	const motionBoardPulseSeq = useMotion((state) => state.boardPulseSeq);
@@ -300,6 +304,7 @@ export function Stage() {
 
 	useViewportGestures(containerRef, hitTest);
 	useItemDrag(containerRef);
+	useJackProofDrag(containerRef);
 	useCableDrag(containerRef);
 
 	useEffect(() => {
@@ -414,6 +419,7 @@ export function Stage() {
 			data-cable-preview={cablePreviewKey}
 			data-cable-target={cableTargetKey}
 			data-jack-anchors={jackAnchors}
+			data-proofing={proofActive ? "true" : "false"}
 			data-framed={framed ? "true" : "false"}
 			data-focus-epoch={focusEpoch}
 			data-focus-target={focusTarget}
@@ -441,6 +447,7 @@ export function Stage() {
 					// empty drag keeps the pin; only a click (no movement) releases it.
 					onMouseDown={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofActive) return;
 						if (isCameraLocked()) {
 							lockClickStart.current = eventClientPoint(event.evt);
 							return;
@@ -449,6 +456,7 @@ export function Stage() {
 					}}
 					onTouchStart={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofActive) return;
 						if (isCameraLocked()) {
 							lockClickStart.current = eventClientPoint(event.evt);
 							return;
@@ -457,6 +465,7 @@ export function Stage() {
 					}}
 					onMouseUp={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofActive) return;
 						const start = lockClickStart.current;
 						lockClickStart.current = null;
 						if (!start) return;
@@ -468,6 +477,7 @@ export function Stage() {
 					}}
 					onTouchEnd={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofActive) return;
 						const start = lockClickStart.current;
 						lockClickStart.current = null;
 						if (!start) return;
@@ -492,6 +502,7 @@ export function Stage() {
 					<BoardLayer theme={theme} />
 					<LooseItemLayer theme={theme} />
 					<CableLayer theme={theme} />
+					<JackProofLayer theme={theme} />
 					<SelectionLayer theme={theme} />
 					{/* Terminal tags sit above the selection Transformer so a tag
 					 * near a selected pedal is still clickable; the DragLayer stays

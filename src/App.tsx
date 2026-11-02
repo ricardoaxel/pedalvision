@@ -35,6 +35,7 @@ import { MeasureControl } from "./components/MeasureControl";
 import { MeasureOverlay } from "./components/MeasureOverlay";
 import { MotionPresence } from "./components/MotionPresence";
 import { Picker, type PickerTab } from "./components/Picker";
+import { ProofBar } from "./components/ProofBar";
 import { ScaleReadout } from "./components/ScaleReadout";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
 import { SharePanel, ShareTriggerContent } from "./components/SharePanel";
@@ -51,6 +52,7 @@ import { MOTION } from "./lib/motion";
 import { useCableDrag } from "./state/cableDrag";
 import { useEndpointPlacement } from "./state/endpointPlacement";
 import { useCameraLockRefit } from "./state/focus";
+import { useJackProof } from "./state/jackProof";
 import { useSceneLibrary } from "./state/library";
 import { useMeasure } from "./state/measure";
 import { useReadOnly } from "./state/readOnly";
@@ -132,6 +134,10 @@ function App() {
 	// F-36: the derived signal-flow report uses the same one-surface-at-a-time slot.
 	const [continuityOpen, setContinuityOpen] = useState(false);
 	const readOnly = useReadOnly((state) => state.readOnly);
+	const proofUid = useJackProof((state) => state.activeUid);
+	const proofActive = proofUid !== null;
+	const proofItems = useScene((state) => state.items);
+	const activeSceneId = useSceneLibrary((state) => state.activeId);
 	const shareStatus = useShare((state) => state.status);
 	const showCables = useSettings((state) => state.showCables);
 	const storageLevel = useSceneLibrary((state) => state.storageHealth.level);
@@ -186,6 +192,22 @@ function App() {
 	useEffect(() => {
 		if (measureActive) useSelection.getState().clearSelection();
 	}, [measureActive]);
+	// Proof mode is per item/scene: leaving the scene or deleting/undoing the
+	// proofed part must exit it (otherwise mobile loses its Done affordance).
+	useEffect(() => {
+		if (!proofUid) return;
+		if (!proofItems.some((item) => item.uid === proofUid)) {
+			useJackProof.getState().exit();
+		}
+	}, [proofUid, proofItems]);
+	const proofSceneRef = useRef(activeSceneId);
+	useEffect(() => {
+		if (proofSceneRef.current !== activeSceneId) {
+			proofSceneRef.current = activeSceneId;
+			if (useJackProof.getState().activeUid) useJackProof.getState().exit();
+		}
+	}, [activeSceneId]);
+
 	// Opening any modal/tray leaves the transient measure mode.
 	useEffect(() => {
 		if (
@@ -199,6 +221,7 @@ function App() {
 			editingBoardUid !== null
 		) {
 			useMeasure.getState().setActive(false);
+			if (useJackProof.getState().activeUid) useJackProof.getState().exit();
 		}
 	}, [
 		pickerOpen,
@@ -422,9 +445,13 @@ function App() {
 					<ShareStamp />
 				) : (
 					<>
-						<ItemActionBar onEditCustom={openCustomEdit} />
-						<BoardActionBar onEditBoard={openBoardEdit} />
-						<GraphActionBar />
+						{proofActive ? null : (
+							<>
+								<ItemActionBar onEditCustom={openCustomEdit} />
+								<BoardActionBar onEditBoard={openBoardEdit} />
+								<GraphActionBar />
+							</>
+						)}
 						{/* First-run "Bench Note" (P2-08): one notice at a time — the
 						 * storage warning wins while saving is unavailable (P3-05). */}
 						{storageLevel === "unavailable" ? null : (
@@ -596,6 +623,7 @@ function App() {
 			 * presence slot keeps the rail mounted for its close, then releases
 			 * the canvas width once. */}
 			<InfoPanelSlot itemUid={selectedItemUid} />
+			<ProofBar />
 			{!readOnly ? (
 				<Picker
 					open={pickerOpen}

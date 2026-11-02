@@ -42,7 +42,7 @@ describe("local jack/IO corrections (F-33)", () => {
 		const second = addItem(CHOKA, 20);
 		const result = useScene
 			.getState()
-			.setJackOverride(first, 1, { edge: "bottom", pos: 0.25 });
+			.setJackOverride(first, 1, { x: 0.25, y: 1 });
 		expect(result.ok).toBe(true);
 
 		const items = useScene.getState().items;
@@ -50,9 +50,7 @@ describe("local jack/IO corrections (F-33)", () => {
 		const secondItem = items.find((item) => item.uid === second);
 		if (!firstItem || !secondItem) throw new Error("missing item");
 
-		expect(firstItem.jackOverrides).toEqual([
-			{ jack: 1, edge: "bottom", pos: 0.25 },
-		]);
+		expect(firstItem.jackOverrides).toEqual([{ jack: 1, x: 0.25, y: 1 }]);
 		expect(secondItem.jackOverrides).toBeUndefined();
 		expect(baseItemJacks(firstItem)[1]).toMatchObject({
 			kind: "out",
@@ -81,7 +79,7 @@ describe("local jack/IO corrections (F-33)", () => {
 
 		const result = useScene
 			.getState()
-			.setJackOverride(uid, 0, { edge: "top", pos: 0.3 });
+			.setJackOverride(uid, 0, { x: 0.3, y: 0 });
 		expect(result.ok).toBe(true);
 		const corrected = useScene
 			.getState()
@@ -126,9 +124,7 @@ describe("local jack/IO corrections (F-33)", () => {
 		const oldAnchor = beforeItem
 			? resolveItemJacks(beforeItem)[1]?.pos
 			: undefined;
-		const result = useScene
-			.getState()
-			.setJackOverride(a, 1, { edge: "right", pos: 0.75 });
+		const result = useScene.getState().setJackOverride(a, 1, { x: 1, y: 0.75 });
 		expect(result.ok).toBe(true);
 		const item = useScene.getState().items.find((entry) => entry.uid === a);
 		if (!item) throw new Error("missing item");
@@ -165,15 +161,15 @@ describe("local jack/IO corrections (F-33)", () => {
 
 	it("resets one jack and all jacks as guarded actions", () => {
 		const uid = addItem(CHOKA);
-		useScene.getState().setJackOverride(uid, 0, { pos: 0.2 });
-		useScene.getState().setJackOverride(uid, 1, { edge: "bottom" });
+		useScene.getState().setJackOverride(uid, 0, { x: 0.2, y: 0.5 });
+		useScene.getState().setJackOverride(uid, 1, { x: 0.5, y: 1 });
 		let item = useScene.getState().items.find((entry) => entry.uid === uid);
 		if (!item) throw new Error("missing item");
 		expect(item.jackOverrides).toHaveLength(2);
 
 		expect(useScene.getState().resetJackOverride(uid, 0).ok).toBe(true);
 		item = useScene.getState().items.find((entry) => entry.uid === uid);
-		expect(item?.jackOverrides).toEqual([{ jack: 1, edge: "bottom" }]);
+		expect(item?.jackOverrides).toEqual([{ jack: 1, x: 0.5, y: 1 }]);
 
 		expect(useScene.getState().resetAllJackOverrides(uid).ok).toBe(true);
 		item = useScene.getState().items.find((entry) => entry.uid === uid);
@@ -182,12 +178,12 @@ describe("local jack/IO corrections (F-33)", () => {
 
 	it("copies overrides on duplicate and ignores custom pedals", () => {
 		const uid = addItem(CHOKA);
-		useScene.getState().setJackOverride(uid, 1, { edge: "bottom" });
+		useScene.getState().setJackOverride(uid, 1, { x: 0.5, y: 1 });
 		const cloneUid = required(useScene.getState().duplicateItem(uid));
 		const clone = useScene
 			.getState()
 			.items.find((item) => item.uid === cloneUid);
-		expect(clone?.jackOverrides).toEqual([{ jack: 1, edge: "bottom" }]);
+		expect(clone?.jackOverrides).toEqual([{ jack: 1, x: 0.5, y: 1 }]);
 
 		const customRef = required(
 			useScene.getState().addCustomPedal({
@@ -205,14 +201,14 @@ describe("local jack/IO corrections (F-33)", () => {
 		);
 		const result = useScene
 			.getState()
-			.setJackOverride(customUid, 0, { edge: "bottom" });
+			.setJackOverride(customUid, 0, { x: 0.5, y: 1 });
 		expect(result.ok).toBe(false);
 		expect(result.reason).toContain("Custom");
 	});
 
 	it("marks only the corrected fallback jack as non-assumed in the anchor index", () => {
 		const uid = addItem(BARE);
-		useScene.getState().setJackOverride(uid, 0, { edge: "top", pos: 0.3 });
+		useScene.getState().setJackOverride(uid, 0, { x: 0.3, y: 0 });
 		const state = useScene.getState();
 		const index = buildAnchorIndex(state);
 		expect(index.items.get(`item:${uid}:0`)).toMatchObject({
@@ -239,14 +235,16 @@ describe("local jack/IO corrections (F-33)", () => {
 				},
 			],
 		});
-		const result = useScene.getState().setJackOverride(a, 1, { pos: 0.3 });
+		const result = useScene
+			.getState()
+			.setJackOverride(a, 1, { x: 0.5, y: 0.3 });
 		expect(result.ok).toBe(true);
 	});
 
 	it("records one undo step per correction and reset", () => {
 		const uid = addItem(CHOKA);
 		clearHistory();
-		useScene.getState().setJackOverride(uid, 1, { edge: "bottom" });
+		useScene.getState().setJackOverride(uid, 1, { x: 0.5, y: 1 });
 		flushHistory();
 		expect(useHistory.getState().past).toHaveLength(1);
 		undo();
@@ -254,7 +252,7 @@ describe("local jack/IO corrections (F-33)", () => {
 			useScene.getState().items.find((item) => item.uid === uid)?.jackOverrides,
 		).toBeUndefined();
 
-		useScene.getState().setJackOverride(uid, 1, { edge: "bottom" });
+		useScene.getState().setJackOverride(uid, 1, { x: 0.5, y: 1 });
 		flushHistory();
 		useScene.getState().resetJackOverride(uid, 1);
 		flushHistory();
@@ -264,7 +262,9 @@ describe("local jack/IO corrections (F-33)", () => {
 	it("is a no-op in a read-only share", () => {
 		const uid = addItem(CHOKA);
 		useReadOnly.getState().setReadOnly(true);
-		const result = useScene.getState().setJackOverride(uid, 0, { pos: 0.2 });
+		const result = useScene
+			.getState()
+			.setJackOverride(uid, 0, { x: 0.2, y: 0.5 });
 		expect(result.ok).toBe(false);
 		expect(
 			useScene.getState().items.find((item) => item.uid === uid)?.jackOverrides,

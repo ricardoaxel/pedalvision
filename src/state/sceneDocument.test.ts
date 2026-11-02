@@ -86,16 +86,16 @@ describe("scene documents", () => {
 			boards: [board],
 			items: [
 				item({
-					jackOverrides: [{ jack: 0, edge: "bottom", pos: 0.2, stereo: true }],
+					jackOverrides: [{ jack: 0, x: 0.2, y: 1, stereo: true }],
 				}),
 			],
 			customPedals: [],
 		});
 		expect(parseSceneDocument(document)?.items[0]?.jackOverrides).toEqual([
-			{ jack: 0, edge: "bottom", pos: 0.2, stereo: true },
+			{ jack: 0, x: 0.2, y: 1, stereo: true },
 		]);
 		expect(sceneFromDocument(document).items[0]?.jackOverrides).toEqual([
-			{ jack: 0, edge: "bottom", pos: 0.2, stereo: true },
+			{ jack: 0, x: 0.2, y: 1, stereo: true },
 		]);
 	});
 
@@ -105,32 +105,36 @@ describe("scene documents", () => {
 			items: [
 				item({
 					jackOverrides: [
-						{ jack: 9, pos: 0.2 },
-						{ jack: 0, pos: 0.5 },
-						{ jack: 0, pos: 0.2 },
-						{ jack: 0, pos: 0.3 },
+						{ jack: 9, x: 0.2, y: 0.5 },
+						{ jack: 0, x: 1, y: 0.5 },
+						{ jack: 0, x: 0.2, y: 0.5 },
+						{ jack: 0, x: 0.3, y: 0.5 },
 					],
 				}),
 				item({
 					uid: "i2",
 					refId: customPedal.refId,
-					jackOverrides: [{ jack: 0, pos: 0.2 }],
+					jackOverrides: [{ jack: 0, x: 0.2, y: 0.5 }],
 				}),
 				item({
 					uid: "i3",
 					refId: "future-catalog-pedal",
-					jackOverrides: [{ jack: 0, pos: 0.2 }],
+					jackOverrides: [{ jack: 0, x: 0.2, y: 0.5 }],
 				}),
 			],
 			customPedals: [customPedal],
 		});
 		const scene = sceneFromDocument(document);
 		// Out-of-range and no-op entries drop; duplicate index keeps the first.
-		expect(scene.items[0]?.jackOverrides).toEqual([{ jack: 0, pos: 0.2 }]);
+		expect(scene.items[0]?.jackOverrides).toEqual([
+			{ jack: 0, x: 0.2, y: 0.5 },
+		]);
 		// Custom pedals keep their shared editor, so per-instance overrides drop.
 		expect(scene.items[1]?.jackOverrides).toBeUndefined();
 		// An unknown ref keeps the correction for a later catalog/planner load.
-		expect(scene.items[2]?.jackOverrides).toEqual([{ jack: 0, pos: 0.2 }]);
+		expect(scene.items[2]?.jackOverrides).toEqual([
+			{ jack: 0, x: 0.2, y: 0.5 },
+		]);
 	});
 
 	it("rejects corrupt / incomplete / unknown-version documents", () => {

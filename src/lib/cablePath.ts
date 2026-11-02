@@ -29,6 +29,10 @@ function sub(a: Point, b: Point): Point {
 	return { x: a.x - b.x, y: a.y - b.y };
 }
 
+function dot(a: Point, b: Point): number {
+	return a.x * b.x + a.y * b.y;
+}
+
 function normalize(point: Point): Point {
 	const length = Math.hypot(point.x, point.y);
 	return length > 0
@@ -58,11 +62,23 @@ export function cableCurve(
 		CABLE.handleMinPx / safeScale,
 		Math.min(chord * CABLE.handleChordFraction, CABLE.handleMaxPx / safeScale),
 	);
-	// A jack handle leaves along its outward normal. An endpoint has no edge, so
-	// its handle points back along the chord (the cable plugs into the tag).
-	const control1 = add(start, scalePoint(from.normal ?? direction, handle));
-	const control2 = to.normal
-		? add(end, scalePoint(to.normal, handle))
+	// A jack handle leaves along its outward normal. An interior/free jack whose
+	// radial normal points back toward its peer collapses to the chord tangent
+	// instead of looping around the pedal. An endpoint has no edge, so its handle
+	// points back along the chord (the cable plugs into the tag).
+	const startNormal =
+		from.normal && (!from.interior || dot(from.normal, direction) >= 0)
+			? from.normal
+			: null;
+	const endNormal =
+		to.normal && (!to.interior || dot(to.normal, direction) <= 0)
+			? to.normal
+			: null;
+	const control1 = startNormal
+		? add(start, scalePoint(startNormal, handle))
+		: add(start, scalePoint(direction, handle));
+	const control2 = endNormal
+		? add(end, scalePoint(endNormal, handle))
 		: add(end, scalePoint(direction, -handle));
 
 	const tangent = normalize(sub(end, control2));

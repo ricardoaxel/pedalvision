@@ -128,6 +128,17 @@ export function jackProvenance(jack: ResolvedJack): JackProvenance {
 	return null;
 }
 
+/** "2.9 × 4.1 cm" — free x/y position on the pedal face (F-33). */
+export function formatJackPosition(
+	jack: ResolvedJack,
+	widthCm: number,
+	heightCm: number,
+	units: DisplayUnits,
+): string {
+	if (jack.xNorm === undefined || jack.yNorm === undefined) return "";
+	return `x ${cmToDisplay(jack.xNorm * widthCm, units)} · y ${cmToDisplay(jack.yNorm * heightCm, units)} ${units}`;
+}
+
 /** "I · Top · 0.30" — short kind, edge, position along the edge. */
 export function formatJack(jack: Jack): string {
 	const kind =

@@ -1,43 +1,35 @@
 import { useEffect, useId, useRef, useState } from "react";
-import {
-	JACK_EDGES,
-	JACK_KINDS,
-	type JackEdge,
-	type JackKind,
-} from "../catalog/schema";
-import { JACK_EDGE_LABELS, jackKindLabel } from "../lib/customPedal";
+import { JACK_KINDS, type JackKind } from "../catalog/schema";
+import { jackKindLabel } from "../lib/customPedal";
 import type { DisplayUnits } from "../lib/geometry";
-import { formatJack, jackProvenance } from "../lib/partInfo";
+import {
+	formatJackPosition,
+	JACK_EDGE_NAMES,
+	jackProvenance,
+} from "../lib/partInfo";
+import { useJackProof } from "../state/jackProof";
 import { type ResolvedJack, useScene } from "../state/scene";
 import { ChevronIcon } from "./icons";
-import { PART_PREVIEW_SIZES, PartDrawing } from "./PartDrawing";
 
 type JackPatch = {
 	kind?: JackKind;
-	edge?: JackEdge;
-	pos?: number;
 	stereo?: boolean;
 };
 
 /**
- * F-33 “Proof Marks” jack/IO correction editor. It lives inside the existing
- * InfoPanel Jacks section (owner-approved direction, 2026-10-31): one inline
- * accordion editor at a time, per-jack provenance markers, an in-panel
- * schematic map, per-jack reset and a two-step “Reset all jacks”. Read-only
- * shares and custom pedals get static rows only.
+ * F-33 “Press Proof” ledger. The canvas is the schematic: entering Correct
+ * turns every effective jack on the real pedal into a draggable pin. The panel
+ * keeps the provenance rows, kind/TRS, reset and the position readout, and is
+ * the accessible/keyboard proxy for the canvas pins.
  */
 interface JackCorrectionsProps {
 	itemUid: string;
-	/** Effective jacks (base + local corrections). */
 	jacks: ResolvedJack[];
-	/** Catalog/fallback jacks before local corrections (baseline text). */
 	baseJacks: ResolvedJack[];
 	widthCm: number;
 	heightCm: number;
 	units: DisplayUnits;
-	/** False in a read-only share or when the item is not editable. */
 	editable: boolean;
-	/** Custom parts keep their shared editor, so no per-instance controls. */
 	isCustom: boolean;
 }
 
@@ -51,35 +43,26 @@ export function JackCorrections({
 	editable,
 	isCustom,
 }: JackCorrectionsProps) {
-	const [correcting, setCorrecting] = useState(false);
-	const [openIndex, setOpenIndex] = useState<number | null>(null);
-	const [draftPos, setDraftPos] = useState(0.5);
-	const [refusal, setRefusal] = useState<{
-		index: number;
-		message: string;
-	} | null>(null);
-	const [resetArmed, setResetArmed] = useState(false);
+	const activeUid = useJackProof((state) => state.activeUid);
+	const selectedJack = useJackProof((state) => state.selectedJack);
+	const notice = useJackProof((state) => state.notice);
+	const select = useJackProof((state) => state.select);
+	const beginProof = useJackProof((state) => state.begin);
+	const exitProof = useJackProof((state) => state.exit);
 	const setJackOverride = useScene((state) => state.setJackOverride);
 	const resetJackOverride = useScene((state) => state.resetJackOverride);
 	const resetAllJackOverrides = useScene(
 		(state) => state.resetAllJackOverrides,
 	);
+	const [resetArmed, setResetArmed] = useState(false);
 	const cancelResetRef = useRef<HTMLButtonElement>(null);
-	const rowRefs = useRef(new Map<number, HTMLButtonElement | null>());
 	const panelIdBase = useId();
 
+	const correcting = activeUid === itemUid;
 	const correctedCount = jacks.filter((jack) => jack.corrected === true).length;
 	const canCorrect = editable && !isCustom && jacks.length > 0;
+	const openIndex = correcting ? selectedJack : null;
 	const openJack = openIndex !== null ? jacks[openIndex] : undefined;
-
-	// Keep the slider draft in sync with the committed effective position only
-	// when the row opens or a commit changes it. Do not depend on the array
-	// identity (InfoPanel re-derives it every render).
-	const openPos = openJack?.pos;
-	useEffect(() => {
-		if (openIndex === null) return;
-		setDraftPos(openPos ?? 0.5);
-	}, [openIndex, openPos]);
 
 	useEffect(() => {
 		if (!resetArmed) return;
@@ -88,78 +71,45 @@ export function JackCorrections({
 
 	if (jacks.length === 0) return null;
 
-	const closeEditor = () => {
-		setOpenIndex(null);
-		setRefusal(null);
-	};
-	const exitMode = () => {
-		setCorrecting(false);
-		closeEditor();
-		setResetArmed(false);
-	};
 	const toggleMode = () => {
-		if (correcting) exitMode();
-		else {
-			setCorrecting(true);
-			setRefusal(null);
-		}
-	};
-	const toggleRow = (index: number) => {
-		if (openIndex === index) {
-			closeEditor();
+		if (correcting) {
+			exitProof();
+			setResetArmed(false);
 			return;
 		}
-		setOpenIndex(index);
-		setRefusal(null);
-		setResetArmed(false);
+		beginProof(itemUid);
 	};
 	const commit = (index: number, patch: JackPatch) => {
 		const result = setJackOverride(itemUid, index, patch);
 		if (!result.ok) {
-			setRefusal({
-				index,
-				message: result.reason ?? "That correction couldn’t be applied.",
-			});
-			return false;
+			useJackProof
+				.getState()
+				.setNotice(result.reason ?? "That correction couldn’t be applied.");
+		} else {
+			useJackProof.getState().setNotice(null);
 		}
-		setRefusal(null);
-		return true;
-	};
-	const commitPos = (index: number) => {
-		const effective = jacks[index]?.pos ?? 0.5;
-		if (Math.abs(draftPos - effective) < 1e-9) return;
-		commit(index, { pos: draftPos });
 	};
 	const resetOne = (index: number) => {
 		const result = resetJackOverride(itemUid, index);
 		if (!result.ok) {
-			setRefusal({
-				index,
-				message: result.reason ?? "That reset couldn’t be applied.",
-			});
+			useJackProof
+				.getState()
+				.setNotice(result.reason ?? "That reset couldn’t be applied.");
 			return;
 		}
-		setRefusal(null);
+		useJackProof.getState().setNotice(null);
 	};
 	const resetAll = () => {
 		const result = resetAllJackOverrides(itemUid);
 		setResetArmed(false);
 		if (!result.ok) {
-			setRefusal({
-				index: -1,
-				message: result.reason ?? "That reset couldn’t be applied.",
-			});
+			useJackProof
+				.getState()
+				.setNotice(result.reason ?? "That reset couldn’t be applied.");
 			return;
 		}
-		closeEditor();
+		useJackProof.getState().setNotice(null);
 	};
-
-	const schematicJacks = jacks.map((jack, index) => ({
-		id: String(index),
-		kind: jack.kind,
-		edge: jack.edge,
-		pos: index === openIndex ? draftPos : jack.pos,
-	}));
 
 	return (
 		<section
@@ -186,19 +136,11 @@ export function JackCorrections({
 				</div>
 			</div>
 
-			<div className="jack-correction__map">
-				<PartDrawing
-					widthCm={widthCm}
-					depthCm={heightCm}
-					jacks={schematicJacks}
-					units={units}
-					activeJackId={openIndex !== null ? String(openIndex) : null}
-					startSize={PART_PREVIEW_SIZES.pedal}
-				/>
-				<span className="jack-correction__map-caption">
-					Jack map · schematic
-				</span>
-			</div>
+			{correcting ? (
+				<p className="jack-correction__hint" data-testid="jack-proof-hint">
+					Drag a socket on the pedal — anywhere on its face.
+				</p>
+			) : null}
 
 			<ul className="jack-correction__rows">
 				{jacks.map((jack, index) => {
@@ -206,7 +148,9 @@ export function JackCorrections({
 					const isOpen = correcting && openIndex === index;
 					const rowPanelId = `${panelIdBase}-jack-${index}`;
 					const summary = (
-						<span className="jack-correction__summary">{formatJack(jack)}</span>
+						<span className="jack-correction__summary">
+							{formatJackRow(jack, widthCm, heightCm, units)}
+						</span>
 					);
 					const marker = <JackMarker provenance={provenance} />;
 					return (
@@ -218,15 +162,12 @@ export function JackCorrections({
 						>
 							{correcting ? (
 								<button
-									ref={(node) => {
-										rowRefs.current.set(index, node);
-									}}
 									type="button"
 									className="jack-correction__trigger"
 									aria-expanded={isOpen}
 									aria-controls={rowPanelId}
 									data-testid={`jack-row-${index}`}
-									onClick={() => toggleRow(index)}
+									onClick={() => select(index)}
 								>
 									{summary}
 									{marker}
@@ -268,52 +209,6 @@ export function JackCorrections({
 										</select>
 									</label>
 
-									<fieldset className="jack-correction__field">
-										<legend className="jack-correction__label">Edge</legend>
-										<div className="segmented segmented--compact jack-correction__edge">
-											{JACK_EDGES.map((edge) => (
-												<button
-													key={edge}
-													type="button"
-													className="segmented__option"
-													data-testid={`jack-edge-${index}-${edge}`}
-													aria-pressed={jack.edge === edge}
-													title={edge[0].toUpperCase() + edge.slice(1)}
-													onClick={() =>
-														commit(index, { edge: edge as JackEdge })
-													}
-												>
-													{JACK_EDGE_LABELS[edge]}
-												</button>
-											))}
-										</div>
-									</fieldset>
-
-									<label className="jack-correction__field jack-correction__position">
-										<span className="jack-correction__label">Position</span>
-										<input
-											className="jack-correction__range"
-											data-testid={`jack-pos-${index}`}
-											type="range"
-											min={0}
-											max={1}
-											step={0.05}
-											value={draftPos}
-											aria-valuetext={`${draftPos.toFixed(2)} along the ${jack.edge} edge`}
-											onChange={(event) =>
-												setDraftPos(Number(event.target.value))
-											}
-											onPointerUp={() => commitPos(index)}
-											onBlur={() => commitPos(index)}
-											onKeyUp={(event) => {
-												if (event.key === "Enter") commitPos(index);
-											}}
-										/>
-										<span className="jack-correction__pos">
-											{draftPos.toFixed(2)}
-										</span>
-									</label>
-
 									<label className="jack-correction__trs">
 										<input
 											type="checkbox"
@@ -326,9 +221,25 @@ export function JackCorrections({
 										<span>TRS · 2 cables</span>
 									</label>
 
+									<p className="jack-correction__baseline">
+										Position{" "}
+										<span
+											className="jack-correction__position"
+											data-testid={`jack-position-${index}`}
+										>
+											{formatJackPosition(jack, widthCm, heightCm, units) ||
+												"catalog edge"}
+										</span>
+									</p>
 									{baseJacks[index] ? (
 										<p className="jack-correction__baseline">
-											Catalog {formatJack(baseJacks[index])}
+											Catalog{" "}
+											{formatJackRow(
+												baseJacks[index],
+												widthCm,
+												heightCm,
+												units,
+											)}
 										</p>
 									) : null}
 
@@ -341,16 +252,6 @@ export function JackCorrections({
 										>
 											Reset to catalog
 										</button>
-									) : null}
-
-									{refusal && refusal.index === index ? (
-										<p
-											className="jack-correction__refusal"
-											data-testid={`jack-refusal-${index}`}
-											role="alert"
-										>
-											{refusal.message}
-										</p>
 									) : null}
 								</div>
 							) : null}
@@ -368,6 +269,16 @@ export function JackCorrections({
 			{correctedCount > 0 ? (
 				<p className="info-panel__assumed" data-testid="jack-corrected-note">
 					Corrections apply to this scene only.
+				</p>
+			) : null}
+
+			{notice ? (
+				<p
+					className="jack-correction__refusal"
+					data-testid="jack-proof-notice"
+					role="alert"
+				>
+					{notice}
 				</p>
 			) : null}
 
@@ -412,15 +323,21 @@ export function JackCorrections({
 							Reset all jacks
 						</button>
 					)}
-					{refusal && refusal.index === -1 ? (
-						<p className="jack-correction__refusal" role="alert">
-							{refusal.message}
-						</p>
-					) : null}
 				</footer>
 			) : null}
 		</section>
 	);
+}
+
+function formatJackRow(
+	jack: ResolvedJack,
+	widthCm: number,
+	heightCm: number,
+	units: DisplayUnits,
+): string {
+	const position = formatJackPosition(jack, widthCm, heightCm, units);
+	if (position) return `${jackKindLabel(jack.kind)} · ${position}`;
+	return `${jackKindLabel(jack.kind)} · ${JACK_EDGE_NAMES[jack.edge]} · ${(jack.pos ?? 0.5).toFixed(2)}`;
 }
 
 function JackMarker({
