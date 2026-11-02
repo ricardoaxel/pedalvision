@@ -1,12 +1,16 @@
 import { create } from "zustand";
 import { catalog } from "../catalog/load";
-import type {
-	CatalogBoard,
-	CatalogPedal,
-	EffectType,
-	Jack,
-	JackEdge,
-	Power,
+import {
+	type CatalogBoard,
+	type CatalogPedal,
+	type EffectType,
+	isCableJack,
+	JACK_EDGES,
+	JACK_KINDS,
+	type Jack,
+	type JackEdge,
+	type JackKind,
+	type Power,
 } from "../catalog/schema";
 import type { BoardTexture } from "../lib/boardTexture";
 import {
@@ -80,6 +84,33 @@ export interface PlacedItem {
 	rotationDeg: number;
 	/** Dense integer ordered within the item's container (P1-06 uses it). */
 	z: number;
+	/**
+	 * Scene-local jack/IO corrections (F-33). `jack` is the decimal index into
+	 * the item's **base** resolved jacks array (catalog jacks or the fallback
+	 * pair); only changed properties are stored. Overrides never add, remove or
+	 * reorder jacks, so every cable's index stays stable. Never written to the
+	 * catalog or a custom pedal definition.
+	 */
+	jackOverrides?: JackOverride[];
+}
+
+/**
+ * One scene-local jack correction (F-33). The index targets the item's base
+ * resolved jacks; absent properties keep the catalog/custom value. A custom
+ * pedal keeps its shared editor, so overrides are ignored for custom parts.
+ */
+export interface JackOverride {
+	jack: number;
+	kind?: JackKind;
+	edge?: JackEdge;
+	pos?: number;
+	stereo?: boolean;
+}
+
+export interface JackOverrideResult {
+	ok: boolean;
+	/** Inline reason when `ok` is false; never shown as a toast (N8). */
+	reason?: string;
 }
 
 /**
@@ -272,17 +303,23 @@ export function resolveItem(
  * ticks as hollow diamonds and labels them "assumed".
  */
 export const FALLBACK_JACKS: readonly ResolvedJack[] = [
-	{ kind: "in", edge: "left", pos: 0.5 },
-	{ kind: "out", edge: "right", pos: 0.5 },
+	{ kind: "in", edge: "left", pos: 0.5, assumed: true },
+	{ kind: "out", edge: "right", pos: 0.5, assumed: true },
 ];
 
 /**
- * A jack with its resolved position. Catalog data may omit `pos` when only the
- * edge/count is known (P5-01); `resolveJackLayout` fills those evenly along
- * their edge and marks them `approximate`, which the canvas draws as a hollow
- * tick (same visual language as the fallback anchors).
+ * A jack with its resolved position and provenance. Catalog data may omit `pos`
+ * when only the edge/count is known (P5-01); `resolveJackLayout` fills those
+ * evenly along their edge and marks them `approximate`, which the canvas draws
+ * as a hollow tick (same visual language as the fallback anchors). `assumed` is
+ * the documented fallback pair; `corrected` is a scene-local F-33 override.
  */
-export type ResolvedJack = Jack & { pos: number; approximate?: boolean };
+export type ResolvedJack = Jack & {
+	pos: number;
+	approximate?: boolean;
+	assumed?: boolean;
+	corrected?: boolean;
+};
 
 /**
  * Resolve edge-only jacks into concrete anchor positions (P5-01). A source may
@@ -363,14 +400,28 @@ export function resolveJackLayout(jacks: Jack[]): ResolvedJack[] {
 	});
 }
 
+function isJackKind(value: unknown): value is JackKind {
+	return (
+		typeof value === "string" &&
+		(JACK_KINDS as readonly string[]).includes(value)
+	);
+}
+
+function isJackEdge(value: unknown): value is JackEdge {
+	return (
+		typeof value === "string" &&
+		(JACK_EDGES as readonly string[]).includes(value)
+	);
+}
+
 /**
- * The jacks an item exposes for cable attachment: the real definition first,
- * then the documented fallback pair for a catalog pedal with no jack data.
- * Persistence validation uses the same resolution, so a cable to a fallback
- * anchor survives save/load. Edge-only jacks get a resolved (approximate)
- * position here (P5-01).
+ * The item's **base** jacks before local corrections: catalog jacks, then the
+ * inline custom definition, then the documented fallback pair for a catalog
+ * pedal with no jack data. Edge-only jacks get a resolved (approximate)
+ * position (P5-01). This array's length and order are the identity every cable
+ * and override index refers to; overrides never change them.
  */
-export function resolveItemJacks(
+export function baseItemJacks(
 	item: PlacedItem,
 	customPedals: CustomPedal[] = [],
 ): ResolvedJack[] {
@@ -378,23 +429,158 @@ export function resolveItemJacks(
 	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
 	if (real.length > 0) return resolveJackLayout(real);
 	if (resolved.definition !== null && item.kind === "pedal") {
-		return [...FALLBACK_JACKS];
+		return FALLBACK_JACKS.map((jack) => ({ ...jack }));
 	}
 	return [];
 }
 
 /**
- * Are this item's jacks the documented fallback pair rather than real data?
- * The canvas uses this to draw nested hollow diamonds (an "assumed" anchor).
+ * Apply the item's scene-local overrides to a base jack array. Only catalog
+ * items can be corrected (a custom pedal keeps its shared editor), and invalid
+ * indices/values are ignored defensively. A corrected jack loses the
+ * approximate/assumed flags and becomes solid.
+ */
+function applyJackOverrides(
+	item: PlacedItem,
+	base: ResolvedJack[],
+	customPedals: CustomPedal[] = [],
+): ResolvedJack[] {
+	if (base.length === 0 || !item.jackOverrides?.length) return base;
+	const resolved = resolveItem(item, customPedals);
+	if (resolved.definition === null) return base;
+	const byIndex = new Map<number, JackOverride>();
+	for (const override of item.jackOverrides) {
+		if (!override || typeof override !== "object") continue;
+		if (!Number.isInteger(override.jack)) continue;
+		if (override.jack < 0 || override.jack >= base.length) continue;
+		if (!byIndex.has(override.jack)) byIndex.set(override.jack, override);
+	}
+	if (byIndex.size === 0) return base;
+	return base.map((jack, index) => {
+		const override = byIndex.get(index);
+		if (!override) return jack;
+		const next: ResolvedJack = { ...jack };
+		if (override.kind !== undefined && isJackKind(override.kind)) {
+			next.kind = override.kind;
+		}
+		if (override.edge !== undefined && isJackEdge(override.edge)) {
+			next.edge = override.edge;
+		}
+		if (
+			override.pos !== undefined &&
+			Number.isFinite(override.pos) &&
+			override.pos >= 0 &&
+			override.pos <= 1
+		) {
+			next.pos = override.pos;
+		}
+		if (override.stereo !== undefined) next.stereo = override.stereo;
+		next.approximate = false;
+		next.assumed = false;
+		next.corrected = true;
+		return next;
+	});
+}
+
+/**
+ * Normalise a raw override list against the item's base jacks: drop
+ * non-integer/out-of-range/duplicate indices, invalid values, no-op entries
+ * (same as the base) and overrides on custom pedals. Unknown-ref entries stay
+ * (bounded) so a later catalog/planner load can still apply them. Returns
+ * `undefined` when nothing remains so a reset clears the field entirely.
+ */
+export function normalizeJackOverrides(
+	item: PlacedItem,
+	customPedals: CustomPedal[] = [],
+): JackOverride[] | undefined {
+	if (!Array.isArray(item.jackOverrides) || item.jackOverrides.length === 0) {
+		return undefined;
+	}
+	const resolved = resolveItem(item, customPedals);
+	// Custom pedals keep their shared editor; never carry per-instance overrides.
+	if (resolved.custom !== null) return undefined;
+	// An unknown ref may resolve after the catalog (or a lazy planner batch)
+	// loads. Keep structurally valid overrides rather than dropping user data;
+	// `applyJackOverrides` ignores them until the base jacks are known.
+	const base =
+		resolved.definition === null ? null : baseItemJacks(item, customPedals);
+	const seen = new Set<number>();
+	const result: JackOverride[] = [];
+	for (const raw of item.jackOverrides) {
+		if (!raw || typeof raw !== "object") continue;
+		if (!Number.isInteger(raw.jack)) continue;
+		if (raw.jack < 0) continue;
+		if (base ? raw.jack >= base.length : raw.jack >= 64) continue;
+		if (seen.has(raw.jack)) continue;
+		const jack = base?.[raw.jack];
+		const next: JackOverride = { jack: raw.jack };
+		let changed = false;
+		if (raw.kind !== undefined && isJackKind(raw.kind)) {
+			if (!jack || raw.kind !== jack.kind) {
+				next.kind = raw.kind;
+				changed = true;
+			}
+		}
+		if (raw.edge !== undefined && isJackEdge(raw.edge)) {
+			if (!jack || raw.edge !== jack.edge) {
+				next.edge = raw.edge;
+				changed = true;
+			}
+		}
+		if (
+			raw.pos !== undefined &&
+			Number.isFinite(raw.pos) &&
+			raw.pos >= 0 &&
+			raw.pos <= 1 &&
+			(!jack || Math.abs(raw.pos - jack.pos) > 1e-9)
+		) {
+			next.pos = raw.pos;
+			changed = true;
+		}
+		if (
+			raw.stereo !== undefined &&
+			typeof raw.stereo === "boolean" &&
+			(!jack || raw.stereo !== (jack.stereo === true))
+		) {
+			next.stereo = raw.stereo;
+			changed = true;
+		}
+		if (changed) {
+			seen.add(raw.jack);
+			result.push(next);
+		}
+	}
+	return result.length > 0 ? result : undefined;
+}
+
+/**
+ * The jacks an item exposes for cable attachment: the base array with local
+ * corrections applied. Persistence validation uses the same resolution, so a
+ * cable to a fallback anchor or a corrected jack survives save/load. The array
+ * length/order never changes, so cascade and index logic stay valid.
+ */
+export function resolveItemJacks(
+	item: PlacedItem,
+	customPedals: CustomPedal[] = [],
+): ResolvedJack[] {
+	return applyJackOverrides(
+		item,
+		baseItemJacks(item, customPedals),
+		customPedals,
+	);
+}
+
+/**
+ * Are any of this item's effective jacks still the documented fallback pair?
+ * The canvas uses the per-jack flag to draw only the untouched fallback
+ * diamonds; a corrected fallback jack renders solid.
  */
 export function usesFallbackJacks(
 	item: PlacedItem,
 	customPedals: CustomPedal[] = [],
 ): boolean {
-	const resolved = resolveItem(item, customPedals);
-	const real = resolved.definition?.jacks ?? resolved.custom?.jacks ?? [];
-	return (
-		real.length === 0 && resolved.definition !== null && item.kind === "pedal"
+	return resolveItemJacks(item, customPedals).some(
+		(jack) => jack.assumed === true,
 	);
 }
 
@@ -666,6 +852,102 @@ export function cableEndCapacityNotice(
 	return editable
 		? "That jack is already connected. A TRS jack can take two cables."
 		: "That jack is already connected.";
+}
+
+/** Replace (or remove) an item's override list without mutating the source. */
+function withJackOverrides(
+	item: PlacedItem,
+	overrides: JackOverride[] | undefined,
+): PlacedItem {
+	if (!overrides || overrides.length === 0) {
+		const next = { ...item };
+		delete next.jackOverrides;
+		return next;
+	}
+	return { ...item, jackOverrides: overrides };
+}
+
+/**
+ * Evaluate a candidate item correction against every attached cable. Returns
+ * the first inline refusal reason, or the incident cables re-normalised to the
+ * new role direction. The guard is deliberately conservative: a change that
+ * would invalidate a cable is refused rather than silently dropping it.
+ */
+function evaluateJackOverride(
+	scene: {
+		items: PlacedItem[];
+		cables: Cable[];
+		endpoints: Endpoint[];
+		customPedals: CustomPedal[];
+	},
+	candidate: PlacedItem,
+): { reason: string | null; cables: Cable[] } {
+	const candidateItems = scene.items.map((item) =>
+		item.uid === candidate.uid ? candidate : item,
+	);
+	const jacks = resolveItemJacks(candidate, scene.customPedals);
+	let cables = scene.cables;
+	for (const cable of scene.cables) {
+		// Only cables incident to this item can be affected by its correction;
+		// never validate or rewrite unrelated graph edges (a malformed loaded
+		// cable elsewhere must not block every correction).
+		if (!cableReferencesItem(cable, candidate.uid)) continue;
+		const ends = [cable.from, cable.to] as const;
+		for (const end of ends) {
+			if (!("itemUid" in end) || end.itemUid !== candidate.uid) continue;
+			const index = jackIndex(end.jack);
+			if (index === null) {
+				return { reason: "A cable on this jack can’t be resolved.", cables };
+			}
+			const jack = jacks[index];
+			if (!jack) {
+				return { reason: "A cable on this jack can’t be resolved.", cables };
+			}
+			if (!isCableJack(jack.kind)) {
+				return {
+					reason: "This jack has a cable. Remove the cable first.",
+					cables,
+				};
+			}
+			const used = scene.cables.filter(
+				(candidateCable) =>
+					cableEndUsesItemJack(candidateCable.from, candidate.uid, index) ||
+					cableEndUsesItemJack(candidateCable.to, candidate.uid, index),
+			).length;
+			if (used > jackCapacity(jack)) {
+				return {
+					reason:
+						jack.stereo === true
+							? "This TRS jack already has two cables."
+							: "A mono jack can’t keep two cables. Remove one first.",
+					cables,
+				};
+			}
+		}
+		const direction = normalizeCableDirection(cable.from, cable.to, {
+			items: candidateItems,
+			endpoints: scene.endpoints,
+			customPedals: scene.customPedals,
+		});
+		if (!direction.valid) {
+			return {
+				reason:
+					"That change would make an attached cable invalid. Remove or re-route it first.",
+				cables,
+			};
+		}
+		if (
+			!sameCableEnd(direction.from, cable.from) ||
+			!sameCableEnd(direction.to, cable.to)
+		) {
+			cables = cables.map((entry) =>
+				entry.uid === cable.uid
+					? { ...entry, from: direction.from, to: direction.to }
+					: entry,
+			);
+		}
+	}
+	return { reason: null, cables };
 }
 
 /**
@@ -1098,6 +1380,21 @@ interface SceneStore {
 		rotationDeg: number,
 	) => void;
 	/**
+	 * Correct one jack of a placed catalog item in this scene (F-33). `jack` is
+	 * the decimal index into the item's base jack array; only the supplied
+	 * properties change. Refuses a change that would invalidate an attached
+	 * cable or leave a mono jack over capacity; moves never drop a cable.
+	 */
+	setJackOverride: (
+		uid: string,
+		jack: number,
+		patch: Omit<JackOverride, "jack">,
+	) => JackOverrideResult;
+	/** Reset one jack correction to the catalog/custom value (guarded). */
+	resetJackOverride: (uid: string, jack: number) => JackOverrideResult;
+	/** Reset every jack correction on the item (guarded, one undo step). */
+	resetAllJackOverrides: (uid: string) => JackOverrideResult;
+	/**
 	 * Add a catalog board centred on `centerCm` (world cm), returning its uid —
 	 * or null when the board hard cap refuses the add (P3-06). Stored `x`/`y` is
 	 * the board's origin (top-left), so the caller stays free of footprint math;
@@ -1410,6 +1707,103 @@ export const useScene = create<SceneStore>((set, get) => ({
 					: item,
 			),
 		}));
+	},
+	setJackOverride: (uid, jack, patch) => {
+		if (isReadOnly()) {
+			return { ok: false, reason: "This shared scene is read-only." };
+		}
+		const state = get();
+		const item = state.items.find((candidate) => candidate.uid === uid);
+		if (!item) return { ok: false, reason: "That part is no longer here." };
+		const resolved = resolveItem(item, state.customPedals);
+		if (resolved.definition === null) {
+			return {
+				ok: false,
+				reason:
+					"Custom and unknown parts don’t support local jack corrections.",
+			};
+		}
+		const base = baseItemJacks(item, state.customPedals);
+		if (!Number.isInteger(jack) || jack < 0 || jack >= base.length) {
+			return { ok: false, reason: "That jack no longer exists." };
+		}
+		const existing = normalizeJackOverrides(item, state.customPedals)?.find(
+			(override) => override.jack === jack,
+		) ?? { jack };
+		const others =
+			normalizeJackOverrides(item, state.customPedals)?.filter(
+				(override) => override.jack !== jack,
+			) ?? [];
+		const merged: JackOverride = {
+			...existing,
+			...patch,
+			jack,
+		};
+		const candidate = withJackOverrides(item, [...others, merged]);
+		const normalized = normalizeJackOverrides(candidate, state.customPedals);
+		const nextItem = withJackOverrides(item, normalized);
+		if (
+			JSON.stringify(nextItem.jackOverrides) ===
+			JSON.stringify(item.jackOverrides)
+		) {
+			return { ok: true };
+		}
+		const guard = evaluateJackOverride(state, nextItem);
+		if (guard.reason) return { ok: false, reason: guard.reason };
+		set((current) => ({
+			items: current.items.map((candidateItem) =>
+				candidateItem.uid === uid ? nextItem : candidateItem,
+			),
+			cables: guard.cables,
+		}));
+		return { ok: true };
+	},
+	resetJackOverride: (uid, jack) => {
+		if (isReadOnly()) {
+			return { ok: false, reason: "This shared scene is read-only." };
+		}
+		const state = get();
+		const item = state.items.find((candidate) => candidate.uid === uid);
+		if (!item) return { ok: false, reason: "That part is no longer here." };
+		const normalized = normalizeJackOverrides(item, state.customPedals) ?? [];
+		const nextOverrides = normalized.filter(
+			(override) => override.jack !== jack,
+		);
+		const nextItem = withJackOverrides(item, nextOverrides);
+		if (
+			JSON.stringify(nextItem.jackOverrides) ===
+			JSON.stringify(item.jackOverrides)
+		) {
+			return { ok: true };
+		}
+		const guard = evaluateJackOverride(state, nextItem);
+		if (guard.reason) return { ok: false, reason: guard.reason };
+		set((current) => ({
+			items: current.items.map((candidateItem) =>
+				candidateItem.uid === uid ? nextItem : candidateItem,
+			),
+			cables: guard.cables,
+		}));
+		return { ok: true };
+	},
+	resetAllJackOverrides: (uid) => {
+		if (isReadOnly()) {
+			return { ok: false, reason: "This shared scene is read-only." };
+		}
+		const state = get();
+		const item = state.items.find((candidate) => candidate.uid === uid);
+		if (!item) return { ok: false, reason: "That part is no longer here." };
+		const nextItem = withJackOverrides(item, undefined);
+		if (!item.jackOverrides?.length) return { ok: true };
+		const guard = evaluateJackOverride(state, nextItem);
+		if (guard.reason) return { ok: false, reason: guard.reason };
+		set((current) => ({
+			items: current.items.map((candidateItem) =>
+				candidateItem.uid === uid ? nextItem : candidateItem,
+			),
+			cables: guard.cables,
+		}));
+		return { ok: true };
 	},
 	addBoard: (boardRefId, centerCm) => {
 		if (isReadOnly()) return null;

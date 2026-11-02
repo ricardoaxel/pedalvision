@@ -1,25 +1,22 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
-import {
-	buildPartInfo,
-	formatDimensions,
-	formatJack,
-	formatPower,
-} from "../lib/partInfo";
+import { buildPartInfo, formatDimensions, formatPower } from "../lib/partInfo";
 import { useIsMobile } from "../lib/useMobile";
 import { useDrag } from "../state/drag";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
 import { usePlannerCatalog } from "../state/plannerCatalog";
+import { useReadOnly } from "../state/readOnly";
 import {
+	baseItemJacks,
 	resolveItem,
 	resolveItemJacks,
 	useScene,
-	usesFallbackJacks,
 } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useSettings } from "../state/settings";
 import { ChevronIcon, PedalIcon, WarningIcon } from "./icons";
+import { JackCorrections } from "./JackCorrections";
 import { PartDrawing } from "./PartDrawing";
 import { usePartImage } from "./partImage";
 import { effectLabel } from "./pickerFilter";
@@ -50,6 +47,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
+	const readOnly = useReadOnly((state) => state.readOnly);
 
 	// App-wide display units (P3-02) — persisted with the scene index; storage
 	// is always cm.
@@ -121,13 +119,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	if (!item || !resolved) return null;
 
 	const jacks = resolveItemJacks(item, customPedals);
-	const info = buildPartInfo(
-		resolved,
-		item.kind,
-		jacks,
-		usesFallbackJacks(item, customPedals),
-		jacks.some((jack) => jack.approximate === true),
-	);
+	const info = buildPartInfo(resolved, item.kind, jacks);
 
 	// While this item is lifted, evaluate the warning where it floats (live
 	// world origin + visible rotation) so the cue follows the drag.
@@ -407,33 +399,16 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 					</section>
 				) : null}
 
-				{info.jacks.length > 0 ? (
-					<section className="info-panel__section" data-testid="info-jacks">
-						<div className="info-panel__section-head">
-							<h3 className="info-panel__eyebrow">Jacks</h3>
-							<span className="info-panel__count">{info.jacks.length}</span>
-						</div>
-						<dl className="info-panel__facts">
-							{info.jacks.map((jack, index) => (
-								<div
-									// biome-ignore lint/suspicious/noArrayIndexKey: jacks are read-only rows (no reorder)
-									key={`${jack.kind}-${jack.edge}-${jack.pos}-${index}`}
-									className="info-panel__fact"
-								>
-									<dt className="visually-hidden">Jack {index + 1}</dt>
-									<dd className="info-panel__mono">{formatJack(jack)}</dd>
-								</div>
-							))}
-						</dl>
-						{info.jacksAssumed ? (
-							<p className="info-panel__assumed">Jack positions assumed.</p>
-						) : info.jacksApproximate ? (
-							<p className="info-panel__assumed">
-								Some jack positions are approximate.
-							</p>
-						) : null}
-					</section>
-				) : null}
+				<JackCorrections
+					itemUid={item.uid}
+					jacks={jacks}
+					baseJacks={baseItemJacks(item, customPedals)}
+					widthCm={info.widthCm}
+					heightCm={info.heightCm}
+					units={units}
+					editable={!readOnly}
+					isCustom={info.isCustom}
+				/>
 
 				{info.power ? (
 					<section className="info-panel__section" data-testid="info-power">

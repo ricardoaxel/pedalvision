@@ -174,7 +174,7 @@ describe("share links (P3-03)", () => {
 	});
 
 	it("migrates a legacy v1 payload to the current shape explicitly", () => {
-		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2]);
+		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2, 3]);
 		const legacy = {
 			version: 1 as const,
 			name: "Old",
@@ -184,10 +184,100 @@ describe("share links (P3-03)", () => {
 		};
 		expect(migrateSharePayload(legacy)).toEqual({
 			...legacy,
-			version: 2,
+			version: 3,
 			endpoints: [],
 			cables: [],
 		});
+		const v2 = {
+			...legacy,
+			version: 2 as const,
+			endpoints: [],
+			cables: [],
+		};
+		expect(migrateSharePayload(v2)).toEqual({ ...v2, version: 3 });
+	});
+
+	it("round-trips scene-local jack overrides (v3)", () => {
+		const overridden = item("item-1", {
+			boardUid: null,
+			jackOverrides: [{ jack: 0, edge: "bottom", pos: 0.25, stereo: true }],
+		});
+		const encoded = encodeShareLink("Corrected", {
+			boards: [],
+			items: [overridden],
+			customPedals: [],
+			endpoints: [],
+			cables: [],
+		});
+		if (!encoded.ok) throw new Error(encoded.message);
+		expect(encoded.hash.startsWith("#s=v3:")).toBe(true);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items[0].jackOverrides).toEqual([
+			{ jack: 0, edge: "bottom", pos: 0.25, stereo: true },
+		]);
+	});
+
+	it("accepts a v2 link without jack overrides", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 2,
+					name: "V2",
+					boards: [board("board-1")],
+					items: [item("item-1")],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				2,
+			),
+		);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items[0].jackOverrides).toBeUndefined();
+	});
+
+	it("rejects duplicate jack indices in a v3 payload", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 3,
+					name: "Duplicate",
+					boards: [board("board-1")],
+					items: [
+						item("item-1", {
+							jackOverrides: [
+								{ jack: 0, pos: 0.2 },
+								{ jack: 0, pos: 0.3 },
+							],
+						}),
+					],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				3,
+			),
+		);
+		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
+	});
+
+	it("rejects unknown item keys in a frozen v3 payload", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 3,
+					name: "Unknown",
+					boards: [board("board-1")],
+					items: [{ ...item("item-1"), futureField: true }],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				3,
+			),
+		);
+		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
 	});
 
 	it("rejects a hash prefix that disagrees with the payload version", () => {
@@ -286,11 +376,11 @@ describe("share links (P3-03)", () => {
 		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
 	});
 
-	it("uses the #s=v2: prefix and base64url without padding", () => {
+	it("uses the #s=v3: prefix and base64url without padding", () => {
 		const encoded = encodeShareLink("Main board", snapshot());
 		if (!encoded.ok) throw new Error("expected an encodable scene");
-		expect(encoded.hash.startsWith("#s=v2:")).toBe(true);
-		const body = encoded.hash.slice("#s=v2:".length);
+		expect(encoded.hash.startsWith("#s=v3:")).toBe(true);
+		const body = encoded.hash.slice("#s=v3:".length);
 		expect(body).toMatch(/^[A-Za-z0-9_-]+$/);
 		expect(body).not.toContain("=");
 	});
@@ -317,6 +407,10 @@ describe("share links (P3-03)", () => {
 			reason: "corrupt",
 		});
 		expect(decodeShareHash("#s=v3:abc")).toMatchObject({
+			ok: false,
+			reason: "corrupt",
+		});
+		expect(decodeShareHash("#s=v4:abc")).toMatchObject({
 			ok: false,
 			reason: "unsupported-version",
 		});

@@ -81,6 +81,58 @@ describe("scene documents", () => {
 		expect(parseSceneDocument(JSON.stringify(document))).toEqual(document);
 	});
 
+	it("round-trips scene-local jack overrides (additive v1)", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [
+				item({
+					jackOverrides: [{ jack: 0, edge: "bottom", pos: 0.2, stereo: true }],
+				}),
+			],
+			customPedals: [],
+		});
+		expect(parseSceneDocument(document)?.items[0]?.jackOverrides).toEqual([
+			{ jack: 0, edge: "bottom", pos: 0.2, stereo: true },
+		]);
+		expect(sceneFromDocument(document).items[0]?.jackOverrides).toEqual([
+			{ jack: 0, edge: "bottom", pos: 0.2, stereo: true },
+		]);
+	});
+
+	it("normalizes invalid, no-op and custom-pedal jack overrides", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [
+				item({
+					jackOverrides: [
+						{ jack: 9, pos: 0.2 },
+						{ jack: 0, pos: 0.5 },
+						{ jack: 0, pos: 0.2 },
+						{ jack: 0, pos: 0.3 },
+					],
+				}),
+				item({
+					uid: "i2",
+					refId: customPedal.refId,
+					jackOverrides: [{ jack: 0, pos: 0.2 }],
+				}),
+				item({
+					uid: "i3",
+					refId: "future-catalog-pedal",
+					jackOverrides: [{ jack: 0, pos: 0.2 }],
+				}),
+			],
+			customPedals: [customPedal],
+		});
+		const scene = sceneFromDocument(document);
+		// Out-of-range and no-op entries drop; duplicate index keeps the first.
+		expect(scene.items[0]?.jackOverrides).toEqual([{ jack: 0, pos: 0.2 }]);
+		// Custom pedals keep their shared editor, so per-instance overrides drop.
+		expect(scene.items[1]?.jackOverrides).toBeUndefined();
+		// An unknown ref keeps the correction for a later catalog/planner load.
+		expect(scene.items[2]?.jackOverrides).toEqual([{ jack: 0, pos: 0.2 }]);
+	});
+
 	it("rejects corrupt / incomplete / unknown-version documents", () => {
 		const document = documentOf({
 			boards: [],

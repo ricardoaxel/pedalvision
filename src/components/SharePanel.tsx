@@ -45,7 +45,7 @@ export function SharePanel({ onClose, onAddBoard }: SharePanelProps) {
 	const cables = useScene((state) => state.cables);
 	const empty = boards.length === 0 && items.length === 0;
 
-	// v2 carries the full graph (cables + endpoints) — see shareLink.ts.
+	// v3 carries the full graph plus local jack corrections — see shareLink.ts.
 	const result = useMemo(
 		() =>
 			buildShareLink(sceneName, {

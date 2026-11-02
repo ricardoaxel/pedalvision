@@ -5,7 +5,7 @@ import type {
 	JackEdge,
 	Power,
 } from "../catalog/schema";
-import type { ResolvedItem } from "../state/scene";
+import type { ResolvedItem, ResolvedJack } from "../state/scene";
 import { jackKindLabel } from "./customPedal";
 import { cmToDisplay, type DisplayUnits } from "./geometry";
 
@@ -24,10 +24,6 @@ export interface PartInfo {
 	widthCm: number;
 	heightCm: number;
 	jacks: Jack[];
-	/** True when `jacks` are the documented fallback pair, not catalog data. */
-	jacksAssumed: boolean;
-	/** True when at least one real jack has an invented (edge-only) position. */
-	jacksApproximate: boolean;
 	power: Power | null;
 	/**
 	 * The catalog image (mock/static/url), or null for custom + unknown parts
@@ -49,10 +45,8 @@ export interface PartInfo {
 export function buildPartInfo(
 	resolved: ResolvedItem,
 	kind: "pedal" | "supply",
-	/** The item's effective jacks (real or the documented fallback pair). */
-	jacks?: Jack[],
-	assumed = false,
-	approximate = false,
+	/** The item's effective jacks (real, fallback or locally corrected). */
+	jacks?: ResolvedJack[],
 ): PartInfo {
 	if (resolved.definition) {
 		const { definition } = resolved;
@@ -64,8 +58,6 @@ export function buildPartInfo(
 			widthCm: definition.widthCm,
 			heightCm: definition.heightCm,
 			jacks: jacks ?? definition.jacks ?? [],
-			jacksAssumed: assumed,
-			jacksApproximate: approximate,
 			power: definition.power ?? null,
 			image: { source: definition.imageSource, value: definition.image },
 			isCustom: false,
@@ -82,8 +74,6 @@ export function buildPartInfo(
 			widthCm: custom.widthCm,
 			heightCm: custom.heightCm,
 			jacks: jacks ?? custom.jacks ?? [],
-			jacksAssumed: assumed,
-			jacksApproximate: approximate,
 			power: custom.power ?? null,
 			image: null,
 			isCustom: true,
@@ -98,8 +88,6 @@ export function buildPartInfo(
 		widthCm: resolved.widthCm,
 		heightCm: resolved.heightCm,
 		jacks: jacks ?? [],
-		jacksAssumed: assumed,
-		jacksApproximate: approximate,
 		power: null,
 		image: null,
 		isCustom: false,
@@ -128,6 +116,17 @@ export const JACK_EDGE_NAMES: Record<JackEdge, string> = {
 	bottom: "Bottom",
 	left: "Left",
 };
+
+/** Provenance marker for a jack row (F-33 “Proof Marks”). */
+export type JackProvenance = "assumed" | "approximate" | "corrected" | null;
+
+/** Which provenance marker a jack row should show (catalog data = null). */
+export function jackProvenance(jack: ResolvedJack): JackProvenance {
+	if (jack.corrected === true) return "corrected";
+	if (jack.assumed === true) return "assumed";
+	if (jack.approximate === true) return "approximate";
+	return null;
+}
 
 /** "I · Top · 0.30" — short kind, edge, position along the edge. */
 export function formatJack(jack: Jack): string {

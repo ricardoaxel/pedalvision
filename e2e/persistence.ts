@@ -12,6 +12,13 @@ export interface SavedDocument {
 		refId?: string;
 		rotationDeg?: number;
 		boardUid?: string | null;
+		jackOverrides?: Array<{
+			jack: number;
+			kind?: string;
+			edge?: string;
+			pos?: number;
+			stereo?: boolean;
+		}>;
 	}>;
 	customPedals: unknown[];
 	endpoints?: Array<{ uid: string; kind: string; x: number; y: number }>;

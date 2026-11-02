@@ -32,7 +32,6 @@ import {
 	resolveItem,
 	resolveItemJacks,
 	useScene,
-	usesFallbackJacks,
 } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useSettings } from "../state/settings";
@@ -443,7 +442,6 @@ export function PedalNode({
 	// shows a hollow diamond + "assumed" so it never reads as manufacturer data.
 	const jacks =
 		showCables || readOnly ? resolveItemJacks(item, customPedals) : [];
-	const assumedJacks = usesFallbackJacks(item, customPedals);
 	const showSecondaryJacks =
 		hoveredItemUid === item.uid ||
 		selectedItemUid === item.uid ||
@@ -464,10 +462,11 @@ export function PedalNode({
 		const isSource = cableSourceJack === index;
 		const isTarget = cableTargetJack === index;
 		const isHovered = hoveredJack === index;
-		// Edge-only catalog data (P5-01) is approximate like the fallback pair:
-		// draw a hollow diamond so it never reads as a measured position.
-		const approximate = jack.approximate === true;
-		const hollow = assumedJacks || approximate;
+		// Per-jack provenance (F-33): an untouched fallback or edge-only jack is
+		// hollow; a locally corrected jack is a solid, user-asserted socket.
+		const hollow =
+			jack.corrected !== true &&
+			(jack.assumed === true || jack.approximate === true);
 		const diameter = hollow
 			? JACK_TICK.diameterPx / labelScale
 			: (isTarget

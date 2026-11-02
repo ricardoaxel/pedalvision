@@ -9,7 +9,12 @@ import type {
 	PlacedBoard,
 	PlacedItem,
 } from "./scene";
-import { normalizeAllZ, pruneCableGraph, pruneCustomPedals } from "./scene";
+import {
+	normalizeAllZ,
+	normalizeJackOverrides,
+	pruneCableGraph,
+	pruneCustomPedals,
+} from "./scene";
 
 /**
  * The v1 scene document stored in IndexedDB (design.md §Data model /
@@ -178,7 +183,13 @@ export function isPlacedItem(value: unknown): value is PlacedItem {
 		isFiniteNumber(value.x) &&
 		isFiniteNumber(value.y) &&
 		isFiniteNumber(value.rotationDeg) &&
-		isFiniteNumber(value.z)
+		isFiniteNumber(value.z) &&
+		(value.jackOverrides === undefined ||
+			(Array.isArray(value.jackOverrides) &&
+				value.jackOverrides.length <= 64 &&
+				// Entries are validated by `normalizeJackOverrides`; a single bad
+				// entry must not drop the whole placed item (and its cables).
+				value.jackOverrides.every(isRecord)))
 	);
 }
 
@@ -308,12 +319,24 @@ export function parseSceneDocument(raw: unknown): SceneDocument | null {
 		Array.isArray(doc.cables) ? doc.cables.filter(isCable) : [],
 		(cable) => cable.uid,
 	);
+	const items = uniqueBy(
+		doc.items.filter(isPlacedItem),
+		(item) => item.uid,
+	).map((item) => {
+		// Sanitize nested overrides here so the `isPlacedItem` predicate stays
+		// sound for callers that parse without a full `normalizeSceneContent`.
+		const jackOverrides = normalizeJackOverrides(item, customPedals);
+		if (jackOverrides) return { ...item, jackOverrides };
+		const next = { ...item };
+		delete next.jackOverrides;
+		return next;
+	});
 	return {
 		id: doc.id,
 		version: SCENE_DOCUMENT_VERSION,
 		name: doc.name,
 		boards: uniqueBy(doc.boards.filter(isPlacedBoard), (board) => board.uid),
-		items: uniqueBy(doc.items.filter(isPlacedItem), (item) => item.uid),
+		items,
 		customPedals,
 		endpoints,
 		cables,
@@ -332,10 +355,21 @@ export function parseSceneDocument(raw: unknown): SceneDocument | null {
  */
 export function normalizeSceneContent(snapshot: SceneSnapshot): SceneSnapshot {
 	const boardIds = new Set(snapshot.boards.map((board) => board.uid));
+	const keptItems = snapshot.items.filter(
+		(item) => item.boardUid === null || boardIds.has(item.boardUid),
+	);
+	// Normalise local jack corrections against the item's base jacks: drop
+	// invalid/no-op entries, custom-pedal overrides and out-of-range indices.
+	// Unknown refs keep structurally valid entries so a later catalog load can
+	// still apply them (never lose the user's correction on boot).
 	const items = normalizeAllZ(
-		snapshot.items.filter(
-			(item) => item.boardUid === null || boardIds.has(item.boardUid),
-		),
+		keptItems.map((item) => {
+			const jackOverrides = normalizeJackOverrides(item, snapshot.customPedals);
+			if (jackOverrides) return { ...item, jackOverrides };
+			const next = { ...item };
+			delete next.jackOverrides;
+			return next;
+		}),
 	);
 	const customPedals = pruneCustomPedals(snapshot.customPedals, items);
 	// An endpoint is dangling only when a cable in the stored document pointed

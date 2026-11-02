@@ -8,7 +8,6 @@ import {
 	type PlacedBoard,
 	type PlacedItem,
 	resolveItemJacks,
-	usesFallbackJacks,
 } from "../state/scene";
 import { boardToWorld, type Point, rotatePoint } from "./geometry";
 
@@ -36,6 +35,8 @@ export interface AnchorPoint {
 	assumed: boolean;
 	/** The edge was known but not the exact position (P5-01, hollow tick). */
 	approximate?: boolean;
+	/** The jack was corrected locally for this scene (F-33), not catalog data. */
+	corrected?: boolean;
 	/** The jack this anchor belongs to (undefined for an endpoint). */
 	jack?: Jack;
 	/** World visual rotation of the owning item (jack-side handle orientation). */
@@ -86,7 +87,6 @@ function jackAnchorDetailed(
 	index: number,
 	boards: PlacedBoard[],
 	customPedals: CustomPedal[],
-	assumed: boolean,
 ): AnchorPoint | null {
 	const jacks = resolveItemJacks(item, customPedals);
 	const jack = jacks[index];
@@ -110,8 +110,10 @@ function jackAnchorDetailed(
 	return {
 		point,
 		normal: worldNormal,
-		assumed,
+		// Per-jack provenance: a corrected fallback jack is no longer assumed.
+		assumed: jack.assumed === true,
 		approximate: jack.approximate === true,
+		corrected: jack.corrected === true,
 		jack,
 		rotationDeg: worldRotation,
 	};
@@ -134,14 +136,12 @@ export function buildAnchorIndex(scene: {
 	const all: AnchorIndex["all"] = [];
 	for (const item of scene.items) {
 		const jacks = resolveItemJacks(item, scene.customPedals);
-		const assumed = usesFallbackJacks(item, scene.customPedals);
 		for (let index = 0; index < jacks.length; index++) {
 			const anchor = jackAnchorDetailed(
 				item,
 				index,
 				scene.boards,
 				scene.customPedals,
-				assumed,
 			);
 			if (!anchor) continue;
 			const key = `item:${item.uid}:${index}`;

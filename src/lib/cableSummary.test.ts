@@ -94,6 +94,25 @@ describe("buildCableSchedule", () => {
 		expect(schedule.unconnectedEndpoints).toEqual([]);
 	});
 
+	it("does not flag a locally corrected fallback jack as assumed", () => {
+		const scene = {
+			boards: [],
+			items: [
+				item("a", "boss-ac-2-acoustic-simulator", 10, 10, {
+					jackOverrides: [{ jack: 0, edge: "top", pos: 0.3 }],
+				}),
+			],
+			customPedals: [],
+			endpoints: [endpoint("amp", "amp", 40, 10)],
+			cables: [
+				cable("c1", { itemUid: "a", jack: "0" }, { endpointUid: "amp" }),
+			],
+		};
+		const row = buildCableSchedule(scene).rows[0];
+		expect(row?.assumedFrom).toBe(false);
+		expect(row?.assumed).toBe(false);
+	});
+
 	it("derives the distance from rotated-board anchors, not the drawn curve", () => {
 		const board: PlacedBoard = {
 			uid: "b1",

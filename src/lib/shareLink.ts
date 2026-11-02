@@ -20,10 +20,11 @@ import { MAX_DIMENSION_CM } from "./customPedal";
 /**
  * Share-link codec (P3-03, design.md §Persistence).
  *
- * Format: `#s=v2:<base64url(deflate(JSON))>`. The payload is self-contained:
- * boards, placed items, inline custom pedals, endpoints and cables travel
- * together, so a shared scene renders identically on any device even after the
- * catalog changes (A5). Decoding still accepts legacy `v1` links (no graph).
+ * Format: `#s=v3:<base64url(deflate(JSON))>`. The payload is self-contained:
+ * boards, placed items (including local jack corrections), inline custom pedals,
+ * endpoints and cables travel together, so a shared scene renders identically on
+ * any device even after the catalog changes (A5). Decoding still accepts legacy
+ * `v1` (graph-less) and `v2` (graph) links.
  * Unknown refIds are deliberately accepted — `resolveItem` renders a labeled
  * fallback at the stored footprint rather than failing the scene.
  *
@@ -36,13 +37,17 @@ import { MAX_DIMENSION_CM } from "./customPedal";
  */
 
 export const SHARE_HASH_PREFIX = "#s=";
-export const SHARE_VERSION = 2;
+/**
+ * Current wire version. v3 adds optional scene-local `jackOverrides` to placed
+ * items (F-33); any new transported key bumps this version (F-37 §B).
+ */
+export const SHARE_VERSION = 3;
 /**
  * Every wire version this build can decode. The encoder always writes
  * `SHARE_VERSION`; older versions are migrated on read. Any other version is a
  * typed `unsupported-version` rejection (never a silent partial decode).
  */
-export const SUPPORTED_SHARE_VERSIONS = [1, SHARE_VERSION] as const;
+export const SUPPORTED_SHARE_VERSIONS = [1, 2, SHARE_VERSION] as const;
 
 export type SupportedShareVersion = (typeof SUPPORTED_SHARE_VERSIONS)[number];
 
@@ -97,7 +102,7 @@ export interface ShareEncodeTooLarge {
 	decodedBytes: number;
 	compressedBytes: number;
 	limitBytes: number;
-	/** The full `#s=v2:…` length that would have been produced. */
+	/** The full `#s=v3:…` length that would have been produced. */
 	hashLength: number;
 	limitChars: number;
 	message: string;
@@ -139,7 +144,7 @@ export interface SharePayloadV1 {
 	customPedals: CustomPedal[];
 }
 
-/** Current wire payload (`#s=v2:`): v1 plus endpoints + cables. */
+/** v2 wire payload (`#s=v2:`): v1 plus endpoints + cables. */
 export interface SharePayloadV2 {
 	version: 2;
 	name?: string;
@@ -150,18 +155,31 @@ export interface SharePayloadV2 {
 	cables: Cable[];
 }
 
-export type SharePayload = SharePayloadV2;
-export type SharePayloadAny = SharePayloadV1 | SharePayloadV2;
+/** Current wire payload (`#s=v3:`): v2 plus scene-local jack overrides. */
+export interface SharePayloadV3 {
+	version: 3;
+	name?: string;
+	boards: PlacedBoard[];
+	items: PlacedItem[];
+	customPedals: CustomPedal[];
+	endpoints: Endpoint[];
+	cables: Cable[];
+}
+
+export type SharePayload = SharePayloadV3;
+export type SharePayloadAny = SharePayloadV1 | SharePayloadV2 | SharePayloadV3;
 
 /**
- * Upgrade a supported wire payload to the current shape. Pure: it only fills
- * the additive graph arrays for v1; it never invents catalog data. Future
- * versions add one step here (and bump `SHARE_VERSION`).
+ * Upgrade a supported wire payload to the current shape. Pure: v1 gains the
+ * additive graph arrays, v2 gains the v3 jack-override field (optional, so no
+ * data is invented). Future versions add one step here (and bump
+ * `SHARE_VERSION`).
  */
-export function migrateSharePayload(payload: SharePayloadAny): SharePayloadV2 {
-	if (payload.version === 2) return payload;
+export function migrateSharePayload(payload: SharePayloadAny): SharePayloadV3 {
+	if (payload.version === 3) return payload;
+	if (payload.version === 2) return { ...payload, version: 3 };
 	return {
-		version: 2,
+		version: 3,
 		name: payload.name,
 		boards: payload.boards,
 		items: payload.items,
@@ -213,16 +231,54 @@ const boardSchema = z
 		}
 	});
 
-const itemSchema = z.object({
-	uid: boundedString(128),
-	refId: boundedString(200),
-	kind: z.enum(["pedal", "supply"]),
-	boardUid: z.string().min(1).max(128).nullable(),
-	x: coordinate,
-	y: coordinate,
-	rotationDeg: z.number().finite(),
-	z: z.number().finite(),
-});
+/** v1/v2 placed item: frozen, so a v2 link cannot smuggle a v3 field. */
+const itemSchema = z
+	.object({
+		uid: boundedString(128),
+		refId: boundedString(200),
+		kind: z.enum(["pedal", "supply"]),
+		boardUid: z.string().min(1).max(128).nullable(),
+		x: coordinate,
+		y: coordinate,
+		rotationDeg: z.number().finite(),
+		z: z.number().finite(),
+	})
+	.strict();
+
+/** One scene-local jack correction (F-33). */
+const jackOverrideSchema = z
+	.object({
+		jack: z.number().int().min(0).max(63),
+		kind: z.enum(JACK_KINDS).optional(),
+		edge: z.enum(JACK_EDGES).optional(),
+		pos: z.number().finite().min(0).max(1).optional(),
+		stereo: z.boolean().optional(),
+	})
+	.strict()
+	.refine(
+		(value) =>
+			value.kind !== undefined ||
+			value.edge !== undefined ||
+			value.pos !== undefined ||
+			value.stereo !== undefined,
+		{ message: "A jack correction must change at least one property" },
+	);
+
+/** v3 placed item: v1/v2 item plus optional local corrections. */
+const itemSchemaV3 = itemSchema
+	.extend({
+		jackOverrides: z
+			.array(jackOverrideSchema)
+			.max(64)
+			.refine(
+				(overrides) =>
+					new Set(overrides.map((override) => override.jack)).size ===
+					overrides.length,
+				{ message: "A jack may be corrected only once" },
+			)
+			.optional(),
+	})
+	.strict();
 
 const jackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
@@ -294,7 +350,7 @@ const legacyPayloadSchema = z
 	})
 	.strict();
 
-const currentPayloadSchema = z
+const v2PayloadSchema = z
 	.object({
 		version: z.literal(2),
 		name: optionalString(200),
@@ -306,8 +362,21 @@ const currentPayloadSchema = z
 	})
 	.strict();
 
+const currentPayloadSchema = z
+	.object({
+		version: z.literal(3),
+		name: optionalString(200),
+		boards: z.array(boardSchema).max(5_000),
+		items: z.array(itemSchemaV3).max(5_000),
+		customPedals: z.array(customPedalSchema).max(5_000),
+		endpoints: z.array(endpointSchema).max(5_000),
+		cables: z.array(cableSchema).max(5_000),
+	})
+	.strict();
+
 const payloadSchema = z.discriminatedUnion("version", [
 	legacyPayloadSchema,
+	v2PayloadSchema,
 	currentPayloadSchema,
 ]);
 
@@ -398,8 +467,8 @@ export function encodeShareLink(
 	name: string,
 	snapshot: SceneSnapshot,
 ): ShareEncodeResult {
-	// v2 (owner decision 2026-10-21): cables/endpoints travel in the payload.
-	// Old v1 clients reject a v2 link cleanly instead of silently dropping them.
+	// v3 (F-33): jackOverrides travel on placed items. Old clients reject a v3
+	// link cleanly instead of silently dropping the corrections (F-37 policy).
 	const payload: SharePayload = {
 		version: SHARE_VERSION,
 		name: normalizeShareName(name),
@@ -449,8 +518,9 @@ export function encodeShareLink(
 }
 
 /**
- * Decode a `#s=v1:…` / `#s=v2:…` hash. Never throws. Returns a typed reason so the UI can
- * show a precise inline message; the recipient's stored scene is never touched.
+ * Decode a `#s=v1:…`, `#s=v2:…` or `#s=v3:…` hash. Never throws. Returns a typed
+ * reason so the UI can show a precise inline message; the recipient's stored
+ * scene is never touched.
  */
 export function decodeShareHash(hash: string): ShareDecodeResult {
 	if (!hash.startsWith(SHARE_HASH_PREFIX)) {
@@ -575,7 +645,7 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 		};
 	}
 	// The hash prefix and the payload version are one contract. A mismatched
-	// pair (`#s=v2:` carrying `version: 1`, or the reverse) must not silently
+	// pair (`#s=v3:` carrying `version: 2`, or the reverse) must not silently
 	// downgrade/upgrade — reject it as malformed.
 	if (parsed.data.version !== version) {
 		return {

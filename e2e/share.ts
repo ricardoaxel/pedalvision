@@ -22,6 +22,13 @@ export interface ShareFixture {
 		y: number;
 		rotationDeg: number;
 		z: number;
+		jackOverrides?: Array<{
+			jack: number;
+			kind?: string;
+			edge?: string;
+			pos?: number;
+			stereo?: boolean;
+		}>;
 	}>;
 	customPedals?: unknown[];
 	endpoints?: Array<{
@@ -36,13 +43,13 @@ export interface ShareFixture {
 		to: { itemUid: string; jack: string } | { endpointUid: string };
 		color?: string;
 	}>;
-	/** Default 2 (current); pass 1 to build a legacy graph-less link. */
-	version?: 1 | 2;
+	/** Default 3 (current); pass 1/2 to build a legacy link. */
+	version?: 1 | 2 | 3;
 }
 
-/** Build a valid `#s=v2:…` payload without importing app code. */
+/** Build a valid `#s=v3:…` payload without importing app code. */
 export function shareHash(fixture: ShareFixture): string {
-	const version = fixture.version ?? 2;
+	const version = fixture.version ?? 3;
 	const payload =
 		version === 1
 			? {
@@ -53,7 +60,7 @@ export function shareHash(fixture: ShareFixture): string {
 					customPedals: fixture.customPedals ?? [],
 				}
 			: {
-					version: 2,
+					version,
 					name: fixture.name ?? "Shared board",
 					boards: fixture.boards,
 					items: fixture.items,
