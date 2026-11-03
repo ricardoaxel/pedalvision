@@ -149,38 +149,64 @@ test("the selection halo follows the live Transformer rotation (Q-01)", async ({
 		{ steps: 10 },
 	);
 
-	// While the gesture is live the halo's absolute rotation must match the
-	// item group's live rotation — the Q-01 bug left it at the committed angle.
-	const live = await page.evaluate(() => {
-		interface NodeLike {
-			rotation: () => number;
-			getAbsoluteRotation: () => number;
-			nodes: () => NodeLike[];
-		}
-		const konva = (
-			window as unknown as {
-				Konva?: { stages: Array<{ find: (s: string) => NodeLike[] }> };
+	// Read the live Konva nodes: the halo must mirror the item group's local
+	// position/rotation (same parent frame) and therefore its absolute rotation.
+	const readLive = () =>
+		page.evaluate(() => {
+			interface NodeLike {
+				x: () => number;
+				y: () => number;
+				rotation: () => number;
+				getAbsoluteRotation: () => number;
+				nodes: () => NodeLike[];
 			}
-		).Konva;
-		const konvaStage = konva?.stages[0];
-		if (!konvaStage) return null;
-		const halo = konvaStage.find(".selection-halo")[0];
-		const transformer = konvaStage
-			.find("Transformer")
-			.find((node) => node.nodes().length > 0);
-		const item = transformer?.nodes()[0];
-		return {
-			haloRotation: halo?.getAbsoluteRotation() ?? null,
-			itemRotation: item?.rotation() ?? null,
-		};
-	});
-	expect(live?.itemRotation).toBeGreaterThan(10);
-	expect(live?.haloRotation).toBeCloseTo(live?.itemRotation ?? 0, 5);
+			const konva = (
+				window as unknown as {
+					Konva?: { stages: Array<{ find: (s: string) => NodeLike[] }> };
+				}
+			).Konva;
+			const konvaStage = konva?.stages[0];
+			if (!konvaStage) return null;
+			const halo = konvaStage.find(".selection-halo")[0];
+			const transformer = konvaStage
+				.find("Transformer")
+				.find((node) => node.nodes().length > 0);
+			const item = transformer?.nodes()[0];
+			if (!halo || !item) return null;
+			const read = (node: NodeLike) => ({
+				x: node.x(),
+				y: node.y(),
+				rotation: node.rotation(),
+				absoluteRotation: node.getAbsoluteRotation(),
+			});
+			return { halo: read(halo), item: read(item) };
+		});
+
+	// While the gesture is live the halo must copy the item's live transform —
+	// the Q-01 bug left it at the committed angle and origin.
+	const live = await readLive();
+	if (!live) throw new Error("selection halo / Transformer node not found");
+	expect(live.item.rotation).toBeGreaterThan(10);
+	expect(live.halo.rotation).toBeCloseTo(live.item.rotation, 5);
+	expect(live.halo.absoluteRotation).toBeCloseTo(live.item.absoluteRotation, 5);
+	expect(live.halo.x).toBeCloseTo(live.item.x, 5);
+	expect(live.halo.y).toBeCloseTo(live.item.y, 5);
 
 	await page.mouse.up();
 	await expect
 		.poll(async () => Number(await stage.getAttribute("data-item-rotations")))
 		.not.toBe(0);
+	// The committed re-render must keep the halo on the item (no release snap).
+	const committed = await readLive();
+	if (!committed)
+		throw new Error("selection halo / Transformer node not found");
+	expect(committed.halo.rotation).toBeCloseTo(committed.item.rotation, 5);
+	expect(committed.halo.absoluteRotation).toBeCloseTo(
+		committed.item.absoluteRotation,
+		5,
+	);
+	expect(committed.halo.x).toBeCloseTo(committed.item.x, 5);
+	expect(committed.halo.y).toBeCloseTo(committed.item.y, 5);
 });
 
 test("rotating a pedal on a rotated board is relative to the pedal (S3)", async ({

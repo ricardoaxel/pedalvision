@@ -54,20 +54,31 @@ sibling halo lags for the whole gesture.
 
 ## Fix
 
-Render the selection halo **inside the item's own Konva group** (a child of
-`PedalNode`) so it inherits the live Transformer transform (position + rotation)
-for board-attached, loose and lifted items. Remove the sibling halos from
-`BoardNode` and `ItemNodes`; pass a `selected` flag into `PedalNode`. Keep the
-halo hidden while that item is in jack-proof mode (matching the loose-item
-behaviour).
+Keep the halo as the existing sibling node and **mirror the item node's live
+transform onto it during the gesture**:
+
+- `SelectionOutline` gets `name="selection-halo"`.
+- `ItemTransformer` finds that node at `transformstart` and, on every
+  `onTransform`, copies the item node's local `x`/`y`/`rotation` onto the halo
+  (they share the parent frame for board-attached, loose and lifted items) and
+  requests a layer redraw. The ref is re-resolved if the node was detached.
+- No change to the Transformer's attached node set, so its `getClientRect`
+  bounds — and therefore the cyan border/rotate handle geometry — stay
+  identical.
+
+**Rejected alternative:** rendering the halo as a child of the item group. It
+inherits the transform for free, but the 2 px outset + ring stroke enters the
+group's `getClientRect`, growing the Transformer bounding box by ~4 px and
+shifting the border/rotate handle (measured: 29.2 × 52.08 → 33.2 × 56.08 px).
+That is a selection-chrome change outside this bug fix.
 
 ## Steps
 
 1. Reproduce in the preview build on desktop + mobile, dark + light (done).
-2. Implement the minimal fix (halo child of the item group).
-3. Add a regression E2E: freeze a mid-rotation screenshot, release at the same
-   handle position, and assert the post-commit render matches the mid-drag
-   render (the old sibling halo changes angle on commit).
+2. Implement the minimal fix (sibling halo + imperative live-transform sync).
+3. Add a regression E2E: read the live Konva halo/item nodes mid-drag, assert
+   `x`/`y`/`rotation` and absolute rotation match, then re-read after release
+   and assert the committed re-render still matches.
 4. Run `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm e2e`.
 5. Design review: rendered pixels change (halo now rotates); run
    `design-reviewer` ≤2 passes on desktop + mobile, dark + light with
@@ -77,10 +88,10 @@ behaviour).
 
 ## Acceptance (executable)
 
-- During rotation the halo is aligned with the rotating pedal (mid-drag vs
-  post-commit pixel comparison test passes).
-- The halo still shows on selected board-attached, loose and lifted items, and
-  is hidden in jack-proof mode.
+- During rotation the halo is aligned with the rotating pedal (the E2E asserts
+  live + post-commit halo/item transforms match).
+- The halo still shows on selected board-attached, loose and lifted items;
+  jack-proof behaviour is unchanged.
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build` green.
 - Touched E2E flows green (desktop + mobile).
 - Before/after screenshots (desktop + mobile, dark + light) and a short

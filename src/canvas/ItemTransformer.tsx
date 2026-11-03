@@ -61,12 +61,23 @@ export function ItemTransformer({ selectedUid, theme }: ItemTransformerProps) {
 	const [attached, setAttached] = useState(false);
 
 	const syncHalo = useCallback(() => {
-		const node = transformerRef.current?.nodes()[0];
-		const halo = haloRef.current;
-		if (!node || !halo) return;
+		const transformer = transformerRef.current;
+		const node = transformer?.nodes()[0];
+		if (!node) return;
+		const stage = transformer?.getStage();
+		// Re-resolve if the halo element was remounted mid-gesture; the cached
+		// node would otherwise be detached and silently stop following.
+		const halo =
+			haloRef.current?.getStage() === stage
+				? haloRef.current
+				: (stage?.findOne(".selection-halo") ?? null);
+		haloRef.current = halo;
+		if (!halo) return;
 		halo.x(node.x());
 		halo.y(node.y());
 		halo.rotation(node.rotation());
+		// The halo must stay in the item node's layer so this draw reaches it.
+		halo.getLayer()?.batchDraw();
 	}, []);
 
 	const commit = useCallback(() => {
