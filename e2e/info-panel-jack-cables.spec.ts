@@ -10,7 +10,12 @@ const PX_PER_CM = 4;
 
 async function expandDetails(page: Page): Promise<void> {
 	const expand = page.getByTestId("info-expand");
-	if (await expand.isVisible()) await expand.click();
+	if (
+		(await expand.isVisible()) &&
+		(await expand.getAttribute("aria-expanded")) !== "true"
+	) {
+		await expand.click();
+	}
 }
 
 async function placeChoka(page: Page, onBoard = false): Promise<void> {
@@ -225,6 +230,47 @@ test("proof affordances: desktop hover feedback and mobile stepper/jack list", a
 	await expect(
 		page.locator('[aria-label="Selected pedal actions"]'),
 	).toHaveCount(0);
+});
+
+test("pressing outside the pins exits proof and continues the normal gesture", async ({
+	page,
+}) => {
+	await placeChoka(page);
+	await enterProof(page);
+	const stage = page.getByTestId("stage");
+	const centre = await firstItemScreenCentre(page, CHOKA_CM);
+	const before = await stage.getAttribute("data-item-positions");
+	await page.mouse.move(centre.x, centre.y);
+	await page.mouse.down();
+	await page.mouse.move(centre.x + 64, centre.y + 40, { steps: 6 });
+	await page.mouse.up();
+	await expect(stage).toHaveAttribute("data-proofing", "false");
+	expect(await stage.getAttribute("data-item-positions")).not.toBe(before);
+	expect(await stage.getAttribute("data-selected-item")).not.toBe("");
+	await expect(page.getByTestId("info-panel")).toBeVisible();
+	await page.waitForTimeout(250);
+
+	// Re-enter, then an empty-canvas press exits without clearing selection;
+	// the next empty press clears it.
+	await expandDetails(page);
+	await enterProof(page);
+	const selected = await stage.getAttribute("data-selected-item");
+	await page.mouse.click(30, 100);
+	await expect(stage).toHaveAttribute("data-proofing", "false");
+	expect(await stage.getAttribute("data-selected-item")).toBe(selected);
+});
+
+test("a touch press on the pedal body exits proof", async ({ page }) => {
+	const mobile = (page.viewportSize()?.width ?? 1280) < 1024;
+	test.skip(!mobile, "touch viewport only");
+	await placeChoka(page);
+	await enterProof(page);
+	const stage = page.getByTestId("stage");
+	const centre = await firstItemScreenCentre(page, CHOKA_CM);
+	const before = await stage.getAttribute("data-item-positions");
+	await page.touchscreen.tap(centre.x, centre.y);
+	await expect(stage).toHaveAttribute("data-proofing", "false");
+	expect(await stage.getAttribute("data-item-positions")).toBe(before);
 });
 
 test("reset all uses a two-step confirm and keeps the rest of the scene", async ({

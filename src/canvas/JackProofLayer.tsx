@@ -227,16 +227,13 @@ export function JackProofLayer({ theme }: { theme: CanvasTheme }) {
 			: null;
 
 	return (
-		<Layer>
+		<Layer name="jack-proof">
 			<Group ref={groupRef} x={originPx.x} y={originPx.y} rotation={rotation}>
 				<Rect
 					width={widthPx}
 					height={heightPx}
 					fill="rgba(0,0,0,0.001)"
-					onMouseMove={updateHover}
-					onMouseLeave={() => setHover(null)}
-					onMouseDown={begin}
-					onTouchStart={begin}
+					listening={false}
 				/>
 				{frameTicks}
 			</Group>
@@ -335,6 +332,7 @@ export function JackProofLayer({ theme }: { theme: CanvasTheme }) {
 							/>
 						) : null}
 						<Circle
+							name="jack-proof-pin"
 							radius={hitRadius}
 							fill="rgba(0,0,0,0.001)"
 							onMouseMove={updateHover}

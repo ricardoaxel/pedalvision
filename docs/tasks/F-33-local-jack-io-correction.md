@@ -374,6 +374,13 @@ below 240/200 px; never restores the camera on exit.
   with no merge blocker; final fixes folded (inspector refit, mobile notice, full
   jack names). **Code-review:** Register delta `changes-required` → fixed →
   **approve** (refit loop, units in tag, cancel hover, fallback).
+- **Exit flow (owner follow-up, 2026-11-02):** only the pin hit circles listen in
+  proof mode; a press anywhere else (pedal body, another pedal, board, empty
+  canvas, cable/endpoint) exits proof and **continues the same gesture** (drag/
+  select/pan). The exiting empty-canvas press is non-destructive (selection kept).
+  Implemented as one capture-phase rule in `useJackProofDrag` using Konva
+  `getIntersection` against the `jack-proof-pin` name; `PedalNode` no longer
+  swallows the body press. Verified desktop + touch; code review **approve**.
 
 ## Design gate (recorded)
 
@@ -400,11 +407,12 @@ below 240/200 px; never restores the camera on exit.
 
 ## Measured results (2026-10-31)
 
-- **Build:** `dist` JS **345.90 kB gzip** vs F-38 baseline **337.54 kB gzip**
-  (**+8.36 kB**, +2.48%); CSS **16.25 kB gzip**. No new dependency.
+- **Build:** `dist` JS **346.12 kB gzip** vs F-38 baseline **337.54 kB gzip**
+  (**+8.58 kB**, +2.54%); CSS **16.25 kB gzip**. No new dependency.
 - **Unit:** **1002 tests** (baseline 977; +25), all green.
-- **E2E:** full suite **366 passed + 11 skipped**; the touched `info-panel-jack-cables`,
-  `info-panel` and `picker-choka` runs are green (30 passed + 1 skipped).
+- **E2E:** full suite **369 passed + 12 skipped**; the touched `info-panel-jack-cables`,
+  `info-panel` and `picker-choka` runs are green (13 passed + 1 skipped in the
+  final proof run).
 - **Share size** (v3 x/y payload): 10 corrected parts = **2,250 B decoded / 286 B
   compressed / 388 chars**; 400 parts × 8 overrides = **140,960 B / 3,773 B /
   5,037 chars** — under the 200 KB decoded and 32,000-char caps. Demo link: 412

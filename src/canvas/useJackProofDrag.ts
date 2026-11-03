@@ -1,3 +1,4 @@
+import type Konva from "konva";
 import type { RefObject } from "react";
 import { useEffect, useRef } from "react";
 import { type Point, pxToCm } from "../lib/geometry";
@@ -70,15 +71,19 @@ function worldToItemNormalized(
  */
 export function useJackProofDrag(
 	containerRef: RefObject<HTMLElement | null>,
-): void {
+	stageRef: RefObject<Konva.Stage | null>,
+): { exitedOnThisPress: { current: boolean } } {
 	const pointerIdRef = useRef<number | null>(null);
 	const startClientRef = useRef<Point | null>(null);
+	const exitedOnThisPress = useRef(false);
 
 	useEffect(() => {
 		const element = containerRef.current;
 		if (!element) return;
 
 		const onPointerDown = (event: PointerEvent) => {
+			if (!event.isPrimary) return;
+			if (useJackProof.getState().drag) return;
 			pointerIdRef.current = event.pointerId;
 			startClientRef.current = { x: event.clientX, y: event.clientY };
 		};
@@ -156,10 +161,14 @@ export function useJackProofDrag(
 			) {
 				return;
 			}
+			exitedOnThisPress.current = false;
 			if (useJackProof.getState().drag) finish(true);
 		};
 
-		const onPointerCancel = () => finish(false);
+		const onPointerCancel = () => {
+			exitedOnThisPress.current = false;
+			finish(false);
+		};
 		const onBlur = () => finish(false);
 		const onKeyDown = (event: KeyboardEvent) => {
 			const state = useJackProof.getState();
@@ -175,6 +184,24 @@ export function useJackProofDrag(
 			}
 		};
 
+		// One centralized exit rule: a proof press that is not a pin exits proof and
+		// lets the same press continue into the normal pedal/board/canvas gesture.
+		const onCaptureDown = (event: PointerEvent) => {
+			if (!event.isPrimary || event.button !== 0) return;
+			const state = useJackProof.getState();
+			if (!state.activeUid || state.drag) return;
+			const stage = stageRef.current;
+			if (!stage) return;
+			const rect = element.getBoundingClientRect();
+			const hit = stage.getIntersection({
+				x: event.clientX - rect.left,
+				y: event.clientY - rect.top,
+			});
+			if (hit?.name() === "jack-proof-pin") return;
+			exitedOnThisPress.current = true;
+			state.exit();
+		};
+		element.addEventListener("pointerdown", onCaptureDown, true);
 		window.addEventListener("pointerdown", onPointerDown, true);
 		window.addEventListener("pointermove", onMove, { passive: true });
 		window.addEventListener("pointerup", onPointerUp);
@@ -182,6 +209,7 @@ export function useJackProofDrag(
 		window.addEventListener("blur", onBlur);
 		window.addEventListener("keydown", onKeyDown);
 		return () => {
+			element.removeEventListener("pointerdown", onCaptureDown, true);
 			window.removeEventListener("pointerdown", onPointerDown, true);
 			window.removeEventListener("pointermove", onMove);
 			window.removeEventListener("pointerup", onPointerUp);
@@ -189,7 +217,7 @@ export function useJackProofDrag(
 			window.removeEventListener("blur", onBlur);
 			window.removeEventListener("keydown", onKeyDown);
 		};
-	}, [containerRef]);
+	}, [containerRef, stageRef]);
 
 	// Expose keyboard nudging for the ledger's selected row (0.2 cm / Shift 1 cm).
 	useEffect(() => {
@@ -257,4 +285,6 @@ export function useJackProofDrag(
 		window.addEventListener("keydown", onKeyDown);
 		return () => window.removeEventListener("keydown", onKeyDown);
 	}, []);
+
+	return { exitedOnThisPress };
 }

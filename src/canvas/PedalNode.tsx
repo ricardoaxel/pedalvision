@@ -225,11 +225,9 @@ export function PedalNode({
 			// Claim the press: the board underneath must not start dragging.
 			event.cancelBubble = true;
 			if (proofUid) {
-				if (proofUid === item.uid) return;
-				// Tapping another pedal ends proof mode and selects that pedal.
+				// A press on a pedal body (not a pin) exits proof and continues as a
+				// normal select/drag on the same press.
 				useJackProof.getState().exit();
-				selectItem(item.uid);
-				return;
 			}
 			selectItem(item.uid);
 			if (isReadOnly()) {

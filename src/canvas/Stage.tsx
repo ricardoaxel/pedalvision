@@ -332,7 +332,7 @@ export function Stage() {
 
 	useViewportGestures(containerRef, hitTest);
 	useItemDrag(containerRef);
-	useJackProofDrag(containerRef);
+	const proofPress = useJackProofDrag(containerRef, stageRef);
 	useCableDrag(containerRef);
 
 	useEffect(() => {
@@ -479,6 +479,7 @@ export function Stage() {
 					// empty drag keeps the pin; only a click (no movement) releases it.
 					onMouseDown={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofPress.exitedOnThisPress.current) return;
 						if (proofActive) return;
 						if (isCameraLocked()) {
 							lockClickStart.current = eventClientPoint(event.evt);
@@ -488,6 +489,7 @@ export function Stage() {
 					}}
 					onTouchStart={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofPress.exitedOnThisPress.current) return;
 						if (proofActive) return;
 						if (isCameraLocked()) {
 							lockClickStart.current = eventClientPoint(event.evt);
@@ -497,6 +499,7 @@ export function Stage() {
 					}}
 					onMouseUp={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofPress.exitedOnThisPress.current) return;
 						if (proofActive) return;
 						const start = lockClickStart.current;
 						lockClickStart.current = null;
@@ -509,6 +512,7 @@ export function Stage() {
 					}}
 					onTouchEnd={(event) => {
 						if (event.target !== event.target.getStage()) return;
+						if (proofPress.exitedOnThisPress.current) return;
 						if (proofActive) return;
 						const start = lockClickStart.current;
 						lockClickStart.current = null;

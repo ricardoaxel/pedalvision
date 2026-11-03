@@ -142,7 +142,7 @@ export function JackCorrections({
 			{correcting ? (
 				<>
 					<p className="jack-correction__hint" data-testid="jack-proof-hint">
-						Drag a pin on the face · arrows nudge.
+						Drag a pin on the face · click outside to finish · arrows nudge.
 					</p>
 					<p className="jack-correction__legend" aria-hidden="true">
 						◇ assumed / approx · ◎ corrected
