@@ -2,7 +2,7 @@
 
 > **Catalog program PAUSED (2026-10-29).** Catalog backfill is closed for now; feature work continues. All catalog tasks carry a pause banner. **PR #91 (bulk planner fill, pedals + boards) was merged before the pause (`1368a479`); no new catalog work will run.** See `docs/tasks/CATALOG-PAUSED.md`.
 
-**Next:** **Feature lane open** — start the next **Phase 1 planner** item (first candidate **Q-01 rotate-shadow flicker**; the owner may pick another Phase 1 item from `docs/tasks/feature-roadmap-proposal.md`). **F-33 (#95) and F-41 (#96) are merged** (reconciled 2026-11-03). **F-42 PostHog analytics moved to Phase 5** (owner decision 2026-11-03: finish the planner first; no tracking before Phase 5). **ARCH-01 is merged (#87)** and the remaining ARCH items are **deferred/opportunistic**, **not** gates. No catalog data/assets/tools edits. **Catalog lane:** **PAUSED (2026-10-29)** — no catalog batches; resume later for refilling.
+**Next:** **Pending merge: PR #97** (docs-only roadmap placement — F-42 → Phase 5, F-33/F-41 reconciled). After it merges, start the next **Phase 1 planner** item (first candidate **Q-01 rotate-shadow flicker**; the owner may pick another Phase 1 item from `docs/tasks/feature-roadmap-proposal.md`). **F-42 PostHog analytics moved to Phase 5** (owner decision 2026-11-03: finish the planner first; no tracking before Phase 5). **ARCH-01 is merged (#87)** and the remaining ARCH items are **deferred/opportunistic**, **not** gates. No catalog data/assets/tools edits. **Catalog lane:** **PAUSED (2026-10-29)** — no catalog batches; resume later for refilling.
 
 **Current phase:** Feature work — catalog program paused (2026-10-29). **P4 is COMPLETE**: P4-01 (PR #30, squash `d0d79ad`), P4-02 (PR #31, squash `f001a0b`), P4-03 (PR #33, squash `c0c419b`) and the **P4 phase gate** (merged 2026-10-21, PR #34, squash `caee58d`) are **DONE**. The **P5 plan restructure** is **DONE** (merged 2026-10-21, PR #32, squash `6e7deef`).
 **Catalog next task:** **paused/closed for now** (2026-10-29). Feature work continues; see `docs/tasks/CATALOG-PAUSED.md`.
@@ -26,8 +26,9 @@
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
 ## In review
+- **PR #97 — docs-only roadmap placement (in review).** Moves **F-42 PostHog analytics to Phase 5**, consolidates it with C-18, adds the no-tracking-before-Phase-5 guardrail, and reconciles **F-33 #95** / **F-41 #96** as merged. No code/data.
 - **No open catalog PRs.** PR #91 (bulk planner fill, pedals + boards) merged in `1368a479` before the pause; the catalog is paused.
-- **No active feature PRs.** Feature lane: **open** — F-33 (#95) and F-41 (#96) merged; next is a Phase 1 planner item. Architecture: remaining items **deferred/opportunistic** (ADR-008), not gates.
+- **No other active feature PRs.** Feature lane: **open** — next is a Phase 1 planner item after PR #97 merges. Architecture: remaining items **deferred/opportunistic** (ADR-008), not gates.
 
 ## Done
 - [x] **F-41 — docs/legal hub — merged 2026-11-03, PR #96, squash `e7c96536`.** Static same-origin `/docs`, `/help`, `/features`, `/changelog`, `/privacy`, `/terms`, `/community-guidelines`, `/takedown`; shared hub chrome; app help entry + picker/info links; `docs-hub.spec.ts` (desktop + mobile, no-JS, redirect). No analytics/consent code (F-42 owns that). JS 346.33 kB gzip, CSS 16.48 kB gzip; design-reviewer 2/2; 1 light code-review pass fixed.
