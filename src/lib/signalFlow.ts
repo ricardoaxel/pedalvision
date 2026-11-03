@@ -135,7 +135,9 @@ function isAudioEnd(end: EndInfo): boolean {
 
 function endAssumed(end: EndInfo): boolean {
 	if (end.kind === "endpoint") return false;
-	return end.item.assumed || end.jack.approximate === true;
+	// Per-jack (F-33): a corrected jack is no longer assumed even if another
+	// jack on the same item still uses the fallback pair.
+	return end.jack.assumed === true || end.jack.approximate === true;
 }
 
 function buildItemInfo(

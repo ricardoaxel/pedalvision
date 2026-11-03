@@ -1,5 +1,9 @@
 import { expect, type Page, test } from "@playwright/test";
-import { activeSceneId, readSceneDocument } from "./persistence.ts";
+import {
+	activeSceneId,
+	readSceneDocument,
+	waitForSavedScene,
+} from "./persistence.ts";
 import { addBoard, addPedal, openPicker } from "./picker.ts";
 import { board, item, shareHash } from "./share.ts";
 import { firstItemScreenCentre } from "./stage.ts";
@@ -188,7 +192,7 @@ test("share → read-only → save a copy never overwrites the recipient's scene
 	await page.getByTestId("share-open").click();
 	await expect(page.getByTestId("share-panel")).toBeVisible();
 	const link = await page.getByTestId("share-link").inputValue();
-	expect(link).toContain("#s=v2:");
+	expect(link).toContain("#s=v3:");
 	await page.getByTestId("share-close").click();
 	await expect(page.getByTestId("share-panel")).toHaveCount(0);
 
@@ -254,6 +258,30 @@ test("share → read-only → save a copy never overwrites the recipient's scene
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "2");
 	await switchScene(page, "Mine");
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "0");
+});
+
+test("save a copy preserves local jack corrections", async ({ page }) => {
+	const hash = shareHash({
+		name: "Corrected copy",
+		boards: [board("b1")],
+		items: [
+			item("i1", {
+				refId: "tc-electronic-choka-tremolo",
+				boardUid: "b1",
+				jackOverrides: [{ jack: 1, x: 0.25, y: 1 }],
+			}),
+		],
+	});
+	await openShare(page, hash);
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await page.getByTestId("share-save-copy").click();
+	await expect(page.getByTestId("share-saved")).toBeVisible();
+	await waitForSavedScene(page, (document) => {
+		const item = document.items[0];
+		return (
+			item?.jackOverrides?.[0]?.jack === 1 && item.jackOverrides[0]?.y === 1
+		);
+	});
 });
 
 test("an over-cap shared scene loads read-only with the capacity warning", async ({
@@ -569,7 +597,7 @@ test("a link whose prefix and payload versions disagree is rejected", async ({
 		version: 1,
 	});
 	// The body is a valid v1 payload; only the prefix claims v2.
-	await openShare(page, legacy.replace("#s=v1:", "#s=v2:"));
+	await openShare(page, legacy.replace("#s=v1:", "#s=v3:"));
 	await expect(page.getByTestId("share-error")).toBeVisible();
 	await expect(page.getByTestId("share-stamp")).toHaveCount(0);
 });

@@ -535,8 +535,9 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 
 /**
  * Honesty note for exports that include a cable to a catalog pedal whose jack
- * position is assumed (the documented fallback pair) or approximate (edge-only
- * data, P5-01) rather than a measured manufacturer position.
+ * position is assumed (the documented fallback pair), approximate (edge-only
+ * data, P5-01) or locally corrected (F-33) rather than a measured manufacturer
+ * position.
  */
 function drawAssumedJackNote(
 	parent: Konva.Group,
@@ -552,7 +553,11 @@ function drawAssumedJackNote(
 	const used = plan.cables.some((cable) =>
 		[cable.from, cable.to].some((end) => {
 			const anchor = cableEndAnchorFromIndex(end, index);
-			return anchor?.assumed === true || anchor?.approximate === true;
+			return (
+				anchor?.assumed === true ||
+				anchor?.approximate === true ||
+				anchor?.corrected === true
+			);
 		}),
 	);
 	if (!used) return;
@@ -562,7 +567,7 @@ function drawAssumedJackNote(
 		EXPORT_PADDING_CM * 0.78 * pxPerCm;
 	parent.add(
 		new Konva.Text({
-			text: "Cables to catalog pedals may use assumed or approximate jack positions.",
+			text: "Cables may use assumed, approximate or locally corrected jack positions.",
 			x,
 			y,
 			fontFamily: CANVAS_FONTS.mono,

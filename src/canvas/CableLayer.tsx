@@ -9,19 +9,23 @@ import {
 	anchorIndexFor,
 	cableEndAnchorFromIndex,
 	jackAnchorWorld,
-	jackNormalLocal,
+	jackNormalFor,
 	liftedJackAnchor,
 } from "../lib/jackAnchor";
+import { normalizedToWorld } from "../lib/jackProof";
 import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useBoardDrag } from "../state/boardDrag";
 import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { useEndpointDrag } from "../state/endpointDrag";
+import { useJackProof } from "../state/jackProof";
 import { useReadOnly } from "../state/readOnly";
 import {
 	type Cable,
+	cableEndUsesItemJack,
 	cableReferencesEndpoint,
 	cableReferencesItem,
+	itemFootprint,
 	normalizeCableDirection,
 	sameCableEnd,
 	useScene,
@@ -65,6 +69,7 @@ interface RenderOptions {
 	boardDragRotation: number;
 	draggingEndpointUid: string | null;
 	draggingEndpointCm: { x: number; y: number } | null;
+	proofDrag: { uid: string; jack: number; x: number; y: number } | null;
 }
 
 /** Build the drawable cable list (curves + selected/dim state). */
@@ -87,11 +92,64 @@ function renderCables(options: RenderOptions): RenderedCable[] {
 		boardDragRotation,
 		draggingEndpointUid,
 		draggingEndpointCm,
+		proofDrag,
 	} = options;
 	const safeScale = Math.max(scale, 0.0001);
 	const itemByUid = new Map(items.map((item) => [item.uid, item]));
 
+	const proofAnchor = (end: Cable["from"]): AnchorPoint | null => {
+		if (
+			!proofDrag ||
+			!("itemUid" in end) ||
+			end.itemUid !== proofDrag.uid ||
+			Number(end.jack) !== proofDrag.jack
+		) {
+			return null;
+		}
+		const item = itemByUid.get(proofDrag.uid);
+		if (!item) return null;
+		const footprint = itemFootprint(item, customPedals);
+		const board = item.boardUid
+			? boards.find((candidate) => candidate.uid === item.boardUid)
+			: undefined;
+		const point = normalizedToWorld(
+			{ x: proofDrag.x, y: proofDrag.y },
+			{
+				x: item.x,
+				y: item.y,
+				rotationDeg: item.rotationDeg,
+				board: board
+					? { x: board.x, y: board.y, rotationDeg: board.rotationDeg }
+					: undefined,
+			},
+			footprint,
+		);
+		const anchor = index.items.get(`item:${proofDrag.uid}:${proofDrag.jack}`);
+		if (!anchor?.jack) return null;
+		const localNormal = jackNormalFor(
+			{ ...anchor.jack, xNorm: proofDrag.x, yNorm: proofDrag.y },
+			footprint,
+		);
+		const normal = board
+			? rotatePoint(
+					rotatePoint(localNormal, { x: 0, y: 0 }, item.rotationDeg),
+					{ x: 0, y: 0 },
+					board.rotationDeg,
+				)
+			: rotatePoint(localNormal, { x: 0, y: 0 }, item.rotationDeg);
+		return {
+			...anchor,
+			point,
+			normal,
+			assumed: false,
+			corrected: true,
+			interior: true,
+		};
+	};
+
 	const anchorFor = (end: Cable["from"]): AnchorPoint | null => {
+		const proof = proofAnchor(end);
+		if (proof) return proof;
 		const anchor = cableEndAnchorFromIndex(end, index);
 		if (!anchor) return null;
 		// A dragged endpoint's cable follows the transient position.
@@ -142,7 +200,7 @@ function renderCables(options: RenderOptions): RenderedCable[] {
 						...anchor,
 						point,
 						normal: rotatePoint(
-							jackNormalLocal(anchor.jack.edge),
+							jackNormalFor(anchor.jack, itemFootprint(item, customPedals)),
 							{ x: 0, y: 0 },
 							boardDragRotation + item.rotationDeg,
 						),
@@ -198,6 +256,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const boardDragUid = useBoardDrag((state) => state.uid);
 	const draggingEndpointUid = useEndpointDrag((state) => state.uid);
+	const proofDrag = useJackProof((state) => state.drag);
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
 	const dimFocus =
 		selectedItemUid ?? hoveredItemUid ?? selectedEndpointUid ?? null;
@@ -205,7 +264,9 @@ export function CableLayer({ theme }: CableLayerProps) {
 
 	const hidden = useMemo(() => {
 		const set = new Set<string>();
-		if (!liftedUid && !boardDragUid && !draggingEndpointUid) return set;
+		if (!liftedUid && !boardDragUid && !draggingEndpointUid && !proofDrag) {
+			return set;
+		}
 		const boardItemUids = boardDragUid
 			? new Set(
 					items
@@ -225,10 +286,16 @@ export function CableLayer({ theme }: CableLayerProps) {
 					? true
 					: "itemUid" in cable.to && boardItemUids.has(cable.to.itemUid)
 				: false;
-			if (hiddenByLift || hiddenByEndpoint || hiddenByBoard) set.add(cable.uid);
+			const hiddenByProof = proofDrag
+				? cableEndUsesItemJack(cable.from, proofDrag.uid, proofDrag.jack) ||
+					cableEndUsesItemJack(cable.to, proofDrag.uid, proofDrag.jack)
+				: false;
+			if (hiddenByLift || hiddenByEndpoint || hiddenByBoard || hiddenByProof) {
+				set.add(cable.uid);
+			}
 		}
 		return set;
-	}, [cables, items, liftedUid, boardDragUid, draggingEndpointUid]);
+	}, [cables, items, liftedUid, boardDragUid, draggingEndpointUid, proofDrag]);
 
 	const rendered = useMemo(
 		() =>
@@ -251,6 +318,7 @@ export function CableLayer({ theme }: CableLayerProps) {
 						boardDragRotation: 0,
 						draggingEndpointUid: null,
 						draggingEndpointCm: null,
+						proofDrag: null,
 					})
 				: [],
 		[
@@ -409,6 +477,7 @@ function LiveCables({
 	const boardDragRotation = useBoardDrag((state) => state.rotationDeg);
 	const draggingEndpointUid = useEndpointDrag((state) => state.uid);
 	const draggingEndpointCm = useEndpointDrag((state) => state.worldCm);
+	const proofDrag = useJackProof((state) => state.drag);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	if (hidden.size === 0) return null;
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
@@ -432,6 +501,7 @@ function LiveCables({
 		boardDragRotation,
 		draggingEndpointUid,
 		draggingEndpointCm,
+		proofDrag,
 	});
 	return (
 		<CableShapes

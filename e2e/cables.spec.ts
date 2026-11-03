@@ -506,7 +506,7 @@ test("a read-only share shows hollow fallback ticks and the cue", async ({
 	await expect(stage).toHaveAttribute("data-cable-arrows", "1");
 });
 
-test("share v2 round-trips cables and endpoints read-only", async ({
+test("share v3 round-trips cables and endpoints read-only", async ({
 	page,
 }) => {
 	await page.goto("/");
@@ -526,9 +526,9 @@ test("share v2 round-trips cables and endpoints read-only", async ({
 	await page.getByTestId("share-open").click();
 	const link = page.getByTestId("share-link");
 	await expect(link).toBeVisible();
-	await expect(page.getByTestId("share-panel")).toContainText("V2");
+	await expect(page.getByTestId("share-panel")).toContainText("V3");
 	const url = await link.inputValue();
-	expect(url).toContain("#s=v2:");
+	expect(url).toContain("#s=v3:");
 	const hash = url.slice(url.indexOf("#s="));
 
 	// Force a full document load (an only-hash navigation would not reboot).

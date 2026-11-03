@@ -18,10 +18,11 @@ import {
 import { isCableJack } from "../catalog/schema";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
-import { jackLocalPoint, jackNormalLocal } from "../lib/jackAnchor";
+import { jackLocalPoint, jackNormalFor } from "../lib/jackAnchor";
 import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
+import { useJackProof } from "../state/jackProof";
 import { useMotion } from "../state/motion";
 import { usePlannerCatalog } from "../state/plannerCatalog";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
@@ -32,7 +33,6 @@ import {
 	resolveItem,
 	resolveItemJacks,
 	useScene,
-	usesFallbackJacks,
 } from "../state/scene";
 import { selectSelectedItemUid, useSelection } from "../state/selection";
 import { useSettings } from "../state/settings";
@@ -167,6 +167,7 @@ export function PedalNode({
 			: -1,
 	);
 	const readOnly = isReadOnly();
+	const proofUid = useJackProof((state) => state.activeUid);
 	const showCables = useSettings((state) => state.showCables);
 	const coarsePointer = useCoarsePointer();
 	const [hoveredJack, setHoveredJack] = useState<number | null>(null);
@@ -223,6 +224,11 @@ export function PedalNode({
 		(event: KonvaEventObject<MouseEvent | TouchEvent>, client: Point) => {
 			// Claim the press: the board underneath must not start dragging.
 			event.cancelBubble = true;
+			if (proofUid) {
+				// A press on a pedal body (not a pin) exits proof and continues as a
+				// normal select/drag on the same press.
+				useJackProof.getState().exit();
+			}
 			selectItem(item.uid);
 			if (isReadOnly()) {
 				beginReadOnlyAttempt({
@@ -234,7 +240,7 @@ export function PedalNode({
 			}
 			beginCandidate({ uid: item.uid, startClient: client });
 		},
-		[item.uid, selectItem, beginCandidate, beginReadOnlyAttempt],
+		[item.uid, proofUid, selectItem, beginCandidate, beginReadOnlyAttempt],
 	);
 
 	const label = resolved.name;
@@ -442,8 +448,9 @@ export function PedalNode({
 	// is off. Real jacks show a ring + centre dot; the documented fallback pair
 	// shows a hollow diamond + "assumed" so it never reads as manufacturer data.
 	const jacks =
-		showCables || readOnly ? resolveItemJacks(item, customPedals) : [];
-	const assumedJacks = usesFallbackJacks(item, customPedals);
+		!proofUid && (showCables || readOnly)
+			? resolveItemJacks(item, customPedals)
+			: [];
 	const showSecondaryJacks =
 		hoveredItemUid === item.uid ||
 		selectedItemUid === item.uid ||
@@ -464,10 +471,11 @@ export function PedalNode({
 		const isSource = cableSourceJack === index;
 		const isTarget = cableTargetJack === index;
 		const isHovered = hoveredJack === index;
-		// Edge-only catalog data (P5-01) is approximate like the fallback pair:
-		// draw a hollow diamond so it never reads as a measured position.
-		const approximate = jack.approximate === true;
-		const hollow = assumedJacks || approximate;
+		// Per-jack provenance (F-33): an untouched fallback or edge-only jack is
+		// hollow; a locally corrected jack is a solid, user-asserted socket.
+		const hollow =
+			jack.corrected !== true &&
+			(jack.assumed === true || jack.approximate === true);
 		const diameter = hollow
 			? JACK_TICK.diameterPx / labelScale
 			: (isTarget
@@ -488,7 +496,10 @@ export function PedalNode({
 		// the socket would cover the whole ~29px pedal at zoom 1 and steal the
 		// drag. It overlaps only ~4px inwards.
 		const hitRadius = (coarsePointer ? JACK_TICK.hitPx : 28) / 2 / labelScale;
-		const outward = jackNormalLocal(jack.edge);
+		const outward = jackNormalFor(jack, {
+			widthCm: resolved.widthCm,
+			heightCm: resolved.heightCm,
+		});
 		const hitOffset = Math.max(0, hitRadius - 4 / labelScale);
 		const chipAbove = jack.edge !== "bottom";
 		const chipY = chipAbove

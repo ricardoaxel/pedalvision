@@ -3,9 +3,10 @@ import type {
 	ImageSource,
 	Jack,
 	JackEdge,
+	JackKind,
 	Power,
 } from "../catalog/schema";
-import type { ResolvedItem } from "../state/scene";
+import type { ResolvedItem, ResolvedJack } from "../state/scene";
 import { jackKindLabel } from "./customPedal";
 import { cmToDisplay, type DisplayUnits } from "./geometry";
 
@@ -24,10 +25,6 @@ export interface PartInfo {
 	widthCm: number;
 	heightCm: number;
 	jacks: Jack[];
-	/** True when `jacks` are the documented fallback pair, not catalog data. */
-	jacksAssumed: boolean;
-	/** True when at least one real jack has an invented (edge-only) position. */
-	jacksApproximate: boolean;
 	power: Power | null;
 	/**
 	 * The catalog image (mock/static/url), or null for custom + unknown parts
@@ -49,10 +46,8 @@ export interface PartInfo {
 export function buildPartInfo(
 	resolved: ResolvedItem,
 	kind: "pedal" | "supply",
-	/** The item's effective jacks (real or the documented fallback pair). */
-	jacks?: Jack[],
-	assumed = false,
-	approximate = false,
+	/** The item's effective jacks (real, fallback or locally corrected). */
+	jacks?: ResolvedJack[],
 ): PartInfo {
 	if (resolved.definition) {
 		const { definition } = resolved;
@@ -64,8 +59,6 @@ export function buildPartInfo(
 			widthCm: definition.widthCm,
 			heightCm: definition.heightCm,
 			jacks: jacks ?? definition.jacks ?? [],
-			jacksAssumed: assumed,
-			jacksApproximate: approximate,
 			power: definition.power ?? null,
 			image: { source: definition.imageSource, value: definition.image },
 			isCustom: false,
@@ -82,8 +75,6 @@ export function buildPartInfo(
 			widthCm: custom.widthCm,
 			heightCm: custom.heightCm,
 			jacks: jacks ?? custom.jacks ?? [],
-			jacksAssumed: assumed,
-			jacksApproximate: approximate,
 			power: custom.power ?? null,
 			image: null,
 			isCustom: true,
@@ -98,8 +89,6 @@ export function buildPartInfo(
 		widthCm: resolved.widthCm,
 		heightCm: resolved.heightCm,
 		jacks: jacks ?? [],
-		jacksAssumed: assumed,
-		jacksApproximate: approximate,
 		power: null,
 		image: null,
 		isCustom: false,
@@ -116,6 +105,21 @@ export function formatDimensions(
 	return `${cmToDisplay(widthCm, units)} × ${cmToDisplay(heightCm, units)} ${units}`;
 }
 
+/** Kind label with a stable ordinal when the item has duplicate kinds. */
+export function jackKindLabelAt(
+	jacks: readonly { kind: JackKind }[],
+	index: number,
+): string {
+	const kind = jacks[index]?.kind;
+	if (!kind) return "";
+	const same = jacks
+		.map((jack, jackIndex) => (jack.kind === kind ? jackIndex : -1))
+		.filter((jackIndex) => jackIndex >= 0);
+	return same.length > 1
+		? `${jackKindLabel(kind)} ${same.indexOf(index) + 1}`
+		: jackKindLabel(kind);
+}
+
 /** "9 V · DC · 100 mA". */
 export function formatPower(power: Power): string {
 	return `${power.voltage} V · ${power.acDc} · ${power.currentMa} mA`;
@@ -128,6 +132,28 @@ export const JACK_EDGE_NAMES: Record<JackEdge, string> = {
 	bottom: "Bottom",
 	left: "Left",
 };
+
+/** Provenance marker for a jack row (F-33 “Proof Marks”). */
+export type JackProvenance = "assumed" | "approximate" | "corrected" | null;
+
+/** Which provenance marker a jack row should show (catalog data = null). */
+export function jackProvenance(jack: ResolvedJack): JackProvenance {
+	if (jack.corrected === true) return "corrected";
+	if (jack.assumed === true) return "assumed";
+	if (jack.approximate === true) return "approximate";
+	return null;
+}
+
+/** "2.9 × 4.1 cm" — free x/y position on the pedal face (F-33). */
+export function formatJackPosition(
+	jack: ResolvedJack,
+	widthCm: number,
+	heightCm: number,
+	units: DisplayUnits,
+): string {
+	if (jack.xNorm === undefined || jack.yNorm === undefined) return "";
+	return `x ${cmToDisplay(jack.xNorm * widthCm, units)} · y ${cmToDisplay(jack.yNorm * heightCm, units)} ${units}`;
+}
 
 /** "I · Top · 0.30" — short kind, edge, position along the edge. */
 export function formatJack(jack: Jack): string {

@@ -1,4 +1,5 @@
 import type { Point } from "../lib/geometry";
+import { useJackProof } from "../state/jackProof";
 import { spaceWarning } from "../state/overlap";
 import { itemFootprint, type PlacedItem, useScene } from "../state/scene";
 import type { CanvasTheme } from "../styles/theme";
@@ -40,6 +41,7 @@ export function ItemNodes({
 	lifted = false,
 }: ItemNodesProps) {
 	const customPedals = useScene((state) => state.customPedals);
+	const proofUid = useJackProof((state) => state.activeUid);
 	const allItems = useScene((state) => state.items);
 	const boards = useScene((state) => state.boards);
 	const selectedItem = selectedItemUid
@@ -79,7 +81,7 @@ export function ItemNodes({
 					warning={item.uid === selectedItemUid ? warning : false}
 				/>
 			))}
-			{selectedItem ? (
+			{selectedItem && selectedItem.uid !== proofUid ? (
 				<SelectionOutline
 					xCm={worldPosition ? worldPosition.x : selectedItem.x}
 					yCm={worldPosition ? worldPosition.y : selectedItem.y}

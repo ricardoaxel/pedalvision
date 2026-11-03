@@ -113,10 +113,10 @@ test("Choka AVIF: picker thumbs, canvas move/rotate, PNG/PDF export and share", 
 		// Official rear/top view: OUTPUT on the player's left (~0.2), INPUT on the
 		// right (~0.8), 9V centered (~0.5; not a cable anchor).
 		await expect(page.getByTestId("info-jacks")).toContainText(
-			"O · Top · ~0.20",
+			"Out · Top · 0.20",
 		);
 		await expect(page.getByTestId("info-jacks")).toContainText(
-			"I · Top · ~0.80",
+			"In · Top · 0.80",
 		);
 		await expect(page.getByTestId("info-power-value")).toContainText("9 V");
 	}

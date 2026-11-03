@@ -23,6 +23,7 @@ function snapshot(): SceneSnapshot {
 				y: 2.25,
 				rotationDeg: 45,
 				z: 0,
+				jackOverrides: [{ jack: 0, x: 0.2, y: 1 }],
 			},
 		],
 		customPedals: [

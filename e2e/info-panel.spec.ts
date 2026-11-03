@@ -43,15 +43,21 @@ test("shows a selected catalog pedal's identity, tags and dimensions", async ({
 	);
 	await expect(page.getByTestId("info-jacks")).toBeVisible();
 	await expect(page.getByTestId("info-jacks")).toContainText(
-		"I · Right · ~0.50",
+		"In · Right · 0.50",
 	);
 	await expect(page.getByTestId("info-jacks")).toContainText(
-		"O · Left · ~0.50",
+		"Out · Left · 0.50",
 	);
 	await expect(page.getByTestId("info-jacks")).toContainText(
-		"Power · Top · ~0.50",
+		"Power · Top · 0.50",
 	);
-	await expect(page.getByTestId("info-jacks")).toContainText(
+	await expect(
+		page
+			.getByTestId("info-jacks")
+			.getByTestId("jack-marker-approximate")
+			.first(),
+	).toBeVisible();
+	await expect(page.getByTestId("info-jacks")).not.toContainText(
 		"Some jack positions are approximate.",
 	);
 	await expect(page.getByTestId("info-dims")).toContainText("cm");

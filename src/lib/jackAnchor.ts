@@ -8,9 +8,9 @@ import {
 	type PlacedBoard,
 	type PlacedItem,
 	resolveItemJacks,
-	usesFallbackJacks,
 } from "../state/scene";
 import { boardToWorld, type Point, rotatePoint } from "./geometry";
+import { proofNormalFor } from "./jackProof";
 
 /**
  * Jack-anchor resolution (F12/P4-01, design.md §Data model).
@@ -36,8 +36,12 @@ export interface AnchorPoint {
 	assumed: boolean;
 	/** The edge was known but not the exact position (P5-01, hollow tick). */
 	approximate?: boolean;
+	/** The jack was corrected locally for this scene (F-33), not catalog data. */
+	corrected?: boolean;
+	/** The corrected jack sits inside the footprint (free x/y), not on an edge. */
+	interior?: boolean;
 	/** The jack this anchor belongs to (undefined for an endpoint). */
-	jack?: Jack;
+	jack?: Jack & { xNorm?: number; yNorm?: number };
 	/** World visual rotation of the owning item (jack-side handle orientation). */
 	rotationDeg?: number;
 	/**
@@ -81,12 +85,19 @@ export function jackNormalLocal(edge: Jack["edge"]): Point {
 	}
 }
 
+/** Outward normal for an effective jack (radial for free x/y, else its edge). */
+export function jackNormalFor(
+	jack: Jack & { xNorm?: number; yNorm?: number },
+	footprint: { widthCm: number; heightCm: number },
+): Point {
+	return proofNormalFor(jack, footprint);
+}
+
 function jackAnchorDetailed(
 	item: PlacedItem,
 	index: number,
 	boards: PlacedBoard[],
 	customPedals: CustomPedal[],
-	assumed: boolean,
 ): AnchorPoint | null {
 	const jacks = resolveItemJacks(item, customPedals);
 	const jack = jacks[index];
@@ -96,7 +107,7 @@ function jackAnchorDetailed(
 	const point = jackAnchorWorld(item, String(index), boards, customPedals);
 	if (!point) return null;
 	const normal = rotatePoint(
-		jackNormalLocal(jack.edge),
+		jackNormalFor(jack, itemFootprint(item, customPedals)),
 		{ x: 0, y: 0 },
 		item.rotationDeg,
 	);
@@ -110,8 +121,11 @@ function jackAnchorDetailed(
 	return {
 		point,
 		normal: worldNormal,
-		assumed,
+		// Per-jack provenance: a corrected fallback jack is no longer assumed.
+		assumed: jack.assumed === true,
 		approximate: jack.approximate === true,
+		corrected: jack.corrected === true,
+		interior: jack.xNorm !== undefined && jack.yNorm !== undefined,
 		jack,
 		rotationDeg: worldRotation,
 	};
@@ -134,14 +148,12 @@ export function buildAnchorIndex(scene: {
 	const all: AnchorIndex["all"] = [];
 	for (const item of scene.items) {
 		const jacks = resolveItemJacks(item, scene.customPedals);
-		const assumed = usesFallbackJacks(item, scene.customPedals);
 		for (let index = 0; index < jacks.length; index++) {
 			const anchor = jackAnchorDetailed(
 				item,
 				index,
 				scene.boards,
 				scene.customPedals,
-				assumed,
 			);
 			if (!anchor) continue;
 			const key = `item:${item.uid}:${index}`;
@@ -227,7 +239,7 @@ export function liftedJackAnchor(
 		...anchor,
 		point: { x: worldCm.x + rotated.x, y: worldCm.y + rotated.y },
 		normal: rotatePoint(
-			jackNormalLocal(anchor.jack.edge),
+			jackNormalFor(anchor.jack, itemFootprint(item, customPedals)),
 			{ x: 0, y: 0 },
 			rotationDeg,
 		),
@@ -260,9 +272,15 @@ export function cableEndAnchorFromIndex(
  * fills it with an approximate position first.
  */
 export function jackLocalPoint(
-	jack: Jack,
+	jack: Jack & { xNorm?: number; yNorm?: number },
 	footprint: { widthCm: number; heightCm: number },
 ): Point {
+	if (jack.xNorm !== undefined && jack.yNorm !== undefined) {
+		return {
+			x: Math.min(1, Math.max(0, jack.xNorm)) * footprint.widthCm,
+			y: Math.min(1, Math.max(0, jack.yNorm)) * footprint.heightCm,
+		};
+	}
 	const pos = Math.min(1, Math.max(0, jack.pos ?? 0.5));
 	switch (jack.edge) {
 		case "top":

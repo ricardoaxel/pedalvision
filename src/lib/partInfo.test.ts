@@ -6,6 +6,7 @@ import {
 	formatDimensions,
 	formatJack,
 	formatPower,
+	jackProvenance,
 } from "./partInfo";
 
 function resolved(
@@ -137,5 +138,15 @@ describe("formatters", () => {
 			formatJack({ kind: "in", edge: "top", pos: 0.5, approximate: true }),
 		).toBe("I · Top · ~0.50");
 		expect(formatJack({ kind: "in", edge: "top" })).toBe("I · Top · auto");
+	});
+
+	it("classifies jack provenance (corrected wins over assumed/approximate)", () => {
+		const base = { kind: "in" as const, edge: "top" as const, pos: 0.5 };
+		expect(jackProvenance(base)).toBeNull();
+		expect(jackProvenance({ ...base, approximate: true })).toBe("approximate");
+		expect(jackProvenance({ ...base, assumed: true })).toBe("assumed");
+		expect(jackProvenance({ ...base, assumed: true, corrected: true })).toBe(
+			"corrected",
+		);
 	});
 });
