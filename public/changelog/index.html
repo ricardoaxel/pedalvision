@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Changelog — Pedalvision</title>
+		<meta
+			name="description"
+			content="Pedalvision changelog: shipped features and visible changes, newest first."
+		/>
+		<link rel="stylesheet" href="/hub/hub.css" />
+		<script src="/hub/hub.js" defer></script>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="masthead">
+			<div class="shell masthead__inner">
+				<a class="brand" href="/">Pedalvision <span>/ Field Notes</span></a>
+				<div class="masthead__actions">
+					<button
+						class="theme-button"
+						type="button"
+						data-theme-toggle
+						aria-label="Switch to light theme"
+					>
+						Light
+					</button>
+					<a class="button button--primary" href="/">Open planner</a>
+				</div>
+			</div>
+		</header>
+		<div class="shell">
+			<!-- hub-nav:start -->
+			<nav class="hub-nav" aria-label="Documentation and legal">
+				<a href="/docs">Docs</a>
+				<a href="/help">Help</a>
+				<a href="/features">Features</a>
+				<a href="/changelog" aria-current="page">Changelog</a>
+				<a href="/privacy">Privacy</a>
+				<a href="/terms">Terms</a>
+				<a href="/community-guidelines">Community</a>
+				<a href="/takedown">Takedown</a>
+			</nav>
+			<!-- hub-nav:end -->
+		</div>
+		<main id="main" class="shell">
+			<header class="page-head">
+				<p class="eyebrow">Log</p>
+				<h1>Changelog</h1>
+				<p class="lede">
+					One entry per shipped feature, newest first. Each feature PR updates the
+					top of this list and the feature catalogue.
+				</p>
+			</header>
+			<div class="content">
+				<ol class="log">
+					<li class="log-item">
+						<span class="log-date">3 Nov 2026</span>
+						<div>
+							<h2>Documentation &amp; legal hub <span class="tag">Added</span></h2>
+							<p>
+								Public docs, help, feature catalogue, changelog, privacy, terms,
+								community guidelines and image credits/takedown, linked from the
+								planner, the picker and the info panel.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">3 Nov 2026</span>
+						<div>
+							<h2>Local jack &amp; IO correction <span class="tag">Added</span></h2>
+							<p>
+								Press Proof lets you drag a placed pedal's jacks to their real
+								position, per scene, including top-face jacks. Share links move to
+								format v3 so corrected anchors travel with the patch.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">31 Oct 2026</span>
+						<div>
+							<h2>Picker search &amp; filter overhaul <span class="tag">Changed</span></h2>
+							<p>
+								Punctuation and model aliases, effect-aware search, brand aliases,
+								deterministic sort and a query-echoing empty state.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">30 Oct 2026</span>
+						<div>
+							<h2>Versioned scene &amp; share persistence <span class="tag">Changed</span></h2>
+							<p>
+								A supported-version policy and migration chain for saved scenes and
+								shared links; newer files are preserved rather than destroyed.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">30 Oct 2026</span>
+						<div>
+							<h2>Continuity Check <span class="tag">Added</span></h2>
+							<p>
+								A derived signal-flow report warns about direction, missing jacks,
+								dangling ends, unconnected chains and loops without blocking edits.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">29 Oct 2026</span>
+						<div>
+							<h2>Motion system <span class="tag">Added</span></h2>
+							<p>
+								One restrained motion language for panels, item changes and scene
+								switches; reduced-motion is instant.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">28 Oct 2026</span>
+						<div>
+							<h2>Viewport focus <span class="tag">Added</span></h2>
+							<p>
+								Frame the selected board or used area, page through boards and lock
+								the camera while editing; every scene load frames itself.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">28 Oct 2026</span>
+						<div>
+							<h2>Margin Rule measurement HUD <span class="tag">Added</span></h2>
+							<p>
+								Visible extent and grid readout, a true-length reference, a
+								selectable grid step and a temporary measure tool.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">27 Oct 2026</span>
+						<div>
+							<h2>Thumbnail renditions <span class="tag">Changed</span></h2>
+							<p>
+								Small picker rows and the mobile info sleeve use the 350 px image
+								rendition; detailed surfaces keep the 800 px master.
+							</p>
+						</div>
+					</li>
+					<li class="log-item">
+						<span class="log-date">27 Oct 2026</span>
+						<div>
+							<h2>Read-only jack ticks &amp; cable-aware export <span class="tag">Changed</span></h2>
+							<p>
+								Shared previews show real jack sockets, and selected-board exports
+								follow the exact cable curve so long handles are not clipped.
+							</p>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</main>
+		<!-- hub-footer:start -->
+		<footer class="hub-footer">
+			<div class="shell">
+				<div class="footer-grid">
+					<div class="footer-col">
+						<h2>Product</h2>
+						<a href="/">Open planner</a>
+						<a href="/features">Features</a>
+						<a href="/changelog">Changelog</a>
+					</div>
+					<div class="footer-col">
+						<h2>Help</h2>
+						<a href="/docs">Documentation</a>
+						<a href="/help">How to use</a>
+						<a href="/community-guidelines">Community guidelines</a>
+					</div>
+					<div class="footer-col">
+						<h2>Legal</h2>
+						<a href="/privacy">Privacy</a>
+						<a href="/terms">Terms</a>
+						<a href="/takedown">Image credits &amp; removal</a>
+					</div>
+				</div>
+				<p class="footer-note">
+					Pedalvision is an independent pedalboard planner. Brand and product names
+					are the property of their owners and are used for identification only.
+					Last updated 3 November 2026.
+				</p>
+			</div>
+		</footer>
+		<!-- hub-footer:end -->
+	</body>
+</html>

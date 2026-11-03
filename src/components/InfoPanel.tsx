@@ -434,7 +434,11 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 					{info.brand.trim()
 						? `Pedalvision is an independent planner and is not affiliated with or endorsed by ${info.brand}. `
 						: "Pedalvision is an independent planner. "}
-					<a href="/attribution.html" target="_blank" rel="noreferrer">
+					<a href="/docs" target="_blank" rel="noreferrer">
+						Docs &amp; help
+					</a>{" "}
+					·{" "}
+					<a href="/takedown" target="_blank" rel="noreferrer">
 						Image credits &amp; removal
 					</a>
 				</p>

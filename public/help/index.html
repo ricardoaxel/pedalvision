@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Help — Pedalvision</title>
+		<meta
+			name="description"
+			content="How to build a pedalboard, patch cables, measure, correct jacks, export and share in Pedalvision."
+		/>
+		<link rel="stylesheet" href="/hub/hub.css" />
+		<script src="/hub/hub.js" defer></script>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="masthead">
+			<div class="shell masthead__inner">
+				<a class="brand" href="/">Pedalvision <span>/ Field Notes</span></a>
+				<div class="masthead__actions">
+					<button
+						class="theme-button"
+						type="button"
+						data-theme-toggle
+						aria-label="Switch to light theme"
+					>
+						Light
+					</button>
+					<a class="button button--primary" href="/">Open planner</a>
+				</div>
+			</div>
+		</header>
+		<div class="shell">
+			<!-- hub-nav:start -->
+			<nav class="hub-nav" aria-label="Documentation and legal">
+				<a href="/docs">Docs</a>
+				<a href="/help" aria-current="page">Help</a>
+				<a href="/features">Features</a>
+				<a href="/changelog">Changelog</a>
+				<a href="/privacy">Privacy</a>
+				<a href="/terms">Terms</a>
+				<a href="/community-guidelines">Community</a>
+				<a href="/takedown">Takedown</a>
+			</nav>
+			<!-- hub-nav:end -->
+		</div>
+		<main id="main" class="shell">
+			<header class="page-head">
+				<p class="eyebrow">Tasks</p>
+				<h1>How to use Pedalvision</h1>
+				<p class="lede">
+					One operation per section. Everything is saved locally as you work; no
+					account is required.
+				</p>
+			</header>
+			<div class="content prose-layout">
+				<div class="prose">
+					<section class="section" id="board">
+						<div class="section-head">
+							<span class="section-no">01</span>
+							<h2>Start with a board</h2>
+						</div>
+						<ol>
+							<li>Choose <strong>Add board</strong> on the toolbar or the Boards tab.</li>
+							<li>Pick a catalogue board, or create a custom size and finish.</li>
+							<li>Drag the board to move it; drag its handle to rotate it.</li>
+						</ol>
+					</section>
+					<section class="section" id="pedals">
+						<div class="section-head">
+							<span class="section-no">02</span>
+							<h2>Add and arrange pedals</h2>
+						</div>
+						<ol>
+							<li>Open <strong>Add pedal</strong>, search by brand, model or effect, then place it.</li>
+							<li>Drag a pedal onto a board to attach it; drag it off to leave it loose.</li>
+							<li>Select a part to duplicate, rotate, delete or reorder it.</li>
+							<li>Use <strong>Custom</strong> for gear the catalogue does not carry.</li>
+						</ol>
+					</section>
+					<section class="section" id="cables">
+						<div class="section-head">
+							<span class="section-no">03</span>
+							<h2>Patch cables and check signal flow</h2>
+						</div>
+						<ol>
+							<li>Turn on the patch, then drag from one jack to another.</li>
+							<li>Add instrument and amp endpoints for the ends of the chain.</li>
+							<li>Open <strong>Cables</strong> for the derived cable schedule.</li>
+							<li>Open <strong>Continuity</strong> to warn about direction, missing jacks, dangling ends or loops. Warnings never block edits.</li>
+						</ol>
+					</section>
+					<section class="section" id="scale">
+						<div class="section-head">
+							<span class="section-no">04</span>
+							<h2>Work at true scale</h2>
+						</div>
+						<p>
+							All geometry is stored in centimetres. The Margin Rule at the bottom
+							shows the visible extent, the grid pitch and a true-length reference at
+							the current zoom.
+						</p>
+						<ul>
+							<li>Scroll or pinch to zoom; drag empty canvas to pan.</li>
+							<li>Switch the readout between <strong>cm</strong> and <strong>in</strong>.</li>
+							<li>Choose a grid step (1, 2, 5, 10 or 20 cm); it is a precision ceiling, not the drawn pitch.</li>
+							<li>Use <strong>Measure</strong> to drag a temporary line and read its true length.</li>
+						</ul>
+					</section>
+					<section class="section" id="jacks">
+						<div class="section-head">
+							<span class="section-no">05</span>
+							<h2>Correct a jack position</h2>
+						</div>
+						<ol>
+							<li>Select a placed catalogue pedal and start <strong>Press Proof</strong>.</li>
+							<li>Drag a jack pin to its real position, including the top face.</li>
+							<li>Set the jack kind if needed, then finish to keep the correction in this scene.</li>
+							<li>Reset a single jack or all corrections at any time.</li>
+						</ol>
+					</section>
+					<section class="section" id="save">
+						<div class="section-head">
+							<span class="section-no">06</span>
+							<h2>Save, export and share</h2>
+						</div>
+						<ul>
+							<li>Scenes autosave in this browser; open <strong>Scenes</strong> to rename, switch or delete them.</li>
+							<li><strong>Export</strong> writes a true-scale PNG or PDF of the selected board or all content.</li>
+							<li><strong>Share</strong> builds a read-only link. The scene is encoded in the URL hash after <code>#</code>, so only someone with the link can open it.</li>
+							<li>In a shared preview you can browse, measure and save a copy; you cannot edit the sender's scene.</li>
+						</ul>
+					</section>
+					<section class="section" id="shortcuts">
+						<div class="section-head">
+							<span class="section-no">07</span>
+							<h2>Keyboard shortcuts</h2>
+						</div>
+						<div class="table-wrap">
+							<table>
+								<thead>
+									<tr>
+										<th scope="col">Key</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td data-label="Key"><span class="kbd">F</span></td>
+										<td data-label="Action">Frame the selected board or the used area</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">L</span></td>
+										<td data-label="Action">Lock or unlock the camera to the pinned board</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">M</span></td>
+										<td data-label="Action">Toggle the measure tool</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">Esc</span></td>
+										<td data-label="Action">Clear or leave the current canvas mode</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">⌘/Ctrl</span> <span class="kbd">Z</span></td>
+										<td data-label="Action">Undo</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">⇧</span> <span class="kbd">⌘/Ctrl</span> <span class="kbd">Z</span></td>
+										<td data-label="Action">Redo</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">⌘/Ctrl</span> <span class="kbd">D</span></td>
+										<td data-label="Action">Duplicate the selected part</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">Delete</span> / <span class="kbd">Backspace</span></td>
+										<td data-label="Action">Delete the selected part</td>
+									</tr>
+									<tr>
+										<td data-label="Key"><span class="kbd">↑</span> <span class="kbd">↓</span> <span class="kbd">↵</span></td>
+										<td data-label="Action">Browse and place in the picker</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+				</div>
+				<aside class="toc" aria-label="On this page">
+					<h2>On this page</h2>
+					<a href="#board">Start with a board</a>
+					<a href="#pedals">Add and arrange pedals</a>
+					<a href="#cables">Patch cables</a>
+					<a href="#scale">Work at true scale</a>
+					<a href="#jacks">Correct a jack position</a>
+					<a href="#save">Save, export and share</a>
+					<a href="#shortcuts">Keyboard shortcuts</a>
+				</aside>
+			</div>
+		</main>
+		<!-- hub-footer:start -->
+		<footer class="hub-footer">
+			<div class="shell">
+				<div class="footer-grid">
+					<div class="footer-col">
+						<h2>Product</h2>
+						<a href="/">Open planner</a>
+						<a href="/features">Features</a>
+						<a href="/changelog">Changelog</a>
+					</div>
+					<div class="footer-col">
+						<h2>Help</h2>
+						<a href="/docs">Documentation</a>
+						<a href="/help">How to use</a>
+						<a href="/community-guidelines">Community guidelines</a>
+					</div>
+					<div class="footer-col">
+						<h2>Legal</h2>
+						<a href="/privacy">Privacy</a>
+						<a href="/terms">Terms</a>
+						<a href="/takedown">Image credits &amp; removal</a>
+					</div>
+				</div>
+				<p class="footer-note">
+					Pedalvision is an independent pedalboard planner. Brand and product names
+					are the property of their owners and are used for identification only.
+					Last updated 3 November 2026.
+				</p>
+			</div>
+		</footer>
+		<!-- hub-footer:end -->
+	</body>
+</html>

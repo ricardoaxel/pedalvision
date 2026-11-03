@@ -22,6 +22,7 @@ import {
 } from "./components/EndpointControls";
 import { ExportPanel, ExportTriggerContent } from "./components/ExportPanel";
 import { FirstRunHint } from "./components/FirstRunHint";
+import { HelpChip } from "./components/HelpChip";
 import { HistoryControls } from "./components/HistoryControls";
 import { InfoPanel } from "./components/InfoPanel";
 import {
@@ -420,6 +421,7 @@ function App() {
 			data-export={exportOpen ? "open" : undefined}
 			data-scenes={scenesOpen ? "open" : undefined}
 			data-share={shareStatus === "none" ? undefined : shareStatus}
+			data-share-panel={shareOpen && !readOnly ? "open" : undefined}
 			data-schedule={scheduleOpen ? "open" : undefined}
 			data-continuity={continuityOpen ? "open" : undefined}
 			data-readonly={readOnly ? "true" : undefined}
@@ -606,6 +608,7 @@ function App() {
 					) : null}
 				</MotionPresence>
 				<PatchHiddenCue />
+				<HelpChip />
 				<ShareEditCue />
 				<MotionPresence open={shareOpen && !readOnly}>
 					{shareOpen && !readOnly ? (

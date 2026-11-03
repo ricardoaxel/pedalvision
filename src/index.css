@@ -127,6 +127,65 @@ body {
 	gap: 6px;
 }
 
+/* F-41: a persistent, low-chrome way into the docs/legal hub. It sits above
+ * the Margin Rule, clear of the readout, scale bar and board dock. The pseudo
+ * element expands the 32 px chip to a 44 px target without changing its weight. */
+.help-chip {
+	position: absolute;
+	left: var(--space-4);
+	bottom: calc(var(--sheet-margin-y) + 12px);
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	color: var(--color-ink);
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	box-shadow: var(--shadow-raised);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	line-height: 1;
+	text-decoration: none;
+}
+
+.help-chip::after {
+	content: "";
+	position: absolute;
+	inset: -6px;
+}
+
+.help-chip:hover {
+	color: var(--color-ink);
+	background-color: var(--color-surface-raised);
+	border-color: var(--color-border-strong);
+}
+
+.help-chip:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+/* Any open surface owns the screen; the chip is ambient chrome, not a layer. */
+.app[data-panel="open"] .help-chip,
+.app[data-export="open"] .help-chip,
+.app[data-scenes="open"] .help-chip,
+.app[data-share-panel="open"] .help-chip,
+.app[data-schedule="open"] .help-chip,
+.app[data-continuity="open"] .help-chip {
+	display: none;
+}
+
+/* The mobile first-run note shares this corner; let the note own it. */
+@media (max-width: 1023px) {
+	.app:has(.first-run) .help-chip {
+		display: none;
+	}
+}
+
 /* ---------------------------------------------------------------------------
  * Undo / Redo — "Proof Marks" (P3-04, owner-approved 2026-10-20). One quiet
  * joined pair: a capsule at the leading edge of the desktop toolbar, and a
@@ -1312,6 +1371,34 @@ input[type="search"]::-webkit-search-decoration {
 	border-top: 1px solid var(--color-border);
 }
 
+.picker__status-actions {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3);
+}
+
+.picker__help {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+	text-decoration: none;
+}
+
+.picker__help:hover {
+	color: var(--color-accent-ink);
+	text-decoration: underline;
+}
+
+.picker__help:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
 .picker__keys {
 	display: inline-flex;
 	align-items: center;
@@ -2358,6 +2445,19 @@ input[type="search"]::-webkit-search-decoration {
 	.picker__status {
 		justify-content: flex-end;
 		padding: var(--space-1) var(--space-4) var(--space-2);
+	}
+
+	/* Keep the short-viewport ledger height: the link's 44 px target comes from
+	 * its pseudo element, not from the status row. */
+	.picker__help {
+		position: relative;
+		min-height: 32px;
+	}
+
+	.picker__help::after {
+		content: "";
+		position: absolute;
+		inset: -6px;
 	}
 
 	.picker__results {
@@ -7457,6 +7557,14 @@ input[type="search"]::-webkit-search-decoration {
  * pagination footer (rotate/portrait shows it again). */
 @media (max-width: 1023px) and (max-height: 360px) {
 	.picker__result-footer {
+		display: none;
+	}
+}
+
+/* Short landscape phones: keep the ledger's scrollable height; the docs hub is
+ * still one tap away from the info panel and the canvas help chip. */
+@media (max-height: 560px) {
+	.picker__help {
 		display: none;
 	}
 }
