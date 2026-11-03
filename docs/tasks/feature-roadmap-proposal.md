@@ -31,6 +31,11 @@
 
 ## 2. Feature phases (easiest → hardest)
 
+> **Tracking guardrail (owner decision 2026-11-03):** no product analytics,
+> telemetry, session replay or user-tracking logic ships before **Phase 5**. The
+> priority is to finish the best possible pedal planner first; tracking is added
+> at the end, once the product is feature-complete and the owner is confident.
+
 ### Phase 1 — Core correctness and polish (no backend)
 
 - Q-01 rotate-shadow flicker; Q-02 export scale reference; Q-03 DD-2 search
@@ -45,12 +50,11 @@
   history/export/backup/capacity wiring; prerequisite for F-21/F-22/F-33/F-35.
 - **F-38 search/filter overhaul:** punctuation/model aliases, brand/effect tags,
   sort; Q-03 is the quick fix.
-- **F-33 local jack/IO correction:** per-scene override of IN/OUT/PWR/EXP
-  edge/position; reset to catalog; assumed/corrected state; share/export.
+- **F-33 local jack/IO correction (done, PR #95):** canvas-first per-scene free
+  2D jack position (x/y, no edge constraint) + kind/TRS; reset to catalog;
+  assumed/corrected state; share v3/export.
 - **F-41 docs/legal hub:** `/privacy`, `/terms`, `/docs`, `/help`, `/features`,
   `/changelog`, `/community-guidelines`, `/takedown`; every feature updates it.
-- **F-42 PostHog analytics:** cookieless default; consent for cookies/session
-  replay; EU cloud; no PII; event taxonomy/funnels/feature flags; privacy first.
 - **F-45a access-model ADR:** free/account/supporter/one-time; no implementation yet.
 
 ### Phase 2 — Data model and differentiators (no backend)
@@ -61,7 +65,6 @@
 - **F-22 tiered boards:** 2+ tiers, **max 3**, risers/height/clearance, item tier
   assignment, export/share; no separate board-on-board stacking task.
 - F-27 PWA.
-- F-33 if not completed in Phase 1; F-37 must be complete first.
 
 ### Phase 3 — Power/IO data (catalog-dependent, last)
 
@@ -92,9 +95,15 @@
 
 ### Phase 5 — Launch/ops
 
-- C-16 image hosting at 2,000; C-17 Appium; C-18 observability/RUM/errors;
-  C-09 final QA/launch.
-- Docs/legal/privacy/terms, analytics consent, OG, iOS export, audit.
+- **F-42 PostHog analytics** (moved from Phase 1, owner decision 2026-11-03):
+  cookieless default; EU cloud; no PII; consent for cookies/session replay;
+  event taxonomy/funnels/feature flags; privacy first. **No task file yet and no
+  analytics code before this phase.**
+- C-16 image hosting at 2,000; C-17 Appium; **C-18 observability/RUM/errors**;
+  C-09 final QA/launch. **Boundary:** F-42 = product analytics/funnels;
+  C-18 = RUM/error monitoring.
+- Docs/legal/privacy/terms, analytics consent, OG, iOS export, audit. F-42 must
+  update `/privacy` and add consent before any optional tracking runs.
 
 ## 3. Access model (proposal)
 
@@ -113,10 +122,11 @@ Community contributions are free for account holders to grow the catalog.
 
 - **F-41 docs/legal hub:** privacy, terms, tutorials, feature catalog, changelog,
   community guidelines, takedown; linked in footer/help; updated every feature.
-- **F-42 PostHog:** cookieless default; anonymous IDs; EU cloud; no PII; consent
-  for cookies/session replay; mask inputs/canvas; retention/opt-out; event
-  taxonomy (open → search → add → place → cable → export/share; errors/perf);
-  funnels/feature flags/A-B.
+- **F-42 PostHog (Phase 5; owner decision 2026-11-03):** cookieless default;
+  anonymous IDs; EU cloud; no PII; consent for cookies/session replay; mask
+  inputs/canvas; retention/opt-out; event taxonomy (open → search → add → place
+  → cable → export/share; errors/perf); funnels/feature flags/A-B. Must update
+  `/privacy` and add consent before any optional tracking runs.
 - **F-50 OG:** static site OG now; dynamic per-share later. Share data is in the
   URL hash, which servers cannot read; dynamic OG needs a server-readable share
   URL (`/s/...` or query) + edge function, depending on F-37.
@@ -152,4 +162,5 @@ Community contributions are free for account holders to grow the catalog.
 2. After T-2c: **T-3 3-wide**; feature F-02/F-19.
 3. Continue catalog waves 3-wide with next-wave protocol; feature one at a time.
 4. Phase 3 power/IO after catalog coverage; Phase 4 accounts/community/access.
-5. Phase 5 launch.
+5. Phase 5 launch — includes **F-42 product analytics**, moved here from Phase 1
+   (owner decision 2026-11-03).

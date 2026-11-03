@@ -1,6 +1,6 @@
 # F-41 — docs/legal hub
 
-**Phase:** 1 · **Status:** in review — PR #96 · **Model:** light (escalate only if high-risk)
+**Phase:** 1 · **Status:** **done — merged 2026-11-03, PR #96, squash `e7c96536`** · **Model:** light (escalate only if high-risk)
 
 ## Goal
 

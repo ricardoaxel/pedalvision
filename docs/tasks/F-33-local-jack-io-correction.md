@@ -1,7 +1,7 @@
 # F-33 — Local jack/IO correction (“Patch Corrector”)
 
-**Phase:** 1 (feature lane) · **Status:** implementation complete — PR #95 updated
-(one PR, no merge) · **Model:** light but **high-risk** (scene/share codec).
+**Phase:** 1 (feature lane) · **Status:** **done — merged 2026-11-03, PR #95,
+squash `1cb9a546`** · **Model:** light but **high-risk** (scene/share codec).
 **Owner revision 2026-11-02:** the correction is **canvas-first** — drag a jack pin
 anywhere on the real pedal (free 2D face position, **not** edge-constrained; top-face
 jacks included) — and the side-panel schematic/edge/slider were removed. The

@@ -82,7 +82,17 @@ Historical plan/status: plan approved 2026-10-21; P5-01 + P5-02 done; P5-03 pilo
 - **P5-05 Image hosting at scale — deferred spike** (trigger: owner chooses to exceed the Tier A target / 2,000 hosted pedals / ~4,000 images / ~300 MB). **Owner waiver 2026-10-29 (ADR-009):** the non-commercial planner fill now exceeds this cap via lazy-loaded assets; the hosting spike remains for commercial launch. Evaluate R2 public bucket (leading), Pages Pro, separate Pages asset project, Backblaze B2, Bunny CDN; ADR-002 update + cost table + migration plan. No migration without owner approval.
 - **P5-06 Full-integration device E2E (Appium, local) — PROPOSED (not scheduled).** Old P5-05. At the final integration stage, a small Appium smoke against the local iOS Simulator / real iPhone (XCUITest) / real Android. See `docs/decisions/007-mobile-touch-testing.md` + `docs/tasks/P5-06-appium-local-device-e2e.md`.
 - **P5-07 User help / how-to content — PROPOSED (not scheduled).** Old P5-06. Short end-user help ("how layering works", cables, save/share/export); pairs with P2-08.
-- **P5-08 Observability — RUM + error monitoring — PROPOSED (not scheduled; owner decision).** Old P5-07. **No analytics/telemetry in v1** (no PostHog); compare privacy-first options if wanted. Requires an ADR/dependency note + privacy review; **not a launch gate.**
+- **P5-08 Observability — RUM + error monitoring — PROPOSED (not scheduled; owner decision).** Old P5-07. **No analytics/telemetry in v1** (no PostHog). **F-42 product analytics (PostHog) is now a Phase 5 item** (owner decision 2026-11-03: finish the planner first, add tracking at the end) and is **proposed — no task file and not a launch gate**. Boundary: F-42 = product analytics/funnels; C-18/P5-08 = RUM/error monitoring. Requires an ADR/dependency note + privacy review (and a `/privacy` + consent update before any optional tracking).
+
+## Feature lane (post-P4 — tracked in `docs/tasks/feature-roadmap-proposal.md`)
+
+Feature work runs one task/PR at a time, separate from the catalog lane.
+
+| Status | Items |
+|---|---|
+| **Done** | F-01, F-02, F-03, F-04, F-05, F-19, **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`) |
+| **Next** | Phase 1 planner work; first candidate **Q-01 rotate-shadow flicker** (owner may pick another Phase 1 item) |
+| **Phase 5** | **F-42 PostHog analytics** — moved from Phase 1 (owner decision 2026-11-03); proposed, no task file, not a launch gate |
 
 ## ARCH — Frontend architecture rework (post-P5 feature lane; **not a release gate**)
 
