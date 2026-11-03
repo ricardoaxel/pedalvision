@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Features — Pedalvision</title>
+		<meta
+			name="description"
+			content="The Pedalvision feature catalogue: what ships in this version and what is deliberately deferred."
+		/>
+		<link rel="stylesheet" href="/hub/hub.css" />
+		<script src="/hub/hub.js" defer></script>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="masthead">
+			<div class="shell masthead__inner">
+				<a class="brand" href="/">Pedalvision <span>/ Field Notes</span></a>
+				<div class="masthead__actions">
+					<button
+						class="theme-button"
+						type="button"
+						data-theme-toggle
+						aria-label="Switch to light theme"
+					>
+						Light
+					</button>
+					<a class="button button--primary" href="/">Open planner</a>
+				</div>
+			</div>
+		</header>
+		<div class="shell">
+			<!-- hub-nav:start -->
+			<nav class="hub-nav" aria-label="Documentation and legal">
+				<a href="/docs">Docs</a>
+				<a href="/help">Help</a>
+				<a href="/features" aria-current="page">Features</a>
+				<a href="/changelog">Changelog</a>
+				<a href="/privacy">Privacy</a>
+				<a href="/terms">Terms</a>
+				<a href="/community-guidelines">Community</a>
+				<a href="/takedown">Takedown</a>
+			</nav>
+			<!-- hub-nav:end -->
+		</div>
+		<main id="main" class="shell">
+			<header class="page-head">
+				<p class="eyebrow">Reference</p>
+				<h1>Features</h1>
+				<p class="lede">
+					What ships today, stated plainly. “Not in this version” is deliberate:
+					those paths need a backend, accounts or a data contract we have not
+					shipped.
+				</p>
+			</header>
+			<div class="content">
+				<section class="section" aria-labelledby="available">
+					<div class="section-head">
+						<span class="section-no">01</span>
+						<h2 id="available">Available now</h2>
+					</div>
+					<div class="table-wrap">
+						<table class="features-table">
+							<thead>
+								<tr>
+									<th scope="col">Area</th>
+									<th scope="col">What it does</th>
+									<th scope="col">Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-label="Area">Canvas &amp; true scale</td>
+									<td data-label="What it does">
+										Infinite dotted canvas; every dimension is stored in
+										centimetres and rendered to scale at the current zoom.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Boards</td>
+									<td data-label="What it does">
+										Place, move and rotate catalogue boards, or create a custom
+										size and finish.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Pedals &amp; custom gear</td>
+									<td data-label="What it does">
+										Search the catalogue, place pedals, drag, rotate, duplicate
+										and delete; create custom pedals and power supplies.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Layers</td>
+									<td data-label="What it does">
+										Reorder parts within a board so overlaps read correctly.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Patch cables</td>
+									<td data-label="What it does">
+										Drag jack-to-jack connections, add instrument/amp endpoints,
+										and read a derived cable schedule.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Continuity Check</td>
+									<td data-label="What it does">
+										Derived warnings for direction, missing jacks, dangling ends
+										and loops. Warnings never block an edit.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Jack correction</td>
+									<td data-label="What it does">
+										Move a placed catalogue pedal's jacks on the real footprint,
+										per scene, including top-face jacks; reset at any time.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Measure &amp; grid</td>
+									<td data-label="What it does">
+										Margin Rule readout, selectable grid step, cm/in toggle and a
+										temporary measure tool.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Viewport focus</td>
+									<td data-label="What it does">
+										Frame a board or the used area, paginate boards, and lock the
+										camera while editing.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Scenes</td>
+									<td data-label="What it does">
+										Named scenes with autosave in this browser, a 10-scene cap,
+										and a backup download if storage fails.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Export</td>
+									<td data-label="What it does">
+										True-scale PNG and PDF of the selected board or all content.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Share links</td>
+									<td data-label="What it does">
+										Read-only scene links encoded in the URL hash; recipients can
+										browse, measure and save a copy.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Desktop &amp; mobile</td>
+									<td data-label="What it does">
+										Responsive chrome with touch-friendly targets, and dark and
+										light themes.
+									</td>
+									<td data-label="Status"><span class="status">Available</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<section class="section" aria-labelledby="deferred">
+					<div class="section-head">
+						<span class="section-no">02</span>
+						<h2 id="deferred">Not in this version</h2>
+					</div>
+					<div class="table-wrap">
+						<table class="features-table">
+							<thead>
+								<tr>
+									<th scope="col">Area</th>
+									<th scope="col">Why it is not here yet</th>
+									<th scope="col">Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-label="Area">Accounts &amp; cloud sync</td>
+									<td data-label="Why it is not here yet">
+										Scenes are local-only today; accounts and cloud saves need a
+										backend and a privacy model.
+									</td>
+									<td data-label="Status"><span class="status status--muted">Deferred</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Power-supply planner</td>
+									<td data-label="Why it is not here yet">
+										The schema reserves power fields and the info panel shows
+										supply details, but output planning is not built.
+									</td>
+									<td data-label="Status"><span class="status status--muted">Deferred</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Community submissions</td>
+									<td data-label="Why it is not here yet">
+										Corrections and removal requests run through GitHub issues;
+										there is no upload queue or moderation backend.
+									</td>
+									<td data-label="Status"><span class="status status--muted">Deferred</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Analytics</td>
+									<td data-label="Why it is not here yet">
+										This build ships no product analytics, tracking cookies or
+										session replay.
+									</td>
+									<td data-label="Status"><span class="status status--muted">Deferred</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Tiered boards</td>
+									<td data-label="Why it is not here yet">
+										Multiple tiers and risers need height/clearance geometry that
+										is not in the v1 board contract.
+									</td>
+									<td data-label="Status"><span class="status status--muted">Deferred</span></td>
+								</tr>
+								<tr>
+									<td data-label="Area">Offline install (PWA)</td>
+									<td data-label="Why it is not here yet">
+										The app works in the browser; installability is planned but
+										not shipped.
+									</td>
+									<td data-label="Status"><span class="status status--muted">Deferred</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+		</main>
+		<!-- hub-footer:start -->
+		<footer class="hub-footer">
+			<div class="shell">
+				<div class="footer-grid">
+					<div class="footer-col">
+						<h2>Product</h2>
+						<a href="/">Open planner</a>
+						<a href="/features">Features</a>
+						<a href="/changelog">Changelog</a>
+					</div>
+					<div class="footer-col">
+						<h2>Help</h2>
+						<a href="/docs">Documentation</a>
+						<a href="/help">How to use</a>
+						<a href="/community-guidelines">Community guidelines</a>
+					</div>
+					<div class="footer-col">
+						<h2>Legal</h2>
+						<a href="/privacy">Privacy</a>
+						<a href="/terms">Terms</a>
+						<a href="/takedown">Image credits &amp; removal</a>
+					</div>
+				</div>
+				<p class="footer-note">
+					Pedalvision is an independent pedalboard planner. Brand and product names
+					are the property of their owners and are used for identification only.
+					Last updated 3 November 2026.
+				</p>
+			</div>
+		</footer>
+		<!-- hub-footer:end -->
+	</body>
+</html>

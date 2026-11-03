@@ -1273,26 +1273,31 @@ export function Picker({
 											<span className="picker__key-sep">·</span>
 											<kbd className="picker__key">↵</kbd> place
 										</span>
-										{isBoards && selectedBoardUid ? (
-											<button
-												type="button"
-												className="picker__remove"
-												data-testid="remove-board"
-												onClick={() => {
-													useMotion
-														.getState()
-														.departBoard(
-															selectedBoardUid,
-															MOTION.exit + MOTION.fast + 40,
-														);
-													removeBoard(selectedBoardUid);
-													selectBoard(null);
-													onClose();
-												}}
-											>
-												Remove selected board
-											</button>
-										) : null}
+										<span className="picker__status-actions">
+											<a className="picker__help" href="/docs">
+												Docs &amp; help
+											</a>
+											{isBoards && selectedBoardUid ? (
+												<button
+													type="button"
+													className="picker__remove"
+													data-testid="remove-board"
+													onClick={() => {
+														useMotion
+															.getState()
+															.departBoard(
+																selectedBoardUid,
+																MOTION.exit + MOTION.fast + 40,
+															);
+														removeBoard(selectedBoardUid);
+														selectBoard(null);
+														onClose();
+													}}
+												>
+													Remove selected board
+												</button>
+											) : null}
+										</span>
 									</div>
 								</div>
 

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Privacy — Pedalvision</title>
+		<meta
+			name="description"
+			content="Pedalvision privacy: local browser storage, URL-hash share links, no accounts and no analytics in this version."
+		/>
+		<link rel="stylesheet" href="/hub/hub.css" />
+		<script src="/hub/hub.js" defer></script>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="masthead">
+			<div class="shell masthead__inner">
+				<a class="brand" href="/">Pedalvision <span>/ Field Notes</span></a>
+				<div class="masthead__actions">
+					<button
+						class="theme-button"
+						type="button"
+						data-theme-toggle
+						aria-label="Switch to light theme"
+					>
+						Light
+					</button>
+					<a class="button button--primary" href="/">Open planner</a>
+				</div>
+			</div>
+		</header>
+		<div class="shell">
+			<!-- hub-nav:start -->
+			<nav class="hub-nav" aria-label="Documentation and legal">
+				<a href="/docs">Docs</a>
+				<a href="/help">Help</a>
+				<a href="/features">Features</a>
+				<a href="/changelog">Changelog</a>
+				<a href="/privacy" aria-current="page">Privacy</a>
+				<a href="/terms">Terms</a>
+				<a href="/community-guidelines">Community</a>
+				<a href="/takedown">Takedown</a>
+			</nav>
+			<!-- hub-nav:end -->
+		</div>
+		<main id="main" class="shell">
+			<header class="page-head">
+				<p class="eyebrow">Legal</p>
+				<h1>Privacy</h1>
+				<p class="lede">
+					Pedalvision is a local-first planner. Your boards stay in your browser
+					unless you choose to export or share them.
+				</p>
+				<p class="meta">Last updated 3 November 2026</p>
+			</header>
+			<div class="content prose-layout">
+				<div class="prose">
+					<section class="section" id="device">
+						<div class="section-head">
+							<span class="section-no">01</span>
+							<h2>What stays on your device</h2>
+						</div>
+						<p>
+							There is no account and no Pedalvision server storing your boards in
+							this version. Scenes, custom gear, exported files and the scene list
+							are handled in the browser:
+						</p>
+						<ul>
+							<li><strong>Scenes</strong> are saved in the browser's IndexedDB.</li>
+							<li><strong>Settings, the scene index and first-run state</strong> are kept in localStorage.</li>
+							<li><strong>Exports</strong> are generated in the browser and downloaded directly.</li>
+						</ul>
+						<p>
+							Clearing this site's data in your browser removes those local records.
+							If you want a portable copy, use the scene backup download or export
+							the board.
+						</p>
+					</section>
+					<section class="section" id="share">
+						<div class="section-head">
+							<span class="section-no">02</span>
+							<h2>Share links</h2>
+						</div>
+						<p>
+							A share link contains the scene itself, encoded after the
+							<code>#</code> in the URL. That part of a URL is not sent to the
+							server. Anyone who has the link can open the scene; it is a read-only
+							copy, not a private account document.
+						</p>
+						<p>
+							Scene names, custom part names and layout data are part of the link.
+							Do not put private information in a scene you share.
+						</p>
+					</section>
+					<section class="section" id="analytics">
+						<div class="section-head">
+							<span class="section-no">03</span>
+							<h2>Analytics and cookies</h2>
+						</div>
+						<p>
+							This build sets no marketing or analytics cookies, and ships no product
+							analytics, session replay or third-party tracking scripts. If
+							analytics is added later, this page and the changelog will be updated
+							first, and consent will be handled before any optional tracking runs.
+						</p>
+					</section>
+					<section class="section" id="images">
+						<div class="section-head">
+							<span class="section-no">04</span>
+							<h2>Catalog images and external sites</h2>
+						</div>
+						<p>
+							Catalog images are hosted by Pedalvision and used to identify gear and
+							plan at true scale. The image credits page explains how they are
+							sourced and how to request a change or removal.
+						</p>
+						<p>
+							Following a GitHub or email link leaves Pedalvision and is governed by
+							that service's own privacy terms.
+						</p>
+					</section>
+					<section class="section" id="choices">
+						<div class="section-head">
+							<span class="section-no">05</span>
+							<h2>Your choices</h2>
+						</div>
+						<ul>
+							<li>Delete individual scenes in the Scenes panel.</li>
+							<li>Clear this site's data in your browser to remove local storage and IndexedDB records.</li>
+							<li>Export a scene before clearing data if you want to keep it.</li>
+							<li>Use the <a href="/takedown">image credits and takedown</a> path for catalog requests.</li>
+						</ul>
+					</section>
+					<section class="section" id="contact">
+						<div class="section-head">
+							<span class="section-no">06</span>
+							<h2>Contact and changes</h2>
+						</div>
+						<p>
+							Questions about this page can go to
+							<a href="mailto:ricardoaxelgd@gmail.com?subject=Pedalvision%20privacy">ricardoaxelgd@gmail.com</a>
+							or the project's
+							<a href="https://github.com/ricardoaxel/pedalvision/issues" rel="noreferrer">GitHub issues</a>.
+							When the app's data handling changes, this page and the
+							<a href="/changelog">changelog</a> are updated together.
+						</p>
+					</section>
+				</div>
+				<aside class="toc" aria-label="On this page">
+					<h2>On this page</h2>
+					<a href="#device">What stays on your device</a>
+					<a href="#share">Share links</a>
+					<a href="#analytics">Analytics and cookies</a>
+					<a href="#images">Catalog images</a>
+					<a href="#choices">Your choices</a>
+					<a href="#contact">Contact and changes</a>
+				</aside>
+			</div>
+		</main>
+		<!-- hub-footer:start -->
+		<footer class="hub-footer">
+			<div class="shell">
+				<div class="footer-grid">
+					<div class="footer-col">
+						<h2>Product</h2>
+						<a href="/">Open planner</a>
+						<a href="/features">Features</a>
+						<a href="/changelog">Changelog</a>
+					</div>
+					<div class="footer-col">
+						<h2>Help</h2>
+						<a href="/docs">Documentation</a>
+						<a href="/help">How to use</a>
+						<a href="/community-guidelines">Community guidelines</a>
+					</div>
+					<div class="footer-col">
+						<h2>Legal</h2>
+						<a href="/privacy">Privacy</a>
+						<a href="/terms">Terms</a>
+						<a href="/takedown">Image credits &amp; removal</a>
+					</div>
+				</div>
+				<p class="footer-note">
+					Pedalvision is an independent pedalboard planner. Brand and product names
+					are the property of their owners and are used for identification only.
+					Last updated 3 November 2026.
+				</p>
+			</div>
+		</footer>
+		<!-- hub-footer:end -->
+	</body>
+</html>
