@@ -37,7 +37,9 @@ Read only the pointed sections; do not read whole docs.
 - If the task needs catalog data or a shared file, split it out — do not widen scope.
 - **Performance guardrail:** record bundle delta, picker/canvas frame time, memory and
   share/export size; run the relevant benchmark; no regression beyond thresholds.
-- **Docs update:** update the public feature catalog/tutorial and the F-19 QA impact map.
+- **Docs update:** when the F-19 trigger applies, update the public hub
+  `/features` + `/changelog` (and `/help` when the workflow changes) and the F-19
+  QA impact map; state `Docs: hub <pages> | n/a — <reason> · map updated | n/a`.
 - **No total-count E2E assertions:** filter a stable item/brand.
 
 ## Steps
@@ -61,8 +63,9 @@ Read only the pointed sections; do not read whole docs.
   same viewport/theme/state on base `main` and the PR preview, desktop + mobile;
   video/GIF for interaction-only states. If there is no prior UI, show the closest
   baseline and say why.
-- Performance numbers recorded; no regression beyond thresholds; docs/feature
-  catalog updated.
+- Performance numbers recorded; no regression beyond thresholds; docs hub
+  updated (`/features` + `/changelog`, `/help` when the workflow changes) when
+  the F-19 trigger applies, with the `Docs:` status line.
 - No edits to `data/catalog/**`, `public/pedal-assets/**`, `src/catalog/**`,
   `tools/catalog-*` or other shared/coordinator-only files.
 - One PR; no merge.

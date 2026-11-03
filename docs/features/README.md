@@ -9,7 +9,8 @@
 > changing, user-visible, or touching a persisted/transported/contract path
 > (codec/`SceneDocument`, share payload, capacity, export scope, history, catalog
 > schema). Refactors, test-only, dependency and docs-only PRs make **no** map edit
-> and state `Map: n/a — <reason>` in the PR. The binding rule is
+> and state `Docs: hub <pages> | n/a — <reason> · map updated | n/a` in the PR.
+> The binding rule is
 > `docs/tasks/feature-template.md` → Constraints ("Docs update"); this file defines
 > *what* to record and how to pick the E2E. The public tutorial/catalog will live
 > in the F-41 docs hub.
@@ -411,7 +412,7 @@ update"). This file defines *what* to record and how to pick the E2E.
 persisted/transported/contract path (codec/`SceneDocument`, share payload,
 capacity, export scope, history, catalog schema) → **yes**. Pure refactor,
 test-only, dependency bump, typo or docs-only → **no**; write
-`Map: n/a — <reason>` in the PR.
+`Docs: hub <pages> | n/a — <reason> · map updated | n/a` in the PR.
 
 When recording:
 
