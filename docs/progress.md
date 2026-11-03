@@ -2,7 +2,7 @@
 
 > **Catalog program PAUSED (2026-10-29).** Catalog backfill is closed for now; feature work continues. All catalog tasks carry a pause banner. **PR #91 (bulk planner fill, pedals + boards) was merged before the pause (`1368a479`); no new catalog work will run.** See `docs/tasks/CATALOG-PAUSED.md`.
 
-**Next:** **Q-01 — rotate-shadow flicker** (Phase 1; task `docs/tasks/Q-01-rotate-shadow-flicker.md`). PR #97 is merged. **F-42 PostHog analytics is Phase 5** (owner decision 2026-11-03: finish the planner first; no tracking before Phase 5). **ARCH-01 is merged (#87)** and the remaining ARCH items are **deferred/opportunistic**, **not** gates. No catalog data/assets/tools edits. **Catalog lane:** **PAUSED (2026-10-29)** — no catalog batches; resume later for refilling.
+**Next:** **Q-01 — rotate-shadow flicker** — **in review, PR #98** (Phase 1; task `docs/tasks/Q-01-rotate-shadow-flicker.md`). PR #97 is merged. **F-42 PostHog analytics is Phase 5** (owner decision 2026-11-03: finish the planner first; no tracking before Phase 5). **ARCH-01 is merged (#87)** and the remaining ARCH items are **deferred/opportunistic**, **not** gates. No catalog data/assets/tools edits. **Catalog lane:** **PAUSED (2026-10-29)** — no catalog batches; resume later for refilling.
 
 **Current phase:** Feature work — catalog program paused (2026-10-29). **P4 is COMPLETE**: P4-01 (PR #30, squash `d0d79ad`), P4-02 (PR #31, squash `f001a0b`), P4-03 (PR #33, squash `c0c419b`) and the **P4 phase gate** (merged 2026-10-21, PR #34, squash `caee58d`) are **DONE**. The **P5 plan restructure** is **DONE** (merged 2026-10-21, PR #32, squash `6e7deef`).
 **Catalog next task:** **paused/closed for now** (2026-10-29). Feature work continues; see `docs/tasks/CATALOG-PAUSED.md`.
@@ -26,7 +26,7 @@
 > See `docs/phase-guide.md` for what each phase does and which ones need owner action (and why).
 
 ## In review
-- **No PRs open.** Catalog: **PAUSED (2026-10-29)**; PR #91 (bulk planner fill, pedals + boards) merged in `1368a479` before the pause. Feature lane: **open** — next is **Q-01**. Architecture: remaining items **deferred/opportunistic** (ADR-008), not gates.
+- **PR #98 — Q-01 rotate-shadow flicker (in review).** The selection halo mirrors the Transformer's live item transform during rotation; no chrome/shadow-semantics change. `main` reconciliation (PR #97) is merged. Catalog: **PAUSED (2026-10-29)**; PR #91 (bulk planner fill, pedals + boards) merged in `1368a479` before the pause. Feature lane: **open** — next is **Q-01**. Architecture: remaining items **deferred/opportunistic** (ADR-008), not gates.
 
 ## Done
 - [x] **docs — roadmap placement (Phase 5 analytics) — merged 2026-11-03, PR #97, squash `3189f6e4`.** Moved **F-42 PostHog analytics to Phase 5** and consolidated it with C-18; added the no-tracking-before-Phase-5 guardrail; reconciled **F-33 #95** / **F-41 #96** as merged. Docs-only; no code/data.
