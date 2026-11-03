@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -8,16 +8,10 @@ import { describe, expect, it } from "vitest";
  * mirrored visual tokens from drifting.
  */
 
-const SLUGS = [
-	"docs",
-	"help",
-	"features",
-	"changelog",
-	"privacy",
-	"terms",
-	"community-guidelines",
-	"takedown",
-];
+const ROUTES: { slug: string; nav: string; heading: string }[] = JSON.parse(
+	readFileSync(resolve(process.cwd(), "public/hub/routes.json"), "utf8"),
+);
+const SLUGS = ROUTES.map((route) => route.slug);
 
 const read = (path: string) =>
 	readFileSync(resolve(process.cwd(), path), "utf8");
@@ -66,6 +60,19 @@ describe("docs/legal hub pages", () => {
 	it("ships every route with a shared shell", () => {
 		const navs = new Set<string>();
 		const footers = new Set<string>();
+		const discovered = readdirSync(resolve(process.cwd(), "public"), {
+			withFileTypes: true,
+		})
+			.filter(
+				(entry) =>
+					entry.isDirectory() &&
+					existsSync(
+						resolve(process.cwd(), "public", entry.name, "index.html"),
+					),
+			)
+			.map((entry) => entry.name)
+			.sort();
+		expect(discovered).toEqual([...SLUGS].sort());
 
 		for (const slug of SLUGS) {
 			const html = page(slug);
@@ -74,17 +81,8 @@ describe("docs/legal hub pages", () => {
 			expect(html).toContain('id="main"');
 			expect(html).toContain("<h1>");
 			expect(html).toContain('<html lang="en"');
-			for (const target of [
-				"/docs",
-				"/help",
-				"/features",
-				"/changelog",
-				"/privacy",
-				"/terms",
-				"/community-guidelines",
-				"/takedown",
-			]) {
-				expect(html).toContain(`href="${target}"`);
+			for (const slug of SLUGS) {
+				expect(html).toContain(`href="/${slug}"`);
 			}
 			expect(html).not.toContain("imageProvenance");
 			expect(html).not.toContain("/pedal-assets/");

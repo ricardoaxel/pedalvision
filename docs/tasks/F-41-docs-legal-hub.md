@@ -88,5 +88,10 @@ the app's actual data behaviour; no invented policies, analytics or backend.
   Hub page weight (privacy, gzip): 2.35 kB HTML + 3.60 kB CSS + 0.59 kB JS ≈
   6.5 kB; no framework/bundle load. Desktop/mobile load 9–30 ms; 112–172 DOM
   nodes; no app heap or share/export size change.
+- **Code review:** 1 light pass = changes-required (cold-start E2E race for the
+  help chip; route-list drift; untested picker/InfoPanel links; duplicate link
+  naming). All fixed; no second pass (simple test/refactor fixes). The stale
+  `tools/catalog-license` attribution string is left for a coordinator/catalog
+  session (feature sessions must not edit `tools/catalog-*`).
 - Record billed tokens by class (builder / vision / code review) in the PR and
   session summary.

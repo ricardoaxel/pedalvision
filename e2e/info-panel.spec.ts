@@ -75,6 +75,9 @@ test("shows the independent-planner notice and removal link", async ({
 	await expect(legal).toBeVisible();
 	await expect(legal).toContainText("not affiliated with or endorsed by BOSS");
 	await expect(
+		legal.getByRole("link", { name: "Docs & help" }),
+	).toHaveAttribute("href", "/docs");
+	await expect(
 		legal.getByRole("link", { name: "Image credits & removal" }),
 	).toHaveAttribute("href", "/takedown");
 });

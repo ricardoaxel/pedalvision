@@ -24,8 +24,7 @@ export function HelpChip() {
 			title="Docs & help"
 			style={style}
 		>
-			<span aria-hidden="true">?</span>
-			<span className="visually-hidden">Help — documentation and legal</span>
+			?
 		</a>
 	);
 }

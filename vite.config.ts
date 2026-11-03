@@ -1,19 +1,12 @@
 /// <reference types="vitest/config" />
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
 
-const HUB_ROUTES = [
-	"docs",
-	"help",
-	"features",
-	"changelog",
-	"privacy",
-	"terms",
-	"community-guidelines",
-	"takedown",
-];
+const HUB_ROUTES: string[] = JSON.parse(
+	readFileSync(resolve("public/hub/routes.json"), "utf8"),
+).map((entry: { slug: string }) => entry.slug);
 
 /**
  * Cloudflare Pages resolves `/privacy` to `privacy/index.html`; Vite's SPA
