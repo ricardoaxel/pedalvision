@@ -1,6 +1,6 @@
 # Q-02: Export scale reference
 
-**Phase:** Q (feature lane, Phase 1) · **Status:** todo · **Model:** light
+**Phase:** Q (feature lane, Phase 1) · **Status:** in review — PR #99 · **Model:** light
 
 ## Goal
 
@@ -134,6 +134,9 @@ direction.
   P3-01; this is a scale-reference fix only (owner-approved bar kept).
 - **Baseline on `main` (`9c5d6dd0`):** 1004 unit tests, e2e 394 passed + 12
   skipped, JS 346.44 kB gzip, CSS 16.48 kB gzip.
+- **Result:** 1012 unit tests, e2e 398 passed + 12 skipped, JS 346.65 kB gzip,
+  CSS 16.48 kB gzip. Design `design-reviewer` R2 **approve**; light
+  `code-reviewer` changes-required → fixed (no second pass). PR #99.
 - **Gap evidence:** current `drawScaleBar` hardcodes `${lengthCm} cm`, ignores
   `Settings.units`, and has no PPI/print hint; `ExportPanel` shows PPI only on
   screen, never in the artifact.
