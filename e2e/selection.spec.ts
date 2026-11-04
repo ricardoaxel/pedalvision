@@ -124,6 +124,91 @@ test("dragging the Transformer rotate handle spins a loose pedal", async ({
 		.not.toBe(0);
 });
 
+test("the selection halo follows the live Transformer rotation (Q-01)", async ({
+	page,
+}) => {
+	await page.goto("/");
+	const stage = page.getByTestId("stage");
+	await expect(stage).toBeVisible();
+	await addBoard(page, "boss-bcb-1000");
+	await addPedal(page, "boss-bd-2-blues-driver");
+	await expect(stage).toHaveAttribute("data-items", "1");
+	await page.waitForTimeout(150);
+
+	// The handle sits 30 px above the pedal's top edge at zoom 1 (unrotated).
+	const { x: cx, y: cy } = await firstItemScreenCentre(page, PEDAL_CM);
+	const radius = (PEDAL_CM.heightCm / 2) * PX_PER_CM + 30;
+	const handleY = cy - radius;
+	await page.mouse.move(cx, handleY);
+	await page.mouse.down();
+	// Drag the handle to ~40° around the pedal centre and hold.
+	const target = (40 - 90) * (Math.PI / 180);
+	await page.mouse.move(
+		cx + Math.cos(target) * radius,
+		cy + Math.sin(target) * radius,
+		{ steps: 10 },
+	);
+
+	// Read the live Konva nodes: the halo must mirror the item group's local
+	// position/rotation (same parent frame) and therefore its absolute rotation.
+	const readLive = () =>
+		page.evaluate(() => {
+			interface NodeLike {
+				x: () => number;
+				y: () => number;
+				rotation: () => number;
+				getAbsoluteRotation: () => number;
+				nodes: () => NodeLike[];
+			}
+			const konva = (
+				window as unknown as {
+					Konva?: { stages: Array<{ find: (s: string) => NodeLike[] }> };
+				}
+			).Konva;
+			const konvaStage = konva?.stages[0];
+			if (!konvaStage) return null;
+			const halo = konvaStage.find(".selection-halo")[0];
+			const transformer = konvaStage
+				.find("Transformer")
+				.find((node) => node.nodes().length > 0);
+			const item = transformer?.nodes()[0];
+			if (!halo || !item) return null;
+			const read = (node: NodeLike) => ({
+				x: node.x(),
+				y: node.y(),
+				rotation: node.rotation(),
+				absoluteRotation: node.getAbsoluteRotation(),
+			});
+			return { halo: read(halo), item: read(item) };
+		});
+
+	// While the gesture is live the halo must copy the item's live transform —
+	// the Q-01 bug left it at the committed angle and origin.
+	const live = await readLive();
+	if (!live) throw new Error("selection halo / Transformer node not found");
+	expect(live.item.rotation).toBeGreaterThan(10);
+	expect(live.halo.rotation).toBeCloseTo(live.item.rotation, 5);
+	expect(live.halo.absoluteRotation).toBeCloseTo(live.item.absoluteRotation, 5);
+	expect(live.halo.x).toBeCloseTo(live.item.x, 5);
+	expect(live.halo.y).toBeCloseTo(live.item.y, 5);
+
+	await page.mouse.up();
+	await expect
+		.poll(async () => Number(await stage.getAttribute("data-item-rotations")))
+		.not.toBe(0);
+	// The committed re-render must keep the halo on the item (no release snap).
+	const committed = await readLive();
+	if (!committed)
+		throw new Error("selection halo / Transformer node not found");
+	expect(committed.halo.rotation).toBeCloseTo(committed.item.rotation, 5);
+	expect(committed.halo.absoluteRotation).toBeCloseTo(
+		committed.item.absoluteRotation,
+		5,
+	);
+	expect(committed.halo.x).toBeCloseTo(committed.item.x, 5);
+	expect(committed.halo.y).toBeCloseTo(committed.item.y, 5);
+});
+
 test("rotating a pedal on a rotated board is relative to the pedal (S3)", async ({
 	page,
 }) => {

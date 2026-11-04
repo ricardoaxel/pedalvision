@@ -54,12 +54,37 @@ export function ItemTransformer({ selectedUid, theme }: ItemTransformerProps) {
 	// Captured at transformstart so a live rotation is committed even if the
 	// selection is cleared before transformend.
 	const transformingUidRef = useRef<string | null>(null);
+	// The selected item's halo is a sibling node (not a child — a child would
+	// enlarge the Transformer's bounding box). Mirror the item's live transform
+	// onto it each frame so the halo never lags behind the rotating pedal (Q-01).
+	const haloRef = useRef<Konva.Node | null>(null);
 	const [attached, setAttached] = useState(false);
+
+	const syncHalo = useCallback(() => {
+		const transformer = transformerRef.current;
+		const node = transformer?.nodes()[0];
+		if (!node) return;
+		const stage = transformer?.getStage();
+		// Re-resolve if the halo element was remounted mid-gesture; the cached
+		// node would otherwise be detached and silently stop following.
+		const halo =
+			haloRef.current?.getStage() === stage
+				? haloRef.current
+				: (stage?.findOne(".selection-halo") ?? null);
+		haloRef.current = halo;
+		if (!halo) return;
+		halo.x(node.x());
+		halo.y(node.y());
+		halo.rotation(node.rotation());
+		// The halo must stay in the item node's layer so this draw reaches it.
+		halo.getLayer()?.batchDraw();
+	}, []);
 
 	const commit = useCallback(() => {
 		const node = transformerRef.current?.nodes()[0];
 		const uid = transformingUidRef.current;
 		transformingUidRef.current = null;
+		haloRef.current = null;
 		if (!node || !uid) return;
 		useScene
 			.getState()
@@ -117,7 +142,11 @@ export function ItemTransformer({ selectedUid, theme }: ItemTransformerProps) {
 			rotationSnapTolerance={SNAP_TOLERANCE}
 			onTransformStart={() => {
 				transformingUidRef.current = selectedUid;
+				const stage = transformerRef.current?.getStage();
+				haloRef.current = stage?.findOne(".selection-halo") ?? null;
+				syncHalo();
 			}}
+			onTransform={syncHalo}
 			onTransformEnd={commit}
 			anchorStyleFunc={styleAnchor}
 			borderStroke={theme.selectionStrong}

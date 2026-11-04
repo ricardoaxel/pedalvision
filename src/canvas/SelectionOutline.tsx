@@ -34,6 +34,11 @@ export function SelectionOutline({
 }: SelectionOutlineProps) {
 	return (
 		<Rect
+			// The Transformer finds this node by name and mirrors the item node's
+			// live transform onto it during a rotate gesture (Q-01), so the halo
+			// follows the pedal without joining the item group (which would grow
+			// the Transformer's bounding box by the ring outset).
+			name="selection-halo"
 			x={cmToPx(xCm)}
 			y={cmToPx(yCm)}
 			// Offset so the ring still sits just outside the footprint, while
