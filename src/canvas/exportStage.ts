@@ -1,16 +1,15 @@
 import Konva from "konva";
 import { cableCurveCm, cablePathDataCm, EXPORT_CABLE } from "../lib/cablePath";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
+import { buildExportScaleReference } from "../lib/exportScale";
 import {
 	EXPORT_PADDING_CM,
 	EXPORT_STANDARD_PX_PER_CM,
 	ExportError,
 	type ExportFormat,
 	type ExportPlan,
-	SCALE_BAR_LONG_CM,
-	SCALE_BAR_SHORT_BELOW_CM,
-	SCALE_BAR_SHORT_CM,
 } from "../lib/exportScene";
+import type { DisplayUnits } from "../lib/geometry";
 import { buildAnchorIndex, cableEndAnchorFromIndex } from "../lib/jackAnchor";
 import { buildPdfFromJpeg } from "../lib/pdf";
 import {
@@ -61,6 +60,8 @@ export type ExportFileResult =
 interface RenderContext {
 	plan: ExportPlan;
 	theme: CanvasTheme;
+	format: ExportFormat;
+	units: DisplayUnits;
 	/** Output pixels per local (export-stage) pixel (fitScale × pixelRatio). */
 	unit: number;
 	/** Label/text sizing unit — keeps physical text size constant in HD. */
@@ -564,7 +565,7 @@ function drawAssumedJackNote(
 	const x = plan.contentBoundsCm.x * pxPerCm;
 	const y =
 		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * pxPerCm +
-		EXPORT_PADDING_CM * 0.78 * pxPerCm;
+		EXPORT_PADDING_CM * 0.9 * pxPerCm;
 	parent.add(
 		new Konva.Text({
 			text: "Cables may use assumed, approximate or locally corrected jack positions.",
@@ -579,17 +580,13 @@ function drawAssumedJackNote(
 }
 
 function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
-	const { plan, theme, labelUnit, pxPerCm } = context;
-	const contentWidth = plan.contentBoundsCm.widthCm;
-	const lengthCm =
-		contentWidth >= SCALE_BAR_SHORT_BELOW_CM
-			? SCALE_BAR_LONG_CM
-			: SCALE_BAR_SHORT_CM;
+	const { plan, theme, labelUnit, pxPerCm, format, units } = context;
+	const reference = buildExportScaleReference(plan, format, units);
 	const startX = plan.contentBoundsCm.x * pxPerCm;
 	const y =
 		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * pxPerCm +
 		(EXPORT_PADDING_CM / 2) * pxPerCm;
-	const endX = startX + lengthCm * pxPerCm;
+	const endX = startX + reference.lengthCm * pxPerCm;
 	const tick = 4 / labelUnit;
 	const strokeWidth = 1 / labelUnit;
 
@@ -617,13 +614,41 @@ function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
 			listening: false,
 		}),
 	);
+
+	// A ruler, not a bare dimension: 0 at the left cap, the primary unit at the
+	// right cap. Both units + the print condition live on the caption below, so
+	// a printed plan can be verified without guessing the paper scale.
 	parent.add(
 		new Konva.Text({
-			text: `${lengthCm} cm`,
+			text: "0",
+			x: startX - 24 / labelUnit,
+			y: y - 5.5 / labelUnit,
+			width: 20 / labelUnit,
+			align: "right",
+			fontFamily: CANVAS_FONTS.mono,
+			fontSize: 11 / labelUnit,
+			fill: theme.boardLabel,
+			listening: false,
+		}),
+	);
+	parent.add(
+		new Konva.Text({
+			text: reference.primaryLabel,
 			x: endX + 6 / labelUnit,
 			y: y - 5.5 / labelUnit,
 			fontFamily: CANVAS_FONTS.mono,
 			fontSize: 11 / labelUnit,
+			fill: theme.boardLabel,
+			listening: false,
+		}),
+	);
+	parent.add(
+		new Konva.Text({
+			text: `${reference.scaleLabel} ${reference.detailLabel}`,
+			x: startX,
+			y: y + 6 / labelUnit,
+			fontFamily: CANVAS_FONTS.mono,
+			fontSize: 9.5 / labelUnit,
 			fill: theme.boardLabel,
 			listening: false,
 		}),
@@ -639,6 +664,7 @@ export async function renderExportFile(
 	plan: ExportPlan,
 	theme: CanvasTheme,
 	format: ExportFormat,
+	units: DisplayUnits = "cm",
 ): Promise<ExportFileResult> {
 	const images = await preloadImages(plan);
 	const container = document.createElement("div");
@@ -661,6 +687,8 @@ export async function renderExportFile(
 	const context: RenderContext = {
 		plan,
 		theme: renderTheme,
+		format,
+		units,
 		unit,
 		// Keep text/line physical size constant across quality and fit-scale:
 		// local label px scale with the stage density (Standard 1, HD 0.5).

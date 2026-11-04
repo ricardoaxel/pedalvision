@@ -1,0 +1,150 @@
+{
+	"label": "before",
+	"base": "http://localhost:4175",
+	"desktop": [
+		{
+			"kind": "desktop-dark-board-png",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.9 MB",
+			"ms": 119,
+			"bytes": 679112
+		},
+		{
+			"kind": "desktop-dark-board-pdf",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 982 KB",
+			"ms": 110,
+			"bytes": 177606
+		},
+		{
+			"kind": "desktop-dark-all-png",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 6.0 MB",
+			"ms": 129,
+			"bytes": 751902
+		},
+		{
+			"kind": "desktop-dark-all-pdf",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.0 MB",
+			"ms": 121,
+			"bytes": 205338
+		},
+		{
+			"kind": "desktop-light-board-png",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.9 MB",
+			"ms": 108,
+			"bytes": 688338
+		},
+		{
+			"kind": "desktop-light-board-pdf",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 982 KB",
+			"ms": 104,
+			"bytes": 177606
+		},
+		{
+			"kind": "desktop-light-all-png",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 6.0 MB",
+			"ms": 123,
+			"bytes": 761247
+		},
+		{
+			"kind": "desktop-light-all-pdf",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.0 MB",
+			"ms": 120,
+			"bytes": 205338
+		}
+	],
+	"mobile": [
+		{
+			"kind": "mobile-dark-board-png",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.9 MB",
+			"ms": 115,
+			"bytes": 679112
+		},
+		{
+			"kind": "mobile-dark-board-pdf",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 982 KB",
+			"ms": 108,
+			"bytes": 177606
+		},
+		{
+			"kind": "mobile-dark-all-png",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 6.0 MB",
+			"ms": 126,
+			"bytes": 751902
+		},
+		{
+			"kind": "mobile-dark-all-pdf",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.0 MB",
+			"ms": 126,
+			"bytes": 205338
+		},
+		{
+			"kind": "mobile-light-board-png",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.9 MB",
+			"ms": 112,
+			"bytes": 688338
+		},
+		{
+			"kind": "mobile-light-board-pdf",
+			"size": "2,207 × 1,483 px",
+			"spec": "OUTPUT\n2,207 × 1,483 px\n68.96 × 46.35 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 982 KB",
+			"ms": 108,
+			"bytes": 177606
+		},
+		{
+			"kind": "mobile-light-all-png",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 6.0 MB",
+			"ms": 124,
+			"bytes": 761247
+		},
+		{
+			"kind": "mobile-light-all-pdf",
+			"size": "3,456 × 1,939 px",
+			"spec": "OUTPUT\n3,456 × 1,939 px\n108 × 60.6 cm · Standard · 81 PPI\nDISTINCT IMAGES\n4\nFILE SIZE\nabout 2.0 MB",
+			"ms": 132,
+			"bytes": 205338
+		}
+	],
+	"small": [
+		{
+			"kind": "small-dark-board-png",
+			"size": "1,216 × 896 px",
+			"spec": "OUTPUT\n1,216 × 896 px\n38 × 28 cm · Standard · 81 PPI\nDISTINCT IMAGES\n0\nFILE SIZE\nabout 981 KB",
+			"ms": 62,
+			"bytes": 120268
+		},
+		{
+			"kind": "small-dark-board-pdf",
+			"size": "1,216 × 896 px",
+			"spec": "OUTPUT\n1,216 × 896 px\n38 × 28 cm · Standard · 81 PPI\nDISTINCT IMAGES\n0\nFILE SIZE\nabout 327 KB",
+			"ms": 61,
+			"bytes": 133103
+		},
+		{
+			"kind": "small-dark-all-png",
+			"size": "1,216 × 896 px",
+			"spec": "OUTPUT\n1,216 × 896 px\n38 × 28 cm · Standard · 81 PPI\nDISTINCT IMAGES\n0\nFILE SIZE\nabout 981 KB",
+			"ms": 58,
+			"bytes": 120268
+		},
+		{
+			"kind": "small-dark-all-pdf",
+			"size": "1,216 × 896 px",
+			"spec": "OUTPUT\n1,216 × 896 px\n38 × 28 cm · Standard · 81 PPI\nDISTINCT IMAGES\n0\nFILE SIZE\nabout 327 KB",
+			"ms": 59,
+			"bytes": 133103
+		}
+	]
+}

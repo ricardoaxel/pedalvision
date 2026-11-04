@@ -20,6 +20,7 @@ import {
 	useScene,
 } from "../state/scene";
 import { selectSelectedBoardUid, useSelection } from "../state/selection";
+import { useSettings } from "../state/settings";
 import { BoardIcon, DownloadIcon } from "./icons";
 
 type Status = "idle" | "preparing" | "success";
@@ -100,6 +101,7 @@ export function ExportPanel({
 	onBusyChange,
 }: ExportPanelProps) {
 	const theme = useCanvasTheme();
+	const units = useSettings((state) => state.units);
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
@@ -217,7 +219,7 @@ export function ExportPanel({
 		// Let the busy state paint before the synchronous render starts.
 		await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
 		try {
-			const rendered = await renderExportFile(plan, theme, format);
+			const rendered = await renderExportFile(plan, theme, format, units);
 			const filename = exportFileName(plan, label, new Date(), format);
 			if (rendered.format === "pdf") {
 				downloadBytes(rendered.bytes, filename, "application/pdf");

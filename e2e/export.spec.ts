@@ -284,6 +284,90 @@ async function samplePixels(
 	);
 }
 
+interface ScaleBarReading {
+	barPx: number;
+	barY: number;
+	captionInk: number;
+}
+
+/**
+ * Measure the drafting bar on a decoded PNG: the longest horizontal ink run
+ * that matches the expected physical length, plus ink in the caption band just
+ * below it (the SCALE / units / print-condition line added by Q-02).
+ */
+async function measureScaleBar(
+	page: Page,
+	buffer: Buffer,
+	expectedBarPx: number,
+): Promise<ScaleBarReading> {
+	const base64 = buffer.toString("base64");
+	return page.evaluate(
+		async ({ data, expected }) => {
+			const image = new Image();
+			image.src = `data:image/png;base64,${data}`;
+			await image.decode();
+			const canvas = document.createElement("canvas");
+			canvas.width = image.naturalWidth;
+			canvas.height = image.naturalHeight;
+			const context = canvas.getContext("2d");
+			if (!context) throw new Error("no 2d context");
+			context.drawImage(image, 0, 0);
+			const pixels = context.getImageData(
+				0,
+				0,
+				canvas.width,
+				canvas.height,
+			).data;
+			const width = canvas.width;
+			const height = canvas.height;
+			const background = [pixels[0] ?? 0, pixels[1] ?? 0, pixels[2] ?? 0];
+			const isInk = (x: number, y: number) => {
+				const index = (y * width + x) * 4;
+				return (
+					Math.abs((pixels[index] ?? 0) - (background[0] ?? 0)) +
+						Math.abs((pixels[index + 1] ?? 0) - (background[1] ?? 0)) +
+						Math.abs((pixels[index + 2] ?? 0) - (background[2] ?? 0)) >
+					20
+				);
+			};
+			const tolerance = Math.max(2, expected * 0.02);
+			let barPx = 0;
+			let barY = 0;
+			let barStart = 0;
+			for (let y = Math.floor(height * 0.7); y < height; y++) {
+				let runStart = -1;
+				for (let x = 0; x <= width; x++) {
+					const ink = x < width && isInk(x, y);
+					if (ink && runStart < 0) runStart = x;
+					if (!ink && runStart >= 0) {
+						const run = x - runStart;
+						if (Math.abs(run - expected) <= tolerance && run > barPx) {
+							barPx = run;
+							barY = y;
+							barStart = runStart;
+						}
+						runStart = -1;
+					}
+				}
+			}
+			let captionInk = 0;
+			if (barPx > 0) {
+				const from = barY + 4;
+				const to = Math.min(height, barY + 24);
+				const left = Math.max(0, barStart - 4);
+				const right = Math.min(width, barStart + expected * 1.6);
+				for (let y = from; y < to; y++) {
+					for (let x = left; x < right; x++) {
+						if (isInk(x, y)) captionInk += 1;
+					}
+				}
+			}
+			return { barPx, barY, captionInk };
+		},
+		{ data: base64, expected: expectedBarPx },
+	);
+}
+
 async function readOutputSize(
 	page: Page,
 ): Promise<{ width: number; height: number }> {
@@ -676,6 +760,37 @@ test("exports a true-scale paper-light PDF", async ({ page }) => {
 		`/Width ${allSize.width} /Height ${allSize.height}`,
 	);
 	expect(allText).toContain("/MediaBox [0 0 4195.276 1077.165]");
+});
+
+test("scale reference is physically measurable at Standard and HD", async ({
+	page,
+}) => {
+	await seedScene(page, sceneTwoBoards());
+	await selectFirstBoard(page);
+	await openExport(page);
+	await page.getByRole("radio", { name: "Selected board" }).click();
+
+	// Selected board is 60 × 30 cm + 4 cm padding each side = 68 cm wide, so the
+	// 10 cm bar is exactly 10/68 of the output width at every quality.
+	const standardSize = await readOutputSize(page);
+	const standardBuffer = await downloadPng(page);
+	const standard = await measureScaleBar(
+		page,
+		standardBuffer,
+		(10 / 68) * standardSize.width,
+	);
+	expect(
+		Math.abs(standard.barPx - (10 / 68) * standardSize.width),
+	).toBeLessThanOrEqual(2);
+	expect(standard.captionInk).toBeGreaterThan(20);
+
+	await page.getByRole("button", { name: "Export again" }).click();
+	await page.getByRole("radio", { name: "HD" }).click();
+	const hdSize = await readOutputSize(page);
+	const hdBuffer = await downloadPng(page);
+	const hd = await measureScaleBar(page, hdBuffer, (10 / 68) * hdSize.width);
+	expect(Math.abs(hd.barPx - (10 / 68) * hdSize.width)).toBeLessThanOrEqual(4);
+	expect(hd.captionInk).toBeGreaterThan(20);
 });
 
 test("mobile: the export tray stays above the tab bar and exports", async ({
