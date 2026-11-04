@@ -75,7 +75,7 @@ interface RenderContext {
 	labels?: boolean;
 	/** Page mode: grow endpoint chips so they print at their true paper size. */
 	chipScale?: number;
-	/** Output pixels per local (export-stage) pixel (fitScale × pixelRatio). */
+	/** Artifact path: output px per local px (fitScale × pixelRatio); page mode uses `pageLabelUnit`. */
 	unit: number;
 	/** Label/text sizing unit — keeps physical text size constant in HD. */
 	labelUnit: number;
@@ -1007,7 +1007,8 @@ async function renderPagePdf(
 	const renderTheme = lightCanvasTheme;
 
 	// Plan density stays at the export plan's px/cm; the group maps it onto the
-	// page. Labels use `printScale` so they keep their physical paper size.
+	// page. Labels use the density-compensated `pageLabelUnit` so 8.9 pt stays
+	// 8.9 pt in Standard and HD (the group scale cancels the plan px/cm).
 	const scale = (page.printScale * page.pagePxPerCm) / plan.pxPerCm;
 	const labelUnit = pageLabelUnit(plan.pxPerCm, page.printScale);
 	const context: RenderContext = {

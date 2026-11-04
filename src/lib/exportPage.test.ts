@@ -118,6 +118,17 @@ describe("pageLabelUnit", () => {
 		expect(standard / 0.45).toBeCloseTo(1);
 		expect(hd / 0.45).toBeCloseTo(0.5);
 	});
+
+	it("keeps the rendered label point size across quality modes", () => {
+		const labelPt = (pxPerCm: number, pagePxPerCm: number) => {
+			const unit = pageLabelUnit(pxPerCm, 0.45);
+			const groupScale = (0.45 * pagePxPerCm) / pxPerCm;
+			const pagePx = (11 / unit) * groupScale;
+			return (pagePx / pagePxPerCm / 2.54) * 72;
+		};
+		expect(labelPt(32, 200 / 2.54)).toBeCloseTo(9.75, 1);
+		expect(labelPt(64, 300 / 2.54)).toBeCloseTo(9.75, 1);
+	});
 });
 
 describe("formatScaleRatio", () => {
