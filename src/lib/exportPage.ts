@@ -1,4 +1,8 @@
-import type { ExportPlan, ExportQuality } from "./exportScene";
+import {
+	EXPORT_STANDARD_PX_PER_CM,
+	type ExportPlan,
+	type ExportQuality,
+} from "./exportScene";
 
 /**
  * Fit-to-page PDF planning (Q-02 rework, owner decision 2026-11-03).
@@ -39,7 +43,6 @@ export const PAGE_BAND_LAYOUT_CM = {
 	note: 1.55,
 	caption: 2.05,
 	rule: 2.6,
-	label: 2.88,
 } as const;
 
 /** Raster density of the page itself (print quality, not plan density). */
@@ -61,8 +64,6 @@ export interface PdfPagePlan {
 	outputPpi: number;
 	/** Printed cm per real cm (≤ 1: never enlarge a small plan). */
 	printScale: number;
-	/** Ratio denominator: 2.5 for `1:2.5`. */
-	ratioDenominator: number;
 	ratioLabel: string;
 	/** Drawing area (inside the safe margins and above the bottom band). */
 	contentRectCm: { x: number; y: number; widthCm: number; heightCm: number };
@@ -94,7 +95,7 @@ function fitFor(
 	paper: FitPaper,
 	orientation: PageOrientation,
 	quality: ExportQuality,
-): Omit<PdfPagePlan, "ratioDenominator" | "ratioLabel"> {
+): Omit<PdfPagePlan, "ratioLabel"> {
 	const page = pageSize(paper, orientation);
 	const area = drawingArea(page);
 	const printScale = Math.min(
@@ -172,12 +173,19 @@ export function resolvePdfPage(
 	const alternative = fitFor(plan, options.paper, other, options.quality);
 	if (alternative.printScale > best.printScale * 1.02) best = alternative;
 
-	const denominator = 1 / best.printScale;
 	return {
 		...best,
-		ratioDenominator: denominator,
 		ratioLabel: formatScaleRatio(best.printScale),
 	};
+}
+
+/**
+ * Local label unit for a page-mode plan. The content group is scaled by
+ * `printScale × pagePxPerCm / planPxPerCm`; dividing by this unit keeps item/
+ * board labels at the same physical paper size in Standard and HD.
+ */
+export function pageLabelUnit(pxPerCm: number, printScale: number): number {
+	return (EXPORT_STANDARD_PX_PER_CM / pxPerCm) * printScale;
 }
 
 /** Does the exact-cm page fit either orientation of this paper? */

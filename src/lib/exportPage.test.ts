@@ -6,6 +6,7 @@ import {
 	PAGE_BAND_CM,
 	PAGE_MARGIN_CM,
 	PAPER_SIZES_CM,
+	pageLabelUnit,
 	resolvePdfPage,
 	truePageFitsPaper,
 } from "./exportPage";
@@ -103,6 +104,19 @@ describe("resolvePdfPage", () => {
 			quality: "standard",
 		});
 		expect(page.barPrintedLengthCm).toBeLessThanOrEqual(10);
+	});
+});
+
+describe("pageLabelUnit", () => {
+	it("keeps label paper size constant across Standard and HD", () => {
+		const standard = pageLabelUnit(32, 0.45);
+		const hd = pageLabelUnit(64, 0.45);
+		expect(standard).toBeCloseTo(0.45);
+		expect(hd).toBeCloseTo(0.225);
+		// The renderer divides local px by this unit; the extra 2× plan density
+		// must be cancelled by the half-size unit.
+		expect(standard / 0.45).toBeCloseTo(1);
+		expect(hd / 0.45).toBeCloseTo(0.5);
 	});
 });
 

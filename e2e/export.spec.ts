@@ -915,7 +915,22 @@ test("fit PDF lays the plan on A4 and Letter with a printed ratio", async ({
 	expect(a4Text).toContain("/MediaBox [0 0 841.89 595.276]");
 	expect(a4Text).toContain("/Width 2339 /Height 1654");
 
+	// HD fit uses a 300 DPI page; annotations stay at paper size.
 	await page.getByRole("button", { name: "Export again" }).click();
+	await page.getByRole("radio", { name: "HD" }).click();
+	await expect(page.getByTestId("export-size")).toHaveText("3,508 × 2,480 px");
+	const [hdDownload] = await Promise.all([
+		page.waitForEvent("download"),
+		page.getByTestId("export-download").click(),
+	]);
+	const hdPath = await hdDownload.path();
+	if (!hdPath) throw new Error("download has no path");
+	const hdText = (await readFile(hdPath)).toString("latin1");
+	expect(hdText).toContain("/MediaBox [0 0 841.89 595.276]");
+	expect(hdText).toContain("/Width 3508 /Height 2480");
+
+	await page.getByRole("button", { name: "Export again" }).click();
+	await page.getByRole("radio", { name: "Standard" }).click();
 	await page.getByRole("radio", { name: "Fit Letter" }).click();
 	await expect(page.getByTestId("export-page-info")).toContainText(
 		/Letter landscape · 1:\d/,

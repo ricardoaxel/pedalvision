@@ -6,6 +6,7 @@ import {
 	PAGE_BAND_LAYOUT_CM,
 	PAGE_MARGIN_CM,
 	type PdfPagePlan,
+	pageLabelUnit,
 	resolvePdfPage,
 } from "../lib/exportPage";
 import { buildExportScaleReference } from "../lib/exportScale";
@@ -72,6 +73,8 @@ interface RenderContext {
 	units: DisplayUnits;
 	/** Item/board name chips; off on very reduced fit pages (never ellipsis). */
 	labels?: boolean;
+	/** Page mode: grow endpoint chips so they print at their true paper size. */
+	chipScale?: number;
 	/** Output pixels per local (export-stage) pixel (fitScale × pixelRatio). */
 	unit: number;
 	/** Label/text sizing unit — keeps physical text size constant in HD. */
@@ -450,7 +453,7 @@ function drawItem(
 			// On a very reduced page, keep an identity on image-less items (a
 			// blank custom card would read as a missing asset); image-bearing
 			// items omit chips instead of ellipsis.
-			fontScale: context.labels === false && imageLess ? 0.62 : 1,
+			fontScale: context.labels === false && imageLess ? 0.8 : 1,
 		});
 	}
 }
@@ -519,12 +522,14 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 		);
 	}
 
+	const chipScale = context.chipScale ?? 1;
 	for (const endpoint of plan.endpoints) {
 		const x = endpoint.x * pxPerCm;
 		const y = endpoint.y * pxPerCm;
 		const label = endpoint.kind === "amp" ? "AMP" : "INSTR";
-		const chipWidth = Math.max(1.4, label.length * 0.19 + 0.4) * pxPerCm;
-		const chipHeight = 0.62 * pxPerCm;
+		const chipWidth =
+			Math.max(1.4, label.length * 0.19 + 0.4) * pxPerCm * chipScale;
+		const chipHeight = 0.62 * pxPerCm * chipScale;
 		// Opaque terminal chip above the cable, matching the live AMP/INSTR tag.
 		parent.add(
 			new Konva.Rect({
@@ -534,8 +539,8 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 				height: chipHeight,
 				fill: theme.itemLabelBg,
 				stroke: theme.jack,
-				strokeWidth: 0.04 * pxPerCm,
-				cornerRadius: 0.16 * pxPerCm,
+				strokeWidth: 0.04 * pxPerCm * chipScale,
+				cornerRadius: 0.16 * pxPerCm * chipScale,
 				listening: false,
 			}),
 		);
@@ -568,23 +573,7 @@ function drawAssumedJackNote(
 	context: RenderContext,
 ): void {
 	const { plan, theme, labelUnit, pxPerCm } = context;
-	const index = buildAnchorIndex({
-		boards: plan.boards,
-		items: plan.items,
-		customPedals: plan.customPedals,
-		endpoints: plan.endpoints,
-	});
-	const used = plan.cables.some((cable) =>
-		[cable.from, cable.to].some((end) => {
-			const anchor = cableEndAnchorFromIndex(end, index);
-			return (
-				anchor?.assumed === true ||
-				anchor?.approximate === true ||
-				anchor?.corrected === true
-			);
-		}),
-	);
-	if (!used) return;
+	if (!assumedJackUsed(plan)) return;
 	const x = plan.contentBoundsCm.x * pxPerCm;
 	const y =
 		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * pxPerCm +
@@ -1020,14 +1009,16 @@ async function renderPagePdf(
 	// Plan density stays at the export plan's px/cm; the group maps it onto the
 	// page. Labels use `printScale` so they keep their physical paper size.
 	const scale = (page.printScale * page.pagePxPerCm) / plan.pxPerCm;
+	const labelUnit = pageLabelUnit(plan.pxPerCm, page.printScale);
 	const context: RenderContext = {
 		plan,
 		theme: renderTheme,
 		format: "pdf",
 		units,
-		unit: page.printScale,
-		labelUnit: page.printScale,
+		unit: labelUnit,
+		labelUnit,
 		labels: page.printScale >= 0.34,
+		chipScale: 1 / page.printScale,
 		pxPerCm: plan.pxPerCm,
 		images,
 	};

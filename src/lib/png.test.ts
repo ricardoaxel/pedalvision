@@ -38,6 +38,13 @@ describe("addPngDpiChunk", () => {
 		expect(new TextDecoder().decode(png.subarray(37, 41))).toBe("pHYs");
 	});
 
+	it("matches a known CRC vector for 81 PPI", () => {
+		const png = addPngDpiChunk(headerOnlyPng(), 81);
+		const view = new DataView(png.buffer);
+		// pHYs(81): x=y=3189 px/m, unit=1 -> CRC32 0x2d789475.
+		expect(view.getUint32(50)).toBe(0x2d789475);
+	});
+
 	it("rounds PPI to the PNG metre unit", () => {
 		expect(readPngDpi(addPngDpiChunk(headerOnlyPng(), 300))).toBe(300);
 	});
