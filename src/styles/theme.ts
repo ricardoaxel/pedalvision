@@ -14,6 +14,9 @@ import type { BoardTexture } from "../lib/boardTexture";
 export const CANVAS_THEME_VARS = {
 	gridDot: "--color-grid-dot",
 	canvasBackground: "--color-canvas-bg",
+	// Print page stock — always the light surface, even though the canvas theme
+	// can be dark (PDF is the print artifact).
+	pdfPaper: "--color-surface",
 	selection: "--color-accent",
 	selectionStrong: "--color-accent-strong",
 	cable: "--color-cable",
@@ -198,6 +201,7 @@ export const BOARD_FINISH: Record<
 export const canvasTheme: CanvasTheme = {
 	gridDot: "#43484f",
 	canvasBackground: "#191a1c",
+	pdfPaper: "#2b3036",
 	selection: "#66c9de",
 	selectionStrong: "#66c9de",
 	cable: "#b9c2cc",
@@ -229,6 +233,7 @@ export const canvasTheme: CanvasTheme = {
 export const lightCanvasTheme: CanvasTheme = {
 	gridDot: "#a2abb5",
 	canvasBackground: "#e4e7ea",
+	pdfPaper: "#ffffff",
 	selection: "#006b82",
 	selectionStrong: "#006b82",
 	cable: "#4d565f",
