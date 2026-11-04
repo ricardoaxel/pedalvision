@@ -1,6 +1,6 @@
 # Q-02: Export scale reference
 
-**Phase:** Q (feature lane, Phase 1) · **Status:** in review — PR #99 · **Model:** light
+**Phase:** Q (feature lane, Phase 1) · **Status:** done (merged 2026-11-04, PR #99, squash `e500e7e6`) · **Model:** light
 
 ## Goal
 
