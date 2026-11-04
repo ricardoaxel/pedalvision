@@ -47,9 +47,10 @@ export function exportScalePpi(plan: ExportPlan): number {
 }
 
 /**
- * Build the artifact's scale reference. `units` is the app-wide display unit:
- * it only changes which unit is primary on the bar; both units are always
- * printed so a plan stays measurable across regions.
+ * Build the artifact's scale reference. `units` is the app-wide display unit
+ * and labels the bar (the app already owns the cm/in preference); the caption
+ * stays unit-free so the one print instruction is not diluted by a duplicate
+ * measurement (design review, Q-02).
  */
 export function buildExportScaleReference(
 	plan: ExportPlan,

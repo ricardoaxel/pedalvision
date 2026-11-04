@@ -615,9 +615,9 @@ function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
 		}),
 	);
 
-	// A ruler, not a bare dimension: 0 at the left cap, the primary unit at the
-	// right cap. Both units + the print condition live on the caption below, so
-	// a printed plan can be verified without guessing the paper scale.
+	// A ruler, not a bare dimension: 0 at the left cap, the active unit at the
+	// right cap. The caption below carries the print condition, so a printed
+	// plan can be verified without guessing the paper scale.
 	parent.add(
 		new Konva.Text({
 			text: "0",

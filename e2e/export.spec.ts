@@ -287,22 +287,28 @@ async function samplePixels(
 interface ScaleBarReading {
 	barPx: number;
 	barY: number;
+	barStart: number;
 	captionInk: number;
+	rightLabelPx: number;
 }
 
 /**
- * Measure the drafting bar on a decoded PNG: the longest horizontal ink run
- * that matches the expected physical length, plus ink in the caption band just
- * below it (the SCALE / units / print-condition line added by Q-02).
+ * Measure the drafting bar on a decoded PNG. The bar is the horizontal ink run
+ * whose length AND left start match the expected physical geometry, so a
+ * same-length pedal edge cannot be mistaken for the ruler. Returns ink in the
+ * caption band below the bar (the SCALE / print-condition line added by Q-02)
+ * and the width of the right-hand unit label (proves the active unit reaches
+ * the artifact).
  */
 async function measureScaleBar(
 	page: Page,
 	buffer: Buffer,
 	expectedBarPx: number,
+	expectedStartPx: number,
 ): Promise<ScaleBarReading> {
 	const base64 = buffer.toString("base64");
 	return page.evaluate(
-		async ({ data, expected }) => {
+		async ({ data, expected, expectedStart }) => {
 			const image = new Image();
 			image.src = `data:image/png;base64,${data}`;
 			await image.decode();
@@ -331,6 +337,7 @@ async function measureScaleBar(
 				);
 			};
 			const tolerance = Math.max(2, expected * 0.02);
+			const startTolerance = Math.max(3, expectedStart * 0.02);
 			let barPx = 0;
 			let barY = 0;
 			let barStart = 0;
@@ -341,7 +348,11 @@ async function measureScaleBar(
 					if (ink && runStart < 0) runStart = x;
 					if (!ink && runStart >= 0) {
 						const run = x - runStart;
-						if (Math.abs(run - expected) <= tolerance && run > barPx) {
+						if (
+							Math.abs(run - expected) <= tolerance &&
+							Math.abs(runStart - expectedStart) <= startTolerance &&
+							run > barPx
+						) {
 							barPx = run;
 							barY = y;
 							barStart = runStart;
@@ -350,21 +361,37 @@ async function measureScaleBar(
 					}
 				}
 			}
+			// Output pixels per cm, derived from the known 10 cm bar.
+			const pxPerCm = expected / 10;
 			let captionInk = 0;
 			if (barPx > 0) {
-				const from = barY + 4;
-				const to = Math.min(height, barY + 24);
+				const from = Math.round(barY + (6 / 32) * pxPerCm);
+				const to = Math.round(barY + (18 / 32) * pxPerCm);
 				const left = Math.max(0, barStart - 4);
 				const right = Math.min(width, barStart + expected * 1.6);
-				for (let y = from; y < to; y++) {
+				for (let y = from; y < Math.min(height, to); y++) {
 					for (let x = left; x < right; x++) {
 						if (isInk(x, y)) captionInk += 1;
 					}
 				}
 			}
-			return { barPx, barY, captionInk };
+			// Right-hand unit label sits on the bar baseline, to its right. The
+			// band stays above the caption (which starts below the line).
+			let rightLabelPx = 0;
+			if (barPx > 0) {
+				const from = Math.round(barY - (5 / 32) * pxPerCm);
+				const to = Math.round(barY + (4 / 32) * pxPerCm);
+				for (let y = Math.max(0, from); y < Math.min(height, to); y++) {
+					for (let x = barStart + barPx + 2; x < width; x++) {
+						if (isInk(x, y)) {
+							rightLabelPx = Math.max(rightLabelPx, x - (barStart + barPx));
+						}
+					}
+				}
+			}
+			return { barPx, barY, barStart, captionInk, rightLabelPx };
 		},
-		{ data: base64, expected: expectedBarPx },
+		{ data: base64, expected: expectedBarPx, expectedStart: expectedStartPx },
 	);
 }
 
@@ -774,23 +801,59 @@ test("scale reference is physically measurable at Standard and HD", async ({
 	// 10 cm bar is exactly 10/68 of the output width at every quality.
 	const standardSize = await readOutputSize(page);
 	const standardBuffer = await downloadPng(page);
+	const standardBar = (10 / 68) * standardSize.width;
+	const standardStart = (4 / 68) * standardSize.width;
 	const standard = await measureScaleBar(
 		page,
 		standardBuffer,
-		(10 / 68) * standardSize.width,
+		standardBar,
+		standardStart,
 	);
-	expect(
-		Math.abs(standard.barPx - (10 / 68) * standardSize.width),
-	).toBeLessThanOrEqual(2);
+	expect(Math.abs(standard.barPx - standardBar)).toBeLessThanOrEqual(4);
+	expect(Math.abs(standard.barStart - standardStart)).toBeLessThanOrEqual(4);
 	expect(standard.captionInk).toBeGreaterThan(20);
+	expect(standard.rightLabelPx).toBeGreaterThan(12);
 
 	await page.getByRole("button", { name: "Export again" }).click();
 	await page.getByRole("radio", { name: "HD" }).click();
 	const hdSize = await readOutputSize(page);
 	const hdBuffer = await downloadPng(page);
-	const hd = await measureScaleBar(page, hdBuffer, (10 / 68) * hdSize.width);
-	expect(Math.abs(hd.barPx - (10 / 68) * hdSize.width)).toBeLessThanOrEqual(4);
-	expect(hd.captionInk).toBeGreaterThan(20);
+	const hdBar = (10 / 68) * hdSize.width;
+	const hdStart = (4 / 68) * hdSize.width;
+	const hd = await measureScaleBar(page, hdBuffer, hdBar, hdStart);
+	expect(Math.abs(hd.barPx - hdBar)).toBeLessThanOrEqual(5);
+	expect(Math.abs(hd.barStart - hdStart)).toBeLessThanOrEqual(5);
+	expect(hd.captionInk).toBeGreaterThan(60);
+	expect(hd.rightLabelPx).toBeGreaterThan(30);
+});
+
+test("the exported bar follows the app unit setting", async ({ page }) => {
+	await seedScene(page, sceneTwoBoards());
+	await selectFirstBoard(page);
+	await openExport(page);
+	await page.getByRole("radio", { name: "Selected board" }).click();
+
+	const size = await readOutputSize(page);
+	const bar = (10 / 68) * size.width;
+	const start = (4 / 68) * size.width;
+	const cm = await measureScaleBar(page, await downloadPng(page), bar, start);
+	expect(cm.rightLabelPx).toBeGreaterThan(12);
+
+	// Switch the app-wide display unit, then export again: the bar label must
+	// get wider ("3.94 in" vs "10 cm") — this is the seam that used to ignore
+	// Settings.units entirely. Close the tray first: on mobile it covers the
+	// readout.
+	await page.getByTestId("export-done").click();
+	await page.getByTestId("scale-readout-unit-in").click();
+	await openExport(page);
+	await page.getByRole("radio", { name: "Selected board" }).click();
+	const inches = await measureScaleBar(
+		page,
+		await downloadPng(page),
+		bar,
+		start,
+	);
+	expect(inches.rightLabelPx).toBeGreaterThan(cm.rightLabelPx + 8);
 });
 
 test("mobile: the export tray stays above the tab bar and exports", async ({

@@ -82,15 +82,10 @@ describe("buildExportScaleReference", () => {
 		expect(reference.primaryLabel).toBe("1.97 in");
 	});
 
-	it("puts the print condition first and the PNG PPI in parentheses", () => {
-		const p = plan();
-		const reference = buildExportScaleReference(p, "png", "cm");
-		expect(reference.printHint).toBe(
-			`PRINT AT 100% (${Math.round(p.outputPpi)} PPI)`,
-		);
-		expect(reference.detailLabel).toBe(
-			`1:1 · PRINT AT 100% (${Math.round(p.outputPpi)} PPI)`,
-		);
+	it("formats the PNG condition and demotes the PPI into parentheses", () => {
+		const reference = buildExportScaleReference(plan(), "png", "cm");
+		expect(reference.printHint).toBe("PRINT AT 100% (81 PPI)");
+		expect(reference.detailLabel).toBe("1:1 · PRINT AT 100% (81 PPI)");
 	});
 
 	it("uses only the page-scale condition for PDF (no PPI)", () => {
@@ -100,9 +95,7 @@ describe("buildExportScaleReference", () => {
 		expect(reference.detailLabel).not.toContain("PPI");
 	});
 
-	it("rounds the reported PPI", () => {
-		const p = plan();
-		expect(exportScalePpi(p)).toBe(Math.round(p.outputPpi));
-		expect(Number.isInteger(exportScalePpi(p))).toBe(true);
+	it("rounds the reported PPI to a fixed value for the fixture", () => {
+		expect(exportScalePpi(plan())).toBe(81);
 	});
 });

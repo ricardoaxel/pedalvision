@@ -13,7 +13,9 @@ margin. Inspection of the current artifacts (`export-standard-dark.png`,
 
 1. **The bar label is always `10 cm`, even when the app is set to inches.** The
    export ignores the app-wide `Settings.units` (P3-02), so an inch user gets a
-   cm-only reference and no conversion.
+   cm-only label. The fix makes the bar label unit-aware rather than printing
+   both units (design review round 1: the duplicate `3.94 in` cost legibility
+   for no extra value once the label follows the setting).
 2. **The artifact never says how to print it at true scale.** A PNG is only 1:1
    when printed at its output PPI (e.g. 81 PPI Standard); a PDF page is true
    scale, but a print dialog can still "fit to page". Neither artifact states
@@ -81,6 +83,8 @@ direction.
    - a pure helper (e.g. `src/lib/exportScale.ts`) that returns the bar length,
      the active-unit label, and the format-specific print hint
      (`1:1 · PRINT AT 100% (81 PPI)` for PNG; `1:1 · PRINT AT 100%` for PDF);
+     the bar label itself is the conversion surface (the app's unit setting),
+     not a duplicate both-unit string;
    - pass `Settings.units` into `renderExportFile`;
    - draw the label as `SCALE` + bar value + conversion + print hint, keeping
      the existing true-length bar and ticks.
