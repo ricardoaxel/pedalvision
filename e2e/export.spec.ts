@@ -206,6 +206,22 @@ function pngHeaderSize(buffer: Buffer): { width: number; height: number } {
 	return { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) };
 }
 
+function pngDpi(buffer: Buffer): number | null {
+	let offset = 8;
+	while (offset + 12 <= buffer.length) {
+		const length = buffer.readUInt32BE(offset);
+		const type = buffer.subarray(offset + 4, offset + 8).toString("latin1");
+		if (type === "pHYs" && length >= 9) {
+			const pixelsPerMetre = buffer.readUInt32BE(offset + 8);
+			const unit = buffer[offset + 16];
+			return unit === 1 ? Math.round(pixelsPerMetre * 0.0254) : null;
+		}
+		if (type === "IEND") break;
+		offset += 12 + length;
+	}
+	return null;
+}
+
 async function inspectPng(page: Page, buffer: Buffer): Promise<PngStats> {
 	const header = pngHeaderSize(buffer);
 	const base64 = buffer.toString("base64");
@@ -438,6 +454,8 @@ test("exports the selected board as an opaque, non-blank PNG", async ({
 	expect(stats.decodedHeight).toBe(1216);
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
+	// The PNG carries its intended print density (Q-02): 81 PPI for this plan.
+	expect(pngDpi(buffer)).toBe(81);
 
 	// The pedal itself is in the PNG, not just the board: its custom body differs
 	// from the wood board fill. Selected-board frame = 68 × 38 cm at 32 px/cm.
@@ -730,9 +748,11 @@ test("HD uses the full iOS-safe budget (PNG + PDF)", async ({ page }) => {
 	expect(stats.height).toBe(hdSize.height);
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
+	expect(pngDpi(buffer)).toBe(Math.round(hdSize.width / (68 / 2.54)));
 
 	await page.getByRole("button", { name: "Export again" }).click();
 	await page.getByRole("radio", { name: "PDF" }).click();
+	await page.getByRole("radio", { name: "True size" }).click();
 	const [pdfDownload] = await Promise.all([
 		page.waitForEvent("download"),
 		page.getByTestId("export-download").click(),
@@ -750,6 +770,7 @@ test("exports a true-scale paper-light PDF", async ({ page }) => {
 	await openExport(page);
 	await page.getByRole("radio", { name: "Selected board" }).click();
 	await page.getByRole("radio", { name: "PDF" }).click();
+	await page.getByRole("radio", { name: "True size" }).click();
 	await expect(page.getByTestId("export-size")).toHaveText("2,176 × 1,216 px");
 
 	const [download] = await Promise.all([
@@ -854,6 +875,60 @@ test("the exported bar follows the app unit setting", async ({ page }) => {
 		start,
 	);
 	expect(inches.rightLabelPx).toBeGreaterThan(cm.rightLabelPx + 8);
+});
+
+test("fit PDF lays the plan on A4 and Letter with a printed ratio", async ({
+	page,
+	isMobile,
+}) => {
+	await seedScene(page, sceneTwoBoards());
+	await selectFirstBoard(page);
+	await openExport(page);
+	await page.getByRole("radio", { name: "Selected board" }).click();
+	await page.getByRole("radio", { name: "PDF" }).click();
+
+	// Fit A4 is the default PDF layout; the page row names the sheet + ratio.
+	await expect(page.getByRole("radio", { name: "Fit A4" })).toBeChecked();
+	await expect(page.getByTestId("export-page-info")).toContainText(
+		/A4 landscape · 1:\d/,
+	);
+	// 68 cm board fitted onto A4 landscape at 200 DPI.
+	await expect(page.getByTestId("export-size")).toHaveText("2,339 × 1,654 px");
+
+	if (isMobile) {
+		const panel = await page.getByTestId("export-panel").boundingBox();
+		const viewport = page.viewportSize();
+		if (!panel || !viewport) throw new Error("missing panel/viewport");
+		expect(panel.y + panel.height).toBeLessThanOrEqual(
+			viewport.height - 56 - 8 + 1,
+		);
+	}
+
+	const [a4Download] = await Promise.all([
+		page.waitForEvent("download"),
+		page.getByTestId("export-download").click(),
+	]);
+	const a4Path = await a4Download.path();
+	if (!a4Path) throw new Error("download has no path");
+	const a4Text = (await readFile(a4Path)).toString("latin1");
+	expect(a4Text.slice(0, 5)).toBe("%PDF-");
+	expect(a4Text).toContain("/MediaBox [0 0 841.89 595.276]");
+	expect(a4Text).toContain("/Width 2339 /Height 1654");
+
+	await page.getByRole("button", { name: "Export again" }).click();
+	await page.getByRole("radio", { name: "Fit Letter" }).click();
+	await expect(page.getByTestId("export-page-info")).toContainText(
+		/Letter landscape · 1:\d/,
+	);
+	const [letterDownload] = await Promise.all([
+		page.waitForEvent("download"),
+		page.getByTestId("export-download").click(),
+	]);
+	const letterPath = await letterDownload.path();
+	if (!letterPath) throw new Error("download has no path");
+	const letterText = (await readFile(letterPath)).toString("latin1");
+	expect(letterText).toContain("/MediaBox [0 0 792 612]");
+	expect(letterText).toContain("/Width 2200 /Height 1700");
 });
 
 test("mobile: the export tray stays above the tab bar and exports", async ({

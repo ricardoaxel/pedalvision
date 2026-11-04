@@ -1,11 +1,19 @@
 # Q-02: Export scale reference
 
-**Phase:** Q (feature lane, Phase 1) · **Status:** in review — PR #99 · **Model:** light
+**Phase:** Q (feature lane, Phase 1) · **Status:** in review — PR #99 (rework in progress) · **Model:** light
 
 ## Goal
 
-Make the exported PNG/PDF scale reference unambiguous so a printed plan can be
-measured and verified. The P3-01 "Print Ticket" export already draws a true-length
+Make exported plans **printable and verifiable**. Two things must be true:
+
+1. **A normal person can print the plan on normal paper.** A true-size page for a
+   40–80 cm board does not fit A4/Letter; the useful default is a **fit-to-page
+   PDF** that shows the whole plan on one sheet at a stated scale ratio.
+2. **The printed plan is measurable.** The sheet carries a drafting bar and a
+   printed `SCALE 1:N · PRINT AT 100%` reference, so any distance can be checked
+   against the stated ratio.
+
+The P3-01 "Print Ticket" export already draws a true-length
 drafting bar (10 cm, or 5 cm on narrow content) with end ticks in the bottom
 margin. Inspection of the current artifacts (`export-standard-dark.png`,
 `export-light.png`, `pdf-paper-light.png`) and `src/canvas/exportStage.ts`
@@ -27,8 +35,16 @@ margin. Inspection of the current artifacts (`export-standard-dark.png`,
 
 Nothing else about the exported artifact is wrong: the bar is drawn at exact
 physical length (cm source of truth), sits in the existing 4 cm margin, and the
-PDF page is exact cm→pt. The fix is a scale-reference block, not a new export
-direction.
+PDF page is exact cm→pt.
+
+**Owner decision (2026-11-03, rework):** true-size PDFs are rarely printable at
+home, so PDF gains a **Fit A4 (default) / Fit Letter / True size** layout. Fit
+mode renders a paper-sized page: the plan is scaled into the sheet and the ruler,
+ratio and caption are drawn at fixed paper size (`SCALE 1:2.5 · PRINT AT 100%`).
+True size stays as the exact-cm option and warns when the page exceeds A4/Letter.
+Small plans are never enlarged (fit scale capped at 1:1). PNG keeps the scale
+reference and gains its intended PPI metadata (`pHYs`) so “actual size” works in
+apps that honour it.
 
 ## Read first (context pack)
 
@@ -62,10 +78,12 @@ direction.
   PDF page size.
 - No new dependency. Keep text/line physical size constant across Standard/HD
   and fit-scale, as the existing `labelUnit` mechanism does.
-- **Design gate:** small fix inside the approved "Print Ticket" direction →
-  `design-reviewer` on the actual exported PNG/PDF (desktop + mobile, dark +
-  light) plus before/after artifacts, ≤2 passes.
-- **Code review:** ≤1 light pass on the source diff only.
+- **Design gate:** the print-page layout + PDF control are design-affecting →
+  `designer` proposal → owner approval → `design-reviewer` on the actual fit/true
+  PDF + PNG (desktop + mobile, dark + light) plus before/after artifacts, ≤2
+  passes. The already-approved "Print Ticket" look is preserved.
+- **Code review:** export/PDF is high-risk → up to 2 light passes on the source
+  diff only.
 - **Budget:** builder soft ≤400k / hard ≤800k billed non-cache; review ≤300k;
   task hard ≤1.1M; 6 h active.
 - **Performance:** record bundle delta, export file size, PPI and export render
@@ -79,47 +97,51 @@ direction.
 1. Create this task file before coding (done).
 2. Reproduce the gap: export selected board and all content as PNG + PDF at
    desktop and mobile widths, dark + light; capture before artifacts.
-3. Implement the minimal scale-reference block:
-   - a pure helper (e.g. `src/lib/exportScale.ts`) that returns the bar length,
-     the active-unit label, and the format-specific print hint
-     (`1:1 · PRINT AT 100% (81 PPI)` for PNG; `1:1 · PRINT AT 100%` for PDF);
-     the bar label itself is the conversion surface (the app's unit setting),
-     not a duplicate both-unit string;
+3. Implement the scale-reference block (done in the first pass):
+   - pure `src/lib/exportScale.ts` (bar length, active-unit label, print hint);
    - pass `Settings.units` into `renderExportFile`;
-   - draw the label as `SCALE` + bar value + conversion + print hint, keeping
-     the existing true-length bar and ticks.
-4. Unit-test the helper (length selection, unit conversion, PPI rounding,
-   format hint); extend `e2e/export.spec.ts` to prove the bar/caption is drawn
-   and its length is physically exact at Standard and HD.
-5. Run the checks: `pnpm lint && pnpm typecheck && pnpm test && pnpm build &&
+   - `0` / active-unit caps + `SCALE 1:1 · PRINT AT 100% (81 PPI)` caption.
+4. **Rework — printable PDF:**
+   - pure `src/lib/exportPage.ts`: A4/Letter sizes, auto orientation, fit scale
+     (cap 1:1, never enlarge), ratio (`1:N`), page pixels at 200/300 DPI,
+     content rect, printed bar length; unit tests.
+   - renderer: page-mode stage at paper size; plan content scaled/centred with
+     item/board labels kept at fixed paper size; ruler/caption/assumed-jack note
+     drawn in page space at fixed paper size (≥7 pt); true-size path unchanged.
+   - PDF: page-sized JPEG fills the exact paper MediaBox (`pdf.ts` unchanged
+     for the true-size path); true-size keeps the exact-cm page.
+   - PNG: insert a `pHYs` DPI chunk at the plan PPI (zero deps); file otherwise
+     unchanged.
+   - UI (`ExportPanel`): PDF-only `Fit A4` (default) / `Fit Letter` / `True
+     size`; spec shows paper, ratio and page PPI; a true-size overflow notice.
+5. Unit-test `exportPage`, PNG pHYs, and the unchanged PDF true-size path;
+   extend `e2e/export.spec.ts` for fit A4/Letter MediaBox, the layout control,
+   PNG pHYs, and the existing true-size/scale-reference regressions.
+6. Run the checks: `pnpm lint && pnpm typecheck && pnpm test && pnpm build &&
    pnpm e2e`.
-6. Capture after artifacts (desktop + mobile, dark + light, PNG + PDF), run
-   `design-reviewer` (≤2 passes), fold findings.
-7. Light `code-review` on the source diff; fold blockers/should-fixes.
-8. Update docs hub + this task file + `docs/progress.md`/`docs/roadmap.md`; open
-   exactly one PR with before/after artifacts, ≤3 owner hints, review digest,
-   performance numbers and the docs line. Do not merge.
+7. Capture fit + true PDF and PNG artifacts (desktop + mobile, dark + light),
+   run `design-reviewer` (≤2 passes), fold findings.
+8. Light `code-review` (≤2 passes, high-risk); fold blockers/should-fixes.
+9. Update docs hub (`/features`, `/changelog`, `/help`) + this task file +
+   `docs/progress.md`/`docs/roadmap.md`; update PR #99 with before/after
+   artifacts, ≤3 owner hints, review digest, performance numbers and the docs
+   line. Do not merge.
 
 ## Acceptance (executable)
 
-- The exported PNG and PDF bottom margin contains a scale reference that:
-  - draws a true-length bar with end ticks at `lengthCm × pxPerCm` (10 cm, or
-    5 cm when content is narrower than 40 cm);
-  - labels the bar in the **active display unit** (`10 cm`, or `3.94 in` when
-    the app is in inches; `5 cm` / `1.97 in` on narrow content);
-  - states `SCALE`, `1:1`, and the print condition **first**: PNG
-    `PRINT AT 100% (81 PPI)` (plan's rounded `outputPpi` in parentheses); PDF
-    `PRINT AT 100%` (the page itself is true scale).
-- The label is visually subordinate to the drawing and fits inside the existing
-  4 cm bottom margin at Standard and HD, dark/light PNG and paper-light PDF; no
-  overlap with the board/content or the assumed-jack note.
-- `PNG` output dimensions, PPI, clamp behaviour, scope bounds, theme and
-  `PDF` MediaBox/page size are unchanged from `main`.
-- Unit tests cover: 10 cm vs 5 cm selection, cm↔in conversion (10 cm = 3.94 in,
-  5 cm = 1.97 in), PPI rounding, PNG vs PDF hint, active unit follows settings.
-- `e2e/export.spec.ts` asserts the exported artifact includes ink in the scale
-  reference band and that the drawn bar length matches the physical length for
-  Standard and HD; existing export tests stay green.
+- **Fit PDF:** one A4 (default) or Letter page shows the whole plan; printing at
+  100% yields the stated ratio; the ruler is drawn at the printed scale and the
+  caption reads `SCALE 1:N · PRINT AT 100%`; page MediaBox is A4/Letter exactly.
+- **True PDF:** still the exact-cm page; the panel warns when it exceeds the
+  selected paper and points to Fit. The existing MediaBox test stays valid.
+- **PNG:** keeps the `SCALE 1:1 · PRINT AT 100% (N PPI)` ruler; the file gains a
+  `pHYs` chunk at the plan PPI; dimensions/theme/clamp/scope unchanged.
+- Labels/annotations on the fit page are ≥~7 pt on paper, never clipped, and do
+  not overlap the assumed-jack note. Small plans are never enlarged (1:1 max).
+- Unit tests cover: fit scale/orientation/ratio, printed bar length, page pixels,
+  PNG pHYs, true-size PDF unchanged.
+- `e2e/export.spec.ts` asserts fit A4/Letter MediaBox, the layout control, PNG
+  pHYs, and keeps the existing scale-reference/bar-length/true-size tests green.
 - `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm e2e` green.
 - Before/after artifacts captured at desktop + mobile, dark + light, PNG + PDF;
   `design-reviewer` verdict recorded.
@@ -130,8 +152,9 @@ direction.
 
 ## Notes
 
-- **Direction:** remains the owner-approved **"Print Ticket"** surface from
-  P3-01; this is a scale-reference fix only (owner-approved bar kept).
+- **Direction:** the owner-approved **"Print Ticket"** surface from P3-01,
+  extended with a print-layout control (owner decision 2026-11-03: fit-to-page
+  is the practical print path; true size is the niche template option).
 - **Baseline on `main` (`9c5d6dd0`):** 1004 unit tests, e2e 394 passed + 12
   skipped, JS 346.44 kB gzip, CSS 16.48 kB gzip.
 - **Result:** 1012 unit tests, e2e 398 passed + 12 skipped, JS 346.65 kB gzip,
@@ -140,5 +163,7 @@ direction.
 - **Gap evidence:** current `drawScaleBar` hardcodes `${lengthCm} cm`, ignores
   `Settings.units`, and has no PPI/print hint; `ExportPanel` shows PPI only on
   screen, never in the artifact.
-- **Out of scope:** exporter scope/bounds changes, new formats, print layout,
-  moving the bar, or changing the approved typography/palette.
+- **Defaults (owner approved in-session 2026-11-03):** A4 default + Letter
+  option; PDF default Fit A4; never enlarge small plans; PNG gets DPI metadata.
+- **Out of scope:** tiled/poster 1:1 printing, new file formats, changing export
+  scope/bounds/clamp, or altering the approved palette/typography.

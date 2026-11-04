@@ -4,6 +4,12 @@ import { useCanvasTheme } from "../canvas/useCanvasTheme";
 import { exportCapacity, formatEstimatedBytes } from "../lib/capacity";
 import { downloadBlob } from "../lib/download";
 import {
+	type FitPaper,
+	type PdfPaper,
+	resolvePdfPage,
+	truePageFitsPaper,
+} from "../lib/exportPage";
+import {
 	ExportError,
 	type ExportFormat,
 	type ExportPlan,
@@ -65,15 +71,43 @@ function errorMessage(error: unknown): string {
 	return "The export didn't finish. Try again.";
 }
 
-function noticeLines(plan: ExportPlan): string[] {
+function noticeLines(
+	plan: ExportPlan,
+	format: ExportFormat,
+	layout: PdfPaper,
+): string[] {
 	const lines: string[] = [];
-	if (plan.clampLimited) {
-		lines.push("Resolution capped for iOS compatibility.");
-		if (plan.scope === "all" && plan.boards.length > 1) {
-			lines.push("Export a single board for more detail.");
+	// Fit mode lays the plan out on a page raster; the artifact clamp is not
+	// part of that path.
+	if (format !== "pdf" || layout === "true") {
+		if (plan.clampLimited) {
+			lines.push("Resolution capped for iOS compatibility.");
+			if (plan.scope === "all" && plan.boards.length > 1) {
+				lines.push("Export a single board for more detail.");
+			}
 		}
 	}
+	if (
+		format === "pdf" &&
+		layout === "true" &&
+		!truePageFitsPaper(plan.boundsCm, "a4") &&
+		!truePageFitsPaper(plan.boundsCm, "letter")
+	) {
+		lines.push(
+			"Too big for A4 or Letter. Print at a copy shop, or use Fit A4 / Fit Letter.",
+		);
+	}
 	return lines;
+}
+
+const PDF_LAYOUTS: Array<{ value: PdfPaper; label: string }> = [
+	{ value: "a4", label: "Fit A4" },
+	{ value: "letter", label: "Fit Letter" },
+	{ value: "true", label: "True size" },
+];
+
+function paperLabel(paper: FitPaper): string {
+	return paper === "letter" ? "Letter" : "A4";
 }
 
 function downloadBytes(
@@ -114,6 +148,11 @@ export function ExportPanel({
 	);
 	const [format, setFormat] = useState<ExportFormat>("png");
 	const [quality, setQuality] = useState<ExportQuality>("standard");
+	// Paper follows the unit system on first open (A4 / Letter); the selection
+	// then persists across format switches.
+	const [pdfLayout, setPdfLayout] = useState<PdfPaper>(
+		units === "in" ? "letter" : "a4",
+	);
 	const [status, setStatus] = useState<Status>("idle");
 	const [error, setError] = useState<string | null>(null);
 	const [result, setResult] = useState<{
@@ -121,6 +160,7 @@ export function ExportPanel({
 		format: ExportFormat;
 		widthPx: number;
 		heightPx: number;
+		summary?: string;
 	} | null>(null);
 	const panelRef = useRef<HTMLDivElement>(null);
 	const ctaRef = useRef<HTMLButtonElement>(null);
@@ -196,6 +236,21 @@ export function ExportPanel({
 		isEmpty,
 	]);
 
+	const fitPaper: FitPaper | null =
+		format === "pdf" && pdfLayout !== "true" ? pdfLayout : null;
+	const pagePlan = useMemo(
+		() =>
+			plan && fitPaper
+				? resolvePdfPage(plan, { paper: fitPaper, quality })
+				: null,
+		[plan, fitPaper, quality],
+	);
+	const pageSummary = pagePlan
+		? `${paperLabel(pagePlan.paper)} ${pagePlan.orientation} · ${pagePlan.ratioLabel}`
+		: plan && format === "pdf"
+			? `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm`
+			: null;
+
 	const selectedBoard = selectedBoardUid
 		? boards.find((board) => board.uid === selectedBoardUid)
 		: undefined;
@@ -219,7 +274,10 @@ export function ExportPanel({
 		// Let the busy state paint before the synchronous render starts.
 		await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
 		try {
-			const rendered = await renderExportFile(plan, theme, format, units);
+			const rendered = await renderExportFile(plan, theme, format, {
+				units,
+				pdfPaper: fitPaper,
+			});
 			const filename = exportFileName(plan, label, new Date(), format);
 			if (rendered.format === "pdf") {
 				downloadBytes(rendered.bytes, filename, "application/pdf");
@@ -233,6 +291,7 @@ export function ExportPanel({
 				format,
 				widthPx: rendered.widthPx,
 				heightPx: rendered.heightPx,
+				summary: format === "pdf" ? (pageSummary ?? undefined) : undefined,
 			});
 			setStatus("success");
 		} catch (cause) {
@@ -257,6 +316,11 @@ export function ExportPanel({
 		setError(null);
 	};
 
+	const chooseLayout = (next: PdfPaper) => {
+		setPdfLayout(next);
+		setError(null);
+	};
+
 	const exportAgain = () => {
 		setStatus("idle");
 		setError(null);
@@ -264,10 +328,13 @@ export function ExportPanel({
 		requestAnimationFrame(() => ctaRef.current?.focus());
 	};
 
-	const notices = plan ? noticeLines(plan) : [];
-	const capacity = plan
-		? exportCapacity(plan.outputWidthPx, plan.outputHeightPx, format)
-		: null;
+	const notices = plan ? noticeLines(plan, format, pdfLayout) : [];
+	const specWidth = pagePlan ? pagePlan.stageWidthPx : plan?.outputWidthPx;
+	const specHeight = pagePlan ? pagePlan.stageHeightPx : plan?.outputHeightPx;
+	const capacity =
+		specWidth && specHeight
+			? exportCapacity(specWidth, specHeight, format)
+			: null;
 
 	return (
 		<div
@@ -293,7 +360,9 @@ export function ExportPanel({
 						{isEmpty
 							? "Add a board or a pedal, then export it."
 							: format === "pdf"
-								? "True scale. Paper-light PDF."
+								? pdfLayout === "true"
+									? "Paper-light PDF."
+									: `One page · ${paperLabel(pdfLayout)} · ${pagePlan?.ratioLabel ?? "fit"}.`
 								: "True scale. No grid."}
 					</p>
 				</div>
@@ -359,7 +428,8 @@ export function ExportPanel({
 						</h3>
 						<p className="export-panel__filename">{result.filename}</p>
 						<p className="export-panel__success-meta">
-							{formatPx(result.widthPx)} × {formatPx(result.heightPx)} px
+							{result.summary ??
+								`${formatPx(result.widthPx)} × ${formatPx(result.heightPx)} px`}
 						</p>
 					</div>
 					<div className="export-panel__footer export-panel__footer--split">
@@ -418,6 +488,43 @@ export function ExportPanel({
 							</label>
 						</div>
 					</fieldset>
+
+					{format === "pdf" ? (
+						<fieldset
+							className="export-choice export-choice--spaced"
+							disabled={busy}
+							data-testid="export-page"
+						>
+							<legend className="export-label">Page</legend>
+							<div className="export-scope__track export-scope__track--three">
+								{PDF_LAYOUTS.map((option) => (
+									<label
+										key={option.value}
+										className={`export-scope__option${
+											pdfLayout === option.value
+												? " export-scope__option--active"
+												: ""
+										}`}
+									>
+										<input
+											type="radio"
+											name="export-page"
+											value={option.value}
+											checked={pdfLayout === option.value}
+											disabled={busy}
+											onChange={() => chooseLayout(option.value)}
+										/>
+										<span>{option.label}</span>
+									</label>
+								))}
+							</div>
+							<p className="export-panel__quality-hint">
+								{pdfLayout === "true"
+									? "Exact size. Big plans need a large-format printer."
+									: "Whole plan on one page. Small plans stay 1:1."}
+							</p>
+						</fieldset>
+					) : null}
 
 					<fieldset
 						className="export-choice export-choice--spaced"
@@ -505,17 +612,32 @@ export function ExportPanel({
 					</fieldset>
 
 					<div className="export-spec" data-testid="export-spec">
+						{format === "pdf" && plan ? (
+							<div className="export-spec__row">
+								<span className="export-spec__label">Page</span>
+								<span
+									className="export-spec__value"
+									data-testid="export-page-info"
+								>
+									{pagePlan
+										? `${paperLabel(pagePlan.paper)} ${pagePlan.orientation} · ${pagePlan.ratioLabel}`
+										: `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm`}
+								</span>
+							</div>
+						) : null}
 						<div className="export-spec__row">
 							<span className="export-spec__label">Output</span>
 							<span className="export-spec__value" data-testid="export-size">
 								{plan
-									? `${formatPx(plan.outputWidthPx)} × ${formatPx(plan.outputHeightPx)} px`
+									? `${formatPx(specWidth ?? plan.outputWidthPx)} × ${formatPx(specHeight ?? plan.outputHeightPx)} px`
 									: "—"}
 							</span>
 						</div>
 						<div className="export-spec__meta">
 							{plan
-								? `${formatCm(plan.boundsCm.widthCm)} × ${formatCm(plan.boundsCm.heightCm)} cm · ${quality === "hd" ? "HD" : "Standard"} · ${Math.round(plan.outputPpi)} PPI`
+								? pagePlan
+									? `${quality === "hd" ? "HD" : "Standard"} · ${pagePlan.outputPpi} PPI`
+									: `${quality === "hd" ? "HD" : "Standard"} · ${Math.round(plan.outputPpi)} PPI`
 								: "—"}
 						</div>
 						{plan && capacity ? (

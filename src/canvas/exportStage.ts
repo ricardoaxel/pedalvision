@@ -1,6 +1,13 @@
 import Konva from "konva";
 import { cableCurveCm, cablePathDataCm, EXPORT_CABLE } from "../lib/cablePath";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
+import {
+	type FitPaper,
+	PAGE_BAND_LAYOUT_CM,
+	PAGE_MARGIN_CM,
+	type PdfPagePlan,
+	resolvePdfPage,
+} from "../lib/exportPage";
 import { buildExportScaleReference } from "../lib/exportScale";
 import {
 	EXPORT_PADDING_CM,
@@ -9,9 +16,10 @@ import {
 	type ExportFormat,
 	type ExportPlan,
 } from "../lib/exportScene";
-import type { DisplayUnits } from "../lib/geometry";
+import { cmToDisplay, type DisplayUnits } from "../lib/geometry";
 import { buildAnchorIndex, cableEndAnchorFromIndex } from "../lib/jackAnchor";
 import { buildPdfFromJpeg } from "../lib/pdf";
+import { addPngDpiChunk } from "../lib/png";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -62,6 +70,8 @@ interface RenderContext {
 	theme: CanvasTheme;
 	format: ExportFormat;
 	units: DisplayUnits;
+	/** Item/board name chips; off on very reduced fit pages (never ellipsis). */
+	labels?: boolean;
 	/** Output pixels per local (export-stage) pixel (fitScale × pixelRatio). */
 	unit: number;
 	/** Label/text sizing unit — keeps physical text size constant in HD. */
@@ -148,9 +158,11 @@ function labelChip(
 		text: string;
 		opacity: number;
 		monoPrefix?: string;
+		fontScale?: number;
 	},
 ): void {
 	const { labelUnit: unit, theme } = context;
+	const fontScale = options.fontScale ?? 1;
 	const inset = ITEM_LABEL.insetPx / unit;
 	const pad = 3 / unit;
 	const chipHeight = Math.max(
@@ -175,7 +187,10 @@ function labelChip(
 
 	const prefix = options.monoPrefix ?? "";
 	const prefixWidth = prefix
-		? Math.min(chipWidth * 0.42, (ITEM_LABEL.fontSizePx * 0.72 * 4.6) / unit)
+		? Math.min(
+				chipWidth * 0.42,
+				(ITEM_LABEL.fontSizePx * 0.72 * 4.6 * fontScale) / unit,
+			)
 		: 0;
 	if (prefix) {
 		parent.add(
@@ -186,7 +201,7 @@ function labelChip(
 				height: chipHeight,
 				verticalAlign: "middle",
 				fontFamily: CANVAS_FONTS.mono,
-				fontSize: (ITEM_LABEL.fontSizePx * 0.72) / unit,
+				fontSize: (ITEM_LABEL.fontSizePx * 0.72 * fontScale) / unit,
 				letterSpacing: 0.5 / unit,
 				fill: theme.itemLabelInk,
 				wrap: "none",
@@ -204,7 +219,7 @@ function labelChip(
 			height: chipHeight,
 			verticalAlign: "middle",
 			fontFamily: CANVAS_FONTS.sans,
-			fontSize: ITEM_LABEL.fontSizePx / unit,
+			fontSize: (ITEM_LABEL.fontSizePx * fontScale) / unit,
 			fill: theme.itemLabelInk,
 			wrap: "none",
 			ellipsis: true,
@@ -235,8 +250,9 @@ function drawBoardFallback(
 			listening: false,
 		}),
 	);
-	const showName = height * unit >= 40 && width * unit >= 72;
-	const showDims = height * unit >= 32;
+	const showName =
+		context.labels !== false && height * unit >= 40 && width * unit >= 72;
+	const showDims = context.labels !== false && height * unit >= 32;
 	const pad = Math.min(6 / labelUnit, width * 0.1);
 	const textWidth = Math.max(0, width - pad * 2);
 	if (showName) {
@@ -311,7 +327,7 @@ function drawCustomBoard(
 
 	const name = board.name?.trim() || "Custom board";
 	const screenWidth = width * unit;
-	if (screenWidth >= ITEM_LABEL.minWidthPx) {
+	if (context.labels !== false && screenWidth >= ITEM_LABEL.minWidthPx) {
 		labelChip(parent, context, {
 			width,
 			height,
@@ -342,6 +358,8 @@ function drawItem(
 	const screenWidth = width * unit;
 	const screenHeight = height * unit;
 	const custom = resolved.custom !== null;
+	const image = context.images.get(`i:${item.uid}`);
+	const imageLess = custom || !image;
 
 	if (custom) {
 		group.add(
@@ -374,7 +392,6 @@ function drawItem(
 			);
 		}
 	} else {
-		const image = context.images.get(`i:${item.uid}`);
 		if (image) {
 			group.add(
 				new Konva.Image({
@@ -398,7 +415,7 @@ function drawItem(
 					listening: false,
 				}),
 			);
-			if (screenHeight >= 26 && screenWidth >= 30) {
+			if (context.labels !== false && screenHeight >= 26 && screenWidth >= 30) {
 				group.add(
 					new Konva.Text({
 						text: resolved.name,
@@ -418,7 +435,9 @@ function drawItem(
 		}
 	}
 
-	const showLabel = custom || screenWidth >= ITEM_LABEL.minWidthPx;
+	const showLabel =
+		(context.labels !== false || imageLess) &&
+		(custom || screenWidth >= ITEM_LABEL.minWidthPx);
 	if (showLabel) {
 		labelChip(group, context, {
 			width,
@@ -428,6 +447,10 @@ function drawItem(
 				custom || screenWidth >= ITEM_LABEL.fullOpacityWidthPx
 					? 1
 					: ITEM_LABEL.opacity,
+			// On a very reduced page, keep an identity on image-less items (a
+			// blank custom card would read as a missing asset); image-bearing
+			// items omit chips instead of ellipsis.
+			fontScale: context.labels === false && imageLess ? 0.62 : 1,
 		});
 	}
 }
@@ -565,7 +588,7 @@ function drawAssumedJackNote(
 	const x = plan.contentBoundsCm.x * pxPerCm;
 	const y =
 		(plan.contentBoundsCm.y + plan.contentBoundsCm.heightCm) * pxPerCm +
-		EXPORT_PADDING_CM * 0.9 * pxPerCm;
+		EXPORT_PADDING_CM * 0.7 * pxPerCm;
 	parent.add(
 		new Konva.Text({
 			text: "Cables may use assumed, approximate or locally corrected jack positions.",
@@ -655,16 +678,116 @@ function drawScaleBar(parent: Konva.Group, context: RenderContext): void {
 	);
 }
 
-/**
- * Render the plan to a PNG or a true-scale PDF. Throws {@link ExportError} with
- * a user-facing code when the scene is empty, images can't be loaded
- * CORS-cleanly, or the canvas is tainted.
- */
-export async function renderExportFile(
+function assumedJackUsed(plan: ExportPlan): boolean {
+	const index = buildAnchorIndex({
+		boards: plan.boards,
+		items: plan.items,
+		customPedals: plan.customPedals,
+		endpoints: plan.endpoints,
+	});
+	return plan.cables.some((cable) =>
+		[cable.from, cable.to].some((end) => {
+			const anchor = cableEndAnchorFromIndex(end, index);
+			return (
+				anchor?.assumed === true ||
+				anchor?.approximate === true ||
+				anchor?.corrected === true
+			);
+		}),
+	);
+}
+
+function drawPlanContent(parent: Konva.Group, context: RenderContext): void {
+	const { plan, images } = context;
+	for (const board of plan.boards) {
+		const footprint = boardFootprint(board);
+		const boardGroup = new Konva.Group({
+			x: board.x * plan.pxPerCm,
+			y: board.y * plan.pxPerCm,
+			rotation: board.rotationDeg,
+			listening: false,
+		});
+		parent.add(boardGroup);
+		const width = footprint.widthCm * plan.pxPerCm;
+		const height = footprint.heightCm * plan.pxPerCm;
+
+		if (isCustomBoard(board)) {
+			drawCustomBoard(boardGroup, context, board, width, height);
+		} else {
+			const definition = boardDefinition(board);
+			const image = images.get(`b:${board.uid}`);
+			if (image) {
+				boardGroup.add(
+					new Konva.Image({
+						image,
+						width,
+						height,
+						listening: false,
+					}),
+				);
+			} else {
+				drawBoardFallback(
+					boardGroup,
+					context,
+					definition ? `${definition.brand} ${definition.name}` : "Board",
+					`${footprint.widthCm} × ${footprint.heightCm} cm`,
+					width,
+					height,
+				);
+			}
+		}
+
+		for (const item of itemsByZ(
+			plan.items.filter((candidate) => candidate.boardUid === board.uid),
+		)) {
+			drawItem(boardGroup, context, item);
+		}
+	}
+
+	for (const item of itemsByZ(
+		plan.items.filter((candidate) => candidate.boardUid === null),
+	)) {
+		drawItem(parent, context, item);
+	}
+
+	drawCables(parent, context);
+}
+
+/** Encode a stage to a Blob, mapping a tainted canvas to a typed error. */
+async function encodeStage(
+	stage: Konva.Stage,
+	options: {
+		pixelRatio: number;
+		mimeType: string;
+		quality?: number;
+	},
+): Promise<Blob> {
+	try {
+		return await stage.toBlob(options);
+	} catch (error) {
+		const tainted =
+			error instanceof DOMException && error.name === "SecurityError";
+		throw new ExportError(
+			tainted ? "tainted" : "unknown",
+			tainted
+				? "An image blocked the export. Try again."
+				: "The export didn't finish. Try again.",
+		);
+	}
+}
+
+export interface RenderExportOptions {
+	units?: DisplayUnits;
+	/** Fit a PDF onto this paper; omit/null for the exact-cm page. */
+	pdfPaper?: FitPaper | null;
+}
+
+/** PNG / exact-cm PDF: the approved P3-01 artifact path. */
+async function renderArtifact(
 	plan: ExportPlan,
 	theme: CanvasTheme,
 	format: ExportFormat,
-	units: DisplayUnits = "cm",
+	units: DisplayUnits,
 ): Promise<ExportFileResult> {
 	const images = await preloadImages(plan);
 	const container = document.createElement("div");
@@ -704,7 +827,10 @@ export async function renderExportFile(
 				y: 0,
 				width: plan.stageWidthPx,
 				height: plan.stageHeightPx,
-				fill: renderTheme.canvasBackground,
+				fill:
+					format === "pdf"
+						? renderTheme.pdfPaper
+						: renderTheme.canvasBackground,
 				listening: false,
 			}),
 		);
@@ -718,82 +844,16 @@ export async function renderExportFile(
 		});
 		layer.add(content);
 
-		for (const board of plan.boards) {
-			const footprint = boardFootprint(board);
-			const boardGroup = new Konva.Group({
-				x: board.x * plan.pxPerCm,
-				y: board.y * plan.pxPerCm,
-				rotation: board.rotationDeg,
-				listening: false,
-			});
-			content.add(boardGroup);
-			const width = footprint.widthCm * plan.pxPerCm;
-			const height = footprint.heightCm * plan.pxPerCm;
-
-			if (isCustomBoard(board)) {
-				drawCustomBoard(boardGroup, context, board, width, height);
-			} else {
-				const definition = boardDefinition(board);
-				const image = images.get(`b:${board.uid}`);
-				if (image) {
-					boardGroup.add(
-						new Konva.Image({
-							image,
-							width,
-							height,
-							listening: false,
-						}),
-					);
-				} else {
-					drawBoardFallback(
-						boardGroup,
-						context,
-						definition ? `${definition.brand} ${definition.name}` : "Board",
-						`${footprint.widthCm} × ${footprint.heightCm} cm`,
-						width,
-						height,
-					);
-				}
-			}
-
-			for (const item of itemsByZ(
-				plan.items.filter((candidate) => candidate.boardUid === board.uid),
-			)) {
-				drawItem(boardGroup, context, item);
-			}
-		}
-
-		for (const item of itemsByZ(
-			plan.items.filter((candidate) => candidate.boardUid === null),
-		)) {
-			drawItem(content, context, item);
-		}
-
-		drawCables(content, context);
+		drawPlanContent(content, context);
 		drawScaleBar(content, context);
 		drawAssumedJackNote(content, context);
 		layer.draw();
 
-		// Encode straight to a Blob. `toDataURL` would build a multi-MB base64
-		// string; iOS Safari then silently fails to save large `data:` download
-		// URLs (A3). A Blob is passed to the save path untouched.
-		let blob: Blob;
-		try {
-			blob = await stage.toBlob({
-				pixelRatio: plan.pixelRatio,
-				mimeType: format === "pdf" ? "image/jpeg" : "image/png",
-				quality: format === "pdf" ? 0.92 : undefined,
-			});
-		} catch (error) {
-			const tainted =
-				error instanceof DOMException && error.name === "SecurityError";
-			throw new ExportError(
-				tainted ? "tainted" : "unknown",
-				tainted
-					? "An image blocked the export. Try again."
-					: "The export didn't finish. Try again.",
-			);
-		}
+		const blob = await encodeStage(stage, {
+			pixelRatio: plan.pixelRatio,
+			mimeType: format === "pdf" ? "image/jpeg" : "image/png",
+			quality: format === "pdf" ? 0.92 : undefined,
+		});
 
 		if (format === "pdf") {
 			if (blob.type !== "image/jpeg") {
@@ -817,13 +877,241 @@ export async function renderExportFile(
 			};
 		}
 
+		// Carry the plan's intended PPI in the PNG itself (pHYs) so apps that
+		// honour image density can print it at actual size.
+		const png = addPngDpiChunk(
+			new Uint8Array(await blob.arrayBuffer()),
+			Math.round(plan.outputPpi),
+		);
+		const pngBuffer = png.buffer.slice(
+			png.byteOffset,
+			png.byteOffset + png.byteLength,
+		) as ArrayBuffer;
 		return {
 			format: "png",
-			blob,
+			blob: new Blob([pngBuffer], { type: "image/png" }),
 			widthPx: plan.outputWidthPx,
 			heightPx: plan.outputHeightPx,
 		};
 	} finally {
 		stage.destroy();
 	}
+}
+
+function pageY(page: PdfPagePlan, fromBottomCm: number): number {
+	return page.stageHeightPx - fromBottomCm * page.pagePxPerCm;
+}
+
+function pageLabel(page: PdfPagePlan, units: DisplayUnits): string {
+	return `${cmToDisplay(page.barLengthCm, units)} ${units}`;
+}
+
+/**
+ * Page band (Q-02 rework): ruler, ratio caption and assumed-jack caveat drawn
+ * in page space at fixed paper size. The plan may be reduced; these annotations
+ * never are.
+ */
+function drawPageBand(
+	parent: Konva.Group,
+	page: PdfPagePlan,
+	plan: ExportPlan,
+	theme: CanvasTheme,
+	units: DisplayUnits,
+): void {
+	const ink = theme.boardLabel;
+	const marginX = PAGE_MARGIN_CM * page.pagePxPerCm;
+	const rulerY = pageY(page, PAGE_BAND_LAYOUT_CM.rule);
+	const barPx = page.barPrintedLengthCm * page.pagePxPerCm;
+	const endX = marginX + barPx;
+	const strokeWidth = 0.02 * page.pagePxPerCm;
+	const tick = 0.22 * page.pagePxPerCm;
+	const labelFont = (8 / 72) * 2.54 * page.pagePxPerCm;
+	const captionFont = labelFont;
+	const noteFont = (7 / 72) * 2.54 * page.pagePxPerCm;
+
+	parent.add(
+		new Konva.Line({
+			points: [marginX, rulerY, endX, rulerY],
+			stroke: ink,
+			strokeWidth,
+			listening: false,
+		}),
+	);
+	for (const x of [marginX, endX]) {
+		parent.add(
+			new Konva.Line({
+				points: [x, rulerY - tick, x, rulerY + tick],
+				stroke: ink,
+				strokeWidth,
+				listening: false,
+			}),
+		);
+	}
+
+	const labelY = rulerY - labelFont - 0.05 * page.pagePxPerCm;
+	parent.add(
+		new Konva.Text({
+			text: "0",
+			x: marginX,
+			y: labelY,
+			fontFamily: CANVAS_FONTS.mono,
+			fontSize: labelFont,
+			fill: ink,
+			listening: false,
+		}),
+	);
+	parent.add(
+		new Konva.Text({
+			text: pageLabel(page, units),
+			x: endX + 0.15 * page.pagePxPerCm,
+			y: labelY,
+			fontFamily: CANVAS_FONTS.mono,
+			fontSize: labelFont,
+			fill: ink,
+			listening: false,
+		}),
+	);
+
+	parent.add(
+		new Konva.Text({
+			text: `SCALE ${page.ratioLabel} · PRINT AT 100%`,
+			x: marginX,
+			y: pageY(page, PAGE_BAND_LAYOUT_CM.caption) - captionFont,
+			fontFamily: CANVAS_FONTS.mono,
+			fontSize: captionFont,
+			fill: ink,
+			listening: false,
+		}),
+	);
+
+	if (assumedJackUsed(plan)) {
+		parent.add(
+			new Konva.Text({
+				text: "Cables may use assumed, approximate or locally corrected jack positions.",
+				x: marginX,
+				y: pageY(page, PAGE_BAND_LAYOUT_CM.note) - noteFont,
+				fontFamily: CANVAS_FONTS.mono,
+				fontSize: noteFont,
+				fill: ink,
+				listening: false,
+			}),
+		);
+	}
+}
+
+/** Fit-to-page PDF: paper-sized stage, scaled plan, page-space annotations. */
+async function renderPagePdf(
+	plan: ExportPlan,
+	page: PdfPagePlan,
+	units: DisplayUnits,
+): Promise<ExportFileResult> {
+	const images = await preloadImages(plan);
+	const container = document.createElement("div");
+	const stage = new Konva.Stage({
+		container,
+		width: page.stageWidthPx,
+		height: page.stageHeightPx,
+	});
+	const layer = new Konva.Layer({ listening: false });
+	layer.getCanvas().setPixelRatio(1);
+	stage.add(layer);
+	const renderTheme = lightCanvasTheme;
+
+	// Plan density stays at the export plan's px/cm; the group maps it onto the
+	// page. Labels use `printScale` so they keep their physical paper size.
+	const scale = (page.printScale * page.pagePxPerCm) / plan.pxPerCm;
+	const context: RenderContext = {
+		plan,
+		theme: renderTheme,
+		format: "pdf",
+		units,
+		unit: page.printScale,
+		labelUnit: page.printScale,
+		labels: page.printScale >= 0.34,
+		pxPerCm: plan.pxPerCm,
+		images,
+	};
+
+	try {
+		layer.add(
+			new Konva.Rect({
+				x: 0,
+				y: 0,
+				width: page.stageWidthPx,
+				height: page.stageHeightPx,
+				fill: renderTheme.pdfPaper,
+				listening: false,
+			}),
+		);
+
+		const content = new Konva.Group({
+			x: page.contentOriginCm.x * page.pagePxPerCm,
+			y: page.contentOriginCm.y * page.pagePxPerCm,
+			scaleX: scale,
+			scaleY: scale,
+			listening: false,
+		});
+		const scene = new Konva.Group({
+			x: -plan.contentBoundsCm.x * plan.pxPerCm,
+			y: -plan.contentBoundsCm.y * plan.pxPerCm,
+			listening: false,
+		});
+		content.add(scene);
+		layer.add(content);
+
+		drawPlanContent(scene, context);
+		const band = new Konva.Group({ listening: false });
+		layer.add(band);
+		drawPageBand(band, page, plan, renderTheme, units);
+		layer.draw();
+
+		const blob = await encodeStage(stage, {
+			pixelRatio: 1,
+			mimeType: "image/jpeg",
+			quality: 0.92,
+		});
+		if (blob.type !== "image/jpeg") {
+			throw new ExportError(
+				"unknown",
+				"The PDF encoder didn't finish. Try again.",
+			);
+		}
+		const bytes = new Uint8Array(await blob.arrayBuffer());
+		return {
+			format: "pdf",
+			bytes: buildPdfFromJpeg({
+				jpeg: bytes,
+				widthPx: page.stageWidthPx,
+				heightPx: page.stageHeightPx,
+				widthCm: page.pageWidthCm,
+				heightCm: page.pageHeightCm,
+			}),
+			widthPx: page.stageWidthPx,
+			heightPx: page.stageHeightPx,
+		};
+	} finally {
+		stage.destroy();
+	}
+}
+
+/**
+ * Render the plan to a PNG, an exact-cm PDF, or a fit-to-page PDF. Throws
+ * {@link ExportError} with a user-facing code when the scene is empty, images
+ * can't be loaded CORS-cleanly, or the canvas is tainted.
+ */
+export async function renderExportFile(
+	plan: ExportPlan,
+	theme: CanvasTheme,
+	format: ExportFormat,
+	options: RenderExportOptions = {},
+): Promise<ExportFileResult> {
+	const units = options.units ?? "cm";
+	if (format === "pdf" && options.pdfPaper) {
+		const page = resolvePdfPage(plan, {
+			paper: options.pdfPaper,
+			quality: plan.quality,
+		});
+		return renderPagePdf(plan, page, units);
+	}
+	return renderArtifact(plan, theme, format, units);
 }

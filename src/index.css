@@ -3913,6 +3913,11 @@ input[type="search"]::-webkit-search-decoration {
 	border-radius: var(--radius-control);
 }
 
+/* PDF page control (Fit A4 / Fit Letter / True size) — 3-up. */
+.export-scope__track--three {
+	grid-template-columns: repeat(3, 1fr);
+}
+
 .export-scope__option {
 	position: relative;
 	display: flex;
