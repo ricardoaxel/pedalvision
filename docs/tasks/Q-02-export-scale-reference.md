@@ -1,6 +1,6 @@
 # Q-02: Export scale reference
 
-**Phase:** Q (feature lane, Phase 1) · **Status:** in review — PR #99 (rework in progress) · **Model:** light
+**Phase:** Q (feature lane, Phase 1) · **Status:** in review — PR #99 · **Model:** light
 
 ## Goal
 
@@ -157,13 +157,29 @@ apps that honour it.
   is the practical print path; true size is the niche template option).
 - **Baseline on `main` (`9c5d6dd0`):** 1004 unit tests, e2e 394 passed + 12
   skipped, JS 346.44 kB gzip, CSS 16.48 kB gzip.
-- **Result:** 1012 unit tests, e2e 398 passed + 12 skipped, JS 346.65 kB gzip,
-  CSS 16.48 kB gzip. Design `design-reviewer` R2 **approve**; light
-  `code-reviewer` changes-required → fixed (no second pass). PR #99.
+- **Rework result (2026-11-03):** **1031 unit tests**, e2e **400 passed + 12
+  skipped**, JS **349.03 kB gzip**, CSS **16.50 kB gzip**. Fit A4/Letter/True
+  layouts, white print stock, PNG `pHYs`. Design `design-reviewer` R1
+  **approve-with-changes** (true-size band too close to trim; 1:3.7 chip
+  truncation) → R2 **approve** (both fixed, plus the image-less custom-card nit).
+  Light `code-reviewer` R1 **changes-required** (HD label unit halved text;
+  endpoint chips overflowed; tests/CRC gaps; dead fields; stale docs) → R2
+  **approve**. PR #99.
 - **Gap evidence:** current `drawScaleBar` hardcodes `${lengthCm} cm`, ignores
   `Settings.units`, and has no PPI/print hint; `ExportPanel` shows PPI only on
   screen, never in the artifact.
 - **Defaults (owner approved in-session 2026-11-03):** A4 default + Letter
-  option; PDF default Fit A4; never enlarge small plans; PNG gets DPI metadata.
+  option (Letter is the initial default when the app is in inches); PDF default
+  Fit A4; never enlarge small plans; PNG gets DPI metadata; white print stock;
+  assumed-jack note kept on the sheet.
+- **Perf (rework):** bundle **JS +2.59 kB gz / CSS +0.02 kB gz** vs main; Fit A4
+  Standard 115 ms / 220 kB, HD 172 ms / 391 kB; Fit Letter 124 ms / 207 kB,
+  HD 166 ms / 381 kB; True Standard 110 ms / 181 kB, HD 260 ms / 626 kB; page
+  rasters A4 200 DPI ≈ 3.9 MP, 300 DPI ≈ 8.7 MP (under the 16.7 MP cap).
+- **Label/endpoint sizing:** page labels use `pageLabelUnit` (32/pxPerCm ×
+  printScale) so 8.9 pt stays 8.9 pt in Standard and HD; endpoint chips grow by
+  `1/printScale` so AMP/INSTR tags print at true paper size. Item labels are
+  omitted below ~1:3 (never ellipsis), except image-less custom/fallback items
+  keep a 7 pt identity.
 - **Out of scope:** tiled/poster 1:1 printing, new file formats, changing export
   scope/bounds/clamp, or altering the approved palette/typography.
