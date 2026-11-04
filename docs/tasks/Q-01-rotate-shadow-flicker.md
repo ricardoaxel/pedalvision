@@ -1,6 +1,6 @@
 # Q-01 — rotate-shadow flicker
 
-**Phase:** 1 · **Status:** in review — PR #98 · **Model:** light (escalate to strong only for architecture/security/high-risk)
+**Phase:** 1 · **Status:** done — merged 2026-11-04, PR #98, squash `cacb50d9` · **Model:** light (escalate to strong only for architecture/security/high-risk)
 
 ## Goal
 

@@ -90,8 +90,8 @@ Feature work runs one task/PR at a time, separate from the catalog lane.
 
 | Status | Items |
 |---|---|
-| **Done** | F-01, F-02, F-03, F-04, F-05, F-19, **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`) |
-| **Next** | **Q-01 rotate-shadow flicker — in review, PR #98** (Phase 1 planner work; owner may pick another Phase 1 item) |
+| **Done** | F-01, F-02, F-03, F-04, F-05, F-19, **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`), **Q-01** (merged 2026-11-04, PR #98, squash `cacb50d9`) |
+| **Next** | **Q-02 export scale reference** (Phase 1; owner may pick **F-16 custom colors**, **F-14 similar pedals** or **F-12 pedal labels** instead) |
 | **Phase 5** | **F-42 PostHog analytics** — moved from Phase 1 (owner decision 2026-11-03); proposed, no task file, not a launch gate |
 
 ## ARCH — Frontend architecture rework (post-P5 feature lane; **not a release gate**)
