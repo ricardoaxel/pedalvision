@@ -4761,9 +4761,10 @@ input[type="search"]::-webkit-search-decoration {
 
 @media (max-width: 1023px) {
 	.scene-trigger {
-		/* Reserve the full five-control toolbar (5 × 44px + 4 × 4px gaps), both
-		 * 16px page gutters and an 8px gutter: the plate ellipsizes before it
-		 * can run under the endpoint/measure/share/export/theme cluster. */
+		/* Reserve the full five-control toolbar (5 × 44px + 4 × 4px gaps = 236px),
+		 * both 16px page gutters and an 8px gutter:
+		 * 100vw − (16 + 8 + 236 + 16) = 100vw − 276px. The plate ellipsizes
+		 * before it can run under the endpoint/measure/share/export/theme cluster. */
 		max-width: min(38vw, calc(100vw - 276px));
 	}
 
@@ -4817,7 +4818,8 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 /* Keep the full scene name at 360–374 px: two-pixel gaps buy the last 8 px
- * without shrinking any 44 px touch target. */
+ * without shrinking any 44 px touch target. The toolbar is 5 × 44 + 4 × 2 = 228,
+ * so the reserve is 100vw − (16 + 8 + 228 + 16) = 100vw − 268px. */
 @media (max-width: 374px) {
 	.app-toolbar {
 		gap: 2px;

@@ -481,7 +481,7 @@ function App() {
 						</MotionPresence>
 					</>
 				)}
-				<div className="app-toolbar">
+				<div className="app-toolbar" data-testid="app-toolbar">
 					{readOnly ? (
 						<>
 							<button

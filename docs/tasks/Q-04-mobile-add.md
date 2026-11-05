@@ -124,12 +124,23 @@ They are logged as follow-ups in `docs/progress.md`.
   the true baseline (`db213c8e`) shows the same 401.5 px strip overflowing at
   320/360/375 **before and after**, so Q-04 does not introduce it. The valid nit
   (360 shows `Sce…`) was fixed by tightening only the toolbar gap to 2 px at
-  ≤374 px, which gives the plate 92 px at 360 (full `Scene 1`). At 320 the plate
-  is 52 px (`S…`); that edge is accepted, no overlap. The pre-existing strip
-  overflow is logged as a follow-up, not fixed here.
+  ≤374 px, which gives the plate 92 px at 360 (full `Scene 1` under the current
+  font metrics; a longer name ellipsizes). At 320 the plate is 52 px (`S…`); that
+  edge is accepted, no overlap. The pre-existing strip overflow is logged as a
+  follow-up, not fixed here.
 - Follow-ups (out of scope): the Margin Rule strip is 401.5 px wide at 320–375
   and clips its ends; the first picker row opens pre-highlighted; the mobile chip
   row can cut a pill at the right edge; the "No board — adds loosely" copy is
   jargon.
-- Performance: no canvas/share/export code path changed; record measured
-  bundle/CSS deltas and a picker-open frame-time sample.
+- Code review: one light pass **APPROVE**, no blockers/should-fixes. Four nits:
+  derive the reserve from CSS vars (left as a documented derivation), the 360
+  headroom is sub-pixel (documented as font-dependent), the 374/375 cap is
+  non-monotonic only for names longer than the natural width (accepted), and the
+  E2E should use a toolbar testid + assert the tab accessible names (fixed:
+  `data-testid="app-toolbar"` + `toHaveAccessibleName("Pedals"/"Boards")`).
+- Performance: no canvas/share/export code path changed. Bundle: JS **349.09 kB
+  gzip (+0.06)** / **1,407.12 kB raw (+0.42)**; CSS **16.55 kB gzip (+0.05)** /
+  **133.14 kB raw (+0.28)**. Interaction frames at 360 (picker open + add):
+  p50/p95 **16.7/16.7 ms**, max 16.8; desktop pan p50/p95 **16.7/16.8 ms** (60 fps).
+  Heap: boot 19.57 MB → picker open 25.75 MB → after add 32.22 MB (catalog/image
+  load, unchanged by this chrome fix). Share/export payloads untouched.

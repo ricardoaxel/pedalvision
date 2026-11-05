@@ -129,10 +129,17 @@ test("mobile add cue stays on the dock and the scene plate clears the toolbar", 
 	await page.setViewportSize({ width: 360, height: 800 });
 	await page.goto("/");
 
-	// The closed dock is the add path: both catalogue tabs carry the "+" cue.
+	// The closed dock is the add path: both catalogue tabs carry the "+" cue,
+	// and the decorative plus does not change their accessible names.
 	await expect(page.getByTestId("picker-bar-pedals-add")).toBeVisible();
 	await expect(page.getByTestId("picker-bar-boards-add")).toBeVisible();
 	await expect(page.getByTestId("picker-bar-pedals-add")).toHaveCount(1);
+	await expect(page.getByTestId("picker-bar-pedals")).toHaveAccessibleName(
+		"Pedals",
+	);
+	await expect(page.getByTestId("picker-bar-boards")).toHaveAccessibleName(
+		"Boards",
+	);
 
 	// The in-sheet bar is a switcher, not an add action: no "+" inside the dialog.
 	await page.getByTestId("picker-bar-pedals").click();
@@ -150,7 +157,7 @@ test("mobile add cue stays on the dock and the scene plate clears the toolbar", 
 	]) {
 		await page.setViewportSize(viewport);
 		const scene = await page.getByTestId("scene-open").boundingBox();
-		const toolbar = await page.locator(".app-toolbar").boundingBox();
+		const toolbar = await page.getByTestId("app-toolbar").boundingBox();
 		if (!scene || !toolbar) throw new Error("missing box");
 		expect(scene.x + scene.width).toBeLessThanOrEqual(toolbar.x - 8);
 		expect(
