@@ -180,7 +180,6 @@ export const CABLE_INK = {
 	green: "#568a66",
 	blue: "#587db8",
 	violet: "#8a74bd",
-	magenta: "#a85a90",
 } as const;
 
 export type CableInkId = keyof typeof CABLE_INK;
@@ -191,7 +190,6 @@ export const CABLE_INK_TOKENS: Record<CableInkId, string> = {
 	green: "--color-cable-ink-green",
 	blue: "--color-cable-ink-blue",
 	violet: "--color-cable-ink-violet",
-	magenta: "--color-cable-ink-magenta",
 };
 
 /** Endpoint terminal-tag metrics (screen px). */

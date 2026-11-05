@@ -8,3 +8,8 @@ export const ACTION_BAR_MARGIN = 8;
 export const ACTION_BAR_MOBILE_MEDIA = "(max-width: 1023px)";
 /** Mobile picker bottom tab bar height (px) the bars must clear. */
 export const ACTION_BAR_TAB_BAR_HEIGHT = 56;
+
+/** Compact cable-ink trigger + popover breakpoint (distinct from the tab-bar one). */
+export const INK_POPOVER_MEDIA = "(max-width: 640px)";
+export const INK_POPOVER_WIDTH = 206;
+export const INK_POPOVER_HEIGHT = 132;

@@ -28,14 +28,17 @@ Inspected `src/state/scene.ts`, `sceneDocument.ts`, `shareLink.ts`,
   inconsistency.
 - There is no palette, no validation, and no color test coverage.
 
-## Decision: palette, not freeform
+## Decision: fixed palette + custom (owner revision 2026-11-05)
 
-A fixed, theme-aware palette (plus a **Default** entry that clears the field).
-Rationale: guarantees contrast on the dark canvas, the light canvas and the
-white PDF page; keeps every swatch color-blind distinguishable by pairing hue
-with a distinct value; avoids an arbitrary string becoming an unreadable stroke
-or a low-contrast PDF line. Palette values are stored as hex strings in the
-existing optional `Cable.color`.
+A fixed **five-ink** palette plus **Default** and a **custom** native color
+input. The five fixed inks guarantee contrast on the dark canvas, the light
+canvas and the white PDF page; custom ink is explicitly unguaranteed and gets a
+very small non-blocking warning pip when it falls below 3:1 on any substrate.
+Magenta was dropped because it sat between red and violet; the custom slot
+absorbs it. Values are stored as hex strings in the existing optional
+`Cable.color` (normalized lower-case 6-digit; 3-digit expanded; alpha rejected).
+Desktop keeps the inline palette; the phone shows a compact current-ink trigger
++ anchored popover so the bar is ~60 px tall at rest instead of ~110 px.
 
 ## Decision: additive optional data, no version bump
 

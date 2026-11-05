@@ -43,7 +43,7 @@ Guitarists/bassists planning a physical pedalboard; comparing board options; sha
 | F9 | Export **PNG + PDF** via a **detached offscreen Stage** (never the live stage): scope = selected board (board + attached pedals + cables with BOTH endpoints in scope, endpoints within board bounds + margin) OR all content (**everything**, including far-off loose pedals/endpoints; no automatic trim); PNG follows the app theme, PDF is **print-ready**: **Fit A4 (default) / Fit Letter / True size** paper-light raster PDF (fit = one sheet at a printed ratio + ruler, true = exact-cm page); **Standard (default) / HD** quality modes (plan 32/64 px/cm; fit page 200/300 DPI); pixelRatio ≤2, 16.7 MP total + 8192 px edge clamp for iOS; opaque surface-color background |
 | F10 | Share: URL-encoded scene (deflate → base64url in hash); recipient gets read-only view |
 | F11 | Responsive from day 1: desktop toolbar/modals, mobile bottom tabs |
-| F12 | Cables: drag-connect pedal→pedal with direction, amp input / instrument endpoints, auto length calc + summary, fixed per-cable patch inks (persisted + exported + shared) |
+| F12 | Cables: drag-connect pedal→pedal with direction, amp input / instrument endpoints, auto length calc + summary, fixed per-cable patch inks + custom color (persisted + exported + shared) |
 
 ## Non-goals (v1)
 | ID | Deferred / excluded |

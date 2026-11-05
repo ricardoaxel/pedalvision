@@ -127,6 +127,24 @@ async function selectCable(page: Page): Promise<{ x: number; y: number }> {
 	return point;
 }
 
+/** Open the compact mobile ink popover; desktop already renders it inline. */
+async function openInk(page: Page): Promise<void> {
+	const trigger = page.getByTestId("cable-ink-trigger");
+	if (!(await trigger.isVisible())) return;
+	const popover = page.getByTestId("cable-ink-popover");
+	if (!(await popover.isVisible())) await trigger.click();
+	await expect(popover).toBeVisible();
+}
+
+/** Close the mobile popover so the canvas is not covered for pixel checks. */
+async function closeInk(page: Page): Promise<void> {
+	const popover = page.getByTestId("cable-ink-popover");
+	if (await popover.isVisible().catch(() => false)) {
+		await page.keyboard.press("Escape");
+		await expect(popover).toHaveCount(0);
+	}
+}
+
 /** Sample one CSS pixel from a full-page screenshot (live canvas ink proof). */
 async function screenshotPixel(
 	page: Page,
@@ -155,6 +173,7 @@ test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	await seedScene(page);
 	const stage = page.getByTestId("stage");
 	const cablePoint = await selectCable(page);
+	await openInk(page);
 
 	// A new cable starts on the theme default.
 	await expect(page.getByRole("radio", { name: "Default ink" })).toBeChecked();
@@ -164,6 +183,7 @@ test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	await page.getByTestId("cable-ink-red").click();
 	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#b5544d");
 	await expect(page.getByRole("radio", { name: "Red" })).toBeChecked();
+	await closeInk(page);
 	// The live canvas actually paints the stored ink (not just the debug attr).
 	const [red, green, blue] = await screenshotPixel(page, cablePoint);
 	expect(red).toBeGreaterThan((green ?? 0) + 40);
@@ -188,6 +208,7 @@ test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	await page.reload();
 	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#b5544d");
 	await selectCable(page);
+	await openInk(page);
 	await page.getByTestId("cable-ink-default").click();
 	await expect(stage).toHaveAttribute("data-cable-colors", "c1:default");
 	await waitForSavedScene(
@@ -196,6 +217,7 @@ test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	);
 
 	// Set it again and prove the v3 share round-trip + read-only rendering.
+	await openInk(page);
 	await page.getByTestId("cable-ink-blue").click();
 	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#587db8");
 	await waitForSavedScene(
@@ -222,10 +244,63 @@ test("Delete still works while a swatch owns focus", async ({ page }) => {
 	await seedScene(page);
 	const stage = page.getByTestId("stage");
 	await selectCable(page);
+	await openInk(page);
 	await page.getByTestId("cable-ink-red").click();
 	await expect(page.getByRole("radio", { name: "Red" })).toBeChecked();
 	// The hidden radio is the focus target; Delete must not be swallowed by it.
 	await page.keyboard.press("Delete");
 	await expect(stage).toHaveAttribute("data-cables", "0");
 	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
+});
+
+test("custom ink round-trips and warns only when it is hard to see", async ({
+	page,
+}) => {
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectCable(page);
+	await openInk(page);
+
+	const input = page.getByTestId("cable-ink-custom-input");
+	const setColor = (value: string) =>
+		input.evaluate((element, next) => {
+			const control = element as HTMLInputElement;
+			// Use the prototype setter so React's value tracker sees the change.
+			const setter = Object.getOwnPropertyDescriptor(
+				HTMLInputElement.prototype,
+				"value",
+			)?.set;
+			setter?.call(control, next);
+			control.dispatchEvent(new Event("input", { bubbles: true }));
+			control.dispatchEvent(new Event("change", { bubbles: true }));
+		}, value);
+
+	await setColor("#6b6b6b");
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#6b6b6b");
+	await expect(page.getByRole("radio", { name: "Custom ink" })).toBeChecked();
+	await expect(page.getByTestId("cable-ink-warning")).toHaveCount(0);
+	await waitForSavedScene(
+		page,
+		(document) => document.cables?.[0]?.color === "#6b6b6b",
+	);
+
+	// A very light custom ink is visible on the dark canvas but not on paper.
+	await setColor("#ffffff");
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#ffffff");
+	await expect(page.getByTestId("cable-ink-warning").first()).toHaveAttribute(
+		"title",
+		/Faint on/,
+	);
+
+	await page.getByTestId("share-open").click();
+	const url = await page.getByTestId("share-link").inputValue();
+	expect(url).toContain("#s=v3:");
+	const hash = url.slice(url.indexOf("#s="));
+	await page.goto(`/?share=1${hash}`);
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-cable-colors",
+		"c1:#ffffff",
+	);
+	await expect(page.getByTestId("cable-ink-trigger")).toHaveCount(0);
+	await expect(page.getByTestId("cable-ink-palette")).toHaveCount(0);
 });
