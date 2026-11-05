@@ -37,7 +37,7 @@ import { useViewport, viewportCenterCm } from "../state/viewport";
 import { CustomBoardForm } from "./CustomBoardForm";
 import { CustomPedalForm } from "./CustomPedalForm";
 import { HistoryControls } from "./HistoryControls";
-import { BoardIcon, CustomIcon, PedalIcon } from "./icons";
+import { BoardIcon, CustomIcon, PedalIcon, PlusIcon } from "./icons";
 import { MotionPresence } from "./MotionPresence";
 import { usePartImage } from "./partImage";
 import {
@@ -814,7 +814,10 @@ export function Picker({
 	// switcher stays tabs-only (the modal owns the keyboard). During the exit
 	// the sheet bar is decorative (no test ids/ids, aria-hidden): the persistent
 	// dock underneath is the real control, and both tabs sit on the same grid.
-	const renderTabButtons = (decorative: boolean) => (
+	// The closed dock is the mobile add path, so its Pedals/Boards glyphs carry a
+	// small "+" (the desktop Add buttons are hidden here). The in-sheet bar is a
+	// tab switcher, not an add action, and stays plain.
+	const renderTabButtons = (decorative: boolean, showAdd: boolean) => (
 		<>
 			<button
 				type="button"
@@ -823,7 +826,17 @@ export function Picker({
 				aria-current={tab === "pedals" ? "true" : undefined}
 				onClick={() => openTab("pedals")}
 			>
-				<PedalIcon size={18} className="picker-bar__icon" />
+				<span className="picker-bar__icon-frame">
+					<PedalIcon size={18} className="picker-bar__icon" />
+					{showAdd ? (
+						<span
+							className="picker-bar__add"
+							data-testid="picker-bar-pedals-add"
+						>
+							<PlusIcon size={10} strokeWidth={2.4} />
+						</span>
+					) : null}
+				</span>
 				Pedals
 			</button>
 			<button
@@ -834,7 +847,17 @@ export function Picker({
 				aria-current={tab === "boards" ? "true" : undefined}
 				onClick={() => openTab("boards")}
 			>
-				<BoardIcon size={18} className="picker-bar__icon" />
+				<span className="picker-bar__icon-frame">
+					<BoardIcon size={18} className="picker-bar__icon" />
+					{showAdd ? (
+						<span
+							className="picker-bar__add"
+							data-testid="picker-bar-boards-add"
+						>
+							<PlusIcon size={10} strokeWidth={2.4} />
+						</span>
+					) : null}
+				</span>
 				Boards
 			</button>
 			<button
@@ -853,7 +876,7 @@ export function Picker({
 	const tabDock = (
 		<div className="picker-dock" data-testid="picker-dock">
 			<nav className="picker-bar" aria-label="Catalog">
-				{renderTabButtons(false)}
+				{renderTabButtons(false, true)}
 			</nav>
 			<div
 				className="picker-dock__history"
@@ -871,7 +894,7 @@ export function Picker({
 			aria-hidden={open ? undefined : true}
 			data-testid={open ? "picker-bar-modal" : undefined}
 		>
-			{renderTabButtons(!open)}
+			{renderTabButtons(!open, false)}
 			<span className="picker-bar__reserve" aria-hidden="true" />
 		</nav>
 	);

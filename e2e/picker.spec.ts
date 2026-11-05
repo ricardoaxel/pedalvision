@@ -120,6 +120,58 @@ test("mobile shows the persistent bottom tab bar and the sheet", async ({
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
 });
 
+test("mobile add cue stays on the dock and the scene plate clears the toolbar", async ({
+	page,
+}) => {
+	const width = page.viewportSize()?.width ?? 1280;
+	test.skip(width >= 1024, "mobile-only check");
+
+	await page.setViewportSize({ width: 360, height: 800 });
+	await page.goto("/");
+
+	// The closed dock is the add path: both catalogue tabs carry the "+" cue,
+	// and the decorative plus does not change their accessible names.
+	await expect(page.getByTestId("picker-bar-pedals-add")).toBeVisible();
+	await expect(page.getByTestId("picker-bar-boards-add")).toBeVisible();
+	await expect(page.getByTestId("picker-bar-pedals-add")).toHaveCount(1);
+	await expect(page.getByTestId("picker-bar-pedals")).toHaveAccessibleName(
+		"Pedals",
+	);
+	await expect(page.getByTestId("picker-bar-boards")).toHaveAccessibleName(
+		"Boards",
+	);
+
+	// The in-sheet bar is a switcher, not an add action: no "+" inside the dialog.
+	await page.getByTestId("picker-bar-pedals").click();
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	await expect(page.getByTestId("picker-bar-modal")).toBeVisible();
+	await expect(page.getByTestId("picker-bar-pedals-add")).toHaveCount(0);
+	await expect(page.getByTestId("picker-bar-boards-add")).toHaveCount(0);
+	await page.getByTestId("picker-close").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	// The scene plate keeps an 8px gutter from the toolbar at narrow widths.
+	for (const viewport of [
+		{ width: 360, height: 800 },
+		{ width: 320, height: 640 },
+	]) {
+		await page.setViewportSize(viewport);
+		const scene = await page.getByTestId("scene-open").boundingBox();
+		const toolbar = await page.getByTestId("app-toolbar").boundingBox();
+		if (!scene || !toolbar) throw new Error("missing box");
+		expect(scene.x + scene.width).toBeLessThanOrEqual(toolbar.x - 8);
+		expect(
+			await page.evaluate(() => document.documentElement.scrollWidth),
+		).toBe(viewport.width);
+	}
+
+	// Desktop keeps the two toolbar Add buttons and hides the mobile dock.
+	await page.setViewportSize({ width: 1280, height: 800 });
+	await expect(page.getByTestId("picker-open")).toBeVisible();
+	await expect(page.getByTestId("picker-open-board")).toBeVisible();
+	await expect(page.getByTestId("picker-dock")).toBeHidden();
+});
+
 test("the specimen follows the active row and its CTA places the pedal", async ({
 	page,
 }) => {

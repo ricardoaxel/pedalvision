@@ -2543,6 +2543,19 @@ input[type="search"]::-webkit-search-decoration {
 	.picker-bar__icon {
 		display: block;
 	}
+
+	/* The closed dock is the mobile add path: a small "+" rides beside the
+	 * pedal/board glyphs. The in-sheet bar is a switcher and never shows it. */
+	.picker-bar__icon-frame {
+		display: inline-flex;
+		align-items: center;
+		gap: 1px;
+	}
+
+	.picker-bar__add {
+		display: flex;
+		flex: 0 0 auto;
+	}
 }
 
 /* Short landscape phones: compact the sheet chrome so the results still get
@@ -4748,9 +4761,11 @@ input[type="search"]::-webkit-search-decoration {
 
 @media (max-width: 1023px) {
 	.scene-trigger {
-		/* Leave room for four 44px toolbar buttons + tighter mobile gaps; the
-		 * scene plate never runs under the endpoint/share/export/theme cluster. */
-		max-width: min(38vw, calc(100vw - 236px));
+		/* Reserve the full five-control toolbar (5 × 44px + 4 × 4px gaps = 236px),
+		 * both 16px page gutters and an 8px gutter:
+		 * 100vw − (16 + 8 + 236 + 16) = 100vw − 276px. The plate ellipsizes
+		 * before it can run under the endpoint/measure/share/export/theme cluster. */
+		max-width: min(38vw, calc(100vw - 276px));
 	}
 
 	.app-toolbar {
@@ -4799,6 +4814,19 @@ input[type="search"]::-webkit-search-decoration {
 
 	.app[data-scenes="open"] .first-run {
 		display: none;
+	}
+}
+
+/* Keep the full scene name at 360–374 px: two-pixel gaps buy the last 8 px
+ * without shrinking any 44 px touch target. The toolbar is 5 × 44 + 4 × 2 = 228,
+ * so the reserve is 100vw − (16 + 8 + 228 + 16) = 100vw − 268px. */
+@media (max-width: 374px) {
+	.app-toolbar {
+		gap: 2px;
+	}
+
+	.scene-trigger {
+		max-width: min(38vw, calc(100vw - 268px));
 	}
 }
 
@@ -7240,6 +7268,16 @@ input[type="search"]::-webkit-search-decoration {
 @media (max-width: 1023px) {
 	.measure-trigger__label {
 		display: none;
+	}
+
+	/* Icon-only on mobile: tighten the old label-width box to the same 44 px
+	 * target as the other toolbar controls, so the leading cluster leaves the
+	 * scene plate an 8 px gutter at 360 px and below. */
+	.measure-trigger {
+		justify-content: center;
+		width: 44px;
+		min-width: 44px;
+		padding: 0;
 	}
 
 	.measure-overlay {
