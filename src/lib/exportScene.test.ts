@@ -167,6 +167,24 @@ describe("resolveExportPlan — selected board", () => {
 		expect(plan.endpoints.map((candidate) => candidate.uid)).toEqual(["amp-1"]);
 	});
 
+	it("preserves a cable's patch ink for the export renderer", () => {
+		const plan = resolveExportPlan(
+			scene({
+				endpoints: [endpoint("amp-1", 80)],
+				cables: [
+					{
+						uid: "inked",
+						from: { itemUid: "item-1", jack: "out" },
+						to: { endpointUid: "amp-1" },
+						color: "#b5544d",
+					},
+				],
+			}),
+			{ scope: "all" },
+		);
+		expect(plan.cables[0]?.color).toBe("#b5544d");
+	});
+
 	it("includes an attached item's rotated corners in the bounds", () => {
 		const rotatedBoard = board({
 			x: 10,

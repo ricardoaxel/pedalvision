@@ -1,0 +1,190 @@
+import { expect, type Page, test } from "@playwright/test";
+import { waitForSavedScene } from "./persistence.ts";
+
+const customPedals = [
+	{
+		refId: "q05-pedal",
+		brand: "Test",
+		name: "Patch Unit",
+		widthCm: 8,
+		heightCm: 12,
+		category: "pedal",
+		effectTypes: [],
+		jacks: [
+			{ kind: "in", edge: "left", pos: 0.5 },
+			{ kind: "out", edge: "right", pos: 0.5 },
+		],
+	},
+];
+
+function scene() {
+	return {
+		boards: [],
+		items: [
+			{
+				uid: "i1",
+				refId: "q05-pedal",
+				kind: "pedal",
+				boardUid: null,
+				x: 10,
+				y: 20,
+				rotationDeg: 0,
+				z: 0,
+			},
+			{
+				uid: "i2",
+				refId: "q05-pedal",
+				kind: "pedal",
+				boardUid: null,
+				x: 35,
+				y: 20,
+				rotationDeg: 0,
+				z: 1,
+			},
+		],
+		customPedals,
+		endpoints: [],
+		cables: [
+			{
+				uid: "c1",
+				from: { itemUid: "i1", jack: "1" },
+				to: { itemUid: "i2", jack: "0" },
+			},
+		],
+	};
+}
+
+async function seedScene(page: Page): Promise<void> {
+	await page.goto("/");
+	await expect(page.getByTestId("stage")).toBeVisible();
+	await page.evaluate(async (fixture) => {
+		const id = "q05-scene";
+		const updatedAt = new Date().toISOString();
+		await new Promise<void>((resolve, reject) => {
+			const request = indexedDB.open("pedalvision", 1);
+			request.onerror = () => reject(request.error);
+			request.onsuccess = () => {
+				const db = request.result;
+				const tx = db.transaction("scenes", "readwrite");
+				const store = tx.objectStore("scenes");
+				store.clear();
+				store.put({ id, version: 1, name: "Q-05", ...fixture, updatedAt });
+				tx.oncomplete = () => resolve();
+				tx.onerror = () => reject(tx.error);
+			};
+		});
+		localStorage.setItem(
+			"pedalvision.scenes.v1",
+			JSON.stringify({ version: 1, scenes: [{ id, name: "Q-05", updatedAt }] }),
+		);
+		localStorage.setItem(
+			"pedalvision.settings.v1",
+			JSON.stringify({
+				version: 1,
+				units: "cm",
+				activeSceneId: id,
+				showCables: true,
+			}),
+		);
+	}, scene());
+	await page.reload();
+	await expect(page.getByTestId("stage")).toHaveAttribute("data-cables", "1");
+}
+
+async function cableMidpoint(page: Page): Promise<{ x: number; y: number }> {
+	const stage = page.getByTestId("stage");
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const scale = Number(await stage.getAttribute("data-scale")) || 1;
+	const vx = Number(await stage.getAttribute("data-x")) || 0;
+	const vy = Number(await stage.getAttribute("data-y")) || 0;
+	const anchors = (await stage.getAttribute("data-jack-anchors")) ?? "";
+	const read = (key: string) => {
+		const entry = anchors
+			.split(";")
+			.find((candidate) => candidate.startsWith(`${key}@`));
+		if (!entry) throw new Error(`anchor ${key} not found`);
+		const [x, y] = entry
+			.slice(key.length + 1)
+			.split(",")
+			.map(Number);
+		return { x: x ?? 0, y: y ?? 0 };
+	};
+	const a = read("item:i1:1");
+	const b = read("item:i2:0");
+	return {
+		x: box.x + ((a.x + b.x) / 2) * 4 * scale + vx,
+		y: box.y + ((a.y + b.y) / 2) * 4 * scale + vy,
+	};
+}
+
+async function selectCable(page: Page): Promise<void> {
+	// The graph reveal fades the cable group in; wait it out so it is hittable.
+	await page.waitForTimeout(800);
+	const point = await cableMidpoint(page);
+	await page.mouse.click(point.x, point.y);
+	await expect(page.getByTestId("graph-action-bar")).toBeVisible();
+}
+
+test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectCable(page);
+
+	// A new cable starts on the theme default.
+	await expect(page.getByRole("radio", { name: "Default ink" })).toBeChecked();
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:default");
+
+	const undoBefore = Number(await stage.getAttribute("data-undo-depth"));
+	await page.getByTestId("cable-ink-red").click();
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#b5544d");
+	await expect(page.getByRole("radio", { name: "Red" })).toBeChecked();
+	// One pick = one committed history step.
+	await expect(stage).toHaveAttribute(
+		"data-undo-depth",
+		String(undoBefore + 1),
+	);
+	await waitForSavedScene(
+		page,
+		(document) => document.cables?.[0]?.color === "#b5544d",
+	);
+
+	// Undo/redo restore the ink through the persisted snapshot.
+	await page.keyboard.press("Control+z");
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:default");
+	await page.keyboard.press("Control+Shift+z");
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#b5544d");
+
+	// Reload restores the persisted ink, then Default clears the field.
+	await page.reload();
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#b5544d");
+	await selectCable(page);
+	await page.getByTestId("cable-ink-default").click();
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:default");
+	await waitForSavedScene(
+		page,
+		(document) => document.cables?.[0]?.color === undefined,
+	);
+
+	// Set it again and prove the v3 share round-trip + read-only rendering.
+	await page.getByTestId("cable-ink-blue").click();
+	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#587db8");
+	await waitForSavedScene(
+		page,
+		(document) => document.cables?.[0]?.color === "#587db8",
+	);
+	await page.getByTestId("share-open").click();
+	const url = await page.getByTestId("share-link").inputValue();
+	expect(url).toContain("#s=v3:");
+	const hash = url.slice(url.indexOf("#s="));
+
+	await page.goto(`/?share=1${hash}`);
+	await expect(page.getByTestId("share-stamp")).toBeVisible();
+	await expect(page.getByTestId("stage")).toHaveAttribute(
+		"data-cable-colors",
+		"c1:#587db8",
+	);
+	// Read-only: no action bar, no palette, no mutation affordance.
+	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
+	await expect(page.getByTestId("cable-ink-palette")).toHaveCount(0);
+});

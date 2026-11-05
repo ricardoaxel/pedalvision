@@ -304,6 +304,9 @@ export function Stage() {
 			return `${label(cable.from)}>${label(cable.to)}`;
 		})
 		.join(";");
+	const cableColors = cables
+		.map((cable) => `${cable.uid}:${cable.color ?? "default"}`)
+		.join(";");
 	const hasAnchor = (key: string) =>
 		anchorIndex.items.has(key) || anchorIndex.endpoints.has(key);
 	const cableArrows = cables.filter(
@@ -441,6 +444,7 @@ export function Stage() {
 			data-endpoint-kinds={endpointKinds}
 			data-cables={cables.length}
 			data-cable-directions={cableDirections}
+			data-cable-colors={cableColors}
 			data-cable-arrows={cableArrows}
 			data-show-cables={showCables ? "true" : "false"}
 			data-graph-visible={showCables || readOnly ? "true" : "false"}

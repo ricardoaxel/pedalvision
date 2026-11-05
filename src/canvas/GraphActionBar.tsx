@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { CABLE_INK_OPTIONS, cableInkOption } from "../lib/cableColor";
 import { cableCurve, cablePointAt } from "../lib/cablePath";
 import { cmToPx } from "../lib/geometry";
 import { anchorIndexFor, cableEndAnchorFromIndex } from "../lib/jackAnchor";
@@ -32,6 +33,7 @@ export function GraphActionBar() {
 	const cables = useScene((state) => state.cables);
 	const removeCable = useScene((state) => state.removeCable);
 	const removeEndpoint = useScene((state) => state.removeEndpoint);
+	const setCableColor = useScene((state) => state.setCableColor);
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const showCables = useSettings((state) => state.showCables);
 	const selectedCableUid = useSelection(selectSelectedCableUid);
@@ -112,6 +114,12 @@ export function GraphActionBar() {
 		Math.max(ACTION_BAR_MARGIN, anchorY + ACTION_BAR_GAP),
 	);
 
+	const palette = cableInkOption(cable?.color);
+	// A hand-edited/legacy link may carry an ink outside the fixed palette. Show
+	// it (checked) rather than silently pretending the cable is Default; the
+	// only action is Default, which clears the stored value.
+	const unlistedInk = cable?.color !== undefined && palette === undefined;
+
 	const remove = () => {
 		if (cable) removeCable(cable.uid);
 		if (endpoint) removeEndpoint(endpoint.uid);
@@ -121,7 +129,7 @@ export function GraphActionBar() {
 	return (
 		<div
 			ref={barRef}
-			className="item-action-bar"
+			className="item-action-bar graph-action-bar"
 			data-testid="graph-action-bar"
 			role="toolbar"
 			aria-label={
@@ -129,9 +137,92 @@ export function GraphActionBar() {
 			}
 			style={{ left: `${left}px`, top: `${top}px` }}
 		>
+			{cable ? (
+				<div className="cable-ink">
+					<span className="cable-ink__legend" id="cable-ink-label">
+						Patch ink
+					</span>
+					<div
+						className="cable-ink__group"
+						role="radiogroup"
+						aria-labelledby="cable-ink-label"
+						data-testid="cable-ink-palette"
+					>
+						<label
+							className="cable-ink__option"
+							data-testid="cable-ink-default"
+							title="Default ink"
+						>
+							<input
+								type="radio"
+								name="cable-ink"
+								className="cable-ink__control"
+								value="default"
+								checked={cable.color === undefined}
+								onChange={() => setCableColor(cable.uid, null)}
+								aria-label="Default ink"
+							/>
+							<span
+								className="cable-ink__chip cable-ink__chip--default"
+								aria-hidden="true"
+							/>
+						</label>
+						{CABLE_INK_OPTIONS.map((option) => (
+							<label
+								key={option.id}
+								className="cable-ink__option"
+								data-testid={`cable-ink-${option.id}`}
+								title={option.label}
+							>
+								<input
+									type="radio"
+									name="cable-ink"
+									className="cable-ink__control"
+									value={option.id}
+									checked={palette?.id === option.id}
+									onChange={() => setCableColor(cable.uid, option.value)}
+									aria-label={option.label}
+								/>
+								<span
+									className={`cable-ink__chip cable-ink__chip--${option.id}`}
+									aria-hidden="true"
+								/>
+							</label>
+						))}
+						{unlistedInk ? (
+							<label
+								className="cable-ink__option"
+								data-testid="cable-ink-unlisted"
+								title="Unlisted ink"
+							>
+								<input
+									type="radio"
+									name="cable-ink"
+									className="cable-ink__control"
+									value="unlisted"
+									checked
+									onChange={() => undefined}
+									aria-label="Unlisted ink"
+								/>
+								<span
+									className="cable-ink__chip cable-ink__chip--unlisted"
+									aria-hidden="true"
+								/>
+							</label>
+						) : null}
+					</div>
+				</div>
+			) : null}
+			{cable ? (
+				<span className="graph-action-bar__divider" aria-hidden="true" />
+			) : null}
 			<button
 				type="button"
-				className="item-action-bar__button item-action-bar__button--danger"
+				className={`item-action-bar__button ${
+					cable
+						? "item-action-bar__button--graph-delete"
+						: "item-action-bar__button--danger"
+				}`}
 				data-testid="delete-graph-item"
 				aria-label={cable ? "Delete cable" : "Delete endpoint"}
 				onClick={remove}

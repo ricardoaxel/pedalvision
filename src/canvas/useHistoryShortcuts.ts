@@ -3,15 +3,27 @@ import { hasActiveDialog } from "../lib/dialog";
 import { redo, undo } from "../state/history";
 import { isReadOnly } from "../state/readOnly";
 
+/** Input types that do not accept text, so undo/redo may still fire. */
+const NON_TEXT_INPUT_TYPES = new Set([
+	"button",
+	"checkbox",
+	"color",
+	"file",
+	"image",
+	"radio",
+	"range",
+	"reset",
+	"submit",
+]);
+
 /** True when the event target is a text field (never steal its keystrokes). */
 function isTypingTarget(target: EventTarget | null): boolean {
 	const element = target as HTMLElement | null;
 	if (!element) return false;
-	return (
-		element.tagName === "INPUT" ||
-		element.tagName === "TEXTAREA" ||
-		element.isContentEditable
-	);
+	if (element.tagName === "INPUT") {
+		return !NON_TEXT_INPUT_TYPES.has((element as HTMLInputElement).type);
+	}
+	return element.tagName === "TEXTAREA" || element.isContentEditable;
 }
 
 /**

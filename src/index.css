@@ -582,6 +582,178 @@ body {
 	gap: var(--space-1);
 }
 
+/* Patch Ink (Q-05) — inline cable-color palette in the graph action bar.
+ * 24 px chips inside 44 px targets; the 1 px --color-ink-muted boundary (6:1
+ * on the bar) is the control outline, so a fill that dips below 3:1 against the
+ * bar still reads as a control. Default is hollow; unlisted is dashed. */
+.cable-ink {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.cable-ink__legend {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.cable-ink__group {
+	display: grid;
+	grid-template-columns: repeat(7, 44px);
+	gap: var(--space-1);
+	justify-content: center;
+}
+
+.cable-ink__option {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	cursor: pointer;
+	/* Concentric with the bar: outer 8px − 4px padding. */
+	border-radius: var(--radius-key);
+}
+
+.cable-ink__option:hover {
+	background-color: var(--color-surface-raised);
+}
+
+/* Native radio stays focusable/announced; the chip is the visual control. */
+.cable-ink__control {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.cable-ink__chip {
+	width: 24px;
+	height: 24px;
+	border: 1px solid var(--color-ink-muted);
+	border-radius: var(--radius-pill);
+}
+
+.cable-ink__control:checked + .cable-ink__chip,
+.cable-ink__control:focus-visible + .cable-ink__chip {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
+.cable-ink__chip--default {
+	border: 1.5px solid var(--color-cable);
+	/* A slash makes the hollow ring unambiguously "no override", not white. */
+	background-image: linear-gradient(
+		to top right,
+		transparent calc(50% - 1px),
+		var(--color-ink-muted) calc(50% - 1px),
+		var(--color-ink-muted) calc(50% + 1px),
+		transparent calc(50% + 1px)
+	);
+}
+
+/* Separate Default from the six inks so "reset" never reads as a swatch. */
+.cable-ink__option:first-child::after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	right: -2px;
+	width: 1px;
+	height: 24px;
+	background-color: var(--color-border);
+}
+
+.cable-ink__chip--red {
+	background-color: var(--color-cable-ink-red);
+}
+
+.cable-ink__chip--orange {
+	background-color: var(--color-cable-ink-orange);
+}
+
+.cable-ink__chip--green {
+	background-color: var(--color-cable-ink-green);
+}
+
+.cable-ink__chip--blue {
+	background-color: var(--color-cable-ink-blue);
+}
+
+.cable-ink__chip--violet {
+	background-color: var(--color-cable-ink-violet);
+}
+
+.cable-ink__chip--magenta {
+	background-color: var(--color-cable-ink-magenta);
+}
+
+.cable-ink__chip--unlisted {
+	border-style: dashed;
+	background-color: transparent;
+}
+
+/* The graph bar's destructive action is deliberately separate from the inks:
+ * an outlined danger control after a hairline, never a raw red word that reads
+ * as another swatch (design-reviewer R1). */
+.graph-action-bar__divider {
+	flex: 0 0 auto;
+	width: 1px;
+	height: 24px;
+	margin-inline: var(--space-1);
+	background-color: var(--color-border);
+}
+
+@media (max-width: 640px) {
+	.cable-ink {
+		flex: 0 0 100%;
+		justify-content: center;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.graph-action-bar {
+		row-gap: 2px;
+		padding-block: 6px;
+	}
+
+	/* The row itself is the separator on a phone; a vertical rule would land
+	 * between wrapped rows. */
+	.graph-action-bar__divider {
+		display: none;
+	}
+
+	.cable-ink__legend {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+		border: 0;
+	}
+}
+
+/* Very narrow phones: 4 + 3 chips instead of forcing a 7-wide overflow.
+ * Flex (not grid) so the 3-chip second row centres instead of leaving a void
+ * on the right (design-reviewer R2). */
+@media (max-width: 359px) {
+	.cable-ink__group {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: calc(44px * 4 + var(--space-1) * 3);
+	}
+}
+
 /* Load Chart (P3-06): appears only when the item hard cap blocks Duplicate.
  * Full-width last row so the buttons never shrink or shift (owner-approved). */
 .item-action-bar__capacity {
@@ -641,6 +813,17 @@ body {
 }
 
 .item-action-bar__button--danger:hover:not(:disabled) {
+	background-color: var(--color-danger-surface);
+}
+/* Graph bar destructive action (Q-05): defined after the base button rules so
+ * the outlined danger treatment wins, and distinct from the brick patch inks. */
+.item-action-bar__button--graph-delete {
+	margin-left: var(--space-1);
+	color: var(--color-danger);
+	border: 1px solid var(--color-danger-border);
+}
+
+.item-action-bar__button--graph-delete:hover:not(:disabled) {
 	background-color: var(--color-danger-surface);
 }
 

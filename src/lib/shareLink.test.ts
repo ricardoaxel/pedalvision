@@ -17,6 +17,7 @@ import {
 	SHARE_BASE64_LIMIT_LENGTH,
 	SHARE_DECODED_LIMIT_BYTES,
 	SHARE_URL_HARD_LIMIT_CHARS,
+	SHARE_VERSION,
 	type SharePayload,
 	SUPPORTED_SHARE_VERSIONS,
 } from "./shareLink";
@@ -171,6 +172,47 @@ describe("share links (P3-03)", () => {
 		expect(legacy.name).toBe("Legacy");
 		expect(legacy.snapshot.endpoints).toEqual([]);
 		expect(legacy.snapshot.cables).toEqual([]);
+	});
+
+	it("round-trips cable patch ink at v3 and accepts a v2 ink", () => {
+		const endpoint: Endpoint = {
+			uid: "endpoint-amp",
+			kind: "amp",
+			x: 30,
+			y: 12,
+		};
+		const cable: Cable = {
+			uid: "cable-1",
+			from: { itemUid: "item-1", jack: "1" },
+			to: { endpointUid: "endpoint-amp" },
+			color: "#b5544d",
+		};
+		const payload = snapshot({ endpoints: [endpoint], cables: [cable] });
+		const encoded = encodeShareLink("Patched", payload);
+		if (!encoded.ok) throw new Error("expected an encodable scene");
+		// Additive optional data: the wire version stays v3.
+		expect(encoded.hash.startsWith(`#s=v${SHARE_VERSION}:`)).toBe(true);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.cables[0]?.color).toBe("#b5544d");
+
+		// A color already accepted by the v2 schema survives the upgrade.
+		const v2 = decodeShareHash(
+			hashOf(
+				{
+					version: 2,
+					name: "Patched v2",
+					boards: [board("board-1")],
+					items: [item("item-1")],
+					customPedals: [],
+					endpoints: [endpoint],
+					cables: [cable],
+				},
+				2,
+			),
+		);
+		if (!v2.ok) throw new Error(v2.message);
+		expect(v2.snapshot.cables[0]?.color).toBe("#b5544d");
 	});
 
 	it("migrates a legacy v1 payload to the current shape explicitly", () => {

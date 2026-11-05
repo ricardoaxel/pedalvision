@@ -84,6 +84,16 @@
 	--color-accent-ink: #9ce4ef;
 	--color-accent-border: #4b8791;
 	--color-cable: #b9c2cc;
+	/* Patch inks (Q-05 "Patch Ink") — fixed cable colors, calibrated to clear
+	 * 3:1 on the dark canvas, the light canvas and the white PDF page. Defined
+	 * in :root ONLY: cable.color stores a hex string and PDF always prints on
+	 * paper, so a light-theme variant could not honour the same contrast. */
+	--color-cable-ink-red: #b5544d;
+	--color-cable-ink-orange: #a96a38;
+	--color-cable-ink-green: #568a66;
+	--color-cable-ink-blue: #587db8;
+	--color-cable-ink-violet: #8a74bd;
+	--color-cable-ink-magenta: #a85a90;
 	/* Jack sockets + the knockout under-stroke (P4-02 "Patch Drafting"). */
 	--color-jack: #8e99a5;
 	--color-cable-halo: rgb(25 26 28 / 0.9);
