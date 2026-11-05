@@ -1,18 +1,8 @@
 import { useEffect } from "react";
 import { hasActiveDialog } from "../lib/dialog";
+import { isTypingTarget } from "../lib/keyboard";
 import { redo, undo } from "../state/history";
 import { isReadOnly } from "../state/readOnly";
-
-/** True when the event target is a text field (never steal its keystrokes). */
-function isTypingTarget(target: EventTarget | null): boolean {
-	const element = target as HTMLElement | null;
-	if (!element) return false;
-	return (
-		element.tagName === "INPUT" ||
-		element.tagName === "TEXTAREA" ||
-		element.isContentEditable
-	);
-}
 
 /**
  * An open modal owns the keyboard, including any uncommitted custom-part

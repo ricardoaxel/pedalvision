@@ -1,18 +1,7 @@
 import { useEffect } from "react";
 import { hasActiveDialog } from "../lib/dialog";
+import { isTypingTarget } from "../lib/keyboard";
 import { useMeasure } from "../state/measure";
-
-/** Ignore shortcuts while typing in a field or composing. */
-function isTypingTarget(target: EventTarget | null): boolean {
-	const element = target as HTMLElement | null;
-	if (!element) return false;
-	return (
-		element.tagName === "INPUT" ||
-		element.tagName === "TEXTAREA" ||
-		element.tagName === "SELECT" ||
-		element.isContentEditable
-	);
-}
 
 /**
  * `M` arms/disarms the measure tool; `Esc` exits the mode and clears the line.
@@ -22,7 +11,7 @@ export function useMeasureShortcuts(): void {
 	useEffect(() => {
 		const onKeyDown = (event: KeyboardEvent) => {
 			if (event.defaultPrevented) return;
-			if (event.isComposing || isTypingTarget(event.target)) return;
+			if (event.isComposing || isTypingTarget(event.target, true)) return;
 			if (event.metaKey || event.ctrlKey || event.altKey) return;
 			// A modal owns its keys; the measure mode is disarmed by App anyway.
 			if (hasActiveDialog()) return;

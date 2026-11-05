@@ -26,6 +26,7 @@ export interface SavedDocument {
 		uid: string;
 		from: unknown;
 		to: unknown;
+		color?: string;
 	}>;
 	updatedAt: string;
 }

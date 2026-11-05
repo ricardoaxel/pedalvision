@@ -453,6 +453,32 @@ describe("cables and endpoints (P4-01)", () => {
 		});
 	});
 
+	it("round-trips an optional patch ink (additive; legacy cables stay colorless)", () => {
+		const inked: Cable = { ...cable, color: "#b5544d" };
+		const document = documentOf({
+			boards: [board],
+			items: [customItem],
+			customPedals: [customPedal],
+			endpoints: [endpoint],
+			cables: [inked],
+		});
+		expect(parseSceneDocument(document)?.cables[0]?.color).toBe("#b5544d");
+		expect(sceneFromDocument(document).cables[0]?.color).toBe("#b5544d");
+
+		// The field is optional: a cable without it remains valid.
+		expect(parseSceneDocument(JSON.stringify(document))?.cables[0]?.color).toBe(
+			"#b5544d",
+		);
+		const legacy = documentOf({
+			boards: [board],
+			items: [customItem],
+			customPedals: [customPedal],
+			endpoints: [endpoint],
+			cables: [cable],
+		});
+		expect(parseSceneDocument(legacy)?.cables[0]?.color).toBeUndefined();
+	});
+
 	it("keeps the additive v1 rule: documents without the arrays stay valid", () => {
 		const document = documentOf({
 			boards: [board],

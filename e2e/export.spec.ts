@@ -518,6 +518,8 @@ test("selected board includes an in-scope cable endpoint (no mid-air drop)", asy
 				uid: "cable-1",
 				from: { itemUid: "pedal-1", jack: "1" },
 				to: { endpointUid: "amp-1" },
+				// Q-05: the exported trace must use the stored patch ink.
+				color: "#b5544d",
 			},
 			{
 				uid: "cable-far",
@@ -555,6 +557,9 @@ test("selected board includes an in-scope cable endpoint (no mid-air drop)", asy
 			0,
 		);
 	expect(delta).toBeGreaterThan(12);
+	const [red, green, blue] = cableInk ?? [];
+	expect(red).toBeGreaterThan((green ?? 0) + 40);
+	expect(red).toBeGreaterThan((blue ?? 0) + 40);
 });
 
 test("all content includes the other board and stays within the pixel clamp", async ({

@@ -49,6 +49,8 @@ interface RenderedCable {
 	curve: CableCurve;
 	selected: boolean;
 	opacity: number;
+	/** Optional patch ink (Q-05); absent = the theme's default cable ink. */
+	color?: string;
 }
 
 interface RenderOptions {
@@ -228,6 +230,7 @@ function renderCables(options: RenderOptions): RenderedCable[] {
 				curve: cableCurve(from, to, safeScale),
 				selected,
 				opacity: dimmed ? CABLE.dimOpacity : 1,
+				color: cable.color,
 			},
 		];
 	});
@@ -528,16 +531,18 @@ function CableShapes({
 }) {
 	const safeScale = Math.max(scale, 0.0001);
 	const coarsePointer = useCoarsePointer();
-	const colors = (selected: boolean) => ({
+	const colors = (selected: boolean, ink?: string) => ({
+		// Selection is carried by the halo only, so the trace keeps its patch ink
+		// (Q-05 "Patch Ink"). A selected Default cable still reads as selected.
 		halo: selected ? theme.selection : theme.cableHalo,
 		haloWidth: (selected ? CABLE.selectedHaloPx : CABLE.haloPx) / safeScale,
-		line: selected ? theme.selection : theme.cable,
+		line: ink?.trim() || theme.cable,
 		lineWidth: (selected ? CABLE.selectedStrokePx : CABLE.strokePx) / safeScale,
 	});
 	return (
 		<>
-			{rendered.map(({ uid, curve, selected, opacity }) => {
-				const color = colors(selected);
+			{rendered.map(({ uid, curve, selected, opacity, color: ink }) => {
+				const color = colors(selected, ink);
 				return (
 					<Path
 						key={`cable-halo-${uid}`}
@@ -553,8 +558,8 @@ function CableShapes({
 					/>
 				);
 			})}
-			{rendered.map(({ uid, curve, selected, opacity }) => {
-				const color = colors(selected);
+			{rendered.map(({ uid, curve, selected, opacity, color: ink }) => {
+				const color = colors(selected, ink);
 				return (
 					<Path
 						key={`cable-line-${uid}`}
@@ -582,8 +587,8 @@ function CableShapes({
 					/>
 				);
 			})}
-			{rendered.map(({ uid, curve, selected, opacity }) => {
-				const color = colors(selected);
+			{rendered.map(({ uid, curve, selected, opacity, color: ink }) => {
+				const color = colors(selected, ink);
 				return (
 					<Line
 						key={`cable-arrow-${uid}`}

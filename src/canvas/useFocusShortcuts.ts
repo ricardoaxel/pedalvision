@@ -1,18 +1,7 @@
 import { useEffect } from "react";
 import { hasActiveDialog } from "../lib/dialog";
+import { isTypingTarget } from "../lib/keyboard";
 import { focusViewport, toggleCameraLock } from "../state/focus";
-
-/** Ignore shortcuts while typing in a field or composing (same guard as M). */
-function isTypingTarget(target: EventTarget | null): boolean {
-	const element = target as HTMLElement | null;
-	if (!element) return false;
-	return (
-		element.tagName === "INPUT" ||
-		element.tagName === "TEXTAREA" ||
-		element.tagName === "SELECT" ||
-		element.isContentEditable
-	);
-}
 
 /**
  * `F` frames the selected board, or the used area when no board is selected
@@ -24,7 +13,7 @@ export function useFocusShortcuts(): void {
 	useEffect(() => {
 		const onKeyDown = (event: KeyboardEvent) => {
 			if (event.defaultPrevented) return;
-			if (event.isComposing || isTypingTarget(event.target)) return;
+			if (event.isComposing || isTypingTarget(event.target, true)) return;
 			if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
 				return;
 			}

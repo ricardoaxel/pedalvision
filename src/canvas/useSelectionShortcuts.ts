@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { isTypingTarget } from "../lib/keyboard";
 import { useMotion } from "../state/motion";
 import { isReadOnly, useReadOnly } from "../state/readOnly";
 import { useScene } from "../state/scene";
@@ -8,17 +9,6 @@ import {
 	selectSelectedItemUid,
 	useSelection,
 } from "../state/selection";
-
-/** True when the event target is a text field (never steal its keystrokes). */
-function isTypingTarget(target: EventTarget | null): boolean {
-	const element = target as HTMLElement | null;
-	if (!element) return false;
-	return (
-		element.tagName === "INPUT" ||
-		element.tagName === "TEXTAREA" ||
-		element.isContentEditable
-	);
-}
 
 /**
  * Keyboard shortcuts for the selected item (F6): Delete/Backspace deletes and

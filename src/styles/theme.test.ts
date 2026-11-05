@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
+	CABLE_INK,
+	CABLE_INK_TOKENS,
 	CANVAS_FONTS,
 	CANVAS_THEME_VARS,
 	type CanvasTheme,
@@ -64,6 +66,18 @@ describe("canvas theme map", () => {
 
 	it("light theme values match [data-theme='light'] tokens", () => {
 		expectInSync(lightCanvasTheme, lightVars);
+	});
+
+	it("patch inks mirror the :root tokens and stay theme-invariant", () => {
+		for (const [id, value] of Object.entries(CABLE_INK)) {
+			const token = CABLE_INK_TOKENS[id as keyof typeof CABLE_INK] as string;
+			expect(darkVars[token], `${token} missing from tokens.css`).toBe(value);
+			// A light override would make a stored hex mean two different inks.
+			expect(
+				lightVars[token],
+				`${token} must not be overridden`,
+			).toBeUndefined();
+		}
 	});
 
 	it("grid metrics mirror the dot-grid tokens", () => {

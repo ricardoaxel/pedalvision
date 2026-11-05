@@ -156,7 +156,7 @@ export const CABLE = {
 	strokePx: 2,
 	haloPx: 6,
 	selectedStrokePx: 2.5,
-	selectedHaloPx: 7,
+	selectedHaloPx: 9,
 	hitStrokePx: 16,
 	arrowLengthPx: 10,
 	arrowWidthPx: 8,
@@ -167,6 +167,30 @@ export const CABLE = {
 	dimOpacity: 0.4,
 	previewDash: [5, 4] as const,
 } as const;
+
+/**
+ * Patch inks (Q-05 "Patch Ink"). One value per ink, theme-invariant — the
+ * stored `Cable.color` is a hex string and the PDF always prints on white, so a
+ * light-theme variant could not keep the same contrast on all three substrates.
+ * The UI reads the matching `CABLE_INK_TOKENS` CSS variable.
+ */
+export const CABLE_INK = {
+	red: "#b5544d",
+	orange: "#a96a38",
+	green: "#568a66",
+	blue: "#587db8",
+	violet: "#8a74bd",
+} as const;
+
+export type CableInkId = keyof typeof CABLE_INK;
+
+export const CABLE_INK_TOKENS: Record<CableInkId, string> = {
+	red: "--color-cable-ink-red",
+	orange: "--color-cable-ink-orange",
+	green: "--color-cable-ink-green",
+	blue: "--color-cable-ink-blue",
+	violet: "--color-cable-ink-violet",
+};
 
 /** Endpoint terminal-tag metrics (screen px). */
 export const ENDPOINT = {

@@ -136,6 +136,40 @@ describe("endpoints + cables (P4-01)", () => {
 		).not.toBeNull();
 	});
 
+	it("sets and clears a cable patch ink, and ignores no-ops + read-only", () => {
+		const itemUid = addJackedItem();
+		const endpointUid = required(
+			useScene.getState().addEndpoint("amp", { x: 40, y: 10 }),
+		);
+		const cableUid = required(
+			useScene.getState().addCable({ itemUid, jack: "1" }, { endpointUid }),
+		);
+		expect(useScene.getState().cables[0]?.color).toBeUndefined();
+
+		useScene.getState().setCableColor(cableUid, "#b5544d");
+		expect(useScene.getState().cables[0]?.color).toBe("#b5544d");
+
+		// Same value is a no-op (same array reference → no history/autosave churn).
+		const unchanged = useScene.getState().cables;
+		useScene.getState().setCableColor(cableUid, "#b5544d");
+		expect(useScene.getState().cables).toBe(unchanged);
+
+		// A missing cable is a no-op too.
+		useScene.getState().setCableColor("missing", "#587db8");
+		expect(useScene.getState().cables).toBe(unchanged);
+
+		// Default clears the optional field entirely.
+		useScene.getState().setCableColor(cableUid, null);
+		expect(useScene.getState().cables[0]?.color).toBeUndefined();
+
+		// Read-only previews never mutate.
+		useScene.getState().setCableColor(cableUid, "#568a66");
+		useReadOnly.setState({ readOnly: true });
+		useScene.getState().setCableColor(cableUid, "#a96a38");
+		expect(useScene.getState().cables[0]?.color).toBe("#568a66");
+		useReadOnly.setState({ readOnly: false });
+	});
+
 	it("prunes dead cables + orphaned endpoints when a custom jack is edited away", () => {
 		const itemUid = addJackedItem();
 		const item = useScene

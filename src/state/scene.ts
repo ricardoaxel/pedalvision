@@ -1326,6 +1326,12 @@ interface SceneStore {
 	addCable: (from: CableEnd, to: CableEnd) => string | null;
 	removeCable: (uid: string) => void;
 	/**
+	 * Set or clear a cable's patch ink (Q-05). `null` clears the optional field
+	 * (theme default). One array replacement = one undoable history step; a
+	 * missing cable or an identical value is a no-op.
+	 */
+	setCableColor: (uid: string, color: string | null) => void;
+	/**
 	 * Register a user-defined pedal/supply (assigning a scene-local `refId`) and
 	 * return that id, which `addItem` can then place like a catalog pedal.
 	 * Returns null in read-only share mode.
@@ -1537,6 +1543,23 @@ export const useScene = create<SceneStore>((set, get) => ({
 		set((state) => ({
 			cables: state.cables.filter((cable) => cable.uid !== uid),
 		}));
+	},
+	setCableColor: (uid, color) => {
+		if (isReadOnly()) return;
+		set((state) => {
+			const index = state.cables.findIndex((cable) => cable.uid === uid);
+			if (index === -1) return state;
+			const current = state.cables[index];
+			if (!current) return state;
+			const nextColor = color?.trim() || undefined;
+			if (current.color === nextColor) return state;
+			const next = { ...current };
+			if (nextColor === undefined) delete next.color;
+			else next.color = nextColor;
+			const cables = state.cables.slice();
+			cables[index] = next;
+			return { cables };
+		});
 	},
 	addCustomPedal: (definition) => {
 		if (isReadOnly()) return null;

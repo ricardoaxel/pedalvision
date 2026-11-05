@@ -91,8 +91,8 @@ Feature work runs one task/PR at a time, separate from the catalog lane.
 | Status | Items |
 |---|---|
 | **Done** | F-01, F-02, F-03, F-04, F-05, F-19, **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`), **Q-01** (merged 2026-11-04, PR #98, squash `cacb50d9`), **Q-02** (merged 2026-11-04, PR #99, squash `e500e7e6`), **Q-04** (merged 2026-11-05, PR #100, squash `ebd9e24e`) |
-| **In review** | — |
-| **Next** | **Q-05 cable color picker** (Phase 1; Q-03 was folded into F-38 and is done); the owner may swap for **F-16 custom colors**, **F-14 similar pedals** or **F-12 pedal labels** |
+| **In review** | **Q-05 cable color picker** — PR #101 |
+| **Next** | **Wait for Q-05 PR #101 to merge** (Phase 1); then the owner may swap the next slot for **F-16 custom colors**, **F-14 similar pedals** or **F-12 pedal labels** |
 | **Phase 5** | **F-42 PostHog analytics** — moved from Phase 1 (owner decision 2026-11-03); proposed, no task file, not a launch gate |
 
 ## ARCH — Frontend architecture rework (post-P5 feature lane; **not a release gate**)
