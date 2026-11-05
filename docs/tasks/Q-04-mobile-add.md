@@ -1,6 +1,6 @@
 # Q-04 — Mobile add (+)
 
-**Phase:** 1 · **Status:** in review · **Model:** light
+**Phase:** 1 · **Status:** in review — PR #100 · **Model:** light
 
 ## Goal
 
