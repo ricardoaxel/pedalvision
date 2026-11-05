@@ -59,8 +59,9 @@ paused — no catalog/data/tools edits in this task).
 - A visible **Stereo** filter in the pedal picker with a clear active state and
   an accessible name; Clear filters resets it.
 - Filtering is an additional axis (AND with query/brand/effect, boolean within
-  stereo); a pedal matches when **any** resolved jack (catalog or scene-custom)
-  has `stereo: true`.
+  stereo); a catalog pedal matches when **any** recorded catalog jack has
+  `stereo: true`. Fallback anchors are mono by definition; do not infer stereo
+  from a missing jack list.
 - Pure filtering lives in `pickerFilter.ts` with unit tests using fixture items;
   no total-count E2E — filter a stable item/brand.
 - Desktop + mobile: 44 px touch targets, keyboard reachable, focus-visible, no
