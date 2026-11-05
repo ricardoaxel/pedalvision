@@ -275,9 +275,15 @@ test("custom ink round-trips and warns only when it is hard to see", async ({
 			control.dispatchEvent(new Event("change", { bubbles: true }));
 		}, value);
 
+	const undoBefore = Number(await stage.getAttribute("data-undo-depth"));
 	await setColor("#6b6b6b");
 	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#6b6b6b");
 	await expect(page.getByRole("radio", { name: "Custom ink" })).toBeChecked();
+	// One native change = one committed undo step.
+	await expect(stage).toHaveAttribute(
+		"data-undo-depth",
+		String(undoBefore + 1),
+	);
 	await expect(page.getByTestId("cable-ink-warning")).toHaveCount(0);
 	await waitForSavedScene(
 		page,
@@ -285,8 +291,30 @@ test("custom ink round-trips and warns only when it is hard to see", async ({
 	);
 
 	// A very light custom ink is visible on the dark canvas but not on paper.
+	// Re-open the picker from the already-checked Custom slot (a native radio
+	// change would not fire). Spy on the hidden input to avoid the OS dialog.
+	await page.evaluate(() => {
+		const input = document.querySelector(
+			'[data-testid="cable-ink-custom-input"]',
+		) as HTMLInputElement;
+		(window as { __customClicked?: boolean }).__customClicked = false;
+		input.click = () => {
+			(window as { __customClicked?: boolean }).__customClicked = true;
+		};
+	});
+	await page.getByTestId("cable-ink-custom").click();
+	expect(
+		await page.evaluate(
+			() => (window as { __customClicked?: boolean }).__customClicked,
+		),
+	).toBe(true);
+
 	await setColor("#ffffff");
 	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#ffffff");
+	await expect(stage).toHaveAttribute(
+		"data-undo-depth",
+		String(undoBefore + 2),
+	);
 	await expect(page.getByTestId("cable-ink-warning").first()).toHaveAttribute(
 		"title",
 		/Faint on/,
@@ -303,4 +331,31 @@ test("custom ink round-trips and warns only when it is hard to see", async ({
 	);
 	await expect(page.getByTestId("cable-ink-trigger")).toHaveCount(0);
 	await expect(page.getByTestId("cable-ink-palette")).toHaveCount(0);
+});
+
+test("mobile ink popover dismisses on Escape and outside tap", async ({
+	page,
+}) => {
+	test.skip(
+		(page.viewportSize()?.width ?? 1280) > 640,
+		"desktop uses the inline palette",
+	);
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectCable(page);
+	const trigger = page.getByTestId("cable-ink-trigger");
+	const popover = page.getByTestId("cable-ink-popover");
+
+	await trigger.click();
+	await expect(popover).toBeVisible();
+	await page.keyboard.press("Escape");
+	await expect(popover).toHaveCount(0);
+	await expect(trigger).toBeFocused();
+
+	await trigger.click();
+	await expect(popover).toBeVisible();
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	await page.mouse.click(box.x + 20, box.y + box.height - 120);
+	await expect(popover).toHaveCount(0);
 });

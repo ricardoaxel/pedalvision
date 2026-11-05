@@ -1,5 +1,6 @@
 import {
 	type CSSProperties,
+	useCallback,
 	useEffect,
 	useLayoutEffect,
 	useRef,
@@ -95,6 +96,23 @@ export function GraphActionBar() {
 	const visible =
 		!readOnly && showCables && (cable !== undefined || endpoint !== undefined);
 
+	const storedInk = cable?.color?.trim() || undefined;
+	const normalizedInk = normalizeHexColor(storedInk);
+	const palette = cableInkOption(storedInk);
+	const customInk = storedInk !== undefined && palette === undefined;
+	const warning = customInk ? cableInkWarning(storedInk) : null;
+	const customInputValue = normalizedInk ?? canvasTheme.cable;
+	const customChipStyle =
+		customInk && normalizedInk
+			? ({ "--ink-custom": normalizedInk } as CSSProperties)
+			: undefined;
+	const chipClass = palette
+		? `cable-ink__chip--${palette.id}`
+		: customInk
+			? "cable-ink__chip--custom"
+			: "cable-ink__chip--default";
+	const currentInkLabel = palette?.label ?? (customInk ? "Custom" : "Default");
+
 	useEffect(() => {
 		if (!visible || !compact) setInkOpen(false);
 	}, [visible, compact]);
@@ -148,6 +166,42 @@ export function GraphActionBar() {
 		};
 	}, [inkOpen]);
 
+	// The color input is uncontrolled: React's synthetic onChange streams while
+	// the OS picker is open (many undo steps), so commit the native `change`
+	// event instead (one pick = one step). A callback ref attaches the listener
+	// whenever the input mounts (desktop inline / mobile popover).
+	const customValueRef = useRef(customInputValue);
+	customValueRef.current = customInputValue;
+	const customCommitRef = useRef<() => void>(() => undefined);
+	customCommitRef.current = () => {
+		const input = customInputRef.current;
+		if (!input || !cable) return;
+		const next = normalizeHexColor(input.value);
+		if (next) setCableColor(cable.uid, next);
+	};
+	const handleCustomChange = useCallback(() => {
+		customCommitRef.current();
+	}, []);
+	const setCustomInput = useCallback(
+		(node: HTMLInputElement | null) => {
+			if (customInputRef.current) {
+				customInputRef.current.removeEventListener(
+					"change",
+					handleCustomChange,
+				);
+			}
+			customInputRef.current = node;
+			if (!node) return;
+			node.value = customValueRef.current;
+			node.addEventListener("change", handleCustomChange);
+		},
+		[handleCustomChange],
+	);
+	useEffect(() => {
+		const input = customInputRef.current;
+		if (input) input.value = customInputValue;
+	}, [customInputValue]);
+
 	if (!visible) return null;
 
 	let anchorX = 0;
@@ -185,23 +239,6 @@ export function GraphActionBar() {
 		Math.max(ACTION_BAR_MARGIN, anchorY + ACTION_BAR_GAP),
 	);
 
-	const storedInk = cable?.color?.trim() || undefined;
-	const normalizedInk = normalizeHexColor(storedInk);
-	const palette = cableInkOption(storedInk);
-	const customInk = storedInk !== undefined && palette === undefined;
-	const warning = customInk ? cableInkWarning(storedInk) : null;
-	const customInputValue = normalizedInk ?? canvasTheme.cable;
-	const customChipStyle =
-		customInk && normalizedInk
-			? ({ "--ink-custom": normalizedInk } as CSSProperties)
-			: undefined;
-	const chipClass = palette
-		? `cable-ink__chip--${palette.id}`
-		: customInk
-			? "cable-ink__chip--custom"
-			: "cable-ink__chip--default";
-	const currentInkLabel = palette?.label ?? (customInk ? "Custom" : "Default");
-
 	// Popover position: viewport-fixed (portaled) so the bar transform cannot
 	// skew or clip it. Prefer below the bar; flip above when the phone's bottom
 	// reserve leaves no room. Centre on the trigger and keep an 8px inset.
@@ -233,6 +270,17 @@ export function GraphActionBar() {
 			className="cable-ink__option cable-ink__option--custom"
 			data-testid="cable-ink-custom"
 			title={warning ?? "Custom ink"}
+			onClick={(event) => {
+				// A checked radio does not fire `change`, so an existing custom ink
+				// must re-open the picker from the explicit click.
+				event.preventDefault();
+				customInputRef.current?.click();
+			}}
+			onKeyDown={(event) => {
+				if (event.key !== " " && event.key !== "Enter") return;
+				event.preventDefault();
+				customInputRef.current?.click();
+			}}
 		>
 			<input
 				type="radio"
@@ -244,14 +292,11 @@ export function GraphActionBar() {
 				aria-label="Custom ink"
 			/>
 			<input
-				ref={customInputRef}
+				ref={setCustomInput}
 				type="color"
 				className="cable-ink__custom-input"
-				value={customInputValue}
-				onChange={(event) => {
-					const next = normalizeHexColor(event.target.value);
-					if (next) setCableColor(cable.uid, next);
-				}}
+				defaultValue={customInputValue}
+				onClick={(event) => event.stopPropagation()}
 				tabIndex={-1}
 				aria-hidden="true"
 				data-testid="cable-ink-custom-input"
