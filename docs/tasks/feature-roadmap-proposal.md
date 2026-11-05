@@ -39,7 +39,8 @@
 ### Phase 1 — Core correctness and polish (no backend)
 
 - Q-01 rotate-shadow flicker; Q-02 export scale reference; Q-03 DD-2 search
-  normalization; Q-04 mobile add (+); Q-05 cable color picker.
+  normalization; Q-04 mobile add (+); Q-05 cable color picker; **Q-06 picker
+  stereo filter** (owner request 2026-11-05).
 - F-01 P2-10 `350/` thumbnails; F-02 P4-05 read-only jack ticks/export bounds;
   F-03 measurement HUD; F-04 viewport focus; F-09 rotation snap; F-11 cable
   schedule; F-12 pedal labels; F-14 similar pedals; F-16 custom colors;

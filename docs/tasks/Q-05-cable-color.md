@@ -1,6 +1,6 @@
 # Q-05 — cable color picker
 
-**Phase:** 1 · **Status:** in review — PR #101 · **Model:** light (escalate only for the persistence/share contract)
+**Phase:** 1 · **Status:** done — merged PR #101 (squash `43ab533b`) · **Model:** light (escalate only for the persistence/share contract)
 
 ## Goal
 
