@@ -476,7 +476,7 @@ function drawCables(parent: Konva.Group, context: RenderContext): void {
 		return [{ cable, curve: cableCurveCm(from, to) }];
 	});
 	const color = (cable: (typeof plan.cables)[number]) =>
-		cable.color ?? theme.cable;
+		cable.color?.trim() || theme.cable;
 
 	// Halo first, then traces, then arrowheads — so crossings read as bridges.
 	for (const { curve } of cables) {

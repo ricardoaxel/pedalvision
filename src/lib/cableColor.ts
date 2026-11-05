@@ -1,4 +1,4 @@
-import { CABLE_INK, CABLE_INK_TOKENS, type CableInkId } from "../styles/theme";
+import { CABLE_INK, type CableInkId } from "../styles/theme";
 
 /**
  * The fixed cable palette (Q-05 "Patch Ink"). One table read by the action-bar
@@ -11,8 +11,6 @@ export interface CableInkOption {
 	label: string;
 	/** The stored `Cable.color` value. */
 	value: string;
-	/** The CSS custom property that paints the swatch chip. */
-	token: string;
 }
 
 export const CABLE_INK_OPTIONS: readonly CableInkOption[] = [
@@ -20,37 +18,31 @@ export const CABLE_INK_OPTIONS: readonly CableInkOption[] = [
 		id: "red",
 		label: "Red",
 		value: CABLE_INK.red,
-		token: CABLE_INK_TOKENS.red,
 	},
 	{
 		id: "orange",
 		label: "Orange",
 		value: CABLE_INK.orange,
-		token: CABLE_INK_TOKENS.orange,
 	},
 	{
 		id: "green",
 		label: "Green",
 		value: CABLE_INK.green,
-		token: CABLE_INK_TOKENS.green,
 	},
 	{
 		id: "blue",
 		label: "Blue",
 		value: CABLE_INK.blue,
-		token: CABLE_INK_TOKENS.blue,
 	},
 	{
 		id: "violet",
 		label: "Violet",
 		value: CABLE_INK.violet,
-		token: CABLE_INK_TOKENS.violet,
 	},
 	{
 		id: "magenta",
 		label: "Magenta",
 		value: CABLE_INK.magenta,
-		token: CABLE_INK_TOKENS.magenta,
 	},
 ] as const;
 

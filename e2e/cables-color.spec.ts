@@ -118,18 +118,43 @@ async function cableMidpoint(page: Page): Promise<{ x: number; y: number }> {
 	};
 }
 
-async function selectCable(page: Page): Promise<void> {
+async function selectCable(page: Page): Promise<{ x: number; y: number }> {
 	// The graph reveal fades the cable group in; wait it out so it is hittable.
 	await page.waitForTimeout(800);
 	const point = await cableMidpoint(page);
 	await page.mouse.click(point.x, point.y);
 	await expect(page.getByTestId("graph-action-bar")).toBeVisible();
+	return point;
+}
+
+/** Sample one CSS pixel from a full-page screenshot (live canvas ink proof). */
+async function screenshotPixel(
+	page: Page,
+	point: { x: number; y: number },
+): Promise<number[]> {
+	const buffer = await page.screenshot({ scale: "css" });
+	const base64 = buffer.toString("base64");
+	return page.evaluate(
+		async ({ data, x, y }) => {
+			const image = new Image();
+			image.src = `data:image/png;base64,${data}`;
+			await image.decode();
+			const canvas = document.createElement("canvas");
+			canvas.width = image.naturalWidth;
+			canvas.height = image.naturalHeight;
+			const context = canvas.getContext("2d");
+			if (!context) throw new Error("no 2d context");
+			context.drawImage(image, 0, 0);
+			return Array.from(context.getImageData(x, y, 1, 1).data);
+		},
+		{ data: base64, x: Math.round(point.x), y: Math.round(point.y) },
+	);
 }
 
 test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	await seedScene(page);
 	const stage = page.getByTestId("stage");
-	await selectCable(page);
+	const cablePoint = await selectCable(page);
 
 	// A new cable starts on the theme default.
 	await expect(page.getByRole("radio", { name: "Default ink" })).toBeChecked();
@@ -139,6 +164,10 @@ test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	await page.getByTestId("cable-ink-red").click();
 	await expect(stage).toHaveAttribute("data-cable-colors", "c1:#b5544d");
 	await expect(page.getByRole("radio", { name: "Red" })).toBeChecked();
+	// The live canvas actually paints the stored ink (not just the debug attr).
+	const [red, green, blue] = await screenshotPixel(page, cablePoint);
+	expect(red).toBeGreaterThan((green ?? 0) + 40);
+	expect(red).toBeGreaterThan((blue ?? 0) + 40);
 	// One pick = one committed history step.
 	await expect(stage).toHaveAttribute(
 		"data-undo-depth",
@@ -187,4 +216,16 @@ test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	// Read-only: no action bar, no palette, no mutation affordance.
 	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
 	await expect(page.getByTestId("cable-ink-palette")).toHaveCount(0);
+});
+
+test("Delete still works while a swatch owns focus", async ({ page }) => {
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectCable(page);
+	await page.getByTestId("cable-ink-red").click();
+	await expect(page.getByRole("radio", { name: "Red" })).toBeChecked();
+	// The hidden radio is the focus target; Delete must not be swallowed by it.
+	await page.keyboard.press("Delete");
+	await expect(stage).toHaveAttribute("data-cables", "0");
+	await expect(page.getByTestId("graph-action-bar")).toHaveCount(0);
 });

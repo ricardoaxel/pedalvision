@@ -536,7 +536,7 @@ function CableShapes({
 		// (Q-05 "Patch Ink"). A selected Default cable still reads as selected.
 		halo: selected ? theme.selection : theme.cableHalo,
 		haloWidth: (selected ? CABLE.selectedHaloPx : CABLE.haloPx) / safeScale,
-		line: ink ?? theme.cable,
+		line: ink?.trim() || theme.cable,
 		lineWidth: (selected ? CABLE.selectedStrokePx : CABLE.strokePx) / safeScale,
 	});
 	return (

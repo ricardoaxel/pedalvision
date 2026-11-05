@@ -114,11 +114,12 @@ export function GraphActionBar() {
 		Math.max(ACTION_BAR_MARGIN, anchorY + ACTION_BAR_GAP),
 	);
 
-	const palette = cableInkOption(cable?.color);
+	const storedInk = cable?.color?.trim() || undefined;
+	const palette = cableInkOption(storedInk);
 	// A hand-edited/legacy link may carry an ink outside the fixed palette. Show
 	// it (checked) rather than silently pretending the cable is Default; the
 	// only action is Default, which clears the stored value.
-	const unlistedInk = cable?.color !== undefined && palette === undefined;
+	const unlistedInk = storedInk !== undefined && palette === undefined;
 
 	const remove = () => {
 		if (cable) removeCable(cable.uid);
@@ -158,7 +159,7 @@ export function GraphActionBar() {
 								name="cable-ink"
 								className="cable-ink__control"
 								value="default"
-								checked={cable.color === undefined}
+								checked={storedInk === undefined}
 								onChange={() => setCableColor(cable.uid, null)}
 								aria-label="Default ink"
 							/>

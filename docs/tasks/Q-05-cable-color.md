@@ -95,7 +95,8 @@ as **additive optional data**:
    - `GraphActionBar`: color control (swatches) beside Delete, keyboard/focus
      behaviour, 44 px touch targets; hidden in read-only (no bar there).
    - `CableLayer`: trace + arrowhead use `cable.color ?? theme.cable`; selection
-     still uses the selection color; halo unchanged.
+     stays on the accent halo (widened 7 → 9 px so it remains legible under the
+     ink); the trace width and arrow geometry are unchanged.
    - Stage debug attribute for testability.
 4. Tests: palette/action unit tests (set/clear, read-only, unknown uid),
    document + share round-trip with color, legacy document/link without color,

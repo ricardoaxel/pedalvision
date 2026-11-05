@@ -305,7 +305,7 @@ export function Stage() {
 		})
 		.join(";");
 	const cableColors = cables
-		.map((cable) => `${cable.uid}:${cable.color ?? "default"}`)
+		.map((cable) => `${cable.uid}:${cable.color?.trim() || "default"}`)
 		.join(";");
 	const hasAnchor = (key: string) =>
 		anchorIndex.items.has(key) || anchorIndex.endpoints.has(key);
