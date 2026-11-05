@@ -1,6 +1,6 @@
 # Q-04 — Mobile add (+)
 
-**Phase:** 1 · **Status:** in review — PR #100 · **Model:** light
+**Phase:** 1 · **Status:** done (merged 2026-11-05, PR #100, squash `ebd9e24e`) · **Model:** light
 
 ## Goal
 
