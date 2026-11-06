@@ -10,6 +10,7 @@ import {
 	filterBoards,
 	filterPedalIndex,
 	filterPedals,
+	hasRecordedStereoJack,
 	normalizeSearch,
 	pedalBrands,
 	queryTerms,
@@ -114,6 +115,99 @@ describe("filterPedals", () => {
 		expect(
 			filterPedals(PEDALS, { ...none, query: "dd", brand: "MXR" }),
 		).toHaveLength(0);
+	});
+});
+
+describe("stereo filter (Q-06)", () => {
+	const STEREO_PEDALS: CatalogPedal[] = [
+		pedal({
+			id: "meris-enzo",
+			brand: "Meris",
+			name: "Enzo",
+			effectTypes: ["synth"],
+			jacks: [
+				{ kind: "in", edge: "left", stereo: true },
+				{ kind: "out", edge: "right", stereo: true },
+			],
+		}),
+		pedal({
+			id: "boss-dd-20",
+			brand: "BOSS",
+			name: "DD-20",
+			effectTypes: ["delay"],
+			// Stereo OUT only: still a stereo-capable pedal.
+			jacks: [
+				{ kind: "in", edge: "right" },
+				{ kind: "out", edge: "left", stereo: true },
+			],
+		}),
+		pedal({
+			id: "boss-bd-2",
+			brand: "BOSS",
+			name: "BD-2",
+			effectTypes: ["overdrive"],
+			jacks: [
+				{ kind: "in", edge: "right" },
+				{ kind: "out", edge: "left" },
+			],
+		}),
+		pedal({
+			id: "mxr-mystery",
+			brand: "MXR",
+			name: "Mystery",
+			effectTypes: ["delay"],
+		}),
+	];
+	const none = { query: "", brand: null, effectTypes: [] };
+
+	it("keeps pedals with ANY recorded stereo jack (in or out)", () => {
+		expect(
+			filterPedals(STEREO_PEDALS, { ...none, stereo: true }).map((p) => p.id),
+		).toEqual(["meris-enzo", "boss-dd-20"]);
+	});
+
+	it("keeps unknown-jack pedals when stereo is off and excludes them when on", () => {
+		const all = filterPedals(STEREO_PEDALS, none).map((p) => p.id);
+		expect(all).toEqual([
+			"meris-enzo",
+			"boss-dd-20",
+			"boss-bd-2",
+			"mxr-mystery",
+		]);
+		expect(
+			filterPedals(STEREO_PEDALS, { ...none, stereo: true }).map((p) => p.id),
+		).not.toContain("mxr-mystery");
+		expect(hasRecordedStereoJack(STEREO_PEDALS[3] as CatalogPedal)).toBe(false);
+	});
+
+	it("is an AND axis with brand, effect and query", () => {
+		expect(
+			filterPedals(STEREO_PEDALS, {
+				...none,
+				stereo: true,
+				brand: "BOSS",
+			}).map((p) => p.id),
+		).toEqual(["boss-dd-20"]);
+		expect(
+			filterPedals(STEREO_PEDALS, {
+				...none,
+				stereo: true,
+				effectTypes: ["delay"],
+			}).map((p) => p.id),
+		).toEqual(["boss-dd-20"]);
+		expect(
+			filterPedals(STEREO_PEDALS, {
+				...none,
+				stereo: true,
+				query: "enzo",
+			}).map((p) => p.id),
+		).toEqual(["meris-enzo"]);
+	});
+
+	it("hasRecordedStereoJack accepts a stereo in OR out and rejects mono", () => {
+		expect(hasRecordedStereoJack(STEREO_PEDALS[0] as CatalogPedal)).toBe(true);
+		expect(hasRecordedStereoJack(STEREO_PEDALS[1] as CatalogPedal)).toBe(true);
+		expect(hasRecordedStereoJack(STEREO_PEDALS[2] as CatalogPedal)).toBe(false);
 	});
 });
 

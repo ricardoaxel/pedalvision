@@ -18,8 +18,22 @@ export interface PedalFilter {
 	brand: string | null;
 	/** Matches an item sharing ANY selected effect type (OR). */
 	effectTypes: EffectType[];
+	/**
+	 * When true, keep only pedals with a **recorded** stereo/TRS jack. Absent
+	 * jack data is never treated as mono; this axis only reports what the
+	 * catalog actually records.
+	 */
+	stereo?: boolean;
 	/** Deterministic order; defaults to relevance. */
 	sort?: PickerSort;
+}
+
+/**
+ * True when the catalog records at least one `stereo: true` jack (in, out or
+ * any other kind). A missing/empty jack list is **unknown**, not mono.
+ */
+export function hasRecordedStereoJack(pedal: CatalogPedal): boolean {
+	return pedal.jacks?.some((jack) => jack.stereo === true) ?? false;
 }
 
 export interface BoardFilter {
@@ -380,6 +394,7 @@ export function filterPedalIndex(
 			) {
 				return false;
 			}
+			if (filter.stereo === true && !hasRecordedStereoJack(pedal)) return false;
 			return true;
 		},
 	);

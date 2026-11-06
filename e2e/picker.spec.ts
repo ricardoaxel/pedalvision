@@ -58,6 +58,56 @@ test("an effect-type chip filters the pedal list", async ({ page }) => {
 	expect(await resultCount(page)).toBe(before);
 });
 
+test("the stereo jack filter keeps recorded stereo pedals only", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	const before = await resultCount(page);
+	const stereo = page.getByTestId("picker-stereo");
+	await expect(stereo).toHaveAttribute("aria-pressed", "false");
+	// Prove the negative fixture is rendered before it disappears.
+	await expect(
+		page.getByTestId("add-pedal-boss-bd-2-blues-driver"),
+	).toBeVisible();
+
+	await stereo.click();
+	await expect(stereo).toHaveAttribute("aria-pressed", "true");
+	// Meris Enzo has recorded stereo in + out; the BD-2's jacks are mono.
+	await expect(page.getByTestId("add-pedal-meris-enzo")).toBeVisible();
+	await expect(
+		page.getByTestId("add-pedal-boss-bd-2-blues-driver"),
+	).toHaveCount(0);
+	expect(await resultCount(page)).toBeLessThan(before);
+
+	// Stereo is an AND axis with the brand filter.
+	await page.getByTestId("picker-brand").selectOption("Meris");
+	await expect(page.getByTestId("add-pedal-meris-enzo")).toBeVisible();
+
+	// Clearing restores the unfiltered list.
+	await page.getByTestId("picker-brand").selectOption("");
+	await stereo.click();
+	await expect(stereo).toHaveAttribute("aria-pressed", "false");
+	expect(await resultCount(page)).toBe(before);
+});
+
+test("the stereo empty state explains recorded-only data", async ({ page }) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-stereo").click();
+	await page.getByTestId("picker-search").fill("blues driver");
+	await expect(page.getByTestId("picker-empty")).toBeVisible();
+	await expect(page.getByTestId("picker-empty")).toContainText(
+		"Stereo is only known where a jack is recorded",
+	);
+
+	await page.getByRole("button", { name: "Clear filters" }).click();
+	await expect(page.getByTestId("picker-stereo")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+});
+
 test("the picker places and removes a board", async ({ page }) => {
 	await page.goto("/");
 	const stage = page.getByTestId("stage");
@@ -229,15 +279,20 @@ test("switching tabs and the clear button reset the filters", async ({
 	await openPicker(page, "pedals");
 	await page.getByTestId("picker-search").fill("blues driver");
 	await page.getByTestId("picker-brand").selectOption("BOSS");
+	await page.getByTestId("picker-stereo").click();
 	expect(await resultCount(page)).toBeLessThan(20);
 
 	// Switching tabs clears the shared filters.
 	await page.getByTestId("picker-tab-boards").click();
 	await expect(page.getByTestId("picker-search")).toHaveValue("");
 	await expect(page.getByTestId("picker-brand")).toHaveValue("");
+	await page.getByTestId("picker-tab-pedals").click();
+	await expect(page.getByTestId("picker-stereo")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
 
 	// The inline clear button restores the full list.
-	await page.getByTestId("picker-tab-pedals").click();
 	const full = await resultCount(page);
 	await page.getByTestId("picker-search").fill("zzzzzzzz");
 	await expect(page.getByTestId("picker-empty")).toBeVisible();
@@ -319,7 +374,8 @@ test("filter chips stay inside the panel (wrap on desktop, scroll on mobile)", a
 		expect(box.y + box.height).toBeLessThanOrEqual(panel.y + panel.height + 1);
 	}
 	if (mobile) {
-		// Mobile uses one horizontally scrollable row so the results stay visible.
+		// Mobile uses one horizontally scrollable chip row (Stereo toggle +
+		// effects) so the results stay visible.
 		const band = page.locator(".picker__chips");
 		const bandBox = await band.boundingBox();
 		if (!bandBox) throw new Error("no chip band");
