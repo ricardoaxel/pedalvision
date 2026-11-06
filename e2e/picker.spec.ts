@@ -58,7 +58,7 @@ test("an effect-type chip filters the pedal list", async ({ page }) => {
 	expect(await resultCount(page)).toBe(before);
 });
 
-test("the stereo jack filter keeps recorded stereo pedals only", async ({
+test("the stereo filter keeps pedals whose spec records stereo only", async ({
 	page,
 }) => {
 	await page.goto("/");
@@ -73,7 +73,7 @@ test("the stereo jack filter keeps recorded stereo pedals only", async ({
 
 	await stereo.click();
 	await expect(stereo).toHaveAttribute("aria-pressed", "true");
-	// Meris Enzo has recorded stereo in + out; the BD-2's jacks are mono.
+	// Meris Enzo's spec says stereo; the BD-2's spec says not stereo.
 	await expect(page.getByTestId("add-pedal-meris-enzo")).toBeVisible();
 	await expect(
 		page.getByTestId("add-pedal-boss-bd-2-blues-driver"),
@@ -98,7 +98,7 @@ test("the stereo empty state explains recorded-only data", async ({ page }) => {
 	await page.getByTestId("picker-search").fill("blues driver");
 	await expect(page.getByTestId("picker-empty")).toBeVisible();
 	await expect(page.getByTestId("picker-empty")).toContainText(
-		"Stereo is only known where a jack is recorded",
+		"Stereo is only known where the catalog records it",
 	);
 
 	await page.getByRole("button", { name: "Clear filters" }).click();

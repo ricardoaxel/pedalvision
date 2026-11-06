@@ -17,6 +17,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact recreation of the RE-201 Space Echo with 11 modes, wow/flutter, tape saturation and a carryover switch.",
     "year": 2022,
@@ -73,6 +74,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal digital recreation of the RE-201 with a virtual tape display, tap tempo and expression control.",
     "year": 2007,
@@ -137,6 +139,7 @@
       "acDc": "DC",
       "currentMa": 140
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Modern Space Echo with 12 modes, 127 memories, MIDI, USB firmware updates and 48 kHz/32-bit float processing.",
     "year": 2022,
@@ -176,6 +179,7 @@
       "acDc": "DC",
       "currentMa": 115
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact rotary-speaker simulator with slow/fast speeds, rise/fall time, drive and a virtual rotor display.",
     "year": 2020,
@@ -204,6 +208,7 @@
       "rotary"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal rotary sound processor with a virtual rotor display, overdrive, direct level and expression speed control.",
     "year": 2007,
@@ -243,6 +248,7 @@
       "acDc": "DC",
       "currentMa": 130
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Early digital reverb with six modes and continuously variable reverb/gate time.",
     "year": 1987,
@@ -282,6 +288,7 @@
       "acDc": "DC",
       "currentMa": 260
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "200-series reverb with 12 modes, 127 memories, MIDI, stereo I/O and 96 kHz processing.",
     "year": 2023,
@@ -311,6 +318,7 @@
       "reverb"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact digital reverb and delay with 11 modes including hall, room, plate, spring and delay.",
     "year": 1994,
@@ -350,6 +358,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Six-mode digital reverb with a modulate setting and stereo outputs.",
     "year": 2002,
@@ -413,6 +422,7 @@
       "acDc": "DC",
       "currentMa": 225
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship reverb with 12 modes, dual engines, 297 memories, MIDI, USB and 96 kHz processing.",
     "year": 2017,
@@ -452,6 +462,7 @@
       "acDc": "DC",
       "currentMa": 95
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Eight-mode compact reverb with stereo outputs, expression control and a +DELAY mode.",
     "year": 2015,
@@ -485,6 +496,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Limited 2021 40th-anniversary SD-1 with a black body and gold lettering; same overdrive circuit as the standard SD-1.",
@@ -531,6 +543,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "yellow",
     "notes": "Long-running asymmetrical-clipping overdrive with DRIVE, TONE and LEVEL controls.",
@@ -566,6 +579,7 @@
       "currentMa": 15
     },
     "variantOf": "boss-sd-1-super-overdrive",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft SD-1 with a Standard/Custom mode switch, improved components and a discrete all-analog signal path.",
     "year": 2014,
@@ -599,6 +613,7 @@
       "acDc": "DC",
       "currentMa": 21
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual-overdrive compact with separate crunch and lead modes, a mode selector and a remote jack.",
     "year": 1993,
@@ -638,6 +653,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact dual digital delay derived from the SDE-3000, with offset, hi-cut and MIDI clock support.",
     "year": 2024,
@@ -705,6 +721,7 @@
       "acDc": "DC",
       "currentMa": 450
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Modern dual digital delay based on the SDE-3000 with 100 memories, MIDI, USB-C and two independent delay engines.",
     "year": 2023,
@@ -799,6 +816,7 @@
       "currentMa": 450
     },
     "variantOf": "boss-sde-3000d-dual-digital-delay",
+    "stereo": true,
     "usage": "guitar",
     "notes": "EVH-signature dual digital delay with the SDE-3000, noise suppressor and foot-volume effects, stereo routing and a 4-cable EVH setup.",
     "year": 2023,
@@ -838,6 +856,7 @@
       "acDc": "DC",
       "currentMa": 4
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Automatic volume-swell effect that removes the pick attack and fades notes in; an early BOSS compact.",
@@ -884,6 +903,7 @@
       "acDc": "DC",
       "currentMa": 95
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "teal",
     "notes": "Compact rhythmic slicer with 88 patterns, stereo I/O, MIDI and USB pattern editing.",
@@ -944,6 +964,7 @@
       "acDc": "DC",
       "currentMa": 110
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal slicer with 50 patterns, tap tempo, MIDI input and a 40-second looper.",
     "year": 2009,
@@ -978,6 +999,7 @@
       "eq"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "guitar",
     "color": "red",
     "notes": "Single-band parametric equalizer/boost with a sweepable 500 Hz–5 kHz spectrum control and a dry/wet balance.",
@@ -1018,6 +1040,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Amp-stack-style distortion with SOURCE, TREBLE, BASS and LEVEL controls.",
@@ -1052,6 +1075,7 @@
       "acDc": "DC",
       "currentMa": 115
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "blue",
     "notes": "Compact guitar synthesizer with 121 sound types, an effects loop, and no special pickup required.",
@@ -1086,6 +1110,7 @@
       "acDc": "DC",
       "currentMa": 800
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "GK-compatible guitar/bass synthesizer and amp-modeling processor with three instrument parts, over 150 effects and 200 user patches.",
     "year": 2020,
@@ -1149,6 +1174,7 @@
       "acDc": "DC",
       "currentMa": 230
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "200-series guitar synthesizer with 12 modes, 128 memories, MIDI and an effects loop, no special pickup required.",
     "year": 2021,

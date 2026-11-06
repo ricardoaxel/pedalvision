@@ -16,6 +16,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Matte black with yellow/red vintage projector artwork",
     "notes": "Original 385 overdrive inspired by the Bell and Howell Filmosound 385 projector; internally runs at 18 V, with separate bass and treble controls.",
@@ -61,6 +62,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Textured black with projector artwork (yellow/red ink)",
     "notes": "MKII version of the 385 overdrive with A/B volume/gain sets and a 385+ gain switch; internally runs at 18 V.",
@@ -107,6 +109,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-385-mkii",
+    "stereo": false,
     "usage": "guitar",
     "color": "Flat black with amp-tube artwork (cream ink)",
     "notes": "Black-finish 385 MKII overdrive; same circuit and enclosure as the standard MKII.",
@@ -147,6 +150,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-385",
+    "stereo": false,
     "usage": "guitar",
     "color": "Matte black with Great Sand Dunes National Park artwork",
     "notes": "Limited 2021 National Parks Series 385 overdrive; same circuit and enclosure as the original 385.",
@@ -230,6 +234,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Olive green with white/cream/black ink",
     "notes": "Five-state overdrive with a five-position gain/clipping rotary, dry blend, and boost/cut bass and treble.",
@@ -276,6 +281,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-ages",
+    "stereo": false,
     "usage": "guitar",
     "color": "Warm white Kamakura Series artwork",
     "notes": "Limited 2022 Kamakura Series Ages overdrive; same circuit and enclosure as the standard Ages.",
@@ -322,6 +328,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-ages",
+    "stereo": false,
     "usage": "guitar",
     "color": "National Parks Series artwork",
     "notes": "Limited 2021 National Parks Series Ages overdrive; same circuit and enclosure as the standard Ages.",
@@ -361,6 +368,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Frosted charcoal with cream/seafoam ink",
     "notes": "Compact multi-function delay with digital, analog, lo-fi, and slapback algorithms, tap tempo, and momentary knob ramp.",
@@ -407,6 +415,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Kamakura Series artwork",
     "notes": "Limited 2022 Kamakura Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -453,6 +462,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "National Parks Series artwork",
     "notes": "Limited 2021 National Parks Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -493,6 +503,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Nautical Series artwork",
     "notes": "CME-exclusive Nautical Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -533,6 +544,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Obsidian black",
     "notes": "Obsidian Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -573,6 +585,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Platinum Edition finish",
     "notes": "Platinum Edition ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -616,6 +629,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "bass",
     "color": "Matte black with dark green/light blue ink",
     "notes": "All-in-one bass preamp and D.I. with internal optical compression, blendable drive, four-band EQ, 1/4 in and XLR outputs.",
@@ -662,6 +676,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Black with analog delay artwork",
     "notes": "Bucket-brigade analog delay with tap tempo, subdivisions, an analog chorus engine, effects loop, expression control, and dual outputs.",
@@ -708,6 +723,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "both",
     "color": "Black",
     "notes": "MIDI/analog clock and setlist controller with four configurable 1/4 in jacks, 5-pin and 1/8 in MIDI, sync and metronome outputs, USB-C editor/firmware, and preset songs/setlists.",
@@ -749,6 +765,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "both",
     "color": "Black with painter's-palette artwork",
     "notes": "Passive line isolator / direct box (Canvas Mono) converting unbalanced 1/4 in signals to a transformer-isolated balanced XLR output; DI/LI, pad and ground-lift switching.",
@@ -991,6 +1008,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "both",
     "color": "Powder-coated black",
     "notes": "Passive transformer-isolated re-amp box for sending line-level DAW tracks back through pedals and amps; XLR and 1/4 in inputs, 1/4 in output, ground lift, phase invert, mute, and high-pass filter.",
@@ -1042,6 +1060,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "Black",
     "notes": "All-in-one practice tool: headphone amp, Bluetooth/1/8 in aux playback, metronome (40–250 BPM), and MIDI In/Thru control.",
@@ -1089,6 +1108,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Matte black (also available in cream)",
     "notes": "Preamp/EQ/boost with three presets, 12 dB boost/cut low/mid/high bands, and a 10 dB MOSFET boost.",

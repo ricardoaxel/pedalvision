@@ -16,6 +16,7 @@
       "acDc": "DC",
       "currentMa": 18
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact acoustic simulator with four body types and an EXP/CTL jack; runs on a 9 V battery or AC adaptor.",
     "confidence": "confirmed",
@@ -93,6 +94,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Acoustic simulator with MODE/TOP/BODY/REVERB controls, separate LINE OUT and G.AMP OUT jacks, and a buffered bypass.",
     "confidence": "confirmed",
@@ -157,6 +159,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Acoustic preamp with ACOUSTIC RESONANCE, AMBIENCE and NOTCH controls; the balanced TRS LINE OUT doubles as a direct out.",
     "confidence": "confirmed",
@@ -226,6 +229,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Dynamic wah with separate GUITAR IN and BASS IN jacks and an EXP/CTL jack for expression pedal or footswitch control.",
     "confidence": "confirmed",
@@ -290,6 +294,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass driver with LEVEL/BLEND/LOW/HIGH/DRIVE controls and a balanced TRS LINE OUT for mixer or recording use.",
     "confidence": "confirmed",
@@ -349,6 +354,7 @@
       "acDc": "DC",
       "currentMa": 90
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass compressor with THRESHOLD/RATIO/RELEASE/LEVEL controls and a GAIN REDUCTION indicator; internally runs an 18 V working voltage from a 9 V supply.",
     "confidence": "confirmed",
@@ -408,6 +414,7 @@
       "acDc": "DC",
       "currentMa": 45
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Combo-drive overdrive voiced after a British combo amp, with a single level and drive control set.",
     "confidence": "confirmed",
@@ -467,6 +474,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog overdrive with GAIN/TONE/LEVEL controls, designed for amp-like touch response; the input jack doubles as the power switch.",
     "confidence": "confirmed",
@@ -510,6 +518,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage analog flanger with MANUAL/DEPTH/RATE/RESONANCE controls; the original BOSS compact enclosure is 70 x 125 mm.",
     "status": "discontinued",
@@ -554,6 +563,7 @@
       "acDc": "DC",
       "currentMa": 14
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass-voiced version of the BF-2 flanger in the vintage 70 x 125 mm BOSS compact enclosure.",
     "status": "discontinued",
@@ -637,6 +647,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Stereo flanger with separate GUITAR IN and BASS IN jacks, OUTPUT A (mono) and OUTPUT B, and buffered bypass.",
     "confidence": "confirmed",
@@ -692,6 +703,7 @@
         "stereo": false
       }
     ],
+    "stereo": true,
     "usage": "guitar",
     "notes": "The original 1976 BOSS chorus ensemble, with Chorus and Vibrato modes, two outputs and mains power via an attached AC cord.",
     "status": "discontinued",
@@ -749,6 +761,7 @@
       "acDc": "DC",
       "currentMa": 9
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "The classic analog BOSS chorus in the vintage 70 x 125 mm compact enclosure, with RATE and DEPTH controls.",
     "status": "discontinued",
@@ -832,6 +845,7 @@
       "acDc": "DC",
       "currentMa": 160
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Twin-footswitch chorus ensemble with six chorus modes, a send/return loop and separate guitar/bass input and guitar-amp output.",
     "confidence": "confirmed",
@@ -875,6 +889,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass version of the CE-2 chorus in the vintage 70 x 125 mm compact enclosure.",
     "status": "discontinued",
@@ -932,6 +947,7 @@
       "acDc": "DC",
       "currentMa": 13
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Vintage chorus with RATE/DEPTH controls, a Stereo Mode switch and OUTPUT A/B jacks in the 70 x 125 mm enclosure.",
     "status": "discontinued",
@@ -1010,6 +1026,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Chorus ensemble with high/low filter, depth, rate and effect-level controls, plus stereo OUTPUT A/B jacks.",
     "confidence": "confirmed",
@@ -1074,6 +1091,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": true,
     "usage": "bass",
     "notes": "Bass chorus with DEPTH/RATE/LOW FILTER/E.LEVEL controls and stereo OUTPUT A (mono)/B jacks.",
     "confidence": "confirmed",
@@ -1138,6 +1156,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo chorus with DEPTH/RATE/EQ/E.LEVEL controls and OUTPUT A/B jacks for mono or stereo use.",
     "confidence": "confirmed",
@@ -1181,6 +1200,7 @@
       "acDc": "DC",
       "currentMa": 90
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Multi-dimensional-processing compressor with COMP/RATIO/ATTACK/LEVEL controls, a GAIN REDUCTION indicator and an 18 V internal working voltage.",
     "confidence": "confirmed",
@@ -1218,6 +1238,7 @@
       "acDc": "DC",
       "currentMa": 4
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage compression sustainer with SUSTAIN/LEVEL/ATTACK controls in the 70 x 125 mm BOSS compact enclosure.",
     "status": "discontinued",
@@ -1291,6 +1312,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compression sustainer with SUSTAIN/ATTACK/TONE/LEVEL controls and buffered bypass.",
     "confidence": "confirmed",
@@ -1334,6 +1356,7 @@
       "acDc": "DC",
       "currentMa": 45
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Adaptive distortion with LEVEL/LOW/HIGH/A-DIST controls; the A-DIST knob blends the adaptive distortion character.",
     "confidence": "confirmed",
@@ -2744,6 +2767,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Stereo looper with 20 loop banks, 12 minutes of recording, MIDI clock and USB backup.",
     "year": 2020,
@@ -2945,6 +2969,7 @@
       "acDc": "DC",
       "currentMa": 235
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Dual stereo looper with two independent loops, 99 loop memories, XLR mic input and USB backup.",
     "year": 2015,
@@ -3138,6 +3163,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Stereo looper with 12 minutes of recording, 10 loop banks and true stereo I/O.",
     "year": 2015,
@@ -3294,6 +3320,7 @@
       "acDc": "DC",
       "currentMa": 320
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Six-track desktop looper with 375 minutes of recording, XLR/TRS combo inputs and MIDI.",
     "year": 2018,
@@ -3610,6 +3637,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Matte black with yellow/red vintage projector artwork",
     "notes": "Original 385 overdrive inspired by the Bell and Howell Filmosound 385 projector; internally runs at 18 V, with separate bass and treble controls.",
@@ -3656,6 +3684,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-385",
+    "stereo": false,
     "usage": "guitar",
     "color": "Matte black with Great Sand Dunes National Park artwork",
     "notes": "Limited 2021 National Parks Series 385 overdrive; same circuit and enclosure as the original 385.",
@@ -3701,6 +3730,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Textured black with projector artwork (yellow/red ink)",
     "notes": "MKII version of the 385 overdrive with A/B volume/gain sets and a 385+ gain switch; internally runs at 18 V.",
@@ -3747,6 +3777,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-385-mkii",
+    "stereo": false,
     "usage": "guitar",
     "color": "Flat black with amp-tube artwork (cream ink)",
     "notes": "Black-finish 385 MKII overdrive; same circuit and enclosure as the standard MKII.",
@@ -3786,6 +3817,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Frosted charcoal with cream/seafoam ink",
     "notes": "Compact multi-function delay with digital, analog, lo-fi, and slapback algorithms, tap tempo, and momentary knob ramp.",
@@ -3832,6 +3864,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Kamakura Series artwork",
     "notes": "Limited 2022 Kamakura Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -3878,6 +3911,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "National Parks Series artwork",
     "notes": "Limited 2021 National Parks Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -3918,6 +3952,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Nautical Series artwork",
     "notes": "CME-exclusive Nautical Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -3958,6 +3993,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Obsidian black",
     "notes": "Obsidian Series ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -3998,6 +4034,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-arp-87",
+    "stereo": false,
     "usage": "guitar",
     "color": "Platinum Edition finish",
     "notes": "Platinum Edition ARP-87 delay; same circuit and enclosure as the standard ARP-87.",
@@ -4075,6 +4112,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Olive green with white/cream/black ink",
     "notes": "Five-state overdrive with a five-position gain/clipping rotary, dry blend, and boost/cut bass and treble.",
@@ -4121,6 +4159,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-ages",
+    "stereo": false,
     "usage": "guitar",
     "color": "Warm white Kamakura Series artwork",
     "notes": "Limited 2022 Kamakura Series Ages overdrive; same circuit and enclosure as the standard Ages.",
@@ -4167,6 +4206,7 @@
       "currentMa": 100
     },
     "variantOf": "walrus-audio-ages",
+    "stereo": false,
     "usage": "guitar",
     "color": "National Parks Series artwork",
     "notes": "Limited 2021 National Parks Series Ages overdrive; same circuit and enclosure as the standard Ages.",
@@ -4210,6 +4250,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "bass",
     "color": "Matte black with dark green/light blue ink",
     "notes": "All-in-one bass preamp and D.I. with internal optical compression, blendable drive, four-band EQ, 1/4 in and XLR outputs.",
@@ -4256,6 +4297,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Black with analog delay artwork",
     "notes": "Bucket-brigade analog delay with tap tempo, subdivisions, an analog chorus engine, effects loop, expression control, and dual outputs.",
@@ -4302,6 +4344,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "both",
     "color": "Black",
     "notes": "MIDI/analog clock and setlist controller with four configurable 1/4 in jacks, 5-pin and 1/8 in MIDI, sync and metronome outputs, USB-C editor/firmware, and preset songs/setlists.",
@@ -4343,6 +4386,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "both",
     "color": "Black with painter's-palette artwork",
     "notes": "Passive line isolator / direct box (Canvas Mono) converting unbalanced 1/4 in signals to a transformer-isolated balanced XLR output; DI/LI, pad and ground-lift switching.",
@@ -4394,6 +4438,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "British Bluesbreaker-style overdrive (Katana JFET boost around a Bluesbreaker circuit).",
     "status": "discontinued",
@@ -4434,6 +4479,7 @@
       "currentMa": 10
     },
     "variantOf": "keeley-1962",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Limited two-mode version of the 1962; adds a KT88 high-headroom MOSFET clipping mode.",
     "status": "discontinued",
@@ -4475,6 +4521,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Automatic double tracker / short delay / static chorus / reverb; TRS stereo output.",
     "status": "current",
@@ -4514,6 +4561,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Abbey Road chamber-style reverb with RS106 filtering; archived official product page.",
     "status": "discontinued",
@@ -4566,6 +4614,7 @@
       "acDc": "DC",
       "currentMa": 22
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual distortion/fuzz: 78 Japanese orange distortion + 91 Soviet civil-war fuzz.",
     "status": "current",
@@ -4619,6 +4668,7 @@
       "currentMa": 22
     },
     "variantOf": "keeley-angry-orange",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Finish variant of the Angry Orange; no official finish photo published.",
     "status": "current",
@@ -4671,6 +4721,7 @@
       "currentMa": 22
     },
     "variantOf": "keeley-angry-orange",
+    "stereo": false,
     "usage": "guitar",
     "notes": "White finish variant of the Angry Orange; planner last-resort cutout.",
     "status": "current",
@@ -4710,6 +4761,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compressor + overdrive dual stomp with TRS insert and switchable order.",
     "status": "current",
@@ -4749,6 +4801,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital reverb pedal.",
     "status": "current",
@@ -4788,6 +4841,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass compressor/limiting amplifier.",
     "status": "current",
@@ -4827,6 +4881,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "British fuzz with OC44 germanium transistor.",
     "status": "current",
@@ -4866,6 +4921,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage-silicon fuzz.",
     "status": "current",
@@ -4918,6 +4974,7 @@
       "acDc": "DC",
       "currentMa": 29
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Bluesbreaker-style overdrive + OCD-style distortion, 4-in-1 toggles.",
     "status": "current",
@@ -4971,6 +5028,7 @@
       "currentMa": 29
     },
     "variantOf": "keeley-blues-disorder",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Finish variant; no official finish photo published.",
     "status": "current",
@@ -5023,6 +5081,7 @@
       "currentMa": 29
     },
     "variantOf": "keeley-blues-disorder",
+    "stereo": false,
     "usage": "guitar",
     "notes": "White finish variant; planner last-resort cutout.",
     "status": "current",
@@ -5064,6 +5123,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dynamic envelope flanger/phaser/filter.",
     "status": "current",
@@ -5107,6 +5167,7 @@
       "currentMa": 65
     },
     "variantOf": "keeley-bubble-tron",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Larry \"Ler\" LaLonde artist-series Bubble Tron.",
     "status": "discontinued",
@@ -5169,6 +5230,7 @@
       "acDc": "DC",
       "currentMa": 130
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Beach Boys 12-string simulator with octave, chorus and 66 ms slapback echo; stereo in/out.",
     "status": "discontinued",
@@ -5226,6 +5288,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Passive A/B selector; requires 9 V DC for the status LED only.",
     "status": "current",
@@ -5278,6 +5341,7 @@
       "acDc": "DC",
       "currentMa": 18
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modeled after a cranked Sunn Model T power amp.",
     "status": "current",
@@ -5325,6 +5389,7 @@
         "edge": "top"
       }
     ],
+    "stereo": false,
     "usage": "guitar",
     "notes": "Original Afterneath (V1); replaced by Afterneath V3.",
     "status": "discontinued",
@@ -5381,6 +5446,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Enhanced Otherworldly Reverberator with 9 modes and expression control.",
     "status": "current",
@@ -5438,6 +5504,7 @@
       "currentMa": 100
     },
     "variantOf": "earthquaker-afterneath-v3",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Pastel Purple finish variant of Afterneath V3.",
     "status": "current",
@@ -5495,6 +5562,7 @@
       "currentMa": 100
     },
     "variantOf": "earthquaker-afterneath-v3",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Raw finish variant of Afterneath V3.",
     "status": "current",
@@ -5547,6 +5615,7 @@
       "acDc": "DC",
       "currentMa": 68
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vibrato with modes and expression control.",
     "status": "current",
@@ -5599,6 +5668,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Polyphonic pitch arpeggiator.",
     "status": "current",
@@ -5652,6 +5722,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Original Arrows pre-amp booster (wedge enclosure); replaced by Arrows V2.",
     "status": "discontinued",
@@ -5705,6 +5776,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Pre-amp booster in the compact 121 x 64 mm enclosure.",
     "status": "current",
@@ -5762,6 +5834,7 @@
       "acDc": "DC",
       "currentMa": 85
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Octal octave reverberation with 8 modes and 8 presets.",
     "status": "current",
@@ -5820,6 +5893,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Tri-voice chorus with 6 presets and expression control.",
     "status": "current",
@@ -5881,6 +5955,7 @@
       "acDc": "DC",
       "currentMa": 410
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Original Avalanche Run stereo reverb and delay; replaced by V2.",
     "status": "discontinued",
@@ -5942,6 +6017,7 @@
       "acDc": "DC",
       "currentMa": 410
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo reverb and delay with tap tempo and expression control.",
     "status": "current",
@@ -5996,6 +6072,7 @@
       "currentMa": 410
     },
     "variantOf": "earthquaker-avalanche-run-v2",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Black finish variant of Avalanche Run V2.",
     "status": "current",
@@ -6050,6 +6127,7 @@
       "currentMa": 410
     },
     "variantOf": "earthquaker-avalanche-run-v2",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Mint finish variant of Avalanche Run V2.",
     "status": "current",
@@ -6104,6 +6182,7 @@
       "currentMa": 410
     },
     "variantOf": "earthquaker-avalanche-run-v2",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Purple Sparkle finish variant of Avalanche Run V2.",
     "status": "current",
@@ -6156,6 +6235,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz Attacker; three-transistor TB MkII-inspired circuit.",
     "status": "current",
@@ -6194,6 +6274,7 @@
       "acDc": "DC",
       "currentMa": 4
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "yellow",
     "notes": "JHS 1966 Series Bender — handwired limited-run (20 units) recreation; 9V DC center-negative, 4 mA; isolated supply required.",
@@ -6234,6 +6315,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "grey",
     "notes": "JHS 1966 Series Boost — handwired limited-run (20 units) recreation; 9V DC center-negative, 25 mA; isolated supply required.",
@@ -6274,6 +6356,7 @@
       "acDc": "DC",
       "currentMa": 5
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "light blue",
     "notes": "JHS 1966 Series Fuzz — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
@@ -6313,6 +6396,7 @@
       "acDc": "DC",
       "currentMa": 5
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "light blue",
     "notes": "JHS 1966 Series Italy — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
@@ -6353,6 +6437,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Bit Crusher — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -6411,6 +6496,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Chorus — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -6475,6 +6561,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Compressor — three controls and one toggle; 9V DC center-negative, 8 mA.",
@@ -6539,6 +6626,7 @@
       "acDc": "DC",
       "currentMa": 71
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Delay — three controls and one toggle; 9V DC center-negative, 71 mA.",
@@ -6603,6 +6691,7 @@
       "acDc": "DC",
       "currentMa": 9
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Distortion — three controls and one toggle; 9V DC center-negative, 9 mA.",
@@ -6667,6 +6756,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Flanger — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -6731,6 +6821,7 @@
       "acDc": "DC",
       "currentMa": 9
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Fuzz — three controls and one toggle; 9V DC center-negative, 9 mA.",
@@ -6777,6 +6868,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Glitch Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -6835,6 +6927,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Hall Reverb — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -6881,6 +6974,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Harmonic Trem — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -6922,6 +7016,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Octave Reverb — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -6980,6 +7075,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Oil Can Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -7027,6 +7123,7 @@
       "currentMa": 65
     },
     "variantOf": "jhs-3-series-oil-can-delay",
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "JHS 3 Series Oil Can Delay (Black) — black-finish variant of the oil-can delay; Mix, Speed, Feedback + toggle; 9V DC, 65 mA.",
@@ -7084,6 +7181,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Overdrive — three controls and one toggle; 9V DC center-negative, 12 mA.",
@@ -7168,6 +7266,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop 2290 P reissue: stereo dynamic digital delay with presets, MIDI IN and OUT/THRU, USB-C editor, expression control and an amp send/return loop; 9 V DC 250 mA.",
     "status": "current",
@@ -7227,6 +7326,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog BBD recreation of an 80s chorus with a 4-button preset system (up to 16 combinations) instead of knobs; true bypass.",
     "status": "current",
@@ -7280,6 +7380,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog BBD chorus with Speed, Depth, Delay Time and Mix controls; true bypass.",
     "status": "current",
@@ -7325,6 +7426,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "TonePrint vintage-echo delay with tap tempo and stereo outputs.",
     "status": "discontinued",
@@ -7364,6 +7466,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Large-format TonePrint vintage echo with four presets, tap tempo and stereo I/O.",
     "status": "discontinued",
@@ -7427,6 +7530,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx high-gain V550 preamp: component-based amp modelling with cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -7497,6 +7601,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx Fender-style blackface combo preamp with spring reverb, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -7566,6 +7671,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx Vox-style DC30 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -7635,6 +7741,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx high-gain Dual Wreck preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -7704,6 +7811,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx Marshall-style Jims 45 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -7773,6 +7881,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx high-gain Jims 800 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -7818,6 +7927,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "TonePrint stereo reverb with four Arena-specific modes, spillover, analog dry-through and switchable kill-dry.",
     "status": "discontinued",
@@ -7871,6 +7981,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog four-stage phaser with Rate, Depth and Feedback controls; true bypass.",
     "status": "current",
@@ -7917,6 +8028,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Acoustic pickup enhancer that restores body/resonance and controls feedback for piezo-equipped acoustics.",
     "status": "current",
@@ -7962,6 +8074,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact always-on analog buffer that preserves signal integrity through long cable runs and true-bypass pedalboards.",
     "status": "current",
@@ -8033,6 +8146,7 @@
       "acDc": "DC",
       "currentMa": 85
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Pitch shifter with two independent voices, up to two octaves each, TonePrint and MASH expression control.",
     "status": "current",
@@ -8092,6 +8206,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact all-analog BBD delay (up to 600 ms) with Delay, Feedback, Vol, Depth and Mod controls.",
     "status": "current",
@@ -8159,6 +8274,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "orange",
     "notes": "Vintage-flavored all-analog tremolo with Speed, Depth and LFO controls; the LFO knob morphs between triangle and square waveforms. True bypass with top-mounted I/O.",
@@ -8227,6 +8343,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual-channel digital preamp modelled on a boutique modern high-gain German 100 W head, with cab sim.",
     "status": "current",
@@ -8281,6 +8398,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "British JCM900-style crunch preamp with dual channels and cab sim.",
     "status": "current",
@@ -8335,6 +8453,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Versatile session/metal preamp covering cleans, blues grit, classic rock crunch and high-gain leads.",
     "status": "current",
@@ -8389,6 +8508,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vox AC30-style 30 W British combo preamp with dual channels and cab sim.",
     "status": "current",
@@ -8443,6 +8563,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Third-generation brown-sound signature preamp with a lush clean channel and high-gain drive channel.",
     "status": "current",
@@ -8497,6 +8618,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Classic American 40 W blues-combo preamp with dual channels and cab sim.",
     "status": "current",
@@ -8551,6 +8673,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Boutique hand-built American vintage-style combo preamp with warm mids and a punchy drive channel.",
     "status": "current",
@@ -8605,6 +8728,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modern Californian high-gain preamp, from pure cleans to ultra-high-gain leads.",
     "status": "current",
@@ -8659,6 +8783,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modern 100 W signature high-gain head preamp with a two-channel layout.",
     "status": "current",
@@ -8713,6 +8838,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual-channel American cascading-gain preamp with pristine cleans and searing leads.",
     "status": "current",
@@ -8767,6 +8893,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Californian dual-rectifier 100 W high-gain preamp sampled from a first-run specimen.",
     "status": "current",
@@ -8821,6 +8948,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Hot-rodded British Plexi-style 100 W preamp with a tight low end and rich harmonics.",
     "status": "current",
@@ -8875,6 +9003,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Hand-built modified American 30 W combo preamp with fat cleans and vintage overdrive.",
     "status": "current",
@@ -8929,6 +9058,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modern-classic preamp with a wide tonal range, from sultry blues to vintage high gain.",
     "status": "current",
@@ -8983,6 +9113,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Original MKI brown-sound signature preamp recreating early-90s high-gain tones.",
     "status": "current",
@@ -9037,6 +9168,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modern German-style metal preamp with punchy lower mids and a tight low end.",
     "status": "current",
@@ -9091,6 +9223,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Versatile modern Californian combo preamp, shimmering cleans through soaring leads.",
     "status": "current",
@@ -9145,6 +9278,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Plexi-based boutique 100 W signature-amp preamp with wide EQ and gain range.",
     "status": "current",
@@ -9336,6 +9470,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": true,
     "usage": "bass",
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
@@ -9863,6 +9998,7 @@
       "acDc": "DC",
       "currentMa": 330
     },
+    "stereo": true,
     "usage": "bass",
     "confidence": "confirmed",
     "lastVerified": "2026-10-27",
@@ -10322,6 +10458,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual-channel digital delay with 4 delay modes, 2 presets and tap tempo; D-SEED II is the later stereo successor but the original remains listed.",
     "status": "current",
@@ -10361,6 +10498,7 @@
       "acDc": "DC",
       "currentMa": 7
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10404,6 +10542,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10447,6 +10586,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10490,6 +10630,7 @@
       "acDc": "DC",
       "currentMa": 11
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10533,6 +10674,7 @@
       "acDc": "DC",
       "currentMa": 14
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10576,6 +10718,7 @@
       "acDc": "DC",
       "currentMa": 13
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10619,6 +10762,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10662,6 +10806,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10705,6 +10850,7 @@
       "acDc": "DC",
       "currentMa": 7
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10748,6 +10894,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10791,6 +10938,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10834,6 +10982,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Octave-up pedal with a fuzz blend and a mid-cut switch; classified as octave (the official page describes adding fuzz and taking the tone up an octave).",
     "status": "current",
@@ -10879,6 +11028,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10923,6 +11073,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -10967,6 +11118,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -11011,6 +11163,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -11054,6 +11207,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "status": "current",
     "confidence": "confirmed",
@@ -11097,6 +11251,7 @@
       "acDc": "DC",
       "currentMa": 13
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact power supply and master switch that powers up to seven 9 V BOSS effects and switches the whole set on or off.",
     "year": 1984,
@@ -11715,6 +11870,7 @@
       "acDc": "DC",
       "currentMa": 400
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Modular-synth-style resonance filter with envelope follower, CV input, stereo outputs and MIDI input.",
     "confidence": "confirmed",
@@ -11795,6 +11951,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Analog 3-dimensional stereo chorus with four combinable space presets (BOSS Dimension C style).",
     "confidence": "confirmed",
@@ -11878,6 +12035,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Vintage 70s-style BBD chorus and vibrato with variable input range and wide stereo output.",
     "confidence": "confirmed",
@@ -12001,6 +12159,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": true,
     "usage": "both",
     "notes": "24-bit digital stereo delay with tap tempo and pan output; 9 V battery or adapter.",
     "confidence": "confirmed",
@@ -12038,6 +12197,7 @@
       "acDc": "DC",
       "currentMa": 90
     },
+    "stereo": true,
     "usage": "both",
     "notes": "24-bit digital stereo reverb with hall, plate, spring, gate, room and modulate modes; 9 V battery or adapter.",
     "confidence": "confirmed",
@@ -12372,6 +12532,7 @@
       "acDc": "DC",
       "currentMa": 18
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft edition of the BD-2 with a Standard/Custom mode switch and premium analog components.",
     "confidence": "confirmed",
@@ -12432,6 +12593,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft booster/preamp with GAIN and LEVEL controls, a MODE switch and a STD/VTG BUFFER switch.",
     "confidence": "confirmed",
@@ -12496,6 +12658,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Waza Craft chorus with Standard, CE-1 Chorus and CE-1 Vibrato modes, stereo OUTPUT A/B jacks and buffered bypass.",
     "confidence": "confirmed",
@@ -13191,6 +13354,7 @@
       "acDc": "DC",
       "currentMa": 45
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Early digital sampler/delay with a trigger input for external rhythm machines; INPUT also powers the unit.",
     "year": 1986,
@@ -13259,6 +13423,7 @@
       "acDc": "DC",
       "currentMa": 24
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Enhancer that adds presence and brightness without changing the core tone; part of the early compact line.",
     "status": "discontinued",
@@ -13310,6 +13475,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Twin-pedal-size 10-band programmable equalizer with four memories and guitar-amp send/return routing.",
     "status": "discontinued",
@@ -13384,6 +13550,7 @@
       "acDc": "DC",
       "currentMa": 170
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Dual 10-band graphic EQ with 127 memories, series/parallel/split routing, MIDI and TRS control/expression.",
     "year": 2019,
@@ -13519,6 +13686,7 @@
       "acDc": "DC",
       "currentMa": 125
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Five-loop effects switching system with 200 patch memories, reorderable loops, parallel routing and MIDI.",
     "status": "current",
@@ -13708,6 +13876,7 @@
       "acDc": "DC",
       "currentMa": 400
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Eight-loop effects switching system with a volume loop, 800 patch memories, stereo routing and MIDI.",
     "status": "current",
@@ -13940,6 +14109,7 @@
       "acDc": "DC",
       "currentMa": 45
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Boost with continuously variable character/tone plus a press-and-hold natural feedback function.",
     "status": "discontinued",
@@ -13984,6 +14154,7 @@
       "acDc": "DC",
       "currentMa": 36
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legend Series Bassman amp modeler with separate BRIGHT IN input and gain/presence/EQ controls.",
     "status": "discontinued",
@@ -14029,6 +14200,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legend Series '65 Deluxe Reverb amp modeler with built-in vibrato and reverb.",
     "status": "discontinued",
@@ -14073,6 +14245,7 @@
       "acDc": "DC",
       "currentMa": 37
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legend Series '63 Fender spring-reverb modeler.",
     "status": "discontinued",
@@ -14382,6 +14555,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dynamic (envelope) filter with an expression-pedal input; early compact line.",
     "year": 1986,
@@ -14606,6 +14780,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft all-analog fuzz with Vintage and Modern modes and a buffered bypass.",
     "year": 2021,
@@ -14667,6 +14842,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Early-90s fuzz with Fuzz I/Fuzz II modes and a gain boost; sought after for its heavy, doomy voice.",
     "year": 1993,
@@ -14741,6 +14917,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Late-90s compact fuzz with a simple fuzz/level control set.",
     "year": 1997,
@@ -14799,6 +14976,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital fuzz with three modeled vintage fuzz modes (Fuzz Face-style, Tone Bender-style and a modern mode).",
     "status": "discontinued",
@@ -14877,6 +15055,7 @@
       "acDc": "DC",
       "currentMa": 7
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "cream",
     "notes": "Six-band analog graphic equalizer (100 Hz–3.2 kHz) with ±15 dB per band and no master level control.",
@@ -14917,6 +15096,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "grey",
     "notes": "Seven-band graphic equalizer with LEVEL control, ±15 dB per band and a wide 100 Hz–6.4 kHz range.",
@@ -14957,6 +15137,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "bass",
     "color": "brown",
     "notes": "Seven-band bass equalizer with ±15 dB per band and a LEVEL control, voiced for bass frequencies.",
@@ -14993,6 +15174,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop audio streaming mixer for musicians with guitar/mic/instrument inputs, onboard GT-derived effects and USB-C streaming.",
     "year": 2023,
@@ -15028,6 +15210,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Eight-channel desktop streaming mixer with four combo inputs, guitar/bass effects, vocal processing, sound pads and microSD recording.",
     "year": 2023,
@@ -15062,6 +15245,7 @@
       "synth"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop guitar synthesizer with GK serial pickup input, 128-voice polyphony and deep synthesis/effects processing.",
     "year": 2023,
@@ -15101,6 +15285,7 @@
       "reverb"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "GK-compatible guitar processor with COSM amp models, guitar synth, alternate tuning, poly effects and a built-in expression pedal.",
     "year": 2014,
@@ -15141,6 +15326,7 @@
       "chorus"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Early BOSS amp-modeling multi-effect with 16 amp types, effects and stereo outputs.",
     "year": 1996,
@@ -15189,6 +15375,7 @@
       "acDc": "DC",
       "currentMa": 200
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact floor multi-effects with 108 effects, amp models, 99 user patches, four AA batteries or AC power.",
     "year": 2017,
@@ -15233,6 +15420,7 @@
       "synth"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship floor guitar processor with AIRD amp modeling, dual effects loops, XLR sub outputs, MIDI and USB audio.",
     "year": 2018,
@@ -15277,6 +15465,7 @@
       "synth"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact GT-1000 engine with dual effects loops, stereo I/O, IR loading, MIDI and USB audio; three footswitches plus an expression input.",
     "year": 2020,
@@ -15325,6 +15514,7 @@
       "acDc": "AC",
       "currentMa": 650
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship floor processor of the mid-2000s with COSM amp models, 44-bit DSP, dual foot controllers and digital out.",
     "year": 2005,
@@ -15373,6 +15563,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact floor multi-effects with AIRD amp models, colour display, four AA batteries or USB bus power.",
     "year": 2024,
@@ -15416,6 +15607,7 @@
       "pitch"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Mid-size GX floor processor with colour display, AIRD amp models, effects loop, USB-C and Bluetooth adaptor support.",
     "year": 2024,
@@ -15459,6 +15651,7 @@
       "pitch"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Large-format GX floor processor with touchscreen, AIRD amp models, effects loop, MIDI and Bluetooth adaptor support.",
     "year": 2022,
@@ -15508,6 +15701,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "bass",
     "notes": "Bass version of the GX-1 compact floor processor with AIRD bass amps, colour display, four AA batteries or USB bus power.",
     "year": 2024,
@@ -15547,6 +15741,7 @@
       "acDc": "DC",
       "currentMa": 18
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "light purple",
     "notes": "Flanger voiced an octave above the standard band, with MANUAL, DEPTH, RATE and RESONANCE controls.",
@@ -15587,6 +15782,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Legendary high-gain distortion with DIST, LEVEL and separate COLOR MIX L/H tone controls; the basis of the “chainsaw” death-metal tone.",
@@ -15627,6 +15823,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Waza Craft reissue of the HM-2 with Standard/Custom mode and the original DIST, COLOR MIX L/H and LEVEL controls.",
@@ -15668,6 +15865,7 @@
       "acDc": "DC",
       "currentMa": 160
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact amp/cab simulator with 11 onboard amp types, Celestion IRs, stereo outputs and USB-C for IR loading.",
     "year": 2023,
@@ -15703,6 +15901,7 @@
       "cab-sim"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop amp/IR cabinet processor with 128 IR slots, stereo outputs, effects loop, MIDI and USB audio.",
     "year": 2021,
@@ -15743,6 +15942,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "red/white",
     "notes": "BOSS/JHS collaboration pairing a BD-2 Blues Driver circuit with a JHS Angry Charlie, selectable and stackable via the mode switch.",
@@ -15783,6 +15983,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "both",
     "color": "blue",
     "notes": "Analog VCA limiter with LEVEL, TONE, RELEASE and THRESHOLD controls; popular with bass players for transparent peak control.",
@@ -15824,6 +16025,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "bass",
     "color": "black",
     "notes": "Bass limiter/enhancer with THRESHOLD, RATIO, ENHANCE and LEVEL controls for transparent dynamics control.",
@@ -15865,6 +16067,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "both",
     "color": "white",
     "notes": "Two-loop line selector for A/B switching, bypassing or blending two effects chains; can also daisy-chain power.",
@@ -15905,6 +16108,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Extreme high-gain distortion with a gain-boost switch, three-band tone stack and level control.",
     "status": "current",
@@ -15988,6 +16192,7 @@
       "acDc": "DC",
       "currentMa": 225
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twelve modulation modes with 127 memories, stereo I/O, MIDI and expression control.",
     "status": "current",
@@ -16072,6 +16277,7 @@
       "acDc": "DC",
       "currentMa": 225
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship modulation processor with 12 modes, 297 memories, stereo I/O, 5-pin MIDI and USB.",
     "status": "current",
@@ -16122,6 +16328,7 @@
       "acDc": "DC",
       "currentMa": 190
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "97 effects, amp/cab modeling, 36+36 memories, a 38-second looper and a built-in expression pedal.",
     "status": "current",
@@ -16173,6 +16380,7 @@
       "acDc": "DC",
       "currentMa": 195
     },
+    "stereo": true,
     "usage": "bass",
     "notes": "Bass multi-effects with 93 effects, XLR balanced output, 36+36 memories and a built-in expression pedal.",
     "status": "current",
@@ -16211,6 +16419,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "High-gain metal distortion with low/high shelving EQ and a wide gain range.",
     "status": "current",
@@ -16250,6 +16459,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Multi-overtone/octave generator with detune, tone and balance controls plus two outputs.",
     "status": "current",
@@ -16298,6 +16508,7 @@
       "acDc": "DC",
       "currentMa": 280
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Combines a 112-effect multi-effects engine with a three-loop pedal switcher and 200 patches.",
     "status": "current",
@@ -16336,6 +16547,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Limited 30th-anniversary Metal Zone with black body, grey lettering and a vintage silver battery thumbscrew.",
     "year": 2021,
@@ -16375,6 +16587,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Iconic high-gain distortion with a three-band active EQ and semi-parametric midrange.",
     "year": 1991,
@@ -16414,6 +16627,7 @@
       "acDc": "DC",
       "currentMa": 35
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft Metal Zone with a Standard/Custom mode switch and premium analog components.",
     "status": "current",
@@ -16454,6 +16668,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage digital distortion with six modes plus doubling/chorus and two outputs.",
     "year": 1987,
@@ -16499,6 +16714,7 @@
       "acDc": "DC",
       "currentMa": 3.9
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage noise gate with SENS and DECAY controls and FET switching.",
     "status": "discontinued",
@@ -16543,6 +16759,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modern noise suppressor with three modes, decay/damp controls and a send/return loop.",
     "status": "current",
@@ -16581,6 +16798,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Classic noise suppressor with a send/return loop, mode switch and decay/threshold controls.",
     "status": "current",
@@ -16619,6 +16837,7 @@
       "acDc": "DC",
       "currentMa": 4
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legendary mono octave with independent −1 and −2 octave levels plus direct level.",
     "year": 1982,
@@ -16659,6 +16878,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "World’s first polyphonic octave pedal for GK-equipped guitars, with per-string octave assignment, guitar simulations and distortion.",
     "status": "discontinued",
@@ -16703,6 +16923,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Polyphonic octave with guitar/bass inputs, DIRECT OUT and a four-mode control.",
     "status": "discontinued",
@@ -16741,6 +16962,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Modern octave with vintage OC-2 and polyphonic modes, octave-up and a direct output.",
     "status": "current",
@@ -16779,6 +17001,7 @@
       "acDc": "DC",
       "currentMa": 3.5
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "The original BOSS overdrive: asymmetric clipping, LEVEL and OVER DRIVE controls.",
     "status": "discontinued",
@@ -16829,6 +17052,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital MDP overdrive with LEVEL, LOW, HIGH and DRIVE controls and wide dynamic range.",
     "status": "current",
@@ -16868,6 +17092,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Mid-1980s overdrive with a TURBO switch that adds a higher-gain distortion voice.",
     "status": "discontinued",
@@ -16913,6 +17138,7 @@
       "acDc": "DC",
       "currentMa": 85
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Twin-footswitch drive workstation with 22 overdrive/distortion models, four memories and amp control.",
     "status": "discontinued",
@@ -16984,6 +17210,7 @@
       "acDc": "DC",
       "currentMa": 220
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Hybrid analog/digital drive with 12 modes, 127 memories, MIDI and expression control.",
     "status": "current",
@@ -17023,6 +17250,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "OD-2 variant with a REMOTE jack for external turbo switching and a PSA-compatible power section.",
     "status": "discontinued",
@@ -17067,6 +17295,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Smooth, natural overdrive with DRIVE, TONE and LEVEL controls and a wide gain range.",
     "status": "current",
@@ -17105,6 +17334,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass overdrive with a two-band EQ, balance and level controls; designed for bass but usable on guitar.",
     "year": 1994,
@@ -17145,6 +17375,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Overdrive/distortion with a COLOR blend control that sweeps between overdrive and distortion voicings.",
     "year": 1990,
@@ -17184,6 +17415,7 @@
       "acDc": "DC",
       "currentMa": 7
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "First BOSS phaser (1977), four-stage analog phaser with a broad LFO range and a natural, mild voice.",
     "year": 1977,
@@ -17229,6 +17461,7 @@
       "acDc": "DC",
       "currentMa": 11
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Updated PH-1 with a RESONANCE (feedback) control for a wider range of phaser tones.",
     "year": 1980,
@@ -17274,6 +17507,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Twelve-stage analog super phaser with deeper, more resonant sweep than the PH-1/PH-1R.",
     "year": 1985,
@@ -17319,6 +17553,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital phase shifter with four, eight, ten and twelve-stage modes, tap tempo and expression control.",
     "year": 2008,
@@ -17358,6 +17593,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo tremolo/pan pedal with independent depth and rate controls; pan mode moves the signal between A and B outputs.",
     "year": 1991,
@@ -17403,6 +17639,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Three-band bass parametric EQ with variable frequency centres for each band.",
     "year": 1991,
@@ -17448,6 +17685,7 @@
       "acDc": "DC",
       "currentMa": 23
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Three-band parametric equalizer for guitar with variable frequency centres.",
     "year": 1994,
@@ -17494,6 +17732,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Early digital pitch shifter/delay with pitch-shift, delay and combined modes; 12-bit digital processing.",
     "year": 1987,
@@ -17540,6 +17779,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Digital pitch shifter/delay with stereo A/B outputs and expression control; offers pitch shift, delay and harmonizer modes.",
     "year": 1993,
@@ -17585,6 +17825,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Intelligent pitch shifter with pitch shift, harmony, detune and tremolo-arm modes; stereo outputs.",
     "year": 2001,
@@ -17624,6 +17865,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Harmonist with intelligent key-specific pitch shifting, detune and tremolo-arm modes; stereo outputs.",
     "year": 2010,
@@ -17663,6 +17905,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "High-gain distortion voiced for powerful chord work, with BOTTOM and TONE controls.",
     "year": 1995,
@@ -17708,6 +17951,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Classic wah pedal with a tone switch for a darker or brighter sweep.",
     "year": 2011,
@@ -17760,6 +18004,7 @@
       "acDc": "DC",
       "currentMa": 260
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact single-effect hardware platform that loads authentic BOSS compact-pedal models; comes with 16 effects and supports Model Pass purchases.",
     "year": 2026,
@@ -17799,6 +18044,7 @@
       "acDc": "DC",
       "currentMa": 95
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Black-finish RC-1 Loop Station: compact stereo looper with 12 minutes of recording and undo/redo.",
     "year": 2014,
@@ -17838,6 +18084,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track rhythm loop station with 280+ built-in rhythm patterns, 6 hours of stereo recording and MIDI.",
     "year": 2019,
@@ -17877,6 +18124,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact loop station with 16 minutes of recording, 11 phrase memories, rhythm guide and tap tempo.",
     "year": 2006,
@@ -17916,6 +18164,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal loop station with 16 minutes of recording, 11 phrases, mic input and phrase-shift/reverse controls.",
     "year": 2007,
@@ -17955,6 +18204,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo loop station with 3 hours of recording, 99 phrase memories, rhythm guide and USB audio.",
     "year": 2011,
@@ -17994,6 +18244,7 @@
       "acDc": "DC",
       "currentMa": 195
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track twin-pedal loop station with XLR mic input, 3 hours of recording and five loop FX.",
     "year": 2011,
@@ -18033,6 +18284,7 @@
       "acDc": "DC",
       "currentMa": 320
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Three-track flagship loop station with eight footswitches, an expression pedal, 16 loop effects and MIDI sync.",
     "year": 2011,
@@ -18072,6 +18324,7 @@
       "acDc": "DC",
       "currentMa": 170
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact stereo loop station with 13 hours of total recording, 99 memories, 57 rhythm patterns and MIDI.",
     "year": 2020,
@@ -18111,6 +18364,7 @@
       "acDc": "DC",
       "currentMa": 240
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track loop station with XLR mic input, 13 hours of total recording, loop FX and MIDI.",
     "year": 2020,
@@ -18150,6 +18404,7 @@
       "acDc": "DC",
       "currentMa": 1100
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Six-track flagship loop station with two XLR mic inputs, 200+ rhythms, extensive input/track FX and 5-pin MIDI.",
     "year": 2022,
@@ -18190,6 +18445,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact recreation of the RE-201 Space Echo with 11 modes, wow/flutter, tape saturation and a carryover switch.",
     "year": 2022,
@@ -18246,6 +18502,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal digital recreation of the RE-201 with a virtual tape display, tap tempo and expression control.",
     "year": 2007,
@@ -18310,6 +18567,7 @@
       "acDc": "DC",
       "currentMa": 140
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Modern Space Echo with 12 modes, 127 memories, MIDI, USB firmware updates and 48 kHz/32-bit float processing.",
     "year": 2022,
@@ -18349,6 +18607,7 @@
       "acDc": "DC",
       "currentMa": 115
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact rotary-speaker simulator with slow/fast speeds, rise/fall time, drive and a virtual rotor display.",
     "year": 2020,
@@ -18377,6 +18636,7 @@
       "rotary"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal rotary sound processor with a virtual rotor display, overdrive, direct level and expression speed control.",
     "year": 2007,
@@ -18416,6 +18676,7 @@
       "acDc": "DC",
       "currentMa": 130
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Early digital reverb with six modes and continuously variable reverb/gate time.",
     "year": 1987,
@@ -18455,6 +18716,7 @@
       "acDc": "DC",
       "currentMa": 260
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "200-series reverb with 12 modes, 127 memories, MIDI, stereo I/O and 96 kHz processing.",
     "year": 2023,
@@ -18484,6 +18746,7 @@
       "reverb"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact digital reverb and delay with 11 modes including hall, room, plate, spring and delay.",
     "year": 1994,
@@ -18523,6 +18786,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Six-mode digital reverb with a modulate setting and stereo outputs.",
     "year": 2002,
@@ -18586,6 +18850,7 @@
       "acDc": "DC",
       "currentMa": 225
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship reverb with 12 modes, dual engines, 297 memories, MIDI, USB and 96 kHz processing.",
     "year": 2017,
@@ -18625,6 +18890,7 @@
       "acDc": "DC",
       "currentMa": 95
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Eight-mode compact reverb with stereo outputs, expression control and a +DELAY mode.",
     "year": 2015,
@@ -18658,6 +18924,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Limited 2021 40th-anniversary SD-1 with a black body and gold lettering; same overdrive circuit as the standard SD-1.",
@@ -18704,6 +18971,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "yellow",
     "notes": "Long-running asymmetrical-clipping overdrive with DRIVE, TONE and LEVEL controls.",
@@ -18739,6 +19007,7 @@
       "currentMa": 15
     },
     "variantOf": "boss-sd-1-super-overdrive",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft SD-1 with a Standard/Custom mode switch, improved components and a discrete all-analog signal path.",
     "year": 2014,
@@ -18772,6 +19041,7 @@
       "acDc": "DC",
       "currentMa": 21
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual-overdrive compact with separate crunch and lead modes, a mode selector and a remote jack.",
     "year": 1993,
@@ -18811,6 +19081,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact dual digital delay derived from the SDE-3000, with offset, hi-cut and MIDI clock support.",
     "year": 2024,
@@ -18878,6 +19149,7 @@
       "acDc": "DC",
       "currentMa": 450
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Modern dual digital delay based on the SDE-3000 with 100 memories, MIDI, USB-C and two independent delay engines.",
     "year": 2023,
@@ -18972,6 +19244,7 @@
       "currentMa": 450
     },
     "variantOf": "boss-sde-3000d-dual-digital-delay",
+    "stereo": true,
     "usage": "guitar",
     "notes": "EVH-signature dual digital delay with the SDE-3000, noise suppressor and foot-volume effects, stereo routing and a 4-cable EVH setup.",
     "year": 2023,
@@ -19011,6 +19284,7 @@
       "acDc": "DC",
       "currentMa": 4
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Automatic volume-swell effect that removes the pick attack and fades notes in; an early BOSS compact.",
@@ -19057,6 +19331,7 @@
       "acDc": "DC",
       "currentMa": 95
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "teal",
     "notes": "Compact rhythmic slicer with 88 patterns, stereo I/O, MIDI and USB pattern editing.",
@@ -19117,6 +19392,7 @@
       "acDc": "DC",
       "currentMa": 110
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal slicer with 50 patterns, tap tempo, MIDI input and a 40-second looper.",
     "year": 2009,
@@ -19151,6 +19427,7 @@
       "eq"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "guitar",
     "color": "red",
     "notes": "Single-band parametric equalizer/boost with a sweepable 500 Hz–5 kHz spectrum control and a dry/wet balance.",
@@ -19191,6 +19468,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Amp-stack-style distortion with SOURCE, TREBLE, BASS and LEVEL controls.",
@@ -19225,6 +19503,7 @@
       "acDc": "DC",
       "currentMa": 115
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "blue",
     "notes": "Compact guitar synthesizer with 121 sound types, an effects loop, and no special pickup required.",
@@ -19259,6 +19538,7 @@
       "acDc": "DC",
       "currentMa": 800
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "GK-compatible guitar/bass synthesizer and amp-modeling processor with three instrument parts, over 150 effects and 200 user patches.",
     "year": 2020,
@@ -19322,6 +19602,7 @@
       "acDc": "DC",
       "currentMa": 230
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "200-series guitar synthesizer with 12 modes, 128 memories, MIDI and an effects loop, no special pickup required.",
     "year": 2021,
@@ -19416,6 +19697,7 @@
       "acDc": "DC",
       "currentMa": 400
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Guitar synthesizer with three oscillators, four simultaneous FX blocks, 24-bit/44.1 kHz processing and 99 user + 70 preset patches.",
     "status": "current",
@@ -19488,6 +19770,7 @@
       "acDc": "DC",
       "currentMa": 80
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Compact bass synthesizer with two synth methods and a T-wah; 11 modes, stereo effect/direct outputs and an EXP jack.",
     "status": "discontinued",
@@ -19554,6 +19837,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Compact bass synthesizer with four knobs, stereo effect/direct outputs and an EXP jack for expression control.",
     "status": "discontinued",
@@ -19612,6 +19896,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft limited-edition Tone Bender fuzz with ATTACK and LEVEL knobs, battery switch and switchable buffered/true bypass.",
     "status": "discontinued",
@@ -19678,6 +19963,7 @@
       "acDc": "DC",
       "currentMa": 90
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo delay with E. LEVEL, TONE, FEEDBACK and S-TIME controls and BOSS MDP processing.",
     "status": "current",
@@ -19736,6 +20022,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact tremolo with DEPTH, RATE and WAVE controls and buffered bypass.",
     "status": "current",
@@ -19794,6 +20081,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Desktop chromatic tuner with needle meter, Accu-Pitch, built-in mic and guitar/bass modes.",
     "status": "discontinued",
@@ -19852,6 +20140,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Desktop high-range chromatic tuner with meter, built-in microphone and guitar/bass modes.",
     "status": "discontinued",
@@ -19918,6 +20207,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Compact chromatic tuner with high-brightness display, bypass output and DC OUT for powering another pedal.",
     "status": "current",
@@ -19986,6 +20276,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Space-saving chromatic tuner with a shortened footprint, high-brightness display and DC OUT.",
     "status": "current",
@@ -20058,6 +20349,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Waza Craft chromatic tuner with switchable buffered/true bypass, bypass output and DC OUT.",
     "status": "current",
@@ -20122,6 +20414,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Envelope-controlled T-wah with SENS and PEAK knobs and a DRIVE up/down switch; usable with guitar, bass and electronic piano.",
     "status": "discontinued",
@@ -20180,6 +20473,7 @@
       "acDc": "DC",
       "currentMa": 8.5
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage BBD vibrato with RATE, DEPTH, RISE TIME and MODE (LATCH/BYPASS/UNLATCH) controls.",
     "status": "discontinued",
@@ -20242,6 +20536,7 @@
       "acDc": "DC",
       "currentMa": 35
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft BBD vibrato with RATE, DEPTH, RISE TIME and MODE knobs, Standard/Custom switch and DEPTH expression jack.",
     "status": "current",
@@ -20313,6 +20608,7 @@
       "acDc": "DC",
       "currentMa": 190
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Vocal performer with harmony/pitch correction, reverb, 3-band EQ, distortion and a 38-second phrase loop.",
     "status": "discontinued",
@@ -20403,6 +20699,7 @@
       "acDc": "DC",
       "currentMa": 260
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Vocal performer with 39 effect types, harmony, pitch correction, color LCD, 37-second loop and USB audio/MIDI.",
     "status": "current",
@@ -20495,6 +20792,7 @@
       "acDc": "DC",
       "currentMa": 310
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Vocal performer with harmony, pitch correction, reverb, delay, EQ, compressor, MIDI and USB audio/MIDI.",
     "status": "current",
@@ -20598,6 +20896,7 @@
       "acDc": "DC",
       "currentMa": 360
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Acoustic singer processor for voice and guitar with harmony, acoustic resonance, effects, 80-second loop and USB audio/MIDI.",
     "status": "current",
@@ -20709,6 +21008,7 @@
       "acDc": "DC",
       "currentMa": 690
     },
+    "stereo": true,
     "usage": "both",
     "notes": "V-Guitar processor with GK input, amp/cab modeling, synth and 150 guitar + 150 bass memories; over 150 effect types.",
     "status": "current",
@@ -20785,6 +21085,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Compact vocoder with four modes (Advanced, Vintage, Talk Box, Choir), XLR mic input and SEND/RETURN loop.",
     "status": "current",
@@ -20847,6 +21148,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Pedalboard wireless system: 7.2 x 12.1 cm receiver, WL-T transmitter, cable-tone simulation and 2.3 ms latency.",
     "status": "current",
@@ -20911,6 +21213,7 @@
       "acDc": "DC",
       "currentMa": 110
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Wireless system with a pedalboard receiver, graphic LCD, automatic channel scan and WL-60T transmitter.",
     "status": "current",
@@ -20987,6 +21290,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "GK-effect wave processor with six synth waves (Saw Lead, Square, Ring Mod, Slow Gear, Sitar, Acoustic) and 11 chorus/delay effects.",
     "status": "discontinued",
@@ -21049,6 +21353,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Compact polyphonic pitch shifter with BALANCE and SHIFT knobs, pedal-mode/direction switches and CTL/EXP jack.",
     "status": "current",
@@ -21131,6 +21436,7 @@
       "acDc": "DC",
       "currentMa": 160
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Poly shifters with onboard EXP pedal, 30 memories, stereo outputs, MIDI and USB; 24-bit/48 kHz processing.",
     "status": "current",
@@ -21196,6 +21502,7 @@
       "acDc": "DC",
       "currentMa": 13
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz driver / amp-like overdrive; 9 V battery or DC.",
     "status": "current",
@@ -21249,6 +21556,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog octave synth.",
     "status": "current",
@@ -21302,6 +21610,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Limited run (1500 units worldwide) fuzz/overdrive inspired by the three-knob Bender.",
     "status": "discontinued",
@@ -21354,6 +21663,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Low signal shredder / bass overdrive.",
     "status": "current",
@@ -21407,6 +21717,7 @@
       "acDc": "DC",
       "currentMa": 9
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Germanium preamp built around a NOS OC139 transistor; 9 V battery or DC.",
     "status": "current",
@@ -21459,6 +21770,7 @@
       "acDc": "DC",
       "currentMa": 14
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz grinder; 9 V battery or DC.",
     "status": "current",
@@ -21513,6 +21825,7 @@
       "acDc": "DC",
       "currentMa": 26
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modulated monophonic harmonizing PLL.",
     "status": "current",
@@ -21565,6 +21878,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Small signal shredder; substitutes Black Eye (no verifiable official spec page).",
     "status": "current",
@@ -22017,6 +22331,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "cream",
     "notes": "JHS 3 Series Screamer — Tube Screamer-style overdrive with the JHS Strong Mod; Volume, Tone and Drive controls plus a +/- clipping toggle; true bypass; 9V DC, 12 mA.",
@@ -22087,6 +22402,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Phaser — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -22151,6 +22467,7 @@
       "acDc": "DC",
       "currentMa": 74
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Reverb — three controls and one toggle; 9V DC center-negative, 74 mA.",
@@ -22197,6 +22514,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Ring Modulator — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -22255,6 +22573,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Rotary Chorus — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -22319,6 +22638,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Tape Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -22383,6 +22703,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "JHS 424 Gain Stage — recreation of the 424 MKI multi-track recorder preamp; 1/4-inch and balanced XLR DI outputs; 9V DC, 50 mA.",
     "status": "current",
@@ -22417,6 +22738,7 @@
       "overdrive"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "guitar",
     "notes": "JHS 808 — TS808-style overdrive with a three-way gain toggle (stock/boost/crunch); runs at 9V or 18V DC center-negative.",
     "status": "discontinued",
@@ -22456,6 +22778,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Combined chromatic tuner and 8-output isolated DC 9 V power supply with a large LED display and true-bypass tuner.",
     "status": "current",
@@ -22507,6 +22830,7 @@
       "acDc": "DC",
       "currentMa": 160
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Combined chromatic tuner and buffer with true-bypass/true-buffer selector and a DC 9 V output jack.",
     "status": "current",
@@ -22545,6 +22869,7 @@
       "acDc": "DC",
       "currentMa": 140
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital reverb with studio, church and plate modes, 32-bit DSP, MIX/TONE/DECAY controls.",
     "status": "current",
@@ -22584,6 +22909,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Classic-voiced distortion blending fuzz and distortion character, with DISTORTION/FILTER/VOLUME controls.",
     "status": "current",
@@ -22622,6 +22948,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Amp-sim pedal recreating an Orange-style British amp voice for clean through distortion; cab-sim voiced.",
     "status": "current",
@@ -22660,6 +22987,7 @@
       "acDc": "DC",
       "currentMa": 18
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Six-mode overdrive with a built-in noise gate and an ATTACK control; also usable as a boost.",
     "status": "current",
@@ -22698,6 +23026,7 @@
       "acDc": "DC",
       "currentMa": 22
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Two-loop effects selector with 6 routing modes and independent level controls for A/B loops.",
     "status": "current",
@@ -22742,6 +23071,7 @@
       "acDc": "DC",
       "currentMa": 22
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Blues overdrive with switchable vintage/modern voicing and LEVEL/GAIN/TONE controls.",
     "status": "current",
@@ -22799,6 +23129,7 @@
       "acDc": "DC",
       "currentMa": 110
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Delay + reverb; top-mounted jacks; true bypass or trails.",
     "status": "current",
@@ -22838,6 +23169,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Four-knob compressor with blend, tone and single-coil/humbucker release switch.",
     "status": "current",
@@ -22878,6 +23210,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "That Pedal Show signature boost + overdrive dual pedal.",
     "status": "discontinued",
@@ -22922,6 +23255,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz + multi-head tape delay + flanger/rotary/U-Vibe/phaser workstation.",
     "status": "current",
@@ -22962,6 +23296,7 @@
       "acDc": "DC",
       "currentMa": 170
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual DSP delay + reverb workstation; tap tempo and expression.",
     "status": "current",
@@ -23003,6 +23338,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dynamic wavetable tremolo/vibrato.",
     "status": "current",
@@ -23043,6 +23379,7 @@
       "acDc": "DC",
       "currentMa": 115
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "True-stereo tape-flanged delay + looper; expression and remote tap.",
     "status": "current",
@@ -23082,6 +23419,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "British-voiced overdrive (Marshall-in-a-box style).",
     "status": "current",
@@ -23147,6 +23485,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "both",
     "color": "gold",
     "notes": "Meris Enzo: multi-voice instrument synthesizer with Poly, Mono and Arp modes, 6-mode filter, ring modulation, tap delay and a dry-mode compressor; stereo TRS in/out, 9V DC at under 150 mA.",
@@ -23250,6 +23589,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "gold",
     "notes": "Meris Enzo X: modular polyphonic instrument synthesizer with 5 synth modes, 6 voices, ADSR envelopes, MercuryX-derived reverbs, 2.5 s stereo delay, drives and modulation, all in a double-width enclosure with DIN MIDI and USB-C.",
@@ -23318,6 +23658,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "silver",
     "notes": "Meris Hedra: 3-voice rhythmic pitch shifter with chromatic or key-based harmony, per-voice time divisions, 4 delay matrices and glide/pitch-correction modes; 9V DC, under 150 mA.",
@@ -23413,6 +23754,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "white",
     "notes": "Meris LVX: modular stereo delay system with 2540 ms of configurable dual delay, a 60-second true stereo looper, modular processing elements (preamps, pitch, filter, cassette, granulize) and full DIN MIDI; 9V DC, 300 mA.",
@@ -23480,6 +23822,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "blue",
     "notes": "Meris Mercury7: Blade Runner-inspired algorithmic reverb with Ultraplate and Cathedra algorithms, intra-tank pitch vector, modulation matrix and auto swell; stereo TRS I/O, 9V DC under 150 mA.",
@@ -23573,6 +23916,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "blue",
     "notes": "Meris MercuryX: modular studio-grade reverb system with 8 custom structures (Ultraplate, Cathedra, 78 Room/Plate/Hall, Spring, Prism, Gravity), 2.54 s stereo predelay, freeze and modulation elements; DIN MIDI plus USB-C.",
@@ -23702,6 +24046,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "black",
     "notes": "Meris Ottobit Jr.: arcade-inspired degradation pedal combining variable sample-rate/bit-depth crushing, a resonant low-pass filter, triggered stutter and a pitch/filter/decimation step sequencer; 9V DC under 150 mA.",
@@ -23802,6 +24147,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "black",
     "notes": "Meris Ottobit X: full-stereo '80s-inspired modular degradation engine with advanced bitcrusher, six glitch types, two one-button loopers, tape stop, VHS delay/reverb, pitch, filter, mod and preamp categories; DIN MIDI plus USB-C.",
@@ -23871,6 +24217,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "white",
     "notes": "Meris Polymoon: super-modulated multi-tap delay with a 1200 ms delay line, six LFOs, tilt EQ in the feedback path, stereo barberpole phaser and dynamic flanger; 9V DC under 150 mA.",
@@ -23933,6 +24280,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Faithful recreation of a 1967 50 W British Plexi with dual channels and cab sim.",
     "status": "current",
@@ -23987,6 +24335,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual-channel preamp sampled from a hand-built 36 W Class A boutique amp.",
     "status": "current",
@@ -24040,6 +24389,7 @@
       "acDc": "DC",
       "currentMa": 200
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "New Micro ambience reverb with seven algorithms, infinite trail, per-mode presets and USB firmware updates.",
     "status": "current",
@@ -24093,6 +24443,7 @@
       "acDc": "DC",
       "currentMa": 17
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Acoustic-guitar simulator with Piezo, Standard and Jumbo modes, level and body controls.",
     "status": "current",
@@ -24146,6 +24497,7 @@
       "acDc": "DC",
       "currentMa": 26
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fully analog delay with 20–300 ms delay time, echo/intense/rate controls and true bypass.",
     "status": "current",
@@ -24203,6 +24555,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Analog Class A pedalboard headphone amplifier and buffer with stereo/mono output and cab sim.",
     "status": "current",
@@ -24256,6 +24609,7 @@
       "acDc": "DC",
       "currentMa": 2000
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "30 W micro power-amp pedal for 8–16 Ω cabinets with master and warm/bright controls.",
     "status": "current",
@@ -24302,6 +24656,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Auto/Touch wah with LP, BP, HP, SP and Talk modes plus Range and Speed/Gain controls.",
     "status": "current",
@@ -24817,6 +25172,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "notes": "Original Bitmap bitcrusher: fractional bit reduction from 24 bits down to 1 bit, sample-rate reduction and sample-rate modulation with triangle, square and random waveforms, plus a blend control and expression/CV control of the sample rate. Mono, true bypass, 9 V DC.",
     "status": "discontinued",
     "confidence": "confirmed",
@@ -24881,6 +25237,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "notes": "Bitmap 2 expands the original bitcrusher with waveshaping, wavefolding and a window comparator, fractional bit reduction from 24 bits to 1 bit, sample-rate reduction from 48 kHz to 110 Hz and sample-rate modulation. Stereo TRS I/O, presets, expression/remote control and USB/TRS MIDI.",
     "status": "current",
     "confidence": "confirmed",
@@ -24926,6 +25283,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "notes": "Compact always-on buffer using a low-noise Burr-Brown op amp, intended to prevent high-frequency loss at the start of a long pedal chain or before a long cable run. Mono, 9-18 V DC, no footswitch.",
     "status": "current",
     "confidence": "confirmed",
@@ -24981,6 +25339,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "notes": "First-generation Context reverb with six algorithms (room, hall, cathedral, gated, plate and delay-plus-reverb), separate high/low damping, pre-delay and an internal trails switch. Mono, true bypass with trails off, expression/CV control.",
     "status": "discontinued",
     "confidence": "confirmed",
@@ -25045,6 +25404,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "notes": "Context 2 is a stereo reverb and delay with eight algorithms including room, hall, cathedral, gated, reverse, plate, spring and granular reverb. Each algorithm has low/high damping, pre-delay, modulation, dynamics, infinite hold and a switchable delay; spring mode adds tremolo.",
     "status": "current",
     "confidence": "confirmed",
@@ -25119,6 +25479,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "notes": "Small always-on two-input mono mixer for pedalboards: combine instruments into one amp, sum parallel effect chains, or create a clean analog dry blend. Each input has its own level control; 9-18 V DC.",
     "status": "current",
     "confidence": "confirmed",
@@ -25180,6 +25541,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "notes": "The original Particle granular delay/pitch shifter, released in 2011. It slices the input into 15-250 ms grains and rearranges or pitch-shifts them across eight modes, with freeze, expression/CV control, true bypass and a fully analog dry path.",
     "year": 2011,
     "status": "discontinued",
@@ -25250,6 +25612,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "notes": "Particle 2 is a stereo granular delay and pitch shifter with five delay modes and three pitch modes, +/-1 octave shifting, 0-2.5 s delay, adjustable grain size/density, freeze, presets and full MIDI control. It adds stereo I/O, higher fidelity and a smaller enclosure over the original.",
     "status": "current",
     "confidence": "confirmed",
@@ -25319,6 +25682,7 @@
       "acDc": "DC",
       "currentMa": 200
     },
+    "stereo": true,
     "notes": "Radius is a stereo ring modulator and frequency shifter built on an eight-quadrant multiplier algorithm, with continuous blending between ring mod and frequency shifting, selectable 2x upper/lower sidebands, pitch tracking, a push-to-tune carrier and a multi-waveform LFO/step sequencer. MIDI-playable carrier, 96 kHz processing and expression/MIDI control.",
     "status": "current",
     "confidence": "confirmed",
@@ -25384,6 +25748,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "notes": "Original Raster: a digital delay with a pitch/phase/frequency shifter in the feedback loop, up to 750 ms delay, three shift modes and three feedback types. Mono, true bypass, expression/CV control; the later Raster 2 added stereo I/O, USB MIDI and a larger feature set.",
     "status": "discontinued",
     "confidence": "confirmed",
@@ -25447,6 +25812,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "notes": "Raster 2 is a stereo digital delay with pitch and frequency shifting in the feedback loop: up to 1600 ms delay (3200 ms forward via the editor), +/-12 semitone shifting, detune and phase/frequency shifting, reverse delay, seven modulation waveforms, and series/parallel/ping-pong routing. MIDI clock, presets and a web editor.",
     "status": "current",
     "confidence": "confirmed",
@@ -25492,6 +25858,7 @@
       "acDc": "DC",
       "currentMa": 125
     },
+    "stereo": false,
     "notes": "RD-1 is a compact mono digital delay distilled from the Raster, adding three shift modes: chromatic +/-12 semitones, continuous detune from a fourth down to a major third up, and frequency shifting to +/-500 Hz. Delay runs to 1200 ms (2400 ms in reverse), with assignable expression/tap control and USB-C firmware updates. No MIDI or presets.",
     "year": 2026,
     "status": "current",
@@ -25598,6 +25965,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "notes": "Tensor is a real-time time-warp pedal: reverse, tape stop/start, speed and pitch changes, time stretching from 1:4 to 4:1, and looping/overdub up to 9.4 s (4.7 s in stereo). It is always listening, supports momentary or latching footswitches, expression/remote control and USB/TRS MIDI.",
     "status": "current",
     "confidence": "confirmed",
@@ -25656,6 +26024,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog transparent overdrive with Drive, Level, Bass and Treble controls; true bypass.",
     "status": "current",
@@ -25701,6 +26070,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "TonePrint stereo chorus with SCF and Tri-Chorus modes and custom artist TonePrints.",
     "status": "discontinued",
@@ -25740,6 +26110,7 @@
       "acDc": "DC",
       "currentMa": 68
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Mini TonePrint chorus with Speed, Depth and Level controls; true bypass.",
     "status": "current",
@@ -25793,6 +26164,7 @@
       "acDc": "DC",
       "currentMa": 5
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog distortion with Gain, Level, Voice and Treble controls; true bypass.",
     "status": "current",
@@ -25838,6 +26210,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact looper with the Ditto app (loop storage/management) over USB-C, loop level knob and Pair/User/Ditto side switch.",
     "status": "current",
@@ -25883,6 +26256,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track looper with BeatSense automatic BPM detection that keeps loops in time with a live band or backing track.",
     "status": "discontinued",
@@ -26113,6 +26487,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "both",
     "color": "Powder-coated black",
     "notes": "Passive transformer-isolated re-amp box for sending line-level DAW tracks back through pedals and amps; XLR and 1/4 in inputs, 1/4 in output, ground lift, phase invert, mute, and high-pass filter.",
@@ -26164,6 +26539,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "Black",
     "notes": "All-in-one practice tool: headphone amp, Bluetooth/1/8 in aux playback, metronome (40–250 BPM), and MIDI In/Thru control.",
@@ -26211,6 +26587,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "Matte black (also available in cream)",
     "notes": "Preamp/EQ/boost with three presets, 12 dB boost/cut low/mid/high bands, and a 10 dB MOSFET boost.",

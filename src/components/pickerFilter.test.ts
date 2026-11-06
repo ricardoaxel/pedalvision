@@ -10,7 +10,7 @@ import {
 	filterBoards,
 	filterPedalIndex,
 	filterPedals,
-	hasRecordedStereoJack,
+	hasRecordedStereo,
 	normalizeSearch,
 	pedalBrands,
 	queryTerms,
@@ -125,48 +125,45 @@ describe("stereo filter (Q-06)", () => {
 			brand: "Meris",
 			name: "Enzo",
 			effectTypes: ["synth"],
-			jacks: [
-				{ kind: "in", edge: "left", stereo: true },
-				{ kind: "out", edge: "right", stereo: true },
-			],
+			// Spec says stereo; jack data is deliberately not the source.
+			stereo: true,
+			jacks: [{ kind: "in", edge: "left" }],
 		}),
 		pedal({
 			id: "boss-dd-20",
 			brand: "BOSS",
 			name: "DD-20",
 			effectTypes: ["delay"],
-			// Stereo OUT only: still a stereo-capable pedal.
-			jacks: [
-				{ kind: "in", edge: "right" },
-				{ kind: "out", edge: "left", stereo: true },
-			],
+			stereo: true,
 		}),
 		pedal({
 			id: "boss-bd-2",
 			brand: "BOSS",
 			name: "BD-2",
 			effectTypes: ["overdrive"],
-			jacks: [
-				{ kind: "in", edge: "right" },
-				{ kind: "out", edge: "left" },
-			],
+			// Spec says not stereo, even though a jack is marked stereo: the
+			// filter must ignore jack flags entirely.
+			stereo: false,
+			jacks: [{ kind: "out", edge: "left", stereo: true }],
 		}),
 		pedal({
 			id: "mxr-mystery",
 			brand: "MXR",
 			name: "Mystery",
 			effectTypes: ["delay"],
+			// No spec value (unknown) but a stereo jack: still not a match.
+			jacks: [{ kind: "out", edge: "left", stereo: true }],
 		}),
 	];
 	const none = { query: "", brand: null, effectTypes: [] };
 
-	it("keeps pedals with ANY recorded stereo jack (in or out)", () => {
+	it("keeps only pedals whose product spec records stereo", () => {
 		expect(
 			filterPedals(STEREO_PEDALS, { ...none, stereo: true }).map((p) => p.id),
 		).toEqual(["meris-enzo", "boss-dd-20"]);
 	});
 
-	it("keeps unknown-jack pedals when stereo is off and excludes them when on", () => {
+	it("never falls back to jack flags or unknown data", () => {
 		const all = filterPedals(STEREO_PEDALS, none).map((p) => p.id);
 		expect(all).toEqual([
 			"meris-enzo",
@@ -174,10 +171,14 @@ describe("stereo filter (Q-06)", () => {
 			"boss-bd-2",
 			"mxr-mystery",
 		]);
-		expect(
-			filterPedals(STEREO_PEDALS, { ...none, stereo: true }).map((p) => p.id),
-		).not.toContain("mxr-mystery");
-		expect(hasRecordedStereoJack(STEREO_PEDALS[3] as CatalogPedal)).toBe(false);
+		const matched = filterPedals(STEREO_PEDALS, {
+			...none,
+			stereo: true,
+		}).map((p) => p.id);
+		expect(matched).not.toContain("boss-bd-2");
+		expect(matched).not.toContain("mxr-mystery");
+		expect(hasRecordedStereo(STEREO_PEDALS[2] as CatalogPedal)).toBe(false);
+		expect(hasRecordedStereo(STEREO_PEDALS[3] as CatalogPedal)).toBe(false);
 	});
 
 	it("is an AND axis with brand, effect and query", () => {
@@ -204,10 +205,10 @@ describe("stereo filter (Q-06)", () => {
 		).toEqual(["meris-enzo"]);
 	});
 
-	it("hasRecordedStereoJack accepts a stereo in OR out and rejects mono", () => {
-		expect(hasRecordedStereoJack(STEREO_PEDALS[0] as CatalogPedal)).toBe(true);
-		expect(hasRecordedStereoJack(STEREO_PEDALS[1] as CatalogPedal)).toBe(true);
-		expect(hasRecordedStereoJack(STEREO_PEDALS[2] as CatalogPedal)).toBe(false);
+	it("hasRecordedStereo reads the pedal-level spec only", () => {
+		expect(hasRecordedStereo(STEREO_PEDALS[0] as CatalogPedal)).toBe(true);
+		expect(hasRecordedStereo(STEREO_PEDALS[1] as CatalogPedal)).toBe(true);
+		expect(hasRecordedStereo(STEREO_PEDALS[2] as CatalogPedal)).toBe(false);
 	});
 });
 

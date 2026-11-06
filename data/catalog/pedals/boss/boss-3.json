@@ -36,6 +36,7 @@
       "acDc": "DC",
       "currentMa": 45
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Early digital sampler/delay with a trigger input for external rhythm machines; INPUT also powers the unit.",
     "year": 1986,
@@ -104,6 +105,7 @@
       "acDc": "DC",
       "currentMa": 24
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Enhancer that adds presence and brightness without changing the core tone; part of the early compact line.",
     "status": "discontinued",
@@ -155,6 +157,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Twin-pedal-size 10-band programmable equalizer with four memories and guitar-amp send/return routing.",
     "status": "discontinued",
@@ -229,6 +232,7 @@
       "acDc": "DC",
       "currentMa": 170
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Dual 10-band graphic EQ with 127 memories, series/parallel/split routing, MIDI and TRS control/expression.",
     "year": 2019,
@@ -364,6 +368,7 @@
       "acDc": "DC",
       "currentMa": 125
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Five-loop effects switching system with 200 patch memories, reorderable loops, parallel routing and MIDI.",
     "status": "current",
@@ -553,6 +558,7 @@
       "acDc": "DC",
       "currentMa": 400
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Eight-loop effects switching system with a volume loop, 800 patch memories, stereo routing and MIDI.",
     "status": "current",
@@ -785,6 +791,7 @@
       "acDc": "DC",
       "currentMa": 45
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Boost with continuously variable character/tone plus a press-and-hold natural feedback function.",
     "status": "discontinued",
@@ -829,6 +836,7 @@
       "acDc": "DC",
       "currentMa": 36
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legend Series Bassman amp modeler with separate BRIGHT IN input and gain/presence/EQ controls.",
     "status": "discontinued",
@@ -874,6 +882,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legend Series '65 Deluxe Reverb amp modeler with built-in vibrato and reverb.",
     "status": "discontinued",
@@ -918,6 +927,7 @@
       "acDc": "DC",
       "currentMa": 37
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legend Series '63 Fender spring-reverb modeler.",
     "status": "discontinued",
@@ -1227,6 +1237,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dynamic (envelope) filter with an expression-pedal input; early compact line.",
     "year": 1986,
@@ -1451,6 +1462,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft all-analog fuzz with Vintage and Modern modes and a buffered bypass.",
     "year": 2021,
@@ -1512,6 +1524,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Early-90s fuzz with Fuzz I/Fuzz II modes and a gain boost; sought after for its heavy, doomy voice.",
     "year": 1993,
@@ -1586,6 +1599,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Late-90s compact fuzz with a simple fuzz/level control set.",
     "year": 1997,
@@ -1644,6 +1658,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital fuzz with three modeled vintage fuzz modes (Fuzz Face-style, Tone Bender-style and a modern mode).",
     "status": "discontinued",

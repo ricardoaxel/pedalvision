@@ -16,6 +16,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass overdrive with a two-band EQ, balance and level controls; designed for bass but usable on guitar.",
     "year": 1994,
@@ -56,6 +57,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Overdrive/distortion with a COLOR blend control that sweeps between overdrive and distortion voicings.",
     "year": 1990,
@@ -95,6 +97,7 @@
       "acDc": "DC",
       "currentMa": 7
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "First BOSS phaser (1977), four-stage analog phaser with a broad LFO range and a natural, mild voice.",
     "year": 1977,
@@ -140,6 +143,7 @@
       "acDc": "DC",
       "currentMa": 11
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Updated PH-1 with a RESONANCE (feedback) control for a wider range of phaser tones.",
     "year": 1980,
@@ -185,6 +189,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Twelve-stage analog super phaser with deeper, more resonant sweep than the PH-1/PH-1R.",
     "year": 1985,
@@ -230,6 +235,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital phase shifter with four, eight, ten and twelve-stage modes, tap tempo and expression control.",
     "year": 2008,
@@ -269,6 +275,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo tremolo/pan pedal with independent depth and rate controls; pan mode moves the signal between A and B outputs.",
     "year": 1991,
@@ -314,6 +321,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Three-band bass parametric EQ with variable frequency centres for each band.",
     "year": 1991,
@@ -359,6 +367,7 @@
       "acDc": "DC",
       "currentMa": 23
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Three-band parametric equalizer for guitar with variable frequency centres.",
     "year": 1994,
@@ -405,6 +414,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Early digital pitch shifter/delay with pitch-shift, delay and combined modes; 12-bit digital processing.",
     "year": 1987,
@@ -451,6 +461,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Digital pitch shifter/delay with stereo A/B outputs and expression control; offers pitch shift, delay and harmonizer modes.",
     "year": 1993,
@@ -496,6 +507,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Intelligent pitch shifter with pitch shift, harmony, detune and tremolo-arm modes; stereo outputs.",
     "year": 2001,
@@ -535,6 +547,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Harmonist with intelligent key-specific pitch shifting, detune and tremolo-arm modes; stereo outputs.",
     "year": 2010,
@@ -574,6 +587,7 @@
       "acDc": "DC",
       "currentMa": 13
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact power supply and master switch that powers up to seven 9 V BOSS effects and switches the whole set on or off.",
     "year": 1984,
@@ -613,6 +627,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "High-gain distortion voiced for powerful chord work, with BOTTOM and TONE controls.",
     "year": 1995,
@@ -658,6 +673,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Classic wah pedal with a tone switch for a darker or brighter sweep.",
     "year": 2011,
@@ -710,6 +726,7 @@
       "acDc": "DC",
       "currentMa": 260
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact single-effect hardware platform that loads authentic BOSS compact-pedal models; comes with 16 effects and supports Model Pass purchases.",
     "year": 2026,
@@ -749,6 +766,7 @@
       "acDc": "DC",
       "currentMa": 95
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Black-finish RC-1 Loop Station: compact stereo looper with 12 minutes of recording and undo/redo.",
     "year": 2014,
@@ -788,6 +806,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track rhythm loop station with 280+ built-in rhythm patterns, 6 hours of stereo recording and MIDI.",
     "year": 2019,
@@ -827,6 +846,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact loop station with 16 minutes of recording, 11 phrase memories, rhythm guide and tap tempo.",
     "year": 2006,
@@ -866,6 +886,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal loop station with 16 minutes of recording, 11 phrases, mic input and phrase-shift/reverse controls.",
     "year": 2007,
@@ -905,6 +926,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo loop station with 3 hours of recording, 99 phrase memories, rhythm guide and USB audio.",
     "year": 2011,
@@ -944,6 +966,7 @@
       "acDc": "DC",
       "currentMa": 195
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track twin-pedal loop station with XLR mic input, 3 hours of recording and five loop FX.",
     "year": 2011,
@@ -983,6 +1006,7 @@
       "acDc": "DC",
       "currentMa": 320
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Three-track flagship loop station with eight footswitches, an expression pedal, 16 loop effects and MIDI sync.",
     "year": 2011,
@@ -1022,6 +1046,7 @@
       "acDc": "DC",
       "currentMa": 170
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact stereo loop station with 13 hours of total recording, 99 memories, 57 rhythm patterns and MIDI.",
     "year": 2020,
@@ -1061,6 +1086,7 @@
       "acDc": "DC",
       "currentMa": 240
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track loop station with XLR mic input, 13 hours of total recording, loop FX and MIDI.",
     "year": 2020,
@@ -1100,6 +1126,7 @@
       "acDc": "DC",
       "currentMa": 1100
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Six-track flagship loop station with two XLR mic inputs, 200+ rhythms, extensive input/track FX and 5-pin MIDI.",
     "year": 2022,

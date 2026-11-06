@@ -689,7 +689,7 @@ export function Picker({
 	const queryEcho = query.trim();
 	const filterSummary = [
 		brand,
-		stereo ? "Stereo jack" : null,
+		stereo ? "Stereo" : null,
 		effectTypes.length > 0
 			? effectTypes.map((type) => effectLabel(type)).join(", ")
 			: null,
@@ -1164,7 +1164,7 @@ export function Picker({
 															<circle cx="6.5" cy="8" r="1.75" />
 															<path d="M11.75 8h2.75" />
 														</svg>
-														Stereo jack
+														Stereo
 													</button>
 													<span
 														className="picker__chip-sep"
@@ -1174,8 +1174,9 @@ export function Picker({
 														id="picker-stereo-note"
 														className="visually-hidden"
 													>
-														Filters to pedals with a recorded stereo jack.
-														Pedals with unrecorded jacks are not shown.
+														Filters to pedals whose catalog spec records stereo
+														capability. Pedals without a recorded stereo spec
+														are not shown.
 													</span>
 													{visibleEffects.map((type) => (
 														<button
@@ -1233,8 +1234,7 @@ export function Picker({
 													) : null}
 													{stereo ? (
 														<p className="picker__empty-detail">
-															Stereo is only known where a jack is recorded in
-															the catalog.
+															Stereo is only known where the catalog records it.
 														</p>
 													) : null}
 												</div>

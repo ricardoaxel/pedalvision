@@ -16,6 +16,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "British Bluesbreaker-style overdrive (Katana JFET boost around a Bluesbreaker circuit).",
     "status": "discontinued",
@@ -56,6 +57,7 @@
       "currentMa": 10
     },
     "variantOf": "keeley-1962",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Limited two-mode version of the 1962; adds a KT88 high-headroom MOSFET clipping mode.",
     "status": "discontinued",
@@ -97,6 +99,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Automatic double tracker / short delay / static chorus / reverb; TRS stereo output.",
     "status": "current",
@@ -136,6 +139,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Abbey Road chamber-style reverb with RS106 filtering; archived official product page.",
     "status": "discontinued",
@@ -188,6 +192,7 @@
       "acDc": "DC",
       "currentMa": 22
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual distortion/fuzz: 78 Japanese orange distortion + 91 Soviet civil-war fuzz.",
     "status": "current",
@@ -241,6 +246,7 @@
       "currentMa": 22
     },
     "variantOf": "keeley-angry-orange",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Finish variant of the Angry Orange; no official finish photo published.",
     "status": "current",
@@ -293,6 +299,7 @@
       "currentMa": 22
     },
     "variantOf": "keeley-angry-orange",
+    "stereo": false,
     "usage": "guitar",
     "notes": "White finish variant of the Angry Orange; planner last-resort cutout.",
     "status": "current",
@@ -332,6 +339,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compressor + overdrive dual stomp with TRS insert and switchable order.",
     "status": "current",
@@ -371,6 +379,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital reverb pedal.",
     "status": "current",
@@ -410,6 +419,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Bass compressor/limiting amplifier.",
     "status": "current",
@@ -449,6 +459,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "British fuzz with OC44 germanium transistor.",
     "status": "current",
@@ -488,6 +499,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage-silicon fuzz.",
     "status": "current",
@@ -540,6 +552,7 @@
       "acDc": "DC",
       "currentMa": 29
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Bluesbreaker-style overdrive + OCD-style distortion, 4-in-1 toggles.",
     "status": "current",
@@ -593,6 +606,7 @@
       "currentMa": 29
     },
     "variantOf": "keeley-blues-disorder",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Finish variant; no official finish photo published.",
     "status": "current",
@@ -645,6 +659,7 @@
       "currentMa": 29
     },
     "variantOf": "keeley-blues-disorder",
+    "stereo": false,
     "usage": "guitar",
     "notes": "White finish variant; planner last-resort cutout.",
     "status": "current",
@@ -686,6 +701,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dynamic envelope flanger/phaser/filter.",
     "status": "current",
@@ -729,6 +745,7 @@
       "currentMa": 65
     },
     "variantOf": "keeley-bubble-tron",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Larry \"Ler\" LaLonde artist-series Bubble Tron.",
     "status": "discontinued",
@@ -791,6 +808,7 @@
       "acDc": "DC",
       "currentMa": 130
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Beach Boys 12-string simulator with octave, chorus and 66 ms slapback echo; stereo in/out.",
     "status": "discontinued",
@@ -843,6 +861,7 @@
       "acDc": "DC",
       "currentMa": 110
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Delay + reverb; top-mounted jacks; true bypass or trails.",
     "status": "current",
@@ -882,6 +901,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Four-knob compressor with blend, tone and single-coil/humbucker release switch.",
     "status": "current",
@@ -922,6 +942,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "That Pedal Show signature boost + overdrive dual pedal.",
     "status": "discontinued",
@@ -966,6 +987,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz + multi-head tape delay + flanger/rotary/U-Vibe/phaser workstation.",
     "status": "current",
@@ -1006,6 +1028,7 @@
       "acDc": "DC",
       "currentMa": 170
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dual DSP delay + reverb workstation; tap tempo and expression.",
     "status": "current",
@@ -1047,6 +1070,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dynamic wavetable tremolo/vibrato.",
     "status": "current",
@@ -1087,6 +1111,7 @@
       "acDc": "DC",
       "currentMa": 115
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "True-stereo tape-flanged delay + looper; expression and remote tap.",
     "status": "current",
@@ -1126,6 +1151,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "British-voiced overdrive (Marshall-in-a-box style).",
     "status": "current",

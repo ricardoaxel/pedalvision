@@ -16,6 +16,7 @@
       "acDc": "DC",
       "currentMa": 4
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "yellow",
     "notes": "JHS 1966 Series Bender — handwired limited-run (20 units) recreation; 9V DC center-negative, 4 mA; isolated supply required.",
@@ -56,6 +57,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "grey",
     "notes": "JHS 1966 Series Boost — handwired limited-run (20 units) recreation; 9V DC center-negative, 25 mA; isolated supply required.",
@@ -96,6 +98,7 @@
       "acDc": "DC",
       "currentMa": 5
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "light blue",
     "notes": "JHS 1966 Series Fuzz — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
@@ -135,6 +138,7 @@
       "acDc": "DC",
       "currentMa": 5
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "light blue",
     "notes": "JHS 1966 Series Italy — handwired limited-run (20 units) recreation; 9V DC center-negative, 5 mA; isolated supply required.",
@@ -175,6 +179,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Bit Crusher — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -233,6 +238,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Chorus — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -297,6 +303,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Compressor — three controls and one toggle; 9V DC center-negative, 8 mA.",
@@ -361,6 +368,7 @@
       "acDc": "DC",
       "currentMa": 71
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Delay — three controls and one toggle; 9V DC center-negative, 71 mA.",
@@ -425,6 +433,7 @@
       "acDc": "DC",
       "currentMa": 9
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Distortion — three controls and one toggle; 9V DC center-negative, 9 mA.",
@@ -489,6 +498,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Flanger — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -553,6 +563,7 @@
       "acDc": "DC",
       "currentMa": 9
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Fuzz — three controls and one toggle; 9V DC center-negative, 9 mA.",
@@ -599,6 +610,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Glitch Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -657,6 +669,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Hall Reverb — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -703,6 +716,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Harmonic Trem — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -744,6 +758,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Octave Reverb — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -802,6 +817,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Oil Can Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -849,6 +865,7 @@
       "currentMa": 65
     },
     "variantOf": "jhs-3-series-oil-can-delay",
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "JHS 3 Series Oil Can Delay (Black) — black-finish variant of the oil-can delay; Mix, Speed, Feedback + toggle; 9V DC, 65 mA.",
@@ -906,6 +923,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Overdrive — three controls and one toggle; 9V DC center-negative, 12 mA.",
@@ -970,6 +988,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Phaser — three controls and one toggle; 9V DC center-negative, 70 mA.",
@@ -1034,6 +1053,7 @@
       "acDc": "DC",
       "currentMa": 74
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Reverb — three controls and one toggle; 9V DC center-negative, 74 mA.",
@@ -1080,6 +1100,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Ring Modulator — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -1138,6 +1159,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Rotary Chorus — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -1202,6 +1224,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "white",
     "notes": "JHS 3 Series Tape Delay — three controls and one toggle; 9V DC center-negative, 65 mA.",
@@ -1266,6 +1289,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "JHS 424 Gain Stage — recreation of the 424 MKI multi-track recorder preamp; 1/4-inch and balanced XLR DI outputs; 9V DC, 50 mA.",
     "status": "current",
@@ -1300,6 +1324,7 @@
       "overdrive"
     ],
     "category": "pedal",
+    "stereo": false,
     "usage": "guitar",
     "notes": "JHS 808 — TS808-style overdrive with a three-way gain toggle (stock/boost/crunch); runs at 9V or 18V DC center-negative.",
     "status": "discontinued",

@@ -90,6 +90,7 @@ export function projectPedal(record: RawPedalRecord): CatalogPedal {
 	assigned(pedal, "jacks", jacks);
 	assigned(pedal, "power", projectPower(record));
 	assigned(pedal, "variantOf", record.variantOf);
+	assigned(pedal, "stereo", record.io?.stereo);
 	assigned(pedal, "usage", record.usage);
 	assigned(pedal, "color", record.color);
 	assigned(pedal, "notes", record.notes);

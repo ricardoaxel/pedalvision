@@ -75,6 +75,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Stereo looper with 20 loop banks, 12 minutes of recording, MIDI clock and USB backup.",
     "year": 2020,
@@ -276,6 +277,7 @@
       "acDc": "DC",
       "currentMa": 235
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Dual stereo looper with two independent loops, 99 loop memories, XLR mic input and USB backup.",
     "year": 2015,
@@ -469,6 +471,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Stereo looper with 12 minutes of recording, 10 loop banks and true stereo I/O.",
     "year": 2015,
@@ -625,6 +628,7 @@
       "acDc": "DC",
       "currentMa": 320
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Six-track desktop looper with 375 minutes of recording, XLR/TRS combo inputs and MIDI.",
     "year": 2018,

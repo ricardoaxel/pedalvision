@@ -239,6 +239,13 @@ export const CatalogPedalSchema = z
 		jacks: z.array(JackSchema).optional(),
 		power: PowerSchema.optional(),
 		variantOf: z.string().regex(ID_PATTERN).optional(),
+		/**
+		 * Pedal-level stereo capability from the recorded product spec
+		 * (`io.stereo` in the raw research archive). This is broader and more
+		 * reliable than the per-jack `stereo` flags (a stereo pedal may have an
+		 * unrecorded or mono-labelled jack). Absent = **unknown**, not mono.
+		 */
+		stereo: z.boolean().optional(),
 		/** Intended instrument use (P5-01). Absent = unknown. */
 		usage: z.enum(USAGE_TYPES).optional(),
 		/** Finish/colorway display string (e.g. "green"). Optional. */
