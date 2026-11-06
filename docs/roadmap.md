@@ -90,9 +90,9 @@ Feature work runs one task/PR at a time, separate from the catalog lane.
 
 | Status | Items |
 |---|---|
-| **Done** | F-01, F-02, F-03, F-04, F-05, F-19, **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`), **Q-01** (merged 2026-11-04, PR #98, squash `cacb50d9`), **Q-02** (merged 2026-11-04, PR #99, squash `e500e7e6`), **Q-04** (merged 2026-11-05, PR #100, squash `ebd9e24e`), **Q-05** (merged 2026-11-05, PR #101, squash `43ab533b`), **Q-06** (merged 2026-11-06, PR #102, squash `5a948c65`) |
-| **In review** | **F-16 custom colors** — per-part organization outline + board border, share v4; PR #103 (one PR; owner merges) |
-| **Next** | **F-16 custom colors** — pending PR #103 merge. After merge the owner may swap for **F-14 similar pedals** or **F-12 pedal labels** |
+| **Done** | F-01, F-02, F-03, F-04, F-05, **F-16** (merged 2026-11-06, PR #103, squash `f9e2eca9`), F-19, **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`), **Q-01** (merged 2026-11-04, PR #98, squash `cacb50d9`), **Q-02** (merged 2026-11-04, PR #99, squash `e500e7e6`), **Q-04** (merged 2026-11-05, PR #100, squash `ebd9e24e`), **Q-05** (merged 2026-11-05, PR #101, squash `43ab533b`), **Q-06** (merged 2026-11-06, PR #102, squash `5a948c65`) |
+| **In review** | — |
+| **Next** | **Owner-delegated to the next agent** — pick the next unblocked Phase 1 task (candidates: **F-09 rotation snap**, **F-11 cable schedule**, **F-12 pedal labels**, **F-14 similar pedals**, **F-26 help**, **F-32 mobile picker**; **F-45a** is a docs-only access-model ADR). Create the task file from `docs/tasks/feature-template.md` before coding; design-gated if visibly rendered. |
 | **Phase 5** | **F-42 PostHog analytics** — moved from Phase 1 (owner decision 2026-11-03); proposed, no task file, not a launch gate |
 
 ## ARCH — Frontend architecture rework (post-P5 feature lane; **not a release gate**)
