@@ -1,6 +1,6 @@
 # F-16 — custom colors
 
-**Phase:** 1 · **Status:** todo · **Model:** light (escalate for the share-version bump — persistence/serialization is high-risk)
+**Phase:** 1 · **Status:** in review — PR #103 · **Model:** light (escalate for the share-version bump — persistence/serialization is high-risk)
 
 ## Goal
 
