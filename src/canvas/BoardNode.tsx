@@ -5,6 +5,7 @@ import { type BoardTexture, DEFAULT_BOARD_TEXTURE } from "../lib/boardTexture";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToDisplay, cmToPx, pxToCm } from "../lib/geometry";
 import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
+import { insetBoardMarkPoints, sceneColorValue } from "../lib/sceneColor";
 import { useBoardDrag } from "../state/boardDrag";
 import { focusAfterLayout } from "../state/focus";
 import { useGesture } from "../state/gesture";
@@ -259,7 +260,7 @@ export function BoardNode({
 		chipHeight > 0 &&
 		chipWidth > 0 &&
 		widthPx >= notch + 1;
-	const customBody = (
+	const customDeck = (
 		<>
 			<Line
 				points={[
@@ -289,47 +290,125 @@ export function BoardNode({
 				opacity={0.5}
 				listening={false}
 			/>
-			{showChip ? (
-				<Group listening={false}>
-					<Rect
-						x={chipX}
-						y={chipY}
-						width={chipWidth}
-						height={chipHeight}
-						fill={theme.itemLabelBg}
-						cornerRadius={Math.min(chipHeight / 2, 3 / boardLabelScale)}
-					/>
-					<Text
-						text="CUSTOM"
-						x={chipX + chipPad}
-						y={chipY}
-						height={chipHeight}
-						verticalAlign="middle"
-						fontFamily={CANVAS_FONTS.mono}
-						fontSize={tagFont}
-						letterSpacing={0.5 / boardLabelScale}
-						fill={theme.itemLabelInk}
-						wrap="none"
-						listening={false}
-					/>
-					<Text
-						text={customName}
-						x={chipX + chipPad + tagWidth}
-						y={chipY}
-						width={Math.max(0, chipWidth - chipPad * 2 - tagWidth)}
-						height={chipHeight}
-						verticalAlign="middle"
-						fontFamily={CANVAS_FONTS.sans}
-						fontSize={chipFont}
-						fill={theme.itemLabelInk}
-						wrap="none"
-						ellipsis
-						listening={false}
-					/>
-				</Group>
-			) : null}
 		</>
 	);
+	// The identity chip draws above the organization mark (design spec), so a
+	// knockout band never cuts through the name.
+	const customChip = showChip ? (
+		<Group listening={false}>
+			<Rect
+				x={chipX}
+				y={chipY}
+				width={chipWidth}
+				height={chipHeight}
+				fill={theme.itemLabelBg}
+				cornerRadius={Math.min(chipHeight / 2, 3 / boardLabelScale)}
+			/>
+			<Text
+				text="CUSTOM"
+				x={chipX + chipPad}
+				y={chipY}
+				height={chipHeight}
+				verticalAlign="middle"
+				fontFamily={CANVAS_FONTS.mono}
+				fontSize={tagFont}
+				letterSpacing={0.5 / boardLabelScale}
+				fill={theme.itemLabelInk}
+				wrap="none"
+				listening={false}
+			/>
+			<Text
+				text={customName}
+				x={chipX + chipPad + tagWidth}
+				y={chipY}
+				width={Math.max(0, chipWidth - chipPad * 2 - tagWidth)}
+				height={chipHeight}
+				verticalAlign="middle"
+				fontFamily={CANVAS_FONTS.sans}
+				fontSize={chipFont}
+				fill={theme.itemLabelInk}
+				wrap="none"
+				ellipsis
+				listening={false}
+			/>
+		</Group>
+	) : null;
+
+	// Organization color (F-16 "Field Marks"): a screen-constant colored border
+	// around the deck, over a canvas-color knockout. The procedural finish is
+	// untouched. Custom boards follow their notched silhouette; catalog boards
+	// get the inset frame (the image itself is never recolored).
+	const boardMarkColor = sceneColorValue(board.color);
+	const markScale = scale > 0 ? scale : 1;
+	// Inset 5 px so the selected board's 1.5 px Transformer border (on the outer
+	// edge) never merges with the mark; the 7 px canvas knockout adds the gap.
+	const boardMarkInset = 5 / markScale;
+	const boardMarkWidth = widthPx - boardMarkInset * 2;
+	const boardMarkHeight = heightPx - boardMarkInset * 2;
+	const boardMark =
+		boardMarkColor && boardMarkWidth > 0 && boardMarkHeight > 0 ? (
+			custom ? (
+				<>
+					<Line
+						points={insetBoardMarkPoints(
+							widthPx,
+							heightPx,
+							notch,
+							boardMarkInset,
+						)}
+						closed
+						fillEnabled={false}
+						stroke={theme.canvasBackground}
+						strokeWidth={8 / markScale}
+						lineJoin="round"
+						listening={false}
+						perfectDrawEnabled={false}
+					/>
+					<Line
+						points={insetBoardMarkPoints(
+							widthPx,
+							heightPx,
+							notch,
+							boardMarkInset,
+						)}
+						closed
+						fillEnabled={false}
+						stroke={boardMarkColor}
+						strokeWidth={4 / markScale}
+						lineJoin="round"
+						listening={false}
+						perfectDrawEnabled={false}
+					/>
+				</>
+			) : (
+				<>
+					<Rect
+						x={boardMarkInset}
+						y={boardMarkInset}
+						width={boardMarkWidth}
+						height={boardMarkHeight}
+						stroke={theme.canvasBackground}
+						strokeWidth={8 / markScale}
+						fillEnabled={false}
+						cornerRadius={4 / markScale}
+						listening={false}
+						perfectDrawEnabled={false}
+					/>
+					<Rect
+						x={boardMarkInset}
+						y={boardMarkInset}
+						width={boardMarkWidth}
+						height={boardMarkHeight}
+						stroke={boardMarkColor}
+						strokeWidth={4 / markScale}
+						fillEnabled={false}
+						cornerRadius={4 / markScale}
+						listening={false}
+						perfectDrawEnabled={false}
+					/>
+				</>
+			)
+		) : null;
 
 	return (
 		<Group
@@ -422,7 +501,7 @@ export function BoardNode({
 			}}
 		>
 			{custom ? (
-				customBody
+				customDeck
 			) : status === "loaded" && image ? (
 				<KonvaImage image={image} width={widthPx} height={heightPx} />
 			) : (
@@ -468,6 +547,8 @@ export function BoardNode({
 					) : null}
 				</>
 			)}
+			{boardMark}
+			{custom ? customChip : null}
 			{readOnlyCueNonce > 0
 				? (() => {
 						const cueScale = scale > 0 ? scale : 1;

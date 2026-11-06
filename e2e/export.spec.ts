@@ -996,3 +996,122 @@ test("mobile: the export tray stays above the tab bar and exports", async ({
 	expect(stats.transparent).toBe(0);
 	expect(stats.offBackground / stats.sampled).toBeGreaterThan(0.05);
 });
+
+/** Count pixels close to each target hex in a decoded PNG (F-16 export proof). */
+async function countInkPixels(
+	page: Page,
+	buffer: Buffer,
+	targets: string[],
+): Promise<number[]> {
+	const base64 = buffer.toString("base64");
+	return page.evaluate(
+		async ({ data, hexes }) => {
+			const parse = (hex: string) => [
+				Number.parseInt(hex.slice(1, 3), 16),
+				Number.parseInt(hex.slice(3, 5), 16),
+				Number.parseInt(hex.slice(5, 7), 16),
+			];
+			const wanted = hexes.map(parse);
+			const image = new Image();
+			image.src = `data:image/png;base64,${data}`;
+			await image.decode();
+			const canvas = document.createElement("canvas");
+			canvas.width = image.naturalWidth;
+			canvas.height = image.naturalHeight;
+			const context = canvas.getContext("2d");
+			if (!context) throw new Error("no 2d context");
+			context.drawImage(image, 0, 0);
+			const pixels = context.getImageData(
+				0,
+				0,
+				canvas.width,
+				canvas.height,
+			).data;
+			const counts = wanted.map(() => 0);
+			for (let index = 0; index < pixels.length; index += 4) {
+				for (let target = 0; target < wanted.length; target += 1) {
+					const rgb = wanted[target];
+					if (!rgb) continue;
+					if (
+						Math.abs((pixels[index] ?? 0) - (rgb[0] ?? 0)) <= 8 &&
+						Math.abs((pixels[index + 1] ?? 0) - (rgb[1] ?? 0)) <= 8 &&
+						Math.abs((pixels[index + 2] ?? 0) - (rgb[2] ?? 0)) <= 8
+					) {
+						counts[target] += 1;
+					}
+				}
+			}
+			return counts;
+		},
+		{ data: base64, hexes: targets },
+	);
+}
+
+test("draws the F-16 part outline and board border in the exported PNG", async ({
+	page,
+}) => {
+	const item = {
+		uid: "part-1",
+		refId: "custom-pedal-1",
+		kind: "pedal" as const,
+		boardUid: "board-1",
+		x: 5,
+		y: 5,
+		rotationDeg: 0,
+		z: 0,
+		color: "#b5544d",
+	};
+	const fixtures: Array<{ name: string; scene: SceneFixture }> = [
+		{
+			name: "custom board",
+			scene: {
+				boards: [
+					{
+						uid: "board-1",
+						boardRefId: null,
+						customSize: { widthCm: 60, heightCm: 30 },
+						texture: "wood",
+						name: "Colored rig",
+						color: "#568a66",
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [item],
+				customPedals: [customPedal("custom-pedal-1", "Fuzz Unit", 10, 6)],
+			},
+		},
+		{
+			// The catalog-board branch is a separate renderer path (Rect border).
+			name: "catalog board",
+			scene: {
+				boards: [
+					{
+						uid: "board-1",
+						boardRefId: "boss-bcb-1000",
+						color: "#568a66",
+						x: 0,
+						y: 0,
+						rotationDeg: 0,
+					},
+				],
+				items: [item],
+				customPedals: [customPedal("custom-pedal-1", "Fuzz Unit", 10, 6)],
+			},
+		},
+	];
+	for (const fixture of fixtures) {
+		await seedScene(page, fixture.scene);
+		await selectFirstBoard(page);
+		await openExport(page);
+		await page.getByRole("radio", { name: "Selected board" }).click();
+		const buffer = await downloadPng(page);
+		const [partPixels, boardPixels] = await countInkPixels(page, buffer, [
+			"#b5544d",
+			"#568a66",
+		]);
+		expect(partPixels, fixture.name).toBeGreaterThan(0);
+		expect(boardPixels, fixture.name).toBeGreaterThan(0);
+	}
+});

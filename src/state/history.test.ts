@@ -1,10 +1,13 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { catalog } from "../catalog/load";
 import {
+	beginHistoryHold,
 	captureScene,
 	clearHistory,
+	endHistoryHold,
 	flushHistory,
 	HISTORY_LIMIT,
+	isHistoryHoldActive,
 	redo,
 	undo,
 	useHistory,
@@ -355,5 +358,99 @@ describe("undo/redo history", () => {
 			customPedals: [],
 			cables: [],
 		});
+	});
+});
+
+describe("history hold (streamed custom color pick)", () => {
+	it("coalesces a held streamed edit into one undo step", () => {
+		const item = addPedal();
+		const before = captureScene();
+		const pastBefore = useHistory.getState().past.length;
+		beginHistoryHold();
+		for (const color of ["#b5544d", "#a96a38", "#568a66"]) {
+			useScene.getState().setItemColor(item, color);
+		}
+		endHistoryHold();
+		expect(useHistory.getState().past).toHaveLength(pastBefore + 1);
+		expect(useHistory.getState().past.at(-1)).toEqual(before);
+		expect(useScene.getState().items[0]?.color).toBe("#568a66");
+		expect(undo()).toBe(true);
+		expect(useScene.getState().items[0]?.color).toBeUndefined();
+	});
+
+	it("a hold with no net change records nothing", () => {
+		const item = addPedal();
+		const pastBefore = useHistory.getState().past.length;
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#b5544d");
+		useScene.getState().setItemColor(item, null);
+		endHistoryHold();
+		expect(useHistory.getState().past).toHaveLength(pastBefore);
+	});
+
+	it("undo commits an active hold before reverting", () => {
+		const item = addPedal();
+		const before = captureScene();
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#b5544d");
+		expect(undo()).toBe(true);
+		expect(captureScene()).toEqual(before);
+		expect(useScene.getState().items[0]?.color).toBeUndefined();
+		expect(isHistoryHoldActive()).toBe(false);
+	});
+
+	it("redo drains an active hold and the held edit clears the future", () => {
+		const item = addPedal();
+		useScene.getState().setItemColor(item, "#b5544d");
+		flushHistory();
+		expect(undo()).toBe(true);
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#568a66");
+		// The drain commits the held pick (one step), which is a new edit and so
+		// clears the redo future; the hold can never leak.
+		expect(redo()).toBe(false);
+		expect(useScene.getState().items[0]?.color).toBe("#568a66");
+		expect(isHistoryHoldActive()).toBe(false);
+	});
+
+	it("clearHistory drops an active hold and a later hold still works", () => {
+		const item = addPedal();
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#b5544d");
+		clearHistory();
+		expect(isHistoryHoldActive()).toBe(false);
+		endHistoryHold();
+		expect(useHistory.getState().past).toHaveLength(0);
+
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#568a66");
+		endHistoryHold();
+		expect(useHistory.getState().past).toHaveLength(1);
+	});
+
+	it("supports nested holds as one step", () => {
+		const item = addPedal();
+		const pastBefore = useHistory.getState().past.length;
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#b5544d");
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#568a66");
+		endHistoryHold();
+		expect(useHistory.getState().past).toHaveLength(pastBefore);
+		endHistoryHold();
+		expect(useHistory.getState().past).toHaveLength(pastBefore + 1);
+	});
+
+	it("begin flushes a pending synchronous burst as its own step", () => {
+		const item = addPedal();
+		const pastBefore = useHistory.getState().past.length;
+		useScene.getState().setItemColor(item, "#b5544d");
+		beginHistoryHold();
+		useScene.getState().setItemColor(item, "#568a66");
+		endHistoryHold();
+		expect(useHistory.getState().past).toHaveLength(pastBefore + 2);
+		expect(useHistory.getState().past.at(-1)?.items?.[0]?.color).toBe(
+			"#b5544d",
+		);
 	});
 });

@@ -1,4 +1,5 @@
 import {
+	Fragment,
 	type KeyboardEvent,
 	useEffect,
 	useLayoutEffect,
@@ -16,17 +17,31 @@ import {
 	ACTION_BAR_MOBILE_MEDIA,
 	ACTION_BAR_TAB_BAR_HEIGHT,
 } from "./actionBarLayout";
+import { SceneColorControl } from "./SceneColorControl";
 import { nextEnabledIndex } from "./toolbarNav";
 
+interface BoardAction {
+	key: string;
+	text?: string;
+	danger?: boolean;
+	onClick?: () => void;
+	/** Custom control (the color trigger) in a roving-tabindex slot. */
+	render?: (props: {
+		ref: (element: HTMLButtonElement | null) => void;
+		tabIndex: number;
+		onFocus: () => void;
+	}) => React.ReactNode;
+}
+
 /**
- * The HTML action bar under a selected **custom** board (P2-05). Catalog boards
- * keep their existing chrome (rotate Transformer + the picker's "Remove selected
- * board"); a user-made board additionally gets Edit (reopen the creator
- * pre-filled) and Delete here. Positioned from the board's screen coordinates —
- * a sibling of the stage, so its presses never reach the canvas gesture handler
- * — and clamped inside the canvas pane, reserving the mobile tab bar. The
- * info sheet's height is NOT reserved: selecting a board clears the item
- * selection, so the P2-03 panel is never open alongside this bar.
+ * The HTML action bar under a selected board (P2-05, extended by F-16). Every
+ * board gets **Color**; a user-made board additionally gets Edit (reopen the
+ * creator pre-filled) and Delete. Catalog-board removal stays in the Picker.
+ * Positioned from the board's screen coordinates — a sibling of the stage, so
+ * its presses never reach the canvas gesture handler — and clamped inside the
+ * canvas pane, reserving the mobile tab bar. The info sheet's height is NOT
+ * reserved: selecting a board clears the item selection, so the P2-03 panel is
+ * never open alongside this bar.
  */
 export function BoardActionBar({
 	onEditBoard,
@@ -37,6 +52,7 @@ export function BoardActionBar({
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	const boards = useScene((state) => state.boards);
 	const removeBoard = useScene((state) => state.removeBoard);
+	const setBoardColor = useScene((state) => state.setBoardColor);
 	const clearSelection = useSelection((state) => state.clearSelection);
 
 	// Subscribed so React re-renders (and re-anchors) on any zoom/pan.
@@ -62,49 +78,78 @@ export function BoardActionBar({
 	const board = selectedBoardUid
 		? boards.find((candidate) => candidate.uid === selectedBoardUid)
 		: undefined;
-	const visible = board !== undefined && isCustomBoard(board);
+	const visible = board !== undefined;
 
 	useLayoutEffect(() => {
 		if (!visible) return;
 		const bar = barRef.current;
 		if (!bar) return;
-		setBarWidth(bar.offsetWidth);
-		setBarHeight(bar.offsetHeight);
+		// The action set now varies (catalog = Color only, custom = +Edit/Delete),
+		// so observe the bar instead of measuring once: switching board kinds must
+		// re-anchor the bar as its width/height changes.
+		const measure = () => {
+			setBarWidth(bar.offsetWidth);
+			setBarHeight(bar.offsetHeight);
+		};
+		measure();
+		const observer = new ResizeObserver(measure);
+		observer.observe(bar);
+		return () => observer.disconnect();
 	}, [visible]);
 
 	if (!board || !visible) return null;
 
-	const actions = [
+	// Every selected board gets the organization color (F-16); Edit/Delete stay
+	// custom-board-only (catalog-board removal remains in the Picker).
+	const actions: BoardAction[] = [
 		{
-			key: "edit-custom-board",
-			text: "Edit",
-			danger: false,
-			onClick: () => onEditBoard?.(board.uid),
+			key: "board-color",
+			render: (props) => (
+				<SceneColorControl
+					value={board.color}
+					label="Board color"
+					testId="board-color"
+					onChange={(color) => setBoardColor(board.uid, color)}
+					{...props}
+				/>
+			),
 		},
-		{
-			key: "delete-custom-board",
-			text: "Delete",
-			danger: true,
-			onClick: () => {
-				useMotion.getState().departBoard(board.uid);
-				removeBoard(board.uid);
-				clearSelection();
-				// The bar unmounts with the selection — move focus to the first
-				// VISIBLE stable control so keyboard users aren't dropped onto
-				// <body> (the desktop trigger is display:none on mobile, so a
-				// mere existence check would pick it and fail to focus).
-				const target = [
-					'[data-testid="picker-open-board"]',
-					'[data-testid="picker-bar-boards"]',
+		...(isCustomBoard(board)
+			? [
+					{
+						key: "edit-custom-board",
+						text: "Edit",
+						danger: false,
+						onClick: () => onEditBoard?.(board.uid),
+					},
+					{
+						key: "delete-custom-board",
+						text: "Delete",
+						danger: true,
+						onClick: () => {
+							useMotion.getState().departBoard(board.uid);
+							removeBoard(board.uid);
+							clearSelection();
+							// The bar unmounts with the selection — move focus to the first
+							// VISIBLE stable control so keyboard users aren't dropped onto
+							// <body> (the desktop trigger is display:none on mobile, so a
+							// mere existence check would pick it and fail to focus).
+							const target = [
+								'[data-testid="picker-open-board"]',
+								'[data-testid="picker-bar-boards"]',
+							]
+								.map((selector) =>
+									document.querySelector<HTMLElement>(selector),
+								)
+								.find(
+									(element): element is HTMLElement =>
+										element !== null && element.offsetParent !== null,
+								);
+							target?.focus();
+						},
+					},
 				]
-					.map((selector) => document.querySelector<HTMLElement>(selector))
-					.find(
-						(element): element is HTMLElement =>
-							element !== null && element.offsetParent !== null,
-					);
-				target?.focus();
-			},
-		},
+			: []),
 	];
 
 	// The board's screen-space bounding box (rotation-correct), so the bar sits
@@ -135,10 +180,13 @@ export function BoardActionBar({
 	);
 
 	// Roving tabindex: the toolbar is one tab stop; arrows move between buttons
-	// (the same ARIA toolbar contract as the item action bar).
+	// (the same ARIA toolbar contract as the item action bar). Clamp a stale
+	// index when the action set shrinks (custom board → catalog board).
+	const activeIndex =
+		actions.length === 0 ? 0 : Math.min(focusIndex, actions.length - 1);
 	const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
 		const enabled = actions.map((_action, index) => index);
-		const nextIndex = nextEnabledIndex(enabled, focusIndex, event.key);
+		const nextIndex = nextEnabledIndex(enabled, activeIndex, event.key);
 		if (nextIndex === null) return;
 		event.preventDefault();
 		setFocusIndex(nextIndex);
@@ -155,27 +203,39 @@ export function BoardActionBar({
 			onKeyDown={handleKeyDown}
 			style={{ left: `${left}px`, top: `${top}px` }}
 		>
-			{actions.map((action, index) => (
-				<button
-					key={action.key}
-					type="button"
-					ref={(element) => {
-						buttonRefs.current[index] = element;
-					}}
-					tabIndex={index === focusIndex ? 0 : -1}
-					onFocus={() => setFocusIndex(index)}
-					className={[
-						"item-action-bar__button",
-						action.danger ? "item-action-bar__button--danger" : "",
-					]
-						.join(" ")
-						.trim()}
-					data-testid={action.key}
-					onClick={action.onClick}
-				>
-					{action.text}
-				</button>
-			))}
+			{actions.map((action, index) => {
+				const ref = (element: HTMLButtonElement | null) => {
+					buttonRefs.current[index] = element;
+				};
+				const tabIndex = index === activeIndex ? 0 : -1;
+				const onFocus = () => setFocusIndex(index);
+				if (action.render) {
+					return (
+						<Fragment key={action.key}>
+							{action.render({ ref, tabIndex, onFocus })}
+						</Fragment>
+					);
+				}
+				return (
+					<button
+						key={action.key}
+						type="button"
+						ref={ref}
+						tabIndex={tabIndex}
+						onFocus={onFocus}
+						className={[
+							"item-action-bar__button",
+							action.danger ? "item-action-bar__button--danger" : "",
+						]
+							.join(" ")
+							.trim()}
+						data-testid={action.key}
+						onClick={action.onClick}
+					>
+						{action.text}
+					</button>
+				);
+			})}
 		</div>
 	);
 }

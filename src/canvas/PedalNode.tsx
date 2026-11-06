@@ -20,6 +20,7 @@ import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
 import { jackLocalPoint, jackNormalFor } from "../lib/jackAnchor";
 import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
+import { sceneColorValue } from "../lib/sceneColor";
 import { useCableDrag } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
 import { useJackProof } from "../state/jackProof";
@@ -353,13 +354,9 @@ export function PedalNode({
 					listening={false}
 				/>
 			) : null}
-			{nameChip}
 		</>
 	) : status === "loaded" && image ? (
-		<>
-			<KonvaImage image={image} width={widthPx} height={heightPx} {...shadow} />
-			{nameChip}
-		</>
+		<KonvaImage image={image} width={widthPx} height={heightPx} {...shadow} />
 	) : (
 		<>
 			<Rect
@@ -687,6 +684,44 @@ export function PedalNode({
 		);
 	});
 
+	// Organization color (F-16 "Field Marks"): a slim screen-constant accent
+	// outline inset 2 px, over a canvas-color knockout under-stroke. It sits
+	// inside the selection halo / amber warning zones and never recolors the
+	// catalog artwork.
+	const markColor = sceneColorValue(item.color);
+	const markInset = 2 / labelScale;
+	const markWidth = Math.max(0, widthPx - markInset * 2);
+	const markHeight = Math.max(0, heightPx - markInset * 2);
+	const colorMark =
+		markColor && markWidth > 0 && markHeight > 0 ? (
+			<>
+				<Rect
+					x={markInset}
+					y={markInset}
+					width={markWidth}
+					height={markHeight}
+					stroke={theme.canvasBackground}
+					strokeWidth={4 / labelScale}
+					fillEnabled={false}
+					cornerRadius={3 / labelScale}
+					listening={false}
+					perfectDrawEnabled={false}
+				/>
+				<Rect
+					x={markInset}
+					y={markInset}
+					width={markWidth}
+					height={markHeight}
+					stroke={markColor}
+					strokeWidth={2 / labelScale}
+					fillEnabled={false}
+					cornerRadius={3 / labelScale}
+					listening={false}
+					perfectDrawEnabled={false}
+				/>
+			</>
+		) : null;
+
 	const warningCue = warning ? (
 		<Rect
 			x={-warningOutset}
@@ -728,6 +763,8 @@ export function PedalNode({
 			onMouseLeave={() => setHoveredItem(null)}
 		>
 			{body}
+			{colorMark}
+			{nameChip}
 			{jackTicks}
 			{warningCue}
 			{readOnlyCueRects}

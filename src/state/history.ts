@@ -76,8 +76,15 @@ let restoring = false;
 /** The state before the current synchronous burst of edits. */
 let pendingBefore: SceneSnapshot | null = null;
 let finalizeScheduled = false;
+/**
+ * Active continuous interactions (e.g. the native custom-color picker streaming
+ * `input`). While > 0, `finalize` is deferred so every streamed edit coalesces
+ * into one undo entry whose "before" is the pre-hold scene.
+ */
+let holdDepth = 0;
 
 function finalize(): void {
+	if (holdDepth > 0) return;
 	const before = pendingBefore;
 	pendingBefore = null;
 	if (!before) return;
@@ -87,6 +94,29 @@ function finalize(): void {
 		past: [...state.past, before].slice(-HISTORY_LIMIT),
 		future: [],
 	}));
+}
+
+/**
+ * Begin a history hold for a continuous interaction. Any pending burst is
+ * committed first, then every scene edit until `endHistoryHold` accumulates in
+ * one snapshot (the pre-hold scene). `endHistoryHold` commits it as one step.
+ */
+export function beginHistoryHold(): void {
+	if (holdDepth === 0) finalize();
+	holdDepth += 1;
+}
+
+/** Release a history hold; the last release commits the coalesced step. */
+export function endHistoryHold(): void {
+	if (holdDepth === 0) return;
+	holdDepth -= 1;
+	if (holdDepth === 0) finalize();
+}
+
+/** Whether a continuous interaction currently holds history open. Controls use
+ * this to detect that undo/redo/clearHistory already drained their hold. */
+export function isHistoryHoldActive(): boolean {
+	return holdDepth > 0;
 }
 
 function scheduleFinalize(): void {
@@ -128,6 +158,9 @@ export function flushHistory(): void {
 /** Undo the last committed action. Returns false when there is nothing to undo. */
 export function undo(): boolean {
 	if (isReadOnly()) return false;
+	// Commit a streamed pick before undoing it, so the hold can never hide the
+	// step the user is asking to revert.
+	while (holdDepth > 0) endHistoryHold();
 	finalize();
 	const { past, future } = useHistory.getState();
 	const previous = past[past.length - 1];
@@ -144,6 +177,7 @@ export function undo(): boolean {
 /** Redo the last undone action. Returns false when there is nothing to redo. */
 export function redo(): boolean {
 	if (isReadOnly()) return false;
+	while (holdDepth > 0) endHistoryHold();
 	finalize();
 	const { past, future } = useHistory.getState();
 	const next = future[future.length - 1];
@@ -164,5 +198,6 @@ export function redo(): boolean {
  */
 export function clearHistory(): void {
 	pendingBefore = null;
+	holdDepth = 0;
 	useHistory.setState({ past: [], future: [] });
 }

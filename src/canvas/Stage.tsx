@@ -226,6 +226,14 @@ export function Stage() {
 	const itemRotations = items
 		.map((item) => item.rotationDeg.toFixed(2))
 		.join(",");
+	// Organization colors (F-16) mirrored so e2e can assert the set/clear flow
+	// without reading pixels.
+	const itemColors = items
+		.map((item) => `${item.uid}:${item.color?.trim() || "default"}`)
+		.join(";");
+	const boardColors = boards
+		.map((board) => `${board.uid}:${board.color?.trim() || "default"}`)
+		.join(";");
 	// Resolved labels (catalog → inline custom → unknown-ref fallback). A shared
 	// scene with an unknown ref must still render a labeled placeholder; e2e
 	// asserts this without reading pixels.
@@ -419,6 +427,7 @@ export function Stage() {
 			data-boards={boards.length}
 			data-custom-boards={customBoards}
 			data-board-textures={boardTextures}
+			data-board-colors={boardColors}
 			data-board-uids={boardUids}
 			data-board-sizes={boardSizes}
 			data-rotations={rotations}
@@ -427,6 +436,7 @@ export function Stage() {
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
+			data-item-colors={itemColors}
 			data-item-labels={itemLabels}
 			data-item-order={renderOrder}
 			data-readonly-cue={

@@ -166,6 +166,7 @@ export function isPlacedBoard(value: unknown): value is PlacedBoard {
 		(value.texture === undefined || isBoardTexture(value.texture)) &&
 		(value.name === undefined || typeof value.name === "string") &&
 		(value.brand === undefined || typeof value.brand === "string") &&
+		(value.color === undefined || typeof value.color === "string") &&
 		isFiniteNumber(value.x) &&
 		isFiniteNumber(value.y) &&
 		isFiniteNumber(value.rotationDeg)
@@ -184,6 +185,7 @@ export function isPlacedItem(value: unknown): value is PlacedItem {
 		isFiniteNumber(value.y) &&
 		isFiniteNumber(value.rotationDeg) &&
 		isFiniteNumber(value.z) &&
+		(value.color === undefined || typeof value.color === "string") &&
 		(value.jackOverrides === undefined ||
 			(Array.isArray(value.jackOverrides) &&
 				value.jackOverrides.length <= 64 &&

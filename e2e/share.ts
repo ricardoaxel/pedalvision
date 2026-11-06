@@ -9,6 +9,7 @@ export interface ShareFixture {
 		texture?: "matte" | "brushed" | "wood" | "tolex";
 		name?: string;
 		brand?: string;
+		color?: string;
 		x: number;
 		y: number;
 		rotationDeg: number;
@@ -22,6 +23,7 @@ export interface ShareFixture {
 		y: number;
 		rotationDeg: number;
 		z: number;
+		color?: string;
 		jackOverrides?: Array<{
 			jack: number;
 			x?: number;
@@ -43,13 +45,13 @@ export interface ShareFixture {
 		to: { itemUid: string; jack: string } | { endpointUid: string };
 		color?: string;
 	}>;
-	/** Default 3 (current); pass 1/2 to build a legacy link. */
-	version?: 1 | 2 | 3;
+	/** Default 4 (current); pass 1/2/3 to build a legacy link. */
+	version?: 1 | 2 | 3 | 4;
 }
 
-/** Build a valid `#s=v3:…` payload without importing app code. */
+/** Build a valid `#s=v4:…` payload without importing app code. */
 export function shareHash(fixture: ShareFixture): string {
-	const version = fixture.version ?? 3;
+	const version = fixture.version ?? 4;
 	const payload =
 		version === 1
 			? {

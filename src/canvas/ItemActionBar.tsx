@@ -1,4 +1,5 @@
 import {
+	Fragment,
 	type KeyboardEvent,
 	useEffect,
 	useLayoutEffect,
@@ -8,6 +9,7 @@ import {
 } from "react";
 import { duplicateRefusal } from "../lib/capacity";
 import { cmToPx } from "../lib/geometry";
+import { sceneColorLabel } from "../lib/sceneColor";
 import { useDrag } from "../state/drag";
 import { useMotion } from "../state/motion";
 import { usePanelMetrics } from "../state/panel";
@@ -27,6 +29,7 @@ import {
 	ACTION_BAR_MOBILE_MEDIA,
 	ACTION_BAR_TAB_BAR_HEIGHT,
 } from "./actionBarLayout";
+import { SceneColorControl } from "./SceneColorControl";
 import { nextEnabledIndex } from "./toolbarNav";
 
 /** Degrees the action-bar rotate button advances per tap. */
@@ -41,7 +44,14 @@ interface ActionDef {
 	text?: string;
 	disabled?: boolean;
 	danger?: boolean;
-	onClick: () => void;
+	onClick?: () => void;
+	/** A custom control (the organization-color trigger) rendered in the bar's
+	 * roving-tabindex slot instead of a plain action button. */
+	render?: (props: {
+		ref: (element: HTMLButtonElement | null) => void;
+		tabIndex: number;
+		onFocus: () => void;
+	}) => React.ReactNode;
 }
 
 /** A z-order glyph: a single arrow for one step, a double chevron for
@@ -98,6 +108,7 @@ export function ItemActionBar({
 	const rotateItem = useScene((state) => state.rotateItem);
 	const duplicateItem = useScene((state) => state.duplicateItem);
 	const removeItem = useScene((state) => state.removeItem);
+	const setItemColor = useScene((state) => state.setItemColor);
 	const reorder = useScene((state) => state.reorder);
 	const selectItem = useSelection((state) => state.selectItem);
 	const clearSelection = useSelection((state) => state.clearSelection);
@@ -159,6 +170,7 @@ export function ItemActionBar({
 					rotateItem,
 					duplicateItem,
 					removeItem,
+					setItemColor,
 					selectItem,
 					clearSelection,
 					onEditCustom,
@@ -231,36 +243,48 @@ export function ItemActionBar({
 			? below
 			: clamp(minY - ACTION_BAR_GAP - barHeight, ACTION_BAR_MARGIN, maxTop);
 
-	const button = (action: ActionDef, index: number) => (
-		<button
-			key={action.key}
-			type="button"
-			ref={(element) => {
-				buttonRefs.current[index] = element;
-			}}
-			tabIndex={index === activeIndex ? 0 : -1}
-			onFocus={() => setFocusIndex(index)}
-			disabled={action.disabled}
-			className={[
-				"item-action-bar__button",
-				action.icon ? "item-action-bar__button--icon" : "",
-				action.danger ? "item-action-bar__button--danger" : "",
-			]
-				.join(" ")
-				.trim()}
-			data-testid={action.key}
-			aria-label={action.label}
-			aria-describedby={
-				action.key === "duplicate-item" && duplicateBlocked
-					? "item-capacity-note"
-					: undefined
-			}
-			title={action.label}
-			onClick={action.onClick}
-		>
-			{action.icon ?? action.text}
-		</button>
-	);
+	const button = (action: ActionDef, index: number) => {
+		const ref = (element: HTMLButtonElement | null) => {
+			buttonRefs.current[index] = element;
+		};
+		const tabIndex = index === activeIndex ? 0 : -1;
+		const onFocus = () => setFocusIndex(index);
+		if (action.render) {
+			return (
+				<Fragment key={action.key}>
+					{action.render({ ref, tabIndex, onFocus })}
+				</Fragment>
+			);
+		}
+		return (
+			<button
+				key={action.key}
+				type="button"
+				ref={ref}
+				tabIndex={tabIndex}
+				onFocus={onFocus}
+				disabled={action.disabled}
+				className={[
+					"item-action-bar__button",
+					action.icon ? "item-action-bar__button--icon" : "",
+					action.danger ? "item-action-bar__button--danger" : "",
+				]
+					.join(" ")
+					.trim()}
+				data-testid={action.key}
+				aria-label={action.label}
+				aria-describedby={
+					action.key === "duplicate-item" && duplicateBlocked
+						? "item-capacity-note"
+						: undefined
+				}
+				title={action.label}
+				onClick={action.onClick}
+			>
+				{action.icon ?? action.text}
+			</button>
+		);
+	};
 
 	return (
 		<div
@@ -307,6 +331,7 @@ function buildActions(
 		rotateItem: (uid: string, rotationDeg: number) => void;
 		duplicateItem: (uid: string) => string | null;
 		removeItem: (uid: string) => void;
+		setItemColor: (uid: string, color: string | null) => void;
 		selectItem: (uid: string | null) => void;
 		clearSelection: () => void;
 		onEditCustom?: (refId: string) => void;
@@ -361,6 +386,19 @@ function buildActions(
 			text: "Rotate",
 			onClick: () =>
 				handlers.rotateItem(item.uid, item.rotationDeg + ACTION_ROTATE_STEP),
+		},
+		{
+			key: "item-color",
+			label: `Organization color: ${sceneColorLabel(item.color)}`,
+			render: (props) => (
+				<SceneColorControl
+					value={item.color}
+					label="Organization color"
+					testId="item-color"
+					onChange={(color) => handlers.setItemColor(item.uid, color)}
+					{...props}
+				/>
+			),
 		},
 		{
 			key: "duplicate-item",

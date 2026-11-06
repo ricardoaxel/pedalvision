@@ -44,6 +44,9 @@ export interface PlacedBoard {
 	name?: string;
 	/** Optional user brand for a custom board (P2-05). */
 	brand?: string;
+	/** Optional organization color (F-16), stored as a normalized hex; absent =
+	 * no mark. Distinct from a custom board's procedural `texture` finish. */
+	color?: string;
 	/** World cm of the board's local origin (its unrotated top-left — the
 	 * rotation pivot; see geometry.ts §BoardTransform). */
 	x: number;
@@ -92,6 +95,9 @@ export interface PlacedItem {
 	 * catalog or a custom pedal definition.
 	 */
 	jackOverrides?: JackOverride[];
+	/** Optional organization color (F-16), stored as a normalized hex; absent =
+	 * no mark. Renders as a slim accent outline around the footprint. */
+	color?: string;
 }
 
 /**
@@ -1332,6 +1338,12 @@ interface SceneStore {
 	 */
 	setCableColor: (uid: string, color: string | null) => void;
 	/**
+	 * Set or clear a placed item's organization color (F-16). `null` clears the
+	 * optional field (no mark). One array replacement = one undoable history
+	 * step; a missing item, an identical value or read-only mode is a no-op.
+	 */
+	setItemColor: (uid: string, color: string | null) => void;
+	/**
 	 * Register a user-defined pedal/supply (assigning a scene-local `refId`) and
 	 * return that id, which `addItem` can then place like a catalog pedal.
 	 * Returns null in read-only share mode.
@@ -1434,6 +1446,13 @@ interface SceneStore {
 	updateCustomBoard: (uid: string, definition: CustomBoardDefinition) => void;
 	moveBoard: (uid: string, xCm: number, yCm: number) => void;
 	rotateBoard: (uid: string, rotationDeg: number) => void;
+	/**
+	 * Set or clear a placed board's organization color (F-16). `null` clears the
+	 * optional field (no border). The procedural finish is untouched. One array
+	 * replacement = one undoable history step; a missing board, an identical
+	 * value or read-only mode is a no-op.
+	 */
+	setBoardColor: (uid: string, color: string | null) => void;
 	/** Remove a board; its attached items fall loose at their world positions. */
 	removeBoard: (uid: string) => void;
 }
@@ -1559,6 +1578,23 @@ export const useScene = create<SceneStore>((set, get) => ({
 			const cables = state.cables.slice();
 			cables[index] = next;
 			return { cables };
+		});
+	},
+	setItemColor: (uid, color) => {
+		if (isReadOnly()) return;
+		set((state) => {
+			const index = state.items.findIndex((item) => item.uid === uid);
+			if (index === -1) return state;
+			const current = state.items[index];
+			if (!current) return state;
+			const nextColor = color?.trim() || undefined;
+			if (current.color === nextColor) return state;
+			const next = { ...current };
+			if (nextColor === undefined) delete next.color;
+			else next.color = nextColor;
+			const items = state.items.slice();
+			items[index] = next;
+			return { items };
 		});
 	},
 	addCustomPedal: (definition) => {
@@ -1928,6 +1964,23 @@ export const useScene = create<SceneStore>((set, get) => ({
 				board.uid === uid ? { ...board, rotationDeg } : board,
 			),
 		}));
+	},
+	setBoardColor: (uid, color) => {
+		if (isReadOnly()) return;
+		set((state) => {
+			const index = state.boards.findIndex((board) => board.uid === uid);
+			if (index === -1) return state;
+			const current = state.boards[index];
+			if (!current) return state;
+			const nextColor = color?.trim() || undefined;
+			if (current.color === nextColor) return state;
+			const next = { ...current };
+			if (nextColor === undefined) delete next.color;
+			else next.color = nextColor;
+			const boards = state.boards.slice();
+			boards[index] = next;
+			return { boards };
+		});
 	},
 	removeBoard: (uid) => {
 		if (isReadOnly()) return;

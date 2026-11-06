@@ -21,6 +21,7 @@ import { cmToDisplay, type DisplayUnits } from "../lib/geometry";
 import { buildAnchorIndex, cableEndAnchorFromIndex } from "../lib/jackAnchor";
 import { buildPdfFromJpeg } from "../lib/pdf";
 import { addPngDpiChunk } from "../lib/png";
+import { insetBoardMarkPoints, sceneColorValue } from "../lib/sceneColor";
 import {
 	boardDefinition,
 	boardFootprint,
@@ -328,6 +329,9 @@ function drawCustomBoard(
 		}),
 	);
 
+	// Above the deck but below the identity chip (the chip stays legible).
+	drawBoardColorMark(parent, context, board, width, height);
+
 	const name = board.name?.trim() || "Custom board";
 	const screenWidth = width * unit;
 	if (context.labels !== false && screenWidth >= ITEM_LABEL.minWidthPx) {
@@ -431,6 +435,35 @@ function drawItem(
 						fill: theme.boardLabel,
 						wrap: "none",
 						ellipsis: true,
+						listening: false,
+					}),
+				);
+			}
+		}
+	}
+
+	// F-16 "Field Marks": a slim screen-constant accent outline over a canvas
+	// knockout, above the artwork and below the label chip.
+	const markColor = sceneColorValue(item.color);
+	if (markColor) {
+		const inset = 2 / labelUnit;
+		const markWidth = Math.max(0, width - inset * 2);
+		const markHeight = Math.max(0, height - inset * 2);
+		if (markWidth > 0 && markHeight > 0) {
+			for (const [stroke, strokeWidth] of [
+				[theme.canvasBackground, 4 / labelUnit],
+				[markColor, 2 / labelUnit],
+			] as const) {
+				group.add(
+					new Konva.Rect({
+						x: inset,
+						y: inset,
+						width: markWidth,
+						height: markHeight,
+						stroke,
+						strokeWidth,
+						fillEnabled: false,
+						cornerRadius: 3 / labelUnit,
 						listening: false,
 					}),
 				);
@@ -686,6 +719,68 @@ function assumedJackUsed(plan: ExportPlan): boolean {
 	);
 }
 
+/**
+ * F-16 "Field Marks": the board's organization-color border over a canvas
+ * knockout. Custom boards follow the notched silhouette; catalog boards get the
+ * inset frame. The finish/artwork itself is never recolored.
+ */
+function drawBoardColorMark(
+	parent: Konva.Group,
+	context: RenderContext,
+	board: PlacedBoard,
+	width: number,
+	height: number,
+): void {
+	const color = sceneColorValue(board.color);
+	if (!color) return;
+	const { theme, labelUnit, pxPerCm } = context;
+	// Match the canvas: inset clears the selection border, a canvas knockout
+	// keeps the organization color legible while the board is selected.
+	const inset = 5 / labelUnit;
+	if (isCustomBoard(board)) {
+		const notch = Math.min(Math.min(width, height) * 0.18, 0.9 * pxPerCm);
+		const points = insetBoardMarkPoints(width, height, notch, inset);
+		for (const [stroke, strokeWidth] of [
+			[theme.canvasBackground, 8 / labelUnit],
+			[color, 4 / labelUnit],
+		] as const) {
+			parent.add(
+				new Konva.Line({
+					points,
+					closed: true,
+					fillEnabled: false,
+					stroke,
+					strokeWidth,
+					lineJoin: "round",
+					listening: false,
+				}),
+			);
+		}
+		return;
+	}
+	const markWidth = Math.max(0, width - inset * 2);
+	const markHeight = Math.max(0, height - inset * 2);
+	if (markWidth <= 0 || markHeight <= 0) return;
+	for (const [stroke, strokeWidth] of [
+		[theme.canvasBackground, 8 / labelUnit],
+		[color, 4 / labelUnit],
+	] as const) {
+		parent.add(
+			new Konva.Rect({
+				x: inset,
+				y: inset,
+				width: markWidth,
+				height: markHeight,
+				stroke,
+				strokeWidth,
+				fillEnabled: false,
+				cornerRadius: 4 / labelUnit,
+				listening: false,
+			}),
+		);
+	}
+}
+
 function drawPlanContent(parent: Konva.Group, context: RenderContext): void {
 	const { plan, images } = context;
 	for (const board of plan.boards) {
@@ -724,6 +819,10 @@ function drawPlanContent(parent: Konva.Group, context: RenderContext): void {
 					height,
 				);
 			}
+		}
+
+		if (!isCustomBoard(board)) {
+			drawBoardColorMark(boardGroup, context, board, width, height);
 		}
 
 		for (const item of itemsByZ(
