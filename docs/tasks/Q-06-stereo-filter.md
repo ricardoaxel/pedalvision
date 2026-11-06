@@ -1,6 +1,6 @@
 # Q-06 — picker stereo filter
 
-**Phase:** 1 · **Status:** todo · **Model:** light (escalate only for a high-risk change)
+**Phase:** 1 · **Status:** in review — PR #102 · **Model:** light (escalate only for a high-risk change)
 
 ## Goal
 
