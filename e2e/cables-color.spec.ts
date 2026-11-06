@@ -226,7 +226,7 @@ test("picks a patch ink, persists, undoes and shares it", async ({ page }) => {
 	);
 	await page.getByTestId("share-open").click();
 	const url = await page.getByTestId("share-link").inputValue();
-	expect(url).toContain("#s=v3:");
+	expect(url).toContain("#s=v4:");
 	const hash = url.slice(url.indexOf("#s="));
 
 	await page.goto(`/?share=1${hash}`);
@@ -322,7 +322,7 @@ test("custom ink round-trips and warns only when it is hard to see", async ({
 
 	await page.getByTestId("share-open").click();
 	const url = await page.getByTestId("share-link").inputValue();
-	expect(url).toContain("#s=v3:");
+	expect(url).toContain("#s=v4:");
 	const hash = url.slice(url.indexOf("#s="));
 	await page.goto(`/?share=1${hash}`);
 	await expect(page.getByTestId("stage")).toHaveAttribute(

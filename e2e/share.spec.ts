@@ -192,7 +192,7 @@ test("share → read-only → save a copy never overwrites the recipient's scene
 	await page.getByTestId("share-open").click();
 	await expect(page.getByTestId("share-panel")).toBeVisible();
 	const link = await page.getByTestId("share-link").inputValue();
-	expect(link).toContain("#s=v3:");
+	expect(link).toContain("#s=v4:");
 	await page.getByTestId("share-close").click();
 	await expect(page.getByTestId("share-panel")).toHaveCount(0);
 
@@ -597,7 +597,7 @@ test("a link whose prefix and payload versions disagree is rejected", async ({
 		version: 1,
 	});
 	// The body is a valid v1 payload; only the prefix claims v2.
-	await openShare(page, legacy.replace("#s=v1:", "#s=v3:"));
+	await openShare(page, legacy.replace("#s=v1:", "#s=v4:"));
 	await expect(page.getByTestId("share-error")).toBeVisible();
 	await expect(page.getByTestId("share-stamp")).toHaveCount(0);
 });

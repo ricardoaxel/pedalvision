@@ -479,6 +479,38 @@ describe("cables and endpoints (P4-01)", () => {
 		expect(parseSceneDocument(legacy)?.cables[0]?.color).toBeUndefined();
 	});
 
+	it("round-trips item and board organization colors (additive v1)", () => {
+		const document = documentOf({
+			boards: [{ ...board, color: "#568a66" }],
+			items: [item({ color: "#b5544d" })],
+			customPedals: [],
+		});
+		expect(parseSceneDocument(document)?.boards[0]?.color).toBe("#568a66");
+		expect(parseSceneDocument(document)?.items[0]?.color).toBe("#b5544d");
+		expect(sceneFromDocument(document).boards[0]?.color).toBe("#568a66");
+		expect(sceneFromDocument(document).items[0]?.color).toBe("#b5544d");
+
+		// Optional: a document without colors remains valid.
+		const legacy = documentOf({
+			boards: [board],
+			items: [item()],
+			customPedals: [],
+		});
+		expect(parseSceneDocument(legacy)?.items[0]?.color).toBeUndefined();
+		expect(parseSceneDocument(legacy)?.boards[0]?.color).toBeUndefined();
+	});
+
+	it("drops a placed item/board with a non-string color", () => {
+		const raw = {
+			...documentOf({ boards: [board], items: [item()], customPedals: [] }),
+			boards: [{ ...board, color: 7 }],
+			items: [item({ color: 7 as unknown as string })],
+		};
+		const parsed = parseSceneDocument(raw);
+		expect(parsed?.boards).toEqual([]);
+		expect(parsed?.items).toEqual([]);
+	});
+
 	it("keeps the additive v1 rule: documents without the arrays stay valid", () => {
 		const document = documentOf({
 			boards: [board],

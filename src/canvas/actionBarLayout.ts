@@ -13,3 +13,8 @@ export const ACTION_BAR_TAB_BAR_HEIGHT = 56;
 export const INK_POPOVER_MEDIA = "(max-width: 640px)";
 export const INK_POPOVER_WIDTH = 206;
 export const INK_POPOVER_HEIGHT = 132;
+
+/** Organization-color popover (F-16). Wide enough for Default + five inks on
+ * one row, with Custom on its own separated row. */
+export const SCENE_COLOR_POPOVER_WIDTH = 312;
+export const SCENE_COLOR_POPOVER_HEIGHT = 180;

@@ -5,13 +5,14 @@ export interface SavedDocument {
 	id: string;
 	version?: number;
 	name: string;
-	boards: Array<{ uid: string }>;
+	boards: Array<{ uid: string; color?: string; texture?: string }>;
 	items: Array<{
 		uid: string;
 		z?: number;
 		refId?: string;
 		rotationDeg?: number;
 		boardUid?: string | null;
+		color?: string;
 		jackOverrides?: Array<{
 			jack: number;
 			x?: number;

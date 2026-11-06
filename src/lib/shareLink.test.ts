@@ -174,7 +174,7 @@ describe("share links (P3-03)", () => {
 		expect(legacy.snapshot.cables).toEqual([]);
 	});
 
-	it("round-trips cable patch ink at v3 and accepts a v2 ink", () => {
+	it("round-trips cable patch ink at v4 and accepts a v2 ink", () => {
 		const endpoint: Endpoint = {
 			uid: "endpoint-amp",
 			kind: "amp",
@@ -190,7 +190,6 @@ describe("share links (P3-03)", () => {
 		const payload = snapshot({ endpoints: [endpoint], cables: [cable] });
 		const encoded = encodeShareLink("Patched", payload);
 		if (!encoded.ok) throw new Error("expected an encodable scene");
-		// Additive optional data: the wire version stays v3.
 		expect(encoded.hash.startsWith(`#s=v${SHARE_VERSION}:`)).toBe(true);
 		const decoded = decodeShareHash(encoded.hash);
 		if (!decoded.ok) throw new Error(decoded.message);
@@ -216,7 +215,7 @@ describe("share links (P3-03)", () => {
 	});
 
 	it("migrates a legacy v1 payload to the current shape explicitly", () => {
-		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2, 3]);
+		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2, 3, 4]);
 		const legacy = {
 			version: 1 as const,
 			name: "Old",
@@ -226,7 +225,7 @@ describe("share links (P3-03)", () => {
 		};
 		expect(migrateSharePayload(legacy)).toEqual({
 			...legacy,
-			version: 3,
+			version: 4,
 			endpoints: [],
 			cables: [],
 		});
@@ -236,10 +235,15 @@ describe("share links (P3-03)", () => {
 			endpoints: [],
 			cables: [],
 		};
-		expect(migrateSharePayload(v2)).toEqual({ ...v2, version: 3 });
+		expect(migrateSharePayload(v2)).toEqual({ ...v2, version: 4 });
+		const v3 = {
+			...v2,
+			version: 3 as const,
+		};
+		expect(migrateSharePayload(v3)).toEqual({ ...v3, version: 4 });
 	});
 
-	it("round-trips scene-local jack overrides (v3)", () => {
+	it("round-trips scene-local jack overrides (v4)", () => {
 		const overridden = item("item-1", {
 			boardUid: null,
 			jackOverrides: [{ jack: 0, x: 0.2, y: 0.8, stereo: true }],
@@ -252,12 +256,71 @@ describe("share links (P3-03)", () => {
 			cables: [],
 		});
 		if (!encoded.ok) throw new Error(encoded.message);
-		expect(encoded.hash.startsWith("#s=v3:")).toBe(true);
+		expect(encoded.hash.startsWith("#s=v4:")).toBe(true);
 		const decoded = decodeShareHash(encoded.hash);
 		if (!decoded.ok) throw new Error(decoded.message);
 		expect(decoded.snapshot.items[0].jackOverrides).toEqual([
 			{ jack: 0, x: 0.2, y: 0.8, stereo: true },
 		]);
+	});
+
+	it("round-trips item and board organization colors at v4", () => {
+		const encoded = encodeShareLink("Colored", {
+			boards: [board("board-1", { color: "#568a66" })],
+			items: [item("item-1", { color: "#b5544d" })],
+			customPedals: [],
+			endpoints: [],
+			cables: [],
+		});
+		if (!encoded.ok) throw new Error(encoded.message);
+		expect(encoded.hash.startsWith("#s=v4:")).toBe(true);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items[0]?.color).toBe("#b5544d");
+		expect(decoded.snapshot.boards[0]?.color).toBe("#568a66");
+	});
+
+	it("accepts a v3 link without colors (migrates to v4)", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 3,
+					name: "V3",
+					boards: [board("board-1")],
+					items: [item("item-1")],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				3,
+			),
+		);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items[0]?.color).toBeUndefined();
+		expect(decoded.snapshot.boards[0]?.color).toBeUndefined();
+	});
+
+	it("rejects color keys in a frozen v3 payload", () => {
+		const v3 = (value: Record<string, unknown>) =>
+			hashOf(
+				{
+					version: 3,
+					name: "V3 color",
+					boards: [board("board-1")],
+					items: [item("item-1")],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+					...value,
+				},
+				3,
+			);
+		expect(
+			decodeShareHash(v3({ boards: [board("board-1", { color: "#b5544d" })] })),
+		).toMatchObject({ ok: false, reason: "invalid" });
+		expect(
+			decodeShareHash(v3({ items: [item("item-1", { color: "#b5544d" })] })),
+		).toMatchObject({ ok: false, reason: "invalid" });
 	});
 
 	it("accepts a v2 link without jack overrides", () => {
@@ -418,11 +481,11 @@ describe("share links (P3-03)", () => {
 		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
 	});
 
-	it("uses the #s=v3: prefix and base64url without padding", () => {
+	it("uses the #s=v4: prefix and base64url without padding", () => {
 		const encoded = encodeShareLink("Main board", snapshot());
 		if (!encoded.ok) throw new Error("expected an encodable scene");
-		expect(encoded.hash.startsWith("#s=v3:")).toBe(true);
-		const body = encoded.hash.slice("#s=v3:".length);
+		expect(encoded.hash.startsWith("#s=v4:")).toBe(true);
+		const body = encoded.hash.slice("#s=v4:".length);
 		expect(body).toMatch(/^[A-Za-z0-9_-]+$/);
 		expect(body).not.toContain("=");
 	});
@@ -453,6 +516,10 @@ describe("share links (P3-03)", () => {
 			reason: "corrupt",
 		});
 		expect(decodeShareHash("#s=v4:abc")).toMatchObject({
+			ok: false,
+			reason: "corrupt",
+		});
+		expect(decodeShareHash("#s=v5:abc")).toMatchObject({
 			ok: false,
 			reason: "unsupported-version",
 		});
