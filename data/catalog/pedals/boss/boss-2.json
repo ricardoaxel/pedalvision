@@ -32,6 +32,7 @@
         "edge": "top"
       }
     ],
+    "stereo": true,
     "usage": "guitar",
     "notes": "Original Dimension C with four preset buttons and stereo outputs; the 1980s BOSS compact enclosure is 70 x 125 mm.",
     "year": 1985,
@@ -118,6 +119,7 @@
       "currentMa": 65
     },
     "variantOf": "boss-dc-2-dimension-c",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Waza Craft reissue of the DC-2 with Standard/Custom modes and stereo I/O.",
     "year": 2018,
@@ -185,6 +187,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Digital chorus with two preset modes and stereo outputs; 1980s compact enclosure (70 x 125 mm).",
     "year": 1986,
@@ -265,6 +268,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Early compact digital delay with 12.5–800 ms range and a dedicated direct output; 1980s enclosure (70 x 125 mm).",
     "year": 1983,
@@ -359,6 +363,7 @@
       "acDc": "DC",
       "currentMa": 200
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twin-pedal delay with 4 memories, tap tempo and stereo I/O.",
     "year": 2003,
@@ -447,6 +452,7 @@
       "acDc": "DC",
       "currentMa": 225
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "200-series digital delay with 12 modes, 4 memories, MIDI and stereo I/O.",
     "year": 2019,
@@ -514,6 +520,7 @@
       "acDc": "DC",
       "currentMa": 35
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Long-running compact digital delay with 12.5–800 ms range and a direct output.",
     "year": 1986,
@@ -586,6 +593,7 @@
       "currentMa": 70
     },
     "variantOf": "boss-dd-3-digital-delay",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Updated DD-3 with tap tempo, direct output and a compact enclosure.",
     "year": 2019,
@@ -657,6 +665,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact digital delay with 11 delay modes? and a tempo jack; direct output.",
     "year": 1992,
@@ -758,6 +767,7 @@
       "acDc": "DC",
       "currentMa": 200
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship 500-series delay with 12 modes, deep editing, MIDI and USB.",
     "year": 2015,
@@ -830,6 +840,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo compact digital delay with 2.6 s max delay and hold.",
     "year": 1997,
@@ -906,6 +917,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact stereo delay with 6.4 s max delay, loop/hold and external tempo/expression.",
     "year": 2008,
@@ -982,6 +994,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact stereo delay with 11 modes, 10 s max delay and tempo/expression.",
     "year": 2019,
@@ -1044,6 +1057,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Distortion with a hold-to-feedback function; the feedback is generated internally, not a separate jack. 1980s enclosure (70 x 125 mm).",
     "year": 1984,
@@ -1140,6 +1154,7 @@
       "acDc": "DC",
       "currentMa": 260
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Analog multi-head delay with 8 BBDs, 12 modes, MIDI and stereo I/O.",
     "year": 2023,
@@ -1202,6 +1217,7 @@
       "acDc": "DC",
       "currentMa": 11
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Original compact analog delay with 20–300 ms range; 1980s enclosure (70 x 125 mm).",
     "year": 1981,
@@ -1287,6 +1303,7 @@
       "currentMa": 35
     },
     "variantOf": "boss-dm-2-delay",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft analog delay with Standard/Custom modes, direct out and rate jack.",
     "year": 2014,
@@ -1354,6 +1371,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog delay with a direct output and 20–300 ms range; 1980s enclosure (70 x 125 mm).",
     "year": 1983,
@@ -1429,6 +1447,7 @@
       "acDc": "DC",
       "currentMa": 36
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Dynamic overdrive that responds to playing intensity.",
     "year": 2007,
@@ -1492,6 +1511,7 @@
       "currentMa": 10
     },
     "variantOf": "boss-ds-1-distortion",
+    "stereo": false,
     "usage": "guitar",
     "color": "gold",
     "notes": "Limited 40th Anniversary DS-1 with a gold finish; same circuit and controls as the standard DS-1.",
@@ -1561,6 +1581,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "orange",
     "notes": "The benchmark BOSS distortion; Level, Tone and Dist knobs.",
@@ -1625,6 +1646,7 @@
       "currentMa": 10
     },
     "variantOf": "boss-ds-1-distortion",
+    "stereo": false,
     "usage": "guitar",
     "color": "pearl white",
     "notes": "Limited-edition pearl-white DS-1 colorway; same circuit and controls as the standard DS-1.",
@@ -1708,6 +1730,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "orange",
     "notes": "Waza Craft DS-1 with Standard/Custom modes and a premium buffer.",
@@ -1771,6 +1794,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Special-edition distortion using BOSS X technology with Level, Tone and Dist controls.",
     "year": 2015,
@@ -1837,6 +1861,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Turbo Distortion with Mode II and a remote jack.",
     "year": 1987,
@@ -1903,6 +1928,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital sampler/delay with 200–800 ms sampling and a trigger input; 1980s enclosure (70 x 125 mm).",
     "year": 1985,

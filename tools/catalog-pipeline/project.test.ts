@@ -76,6 +76,30 @@ describe("raw → runtime projection", () => {
 		expect(pedal.power).toBeUndefined();
 	});
 
+	it("maps the pedal-level stereo spec from io", () => {
+		expect(projectPedal({ ...rawPedal, io: { stereo: true } }).stereo).toBe(
+			true,
+		);
+		expect(projectPedal({ ...rawPedal, io: { stereo: false } }).stereo).toBe(
+			false,
+		);
+	});
+
+	it("falls back to optional.audio when io has no stereo value", () => {
+		expect(
+			projectPedal({ ...rawPedal, optional: { audio: { stereo: true } } })
+				.stereo,
+		).toBe(true);
+		expect(
+			projectPedal({ ...rawPedal, optional: { audio: { stereo: false } } })
+				.stereo,
+		).toBe(false);
+	});
+
+	it("leaves stereo absent when no spec records it (unknown, not mono)", () => {
+		expect(projectPedal(rawPedal).stereo).toBeUndefined();
+	});
+
 	it("maps a board footprint and variant link", () => {
 		const board = projectBoard({
 			id: "acme-terra-24",

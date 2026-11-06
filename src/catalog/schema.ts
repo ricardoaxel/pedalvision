@@ -241,7 +241,7 @@ export const CatalogPedalSchema = z
 		variantOf: z.string().regex(ID_PATTERN).optional(),
 		/**
 		 * Pedal-level stereo capability from the recorded product spec
-		 * (`io.stereo` in the raw research archive). This is broader and more
+		 * (`io.stereo`, or `optional.audio.stereo` for batches that store it there). This is broader and more
 		 * reliable than the per-jack `stereo` flags (a stereo pedal may have an
 		 * unrecorded or mono-labelled jack). Absent = **unknown**, not mono.
 		 */

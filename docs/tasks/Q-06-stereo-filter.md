@@ -33,9 +33,9 @@ Current runtime catalog after adding the projection (picker total includes the
 lazy planner overlay):
 
 - **8,846** pedals in the picker (482 curated + 8,364 lazy planner-fill);
-- **108** curated pedals have `stereo: true`;
-- 268 have explicit `stereo: false`;
-- 106 are **unknown** (no spec value);
+- **122** curated pedals have `stereo: true`;
+- 280 have explicit `stereo: false`;
+- 80 are **unknown** (no spec value);
 - planner-fill rows have no stereo field.
 
 A match means `pedal.stereo === true` (the projected `io.stereo`). Ignore
@@ -46,7 +46,7 @@ never mono. No inference from names, descriptions or brands.
 ## Decisions (owner-approved 2026-11-05)
 
 1. **Semantics — corrected:** match when the recorded **pedal-level spec**
-   (`io.stereo` → runtime `stereo`) is `true`. Ignore per-jack `stereo` flags.
+   (`io.stereo` or `optional.audio.stereo` → runtime `stereo`) is `true`. Ignore per-jack `stereo` flags.
    A split “stereo in” / “stereo out” filter is a later extension.
 2. **Control form/placement — approved: “Jack Probe” form with the label
    “Stereo”.** A distinct toggle (`aria-pressed` button, rounded-rect + dual-ring
