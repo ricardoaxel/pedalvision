@@ -90,6 +90,13 @@ export function projectPedal(record: RawPedalRecord): CatalogPedal {
 	assigned(pedal, "jacks", jacks);
 	assigned(pedal, "power", projectPower(record));
 	assigned(pedal, "variantOf", record.variantOf);
+	// The audio spec lives under `io` in most batches and under
+	// `optional.audio` in some (e.g. BOSS); both are the same recorded fact.
+	assigned(
+		pedal,
+		"stereo",
+		record.io?.stereo ?? record.optional?.audio?.stereo,
+	);
 	assigned(pedal, "usage", record.usage);
 	assigned(pedal, "color", record.color);
 	assigned(pedal, "notes", record.notes);

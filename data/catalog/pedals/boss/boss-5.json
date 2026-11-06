@@ -16,6 +16,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Extreme high-gain distortion with a gain-boost switch, three-band tone stack and level control.",
     "status": "current",
@@ -99,6 +100,7 @@
       "acDc": "DC",
       "currentMa": 225
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Twelve modulation modes with 127 memories, stereo I/O, MIDI and expression control.",
     "status": "current",
@@ -183,6 +185,7 @@
       "acDc": "DC",
       "currentMa": 225
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship modulation processor with 12 modes, 297 memories, stereo I/O, 5-pin MIDI and USB.",
     "status": "current",
@@ -233,6 +236,7 @@
       "acDc": "DC",
       "currentMa": 190
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "97 effects, amp/cab modeling, 36+36 memories, a 38-second looper and a built-in expression pedal.",
     "status": "current",
@@ -284,6 +288,7 @@
       "acDc": "DC",
       "currentMa": 195
     },
+    "stereo": true,
     "usage": "bass",
     "notes": "Bass multi-effects with 93 effects, XLR balanced output, 36+36 memories and a built-in expression pedal.",
     "status": "current",
@@ -322,6 +327,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "High-gain metal distortion with low/high shelving EQ and a wide gain range.",
     "status": "current",
@@ -361,6 +367,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Multi-overtone/octave generator with detune, tone and balance controls plus two outputs.",
     "status": "current",
@@ -409,6 +416,7 @@
       "acDc": "DC",
       "currentMa": 280
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Combines a 112-effect multi-effects engine with a three-loop pedal switcher and 200 patches.",
     "status": "current",
@@ -447,6 +455,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Limited 30th-anniversary Metal Zone with black body, grey lettering and a vintage silver battery thumbscrew.",
     "year": 2021,
@@ -486,6 +495,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Iconic high-gain distortion with a three-band active EQ and semi-parametric midrange.",
     "year": 1991,
@@ -525,6 +535,7 @@
       "acDc": "DC",
       "currentMa": 35
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft Metal Zone with a Standard/Custom mode switch and premium analog components.",
     "status": "current",
@@ -565,6 +576,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage digital distortion with six modes plus doubling/chorus and two outputs.",
     "year": 1987,
@@ -610,6 +622,7 @@
       "acDc": "DC",
       "currentMa": 3.9
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage noise gate with SENS and DECAY controls and FET switching.",
     "status": "discontinued",
@@ -654,6 +667,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modern noise suppressor with three modes, decay/damp controls and a send/return loop.",
     "status": "current",
@@ -692,6 +706,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Classic noise suppressor with a send/return loop, mode switch and decay/threshold controls.",
     "status": "current",
@@ -730,6 +745,7 @@
       "acDc": "DC",
       "currentMa": 4
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Legendary mono octave with independent −1 and −2 octave levels plus direct level.",
     "year": 1982,
@@ -770,6 +786,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "World’s first polyphonic octave pedal for GK-equipped guitars, with per-string octave assignment, guitar simulations and distortion.",
     "status": "discontinued",
@@ -814,6 +831,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Polyphonic octave with guitar/bass inputs, DIRECT OUT and a four-mode control.",
     "status": "discontinued",
@@ -852,6 +870,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Modern octave with vintage OC-2 and polyphonic modes, octave-up and a direct output.",
     "status": "current",
@@ -890,6 +909,7 @@
       "acDc": "DC",
       "currentMa": 3.5
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "The original BOSS overdrive: asymmetric clipping, LEVEL and OVER DRIVE controls.",
     "status": "discontinued",
@@ -940,6 +960,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Digital MDP overdrive with LEVEL, LOW, HIGH and DRIVE controls and wide dynamic range.",
     "status": "current",
@@ -979,6 +1000,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Mid-1980s overdrive with a TURBO switch that adds a higher-gain distortion voice.",
     "status": "discontinued",
@@ -1024,6 +1046,7 @@
       "acDc": "DC",
       "currentMa": 85
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Twin-footswitch drive workstation with 22 overdrive/distortion models, four memories and amp control.",
     "status": "discontinued",
@@ -1095,6 +1118,7 @@
       "acDc": "DC",
       "currentMa": 220
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Hybrid analog/digital drive with 12 modes, 127 memories, MIDI and expression control.",
     "status": "current",
@@ -1134,6 +1158,7 @@
       "acDc": "DC",
       "currentMa": 16
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "OD-2 variant with a REMOTE jack for external turbo switching and a PSA-compatible power section.",
     "status": "discontinued",
@@ -1178,6 +1203,7 @@
       "acDc": "DC",
       "currentMa": 15
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Smooth, natural overdrive with DRIVE, TONE and LEVEL controls and a wide gain range.",
     "status": "current",

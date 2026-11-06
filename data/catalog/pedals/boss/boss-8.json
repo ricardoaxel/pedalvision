@@ -71,6 +71,7 @@
       "acDc": "DC",
       "currentMa": 400
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Guitar synthesizer with three oscillators, four simultaneous FX blocks, 24-bit/44.1 kHz processing and 99 user + 70 preset patches.",
     "status": "current",
@@ -143,6 +144,7 @@
       "acDc": "DC",
       "currentMa": 80
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Compact bass synthesizer with two synth methods and a T-wah; 11 modes, stereo effect/direct outputs and an EXP jack.",
     "status": "discontinued",
@@ -209,6 +211,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "bass",
     "notes": "Compact bass synthesizer with four knobs, stereo effect/direct outputs and an EXP jack for expression control.",
     "status": "discontinued",
@@ -267,6 +270,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft limited-edition Tone Bender fuzz with ATTACK and LEVEL knobs, battery switch and switchable buffered/true bypass.",
     "status": "discontinued",
@@ -333,6 +337,7 @@
       "acDc": "DC",
       "currentMa": 90
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo delay with E. LEVEL, TONE, FEEDBACK and S-TIME controls and BOSS MDP processing.",
     "status": "current",
@@ -391,6 +396,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact tremolo with DEPTH, RATE and WAVE controls and buffered bypass.",
     "status": "current",
@@ -449,6 +455,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Desktop chromatic tuner with needle meter, Accu-Pitch, built-in mic and guitar/bass modes.",
     "status": "discontinued",
@@ -507,6 +514,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Desktop high-range chromatic tuner with meter, built-in microphone and guitar/bass modes.",
     "status": "discontinued",
@@ -573,6 +581,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Compact chromatic tuner with high-brightness display, bypass output and DC OUT for powering another pedal.",
     "status": "current",
@@ -641,6 +650,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Space-saving chromatic tuner with a shortened footprint, high-brightness display and DC OUT.",
     "status": "current",
@@ -713,6 +723,7 @@
       "acDc": "DC",
       "currentMa": 50
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Waza Craft chromatic tuner with switchable buffered/true bypass, bypass output and DC OUT.",
     "status": "current",
@@ -777,6 +788,7 @@
       "acDc": "DC",
       "currentMa": 6
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Envelope-controlled T-wah with SENS and PEAK knobs and a DRIVE up/down switch; usable with guitar, bass and electronic piano.",
     "status": "discontinued",
@@ -835,6 +847,7 @@
       "acDc": "DC",
       "currentMa": 8.5
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vintage BBD vibrato with RATE, DEPTH, RISE TIME and MODE (LATCH/BYPASS/UNLATCH) controls.",
     "status": "discontinued",
@@ -897,6 +910,7 @@
       "acDc": "DC",
       "currentMa": 35
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Waza Craft BBD vibrato with RATE, DEPTH, RISE TIME and MODE knobs, Standard/Custom switch and DEPTH expression jack.",
     "status": "current",
@@ -968,6 +982,7 @@
       "acDc": "DC",
       "currentMa": 190
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Vocal performer with harmony/pitch correction, reverb, 3-band EQ, distortion and a 38-second phrase loop.",
     "status": "discontinued",
@@ -1058,6 +1073,7 @@
       "acDc": "DC",
       "currentMa": 260
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Vocal performer with 39 effect types, harmony, pitch correction, color LCD, 37-second loop and USB audio/MIDI.",
     "status": "current",
@@ -1150,6 +1166,7 @@
       "acDc": "DC",
       "currentMa": 310
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Vocal performer with harmony, pitch correction, reverb, delay, EQ, compressor, MIDI and USB audio/MIDI.",
     "status": "current",
@@ -1253,6 +1270,7 @@
       "acDc": "DC",
       "currentMa": 360
     },
+    "stereo": true,
     "usage": "unknown",
     "notes": "Acoustic singer processor for voice and guitar with harmony, acoustic resonance, effects, 80-second loop and USB audio/MIDI.",
     "status": "current",
@@ -1364,6 +1382,7 @@
       "acDc": "DC",
       "currentMa": 690
     },
+    "stereo": true,
     "usage": "both",
     "notes": "V-Guitar processor with GK input, amp/cab modeling, synth and 150 guitar + 150 bass memories; over 150 effect types.",
     "status": "current",
@@ -1440,6 +1459,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Compact vocoder with four modes (Advanced, Vintage, Talk Box, Choir), XLR mic input and SEND/RETURN loop.",
     "status": "current",
@@ -1502,6 +1522,7 @@
       "acDc": "DC",
       "currentMa": 60
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Pedalboard wireless system: 7.2 x 12.1 cm receiver, WL-T transmitter, cable-tone simulation and 2.3 ms latency.",
     "status": "current",
@@ -1566,6 +1587,7 @@
       "acDc": "DC",
       "currentMa": 110
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Wireless system with a pedalboard receiver, graphic LCD, automatic channel scan and WL-60T transmitter.",
     "status": "current",
@@ -1642,6 +1664,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "GK-effect wave processor with six synth waves (Saw Lead, Square, Ring Mod, Slow Gear, Sitar, Acoustic) and 11 chorus/delay effects.",
     "status": "discontinued",
@@ -1704,6 +1727,7 @@
       "acDc": "DC",
       "currentMa": 120
     },
+    "stereo": false,
     "usage": "both",
     "notes": "Compact polyphonic pitch shifter with BALANCE and SHIFT knobs, pedal-mode/direction switches and CTL/EXP jack.",
     "status": "current",
@@ -1786,6 +1810,7 @@
       "acDc": "DC",
       "currentMa": 160
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Poly shifters with onboard EXP pedal, 30 memories, stereo outputs, MIDI and USB; 24-bit/48 kHz processing.",
     "status": "current",

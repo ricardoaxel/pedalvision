@@ -50,6 +50,7 @@
       "acDc": "DC",
       "currentMa": 7
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "cream",
     "notes": "Six-band analog graphic equalizer (100 Hz–3.2 kHz) with ±15 dB per band and no master level control.",
@@ -90,6 +91,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "grey",
     "notes": "Seven-band graphic equalizer with LEVEL control, ±15 dB per band and a wide 100 Hz–6.4 kHz range.",
@@ -130,6 +132,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "bass",
     "color": "brown",
     "notes": "Seven-band bass equalizer with ±15 dB per band and a LEVEL control, voiced for bass frequencies.",
@@ -166,6 +169,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop audio streaming mixer for musicians with guitar/mic/instrument inputs, onboard GT-derived effects and USB-C streaming.",
     "year": 2023,
@@ -201,6 +205,7 @@
       "utility"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Eight-channel desktop streaming mixer with four combo inputs, guitar/bass effects, vocal processing, sound pads and microSD recording.",
     "year": 2023,
@@ -235,6 +240,7 @@
       "synth"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop guitar synthesizer with GK serial pickup input, 128-voice polyphony and deep synthesis/effects processing.",
     "year": 2023,
@@ -274,6 +280,7 @@
       "reverb"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "GK-compatible guitar processor with COSM amp models, guitar synth, alternate tuning, poly effects and a built-in expression pedal.",
     "year": 2014,
@@ -314,6 +321,7 @@
       "chorus"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Early BOSS amp-modeling multi-effect with 16 amp types, effects and stereo outputs.",
     "year": 1996,
@@ -362,6 +370,7 @@
       "acDc": "DC",
       "currentMa": 200
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact floor multi-effects with 108 effects, amp models, 99 user patches, four AA batteries or AC power.",
     "year": 2017,
@@ -406,6 +415,7 @@
       "synth"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship floor guitar processor with AIRD amp modeling, dual effects loops, XLR sub outputs, MIDI and USB audio.",
     "year": 2018,
@@ -450,6 +460,7 @@
       "synth"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact GT-1000 engine with dual effects loops, stereo I/O, IR loading, MIDI and USB audio; three footswitches plus an expression input.",
     "year": 2020,
@@ -498,6 +509,7 @@
       "acDc": "AC",
       "currentMa": 650
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Flagship floor processor of the mid-2000s with COSM amp models, 44-bit DSP, dual foot controllers and digital out.",
     "year": 2005,
@@ -546,6 +558,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact floor multi-effects with AIRD amp models, colour display, four AA batteries or USB bus power.",
     "year": 2024,
@@ -589,6 +602,7 @@
       "pitch"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Mid-size GX floor processor with colour display, AIRD amp models, effects loop, USB-C and Bluetooth adaptor support.",
     "year": 2024,
@@ -632,6 +646,7 @@
       "pitch"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Large-format GX floor processor with touchscreen, AIRD amp models, effects loop, MIDI and Bluetooth adaptor support.",
     "year": 2022,
@@ -681,6 +696,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "bass",
     "notes": "Bass version of the GX-1 compact floor processor with AIRD bass amps, colour display, four AA batteries or USB bus power.",
     "year": 2024,
@@ -720,6 +736,7 @@
       "acDc": "DC",
       "currentMa": 18
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "light purple",
     "notes": "Flanger voiced an octave above the standard band, with MANUAL, DEPTH, RATE and RESONANCE controls.",
@@ -760,6 +777,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Legendary high-gain distortion with DIST, LEVEL and separate COLOR MIX L/H tone controls; the basis of the “chainsaw” death-metal tone.",
@@ -800,6 +818,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "black",
     "notes": "Waza Craft reissue of the HM-2 with Standard/Custom mode and the original DIST, COLOR MIX L/H and LEVEL controls.",
@@ -841,6 +860,7 @@
       "acDc": "DC",
       "currentMa": 160
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Compact amp/cab simulator with 11 onboard amp types, Celestion IRs, stereo outputs and USB-C for IR loading.",
     "year": 2023,
@@ -876,6 +896,7 @@
       "cab-sim"
     ],
     "category": "pedal",
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop amp/IR cabinet processor with 128 IR slots, stereo outputs, effects loop, MIDI and USB audio.",
     "year": 2021,
@@ -916,6 +937,7 @@
       "acDc": "DC",
       "currentMa": 55
     },
+    "stereo": false,
     "usage": "guitar",
     "color": "red/white",
     "notes": "BOSS/JHS collaboration pairing a BD-2 Blues Driver circuit with a JHS Angry Charlie, selectable and stackable via the mode switch.",
@@ -956,6 +978,7 @@
       "acDc": "DC",
       "currentMa": 12
     },
+    "stereo": false,
     "usage": "both",
     "color": "blue",
     "notes": "Analog VCA limiter with LEVEL, TONE, RELEASE and THRESHOLD controls; popular with bass players for transparent peak control.",
@@ -997,6 +1020,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "bass",
     "color": "black",
     "notes": "Bass limiter/enhancer with THRESHOLD, RATIO, ENHANCE and LEVEL controls for transparent dynamics control.",
@@ -1038,6 +1062,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": false,
     "usage": "both",
     "color": "white",
     "notes": "Two-loop line selector for A/B switching, bypassing or blending two effects chains; can also daisy-chain power.",

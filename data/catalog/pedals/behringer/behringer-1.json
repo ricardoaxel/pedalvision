@@ -403,6 +403,7 @@
       "acDc": "DC",
       "currentMa": 400
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Modular-synth-style resonance filter with envelope follower, CV input, stereo outputs and MIDI input.",
     "confidence": "confirmed",
@@ -483,6 +484,7 @@
       "acDc": "DC",
       "currentMa": 30
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Analog 3-dimensional stereo chorus with four combinable space presets (BOSS Dimension C style).",
     "confidence": "confirmed",
@@ -566,6 +568,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "notes": "Vintage 70s-style BBD chorus and vibrato with variable input range and wide stereo output.",
     "confidence": "confirmed",
@@ -689,6 +692,7 @@
       "acDc": "DC",
       "currentMa": 70
     },
+    "stereo": true,
     "usage": "both",
     "notes": "24-bit digital stereo delay with tap tempo and pan output; 9 V battery or adapter.",
     "confidence": "confirmed",
@@ -726,6 +730,7 @@
       "acDc": "DC",
       "currentMa": 90
     },
+    "stereo": true,
     "usage": "both",
     "notes": "24-bit digital stereo reverb with hall, plate, spring, gate, room and modulate modes; 9 V battery or adapter.",
     "confidence": "confirmed",

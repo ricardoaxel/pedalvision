@@ -18,8 +18,23 @@ export interface PedalFilter {
 	brand: string | null;
 	/** Matches an item sharing ANY selected effect type (OR). */
 	effectTypes: EffectType[];
+	/**
+	 * When true, keep only pedals whose recorded product spec says they are
+	 * stereo-capable. This reads the pedal-level `stereo` field (projected from
+	 * the raw `io.stereo`), not the per-jack flags; absent data is unknown.
+	 */
+	stereo?: boolean;
 	/** Deterministic order; defaults to relevance. */
 	sort?: PickerSort;
+}
+
+/**
+ * True when the catalog's product spec records stereo capability. This is the
+ * pedal-level `stereo` field (raw `io.stereo`), never inferred from jack data,
+ * names or descriptions. A missing value is **unknown**, not mono.
+ */
+export function hasRecordedStereo(pedal: CatalogPedal): boolean {
+	return pedal.stereo === true;
 }
 
 export interface BoardFilter {
@@ -380,6 +395,7 @@ export function filterPedalIndex(
 			) {
 				return false;
 			}
+			if (filter.stereo === true && !hasRecordedStereo(pedal)) return false;
 			return true;
 		},
 	);

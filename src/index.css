@@ -1376,6 +1376,29 @@ body {
 	text-underline-offset: 2px;
 }
 
+/* Q-06 "Jack Probe": the Stereo filter leads the chip row but reads as a
+ * field toggle, not an effect chip (rounded rect + dual-ring jack glyph +
+ * a thin separator). Same tokens, no new palette. */
+.picker__stereo {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	border-radius: var(--radius-control);
+	font-weight: var(--font-weight-medium);
+}
+
+.picker__stereo-glyph {
+	flex: 0 0 auto;
+}
+
+.picker__chip-sep {
+	flex: 0 0 auto;
+	align-self: center;
+	width: 1px;
+	height: 20px;
+	background-color: var(--color-border-strong);
+}
+
 /* ---- Ledger: results (rows) ------------------------------------------------ */
 
 .picker__results {
@@ -2661,6 +2684,7 @@ input[type="search"]::-webkit-search-decoration {
 	/* One scrollable chip row keeps the result list (and the empty state) in
 	 * the first viewport on a phone; the old wrap ate the whole sheet. */
 	.picker__chips {
+		align-items: center;
 		flex-wrap: nowrap;
 		overflow-x: auto;
 		overflow-y: hidden;
@@ -2685,6 +2709,11 @@ input[type="search"]::-webkit-search-decoration {
 
 	.picker__chips::-webkit-scrollbar {
 		display: none;
+	}
+
+	/* Touch target (the desktop toggle matches the 32px chips). */
+	.picker__stereo {
+		min-height: 44px;
 	}
 
 	.picker__clear-inline {

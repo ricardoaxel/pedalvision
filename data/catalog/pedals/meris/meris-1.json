@@ -42,6 +42,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "both",
     "color": "gold",
     "notes": "Meris Enzo: multi-voice instrument synthesizer with Poly, Mono and Arp modes, 6-mode filter, ring modulation, tap delay and a dry-mode compressor; stereo TRS in/out, 9V DC at under 150 mA.",
@@ -145,6 +146,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "gold",
     "notes": "Meris Enzo X: modular polyphonic instrument synthesizer with 5 synth modes, 6 voices, ADSR envelopes, MercuryX-derived reverbs, 2.5 s stereo delay, drives and modulation, all in a double-width enclosure with DIN MIDI and USB-C.",
@@ -213,6 +215,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "silver",
     "notes": "Meris Hedra: 3-voice rhythmic pitch shifter with chromatic or key-based harmony, per-voice time divisions, 4 delay matrices and glide/pitch-correction modes; 9V DC, under 150 mA.",
@@ -308,6 +311,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "white",
     "notes": "Meris LVX: modular stereo delay system with 2540 ms of configurable dual delay, a 60-second true stereo looper, modular processing elements (preamps, pitch, filter, cassette, granulize) and full DIN MIDI; 9V DC, 300 mA.",
@@ -375,6 +379,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "blue",
     "notes": "Meris Mercury7: Blade Runner-inspired algorithmic reverb with Ultraplate and Cathedra algorithms, intra-tank pitch vector, modulation matrix and auto swell; stereo TRS I/O, 9V DC under 150 mA.",
@@ -468,6 +473,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "blue",
     "notes": "Meris MercuryX: modular studio-grade reverb system with 8 custom structures (Ultraplate, Cathedra, 78 Room/Plate/Hall, Spring, Prism, Gravity), 2.54 s stereo predelay, freeze and modulation elements; DIN MIDI plus USB-C.",
@@ -597,6 +603,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "black",
     "notes": "Meris Ottobit Jr.: arcade-inspired degradation pedal combining variable sample-rate/bit-depth crushing, a resonant low-pass filter, triggered stutter and a pitch/filter/decimation step sequencer; 9V DC under 150 mA.",
@@ -697,6 +704,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "both",
     "color": "black",
     "notes": "Meris Ottobit X: full-stereo '80s-inspired modular degradation engine with advanced bitcrusher, six glitch types, two one-button loopers, tape stop, VHS delay/reverb, pitch, filter, mod and preamp categories; DIN MIDI plus USB-C.",
@@ -766,6 +774,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "color": "white",
     "notes": "Meris Polymoon: super-modulated multi-tap delay with a 1200 ms delay line, six LFOs, tilt EQ in the feedback path, stereo barberpole phaser and dynamic flanger; 9V DC under 150 mA.",

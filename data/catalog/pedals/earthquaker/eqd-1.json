@@ -34,6 +34,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Passive A/B selector; requires 9 V DC for the status LED only.",
     "status": "current",
@@ -86,6 +87,7 @@
       "acDc": "DC",
       "currentMa": 18
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modeled after a cranked Sunn Model T power amp.",
     "status": "current",
@@ -133,6 +135,7 @@
         "edge": "top"
       }
     ],
+    "stereo": false,
     "usage": "guitar",
     "notes": "Original Afterneath (V1); replaced by Afterneath V3.",
     "status": "discontinued",
@@ -189,6 +192,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Enhanced Otherworldly Reverberator with 9 modes and expression control.",
     "status": "current",
@@ -246,6 +250,7 @@
       "currentMa": 100
     },
     "variantOf": "earthquaker-afterneath-v3",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Pastel Purple finish variant of Afterneath V3.",
     "status": "current",
@@ -303,6 +308,7 @@
       "currentMa": 100
     },
     "variantOf": "earthquaker-afterneath-v3",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Raw finish variant of Afterneath V3.",
     "status": "current",
@@ -355,6 +361,7 @@
       "acDc": "DC",
       "currentMa": 68
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Vibrato with modes and expression control.",
     "status": "current",
@@ -407,6 +414,7 @@
       "acDc": "DC",
       "currentMa": 65
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Polyphonic pitch arpeggiator.",
     "status": "current",
@@ -460,6 +468,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Original Arrows pre-amp booster (wedge enclosure); replaced by Arrows V2.",
     "status": "discontinued",
@@ -513,6 +522,7 @@
       "acDc": "DC",
       "currentMa": 8
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Pre-amp booster in the compact 121 x 64 mm enclosure.",
     "status": "current",
@@ -570,6 +580,7 @@
       "acDc": "DC",
       "currentMa": 85
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Octal octave reverberation with 8 modes and 8 presets.",
     "status": "current",
@@ -628,6 +639,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Tri-voice chorus with 6 presets and expression control.",
     "status": "current",
@@ -689,6 +701,7 @@
       "acDc": "DC",
       "currentMa": 410
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Original Avalanche Run stereo reverb and delay; replaced by V2.",
     "status": "discontinued",
@@ -750,6 +763,7 @@
       "acDc": "DC",
       "currentMa": 410
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Stereo reverb and delay with tap tempo and expression control.",
     "status": "current",
@@ -804,6 +818,7 @@
       "currentMa": 410
     },
     "variantOf": "earthquaker-avalanche-run-v2",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Black finish variant of Avalanche Run V2.",
     "status": "current",
@@ -858,6 +873,7 @@
       "currentMa": 410
     },
     "variantOf": "earthquaker-avalanche-run-v2",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Mint finish variant of Avalanche Run V2.",
     "status": "current",
@@ -912,6 +928,7 @@
       "currentMa": 410
     },
     "variantOf": "earthquaker-avalanche-run-v2",
+    "stereo": false,
     "usage": "guitar",
     "notes": "Purple Sparkle finish variant of Avalanche Run V2.",
     "status": "current",
@@ -964,6 +981,7 @@
       "acDc": "DC",
       "currentMa": 10
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz Attacker; three-transistor TB MkII-inspired circuit.",
     "status": "current",
@@ -1017,6 +1035,7 @@
       "acDc": "DC",
       "currentMa": 13
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz driver / amp-like overdrive; 9 V battery or DC.",
     "status": "current",
@@ -1070,6 +1089,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog octave synth.",
     "status": "current",
@@ -1123,6 +1143,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Limited run (1500 units worldwide) fuzz/overdrive inspired by the three-knob Bender.",
     "status": "discontinued",
@@ -1175,6 +1196,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Low signal shredder / bass overdrive.",
     "status": "current",
@@ -1228,6 +1250,7 @@
       "acDc": "DC",
       "currentMa": 9
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Germanium preamp built around a NOS OC139 transistor; 9 V battery or DC.",
     "status": "current",
@@ -1280,6 +1303,7 @@
       "acDc": "DC",
       "currentMa": 14
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Fuzz grinder; 9 V battery or DC.",
     "status": "current",
@@ -1334,6 +1358,7 @@
       "acDc": "DC",
       "currentMa": 26
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Modulated monophonic harmonizing PLL.",
     "status": "current",
@@ -1386,6 +1411,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Small signal shredder; substitutes Black Eye (no verifiable official spec page).",
     "status": "current",

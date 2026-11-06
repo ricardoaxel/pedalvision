@@ -187,6 +187,7 @@ export function Picker({
 	const [query, setQuery] = useState("");
 	const [brand, setBrand] = useState<string | null>(null);
 	const [effectTypes, setEffectTypes] = useState<EffectType[]>([]);
+	const [stereo, setStereo] = useState(false);
 	const [sort, setSort] = useState<PickerSort>("relevance");
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	/** The item shown in the specimen pane (hover/keyboard-active). */
@@ -292,6 +293,7 @@ export function Picker({
 		setQuery("");
 		setBrand(null);
 		setEffectTypes([]);
+		setStereo(false);
 		setSort("relevance");
 		setShowAllEffects(false);
 		setActiveId(null);
@@ -385,7 +387,7 @@ export function Picker({
 	}, [open, onClose]);
 
 	const plannerVersion = usePlannerCatalog((state) => state.version);
-	const filterKey = `${tab}|${query}|${brand ?? ""}|${effectTypes.join(",")}|${sort}`;
+	const filterKey = `${tab}|${query}|${brand ?? ""}|${effectTypes.join(",")}|${stereo ? "stereo" : ""}|${sort}`;
 	const [visible, setVisible] = useState({
 		key: filterKey,
 		count: PICKER_PAGE,
@@ -403,8 +405,9 @@ export function Picker({
 	const boardIndex = useMemo(() => buildBoardIndex(allBoards), [allBoards]);
 
 	const filteredPedals = useMemo(
-		() => filterPedalIndex(pedalIndex, { query, brand, effectTypes, sort }),
-		[pedalIndex, query, brand, effectTypes, sort],
+		() =>
+			filterPedalIndex(pedalIndex, { query, brand, effectTypes, stereo, sort }),
+		[pedalIndex, query, brand, effectTypes, stereo, sort],
 	);
 	const pedals = useMemo(
 		() => filteredPedals.slice(0, visiblePedals),
@@ -686,6 +689,7 @@ export function Picker({
 	const queryEcho = query.trim();
 	const filterSummary = [
 		brand,
+		stereo ? "Stereo" : null,
 		effectTypes.length > 0
 			? effectTypes.map((type) => effectLabel(type)).join(", ")
 			: null,
@@ -1135,8 +1139,45 @@ export function Picker({
 											{isBoards ? null : (
 												<fieldset className="picker__chips">
 													<legend className="visually-hidden">
-														Effect type
+														Pedal filters
 													</legend>
+													<button
+														type="button"
+														className="picker__chip picker__stereo"
+														data-testid="picker-stereo"
+														aria-pressed={stereo}
+														aria-describedby="picker-stereo-note"
+														onClick={() => setStereo((value) => !value)}
+													>
+														<svg
+															className="picker__stereo-glyph"
+															width="16"
+															height="16"
+															viewBox="0 0 16 16"
+															fill="none"
+															stroke="currentColor"
+															strokeWidth="1.6"
+															strokeLinecap="round"
+															aria-hidden="true"
+														>
+															<circle cx="6.5" cy="8" r="5.25" />
+															<circle cx="6.5" cy="8" r="1.75" />
+															<path d="M11.75 8h2.75" />
+														</svg>
+														Stereo
+													</button>
+													<span
+														className="picker__chip-sep"
+														aria-hidden="true"
+													/>
+													<span
+														id="picker-stereo-note"
+														className="visually-hidden"
+													>
+														Filters to pedals whose catalog spec records stereo
+														capability. Pedals without a recorded stereo spec
+														are not shown.
+													</span>
 													{visibleEffects.map((type) => (
 														<button
 															key={type}
@@ -1191,6 +1232,11 @@ export function Picker({
 															{emptyFilters}
 														</p>
 													) : null}
+													{stereo ? (
+														<p className="picker__empty-detail">
+															Stereo is only known where the catalog records it.
+														</p>
+													) : null}
 												</div>
 												<button
 													type="button"
@@ -1199,6 +1245,7 @@ export function Picker({
 														setQuery("");
 														setBrand(null);
 														setEffectTypes([]);
+														setStereo(false);
 														requestAnimationFrame(() =>
 															searchRef.current?.focus(),
 														);

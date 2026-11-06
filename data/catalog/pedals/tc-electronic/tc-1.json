@@ -54,6 +54,7 @@
       "acDc": "DC",
       "currentMa": 250
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Desktop 2290 P reissue: stereo dynamic digital delay with presets, MIDI IN and OUT/THRU, USB-C editor, expression control and an amp send/return loop; 9 V DC 250 mA.",
     "status": "current",
@@ -113,6 +114,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog BBD recreation of an 80s chorus with a 4-button preset system (up to 16 combinations) instead of knobs; true bypass.",
     "status": "current",
@@ -166,6 +168,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog BBD chorus with Speed, Depth, Delay Time and Mix controls; true bypass.",
     "status": "current",
@@ -211,6 +214,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "TonePrint vintage-echo delay with tap tempo and stereo outputs.",
     "status": "discontinued",
@@ -250,6 +254,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Large-format TonePrint vintage echo with four presets, tap tempo and stereo I/O.",
     "status": "discontinued",
@@ -313,6 +318,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx high-gain V550 preamp: component-based amp modelling with cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -383,6 +389,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx Fender-style blackface combo preamp with spring reverb, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -452,6 +459,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx Vox-style DC30 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -521,6 +529,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx high-gain Dual Wreck preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -590,6 +599,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx Marshall-style Jims 45 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -659,6 +669,7 @@
       "acDc": "DC",
       "currentMa": 300
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Ampworx high-gain Jims 800 preamp with component-based amp modelling, cab simulation, DI/headphone output and USB audio.",
     "status": "current",
@@ -704,6 +715,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "TonePrint stereo reverb with four Arena-specific modes, spillover, analog dry-through and switchable kill-dry.",
     "status": "discontinued",
@@ -757,6 +769,7 @@
       "acDc": "DC",
       "currentMa": 25
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog four-stage phaser with Rate, Depth and Feedback controls; true bypass.",
     "status": "current",
@@ -803,6 +816,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Acoustic pickup enhancer that restores body/resonance and controls feedback for piezo-equipped acoustics.",
     "status": "current",
@@ -848,6 +862,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact always-on analog buffer that preserves signal integrity through long cable runs and true-bypass pedalboards.",
     "status": "current",
@@ -919,6 +934,7 @@
       "acDc": "DC",
       "currentMa": 85
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Pitch shifter with two independent voices, up to two octaves each, TonePrint and MASH expression control.",
     "status": "current",
@@ -978,6 +994,7 @@
       "acDc": "DC",
       "currentMa": 40
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact all-analog BBD delay (up to 600 ms) with Delay, Feedback, Vol, Depth and Mod controls.",
     "status": "current",
@@ -1037,6 +1054,7 @@
       "acDc": "DC",
       "currentMa": 20
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog transparent overdrive with Drive, Level, Bass and Treble controls; true bypass.",
     "status": "current",
@@ -1082,6 +1100,7 @@
       "acDc": "DC",
       "currentMa": 75
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "TonePrint stereo chorus with SCF and Tri-Chorus modes and custom artist TonePrints.",
     "status": "discontinued",
@@ -1121,6 +1140,7 @@
       "acDc": "DC",
       "currentMa": 68
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Mini TonePrint chorus with Speed, Depth and Level controls; true bypass.",
     "status": "current",
@@ -1174,6 +1194,7 @@
       "acDc": "DC",
       "currentMa": 5
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Analog distortion with Gain, Level, Voice and Treble controls; true bypass.",
     "status": "current",
@@ -1219,6 +1240,7 @@
       "acDc": "DC",
       "currentMa": 100
     },
+    "stereo": false,
     "usage": "guitar",
     "notes": "Compact looper with the Ditto app (loop storage/management) over USB-C, loop level knob and Pair/User/Ditto side switch.",
     "status": "current",
@@ -1264,6 +1286,7 @@
       "acDc": "DC",
       "currentMa": 150
     },
+    "stereo": true,
     "usage": "guitar",
     "notes": "Two-track looper with BeatSense automatic BPM detection that keeps loops in time with a live band or backing track.",
     "status": "discontinued",
