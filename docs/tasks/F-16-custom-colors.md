@@ -103,6 +103,13 @@ mark, not a product colorway.
   roving tabindex; native radio group + native color input; custom-only contrast
   pip described via `aria-describedby`; read-only unmounts the control; no new
   animation (reduced-motion tokens = 0 ms).
+- **Custom picker — live apply (owner-reported fix, 2026-11-06):** the native
+  picker applies **live on `input`**, coalesced by a `history` hold so one pick is
+  still **one undo step**. `change`, outside-click/Escape, trigger close and
+  unmount commit the final value and release the hold. A dismiss **without
+  opening the picker** is a no-op (Default never becomes `#000000`); a fixed ink
+  or Default ends any hold first. Streaming after a mid-pick undo re-begins the
+  hold.
 
 ## Read first (context pack)
 
@@ -189,6 +196,9 @@ mark, not a product colorway.
   choosing a color draws a colored border around that board while its finish
   is unchanged.
 - **Default** removes `color` from the item/board (no field stored).
+- A custom pick applies **live**, survives an outside click/Escape/trigger close
+  as one undo step, and dismissing without a pick leaves the item/board
+  unchanged (never writes black).
 - The change is one undoable history step and autosaves.
 - Reload restores the colors; `sceneDocument` round-trips them; old documents
   with no color still load.

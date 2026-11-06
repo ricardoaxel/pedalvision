@@ -16,6 +16,11 @@ import {
 	sceneColorWarning,
 } from "../lib/sceneColor";
 import {
+	beginHistoryHold,
+	endHistoryHold,
+	isHistoryHoldActive,
+} from "../state/history";
+import {
 	ACTION_BAR_GAP,
 	ACTION_BAR_MARGIN,
 	SCENE_COLOR_POPOVER_HEIGHT as POPOVER_HEIGHT,
@@ -142,7 +147,140 @@ export function SceneColorControl({
 		};
 	}, [open]);
 
-	// Focus the selected option, dismiss on outside press / Escape.
+	// Custom input: live-apply the native picker's streamed `input` events, and
+	// hold history until the pick ends (`change` or dismiss) so one pick = one
+	// undo step. Committing on close also covers platforms where `change` never
+	// arrives before the popover unmounts (owner-reported defect).
+	const customValue = normalized ?? "#000000";
+	const customValueRef = useRef(customValue);
+	customValueRef.current = customValue;
+	const onChangeRef = useRef(onChange);
+	onChangeRef.current = onChange;
+	const currentColorRef = useRef(normalized);
+	currentColorRef.current = normalized;
+	const draftRef = useRef<string | null>(null);
+	/** The native input value when the OS picker opened; distinguishes a cancel
+	 * from a change on platforms that fire only `change`. */
+	const pickerStartRef = useRef<string | null>(null);
+	const holdActive = useRef(false);
+
+	const commitCustom = useCallback(() => {
+		const raw = customInputElement.current?.value ?? draftRef.current;
+		const next = normalizeHexColor(raw);
+		if (!next) return null;
+		// Same value as the store: no-op (the mutator would also dedupe).
+		if (next === currentColorRef.current) return next;
+		// A cancel that only fires `change` (no streamed `input`) must not apply
+		// the picker's initial value — notably Default's placeholder black.
+		if (
+			!holdActive.current &&
+			next === normalizeHexColor(pickerStartRef.current)
+		) {
+			return next;
+		}
+		onChangeRef.current(next);
+		return next;
+	}, []);
+
+	const endCustomHold = useCallback(() => {
+		if (!holdActive.current) return;
+		// undo/redo/clearHistory can drain the global hold first; do not re-apply
+		// the streamed value against the reverted store.
+		if (!isHistoryHoldActive()) {
+			holdActive.current = false;
+			return;
+		}
+		commitCustom();
+		endHistoryHold();
+		holdActive.current = false;
+	}, [commitCustom]);
+
+	const handleCustomInput = useCallback(() => {
+		const input = customInputElement.current;
+		if (input) draftRef.current = input.value;
+		// undo/redo/clearHistory may have drained the hold mid-pick; start a
+		// fresh one so the remaining stream still coalesces into one step.
+		if (holdActive.current && !isHistoryHoldActive()) {
+			holdActive.current = false;
+		}
+		if (!holdActive.current) {
+			beginHistoryHold();
+			holdActive.current = true;
+		}
+		commitCustom();
+	}, [commitCustom]);
+
+	const handleCustomChange = useCallback(() => {
+		const input = customInputElement.current;
+		if (input) draftRef.current = input.value;
+		if (holdActive.current) endCustomHold();
+		else commitCustom();
+	}, [endCustomHold, commitCustom]);
+
+	const setCustomInput = useCallback(
+		(node: HTMLInputElement | null) => {
+			const previous = customInputElement.current;
+			if (previous) {
+				previous.removeEventListener("input", handleCustomInput);
+				previous.removeEventListener("change", handleCustomChange);
+			}
+			customInputElement.current = node;
+			if (!node) return;
+			node.value = customValueRef.current;
+			draftRef.current = node.value;
+			// Seed the picker-start value too: dismissing the panel without ever
+			// opening the native picker must not apply Default's placeholder black.
+			pickerStartRef.current = node.value;
+			node.addEventListener("input", handleCustomInput);
+			node.addEventListener("change", handleCustomChange);
+		},
+		[handleCustomInput, handleCustomChange],
+	);
+	useEffect(() => {
+		const input = customInputElement.current;
+		if (!input) return;
+		input.value = customValue;
+		draftRef.current = customValue;
+		// The programmatic value changed (Default/fixed ink or a live commit), so
+		// the picker's start is now this value: dismissing without opening the
+		// native picker must never apply a stale placeholder.
+		pickerStartRef.current = customValue;
+	}, [customValue]);
+
+	const openNativePicker = useCallback(() => {
+		const input = customInputElement.current;
+		if (!input) return;
+		pickerStartRef.current = input.value;
+		input.click();
+	}, []);
+
+	const close = useCallback(() => {
+		if (holdActive.current) endCustomHold();
+		else commitCustom();
+		setOpen(false);
+	}, [endCustomHold, commitCustom]);
+
+	// A selection change can unmount the popover without a close; commit the
+	// streamed pick and release the hold so history can never stay deferred.
+	useEffect(
+		() => () => {
+			endCustomHold();
+		},
+		[endCustomHold],
+	);
+
+	// A fixed ink or Default is a separate action: commit a streamed custom pick
+	// first so it remains its own undo step.
+	const applyChoice = useCallback(
+		(next: string | null) => {
+			endCustomHold();
+			onChangeRef.current(next);
+		},
+		[endCustomHold],
+	);
+
+	// Focus the selected option, dismiss on outside press / Escape. Dismissal
+	// commits any live custom pick and releases the history hold.
 	useEffect(() => {
 		if (!open) return;
 		const popover = popoverElement.current;
@@ -158,12 +296,12 @@ export function SceneColorControl({
 			) {
 				return;
 			}
-			setOpen(false);
+			close();
 		};
 		const onKeyDown = (event: KeyboardEvent) => {
 			if (event.key !== "Escape") return;
 			event.preventDefault();
-			setOpen(false);
+			close();
 			triggerElement.current?.focus();
 		};
 		document.addEventListener("pointerdown", onPointerDown);
@@ -173,40 +311,7 @@ export function SceneColorControl({
 			document.removeEventListener("pointerdown", onPointerDown);
 			document.removeEventListener("keydown", onKeyDown);
 		};
-	}, [open]);
-
-	// Uncontrolled custom input: attach a native `change` listener so the OS
-	// picker's streamed `input` events cannot create a history step per pixel.
-	const customValue = normalized ?? "#000000";
-	const customValueRef = useRef(customValue);
-	customValueRef.current = customValue;
-	const commitRef = useRef<() => void>(() => undefined);
-	commitRef.current = () => {
-		const input = customInputElement.current;
-		if (!input) return;
-		const next = normalizeHexColor(input.value);
-		if (next) onChange(next);
-	};
-	const handleCustomChange = useCallback(() => {
-		commitRef.current();
-	}, []);
-	const setCustomInput = useCallback(
-		(node: HTMLInputElement | null) => {
-			const previous = customInputElement.current;
-			if (previous) {
-				previous.removeEventListener("change", handleCustomChange);
-			}
-			customInputElement.current = node;
-			if (!node) return;
-			node.value = customValueRef.current;
-			node.addEventListener("change", handleCustomChange);
-		},
-		[handleCustomChange],
-	);
-	useEffect(() => {
-		const input = customInputElement.current;
-		if (input) input.value = customValue;
-	}, [customValue]);
+	}, [open, close]);
 
 	const ringStyle = normalized
 		? ({ "--scene-color": normalized } as CSSProperties)
@@ -234,7 +339,7 @@ export function SceneColorControl({
 					className="scene-color__control"
 					value="default"
 					checked={value === undefined || value.trim() === ""}
-					onChange={() => onChange(null)}
+					onChange={() => applyChoice(null)}
 					aria-label="No color"
 				/>
 				<span
@@ -255,7 +360,7 @@ export function SceneColorControl({
 						className="scene-color__control"
 						value={option.id}
 						checked={palette?.id === option.id}
-						onChange={() => onChange(option.value)}
+						onChange={() => applyChoice(option.value)}
 						aria-label={option.label}
 					/>
 					<span
@@ -273,12 +378,12 @@ export function SceneColorControl({
 					// A checked radio does not fire `change`; reopen the OS picker
 					// explicitly when a custom color is already selected.
 					event.preventDefault();
-					customInputElement.current?.click();
+					openNativePicker();
 				}}
 				onKeyDown={(event) => {
 					if (event.key !== " " && event.key !== "Enter") return;
 					event.preventDefault();
-					customInputElement.current?.click();
+					openNativePicker();
 				}}
 			>
 				<input
@@ -287,7 +392,7 @@ export function SceneColorControl({
 					className="scene-color__control"
 					value="custom"
 					checked={custom}
-					onChange={() => customInputElement.current?.click()}
+					onChange={() => openNativePicker()}
 					aria-label="Custom color"
 				/>
 				<input
@@ -332,7 +437,10 @@ export function SceneColorControl({
 				aria-expanded={open}
 				aria-label={`${label}: ${currentLabel}`}
 				title={`${label}: ${currentLabel}`}
-				onClick={() => setOpen((current) => !current)}
+				onClick={() => {
+					if (open) close();
+					else setOpen(true);
+				}}
 			>
 				<PaletteIcon />
 				<span

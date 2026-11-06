@@ -284,6 +284,133 @@ test("a custom hex is one undo step and persists", async ({ page }) => {
 	);
 });
 
+test("a live custom pick applies and survives an outside click as one undo step", async ({
+	page,
+}) => {
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectItem(page);
+	await page.getByTestId("item-color-trigger").click();
+	const undoBefore = Number(await stage.getAttribute("data-undo-depth"));
+	// The native picker streams `input`; the canvas must update live.
+	await page.getByTestId("item-color-custom-input").evaluate((element) => {
+		const input = element as HTMLInputElement;
+		input.value = "#a85a90";
+		input.dispatchEvent(new Event("input", { bubbles: true }));
+	});
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:#a85a90");
+
+	// The obvious dismiss (outside click) keeps the pick, closes the panel and
+	// records the whole streamed pick as one undo step.
+	await page.mouse.click(20, 20);
+	await expect(page.getByTestId("item-color-popover")).toHaveCount(0);
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:#a85a90");
+	await expect(stage).toHaveAttribute(
+		"data-undo-depth",
+		String(undoBefore + 1),
+	);
+	await page.keyboard.press("Control+z");
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:default");
+	await waitForSavedScene(
+		page,
+		(document) => document.items?.[0]?.color === undefined,
+	);
+});
+
+test("dismissing the color panel on a Default item leaves it Default", async ({
+	page,
+}) => {
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectItem(page);
+	const undoBefore = Number(await stage.getAttribute("data-undo-depth"));
+
+	// Escape without ever opening the native picker must not apply the
+	// placeholder black.
+	await page.getByTestId("item-color-trigger").click();
+	await expect(page.getByTestId("item-color-popover")).toBeVisible();
+	await page.keyboard.press("Escape");
+	await expect(page.getByTestId("item-color-popover")).toHaveCount(0);
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:default");
+	await expect(stage).toHaveAttribute("data-undo-depth", String(undoBefore));
+
+	// The obvious outside click behaves the same.
+	await page.getByTestId("item-color-trigger").click();
+	await page.mouse.click(20, 20);
+	await expect(page.getByTestId("item-color-popover")).toHaveCount(0);
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:default");
+	await expect(stage).toHaveAttribute("data-undo-depth", String(undoBefore));
+
+	// Explicit Default on an already-default item is a no-op too.
+	await selectItem(page);
+	await page.getByTestId("item-color-trigger").click();
+	await page.getByTestId("item-color-default").click();
+	await page.keyboard.press("Escape");
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:default");
+	await expect(stage).toHaveAttribute("data-undo-depth", String(undoBefore));
+});
+
+test("clearing a color then dismissing does not write black", async ({
+	page,
+}) => {
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectItem(page);
+	await page.getByTestId("item-color-trigger").click();
+	await page.getByTestId("item-color-red").click();
+	await page.keyboard.press("Escape");
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:#b5544d");
+	const redDepth = Number(await stage.getAttribute("data-undo-depth"));
+
+	// Colored → Default → Escape: one step (the clear), never a black write.
+	await page.getByTestId("item-color-trigger").click();
+	await page.getByTestId("item-color-default").click();
+	await page.keyboard.press("Escape");
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:default");
+	await expect(stage).toHaveAttribute("data-undo-depth", String(redDepth + 1));
+
+	// Same via outside click after another fixed ink. The popover stays open
+	// after a fixed ink, so Default can be clicked directly.
+	await page.getByTestId("item-color-trigger").click();
+	await page.getByTestId("item-color-blue").click();
+	const blueDepth = Number(await stage.getAttribute("data-undo-depth"));
+	await page.getByTestId("item-color-default").click();
+	await page.mouse.click(20, 20);
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:default");
+	await expect(stage).toHaveAttribute("data-undo-depth", String(blueDepth + 1));
+});
+
+test("streaming after an undo mid-pick still coalesces into one step", async ({
+	page,
+}) => {
+	await seedScene(page);
+	const stage = page.getByTestId("stage");
+	await selectItem(page);
+	await page.getByTestId("item-color-trigger").click();
+	const input = page.getByTestId("item-color-custom-input");
+	const stream = async (color: string) => {
+		await input.evaluate((element, value) => {
+			const native = element as HTMLInputElement;
+			native.value = value;
+			native.dispatchEvent(new Event("input", { bubbles: true }));
+		}, color);
+	};
+
+	await stream("#b5544d");
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:#b5544d");
+	await expect(stage).toHaveAttribute("data-undo-depth", "0");
+	// Undo mid-pick drains the hold; the next stream must start a fresh one.
+	await page.keyboard.press("Control+z");
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:default");
+	await stream("#a96a38");
+	await stream("#568a66");
+	await stream("#8a74bd");
+	await expect(stage).toHaveAttribute("data-undo-depth", "0");
+	await page.mouse.click(20, 20);
+	await expect(stage).toHaveAttribute("data-item-colors", "i1:#8a74bd");
+	await expect(stage).toHaveAttribute("data-undo-depth", "1");
+});
+
 test("a colored scene round-trips through a read-only share link", async ({
 	page,
 }) => {
