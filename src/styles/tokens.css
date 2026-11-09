@@ -69,6 +69,8 @@
 	/* Canvas pedal name-label chip (always-on; opaque so contrast is deterministic) */
 	--color-item-label-bg: #1b1e21;
 	--color-item-label-ink: #eef1f4;
+	/* F-12 user-label second line — muted but AA-legible on the chip. */
+	--color-item-label-ink-muted: #a8b0b8;
 	/* Modal backdrop dim (DOM only — the canvas is never tinted, P2-01). */
 	--color-scrim: rgb(10 12 14 / 0.55);
 	--color-ink: #eef1f4;
@@ -232,6 +234,7 @@
 	--color-thumb-bg: #eceef1;
 	--color-item-label-bg: #f4f6f7;
 	--color-item-label-ink: #16191d;
+	--color-item-label-ink-muted: #3f454c;
 	--color-scrim: rgb(23 28 34 / 0.35);
 	--color-ink: #16191d;
 	--color-ink-muted: #565d66;

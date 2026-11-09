@@ -160,6 +160,8 @@ function labelChip(
 		width: number;
 		height: number;
 		text: string;
+		/** F-12 user label: a muted second chip line on tall enough parts. */
+		noteText?: string;
 		opacity: number;
 		monoPrefix?: string;
 		fontScale?: number;
@@ -169,14 +171,22 @@ function labelChip(
 	const fontScale = options.fontScale ?? 1;
 	const inset = ITEM_LABEL.insetPx / unit;
 	const pad = 3 / unit;
+	const twoLine =
+		Boolean(options.noteText) &&
+		options.height * unit >= ITEM_LABEL.twoLineMinScreenHeightPx;
 	const chipHeight = Math.max(
 		0,
-		Math.min(ITEM_LABEL.heightPx / unit, options.height - inset * 2),
+		Math.min(
+			(twoLine ? ITEM_LABEL.twoLineHeightPx : ITEM_LABEL.heightPx) / unit,
+			options.height - inset * 2,
+		),
 	);
 	const chipWidth = Math.max(0, options.width - inset * 2);
 	if (chipHeight <= 0 || chipWidth <= 0) return;
 
 	const y = options.height - inset - chipHeight;
+	const nameRowHeight = ITEM_LABEL.heightPx / unit;
+	const noteRowHeight = ITEM_LABEL.noteLineHeightPx / unit;
 	parent.add(
 		new Konva.Rect({
 			x: inset,
@@ -220,7 +230,7 @@ function labelChip(
 			x: inset + pad + prefixWidth,
 			y,
 			width: Math.max(0, chipWidth - pad * 2 - prefixWidth),
-			height: chipHeight,
+			height: twoLine ? nameRowHeight : chipHeight,
 			verticalAlign: "middle",
 			fontFamily: CANVAS_FONTS.sans,
 			fontSize: (ITEM_LABEL.fontSizePx * fontScale) / unit,
@@ -231,6 +241,26 @@ function labelChip(
 			listening: false,
 		}),
 	);
+	if (twoLine) {
+		parent.add(
+			new Konva.Text({
+				text: options.noteText ?? "",
+				x: inset + pad,
+				y: y + nameRowHeight,
+				width: Math.max(0, chipWidth - pad * 2),
+				height: noteRowHeight,
+				align: "center",
+				verticalAlign: "middle",
+				fontFamily: CANVAS_FONTS.sans,
+				fontSize: ITEM_LABEL.noteFontSizePx / unit,
+				fill: theme.itemLabelInkMuted,
+				wrap: "none",
+				ellipsis: true,
+				opacity: options.opacity,
+				listening: false,
+			}),
+		);
+	}
 }
 
 function drawBoardFallback(
@@ -479,6 +509,7 @@ function drawItem(
 			width,
 			height,
 			text: resolved.name,
+			noteText: context.labels === false ? undefined : item.label,
 			opacity:
 				custom || screenWidth >= ITEM_LABEL.fullOpacityWidthPx
 					? 1

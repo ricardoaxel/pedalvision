@@ -186,6 +186,7 @@ export function isPlacedItem(value: unknown): value is PlacedItem {
 		isFiniteNumber(value.rotationDeg) &&
 		isFiniteNumber(value.z) &&
 		(value.color === undefined || typeof value.color === "string") &&
+		(value.label === undefined || typeof value.label === "string") &&
 		(value.jackOverrides === undefined ||
 			(Array.isArray(value.jackOverrides) &&
 				value.jackOverrides.length <= 64 &&

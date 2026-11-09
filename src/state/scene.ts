@@ -27,6 +27,22 @@ import {
 import { clamp01, deriveEdgePos, jackPointNormalized } from "../lib/jackProof";
 import { isReadOnly } from "./readOnly";
 
+/** Maximum length of a user item label (F-12), matching the share wire limit. */
+export const ITEM_LABEL_MAX_LENGTH = 40;
+
+/**
+ * Normalise a user item label (F-12): collapse internal whitespace, trim, cap
+ * at `ITEM_LABEL_MAX_LENGTH`, and map an empty result to `undefined` (so the
+ * optional field is omitted rather than stored as "").
+ */
+export function normalizeItemLabel(
+	value: string | null | undefined,
+): string | undefined {
+	const normalized = (value ?? "").replace(/\s+/g, " ").trim();
+	if (!normalized) return undefined;
+	return normalized.slice(0, ITEM_LABEL_MAX_LENGTH);
+}
+
 /**
  * The scene document (design.md §Data model). The boards and pedal/supply
  * items slices exist so far — cables/endpoints arrive in later tasks. All
@@ -98,6 +114,10 @@ export interface PlacedItem {
 	/** Optional organization color (F-16), stored as a normalized hex; absent =
 	 * no mark. Renders as a slim accent outline around the footprint. */
 	color?: string;
+	/** Optional short user label (F-12), trimmed and capped at
+	 * `ITEM_LABEL_MAX_LENGTH`; absent = no note. Renders as the second line of
+	 * the canvas name chip. Never written to the catalog or a custom part. */
+	label?: string;
 }
 
 /**
@@ -1344,6 +1364,13 @@ interface SceneStore {
 	 */
 	setItemColor: (uid: string, color: string | null) => void;
 	/**
+	 * Set or clear a placed item's short user label (F-12). `null` (or a
+	 * whitespace-only value) clears the optional field. One array replacement =
+	 * one undoable history step; a missing item, an identical value or read-only
+	 * mode is a no-op.
+	 */
+	setItemLabel: (uid: string, label: string | null) => void;
+	/**
 	 * Register a user-defined pedal/supply (assigning a scene-local `refId`) and
 	 * return that id, which `addItem` can then place like a catalog pedal.
 	 * Returns null in read-only share mode.
@@ -1592,6 +1619,23 @@ export const useScene = create<SceneStore>((set, get) => ({
 			const next = { ...current };
 			if (nextColor === undefined) delete next.color;
 			else next.color = nextColor;
+			const items = state.items.slice();
+			items[index] = next;
+			return { items };
+		});
+	},
+	setItemLabel: (uid, label) => {
+		if (isReadOnly()) return;
+		set((state) => {
+			const index = state.items.findIndex((item) => item.uid === uid);
+			if (index === -1) return state;
+			const current = state.items[index];
+			if (!current) return state;
+			const nextLabel = normalizeItemLabel(label);
+			if (current.label === nextLabel) return state;
+			const next = { ...current };
+			if (nextLabel === undefined) delete next.label;
+			else next.label = nextLabel;
 			const items = state.items.slice();
 			items[index] = next;
 			return { items };

@@ -231,6 +231,12 @@ export function Stage() {
 	const itemColors = items
 		.map((item) => `${item.uid}:${item.color?.trim() || "default"}`)
 		.join(";");
+	// User labels (F-12) mirrored so e2e can assert the set/clear flow without
+	// reading pixels. Distinct from `itemLabels` below, which is the resolved
+	// catalog/custom/fallback name.
+	const itemNotes = items
+		.map((item) => `${item.uid}:${item.label?.trim() || "default"}`)
+		.join(";");
 	const boardColors = boards
 		.map((board) => `${board.uid}:${board.color?.trim() || "default"}`)
 		.join(";");
@@ -437,6 +443,7 @@ export function Stage() {
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
 			data-item-colors={itemColors}
+			data-item-notes={itemNotes}
 			data-item-labels={itemLabels}
 			data-item-order={renderOrder}
 			data-readonly-cue={

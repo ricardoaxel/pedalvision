@@ -511,6 +511,35 @@ describe("cables and endpoints (P4-01)", () => {
 		expect(parsed?.items).toEqual([]);
 	});
 
+	it("round-trips an optional short user label (additive v1)", () => {
+		const document = documentOf({
+			boards: [board],
+			items: [item({ label: "always on" })],
+			customPedals: [],
+		});
+		expect(parseSceneDocument(document)?.items[0]?.label).toBe("always on");
+		expect(sceneFromDocument(document).items[0]?.label).toBe("always on");
+		expect(parseSceneDocument(JSON.stringify(document))?.items[0]?.label).toBe(
+			"always on",
+		);
+
+		// Optional: a document without a label remains valid.
+		const legacy = documentOf({
+			boards: [board],
+			items: [item()],
+			customPedals: [],
+		});
+		expect(parseSceneDocument(legacy)?.items[0]?.label).toBeUndefined();
+	});
+
+	it("drops a placed item with a non-string label", () => {
+		const raw = {
+			...documentOf({ boards: [board], items: [item()], customPedals: [] }),
+			items: [item({ label: 7 as unknown as string })],
+		};
+		expect(parseSceneDocument(raw)?.items).toEqual([]);
+	});
+
 	it("keeps the additive v1 rule: documents without the arrays stay valid", () => {
 		const document = documentOf({
 			boards: [board],
