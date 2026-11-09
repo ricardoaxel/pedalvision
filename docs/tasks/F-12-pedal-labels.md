@@ -210,7 +210,7 @@ padding, not its glyphs (verify on the pixels).
   decode; a v4 client rejects a v5 link cleanly (no partial decode).
 - Read-only previews render the label but never expose the field and never
   mutate.
-- PNG and PDF show the same second line as the canvas.
+- PNG and PDF use the same second-line treatment with the print-density gate (a part below 58 printed label-px omits the note); the shared `resolveItemChip` rule is unit-tested.
 - Selection (cyan), the amber warning, the F-16 organization outline and the
   label remain visually distinct together (design-reviewer verified).
 - 44 px targets, focus-visible, keyboard reachable; desktop + mobile; dark +

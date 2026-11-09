@@ -18,7 +18,7 @@ import {
 	type ExportPlan,
 } from "../lib/exportScene";
 import { cmToDisplay, type DisplayUnits } from "../lib/geometry";
-import { showItemLabelNote } from "../lib/itemLabel";
+import { resolveItemChip } from "../lib/itemLabel";
 import { buildAnchorIndex, cableEndAnchorFromIndex } from "../lib/jackAnchor";
 import { buildPdfFromJpeg } from "../lib/pdf";
 import { addPngDpiChunk } from "../lib/png";
@@ -172,8 +172,12 @@ function labelChip(
 	const fontScale = options.fontScale ?? 1;
 	const inset = ITEM_LABEL.insetPx / unit;
 	const pad = 3 / unit;
-	const twoLine =
-		Boolean(options.noteText) && showItemLabelNote(options.height * unit);
+	const chip = resolveItemChip(
+		options.text,
+		options.noteText,
+		options.height * unit,
+	);
+	const twoLine = chip.twoLine;
 	const chipHeight = Math.max(
 		0,
 		Math.min(
@@ -244,7 +248,7 @@ function labelChip(
 	if (twoLine) {
 		parent.add(
 			new Konva.Text({
-				text: options.noteText ?? "",
+				text: chip.note ?? "",
 				x: inset + pad,
 				y: y + nameRowHeight,
 				width: Math.max(0, chipWidth - pad * 2),

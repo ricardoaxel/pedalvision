@@ -40,12 +40,15 @@ export function normalizeItemLabel(
 ): string | undefined {
 	const normalized = (value ?? "").replace(/\s+/g, " ").trim();
 	if (!normalized) return undefined;
-	// Cap by code point (never split a surrogate pair), then trim again in case
-	// the cut landed on a space.
-	const capped = Array.from(normalized)
-		.slice(0, ITEM_LABEL_MAX_LENGTH)
-		.join("")
-		.trim();
+	// Cap in UTF-16 units so the stored value matches the 40-unit share schema
+	// and input `maxLength`; drop a half surrogate pair at the cut, then trim
+	// again in case the cut landed on a space.
+	let capped = normalized;
+	if (capped.length > ITEM_LABEL_MAX_LENGTH) {
+		capped = capped.slice(0, ITEM_LABEL_MAX_LENGTH);
+		if (/[\uD800-\uDBFF]$/.test(capped)) capped = capped.slice(0, -1);
+	}
+	capped = capped.trim();
 	return capped || undefined;
 }
 
