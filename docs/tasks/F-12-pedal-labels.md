@@ -1,6 +1,6 @@
 # F-12 — pedal labels
 
-**Phase:** 1 · **Status:** in progress · **Model:** light (escalate for the share-version bump — persistence/serialization is high-risk)
+**Phase:** 1 · **Status:** in review — PR #104 · **Model:** light (escalate for the share-version bump — persistence/serialization is high-risk)
 
 > Feature-lane **F-12** from `docs/tasks/feature-roadmap-proposal.md` §2
 > Phase 1. This is **not** requirements `F12` (cables); the two numbering
