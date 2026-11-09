@@ -18,6 +18,7 @@ import {
 import { isCableJack } from "../catalog/schema";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
+import { showItemLabelNote } from "../lib/itemLabel";
 import { jackLocalPoint, jackNormalFor } from "../lib/jackAnchor";
 import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { sceneColorValue } from "../lib/sceneColor";
@@ -270,8 +271,7 @@ export function PedalNode({
 	// chip. The chip grows upward only when the item is tall enough on screen;
 	// otherwise (and with no label) the single-line chip is byte-identical.
 	const note = item.label;
-	const twoLine =
-		Boolean(note) && screenHeight >= ITEM_LABEL.twoLineMinScreenHeightPx;
+	const twoLine = Boolean(note) && showItemLabelNote(screenHeight);
 	const labelHeight = Math.max(
 		0,
 		Math.min(

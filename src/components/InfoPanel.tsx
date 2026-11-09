@@ -3,7 +3,11 @@ import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import { buildPartInfo, formatDimensions, formatPower } from "../lib/partInfo";
 import { useIsMobile } from "../lib/useMobile";
 import { useDrag } from "../state/drag";
-import { beginHistoryHold, endHistoryHold } from "../state/history";
+import {
+	beginHistoryHold,
+	endHistoryHold,
+	isHistoryHoldActive,
+} from "../state/history";
 import { useJackProof } from "../state/jackProof";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
@@ -103,24 +107,36 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	);
 
 	const labelValue = labelDraft ?? item?.label ?? "";
-	const beginLabelEdit = () => {
-		if (readOnly || !item) return;
-		setLabelEditing(true);
-		setLabelDraft(item.label ?? "");
+	// undo/redo/clearHistory can drain the global hold mid-edit; start a fresh
+	// one so the remaining stream still coalesces into one step (F-16 lesson).
+	const ensureLabelHold = () => {
+		if (labelHold.current && !isHistoryHoldActive()) {
+			labelHold.current = false;
+		}
 		if (!labelHold.current) {
 			beginHistoryHold();
 			labelHold.current = true;
 		}
 	};
+	const beginLabelEdit = () => {
+		if (readOnly || !item) return;
+		setLabelEditing(true);
+		setLabelDraft(item.label ?? "");
+		ensureLabelHold();
+	};
 	const commitLabelEdit = () => {
 		if (!item) return;
-		setItemLabel(item.uid, labelDraft ?? "");
+		// A hold drained by undo must not re-apply the streamed draft against the
+		// reverted store.
+		const hadHold = labelHold.current;
+		const drained = hadHold && !isHistoryHoldActive();
+		labelHold.current = false;
+		if (!drained) {
+			setItemLabel(item.uid, labelDraft ?? "");
+			if (hadHold) endHistoryHold();
+		}
 		setLabelEditing(false);
 		setLabelDraft(null);
-		if (labelHold.current) {
-			endHistoryHold();
-			labelHold.current = false;
-		}
 	};
 	const clearLabel = () => {
 		if (!item) return;
@@ -487,7 +503,10 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 								onChange={(event) => {
 									const next = event.target.value;
 									setLabelDraft(next);
-									if (item) setItemLabel(item.uid, next);
+									if (item) {
+										ensureLabelHold();
+										setItemLabel(item.uid, next);
+									}
 								}}
 								onKeyDown={(event) => {
 									if (event.key === "Enter" || event.key === "Escape") {

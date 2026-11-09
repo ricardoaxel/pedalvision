@@ -40,7 +40,13 @@ export function normalizeItemLabel(
 ): string | undefined {
 	const normalized = (value ?? "").replace(/\s+/g, " ").trim();
 	if (!normalized) return undefined;
-	return normalized.slice(0, ITEM_LABEL_MAX_LENGTH);
+	// Cap by code point (never split a surrogate pair), then trim again in case
+	// the cut landed on a space.
+	const capped = Array.from(normalized)
+		.slice(0, ITEM_LABEL_MAX_LENGTH)
+		.join("")
+		.trim();
+	return capped || undefined;
 }
 
 /**

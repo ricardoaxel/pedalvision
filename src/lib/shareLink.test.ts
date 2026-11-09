@@ -300,6 +300,42 @@ describe("share links (P3-03)", () => {
 		expect(decoded.snapshot.items[0]?.label).toBe("always on");
 	});
 
+	it("normalizes an inbound v5 label (trim/collapse) and drops a blank one", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 5,
+					name: "Normalized",
+					boards: [],
+					items: [item("item-1", { boardUid: null, label: "  always   on  " })],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				5,
+			),
+		);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items[0]?.label).toBe("always on");
+
+		const blank = decodeShareHash(
+			hashOf(
+				{
+					version: 5,
+					name: "Blank",
+					boards: [],
+					items: [item("item-1", { boardUid: null, label: "   " })],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				5,
+			),
+		);
+		if (!blank.ok) throw new Error(blank.message);
+		expect(blank.snapshot.items[0]?.label).toBeUndefined();
+	});
+
 	it("rejects a label on the frozen v4 wire schema", () => {
 		const decoded = decodeShareHash(
 			hashOf(

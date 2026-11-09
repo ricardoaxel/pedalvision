@@ -82,12 +82,15 @@ the catalog fact, the note is the owner's pencil mark beneath it.
 - **Canvas chip (empty = unchanged):** with no label, the existing 14 px chip,
   10 px name, inset 2, opacity 0.9 and position are byte-identical. With a
   label and an on-screen item height **≥ 58 px**, the chip grows **upward** to
-  **26 px** = name row 14 + note row 12 (all screen-constant ÷ `labelScale`),
+  **28 px** = name row 14 + note row 14 (all screen-constant ÷ `labelScale`),
   bottom edge pinned, width unchanged, radius still `min(h/2, 3)`. Row 1 = name
-  (sans 10, `itemLabelInk`, ellipsis, unchanged); row 2 = note (sans **9**,
+  (sans 10, `itemLabelInk`, ellipsis, unchanged); row 2 = note (sans **10**,
   `itemLabelInkMuted`, ellipsis, centered, width − 6). Below 58 px tall the
   chip falls back to today's one-line name; the note stays in the panel. Chip
-  still gated at `minWidthPx 52`. Read-only renders identically.
+  still gated at `minWidthPx 52`. Read-only renders identically. *(Design-
+  reviewer R1 found the original 9 px note illegible at 1:1; the 10 px size and
+  the darker muted ink below are the R2-verified legibility fix inside the
+  approved direction.)*
 - **Info panel:** a new **Label** section **first** in `.info-panel__detail`,
   above Effects. Header eyebrow + a mono `n/40` counter shown only when the
   field is focused or non-empty. Reuses the custom-form control anatomy
@@ -99,14 +102,17 @@ the catalog fact, the note is the owner's pencil mark beneath it.
   trim + collapse whitespace; whitespace-only deletes. Desktop always visible;
   mobile only in the expanded sheet (never in the 64 px peek). Read-only renders
   `<dt>Label</dt><dd>…</dd>` with no input/clear; section omitted when empty.
-- **Tokens:** no new color. Add `itemLabelInkMuted → --color-ink-muted`
-  (#a8b0b8 dark / #565d66 light) and `ITEM_LABEL` note constants
-  (`noteFontSizePx 9`, `noteLineHeightPx 12`, `twoLineHeightPx 26`,
-  `twoLineMinScreenHeightPx 58`). Note contrast on the chip: 7.63:1 dark /
-  6.14:1 light (6.42 / 4.81 at the 0.9 fade) — no extra note opacity.
-- **Export:** `labelChip()` gains the note at the same 26 px geometry ÷
-  `labelUnit` (name 10 / note 9), same width/height gates; omit the note when
-  the printed part height < 58 label-px. PNG/PDF parity.
+- **Tokens:** one dedicated note ink, `itemLabelInkMuted →
+  --color-item-label-ink-muted` (#a8b0b8 dark / **#3f454c** light — the light
+  value is darker than `--color-ink-muted` to clear AA on the chip) and
+  `ITEM_LABEL` note constants (`noteFontSizePx 10`, `noteLineHeightPx 14`,
+  `twoLineHeightPx 28`, `twoLineMinScreenHeightPx 58`). No extra note opacity;
+  the chip's existing 0.9/1 rule applies.
+- **Export:** `labelChip()` gains the note at the same 28 px geometry ÷
+  `labelUnit` (name 10 / note 10), same width/height gates; omit the note when
+  the printed part height < 58 label-px. PNG/PDF use the same two-line
+  treatment and the shared `showItemLabelNote` threshold; the export measures
+  in printed label-px (not canvas zoom px) by design.
 - **No new animation.**
 
 Risks accepted after review: the taller chip is inset 2 so selection/warning/

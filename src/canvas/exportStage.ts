@@ -18,6 +18,7 @@ import {
 	type ExportPlan,
 } from "../lib/exportScene";
 import { cmToDisplay, type DisplayUnits } from "../lib/geometry";
+import { showItemLabelNote } from "../lib/itemLabel";
 import { buildAnchorIndex, cableEndAnchorFromIndex } from "../lib/jackAnchor";
 import { buildPdfFromJpeg } from "../lib/pdf";
 import { addPngDpiChunk } from "../lib/png";
@@ -172,8 +173,7 @@ function labelChip(
 	const inset = ITEM_LABEL.insetPx / unit;
 	const pad = 3 / unit;
 	const twoLine =
-		Boolean(options.noteText) &&
-		options.height * unit >= ITEM_LABEL.twoLineMinScreenHeightPx;
+		Boolean(options.noteText) && showItemLabelNote(options.height * unit);
 	const chipHeight = Math.max(
 		0,
 		Math.min(

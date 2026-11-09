@@ -11,6 +11,7 @@ import type {
 } from "./scene";
 import {
 	normalizeAllZ,
+	normalizeItemLabel,
 	normalizeJackOverrides,
 	pruneCableGraph,
 	pruneCustomPedals,
@@ -367,10 +368,15 @@ export function normalizeSceneContent(snapshot: SceneSnapshot): SceneSnapshot {
 	// still apply them (never lose the user's correction on boot).
 	const items = normalizeAllZ(
 		keptItems.map((item) => {
-			const jackOverrides = normalizeJackOverrides(item, snapshot.customPedals);
-			if (jackOverrides) return { ...item, jackOverrides };
+			// A loaded/transported label follows the same trim + cap rule as the
+			// mutator, so a hand-built link can never introduce a blank note.
 			const next = { ...item };
-			delete next.jackOverrides;
+			const label = normalizeItemLabel(item.label);
+			if (label) next.label = label;
+			else delete next.label;
+			const jackOverrides = normalizeJackOverrides(item, snapshot.customPedals);
+			if (jackOverrides) next.jackOverrides = jackOverrides;
+			else delete next.jackOverrides;
 			return next;
 		}),
 	);

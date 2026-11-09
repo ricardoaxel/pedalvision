@@ -34,6 +34,20 @@ describe("normalizeItemLabel (F-12)", () => {
 		const long = "x".repeat(ITEM_LABEL_MAX_LENGTH + 25);
 		expect(normalizeItemLabel(long)).toHaveLength(ITEM_LABEL_MAX_LENGTH);
 	});
+
+	it("never leaves a trailing space after the cap and never splits a code point", () => {
+		// The cut lands on the space before the final word; it must be trimmed.
+		const trailing = normalizeItemLabel(
+			`${"a".repeat(ITEM_LABEL_MAX_LENGTH - 1)} b`,
+		);
+		expect(trailing).toBe("a".repeat(ITEM_LABEL_MAX_LENGTH - 1));
+		expect(trailing?.endsWith(" ")).toBe(false);
+
+		// An emoji at the cap boundary is dropped whole, never halved.
+		const emoji = normalizeItemLabel(`${"x".repeat(ITEM_LABEL_MAX_LENGTH)}😀`);
+		expect(emoji).toBe("x".repeat(ITEM_LABEL_MAX_LENGTH));
+		expect(emoji).not.toContain("\uFFFD");
+	});
 });
 
 describe("item labels (F-12)", () => {
