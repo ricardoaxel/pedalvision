@@ -250,6 +250,6 @@ padding, not its glyphs (verify on the pixels).
 
 ## Checks (to fill on PR)
 
-- Unit: 1,077 tests (+8).
-- Build: JS 355.03 kB gzip (+0.78 vs 354.25), CSS 17.78 kB gzip (+0.08).
-- E2E: 436 passed + 14 skipped (`--workers=2`).
+- Unit: **1,082 tests** (+13 vs 1,069).
+- Build: **JS 355.15 kB gzip (+0.90 vs 354.25), CSS 17.78 kB gzip (+0.08)**.
+- E2E: **436 passed + 14 skipped** (`--workers=2`).
