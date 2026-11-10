@@ -1,8 +1,13 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import { buildPartInfo, formatDimensions, formatPower } from "../lib/partInfo";
 import { useIsMobile } from "../lib/useMobile";
 import { useDrag } from "../state/drag";
+import {
+	beginHistoryHold,
+	endHistoryHold,
+	isHistoryHoldActive,
+} from "../state/history";
 import { useJackProof } from "../state/jackProof";
 import { spaceWarning } from "../state/overlap";
 import { usePanelMetrics } from "../state/panel";
@@ -10,6 +15,7 @@ import { usePlannerCatalog } from "../state/plannerCatalog";
 import { useReadOnly } from "../state/readOnly";
 import {
 	baseItemJacks,
+	ITEM_LABEL_MAX_LENGTH,
 	resolveItem,
 	resolveItemJacks,
 	useScene,
@@ -49,6 +55,7 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const readOnly = useReadOnly((state) => state.readOnly);
+	const setItemLabel = useScene((state) => state.setItemLabel);
 
 	// App-wide display units (P3-02) — persisted with the scene index; storage
 	// is always cm.
@@ -68,6 +75,74 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 		? items.find((candidate) => candidate.uid === activeUid)
 		: undefined;
 	const resolved = item ? resolveItem(item, customPedals) : null;
+
+	// F-12 "Bench Notation": the label field streams into the store live, but a
+	// history hold coalesces the whole edit into one undo step. The draft keeps
+	// the raw text (so a trailing space is typeable) while the store keeps the
+	// normalised value.
+	const [labelEditing, setLabelEditing] = useState(false);
+	const [labelDraft, setLabelDraft] = useState<string | null>(null);
+	const labelHold = useRef(false);
+	// A new selection never carries the previous item's draft/hold.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: reset on uid only
+	useEffect(() => {
+		setLabelEditing(false);
+		setLabelDraft(null);
+		if (labelHold.current) {
+			endHistoryHold();
+			labelHold.current = false;
+		}
+	}, [item?.uid]);
+	// Reflect an external change (undo/redo, share load) unless the field is
+	// actively being edited.
+	useEffect(() => {
+		if (!labelEditing) setLabelDraft(item?.label ?? "");
+	}, [item?.label, labelEditing]);
+	// Never leak an open history hold if the panel unmounts mid-edit.
+	useEffect(
+		() => () => {
+			if (labelHold.current) endHistoryHold();
+		},
+		[],
+	);
+
+	const labelValue = labelDraft ?? item?.label ?? "";
+	// undo/redo/clearHistory can drain the global hold mid-edit; start a fresh
+	// one so the remaining stream still coalesces into one step (F-16 lesson).
+	const ensureLabelHold = () => {
+		if (labelHold.current && !isHistoryHoldActive()) {
+			labelHold.current = false;
+		}
+		if (!labelHold.current) {
+			beginHistoryHold();
+			labelHold.current = true;
+		}
+	};
+	const beginLabelEdit = () => {
+		if (readOnly || !item) return;
+		setLabelEditing(true);
+		setLabelDraft(item.label ?? "");
+		ensureLabelHold();
+	};
+	const commitLabelEdit = () => {
+		if (!item) return;
+		// A hold drained by undo must not re-apply the streamed draft against the
+		// reverted store.
+		const hadHold = labelHold.current;
+		const drained = hadHold && !isHistoryHoldActive();
+		labelHold.current = false;
+		if (!drained) {
+			setItemLabel(item.uid, labelDraft ?? "");
+			if (hadHold) endHistoryHold();
+		}
+		setLabelEditing(false);
+		setLabelDraft(null);
+	};
+	const clearLabel = () => {
+		if (!item) return;
+		setLabelDraft("");
+		setItemLabel(item.uid, null);
+	};
 	// Two renditions, two elements: the mobile 64px sleeve is a true thumbnail
 	// (350), while the expanded banner / desktop plate uses the 800 master. A
 	// `url` source resolves to the same absolute URL for both (no derived
@@ -388,6 +463,74 @@ export function InfoPanel({ itemUid }: { itemUid?: string | null } = {}) {
 			) : null}
 
 			<div className="info-panel__detail" id="info-panel-detail">
+				{readOnly ? (
+					item.label ? (
+						<section className="info-panel__section" data-testid="info-label">
+							<dl className="info-panel__facts">
+								<div className="info-panel__fact">
+									<dt>Label</dt>
+									<dd data-testid="info-label-value">{item.label}</dd>
+								</div>
+							</dl>
+						</section>
+					) : null
+				) : (
+					<section className="info-panel__section" data-testid="info-label">
+						<div className="info-panel__section-head">
+							<h3 className="info-panel__eyebrow">Label</h3>
+							{labelEditing || labelValue ? (
+								<span
+									className="info-panel__count"
+									data-testid="info-label-count"
+								>
+									{labelValue.length}/{ITEM_LABEL_MAX_LENGTH}
+								</span>
+							) : null}
+						</div>
+						<div className="custom__control info-panel__label-control">
+							<input
+								className="custom__input"
+								data-testid="info-label-input"
+								type="text"
+								value={labelValue}
+								maxLength={ITEM_LABEL_MAX_LENGTH}
+								autoComplete="off"
+								spellCheck={false}
+								placeholder="e.g. always on"
+								aria-label="Label"
+								onFocus={beginLabelEdit}
+								onBlur={commitLabelEdit}
+								onChange={(event) => {
+									const next = event.target.value;
+									setLabelDraft(next);
+									if (item) {
+										ensureLabelHold();
+										setItemLabel(item.uid, next);
+									}
+								}}
+								onKeyDown={(event) => {
+									if (event.key === "Enter" || event.key === "Escape") {
+										event.preventDefault();
+										event.currentTarget.blur();
+									}
+								}}
+							/>
+							{labelValue ? (
+								<button
+									type="button"
+									className="info-panel__label-clear"
+									data-testid="info-label-clear"
+									aria-label="Clear label"
+									onMouseDown={(event) => event.preventDefault()}
+									onClick={clearLabel}
+								>
+									×
+								</button>
+							) : null}
+						</div>
+					</section>
+				)}
+
 				{info.effectTypes.length > 0 ? (
 					<section className="info-panel__section" data-testid="info-effects">
 						<div className="info-panel__section-head">

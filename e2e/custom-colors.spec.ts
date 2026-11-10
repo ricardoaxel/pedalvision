@@ -438,7 +438,7 @@ test("a colored scene round-trips through a read-only share link", async ({
 
 	await page.getByTestId("share-open").click();
 	const url = await page.getByTestId("share-link").inputValue();
-	expect(url).toContain("#s=v4:");
+	expect(url).toContain("#s=v5:");
 	const hash = url.slice(url.indexOf("#s="));
 
 	await page.goto(`/?share=1${hash}`);

@@ -47,6 +47,8 @@ export const CANVAS_THEME_VARS = {
 	// Always-on pedal name-label chip — P2-01 (Specimen Bench).
 	itemLabelBg: "--color-item-label-bg",
 	itemLabelInk: "--color-item-label-ink",
+	/** Second-line user label (F-12) — muted but AA-legible on the chip. */
+	itemLabelInkMuted: "--color-item-label-ink-muted",
 	// Desktop hover brackets on a non-selected pedal — neutral ink (P2-01).
 	hoverOutline: "--color-ink",
 	// Space-warning stroke on an item that overlaps / extends past its board —
@@ -86,6 +88,12 @@ export const GRID_DOT_RADIUS = 1;
 export const ITEM_LABEL = {
 	fontSizePx: 10,
 	heightPx: 14,
+	/** F-12 user-label second line: note font/line and the two-line chip. */
+	noteFontSizePx: 10,
+	noteLineHeightPx: 14,
+	twoLineHeightPx: 28,
+	/** Below this on-screen item height the chip stays one line (F-12). */
+	twoLineMinScreenHeightPx: 58,
 	insetPx: 2,
 	opacity: 0.9,
 	minWidthPx: 52,
@@ -247,6 +255,7 @@ export const canvasTheme: CanvasTheme = {
 	itemShadow: "rgb(0 0 0 / 0.5)",
 	itemLabelBg: "#1b1e21",
 	itemLabelInk: "#eef1f4",
+	itemLabelInkMuted: "#a8b0b8",
 	hoverOutline: "#eef1f4",
 	warningOutline: "#ffd166",
 	dangerOutline: "#ff938a",
@@ -279,6 +288,7 @@ export const lightCanvasTheme: CanvasTheme = {
 	itemShadow: "rgb(15 23 42 / 0.32)",
 	itemLabelBg: "#f4f6f7",
 	itemLabelInk: "#16191d",
+	itemLabelInkMuted: "#3f454c",
 	hoverOutline: "#16191d",
 	warningOutline: "#9a5b00",
 	dangerOutline: "#b42318",

@@ -3266,6 +3266,35 @@ input[type="search"]::-webkit-search-decoration {
 	outline-offset: 2px;
 }
 
+/* F-12 "Bench Notation" — the label input reuses `.custom__control`; the clear
+ * affordance is its own borderless control (32 desktop / 44 touch). */
+.info-panel__label-clear {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	font-size: 18px;
+	line-height: 1;
+	color: var(--color-ink-muted);
+	background-color: transparent;
+	border: 0;
+	border-radius: var(--radius-control);
+	cursor: pointer;
+}
+
+.info-panel__label-clear:hover {
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+}
+
+.info-panel__label-clear:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
 /* The mobile sheet expand/collapse affordance is mobile-only. */
 .info-panel__expand {
 	display: none;
@@ -4176,11 +4205,23 @@ input[type="search"]::-webkit-search-decoration {
 		width: auto;
 		max-width: none;
 		max-height: 72dvh;
-		padding-bottom: var(--space-3);
+		padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom));
+		overscroll-behavior: contain;
+		-webkit-overflow-scrolling: touch;
 		border-left: 0;
 		border-top: 1px solid var(--color-border);
 		border-radius: var(--radius-card) var(--radius-card) 0 0;
 		box-shadow: var(--shadow-raised);
+	}
+
+	/* Keep the last section clear of the sheet edge when its content scrolls. */
+	.info-panel__detail {
+		padding-bottom: var(--space-4);
+	}
+
+	.info-panel__label-clear {
+		width: 44px;
+		height: 44px;
 	}
 
 	.info-panel__header {

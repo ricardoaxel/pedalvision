@@ -20,12 +20,12 @@ import { MAX_DIMENSION_CM } from "./customPedal";
 /**
  * Share-link codec (P3-03, design.md §Persistence).
  *
- * Format: `#s=v4:<base64url(deflate(JSON))>`. The payload is self-contained:
- * boards, placed items (including local jack corrections and organization
- * colors), inline custom pedals, endpoints and cables travel together, so a
- * shared scene renders identically on any device even after the catalog changes
- * (A5). Decoding still accepts legacy `v1` (graph-less), `v2` (graph) and `v3`
- * (jack corrections) links.
+ * Format: `#s=v5:<base64url(deflate(JSON))>`. The payload is self-contained:
+ * boards, placed items (including local jack corrections, organization colors
+ * and user labels), inline custom pedals, endpoints and cables travel together,
+ * so a shared scene renders identically on any device even after the catalog
+ * changes (A5). Decoding still accepts legacy `v1` (graph-less), `v2` (graph),
+ * `v3` (jack corrections) and `v4` (organization colors) links.
  * Unknown refIds are deliberately accepted — `resolveItem` renders a labeled
  * fallback at the stored footprint rather than failing the scene.
  *
@@ -39,16 +39,17 @@ import { MAX_DIMENSION_CM } from "./customPedal";
 
 export const SHARE_HASH_PREFIX = "#s=";
 /**
- * Current wire version. v4 adds the optional organization `color` to placed
- * items and boards (F-16); any new transported key bumps this version (F-37 §B).
+ * Current wire version. v5 adds the optional short user `label` to placed items
+ * (F-12); v4 added the optional organization `color` to placed items and boards
+ * (F-16). Any new transported key bumps this version (F-37 §B).
  */
-export const SHARE_VERSION = 4;
+export const SHARE_VERSION = 5;
 /**
  * Every wire version this build can decode. The encoder always writes
  * `SHARE_VERSION`; older versions are migrated on read. Any other version is a
  * typed `unsupported-version` rejection (never a silent partial decode).
  */
-export const SUPPORTED_SHARE_VERSIONS = [1, 2, 3, SHARE_VERSION] as const;
+export const SUPPORTED_SHARE_VERSIONS = [1, 2, 3, 4, SHARE_VERSION] as const;
 
 export type SupportedShareVersion = (typeof SUPPORTED_SHARE_VERSIONS)[number];
 
@@ -103,7 +104,7 @@ export interface ShareEncodeTooLarge {
 	decodedBytes: number;
 	compressedBytes: number;
 	limitBytes: number;
-	/** The full `#s=v4:…` length that would have been produced. */
+	/** The full `#s=v5:…` length that would have been produced. */
 	hashLength: number;
 	limitChars: number;
 	message: string;
@@ -167,7 +168,7 @@ export interface SharePayloadV3 {
 	cables: Cable[];
 }
 
-/** Current wire payload (`#s=v4:`): v3 plus optional item/board colors (F-16). */
+/** v4 wire payload (`#s=v4:`): v3 plus optional item/board colors (F-16). */
 export interface SharePayloadV4 {
 	version: 4;
 	name?: string;
@@ -178,25 +179,39 @@ export interface SharePayloadV4 {
 	cables: Cable[];
 }
 
-export type SharePayload = SharePayloadV4;
+/** Current wire payload (`#s=v5:`): v4 plus optional item labels (F-12). */
+export interface SharePayloadV5 {
+	version: 5;
+	name?: string;
+	boards: PlacedBoard[];
+	items: PlacedItem[];
+	customPedals: CustomPedal[];
+	endpoints: Endpoint[];
+	cables: Cable[];
+}
+
+export type SharePayload = SharePayloadV5;
 export type SharePayloadAny =
 	| SharePayloadV1
 	| SharePayloadV2
 	| SharePayloadV3
-	| SharePayloadV4;
+	| SharePayloadV4
+	| SharePayloadV5;
 
 /**
  * Upgrade a supported wire payload to the current shape. Pure: v1 gains the
- * additive graph arrays, v2 gains the v3 jack-override field and v3 gains the
- * optional v4 item/board colors (all optional, so no data is invented). Future
- * versions add one step here (and bump `SHARE_VERSION`).
+ * additive graph arrays, v2 gains the v3 jack-override field, v3 gains the
+ * optional v4 item/board colors and v4 gains the optional v5 item label (all
+ * optional, so no data is invented). Future versions add one step here (and
+ * bump `SHARE_VERSION`).
  */
-export function migrateSharePayload(payload: SharePayloadAny): SharePayloadV4 {
-	if (payload.version === 4) return payload;
-	if (payload.version === 3) return { ...payload, version: 4 };
-	if (payload.version === 2) return { ...payload, version: 4 };
+export function migrateSharePayload(payload: SharePayloadAny): SharePayloadV5 {
+	if (payload.version === 5) return payload;
+	if (payload.version === 4) return { ...payload, version: 5 };
+	if (payload.version === 3) return { ...payload, version: 5 };
+	if (payload.version === 2) return { ...payload, version: 5 };
 	return {
-		version: 4,
+		version: 5,
 		name: payload.name,
 		boards: payload.boards,
 		items: payload.items,
@@ -320,6 +335,13 @@ const itemSchemaV4 = itemSchemaV3
 	})
 	.strict();
 
+/** v5 placed item: v4 item plus the optional short user label (F-12). */
+const itemSchemaV5 = itemSchemaV4
+	.extend({
+		label: optionalString(40),
+	})
+	.strict();
+
 const jackSchema = z.object({
 	kind: z.enum(JACK_KINDS),
 	edge: z.enum(JACK_EDGES),
@@ -414,7 +436,7 @@ const v3PayloadSchema = z
 	})
 	.strict();
 
-const currentPayloadSchema = z
+const v4PayloadSchema = z
 	.object({
 		version: z.literal(4),
 		name: optionalString(200),
@@ -426,10 +448,23 @@ const currentPayloadSchema = z
 	})
 	.strict();
 
+const currentPayloadSchema = z
+	.object({
+		version: z.literal(5),
+		name: optionalString(200),
+		boards: z.array(boardSchemaV4).max(5_000),
+		items: z.array(itemSchemaV5).max(5_000),
+		customPedals: z.array(customPedalSchema).max(5_000),
+		endpoints: z.array(endpointSchema).max(5_000),
+		cables: z.array(cableSchema).max(5_000),
+	})
+	.strict();
+
 const payloadSchema = z.discriminatedUnion("version", [
 	legacyPayloadSchema,
 	v2PayloadSchema,
 	v3PayloadSchema,
+	v4PayloadSchema,
 	currentPayloadSchema,
 ]);
 
@@ -520,9 +555,9 @@ export function encodeShareLink(
 	name: string,
 	snapshot: SceneSnapshot,
 ): ShareEncodeResult {
-	// v4 (F-16): organization colors travel on placed items and boards (v3 added
-	// jackOverrides). Old clients reject a newer link cleanly instead of silently
-	// dropping the fields (F-37 policy).
+	// v5 (F-12): short user labels travel on placed items (v4 added organization
+	// colors, v3 jackOverrides). Old clients reject a newer link cleanly instead
+	// of silently dropping the fields (F-37 policy).
 	const payload: SharePayload = {
 		version: SHARE_VERSION,
 		name: normalizeShareName(name),
@@ -572,7 +607,7 @@ export function encodeShareLink(
 }
 
 /**
- * Decode a `#s=v1:…`, `#s=v2:…`, `#s=v3:…` or `#s=v4:…` hash. Never throws. Returns a typed
+ * Decode a `#s=v1:…` … `#s=v5:…` hash. Never throws. Returns a typed
  * reason so the UI can show a precise inline message; the recipient's stored
  * scene is never touched.
  */
@@ -699,7 +734,7 @@ export function decodeShareHash(hash: string): ShareDecodeResult {
 		};
 	}
 	// The hash prefix and the payload version are one contract. A mismatched
-	// pair (`#s=v4:` carrying `version: 3`, or the reverse) must not silently
+	// pair (`#s=v5:` carrying `version: 3`, or the reverse) must not silently
 	// downgrade/upgrade — reject it as malformed.
 	if (parsed.data.version !== version) {
 		return {

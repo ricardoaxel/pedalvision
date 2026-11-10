@@ -18,6 +18,7 @@ import {
 import { isCableJack } from "../catalog/schema";
 import { ASSET_RENDITIONS, resolveImageUrl } from "../lib/cdn";
 import { cmToPx, type Point } from "../lib/geometry";
+import { resolveItemChip } from "../lib/itemLabel";
 import { jackLocalPoint, jackNormalFor } from "../lib/jackAnchor";
 import { easeOutCubic, MOTION, motionMs } from "../lib/motion";
 import { sceneColorValue } from "../lib/sceneColor";
@@ -266,13 +267,25 @@ export function PedalNode({
 		screenWidth >= ITEM_LABEL.minWidthPx;
 	const labelInset = ITEM_LABEL.insetPx / labelScale;
 	const labelPad = 3 / labelScale;
+	// F-12 "Bench Notation": a user label adds a muted second line inside the
+	// chip. The chip grows upward only when the item is tall enough on screen;
+	// otherwise (and with no label) the single-line chip is byte-identical.
+	const chip = resolveItemChip(label, item.label, screenHeight);
+	const note = chip.note;
+	const twoLine = chip.twoLine;
 	const labelHeight = Math.max(
 		0,
-		Math.min(ITEM_LABEL.heightPx / labelScale, heightPx - labelInset * 2),
+		Math.min(
+			(twoLine ? ITEM_LABEL.twoLineHeightPx : ITEM_LABEL.heightPx) / labelScale,
+			heightPx - labelInset * 2,
+		),
 	);
 	const labelWidth = Math.max(0, widthPx - labelInset * 2);
 	const labelY = heightPx - labelInset - labelHeight;
 	const labelFontSize = ITEM_LABEL.fontSizePx / labelScale;
+	const nameRowHeight = ITEM_LABEL.heightPx / labelScale;
+	const noteFontSize = ITEM_LABEL.noteFontSizePx / labelScale;
+	const noteRowHeight = ITEM_LABEL.noteLineHeightPx / labelScale;
 	const labelEmphasized =
 		hoveredItemUid === item.uid || selectedItemUid === item.uid;
 	const labelOpacity =
@@ -312,7 +325,7 @@ export function PedalNode({
 					x={labelInset + labelPad}
 					y={labelY}
 					width={labelWidth - labelPad * 2}
-					height={labelHeight}
+					height={twoLine ? nameRowHeight : labelHeight}
 					align="center"
 					verticalAlign="middle"
 					fontFamily={CANVAS_FONTS.sans}
@@ -322,6 +335,23 @@ export function PedalNode({
 					ellipsis
 					listening={false}
 				/>
+				{twoLine ? (
+					<Text
+						text={note ?? ""}
+						x={labelInset + labelPad}
+						y={labelY + nameRowHeight}
+						width={labelWidth - labelPad * 2}
+						height={noteRowHeight}
+						align="center"
+						verticalAlign="middle"
+						fontFamily={CANVAS_FONTS.sans}
+						fontSize={noteFontSize}
+						fill={theme.itemLabelInkMuted}
+						wrap="none"
+						ellipsis
+						listening={false}
+					/>
+				) : null}
 			</Group>
 		) : null;
 

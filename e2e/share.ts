@@ -24,6 +24,7 @@ export interface ShareFixture {
 		rotationDeg: number;
 		z: number;
 		color?: string;
+		label?: string;
 		jackOverrides?: Array<{
 			jack: number;
 			x?: number;
@@ -45,13 +46,13 @@ export interface ShareFixture {
 		to: { itemUid: string; jack: string } | { endpointUid: string };
 		color?: string;
 	}>;
-	/** Default 4 (current); pass 1/2/3 to build a legacy link. */
-	version?: 1 | 2 | 3 | 4;
+	/** Default 5 (current); pass 1–4 to build a legacy link. */
+	version?: 1 | 2 | 3 | 4 | 5;
 }
 
-/** Build a valid `#s=v4:…` payload without importing app code. */
+/** Build a valid `#s=v5:…` payload without importing app code. */
 export function shareHash(fixture: ShareFixture): string {
-	const version = fixture.version ?? 4;
+	const version = fixture.version ?? 5;
 	const payload =
 		version === 1
 			? {

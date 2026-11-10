@@ -13,6 +13,7 @@ export interface SavedDocument {
 		rotationDeg?: number;
 		boardUid?: string | null;
 		color?: string;
+		label?: string;
 		jackOverrides?: Array<{
 			jack: number;
 			x?: number;

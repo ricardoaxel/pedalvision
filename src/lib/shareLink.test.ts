@@ -174,7 +174,7 @@ describe("share links (P3-03)", () => {
 		expect(legacy.snapshot.cables).toEqual([]);
 	});
 
-	it("round-trips cable patch ink at v4 and accepts a v2 ink", () => {
+	it("round-trips cable patch ink at v5 and accepts a v2 ink", () => {
 		const endpoint: Endpoint = {
 			uid: "endpoint-amp",
 			kind: "amp",
@@ -215,7 +215,7 @@ describe("share links (P3-03)", () => {
 	});
 
 	it("migrates a legacy v1 payload to the current shape explicitly", () => {
-		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2, 3, 4]);
+		expect(SUPPORTED_SHARE_VERSIONS).toEqual([1, 2, 3, 4, 5]);
 		const legacy = {
 			version: 1 as const,
 			name: "Old",
@@ -225,7 +225,7 @@ describe("share links (P3-03)", () => {
 		};
 		expect(migrateSharePayload(legacy)).toEqual({
 			...legacy,
-			version: 4,
+			version: 5,
 			endpoints: [],
 			cables: [],
 		});
@@ -235,15 +235,20 @@ describe("share links (P3-03)", () => {
 			endpoints: [],
 			cables: [],
 		};
-		expect(migrateSharePayload(v2)).toEqual({ ...v2, version: 4 });
+		expect(migrateSharePayload(v2)).toEqual({ ...v2, version: 5 });
 		const v3 = {
 			...v2,
 			version: 3 as const,
 		};
-		expect(migrateSharePayload(v3)).toEqual({ ...v3, version: 4 });
+		expect(migrateSharePayload(v3)).toEqual({ ...v3, version: 5 });
+		const v4 = {
+			...v2,
+			version: 4 as const,
+		};
+		expect(migrateSharePayload(v4)).toEqual({ ...v4, version: 5 });
 	});
 
-	it("round-trips scene-local jack overrides (v4)", () => {
+	it("round-trips scene-local jack overrides (v5)", () => {
 		const overridden = item("item-1", {
 			boardUid: null,
 			jackOverrides: [{ jack: 0, x: 0.2, y: 0.8, stereo: true }],
@@ -256,7 +261,7 @@ describe("share links (P3-03)", () => {
 			cables: [],
 		});
 		if (!encoded.ok) throw new Error(encoded.message);
-		expect(encoded.hash.startsWith("#s=v4:")).toBe(true);
+		expect(encoded.hash.startsWith("#s=v5:")).toBe(true);
 		const decoded = decodeShareHash(encoded.hash);
 		if (!decoded.ok) throw new Error(decoded.message);
 		expect(decoded.snapshot.items[0].jackOverrides).toEqual([
@@ -264,7 +269,7 @@ describe("share links (P3-03)", () => {
 		]);
 	});
 
-	it("round-trips item and board organization colors at v4", () => {
+	it("round-trips item and board organization colors at v5", () => {
 		const encoded = encodeShareLink("Colored", {
 			boards: [board("board-1", { color: "#568a66" })],
 			items: [item("item-1", { color: "#b5544d" })],
@@ -273,14 +278,83 @@ describe("share links (P3-03)", () => {
 			cables: [],
 		});
 		if (!encoded.ok) throw new Error(encoded.message);
-		expect(encoded.hash.startsWith("#s=v4:")).toBe(true);
+		expect(encoded.hash.startsWith("#s=v5:")).toBe(true);
 		const decoded = decodeShareHash(encoded.hash);
 		if (!decoded.ok) throw new Error(decoded.message);
 		expect(decoded.snapshot.items[0]?.color).toBe("#b5544d");
 		expect(decoded.snapshot.boards[0]?.color).toBe("#568a66");
 	});
 
-	it("accepts a v3 link without colors (migrates to v4)", () => {
+	it("round-trips a short user label at v5", () => {
+		const encoded = encodeShareLink("Labelled", {
+			boards: [],
+			items: [item("item-1", { boardUid: null, label: "always on" })],
+			customPedals: [],
+			endpoints: [],
+			cables: [],
+		});
+		if (!encoded.ok) throw new Error(encoded.message);
+		expect(encoded.hash.startsWith("#s=v5:")).toBe(true);
+		const decoded = decodeShareHash(encoded.hash);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items[0]?.label).toBe("always on");
+	});
+
+	it("normalizes an inbound v5 label (trim/collapse) and drops a blank one", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 5,
+					name: "Normalized",
+					boards: [],
+					items: [item("item-1", { boardUid: null, label: "  always   on  " })],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				5,
+			),
+		);
+		if (!decoded.ok) throw new Error(decoded.message);
+		expect(decoded.snapshot.items[0]?.label).toBe("always on");
+
+		const blank = decodeShareHash(
+			hashOf(
+				{
+					version: 5,
+					name: "Blank",
+					boards: [],
+					items: [item("item-1", { boardUid: null, label: "   " })],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				5,
+			),
+		);
+		if (!blank.ok) throw new Error(blank.message);
+		expect(blank.snapshot.items[0]?.label).toBeUndefined();
+	});
+
+	it("rejects a label on the frozen v4 wire schema", () => {
+		const decoded = decodeShareHash(
+			hashOf(
+				{
+					version: 4,
+					name: "V4 with label",
+					boards: [board("board-1")],
+					items: [item("item-1", { label: "sneaky" })],
+					customPedals: [],
+					endpoints: [],
+					cables: [],
+				},
+				4,
+			),
+		);
+		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
+	});
+
+	it("accepts a v3 link without colors (migrates to v5)", () => {
 		const decoded = decodeShareHash(
 			hashOf(
 				{
@@ -481,11 +555,11 @@ describe("share links (P3-03)", () => {
 		expect(decoded).toMatchObject({ ok: false, reason: "invalid" });
 	});
 
-	it("uses the #s=v4: prefix and base64url without padding", () => {
+	it("uses the #s=v5: prefix and base64url without padding", () => {
 		const encoded = encodeShareLink("Main board", snapshot());
 		if (!encoded.ok) throw new Error("expected an encodable scene");
-		expect(encoded.hash.startsWith("#s=v4:")).toBe(true);
-		const body = encoded.hash.slice("#s=v4:".length);
+		expect(encoded.hash.startsWith("#s=v5:")).toBe(true);
+		const body = encoded.hash.slice("#s=v5:".length);
 		expect(body).toMatch(/^[A-Za-z0-9_-]+$/);
 		expect(body).not.toContain("=");
 	});
@@ -520,6 +594,10 @@ describe("share links (P3-03)", () => {
 			reason: "corrupt",
 		});
 		expect(decodeShareHash("#s=v5:abc")).toMatchObject({
+			ok: false,
+			reason: "corrupt",
+		});
+		expect(decodeShareHash("#s=v6:abc")).toMatchObject({
 			ok: false,
 			reason: "unsupported-version",
 		});
