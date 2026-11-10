@@ -1,6 +1,6 @@
 # F-12 — pedal labels
 
-**Phase:** 1 · **Status:** in review — PR #104 · **Model:** light (escalate for the share-version bump — persistence/serialization is high-risk)
+**Phase:** 1 · **Status:** done — merged PR #104 (squash `5b736a21`) · **Model:** light (escalate for the share-version bump — persistence/serialization is high-risk)
 
 > Feature-lane **F-12** from `docs/tasks/feature-roadmap-proposal.md` §2
 > Phase 1. This is **not** requirements `F12` (cables); the two numbering
@@ -222,6 +222,10 @@ padding, not its glyphs (verify on the pixels).
   in the PR.
 - Performance numbers recorded; no regression beyond thresholds.
 - No catalog/shared edits. One PR; no merge.
+
+## Merged
+
+Merged 2026-11-10 as PR #104 (squash `5b736a21`). CI was green on the code head `c8b599fe`; the docs-only final head re-ran an unrelated `tools/catalog-wave` flake and then passed. Post-merge `main` verified.
 
 ## Implementation log (2026-11-07)
 
