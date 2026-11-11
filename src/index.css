@@ -3500,7 +3500,8 @@ input[type="search"]::-webkit-search-decoration {
 /* Press Proof: the ledger is the surface; hide the specimen/effects blocks so
  * every jack row fits without scrolling in a 900px rail. */
 .info-panel[data-proofing="true"] .info-panel__banner,
-.info-panel[data-proofing="true"] [data-testid="info-effects"] {
+.info-panel[data-proofing="true"] [data-testid="info-effects"],
+.info-panel[data-proofing="true"] [data-testid="info-similar"] {
 	display: none;
 }
 
@@ -3518,6 +3519,91 @@ input[type="search"]::-webkit-search-decoration {
 	gap: var(--space-3);
 	padding-bottom: var(--space-2);
 	border-bottom: 1px solid var(--color-border);
+}
+
+/* F-14 "Cross-Reference": a quiet text-only ledger of catalogue alternatives,
+ * deliberately image-free so the specimen cover stays the only photo in the
+ * rail. Rows mirror the picker ledger's name + mono dims + muted subline. */
+.info-similar__body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+}
+
+.info-similar__hint {
+	margin: 0;
+	font-size: var(--font-size-xs);
+	line-height: var(--leading-normal);
+	color: var(--color-ink-muted);
+}
+
+.info-similar__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.info-similar__list > li + li {
+	border-top: 1px solid var(--color-border);
+}
+
+.info-similar__row {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	width: 100%;
+	min-height: 44px;
+	padding: var(--space-1) var(--space-2);
+	text-align: left;
+	color: var(--color-ink);
+	background-color: transparent;
+	border: 0;
+	border-radius: var(--radius-row);
+	cursor: pointer;
+}
+
+.info-similar__row:hover,
+.info-similar__row:active {
+	background-color: var(--color-input-bg);
+}
+
+.info-similar__row:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: -2px;
+}
+
+.info-similar__line {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--space-3);
+	min-width: 0;
+}
+
+.info-similar__name {
+	overflow: hidden;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.info-similar__dims {
+	flex: 0 0 auto;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	color: var(--color-ink-muted);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.info-similar__subline {
+	overflow: hidden;
+	font-size: var(--font-size-xs);
+	color: var(--color-ink-muted);
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .info-panel__facts {

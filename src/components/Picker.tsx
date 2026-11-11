@@ -57,6 +57,16 @@ import { Section } from "./SheetSection";
 export type PickerTab = "pedals" | "boards" | "custom";
 
 /**
+ * F-14: a one-shot filter preset. A new `key` applies the effect-type filter
+ * and clears the other axes, so "Similar" rows always land on a filtered
+ * Pedals ledger without clobbering the user's filter state on normal opens.
+ */
+export interface PickerPreset {
+	key: number;
+	effectTypes: EffectType[];
+}
+
+/**
  * Per-tab header copy — a map, not nested ternaries, so a new tab can't silently
  * mislabel the dialog for assistive tech (P2-02 defect fix).
  */
@@ -103,6 +113,10 @@ const EFFECT_CHIP_PREVIEW = 8;
 interface PickerProps {
 	open: boolean;
 	tab: PickerTab;
+	/** F-14: one-shot effect-type filter preset (applied when `key` changes). */
+	preset?: PickerPreset | null;
+	/** F-14: called once the preset has been applied, so the parent clears it. */
+	onPresetApplied?: () => void;
 	/** When set, the Custom tab opens in edit mode seeded from this part. */
 	editRefId?: string | null;
 	/** When set, the Custom tab opens in board-edit mode seeded from this board uid. */
@@ -154,6 +168,8 @@ interface PickerEntry {
 export function Picker({
 	open,
 	tab,
+	preset,
+	onPresetApplied,
 	editRefId,
 	editBoardUid,
 	onOpen,
@@ -192,6 +208,44 @@ export function Picker({
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	/** The item shown in the specimen pane (hover/keyboard-active). */
 	const [activeId, setActiveId] = useState<string | null>(null);
+	// F-14: a "Similar" tap applies the target's effect types and clears the
+	// other axes. The preset is consumed by the parent so it can never leak into
+	// a later normal open (or survive a Picker remount).
+	const presetKey = preset?.key ?? 0;
+	// biome-ignore lint/correctness/useExhaustiveDependencies: apply once per consumed preset
+	useEffect(() => {
+		if (!open || !preset) return;
+		setQuery("");
+		setBrand(null);
+		setEffectTypes(preset.effectTypes);
+		setStereo(false);
+		setSort("relevance");
+		setShowAllEffects(false);
+		setActiveId(null);
+		onPresetApplied?.();
+	}, [presetKey, open]);
+	// Keep the applied (or user-picked) effect chip visible: on phones the chip
+	// row is a single horizontal scroller. The panel may still be laying out
+	// while the entrance motion runs, so retry until it has a width.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: open + effectTypes drive it
+	useEffect(() => {
+		if (!open || effectTypes.length === 0) return;
+		let frame = 0;
+		let attempts = 0;
+		const revealFilter = () => {
+			const chips = chipsRef.current;
+			const pressed = chips?.querySelector<HTMLElement>(
+				'[aria-pressed="true"]',
+			);
+			if (chips && pressed && chips.clientWidth > 0) {
+				pressed.scrollIntoView({ block: "nearest", inline: "center" });
+				return;
+			}
+			if (attempts++ < 40) frame = requestAnimationFrame(revealFilter);
+		};
+		frame = requestAnimationFrame(revealFilter);
+		return () => cancelAnimationFrame(frame);
+	}, [open, effectTypes]);
 	/** Custom-part draft lives here so Esc/close/tab-switch never discards it. */
 	const [customDraft, setCustomDraft] = useState(() =>
 		emptyCustomPedalDraft("cm"),
@@ -211,6 +265,7 @@ export function Picker({
 
 	const panelRef = useRef<HTMLDivElement>(null);
 	const searchRef = useRef<HTMLInputElement>(null);
+	const chipsRef = useRef<HTMLFieldSetElement>(null);
 	const returnFocusRef = useRef<HTMLElement | null>(null);
 	const rowRefs = useRef(new Map<string, HTMLButtonElement>());
 
@@ -1137,7 +1192,7 @@ export function Picker({
 											</div>
 
 											{isBoards ? null : (
-												<fieldset className="picker__chips">
+												<fieldset ref={chipsRef} className="picker__chips">
 													<legend className="visually-hidden">
 														Pedal filters
 													</legend>

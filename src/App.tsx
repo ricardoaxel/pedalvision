@@ -9,6 +9,7 @@ import { useMeasureShortcuts } from "./canvas/useMeasureShortcuts";
 import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSceneAutoFrame } from "./canvas/useSceneAutoFrame";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
+import type { EffectType } from "./catalog/schema";
 import { CableSchedulePanel } from "./components/CableSchedulePanel";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import {
@@ -35,7 +36,7 @@ import {
 import { MeasureControl } from "./components/MeasureControl";
 import { MeasureOverlay } from "./components/MeasureOverlay";
 import { MotionPresence } from "./components/MotionPresence";
-import { Picker, type PickerTab } from "./components/Picker";
+import { Picker, type PickerPreset, type PickerTab } from "./components/Picker";
 import { ProofBar } from "./components/ProofBar";
 import { ScaleReadout } from "./components/ScaleReadout";
 import { ScenePanel, SceneTriggerContent } from "./components/ScenePanel";
@@ -95,13 +96,19 @@ function PatchHiddenCue() {
 	);
 }
 
-function InfoPanelSlot({ itemUid }: { itemUid: string | null }) {
+function InfoPanelSlot({
+	itemUid,
+	onOpenSimilar,
+}: {
+	itemUid: string | null;
+	onOpenSimilar: (effectTypes: EffectType[]) => void;
+}) {
 	const lastUid = useRef<string | null>(itemUid);
 	if (itemUid) lastUid.current = itemUid;
 	const uid = itemUid ?? lastUid.current;
 	return (
 		<MotionPresence open={itemUid !== null} exitMs={MOTION.close}>
-			<InfoPanel itemUid={uid} />
+			<InfoPanel itemUid={uid} onOpenSimilar={onOpenSimilar} />
 		</MotionPresence>
 	);
 }
@@ -114,6 +121,9 @@ function App() {
 	// sheet from the persistent bottom tab bar.
 	const [pickerOpen, setPickerOpen] = useState(false);
 	const [pickerTab, setPickerTab] = useState<PickerTab>("pedals");
+	// F-14: a "Similar" row opens the picker pre-filtered to the selected
+	// pedal's effect types. The key makes each tap apply once.
+	const [pickerPreset, setPickerPreset] = useState<PickerPreset | null>(null);
 	// P2-02 edit: when set, the picker opens on Custom in edit mode.
 	const [editingCustomRefId, setEditingCustomRefId] = useState<string | null>(
 		null,
@@ -273,6 +283,14 @@ function App() {
 		setContinuityOpen(false);
 	};
 
+	const openSimilar = (effectTypes: EffectType[]) => {
+		setPickerPreset((current) => ({
+			key: (current?.key ?? 0) + 1,
+			effectTypes,
+		}));
+		openPicker("pedals");
+	};
+
 	const openExport = () => {
 		useShare.getState().dismissSaved();
 		useEndpointPlacement.getState().disarm();
@@ -410,6 +428,7 @@ function App() {
 
 	const closePicker = () => {
 		setPickerOpen(false);
+		setPickerPreset(null);
 		setEditingCustomRefId(null);
 		setEditingBoardUid(null);
 	};
@@ -625,12 +644,14 @@ function App() {
 			{/* The selected part's readout + the space warning (P2-03). The
 			 * presence slot keeps the rail mounted for its close, then releases
 			 * the canvas width once. */}
-			<InfoPanelSlot itemUid={selectedItemUid} />
+			<InfoPanelSlot itemUid={selectedItemUid} onOpenSimilar={openSimilar} />
 			<ProofBar />
 			{!readOnly ? (
 				<Picker
 					open={pickerOpen}
 					tab={pickerTab}
+					preset={pickerPreset}
+					onPresetApplied={() => setPickerPreset(null)}
 					editRefId={editingCustomRefId}
 					editBoardUid={editingBoardUid}
 					onOpen={openPicker}
