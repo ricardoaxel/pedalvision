@@ -1,6 +1,6 @@
 # F-14 — similar pedals
 
-**Phase:** 1 · **Status:** todo · **Model:** light (no persistence/share change)
+**Phase:** 1 · **Status:** in review — PR #105 · **Model:** light (no persistence/share change)
 
 > Feature-lane **F-14** from `docs/tasks/feature-roadmap-proposal.md` §2 Phase 1.
 > This is **not** requirements `F14` (there is none); the two numbering schemes
@@ -187,7 +187,7 @@ photography, no accent hue, no chrome of its own.
   state, so a `?share=1#s=…` link cannot encode it — use the preview URL + steps
   + a short video/GIF).
 - Performance numbers recorded; no regression beyond thresholds.
-- `Docs: hub <pages> · map updated`.
+- `Docs: hub /features /changelog /help · map updated`.
 
 ## Notes
 
@@ -195,3 +195,34 @@ photography, no accent hue, no chrome of its own.
   first; do not edit the rules in this PR.
 - Record billed tokens by class (builder / vision / code review) in the PR and
   session summary.
+
+## Review record (2026-11-10)
+
+- **Owner scope choice:** info-panel browse-on-tap (not swap, not picker-only).
+- **Designer:** proposed **“Cross-Reference”**; owner approved the direction as
+  proposed (rows after Effects, text-only, cap 4 both viewports, dimensions
+  kept).
+- **design-reviewer R1:** approve-with-changes — mobile evidence missing, the
+  mobile picker's applied filter was off-screen, support-line copy. Fixed:
+  re-shot mobile with the sheet scrolled to the section, scrolled the pressed
+  chip into view, rewrote the support line.
+- **design-reviewer R2:** approve-with-changes, **no blocker** — mobile section
+  verified (4 rows at ~44 px, no tab-bar clipping) and the pressed Overdrive
+  chip visible on both viewports; only remaining change was the copy, applied.
+  No R3 (≤2 cap).
+- **code-reviewer R1 (light):** approve-with-changes — memoize the ranker,
+  exclude utility-only planner placeholders, consume the preset + gate it on
+  `open`, add coverage. All fixed; a hook-order bug from the first memo attempt
+  was caught by Biome and fixed (memo moved above the early returns).
+- **code-reviewer R2 (light, same session):** **approve** — one nit
+  (tautological reset assertions) folded by pre-setting brand/sort/stereo before
+  the re-tap.
+- **Checks:** lint / typecheck / **1,093 tests** / build **JS 356.18 kB gzip
+  (+1.03), CSS 17.92 (+0.14)** / e2e **444 passed + 14 skipped** / docs hub
+  24/24.
+- **Performance:** rank 0.70–1.15 ms (memoised; 8.5 ms before the utility-only
+  filter); row→picker median ~44 ms; benchmark 200 items 54 FPS, 400 items
+  37 FPS, heap 64.8 MB; share/export unchanged (share v5, no new key).
+- **Evidence:** `docs/screenshots/F-14-similar-pedals/` (before/after desktop +
+  mobile, dark + light; panel/picker detail; hover; custom/read-only hidden;
+  desktop + mobile interaction GIFs).
