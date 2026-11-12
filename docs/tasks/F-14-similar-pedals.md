@@ -189,10 +189,20 @@ layer.
 - **Designer:** recommended **Family Register** (inline lineage + cross rows +
   browse-all); owner delegated the UX call.
 - **v2 implemented:** `similarModel.ts` + grouped `similarPedals.ts` +
-  Sound Register UI + exact-model preset. Final visual review + implementation
-  checks are recorded in the PR.
-- **Performance (v2):** bundle and rank timings recorded in the PR; ranker is
-  memoised.
+  Sound Register UI + exact-model preset.
+- **design-reviewer v2:** R1 approve-with-changes (persistent affordance, group
+  hierarchy, neutral circuit label) → R2 **approve**; remaining nits (chevron/
+  dims gutter, light label tier) deferred.
+- **code-reviewer v2:** R1 changes-required (dead family regexes, wrong DM
+  override ids, dead circuit defs, predecessor order, preset comment) → fixed;
+  R2 changes-required (tape-echo/Big Muff circuits unreachable) → fixed by
+  removing the defs and adding a reachability test. **≤2-pass cap reached**; the
+  test suite is the re-check (no third pass).
+- **Checks:** lint / typecheck / **1,097 tests** / build **JS 359.57 kB gzip
+  (+4.42), CSS 18.09 (+0.31)** / e2e **446 passed + 14 skipped** / docs hub
+  24/24. **Perf:** rank 0.3–2.6 ms on the merged 8,857-row catalog (memoised on
+  `[target, plannerVersion]`), row→picker median ~51 ms, heap 37.8 MB
+  (DD-3 + picker), share/export unchanged (share v5, no new key).
 - **Evidence:** `docs/screenshots/F-14-similar-pedals/` (before/after desktop +
   mobile, dark + light; panel/picker detail; hover; custom/read-only hidden;
   interaction GIFs).
