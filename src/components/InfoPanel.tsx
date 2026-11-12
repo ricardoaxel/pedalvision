@@ -3,7 +3,7 @@ import { catalog } from "../catalog/load";
 import type { EffectType } from "../catalog/schema";
 import { resolveMasterImageUrl, resolveThumbImageUrl } from "../lib/cdn";
 import { buildPartInfo, formatDimensions, formatPower } from "../lib/partInfo";
-import { similarPedals } from "../lib/similarPedals";
+import { browseAllLabel, similarPedalGroups } from "../lib/similarPedals";
 import { useIsMobile } from "../lib/useMobile";
 import { useDrag } from "../state/drag";
 import {
@@ -50,7 +50,11 @@ export function InfoPanel({
 }: {
 	itemUid?: string | null;
 	/** F-14: open the Pedals picker filtered to the selected pedal's types. */
-	onOpenSimilar?: (effectTypes: EffectType[]) => void;
+	onOpenSimilar?: (
+		effectTypes: EffectType[],
+		query?: string,
+		sort?: "relevance" | "brand" | "name",
+	) => void;
 } = {}) {
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	// While the presence wrapper is exiting it passes the last selected uid, so
@@ -216,18 +220,11 @@ export function InfoPanel({
 	// every pointermove or label keystroke.
 	// biome-ignore lint/correctness/useExhaustiveDependencies: plannerVersion is an intentional cache-buster
 	const similarCatalog = useMemo(
-		() => (targetPedal ? similarPedals(targetPedal, catalog.pedals) : []),
+		() => (targetPedal ? similarPedalGroups(targetPedal, catalog.pedals) : []),
 		[targetPedal, plannerVersion],
 	);
-	const similar = onOpenSimilar ? similarCatalog : [];
-	const similarLabels =
-		targetPedal?.effectTypes.map((type) => effectLabel(type)) ?? [];
-	const similarFilterLabel =
-		similarLabels.length <= 1
-			? (similarLabels[0] ?? "the catalogue")
-			: similarLabels.length === 2
-				? `${similarLabels[0]} and ${similarLabels[1]}`
-				: `${similarLabels.slice(0, -1).join(", ")} and ${similarLabels.at(-1)}`;
+	const similarGroups = onOpenSimilar ? similarCatalog : [];
+	const browseAll = targetPedal ? browseAllLabel(targetPedal) : null;
 
 	if (isMobile && proofActive) return null;
 	if (!item || !resolved) return null;
@@ -609,54 +606,103 @@ export function InfoPanel({
 					</section>
 				) : null}
 
-				{similar.length > 0 && targetPedal && onOpenSimilar ? (
+				{similarGroups.length > 0 && targetPedal && onOpenSimilar ? (
 					<section className="info-panel__section" data-testid="info-similar">
 						<div className="info-panel__section-head">
-							<h3 className="info-panel__eyebrow">Similar</h3>
+							<h3 className="info-panel__eyebrow">Sounds like</h3>
 						</div>
 						<div className="info-similar__body">
-							<p className="info-similar__hint">
-								{similarLabels.length > 1
-									? "Same effect types"
-									: "Same effect type"}{" "}
-								· browse {similarFilterLabel} pedals
-							</p>
-							<ul className="info-similar__list">
-								{similar.map((entry) => {
-									const shared = entry.sharedEffectTypes
-										.map((type) => effectLabel(type))
-										.join(" · ");
-									const dims = formatDimensions(
-										entry.widthCm,
-										entry.heightCm,
-										units,
-									);
-									return (
-										<li key={entry.id}>
-											<button
-												type="button"
-												className="info-similar__row"
-												data-testid={`info-similar-${entry.id}`}
-												aria-haspopup="dialog"
-												aria-label={`${entry.brand} ${entry.name}, shares ${entry.sharedEffectTypes
-													.map((type) => effectLabel(type))
-													.join(" and ")}, ${dims} — open in the catalogue`}
-												onClick={() => onOpenSimilar(targetPedal.effectTypes)}
-											>
-												<span className="info-similar__line">
-													<span className="info-similar__name">
-														{entry.name}
-													</span>
-													<span className="info-similar__dims">{dims}</span>
-												</span>
-												<span className="info-similar__subline">
-													{entry.brand} · {shared}
-												</span>
-											</button>
-										</li>
-									);
-								})}
-							</ul>
+							{similarGroups.map((group) => (
+								<div className="info-similar__group" key={group.tier}>
+									<h4 className="info-similar__group-label">{group.label}</h4>
+									{group.tier === "family" ? (
+										<ul className="info-similar__register">
+											{group.items.map((entry) => (
+												<li key={entry.id}>
+													<button
+														type="button"
+														className="info-similar__token"
+														data-testid={`info-similar-${entry.id}`}
+														aria-haspopup="dialog"
+														aria-label={`${entry.brand} ${entry.name} — open in the catalogue`}
+														onClick={() =>
+															onOpenSimilar(targetPedal.effectTypes, entry.name)
+														}
+													>
+														{entry.shortLabel}
+													</button>
+												</li>
+											))}
+										</ul>
+									) : (
+										<ul className="info-similar__list">
+											{group.items.map((entry) => {
+												const dims = formatDimensions(
+													entry.widthCm,
+													entry.heightCm,
+													units,
+												);
+												const subline = [entry.brand, entry.capability]
+													.filter(Boolean)
+													.join(" · ");
+												return (
+													<li key={entry.id}>
+														<button
+															type="button"
+															className="info-similar__row"
+															data-testid={`info-similar-${entry.id}`}
+															aria-haspopup="dialog"
+															aria-label={`${entry.brand} ${entry.name}, ${group.label}, ${dims}${entry.capability ? `, ${entry.capability}` : ""} — open in the catalogue`}
+															onClick={() =>
+																onOpenSimilar(
+																	targetPedal.effectTypes,
+																	entry.name,
+																)
+															}
+														>
+															<span className="info-similar__line">
+																<span className="info-similar__name">
+																	{entry.name}
+																</span>
+																<span className="info-similar__meta">
+																	<span className="info-similar__dims">
+																		{dims}
+																	</span>
+																	<span
+																		className="info-similar__chevron"
+																		aria-hidden="true"
+																	>
+																		›
+																	</span>
+																</span>
+															</span>
+															<span className="info-similar__subline">
+																{subline}
+															</span>
+														</button>
+													</li>
+												);
+											})}
+										</ul>
+									)}
+								</div>
+							))}
+							{browseAll ? (
+								<button
+									type="button"
+									className="info-similar__footer"
+									data-testid="info-similar-browse"
+									aria-haspopup="dialog"
+									onClick={() =>
+										onOpenSimilar(targetPedal.effectTypes, undefined, "name")
+									}
+								>
+									{browseAll}
+									<span className="info-similar__chevron" aria-hidden="true">
+										›
+									</span>
+								</button>
+							) : null}
 						</div>
 					</section>
 				) : null}

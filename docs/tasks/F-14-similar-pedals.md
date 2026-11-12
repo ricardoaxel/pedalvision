@@ -1,136 +1,136 @@
-# F-14 — similar pedals
+# F-14 — similar pedals (sound-alikes)
 
 **Phase:** 1 · **Status:** in review — PR #105 · **Model:** light (no persistence/share change)
 
 > Feature-lane **F-14** from `docs/tasks/feature-roadmap-proposal.md` §2 Phase 1.
-> This is **not** requirements `F14` (there is none); the two numbering schemes
-> are unrelated.
+> This is **not** requirements `F14` (there is none); the numbering schemes are
+> unrelated.
 
 ## Goal
 
-When a placed catalog pedal is selected, the info panel suggests a few
-**catalogue alternatives with an overlapping effect type** ("Similar in the
-catalogue"), so the user can find a substitute for a pedal they already have
-without re-typing a search. Tapping an alternative opens the Pedals picker
-pre-filtered to that target pedal's effect type(s), where the user can add it.
+Answer the guitarist’s question: **“what else can I buy that sounds like this?”**
+For a selected catalogue pedal the info panel shows **cross-brand sound-alikes**
+(clones / circuits / algorithms) first, then the maker’s own **family/lineage**,
+then a broad “Browse all …” path. A plain shared effect type (“it’s also a
+delay”) is never enough.
 
-Purely a discovery aid: nothing in the scene, document or share payload changes.
+The owner rejected the first implementation (a flat “shares ≥1 effect type” list:
+a DD-3 could surface unrelated delays and spent slots on its own reissue). The
+redesign is **evidence-tiered**:
 
-## Owner-confirmed scope (2026-11-10)
+1. **Circuit / algorithm family across brands** — Screamer-style overdrive,
+   Big Muff-style, BBD analog delay, tape echo, BBD chorus, …
+2. **Delay/reverb subtype** when no circuit evidence exists — digital delay,
+   analog delay, tape delay, hall/plate/spring/ambient/multi-mode reverb.
+3. **The maker’s own family** — DD-3 → DD-3T/DD-5/DD-6/DD-7/DD-8, shown as a
+   compact register beneath the cross-brand group.
 
-The owner chose the **info-panel, browse-on-tap** option:
+No “same broad effect” fallback. If there is no evidence, the section is hidden
+rather than filled with noise. No scene mutation; no new transported key (share
+stays **v5**).
 
-1. The list lives in the **existing info panel** (desktop rail + mobile
-   expanded sheet), **not** the picker specimen pane (which is hidden on
-   mobile — F-32 territory — so it cannot meet desktop/mobile parity).
-2. **"Similar" rule:** same `category === "pedal"`, shares **≥ 1 effect type**
-   with the target, excludes the target id. Rank by: shared effect-type count
-   (desc) → same brand (true first) → closest footprint (|Δw| + |Δh|, asc) →
-   name (asc) for a deterministic tie-break. Cap **4**.
-3. **No scene mutation.** Tapping a row opens the Pedals picker with that
-   effect type pre-selected; adding is still the user's explicit action.
-4. **Hidden in read-only shares** (the picker is an edit surface, and read-only
-   views must not offer edit controls).
-5. Custom/unknown placed parts and targets with no effect types show no
-   section.
+## Owner-confirmed scope (revised 2026-11-10)
+
+1. **Sound-alikes, not categories.** Cross-brand clones/circuits/algorithms are
+   the headline; the maker’s lineage is secondary. Price/availability is **out of
+   scope** (the runtime catalogue has no price field; inventing one would be
+   misleading).
+2. **Tapping a row/token opens that exact model** in the Pedals picker (query =
+   the model name, effect type applied). The token label is therefore true.
+3. **The footer is the “more all” path** (`Browse all delays`, etc.) and opens
+   the broad filtered list.
+4. **Read-only shares hide the whole section** (the picker is an edit surface).
+   Custom/unknown parts and utility-only planner placeholders have no section.
+5. **Curated knowledge is allowed** (owner decision, “whatever is needed”).
+   This amends the earlier “no name matching” constraint: the feature may use a
+   small, reviewed, unit-tested map of model families/circuits in `src/lib`.
+   It is **not** fuzzy/free-text inference, and it never edits catalogue data.
+6. **Family register:** up to 5 short tokens, successors/replacements before
+   predecessors, finish/colourway variants collapsed or excluded.
 
 ## The gap on `main` (`f82ed9bf`)
 
-- `InfoPanel` shows identity, effects, jacks, power and the F-12 label, but no
-  alternatives and no link back into the catalogue.
-- `Picker` owns its filter state internally (`effectTypes`), and `App` only
-  passes the tab. There is no way to open it already filtered.
-- The catalog already carries everything needed (`effectTypes`, `brand`,
-  dimensions) at runtime; no catalog edit is required.
+- The old `similarPedals` ranked by shared effect types + same brand + footprint.
+  Same-brand priority spends all four slots on the target’s own line and
+  structurally hides every cross-brand alternative; `variantOf` reissues and
+  colourways flood the list; every row opened the same broad list.
+- `InfoPanel` rendered a flat list; there was no grouping, no reason, no register.
+- The catalogue already has the facts for a curated model (names, notes, dims,
+  `variantOf`, `stereo`); famous non-BOSS models (TS9, RAT 2, Flashback, Canyon,
+  BigSky) are not catalogued yet and must not be faked.
 
 ## Data model
 
-No persisted or transported change.
+No persisted or transported change: **no** `PlacedItem`/`PlacedBoard` field, **no**
+`SceneDocument` change, **no** share-version bump (stays **v5**).
 
-- **No** new `PlacedItem`/`PlacedBoard` field, **no** `SceneDocument` change,
-  **no** share-version bump (share stays **v5**).
-- New pure module `src/lib/similarPedals.ts`:
+- **`src/lib/similarModel.ts` (new).** Typed, reviewed maps:
+  - `FAMILY_RULES` — maker lineage + order + short label (BOSS DD/DM/RV/RE/SDE/
+    CE/BF/PH/TR/SD/DS/BD/OD/FZ/MT/VB/DC; MXR Carbon Copy; Meris Mercury; Red
+    Panda Context/Raster/Particle; EQD Afterneath/Avalanche; Keeley 1962; EHX
+    Bass Big Muff; TC Alter Ego). Finish/colourway markers are excluded.
+  - `CIRCUITS` — cross-brand circuit/algorithm families with `core` and
+    `adjacent` members, limited to families that can actually render today
+    (Screamer-style overdrive + SD-1 adjacent; Bluesbreaker; BBD analog delay;
+    BBD chorus). Single-member families (Klon, RAT, OCD, Uni-Vibe, Big Muff,
+    tape echo) are deliberately **not claimed** until the catalogue carries
+    genuine cross-brand members; their family registers still apply.
+  - `SUBTYPE_OVERRIDES` + scoped notes keywords for delay/reverb subtypes; an
+    unknown subtype is left unknown (no claim).
+  - `capabilitiesOf` — stereo (recorded field), tap tempo, multi-mode, MIDI,
+    compact footprint.
+  - `delayRoleRank` — deprioritises pitch/granular delays that merely share the
+    `delay` tag.
+- **`src/lib/similarPedals.ts`.** `similarPedalGroups(target, pedals)` returns
+  ordered `SimilarGroup[]` (`circuit` / `subtype` / `family`), cap **3** cross
+  rows and **5** family tokens, with deterministic ranking:
+  - circuit: core before adjacent → shared capabilities → current → footprint →
+    name/id;
+  - subtype: plain delays before pitch/granular → same format → shared
+    capabilities → current → footprint → name/id;
+  - family: successors/replacements first → lineage order → current → name.
+  - Excludes self, non-pedals, utility-only planner rows, finish/colourway
+    variants, multi-processors for single-effect targets, and bass models for a
+    non-bass target. `browseAllLabel()` yields the footer copy.
 
-```ts
-export interface SimilarPedal {
-  id: string;
-  brand: string;
-  name: string;
-  widthCm: number;
-  heightCm: number;
-  /** Effect types shared with the target, in the target's order. */
-  sharedEffectTypes: EffectType[];
-}
+A unit test asserts every mapped id exists in the curated catalogue; unknown
+models are never guessed.
 
-export function similarPedals(
-  target: CatalogPedal,
-  pedals: readonly CatalogPedal[],
-  limit?: number, // default 4
-): SimilarPedal[];
-```
+## Approved direction — "Sound Register" (2026-11-10)
 
-- The module is catalog-in / data-out; no URL/image resolution and no store
-  access, so it is unit-tested without the DOM.
-- Brand/footprint matching uses the **stored catalog facts only** (cm is the
-  source of truth). No inferred effect types and no name matching.
+An adaptation of the designer’s recommended **Family Register** after the owner’s
+sound-alike pivot. Same quiet Specimen Cover rail, tokens only, no new photo
+layer.
 
-## Interaction / UI
-
-- New `.info-panel__section[data-testid="info-similar"]` after **Effects**
-  (before jacks/power), so it reads as "the catalogue around this pedal".
-- Each row is a `<button type="button">` (44 px touch target on mobile) with the
-  alternative's brand + name + its shared effect label, and dimensions; the
-  row set is `role="list"`/`<ul>` semantics.
-- Tapping a row calls a new `onOpenSimilar(id)` prop (App → `openPicker`) with
-  a preset; the picker applies the target's effect types and clears the query,
-  brand, stereo and sort so the filtered ledger is visible immediately.
-- The picker exposes a new optional `preset` prop
-  `{ key: number; effectTypes: EffectType[]; query?: string }`; a `key` change
-  applies it once (so re-clicking the same alternative works and normal use
-  keeps the previous filter state).
-- No new toolbar control, no auto-open, no toast.
-
-## Approved direction — "Cross-Reference" (designer, owner-approved 2026-11-10)
-
-Reads like a cross-reference slip pinned beside the specimen: text-only, no
-photography, no accent hue, no chrome of its own.
-
-- **Placement:** at the **end of the panel, after `Power`** and before the legal
-  note (owner re-ordering 2026-11-10: the physical facts — jacks/power — matter
-  more than discovery, so Similar must not push them down). Press Proof hides it
-  with Effects.
-- **Header:** eyebrow `Similar` + support line
-  `Same effect type · browse <effect> pedals` (rewritten from the designer's
-  "Shares an effect type · opens the catalogue." after the pixel review, to name
-  the action and the applied filter).
-- **Rows:** name (sans `--font-size-sm`, medium, ellipsis) + mono dims
-  (`--font-size-2xs`, tabular, right) on line 1; `brand · shared effect types`
-  (`--font-size-xs`, `--color-ink-muted`, ellipsis) on line 2. Hairlines between
-  rows; full-row 44 px hit area; hover/active `--color-input-bg`; focus ring
-  `--color-accent-strong` inset 2 px. Cap **4**, both viewports.
-- **Semantics:** `<ul>/<li>/<button>` with `aria-haspopup="dialog"` and an
-  accessible name that includes the target action (rows have no visible CTA).
-- **No new tokens**; every value reuses the panel's ink/border/accent/spacing
-  scale (measured AA: ink-muted on surface-elevated 5.63:1 dark / 6.66:1 light).
-- **Mobile:** same DOM inside `.info-panel__detail`, so the collapsed peek hides
-  it for free; no new mobile CSS.
-- **Design review:** `design-reviewer` pass 1 approve-with-changes (mobile
-  evidence missing; mobile picker filter off-screen; copy) → pass 2
-  **approve-with-changes** with no remaining blocker after the mobile evidence +
-  chip-scroll fixes; the final copy tweak was its single recommended change.
-  No third pass (≤2 cap). **Owner follow-up (2026-11-10, after the review):**
-  the section was moved from after Effects to after Power; this is an
-  owner-directed ordering change inside the approved direction (no re-review).
+- **Placement:** bottom of the info panel, after **Power** and before the legal
+  note (owner re-order). Press Proof hides it with Effects.
+- **Order:** cross-brand sound-alike group first, family register second, then
+  the footer.
+- **Cross group:** mono eyebrow label (`Screamer-style overdrive`, `BBD analog
+  delay`, `Other digital delays`, …); rows are name + mono dims on line 1 and
+  `brand · <shared capability>` on line 2. Cap 3. No thumbnails, no counts, no
+  per-row prose.
+- **Family register:** `Also from <brand>` + inline short tokens
+  (`DD-3T · DD-5 · DD-6 · DD-7 · DD-8 · DD-2`), 44 px targets, hover fill,
+  inset focus ring. No dims/brand in the register; full names in the accessible
+  label.
+- **Footer:** one muted `Browse all delays` text button (44 px on mobile).
+- **Tap:** exact model → picker with that model name as the query + the target’s
+  effect types. The preset is one-shot and consumed by the parent.
+- **Tokens:** none new; existing ink/border/accent/spacing/type scale only.
+- **Read-only/custom/unknown/utility:** section absent.
+- **Design review:** the new pixels need one `design-reviewer` pass (desktop +
+  mobile, dark + light) before hand-off.
 
 ## Read first (context pack)
 
 - `docs/progress.md`, `docs/tasks/feature-roadmap-proposal.md` §2 Phase 1 / §6
 - `docs/tasks/F-12-pedal-labels.md` (info-panel section pattern)
 - `docs/design.md` → Data model / Info panel / Picker
-- `src/components/InfoPanel.tsx`, `src/components/Picker.tsx`,
-  `src/components/pickerFilter.ts`, `src/App.tsx`
-- `src/catalog/schema.ts` (`CatalogPedal`, `EFFECT_TYPES`, `EffectType`)
-- `e2e/info-panel.spec.ts`, `e2e/picker.spec.ts`, `e2e/picker.ts`
+- `src/lib/similarModel.ts`, `src/lib/similarPedals.ts`
+- `src/components/InfoPanel.tsx`, `src/components/Picker.tsx`, `src/App.tsx`
+- `src/catalog/schema.ts` (`CatalogPedal`, `EFFECT_TYPES`)
+- `e2e/similar-pedals.spec.ts`, `e2e/picker.ts`
 
 ## Workstream / boundaries
 
@@ -138,98 +138,61 @@ photography, no accent hue, no chrome of its own.
   `docs/screenshots/F-14-similar-pedals/**`, and the docs hub pages.
 - **Never edit** `data/catalog/**`, `public/pedal-assets/**`, `src/catalog/**`,
   `tools/catalog-*`, or shared coordinator docs/config.
-- Separate branch/worktree; **one PR**; no merge.
+- Separate branch/worktree; **one PR** (#105); no merge.
 
 ## Constraints
 
 - cm is the source of truth; no new runtime dependencies.
-- Preserve the approved "Specimen Cover" info-panel direction and the
-  "Specimen Bench" picker direction. The section must not compete with the
-  F-12 label, jacks, the amber space warning or the F-16 outline.
-- **Design gate (mandatory):** designer proposal → **owner approval** →
-  `design-reviewer` ≤2 passes on real desktop + mobile, dark + light
-  before/after pixels.
-- 44 px touch targets, visible focus, keyboard reachable, desktop/mobile parity.
-- **Read-only share views hide the section entirely** (no dead/edit controls).
-- **No total-count E2E assertions**; filter a stable item/brand.
+- Preserve the approved "Specimen Cover" panel and "Specimen Bench" picker.
+- **Design gate:** designer proposal (done) → owner direction → `design-reviewer`
+  ≤2 passes on real desktop + mobile, dark + light before/after pixels.
+- 44 px targets, visible focus, keyboard reachable, desktop/mobile parity.
+- **Read-only share views hide the section entirely.**
+- **No total-count E2E assertions**; filter stable items/brands.
 - **No analytics/tracking** (F-42 is Phase 5).
-- **Performance guardrail:** record bundle delta, picker-open/canvas frame
-  time, heap and share/export size (share/export must be byte-identical for the
-  same scene — no transported key changed).
-
-## Steps
-
-1. Restate the scope + executable acceptance criteria (this file).
-2. Design gate: designer proposal → owner approval → implement.
-3. Implement the pure module + section + picker preset; unit tests.
-4. `design-reviewer` ≤2 passes on desktop + mobile, dark + light.
-5. Light code review on the source diff; fix findings.
-6. `pnpm lint && pnpm typecheck && pnpm test && pnpm build`; touched E2E
-   desktop + mobile.
-7. Docs hub `/features` + `/changelog` + `/help` (the workflow gains a
-   discovery path) and the F-19 feature map row.
-8. One PR with the standard sections + feature demo link; no merge.
+- **Performance guardrail:** record bundle delta, picker/canvas frame time, heap
+  and share/export size; the ranker is memoised on `[target, plannerVersion]`.
 
 ## Acceptance (executable)
 
-- `similarPedals` unit tests cover: self excluded; shared-type filter; rank
-  order (type count → same brand → footprint → name); cap 4; empty for a target
-  with no effect types; deterministic repeat calls; no mutation of inputs.
-- Info panel shows `info-similar` for a placed catalog pedal with matches, and
-  every row opens the picker on **Pedals** with the target's effect chips
-  pressed and query/brand/stereo reset (desktop + mobile E2E).
-- Section is absent for a custom part, an unknown part and a no-effect pedal,
-  and **absent in a read-only share** (E2E on both viewports).
-- No scene/document/share change: a scene round-trips byte-identically
-  (existing `share`/`scenes` specs stay green); share version remains 5.
-- Before/after screenshots at desktop + mobile, dark + light (same selected
-  pedal).
-- `pnpm lint && pnpm typecheck && pnpm test && pnpm build` green.
-- Touched E2E flows green on desktop + mobile.
-- Feature demo link: deployed PR preview + exact steps (the panel is selection
-  state, so a `?share=1#s=…` link cannot encode it — use the preview URL + steps
-  + a short video/GIF).
-- Performance numbers recorded; no regression beyond thresholds.
+- DD-3 shows **Other digital delays** (cross-brand: Alter Ego v2, DD600, ARP-87)
+  then **Also from BOSS** with `DD-3T, DD-5, DD-6, DD-7, DD-8`; no DD-3,
+  no DD-20/200/500, no colourways.
+- Carbon Copy shows **BBD analog delay** (Bucket Brigade, Ana Echo, DM-2) then
+  **Also from MXR** (`Mini, Bright, Deluxe`), excluding the 10th Anniversary.
+- JHS 808 shows **Screamer-style overdrive** (3 Series Screamer, SD-1); a generic
+  overdrive is not suggested.
+- Tapping a row/token opens the picker on that exact model (query = name) with
+  the effect type applied; the footer opens the broad list with an empty query.
+- A re-tap after closing re-applies the preset and resets query/brand/sort/stereo.
+- No section for a custom part, unknown part, utility-only planner item, or a
+  generic drive with no evidence; **no section in a read-only share**.
+- No scene/document/share change: share remains v5 and the existing share/scenes
+  specs stay green.
+- Before/after screenshots desktop + mobile, dark + light; interaction GIFs.
+- `pnpm lint && pnpm typecheck && pnpm test && pnpm build` green; touched E2E
+  green on desktop + mobile.
+- Feature demo: deployed PR preview + exact steps + GIF (selection state cannot
+  be encoded in a share link).
 - `Docs: hub /features /changelog /help · map updated`.
-
-## Notes
-
-- Process/rule gaps: propose the change + `token-usage-reviewer` to the owner
-  first; do not edit the rules in this PR.
-- Record billed tokens by class (builder / vision / code review) in the PR and
-  session summary.
 
 ## Review record (2026-11-10)
 
-- **Owner scope choice:** info-panel browse-on-tap (not swap, not picker-only).
-- **Owner re-ordering (2026-11-10, post-review):** moved Similar from after
-  Effects to the bottom of the panel (after Power), so jacks/power stay above
-  it. Owner-directed simple placement change; screenshots re-captured, no new
-  design-review round.
-- **Designer:** proposed **“Cross-Reference”**; owner approved the direction as
-  proposed (rows after Effects, text-only, cap 4 both viewports, dimensions
-  kept).
-- **design-reviewer R1:** approve-with-changes — mobile evidence missing, the
-  mobile picker's applied filter was off-screen, support-line copy. Fixed:
-  re-shot mobile with the sheet scrolled to the section, scrolled the pressed
-  chip into view, rewrote the support line.
-- **design-reviewer R2:** approve-with-changes, **no blocker** — mobile section
-  verified (4 rows at ~44 px, no tab-bar clipping) and the pressed Overdrive
-  chip visible on both viewports; only remaining change was the copy, applied.
-  No R3 (≤2 cap).
-- **code-reviewer R1 (light):** approve-with-changes — memoize the ranker,
-  exclude utility-only planner placeholders, consume the preset + gate it on
-  `open`, add coverage. All fixed; a hook-order bug from the first memo attempt
-  was caught by Biome and fixed (memo moved above the early returns).
-- **code-reviewer R2 (light, same session):** **approve** — one nit
-  (tautological reset assertions) folded by pre-setting brand/sort/stereo before
-  the re-tap.
-- **Checks:** lint / typecheck / **1,093 tests** / build **JS 356.18 kB gzip
-  (+1.03), CSS 17.92 (+0.14)** / e2e **444 passed + 14 skipped** / docs hub
-  24/24.
-- **Performance:** rank 0.70–1.15 ms (memoised; 8.5 ms before the utility-only
-  filter); row→picker median ~44 ms; benchmark 200 items 54 FPS, 400 items
-  37 FPS, heap 64.8 MB; share/export unchanged (share v5, no new key).
+- **Owner scope v1:** info-panel browse-on-tap; implemented flat shared-effect
+  list; design-reviewer 2/2 and code-reviewer 2/2 on that version.
+- **Owner rejected v1 (2026-11-10):** “similar should be DD-5 but also other
+  digital delays from other brands — something smarter.” Price explicitly out of
+  scope (would need scraping/assumptions).
+- **Pedal-domain expert:** family → circuit/algorithm → subtype tiers; curated
+  maps; no broad-effect fallback; catalog coverage caveat (planner overlay untagged;
+  TS9/RAT/Flashback/Canyon/BigSky absent).
+- **Designer:** recommended **Family Register** (inline lineage + cross rows +
+  browse-all); owner delegated the UX call.
+- **v2 implemented:** `similarModel.ts` + grouped `similarPedals.ts` +
+  Sound Register UI + exact-model preset. Final visual review + implementation
+  checks are recorded in the PR.
+- **Performance (v2):** bundle and rank timings recorded in the PR; ranker is
+  memoised.
 - **Evidence:** `docs/screenshots/F-14-similar-pedals/` (before/after desktop +
   mobile, dark + light; panel/picker detail; hover; custom/read-only hidden;
-  desktop + mobile interaction GIFs).
+  interaction GIFs).

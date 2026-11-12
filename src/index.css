@@ -3521,20 +3521,105 @@ input[type="search"]::-webkit-search-decoration {
 	border-bottom: 1px solid var(--color-border);
 }
 
-/* F-14 "Cross-Reference": a quiet text-only ledger of catalogue alternatives,
- * deliberately image-free so the specimen cover stays the only photo in the
- * rail. Rows mirror the picker ledger's name + mono dims + muted subline. */
+/* F-14 "Similar": sound-alike groups, deliberately image-free so the specimen
+ * cover stays the only photo in the rail. The cross-brand group is rows; the
+ * maker's own lineage is a compact register of model tokens. */
 .info-similar__body {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-2);
 }
 
-.info-similar__hint {
+.info-similar__group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+.info-similar__group-label {
 	margin: 0;
-	font-size: var(--font-size-xs);
-	line-height: var(--leading-normal);
+	font-family: var(--font-mono);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
 	color: var(--color-ink-muted);
+}
+
+/* The cross-brand sound-alike group is the headline; the maker's family
+ * register is deliberately quieter underneath it. */
+.info-similar__group-label--primary {
+	font-size: var(--font-size-xs);
+	color: var(--color-ink);
+}
+
+.info-similar__register {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1) var(--space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.info-similar__token {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 0 var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-ink);
+	text-decoration: underline;
+	text-decoration-color: var(--color-border-strong);
+	text-underline-offset: 3px;
+	background-color: transparent;
+	border: 0;
+	border-radius: var(--radius-row);
+	cursor: pointer;
+}
+
+.info-similar__token:hover,
+.info-similar__token:active {
+	background-color: var(--color-input-bg);
+}
+
+.info-similar__token:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: -2px;
+}
+
+.info-similar__footer {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	min-height: 44px;
+	padding: 0 var(--space-2);
+	text-align: left;
+	font-family: var(--font-sans);
+	font-size: var(--font-size-xs);
+	color: var(--color-ink);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-color: var(--color-border-strong);
+	background-color: transparent;
+	border: 0;
+	border-radius: var(--radius-row);
+	cursor: pointer;
+}
+
+.info-similar__footer:hover,
+.info-similar__footer:active {
+	color: var(--color-ink);
+	background-color: var(--color-input-bg);
+}
+
+.info-similar__footer:focus-visible {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: -2px;
 }
 
 .info-similar__list {
@@ -3589,6 +3674,13 @@ input[type="search"]::-webkit-search-decoration {
 	white-space: nowrap;
 }
 
+.info-similar__meta {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: baseline;
+	gap: var(--space-1);
+}
+
 .info-similar__dims {
 	flex: 0 0 auto;
 	font-family: var(--font-mono);
@@ -3604,6 +3696,11 @@ input[type="search"]::-webkit-search-decoration {
 	color: var(--color-ink-muted);
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.info-similar__chevron {
+	flex: 0 0 auto;
+	color: var(--color-ink-muted);
 }
 
 .info-panel__facts {

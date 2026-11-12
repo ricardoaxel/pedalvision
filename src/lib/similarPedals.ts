@@ -1,32 +1,74 @@
-import type { CatalogPedal, EffectType } from "../catalog/schema";
+import type { CatalogPedal } from "../catalog/schema";
+import {
+	capabilitiesOf,
+	circuitById,
+	circuitOf,
+	delayRoleRank,
+	familyOf,
+	isBassModel,
+	isFinishOnly,
+	isMultiProcessor,
+	pluralEffect,
+	type SimilarCapability,
+	sharedCapability,
+	subtypeLabel,
+	subtypeOf,
+} from "./similarModel";
 
 /**
- * F-14 "Cross-Reference" — find catalogue alternatives to a placed pedal.
+ * F-14 "Similar" — sound-alike groups for a selected catalogue pedal.
  *
- * Pure catalogue-in/data-out so the ranking is unit-tested without the DOM.
- * "Similar" means the same product category with at least one shared effect
- * type; the target itself is always excluded. Rank order:
+ * Replaces the old flat "shares ≥1 effect type" ranker. Evidence tiers:
+ *   - a cross-brand circuit/algorithm match (Tube Screamer-style, BBD analog
+ *     delay, …) or a same delay/reverb subtype (digital delay, hall reverb, …),
+ *   - the maker's own family/lineage (DD-5, DD-6, DD-7, DD-8, …).
  *
- * 1. number of shared effect types (desc)
- * 2. same brand (true first) — a first step towards the same family
- * 3. closest footprint, |Δwidth| + |Δheight| in cm (asc)
- * 4. name, then id (asc) — deterministic tie-break
- *
- * Only stored catalogue facts are used (effect types, brand, cm dimensions);
- * nothing is inferred from names, images or jack data.
+ * The cross-brand group is shown first (that is the owner's question: "what
+ * else can I buy that sounds like this?"), with the family as a compact
+ * register underneath. There is no "same broad effect" fallback: if there is
+ * no evidence, the section stays hidden instead of filling with noise.
  */
 
-/** How many alternatives the info panel shows (owner-approved cap). */
-export const SIMILAR_PEDALS_LIMIT = 4;
+export type SimilarTier = "circuit" | "subtype" | "family";
 
-export interface SimilarPedal {
+export interface SimilarItem {
 	id: string;
 	brand: string;
 	name: string;
+	/** Compact register label for a family member (e.g. "DD-5"). */
+	shortLabel: string;
 	widthCm: number;
 	heightCm: number;
-	/** Effect types shared with the target, in the target's own order. */
-	sharedEffectTypes: EffectType[];
+	/** Most useful shared role/feature, if any (stereo, tap, …). */
+	capability: SimilarCapability | null;
+}
+
+export interface SimilarGroup {
+	tier: SimilarTier;
+	/** Cross group: the shared circuit/subtype. Family: "Also from <brand>". */
+	label: string;
+	items: SimilarItem[];
+}
+
+/** How many of the maker's own family members the register shows. */
+export const SIMILAR_FAMILY_LIMIT = 5;
+/** How many cross-brand sound-alikes the section shows. */
+export const SIMILAR_CROSS_LIMIT = 3;
+
+function item(
+	candidate: CatalogPedal,
+	target: CatalogPedal,
+	shortLabel = candidate.name,
+): SimilarItem {
+	return {
+		id: candidate.id,
+		brand: candidate.brand,
+		name: candidate.name,
+		shortLabel,
+		widthCm: candidate.widthCm,
+		heightCm: candidate.heightCm,
+		capability: sharedCapability(target, candidate),
+	};
 }
 
 function footprintDistance(a: CatalogPedal, b: CatalogPedal): number {
@@ -39,52 +81,220 @@ function compareNames(a: CatalogPedal, b: CatalogPedal): number {
 	return a.id < b.id ? -1 : 1;
 }
 
+function sharedCapabilityCount(a: CatalogPedal, b: CatalogPedal): number {
+	const target = capabilitiesOf(a);
+	const candidate = capabilitiesOf(b);
+	let count = 0;
+	for (const capability of target) {
+		if (candidate.has(capability)) count += 1;
+	}
+	return count;
+}
+
+function currentScore(pedal: CatalogPedal): number {
+	return pedal.status === "current" ? 1 : 0;
+}
+
 /**
- * Return up to `limit` catalogue pedals similar to `target` (default 4).
- * Empty when the target has no effect types or is not a pedal.
+ * Collapse finish/revision variants of the same family to one row. The family
+ * register already shows the target's own family, so a cross tier should never
+ * spend three slots on Carbon Copy Mini/Bright/Deluxe.
  */
-export function similarPedals(
+function collapseFamilyDuplicates(candidates: CatalogPedal[]): CatalogPedal[] {
+	const byFamily = new Map<string, { pedal: CatalogPedal; order: number }>();
+	const kept: CatalogPedal[] = [];
+	for (const pedal of candidates) {
+		const family = familyOf(pedal);
+		if (!family) {
+			kept.push(pedal);
+			continue;
+		}
+		const current = byFamily.get(family.key);
+		if (!current || family.order < current.order) {
+			byFamily.set(family.key, { pedal, order: family.order });
+		}
+	}
+	for (const { pedal } of byFamily.values()) kept.push(pedal);
+	return kept;
+}
+
+function eligibleCandidate(
+	target: CatalogPedal,
+	candidate: CatalogPedal,
+): boolean {
+	if (candidate.id === target.id) return false;
+	if (candidate.category !== "pedal") return false;
+	if (isFinishOnly(candidate)) return false;
+	// A guitar target never gets a bass model (and vice versa).
+	if (isBassModel(target) !== isBassModel(candidate)) return false;
+	return true;
+}
+
+function familyGroup(
 	target: CatalogPedal,
 	pedals: readonly CatalogPedal[],
-	limit: number = SIMILAR_PEDALS_LIMIT,
-): SimilarPedal[] {
-	if (limit <= 0) return [];
-	if (target.category !== "pedal" || target.effectTypes.length === 0) return [];
-
-	const candidates: { pedal: CatalogPedal; shared: EffectType[] }[] = [];
-	for (const pedal of pedals) {
-		if (pedal.id === target.id || pedal.category !== "pedal") continue;
-		const shared = target.effectTypes.filter((type) =>
-			pedal.effectTypes.includes(type),
-		);
-		if (shared.length === 0) continue;
-		// `utility` is the catalogue's catch-all role, not a shared sound
-		// property (the bulk planner overlay tags thousands of placeholders
-		// with it). A candidate whose ONLY type is `utility` would otherwise
-		// flood the list with unrelated devices.
-		if (pedal.effectTypes.length === 1 && pedal.effectTypes[0] === "utility")
+): SimilarGroup | null {
+	const targetFamily = familyOf(target);
+	if (!targetFamily) return null;
+	const members: { pedal: CatalogPedal; order: number; short: string }[] = [];
+	for (const candidate of pedals) {
+		if (!eligibleCandidate(target, candidate)) continue;
+		if (
+			!candidate.effectTypes.some((type) => target.effectTypes.includes(type))
+		)
 			continue;
-		candidates.push({ pedal, shared });
+		const family = familyOf(candidate);
+		if (!family || family.key !== targetFamily.key) continue;
+		members.push({
+			pedal: candidate,
+			order: family.order,
+			short: family.shortLabel,
+		});
 	}
-
-	candidates.sort((a, b) => {
-		if (a.shared.length !== b.shared.length)
-			return b.shared.length - a.shared.length;
-		const sameBrandA = a.pedal.brand === target.brand ? 1 : 0;
-		const sameBrandB = b.pedal.brand === target.brand ? 1 : 0;
-		if (sameBrandA !== sameBrandB) return sameBrandB - sameBrandA;
-		const distance =
-			footprintDistance(a.pedal, target) - footprintDistance(b.pedal, target);
-		if (distance !== 0) return distance;
-		return compareNames(a.pedal, b.pedal);
+	// Successors/replacements first, then predecessors, so DD-3T/DD-5 come
+	// before DD-2 on a DD-3. Lineage order is the point of a register.
+	members.sort((a, b) => {
+		const aAfter = a.order > targetFamily.order ? 0 : 1;
+		const bAfter = b.order > targetFamily.order ? 0 : 1;
+		if (aAfter !== bAfter) return aAfter - bAfter;
+		// Successors: nearest first (ascending). Predecessors: nearest first
+		// (descending), so a cap trims the farthest lineage member, not DD-7.
+		const lineage = aAfter === 0 ? a.order - b.order : b.order - a.order;
+		return (
+			lineage ||
+			currentScore(b.pedal) - currentScore(a.pedal) ||
+			compareNames(a.pedal, b.pedal)
+		);
 	});
+	const items = members
+		.slice(0, SIMILAR_FAMILY_LIMIT)
+		.map((member) => item(member.pedal, target, member.short));
+	if (items.length === 0) return null;
+	return { tier: "family", label: `Also from ${target.brand}`, items };
+}
 
-	return candidates.slice(0, limit).map(({ pedal, shared }) => ({
-		id: pedal.id,
-		brand: pedal.brand,
-		name: pedal.name,
-		widthCm: pedal.widthCm,
-		heightCm: pedal.heightCm,
-		sharedEffectTypes: shared,
-	}));
+function circuitGroup(
+	target: CatalogPedal,
+	pedals: readonly CatalogPedal[],
+	targetFamilyKey: string | null,
+): SimilarGroup | null {
+	const targetCircuit = circuitOf(target);
+	if (!targetCircuit) return null;
+	const def = circuitById(targetCircuit.key);
+	if (!def) return null;
+	const ids = new Set([...def.core, ...(def.adjacent ?? [])]);
+	const targetCircuitIds = new Set(def.core);
+	const candidates: CatalogPedal[] = [];
+	for (const candidate of pedals) {
+		if (!ids.has(candidate.id)) continue;
+		if (!eligibleCandidate(target, candidate)) continue;
+		if (candidate.effectTypes[0] !== target.effectTypes[0]) continue;
+		const family = familyOf(candidate);
+		if (targetFamilyKey && family?.key === targetFamilyKey) continue;
+		if (isMultiProcessor(candidate) && !isMultiProcessor(target)) continue;
+		candidates.push(candidate);
+	}
+	const collapsed = collapseFamilyDuplicates(candidates);
+	collapsed.sort((a, b) => {
+		const aCore = targetCircuitIds.has(a.id) ? 1 : 0;
+		const bCore = targetCircuitIds.has(b.id) ? 1 : 0;
+		if (aCore !== bCore) return bCore - aCore;
+		const capabilityDelta =
+			sharedCapabilityCount(target, b) - sharedCapabilityCount(target, a);
+		if (capabilityDelta !== 0) return capabilityDelta;
+		const currentDelta = currentScore(b) - currentScore(a);
+		if (currentDelta !== 0) return currentDelta;
+		const distance =
+			footprintDistance(a, target) - footprintDistance(b, target);
+		if (distance !== 0) return distance;
+		return compareNames(a, b);
+	});
+	const items = collapsed
+		.slice(0, SIMILAR_CROSS_LIMIT)
+		.map((candidate) => item(candidate, target));
+	if (items.length === 0) return null;
+	return { tier: "circuit", label: def.label, items };
+}
+
+function subtypeGroup(
+	target: CatalogPedal,
+	pedals: readonly CatalogPedal[],
+	targetFamilyKey: string | null,
+): SimilarGroup | null {
+	const subtype = subtypeOf(target);
+	if (!subtype) return null;
+	const primary = target.effectTypes[0];
+	const candidates: CatalogPedal[] = [];
+	for (const candidate of pedals) {
+		if (!eligibleCandidate(target, candidate)) continue;
+		if (candidate.effectTypes[0] !== primary) continue;
+		// The family register covers the target's own brand; this tier is the
+		// "other brands" answer.
+		if (candidate.brand === target.brand) continue;
+		const family = familyOf(candidate);
+		if (targetFamilyKey && family?.key === targetFamilyKey) continue;
+		if (subtypeOf(candidate) !== subtype) continue;
+		if (isMultiProcessor(candidate)) continue;
+		candidates.push(candidate);
+	}
+	const collapsed = collapseFamilyDuplicates(candidates);
+	collapsed.sort((a, b) => {
+		// Plain delays before pitch/granular tools that merely share the tag.
+		const roleDelta = delayRoleRank(a) - delayRoleRank(b);
+		if (roleDelta !== 0) return roleDelta;
+		// Prefer the same format (compact stays compact).
+		const aCompact = capabilitiesOf(a).has("Compact") ? 0 : 1;
+		const bCompact = capabilitiesOf(b).has("Compact") ? 0 : 1;
+		if (aCompact !== bCompact) return aCompact - bCompact;
+		const capabilityDelta =
+			sharedCapabilityCount(target, b) - sharedCapabilityCount(target, a);
+		if (capabilityDelta !== 0) return capabilityDelta;
+		const currentDelta = currentScore(b) - currentScore(a);
+		if (currentDelta !== 0) return currentDelta;
+		const distance =
+			footprintDistance(a, target) - footprintDistance(b, target);
+		if (distance !== 0) return distance;
+		return compareNames(a, b);
+	});
+	const items = collapsed
+		.slice(0, SIMILAR_CROSS_LIMIT)
+		.map((candidate) => item(candidate, target));
+	if (items.length === 0) return null;
+	return {
+		tier: "subtype",
+		label: `Other ${subtypeLabel(subtype)}`,
+		items,
+	};
+}
+
+/**
+ * Return the ordered groups for a target (cross-brand sound-alikes first, then
+ * the maker's family). Empty when the target is a utility/planner placeholder
+ * or there is no evidence — never a broad-effect fallback.
+ */
+export function similarPedalGroups(
+	target: CatalogPedal,
+	pedals: readonly CatalogPedal[],
+): SimilarGroup[] {
+	if (target.category !== "pedal" || target.effectTypes.length === 0) return [];
+	if (target.effectTypes.length === 1 && target.effectTypes[0] === "utility")
+		return [];
+	const targetFamily = familyOf(target);
+	const targetFamilyKey = targetFamily?.key ?? null;
+
+	const cross =
+		circuitGroup(target, pedals, targetFamilyKey) ??
+		subtypeGroup(target, pedals, targetFamilyKey);
+	const family = familyGroup(target, pedals);
+	const groups: SimilarGroup[] = [];
+	if (cross) groups.push(cross);
+	if (family) groups.push(family);
+	return groups;
+}
+
+/** The broad browse target for the section footer ("delays", "reverbs", …). */
+export function browseAllLabel(target: CatalogPedal): string | null {
+	const primary = target.effectTypes[0];
+	if (!primary || primary === "utility") return null;
+	return `Browse all ${pluralEffect(primary)}`;
 }

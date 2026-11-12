@@ -64,6 +64,10 @@ export type PickerTab = "pedals" | "boards" | "custom";
 export interface PickerPreset {
 	key: number;
 	effectTypes: EffectType[];
+	/** Optional exact-model search, so a row opens the pedal it names. */
+	query?: string;
+	/** Optional browse order; the footer uses "name" to mix brands. */
+	sort?: PickerSort;
 }
 
 /**
@@ -208,18 +212,18 @@ export function Picker({
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	/** The item shown in the specimen pane (hover/keyboard-active). */
 	const [activeId, setActiveId] = useState<string | null>(null);
-	// F-14: a "Similar" tap applies the target's effect types and clears the
-	// other axes. The preset is consumed by the parent so it can never leak into
-	// a later normal open (or survive a Picker remount).
+	// F-14: a "Similar" tap applies the target's effect types/query and clears
+	// the other axes. The parent consumes the preset so it cannot re-apply on a
+	// later open; the applied filters themselves persist like any picker filter.
 	const presetKey = preset?.key ?? 0;
 	// biome-ignore lint/correctness/useExhaustiveDependencies: apply once per consumed preset
 	useEffect(() => {
 		if (!open || !preset) return;
-		setQuery("");
+		setQuery(preset.query ?? "");
 		setBrand(null);
 		setEffectTypes(preset.effectTypes);
 		setStereo(false);
-		setSort("relevance");
+		setSort(preset.sort ?? "relevance");
 		setShowAllEffects(false);
 		setActiveId(null);
 		onPresetApplied?.();

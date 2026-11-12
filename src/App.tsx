@@ -283,10 +283,16 @@ function App() {
 		setContinuityOpen(false);
 	};
 
-	const openSimilar = (effectTypes: EffectType[]) => {
+	const openSimilar = (
+		effectTypes: EffectType[],
+		query?: string,
+		sort?: "relevance" | "brand" | "name",
+	) => {
 		setPickerPreset((current) => ({
 			key: (current?.key ?? 0) + 1,
 			effectTypes,
+			query,
+			sort,
 		}));
 		openPicker("pedals");
 	};

@@ -4,9 +4,10 @@ import { item, shareHash } from "./share.ts";
 import { firstItemScreenCentre } from "./stage.ts";
 
 /**
- * F-14 — "Cross-Reference": a selected catalog pedal offers catalogue
- * alternatives with a shared effect type. Clicking one opens the Pedals picker
- * filtered to the selected pedal's types. Runs on desktop + mobile.
+ * F-14 — "Similar" sound-alikes. A selected catalogue pedal shows a cross-brand
+ * circuit/algorithm group first and the maker's own family register second.
+ * Tapping a row/token opens the Pedals picker on that exact model; the footer
+ * opens the broad effect list. Runs on desktop + mobile.
  */
 
 /** Expand the mobile info sheet (a no-op on the desktop rail). */
@@ -15,69 +16,129 @@ async function expandDetails(page: Page): Promise<void> {
 	if (await expand.isVisible()) await expand.click();
 }
 
-async function selectCatalogPedal(page: Page): Promise<void> {
+async function selectPedal(
+	page: Page,
+	id: string,
+	query?: string,
+): Promise<void> {
 	await page.goto("/");
 	await addBoard(page, "boss-bcb-1000");
-	await addPedal(page, "boss-bd-2-blues-driver");
+	if (query) {
+		await openPicker(page, "pedals");
+		await page.getByTestId("picker-search").fill(query);
+		await page.getByTestId(`add-pedal-${id}`).click();
+		await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	} else {
+		await addPedal(page, id);
+	}
 	await expect(page.getByTestId("info-panel")).toBeVisible();
 	await expandDetails(page);
 }
 
-test("lists similar catalog pedals and opens the filtered picker", async ({
+test("lists other-brand digital delays and the DD family, and opens exact models", async ({
 	page,
 }) => {
-	await selectCatalogPedal(page);
+	await selectPedal(page, "boss-dd-3-digital-delay");
 
 	const section = page.getByTestId("info-similar");
 	await expect(section).toBeVisible();
-	await expect(section).toContainText("Similar");
-	// A stable same-effect alternative for the BD-2 (overdrive).
-	const alternative = page.getByTestId("info-similar-boss-bb-1x-bass-driver");
-	await expect(alternative).toBeVisible();
-	await expect(alternative).toContainText("BB-1X Bass Driver");
-	await expect(alternative).toContainText("BOSS");
-	await expect(alternative).toContainText("Overdrive");
+	await expect(section).toContainText("Sounds like");
+	await expect(section).toContainText("Other digital delays");
+	await expect(section).toContainText("Also from BOSS");
 
-	// Its accessible name states the action (the row has no visible CTA).
-	await expect(alternative).toHaveAttribute(
-		"aria-label",
-		/BB-1X Bass Driver, shares Overdrive, .*cm — open in the catalogue/,
-	);
-	await expect(alternative).toHaveAttribute("aria-haspopup", "dialog");
+	// Cross-brand sound-alikes, not a broad delay list.
+	const cross = page.getByTestId("info-similar-behringer-dd600-digital-delay");
+	await expect(cross).toBeVisible();
+	await expect(cross).toContainText("DD600 Digital Delay");
+	await expect(cross).toContainText("Behringer");
+	// The family register uses short model tokens.
+	const dd5 = page.getByTestId("info-similar-boss-dd-5-digital-delay");
+	await expect(dd5).toBeVisible();
+	await expect(dd5).toHaveText("DD-5");
+	await expect(dd5).toHaveAttribute("aria-haspopup", "dialog");
+	// No colourways / other DD formats / the target itself.
+	await expect(
+		page.getByTestId("info-similar-boss-dd-3-digital-delay"),
+	).toHaveCount(0);
+	await expect(
+		page.getByTestId("info-similar-boss-dd-200-digital-delay"),
+	).toHaveCount(0);
 
-	await alternative.click();
+	// A family token opens that exact model.
+	await dd5.click();
 	await expect(page.getByTestId("picker-panel")).toBeVisible();
-	// Pedals tab, effect type applied, other axes cleared.
-	await expect(page.getByTestId("picker-tab-pedals")).toHaveAttribute(
+	await expect(page.getByTestId("picker-search")).toHaveValue(
+		"DD-5 Digital Delay",
+	);
+	await expect(page.getByTestId("picker-effect-delay")).toHaveAttribute(
 		"aria-pressed",
 		"true",
 	);
-	await expect(page.getByTestId("picker-effect-overdrive")).toHaveAttribute(
-		"aria-pressed",
-		"true",
-	);
-	await expect(page.getByTestId("picker-search")).toHaveValue("");
 	await expect(page.getByTestId("picker-brand")).toHaveValue("");
 	await expect(page.getByTestId("picker-sort")).toHaveValue("relevance");
 	await expect(page.getByTestId("picker-stereo")).toHaveAttribute(
 		"aria-pressed",
 		"false",
 	);
-	// The filtered ledger offers alternatives the user can place.
-	await expect(page.getByTestId("picker-results")).toBeVisible();
+	await page.getByTestId("picker-close").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	// A cross-brand row opens that exact model too.
+	await cross.click();
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	await expect(page.getByTestId("picker-search")).toHaveValue(
+		"DD600 Digital Delay",
+	);
+	await page.getByTestId("picker-close").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	// The footer is the broad "more all" path: filtered, no model query.
+	await page.getByTestId("info-similar-browse").click();
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	await expect(page.getByTestId("picker-search")).toHaveValue("");
+	await expect(page.getByTestId("picker-effect-delay")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+	await expect(page.getByTestId("picker-sort")).toHaveValue("name");
+});
+
+test("suggests cross-brand Tube Screamer-style pedals for a drive", async ({
+	page,
+}) => {
+	await selectPedal(page, "jhs-808", "808");
+
+	const section = page.getByTestId("info-similar");
+	await expect(section).toBeVisible();
+	await expect(section).toContainText("Screamer-style overdrive");
+	const sd1 = page.getByTestId("info-similar-boss-sd-1-super-overdrive");
+	await expect(sd1).toBeVisible();
+	await expect(sd1).toContainText("SD-1 Super Overdrive");
+	// A generic overdrive is never suggested just for sharing the tag.
+	await expect(
+		page.getByTestId("info-similar-boss-bd-2-blues-driver"),
+	).toHaveCount(0);
+
+	await sd1.click();
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	await expect(page.getByTestId("picker-search")).toHaveValue(
+		"SD-1 Super Overdrive",
+	);
+	await expect(page.getByTestId("picker-effect-overdrive")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
 });
 
 test("a re-tap re-applies the preset after the picker closes", async ({
 	page,
 }) => {
-	await selectCatalogPedal(page);
-	await page.getByTestId("info-similar-boss-bb-1x-bass-driver").click();
+	await selectPedal(page, "boss-dd-3-digital-delay");
+	const dd5 = page.getByTestId("info-similar-boss-dd-5-digital-delay");
+	await dd5.click();
 	await expect(page.getByTestId("picker-panel")).toBeVisible();
-	await expect(page.getByTestId("picker-effect-overdrive")).toHaveAttribute(
-		"aria-pressed",
-		"true",
-	);
-	// The user changes every filter axis, then closes without placing anything.
+
+	// The user changes every filter axis, then closes without placing.
 	await page.getByTestId("picker-search").fill("waza");
 	await page.getByTestId("picker-brand").selectOption("BOSS");
 	await page.getByTestId("picker-sort").selectOption("name");
@@ -90,14 +151,19 @@ test("a re-tap re-applies the preset after the picker closes", async ({
 	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
 	await expect(page.getByTestId("info-similar")).toBeVisible();
 
-	// Re-tapping the same row applies the preset again (new key) and clears
-	// the previous query/brand.
-	await page.getByTestId("info-similar-boss-bb-1x-bass-driver").click();
+	// Re-tapping the same token re-applies the preset (new key) and resets axes.
+	await dd5.click();
 	await expect(page.getByTestId("picker-panel")).toBeVisible();
-	await expect(page.getByTestId("picker-search")).toHaveValue("");
+	await expect(page.getByTestId("picker-search")).toHaveValue(
+		"DD-5 Digital Delay",
+	);
 	await expect(page.getByTestId("picker-brand")).toHaveValue("");
 	await expect(page.getByTestId("picker-sort")).toHaveValue("relevance");
-	await expect(page.getByTestId("picker-effect-overdrive")).toHaveAttribute(
+	await expect(page.getByTestId("picker-stereo")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+	await expect(page.getByTestId("picker-effect-delay")).toHaveAttribute(
 		"aria-pressed",
 		"true",
 	);
