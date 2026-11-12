@@ -582,6 +582,33 @@ export function InfoPanel({
 					</section>
 				) : null}
 
+				<JackCorrections
+					itemUid={item.uid}
+					jacks={jacks}
+					baseJacks={baseItemJacks(item, customPedals)}
+					widthCm={info.widthCm}
+					heightCm={info.heightCm}
+					units={units}
+					editable={!readOnly}
+					isCustom={info.isCustom}
+				/>
+
+				{info.power ? (
+					<section className="info-panel__section" data-testid="info-power">
+						<div className="info-panel__section-head">
+							<h3 className="info-panel__eyebrow">Power</h3>
+						</div>
+						<dl className="info-panel__facts">
+							<div className="info-panel__fact">
+								<dt>Supply</dt>
+								<dd className="info-panel__mono" data-testid="info-power-value">
+									{formatPower(info.power)}
+								</dd>
+							</div>
+						</dl>
+					</section>
+				) : null}
+
 				{similar.length > 0 && targetPedal && onOpenSimilar ? (
 					<section className="info-panel__section" data-testid="info-similar">
 						<div className="info-panel__section-head">
@@ -631,33 +658,6 @@ export function InfoPanel({
 								})}
 							</ul>
 						</div>
-					</section>
-				) : null}
-
-				<JackCorrections
-					itemUid={item.uid}
-					jacks={jacks}
-					baseJacks={baseItemJacks(item, customPedals)}
-					widthCm={info.widthCm}
-					heightCm={info.heightCm}
-					units={units}
-					editable={!readOnly}
-					isCustom={info.isCustom}
-				/>
-
-				{info.power ? (
-					<section className="info-panel__section" data-testid="info-power">
-						<div className="info-panel__section-head">
-							<h3 className="info-panel__eyebrow">Power</h3>
-						</div>
-						<dl className="info-panel__facts">
-							<div className="info-panel__fact">
-								<dt>Supply</dt>
-								<dd className="info-panel__mono" data-testid="info-power-value">
-									{formatPower(info.power)}
-								</dd>
-							</div>
-						</dl>
 					</section>
 				) : null}
 

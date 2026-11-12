@@ -95,9 +95,10 @@ export function similarPedals(
 Reads like a cross-reference slip pinned beside the specimen: text-only, no
 photography, no accent hue, no chrome of its own.
 
-- **Placement:** after **Effects**, before `JackCorrections` (Effects establishes
-  the shared-type vocabulary; Jacks/Power stay the physical facts). Press Proof
-  hides it with Effects.
+- **Placement:** at the **end of the panel, after `Power`** and before the legal
+  note (owner re-ordering 2026-11-10: the physical facts — jacks/power — matter
+  more than discovery, so Similar must not push them down). Press Proof hides it
+  with Effects.
 - **Header:** eyebrow `Similar` + support line
   `Same effect type · browse <effect> pedals` (rewritten from the designer's
   "Shares an effect type · opens the catalogue." after the pixel review, to name
@@ -117,7 +118,9 @@ photography, no accent hue, no chrome of its own.
   evidence missing; mobile picker filter off-screen; copy) → pass 2
   **approve-with-changes** with no remaining blocker after the mobile evidence +
   chip-scroll fixes; the final copy tweak was its single recommended change.
-  No third pass (≤2 cap).
+  No third pass (≤2 cap). **Owner follow-up (2026-11-10, after the review):**
+  the section was moved from after Effects to after Power; this is an
+  owner-directed ordering change inside the approved direction (no re-review).
 
 ## Read first (context pack)
 
@@ -199,6 +202,10 @@ photography, no accent hue, no chrome of its own.
 ## Review record (2026-11-10)
 
 - **Owner scope choice:** info-panel browse-on-tap (not swap, not picker-only).
+- **Owner re-ordering (2026-11-10, post-review):** moved Similar from after
+  Effects to the bottom of the panel (after Power), so jacks/power stay above
+  it. Owner-directed simple placement change; screenshots re-captured, no new
+  design-review round.
 - **Designer:** proposed **“Cross-Reference”**; owner approved the direction as
   proposed (rows after Effects, text-only, cap 4 both viewports, dimensions
   kept).
