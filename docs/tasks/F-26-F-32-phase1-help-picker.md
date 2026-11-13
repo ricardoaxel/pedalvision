@@ -1,6 +1,6 @@
 # F-26 + F-32 — Phase 1 help (Layers) + mobile picker preview
 
-**Phase:** 1 · **Status:** in progress · **Model:** light (escalate only for a blocker/high-risk change)
+**Phase:** 1 · **Status:** in review — PR #107 · **Model:** light (escalate only for a blocker/high-risk change)
 
 **Owner waiver (2026-11-13):** the owner explicitly waived the usual
 one-task-per-session guidance and asked for **F-26 help + F-32 mobile picker in
@@ -121,6 +121,20 @@ mobile preview is derived UI only; the help page is static copy.
 - Performance numbers recorded; no regression beyond thresholds.
 - No edits to catalog/data/assets/tools; no new runtime dependency.
 - **One PR; no merge.** Do not start the following task.
+
+## Outcome (2026-11-13)
+
+Checks: lint (0 errors; 16 pre-existing warnings) / typecheck / **1,102 tests** /
+build **JS 360.11 kB gzip (+0.19 vs main 359.92), CSS 18.31 (+0.22)** /
+targeted picker+docs-hub e2e **88 passed + 8 skipped** / full e2e **455 passed +
+16 skipped** (one `custom-colors` parallel flake passed 3/3 alone). Perf:
+desktop heap 23.4 MB, canvas p50/p95 16.7/18.3 ms; mobile heap 35.6 MB, picker
+open 96 ms, picker scroll 16.6/20.1 ms; preview 48 px; share 368 chars/PNG
+2,044×1,383 2.77 MB.
+
+Design: owner-approved direction; design-reviewer R1 (F-26 approve, F-32
+approve-with-changes) → R2 **approve** (≤2 cap). Code review: one light pass
+**approve-with-changes** (folded; test suite is the re-check).
 
 ## Notes
 
