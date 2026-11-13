@@ -1,6 +1,6 @@
 # F-14 — similar pedals (sound-alikes)
 
-**Phase:** 1 · **Status:** in review — PR #105 · **Model:** light (no persistence/share change)
+**Phase:** 1 · **Status:** done — merged PR #105 (squash `94f14dac`) · **Model:** light (no persistence/share change)
 
 > Feature-lane **F-14** from `docs/tasks/feature-roadmap-proposal.md` §2 Phase 1.
 > This is **not** requirements `F14` (there is none); the numbering schemes are
