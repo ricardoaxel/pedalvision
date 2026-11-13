@@ -30,7 +30,7 @@ implement it. Prices, caps and the payment provider are explicitly **not** decid
 
 | State | What it is |
 |---|---|
-| **Free anonymous** | The default. No account, no login, no network requirement. |
+| **Free anonymous** | The default. No account, no login; local-first. |
 | **Free account** | Optional registration; adds convenience and community, never removes core use. |
 | **Supporter (monthly)** | Paid subscription for higher limits and advanced features. |
 | **One-time donation** | Optional one-off payment; not a subscription and not lifetime cloud. |
@@ -39,7 +39,8 @@ implement it. Prices, caps and the payment provider are explicitly **not** decid
 
 - **Free anonymous:** core planner, local saves (subject to the v1 scene/item/image
   caps), share/export, catalog search, custom pedals and boards, cables, undo, help,
-  basic power warnings, and the PWA. The true-scale editor is the same tool as today.
+  basic power warnings, and the PWA (when F-27 ships). The true-scale editor is the
+  same tool as today.
 - **Free account:** limited cloud saves, favorites, gallery browsing,
   submissions/corrections, reviews and a profile. Registration is optional; every
   local-only workflow above still works without it.
