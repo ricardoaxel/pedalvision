@@ -32,9 +32,11 @@ redesign is **evidence-tiered**:
    section.
 
 POG2 note: it is planner-only with `effectTypes: ["utility"]` and a placeholder
-note, so it still shows nothing. The proper fix is a small EHX POG/Pitch Fork
-**catalog backfill** (POG2/POG3/Nano/Micro/Pico/Soul POG/Pitch Fork) in the
-catalog lane; no feature-side name alias is used. No scene mutation; no new transported key (share
+note, so it still shows nothing. A small EHX POG/Pitch Fork catalog backfill
+would fix it, but **the owner declined the backfill for now (2026-11-12)**.
+POG2 stays empty until the catalogue covers it. Do **not** start a backfill
+task or add a feature-side name alias for this; the octave tier will pick it up
+automatically once the catalogue has real effect data. No scene mutation; no new transported key (share
 stays **v5**).
 
 ## Owner-confirmed scope (revised 2026-11-10)
@@ -231,7 +233,8 @@ layer.
 - **Owner follow-up (2026-11-12):** the picker reset bug (filters persisted on
   close) was fixed by a pre-paint reset on open (designer consulted); a broad
   category fallback (`Other octave pedals`, etc.) was added for single-effect
-  targets. POG2 remains empty until a catalog-lane EHX POG/Pitch Fork backfill.
+  targets. POG2 remains empty until the catalogue covers it; the owner declined
+  a catalog backfill for now (2026-11-12), so no backfill is scheduled.
 - **Evidence:** `docs/screenshots/F-14-similar-pedals/` (before/after desktop +
   mobile, dark + light; panel/picker detail; hover; custom/read-only hidden;
   octave category state; filter before/after; interaction GIFs).
