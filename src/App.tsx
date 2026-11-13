@@ -124,6 +124,9 @@ function App() {
 	// F-14: a "Similar" row opens the picker pre-filtered to the selected
 	// pedal's effect types. The key makes each tap apply once.
 	const [pickerPreset, setPickerPreset] = useState<PickerPreset | null>(null);
+	// Monotonic, so a second preset while the picker is open is never mistaken
+	// for the already-consumed one.
+	const pickerPresetKey = useRef(0);
 	// P2-02 edit: when set, the picker opens on Custom in edit mode.
 	const [editingCustomRefId, setEditingCustomRefId] = useState<string | null>(
 		null,
@@ -288,12 +291,13 @@ function App() {
 		query?: string,
 		sort?: "relevance" | "brand" | "name",
 	) => {
-		setPickerPreset((current) => ({
-			key: (current?.key ?? 0) + 1,
+		pickerPresetKey.current += 1;
+		setPickerPreset({
+			key: pickerPresetKey.current,
 			effectTypes,
 			query,
 			sort,
-		}));
+		});
 		openPicker("pedals");
 	};
 

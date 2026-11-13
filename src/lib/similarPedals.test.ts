@@ -2,9 +2,11 @@ import { describe, expect, it } from "vitest";
 import { catalog } from "../catalog/load";
 import {
 	CIRCUITS,
+	capabilitiesOf,
 	FAMILY_RULES,
 	familyOf,
 	mappedCatalogIds,
+	sharedCapability,
 } from "./similarModel";
 import {
 	browseAllLabel,
@@ -93,6 +95,70 @@ describe("similarPedalGroups", () => {
 		expect(ids(groups[0])).toContain("jhs-3-series-screamer");
 		expect(groups[1]?.label).toBe("Also from BOSS");
 		expect(ids(groups[1])).toEqual(["boss-sd-1w-super-overdrive-waza-craft"]);
+	});
+
+	it("falls back to other octave pedals when there is no circuit/subtype", () => {
+		const groups = similarPedalGroups(
+			pedal("boss-oc-5-octave"),
+			catalog.pedals,
+		);
+		expect(groups.map((group) => group.tier)).toEqual(["category", "family"]);
+		expect(groups[0]?.label).toBe("Other octave pedals");
+		expect(ids(groups[0])).toContain("joyo-jf-12-voodoo-octave");
+		expect(groups[1]?.label).toBe("Also from BOSS");
+		expect(ids(groups[1])).toEqual([
+			"boss-oc-3-super-octave",
+			"boss-oc-2-octave",
+		]);
+		expect(browseAllLabel(pedal("boss-oc-5-octave"))).toBe(
+			"Browse all octave pedals",
+		);
+	});
+
+	it("falls back to other pitch pedals for a single-effect pitch target", () => {
+		const groups = similarPedalGroups(
+			pedal("tc-electronic-brainwaves-pitch-shifter"),
+			catalog.pedals,
+		);
+		expect(groups[0]?.tier).toBe("category");
+		expect(groups[0]?.label).toBe("Other pitch pedals");
+		expect(ids(groups[0])).toContain("boss-xs-1-pitch-shifter");
+	});
+
+	it("does not category-match delays/reverbs with an unknown subtype", () => {
+		// No family/circuit/subtype evidence -> hidden rather than "Other delays".
+		expect(
+			similarPedalGroups(pedal("jhs-3-series-delay"), catalog.pedals),
+		).toEqual([]);
+		expect(similarPedalGroups(pedal("keeley-aurora"), catalog.pedals)).toEqual(
+			[],
+		);
+	});
+
+	it("reports shared capabilities for z.octave/pitch and time-based pedals", () => {
+		expect(
+			capabilitiesOf(pedal("boss-xs-1-pitch-shifter")).has("Polyphonic"),
+		).toBe(true);
+		expect(
+			capabilitiesOf(pedal("boss-dd-8-digital-delay")).has("Expression"),
+		).toBe(true);
+		expect(
+			sharedCapability(
+				pedal("boss-dd-8-digital-delay"),
+				pedal("walrus-audio-arp-87"),
+			),
+		).not.toBeNull();
+	});
+
+	it("does not category-match hybrids or drives", () => {
+		// Octave + reverb hybrid: needs circuit/subtype/family evidence.
+		expect(
+			similarPedalGroups(pedal("jhs-3-series-octave-reverb"), catalog.pedals),
+		).toEqual([]);
+		// A generic overdrive is never "other overdrives".
+		expect(
+			similarPedalGroups(pedal("boss-bc-2-combo-drive"), catalog.pedals),
+		).toEqual([]);
 	});
 
 	it("never falls back to a broad effect match", () => {

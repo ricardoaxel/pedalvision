@@ -169,6 +169,64 @@ test("a re-tap re-applies the preset after the picker closes", async ({
 	);
 });
 
+test("a normal reopen after a preset starts from the default view", async ({
+	page,
+}) => {
+	await selectPedal(page, "boss-dd-3-digital-delay");
+	await page.getByTestId("info-similar-boss-dd-5-digital-delay").click();
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	// Dirty every axis, then close with the X.
+	await page.getByTestId("picker-brand").selectOption("BOSS");
+	await page.getByTestId("picker-sort").selectOption("name");
+	await page.getByTestId("picker-stereo").click();
+	await page.getByTestId("picker-close").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	// The next normal open must not inherit the preset query/type.
+	await openPicker(page, "pedals");
+	await expect(page.getByTestId("picker-search")).toHaveValue("");
+	await expect(page.getByTestId("picker-brand")).toHaveValue("");
+	await expect(page.getByTestId("picker-sort")).toHaveValue("relevance");
+	await expect(page.getByTestId("picker-stereo")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+	await expect(page.getByTestId("picker-effect-overdrive")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+	// Delay is outside the collapsed chip preview, so a cleared filter means it
+	// is not rendered at all.
+	await expect(page.getByTestId("picker-effect-delay")).toHaveCount(0);
+});
+
+test("falls back to other octave pedals when there is no circuit", async ({
+	page,
+}) => {
+	await selectPedal(page, "boss-oc-5-octave", "OC-5");
+
+	const section = page.getByTestId("info-similar");
+	await expect(section).toBeVisible();
+	await expect(section).toContainText("Other octave pedals");
+	await expect(section).toContainText("Also from BOSS");
+	const joyo = page.getByTestId("info-similar-joyo-jf-12-voodoo-octave");
+	await expect(joyo).toBeVisible();
+	await expect(joyo).toContainText("JF-12 Voodoo Octave");
+	await expect(
+		page.getByTestId("info-similar-boss-oc-3-super-octave"),
+	).toBeVisible();
+
+	await joyo.click();
+	await expect(page.getByTestId("picker-panel")).toBeVisible();
+	await expect(page.getByTestId("picker-search")).toHaveValue(
+		"JF-12 Voodoo Octave",
+	);
+	await expect(page.getByTestId("picker-effect-octave")).toHaveAttribute(
+		"aria-pressed",
+		"true",
+	);
+});
+
 test("hides the similar section for a custom part", async ({ page }) => {
 	await page.goto("/");
 	await openPicker(page, "custom");

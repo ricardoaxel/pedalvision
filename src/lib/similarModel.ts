@@ -24,6 +24,8 @@ export type SimilarCapability =
 	| "Stereo"
 	| "Tap tempo"
 	| "Multi-mode"
+	| "Polyphonic"
+	| "Expression"
 	| "MIDI"
 	| "Compact";
 
@@ -172,6 +174,20 @@ export const FAMILY_RULES: FamilyRule[] = [
 		pattern: /^OD-(1X?|2|3)\b/,
 		key: "boss-od",
 		order: byCode({ "OD-1": 1, "OD-1X": 2, "OD-2": 3, "OD-3": 4 }),
+		short: codeShort,
+	},
+	{
+		brand: "BOSS",
+		pattern: /^OC-(2|3|5)\b/,
+		key: "boss-oc",
+		order: byCode({ "OC-2": 1, "OC-3": 2, "OC-5": 3 }),
+		short: codeShort,
+	},
+	{
+		brand: "BOSS",
+		pattern: /^PS-(2|3)\b/,
+		key: "boss-ps",
+		order: byCode({ "PS-2": 1, "PS-3": 2 }),
 		short: codeShort,
 	},
 	{
@@ -359,6 +375,7 @@ export const SUBTYPE_OVERRIDES: Record<string, string> = {
 	"boss-dd-8-digital-delay": "digital",
 	"boss-dd-200-digital-delay": "digital",
 	"boss-dd-500-digital-delay": "digital",
+	"boss-te-2-tera-echo": "digital",
 	"boss-sde-3-dual-digital-delay": "digital",
 	"boss-sde-3000d-dual-digital-delay": "digital",
 	"boss-sde-3000evh-dual-digital-delay": "digital",
@@ -394,9 +411,27 @@ const CAPABILITY_PRIORITY: SimilarCapability[] = [
 	"Tap tempo",
 	"Stereo",
 	"Multi-mode",
+	"Polyphonic",
+	"Expression",
 	"MIDI",
 	"Compact",
 ];
+
+/**
+ * Broad-effect fallback labels. Used only when there is no circuit/subtype
+ * evidence and the target has a single effect. Drive/fuzz are deliberately
+ * absent: "it is also an overdrive" is the noise this feature removed.
+ */
+const CATEGORY_LABELS: Partial<Record<EffectType, string>> = {
+	octave: "Other octave pedals",
+	pitch: "Other pitch pedals",
+	chorus: "Other choruses",
+	phaser: "Other phasers",
+	flanger: "Other flangers",
+	tremolo: "Other tremolos",
+	vibrato: "Other vibratos",
+	compressor: "Other compressors",
+};
 
 const BASS_NAME = /\bBass\b/;
 const MULTI_PROCESSOR_TYPES = new Set([
@@ -495,6 +530,8 @@ export function capabilitiesOf(pedal: CatalogPedal): Set<SimilarCapability> {
 	if (pedal.stereo === true) found.add("Stereo");
 	if (/tap tempo/.test(notes)) found.add("Tap tempo");
 	if (/algorithms?|modes?|multi/.test(notes)) found.add("Multi-mode");
+	if (/polyphonic/.test(notes)) found.add("Polyphonic");
+	if (/expression/.test(notes)) found.add("Expression");
 	if (/midi/.test(notes)) found.add("MIDI");
 	if (pedal.widthCm <= 9.5 && pedal.heightCm <= 13.5) found.add("Compact");
 	return found;
@@ -526,6 +563,11 @@ const DEPRIORITIZED_DELAYS = new Set([
 
 export function delayRoleRank(pedal: CatalogPedal): number {
 	return DEPRIORITIZED_DELAYS.has(pedal.id) ? 2 : 0;
+}
+
+/** The category fallback label for a single-effect target, or null. */
+export function categoryFallbackLabel(type: EffectType): string | null {
+	return CATEGORY_LABELS[type] ?? null;
 }
 
 /** A display label for a primary effect ("delay" → "delays"). */

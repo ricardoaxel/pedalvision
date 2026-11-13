@@ -300,6 +300,49 @@ test("switching tabs and the clear button reset the filters", async ({
 	expect(await resultCount(page)).toBe(full);
 });
 
+test("closing and reopening the picker resets every filter", async ({
+	page,
+}) => {
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("od");
+	await page.getByTestId("picker-effect-overdrive").click();
+	await page.getByTestId("picker-brand").selectOption("BOSS");
+	await page.getByTestId("picker-stereo").click();
+	await page.getByTestId("picker-sort").selectOption("name");
+	await page.getByTestId("picker-effects-toggle").click();
+	await expect(page.getByTestId("picker-effects-toggle")).toHaveAttribute(
+		"aria-expanded",
+		"true",
+	);
+	await page.getByTestId("picker-close").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	await openPicker(page, "pedals");
+	await expect(page.getByTestId("picker-search")).toHaveValue("");
+	await expect(page.getByTestId("picker-brand")).toHaveValue("");
+	await expect(page.getByTestId("picker-sort")).toHaveValue("relevance");
+	await expect(page.getByTestId("picker-stereo")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+	await expect(page.getByTestId("picker-effect-overdrive")).toHaveAttribute(
+		"aria-pressed",
+		"false",
+	);
+	await expect(page.getByTestId("picker-effects-toggle")).toHaveAttribute(
+		"aria-expanded",
+		"false",
+	);
+
+	// Escape is another close path with the same rule.
+	await page.getByTestId("picker-search").fill("od");
+	await page.keyboard.press("Escape");
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+	await openPicker(page, "pedals");
+	await expect(page.getByTestId("picker-search")).toHaveValue("");
+});
+
 test("the 'All types' toggle reveals the full effect list", async ({
 	page,
 }) => {

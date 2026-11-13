@@ -57,9 +57,9 @@ import { Section } from "./SheetSection";
 export type PickerTab = "pedals" | "boards" | "custom";
 
 /**
- * F-14: a one-shot filter preset. A new `key` applies the effect-type filter
- * and clears the other axes, so "Similar" rows always land on a filtered
- * Pedals ledger without clobbering the user's filter state on normal opens.
+ * F-14: one-shot filter preset. Every picker open resets to the default view;
+ * a preset with a new `key` is applied on top in the same pre-paint pass and
+ * then consumed by the parent.
  */
 export interface PickerPreset {
 	key: number;
@@ -212,22 +212,6 @@ export function Picker({
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	/** The item shown in the specimen pane (hover/keyboard-active). */
 	const [activeId, setActiveId] = useState<string | null>(null);
-	// F-14: a "Similar" tap applies the target's effect types/query and clears
-	// the other axes. The parent consumes the preset so it cannot re-apply on a
-	// later open; the applied filters themselves persist like any picker filter.
-	const presetKey = preset?.key ?? 0;
-	// biome-ignore lint/correctness/useExhaustiveDependencies: apply once per consumed preset
-	useEffect(() => {
-		if (!open || !preset) return;
-		setQuery(preset.query ?? "");
-		setBrand(null);
-		setEffectTypes(preset.effectTypes);
-		setStereo(false);
-		setSort(preset.sort ?? "relevance");
-		setShowAllEffects(false);
-		setActiveId(null);
-		onPresetApplied?.();
-	}, [presetKey, open]);
 	// Keep the applied (or user-picked) effect chip visible: on phones the chip
 	// row is a single horizontal scroller. The panel may still be laying out
 	// while the entrance motion runs, so retry until it has a width.
@@ -357,6 +341,32 @@ export function Picker({
 		setShowAllEffects(false);
 		setActiveId(null);
 	};
+
+	// Command-palette model: every open starts from the default view, before
+	// first paint. Resetting on close would repaint the exiting panel. A
+	// Sounds-like preset is applied on top in the same pass, then consumed.
+	const wasOpen = useRef(false);
+	const lastPresetKey = useRef(0);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: resetFilters only calls stable setters; the guards make extra runs no-ops
+	useLayoutEffect(() => {
+		if (!open) {
+			wasOpen.current = false;
+			return;
+		}
+		const justOpened = !wasOpen.current;
+		const presetChanged =
+			preset != null && preset.key !== lastPresetKey.current;
+		if (!justOpened && !presetChanged) return;
+		resetFilters();
+		if (preset) {
+			setQuery(preset.query ?? "");
+			setEffectTypes(preset.effectTypes);
+			setSort(preset.sort ?? "relevance");
+			lastPresetKey.current = preset.key;
+			onPresetApplied?.();
+		}
+		wasOpen.current = true;
+	}, [open, preset, onPresetApplied]);
 
 	const changeTab = (next: PickerTab) => {
 		if (next === tab) return;

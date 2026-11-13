@@ -1,6 +1,7 @@
 import type { CatalogPedal } from "../catalog/schema";
 import {
 	capabilitiesOf,
+	categoryFallbackLabel,
 	circuitById,
 	circuitOf,
 	delayRoleRank,
@@ -25,11 +26,12 @@ import {
  *
  * The cross-brand group is shown first (that is the owner's question: "what
  * else can I buy that sounds like this?"), with the family as a compact
- * register underneath. There is no "same broad effect" fallback: if there is
- * no evidence, the section stays hidden instead of filling with noise.
+ * register underneath. The last-resort category tier is limited to single-
+ * effect role categories (octave, pitch, modulation, compression); drives/fuzz
+ * and unknown delay/reverb subtypes stay hidden rather than becoming noise.
  */
 
-export type SimilarTier = "circuit" | "subtype" | "family";
+export type SimilarTier = "circuit" | "subtype" | "category" | "family";
 
 export interface SimilarItem {
 	id: string;
@@ -268,9 +270,54 @@ function subtypeGroup(
 }
 
 /**
+ * Last-resort broad-effect tier: same single effect, other brands, only for
+ * categories where the effect itself is the role (octave, pitch, delay,
+ * reverb, modulation, compression). Drives/fuzz never reach this tier, and
+ * hybrids (2+ effect types) must have circuit/subtype/family evidence.
+ */
+function categoryGroup(
+	target: CatalogPedal,
+	pedals: readonly CatalogPedal[],
+): SimilarGroup | null {
+	if (target.effectTypes.length !== 1) return null;
+	const primary = target.effectTypes[0];
+	const label = categoryFallbackLabel(primary);
+	if (!label) return null;
+	const candidates: CatalogPedal[] = [];
+	for (const candidate of pedals) {
+		if (!eligibleCandidate(target, candidate)) continue;
+		if (candidate.effectTypes.length !== 1) continue;
+		if (candidate.effectTypes[0] !== primary) continue;
+		// The family register covers the target's own brand; this tier is the
+		// "other brands" answer.
+		if (candidate.brand === target.brand) continue;
+		if (isMultiProcessor(candidate)) continue;
+		candidates.push(candidate);
+	}
+	const collapsed = collapseFamilyDuplicates(candidates);
+	collapsed.sort((a, b) => {
+		const capabilityDelta =
+			sharedCapabilityCount(target, b) - sharedCapabilityCount(target, a);
+		if (capabilityDelta !== 0) return capabilityDelta;
+		const currentDelta = currentScore(b) - currentScore(a);
+		if (currentDelta !== 0) return currentDelta;
+		const distance =
+			footprintDistance(a, target) - footprintDistance(b, target);
+		if (distance !== 0) return distance;
+		return compareNames(a, b);
+	});
+	const items = collapsed
+		.slice(0, SIMILAR_CROSS_LIMIT)
+		.map((candidate) => item(candidate, target));
+	if (items.length === 0) return null;
+	return { tier: "category", label, items };
+}
+
+/**
  * Return the ordered groups for a target (cross-brand sound-alikes first, then
  * the maker's family). Empty when the target is a utility/planner placeholder
- * or there is no evidence — never a broad-effect fallback.
+ * or there is no evidence in any of the four tiers (circuit → subtype →
+ * category → family).
  */
 export function similarPedalGroups(
 	target: CatalogPedal,
@@ -284,7 +331,8 @@ export function similarPedalGroups(
 
 	const cross =
 		circuitGroup(target, pedals, targetFamilyKey) ??
-		subtypeGroup(target, pedals, targetFamilyKey);
+		subtypeGroup(target, pedals, targetFamilyKey) ??
+		categoryGroup(target, pedals);
 	const family = familyGroup(target, pedals);
 	const groups: SimilarGroup[] = [];
 	if (cross) groups.push(cross);
@@ -296,5 +344,11 @@ export function similarPedalGroups(
 export function browseAllLabel(target: CatalogPedal): string | null {
 	const primary = target.effectTypes[0];
 	if (!primary || primary === "utility") return null;
-	return `Browse all ${pluralEffect(primary)}`;
+	const noun =
+		primary === "octave"
+			? "octave pedals"
+			: primary === "pitch"
+				? "pitch pedals"
+				: pluralEffect(primary);
+	return `Browse all ${noun}`;
 }

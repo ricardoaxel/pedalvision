@@ -24,9 +24,17 @@ redesign is **evidence-tiered**:
    analog delay, tape delay, hall/plate/spring/ambient/multi-mode reverb.
 3. **The maker’s own family** — DD-3 → DD-3T/DD-5/DD-6/DD-7/DD-8, shown as a
    compact register beneath the cross-brand group.
+4. **Broad category fallback (owner follow-up 2026-11-12):** when there is no
+   circuit/subtype evidence, fall back to `Other octave pedals`, `Other pitch
+   pedals`, `Other delays`, `Other choruses`, etc. — but only for single-effect
+   targets in role-based categories. **Never** for overdrive/distortion/fuzz,
+   and never for hybrids (e.g. an octave reverb). If nothing is left, hide the
+   section.
 
-No “same broad effect” fallback. If there is no evidence, the section is hidden
-rather than filled with noise. No scene mutation; no new transported key (share
+POG2 note: it is planner-only with `effectTypes: ["utility"]` and a placeholder
+note, so it still shows nothing. The proper fix is a small EHX POG/Pitch Fork
+**catalog backfill** (POG2/POG3/Nano/Micro/Pico/Soul POG/Pitch Fork) in the
+catalog lane; no feature-side name alias is used. No scene mutation; no new transported key (share
 stays **v5**).
 
 ## Owner-confirmed scope (revised 2026-11-10)
@@ -41,7 +49,11 @@ stays **v5**).
    the broad filtered list.
 4. **Read-only shares hide the whole section** (the picker is an edit surface).
    Custom/unknown parts and utility-only planner placeholders have no section.
-5. **Curated knowledge is allowed** (owner decision, “whatever is needed”).
+5. **Picker reset (bug fix 2026-11-12):** every open starts from the default
+   view (query/brand/effect/stereo/sort cleared) before first paint; a Sounds-
+   like preset is applied on top and consumed. This prevents the “missing
+   pedal” illusion after closing the picker.
+6. **Curated knowledge is allowed** (owner decision, “whatever is needed”).
    This amends the earlier “no name matching” constraint: the feature may use a
    small, reviewed, unit-tested map of model families/circuits in `src/lib`.
    It is **not** fuzzy/free-text inference, and it never edits catalogue data.
@@ -77,8 +89,10 @@ No persisted or transported change: **no** `PlacedItem`/`PlacedBoard` field, **n
     genuine cross-brand members; their family registers still apply.
   - `SUBTYPE_OVERRIDES` + scoped notes keywords for delay/reverb subtypes; an
     unknown subtype is left unknown (no claim).
-  - `capabilitiesOf` — stereo (recorded field), tap tempo, multi-mode, MIDI,
-    compact footprint.
+  - `categoryFallbackLabel` — the role-based broad-effect tier; drives/fuzz
+    are deliberately absent.
+  - `capabilitiesOf` — stereo (recorded field), tap tempo, multi-mode,
+    polyphonic, expression, MIDI, compact footprint.
   - `delayRoleRank` — deprioritises pitch/granular delays that merely share the
     `delay` tag.
 - **`src/lib/similarPedals.ts`.** `similarPedalGroups(target, pedals)` returns
@@ -158,6 +172,11 @@ layer.
 - DD-3 shows **Other digital delays** (cross-brand: Alter Ego v2, DD600, ARP-87)
   then **Also from BOSS** with `DD-3T, DD-5, DD-6, DD-7, DD-8`; no DD-3,
   no DD-20/200/500, no colourways.
+- OC-5 shows **Other octave pedals** (Joyo JF-12) then **Also from BOSS**
+  (OC-3, OC-2). A generic overdrive and an octave+reverb hybrid show no
+  category fallback.
+- Closing and reopening the picker resets query/brand/effect/stereo/sort; a
+  Sounds-like preset then a normal open is clean too.
 - Carbon Copy shows **BBD analog delay** (Bucket Brigade, Ana Echo, DM-2) then
   **Also from MXR** (`Mini, Bright, Deluxe`), excluding the 10th Anniversary.
 - JHS 808 shows **Screamer-style overdrive** (3 Series Screamer, SD-1); a generic
@@ -198,11 +217,21 @@ layer.
   R2 changes-required (tape-echo/Big Muff circuits unreachable) → fixed by
   removing the defs and adding a reachability test. **≤2-pass cap reached**; the
   test suite is the re-check (no third pass).
-- **Checks:** lint / typecheck / **1,097 tests** / build **JS 359.57 kB gzip
-  (+4.42), CSS 18.09 (+0.31)** / e2e **446 passed + 14 skipped** / docs hub
-  24/24. **Perf:** rank 0.3–2.6 ms on the merged 8,857-row catalog (memoised on
+- **Checks:** lint / typecheck / **1,102 tests** / build **JS 359.92 kB gzip
+  (+4.77), CSS 18.09 (+0.31)** / e2e **452 tests (451 passed + 1 known interaction flake; 14 skipped)** /
+  docs hub 24/24. The export F-16 outline flake passed 3/3 alone; the
+  viewport-focus double-click is the documented pre-existing flake. **Perf:** rank 0.3–2.6 ms on the merged 8,857-row catalog (memoised on
   `[target, plannerVersion]`), row→picker median ~51 ms, heap 37.8 MB
   (DD-3 + picker), share/export unchanged (share v5, no new key).
+- **code-reviewer follow-up (2026-11-12):** approve-with-changes (unknown
+  delay/reverb subtypes were leaking into the broad tier; stale comments; a
+  preset-key edge) → dropped delay/reverb from the category fallback, added
+  DD-20/TE-2 digital overrides, monotonic preset keys, and capability tests.
+  Test suite is the re-check (no second review loop).
+- **Owner follow-up (2026-11-12):** the picker reset bug (filters persisted on
+  close) was fixed by a pre-paint reset on open (designer consulted); a broad
+  category fallback (`Other octave pedals`, etc.) was added for single-effect
+  targets. POG2 remains empty until a catalog-lane EHX POG/Pitch Fork backfill.
 - **Evidence:** `docs/screenshots/F-14-similar-pedals/` (before/after desktop +
   mobile, dark + light; panel/picker detail; hover; custom/read-only hidden;
-  interaction GIFs).
+  octave category state; filter before/after; interaction GIFs).
