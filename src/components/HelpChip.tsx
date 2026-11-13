@@ -19,9 +19,9 @@ export function HelpChip() {
 	return (
 		<a
 			className="help-chip"
-			href="/docs"
-			aria-label="Help — documentation and legal"
-			title="Docs & help"
+			href="/help"
+			aria-label="Help — how to use Pedalvision"
+			title="Help"
 			style={style}
 		>
 			?

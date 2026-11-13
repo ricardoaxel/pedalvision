@@ -53,7 +53,7 @@ test("the hub is readable without JavaScript", async ({ browser }) => {
 	await context.close();
 });
 
-test("the app exposes the docs hub from the canvas", async ({ page }) => {
+test("the app exposes the how-to help from the canvas", async ({ page }) => {
 	await page.goto("/");
 	// The first-run note shares the mobile corner and deliberately hides the
 	// chip. Seed its one-way dismissal before reloading so the assertion is
@@ -63,19 +63,42 @@ test("the app exposes the docs hub from the canvas", async ({ page }) => {
 	);
 	await page.reload();
 	const help = page.getByRole("link", {
-		name: "Help — documentation and legal",
+		name: "Help — how to use Pedalvision",
 	});
 	await expect(help).toBeVisible();
-	await expect(help).toHaveAttribute("href", "/docs");
+	await expect(help).toHaveAttribute("href", "/help");
+	// /help still carries the route into the full docs/legal hub.
+	await page.goto("/help");
+	await expect(
+		page
+			.getByRole("navigation", { name: "Documentation and legal" })
+			.getByRole("link", { name: "Docs" }),
+	).toHaveAttribute("href", "/docs");
 });
 
-test("the picker exposes the docs hub", async ({ page }) => {
+test("the picker exposes the how-to help", async ({ page }) => {
 	await page.goto("/");
 	await openPicker(page, "pedals");
-	await expect(page.getByRole("link", { name: "Docs & help" })).toHaveAttribute(
-		"href",
-		"/docs",
-	);
+	await expect(
+		page.getByTestId("picker-panel").getByRole("link", { name: "Help" }),
+	).toHaveAttribute("href", "/help");
+});
+
+test("the help page explains layers and links to the section", async ({
+	page,
+}) => {
+	await page.goto("/help");
+	// The TOC is a complementary landmark and is hidden on phones, so use a
+	// plain locator: the anchor must exist in both layouts.
+	const tocLink = page.locator('.toc a[href="#layers"]');
+	await expect(tocLink).toHaveText("Layers");
+	await expect(
+		page.getByRole("heading", { name: "Layer parts and boards" }),
+	).toBeVisible();
+	const section = page.locator("#layers");
+	await expect(section).toContainText("newly added part lands on top");
+	await expect(section).toContainText("Forward");
+	await expect(section).toContainText("most recent board sits above");
 });
 
 test("the old attribution URL resolves to the takedown page", async ({

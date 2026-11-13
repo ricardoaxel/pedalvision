@@ -1414,6 +1414,12 @@ body {
 	outline-offset: 2px;
 }
 
+/* F-32: mobile-only active-item preview. Desktop keeps the specimen pane; the
+ * band is mounted only below the 1023px boundary (see useIsMobile). */
+.picker__preview {
+	display: none;
+}
+
 .picker__search {
 	position: relative;
 	display: flex;
@@ -1901,7 +1907,8 @@ input[type="search"]::-webkit-search-decoration {
 	letter-spacing: var(--tracking-wide);
 	text-transform: uppercase;
 	color: var(--color-ink-muted);
-	text-decoration: none;
+	text-decoration: underline;
+	text-underline-offset: 2px;
 }
 
 .picker__help:hover {
@@ -2909,6 +2916,94 @@ input[type="search"]::-webkit-search-decoration {
 		min-height: 32px;
 	}
 
+	/* F-32: a passive fixed-height "bench" strip above the results — the mobile
+	 * echo of the desktop specimen pane. Fixed 48px so long names never grow the
+	 * sheet; the 22px gutter lines the plate up with the row thumbnails. */
+	.picker__preview {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+		flex: 0 0 auto;
+		height: 48px;
+		padding: 0 calc(var(--space-3) + var(--space-2) + 2px);
+		background-color: var(--color-input-bg);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.picker__preview .picker-item__thumb {
+		flex: 0 0 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+	.picker__preview .picker-item__thumb--board {
+		flex: 0 0 56px;
+		width: 56px;
+		height: 36px;
+	}
+
+	.picker__preview[data-blocked="true"] .picker-item__thumb {
+		opacity: 0.6;
+	}
+
+	.picker__preview-text {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: 1px;
+		min-width: 0;
+	}
+
+	.picker__preview-title {
+		display: flex;
+		align-items: baseline;
+		gap: var(--space-1);
+		min-width: 0;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.picker__preview-brand {
+		flex: 0 0 auto;
+		font-family: var(--font-mono);
+		font-size: var(--font-size-2xs);
+		font-weight: var(--font-weight-medium);
+		letter-spacing: var(--tracking-caps);
+		text-transform: uppercase;
+		color: var(--color-ink-eyebrow);
+	}
+
+	.picker__preview-brand::after {
+		content: "·";
+		margin-left: var(--space-1);
+		color: var(--color-ink-muted);
+	}
+
+	.picker__preview-name {
+		overflow: hidden;
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-medium);
+		line-height: 1.2;
+		color: var(--color-ink);
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.picker__preview-meta {
+		overflow: hidden;
+		font-family: var(--font-mono);
+		font-size: var(--font-size-2xs);
+		color: var(--color-ink-eyebrow);
+		font-variant-numeric: tabular-nums;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.picker__preview-dims {
+		color: var(--color-ink-eyebrow);
+	}
+
 	/* Touch target (the desktop field is 36px). The brand select grows so the
 	 * brand + sort row fills the sheet width instead of leaving dead space. */
 	.picker__brand {
@@ -2973,6 +3068,8 @@ input[type="search"]::-webkit-search-decoration {
 	.picker__help {
 		position: relative;
 		min-height: 32px;
+		padding-inline: var(--space-2);
+		margin-inline: calc(var(--space-2) * -1);
 	}
 
 	.picker__help::after {
@@ -3085,6 +3182,11 @@ input[type="search"]::-webkit-search-decoration {
 	/* Very small/short screens need the result rows more than the fallback line;
 	 * the persistent bottom tab bar still exposes Custom. */
 	.picker__custom-line {
+		display: none;
+	}
+
+	/* Short screen: the result rows beat a passive preview. */
+	.picker__preview {
 		display: none;
 	}
 }
