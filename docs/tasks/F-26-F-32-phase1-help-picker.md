@@ -1,6 +1,6 @@
 # F-26 + F-32 — Phase 1 help (Layers) + mobile picker preview
 
-**Phase:** 1 · **Status:** in review — PR #107 · **Model:** light (escalate only for a blocker/high-risk change)
+**Phase:** 1 · **Status:** merged 2026-11-13 — PR #107, squash `9b28fb16` · **Model:** light (escalate only for a blocker/high-risk change)
 
 **Owner waiver (2026-11-13):** the owner explicitly waived the usual
 one-task-per-session guidance and asked for **F-26 help + F-32 mobile picker in
