@@ -1,8 +1,7 @@
 # ADR-010 — Access model (free anonymous / free account / supporter / one-time)
 
-**Status:** Proposed — owner-approved direction for recording (2026-11-13); final
-wording in this PR. **No implementation** (F-45b). · **Owner:** chose F-45a for the
-Phase 1 feature lane.
+**Status:** Accepted (2026-11-13) — merged PR #106. **No implementation**
+(F-45b). · **Owner:** chose F-45a for the Phase 1 feature lane.
 
 ## Context
 

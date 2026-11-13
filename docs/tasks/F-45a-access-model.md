@@ -1,6 +1,6 @@
 # F-45a — Access-model ADR
 
-**Phase:** 1 · **Status:** in review — PR #106 · **Model:** light (docs-only)
+**Phase:** 1 · **Status:** merged — PR #106, squash `1b9732c4` (2026-11-13) · **Model:** light (docs-only)
 
 ## Goal
 

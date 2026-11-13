@@ -57,7 +57,7 @@
 - **F-41 docs/legal hub:** `/privacy`, `/terms`, `/docs`, `/help`, `/features`,
   `/changelog`, `/community-guidelines`, `/takedown`; every feature updates it.
 - **F-45a access-model ADR:** free/account/supporter/one-time; no implementation yet.
-  **Recorded as `docs/decisions/010-access-model.md` — in review, PR #106.**
+  **Recorded as `docs/decisions/010-access-model.md` — merged (PR #106).**
 
 ### Phase 2 — Data model and differentiators (no backend)
 
