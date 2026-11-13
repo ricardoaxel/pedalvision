@@ -170,6 +170,54 @@ test("mobile shows the persistent bottom tab bar and the sheet", async ({
 	await expect(page.getByTestId("stage")).toHaveAttribute("data-items", "1");
 });
 
+test("mobile shows a compact preview of the active catalog item", async ({
+	page,
+}) => {
+	const width = page.viewportSize()?.width ?? 1280;
+	test.skip(width >= 1024, "mobile-only check");
+
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	const preview = page.getByTestId("picker-preview");
+	await expect(preview).toBeVisible();
+
+	await page.getByTestId("picker-search").fill("blues driver");
+	await expect(
+		page.getByTestId("add-pedal-boss-bd-2-blues-driver"),
+	).toHaveCount(1);
+	await expect(preview).toContainText("BOSS");
+	await expect(preview).toContainText("BD-2 Blues Driver");
+	await expect(preview).toContainText("7.3 × 13.02 cm");
+	await expect(preview).toContainText("Overdrive");
+
+	// The preview is passive: tapping the row still places it directly.
+	await page.getByTestId("add-pedal-boss-bd-2-blues-driver").click();
+	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
+
+	// A long model name clips instead of growing the fixed 48px band.
+	await openPicker(page, "pedals");
+	await page.getByTestId("picker-search").fill("wireless midi expression");
+	await expect(preview).toContainText("EV-1-WL Wireless MIDI Expression Pedal");
+	const band = await preview.boundingBox();
+	expect(Math.round(band?.height ?? 0)).toBe(48);
+
+	// The Custom tab has no result ledger, so no preview.
+	await page.getByTestId("picker-bar-custom").click();
+	await expect(page.getByTestId("picker-preview")).toHaveCount(0);
+
+	// A short screen gives the height back to the results.
+	await page.setViewportSize({ width: 375, height: 600 });
+	await openPicker(page, "pedals");
+	await expect(page.getByTestId("picker-preview")).toBeHidden();
+});
+
+test("the mobile preview is absent on desktop", async ({ page }) => {
+	test.skip(!isDesktop(page), "desktop keeps the specimen pane");
+	await page.goto("/");
+	await openPicker(page, "pedals");
+	await expect(page.getByTestId("picker-preview")).toHaveCount(0);
+});
+
 test("mobile add cue stays on the dock and the scene plate clears the toolbar", async ({
 	page,
 }) => {
@@ -436,7 +484,10 @@ test("result thumbnails resolve (DOM images load without CORS)", async ({
 	// The picker thumbnails are plain DOM images (no crossOrigin), so a
 	// hotlinked host without CORS headers still renders. If the image failed,
 	// React swaps it for the neutral fallback and this locator would vanish.
-	const first = page.locator("img.picker-item__thumb").first();
+	const first = page
+		.getByTestId("picker-results")
+		.locator("img.picker-item__thumb")
+		.first();
 	await expect(first).toBeVisible();
 	await expect
 		.poll(() => first.evaluate((el) => (el as HTMLImageElement).naturalWidth), {
@@ -451,7 +502,10 @@ test("board rows show a board preview image (falling back to a glyph)", async ({
 	await page.goto("/");
 	await openPicker(page, "boards");
 	// The ledger shows the real board art, not a generic glyph.
-	const thumb = page.locator("img.picker-item__thumb--board").first();
+	const thumb = page
+		.getByTestId("picker-results")
+		.locator("img.picker-item__thumb--board")
+		.first();
 	await expect(thumb).toBeVisible();
 	await expect
 		.poll(() => thumb.evaluate((el) => (el as HTMLImageElement).naturalWidth), {

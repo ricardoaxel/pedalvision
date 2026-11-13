@@ -19,6 +19,7 @@ import {
 import { focusAddBoardTrigger } from "../lib/focus";
 import { centerOffset, placeItem } from "../lib/geometry";
 import { MOTION } from "../lib/motion";
+import { useIsMobile } from "../lib/useMobile";
 import { useMotion } from "../state/motion";
 import { PATCH_CABLE_GAP_CM } from "../state/overlap";
 import { usePlannerCatalog } from "../state/plannerCatalog";
@@ -182,6 +183,7 @@ export function Picker({
 	onClearEditBoard,
 	onClose,
 }: PickerProps) {
+	const isMobile = useIsMobile();
 	const boards = useScene((state) => state.boards);
 	const items = useScene((state) => state.items);
 	const customPedals = useScene((state) => state.customPedals);
@@ -1291,6 +1293,36 @@ export function Picker({
 										</button>
 									</div>
 
+									{isMobile && activeEntry ? (
+										<div
+											className="picker__preview"
+											data-testid="picker-preview"
+											aria-hidden="true"
+											data-blocked={activeRefusal ? "true" : undefined}
+										>
+											<PickerThumb
+												src={activeEntry.thumbSrc}
+												kind={isBoards ? "board" : "pedal"}
+											/>
+											<span className="picker__preview-text">
+												<span className="picker__preview-title">
+													<span className="picker__preview-brand">
+														{activeEntry.brand}
+													</span>
+													<span className="picker__preview-name">
+														{activeEntry.name}
+													</span>
+												</span>
+												<span className="picker__preview-meta">
+													<span className="picker__preview-dims">
+														{activeEntry.widthCm} × {activeEntry.heightCm} cm
+													</span>
+													{activeEntry.meta ? ` · ${activeEntry.meta}` : null}
+												</span>
+											</span>
+										</div>
+									) : null}
+
 									<div className="picker__results" data-testid="picker-results">
 										{count === 0 ? (
 											<div className="picker__empty" data-testid="picker-empty">
@@ -1329,6 +1361,12 @@ export function Picker({
 												const blocked = isBoards
 													? boardRefusal !== null
 													: itemRefusalFor(entry) !== null;
+												// The visible Planner chip already says it; do not repeat it here.
+												const plannerShown =
+													showPlannerTag && isPlannerPedal(entry.id);
+												const rowMeta = plannerShown
+													? entry.meta.replace(/^Planner(?: · )?/, "")
+													: entry.meta;
 												return (
 													<button
 														key={entry.id}
@@ -1370,6 +1408,11 @@ export function Picker({
 																	</span>
 																) : null}
 															</span>
+															{isMobile && rowMeta ? (
+																<span className="visually-hidden">
+																	{rowMeta}
+																</span>
+															) : null}
 														</span>
 														<span className="picker-item__dims">
 															{entry.widthCm} × {entry.heightCm} cm
@@ -1413,8 +1456,8 @@ export function Picker({
 											<kbd className="picker__key">↵</kbd> place
 										</span>
 										<span className="picker__status-actions">
-											<a className="picker__help" href="/docs">
-												Docs &amp; help
+											<a className="picker__help" href="/help">
+												Help
 											</a>
 											{isBoards && selectedBoardUid ? (
 												<button
