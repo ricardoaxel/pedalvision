@@ -57,6 +57,20 @@ import { Section } from "./SheetSection";
 export type PickerTab = "pedals" | "boards" | "custom";
 
 /**
+ * F-14: one-shot filter preset. Every picker open resets to the default view;
+ * a preset with a new `key` is applied on top in the same pre-paint pass and
+ * then consumed by the parent.
+ */
+export interface PickerPreset {
+	key: number;
+	effectTypes: EffectType[];
+	/** Optional exact-model search, so a row opens the pedal it names. */
+	query?: string;
+	/** Optional browse order; the footer uses "name" to mix brands. */
+	sort?: PickerSort;
+}
+
+/**
  * Per-tab header copy — a map, not nested ternaries, so a new tab can't silently
  * mislabel the dialog for assistive tech (P2-02 defect fix).
  */
@@ -103,6 +117,10 @@ const EFFECT_CHIP_PREVIEW = 8;
 interface PickerProps {
 	open: boolean;
 	tab: PickerTab;
+	/** F-14: one-shot effect-type filter preset (applied when `key` changes). */
+	preset?: PickerPreset | null;
+	/** F-14: called once the preset has been applied, so the parent clears it. */
+	onPresetApplied?: () => void;
 	/** When set, the Custom tab opens in edit mode seeded from this part. */
 	editRefId?: string | null;
 	/** When set, the Custom tab opens in board-edit mode seeded from this board uid. */
@@ -154,6 +172,8 @@ interface PickerEntry {
 export function Picker({
 	open,
 	tab,
+	preset,
+	onPresetApplied,
 	editRefId,
 	editBoardUid,
 	onOpen,
@@ -192,6 +212,28 @@ export function Picker({
 	const [showAllEffects, setShowAllEffects] = useState(false);
 	/** The item shown in the specimen pane (hover/keyboard-active). */
 	const [activeId, setActiveId] = useState<string | null>(null);
+	// Keep the applied (or user-picked) effect chip visible: on phones the chip
+	// row is a single horizontal scroller. The panel may still be laying out
+	// while the entrance motion runs, so retry until it has a width.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: open + effectTypes drive it
+	useEffect(() => {
+		if (!open || effectTypes.length === 0) return;
+		let frame = 0;
+		let attempts = 0;
+		const revealFilter = () => {
+			const chips = chipsRef.current;
+			const pressed = chips?.querySelector<HTMLElement>(
+				'[aria-pressed="true"]',
+			);
+			if (chips && pressed && chips.clientWidth > 0) {
+				pressed.scrollIntoView({ block: "nearest", inline: "center" });
+				return;
+			}
+			if (attempts++ < 40) frame = requestAnimationFrame(revealFilter);
+		};
+		frame = requestAnimationFrame(revealFilter);
+		return () => cancelAnimationFrame(frame);
+	}, [open, effectTypes]);
 	/** Custom-part draft lives here so Esc/close/tab-switch never discards it. */
 	const [customDraft, setCustomDraft] = useState(() =>
 		emptyCustomPedalDraft("cm"),
@@ -211,6 +253,7 @@ export function Picker({
 
 	const panelRef = useRef<HTMLDivElement>(null);
 	const searchRef = useRef<HTMLInputElement>(null);
+	const chipsRef = useRef<HTMLFieldSetElement>(null);
 	const returnFocusRef = useRef<HTMLElement | null>(null);
 	const rowRefs = useRef(new Map<string, HTMLButtonElement>());
 
@@ -298,6 +341,32 @@ export function Picker({
 		setShowAllEffects(false);
 		setActiveId(null);
 	};
+
+	// Command-palette model: every open starts from the default view, before
+	// first paint. Resetting on close would repaint the exiting panel. A
+	// Sounds-like preset is applied on top in the same pass, then consumed.
+	const wasOpen = useRef(false);
+	const lastPresetKey = useRef(0);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: resetFilters only calls stable setters; the guards make extra runs no-ops
+	useLayoutEffect(() => {
+		if (!open) {
+			wasOpen.current = false;
+			return;
+		}
+		const justOpened = !wasOpen.current;
+		const presetChanged =
+			preset != null && preset.key !== lastPresetKey.current;
+		if (!justOpened && !presetChanged) return;
+		resetFilters();
+		if (preset) {
+			setQuery(preset.query ?? "");
+			setEffectTypes(preset.effectTypes);
+			setSort(preset.sort ?? "relevance");
+			lastPresetKey.current = preset.key;
+			onPresetApplied?.();
+		}
+		wasOpen.current = true;
+	}, [open, preset, onPresetApplied]);
 
 	const changeTab = (next: PickerTab) => {
 		if (next === tab) return;
@@ -1137,7 +1206,7 @@ export function Picker({
 											</div>
 
 											{isBoards ? null : (
-												<fieldset className="picker__chips">
+												<fieldset ref={chipsRef} className="picker__chips">
 													<legend className="visually-hidden">
 														Pedal filters
 													</legend>

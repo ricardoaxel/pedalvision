@@ -19,7 +19,7 @@ export default defineConfig({
 			name: "mobile-chromium",
 			use: { ...devices["Pixel 7"] },
 			testMatch:
-				/(touch|picker|custom|custom-colors|labels|info-panel|board-creator|first-run|export|scenes|capacity|share|cables|cables-color|cables-touch|history|storage-fallback|cable-schedule|measurement-hud|viewport-focus|signal-flow|docs-hub)\.spec\.ts/,
+				/(touch|picker|custom|custom-colors|labels|info-panel|similar-pedals|board-creator|first-run|export|scenes|capacity|share|cables|cables-color|cables-touch|history|storage-fallback|cable-schedule|measurement-hud|viewport-focus|signal-flow|docs-hub)\.spec\.ts/,
 		},
 	],
 	webServer: {
