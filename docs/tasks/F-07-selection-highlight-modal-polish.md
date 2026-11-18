@@ -147,3 +147,37 @@ neutral 50 % sleeve.
   owner first; do not edit the rules in this PR.
 - Record billed tokens **by class** (builder / vision / code review) in the
   PR/session summary.
+
+## Outcome (2026-11-17)
+
+- **Direction:** “Construction Line” — owner-approved. Hover is the neutral
+  construction line (pedal/board corner brackets, cable 50 % sleeve, endpoint
+  2 px neutral border); selection stays the only accent. Owner chose read-only
+  hover = follows selectability and the neutral cable sleeve.
+- **Design review:** `design-reviewer` pass 1 approve-with-changes (blockers:
+  cable sleeve hidden behind the halo, endpoint ring not demonstrated, focus
+  ring evidence missing) → fixes (sleeve above the halo, 2 px endpoint ring,
+  keyboard-focus capture) → pass 2 **approve** (≤2 cap; remaining items are
+  pre-existing nits).
+- **Code review:** light pass 1 **changes-required** (hover not suppressed during
+  gestures; E2E coverage gaps: dim focus, read-only, selected-object, zoom,
+  outside/Tab-out, `aria-controls`) → fixes: `isCanvasGestureActive()` guard in
+  all four hover handlers, gesture-start/stale-target clearing in `Stage`,
+  `data-cable-dim-focus`, deferred focus return after an outside tap, conditional
+  `aria-controls`, hoisted `useCoarsePointer`, plus the coverage tests. No second
+  full pass (simple fixes; the test suite is the re-check). Also fixed a real
+  bug found while testing: moving from a pedal to its board body never re-fired
+  the board group’s `mouseenter`, so the board preview now also runs on a guarded
+  `mousemove`.
+- **Share:** unchanged (**v5**); hover is transient and never transported.
+- **Checks:** lint (0 errors, 16 pre-existing warnings) / typecheck / **1,107
+  tests** / build **JS 359.54 kB gzip (+1.07 vs main 358.47), CSS 18.81
+  (unchanged)** / full E2E **474 passed + 24 skipped**, with the two known
+  flakes (`board-info` read-only share passed 3/3 alone; `viewport-focus`
+  double-click is pre-existing — baseline 8/10 vs F-07 3/5 on repeat, passed on
+  re-run).
+- **Perf:** desktop heap **28 MB**; hover-sweep canvas p50/p95 **16.7/16.8 ms**;
+  share/export unchanged (no scene data change).
+- **Docs:** `/changelog` (Hover previews & Patch focus), `/features` (Selection &
+  hover row); `docs/features/README.md` F6 row and `docs/design.md` canvas
+  architecture updated.
