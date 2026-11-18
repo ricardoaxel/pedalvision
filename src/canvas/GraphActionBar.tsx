@@ -374,6 +374,7 @@ export function GraphActionBar() {
 			data-testid="cable-ink-trigger"
 			aria-haspopup="dialog"
 			aria-expanded={inkOpen}
+			aria-controls={inkOpen ? "cable-ink-popover" : undefined}
 			aria-label={`Patch ink: ${currentInkLabel}`}
 			onClick={() => setInkOpen((open) => !open)}
 		>
@@ -432,6 +433,7 @@ export function GraphActionBar() {
 								? createPortal(
 										<div
 											ref={popoverRef}
+											id="cable-ink-popover"
 											className="cable-ink__popover"
 											role="dialog"
 											aria-label="Patch ink"

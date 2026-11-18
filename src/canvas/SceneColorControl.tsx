@@ -435,6 +435,7 @@ export function SceneColorControl({
 				onFocus={onFocus}
 				aria-haspopup="dialog"
 				aria-expanded={open}
+				aria-controls={open ? `${testId}-popover` : undefined}
 				aria-label={`${label}: ${currentLabel}`}
 				title={`${label}: ${currentLabel}`}
 				onClick={() => {
@@ -466,6 +467,7 @@ export function SceneColorControl({
 				? createPortal(
 						<div
 							ref={popoverElement}
+							id={`${testId}-popover`}
 							className="scene-color__popover"
 							role="dialog"
 							aria-label={label}

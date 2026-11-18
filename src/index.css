@@ -6744,6 +6744,13 @@ input[type="search"]::-webkit-search-decoration {
 	accent-color: var(--color-accent);
 }
 
+/* The checkbox uses the browser ring by default; match the popover's accent
+ * focus treatment instead (F-07 popover polish). */
+.endpoint-popover__toggle:has(input:focus-visible) {
+	outline: 2px solid var(--color-accent-strong);
+	outline-offset: 2px;
+}
+
 .endpoint-placement {
 	position: absolute;
 	inset: 0;

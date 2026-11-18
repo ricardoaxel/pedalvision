@@ -170,7 +170,7 @@ describe("scene library", () => {
 			endpoints: [],
 			cables: [],
 		});
-		useSelection.setState({ selection: null, hoveredItemUid: null });
+		useSelection.setState({ selection: null, hoveredTarget: null });
 		useReadOnly.setState({ readOnly: false });
 	});
 
@@ -1018,7 +1018,7 @@ describe("cable persistence wiring (P4-01)", () => {
 			endpoints: [],
 			cables: [],
 		});
-		useSelection.setState({ selection: null, hoveredItemUid: null });
+		useSelection.setState({ selection: null, hoveredTarget: null });
 		useReadOnly.setState({ readOnly: false });
 	});
 
