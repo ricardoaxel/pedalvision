@@ -1,6 +1,6 @@
 # F-06 — Board info readout + consistent board chrome
 
-**Phase:** 2 · **Status:** in review — PR #<n> · **Model:** light (design-gated; escalate only for a blocker)
+**Phase:** 2 · **Status:** in review — PR #108 · **Model:** light (design-gated; escalate only for a blocker)
 
 ## Goal
 
