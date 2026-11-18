@@ -1,6 +1,6 @@
 # F-07 — Selection / highlight / modal polish
 
-**Phase:** 2 · **Status:** in progress · **Model:** light (design-gated; escalate only for a blocker)
+**Phase:** 2 · **Status:** in review — PR #109 · **Model:** light (design-gated; escalate only for a blocker)
 
 ## Goal
 
