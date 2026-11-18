@@ -1,6 +1,6 @@
 import { expect, type Page, test } from "@playwright/test";
 import { addBoard, addPedal } from "./picker.ts";
-import { firstItemScreenCentre } from "./stage.ts";
+import { boardScreenCentre, firstItemScreenCentre } from "./stage.ts";
 
 /** The blues-driver fixture (seed dims 7.3 × 13.02 cm). */
 const PEDAL_CM = { widthCm: 7.3, heightCm: 13.02 };
@@ -220,10 +220,11 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 	await expect(stage).toHaveAttribute("data-boards", "1");
 	await page.waitForTimeout(150);
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	const { x: cx, y: cy } = await boardScreenCentre(
+		page,
+		{ widthCm: 55.88, heightCm: 35.23 },
+		0,
+	);
 
 	// Select + rotate the board via its handle (same geometry as the P1-03 test).
 	await page.mouse.click(cx, cy);
@@ -247,6 +248,8 @@ test("rotating a pedal on a rotated board is relative to the pedal (S3)", async 
 
 	// The pedal's rotate handle, in world/screen px: pedal origin + the local
 	// (w/2, -26) handle offset rotated by the composed board+item rotation.
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
 	const itemOriginWorldCm = rotatePoint(
 		{ x: item.x, y: item.y },
 		boardBefore.rotation,
@@ -344,10 +347,11 @@ test("picking a pedal off a rotated board keeps its visible rotation (no snap-ba
 	await expect(stage).toHaveAttribute("data-boards", "1");
 	await page.waitForTimeout(150);
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	const { x: cx, y: cy } = await boardScreenCentre(
+		page,
+		{ widthCm: 55.88, heightCm: 35.23 },
+		0,
+	);
 
 	// Rotate the board (same geometry as the P1-03 test).
 	await page.mouse.click(cx, cy);
@@ -380,6 +384,8 @@ test("picking a pedal off a rotated board keeps its visible rotation (no snap-ba
 				item.rotation,
 			).y,
 	};
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
 	const worldCentre = rotatePoint(localCentre, board.rotation);
 	const px = box.x + (worldCentre.x + board.x) * PX_PER_CM;
 	const py = box.y + (worldCentre.y + board.y) * PX_PER_CM;

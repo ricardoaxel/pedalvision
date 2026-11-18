@@ -75,3 +75,36 @@ export async function firstItemScreenCentre(
 		y: box.y + world.y * PX_PER_CM * scale + vy,
 	};
 }
+
+/**
+ * The screen-space centre (viewport px) of a placed board at `index`. Derived
+ * from the Stage debug attributes, so it stays correct when the F-06 board
+ * readout rail narrows the canvas after the board is selected/added.
+ */
+export async function boardScreenCentre(
+	page: Page,
+	size: Footprint,
+	index = 0,
+): Promise<{ x: number; y: number }> {
+	const stage = page.getByTestId("stage");
+	const box = await stage.boundingBox();
+	if (!box) throw new Error("stage has no bounding box");
+	const scale = Number(await stage.getAttribute("data-scale")) || 1;
+	const vx = Number(await stage.getAttribute("data-x")) || 0;
+	const vy = Number(await stage.getAttribute("data-y")) || 0;
+	const [bx, by] = (
+		((await stage.getAttribute("data-positions")) ?? "").split(";")[index] ?? ""
+	)
+		.split(",")
+		.map(Number);
+	const rotation =
+		Number(
+			((await stage.getAttribute("data-rotations")) ?? "").split(",")[index],
+		) || 0;
+	const half = rotate({ x: size.widthCm / 2, y: size.heightCm / 2 }, rotation);
+	const world = { x: bx + half.x, y: by + half.y };
+	return {
+		x: box.x + world.x * PX_PER_CM * scale + vx,
+		y: box.y + world.y * PX_PER_CM * scale + vy,
+	};
+}

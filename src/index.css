@@ -3504,6 +3504,180 @@ input[type="search"]::-webkit-search-decoration {
 	color: var(--color-plate-ink);
 }
 
+/* ---- F-06 "Title Block" board readout ---- */
+.board-info__plate {
+	height: min(30vh, 230px);
+	margin: var(--space-4) var(--space-5) 0;
+	padding: var(--space-4);
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-card);
+}
+
+.board-info__plate .info-panel__banner-caption {
+	padding: 2px var(--space-2);
+	background-color: var(--color-thumb-bg);
+	border-radius: var(--radius-key);
+}
+
+.board-info__image {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+/* The custom board's plan plate is its finish sample, at the board's true
+ * aspect ratio so the readout still communicates the footprint shape. */
+.board-info__finish {
+	display: block;
+	width: 80%;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	border: 1px solid var(--color-ink-muted);
+	border-radius: var(--radius-card);
+}
+
+/* Match the on-canvas wood grain's horizontal banding and keep a legible cue
+ * at the small mobile-chip size (the finish label remains the primary signal). */
+.board-info__finish.finish-swatch__tile--wood {
+	background-image: repeating-linear-gradient(
+		0deg,
+		var(--color-finish-wood-ink) 0 1px,
+		transparent 1px 9px
+	);
+}
+
+.board-cartouche__finish.finish-swatch__tile--wood {
+	background-image: repeating-linear-gradient(
+		0deg,
+		var(--color-finish-wood-ink) 0 1px,
+		transparent 1px 5px
+	);
+}
+
+/* The readout is sparse by design; the legal note anchors the lower margin so
+ * the empty space reads as a plate margin, not unfinished chrome. */
+.board-info__legal {
+	margin-top: auto;
+}
+
+/* Mobile (F-06): a passive one-row identity strip docked in the bottom
+ * chrome, independent of the floating board action bar. The margin-rule strip
+ * shifts up while it is present (`data-board-readout`), so the full nav row
+ * stays visible. It never receives pointer events. */
+.board-cartouche {
+	position: fixed;
+	z-index: 2;
+	left: 50%;
+	bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-4));
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	width: calc(100% - var(--space-4) * 2);
+	max-width: 560px;
+	min-height: 56px;
+	padding: 6px var(--space-3) 6px 6px;
+	transform: translateX(-50%);
+	pointer-events: none;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-control);
+	box-shadow: var(--shadow-raised);
+	animation: board-cartouche-in var(--motion-fast) var(--ease-standard);
+}
+
+/* The mobile Margin Rule is fixed above the tab bar; reserve the strip's row
+ * so `all / n` + the paginator/lock stay on screen. */
+@media (max-width: 1023px) {
+	.app[data-board-readout="open"] .scale-strip {
+		bottom: calc(
+			56px +
+			env(safe-area-inset-bottom) +
+			var(--space-4) +
+			60px +
+			var(--scale-peek-lift, 0px)
+		);
+	}
+}
+
+.board-cartouche__thumb {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	color: var(--color-ink-muted);
+	background-color: var(--color-thumb-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-key);
+}
+
+.board-cartouche__thumb img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.board-cartouche__finish {
+	width: 26px;
+	height: 22px;
+	border: 1px solid var(--color-ink-muted);
+	border-radius: var(--radius-key);
+}
+
+.board-cartouche__identity {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	max-width: 170px;
+}
+
+.board-cartouche__name {
+	overflow: hidden;
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.board-cartouche__subline {
+	overflow: hidden;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	letter-spacing: var(--tracking-caps);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.board-cartouche__dims {
+	flex: 0 0 auto;
+	font-family: var(--font-mono);
+	font-size: var(--font-size-xs);
+	font-variant-numeric: tabular-nums;
+	color: var(--color-ink-muted);
+	white-space: nowrap;
+}
+
+@keyframes board-cartouche-in {
+	from {
+		opacity: 0;
+		transform: translate(-50%, 4px);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.board-cartouche {
+		animation: none;
+	}
+}
+
 /* ---- Measure row: dimensions + cm/in toggle ---- */
 .info-panel__measure {
 	display: flex;

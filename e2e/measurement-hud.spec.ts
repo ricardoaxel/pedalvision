@@ -156,8 +156,9 @@ test("desktop readout units and the info rail update the view", async ({
 }, testInfo) => {
 	test.skip(testInfo.project.name.startsWith("mobile"));
 	await page.goto("/");
-	await addBoard(page, "boss-bcb-1000");
 	const before = await readView(page);
+	// A loose pedal opens the same info rail; F-06's board readout already
+	// narrows the stage when a board is selected, so measure the rail itself.
 	await addPedal(page, "boss-bd-2-blues-driver");
 	const after = await readView(page);
 	await expect(after.readout).toBeVisible();

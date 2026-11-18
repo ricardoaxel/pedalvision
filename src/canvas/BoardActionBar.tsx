@@ -15,6 +15,7 @@ import {
 	ACTION_BAR_GAP,
 	ACTION_BAR_MARGIN,
 	ACTION_BAR_MOBILE_MEDIA,
+	ACTION_BAR_READOUT_RESERVE,
 	ACTION_BAR_TAB_BAR_HEIGHT,
 } from "./actionBarLayout";
 import { SceneColorControl } from "./SceneColorControl";
@@ -168,7 +169,11 @@ export function BoardActionBar({
 		viewportMin,
 		viewportSize.width - half - ACTION_BAR_MARGIN,
 	);
-	const bottomReserve = mobile ? ACTION_BAR_TAB_BAR_HEIGHT : 0;
+	// The docked F-06 board readout occupies the bottom chrome on mobile; keep
+	// the floating action bar above it when the board sits low.
+	const bottomReserve = mobile
+		? ACTION_BAR_TAB_BAR_HEIGHT + ACTION_BAR_READOUT_RESERVE
+		: 0;
 	const left = clamp((minX + maxX) / 2, viewportMin, viewportMax);
 	const top = clamp(
 		maxY + ACTION_BAR_GAP,
