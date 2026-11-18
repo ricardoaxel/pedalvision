@@ -1,6 +1,6 @@
 # F-06 — Board info readout + consistent board chrome
 
-**Phase:** 2 · **Status:** in review — PR #108 · **Model:** light (design-gated; escalate only for a blocker)
+**Phase:** 2 · **Status:** done — merged 2026-11-18, PR #108, squash `5d78584d` · **Model:** light (design-gated; escalate only for a blocker)
 
 ## Goal
 
@@ -113,6 +113,11 @@ Read only the pointed sections.
 - One PR; no merge.
 
 ## Outcome (2026-11-17)
+
+- **Merged:** 2026-11-18, PR #108, squash `5d78584d`. Post-merge `main`
+  verified: lint (0 errors, 16 pre-existing warnings) / typecheck / **1,106
+  tests** / build **JS 358.47 kB gzip, CSS 18.81 kB gzip** / full E2E **468
+  passed + 16 skipped**.
 
 - **Direction:** “Title Block” — owner-approved. Desktop reuses the pedal
   “Specimen Cover” trailing push rail (framed plan plate + identity + true W×D +
