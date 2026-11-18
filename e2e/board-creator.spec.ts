@@ -1,6 +1,7 @@
 import { expect, type Page, test } from "@playwright/test";
 import { waitForSavedScene } from "./persistence.ts";
 import { openPicker } from "./picker.ts";
+import { boardScreenCentre } from "./stage.ts";
 
 /**
  * Create a custom board through the Custom tab (P2-05). Opens the picker on the
@@ -24,13 +25,6 @@ async function createCustomBoard(
 	await page.getByTestId(`board-finish-${finish}`).click();
 	await page.getByTestId("board-submit").click();
 	await expect(page.getByTestId("picker-panel")).toHaveCount(0);
-}
-
-/** The stage-viewport centre in page coordinates (the board placement point). */
-async function stageCentre(page: Page): Promise<{ x: number; y: number }> {
-	const box = await page.getByTestId("stage").boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
 }
 
 test("creates a custom board with a chosen finish", async ({ page }) => {
@@ -129,7 +123,10 @@ test("moves and rotates a custom board like a catalog board", async ({
 	await expect(stage).toHaveAttribute("data-custom-boards", "1");
 
 	const before = await stage.getAttribute("data-positions");
-	const { x: cx, y: cy } = await stageCentre(page);
+	const { x: cx, y: cy } = await boardScreenCentre(page, {
+		widthCm: 80,
+		heightCm: 40,
+	});
 
 	// Rotate via the Transformer handle (80 × 40 cm → the handle sits 28 px
 	// above the top edge, i.e. cy − 80 − 28).
@@ -165,7 +162,10 @@ test("edits a custom board in place", async ({ page }) => {
 	await expect(stage).toHaveAttribute("data-custom-boards", "1");
 
 	// Select the board, then Edit from the board action bar.
-	const { x, y } = await stageCentre(page);
+	const { x, y } = await boardScreenCentre(page, {
+		widthCm: 80,
+		heightCm: 40,
+	});
 	await page.mouse.click(x, y);
 	await expect(page.getByTestId("board-action-bar")).toBeVisible();
 	await page.getByTestId("edit-custom-board").click();
@@ -187,7 +187,10 @@ test("deletes a custom board", async ({ page }) => {
 	await createCustomBoard(page, { name: "Big Rig", width: "80", depth: "40" });
 	await expect(stage).toHaveAttribute("data-boards", "1");
 
-	const { x, y } = await stageCentre(page);
+	const { x, y } = await boardScreenCentre(page, {
+		widthCm: 80,
+		heightCm: 40,
+	});
 	await page.mouse.click(x, y);
 	await expect(page.getByTestId("board-action-bar")).toBeVisible();
 	await page.getByTestId("delete-custom-board").click();

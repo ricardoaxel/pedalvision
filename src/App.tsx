@@ -10,6 +10,7 @@ import { useReadOnlyEditCue } from "./canvas/useReadOnlyEditCue";
 import { useSceneAutoFrame } from "./canvas/useSceneAutoFrame";
 import { useSelectionShortcuts } from "./canvas/useSelectionShortcuts";
 import type { EffectType } from "./catalog/schema";
+import { BoardInfoPanel } from "./components/BoardInfoPanel";
 import { CableSchedulePanel } from "./components/CableSchedulePanel";
 import { CapacityAnnouncer } from "./components/CapacityAnnouncer";
 import {
@@ -59,7 +60,11 @@ import { useSceneLibrary } from "./state/library";
 import { useMeasure } from "./state/measure";
 import { useReadOnly } from "./state/readOnly";
 import { useScene } from "./state/scene";
-import { selectSelectedItemUid, useSelection } from "./state/selection";
+import {
+	selectSelectedBoardUid,
+	selectSelectedItemUid,
+	useSelection,
+} from "./state/selection";
 import { useSettings } from "./state/settings";
 import { useShare } from "./state/share";
 
@@ -96,19 +101,38 @@ function PatchHiddenCue() {
 	);
 }
 
-function InfoPanelSlot({
+/**
+ * One trailing rail for both selection kinds (F-06): the pedal "Specimen Cover"
+ * and the board "Title Block" swap in place, so the canvas never jumps between
+ * an item and a board selection. The last selection is cached for the exit
+ * motion, exactly like the old item-only slot.
+ */
+function InfoRailSlot({
 	itemUid,
+	boardUid,
 	onOpenSimilar,
 }: {
 	itemUid: string | null;
+	boardUid: string | null;
 	onOpenSimilar: (effectTypes: EffectType[]) => void;
 }) {
-	const lastUid = useRef<string | null>(itemUid);
-	if (itemUid) lastUid.current = itemUid;
-	const uid = itemUid ?? lastUid.current;
+	const last = useRef<{ kind: "item" | "board"; uid: string } | null>(null);
+	if (itemUid) last.current = { kind: "item", uid: itemUid };
+	else if (boardUid) last.current = { kind: "board", uid: boardUid };
+	const open = itemUid !== null || boardUid !== null;
+	const active = open
+		? itemUid
+			? { kind: "item" as const, uid: itemUid }
+			: { kind: "board" as const, uid: boardUid as string }
+		: last.current;
+	if (active === null) return null;
 	return (
-		<MotionPresence open={itemUid !== null} exitMs={MOTION.close}>
-			<InfoPanel itemUid={uid} onOpenSimilar={onOpenSimilar} />
+		<MotionPresence open={open} exitMs={MOTION.close}>
+			{active.kind === "board" ? (
+				<BoardInfoPanel boardUid={active.uid} />
+			) : (
+				<InfoPanel itemUid={active.uid} onOpenSimilar={onOpenSimilar} />
+			)}
 		</MotionPresence>
 	);
 }
@@ -188,6 +212,7 @@ function App() {
 	// P2-03: the info panel is a trailing push rail (desktop) / bottom sheet
 	// (mobile), shown only while an item is selected.
 	const selectedItemUid = useSelection(selectSelectedItemUid);
+	const selectedBoardUid = useSelection(selectSelectedBoardUid);
 	// Delete/duplicate shortcuts for the selected pedal (F6).
 	useSelectionShortcuts();
 	// Undo/redo shortcuts (P3-04): Cmd/Ctrl+Z / Cmd/Ctrl+Shift+Z.
@@ -446,7 +471,8 @@ function App() {
 	return (
 		<main
 			className="app"
-			data-panel={selectedItemUid ? "open" : undefined}
+			data-panel={selectedItemUid || selectedBoardUid ? "open" : undefined}
+			data-board-readout={selectedBoardUid ? "open" : undefined}
 			data-export={exportOpen ? "open" : undefined}
 			data-scenes={scenesOpen ? "open" : undefined}
 			data-share={shareStatus === "none" ? undefined : shareStatus}
@@ -654,7 +680,11 @@ function App() {
 			{/* The selected part's readout + the space warning (P2-03). The
 			 * presence slot keeps the rail mounted for its close, then releases
 			 * the canvas width once. */}
-			<InfoPanelSlot itemUid={selectedItemUid} onOpenSimilar={openSimilar} />
+			<InfoRailSlot
+				itemUid={selectedItemUid}
+				boardUid={selectedBoardUid}
+				onOpenSimilar={openSimilar}
+			/>
 			<ProofBar />
 			{!readOnly ? (
 				<Picker

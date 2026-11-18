@@ -207,6 +207,16 @@ export function InfoPanel({
 		return () => observer.disconnect();
 	}, [item, isCurrentSelection, isMobile, proofActive, setSheetHeight]);
 
+	// F-06: selecting a board unmounts this panel (the shared rail swaps to the
+	// board readout), so the layout effect's cleanup cannot reset the reported
+	// height. Clear it on unmount or the Margin Rule keeps the old mobile lift.
+	useEffect(
+		() => () => {
+			setSheetHeight(0);
+		},
+		[setSheetHeight],
+	);
+
 	// F-14 "Cross-Reference": catalogue alternatives for a placed catalog pedal.
 	// Read-only shares never offer this (it opens the picker, an edit surface).
 	// Hooks must run before the early returns below.

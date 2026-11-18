@@ -6,7 +6,7 @@ import {
 	openPicker,
 	removeSelectedBoard,
 } from "./picker.ts";
-import { firstItemScreenCentre } from "./stage.ts";
+import { boardScreenCentre, firstItemScreenCentre } from "./stage.ts";
 
 /** The blues-driver fixture footprint (seed dims). */
 const PEDAL_CM = { widthCm: 7.3, heightCm: 13.02 };
@@ -107,12 +107,13 @@ test("adding a board places a selectable node at the viewport centre", async ({
 	await addBoard(page, "boss-bcb-1000");
 	await expect(stage).toHaveAttribute("data-boards", "1");
 
-	// The board lands at the viewport centre, so a click there must hit the
-	// Konva node (selecting it). A click on empty canvas would clear the
-	// selection instead.
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+	// The board is selected by adding it; a click on its real centre must keep
+	// it selected (F-06 opens a rail, so the stage centre is no longer it).
+	const centre = await boardScreenCentre(page, {
+		widthCm: 55.88,
+		heightCm: 35.23,
+	});
+	await page.mouse.click(centre.x, centre.y);
 	await expect(stage).not.toHaveAttribute("data-selected-board", "");
 });
 
@@ -128,12 +129,12 @@ test("rotating a selected board via the Transformer handle changes its rotation"
 	await expect(stage).toHaveAttribute("data-rotations", "0");
 	await page.waitForTimeout(150);
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	const { x: cx, y: cy } = await boardScreenCentre(page, {
+		widthCm: 55.88,
+		heightCm: 35.23,
+	});
 
-	// Select the board (placed at the viewport centre).
+	// Select the board at its real centre.
 	await page.mouse.click(cx, cy);
 	await expect(stage).not.toHaveAttribute("data-selected-board", "");
 
@@ -161,10 +162,10 @@ test("a second pointer during rotation commits the rotation (no lost transform)"
 	await page.waitForTimeout(150);
 	await expect(stage).toHaveAttribute("data-rotations", "0");
 
-	const box = await stage.boundingBox();
-	if (!box) throw new Error("stage has no bounding box");
-	const cx = box.x + box.width / 2;
-	const cy = box.y + box.height / 2;
+	const { x: cx, y: cy } = await boardScreenCentre(page, {
+		widthCm: 55.88,
+		heightCm: 35.23,
+	});
 
 	// Select, then start a rotation and hold it (handle ~98px above centre).
 	await page.mouse.click(cx, cy);
@@ -233,14 +234,21 @@ test("a pedal drags across boards; selection stays clean and the Transformer re-
 	const cx = box.x + box.width / 2;
 	const cy = box.y + box.height / 2;
 
-	// Move the top board (added last) to the right, leaving the two apart.
+	// Move the top board (added last) to the right, leaving the two apart. The
+	// F-06 rail shifted the earlier board right of the stage centre, so the gap
+	// must clear both boards (not just 240 px).
 	await page.mouse.move(cx, cy);
 	await page.mouse.down();
-	await page.mouse.move(cx + 240, cy, { steps: 10 });
+	await page.mouse.move(cx + 420, cy, { steps: 10 });
 	await page.mouse.up();
 
-	// Select board A (still at the centre) and add a pedal onto it.
-	await page.mouse.click(cx, cy);
+	// Select board A (first added; the F-06 rail shifted the stage since).
+	const boardA = await boardScreenCentre(
+		page,
+		{ widthCm: 35.56, heightCm: 15.32 },
+		0,
+	);
+	await page.mouse.click(boardA.x, boardA.y);
 	await addPedal(page, "boss-bd-2-blues-driver");
 	await expect(stage).toHaveAttribute("data-items", "1");
 	await expect(stage).toHaveAttribute("data-item-parents", "0");
@@ -248,16 +256,16 @@ test("a pedal drags across boards; selection stays clean and the Transformer re-
 	expect(selected).toBeTruthy();
 
 	// Drag the pedal from A's centre towards board B.
-	await page.mouse.move(cx, cy);
+	await page.mouse.move(boardA.x, boardA.y);
 	await page.mouse.down();
-	await page.mouse.move(cx + 120, cy, { steps: 6 });
+	await page.mouse.move(boardA.x + 120, boardA.y, { steps: 6 });
 
 	// Mid-drag the pedal is lifted into the DragLayer; the single top-level
 	// Transformer is detached (not shown) but the selection is preserved.
 	await expect(stage).toHaveAttribute("data-lifted-item", selected ?? "");
 	await expect(stage).toHaveAttribute("data-selected-item", selected ?? "");
 
-	await page.mouse.move(cx + 240, cy, { steps: 6 });
+	await page.mouse.move(boardA.x + 240, boardA.y, { steps: 6 });
 	await page.mouse.up();
 
 	// Dropped on board B: re-parented, lift cleared, selection intact (no stale
