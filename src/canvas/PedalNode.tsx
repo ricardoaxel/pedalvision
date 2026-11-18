@@ -36,7 +36,11 @@ import {
 	resolveItemJacks,
 	useScene,
 } from "../state/scene";
-import { selectSelectedItemUid, useSelection } from "../state/selection";
+import {
+	selectHoveredItemUid,
+	selectSelectedItemUid,
+	useSelection,
+} from "../state/selection";
 import { useSettings } from "../state/settings";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
@@ -145,8 +149,8 @@ export function PedalNode({
 	const { image, status } = useImage(src, item.uid);
 
 	const selectItem = useSelection((state) => state.selectItem);
-	const setHoveredItem = useSelection((state) => state.setHoveredItem);
-	const hoveredItemUid = useSelection((state) => state.hoveredItemUid);
+	const setHoveredTarget = useSelection((state) => state.setHoveredTarget);
+	const hoveredItemUid = useSelection(selectHoveredItemUid);
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const scale = useViewport((state) => state.scale);
 	const beginCandidate = useDrag((state) => state.beginCandidate);
@@ -787,10 +791,23 @@ export function PedalNode({
 			onDblTap={(event) => {
 				event.cancelBubble = true;
 			}}
-			// Desktop hover outline (touch has no hover). Konva `mouseenter`
+			// Desktop hover preview (touch has no hover). Konva `mouseenter`
 			// bubbles to this Group from its child shape.
-			onMouseEnter={() => setHoveredItem(item.uid)}
-			onMouseLeave={() => setHoveredItem(null)}
+			onMouseEnter={() => {
+				if (!coarsePointer) {
+					setHoveredTarget({ uid: item.uid, kind: "item" });
+				}
+			}}
+			onMouseLeave={() => {
+				const current = useSelection.getState().hoveredTarget;
+				if (
+					!coarsePointer &&
+					current?.kind === "item" &&
+					current.uid === item.uid
+				) {
+					setHoveredTarget(null);
+				}
+			}}
 		>
 			{body}
 			{colorMark}

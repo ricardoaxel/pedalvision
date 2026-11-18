@@ -8,9 +8,10 @@ import { useEndpointDrag } from "../state/endpointDrag";
 import { useGesture } from "../state/gesture";
 import { useReadOnly } from "../state/readOnly";
 import { type Endpoint, useScene } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectHoveredEndpointUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import { CANVAS_FONTS, type CanvasTheme, ENDPOINT } from "../styles/theme";
+import { useCoarsePointer } from "./useCoarsePointer";
 import { useGraphPresence } from "./useGraphPresence";
 
 interface EndpointLayerProps {
@@ -34,6 +35,7 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 	const selectedUid = useSelection((state) =>
 		state.selection?.kind === "endpoint" ? state.selection.uid : null,
 	);
+	const hoveredEndpointUid = useSelection(selectHoveredEndpointUid);
 	const cableTarget = useCableDrag((state) => state.target);
 	const safeScale = Math.max(scale, 0.0001);
 	const draggingRef = useRef<string | null>(null);
@@ -99,6 +101,10 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 						theme={theme}
 						scale={safeScale}
 						selected={selectedUid === endpoint.uid}
+						hovered={
+							hoveredEndpointUid === endpoint.uid &&
+							selectedUid !== endpoint.uid
+						}
 						readOnly={readOnly}
 						draggable={!readOnly && !navigating}
 						connectTarget={
@@ -141,6 +147,7 @@ function EndpointTag({
 	theme,
 	scale,
 	selected,
+	hovered,
 	readOnly,
 	draggable,
 	connectTarget,
@@ -153,6 +160,7 @@ function EndpointTag({
 	theme: CanvasTheme;
 	scale: number;
 	selected: boolean;
+	hovered: boolean;
 	readOnly: boolean;
 	draggable: boolean;
 	connectTarget: boolean;
@@ -175,7 +183,13 @@ function EndpointTag({
 		(label.length * 6.6 + 28) / scale,
 	);
 	const hitSize = ENDPOINT.hitPx / scale;
-	const border = selected || connectTarget ? theme.selection : theme.jack;
+	const border =
+		selected || connectTarget
+			? theme.selection
+			: hovered
+				? theme.hoverOutline
+				: theme.jack;
+	const coarsePointer = useCoarsePointer();
 
 	return (
 		<Group
@@ -191,6 +205,18 @@ function EndpointTag({
 			onTouchStart={(event) => {
 				event.cancelBubble = true;
 				onSelect();
+			}}
+			onMouseEnter={() => {
+				if (readOnly || coarsePointer || selected || connectTarget) return;
+				useSelection
+					.getState()
+					.setHoveredTarget({ uid: endpoint.uid, kind: "endpoint" });
+			}}
+			onMouseLeave={() => {
+				const current = useSelection.getState().hoveredTarget;
+				if (current?.kind === "endpoint" && current.uid === endpoint.uid) {
+					useSelection.getState().setHoveredTarget(null);
+				}
 			}}
 			onDragStart={(event) =>
 				onDragStart(event.target as unknown as Konva.Group)
@@ -214,7 +240,7 @@ function EndpointTag({
 				width={width}
 				height={height}
 				stroke={border}
-				strokeWidth={(selected || connectTarget ? 2 : 1.5) / scale}
+				strokeWidth={(selected || connectTarget || hovered ? 2 : 1.5) / scale}
 				cornerRadius={endpoint.kind === "amp" ? 4 / scale : height / 2}
 				fillEnabled={false}
 				perfectDrawEnabled={false}

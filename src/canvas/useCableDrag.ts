@@ -223,6 +223,7 @@ export function useCableDrag(
 
 		const onKeyDown = (event: KeyboardEvent) => {
 			if (event.key !== "Escape") return;
+			if (event.defaultPrevented) return;
 			if (!useCableDragStore.getState().source) return;
 			event.preventDefault();
 			useCableDragStore.getState().cancel();

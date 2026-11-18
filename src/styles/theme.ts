@@ -165,6 +165,9 @@ export const CABLE = {
 	haloPx: 6,
 	selectedStrokePx: 2.5,
 	selectedHaloPx: 9,
+	/** F-07 "Construction Line": the neutral hover sleeve, quieter than selection. */
+	hoverHaloPx: 6,
+	hoverHaloOpacity: 0.5,
 	hitStrokePx: 16,
 	arrowLengthPx: 10,
 	arrowWidthPx: 8,

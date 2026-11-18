@@ -45,6 +45,8 @@ export function EndpointControl({
 }) {
 	const [open, setOpen] = useState(false);
 	const rootRef = useRef<HTMLDivElement>(null);
+	const triggerRef = useRef<HTMLButtonElement>(null);
+	const popoverRef = useRef<HTMLDivElement>(null);
 	const endpoints = useScene((state) => state.endpoints);
 	const cables = useScene((state) => state.cables);
 	const boards = useScene((state) => state.boards);
@@ -67,17 +69,35 @@ export function EndpointControl({
 		const onPointerDown = (event: PointerEvent) => {
 			const target = event.target as Node | null;
 			if (target && rootRef.current?.contains(target)) return;
+			const hadFocusInside = rootRef.current?.contains(document.activeElement);
 			setOpen(false);
+			if (hadFocusInside) triggerRef.current?.focus();
 		};
 		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") setOpen(false);
+			if (event.key !== "Escape") return;
+			event.preventDefault();
+			setOpen(false);
+			triggerRef.current?.focus();
 		};
 		document.addEventListener("pointerdown", onPointerDown);
-		window.addEventListener("keydown", onKeyDown);
+		// Capture so the popover wins Escape before the placement/drag handlers.
+		window.addEventListener("keydown", onKeyDown, true);
 		return () => {
 			document.removeEventListener("pointerdown", onPointerDown);
-			window.removeEventListener("keydown", onKeyDown);
+			window.removeEventListener("keydown", onKeyDown, true);
 		};
+	}, [open]);
+
+	// Move focus into the non-modal popover on open (first enabled control).
+	useEffect(() => {
+		if (!open) return;
+		const popover = popoverRef.current;
+		if (!popover) return;
+		const first = popover.querySelector<HTMLElement>(
+			'button:not(:disabled), input:not(:disabled), [tabindex]:not([tabindex="-1"])',
+		);
+		const timer = window.setTimeout(() => first?.focus(), 0);
+		return () => window.clearTimeout(timer);
 	}, [open]);
 
 	const choose = (kind: EndpointKind) => {
@@ -91,6 +111,7 @@ export function EndpointControl({
 	return (
 		<div ref={rootRef} className="endpoint-control">
 			<button
+				ref={triggerRef}
 				type="button"
 				className="hud-button endpoint-control__trigger"
 				data-testid="endpoint-open"
@@ -109,13 +130,20 @@ export function EndpointControl({
 			</button>
 			{open ? (
 				<div
+					ref={popoverRef}
 					id="endpoint-popover"
 					className="endpoint-popover"
 					data-testid="endpoint-popover"
 					role="dialog"
-					aria-label="Add endpoint"
+					aria-labelledby="endpoint-popover-title"
+					onBlur={(event) => {
+						const next = event.relatedTarget as Node | null;
+						if (next && !rootRef.current?.contains(next)) setOpen(false);
+					}}
 				>
-					<p className="endpoint-popover__eyebrow">Patch endpoint</p>
+					<p id="endpoint-popover-title" className="endpoint-popover__eyebrow">
+						Patch endpoint
+					</p>
 					<button
 						type="button"
 						className="endpoint-popover__row"
@@ -201,6 +229,7 @@ export function EndpointPlacementOverlay() {
 		if (!kind) return;
 		const onKeyDown = (event: KeyboardEvent) => {
 			if (event.key !== "Escape") return;
+			if (event.defaultPrevented) return;
 			event.preventDefault();
 			useEndpointPlacement.getState().disarm();
 		};

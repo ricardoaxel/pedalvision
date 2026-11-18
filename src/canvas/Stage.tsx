@@ -34,6 +34,7 @@ import {
 	useScene,
 } from "../state/scene";
 import {
+	type HoveredTarget,
 	selectSelectedBoardUid,
 	selectSelectedItemUid,
 	useSelection,
@@ -105,7 +106,7 @@ export function Stage() {
 	const selectedKind = useSelection((state) => state.selection?.kind ?? "");
 	const selectedUid = useSelection((state) => state.selection?.uid ?? "");
 	const clearSelection = useSelection((state) => state.clearSelection);
-	const setHoveredItem = useSelection((state) => state.setHoveredItem);
+	const setHoveredTarget = useSelection((state) => state.setHoveredTarget);
 	const liftedItemUid = useDrag((state) => state.liftedUid);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
@@ -309,6 +310,9 @@ export function Stage() {
 			.join(";");
 	})();
 	const endpointKinds = endpoints.map((endpoint) => endpoint.kind).join(",");
+	const endpointPositions = endpoints
+		.map((endpoint) => `${endpoint.x.toFixed(2)},${endpoint.y.toFixed(2)}`)
+		.join(";");
 	const cableDirections = cables
 		.map((cable) => {
 			const label = (end: typeof cable.from) =>
@@ -389,18 +393,20 @@ export function Stage() {
 		});
 	}, []);
 
-	// Same idea for the hover debug attribute: write it from the store so hover
-	// enter/leave doesn't re-render the whole stage (SelectionLayer re-renders).
+	// Same idea for the hover debug attributes: write them from the store so
+	// hover enter/leave doesn't re-render the whole stage (SelectionLayer does).
 	useEffect(() => {
-		const apply = (uid: string | null) => {
+		const apply = (target: HoveredTarget | null) => {
 			const element = containerRef.current;
 			if (!element) return;
-			element.dataset.hoveredItem = uid ?? "";
+			element.dataset.hoveredItem = target?.kind === "item" ? target.uid : "";
+			element.dataset.hoveredTarget = target?.uid ?? "";
+			element.dataset.hoveredKind = target?.kind ?? "";
 		};
-		apply(useSelection.getState().hoveredItemUid);
+		apply(useSelection.getState().hoveredTarget);
 		return useSelection.subscribe((state, prev) => {
-			if (state.hoveredItemUid !== prev.hoveredItemUid) {
-				apply(state.hoveredItemUid);
+			if (state.hoveredTarget !== prev.hoveredTarget) {
+				apply(state.hoveredTarget);
 			}
 		});
 	}, []);
@@ -459,6 +465,7 @@ export function Stage() {
 			data-redo-depth={redoDepth}
 			data-endpoints={endpoints.length}
 			data-endpoint-kinds={endpointKinds}
+			data-endpoint-positions={endpointPositions}
 			data-cables={cables.length}
 			data-cable-directions={cableDirections}
 			data-cable-colors={cableColors}
@@ -545,7 +552,7 @@ export function Stage() {
 						}
 					}}
 					// A pointer leaving the whole canvas must drop the hover ring.
-					onMouseLeave={() => setHoveredItem(null)}
+					onMouseLeave={() => setHoveredTarget(null)}
 				>
 					<GridLayer
 						color={theme.gridDot}

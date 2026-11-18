@@ -22,7 +22,7 @@ import {
 	type PlacedItem,
 	useScene,
 } from "../state/scene";
-import { useSelection } from "../state/selection";
+import { selectHoveredBoardUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import type { CanvasTheme } from "../styles/theme";
 import {
@@ -35,8 +35,14 @@ import {
 	READ_ONLY_CUE_UNDER_STROKE_PX,
 } from "../styles/theme";
 import { finishBaseColor, finishPatternTile } from "./boardFinish";
+import {
+	BOARD_HOVER_ARM,
+	BOARD_HOVER_GAP,
+	HoverBrackets,
+} from "./hoverBrackets";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
+import { useCoarsePointer } from "./useCoarsePointer";
 import { useImage } from "./useImage";
 
 /** Konva's default double-click window; shared by mouse and touch seeds. */
@@ -101,6 +107,15 @@ export function BoardNode({
 	usePlannerCatalog((state) => state.version);
 	const boards = useScene((state) => state.boards);
 	const selectBoard = useSelection((state) => state.selectBoard);
+	const setHoveredTarget = useSelection((state) => state.setHoveredTarget);
+	const hoveredBoardUid = useSelection(selectHoveredBoardUid);
+	const selectedBoardUid = useSelection((state) =>
+		state.selection?.kind === "board" ? state.selection.uid : null,
+	);
+	const coarsePointer = useCoarsePointer();
+	const boardDragging = useBoardDrag(
+		(state) => state.uid === board.uid && state.kind === "drag",
+	);
 	// While the viewport owns the gesture (pan/pinch), the board must not drag:
 	// a second finger would otherwise move it with both the drag and the pan.
 	const navigating = useGesture((state) => state.navigating);
@@ -465,6 +480,34 @@ export function BoardNode({
 					});
 				}
 			}}
+			// Desktop hover preview (F-07 "Construction Line"). Konva fires
+			// `mouseenter` on ancestors, so only a direct board child counts —
+			// hovering an attached pedal must never light the whole deck.
+			onMouseEnter={(event) => {
+				if (coarsePointer || navigating) return;
+				if (selectedBoardUid === board.uid) return;
+				const target = event.target;
+				if (
+					target !== event.currentTarget &&
+					target.getParent() !== event.currentTarget
+				) {
+					return;
+				}
+				setHoveredTarget({ uid: board.uid, kind: "board" });
+			}}
+			onMouseLeave={(event) => {
+				const target = event.target;
+				if (
+					target !== event.currentTarget &&
+					target.getParent() !== event.currentTarget
+				) {
+					return;
+				}
+				const current = useSelection.getState().hoveredTarget;
+				if (current?.kind === "board" && current.uid === board.uid) {
+					setHoveredTarget(null);
+				}
+			}}
 			onDblClick={(event) => {
 				event.cancelBubble = true;
 				handleDoubleClick();
@@ -549,6 +592,19 @@ export function BoardNode({
 			)}
 			{boardMark}
 			{custom ? customChip : null}
+			{hoveredBoardUid === board.uid &&
+			selectedBoardUid !== board.uid &&
+			!boardDragging ? (
+				<HoverBrackets
+					widthPx={widthPx}
+					heightPx={heightPx}
+					scale={scale > 0 ? scale : 1}
+					color={theme.hoverOutline}
+					underColor={theme.canvasBackground}
+					armPx={BOARD_HOVER_ARM}
+					gapPx={BOARD_HOVER_GAP}
+				/>
+			) : null}
 			{readOnlyCueNonce > 0
 				? (() => {
 						const cueScale = scale > 0 ? scale : 1;
