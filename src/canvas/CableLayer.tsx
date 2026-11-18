@@ -38,6 +38,7 @@ import {
 } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import { CABLE, type CanvasTheme } from "../styles/theme";
+import { isCanvasGestureActive } from "./hoverGuard";
 import { useCoarsePointer } from "./useCoarsePointer";
 import { useGraphPresence } from "./useGraphPresence";
 
@@ -583,7 +584,9 @@ function CableShapes({
 						}
 						listening={!readOnly}
 						onMouseEnter={() => {
-							if (readOnly || coarsePointer) return;
+							if (readOnly || coarsePointer || isCanvasGestureActive()) return;
+							const selection = useSelection.getState().selection;
+							if (selection?.kind === "cable" && selection.uid === uid) return;
 							setHoveredTarget({ uid, kind: "cable" });
 						}}
 						onMouseLeave={() => {

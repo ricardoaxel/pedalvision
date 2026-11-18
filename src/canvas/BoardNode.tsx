@@ -40,6 +40,7 @@ import {
 	BOARD_HOVER_GAP,
 	HoverBrackets,
 } from "./hoverBrackets";
+import { isCanvasGestureActive } from "./hoverGuard";
 import { PedalNode } from "./PedalNode";
 import { SelectionOutline } from "./SelectionOutline";
 import { useCoarsePointer } from "./useCoarsePointer";
@@ -425,9 +426,23 @@ export function BoardNode({
 			)
 		) : null;
 
+	// Keep the board preview accurate while moving between its children. The
+	// `mousemove` is guarded so it only writes when the hover target changes.
+	const previewBoardHover = (event: Konva.KonvaEventObject<MouseEvent>) => {
+		if (coarsePointer || navigating || isCanvasGestureActive()) return;
+		if (selectedBoardUid === board.uid) return;
+		const target = event.target;
+		if (target.findAncestor(".board", true) !== event.currentTarget) return;
+		if (target.findAncestor(".pedal", true)) return;
+		const current = useSelection.getState().hoveredTarget;
+		if (current?.kind === "board" && current.uid === board.uid) return;
+		setHoveredTarget({ uid: board.uid, kind: "board" });
+	};
+
 	return (
 		<Group
 			ref={groupRef}
+			name="board"
 			x={cmToPx(board.x)}
 			y={cmToPx(board.y)}
 			rotation={board.rotationDeg}
@@ -481,28 +496,15 @@ export function BoardNode({
 				}
 			}}
 			// Desktop hover preview (F-07 "Construction Line"). Konva fires
-			// `mouseenter` on ancestors, so only a direct board child counts —
-			// hovering an attached pedal must never light the whole deck.
-			onMouseEnter={(event) => {
-				if (coarsePointer || navigating) return;
-				if (selectedBoardUid === board.uid) return;
-				const target = event.target;
-				if (
-					target !== event.currentTarget &&
-					target.getParent() !== event.currentTarget
-				) {
-					return;
-				}
-				setHoveredTarget({ uid: board.uid, kind: "board" });
-			}}
+			// `mouseenter` only when entering the whole group, so moving from a
+			// pedal to the deck needs the guarded `mousemove` too. An attached
+			// pedal must never light the whole deck.
+			onMouseEnter={(event) => previewBoardHover(event)}
+			onMouseMove={(event) => previewBoardHover(event)}
 			onMouseLeave={(event) => {
 				const target = event.target;
-				if (
-					target !== event.currentTarget &&
-					target.getParent() !== event.currentTarget
-				) {
-					return;
-				}
+				if (target.findAncestor(".board", true) !== event.currentTarget) return;
+				if (target.findAncestor(".pedal", true)) return;
 				const current = useSelection.getState().hoveredTarget;
 				if (current?.kind === "board" && current.uid === board.uid) {
 					setHoveredTarget(null);

@@ -71,7 +71,10 @@ export function EndpointControl({
 			if (target && rootRef.current?.contains(target)) return;
 			const hadFocusInside = rootRef.current?.contains(document.activeElement);
 			setOpen(false);
-			if (hadFocusInside) triggerRef.current?.focus();
+			if (hadFocusInside) {
+				// Defer past the click's default focus change (the canvas/body).
+				requestAnimationFrame(() => triggerRef.current?.focus());
+			}
 		};
 		const onKeyDown = (event: KeyboardEvent) => {
 			if (event.key !== "Escape") return;
@@ -119,7 +122,7 @@ export function EndpointControl({
 				aria-label="Add amp or instrument endpoint"
 				aria-haspopup="dialog"
 				aria-expanded={open}
-				aria-controls="endpoint-popover"
+				aria-controls={open ? "endpoint-popover" : undefined}
 				aria-pressed={armed}
 				data-armed={armed ? "true" : undefined}
 				title="Add endpoint"

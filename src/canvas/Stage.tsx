@@ -18,9 +18,12 @@ import {
 	registerViewportTweenDriver,
 	type ViewportTweenDriver,
 } from "../lib/viewportMotion";
+import { useBoardDrag } from "../state/boardDrag";
 import { useCableDrag as useCableDragState } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
+import { useEndpointDrag } from "../state/endpointDrag";
 import { isCameraLocked, useFocus, useIsFramed } from "../state/focus";
+import { useGesture } from "../state/gesture";
 import { useHistory } from "../state/history";
 import { useJackProof } from "../state/jackProof";
 import { useSceneLibrary } from "../state/library";
@@ -35,6 +38,7 @@ import {
 } from "../state/scene";
 import {
 	type HoveredTarget,
+	selectCableDimFocus,
 	selectSelectedBoardUid,
 	selectSelectedItemUid,
 	useSelection,
@@ -103,6 +107,7 @@ export function Stage() {
 	const cables = useScene((state) => state.cables);
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
+	const cableDimFocus = useSelection(selectCableDimFocus);
 	const selectedKind = useSelection((state) => state.selection?.kind ?? "");
 	const selectedUid = useSelection((state) => state.selection?.uid ?? "");
 	const clearSelection = useSelection((state) => state.clearSelection);
@@ -411,6 +416,54 @@ export function Stage() {
 		});
 	}, []);
 
+	// Clear hover when a gesture starts (Konva does not capture pointers, so
+	// enter/leave keeps firing mid-drag) and when the hovered object is removed.
+	useEffect(() => {
+		const clear = () => {
+			if (useSelection.getState().hoveredTarget) {
+				useSelection.getState().setHoveredTarget(null);
+			}
+		};
+		const clearIfGone = () => {
+			const target = useSelection.getState().hoveredTarget;
+			if (!target) return;
+			const scene = useScene.getState();
+			const exists =
+				target.kind === "item"
+					? scene.items.some((item) => item.uid === target.uid)
+					: target.kind === "board"
+						? scene.boards.some((board) => board.uid === target.uid)
+						: target.kind === "cable"
+							? scene.cables.some((cable) => cable.uid === target.uid)
+							: scene.endpoints.some((endpoint) => endpoint.uid === target.uid);
+			if (!exists) clear();
+		};
+		const unsubs = [
+			useDrag.subscribe((state, prev) => {
+				if (state.liftedUid && !prev.liftedUid) clear();
+			}),
+			useBoardDrag.subscribe((state, prev) => {
+				if (state.uid && !prev.uid) clear();
+			}),
+			useCableDragState.subscribe((state, prev) => {
+				if (state.source && !prev.source) clear();
+			}),
+			useEndpointDrag.subscribe((state, prev) => {
+				if (state.uid && !prev.uid) clear();
+			}),
+			useJackProof.subscribe((state, prev) => {
+				if (state.drag && !prev.drag) clear();
+			}),
+			useGesture.subscribe((state, prev) => {
+				if (state.navigating && !prev.navigating) clear();
+			}),
+			useScene.subscribe(clearIfGone),
+		];
+		return () => {
+			for (const unsubscribe of unsubs) unsubscribe();
+		};
+	}, []);
+
 	// Canvas image load statuses (P2-01 self-heal) → `data-item-images`, written
 	// imperatively so an image loading never re-renders the stage.
 	useEffect(() => {
@@ -445,6 +498,7 @@ export function Stage() {
 			data-rotations={rotations}
 			data-positions={positions}
 			data-items={items.length}
+			data-cable-dim-focus={cableDimFocus ?? ""}
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}

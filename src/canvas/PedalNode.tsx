@@ -56,6 +56,7 @@ import {
 	WARNING_OUTSET_PX,
 	WARNING_STROKE_PX,
 } from "../styles/theme";
+import { isCanvasGestureActive } from "./hoverGuard";
 import { registerItemNode, unregisterItemNode } from "./itemNodeRegistry";
 import { useCoarsePointer } from "./useCoarsePointer";
 import { useImage } from "./useImage";
@@ -774,6 +775,7 @@ export function PedalNode({
 	return (
 		<Group
 			ref={groupRef}
+			name="pedal"
 			x={cmToPx(xCm)}
 			y={cmToPx(yCm)}
 			rotation={rotationDeg ?? item.rotationDeg}
@@ -794,7 +796,12 @@ export function PedalNode({
 			// Desktop hover preview (touch has no hover). Konva `mouseenter`
 			// bubbles to this Group from its child shape.
 			onMouseEnter={() => {
-				if (!coarsePointer) {
+				const selection = useSelection.getState().selection;
+				if (
+					!coarsePointer &&
+					!isCanvasGestureActive() &&
+					!(selection?.kind === "item" && selection.uid === item.uid)
+				) {
 					setHoveredTarget({ uid: item.uid, kind: "item" });
 				}
 			}}

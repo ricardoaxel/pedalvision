@@ -11,6 +11,7 @@ import { type Endpoint, useScene } from "../state/scene";
 import { selectHoveredEndpointUid, useSelection } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import { CANVAS_FONTS, type CanvasTheme, ENDPOINT } from "../styles/theme";
+import { isCanvasGestureActive } from "./hoverGuard";
 import { useCoarsePointer } from "./useCoarsePointer";
 import { useGraphPresence } from "./useGraphPresence";
 
@@ -36,6 +37,7 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 		state.selection?.kind === "endpoint" ? state.selection.uid : null,
 	);
 	const hoveredEndpointUid = useSelection(selectHoveredEndpointUid);
+	const coarsePointer = useCoarsePointer();
 	const cableTarget = useCableDrag((state) => state.target);
 	const safeScale = Math.max(scale, 0.0001);
 	const draggingRef = useRef<string | null>(null);
@@ -106,6 +108,7 @@ export function EndpointLayer({ theme }: EndpointLayerProps) {
 							selectedUid !== endpoint.uid
 						}
 						readOnly={readOnly}
+						coarsePointer={coarsePointer}
 						draggable={!readOnly && !navigating}
 						connectTarget={
 							cableTarget?.kind === "endpoint" &&
@@ -149,6 +152,7 @@ function EndpointTag({
 	selected,
 	hovered,
 	readOnly,
+	coarsePointer,
 	draggable,
 	connectTarget,
 	onSelect,
@@ -162,6 +166,7 @@ function EndpointTag({
 	selected: boolean;
 	hovered: boolean;
 	readOnly: boolean;
+	coarsePointer: boolean;
 	draggable: boolean;
 	connectTarget: boolean;
 	onSelect: () => void;
@@ -189,7 +194,6 @@ function EndpointTag({
 			: hovered
 				? theme.hoverOutline
 				: theme.jack;
-	const coarsePointer = useCoarsePointer();
 
 	return (
 		<Group
@@ -207,7 +211,14 @@ function EndpointTag({
 				onSelect();
 			}}
 			onMouseEnter={() => {
-				if (readOnly || coarsePointer || selected || connectTarget) return;
+				if (
+					readOnly ||
+					coarsePointer ||
+					isCanvasGestureActive() ||
+					selected ||
+					connectTarget
+				)
+					return;
 				useSelection
 					.getState()
 					.setHoveredTarget({ uid: endpoint.uid, kind: "endpoint" });
