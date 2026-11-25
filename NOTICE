@@ -1,0 +1,24 @@
+Pedalvision — NOTICE
+
+Copyright (c) 2026 Ashel
+
+1. Source code
+   The source code in this repository is licensed under the MIT License (see LICENSE).
+
+2. Third-party imagery is NOT covered by the MIT License
+   Pedal, pedalboard and accessory images under public/pedal-assets/, public/catalog/ and the
+   catalog data under data/ and src/catalog/ are third-party material. They were collected from
+   manufacturer, retailer, community and (as a last resort) planner sources for a non-commercial
+   project (see docs/decisions/009-planner-fill-waiver.md). Many remain marked "license-pending"
+   in data/catalog/asset-ledger.json and data/catalog/image-licenses.json.
+
+   Those images remain the property of their respective rights holders and are included for
+   identification and planning purposes only. They are excluded from the MIT grant.
+
+3. Attribution and takedown
+   - Attribution: public/attribution.html
+   - Takedown:    public/takedown/index.html
+   - Catalog facts (brand, model, dimensions, specs) are used as public factual data.
+
+4. No warranty
+   The imagery and catalog data are provided "as is", without warranty of any kind.
