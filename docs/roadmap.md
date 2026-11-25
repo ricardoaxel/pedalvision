@@ -1,5 +1,7 @@
 # Roadmap
 
+> **PROJECT CLOSED (2026-11-25).** Pedalvision is closed for now and **superseded by PedalPlayground v2**. No further tasks will run; the rows below are kept as a historical record. F-07 (`#109`) was the final task. The repo is a public agentic-workflow showcase — see `README.md` + `docs/SHOWCASE.md`.
+
 Task files live in `docs/tasks/`. P0–P5 have detailed task files; proposed/unscheduled tasks are one-liners — expand them when scheduled (see decisions/004).
 
 > **Process gates:** changes to `AGENTS.md`, this roadmap, `docs/phase-guide.md`, task templates, `docs/design-playbook.md`, `docs/catalog-backfill.md` process sections or `.opencode/agent/*` run the **`token-usage-reviewer`** (AGENTS.md §Agent/token review) and record its verdict before commit. **Parallel waves** require its bounded agent/model inventory, per-batch token/time budgets, reviewer caps and global stop. Per-batch task copies are exempt.
@@ -90,9 +92,9 @@ Feature work runs one task/PR at a time, separate from the catalog lane.
 
 | Status | Items |
 |---|---|
-| **Done** | **Phase 1 complete.** F-01, F-02, F-03, F-04, F-05, **F-12** (merged 2026-11-10, PR #104, squash `5b736a21`), **F-14** (merged 2026-11-13, PR #105, squash `94f14dac`), **F-16** (merged 2026-11-06, PR #103, squash `f9e2eca9`), F-19, **F-26 + F-32** (merged 2026-11-13, PR #107, squash `9b28fb16`), **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`), **F-45a** (access-model ADR, merged 2026-11-13, PR #106, squash `1b9732c4`), **Q-01** (merged 2026-11-04, PR #98, squash `cacb50d9`), **Q-02** (merged 2026-11-04, PR #99, squash `e500e7e6`), **Q-04** (merged 2026-11-05, PR #100, squash `ebd9e24e`), **Q-05** (merged 2026-11-05, PR #101, squash `43ab533b`), **Q-06** (merged 2026-11-06, PR #102, squash `5a948c65`), **F-06** (merged 2026-11-18, PR #108, squash `5d78584d`) |
-| **In review** | **F-07 — selection/highlight/modal polish (“Construction Line”)** — PR #109: neutral hover previews for pedals/boards/cables/endpoints + Patch popover focus/ARIA; share v5 unchanged. **Pending owner merge; do not start the next feature.** |
-| **Next** | **Pending merge of F-07 (PR #109).** After that, the owner delegates the next Phase 2 task (F-10, F-17, F-21, F-22, F-27). Create the task file from `docs/tasks/feature-template.md` before coding; design-gated if visibly rendered. **F-10** cable angles is the smaller alternative; do not start **F-22** tiered boards or **F-27** PWA without explicit owner confirmation. F-45b is the later Phase 4 implementation; **F-42** analytics is Phase 5. **POG2:** owner declined the EHX backfill (2026-11-12) — do not start it. |
+| **Done** | **Phase 1 complete.** F-01, F-02, F-03, F-04, F-05, **F-12** (merged 2026-11-10, PR #104, squash `5b736a21`), **F-14** (merged 2026-11-13, PR #105, squash `94f14dac`), **F-16** (merged 2026-11-06, PR #103, squash `f9e2eca9`), F-19, **F-26 + F-32** (merged 2026-11-13, PR #107, squash `9b28fb16`), **F-33** (merged 2026-11-03, PR #95, squash `1cb9a546`), F-36, F-37, F-38, **F-41** (merged 2026-11-03, PR #96, squash `e7c96536`), **F-45a** (access-model ADR, merged 2026-11-13, PR #106, squash `1b9732c4`), **Q-01** (merged 2026-11-04, PR #98, squash `cacb50d9`), **Q-02** (merged 2026-11-04, PR #99, squash `e500e7e6`), **Q-04** (merged 2026-11-05, PR #100, squash `ebd9e24e`), **Q-05** (merged 2026-11-05, PR #101, squash `43ab533b`), **Q-06** (merged 2026-11-06, PR #102, squash `5a948c65`), **F-06** (merged 2026-11-18, PR #108, squash `5d78584d`), **F-07** (merged 2026-11-25, PR #109, squash `360f0331`) |
+| **In review** | **None — project closed (2026-11-25).** |
+| **Next** | **None — project closed (2026-11-25).** Remaining tasks (F-10, F-17, F-21, F-22, F-27, F-42, F-45b, remaining ARCH) will not run. |
 | **Phase 5** | **F-42 PostHog analytics** — moved from Phase 1 (owner decision 2026-11-03); proposed, no task file, not a launch gate |
 
 ## ARCH — Frontend architecture rework (post-P5 feature lane; **not a release gate**)

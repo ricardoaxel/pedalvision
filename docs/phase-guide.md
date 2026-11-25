@@ -1,5 +1,7 @@
 # Phase guide — what each phase does & what needs the owner
 
+> **Project closed (2026-11-25):** the phases below are a historical record. Pedalvision is closed for now and superseded by **PedalPlayground v2**; no further tasks will run. See `README.md` + `docs/SHOWCASE.md`.
+
 Short explanations so both the owner and any agent session know why each phase exists and where only the owner can act.
 
 ## Legend
