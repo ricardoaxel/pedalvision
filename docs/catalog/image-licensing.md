@@ -25,14 +25,14 @@ Needs improvement: 130 (mock 10 · planner 120; see the source-gap table in [ass
 | Brand | Request | Official | Replace | Own | Contact | Press email | Terms |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Behringer | not-requested | 24 | 0 | 1 | [contact](https://www.behringer.com/support) | — | — |
-| BOSS | not-requested | 144 | 0 | 1 | [contact](https://www.boss.info/us/support/) | Rebecca.Genel@roland.com | [terms](https://www.boss.info/us/terms_of_use) |
+| BOSS | not-requested | 144 | 0 | 1 | [contact](https://www.boss.info/us/support/) | press contact on file | [terms](https://www.boss.info/us/terms_of_use) |
 | Electro-Harmonix | not-requested | 2 | 0 | 0 | [contact](https://www.ehx.com/support/) | — | — |
 | JHS | not-requested | 21 | 0 | 0 | [contact](https://www.jhspedals.info/pages/contact) | — | — |
-| Joyo | not-requested | 24 | 0 | 0 | [contact](https://www.joyoaudio.com/about.html) | info@joyoaudio.com | — |
+| Joyo | not-requested | 24 | 0 | 0 | [contact](https://www.joyoaudio.com/about.html) | press contact on file | — |
 | Meris | not-requested | 10 | 0 | 0 | [contact](https://meris.us/contact/) | — | — |
-| Mooer | not-requested | 25 | 0 | 1 | [contact](https://www.mooeraudio.com/CONTACT.html) | support@mooeraudio.com | — |
+| Mooer | not-requested | 25 | 0 | 1 | [contact](https://www.mooeraudio.com/CONTACT.html) | press contact on file | — |
 | MXR | not-requested | 11 | 0 | 0 | [contact](https://www.jimdunlop.com/contact-us/) | — | — |
-| Pedaltrain | not-requested | 0 | 0 | 4 | [contact](https://help.pedaltrain.com/hc/en-us/requests/new) | help@pedaltrain.com | — |
+| Pedaltrain | not-requested | 0 | 0 | 4 | [contact](https://help.pedaltrain.com/hc/en-us/requests/new) | press contact on file | — |
 | Red Panda | not-requested | 10 | 0 | 0 | [contact](https://www.redpandalab.com/contact) | — | — |
 | TC Electronic | not-requested | 19 | 0 | 0 | [contact](https://www.tcelectronic.com/support) | — | — |
 | Temple Audio | not-requested | 0 | 0 | 1 | [contact](https://www.templeaudio.com/contact) | — | — |
