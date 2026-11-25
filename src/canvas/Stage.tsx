@@ -18,9 +18,12 @@ import {
 	registerViewportTweenDriver,
 	type ViewportTweenDriver,
 } from "../lib/viewportMotion";
+import { useBoardDrag } from "../state/boardDrag";
 import { useCableDrag as useCableDragState } from "../state/cableDrag";
 import { useDrag } from "../state/drag";
+import { useEndpointDrag } from "../state/endpointDrag";
 import { isCameraLocked, useFocus, useIsFramed } from "../state/focus";
+import { useGesture } from "../state/gesture";
 import { useHistory } from "../state/history";
 import { useJackProof } from "../state/jackProof";
 import { useSceneLibrary } from "../state/library";
@@ -34,6 +37,8 @@ import {
 	useScene,
 } from "../state/scene";
 import {
+	type HoveredTarget,
+	selectCableDimFocus,
 	selectSelectedBoardUid,
 	selectSelectedItemUid,
 	useSelection,
@@ -102,10 +107,11 @@ export function Stage() {
 	const cables = useScene((state) => state.cables);
 	const selectedItemUid = useSelection(selectSelectedItemUid);
 	const selectedBoardUid = useSelection(selectSelectedBoardUid);
+	const cableDimFocus = useSelection(selectCableDimFocus);
 	const selectedKind = useSelection((state) => state.selection?.kind ?? "");
 	const selectedUid = useSelection((state) => state.selection?.uid ?? "");
 	const clearSelection = useSelection((state) => state.clearSelection);
-	const setHoveredItem = useSelection((state) => state.setHoveredItem);
+	const setHoveredTarget = useSelection((state) => state.setHoveredTarget);
 	const liftedItemUid = useDrag((state) => state.liftedUid);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
 	const theme = useCanvasTheme();
@@ -309,6 +315,9 @@ export function Stage() {
 			.join(";");
 	})();
 	const endpointKinds = endpoints.map((endpoint) => endpoint.kind).join(",");
+	const endpointPositions = endpoints
+		.map((endpoint) => `${endpoint.x.toFixed(2)},${endpoint.y.toFixed(2)}`)
+		.join(";");
 	const cableDirections = cables
 		.map((cable) => {
 			const label = (end: typeof cable.from) =>
@@ -389,20 +398,70 @@ export function Stage() {
 		});
 	}, []);
 
-	// Same idea for the hover debug attribute: write it from the store so hover
-	// enter/leave doesn't re-render the whole stage (SelectionLayer re-renders).
+	// Same idea for the hover debug attributes: write them from the store so
+	// hover enter/leave doesn't re-render the whole stage (SelectionLayer does).
 	useEffect(() => {
-		const apply = (uid: string | null) => {
+		const apply = (target: HoveredTarget | null) => {
 			const element = containerRef.current;
 			if (!element) return;
-			element.dataset.hoveredItem = uid ?? "";
+			element.dataset.hoveredItem = target?.kind === "item" ? target.uid : "";
+			element.dataset.hoveredTarget = target?.uid ?? "";
+			element.dataset.hoveredKind = target?.kind ?? "";
 		};
-		apply(useSelection.getState().hoveredItemUid);
+		apply(useSelection.getState().hoveredTarget);
 		return useSelection.subscribe((state, prev) => {
-			if (state.hoveredItemUid !== prev.hoveredItemUid) {
-				apply(state.hoveredItemUid);
+			if (state.hoveredTarget !== prev.hoveredTarget) {
+				apply(state.hoveredTarget);
 			}
 		});
+	}, []);
+
+	// Clear hover when a gesture starts (Konva does not capture pointers, so
+	// enter/leave keeps firing mid-drag) and when the hovered object is removed.
+	useEffect(() => {
+		const clear = () => {
+			if (useSelection.getState().hoveredTarget) {
+				useSelection.getState().setHoveredTarget(null);
+			}
+		};
+		const clearIfGone = () => {
+			const target = useSelection.getState().hoveredTarget;
+			if (!target) return;
+			const scene = useScene.getState();
+			const exists =
+				target.kind === "item"
+					? scene.items.some((item) => item.uid === target.uid)
+					: target.kind === "board"
+						? scene.boards.some((board) => board.uid === target.uid)
+						: target.kind === "cable"
+							? scene.cables.some((cable) => cable.uid === target.uid)
+							: scene.endpoints.some((endpoint) => endpoint.uid === target.uid);
+			if (!exists) clear();
+		};
+		const unsubs = [
+			useDrag.subscribe((state, prev) => {
+				if (state.liftedUid && !prev.liftedUid) clear();
+			}),
+			useBoardDrag.subscribe((state, prev) => {
+				if (state.uid && !prev.uid) clear();
+			}),
+			useCableDragState.subscribe((state, prev) => {
+				if (state.source && !prev.source) clear();
+			}),
+			useEndpointDrag.subscribe((state, prev) => {
+				if (state.uid && !prev.uid) clear();
+			}),
+			useJackProof.subscribe((state, prev) => {
+				if (state.drag && !prev.drag) clear();
+			}),
+			useGesture.subscribe((state, prev) => {
+				if (state.navigating && !prev.navigating) clear();
+			}),
+			useScene.subscribe(clearIfGone),
+		];
+		return () => {
+			for (const unsubscribe of unsubs) unsubscribe();
+		};
 	}, []);
 
 	// Canvas image load statuses (P2-01 self-heal) → `data-item-images`, written
@@ -439,6 +498,7 @@ export function Stage() {
 			data-rotations={rotations}
 			data-positions={positions}
 			data-items={items.length}
+			data-cable-dim-focus={cableDimFocus ?? ""}
 			data-item-parents={itemParents}
 			data-item-positions={itemPositions}
 			data-item-rotations={itemRotations}
@@ -459,6 +519,7 @@ export function Stage() {
 			data-redo-depth={redoDepth}
 			data-endpoints={endpoints.length}
 			data-endpoint-kinds={endpointKinds}
+			data-endpoint-positions={endpointPositions}
 			data-cables={cables.length}
 			data-cable-directions={cableDirections}
 			data-cable-colors={cableColors}
@@ -545,7 +606,7 @@ export function Stage() {
 						}
 					}}
 					// A pointer leaving the whole canvas must drop the hover ring.
-					onMouseLeave={() => setHoveredItem(null)}
+					onMouseLeave={() => setHoveredTarget(null)}
 				>
 					<GridLayer
 						color={theme.gridDot}

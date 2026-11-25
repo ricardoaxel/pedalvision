@@ -33,7 +33,7 @@ function reset(): void {
 	});
 	clearHistory();
 	useReadOnly.setState({ readOnly: false });
-	useSelection.setState({ selection: null, hoveredItemUid: null });
+	useSelection.setState({ selection: null, hoveredTarget: null });
 	useViewport.setState({ scale: 1, x: 0, y: 0 });
 }
 

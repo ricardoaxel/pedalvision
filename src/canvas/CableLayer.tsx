@@ -31,12 +31,14 @@ import {
 	useScene,
 } from "../state/scene";
 import {
+	selectCableDimFocus,
+	selectHoveredCableUid,
 	selectSelectedCableUid,
-	selectSelectedItemUid,
 	useSelection,
 } from "../state/selection";
 import { useViewport } from "../state/viewport";
 import { CABLE, type CanvasTheme } from "../styles/theme";
+import { isCanvasGestureActive } from "./hoverGuard";
 import { useCoarsePointer } from "./useCoarsePointer";
 import { useGraphPresence } from "./useGraphPresence";
 
@@ -251,18 +253,12 @@ export function CableLayer({ theme }: CableLayerProps) {
 	const readOnly = useReadOnly((state) => state.readOnly);
 	const scale = useViewport((state) => state.scale);
 	const selectedCableUid = useSelection(selectSelectedCableUid);
-	const selectedItemUid = useSelection(selectSelectedItemUid);
-	const hoveredItemUid = useSelection((state) => state.hoveredItemUid);
-	const selectedEndpointUid = useSelection((state) =>
-		state.selection?.kind === "endpoint" ? state.selection.uid : null,
-	);
+	const dimFocus = useSelection(selectCableDimFocus);
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const boardDragUid = useBoardDrag((state) => state.uid);
 	const draggingEndpointUid = useEndpointDrag((state) => state.uid);
 	const proofDrag = useJackProof((state) => state.drag);
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
-	const dimFocus =
-		selectedItemUid ?? hoveredItemUid ?? selectedEndpointUid ?? null;
 	const { mounted, exiting, reduced } = useGraphPresence();
 
 	const hidden = useMemo(() => {
@@ -466,11 +462,7 @@ function LiveCables({
 	const cables = useScene((state) => state.cables);
 	const scale = useViewport((state) => state.scale);
 	const selectedCableUid = useSelection(selectSelectedCableUid);
-	const selectedItemUid = useSelection(selectSelectedItemUid);
-	const hoveredItemUid = useSelection((state) => state.hoveredItemUid);
-	const selectedEndpointUid = useSelection((state) =>
-		state.selection?.kind === "endpoint" ? state.selection.uid : null,
-	);
+	const dimFocus = useSelection(selectCableDimFocus);
 	const liftedUid = useDrag((state) => state.liftedUid);
 	const liftedWorldCm = useDrag((state) => state.liftedWorldCm);
 	const liftedRotationDeg = useDrag((state) => state.liftedRotationDeg);
@@ -484,8 +476,6 @@ function LiveCables({
 	const readOnly = useReadOnly((state) => state.readOnly);
 	if (hidden.size === 0) return null;
 	const index = anchorIndexFor({ boards, items, customPedals, endpoints });
-	const dimFocus =
-		selectedItemUid ?? hoveredItemUid ?? selectedEndpointUid ?? null;
 	const rendered = renderCables({
 		cables: cables.filter((cable) => hidden.has(cable.uid)),
 		index,
@@ -531,6 +521,8 @@ function CableShapes({
 }) {
 	const safeScale = Math.max(scale, 0.0001);
 	const coarsePointer = useCoarsePointer();
+	const hoveredCableUid = useSelection(selectHoveredCableUid);
+	const setHoveredTarget = useSelection((state) => state.setHoveredTarget);
 	const colors = (selected: boolean, ink?: string) => ({
 		// Selection is carried by the halo only, so the trace keeps its patch ink
 		// (Q-05 "Patch Ink"). A selected Default cable still reads as selected.
@@ -552,7 +544,23 @@ function CableShapes({
 						strokeWidth={color.haloWidth}
 						lineCap="round"
 						lineJoin="round"
-						opacity={opacity}
+						opacity={hoveredCableUid === uid && !selected ? 1 : opacity}
+						listening={false}
+						perfectDrawEnabled={false}
+					/>
+				);
+			})}
+			{rendered.map(({ uid, curve, selected }) => {
+				if (readOnly || hoveredCableUid !== uid || selected) return null;
+				return (
+					<Path
+						key={`cable-hover-${uid}`}
+						data={cablePathData(curve)}
+						stroke={theme.hoverOutline}
+						strokeWidth={CABLE.hoverHaloPx / safeScale}
+						lineCap="round"
+						lineJoin="round"
+						opacity={CABLE.hoverHaloOpacity}
 						listening={false}
 						perfectDrawEnabled={false}
 					/>
@@ -560,6 +568,7 @@ function CableShapes({
 			})}
 			{rendered.map(({ uid, curve, selected, opacity, color: ink }) => {
 				const color = colors(selected, ink);
+				const hovered = hoveredCableUid === uid && !selected;
 				return (
 					<Path
 						key={`cable-line-${uid}`}
@@ -569,11 +578,23 @@ function CableShapes({
 						strokeWidth={color.lineWidth}
 						lineCap="round"
 						lineJoin="round"
-						opacity={opacity}
+						opacity={hovered ? 1 : opacity}
 						hitStrokeWidth={
 							(coarsePointer ? 40 : CABLE.hitStrokePx) / safeScale
 						}
 						listening={!readOnly}
+						onMouseEnter={() => {
+							if (readOnly || coarsePointer || isCanvasGestureActive()) return;
+							const selection = useSelection.getState().selection;
+							if (selection?.kind === "cable" && selection.uid === uid) return;
+							setHoveredTarget({ uid, kind: "cable" });
+						}}
+						onMouseLeave={() => {
+							const current = useSelection.getState().hoveredTarget;
+							if (current?.kind === "cable" && current.uid === uid) {
+								setHoveredTarget(null);
+							}
+						}}
 						onMouseDown={(event) => {
 							if (event.evt.button !== 0) return;
 							event.cancelBubble = true;
@@ -598,7 +619,7 @@ function CableShapes({
 						fill={color.line}
 						stroke={theme.canvasBackground}
 						strokeWidth={1 / safeScale}
-						opacity={opacity}
+						opacity={hoveredCableUid === uid && !selected ? 1 : opacity}
 						listening={false}
 						perfectDrawEnabled={false}
 					/>
